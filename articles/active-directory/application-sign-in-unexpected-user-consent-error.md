@@ -1,6 +1,6 @@
 ---
-title: "error inesperado de aaa al realizar la aplicación de consentimiento tooan | Documentos de Microsoft"
-description: "Explica los errores que pueden producirse durante el proceso de Hola de consentimiento tooan aplicación y qué puede hacer con ellos"
+title: "Error inesperado al otorgar consentimiento a una aplicación | Microsoft Docs"
+description: "Explica los errores que pueden producirse durante el proceso de otorgar su consentimiento a una aplicación y qué puede hacer al respecto"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,68 +13,68 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: dfee35f3a10e3cc4313109cedd972499452320f1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: fd500fdd4c8642bad96dcf71eebcf1fad461a35f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="unexpected-error-when-performing-consent-tooan-application"></a>Error inesperado al realizar la aplicación de tooan de consentimiento
+# <a name="unexpected-error-when-performing-consent-to-an-application"></a>Error inesperado al otorgar consentimiento a una aplicación
 
-En este artículo se describe los errores que pueden producirse durante el proceso de Hola de consentimiento tooan aplicación. Si está solucionando solicitudes de consentimiento inesperadas que no contienen ningún mensaje de error, consulte [Escenarios de autenticación para Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios).
+En este artículo, se explican los errores que pueden producirse durante el proceso de otorgar su consentimiento a una aplicación. Si está solucionando solicitudes de consentimiento inesperadas que no contienen ningún mensaje de error, consulte [Escenarios de autenticación para Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-scenarios).
 
-Muchas aplicaciones que se integran con Azure Active Directory requieren permisos tooaccess otros recursos en orden toofunction. Cuando estos recursos también están integrados con Azure Active Directory, tooaccess permisos ellos con frecuencia se solicita mediante Hola comunes consentimiento framework. 
+Muchas aplicaciones que se integran con Azure Active Directory requieren permisos para acceder a otros recursos a fin de funcionar. Cuando estos recursos también se integran con Azure Active Directory, suelen solicitarse permisos para acceder a ellos mediante el marco de consentimiento común. 
 
-Esto produce una solicitud de consentimiento que se muestra, que suele producirse Hola por primera vez que una aplicación se utiliza, pero también puede ocurrir en un uso posterior de la aplicación hello.
+Esto produce que se muestre una solicitud de consentimiento, que generalmente ocurre la primera vez que se usa una aplicación, pero que también se puede producir en un uso posterior de la aplicación.
 
-Determinadas condiciones deben cumplirse para tooconsent toohello permiso a un usuario requiere una aplicación. Si no se cumplen estas condiciones, pueden producirse varios errores. Entre ellos se incluyen los siguientes:
+Determinadas condiciones deben cumplirse para que un usuario otorgue su consentimiento a los permisos que requiere una aplicación. Si no se cumplen estas condiciones, pueden producirse varios errores. Entre ellos se incluyen los siguientes:
 
 ## <a name="requesting-not-authorized-permissions-error"></a>Error por solicitud de permisos no autorizados
-* **AADSTS90093:** &lt;clientAppDisplayName&gt; solicita uno o varios de los permisos que no está autorización toogrant. Póngase en contacto con el administrador puede dar su consentimiento toothis aplicación en su nombre.
+* **AADSTS90093:**&lt;clientAppDisplayName&gt; solicita uno o más permisos que no está autorizado a conceder. Póngase en contacto con el administrador, que puede dar su consentimiento para esta aplicación en su nombre.
 
-Este error se produce cuando un usuario que no sea un administrador de empresa intenta toouse una aplicación que está pidiendo permisos que sólo un administrador puede conceder. Este error se puede resolver por un administrador conceder acceso toohello aplicación en nombre de su organización.
+Este error se produce cuando un usuario que no es administrador de la empresa intenta usar una aplicación que está solicitando permisos que solo un administrador puede conceder. Este error se puede solucionar si un administrador otorga el acceso a la aplicación en nombre de la organización.
 
 ## <a name="policy-prevents-granting-permissions-error"></a>Error porque la directiva impide conceder permisos
-* **AADSTS90093:** administradora de &lt;tenantDisplayName&gt; ha establecido una directiva que le impide concederse &lt;nombre de aplicación&gt; Hola permisos está solicitando. Póngase en contacto con un administrador de &lt;tenantDisplayName&gt;, que puede conceder permisos toothis aplicación en su nombre.
+* **AADSTS90093:** un administrador de &lt;tenantDisplayName&gt; ha establecido una directiva que le impide otorgar a &lt;nombre de la aplicación&gt; los permisos que está solicitando. Póngase en contacto con un administrador de &lt;tenantDisplayName&gt;, que puede conceder permisos a esta aplicación en su nombre.
 
-Este error se produce cuando un administrador de la compañía desactiva la capacidad de Hola para usuarios tooconsent tooapplications, a continuación, un usuario sin privilegios de administrador intenta toouse una aplicación que requiere el consentimiento. Este error se puede resolver por un administrador conceder acceso toohello aplicación en nombre de su organización.
+Este error se produce cuando el administrador de una empresa desactiva la funcionalidad para que los usuarios otorguen consentimiento a aplicaciones y, a continuación, un usuario sin privilegios de administrador intenta usar una aplicación que requiere el consentimiento. Este error se puede solucionar si un administrador otorga el acceso a la aplicación en nombre de la organización.
 
 ## <a name="intermittent-problem-error"></a>Error de un problema intermitente
-* **AADSTS90090:** parece que hemos detectado un problema intermitente grabación permisos Hola ha intentado demasiado toogrant&lt;clientAppDisplayName&gt;. Inténtelo de nuevo más tarde.
+* **AADSTS90090:** al parecer hemos detectado un problema intermitente para grabar los permisos que intenta conceder a &lt;clientAppDisplayName&gt;. Inténtelo de nuevo más tarde.
 
-Este error indica que se ha producido un problema de servicio intermitente. Se puede resolver mediante la aplicación de toohello tooconsent nuevo.
+Este error indica que se ha producido un problema de servicio intermitente. Se puede resolver intentando otorgar su consentimiento a la aplicación de nuevo.
 
 ## <a name="resource-not-available-error"></a>Error de recurso no disponible
-* **AADSTS65005:** aplicación hello &lt;clientAppDisplayName&gt; solicita permisos tooaccess un recurso &lt;resourceAppDisplayName&gt; que no está disponible. 
+* **AADSTS65005:** la aplicación &lt;clientAppDisplayName&gt; solicitó permisos para acceder al recurso &lt;resourceAppDisplayName&gt; que no está disponible. 
 
-Póngase en contacto con el desarrollador de la aplicación hello.
+Póngase en contacto con el desarrollador de aplicaciones.
 
 ##  <a name="resource-not-available-in-tenant-error"></a>Error de recurso no disponible en el inquilino
-* **AADSTS65005:** &lt;clientAppDisplayName&gt; solicita acceso a recursos de tooa &lt;resourceAppDisplayName&gt; que no está disponible en su organización &lt; tenantDisplayName&gt;. 
+* **AADSTS65005:**&lt;clientAppDisplayName&gt; solicitó permiso para acceder al recurso &lt;resourceAppDisplayName&gt; que no está disponible en su organización &lt;tenantDisplayName&gt;. 
 
 Asegúrese de que este recurso esté disponible o póngase en contacto con un administrador de &lt;tenantDisplayName&gt;.
 
 ## <a name="permissions-mismatch-error"></a>Error de coincidencia de permisos
-* **AADSTS65005:** aplicación hello solicita consentimiento tooaccess recursos &lt;resourceAppDisplayName&gt;. Error de esta solicitud porque no coincide con la aplicación hello se configuradas previamente durante el registro de aplicación. Póngase en contacto con vendor.* aplicación Hola *
+* **AADSTS65005:** la aplicación solicitó el consentimiento para acceder al recurso &lt;resourceAppDisplayName&gt;. Hay un error en esta solicitud porque no coincide con cómo se configuró anteriormente la aplicación durante el registro de aplicación. Póngase en contacto con el proveedor de la aplicación**.
 
-Estos todos los errores se producen cuando la aplicación hello un usuario trate de toois tooconsent solicitar permisos tooaccess una aplicación de recursos que no se encuentra en el directorio de la organización de hello (inquilino). Esto puede ocurrir por varios motivos:
+Todos estos errores se producen cuando la aplicación a la que un usuario está intentando otorgar consentimiento solicita permisos para tener acceso a una aplicación de recursos que no se encuentra en el directorio de la organización (inquilino). Esto puede ocurrir por varios motivos:
 
--   Programador de aplicaciones de cliente de Hello ha configurado su aplicación incorrectamente, haciendo que el recurso no válido de toorequest acceso tooan. En este caso, programador de la aplicación hello debe actualizar configuración de Hola de tooresolve de aplicación de cliente de Hola este problema.
+-   El desarrollador de aplicaciones cliente configuró su aplicación incorrectamente, lo que provocó que solicitara acceso a un recurso no válido. En este caso, el desarrollador de aplicaciones debe actualizar la configuración de la aplicación cliente para resolver este problema.
 
--   Una entidad de servicio que representa la aplicación de recurso de destino de hello no existe en la organización de hello, o existía en los último Hola pero se ha quitado. tooresolve este problema, una entidad de servicio para la aplicación de recursos de hello debe haber aprovisionado en organización hello, por lo que la aplicación de cliente de hello puede solicitar permisos tooit. Esto puede ocurrir en un número de formas, según el tipo de saludo de aplicación, que incluye:
+-   Una entidad de servicio que representa la aplicación de recurso de destino no existe en la organización o existía en el pasado, pero se ha eliminado. Para resolver este problema, se debe haber aprovisionado a una entidad de servicio en la organización para la aplicación de recurso a fin de que la aplicación cliente pueda solicitar permisos a ella. Esto puede ocurrir de varias maneras, según el tipo de aplicación, como por ejemplo:
 
-    -   Al adquirir una suscripción para la aplicación de recursos de hello (aplicaciones publicadas de Microsoft)
+    -   Adquirir una suscripción para la aplicación del recurso (aplicaciones publicadas de Microsoft)
 
-    -   Aplicación de recursos de toohello de consentimiento
+    -   Otorgar consentimiento a la aplicación del recurso
 
-    -   Conceder permisos de aplicación Hola a través de hello Portal de Azure
+    -   Otorgar permisos a la aplicación en Azure Portal
 
-    -   Agregar aplicación hello de hello Galería de aplicaciones de Azure AD
+    -   Agregar la aplicación desde la Galería de aplicaciones de Azure AD
 
 ## <a name="next-steps"></a>Pasos siguientes 
 
 [Aplicaciones, permisos y consentimiento en Azure Active Directory (punto de conexión v1)](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)<br>
 
-[Ámbitos, permisos y consentimiento de hello Azure Active Directory (extremo v2.0)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
+[Ámbitos, permisos y consentimiento en Azure Active Directory (punto de conexión v2.0)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)
 
 

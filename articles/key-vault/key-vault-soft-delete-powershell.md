@@ -1,6 +1,6 @@
 ---
 ms.assetid: 
-title: "Almacén de claves de aaaAzure: cómo toouse soft-delete con PowerShell"
+title: "Azure Key Vault: Uso de la eliminación temporal con PowerShell"
 description: "Ejemplos de casos de uso de eliminación temporal con fragmentos de código de PowerShell"
 services: key-vault
 author: BrucePerlerMS
@@ -10,26 +10,26 @@ ms.topic: article
 ms.workload: identity
 ms.date: 08/21/2017
 ms.author: bruceper
-ms.openlocfilehash: 4968b700a14f764ea1be7de2bf3697664f255f95
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8cf0674f7eb139e50da4a3c22a8d8376a86b0dcc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-toouse-key-vault-soft-delete-with-powershell"></a>Cómo toouse el almacén de claves soft-delete con PowerShell
+# <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Uso de la eliminación temporal de Key Vault con PowerShell
 
-La característica de eliminación temporal de Azure Key Vault permite recuperar almacenes y objetos de almacenes eliminados. En concreto, soft-delete Hola direcciones los escenarios siguientes:
+La característica de eliminación temporal de Azure Key Vault permite recuperar almacenes y objetos de almacenes eliminados. En concreto, la eliminación temporal trata los siguientes escenarios:
 
 - Compatibilidad con la eliminación recuperable de una instancia de Key Vault
 - Compatibilidad con la eliminación recuperable de objetos de Key Vault: claves, secretos y certificados
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-- Azure PowerShell 4.0.0 o una versión posterior: si no tiene este ya el programa de instalación, instale Azure PowerShell y asociarla a su suscripción de Azure, consulte [cómo tooinstall y configurar Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview). 
+- Azure PowerShell 4.0.0 o posterior: si aún no lo tiene instalado, instale Azure PowerShell y asócielo con la suscripción de Azure. Para ello, consulte [Instalación y configuración de Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview). 
 
 >[!NOTE]
-> Hay una versión no actualizada de nuestro formato de salida de PowerShell de almacén de claves de archivo que **puede** se va a cargar en el entorno en lugar de la versión correcta de Hola. Se espera que una versión actualizada del programa Hola a toocontain PowerShell necesarios corrección para el formato de salida de hello y se actualizará en este tema en ese momento. Hola actual solucionar este problema, debe se produce este problema de formato, es:
-> - Hola de uso después de consulta si observa que no puede ver Hola soft-delete habilitada la propiedad descrita en este tema: `$vault = Get-AzureRmKeyVault -VaultName myvault; $vault.EnableSoftDelete`.
+> Hay una versión no actualizada del archivo de formato de salida de PowerShell de Key Vault que se **podría** cargar en el entorno en lugar de la versión correcta. Se espera una versión actualizada de PowerShell que contenga la corrección necesaria para el formato de salida y este tema se actualizará en ese momento. La solución actual, si se encuentra con este problema de formato, es:
+> - Use la siguiente consulta si no ve la propiedad Habilitar la eliminación temporal descrita en este tema: `$vault = Get-AzureRmKeyVault -VaultName myvault; $vault.EnableSoftDelete`.
 
 
 Para más información específica de referencia sobre Key Vault para PowerShell, consulte la [referencia de Azure Key Vault para PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/?view=azurermps-4.2.0).
@@ -48,14 +48,14 @@ Para más información sobre los permisos y el control de acceso, consulte [Prot
 
 ## <a name="enabling-soft-delete"></a>Habilitar la eliminación temporal
 
-toobe puede toorecover del almacén de objetos almacenados en una clave o un almacén de claves se eliminó, primero debe habilitar la eliminación de software para ese almacén de claves.
+Para poder recuperar un almacén de claves eliminado o los objetos almacenados en un almacén de claves, primero debe habilitar la eliminación temporal para ese almacén de claves.
 
 ### <a name="existing-key-vault"></a>Almacén de claves existente
 
 Para un almacén de claves existente denominado ContosoVault, habilite la eliminación temporal como se indica a continuación. 
 
 >[!NOTE]
->Actualmente necesita Hola de escritura de toouse Azure Resource Manager recursos manipulación toodirectly *enableSoftDelete* toohello recursos de almacén de claves de propiedad.
+>Actualmente debe usar la manipulación de recursos de Azure Resource Manager para escribir directamente la propiedad *enableSoftDelete* en el recurso de Key Vault.
 
 ```powershell
 ($resource = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -VaultName "ContosoVault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"
@@ -65,7 +65,7 @@ Set-AzureRmResource -resourceid $resource.ResourceId -Properties $resource.Prope
 
 ### <a name="new-key-vault"></a>Almacén de claves nuevo
 
-Habilitar la eliminación de software para un nuevo almacén de claves se realiza en el momento de creación mediante la adición de marca de soft-delete enable hello tooyour crear comando.
+La habilitación de la eliminación temporal para un nuevo almacén de claves se realiza en el momento de la creación agregando el indicador de habilitación de eliminación temporal al comando create.
 
 ```powershell
 New-AzureRmKeyVault -VaultName "ContosoVault" -ResourceGroupName "ContosoRG" -Location "westus" -EnableSoftDelete
@@ -73,7 +73,7 @@ New-AzureRmKeyVault -VaultName "ContosoVault" -ResourceGroupName "ContosoRG" -Lo
 
 ### <a name="verify-soft-delete-enablement"></a>Comprobación de la habilitación de la eliminación temporal
 
-tooverify que un almacén de claves tiene habilitado, soft-delete Hola ejecución *obtener* comando y busque hello 'Suave eliminar Enabled?' y su valor, true o false.
+Para comprobar que un almacén de claves tiene habilitada la eliminación temporal, ejecute el comando *get* y busque el atributo "Soft Delete Enabled?" y su valor, true o false.
 
 ```powershell
 Get-AzureRmKeyVault -VaultName "ContosoVault"
@@ -81,24 +81,24 @@ Get-AzureRmKeyVault -VaultName "ContosoVault"
 
 ## <a name="deleting-a-key-vault-protected-by-soft-delete"></a>Eliminación de un almacén de claves protegido por eliminación temporal
 
-Hola comando toodelete (o quitar) un almacén de claves permanece Hola mismo, pero sus cambios de comportamiento dependen de si ha habilitado soft-delete o no.
+El comando para eliminar (o quitar) un almacén de claves sigue siendo el mismo, pero su comportamiento cambia dependiendo de si ha habilitado la eliminación temporal o no.
 
 ```powershell
 Remove-AzureRmKeyVault -VaultName 'ContosoVault'
 ```
 
 > [!IMPORTANT]
->Si ejecuta el comando anterior de Hola para un almacén de claves que no tiene habilitada la eliminación temporal, se eliminará permanentemente este almacén de claves y todo su contenido sin ninguna opción para la recuperación.
+>Si ejecuta el comando anterior para un almacén de claves que no tiene habilitada la eliminación temporal, se eliminará permanentemente este almacén de claves y todo su contenido sin ninguna opción de recuperación.
 
 ### <a name="how-soft-delete-protects-your-key-vaults"></a>Uso de la eliminación temporal para proteger los almacenes de claves
 
 Con la eliminación temporal habilitada:
 
-- Cuando se elimina un almacén de claves, se quita de su grupo de recursos y se coloca en un espacio de nombres reservado que solo está asociado a la ubicación de Hola donde se creó. 
-- Objetos de una clave eliminada del almacén, como las claves, secretos y certificados, son inaccesibles y mantenerse así mientras su almacén de claves que lo contiene está en estado de hello eliminado. 
-- nombre DNS de Hola para un almacén de claves en un estado de eliminación se sigue reservando por lo tanto, no se puede crear un nuevo almacén de claves con el mismo nombre.  
+- Cuando se elimina un almacén de claves, se quita de su grupo de recursos y se coloca en un espacio de nombres reservado que solo está asociado a la ubicación donde se creó. 
+- Los objetos de un almacén de claves eliminado como, por ejemplo, las claves, los secretos y los certificados, son inaccesibles y permanecen así mientras que el almacén de claves que los contiene está en el estado eliminado. 
+- El nombre DNS de un almacén de claves en estado eliminado se reserva por lo que no se podrá crear ningún nuevo almacén de claves con ese mismo nombre.  
 
-Puede ver almacenes de clave de estado eliminado, asociados a su suscripción, con hello siguiente comando:
+Puede ver los almacenes de claves en estado eliminado asociados a su suscripción con el comando siguiente:
 
 ```powershell
 PS C:\> Get-AzureRmKeyVault -InRemovedStateVault 
@@ -112,17 +112,17 @@ Scheduled Purge Date : 8/7/2017 12:14:14 AM
 Tags                 :
 ```
 
-Hola *Id. de recurso* Hola salida hace referencia toohello de identificador de recurso original de este almacén. Puesto que este almacén de claves está ahora en estado eliminado, no existe ningún recurso con ese identificador de recurso. Hola *identificador* campo puede ser recurso de Hola de tooidentify usado durante la recuperación o purgar. Hola *programada fecha purgar* campo indica al almacén de Hola se eliminarán permanentemente (purga) si no se realiza ninguna acción para este almacén eliminado. Hola toocalculate período, que se usa de Hello predeterminado retención *programada fecha purgar*, es de 90 días.
+El *identificador de recurso* en la salida hace referencia al identificador de recurso original de este almacén. Puesto que este almacén de claves está ahora en estado eliminado, no existe ningún recurso con ese identificador de recurso. El campo *Identificador* se puede utilizar para identificar el recurso durante la recuperación o purga. El campo *Scheduled Purge Date* (Fecha de purga programada) indica si el almacén se eliminará permanentemente (se purgará) si no se realiza ninguna acción en ese almacén eliminado. El período de retención predeterminado que se utiliza para calcular la *fecha de purga programada* es de 90 días.
 
 ## <a name="recovering-a-key-vault"></a>Recuperación de un almacén de claves
 
-toorecover un almacén de claves, necesita nombre de almacén de claves de hello toospecify, grupo de recursos y ubicación. Nota Hola hello y ubicación del grupo de recursos del programa Hola a elimina el almacén de claves según sea necesario para un proceso de recuperación del almacén de claves.
+Para recuperar un almacén de claves, debe especificar el nombre del almacén de claves, el grupo de recursos y la ubicación. Anote la ubicación y el grupo de recursos del almacén de claves eliminado ya que los necesitará para un proceso de recuperación del almacén de claves.
 
 ```powershell
 Undo-AzureRmKeyVaultRemoval -VaultName ContosoVault -ResourceGroupName ContosoRG -Location westus
 ```
 
-Cuando se recupera un almacén de claves, el resultado de hello es un nuevo recurso con el identificador de recurso original. del almacén de hello claves Si se ha quitado el grupo de recursos de Hola donde existía el almacén de claves de hello, debe crearse un nuevo grupo de recursos con el mismo nombre antes de que se puede recuperar el almacén de claves de Hola.
+Cuando se recupera un almacén de claves, el resultado es un nuevo recurso con el identificador de recurso original del almacén de claves. Si se ha quitado el grupo de recursos donde existía el almacén de claves, se deberá crear un nuevo grupo de recursos con el mismo nombre antes de poder recuperar el almacén de claves.
 
 ## <a name="key-vault-objects-and-soft-delete"></a>Objetos de Key Vault y eliminación temporal
 
@@ -132,9 +132,9 @@ Si tiene una clave, "ContosoFirstKey", en un almacén de claves denominado "Cont
 Remove-AzureKeyVaultKey -VaultName ContosoVault -Name ContosoFirstKey
 ```
 
-Con el almacén de claves habilitado para la eliminación temporal, una clave eliminada seguirá apareciendo como eliminada excepto si enumera o recupera explícitamente las claves eliminadas. Se producirá un error de mayoría de las operaciones en una clave de estado de hello eliminado excepto para enumerar una clave eliminada, recuperarlo o purgar. 
+Con el almacén de claves habilitado para la eliminación temporal, una clave eliminada seguirá apareciendo como eliminada excepto si enumera o recupera explícitamente las claves eliminadas. La mayoría de las operaciones que se realicen en una clave en el estado eliminado producirán error, excepto las operaciones de enumeración, recuperación o purga. 
 
-Por ejemplo, las claves de toolist eliminar toorequest en un almacén de claves, utilizar Hola siguiente comando:
+Por ejemplo, para solicitar la enumeración de las claves eliminadas de un almacén de claves, use el comando siguiente:
 
 ```powershell
 Get-AzureKeyVaultKey -VaultName ContosoVault -InRemovedState
@@ -142,7 +142,7 @@ Get-AzureKeyVaultKey -VaultName ContosoVault -InRemovedState
 
 ### <a name="transition-state"></a>Estado de transición 
 
-Cuando se elimina una clave en un almacén de claves con la eliminación de software habilitada, puede tardar unos segundos hello toocomplete de transición. Durante este estado de transición, puede aparecer que esa clave hello no está en estado activo de Hola u Hola eliminado. Este comando permite enumerar todas las claves eliminadas en el almacén de claves denominado "ContosoVault".
+Cuando se elimina una clave de un almacén de claves con eliminación temporal habilitada, puede tardar unos segundos en completarse la transición. Durante este estado de transición, puede parecer que la clave no está ni en el estado activo ni en el estado eliminado. Este comando permite enumerar todas las claves eliminadas en el almacén de claves denominado "ContosoVault".
 
 ```powershell
   Get-AzureKeyVaultKey -VaultName ContosoVault -InRemovedState
@@ -161,17 +161,17 @@ Cuando se elimina una clave en un almacén de claves con la eliminación de soft
 
 ### <a name="using-soft-delete-with-key-vault-objects"></a>Uso de la eliminación temporal con objetos de almacén de claves
 
-Igual que los almacenes de claves, una clave eliminada, secreto o certificado permanecerá en estado de eliminación para los días de too90 a menos que recuperarlo o lo purga. 
+Al igual que con los almacenes de claves, una clave, secreto o certificado eliminados permanecerán en este estado durante 90 días a menos que los recupere o los purgue. 
 
 #### <a name="keys"></a>simétricas
 
-toorecover una clave eliminada:
+Para recuperar una clave eliminada:
 
 ```powershell
 Undo-AzureKeyVaultKeyRemoval -VaultName ContosoVault -Name ContosoFirstKey
 ```
 
-toopermanently eliminar una clave:
+Para eliminar permanentemente una clave:
 
 ```powershell
 Remove-AzureKeyVaultKey -VaultName ContosoVault -Name ContosoFirstKey -InRemovedState
@@ -180,7 +180,7 @@ Remove-AzureKeyVaultKey -VaultName ContosoVault -Name ContosoFirstKey -InRemoved
 >[!NOTE]
 >Si purga una clave se eliminará permanentemente, lo que significa que no se podrá recuperar de nuevo.
 
-Hola **recuperar** y **purgar** las acciones tienen sus propios permisos asociados en una directiva de acceso del almacén de claves. Para una tooexecute de capaz de toobe principal de usuario o servicio un **recuperar** o **purgar** acción que deben tener permiso respectivos Hola para ese objeto (clave o el secreto) en directiva de acceso del almacén de claves de Hola. De forma predeterminada, Hola **purgar** permiso no se agrega la directiva de acceso del almacén de tooa claves cuando contextual 'all' hello es toogrant usado todos los datos de usuario de tooa de permisos. Debe conceder el permiso de **purga** de forma explícita. Por ejemplo, Hola después concede comando user@contoso.com tooperform permiso varias operaciones de claves de *ContosoVault* incluidos **purgar**.
+Las acciones de **recuperación** y **purga** tienen sus propios permisos asociados en una directiva de acceso del almacén de claves. Para que un usuario o una entidad de servicio puedan ejecutar una acción de **recuperación** o **purga** deben tener el permiso correspondiente para ese objeto (clave o secreto) en la directiva de acceso del almacén de claves. De forma predeterminada, el permiso de **purga** no se agrega a la directiva de acceso del almacén de claves cuando se usa el acceso directo "all" para conceder todos los permisos a un usuario. Debe conceder el permiso de **purga** de forma explícita. Por ejemplo, el siguiente comando concede el permiso user@contoso.com para realizar varias operaciones en las claves de *ContosoVault* incluidas las operaciones de **purga**.
 
 #### <a name="set-a-key-vault-access-policy"></a>Establecimiento de una directiva de acceso del almacén de claves
 
@@ -193,7 +193,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName ContosoVault -UserPrincipalName user@
 
 #### <a name="secrets"></a>Secretos
 
-Al igual que con las claves, se trabaja con los secretos de un almacén de claves con sus propios comandos. Después, son comandos de Hola para eliminar, enumerar, recuperación y purga de secretos.
+Al igual que con las claves, se trabaja con los secretos de un almacén de claves con sus propios comandos. A continuación, se muestran los comandos para eliminar, enumerar, recuperar y purgar secretos.
 
 - Elimine un secreto llamado SQLPassword: 
 ```powershell
@@ -205,7 +205,7 @@ Remove-AzureKeyVaultSecret -VaultName ContosoVault -name SQLPassword
 Get-AzureKeyVaultSecret -VaultName ContosoVault -InRemovedState
 ```
 
-- Recuperar un secreto en estado de hello eliminado: 
+- Recupere un secreto en el estado eliminado: 
 ```powershell
 Undo-AzureKeyVaultSecretRemoval -VaultName ContosoVault -Name SQLPAssword
 ```
@@ -222,10 +222,10 @@ Remove-AzureKeyVaultSecret -VaultName ContosoVault -InRemovedState -name SQLPass
 
 ### <a name="key-vault-objects"></a>Objetos de almacén de claves
 
-Si purga una clave, un secreto o un certificado se eliminarán permanentemente, lo que significa que no se podrán recuperar de nuevo. almacén de claves de Hola que contenía Hola Eliminar objeto sin embargo permanecerán intacto así como todos los demás objetos de almacén de claves de Hola. 
+Si purga una clave, un secreto o un certificado se eliminarán permanentemente, lo que significa que no se podrán recuperar de nuevo. No obstante, el almacén de claves que contenía el objeto eliminado permanecerá intacto al igual que el resto de objetos del almacén. 
 
 ### <a name="key-vaults-as-containers"></a>Almacenes de claves como contenedores
-Cuando se purga un almacén de claves, todo su contenido, incluidas las claves, los secretos y los certificados, se eliminan permanentemente. toopurge un almacén de claves, use hello `Remove-AzureRmKeyVault` comando con la opción de hello `-InRemovedState` y especificando la ubicación de Hola de almacén de claves de hello eliminado con hello `-Location location` argumento. Puede encontrar la ubicación Hola de un almacén eliminado mediante el comando hello `Get-AzureRmKeyVault -InRemovedState`.
+Cuando se purga un almacén de claves, todo su contenido, incluidas las claves, los secretos y los certificados, se eliminan permanentemente. Para purgar un almacén de claves, use el comando `Remove-AzureRmKeyVault` con la opción `-InRemovedState` especificando la ubicación del almacén de claves eliminado con el argumento `-Location location`. Puede encontrar la ubicación de un almacén eliminado mediante el comando `Get-AzureRmKeyVault -InRemovedState`.
 
 ```powershell
 Remove-AzureRmKeyVault -VaultName ContosoVault -InRemovedState -Location westus
@@ -235,13 +235,13 @@ Remove-AzureRmKeyVault -VaultName ContosoVault -InRemovedState -Location westus
 >Si purga un almacén de claves se eliminará permanentemente, lo que significa que no se podrá recuperar de nuevo.
 
 ### <a name="purge-permissions-required"></a>Se requieren permisos de purga
-- toopurge un almacén de claves eliminado, tal que el almacén de Hola y todo su contenido se quita de forma permanente, Hola usuario necesita RBAC permiso tooperform una *Microsoft.KeyVault/locations/deletedVaults/purge/action* operación. 
-- clave de hello eliminado de toolist, almacén Hola un usuario tiene RBAC permiso tooperform *Microsoft.KeyVault/deletedVaults/read* permiso. 
+- Para purgar un almacén de claves eliminado, de forma que el almacén y todo su contenido se quite de forma permanente, el usuario necesita el permiso de RBAC para realizar una operación *Microsoft.KeyVault/locations/deletedVaults/purge/action*. 
+- Para que se muestre el almacén de claves eliminado, el usuario necesita el permiso de RBAC para realizar una operación *Microsoft.KeyVault/deletedVaults/read*. 
 - Solo un administrador de suscripción tiene estos permisos. 
 
 ### <a name="scheduled-purge"></a>Purga programada
 
-Enumerar los objetos de almacén de claves eliminadas muestra cuándo son toobe schedled purgado por el almacén de claves. Hola *programada fecha purgar* campo indica cuando un objeto de almacén de claves se eliminará permanentemente, si se realiza ninguna acción. De forma predeterminada, el período de retención de Hola para un objeto de almacén de claves eliminadas es 90 días.
+La enumeración de los objetos de almacén de claves eliminados muestra cuándo se han programado para que Key Vault efectúe la purga. El campo *Scheduled Purge Date* (Fecha de purga programada) indica cuándo se eliminará permanentemente un objeto de almacén de claves si no se realiza ninguna acción en ese almacén. De forma predeterminada, el período de retención para un objeto de almacén de claves eliminado es de 90 días.
 
 >[!NOTE]
 >Un objeto de almacén purgado, desencadenado por el valor de su campo de *fecha de purga programada*, se eliminará permanentemente. No se podrá volver a recuperar.

@@ -1,5 +1,5 @@
 ---
-title: aaaTroubleshoot Application Insights en un proyecto web de Java
+title: "Solución de problemas de Application Insights en un proyecto web de Java"
 description: "Guía de solución de problemas: supervisión de aplicaciones activas Java con Application Insights."
 services: application-insights
 documentationcenter: java
@@ -13,47 +13,47 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
 ms.author: bwren
-ms.openlocfilehash: c274c01b1992971fae194c3e510512ca06ab76b1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ce46a4f561a273dc340b090a5bf0c8932a308722
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Solución de problemas y preguntas y respuestas sobre Application Insights para Java
 Preguntas o problemas relacionados con [Azure Application Insights en Java][java]. a continuación se incluyen algunas sugerencias.
 
 ## <a name="build-errors"></a>Errores de compilación
-**En Eclipse, cuando Agregar Hola Application Insights SDK a través de Maven o Gradle, puede obtener errores de validación de suma de comprobación o de compilación.**
+**En Eclipse, al agregar el SDK de Application Insights a través de Maven o Gradle, obtengo errores de compilación o de validación de la suma de comprobación.**
 
-* Si Hola dependencia <version> elemento está usando un patrón con caracteres comodín (por ejemplo, (Maven) `<version>[1.0,)</version>` o (Gradle) `version:'1.0.+'`), pruebe a especificar una versión específica en su lugar como `1.0.2`. Vea hello [notas de la versión](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) para la versión más reciente de Hola.
+* Si el elemento de dependencia <version> usa un patrón con caracteres comodín (por ejemplo, (Maven) `<version>[1.0,)</version>` o (Gradle) `version:'1.0.+'`), pruebe a especificar una versión concreta en lugar de `1.0.2`. Consulte la [notas de la versión](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) para la versión más reciente.
 
 ## <a name="no-data"></a>No aparecen datos
-**He agregado Application Insights correctamente y se ejecutó la aplicación, pero nunca he visto datos en el portal de Hola.**
+**He agregado Application Insights correctamente y he ejecutado mi aplicación, pero no aparecen datos en el portal.**
 
-* Espere un minuto y haga clic en Actualizar, gráficos de Hello actualización por sí mismas periódicamente, pero también puede actualizar manualmente. intervalo de actualización de Hello depende del intervalo de tiempo de hello del gráfico de Hola.
-* Compruebe que tiene una clave de instrumentación definida en hello ApplicationInsights.xml archivo (en la carpeta de recursos de hello en el proyecto)
-* Compruebe que no hay ningún `<DisableTelemetry>true</DisableTelemetry>` nodo en el archivo xml de hello.
-* En el firewall, es posible que tenga tooopen los puertos TCP 80 y 443 para toodc.services.visualstudio.com de tráfico saliente. Vea hello [lista completa de las excepciones del firewall](app-insights-ip-addresses.md)
-* En Microsoft Azure Hola iniciar panel, examine mapa de estado del servicio de Hola. Si hay alguna alerta indicaciones, espere hasta que hayan devuelto tooOK y, a continuación, cierre y vuelva a abrir la hoja de la aplicación Application Insights.
-* Activar el registro toohello la ventana de consola del IDE, mediante la adición de un `<SDKLogger />` elemento bajo el nodo de raíz de hello en el archivo de hello ApplicationInsights.xml (en la carpeta de recursos de hello en el proyecto) y busque las entradas que se prologa con [Error].
-* Asegúrese de que ese Hola correcto ApplicationInsights.xml archivo se ha cargado correctamente por hello SDK de Java, examinando los mensajes de salida de la consola de Hola para una instrucción "archivo de configuración se encontró correctamente".
-* Si no se encuentra el archivo de configuración de hello, compruebe toosee de mensajes de salida de hello donde se busca el archivo de configuración de Hola y asegúrese de que ese hello que applicationinsights.XML se encuentra en una de esas ubicaciones de búsqueda. Como regla general, puede colocar el archivo de configuración de hello cerca Hola aplicación visión SDK JAR. Por ejemplo: en Tomcat, esto significaría Hola carpeta WEB-INF/lib.
+* Espere un minuto y haga clic en Actualizar, Los gráficos se actualizan automáticamente de forma periódica, pero puede actualizarlos manualmente. El intervalo de actualización depende del intervalo de tiempo del gráfico.
+* Compruebe que tiene una clave de instrumentación definida en el archivo ApplicationInsights.xml (en la carpeta de recursos del proyecto).
+* Compruebe que no haya ningún nodo `<DisableTelemetry>true</DisableTelemetry>` en el archivo xml.
+* En el firewall, es posible que tenga que abrir los puertos TCP 80 y 443 para el tráfico saliente en dc.services.visualstudio.com. Consulte la [lista completa de excepciones del firewall](app-insights-ip-addresses.md)
+* En el panel de inicio de Microsoft Azure, observe el mapa de estado del servicio. Si hay algunas indicaciones de alerta, espere hasta que hayan vuelto a su estado correcto y después cierre y vuelva a abrir el cuadro de la aplicación de Application Insights.
+* Active el inicio de sesión en la ventana de la consola del IDE. Para ello, agregue un elemento `<SDKLogger />` bajo el nodo raíz en el archivo ApplicationInsights.xml (en la carpeta de recursos del proyecto) y compruebe si hay entradas precedidas por la indicación [Error].
+* Asegúrese de que se ha cargado correctamente el archivo ApplicationInsights.xml apropiado por parte del SDK de Java, examinando para ello los mensajes de salida de la consola para ver si hay una instrucción que haga referencia a que "el archivo de configuración se ha encontrado correctamente".
+* Si no se encuentra el archivo de configuración, compruebe los mensajes de salida para ver dónde se busca el archivo de configuración, y asegúrese de que ApplicationInsights.xml se encuentra en una de las ubicaciones de búsqueda. Como regla general, puede colocar el archivo de configuración cerca de los JAR de SDK de Application Insights. Por ejemplo: en Tomcat, esto significaría la carpeta WEB-INF/lib.
 
-#### <a name="i-used-toosee-data-but-it-has-stopped"></a>He usado toosee datos, pero se ha detenido
-* Comprobar hello [estado blog](http://blogs.msdn.com/b/applicationinsights-status/).
-* ¿Ha alcanzado su cuota mensual de puntos de datos? Abra Configuración/cuotas y precios toofind out. Si es así, puede actualizar el plan o pagar para obtener capacidad adicional. Vea hello [precios esquema](https://azure.microsoft.com/pricing/details/application-insights/).
+#### <a name="i-used-to-see-data-but-it-has-stopped"></a>Solía ver datos, pero ya no sucede esto.
+* Compruebe el [blog de estado](http://blogs.msdn.com/b/applicationinsights-status/).
+* ¿Ha alcanzado su cuota mensual de puntos de datos? Abra Configuración/Cuotas y Precios para averiguarlo. Si es así, puede actualizar el plan o pagar para obtener capacidad adicional. Consulte el [esquema de precios](https://azure.microsoft.com/pricing/details/application-insights/).
 
-#### <a name="i-dont-see-all-hello-data-im-expecting"></a>No veo todos los datos de hello que estoy esperando
-* Abra hello las cuotas y precios hoja y compruebe si [muestreo](app-insights-sampling.md) está en funcionamiento. (transmisión de 100% significa que muestreo no está en funcionamiento). Hola servicio Application Insights puede ser conjunto tooaccept sólo una fracción de telemetría de Hola que llega desde la aplicación. Esto le ayuda a mantenerse en su cuota mensual de telemetría. 
+#### <a name="i-dont-see-all-the-data-im-expecting"></a>No veo todos los datos que esperaba
+* Abra la hoja Quotas and Pricing (Cuotas y precios) y compruebe si el [muestreo](app-insights-sampling.md) está en funcionamiento. (La transmisión al 100 % significa que el muestreo no está en funcionamiento). El servicio Application Insights se puede configurar para que acepte únicamente una fracción de la telemetría procedente de la aplicación. Esto le ayuda a mantenerse en su cuota mensual de telemetría. 
 
 ## <a name="no-usage-data"></a>No aparecen datos de uso
 **Veo datos sobre solicitudes y tiempos de respuesta, pero no de vista de página, del explorador o de datos de usuarios.**
 
-Ha configurado correctamente la la telemetría de toosend de aplicación desde el servidor de Hola. Ahora el siguiente paso es demasiado[configurar la telemetría de toosend de páginas web desde el Explorador de web de hello][usage].
+La aplicación se ha configurado correctamente para enviar datos de telemetría desde el servidor. El paso siguiente consiste en [configurar las páginas web para enviar datos de telemetría desde el explorador web][usage].
 
 Como alternativa, si el cliente es una aplicación de [teléfono o de cualquier otro dispositivo][platforms], puede enviar datos de telemetría desde este. 
 
-Use Hola mismo tooset clave de instrumentación la telemetría de su cliente y el servidor. datos de Hello aparecerán en Hola mismo recurso de Application Insights y podrá toocorrelate capaz de eventos de cliente y servidor.
+Use la misma clave de instrumentación para configurar la telemetría tanto de cliente como de servidor. Los datos aparecerán en el mismo recurso de Application Insights y podrá correlacionar eventos de cliente y servidor.
 
 
 ## <a name="disabling-telemetry"></a>Deshabilitación de la telemetría
@@ -69,29 +69,29 @@ En el código:
 
 **O** 
 
-Actualizar ApplicationInsights.xml (en la carpeta de recursos de hello en el proyecto). Agregue los siguiente hello en el nodo raíz de hello:
+Actualice ApplicationInsights.xml (en la carpeta de recursos del proyecto). Agregue lo siguiente bajo el nodo raíz:
 
 ```XML
 
     <DisableTelemetry>true</DisableTelemetry>
 ```
 
-Mediante el método XML de hello, tendrá que aplicación de hello toorestart cuando se cambia el valor de Hola.
+Si usa el método XML, debe reiniciar la aplicación al cambiar el valor.
 
-## <a name="changing-hello-target"></a>Cambiar el destino de Hola
+## <a name="changing-the-target"></a>Cambio de destino
 **¿Cómo puedo cambiar el recurso de Azure al que mi proyecto envía datos?**
 
-* [Obtener clave de instrumentación de Hola de nuevo recurso de Hola.][java]
-* Si agrega el proyecto de tooyour de Application Insights mediante hello Azure Toolkit for Eclipse, haga clic con el proyecto web, seleccione **Azure**, **configurar Application Insights**y cambiar la clave de Hola.
-* En caso contrario, actualizar la clave de Hola de ApplicationInsights.xml en la carpeta de recursos de hello en el proyecto.
+* [Obtenga la clave de instrumentación del nuevo recurso.][java]
+* Si ha agregado Application Insights al proyecto mediante el kit de herramientas de Azure para Eclipse, haga clic con el botón derecho en el proyecto web, seleccione **Azure**, **Configurar Application Insights** y cambie la clave.
+* De lo contrario, actualice la clave en ApplicationInsights.xml en la carpeta de recursos del proyecto.
 
-## <a name="debug-data-from-hello-sdk"></a>Depurar datos de hello SDK
+## <a name="debug-data-from-the-sdk"></a>Depuración de datos del SDK
 
-**¿Cómo puedo averiguar qué Hola SDK está haciendo?**
+**¿Cómo puedo averiguar lo que está haciendo el SDK?**
 
-Para obtener más información acerca de lo que ocurre en hello API, agregar a tooget `<SDKLogger/>` en el nodo raíz de Hola Hola ApplicationInsights.xml del archivo de configuración.
+Para más información sobre lo que sucede en la API, agregue `<SDKLogger/>` bajo el nodo raíz del archivo de configuración ApplicationInsights.xml.
 
-También puede indicar al archivo de hello registrador toooutput tooa:
+También puede indicar al registrador que lo envíe a un archivo:
 
 ```XML
 
@@ -101,27 +101,27 @@ También puede indicar al archivo de hello registrador toooutput tooa:
     </SDKLogger>
 ```
 
-Hola archivos pueden encontrarse en `%temp%\javasdklogs` o `java.io.tmpdir` en el caso de servidor de Tomcat.
+Los archivos se pueden encontrar en `%temp%\javasdklogs` o `java.io.tmpdir` en el caso del servidor de Tomcat.
 
 
-## <a name="hello-azure-start-screen"></a>pantalla de inicio de Azure de bienvenida
-**Estoy observando [Hola portal de Azure](https://portal.azure.com). ¿Mapa Hola decirme algo acerca de mi aplicación?**
+## <a name="the-azure-start-screen"></a>Pantalla de inicio de Azure
+**Estoy mirando el [portal de Azure](https://portal.azure.com). ¿El mapa indica algo sobre mi aplicación?**
 
-No, muestra el estado de Hola de servidores Azure alrededor de Hola a todos.
+No, este muestra el estado de los servidores de Azure en todo el mundo.
 
-*En panel de inicio de Azure de hello (pantalla principal), ¿cómo busco datos acerca de mi aplicación?*
+*¿Cómo puedo encontrar datos sobre mi aplicación desde el panel de inicio de Azure (pantalla principal)?*
 
-Suponiendo que [configurar su aplicación para Application Insights][java], haga clic en Examinar, seleccione Application Insights y seleccionar recurso de aplicación Hola que creó para la aplicación. tooget existe con mayor rapidez en el futuro, puede anclar el panel de inicio de toohello de aplicación.
+Suponiendo que haya [configurado la aplicación para Application Insights][java], haga clic en Examinar, seleccione Application Insights y, después, elija el recurso de aplicación que haya creado para su aplicación. Para mayor brevedad en un futuro, puede anclar la aplicación al panel de inicio.
 
 ## <a name="intranet-servers"></a>Servidores de intranet
 **¿Puedo supervisar un servidor de mi intranet?**
 
-Sí, siempre que el servidor puede enviar el portal de Application Insights toohello de telemetría a través de Hola internet pública. 
+Sí, siempre que dicho servidor pueda enviar datos de telemetría al portal de Application Insights a través de una conexión pública a Internet. 
 
-En el firewall, es posible que tenga tooopen los puertos TCP 80 y 443 para toodc.services.visualstudio.com de tráfico saliente y f5.services.visualstudio.com.
+En el firewall, tendrá que abrir los puertos TCP 80 y 443 para el tráfico saliente en dc.services.visualstudio.com y f5.services.visualstudio.com.
 
 ## <a name="data-retention"></a>Retención de datos
-**¿Cuánto tiempo se retienen los datos en el portal de hello? ¿Es seguro?**
+**¿Cuánto tiempo se retienen los datos en el portal? ¿Es seguro?**
 
 Consulte [Privacidad y retención de los datos][data].
 
@@ -131,7 +131,7 @@ Consulte [Privacidad y retención de los datos][data].
 * [Supervisar la disponibilidad de sus páginas web][availability]
 * [Supervisar el uso de páginas web][usage]
 * [Realizar el seguimiento del uso y diagnosticar los problemas en las aplicaciones de su dispositivo][platforms]
-* [Escribir un uso tootrack de código de la aplicación][track]
+* [Escribir código para realizar un seguimiento del uso de la aplicación][track]
 * [Captura de registros de diagnóstico][javalogs]
 
 ## <a name="get-help"></a>Obtener ayuda

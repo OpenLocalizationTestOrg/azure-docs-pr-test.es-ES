@@ -1,6 +1,6 @@
 ---
-title: aaaManage DNS registrar conjuntos y los registros con DNS de Azure | Documentos de Microsoft
-description: DNS de Azure proporciona registro DNS de hello capacidad toomanage establece y registra al hospedar el dominio.
+title: "Administración del conjunto de registros de DNS y registros con Azure DNS | Microsoft Docs"
+description: Azure DNS proporciona la funcionalidad de administrar registros y conjuntos de registros de DNS al hospedar un dominio.
 services: dns
 documentationcenter: na
 author: georgewallace
@@ -15,90 +15,90 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
-ms.openlocfilehash: 2e62d017341589eaf8d1f8df2fe5db4b973381d1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 001b80ccba43beab44f6a598f820df65a85a345f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="manage-dns-records-and-record-sets-by-using-hello-azure-portal"></a>Administrar registros DNS y los conjuntos de registros mediante Hola portal de Azure
+# <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Administración de registros y conjuntos de registros DNS mediante el Portal de Azure
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](dns-operations-recordsets-portal.md)
+> * [Portal de Azure](dns-operations-recordsets-portal.md)
 > * [CLI de Azure 1.0](dns-operations-recordsets-cli-nodejs.md)
 > * [CLI de Azure 2.0](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
-Este artículo muestra cómo toomanage conjuntos de registros y los registros para la zona DNS mediante el uso de Hola portal de Azure.
+En este artículo se explica cómo administrar conjuntos de registros y registros para la zona DNS mediante el Portal de Azure.
 
-Es importante toounderstand Hola diferencia entre los conjuntos de registros de DNS y los registros DNS individuales. Un conjunto de registros es una colección de registros de una zona que tengan Hola mismo nombre y están Hola mismo tipo. Para obtener más información, consulte [Hola a conjuntos de registros de DNS de crear y registros mediante el portal de Azure](dns-getstarted-create-recordset-portal.md).
+Es importante comprender la diferencia entre los conjuntos de registros de DNS y los registros DNS individuales. Un conjunto de registros es una colección de registros de una zona con el mismo nombre y el mismo tipo. Para más información, consulte [Creación de registros y conjuntos de registros de DNS mediante el Portal de Azure](dns-getstarted-create-recordset-portal.md).
 
 ## <a name="create-a-new-record-set-and-record"></a>Creación de un nuevo conjunto de registros y un registro
 
-toocreate un conjunto de registros de hello portal de Azure, consulte [Hola de registros DNS crear mediante el portal de Azure](dns-getstarted-create-recordset-portal.md).
+Para crear un conjunto de registros en el Portal de Azure, consulte [Creación de registros y conjuntos de registros de DNS mediante el Portal de Azure](dns-getstarted-create-recordset-portal.md).
 
 ## <a name="view-a-record-set"></a>Visualización de un conjunto de registros
 
-1. Hola portal de Azure, vaya toohello **zona DNS** hoja.
-2. Busque el conjunto de registros de Hola y selecciónelo. Se abren propiedades de conjunto de registros de Hola.
+1. En el Portal de Azure, vaya a la hoja **Zona DNS** .
+2. Busque el conjunto de registros y selecciónelo. De este modo se abrirán las propiedades del conjunto de registros.
 
     ![Buscar un conjunto de registros](./media/dns-operations-recordsets-portal/searchset500.png)
 
-## <a name="add-a-new-record-tooa-record-set"></a>Agregar un nuevo conjunto de registros de registros tooa
+## <a name="add-a-new-record-to-a-record-set"></a>Incorporación de un nuevo registro a un conjunto de registros
 
-Puede agregar una conjunto de registros too20 registros tooany. Un conjunto de registros no puede contener dos registros idénticos. Conjuntos de registros vacíos (con cero registros) se pueden crear, pero no aparecen en los servidores de nombres DNS de Azure Hola. Los conjuntos de registros de tipo CNAME pueden contener, como máximo, un registro.
+Puede agregar hasta 20 registros a cualquier conjunto de registros. Un conjunto de registros no puede contener dos registros idénticos. Se pueden crear conjuntos de registros vacíos (sin ningún registro), pero no aparecen en los servidores de nombres DNS de Azure. Los conjuntos de registros de tipo CNAME pueden contener, como máximo, un registro.
 
-1. En hello **propiedades de conjunto de registros** hoja para la zona DNS, haga clic en el registro de hello establecer que desea tooadd un registro a.
+1. En la hoja **Record set properties** (Propiedades del conjunto de registros) de la zona DNS, haga clic en el conjunto de registros al que desea agregar un registro.
 
     ![Seleccionar un conjunto de registros](./media/dns-operations-recordsets-portal/selectset500.png)
 
-2. Especificar propiedades de conjunto de registros de hello rellenando los campos de Hola.
+2. Especifique las propiedades del conjunto de registros rellenando los campos.
 
     ![Incorporación de un registro](./media/dns-operations-recordsets-portal/addrecord500.png)
 
-3. Haga clic en **guardar** en Hola parte superior de hello hoja toosave su configuración. A continuación, cierre la hoja de Hola.
-4. En la esquina de hello, verá que está guardando el registro de hello.
+3. Haga clic en **Guardar** en la parte superior de la hoja para guardar la configuración. A continuación, cierre la hoja.
+4. En la esquina, verá que el registro se está guardando.
 
     ![Guardar el conjunto de registros](./media/dns-operations-recordsets-portal/saving150.png)
 
-Una vez guardado el registro de hello, Hola valores en hello **zona DNS** hoja reflejará el nuevo registro de hello.
+Una vez que se ha guardado el registro, los valores de la hoja **Zona DNS** reflejarán el nuevo registro.
 
 ## <a name="update-a-record"></a>Actualización de un registro
 
-Cuando se actualiza un registro en un conjunto de registros existente, campos de hello que puede actualizar dependen de tipo de Hola de registro que está trabajando.
+Cuando se actualiza un registro en un conjunto de registros existente, los campos que puede actualizar dependen del tipo de registro con el que está trabajando.
 
-1. En hello **propiedades de conjunto de registros** hoja para el conjunto de registros, busque el registro de hello.
-2. Modifique el registro de hello. Cuando se modifica un registro, puede cambiar opciones de configuración disponibles de hello para el registro de hello. En el siguiente ejemplo de Hola Hola **dirección IP** campo está seleccionado, y dirección IP de hello está en proceso de Hola de que se está modificando.
+1. En la hoja **Record set properties** (Propiedades del conjunto de registros) correspondiente al conjunto de registros, busque el registro.
+2. Modifique el registro. Cuando se modifica un registro, puede cambiar la configuración disponible para dicho registro. En el ejemplo siguiente, se hizo clic en el campo **Dirección IP** y la dirección IP se encuentra en proceso de modificación.
 
     ![Modificar un registro](./media/dns-operations-recordsets-portal/modifyrecord500.png)
 
-3. Haga clic en **guardar** en Hola parte superior de hello hoja toosave su configuración. En hello esquina superior derecha, verá una notificación de Hola que se ha guardado el registro de hello.
+3. Haga clic en **Guardar** en la parte superior de la hoja para guardar la configuración. En la esquina superior derecha verá la notificación de que el registro se ha guardado.
 
     ![Agregar conjunto de registros](./media/dns-operations-recordsets-portal/saved150.png)
 
-Una vez guardado el registro de hello, los valores de hello para el registro de hello establecidos en hello **zona DNS** hoja reflejará el registro de hello actualizado.
+Una vez que se ha guardado el registro, los valores del conjunto de registros de la **Hoja DNS** reflejarán el registro actualizado.
 
 ## <a name="remove-a-record-from-a-record-set"></a>Eliminación de un registro de un conjunto de registros
 
-Puede usar registros de hello Azure tooremove portal desde un conjunto de registros. Tenga en cuenta que al quitar el último registro de hello desde un conjunto de registros, no se eliminan conjunto de registros de Hola.
+Puede usar el Portal de Azure para quitar registros de un conjunto de registros. Tenga en cuenta que al eliminar el último registro de un conjunto de registros no se elimina el conjunto de registros.
 
-1. En hello **propiedades de conjunto de registros** hoja para el conjunto de registros, busque el registro de hello.
-2. Haga clic en registro de hello que desea tooremove. A continuación, seleccione **Quitar**.
+1. En la hoja **Record set properties** (Propiedades del conjunto de registros) correspondiente al conjunto de registros, busque el registro.
+2. Haga clic en el registro que desea quitar. A continuación, seleccione **Quitar**.
 
     ![Quitar un registro](./media/dns-operations-recordsets-portal/removerecord500.png)
 
-3. Haga clic en **guardar** en Hola parte superior de hello hoja toosave su configuración.
-4. Después de quitar el registro de hello, Hola valores de registro de hello en hello **zona DNS** hoja reflejará la eliminación de Hola.
+3. Haga clic en **Guardar** en la parte superior de la hoja para guardar la configuración.
+4. Una vez quitado el registro, los valores del registro de la hoja **Zona DNS** reflejarán la eliminación.
 
 ## <a name="delete"></a>Eliminación de un conjunto de registros
 
-1. En hello **propiedades de conjunto de registros** hoja para el conjunto de registros, haga clic en **eliminar**.
+1. En la hoja **Record set properties** (Propiedades del conjunto de registros) correspondiente al conjunto de registros, haga clic en **Eliminar**.
 
     ![Eliminación de un conjunto de registros](./media/dns-operations-recordsets-portal/deleterecordset500.png)
 
-2. Aparecerá un mensaje preguntando si desea que el conjunto de registros toodelete Hola.
-3. Compruebe que el registro de hello de coincidencias de nombres Hola establecido que desee toodelete y, a continuación, haga clic en **Sí**.
-4. En hello **zona DNS** hoja, compruebe que el conjunto de registros de hello ya no está visible.
+2. Aparece un mensaje en el que se pregunta si desea eliminar el conjunto de registros.
+3. Compruebe que el nombre coincide con el conjunto de registros que desea eliminar y después haga clic en **Sí**.
+4. En la hoja de **Zona DNS** , compruebe que el conjunto de registros ya no está visible.
 
 ## <a name="work-with-ns-and-soa-records"></a>Trabajo con registros NS y SOA
 
@@ -106,22 +106,22 @@ Los registros NS y SOA creados automáticamente se administran de forma diferent
 
 ### <a name="modify-soa-records"></a>Modificación de registros SOA
 
-No se puede agregar o quitar registros de hello creado automáticamente el registro SOA establecido en vértice de la zona de hello (nombre = "@"). Sin embargo, puede modificar cualquiera de los parámetros de hello en hello registro SOA (excepto el "Host") y registro de hello establecer TTL.
+No puede agregar ni eliminar registros del conjunto de registros SOA creado automáticamente en el vértice de zona (nombre = "@"). Sin embargo, puede modificar cualquiera de los parámetros del registro SOA (excepto "Host") y del conjunto de registros TTL.
 
-### <a name="modify-ns-records-at-hello-zone-apex"></a>Modificar los registros NS en vértice de la zona de Hola
+### <a name="modify-ns-records-at-the-zone-apex"></a>Modificación de los registros NS en el vértice de zona
 
-registro de NS de Hello establecido en vértice de la zona de Hola se crea automáticamente con cada zona DNS. Contiene los nombres de Hola de zona de hello Azure DNS nombre servidores toohello asignado.
+El conjunto de registros NS en el vértice de zona se crea automáticamente con cada zona DNS. Este conjunto de registros contiene los nombres de los servidores de nombres de Azure DNS asignados a la zona.
 
-Puede agregar nombre adicionales servidores toothis NS conjunto de registros, toosupport alojar conjuntamente dominios con más de un proveedor DNS. También puede modificar Hola TTL y los metadatos para este conjunto de registros. Sin embargo, no se puede quitar o modificar servidores de nombres DNS de Azure previamente rellenados Hola.
+Puede agregar más servidores de nombres a este conjunto de registros NS, para admitir dominios de hospedaje conjunto con más de un proveedor DNS. También puede modificar el TTL y los metadatos de este conjunto de registros. Sin embargo, no puede quitar ni modificar los servidores de nombres de Azure DNS rellenados previamente.
 
-Tenga en cuenta que esto se aplica solo toohello NS conjunto de registros en vértice de la zona de Hola. Otros conjuntos de registros NS en su zona (como las zonas secundarias de toodelegate usado) pueden modificarse sin restricción.
+Tenga en cuenta que esto solo se aplica al conjunto de registros NS en el vértice de zona. Otros conjuntos de registros NS de su zona (como los que se usan para delegar zonas secundarias) se pueden modificar sin restricciones.
 
 ### <a name="delete-soa-or-ns-record-sets"></a>Eliminación de conjuntos de registros SOA o NS
 
-No se puede eliminar Hola SOA y NS conjuntos de registros en vértice de la zona de hello (nombre = "@") que se crean automáticamente cuando se crea la zona de Hola. Se eliminan automáticamente cuando se elimina la zona de Hola.
+No puede eliminar conjuntos de registros SOA ni NS en el vértice de zona (nombre = @) que se crean automáticamente cuando se crea la zona. Se eliminan automáticamente al eliminar la zona.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* Para obtener más información acerca de DNS de Azure, vea hello [Introducción a DNS de Azure](dns-overview.md).
-* Para obtener más información acerca de la automatización de DNS, consulte [zonas DNS de creación y conjuntos de registros mediante Hola .NET SDK](dns-sdk.md).
+* Para más información acerca de DNS de Azure, consulte la [Introducción a DNS de Azure](dns-overview.md).
+* Para más información acerca de la automatización de DNS, consulte [Creación de conjuntos de registros y zonas DNS con el SDK de .NET](dns-sdk.md).
 * Para más información acerca de los registros de DNS inversos, consulte [Introducción a DNS inverso y compatibilidad en Azure](dns-reverse-dns-overview.md).

@@ -1,6 +1,6 @@
 ---
-title: equipo de tooyour de activos de servicios multimedia aaaDownload - Azure | Documentos de Microsoft
-description: "Obtenga información sobre el equipo de tooyour de toodownload activos. Ejemplos de código están escritos en C# y usar hello SDK de servicios multimedia para. NET."
+title: Descarga de recursos de Media Services en el equipo - Azure | Microsoft Docs
+description: "Aprenda a descargar recursos en el equipo. Los ejemplos de código están escritos en C# y utilizan el SDK de Servicios multimedia para .NET."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.openlocfilehash: 6c6e764720caa59d8371178a2682700345f7bc57
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d8e740e969f68c85842f42c109328423da1b4414
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="how-to-deliver-an-asset-by-download"></a>Entrega de un recurso mediante descarga
-Este tema describe las opciones de entrega de activos multimedia había cargado tooMedia servicios. Puede entregar contenido de los Servicios multimedia en diversos escenarios de aplicaciones. Puede descargar recursos multimedia o tener acceso a ellos mediante un localizador. Puede enviar la aplicación de tooanother contenido multimedia o el proveedor de contenido de tooanother. Para mejorar el rendimiento y la escalabilidad, también puede entregar contenido si utiliza una Red de entrega de contenido (CDN).
+En este tema se analizan las opciones para entregar recursos multimedia cargados en Media Services. Puede entregar contenido de los Servicios multimedia en diversos escenarios de aplicaciones. Puede descargar recursos multimedia o tener acceso a ellos mediante un localizador. Puede enviar contenido multimedia a otra aplicación o a otro proveedor de contenido. Para mejorar el rendimiento y la escalabilidad, también puede entregar contenido si utiliza una Red de entrega de contenido (CDN).
 
-Este ejemplo se muestra cómo los activos de medios de toodownload desde el equipo local de servicios multimedia tooyour. las consultas de código Hola Hola trabajos asociados con la cuenta de servicios multimedia de Hola por Id. de trabajo y tiene acceso a su **OutputMediaAssets** colección (que es el conjunto de Hola de uno o varios recursos de medios de salida que se obtiene al ejecutar un trabajo). Este ejemplo muestra cómo multimedia de salida toodownload activos desde un trabajo, pero pueden aplicar Hola mismo toodownload enfoque otros activos.
+En este ejemplo se muestra cómo descargar recursos multimedia desde los Servicios multimedia en el equipo local. El código consulta los trabajos asociados con la cuenta de Servicios multimedia por identificador de trabajo y tiene acceso a su colección **OutputMediaAssets** (que es el conjunto de uno o más recursos multimedia de salida que resultan de la ejecución de un trabajo). Este ejemplo muestra cómo descargar recursos multimedia de salida desde un trabajo, pero puede aplicar el mismo enfoque para descargar otros recursos.
 
 >[!NOTE]
->Hay un límite de 1 000 000 directivas para diferentes directivas de AMS (por ejemplo, para la directiva de localizador o ContentKeyAuthorizationPolicy). Debe usar hello mismo Id. de directiva si utilizas siempre Hola mismo días / acceso permisos, por ejemplo, las directivas para localizadores que son tooremain previsto en su lugar durante mucho tiempo (directivas no carga). Para obtener más información, consulte [este tema](media-services-dotnet-manage-entities.md#limit-access-policies) .
+>Hay un límite de 1 000 000 directivas para diferentes directivas de AMS (por ejemplo, para la directiva de localizador o ContentKeyAuthorizationPolicy). Debe usar el mismo identificador de directiva si siempre usa los mismos permisos de acceso y días, por ejemplo, directivas para localizadores que vayan a aplicarse durante mucho tiempo (directivas distintas a carga). Para obtener más información, consulte [este tema](media-services-dotnet-manage-entities.md#limit-access-policies) .
 
-    // Download hello output asset of hello specified job tooa local folder.
+    // Download the output asset of the specified job to a local folder.
     static IAsset DownloadAssetToLocal( string jobId, string outputFolder)
     {
-        // This method illustrates how toodownload a single asset. 
-        // However, you can iterate through hello OutputAssets
+        // This method illustrates how to download a single asset. 
+        // However, you can iterate through the OutputAssets
         // collection, and download all assets if there are many. 
 
-        // Get a reference toohello job. 
+        // Get a reference to the job. 
         IJob job = GetJob(jobId);
 
-        // Get a reference toohello first output asset. If there were multiple 
+        // Get a reference to the first output asset. If there were multiple 
         // output media assets you could iterate and handle each one.
         IAsset outputAsset = job.OutputMediaAssets[0];
 
-        // Create a SAS locator toodownload hello asset
+        // Create a SAS locator to download the asset
         IAccessPolicy accessPolicy = _context.AccessPolicies.Create("File Download Policy", TimeSpan.FromDays(30), AccessPermissions.Read);
         ILocator locator = _context.Locators.CreateLocator(LocatorType.Sas, outputAsset, accessPolicy);
 
@@ -55,7 +55,7 @@ Este ejemplo se muestra cómo los activos de medios de toodownload desde el equi
         var downloadTasks = new List<Task>();
         foreach (IAssetFile outputFile in outputAsset.AssetFiles)
         {
-            // Use hello following event handler toocheck download progress.
+            // Use the following event handler to check download progress.
             outputFile.DownloadProgressChanged += DownloadProgress;
 
             string localDownloadPath = Path.Combine(outputFolder, outputFile.Name);

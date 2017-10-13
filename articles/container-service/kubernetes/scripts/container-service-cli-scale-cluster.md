@@ -1,5 +1,5 @@
 ---
-title: Ejemplo de secuencia de comandos de CLI - aaaAzure escalar un Cluster ACS | Documentos de Microsoft
+title: "Ejemplo de script de la CLI de Azure: escalado de un clúster de ACS | Microsoft Docs"
 description: "Ejemplo de script de la CLI de Azure: escalado de un clúster de ACS"
 services: container-service
 documentationcenter: 
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: nepeters
-ms.openlocfilehash: 1e07518fc2ca67476d9ef64bb22d75f848a37e43
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 14e9f9d85bc0c1428240f15831632eafe2a0f80e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scale-an-azure-container-service-cluster"></a>Escalado de un clúster de Azure Container Service
 
@@ -38,7 +38,7 @@ az acs scale --resource-group myResourceGroup --name myK8SCluster --new-agent-co
 
 ## <a name="clean-up-deployment"></a>Limpieza de la implementación 
 
-Ejecute hello después el grupo de recursos de comando tooremove hello, la VM y todos ellos relacionados con recursos.
+Ejecute el siguiente comando para quitar el grupo de recursos, la máquina virtual y todos los recursos relacionados.
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -46,7 +46,7 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Este script utiliza Hola después de la implementación de comandos toocreate Hola. Cada elemento de la documentación específica de hello tabla vínculos toocommand.
+Este script usa los siguientes comandos para crear la implementación. Cada elemento de la tabla incluye vínculos a la documentación específica del comando.
 
 | Comando | Notas |
 |---|---|
@@ -54,7 +54,7 @@ Este script utiliza Hola después de la implementación de comandos toocreate Ho
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener más información sobre Hola CLI de Azure, consulte [documentación de Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Para más información sobre la CLI de Azure, consulte la [documentación de la CLI de Azure](https://docs.microsoft.com/cli/azure/overview).
 
-Encontrará más ejemplos de secuencias de comandos de CLI de servicio de contenedor de Azure en hello [documentación del servicio de contenedor de Azure](../cli-samples.md).
+Puede encontrar ejemplos de script adicionales de la CLI de Azure Container Service en la [documentación de Azure Container Service](../cli-samples.md).
 

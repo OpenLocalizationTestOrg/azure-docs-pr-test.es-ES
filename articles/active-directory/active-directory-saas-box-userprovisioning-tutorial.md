@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con Box | Microsoft Docs"
-description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y Box."
+description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y Box."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,106 +13,106 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: jeedes
-ms.openlocfilehash: e92baabb174642c22c99e2a30bc9c71845b3b75f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 9f061f3f5a0a4825854b893150ceccc8951487de
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-configuring-box-for-automatic-user-provisioning"></a>Tutorial: Configuración de Box para aprovisionar automáticamente usuarios
 
-objetivo de Hola de este tutorial es tooshow Hola pasos tooperform en cuadro y Azure AD tooautomatically aprovisionar y eliminación de aprovisionar cuentas de usuario del cuadro de herramientas de Azure AD.
+El objetivo de este tutorial es explicar los pasos que debe realizar en Box y Azure AD para aprovisionar y cancelar automáticamente el aprovisionamiento de cuentas de usuario de Azure AD para Box.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-escenario de Hello descrito en este tutorial se da por supuesto que ya tiene Hola siguientes elementos:
+En la situación descrita en este tutorial se supone que ya cuenta con los elementos siguientes:
 
 *   Un inquilino de Azure Active Directory.
 *   Una suscripción a Box habilitada para el inicio de sesión único.
 *   Una cuenta de usuario de Box con permisos de administrador de equipo.
 
-## <a name="assigning-users-toobox"></a>Asignación de cuadro de herramientas de los usuarios 
+## <a name="assigning-users-to-box"></a>Asignación de usuarios a Box 
 
-Azure Active Directory utiliza un concepto que se denomina toodetermine "asignaciones" que los usuarios deben recibir acceso tooselected aplicaciones. En el contexto de Hola de aprovisionamiento de cuentas de usuario automática, se sincroniza solo los usuarios de Hola y grupos que se han "asignados" tooan aplicación en Azure AD.
+Azure Active Directory usa un concepto que se denomina "asignaciones" para determinar qué usuarios deben recibir acceso a determinadas aplicaciones. En el contexto del aprovisionamiento automático de cuentas de usuario, solo se sincronizarán los usuarios y grupos que se han "asignado" a una aplicación de Azure AD.
 
-Antes de configurar y habilitar el aprovisionamiento del servicio de hello, necesita toodecide qué usuarios o grupos de usuarios de Azure AD representan Hola que necesitan tener acceso a la aplicación de Box tooyour. Una vez decidido, puede asignar estas aplicaciones de cuadro de tooyour de usuarios siguiendo las instrucciones de hello aquí:
+Antes de configurar y habilitar el servicio de aprovisionamiento, debe decidir qué usuarios o grupos de Azure AD representan a los usuarios que necesitan acceso a la aplicación Box. Una vez decidido, puede asignar estos usuarios a la aplicación de Box siguiendo estas instrucciones:
 
-[Asignar un usuario o grupo tooan su aplicación empresarial](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Asignar un usuario o grupo a una aplicación empresarial](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
 ## <a name="assign-users-and-groups"></a>Asignación de usuarios y grupos
-Hola **cuadro > usuarios y grupos** ficha Hola portal de Azure permite toospecify qué usuarios y grupos se debe conceder acceso a cuadro de herramientas. Asignación de un usuario o grupo hace Hola después toooccur cosas:
+La pestaña **Box > Usuarios y grupos** de Azure Portal permite especificar qué usuarios y grupos deben tener acceso a Box. La asignación de un usuario o un grupo hace que ocurra lo siguiente:
 
-* Azure AD permite que el cuadro de herramientas de hello asignado usuario (ya sea mediante la asignación directa o pertenencia al grupo) tooauthenticate. Si no se asigna un usuario, Azure AD no permitir toosign en el cuadro de herramientas y devuelve un error en la página de inicio de sesión de Azure AD de Hola.
-* El icono de una aplicación de cuadro se agrega del usuario toohello [iniciador de la aplicación](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users).
-* Si está habilitado el aprovisionamiento automático, Hola asigna usuarios o grupos se agregan toohello toobe cola aprovisionada automáticamente el aprovisionamiento.
+* Azure AD permite que el usuario asignado (ya sea mediante asignación directa o pertenencia al grupo) se autentique en Box. Si no se asigna un usuario, Azure AD no permitirá que inicie sesión en Box y devolverá un error en la página de inicio de sesión de Azure AD.
+* Se agregará un icono de la aplicación de Box al [iniciador de aplicaciones](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)del usuario.
+* Si está habilitado el aprovisionamiento automático, se agregan a la cola de aprovisionamiento los usuarios o grupos asignados para aprovisionarlos automáticamente.
   
-  * Si solo objetos de usuario configurado toobe aprovisionado, a continuación, todos los usuarios directamente asignados se colocan en cola de aprovisionamiento de Hola y todos los usuarios que son miembros de los grupos asignados se colocan en hello aprovisionamiento de cola. 
-  * Si los objetos de grupo estaban configurado toobe aprovisionado, todos los objetos de grupo asignado son aprovisionado de cuadro de herramientas y todos los usuarios que son miembros de esos grupos. pertenencia a grupos y usuarios de Hola se conserva cuando se escribe el cuadro de herramientas.
+  * Si solo se ha configurado el aprovisionamiento de objetos de usuario, todos los usuarios asignados directamente se colocan en la cola de aprovisionamiento, y todos los usuarios que son miembros de los grupos asignados se colocarán en la cola de aprovisionamiento. 
+  * Si se ha configurado el aprovisionamiento de objetos de grupo, todos los objetos de grupo asignados se aprovisionan en Box, así como todos los usuarios que son miembros de esos grupos. Las pertenencias a grupos y usuarios se conservan una vez que se escriben en Box.
 
-Puede usar hello **atributos > Single Sign-On** ficha tooconfigure qué atributos de usuario (o notificaciones) se presenta cuadro de herramientas durante la autenticación basada en SAML y hello **atributos > aprovisionamiento** pestaña tooconfigure cómo fluyen de atributos de usuario y grupo de cuadro de herramientas de Azure AD durante el aprovisionamiento de las operaciones.
+Puede usar la pestaña **Atributos > Inicio de sesión único** para configurar los atributos de usuario (o notificaciones) que se presentan en Box durante la autenticación basada en SAML, y la pestaña **Atributos > Aprovisionamiento** para configurar la forma en que los atributos de usuario y grupo fluyen de Azure AD a Box durante las operaciones de aprovisionamiento.
 
-### <a name="important-tips-for-assigning-users-toobox"></a>Sugerencias importantes para la asignación de cuadro de herramientas de los usuarios 
+### <a name="important-tips-for-assigning-users-to-box"></a>Sugerencias importantes para asignar usuarios a Box 
 
-*   Se recomienda que un anuncio de Azure solo configuración de aprovisionamiento de usuario asignado cuadro de herramientas tootest Hola. Más tarde, se pueden asignar otros usuarios o grupos.
+*   Se recomienda asignar un solo usuario de Azure AD a Box para probar la configuración de aprovisionamiento. Más tarde, se pueden asignar otros usuarios o grupos.
 
-*   Al asignar un cuadro de herramientas de usuario, debe seleccionar un rol de usuario válido. rol de "Acceso predeterminado" Hello no funciona para el aprovisionamiento.
+*   Al asignar a un usuario a Box, debe seleccionar un rol de usuario válido. El rol "Acceso predeterminado" no funciona para realizar el aprovisionamiento.
 
 ## <a name="enable-automated-user-provisioning"></a>Habilitación del aprovisionamiento automático de usuarios
 
-En esta sección le guía a través de conexión de API de aprovisionamiento de cuentas de usuario de su cuadro de herramientas AD de Azure y configurar hello toocreate de servicio de aprovisionamiento, actualizar y deshabilitar cuentas de usuario asignado en el cuadro en función de asignación de usuario y de grupo en Azure AD.
+Esta sección lo guía a través de los pasos necesarios para conectar la API de aprovisionamiento de su cuenta de usuario de Box, así como para configurar el servicio de aprovisionamiento con el fin de crear, actualizar y deshabilitar cuentas de usuario asignadas de Box en función de la asignación de grupos y usuarios Azure AD.
 
-Si está habilitado el aprovisionamiento automático, Hola asigna usuarios o grupos se agregan toohello toobe cola aprovisionada automáticamente el aprovisionamiento.
+Si está habilitado el aprovisionamiento automático, se agregan a la cola de aprovisionamiento los usuarios o grupos asignados para aprovisionarlos automáticamente.
     
- * Si solo los objetos de usuario son toobe configurado aprovisionado asignados directamente a los usuarios se colocan en cola de aprovisionamiento de Hola y todos los usuarios que son miembros de los grupos asignados se colocan en hello aprovisionamiento de cola. 
+ * Si solo se ha configurado el aprovisionamiento de objetos de usuario, los usuarios asignados directamente se colocan en la cola de aprovisionamiento, y todos los usuarios que son miembros de los grupos asignados se colocarán en la cola de aprovisionamiento. 
     
- * Si los objetos de grupo estaban configurado toobe aprovisionado, todos los objetos de grupo asignado son aprovisionado de cuadro de herramientas y todos los usuarios que son miembros de esos grupos. pertenencia a grupos y usuarios de Hola se conserva cuando se escribe el cuadro de herramientas.
+ * Si se ha configurado el aprovisionamiento de objetos de grupo, todos los objetos de grupo asignados se aprovisionan en Box, así como todos los usuarios que son miembros de esos grupos. Las pertenencias a grupos y usuarios se conservan una vez que se escriben en Box.
 
 > [!TIP] 
-> También puede elegir tooenabled basado en SAML Single Sign-On para cuadro, siguiendo las instrucciones Hola proporcionadas en [portal de Azure](https://portal.azure.com). El inicio de sesión único puede configurarse independientemente del aprovisionamiento automático, aunque estas dos características se complementan entre sí.
+> También puede habilitar el inicio de sesión único basado en Box para Concur siguiendo las instrucciones de [Azure Portal](https://portal.azure.com). El inicio de sesión único puede configurarse independientemente del aprovisionamiento automático, aunque estas dos características se complementan entre sí.
 
-### <a name="tooconfigure-automatic-user-account-provisioning"></a>tooconfigure aprovisionamiento de cuentas de usuario automática:
+### <a name="to-configure-automatic-user-account-provisioning"></a>Para configurar el aprovisionamiento automático de cuentas de usuario, siga estos pasos:
 
-objetivo de Hola de esta sección es toooutline cómo tooenable aprovisionamiento de usuario de Active Directory de cuentas de cuadro de herramientas.
+El objetivo de esta sección es describir cómo habilitar el aprovisionamiento de las cuentas de usuario de Active Directory en Box.
 
-1. Hola [portal de Azure](https://portal.azure.com), examinar toohello **Azure Active Directory > aplicaciones empresariales > todas las aplicaciones** sección.
+1. En [Azure Portal](https://portal.azure.com), vaya a la sección **Azure Active Directory > Aplicaciones empresariales > Todas las aplicaciones**.
 
-2. Si ya ha configurado el cuadro de inicio de sesión único, busque la instancia del cuadro con el campo de búsqueda de Hola. En caso contrario, seleccione **agregar** y busque **cuadro** en Galería de aplicaciones de Hola. Active la casilla de resultados de la búsqueda de Hola y agregarlo a tooyour lista de aplicaciones.
+2. Si ya ha configurado Box para el inicio de sesión único, busque la instancia de Box mediante el campo de búsqueda. En caso contrario, seleccione **Agregar** y busque **Box** en la Galería de aplicaciones. Seleccione Box en los resultados de búsqueda y agrégalo a la lista de aplicaciones.
 
-3. Seleccione la instancia del cuadro y haga clic hello **Provisioning** ficha.
+3. Seleccione la instancia de Box y, después, seleccione la pestaña **Aprovisionamiento**.
 
-4. Conjunto hello **modo de aprovisionamiento** demasiado**automática**. 
+4. Establezca el **modo de aprovisionamiento** en **Automático**. 
 
     ![Aprovisionamiento](./media/active-directory-saas-box-userprovisioning-tutorial/provisioning.png)
 
-5. En hello **las credenciales de administrador** sección, haga clic en **Authorize** tooopen un cuadro de diálogo de inicio de sesión en una nueva ventana del explorador.
+5. En la sección **Credenciales de administrador**, haga clic en **Authorize** (Autorizar) para abrir un cuadro de diálogo de inicio de sesión de Box en una nueva ventana del explorador.
 
-6. En hello **cuadro de herramientas de acceso de inicio de sesión toogrant** página, proporcione las credenciales de hello necesario y, a continuación, haga clic en **Authorize**. 
+6. En la página **Log in to grant access to Box** (Iniciar sesión para otorgar acceso a Box), proporcione las credenciales necesarias y haga clic en **Authorize** (Autorizar). 
    
     ![Habilitar el aprovisionamiento automático de usuarios](./media/active-directory-saas-box-userprovisioning-tutorial/IC769546.png "Habilitar aprovisionamiento automático de usuarios")
 
-7. Haga clic en **el cuadro de herramientas de conceder acceso** tooauthorize esta operación y tooreturn toohello portal de Azure. 
+7. Haga clic en **Grant access to Box** (Otorgar acceso a Box) para autorizar esta operación y volver a Azure Portal. 
    
     ![Habilitar el aprovisionamiento automático de usuarios](./media/active-directory-saas-box-userprovisioning-tutorial/IC769549.png "Habilitar aprovisionamiento automático de usuarios")
 
-8. Hola portal de Azure, haga clic en **Probar conexión** tooensure Azure AD puede conectarse tooyour cuadro aplicación. Si se produce un error en la conexión de hello, asegúrese de que su cuenta Box tiene permisos de administrador de equipo e inténtelo de hello **"Autorizar"** vuelva a intentarlo.
+8. En Azure Portal, haga clic en **Probar conexión** para asegurarse de que Azure AD puede conectarse a la aplicación Box. Si se produce un error de conexión, asegúrese de que su cuenta de Box tiene permisos de administrador de equipo y vuelva a intentar el paso de **Autorizar**.
 
-9. Escriba la dirección de correo electrónico de Hola de una persona o grupo que debe recibir las notificaciones de error aprovisionamiento en hello **correo electrónico de notificación** campo y active casilla Hola.
+9. Escriba la dirección de correo electrónico de una persona o grupo que debe recibir las notificaciones de error de aprovisionamiento en el campo **Correo electrónico de notificación** y active la casilla.
 
 10. Haga clic en **Guardar**.
 
-11. En la sección asignaciones de hello, seleccione **cuadro de herramientas de sincronizar Azure usuarios de Active Directory.**
+11. En la sección Asignaciones, seleccione **Synchronize Azure Active Directory Users to Box** (Sincronizar usuarios de Azure Active Directory con Box).
 
-12. Hola **asignaciones de atributos** sección, revise los atributos de usuario de Hola que se sincronizan desde el cuadro de herramientas de Azure AD. Hola atributos seleccionados como **coincidencia** propiedades son toomatch usado hello las cuentas de usuario en el cuadro de las operaciones de actualización. Seleccione toocommit de botón de hello guardar los cambios.
+12. En la sección **Attribute Mappings** (Asignaciones de atributos), revise los atributos de usuario que se sincronizan entre Azure AD y Box. Los atributos seleccionados como propiedades de **Coincidencia** se usan para buscar coincidencias con las cuentas de usuario de Box con el objetivo de realizar operaciones de actualización. Seleccione el botón Guardar para confirmar los cambios.
 
-13. tooenable Hola servicio de aprovisionamiento de Azure AD para cuadro, cambio hello **estado de aprovisionamiento** demasiado**en** en hello sección de configuración
+13. Para habilitar el aprovisionamiento del servicio de aprovisionamiento de Azure AD para Box, cambie el **estado de aprovisionamiento** a **Activado** en la sección Configuración.
 
 14. Haga clic en **Guardar**.
 
-Que inicia la sincronización inicial de Hola de todos los usuarios y grupos asignados de cuadro de herramientas en los usuarios de Hola y sección de grupos. la sincronización inicial Hola toma tooperform más que las sincronizaciones posteriores, que se producen aproximadamente cada 20 minutos mientras se ejecuta el servicio de Hola. Puede usar hello **detalles de sincronización** sección toomonitor progreso y siga los informes de actividad del tooprovisioning vínculos, que describen todas las acciones realizadas por hello aprovisionamiento del servicio en la aplicación de cuadro.
+Esta acción inicia la sincronización inicial de todos los usuarios y grupos asignados a Box en la sección Usuarios y grupos. La sincronización inicial tardará más tiempo en realizarse que las posteriores, que se producen aproximadamente cada 20 minutos si se está ejecutando el servicio. Puede usar la sección **Detalles de sincronización** para supervisar el progreso y hacer clic en los vínculos a los informes de actividad de aprovisionamiento, que describen todas las acciones que ha llevado a cabo el servicio de aprovisionamiento en la aplicación Box.
 
-Ahora puede crear una cuenta de prueba. Espere a que los minutos de too20 tooverify que cuenta Hola se ha había sincronizado el cuadro de herramientas.
+Ahora puede crear una cuenta de prueba. Espere 20 minutos para comprobar que la cuenta se ha sincronizado con Box.
 
-En el inquilino de Box, los usuarios sincronizados se enumeran debajo **usuarios administrados** en hello **consola de administración de**.
+En su inquilino de Box, los usuarios sincronizados se muestran en **Usuarios administrados** en la **Consola de administración**.
 
 ![Estado de integración](./media/active-directory-saas-box-userprovisioning-tutorial/IC769556.png "Estado de integración")
 

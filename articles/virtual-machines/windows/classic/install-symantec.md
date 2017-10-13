@@ -1,6 +1,6 @@
 ---
-title: "aaaInstall Symantec Endpoint Protection en una máquina virtual de Windows en Azure | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo tooinstall y configure la extensión de seguridad de Symantec Endpoint Protection de hello en un nuevo o VM de Azure existente creado con el modelo de implementación clásica de Hola."
+title: "Instalación de Symantec Endpoint Protection en una máquina virtual Windows | Microsoft Docs"
+description: "Aprenda a instalar y configurar la extensión de seguridad de Symantec Endpoint Protection en una máquina virtual de Azure nueva o existente creada con el modelo de implementación clásica."
 services: virtual-machines-windows
 documentationcenter: 
 author: iainfoulds
@@ -15,30 +15,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: iainfou
-ms.openlocfilehash: cb6083366185c26c9f43ff94d835cd90725de5b2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1603ebc7ee3c29277f30fbb802bdd8205b92d648
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-tooinstall-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>¿Cómo tooinstall y configurar Symantec Endpoint Protection en una VM de Windows
+# <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>Instalación y configuración de Endpoint Protection en una máquina virtual de Azure
 > [!IMPORTANT] 
-> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../../../resource-manager-deployment-model.md). Este artículo tratan con modelo de implementación de hello clásico. Microsoft recomienda que más nuevas implementaciones de usar el modelo del Administrador de recursos de Hola.
+> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../../../resource-manager-deployment-model.md). En este artículo se trata el modelo de implementación clásico. Microsoft recomienda que las implementaciones más recientes usen el modelo del Administrador de recursos.
 
-Este artículo muestra cómo tooinstall y configurar el cliente de Symantec Endpoint Protection de hello en una máquina virtual (VM) existente con Windows Server. Este es el cliente completo, que incluye servicios como protección contra virus y spyware, firewall y prevención de intrusiones. cliente de Hola se instala como una extensión de seguridad mediante el uso de hello agente de máquina virtual.
+En este artículo se muestra cómo instalar y configurar el cliente Symantec Endpoint Protection en una máquina virtual existente con Windows Server. Este es el cliente completo, que incluye servicios como protección contra virus y spyware, firewall y prevención de intrusiones. El cliente se instala como una extensión de seguridad usando el Agente de máquina virtual.
 
-Si tiene una suscripción de Symantec para una solución local, se puede usar tooprotect máquinas virtuales de Azure. Si todavía no es cliente, puede suscribirse para una prueba. Para obtener más información sobre esta solución, consulte [Symantec Endpoint Protection en la plataforma de Microsoft Azure][Symantec]. Esta página también contiene información de toolicensing vínculos e instrucciones para instalar el cliente de hello si ya tiene un cliente de Symantec.
+Si tiene una suscripción existente de Symantec para una solución local, puede usarla para proteger sus máquinas virtuales de Azure. Si todavía no es cliente, puede suscribirse para una prueba. Para obtener más información sobre esta solución, consulte [Symantec Endpoint Protection en la plataforma de Microsoft Azure][Symantec]. Esta página también tiene vínculos a información de licencia e instrucciones para instalar el cliente si ya es un cliente de Symantec.
 
 ## <a name="install-symantec-endpoint-protection-on-an-existing-vm"></a>Instalación de Symantec Endpoint Protection en una máquina virtual existente
-Antes de empezar, necesita Hola siguiente:
+Antes de comenzar, necesitará lo siguiente:
 
-* módulo de PowerShell de Azure de Hello, versión 0.8.2 o posterior, en el equipo de trabajo. Puede comprobar la versión de Hola de PowerShell de Azure que ha instalado con hello **Get-Module azure | versión de formato de tabla** comando. Para obtener instrucciones y una versión más reciente de toohello de vínculo, vea [cómo tooInstall y configurar Azure PowerShell][PS]. Inicie sesión con suscripción de Azure de tooyour `Add-AzureAccount`.
-* Hola Hola de agente de máquina virtual que se ejecuta en máquinas virtuales de Azure.
+* El módulo Azure PowerShell, versión 0.8.2 o posteriores, en el equipo de trabajo. Puede comprobar la versión de Azure PowerShell que ha instalado con el comando **Get-Module azure | format-table version** . Para obtener instrucciones y un vínculo a la versión más reciente, consulte [Instalación y configuración de Azure PowerShell][PS]. Inicie sesión en la suscripción de Azure mediante `Add-AzureAccount`.
+* El agente de máquina virtual que se ejecuta en la máquina virtual de Azure.
 
-En primer lugar, compruebe que Hola que ya está instalado el agente de máquina virtual en la máquina virtual de Hola. Rellene el nombre del servicio de nube de Hola y el nombre de la máquina virtual y, a continuación, ejecute hello siga los comandos en un símbolo de PowerShell de Azure de nivel de administrador. Reemplace todo el contenido de las comillas de hello, incluidos los caracteres de Hola < y >.
+En primer lugar, compruebe que el agente de máquina virtual ya está instalado en la máquina virtual. Introduzca el nombre de servicio de nube y el nombre de la máquina virtual y, a continuación, ejecute los siguientes comandos en un símbolo de sistema de Azure PowerShell con nivel de administrador. Reemplace todo el contenido dentro de las comillas, incluidos los caracteres < y >.
 
 > [!TIP]
-> Si no conoce el servicio de nube de Hola y nombres de máquina virtual, ejecute **Get-AzureVM** nombres de hello toolist para todas las máquinas virtuales en su suscripción actual.
+> Si no conoce los nombres del servicio en la nube y de la máquina virtual, ejecute **Get-AzureVM** para mostrar los nombres de todas las máquinas virtuales de su suscripción actual.
 
 ```powershell
 $CSName = "<cloud service name>"
@@ -47,9 +47,9 @@ $vm = Get-AzureVM -ServiceName $CSName -Name $VMName
 write-host $vm.VM.ProvisionGuestAgent
 ```
 
-Si hello **escritura host** comando muestra **True**, Hola está instalado el agente de máquina virtual. Si muestra **False**, consulte las instrucciones de Hola y un toohello vínculo Descargar en la entrada de blog de Azure de hello [agente de máquina virtual y extensiones: parte 2][Agent].
+Si el comando **write-host** muestra **True**, el agente de la máquina virtual está instalado. Si muestra **False**, consulte las instrucciones y un vínculo a la descarga en la publicación del blog de Azure [VM Agent and Extensions - Part 2 (Agente de máquina virtual extensiones: parte 2)][Agent].
 
-Si está instalado Hola agente de máquina virtual, ejecútelo estos comandos tooinstall Hola Symantec Endpoint Protection.
+Si está instalado el agente de VM, ejecute estos comandos para instalar al agente de Symantec Endpoint Protection.
 
 ```powershell
 $Agent = Get-AzureVMAvailableExtension -Publisher Symantec -ExtensionName SymantecEndpointProtection
@@ -58,14 +58,14 @@ Set-AzureVMExtension -Publisher Symantec –Version $Agent.Version -ExtensionNam
     -VM $vm | Update-AzureVM
 ```
 
-tooverify que Hola Symantec extensión de seguridad se ha instalado y está actualizada:
+Para comprobar que la extensión de seguridad de Symantec se ha instalado y está actualizada:
 
-1. Inicie sesión en la máquina virtual de toohello. Para obtener instrucciones, consulte [cómo tooLog en la máquina Virtual que ejecuta Windows Server tooa][Logon].
-2. Para Windows Server 2008 R2, haga clic en **Inicio > Symantec Endpoint Protection**. Para Windows Server 2012 o Windows Server 2012 R2, desde la pantalla de inicio de bienvenida, escriba **Symantec**y, a continuación, haga clic en **Symantec Endpoint Protection**.
-3. De hello **estado** ficha de hello **estado Symantec Endpoint Protection** ventana, aplicar actualizaciones o reinicie si es necesario.
+1. Iniciar sesión en la nueva máquina virtual. Para obtener instrucciones, vea [Iniciar sesión en una máquina virtual con Windows Server][Logon].
+2. Para Windows Server 2008 R2, haga clic en **Inicio > Symantec Endpoint Protection**. Para Windows Server 2012 o Windows Server 2012 R2, en la pantalla de inicio, escriba **Symantec** y luego haga clic en **Symantec Endpoint Protection**.
+3. En la pestaña **Estado** de la ventana **Status-Symantec Endpoint Protection**, aplique actualizaciones o reinicie en caso necesario.
 
 ## <a name="additional-resources"></a>Recursos adicionales
-[¿Cómo tooLog en tooa Máquina Virtual que ejecuta Windows Server][Logon]
+[Inicio de sesión en una máquina virtual con Windows Server][Logon]
 
 [Características y extensiones de máquina virtual de Azure][Ext]
 

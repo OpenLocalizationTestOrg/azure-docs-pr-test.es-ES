@@ -1,6 +1,6 @@
 ---
-title: "Guía de aaaProgramming para los concentradores de eventos de Azure | Documentos de Microsoft"
-description: "Escribir código para los concentradores de eventos de Azure con hello Azure .NET SDK."
+title: "Guía de programación de Azure Event Hubs | Microsoft Docs"
+description: "Escriba código para Azure Event Hubs mediante el SDK de .NET de Azure."
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
@@ -14,135 +14,135 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 08/17/2017
 ms.author: sethm
-ms.openlocfilehash: 43bebd126c2311af9e3daeb52324132b66cf0884
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 405ec2b27b488b570c4a5c86e4950ff98233360e
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="event-hubs-programming-guide"></a>Guía de programación de Centros de eventos
 
-En este artículo se describe algunos escenarios comunes para escribir código que usa hello Azure SDK para .NET y los centros de eventos de Azure. En él se presupone un conocimiento previo de los centros de eventos. Para obtener información conceptual de los centros de eventos, vea hello [información general de los centros de eventos](event-hubs-what-is-event-hubs.md).
+En este artículo se describen algunos escenarios comunes para escribir código mediante Azure Event Hubs y el SDK de .NET de Azure. En él se presupone un conocimiento previo de los centros de eventos. Para obtener una visión general conceptual de los Centros de eventos, consulte la [Información general de los Centros de eventos de Azure](event-hubs-what-is-event-hubs.md).
 
 ## <a name="event-publishers"></a>Publicadores de eventos
 
-Enviar el concentrador de eventos de eventos tooan ya sea mediante HTTP POST o a través de una conexión de AMQP 1.0. Hola elección de qué toouse y cuándo depende de escenario específico de hello está solucionando. Las conexiones AMQP 1.0 se miden como conexiones asincrónicas en el Bus de servicio y son más apropiadas en los escenarios con volúmenes mayores de mensajes frecuentes y requisitos de latencia menores, ya que proporcionan un canal de mensajería persistente.
+Los eventos se envían a un centro de eventos mediante HTTP POST o una conexión AMQP 1.0. La elección de cuál usar y cuándo depende del escenario específico abordado. Las conexiones AMQP 1.0 se miden como conexiones asincrónicas en el Bus de servicio y son más apropiadas en los escenarios con volúmenes mayores de mensajes frecuentes y requisitos de latencia menores, ya que proporcionan un canal de mensajería persistente.
 
-Crear y administrar los centros de eventos con hello [NamespaceManager][] clase. Cuando API administradas mediante .NET hello, Hola principal se crea para publicar datos tooEvent concentradores son hello [EventHubClient](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) y [EventData][] clases. [EventHubClient][] proporciona el canal de comunicación de AMQP de hello en el cual se envían eventos toohello concentrador de eventos. Hola [EventData][] clase representa un evento y centro de eventos de toopublish usa mensajes tooan. Esta clase incluye el cuerpo de hello, algunos metadatos e información de encabezado acerca del evento Hola. Otras propiedades se agregan toohello [EventData][] cuando pasan a través de un concentrador de eventos de objeto.
+Puede crear y administrar Centros de eventos mediante la clase [NamespaceManager][] . Si se usan las API administradas de .NET, las construcciones principales para publicar datos en Event Hubs son las clases [EventHubClient](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) y [EventData][]. [EventHubClient][] proporciona el canal de comunicación AMQP a través del que se envían eventos al centro de eventos. La clase [EventData][] representa un evento y se usa para publicar mensajes en un centro de eventos. Esta clase incluye el cuerpo, algunos metadatos e información de encabezado sobre el evento. Otras propiedades se agregan al objeto [EventData][] cuando este atraviesa un centro de eventos.
 
-## <a name="get-started"></a>Primeros pasos
+## <a name="get-started"></a>Introducción
 
-clases de .NET de Hola que admiten los concentradores de eventos se muestran en hello ensamblado Microsoft.ServiceBus.dll. Hola más fácil Hola de manera tooreference API de Service Bus y tooconfigure la aplicación con todas las dependencias de Bus de servicio de hello es hello toodownload [paquete NuGet de Bus de servicio](https://www.nuget.org/packages/WindowsAzure.ServiceBus). Como alternativa, puede usar hello [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) en Visual Studio. toodo por lo tanto, emitir Hola siguiente comando en hello [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) ventana:
+Las clases .NET que admiten los Centros de eventos se incluyen en el ensamblado Microsoft.ServiceBus.dll. La forma más sencilla de hacer referencia a la API del Bus de servicio y configurar su aplicación con todas las dependencias del Bus de servicio es descargar el [paquete de NuGet del Bus de servicio](https://www.nuget.org/packages/WindowsAzure.ServiceBus). Como alternativa, puede utilizar el [Consola del Administrador de paquetes](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) en Visual Studio. Para ello, emita el siguiente comando en la ventana [Consola del administrador de paquetes](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) :
 
 ```
 Install-Package WindowsAzure.ServiceBus
 ```
 
 ## <a name="create-an-event-hub"></a>Creación de un centro de eventos
-Puede usar hello [NamespaceManager][] clase toocreate centros de eventos. Por ejemplo:
+Puede usar la clase [NamespaceManager][] para crear centros de eventos. Por ejemplo:
 
 ```csharp
 var manager = new Microsoft.ServiceBus.NamespaceManager("mynamespace.servicebus.windows.net");
 var description = manager.CreateEventHub("MyEventHub");
 ```
 
-En la mayoría de los casos, se recomienda que utilice hello [CreateEventHubIfNotExists][] tooavoid de métodos que se generen excepciones si se reinicia el servicio de Hola. Por ejemplo:
+En la mayoría de los casos, se recomienda usar los métodos [CreateEventHubIfNotExists][] para evitar que se generen excepciones si se reinicia el servicio. Por ejemplo:
 
 ```csharp
 var description = manager.CreateEventHubIfNotExists("MyEventHub");
 ```
 
-Todas las operaciones de creación de centros de eventos, incluidos los [CreateEventHubIfNotExists][], requieren **administrar** permisos en el espacio de nombres de hello en cuestión. Si desea que los permisos de hello toolimit de las aplicaciones de consumidor o publicador, puede evitar estas crear llamadas de operación en el código de producción cuando utilice credenciales con permisos limitados.
+Todas las operaciones de creación de Centros de eventos, incluidas [CreateEventHubIfNotExists][], requieren permisos de **administración** en el espacio de nombres en cuestión. Si desea limitar los permisos de las aplicaciones de consumidor o de publicador, puede evitar estas llamadas de creación de operación en el código de producción cuando use credenciales con permisos limitados.
 
-Hola [EventHubDescription](/dotnet/api/microsoft.servicebus.messaging.eventhubdescription) clase contiene detalles acerca de un centro de eventos, incluidas las reglas de autorización de hello, intervalo de retención de mensajes de Hola, Id. de partición, estado y ruta de acceso. Puede usar estos metadatos de clase tooupdate hello en un centro de eventos.
+La clase [EventHubDescription](/dotnet/api/microsoft.servicebus.messaging.eventhubdescription) contiene detalles acerca de un centro de eventos, incluidas las reglas de autorización, el intervalo de retención de mensajes, los identificadores de partición, el estado y la ruta de acceso. Puede usar esta clase para actualizar los metadatos en un centro de eventos.
 
 ## <a name="create-an-event-hubs-client"></a>Creación de un cliente de Centro de eventos
-Hola clase principal para interactuar con los concentradores de eventos es [Microsoft.ServiceBus.Messaging.EventHubClient][EventHubClient]. Esta clase proporciona capacidades de remitente y receptor. Puede crear una instancia de esta clase utilizando hello [Create](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.create) método, como se muestra en el siguiente ejemplo de Hola.
+La clase principal para interactuar con Event Hubs es [Microsoft.ServiceBus.Messaging.EventHubClient][EventHubClient]. Esta clase proporciona capacidades de remitente y receptor. Puede crear una instancia de esta clase usando el método [Crear](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.create) , tal como se muestra en el ejemplo siguiente.
 
 ```csharp
 var client = EventHubClient.Create(description.Path);
 ```
 
-Este método usa la información de conexión de Bus de servicio de hello en hello archivo App.config, hello `appSettings` sección. Para obtener un ejemplo de Hola `appSettings` XML utiliza la información de conexión de Bus de servicio de toostore hello, consulte la documentación de Hola para hello [Microsoft.ServiceBus.Messaging.EventHubClient.Create(System.String)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Create_System_String_) método.
+Este método usa la información de conexión del Bus de servicio del archivo App.config, en la sección `appSettings` . Para obtener un ejemplo del `appSettings` XML usado para almacenar la información de conexión del Bus de servicio, consulte la documentación del método [Microsoft.ServiceBus.Messaging.EventHubClient.Create(System.String)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Create_System_String_) .
 
-Otra opción es cliente de hello toocreate desde una cadena de conexión. Esta opción funciona bien cuando se utilizan los roles de trabajador de Azure, ya que permite almacenar la cadena de hello en Propiedades de configuración de hello para el trabajo de Hola. Por ejemplo:
+Otra opción consiste en crear al cliente desde una cadena de conexión. Esta opción funciona bien cuando se usan roles de trabajador de Azure, ya que permite almacenar la cadena en las propiedades de configuración para el trabajador. Por ejemplo:
 
 ```csharp
 EventHubClient.CreateFromConnectionString("your_connection_string");
 ```
 
-cadena de conexión de Hello estará en hello mismo formato tal y como aparece en el archivo App.config de Hola para los métodos anteriores de hello:
+La cadena de conexión tendrá el mismo formato que el que aparece en el archivo App.config para los métodos anteriores:
 
 ```
 Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[key]
 ```
 
-Por último, también es posible toocreate una [EventHubClient][] objeto desde un [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) instancia, tal y como se muestra en el siguiente ejemplo de Hola.
+Por último, también es posible crear un objeto [EventHubClient][] desde una instancia [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory), como se muestra en el ejemplo siguiente.
 
 ```csharp
 var factory = MessagingFactory.CreateFromConnectionString("your_connection_string");
 var client = factory.CreateEventHubClient("MyEventHub");
 ```
 
-Es importante toonote adicional que [EventHubClient][] objetos creados a partir de una instancia del generador de mensajería reutilizará Hola misma conexión TCP subyacente. Por lo tanto, estos objetos tienen un límite de cliente en el rendimiento. Hola [Create](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Create_System_String_) método reutiliza una única fábrica de mensajería. Si necesita un rendimiento muy alto desde un único remitente, puede crear varios generadores de mensajería y un objeto [EventHubClient][] desde cada uno de ellos.
+Es importante tener en cuenta que los objetos [EventHubClient][] adicionales creados a partir de una instancia del generador de mensajería volverá a usar la misma conexión TCP subyacente. Por lo tanto, estos objetos tienen un límite de cliente en el rendimiento. El método [Create](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Create_System_String_) reutiliza un único generador de mensajería. Si necesita un rendimiento muy alto desde un único remitente, puede crear varios generadores de mensajería y un objeto [EventHubClient][] desde cada uno de ellos.
 
-## <a name="send-events-tooan-event-hub"></a>Centro de eventos de tooan de eventos de envío
-Enviar el concentrador de eventos de tooan de eventos mediante la creación de un [EventData][] instancia y enviarlo a través de hello [enviar](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_) método. Este método toma un único [EventData][] parámetro de instancia y envía de forma sincrónica, tooan concentrador de eventos.
+## <a name="send-events-to-an-event-hub"></a>Envío eventos a un centro de eventos
+Para enviar eventos a un centro de eventos es preciso crear una instancia de [EventData][] y enviarla a través del método [Send](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_). Este método toma un único parámetro de instancia [EventData][] y lo envía de forma sincrónica a un centro de eventos.
 
 ## <a name="event-serialization"></a>Serialización de eventos
-Hola [EventData][] clase tiene [cuatro sobrecargados constructores](/dotnet/api/microsoft.servicebus.messaging.eventdata#constructors_) que tomar una amplia variedad de parámetros, como un objeto y serializador, una matriz de bytes o una secuencia. También es posible tooinstantiate hello [EventData][] clase y establezca la secuencia del cuerpo Hola posteriormente. Al usar JSON con [EventData][], puede usar **Encoding.UTF8.GetBytes()** tooretrieve matriz de bytes de Hola para una cadena codificada en JSON.
+La clase [EventData][] tiene [cuatro constructores sobrecargados](/dotnet/api/microsoft.servicebus.messaging.eventdata#constructors_) que toman varios parámetros, como un objeto y un serializador, una matriz de bytes o una transmisión. También es posible crear instancias de la clase [EventData][] y establecer la transmisión del cuerpo posteriormente. Cuando se usa JSON con [EventData][], puede usar **Encoding.UTF8.GetBytes()** para recuperar la matriz de bytes de una cadena codificada con JSON.
 
 ## <a name="partition-key"></a>Clave de partición
-Hola [EventData][] clase tiene un [PartitionKey][] propiedad que habilita Hola remitente toospecify un valor que se aplica un algoritmo hash tooproduce una asignación de la partición. El uso de una clave de partición garantiza todos Hola eventos con la misma clave se envían de hello toohello igual de partición en el concentrador de eventos de Hola. Las claves de partición comunes incluyen identificadores de sesión e identificadores de remitente únicos. Hola [PartitionKey][] propiedad es opcional y puede proporcionarse al usar hello [Microsoft.ServiceBus.Messaging.EventHubClient.Send(Microsoft.ServiceBus.Messaging.EventData)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_) o [Microsoft.ServiceBus.Messaging.EventHubClient.SendAsync(Microsoft.ServiceBus.Messaging.EventData)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_SendAsync_Microsoft_ServiceBus_Messaging_EventData_) métodos. Si no proporciona un valor para [PartitionKey][], envía los eventos son toopartitions distribuida mediante un modelo round-robin.
+La clase [EventData][] tiene una propiedad [PartitionKey][] que permite al remitente especificar un valor al que se aplica un algoritmo hash para generar una asignación de la partición. Usar una clave de partición garantiza que todos los eventos con la misma clave se envíen a la misma partición del centro de eventos. Las claves de partición comunes incluyen identificadores de sesión e identificadores de remitente únicos. La propiedad [PartitionKey][] es opcional y se puede proporcionar cuando se usan los métodos [Microsoft.ServiceBus.Messaging.EventHubClient.Send(Microsoft.ServiceBus.Messaging.EventData)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_) o [Microsoft.ServiceBus.Messaging.EventHubClient.SendAsync(Microsoft.ServiceBus.Messaging.EventData)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_SendAsync_Microsoft_ServiceBus_Messaging_EventData_). Si no proporciona un valor para [PartitionKey][], los eventos enviados se distribuyen a las particiones mediante un modelo round-robin.
 
 ### <a name="availability-considerations"></a>Consideraciones sobre disponibilidad
 
-Uso de una clave de partición es opcional y debe considerar detenidamente si toouse uno. En muchos casos, el uso de una clave de partición es una buena elección si el orden de los eventos es importante. Cuando se usa una clave de partición, estas particiones requieren la disponibilidad en un solo nodo y las interrupciones pueden producirse a lo largo del tiempo; por ejemplo, cuando los nodos de ejecución se reinician y revisan. Por lo tanto, si establece un Id. de partición y esa partición deja de estar disponible por alguna razón, un intento de tooaccess los datos de hello en esa partición se producirá un error. Si la alta disponibilidad es más importante, no especifique una clave de partición; en ese caso se enviará eventos toopartitions con hello round robin modelo que se ha descrito anteriormente. En este escenario, se realiza una selección explícita entre disponibilidad (ningún Id. de partición) y la coherencia (fijar el Id. de partición de tooa de eventos).
+El uso de una clave de partición es opcional y debe considerar detenidamente si desea o no utilizar uno. En muchos casos, el uso de una clave de partición es una buena elección si el orden de los eventos es importante. Cuando se usa una clave de partición, estas particiones requieren la disponibilidad en un solo nodo y las interrupciones pueden producirse a lo largo del tiempo; por ejemplo, cuando los nodos de ejecución se reinician y revisan. Por lo tanto, si establece un identificador de partición y esa partición deja de estar disponible por alguna razón, un intento de acceder a los datos de esa partición provocará un error. Si la alta disponibilidad es más importante, no especifique una clave de partición; en ese caso, los eventos se enviarán a las particiones que usan el modelo round robin descrito anteriormente. En este escenario, se realiza una selección explícita entre disponibilidad (ningún identificador de partición) y coherencia (anclar eventos a un identificador de partición).
 
-Otra consideración es el control de retrasos en el procesamiento de eventos. En algunos casos podría ser mejor datos toodrop y vuelva a intentar que tootry y mantenerse al día con el procesamiento, que puede provocar retrasos de procesamiento adicional que se siguen en la cadena. Por ejemplo, con un indicador de cotizaciones bursátiles es mejor toowait para completa de los datos actualizada, pero en un chat en vivo o escenario VOIP que prefiere tener datos Hola rápidamente, incluso si no está completa.
+Otra consideración es el control de retrasos en el procesamiento de eventos. En algunos casos podría ser mejor quitar datos y reintentarlo que intentar seguir con el procesamiento, lo que puede provocar más retrasos de procesamiento descendente. Por ejemplo, con un tablero de cotizaciones es preferible esperar a tener todos los datos actualizados, pero en un escenario de chat en directo o VOIP sería preferible disponer de los datos rápidamente, aunque no estén completos.
 
-Debido a estas consideraciones de disponibilidad, en estos escenarios puede elegir uno de hello siguiendo las estrategias de control de errores:
+Dadas estas consideraciones de disponibilidad, en estos casos puede elegir una de las siguientes estrategias de control de errores:
 
 - Detener (dejar de leer Event Hubs hasta que se solucionen cosas)
 - Quitar (los mensajes no son importantes, quítelos)
-- Vuelva a intentar (Hola de reintento mensajes como ver ajusten)
-- [Mensajes no enviados](../service-bus-messaging/service-bus-dead-letter-queues.md) (utilice una cola o toodead de concentrador de eventos otra carta solo los mensajes de Hola no pudo procesar)
+- Reintentar (reintentar los mensajes cuando lo vea apropiado)
+- [Mensaje fallido](../service-bus-messaging/service-bus-dead-letter-queues.md) (utilizar una cola u otro centro de eventos para considerar como mensajes fallidos solo los mensajes que no pudo procesar)
 
-Para obtener más información y una explicación sobre Hola ventajas y desventajas de disponibilidad y la coherencia, consulte [disponibilidad y coherencia en los centros de eventos](event-hubs-availability-and-consistency.md). 
+Para obtener más información y una explicación sobre las ventajas y desventajas entre la disponibilidad y la coherencia, consulte [Disponibilidad y coherencia en Event Hubs](event-hubs-availability-and-consistency.md). 
 
 ## <a name="batch-event-send-operations"></a>Operaciones de envío de eventos por lotes
-El envío de eventos por lotes puede aumentar drásticamente el rendimiento. Hola [SendBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_SendBatch_System_Collections_Generic_IEnumerable_Microsoft_ServiceBus_Messaging_EventData__) método toma una **IEnumerable** parámetro de tipo [EventData][] y envía Hola lote completo como un concentrador de eventos de toohello operación atómica.
+El envío de eventos por lotes puede aumentar drásticamente el rendimiento. El método [SendBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_SendBatch_System_Collections_Generic_IEnumerable_Microsoft_ServiceBus_Messaging_EventData__) toma un parámetro **IEnumerable** del tipo [EventData][] y envía todo el lote como una operación atómica al centro de eventos.
 
 ```csharp
 public void SendBatch(IEnumerable<EventData> eventDataList);
 ```
 
-Tenga en cuenta que un único lote no debe superar el límite de 256 KB de Hola de un evento. Además, cada mensaje Hola lote usa Hola misma identidad de publicador. Es responsabilidad Hola de hello remitente tooensure que Hola por lotes no supere el tamaño máximo del evento de Hola. Si es así, se generará un error de **envío** de cliente.
+Tenga en cuenta que un único lote no debe superar el límite de 256 KB de un evento. Además, cada mensaje del lote usa la misma identidad del publicador. Es responsabilidad del remitente asegurarse de que el lote no supera el tamaño máximo del evento. Si es así, se generará un error de **envío** de cliente.
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>Enviar de forma asincrónica y enviar a escala
-También puede enviar concentrador de eventos de tooan de eventos de forma asincrónica. Envío asincrónico puede aumentar la velocidad de hello en el que un cliente es capaz de toosend eventos. Ambos hello [enviar](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_) y [SendBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_SendBatch_System_Collections_Generic_IEnumerable_Microsoft_ServiceBus_Messaging_EventData__) métodos están disponibles en las versiones asincrónicas que devuelven un [tarea](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx) objeto. Aunque esta técnica puede aumentar el rendimiento, pueden hacer Hola eventos de cliente toocontinue toosend incluso mientras se está limitando por hello servicio de centros de eventos y puede dar lugar a Hola cliente experimente errores o mensajes perdidos si no se implementa correctamente. Además, puede usar hello [RetryPolicy](/dotnet/api/microsoft.servicebus.messaging.cliententity#Microsoft_ServiceBus_Messaging_ClientEntity_RetryPolicy) propiedad sobre las opciones de reintento de hello cliente toocontrol cliente.
+También puede enviar eventos a un centro de eventos de forma asincrónica. Enviar de forma asincrónica puede aumentar la velocidad a la que un cliente es capaz de enviar eventos. Los métodos [Send](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_) y [SendBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_SendBatch_System_Collections_Generic_IEnumerable_Microsoft_ServiceBus_Messaging_EventData__) están disponibles en las versiones asincrónicas que devuelven un objeto [Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx). Aunque esta técnica puede aumentar el rendimiento, también puede hacer que el cliente continúe enviando eventos incluso mientras el servicio de centros de eventos le está aplicando un límite y puede dar lugar a que el cliente experimente errores o a la pérdida de mensajes si no se implementa correctamente. Además, puede usar la propiedad [RetryPolicy](/dotnet/api/microsoft.servicebus.messaging.cliententity#Microsoft_ServiceBus_Messaging_ClientEntity_RetryPolicy) en el cliente para controlar opciones de reintento del cliente.
 
 ## <a name="create-a-partition-sender"></a>Crear un remitente de partición
-Aunque es más común toosend eventos tooan concentrador de eventos sin una clave de partición, en algunos casos le podría interesar toosend eventos directamente tooa dada la partición. Por ejemplo:
+Aunque es más común enviar eventos a un centro de eventos sin una clave de partición, en algunos casos podrá enviar eventos directamente a una partición determinada. Por ejemplo:
 
 ```csharp
 var partitionedSender = client.CreatePartitionedSender(description.PartitionIds[0]);
 ```
 
-[CreatePartitionedSender](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_CreatePartitionedSender_System_String_) devuelve un [EventHubSender](/dotnet/api/microsoft.servicebus.messaging.eventhubsender) objeto que puede usar toopublish partición del concentrador de eventos tooa evento específico.
+[CreatePartitionedSender](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_CreatePartitionedSender_System_String_) devuelve un objeto [EventHubSender](/dotnet/api/microsoft.servicebus.messaging.eventhubsender) que puede usar para publicar eventos en una partición específica del centro de eventos.
 
 ## <a name="event-consumers"></a>Consumidores de eventos
-Los centros de eventos tienen dos modelos principales para el consumo de eventos: receptores directos y abstracciones de nivel superior, como [EventProcessorHost][]. Receptores directos son responsables de su propia coordinación toopartitions de acceso dentro de un grupo de consumidores.
+Los centros de eventos tienen dos modelos principales para el consumo de eventos: receptores directos y abstracciones de nivel superior, como [EventProcessorHost][]. Los receptores directos son responsables de su propia coordinación de acceso a las particiones dentro de un grupo de consumidores.
 
 ### <a name="direct-consumer"></a>Consumidor directo
-Hola tooread de manera más directa de una partición dentro de un grupo de consumidores es hello de toouse [EventHubReceiver](/dotnet/apie/microsoft.servicebus.messaging.eventhubreceiver) clase. toocreate una instancia de esta clase, debe utilizar una instancia de hello [EventHubConsumerGroup](/dotnet/api/microsoft.servicebus.messaging.eventhubconsumergroup) clase. En el siguiente ejemplo de Hola Hola Id. de partición debe especificarse al crear el receptor de hello para el grupo de consumidores de Hola.
+La forma más directa de leer desde una partición dentro de un grupo de consumidores es usar la clase [EventHubReceiver](/dotnet/apie/microsoft.servicebus.messaging.eventhubreceiver) . Para crear una instancia de esta clase, debe usar una instancia de la clase [EventHubConsumerGroup](/dotnet/api/microsoft.servicebus.messaging.eventhubconsumergroup) . En el ejemplo siguiente, el identificador de la partición debe especificarse cuando se crea el receptor para el grupo de consumidores.
 
 ```csharp
 EventHubConsumerGroup group = client.GetDefaultConsumerGroup();
 var receiver = group.CreateReceiver(client.GetRuntimeInformation().PartitionIds[0]);
 ```
 
-Hola [CreateReceiver](/dotnet/api/microsoft.servicebus.messaging.eventhubconsumergroup#methods_summary) método tiene varias sobrecargas que proporcionan control sobre el lector de Hola que se está creando. Estos métodos incluyen la especificación de un desplazamiento como una cadena o una marca de tiempo y Hola capacidad toospecify si tooinclude este desplazamiento especificado de hello devuelve transmitir por secuencias o iniciar después de él. Después de crear el receptor de hello, puede empezar a recibir eventos en hello devuelve el objeto. Hola [recepción](/dotnet/api/microsoft.servicebus.messaging.eventhubreceiver#methods_summary) método tiene cuatro sobrecargas que Hola control recibir parámetros de operación, como el tamaño de lote y tiempo de espera. Puede usar las versiones asincrónicas de Hola de estos rendimiento de hello tooincrease de métodos de un consumidor. Por ejemplo:
+El método [CreateReceiver](/dotnet/api/microsoft.servicebus.messaging.eventhubconsumergroup#methods_summary) tiene varias sobrecargas que proporcionan control sobre el lector que se está creando. Entre estos métodos se incluyen la especificación de un desplazamiento como una cadena o una marca de tiempo y la capacidad de especificar si se debe incluir este desplazamiento especificado en la secuencia devuelta, o iniciar después de esta. Después de crear el receptor, puede empezar a recibir eventos en el objeto devuelto. El método [Receive](/dotnet/api/microsoft.servicebus.messaging.eventhubreceiver#methods_summary) tiene cuatro sobrecargas que controlan los parámetros de la operación de recepción, como el tamaño del lote y el tiempo de espera. Puede usar las versiones asincrónicas de estos métodos para aumentar el rendimiento de un consumidor. Por ejemplo:
 
 ```csharp
 bool receive = true;
@@ -156,34 +156,34 @@ while(receive)
 }
 ```
 
-Con partición específica de tooa de sentido, se reciben mensajes de saludo en orden de hello en el que se enviaron toohello concentrador de eventos. desplazamiento de Hello es una cadena token usado tooidentify un mensaje en una partición.
+Con respecto a una partición específica, se reciben los mensajes en el orden en que se enviaron al centro de eventos. El desplazamiento es un token de cadena que se usa para identificar un mensaje en una partición.
 
-Tenga en cuenta que una sola partición dentro de un grupo de consumidores no puede tener más de 5 lectores simultáneos conectados en un determinado momento. Como los lectores se conectan o se desconectan, sus sesiones pueden permanecer activas durante varios minutos antes de que el servicio de hello reconoce que se han desconectado. Durante este tiempo, volver a conectar tooa partición puede producir un error. Para obtener un ejemplo completo de la escritura de un receptor directo para los concentradores de eventos, vea hello [receptores directos de centros de eventos](https://code.msdn.microsoft.com/Event-Hub-Direct-Receivers-13fa95c6) ejemplo.
+Tenga en cuenta que una sola partición dentro de un grupo de consumidores no puede tener más de 5 lectores simultáneos conectados en un determinado momento. A medida que los lectores se conectan o desconectan, es posible que sus sesiones permanezcan activas durante varios minutos antes de que el servicio reconozca que se han desconectado. Durante este tiempo, es posible que no se logre volver a conectar con una partición. Para obtener un ejemplo completo de escritura de un receptor directo para Event Hubs, consulte el ejemplo [Event Hubs Direct Receivers](https://code.msdn.microsoft.com/Event-Hub-Direct-Receivers-13fa95c6) (Receptores directos de Event Hubs).
 
 ### <a name="event-processor-host"></a>Host del procesador de eventos
-Hola [EventProcessorHost][] clase procesa los datos de los centros de eventos. Debe utilizar esta implementación al generar los lectores de eventos en la plataforma .NET de Hola. [EventProcessorHost][] proporciona un entorno de tiempo de ejecución seguro, seguro para subprocesos y de varios procesos para las implementaciones de procesadores de eventos que también ofrecen administración de concesión de puntos de comprobación y particiones.
+La clase [EventProcessorHost][] procesa los datos de los centros de eventos. Debe usar esta implementación para generar los lectores de eventos en la plataforma .NET. [EventProcessorHost][] proporciona un entorno de tiempo de ejecución seguro, seguro para subprocesos y de varios procesos para las implementaciones de procesadores de eventos que también ofrecen administración de concesión de puntos de comprobación y particiones.
 
-Hola toouse [EventProcessorHost][] (clase), puede implementar [IEventProcessor](/dotnet/api/microsoft.servicebus.messaging.ieventprocessor). Esta interfaz contiene tres métodos:
+Para usar la clase [EventProcessorHost][], puede implementar [IEventProcessor](/dotnet/api/microsoft.servicebus.messaging.ieventprocessor). Esta interfaz contiene tres métodos:
 
 * [OpenAsync](/dotnet/api/microsoft.servicebus.messaging.ieventprocessor#Microsoft_ServiceBus_Messaging_IEventProcessor_OpenAsync_Microsoft_ServiceBus_Messaging_PartitionContext_)
 * [CloseAsync](/dotnet/api/microsoft.servicebus.messaging.ieventprocessor#Microsoft_ServiceBus_Messaging_IEventProcessor_CloseAsync_Microsoft_ServiceBus_Messaging_PartitionContext_Microsoft_ServiceBus_Messaging_CloseReason_)
 * [ProcessEventsAsync](/dotnet/api/microsoft.servicebus.messaging.ieventprocessor#Microsoft_ServiceBus_Messaging_IEventProcessor_ProcessEventsAsync_Microsoft_ServiceBus_Messaging_PartitionContext_System_Collections_Generic_IEnumerable_Microsoft_ServiceBus_Messaging_EventData__)
 
-crear una instancia de toostart procesamiento de eventos, [EventProcessorHost][], proporcionando los parámetros apropiados de hello para el centro de eventos. A continuación, llame a [RegisterEventProcessorAsync](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost#Microsoft_ServiceBus_Messaging_EventProcessorHost_RegisterEventProcessorAsync__1) tooregister su [IEventProcessor](/dotnet/api/microsoft.servicebus.messaging.ieventprocessor) implementación con hello en tiempo de ejecución. En este momento, el host de hello intentará tooacquire una concesión en cada partición de concentrador de eventos de hello usando un algoritmo "expansivo". Estas concesiones durarán un período de tiempo determinado y, a continuación, deben renovarse. Como nuevos nodos, instancias de trabajo en este caso, se ponen en línea, colocan reservas de concesiones y con el tiempo carga Hola se desplaza entre los nodos según cada uno intenta tooacquire más concesiones.
+Para iniciar el procesamiento de eventos, cree una instancia de [EventProcessorHost][], proporcionando los parámetros adecuados para el centro de eventos. Después, llame a [RegisterEventProcessorAsync](/dotnet/api/microsoft.servicebus.messaging.eventprocessorhost#Microsoft_ServiceBus_Messaging_EventProcessorHost_RegisterEventProcessorAsync__1) para registrar su implementación de [IEventProcessor](/dotnet/api/microsoft.servicebus.messaging.ieventprocessor) en el runtime. En este momento, el host intentará adquirir una concesión en cada partición del centro de eventos mediante un algoritmo "expansivo". Estas concesiones durarán un período de tiempo determinado y, a continuación, deben renovarse. A medida que nuevos nodos, instancias de trabajo en este caso, pasan a estar en línea, colocan reservas de concesión y, con el tiempo, la carga cambia entre los nodos a medida que cada una trata de adquirir más concesiones.
 
 ![Host del procesador de eventos](./media/event-hubs-programming-guide/IC759863.png)
 
-Con el tiempo, se establece un equilibrio. Esta capacidad dinámica permite la Autoescala basada en CPU toobe aplica tooconsumers de ampliación y reducción. Dado que los centros de eventos no tiene un concepto directo de números de mensajes, uso promedio de CPU suele ser Hola mecanismo toomeasure back-end o un consumidor escala adecuada. Si los publicadores comienzan toopublish que pueden procesar más eventos que los consumidores, aumento de la CPU de hello en los consumidores puede ser usado toocause una escala automática en el recuento de instancias de trabajo.
+Con el tiempo, se establece un equilibrio. Esta capacidad dinámica permite la aplicación del escalado automático basado en CPU a los consumidores para escalar vertical y horizontalmente. Debido a que lo centros de eventos no tienen un concepto directo de recuentos de mensajes, el uso medio de la CPU suele ser el mejor mecanismo para medir el back-end o la escala del consumidor. Si los publicadores empiezan a publicar más eventos de los que los consumidores pueden procesar, el aumento de la CPU en los consumidores puede usarse para producir una escala automática en el recuento de instancias de trabajador.
 
-Hola [EventProcessorHost][] clase también implementa un mecanismo de puntos de comprobación basado en almacenamiento de Azure. Este Hola de almacenes de mecanismo de desplazamiento en una base por partición, para que cada consumidor pueda determinar qué Hola último punto de comprobación del consumidor anterior Hola era. Al igual que crea particiones transición entre los nodos mediante concesiones, este es el mecanismo de sincronización de Hola que facilita el cambio de carga.
+La clase [EventProcessorHost][] también implementa un mecanismo de puntos de comprobación basado en el almacenamiento de Azure. Este mecanismo almacena el desplazamiento en función de la partición, para que cada consumidor pueda determinar cuál fue el último punto de comprobación del cliente anterior. A medida que las particiones pasan de un nodo a otro a través de concesiones, este es el mecanismo de sincronización que facilita el desplazamiento de cargas.
 
 ## <a name="publisher-revocation"></a>Revocación de publicador
-Además toohello avanzadas características en tiempo de ejecución de [EventProcessorHost][], centros de eventos permiten la revocación del publicador de orden tooblock específico de los publicadores en el concentrador de eventos de tooan de eventos de envío. Estas características son especialmente útiles si un token de publicador se ha puesto en peligro o una actualización de software está haciendo toobehave incorrectamente. En estas situaciones, se puede bloquear la identidad del publicador de hello, que forma parte de su token de SAS, desde la publicación de eventos.
+Además de las características avanzadas del entorno en tiempo de ejecución de [EventProcessorHost][], los centros de eventos permiten la revocación del publicador con el fin de impedir a publicadores específicos el envío de eventos a un centro de eventos. Estas características son especialmente útiles si se ha visto comprometido el token de un publicador o si una actualización de software está provocando que se comporten incorrectamente. En estas situaciones, es posible bloquear que la identidad del editor, que forma parte de su token de SAS, publique eventos.
 
-Para obtener más información acerca de la revocación del publicador y cómo toosend tooEvent concentradores como publicador, vea hello [evento centros de gran escala publicación segura](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab) ejemplo.
+Para más información acerca de la revocación del publicador y cómo realizar envíos a Event Hubs como publicador, consulte el ejemplo de [Event Hubs Large Scale Secure Publishing](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab) (Publicación segura a gran escala de Event Hubs).
 
 ## <a name="next-steps"></a>Pasos siguientes
-toolearn más información acerca de escenarios de centros de eventos, visite estos vínculos:
+Para obtener más información acerca de los escenarios de los centros de eventos, visite estos vínculos:
 
 * [Introducción a la API de centros de eventos](event-hubs-api-overview.md)
 * [¿Qué es Event Hubs?](event-hubs-what-is-event-hubs.md)

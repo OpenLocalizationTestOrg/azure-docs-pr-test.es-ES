@@ -1,6 +1,6 @@
 ---
-title: eventos de ciclo de vida de servicio de nube aaaHandle | Documentos de Microsoft
-description: "Obtenga información acerca de cómo pueden usarse los métodos del ciclo de vida de Hola de un rol de servicio de nube en .NET"
+title: Control de los eventos de ciclo de vida del servicio en la nube | Microsoft Docs
+description: "Aprenda cómo se pueden usar los métodos del ciclo de vida de un rol de  servicio en la nube en .NET"
 services: cloud-services
 documentationcenter: .net
 author: Thraka
@@ -14,40 +14,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: cc0ccc5f055b965202b6e081a6ab72ad5d39b034
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: eb78c05df3b3cdf3887334c11bdabd5cebb74747
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="customize-hello-lifecycle-of-a-web-or-worker-role-in-net"></a>Personalizar Hola del ciclo de vida de un rol Web o de trabajo en .NET
-Cuando se crea un rol de trabajo, ampliar hello [RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx) clase que proporciona métodos de toooverride que le permite responder a eventos de toolifecycle. Para los roles web esta clase es opcional, por lo que debe usar toorespond toolifecycle eventos.
+# <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Personalizar el ciclo de vida de un rol web o de trabajo en .NET
+Cuando cree un rol de trabajo, amplíe la clase [RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx) que ofrece métodos para invalidar que le permiten responder a eventos del ciclo de vida. Para los roles web esta clase es opcional, por lo que debe usarla para responder a eventos del ciclo de vida.
 
-## <a name="extend-hello-roleentrypoint-class"></a>Extender la clase de hello RoleEntryPoint
-Hola [RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx) clase incluye métodos que se llaman Azure cuando lo **inicia**, **ejecuta**, o **detiene** un rol web o de trabajo. Opcionalmente, puede invalidar estos métodos toomanage rol inicialización, secuencias de apagado de rol o subproceso de ejecución de Hola de rol de Hola. 
+## <a name="extend-the-roleentrypoint-class"></a>Extender la clase RoleEntryPoint
+La clase [RoleEntryPoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx) incluye métodos a los que llama Azure cuando se **inicia**, **se ejecuta** o **se detiene** un rol web o de trabajo. Opcionalmente, puede invalidar estos métodos para administrar la inicialización de roles, las secuencias de apagado de rol o el subproceso de ejecución del rol. 
 
-Al extender **RoleEntryPoint**, debe ser consciente de hello siguientes comportamientos de hello métodos:
+Al extender **RoleEntryPoint**, debe tener en cuenta los siguientes comportamientos de los métodos:
 
-* Hola [OnStart](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) y [OnStop](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx) métodos devuelven un valor booleano, por lo que es posible tooreturn **false** de estos métodos.
+* Los métodos [OnStart](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) y [OnStop](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx) devuelven un valor booleano, por lo que es posible devolver **false** desde estos métodos.
   
-   Si el código devuelve **false**, Hola rol proceso finaliza precipitadamente, sin ejecutar ninguna secuencia de cierre que pueda tener en su lugar. En general, se recomienda evitar devolver **false** de hello **OnStart** método.
+   Si el código devuelve **false**, el proceso del rol finaliza precipitadamente, sin ejecutar ninguna secuencia de apagado que pueda tener implantada. En general, debería evitar devolver **false** del método **OnStart**.
 * Cualquier excepción no detectada en una sobrecarga de un método **RoleEntryPoint** se trata como una excepción no controlada.
   
-   Si se produce una excepción dentro de uno de los métodos del ciclo de vida de hello, Azure desencadenará hello [UnhandledException](https://msdn.microsoft.com/library/system.appdomain.unhandledexception.aspx) eventos, y, a continuación, se termina el proceso de Hola. Tras la desconexión del rol, se reiniciará Azure. Cuando una excepción no controlada se produce, hello [detener](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.stopping.aspx) no se produce el evento y Hola **OnStop** no se llama el método.
+   Si se produce una excepción dentro de uno de los métodos del ciclo de vida, Azure generará el evento [UnhandledException](https://msdn.microsoft.com/library/system.appdomain.unhandledexception.aspx) y luego finalizará el proceso. Tras la desconexión del rol, se reiniciará Azure. Cuando se produzca una excepción no controlada, no se generará el evento [Detener](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.stopping.aspx) y no se llamará al método **OnStop** .
 
-Si el rol no se inicia o se recicla entre Hola inicializando, ocupados y deteniendo Estados, el código puede producir una excepción no controlada dentro de uno de los eventos de ciclo de vida de Hola que se reinicia cada rol de Hola de tiempo. En este caso, utilice hello [UnhandledException](https://msdn.microsoft.com/library/system.appdomain.unhandledexception.aspx) eventos toodetermine Hola a causa de la excepción de Hola y administrarla correctamente. Puede que su rol también se puede devolver desde hello [ejecutar](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) método, que hace que Hola rol toorestart. Para obtener más información acerca de los Estados de implementación, consulte [tooRecycle problemas que causa Roles comunes](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
+Si el rol no se inicia, o se recicla entre los estados de inicialización, ocupado y detención, el código puede generar una excepción no controlada en uno de los eventos de ciclo de vida cada vez que se reinicie el rol. En este caso, use el evento [UnhandledException](https://msdn.microsoft.com/library/system.appdomain.unhandledexception.aspx) para determinar la causa de la excepción y controlarla de manera adecuada. Puede que su rol también se pueda devolver desde el método [Ejecutar](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx) , que hace que se reinicie el rol. Para obtener más información acerca de los estados de implementación, vea [Problemas comunes que hacen que se reciclen los roles](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md).
 
 > [!NOTE]
-> Si usas hello **Azure Tools para Microsoft Visual Studio** toodevelop su aplicación, plantillas de proyecto de rol de hello extienden automáticamente hello **RoleEntryPoint** clase Hola *WebRole.cs* y *WorkerRole.cs* archivos.
+> Si está usando la **Azure Tools para Microsoft Visual Studio** para desarrollar su aplicación, las plantillas de proyecto de rol extienden automáticamente la clase **RoleEntryPoint**, en los archivos *WebRole.cs* y *WorkerRole.cs*.
 > 
 > 
 
 ## <a name="onstart-method"></a>Método OnStart
-Hola **OnStart** método se llama cuando la instancia de rol se pone en línea a Azure. Mientras se está ejecutando código de OnStart hello, instancia de rol de Hola se marca como **ocupado** y ningún tráfico externo será dirigido tooit equilibrador de carga de Hola. Puede invalidar este trabajo de inicialización tooperform de método, como implementar controladores de eventos e iniciar [diagnósticos de Azure](cloud-services-how-to-monitor.md).
+Al método **OnStart** se llama cuando Azure pone en línea la instancia de rol. Mientras se ejecuta el código OnStart, la instancia de rol estará marcada como **ocupada** y el equilibrador de carga no le dirigirá ningún tráfico externo. Puede invalidar este método para realizar trabajo de inicialización, como la implementación de controladores de eventos el inicio de [Diagnósticos de Azure](cloud-services-how-to-monitor.md).
 
-Si **OnStart** devuelve **true**, Hola instancia se inicializó correctamente y Azure llama hello **RoleEntryPoint.Run** método. Si **OnStart** devuelve **false**, rol de hello termina inmediatamente, sin ejecutar las secuencias de apagado planeado.
+Si **OnStart** devuelve **true**, la instancia se inicializa correctamente y Azure llama al método **RoleEntryPoint.Run**. Si **OnStart** devuelve **false**, el rol finaliza de inmediato, sin ejecutar ninguna secuencia de apagado planeado.
 
-Hola siguiendo el ejemplo de código muestra cómo hello toooverride **OnStart** método. Este método configura e inicia el monitor de diagnóstico cuando la instancia de rol de Hola se inicia y se configura una transferencia del inicio de sesión de cuenta de almacenamiento de datos tooa:
+En el ejemplo de código siguiente se muestra cómo invalidar el método **OnStart** . Este método configura e inicia un monitor de diagnóstico cuando se inicia la instancia de rol y se configura una transferencia de datos de registro a una cuenta de almacenamiento:
 
 ```csharp
 public override bool OnStart()
@@ -64,21 +64,21 @@ public override bool OnStart()
 ```
 
 ## <a name="onstop-method"></a>Método OnStop
-Hola **OnStop** método se llama después de una instancia de rol se ha desconectado por Azure y antes de que salga del proceso de Hola. Puede reemplazar este código de toocall método necesario para su toocleanly de instancia de rol apagar.
+Al método **OnStop** se llama después de que Azure haya desconectado una instancia de rol Azure y antes de que salga el proceso. Puede invalidar este método para llamar al código necesario para que la instancia de rol se desconecte sin errores.
 
 > [!IMPORTANT]
-> Código que se ejecuta en hello **OnStop** método tiene un período de tiempo limitado toofinish cuando se llama por motivos distintos a un cierre iniciado por el usuario. Después de transcurrido este tiempo, Hola proceso finaliza, debe asegurarse de que el código de hello **OnStop** método puede ejecutarse rápidamente o que tolera toocompletion no se está ejecutando. Hola **OnStop** método se llama después de hello **detener** evento se desencadena.
+> El código que se ejecuta en el método **OnStop** tiene un tiempo limitado para finalizar cuando se llama por motivos distintos del apagado iniciado por un usuario. Después de que transcurra este tiempo, el proceso finaliza, por lo que debe asegurarse de que el código del método **OnStop** puede ejecutarse rápidamente o de que no tolera que no haya ninguna ejecución para finalizar. Al método **OnStop** se le llama después de que se genere el evento **Deteniendo**.
 > 
 > 
 
 ## <a name="run-method"></a>Método Run
-Puede invalidar hello **ejecutar** método tooimplement un subproceso de ejecución prolongada para la instancia de rol.
+Puede invalidar el método **Run** para implementar un subproceso de larga ejecución para su instancia de rol.
 
-Reemplazar hello **ejecutar** método no es necesario; la implementación predeterminada de hello inicia un subproceso que se mantiene en espera indefinidamente. Si invalida hello **ejecutar** método, el código debe bloquearse indefinidamente. Si hello **ejecutar** método devuelve, rol Hola se recicla automáticamente sin problemas; es decir, Azure desencadena hello **detener** Hola eventos y llamadas **OnStop** método para que se puedan ejecutar las secuencias de cierre antes Hola rol se quede sin conexión.
+No es necesaria la invalidación del método **Run** ; la implementación predeterminada inicia un subproceso que se mantiene en suspensión indefinidamente. Si invalida el método **Run** , el código debe bloquearse indefinidamente. Si vuelve el método **Ejecutar**, el rol se recicla automáticamente sin problemas; es decir, Azure genera el evento **Detener** y llama al método **OnStop** para que las secuencias de apagado se puedan ejecutar antes de que el rol se quede sin conexión.
 
-### <a name="implementing-hello-aspnet-lifecycle-methods-for-a-web-role"></a>Implementar métodos de ciclo de vida ASP.NET de Hola para un rol web
-Puede utilizar métodos de ciclo de vida ASP.NET de hello, además proporciona hello toothose **RoleEntryPoint** de la clase, las secuencias de inicialización y cierre de toomanage para un rol web. Esto puede ser útil con fines de compatibilidad si va a trasladar una tooAzure de aplicación de ASP.NET existente. métodos de ciclo de vida ASP.NET de Hola se llaman desde dentro de hello **RoleEntryPoint** métodos. Hola **aplicación\_iniciar** método se llama después de hello **RoleEntryPoint.OnStart** método finaliza. Hola **aplicación\_final** método se llama antes de hello **RoleEntryPoint.OnStop** se llama al método.
+### <a name="implementing-the-aspnet-lifecycle-methods-for-a-web-role"></a>Implementación de los métodos del ciclo de vida de ASP.NET para un rol web
+Puede usar los métodos del ciclo de vida de ASP.NET, además de los proporcionados por la clase **RoleEntryPoint** , para administrar secuencias de inicialización y apagado para un rol web. Esto puede ser útil para compatibilidad si va a portar una aplicación de ASP.NET existente a Azure. Se llama a los métodos de ciclo de vida de ASP.NET desde los métodos **RoleEntryPoint** . Al método **Application\_Start** se llama después de que finalice el método **RoleEntryPoint.OnStart**. Al método **Application\_End** se llama después de que se llame al método **RoleEntryPoint.OnStop**.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Obtenga información acerca de cómo demasiado[crear un paquete de servicios de nube](cloud-services-model-and-package.md).
+Aprenda cómo [crear un paquete de servicio en la nube](cloud-services-model-and-package.md).
 

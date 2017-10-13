@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure IoT Suite documentación - tutoriales, referencia de API | Documentos de Microsoft"
+title: "Documentación sobre el Conjunto de aplicaciones de IoT de Azure: tutoriales y referencia de API | Microsoft Docs"
 description: 
 services: iot-suite
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 83b006447e0d06d49ed7feace16b0db7d04d56f9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 9726304918cbbc85e32e2095d2f1d4701fb8a71e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="iot-suite-documentation"></a>Documentación del Conjunto de aplicaciones de IoT
 
-Comience rápidamente con el Conjunto de aplicaciones de IoT de Microsoft Azure. Usar soluciones preconfiguradas y acelerar el desarrollo de saludo de la solución de Internet de las cosas (IoT). Agregue nuevos dispositivos y conéctese a los existentes utilizando los SDK de dispositivo para diversas plataformas, incluidas Linux, Windows y sistemas operativos en tiempo real. Fácilmente escalar desde tan solo unos toomillions sensores de dispositivos conectados al mismo tiempo y confiar en la disponibilidad global de Azure hello&mdash;independientemente del tamaño del proyecto.
+Comience rápidamente con el Conjunto de aplicaciones de IoT de Microsoft Azure. Utilice soluciones preconfiguradas y acelere el desarrollo de su solución de Internet de las cosas (IoT). Agregue nuevos dispositivos y conéctese a los existentes utilizando los SDK de dispositivo para diversas plataformas, incluidas Linux, Windows y sistemas operativos en tiempo real. Escale fácilmente desde tan solo unos pocos sensores hasta millones de dispositivos conectados simultáneamente y confíe en la disponibilidad global de Azure, sea cual sea el tamaño del proyecto.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -92,7 +92,7 @@ Comience rápidamente con el Conjunto de aplicaciones de IoT de Microsoft Azure.
                         <p><a href="/azure/iot-suite/iot-security-architecture">Arquitectura de seguridad</a></p>
                         <p><a href="/azure/iot-suite/iot-security-best-practices">Procedimientos de seguridad recomendados</a></p>
                         <p><a href="/azure/iot-suite/iot-suite-security-deployment">Protección de su implementación de IoT</a></p>
-                        <p><a href="/azure/iot-suite/securing-iot-ground-up">Seguridad de hello masa</a></p>
+                        <p><a href="/azure/iot-suite/securing-iot-ground-up">Seguridad total</a></p>
                    </div>
                 </div>
             </div>

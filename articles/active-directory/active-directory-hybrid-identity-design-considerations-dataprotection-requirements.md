@@ -1,6 +1,6 @@
 ---
-title: "Consideraciones de diseño de identidad de aaaAzure Active Directory híbrida - determinar los requisitos de protección de datos | Documentos de Microsoft"
-description: "Cuando planifique la solución de identidad híbrida, identificar los requisitos de protección de datos de Hola para su empresa y qué opciones están disponible toobest cumplan estos requisitos."
+title: "Consideraciones de diseño de identidad híbrida de Azure Active Directory - determinar los requisitos de protección de datos | Microsoft Docs"
+description: "Al planear la solución de identidad híbrida, identifique los requisitos de protección de datos de su empresa y las opciones disponibles que mejor satisfacen esos requisitos."
 documentationcenter: 
 services: active-directory
 author: billmath
@@ -14,68 +14,68 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 189abf9affbc2894c322f362d84222d4e33d472e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 96bf9d4c26a22f718c29804c11681199e775f589
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="plan-for-enhancing-data-security-through-strong-identity-solution"></a>Plan para mejorar la seguridad de los datos mediante una solución de identidad sólida
-Hola primer paso tooprotect Hola datos están identificar quién puede tener acceso a esos datos y como parte de este proceso es necesario toohave una solución de identidad que se integra con sus capacidades de autenticación y autorización de tooprovide de sistema. Con frecuencia la autenticación y la autorización se confunden y no se comprende bien su función. En realidad son muy diferentes, como se muestra en la siguiente ilustración de hello:
+El primer paso para proteger los datos es identificar quién puede tener acceso a ellos. Como parte de este proceso, necesita contar con una solución de identidad que se pueda integrar con su sistema con el fin de proporcionar funcionalidades de autenticación y autorización. Con frecuencia la autenticación y la autorización se confunden y no se comprende bien su función. En realidad, son bastante diferentes, tal como se muestra en la ilustración siguiente:
 
 ![](./media/hybrid-id-design-considerations/mobile-devicemgt-lifecycle.png)
 
 **Fases del ciclo de vida de administración de dispositivos móviles**
 
-Al planear la solución de identidad híbrida debe entender requisitos de protección de datos de Hola para su empresa y qué opciones están disponible toobest cumplan estos requisitos.
+Al planear la solución de identidad híbrida, debe comprender los requisitos de protección de datos de su negocio y las opciones de las que dispone que mejor pueden satisfacer esos requisitos.
 
 > [!NOTE]
-> Después de finalizar la planeación de seguridad de los datos, revise [determinar los requisitos de la autenticación multifactor](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md) tooensure que las selecciones realizadas con respecto a los requisitos de la autenticación multifactor no resultaron afectadas por las decisiones de Hola que haya realizado en esta sección.
+> Después de terminar de planear la seguridad de los datos, revise [Determinación de los requisitos de autenticación multifactor](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md) para asegurarse de que las selecciones respecto a los requisitos de la autenticación multifactor no resultaron afectadas por las decisiones tomadas en esta sección.
 > 
 > 
 
 ## <a name="determine-data-protection-requirements"></a>Determinación de los requisitos de protección de datos
-En edad Hola de movilidad, mayoría de las empresas tiene un objetivo común: habilitar su toobe de los usuarios más productivo en sus dispositivos móviles al local o de forma remota desde cualquier parte en la productividad de tooincrease del orden. Aunque esto podría ser un objetivo común, las compañías que tienen este requisito también será preocupación con respecto a la cantidad de Hola de amenazas que se deben mitigar en datos de la compañía de orden tookeep seguros y mantendrán la privacidad del usuario. Cada compañía puede tener requisitos diferentes en este sentido; las reglas de cumplimiento diferentes variarán empresa de Hola de sector toowhich correspondiente está actuando will provocar toodifferent decisiones de diseño. 
+En la era de la movilidad, el objetivo de la mayoría de las empresas es permitir a los usuarios ser productivos con sus dispositivos móviles, tanto de forma local como remota y, desde cualquier parte, con el fin de aumentar la productividad. Si bien este podría ser un objetivo común, las empresas que tienen tales requisitos también se sienten preocupadas respecto a la cantidad de amenazas que se deben mitigar a fin de proteger los datos de la empresa y mantener la privacidad de los usuarios. En este sentido, cada empresa puede tener requisitos diferentes; diferentes reglas de cumplimiento que variarán según la industria para la que trabaje la empresa y que conducirán a diferentes decisiones de diseño. 
 
-Sin embargo, hay algunos aspectos de seguridad que se deben explorar y validar, independientemente del sector de hello, que se explican en la sección siguiente Hola.
+Sin embargo, hay algunos aspectos de seguridad que se deben explorar y validar, con independencia de la industria, que se explican en la sección siguiente.
 
 ## <a name="data-protection-paths"></a>Rutas de protección de datos
 ![](./media/hybrid-id-design-considerations/data-protection-paths.png)
 
 **Rutas de protección de datos**
 
-Hola diagrama anterior, el componente de identidad de hello estará hello primero toobe comprobado antes de que se tiene acceso a datos. Sin embargo, estos datos pueden ser en diferentes estados durante el tiempo de Hola que se obtuvo acceso. Cada número de este diagrama representa una ruta en la que se pueden encontrar los datos en algún momento en el tiempo. Estos números se explican a continuación:
+En el diagrama anterior, el componente de identidad será el primero en comprobarse antes de acceder a los datos. Sin embargo, estos datos pueden estar en distintos estados según el momento en el que se tuvo acceso a ellos. Cada número de este diagrama representa una ruta en la que se pueden encontrar los datos en algún momento en el tiempo. Estos números se explican a continuación:
 
-1. Protección de datos en el nivel de dispositivo de Hola.
+1. Protección de datos en el nivel de dispositivo.
 2. Protección de datos en tránsito.
 3. Protección de datos en reposo en el entorno local.
-4. Protección de datos mientras están en reposo en la nube de Hola.
+4. Protección de datos mientras están en reposo en la nube.
 
-Aunque la solución de identidad híbrida de hello directamente no ofrece controles técnicos Hola que permiten TI tooprotect Hola propios datos en cada una de estas fases, es necesario que la solución de identidad híbrida de hello es capaz de aprovechando tanto de forma local y usuario hello tooidentify de recursos de administración de identidad antes de conceder acceso a los datos toohello en la nube. Cuando planifique la solución de identidad híbrida asegurarse de esa Hola después se responden preguntas según los requisitos de la organización tooyour:
+Aunque la solución de identidad híbrida no ofrece directamente los controles técnicos que permiten al departamento de TI proteger los datos en cada una de esas fases, es necesario que la solución de identidad híbrida sea capaz de aprovechar los recursos de administración de identidades locales y en la nube con el fin de identificar al usuario antes de que se le conceda acceso a los datos. Al planear la solución de identidad híbrida, asegúrese de que puede responder a las siguientes preguntas según los requisitos de su organización:
 
 ## <a name="data-protection-at-rest"></a>Protección de datos en reposo
-Independientemente de donde hello datos en reposo (dispositivo, en la nube o local), es importante tooperform una organización de evaluación toounderstand Hola necesita en este sentido. Para esta área, asegúrese de que le pide que Hola siguientes preguntas:
+Con independencia de dónde se encuentren los datos en reposo (dispositivo, nube o local), es importante realizar una evaluación para comprender las necesidades de la organización al respecto. En este área, asegúrese de plantearse las siguientes cuestiones:
 
-* ¿La compañía necesita tooprotect datos en reposo?
-  * ¿Si es así, es Hola híbrida identidad solución capaz de toointegrate con la infraestructura local actual?
-  * ¿Si es así, es Hola híbrida identidad solución capaz de toointegrate con las cargas de trabajo que se encuentra en la nube de hello?
-* ¿Es credenciales del usuario de hello en la nube identity management tooprotect capaz de Hola y otros datos almacenados en la nube de hello?
+* ¿Necesita su empresa proteger los datos en reposo?
+  * En caso afirmativo, ¿podrá integrarse la solución híbrida con la infraestructura local actual?
+  * En caso afirmativo, ¿podrá integrarse la solución híbrida con las cargas de trabajo ubicadas en la nube?
+* ¿Podrá proteger la administración de identidades en la nube las credenciales del usuario y otros datos almacenados en la nube?
 
 ## <a name="data-protection-in-transit"></a>Protección de datos en tránsito
-Se deben proteger los datos en tránsito entre el dispositivo de Hola y Hola centro de datos o entre dispositivos de Hola y de nube de Hola. Sin embargo, estar en tránsito no significa necesariamente que el proceso de comunicaciones con un componente se produzca fuera del servicio en la nube; también se mueve internamente, por ejemplo, entre dos redes virtuales. Para esta área, asegúrese de que le pide que Hola siguientes preguntas:
+Los datos en tránsito entre el dispositivo y el centro de datos o entre el dispositivo y la nube deben estar protegidos. Sin embargo, estar en tránsito no significa necesariamente que el proceso de comunicaciones con un componente se produzca fuera del servicio en la nube; también se mueve internamente, por ejemplo, entre dos redes virtuales. En este área, asegúrese de plantearse las siguientes cuestiones:
 
-* ¿La compañía necesita tooprotect datos en tránsito?
-  * ¿Si es así, es Hola híbrida identidad solución capaz de toointegrate con controles seguros, como SSL/TLS?
-* ¿Administración de identidades de nube de hello mantener Hola tráfico tooand en almacén de directorio de hello (dentro y entre los centros de datos) firmado?
+* ¿Necesita su empresa proteger los datos en tránsito?
+  * En caso afirmativo, ¿podrá integrarse la solución híbrida con controles seguros como SSL/TLS?
+* ¿Mantiene la administración de identidades en la nube el tráfico al almacén de directorios firmado y dentro de él (dentro y entre centros de datos)?
 
 ## <a name="compliance"></a>Cumplimiento normativo
-Normas, leyes y los requisitos de cumplimiento de normas variará sector toohello correspondiente que pertenece su empresa. Las empresas en industrias reguladas alta deben resolver problemas de administración de identidades preocupaciones relacionadas toocompliance. Normas como Sarbanes-Oxley (SOX), Health Insurance Portability hello y Accountability Act (HIPPA) Hola Gramm-Leach-Bliley Act (GLBA) y Hola tarjeta sector datos estándar de seguridad pago (PCI DSS) son muy estrictos con respecto a la extensión identity and access. solución de identidad híbrida de Hola que adopte la empresa debe tener capacidades básicas de Hola que cumplirán los requisitos de Hola de una o varias de estas normas. Para esta área, asegúrese de que le pide que Hola siguientes preguntas:
+Las normas, las leyes y los requisitos de cumplimiento normativo variarán según la industria a la que pertenezca su empresa. Las empresas de industrias muy reguladas deben solucionar los problemas de administración de identidades relacionados con los aspectos de cumplimiento. Normativas como Sarbanes-Oxley (SOX), la Ley de transferencia y responsabilidad de seguros de salud (HIPAA), la Ley de Gramm-Leach-Bliley (GLBA) y el Estándar de Seguridad de Datos para la Industria de Tarjeta de Pago (PCI DSS) son muy estrictos respecto a la identidad y el acceso. La solución de identidad híbrida que su empresa adopte debe tener las funcionalidades básicas que satisfagan los requisitos de una o varias de estas normativas. En este área, asegúrese de plantearse las siguientes cuestiones:
 
-* ¿Es la solución de identidad híbrida de hello cumple los requisitos de regulación de Hola para su empresa?
-* ¿Solución de identidad híbrida hace Hola ha generado en funciones que permiten a los requisitos de regulación de empresa toobe conforme? 
+* ¿Cumple la solución de identidad híbrida los requisitos normativos de su empresa?
+* ¿Integra la solución de identidad híbrida funcionalidades que permiten a su empresa satisfacer los requisitos de cumplimiento normativo? 
 
 > [!NOTE]
-> Hacer notas de tootake seguro de cada respuesta y entender el razonamiento de hello detrás de respuesta de Hola. [Definir la estrategia de protección de datos](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md) irá Hola opciones disponibles y las ventajas y desventajas de cada opción.  Las respuestas que obtenga partir de estas preguntas le servirán para seleccionar la opción que mejor se adapte a sus necesidades empresariales.
+> Asegúrese de anotar cada respuesta y de que comprende las razones que se esconden detrás. [Definición de la estrategia de protección de datos](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md) se recorren las opciones disponibles y las ventajas y desventajas de cada una.  Las respuestas que obtenga partir de estas preguntas le servirán para seleccionar la opción que mejor se adapte a sus necesidades empresariales.
 > 
 > 
 

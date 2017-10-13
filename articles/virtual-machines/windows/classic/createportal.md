@@ -1,6 +1,6 @@
 ---
-title: "una máquina virtual de Windows personalizada aaaCreate | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toocreate una máquina virtual de Windows personalizada de hello Azure portal mediante Hola modelo de implementación clásica."
+title: "Creación de una máquina virtual Windows personalizada | Microsoft Docs"
+description: "Aprenda a crear una máquina virtual Windows personalizada desde Azure Portal mediante el modelo de implementación clásico."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.openlocfilehash: 1496516ddfea8caf3fe1c4e673c18ea60d56abb9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4d7b7a17751cc476d0365cbcbff3fcf23dd0c6ff
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="create-a-custom-virtual-machine-running-windows-using-hello-classic-deployment-model"></a>Crear una máquina virtual personalizada con Windows y modelo de implementación clásica de Hola
+# <a name="create-a-custom-virtual-machine-running-windows-using-the-classic-deployment-model"></a>Creación de una máquina virtual personalizada con Windows mediante el modelo de implementación clásico
 > [!IMPORTANT]
-> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../../../resource-manager-deployment-model.md). Este artículo tratan con modelo de implementación de hello clásico. Microsoft recomienda que más nuevas implementaciones de usar el modelo del Administrador de recursos de Hola.
+> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../../../resource-manager-deployment-model.md). En este artículo se trata el modelo de implementación clásico. Microsoft recomienda que las implementaciones más recientes usen el modelo del Administrador de recursos.
 
 [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-common-classic-createportal.md)]
 

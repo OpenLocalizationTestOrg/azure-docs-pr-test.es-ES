@@ -1,6 +1,6 @@
 ---
-title: funciones de plantilla de administrador de recursos de aaaAzure - deployment | Documentos de Microsoft
-description: "Describe hello toouse de funciones en una información de la implementación de la plantilla tooretrieve Azure Resource Manager."
+title: "Funciones de la plantilla de Azure Resource Manager: implementación | Microsoft Docs"
+description: "Describe las funciones para usar en una plantilla de Azure Resource Manager para recuperar información de implementación."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,34 +12,34 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/13/2017
+ms.date: 09/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 458c3f740504fdd6799ed24cc386219726737636
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 17fe2bc467acc5542d021961a066940dbecf6120
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Funciones de implementación para las plantillas de Azure Resource Manager 
 
-Administrador de recursos proporciona siguiente hello las funciones para obtener los valores de las secciones de plantilla de Hola y los valores relacionados toohello implementación:
+El Administrador de recursos ofrece las siguientes funciones para obtener valores de las secciones de la plantilla y valores relacionados con la implementación:
 
 * [deployment](#deployment)
 * [parameters](#parameters)
 * [variables](#variables)
 
-valores de tooget de recursos, grupos de recursos o suscripciones, vea [las funciones de recursos](resource-group-template-functions-resource.md).
+Para obtener valores de recursos, grupos de recursos o suscripciones, consulte [Funciones de recursos](resource-group-template-functions-resource.md).
 
 <a id="deployment" />
 
 ## <a name="deployment"></a>deployment
 `deployment()`
 
-Devuelve información acerca de la operación de implementación actual de Hola.
+Devuelve información sobre la operación de implementación actual.
 
 ### <a name="return-value"></a>Valor devuelto
 
-Esta función devuelve el objeto de Hola que se pasa durante la implementación. propiedades de Hola Hola devolvió objeto varían en función de si hello implementación objeto se pasa como un vínculo o como un objeto en línea. Cuando se pasa el objeto de implementación de hello en línea, como cuando se usa hello **- TemplateFile** parámetro en el archivo local de Azure PowerShell toopoint tooa, Hola devuelve objeto tiene Hola siguiendo el formato:
+Esta función devuelve el objeto pasado durante la implementación. Las propiedades del objeto devuelto varían en función de si el objeto de implementación se ha pasado como un vínculo o como un objeto en línea. Cuando se pasa el objeto de implementación en línea, como cuando se usa el parámetro **-TemplateFile** en Azure PowerShell para orientarlo a un archivo local, el objeto devuelto tiene el formato siguiente:
 
 ```json
 {
@@ -61,7 +61,7 @@ Esta función devuelve el objeto de Hola que se pasa durante la implementación.
 }
 ```
 
-Cuando se pasa el objeto de Hola como un vínculo, como al usar Hola **TemplateUri -** parámetro toopoint tooa remoto del objeto, se devuelve el objeto de Hola Hola siguiendo el formato: 
+Cuando el objeto se pasa como un vínculo, como cuando se usa el parámetro **-TemplateUri** para orientarlo a un objeto remoto, se devuelve el objeto en el formato siguiente: 
 
 ```json
 {
@@ -87,7 +87,7 @@ Cuando se pasa el objeto de Hola como un vínculo, como al usar Hola **TemplateU
 
 ### <a name="remarks"></a>Comentarios
 
-Puede usar deployment() toolink tooanother plantilla basado en el URI de la plantilla principal de Hola Hola.
+Puede usar deployment() para establecer un vínculo con otra plantilla basada en el identificador URI de la plantilla primaria.
 
 ```json
 "variables": {  
@@ -97,7 +97,7 @@ Puede usar deployment() toolink tooanother plantilla basado en el URI de la plan
 
 ### <a name="example"></a>Ejemplo
 
-Hello en el ejemplo siguiente se devuelve el objeto de implementación de hello:
+La [plantilla de ejemplo](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json) siguiente devuelve el objeto de implementación:
 
 ```json
 {
@@ -113,7 +113,7 @@ Hello en el ejemplo siguiente se devuelve el objeto de implementación de hello:
 }
 ```
 
-Hello en el ejemplo anterior se devuelve Hola después de objeto:
+El ejemplo anterior devuelve el objeto siguiente:
 
 ```json
 {
@@ -137,26 +137,38 @@ Hello en el ejemplo anterior se devuelve Hola después de objeto:
 }
 ```
 
+Para implementar esta plantilla de ejemplo con la CLI de Azure, use:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
+```
+
+Para implementar esta plantilla de ejemplo con PowerShell, use:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
+```
+
 <a id="parameters" />
 
 ## <a name="parameters"></a>parameters
 `parameters(parameterName)`
 
-Devuelve un valor de parámetro. nombre de parámetro especificado de Hello debe definirse en la sección de parámetros de Hola de plantilla de Hola.
+Devuelve un valor de parámetro. El nombre del parámetro especificado debe definirse en la sección de parámetros de la plantilla.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| parameterName |Sí |cadena |nombre de Hola de hello parámetro tooreturn. |
+| parameterName |Sí |cadena |El nombre del parámetro que se va a devolver. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-valor de Hola de hello parámetro especifica.
+Valor del parámetro especificado.
 
 ### <a name="remarks"></a>Comentarios
 
-Por lo general, utilice valores de parámetros tooset recursos. Hello en el ejemplo siguiente se establece Hola nombre del valor de parámetro de sitio web toohello pasado durante la implementación.
+Por lo general, se usan parámetros para establecer los valores de recurso. En el ejemplo siguiente se establece el nombre del sitio web en el valor del parámetro pasado durante la implementación.
 
 ```json
 "parameters": { 
@@ -176,7 +188,7 @@ Por lo general, utilice valores de parámetros tooset recursos. Hello en el ejem
 
 ### <a name="example"></a>Ejemplo
 
-Hello en el ejemplo siguiente se muestra un uso simplificado de función de parámetros de Hola.
+En la [plantilla de ejemplo](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json) siguiente se muestra un uso simplificado de la función de los parámetros.
 
 ```json
 {
@@ -231,7 +243,7 @@ Hello en el ejemplo siguiente se muestra un uso simplificado de función de par�
 }
 ```
 
-Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
+La salida del ejemplo anterior con el valor predeterminado es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -241,26 +253,38 @@ Hola de salida de hello anterior ejemplo con valores predeterminados de hello es
 | arrayOutput | Matriz | [1, 2, 3] |
 | crossOutput | String | opción 1 |
 
+Para implementar esta plantilla de ejemplo con la CLI de Azure, use:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/parameters.json
+```
+
+Para implementar esta plantilla de ejemplo con PowerShell, use:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/parameters.json
+```
+
 <a id="variables" />
 
 ## <a name="variables"></a>variables
 `variables(variableName)`
 
-Devuelve Hola valor de variable. nombre de variable especificado Hola debe definirse en la sección de variables de Hola de plantilla de Hola.
+Devuelve el valor de variable. El nombre de la variable especificada debe definirse en la sección de variables de la plantilla.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| variableName |Sí |String |nombre de Hola de hello variable tooreturn. |
+| variableName |Sí |string |El nombre de la variable que se va a devolver. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-valor de Hola de variable especificado Hola.
+Valor de la variable especificada.
 
 ### <a name="remarks"></a>Comentarios
 
-Normalmente, se usa variables toosimplify la plantilla mediante la creación de una sola vez valores complejos. Hello en el ejemplo siguiente se crea un nombre único para una cuenta de almacenamiento.
+Por lo general, para simplificar la plantilla se usan variables para crear valores complejos de una sola vez. En el ejemplo siguiente se crea un nombre único para una cuenta de almacenamiento.
 
 ```json
 "variables": {
@@ -284,7 +308,7 @@ Normalmente, se usa variables toosimplify la plantilla mediante la creación de 
 
 ### <a name="example"></a>Ejemplo
 
-plantilla de ejemplo de Hola devuelve distintos valores de variable.
+La [plantilla de ejemplo](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json) siguiente devuelve distintos valores de variable.
 
 ```json
 {
@@ -322,7 +346,7 @@ plantilla de ejemplo de Hola devuelve distintos valores de variable.
 }
 ```
 
-Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
+La salida del ejemplo anterior con el valor predeterminado es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
@@ -331,9 +355,21 @@ Hola de salida de hello anterior ejemplo con valores predeterminados de hello es
 | exampleOutput3 | String | myVariable |
 | exampleOutput4 |  Objeto | {"property1": "value1", "property2": "value2"} |
 
+Para implementar esta plantilla de ejemplo con la CLI de Azure, use:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
+```
+
+Para implementar esta plantilla de ejemplo con PowerShell, use:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
+```
+
 ## <a name="next-steps"></a>Pasos siguientes
-* Para obtener una descripción de las secciones de hello en una plantilla de Azure Resource Manager, consulte [plantillas del Administrador de recursos de Azure de creación](resource-group-authoring-templates.md).
-* toomerge varias plantillas, consulte [mediante plantillas vinculadas con el Administrador de recursos de Azure](resource-group-linked-templates.md).
-* tooiterate un número especificado de veces al crear un tipo de recurso, vea [crear varias instancias de recursos en el Administrador de recursos de Azure](resource-group-create-multiple.md).
-* toosee cómo toodeploy plantilla de Hola que haya creado, vea [implementar una aplicación con la plantilla de Azure Resource Manager](resource-group-template-deploy.md).
+* Para obtener una descripción de las secciones de una plantilla de Azure Resource Manager, vea [Creación de plantillas de Azure Resource Manager](resource-group-authoring-templates.md).
+* Para combinar varias plantillas, vea [Uso de plantillas vinculadas con Azure Resource Manager](resource-group-linked-templates.md).
+* Para iterar una cantidad de veces específica al crear un tipo de recurso, vea [Creación de varias instancias de recursos en el Administrador de recursos de Azure](resource-group-create-multiple.md).
+* Para saber cómo implementar la plantilla que creó, consulte [Implementación de una aplicación con la plantilla de Azure Resource Manager](resource-group-template-deploy.md).
 

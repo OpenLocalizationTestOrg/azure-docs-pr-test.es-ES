@@ -1,6 +1,6 @@
 ---
-title: aaaScale una base de datos SQL de Azure | Documentos de Microsoft
-description: "¿Cómo toouse Hola ShardMapManager, biblioteca de cliente de base de datos elástica"
+title: Escalado horizontal de una base de datos Azure SQL Database | Microsoft Docs
+description: "Cómo usar ShardMapManager, la biblioteca de cliente de bases de datos elásticas"
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -15,41 +15,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: 4cf670d42ad7ded98fb8d6f0830154587dd2c6f1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f626cf417d8b3f1761f3c900d49039b3ff83b093
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="scale-out-databases-with-hello-shard-map-manager"></a>Escalar horizontalmente bases de datos con el Administrador de mapa de particiones de Hola
-tooeasily escalada bases de datos de SQL Azure, utilice un administrador de mapa de particiones. el Administrador de mapa de particiones de Hello es una base de datos especial que mantiene la información de asignación global acerca de todas las particiones (bases de datos) en un conjunto de particiones. Hola de metadatos permite a una aplicación tooconnect toohello base de datos correcta en función de valor de Hola de hello **clave de particionamiento**. Además, cada partición en conjunto hello contiene asignaciones que realizan el seguimiento de datos de la partición local de hello (conocido como **shardlets**). 
+# <a name="scale-out-databases-with-the-shard-map-manager"></a>Escalado horizontal de las bases de datos mediante Shard Map Manager
+Para escalar fácilmente bases de datos de SQL Azure, utilice Shard Map Manager. Shard Map Manager es una base de datos especial que mantiene la información de asignación global acerca de todas las particiones (bases de datos) de un conjunto de particiones. Los metadatos permiten que una aplicación se conecte a la base de datos correcta en función del valor de la **clave de particionamiento**. Además, cada partición del conjunto contiene asignaciones que realizan el seguimiento de los datos de particiones locales (conocidos como **shardlets**). 
 
 ![Administración de mapas de particiones.](./media/sql-database-elastic-scale-shard-map-management/glossary.png)
 
-Descripción de cómo se construyen estas asignaciones es esencial tooshard de administración de mapa. Esto se realiza mediante hello [ShardMapManager clase](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx), que se encuentra en hello [biblioteca de cliente de base de datos elástica](sql-database-elastic-database-client-library.md) toomanage partición se asigna.  
+Comprender cómo se construyen estos mapas es fundamental para la administración de los mapas de particiones. Esto se realiza mediante la [clase ShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx), que se encuentra en la [biblioteca de cliente de Elastic Database](sql-database-elastic-database-client-library.md) para administrar los mapas de particiones.  
 
 ## <a name="shard-maps-and-shard-mappings"></a>Mapas de particiones y asignaciones de particiones
-Para cada partición, debe seleccionar tipo de Hola de toocreate de mapa de particiones. elección de Hello depende de la arquitectura de base de datos de hello: 
+Para cada partición, debe seleccionar el tipo de mapa de particiones que desea crear. La elección depende de la arquitectura de base de datos: 
 
 1. Un solo inquilino por base de datos  
 2. Varios inquilinos por base de datos (dos tipos):
    1. Asignación de lista
    2. Asignación de intervalo
 
-Para un modelo de un solo inquilino, cree un mapa de particiones de **asignación de lista** . modelo de Hello único inquilino asigna una base de datos por inquilino. Se trata de un modelo eficaz para desarrolladores de SaaS, pues simplifica la administración.
+Para un modelo de un solo inquilino, cree un mapa de particiones de **asignación de lista** . El modelo de inquilino único asigna una base de datos por inquilino. Se trata de un modelo eficaz para desarrolladores de SaaS, pues simplifica la administración.
 
 ![Asignación de lista][1]
 
-modelo de varios inquilinos de Hello asigna a varios inquilinos tooa única base de datos (y grupos de inquilinos puede distribuir a través de varias bases de datos). Use este modelo cuando espera que necesitan cada datos pequeños de toohave de inquilino. En este modelo, se asigna un intervalo de los inquilinos tooa base de datos usando **asignación de intervalo**. 
+El modelo de varios inquilinos asigna varios inquilinos a una base de datos única (y puede distribuir grupos de inquilinos entre varias bases de datos). Use este modelo si espera que cada inquilino tenga pequeñas necesidades de datos. En este modelo, asignamos un intervalo de inquilinos a una base de datos mediante **asignación de intervalo**. 
 
 ![Asignación de intervalo][2]
 
-O puede implementar un modelo de base de datos de varios inquilinos mediante un *asignación de lista* tooassign varios inquilinos tooa única base de datos. Por ejemplo, DB1 es toostore usa información acerca del Id. de inquilino 1 y 5, y DB2 almacena los datos de inquilino 10 e inquilino 7. 
+O puede implementar un modelo de base de datos multiinquilino mediante una *asignación de lista* para asignar varios inquilinos a una base de datos única. Por ejemplo, DB1 se usa para almacenar información sobre el id. de inquilino 1 y 5, mientras que DB2 almacena datos sobre el inquilino 7 y 10. 
 
 ![Varios inquilinos en una sola base de datos][3] 
 
 ### <a name="supported-net-types-for-sharding-keys"></a>Tipos .NET admitidos para claves de particionamiento
-Hola de soporte técnico de escala elástica después de .net Framework los tipos como claves de particionamiento:
+Escalado elástico admite los siguientes tipos de .Net Framework como claves de particionamiento:
 
 * integer
 * long
@@ -63,7 +63,7 @@ Hola de soporte técnico de escala elástica después de .net Framework los tipo
 Los mapas de particiones se pueden construir mediante **listas de valores individuales de clave de particionamiento**, o por medio de **intervalos de valores de clave de particionamiento**. 
 
 ### <a name="list-shard-maps"></a>Mapas de particiones de lista
-**Particiones** contienen **shardlets** y asignación de Hola de shardlets tooshards se mantiene un mapa de particiones. A **mapa de particiones de lista** es una asociación entre los valores clave individuales Hola que identifican hello shardlets y bases de datos de Hola que actúan como particiones.  **Enumerar asignaciones** explícitas y distintos valores de clave pueden ser asignado toohello misma base de datos. Por ejemplo, la clave 1 asigna tooDatabase A y B. de base de datos hacen referencia a valores de clave 3 y 6
+Las **particiones** contienen **shardlets** y la asignación de shardlets a particiones se mantiene mediante un mapa de particiones. Un **mapa de particiones de lista** es una asociación entre los valores de clave individuales que identifican los shardlets y las bases de datos que funcionan como particiones.  **asignaciones de lista** son valores de clave explícitos y diferentes que se pueden asignar a la misma base de datos. Por ejemplo, la clave 1 se asigna a la Base de datos A y los valores de clave 3 y 6 hacen referencia ambos a la Base de datos B.
 
 | Clave | Ubicación de la partición |
 | --- | --- |
@@ -74,9 +74,9 @@ Los mapas de particiones se pueden construir mediante **listas de valores indivi
 | ... |... |
 
 ### <a name="range-shard-maps"></a>Mapas de particiones de intervalo
-En un **mapa de particiones de intervalo**, intervalo de claves de Hola se describe mediante un par **[valor bajo, alto valor)** donde Hola *bajo valor* es clave mínimo de hello en el intervalo de Hola y Hola *Valor alto* es Hola primer valor mayor que el intervalo de saludo. 
+En un **mapa de particiones de intervalo**, el intervalo de claves se describe mediante un par **[valor bajo, valor alto)** donde el *valor bajo* es la clave mínima de el intervalo y el *valor alto* es el primer valor superior del intervalo. 
 
-Por ejemplo **[0, 100)** incluye todos los números enteros que son mayores o iguales que 0 y menores que 100. Tenga en cuenta que se admiten varios intervalos can punto toohello misma base de datos y discontinuas intervalos (por ejemplo, [100,200) y [400,600) ambos tooDatabase punto C en el siguiente ejemplo de Hola.)
+Por ejemplo **[0, 100)** incluye todos los números enteros que son mayores o iguales que 0 y menores que 100. Tenga en cuenta que varios intervalos pueden apuntar a la misma base de datos y que se admiten intervalos separados (por ejemplo, [100,200) y [400,600) ambos apuntan a la base de datos C en el ejemplo siguiente).
 
 | Clave | Ubicación de la partición |
 | --- | --- |
@@ -86,24 +86,24 @@ Por ejemplo **[0, 100)** incluye todos los números enteros que son mayores o ig
 | [400,600) |Database_C |
 | ... |... |
 
-Cada una de las tablas de hello mostradas anteriormente es un ejemplo conceptual de un **ShardMap** objeto. Cada fila es un ejemplo simplificado de una persona **PointMapping** (para el mapa de particiones de la lista de hello) o **RangeMapping** (para el mapa de particiones de intervalo de hello) objetos.
+Cada una de las tablas mostradas anteriormente es un ejemplo conceptual de un objeto **ShardMap** . Cada fila es un ejemplo simplificado de un objeto **PointMapping** (para el mapa de particiones de lista) o **RangeMapping** (para el mapa de particiones de intervalo).
 
 ## <a name="shard-map-manager"></a>Administrador de mapas de particiones
-En la biblioteca de cliente de Hola, Administrador de mapa de particiones de hello es una colección de asignaciones de particiones. Hola datos administrados por un **ShardMapManager** instancia se mantiene en tres lugares: 
+En biblioteca de cliente, el administrador de mapas de particiones es una colección de mapas de particiones. Los datos administrados por una instancia **ShardMapManager** se mantienen en tres lugares: 
 
-1. **Mapa de particiones global (GSM)**: especificar un tooserve de base de datos como repositorio de Hola para todos sus asignaciones de particiones y asignaciones. Tablas especiales y los procedimientos almacenados se crean automáticamente información de hello toomanage. Esto suele ser una pequeña base de datos y con menos acceso, y no debe usarse para otras necesidades de la aplicación hello. Hello tablas están en un esquema especial llamado **__ShardManagement**. 
-2. **Mapa de particiones locales (LSM)**: cada base de datos que especifique toobe una partición es modifica toocontain varias tablas pequeñas y los procedimientos almacenados especiales que contienen y administración particiones de toothat específico de información de mapa de particiones. Esta información es redundante con información de Hola Hola GSM y permite información de la asignación de particiones de hello aplicación toovalidate almacenado en memoria caché sin incluir ninguna carga en hello GSM; aplicación Hello usa Hola LSM toodetermine si una asignación almacenada en caché sigue siendo válida. Hola tablas correspondiente toohello LSM en cada partición también están en el esquema de hello **__ShardManagement**.
+1. **Mapa de particiones global (GSM)**: se especifica una base de datos que funcione como repositorio de todos los mapas de particiones y sus asignaciones. Automáticamente se crean procedimientos almacenados y tablas especiales para administrar la información. Suele ser una base de datos pequeña y con menos acceso, pero no debe utilizarse para otras necesidades de la aplicación. Las tablas se encuentran en un esquema especial llamado **__ShardManagement**. 
+2. **Mapa de particiones local (LSM)**: cada base de datos que especifique para que sea una partición se modificará para que contenga varias tablas pequeñas y procedimientos almacenados especiales que contienen y administran información de mapa de particiones específica de esa partición. Esta información es redundante con la información del GSM, pero permite que la aplicación valide información de mapa de particiones en caché sin colocar ninguna carga en el GSM; la aplicación usa el LSM para determinar si una asignación en caché sigue siendo válida. Las tablas correspondientes al LSM en cada partición se encuentran también en el esquema **__ShardManagement**.
 3. **Caché de aplicación**: cada instancia de la aplicación que accede a un objeto **ShardMapManager** mantiene una caché en memoria local de sus asignaciones. Almacena información de enrutamiento que recientemente se ha recuperado. 
 
 ## <a name="constructing-a-shardmapmanager"></a>Construcción de un ShardMapManager
-Un objeto **ShardMapManager** se construye mediante un patrón de [fábrica](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.aspx) . Hola  **[ShardMapManagerFactory.GetSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx)**  método toma las credenciales (incluido el nombre del servidor de Hola y el nombre de base de datos que contiene Hola GSM) en forma de Hola de un  **ConnectionString** y devuelve una instancia de un **ShardMapManager**.  
+Un objeto **ShardMapManager** se construye mediante un patrón de [fábrica](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.aspx) . El método **[ShardMapManagerFactory.GetSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx)** toma las credenciales (lo que incluye el nombre del servidor y el nombre de la base de datos que contiene el GSM) en forma de una instancia de **ConnectionString** y devuelve una instancia de **ShardMapManager**.  
 
-**Tenga en cuenta:** hello **ShardMapManager** deberían crear instancias de una sola vez por cada dominio de aplicación, en el código de inicialización de Hola para una aplicación. Creación de instancias adicionales de ShardMapManager Hola mismo appdomain, dará como resultado una mayor memoria y uso de CPU de la aplicación hello. Un objeto **ShardMapManager** puede contener cualquier número de mapas de particiones. Aunque un solo mapa de particiones puede ser suficiente para muchas aplicaciones, hay veces en que se usan diferentes conjuntos de bases de datos para un esquema diferente o con fines únicos y, en esos casos, puede que sea preferible usar varios mapas de particiones. 
+**Nota**: solo se debe crear una instancia de **ShardMapManager** una vez por dominio de aplicación, dentro del código de inicialización de una aplicación. La creación de instancias adicionales de ShardMapManager en el mismo dominio de aplicación dará lugar a un aumento en el uso de memoria y CPU de la aplicación. Un objeto **ShardMapManager** puede contener cualquier número de mapas de particiones. Aunque un solo mapa de particiones puede ser suficiente para muchas aplicaciones, hay veces en que se usan diferentes conjuntos de bases de datos para un esquema diferente o con fines únicos y, en esos casos, puede que sea preferible usar varios mapas de particiones. 
 
-En este código, una aplicación intente tooopen existente **ShardMapManager** con hello [TryGetSqlShardMapManager método](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx).  Si los objetos que representan un Global **ShardMapManager** (GSM) todavía no existe dentro de la base de datos de hello, biblioteca de cliente de hello crea existe con hello [CreateSqlShardMapManager método](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx).
+En este código, una aplicación intenta abrir una instancia de **ShardMapManager** existente con el [método TryGetSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx).  Si aún no existen objetos que representan una instancia de **ShardMapManager** (GSM) global dentro de la base de datos, la biblioteca de cliente los crea mediante el método [CreateSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx).
 
-    // Try tooget a reference toohello Shard Map Manager 
-     // via hello Shard Map Manager database.  
+    // Try to get a reference to the Shard Map Manager 
+     // via the Shard Map Manager database.  
     // If it doesn't already exist, then create it. 
     ShardMapManager shardMapManager; 
     bool shardMapManagerExists = ShardMapManagerFactory.TryGetSqlShardMapManager(
@@ -117,7 +117,7 @@ En este código, una aplicación intente tooopen existente **ShardMapManager** c
     } 
     else
     {
-        // Create hello Shard Map Manager. 
+        // Create the Shard Map Manager. 
         ShardMapManagerFactory.CreateSqlShardMapManager(connectionString);
         Console.WriteLine("Created SqlShardMapManager"); 
 
@@ -125,21 +125,21 @@ En este código, una aplicación intente tooopen existente **ShardMapManager** c
             connectionString, 
             ShardMapManagerLoadPolicy.Lazy);
 
-        // hello connectionString contains server name, database name, and admin credentials 
-        // for privileges on both hello GSM and hello shards themselves.
+        // The connectionString contains server name, database name, and admin credentials 
+        // for privileges on both the GSM and the shards themselves.
     } 
 
-Como alternativa, puede usar Powershell toocreate un nuevo administrador de mapa de particiones. Hay un ejemplo disponible [aquí](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
+Como alternativa, puede usar Powershell para crear un nuevo Administrador de mapas de particiones. Hay un ejemplo disponible [aquí](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
 
 ## <a name="get-a-rangeshardmap-or-listshardmap"></a>Obtención de las clases RangeShardMap o ListShardMap
-Después de crear una partición en el Administrador de mapa, puede obtener hello [RangeShardMap](https://msdn.microsoft.com/library/azure/dn807318.aspx) o [ListShardMap](https://msdn.microsoft.com/library/azure/dn807370.aspx) con hello [TryGetRangeShardMap](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap.aspx), hello [ TryGetListShardMap](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap.aspx), o hello [GetShardMap](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap.aspx) método.
+Después de crear un administrador de asignación de partición, puede obtener una clase [RangeShardMap](https://msdn.microsoft.com/library/azure/dn807318.aspx) o [ListShardMap](https://msdn.microsoft.com/library/azure/dn807370.aspx) utilizando el método [TryGetRangeShardMap](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap.aspx), [TryGetListShardMap](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap.aspx) o [GetShardMap](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap.aspx).
 
     /// <summary>
-    /// Creates a new Range Shard Map with hello specified name, or gets hello Range Shard Map if it already exists.
+    /// Creates a new Range Shard Map with the specified name, or gets the Range Shard Map if it already exists.
     /// </summary>
     public static RangeShardMap<T> CreateOrGetRangeShardMap<T>(ShardMapManager shardMapManager, string shardMapName)
     {
-        // Try tooget a reference toohello Shard Map.
+        // Try to get a reference to the Shard Map.
         RangeShardMap<T> shardMap;
         bool shardMapExists = shardMapManager.TryGetRangeShardMap(shardMapName, out shardMap);
 
@@ -149,7 +149,7 @@ Después de crear una partición en el Administrador de mapa, puede obtener hell
         }
         else
         {
-            // hello Shard Map does not exist, so create it
+            // The Shard Map does not exist, so create it
             shardMap = shardMapManager.CreateRangeShardMap<T>(shardMapName);
             ConsoleUtils.WriteInfo("Created Shard Map {0}", shardMap.Name);
         }
@@ -158,23 +158,23 @@ Después de crear una partición en el Administrador de mapa, puede obtener hell
     } 
 
 ### <a name="shard-map-administration-credentials"></a>Credenciales de administración de mapas de particiones
-Las aplicaciones que administración y manipulan los mapas de particiones son diferentes de los que usan conexiones de tooroute de mapas de particiones de Hola. 
+Las aplicaciones que administran y manipulan mapas de particiones son diferentes de las que usan los mapas de particiones para enrutar conexiones. 
 
-partición tooadminister se asigna (Agregar o cambiar particiones, mapas de particiones, las asignaciones de particiones, etc.) debe crear instancias de hello **ShardMapManager** con **las credenciales que tienen privilegios en ambas bases de datos GSM hello y en cada una de lectura/escritura base de datos que actúa como una partición**. las credenciales de Hello deben permitir para operaciones de escritura en tablas de hello en ambos Hola GSM y LSM como información de la asignación de particiones se especifica o se cambia, así como para crear tablas LSM en nuevas particiones.  
+Para administrar asignaciones de partición (agregar o cambiar particiones, asignaciones de particiones, etc.), se deben crear instancias de **ShardMapManager** mediante **credenciales que tengan privilegios de lectura y escritura en la base de datos GSM y en cada base de datos que funcione como partición**. Las credenciales deben permitir escrituras en las tablas del GSM y el LSM cuando se especifica o se cambia información de mapa de particiones, así como al crear tablas del LSM en nuevas particiones.  
 
-Vea [credenciales usan la biblioteca de cliente de base de datos elástica tooaccess hello](sql-database-elastic-scale-manage-credentials.md).
+Consulte [Credenciales usadas para acceder a la biblioteca de cliente de bases de datos elásticas](sql-database-elastic-scale-manage-credentials.md).
 
 ### <a name="only-metadata-affected"></a>Solo los metadatos afectados
-Métodos que se utilizan para rellenar o cambiar hello **ShardMapManager** datos no alteran los datos de usuario de hello almacenados en particiones de Hola por sí mismos. Por ejemplo, los métodos como **CreateShard**, **DeleteShard**, **UpdateMapping**, etc. afectan a los metadatos de mapa de particiones de hello solo. No, quitar, agregar o modificar los datos de usuario contenidos en particiones de Hola. En su lugar, estos métodos son toobe diseñada usa junto con operaciones independientes para realiza toocreate o quitar bases de datos reales, o que mueva las filas de una partición tooanother toorebalance un entorno particionado.  (hello **dividir-combinar** herramienta que se incluye con las herramientas de base de datos elástica hace que el uso de estas API junto con la coordinación de movimiento de datos real entre las particiones.) Vea [escalado mediante la herramienta Hola bases de datos elásticas dividir-combinar](sql-database-elastic-scale-overview-split-and-merge.md).
+Los métodos usados para rellenar o cambiar datos de **ShardMapManager** no modifican los datos de usuario almacenados en las propias particiones. Por ejemplos, métodos como **CreateShard**, **DeleteShard**, **UpdateMapping**, etc. afectan solo a los metadatos del mapa de particiones. No quitan, agregan ni modificar los datos contenidos en las particiones. En su lugar, estos métodos están diseñados para usarse conjuntamente con operaciones independientes que se lleven a cabo para crear o quitar bases de datos reales, o para mover filas de una partición a otra con el fin de reequilibrar un entorno particionado.  (La herramienta de **división y combinación** incluida en las herramientas de bases de datos elásticas usa estas API junto con la coordinación del movimiento de datos real entre particiones). Consulte el artículo sobre [escalado con la herramienta de división y combinación de Elastic Database](sql-database-elastic-scale-overview-split-and-merge.md).
 
 ## <a name="populating-a-shard-map-example"></a>Ejemplo de cómo rellenar un mapa de particiones
-A continuación se muestra un ejemplo de secuencia de operaciones toopopulate un mapa de particiones específicos. código de Hello realiza estos pasos: 
+A continuación se muestra una secuencia de operaciones de ejemplo para rellenar un mapa de particiones específico. El código realiza estos pasos: 
 
 1. Se crea un mapa de particiones en un administrador de mapas de particiones. 
-2. se agregan metadatos de Hola para dos particiones diferentes toohello mapa de particiones. 
-3. Se agregan una variedad de asignaciones de intervalo de claves y hello contenido global del mapa de particiones de Hola se muestra. 
+2. Los metadatos de dos particiones diferentes se agregan al mapa de particiones. 
+3. Se agregan diversas asignaciones de intervalo de claves, y se muestra el contenido global del mapa de particiones. 
 
-Hola código está escrito para que el método hello se puede volver a ejecutar si se produce un error. Cada solicitud de prueba si una partición o la asignación ya existe antes de intentar toocreate lo. Hello código supone que las bases de datos denominan **sample_shard_0**, **sample_shard_1** y **sample_shard_2** ya se han creado en el servidor hello encontrada por cadena **shardServer**. 
+El código está escrito para que el método se pueda volver a ejecutar si se produce un error. Cada solicitud comprueba si ya existe una partición o una asignación, antes de intentar crearla. El siguiente código asume que las bases de datos llamadas **sample_shard_0**, **sample_shard_1** y **sample_shard_2** ya se han creado en el servidor al que hace referencia la cadena **shardServer**. 
 
     public void CreatePopulatedRangeMap(ShardMapManager smm, string mapName) 
         {            
@@ -258,7 +258,7 @@ Hola código está escrito para que el método hello se puede volver a ejecutar 
                          MappingStatus.Online)); 
             } 
 
-            // List hello shards and mappings 
+            // List the shards and mappings 
             foreach (Shard s in sm.GetShards()
                          .OrderBy(s => s.Location.DataSource)
                          .ThenBy(s => s.Location.Database))
@@ -273,48 +273,48 @@ Hola código está escrito para que el método hello se puede volver a ejecutar 
             } 
         } 
 
-Como alternativa puede usar PowerShell scripts hello tooachieve el mismo resultado. Algunos ejemplos de PowerShell de ejemplo de Hola están disponibles [aquí](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).     
+También puede usar scripts de PowerShell para lograr el mismo resultado. Algunos de los ejemplos de PowerShell de ejemplo están disponibles [aquí](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).     
 
-Una vez que se han rellenado los mapas de particiones, aplicaciones de acceso a datos se pueden crear o adaptación toowork con mapas de Hola. Rellenar o manipular Hola mapas no necesita producirse nuevo hasta que **diseño mapa** necesita toochange.  
+Una vez que se han rellenado los mapas de particiones, se pueden crear o adaptar aplicaciones de acceso a datos para trabajar con los mapas. No es necesario rellenar o manipular los mapas de nuevo hasta que haya que cambiar el **diseño de mapa** .  
 
 ## <a name="data-dependent-routing"></a>Enrutamiento dependiente de los datos
-Administrador de mapa de particiones de Hola se usará más en las aplicaciones que requieren operaciones de datos específicos de la aplicación de base de datos conexiones tooperform Hola. Estas conexiones deben asociarse con la base de datos correcta Hola. Esto se conoce como **Enrutamiento dependiente de los datos**. Para estas aplicaciones, instancias de un objeto de administrador de asignación de particiones de generador de hello mediante las credenciales que tienen acceso de solo lectura en la base de datos de hello GSM. Las solicitudes individuales para las conexiones posteriores proporcionan las credenciales necesarias para la conexión de base de datos de toohello particiones adecuado.
+El administrador de mapas de particiones se usará principalmente en aplicaciones que requieren conexiones de base de datos para realizar las operaciones de datos específicas de la aplicación. Esas conexiones deben estar asociadas con la base de datos correcta. Esto se conoce como **Enrutamiento dependiente de los datos**. En estas aplicaciones, cree instancias de un objeto de administrador de mapas de particiones predeterminado con credenciales que tengan acceso de solo lectura en la base de datos GSM. Las solicitudes individuales de conexiones posteriores proporcionan las credenciales necesarias para conectarse a la base de datos de particiones adecuada.
 
-Tenga en cuenta que estas aplicaciones (mediante **ShardMapManager** abierto con las credenciales de solo lectura) no se puede realizar cambios toohello asignaciones o asignaciones. Para cubrir esas necesidades, cree aplicaciones específicas de administración o scripts de PowerShell que proporcionen credenciales con más privilegios, como se explicó anteriormente. Vea [credenciales usan la biblioteca de cliente de base de datos elástica tooaccess hello](sql-database-elastic-scale-manage-credentials.md).
+Tenga en cuenta que estas aplicaciones (que usan **ShardMapManager** abierto con credenciales de solo lectura) no podrán realizar cambios en los mapas ni las asignaciones. Para cubrir esas necesidades, cree aplicaciones específicas de administración o scripts de PowerShell que proporcionen credenciales con más privilegios, como se explicó anteriormente. Consulte [Credenciales usadas para acceder a la biblioteca de cliente de bases de datos elásticas](sql-database-elastic-scale-manage-credentials.md).
 
 Para obtener más detalles, consulte [Enrutamiento dependiente de datos](sql-database-elastic-scale-data-dependent-routing.md). 
 
 ## <a name="modifying-a-shard-map"></a>Modificación de un mapa de particiones
-Un mapa de particiones puede cambiarse de distintas maneras. Todos de los siguientes métodos de Hola modifican los metadatos de Hola que describe las particiones de Hola y sus asignaciones, pero físicamente no modifican datos en particiones de hello, ni crear ni se eliminar bases de datos reales de Hola.  Algunos de las operaciones de hello en mapa de particiones de Hola que se describe a continuación pueden necesitar toobe coordinada con acciones administrativas que mover físicamente los datos o que agregar y quitar bases de datos que actúa como particiones.
+Un mapa de particiones puede cambiarse de distintas maneras. Los siguientes métodos modifican los metadatos que describen las particiones y sus asignaciones, pero no modifican físicamente los datos incluidos en las particiones ni crean o eliminan las bases de datos reales.  Algunas de las operaciones en el mapa de particiones que se describen a continuación, deben coordinarse con acciones administrativas que muevan físicamente los datos o que agreguen y quiten bases de datos que actúan como particiones.
 
-Estos métodos funcionan en conjunto como bloques de creación de hello disponibles para modificar Hola distribución global de los datos en su entorno de base de datos particionada.  
+Estos métodos funcionan en conjunto como los bloques de creación disponibles para modificar la distribución global de los datos en el entorno de base de datos particionada.  
 
-* tooadd o quitar particiones: usar  **[CreateShard](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard.aspx)**  y  **[DeleteShard](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.deleteshard.aspx)**  de hello [Shardmap clase](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.aspx). 
+* Para agregar o quitar particiones, use **[CreateShard](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard.aspx)** y **[DeleteShard](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.deleteshard.aspx)** de la [clase Shardmap](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.aspx). 
   
-    Hello servidor y base de datos que representa la partición de destino de hello ya deben existir para estas operaciones tooexecute. Estos métodos no tiene ningún efecto en hello bases de datos, solo de metadatos en el mapa de particiones de Hola.
-* toocreate o quitar puntos o intervalos que se asignan toohello particiones: usar  **[CreateRangeMapping](https://msdn.microsoft.com/library/azure/dn841993.aspx)**,  **[DeleteMapping](https://msdn.microsoft.com/library/azure/dn824200.aspx)**  de hello [RangeShardMapping clase](https://msdn.microsoft.com/library/azure/dn807318.aspx), y  **[CreatePointMapping](https://msdn.microsoft.com/library/azure/dn807218.aspx)**  de hello [ListShardMap](https://msdn.microsoft.com/library/azure/dn842123.aspx)
+    El servidor y la base de datos que representa la partición de destino deben existir ya para que estas operaciones se ejecuten. Estos métodos no tienen ningún efecto en las propias bases de datos, solo en los metadatos del mapa de particiones.
+* Para crear o quitar puntos o intervalos que se asignan a las particiones, use **[CreateRangeMapping](https://msdn.microsoft.com/library/azure/dn841993.aspx)**, **[DeleteMapping](https://msdn.microsoft.com/library/azure/dn824200.aspx)** de la [clase RangeShardMapping](https://msdn.microsoft.com/library/azure/dn807318.aspx) y **[CreatePointMapping](https://msdn.microsoft.com/library/azure/dn807218.aspx)** de la [clase ListShardMap](https://msdn.microsoft.com/library/azure/dn842123.aspx)
   
-    Muchos diferentes momentos o intervalos pueden ser asignada toohello misma partición. Estos métodos solo afectan a los metadatos, no a los datos que puedan existir ya en particiones. Si los datos tienen toobe quitado de la base de datos de hello en orden toobe coherente con **DeleteMapping** operaciones, deberá tooperform esas operaciones por separado pero junto con el uso de estos métodos.  
-* toosplit rangos existente en dos o mezcla intervalos adyacentes en una sola: usar  **[SplitMapping](https://msdn.microsoft.com/library/azure/dn824205.aspx)**  y  **[MergeMappings](https://msdn.microsoft.com/library/azure/dn824201.aspx)**.  
+    Pueden asignarse muchos puntos o intervalos distintos a la misma partición. Estos métodos solo afectan a los metadatos, no a los datos que puedan existir ya en particiones. Si es necesario quitar datos de la base de datos para mantener la coherencia con operaciones de **DeleteMapping** , deberá realizar esas operaciones por separado pero conjuntamente con el uso de estos métodos.  
+* Para dividir en dos los intervalos existentes o combinar en uno los intervalos adyacentes, use **[SplitMapping](https://msdn.microsoft.com/library/azure/dn824205.aspx)** y **[MergeMappings](https://msdn.microsoft.com/library/azure/dn824201.aspx)**.  
   
-    Tenga en cuenta que divide y combinar las operaciones **no cambie la clave de toowhich de hello partición se asignan valores**. Una división divide un rango existente en dos partes, pero la deja como asignado toohello misma partición. Una combinación funciona en los dos intervalos adyacentes que ya están asignada toohello misma partición, fusión de ellas en un solo intervalo.  movimiento de puntos o intervalos de ellos mismos entre las particiones Hello necesita coordinan mediante el uso de toobe **UpdateMapping** junto con el movimiento de datos reales.  Puede usar hello **dividir y combinar** herramientas del servicio que forma parte de la base de datos elástica cambios en la asignación toocoordinate particiones con el movimiento de datos, cuando se necesita el movimiento. 
-* mapa de toore (o mover) puntos o intervalos toodifferent particiones individuales: usar  **[UpdateMapping](https://msdn.microsoft.com/library/azure/dn824207.aspx)**.  
+    Tenga en cuenta que las operaciones de división y combinación **no cambian la partición a la que se asignan los valores de clave**. Una división divide un rango existente en dos partes, pero deja ambas partes como asignadas a la misma partición. Una combinación opera en dos intervalos adyacentes que ya están asignados a la misma partición, fusionándolos en un solo intervalo.  El movimiento de puntos o intervalos propiamente dichos entre particiones debe coordinarse mediante **UpdateMapping** junto con el movimiento de datos real.  Puede utilizar el servicio de **División y combinación** que forma parte de la vista previa de Escalado elástico para coordinar los cambios de mapas de particiones con el movimiento de datos, cuando se requiere movimiento. 
+* Para volver a asignar (o mover) puntos o intervalos individuales a particiones diferentes, use **[UpdateMapping](https://msdn.microsoft.com/library/azure/dn824207.aspx)**.  
   
-    Puesto que los datos que necesite toobe movido de una partición tooanother en toobe orden coherente con **UpdateMapping** operations, necesitará tooperform este movimiento por separado pero junto con el uso de estos métodos.
-* asignaciones de tootake en línea y sin conexión: usar  **[MarkMappingOffline](https://msdn.microsoft.com/library/azure/dn824202.aspx)**  y  **[MarkMappingOnline](https://msdn.microsoft.com/library/azure/dn807225.aspx)**  toocontrol Hola estado en línea de un asignación. 
+    Puesto que es posible que necesite mover datos de una partición a otra para ser coherente con las operaciones de **UpdateMapping** , deberá realizar dicho movimiento por separado pero conjuntamente con el uso de estos métodos.
+* Para conectar y desconectar las asignaciones, use **[MarkMappingOffline](https://msdn.microsoft.com/library/azure/dn824202.aspx)** y **[MarkMappingOnline](https://msdn.microsoft.com/library/azure/dn807225.aspx)** para controlar el estado de conexión de una asignación. 
   
-    Solo se permite realizar determinadas operaciones en las asignaciones de particiones cuando una asignación se encuentra en un estado "sin conexión", incluidas **UpdateMapping** y **DeleteMapping**. Cuando una asignación está sin conexión, una solicitud dependiente de datos basada en una clave incluida en esa asignación devolverá un error. Además, cuando un intervalo en primer lugar se queda sin conexión, todas las particiones de toohello afectada las conexiones se eliminan automáticamente de ordenar tooprevent los resultados incoherentes o incompletos para las consultas dirigidas con intervalos que se va a cambiar. 
+    Solo se permite realizar determinadas operaciones en las asignaciones de particiones cuando una asignación se encuentra en un estado "sin conexión", incluidas **UpdateMapping** y **DeleteMapping**. Cuando una asignación está sin conexión, una solicitud dependiente de datos basada en una clave incluida en esa asignación devolverá un error. Además, cuando un intervalo se queda sin conexión por primera vez, todas las conexiones a la partición afectada se terminan automáticamente para evitar resultados incoherentes o incompletos para las consultas dirigidas a los intervalos que se están cambiando. 
 
-Las asignaciones son objetos inmutables en .NET  Todos los métodos de hello anteriores que cambiar las asignaciones de invalidarán también cualquier toothem de referencias en el código. toomake TI sea más fácil tooperform las secuencias de operaciones que cambian el estado de una asignación, todos los métodos de Hola que cambie una asignación de devuelven una nueva asignación de referencia, por lo que las operaciones se pueden encadenar. Por ejemplo, toodelete una asignación de sm shardmap que contiene la clave de hello 25 existente, puede ejecutar Hola siguientes: 
+Las asignaciones son objetos inmutables en .NET  Todos los métodos mencionados que cambian las asignaciones también invalidan las referencias a ellos en el código. Para facilitar la ejecución de secuencias de operaciones que cambian el estado de una asignación, todos los métodos que cambian una asignación devuelven una referencia de la asignación nueva, por lo que las operaciones se pueden encadenar. Por ejemplo, para eliminar una asignación existente en shardmap sm que contiene la clave 25, puede ejecutar lo siguiente: 
 
         sm.DeleteMapping(sm.MarkMappingOffline(sm.GetMappingForKey(25)));
 
 ## <a name="adding-a-shard"></a>Incorporación de una partición
-Las aplicaciones a menudo necesita toosimply agregar nuevos datos de toohandle de particiones que cabe esperar de nuevas claves o intervalos de claves de un mapa de particiones que ya existe. Por ejemplo, una aplicación particionada por Id. de inquilino puede necesitar tooprovision una nueva partición para un nuevo inquilino o mensual de particiones de datos que necesite una nueva partición aprovisionada antes del inicio de Hola de nuevo cada mes. 
+Con frecuencia, las aplicaciones simplemente necesitan agregar nuevas particiones para controlar los datos que se esperan de nuevas claves o intervalos de claves, en un mapa de particiones que ya existe. Por ejemplo, es posible que una aplicación particionada por identificador de inquilino necesite aprovisionar una nueva partición para un nuevo inquilino o que datos particionados mensualmente necesiten que se aprovisione una nueva partición antes del inicio de cada nuevo mes. 
 
-Si el nuevo intervalo de valores de clave de hello ya no es parte de una asignación existente y ningún movimiento de datos es necesario, es nueva partición de tooadd muy sencillo Hola y asociar la nueva clave de Hola o particiones de intervalo toothat. Para obtener más información sobre cómo agregar nuevas particiones, consulte [Incorporación de una nueva partición](sql-database-elastic-scale-add-a-shard.md).
+Si el nuevo intervalo de valores de clave ya no forma parte de una asignación existente y no se requiere ningún movimiento de datos, es muy sencillo agregar la nueva partición y asociar la nueva clave o el nuevo intervalo a dicha partición. Para obtener más información sobre cómo agregar nuevas particiones, consulte [Incorporación de una nueva partición](sql-database-elastic-scale-add-a-shard.md).
 
-Sin embargo, para escenarios que requieren el movimiento de datos, herramienta Dividir-combinar de hello es necesario tooorchestrate Hola el movimiento de datos entre las particiones en combinación con las actualizaciones de mapas de particiones necesarios de Hola. Para obtener más información sobre el uso de hello dividir-combinar yool, consulte [información general de la combinación de división](sql-database-elastic-scale-overview-split-and-merge.md) 
+Sin embargo, para escenarios que requieren movimiento de datos, se necesita la herramienta de división y combinación para coordinar el movimiento de datos entre particiones con las actualizaciones necesarias de mapas de particiones. Para obtener más información sobre cómo usar la herramienta de división y combinación, consulte [Información general sobre división y combinación](sql-database-elastic-scale-overview-split-and-merge.md) 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

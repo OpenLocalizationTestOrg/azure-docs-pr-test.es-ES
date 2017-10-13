@@ -1,6 +1,6 @@
 ---
-title: "funciones de plantilla de administrador de recursos aaaAzure - numéricas | Documentos de Microsoft"
-description: "Hola toouse de funciones en un toowork de plantilla de Azure Resource Manager se describen con números."
+title: "Funciones de la plantilla de Azure Resource Manager: numéricas | Microsoft Docs"
+description: "Describe las funciones para usar en una plantilla de Azure Resource Manager para trabajar con números."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -12,25 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/13/2017
+ms.date: 09/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 855d5b354d094b9815edc160e3d72efbfd36ba77
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8b90885583c411e5b1e513188a636fe54ec74b7b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="numeric-functions-for-azure-resource-manager-templates"></a>Funciones numéricas para las plantillas de Azure Resource Manager
 
-Administrador de recursos proporciona Hola siguientes funciones para trabajar con números enteros:
+El Administrador de recursos ofrece las siguientes funciones para trabajar con números enteros:
 
 * [agregar](#add)
 * [copyIndex](#copyindex)
 * [div](#div)
 * [float](#float)
 * [int](#int)
-* [min](#min)
 * [max](#max)
+* [min](#min)
 * [mod](#mod)
 * [mul](#mul)
 * [sub](#sub)
@@ -40,22 +40,22 @@ Administrador de recursos proporciona Hola siguientes funciones para trabajar co
 ## <a name="add"></a>agregar
 `add(operand1, operand2)`
 
-Devuelve Hola suma de dos enteros proporcionado Hola.
+Devuelve la suma de los dos enteros especificados.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- | 
-|operand1 |Sí |int |Primero debe numerar tooadd. |
-|operand2 |Sí |int |Segundo número tooadd. |
+|operand1 |Sí |int |Primer número que se agregará. |
+|operand2 |Sí |int |Segundo número que se agregará. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Un entero que contiene la suma de Hola de parámetros de Hola.
+Un entero que contiene la suma de los parámetros.
 
 ### <a name="example"></a>Ejemplo
 
-Hola ejemplo siguiente agrega dos parámetros.
+La [plantilla de ejemplo](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/add.json) siguiente agrega dos parámetros.
 
 ```json
 {
@@ -66,14 +66,14 @@ Hola ejemplo siguiente agrega dos parámetros.
             "type": "int",
             "defaultValue": 5,
             "metadata": {
-                "description": "First integer tooadd"
+                "description": "First integer to add"
             }
         },
         "second": {
             "type": "int",
             "defaultValue": 3,
             "metadata": {
-                "description": "Second integer tooadd"
+                "description": "Second integer to add"
             }
         }
     },
@@ -88,37 +88,49 @@ Hola ejemplo siguiente agrega dos parámetros.
 }
 ```
 
-Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
+La salida del ejemplo anterior con el valor predeterminado es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
 | addResult | int | 8 |
+
+Para implementar esta plantilla de ejemplo con la CLI de Azure, use:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json
+```
+
+Para implementar esta plantilla de ejemplo con PowerShell, use:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/add.json 
+```
 
 <a id="copyindex" />
 
 ## <a name="copyindex"></a>copyIndex
 `copyIndex(loopName, offset)`
 
-Devuelve Hola índice de un bucle de iteración. 
+Devuelve el índice actual de un bucle de iteración. 
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| loopName | No | cadena | nombre de Hola de bucle de Hola para obtener iteración Hola. |
-| Offset |No |int |Hola tooadd toohello basado en cero del iteración valor numérico. |
+| loopName | No | cadena | El nombre del bucle para obtener la iteración. |
+| Offset |No |int |El número que se agregará al valor de iteración basado en cero. |
 
 ### <a name="remarks"></a>Comentarios
 
-Esta función siempre se usa con un objeto **copy** . Si no se proporciona ningún valor para **desplazamiento**, se devuelve el valor actual de la iteración de Hola. valor de la iteración de Hello comienza en cero.
+Esta función siempre se usa con un objeto **copy** . Si no se proporciona ningún valor para **offset**, se devuelve el valor de la iteración actual. El valor del iteración comienza en cero.
 
-Hola **loopName** propiedad le permite toospecify si hace referencia copyIndex tooa iteración de recursos o la iteración de la propiedad. Si no se proporciona ningún valor para **loopName**, se utiliza la iteración de tipo de recurso actual Hola. Proporcione un valor para **loopName** al iterar en una propiedad. 
+La propiedad **loopName** le permite especificar si copyIndex hace referencia a una iteración de recursos o una iteración de propiedades. Si no se proporciona ningún valor para **loopName**, se usa la iteración de tipo de recurso actual. Proporcione un valor para **loopName** al iterar en una propiedad. 
  
 Para ver una descripción completa de cómo usar **copyIndex**, consulte [Creación de varias instancias de recursos en Azure Resource Manager](resource-group-create-multiple.md).
 
 ### <a name="example"></a>Ejemplo
 
-Hello en el ejemplo siguiente se muestra un valor copia hello y bucle índice incluido en el nombre de Hola. 
+En el ejemplo siguiente se muestra un bucle de copia y el valor de índice incluido en el nombre. 
 
 ```json
 "resources": [ 
@@ -136,29 +148,29 @@ Hello en el ejemplo siguiente se muestra un valor copia hello y bucle índice in
 
 ### <a name="return-value"></a>Valor devuelto
 
-Un entero que representa el índice actual de hello del iteración Hola.
+Un entero que representa el índice actual de la iteración.
 
 <a id="div" />
 
 ## <a name="div"></a>div
 `div(operand1, operand2)`
 
-Devuelve Hola división de enteros de dos enteros de proporcionado Hola.
+Devuelve la división de enteros de los dos enteros especificados.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| operand1 |Sí |int |número de Hola que se va a dividir. |
-| operand2 |Sí |int |Hola número toodivide usado. No puede ser 0. |
+| operand1 |Sí |int |Número que se va a dividir. |
+| operand2 |Sí |int |Número que se usa para dividir. No puede ser 0. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Una división Hola de enteros que representan.
+Un entero que representa la división.
 
 ### <a name="example"></a>Ejemplo
 
-Hola siguiente ejemplo divide un parámetro por otro parámetro.
+En la [plantilla de ejemplo](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/div.json) siguiente se divide un parámetro entre otro.
 
 ```json
 {
@@ -176,7 +188,7 @@ Hola siguiente ejemplo divide un parámetro por otro parámetro.
             "type": "int",
             "defaultValue": 3,
             "metadata": {
-                "description": "Integer used toodivide"
+                "description": "Integer used to divide"
             }
         }
     },
@@ -191,31 +203,43 @@ Hola siguiente ejemplo divide un parámetro por otro parámetro.
 }
 ```
 
-Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
+La salida del ejemplo anterior con el valor predeterminado es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
 | divResult | int | 2 |
+
+Para implementar esta plantilla de ejemplo con la CLI de Azure, use:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json
+```
+
+Para implementar esta plantilla de ejemplo con PowerShell, use:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/div.json 
+```
 
 <a id="float" />
 
 ## <a name="float"></a>float
 `float(arg1)`
 
-Convierte Hola valor tooa números de punto flotante. Solo, esta función se usan al pasar parámetros personalizados aplicación tooan, por ejemplo, una aplicación de lógica.
+Convierte el valor en un número de punto flotante. Solo use esta función al pasar parámetros personalizados a una aplicación, como una aplicación lógica.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| arg1 |Sí |cadena o entero |Hola valor tooconvert tooa números de punto flotante. |
+| arg1 |Sí |cadena o entero |El valor para convertir en número de punto flotante. |
 
 ### <a name="return-value"></a>Valor devuelto
 Un número de punto flotante.
 
 ### <a name="example"></a>Ejemplo
 
-Hola de ejemplo siguiente muestra cómo toouse float toopass parámetros tooa aplicación lógica:
+En el ejemplo siguiente se muestra cómo usar float para pasar parámetros a una aplicación lógica:
 
 ```json
 {
@@ -223,12 +247,12 @@ Hola de ejemplo siguiente muestra cómo toouse float toopass parámetros tooa ap
     "properties": {
         ...
         "parameters": {
-        "custom1": {
-            "value": "[float('3.0')]"
-        },
-        "custom2": {
-            "value": "[float(3)]"
-        },
+            "custom1": {
+                "value": "[float('3.0')]"
+            },
+            "custom2": {
+                "value": "[float(3)]"
+            },
 ```
 
 <a id="int" />
@@ -236,21 +260,21 @@ Hola de ejemplo siguiente muestra cómo toouse float toopass parámetros tooa ap
 ## <a name="int"></a>int
 `int(valueToConvert)`
 
-Convierte el entero de tooan de valor especificado de Hola.
+Convierte el valor especificado en un entero.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Sí |cadena o entero |entero de Hello valor tooconvert tooan. |
+| valueToConvert |Sí |cadena o entero |Valor que se convierte en entero. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Un entero de hello valor convertido.
+Un entero del valor convertido.
 
 ### <a name="example"></a>Ejemplo
 
-Hello en el ejemplo siguiente se convierte toointeger de valor de parámetro proporcionado por el usuario de Hola.
+En la [plantilla de ejemplo](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/int.json) siguiente se convierte el valor del parámetro proporcionado por el usuario en entero.
 
 ```json
 {
@@ -273,85 +297,44 @@ Hello en el ejemplo siguiente se convierte toointeger de valor de parámetro pro
 }
 ```
 
-Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
+La salida del ejemplo anterior con el valor predeterminado es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
 | intResult | int | 4 |
 
+Para implementar esta plantilla de ejemplo con la CLI de Azure, use:
 
-<a id="min" />
-
-## <a name="min"></a>Min
-`min (arg1)`
-
-Devuelve Hola valor mínimo de una matriz de enteros o una lista separada por comas de números enteros.
-
-### <a name="parameters"></a>parameters
-
-| Parámetro | Obligatorio | Tipo | Descripción |
-|:--- |:--- |:--- |:--- |
-| arg1 |Sí |matriz de enteros, o lista separada por comas de enteros |Hola tooget Hola mínimo valor de la colección. |
-
-### <a name="return-value"></a>Valor devuelto
-
-Un entero que representa el valor mínimo de colección de Hola.
-
-### <a name="example"></a>Ejemplo
-
-Hola siguiente ejemplo se muestra cómo min toouse con una matriz y una lista de enteros:
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "arrayToTest": {
-            "type": "array",
-            "defaultValue": [0,3,2,5,4]
-        }
-    },
-    "resources": [],
-    "outputs": {
-        "arrayOutput": {
-            "type": "int",
-            "value": "[min(parameters('arrayToTest'))]"
-        },
-        "intOutput": {
-            "type": "int",
-            "value": "[min(0,3,2,5,4)]"
-        }
-    }
-}
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
 ```
 
-Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
+Para implementar esta plantilla de ejemplo con PowerShell, use:
 
-| Nombre | Tipo | Valor |
-| ---- | ---- | ----- |
-| arrayOutput | int | 0 |
-| intOutput | int | 0 |
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/int.json
+```
 
 <a id="max" />
 
 ## <a name="max"></a>max
 `max (arg1)`
 
-Devuelve Hola valor máximo de una matriz de enteros o una lista separada por comas de números enteros.
+Devuelve el valor máximo de una matriz de enteros o una lista separada por comas de enteros.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| arg1 |Sí |matriz de enteros, o lista separada por comas de enteros |Hola tooget Hola máximo valor de la colección. |
+| arg1 |Sí |matriz de enteros, o lista separada por comas de enteros |La colección para obtener el valor máximo. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Un entero que representa el valor máximo de Hola de colección de Hola.
+Un entero que representa el valor máximo de la colección.
 
 ### <a name="example"></a>Ejemplo
 
-Hola siguiente ejemplo se muestra cómo toouse máximo con una matriz y una lista de enteros:
+En la [plantilla de ejemplo](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/max.json) siguiente se muestra cómo utilizar max con una matriz y una lista de enteros:
 
 ```json
 {
@@ -377,33 +360,109 @@ Hola siguiente ejemplo se muestra cómo toouse máximo con una matriz y una list
 }
 ```
 
-Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
+La salida del ejemplo anterior con el valor predeterminado es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
 | arrayOutput | int | 5 |
 | intOutput | int | 5 |
 
-<a id="mod" />
+Para implementar esta plantilla de ejemplo con la CLI de Azure, use:
 
-## <a name="mod"></a>mod
-`mod(operand1, operand2)`
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
+```
 
-Devuelve el resto de Hola Hola división de enteros utilizando dos enteros de proporcionado Hola.
+Para implementar esta plantilla de ejemplo con PowerShell, use:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
+```
+
+<a id="min" />
+
+## <a name="min"></a>Min
+`min (arg1)`
+
+Devuelve el valor mínimo de una matriz de enteros o una lista separada por comas de enteros.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| operand1 |Sí |int |número de Hola que se va a dividir. |
-| operand2 |Sí |int |número de Hello toodivide utilizado, no puede ser 0. |
+| arg1 |Sí |matriz de enteros, o lista separada por comas de enteros |La colección para obtener el valor mínimo. |
 
 ### <a name="return-value"></a>Valor devuelto
-Un resto de Hola que representan entero.
+
+Un entero que representa el valor mínimo de la colección.
 
 ### <a name="example"></a>Ejemplo
 
-Hello en el ejemplo siguiente se devuelve Hola resto de dividir un parámetro por otro parámetro.
+En la [plantilla de ejemplo](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/min.json) siguiente se muestra cómo utilizar min con una matriz y una lista de enteros:
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "arrayToTest": {
+            "type": "array",
+            "defaultValue": [0,3,2,5,4]
+        }
+    },
+    "resources": [],
+    "outputs": {
+        "arrayOutput": {
+            "type": "int",
+            "value": "[min(parameters('arrayToTest'))]"
+        },
+        "intOutput": {
+            "type": "int",
+            "value": "[min(0,3,2,5,4)]"
+        }
+    }
+}
+```
+
+La salida del ejemplo anterior con el valor predeterminado es:
+
+| Nombre | Tipo | Valor |
+| ---- | ---- | ----- |
+| arrayOutput | int | 0 |
+| intOutput | int | 0 |
+
+Para implementar esta plantilla de ejemplo con la CLI de Azure, use:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
+```
+
+Para implementar esta plantilla de ejemplo con PowerShell, use:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
+```
+
+<a id="mod" />
+
+## <a name="mod"></a>mod
+`mod(operand1, operand2)`
+
+Devuelve el resto de la división de enteros de los dos enteros especificados.
+
+### <a name="parameters"></a>parameters
+
+| Parámetro | Obligatorio | Tipo | Descripción |
+|:--- |:--- |:--- |:--- |
+| operand1 |Sí |int |Número que se va a dividir. |
+| operand2 |Sí |int |Número que se usa para dividir; no puede ser 0. |
+
+### <a name="return-value"></a>Valor devuelto
+Un entero que representa el resto.
+
+### <a name="example"></a>Ejemplo
+
+En la [plantilla de ejemplo](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mod.json) siguiente se devuelve el resultado de dividir un parámetro por otro.
 
 ```json
 {
@@ -421,7 +480,7 @@ Hello en el ejemplo siguiente se devuelve Hola resto de dividir un parámetro po
             "type": "int",
             "defaultValue": 3,
             "metadata": {
-                "description": "Integer used toodivide"
+                "description": "Integer used to divide"
             }
         }
     },
@@ -436,33 +495,45 @@ Hello en el ejemplo siguiente se devuelve Hola resto de dividir un parámetro po
 }
 ```
 
-Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
+La salida del ejemplo anterior con el valor predeterminado es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
 | modResult | int | 1 |
+
+Para implementar esta plantilla de ejemplo con la CLI de Azure, use:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
+```
+
+Para implementar esta plantilla de ejemplo con PowerShell, use:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mod.json
+```
 
 <a id="mul" />
 
 ## <a name="mul"></a>mul
 `mul(operand1, operand2)`
 
-Devuelve Hola multiplicación de dos enteros de proporcionado Hola.
+Devuelve la multiplicación de los dos enteros especificados.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| operand1 |Sí |int |Primero debe numerar toomultiply. |
-| operand2 |Sí |int |Segundo número toomultiply. |
+| operand1 |Sí |int |Primer número que se va a multiplicar. |
+| operand2 |Sí |int |Segundo número que se va a multiplicar. |
 
 ### <a name="return-value"></a>Valor devuelto
 
-Una entero que representa Hola la multiplicación.
+Un entero que representa la multiplicación.
 
 ### <a name="example"></a>Ejemplo
 
-Hola de ejemplo siguiente multiplica un parámetro por otro parámetro.
+En la [plantilla de ejemplo](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mul.json) siguiente se multiplica un parámetro por otro.
 
 ```json
 {
@@ -473,14 +544,14 @@ Hola de ejemplo siguiente multiplica un parámetro por otro parámetro.
             "type": "int",
             "defaultValue": 5,
             "metadata": {
-                "description": "First integer toomultiply"
+                "description": "First integer to multiply"
             }
         },
         "second": {
             "type": "int",
             "defaultValue": 3,
             "metadata": {
-                "description": "Second integer toomultiply"
+                "description": "Second integer to multiply"
             }
         }
     },
@@ -495,32 +566,44 @@ Hola de ejemplo siguiente multiplica un parámetro por otro parámetro.
 }
 ```
 
-Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
+La salida del ejemplo anterior con el valor predeterminado es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
 | mulResult | int | 15 |
+
+Para implementar esta plantilla de ejemplo con la CLI de Azure, use:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
+```
+
+Para implementar esta plantilla de ejemplo con PowerShell, use:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/mul.json
+```
 
 <a id="sub" />
 
 ## <a name="sub"></a>sub
 `sub(operand1, operand2)`
 
-Devuelve Hola resta de dos enteros de proporcionado Hola.
+Devuelve la resta de los dos enteros especificados.
 
 ### <a name="parameters"></a>parameters
 
 | Parámetro | Obligatorio | Tipo | Descripción |
 |:--- |:--- |:--- |:--- |
-| operand1 |Sí |int |número de Hola que se resta. |
-| operand2 |Sí |int |número de Hola que se va a restar. |
+| operand1 |Sí |int |Número del que se resta. |
+| operand2 |Sí |int |Número que se resta. |
 
 ### <a name="return-value"></a>Valor devuelto
-Una resta Hola de enteros que representan.
+Un entero que representa la resta.
 
 ### <a name="example"></a>Ejemplo
 
-Hola siguiente ejemplo resta un parámetro de otro parámetro.
+En la [plantilla de ejemplo](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/sub.json) siguiente se resta un parámetro de otro.
 
 ```json
 {
@@ -538,7 +621,7 @@ Hola siguiente ejemplo resta un parámetro de otro parámetro.
             "type": "int",
             "defaultValue": 3,
             "metadata": {
-                "description": "Integer toosubtract"
+                "description": "Integer to subtract"
             }
         }
     },
@@ -553,15 +636,27 @@ Hola siguiente ejemplo resta un parámetro de otro parámetro.
 }
 ```
 
-Hola de salida de hello anterior ejemplo con valores predeterminados de hello es:
+La salida del ejemplo anterior con el valor predeterminado es:
 
 | Nombre | Tipo | Valor |
 | ---- | ---- | ----- |
 | subResult | int | 4 |
 
+Para implementar esta plantilla de ejemplo con la CLI de Azure, use:
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
+```
+
+Para implementar esta plantilla de ejemplo con PowerShell, use:
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/sub.json
+```
+
 ## <a name="next-steps"></a>Pasos siguientes
-* Para obtener una descripción de las secciones de hello en una plantilla de Azure Resource Manager, consulte [plantillas del Administrador de recursos de Azure de creación](resource-group-authoring-templates.md).
-* toomerge varias plantillas, consulte [mediante plantillas vinculadas con el Administrador de recursos de Azure](resource-group-linked-templates.md).
-* tooiterate un número especificado de veces al crear un tipo de recurso, vea [crear varias instancias de recursos en el Administrador de recursos de Azure](resource-group-create-multiple.md).
-* toosee cómo toodeploy plantilla de Hola que haya creado, vea [implementar una aplicación con la plantilla de Azure Resource Manager](resource-group-template-deploy.md).
+* Para obtener una descripción de las secciones de una plantilla de Azure Resource Manager, vea [Creación de plantillas de Azure Resource Manager](resource-group-authoring-templates.md).
+* Para combinar varias plantillas, vea [Uso de plantillas vinculadas con Azure Resource Manager](resource-group-linked-templates.md).
+* Para iterar una cantidad de veces específica al crear un tipo de recurso, vea [Creación de varias instancias de recursos en el Administrador de recursos de Azure](resource-group-create-multiple.md).
+* Para saber cómo implementar la plantilla que creó, consulte [Implementación de una aplicación con la plantilla de Azure Resource Manager](resource-group-template-deploy.md).
 

@@ -1,6 +1,6 @@
 ---
-title: aaaHow tooperform streaming en vivo con secuencias de velocidades de bits de toocreate de servicios multimedia de Azure .NET | Documentos de Microsoft
-description: "Este tutorial le guía a través de los pasos de Hola de creación de un canal que recibe una secuencia en directo de velocidad de bits única y lo codifica en la secuencia de velocidad de bits toomulti mediante SDK de .NET."
+title: "Realización de streaming en vivo con Azure Media Services para crear transmisiones con velocidad de bits múltiple con .NET | Microsoft Docs"
+description: "Este tutorial le guía por los pasos para crear un canal que reciba una secuencia en directo de una sola velocidad de bits y la codifique como secuencia de varias velocidades de bits con .NET SDK."
 services: media-services
 documentationcenter: 
 author: anilmur
@@ -14,99 +14,99 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: 22088e6a78a49bd839575614a7c17a411ae8081c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 22d63ff5e9fd33db8711b0c5125ab0882b9f6a74
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-tooperform-live-streaming-using-azure-media-services-toocreate-multi-bitrate-streams-with-net"></a>¿Cómo tooperform streaming en vivo con servicios multimedia de Azure toocreate velocidades de bits se transmita por secuencias con .NET
+# <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>Cómo realizar el streaming en vivo con Servicios multimedia de Azure para crear transmisiones con velocidad de bits múltiple con .NET
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 > * [API DE REST](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > [!NOTE]
-> toocomplete este tutorial, necesita una cuenta de Azure. Para obtener más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
+> Para completar este tutorial, deberá tener una cuenta de Azure. Para obtener más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F).
 > 
 > 
 
 ## <a name="overview"></a>Información general
-Este tutorial le guiará por los pasos de Hola de creación de un **canal** que recibe una secuencia en directo de velocidad de bits única y lo codifica en la secuencia de velocidad de bits toomulti.
+Este tutorial le guía por los pasos para crear un **canal** que reciba una secuencia en directo de una sola velocidad de bits y la codifique como secuencia de varias velocidades de bits.
 
-Para obtener más información consulte tooChannels relacionados que están habilitados para la codificación en directo, [streaming en vivo al utilizar secuencias de velocidades de bits de servicios multimedia de Azure toocreate](media-services-manage-live-encoder-enabled-channels.md).
+Para más información sobre los canales habilitados para la codificación en directo, consulte [Uso de canales habilitados para realizar la codificación en directo con Servicios multimedia de Azure](media-services-manage-live-encoder-enabled-channels.md).
 
 ## <a name="common-live-streaming-scenario"></a>Escenario común de streaming en vivo
-Hola siguiendo los pasos describe las tareas implicadas en la creación de aplicaciones de transmisión por secuencias en directo común.
+En los pasos siguientes se describen las tareas que intervienen en la creación de aplicaciones comunes de streaming en vivo.
 
 > [!NOTE]
-> Actualmente, Hola máximo recomendado de duración de un evento en directo es 8 horas. Póngase en contacto con amslived Microsoft.com si necesitas toorun un canal para períodos más largos de tiempo.
+> Actualmente, la duración máxima recomendada de un evento en directo es de 8 horas. Si necesita ejecutar un canal durante largos períodos de tiempo, póngase en contacto con amslived en Microsoft.com.
 > 
 > 
 
-1. Conectar un equipo de tooa de cámara de vídeo. Iniciar y configurar un codificador en directo local que pueda dar como resultado una secuencia de velocidad de bits única en uno de hello siguientes protocolos: RTP (MPEG-TS), Smooth Streaming o RTMP. Para obtener más información, consulte [Compatibilidad con RTMP de Servicios multimedia de Azure y codificadores en directo](http://go.microsoft.com/fwlink/?LinkId=532824).
+1. Conecte una cámara de vídeo a un equipo. Inicie y configure un codificador local en directo que pueda generar una secuencia de una sola velocidad de bits en uno de los siguientes protocolos: RTMP, Smooth Streaming o RTP (MPEG-TS). Para obtener más información, consulte [Compatibilidad con RTMP de Servicios multimedia de Azure y codificadores en directo](http://go.microsoft.com/fwlink/?LinkId=532824).
 
     Este paso también puede realizarse después de crear el canal.
 
 2. Cree e inicie un canal.
-3. URL de introducción de hello recuperar canales.
+3. Recupere la URL de ingesta de canales.
 
-    URL de introducción de Hola Hola codificador en directo toosend hello secuencia toohello canal utiliza.
+    El codificador en directo usa la URL de ingesta para enviar la secuencia al canal.
 
-4. Recuperar la dirección URL de vista previa de canal de Hola.
+4. Recupere la URL de vista previa de canal.
 
-    Utilice este tooverify de dirección URL que el canal está recibiendo correctamente la secuencia en directo de Hola.
+    Use esta dirección URL para comprobar que el canal recibe correctamente la secuencia en vivo.
 
 5. Cree un recurso.
-6. Si desea para hello asset toobe cifra dinámicamente durante la reproducción, Hola siguientes:
+6. Si desea que el recurso se cifre dinámicamente durante la reproducción, haga lo siguiente:
 7. Cree una clave de contenido.
-8. Configurar la directiva de autorización de la clave de hello contenido.
+8. Configure la directiva de autorización de claves de contenido.
 9. Configure la directiva de entrega de recursos (usada por el empaquetado y el cifrado dinámicos).
-10. Crear un programa y especifique los activos de hello toouse que ha creado.
-11. Publicar asset Hola asociada programa Hola mediante la creación de un localizador OnDemand.
+10. Cree un programa y especifique que se use el recurso que ha creado.
+11. Publique el recurso asociado al programa mediante la creación de un localizador a petición.
 
     >[!NOTE]
-    >Cuando se crea la cuenta de AMS un **predeterminado** extremo de streaming se agrega la cuenta tooyour Hola **detenido** estado. Hola origen desde el que desea que el contenido de toostream tiene toobe en hello **ejecutando** estado. 
+    >Cuando se crea la cuenta de AMS, se agrega un punto de conexión de streaming **predeterminado** a la cuenta en estado **Stopped** (Detenido). El punto de conexión de streaming desde el que va a transmitir el contenido debe estar en estado **Running** (En ejecución). 
 
-12. Inicie el programa de hello cuando esté listo toostart streaming y archivado.
-13. Si lo desea, codificador en directo de hello puede ser señalado toostart un anuncio. anuncio de Hola se inserta en el flujo de salida de hello.
-14. Detener el programa de hello siempre que lo desee toostop transmisión por secuencias y archivar eventos Hola.
-15. Eliminar programa Hola (y opcionalmente eliminar recurso de hello).
+12. Inicie el programa cuando esté listo para iniciar el streaming y el archivo.
+13. Si lo desea, puede señalar el codificador en directo para iniciar un anuncio. El anuncio se inserta en el flujo de salida.
+14. Detenga el programa cuando quiera detener el streaming y el archivo del evento.
+15. Elimine el programa (y, opcionalmente, elimine el recurso).
 
 ## <a name="what-youll-learn"></a>Temas que se abordarán
-Este tema muestra cómo tooexecute diferentes operaciones en los canales y programas mediante el SDK de .NET de servicios multimedia. Dado que la ejecución de muchas de las operaciones es prolongada, se usan las API de .NET que administran operaciones de este tipo.
+Este tema muestra cómo ejecutar distintas operaciones en los canales y programas mediante el SDK de .NET de Media Services. Dado que la ejecución de muchas de las operaciones es prolongada, se usan las API de .NET que administran operaciones de este tipo.
 
-Hola tema muestra cómo siguiente de Hola toodo:
+En el tema se muestra cómo:
 
 1. Cree e inicie un canal. Se usan las API de ejecución prolongada.
-2. Obtener canales Hola Introducción (entrada) de punto de conexión. Este extremo se debe proporcionar codificador toohello que puede enviar una secuencia en directo de velocidad de bits única.
-3. Obtener el extremo de vista previa de Hola. Este extremo es toopreview usado en la secuencia.
-4. Crear un activo que será usado toostore su contenido. directivas de entrega de activos de Hello deben configurarse también, como se muestra en este ejemplo.
-5. Crear un programa y especifique los activos de hello toouse que crearon anteriormente. Iniciar programa Hola. Se usan las API de ejecución prolongada.
-6. Cree un localizador de activo de hello, por lo que el contenido de Hola se publica y se puede transmitir a tooyour clientes.
+2. Obtener el extremo de ingesta (entrada) de los canales. Este extremo debe proporcionarse al codificador que puede enviar una secuencia en directo de una sola velocidad de bits.
+3. Obtener el extremo de vista previa. Este extremo se usa para obtener una vista previa de la secuencia.
+4. Crear un recurso que se usará para almacenar el contenido. También deben configurarse las directivas de entrega de recursos, como se muestra en este ejemplo.
+5. Crear un programa y especificar que se use el recurso creado anteriormente. Iniciar el programa. Se usan las API de ejecución prolongada.
+6. Crear un localizador para el recurso, para que el contenido se publique y pueda transmitirse en vivo mediante streaming a los clientes.
 7. Mostrar y ocultar pizarras. Iniciar y detener anuncios. Se usan las API de ejecución prolongada.
-8. Limpiar el canal y Hola a todos los recursos asociados.
+8. Limpiar el canal y todos los recursos asociados.
 
 ## <a name="prerequisites"></a>Requisitos previos
-los siguientes Hola son tutorial de hello toocomplete necesarios.
+Los siguientes requisitos son necesarios para completar el tutorial.
 
-* Una cuenta de Azure. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Para obtener más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F). Obtenga créditos que pueden ser utilizado tootry out servicios de Azure de pago. Incluso después de que se agoten los créditos hello, puede mantener la cuenta de hello y usar los servicios de Azure gratuitos y características, como la característica de las aplicaciones Web de hello en el servicio de aplicación de Azure.
-* Una cuenta de Media Services. toocreate una cuenta de servicios multimedia, consulte [crear cuenta](media-services-portal-create-account.md).
+* Una cuenta de Azure. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Para obtener más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F). Obtenga créditos que puede usar para probar los servicios de Azure de pago. Incluso después de que se agoten los créditos, puede mantener la cuenta y usar los servicios y características gratuitos de Azure, como la característica de Aplicaciones web del Servicio de aplicaciones de Azure.
+* Una cuenta de Servicios multimedia. Para crear una cuenta de Media Services, consulte [Creación de cuenta](media-services-portal-create-account.md).
 * Visual Studio 2010 SP1 (Professional, Premium, Ultimate o Express) o versiones posteriores.
 * Debe usar el SDK de Servicios multimedia para .NET versión 3.2.0.0 o posterior.
 * Una cámara web y un codificador que pueda enviar una secuencia en vivo de una sola velocidad de bits.
 
 ## <a name="considerations"></a>Consideraciones
-* Actualmente, Hola máximo recomendado de duración de un evento en directo es 8 horas. Póngase en contacto con amslived Microsoft.com si necesitas toorun un canal para períodos más largos de tiempo.
-* Hay un límite de 1 000 000 directivas para diferentes directivas de AMS (por ejemplo, para la directiva de localizador o ContentKeyAuthorizationPolicy). Debe usar hello mismo Id. de directiva si utilizas siempre Hola mismo días / acceso permisos, por ejemplo, las directivas para localizadores que son tooremain previsto en su lugar durante mucho tiempo (directivas no carga). Para obtener más información, consulte [este tema](media-services-dotnet-manage-entities.md#limit-access-policies) .
+* Actualmente, la duración máxima recomendada de un evento en directo es de 8 horas. Si necesita ejecutar un canal durante largos períodos de tiempo, póngase en contacto con amslived en Microsoft.com.
+* Hay un límite de 1 000 000 directivas para diferentes directivas de AMS (por ejemplo, para la directiva de localizador o ContentKeyAuthorizationPolicy). Debe usar el mismo identificador de directiva si siempre usa los mismos permisos de acceso y días, por ejemplo, directivas para localizadores que vayan a aplicarse durante mucho tiempo (directivas distintas a carga). Para obtener más información, consulte [este tema](media-services-dotnet-manage-entities.md#limit-access-policies) .
 
 ## <a name="download-sample"></a>Descarga de un ejemplo
 
-Puede descargar el ejemplo de Hola a los que se describe en este tema de [aquí](https://azure.microsoft.com/documentation/samples/media-services-dotnet-encode-live-stream-with-ams-clear/).
+El ejemplo que se describe en este tema se puede descargar [aquí](https://azure.microsoft.com/documentation/samples/media-services-dotnet-encode-live-stream-with-ams-clear/).
 
 ## <a name="set-up-for-development-with-media-services-sdk-for-net"></a>Configuración para el desarrollo con el SDK de Servicios multimedia para .NET
 
-Configurar el entorno de desarrollo y rellenar el archivo app.config de hello con información de conexión, como se describe en [desarrollo de servicios multimedia con .NET](media-services-dotnet-how-to-use.md). 
+Configure el entorno de desarrollo y rellene el archivo app.config con la información de la conexión, como se describe en [Desarrollo de Media Services con .NET](media-services-dotnet-how-to-use.md). 
 
 ## <a name="code-example"></a>Ejemplo de código
 
@@ -127,7 +127,7 @@ Configurar el entorno de desarrollo y rellenar el archivo app.config de hello co
         private const string AssetlName = "asset001";
         private const string ProgramlName = "program001";
 
-        // Read values from hello App.config file.
+        // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
         ConfigurationManager.AppSettings["AADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
@@ -144,21 +144,21 @@ Configurar el entorno de desarrollo y rellenar el archivo app.config de hello co
 
             IChannel channel = CreateAndStartChannel();
 
-            // hello channel's input endpoint:
+            // The channel's input endpoint:
             string ingestUrl = channel.Input.Endpoints.FirstOrDefault().Url.ToString();
 
             Console.WriteLine("Intest URL: {0}", ingestUrl);
 
 
-            // Use hello previewEndpoint toopreview and verify 
-            // that hello input from hello encoder is actually reaching hello Channel. 
+            // Use the previewEndpoint to preview and verify 
+            // that the input from the encoder is actually reaching the Channel. 
             string previewEndpoint = channel.Preview.Endpoints.FirstOrDefault().Url.ToString();
 
             Console.WriteLine("Preview URL: {0}", previewEndpoint);
 
-            // When Live Encoding is enabled, you can now get a preview of hello live feed as it reaches hello Channel. 
-            // This can be a valuable tool toocheck whether your live feed is actually reaching hello Channel. 
-            // hello thumbnail is exposed via hello same end-point as hello Channel Preview URL.
+            // When Live Encoding is enabled, you can now get a preview of the live feed as it reaches the Channel. 
+            // This can be a valuable tool to check whether your live feed is actually reaching the Channel. 
+            // The thumbnail is exposed via the same end-point as the Channel Preview URL.
             string thumbnailUri = new UriBuilder
             {
             Scheme = Uri.UriSchemeHttps,
@@ -176,7 +176,7 @@ Configurar el entorno de desarrollo y rellenar el archivo app.config de hello co
 
             ILocator locator = CreateLocatorForAsset(program.Asset, program.ArchiveWindowLength);
 
-            // You can use slates and ads only if hello channel type is Standard.  
+            // You can use slates and ads only if the channel type is Standard.  
             StartStopAdsSlates(channel);
 
             // Once you are done streaming, clean up your resources.
@@ -269,7 +269,7 @@ Configurar el entorno de desarrollo y rellenar el archivo app.config de hello co
             SystemPreset = "Default720p",
             IgnoreCea708ClosedCaptions = false,
             AdMarkerSource = AdMarkerSource.Api,
-            // You can only set audio if streaming protocol is set tooStreamingProtocol.RTPMPEG2TS.
+            // You can only set audio if streaming protocol is set to StreamingProtocol.RTPMPEG2TS.
             AudioStreams = new List<AudioStream> { new AudioStream { Index = 103, Language = "eng" } }.AsReadOnly()
             };
         }
@@ -293,7 +293,7 @@ Configurar el entorno de desarrollo y rellenar el archivo app.config de hello co
         }
 
         /// <summary>
-        /// Create a Program on hello Channel. You can have multiple Programs that overlap or are sequential;
+        /// Create a Program on the Channel. You can have multiple Programs that overlap or are sequential;
         /// however each Program must have a unique name within your Media Services account.
         /// </summary>
         /// <param name="channel"></param>
@@ -312,7 +312,7 @@ Configurar el entorno de desarrollo y rellenar el archivo app.config de hello co
         }
 
         /// <summary>
-        /// Create locators in order toobe able toopublish and stream hello video.
+        /// Create locators in order to be able to publish and stream the video.
         /// </summary>
         /// <param name="asset"></param>
         /// <param name="ArchiveWindowLength"></param>
@@ -375,7 +375,7 @@ Configurar el entorno de desarrollo y rellenar el archivo app.config de hello co
         }
 
         /// <summary>
-        /// Clean up resources associated with hello channel.
+        /// Clean up resources associated with the channel.
         /// </summary>
         /// <param name="channel"></param>
         public static void Cleanup(IChannel channel)
@@ -426,28 +426,28 @@ Configurar el entorno de desarrollo y rellenar el archivo app.config de hello co
             string entityId = null;
             bool isCompleted = false;
 
-            Log("starting tootrack ", null, operation.Id);
+            Log("starting to track ", null, operation.Id);
             while (isCompleted == false)
             {
             operation = _context.Operations.GetOperation(operation.Id);
             isCompleted = IsCompleted(operation, out entityId);
             System.Threading.Thread.Sleep(TimeSpan.FromSeconds(30));
             }
-            // If we got here, hello operation succeeded.
+            // If we got here, the operation succeeded.
             Log(description + " in completed", operation.TargetEntityId, operation.Id);
 
             return entityId;
         }
 
         /// <summary> 
-        /// Checks if hello operation has been completed. 
-        /// If hello operation succeeded, hello created entity Id is returned in hello out parameter.
+        /// Checks if the operation has been completed. 
+        /// If the operation succeeded, the created entity Id is returned in the out parameter.
         /// </summary> 
-        /// <param name="operationId">hello operation Id.</param> 
+        /// <param name="operationId">The operation Id.</param> 
         /// <param name="channel">
-        /// If hello operation succeeded, 
-        /// hello entity Id associated with hello sucessful operation is returned in hello out parameter.</param>
-        /// <returns>Returns false if hello operation is still in progress; otherwise, true.</returns> 
+        /// If the operation succeeded, 
+        /// the entity Id associated with the sucessful operation is returned in the out parameter.</param>
+        /// <returns>Returns false if the operation is still in progress; otherwise, true.</returns> 
         private static bool IsCompleted(IOperation operation, out string entityId)
         {
             bool completed = false;
@@ -457,9 +457,9 @@ Configurar el entorno de desarrollo y rellenar el archivo app.config de hello co
             switch (operation.State)
             {
             case OperationState.Failed:
-                // Handle hello failure. 
+                // Handle the failure. 
                 // For example, throw an exception. 
-                // Use hello following information in hello exception: operationId, operation.ErrorMessage.
+                // Use the following information in the exception: operationId, operation.ErrorMessage.
                 Log("operation failed", operation.TargetEntityId, operation.Id);
                 break;
             case OperationState.Succeeded:

@@ -1,6 +1,6 @@
 ---
-title: un dispositivo de StorSimple local aaaDeploy | Documentos de Microsoft
-description: "Describe los pasos de Hola y procedimientos recomendados para implementar dispositivos de StorSimple de Hola y el servicio. (Se aplica tooMicrosoft StorSimple de Azure versión.3 y versiones anteriores.)"
+title: "Implementación de un dispositivo StorSimple local | Microsoft Docs"
+description: "Describe los pasos y procedimientos recomendados para implementar el servicio y el dispositivo StorSimple. (Se aplica a la versión 3 y anteriores de Microsoft Azure StorSimple)."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/17/2016
 ms.author: alkohli
-ms.openlocfilehash: d45abba1786ceae586a99ca77b90de3f290c2f0c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2063acbafd6766d00dee9509ee7def73bdc5b982
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="deploy-your-on-premises-storsimple-device"></a>Implementar el dispositivo StorSimple local
 > [!div class="op_single_selector"]
@@ -29,47 +29,47 @@ ms.lasthandoff: 10/06/2017
 > 
 
 ## <a name="overview"></a>Información general
-Página principal de implementación de dispositivos de tooMicrosoft StorSimple de Azure. Estos tutoriales de implementación aplican tooStorSimple 8000 StorSimple 8000 Series Update 0.3, StorSimple 8000 Series Update 0.1, StorSimple 8000 Series Update 0.2 y versión de lanzamiento de la serie. Esta serie de tutoriales se describe cómo tooconfigure dispositivo de StorSimple e incluye una lista de comprobación de configuración, requisitos previos de configuración y la configuración detallada pasos.
+Bienvenido a la implementación del dispositivo StorSimple de Microsoft Azure. Estos tutoriales de implementación se aplican a la versión de lanzamiento de la serie StorSimple 8000, actualización 0.1 de la serie StorSimple 8000, actualización 0.2 de la serie StorSimple 8000 y actualización 0.3 de la serie StorSimple 8000. En esta serie de tutoriales se describe cómo configurar el dispositivo StorSimple, y se incluye una lista de comprobación de configuración, los requisitos previos de configuración y los pasos de configuración detallados.
 
-información Hello en estos tutoriales se supone que ha revisado precauciones de seguridad de hello y desempaquetar, racks y cablear el dispositivo StorSimple. Si aún necesita tooperform las tareas, comience con revisar hello [precauciones de seguridad](storsimple-safety.md). Dependiendo del modelo de dispositivo, a continuación, puede desempaquetar, montaje en bastidor y cable siguiendo las instrucciones de hello en:
+La información de estos tutoriales da por supuesto que revisó las precauciones de seguridad, y que desempaquetó, montó y cableó el dispositivo StorSimple. Si todavía necesita realizar dichas tareas, empiece por revisar las [precauciones de seguridad](storsimple-safety.md). Según el modelo de dispositivo, puede desempaquetarlo, montarlo en bastidor y cablearlo siguiendo las instrucciones que se describen en:
 
 * [Desempaquetado, montaje en bastidor y cableado del 8100](storsimple-8100-hardware-installation.md)
 * [Desempaquetado, montaje en bastidor y cableado del 8600](storsimple-8600-hardware-installation.md)
 
-Necesitará privilegios toocomplete Hola el programa de instalación y configuración de proceso del administrador. Se recomienda que revise la lista de comprobación de configuración de hello antes de empezar. proceso de implementación y configuración de Hello puede tardar algunos toocomplete de tiempo.
+Necesitará privilegios de administrador para completar el proceso de instalación y configuración. Se recomienda que revise la lista de comprobación de configuración antes de comenzar. El proceso de implementación y configuración puede tardar algún tiempo en completarse.
 
 > [!NOTE]
-> información sobre la implementación de Hello StorSimple publicada en el sitio Web de Microsoft Azure Hola aplica tooStorSimple 8000 series solo a los dispositivos. Para obtener información completa acerca de los dispositivos de la serie de hello 5000 y 7000, vaya a: [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com). Información de implementación de las series 5000 y 7000, vea hello [Guía de inicio rápido de StorSimple System](http://onlinehelp.storsimple.com/111_Appliance/).
+> La información de implementación de StorSimple publicada en el sitio web de Microsoft Azure se aplica solo a los dispositivos StorSimple de la serie 8000. Para más información completa sobre los dispositivos de las series 5000 y 7000, vaya a: [http://onlinehelp.storsimple.com/](http://onlinehelp.storsimple.com). Para más información sobre la implementación de las series 5000 y 7000, vea la [Guía de inicio rápido del sistema StorSimple](http://onlinehelp.storsimple.com/111_Appliance/).
 > 
 > 
 
 ## <a name="deployment-steps"></a>Pasos de implementación
-Realice estos pasos tooconfigure el dispositivo StorSimple y conéctelo tooyour el servicio StorSimple Manager. Además toohello requiere pasos, hay pasos opcionales y los procedimientos que puede que necesite durante la implementación de Hola. instrucciones de implementación paso a paso de Hello indican cuándo se debe realizar en cada uno de estos pasos opcionales.
+Siga estos pasos obligatorios para configurar el dispositivo StorSimple y conectarlo al servicio StorSimple Manager: Además de los pasos obligatorios, hay pasos y procedimientos opcionales que puede que necesite llevar a cabo durante la implementación. Las instrucciones detalladas de implementación indican cuándo debe realizar cada uno de estos pasos opcionales.
 
 | Paso | Description |
 | --- | --- |
-| **REQUISITOS PREVIOS** |Es necesario toobe completado como preparación para la implementación de las próximas Hola. |
-| Lista de comprobación de la configuración de implementación. |Use esta lista de comprobación toogather y registro información previa tooand durante la implementación de Hola. |
-| Requisitos previos de implementación. |Estos validar Hola entorno está listo para la implementación. |
+| **REQUISITOS PREVIOS** |Se deben llevar a cabo como preparación para la próxima implementación. |
+| Lista de comprobación de la configuración de implementación. |Use esta lista de comprobación para recopilar y registrar información antes y durante la implementación. |
+| Requisitos previos de implementación. |Validan que el entorno está listo para la implementación. |
 |  | |
-| **IMPLEMENTACIÓN PASO A PASO** |Estos pasos es necesario toodeploy dispositivo de StorSimple en producción. |
+| **IMPLEMENTACIÓN PASO A PASO** |Estos pasos son obligatorios para implementar el dispositivo StorSimple en producción. |
 | Paso 1: Crear un nuevo servicio. |Configure la administración y el almacenamiento en la nube para el dispositivo StorSimple. Omita este paso si tiene un servicio existente para otros dispositivos StorSimple. |
-| Paso 2: Obtener la clave de registro del servicio de Hola. |Use esta clave tooregister & conectar el dispositivo StorSimple con el servicio de administración de Hola. |
-| Paso 3: Configurar y registrar dispositivo hello mediante Windows PowerShell para StorSimple. |Conectar red de tooyour de dispositivo de Hola y registrarlo con el programa de instalación de un saludo toocomplete Azure mediante servicio de administración de Hola. |
-| Paso 4: Completar el programa de instalación mínima del dispositivo </br>Opcional: actualización del dispositivo StorSimple. |Toocomplete de servicio de administración de uso Hola Hola el programa de instalación de dispositivos y habilitar almacenamiento tooprovide. |
-| Paso 5: Crear un contenedor de volúmenes. |Crear un contenedor de volúmenes de tooprovision. Un contenedor de volumen tiene cuenta de almacenamiento, el ancho de banda y la configuración de cifrado para todos los volúmenes de hello contenidos en ella. |
-| Paso 6: Crear un volumen. |Aprovisionar volúmenes de almacenamiento en el dispositivo de StorSimple de Hola para los servidores. |
-| Paso 7: Montar, inicializar y formatear un volumen.</br>Opcional: configurar MPIO. |Conectar el almacenamiento de iSCSI de toohello servidores proporcionado por dispositivo de Hola. También puede configurar que los servidores pueden tolerar vínculo, red y errores de interfaz de tooensure MPIO. |
-| Paso 8: Realizar una copia de seguridad. |Configurar la tooprotect de directiva de copia de seguridad de los datos |
+| Paso 2: Obtener la clave de registro del servicio. |Esta clave se usa para registrar y conectar el dispositivo StorSimple con el servicio de administración. |
+| Paso 3: Configurar y registrar el dispositivo a través de Windows PowerShell para StorSimple. |Conecte el dispositivo a la red y regístrelo con Azure para completar la instalación mediante el servicio de administración. |
+| Paso 4: Completar el programa de instalación mínima del dispositivo </br>Opcional: actualización del dispositivo StorSimple. |Use el servicio de administración para realizar la instalación del dispositivo y habilitarlo para proporcionar almacenamiento. |
+| Paso 5: Crear un contenedor de volúmenes. |Cree un contenedor para aprovisionar los volúmenes. Un contenedor de volúmenes tiene la configuración de la cuenta de almacenamiento, el ancho de banda y el cifrado de todos los volúmenes que contiene. |
+| Paso 6: Crear un volumen. |Aprovisione volúmenes de almacenamiento en el dispositivo StorSimple para los servidores. |
+| Paso 7: Montar, inicializar y formatear un volumen.</br>Opcional: configurar MPIO. |Conecte los servidores al almacenamiento iSCSI proporcionado por el dispositivo. De forma opcional, puede configurar MPIO para asegurarse de que los servidores pueden tolerar errores de vínculo, red e interfaz. |
+| Paso 8: Realizar una copia de seguridad. |Configure la directiva de copia de seguridad para proteger los datos. |
 |  | |
-| **OTROS PROCEDIMIENTOS** |Puede que tenga los procedimientos de toothese toorefer tal y como se implementa la solución. |
-| Configurar una nueva cuenta de almacenamiento para el servicio de Hola. | |
-| Utilice la consola serie del dispositivo de toohello tooconnect PuTTY. | |
-| Obtener Hola IQN de un host de Windows Server. | |
+| **OTROS PROCEDIMIENTOS** |Puede que necesite hacer referencia a estos procedimientos mientras implementa la solución. |
+| Configurar una nueva cuenta de almacenamiento para el servicio. | |
+| Usar PuTTY para conectarse a la consola serie del dispositivo. | |
+| Obtener el IQN de un host de Windows Server. | |
 | Crear una copia de seguridad manual. | |
 
 ## <a name="deployment-configuration-checklist"></a>Lista de comprobación de la configuración de implementación
-Hola después de la lista de comprobación de configuración de implementación describe la información de Hola que necesita toocollect antes y después de configurar software hello en el dispositivo StorSimple. Preparar parte de esta información antes de tiempo ayudará a agilizar el proceso de Hola de implementación de dispositivo de StorSimple de hello en su entorno. Use esta lista de comprobación tooalso tome nota detalles de configuración de Hola que implementa el dispositivo.
+La siguiente lista de comprobación de la configuración de implementación describe la información que necesita recopilar antes de configurar el software en el dispositivo StorSimple. Si prepara alguna de esta información con antelación, simplificará el proceso de implementar el dispositivo StorSimple en el entorno. Use esta lista de comprobación para anotar también los detalles de configuración cuando implemente el dispositivo.
 
 | Fase | Parámetro | Detalles | Valores |
 | --- | --- | --- | --- |
@@ -78,22 +78,22 @@ Hola después de la lista de comprobación de configuración de implementación 
 | **Configurar y registrar el dispositivo** |Configuración de red de Data 0 |Dirección IP de Data 0:</br>Máscara de subred:</br>Puerta de enlace:</br>Servidor DNS principal:</br>Servidor NTP principal:</br>IP de servidor proxy web/FQDN (opcional):</br>Puerto de proxy web: | |
 | &nbsp; |Contraseña de administrador de dispositivo |La contraseña debe contener entre 8 y 15 caracteres en minúscula, mayúscula, numéricos y especiales. | |
 | &nbsp; |Contraseña para StorSimple Snapshot Manager |La contraseña debe contener entre 14 o 15 caracteres en minúscula, mayúscula, numéricos y especiales. | |
-| &nbsp; |Clave de registro del servicio |Esta clave se genera a partir de hello portal de Azure clásico. | |
-| &nbsp; |Clave de cifrado de datos de servicio |Esta clave se crea cuando el dispositivo de hello está registrado con el servicio de administración de Hola a través de hello Windows PowerShell para StorSimple. Copie esta clave y guárdela en un lugar seguro, | |
+| &nbsp; |Clave de registro del servicio |Esta clave se genera desde el Portal de Azure clásico. | |
+| &nbsp; |Clave de cifrado de datos de servicio |Esta clave se crea cuando el dispositivo se registra con el servicio de administración a través de Windows PowerShell para StorSimple. Copie esta clave y guárdela en un lugar seguro. | |
 |  | | | |
-| **Completar la instalación mínima del dispositivo** |Nombre descriptivo para el dispositivo |Se trata de un nombre descriptivo para el dispositivo de Hola. | |
+| **Completar la instalación mínima del dispositivo** |Nombre descriptivo para el dispositivo |Nombre que ayuda a identificar el dispositivo. | |
 | &nbsp; |Zona horaria |El dispositivo usará esta zona horaria para todas las operaciones programadas. | |
 | &nbsp; |Servidor DNS secundario |Es una configuración obligatoria. | |
-| &nbsp; |Interfaz de red: IP fijas del controlador Data 0. |Estas direcciones IP debe ser enrutable toohello Internet.</br>Dirección IP fija del controlador 0:</br>Dirección IP fija del controlador 1: | |
+| &nbsp; |Interfaz de red: IP fijas del controlador Data 0. |Estas IP deben ser enrutables a Internet.</br>Dirección IP fija del controlador 0:</br>Dirección IP fija del controlador 1: | |
 |  | | | |
-| **Configuración adicional de la interfaz de red** |Interfaz de red: Data 1</br>Si habilita el iSCSI, no configure Hola puerta de enlace. |Propósito: nube/iSCSI/no se usa</br>Dirección IP:</br>Máscara de subred:</br>Puerta de enlace: | |
-| &nbsp; |Interfaz de red: Data 2</br>Si habilita el iSCSI, no configure Hola puerta de enlace. |Propósito: nube/iSCSI/no se usa</br>Dirección IP:</br>Máscara de subred:</br>Puerta de enlace: | |
-| &nbsp; |Interfaz de red: Data 3</br>Si habilita el iSCSI, no configure Hola puerta de enlace. |Propósito: nube/iSCSI/no se usa</br>Dirección IP:</br>Máscara de subred:</br>Puerta de enlace: | |
-| &nbsp; |Interfaz de red: Data 4</br>Si habilita el iSCSI, no configure Hola puerta de enlace. |Propósito: nube/iSCSI/no se usa</br>Dirección IP:</br>Máscara de subred:</br>Puerta de enlace: | |
-| &nbsp; |Interfaz de red: Data 5</br>Si habilita el iSCSI, no configure Hola puerta de enlace. |Propósito: nube/iSCSI/no se usa</br>Dirección IP:</br>Máscara de subred:</br>Puerta de enlace: | |
+| **Configuración adicional de la interfaz de red** |Interfaz de red: Data 1</br>Si iSCSI está habilitado, no configure la puerta de enlace. |Propósito: nube/iSCSI/no se usa</br>Dirección IP:</br>Máscara de subred:</br>Puerta de enlace: | |
+| &nbsp; |Interfaz de red: Data 2</br>Si iSCSI está habilitado, no configure la puerta de enlace. |Propósito: nube/iSCSI/no se usa</br>Dirección IP:</br>Máscara de subred:</br>Puerta de enlace: | |
+| &nbsp; |Interfaz de red: Data 3</br>Si iSCSI está habilitado, no configure la puerta de enlace. |Propósito: nube/iSCSI/no se usa</br>Dirección IP:</br>Máscara de subred:</br>Puerta de enlace: | |
+| &nbsp; |Interfaz de red: Data 4</br>Si iSCSI está habilitado, no configure la puerta de enlace. |Propósito: nube/iSCSI/no se usa</br>Dirección IP:</br>Máscara de subred:</br>Puerta de enlace: | |
+| &nbsp; |Interfaz de red: Data 5</br>Si iSCSI está habilitado, no configure la puerta de enlace. |Propósito: nube/iSCSI/no se usa</br>Dirección IP:</br>Máscara de subred:</br>Puerta de enlace: | |
 |  | | | |
-| **Crear un contenedor de volúmenes** |Nombre del contenedor de volúmenes: |Nombre de contenedor de Hola | |
-| &nbsp; |Cuenta de almacenamiento de Azure: |Almacenamiento cuenta acceso y nombre de clave tooassociate con este contenedor de volúmenes | |
+| **Crear un contenedor de volúmenes** |Nombre del contenedor de volúmenes: |Nombre del contenedor. | |
+| &nbsp; |Cuenta de almacenamiento de Azure: |Nombre de la cuenta de almacenamiento y clave de acceso que se asociarán con este contenedor de volúmenes. | |
 | &nbsp; |Clave de cifrado de almacenamiento en la nube: |Clave de cifrado para el almacenamiento en cada contenedor. | |
 |  | | | |
 | **Crear un volumen** |Detalles de cada volumen |Nombre del volumen: | |
@@ -102,112 +102,112 @@ Hola después de la lista de comprobación de configuración de implementación 
 | &nbsp; |&nbsp; |Nombre ACR: | |
 | &nbsp; |&nbsp; |Directiva de copia de seguridad predeterminada: | |
 |  | | | |
-| **Montar, inicializar y formatear un volumen** |Detalles de cada servidor host conectando toohello almacenamiento |Nombre de Windows Server: | |
+| **Montar, inicializar y formatear un volumen** |Detalles de cada servidor host que se conecta al almacenamiento |Nombre de Windows Server: | |
 | &nbsp; |&nbsp; |IQN de Windows Server: | |
 | &nbsp; |&nbsp; |Nombre de volumen de Windows Server: | |
 | &nbsp; |&nbsp; |Letra de unidad o punto de montaje de NTFS: | |
 
 ## <a name="deployment-prerequisites"></a>Requisitos previos de implementación
-Hola siguientes secciones explica los requisitos previos de configuración de hello para el servicio StorSimple Manager, el dispositivo de StorSimple y red de hello en el centro de datos.
+En las siguientes secciones se explican los requisitos previos de configuración del servicio StorSimple Manager, el dispositivo StorSimple y la red del centro de datos.
 
-### <a name="for-hello-storsimple-manager-service"></a>Para el servicio StorSimple Manager Hola
+### <a name="for-the-storsimple-manager-service"></a>Para el servicio de Administrador de StorSimple
 Antes de comenzar, asegúrese de que:
 
 * Tiene una cuenta Microsoft con credenciales de acceso.
 * Tiene una cuenta de almacenamiento de Microsoft Azure con credenciales de acceso.
-* Su suscripción de Microsoft Azure está habilitada para el servicio StorSimple Manager Hola. La suscripción se debe adquirir mediante hello [contrato Enterprise](https://azure.microsoft.com/pricing/enterprise-agreement/).
-* Tener acceso a software de emulación de tooterminal, como PuTTY.
+* Su suscripción de Microsoft Azure está habilitada para el servicio de Administrador de StorSimple. Debe adquirir la suscripción a través del [Contrato Enterprise](https://azure.microsoft.com/pricing/enterprise-agreement/).
+* Tiene acceso a software de emulación de terminales, como PuTTY.
 
-### <a name="for-hello-device-in-hello-datacenter"></a>Para dispositivos de hello en el centro de datos de Hola
-Antes de configurar el dispositivo de hello, asegúrese de:
+### <a name="for-the-device-in-the-datacenter"></a>Para el dispositivo en el centro de datos
+Antes de configurar el dispositivo, asegúrese de que:
 
 * El dispositivo viene completamente desempaquetado, montado en un bastidor y totalmente cableado para alimentación, red y acceso serie, tal como se describe en:
   
   * [Desempaquetado, montaje en bastidor y cableado del dispositivo 8100](storsimple-8100-hardware-installation.md)
   * [Desempaquetado, montaje en bastidor y cableado del dispositivo 8600](storsimple-8600-hardware-installation.md)
 
-### <a name="for-hello-network-in-hello-datacenter"></a>Para la red de hello en el centro de datos de Hola
+### <a name="for-the-network-in-the-datacenter"></a>Para la red del centro de datos
 Antes de comenzar, asegúrese de que:
 
-* Hello puertos en el firewall de centro de datos son tooallow abierto para el tráfico de iSCSI y nube tal y como se describe en [requisitos de red para el dispositivo StorSimple](storsimple-system-requirements.md#networking-requirements-for-your-storsimple-device).
-* dispositivo de Hello en el centro de datos puede conectarse toooutside red. Ejecute hello siguiente [Windows PowerShell 4.0](http://www.microsoft.com/download/details.aspx?id=40855) cmdlets (tabulado a continuación) toovalidate Hola conectividad toohello fuera de la red. Realizar esta validación en un equipo (en la red de centro de datos) que tiene conectividad tooAzure y donde va a implementar el dispositivo StorSimple.  
+* Se abren los puertos del firewall del centro de datos para permitir el tráfico de iSCSI y de la nube, como se describe en [Requisitos de red para el dispositivo StorSimple](storsimple-system-requirements.md#networking-requirements-for-your-storsimple-device).
+* El dispositivo en su centro de datos puede conectarse a la red externa. Ejecute los siguientes cmdlets de [Windows PowerShell 4.0](http://www.microsoft.com/download/details.aspx?id=40855) (que se muestran a continuación en una tabla) para validar la conectividad a la red externa. Realice esta validación en un equipo (en la red del centro de datos) que tenga conectividad a Azure y donde vaya a implementar el dispositivo StorSimple.  
 
-| Para este parámetro... | validez de hello toocheck... | Ejecute estos comandos o cmdlets. |
+| Para este parámetro... | Para comprobar la validez... | Ejecute estos comandos o cmdlets. |
 | --- | --- | --- |
-| **IP**</br>**Subred**</br>**Gateway** |¿Es una dirección IPv4 o IPv6 válida?</br>¿Esto es una subred válida?</br>¿Esto es una puerta de enlace válida?</br>¿Es una dirección IP duplicada en la red? |`ping ip`</br>`arp -a`</br>Hola `ping` y `arp` comandos deben generar un error que indica que no hay ningún dispositivo de red del centro de datos de Hola que está usando esta dirección IP. |
+| **IP**</br>**Subred**</br>**Gateway** |¿Es una dirección IPv4 o IPv6 válida?</br>¿Esto es una subred válida?</br>¿Esto es una puerta de enlace válida?</br>¿Es una dirección IP duplicada en la red? |`ping ip`</br>`arp -a`</br>Los comandos `ping` y `arp` no deberían dar error al indicar que no hay ningún dispositivo en la red del centro de datos que este usando esta dirección IP. |
 |  | | |
 | **DNS** |¿Es una DNS válida y puede resolver las direcciones URL de Azure? |`Resolve-DnsName -Name www.bing.com -Server <DNS server IP address>` </br>Un comando alternativo que se puede usar es:</br>`nslookup --dns-ip=<DNS server IP address> www.bing.com` |
-| &nbsp; |Compruebe si el puerto 53 está abierto. Esto solo es aplicable si está usando una DNS externa para el dispositivo. DNS interno debe resolver automáticamente direcciones URL externas de Hola. |`Test-Port -comp dc1 -port 53 -udp -UDPtimeout 10000`  </br>[Más información sobre este cmdlet](http://learn-powershell.net/2011/02/21/querying-udp-ports-with-powershell/) |
+| &nbsp; |Compruebe si el puerto 53 está abierto. Esto solo es aplicable si está usando una DNS externa para el dispositivo. El DNS interno debe resolver automáticamente las direcciones URL externas. |`Test-Port -comp dc1 -port 53 -udp -UDPtimeout 10000`  </br>[Más información sobre este cmdlet](http://learn-powershell.net/2011/02/21/querying-udp-ports-with-powershell/) |
 |  | | |
 | **NTP** |Desencadenamos una sincronización de tiempo tan pronto como se introduce el servidor NTP. Compruebe que el puerto UDP 123 está abierto cuando introduce `time.windows.com` o servidores de hora públicos). |[Descargue y use este script](https://gallery.technet.microsoft.com/scriptcenter/Get-Network-NTP-Time-with-07b216ca). |
 |  | | |
-| **Proxy (opcional)** |¿Es un URI y un puerto válidos para el proxy? </br> ¿Es el modo de autenticación de hello correcto? |<code>wget http://bing.com &#124; % {$_.StatusCode}</code></br>Este comando debe ejecutarse inmediatamente después de configurar el proxy web. Si se devuelve un código de estado 200, indica que la conexión de hello es correcta. |
-| &nbsp; |¿Se puede enrutar el tráfico a través del proxy? |Ejecute validación de DNS de hello, verificación NTP o comprobación HTTP una vez después de configurar el proxy en el dispositivo. Esto le dará una idea clara de si el tráfico se está bloqueando en el proxy o en otro lugar. |
+| **Proxy (opcional)** |¿Es un URI y un puerto válidos para el proxy? </br> ¿Es correcto el modo de autenticación? |<code>wget http://bing.com &#124; % {$_.StatusCode}</code></br>Este comando debe ejecutarse inmediatamente después de configurar el proxy web. Si se devuelve el código e estado 200, indica que la conexión es correcta. |
+| &nbsp; |¿Se puede enrutar el tráfico a través del proxy? |Ejecute las validación DNS y la comprobación NTP o HTTP después de configurar el proxy en el dispositivo. Esto le dará una idea clara de si el tráfico se está bloqueando en el proxy o en otro lugar. |
 |  | | |
 | **Registro** |Compruebe si los puertos TCP de salida 443, 80, 9354 están abiertos. |`Test-NetConnection -Port   443 -InformationLevel Detailed`</br>[Más información sobre el cmdlet Test-NetConnection](https://technet.microsoft.com/library/dn372891.aspx) |
 
 ## <a name="step-by-step-deployment"></a>IMPLEMENTACIÓN PASO A PASO
-Usar hello siguiendo las instrucciones paso a paso toodeploy el dispositivo StorSimple en el centro de datos de Hola.
+Use las siguientes instrucciones paso a paso para implementar el dispositivo StorSimple en el centro de datos.
 
 ## <a name="step-1-create-a-new-service"></a>Paso 1: Crear un nuevo servicio
-El servicio de Administrador de StorSimple puede administrar varios dispositivos de StorSimple. Para la implementación de Hola de su primer dispositivo de StorSimple, deberá toocreate un nuevo servicio de StorSimple Manager.
+El servicio de Administrador de StorSimple puede administrar varios dispositivos de StorSimple. Para la implementación de su primer dispositivo de StorSimple, deberá crear un nuevo servicio StorSimple Manager.
 
 > [!IMPORTANT]
-> Omita este paso si tiene un servicio StorSimple Manager y piensa toodeploy dispositivo de StorSimple con ese servicio.
+> Omita este paso si tiene un servicio StorSimple Manager existente y desea implementar su dispositivo StorSimple con ese servicio.
 > 
 > 
 
-Realizar Hola siguiendo los pasos toocreate una nueva instancia del servicio de StorSimple Manager Hola.
+Siga estos pasos para crear una nueva instancia del servicio de Administrador de StorSimple.
 
 [!INCLUDE [storsimple-create-new-service](../../includes/storsimple-create-new-service.md)]
 
 > [!IMPORTANT]
-> Si no ha habilitado la creación automática de Hola de una cuenta de almacenamiento con el servicio, deberá toocreate al menos una cuenta de almacenamiento después de haber creado correctamente un servicio. Dicha cuenta de almacenamiento se usará al crear un contenedor de volúmenes.
+> Si no habilitó la creación automática de una cuenta de almacenamiento con el servicio, debe crear al menos una cuenta de almacenamiento después de crear correctamente un servicio. Dicha cuenta de almacenamiento se usará al crear un contenedor de volúmenes.
 > 
-> Si no ha creado una cuenta de almacenamiento automáticamente, vaya demasiado[configurar una nueva cuenta de almacenamiento para el servicio de hello](#configure-a-new-storage-account-for-the-service) para obtener instrucciones detalladas.
-> Si ha habilitado la creación automática de Hola de una cuenta de almacenamiento, vaya demasiado[paso 2: clave de registro del servicio de Get hello](#step-2:-get-the-service-registration-key).
+> Si no creó automáticamente una cuenta de almacenamiento, vaya a [Configurar una nueva cuenta de almacenamiento para el servicio](#configure-a-new-storage-account-for-the-service) para obtener instrucciones detalladas.
+> Si habilitó la creación automática de una cuenta de almacenamiento, vaya al [Paso 2: Obtener la clave de registro del servicio](#step-2:-get-the-service-registration-key).
 > 
 > 
 
-## <a name="step-2-get-hello-service-registration-key"></a>Paso 2: Obtener la clave de registro del servicio de Hola
-Después de hello el servicio StorSimple Manager está en funcionamiento, deberá clave de registro del servicio de tooget Hola. Esta clave es tooregister usado y conecte el dispositivo StorSimple con el servicio de Hola.
+## <a name="step-2-get-the-service-registration-key"></a>Paso 2: Obtener la clave de registro del servicio
+Una vez esté en funcionamiento el servicio de Administrador de StorSimple, necesitará la clave de registro del servicio. Esta clave se usa para registrar y conectar el dispositivo StorSimple con el servicio.
 
-Realizar Hola pasos de hello portal de Azure clásico.
+Siga estos pasos en el Portal de Azure clásico.
 
 [!INCLUDE [storsimple-get-service-registration-key](../../includes/storsimple-get-service-registration-key.md)]
 
-## <a name="step-3-configure-and-register-hello-device-through-windows-powershell-for-storsimple"></a>Paso 3: Configure y registre el dispositivo de Hola a través de Windows PowerShell para StorSimple
+## <a name="step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple"></a>Paso 3: Configurar y registrar el dispositivo a través de Windows PowerShell para StorSimple
 > [!IMPORTANT]
-> Tooperforming anterior esta configuración, desconecte todas las interfaces de red de hello diferentes a DATA 0 en ambos controladores hello (activos y pasivos).
+> Antes de realizar esta configuración, desconecte todas las interfaces de red que no sean de DATA 0 en ambos controladores (activo y pasivo).
 > 
 > 
 
-Usar Windows PowerShell para StorSimple toocomplete Hola la instalación inicial de su dispositivo StorSimple como se explica en hello siguiendo el procedimiento. Necesitará toocomplete de software de emulación de terminales toouse este paso. Para obtener más información, consulte [consola serie del dispositivo Use PuTTY tooconnect toohello](#use-putty-to-connect-to-the-device-serial-console).
+Use Windows PowerShell para StorSimple para completar la configuración inicial del dispositivo StorSimple, tal como se explica en el procedimiento siguiente. Deberá usar software de emulación de terminales para completar este paso. Para obtener más información, consulte [Uso de PuTTY para conectarse a la consola serie del dispositivo](#use-putty-to-connect-to-the-device-serial-console).
 
 [!INCLUDE [storsimple-configure-and-register-device](../../includes/storsimple-configure-and-register-device.md)]
 
 ## <a name="step-4-complete-minimum-device-setup"></a>Paso 4: Completar el programa de instalación mínima del dispositivo 
-Para la configuración mínima del dispositivo de hello del dispositivo StorSimple, es necesario:
+Para proceder a la configuración mínima del dispositivo StorSimple, debe hacer lo siguiente:
 
-* Configurar el servidor DNS secundario de Hola.
+* Configurar el servidor DNS secundario.
 * Habilitar iSCSI en al menos una interfaz de red.
-* Asignar direcciones IP fijas controladores de hello tooboth.
+* Asignar direcciones IP fijas a ambos controladores.
 
-Realizar Hola siguiendo los pasos de configuración mínima del dispositivo de hello Azure toocomplete portal clásico Hola.
+Siga estos pasos en el Portal de Azure clásico para completar la configuración mínima del dispositivo.
 
 [!INCLUDE [storsimple-complete-minimum-device-setup](../../includes/storsimple-complete-minimum-device-setup.md)]
 
-Una vez completada la configuración del dispositivo hello, debe buscar actualizaciones y si está disponible, instale las actualizaciones. Hola actualizaciones pueden tardar varios toocomplete horas. Siga las instrucciones de hello en [buscar y aplicar las actualizaciones](#scan-for-and-apply-updates).
+Una vez completada la configuración del dispositivo, debe buscar actualizaciones e instalarlas en caso de que estén disponibles. Las actualizaciones pueden tardar varias horas en completarse. Siga las instrucciones que se indican en [Búsqueda y aplicación de actualizaciones](#scan-for-and-apply-updates).
 
 ## <a name="step-5-create-a-volume-container"></a>Paso 5: Crear un contenedor de volúmenes
-Un contenedor de volumen tiene cuenta de almacenamiento, el ancho de banda y la configuración de cifrado para todos los volúmenes de hello contenidos en ella. Deberá toocreate un contenedor de volumen para poder empezar a aprovisionar volúmenes en el dispositivo StorSimple.
+Un contenedor de volúmenes tiene la configuración de la cuenta de almacenamiento, el ancho de banda y el cifrado de todos los volúmenes que contiene. Deberá crear un contenedor de volúmenes para poder empezar a aprovisionar volúmenes en el dispositivo StorSimple.
 
-Realizar Hola pasos de hello Azure toocreate portal clásico un contenedor de volúmenes.
+Siga estos pasos en el Portal de Azure clásico para crear un contenedor de volúmenes.
 
 [!INCLUDE [storsimple-create-volume-container](../../includes/storsimple-create-volume-container.md)]
 
 ## <a name="step-6-create-a-volume"></a>Paso 6: Crear un volumen
-Después de crear un contenedor de volumen, puede aprovisionar un volumen de almacenamiento en el dispositivo de StorSimple de Hola para los servidores. Realizar Hola pasos de hello Azure toocreate portal clásico un volumen.
+Después de crear un contenedor de volúmenes, puede aprovisionar un volumen de almacenamiento en el dispositivo StorSimple para los servidores. Siga estos pasos en el Portal de Azure clásico para crear un volumen.
 
 > [!IMPORTANT]
 > StorSimple Manager solo puede crear volúmenes con aprovisionamiento fino.  No se pueden crear volúmenes aprovisionados total o parcialmente.
@@ -218,68 +218,68 @@ Después de crear un contenedor de volumen, puede aprovisionar un volumen de alm
 
 ## <a name="step-7-mount-initialize-and-format-a-volume"></a>Paso 7: Montar, inicializar y formatear un volumen
 > [!IMPORTANT]
-> * Hola alta disponibilidad de la solución de StorSimple, recomendamos que configure MPIO en el host de Windows Server tooconfiguring anteriores (opcional) iSCSI en el host de Windows Server. Configuración de MPIO en servidores host se asegurará de que los servidores de hello pueden tolerar un vínculo, red o errores de interfaz.
-> * Para MPIO e iSCSI instrucciones de instalación y configuración, vaya demasiado[configurar MPIO para el dispositivo StorSimple](storsimple-configure-mpio-windows-server.md). Éstos también incluirá Hola pasos toomount, inicializar y formatear volúmenes de StorSimple.
+> * Para obtener la alta disponibilidad de la solución de StorSimple, se recomienda que configure MPIO en el host de Windows Server (opcional) antes de configurar iSCSI en el host de Windows Server. La configuración MPIO en los servidores host garantizará que los servidores pueden tolerar errores de vínculos, redes o interfaces.
+> * Para obtener instrucciones de instalación y configuración de MPIO y iSCSI, vaya a [Configuración de MPIO para el dispositivo StorSimple](storsimple-configure-mpio-windows-server.md). También se incluyen los pasos para montar, inicializar y formatear volúmenes StorSimple.
 > 
 > 
 
-Si decide no tooconfigure MPIO, llevar a cabo Hola siguiendo los pasos toomount, inicializar y dar formato a los volúmenes de StorSimple.
+Si decide no configurar MPIO, realice los pasos siguientes para montar, inicializar y formatear los volúmenes StorSimple.
 
 [!INCLUDE [storsimple-mount-initialize-format-volume](../../includes/storsimple-mount-initialize-format-volume.md)]
 
 ## <a name="step-8-take-a-backup"></a>Paso 8: Realizar una copia de seguridad
 Las copias de seguridad proporcionan seguridad para los volúmenes a partir de un momento específico y mejoran la capacidad de recuperación al mismo tiempo que reducen los tiempos de restauración. Puede realizar dos tipos de copia de seguridad en el dispositivo StorSimple: instantáneas locales e instantáneas en la nube. Cada uno de estos tipos de copia de seguridad puede ser **Programada** o **Manual**.
 
-Realizar Hola pasos de hello Azure toocreate portal clásico copias de seguridad programadas.
+Siga estos pasos en el Portal de Azure clásico para crear una copia de seguridad programada.
 
 [!INCLUDE [storsimple-take-backup](../../includes/storsimple-take-backup.md)]
 
-Puede realizar una copia de seguridad manual en cualquier momento. Para conocer los procedimientos, vaya demasiado[crear una copia de seguridad manual](#Create-a-manual-backup).
+Puede realizar una copia de seguridad manual en cualquier momento. Para conocer los procedimientos, vaya a [Crear una copia de seguridad manual](#Create-a-manual-backup).
 
-## <a name="configure-a-new-storage-account-for-hello-service"></a>Configurar una nueva cuenta de almacenamiento para el servicio de Hola
-Se trata de un paso opcional que necesite tooperform únicamente si no ha habilitado la creación automática de Hola de una cuenta de almacenamiento con el servicio. Una cuenta de almacenamiento de Microsoft Azure es toocreate requiere un contenedor de volúmenes de StorSimple.
+## <a name="configure-a-new-storage-account-for-the-service"></a>Configurar una nueva cuenta de almacenamiento para el servicio
+Se trata de un paso opcional que debe llevar a cabo únicamente si no habilitó la creación automática de una cuenta de almacenamiento con su servicio. Se requiere una cuenta de almacenamiento de Microsoft Azure para crear un contenedor de volúmenes de StorSimple.
 
-Si necesita una cuenta de almacenamiento de Azure en una región distinta de toocreate, consulte [sobre cuentas de almacenamiento de Azure](../storage/common/storage-create-storage-account.md) para obtener instrucciones paso a paso.
+Si necesita crear una cuenta de almacenamiento de Azure en una región distinta, vea [Acerca de las cuentas de almacenamiento de Azure](../storage/common/storage-create-storage-account.md) para obtener instrucciones paso a paso.
 
-Realizar Hola pasos descritos en el portal de Azure clásico en Hola Hola **el servicio StorSimple Manager** página.
+Siga estos pasos en el Portal de Azure clásico, en la página **Servicio Administrador de StorSimple** .
 
 [!INCLUDE [storsimple-configure-new-storage-account](../../includes/storsimple-configure-new-storage-account.md)]
 
-## <a name="use-putty-tooconnect-toohello-device-serial-console"></a>Usar la consola serie del dispositivo de toohello tooconnect PuTTY
-tooconnect tooWindows PowerShell para StorSimple, necesita toouse software de emulación de terminales, como PuTTY. Puede usar PuTTY cuando acceda a los dispositivos de hello directamente a través de la consola serie de Hola o al abrir una sesión de telnet desde un equipo remoto.
+## <a name="use-putty-to-connect-to-the-device-serial-console"></a>Uso de PuTTY para conectarse a la consola serie del dispositivo
+Para conectarse a Windows PowerShell para StorSimple, deberá usar software de emulación de terminales, como PuTTY. Puede usar PuTTY cuando acceda al dispositivo directamente a través de la consola serie o abriendo una sesión de Telnet desde un equipo remoto.
 
-[!INCLUDE [Use PuTTY tooconnect toohello device serial console](../../includes/storsimple-use-putty.md)]
+[!INCLUDE [Use PuTTY to connect to the device serial console](../../includes/storsimple-use-putty.md)]
 
 ## <a name="scan-for-and-apply-updates"></a>Búsqueda y aplicación de actualizaciones
-La actualización del dispositivo puede tardar entre 1 y 4 horas. Realizar Hola siguiendo los pasos tooscan para y aplicar las actualizaciones en el dispositivo.
+La actualización del dispositivo puede tardar entre 1 y 4 horas. Realice los pasos siguientes para detectar y aplicar las actualizaciones en el dispositivo.
 
 > [!NOTE]
-> Si tiene una puerta de enlace configurada en una interfaz de red diferentes a Data 0, será necesario interfaces de red de Data 2 y Data 3 toodisable antes de instalar la actualización de Hola. Vaya demasiado**dispositivos > configurar** y deshabilitar las interfaces de Data 2 y Data 3. Deberá volver a habilitar estas interfaces después Hola dispositivo está actualizado.
+> Si tiene una puerta de enlace configurada en una interfaz de red que no sea Data 0, deberá deshabilitar las interfaces de red Data 2 y Data 3 antes de instalar la actualización. Vaya a **Dispositivos > Configurar** y deshabilite las interfaces Data 2 y Data 3. Deberá volver a habilitar estas interfaces después de actualiza el dispositivo.
 > 
 > 
 
-#### <a name="tooupdate-your-device"></a>tooupdate el dispositivo
-1. En el dispositivo de hello **inicio rápido** página, haga clic en **dispositivos**. Seleccione el dispositivo físico de hello, haga clic en **mantenimiento** y, a continuación, haga clic en **examinar actualizaciones**.  
-2. Se crea un tooscan de trabajo si hay actualizaciones disponibles. Si hay actualizaciones disponibles, Hola **examinar actualizaciones** cambia demasiado**instalar actualizaciones**. Haga clic en **Instalar actualizaciones**. Es posible que toodisable solicitado Data 2 y Data 3 anteriores tooinstalling Hola actualizaciones. Debe deshabilitar estas interfaces de red o las actualizaciones de hello podrían fallar.
-3. Se creará un trabajo de actualización. Supervisar el estado de saludo de la actualización desplazándose demasiado**trabajos**.
+#### <a name="to-update-your-device"></a>Para actualizar su dispositivo
+1. En la página **Inicio rápido** del dispositivo, haga clic en **Dispositivos**. Seleccione el dispositivo físico, haga clic en **Mantenimiento** y luego en **Buscar actualizaciones**.  
+2. Se crea un trabajo para buscar las actualizaciones disponibles. Si hay actualizaciones disponibles, la opción **Buscar actualizaciones** cambia a **Instalar actualizaciones**. Haga clic en **Instalar actualizaciones**. Puede que se le pida que deshabilite Data 2 y Data 3 antes de instalar las actualizaciones. Debe deshabilitar estas interfaces de red o las actualizaciones podrían dar error.
+3. Se creará un trabajo de actualización. Vaya a **Trabajos**para supervisar el estado de la actualización.
    
    > [!NOTE]
-   > Cuando se inicia el trabajo de actualización de hello, inmediatamente muestra el estado de hello como 50 por ciento. estado de Hello, a continuación, cambia el porcentaje de too100 solo después de trabajo de actualización de hello esté completando. No hay ningún estado de tiempo real para el proceso de actualización de Hola.
+   > Cuando se inicia el trabajo de actualización, se muestra inmediatamente el estado como 50 por ciento. Luego, el estado cambia al 100 por cien, una vez completado el trabajo de actualización. No hay ningún estado en tiempo real para el proceso de actualizaciones.
    > 
    > 
-4. Una vez se actualizó correctamente el dispositivo de hello, habilitar interfaces de red Data 2 y Data 3 si éstos se han deshabilitado.
+4. Después de que el dispositivo se actualiza correctamente, habilite las interfaces de red Data 2 y Data 3 si estaban deshabilitadas.
 
-## <a name="get-hello-iqn-of-a-windows-server-host"></a>Obtener Hola IQN de un host de Windows Server
-Realizar Hola siguiendo los pasos tooget Hola iSCSI nombre completo (IQN) de un host de Windows que ejecuta Windows Server 2012.
+## <a name="get-the-iqn-of-a-windows-server-host"></a>Obtener el IQN de un host de Windows Server
+Siga estos pasos para obtener el nombre completo del iSCSI (IQN) de un host de Windows que ejecute Windows Server 2012.
 
 [!INCLUDE [Create a manual backup](../../includes/storsimple-get-iqn.md)]
 
 ## <a name="create-a-manual-backup"></a>Crear una copia de seguridad manual
-Realizar Hola siguiendo los pasos indicados en hello toocreate portal clásico a petición de Azure copia de seguridad manual de un único volumen en el dispositivo StorSimple.
+Siga estos pasos en el Portal de Azure clásico para crear una copia de seguridad manual a petición para un único volumen en el dispositivo StorSimple.
 
 [!INCLUDE [Create a manual backup](../../includes/storsimple-create-manual-backup.md)]
 
 ## <a name="next-steps"></a>Pasos siguientes
 * Configure un [dispositivo virtual](storsimple-virtual-device-u2.md).
-* Hola de uso [el servicio StorSimple Manager](https://msdn.microsoft.com/library/azure/dn772396.aspx) toomanage dispositivo StorSimple.
+* Use el [servicio de Administrador de StorSimple](https://msdn.microsoft.com/library/azure/dn772396.aspx) para administrar el dispositivo StorSimple.
 

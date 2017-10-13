@@ -1,6 +1,6 @@
 ---
-title: "notas de la versión de aaaStorSimple 8000 Series Update 4 | Documentos de Microsoft"
-description: "Describe nuevas características de hello, problemas y soluciones alternativas para StorSimple 8000 Series Update 4."
+title: "Notas de la versión de la serie StorSimple 8000 Update 4 | Microsoft Docs"
+description: "Describe las nuevas características, problemas y soluciones alternativas de la serie StorSimple 8000 Update 4."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,80 +14,80 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/04/2017
 ms.author: alkohli
-ms.openlocfilehash: 4bca8ca222e6706fd6eaf56b702b0d34b6ffd1c0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 23f1bbb066c5b6481988ee841ad8979d78abf084
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>Notas de la versión de la serie StorSimple 8000 Update 4
 
 ## <a name="overview"></a>Información general
 
-Hello siguientes notas de la versión describen características nuevas de hello e identifican problemas abiertos críticos de Hola para StorSimple 8000 Series Update 4. También contienen una lista de las actualizaciones de software de StorSimple Hola incluidos en esta versión. 
+Las siguientes notas de la versión describen las características nuevas e identifican los problemas críticos abiertos de la serie StorSimple 8000 Update 4. También contienen una lista de las actualizaciones de software de StorSimple incluidas en esta versión. 
 
-Actualización 4 puede ser dispositivo de StorSimple de tooany aplicado ejecutando versión (GA) o actualización 0,1 a través de la actualización 3.1. versión del dispositivo Hola asociado con la actualización 4 es 6.3.9600.17820.
+Update 4 puede aplicarse a cualquier dispositivo de StorSimple que ejecute software de versión (GA) o las actualizaciones de la 0.1 a la 3.1. La versión de dispositivo asociada a Update 4 es 6.3.9600.17820.
 
-Revise información Hola contenida en la versión de Hola notas antes de implementar Hola actualización de la solución StorSimple.
+Revise la información contenida en las notas de la versión antes de implementar la actualización de la solución de StorSimple.
 
 > [!IMPORTANT]
-> * Update 4 tiene actualizaciones de software de dispositivo, firmware de USM, firmware y controlador LSI, firmware de disco, Storport y Spaceport, seguridad y otras actualizaciones de SO. Tarda aproximadamente 4 horas tooinstall esta actualización. La actualización del firmware de disco es una actualización perjudicial y provoca un tiempo de inactividad en el dispositivo. Se recomienda aplicar actualización 4 tookeep su dispositivo actualizado. 
-> * Para cada versión nueva, quizás no pueda ver las actualizaciones inmediatamente porque se realiza una implementación por fases de actualizaciones de Hola. Espere unos días y luego busque actualizaciones de nuevo ya que estas estarán disponibles pronto.
+> * Update 4 tiene actualizaciones de software de dispositivo, firmware de USM, firmware y controlador LSI, firmware de disco, Storport y Spaceport, seguridad y otras actualizaciones de SO. Para instalar esta actualización, se necesitan en torno a unas cuatro horas. La actualización del firmware de disco es una actualización perjudicial y provoca un tiempo de inactividad en el dispositivo. Se recomienda aplicar la actualización 4 para mantener actualizado el dispositivo. 
+> * Para las nuevas versiones, no podrán ver las actualizaciones de inmediato porque hacemos una implementación por fases de las actualizaciones. Espere unos días y luego busque actualizaciones de nuevo ya que estas estarán disponibles pronto.
 
 ## <a name="whats-new-in-update-4"></a>Novedades de la actualización 4
 
-Hello siguientes claves mejoras y correcciones de errores se realizaron en la actualización 4.
+Se realizaron las siguientes mejoras clave y correcciones de errores en Update 4.
 
-* **Información más automatizada algoritmos de recuperación de espacio** : en la actualización 4, hello algoritmos de recuperación de espacio automatizadas son recuperación de espacio de hello tooadjust mejorada ciclos en función de hello esperada reclamar espacio disponible en la nube de Hola. 
+* **Algoritmos de recuperación de espacio automatizados más inteligentes**. En Update 4, los algoritmos de recuperación de espacio automatizados se mejoraron para ajustarlos a los ciclos de recuperación de espacio en virtud del espacio que se espera recuperar disponible en la nube. 
 
-* **Mejoras de rendimiento para volúmenes anclados localmente** – actualización 4 ha mejorado el rendimiento de Hola de volúmenes anclados localmente en escenarios que tienen la recopilación de datos de alta (tamaño de datos comparable toovolume).
+* **Mejoras de rendimiento en volúmenes anclados localmente**. En Update 4 se mejoró el rendimiento de los volúmenes anclados localmente en escenarios con una alta ingesta de datos (los datos comparados con el tamaño del volumen).
 
-* **Restauración basadas en el mapa térmico** : Hola anteriores versiones, después de una recuperación ante desastres (DR), datos de Hola se restauran desde hello en la nube basada en patrones de acceso de Hola que resulta en un rendimiento lento. 
+* **Restauración basada en mapa térmico**. En las versiones anteriores, después de una recuperación ante desastres, los datos se restauraban desde la nube en función de los patrones de acceso, lo que hacía que el rendimiento fuese lento. 
 
-    Se implementa una característica nueva en la actualización 4 que realiza un seguimiento de frecuencia de acceso a datos toocreate un mapa térmico cuando el dispositivo de hello esté en uso anterior tooDR (usados más fragmentos de datos tienen alta calor mientras que menor usar fragmentos tienen calor baja). Después de la recuperación ante desastres, StorSimple usa Hola mapa térmico tooautomatically restauración y rehidratar datos Hola de nube de Hola. 
+    En Update 4, se implementa una característica nueva que hace seguimiento de los datos a los que se obtiene acceso con menos frecuencia con el fin de crear un mapa término cuando el dispositivo está en uso antes de la recuperación ante desastres (los fragmentos de datos más usados muestran mayor calor, mientras que los fragmentos menos usados se ven más fríos). Después de la recuperación ante desastres, StorSimple usa el mapa térmico para restaurar y rehidratar los datos desde la nube. 
 
-    Todas las restauraciones de hello ahora serán en función de mapa térmico. Para obtener más información sobre cómo según el mapa térmico tooquery y Cancelar trabajos de restauración y rehidratación, vaya demasiado[de Windows PowerShell para StorSimple referencia del cmdlet](https://technet.microsoft.com/library/dn688168.aspx).
+    Todas las restauraciones ahora son restauraciones basadas en mapas térmicos. Para más información sobre cómo consultar y cancelar los trabajos de restauración y rehidratación basados en mapas térmicos, vaya a [Referencia de cmdlets de Windows PowerShell para StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
 
-* **Herramienta de diagnóstico de StorSimple** : en Update 4, un diagnóstico de StorSimple se está herramienta publicado tooallow para diagnosticar fácil y solución de problemas relacionados con el estado de componentes de hardware, red, rendimiento y toosystem. Esta herramienta se ejecuta a través de hello Windows PowerShell para StorSimple. Para obtener más información, consulte demasiado[solucionar problemas con la herramienta de diagnóstico de StorSimple](storsimple-8000-diagnostics.md).
+* **Herramienta de diagnóstico de StorSimple**. En Update 4, se lanzó una herramienta de diagnóstico de StorSimple para diagnosticar y solucionar rápidamente problemas relacionados con el sistema, la red, el rendimiento y el estado de los componentes de hardware. Esta herramienta se ejecuta a través de Windows PowerShell para StorSimple. Para obtener más información, lea el artículo sobre cómo [solucionar problemas con la herramienta de diagnóstico de StorSimple](storsimple-8000-diagnostics.md).
 
-* **Herramienta de migración de StorSimple basada en interfaz de usuario** -toothis anteriores de la versión, migración de datos de la serie 5000-7000 necesario Hola usuarios tooexecute un elemento de flujo de trabajo de migración de hello mediante la interfaz de PowerShell de Azure de Hola. En esta versión, una fácil de usar herramienta queda disponible para compatibilidad con toofacilitate la migración de StorSimple basada en la interfaz de usuario Hola mismo flujo de trabajo de migración. Esta herramienta también permitiría para la consolidación de Hola de sectores de almacenamiento de recuperación. 
+* **Herramienta de migración de StorSimple basada en IU**. Antes de esta versión, la migración de datos de las series 5000 a 7000 necesitaba que los usuarios ejecutarán una parte del flujo de trabajo de migración a través de la interfaz de Azure PowerShell. En esta versión, hay disponible una herramienta de migración de StorSimple basada en IU fácil de usar para soporte técnico a fin de facilitar el mismo flujo de trabajo de migración. Esta herramienta también permitiría la consolidación de los depósitos de recuperación. 
 
-* **Cambios relacionados con el estándar FIPS** : esta versión y versiones posteriores, FIPS está habilitada de forma predeterminada en todos los dispositivos de la serie de hello StorSimple 8000 para ambos Hola Microsoft Azure Government y cuentas de nube pública de Azure.
+* **Cambios relacionados con FIPS**. Desde esta versión, FIPS está habilitado de manera predeterminada en todos los dispositivos de la serie StorSimple 8000 tanto para cuentas de Microsoft Azure Government como para cuentas de la nube pública de Azure.
 
-* **Actualizar los cambios de** : en esta versión, tooupdate relacionados con errores se han corregido errores.
+* **Actualización de cambios**: en esta versión, se han corregido los errores relacionados con la actualización.
 
-* **Alerta de errores de disco** -se agrega una nueva alerta que avisa al usuario de hello inminente de errores de disco en esta versión. Si se produce esta alerta, póngase en contacto con Microsoft Support tooship un disco de reemplazo. Para obtener más información, consulte demasiado[alertas de hardware en el dispositivo StorSimple](storsimple-manage-alerts.md#hardware-alerts).
+* **Alerta de errores en el disco**. En esta versión, se agregó una alerta nueva que advierte al usuario cuando existen errores latentes en el disco. Si se produce esta alerta, póngase en contacto con el soporte técnico de Microsoft para enviar un disco de sustitución. Para obtener más información, lea el tema sobre [alertas de hardware del dispositivo StorSimple](storsimple-manage-alerts.md#hardware-alerts).
 
-* **Cambios de reemplazo de controlador** -se agregó un cmdlet que permite el estado de hello tooquery Hola de usuario del proceso de reemplazo de controlador de hello en esta versión. Para obtener más información, visite toohello [estado del reemplazo de controlador de cmdlet tooquery](https://technet.microsoft.com/library/dn688168.aspx).
+* **Cambios en el reemplazo del controlador**. En esta versión, se agregó un cmdlet que permite que el usuario consulte el estado del proceso de reemplazo del controlador. Para más información, vaya al [cmdlet para consultar el estado del reemplazo del controlador](https://technet.microsoft.com/library/dn688168.aspx).
 
 
 ## <a name="issues-fixed-in-update-4"></a>Problemas corregidos en Update 4
 
-Hello tabla siguiente proporciona un resumen de los problemas corregidos en la actualización 4.    
+En las tablas siguientes se proporciona un resumen de los problemas corregidos en Update 4.    
 
-| No | Característica | Problema | Se aplica a dispositivos toophysical | Se aplica a dispositivos toovirtual |
+| No | Característica | Problema | Se aplica a un dispositivo físico | Se aplica a un dispositivo virtual |
 | --- | --- | --- | --- | --- |
-| 1 |Conmutación por error |Hola versión anterior, después de hello conmutación por error, no existe era un problema relacionado con toocleanup observado al sitio de cliente de Hola. Este problema está corregido en esta versión. |Sí |Sí |
-| 2 |Volúmenes anclados localmente |En la versión anterior de hello, hubo una creación de volúmenes de problema toorelated para volúmenes anclados localmente que pueda provocar errores de creación de volumen. La causa raíz de este problema se corrigió en esta versión. |Sí |No |
-| 3 |Paquete de soporte |En la versión anterior, había paquete tooSupport relacionados de problemas que pueda provocar una excepción System.OutOfMemory u otros errores lo que produce un error de creación del paquete de soporte técnico. Estos errores se corrigieron en esta versión. |Sí |Sí |
-| 4 |Supervisión |No existe en la versión anterior, en un problema relacionado con gráficos de toomonitoring para volúmenes anclados localmente que se mostró el consumo en EB. Este error se solucionó en esta versión. |Sí |Sí |
-| 5 |Migración |En la versión anterior, hubo varios problemas relacionados toohello confiabilidad de la migración de dispositivos de la serie 5000-7000 serie too8000. Estos problemas se solucionaron en esta versión. |Sí |Sí |
-| 6 |Actualizar |En versiones anteriores, si se produjo un error de actualización, controladores de hello entrarían en modo de recuperación y, por tanto, Hola usuario no puede continuar con la actualización de Hola y necesitaría toocontact Microsoft Support. <br> Este comportamiento se cambió en esta versión. Si el usuario hello tiene un error de actualización después de ambos controladores Hola ejecución Hola misma versión (actualización 4), Hola controladores no entra en modo de recuperación. Si el usuario de hello encuentra este error, se recomienda que espere un poco y, a continuación, vuelva a intentar Hola actualización. reintento de Hello podía realizarse correctamente. Si se produce un error de reintento de hello, a continuación, debe ponerse en contacto con Microsoft Support. |Sí |Sí |
+| 1 |Conmutación por error |En la versión anterior, después de la conmutación por error, existía un error relacionado con la limpieza que se observaba en el sitio del cliente. Este problema está corregido en esta versión. |Sí |Sí |
+| 2 |Volúmenes anclados localmente |En la versión anterior, se producía un error relacionado con la creación de los volúmenes anclados localmente que podía generar errores al crear los volúmenes. La causa raíz de este problema se corrigió en esta versión. |Sí |No |
+| 3 |Paquete de soporte |En la versión anterior, existían problemas relacionados con el paquete de soporte que podían generar una excepción System.OutOfMemory u otros errores que podían impedir la creación del paquete de soporte. Estos errores se corrigieron en esta versión. |Sí |Sí |
+| 4 |Supervisión |En la versión anterior, existía un problema relacionado con la supervisión de gráficos para los volúmenes anclados localmente, donde el consumo se mostraba en EB. Este error se solucionó en esta versión. |Sí |Sí |
+| 5 |Migración |En la versión anterior, había varios problemas relacionados con la confiabilidad de la migración desde dispositivos de las series 5000 a 7000 a los dispositivos de la serie 8000. Estos problemas se solucionaron en esta versión. |Sí |Sí |
+| 6 |Actualizar |En versiones anteriores, si se produjo un error de actualización, los controladores entraban en modo de recuperación y, por tanto, el usuario no podía continuar con la actualización y tenía que ponerse en contacto con el Servicio de soporte técnico de Microsoft. <br> Este comportamiento se cambió en esta versión. Si el usuario sufre un error de actualización una vez que ambos controladores ejecutan la misma versión (actualización 4), los controladores no entran en modo de recuperación. Si el usuario encuentra este error, se recomienda que espere un poco y, a continuación, vuelva a intentar la actualización. Este reintento podría ser correcto. Si el reintento es incorrecto, debe ponerse en contacto con el Servicio de soporte técnico de Microsoft. |Sí |Sí |
 
 
 ## <a name="known-issues-in-update-4-from-previous-releases"></a>Problemas conocidos en Update 4 de las versiones anteriores
 
-No hay ningún problema conocido en Update 4. Para obtener una lista de problemas que se realiza a través de tooUpdate 4 de las versiones anteriores, vaya demasiado[notas de la versión de actualización 3](storsimple-update3-release-notes.md#known-issues-in-update-3).
+No hay ningún problema conocido en Update 4. Si desea ver una lista de los problemas existentes en Update 4 que provienen de versiones anteriores, consulte las [notas de la versión de Update 3](storsimple-update3-release-notes.md#known-issues-in-update-3).
 
 ## <a name="serial-attached-scsi-sas-controller-and-firmware-updates-in-update-4"></a>Controlador SCSI conectado en serie (SAS) y actualizaciones de firmware en Update 4
 
-Esta versión tiene actualizaciones de firmware y controlador LSI y controlador SAS. Para obtener más información sobre cómo tooinstall estas actualizaciones, consulte [instalar la actualización 4](storsimple-install-update-4.md) en el dispositivo StorSimple.
+Esta versión tiene actualizaciones de firmware y controlador LSI y controlador SAS. Para más información sobre cómo instalar estas actualizaciones, consulte cómo [instalar Update 4](storsimple-install-update-4.md) en el dispositivo StorSimple.
 
 ## <a name="virtual-device-updates-in-update-4"></a>Actualizaciones de dispositivos virtuales en Update 4
 
-Esta actualización no puede ser aplicada toohello dispositivo de StorSimple en la nube (también conocido como Hola dispositivo virtual). Nuevos dispositivos virtuales necesitará toobe creado. 
+Esta actualización no se puede aplicar a StorSimple Cloud Appliance (también conocido como el dispositivo virtual). Deben crearse nuevos dispositivos virtuales. 
 
 ## <a name="next-step"></a>Paso siguiente
 
-Obtenga información acerca de cómo demasiado[instalar la actualización 4](storsimple-install-update-4.md) en el dispositivo StorSimple.
+Obtenga información sobre cómo [instalar Update 4](storsimple-install-update-4.md) en el dispositivo StorSimple.
 

@@ -1,5 +1,5 @@
 ---
-title: "una directiva de conmutación por error para lograr alta disponibilidad de crear secuencias de comandos de CLI de aaaAzure | Documentos de Microsoft"
+title: "Script de la CLI de Azure: Creación de una directiva de conmutación por error para alta disponibilidad | Microsoft Docs"
 description: "Ejemplo de script de la CLI de Azure: Creación de una directiva de conmutación por error para alta disponibilidad"
 services: cosmos-db
 documentationcenter: cosmosdb
@@ -16,27 +16,27 @@ ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 06/02/2017
 ms.author: mimig
-ms.openlocfilehash: 9076f4ef23fceb4208c934c57ac6899f0b58ffd3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 96083d66cc1a2ef179f9313c1b3ed04162c1c048
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="create-a-failover-policy-for-high-availability-using-hello-azure-cli"></a>Crear una directiva de conmutación por error para lograr alta disponibilidad con hello CLI de Azure
+# <a name="create-a-failover-policy-for-high-availability-using-the-azure-cli"></a>Creación de una directiva de conmutación por error para alta disponibilidad mediante la CLI de Azure
 
 Este ejemplo de script de la CLI crea una cuenta de Azure Cosmos DB y luego la configura para alta disponibilidad.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Si elige tooinstall y usar hello CLI localmente, en este tema requiere que se ejecuten hello Azure CLI versión 2.0 o posterior. Ejecutar `az --version` toofind versión de Hola. Si necesita tooinstall o una actualización, consulte [instalar Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Si decide instalar y usar la CLI localmente, para este tema es preciso que ejecute la CLI de Azure versión 2.0 o posterior. Ejecute `az --version` para encontrar la versión. Si necesita instalarla o actualizarla, consulte [Instalación de la CLI de Azure 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Script de ejemplo
 
-[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/high-availability-cosmosdb-configure-failover/high-availability-cosmosdb-configure-failover.sh?highlight=23-27 "Create an Azure Cosmos DB failover policy")]
+[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/high-availability-cosmosdb-configure-failover/high-availability-cosmosdb-configure-failover.sh?highlight=23-27 "Creación de una directiva de conmutación por error de Azure Cosmos DB")]
 
 ## <a name="clean-up-deployment"></a>Limpieza de la implementación
 
-Después de ejecutar el ejemplo de script de Hola, Hola siguiente comando puede ser usado tooremove grupo de recursos de Hola y todos los recursos asociados con él.
+Después de ejecutar el script de ejemplo, se puede usar el comando siguiente para quitar el grupo de recursos y todos los recursos asociados.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
@@ -44,7 +44,7 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Este script utiliza Hola siga los comandos. Cada comando de documentación específica de hello tabla vínculos toocommand.
+Este script usa los siguientes comandos. Cada comando de la tabla crea un vínculo a documentación específica del comando.
 
 | Comando | Notas |
 |---|---|
@@ -55,6 +55,6 @@ Este script utiliza Hola siga los comandos. Cada comando de documentación espec
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener más información sobre Hola CLI de Azure, consulte [documentación de Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Para más información sobre la CLI de Azure, consulte la [documentación de la CLI de Azure](https://docs.microsoft.com/cli/azure/overview).
 
-Encontrará más ejemplos de secuencias de comandos de CLI de base de datos de Azure Cosmos en hello [documentación de Azure Cosmos DB CLI](../cli-samples.md).
+Encontrará más ejemplos de scripts de la CLI de Azure Cosmos DB en la [documentación de la CLI de Azure Cosmos DB](../cli-samples.md).

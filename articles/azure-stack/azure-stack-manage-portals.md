@@ -1,6 +1,6 @@
 ---
-title: los portales de administrador y usuario de hello aaaUsing en pila de Azure | Documentos de Microsoft
-description: "Obtenga información acerca de las diferencias de hello entre portales de administrador y usuario de hello en la pila de Azure."
+title: "Uso del portal de administración de Azure Stack | Microsoft Docs"
+description: "Como operador de Azure Stack, debe aprender a usar el portal de administración."
 services: azure-stack
 documentationcenter: 
 author: twooley
@@ -12,64 +12,73 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 09/25/2017
 ms.author: twooley
-ms.openlocfilehash: 5e940749917e4aade26483a79bcc238346bf94f5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 3a1be7a08fab8ad0253f26e6a0683617bff4b7c9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="using-hello-administrator-and-user-portals-in-azure-stack"></a>Uso de portales de administrador y usuario de hello en la pila de Azure
+# <a name="using-the-administrator-portal-in-azure-stack"></a>Uso del portal de administración de Azure Stack
 
-Hay dos portales de pila de Azure; Hola portal de administrador y usuario hello (también denominada hello tooas *inquilino* portal). portales de Hola se basan en instancias independientes del Administrador de recursos de Azure.
+*Se aplica a: Sistemas integrados de Azure Stack y Azure Stack Development Kit*
 
-tabla Hola siguiente muestra cómo tooconnect toohello portales y los puntos de conexión del Administrador de tooResource en un entorno de Kit de desarrollo de pila de Azure.
+Hay dos portales en Azure Stack: el portal de administración y el portal de usuarios (también llamado en ocasiones portal de *inquilinos*). Como operador de Azure Stack, puede usar el portal de administración para la administración y las operaciones diarias de Azure Stack. 
 
-|  Portal | URL del portal | URL del punto de conexión de Resource Manager |   
-| -------- | ------------- | ------- |  
-| Administrador | https://adminportal.local.azurestack.external  | https://adminmanagement.local.azurestack.external  |  
-| Usuario | https://portal.local.azurestack.external | https://management.local.azurestack.external  |
+## <a name="access-the-administrator-portal"></a>Acceso al portal de administración
+
+En un entorno de kit de desarrollo, primero deberá asegurarse de que puede [conectarse al host del kit de desarrollo](azure-stack-connect-azure-stack.md) mediante Conexión a Escritorio remoto o una red privada virtual (VPN).
+
+Para acceder al portal de administración, vaya a la dirección URL del portal e inicie sesión con las credenciales de un operador de Azure Stack. En un sistema integrado, la dirección URL del portal varía según el nombre de la región y el nombre de dominio completo (FQDN) externo de la implementación de Azure Stack.
+
+| Environment | Dirección URL del portal de administración |   
+| -- | -- | 
+| Kit de desarrollo| https://adminportal.local.azurestack.external  |
+| Sistemas integrados | https://adminportal.&lt;*región*&gt;.&lt;*FQDN*&gt; | 
 | | |
 
-## <a name="hello-administrator-portal"></a>portal de administración de Hola
+ ![El portal de administración](media/azure-stack-manage-portals/image1.png)
 
-portal de administrador de Hello permite a una nube operador tooperform administrativo y operativo las tareas. Un operador de nube puede hacer cosas como las siguientes:
-* Supervisar el estado y las alertas.
-* Administrar la capacidad.
-* rellenar marketplace Hola
+En el portal de administración, puede hacer cosas como las siguientes:
+
+* Administrar la infraestructura (como el estado del sistema, las actualizaciones, la capacidad, etc.)
+* Rellenar el Marketplace.
 * Crear planes y ofertas.
-* Crear suscripciones para los inquilinos.
+* Crear suscripciones para los usuarios.
 
-Un operador de nube también puede crear recursos, como máquinas virtuales, redes virtuales y cuentas de almacenamiento.
-
- ![portal de administración de Hola](media/azure-stack-manage-portals/image1.png)
-
- ## <a name="hello-user-portal"></a>portal de usuarios de Hola
-
- portal de usuarios de Hello no proporciona acceso tooany de capacidades de hello administrativos u operativos del portal de administrador de Hola. En el portal de usuarios de hello, un usuario puede suscribirse toopublic ofertas y usar servicios de Hola que están disponibles a través de dichas ofertas.
-
-  ![portal de usuarios de Hola](media/azure-stack-manage-portals/image2.png)
+En el icono del **tutorial de inicio rápido**, se incluyen vínculos a documentación en línea para las tareas más comunes.
  
- ## <a name="subscription-behavior"></a>Comportamiento de la suscripción
- 
- Asegúrese de que comprende Hola siguiendo las diferencias entre el comportamiento de suscripción en los portales de hello dos.
+Aunque existe la posibilidad de que un operador cree recursos, como máquinas virtuales, redes virtuales y cuentas de almacenamiento en el portal de administración, debe [iniciar sesión en el portal de usuarios](user/azure-stack-use-portal.md) para crear y probar los recursos. (El vínculo **Crear una máquina virtual** del icono del tutorial de inicio rápido le permite crear una máquina virtual en el portal de administración; sin embargo, este procedimiento es solo para validar Azure Stack después de la implementación inicial).
 
- Portal de administración:
-* Hay solo una suscripción que está disponible en el portal del Administrador de Hola. Esta suscripción es hello *suscripción de proveedor predeterminado*. No se puede agregar cualquier otras suscripciones para su uso en el portal del Administrador de Hola.
-* Como un operador en la nube, puede agregar suscripciones para los usuarios (incluido usted) en el portal del Administrador de Hola. Los usuarios (incluido usted) pueden tener acceso y usar estas suscripciones desde el portal de usuarios de Hola.
+## <a name="subscription-behavior"></a>Comportamiento de la suscripción
+ 
+Hay solo una suscripción que está disponible en el portal de administración. Esta suscripción es la *suscripción de proveedor predeterminada*. No se puede agregar ninguna otra suscripción para usarla en el portal de administración.
+
+Como operador de Azure Stack, puede agregar suscripciones para los usuarios (incluido usted mismo) desde el portal de administración. Los usuarios (incluido usted) pueden tener acceso a estas suscripciones y usarlas desde el portal de usuarios. El portal de usuarios no proporciona acceso a cualquiera de las funcionalidades administrativas u operativas del portal de administración.
+
+Los portales de administración y de usuarios se apoyan en instancias independientes de Azure Resource Manager. Debido a la separación de Resource Manager, las suscripciones no sirven en todos los portales. Por ejemplo, si, como operador de Azure Stack, inicia sesión en el portal de usuarios, no puede tener acceso a la suscripción de proveedor predeterminada. Por lo tanto, no tiene acceso a las funciones administrativas. Puede crear suscripciones para sí mismo a partir de ofertas públicas, pero se le considerará un usuario inquilino.
 
   >[!NOTE]
-  Debido a la separación de Azure Resource Manager hello, las suscripciones no se transfieren entre portales. Por ejemplo, si como un operador en la nube inicia sesión en el portal de usuarios de toohello, no se puede tener acceso a Hola suscripción de proveedor predeterminado. Por lo tanto, no tiene acceso a las funciones administrativas de tooany. Puede crear suscripciones para sí mismo a partir de ofertas públicas, pero se le considerará un usuario inquilino.
+  En el entorno del kit de desarrollo, si un usuario pertenece al mismo directorio de inquilino que el operador de Azure Stack, no se le impide iniciar sesión en el portal de administración. Sin embargo, no tiene acceso a ninguna de las funciones administrativas. Además, desde el portal de administrador, no puede agregar suscripciones ni acceder a las ofertas disponibles en el portal de usuarios.
 
-Portal de usuarios:
-* En el portal de usuarios de hello, una cuenta puede tener varias suscripciones.
+## <a name="administrator-portal-tips"></a>Sugerencias del portal de administración
 
-  >[!NOTE]
-  En el entorno de kit de desarrollo hello, si un usuario inquilino pertenece toohello mismo directorio como operador de nube de hello, no se podrá iniciar sesión en toohello portal del administrador. Sin embargo, no se puede tener acceso a cualquiera de las funciones administrativas de Hola. Además, no se agregan las suscripciones o acceso ofrece realizadas toothem disponible en el portal de usuarios de Hola.
+### <a name="customize-the-dashboard"></a>Personalización del panel
+
+El panel contiene un conjunto de iconos predeterminados. Puede hacer clic en **Editar panel** para modificar el panel predeterminado o en **Nuevo panel** para agregar paneles personalizados. Puede agregar fácilmente iconos al panel. Por ejemplo, puede hacer clic en **Nuevo**, hacer clic con el botón derecho en **Ofertas y planes** y luego hacer clic en **Anclar al panel**.
+
+### <a name="quick-access-to-online-documentation"></a>Acceso rápido a la documentación en línea
+
+Para acceder a la documentación del operador de Azure Stack, haga clic en el icono de Ayuda y soporte técnico (signo de interrogación) de la esquina superior derecha del portal de administración y luego haga clic en **Ayuda y soporte técnico**.
+
+### <a name="quick-access-to-help-and-support"></a>Acceso rápido a ayuda y soporte técnico
+
+Si hace clic el icono de ayuda y soporte técnico (signo de interrogación) en la esquina superior derecha del portal de administración y, a continuación, hace clic en **Nueva solicitud de soporte técnico**, sucede lo siguiente:
+
+- Si usa un sistema integrado, esta acción abre un sitio donde puede abrir directamente un vale de soporte técnico para los servicios de soporte al cliente de Microsoft (CSS). Consulte la sección sobre dónde obtener soporte técnico de [Conceptos básicos de administración de Azure Stack](azure-stack-manage-basics.md) para comprender cuándo debe acudir al soporte técnico de Microsoft o al soporte técnico del proveedor de hardware OEM (fabricante de equipo original).
+- Si usa el kit de desarrollo, esta acción abre directamente el sitio de foros de Azure Stack. Estos foros se supervisan periódicamente. Dado que el kit de desarrollo es un entorno de evaluación, el servicio de asistencia al cliente (CSS) de Microsoft no ofrece soporte técnico oficial.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-[Conectar tooAzure pila](azure-stack-connect-azure-stack.md)
-
-[Administración de regiones en Azure Stack](azure-stack-region-management.md)
+- [Administración de regiones en Azure Stack](azure-stack-region-management.md)

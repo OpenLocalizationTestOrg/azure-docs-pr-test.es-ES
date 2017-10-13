@@ -1,6 +1,6 @@
 ---
-title: "aaaMultiple las direcciones IP de máquinas virtuales de Azure: Portal | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo tooassign varias direcciones IP tooa máquina virtual usando Hola portal de Azure | Administrador de recursos."
+title: "Varias direcciones IP para máquinas virtuales de Azure: Portal | Microsoft Docs"
+description: "Obtenga información sobre cómo asignar varias direcciones IP a una máquina virtual con Azure Portal | Resource Manager."
 services: virtual-network
 documentationcenter: na
 author: anavinahar
@@ -15,94 +15,94 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: annahar
-ms.openlocfilehash: 34075766ac68c8de38c258a4d70e35881f28bb0b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d264bd47d76db8015a64f09248c57c94572e2693
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="assign-multiple-ip-addresses-toovirtual-machines-using-hello-azure-portal"></a>Asignar varias máquinas de toovirtual de direcciones IP mediante Hola portal de Azure
+# <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Asignación de varias direcciones IP a máquinas virtuales con Azure Portal
 
 >[!INCLUDE [virtual-network-multiple-ip-addresses-intro.md](../../includes/virtual-network-multiple-ip-addresses-intro.md)]
 >
-Este artículo explica cómo toocreate una máquina virtual (VM) a través de modelo de implementación de Azure Resource Manager de hello mediante Hola portal de Azure. No se puede asignar tooresources que se creó mediante el modelo de implementación clásica de Hola a varias direcciones IP. más información acerca de los modelos de implementación de Azure, lea hello toolearn [comprender los modelos de implementación](../resource-manager-deployment-model.md) artículo.
+En este artículo se describe cómo crear una máquina virtual con el modelo de implementación de Azure Resource Manager mediante Azure Portal. No se pueden asignar varias direcciones IP a los recursos creados mediante el modelo de implementación clásica. Para información acerca de los modelos de implementación de Azure, lea el artículo [Understand deployment models](../resource-manager-deployment-model.md) (Descripción de los modelos de implementación).
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-template-scenario.md](../../includes/virtual-network-multiple-ip-addresses-scenario.md)]
 
 ## <a name = "create"></a>Creación de una máquina virtual con varias direcciones IP
 
-Si desea toocreate una máquina virtual con varias direcciones IP o una dirección IP privada estática, debe crearlo mediante PowerShell o hello CLI de Azure. Haga clic en hello PowerShell u opciones de CLI en parte superior de Hola de este artículo toolearn cómo. Puede crear una máquina virtual con una única dirección IP privada dinámica y (opcionalmente) en una única dirección IP pública mediante el portal de hello siguiendo los pasos de Hola Hola [crear una VM de Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md) o [crear una VM Linux](../virtual-machines/linux/quick-create-portal.md) artículos. Después de crear Hola VM, puede cambiar el tipo de dirección IP de Hola de toostatic dinámica y agregar más direcciones IP mediante el portal de hello siguiendo los pasos en hello [tooa VM las direcciones IP agregar](#add) sección de este artículo.
+Si desea crear una máquina virtual con varias direcciones IP, o una privada estática, debe crearla mediante PowerShell o la CLI de Azure. Para aprender cómo, haga clic en las opciones PowerShell o CLI en la parte superior de este artículo. Puede crear una máquina virtual con una sola dirección IP privada dinámica y (opcionalmente) una única dirección IP pública mediante el portal siguiendo los pasos descritos en los artículos [Creación de la primera máquina virtual de Windows en Azure Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md) o [Creación de una máquina virtual de Linux en Azure mediante el portal](../virtual-machines/linux/quick-create-portal.md). Después de crear la máquina virtual, puede cambiar los tipos de direcciones IP de dinámicas a estáticas y agregar más mediante el portal siguiendo los pasos de la sección [Incorporación de direcciones IP a una VM](#add) de este artículo.
 
-## <a name="add"></a>Agregar tooa de direcciones IP virtual
+## <a name="add"></a>Incorporación de direcciones IP a una VM
 
-Puede agregar pública y privada tooa de direcciones IP NIC siguiendo los pasos de Hola que siguen. Hello en los ejemplos de hello las secciones siguientes se suponen que ya tiene una máquina virtual con configuraciones de IP de hello tres descritas en hello [escenario](#Scenario) en este artículo, pero no es necesario que lo haga.
+Puede agregar direcciones IP públicas y privadas a una NIC completando los pasos siguientes. En los ejemplos de las secciones siguientes se da por sentado que ya tiene una máquina virtual con las tres configuraciones de IP descritas en el [escenario](#Scenario) de este artículo, pero no es necesario que lo haga.
 
 ### <a name="coreadd"></a>Pasos principales
 
-1. Examinar toohello portal de Azure en https://portal.azure.com e inicie sesión en él, si es necesario.
-2. En el portal de hello, haga clic en **más servicios** > tipo *máquinas virtuales* en Hola cuadro Filtro y, a continuación, haga clic en **máquinas virtuales**.
-3. Hola **máquinas virtuales** hoja, haga clic en hello VM desea tooadd IP direcciones a. Haga clic en **interfaces de red** de hoja de la máquina virtual de Hola que aparece y la red de hello, a continuación, seleccione interfaz va tooadd Hola IP direcciones a. En el ejemplo de Hola Hola después de la imagen, Hola NIC denominado *myNIC* de máquina virtual denominada hello *myVM* está seleccionado:
+1. Vaya Azure Portal en https://portal.azure.com e inicie sesión en él, si es necesario.
+2. En el portal, haga clic en **Más servicios** > tipo *Máquinas virtuales* en el cuadro de filtro y luego haga clic en **Máquinas virtuales**.
+3. En la hoja **Máquinas virtuales**, haga clic en la VM a la que desea agregar direcciones IP. Haga clic en **Interfaces de red** en la hoja de la máquina virtual que aparece y luego seleccione la interfaz de red a la que desea agregar direcciones IP. En el ejemplo mostrado en la siguiente imagen, está seleccionada la NIC denominada *myNIC* de la VM llamada *myVM*:
 
     ![Interfaz de red](./media/virtual-network-multiple-ip-addresses-portal/figure1.png)
 
-4. En la hoja de Hola que aparece para hello NIC que se ha seleccionado, haga clic en **configuraciones IP**.
+4. En la hoja que aparece para la NIC que ha seleccionado, haga clic en **Configuraciones de IP**.
 
-Hola completa los pasos de una de las secciones de Hola que van a continuación, en función de tipo hello de dirección IP desea tooadd.
+Complete los pasos de una de las secciones siguientes según el tipo de dirección IP que desea agregar.
 
 ### <a name="add-a-private-ip-address"></a>**Incorporación de una dirección IP privada**
 
-Completar Hola siguiendo los pasos tooadd una nueva dirección IP privada:
+Complete los pasos siguientes para agregar una nueva dirección IP privada:
 
-1. Hola completa los pasos de hello [principales pasos](#coreadd) sección de este artículo.
-2. Haga clic en **Agregar**. Hola **configuración IP agregar** hoja que aparece, cree una configuración de IP denominada *IPConfig 4* con *10.0.0.7* como un *estático* IP privada de direcciones, a continuación, haga clic en **Aceptar**.
+1. Complete los pasos de la sección [Pasos principales](#coreadd) de este artículo.
+2. Haga clic en **Agregar**. En la hoja **Agregar configuración de IP** que aparece, cree una configuración de IP denominada *IPConfig 4* con *10.0.0.7* como una dirección IP privada de tipo *Estática* y luego haga clic en **Aceptar**.
 
     > [!NOTE]
-    > Al agregar una dirección IP estática, debe especificar una dirección no utilizada, válida en Hola Hola de subred A que NIC está conectada. Si no está disponible la dirección de Hola que seleccione, portal de hello mostrará una X para la dirección IP de Hola y debe tooselect uno diferente.
+    > Al agregar una dirección IP estática, debe especificar una dirección válida no utilizada en la subred a la que la está conectada la NIC. Si la dirección que seleccionó no está disponible, el portal mostrará una X para la dirección IP y deberá seleccionar otra.
 
-3. Una vez que haga clic en Aceptar, se cerrará hoja hello y verá la nueva configuración de IP Hola enumerado. Haga clic en **Aceptar** tooclose hello **configuración IP agregar** hoja.
-4. Puede hacer clic en **agregar** tooadd configuraciones de IP adicionales, o cierre todas las abiertas las direcciones IP toofinish agregar hojas.
-5. Sistema operativo de la VM de toohello las direcciones IP privada de agregar Hola siguiendo los pasos de hello para el sistema operativo en hello [sistema operativo de la VM de tooa las direcciones IP agregar](#os-config) sección de este artículo.
+3. Una vez que haga clic en Aceptar, se cerrará la hoja y verá la nueva configuración de IP en la lista. Haga clic en **Aceptar** para cerrar la hoja **Agregar configuración de IP**.
+4. Puede hacer clic en **Agregar** agregue más configuraciones IP o cerrar todas las hojas abiertas para terminar de agregar direcciones IP.
+5. Agregue al sistema operativo de la VM las direcciones IP privadas completando los pasos correspondientes al sistema operativo de la sección [Incorporación de direcciones IP a un sistema operativo de la VM](#os-config) de este artículo.
 
 ### <a name="add-a-public-ip-address"></a>Incorporación de una dirección IP pública
 
-Se agrega una dirección IP pública asociando un tooeither de recurso de dirección IP pública de una nueva configuración de IP o una configuración de IP existente.
+Una dirección IP pública se agrega mediante la asociación de un recurso de dirección IP pública a una nueva configuración de IP o una configuración de IP existente.
 
 > [!NOTE]
-> Las direcciones IP públicas tienen un precio simbólico. toolearn más información acerca de la IP direcciones sobre los precios, leer hello [precios de dirección IP](https://azure.microsoft.com/pricing/details/ip-addresses) página. Hay un toohello limitar el número de direcciones IP públicas que puede usarse en una suscripción. toolearn más acerca de los límites de hello, leer hello [Azure tiene una limitación](../azure-subscription-service-limits.md#networking-limits) artículo.
+> Las direcciones IP públicas tienen un precio simbólico. Para más información sobre los precios de las direcciones IP, lea la página [Precios de las direcciones IP](https://azure.microsoft.com/pricing/details/ip-addresses) . Existe un límite para el número de direcciones IP públicas que pueden usarse dentro de una suscripción. Para más información sobre los límites, lea el artículo sobre los [límites de Azure](../azure-subscription-service-limits.md#networking-limits).
 > 
 
 ### <a name="create-public-ip"></a>Creación de un recurso de dirección IP pública
 
-Una dirección IP pública es una configuración para un recurso de dirección IP pública. Si tiene un recurso de dirección IP público que no está asociada actualmente tooan configuración de IP que desea tooassociate tooan la configuración de IP, omitir Hola siguiendo los pasos y complete los pasos de hello en una de las secciones de Hola que siguen, como sea necesario. Si no tiene un recurso de dirección IP público disponible, complete Hola siguiendo los pasos toocreate uno:
+Una dirección IP pública es una configuración para un recurso de dirección IP pública. Si tiene un recurso de dirección IP pública que no está asociado actualmente a una configuración de IP que desea asociar a una configuración de IP, omita los pasos siguientes y complete los pasos de una de las secciones siguientes, según sea preciso. Si no tiene un recurso de dirección IP pública disponible, complete los pasos siguientes para crear uno:
 
-1. Examinar toohello portal de Azure en https://portal.azure.com e inicie sesión en él, si es necesario.
-3. En el portal de hello, haga clic en **New** > **red** > **dirección IP pública**.
-4. Hola **Crear dirección IP pública** hoja que aparece, escriba un **nombre**, seleccione un **asignación de direcciones IP** tipo, un **suscripción**, **Grupo de recursos**y un **ubicación**, a continuación, haga clic en **crear**, tal y como se muestra en hello después de imagen:
+1. Vaya Azure Portal en https://portal.azure.com e inicie sesión en él, si es necesario.
+3. En el portal, haga clic en **Nuevo** > **Redes** > **Dirección IP pública**.
+4. En la hoja **Crear dirección IP pública** que aparece, escriba un nombre en **Nombre**, seleccione un tipo en **Asignación de dirección IP**, una suscripción en **Suscripción**, un grupo de recursos sen **Grupo de recursos** y una ubicación en **Ubicación**. Luego, haga clic en **Crear** tal y como se muestra en la siguiente imagen:
 
     ![Creación de un recurso de dirección IP pública](./media/virtual-network-multiple-ip-addresses-portal/figure5.png)
 
-5. Hola completa los pasos en una de las secciones de Hola que siguen tooassociate Hola pública recursos tooan IP configuración de dirección IP.
+5. Complete los pasos de una de las secciones siguientes para asociar el recurso de dirección IP pública a una configuración de IP.
 
-#### <a name="associate-hello-public-ip-address-resource-tooa-new-ip-configuration"></a>Asociar Hola pública recursos tooa nueva IP configuración de dirección IP
+#### <a name="associate-the-public-ip-address-resource-to-a-new-ip-configuration"></a>Asociación del recurso de dirección IP pública a una nueva configuración de IP
 
-1. Hola completa los pasos de hello [principales pasos](#coreadd) sección de este artículo.
-2. Haga clic en **Agregar**. Hola **configuración IP agregar** hoja que aparece, cree una configuración de IP denominada *IPConfig 4*. Habilitar hello **dirección IP pública** y seleccione un existente, que está disponible público recurso de dirección IP de hello **Elegir dirección IP pública** hoja que aparece.
+1. Complete los pasos de la sección [Pasos principales](#coreadd) de este artículo.
+2. Haga clic en **Agregar**. En la hoja **Agregar configuración de IP** hoja que aparece, cree una configuración de IP denominada *IPConfig 4*. Habilite la opción **Dirección IP pública** y seleccione un recurso de dirección IP pública existente que esté disponible en la hoja **Elegir dirección IP pública** que aparece.
 
-    Una vez que haya seleccionado el recurso de dirección IP público hello, haga clic en **Aceptar** y hoja de Hola se cerrará. Si no tiene una dirección IP pública existente, puede crear una siguiendo los pasos de Hola Hola [crear un recurso de dirección IP público](#create-public-ip) sección de este artículo. 
+    Una vez que haya seleccionado la dirección IP pública, haga clic en **Aceptar** y la hoja se cerrará. Si no tiene una dirección IP pública existente, puede crear una completando los pasos descritos en la sección [Creación de un recurso de dirección IP pública](#create-public-ip) de este artículo. 
 
-3. Revisión Hola nueva configuración de IP. Aunque no se ha asignado explícitamente una dirección IP privada, uno se asignó automáticamente toohello la configuración de IP, dado que todas las configuraciones de IP deben tener una dirección IP privada.
-4. Puede hacer clic en **agregar** tooadd configuraciones de IP adicionales, o cierre todas las abiertas las direcciones IP toofinish agregar hojas.
-5. Agregar: sistema operativo de la VM de hello privado IP dirección toohello siguiendo los pasos de hello para el sistema operativo en hello [sistema operativo de la VM de tooa las direcciones IP agregar](#os-config) sección de este artículo. No agregue el sistema de operativo para toohello el público dirección IP Hola.
+3. Revise la nueva configuración de IP. Aunque no se asignara explícitamente una dirección IP privada, se asigna una automáticamente a la configuración de IP, dado que todas las configuraciones IP deben tener una dirección IP privada.
+4. Puede hacer clic en **Agregar** agregue más configuraciones IP o cerrar todas las hojas abiertas para terminar de agregar direcciones IP.
+5. Agregue al sistema operativo de la VM la dirección IP privada completando los pasos de la sección [Incorporación de direcciones IP a un sistema operativo de la VM](#os-config) de este artículo. No agregue la dirección IP pública al sistema operativo.
 
-#### <a name="associate-hello-public-ip-address-resource-tooan-existing-ip-configuration"></a>Asociar Hola pública recursos tooan existente IP configuración de dirección IP
+#### <a name="associate-the-public-ip-address-resource-to-an-existing-ip-configuration"></a>Asociación del recurso de dirección IP pública a una configuración de IP existente
 
-1. Hola completa los pasos de hello [principales pasos](#coreadd) sección de este artículo.
-2. Haga clic en configuración de IP de hello a que desea que el recurso de dirección IP pública de tooadd de Hola.
-3. En la hoja de IPConfig Hola que aparece, haga clic en **dirección IP**.
-4. Hola **Elegir dirección IP pública** hoja que aparece, seleccione una dirección IP pública.
-5. Haga clic en **guardar** y hojas de Hola se cerrarán. Si no tiene una dirección IP pública existente, puede crear una siguiendo los pasos de Hola Hola [crear un recurso de dirección IP público](#create-public-ip) sección de este artículo.
-3. Revisión Hola nueva configuración de IP.
-4. Puede hacer clic en **agregar** tooadd configuraciones de IP adicionales, o cierre todas las abiertas las direcciones IP toofinish agregar hojas. No agregue el sistema de operativo para toohello el público dirección IP Hola.
+1. Complete los pasos de la sección [Pasos principales](#coreadd) de este artículo.
+2. Haga clic en la configuración de IP a la que desee asociar el recurso de dirección IP pública.
+3. En la hoja de configuración de IP que aparece, haga clic en **Dirección IP**.
+4. Haga clic en la hoja**Elegir dirección IP pública** que aparece y seleccione una dirección IP pública.
+5. Haga clic en **Guardar** y las hojas se cerrarán. Si no tiene una dirección IP pública existente, puede crear una completando los pasos descritos en la sección [Creación de un recurso de dirección IP pública](#create-public-ip) de este artículo.
+3. Revise la nueva configuración de IP.
+4. Puede hacer clic en **Agregar** agregue más configuraciones IP o cerrar todas las hojas abiertas para terminar de agregar direcciones IP. No agregue la dirección IP pública al sistema operativo.
 
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]

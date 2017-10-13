@@ -1,6 +1,6 @@
 ---
-title: "Azure AD Connect sync: cambiar contraseña de cuenta de hello AD DS | Documentos de Microsoft"
-description: "Este documento de tema describe cómo se cambia tooupdate Azure AD Connect después de la contraseña de Hola de cuenta de hello AD DS."
+title: "Azure AD Connect Sync: cambio de la contraseña de la cuenta de AD DS | Microsoft Docs"
+description: "En este tema se describe cómo actualizar Azure AD Connect después de cambiar la contraseña de la cuenta de AD DS."
 services: active-directory
 keywords: "cuenta de AD DS, cuenta de Active Directory, contraseña"
 documentationcenter: 
@@ -15,39 +15,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 2707c9246446612f8d083ecde876b3b4fb2435ca
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 14e16a238e60ecfeeb3cbf88c3922a79349dcc75
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="changing-hello-ad-ds-account-password"></a>Cambiar la contraseña de la cuenta de hello AD DS
-cuenta de Hello AD DS refiere la cuenta de usuario de toohello utilizada toocommunicate de Azure AD Connect con local de Active Directory. Si cambia la contraseña Hola de hello cuenta AD DS, debe actualizar servicio de sincronización de Connect de Azure AD con hello nueva contraseña. En caso contrario, Hola que sincronización ya no se puede sincronizar correctamente con hello Active Directory local y se producirán Hola siguientes errores:
+# <a name="changing-the-ad-ds-account-password"></a>Cambio de la contraseña de la cuenta de AD DS
+La cuenta de AD DS se refiere a la cuenta de usuario que usa Azure AD Connect para comunicarse con la instancia local de Active Directory. Si cambia la contraseña de la cuenta de AD DS, debe actualizar Azure AD Connect Synchronization Service con la nueva contraseña. En caso contrario, el servicio ya no puede sincronizar correctamente con la instancia local de Active Directory y se producirán los errores siguientes:
 
-* Hola operación Synchronization Service Manager, cualquier importación o exportación con local se produce un error de AD con **credenciales de inicio no** error.
+* En Synchronization Service Manager, cualquier operación de importación o exportación con un directorio de AD local genera un error **no-start-credentials**.
 
-* En el Visor de eventos de Windows, el registro de eventos de aplicación Hola contiene un error con **6000 de Id. de evento** y mensaje **'agente de administración de Hola "contoso.com" error toorun porque las credenciales de hello no eran válidas'** .
+* En el Visor de eventos de Windows, el registro de eventos de aplicación contiene un error con el **identificador de evento 6000** y mensaje **'El agente de administración "contoso.com" no se pudo ejecutar porque las credenciales no eran válidas'**.
 
 
-## <a name="how-tooupdate-hello-synchronization-service-with-new-password-for-ad-ds-account"></a>¿Cómo tooupdate Hola servicio de sincronización con la nueva contraseña de cuenta de AD DS
-Hola de tooupdate servicio de sincronización con la nueva contraseña de hello:
+## <a name="how-to-update-the-synchronization-service-with-new-password-for-ad-ds-account"></a>Cómo actualizar Synchronization Service con la nueva contraseña de la cuenta de AD DS
+Para actualizar Synchronization Service con la nueva contraseña:
 
-1. Iniciar Hola Synchronization Service Manager (servicio de sincronización de inicio →).
+1. Inicie el Synchronization Service Manager (INICIO → Synchronization Service).
 </br>![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)  
 
-2. Vaya toohello **conectores** ficha.
+2. Vaya a la pestaña **Conectores**.
 
-3. Seleccione hello **conector AD** correspondiente cuenta de toohello AD DS para la que se ha cambiado su contraseña.
+3. Seleccione el **Conector AD** correspondiente a la cuenta de AD DS cuya contraseña se ha cambiado.
 
 4. En **Acciones**, seleccione **Propiedades**.
 
-5. En el cuadro de diálogo emergente de hello, seleccione **conectar tooActive Directory bosque**:
+5. En el cuadro de diálogo emergente, seleccione **Connect to Active Directory Forest** (Conectar con el bosque de Active Directory):
 
-6. Escriba Hola nueva contraseña de cuenta de AD DS Hola Hola **contraseña** cuadro de texto.
+6. Escriba la nueva contraseña de la cuenta de AD DS en el cuadro de texto **Password** (Contraseña).
 
-7. Haga clic en **Aceptar** toosave Hola nueva contraseña y el cuadro de diálogo emergente de hello cerrar.
+7. Haga clic en **OK** (Aceptar) para guardar la nueva contraseña y cerrar el cuadro de diálogo emergente.
 
-8. Reinicio Hola servicio Azure AD Connect sincronización en el Administrador de Control de servicios de Windows. Se trata de tooensure que cualquier contraseña antigua de toohello de referencia se quita de la caché de memoria de Hola.
+8. Reinicie Azure AD Connect Synchronization Service en el Administrador de Control de servicios de Windows. Esto sirve para asegurarse de que cualquier referencia a la contraseña antigua se quita de la memoria caché.
 
 ## <a name="next-steps"></a>Pasos siguientes
 **Temas de introducción**

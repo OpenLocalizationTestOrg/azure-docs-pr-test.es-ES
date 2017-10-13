@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate y administrar los trabajos elásticos mediante PowerShell | Documentos de Microsoft"
-description: Usar PowerShell toomanage grupos de base de datos de SQL Azure
+title: "Creación y administración de trabajos elásticos mediante PowerShell | Microsoft Docs"
+description: PowerShell usada para administrar grupos de Base de datos SQL de Azure
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: f6c18aecfa7e8c0b102a3b7cd2f266f5542ae400
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b4c97e8f51581f9a3f7c5a8d8e82562255fe7b48
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>Creación y administración de trabajos elásticos de SQL Database mediante PowerShell (versión preliminar)
 
-Hola PowerShell APIs de **trabajos de base de datos elástica** (en versión preliminar), le permiten definir un grupo de bases de datos con el que se ejecutarán las secuencias de comandos. Este artículo se muestra cómo toocreate y administrar **trabajos de base de datos elástica** mediante cmdlets de PowerShell. Consulte [Información general sobre trabajos elásticos](sql-database-elastic-jobs-overview.md). 
+Las API de PowerShell para **Trabajos de base de datos elástica** permtein definir el grupo de bases de datos en las que se ejecutarán los scripts. Este artículo muestra cómo crear y administrar **trabajos de base de datos elástica** mediante cmdlets de PowerShell. Consulte [Información general sobre trabajos elásticos](sql-database-elastic-jobs-overview.md). 
 
 ## <a name="prerequisites"></a>Requisitos previos
 * Una suscripción de Azure. Para obtener una prueba gratuita, vea [Prueba gratuita de un mes](https://azure.microsoft.com/pricing/free-trial/).
-* Un conjunto de bases de datos creadas con herramientas de base de datos elástica Hola. Consulte [Introducción a las herramientas de base de datos elástica](sql-database-elastic-scale-get-started.md).
-* Azure PowerShell. Para obtener información detallada, vea [cómo tooinstall y configurar Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
+* Un conjunto de bases de datos creadas con las herramientas de base de datos elástica. Consulte [Introducción a las herramientas de base de datos elástica](sql-database-elastic-scale-get-started.md).
+* Azure PowerShell. Para obtener información detallada, vea [Instalación y configuración de Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
 * **Trabajos de base de datos elástica** : consulte [Installing Trabajos de base de datos elástica](sql-database-elastic-jobs-service-installation.md)
 
 ### <a name="select-your-azure-subscription"></a>Selección de su suscripción a Azure
-suscripción de hello tooselect necesita su Id. de suscripción (**- SubscriptionId**) o el nombre de la suscripción (**- SubscriptionName**). Si tiene varias suscripciones se puede ejecutar hello **AzureRmSubscription Get** información de suscripción del conjunto de resultados de hello deseada de Hola de cmdlet y copia. Una vez que tenga información de su suscripción, ejecutar Hola después commandlet tooset esta suscripción como valor predeterminado de hello, es decir Hola destino para crear y administrar trabajos:
+Para seleccionar la suscripción, necesitará el identificador de la suscripción (**-SubscriptionId**) o el nombre de la suscripción (**-SubscriptionName**). Si dispone de varias suscripciones, puede ejecutar el cmdlet **Get-AzureRmSubscription** y copiar la información de la suscripción que quiera del conjunto de resultados. Cuando tenga la información de la suscripción, ejecute el siguiente cmdlet para establecer esta suscripción como predeterminada, es decir, el destino para crear y administrar trabajos:
 
     Select-AzureRmSubscription -SubscriptionId {SubscriptionID}
 
-Hola [PowerShell ISE](https://technet.microsoft.com/library/dd315244.aspx) se recomienda para uso toodevelop y ejecutar los scripts de PowerShell frente a los trabajos de base de datos elástica Hola.
+Se recomienda el uso de [PowerShell ISE](https://technet.microsoft.com/library/dd315244.aspx) para desarrollar y ejecutar scripts de PowerShell en Trabajos de base de datos elástica.
 
 ## <a name="elastic-database-jobs-objects"></a>Objetos de Trabajos de base de datos elástica
-Hola siguiente tabla se enumeran todos los tipos de objeto de Hola de **trabajos de base de datos elástica** junto con su descripción y relevante APIs PowerShell.
+En la tabla siguiente se enumeran todos los tipos de objetos de **Trabajos de base de datos elástica** con su descripción y las API de PowerShell relevantes.
 
 <table style="width:100%">
   <tr>
@@ -48,14 +48,14 @@ Hola siguiente tabla se enumeran todos los tipos de objeto de Hola de **trabajos
   </tr>
   <tr>
     <td>Credential:</td>
-    <td>Toouse de nombre de usuario y contraseña al conectar toodatabases para la ejecución de secuencias de comandos o aplicación de dacpac. <p>Hola contraseña se cifra antes de enviar tooand almacenar en la base de datos de hello trabajos elástico de base de datos.  servicio de trabajos elástico de base de datos a través de la credencial de hello creado y cargado desde un script de instalación de Hola Hola descifra Hola contraseña.</td>
+    <td>Nombre de usuario y contraseña que se usará al conectarse a bases de datos para la ejecución de scripts o la aplicación de archivos DACPAC. <p>La contraseña se cifra antes de enviarla y almacenarla en la base de datos de Trabajos de base de datos elástica.  El servicio Trabajos de base de datos elástica descifra la contraseña a través de la credencial que se creó y cargó desde el script de instalación.</td>
     <td><p>Get-AzureSqlJobCredential</p>
     <p>New-AzureSqlJobCredential</p><p>Set-AzureSqlJobCredential</p></td></td>
   </tr>
 
   <tr>
     <td>Script</td>
-    <td>Script de Transact-SQL toobe utilizado para la ejecución a través de las bases de datos.  script de Hola debe ser idempotente toobe creados desde servicio Hola volverá a intentar la ejecución del script de Hola tras errores.
+    <td>Script de T-SQL que se va a usar para la ejecución transversal en las bases de datos  El script tiene que crearse para que sea idempotente, puesto que el servicio volverá a intentar la ejecución del script tras errores.
     </td>
     <td>
     <p>Get-AzureSqlJobContent</p>
@@ -67,7 +67,7 @@ Hola siguiente tabla se enumeran todos los tipos de objeto de Hola de **trabajos
 
   <tr>
     <td>DACPAC</td>
-    <td><a href="https://msdn.microsoft.com/library/ee210546.aspx">Aplicación de capa de datos </a> toobe aplicada entre bases de datos del paquete.
+    <td><a href="https://msdn.microsoft.com/library/ee210546.aspx">Paquete de aplicación de capa de datos </a> que se va a aplicar transversalmente a las bases de datos.
 
     </td>
     <td>
@@ -78,7 +78,7 @@ Hola siguiente tabla se enumeran todos los tipos de objeto de Hola de **trabajos
   </tr>
   <tr>
     <td>Destino de la base de datos</td>
-    <td>Base de datos y servidor nombre señalador tooan base de datos de SQL Azure.
+    <td>Nombre del servidor y la base de datos que apuntan a una Base de datos SQL de Azure.
 
     </td>
     <td>
@@ -88,7 +88,7 @@ Hola siguiente tabla se enumeran todos los tipos de objeto de Hola de **trabajos
   </tr>
   <tr>
     <td>Destino de mapa de particiones</td>
-    <td>Combinación de un destino de la base de datos y una credencial toobe utiliza toodetermine la información almacenada dentro de un mapa de particiones de base de datos elástica.
+    <td>Combinación de un destino de base de datos y una credencial que se usará para determinar la información almacenada en un mapa de particiones de base de datos elástica.
     </td>
     <td>
     <p>Get-AzureSqlJobTarget</p>
@@ -98,7 +98,7 @@ Hola siguiente tabla se enumeran todos los tipos de objeto de Hola de **trabajos
   </tr>
 <tr>
     <td>Destino de colección personalizada</td>
-    <td>Usar grupo definido de toocollectively de las bases de datos para la ejecución.</td>
+    <td>Grupo de bases de datos que se define para usar colectivamente en la ejecución.</td>
     <td>
     <p>Get-AzureSqlJobTarget</p>
     <p>New-AzureSqlJobTarget</p>
@@ -116,7 +116,7 @@ Hola siguiente tabla se enumeran todos los tipos de objeto de Hola de **trabajos
 <tr>
     <td>Trabajo</td>
     <td>
-    <p>Definición de parámetros para un trabajo que pueden ser utilizados tootrigger ejecución o toofulfill una programación.</p>
+    <p>Definición de parámetros para un trabajo que puede usarse para desencadenar la ejecución o para cumplir una programación.</p>
     </td>
     <td>
     <p>Get-AzureSqlJob</p>
@@ -128,7 +128,7 @@ Hola siguiente tabla se enumeran todos los tipos de objeto de Hola de **trabajos
 <tr>
     <td>Ejecución de trabajos</td>
     <td>
-    <p>Contenedor de tareas de toofulfill es necesario ejecutar una secuencia de comandos o aplicar un destino de tooa DACPAC con credenciales para las conexiones de base de datos con errores se controla en la directiva de ejecución de acuerdo tooan.</p>
+    <p>Contenedor de las tareas necesarias para cumplir la ejecución de un script o para aplicar un DACPAC a un destino con las credenciales para las conexiones de base de datos, donde los errores se controlan según una directiva de ejecución.</p>
     </td>
     <td>
     <p>Get-AzureSqlJobExecution</p>
@@ -140,8 +140,8 @@ Hola siguiente tabla se enumeran todos los tipos de objeto de Hola de **trabajos
 <tr>
     <td>Ejecución de tareas de trabajo</td>
     <td>
-    <p>Unidad única de trabajo toofulfill un trabajo.</p>
-    <p>Si una tarea de trabajo no es capaz de toosuccessfully ejecutar, se registrará el mensaje de excepción resultante de Hola y se creará una nueva tarea de trabajo coincidente y ejecutan en toohello según lo especificado directiva de ejecución.</p></p>
+    <p>Unidad funcional para completar un trabajo.</p>
+    <p>Si una tarea de trabajo no se puede ejecutar correctamente, se registrará el mensaje de excepción resultante y se creará una nueva tarea de trabajo coincidente que se ejecutará según la directiva de ejecución especificada.</p></p>
     </td>
     <td>
     <p>Get-AzureSqlJobExecution</p>
@@ -166,7 +166,7 @@ Hola siguiente tabla se enumeran todos los tipos de objeto de Hola de **trabajos
 <tr>
     <td>Schedule</td>
     <td>
-    <p>Tiempo según la especificación de contexto de ejecución tootake en un intervalo de repetición o de una sola vez.</p>
+    <p>Especificación de tareas de duración definida para que la ejecución se produzca en un intervalo recurrente o en un momento dado.</p>
     </td>
     <td>
     <p>Get-AzureSqlJobSchedule</p>
@@ -178,7 +178,7 @@ Hola siguiente tabla se enumeran todos los tipos de objeto de Hola de **trabajos
 <tr>
     <td>Desencadenadores de trabajo</td>
     <td>
-    <p>Una asignación entre un trabajo y programación tootrigger ejecución de un trabajo según la programación de toohello.</p>
+    <p>Asignación entre un trabajo y una programación que desencadena la ejecución del trabajo según la programación.</p>
     </td>
     <td>
     <p>New-AzureSqlJobTrigger</p>
@@ -188,50 +188,50 @@ Hola siguiente tabla se enumeran todos los tipos de objeto de Hola de **trabajos
 </table>
 
 ## <a name="supported-elastic-database-jobs-group-types"></a>Tipos de grupo de trabajos de base de datos elástica admitidos
-trabajo de Hello ejecuta scripts Transact-SQL (T-SQL) o una aplicación de DACPACs a través de un grupo de bases de datos. Un trabajo una vez enviado toobe ejecutado a través de un grupo de bases de datos, trabajo Hola "expande" hello en los trabajos secundarios donde cada uno realiza Hola solicitó la ejecución en una base de datos en el grupo de Hola. 
+El trabajo ejecuta scripts de Transact-SQL (T-SQL) o la aplicación de archivos DACPAC en un grupo de bases de datos. Cuando se envía un trabajo para que se ejecute en un grupo de bases de datos, Trabajos de base de datos elástica se “expande” en trabajos secundarios, y cada uno realiza la ejecución solicitada en una sola base de datos del grupo. 
 
 Hay dos tipos de grupos que puede crear: 
 
-* [Mapa de particiones](sql-database-elastic-scale-shard-map-management.md) grupo: cuando un trabajo está tootarget enviado un mapa de particiones, Hola consulta toodetermine de mapa de particiones de hello su conjunto actual de particiones y, a continuación, crea secundarios trabajos para cada partición en el mapa de particiones de Hola.
-* Grupo Colección personalizada: conjunto personalizado de bases de datos. Cuando un trabajo está destinado a una colección personalizada, crea a secundarios trabajos para cada base de datos actualmente en la colección personalizada hello.
+* [Mapa de particiones](sql-database-elastic-scale-shard-map-management.md) : cuando se envía un trabajo con destino a un mapa de particiones, el trabajo consulta primero el mapa de particiones para determinar su conjunto actual de particiones y luego crea trabajos secundarios para cada partición del mapa de particiones.
+* Grupo Colección personalizada: conjunto personalizado de bases de datos. Cuando un trabajo está destinado a una colección personalizada, crea trabajos secundarios para cada base de datos de la colección personalizada.
 
-## <a name="tooset-hello-elastic-database-jobs-connection"></a>Hola tooset conexión de base de datos elástica trabajos
-Una conexión debe establecer toohello trabajos de toobe *base de datos de control* toousing anterior Hola trabajos API. Si ejecuta este cmdlet, desencadena una toopop de ventana de credencial de solicitar el nombre de usuario de Hola y la contraseña que creó durante la instalación de los trabajos de base de datos elástica. En todos los ejemplos que se ofrecen en este tema se da por hecho que este primer paso ya se realizó.
+## <a name="to-set-the-elastic-database-jobs-connection"></a>Para establecer la conexión de Trabajos de base de datos elástica
+Se debe establecer una conexión con la *base de datos de control* de trabajos antes de usar las API de trabajos. Al ejecutar este cmdlet se desencadena una ventana de credenciales emergente que solicita el nombre de usuario y la contraseña creados al instalar Trabajos de base de datos elástica. En todos los ejemplos que se ofrecen en este tema se da por hecho que este primer paso ya se realizó.
 
-Abrir otra conexión toohello elástico de base de datos de trabajos:
+Apertura de una conexión a Trabajos de base de datos elástica:
 
     Use-AzureSqlJobConnection -CurrentAzureSubscription 
 
-## <a name="encrypted-credentials-within-hello-elastic-database-jobs"></a>Credenciales cifradas dentro de los trabajos de base de datos elástica Hola
-Las credenciales de la base de datos se pueden insertar en los trabajos de hello *base de datos de control* con su contraseña cifrada. Es necesario toostore credenciales tooenable trabajos toobe ejecutado en un momento posterior, (uso de las programaciones de trabajo).
+## <a name="encrypted-credentials-within-the-elastic-database-jobs"></a>Credenciales cifradas en el servicio Trabajos de base de datos elástica
+Las credenciales de la base de datos se pueden insertar en la *base de datos de control* de trabajos con su contraseña cifrada. Es preciso almacenar las credenciales para que los trabajos se puedan ejecutar después (mediante programaciones de trabajos).
 
-Cifrado funciona a través de un certificado creado como parte del script de instalación de Hola. crea el script de instalación de Hola y certificado de Hola de cargas en hello servicio de nube de Azure para el descifrado de hello almacena contraseñas cifradas. Hola servicio de nube de Azure más adelante guarda la clave pública de hello en los trabajos de hello *base de datos de control* que permite Hola API de PowerShell o el Portal de Azure clásico interfaz tooencrypt una contraseña proporcionada sin necesidad de certificado de Hola toobe instalado localmente.
+El cifrado funciona a través de un certificado creado como parte del script de instalación. El script de instalación crea y carga el certificado en el servicio en la nube de Azure para descifrar las contraseñas almacenadas que están cifradas. Más adelante, el servicio en la nube de Azure almacena la clave pública en la *base de datos de control* de trabajos, lo que permite que la API de PowerShell o la interfaz del Portal de Azure clásico cifren una contraseña proporcionada sin que el certificado tenga que estar instalado localmente.
 
-las contraseñas de credencial de Hello son cifrada y segura de los usuarios con objetos de trabajos de base de datos de tooElastic de acceso de solo lectura. Pero es posible que un usuario malintencionado con acceso de lectura y escritura tooElastic trabajos de base de datos objetos tooextract una contraseña. Las credenciales son toobe diseñada reutilizar en las ejecuciones del trabajo. Las credenciales se pasan las bases de datos de tootarget al establecer conexiones. Actualmente no hay ninguna restricción en bases de datos de destino de hello utilizadas para cada credencial, un usuario malintencionado podría agregar un destino de la base de datos para una base de datos bajo el control del usuario malintencionado Hola. usuario de Hello posteriormente pudo iniciar un trabajo que se dirige a la contraseña del esta base de datos toogain Hola credencial.
+Las contraseñas de credenciales se cifran y se protegen de los usuarios mediante el acceso de solo lectura a los objetos de Trabajos de base de datos elástica. Pero es posible que usuarios malintencionados con acceso de lectura y escritura a los objetos de Trabajos de base de datos elástica extraigan una contraseña. Las credenciales están diseñadas para su reutilización entre ejecuciones de trabajos. Las credenciales se pasan a las bases de datos de destino al establecer conexiones. Como actualmente no hay ninguna restricción en las bases de datos de destino que se usan por cada credencial, un usuario malintencionado podría agregar como destino una base de datos que esté bajo el control del usuario malintencionado. Posteriormente, el usuario podría iniciar un trabajo destinado a esta base de datos para obtener la contraseña de la credencial.
 
 Los procedimientos recomendados de seguridad para Trabajos de base de datos elástica son:
 
-* Limitar el uso de las personas de hello API tootrusted.
-* Las credenciales deben tener Hola tarea de mínimos privilegios necesarios tooperform hello trabajo.  Puede ver más información en este artículo de MSDN sobre SQL Server, [Autorización y permisos](https://msdn.microsoft.com/library/bb669084.aspx) .
+* Limitar el uso de las API a las personas de confianza.
+* Las credenciales deben tener los privilegios mínimos necesarios para realizar la tarea de trabajo.  Puede ver más información en este artículo de MSDN sobre SQL Server, [Autorización y permisos](https://msdn.microsoft.com/library/bb669084.aspx) .
 
-### <a name="toocreate-an-encrypted-credential-for-job-execution-across-databases"></a>toocreate una credencial para la ejecución de trabajos entre bases de datos cifrada
-toocreate un nuevo cifrado de credenciales, hello [ **cmdlet Get-Credential** ](https://technet.microsoft.com/library/hh849815.aspx) pide un nombre de usuario y una contraseña que se pueden pasar toohello [ **AzureSqlJobCredential de nuevo cmdlet**](/powershell/module/elasticdatabasejobs/new-azuresqljobcredential).
+### <a name="to-create-an-encrypted-credential-for-job-execution-across-databases"></a>Para crear una credencial cifrada para la ejecución de trabajos en bases de datos
+Para crear una nueva credencial cifrada, el cmdlet [**Get-Credential**](https://technet.microsoft.com/library/hh849815.aspx) pedirá un nombre de usuario y una contraseña que pueda pasarse al cmdlet [**New-AzureSqlJobCredential**](/powershell/module/elasticdatabasejobs/new-azuresqljobcredential).
 
     $credentialName = "{Credential Name}"
     $databaseCredential = Get-Credential
     $credential = New-AzureSqlJobCredential -Credential $databaseCredential -CredentialName $credentialName
     Write-Output $credential
 
-### <a name="tooupdate-credentials"></a>credenciales de tooupdate
-Cuando cambien las contraseñas, usar hello [ **cmdlet Set-AzureSqlJobCredential** ](/powershell/module/elasticdatabasejobs/set-azuresqljobcredential) conjunto hello y **CredentialName** parámetro.
+### <a name="to-update-credentials"></a>Para actualizar las credenciales
+Cuando las contraseñas cambian, use el [**cmdlet Set-AzureSqlJobCredential**](/powershell/module/elasticdatabasejobs/set-azuresqljobcredential) y establezca el parámetro **CredentialName**.
 
     $credentialName = "{Credential Name}"
     Set-AzureSqlJobCredential -CredentialName $credentialName -Credential $credential 
 
-## <a name="toodefine-an-elastic-database-shard-map-target"></a>toodefine un destino de asignación de particiones de bases de datos elásticas
-tooexecute un trabajo en todas las bases de datos en un conjunto de particiones (creado con [biblioteca de cliente de base de datos elástica](sql-database-elastic-database-client-library.md)), utiliza un mapa de particiones como destino de la base de datos de Hola. Este ejemplo requiere una aplicación particionada creada mediante la biblioteca de cliente de base de datos elástica Hola. Consulte [Introducción a las herramientas de Base de datos elástica](sql-database-elastic-scale-get-started.md).
+## <a name="to-define-an-elastic-database-shard-map-target"></a>Para definir un mapa de particiones de base de datos elástica de destino
+Para ejecutar un trabajo en todas las bases de datos de un conjunto de particiones (creado con la [biblioteca cliente de Base de datos elástica](sql-database-elastic-database-client-library.md)), use un mapa de particiones como base de datos de destino. Este ejemplo requiere crear una aplicación con particiones con la biblioteca cliente de Base de datos elástica. Consulte [Introducción a las herramientas de Base de datos elástica](sql-database-elastic-scale-get-started.md).
 
-base de datos de administrador de asignación de Hello particiones se debe establecer como destino de la base de datos y, a continuación, mapa de particiones específicas de hello debe especificarse como un destino.
+Se debe establecer la base de datos de administrador del mapa de particiones como base de datos de destino y luego especificar ese mapa de particiones como destino.
 
     $shardMapCredentialName = "{Credential Name}"
     $shardMapDatabaseName = "{ShardMapDatabaseName}" #example: ElasticScaleStarterKit_ShardMapManagerDb
@@ -242,9 +242,9 @@ base de datos de administrador de asignación de Hello particiones se debe estab
     Write-Output $shardMapTarget
 
 ## <a name="create-a-t-sql-script-for-execution-across-databases"></a>Crear un script T-SQL para su ejecución transversal en las bases de datos
-Al crear scripts de T-SQL para su ejecución, se recomienda encarecidamente toobuild les toobe [idempotente](https://en.wikipedia.org/wiki/Idempotence) y resistentes a los errores. Trabajos de base de datos elásticos volverá a intentar la ejecución de una secuencia de comandos cada vez que la ejecución encuentra un error, independientemente de clasificación de Hola de error de Hola.
+Al crear scripts de T-SQL para su ejecución, es muy recomendable hacerlo de forma que sean [idempotentes](https://en.wikipedia.org/wiki/Idempotence) y resistentes a los errores. Trabajos de base de datos elástica volverá a intentar la ejecución de un script cada vez que la ejecución encuentra un error, independientemente de la clasificación del error.
 
-Hola de uso [ **cmdlet New-AzureSqlJobContent** ](/powershell/module/elasticdatabasejobs/new-azuresqljobcontent) toocreate guardar un script para su ejecución y establezca hello **- ContentName** y **- CommandText**parámetros.
+Use el [**cmdlet New-AzureSqlJobContent**](/powershell/module/elasticdatabasejobs/new-azuresqljobcontent) para crear y guardar un script de ejecución y establezca los parámetros **-ContentName** y **-CommandText**.
 
     $scriptName = "Create a TestTable"
 
@@ -264,21 +264,21 @@ Hola de uso [ **cmdlet New-AzureSqlJobContent** ](/powershell/module/elasticdata
     Write-Output $script
 
 ### <a name="create-a-new-script-from-a-file"></a>Creación de un script desde un archivo
-Si Hola script T-SQL se define dentro de un archivo, use este script de Hola tooimport:
+Si el script de T-SQL se define dentro de un archivo, use esto para importar el script:
 
     $scriptName = "My Script Imported from a File"
-    $scriptPath = "{Path tooSQL File}"
+    $scriptPath = "{Path to SQL File}"
     $scriptCommandText = Get-Content -Path $scriptPath
     $script = New-AzureSqlJobContent -ContentName $scriptName -CommandText $scriptCommandText
     Write-Output $script
 
-### <a name="tooupdate-a-t-sql-script-for-execution-across-databases"></a>secuencia de comandos de tooupdate un instrucción T-SQL para su ejecución en bases de datos
-Estas actualizaciones de secuencia de comandos de PowerShell Hola texto de comando de T-SQL para un script existente.
+### <a name="to-update-a-t-sql-script-for-execution-across-databases"></a>Para actualizar un script de T-SQL para su ejecución en distintas bases de datos
+El siguiente script de PowerShell actualiza el texto de los comandos T-SQL en un script existente.
 
-Conjunto Hola siguiendo definición toobe conjunto de variables tooreflect Hola deseado script:
+Establecimiento de las siguientes variables para que reflejen la definición que se quiera del script que se va a establecer:
 
     $scriptName = "Create a TestTable"
-    $scriptUpdateComment = "Adding AdditionalInformation column tooTestTable"
+    $scriptUpdateComment = "Adding AdditionalInformation column to TestTable"
     $scriptCommandText = "
     IF NOT EXISTS (SELECT name FROM sys.tables WHERE name = 'TestTable')
     BEGIN
@@ -299,13 +299,13 @@ Conjunto Hola siguiendo definición toobe conjunto de variables tooreflect Hola 
     INSERT INTO TestTable(InsertionTime, AdditionalInformation) VALUES (sysutcdatetime(), 'test');
     GO"
 
-### <a name="tooupdate-hello-definition-tooan-existing-script"></a>tooupdate Hola definición tooan secuencia de comandos existente
+### <a name="to-update-the-definition-to-an-existing-script"></a>Para actualizar la definición de un script existente
     Set-AzureSqlJobContentDefinition -ContentName $scriptName -CommandText $scriptCommandText -Comment $scriptUpdateComment 
 
-## <a name="toocreate-a-job-tooexecute-a-script-across-a-shard-map"></a>toocreate un tooexecute de trabajo una secuencia de comandos a través de un mapa de particiones
+## <a name="to-create-a-job-to-execute-a-script-across-a-shard-map"></a>Para crear un trabajo que ejecute un script en un mapa de particiones
 El siguiente script de PowerShell inicia un trabajo para la ejecución de un script en cada partición de un mapa de particiones de escala elástica.
 
-Hola conjunto después Hola de variables tooreflect había deseado script y destino:
+Establecimiento de las siguientes variables para que reflejen el script y el destino que se quiera:
 
     $jobName = "{Job Name}"
     $scriptName = "{Script Name}"
@@ -317,30 +317,30 @@ Hola conjunto después Hola de variables tooreflect había deseado script y dest
     $job = New-AzureSqlJob -ContentName $scriptName -CredentialName $credentialName -JobName $jobName -TargetId $shardMapTarget.TargetId
     Write-Output $job
 
-## <a name="tooexecute-a-job"></a>tooexecute un trabajo
+## <a name="to-execute-a-job"></a>Para ejecutar un trabajo
 Este script de PowerShell ejecuta un trabajo existente:
 
-Hola de actualización después de la variable tooreflect Hola deseado toohave de nombre de trabajo ejecuta:
+Actualice la variable siguiente para que refleje el nombre del trabajo que se quiera ejecutar:
 
     $jobName = "{Job Name}"
     $jobExecution = Start-AzureSqlJobExecution -JobName $jobName 
     Write-Output $jobExecution
 
-## <a name="tooretrieve-hello-state-of-a-single-job-execution"></a>estado de hello tooretrieve una única ejecución de trabajo
-Hola de uso [ **cmdlet Get-AzureSqlJobExecution** ](/powershell/module/elasticdatabasejobs/get-azuresqljobexecution) conjunto hello y **JobExecutionId** estado de hello tooview los parámetros de ejecución del trabajo.
+## <a name="to-retrieve-the-state-of-a-single-job-execution"></a>Para recuperar el estado de ejecución de un único trabajo
+Use el cmdlet [**Get-AzureSqlJobExecution**](/powershell/module/elasticdatabasejobs/get-azuresqljobexecution) y establezca el parámetro **JobExecutionId** para ver el estado de una ejecución de trabajos.
 
     $jobExecutionId = "{Job Execution Id}"
     $jobExecution = Get-AzureSqlJobExecution -JobExecutionId $jobExecutionId
     Write-Output $jobExecution
 
-Use Hola mismo **Get AzureSqlJobExecution** cmdlet con hello **IncludeChildren** estado de hello tooview los parámetros de las ejecuciones de trabajo secundarios, es decir Hola estado específico para cada ejecución del trabajo en todas base de datos de destino de trabajo de Hola.
+Use el mismo cmdlet **Get-AzureSqlJobExecution** con el parámetro **IncludeChildren** para ver el estado de ejecuciones de trabajos secundarios, es decir, el estado específico de cada ejecución en cada base de datos destino del trabajo.
 
     $jobExecutionId = "{Job Execution Id}"
     $jobExecutions = Get-AzureSqlJobExecution -JobExecutionId $jobExecutionId -IncludeChildren
     Write-Output $jobExecutions 
 
-## <a name="tooview-hello-state-across-multiple-job-executions"></a>estado de hello tooview a través de varias ejecuciones del trabajo
-Hola [ **cmdlet Get-AzureSqlJobExecution** ](/powershell/module/elasticdatabasejobs/new-azuresqljob) tiene varios parámetros opcionales que pueden ser utilizado toodisplay múltiples ejecuciones del trabajo, filtradas mediante parámetros de hello proporcionado. siguiente Hello muestra algunas de hello formas toouse AzureSqlJobExecution Get:
+## <a name="to-view-the-state-across-multiple-job-executions"></a>Para ver el estado de varias ejecuciones de trabajos
+El [**cmdlet Get-AzureSqlJobExecution**](/powershell/module/elasticdatabasejobs/new-azuresqljob) tiene varios parámetros opcionales que sirven para mostrar varias ejecuciones del trabajo, filtradas por los parámetros indicados. Aquí mostramos algunas de las posibles formas de usar Get-AzureSqlJobExecution:
 
 Recuperar todas las ejecuciones de trabajos activos de nivel superior:
 
@@ -375,7 +375,7 @@ Recuperar todos los trabajos que se destinan a una colección personalizada espe
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     Get-AzureSqlJobExecution -TargetId $target.TargetId -IncludeInactive
 
-Recuperar la lista de Hola de ejecuciones de la tarea de trabajo dentro de la ejecución de un trabajo específico:
+Recuperar la lista de ejecuciones de tareas de trabajos dentro de la ejecución de un trabajo específico:
 
     $jobExecutionId = "{Job Execution Id}"
     $jobTaskExecutions = Get-AzureSqlJobTaskExecution -JobExecutionId $jobExecutionId
@@ -383,14 +383,14 @@ Recuperar la lista de Hola de ejecuciones de la tarea de trabajo dentro de la ej
 
 Recuperar los detalles de ejecución de tareas de trabajo:
 
-Hola siguiente script de PowerShell puede ser utilizados tooview Hola detalles de una ejecución de la tarea de trabajo, que es especialmente útil al depurar errores de ejecución.
+Puede usar este script de PowerShell para ver los detalles de una ejecución de tareas de trabajo, lo que resulta especialmente útil al depurar errores de ejecución.
 
     $jobTaskExecutionId = "{Job Task Execution Id}"
     $jobTaskExecution = Get-AzureSqlJobTaskExecution -JobTaskExecutionId $jobTaskExecutionId
     Write-Output $jobTaskExecution
 
-## <a name="tooretrieve-failures-within-job-task-executions"></a>errores de tooretrieve dentro de las ejecuciones de tareas de trabajo
-Hola **JobTaskExecution objeto** incluye una propiedad para el ciclo de vida de Hola de tarea hello junto con una propiedad de mensaje. Si se produce un error en una ejecución de la tarea de trabajo, propiedad de ciclo de vida de Hola se establecerá demasiado*error* y se establecerá la propiedad de mensaje de Hola toohello mensaje de excepción resultante y la pila. Si un trabajo no es correcta, es importante tooview detalles de Hola de tareas de trabajo que no se realizó correctamente para un trabajo determinado.
+## <a name="to-retrieve-failures-within-job-task-executions"></a>Para recuperar errores dentro de las ejecuciones de tareas de trabajo
+El objeto **JobTaskExecution** incluye una propiedad para el ciclo de vida de la tarea y una propiedad de mensaje. Si no se realiza correctamente la ejecución de tareas de un trabajo, la propiedad de ciclo de vida se establecerá en *Failed* y la propiedad de mensaje se establecerá en el mensaje de excepción resultante y la pila. Si un trabajo no se realiza correctamente, es importante ver los detalles de las tareas de trabajo que no se realizaron correctamente en un trabajo determinado.
 
     $jobExecutionId = "{Job Execution Id}"
     $jobTaskExecutions = Get-AzureSqlJobTaskExecution -JobExecutionId $jobExecutionId
@@ -402,8 +402,8 @@ Hola **JobTaskExecution objeto** incluye una propiedad para el ciclo de vida de 
             }
         }
 
-## <a name="toowait-for-a-job-execution-toocomplete"></a>toowait para un toocomplete de ejecución de trabajo
-Hola siguiente script de PowerShell puede ser usado toowait para un toocomplete de tareas de trabajo:
+## <a name="to-wait-for-a-job-execution-to-complete"></a>Para esperar a que se complete la ejecución de un trabajo
+Este script de PowerShell sirve para esperar a que una tarea de trabajo se complete:
 
     $jobExecutionId = "{Job Execution Id}"
     Wait-AzureSqlJobExecution -JobExecutionId $jobExecutionId 
@@ -413,14 +413,14 @@ Trabajos de base de datos elástica admite la creación de directivas de ejecuci
 
 Actualmente, las directivas de ejecución permiten definir:
 
-* Nombre: Identificador de directiva de ejecución de Hola.
+* Nombre: identificador de la directiva de ejecución.
 * Tiempo de espera del trabajo: tiempo total antes de que Trabajos de base de datos elástica cancele un trabajo.
-* Intervalo de reintento inicial: Intervalo toowait antes del primer reintento.
-* Intervalo de reintento máximo: Límite de toouse de intervalos de reintento.
-* Coeficiente de retroceso de intervalo de reintento: Coeficiente utiliza el siguiente intervalo de saludo de toocalculate entre los reintentos.  Hello se utiliza siguiente fórmula: (intervalo de reintentos inicial) * Math.pow ((coeficiente de retroceso de intervalo), (número de intentos de) - 2). 
-* Número máximo de intentos: número máximo de Hola de tooperform de intentos de reintento de un trabajo.
+* Intervalo de reintento inicial: intervalo de espera antes del primer reintento.
+* Intervalo máximo de reintento: límite de intervalos de reintento que se usan.
+* Coeficiente de retroceso de intervalo de reintento: coeficiente que se usa para calcular el siguiente intervalo entre reintentos.  Se usa la siguiente fórmula: (intervalo de reintento inicial) * Math.pow ((coeficiente de retroceso de intervalo), (número de intentos de) - 2). 
+* Número máximo de intentos: número máximo de reintentos para llevar a cabo un trabajo.
 
-Directiva de ejecución de Hello predeterminada utiliza Hola siguientes valores:
+La directiva de ejecución predeterminada usa los valores siguientes:
 
 * Nombre: directiva de ejecución predeterminada
 * Tiempo de espera del trabajo: 1 semana
@@ -429,7 +429,7 @@ Directiva de ejecución de Hello predeterminada utiliza Hola siguientes valores:
 * Coeficiente de intervalo de reintento: 2
 * Número máximo de intentos: 2.147.483.647
 
-Crear directiva de ejecución de hello deseado:
+Crear la directiva de ejecución que quiera:
 
     $executionPolicyName = "{Execution Policy Name}"
     $initialRetryInterval = New-TimeSpan -Seconds 10
@@ -442,7 +442,7 @@ Crear directiva de ejecución de hello deseado:
     Write-Output $executionPolicy
 
 ### <a name="update-a-custom-execution-policy"></a>Actualización de una directiva de ejecución personalizada
-Tooupdate de directiva de ejecución de actualización Hola deseado:
+Actualizar la directiva de ejecución que se quiere actualizar:
 
     $executionPolicyName = "{Execution Policy Name}"
     $initialRetryInterval = New-TimeSpan -Seconds 15
@@ -454,65 +454,65 @@ Tooupdate de directiva de ejecución de actualización Hola deseado:
     Write-Output $updatedExecutionPolicy
 
 ## <a name="cancel-a-job"></a>Cancelación de un trabajo
-Trabajos de base de datos elástica admite solicitudes de cancelación de trabajos.  Si los trabajos de base de datos elástica detecta una solicitud de cancelación de un trabajo que se está ejecutando actualmente, tratará de trabajo de hello toostop.
+Trabajos de base de datos elástica admite solicitudes de cancelación de trabajos.  Si Trabajos de base de datos elástica detecta una solicitud de cancelación para un trabajo que está ejecutándose en ese momento, intentará detener el trabajo.
 
 Trabajos de base de datos elástica puede realizar una cancelación de dos formas distintas:
 
-1. Cancelar están ejecutando tareas actualmente: si se detecta una cancelación mientras una tarea se está ejecutando actualmente, se intentará una cancelación dentro de hello ejecutando el aspecto de la tarea hello.  Por ejemplo: si hay una consulta de ejecución prolongada que se están llevando a cabo cuando se intenta realizar una cancelación, habrá una consulta de hello toocancel intento.
-2. Cancelación de reintentos: si se detecta una cancelación por subproceso de control de hello antes de que se inicia una tarea para su ejecución, el subproceso de control de Hola se evitar iniciar tarea hello y declarar solicitud hello como cancelada.
+1. Cancelar las tareas actualmente en ejecución: si se detecta una cancelación mientras se ejecuta una tarea, se intentará cancelar el aspecto de la tarea que se está ejecutando actualmente.  Por ejemplo: si hay una consulta de larga ejecución en curso en el momento en que se intenta realizar una cancelación, se intentará cancelar la consulta.
+2. Cancelación de reintentos de tareas: si el subproceso de control detecta una cancelación antes de iniciar una tarea para su ejecución, evitará iniciar la tarea y declarará cancelada la solicitud.
 
-Si se solicita una cancelación de trabajo para un trabajo primario, se respetará la solicitud de cancelación de Hola de trabajo primario de Hola y para todos los trabajos secundarios.
+Si se solicita una cancelación de trabajo para un trabajo primario, se respetará la solicitud de cancelación para el trabajo primario y todos los trabajos secundarios.
 
-toosubmit una solicitud de cancelación, utilice hello [ **cmdlet Stop-AzureSqlJobExecution** ](/powershell/module/elasticdatabasejobs/stop-azuresqljobexecution) conjunto hello y **JobExecutionId** parámetro.
+Para enviar una solicitud de cancelación, use el [**cmdlet Stop-AzureSqlJobExecution**](/powershell/module/elasticdatabasejobs/stop-azuresqljobexecution) y establezca el parámetro **JobExecutionId**.
 
     $jobExecutionId = "{Job Execution Id}"
     Stop-AzureSqlJobExecution -JobExecutionId $jobExecutionId
 
-## <a name="toodelete-a-job-and-job-history-asynchronously"></a>toodelete un trabajo y el historial de trabajos de forma asincrónica
-Trabajos de base de datos elástica admite la eliminación asincrónica de trabajos. Un trabajo se puede marcar para su eliminación y sistema de hello eliminará trabajo hello y su historial de trabajo una vez han completado todas las ejecuciones del trabajo para el trabajo de Hola. sistema de Hello no cancelará automáticamente las ejecuciones del trabajo activo.  
+## <a name="to-delete-a-job-and-job-history-asynchronously"></a>Para eliminar un trabajo y el historial de trabajos de forma asincrónica
+Trabajos de base de datos elástica admite la eliminación asincrónica de trabajos. Un trabajo se puede marcar para su eliminación y el sistema eliminará el trabajo y su historial de trabajos una vez completadas todas las ejecuciones de trabajos para ese trabajo. El sistema no cancelará automáticamente las ejecuciones de trabajos activos.  
 
-Invocar [ **Stop AzureSqlJobExecution** ](/powershell/module/elasticdatabasejobs/stop-azuresqljobexecution) toocancel ejecuciones de trabajo activo.
+Invoque a [**Stop-AzureSqlJobExecution**](/powershell/module/elasticdatabasejobs/stop-azuresqljobexecution) para cancelar las ejecuciones de trabajos activas.
 
-eliminación de trabajo tootrigger, use hello [ **cmdlet Remove-AzureSqlJob** ](/powershell/module/elasticdatabasejobs/remove-azuresqljob) conjunto hello y **JobName** parámetro.
+Para desencadenar la eliminación del trabajo, use el [**cmdlet Remove-AzureSqlJob**](/powershell/module/elasticdatabasejobs/remove-azuresqljob) y establezca el parámetro **JobName**.
 
     $jobName = "{Job Name}"
     Remove-AzureSqlJob -JobName $jobName
 
-## <a name="toocreate-a-custom-database-target"></a>toocreate un destino de la base de datos personalizada
-Puede definir bases de datos de destino personalizadas para la ejecución directa o para su inclusión en un grupo personalizado de bases de datos. Por ejemplo, porque **grupos elásticos** están aún no admiten directamente mediante PowerShell APIs, puede crear un destino de la base de datos personalizada y el destino de la colección de base de datos personalizada que abarca todas las bases de datos de hello en el grupo de Hola.
+## <a name="to-create-a-custom-database-target"></a>Para crear una base de datos de destino personalizada
+Puede definir bases de datos de destino personalizadas para la ejecución directa o para su inclusión en un grupo personalizado de bases de datos. Por ejemplo, como los **grupos elásticos** todavía no se admiten directamente mediante las API de PowerShell, puede crear una base de datos personalizada como destino y una colección de bases de datos personalizada como destino que englobe todas las bases de datos del grupo.
 
-Establecer Hola siguiendo la información de base de datos de las variables tooreflect Hola deseado:
+Establecimiento de las siguientes variables para que reflejen la información de base de datos que se quiera:
 
     $databaseName = "{Database Name}"
     $databaseServerName = "{Server Name}"
     New-AzureSqlJobDatabaseTarget -DatabaseName $databaseName -ServerName $databaseServerName 
 
-## <a name="toocreate-a-custom-database-collection-target"></a>toocreate un destino de recopilación de la base de datos personalizada
-Hola de uso [ **New-AzureSqlJobTarget** ](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget) toodefine cmdlet una ejecución de tooenable del destino de colección personalizada de la base de datos a través de varios destinos de la base de datos definido. Después de crear un grupo de base de datos, se pueden asociadas con el destino de colección personalizada hello las bases de datos.
+## <a name="to-create-a-custom-database-collection-target"></a>Para crear una colección de bases de datos de destino personalizada
+Use el cmdlet [**New-AzureSqlJobTarget**](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget) para definir una colección de bases de datos personalizada de destino para permitir la ejecución en varias bases de datos definidas como destino. Después de crear un grupo de bases de datos, las bases de datos se pueden asociar con la colección personalizada de destino.
 
-Establecer Hola siguiente configuración de destino de colección personalizada deseada de variables tooreflect hello:
+Establecimiento de las siguientes variables para que reflejen la configuración de destino de la colección personalizada que se quiera:
 
     $customCollectionName = "{Custom Database Collection Name}"
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName 
 
-### <a name="tooadd-databases-tooa-custom-database-collection-target"></a>destino de colección de base de datos personalizada tooa de tooadd las bases de datos
-tooadd una recopilación personalizada específica de tooa de base de datos use hello [ **agregar AzureSqlJobChildTarget** ](/powershell/module/elasticdatabasejobs/add-azuresqljobchildtarget) cmdlet.
+### <a name="to-add-databases-to-a-custom-database-collection-target"></a>Para agregar bases de datos a una colección de bases de datos personalizada de destino
+Para agregar una base de datos a una colección personalizada específica, use el cmdlet [**Add-AzureSqlJobChildTarget**](/powershell/module/elasticdatabasejobs/add-azuresqljobchildtarget).
 
     $databaseServerName = "{Database Server Name}"
     $databaseName = "{Database Name}"
     $customCollectionName = "{Custom Database Collection Name}"
     Add-AzureSqlJobChildTarget -CustomCollectionName $customCollectionName -DatabaseName $databaseName -ServerName $databaseServerName 
 
-#### <a name="review-hello-databases-within-a-custom-database-collection-target"></a>Revise las bases de datos de hello dentro de un destino de colección de la base de datos personalizada
-Hola de uso [ **Get AzureSqlJobTarget** ](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget) bases de datos de cmdlet tooretrieve Hola secundarios dentro de un destino de colección de la base de datos personalizada. 
+#### <a name="review-the-databases-within-a-custom-database-collection-target"></a>Revisión de las bases de datos incluidas en un destino de colección de bases de datos personalizada
+Use el cmdlet [**Get-AzureSqlJobTarget**](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget) para recuperar las bases de datos secundarias en un destino de la colección de bases de datos personalizada. 
 
     $customCollectionName = "{Custom Database Collection Name}"
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     $childTargets = Get-AzureSqlJobTarget -ParentTargetId $target.TargetId
     Write-Output $childTargets
 
-### <a name="create-a-job-tooexecute-a-script-across-a-custom-database-collection-target"></a>Crear una secuencia de comandos de un tooexecute de trabajo a través de un destino de recopilación de la base de datos personalizada
-Hola de uso [ **New-AzureSqlJob** ](/powershell/module/elasticdatabasejobs/new-azuresqljob) toocreate cmdlet un trabajo para un grupo de bases de datos definidas por un destino de recopilación de la base de datos personalizada. Trabajos de base de datos elásticos expandirán trabajo hello en varios puestos de secundarios cada base de datos correspondiente de tooa asociados con el destino de colección de base de datos personalizada hello y asegúrese de que se ejecuta el script de Hola en cada base de datos. Una vez más, es importante que los scripts son idempotentes toobe resistente tooretries.
+### <a name="create-a-job-to-execute-a-script-across-a-custom-database-collection-target"></a>Creación de un trabajo para ejecutar un script transversalmente en un destino de colección de bases de datos personalizada
+Use el cmdlet [**New-AzureSqlJob**](/powershell/module/elasticdatabasejobs/new-azuresqljob) para crear un trabajo en un grupo de bases de datos definido por un destino de la colección de base de datos personalizada. Trabajos de base de datos elástica expande el trabajo en varios trabajos secundarios, cada uno correspondiente a una base de datos asociada al destino de la colección de bases de datos personalizada y garantiza que el script se ejecuta en cada una de las bases de datos. De nuevo, es importante que los scripts sean idempotentes para que sean resistentes a los reintentos.
 
     $jobName = "{Job Name}"
     $scriptName = "{Script Name}"
@@ -523,13 +523,13 @@ Hola de uso [ **New-AzureSqlJob** ](/powershell/module/elasticdatabasejobs/new-a
     Write-Output $job
 
 ## <a name="data-collection-across-databases"></a>Recopilación de datos de una base de datos a otra
-Puede usar un tooexecute una consulta de trabajo a través de un grupo de bases de datos y tabla específica de hello resultados tooa de envío. tabla de Hello puede consultarse después Hola hechos toosee Hola resultados de la consulta de cada base de datos. Esto proporciona un método asincrónico tooexecute una consulta entre varias bases de datos. Los intentos incorrectos se controlan automáticamente mediante reintentos.
+Puede usar un trabajo para ejecutar una consulta en un grupo de bases de datos y enviar los resultados a una tabla específica. La tabla se puede consultar a posteriori para ver los resultados de la consulta de cada base de datos. Esto ofrece un mecanismo asincrónico para ejecutar una consulta en numerosas bases de datos. Los intentos incorrectos se controlan automáticamente mediante reintentos.
 
-tabla de destino especificado de Hola se creará automáticamente si aún no existe. nueva tabla de Hello coincide con esquema Hola de hello devolvió un conjunto de resultados. Si una secuencia de comandos devuelve varios conjuntos de resultados, trabajos de base de datos elástica sólo enviará la primera tabla de destino toohello Hola.
+La tabla de destino especificada se creará automáticamente si todavía no existe. La nueva tabla coincide con el esquema del conjunto de resultados devuelto. Si un script devuelve varios conjuntos de resultados, Trabajos de base de datos elástica solo enviará el primero a la tabla de destino.
 
-Hola siguiente script de PowerShell ejecuta una secuencia de comandos y recopila los resultados en una tabla especificada. Este script presupone que se creó un script T-SQL que genera un único conjunto de resultados y que se creó una colección de bases de datos personalizada de destino.
+El siguiente script de PowerShell ejecuta un script y recopila los resultados en una tabla especificada. Este script presupone que se creó un script T-SQL que genera un único conjunto de resultados y que se creó una colección de bases de datos personalizada de destino.
 
-Este script utiliza hello [ **Get AzureSqlJobTarget** ](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget) cmdlet. Establecer los parámetros de hello para la secuencia de comandos, las credenciales y de destino de ejecución:
+Este script usa el cmdlet [**Get-AzureSqlJobTarget**](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget). Establezca los parámetros del script, las credenciales y el destino de ejecución:
 
     $jobName = "{Job Name}"
     $scriptName = "{Script Name}"
@@ -542,8 +542,8 @@ Este script utiliza hello [ **Get AzureSqlJobTarget** ](/powershell/module/elast
     $destinationTableName = "{Destination Table Name}"
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
 
-### <a name="toocreate-and-start-a-job-for-data-collection-scenarios"></a>toocreate e iniciar un trabajo para escenarios de recopilación de datos
-Este script utiliza hello [ **inicio AzureSqlJobExecution** ](/powershell/module/elasticdatabasejobs/start-azuresqljobexecution) cmdlet.
+### <a name="to-create-and-start-a-job-for-data-collection-scenarios"></a>Para crear e iniciar un trabajo en escenarios de recolección de datos
+Este script usa el cmdlet [**Start-AzureSqlJobExecution**](/powershell/module/elasticdatabasejobs/start-azuresqljobexecution).
 
     $job = New-AzureSqlJob -JobName $jobName 
     -CredentialName $executionCredentialName 
@@ -558,8 +558,8 @@ Este script utiliza hello [ **inicio AzureSqlJobExecution** ](/powershell/module
     $jobExecution = Start-AzureSqlJobExecution -JobName $jobName
     Write-Output $jobExecution
 
-## <a name="tooschedule-a-job-execution-trigger"></a>tooschedule un desencadenador de ejecución de trabajo
-Hola siguiente script de PowerShell puede ser utilizado toocreate una programación periódica. Este script usa un intervalo de minutos, pero [**New-AzureSqlJobSchedule**](/powershell/module/elasticdatabasejobs/new-azuresqljobschedule) también admite los parámetros -DayInterval, -HourInterval, -MonthInterval y -WeekInterval. Se pueden crear programaciones que se ejecutan una sola vez pasando -OneTime.
+## <a name="to-schedule-a-job-execution-trigger"></a>Para programar un desencadenador de ejecución de trabajos
+El siguiente script de PowerShell se usa para crear una programación periódica. Este script usa un intervalo de minutos, pero [**New-AzureSqlJobSchedule**](/powershell/module/elasticdatabasejobs/new-azuresqljobschedule) también admite los parámetros -DayInterval, -HourInterval, -MonthInterval y -WeekInterval. Se pueden crear programaciones que se ejecutan una sola vez pasando -OneTime.
 
 Creación de una programación:
 
@@ -572,10 +572,10 @@ Creación de una programación:
     -StartTime $startTime 
     Write-Output $schedule
 
-### <a name="tootrigger-a-job-executed-on-a-time-schedule"></a>tootrigger un trabajo que se ejecuta según una programación de tiempo
-Un desencadenador de trabajo puede ser toohave definido una programación de tiempo de trabajo ejecuta correspondiente tooa. Hola siguiente script de PowerShell pueden toocreate usa un desencadenador de trabajo.
+### <a name="to-trigger-a-job-executed-on-a-time-schedule"></a>Para desencadenar un trabajo para que se ejecute a la hora programada
+Se puede definir un desencadenador de trabajo para que un trabajo se ejecute según una programación de tiempo. El siguiente script de PowerShell sirve para crear un desencadenador de trabajo.
 
-Use [AzureSqlJobTrigger New](/powershell/module/elasticdatabasejobs/new-azuresqljobtrigger) y conjunto Hola siguiendo las variables toocorrespond toohello deseado trabajo y una programación:
+Use [New-AzureSqlJobTrigger](/powershell/module/elasticdatabasejobs/new-azuresqljobtrigger) y establezca las siguientes variables para que se correspondan con el trabajo y la programación deseados:
 
     $jobName = "{Job Name}"
     $scheduleName = "{Schedule Name}"
@@ -584,8 +584,8 @@ Use [AzureSqlJobTrigger New](/powershell/module/elasticdatabasejobs/new-azuresql
     -JobName $jobName
     Write-Output $jobTrigger
 
-### <a name="tooremove-a-scheduled-association-toostop-job-from-executing-on-schedule"></a>tooremove un trabajo de toostop asociación programada de ejecutarse en programación
-se puede quitar toodiscontinue recurrente de ejecución del trabajo a través de un desencadenador de trabajo, el desencadenador de trabajo de Hola. Quitar un toostop de desencadenador de trabajo un trabajo del que se está ejecutando correspondiente programación tooa con hello [ **cmdlet Remove-AzureSqlJobTrigger**](/powershell/module/elasticdatabasejobs/remove-azuresqljobtrigger).
+### <a name="to-remove-a-scheduled-association-to-stop-job-from-executing-on-schedule"></a>Para quitar una asociación programada y detener la ejecución de un trabajo a la hora programada
+Para suspender la ejecución de un trabajo recurrente a través de un desencadenador de trabajo, se puede quitar el desencadenador de trabajo. Quite un desencadenador de trabajo para detener un trabajo que se ejecute según una programación con el [**cmdlet Remove-AzureSqlJobTrigger**](/powershell/module/elasticdatabasejobs/remove-azuresqljobtrigger).
 
     $jobName = "{Job Name}"
     $scheduleName = "{Schedule Name}"
@@ -593,38 +593,38 @@ se puede quitar toodiscontinue recurrente de ejecución del trabajo a través de
     -ScheduleName $scheduleName 
     -JobName $jobName
 
-### <a name="retrieve-job-triggers-bound-tooa-time-schedule"></a>Recuperar la programación de tiempo de trabajo desencadenadores tooa enlazado
-Hola siguiente script de PowerShell puede tooobtain usado y mostrar programación de tiempo determinado de hello trabajo desencadenadores tooa registrados.
+### <a name="retrieve-job-triggers-bound-to-a-time-schedule"></a>Recuperación de desencadenadores de trabajo enlazados a una programación de tiempo
+El siguiente script de PowerShell sirve para obtener y mostrar los desencadenadores de trabajo registrados para una programación de tiempo determinada.
 
     $scheduleName = "{Schedule Name}"
     $jobTriggers = Get-AzureSqlJobTrigger -ScheduleName $scheduleName
     Write-Output $jobTriggers
 
-### <a name="tooretrieve-job-triggers-bound-tooa-job"></a>desencadenadores de trabajo tooretrieve enlazados tooa trabajo
-Use [AzureSqlJobTrigger Get](/powershell/module/elasticdatabasejobs/get-azuresqljobtrigger) tooobtain y mostrar programaciones que contiene un trabajo registrado.
+### <a name="to-retrieve-job-triggers-bound-to-a-job"></a>Para recuperar los desencadenadores enlazados a un trabajo
+Use [Get-AzureSqlJobTrigger](/powershell/module/elasticdatabasejobs/get-azuresqljobtrigger) para obtener y mostrar las programaciones que contienen un trabajo registrado.
 
     $jobName = "{Job Name}"
     $jobTriggers = Get-AzureSqlJobTrigger -JobName $jobName
     Write-Output $jobTriggers
 
-## <a name="toocreate-a-data-tier-application-dacpac-for-execution-across-databases"></a>toocreate una aplicación de capa de datos (DACPAC) para la ejecución a través de las bases de datos
-vea toocreate un DACPAC [Data-Tier applications](https://msdn.microsoft.com/library/ee210546.aspx). toodeploy un DACPAC, usar hello [cmdlet New-AzureSqlJobContent](/powershell/module/elasticdatabasejobs/new-azuresqljobcontent). Hola DACPAC debe ser accesible toohello servicio. Es recomendable tooupload una tooAzure DACPAC creado almacenamiento y crear un [firma de acceso compartido](../storage/common/storage-dotnet-shared-access-signature-part-1.md) para hello DACPAC.
+## <a name="to-create-a-data-tier-application-dacpac-for-execution-across-databases"></a>Para crear una aplicación de capa de datos (DACPAC) para su ejecución en bases de datos
+Para crear una DACPAC, consulte [Aplicaciones de capa de datos](https://msdn.microsoft.com/library/ee210546.aspx). Para implementar una DACPAC, use el [cmdlet New-AzureSqlJobContent](/powershell/module/elasticdatabasejobs/new-azuresqljobcontent). La DACPAC debe ser accesible para el servicio. Se recomienda cargar una DACPAC creada en Almacenamiento de Azure y crear una [firma de acceso compartido](../storage/common/storage-dotnet-shared-access-signature-part-1.md) para la DACPAC.
 
     $dacpacUri = "{Uri}"
     $dacpacName = "{Dacpac Name}"
     $dacpac = New-AzureSqlJobContent -DacpacUri $dacpacUri -ContentName $dacpacName 
     Write-Output $dacpac
 
-### <a name="tooupdate-a-data-tier-application-dacpac-for-execution-across-databases"></a>tooupdate una aplicación de capa de datos (DACPAC) para la ejecución a través de las bases de datos
-Dacpac existente registrado en un período trabajos elástico de base de datos puede ser actualizada toopoint toonew URI. Hola de uso [ **cmdlet Set-AzureSqlJobContentDefinition** ](/powershell/module/elasticdatabasejobs/set-azuresqljobcontentdefinition) tooupdate hello DACPAC URI en una existente registrado DACPAC:
+### <a name="to-update-a-data-tier-application-dacpac-for-execution-across-databases"></a>Para actualizar una aplicación de capa de datos (DACPAC) para su ejecución en bases de datos
+Las DACPAC existentes que se registren en Trabajos de base de datos elástica pueden actualizarse para que señalen a nuevos URI. Use el cmdlet [**Set-AzureSqlJobContentDefinition**](/powershell/module/elasticdatabasejobs/set-azuresqljobcontentdefinition) para actualizar el URI de una DACPAC registrada:
 
     $dacpacName = "{Dacpac Name}"
     $newDacpacUri = "{Uri}"
     $updatedDacpac = Set-AzureSqlJobDacpacDefinition -ContentName $dacpacName -DacpacUri $newDacpacUri
     Write-Output $updatedDacpac
 
-## <a name="toocreate-a-job-tooapply-a-data-tier-application-dacpac-across-databases"></a>toocreate una tooapply una aplicación de capa de datos (DACPAC) a través de las bases de datos de trabajo
-Una vez creado un DACPAC en trabajos elástico de base de datos, un trabajo puede crearse tooapply hello DACPAC a través de un grupo de bases de datos. Hola siguiente script de PowerShell pueden toocreate usa un trabajo DACPAC a través de una colección personalizada de las bases de datos:
+## <a name="to-create-a-job-to-apply-a-data-tier-application-dacpac-across-databases"></a>Para crear un trabajo para aplicar una aplicación de capa de datos (DACPAC) en bases de datos
+Una vez creada una DACPAC en Trabajos de base de datos elástica, puede crearse un trabajo que aplique transversalmente la DACPAC en un grupo de bases de datos. El siguiente script de PowerShell sirve para crear un trabajo DACPAC transversalmente en una colección personalizada de bases de datos:
 
     $jobName = "{Job Name}"
     $dacpacName = "{Dacpac Name}"

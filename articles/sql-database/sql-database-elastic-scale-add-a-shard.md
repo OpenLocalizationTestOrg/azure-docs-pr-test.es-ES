@@ -1,6 +1,6 @@
 ---
-title: "aaaAdding una partición con herramientas de base de datos elástica | Documentos de Microsoft"
-description: "Cómo establece toouse API de escala elástica tooadd nueva particiones tooa partición."
+title: "Incorporación de una partición con herramientas de bases de datos elástica | Microsoft Docs"
+description: "Establece cómo usar las API de escala elástica para agregar particiones nuevas a un conjunto de particiones."
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: f44b59578376d1238b3012a3cb52339978079f0e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6a91ea2251ea3b748faba5c97765bfded9c00234
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>Incorporación de una partición con herramientas de bases de datos elásticas
-## <a name="tooadd-a-shard-for-a-new-range-or-key"></a>tooadd una partición para un nuevo intervalo o clave
-Las aplicaciones a menudo necesita toosimply agregar nuevos datos de toohandle de particiones que cabe esperar de nuevas claves o intervalos de claves de un mapa de particiones que ya existe. Por ejemplo, una aplicación particionada por Id. de inquilino puede necesitar tooprovision una nueva partición para un nuevo inquilino o mensual de particiones de datos que necesite una nueva partición aprovisionada antes del inicio de Hola de nuevo cada mes. 
+## <a name="to-add-a-shard-for-a-new-range-or-key"></a>Para agregar una partición para un nuevo intervalo o clave
+Con frecuencia, las aplicaciones simplemente necesitan agregar nuevas particiones para controlar los datos que se esperan de nuevas claves o intervalos de claves, en un mapa de particiones que ya existe. Por ejemplo, es posible que una aplicación particionada por identificador de inquilino necesite aprovisionar una nueva partición para un nuevo inquilino o que datos particionados mensualmente necesiten que se aprovisione una nueva partición antes del inicio de cada nuevo mes. 
 
-Si el nuevo intervalo de valores de clave de hello ya no forma parte de una asignación existente, es tooadd muy sencillo Hola nueva partición y asociar Hola nueva clave o intervalo toothat partición. 
+Si el nuevo intervalo de valores de clave no forma parte todavía de una asignación existente, es muy sencillo agregar la nueva partición y asociar la nueva clave o el nuevo intervalo a dicha partición. 
 
-### <a name="example--adding-a-shard-and-its-range-tooan-existing-shard-map"></a>Ejemplo: agregar una partición y su mapa de particiones de intervalo tooan existente
-Este ejemplo utiliza hello [TryGetShard](https://msdn.microsoft.com/library/azure/dn823929.aspx) hello [CreateShard](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard.aspx), [CreateRangeMapping](https://msdn.microsoft.com/library/azure/dn807221.aspx#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.RangeShardMap`1.CreateRangeMapping\(Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.RangeMappingCreationInfo{`0}\)) métodos y crea una instancia de hello [ShardLocation](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation.shardlocation.aspx#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardLocation.) clase. En el ejemplo de Hola a continuación, una base de datos denominada **sample_shard_2** y todos los objetos de esquema necesarios en su interior se han creado el intervalo de toohold [300, 400).  
+### <a name="example--adding-a-shard-and-its-range-to-an-existing-shard-map"></a>Ejemplo: incorporación de una partición y su intervalo a una asignación de partición existente
+En este ejemplo se utilizan los métodos [TryGetShard](https://msdn.microsoft.com/library/azure/dn823929.aspx), [CreateShard](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.createshard.aspx) y [CreateRangeMapping](https://msdn.microsoft.com/library/azure/dn807221.aspx#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.RangeShardMap`1.CreateRangeMapping\(Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.RangeMappingCreationInfo{`0}\)), y se crea una instancia de la clase [ShardLocation](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardlocation.shardlocation.aspx#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardLocation.). En el ejemplo siguiente, se ha creado una base de datos denominada **sample_shard_2** y todos los objetos de esquema necesarios en su interior para contener el intervalo [300, 400).  
 
     // sm is a RangeShardMap object.
-    // Add a new shard toohold hello range being added. 
+    // Add a new shard to hold the range being added. 
     Shard shard2 = null; 
 
     if (!sm.TryGetShard(new ShardLocation(shardServer, "sample_shard_2"),out shard2)) 
@@ -39,21 +39,21 @@ Este ejemplo utiliza hello [TryGetShard](https://msdn.microsoft.com/library/azur
         shard2 = sm.CreateShard(new ShardLocation(shardServer, "sample_shard_2"));  
     } 
 
-    // Create hello mapping and associate it with hello new shard 
+    // Create the mapping and associate it with the new shard 
     sm.CreateRangeMapping(new RangeMappingCreationInfo<long> 
                             (new Range<long>(300, 400), shard2, MappingStatus.Online)); 
 
 
-Como alternativa, puede usar Powershell toocreate un nuevo administrador de mapa de particiones. Hay un ejemplo disponible [aquí](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
+Como alternativa, puede usar Powershell para crear un nuevo Administrador de mapas de particiones. Hay un ejemplo disponible [aquí](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
 
-## <a name="tooadd-a-shard-for-an-empty-part-of-an-existing-range"></a>tooadd una partición para una parte vacía de un rango existente
-En algunas circunstancias, se pueden tener ya asignado a una partición de tooa de intervalo y parcialmente se rellena con datos, pero ahora desea que diferentes particiones de datos de las próximas toobe tooa dirigido. Por ejemplo, se particiones por día de intervalo y ya se ha asignado la partición de tooa 50 días, pero en el día 24, desea tooland de datos en el futuro en una partición diferente. base de datos elástica Hello [herramienta Dividir-combinar](sql-database-elastic-scale-overview-split-and-merge.md) pueden realizar esta operación, pero si el movimiento de datos no es necesario (por ejemplo, datos de duración de Hola de días [25, 50), es decir, día 25 inclusivo too50 exclusivo, aún no existe) se pueden realizar Este por completo mediante Hola directamente a las API de administración de mapa de particiones.
+## <a name="to-add-a-shard-for-an-empty-part-of-an-existing-range"></a>Para agregar una partición para un área vacía de un intervalo existente
+En algunas circunstancias, tiene ya asignado un intervalo a una partición y se rellena parcialmente con datos, pero ahora desea que los próximos datos se dirijan a una partición diferente. Por ejemplo, realiza particiones por intervalo de días y ya ha asignado 50 días a una partición, pero en el día 24 decide que desea que los datos futuros lleguen a una partición diferente. La [herramienta de división y combinación](sql-database-elastic-scale-overview-split-and-merge.md) de la base de datos elástica puede realizar esta operación, pero si el movimiento de datos no es necesario (por ejemplo, los datos para el intervalo de días [25, 50), es decir, desde el día 25 inclusive hasta el 50 exclusive, aún no existen) es posible realizar esta operación por completo utilizando directamente las API de administración de mapas de particiones.
 
-### <a name="example-splitting-a-range-and-assigning-hello-empty-portion-tooa-newly-added-shard"></a>Ejemplo: dividir un intervalo y asignar Hola vacía partición recién agregado de parte tooa
+### <a name="example-splitting-a-range-and-assigning-the-empty-portion-to-a-newly-added-shard"></a>Ejemplo: división de un intervalo y asignación de la parte vacía a una partición recién agregada
 Se ha creado una base de datos denominada "sample_shard_2" y todos los objetos de esquema necesarios en su interior.  
 
     // sm is a RangeShardMap object.
-    // Add a new shard toohold hello range we will move 
+    // Add a new shard to hold the range we will move 
     Shard shard2 = null; 
 
     if (!sm.TryGetShard(new ShardLocation(shardServer, "sample_shard_2"),out shard2)) 
@@ -62,19 +62,19 @@ Se ha creado una base de datos denominada "sample_shard_2" y todos los objetos d
         shard2 = sm.CreateShard(new ShardLocation(shardServer, "sample_shard_2"));  
     } 
 
-    // Split hello Range holding Key 25 
+    // Split the Range holding Key 25 
 
     sm.SplitMapping(sm.GetMappingForKey(25), 25); 
 
-    // Map new range holding [25-50) toodifferent shard: 
+    // Map new range holding [25-50) to different shard: 
     // first take existing mapping offline 
     sm.MarkMappingOffline(sm.GetMappingForKey(25)); 
-    // now map while offline tooa different shard and take online 
+    // now map while offline to a different shard and take online 
     RangeMappingUpdate upd = new RangeMappingUpdate(); 
     upd.Shard = shard2; 
     sm.MarkMappingOnline(sm.UpdateMapping(sm.GetMappingForKey(25), upd)); 
 
-**Importante**: Use esta técnica solo si está seguro de que Hola intervalo de asignación de hello actualizado está vacío.  métodos de Hello anteriores no comprobar los datos para que se va a mover el intervalo de hello, por lo que es mejor tooinclude comprueba en el código.  Si existen filas en que se mueven de intervalo de hello, distribución de datos reales de hello no coincidirán mapa de particiones actualizada de Hola. Hola de uso [herramienta Dividir-combinar](sql-database-elastic-scale-overview-split-and-merge.md) tooperform Hola operación en su lugar en estos casos.  
+**Importante**: Use esta técnica solo si está seguro de que el intervalo para la asignación actualizada está vacío.  Los métodos anteriores no comprueban los datos para el intervalo que se va a mover, por lo que es mejor incluir comprobaciones en el código.  Si existen filas en el intervalo que se va a mover, la distribución de datos real no coincidirá con el mapa de particiones actualizado. Use la [herramienta de división y combinación](sql-database-elastic-scale-overview-split-and-merge.md) para realizar la operación en su lugar en estos casos.  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

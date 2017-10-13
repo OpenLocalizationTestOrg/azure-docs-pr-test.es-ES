@@ -1,6 +1,6 @@
 ---
-title: "Conector de aaaDropbox en las aplicaciones lógicas de Azure | Documentos de Microsoft"
-description: "Cree aplicaciones lógicas con el Servicio de aplicaciones de Azure. Conectar tooDropbox toomanage los archivos. En Dropbox, puede realizar diversas acciones, como cargar, actualizar, obtener y eliminar archivos."
+title: Conector de Dropbox en Azure Logic Apps | Microsoft Docs
+description: "Cree aplicaciones lógicas con el Servicio de aplicaciones de Azure. Conéctese a Dropbox para administrar los archivos. En Dropbox, puede realizar diversas acciones, como cargar, actualizar, obtener y eliminar archivos."
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: MandiOhlinger
@@ -15,54 +15,54 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/15/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: 1f307477836104c0bc0008341604a1400860987f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0d09580c60fd620811b539147439d0922839fe7e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="get-started-with-hello-dropbox-connector"></a>Empezar a trabajar con el conector de Dropbox Hola
-Conectar tooDropbox toomanage los archivos. En Dropbox, puede realizar diversas acciones, como cargar, actualizar, obtener y eliminar archivos.
+# <a name="get-started-with-the-dropbox-connector"></a>Introducción al conector de Dropbox
+Conéctese a Dropbox para administrar los archivos. En Dropbox, puede realizar diversas acciones, como cargar, actualizar, obtener y eliminar archivos.
 
-toouse [cualquier conector](apis-list.md), primero debe toocreate una aplicación lógica. Puede empezar [creando una aplicación lógica ahora](../logic-apps/logic-apps-create-a-logic-app.md).
+Para poder usar [un conector](apis-list.md), primero debe crear una aplicación lógica. Puede empezar [creando una aplicación lógica ahora](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="connect-toodropbox"></a>Conectar tooDropbox
-Antes de que la aplicación lógica puede tener acceso a cualquier servicio, primero debe toocreate una *conexión* toohello servicio. Una conexión proporciona conectividad entre una aplicación lógica y otro servicio. Por ejemplo, en orden tooconnect tooDropbox, primero necesita una lista desplegable *conexión*. toocreate una conexión, tendría las credenciales de hello tooprovide que suele usar el servicio de hello tooaccess a que desea tooconnect. Por lo tanto, en el ejemplo de Hola a Dropbox, necesitaría Hola credenciales tooyour cuenta de Dropbox en orden toocreate Hola conexión tooDropbox. [Más información sobre las conexiones]()
+## <a name="connect-to-dropbox"></a>Conexión con Dropbox
+Para que la aplicación lógica pueda acceder a un servicio, primero debe crear una *conexión* con dicho servicio. Una conexión proporciona conectividad entre una aplicación lógica y otro servicio. Por ejemplo, para poder conectarse a Dropbox, primero necesita crear una *conexión* a Dropbox. Para ello, tendrá que especificar las credenciales que usa habitualmente para acceder al servicio al que desea conectarse. Por tanto, en el ejemplo de Dropbox, deberá escribir las credenciales de la cuenta de Dropbox para crear la conexión con este servicio. [Más información sobre las conexiones]()
 
-### <a name="create-a-connection-toodropbox"></a>Crear una conexión tooDropbox
-> [!INCLUDE [Steps toocreate a connection tooDropbox](../../includes/connectors-create-api-dropbox.md)]
+### <a name="create-a-connection-to-dropbox"></a>Creación de una conexión con Dropbox
+> [!INCLUDE [Steps to create a connection to Dropbox](../../includes/connectors-create-api-dropbox.md)]
 > 
 > 
 
 ## <a name="use-a-dropbox-trigger"></a>Uso de un desencadenador de Dropbox
-Un desencadenador es un evento que puede ser utilizados toostart de flujo de trabajo Hola definido en una aplicación de la lógica. [Más información sobre los desencadenadores](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
+Un desencadenador es un evento que se puede utilizar para iniciar el flujo de trabajo definido en una aplicación lógica. [Más información sobre los desencadenadores](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
 
-En este ejemplo, usaremos hello **cuando se crea un archivo** desencadenador. Cuando se produce este desencadenador, llamaremos a hello **obtener el contenido del archivo con la ruta de acceso** acción Dropbox. 
+En este ejemplo, vamos a usar el desencadenador **When a file is created (Cuando se crea un archivo)**. Cuando se active este desencadenador, se invocará la acción de Dropbox **Get file content using path (Obtener contenido del archivo mediante la ruta de acceso)**. 
 
-1. Escriba *dropbox* en el cuadro de búsqueda de hello en el Diseñador de aplicaciones de la lógica de hello, a continuación, seleccione hello **Dropbox - cuando se crea un archivo** desencadenador.      
+1. Escriba *dropbox* en el cuadro de búsqueda del diseñador de Logic Apps y seleccione el desencadenador **Dropbox - When a file is created (Dropbox - Cuando se cree un archivo)**.      
    ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-trigger.PNG)  
-2. Seleccione la carpeta de hello en el que desea tootrack creación del archivo. Seleccione... (identificado en el cuadro de hello rojo) y examinar las carpetas toohello desea tooselect de desencadenador de hello de la entrada.  
+2. Seleccione la carpeta en la que se va a supervisar la creación de archivos. Seleccione la opción … (marcada con un cuadro rojo) y busque la carpeta que quiere seleccionar para la entrada del desencadenador.  
    ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-trigger-2.PNG)  
 
 ## <a name="use-a-dropbox-action"></a>Uso de una acción de Dropbox
-Una acción es una operación que se llevan a cabo definidos en una aplicación de la lógica de flujo de trabajo de Hola. [Más información acerca de las acciones](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
+Una acción es una operación que se lleva a cabo mediante el flujo de trabajo definido en una aplicación lógica. [Más información acerca de las acciones](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
 
-Ahora que hello desencadenador se ha agregado, siga estas tooadd pasos una acción que se obtendrá el contenido del archivo nuevo de Hola.
+Ahora que se ha agregado el desencadenador, siga estos pasos para incorporar una acción que obtenga el contenido del nuevo archivo.
 
-1. Seleccione **+ nuevo paso** acción de hello tooadd le gustaría tootake cuando se crea un nuevo archivo.  
+1. Seleccione **+ Nuevo paso** para agregar la acción que quiere que se ejecute cuando se cree un archivo.  
    ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action.PNG)
-2. Seleccione **Add an action**(Agregar una acción). Este cuadro de búsqueda de hello abre donde puede buscar cualquier acción desea que tootake.  
+2. Seleccione **Add an action**(Agregar una acción). Se abrirá el cuadro de búsqueda en el que podrá buscar cualquier acción que quiera realizar.  
    ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-2.PNG)
-3. Escriba *dropbox* toosearch para acciones relacionadas tooDropbox.  
-4. Seleccione **Dropbox - obtener contenido del archivo con la ruta de acceso** como Hola tootake acción cuando se crea un nuevo archivo en hello seleccionado la carpeta de Dropbox. se abre el bloque de control de acción de Hola. También será solicitada tooauthorize su tooaccess de aplicación lógica su Dropbox cuenta si aún no lo hecho previamente.  
+3. Escriba *dropbox* para buscar las acciones relacionadas con Dropbox.  
+4. Seleccione **Dropbox - Get file content using path (Dropbox: obtener el contenido del archivo mediante la ruta de acceso)**. Esta será la acción que se ejecutará cuando se cree un archivo en la carpeta de Dropbox seleccionada. Se abre el bloque de control de acción. Si no lo ha hecho previamente, se le pedirá que autorice a la aplicación lógica para que pueda acceder a la cuenta de Dropbox.  
    ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-3.PNG)  
-5. Seleccione... (situado en el lado derecho de Hola de hello **ruta de acceso del archivo** control) y busque la ruta de acceso del archivo toohello le gustaría toouse. O bien, use hello **ruta de acceso de archivo** toospeed símbolo (token) de la creación de aplicación lógica.  
+5. Seleccione la opción … (la encontrará a la derecha del control **Ruta de archivo**) y busque la ruta de archivo que quiere usar. También puede usar el token de la **ruta de archivo** para crear más rápido la aplicación lógica.  
    ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-4.PNG)  
-6. Guarde su trabajo y crear un nuevo archivo en Dropbox tooactivate el flujo de trabajo.  
+6. Guarde el trabajo y cree un nuevo archivo en Dropbox para activar el flujo de trabajo.  
 
 ## <a name="connector-specific-details"></a>Detalles específicos del conector
 
-Ver los desencadenadores y las acciones definidas en swagger hello y también los límites de hello [detalles del conector](/connectors/dropbox/).
+Vea los desencadenadores y las acciones definidos en Swagger y vea también todos los límites en los [detalles del conector](/connectors/dropbox/).
 
 ## <a name="more-connectors"></a>Más conectores
-Volver atrás toohello [lista de las API](apis-list.md).
+Volver a la [lista de API](apis-list.md).

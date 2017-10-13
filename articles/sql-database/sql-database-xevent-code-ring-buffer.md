@@ -1,6 +1,6 @@
 ---
-title: "aaaXEvent código de búfer en anillo para la base de datos SQL | Documentos de Microsoft"
-description: "Proporciona un ejemplo de código de Transact-SQL que se realiza la forma más fácil y rápido mediante el uso del destino de búfer de anillo de hello, en la base de datos de SQL Azure."
+title: "Código de búfer en anillo de XEvent para SQL Database | Microsoft Docs"
+description: "Proporciona un ejemplo de código de Transact-SQL más fácil y rápido mediante el uso del destino de Búfer de anillo, en Base de datos SQL de Azure."
 services: sql-database
 documentationcenter: 
 author: MightyPen
@@ -16,33 +16,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: genemi
-ms.openlocfilehash: 21df748d9999d6837d2b5bbe4a3f47fb351b4633
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 6fbefe151901ac3b15d93712422878fc4d6206f1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Código de destino de búfer de anillo para eventos extendidos en Base de datos SQL
 
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
-Un ejemplo de código completo que desea para hello más fácil forma rápida toocapture y notificar información para un evento extendido durante una prueba. destino de más fácil de Hola para datos de eventos extendidos es hello [destino de búfer de anillo](http://msdn.microsoft.com/library/ff878182.aspx).
+Desea tener un ejemplo de código completo de la manera más rápida y fácil para capturar y notificar información de un evento extendido durante una prueba. El destino más fácil para los datos de eventos extendidos es el [destino de búfer de anillo](http://msdn.microsoft.com/library/ff878182.aspx).
 
 En este tema, se presenta un ejemplo de código de Transact-SQL que:
 
-1. Crea una tabla con datos toodemonstrate con.
+1. Crea una tabla con datos con los cuales demostrarse.
 2. Crea una sesión para un evento extendido existente, es decir, **sqlserver.sql_statement_starting**.
    
-   * evento Hello es limitado tooSQL instrucciones que contienen una determinada cadena de actualización: **instrucción LIKE '% actualización tabEmployee %'**.
-   * Elige la salida de hello toosend hello tooa del destino de evento de tipo de búfer de anillo, a saber **package0.ring_buffer**.
-3. Inicia la sesión de eventos de Hola.
+   * El evento se limita a las instrucciones SQL que contienen una cadena Update determinada: **statement LIKE '%UPDATE tabEmployee%'**.
+   * Elige enviar la salida del evento a un destino de tipo búfer en anillo, es decir, **package0.ring_buffer**.
+3. Inicia la sesión de eventos.
 4. Emite un par de instrucciones SQL UPDATE simple.
-5. Emite una instrucción SELECT de SQL, tooretrieve salida de eventos de hello búfer de anillo.
+5. Emite una instrucción SQL SELECT para recuperar la salida de evento del búfer en anillo.
    
    * Se unen **sys.dm_xe_database_session_targets** y otras vistas de administración dinámica (DMV).
-6. Detiene la sesión de eventos de Hola.
-7. Quita Hola destino de búfer en anillo, toorelease sus recursos.
-8. Quita la sesión de eventos de Hola y tabla de demostración de hello.
+6. Detiene la sesión de eventos.
+7. Anula el destino de Búfer de anillo para liberar sus recursos.
+8. Anula la sesión de eventos y la tabla de demostración.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
@@ -51,14 +51,14 @@ En este tema, se presenta un ejemplo de código de Transact-SQL que:
   
   * De manera opcional, puede [crear una base de datos de **AdventureWorksLT** de demostración](sql-database-get-started.md) en cuestión de minutos.
 * SQL Server Management Studio (ssms.exe), idealmente la versión de actualización mensual más reciente. 
-  Puede descargar hello ssms.exe más reciente desde:
+  Puede descargar la versión más reciente de ssms.exe desde:
   
   * El tema titulado [Descarga de SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx).
-  * [Una descarga de toohello vínculo directo.](http://go.microsoft.com/fwlink/?linkid=616025)
+  * [Un vínculo directo a la descarga.](http://go.microsoft.com/fwlink/?linkid=616025)
 
 ## <a name="code-sample"></a>Código de ejemplo
 
-Con muy pequeñas modificaciones, hello siguiente ejemplo de código de búfer de anillo puede realizarse en la base de datos de SQL Azure o Microsoft SQL Server. diferencia de Hello es la presencia de hello del nodo de hello '_Base de datos' en nombre de Hola de algunas vistas de administración dinámica (DMV), utilizado en la cláusula FROM de hello en el paso 5. Por ejemplo:
+Con modificaciones muy pequeñas, el siguiente ejemplo de código de Búfer de anillo se puede ejecutar en Base de datos SQL de Azure o en Microsoft SQL Server. La diferencia es la presencia del nodo "_database" en el nombre de algunas vistas de administración dinámica (DMV), como se usa en la cláusula FROM del paso 5. Por ejemplo:
 
 * sys.dm_xe**_database**_session_targets
 * sys.dm_xe_session_targets
@@ -220,13 +220,13 @@ GO
 
 ## <a name="ring-buffer-contents"></a>Contenido del Búfer de anillo
 
-Se utiliza el ejemplo de código de hello toorun ssms.exe.
+Se usa ssms.exe para ejecutar el ejemplo de código.
 
-resultados de hello tooview, se hace clic en celda hello en el encabezado de columna de hello **target_data_XML**.
+Para ver los resultados, hemos hecho clic en la celda bajo el encabezado de columna **target_data_XML**.
 
-A continuación, en panel de resultados de Hola se hace clic en celda hello en el encabezado de columna de hello **target_data_XML**. Haga clic en crear otra pestaña de archivo en ssms.exe en qué Hola se mostró el contenido de la celda de resultado de hello, como XML.
+Luego, en el panel de resultados, hemos hecho clic en la celda bajo el encabezado de columna **target_data_XML**. Al hace este clic, se creó otra pestaña de archivo en ssms.exe donde se mostró el contenido de la celda de resultado, como XML.
 
-se muestra el resultado de Hello en hello detrás bloque. Parece largo, pero son solo dos elementos **<event>** .
+El resultado se muestra en el bloque siguiente. Parece largo, pero son solo dos elementos **<event>** .
 
 &nbsp;
 
@@ -320,7 +320,7 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM tabEmployee;
 
 #### <a name="release-resources-held-by-your-ring-buffer"></a>Liberar los recursos contenidos en el Búfer de anillo
 
-Cuando haya terminado con el búfer de anillo, puede quitarlo y liberar sus recursos emitir un **ALTER** que Hola siguiente:
+Cuando termine de usar el búfer en anillo, puede quitarlo y liberar sus recursos. Para ello, emita un comando **ALTER** como el siguiente:
 
 ```sql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
@@ -330,7 +330,7 @@ GO
 ```
 
 
-definición de Hello de la sesión de eventos se actualiza, pero no se quitan. Más adelante, puede agregar otra instancia de la sesión de eventos de tooyour de búfer en anillo de hello:
+La definición de la sesión de eventos está actualizada, pero no se quita. Más adelante, puede agregar otra instancia del Búfer de anillo a la sesión de eventos:
 
 ```sql
 ALTER EVENT SESSION eventsession_gm_azuresqldb51
@@ -345,11 +345,11 @@ ALTER EVENT SESSION eventsession_gm_azuresqldb51
 
 ## <a name="more-information"></a>Más información
 
-Hola tema principal para eventos extendidos en base de datos de SQL Azure es:
+El tema principal de los eventos extendidos en Base de datos SQL de Azure es:
 
 * [Consideraciones de eventos extendidos en Base de datos SQL](sql-database-xevent-db-diff-from-svr.md), que compara algunos aspectos de los eventos extendidos que son distintos entre Base de datos SQL de Azure y Microsoft SQL Server.
 
-Otros temas de ejemplo de código para eventos extendidos están disponibles en los siguientes vínculos de Hola. Sin embargo, debe comprobar con regularidad cualquier toosee ejemplo si el ejemplo hello tiene como destino de Microsoft SQL Server frente a la base de datos de SQL Azure. A continuación, puede decidir si cambios menores son ejemplo de Hola a toorun necesarios.
+Hay otros temas de ejemplo de código para eventos extendidos disponibles en los siguientes vínculos. De todas formas, debe comprobar siempre cualquier ejemplo para ver si está destinado a Microsoft SQL Server frente a Base de datos SQL de Azure. A continuación, puede decidir si es necesario algún pequeño cambio para ejecutar el ejemplo.
 
 * Ejemplo de código para Base de datos SQL de Azure: [Código de destino del archivo de evento para eventos extendidos en Base de datos SQL](sql-database-xevent-code-event-file.md)
 
@@ -357,5 +357,5 @@ Otros temas de ejemplo de código para eventos extendidos están disponibles en 
 ('lock_acquired' event.)
 
 - Code sample for SQL Server: [Determine Which Queries Are Holding Locks](http://msdn.microsoft.com/library/bb677357.aspx)
-- Code sample for SQL Server: [Find hello Objects That Have hello Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
+- Code sample for SQL Server: [Find the Objects That Have the Most Locks Taken on Them](http://msdn.microsoft.com/library/bb630355.aspx)
 -->

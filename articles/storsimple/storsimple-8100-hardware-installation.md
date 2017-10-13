@@ -1,6 +1,6 @@
 ---
-title: dispositivo de Microsoft Azure StorSimple 8100 aaaInstall | Documentos de Microsoft
-description: "Describe cómo toounpack, montaje en bastidor y cable del dispositivo de StorSimple 8100 antes de implementar y configurar el software de Hola."
+title: "Instalación del dispositivo Microsoft Azure StorSimple 8100 | Microsoft Docs"
+description: "Describe cómo desempaquetar, montar en bastidor y colocar los cables del dispositivo StorSimple 8100 antes de implementar y configurar el software."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,32 +14,32 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-ms.openlocfilehash: 76b94e57318b6c25dc3333ae73edc9e4752b7d1d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 102dffcd73f3d3b9362d7b2853faa060e9c645dd
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>Desempaquetar, montar en bastidor y colocar los cables del dispositivo StorSimple 8100.
 ## <a name="overview"></a>Información general
-Su Microsoft Azure StorSimple 8100 es un dispositivo de montaje en bastidor de una sola carcasa. Este tutorial le explica cómo toounpack y montaje en bastidor, cable Hola el hardware del dispositivo StorSimple 8100 antes de configurar e implementar el dispositivo StorSimple Hola.
+Su Microsoft Azure StorSimple 8100 es un dispositivo de montaje en bastidor de una sola carcasa. En este tutorial se explica cómo desempaquetar, montar en bastidor y conectar los cables del hardware del dispositivo StorSimple 8100 antes de configurar e implementar el dispositivo de StorSimple.
 
 ## <a name="unpack-your-storsimple-8100-device"></a>Desempaquete el dispositivo StorSimple 8100
-Hello pasos siguientes proporcionan claras y obtener instrucciones detalladas acerca de cómo toounpack el dispositivo de almacenamiento de StorSimple 8100. Este dispositivo se suministra en una única caja.
+En los pasos siguientes se proporcionan instrucciones claras y detalladas sobre cómo desempaquetar el dispositivo de almacenamiento StorSimple 8100. Este dispositivo se suministra en una única caja.
 
-### <a name="prepare-toounpack-your-device"></a>Preparar el dispositivo de toounpack
-Antes de desempaquetar el dispositivo, revise Hola siguiente información.
+### <a name="prepare-to-unpack-your-device"></a>Preparación para desempaquetar el dispositivo
+Antes de desempaquetar el dispositivo, revise la información siguiente.
 
-![Icono Advertencia](./media/storsimple-safety/IC740879.png)![icono de peso elevado](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png)**ADVERTENCIA**
+![Icono Advertencia](./media/storsimple-safety/IC740879.png)![icono de peso elevado](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **ADVERTENCIA**
 
-1. Asegúrese de que dispone de peso de Hola de toomanage disponible de dos personas del alojamiento de hello si se manipule de forma manual. Un alojamiento totalmente configurado puede pesar seguridad too32 kg (70 lbs).
-2. Cuadro de Hola se coloca en una superficie plana y nivelada.
+1. Asegúrese de que haya dos personas disponibles para administrar el peso del revestimiento de hardware si lo está manejando de forma manual. Un receptáculo totalmente montado puede pesar hasta 32 kg.
+2. Coloque la caja en una superficie plana y nivelada.
 
-A continuación, completar Hola siguiendo los pasos toounpack el dispositivo.
+A continuación, complete los pasos siguientes para desempaquetar el dispositivo.
 
-#### <a name="toounpack-your-device"></a>toounpack el dispositivo
-1. Inspeccionar cuadro hello y la espuma de embalaje de hello en busca de golpes, cortes, daños por agua o cualquier otro daño evidente. Si la caja de Hola o el embalaje está muy dañado, no abra cuadro Hola. Por favor, [póngase en contacto con Microsoft Support](storsimple-contact-microsoft-support.md) toohelp evaluar si el dispositivo de hello está en buenas condiciones de funcionamiento.
-2. Desempaquetar cuadro Hola. Hola siguiente imagen muestra la vista de hello desempaquetado del dispositivo StorSimple.
+#### <a name="to-unpack-your-device"></a>Para desempaquetar el dispositivo
+1. Compruebe si la caja y la espuma del embalaje presentan golpes, cortes, daños por agua o cualquier otro daño evidente. Si la caja o el embalaje están muy dañados, no abra la caja. [Póngase en contacto con el soporte técnico de Microsoft](storsimple-contact-microsoft-support.md) para ayudarle a determinar si el dispositivo está en buen estado.
+2. Desempaquete la caja. En la siguiente imagen se muestra el dispositivo StorSimple desempaquetado.
    
      ![Desempaquetar el dispositivo de almacenamiento](./media/storsimple-8100-hardware-installation/HCSUnpackyour2Udevice.png)
    
@@ -52,7 +52,7 @@ A continuación, completar Hola siguiendo los pasos toounpack el dispositivo.
    |   3 |Dispositivo |
    |   4 |Espuma superior |
    |   5 |Caja de accesorios |
-3. Después de desembalar la caja de hello, asegúrese de que dispone de:
+3. Después de desempaquetar la caja, asegúrese de que dispone de:
    
    * 1 único dispositivo contenedor
    * 2 cables de alimentación
@@ -64,62 +64,62 @@ A continuación, completar Hola siguiendo los pasos toounpack el dispositivo.
    * 1 kit de montaje en bastidor (2 rieles laterales con hardware de montaje)
    * Documentación de introducción
      
-     Si no recibió alguno de los elementos de hello mencionados anteriormente, [póngase en contacto con Microsoft Support](storsimple-contact-microsoft-support.md).
+     Si no recibió alguno de los elementos enumerados anteriormente, [póngase en contacto con el soporte técnico de Microsoft](storsimple-contact-microsoft-support.md).
 
-paso siguiente Hello es toorack montar el dispositivo.
+El paso siguiente es el montaje en bastidor del dispositivo.
 
 ## <a name="rack-mount-your-storsimple-8100-device"></a>Montaje en bastidor del dispositivo StorSimple 8100
-Siga hello tooinstall de pasos siguiente dispositivo de almacenamiento de StorSimple 8100 en un bastidor estándar de 19 pulgadas con puestos frontal y trasero. dispositivo de StorSimple 8100 Hello tiene un único alojamiento principal.
+Siga los pasos que aparecen a continuación para instalar el dispositivo de almacenamiento StorSimple 8100 en un bastidor de 19 pulgadas estándar con postes delanteros y traseros. El dispositivo StorSimple 8100 tiene un único alojamiento principal.
 
-instalación de Hello consta de varios pasos, cada uno de los cuales se explica en hello procedimientos siguientes.
+La instalación consta de varios pasos, cada uno de los cuales se explica en los procedimientos siguientes.
 
 > [!IMPORTANT]
 > Los dispositivos StorSimple deben estar montados en un bastidor para funcionar correctamente.
 > 
 > 
 
-### <a name="prepare-hello-site"></a>Preparar el sitio de Hola
-dispositivo de Hello debe instalarse en un bastidor estándar de 19 pulgadas con puestos frontal y trasero. Usar hello siguiendo el procedimiento tooprepare para la instalación del bastidor.
+### <a name="prepare-the-site"></a>Preparación de la ubicación
+El dispositivo debe instalarse en un bastidor estándar de 19 pulgadas con postes delanteros y traseros. Utilice el procedimiento siguiente para preparar la instalación en bastidor.
 
-#### <a name="tooprepare-hello-site-for-rack-installation"></a>sitio de hello tooprepare para la instalación del bastidor
-1. Asegúrese de que dicho dispositivo Hola se sitúa de forma segura en un trabajo plana, estable y nivelada expuesta (o similar).
-2. Compruebe que el sitio Hola donde piensa tooset seguridad tenga corriente Alterna estándar desde una fuente independiente o proporcionar de una unidad de distribución de energía (PDU) de bastidor con un sistema de alimentación ininterrumpida (SAI o UPS).
-3. Asegúrese de que esa ranura uno 2U está disponible en bastidor de hello en el que piensa que el dispositivo de hello toomount.
+#### <a name="to-prepare-the-site-for-rack-installation"></a>Para preparar el sitio para la instalación en bastidor
+1. Asegúrese de colocar el dispositivo de forma segura sobre una superficie de trabajo plana, estable y nivelada (o similar).
+2. Compruebe que la ubicación en la que desea efectuar la instalación dispone de alimentación de CA estándar de una fuente independiente o una unidad de distribución de energía (PDU) en bastidor con una fuente de alimentación ininterrumpida (UPS).
+3. Asegúrese de que haya disponible una ranura 2U en el bastidor en el que desea montar el dispositivo.
 
-![Icono Advertencia](./media/storsimple-safety/IC740879.png)![icono de peso elevado](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png)**ADVERTENCIA**
+![Icono Advertencia](./media/storsimple-safety/IC740879.png)![icono de peso elevado](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **ADVERTENCIA**
 
-Asegúrese de que dispone de peso de dos personas disponibles toomanage Hola si se manipule el programa de instalación de dispositivo de Hola de forma manual. Un alojamiento totalmente configurado puede pesar seguridad too32 kg (70 lbs).
+Asegúrese de que haya dos personas disponibles para administrar el peso del dispositivo si está instalando el dispositivo de forma manual. Un receptáculo totalmente montado puede pesar hasta 32 kg.
 
 ### <a name="rack-prerequisites"></a>Requisitos previos del bastidor
-alojamiento 8100 Hola está diseñado para la instalación en un bastidor de 19 pulgadas estándar CAB con:
+El receptáculo 8100 está diseñado para instalarse en un armario de bastidor de 19 pulgadas estándar con:
 
-* Profundidad mínima de 27,84 pulgadas de bastidor registrar toopost.
-* Peso máximo de 32 kg para el dispositivo de Hola
+* Una profundidad mínima de 27,84 pulgadas de poste a poste del bastidor.
+* Peso máximo de 32 kg para el dispositivo
 * Contrapresión máxima de 5 pascales (medidor de agua de 0,5 mm).
 
 ### <a name="rack-mounting-rail-kit"></a>Kit de guías de montaje en bastidor
-Se proporciona un conjunto de raíles de montaje para su uso con el gabinete de bastidor de 19 pulgadas de Hola. raíles de Hello han sido probado peso máximo del alojamiento de toohandle Hola. Estos raíles también permitirán la instalación de varios alojamientos sin perder espacio dentro Hola bastidor.
+Se proporciona un conjunto de guías de montaje para utilizar con el armario de bastidor de 19 pulgadas. Las guías se han probado para soportar el peso máximo del receptáculo. Estas guías también permitirán la instalación de varios receptáculos sin pérdida de espacio en el bastidor.
 
-#### <a name="tooinstall-hello-device-on-hello-rails"></a>dispositivo de hello tooinstall sobre raíles Hola
-1. Realice este paso únicamente si las guías internas no están instaladas en el dispositivo. Por lo general, raíles interna de Hola se instalan en fábrica Hola. Si raíles no están instalados, instale los lados de hello deslizantes izquierda y derecha raíl toohello del chasis del alojamiento de Hola. Estas se instalan mediante seis tornillos métricos en cada lado. toohelp con orientación, ferroviario Hola diapositivas están marcadas **LH – Front** y **RH – Front**, y el final de Hola que se sujeta hacia la parte trasera de hello del alojamiento de hello más tiene un extremo cónico.<br/>
+#### <a name="to-install-the-device-on-the-rails"></a>Para instalar el dispositivo en las guías
+1. Realice este paso únicamente si las guías internas no están instaladas en el dispositivo. Normalmente, las guías internas vienen instaladas de fábrica. En caso contrario, instale las guías del lado izquierdo y derecho en los laterales del chasis del receptáculo. Estas se instalan mediante seis tornillos métricos en cada lado. Para ayudarle con la orientación, las guías disponen de las marcas **LH – Front** y **RH – Front**, y el extremo que se fija en la parte trasera del receptáculo tiene un extremo ahusado.<br/>
    
-    ![Adjuntar carriles deslizantes tooenclosure chasis](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
+    ![Fijación de las guías al chasis del receptáculo](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoEnclosureChassis.png)
 
-    **Adjuntar raíl interna diapositivas toohello lados del alojamiento de Hola**
+    **Fijación de guías internas a los laterales del receptáculo**
    
     Etiqueta | Descripción
     ----- | -----------
     1     | Tornillos de cabeza de botón M 3 x 4
     2     | Guías de chasis
 
-2. Adjuntar Hola exterior izquierdo y columna derecha externa ensamblados toohello rack miembros verticales del gabinete. Hola soportes están marcados con **LH**, **RH**, y **esta cara hacia arriba** tooguide le guían a través de hello corregir orientación.
-3. Localice los pasadores de raíl de hello en hello frontal y trasera del ensamblado del raíl Hola. Extender Hola raíl toofit entre cada envío de bastidor de Hola y PIN de Hola de inserción en la parte delantera de Hola y la parte trasera del bastidor exponer a miembro vertical vulnerabilidades. Asegúrese de que el ensamblado del raíl Hola está nivelado.
-4. Utilice dos Hola proporciona tornillos métricos toosecure Hola raíl ensamblado toohello miembros verticales del bastidor. Use un tornillo en la parte frontal de hello y otro en la parte trasera de Hola.
-5. Repita estos pasos para hello otro ensamblado del raíl.<br/>
+2. Instale los ensamblajes de las guías del lado izquierdo y derecho exteriores en los miembros verticales del armario del bastidor. Los soportes presentan las marcas **LH**, **RH** y **This side up** para guiarle en su correcta orientación.
+3. Busque los pasadores de la guía en la parte frontal y trasera del soporte de la guía. Extienda la guía para ajustarla entre los postes del bastidor e inserte los pasadores en los orificios del miembro vertical del poste del bastidor delantero y trasero. Asegúrese de que el soporte de la guía esté nivelado.
+4. Use dos de los tornillos métricos suministrados métricos para fijar el soporte de la guía en los miembros verticales del bastidor. Utilice un tornillo en la parte frontal y otro en la parte posterior.
+5. Repita estos pasos con el otro soporte de la guía.<br/>
    
-     ![Adjuntar carriles deslizantes toorack cab](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoRackCabinet.png)
+     ![Fijación de las guías al armario del chasis](./media/storsimple-8100-hardware-installation/HCSAttachingRailSlidestoRackCabinet.png)
    
-    **Adjuntar raíl externa ensamblados toohello rack**
+    **Fijación de soportes de guía exteriores en el bastidor**
    
    | Etiqueta | Descripción |
    | --- | --- |
@@ -129,70 +129,70 @@ Se proporciona un conjunto de raíles de montaje para su uso con el gabinete de 
    |   4 |Tornillo de fijación |
    |   5 |Pasadores de ubicación traseros de la guía izquierda |
 
-### <a name="mounting-hello-device-in-hello-rack"></a>Montar el dispositivo de hello en bastidor de Hola
-Con los raíles del bastidor de Hola que acaba de instalar, realizar Hola siguiente dispositivo de pasos toomount hello en bastidor Hola.
+### <a name="mounting-the-device-in-the-rack"></a>Montaje del dispositivo en el bastidor
+Con las guías de bastidor que acaba de instalar, realice los pasos siguientes para montar el dispositivo en el bastidor.
 
-#### <a name="toomount-hello-device"></a>dispositivo de hello toomount
-1. Con un Ayudante, levante el alojamiento de Hola y alinéelo con los raíles del bastidor Hola.
-2. Inserte con cuidado el dispositivo de hello en los raíles de hello y, a continuación, insertar dispositivo Hola completamente en bastidor Hola cab.<br/>
+#### <a name="to-mount-the-device"></a>Para montar el dispositivo
+1. Con la ayuda de otra persona, levante el receptáculo y alinéelo con las guías del bastidor.
+2. Inserte cuidadosamente el dispositivo en las guías y, a continuación, empuje el dispositivo completamente en el armario del bastidor.<br/>
    
-    ![Insertando dispositivo en bastidor Hola](./media/storsimple-8100-hardware-installation/HCSInsertingDeviceintheRack.png)
+    ![Inserción del dispositivo en el bastidor](./media/storsimple-8100-hardware-installation/HCSInsertingDeviceintheRack.png)
    
-    **Montar el dispositivo de hello en bastidor de Hola**
-3. Quitar Hola izquierda y topes de aletas frontal derecho extrayendo los límites de hello libres. topes de aletas Hola simplemente acoplados a pestañas Hola.
-4. Asegure el alojamiento de hello en bastidor hello mediante la instalación de un tornillo de cabeza Phillips proporcionado a través de cada brida, izquierda y derecha.
-5. Instale los topes de bridas de hello presionándolos en su posición y ajustándolos en su lugar.<br/>
+    **Montaje del dispositivo en el bastidor**
+3. Quite los topes de las bridas delantera derecha e izquierda extrayendo los topes. Los topes de las bridas simplemente encajan en las bridas.
+4. Fije el receptáculo en el bastidor mediante la instalación de un tornillo de cabeza compatible con un tornillo de cabeza Phillips proporcionado a través de cada brida, izquierda y derecha.
+5. Presione los topes de las bridas en su posición para ajustarlos.<br/>
    
      ![Instalación de los topes de las bridas](./media/storsimple-8100-hardware-installation/HCSInstallingFlangeCaps.png)
    
-    **Instalando topes de aletas Hola**
+    **Instalación de los topes de las bridas**
    
    | Etiqueta | Descripción |
    | --- | --- |
    |   1 |Tornillo de fijación del receptáculo |
 
-paso siguiente Hello es toocable del dispositivo para alimentación, red y acceso serie.
+El siguiente paso es la colocación de los cables de alimentación, red y acceso de serie del dispositivo.
 
 ## <a name="cable-your-storsimple-8100-device"></a>Instalación de cables del dispositivo StorSimple 8100
-Hello procedimientos siguientes explican cómo toocable el dispositivo StorSimple 8100 para alimentación, red y conexiones en serie.
+En los siguientes procedimientos se explica cómo pasar los cables del dispositivo StorSimple 8100 de alimentación, red y conexiones en serie.
 
 ### <a name="prerequisites"></a>Requisitos previos
-Antes de empezar Hola cableado del dispositivo, necesitará:
+Antes de comenzar a pasar los cables del dispositivo, necesitará:
 
 * Desempaquetar por completo el dispositivo de almacenamiento y montar en bastidor.
 * 2 cables de alimentación suministrados con el dispositivo
-* Acceso too2 regletas de alimentación (recomendado).
+* Acceso a 2 unidades de distribución de energía (recomendado).
 * Cables de red
 * Cables serie suministrados
-* Convertidor serie USB con el controlador apropiado de hello instalado en su PC (si es necesario)
+* Convertidor USB serie con el controlador apropiado instalado en su equipo (si es necesario)
 * Se proporcionan 4 adaptadores QSFP a SFP+ para su uso con interfaces de red de 10 GbE.
-* [Hardware compatible con interfaces de red de hello 10 GbE en el dispositivo StorSimple](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
+* [Hardware compatible para interfaces de red de 10 GbE en el dispositivo StorSimple](storsimple-supported-hardware-for-10-gbe-network-interfaces.md)
 
 ### <a name="power-cabling"></a>Cables de alimentación
-El dispositivo incluye módulos de alimentación y de refrigeración (PCM) redundantes. Ambos PCM debe estar instalado y conectado disponibilidad alta de toodifferent power orígenes tooensure.
+El dispositivo incluye módulos de alimentación y de refrigeración (PCM) redundantes. Ambos PCM deben estar instalados y conectados a diferentes fuentes de alimentación para garantizar una alta disponibilidad.
 
-Realizar Hola siguiendo los pasos toocable el dispositivo para alimentación.
+Realice los pasos siguientes para pasar los cables de alimentación del dispositivo.
 
 [!INCLUDE [storsimple-cable-8100-for-power](../../includes/storsimple-cable-8100-for-power.md)]
 
 ### <a name="network-cabling"></a>Cables de red
-El dispositivo es una configuración activo-espera: en un momento dado, un módulo de controlador está activo y procesa todas las operaciones de disco y red mientras Hola otro módulo de controlador está en modo de espera. Si se produce un error en un controlador, controlador en espera de Hola se activa inmediatamente y continúa todas las operaciones de disco y redes de Hola.
+El dispositivo es una configuración de dispositivo activo/en espera: en un momento dado, un módulo de controlador está activo y procesando todas las operaciones de disco y red mientras el otro módulo del controlador está en espera. Si se produce un error en un controlador, el controlador en modo de espera se activa inmediatamente y continúa todas las operaciones de discos y de red.
 
-toosupport esta conmutación por error de controlador redundante, necesita toocable el dispositivo de red como se describe en hello pasos.
+Para admitir esta conmutación por error de controlador redundante, necesitará pasar los cables de red del dispositivo del modo descrito en los pasos siguientes.
 
-#### <a name="toocable-for-network-connection"></a>toocable para conexión de red
-1. El dispositivo tiene seis interfaces de red en cada controlador: cuatro puertos Ethernet de 1 Gbps y dos de 10 Gbps. Identificar Hola datos distintos puertos en hello backplane de su dispositivo.
+#### <a name="to-cable-for-network-connection"></a>Colocación de cables de conexión de red
+1. El dispositivo tiene seis interfaces de red en cada controlador: cuatro puertos Ethernet de 1 Gbps y dos de 10 Gbps. Identifique los distintos puertos de datos de la placa posterior del dispositivo.
    
     ![Panel posterior del dispositivo 8100](./media/storsimple-8100-hardware-installation/HCSBackplaneof2UDevicewithPortsLabeled.jpg)
    
-    **Parte posterior del dispositivo de hello con puertos de datos**
+    **Parte posterior del dispositivo en la que se muestran los puertos de datos**
    
    | Etiqueta | Description |
    | --- | --- |
    |   0,1,4,5 |Interfaces de red de 1 GbE |
    |   2,3 |Interfaces de red de 10 GbE |
    |   6 |Puertos serie |
-2. Vea Hola siguiente diagrama para el cableado de red. (configuración de red mínimas de Hola se indica con líneas azules sólidas. La configuración adicional requerida para alta disponibilidad y rendimiento se muestra mediante líneas de puntos.
+2. Consulte el siguiente diagrama de cableado de red. (La configuración de red mínima se muestra mediante líneas azules continuas. La configuración adicional requerida para alta disponibilidad y rendimiento se muestra mediante líneas de puntos.
 
     ![Colocación del cable de red del dispositivo 2U](./media/storsimple-8100-hardware-installation/HCSCableYour2UDeviceforNetwork.png)
 
@@ -210,41 +210,41 @@ toosupport esta conmutación por error de controlador redundante, necesita tooca
 
 
 
-Cuando cablear el dispositivo de hello, requiere configuración mínima de hello:
+Cuando se realiza el cableado del dispositivo, la configuración mínima requiere:
 
-* Al menos dos interfaces de red conectadas en cada controlador con una para el acceso a la nube y otra para iSCSI. Hola DATA 0 puerto automáticamente está habilitado y configurado a través de la consola de serie de hello de dispositivo de Hola. Aparte de DATA 0, otro puerto de datos también debe toobe configurado a través de hello portal de Azure clásico. En este caso, conectar DATA 0 puerto toohello LAN (red con acceso a Internet) principal. Hello otros datos pueden ser puertos conectado segmento de tooSAN/iSCSI LAN (VLAN) de red de hello, según el rol de hello prevista.
-* Interfaces idénticas en cada controlador conectado toohello mismo red tooensure disponibilidad si se produce una conmutación por error del controlador. Por ejemplo, si elige tooconnect DATA 0 y DATA 3 para uno de los controladores de hello, necesita hello tooconnect correspondiente DATA 0 y DATA 3 en Hola otro controlador.
+* Al menos dos interfaces de red conectadas en cada controlador con una para el acceso a la nube y otra para iSCSI. El puerto DATA 0 se habilita y configura automáticamente mediante la consola serie del dispositivo. Además del puerto DATA 0, también es necesario configurar otro puerto de datos a través del Portal de Azure clásico. En este caso, conecte el puerto DATA 0 a la LAN principal (red con acceso a Internet). Los demás puertos de datos pueden conectarse al segmento de la LAN SAN/iSCSI (VLAN) de la red, dependiendo del rol deseado.
+* Interfaces idénticas en cada controlador conectadas a la misma red para garantizar la disponibilidad si se produce conmutación por error en un controlador. Por ejemplo, si decide conectar los puertos DATA 0 y DATA 3 para uno de los controladores, necesitará conectar los puertos DATA 0 y DATA 3 correspondientes en el otro controlador.
 
 Tenga en cuenta lo siguiente para alta disponibilidad y rendimiento:
 
 * Cuando sea posible, configure un par de interfaz de red para el acceso a la nube (1 GbE) y otro par para iSCSI (se recomiendan 10 GbE) en cada controlador.
-* Cuando sea posible, conéctese interfaces de red desde cada tootwo diferentes conmutadores tooensure la disponibilidad del controlador con un error de interruptor. ilustración de Hola Hola dos 10 interfaces de red GbE, DATA 2 y 3 de datos, desde cada controlador conectado tootwo diferentes conmutadores.
+* Cuando sea posible, conecte las interfaces de red desde cada controlador a dos conmutadores diferentes para garantizar la disponibilidad frente al error de un conmutador. En la ilustración se muestran las dos interfaces de red de 10 GbE, DATA 2 y DATA 3, desde cada controlador conectado a dos conmutadores distintos.
 
-Para obtener más información, consulte toohello **interfaces de red** en hello [requisitos de alta disponibilidad para el dispositivo StorSimple](storsimple-system-requirements.md#high-availability-requirements-for-storsimple).
+Para obtener más información, consulte las **interfaces de red** en los [Requisitos de alta disponibilidad para el dispositivo StorSimple](storsimple-system-requirements.md#high-availability-requirements-for-storsimple).
 
 > [!NOTE]
-> Si usas transceptores SFP + con las interfaces de red 10 GbE, use Hola proporciona QSFP-SFP + adaptadores. Para obtener más información, consulte demasiado[hardware compatible Hola 10 GbE interfaces de red en el dispositivo StorSimple](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
+> Si usa SFP y los transceptores con las interfaces de red de 10 GbE, use los adaptadores QSFP-SFP proporcionados. Para más información, vaya a [Hardware compatible para interfaces de red de 10 GbE en el dispositivo StorSimple](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
 > 
 > 
 
 ### <a name="serial-port-cabling"></a>Cableado del puerto serie
-Realizar Hola siguiendo los pasos toocable el puerto serie.
+Realice los pasos siguientes para pasar el cable del puerto serie.
 
-#### <a name="toocable-for-serial-connection"></a>toocable conexión serie
-1. El dispositivo tiene un puerto serie en cada controlador que se identifica mediante un icono de una llave inglesa. Consulte la ilustración toohello Hola [cableado de red](#network-cabling) sección puertos serie de hello toolocate en hello backplane de su dispositivo.
-2. Identificar controlador activo de hello en el plano posterior del dispositivo. Un LED azul que parpadea indica que el controlador de hello está activo.
-3. Use cables serie de hello proporcionado (si es necesario, convertidor Hola USB-serie para su portátil) y conecte la consola o equipo (con el dispositivo de emulación de terminales toohello) toohello puerto serie del controlador activo Hola.
-4. Instalar a controladores serie-USB de hello (incluidos con el dispositivo de Hola) en el equipo.
-5. Configure la conexión serie hello como sigue: 115.200 baudios, 8 bits de datos, 1 bit de parada, sin paridad y el control de flujo establecen tooNone.
-6. Compruebe que Hola conexión funciona, presione ENTRAR en la consola de Hola. Debería aparecer un menú de consola serie.
+#### <a name="to-cable-for-serial-connection"></a>Colocación de los cables de conexión en serie
+1. El dispositivo tiene un puerto serie en cada controlador que se identifica mediante un icono de una llave inglesa. Consulte la ilustración de la sección [Cables de red](#network-cabling) para buscar los puertos serie en el plano anterior del dispositivo.
+2. Identifique el controlador activo en la placa posterior del dispositivo. Un LED que parpadeará en azul indica que el controlador está activo.
+3. Utilice los cables serie proporcionados (si es necesario, el convertidor de USB a serie de su equipo portátil) y conecte la consola o el equipo (con la emulación de terminales en el dispositivo) al puerto serie del controlador activo.
+4. Instale los controladores de serie a USB (incluidos con el dispositivo) en el equipo.
+5. Configure la conexión serie del modo indicado a continuación: 115.200 baudios, 8 bits de datos, 1 bit de parada, sin paridad y el control del flujo establecido en Ninguno.
+6. Presione INTRO en la consola para comprobar que la conexión funciona. Debería aparecer un menú de consola serie.
 
 > [!NOTE]
-> **Administración de KVM**: al dispositivo de hello está instalado en un centro de datos remoto o en una sala de informática con acceso limitado, garantizar que controladores de hello las conexiones serie tooboth estén siempre conectado tooa interruptor de consola serie o equipo similar. Esto permite el control remoto de fuera de banda y las operaciones de soporte si hay interrupciones de red o errores inesperados.
+> **Administración de Lights-Out**: cuando el dispositivo está instalado en un centro de datos remoto o en una sala de equipos con acceso limitado, asegúrese de que las conexiones serie a ambos controladores estén siempre conectadas a un conmutador de consola serie o un equipo similar. Esto permite el control remoto de fuera de banda y las operaciones de soporte si hay interrupciones de red o errores inesperados.
 > 
 > 
 
-Ahora su dispositivo dispondrá de los cables de alimentación, de acceso a la red y de conectividad serie. paso siguiente Hello es un software de hello tooconfigure e implementar el dispositivo.
+Ahora su dispositivo dispondrá de los cables de alimentación, de acceso a la red y de conectividad serie. El siguiente paso es configurar el software e implementar el dispositivo.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Obtenga información acerca de cómo demasiado[implementar y configurar el dispositivo de StorSimple local](storsimple-deployment-walkthrough-u2.md).
+Aprenda cómo [Implementar el dispositivo StorSimple local](storsimple-deployment-walkthrough-u2.md).
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaIndexing CSV blobs con el indizador de búsqueda de Azure blob | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo tooindex CSV blobs con búsqueda de Azure"
+title: "Indexación de blobs CSV con el indexador de blobs de Azure Search | Microsoft Docs"
+description: "Aprenda a indexar blobs JSON con Búsqueda de Azure"
 services: search
 documentationcenter: 
 author: chaosrealm
@@ -14,30 +14,30 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 12/15/2016
 ms.author: eugenesh
-ms.openlocfilehash: f2b1ce824e62c5b3f6155c6e88887897cf1a8eae
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: af9da85c37211d2436c23cc05400031c661ef51e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>Indexación de blobs CSV con el indexador de blobs de Búsqueda de Azure
-De forma predeterminada, el [indexador de blobs de Búsqueda de Azure](search-howto-indexing-azure-blob-storage.md) analiza los blobs de texto delimitados como un único fragmento de texto. Sin embargo, con los blobs que contiene datos CSV, a menudo desea tootreat cada línea en el blob de hello como documentos independientes. Por ejemplo, dada Hola siguiente texto delimitado por: 
+De forma predeterminada, el [indexador de blobs de Búsqueda de Azure](search-howto-indexing-azure-blob-storage.md) analiza los blobs de texto delimitados como un único fragmento de texto. Sin embargo, con blobs que contienen datos CSV, a menudo se desea tratar cada línea del blob como un documento independiente. Por ejemplo, dado el siguiente texto delimitado: 
 
     id, datePublished, tags
     1, 2016-01-12, "azure-search,azure,cloud" 
     2, 2016-07-07, "cloud,mobile" 
 
-es recomendable tooparse en 2 documentos, cada una que contiene "id" y "datePublished", "tags" campos.
+desea analizarlo en dos documentos, que contiene cada uno de ellos los campos "id", "datePublished" y "tags".
 
-En este artículo, aprenderá cómo tooparse CSV blobs con un indizador de búsqueda de Azure blob. 
+En este artículo aprenderá cómo analizar blobs CSV con un indexador de blobs de Búsqueda de Azure. 
 
 > [!IMPORTANT]
-> Actualmente, la versión de esta funcionalidad es una versión preliminar. Está disponible únicamente en la API de REST de hello mediante versión **vista previa 2015-02-28**. Por favor, recuerde que las versiones preliminares de las API están pensadas para realizar pruebas y evaluar, y no deben usarse en entornos de producción. 
+> Actualmente, la versión de esta funcionalidad es una versión preliminar. Está disponible solo en la API de REST con la versión **2015-02-28-Preview**. Por favor, recuerde que las versiones preliminares de las API están pensadas para realizar pruebas y evaluar, y no deben usarse en entornos de producción. 
 > 
 > 
 
 ## <a name="setting-up-csv-indexing"></a>Configuración de la indexación de CSV
-los blobs CSV tooindex, crear o actualizar una definición de indizador con hello `delimitedText` modo de análisis:  
+Para indexar blobs CSV, cree o actualice una definición de indexador con el modo de análisis `delimitedText` :  
 
     {
       "name" : "my-csv-indexer",
@@ -45,22 +45,22 @@ los blobs CSV tooindex, crear o actualizar una definición de indizador con hell
       "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "firstLineContainsHeaders" : true } }
     }
 
-Para obtener más detalles sobre Hola crear API de indizador, visite [crear indizador](search-api-indexers-2015-02-28-preview.md#create-indexer).
+Para más información sobre la API Create Indexer, consulte [Crear indexador](search-api-indexers-2015-02-28-preview.md#create-indexer).
 
-`firstLineContainsHeaders`indica que la primera línea de (no están en blanco) Hola de cada blob contiene encabezados.
-Si blobs no contienen una línea de encabezado inicial, encabezados de hello deben especificarse en la configuración de indizador de hello: 
+`firstLineContainsHeaders` indica que la primera línea (no en blanco) de cada blob contiene encabezados.
+Si el blob no contienen una línea de encabezado inicial, los encabezados deben especificarse en la configuración del indexador: 
 
     "parameters" : { "configuration" : { "parsingMode" : "delimitedText", "delimitedTextHeaders" : "id,datePublished,tags" } } 
 
-Actualmente, la codificación UTF-8 de hello solo se admite. Además, solo Hola coma `','` se admite el carácter como delimitador de Hola. Si necesita compatibilidad con otras codificaciones o delimitadores, háganoslo saber en [nuestro sitio web de UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+Actualmente, solo se admite la codificación UTF-8. Además, solo se admite el carácter de coma `','` como delimitador. Si necesita compatibilidad con otras codificaciones o delimitadores, háganoslo saber en [nuestro sitio web de UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 
 > [!IMPORTANT]
-> Cuando se utiliza texto hello delimitada análisis modo, búsqueda de Azure, se da por supuesto que todos los blobs en el origen de datos será CSV. Si necesita toosupport una combinación de CSV y no CSV blobs de hello mismo origen de datos, por favor, hacernos saber en [nuestro sitio UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+> Cuando se utiliza el modo de análisis de texto delimitado, Búsqueda de Azure supone que todos los blobs del origen de datos serán CSV. Si necesita admitir una mezcla de blobs CSV y que no son CSV en el mismo origen de datos, háganoslo saber en [nuestro sitio UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 > 
 > 
 
 ## <a name="request-examples"></a>Ejemplos de solicitud
-Al reunir estos todos juntos, estos son ejemplos de carga completa de Hola. 
+Resumiendo, estos son los ejemplos de cargas útiles completas. 
 
 Origen de datos: 
 
@@ -89,5 +89,5 @@ Indexador:
     }
 
 ## <a name="help-us-make-azure-search-better"></a>Ayúdenos a mejorar Búsqueda de Azure
-Si dispone de las solicitudes de características o ideas para mejoras, póngase en contacto toous en nuestra [sitio UserVoice](https://feedback.azure.com/forums/263029-azure-search/).
+Si tiene solicitudes o ideas para mejorar las características, póngase en contacto con nosotros en nuestro [sitio UserVoice](https://feedback.azure.com/forums/263029-azure-search/).
 

@@ -1,6 +1,6 @@
 ---
-title: directrices de utilidad de carga de archivos de solicitud de aaaMicrosoft nuevo soporte de Azure | Documentos de Microsoft
-description: "Describe las instrucciones de hello cuando se utiliza la solicitud de soporte técnico nueva utilidad de carga de archivos de Microsoft Azure"
+title: "Directrices de la utilidad Carga de archivos de nueva solicitud de soporte técnico de Microsoft Azure | Microsoft Docs"
+description: "Describe las directrices de uso de la utilidad Carga de archivos de nueva solicitud de soporte técnico de Microsoft Azure"
 services: 
 documentationcenter: 
 author: genlin
@@ -15,28 +15,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: genli
-ms.openlocfilehash: 19e51b40b82a71454b4b04752ebeefd5d26c2db5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ba6dafd8d890d88478a5e3213dd023921908f4bf
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Directrices de la utilidad Carga de archivos de nueva solicitud de soporte técnico de Microsoft Azure
-Cuando se [crear una solicitud de soporte técnico](https://portal.azure.com/#create/Microsoft.Support), utilidad de carga de archivos de hello le permitirá fácilmente cargar los archivos de diagnóstico o cualquier otro archivo que considere relevante toohello incidente.  
+Cuando se [crea una solicitud de soporte técnico](https://portal.azure.com/#create/Microsoft.Support), la utilidad Carga de archivos puede ayudarle a cargar fácilmente los archivos de diagnóstico o cualquier otro archivo que crea que es pertinente para el incidente.  
 
 > [!NOTE]
-> tooprotect su privacidad, no incluya ninguna información personal en la carga.
+> Para proteger su privacidad, no incluya ninguna información personal en su carga.
 >
 >
 
-Cuando se usa la utilidad de carga de archivos de hello, siga estas instrucciones:
+Siga estas directrices cuando use la utilidad Carga de archivos:
 
-* Todos los archivos deben tener una extensión de nombre de archivo, por ejemplo, .docx o .xlsx. Consulte la tabla de Hola para lista de Hola de extensiones de nombre de archivo permitidas.
-* nombre de archivo de Hello debe ser no más de 110 caracteres.
+* Todos los archivos deben tener una extensión de nombre de archivo, por ejemplo, .docx o .xlsx. Consulte en la tabla la lista de extensiones de nombre de archivo permitidas.
+* El nombre de archivo debe ser de 110 caracteres como máximo.
 * No se puede cargar más de un archivo.
 * Los archivos no pueden ser superiores a 4 MB.
 
-## <a name="table-of-hello-allowed-file-name-extensions"></a>Tabla de hello extensiones de nombre de archivo permitidas
+## <a name="table-of-the-allowed-file-name-extensions"></a>Tabla de las extensiones de nombre de archivo permitidas
 | 0-9, A-C    | D-G   | H-M         | N-P   | R-T      | U-W        | X-Z     |
 |-------------|-------|-------------|-------|----------|------------|---------|
 | .7z         | .dat  | .hwl        | .odx  | .rar     | .tdb       | .xlam   |

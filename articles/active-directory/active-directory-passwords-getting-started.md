@@ -6,21 +6,21 @@ keywords:
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
-ms.reviewer: gahug
+ms.reviewer: sahenry
 ms.assetid: bde8799f-0b42-446a-ad95-7ebb374c3bec
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/07/2017
+ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 4fed3a1c690fd6423ee5d3e5baef690d8896fbe9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8497c6c6d7cfc6c4457073783d20f48a722ea18e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="quickstart-azure-ad-self-service-password-reset"></a>Inicio rápido: Autoservicio de restablecimiento de contraseña de Azure AD
 
@@ -29,71 +29,71 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="rapidly-deploy-self-service-password-reset"></a>Implementación rápida del autoservicio de restablecimiento de contraseña
 
-Restablecimiento de contraseña de autoservicio (SSPR) ofrece un sencillo significa "" para TI administradores tooempower usuarios tooreset o desbloquear sus cuentas o contraseñas. Hello sistema incluye tootrack informes detallado cuando los usuarios usen el sistema de hello junto con las notificaciones tooalert toomisuse, o controlar el abuso.
+El autoservicio de restablecimiento de contraseña (SSPR) ofrece un medio sencillo con el que los administradores de TI pueden permitir que los usuarios restablezcan o desbloqueen sus cuentas o contraseñas. El sistema incluye informes detallados para realizar un seguimiento de cuándo usan los usuarios el sistema, además de notificaciones para alertar de posibles abusos o usos indebidos.
 
-En esta guía se da por hecho que ya dispone de un inquilino de Azure AD con licencia o una prueba operativa. Si necesita ayuda para configurar Azure AD, vea el artículo de hello [Introducción a Azure AD](https://azure.microsoft.com/trial/get-started-active-directory/).
+En esta guía se da por hecho que ya dispone de un inquilino de Azure AD con licencia o una prueba operativa. Si necesita ayuda para configurar Azure AD, consulte el artículo [Introducción a Azure AD](https://azure.microsoft.com/trial/get-started-active-directory/).
 
 1. En su inquilino de Azure AD existente, seleccione **"Restablecimiento de contraseña"**.
 
-2. De hello **"Propiedades"** pantalla, en la opción Hola "Autoservicio servicio contraseña restablecer habilitado" Elija uno de los siguientes Hola
-    * Nadie - no hay uno es la funcionalidad SSPR toouse capaz de
-    * Sólo los miembros de un anuncio de Azure específico de un grupo: grupo que elija son funciones de Autoservicio pueda toouse
-    * Todos los usuarios: todos los usuarios con cuentas en su inquilino de Azure AD son toouse capaz de funcionalidad de Autoservicio
+2. En la pantalla **"Propiedades"**, en "Se habilitó el restablecimiento de contraseña del autoservicio", seleccione una de las siguientes opciones:
+    * Nadie: nadie podrá usar la funcionalidad de SSPR.
+    * Un grupo: solo los miembros de un grupo de Azure AD determinado que elija podrán usar la funcionalidad de SSPR.
+    * Todo el mundo: todos los usuarios con cuentas en su inquilino de Azure AD podrán usar la funcionalidad de SSPR.
 
-3. De hello **"Métodos de autenticación"** elija pantalla
-    * Número de métodos requerido tooreset: se admite un mínimo de uno o dos como máximo
-    * Métodos disponibles toousers - se necesita al menos uno, pero nunca viene mal toohave una opción adicional disponible
-        * **Correo electrónico** envía un correo electrónico con un usuario de toohello código configurar dirección de correo electrónico de autenticación
-        * **Teléfono móvil** proporciona Hola usuario Hola elección tooreceive una llamada o texto con un tootheir código configura el número de teléfono móvil
-        * **Teléfono del trabajo** configurada por el usuario de Hola de llamadas con un código tootheir número de teléfono
-        * **Preguntas de seguridad** requiere toochoose
-            * Número de preguntas requerido tooregister: como mínimo, Hola para registrarse correctamente, lo que significa que un usuario puede elegir tooanswer toocreate más toopull de preguntas de un grupo de. Esta opción puede establecerse entre 3 y 5 y debe ser mayor que o igual toohello número de preguntas necesario tooreset.
-                * Se pueden agregar preguntas personalizados, haga clic en el botón de "Custom" hello al seleccionar preguntas de seguridad
-            * Número de preguntas necesarias tooreset - puede establecerse entre 3 y 5 preguntas toobe responder correctamente antes de permitir una toobe de contraseña a los usuarios restablecer o desbloqueada.
+3. En la pantalla **"Métodos de autenticación"**, seleccione:
+    * Número de métodos requeridos para el restablecimiento: se admite uno como mínimo o dos como máximo.
+    * Métodos disponibles para los usuarios: se necesita al menos uno, pero es recomendable tener una opción adicional disponible.
+        * **Correo electrónico** envía un correo electrónico con un código a la dirección de correo electrónico de autenticación configurada del usuario.
+        * **Teléfono móvil** proporciona al usuario la opción de recibir una llamada o un mensaje de texto con un código en su número de teléfono móvil configurado.
+        * **Teléfono de la oficina** realiza una llamada al número de teléfono de la oficina configurado del usuario para transmitirle un código.
+        * **Preguntas de seguridad** requiere que se definan las siguientes opciones:
+            * Número de preguntas necesarias para registrarse: es cantidad mínima de preguntas para registrarse correctamente, de forma que un usuario puede responder aún más para crear una serie de preguntas entre las que escoger. Esta opción puede definirse entre 3 y 5 y debe ser mayor o igual que el número de preguntas necesarias para el restablecimiento.
+                * Se pueden agregar preguntas personalizadas haciendo clic en el botón "Personalizar" al seleccionar preguntas de seguridad.
+            * Número de preguntas necesarias para el restablecimiento: puede establecerse entre 3 y 5 preguntas, que deben responderse correctamente para permitir restablecer o desbloquear la contraseña de los usuarios.
 
-4. RECOMENDADO: **"Personalización"** permite toochange Hola "Póngase en contacto con el Administrador de" vínculo toopoint tooa página o dirección de correo define
+4. RECOMENDADO: **"Personalización"** permite cambiar el vínculo "Póngase en contacto con el administrador" para dirigir a otra página o dirección de correo electrónico que defina.
 
-5. OPCIONAL: Hola **"Registro"** pantalla proporciona a los administradores opciones Hola para:
-    * Requerir a los usuarios tooregister cuando inicien sesión en
-    * Número de días antes de que los usuarios son más frecuentes tooreconfirm su información de autenticación
+5. OPCIONAL: La pantalla **"Registro"** proporciona a los administradores las opciones siguientes:
+    * Exigir a los usuarios que se registren al iniciar sesión
+    * Número de días que pasan hasta que se pide a los usuarios que vuelvan a confirmar su información de autenticación
 
-6. OPCIONAL: Hola **"Notificaciones"** pantalla proporciona a los administradores opciones Hola para:
+6. OPCIONAL: la pantalla **"Notificación"** proporciona a los administradores las opciones siguientes:
     * ¿Quiere notificar a los usuarios los restablecimientos de contraseña?
     * ¿Quiere notificar a todos los administradores cuando otros administradores restablezcan su contraseña?
 
-**Ya ha configurado SSPR para su inquilino de Azure AD**. Puede detener aquí o continuar en tooconfigure sincronización de contraseñas tooan dominio de Active Directory local.
+**Ya ha configurado SSPR para su inquilino de Azure AD**. Puede detenerse aquí o continuar para configurar la sincronización de contraseñas con un dominio de Active Directory local.
 
 > [!NOTE]
-> Pruebe SSPR con un usuario que no sea administrador, ya que Microsoft impone estrictos requisitos de autenticación para las cuentas de tipo administrador de Azure. Para obtener más información sobre la directiva de contraseñas de administrador de hello, consulte nuestro [artículo de la directiva de contraseña](active-directory-passwords-policy.md#administrator-password-policy-differences).
+> Pruebe SSPR con un usuario que no sea administrador, ya que Microsoft impone estrictos requisitos de autenticación para las cuentas de tipo administrador de Azure. Para más información acerca de la directiva de contraseñas de administrador, consulte el siguiente [artículo sobre la directiva de contraseñas](active-directory-passwords-policy.md#administrator-password-policy-differences).
 
-## <a name="configure-synchronization-tooexisting-identity-source"></a>Configurar origen de sincronización tooexisting identidad
+## <a name="configure-synchronization-to-existing-identity-source"></a>Configuración de la sincronización con un origen de identidades existente
 
-tooenable tooAzure de sincronización de identidad AD local, necesita tooinstall y configurar [Azure AD Connect](./connect/active-directory-aadconnect.md) en un servidor en su organización. Esta aplicación controla la sincronización de usuarios y grupos de su inquilino de Azure AD existente de identidad origen tooyour.
+Para habilitar la sincronización de identidades local con Azure AD, debe instalar y configurar [Azure AD Connect](./connect/active-directory-aadconnect.md) en un servidor de su organización. Esta aplicación administra la sincronización de usuarios y grupos de su origen de identidades existente con su inquilino de Azure AD.
 
-* [Actualizar desde DirSync o sincronización de Azure AD tooAzure AD Connect](./connect/active-directory-aadconnect-dirsync-deprecated.md)
+* [Actualización desde DirSync o Azure AD Sync a Azure AD Connect](./connect/active-directory-aadconnect-dirsync-deprecated.md)
 * [Introducción a Azure AD Connect mediante la configuración rápida](./connect/active-directory-aadconnect-get-started-express.md)
-* [Configurar la escritura diferida de contraseñas](active-directory-passwords-writeback.md#configuring-password-writeback) toowrite contraseñas de Azure AD hacer copia de directorio local de tooyour.
+* [Configuración de la escritura diferida de contraseñas](active-directory-passwords-writeback.md#configuring-password-writeback) para escribir contraseñas de Azure AD en su directorio local.
 
 ## <a name="disabling-self-service-password-reset"></a>Deshabilitación del autoservicio de restablecimiento de contraseña
 
-Deshabilitar el restablecimiento de contraseña de autoservicio es tan sencillo como abrir su inquilino de Azure AD y va demasiado**de restablecimiento de contraseña > propiedades** > elija **ninguno** en **autoservicio de restablecimiento de contraseña Habilitado**
+Para deshabilitar el autoservicio de restablecimiento de contraseña, tan solo tiene que abrir el inquilino de Azure AD, ir a **Restablecimiento de contraseña, Propiedades** y seleccionar **Nadie** en **Se habilitó el restablecimiento de contraseña del autoservicio**.
 
 ### <a name="learn-more"></a>Más información
-Hola siguientes vínculos proporciona más información sobre el uso de Azure AD de restablecimiento de contraseña
+Los vínculos siguientes proporcionan información adicional sobre el restablecimiento de contraseñas con Azure AD:
 
 * [**Licencias**](active-directory-passwords-licensing.md): configuración de licencias de Azure AD
-* [**Datos** ](active-directory-passwords-data.md) : comprender los datos de Hola que es necesarios y cómo se utiliza para la administración de contraseñas
-* [**Implementación** ](active-directory-passwords-best-practices.md) -planear e implementar a los usuarios de Autoservicio tooyour usando la orientación de hello encontrar aquí
-* [**Personalizar** ](active-directory-passwords-customize.md) -personalizar Hola apariencia y funcionamiento del programa Hola a la experiencia de Autoservicio de su empresa.
+* [**Datos**](active-directory-passwords-data.md): información sobre los datos necesarios y cómo se usan para administrar contraseñas
+* [**Implementación**](active-directory-passwords-best-practices.md): planee e implemente SSPR en sus usuarios mediante las instrucciones que se encuentran aquí.
+* [**Personalización**](active-directory-passwords-customize.md): personalice el aspecto de la experiencia SSPR para su empresa.
 * [**Directiva**](active-directory-passwords-policy.md): información sobre las directivas de contraseñas de Azure AD y cómo establecerlas
-* [**Informes**](active-directory-passwords-reporting.md): detectan si los usuarios acceden a la funcionalidad de SSPR, cuándo lo hacen y dónde.
-* [**Profundización técnica** ](active-directory-passwords-how-it-works.md) -ir detrás de hello cortina toounderstand cómo funciona
-* [**Preguntas más frecuentes**](active-directory-passwords-faq.md): ¿Cómo? ¿Por qué? ¿Qué? ¿Dónde? ¿Quién? ¿Cuándo? -Responde tooquestions siempre deseara tooask
-* [**Solucionar problemas de** ](active-directory-passwords-troubleshoot.md) -Obtenga información acerca de cómo problemas comunes de tooresolve que vemos con SSPR
+* [**Informes**](active-directory-passwords-reporting.md): informes para detectar si los usuarios acceden a la funcionalidad de SSPR que especifican el momento y el lugar del acceso
+* [**Profundización técnica**](active-directory-passwords-how-it-works.md): conozca lo que hay detrás para comprender cómo funciona.
+* [**Preguntas más frecuentes**](active-directory-passwords-faq.md): ¿Cómo? ¿Por qué? ¿Qué? ¿Dónde? ¿Quién? ¿Cuándo? : respuestas a las preguntas que siempre se ha hecho.
+* [**Solución de problemas**](active-directory-passwords-troubleshoot.md): información para resolver problemas habituales de SSPR
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-En este tutorial, ha aprendido cómo restablece la contraseña de autoservicio de tooconfigure para los usuarios. toocontinue toohello toocomplete portal Azure siguen estos pasos Hola vínculo situado debajo de portal de toohello.
+En este inicio rápido, ha aprendido a configurar el autoservicio de restablecimiento de contraseña para los usuarios. Para continuar en Azure Portal para completar estos pasos siga el vínculo siguiente al portal.
 
 > [!div class="nextstepaction"]
 > [Habilitar el autoservicio de restablecimiento de contraseña](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset)

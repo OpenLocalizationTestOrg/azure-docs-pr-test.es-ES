@@ -1,6 +1,6 @@
 ---
-title: "aaaFailback en Azure Site Recovery para las máquinas virtuales de Hyper-v | Documentos de Microsoft"
-description: "Azure Site Recovery coordina la replicación hello, conmutación por error y recuperación de máquinas virtuales y servidores físicos. Obtenga información acerca de la conmutación por recuperación de centro de datos locales de tooon de Azure."
+title: "Conmutación por recuperación en Azure Site Recovery para las máquinas virtuales de Hyper-V | Microsoft Docs"
+description: "Azure Site Recovery coordina la replicación, la conmutación por error y la recuperación de máquinas virtuales y servidores físicos. Información acerca de la conmutación por recuperación de Azure a un centro de datos local."
 services: site-recovery
 documentationcenter: 
 author: ruturaj
@@ -14,82 +14,85 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/11/2017
 ms.author: ruturajd
-ms.openlocfilehash: 50cda9105de6b6fb23e4c62942fdaffc55c3efa4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7f478a61ee448d2d18b3ac7bc0a579b6e341c30d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="failback-in-site-recovery-for-hyper-v-virtual-machines"></a>Conmutación por recuperación en Site Recovery para máquinas virtuales de Hyper-V
 
-Este artículo describe cómo se protegen las máquinas virtuales toofailback Site Recovery.
+En este artículo se describe cómo se realiza la conmutación por recuperación en máquinas virtuales protegidas con Site Recovery.
 
 ## <a name="prerequisites"></a>Requisitos previos
-1. Asegúrese de que ese servidor de Hyper-V/server Hola sitio primario VMM está conectado.
-2. Debe haber realizado **confirmar** en la máquina virtual de Hola.
+1. Asegúrese de que el servidor del sitio principal de VMM/Hyper-V está conectado.
+2. Debe haber realizado la acción **Confirmar** en la máquina virtual.
 
 ## <a name="why-is-there-no-button-called-failback"></a>¿Por qué no hay ningún botón llamado conmutación por recuperación?
-En el portal de hello, no hay ningún gesto explícito que se denomina conmutación por recuperación. Conmutación por recuperación es un paso que se vuelven a estar toohello de sitio primario. Por definición, conmutación por error es cuando se máquinas de virtuales Hola de conmutación por error de primary(on-premises) sitio toorecovery (Azure) y conmutación por recuperación al máquinas de virtuales Hola de conmutación por error de recuperación hacer copia de tooprimary.
+En el portal, no hay ninguna acción explícita que se denomine conmutación por recuperación. Se trata de un paso para volver al sitio principal. Por definición, la conmutación por error se realiza en las máquinas virtuales desde el sitio principal (local) para la recuperación (en Azure) y en la conmutación por recuperación, la recuperación de las máquinas virtuales se realiza en el sitio principal.
 
-Cuando se inicia una conmutación por error, hoja de hello le informa sobre dirección Hola de trabajo de Hola. Si dirección Hola procede tooOn-locales de Azure, es una conmutación por recuperación.
+Al iniciar una conmutación por error, la hoja le informa sobre la dirección del trabajo. Si la dirección es de Azure a local, es una conmutación por recuperación.
 
-## <a name="why-is-there-only-a-planned-failover-gesture-toofailback"></a>¿Por qué hay sólo un toofailback de gesto de conmutación por error planeada?
-Azure es un entorno de alta disponibilidad y las máquinas virtuales estarán siempre disponibles. Conmutación por recuperación es una actividad planeada debe decidir tootake un breve tiempo de inactividad para que las cargas de trabajo de hello pueden empezar a ejecutar en local de nuevo. No se prevé la pérdida de datos. Por lo tanto, hay solo un gesto de conmutación por error planeada, que se desactivará hello las máquinas virtuales en Azure, descargue los cambios más recientes de Hola y asegúrese de que no hay ninguna pérdida de datos.
+## <a name="why-is-there-only-a-planned-failover-gesture-to-failback"></a>¿Por qué hay solo una acción de conmutación por error planeada para la conmutación por recuperación?
+Azure es un entorno de alta disponibilidad y las máquinas virtuales estarán siempre disponibles. La conmutación por recuperación es una actividad planeada que necesita un tiempo breve de inactividad para que las cargas de trabajo empiecen a ejecutarse de nuevo de forma local. No se prevé la pérdida de datos. Por lo tanto, hay solo una conmutación por error planeada, que desactivará las máquinas virtuales de Azure, descargará los cambios más recientes y garantizará que no se pierden datos.
+
+## <a name="do-i-need-a-process-server-in-azure-to-failback-to-hyper-v"></a>¿Se necesita un servidor de proceso en Azure para realizar la conmutación por recuperación en Hyper-v?
+No, solo se requiere un servidor de proceso cuando está protegiendo máquinas virtuales de VMware. No es necesario implementar componentes adicionales cuando se proteja o realice la conmutación por recuperación de máquinas virtuales de Hyper-v.
 
 ## <a name="initiate-failback"></a>Inicio de la conmutación por recuperación
-Después de la conmutación por error de ubicación de hello toosecondary principal, las máquinas virtuales replicadas no están protegidas por recuperación del sitio y ubicación secundaria Hola ahora está actuando como ubicación de active Hola. Siga estos procedimientos toofail toohello back-sitio principal original. Este procedimiento describe cómo toorun una conmutación por error planeada para una recuperación del plan. También puede ejecutar Hola conmutación por error para una sola máquina virtual en hello **máquinas virtuales** ficha.
+Después de la conmutación por error de la ubicación principal a la secundaria, las máquinas virtuales replicadas no están protegidas por Site Recovery y la ubicación secundaria actúa como ubicación principal. Siga estos procedimientos para realizar la conmutación por recuperación al sitio principal original. En este procedimiento se describe cómo ejecutar una conmutación por error planeada para un plan de recuperación. También puede ejecutar la conmutación por error para una única máquina virtual en la pestaña **Máquinas virtuales** .
 
 1. Seleccione **Recovery Plans** > *nombreDePlanDeRecuperación*. Haga clic en **Conmutación por error** > **Planned Conmutación por error**.
-2. En Hola ** confirmar conmutación por error planeada ** página, elija las ubicaciones de origen y destino de Hola. Tenga en cuenta dirección de conmutación por error de Hola. Si ha trabajado Hola conmutación por error de principal como esperar y todas las máquinas virtuales están en la ubicación secundaria hello es meramente informativos.
+2. En la página **Confirmar conmutación por error planeada**, elija las ubicaciones de origen y de destino. Tenga en cuenta la dirección de la conmutación por error. Si la conmutación por error desde la ubicación principal ha funcionado como se esperaba y todas las máquinas virtuales están en la ubicación secundaria, este dato es solo informativo.
 3. Si realiza la conmutación por recuperación desde Azure, seleccione la configuración en **Sincronización de datos**:
 
-   * **Sincronizar datos antes de la conmutación por error (sincronizar solo cambios incrementales)**: esta opción reduce al mínimo el tiempo de inactividad de las máquinas virtuales, ya que realiza la sincronización sin apagarlas. Hola siguientes:
-     * Fase 1: Toma instantáneas de máquina virtual de hello en Azure y copia host de Hyper-V local toohello. máquina de Hello continúa ejecutándose en Azure.
-     * Fase 2: Apaga la máquina virtual de hello en Azure, para que no dar ningún cambio de nuevo. Hola último conjunto de cambios delta es servidor local de toohello transferidos y máquina virtual de hello local se haya iniciado.
+   * **Sincronizar datos antes de la conmutación por error (sincronizar solo cambios incrementales)**: esta opción reduce al mínimo el tiempo de inactividad de las máquinas virtuales, ya que realiza la sincronización sin apagarlas. Hace lo siguiente:
+     * Fase 1: realiza una instantánea de la máquina virtual en Azure y la copia en el host de Hyper-V local. El equipo continúa ejecutándose en Azure.
+     * Fase 2: apaga la máquina virtual en Azure para que no se realice ningún nuevo cambio allí. El último conjunto de cambios incrementales se transfiere al servidor local y se inicia la máquina virtual local.
 
-    - **Sincronizar datos solo durante la conmutación por error (descarga completa)**: utilice esta opción si ha estado trabajando en Azure durante mucho tiempo. Esta opción es más rápida porque se espera que la mayoría de disco Hola ha cambiado y no es aconsejable toospend tiempo en el cálculo de suma de comprobación. Realiza una descarga del disco de Hola. También es útil cuando se ha eliminado la máquina virtual de hello en local.
+    - **Sincronizar datos solo durante la conmutación por error (descarga completa)**: utilice esta opción si ha estado trabajando en Azure durante mucho tiempo. Esta opción es más rápida, ya que se prevé que la mayoría del disco ha cambiado y no queremos dedicar tiempo al cálculo de la suma de comprobación. Realiza una descarga del disco. También es útil cuando se ha eliminado la máquina virtual local.
 
     >[!NOTE]
-    >Se recomienda usar esta opción si ha estado ejecutando Azure durante un tiempo (un mes o más) o se ha eliminado la máquina virtual de hello en local. Esta opción no realiza los cálculos de suma de comprobación.
-    >
-    >
+    >Se recomienda utilizar esta opción si ha estado trabajando con Azure durante un tiempo (un mes o más) o se ha eliminado la máquina virtual local. Esta opción no realiza cálculos de suma de comprobación.
 
 
+4. Si en la nube está habilitado el cifrado de datos, en **Clave de cifrado** seleccione el certificado que se emitió al habilitarlo durante la instalación del proveedor en el servidor de VMM.
+5. Inicie la conmutación por error. Puede seguir el progreso de la conmutación por error en la pestaña **Trabajos** .
+6. Si seleccionó la opción de sincronizar los datos antes de la conmutación por error, una vez que la sincronización de datos inicial haya finalizado y esté listo para apagar las máquinas virtuales en Azure, haga clic en **Trabajos**, en el nombre del trabajo de conmutación por error planeado y en **Completar conmutación por error**. La máquina de Azure se apagará, se transferirán los cambios más recientes a la máquina virtual local y esta se iniciará.
+7. Ahora puede iniciar sesión en la máquina virtual para confirmar que está disponible como se esperaba.
+8. La máquina virtual está en un estado pendiente de confirmación. Haga clic en **Confirmar** para confirmar la conmutación por error.
+9. Para completar la conmutación por recuperación, haga clic en **Replicación inversa** con el fin de comenzar a proteger la máquina virtual en el sitio principal.
 
+## <a name="failback-to-an-alternate-location"></a>Conmutación por recuperación a una ubicación alternativa
+Si ha implementado la protección entre un [sitio de Hyper-V y Azure](site-recovery-hyper-v-site-to-azure.md) , tiene la capacidad de realizar la conmutación por recuperación de Azure a una ubicación local alternativa. Esto es útil si necesita configurar nuevo hardware local. Así es cómo debe hacerlo.
 
-4. Si está habilitado el cifrado de datos de nube de hello en **clave de cifrado** certificado Hola seleccione emitido cuando habilita el cifrado de datos durante la instalación del proveedor en el servidor VMM Hola.
-5. Iniciar la conmutación por error de Hola. Puede seguir el progreso de la conmutación por error de Hola en hello **trabajos** ficha.
-6. Si seleccionó Hola opción toosynchronize Hola datos antes de hello conmutación por error, una vez Hola inicial se completa la sincronización de datos y está listo tooshut hacia abajo hello las máquinas virtuales en Azure, haga clic en **trabajos** el nombre del trabajo de conmutación por error planeada **Completar la conmutación por error**. Esto apaga de Hola máquina de Azure, hello las transferencias cambia más reciente máquina virtual de toohello local e inicia Hola VM local.
-7. Ahora puede iniciar sesión en hello toovalidate de máquina virtual está disponible según lo previsto.
-8. máquina virtual de Hello está en un estado de confirmación pendiente. Haga clic en **confirmar** conmutación por error de toocommit Hola.
-9. Ahora en orden de conmutación por recuperación de toocomplete hello, haga clic en **replicación inversa** toostart protección de máquina virtual de hello en el sitio primario de Hola.
-
-## <a name="failback-tooan-alternate-location"></a>Ubicación alternativa de conmutación por recuperación tooan
-Si ha implementado la protección entre un [sitio de Hyper-V y Azure](site-recovery-hyper-v-site-to-azure.md) tiene tooability toofailback de ubicación de Azure tooan alternativo en local. Esto es útil si necesita tooset de nuevo hardware local. Así es cómo debe hacerlo.
-
-1. Si está configurando un hardware nuevo instalar Windows Server 2012 R2 y Hola rol de Hyper-V en el servidor de Hola.
-2. Crear un conmutador de red virtual con el mismo nombre que tenía en el servidor original Hola de Hola.
-3. Seleccione **elementos protegidos** -> **grupo de protección**  ->  <ProtectionGroupName>  ->  <VirtualMachineName> desee toofail atrás y seleccione **planificado Conmutación por error**.
+1. Si configura nuevo hardware, instale Windows Server 2012 R2 y el rol de Hyper-V en el servidor.
+2. Cree un conmutador de red virtual con el mismo nombre que tenía en el servidor original.
+3. Seleccione **Elementos protegidos** -> **Grupo de protección** -> <ProtectionGroupName> -> <VirtualMachineName> en el que desea realizar la conmutación por recuperación y seleccione **Conmutación por error planeada**.
 4. En **Confirmar conmutación por error planeada** select **Crear máquina virtual local si no existe**.
-5. En **nombre de Host** seleccione Hola nuevo servidor de host de Hyper-V que servirá de máquina virtual de tooplace Hola.
-6. En la sincronización de datos, se recomienda que seleccione la opción de hello **sincronizar datos de hello antes de la conmutación por error de hello**. Así se reduce el tiempo de inactividad de las máquinas virtuales, ya que la sincronización se realiza sin apagarlas. Hola siguientes:
+5. En **Nombre de host** , seleccione el nuevo servidor host de Hyper-V en el que desea incluir la máquina virtual.
+6. En Sincronización de datos, se recomienda seleccionar la opción **Sincronizar los datos antes de la conmutación por error**. Así se reduce el tiempo de inactividad de las máquinas virtuales, ya que la sincronización se realiza sin apagarlas. Hace lo siguiente:
 
-   * Fase 1: Toma instantáneas de máquina virtual de hello en Azure y copia host de Hyper-V local toohello. máquina de Hello continúa ejecutándose en Azure.
-   * Fase 2: Apaga la máquina virtual de hello en Azure, para que no dar ningún cambio de nuevo. Hola último conjunto de cambios son servidor local de toohello transferidos y máquina virtual de hello local se haya iniciado.
-7. Haga clic en hello marca de verificación toobegin Hola de conmutación por error (conmutación por recuperación).
-8. Una vez finalizada la sincronización inicial de Hola y está listo tooshut hacia abajo de la máquina virtual de hello en Azure, haga clic en **trabajos** > <planned failover job> > **conmutación por error completa**. Esto apaga Hola máquina de Azure, máquina virtual local toohello de cambios más reciente de las transferencias hello y lo inicia.
-9. Puede iniciar sesión en tooverify de máquina virtual local de Hola que todo funciona según lo previsto. A continuación, haga clic en **confirmar** conmutación por error de toofinish Hola.
-10. Haga clic en **replicación inversa** toostart protección de máquina virtual de hello en local.
+   * Fase 1: realiza una instantánea de la máquina virtual en Azure y la copia en el host de Hyper-V local. El equipo continúa ejecutándose en Azure.
+   * Fase 2: apaga la máquina virtual en Azure para que no se realice ningún nuevo cambio allí. El último conjunto de cambios se transfiere al servidor local y se inicia la máquina virtual local.
+7. Haga clic en la marca de verificación para iniciar la conmutación por error (conmutación por recuperación).
+8. Después de que finalice la sincronización inicial y esté listo para apagar la máquina virtual en Azure, haga clic en **Trabajos** > <planned failover job> > **Completar conmutación por error**. Esta opción apaga la máquina de Azure, transfiere los últimos cambios a la máquina virtual local y la inicia.
+9. Puede iniciar sesión en la máquina virtual local para comprobar que todo funciona según lo esperado. A continuación, haga clic en **Confirmar** para finalizar la conmutación por error.
+10. Haga clic en **Replicación inversa** para comenzar a proteger la máquina virtual local.
 
     > [!NOTE]
-    > Si se cancela el trabajo de conmutación por recuperación de hello mientras se encuentra en el paso de sincronización de datos, Hola local VM estará en un estado dañado. Esto es porque la sincronización de datos copia los datos más recientes de Hola de discos de datos de Azure VM discos toohello local, y hasta que se complete la sincronización de hello, datos del disco hello no estén en un estado coherente. Si Hola VM local se inicia después de cancelar la sincronización de datos, no puede arrancar. Volver a activar la conmutación por error toocomplete Hola la sincronización de datos.
-    >
-    >
+    > Si cancela el trabajo de conmutación por recuperación durante el paso de sincronización de datos, la máquina virtual local tendrá un estado dañado. Esto se debe a que la sincronización de datos copia los datos más recientes de los discos de la máquina virtual de Azure a los discos de datos locales y puede que los datos de los discos no sean coherentes hasta que la sincronización se complete. Si se cancela la sincronización de datos, es posible que la máquina virtual local no arranque. Vuelva a desencadenar la conmutación por error para completar la sincronización de datos.
 
+## <a name="time-taken-to-failback"></a>Tiempo que se tarda en realizar la conmutación por recuperación
+El tiempo que se tarda en realizar la sincronización de datos y arrancar la máquina virtual depende de varios factores. Para tener una idea del tiempo que se tarda, se explica lo que ocurre durante la sincronización de datos.
+
+La sincronización de datos realiza una instantánea de los discos de la máquina virtual e inicia la comprobación bloque por bloque y calcula su suma de comprobación. Esta suma de comprobación calculada se envía a un entorno local para compararlo con la suma de comprobación local del mismo bloque. En el caso de que las sumas de comprobación coincidan, el bloque de datos no se transfiere. Si no coinciden, el bloque de datos se transfiere al entorno local. Este tiempo de transferencia depende del ancho de banda disponible. La velocidad de la suma de comprobación es de algunos GB por minuto. 
+
+Para acelerar la descarga de datos, puede configurar el agente de MARS para utilizar más subprocesos para equiparar la descarga. Vea [este documento](https://support.microsoft.com/en-us/help/3056159/how-to-manage-on-premises-to-azure-protection-network-bandwidth-usage) sobre cómo cambiar los subprocesos de descarga en el agente.
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Cuando haya completado el trabajo de conmutación por recuperación de hello, **confirmar** máquina virtual de Hola. Confirmación elimina Hola máquina virtual de Azure y sus discos y prepara Hola VM toobe nuevamente protegido.
+Una vez haya completado el trabajo de conmutación por recuperación, realice la acción **Confirmar** en la máquina virtual. La confirmación elimina la máquina virtual de Azure y sus discos, y la prepara para volver a protegerla.
 
-Después de **confirmar**, puede iniciar hello *replicación inversa*. Se iniciará la protección de máquina Hola de tooAzure atrás local. Tenga en cuenta Esto configurará sólo los cambios de hello replicar desde Hola máquina virtual se ha desactivado en Azure y, por lo que envía diferencial sólo cambia.
+Después de **Confirmar**, puede iniciar la *Replicación inversa*. Esto iniciará la protección de la máquina virtual del entorno local a Azure. Tenga en cuenta que esto solo replicará los cambios, ya que la máquina virtual se ha desactivado en Azure y solo envía los cambios incrementales.

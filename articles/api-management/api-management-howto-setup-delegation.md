@@ -1,6 +1,6 @@
 ---
-title: "aaaHow toodelegate producto y registro de suscripción del usuario"
-description: "Obtenga información acerca de cómo tooa de suscripción de producto y de registro del usuario toodelegate de terceros en la administración de API de Azure."
+title: "Delegación de registros de usuario y suscripciones a producto"
+description: "Obtenga información acerca de cómo delegar el registro de usuario y la suscripción de producto un tercero en la administración de la API de Azure."
 services: api-management
 documentationcenter: 
 author: antonba
@@ -14,122 +14,122 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 406648db2d2f37c4dcda466294726d331cc0551b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 2637ab6405f2d4ea1da84981295a144874dfa4f6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-toodelegate-user-registration-and-product-subscription"></a>La suscripción de producto y de registro de usuario toodelegate
-La delegación permite toouse su sitio Web existente para controlar tooproducts de inicio de sesión-en/sesión-up y suscripción de desarrollador como opone funcionalidad integrada de toousing hello en el portal para desarrolladores de Hola. Esto permite que los datos de usuario de sitio Web tooown hello y realizar la validación de Hola de estos pasos de una manera personalizada.
+# <a name="how-to-delegate-user-registration-and-product-subscription"></a>Delegación de registros de usuario y suscripciones a producto
+La delegación le permite usar su sitio web actual para controlar el inicio de sesión y la suscripción de los desarrolladores, así como sus suscripciones a productos, en contraposición al uso de la funcionalidad integrada en el portal para desarrolladores. Esto habilita su sitio web como propietario de los datos de usuario para poder realizar la validación de estos pasos de forma personalizada.
 
 ## <a name="delegate-signin-up"></a>Delegación de inicios de sesión y suscripciones de desarrolladores
-toodelegate developer tooyour de inicio de sesión y suscripción a un sitio Web existente que deberá toocreate un punto de conexión de delegación especial en el sitio que actúa como Hola punto de entrada para cualquiera de esas solicitudes iniciada desde el portal para desarrolladores de administración de API de Hola.
+Para delegar el inicio de sesión y la suscripción de los desarrolladores a su sitio web actual, deberá crear un extremo especial de delegación en el sitio que funcione como punto de entrada de cualquier solicitud de este tipo que se inicie en el portal para desarrolladores de Administración de API.
 
-flujo de trabajo de Hello final será la siguiente:
+El flujo de trabajo final será el siguiente:
 
-1. Desarrollador hace clic en el vínculo de inicio de sesión o regístrese hello en hello portal de administración de API para desarrolladores
-2. Browser es el punto de conexión de toohello redirigida delegación
-3. Punto de conexión de la delegación de vuelta redirige tooor presenta interfaz de usuario que se pregunta usuario toosign en o inicio de sesión
-4. Si se ejecuta correctamente, el usuario de hello es página de portal redirigida toohello back-administración de API para desarrolladores que inició desde
+1. El desarrollador hace clic en el enlace de inicio de sesión o de suscripción que se encuentra en el portal para desarrolladores de Administración de API.
+2. El explorador se redirige al extremo de delegación.
+3. Como respuesta, el extremo de delegación se redirige a la interfaz de usuario o la presenta para pedir al usuario que inicie sesión o se suscriba.
+4. Una vez conseguido, se redirige de nuevo al usuario a la página del portal para desarrolladores de Administración de API de la que partió.
 
-toobegin, vamos a primera tooroute de administración de API de instalación solicita a través de su punto de conexión de la delegación. En el portal para desarrolladores de administración de API hello, haga clic en **seguridad** y, a continuación, haga clic en hello **delegación** ficha. Haga clic en tooenable de casilla de verificación de hello 'Delegate inicio de sesión & inicio de sesión'.
+Para empezar, configuremos primero Administración de API para que dirija las solicitudes a través del extremo de delegación. En el portal para editores de API Management, haga clic en **Seguridad** y, a continuación, haga clic en la pestaña **Delegación**. Haga clic en la casilla para activar "Delegar inicio de sesión y suscripción".
 
 ![Delegation page][api-management-delegation-signin-up]
 
-* Decidir cómo se pueden y escríbala de nuevo en Hola Hola URL de su punto de conexión de delegación especial **dirección URL del extremo de delegación** campo. 
-* Dentro de hello **clave de autenticación de delegación** campo Escriba un secreto que será usado toocompute un tooyou firma proporcionado para comprobación tooensure que Hola solicitud procede realmente de administración de API de Azure. Puede hacer clic en hello **generar** botón toohave API Managemnet generar de forma aleatoria una clave para usted.
+* Determine cuál será la dirección URL del extremo especial de delegación y escríbala en el campo **Dirección URL del extremo de delegación** . 
+* En el campo **Clave de autenticación de delegación** , escriba el secreto que se usará para procesar una firma suministrada para su comprobación con objeto de garantizar que la solicitud procede efectivamente de Administración de API de Azure. Puede hacer clic en el botón **generar** para que Administración de API genere de forma aleatoria una clave en su lugar.
 
-Ahora deberá hello toocreate **punto de conexión de delegación**. Tiene una serie de acciones tooperform:
+Ahora debe crear el **extremo de delegación**. Este tiene que realizar varias acciones:
 
-1. Recibe una solicitud en hello siguiente forma:
+1. Recibir una solicitud de la forma siguiente:
    
    > *http://www.yourwebsite.com/apimdelegation?operation=SignIn&amp;returnUrl={URL de la página de origen}&amp;salt={string}&amp;sig={string}*
    > 
    > 
    
-    Parámetros de consulta para el caso de inicio de sesión / registro de hello:
+    Parámetros de consulta en el caso de inicio de sesión o suscripción:
    
    * **operation**: identifica el tipo de solicitud de delegación del que se trata. Solo puede ser **SignIn** en este caso.
-   * **returnUrl**: Hola dirección URL de página de Hola donde ha hecho clic el usuario de hello en un vínculo de inicio de sesión o regístrese
+   * **returnUrl**: la dirección URL de la página en la que el usuario hizo clic en un vínculo de suscripción o de inicio de sesión.
    * **salt**: una cadena salt especial que se usa para procesar un hash de seguridad
-   * **SIG**: un toobe de hash calculado de seguridad utilizado para la comparación tooyour propio algoritmo hash calculado
-2. Compruebe que la solicitud Hola procede de administración de API de Azure (opcional, pero muy recomendado para la seguridad)
+   * **sig**: un hash de seguridad procesado que se comparará con su propio hash procesado
+2. Compruebe que la solicitud procede de Administración de API de Azure (opcional, pero especialmente recomendado por motivos de seguridad).
    
-   * Calcular un hash HMAC-SHA512 de una cadena basándose en hello **returnUrl** y **"salt"** parámetros de consulta ([código de ejemplo se proporciona a continuación]):
+   * Procese un hash HMAC-SHA512 de una cadena según los parámetros de consulta **returnUrl** y **salt** ([se proporciona código de ejemplo a continuación]):
      
      > HMAC(**salt** + '\n' + **returnUrl**)
      > 
      > 
-   * Comparar Hola hash calculado anteriormente toohello valor de hello **sig** parámetro de consulta. Si dos valores de hello coinciden, mueve en toohello siguiente paso, en caso contrario denegar la solicitud de Hola.
-3. Comprobar que se recibe una solicitud de inicio de sesión, en/Inicio de sesión y arriba: Hola **operación** demasiado se establecerá el parámetro de consulta "**SignIn**".
-4. Usuario de hello presente con interfaz de usuario en toosign o regístrese
-5. Si el usuario de hello es registrarse tiene toocreate una cuenta correspondiente para ellos en administración de API. [Crear un usuario] con hello API de REST de administración. Al hacerlo, asegúrese de establecer toohello de Id. de usuario de hello mismo está en el almacén de usuario o identificador tooan que puede realizar un seguimiento de.
-6. Cuando el usuario de Hola se autentica correctamente:
+   * Compare el hash procesado anteriormente con el valor del parámetro de consulta **sig** . Si los dos hashes coinciden, vaya a paso siguiente; de lo contrario, deniegue la solicitud.
+3. Compruebe que ha recibido una solicitud para inicio de sesión/suscripción: el parámetro de consulta **operation** se establecerá en "**SignIn**".
+4. Presente al usuario la interfaz de usuario para que inicie sesión o se suscriba.
+5. Si el usuario se suscribe, hay que crear la cuenta correspondiente en Administración de API. [Cree un usuario] con la API de REST de Administración de API. Al hacerlo, asegúrese de que el identificador de usuario se establece en el mismo que existe en su almacén de usuario o en un identificador al que pueda realizar el seguimiento.
+6. Cuando el usuario se autentique correctamente:
    
-   * [solicitar un token de inicio de sesión único (SSO)] a través de hello API de REST de administración
-   * anexe un parámetro de consulta returnUrl toohello dirección URL de SSO que ha recibido de la llamada de API de hello anterior:
+   * [solicite un token de inicio de sesión único (SSO)] a través de la API de REST de Administración de API
+   * anexe un parámetro de consulta returnUrl a la URL de SSO que se recibió de la llamada de API anterior:
      
      > por ejemplo, https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
      > 
      > 
-   * redirigir hello toohello de usuario por encima de la dirección URL generado
+   * redirija al usuario a la URL producida anteriormente
 
-En suma toohello **SignIn** operación, también puede realizar la administración de cuentas siguiendo los pasos anteriores de Hola y utilizando una de las siguientes operaciones de Hola.
+Además de la operación **SignIn** , también puede realizar la administración de cuentas siguiendo los pasos anteriores y utilizando una de las siguientes operaciones.
 
 * **ChangePassword**
 * **ChangeProfile**
 * **CloseAccount**
 
-Debe pasar Hola después de parámetros de consulta para las operaciones de administración de cuenta.
+Debe pasar los siguientes parámetros de consulta para las operaciones de administración de cuenta.
 
 * **operation**: identifica qué tipo de solicitud de delegación es (ChangePassword, ChangeProfile o CloseAccount)
-* **userId**: Id. de usuario de Hola de hello cuenta toomanage
+* **userId**: el identificador de usuario de la cuenta para administrar
 * **salt**: una cadena salt especial que se usa para procesar un hash de seguridad
-* **SIG**: un toobe de hash calculado de seguridad utilizado para la comparación tooyour propio algoritmo hash calculado
+* **sig**: un hash de seguridad procesado que se comparará con su propio hash procesado
 
 ## <a name="delegate-product-subscription"></a>Delegación de suscripciones a productos
-Delegar la suscripción del producto funciona de forma similar toodelegating usuario inicio de sesión/vertical. flujo de trabajo final Hola sería como sigue:
+La delegación de una suscripción a productos funciona de forma similar a la delegación de inicio de sesión y suscripción de usuario. El flujo de trabajo final sería el siguiente:
 
-1. Desarrollador selecciona un producto en el portal para desarrolladores de administración de API de Hola y hace clic en el botón de suscripción de Hola
-2. Browser es el punto de conexión de toohello redirigida delegación
-3. Punto de conexión de delegación sigue los pasos de suscripción de producto requerido: se trata de una tooyou y puede implicar la redirección toorequest tooanother de página información de facturación, hacer preguntas adicionales, o simplemente almacenar información de hello y no requiere ninguna acción del usuario
+1. El desarrollador selecciona un producto en el portal para desarrolladores de Administración de API y hace clic en el botón Suscribir.
+2. El explorador se redirige al extremo de delegación.
+3. El extremo de delegación realiza los pasos necesarios para la suscripción al producto: esto depende de usted, y puede que implique la redirección a otra página para solicitar información de facturación, la formulación de otras preguntas o simplemente el almacenamiento de la información sin que se requiera ninguna acción del usuario.
 
-funcionalidad de hello tooenable, en hello **delegación** página haga clic en **delegar la suscripción del producto**.
+Para habilitar la funcionalidad, en la página **Delegación**, haga clic en **Delegar suscripción de productos**.
 
-A continuación, asegúrese de punto de conexión de la delegación de hello realiza Hola siguientes acciones:
+A continuación, asegúrese de que el extremo de delegación realiza las siguientes acciones:
 
-1. Recibe una solicitud en hello siguiente forma:
+1. Recibir una solicitud de la forma siguiente:
    
-   > *{operación} http://www.yourwebsite.com/apimdelegation?Operation= & productId = {toosubscribe de producto a} & userId = {user realizar solicitud} & "salt" = {cadena} & sig = {cadena}*
+   > *http://www.yourwebsite.com/apimdelegation?operation={operación}&amp;productId={producto al que se suscribe}&amp;userId={usuario que realiza la solicitud}&amp;salt={cadena}&amp;sig={cadena}*
    > 
    > 
    
-    Parámetros de consulta para el caso de suscripción de producto de hello:
+    Parámetros de consulta en el caso de suscripción a producto:
    
-   * **operation**: identifica el tipo de solicitud de delegación del que se trata. Para la suscripción de producto solicitudes hello las opciones válidas son:
-     * "Suscribirse": un tooa de usuario de solicitud toosubscribe Hola dada del producto con proporciona ID (ver abajo)
-     * "Unsubscribe": un toounsubscribe un usuario de un producto de solicitud
-     * "Renovar": un toorenew solicitud una suscripción (por ejemplo, que puede expirar)
-   * **productId**: Id. de saludo del usuario de Hola de producto de hello solicitado toosubscribe a
-   * **userId**: Hola Id. de usuario de hello para el que se realiza la solicitud de Hola
+   * **operation**: identifica el tipo de solicitud de delegación del que se trata. En las solicitudes de suscripción a producto las opciones válidas son:
+     * "Subscribe": una solicitud para suscribir al usuario a un producto determinado con el id. especificado (consulte más información a continuación).
+     * "Unsubscribe": una solicitud para cancelar la suscripción de un usuario a un producto.
+     * "Renew": una solicitud para renovar una suscripción (p. ej., que esté a punto de expirar).
+   * **productId**: el id. del producto al que el usuario solicitó suscribirse.
+   * **userId**: el id. del usuario para el que se realiza la solicitud.
    * **salt**: una cadena salt especial que se usa para procesar un hash de seguridad
-   * **SIG**: un toobe de hash calculado de seguridad utilizado para la comparación tooyour propio algoritmo hash calculado
-2. Compruebe que la solicitud Hola procede de administración de API de Azure (opcional, pero muy recomendado para la seguridad)
+   * **sig**: un hash de seguridad procesado que se comparará con su propio hash procesado
+2. Compruebe que la solicitud procede de Administración de API de Azure (opcional, pero especialmente recomendado por motivos de seguridad).
    
-   * Calcular un HMAC-SHA512 de una cadena basándose en hello **productId**, **userId** y **"salt"** parámetros de consulta:
+   * Procesar un hash HMAC-SHA512 de una cadena en función de los parámetros de consulta **productId**, **userId** y **salt**:
      
      > HMAC(**salt** + '\n' + **productId** + '\n' + **userId**)
      > 
      > 
-   * Comparar Hola hash calculado anteriormente toohello valor de hello **sig** parámetro de consulta. Si dos valores de hello coinciden, mueve en toohello siguiente paso, en caso contrario denegar la solicitud de Hola.
-3. Realizar cualquier procesamiento de suscripción de producto según el tipo de saludo de la operación solicitada en **operación** -facturación p. ej., más preguntas, etcetera.
-4. Acerca de la suscripción correctamente toohello producto de usuario de hello en su lado, suscribirse el producto de administración de API de hello usuario toohello por [Hola que realiza la llamada API de REST para la suscripción de producto].
+   * Compare el hash procesado anteriormente con el valor del parámetro de consulta **sig** . Si los dos hashes coinciden, vaya a paso siguiente; de lo contrario, deniegue la solicitud.
+3. Realice cualquier procesamiento de la suscripción a producto en función del tipo de operación solicitada en **operation** ; por ejemplo, facturación, preguntas adicionales, etc.
+4. Tras la correcta suscripción del usuario al producto por su parte, suscriba al usuario al producto de Administración de API [llamando a la API de REST para la suscripción del producto].
 
 ## <a name="delegate-example-code"></a> Ejemplo de código
-Estos muestran ejemplos de código cómo hello tootake *clave de validación de delegación*, que se establece en pantalla de delegación de bienvenida del portal para desarrolladores de hello, toocreate un HMAC que es, a continuación, utiliza la firma de hello toovalidate, probar la validez de Hola de Hola returnUrl pasado. Hola mismo código funciona para productId hello y userId con ligeras modificaciones.
+Estos ejemplos de código muestran cómo aprovechar la *clave de validación de delegación*, que se establece en la pantalla de delegación del portal del publicador para crear un HMAC que se utiliza para validar la firma, probando la validez del valor returnUrl que se ha pasado. El mismo código funciona para productId y userId con pequeñas modificaciones.
 
-**C# código toogenerate hash returnUrl**
+**Código C# para generar el hash de returnUrl**
 
 ```c#
 using System.Security.Cryptography;
@@ -141,12 +141,12 @@ string signature;
 using (var encoder = new HMACSHA512(Convert.FromBase64String(key)))
 {
     signature = Convert.ToBase64String(encoder.ComputeHash(Encoding.UTF8.GetBytes(salt + "\n" + returnUrl)));
-    // change too(salt + "\n" + productId + "\n" + userId) when delegating product subscription
-    // compare signature toosig query parameter
+    // change to (salt + "\n" + productId + "\n" + userId) when delegating product subscription
+    // compare signature to sig query parameter
 }
 ```
 
-**NodeJS código hash de toogenerate de returnUrl**
+**Código NodeJS para generar el hash de returnUrl**
 
 ```
 var crypto = require('crypto');
@@ -157,14 +157,14 @@ var salt = 'salt query parameter';
 
 var hmac = crypto.createHmac('sha512', new Buffer(key, 'base64'));
 var digest = hmac.update(salt + '\n' + returnUrl).digest();
-// change too(salt + "\n" + productId + "\n" + userId) when delegating product subscription
-// compare signature toosig query parameter
+// change to (salt + "\n" + productId + "\n" + userId) when delegating product subscription
+// compare signature to sig query parameter
 
 var signature = digest.toString('base64');
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para obtener más información sobre la delegación, vea Hola después de vídeo.
+Para obtener más información acerca de la delegación, vea el siguiente vídeo.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Delegating-User-Authentication-and-Product-Subscription-to-a-3rd-Party-Site/player]
 > 
@@ -172,10 +172,10 @@ Para obtener más información sobre la delegación, vea Hola después de vídeo
 
 [Delegating developer sign-in and sign-up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
-[solicitar un token de inicio de sesión único (SSO)]: http://go.microsoft.com/fwlink/?LinkId=507409
+[solicite un token de inicio de sesión único (SSO)]: http://go.microsoft.com/fwlink/?LinkId=507409
 [Cree un usuario]: http://go.microsoft.com/fwlink/?LinkId=507655#CreateUser
-[Hola que realiza la llamada API de REST para la suscripción de producto]: http://go.microsoft.com/fwlink/?LinkId=507655#SSO
+[llamando a la API de REST para la suscripción del producto]: http://go.microsoft.com/fwlink/?LinkId=507655#SSO
 [Next steps]: #next-steps
-[código de ejemplo se proporciona a continuación]: #delegate-example-code
+[se proporciona código de ejemplo a continuación]: #delegate-example-code
 
 [api-management-delegation-signin-up]: ./media/api-management-howto-setup-delegation/api-management-delegation-signin-up.png 

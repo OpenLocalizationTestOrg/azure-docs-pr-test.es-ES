@@ -1,6 +1,6 @@
 ---
-title: "aaaSet un almacén para tooAzure de replicación (sin System Center VMM) de Hyper-V con Azure Site Recovery | Documentos de Microsoft"
-description: "Resume los pasos de hello necesita tooset un almacén para tooAzure de replicación de Hyper-V con Azure Site Recovery"
+title: "Configurar un almacén para la replicación de Hyper-V (sin System Center VMM) en Azure con Azure Site Recovery | Microsoft Docs"
+description: "Resume los pasos necesarios para configurar un almacén para la replicación de Hyper-V en Azure con Azure Site Recovery"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/22/2017
 ms.author: raynew
-ms.openlocfilehash: e3ef8758faab36d19d0968d98a23105bed7830f6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8212ff011633c3a89d3310e828b6d5f1cda6ce3f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="step-7-set-up-a-vault-for-hyper-v-replication"></a>Paso 7: configuración de un almacén para la replicación de Hyper-V
 
-Este artículo describe cómo tooset una copia de seguridad un almacén y especifique qué desea tooreplicate desde la ubicación local, tooAzure con hello [Azure Site Recovery](site-recovery-overview.md) servicio Hola portal de Azure.
+Este artículo describe cómo configurar un almacén y especificar qué se desea replicar desde la ubicación local en Azure mediante el servicio [Azure Site Recovery](site-recovery-overview.md) en Azure Portal.
 
 
-Envíe los comentarios y preguntas en parte inferior de este artículo, o en Hola de hello [foro de servicios de recuperación de Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Publique cualquier comentario o pregunta en la parte inferior de este artículo, o bien en el [foro de Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
-## <a name="create-a-recovery-services-vault"></a>Creación de un almacén de Recovery Services
+## <a name="create-a-recovery-services-vault"></a>Creación de un almacén de Servicios de recuperación
 
 [!INCLUDE [site-recovery-create-vault](../../includes/site-recovery-create-vault.md)]
 
@@ -35,11 +35,11 @@ Envíe los comentarios y preguntas en parte inferior de este artículo, o en Hol
 
 ## <a name="select-a-protection-goal"></a>Selección de un objetivo de protección
 
-Seleccione la acción que realizará tooreplicate, y donde quiera tooreplicate a.
+Seleccione aquello que desea replicar y la ubicación donde se va a realizar la replicación.
 
 1. Haga clic en **Almacenes de Recovery Services** > almacén.
-2. Hola recurso de menú, haga clic en **Site Recovery** > **preparar infraestructura** > **objetivo de protección**.
-3. En **objetivo de protección**, seleccione **tooAzure** > **Sí, con Hyper-V**. Seleccione **No** tooconfirm no usa VMM. 
+2. En el menú de recursos, haga clic en **Site Recovery** > **Preparar la infraestructura** > **Objetivo de protección**.
+3. En **Objetivo de protección**, seleccione **En Azure** > **Sí, con Hyper-V**. Seleccione **No** para confirmar que no usa VMM. 
 
     ![Elegir objetivos](./media/hyper-v-site-walkthrough-create-vault/choose-goals2.png)
 
@@ -47,4 +47,4 @@ Seleccione la acción que realizará tooreplicate, y donde quiera tooreplicate a
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Vaya demasiado[paso 8: configurar el origen y de destino](hyper-v-site-walkthrough-source-target.md)
+Vaya al [paso 8: configuración de los valores de origen y destino](hyper-v-site-walkthrough-source-target.md)

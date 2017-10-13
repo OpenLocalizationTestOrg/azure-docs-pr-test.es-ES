@@ -1,6 +1,6 @@
 ---
-title: "aaaSending tooiOS de notificaciones de inserción con centros de notificaciones de Azure | Documentos de Microsoft"
-description: "En este tutorial, aprenderá cómo toouse centros de notificaciones de Azure toosend push aplicación de iOS de tooan de notificaciones."
+title: "Envío de notificaciones push a iOS con los Azure Notification Hubs | Microsoft Docs"
+description: "En este tutorial aprenderá a usar Centros de notificaciones de Azure para enviar notificaciones push a una aplicación iOS."
 services: notification-hubs
 documentationcenter: ios
 keywords: "notificación push,notificaciones push,notificaciones push de ios"
@@ -15,40 +15,40 @@ ms.devlang: objective-c
 ms.topic: hero-article
 ms.date: 10/03/2016
 ms.author: yuaxu
-ms.openlocfilehash: d8bb47fee4c229b3ed2a7a4dbff25a56a7a7d009
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ab0777f859e80afcd61e371056b44d018c7b7ab9
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="sending-push-notifications-tooios-with-azure-notification-hubs"></a>Enviar tooiOS de notificaciones de inserción con centros de notificaciones de Azure
+# <a name="sending-push-notifications-to-ios-with-azure-notification-hubs"></a>Envío de notificaciones push a iOS con los Centros de notificaciones de Azure
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ## <a name="overview"></a>Información general
 > [!NOTE]
-> toocomplete este tutorial, debe tener una cuenta activa de Azure. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Para obtener más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-ios-get-started).
+> Para completar este tutorial, deberá tener una cuenta de Azure activa. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Para obtener más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-ios-get-started).
 > 
 > 
 
-Este tutorial muestra cómo toouse centros de notificaciones de Azure toosend push aplicación de iOS de tooan de notificaciones. Se creará una aplicación de iOS en blanco que recibe notificaciones de inserción mediante hello [servicio de notificaciones de inserción de Apple (APN)](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html). 
+Este tutorial muestra cómo puede utilizar los Centros de notificaciones de Azure para enviar notificaciones de inserción a una aplicación iOS. Creará una aplicación iOS vacía que recibe notificaciones push mediante el [Servicio de notificaciones push de Apple (APN)](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html). 
 
-Cuando haya terminado, podrá toouse capaz de su toobroadcast de base de datos central de notificaciones de inserción dispositivos Hola notificaciones tooall que ejecuta la aplicación.
+Cuando haya finalizado, podrá usar el centro de notificaciones para difundir notificaciones push a todos los dispositivos que ejecutan su aplicación.
 
 ## <a name="before-you-begin"></a>Antes de empezar
 [!INCLUDE [notification-hubs-hero-slug](../../includes/notification-hubs-hero-slug.md)]
 
-código de Hello completado para este tutorial se puede encontrar [en GitHub](https://github.com/Azure/azure-notificationhubs-samples/tree/master/iOS/GetStartedNH/GetStarted). 
+El código completo de este tutorial se puede encontrar [en GitHub](https://github.com/Azure/azure-notificationhubs-samples/tree/master/iOS/GetStartedNH/GetStarted). 
 
 ## <a name="prerequisites"></a>Requisitos previos
-Este tutorial requiere siguiente de hello:
+Este tutorial requiere lo siguiente:
 
-* [servicios móviles iOS SDK versión 1.2.4]
+* [SDK de iOS versión 1.2.4 para Servicios móviles]
 * La versión más reciente de [Xcode]
 * Un dispositivo compatible con iOS 8 (o una versión posterior)
-* [programa para desarrolladores de Apple](https://developer.apple.com/programs/)
+* [programa para desarrolladores de Apple](https://developer.apple.com/programs/) 
   
   > [!NOTE]
-  > Debido a los requisitos de configuración para las notificaciones de inserción, debe implementar y probar las notificaciones de inserción en un dispositivo físico iOS (iPhone o iPad) en lugar de simulador de iOS de Hola.
+  > Debido a los requisitos de configuración de las notificaciones push, debe implementar y probar estas en un dispositivo iOs físico (iPhone o iPad) en lugar de en el simulador de iOS.
   > 
   > 
 
@@ -57,7 +57,7 @@ La realización de este tutorial es un requisito previo para todos los demás tu
 [!INCLUDE [Notification Hubs Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
 
 ## <a name="configure-your-notification-hub-for-ios-push-notifications"></a>Configuración del Centro de notificaciones para notificaciones push de iOS
-En esta sección le guía a través de la creación de un nuevo centro de notificaciones y configurar la autenticación con APNS mediante hello **. p12** certificado de inserción que creó. Si desea toouse un centro de notificaciones que ya haya creado, puede omitir toostep 5.
+Esta sección le guía en la creación de un nuevo centro de notificaciones y la configuración de la autenticación con APNS mediante el certificado de inserción **.p12** que creó. Si desea usar un centro de notificaciones ya creado, puede omitir los pasos hasta el paso 5.
 
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
@@ -65,53 +65,53 @@ En esta sección le guía a través de la creación de un nuevo centro de notifi
 
 <li>
 
-<p>Haga clic en hello <b>Notification Services</b> botón en hello <b>configuración</b> blade, a continuación, seleccione <b>Apple (APN)</b>. Haga clic en <b>cargar certificado</b> y seleccione hello <b>. p12</b> archivo que exportó anteriormente. Asegúrese de que también especificar contraseña correcta Hola.</p>
+<p>Haga clic en el botón <b>Servicios de notificaciones</b> en la hoja <b>Configuración</b> y, después, seleccione <b>Apple (APNs)</b>. Haga clic en <b>Cargar certificado</b> y seleccione el archivo <b>.p12</b> que exportó anteriormente. Asegúrese de que también especifica la contraseña correcta.</p>
 
-<p>Asegúrese de que tooselect <b>espacio aislado</b> modo ya que esto es para el desarrollo. Usar solo hello <b>producción</b> si desea toousers de notificaciones de inserción de toosend que han adquirido la aplicación desde el almacén de Hola.</p>
+<p>Asegúrese de seleccionar el modo <b>Espacio aislado</b> ya que esto es para desarrollo. Use el modo <b>Producción</b> únicamente si desea enviar notificaciones de inserción a los usuarios que compraron la aplicación en la tienda.</p>
 </li>
 </ol>
 &emsp;&emsp;&emsp;&emsp;![Configurar APN en Portal de Azure](./media/notification-hubs-ios-get-started/notification-hubs-apple-config.png)
 
 &emsp;&emsp;&emsp;&emsp;![Configuración de certificados APNs en el Portal de Azure](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
 
-El centro de notificaciones está ahora configurado toowork con APNS, y tiene la aplicación de tooregister de cadenas de conexión de Hola y enviar notificaciones de inserción.
+Su centro de notificaciones está ahora configurado para funcionar con APNS, y tiene las cadenas de conexión para registrar su aplicación y enviar notificaciones push.
 
-## <a name="connect-your-ios-app-toonotification-hubs"></a>Conectar su tooNotification de aplicación de iOS centros
-1. En Xcode, cree un nuevo proyecto de iOS y seleccione hello **única aplicación de vista** plantilla.
+## <a name="connect-your-ios-app-to-notification-hubs"></a>Conexión de la aplicación iOS a los Centros de notificaciones
+1. En XCode, cree un nuevo proyecto iOS y seleccione la plantilla **Single View Application** (Aplicación de vista sencilla).
    
     ![Xcode: aplicación de vista única][8]
     
-2. Al configurar las opciones de hello para el proyecto nuevo, asegúrese de que toouse Hola mismo **Product Name** y **identificador de la organización** que ha usado al establecidos previamente Id. del lote de hello en hello para desarrolladores de Apple Portal.
+2. Al configurar las opciones para su nuevo proyecto, asegúrese de usar el mismo **nombre de producto** e **identificador de organización** que usó cuando estableció anteriormente el identificador de paquete en el portal de desarrollo de Apple.
    
     ![Xcode: opciones de proyecto][11]
     
-3. En **destinos**, haga clic en el nombre del proyecto, haga clic en hello **configuración de generación** pestaña y expanda **identidad de firma de código**y, a continuación, en **depurar**, establecer la identidad de firma de código. Alternar **niveles** de **básica** demasiado**todos los**y establezca **perfil de aprovisionamiento de** toohello perfil que creó previamente de aprovisionamiento .
+3. En **Targets** (Destinos), haga clic en el nombre de proyecto, luego haga clic en la pestaña **Build Settings** (Compilar configuración) y expanda **Code Signing Identity** (Identidad de firma de código); a continuación, en **Debug** (Depurar), establezca la identidad de firma de código. Alterne los **niveles** entre **Basic** (Básico) hasta **All** (Todos) y establezca el **perfil de aprovisionamiento** en el perfil de aprovisionamiento que creó anteriormente.
    
-    Si no ve Hola nuevo perfil que creó en Xcode de aprovisionamiento, pruebe a actualizar los perfiles de hello para la identidad de firma. Haga clic en **Xcode** en la barra de menús de hello, haga clic en **preferencias**, haga clic en hello **cuenta** , haga clic en hello **ver detalles** botón, haga clic en el identidad de firma y, a continuación, haga clic en el botón de actualización de hello en la esquina inferior derecha de Hola.
+    Si no ve el nuevo perfil de aprovisionamiento que creó en Xcode, intente actualizar los perfiles de la identidad de firma. Haga clic en **Xcode** en la barra de menús, en **Preferences** (Preferencias), en la pestaña **Account** (Cuenta), en el botón **View Details** (Ver detalles), en la identidad de firma y, por último, en el botón Refresh (Actualizar) en la esquina inferior derecha.
    
     ![Xcode: perfil de aprovisionamiento][9]
-4. Descargar hello [servicios móviles iOS SDK versión 1.2.4] y descomprima el archivo hello. En Xcode, haga clic en el proyecto y haga clic en hello **agregar archivos a** Hola de opción tooadd **WindowsAzureMessaging.framework** proyecto de Xcode tooyour de carpeta. Seleccione **Copy items if needed** (Copiar elementos si es necesario) y luego haga clic en **Add** (Agregar).
+4. Descargue el [SDK de iOS versión 1.2.4 para Servicios móviles] y descomprima el archivo. En XCode, haga clic con el botón derecho en el proyecto y haga clic en la opción **Add Files to** (Agregar archivos a) para agregar la carpeta **WindowsAzureMessaging.framework** al proyecto de XCode. Seleccione **Copy items if needed** (Copiar elementos si es necesario) y luego haga clic en **Add** (Agregar).
    
    > [!NOTE]
-   > centros de notificaciones de Hello SDK no admite actualmente bitcode en Xcode 7.  Debe establecer **habilitar Bitcode** demasiado**No** en hello **opciones de compilación** para el proyecto.
+   > El SDK de los Centros de notificaciones no es compatible con bitcode en Xcode 7.  Debe establecer **Enable Bitcode** (Habilitar Bitcode) en **No** en **Build Options** (Opciones de compilación) en el proyecto.
    > 
    > 
    
     ![Descompresión del SDK de Azure][10]
-5. Agregue un nuevo proyecto de tooyour de archivo de encabezado denominado `HubInfo.h`. Este archivo contendrá constantes de hello para el centro de notificaciones.  Agregar Hola siguiendo las definiciones y reemplace los marcadores de literal de cadena de hello con su *nombre del concentrador* hello y *DefaultListenSharedAccessSignature* que anotó anteriormente.
+5. Agregue un nuevo archivo de encabezado al proyecto denominado `HubInfo.h`. Este archivo contendrá las constantes para el centro de notificaciones.  Agregue las siguientes definiciones y reemplace los marcadores de posición de literal de cadena por su *nombre del centro* y el valor de *DefaultListenSharedAccessSignature* que anotó anteriormente.
    
         #ifndef HubInfo_h
         #define HubInfo_h
    
-            #define HUBNAME @"<Enter hello name of your hub>"
+            #define HUBNAME @"<Enter the name of your hub>"
             #define HUBLISTENACCESS @"<Enter your DefaultListenSharedAccess connection string"
    
         #endif /* HubInfo_h */
-6. Abra su `AppDelegate.h` archivo agregar Hola siguiendo las directivas de importación:
+6. Abra el archivo `AppDelegate.h` y agregue las siguientes directivas de importación:
    
          #import <WindowsAzureMessaging/WindowsAzureMessaging.h> 
          #import "HubInfo.h"
-7. En su `AppDelegate.m file`, agregar Hola después el código de hello `didFinishLaunchingWithOptions` método en función de su versión de iOS. Este código registra el identificador de dispositivo en APNS:
+7. En el archivo `AppDelegate.m file`, agregue el siguiente código al método `didFinishLaunchingWithOptions` en función de la versión de iOS. Este código registra el identificador de dispositivo en APNS:
    
     Para iOS 8:
    
@@ -121,10 +121,10 @@ El centro de notificaciones está ahora configurado toowork con APNS, y tiene la
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
         [[UIApplication sharedApplication] registerForRemoteNotifications];
    
-    Para too8 anteriores versiones de iOS:
+    Para la versión de iOS antes de la 8:
    
          [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound];
-8. En Hola el mismo archivo, agregue Hola siguiendo métodos. Este código conecta toohello centro de notificaciones utilizando información de conexión de Hola que especificó en HubInfo.h. A continuación, ofrece centro de notificaciones de token toohello de dispositivo de Hola para que hello centro de notificaciones puede enviar notificaciones:
+8. En el mismo archivo, agregue los siguientes métodos. Este código se conecta al centro de notificaciones usando la información de conexión especificada en HubInfo.h. Luego proporciona el token del dispositivo al centro de notificaciones para que el centro de notificaciones pueda enviar notificaciones:
    
         - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *) deviceToken {
             SBNotificationHub* hub = [[SBNotificationHub alloc] initWithConnectionString:HUBLISTENACCESS
@@ -146,40 +146,40 @@ El centro de notificaciones está ahora configurado toowork con APNS, y tiene la
                 cancelButtonTitle:@"OK" otherButtonTitles: nil];
             [alert show];
         }
-9. En Hola el mismo archivo, agregue Hola siguiendo el método toodisplay una **UIAlert** si se recibe la notificación de hello mientras está activa la aplicación hello:
+9. En el mismo archivo, agregue el siguiente método para mostrar una **UIAlert** si la notificación se recibe mientras la aplicación está activa:
 
         - (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
             NSLog(@"%@", userInfo);
             [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
         }
 
-1. Compile y ejecute la aplicación hello en su tooverify de dispositivo que no hay ningún error.
+1. Compile y ejecute la aplicación en el dispositivo para comprobar si hay errores.
 
 ## <a name="send-test-push-notifications"></a>Prueba de envío de las notificaciones push
-Puede probar recibir notificaciones en la aplicación mediante el envío de notificaciones de inserción en hello [Portal de Azure] a través de hello **solución de problemas** sección en la hoja de la base de datos central de hello (usar hello *probar envío* opción).
+Para probar la recepción de notificaciones en la aplicación, envíe notificaciones push en el [Portal de Azure] a través de la sección **Solución del problemas** en la hoja del centro de notificaciones (utilice la opción *Envío de prueba* ).
 
 ![Portal de Azure: envío de prueba][30]
 
 [!INCLUDE [notification-hubs-sending-notifications-from-the-portal](../../includes/notification-hubs-sending-notifications-from-the-portal.md)]
 
-## <a name="optional-send-push-notifications-from-hello-app"></a>(Opcional) Enviar notificaciones de inserción de la aplicación hello
+## <a name="optional-send-push-notifications-from-the-app"></a>(Opcional) Envío de notificaciones push desde la aplicación
 > [!IMPORTANT]
-> Este ejemplo de envío de notificaciones de la aplicación de cliente de hello se proporciona con fines de aprendizaje. Puesto que esto requerirá hello `DefaultFullSharedAccessSignature` toobe presente en la aplicación de cliente de hello, expone el riesgo de toohello de concentrador de notificación que un usuario puede obtener acceso no autorizado de toosend notificaciones tooyour clientes.
+> Este ejemplo sobre el envío de notificaciones desde la aplicación cliente se ha diseñado exclusivamente con fines informativos. `DefaultFullSharedAccessSignature` deberá estar presente en la aplicación cliente, lo que supone un riesgo para el Centro de notificaciones, ya que un usuario podría obtener acceso para enviar notificaciones no autorizadas a los clientes.
 > 
 > 
 
-Si desea que las notificaciones de inserción toosend desde dentro de una aplicación, esta sección proporciona un ejemplo de cómo toodo esta mediante Hola interfaz REST.
+Si desea enviar notificaciones push desde dentro de una aplicación, esta sección le proporciona un ejemplo de cómo hacerlo mediante la interfaz REST.
 
-1. En Xcode, abra `Main.storyboard` y agregue Hola siguientes componentes de interfaz de usuario de hello objeto biblioteca tooallow Hola usuario toosend notificaciones de inserción en la aplicación hello:
+1. En XCode, abra `Main.storyboard` y agregue los siguientes componentes de interfaz de usuario de la biblioteca de objetos para permitir que el usuario envíe notificaciones push en la aplicación:
    
-   * Una etiqueta sin texto de etiqueta. Será usado tooreport errores en el envío de notificaciones. Hola **líneas** propiedad debe establecerse demasiado**0** para que ajustará automáticamente el tamaño toohello restringida derecha y los márgenes izquierdos y parte superior de Hola de vista de Hola.
-   * Un campo de texto con **marcador de posición** texto se establece demasiado**escribir mensaje de notificación**. Restringir campo Hola justo debajo de la etiqueta de hello tal y como se muestra a continuación. Establecer Hola View Controller como delegado de toma de corriente de Hola.
-   * Un botón denominado **enviar notificación** limitada justo debajo de campo de texto de Hola y en el centro de hello horizontal.
+   * Una etiqueta sin texto de etiqueta. Se usará para notificar errores al enviar notificaciones. La propiedad **Lines** se debe establecer en **0** para que el tamaño se ajuste automáticamente a los márgenes derecho e izquierdo y a la parte superior de la vista.
+   * Un campo de texto con el texto de **Placeholder** (Marcador de posición) establecido en **Enter Notification Message** (Escribir mensaje de notificación). Restrinja el campo justo debajo de la etiqueta, tal como se muestra a continuación. Establezca el Controlador de vista como delegado de salida.
+   * Un botón llamado **Send Notification** (Enviar notificación) se restringió justo debajo del campo de texto y horizontalmente en el centro.
      
-     vista de Hello debe ser similar al siguiente:
+     La vista debe tener el aspecto siguiente:
      
      ![Diseñador de Xcode][32]
-2. [Agregar salidas](https://developer.apple.com/library/ios/recipes/xcode_help-IB_connections/chapters/CreatingOutlet.html) de campo de etiqueta y el texto hello conectado a la vista y actualizar su `interface` definición toosupport `UITextFieldDelegate` y `NSXMLParserDelegate`. Agregue tres declaraciones de propiedad Hola que se muestra por debajo del soporte de toohelp llamando a Hola API de REST y analizar la respuesta de Hola.
+2. [Agregue salidas](https://developer.apple.com/library/ios/recipes/xcode_help-IB_connections/chapters/CreatingOutlet.html) para la etiqueta y el campo de texto conectados a la vista y actualice la definición `interface` para que admita `UITextFieldDelegate` y `NSXMLParserDelegate`. Agregue las tres declaraciones de propiedades que se muestran a continuación para ayudar a admitir la llamada a la API de REST y el análisis de la respuesta.
    
     El archivo ViewController.h debe tener el aspecto siguiente:
    
@@ -190,7 +190,7 @@ Si desea que las notificaciones de inserción toosend desde dentro de una aplica
             NSXMLParser *xmlParser;
         }
    
-        // Make sure these outlets are connected tooyour UI by ctrl+dragging
+        // Make sure these outlets are connected to your UI by ctrl+dragging
         @property (weak, nonatomic) IBOutlet UITextField *notificationMessage;
         @property (weak, nonatomic) IBOutlet UILabel *sendResults;
    
@@ -198,15 +198,15 @@ Si desea que las notificaciones de inserción toosend desde dentro de una aplica
         @property (copy, nonatomic) NSString *currentElement;
    
         @end
-3. Abra `HubInfo.h` y agregue Hola después de constantes que se usará para el envío de concentrador de tooyour de notificaciones. Reemplace el literal de cadena de marcador de posición de Hola por su real *DefaultFullSharedAccessSignature* cadena de conexión.
+3. Abra `HubInfo.h` y agregue las siguientes constantes que se usarán para enviar notificaciones a su centro. Reemplace el literal de cadena del marcador de posición por la cadena de conexión *DefaultFullSharedAccessSignature* real.
    
         #define API_VERSION @"?api-version=2015-01"
         #define HUBFULLACCESS @"<Enter Your DefaultFullSharedAccess Connection string>"
-4. Agregue los siguiente hello `#import` instrucciones tooyour `ViewController.h` archivo.
+4. Agregue las siguientes instrucciones `#import` al archivo `ViewController.h`.
    
         #import <CommonCrypto/CommonHMAC.h>
         #import "HubInfo.h"
-5. En `ViewController.m` agregue Hola después de la implementación de interfaz de toohello de código. Este código analizará la cadena de conexión *DefaultFullSharedAccessSignature* . Como se mencionó en hello [referencia de la API de REST](http://msdn.microsoft.com/library/azure/dn495627.aspx), esta información analizada será toogenerate usa un token de SaS para hello **autorización** encabezado de solicitud.
+5. En `ViewController.m` , agregue el siguiente código a la implementación de la interfaz. Este código analizará la cadena de conexión *DefaultFullSharedAccessSignature* . Como se mencionó en la [Referencia de la API de REST](http://msdn.microsoft.com/library/azure/dn495627.aspx), esta información analizada se usará para generar un token SaS para el encabezado de la solicitud **Autorización** .
    
         NSString *HubEndpoint;
         NSString *HubSasKeyName;
@@ -241,7 +241,7 @@ Si desea que las notificaciones de inserción toosend desde dentro de una aplica
                 }
             }
         }
-6. En `ViewController.m`, actualización hello `viewDidLoad` cadena de conexión de Hola de método tooparse cuando se carga la vista de Hola. Agregar métodos de utilidad de hello, se muestra a continuación, implementación de la interfaz de toohello.  
+6. En `ViewController.m`, actualice el método `viewDidLoad` para analizar la cadena de conexión cuando se cargue la vista. Agregue los métodos de utilidad que se muestran a continuación a la implementación de la interfaz.  
 
         - (void)viewDidLoad
         {
@@ -267,7 +267,7 @@ Si desea que las notificaciones de inserción toosend desde dentro de una aplica
 
 
 
-1. En `ViewController.m`, agregar Hola después código toohello interfaz implementación toogenerate Hola autorización token de SaS que se proporcionará en hello **autorización** encabezado, tal y como se mencionó en hello [API de REST Referencia](http://msdn.microsoft.com/library/azure/dn495627.aspx).
+1. En `ViewController.m`, agregue el código siguiente a la implementación de interfaz para generar el token de autorización SaS que se proporcionará en el encabezado **Authorization** (Autorización) tal como se mencionó en la [Referencia de la API de REST](http://msdn.microsoft.com/library/azure/dn495627.aspx).
    
         -(NSString*) generateSasToken:(NSString*)uri
         {
@@ -288,7 +288,7 @@ Si desea que las notificaciones de inserción toosend desde dentro de una aplica
                 UInt64 expires = trunc(expiresOnDate);
                 NSString* toSign = [NSString stringWithFormat:@"%@\n%qu", targetUri, expires];
    
-                // Get an hmac_sha1 Mac instance and initialize with hello signing key
+                // Get an hmac_sha1 Mac instance and initialize with the signing key
                 const char *cKey  = [HubSasKeyValue cStringUsingEncoding:NSUTF8StringEncoding];
                 const char *cData = [toSign cStringUsingEncoding:NSUTF8StringEncoding];
                 unsigned char cHMAC[CC_SHA256_DIGEST_LENGTH];
@@ -314,7 +314,7 @@ Si desea que las notificaciones de inserción toosend desde dentro de una aplica
    
             return token;
         }
-2. CTRL + arrastrar de Hola **enviar notificación** botón demasiado`ViewController.m` tooadd una acción denominada **SendNotificationMessage** para hello **Touch hacia abajo** eventos. Método de actualización con hello siguientes a la notificación de hello toosend de código mediante la API de REST de Hola.
+2. Presione Ctrl y arrastre desde el botón **Enviar notificación** hasta `ViewController.m` a fin de agregar una acción denominada **SendNotificationMessage** para el evento **Touch Down**. Método de actualización con el código siguiente para enviar la notificación mediante la API de REST.
    
         - (IBAction)SendNotificationMessage:(id)sender
         {
@@ -328,18 +328,18 @@ Si desea que las notificaciones de inserción toosend desde dentro de una aplica
                              sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
                              delegate:nil delegateQueue:nil];
    
-            // Apple Notification format of hello notification message
+            // Apple Notification format of the notification message
             NSString *json = [NSString stringWithFormat:@"{\"aps\":{\"alert\":\"%@\"}}",
                                 self.notificationMessage.text];
    
-            // Construct hello message's REST endpoint
+            // Construct the message's REST endpoint
             NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@/messages/%@", HubEndpoint,
                                                 HUBNAME, API_VERSION]];
    
-            // Generate hello token toobe used in hello authorization header
+            // Generate the token to be used in the authorization header
             NSString* authorizationToken = [self generateSasToken:[url absoluteString]];
    
-            //Create hello request tooadd hello APNs notification message toohello hub
+            //Create the request to add the APNs notification message to the hub
             NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
             [request setHTTPMethod:@"POST"];
             [request setValue:@"application/json;charset=utf-8" forHTTPHeaderField:@"Content-Type"];
@@ -347,13 +347,13 @@ Si desea que las notificaciones de inserción toosend desde dentro de una aplica
             // Signify Apple notification format
             [request setValue:@"apple" forHTTPHeaderField:@"ServiceBusNotification-Format"];
    
-            //Authenticate hello notification message POST request with hello SaS token
+            //Authenticate the notification message POST request with the SaS token
             [request setValue:authorizationToken forHTTPHeaderField:@"Authorization"];
    
-            //Add hello notification message body
+            //Add the notification message body
             [request setHTTPBody:[json dataUsingEncoding:NSUTF8StringEncoding]];
    
-            // Send hello REST request
+            // Send the REST request
             NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request
                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
             {
@@ -371,7 +371,7 @@ Si desea que las notificaciones de inserción toosend desde dentro de una aplica
             }];
             [dataTask resume];
         }
-3. En `ViewController.m`, agregar Hola después toosupport de método de delegado Cerrar teclado hello para el campo de texto hello. CTRL + arrastrar de icono View Controller toohello de campo de texto de Hola Hola Hola de diseñador tooset de interfaz ver controlador como delegado de toma de corriente de Hola.
+3. En `ViewController.m`, agregue el siguiente método delegado para admitir el cierre del teclado para el campo de texto. Presione Ctrl y arrastre desde el campo de texto al icono de Controlador de vista en el diseñador de la interfaz para establecer el controlador de vista como el delegado de salida.
    
         //===[ Implement UITextFieldDelegate methods ]===
    
@@ -380,7 +380,7 @@ Si desea que las notificaciones de inserción toosend desde dentro de una aplica
             [textField resignFirstResponder];
             return YES;
         }
-4. En `ViewController.m`, agregar siguiente Hola delegar la respuesta de métodos toosupport análisis hello mediante `NSXMLParser`.
+4. En `ViewController.m`, agregue los siguientes métodos delegados para admitir el análisis de la respuesta mediante `NSXMLParser`.
    
        //===[ Implement NSXMLParserDelegate methods ]===
    
@@ -410,38 +410,38 @@ Si desea que las notificaciones de inserción toosend desde dentro de una aplica
    
        -(void)parserDidEndDocument:(NSXMLParser *)parser
        {
-           // Set hello status label text on hello UI thread
+           // Set the status label text on the UI thread
            dispatch_async(dispatch_get_main_queue(),
            ^{
                [self.sendResults setText:self.statusResult];
            });
        }
-5. Compile el proyecto de Hola y compruebe que no hay ningún error.
+5. Compile el proyecto y compruebe si hay errores.
 
 > [!NOTE]
-> Si se produce un error de compilación en Xcode7 sobre la compatibilidad de bitcode, debe cambiar hello **configuración de generación** > **Bitcode habilitar (ENABLE_BITCODE)** demasiado**n** en Xcode. Hola SDK de los centros de notificación no admite actualmente la bitcode. 
+> Si encuentra un error de compilación en Xcode7 relacionado con la compatibilidad de bitcode, debe cambiar el valor de **Build Settings (Configuración de compilación)** > **Enable Bitcode (ENABLE_BITCODE)** (Habilitar Bitcode [ENABLE_BITCODE]) a **NO** en Xcode. El SDK de los Centros de notificaciones no es compatible con bitcode. 
 > 
 > 
 
-Puede encontrar todas las cargas de notificación posibles Hola Hola Apple [locales y Guía de programación de notificaciones de inserción].
+Puede buscar todas las cargas de notificaciones posibles en la guía [Local and Push Notification Programming Guide]de Apple.
 
 ## <a name="checking-if-your-app-can-receive-push-notifications"></a>Comprobación de si la aplicación puede recibir notificaciones push
-notificaciones de inserción de tootest en iOS, debe implementar el dispositivo de E/s físicas de hello aplicación tooa. No se puede enviar notificaciones de inserción de Apple mediante el simulador de iOS de Hola.
+Para probar las notificaciones push en iOS, debe implementar la aplicación en un dispositivo iOS físico. No puede enviar notificaciones push de Apple con el simulador de iOS.
 
-1. Ejecute la aplicación hello y compruebe que el registro se realiza correctamente y, a continuación, presione **Aceptar**.
+1. Ejecute la aplicación y compruebe que el registro se realiza correctamente, luego presione **OK**(Aceptar).
    
     ![Prueba de registro de notificación push de aplicación iOS][33]
-2. Puede enviar una notificación de inserción de prueba de hello [Portal de Azure], tal y como se ha descrito anteriormente. Si agrega código para enviar notificaciones de inserción en la aplicación hello, toque tooenter de campo de texto hello dentro de un mensaje de notificación. A continuación, presione hello **enviar** botón de teclado de Hola o hello **enviar notificación** botón en el mensaje de notificación de hello vista toosend Hola.
+2. Puede enviar una notificación push de prueba desde el [Portal de Azure], como se ha descrito anteriormente. Si agregó código para enviar las notificaciones push en la aplicación, pulse dentro del campo de texto para escribir un mensaje de notificación. A continuación, pulse el botón **Send** (Enviar) en el teclado, o el botón **Send Notification** (Enviar notificación) en la vista, para enviar el mensaje de notificación.
    
     ![Prueba de envío de notificación push de aplicación iOS][34]
-3. Hello notificación de inserción se envía tooall dispositivos registrado tooreceive notificaciones Hola Hola determinado centro de notificaciones.
+3. La notificación push se envía a todos los dispositivos registrados para recibir las notificaciones desde el Centro de notificaciones concreto.
    
     ![Prueba de recepción de notificación push de aplicación iOS][35]
 
 ## <a name="next-steps"></a>Pasos siguientes
-En este sencillo ejemplo, difunden tooall de notificaciones de inserción los dispositivos iOS registrados. Se recomienda el siguiente paso en el aprendizaje que continúe toohello [Azure notificación centros de informar a los usuarios de iOS con back-end de .NET] tutorial, que le guiará por la creación de una inserción de toosend de back-end mediante etiquetas de notificaciones. 
+En este sencillo ejemplo, se difunden notificaciones push a todos los dispositivos iOS registrados. Como paso siguiente en su aprendizaje le sugerimos que continúe con el tutorial [Los Centros de notificaciones de Azure notifican a los usuarios para iOS con back-end de .NET] , que le guiará a través de la creación de un back-end para enviar notificaciones push mediante etiquetas. 
 
-Si desea toosegment los usuarios por grupos de interés, además puede mover en toohello [toosend de centros de notificaciones utilice noticias de última hora] tutorial. 
+Si desea segmentar sus usuarios por grupos de interés, puede leer también el tutorial [Uso de los Centros de notificaciones para enviar noticias de última hora] . 
 
 Para más información sobre los Centros de notificaciones, consulte [Introducción a los centros de notificaciones].
 
@@ -464,7 +464,7 @@ Para más información sobre los Centros de notificaciones, consulte [Introducci
 
 
 <!-- URLs. -->
-[servicios móviles iOS SDK versión 1.2.4]: http://aka.ms/kymw2g
+[SDK de iOS versión 1.2.4 para Servicios móviles]: http://aka.ms/kymw2g
 [Mobile Services iOS SDK]: http://go.microsoft.com/fwLink/?LinkID=266533
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
@@ -477,8 +477,8 @@ Para más información sobre los Centros de notificaciones, consulte [Introducci
 [iOS Provisioning Portal]: http://go.microsoft.com/fwlink/p/?LinkId=272456
 
 [Get started with push notifications in Mobile Services]: ../mobile-services-javascript-backend-ios-get-started-push.md
-[Azure notificación centros de informar a los usuarios de iOS con back-end de .NET]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
-[toosend de centros de notificaciones utilice noticias de última hora]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
+[Los Centros de notificaciones de Azure notifican a los usuarios para iOS con back-end de .NET]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
+[Uso de los Centros de notificaciones para enviar noticias de última hora]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
 
-[locales y Guía de programación de notificaciones de inserción]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
+[Local and Push Notification Programming Guide]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
 [Portal de Azure]: https://portal.azure.com

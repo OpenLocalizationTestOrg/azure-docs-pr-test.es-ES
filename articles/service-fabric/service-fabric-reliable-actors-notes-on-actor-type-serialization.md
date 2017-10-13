@@ -1,6 +1,6 @@
 ---
-title: "notas de actores aaaReliable en actor escriba serialización | Documentos de Microsoft"
-description: "Explica los requisitos básicos para definir interfaces y clases serializables que pueden ser utilizado toodefine Estados de servicio de Fabric Reliable Actors"
+title: "Notas de Reliable Actors sobre la serialización del tipo de actor | Microsoft Docs"
+description: "Examina los requisitos básicos para la definición de clases serializables que se pueden usar para definir interfaces y estados de Reliable Actors de Service Fabric"
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.openlocfilehash: d8584e7d90fe1c68af38983e71e5d0a7554689bf
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 4b48b893e5a3bf5620f00a336576efe1ad63def8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Notas sobre la serialización del tipo de Reliable Actors de Service Fabric
-argumentos de Hola de todos los métodos, tipos de resultado de las tareas de hello devuelven por cada método en una interfaz de actor y deben ser objetos almacenados en el Administrador de estado de un actor [serializable de contrato de datos](https://msdn.microsoft.com/library/ms731923.aspx). Esto también aplica toohello argumentos de métodos de hello definidos en [interfaces de eventos de actor](service-fabric-reliable-actors-events.md). (Los métodos de interfaz de eventos de actor siempre devuelven void).
+Los argumentos de todos los métodos, los tipos de resultados de las tareas que devuelve cada método de una interfaz de actor y los objetos almacenados en el administrador de estados de un actor deben ser [serializables de contratos de datos](https://msdn.microsoft.com/library/ms731923.aspx). Esto también se aplica a los argumentos de los métodos definidos en [interfaces de eventos de actor](service-fabric-reliable-actors-events.md). (Los métodos de interfaz de eventos de actor siempre devuelven void).
 
 ## <a name="custom-data-types"></a>Tipos de datos personalizados
-En este ejemplo, hello siguiendo la interfaz de actor define un método que devuelve un tipo de datos personalizado denominado `VoicemailBox`:
+En este ejemplo, la siguiente interfaz de actor define un método que devuelve un tipo de datos personalizado denominado `VoicemailBox`:
 
 ```csharp
 public interface IVoiceMailBoxActor : IActor
@@ -40,7 +40,7 @@ public interface VoiceMailBoxActor extends Actor
 }
 ```
 
-Hola se implementa mediante un actor que usa Hola estado manager toostore un `VoicemailBox` objeto:
+La interfaz se implementa mediante un actor que utiliza el administrador de estado para almacenar un objeto `VoicemailBox`:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -76,12 +76,12 @@ public class VoiceMailBoxActorImpl extends FabricActor implements VoicemailBoxAc
 
 ```
 
-En este ejemplo, Hola `VoicemailBox` se serializa el objeto cuando:
+En este ejemplo, el objeto `VoicemailBox` se serializa en los siguientes casos:
 
-* objeto de Hola se transmite entre una instancia de actor y un autor de llamada.
-* objeto de Hola se guarda en el Administrador de estado de Hola donde se toodisk persistente y replican tooother nodos.
+* El objeto se transmite entre una instancia de actor y un llamador.
+* El objeto se guarda en el administrador de estados, donde se almacena en un disco y se replica en otros nodos.
 
-el marco de trabajo de Hello Actor confiable utiliza la serialización de DataContract. Hola por lo tanto, los objetos de datos personalizados y sus miembros se deben anotar con hello **DataContract** y **DataMember** atributos, respectivamente.
+El marco de Reliable Actors usa la serialización DataContract. Por lo tanto, los objetos de datos personalizados y sus miembros se deben anotar con los atributos **DataContract** y **DataMember**, respectivamente.
 
 ```csharp
 [DataContract]

@@ -1,6 +1,6 @@
 ---
-title: aaaRestore un volumen de copia de seguridad de la serie StorSimple 8000 | Documentos de Microsoft
-description: "Explica cómo toouse Hola toorestore de catálogo de copia de seguridad de servicio de administrador de dispositivos de StorSimple un volumen de StorSimple de un conjunto de copia de seguridad."
+title: "Restauración de un volumen desde una copia de seguridad en la serie StorSimple 8000 | Microsoft Docs"
+description: "Explica cómo usar el catálogo de copias de seguridad del servicio StorSimple Device Manager para restaurar un volumen de StorSimple desde un conjunto de copias de seguridad."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,132 +14,132 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/23/2017
 ms.author: alkohli
-ms.openlocfilehash: 0fe2e4c23a23c75ce4058a8531356c94c973c6f1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: aff0710ead4f76bb80c38e2d88fe9cd3ce6a7b48
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Restaurar un volumen de StorSimple de un conjunto de copia de seguridad
 
 ## <a name="overview"></a>Información general
 
-Este tutorial describe la operación de restauración Hola realizada en un dispositivo de la serie 8000 de StorSimple utilizando un conjunto de copia de seguridad existente. Hola de uso **catálogo de copia de seguridad** hoja toorestore un volumen de una variable local o copia de seguridad en la nube. Hola **catálogo de copia de seguridad** hoja muestra todos los conjuntos de copia de seguridad de Hola que se crean cuando se realizan copias de seguridad manuales o automatizadas. operación de restauración de Hola de un conjunto de copia de seguridad pone en línea el volumen de hello inmediatamente mientras se descargan los datos en segundo plano de Hola.
+Este tutorial describe la operación de restauración realizada en un dispositivo de la serie StorSimple 8000 mediante un conjunto de copias de seguridad existente. Use la hoja **Catálogo de copias de seguridad** para restaurar un volumen de una copia de seguridad local o en la nube. La hoja **Catálogo de copias de seguridad** muestra todos los conjuntos de copia de seguridad que se crean cuando se realizan copias de seguridad manuales o automatizadas. La operación de restauración a partir de un conjunto de copias de seguridad pone el volumen en línea inmediatamente mientras los datos se descargan en segundo plano.
 
-Una restauración de toostart método alternativo es toogo demasiado**dispositivos > [dispositivo] > volúmenes**. Hola **volúmenes** hoja, seleccione un volumen, el menú contextual hello tooinvoke y, a continuación, seleccione **restaurar**.
+Un método alternativo para iniciar la restauración consiste en ir a **Dispositivos > [su dispositivo] > Volúmenes**. En la hoja **Volúmenes**, seleccione un volumen, haga clic con el botón derecho para abrir el menú contextual y, después, seleccione **Restaurar**.
 
 ## <a name="before-you-restore"></a>Antes de restaurar
 
-Antes de iniciar una restauración, revise Hola después advertencias:
+Antes de iniciar una restauración, repase las siguientes advertencias:
 
-* **Debe desconectar el volumen de Hola** : desconectar el volumen hello en ambos host Hola y Hola dispositivo antes de iniciar la operación de restauración de Hola. Aunque la operación de restauración de hello pone automáticamente en línea el volumen de hello en dispositivo hello, manualmente se debe poner en línea el dispositivo de hello en el host de Hola. Puede poner en línea el volumen de hello en host Hola tan pronto como volumen de hello está en línea en el dispositivo de Hola. (No es necesario toowait hasta que finalice la operación de restauración de Hola.) Para conocer los procedimientos, vaya demasiado[desconectar un volumen](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline).
+* **Debe desconectar el volumen** : desconecte el volumen en el host y en el dispositivo antes de iniciar la operación de restauración. Aunque la operación de restauración pone el volumen automáticamente en línea en el dispositivo, debe poner el dispositivo en línea manualmente en el host. Puede poner el volumen en línea en el host tan pronto como el volumen está conectado en el dispositivo. (No es necesario esperar a que termine la operación de restauración). Para conocer los procedimientos, vaya a [Desconectar un volumen](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline).
 
-* **El tipo de volumen después de la restauración** : volúmenes eliminados se restauran en función de tipo de hello en la instantánea de hello; es decir, los volúmenes que se han anclado localmente se restaurarán como volúmenes anclados localmente y se restauran los volúmenes que estaban en niveles como volúmenes en capas.
+* **El tipo de volumen después de la restauración** : los volúmenes eliminados se restauran en función del tipo de instantánea; es decir, los volúmenes anclados localmente se restauran como volúmenes anclados localmente y los volúmenes en capas, como volúmenes en capas.
 
-    Para los volúmenes existentes, tipo de uso actual de Hola de volumen de hello reemplaza tipo hello que se almacena en la instantánea de Hola. Por ejemplo, si restaura un volumen desde una instantánea tomada cuando el tipo de volumen Hola se interconectan y que el tipo de volumen es ahora localmente anclado (vence tooa operación de conversión que se realizó), volumen de Hola se restaurará como un volumen anclado localmente. De forma similar, si un volumen anclado localmente existente se expande y posteriormente se restaura desde una instantánea más antigua cuidada al volumen de hello es más pequeño, hello volumen restaurado retendrá tamaño expandido actual de Hola.
+    Para los volúmenes existentes, el tipo de uso actual del volumen reemplaza el tipo que se almacena en la instantánea. Por ejemplo, si restaura un volumen a partir de una instantánea realizada cuando el tipo de volumen se ha almacenado en capas y el tipo de volumen ahora está anclado localmente (debido a la realización de una operación de conversión), el volumen se restaurará como un volumen anclado localmente. De forma similar, si un volumen anclado localmente existente se ha expandido y posteriormente se restaura a partir de una instantánea más antigua que se realiza cuando el volumen es más pequeño, el volumen restaurado conservará el tamaño expandido actual.
 
-    No se puede convertir un volumen de un volumen de volumen en capas tooa anclado localmente o desde un tooa volumen anclado localmente en niveles de volumen mientras se está restaurando el volumen de Hola. Espere hasta que finalice la operación de restauración de hello y, a continuación, puede convertir al tipo de tooanother del volumen de Hola. Para obtener información sobre cómo convertir un volumen, consulte demasiado[cambiar el tipo de volumen hello](storsimple-8000-manage-volumes-u2.md#change-the-volume-type). 
+    No se puede convertir un volumen de un volumen en capas a un volumen anclado localmente, o viceversa, mientras se está restaurando el volumen. Espere hasta que finalice la operación de restauración y después puede convertir el volumen a otro tipo. Para obtener información sobre cómo convertir un volumen, vaya a [Cambiar el tipo de volumen](storsimple-8000-manage-volumes-u2.md#change-the-volume-type). 
 
-* **tamaño del volumen Hello se refleja una en volumen de hello restaurar** : ésta es una consideración importante si va a restaurar un volumen anclado localmente que se ha eliminado (porque ya están completamente aprovisionados volúmenes anclados localmente). Asegúrese de que haya espacio suficiente antes de intentar toorestore un volumen anclado localmente que se haya eliminado anteriormente.
+* **El tamaño del volumen se reflejará en el volumen restaurado**: esta es una consideración importante si va a restaurar un volumen anclado localmente que se ha eliminado (porque los volúmenes anclados localmente se aprovisionan totalmente). Asegúrese de que dispone de suficiente espacio antes de intentar restaurar un volumen anclado localmente que se haya eliminado anteriormente.
 
-* **No se puede expandir un volumen mientras se está restaurando** : espere a que termine antes de intentar volumen de hello tooexpand operación de restauración de Hola. Para obtener información sobre la expansión de un volumen, consulte demasiado[modificar un volumen](storsimple-8000-manage-volumes-u2.md#modify-a-volume).
+* **No se puede expandir un volumen mientras se está restaurando** : espere a que termine la operación de restauración antes de intentar expandir el volumen. Para obtener información sobre la expansión de un volumen, vaya a [Modificar un volumen](storsimple-8000-manage-volumes-u2.md#modify-a-volume).
 
-* **Puede realizar una copia de seguridad mientras restaurar un volumen local** : para procedimientos vaya demasiado[usar directivas de copia de seguridad toomanage del servicio de administrador de dispositivos de StorSimple de hello](storsimple-8000-manage-backup-policies-u2.md).
+* **Puede realizar una copia de seguridad mientras se restaura un volumen local**: para conocer los procedimientos, vaya a [Usar el servicio StorSimple Device Manager para administrar directivas de copia de seguridad](storsimple-8000-manage-backup-policies-u2.md).
 
-* **Puede cancelar una operación de restauración** : si se cancela el trabajo de restauración de hello, a continuación, el volumen de Hola se revertirá toohello estado que tenía antes de que inició la operación de restauración de Hola. Para conocer los procedimientos, vaya demasiado[cancelar un trabajo](storsimple-8000-manage-jobs-u2.md#cancel-a-job).
+* **Puede cancelar una operación de restauración** : si se cancela el trabajo de restauración, el volumen se revertirá al estado en que estaba antes de iniciar la operación de restauración. Para conocer los procedimientos, vaya a [Cancelar un trabajo](storsimple-8000-manage-jobs-u2.md#cancel-a-job).
 
 ## <a name="how-does-restore-work"></a>Cómo funciona la restauración
 
-Para los dispositivos que ejecutan Update 4 o una versión posterior, se implementa una restauración basada en el mapa térmico. Como Hola host solicita tooaccess datos llegan a dispositivo de hello, estas solicitudes se realiza el seguimiento y se crea un mapa térmico. Tasa de solicitud alta da como resultado los fragmentos de datos con mayor térmico mientras que la tasa de solicitud menor traduce toochunks con calor inferior. Debe tener acceso a Hola datos al menos dos veces toobe marcados como _activa_. Un archivo que se modifica también se marca como _activo_. Una vez que se inicia la restauración de hello, hidratación proactivo de datos se produce en función de mapa térmico de Hola. Para las versiones anteriores a la actualización 4, Hola se descargan datos durante la restauración que se basa en el acceso solo.
+Para los dispositivos que ejecutan Update 4 o una versión posterior, se implementa una restauración basada en el mapa térmico. Como las solicitudes del host para acceder a los datos llegan al dispositivo, se realiza el seguimiento de estas solicitudes y se crea un mapa térmico. Una velocidad de solicitudes alta da como resultado fragmentos de datos con mayor nivel de actividad, mientras que una velocidad de solicitudes inferior se traduce en fragmentos con menos nivel de actividad. Debe acceder a los datos dos veces como mínimo para marcarse como _activo_. Un archivo que se modifica también se marca como _activo_. Una vez que se inicia la restauración, se realiza la hidratación proactiva de los datos en función del mapa térmico. Para las versiones anteriores a Update 4, los datos se descargan durante la restauración únicamente en función del acceso.
 
-Hola después advertencias aplica restores basados en tooheatmap:
+Las siguientes advertencias se aplican a las restauraciones basadas en mapas térmicos:
 
 * El seguimiento basado en el mapa térmico solo se habilita para los volúmenes en capa; los volúmenes anclados localmente no son compatibles.
 
-* No se admite la restauración basadas en el mapa térmico al clonar un dispositivo de tooanother volumen. 
+* Tampoco se puede realizar la restauración basada en el mapa térmico al clonar un volumen en otro dispositivo. 
 
-* Si hay una restauración en contexto y existe una instantánea local para hello toobe de volumen restaurado en dispositivo hello, a continuación, no se rehidratar (como los datos ya están disponibles localmente). 
+* Si hay una restauración en contexto y una instantánea local para el volumen que se restaurará en el dispositivo, no se realizará la rehidratación (porque los datos ya están disponibles localmente). 
 
-* De forma predeterminada, cuando se restaura, hello rehidratación trabajos se inician que rehidratar proactivamente datos basándose en el mapa térmico de Hola. 
+* De forma predeterminada, cuando se restaura, se inician los trabajos de rehidratación que rehidratan los datos de forma proactiva en función del mapa térmico. 
 
-En la actualización 4, cmdlets de Windows PowerShell puede ser usado tooquery rehidratación trabajos en ejecución, cancelar un trabajo de rehidratación y obtener el estado de Hola de trabajo de rehidratación de Hola.
+En Update 4, los cmdlets de Windows PowerShell se puede utilizar para consultar los trabajos de rehidratación en ejecución, cancelar un trabajo de rehidratación y obtener el estado del trabajo de rehidratación.
 
-* `Get-HcsRehydrationJob`-Este cmdlet obtiene estado Hola de trabajo de rehidratación Hola. Se desencadena un solo trabajo de rehidratación para un volumen.
+* `Get-HcsRehydrationJob`: este cmdlet obtiene el estado del trabajo de rehidratación. Se desencadena un solo trabajo de rehidratación para un volumen.
 
-* `Set-HcsRehydrationJob`-Este cmdlet permite toopause, detener, reanudar el trabajo de rehidratación de hello, si rehidratación Hola está en curso.
+* `Set-HcsRehydrationJob`: este cmdlet permite interrumpir, detener o reanudar el trabajo de rehidratación, cuando la rehidratación está en curso.
 
-Para obtener más información sobre los cmdlets de rehidratación, vaya demasiado[referencia de cmdlet de Windows PowerShell para StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
+Para obtener más información sobre los cmdlets de rehidratación, vaya al artículo de [referencia de cmdlet de Windows PowerShell para StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
 
-Normalmente, con la rehidratación automática, se espera que el rendimiento de lectura transitorio sea superior. Hola magniutde real de mejoras depende de varios factores como el patrón de acceso, la renovación de datos y el tipo de datos. 
+Normalmente, con la rehidratación automática, se espera que el rendimiento de lectura transitorio sea superior. La magnitud real de mejoras depende de varios factores, como el patrón de acceso, la renovación de datos y el tipo de datos. 
 
-toocancel un trabajo de rehidratación, puede usar el cmdlet de PowerShell de Hola. Si lo desea trabajos rehidratación de toopermanently disable para todos Hola restauraciones futuras, [póngase en contacto con Microsoft Support](storsimple-8000-contact-microsoft-support.md).
+Para cancelar un trabajo de rehidratación, puede usar el cmdlet de PowerShell. Si desea desactivar permanentemente los trabajos de rehidratación para todas las restauraciones futuras, póngase en contacto con el [equipo de soporte técnico de Microsoft](storsimple-8000-contact-microsoft-support.md).
 
-## <a name="how-toouse-hello-backup-catalog"></a>¿Cómo toouse Hola catálogo de copia de seguridad
+## <a name="how-to-use-the-backup-catalog"></a>Cómo usar el catálogo de copias de seguridad
 
-Hola **catálogo de copia de seguridad** hoja proporciona una consulta que le ayuda a toonarrow la selección de conjunto de copia de seguridad. Puede filtrar Hola conjuntos de copia que se recuperan en función de hello parámetros siguientes:
+La hoja **Catálogo de copias de seguridad** proporciona una consulta que permite limitar la selección de conjuntos de copias de seguridad. Puede filtrar los conjuntos de copias de seguridad que se recuperan en función de los parámetros siguientes:
 
-* **El intervalo de tiempo** : Hola intervalo de fecha y hora cuando se creó el conjunto de copia de seguridad de Hola.
-* **Dispositivo** : dispositivo de hello en qué Hola se creó el conjunto de copia de seguridad.
-* **Directiva de copia de seguridad** o **volumen** : Hola directiva de copia de seguridad o el volumen asociado a este conjunto de copia de seguridad.
+* **Intervalo de tiempo**: el intervalo de fecha y hora en el que se creó el conjunto de copias de seguridad.
+* **Dispositivo** : dispositivo en el que se creó el conjunto de copias de seguridad.
+* **Directiva de copia de seguridad** o **volumen**: directiva de copia de seguridad o volumen asociado a este conjunto de copia de seguridad.
 
-Hello conjuntos de copia de seguridad filtrados se tabulan en función de los siguientes atributos de hello:
+A continuación, los conjuntos de copias de seguridad filtrados se presentan en forma de tabla en función de los siguientes atributos:
 
-* **Nombre** : hello nombre de directiva de copia de seguridad de Hola o volumen asociado con el conjunto de copia de seguridad de Hola.
-* **Tipo** : los conjuntos de copias de seguridad pueden ser instantáneas locales o instantáneas en la nube. Una instantánea local es una copia de seguridad de todos los datos de volumen almacenados localmente en el dispositivo de hello, mientras que una instantánea de nube hace referencia toohello copia de seguridad de datos del volumen que reside en la nube de Hola. Las instantáneas locales proporcionan un acceso más rápido, mientras que las instantáneas en la nube son preferibles para la resistencia de los datos.
-* **Tamaño** : Hola a tamaño real del conjunto de copia de seguridad de Hola.
-* **Crear en** : Hola fecha y la hora cuando se crearon las copias de seguridad de Hola. 
-* **Volúmenes** -Hola número de volúmenes asociados con el conjunto de copia de seguridad de Hola.
-* **Inicia** : las copias de seguridad de Hola se pueden iniciar automáticamente según la programación de tooa o manualmente por el usuario. (Puede usar copias de seguridad de tooschedule de una directiva de copia de seguridad. Como alternativa, puede usar hello **realizar copia de seguridad** opción tootake una copia de seguridad interactiva o a petición.)
+* **Nombre** : nombre de la directiva de copias de seguridad o del volumen asociado al conjunto de copias de seguridad.
+* **Tipo** : los conjuntos de copias de seguridad pueden ser instantáneas locales o instantáneas en la nube. Una instantánea local es una copia de seguridad de todos los datos del volumen que se almacenan localmente en el dispositivo, mientras que una instantánea en la nube hace referencia a la copia de seguridad de los datos del volumen que residen en la nube. Las instantáneas locales proporcionan un acceso más rápido, mientras que las instantáneas en la nube son preferibles para la resistencia de los datos.
+* **Tamaño** : tamaño real del conjunto de copias de seguridad.
+* **Creado en** : fecha y hora en que se crearon las copias de seguridad. 
+* **Volúmenes**: el número de volúmenes asociados con el conjunto de copias de seguridad.
+* **Iniciada por**: las copias de seguridad se pueden iniciar automáticamente en función de una programación o manualmente por el usuario. (Puede usar una directiva de copia de seguridad para programar copias de seguridad. Como alternativa, puede usar la opción **Realizar copia de seguridad** para realizar una copia de seguridad interactiva o una copia de seguridad a petición).
 
-## <a name="how-toorestore-your-storsimple-volume-from-a-backup"></a>Cómo toorestore su volumen de StorSimple desde una copia de seguridad
+## <a name="how-to-restore-your-storsimple-volume-from-a-backup"></a>Cómo restaurar un volumen de StorSimple de una copia de seguridad.
 
-Puede usar hello **catálogo de copia de seguridad** toorestore hoja su volumen de StorSimple desde una copia de seguridad específica. Tenga en cuenta, sin embargo, que restaurar un volumen volverá al estado toohello Hola volumen en que estaba cuando se realizó la copia de seguridad de Hola. Se perderán los datos que se agregaron después de la operación de copia de seguridad de Hola.
+Puede usar la hoja **Catálogo de copias de seguridad** para restaurar el volumen StorSimple a partir de una copia de seguridad específica. Sin embargo, debe tener en cuenta que, cuando se restaura un volumen, el volumen volverá al estado en el que se encontraba cuando se realizó la copia de seguridad. Se perderán todos los datos que se agregaron después de la operación de copia de seguridad.
 
 > [!WARNING]
-> Restaurar a partir de una copia de seguridad sustituirá los volúmenes existentes de copia de seguridad de Hola Hola. Esto puede provocar la pérdida de Hola de los datos que se escriben después de que se realizó la copia de seguridad de Hola.
+> Cuando se realice una restauración a partir de una copia de seguridad, se reemplazarán los volúmenes existentes desde la copia de seguridad. Esto puede provocar la pérdida de los datos que se escribieron después de que se realizase la copia de seguridad.
 
 
-### <a name="toorestore-your-volume"></a>toorestore el volumen
-1. Servicio de administrador de dispositivos de StorSimple tooyour y, a continuación, haga clic en **catálogo de copia de seguridad**.
+### <a name="to-restore-your-volume"></a>Para restaurar el volumen
+1. Vaya al servicio StorSimple Device Manager y, después, haga clic en **Catálogo de copias de seguridad**.
 
 2. Seleccione una copia de seguridad de la siguiente manera:
    
-   1. Especifique el intervalo de tiempo de Hola.
-   2. Seleccionar dispositivo apropiados de Hola.
-   3. En la lista desplegable de hello, elija la que desea tooselect de directiva de copia de seguridad o volumen de Hola para copia de seguridad de Hola.
-   4. Haga clic en **aplicar** tooexecute esta consulta.
+   1. Especifique el intervalo de tiempo.
+   2. Seleccione el dispositivo adecuado.
+   3. En la lista desplegable, seleccione el volumen o la directiva de copia de seguridad para la copia de seguridad que desea seleccionar.
+   4. Haga clic en **Aplicar** para ejecutar esta consulta.
 
-    Hello deben aparecer copias de seguridad asociadas con la directiva de copia de seguridad o volumen de hello seleccionado en lista de Hola de conjuntos de copia de seguridad.
+    Las copias de seguridad asociadas al volumen o la directiva de copia de seguridad seleccionados deben aparecer en la lista de conjuntos de copias de seguridad.
    
     ![Lista de conjuntos de copia de seguridad](./media/storsimple-8000-restore-from-backup-set-u2/bucatalog.png)     
      
-3. Expandir tooview Hola asociado volúmenes de hello conjunto de copia de seguridad. Estos volúmenes deben realizarse sin conexión en el host de Hola y el dispositivo antes de que pueda restaurarlos al completo. Obtener acceso a los volúmenes de hello en hello **volúmenes** hoja de su dispositivo y, a continuación, Hola de seguimiento de los pasos de [desconectar un volumen](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline) tootake ellos sin conexión.
+3. Expanda el conjunto de copias de seguridad para ver los volúmenes asociados. Estos volúmenes deben desconectarse en el host y en el dispositivo para que pueda restaurarlos. Acceda a los volúmenes de la hoja **Volúmenes** de su dispositivo y luego siga los pasos indicados en [Take a volume offline](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline) (Desconexión de un volumen) para desconectarlos.
    
    > [!IMPORTANT]
-   > Asegúrese de que haya desconectado Hola volúmenes en el host de hello en primer lugar, antes de poner sin conexión los volúmenes de hello en dispositivo Hola. Si no se realiza sin conexión los volúmenes de hello en el host de hello, pudieron causar daños toodata.
+   > Asegúrese de desconectar primero los volúmenes del host y, después, desconectar los volúmenes del dispositivo. Si no establece los volúmenes sin conexión en el host, esto podría causar daños en los datos.
    
-4. Desplácese atrás toohello **catálogo de copia de seguridad** pestaña y seleccione un conjunto de copia de seguridad. Haga clic en y, a continuación, desde el menú contextual de hello, seleccione **restaurar**.
+4. Vuelva a la pestaña **Catálogo de Backup** y seleccione un conjunto de copias de seguridad. Haga clic con el botón derecho y, en el menú contextual, seleccione **Restaurar**.
 
     ![Lista de conjuntos de copia de seguridad](./media/storsimple-8000-restore-from-backup-set-u2/restorebu1.png)
 
-5. Se le pedirá confirmación. Hola de revisión restaura la información y, a continuación, active la casilla de verificación de confirmación de Hola.
+5. Se le pedirá confirmación. Revise la información de restauración y después seleccione la casilla de confirmación.
    
     ![Página de confirmación](./media/storsimple-8000-restore-from-backup-set-u2/restorebu2.png)
 
-7.  Haga clic en **Restaurar**. Este comando inicia un trabajo de restauración que se puede ver mediante el acceso a hello **trabajos** página.
+7.  Haga clic en **Restaurar**. Esto inicia un trabajo de restauración que se puede ver accediendo a la página **Trabajos**.
 
     ![Página de confirmación](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
 
-8. Una vez completada la restauración de hello, compruebe que el contenido de Hola de los volúmenes se reemplaza por volúmenes de copia de seguridad de Hola.
+8. Una vez completada la restauración, compruebe que los volúmenes de la copia de seguridad sustituyeron el contenido de los volúmenes.
 
 
-## <a name="if-hello-restore-fails"></a>Si restaura Hola se produce un error
+## <a name="if-the-restore-fails"></a>Si se produce algún error en la restauración
 
-Recibirá una alerta si Hola restaurar operación provocará un error por cualquier motivo. Si esto ocurre, la actualización de hello lista de reserva tooverify que Hola copia de seguridad sigue siendo válida. Si la copia de seguridad de hello es válido y se restaura desde la nube de hello, problemas de conectividad podrían estar causando problema Hola.
+Recibirá una alerta si se produce un error en la operación de restauración por algún motivo. En su caso, actualice la lista de copias de seguridad para verificar que la copia de seguridad sigue siendo válida. Si la copia de seguridad es válida y se restaura desde la nube, el problema puede deberse a errores en la conectividad.
 
-Hola toocomplete la operación de restauración, desconecte el volumen hello en el host de Hola y vuelva a intentar la operación de restauración de Hola. Tenga en cuenta que el proceso de restauración de los datos de volumen de toohello las modificaciones que se realizaron durante el saludo se perderá.
+Para completar correctamente la operación de restauración, desconecte el volumen en el host y vuelva a intentar la operación de restauración. Tenga en cuenta que las modificaciones realizadas en los datos del volumen durante el proceso de restauración se perderán.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Obtenga información acerca de cómo demasiado[StorSimple administrar volúmenes](storsimple-8000-manage-volumes-u2.md).
-* Obtenga información acerca de cómo demasiado[uso Hola tooadminister de servicio de administrador de dispositivos de StorSimple el dispositivo StorSimple](storsimple-8000-manager-service-administration.md).
+* Obtenga información sobre cómo [Administrar volúmenes de StorSimple](storsimple-8000-manage-volumes-u2.md).
+* Aprenda a [usar el servicio StorSimple Device Manager para administrar el dispositivo StorSimple](storsimple-8000-manager-service-administration.md).
 

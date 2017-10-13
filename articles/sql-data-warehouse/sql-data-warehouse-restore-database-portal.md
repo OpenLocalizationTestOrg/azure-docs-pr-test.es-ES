@@ -1,5 +1,5 @@
 ---
-title: Almacenamiento de datos de SQL Azure (portal de Azure) aaaRestore | Documentos de Microsoft
+title: "Restauración de Azure SQL Data Warehouse (Azure Portal) | Microsoft Docs"
 description: Tareas de Azure Portal para restaurar Azure SQL Data Warehouse.
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: backup-restore
 ms.date: 09/21/2016
 ms.author: lakshmir;barbkess
-ms.openlocfilehash: cb225d2a21b61acab70a51b69c266f8d3ffacc9a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f6bc8671410dc7015a8d2a4bea1ba11f9ae526c3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="restore-azure-sql-data-warehouse-portal"></a>Restauración de Azure SQL Data Warehouse (Portal)
 > [!div class="op_single_selector"]
@@ -29,71 +29,71 @@ ms.lasthandoff: 10/06/2017
 > * [REST][REST]
 >
 >
-En este artículo, aprenderá cómo toorestore almacenamiento de datos de SQL Azure mediante el uso de Hola portal de Azure.
+En este artículo, obtendrá información sobre cómo restaurar Azure SQL Data Warehouse mediante Azure Portal.
 
 ## <a name="before-you-begin"></a>Antes de empezar
-**Compruebe la capacidad DTU**. Cada instancia de SQL Data Warehouse está hospedada en un servidor SQL Server (por ejemplo, myserver.database.windows.net) que tiene una cuota de unidad de rendimiento de datos (DTU) predeterminada. Para poder restaurar el almacén de datos SQL, compruebe que SQL server tiene restante suficiente cuota DTU para la base de datos de Hola que va a restaurar. toolearn la cuota de DTU de toocalculate o toorequest más Dtu, consulte [solicitar un cambio de cuota DTU][Request a DTU quota change].
+**Compruebe la capacidad DTU**. Cada instancia de SQL Data Warehouse está hospedada en un servidor SQL Server (por ejemplo, myserver.database.windows.net) que tiene una cuota de unidad de rendimiento de datos (DTU) predeterminada. Antes de que pueda restaurar una instancia de SQL Data Warehouse, compruebe que su servidor SQL Server tiene suficientes cuotas de DTU restantes para la base de datos que va a restaurar. Para obtener información sobre cómo calcular la cuota de DTU o para solicitar más DTU, vea cómo [solicitar un cambio de cuota de DTU][Request a DTU quota change].
 
 ## <a name="restore-an-active-or-paused-database"></a>Restauración de una base de datos activa o en pausa
-toorestore una base de datos:
+Para restaurar una base de datos:
 
-1. Inicie sesión en toohello [portal de Azure][Azure portal].
-2. En el panel izquierdo de hello, seleccione **examinar**y, a continuación, seleccione **servidores SQL Server**.
+1. Inicie sesión en [Azure Portal][Azure portal].
+2. En el panel izquierdo, seleccione **Examinar** y, después, seleccione **Servidores SQL Server**.
 
     ![Seleccione Examinar > Servidores SQL Server](./media/sql-data-warehouse-restore-database-portal/01-browse-for-sql-server.png)
 3. Busque el servidor y, a continuación, selecciónelo.
 
     ![Seleccione el servidor](./media/sql-data-warehouse-restore-database-portal/01-select-server.png)
-4. Buscar instancia Hola de almacenamiento de datos de SQL que desee toorestore de y, a continuación, selecciónelo.
+4. Busque la instancia de SQL Data Warehouse desde la que desea realizar la restauración y selecciónela.
 
-    ![Seleccionar instancia de Hola de toorestore de almacenamiento de datos SQL](./media/sql-data-warehouse-restore-database-portal/01-select-active-dw.png)
-5. Hola parte superior de hoja de almacén de datos de hello, seleccione **restaurar**.
+    ![Seleccione la instancia de SQL Data Warehouse que desea restaurar](./media/sql-data-warehouse-restore-database-portal/01-select-active-dw.png)
+5. En la parte superior de la hoja Data Warehouse, seleccione **Restaurar**.
 
     ![Seleccione Restaurar](./media/sql-data-warehouse-restore-database-portal/01-select-restore-from-active.png)
 6. Especifique un nuevo **nombre de base de datos**.
-7. Seleccione hello más reciente **punto de restauración**.
+7. Seleccione el último **punto de restauración**.
 
-   Asegúrese de que elegir punto de restauración más reciente de Hola. Dado que los puntos de restauración se muestran en hora Universal coordinada (UTC), opción predeterminada de hello podría no ser punto de restauración más reciente de Hola.
+   No se olvide de elegir el punto de restauración más reciente. Dado que los puntos de restauración se muestran con la hora universal coordinada (UTC), la opción predeterminada puede no ser el último punto de restauración.
 
       ![Seleccione un punto de restauración](./media/sql-data-warehouse-restore-database-portal/01-restore-blade-from-active.png)
 8. Seleccione **Aceptar**.
-9. se iniciará el proceso de restauración de base de datos de Hola y puede usar **notificaciones** toomonitor proceso de Hola.
+9. El proceso de restauración de base de datos se iniciará, y puede usar **NOTIFICACIONES** para supervisar el proceso.
 
 > [!NOTE]
-> Una vez finalizada la restauración de hello, puede configurar la base de datos recuperada siguiendo [configurar la base de datos después de la recuperación][Configure your database after recovery].
+> Una vez finalizada la restauración, puede configurar la base de datos recuperada siguiendo la guía [Configuración de la base de datos después de realizar la recuperación][Configure your database after recovery].
 >
 >
 
 ## <a name="restore-a-deleted-database"></a>Restauración de una base de datos eliminada
-toorestore una base de datos eliminada:
+Para restaurar una base de datos eliminada, consulte:
 
-1. Inicie sesión en toohello [portal de Azure][Azure portal].
-2. En el panel izquierdo de hello, seleccione **examinar**y, a continuación, seleccione **servidores SQL Server**.
+1. Inicie sesión en [Azure Portal][Azure portal].
+2. En el panel izquierdo, seleccione **Examinar** y, después, seleccione **Servidores SQL Server**.
 
     ![Seleccione Examinar > Servidores SQL Server](./media/sql-data-warehouse-restore-database-portal/01-browse-for-sql-server.png)
 3. Busque el servidor y, a continuación, selecciónelo.
 
     ![Seleccione el servidor](./media/sql-data-warehouse-restore-database-portal/02-select-server.png)
-4. Desplácese hacia abajo toohello **Operations** sección en la hoja del servidor.
-5. Seleccione hello **elimina las bases de datos** icono.
+4. Desplácese hacia abajo hasta la sección **Operaciones** de la hoja del servidor.
+5. Seleccione el icono **Bases de datos eliminadas**.
 
-    ![Icono de hello seleccione eliminado las bases de datos](./media/sql-data-warehouse-restore-database-portal/02-select-deleted-dws.png)
-6. Hola seleccione elimina base de datos que desea toorestore.
+    ![Seleccione el icono Bases de datos eliminadas](./media/sql-data-warehouse-restore-database-portal/02-select-deleted-dws.png)
+6. Seleccione la base de datos eliminada que desea restaurar.
 
-    ![Seleccione una base de datos toorestore](./media/sql-data-warehouse-restore-database-portal/02-select-deleted-dw.png)
+    ![Selección de la base de datos que se va a restaurar](./media/sql-data-warehouse-restore-database-portal/02-select-deleted-dw.png)
 7. Especifique un nuevo **nombre de base de datos**.
 
-    ![Agregar un nombre de base de datos de Hola](./media/sql-data-warehouse-restore-database-portal/02-restore-blade-from-deleted.png)
+    ![Agregue un nombre para la base de datos](./media/sql-data-warehouse-restore-database-portal/02-restore-blade-from-deleted.png)
 8. Seleccione **Aceptar**.
-9. se iniciará el proceso de restauración de base de datos de Hola y puede usar **notificaciones** toomonitor proceso de Hola.
+9. El proceso de restauración de base de datos se iniciará, y puede usar **NOTIFICACIONES** para supervisar el proceso.
 
 > [!NOTE]
-> consulta de la base de datos una vez finalizada la restauración de hello, tooconfigure [configurar la base de datos después de la recuperación][Configure your database after recovery].
+> Para configurar la base de datos después de que haya finalizado la restauración, vea [Configuración de la base de datos después de realizar la recuperación][Configure your database after recovery].
 >
 >
 
 ## <a name="next-steps"></a>Pasos siguientes
-toolearn acerca de las características de continuidad de negocio Hola de ediciones de base de datos de SQL Azure, lea hello [información general sobre la continuidad de negocio de base de datos de SQL Azure][Azure SQL Database business continuity overview].
+Para obtener más información sobre las características de continuidad empresarial de las ediciones de Azure SQL Database, vea [Introducción a la continuidad empresarial con Azure SQL Database][Azure SQL Database business continuity overview].
 
 <!--Image references-->
 

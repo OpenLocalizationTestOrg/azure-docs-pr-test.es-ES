@@ -1,5 +1,5 @@
 ---
-title: "instalación del servicio de movilidad para Azure Site Recovery mediante las herramientas de implementación de software aaaAutomate | Documentos de Microsoft"
+title: "Automatización de la instalación de Mobility Service para Azure Site Recovery mediante herramientas de implementación de software | Microsoft Docs"
 description: "Este artículo le ayuda a automatizar la instalación de Mobility Service mediante herramientas de implementación de software como System Center Configuration Manager."
 services: site-recovery
 documentationcenter: 
@@ -14,58 +14,58 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.openlocfilehash: 6c883c6d5308dcec6e0628b0c2196b3a12e08ebe
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 49b72cd306aa91f114af7688f02d95db6f6eca05
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="automate-mobility-service-installation-by-using-software-deployment-tools"></a>Automatización de la instalación de Mobility Service mediante herramientas de implementación de software
 
 >[!IMPORTANT]
 En este documento se da por supuesto que está utilizando la versión **9.9.4510.1** o superior.
 
-En este artículo se proporciona un ejemplo de cómo puede usar System Center Configuration Manager toodeploy Hola servicio de movilidad de Azure Site Recovery en el centro de datos. Mediante una herramienta de implementación de software como el Administrador de configuración tiene Hola siguientes ventajas:
+En este artículo se proporciona un ejemplo de cómo puede usar System Center Configuration Manager para implementar el Mobility Service de Azure Site Recovery en el centro de datos. Usar una herramienta de implementación de software como Configuration Manager ofrece las ventajas siguientes:
 * Programación de la implementación de la instalación, ya sean instalaciones nuevas o actualizaciones, durante la ventana de mantenimiento planeada para las actualizaciones de software
-* Ajuste de escala toohundreds de implementación de servidores al mismo tiempo
+* Implementación a escala en cientos de servidores de forma simultánea
 
 
 > [!NOTE]
-> En este artículo usa la actividad de implementación de System Center Configuration Manager 2012 R2 toodemonstrate Hola. También puede automatizar la instalación de Mobility Service mediante [Azure Automation y la configuración de estado deseado](site-recovery-automate-mobility-service-install.md).
+> En este artículo se usa System Center Configuration Manager 2012 R2 para demostrar la actividad de implementación. También puede automatizar la instalación de Mobility Service mediante [Azure Automation y la configuración de estado deseado](site-recovery-automate-mobility-service-install.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 1. Una herramienta de implementación de software, como Configuration Manager, que ya esté implementada en el entorno.
-  Cree dos [recopilaciones de dispositivos](https://technet.microsoft.com/library/gg682169.aspx), uno para todos los **servidores Windows**y otro para todos los **servidores Linux**, que desea que tooprotect mediante el uso de Site Recovery.
+  Cree dos [recopilaciones de dispositivos](https://technet.microsoft.com/library/gg682169.aspx), una para todos los **servidores Windows** y otra para todos los **servidores Linux** que desea proteger con Site Recovery.
 3. Un servidor de configuración que ya esté registrado con Site Recovery.
-4. Un red segura recurso compartido de archivos (recurso compartido de bloque de mensajes de servidor) que se puede acceder al servidor de Configuration Manager de Hola.
+4. Un recurso compartido de archivos de red segura (recurso compartido de Bloque de mensajes del servidor) al que pueda acceder el servidor de Configuration Manager.
 
 ## <a name="deploy-mobility-service-on-computers-running-windows"></a>Implementación de Mobility Service en equipos que ejecutan Windows
 > [!NOTE]
-> Este artículo se supone que dirección IP de Hola Hola del servidor de configuración es 192.168.3.121, y ese recurso compartido de red segura archivos hello \\\ContosoSecureFS\MobilityServiceInstallers.
+> En este artículo se supone que la dirección IP del servidor de configuración es 192.168.3.121 y que el recurso compartido de archivos de red segura es \\\ContosoSecureFS\MobilityServiceInstallers.
 
 ### <a name="step-1-prepare-for-deployment"></a>Paso 1: Preparación de la implementación
-1. Cree una carpeta en el recurso compartido de red de Hola y asígnele el nombre **MobSvcWindows**.
-2. Inicie sesión en el servidor de configuración de tooyour y abra un símbolo del sistema administrativo.
-3. Siguiente ejecución Hola comandos toogenerate un archivo de frase de contraseña:
+1. Cree una carpeta en el recurso compartido de red y asígnele el nombre **MobSvcWindows**.
+2. Inicie sesión en el servidor de configuración y abra un símbolo del sistema con privilegios de administrador.
+3. Ejecute los comandos siguientes para generar un archivo de frase de contraseña:
 
     `cd %ProgramData%\ASR\home\svsystems\bin`
 
     `genpassphrase.exe -v > MobSvc.passphrase`
-4. Hola copia **MobSvc.passphrase** archivo en hello **MobSvcWindows** carpeta de recurso compartido de red.
-5. Examinar toohello repositorio de instalador en el servidor de configuración de hello ejecutando Hola siguiente comando:
+4. Copie el archivo **MobSvc.passphrase** en la carpeta **MobSvcWindows** del recurso compartido de red.
+5. Examine el repositorio del instalador en el servidor de configuración mediante la ejecución del comando siguiente:
 
    `cd %ProgramData%\ASR\home\svsystems\puhsinstallsvc\repository`
 
-6. Hola copia  **Microsoft ASR\_UA\_*versión*\_Windows\_GA\_*fecha* \_ Release.exe** toohello **MobSvcWindows** carpeta de recurso compartido de red.
-7. Copiar el siguiente código de hello y guárdelo como **install.bat** en hello **MobSvcWindows** carpeta.
+6. Copie el archivo **Microsoft-ASR\_UA\_*versión*\_Windows\_GA\_*fecha*\_Release.exe** en la carpeta **MobSvcWindows** del recurso compartido de red.
+7. Copie el código siguiente y guárdelo como **install.bat** en la carpeta **MobSvcWindows**.
 
    > [!NOTE]
-   > Reemplace los marcadores de posición de hello [CSIP] en esta secuencia de comandos con valores reales de Hola de dirección IP de Hola de su servidor de configuración.
+   > Reemplace los marcadores de posición [CSIP] de este script por los valores reales de la dirección IP del servidor de configuración.
 
 ```DOS
 Time /t >> C:\Temp\logfile.log
 REM ==================================================
-REM ==== Clean up hello folders ========================
+REM ==== Clean up the folders ========================
 RMDIR /S /q %temp%\MobSvc
 MKDIR %Temp%\MobSvc
 MKDIR C:\Temp
@@ -77,9 +77,9 @@ CD %Temp%\MobSvc
 REN Micro*.exe MobSvcInstaller.exe
 REM ==================================================
 
-REM ==== Extract hello installer =======================
+REM ==== Extract the installer =======================
 MobSvcInstaller.exe /q /x:%Temp%\MobSvc\Extracted
-REM ==== Wait 10s for extraction toocomplete =========
+REM ==== Wait 10s for extraction to complete =========
 TIMEOUT /t 10
 REM =================================================
 
@@ -161,20 +161,20 @@ IF NOT %ERRORLEVEL% EQU 0 (
 
 ### <a name="step-2-create-a-package"></a>Paso 2: Creación de un paquete
 
-1. Inicie sesión en la consola de Configuration Manager tooyour.
-2. Examinar demasiado**biblioteca de Software** > **administración de aplicaciones** > **paquetes**.
+1. Inicie sesión en la consola de Configuration Manager.
+2. Vaya a **Biblioteca de software** > **Administración de aplicaciones** > **Paquetes**.
 3. Haga clic con el botón derecho en **Paquetes** y seleccione **Crear paquete**.
-4. Proporcione valores de versión, descripción, fabricante, idioma y nombre de Hola.
-5. Seleccione hello **este paquete contiene archivos de código fuente** casilla de verificación.
-6. Haga clic en **examinar**y el recurso compartido de red de hello seleccione donde se almacena el instalador de hello (\\\ContosoSecureFS\MobilityServiceInstaller\MobSvcWindows).
+4. Escriba los valores para nombre, descripción, fabricante, lenguaje y versión.
+5. Seleccione la casilla **Este paquete contiene archivos de origen**.
+6. Haga clic en **Examinar** y seleccione el recurso compartido de red donde está almacenado el instalador (\\\ContosoSecureFS\MobilityServiceInstaller\MobSvcWindows).
 
   ![Captura de pantalla del Asistente para crear paquetes y programas](./media/site-recovery-install-mobility-service-using-sccm/create_sccm_package.png)
 
-7. En hello **Elegir tipo de programa Hola que desea toocreate** página, seleccione **programa estándar**y haga clic en **siguiente**.
+7. En la página **Elija el tipo de programa que desea crear**, seleccione **Programa estándar** y haga clic en **Siguiente**.
 
   ![Captura de pantalla del Asistente para crear paquetes y programas](./media/site-recovery-install-mobility-service-using-sccm/sccm-standard-program.png)
 
-8. En hello **especifique información acerca de este programa estándar** página, proporcione Hola después de entradas y haga clic en **siguiente**. (hello otras entradas pueden utilizar sus valores predeterminados.)
+8. En la página **Especifique la información sobre este programa estándar**, proporcione las siguientes entradas y haga clic en **Siguiente**. (Las demás entradas pueden usar sus valores predeterminados).
 
   | **Nombre de parámetro** | **Valor** |
   |--|--|
@@ -184,60 +184,60 @@ IF NOT %ERRORLEVEL% EQU 0 (
 
   ![Captura de pantalla del Asistente para crear paquetes y programas](./media/site-recovery-install-mobility-service-using-sccm/sccm-program-properties.png)
 
-9. En la página siguiente de hello, seleccionar sistemas operativos de destino de Hola. Mobility Service se puede instalar solo en Windows Server 2012 R2, Windows Server 2012 y Windows Server 2008 R2.
+9. En la página siguiente, seleccione los sistemas operativos de destino. Mobility Service se puede instalar solo en Windows Server 2012 R2, Windows Server 2012 y Windows Server 2008 R2.
 
   ![Captura de pantalla del Asistente para crear paquetes y programas](./media/site-recovery-install-mobility-service-using-sccm/sccm-program-properties-page2.png)
 
-10. Asistente de hello toocomplete, haga clic en **siguiente** dos veces.
+10. Para completar el asistente, haga clic en **Siguiente** dos veces.
 
 
 > [!NOTE]
-> script de Hola es compatible con las nuevas instalaciones de agentes de servicio de movilidad y actualiza tooagents que ya están instalados.
+> El script es compatible con las nuevas instalaciones de los agentes de Mobility Service y las actualizaciones de agentes ya instalados.
 
-### <a name="step-3-deploy-hello-package"></a>Paso 3: Implementar el paquete de Hola
-1. En la consola de Configuration Manager de hello, haga clic en el paquete y seleccione **distribuir contenido**.
+### <a name="step-3-deploy-the-package"></a>Paso 3: Implementación del paquete
+1. En la consola de Configuration Manager, haga clic con el botón derecho en el paquete y seleccione **Distribuir contenido**.
   ![Captura de pantalla de la consola de Configuration Manager](./media/site-recovery-install-mobility-service-using-sccm/sccm_distribute.png)
-2. Seleccione hello  **[puntos de distribución](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)**  en toowhich deben copiarse los paquetes de saludo.
-3. Asistente de hello completa. paquete de Hello, a continuación, inicia replicar toohello especifica puntos de distribución.
-4. Después de realiza la distribución de paquetes de saludo, haga clic en el paquete de Hola y seleccione **implementar**.
+2. Seleccione los **[puntos de distribución](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)** en los que se deben copiar los paquetes.
+3. Realice los pasos del asistente. El paquete comienza a replicarse en los puntos de distribución especificados.
+4. Cuando la distribución del paquete finalice, haga clic con el botón derecho en el paquete y seleccione **Implementar**.
   ![Captura de pantalla de la consola de Configuration Manager](./media/site-recovery-install-mobility-service-using-sccm/sccm_deploy.png)
-5. Seleccione la recopilación de dispositivos de Windows Server de Hola que creó en la sección de requisitos previos de hello como recopilación de destino de hello para la implementación.
+5. Seleccione la recopilación de dispositivos de Windows Server que creó en la sección de requisitos previos como la recopilación de destino para la implementación.
 
   ![Captura de pantalla del Asistente para implementar software](./media/site-recovery-install-mobility-service-using-sccm/sccm-select-target-collection.png)
 
-6. En hello **especificar destino de contenido de hello** página, seleccione la **puntos de distribución**.
-7. En hello **toocontrol de configuración de especificar cómo se implementará este software** página, asegúrese de que el objetivo de hello es **requiere**.
+6. En la página **Especifique el destino del contenido**, seleccione los **puntos de distribución**.
+7. En la página **Especificar configuración para controlar cómo se implementará este software**, asegúrese de que el propósito está seleccionado como **requerido**.
 
   ![Captura de pantalla del Asistente para implementar software](./media/site-recovery-install-mobility-service-using-sccm/sccm-deploy-select-purpose.png)
 
-8. En hello **especificar la programación de Hola para esta implementación** página, especifique una programación. Para más información, consulte [Programación de paquetes](https://technet.microsoft.com/library/gg682178.aspx).
-9. En hello **puntos de distribución** página, configurar las propiedades de hello según las necesidades toohello del centro de datos. A continuación, complete el Asistente de Hola.
+8. En la página **Especifique la programación de esta implementación**, especifique una programación. Para más información, consulte [Programación de paquetes](https://technet.microsoft.com/library/gg682178.aspx).
+9. En la página **Puntos de distribución**, configure las propiedades en función de las necesidades del centro de datos. Luego realice los pasos del asistente.
 
 > [!TIP]
-> tooavoid innecesario que se reinicie, instalación de paquete de programación Hola durante la ventana de mantenimiento mensual o la ventana actualizaciones de software.
+> Para evitar los reinicios innecesarios, programe la instalación del paquete durante la ventana de mantenimiento mensual o la ventana de actualizaciones de software.
 
-Puede supervisar el progreso de la implementación de hello mediante la consola de Configuration Manager Hola. Vaya demasiado**supervisión** > **implementaciones** > *[el nombre del paquete]*.
+Puede supervisar el progreso de la implementación en la consola de Configuration Manager. Vaya a **Supervisión** > **Implementaciones** > *[nombre del paquete]*.
 
-  ![Implementaciones de toomonitor de opción de captura de pantalla de Configuration Manager](./media/site-recovery-install-mobility-service-using-sccm/report.PNG)
+  ![Captura de pantalla de la opción de Configuration Manager para supervisar implementaciones](./media/site-recovery-install-mobility-service-using-sccm/report.PNG)
 
 ## <a name="deploy-mobility-service-on-computers-running-linux"></a>Implementación de Mobility Service en equipos que ejecutan Linux
 > [!NOTE]
-> Este artículo se supone que dirección IP de Hola Hola del servidor de configuración es 192.168.3.121, y ese recurso compartido de red segura archivos hello \\\ContosoSecureFS\MobilityServiceInstallers.
+> En este artículo se supone que la dirección IP del servidor de configuración es 192.168.3.121 y que el recurso compartido de archivos de red segura es \\\ContosoSecureFS\MobilityServiceInstallers.
 
 ### <a name="step-1-prepare-for-deployment"></a>Paso 1: Preparación de la implementación
-1. Cree una carpeta en el recurso compartido de red de Hola y asígnele el nombre como **MobSvcLinux**.
-2. Inicie sesión en el servidor de configuración de tooyour y abra un símbolo del sistema administrativo.
-3. Siguiente ejecución Hola comandos toogenerate un archivo de frase de contraseña:
+1. Cree una carpeta en el recurso compartido de red y asígnele el nombre **MobSvcLinux**.
+2. Inicie sesión en el servidor de configuración y abra un símbolo del sistema con privilegios de administrador.
+3. Ejecute los comandos siguientes para generar un archivo de frase de contraseña:
 
     `cd %ProgramData%\ASR\home\svsystems\bin`
 
     `genpassphrase.exe -v > MobSvc.passphrase`
-4. Hola copia **MobSvc.passphrase** archivo en hello **MobSvcLinux** carpeta de recurso compartido de red.
-5. Examinar toohello repositorio de instalador en el servidor de configuración de hello mediante la ejecución de comando hello:
+4. Copie el archivo **MobSvc.passphrase** en la carpeta **MobSvcLinux** del recurso compartido de red.
+5. Examine el repositorio del instalador en el servidor de configuración mediante la ejecución del comando:
 
    `cd %ProgramData%\ASR\home\svsystems\puhsinstallsvc\repository`
 
-6. Siguiente de hello copia archivos toohello **MobSvcLinux** carpeta de recurso compartido de red:
+6. Copie los archivos siguientes en la carpeta **MobSvcLinux** del recurso compartido de red:
    * Microsoft-ASR\_UA\*RHEL6-64*release.tar.gz
    * Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz
    * Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz
@@ -246,9 +246,9 @@ Puede supervisar el progreso de la implementación de hello mediante la consola 
    * Microsoft-ASR\_UA\*UBUNTU-14.04-64\*release.tar.gz
 
 
-7. Copiar el siguiente código de hello y guárdelo como **install_linux.sh** en hello **MobSvcLinux** carpeta.
+7. Copie el código siguiente y guárdelo como **install_linux.sh** en la carpeta **MobSvcLinux**.
    > [!NOTE]
-   > Reemplace los marcadores de posición de hello [CSIP] en esta secuencia de comandos con valores reales de Hola de dirección IP de Hola de su servidor de configuración.
+   > Reemplace los marcadores de posición [CSIP] de este script por los valores reales de la dirección IP del servidor de configuración.
 
 ```Bash
 #!/usr/bin/env bash
@@ -324,7 +324,7 @@ Install()
     RET_VAL=$?
     echo "Installation Returncode: $RET_VAL" >> /tmp/MobSvc/sccm.log
     if [ $RET_VAL -eq 0 ]; then
-        echo "Installation has succeeded. Proceed tooconfiguration." >> /tmp/MobSvc/sccm.log
+        echo "Installation has succeeded. Proceed to configuration." >> /tmp/MobSvc/sccm.log
         Configure
     else
         echo "Installation has failed." >> /tmp/MobSvc/sccm.log
@@ -370,10 +370,10 @@ if [ -e ${VX_VERSION_FILE} ]; then
     agent_configuration=$(grep ^AGENT_CONFIGURATION_STATUS "${VX_VERSION_FILE}" | cut -d"=" -f2 | tr -d " ")
     echo "agent_configuration=$agent_configuration" >> /tmp/MobSvc/sccm.log
      if [ "$agent_configuration" == "Succeeded" ]; then
-        echo "Agent is already configured. Proceed tooUpgrade." >> /tmp/MobSvc/sccm.log
+        echo "Agent is already configured. Proceed to Upgrade." >> /tmp/MobSvc/sccm.log
         Upgrade
     else
-        echo "Agent is not configured. Proceed tooConfigure." >> /tmp/MobSvc/sccm.log
+        echo "Agent is not configured. Proceed to Configure." >> /tmp/MobSvc/sccm.log
         Configure
     fi
 else
@@ -386,20 +386,20 @@ cd /tmp
 
 ### <a name="step-2-create-a-package"></a>Paso 2: Creación de un paquete
 
-1. Inicie sesión en la consola de Configuration Manager tooyour.
-2. Examinar demasiado**biblioteca de Software** > **administración de aplicaciones** > **paquetes**.
+1. Inicie sesión en la consola de Configuration Manager.
+2. Vaya a **Biblioteca de software** > **Administración de aplicaciones** > **Paquetes**.
 3. Haga clic con el botón derecho en **Paquetes** y seleccione **Crear paquete**.
-4. Proporcione valores de versión, descripción, fabricante, idioma y nombre de Hola.
-5. Seleccione hello **este paquete contiene archivos de código fuente** casilla de verificación.
-6. Haga clic en **examinar**y el recurso compartido de red de hello seleccione donde se almacena el instalador de hello (\\\ContosoSecureFS\MobilityServiceInstaller\MobSvcLinux).
+4. Escriba los valores para nombre, descripción, fabricante, lenguaje y versión.
+5. Seleccione la casilla **Este paquete contiene archivos de origen**.
+6. Haga clic en **Examinar** y seleccione el recurso compartido de red donde está almacenado el instalador (\\\ContosoSecureFS\MobilityServiceInstaller\MobSvcLinux).
 
   ![Captura de pantalla del Asistente para crear paquetes y programas](./media/site-recovery-install-mobility-service-using-sccm/create_sccm_package-linux.png)
 
-7. En hello **Elegir tipo de programa Hola que desea toocreate** página, seleccione **programa estándar**y haga clic en **siguiente**.
+7. En la página **Elija el tipo de programa que desea crear**, seleccione **Programa estándar** y haga clic en **Siguiente**.
 
   ![Captura de pantalla del Asistente para crear paquetes y programas](./media/site-recovery-install-mobility-service-using-sccm/sccm-standard-program.png)
 
-8. En hello **especifique información acerca de este programa estándar** página, proporcione Hola después de entradas y haga clic en **siguiente**. (hello otras entradas pueden utilizar sus valores predeterminados.)
+8. En la página **Especifique la información sobre este programa estándar**, proporcione las siguientes entradas y haga clic en **Siguiente**. (Las demás entradas pueden usar sus valores predeterminados).
 
     | **Nombre de parámetro** | **Valor** |
   |--|--|
@@ -409,36 +409,36 @@ cd /tmp
 
   ![Captura de pantalla del Asistente para crear paquetes y programas](./media/site-recovery-install-mobility-service-using-sccm/sccm-program-properties-linux.png)
 
-9. En la página siguiente de hello, seleccione **este programa puede ejecutarse en cualquier plataforma**.
+9. En la página siguiente, seleccione **Este programa puede ejecutarse en cualquier plataforma**.
   ![Captura de pantalla del Asistente para crear paquetes y programas](./media/site-recovery-install-mobility-service-using-sccm/sccm-program-properties-page2-linux.png)
 
-10. Asistente de hello toocomplete, haga clic en **siguiente** dos veces.
+10. Para completar el asistente, haga clic en **Siguiente** dos veces.
 
 > [!NOTE]
-> script de Hola es compatible con las nuevas instalaciones de agentes de servicio de movilidad y actualiza tooagents que ya están instalados.
+> El script es compatible con las nuevas instalaciones de los agentes de Mobility Service y las actualizaciones de agentes ya instalados.
 
-### <a name="step-3-deploy-hello-package"></a>Paso 3: Implementar el paquete de Hola
-1. En la consola de Configuration Manager de hello, haga clic en el paquete y seleccione **distribuir contenido**.
+### <a name="step-3-deploy-the-package"></a>Paso 3: Implementación del paquete
+1. En la consola de Configuration Manager, haga clic con el botón derecho en el paquete y seleccione **Distribuir contenido**.
   ![Captura de pantalla de la consola de Configuration Manager](./media/site-recovery-install-mobility-service-using-sccm/sccm_distribute.png)
-2. Seleccione hello  **[puntos de distribución](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)**  en toowhich deben copiarse los paquetes de saludo.
-3. Asistente de hello completa. paquete de Hello, a continuación, inicia replicar toohello especifica puntos de distribución.
-4. Después de realiza la distribución de paquetes de saludo, haga clic en el paquete de Hola y seleccione **implementar**.
+2. Seleccione los **[puntos de distribución](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)** en los que se deben copiar los paquetes.
+3. Realice los pasos del asistente. El paquete comienza a replicarse en los puntos de distribución especificados.
+4. Cuando la distribución del paquete finalice, haga clic con el botón derecho en el paquete y seleccione **Implementar**.
   ![Captura de pantalla de la consola de Configuration Manager](./media/site-recovery-install-mobility-service-using-sccm/sccm_deploy.png)
-5. Seleccione Hola recopilación de dispositivos de servidor Linux que creó en la sección de requisitos previos de hello como recopilación de destino de hello para la implementación.
+5. Seleccione la recopilación de dispositivos de Linux Server que creó en la sección de requisitos previos como la recopilación de destino para la implementación.
 
   ![Captura de pantalla del Asistente para implementar software](./media/site-recovery-install-mobility-service-using-sccm/sccm-select-target-collection-linux.png)
 
-6. En hello **especificar destino de contenido de hello** página, seleccione la **puntos de distribución**.
-7. En hello **toocontrol de configuración de especificar cómo se implementará este software** página, asegúrese de que el objetivo de hello es **requiere**.
+6. En la página **Especifique el destino del contenido**, seleccione los **puntos de distribución**.
+7. En la página **Especificar configuración para controlar cómo se implementará este software**, asegúrese de que el propósito está seleccionado como **requerido**.
 
   ![Captura de pantalla del Asistente para implementar software](./media/site-recovery-install-mobility-service-using-sccm/sccm-deploy-select-purpose.png)
 
-8. En hello **especificar la programación de Hola para esta implementación** página, especifique una programación. Para más información, consulte [Programación de paquetes](https://technet.microsoft.com/library/gg682178.aspx).
-9. En hello **puntos de distribución** página, configurar las propiedades de hello según las necesidades toohello del centro de datos. A continuación, complete el Asistente de Hola.
+8. En la página **Especifique la programación de esta implementación**, especifique una programación. Para más información, consulte [Programación de paquetes](https://technet.microsoft.com/library/gg682178.aspx).
+9. En la página **Puntos de distribución**, configure las propiedades en función de las necesidades del centro de datos. Luego realice los pasos del asistente.
 
-Servicio de movilidad se instalará en la recopilación de dispositivos de servidor de Linux, según la programación de toohello configuró Hola.
+Mobility Service se instala en la recopilación de dispositivos de Linux Server según la programación configurada.
 
-## <a name="other-methods-tooinstall-mobility-service"></a>Otro tooinstall métodos del servicio de movilidad
+## <a name="other-methods-to-install-mobility-service"></a>Otros métodos para instalar Mobility Service
 Aquí tiene otras opciones para instalar Mobility Service:
 * [Instalación manual mediante la GUI](http://aka.ms/mobsvcmanualinstall)
 * [Instalación manual mediante la línea de comandos](http://aka.ms/mobsvcmanualinstallcli)
@@ -446,7 +446,7 @@ Aquí tiene otras opciones para instalar Mobility Service:
 * [Instalación automatizada mediante Azure Automation y la configuración de estado deseado](http://aka.ms/mobsvcdscinstall)
 
 ## <a name="uninstall-mobility-service"></a>Desinstalación de Mobility Service
-Puede crear paquetes de Configuration Manager toouninstall servicio de movilidad. El script siguiente de Hola de uso toodo así:
+Como en el caso de la instalación, puede crear paquetes de Configuration Manager para desinstalar Mobility Service. Para ello, use el script siguiente:
 
 ```
 Time /t >> C:\logfile.log
@@ -470,4 +470,4 @@ IF  %ERRORLEVEL% EQU 1 (GOTO :INSTALL) ELSE GOTO :UNINSTALL
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ya estás listo demasiado[habilitar la protección](https://docs.microsoft.com/en-us/azure/site-recovery/site-recovery-vmware-to-azure#step-6-replicate-applications) para las máquinas virtuales.
+Ahora está listo para [habilitar la protección](https://docs.microsoft.com/en-us/azure/site-recovery/site-recovery-vmware-to-azure#step-6-replicate-applications) de las máquinas virtuales.

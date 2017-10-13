@@ -1,6 +1,6 @@
 ---
-title: "aaaGet partió Hola biblioteca de red CDN de Azure para .NET | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toowrite .NET aplicaciones toomanage CDN de Azure con Visual Studio."
+title: "Introducción a la biblioteca de la red CDN de Azure para .NET | Microsoft Docs"
+description: Aprenda a escribir aplicaciones .NET para administrar la red CDN de Azure con Visual Studio.
 services: cdn
 documentationcenter: .net
 author: zhangmanling
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 9753e48c7469072cef6b2ac728e18c78121c97f7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5379586355ece98af6295236d6cbd09cb31c742b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Introducción al desarrollo de la red de entrega de contenido (CDN) de Azure
 > [!div class="op_single_selector"]
@@ -27,40 +27,40 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Puede usar hello [biblioteca de red CDN de Azure para .NET](https://msdn.microsoft.com/library/mt657769.aspx) tooautomate creación y administración de perfiles de red CDN y puntos de conexión.  Este tutorial le guía por la creación de hello de una aplicación de consola .NET simple que muestra algunas de las operaciones disponibles de Hola.  Este tutorial es todos los aspectos de la biblioteca de Azure CDN Hola toodescribe no está diseñado para .NET en detalle.
+Puede usar la [biblioteca de red CDN de Azure para .NET](https://msdn.microsoft.com/library/mt657769.aspx) con el fin de automatizar la creación y la administración de perfiles y puntos de conexión de red CDN.  Este tutorial describe la creación de una aplicación de consola .NET sencilla que muestra algunas de las operaciones disponibles.  Con este tutorial no se pretende describir todos los aspectos de la biblioteca de red CDN de Azure para .NET en detalle.
 
-Debe toocomplete de Visual Studio 2015 en este tutorial.  [Visual Studio Community 2015](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) está disponible gratis para descargarse.
+Necesita Visual Studio 2015 para completar este tutorial.  [Visual Studio Community 2015](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) está disponible gratis para descargarse.
 
 > [!TIP]
-> Hola [proyecto completado de este tutorial](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c) está disponible para su descarga en MSDN.
+> El [proyecto completado en este tutorial](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c) está disponible para descargarse en MSDN.
 > 
 > 
 
 [!INCLUDE [cdn-app-dev-prep](../../includes/cdn-app-dev-prep.md)]
 
 ## <a name="create-your-project-and-add-nuget-packages"></a>Creación del proyecto e incorporación de paquetes NuGet
-Ahora que hemos creado un grupo de recursos para los perfiles de la red CDN y dada nuestra perfiles de red CDN de Azure AD aplicación permiso toomanage y los puntos de conexión dentro de ese grupo, podemos comenzar a crear nuestra aplicación.
+Ahora que hemos creado un grupo de recursos para los perfiles de CDN y concedido permiso a la aplicación de Azure AD para administrar perfiles y puntos de conexión de CDN dentro de ese grupo, podemos comenzar a crear la aplicación.
 
-Desde Visual Studio 2015, haga clic en **archivo**, **New**, **proyecto...**  cuadro de diálogo de proyecto nuevo de tooopen Hola.  Expanda **Visual C#**, a continuación, seleccione **Windows** en panel de Hola Hola izquierda.  Haga clic en **aplicación de consola** en el panel central de Hola.  Asigne un nombre al proyecto y haga clic en **Aceptar**.  
+En Visual Studio 2015, haga clic en **Archivo**, **Nuevo**, **Proyecto…** para abrir el diálogo Nuevo proyecto.  Expanda **Visual C#** y seleccione **Windows** en el panel de la izquierda.  Haga clic en **Aplicación de consola** en el panel central.  Asigne un nombre al proyecto y haga clic en **Aceptar**.  
 
 ![Nuevo proyecto](./media/cdn-app-dev-net/cdn-new-project.png)
 
-Nuestro proyecto va toouse algunas bibliotecas de Azure contenidos en los paquetes de Nuget.  Vamos a agregar los proyectos de toohello.
+El proyecto va a usar algunas bibliotecas de Azure contenidas en paquetes NuGet.  Vamos a agregarlos al proyecto.
 
-1. Haga clic en hello **herramientas** menú, **Administrador de paquetes de Nuget**, a continuación, **Package Manager Console**.
+1. Haga clic en el menú **Herramientas**, **Administrador de paquetes NuGet** y, después, en **Consola del Administrador de paquetes**.
    
     ![Administrar paquetes NuGet](./media/cdn-app-dev-net/cdn-manage-nuget.png)
-2. En la consola de administrador de paquetes de saludo, ejecutar Hola después comando tooinstall hello **biblioteca de autenticación de Active Directory (ADAL)**:
+2. En la Consola del Administrador de paquetes, ejecute el siguiente comando para instalar la **biblioteca de autenticación de Active Directory (ADAL)**:
    
     `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory`
-3. Ejecutar Hola después hello tooinstall **biblioteca de administración de red CDN de Azure**:
+3. Ejecute lo siguiente para instalar la **biblioteca de administración de red CDN de Azure**:
    
     `Install-Package Microsoft.Azure.Management.Cdn`
 
 ## <a name="directives-constants-main-method-and-helper-methods"></a>Directivas, constantes, método Main y métodos auxiliares
-Seamos estructura básica de Hola de nuestro programa escrito.
+Escribamos la estructura básica del programa.
 
-1. En la ficha de Program.cs hello, reemplace hello `using` directivas princip Hola con siguiente hello:
+1. En la pestaña Program.cs, reemplace las directivas `using` del principio por lo siguiente:
    
     ```csharp
     using System;
@@ -72,7 +72,7 @@ Seamos estructura básica de Hola de nuestro programa escrito.
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Microsoft.Rest;
     ```
-2. Necesitamos toodefine algunas constantes que nuestros métodos va a usar.  Hola `Program` (clase), pero antes de Hola `Main` método, agregue Hola siguiente.  Ser seguro tooreplace marcadores de posición de hello, incluidos hello  **&lt;corchetes angulares&gt;**, con sus propios valores según sea necesario.
+2. Necesitamos definir algunas constantes que los métodos van a usar.  En la clase `Program`, pero antes del método `Main`, agregue lo siguiente.  Asegúrese de reemplazar los marcadores de posición (incluidos los **&lt;corchetes angulares&gt;**) con sus propios valores según sea necesario.
    
     ```csharp
     //Tenant app constants
@@ -87,13 +87,13 @@ Seamos estructura básica de Hola de nuestro programa escrito.
     private const string resourceGroupName = "CdnConsoleTutorial";
     private const string resourceLocation = "<YOUR PREFERRED AZURE LOCATION, SUCH AS Central US>";
     ```
-3. En el nivel de clase de hello, definir estas dos variables.  Vamos a usar estas toodetermine más adelante si nuestro perfil y el punto de conexión ya existen.
+3. También en el nivel de clase, defina estas dos variables.  Las usaremos más adelante para determinar si el perfil y el punto de conexión ya existen.
    
     ```csharp
     static bool profileAlreadyExists = false;
     static bool endpointAlreadyExists = false;
     ```
-4. Reemplace hello `Main` método tal como se indica a continuación:
+4. Reemplace el método `Main` de la siguiente forma:
    
    ```csharp
    static void Main(string[] args)
@@ -124,11 +124,11 @@ Seamos estructura básica de Hola de nuestro programa escrito.
        // Delete CDN Profile
        PromptDeleteCdnProfile(cdn);
    
-       Console.WriteLine("Press Enter tooend program.");
+       Console.WriteLine("Press Enter to end program.");
        Console.ReadLine();
    }
    ```
-5. Algunos de nuestros otros métodos va usuario de hello tooprompt con preguntas de "Sí/No".  Agregar Hola siguiendo el método toomake que un poco más fácil:
+5. Algunos de los otros métodos van a plantear al usuario preguntas que necesitan "Sí" o "No" como respuesta.  Agregue el método siguiente para hacerlo algo más fácil:
    
     ```csharp
     private static bool PromptUser(string Question)
@@ -152,10 +152,10 @@ Seamos estructura básica de Hola de nuestro programa escrito.
     }
     ```
 
-Ahora que se escribe la estructura básica de Hola de nuestro programa, debemos crear métodos de hello llamados por hello `Main` método.
+Ahora que ya hemos escrito la estructura básica del programa, deberíamos crear los métodos a los que llama `Main` .
 
 ## <a name="authentication"></a>Autenticación
-Antes de que podemos usar Hola biblioteca de administración de red CDN de Azure, se necesita que nuestro servicio tooauthenticate principal y obtener un token de autenticación.  Este método usa el token de hello tooretrieve ADAL.
+Para poder usar la biblioteca de administración de CDN de Azure, es necesario autenticar la entidad de servicio y obtener un token de autenticación.  Este método usa ADAL para recuperar el token.
 
 ```csharp
 private static AuthenticationResult GetAccessToken()
@@ -169,10 +169,10 @@ private static AuthenticationResult GetAccessToken()
 }
 ```
 
-Si usa la autenticación de usuario individual, Hola `GetAccessToken` método tendrá un aspecto ligeramente distinto.
+Si utiliza la autenticación de usuario individual, el método `GetAccessToken` tendrá un aspecto algo distinto.
 
 > [!IMPORTANT]
-> Sólo puede utilizar este ejemplo de código si se elige el toohave autenticación de usuario individuales en lugar de una entidad de servicio.
+> Use este ejemplo de código únicamente si opta por la autenticación de usuario individual en lugar de una entidad de servicio.
 > 
 > 
 
@@ -187,26 +187,26 @@ private static AuthenticationResult GetAccessToken()
 }
 ```
 
-Ser seguro tooreplace `<redirect URI>` con hello redirigir el URI especificado al registrar la aplicación hello en Azure AD.
+No se olvide de reemplazar `<redirect URI>` por el URI de redirección que especificó al registrar la aplicación en Azure AD.
 
 ## <a name="list-cdn-profiles-and-endpoints"></a>Lista de perfiles y puntos de conexión de CDN
-Ahora estamos operaciones de red CDN tooperform listo.  Hello primero que hace el método es la lista de todos los perfiles de Hola y puntos de conexión en el grupo de recursos y si encuentra una coincidencia para los nombres de perfil y del extremo de hello especificado en nuestras constantes, hace una nota de para más tarde por lo que no intentaremos toocreate duplicados.
+Ahora estamos preparados para realizar operaciones de CDN.  Lo primero que hace el método es proporcionar una lista de todos los perfiles y puntos de conexión en el grupo de recursos y, si encuentra una coincidencia para los nombres de perfil y punto de conexión especificados en nuestras constantes, lo tiene en cuenta más adelante para no crear duplicados.
 
 ```csharp
 private static void ListProfilesAndEndpoints(CdnManagementClient cdn)
 {
-    // List all hello CDN profiles in this resource group
+    // List all the CDN profiles in this resource group
     var profileList = cdn.Profiles.ListByResourceGroup(resourceGroupName);
     foreach (Profile p in profileList)
     {
         Console.WriteLine("CDN profile {0}", p.Name);
         if (p.Name.Equals(profileName, StringComparison.OrdinalIgnoreCase))
         {
-            // Hey, that's hello name of hello CDN profile we want toocreate!
+            // Hey, that's the name of the CDN profile we want to create!
             profileAlreadyExists = true;
         }
 
-        //List all hello CDN endpoints on this CDN profile
+        //List all the CDN endpoints on this CDN profile
         Console.WriteLine("Endpoints:");
         var endpointList = cdn.Endpoints.ListByProfile(p.Name, resourceGroupName);
         foreach (Endpoint e in endpointList)
@@ -214,7 +214,7 @@ private static void ListProfilesAndEndpoints(CdnManagementClient cdn)
             Console.WriteLine("-{0} ({1})", e.Name, e.HostName);
             if (e.Name.Equals(endpointName, StringComparison.OrdinalIgnoreCase))
             {
-                // hello unique endpoint name already exists.
+                // The unique endpoint name already exists.
                 endpointAlreadyExists = true;
             }
         }
@@ -243,7 +243,7 @@ private static void CreateCdnProfile(CdnManagementClient cdn)
 }
 ```
 
-Una vez creado el perfil de hello, vamos a crear un punto de conexión.
+Una vez creado el perfil, crearemos un punto de conexión.
 
 ```csharp
 private static void CreateCdnEndpoint(CdnManagementClient cdn)
@@ -269,12 +269,12 @@ private static void CreateCdnEndpoint(CdnManagementClient cdn)
 ```
 
 > [!NOTE]
-> ejemplo de Hola anterior asigna el punto de conexión de hello un origen con el nombre *Contoso* con un nombre de host `www.contoso.com`.  Debe cambiar el nombre de host de esta toopoint tooyour propio del origen.
+> En el ejemplo anterior se asigna al punto de conexión el origen *Contoso* con el nombre de host `www.contoso.com`.  Debe cambiarlo para que señale al nombre de host de su propio origen.
 > 
 > 
 
 ## <a name="purge-an-endpoint"></a>Purga de un punto de conexión
-Suponiendo que ha creado el extremo de hello, una tarea habitual que tengamos que queremos tooperform en nuestro programa purga de contenido de hello en el punto de conexión.
+Suponiendo que se haya creado el punto de conexión, una tarea habitual que podríamos llevar a cabo en el programa es purgar el contenido del punto de conexión.
 
 ```csharp
 private static void PromptPurgeCdnEndpoint(CdnManagementClient cdn)
@@ -290,12 +290,12 @@ private static void PromptPurgeCdnEndpoint(CdnManagementClient cdn)
 ```
 
 > [!NOTE]
-> En el ejemplo de Hola anterior, Hola cadena `/*` denota que deseo toopurge todo el contenido de la raíz de Hola de ruta de acceso de punto de conexión de Hola.  Esto es equivalente toochecking **purgar todos los** Hola portal de Azure "purga" cuadro de diálogo. Hola `CreateCdnProfile` método, creé nuestro perfil como un **CDN de Azure de Verizon** perfil mediante código de hello `Sku = new Sku(SkuName.StandardVerizon)`, por lo que esto se realice correctamente.  Sin embargo, **Azure CDN de Akamai** perfiles no son compatibles con **purgar todos los**, por lo que si estaba usando un perfil de Akamai para este tutorial, necesitaría tooinclude toopurge de rutas de acceso específicas.
+> En el ejemplo anterior, la cadena `/*` denota que queremos purgar todo el contenido en la raíz de la ruta de acceso del punto de conexión.  Esto equivale a activar **Purgar todo** en el cuadro de diálogo de purga del Portal de Azure. En el método `CreateCdnProfile` hemos creado el perfil como un perfil de **Red CDN de Azure de Verizon** con el código `Sku = new Sku(SkuName.StandardVerizon)`, por lo que será correcto.  Pero los perfiles de **Red CDN de Azure de Akamai** no admiten **Purgar todo** (en el caso de usar un perfil de Akamai para este tutorial, tendría que incluir las rutas de acceso específicas que quiera purgar).
 > 
 > 
 
 ## <a name="delete-cdn-profiles-and-endpoints"></a>Eliminación de perfiles y puntos de conexión de CDN
-métodos último Hola eliminará nuestro punto de conexión y el perfil.
+Los últimos métodos eliminarán el punto de conexión y el perfil.
 
 ```csharp
 private static void PromptDeleteCdnEndpoint(CdnManagementClient cdn)
@@ -321,23 +321,23 @@ private static void PromptDeleteCdnProfile(CdnManagementClient cdn)
 }
 ```
 
-## <a name="running-hello-program"></a>Programa hello en ejecución
-Ahora podemos compilar y ejecutar el programa Hola haciendo clic en hello **iniciar** botón en Visual Studio.
+## <a name="running-the-program"></a>Ejecución del programa
+Ahora podemos compilar y ejecutar el programa haciendo clic en el botón **Iniciar** de Visual Studio.
 
 ![Programa en ejecución](./media/cdn-app-dev-net/cdn-program-running-1.png)
 
-Cuando programa Hola alcanza Hola por encima del símbolo del sistema, debe ser capaz de tooreturn grupo de recursos tooyour Hola portal de Azure y comprobar que se ha creado el perfil de Hola.
+Cuando el programa llega al mensaje anterior, debería poder ver, de vuelta en el grupo de recursos en el Portal de Azure, que se ha creado el perfil.
 
 ![¡Éxito!](./media/cdn-app-dev-net/cdn-success.png)
 
-A continuación, se puede confirmar Hola indicaciones toorun Hola resto del programa Hola.
+Después, se pueden confirmar los mensajes para ejecutar el resto del programa.
 
 ![Finalización del programa](./media/cdn-app-dev-net/cdn-program-running-2.png)
 
 ## <a name="next-steps"></a>Pasos siguientes
-proyecto de toosee Hola completado de este tutorial, [Descargar ejemplo hello](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c).
+Para ver el proyecto de este tutorial terminado, [descargue el ejemplo](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c).
 
-documentación adicional toofind en hello biblioteca de administración de red CDN de Azure para. NET, Hola vista [referencia en MSDN](https://msdn.microsoft.com/library/mt657769.aspx).
+Para ver más documentación sobre la biblioteca de administración de red CDN de Azure para .NET, consulte la [referencia en MSDN](https://msdn.microsoft.com/library/mt657769.aspx).
 
 Administre sus recursos de red CDN con [PowerShell](cdn-manage-powershell.md).
 

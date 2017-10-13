@@ -1,6 +1,6 @@
 ---
-title: "aaaFilters y manifiestos dinámicos | Documentos de Microsoft"
-description: "Este tema describe cómo toocreate filtros para que el cliente pueda usarlas toostream secciones específicas de una secuencia. Servicios multimedia crea manifiestos dinámicos tooarchive este selectivo de transmisión por secuencias."
+title: "Filtros y manifiestos dinámicos | Microsoft Docs"
+description: "En este tema se describe cómo crear filtros para que su cliente pueda usarlos para el streaming de secciones específicas de una transmisión. Servicios multimedia crea manifiestos dinámicos par lograr este streaming selectivo."
 services: media-services
 documentationcenter: 
 author: cenkdin
@@ -14,25 +14,25 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: 9527a011438c11da07a363d701ea736414412ecf
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4034fd0aa64627c107a43208dcca766f7f44d5d4
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filtros y manifiestos dinámicos
-A partir de la versión 2.11, servicios multimedia permite toodefine filtros para los activos. Estos filtros son reglas de lado de servidor que permitirán que los clientes toochoose toodo cosas como: reproducción únicamente una sección de un vídeo (en lugar de reproducir Hola completos de vídeo), o especifique solo un subconjunto de copias de audio y vídeo que los dispositivos de su cliente pueden controlar () en lugar de todas las copias de Hola que están asociadas a Hola activo). Dicho filtrado de los activos se archiva a través de **manifiesto dinámica**s que se crean al toostream de solicitud de su cliente un vídeo en función de los filtros especificados.
+A partir de la versión 2.11, los Servicios multimedia permiten definir filtros para los activos. Estos filtros son reglas del lado servidor que permitirán a los clientes elegir realizar acciones como: reproducir solo una sección de un vídeo (en lugar de reproducir el vídeo completo), o especificar solo un subconjunto de las representaciones de audio y vídeo que el dispositivo de su cliente puede controlar (en lugar de todas las copias asociadas al activo). Este filtrado de sus activos se archiva a través de los **manifiestos dinámicos**que se crean tras la solicitud del cliente para transmitir un vídeo en función de los filtros especificados.
 
-Estos temas se describen escenarios comunes en los que con filtros sería muy beneficiosos tooyour tootopics de los clientes y los vínculos que muestran cómo se filtra mediante programación toocreate (actualmente, puede crear filtros con las API de REST solo).
+En este tema se describen escenarios comunes en los que el uso de filtros resultaría muy beneficioso para los clientes y vínculos a temas que muestran cómo crear filtros mediante programación (actualmente solo puede crear filtros con las API de REST).
 
 ## <a name="overview"></a>Información general
-Cuando se entrega el contenido toocustomers (transmisión por secuencias de eventos en directo o vídeo bajo demanda) el objetivo es toodeliver un dispositivo de vídeo toovarious de alta calidad en condiciones de red diferente. tooachieve este objetivo Hola siguientes:
+Cuando entregue su contenido a los clientes (transmisión de eventos en directo o vídeo bajo demanda), su objetivo es entregar un vídeo de alta calidad a varios dispositivos en condiciones de red diferentes. Para lograr este objetivo, haga lo siguiente:
 
-* codificar su secuencia toomulti de bits ([velocidad de bits adaptativa](http://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) secuencia de vídeo (Esto se encargará de condiciones de calidad y la red) y 
-* uso de servicios multimedia [empaquetado dinámico](media-services-dynamic-packaging-overview.md) toodynamically volver a empaquetar la secuencia en distintos protocolos (Esto se encargará de transmisión por secuencias en diferentes dispositivos). Servicios multimedia admite la entrega de hello siguiendo las tecnologías de streaming de velocidad de bits adaptativa: HTTP Live Streaming (HLS), Smooth Streaming y MPEG DASH. 
+* codifique la secuencia a secuencia de vídeo de velocidad de bits múltiple ([velocidad de bits adaptativa](http://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) (esto se encargará de las condiciones de calidad y red) y 
+* use el [empaquetado dinámico](media-services-dynamic-packaging-overview.md) de Servicios multimedia dinámicamente para volver a empaquetar dinámicamente su secuencia en distintos protocolos (esto se encargará de la transmisión por secuencias en dispositivos diferentes). Media Services admite la entrega de las siguientes tecnologías de streaming con velocidad de bits adaptable: HTTP Live Streaming (HLS), Smooth Streaming y MPEG-DASH. 
 
 ### <a name="manifest-files"></a>Archivos de manifiesto
-Al codificar un activo para el streaming de velocidad de bits adaptativa, un **manifiesto** se crea el archivo (lista de reproducción) (archivo hello está basado en texto o XML). Hola **manifiesto** archivo incluye la transmisión por secuencias de metadatos como: realizar un seguimiento de tipo (audio, vídeo o texto), realizar el seguimiento de nombre, hora de inicio y finalización, velocidad de bits (calidades), idiomas de seguimiento, ventana de presentación (una ventana deslizante de duración fija), vídeo códec (FourCC). También indica a fragmento siguiente de hello Reproductor tooretrieve Hola proporcionando información sobre Hola siguiente reproducen fragmentos de vídeo disponibles y su ubicación. Fragmentos (o segmentos) son Hola real "fragmentos" de un contenido de vídeo.
+Cuando codifique un activo para transmisión por secuencias de velocidad de bits adaptativa, se crea un archivo de **manifiesto** (lista de reproducción) (el archivo se basa en texto o XML). El archivo de **manifiesto** incluye metadatos de transmisión por secuencias como: el tipo de pista (audio, vídeo o texto), el nombre de la pista, la hora inicial y final, la velocidad de bits (calidades), los idiomas de pista, la ventana de presentación (ventana deslizante de duración fija), el códec de vídeo (FourCC). También indica al reproductor que recupere el siguiente fragmento ofreciendo información sobre los próximos fragmentos de vídeo reproducibles disponibles y su ubicación. Los fragmentos (o segmentos) son "fragmentos" reales de un contenido de vídeo.
 
 Este es un ejemplo de un archivo de manifiesto: 
 
@@ -67,14 +67,14 @@ Este es un ejemplo de un archivo de manifiesto:
     </SmoothStreamingMedia>
 
 ### <a name="dynamic-manifests"></a>Manifiestos dinámicos
-Hay [escenarios](media-services-dynamic-manifest-overview.md#scenarios) cuando el cliente necesita más flexibilidad que lo que se describe en el archivo de manifiesto del recurso de Hola de forma predeterminada. Por ejemplo:
+Hay [escenarios](media-services-dynamic-manifest-overview.md#scenarios) cuando el cliente necesita mayor flexibilidad que lo que se describe en el archivo de manifiesto del activo predeterminado. Por ejemplo:
 
-* Dispositivo específico: entregar solo Hola especificado o copias especificado pistas de lenguaje que son compatibles con el dispositivo hello tooplayback usado Hola ("copia de filtrado de contenido"). 
-* Reducir Hola manifiesto tooshow un clip secundario de un evento en directo ("clip secundario filtrado").
-* Inicio de Hola de recorte de un vídeo ("recortar un vídeo").
-* Ajustar la ventana de presentación (DVR) en orden tooprovide una longitud limitada de ventana DVR hello en el Reproductor de hello ("ventana de presentación ajustar").
+* Específico de dispositivo: entregue únicamente las representaciones y pistas de idioma especificadas que admite el dispositivo que se usa para la reproducción del contenido ("filtrado de representaciones"). 
+* Reduzca el manifiesto para mostrar un clip secundario de un evento en directo ("filtrado de vídeos secundarios").
+* Recorte el inicio de un vídeo ("recorte de un vídeo").
+* Ajuste la ventana de presentación (DVR) para ofrecer una longitud limitada de la ventana de DVR en el reproductor ("ventana de presentación de ajuste").
 
-tooachieve esta flexibilidad, ofertas de servicios multimedia **manifiestos dinámicos** basado en predefinidos [filtros](media-services-dynamic-manifest-overview.md#filters).  Una vez que defina los filtros de hello, los clientes podrían utilizar una copia específica de toostream o subcarpetas clips de vídeo. Debería especificar filtros de hello transmisión por secuencias de dirección URL. Filtros pudieron ser la velocidad de bits de tooadaptive aplicado streaming protocolos admitidos por [empaquetado dinámico](media-services-dynamic-packaging-overview.md): HLS, MPEG-DASH y Smooth Streaming. Por ejemplo:
+Para lograr esta flexibilidad, los Servicios multimedia ofrecen **manifiestos dinámicos** basados en [filtros](media-services-dynamic-manifest-overview.md#filters)predefinidos.  Cuando defina los filtros, los clientes podrían usarlos para transmitir una representación específica o clips secundarios del vídeo. Especificarían filtros en la URL de streaming. Se podrían aplicar filtros a protocolos de streaming con velocidad de bits adaptable compatibles con [empaquetado dinámico](media-services-dynamic-packaging-overview.md): HLS, MPEG-DASH y Smooth Streaming. Por ejemplo:
 
 URL de MPEG DASH con filtro
 
@@ -85,53 +85,53 @@ URL de Smooth Streaming con filtro
     http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyLocalFilter)
 
 
-Para obtener más información acerca de cómo toodeliver el contenido y la compilación de transmisión por secuencias de direcciones URL, vea [entregar información general del contenido](media-services-deliver-content-overview.md).
+Para obtener más información sobre cómo entregar el contenido y crear URL de streaming, vea [Información general de entregar contenido](media-services-deliver-content-overview.md).
 
 > [!NOTE]
-> Tenga en cuenta que manifiestos dinámicos no cambiar activos de Hola y Hola manifiesto predeterminado para ese recurso. El cliente puede elegir toorequest un flujo con o sin filtros. 
+> Tenga en cuenta que los manifiestos dinámicos no cambian el activo y el manifiesto predeterminado para ese activo. Su cliente puede elegir solicitar una secuencia con o sin filtros. 
 > 
 > 
 
 ### <a id="filters"></a>Filtros
 Hay dos tipos de filtros de activos: 
 
-* Filtros globales (puede ser activo tooany aplicados en hello cuenta de servicios multimedia de Azure, tienen una duración de la cuenta de hello) y 
-* Filtros locales (pueden ser solo asset tooan aplicada con qué hello filtro se asoció tras su creación, tienen una duración de activos de hello). 
+* Filtros globales (se pueden aplicar a cualquier activo de la cuenta de Servicios multimedia de Azure, tienen una duración de la cuenta) y 
+* Filtros locales (solo se pueden aplicar a un activo con el que estaba asociado el filtro una vez creado, tienen una duración del activo). 
 
-Tipos de filtros globales y locales tienen exactamente hello las mismas propiedades. Hola principal diferencia entre Hola dos es para los escenarios de qué tipo de un sistema de almacenamiento es más adecuado. Filtros globales son suele resultar adecuados para los perfiles de dispositivo (filtrado de copia) donde filtros locales pueden ser utilizado tootrim un activo específico.
+Los tipos de filtros globales y locales tienen exactamente las mismas propiedades. La diferencia principal entre los dos es para qué escenarios es más adecuado cada tipo de filtro. Los filtros globales suelen ser adecuados para los perfiles de dispositivos (filtrado de representaciones) donde los filtros locales podrían usarse para recortar un activo específico.
 
 ## <a id="scenarios"></a>Escenarios comunes
-Tal y como se mencionó antes, cuando se entrega el contenido toocustomers (transmisión por secuencias de eventos en directo o vídeo bajo demanda) de su objetivo es toodeliver un vídeo de alta calidad toovarious dispositivos en diferentes las condiciones de red. Además, puede tener otros requisitos que implican el filtrado de los activos y el uso de **manifiestos dinámico**s. Hola las secciones siguientes proporcionan una breve introducción de distintos escenarios de filtrado.
+Como se mencionó anteriomente, al entregar su contenido a los clientes (transmisión de eventos en directo o vídeo a la carta bajo demanda), el objetivo es entregar un vídeo de alta calidad a varios dispositivos en condiciones de red diferentes. Además, puede tener otros requisitos que implican el filtrado de los activos y el uso de **manifiestos dinámico**s. En las secciones siguientes se ofrece una breve introducción a los diferentes escenarios de filtrado.
 
-* Especifique solo un subconjunto de copias de audio y vídeo que pueden controlar determinados dispositivos (en lugar de todas las copias de Hola que están asociadas a Hola activo). 
-* Reproducir solo una sección de un vídeo (en lugar de reproducir Hola completos de vídeo).
+* Especifique solo un subconjunto de representaciones de audio y vídeo que pueden controlar determinados dispositivos (en lugar de todas las representaciones asociadas al activo). 
+* Reproducir solo una sección de un vídeo (en lugar de reproducir todo el vídeo).
 * Ajustar la ventana de presentación de DVR.
 
 ## <a name="rendition-filtering"></a>Filtrado de representaciones
-Puede elegir tooencode los perfiles de codificación del toomultiple del activo (línea de base de H.264, H.264 alta, AACL, AACH, Dolby Digital Plus) y varias velocidades de bits de calidad. Sin embargo, no todos los dispositivos cliente serán compatibles con todos los perfiles y velocidades de bits de su activo. Por ejemplo, los dispositivos Android más antiguos solo admiten H.264 Baseline+AACL. Enviar superior dispositivo tooa de velocidades de bits que no se puede obtener ventajas de hello, desperdicia cálculo de ancho de banda y el dispositivo. Dispositivo de este tipo debe descodificar todos Hola debido a información, solo tooscale lo hacia abajo para mostrar.
+Puede elegir codificar el activo en varios perfiles de codificación (H.264 Baseline, H.264 High, AACL, AACH, Dolby Digital Plus) y varias velocidades de bits de calidad. Sin embargo, no todos los dispositivos cliente serán compatibles con todos los perfiles y velocidades de bits de su activo. Por ejemplo, los dispositivos Android más antiguos solo admiten H.264 Baseline+AACL. El envío de velocidades de bits más altas a un dispositivo que no puede obtener los beneficios, desperdicia el ancho de banda y el cálculo del dispositivo. Dicho dispositivo debe descodificar toda la información ofrecida, solo para reducirla verticalmente para presentación.
 
-Con manifiestos dinámicos, puede crear perfiles de dispositivos como dispositivos móviles, consola, HD y SD, etc. y se incluyen hello pistas calidades que desee toobe una parte de cada perfil.
+Con el manifiesto dinámico, puede crear perfiles de dispositivo como móvil, consola, HD/SD, etc. e incluir las pistas y calidades que quiere que formen parte de cada perfil.
 
 ![Ejemplo de filtrado de representaciones][renditions2]
 
-En el siguiente ejemplo de Hola, un codificador era tooencode usa un recurso mezzanine en copias de vídeo de ISO MP4s siete (de 180p too1080p). Hello activo codificado puede dinámicamente empaquetarse en cualquiera de hello después de protocolos de transmisión por secuencias: MPEG DASH, HLS y Smooth.  Hola parte superior de diagrama de hello, se muestra hello HLS manifiesto de recurso de hello sin filtros (contiene todas las copias de siete).  En la parte inferior izquierda de hello, se muestra hello que HLS manifiesto toowhich se aplicó un filtro con el nombre "ott". filtro de "ott" Hello especifica tooremove todas las velocidades de bits por debajo de 1 Mbps, lo que provocó Hola inferior dos los niveles de calidad que se separa en respuesta Hola.  En hello parte inferior derecha, Hola HLS toowhich manifiesto se aplicó un filtro con el nombre "móvil" se muestra. filtro "móvil" Hello especifica copias tooremove donde hello resolución es mayor que 720p, lo que produce dos copias de 1080p Hola perdiendo.
+En el ejemplo siguiente, se usó un codificador para codificar un recurso intermedio en siete representaciones de vídeo MP4 ISO (de 180p a 1080p). El recurso codificado puede empaquetarse dinámicamente en cualquiera de los siguientes protocolos de streaming: HLS, Smooth y MPEG-DASH.  En la parte superior del diagrama, se muestra el manifiesto HLS para el activo sin filtros (contiene las siete representaciones).  En la parte inferior izquierda, se muestra el manifiesto HLS al que se aplicó un filtro denominado "ott". El filtro de "ott" especifica la eliminación de todas las velocidades de bits por debajo de 1 Mbps, lo que dio lugar a que se quitaran los dos niveles de calidad inferiores en la respuesta.  En la parte inferior derecha se muestra el manifiesto HLS al que se aplicó un filtro denominado "móvil". El filtro "móvil" especifica la eliminación de las representaciones donde la resolución es mayor que 720p, lo que hizo que se quitaran las dos representaciones de 1080p.
 
 ![Filtrado de representaciones][renditions1]
 
 ## <a name="removing-language-tracks"></a>Quitar pistas de idioma
-Los activos pueden incluir varios idiomas de audio como inglés, español, francés, etc. Por lo general, realiza un seguimiento de audio disponible por selección de usuarios y administradores de SDK del Reproductor de hello predeterminadas selección de pista de audio. Resulta difícil toodevelop estos SDK de Reproductor, requiere que las implementaciones diferentes a través de los marcos de Reproductor específico del dispositivo. Además, en algunas plataformas, las API del Reproductor están limitadas y no incluyen la característica de selección de audio donde los usuarios no se pueden seleccionar o cambiar la pista de audio predeterminada de Hola. Con los filtros de recurso, puede controlar el comportamiento de hello mediante la creación de filtros que incluyan solo los idiomas de audio deseados.
+Los activos pueden incluir varios idiomas de audio como inglés, español, francés, etc. Normalmente, los administradores del SDK del reproductor toman como valor predeterminado la selección de pistas de audio y las pistas de audio disponibles por selección de usuario. Es un desafío desarrollar estos SDK del Reproductor; requiere diferentes implementaciones en marcos de reproductores específicos de dispositivos. Además, en algunas plataformas, las API del reproductor están limitadas y no incluyen la característica de selección de audio, donde los usuarios no pueden seleccionar o cambiar la pista de audio predeterminada. Con los filtros de activo, puede controlar el comportamiento creando filtros que solo incluyen idiomas de audio deseados.
 
 ![Filtrado de pistas de idioma][language_filter]
 
 ## <a name="trimming-start-of-an-asset"></a>Recorte del inicio de un activo
-En la mayoría los eventos de transmisión por secuencias en directo, operadores ejecutan algunas pruebas antes del evento real Hola. Por ejemplo, puede que incluyan una pizarra así antes del inicio de Hola de evento de hello: "Programa comenzará en breve". Si archiva programa Hola, prueba hello y tableta táctil datos también se almacenan y se incluirá en la presentación de Hola. Sin embargo, esta información no se debería mostrar a clientes toohello. Con manifiestos dinámicos, puede crear un filtro de tiempo de inicio y quitar datos de hello no deseado de manifiesto de Hola.
+En la mayoría de los eventos de streaming en directo, los operadores ejecutan algunas pruebas antes del evento real. Por ejemplo, podrían incluir una pizarra como esta antes del inicio del evento: "El programa comenzará momentáneamente". Si el programa se está archivando, los datos de pizarra y de prueba también se archivan y se incluirán en la presentación. Sin embargo, esta información no se debe mostrar a los clientes. Con el manifiesto dinámico, puede crear un filtro de tiempo de inicio y quitar los datos no deseados del manifiesto.
 
 ![Inicio de recorte][trim_filter]
 
 ## <a name="creating-sub-clips-views-from-a-live-archive"></a>Crear clips secundarios (vistas) desde un archivo en directo
-Muchos eventos en directo son de larga ejecución y el archivo en directo puede incluir varios eventos. Después de que los emisores de extremos de evento en directo de hello pueden querer toobreak seguridad Hola live archivo en el inicio del programa lógico y detener las secuencias. A continuación, publicar estos programas virtuales por separado sin post procesar archivos activos de hello y no crear activos independientes (que no obtendrá las ventajas de fragmentos en caché existente de hello en CDN Hola). Ejemplos de estos programas virtuales (subcarpetas clips) son trimestres Hola de fútbol o partido de baloncesto, entradas de hello en béisbol o eventos individuales de una tarde de programa Olimpiadas.
+Muchos eventos en directo son de larga ejecución y el archivo en directo puede incluir varios eventos. Después de que termine el evento en directo, es posible que los emisores deseen dividir el archivo activo en secuencias de inicio y detención de programa lógicas. Después, publique por separado estos programas virtuales sin procesar posteriormente el archivo activo y sin crear activos separados (que no se beneficiarán de los fragmentos en caché existentes en las CDN). Entre los ejemplos de estos programas virtuales (clips secundarios) se encuentran los cuatro cuartos de un partido de baloncesto o fútbol americano, las entradas en el béisbol o los eventos individuales de una tarde de un programa de las Olimpiadas.
 
-Con manifiestos dinámicos, puede crear filtros de uso de tiempos de inicio y fin y crear vistas virtuales encima de Hola de su archivo dinámico. 
+Con el manifiesto dinámico, puede crear filtros mediante las horas inicial y final y crear vistas virtuales encima de su archivo dinámico. 
 
 ![Filtro de clips secundarios][subclip_filter]
 
@@ -140,48 +140,48 @@ Activo filtrado:
 ![Esquí][skiing]
 
 ## <a name="adjusting-presentation-window-dvr"></a>Ajustar la ventana de presentación (DVR)
-Actualmente, los servicios multimedia de Azure ofrece circular archivo donde se puede configurar la duración de hello entre 5 minutos: 25 horas. Filtrado de manifiesto puede ser toocreate usa una ventana DVR gradual encima Hola archivo hello, sin eliminar los medios. Hay muchos escenarios donde los emisores desea tooprovide una ventana DVR limitada que se mueve con hello live borde y en hello mismo tiempo mantener una ventana de archivo más grande. Un emisor puede toouse Hola datos fuera de clips de toohighlight de ventana DVR hello, o he\she tooprovide varias ventanas DVR para diferentes dispositivos. Por ejemplo, la mayoría de los dispositivos móviles de hello no encarga de ventanas DVR grandes (puede tener una ventana DVR de 2 minutos para dispositivos móviles y 1 hora para clientes de escritorio).
+En la actualidad, los Servicios multimedia de Azure ofrecen un archivo circular donde la duración se puede configurar entre 5 minutos y 25 horas. El filtrado de manifiestos se puede usar para crear una ventana de DVR dinámica encima del archivo, sin eliminar medios. Hay muchos escenarios en los que los emisores desean proporcionar una ventana de DVR limitada que se mueve con el borde dinámico y al mismo tiempo mantiene una ventana de archivado más grande. Es posible que un emisor desee usar los datos que están fuera de la ventana de DVR para resaltar clips, o que desee proporcionar diferentes ventanas de DVR para dispositivos diferentes. Por ejemplo, la mayoría de los dispositivos móviles no administran grandes ventanas de DVR (puede tener una ventana de DVR de 2 minutos para dispositivos móviles y 1 hora para clientes de escritorio).
 
 ![Ventana de DVR][dvr_filter]
 
 ## <a name="adjusting-livebackoff-live-position"></a>Ajustar LiveBackoff (posición en directo)
-Filtrado de manifiesto puede ser usado tooremove varios segundos del borde en vivo de Hola de un programa en vivo. Esto permite que los emisores toowatch presentación de hello en la publicación de la vista previa de hello punto y crear puntos de inserción de anuncios antes de que los visores de Hola reciban flujo hello (normalmente copia-off durante 30 segundos). Los emisores, a continuación, incorporar estos marcos de trabajo de cliente de tootheir de anuncios en el tiempo para ellos tooreceived y proceso Hola información antes de oportunidad de anuncio Hola.
+El filtrado de manifiestos puede usarse para quitar varios segundos del borde directo de un programa activo. Esto permite a los emisores ver la presentación en el punto de publicación de vista previa y crear puntos de inserción de anuncios antes de que los visores reciban la secuencia (normalmente con una interrupción de copia anterior a 30 segundos). Los emisores, entonces, pueden insertar estos anuncios en sus marcos de cliente a tiempo para su recepción y procesar la información antes de la oportunidad de anuncio.
 
-Además admite toohello anuncio, LiveBackoff se puede utilizar para ajustar la posición de la descarga en vivo de cliente para que cuando los clientes desfase y alcanza el límite de hello en directo todavía pueden obtener fragmentos de servidor en lugar de ver los errores HTTP 404 o 412.
+Además de la compatibilidad de anuncio, LiveBackoff se puede usar para ajustar la posición de descarga en directo del cliente para que cuando los clientes se desvíen y lleguen al borde directo puedan obtener todavía fragmentos del servidor en lugar de obtener los errores HTTP 404 o 412.
 
 ![livebackoff_filter][livebackoff_filter]
 
 ## <a name="combining-multiple-rules-in-a-single-filter"></a>Combinación de varias reglas en un filtro único
-Puede combinar varias reglas de filtrado en un filtro único. Por ejemplo puede definir una pizarra de tooremove de regla de intervalo de archivo en vivo y también filtrar velocidades de bits disponibles. Para varios final de hello reglas filtrado resultado es una composición de hello (solo intersección) de estas reglas.
+Puede combinar varias reglas de filtrado en un filtro único. Por ejemplo, puede definir una regla de intervalos para quitar la pizarra de un archivo activo y filtrar además velocidades de bits disponibles. Para varias reglas de filtrado, el resultado final es la composición (solo intersección) de estas reglas.
 
 ![varias reglas][multiple-rules]
 
 ## <a name="create-filters-programmatically"></a>Crear filtros mediante programación
-Hola tema siguiente describe las entidades de servicios multimedia son toofilters relacionados. tema de Hello también muestra cómo tooprogrammatically crear filtros.  
+En el siguiente tema se describen las entidades de Media Services que están relacionadas con los filtros. En el tema también se muestra cómo crear filtros mediante programación.  
 
 [Crear filtros con las API de REST](media-services-rest-dynamic-manifest.md).
 
 ## <a name="combining-multiple-filters-filter-composition"></a>Combinar múltiples filtros (composición de filtros)
 También puede combinar varios filtros en una sola dirección URL. 
 
-Hello escenario siguiente muestra que puede interesarle toocombine filtros:
+En el escenario siguiente se muestra para qué puede resultar útil la combinación de filtros:
 
-1. Deberá toofilter la calidad de vídeo para dispositivos móviles, como Android o iPAD (en calidad de vídeo de toolimit de orden). tooremove Hola calidades no deseados, debe crear un filtro global que es adecuado para los perfiles de dispositivo. Tal y como se mencionó anteriormente, los filtros globales pueden utilizarse para todos sus activos en hello cuenta sin ninguna otra asociación de servicios multimedia mismo. 
-2. También desea tootrim inicio de Hola y hora de un recurso de finalización. tooachieve esto, podría crear un filtro local y establecer la hora de inicio/fin de Hola. 
-3. Desea toocombine de estos filtros (sin combinación deberá tooadd calidad filtrado toohello recorte filtro que dificultan el uso de filtros).
+1. Necesita filtrar sus calidades de vídeos para dispositivos móviles, como Android o iPAD (con el fin de limitar las calidades de vídeo). Para quitar las calidades no deseadas, debe crear un filtro global que sea adecuado para los perfiles de dispositivo. Como se mencionó anteriormente, los filtros globales pueden utilizarse para todos sus activos en la misma cuenta de servicios multimedia sin ninguna asociación adicional. 
+2. También desea recortar el tiempo de inicio y finalización de un activo. Para hacerlo, debe crear un filtro local y establecer la hora de inicio y fin. 
+3. Desea combinar ambos filtros (sin combinación tendría que agregar el filtrado de calidad al filtro de recorte, lo cual dificultaría el uso del filtro).
 
-filtros de toocombine, necesita tooset Hola filtro nombres toohello manifiesto/lista de reproducción dirección URL con punto y coma delimitada. Supongamos que tiene un filtro denominado *MyMobileDevice* que filtra calidades y tiene otro denominado *MyStartTime* tooset una determinada hora de inicio. Puede combinarlos así:
+Para combinar filtros, deberá establecer los nombres de filtro de la dirección URL del manifiesto o la lista de reproducción separados por punto y coma. Supongamos que tiene un filtro denominado *MyMobileDevice* que filtra cualidades y que tiene otro denominado *MyStartTime* para establecer una determinada hora de inicio. Puede combinarlos así:
 
     http://teststreaming.streaming.mediaservices.windows.net/3d56a4d-b71d-489b-854f-1d67c0596966/64ff1f89-b430-43f8-87dd-56c87b7bd9e2.ism/Manifest(filter=MyMobileDevice;MyStartTime)
 
-Puede combinar los filtros de too3. 
+Puede combinar hasta 3 filtros. 
 
-Para más información, vea [este blog](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/) .
+Para obtener más información, consulte [este blog](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/) .
 
 ## <a name="know-issues-and-limitations"></a>Problemas conocidos y limitaciones
 * El manifiesto dinámico funciona en los límites GOP (fotogramas clave), por lo que el recorte tiene precisión GOP. 
 * Puede usar el mismo nombre de filtro para los filtros globales y locales. Tenga en cuenta que el filtro local tienen una mayor prioridad e invalidará los filtros globales.
-* Si actualiza un filtro, puede tardar minutos too2 para reglas de hello toorefresh de extremo de transmisión por secuencias. Si el contenido de Hola se sirvió usando algunos filtros (y almacena en caché en los servidores proxy y CDN memorias caché), actualizar estos filtros puede producir errores en el Reproductor. Es recomendable caché de hello tooclear después de actualizar el filtro de Hola. Si esta opción no es posible, piense en usar un filtro diferente.
+* Si actualiza un filtro, se pueden tardar hasta 2 minutos en que el extremo de streaming actualice las reglas. Si el contenido se suministró con algunos filtros (y se almacenó en caché en servidores proxy y cachés CDN), la actualización de  estos filtros puede generar errores del reproductor. Se recomienda borrar la memoria caché después de actualizar el filtro. Si esta opción no es posible, piense en usar un filtro diferente.
 
 ## <a name="media-services-learning-paths"></a>Rutas de aprendizaje de Servicios multimedia
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
@@ -190,7 +190,7 @@ Para más información, vea [este blog](https://azure.microsoft.com/blog/azure-m
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Otras referencias
-[Entrega de contenido tooCustomers información general](media-services-deliver-content-overview.md)
+[Información general de entrega de contenido a los clientes](media-services-deliver-content-overview.md)
 
 [renditions1]: ./media/media-services-dynamic-manifest-overview/media-services-rendition-filter.png
 [renditions2]: ./media/media-services-dynamic-manifest-overview/media-services-rendition-filter2.png

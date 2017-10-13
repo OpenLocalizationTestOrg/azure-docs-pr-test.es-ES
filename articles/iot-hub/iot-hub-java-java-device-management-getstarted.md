@@ -1,6 +1,6 @@
 ---
-title: "aaaGet comenzar con la administración de dispositivos del centro de IoT de Azure (Java) | Documentos de Microsoft"
-description: "¿Cómo tooinitiate de administración de dispositivos de centro de IoT de Azure toouse reiniciar un dispositivo remoto. Usar dispositivos de IoT de Azure de hello SDK para Java tooimplement una aplicación de dispositivo simulado que incluye un método directo y el servicio IoT de Azure SDK para Java tooimplement una aplicación de servicio que invoca el método directo Hola Hola."
+title: "Introducción a la administración de dispositivos de Azure IoT Hub (Java) | Microsoft Docs"
+description: "Describe cómo usar la administración de dispositivos de IoT Hub de Azure para iniciar un reinicio del dispositivo remoto. Usará el SDK de dispositivo IoT de Azure para Java con el fin de implementar una aplicación de dispositivo simulado que incluye un método directo, además del SDK de servicio IoT de Azure para Java con el objetivo de implementar una aplicación de servicio que invoque el método directo."
 services: iot-hub
 documentationcenter: .java
 author: dominicbetts
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 7aaeda9d4ff7002e5c66adfd61e2dfd5bcea964f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7e3837582e2020dc560a2b624352f7326ea87c3d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-device-management-java"></a>Introducción a la administración de dispositivos (Java)
 
@@ -25,57 +25,57 @@ ms.lasthandoff: 10/06/2017
 
 En este tutorial se muestra cómo realizar las siguientes acciones:
 
-* Usar hello toocreate portal Azure un centro de IoT y cree una identidad de dispositivo en el centro de IoT.
-* Crear una aplicación de dispositivo simulado que implementa un dispositivo de hello tooreboot método directo. Se invocan métodos directos de nube de Hola.
-* Crear una aplicación que invoca el método directo de reinicio de hello en la aplicación de dispositivo simulado de hello a través de su centro de IoT. Esta aplicación, a continuación, monitores Hola propiedades notificados de hello dispositivo toosee cuando se completa la operación de reinicio de Hola.
+* Usar Azure Portal para un IoT Hub y una identidad de dispositivo en este.
+* Cree una aplicación de dispositivo simulado que implemente un método directo para reiniciar el dispositivo. Los métodos directos se invocan desde la nube.
+* Cree una aplicación que invoque al método directo de reinicio en la aplicación de dispositivo simulado mediante su instancia de IoT Hub. Luego, esta aplicación supervisa las propiedades notificadas desde el dispositivo para ver cuándo se completa la operación de reinicio.
 
-Al final de Hola de este tutorial, tiene dos aplicaciones de consola de Java:
+Al final de este tutorial, tendrá dos aplicaciones de consola de Java:
 
 **simulated-device**. Esta aplicación:
 
-* Se conecta a centro de IoT tooyour con la identidad del dispositivo Hola creado anteriormente.
+* Se conecta con la instancia de IoT Hub con la identidad de dispositivo que se creó anteriormente.
 * Recibe una llamada de método directo de reinicio.
 * Simula un reinicio físico.
-* Informa del tiempo Hola de último reinicio de Hola a través de una propiedad notificada.
+* Informa la hora de último reinicio a través de una propiedad notificada.
 
 **trigger-reboot**. Esta aplicación:
 
-* Llama a un método directo en la aplicación de dispositivo simulado de hello.
-* Muestra de Hola respuesta toohello directa llamada al método enviado por dispositivo simulado Hola
-* Hello muestra actualizado informó de propiedades.
+* Llama a un método directo en la aplicación de dispositivo simulado.
+* Muestra la respuesta a la llamada al método directo que envía el dispositivo simulado.
+* Muestra las propiedades notificadas actualizadas.
 
 > [!NOTE]
-> Para obtener información acerca de hello SDK que puede usar toobuild toorun de aplicaciones en dispositivos y el back-end de soluciones, consulte [SDK de Azure IoT][lnk-hub-sdks].
+> Para más información acerca de los diversos SDK que puede usar para crear aplicaciones para que se ejecuten en dispositivos y en el back-end de la solución, consulte [SDK de IoT de Azure][lnk-hub-sdks].
 
-toocomplete este tutorial, necesita:
+Para completar este tutorial, necesita:
 
-* Java SE 8. <br/> [Preparar el entorno de desarrollo] [ lnk-dev-setup] describe cómo tooinstall Java para este tutorial en Windows o Linux.
-* Maven 3.  <br/> [Preparar el entorno de desarrollo] [ lnk-dev-setup] describe cómo tooinstall [Maven] [ lnk-maven] para este tutorial en Windows o Linux.
+* Java SE 8. <br/> [Prepare your development environment][lnk-dev-setup] (Preparación del entorno de desarrollo) describe cómo instalar Java para este tutorial en Windows o Linux.
+* Maven 3.  <br/> [Prepare your development environment][lnk-dev-setup] (Preparación del entorno de desarrollo) describe cómo instalar [Maven][lnk-maven] para este tutorial en Windows o Linux.
 * [Versión de Node.js 0.10.0 o posterior](http://nodejs.org).
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
-## <a name="trigger-a-remote-reboot-on-hello-device-using-a-direct-method"></a>Desencadenar un reinicio remoto en dispositivo Hola utilizando un método directo
+## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Desencadenar un reinicio remoto en el dispositivo con un método directo
 
 En esta sección, creará una aplicación de consola de Java que permite:
 
-1. Método directo de reinicio de hello en la aplicación de dispositivo simulado de hello, se invoca.
-1. Muestra la respuesta de Hola.
-1. Hola sondeos notificado propiedades enviadas desde Hola dispositivo toodetermine cuando se completa el reinicio de Hola.
+1. Invocar un método directo de reinicio en la aplicación de dispositivo simulado.
+1. Mostrar la respuesta.
+1. Sondear las propiedades notificadas enviadas desde el dispositivo para determinar cuándo se completa el reinicio.
 
-Esta aplicación de consola conecta tooyour centro de IoT método directo de tooinvoke Hola y Hola lectura notificada propiedades.
+Esta aplicación de consola se conecta a la instancia de IoT Hub para invocar al método directo y leer las propiedades notificadas.
 
 1. Cree una carpeta vacía llamada dm-get-started.
 
-1. En carpeta dm get iniciada hello, cree un proyecto de Maven denominado **desencadenador reinicio** mediante el siguiente comando en el símbolo del sistema de Hola. siguiente Hello muestra un comando único, long:
+1. En la carpeta dm-get-started, cree un proyecto de Maven denominado **trigger-reboot** mediante el comando siguiente en el símbolo del sistema. El siguiente es un comando único y largo:
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=trigger-reboot -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
-1. En el símbolo del sistema, desplazarse por las carpetas de reinicio de desencadenador de toohello.
+1. En el símbolo del sistema, vaya a la carpeta trigger-reboot.
 
-1. Con un editor de texto, abra el archivo de pom.xml de hello en carpeta de reinicio de desencadenador de Hola y agregue Hola después toohello de dependencia **dependencias** nodo. Esta dependencia permite toouse Hola iot-service-paquete de cliente de su toocommunicate de aplicación con el centro de IoT:
+1. Con un editor de texto, abra el archivo pom.xml en la carpeta trigger-reboot y agregue la dependencia siguiente al nodo **dependencies**. Esta dependencia le permite usar el paquete iot-service-client en la aplicación para comunicarse con la instancia de IoT Hub:
 
     ```xml
     <dependency>
@@ -87,9 +87,9 @@ Esta aplicación de consola conecta tooyour centro de IoT método directo de too
     ```
 
     > [!NOTE]
-    > Puede comprobar la versión más reciente de Hola de **cliente del servicio de iot** con [búsqueda Maven][lnk-maven-service-search].
+    > Puede comprobar la versión más reciente de **iot-service-client** mediante la [funcionalidad de búsqueda de Maven][lnk-maven-service-search].
 
-1. Agregue los siguiente hello **generar** nodo después de hello **dependencias** nodo. Esta configuración indica a la aplicación de Maven toouse Java toobuild 1,8 hello:
+1. Agregue el nodo **build** después del nodo **dependencies**. Esta configuración indica a Maven que use Java 1.8 para compilar la aplicación:
 
     ```xml
     <build>
@@ -107,11 +107,11 @@ Esta aplicación de consola conecta tooyour centro de IoT método directo de too
     </build>
     ```
 
-1. Guarde y cierre el archivo de hello pom.xml.
+1. Guarde y cierre el archivo pom.xml.
 
-1. Con un editor de texto, abra el archivo de código fuente de hello trigger-reboot\src\main\java\com\mycompany\app\App.java.
+1. Con un editor de texto, abra el archivo de origen trigger-reboot\src\main\java\com\mycompany\app\App.java.
 
-1. Agregue los siguiente hello **importar** archivo toohello de instrucciones:
+1. Agregue las siguientes instrucciones **import** al archivo:
 
     ```java
     import com.microsoft.azure.sdk.iot.service.devicetwin.DeviceMethod;
@@ -126,7 +126,7 @@ Esta aplicación de consola conecta tooyour centro de IoT método directo de too
     import java.util.concurrent.ExecutorService;
     ```
 
-1. Agregar Hola después de las variables de nivel de clase toohello **aplicación** clase. Reemplace `{youriothubconnectionstring}` con la cadena de conexión de base de datos central de IoT que anotó en hello *crear un centro de IoT* sección:
+1. Agregue las siguientes variables de nivel de clase a la clase **App** . Reemplace `{youriothubconnectionstring}` por la cadena de conexión de IoT Hub que anotó en la sección *Creación de un IoT Hub*:
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -137,7 +137,7 @@ Esta aplicación de consola conecta tooyour centro de IoT método directo de too
     private static final Long connectTimeout = TimeUnit.SECONDS.toSeconds(5);
     ```
 
-1. tooimplement un subproceso que lee Hola notificado propiedades desde gemelas de dispositivo de hello cada 10 segundos, agregue siguientes de Hola anidados clase toohello **aplicación** clase:
+1. Para implementar un subproceso que lee las propiedades notificadas desde el dispositivo gemelo cada 10 segundos, agregue la clase anidada siguiente a la clase **App**:
 
     ```java
     private static class ShowReportedProperties implements Runnable {
@@ -158,7 +158,13 @@ Esta aplicación de consola conecta tooyour centro de IoT método directo de too
     }
     ```
 
-1. método directo reinicio de tooinvoke hello en dispositivo simulado de hello, agregar Hola después código toohello **principal** método:
+1. Modifique la firma del método **main** para generar la siguiente excepción:
+
+    ```java
+    public static void main(String[] args) throws IOException
+    ```
+
+1. Para invocar al método directo de reinicio en el dispositivo simulado, agregue el código siguiente al método **main**:
 
     ```java
     System.out.println("Starting sample...");
@@ -183,7 +189,7 @@ Esta aplicación de consola conecta tooyour centro de IoT método directo de too
     }
     ```
 
-1. toostart Hola subproceso toopoll Hola notificados propiedades de dispositivo simulado de hello, agregue Hola después código toohello **principal** método:
+1. Para iniciar el subproceso que sondea las propiedades notificadas desde el dispositivo simulado, agregue el código siguiente al método **main**:
 
     ```java
     ShowReportedProperties showReportedProperties = new ShowReportedProperties();
@@ -191,32 +197,32 @@ Esta aplicación de consola conecta tooyour centro de IoT método directo de too
     executor.execute(showReportedProperties);
     ```
 
-1. tooenable toostop Hola aplicación, agregar Hola después código toohello **principal** método:
+1. Para poder detener la aplicación, agregue el código siguiente al método **main**:
 
     ```java
-    System.out.println("Press ENTER tooexit.");
+    System.out.println("Press ENTER to exit.");
     System.in.read();
     executor.shutdownNow();
     System.out.println("Shutting down sample...");
     ```
 
-1. Guarde y cierre el archivo de hello trigger-reboot\src\main\java\com\mycompany\app\App.java.
+1. Guarde y cierre el archivo trigger-reboot\src\main\java\com\mycompany\app\App.java.
 
-1. Compilar hello **desencadenador reinicio** aplicaciones back-end y corrija los errores. En el símbolo del sistema, desplácese toohello desencadenador reinicio carpeta y ejecución Hola siguiente comando:
+1. Compile la aplicación de back-end **trigger-reboot** y corrija los errores. En el símbolo del sistema, vaya a la carpeta trigger-reboot y ejecute el comando siguiente:
 
     `mvn clean package -DskipTests`
 
 ## <a name="create-a-simulated-device-app"></a>Creación de una aplicación de dispositivo simulado
 
-En esta sección, creará una aplicación de consola de Java que simula un dispositivo. aplicación Hello escucha Hola reinicio método directo llamada desde el centro de IoT y responde inmediatamente llamada toothat. Hola de aplicación, a continuación, espera unos instantes proceso de reinicio de hello toosimulate antes de usar un Hola de toonotify propiedad notificado **desencadenador reinicio** aplicación back-end que Hola reinicio está completa.
+En esta sección, creará una aplicación de consola de Java que simula un dispositivo. La aplicación escucha la llamada al método directo de reinicio desde IoT Hub y la responder inmediatamente. Luego, la aplicación se suspende unos instantes para simular el proceso de reinicio antes de usar una propiedad notificada para notificar a la aplicación back-end **trigger-reboot** que se completó el reinicio.
 
-1. En carpeta dm get iniciada hello, cree un proyecto de Maven denominado **dispositivo simulado** mediante el siguiente comando en el símbolo del sistema de Hola. Hola te mostramos un comando único, long:
+1. En la carpeta dm-get-started, cree un proyecto Maven denominado **simulated-device** con el comando siguiente en el símbolo del sistema. El siguiente es un comando único y largo:
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
-1. En el símbolo del sistema, desplazarse por las carpetas de toohello dispositivo simulado.
+1. En el símbolo del sistema, vaya a la nueva carpeta simulated-device.
 
-1. Con un editor de texto, abra el archivo de pom.xml de hello en la carpeta del dispositivo simulado de Hola y agregue Hola después toohello de dependencia **dependencias** nodo. Esta dependencia permite toouse Hola iot-service-paquete de cliente de su toocommunicate de aplicación con el centro de IoT:
+1. Con un editor de texto, abra el archivo pom.xml en la carpeta simulated-device y agregue la dependencia siguiente al nodo **dependencies**. Esta dependencia le permite usar el paquete iot-service-client en la aplicación para comunicarse con la instancia de IoT Hub:
 
     ```xml
     <dependency>
@@ -227,9 +233,9 @@ En esta sección, creará una aplicación de consola de Java que simula un dispo
     ```
 
     > [!NOTE]
-    > Puede comprobar la versión más reciente de Hola de **cliente de dispositivo iot** con [búsqueda Maven][lnk-maven-device-search].
+    > Puede comprobar la versión más reciente de **iot-device-client** mediante la [funcionalidad de búsqueda de Maven][lnk-maven-device-search].
 
-1. Agregue los siguiente hello **generar** nodo después de hello **dependencias** nodo. Esta configuración indica a la aplicación de Maven toouse Java toobuild 1,8 hello:
+1. Agregue el nodo **build** después del nodo **dependencies**. Esta configuración indica a Maven que use Java 1.8 para compilar la aplicación:
 
     ```xml
     <build>
@@ -247,11 +253,11 @@ En esta sección, creará una aplicación de consola de Java que simula un dispo
     </build>
     ```
 
-1. Guarde y cierre el archivo de hello pom.xml.
+1. Guarde y cierre el archivo pom.xml.
 
-1. Con un editor de texto, abra el archivo de código fuente de hello simulated-device\src\main\java\com\mycompany\app\App.java.
+1. Con un editor de texto, abra el archivo de origen simulated-device\src\main\java\com\mycompany\app\App.java.
 
-1. Agregue los siguiente hello **importar** archivo toohello de instrucciones:
+1. Agregue las siguientes instrucciones **import** al archivo:
 
     ```java
     import com.microsoft.azure.sdk.iot.device.*;
@@ -265,7 +271,7 @@ En esta sección, creará una aplicación de consola de Java que simula un dispo
     import java.util.HashSet;
     ```
 
-1. Agregar Hola después de las variables de nivel de clase toohello **aplicación** clase. Reemplace `{yourdeviceconnectionstring}` con cadena de conexión de dispositivo de Hola que anotó en hello *crear una identidad de dispositivo* sección:
+1. Agregue las siguientes variables de nivel de clase a la clase **App** . Reemplace `{yourdeviceconnectionstring}` por la cadena de conexión de dispositivo que anotó en la sección *Creación de una identidad de dispositivo*:
 
     ```java
     private static final int METHOD_SUCCESS = 200;
@@ -276,31 +282,31 @@ En esta sección, creará una aplicación de consola de Java que simula un dispo
     private static DeviceClient client;
     ```
 
-1. tooimplement un controlador de devolución de llamada para los eventos de estado de método directo, agregue el siguiente de hello anidados clase toohello **aplicación** clase:
+1. Para implementar un controlador de devolución de llamada para los eventos de estado de método directo, agregue la clase anidada siguiente a la clase **App**:
 
     ```java
     protected static class DirectMethodStatusCallback implements IotHubEventCallback
     {
       public void execute(IotHubStatusCode status, Object context)
       {
-        System.out.println("IoT Hub responded toodevice method operation with status " + status.name());
+        System.out.println("IoT Hub responded to device method operation with status " + status.name());
       }
     }
     ```
 
-1. tooimplement un controlador de devolución de llamada para los eventos de estado de dispositivo gemelas, agregue el siguiente de hello anidados clase toohello **aplicación** clase:
+1. Para implementar un controlador de devolución de llamada para los eventos de estado de dispositivo gemelo, agregue la clase anidada siguiente a la clase **App**:
 
     ```java
     protected static class DeviceTwinStatusCallback implements IotHubEventCallback
     {
         public void execute(IotHubStatusCode status, Object context)
         {
-            System.out.println("IoT Hub responded toodevice twin operation with status " + status.name());
+            System.out.println("IoT Hub responded to device twin operation with status " + status.name());
         }
     }
     ```
 
-1. tooimplement un controlador de devolución de llamada para los eventos de propiedad, agregue el siguiente de hello anidados clase toohello **aplicación** clase:
+1. Para implementar un controlador de devolución de llamada para los eventos de propiedad, agregue la clase anidada siguiente a la clase **App**:
 
     ```java
     protected static class PropertyCallback implements PropertyCallBack<String, String>
@@ -313,7 +319,7 @@ En esta sección, creará una aplicación de consola de Java que simula un dispo
     }
     ```
 
-1. tooimplement un subproceso toosimulate Hola el reinicio del dispositivo, agregue el siguiente de hello anidados clase toohello **aplicación** clase. subproceso de Hola se suspende durante cinco segundos y, a continuación, Establece hello **lastReboot** informó de propiedad:
+1. Para implementar un subproceso que simule el reinicio del dispositivo, agregue la clase anidada siguiente a la clase **App**. El subproceso se suspende durante cinco segundos y luego establece la propiedad notificada **lastReboot**:
 
     ```java
     protected static class RebootDeviceThread implements Runnable {
@@ -334,7 +340,7 @@ En esta sección, creará una aplicación de consola de Java que simula un dispo
     }
     ```
 
-1. método directo de tooimplement hello en dispositivo hello, agregue el siguiente de hello anidados clase toohello **aplicación** clase. Cuando la aplicación simulada de hello recibe una llamada toohello **reiniciar** método directo, devuelve un autor de llamada de confirmación toohello y, a continuación, inicia un Hola de subproceso tooprocess reiniciar:
+1. Para implementar el método directo en el dispositivo, agregue la clase anidada siguiente a la clase **App**. Cuando la aplicación simulada recibe una llamada al método directo de **reinicio**, devuelve una confirmación al autor de la llamada y luego inicia un subproceso para procesar el reinicio:
 
     ```java
     protected static class DirectMethodCallback implements com.microsoft.azure.sdk.iot.device.DeviceTwin.DeviceMethodCallback
@@ -366,20 +372,20 @@ En esta sección, creará una aplicación de consola de Java que simula un dispo
     }
     ```
 
-1. Modificar firma Hola de hello **principal** hello toothrow de método siguientes excepciones:
+1. Modifique la signatura del método **main** para generar las excepciones siguientes:
 
     ```java
     public static void main(String[] args) throws IOException, URISyntaxException
     ```
 
-1. tooinstantiate una **DeviceClient**, agregar Hola después código toohello **principal** método:
+1. Para crear instancias de **DeviceClient**, agregue el código siguiente al método **main**:
 
     ```java
     System.out.println("Starting device client sample...");
     client = new DeviceClient(connString, protocol);
     ```
 
-1. toostart realizar escuchas para las llamadas a métodos directas, agregar Hola después código toohello **principal** método:
+1. Agregue el código siguiente al método **main** para empezar a escuchar las llamadas al método directo:
 
     ```java
     try
@@ -387,7 +393,7 @@ En esta sección, creará una aplicación de consola de Java que simula un dispo
       client.open();
       client.subscribeToDeviceMethod(new DirectMethodCallback(), null, new DirectMethodStatusCallback(), null);
       client.startDeviceTwin(new DeviceTwinStatusCallback(), null, new PropertyCallback(), null);
-      System.out.println("Subscribed toodirect methods and polling for reported properties. Waiting...");
+      System.out.println("Subscribed to direct methods and polling for reported properties. Waiting...");
     }
     catch (Exception e)
     {
@@ -397,10 +403,10 @@ En esta sección, creará una aplicación de consola de Java que simula un dispo
     }
     ```
 
-1. tooshut hacia abajo el simulador de dispositivos de hello, agregar Hola después código toohello **principal** método:
+1. Agregue el código siguiente al método **main** para apagar el simulador de dispositivos:
 
     ```java
-    System.out.println("Press any key tooexit...");
+    System.out.println("Press any key to exit...");
     Scanner scanner = new Scanner(System.in);
     scanner.nextLine();
     scanner.close();
@@ -408,31 +414,31 @@ En esta sección, creará una aplicación de consola de Java que simula un dispo
     System.out.println("Shutting down...");
     ```
 
-1. Guarde y cierre el archivo de hello simulated-device\src\main\java\com\mycompany\app\App.java.
+1. Guarde y cierre el archivo simulated-device\src\main\java\com\mycompany\app\App.java.
 
-1. Compilar hello **dispositivo simulado** aplicaciones back-end y corrija los errores. En el símbolo del sistema, desplácese carpeta del dispositivo simulado toohello y ejecución Hola siguiente comando:
+1. Compile la aplicación back-end **simulated-device** y corrija los errores. En el símbolo del sistema, vaya a la carpeta simulated-device y ejecute el comando siguiente:
 
     `mvn clean package -DskipTests`
 
-## <a name="run-hello-apps"></a>Ejecutar aplicaciones de Hola
+## <a name="run-the-apps"></a>Ejecución de las aplicaciones
 
-Ya estás listo toorun Hola aplicaciones.
+Ya está preparado para ejecutar las aplicaciones.
 
-1. En un símbolo del sistema en la carpeta del dispositivo simulado de hello, ejecute hello después de realizar escuchas para las llamadas de método de reinicio desde el centro de IoT de toobegin de comando:
-
-    `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
-
-    ![Centro de IoT de Java simulados toolisten de aplicación de dispositivo para las llamadas de método directo de reinicio][1]
-
-1. En un símbolo del sistema en carpeta de reinicio de desencadenador de hello, ejecute hello siguiendo el método de reinicio de comando toocall hello en el dispositivo simulado de su centro de IoT:
+1. En un símbolo del sistema en la carpeta simulated-device, ejecute el comando siguiente para empezar a escuchar las llamadas al método de reinicio desde la instancia de IoT Hub:
 
     `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
 
-    ![Hola de toocall de aplicación de servicio de centro de IoT de Java reiniciar método directo][2]
+    ![Aplicación de dispositivo simulado IoT Hub de Java para escuchar las llamadas al método directo de reinicio][1]
 
-1. dispositivo simulado Hola responde toohello reinicio método directo llamada:
+1. En un símbolo del sistema en la carpeta trigger-reboot, ejecute el comando siguiente para llamar al método de reinicio en el dispositivo simulado desde la instancia de IoT Hub:
 
-    ![Aplicación de dispositivo simulado de centro de IoT de Java responde la llamada a un método directo toohello][3]
+    `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
+
+    ![Aplicación de servicio IoT Hub de Java para llamar al método directo de reinicio][2]
+
+1. El dispositivo simulado responde a la llamada al método directo de reinicio:
+
+    ![La aplicación de dispositivo simulado IoT Hub de Java responde a la llamada al método directo][3]
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]
 

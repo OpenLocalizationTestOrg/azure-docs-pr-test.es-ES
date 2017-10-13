@@ -1,6 +1,6 @@
 ---
-title: "aaaDetect cara y las emociones con análisis de multimedia de Azure | Documentos de Microsoft"
-description: "Este tema muestra cómo se enfrenta a toodetect y emociones con análisis de multimedia de Azure."
+title: "Detección de caras y emociones con Análisis multimedia de Azure | Microsoft Docs"
+description: "Este tema muestra cómo detectar caras y emociones con Análisis multimedia de Azure."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -12,47 +12,47 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 09/18/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: f58d81d82dde08a694cdb4d92c6bab6a40a9c157
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a55a0c2ef8c1c065b39fce9dc6ef2f806b60dfdc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Detección de caras y emociones con Análisis multimedia de Azure
 ## <a name="overview"></a>Información general
-Hola **Detector de caras de multimedia de Azure** procesador multimedia (MP) le permite toocount, movimientos de seguimiento y participación de la audiencia de medidor incluso y reacción a través de expresiones faciales. Este servicio contiene dos características: 
+El procesador de multimedia (MP) **Azure Media Face Detector** (Detector de caras multimedia de Azure) le permite contar y seguir los movimientos, e incluso evaluar la participación y reacción de la audiencia a través de expresiones faciales. Este servicio contiene dos características: 
 
 * **Detección de caras**
   
-    La detección de caras busca y realiza el seguimiento de caras humanas dentro de un vídeo. Varias caras pueden detectarse y posteriormente se realiza el seguimiento de medida que se mueven, con metadatos de tiempo y la ubicación de hello devueltos en un archivo JSON. Durante el seguimiento, tratará de toogive un toohello identificador coherente mismo enfrentan mientras está moviendo persona Hola en pantalla, incluso si se puede ver obstruidos o brevemente deje marco Hola.
+    La detección de caras busca y realiza el seguimiento de caras humanas dentro de un vídeo. Se pueden detectar varias caras y posteriormente realizar un seguimiento de las mismas a medida que se mueven, con los metadatos de tiempo y ubicación devueltos en un archivo JSON. Durante el seguimiento, intentará dar un identificador constante a la misma cara mientras la persona se mueve alrededor de la pantalla, aunque se tape o salga brevemente del fotograma.
   
   > [!NOTE]
-  > Este servicio no lleva a cabo el reconocimiento facial. Una persona que sale del marco de Hola o deja de estar obstruida para demasiado larga se le asignará un nuevo identificador cuando devuelven.
+  > Este servicio no lleva a cabo el reconocimiento facial. Si una persona abandona el fotograma o se tapa durante demasiado tiempo se le asigna un nuevo identificador cuando regresa.
   > 
   > 
 * **Detección de emociones**
   
-    Detección de emoción es un componente opcional de hello procesador de multimedia de detección de cara que devuelve el análisis en varios atributos emoción de caras de hello detectados, incluida la satisfacción, tristeza, temor, ira y mucho más. 
+    Detección de emociones es un componente opcional del procesador de multimedia de detección de caras que devuelve análisis sobre varios atributos emocionales a partir de las caras detectadas, como felicidad, tristeza, temor, enojo, etc. 
 
-Hola **Detector de caras de multimedia de Azure** MP está actualmente en vista previa.
+El procesador de multimedia **Azure Media Face Detector** (Detector de caras multimedia de Azure) está actualmente en versión preliminar.
 
-Este tema proporciona detalles acerca de **Detector de caras de multimedia de Azure** y muestra cómo toouse con el SDK de servicios multimedia para. NET.
+En este tema se proporcionan detalles sobre el **Azure Media Face Detector** y muestra cómo se usa con el SDK de Media Services para .NET.
 
 ## <a name="face-detector-input-files"></a>Archivos de entrada de Face Detector (Detector de caras)
-Archivos de vídeo. Actualmente, se admite Hola siguientes formatos: MP4, MOV y WMV.
+Archivos de vídeo. Actualmente, se admiten los siguientes formatos: MP4, MOV y WMV.
 
 ## <a name="face-detector-output-files"></a>Archivos de salida de Face Detector (Detector de caras)
-API de detección y seguimiento de cara de Hello proporciona detección de ubicación de cara de alta precisión y el seguimiento que puede detectar una too64 caras humana en un vídeo. Caras frontales proporcionan Hola los mejores resultados, al lado caras y caras pequeños (menor que o igual a too24x24 píxeles) no sea lo más preciso.
+La API de detección y seguimiento de caras proporciona detección y seguimiento de caras de alta precisión que puede detectar hasta 64 caras humanas en un vídeo. Las caras de frente ofrecen los mejores resultados, mientras que las caras de lado y las caras pequeñas (inferiores o iguales a 24x24 píxeles) podrían no ser tan precisas.
 
-Hello caras detectadas y de seguimiento se devuelven con las coordenadas (izquierda, superior, ancho y alto) que indica la ubicación de Hola de caras de imagen de hello en píxeles, así como una cara identificador numérico que indica Hola seguimiento de ese individuo. Números de Id. de cara son propensas a tooreset en circunstancias cuando cara frontal Hola se pierde o superpuesta en el marco de hello, lo que da lugar a algunas personas al asignarse a varios identificadores.
+Las caras detectadas y seguidas se devuelven con coordenadas (izquierda, superior, ancho y alto) que indican la ubicación de caras en la imagen en píxeles, así como un número de identificación de cara que indica el seguimiento de esa persona. Los números de identificación de cara son propensos a restablecerse en circunstancias en las que la cara de frente se pierde o se superpone en el fotograma, lo que provoca que a algunas personas se les asigne varios identificadores.
 
-## <a id="output_elements"></a>Elementos Hola JSON del archivo de salida
+## <a id="output_elements"></a>Elementos del archivo JSON de salida
 
 [!INCLUDE [media-services-analytics-output-json](../../includes/media-services-analytics-output-json.md)]
 
-Detector de caras usa técnicas de fragmentación (donde hello metadatos se pueden dividir en fragmentos basados en tiempo y se puede descargar sólo lo que necesita) y la segmentación (donde los eventos de Hola se dividen en caso de aumenten demasiados). Algunos cálculos sencillos pueden ayudarle a transformar datos Hola. Por ejemplo, si un evento se inició en 6300 (tics), con una escala de tiempo de 2997 (tics/segundo) y una velocidad de fotogramas de 29,97 (fotogramas/segundo), entonces:
+Face Detector (Detector de caras) usa técnicas de fragmentación (donde los metadatos se pueden dividir en fragmentos según el tiempo y puede descargar solo lo que necesita) y segmentación (donde los eventos se dividen en caso de que aumenten demasiado). Algunos cálculos sencillos pueden ayudarle a transformar los datos. Por ejemplo, si un evento se inició en 6300 (tics), con una escala de tiempo de 2997 (tics/segundo) y una velocidad de fotogramas de 29,97 (fotogramas/segundo), entonces:
 
 * Inicio/Escala de tiempo = 2,1 segundos
 * Segundos x Framerate = 63 marcos
@@ -62,7 +62,7 @@ Detector de caras usa técnicas de fragmentación (donde hello metadatos se pued
 [Vídeo de entrada](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
 ### <a name="task-configuration-preset"></a>Configuración de tareas (valor preestablecido)
-Al crear una tarea con **Azure Media Face Detector**(Detector de caras multimedia de Azure), debe especificar un valor predeterminado de configuración. Hola siguiente valor preestablecido de configuración es solo para la detección de cara.
+Al crear una tarea con **Azure Media Face Detector**(Detector de caras multimedia de Azure), debe especificar un valor predeterminado de configuración. El siguiente valor predeterminado de configuración es solo para detección de caras.
 
     {
       "version":"1.0",
@@ -77,7 +77,7 @@ Al crear una tarea con **Azure Media Face Detector**(Detector de caras multimedi
 | Mode |Rápido: procesamiento rápido, pero menos preciso (valor predeterminado).|
 
 ### <a name="json-output"></a>Salida de JSON
-se truncaron Hola siguiente ejemplo de salida JSON.
+El siguiente ejemplo de salida de JSON se truncó.
 
     {
     "version": 1,
@@ -131,7 +131,7 @@ se truncaron Hola siguiente ejemplo de salida JSON.
 [Vídeo de entrada](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Freferencestream-samplestream.streaming.mediaservices.windows.net%2Fc8834d9f-0b49-4b38-bcaf-ece2746f1972%2FMicrosoft%20Convergence%202015%20%20Keynote%20Highlights.ism%2Fmanifest&amp;autoplay=false)
 
 ### <a name="task-configuration-preset"></a>Configuración de tareas (valor preestablecido)
-Al crear una tarea con **Azure Media Face Detector**(Detector de caras multimedia de Azure), debe especificar un valor predeterminado de configuración. Hola siguiente valor preestablecido de configuración especifica toocreate que JSON en función de detección de hello emociones.
+Al crear una tarea con **Azure Media Face Detector**(Detector de caras multimedia de Azure), debe especificar un valor predeterminado de configuración. El siguiente valor predeterminado de configuración especifica la creación de JSON basándose en la detección de emociones.
 
     {
       "version": "1.0",
@@ -147,13 +147,13 @@ Al crear una tarea con **Azure Media Face Detector**(Detector de caras multimedi
 | Nombre del atributo | Description |
 | --- | --- |
 | Mode |Faces: solo detección de caras.<br/>PerFaceEmotion: devolver emociones independientemente para cada detección de cara.<br/>AggregateEmotion: Devolver valores de emociones medios para todas las caras del fotograma. |
-| AggregateEmotionWindowMs |Utilizar si se selecciona el modo AggregateEmotion. Especifica longitud Hola de vídeo tooproduce utilizado cada resultado agregado, en milisegundos. |
-| AggregateEmotionIntervalMs |Utilizar si se selecciona el modo AggregateEmotion. Especifica con qué agregado de tooproduce frecuencia da como resultado. |
+| AggregateEmotionWindowMs |Utilizar si se selecciona el modo AggregateEmotion. Especifica la longitud del vídeo que se utiliza para generar cada resultado agregado, en milisegundos. |
+| AggregateEmotionIntervalMs |Utilizar si se selecciona el modo AggregateEmotion. Especifica con qué frecuencia se van a producir resultados agregados. |
 
 #### <a name="aggregate-defaults"></a>Agregar valores predeterminados
-A continuación se recomiendan los valores de ventana agregada de Hola y la configuración de intervalos. AggregateEmotionWindowMs debe ser mayor que AggregateEmotionIntervalMs.
+A continuación figuran valores recomendados para la configuración de ventana e intervalo agregada. AggregateEmotionWindowMs debe ser mayor que AggregateEmotionIntervalMs.
 
-|| Valores predeterminados | Mínimos | Máximos |
+|| Valores predeterminados | Máximos | Mínimos |
 |--- | --- | --- | --- |
 | AggregateEmotionWindowMs |0,5 |2 |0,25|
 | AggregateEmotionIntervalMs |0,5 |1 |0,25|
@@ -313,26 +313,26 @@ Salida de JSON para la emoción agregada (truncada):
                  "fear": 0,
 
 ## <a name="limitations"></a>Limitaciones
-* formatos de vídeo de entrada de Hello compatibles incluyen MP4, MOV y WMV.
-* intervalo de tamaño de cara detectables de Hello es too2048x2048 de 24 x 24 píxeles. no se detectarán las caras de Hello fuera de este intervalo.
-* Para cada vídeo, número máximo de Hola de caras devuelto es 64.
-* Algunas caras podrían no detectarse debido a problemas de tootechnical; Por ejemplo, un gran ángulos de cara (head postura) y oclusión grande. Caras frontales y cerca frontal tienen los mejores resultados Hola.
+* Los formatos de vídeo de entrada admitidos incluyen MP4, MOV y WMV.
+* El intervalo de tamaños de cara detectable es 24x24 a 2048x2048 píxeles. Las caras que se encuentren fuera de este intervalo no se detectarán.
+* Para cada vídeo, el número máximo de caras devuelto es 64.
+* Algunas caras podrían no detectarse debido a los desafíos técnicos; por ejemplo, ángulos de cara muy grandes (poses) y oclusión grande. Las caras de frente y de frente cercanas tienen los mejores resultados.
 
 ## <a name="net-sample-code"></a>Código de ejemplo de .NET
 
-siguiente de Hello programa muestra cómo:
+El programa siguiente muestra cómo:
 
-1. Crear un activo y cargar un archivo multimedia en activo de Hola.
-2. Crear un trabajo con una tarea de detección de la cara basada en un archivo de configuración que contiene Hola siguiente valor preestablecido de json. 
+1. Crear un recurso y cargar un archivo multimedia en dicho recurso.
+2. Crear un trabajo con una tarea de detección de caras basándose en un archivo de configuración que contiene el siguiente valor predeterminado de JSON. 
    
         {
             "version": "1.0"
         }
-3. Descargar archivos de hello salida JSON. 
+3. Descargar los archivos JSON de salida. 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Creación y configuración de un proyecto de Visual Studio
 
-Configurar el entorno de desarrollo y rellenar el archivo app.config de hello con información de conexión, como se describe en [desarrollo de servicios multimedia con .NET](media-services-dotnet-how-to-use.md). 
+Configure el entorno de desarrollo y rellene el archivo app.config con la información de la conexión, como se describe en [Desarrollo de Media Services con .NET](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Ejemplo
 
@@ -363,17 +363,17 @@ Configurar el entorno de desarrollo y rellenar el archivo app.config de hello co
 
                 _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
-                // Run hello FaceDetection job.
+                // Run the FaceDetection job.
                 var asset = RunFaceDetectionJob(@"C:\supportFiles\FaceDetection\BigBuckBunny.mp4",
                                             @"C:\supportFiles\FaceDetection\config.json");
 
-                // Download hello job output asset.
+                // Download the job output asset.
                 DownloadAsset(asset, @"C:\supportFiles\FaceDetection\Output");
             }
 
             static IAsset RunFaceDetectionJob(string inputMediaFilePath, string configurationFile)
             {
-                // Create an asset and upload hello input media file toostorage.
+                // Create an asset and upload the input media file to storage.
                 IAsset asset = CreateAssetAndUploadSingleFile(inputMediaFilePath,
                     "My Face Detection Input Asset",
                     AssetCreationOptions.None);
@@ -381,38 +381,38 @@ Configurar el entorno de desarrollo y rellenar el archivo app.config de hello co
                 // Declare a new job.
                 IJob job = _context.Jobs.Create("My Face Detection Job");
 
-                // Get a reference tooAzure Media Face Detector.
+                // Get a reference to Azure Media Face Detector.
                 string MediaProcessorName = "Azure Media Face Detector";
 
                 var processor = GetLatestMediaProcessorByName(MediaProcessorName);
 
-                // Read configuration from hello specified file.
+                // Read configuration from the specified file.
                 string configuration = File.ReadAllText(configurationFile);
 
-                // Create a task with hello encoding details, using a string preset.
+                // Create a task with the encoding details, using a string preset.
                 ITask task = job.Tasks.AddNew("My Face Detection Task",
                     processor,
                     configuration,
                     TaskOptions.None);
 
-                // Specify hello input asset.
+                // Specify the input asset.
                 task.InputAssets.Add(asset);
 
-                // Add an output asset toocontain hello results of hello job.
+                // Add an output asset to contain the results of the job.
                 task.OutputAssets.AddNew("My Face Detectoion Output Asset", AssetCreationOptions.None);
 
-                // Use hello following event handler toocheck job progress.  
+                // Use the following event handler to check job progress.  
                 job.StateChanged += new EventHandler<JobStateChangedEventArgs>(StateChanged);
 
-                // Launch hello job.
+                // Launch the job.
                 job.Submit();
 
-                // Check job execution and wait for job toofinish.
+                // Check job execution and wait for job to finish.
                 Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
 
                 progressJobTask.Wait();
 
-                // If job state is Error, hello event handling
+                // If job state is Error, the event handling
                 // method for job progress should log errors.  Here we check
                 // for error state and exit if needed.
                 if (job.State == JobState.Error)

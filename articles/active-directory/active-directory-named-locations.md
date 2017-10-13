@@ -1,6 +1,6 @@
 ---
-title: ubicaciones de aaaNamed en Azure Active Directory | Documentos de Microsoft
-description: "Mediante la configuración de ubicaciones con nombre, puede evitar tener IP direcciones que pertenecen a su organización generan falsos positivos para ubicaciones de hello viaje imposible tooatypical el riesgo de tipo de evento."
+title: Ubicaciones con nombre en Azure Active Directory | Microsoft Docs
+description: "Al configurar ubicaciones con nombre, puede evitar el hecho de tener direcciones IP pertenecientes a su organización que generan falsos positivos para el tipo de evento de riesgo Viaje imposible a ubicaciones inusuales."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -11,51 +11,51 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 09/20/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 591e4b94b2ec9d45e20c01711e922f9972e047e5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: da437908509e40386ed23863648bd6956b308186
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="named-locations-in-azure-active-directory"></a>Ubicaciones con nombre en Azure Active Directory
 
-Con hello con el nombre de característica de ubicaciones de Azure Active Directory, puede etiquetar los intervalos de direcciones IP de confianza en su organización. En su entorno, puede usar ubicaciones con nombre en el contexto de hello de la detección de Hola de [el riesgo de eventos](active-directory-reporting-risk-events.md). característica de Hello ayuda a reducir el número de Hola de notificado falsos positivos para hello *ubicaciones de viaje imposible tooatypical* el riesgo de tipo de evento. 
+Gracias a las ubicaciones con nombre de Azure Active Directory puede etiquetar intervalos de direcciones IP de confianza en sus organizaciones. En su entorno, puede usar las ubicaciones con nombre en el contexto de la detección de [eventos de riesgo](active-directory-reporting-risk-events.md). La característica ayuda a reducir el número de falsos positivos incluidos para el tipo de evento de riesgo de *Viaje imposible a ubicaciones inusuales*. 
 
 ## <a name="configuration"></a>Configuración
 
-tooconfigure una ubicación con nombre:
+Para configurar una ubicación con nombre:
 
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com) como administrador global.
+1. Inicie sesión en [Azure Portal](https://portal.azure.com) como administrador global.
 
-2. En el panel izquierdo de hello, haga clic en **Azure Active Directory**.
+2. En el panel izquierdo, haga clic en **Azure Active Directory**.
 
-    ![vínculo de Azure Active Directory Hello en el panel izquierdo de Hola](./media/active-directory-named-locations/01.png)
+    ![El vínculo Azure Active Directory en el panel izquierdo](./media/active-directory-named-locations/01.png)
 
-3. En hello **Azure Active Directory** hoja en hello **seguridad** sección, haga clic en **acceso condicional**.
+3. En la hoja **Azure Active Directory**, en la sección **Seguridad**, haga clic en **Acceso condicional**.
 
-    ![Hola comando de acceso condicional](./media/active-directory-named-locations/05.png)
-
-
-4. En hello **acceso condicional** hoja en hello **administrar** sección, haga clic en **ubicaciones con nombre**.
-
-    ![Hola comando de ubicaciones con nombre](./media/active-directory-named-locations/06.png)
+    ![El comando Acceso condicional](./media/active-directory-named-locations/05.png)
 
 
-5. En hello **denominada ubicaciones** hoja, haga clic en **nueva ubicación**.
+4. En la hoja **Acceso condicional**, en la sección **Administrar**, haga clic en **Ubicaciones con nombre**.
 
-    ![Hola nuevo comando de ubicación](./media/active-directory-named-locations/07.png)
+    ![El comando Ubicaciones con nombre](./media/active-directory-named-locations/06.png)
 
 
-6. En hello **New** hoja, Hola siguientes:
+5. En la hoja **Ubicaciones con nombre**, haga clic en **Nueva ubicación**.
 
-    ![Nueva hoja de Hola](./media/active-directory-named-locations/08.png)
+    ![El comando Nueva ubicación](./media/active-directory-named-locations/07.png)
 
-    a. Hola **nombre** , escriba un nombre para la ubicación con nombre.
 
-    b. Hola **intervalos IP** , escriba un intervalo de IP. intervalo IP de Hello necesita toobe Hola *enrutamiento de interdominios sin clase* formato (CIDR).  
+6. En la hoja **Nuevo**, haga lo siguiente:
+
+    ![La hoja Nuevo](./media/active-directory-named-locations/56.png)
+
+    a. En el cuadro **Nombre**, escriba el nombre de la ubicación con nombre.
+
+    b. En el cuadro **Intervalo IP**, escriba un intervalo IP. El intervalo de IP debe estar en el formato *Enrutamiento de interdominios sin clases*  (CIDR).  
 
     c. Haga clic en **Crear**.
 
@@ -63,15 +63,15 @@ tooconfigure una ubicación con nombre:
 
 ## <a name="what-you-should-know"></a>Qué debería saber
 
-**Actualización masiva**: al crear o actualizar las ubicaciones con nombre, para las actualizaciones masivas, puede cargar o descargar un archivo CSV con intervalos IP de Hola. Una carga agrega intervalos IP de hello en lista de hello archivos toohello en lugar de sobrescribir la lista de Hola.
+**Actualizaciones masivas**: al crear o actualizar ubicaciones con nombre, en el caso de las actualizaciones masivas, puede cargar o descargar un archivo CSV con los intervalos de IP. Una carga permite agregar los intervalos IP del archivo a la lista en lugar de sobrescribir la lista.
 
-![Hola, cargar y descargar vínculos](./media/active-directory-named-locations/09.png)
+![Los vínculos de carga y descarga](./media/active-directory-named-locations/09.png)
 
 
-**Limitaciones**: puede definir un máximo de 60 ubicaciones con nombre, con un tooeach de rango asignado de IP de ellos. Si tiene una sola ubicación con nombre configurada, puede definir intervalos IP too500 para él.
+**Limitaciones:** puede definir un máximo de 60 ubicaciones con nombre con un intervalo de IP asignado a cada una de ellas. Si tiene una sola ubicación con nombre configurada, puede definir hasta 500 intervalos IP para ella.
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-toolearn más información acerca de los eventos de riesgo, vea [eventos de riesgo de Azure Active Directory](active-directory-reporting-risk-events.md).
+Para más información acerca de los eventos de riesgo, consulte [Eventos de riesgo de Azure Active Directory](active-directory-reporting-risk-events.md).
 

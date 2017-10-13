@@ -1,6 +1,6 @@
 ---
-title: "Mover los circuitos ExpressRoute de tooResource clásico Manager: PowerShell: Azure | Documentos de Microsoft"
-description: "Esta página describe cómo toomove una toohello de circuito clásico implementación del Administrador de recursos del modelo mediante PowerShell."
+title: "Transición de circuitos ExpressRoute desde el modelo de implementación clásica al modelo de implementación de Resource Manager mediante PowerShell y Azure | Microsoft Docs"
+description: "En esta página se describe cómo mover un circuito clásico al modelo de implementación de Resource Manager mediante PowerShell."
 documentationcenter: na
 services: expressroute
 author: ganesr
@@ -15,50 +15,50 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/03/2017
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: 8dcadafca5e4f40773902cec5786eba1dbe133eb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: c407e01e6d881cb8adcfe55faa246468669be883
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="move-expressroute-circuits-from-hello-classic-toohello-resource-manager-deployment-model-using-powershell"></a>Mover los circuitos ExpressRoute de modelo de implementación de administrador de recursos hello toohello clásico con PowerShell
+# <a name="move-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model-using-powershell"></a>Transición de los circuitos ExpressRoute desde el modelo de implementación clásica al modelo de implementación de Resource Manager mediante PowerShell
 
-toouse un circuito de ExpressRoute para hello clásico y modelos de implementación del Administrador de recursos, debe mover el modelo de implementación de hello circuito toohello el Administrador de recursos. Hello las secciones siguientes se ayuda a adoptar el circuito usando PowerShell.
+Para usar un circuito ExpressRoute con el modelo de implementación clásica y el modelo de implementación de Resource Manager, debe mover el circuito al modelo de implementación de Resource Manager. Las siguientes secciones le ayudan a mover su circuito mediante PowerShell.
 
 ## <a name="before-you-begin"></a>Antes de empezar
 
-* Compruebe que tiene la versión más reciente de Hola de módulos de PowerShell de Azure de hello (al menos la versión 1.0). Para obtener más información, consulte [cómo tooinstall y configurar Azure PowerShell](/powershell/azure/overview).
-* Asegúrese de que ha revisado hello [requisitos previos](expressroute-prerequisites.md), [requisitos de enrutamiento](expressroute-routing.md), y [flujos de trabajo](expressroute-workflows.md) antes de comenzar la configuración.
-* Revise la información de Hola que se proporciona en [mover un circuito de ExpressRoute de tooResource clásico Manager](expressroute-move.md). Asegúrese de que entiende totalmente Hola límites y limitaciones.
-* Compruebe que el circuito de hello es totalmente operativo en el modelo de implementación clásica de Hola.
-* Asegúrese de que tiene un grupo de recursos que se creó en el modelo de implementación del Administrador de recursos de Hola.
+* Compruebe que dispone de la versión más reciente de los módulos de Azure PowerShell (como mínimo, la versión 1.0). Para más información, vea [Instalación y configuración de Azure PowerShell](/powershell/azure/overview).
+* Asegúrese de haber revisado los [requisitos previos](expressroute-prerequisites.md), los [requisitos de enrutamiento](expressroute-routing.md) y los [flujos de trabajo](expressroute-workflows.md) antes de comenzar la configuración.
+* Revise la información que se proporciona en [Transición de un circuito ExpressRoute desde la implementación clásica a la implementación de Resource Manager](expressroute-move.md). Asegúrese de que comprende perfectamente los límites y restricciones.
+* Compruebe que el circuito está totalmente operativo en el modelo de implementación clásica.
+* Asegúrese de tener un grupo de recursos creado en el modelo de implementación de Resource Manager.
 
 ## <a name="move-an-expressroute-circuit"></a>Movimiento de un circuito ExpressRoute
 
-### <a name="step-1-gather-circuit-details-from-hello-classic-deployment-model"></a>Paso 1: Recopilar detalles del circuito de modelo de implementación clásica de Hola
+### <a name="step-1-gather-circuit-details-from-the-classic-deployment-model"></a>Paso 1: Recopile detalles del circuito desde el modelo de implementación clásica
 
-Inicie sesión en toohello el entorno clásico de Azure y obtener la clave de servicio de Hola.
+Inicie sesión en el entorno clásico de Azure y recopile la clave de servicio.
 
-1. Inicie sesión en tooyour cuenta de Azure.
+1. Inicie sesión en la cuenta de Azure.
 
   ```powershell
   Add-AzureAccount
   ```
 
-2. Seleccione la suscripción a Azure apropiada Hola.
+2. Seleccione la suscripción de Azure apropiada.
 
   ```powershell
   Select-AzureSubscription "<Enter Subscription Name here>"
   ```
 
-3. Importar módulos de PowerShell de Hola de Azure y ExpressRoute.
+3. Importe los módulos de PowerShell para Azure y ExpressRoute.
 
   ```powershell
   Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\Azure.psd1'
   Import-Module 'C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\Azure\ExpressRoute\ExpressRoute.psd1'
   ```
 
-4. Usa el cmdlet Hola de claves para el servicio hello tooget para todos los circuitos ExpressRoute. Después de recuperar las claves de hello, copie hello **clave de servicio** de circuito de Hola que desea que el modelo de implementación de toomove toohello el Administrador de recursos.
+4. Use el cmdlet siguiente para obtener las claves de servicio de todos los circuitos ExpressRoute. Después de recuperar las claves, copie la **clave de servicio** del circuito que desea mover al modelo de implementación de Resource Manager.
 
   ```powershell
   Get-AzureDedicatedCircuit
@@ -66,92 +66,92 @@ Inicie sesión en toohello el entorno clásico de Azure y obtener la clave de se
 
 ### <a name="step-2-sign-in-and-create-a-resource-group"></a>Paso 2: Inicio de sesión y creación de un grupo de recursos
 
-Inicie sesión en el entorno de administrador de recursos de toohello y crear un nuevo grupo de recursos.
+Inicie sesión en el entorno de Resource Manager y cree un grupo de recursos nuevo.
 
-1. Inicie sesión en el entorno de Azure Resource Manager tooyour.
+1. Inicie sesión en el entorno de Azure Resource Manager.
 
   ```powershell
   Login-AzureRmAccount
   ```
 
-2. Seleccione la suscripción a Azure apropiada Hola.
+2. Seleccione la suscripción de Azure apropiada.
 
   ```powershell
   Get-AzureRmSubscription -SubscriptionName "<Enter Subscription Name here>" | Select-AzureRmSubscription
   ```
 
-3. Modificar fragmento de código de hello debajo toocreate un nuevo grupo de recursos si aún no tiene un grupo de recursos.
+3. Modifique el fragmento de código siguiente para crear un nuevo grupo de recursos si aún no lo tiene.
 
   ```powershell
   New-AzureRmResourceGroup -Name "DemoRG" -Location "West US"
   ```
 
-### <a name="step-3-move-hello-expressroute-circuit-toohello-resource-manager-deployment-model"></a>Paso 3: Mover el modelo de implementación de administrador de recursos de toohello circuito de ExpressRoute de Hola
+### <a name="step-3-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>Paso 3: Mover el circuito ExpressRoute al modelo de implementación de Resource Manager
 
-Se está ahora listo toomove el circuito de ExpressRoute de modelo de implementación de administrador de recursos de toohello modelo de implementación clásica de Hola. Antes de continuar, revise la información Hola proporcionada en [mover un circuito ExpressRoute de modelo de implementación de administrador de recursos de hello toohello clásico](expressroute-move.md).
+Ya está listo para mover el circuito ExpressRoute desde el modelo de implementación clásica al modelo de implementación de Resource Manager. Antes de continuar, revise la información que se proporciona en [Transición de un circuito ExpressRoute desde el modelo de implementación clásica al modelo de implementación de Resource Manager](expressroute-move.md).
 
-toomove el circuito, modifique y ejecute hello siguiente fragmento de código:
+Para mover el circuito, modifique y ejecute el siguiente fragmento de código:
 
 ```powershell
 Move-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
 ```
 
 > [!NOTE]
-> Cuando haya finalizado el movimiento de hello, nombre nuevo de Hola que aparece en el cmdlet anterior Hola será usado tooaddress Hola recursos. Básicamente se cambiará el circuito de Hola.
+> Una vez que se termine la transición, se usará el nombre nuevo que aparece en el cmdlet anterior para referirse al recurso. Básicamente, se cambiará el nombre del circuito.
 > 
 
 ## <a name="modify-circuit-access"></a>Modificación del acceso al circuito
 
-### <a name="tooenable-expressroute-circuit-access-for-both-deployment-models"></a>tooenable acceso de circuito de ExpressRoute para ambos modelos de implementación
+### <a name="to-enable-expressroute-circuit-access-for-both-deployment-models"></a>Habilitación del acceso al circuito ExpressRoute para ambos modelos de implementación
 
-Después de mover el modelo de implementación en el Administrador de recursos de clásico ExpressRoute circuito toohello, puede habilitar los modelos de implementación de acceso tooboth. Ejecute hello después de modelos de implementación de cmdlets tooenable acceso tooboth:
+Después de mover el circuito ExpressRoute creado con el modelo clásico al modelo de implementación de Resource Manager, puede habilitar el acceso a ambos modelos de implementación. Ejecute el siguiente cmdlet para habilitar el acceso a ambos modelos de implementación:
 
-1. Obtener detalles del circuito Hola.
+1. Obtenga los detalles del circuito.
 
   ```powershell
   $ckt = Get-AzureRmExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
   ```
 
-2. Establecer tooTRUE "Permitir operaciones clásico".
+2. Establezca "Allow Classic Operations" (Permitir operaciones clásicas) en TRUE.
 
   ```powershell
   $ckt.AllowClassicOperations = $true
   ```
 
-3. Actualizar circuito Hola. Cuando esta operación ha finalizado correctamente, será capaz de tooview circuito de hello en el modelo de implementación clásica de Hola.
+3. Actualice el circuito. Una vez que esta operación finalice correctamente, podrá ver el circuito en el modelo de implementación clásica.
 
   ```powershell
   Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
   ```
 
-4. Ejecute hello cmdlet tooget Hola detalla de hello circuito de ExpressRoute. Debe ser toosee capaz de clave del servicio Hola enumerado.
+4. Ejecute el siguiente cmdlet para obtener los detalles del circuito ExpressRoute. También debe poder ver la clave de servicio.
 
   ```powershell
   get-azurededicatedcircuit
   ```
 
-5. Ahora puede administrar el circuito de ExpressRoute de toohello vínculos mediante comandos de modelo de implementación clásica de Hola para redes virtuales clásicas y comandos del Administrador de recursos de hello para el Administrador de recursos VNets. Hello artículos siguientes ayudarán a administrar vínculos toohello circuito de ExpressRoute:
+5. Ahora puede administrar los vínculos al circuito ExpressRoute mediante los comandos del modelo de implementación clásica para redes virtuales clásicas y los comandos del modelo de implementación de Resource Manager para redes virtuales de Resource Manager. Los artículos siguientes le ayudan a administrar los vínculos al circuito ExpressRoute:
 
-    * [Vincular el circuito de ExpressRoute en el modelo de implementación del Administrador de recursos de hello tooyour de red virtual](expressroute-howto-linkvnet-arm.md)
-    * [Vincular el circuito de ExpressRoute en el modelo de implementación clásica de hello tooyour de red virtual](expressroute-howto-linkvnet-classic.md)
+    * [Vinculación de redes virtuales a circuitos ExpressRoute en el modelo de implementación de Resource Manager](expressroute-howto-linkvnet-arm.md)
+    * [Vinculación de redes virtuales a circuitos ExpressRoute en el modelo de implementación clásica](expressroute-howto-linkvnet-classic.md)
 
-### <a name="toodisable-expressroute-circuit-access-toohello-classic-deployment-model"></a>modelo de implementación clásica de toohello de acceso circuito de ExpressRoute de toodisable
+### <a name="to-disable-expressroute-circuit-access-to-the-classic-deployment-model"></a>Deshabilitación del acceso al circuito ExpressRoute en el modelo de implementación clásica
 
-Ejecute hello siguiendo el modelo de implementación clásica de cmdlets toodisable acceso toohello.
+Ejecute los siguientes cmdlets para deshabilitar el acceso al modelo de implementación clásica.
 
-1. Obtener detalles de hello circuito de ExpressRoute.
+1. Obtenga los detalles del circuito ExpressRoute.
 
   ```powershell
   $ckt = Get-AzureRmExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
   ```
 
-2. Establecer tooFALSE "Permitir operaciones clásico".
+2. Establezca "Allow Classic Operations" (Permitir operaciones clásicas) en FALSE.
 
   ```powershell
   $ckt.AllowClassicOperations = $false
   ```
 
-3. Actualizar circuito Hola. Después de esta operación ha finalizado correctamente, no será capaz de tooview circuito de hello en el modelo de implementación clásica de Hola.
+3. Actualice el circuito. Una vez que esta operación finalice correctamente, no podrá ver el circuito en el modelo de implementación clásica.
 
   ```powershell
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
@@ -160,4 +160,4 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ## <a name="next-steps"></a>Pasos siguientes
 
 * [Crear y modificar el enrutamiento para el circuito ExpressRoute](expressroute-howto-routing-arm.md)
-* [Vincular el circuito de ExpressRoute de tooyour de red virtual](expressroute-howto-linkvnet-arm.md)
+* [Vincular la red virtual a su circuito ExpressRoute](expressroute-howto-linkvnet-arm.md)

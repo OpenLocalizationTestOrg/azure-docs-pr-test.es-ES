@@ -1,6 +1,6 @@
 ---
-title: "aaaMicrosoft información de seguridad del centro de confianza y Azure | Documentos de Microsoft"
-description: "Hello Microsoft Trust center proporciona Hola información que necesita toobe seguro de que Azure hello en el que ejecutar los servicios de plataforma es segura."
+title: "Microsoft Trust Center e información de seguridad de Azure | Microsoft Docs"
+description: "El Centro de confianza de Microsoft proporciona la información que necesita para tener la seguridad de que la plataforma de Azure en la que se ejecutan sus servicios es segura."
 services: security
 documentationcenter: na
 author: TomShinder
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2017
 ms.author: terrylan
-ms.openlocfilehash: 3710ad820699045b7c1d3af6739c3bdf1a3d36e7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a8835da0947ce2a365b57356960541cb997e73b3
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="microsoft-trust-center"></a>Centro de confianza de Microsoft
-sitio de información de seguridad de Azure de Hello en Azure.com proporciona información de Hola que necesita tooplan, diseñar, implementar, configurar y administrar las soluciones de nube de forma segura. Con el centro de Microsoft Trust hello, también tiene Hola información que necesita toobe seguro de que Azure hello en el que ejecutar los servicios de plataforma es segura.
+El sitio de información de seguridad de Azure en Azure.com proporciona la información que necesita para planear, diseñar, implementar, configurar y administrar soluciones en la nube de forma segura. El Centro de confianza de Microsoft proporciona la información que necesita para tener la seguridad de que la plataforma de Azure en la que se ejecutan sus servicios es segura.
 
-Sabemos que cuando confía sus aplicaciones y datos tooAzure, va toohave preguntas. ¿Dónde están? ¿Quién puede acceder a ellos? ¿Qué hace Microsoft tooprotect él? ¿Cómo puedo comprobar que Microsoft está haciendo lo que dice?
+Sabemos que cuando confía sus aplicaciones y datos a Azure, se planteará algunas preguntas. ¿Dónde están? ¿Quién puede acceder a ellos? ¿Qué hace Microsoft para protegerlos? ¿Cómo puedo comprobar que Microsoft está haciendo lo que dice?
 
-Y tenemos las respuestas. Dado que son los datos, decidir quién tiene acceso, y trabajar con nosotros toodecide donde se encuentra. toosafeguard los datos, se utilizan la tecnología de seguridad de la innovadora y criptografía de talla mundial. Nuestro cumplimiento de forma independiente se audita y estamos transparentes en el número de niveles, de forma que administramos requisitos legales para la seguridad de toohello de datos de cliente de nuestro código.
+Y tenemos las respuestas. Puesto que son sus datos, usted decide quién tiene acceso a ellos, y colabora con nosotros para decidir dónde ubicarlos. Para proteger los datos, usamos tecnología de vanguardia y criptografía de talla mundial. Nuestros procesos se auditan de forma independiente de cara al cumplimiento, y somos transparentes en muchos niveles: desde el modo en que administramos las exigencias legales de los datos de los clientes hasta la seguridad de nuestro código.
 
-Aquí es lo que encontrará en hello Microsoft Trust Center:
+Estas son las secciones que encontrará en el Centro de confianza de Microsoft:
 
-* [Seguridad](https://aka.ms/tcsecurity) : más información cómo todos Hola Microsoft Cloud services están protegidos.
-* [Privacidad](https://aka.ms/tcprivacy) : comprender cómo Microsoft garantiza la privacidad de los datos en la nube de Microsoft de Hola.
-* [Cumplimiento de normas](https://aka.ms/tccompliance) : Descubra cómo Microsoft ayuda a las organizaciones a cumplir con los requisitos nacionales, regionales y específicos del sector que rigen Hola recopilación y uso de datos de personas.
-* [Transparencia](https://aka.ms/tctransparency) : ver cómo Microsoft cree que controla los datos en hello en la nube y cómo Microsoft ayuda a conocer tanto como sea posible sobre cómo se controlan esos datos.
-* [Productos y servicios](https://aka.ms/tcproductsservices) : vea todos los productos de Microsoft Cloud de Hola y servicios en un solo lugar
+* [Security](https://aka.ms/tcsecurity) (Seguridad): aprenda cómo se protegen los servicios de Microsoft Cloud.
+* [Privacy](https://aka.ms/tcprivacy) (Privacidad): comprenda cómo Microsoft garantiza la privacidad de los datos en la nube de Microsoft.
+* [Compliance](https://aka.ms/tccompliance) (Cumplimiento): descubra cómo Microsoft ayuda a las organizaciones a cumplir los requisitos nacionales, regionales y específicos del sector que rigen la recopilación y el uso de los datos de las personas.
+* [Transparency](https://aka.ms/tctransparency) (Transparencia): vea cómo cree Microsoft que usted controla sus datos en la nube y cómo le ayuda a comprender en lo posible la forma en que se administran los datos.
+* [Products and Services](https://aka.ms/tcproductsservices) (Productos y servicios): vea todos los productos y servicios de Microsoft Cloud en un solo lugar.
 * [Service Trust Portal](https://aka.ms/tcservicetrportal) (Portal de servicios de confianza): obtenga copias de informes de auditoría independientes de servicios en la nube de Microsoft, evaluaciones de riesgos, procedimientos recomendados de seguridad y materiales relacionados.
 * [What's New](https://aka.ms/tcwhatsnew) (Novedades): descubra las novedades de Microsoft Cloud Trust.
 * [Resources](https://aka.ms/tcresources) (Recursos): investigue notas de producto, vídeos y casos prácticos en Microsoft Trusted Cloud.
 
-Hola [Microsoft Trust Center](https://www.microsoft.com/trustcenter) tiene lo que necesita toounderstand lo que hacemos toosecure Hola Microsoft Cloud.
+El [Centro de confianza de Microsoft](https://www.microsoft.com/trustcenter) tiene lo que necesita para comprender qué debemos hacer para proteger la nube de Microsoft.

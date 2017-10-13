@@ -1,16 +1,16 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### <a name="tooadd-a-new-storage-account-in-storsimple-release-version-ga"></a>tooadd una nueva cuenta de almacenamiento en la versión de lanzamiento de StorSimple (GA)
-1. En la página de inicio el servicio StorSimple Manager hello, seleccione su servicio y haga doble clic en él. Esto le llevará toohello **inicio rápido** página. Seleccione hello **configurar** página.
+#### <a name="to-add-a-new-storage-account-in-storsimple-release-version-ga"></a>Para agregar una nueva cuenta de almacenamiento en la versión de lanzamiento de StorSimple (GA)
+1. En la página de aterrizaje del servicio de Administrador de StorSimple, seleccione el servicio y haga doble clic en él. Esto le llevará a la página **Inicio rápido** . Seleccione la página **Configurar** .
 2. Haga clic en **Agregar/editar cuenta de almacenamiento**.
-3. Hola **Agregar/Editar cuenta de almacenamiento** diálogo cuadro, Hola siguientes:
+3. En el cuadro de diálogo **Agregar/editar cuenta de almacenamiento** , haga lo siguiente:
    
    1. Haga clic en **Agregar nuevo**.
    2. Proporcione un nombre para la cuenta de almacenamiento.
-   3. Hola de fuente de alimentación principal **clave de acceso** para su cuenta de almacenamiento de Microsoft Azure.
-   4. Seleccione **habilitar modo SSL** toocreate un canal seguro para la comunicación de red entre su dispositivo y hello en la nube. Desactive hello **habilitar modo SSL** casilla de verificación sólo si está operando en una nube privada.
-   5. Haga clic en el icono de verificación de Hola ![icono de marca de verificación](./media/storsimple-configure-new-storage-account/HCS_CheckIcon-include.png). Se le notificará una vez creada correctamente de la cuenta de almacenamiento de Hola.
+   3. Proporcione la **Clave de acceso** principal para la cuenta de almacenamiento de Microsoft Azure.
+   4. Seleccione **Habilitar modo SSL** para crear un canal seguro para la comunicación de red entre su dispositivo y la nube. Desactive la casilla **Habilitar modo SSL** solo si está trabajando dentro de una nube privada.
+   5. Haga clic en el icono de marca de verificación  ![icono de marca de verificación](./media/storsimple-configure-new-storage-account/HCS_CheckIcon-include.png). Recibirá una notificación cuando la cuenta de almacenamiento se cree correctamente.
       
       ![Agregar cuenta de almacenamiento](./media/storsimple-configure-new-storage-account/HCS_AddStorageAccount-include.png)
-4. Hola recién creado la cuenta de almacenamiento se mostrará en hello **configurar** página en **cuentas de almacenamiento**. Haga clic en **guardar** hello toosave recién creado la cuenta de almacenamiento. Haga clic en **Aceptar** cuando se le pida confirmación.
+4. La cuenta de almacenamiento recién creada se mostrará en la página **Configurar** bajo **Cuentas de almacenamiento**. Haga clic en **Guardar** para guardar la cuenta de almacenamiento recién creada. Haga clic en **Aceptar** cuando se le pida confirmación.
 

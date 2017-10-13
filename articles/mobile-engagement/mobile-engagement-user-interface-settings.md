@@ -1,6 +1,6 @@
 ---
-title: "Interfaz de usuario de Mobile Engagement - aaaAzure de configuración"
-description: "Obtenga información acerca de cómo toomanage Hola configuración global de la aplicación con Azure Mobile Engagement"
+title: "Interfaz de usuario de Azure Mobile Engagement: configuración"
+description: "Obtenga información acerca de cómo administrar la configuración global de la aplicación mediante Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,73 +14,73 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 02d4a36c591fc5e097410b7e931d1c9ce81d68d5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: af5c81df2b9f288161b38625d3ac2adde8fb195d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toomanage-hello-global-settings-of-your-application"></a>¿Cómo toomanage Hola configuración global de la aplicación
-Hola **configuración** opciones de menú disponibles para una variación de aplicación, dependiendo de la plataforma de Hola de aplicación hello y permisos de Hola se le ha concedido para la aplicación hello. Opciones incluyen hello siguiente: detalles, proyectos, inserción nativa, velocidad de inserción, la Tag (app info) y presión comercial. opción de menú (información de aplicación) de etiqueta de la sección de configuración de Hola Hola puede administrarse por la aplicación (usando Hola SDK) o el servidor back-end (usando Hola Device API). 
+# <a name="how-to-manage-the-global-settings-of-your-application"></a>Cómo administrar la configuración global de la aplicación
+Las opciones del menú **Configuración** disponibles para una aplicación varían, dependiendo de la plataforma de la aplicación y de los permisos que se le hayan concedido para la aplicación. En la configuración se incluyen lo siguiente: Detalles, Proyectos, Inserción nativa, Velocidad de inserción, Etiquetas de información de la aplicación y Presión comercial. La opción de menú Etiquetas de información de la aplicación de la sección de Configuración puede administrarse mediante la aplicación (con el SDK) o mediante el back-end (con la API del dispositivo). 
 
 > [!NOTE]
-> Muchas de las secciones de hello **Mobile Engagement** portal de interfaz de usuario contienen hello **ayuda para mostrar** botón. Presione este botón tooget más información contextual sobre una sección.
+> Muchas de las secciones de la interfaz de usuario del portal de **Mobile Engagement** contienen el botón **MOSTRAR AYUDA**. Pulse este botón para obtener más información contextual sobre una sección.
 > 
 > 
 
 ## <a name="details"></a>Detalles
-Le permite toochange nombre de Hola y una descripción de la aplicación, el propietario de Hola la vista de la aplicación y sus permisos de rol. 
+Le permite cambiar el nombre y la descripción de la aplicación, ver el propietario de la aplicación y los permisos de rol. 
 
-Configuración de análisis permite hello y tooview o cambiar día Hola semanas iniciar en tiempo de retención en días.
+La configuración de análisis permite ver o cambiar el día en que empieza la semana y el tiempo de retención en días.
 
   ![settings1][46]
 
 ## <a name="projects"></a>Proyectos
-Le permite tooselect todos los proyectos que desee tooappear de su aplicación en. 
+Le permite seleccionar todos los proyectos en los que desea que aparezca la aplicación. 
 
-También puede buscar un proyecto y ver el nombre de hello, la descripción, el propietario y los permisos de la función de cualquier proyecto forma parte de su aplicación.
+También puede buscar un proyecto y ver el nombre, descripción, propietario y los permisos del rol de cualquier proyecto del que forme parte la aplicación.
 
 Para obtener más información, consulte [Documentación de la interfaz de usuario - Inicio][Link 13].
 
   ![settings3][48]
 
 ## <a name="native-push"></a>Inserción nativa:
-Le permite tooregister un nuevo certificado o delete y certificado existente para usan con inserción nativa. Inserción nativa permite a aplicaciones de Azure Mobile Engagement toopush tooyour en cualquier momento, incluso cuando no se está ejecutando. 
+Permite registrar un nuevo certificado o la eliminación de un certificado existente para usar con la inserción nativa. Inserción nativa permite a Azure Mobile Engagement insertar en su aplicación en cualquier momento, aunque no se esté ejecutando. 
 
-Después de proporcionar las credenciales o certificados para al menos un servicio de inserción nativa, puede seleccionar "En cualquier momento" al crear campañas de Reach y también utilizar Hola "notificador" parámetro Hola API de INSERCIÓN.
+Después de proporcionar las credenciales o certificados para al menos un servicio de inserción nativa, se puede seleccionar "Cualquier hora" al crear campañas de cobertura y también usar el parámetro "notifier" en la API de INSERCIÓN.
 
 ### <a name="apple-push-notification-service-apns"></a>Servicio de notificaciones de inserción de Apple (APNS)
-tooenable inserción nativa usando el servicio de notificaciones Push de Apple Hola necesitará tooregister su certificado. Necesitará el tipo de hello toospecify del certificado como development (desarrollo) o de producción (PROD). A continuación, se necesita carga su contraseña hello y certificado.
+Para habilitar la inserción nativa mediante el servicio de notificación de inserción de Apple deberá registrar su certificado. Deberá especificar el tipo de certificado como de desarrollo (DEV) o de producción (PROD). A continuación, necesitará cargar su certificado y la contraseña.
 
-Para obtener más información, consulte: [documentación del SDK - iOS: cómo tooPrepare la aplicación para notificaciones Push de Apple][Link 5]
+Para obtener más información, consulte [Documentación del SDK - iOS - Cómo preparar la aplicación para las notificaciones de inserción de Apple][Link 5]
 
 ![settings4][49]
 
 ### <a name="windows-push-notification-service-wpns"></a>Servicio de notificación de inserción de Windows (WPNS)
-tooenable inserción nativa usando el servicio de notificación de Windows, debe proporcionar las credenciales de la aplicación. Necesitará el identificador de seguridad del paquete (SID) y la clave secreta.
+Para habilitar la inserción nativa mediante el servicio de notificación de Windows, debe proporcionar las credenciales de la aplicación. Necesitará el identificador de seguridad del paquete (SID) y la clave secreta.
 
 ![settings5][50]
 
 ### <a name="google-cloud-messaging-for-android-gcm"></a>Mensajería en la nube de Google para Android (GCM)
-tooenable inserción nativa usando GCM, necesita toofollow Hola instrucciones de Google. A continuación, debe pegar una clave de API simple de servidor configurada sin restricciones de IP. Requiere la integración con hello SDK para Android v1.12.0.
+Para habilitar la inserción nativa mediante GCM, deberá seguir las instrucciones de Google. A continuación, debe pegar una clave de API simple de servidor configurada sin restricciones de IP. Requiere la integración con el SDK de Android v1.12.0 +.
 
 Para más información, consulte: 
 
-* [SDK documentación Android cómo tooIntegrate GCM][Link 5]
+* [Documentación del SDK - Android - Cómo integrar GCM][Link 5]
 * [Guía sobre GCM de Google Developers](http://developer.android.com/guide/google/gcm/gs.html)
 
 ### <a name="amazon-device-messaging-for-android-adm"></a>Mensajería de dispositivos de Amazon para Android (ADM)
-Inserción de nativo de tooenable usando ADM, debe proporcionar Amazon <OAuth credentials> que consta de un identificador de cliente y el secreto del cliente (requiere la integración con el SDK para Android v2.1.0).
+Para habilitar la inserción nativa con ADM, debe proporcionar <OAuth credentials> de Amazon compuesta de un identificador de cliente y el secreto del cliente (requiere la integración con el SDK de Android v2.1.0+).
 
 Para más información, consulte: 
 
-* [SDK documentación Android cómo tooIntegrate ADM][Link 5]
+* [Documentación del SDK - Android - Cómo integrar ADM][Link 5]
 * [Documentación sobre ADM para desarrolladores de Amazon](https://developer.amazon.com/sdk/adm/credentials.html#Getting)
 
 ![settings6][51]
 
 ## <a name="push-speed"></a>Velocidad de inserción
-Muestra la velocidad de inserción actual de saludo de la aplicación y permite la velocidad de inserción de hello toodefine de la aplicación.
+Muestra la velocidad de inserción actual de la aplicación y le permite definir la velocidad de inserción de la aplicación.
 
   ![settings7][52]
 

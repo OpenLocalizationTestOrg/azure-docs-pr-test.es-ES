@@ -1,6 +1,6 @@
 ---
-title: "aaaEmbedding un vídeo de transmisión por secuencias adaptativa de MPEG-DASH en una aplicación HTML5 con DASH.js | Documentos de Microsoft"
-description: "Este tema se muestra cómo tooembed un vídeo de transmisión por secuencias adaptativa de MPEG-DASH en una aplicación HTML5 con DASH.js."
+title: "Inserción de un vídeo de streaming adaptable MPEG-DASH en una aplicación HTML5 con DASH.js | Microsoft Docs"
+description: "En este vídeo se muestra cómo incluir un vídeo de streaming adaptable MPEG-DASH en una aplicación HTML5 con DASH.js."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.openlocfilehash: a73713d20f95262654532b94576ae9669d829354
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 27ce6325773ba1f9fd9cd9ab9e07ea9f5e2488ac
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="embedding-a-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Incrustación de un vídeo de transmisión por secuencias adaptativa MPEG-DASH en una aplicación HTML5 con DASH.js
 ## <a name="overview"></a>Información general
-MPEG-DASH es un estándar ISO para hello adaptable de transmisión por secuencias de contenido de vídeo, lo que ofrece ventajas significativas para quienes desea vídeo de alta calidad, adaptable toodeliver salida de transmisión por secuencias. Con MPEG-DASH, secuencia de vídeo de hello quitará automáticamente definición inferior tooa cuando se satura red Hola. Esto reduce la probabilidad de Hola de Visor de hello ver un vídeo "en pausa" mientras hello, el Reproductor descarga Hola a continuación algunos tooplay segundos (también conocido como almacenamiento en búfer). Reduce la congestión de la red, Reproductor de vídeo de Hola a su vez devolverá tooa flujo de calidad superior. Este ancho de banda Hola del tooadapt de capacidad necesario también se produce en una hora de inicio más rápida de vídeo. Que significa que los primeros segundos de Hola puede reproducirse en un segmento de calidad inferior fast para descargar y, a continuación, el paso de calidad superior tooa una vez que se han almacenado en búfer suficiente contenido.
+MPEG-DASH es una norma ISO para la transmisión por secuencias adaptativa de contenido de vídeo, lo que ofrece ventajas significativas para aquellos que desean ofrecer salida de streaming de vídeo adaptable de alta calidad. Con MPEG-DASH, la secuencia de vídeo se baja automáticamente a una definición inferior cuando la red está saturada. Esto reduce la probabilidad de que el usuario vea un vídeo "pausado" mientras el reproductor descarga los siguientes segundos para reproducirlos (también conocido como almacenamiento en búfer). A medida que se reduce la congestión de la red, el reproductor de vídeo a su vez volverá a una secuencia de mayor calidad. Esta capacidad para adaptar el ancho de banda necesario también produce una hora de inicio más rápida para el vídeo. Esto significa que los primeros segundos se pueden reproducir en un segmento de calidad inferior rápido para descargar y luego pasan a una calidad superior una vez se ha almacenado en búfer el contenido suficiente.
 
-Dash.js es un reproductor de vídeo MPEG-DASH de código abierto escrito en JavaScript. Su objetivo es tooprovide un reproductor sólido entre plataformas que se pueda reutilizar libremente en aplicaciones que requieren la reproducción de vídeo. Proporciona reproducción MPEG-DASH en cualquier explorador que admita Hola W3C Media Source Extensions (MSE), hoy en día es Chrome, Microsoft Edge e IE11 (otros exploradores han indicado su intención toosupport MSE). Para obtener más información acerca de DASH.js, js vea repositorio dash.js de GitHub de Hola.
+Dash.js es un reproductor de vídeo MPEG-DASH de código abierto escrito en JavaScript. Su objetivo es proporcionar un reproductor sólido entre plataformas que se pueda reutilizar libremente en aplicaciones que requieren reproducción de vídeo. Ofrece reproducción MPEG-DASH en cualquier explorador que admite las extensiones de origen multimedia (MSE) W3C hoy en día, es decir, Chrome, Microsoft Edge e IE11 (otros exploradores han indicado su intención de ser compatibles con MSE). Para obtener más información sobre DASH.js, vea el repositorio de GitHub dash.js.
 
 ## <a name="creating-a-browser-based-streaming-video-player"></a>Creación de un reproductor de vídeo de streaming basado en explorador
-toocreate una página web sencilla que muestra un Reproductor de vídeo Hola espera que controla este tipo reproducir, pausa, rebobinar etc., deberá:
+Para crear una página web sencilla que muestre un reproductor de vídeo con los controles esperados como reproducir, pausa, rebobinar, etc., necesitará:
 
 1. Crear una página HTML
-2. Agregar la etiqueta de vídeo de Hola
-3. Agregar hello dash.js jugador
-4. Inicializar Reproductor Hola
+2. Agregar la etiqueta de vídeo
+3. Agregar el reproductor dash.js
+4. Inicializar el reproductor
 5. Agregar algún estilo CSS
-6. Ver los resultados en un explorador que implementa MSE Hola
+6. Ver los resultados en un explorador que implemente MSE
 
-Al inicializar el Reproductor Hola se puede completar en unos pocos de las líneas de código de JavaScript. Con dash.js, realmente es que vídeo tooembed simple MPEG-DASH en las aplicaciones basadas en explorador.
+La inicialización del reproductor se puede completar con tan solo unas líneas de código JavaScript. Con dash.js, es realmente así de sencillo incrustar vídeo MPEG-DASH en sus aplicaciones basadas en explorador.
 
-## <a name="creating-hello-html-page"></a>Creación de hello página HTML
-Hola primer paso es página toocreate un HTML estándar que contiene hello **vídeo** elemento, guarde este archivo como basicPlayer.html, como el siguiente ejemplo de Hola muestra:
+## <a name="creating-the-html-page"></a>Creación de la página HTML
+El primer paso es crear una página HTML estándar con el elemento de **vídeo**, guardar este archivo como basicPlayer.html, como se muestra en el ejemplo siguiente:
 
     <!DOCTYPE html>
     <html>
@@ -50,19 +50,19 @@ Hola primer paso es página toocreate un HTML estándar que contiene hello **ví
       </body>
     </html>
 
-## <a name="adding-hello-dashjs-player"></a>Agregar Hola Reproductor DASH.js
-aplicación de toohello de la implementación de referencia de dash.js con tooadd hello, necesitará toograb archivo de dash.all.js hello de versión de Hola 1.0 de proyecto dash.js. Esto se debe guardar en la carpeta de JavaScript de saludo de la aplicación. Este archivo es un archivo de conveniencia que reúne todo el código de hello dash.js necesarios en un único archivo. Si tiene un aspecto alrededor de repositorio dash.js de hello, observará Hola archivos individuales, probar el código y mucho más, pero si todo lo que desea toodo es usar dash.js, archivo dash.all.js de hello es lo que necesita.
+## <a name="adding-the-dashjs-player"></a>Adición del reproductor dash.js
+Para agregar la implementación de referencia de dash.js a la aplicación, deberá incluir el archivo dash.all.js desde la 1.0 versión del proyecto dash.js. Este se debe guardar en la carpeta de JavaScript de la aplicación. Este archivo es un archivo de conveniencia que reúne todo el código de dash.js necesario en un solo archivo. Si echa un vistazo al repositorio dash.js, observará los archivos individuales, probará código y mucho más, pero si todo lo que quiere hacer es usar dash.js, el archivo dash.all.js es lo que necesita.
 
-aplicaciones de tooadd hello dash.js Reproductor tooyour, agregue una sección principal de secuencia de comandos etiqueta toohello de basicPlayer.html:
+Para agregar el reproductor de dash.js a sus aplicaciones, agregue una etiqueta de script a la sección de encabezado del archivo basicPlayer.html:
 
     <!-- DASH-AVC/265 reference implementation -->
     < script src="js/dash.all.js"></script>
 
 
-A continuación, crear un Reproductor de hello tooinitialize de función cuando se carga la página de Hola. Agregue Hola siguiente secuencia de comandos después de la línea hello en el que se carga dash.all.js:
+A continuación, cree una función para inicializar el reproductor cuando se cargue la página. Agregue el siguiente script después de la línea en la que carga dash.all.js:
 
     <script>
-    // setup hello video element and attach it toohello Dash player
+    // setup the video element and attach it to the Dash player
     function setupVideo() {
       var url = "http://wams.edgesuite.net/media/MPTExpressionData02/BigBuckBunny_1080p24_IYUV_2ch.ism/manifest(format=mpd-time-csf)";
       var context = new Dash.di.DashContext();
@@ -73,17 +73,17 @@ A continuación, crear un Reproductor de hello tooinitialize de función cuando 
     }
     </script>
 
-Esta función crea primero un elemento DashContext. Se trata de aplicación de hello tooconfigure usado para un entorno en tiempo de ejecución específica. Desde un punto de vista técnico, define hello las clases que Hola framework de inyección de dependencia deben utilizar al construir la aplicación hello. En la mayoría de los casos, usará Dash.di.DashContext.
+Esta función crea primero un elemento DashContext. Se usa para configurar la aplicación para un entorno de tiempo de ejecución específico. Desde un punto de vista técnico, define las clases que debería usar el marco de inserción de dependencias al construir la aplicación. En la mayoría de los casos, usará Dash.di.DashContext.
 
-A continuación, crear una instancia de la clase principal hello de marco de trabajo de hello dash.js, el Reproductor de Media. Esta clase contiene el núcleo de hello métodos necesarios como reproducirán y pausar, administra Hola relación con el elemento de vídeo de Hola y también administra la interpretación de Hola de archivo de descripción de la presentación de medios (MPD) hello que describe hello toobe vídeo reproducida.
+A continuación, cree una instancia de la clase principal del marco de dash.js, MediaPlayer. Esta clase contiene los métodos principales necesarios, como reproducción y pausa, administra la relación con el elemento de vídeo y también la interpretación del archivo de descripción de presentación multimedia (MPD) que describe el vídeo que se va a reproducir.
 
-función de startup() Hello de hello MediaPlayer (clase) se denomina tooensure que el Reproductor de hello es listo tooplay de vídeo. Entre otras cosas, esta función garantiza que todas las clases de hello necesarios (como se define según el contexto de Hola) se han cargado. Cuando el Reproductor Hola esté listo, puede adjuntar Hola elemento video tooit con hello attachView() función. Esto habilita la secuencia de vídeo de hello MediaPlayer tooinject hello en el elemento de Hola y también controlar la reproducción según sea necesario.
+Se llama a la función startup() de la clase MediaPlayer para asegurarse de que el reproductor está listo para reproducir vídeo. Entre otras cuestiones, esta función garantiza que se han cargado todas las clases necesarias (según se definen por el contexto). Cuando el reproductor esté listo, puede asociar el elemento de vídeo mediante la función attachView(). Esto permite al MediaPlayer insertar la secuencia de vídeo en el elemento y controlar además la reproducción de controles según sea necesario.
 
-Pasar URL Hola de hello MPD archivo toohello MediaPlayer para que sepa sobre Hola vídeo se espera tooplay.hello setupVideo() función recién creado tendrá toobe ejecutada una vez que se haya cargado completamente página Hola. Hacer esto mediante el uso de eventos onload de hello del elemento de cuerpo de Hola. Cambie el elemento <body> a:
+Pase la URL del archivo MPD al MediaPlayer para que sepa cuál el vídeo que se espera reproducir. La función setupVideo() recién creada deberá ejecutarse una vez que la página se haya cargado por completo. Haga esto mediante el evento onload del elemento body. Cambie el elemento <body> a:
 
     <body onload="setupVideo()">
 
-Por último, establecer tamaño de Hola de elemento vídeo Hola de CSS. En un entorno de transmisión por secuencias adaptativo, esto es especialmente importante porque puede cambiar tamaño de Hola de hello vídeo se reproduce como reproducción adapta a las condiciones de red toochanging. En esta demostración sencilla simplemente forzar Hola elemento video toobe 80% de la ventana del explorador disponible de hello agregando Hola pasos de CSS toohello la sección principal de la página de hello:
+Por último, establezca el tamaño del elemento de vídeo mediante CSS. En un entorno de streaming adaptable, esto es especialmente importante porque el tamaño del vídeo que se reproduce puede cambiar a medida que la reproducción se adapta a las condiciones de red cambiantes. En esta sencilla demo simplemente debe forzar el elemento de vídeo para que sea el 80 % de la ventana del explorador disponible agregando el CSS siguiente a la sección inicial de la página:
 
     <style>
     video {
@@ -93,7 +93,7 @@ Por último, establecer tamaño de Hola de elemento vídeo Hola de CSS. En un en
     </style>
 
 ## <a name="playing-a-video"></a>Reproducción de un vídeo
-tooplay ver un vídeo, el explorador en el archivo de basicPlayback.html hello y haga clic en Reproducir en el Reproductor de vídeo de hello muestra.
+Para reproducir un vídeo, dirija el explorador al archivo basicPlayback.html y haga clic en Reproducir en el reproductor de vídeo que se muestra.
 
 ## <a name="media-services-learning-paths"></a>Rutas de aprendizaje de Servicios multimedia
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

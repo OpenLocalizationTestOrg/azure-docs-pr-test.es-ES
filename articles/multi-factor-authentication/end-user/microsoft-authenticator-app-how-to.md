@@ -1,9 +1,9 @@
 ---
-title: "Authenticator de aaaMicrosoft para teléfonos móviles | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo tooupgrade toohello versión más reciente de Azure Authenticator."
+title: "Aplicación Microsoft Authenticator para teléfonos móviles | Microsoft Docs"
+description: "Aprenda a actualizar a la versión más reciente de Azure Authenticator."
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: barlanmsft
 manager: femila
 ms.assetid: 3065a1ee-f253-41f0-a68d-2bd84af5ffba
 ms.service: multi-factor-authentication
@@ -12,98 +12,98 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
-ms.author: kgremban
+ms.author: barlan
 ms.reviewer: librown
 ms.custom: H1Hack27Feb2017, end-user
-ms.openlocfilehash: d895d92d89613cbafd9fc09d4ff4810cbf25652e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e1e979319e53d222be33032acd0a79697dd09ab6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="get-started-with-hello-microsoft-authenticator-app"></a>Introducción a la aplicación de Microsoft Authenticator hello
-aplicación Microsoft Authenticator Hello proporciona un nivel adicional de seguridad en su cuenta profesional o educativa (por ejemplo, bsimon@contoso.com) o la cuenta de Microsoft (por ejemplo, bsimon@outlook.com).
+# <a name="get-started-with-the-microsoft-authenticator-app"></a>Introducción a la aplicación Microsoft Authenticator
+La aplicación Microsoft Authenticator proporciona un nivel de seguridad adicional para su cuenta profesional o educativa (por ejemplo, bsimon@contoso.com) o su cuenta de Microsoft (por ejemplo, bsimon@outlook.com).
 
-funciona de la aplicación Hello en uno de dos maneras:
+La aplicación funciona de una de estas dos formas:
 
-* **Notificación**. aplicación Hello puede ayudar a evitar accesos no autorizados tooaccounts y detener las transacciones fraudulentas insertando una tableta o smartphone tooyour de notificación. Simplemente ver notificación hello y, si es legítima, seleccione **compruebe**. De lo contrario, seleccione **Denegar**. 
-* **Código de comprobación**. aplicación Hello puede usarse como un software de token toogenerate un código de comprobación de OAuth. Después de escribir el nombre de usuario y la contraseña, se escribe código de hello proporcionada por la aplicación hello en pantalla de inicio de sesión de bienvenida. código de comprobación de Hello proporciona una segunda forma de autenticación.
+* **Notificación**. La aplicación puede ayudar a impedir el acceso no autorizado a las cuentas y detener las transacciones fraudulentas mediante el envío de una notificación al smartphone o a la tableta. Solo tiene que ver la notificación y, si es legítima, seleccionar **Comprobar**. De lo contrario, seleccione **Denegar**.
+* **Código de comprobación**. La aplicación puede utilizarse como token de software para generar un código de comprobación de OAuth. Después de escribir el nombre de usuario y la contraseña, especifique el código que facilita la aplicación en la pantalla de inicio de sesión. El código de comprobación es una forma adicional de autenticación.
 
-aplicación de Microsoft Authenticator Hello reemplaza la aplicación Azure Authenticator de hello. Hello Azure Authenticator aplicación todavía funciona, pero si decide toomove toohello la nueva aplicación de Microsoft Authenticator, este artículo le puede ayudar.  
+La aplicación Microsoft Authenticator sustituye a la aplicación Azure Authenticator. La aplicación Azure Authenticator sigue funcionando, pero, si decide dar el paso a la nueva aplicación Microsoft Authenticator, este artículo puede servirle de ayuda.  
 
 ## <a name="opt-in-for-two-step-verification"></a>Suscripción a la comprobación en dos pasos
 
-aplicación de Microsoft Authenticator Hello no funciona por sí mismo. Configurar cada uno de los tooprompt de cuentas de un segundo método de comprobación después de iniciar sesión con su nombre de usuario y contraseña. 
+La aplicación Microsoft Authenticator no funciona por sí misma. Configure cada una de sus cuentas para que se le solicite un segundo método de comprobación después de iniciar sesión con su nombre de usuario y contraseña.
 
-Para una cuenta profesional o educativa, no por lo general obtendrá toochoose esta característica por sí mismo. En su lugar, un administrador de seguridad opts en su nombre y, a continuación, notifica a métodos de comprobación de tooregister para su cuenta. Si esta situación aplica tooyou, obtenga más información en [¿qué significa la autenticación multifactor Azure para mí](multi-factor-authentication-end-user.md).
+En cuentas profesionales o educativas, por lo habitual esta característica no tiene que elegirla. En cambio, es el administrador de seguridad el que tiene que suscribirse en su nombre y, después, le envía una notificación para que registre los métodos de comprobación de su cuenta. Si este escenario se aplica en su caso, obtenga información en [¿Qué relevancia tiene Azure Multi-Factor Authentication para mí?](multi-factor-authentication-end-user.md).
 
-Para una cuenta personal, deberá tooset configuraste la verificación por sí mismo. Si tiene una cuenta de Microsoft, esos pasos están disponibles en [Acerca de la verificación en dos pasos](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification). 
+En una cuenta personal, debe configurar la comprobación en dos pasos usted mismo. Si tiene una cuenta de Microsoft, esos pasos están disponibles en [Acerca de la verificación en dos pasos](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification).
 
-También puede utilizar Microsoft Authenticator Hola con cuentas de otros fabricantes. Puede llamar a Hola característica algo distinto de verificación en dos pasos, pero debe ser capaz de toofind en configuración de seguridad o inicio de sesión. 
+También puede usar Microsoft Authenticator con cuentas que no sean de Microsoft. Aunque es posible que llamen a la característica de comprobación en dos de otra manera, lo más seguro es que la encuentre en la configuración de seguridad o de inicio de sesión.
 
-## <a name="install-hello-app"></a>Instalar la aplicación hello
-está disponible para la aplicación de Microsoft Authenticator Hello [de Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), y [iOS](http://go.microsoft.com/fwlink/?Linkid=825073).
+## <a name="install-the-app"></a>Instalación de la aplicación
+La aplicación Microsoft Authenticator está disponible para [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072) e [IOS](http://go.microsoft.com/fwlink/?Linkid=825073).
 
-## <a name="add-accounts-toohello-app"></a>Agregar aplicación de cuentas toohello
-Para cada cuenta que desea que la aplicación de Microsoft Authenticator toohello tooadd, use uno de hello procedimientos siguientes:
+## <a name="add-accounts-to-the-app"></a>Incorporación de cuentas a la aplicación
+Siga uno de los procedimientos siguientes para cada cuenta que desee agregar a la aplicación Microsoft Authenticator:
 
-### <a name="add-a-personal-microsoft-account-toohello-app"></a>Agregar una aplicación de toohello de cuentas de Microsoft personal
+### <a name="add-a-personal-microsoft-account-to-the-app"></a>Incorporación de una cuenta Microsoft personal a la aplicación
 
-Para una cuenta Microsoft personal (uno que use toosign en tooOutlook.com, Xbox, Skype, etc.), todo lo que tiene toodo es iniciar sesión en la cuenta de tooyour en la aplicación de Microsoft Authenticator hello.
+Para una cuenta Microsoft personal (una que use para iniciar sesión en Outlook.com, Xbox, Skype, etc.), lo único que debe hacer es iniciar sesión en ella, en la aplicación Microsoft Authenticator.
 
-### <a name="add-a-work-or-school-account-toohello-app-using-hello-qr-code-scanner"></a>Agregar un trabajo o escuela cuenta toohello aplicación mediante el escáner de código de hello QR
-1. Vaya pantalla de configuración de comprobación de seguridad toohello.  Para obtener información acerca de cómo tooget toothis pantalla, consulte [cambiar la configuración de seguridad](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page).
-2. Casilla de verificación Hola junto demasiado**aplicación Authenticator** , a continuación, seleccione **configurar**.
+### <a name="add-a-work-or-school-account-to-the-app-using-the-qr-code-scanner"></a>Incorporación de una cuenta profesional o educativa a la aplicación con el escáner de códigos QR
+1. Vaya a la pantalla de configuración de comprobación de seguridad.  Para información sobre cómo ir a esta pantalla, consulte la sección sobre el [cambio de la configuración de seguridad](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page).
+2. Active la casilla situada junto a **Aplicación Authenticator** y luego seleccione **Configurar**.
 
-    ![botón configurar de Hello en pantalla de configuración de comprobación de seguridad de Hola](./media/authenticator-app-how-to/azureauthe.png)
+    ![Botón Configurar en la pantalla de configuración de la comprobación de seguridad](./media/authenticator-app-how-to/azureauthe.png)
 
     Aparecerá una pantalla con un código QR.
 
-    ![Pantalla que proporcione el código QR Hola](./media/authenticator-app-how-to/barcode2.png)
-3. Aplicación de Microsoft Authenticator de hello abierto. En hello **cuentas** pantalla, seleccione  **+** y, a continuación, especifique que desea tooadd una cuenta profesional o educativa.
-4. Utilice el código de hello QR de hello cámara tooscan y, a continuación, seleccione **realiza** pantalla de código de hello QR tooclose.
+    ![Pantalla que proporciona el código QR](./media/authenticator-app-how-to/barcode2.png)
+3. Abra la aplicación Microsoft Authenticator. En la pantalla **Cuentas**, seleccione **+** y especifique que quiere agregar una cuenta profesional o educativa.
+4. Utilice la cámara para digitalizar el código QR y seleccione **Listo** para cerrar la pantalla de código QR.
 
-    Si la cámara no funciona correctamente, puede [escribir código de hello QR y la dirección URL manualmente](#add-an-account-to-the-app-manually).
+    Si la cámara no funciona correctamente, puede [escribir manualmente la dirección URL y el código QR](#add-an-account-to-the-app-manually).
 
-5. Cuando la aplicación hello muestra el nombre de cuenta con un código de seis dígitos aparecen debajo de él, ya ha terminado. 
+5. Cuando la aplicación muestra el nombre de cuenta con un código de seis dígitos debajo de él, ya ha terminado.
 
     ![Pantalla Cuentas](./media/authenticator-app-how-to/accounts.png)
 
-### <a name="add-an-account-toohello-app-manually"></a>Agregar una aplicación de toohello de cuenta manualmente
-1. Vaya pantalla de configuración de comprobación de seguridad toohello.  Para obtener información acerca de cómo tooget toothis pantalla, consulte [cambiar la configuración de seguridad](multi-factor-authentication-end-user-manage-settings.md).
+### <a name="add-an-account-to-the-app-manually"></a>Incorporación manual de una cuenta a la aplicación
+1. Vaya a la pantalla de configuración de comprobación de seguridad.  Para información sobre cómo ir a esta pantalla, consulte la sección sobre el [cambio de la configuración de seguridad](multi-factor-authentication-end-user-manage-settings.md).
 2. Seleccione **Configurar**.
 
-    ![botón configurar de Hello en pantalla de configuración de comprobación de seguridad de Hola](./media/authenticator-app-how-to/azureauthe.png)
+    ![Botón Configurar en la pantalla de configuración de la comprobación de seguridad](./media/authenticator-app-how-to/azureauthe.png)
 
-    Aparecerá una pantalla con un código QR.  Tenga en cuenta el código de hello y la dirección URL.
+    Aparecerá una pantalla con un código QR.  Anote la dirección URL y el código.
 
-    ![Pantalla que proporciona el código QR hello y la dirección URL](./media/authenticator-app-how-to/barcode2.png)
-3. Aplicación de Microsoft Authenticator de hello abierto. En hello **cuentas** pantalla, seleccione  **+** y, a continuación, especifique que desea tooadd una cuenta profesional o educativa.
+    ![Pantalla que proporciona el código QR y la dirección URL](./media/authenticator-app-how-to/barcode2.png)
+3. Abra la aplicación Microsoft Authenticator. En la pantalla **Cuentas**, seleccione **+** y especifique que quiere agregar una cuenta profesional o educativa.
 
-4. En el analizador de hello, seleccione **escribe código manualmente**.
+4. En el digitalizador, elija **escribir el código manualmente**.
 
     ![Pantalla para digitalizar un código QR](./media/multi-factor-authentication-end-user-first-time/scan2.png)
-5. Escriba código de hello y la URL de hello en los cuadros adecuados de hello en la aplicación hello, a continuación, seleccione **finalizar**.
+5. En la aplicación, escriba el código y la dirección URL en los cuadros correspondientes y luego seleccione **Finalizar**.
 
     ![Pantalla para escribir el código y la dirección URL](./media/authenticator-app-how-to/manual.png)
 
-6. Cuando la aplicación hello muestra el nombre de cuenta con un código de seis dígitos aparecen debajo de él, ya ha terminado.
+6. Cuando la aplicación muestra el nombre de cuenta con un código de seis dígitos debajo de él, ya ha terminado.
 
     ![Pantalla Cuentas](./media/authenticator-app-how-to/accounts.png)
 
-### <a name="add-an-account-toohello-app-using-touch-id"></a>Agregar una aplicación de toohello cuenta usa Touch ID
-aplicación de Microsoft Authenticator Hello en iOS admite Touch Id.  La autenticación multifactor Azure permite a las organizaciones toorequire un PIN para dispositivos. Con Touch ID, los usuarios de iOS no es necesario tooenter un PIN. En su lugar, pueden digitalizar su huella y seleccionar **Aprobar**.
+### <a name="add-an-account-to-the-app-using-touch-id"></a>Incorporación de una cuenta a la aplicación con Touch ID
+La aplicación Microsoft Authenticator de iOS es compatible con Touch ID.  Azure Multi-Factor Authentication permite a las organizaciones pedir un PIN para los dispositivos. Con Touch ID, los usuarios de iOS no tienen por qué escribir un PIN. En su lugar, pueden digitalizar su huella y seleccionar **Aprobar**.
 
 Configurar Touch ID con Microsoft Authenticator es sencillo. Un PIN supone un reto de comprobación normal. Si el dispositivo es compatible con Touch ID, Microsoft Authenticator lo configura automáticamente para esa cuenta.
 
 ![Comprobación de la configuración de Touch ID](./media/authenticator-app-how-to/touchid1.png)
 
-Partir de ese punto en adelante, cuando esté necesario tooverify el inicio de sesión de, seleccione notificación de inserción de hello recibido y examinar su huella digital en lugar de escribir el código PIN.
+A partir de ese momento, cuando se requiera que compruebe el inicio de sesión, seleccione la notificación push recibida y digitalice la huella dactilar en lugar de escribir su PIN.
 
 ![Notificación push](./media/authenticator-app-how-to/touchid2.png)
 
-## <a name="use-hello-app-when-you-sign-in"></a>Usar una aplicación Hola al iniciar sesión
+## <a name="use-the-app-when-you-sign-in"></a>Uso de la aplicación al iniciar sesión
 
-Una vez que se agregue su cuenta de aplicación toohello, es posible que solicitadas toodo un toomake de comprobación de prueba que todo se ha configurado correctamente. Después de eso, habrá terminado. No es necesario toodo nada hasta que hello próxima vez inicie sesión.
+Después de que la cuenta se agregue a la aplicación, puede que se le solicite que realice una comprobación de prueba para asegurarse de que todo está configurado correctamente. Después de eso, habrá terminado. No es necesario hacer nada más hasta la próxima vez que inicie sesión.
 
-Si elige toouse códigos de comprobación en la aplicación hello, iniciar toosee usarlas en la página de inicio de Hola. Como cambian cada 30 segundos, siempre tendrá un código nuevo cuando lo necesite. Pero no es necesario toodo nada con ellos hasta que inicie sesión y son tooenter solicitada un código de comprobación.  
+Si eligió usar códigos de comprobación en la aplicación, comienza a verlos en la página principal. Como cambian cada 30 segundos, siempre tendrá un código nuevo cuando lo necesite. Pero no tiene que hacer nada con ellos hasta que inicie sesión y se le solicite que escriba un código de comprobación.  

@@ -1,6 +1,6 @@
 ---
-title: "aaaAdd almacenamiento en caché tooimprove rendimiento en la administración de API de Azure | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo cargan la latencia de Hola de tooimprove, el consumo de ancho de banda y el servicio web de las llamadas de servicio de administración de API."
+title: "Incorporación del almacenamiento en caché para mejorar el rendimiento en Azure API Management | Microsoft Docs"
+description: "Obtenga información acerca de cómo mejorar la latencia, el consumo de ancho de banda y la carga de servicios web para las llamadas de servicio de Administración de API."
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 056ab7cf788218327e30bd5c028b76e3b1977fb0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 59c595f0d5ce849f44c46fdb6cab0b44d35fffa0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="add-caching-tooimprove-performance-in-azure-api-management"></a>Agregar almacenamiento en caché de tooimprove de rendimiento en la administración de API de Azure
+# <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Incorporación del almacenamiento en caché para mejorar el rendimiento en Administración de API de Azure
 En Administración de API, las operaciones se pueden configurar para el almacenamiento en caché de respuestas. El almacenamiento en caché de respuestas puede reducir significativamente la latencia de la API, el consumo de ancho de banda y la carga del servicio web en cuanto a datos que no cambian con frecuencia.
 
-Esta guía le mostrará cómo tooadd respuesta configurar directivas para las operaciones de API de eco de ejemplo de Hola y almacenamiento en caché de la API. A continuación, puede llamar a operación hello en la caché de tooverify portal para desarrolladores de hello en acción.
+En esta guía se muestra cómo agregar el almacenamiento en caché de respuestas de la API y cómo configurar directivas para las operaciones de la API Eco de ejemplo. Después, puede llamar a la operación desde el portal para desarrolladores para comprobar el almacenamiento en caché en acción.
 
 > [!NOTE]
 > Para obtener información sobre el almacenamiento en caché de los elementos por parte de la clave mediante expresiones de directiva, consulte [Custom caching in Azure API Management](api-management-sample-cache-by-key.md).
@@ -31,54 +31,54 @@ Esta guía le mostrará cómo tooadd respuesta configurar directivas para las op
 > 
 
 ## <a name="prerequisites"></a>Requisitos previos
-Para los pasos siguiente hello en esta guía, debe tener una instancia de servicio de administración de API con una API y un producto configurado. Si aún no ha creado una instancia de servicio de administración de API, consulte [crear una instancia de servicio de administración de API] [ Create an API Management service instance] en hello [Introducción a administración de API de Azure] [ Get started with Azure API Management] tutorial.
+Antes de seguir los pasos de esta guía, debe tener una instancia del servicio Administración de API con una API y un producto configurados. Si aún no ha creado ninguna instancia del servicio de API Management, consulte [Creación de una instancia del servicio API Management][Create an API Management service instance] en el tutorial [Introducción a Azure API Management][Get started with Azure API Management].
 
 ## <a name="configure-caching"></a>Configuración de una operación para almacenamiento en caché
-En este paso, revisará Hola almacenamiento en caché de configuración de hello **obtener recursos (en caché)** el funcionamiento de ejemplo de Hola a API de eco.
+En este paso, se revisará la configuración del almacenamiento en caché de la operación **Recurso GET (en caché)** de la API Eco de ejemplo.
 
 > [!NOTE]
-> Cada instancia de servicio de administración de API viene preconfigurado con una API de eco que se pueden tooexperiment usado con y obtener información acerca de la API de administración. Para más información, consulte [Introducción a Azure API Management][Get started with Azure API Management].
+> Cada instancia del servicio Administración de API viene previamente configurada con una API Eco que se puede usar para experimentar con Administración de API y aprender a usarlo. Para más información, consulte [Introducción a Azure API Management][Get started with Azure API Management].
 > 
 > 
 
-tooget iniciado, haga clic en **portal para desarrolladores de** Hola Portal de Azure para el servicio de administración de API. Esto le llevará toohello portal para desarrolladores de administración de API.
+Para comenzar, haga clic en **Portal para editores** en Azure Portal para el servicio API Management. De este modo, se abre el portal del publicador de Administración de API.
 
 ![Portal del publicador][api-management-management-console]
 
-Haga clic en **API** de hello **administración de API** menú Hola izquierda y, a continuación, haga clic en **API de eco**.
+Haga clic en **API** en el menú **Administración de API** de la izquierda y, a continuación, en **Echo API** (API Eco).
 
 ![API eco][api-management-echo-api]
 
-Haga clic en hello **Operations** ficha y, a continuación, haga clic en hello **obtener recursos (en caché)** operación de hello **Operations** lista.
+Seleccione la pestaña**Operaciones** y haga clic en la operación **GET Resource (cached)** (Recurso GET (en caché) en la lista **Operaciones**.
 
 ![Echo API operations][api-management-echo-api-operations]
 
-Haga clic en hello **Caching** Hola de tooview ficha almacenamiento en caché de configuración para esta operación.
+Haga clic en la pestaña **Almacenamiento en caché** para ver la configuración del almacenamiento en caché de esta operación.
 
 ![Caching tab][api-management-caching-tab]
 
-tooenable el almacenamiento en caché para una operación, seleccione hello **habilitar** casilla de verificación. En este ejemplo, el almacenamiento en caché está habilitado.
+Para habilitar el almacenamiento en caché en una operación, active la casilla **Habilitar** . En este ejemplo, el almacenamiento en caché está habilitado.
 
-Con una clave de cada respuesta de la operación, basándose en valores Hola Hola **variar por parámetros de cadena de consulta** y **variar por encabezados** campos. Si desea toocache varias respuestas en función de los parámetros de cadena de consulta o los encabezados, puede configurarlos en estos dos campos.
+Todas las respuestas de la operación se codifican según los valores de los campos **Variar por parámetros de cadena de consulta** y **Variar por encabezados**. Si desea almacenar en caché varias respuestas basadas en parámetros de la cadena de consulta o encabezados, puede configurarlas en estos dos campos.
 
-**Duración** especifica el intervalo de expiración de Hola de respuestas de hello en caché. En este ejemplo, es el intervalo de saludo **3600** segundos, que es la hora tooone equivalente.
+**Duración** especifica el intervalo de expiración de las respuestas almacenadas en caché. En este ejemplo, el intervalo es **3600** segundos, lo que equivale a una hora.
 
-Usar almacenamiento en caché de configuración en este ejemplo de Hola, Hola primer toohello de solicitud **obtener recursos (en caché)** operación devuelve una respuesta de servicio de back-end de Hola. Esta respuesta se almacenarán en caché, ordenados por hello especificada parámetros de cadena de encabezados y la consulta. Las llamadas subsiguientes operación toohello, con la coincidencia de parámetros, tendrá hello en memoria caché respuesta devuelta, hasta que expire el intervalo de duración de caché de saludo.
+Con la configuración de almacenamiento en caché de este ejemplo, la primera solicitud de la operación **Recurso GET (en caché)** devolverá una respuesta del servicio back-end. Esta respuesta se almacenará en caché, con clave especificada mediante encabezados y parámetros de la cadena de consulta. Las siguientes llamadas a la operación, con parámetros coincidentes, devolverán la respuesta almacenada en caché hasta que el intervalo de duración en la caché haya expirado.
 
-## <a name="caching-policies"></a>Hola revisión almacenamiento en caché de directivas
-En este paso, revise Hola almacenamiento en caché de configuración de hello **obtener recursos (en caché)** el funcionamiento de ejemplo de Hola a API de eco.
+## <a name="caching-policies"></a>Revisión de las directivas de almacenamiento en caché
+En este paso, se revisa la configuración del almacenamiento en caché de la operación **Recurso GET (en caché)** de la API Eco de ejemplo.
 
-Al almacenamiento en caché se configura para una operación en hello **Caching** ficha almacenamiento en caché de directivas se agregan para la operación de Hola. Estas directivas pueden verse y modificarse en el editor de directiva de Hola.
+Cuando se haya definido la configuración de almacenamiento en caché para una operación en la pestaña **Caching** , se agregarán las directivas de almacenamiento en caché para la operación. Estas directivas se pueden ver y editar en el editor de directivas.
 
-Haga clic en **directivas** de hello **administración de API** menú Hola izquierda y, a continuación, seleccione **API eco / obtener los recursos (en caché)** de hello **operación**lista desplegable.
+Haga clic en **Directivas** en el menú **Administración de API** de la izquierda y seleccione **Echo API/GET Resource (cached)** [API Eco/Recurso GET (en caché)] en la lista desplegable **Operación**.
 
 ![Policy scope operation][api-management-operation-dropdown]
 
-Esto muestra las directivas de Hola para esta operación en el editor de directiva de Hola.
+Se muestran las directivas para esta operación en el editor de directivas.
 
 ![API Management policy editor][api-management-policy-editor]
 
-definición de la directiva de Hola para esta operación incluye hello las directivas que definen Hola configuración de caché que se revisaron con hello **Caching** ficha en el paso anterior de Hola.
+La definición de directiva para esta operación incluye las directivas que definen la configuración de almacenamiento en caché que se revisaron con la pestaña **Caching** en el paso anterior.
 
 ```xml
 <policies>
@@ -98,49 +98,49 @@ definición de la directiva de Hola para esta operación incluye hello las direc
 ```
 
 > [!NOTE]
-> Almacenamiento en caché de directivas en el editor de directiva de Hola de toohello de los cambios realizados se reflejarán en hello **Caching** pestaña de una operación y viceversa.
+> Los cambios efectuados en las directivas de almacenamiento en caché en el Editor de directivas se reflejarán en la pestaña **Almacenamiento en caché** de una operación, y viceversa.
 > 
 > 
 
-## <a name="test-operation"></a>Llamar a una operación y probar el almacenamiento en caché de Hola
-Hola toosee almacenamiento en caché en acción, podemos llamar operación Hola desde portal para desarrolladores de Hola. Haga clic en **portal para desarrolladores de** en el menú superior derecho de Hola.
+## <a name="test-operation"></a>Llamada a una operación y prueba del almacenamiento en caché
+Para ver cómo funciona el almacenamiento en caché, podemos llamar a la operación desde el portal para desarrolladores. Haga clic en **Portal para desarrolladores** en el menú superior derecho.
 
 ![portal para desarrolladores][api-management-developer-portal-menu]
 
-Haga clic en **API** en Hola menú superior y, a continuación, seleccione **API de eco**.
+Haga clic en **API** en el menú superior y seleccione **Echo API** (API Eco).
 
 ![API eco][api-management-apis-echo-api]
 
-> Si tiene sólo una API configurada o cuenta tooyour visible, a continuación, haga clic en las API le lleva directamente operaciones toohello para la API.
+> Si solamente tiene una API configurada o visible en su cuenta, al hacer clic en API irá directamente a las operaciones de dicha API.
 > 
 > 
 
-Seleccione hello **obtener recursos (en caché)** operación y, a continuación, haga clic en **abrir la consola de**.
+Seleccione la operación **GET Resource (cached)** [Recurso GET (en caché)] y, a continuación, haga clic en **Abrir consola**.
 
 ![Open console][api-management-open-console]
 
-Hola consola permite operaciones de tooinvoke directamente desde el portal para desarrolladores de Hola.
+La consola permite invocar operaciones directamente desde el portal para desarrolladores.
 
 ![Consola][api-management-console]
 
-Mantener valores predeterminados de Hola para **param1** y **param2**.
+Mantenga los valores predeterminados de **param1** y **param2**.
 
-Seleccione Hola clave deseado de hello **clave de suscripción** lista desplegable. Si su cuenta tiene solo una suscripción, ya estará seleccionada.
+Seleccione la clave que desee en la lista desplegable **subscription-key** . Si su cuenta tiene solo una suscripción, ya estará seleccionada.
 
-Escriba **sampleheader:value1** en hello **encabezados de solicitud** cuadro de texto.
+Escriba **sampleheader:value1** en el cuadro de texto **Encabezados de solicitud**.
 
-Haga clic en **HTTP Get** y tome nota de hello encabezados de respuesta.
+Haga clic en **HTTP Get** y tome nota de los encabezados de respuesta.
 
-Escriba **sampleheader:value2** en hello **encabezados de solicitud** cuadro de texto y, a continuación, haga clic en **HTTP Get**.
+Escriba **sampleheader:value2** en el cuadro de texto **Encabezados de solicitud** y haga clic en **HTTP Get**.
 
-Tenga en cuenta ese valor Hola de **sampleheader** sigue siendo **value1** en respuesta Hola. Pruebe algunos valores diferentes y tenga en cuenta que Hola respuesta almacenada en caché de la primera llamada de Hola se devuelve.
+Observe que el valor de **sampleheader** sigue siendo **value1** en la respuesta. Pruebe algunos valores distintos y observe que se devuelve la respuesta almacenada en caché.
 
-Escriba **25** en hello **param2** campo y, a continuación, haga clic en **HTTP Get**.
+Escriba **25** en el campo **param2** y, después, haga clic en **HTTP Get**.
 
-Tenga en cuenta ese valor Hola de **sampleheader** en hello respuesta es ahora **value2**. Porque los resultados de la operación de hello están organizados por cadena de consulta, no ha devuelto la respuesta almacenada en caché de hello anterior.
+Observe que el valor de **sampleheader** de la respuesta es ahora **value2**. Debido a que los resultados de la operación incluyen una clave especificada mediante la cadena de consulta, no se devolvió la anterior respuesta almacenada en caché.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para obtener más información sobre el almacenamiento en caché de directivas, consulte [almacenamiento en caché de directivas de] [ Caching policies] en hello [referencia de directiva de administración de API][API Management policy reference].
+* Para más información sobre las directivas de almacenamiento en caché, consulte [Caching policies][Caching policies] (Directivas de almacenamiento en caché) en [API Management policy reference][API Management policy reference] (Referencia de la directiva de API Management).
 * Para obtener información sobre el almacenamiento en caché de los elementos por parte de la clave mediante expresiones de directiva, consulte [Custom caching in Azure API Management](api-management-sample-cache-by-key.md).
 
 [api-management-management-console]: ./media/api-management-howto-cache/api-management-management-console.png
@@ -155,10 +155,10 @@ Tenga en cuenta ese valor Hola de **sampleheader** en hello respuesta es ahora *
 [api-management-console]: ./media/api-management-howto-cache/api-management-console.png
 
 
-[How tooadd operations tooan API]: api-management-howto-add-operations.md
-[How tooadd and publish a product]: api-management-howto-add-products.md
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to add and publish a product]: api-management-howto-add-products.md
 [Monitoring and analytics]: api-management-monitoring.md
-[Add APIs tooa product]: api-management-howto-add-products.md#add-apis
+[Add APIs to a product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
 [Get started with Azure API Management]: api-management-get-started.md
 
@@ -168,6 +168,6 @@ Tenga en cuenta ese valor Hola de **sampleheader** en hello respuesta es ahora *
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance
 
 [Configure an operation for caching]: #configure-caching
-[Review hello caching policies]: #caching-policies
-[Call an operation and test hello caching]: #test-operation
+[Review the caching policies]: #caching-policies
+[Call an operation and test the caching]: #test-operation
 [Next steps]: #next-steps

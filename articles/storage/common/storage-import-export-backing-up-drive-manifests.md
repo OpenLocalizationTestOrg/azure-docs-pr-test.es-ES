@@ -1,6 +1,6 @@
 ---
-title: "aaaBacking los manifiestos de unidad de importación y exportación de Azure | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toohave la unidad de manifiestos para servicio de importación y exportación de Microsoft Azure Hola copia automáticamente."
+title: "Realización de copias de seguridad de los manifiestos de las unidades de Azure Import/Export | Microsoft Docs"
+description: "Descubra cómo conseguir que se realicen copias de seguridad automáticas de los manifiestos de las unidades del servicio Microsoft Azure Import/Export."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: f48b97a2cce62714aace2b30a393305202c7ecd9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 33eb8e1eea8f8aa7b79ef3e54f2b1ed88dc794ae
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="backing-up-drive-manifests-for-azure-importexport-jobs"></a>Realización de copias de seguridad de los manifiestos de los trabajos de Azure Import/Export
 
-Manifiestos de unidad pueden automáticamente realizar copias de seguridad tooblobs establecer hello `BackupDriveManifest` propiedad demasiado`true` en hello [Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) o [actualizar propiedades del trabajo](/rest/api/storageimportexport/jobs#Jobs_Update) operaciones de API de REST. De forma predeterminada, el Hola manifiestos de unidad no se copian. Hola unidad manifiesto las copias de seguridad se almacenan como blobs en bloques en un contenedor dentro de la cuenta de almacenamiento de hello asociada con el trabajo de Hola. De forma predeterminada, es el nombre del contenedor de hello `waimportexport`, pero puede especificar un nombre diferente en hello `DiagnosticsPath` propiedad al llamar a hello `Put Job` o `Update Job Properties` las operaciones. Hello blob de manifiesto de copia de seguridad son Hola siguiendo el formato: `waies/jobname_driveid_timestamp_manifest.xml`.
+Es posible realizar copias de seguridad automáticas de los manifiestos de las unidades en blobs estableciendo la propiedad `BackupDriveManifest` en `true` en las operaciones de API de REST [Put Job](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) (Poner trabajo) o [Update Job Properties](/rest/api/storageimportexport/jobs#Jobs_Update) (Actualizar propiedades del trabajo). De forma predeterminada, no se realizan copias de seguridad de los manifiestos de las unidades. Las copias de seguridad de los manifiestos de las unidades se almacenan como blobs en bloques en un contenedor dentro de la cuenta de almacenamiento asociada al trabajo. De forma predeterminada, el nombre del contenedor es `waimportexport`, pero puede especificar uno distinto en la propiedad `DiagnosticsPath` al llamar a las operaciones `Put Job` o `Update Job Properties`. Los nombres de los blobs de manifiestos de copia de seguridad presentan el siguiente formato: `waies/jobname_driveid_timestamp_manifest.xml`.
 
- Puede recuperar Hola URI de la unidad de copia de seguridad de Hola manifiestos para un trabajo que realiza la llamada hello [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) operación. blob de Hello URI se devuelve en hello `ManifestUri` propiedad para cada unidad.
+ Puede recuperar el identificador URI de los manifiestos de las unidades de copia de seguridad de un trabajo llamando a la operación [Obtener trabajo](/rest/api/storageimportexport/jobs#Jobs_Get). El identificador URI del blob se devuelve en la propiedad `ManifestUri` de cada unidad.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* [Usar servicio de importación y exportación de hello API de REST](storage-import-export-using-the-rest-api.md)
+* [Uso de la API de REST del servicio Azure Import/Export](storage-import-export-using-the-rest-api.md)

@@ -14,37 +14,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: bcfc710861b19d8f86f094ced0d1c691e0911f08
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: cbf8f729d0ebfb271bb0d8702ac043442b42c262
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="more-details-about-features-in-preview"></a>Más detalles sobre las características de vista previa
-Este tema describe cómo toouse características actualmente en vista previa.
+En este tema se describe cómo usar las características que actualmente forman parte de la versión preliminar.
 
 ## <a name="group-writeback"></a>Escritura diferida de grupos
-opción de Hola para reescritura de grupos de características opcionales permite toowriteback **grupos de Office 365** tooa bosque con Exchange instalado. Se trata de un grupo que siempre se controla en la nube de Hola. Si tiene Exchange local, a continuación, puede escribir nuevo estos grupos tooon local para que los usuarios con un buzón de Exchange local pueden enviar y recibir mensajes de correo electrónico de estos grupos.
+La opción para la escritura diferida de grupos en las características opcionales le permitirá escribir en diferido **Grupos de Office 365** en un bosque con Exchange instalado. Se trata de un tipo de grupo que siempre se controla en la nube. Si dispone de Exchange local, puede reescribir estos grupos en el entono local, por lo que los usuarios con un buzón de Exchange local pueden enviar y recibir correos electrónicos de ellos.
 
-Para obtener más información acerca de los grupos de Office 365 y cómo toouse les pueden encontrarse [aquí](http://aka.ms/O365g).
+Puede encontrar más información sobre los grupos de Office 365 y cómo utilizarlos [aquí](http://aka.ms/O365g).
 
-Este grupo de Office 365 se representará como un grupo de distribución en AD DS local. El servidor de Exchange local debe estar en la actualización acumulativa de Exchange 2013 8 (publicada en marzo de 2015) o Exchange 2016 toorecognize este nuevo tipo de grupo.
+Este grupo de Office 365 se representará como un grupo de distribución en AD DS local. El servidor de Exchange local debe tener la actualización acumulativa 8 de Exchange 2013 (publicada en marzo de 2015) o Exchange 2016 para reconocer este nuevo tipo de grupo.
 
-**Notas durante la vista previa de Hola**
+**Notas durante la vista previa**
 
-* atributo de libreta de direcciones Hola actualmente no se rellena en la vista previa de Hola. Sin este atributo, grupo de hello no está visible en hello GAL. Hola toopopulate de manera más fácil este atributo es el cmdlet de PowerShell de Exchange de hello toouse `update-recipient`.
-* Solo bosques con el esquema de Exchange Hola constituyen destinos válidos para los grupos. Si se ha detectado ningún cambio, a continuación, reescritura de grupos no es posible tooenable.
-* Actualmente solo se admiten las implementaciones de organizaciones de Exchange de un solo bosque. Si tiene más de una organización de Exchange en local, a continuación, necesita una local GALSync solución para estos tooappear grupos en los otros bosques.
-* característica de reescritura de grupos de Hello no controla los grupos de seguridad o grupos de distribución.
+* En la vista previa no se rellena actualmente el atributo de libreta de direcciones. Sin este atributo, el grupo no estará visible en la GAL. La manera más fácil de rellenar este atributo es usar el cmdlet de Exchange PowerShell `update-recipient`.
+* Solo los bosques con el esquema de Exchange son destinos válidos para los grupos. Si no se ha detectado ningún Exchange, no se podrá habilitar la reescritura de grupos.
+* Actualmente solo se admiten las implementaciones de organizaciones de Exchange de un solo bosque. Si tiene más de una organización de Exchange local, necesitará una solución de GALSync local para que estos grupos aparezcan en los demás bosques.
+* La característica Reescritura de grupos no controla actualmente los grupos de seguridad ni los grupos de distribución.
 
 > [!NOTE]
-> Un tooAzure de suscripción AD Premium es necesario para la reescritura de grupos.
+> Se necesita una suscripción a Azure AD Premium para la escritura diferida de grupos.
 > 
 >
 
 ## <a name="user-writeback"></a>Reescritura de usuarios
 > [!IMPORTANT]
-> Hello característica de vista previa de reescritura de usuario se quitó en tooAzure de actualización de agosto de 2015 Hola AD Connect. Si la ha habilitado, debería deshabilitarla.
+> La característica en vista previa de escritura diferida de usuario, se quitó en la actualización de agosto de 2015 a Azure AD Connect. Si la ha habilitado, debería deshabilitarla.
 >
 >
 

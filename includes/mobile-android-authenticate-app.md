@@ -1,7 +1,7 @@
 
-1. Abra el proyecto de hello en Android Studio.
+1. Abra el proyecto en Android Studio.
 
-2. En **el Explorador de proyectos** en Android Studio, abra el archivo de ToDoActivity.java de Hola y agregue Hola siguiendo las instrucciones de importación:
+2. En el **Explorador de proyectos** en Android Studio, abra el archivo ToDoActivity.java y agregue las siguientes instrucciones de importación:
 
         import java.util.concurrent.ExecutionException;
         import java.util.concurrent.atomic.AtomicBoolean;
@@ -13,13 +13,13 @@
         import com.microsoft.windowsazure.mobileservices.authentication.MobileServiceAuthenticationProvider;
         import com.microsoft.windowsazure.mobileservices.authentication.MobileServiceUser;
 
-3. Agregar Hola siguiendo el método toohello **ToDoActivity** clase:
+3. Agregue el método siguiente a la clase **TodoActivity** :
 
-        // You can choose any unique number here toodifferentiate auth providers from each other. Note this is hello same code at login() and onActivityResult().
+        // You can choose any unique number here to differentiate auth providers from each other. Note this is the same code at login() and onActivityResult().
         public static final int GOOGLE_LOGIN_REQUEST_CODE = 1;
 
         private void authenticate() {
-            // Login using hello Google provider.
+            // Login using the Google provider.
             mClient.login("Google", "{url_scheme_of_your_app}", GOOGLE_LOGIN_REQUEST_CODE);
         }
 
@@ -27,7 +27,7 @@
         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
             // When request completes
             if (resultCode == RESULT_OK) {
-                // Check hello request code matches hello one we send in hello login request
+                // Check the request code matches the one we send in the login request
                 if (requestCode == GOOGLE_LOGIN_REQUEST_CODE) {
                     MobileServiceActivityResult result = mClient.onActivityResult(data);
                     if (result.isLoggedIn()) {
@@ -35,7 +35,7 @@
                         createAndShowDialog(String.format("You are now logged in - %1$2s", mClient.getCurrentUser().getUserId()), "Success");
                         createTable();
                     } else {
-                        // login failed, check hello error message
+                        // login failed, check the error message
                         String errorMessage = result.getErrorMessage();
                         createAndShowDialog(errorMessage, "Error");
                     }
@@ -43,36 +43,36 @@
             }
         }
 
-    Este código crea un Hola de toohandle método proceso de autenticación de Google. Un cuadro de diálogo muestra el identificador hello Hola autenticado. Solo puede continuar si la autenticación es correcta.
+    Con este código, se crea un método para administrar el proceso de autenticación de Google. Aparece un cuadro de diálogo que muestra el identificador del usuario autenticado. Solo puede continuar si la autenticación es correcta.
 
     > [!NOTE]
-    > Si está utilizando un proveedor de identidades distinto de Google, cambiar valor Hola pasado toohello **inicio de sesión** tooone de método de hello siguientes valores: _cuenta de Microsoft_, _Facebook_, _Twitter_, o _windowsazureactivedirectory_.
+    > Si usa un proveedor de identidades que no sea Google, cambie el valor pasado al método **login** a uno de los siguientes: _MicrosoftAccount_, _Facebook_, _Twitter_ o _windowsazureactivedirectory_.
 
-4. Hola **onCreate** método, agregue Hola siguiente línea de código después de código de hello que cree instancias de hello `MobileServiceClient` objeto.
+4. En el método **onCreate**, agregue la siguiente línea de código después del código que crea una instancia del objeto `MobileServiceClient`.
 
         authenticate();
 
-    Esta llamada inicia el proceso de autenticación de Hola.
+    De este modo se llama al proceso de autenticación.
 
-5. Hola restantes código después de mover `authenticate();` en hello **onCreate** método tooa nueva **createTable** método:
+5. Mueva el código restante situado después de `authenticate();` en el método **onCreate** a un nuevo método **createTable**:
 
         private void createTable() {
 
-            // Get hello table instance toouse.
+            // Get the table instance to use.
             mToDoTable = mClient.getTable(ToDoItem.class);
 
             mTextNewToDo = (EditText) findViewById(R.id.textNewToDo);
 
-            // Create an adapter toobind hello items with hello view.
+            // Create an adapter to bind the items with the view.
             mAdapter = new ToDoItemAdapter(this, R.layout.row_list_to_do);
             ListView listViewToDo = (ListView) findViewById(R.id.listViewToDo);
             listViewToDo.setAdapter(mAdapter);
 
-            // Load hello items from Azure.
+            // Load the items from Azure.
             refreshItemsFromTable();
         }
 
-6. tooensure redirección funciona según lo esperado, agrega Hola siguiente fragmento de código de _RedirectUrlActivity_ too_AndroidManifest.xml_:
+6. Para asegurarse de que el redireccionamiento funcione, agregue el siguiente fragmento de código de _RedirectUrlActivity_ a _AndroidManifest.xml_:
 
         <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity">
             <intent-filter>
@@ -84,7 +84,7 @@
             </intent-filter>
         </activity>
 
-7. Agregar redirectUriScheme too_build.gradle_ de la aplicación Android.
+7. Agregue redirectUriScheme a _build.gradle_ de la aplicación Android.
 
         android {
             buildTypes {
@@ -99,13 +99,13 @@
             }
         }
 
-8. Agregar dependencias de toohello com.android.support:customtabs:23.0.1 en su build.gradle:
+8. Agregue com.android.support:customtabs:23.0.1 a las dependencias de build.gradle:
 
       dependencies {        // ...        compile 'com.android.support:customtabs:23.0.1'    }
 
-9. De hello **ejecutar** menú, haga clic en **ejecutar aplicación** toostart Hola aplicaciones e inicie sesión con su proveedor de identidades elegido.
+9. En el menú **Ejecutar**, haga clic en **Ejecutar aplicación** para iniciar la aplicación e inicie sesión con el proveedor de identidades que haya elegido.
 
 > [!WARNING]
-> Hola menciona el esquema de dirección URL distingue mayúsculas de minúsculas.  Asegúrese de que todas las apariciones de `{url_scheme_of_you_app}` uso Hola mismo caso.
+> El esquema de dirección URL mencionado distingue mayúsculas de minúsculas.  Asegúrese de que todas las apariciones de `{url_scheme_of_you_app}` usen las mayúsculas y minúsculas del mismo modo.
 
-Cuando se iniciado sesión correctamente, debe ejecutar la aplicación hello sin errores y debe tener el servicio back-end de tooquery capaz de Hola y realizar actualizaciones toodata.
+Si ha iniciado sesión correctamente, la aplicación se ejecutará sin errores y deberá poder consultar el servicio back-end y realizar actualizaciones en los datos.

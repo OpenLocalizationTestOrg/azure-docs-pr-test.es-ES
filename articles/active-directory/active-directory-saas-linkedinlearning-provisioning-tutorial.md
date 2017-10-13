@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Configuración de LinkedIn Learning para el aprovisionamiento automático de usuarios con Azure Active Directory | Microsoft Docs"
-description: "Obtenga información acerca de cómo tooconfigure Azure Active Directory tooautomatically aprovisionar y eliminación de aprovisionar cuentas de usuario tooLinkedIn de aprendizaje."
+description: "Aprenda a configurar Azure Active Directory para aprovisionar y cancelar el aprovisionamiento de cuentas de usuario de LinkedIn Learning automáticamente."
 services: active-directory
 documentationcenter: 
 author: asmalser-msft
@@ -14,110 +14,110 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: asmalser-msft
-ms.openlocfilehash: e0503e09ab384723ffb73d6ef1df8be6abfc9294
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5eb2b1594eedb2a135d7b8cd501a33d8264e136b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-configuring-linkedin-learning-for-automatic-user-provisioning"></a>Tutorial: Configuración de LinkedIn Learning para el aprovisionamiento automático de usuarios
 
 
-Hola objetivo de este tutorial es tooshow Hola pasos que debe tooperform en LinkedIn aprendizaje y Azure AD tooautomatically aprovisionar y eliminación de aprovisionar cuentas de usuario de Azure AD tooLinkedIn de aprendizaje. 
+El objetivo de este tutorial es explicar los pasos que debe realizar en LinkedIn Learning y Azure AD para aprovisionar y cancelar el aprovisionamiento de cuentas de usuario de Azure AD para LinkedIn Learning automáticamente. 
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-escenario de Hello descrito en este tutorial se da por supuesto que ya tiene Hola siguientes elementos:
+En la situación descrita en este tutorial se supone que ya cuenta con los elementos siguientes:
 
 *   Un inquilino de Azure Active Directory
 *   Un inquilino de LinkedIn Learning 
-*   Una cuenta de administrador en el aprendizaje de LinkedIn con acceso toohello centro de cuentas de LinkedIn
+*   Una cuenta de administrador en LinkedIn Learning con acceso al Centro de cuentas de LinkedIn
 
 > [!NOTE]
-> Azure Active Directory se integra con el aprendizaje de LinkedIn con hello [SCIM](http://www.simplecloud.info/) protocolo.
+> Azure Active Directory se integra con LinkedIn Learning mediante el protocolo [SCIM](http://www.simplecloud.info/).
 
-## <a name="assigning-users-toolinkedin-learning"></a>Asignar usuarios tooLinkedIn de aprendizaje
+## <a name="assigning-users-to-linkedin-learning"></a>Asignación de usuarios a LinkedIn Learning
 
-Azure Active Directory utiliza un concepto que se denomina toodetermine "asignaciones" que los usuarios deben recibir acceso tooselected aplicaciones. En el contexto de Hola de aprovisionamiento de cuentas de usuario automática, se sincronizarán sólo los usuarios de Hola y grupos que se han "asignados" tooan aplicación en Azure AD. 
+Azure Active Directory usa un concepto que se denomina "asignaciones" para determinar qué usuarios deben recibir acceso a determinadas aplicaciones. En el contexto de aprovisionamiento de cuentas de usuario automático, solo se sincronizarán los usuarios y grupos que se han "asignado" a una aplicación de Azure AD. 
 
-Antes de configurar y habilitar el aprovisionamiento del servicio de hello, necesitará toodecide lo que los usuarios o grupos en Azure AD representan a usuarios de Hola que necesitan tener acceso a tooLinkedIn de aprendizaje. Una vez decidido, puede asignar estas tooLinkedIn usuarios aprendizaje siguiendo las instrucciones de hello aquí:
+Antes de configurar y habilitar el servicio de aprovisionamiento, debe decidir qué usuarios o grupos de Azure AD representan a los usuarios que necesitan acceder a LinkedIn Learning. Una vez decidido, puede asignar estos usuarios a LinkedIn Learning siguiendo estas instrucciones:
 
-[Asignar un usuario o grupo tooan su aplicación empresarial](active-directory-coreapps-assign-user-azure-portal.md)
+[Asignar un usuario o grupo a una aplicación empresarial](active-directory-coreapps-assign-user-azure-portal.md)
 
-### <a name="important-tips-for-assigning-users-toolinkedin-learning"></a>Sugerencias importantes para asignar usuarios tooLinkedIn de aprendizaje
+### <a name="important-tips-for-assigning-users-to-linkedin-learning"></a>Sugerencias importantes para asignar usuarios a LinkedIn Learning
 
-*   Se recomienda que un único usuario de Azure AD asignarse hello tootest tooLinkedIn aprendizaje que configuración de aprovisionamiento. Más tarde, se pueden asignar otros usuarios o grupos.
+*   Se recomienda asignar un solo usuario de Azure AD a LinkedIn Learning para probar la configuración del aprovisionamiento. Más tarde, se pueden asignar otros usuarios o grupos.
 
-*   Al asignar un usuario tooLinkedIn de aprendizaje, debe seleccionar hello **usuario** rol en el cuadro de diálogo de hello asignación. rol de "Acceso predeterminado" Hello no funciona para el aprovisionamiento.
+*   Al asignar un usuario a LinkedIn Learning, debe seleccionar el rol **Usuario** en el cuadro de diálogo de asignación. El rol "Acceso predeterminado" no funciona para realizar el aprovisionamiento.
 
 
-## <a name="configuring-user-provisioning-toolinkedin-learning"></a>Usuario que realiza configuración tooLinkedIn el aprovisionamiento de aprendizaje
+## <a name="configuring-user-provisioning-to-linkedin-learning"></a>Configuración del aprovisionamiento de usuarios en LinkedIn Learning
 
-Esta sección le guía a través de conexión de API de aprovisionamiento de cuentas de usuario del su aprendizaje tooLinkedIn de Azure AD SCIM y configurar hello toocreate de servicio de aprovisionamiento, actualizar y deshabilitar cuentas de usuario asignado en el aprendizaje de LinkedIn en función de usuario y de grupo asignación de Azure AD.
+Esta sección le guía a través de los pasos necesarios para conectar la API de aprovisionamiento de su cuenta de usuario de SCIM de LinkedIn Learning, así como para configurar el servicio de aprovisionamiento con el fin de crear, actualizar y deshabilitar cuentas de usuario asignadas de LinkedIn Learning en función de la asignación de grupos y usuarios en Azure AD.
 
 > [!TIP]
-> También puede elegir tooenabled basado en SAML Single Sign-On para el aprendizaje de LinkedIn, siguiendo las instrucciones Hola proporcionadas en [portal de Azure](https://portal.azure.com). El inicio de sesión único puede configurarse independientemente del aprovisionamiento automático, aunque estas dos características se complementan entre sí.
+> También puede decidir habilitar el inicio de sesión único basado en SAML para LinkedIn Learning siguiendo las instrucciones de [Azure Portal](https://portal.azure.com). El inicio de sesión único puede configurarse independientemente del aprovisionamiento automático, aunque estas dos características se complementan entre sí.
 
 
-### <a name="tooconfigure-automatic-user-account-provisioning-toolinkedin-learning-in-azure-ad"></a>cuenta de usuario automática de tooconfigure tooLinkedIn de aprovisionamiento de aprendizaje de Azure AD:
+### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-learning-in-azure-ad"></a>Para configurar el aprovisionamiento de cuentas de usuario automático para LinkedIn Learning en Azure AD, siga estos pasos:
 
 
-primer paso de Hello es tooretrieve el token de acceso de LinkedIn. Si es administrador de organización, puede aprovisionar automáticamente un token de acceso. En el centro de cuentas, vaya demasiado**configuración &gt; configuración Global** hello abierto y **el programa de instalación de SCIM** panel.
+El primer paso consiste en recuperar el token de acceso de LinkedIn. Si es administrador de organización, puede aprovisionar automáticamente un token de acceso. En el centro de cuentas, vaya a **Configuración &gt; Configuración global** y abra el panel **SCIM Setup** (Configuración de SCIM).
 
 > [!NOTE]
-> Si se obtiene acceso a centro de cuentas de hello directamente en lugar de a través de un vínculo, puede llegar a él mediante Hola pasos.
+> Si obtiene acceso al centro de cuentas directamente en lugar de a través de un vínculo, puede llegar a este panel mediante los pasos siguientes.
 
-1)  Inicie sesión en el centro de tooAccount.
+1)  Inicie sesión en el centro de cuentas.
 
 2)  Seleccione **Administración &gt; Configuración de administración**.
 
-3)  Haga clic en **avanzada integraciones** en barra lateral izquierdo de Hola. Está dirigido toohello centro de cuentas.
+3)  Haga clic en **Advanced Integrations** (Integraciones avanzadas) en la barra lateral izquierda. Se le dirigirá al centro de cuentas.
 
-4)  Haga clic en **+ agregar una nueva configuración de SCIM** y siga el procedimiento de hello rellenando en cada campo.
+4)  Haga clic en **+ Add new SCIM configuration** (+ Agregar nueva configuración de SCIM) y rellene cada campo del procedimiento.
 
 > Si no está habilitada la asignación de licencias automática, solo se sincronizan los datos de usuario.
 
 ![Aprovisionamiento de LinkedIn Learning](./media/active-directory-saas-linkedinlearning-provisioning-tutorial/linkedin_1.PNG)
 
-> Cuando se habilita la asignación de autolicense, necesita toonote la instancia de aplicación y tipo de licencia. Se asignan licencias primero en llegar, primero actúan base hasta que se realizan todas las licencias de Hola.
+> Si está habilitada la asignación de licencias automática, debe tomar nota de la instancia de la aplicación y del tipo de licencia. Las licencias se asignan por orden de llegada hasta que se obtienen todas las licencias.
 
 ![Aprovisionamiento de LinkedIn Learning](./media/active-directory-saas-linkedinlearning-provisioning-tutorial/linkedin_2.PNG)
 
-5)  Haga clic en **Generar token**. Debería ver la pantalla de token de acceso en hello **token de acceso** campo.
+5)  Haga clic en **Generar token**. El token de acceso debería aparecer en el campo **Token de acceso**.
 
-6)  Guarde el Portapapeles de tooyour de token de acceso o el equipo antes de abandonar la página de Hola.
+6)  Guarde el token de acceso en el Portapapeles o en el equipo antes de abandonar la página.
 
-7) A continuación, inicie sesión en toohello [portal de Azure](https://portal.azure.com)y examinar toohello **Azure Active Directory > aplicaciones empresariales > todas las aplicaciones** sección.
+7) Después, inicie sesión en [Azure Portal](https://portal.azure.com) y vaya a la sección **Azure Active Directory > Aplicaciones empresariales > Todas las aplicaciones**.
 
-8) Si ya has configurado LinkedIn aprendizaje para el inicio de sesión único, busque la instancia de aprendizaje de LinkedIn con el campo de búsqueda de Hola. En caso contrario, seleccione **agregar** y busque **LinkedIn aprendizaje** en Galería de aplicaciones de Hola. Seleccione LinkedIn aprendizaje en resultados de búsqueda de Hola y agregarlo a tooyour lista de aplicaciones.
+8) Si ya ha configurado LinkedIn Learning para el inicio de sesión único, busque la instancia de LinkedIn Learning con el campo de búsqueda. En caso contrario, seleccione **Agregar** y busque **LinkedIn Learning** en la galería de aplicaciones. Seleccione LinkedIn Learning en los resultados de búsqueda y agréguelo a la lista de aplicaciones.
 
-9)  Seleccione la instancia de aprendizaje de LinkedIn, a continuación, seleccione hello **Provisioning** ficha.
+9)  Seleccione la instancia de LinkedIn Learning y seleccione la pestaña **Aprovisionamiento**.
 
-10) Conjunto hello **modo de aprovisionamiento** demasiado**automática**.
+10) Establezca el **modo de aprovisionamiento** en **Automático**.
 
 ![Aprovisionamiento de LinkedIn Learning](./media/active-directory-saas-linkedinlearning-provisioning-tutorial/linkedin_3.PNG)
 
-11)  Rellene Hola después de campos en **las credenciales de administrador** :
+11)  Rellene los campos siguientes en **Credenciales de administrador**:
 
-* Hola **dirección URL del inquilino** , escriba https://api.linkedin.com.
+* En el campo **URL de inquilino**, escriba https://api.linkedin.com.
 
-* Hola **secreto Token** campo, escriba el token de acceso de Hola que generó en el paso 1 y haga clic en **Probar conexión** .
+* En el campo **Token secreto**, escriba el token de acceso que ha generado en el paso 1 y haga clic en **Probar conexión**.
 
-* Verá una notificación de éxito en el lado superior derecho de hello del portal.
+* Debería ver una notificación que le indica que el proceso se ha realizado correctamente en el lado superior derecho del portal.
 
-12) Escriba la dirección de correo electrónico de Hola de una persona o grupo que debe recibir las notificaciones de error aprovisionamiento en hello **correo electrónico de notificación** campo y comprobar Hola casilla incluida a continuación.
+12) Escriba la dirección de correo electrónico de una persona o grupo que debe recibir las notificaciones de error aprovisionamiento en el campo **Correo electrónico de notificación** y active la casilla que aparece a continuación.
 
 13) Haga clic en **Guardar**. 
 
-14) Hola **asignaciones de atributos** sección, revise los atributos de usuario y grupo de Hola que se sincronizarán desde Azure AD tooLinkedIn de aprendizaje. Tenga en cuenta que Hola atributos seleccionados como **coincidencia** propiedades será toomatch usado hello las cuentas de usuario y grupos en el aprendizaje de LinkedIn para las operaciones de actualización. Seleccione toocommit de botón de hello guardar los cambios.
+14) En la sección **Asignaciones de atributos**, revise los atributos de usuario y de grupo de Azure AD que se sincronizarán con LinkedIn Learning. Tenga en cuenta que los atributos seleccionados como propiedades **Matching** se usarán para establecer coincidencias con las cuentas de usuario y los grupos de LinkedIn Learning para las operaciones de actualización. Seleccione el botón Guardar para confirmar los cambios.
 
 ![Aprovisionamiento de LinkedIn Learning](./media/active-directory-saas-linkedinlearning-provisioning-tutorial/linkedin_4.PNG)
 
-15) tooenable Hola servicio de aprovisionamiento de Azure AD para el aprendizaje de LinkedIn, cambio hello **estado de aprovisionamiento** demasiado**en** en hello **configuración** sección
+15) Para habilitar el servicio de aprovisionamiento de Azure AD para LinkedIn Learning, cambie el **Estado de aprovisionamiento** a **Activado** en la sección **Configuración**.
 
 16) Haga clic en **Guardar**. 
 
-Esto iniciará la sincronización inicial de Hola de los usuarios o grupos asignados tooLinkedIn de aprendizaje en la sección usuarios y grupos de Hola. Tenga en cuenta que la sincronización inicial de hello surtirá tooperform más que las sincronizaciones posteriores, que se producen aproximadamente cada 20 minutos mientras se ejecuta el servicio de Hola. Puede usar hello **detalles de sincronización** sección toomonitor progreso y siga los informes de actividad del tooprovisioning vínculos, que describen todas las acciones realizadas por hello aprovisionamiento del servicio en la aplicación de aprendizaje de LinkedIn.
+Esta acción iniciará la sincronización inicial de todos los usuarios y grupos asignados a LinkedIn Learning en la sección Usuarios y grupos. Tenga en cuenta que la sincronización inicial tardará más tiempo en realizarse que las posteriores, que se producen aproximadamente cada 20 minutos si se está ejecutando el servicio. Puede usar la sección **Detalles de sincronización** para supervisar el progreso y hacer clic en los vínculos a los informes de actividad de aprovisionamiento, que describen todas las acciones que ha llevado a cabo el servicio de aprovisionamiento en la aplicación de LinkedIn Learning.
 
 
 ## <a name="additional-resources"></a>Recursos adicionales

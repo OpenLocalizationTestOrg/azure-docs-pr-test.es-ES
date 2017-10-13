@@ -1,17 +1,17 @@
-1. Una vez creada y en ejecución Hola máquina virtual de Azure, haga clic en icono de máquinas virtuales de Hola Hola tooview portal Azure las máquinas virtuales.
+1. Una vez creada y en ejecución la máquina virtual de Azure, haga clic en el icono Virtual Machines en Azure Portal para ver las máquinas virtuales.
 
-1. Haga clic en el botón de puntos suspensivos hello, **...** , para la nueva máquina virtual.
+1. Haga clic en el botón de puntos suspensivos, **...** , de la nueva máquina virtual.
 
 1. Haga clic en **Conectar**.
 
-   ![Conectar tooVM en el portal](./media/virtual-machines-sql-server-remote-desktop-connect/azure-virtual-machine-connect.png)
+   ![Conexión a la máquina virtual en el portal](./media/virtual-machines-sql-server-remote-desktop-connect/azure-virtual-machine-connect.png)
 
-1. Abra hello **RDP** archivos que descarga el explorador para hello máquina virtual.
+1. Abra el archivo **RDP** que ha descargado el explorador para la máquina virtual.
 
-1. Hola conexión a Escritorio remoto le notifica que hello no se puede identificar el Editor de esta conexión remota. Haga clic en **conectar** toocontinue.
+1. La conexión a Escritorio remoto le avisará de que no se puede identificar el publicador de esta conexión remota. Haga clic en **Conectar** para continuar.
 
-1. Hola **Windows Security** cuadro de diálogo, haga clic en **Use otra cuenta**. Es posible que tenga tooclick **más opciones** toosee esto. Especifique el nombre de usuario de Hola y la contraseña que configuró al crear Hola VM. Debe agregar una barra diagonal inversa antes de nombre de usuario de Hola.
+1. En el cuadro de diálogo **Seguridad de Windows**, haga clic en **Usar una cuenta diferente**. Es posible que deba hacer clic en **Más opciones** para verlo. Use el nombre de usuario y la contraseña que configuró al crear la máquina virtual. Debe agregar una barra diagonal inversa delante del nombre de usuario.
 
    ![Autenticación de escritorio remoto](./media/virtual-machines-sql-server-remote-desktop-connect/remote-desktop-connect.png)
 
-1. Haga clic en **Aceptar** tooconnect.
+1. Haga clic en **Aceptar** para conectar.

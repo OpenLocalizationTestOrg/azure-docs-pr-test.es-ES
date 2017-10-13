@@ -1,6 +1,6 @@
 ---
-title: "grupos de seguridad de red aaaCreate (clásico) de Azure: PowerShell | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toocreate e implementar los NSG en modo clásico con PowerShell"
+title: "Creación de grupos de seguridad de red (clásicos) en Azure | Microsoft Docs"
+description: "Obtenga información acerca de cómo crear e implementar grupos de seguridad de red en modo clásico mediante PowerShell"
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,29 +15,29 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
-ms.openlocfilehash: 835097c9f23cdd551f97797e142c6c2a3c978cd8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e3f84e4757e3854fc63e3069e179446174f0c0bd
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toocreate-nsgs-classic-in-powershell"></a>Cómo toocreate NSG (clásica) en PowerShell
+# <a name="how-to-create-nsgs-classic-in-powershell"></a>Creación de grupos de seguridad de red (clásicos) en PowerShell
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]
 
 [!INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Este artículo trata el modelo de implementación clásica de Hola. También puede [crear NSG en el modelo de implementación del Administrador de recursos de hello](virtual-networks-create-nsg-arm-ps.md).
+Este artículo trata sobre el modelo de implementación clásico. También puede [crear grupos de seguridad de red con el modelo de implementación del Administrador de recursos](virtual-networks-create-nsg-arm-ps.md).
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
-ejemplo de Hola PowerShell comandos siguientes esperan un entorno simple ya creado se basa en escenario de hello anterior. Si desea toorun comandos de hello, que se muestran en este documento, en primer lugar crear entorno de prueba de Hola por [crear una red virtual](virtual-networks-create-vnet-classic-netcfg-ps.md).
+En los siguientes comandos de PowerShell de ejemplo se presupone que ya se ha creado un entorno simple según el escenario anterior. Si desea ejecutar los comandos tal y como aparecen en este documento, compile primero el entorno de prueba mediante la [creación de una red virtual](virtual-networks-create-vnet-classic-netcfg-ps.md).
 
-## <a name="how-toocreate-hello-nsg-for-hello-front-end-subnet"></a>¿Cómo toocreate Hola NSG para la subred de front-end de Hola
-toocreate un NSG denominado denominado **front-end de NSG** en función de escenario Hola anterior, siga estos pasos hello:
+## <a name="how-to-create-the-nsg-for-the-front-end-subnet"></a>Creación del grupo de seguridad de red para la subred front-end
+Para crear un grupo de seguridad de red denominado **NSG-FrontEnd** según el escenario anterior, siga estos pasos:
 
-1. Si nunca ha usado PowerShell de Azure, consulte [cómo tooInstall y configurar Azure PowerShell](/powershell/azure/overview) y siga instrucciones de hello todos los toohello de manera Hola finalizar toosign en Azure y seleccione su suscripción.
+1. Si es la primera vez que usa Azure PowerShell, consulte [Cómo instalar y configurar Azure PowerShell](/powershell/azure/overview) y siga las instrucciones hasta el final para iniciar sesión en Azure y seleccionar su suscripción.
 2. Cree un grupo de seguridad de red denominado **NSG-FrontEnd**.
    
         New-AzureNetworkSecurityGroup -Name "NSG-FrontEnd" -Location uswest `
@@ -49,7 +49,7 @@ toocreate un NSG denominado denominado **front-end de NSG** en función de escen
         
         NSG-FrontEnd West US     Front end subnet NSG
 
-3. Crear una regla de seguridad que permite el acceso desde Internet de hello tooport 3389.
+3. Cree una regla de seguridad que permita el acceso desde Internet al puerto 3389.
    
         Get-AzureNetworkSecurityGroup -Name "NSG-FrontEnd" `
         | Set-AzureNetworkSecurityRule -Name rdp-rule `
@@ -85,7 +85,7 @@ toocreate un NSG denominado denominado **front-end de NSG** en función de escen
                    OUTBOUND                                                                                                      
                    DENY ALL OUTBOUND    65500     Deny     *               *             *                *              *
 
-1. Crear una regla de seguridad que permita el acceso desde Internet de hello tooport 80.
+1. Cree una regla de seguridad que permita el acceso desde Internet al puerto 80.
    
         Get-AzureNetworkSecurityGroup -Name "NSG-FrontEnd" `
         | Set-AzureNetworkSecurityRule -Name web-rule `
@@ -123,7 +123,7 @@ toocreate un NSG denominado denominado **front-end de NSG** en función de escen
                    OUTBOUND                                                                                                      
                    DENY ALL OUTBOUND    65500     Deny     *               *             *                *              *   
 
-## <a name="how-toocreate-hello-nsg-for-hello-back-end-subnet"></a>Cómo toocreate hello NSG para volver Hola finalizar subred
+## <a name="how-to-create-the-nsg-for-the-back-end-subnet"></a>Creación del grupo de seguridad de red para la subred back-end
 1. Cree un grupo de seguridad de red denominado **NSG-BackEnd**.
    
         New-AzureNetworkSecurityGroup -Name "NSG-BackEnd" -Location uswest `
@@ -134,7 +134,7 @@ toocreate un NSG denominado denominado **front-end de NSG** en función de escen
         Name        Location   Label              
         
         NSG-BackEnd West US    Back end subnet NSG
-2. Crear una regla de seguridad que permita el acceso desde tooport de subred de front-end de hello 1433 (puerto predeterminado utilizado por SQL Server).
+2. Crear una regla de seguridad que permita el acceso desde la subred front-end al puerto 1433 (puerto predeterminado utilizado por SQL Server).
    
         Get-AzureNetworkSecurityGroup -Name "NSG-FrontEnd" `
         | Set-AzureNetworkSecurityRule -Name rdp-rule `
@@ -170,7 +170,7 @@ toocreate un NSG denominado denominado **front-end de NSG** en función de escen
                    OUTBOUND                                                                                                      
                    DENY ALL OUTBOUND    65500     Deny     *               *             *                *              *      
 
-1. Crear una regla de seguridad que bloquea el acceso desde la subred de hello toohello Internet.
+1. Cree una regla de seguridad que bloquee el acceso a Internet desde la subred.
    
         Get-AzureNetworkSecurityGroup -Name "NSG-BackEnd" `
         | Set-AzureNetworkSecurityRule -Name block-internet `

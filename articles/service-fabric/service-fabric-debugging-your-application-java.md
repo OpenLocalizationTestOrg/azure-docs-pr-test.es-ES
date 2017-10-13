@@ -1,6 +1,6 @@
 ---
-title: "aaaDebug la aplicación de tejido de servicio de Azure en Eclipse | Documentos de Microsoft"
-description: "Mejorar Hola confiabilidad y rendimiento de los servicios mediante el desarrollo y depuración en Eclipse en un clúster de desarrollo local."
+title: "Depuración de la aplicación de Azure Service Fabric en Eclipse | Microsoft Docs"
+description: "Mejore la confiabilidad y el rendimiento de los servicios mediante su desarrollo y depuración en Eclipse en un clúster de desarrollo local."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/10/2017
 ms.author: vturecek;mikhegn
-ms.openlocfilehash: ab86254a5c312db40fd631746c89aab0bbb9d1a4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f3bcee3794de35005bd387ecfae7e6707f3cb5ee
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Depuración de la aplicación de Service Fabric para Java con Eclipse
 > [!div class="op_single_selector"]
@@ -26,26 +26,26 @@ ms.lasthandoff: 10/06/2017
 > * [Eclipse/Java](service-fabric-debugging-your-application-java.md)
 > 
 
-1. Iniciar un clúster de desarrollo local siguiendo los pasos de hello en [configuración del entorno de desarrollo de Service Fabric](service-fabric-get-started-linux.md).
+1. Inicie un clúster de desarrollo local siguiendo los pasos descritos en [Configurar el entorno de desarrollo de Service Fabric](service-fabric-get-started-linux.md).
 
-2. Actualizar entryPoint.sh del servicio de hello desea toodebug, para que se inicie el proceso de java de hello con parámetros de depuración remota. Este archivo puede encontrarse en hello ubicación siguiente: ``ApplicationName\ServiceNamePkg\Code\entrypoint.sh``. En este ejemplo, el puerto 8001 está establecido para depuración.
+2. Actualice el archivo entryPoint.sh del servicio que desea depurar para que comience el proceso de Java con parámetros de depuración remota. Este archivo se puede encontrar en la ubicación siguiente: ``ApplicationName\ServiceNamePkg\Code\entrypoint.sh``. En este ejemplo, el puerto 8001 está establecido para depuración.
 
     ```sh
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=y -Djava.library.path=$LD_LIBRARY_PATH -jar myapp.jar
     ```
-3. Actualizar Hola el manifiesto de aplicación mediante el establecimiento de recuento de instancias de Hola o hello número de réplica para el servicio de Hola que se está depurando too1. Esta configuración evita conflictos de puerto de Hola que se utiliza para la depuración. Por ejemplo, para los servicios sin estado, establezca ``InstanceCount="1"`` y servicios con estado de réplica de destino y min Hola conjunto establezca too1 tamaños de la manera siguiente: `` TargetReplicaSetSize="1" MinReplicaSetSize="1"``.
+3. Actualice el manifiesto de aplicación estableciendo el recuento de instancias o el recuento de réplicas para el servicio que está en depuración en 1. Esta configuración evita conflictos en el puerto que se usa para depuración. Por ejemplo, para servicios sin estado, establezca ``InstanceCount="1"`` y, para los servicios con estado, establezca los tamaños del conjunto de réplicas mínimo y de destino en 1 de la manera siguiente: `` TargetReplicaSetSize="1" MinReplicaSetSize="1"``.
 
-4. Implementar la aplicación hello.
+4. Implemente la aplicación.
 
-5. Hola Eclipse IDE, seleccione **ejecución -> Debug Configurations -> aplicación Java remota y las propiedades de conexión de entrada** y establecer las propiedades de hello como sigue:
+5. En el IDE de Eclipse, seleccione **Run -> Debug Configurations -> Remote Java Application and input connection properties** (Ejecutar -> Configuraciones de depuración -> Aplicación Java remota y propiedades de conexión de entrada) y establezca las propiedades como se muestra a continuación:
 
    ```
    Host: ipaddress
    Port: 8001
    ```
-6.  Establecer puntos de interrupción en puntos deseados y depurar la aplicación hello.
+6.  Establezca puntos de interrupción en los puntos deseados y depure la aplicación.
 
-Si se bloquea la aplicación hello, también puede tooenable coredumps. Ejecute ``ulimit -c`` en un shell y, si devuelve el valor 0, los volcados de memoria no están habilitados. tooenable coredumps ilimitados, ejecutar el siguiente comando de Hola: ``ulimit -c unlimited``. También puede comprobar el estado de hello mediante comandos de hello ``ulimit -a``.  Si desea que la ruta de acceso de generación de tooupdate hello coredump, ejecute ``echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern``. 
+Si se bloquea la aplicación, puede que también desee habilitar los volcados de memoria. Ejecute ``ulimit -c`` en un shell y, si devuelve el valor 0, los volcados de memoria no están habilitados. Para habilitar volcados de memoria ilimitados, ejecute el comando siguiente: ``ulimit -c unlimited``. También podemos comprobar el estado con el comando ``ulimit -a``.  Si desea actualizar la ruta de acceso a la generación de volcado de memoria, ejecute ``echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern``. 
 
 ### <a name="next-steps"></a>Pasos siguientes
 

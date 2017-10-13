@@ -1,5 +1,5 @@
 ---
-title: "Ejemplo de secuencia de comandos de CLI - aaaAzure crear una caché en Redis de Azure | Documentos de Microsoft"
+title: "Ejemplo de script de CLI de Azure: creación de Azure Redis Cache | Microsoft Docs"
 description: "Ejemplo de script de CLI de Azure: creación de Azure Redis Cache"
 services: redis-cache
 documentationcenter: 
@@ -13,17 +13,17 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 04/14/2017
+ms.date: 08/30/2017
 ms.author: sdanie
-ms.openlocfilehash: 85b007a426fbd4752034ec8663835963d140dd75
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 19b582a0cecd72b9f30283ccf822b74cf400a155
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-azure-redis-cache"></a>Creación de una instancia de Caché en Redis de Azure
 
-En este escenario, aprenderá cómo toocreate un Redis de Azure almacenan en caché.
+En este escenario, aprenderá a crear una instancia de Azure Redis Cache.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -35,16 +35,16 @@ En este escenario, aprenderá cómo toocreate un Redis de Azure almacenan en cac
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Este script utiliza Hola después comandos toocreate un grupo de recursos y una caché de redis. Cada comando de documentación específica de hello tabla vínculos toocommand.
+Este script usa los siguientes comandos para crear un grupo de recursos y una instancia de Redis Cache. Cada comando de la tabla crea un vínculo a documentación específica del comando.
 
 | Comando | Notas |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | Crea un grupo de recursos en el que se almacenan todos los recursos. |
-| [az redis create](https://docs.microsoft.com/cli/azure/redis#create) | Crea una instancia de Redis Cache. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Crea un grupo de recursos en el que se almacenan todos los recursos. |
+| [az redis create](https://docs.microsoft.com/cli/azure/redis#az_redis_create) | Crea una instancia de Redis Cache. |
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener más información sobre Hola CLI de Azure, consulte [documentación de Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Para más información sobre la CLI de Azure, consulte la [documentación de la CLI de Azure](https://docs.microsoft.com/cli/azure/overview).
 
-Encontrará más ejemplos de secuencias de comandos de CLI de caché de Redis de Azure en hello [documentación de Azure Redis Cache](../cli-samples.md).
+Encontrará más ejemplos de scripts de CLI de Azure Redis Cache en la [documentación de Azure Redis Cache](../cli-samples.md).

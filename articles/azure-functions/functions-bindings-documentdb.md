@@ -1,63 +1,137 @@
 ---
-title: enlaces de funciones Cosmos DB aaaAzure | Documentos de Microsoft
-description: "Comprender cómo los enlaces de base de datos de Azure Cosmos toouse de funciones de Azure."
+title: Enlaces de Cosmos DB para Functions | Microsoft Docs
+description: "Descubra cómo utilizar desencadenadores y enlaces de almacenamiento de Azure Cosmos DB en Azure Functions."
 services: functions
 documentationcenter: na
 author: christopheranderson
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "azure functions, funciones, procesamiento de eventos, proceso dinámico, arquitectura sin servidor"
 ms.assetid: 3d8497f0-21f3-437d-ba24-5ece8c90ac85
-ms.service: functions
+ms.service: functions; cosmos-db
 ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 04/18/2016
+ms.date: 09/19/2017
 ms.author: glenga
-ms.openlocfilehash: 76b89e8296db1dd28dff9528903b1f6a28f55232
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ad058929eb888920823fddf549ada4ce2c6d9eee
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-functions-cosmos-db-bindings"></a>Enlaces de Cosmos DB en Azure Functions
+# <a name="azure-cosmos-db-bindings-for-functions"></a>Enlaces de Azure Cosmos DB para Functions
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-Este artículo se explica cómo enlaces de base de datos de Azure Cosmos tooconfigure y código en las funciones de Azure. Azure Functions admite enlaces de entrada y salida para Cosmos DB.
+En este artículo se explica cómo configurar y programar enlaces de Azure Cosmos DB en Azure Functions. Functions admite desencadenadores y enlaces de entrada y salida para Azure Cosmos DB.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-Para obtener más información sobre la base de datos de Cosmos, consulte [Introducción tooCosmos DB](../documentdb/documentdb-introduction.md) y [compilar una aplicación de consola de base de datos de Cosmos](../documentdb/documentdb-get-started.md).
+Para obtener más información acerca de la informática sin servidor con Azure Cosmos DB, consulte [Azure Cosmos DB: informática de base de datos sin servidor con Azure Functions](..\cosmos-db\serverless-computing-database.md).
+
+<a id="trigger"></a>
+<a id="cosmosdbtrigger"></a>
+
+## <a name="azure-cosmos-db-trigger"></a>Desencadenador de Azure Cosmos DB
+
+El desencadenador de Azure Cosmos DB utiliza la [fuente de cambios de Azure Cosmos DB](../cosmos-db/change-feed.md) para estar atento a los cambios realizados en las particiones. El desencadenador requiere una segunda colección que utiliza para almacenar _concesiones_ en las particiones.
+
+La colección que se está supervisando y la colección que contiene las concesiones deben estar disponibles para que el desencadenador funcione.
+
+El desencadenador de Azure Cosmos DB admite las siguientes propiedades:
+
+|Propiedad  |Descripción  |
+|---------|---------|
+|**type** | Se debe establecer en `cosmosDBTrigger`. |
+|**name** | Nombre de la variable que se utiliza en el código de función y que representa la lista de documentos con los cambios. | 
+|**dirección** | Se debe establecer en `in`. Este parámetro se establece automáticamente cuando se crea el desencadenador en Azure Portal. |
+|**connectionStringSetting** | Nombre de una configuración de aplicación que contiene la cadena de conexión utilizada para conectarse a la cuenta de Azure Cosmos DB que se está supervisando. |
+|**databaseName** | Nombre de la base de datos de Azure Cosmos DB con la colección que se está supervisando. |
+|**collectionName** | Nombre de la colección que se está supervisando. |
+| **leaseConnectionStringSetting** | (Opcional) Nombre de una configuración de aplicación que contiene la cadena de conexión al servicio que incluye la colección de concesiones. Si no se establece, se usa el valor `connectionStringSetting`. Este parámetro se establece automáticamente cuando se crea el enlace en el portal. |
+| **leaseDatabaseName** | (Opcional) Nombre de la base de datos que contiene la colección que se usa para almacenar las concesiones. Si no se establece, se usa el valor de la configuración `databaseName`. Este parámetro se establece automáticamente cuando se crea el enlace en el portal. |
+| **leaseCollectionName** | (Opcional) Nombre de la colección que se usa para almacenar concesiones. Si no se establece, se usa el valor `leases`. |
+| **createLeaseCollectionIfNotExists** | (Opcional) Cuando se establece en `true`, la colección de concesiones se crea automáticamente cuando todavía no existe. El valor predeterminado es `false`. |
+| **leaseCollectionThroughput** | (Opcional) Define la cantidad de unidades de solicitud que se asignan cuando se crea la colección de concesiones. Esta configuración solo se usa cuando `createLeaseCollectionIfNotExists` se establece en `true`. Este parámetro se establece automáticamente cuando el enlace se crea con el portal.
+
+>[!NOTE] 
+>La cadena de conexión que se use para conectarse a la colección de concesiones debe tener permisos de escritura.
+
+Estas propiedades se pueden establecer en la pestaña Integración para la función en el Azure Portal o mediante la edición del archivo del proyecto `function.json`.
+
+## <a name="using-an-azure-cosmos-db-trigger"></a>Uso de un desencadenador de Azure Cosmos DB
+
+Esta sección contiene ejemplos de cómo usar el desencadenador de Azure Cosmos DB. En los ejemplos se supone que los metadatos de un desencadenador tienen el aspecto siguiente:
+
+```json
+{
+  "type": "cosmosDBTrigger",
+  "name": "documents",
+  "direction": "in",
+  "leaseCollectionName": "leases",
+  "connectionStringSetting": "<connection-app-setting>",
+  "databaseName": "Tasks",
+  "collectionName": "Items",
+  "createLeaseCollectionIfNotExists": true
+}
+```
+ 
+Para obtener un ejemplo de cómo crear un desencadenador de Azure Cosmos DB desde una aplicación de función en el portal, consulte [Create a function triggered by Azure Cosmos DB](functions-create-cosmos-db-triggered-function.md) (Crear una función desencadenada por Azure Cosmos DB). 
+
+### <a name="trigger-sample-in-c"></a>Ejemplo de desencadenador en C# #
+```cs 
+    #r "Microsoft.Azure.Documents.Client"
+    using Microsoft.Azure.Documents;
+    using System.Collections.Generic;
+    using System;
+    public static void Run(IReadOnlyList<Document> documents, TraceWriter log)
+    {
+        log.Verbose("Documents modified " + documents.Count);
+        log.Verbose("First document Id " + documents[0].Id);
+    }
+```
+
+
+### <a name="trigger-sample-in-javascript"></a>Ejemplo de desencadenador en JavaScript
+```javascript
+    module.exports = function (context, documents) {
+        context.log('First document Id modified : ', documents[0].id);
+
+        context.done();
+    }
+```
 
 <a id="docdbinput"></a>
 
 ## <a name="documentdb-api-input-binding"></a>Enlace de entrada de API de DocumentDB
-Recupera un documento de la base de datos de Cosmos Hola enlace de entrada de API de documentos y la pasa toohello con el nombre de parámetro de entrada de función hello. se puede determinar el identificador de documento de Hello basado en desencadenador de Hola que invoca la función hello. 
+El enlace de entrada de API de DocumentDB recupera un documento de Azure Cosmos DB y lo pasa al parámetro de entrada con nombre de la función. Se puede determinar el identificador de documento según el desencadenador que invoca la función. 
 
-Hola enlace de entrada de API de documentos tiene Hola propiedades en siguientes *function.json*:
+El enlace de entrada de API de DocumentDB tiene las siguientes propiedades en *function.json*:
 
-- `name`: Nombre identificador utilizado en el código de función para el documento de Hola
-- `type`: se debe establecer demasiado "documentos"
-- `databaseName`: base de datos de Hola que contiene el documento de Hola
-- `collectionName`: colección de Hola que contiene el documento de Hola
-- `id`: Hola Id. de hello documento tooretrieve. Esta propiedad es compatible con parámetros de enlaces; vea [enlazar las propiedades de entrada toocustom en una expresión de enlace](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression) en el artículo hello [desencadenadores de las funciones de Azure y conceptos de enlaces](functions-triggers-bindings.md).
-- `sqlQuery`: consulta SQL de Cosmos DB que se usa para recuperar varios documentos. consulta de Hello admite enlaces en tiempo de ejecución. Por ejemplo: `SELECT * FROM c where c.departmentId = {departmentId}`
-- `connection`: nombre de Hola de configuración de la aplicación hello que contiene la cadena de conexión de base de datos de Cosmos
-- `direction`: se debe establecer demasiado`"in"`.
+|Propiedad  |Descripción  |
+|---------|---------|
+|**name**     | Nombre del parámetro de enlace que representa al documento en la función.  |
+|**type**     | Se debe establecer en `documentdb`.        |
+|**databaseName** | Base de datos que contiene el documento.        |
+|**collectionName**  | Nombre de la colección que contiene el documento. |
+|**id**     | Identificador del documento que se va a recuperar. Esta propiedad admite parámetros de enlaces. Para más información, vea [Enlace a propiedades de entrada personalizadas en una expresión de enlace](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression). |
+|**sqlQuery**     | Consulta SQL de Azure Cosmos DB que se usa para recuperar varios documentos. La consulta admite enlaces en tiempo de ejecución, como en el ejemplo: `SELECT * FROM c where c.departmentId = {departmentId}`.        |
+|**conexión**     |Nombre de la configuración de aplicación que contiene la cadena de conexión de Azure Cosmos DB.        |
+|**dirección**     | Se debe establecer en `in`.         |
 
-Hola propiedades `id` y `sqlQuery` no pueden especificarse simultáneamente. Si no `id` ni `sqlQuery` está establecida, hello todo se recupera la colección.
+No se pueden establecer las propiedades **id** y **sqlQuery** a la vez. Si ninguna está establecida, se recupera toda la colección.
 
 ## <a name="using-a-documentdb-api-input-binding"></a>Uso de un enlace de entrada de API de DocumentDB
 
-* En C# y F # funciones, cuando finaliza correctamente, la función de Hola se conserva automáticamente cualquier cambio realizado toohello documento de entrada a través de los parámetros de entrada con nombre. 
-* En las funciones de JavaScript, las actualizaciones no se realizan automáticamente al cerrar la función. En su lugar, use `context.bindings.<documentName>In` y `context.bindings.<documentName>Out` toomake actualizaciones. Vea hello [ejemplo JavaScript](#injavascript).
+* En las funciones de C# y F#, cuando se sale de la función correctamente, los cambios realizados en el documento de entrada mediante parámetros de entrada con nombre se guardan automáticamente. 
+* En las funciones de JavaScript, las actualizaciones no se realizan automáticamente al cerrar la función. Por el contrario, use `context.bindings.<documentName>In` y `context.bindings.<documentName>Out` para realizar las actualizaciones. Vea el [ejemplo de JavaScript](#injavascript).
 
 <a name="inputsample"></a>
 
 ## <a name="input-sample-for-single-document"></a>Ejemplo de entrada de documento único
-Imagine que tiene Hola siguientes API de documentos de entrada enlace Hola `bindings` matriz de function.json:
+Suponga que tiene el siguiente enlace de entrada de API de DocumentDB en la matriz `bindings` de function.json:
 
 ```json
 {
@@ -71,7 +145,7 @@ Imagine que tiene Hola siguientes API de documentos de entrada enlace Hola `bind
 }
 ```
 
-Vea ejemplo de Hola a específicos del idioma que utiliza el valor de texto de enlace de entrada tooupdate Hola de este documento.
+Vea el ejemplo específico del idioma que utiliza este enlace de entrada para actualizar el valor de texto del documento.
 
 * [C#](#incsharp)
 * [F#](#infsharp)
@@ -98,7 +172,7 @@ let Run(myQueueItem: string, inputDocument: obj) =
   inputDocument?text <- "This has changed."
 ```
 
-Este ejemplo requiere un `project.json` archivo que especifica hello `FSharp.Interop.Dynamic` y `Dynamitey` las dependencias de NuGet:
+Este ejemplo necesita un archivo `project.json` que especifique las dependencias de NuGet `FSharp.Interop.Dynamic` y `Dynamitey`:
 
 ```json
 {
@@ -113,7 +187,7 @@ Este ejemplo requiere un `project.json` archivo que especifica hello `FSharp.Int
 }
 ```
 
-tooadd una `project.json` de archivos, consulte [administración de paquetes de F #](functions-reference-fsharp.md#package).
+Para agregar un archivo `project.json`, consulte la [administración de paquetes de F #](functions-reference-fsharp.md#package).
 
 <a name="injavascript"></a>
 
@@ -130,9 +204,9 @@ module.exports = function (context) {
 
 ## <a name="input-sample-with-multiple-documents"></a>Ejemplo de entrada con varios documentos
 
-Suponga que desea tooretrieve varios documentos especificados por una consulta SQL, utilizando un parámetros de consulta de cola desencadenador toocustomize Hola. 
+Imagine que quiere recuperar varios documentos especificados por una consulta SQL con un desencadenador de cola para personalizar los parámetros de la consulta. 
 
-En este ejemplo, el desencadenador de la cola de hello proporciona un parámetro `departmentId`. Un mensaje de la cola de `{ "departmentId" : "Finance" }` devolverá todos los registros para el departamento de finanzas Hola. Utilizar siguiente hello en *function.json*:
+En este ejemplo, el desencadenador de cola proporciona un parámetro `departmentId`. Un mensaje de cola de `{ "departmentId" : "Finance" }` devolvería todos los registros del departamento de finanzas. Use lo siguiente en *function.json*:
 
 ```
 {
@@ -177,30 +251,32 @@ module.exports = function (context, input) {
 ```
 
 ## <a id="docdboutput"></a>Enlace de salida de API de DocumentDB
-Hola API de documentos de salida enlace le permite escribir una base de datos de base de datos de Azure Cosmos de tooan documento nuevo. Tiene Hola propiedades en siguientes *function.json*:
+El enlace de salida de API de DocumentDB permite escribir un nuevo documento en una base de datos de Azure Cosmos DB. Tiene las siguientes propiedades en *function.json*:
 
-- `name`: Identificador utilizado en el código de función para el nuevo documento de Hola
-- `type`: se debe establecer demasiado`"documentdb"`
-- `databaseName`: base de datos de Hola que contiene la colección de Hola donde se creará el nuevo documento de Hola.
-- `collectionName`: Hola colección donde se creará el nuevo documento de Hola.
-- `createIfNotExists`: Un valor booleano tooindicate si la colección de Hola se creará si no existe. valor predeterminado de Hello es *false*. Hola razón para esto es una novedad colecciones se crean con un rendimiento reservado, lo que tiene implicaciones de precios. Para obtener más detalles, visite hello [página de precios](https://azure.microsoft.com/pricing/details/documentdb/).
-- `connection`: nombre de Hola de configuración de la aplicación hello que contiene la cadena de conexión de base de datos de Cosmos
-- `direction`: se debe establecer demasiado`"out"`
+|Propiedad  |Descripción  |
+|---------|---------|
+|**name**     | Nombre del parámetro de enlace que representa al documento en la función.  |
+|**type**     | Se debe establecer en `documentdb`.        |
+|**databaseName** | Base de datos que contiene la colección en la que se ha creado el documento.     |
+|**collectionName**  | Nombre de la colección en la que se ha creado el documento. |
+|**createIfNotExists**     | Valor booleano que indica si la colección se ha creado si no existía. El valor predeterminado es *false*. Esto se debe a que las nuevas colecciones se crean con rendimiento reservado, lo cual afecta al costo. Para obtener más información, visite la [página de precios](https://azure.microsoft.com/pricing/details/documentdb/).  |
+|**conexión**     |Nombre de la configuración de aplicación que contiene la cadena de conexión de Azure Cosmos DB.        |
+|**dirección**     | Se debe establecer en `out`.         |
 
 ## <a name="using-a-documentdb-api-output-binding"></a>Uso de un enlace de salida de API de DocumentDB
-Esta sección muestra cómo toouse su API de documentos de salida en el código de función de enlace.
+En esta sección se muestra cómo utilizar el enlace de salida de API de DocumentDB en el código de función.
 
-Cuando se escribe toohello parámetro de salida en la función, que se genera un nuevo documento en la base de datos de forma predeterminada, con un GUID generado automáticamente como Hola documentar identificador. Puede especificar Hola Id. de documento del documento de salida mediante la especificación de hello `id` parámetro de salida de la propiedad JSON en Hola. 
+De forma predeterminada, cuando se escribe en el parámetro de salida de la función, se crea un documento en la base de datos. Este documento tiene un GUID generado automáticamente como identificador de documento. Puede especificar el identificador de documento del documento de salida si especifica la propiedad `id` en el objeto JSON pasado al parámetro de salida. 
 
 >[!Note]  
->Cuando se especifica el Id. de Hola de un documento existente, se sobrescribe por documento de salida nuevo de Hola. 
+>Cuando especifica el identificador de un documento existente, se sobrescribe con el nuevo documento de salida. 
 
-toooutput varios documentos, también puede enlazar demasiado`ICollector<T>` o `IAsyncCollector<T>` donde `T` es uno de los tipos de hello compatible.
+Para generar varios documentos, también puede enlazar a `ICollector<T>` o `IAsyncCollector<T>`, donde `T` es uno de los tipos admitidos.
 
 <a name="outputsample"></a>
 
 ## <a name="documentdb-api-output-binding-sample"></a>Ejemplo de enlace de salida de API de DocumentDB
-Imagine que tiene Hola siguientes API de documentos de salida enlace Hola `bindings` matriz de function.json:
+Suponga que tiene el siguiente enlace de salida de API de DocumentDB en la matriz `bindings` de function.json:
 
 ```json
 {
@@ -214,7 +290,7 @@ Imagine que tiene Hola siguientes API de documentos de salida enlace Hola `bindi
 }
 ```
 
-Y tienen un enlace de entrada de cola a una cola que recibe de JSON en hello siguiendo el formato:
+Y tienen un enlace de entrada de cola para una cola que recibe JSON en el formato siguiente:
 
 ```json
 {
@@ -224,7 +300,7 @@ Y tienen un enlace de entrada de cola a una cola que recibe de JSON en hello sig
 }
 ```
 
-Y desea que los documentos de base de datos de Cosmos toocreate Hola siguiendo el formato para cada registro:
+Y quiere crear documentos de Azure Cosmos DB en el formato siguiente para cada registro:
 
 ```json
 {
@@ -235,7 +311,7 @@ Y desea que los documentos de base de datos de Cosmos toocreate Hola siguiendo e
 }
 ```
 
-Vea ejemplo de Hola a específicos del idioma que utiliza esta salida enlace tooadd documentos tooyour base de datos.
+Vea el ejemplo específico del idioma que utiliza este enlace de salida para agregar documentos a la base de datos.
 
 * [C#](#outcsharp)
 * [F#](#outfsharp)
@@ -292,7 +368,7 @@ let Run(myQueueItem: string, employeeDocument: byref<obj>, log: TraceWriter) =
       address = employee?address }
 ```
 
-Este ejemplo requiere un `project.json` archivo que especifica hello `FSharp.Interop.Dynamic` y `Dynamitey` las dependencias de NuGet:
+Este ejemplo necesita un archivo `project.json` que especifique las dependencias de NuGet `FSharp.Interop.Dynamic` y `Dynamitey`:
 
 ```json
 {
@@ -307,7 +383,7 @@ Este ejemplo requiere un `project.json` archivo que especifica hello `FSharp.Int
 }
 ```
 
-tooadd una `project.json` de archivos, consulte [administración de paquetes de F #](functions-reference-fsharp.md#package).
+Para agregar un archivo `project.json`, consulte la [administración de paquetes de F #](functions-reference-fsharp.md#package).
 
 <a name="outjavascript"></a>
 

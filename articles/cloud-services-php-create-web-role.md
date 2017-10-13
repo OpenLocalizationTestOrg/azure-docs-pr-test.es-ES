@@ -1,6 +1,6 @@
 ---
-title: aaaCreate Azure roles web y de trabajo para PHP | Documentos de Microsoft
-description: "Una guía toocreating PHP roles web y de trabajo en un servicio de nube de Azure y la configuración en tiempo de ejecución PHP de Hola."
+title: "Creación de roles web y de trabajo de Azure para PHP | Microsoft Docs"
+description: "Una guía para crear roles web y de trabajo de PHP en un servicio en la nube de Azure y configurar el tiempo en ejecución de PHP."
 services: 
 documentationcenter: php
 author: rmcmurray
@@ -14,35 +14,35 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: 04a6e8c9c379cb0f854645941b6bc7d614bb91f8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 214fdcfe20f3fa4ebcbe41308404f8b7e7d15310
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-toocreate-php-web-and-worker-roles"></a>¿Cómo toocreate roles de web y de trabajo PHP
+# <a name="how-to-create-php-web-and-worker-roles"></a>Creación de roles de trabajo y web de PHP
 ## <a name="overview"></a>Información general
-Esta guía le mostrará cómo los roles de trabajador o web PHP toocreate en un entorno de desarrollo de Windows, elegir una versión específica de PHP Hola "integradas" versiones disponibles, cambiar la configuración de PHP hello, habilitar extensiones y por último, implementar tooAzure. También se describe cómo tooconfigure un rol web o trabajo toouse un tiempo de ejecución PHP (con configuración personalizada y extensiones) proporcionada por usted.
+En esta guía se explica cómo crear roles de trabajo o web de PHP en un entorno de desarrollo de Windows, elegir una versión específica de PHP de versiones "integradas" disponibles, cambiar la configuración de PHP, habilitar extensiones y, por último, implementar en Azure. También se describe cómo configurar un rol web o de trabajo para usar un tiempo de ejecución de PHP (con las extensiones y la configuración personalizada) proporcionado por el usuario.
 
 ## <a name="what-are-php-web-and-worker-roles"></a>¿Qué son los roles web y de trabajo de PHP?
-Azure ofrece tres modelos de proceso para la ejecución de aplicaciones: Servicio de aplicaciones de Azure, Máquinas virtuales de Azure y Servicios en la nube de Azure. Los tres modelos admiten PHP. Servicios en la nube, que incluye roles web y de trabajo, ofrece el modelo *Plataforma como servicio (PaaS)*. Dentro de un servicio de nube, un rol web proporciona un sitio web de Internet Information Services (IIS) dedicado las aplicaciones de servidor toohost front-end web. Un rol de trabajo puede ejecutar tareas asincrónicas, de ejecución prolongada o perpetuas, independientes de la entrada o la interacción del usuario.
+Azure ofrece tres modelos de proceso para la ejecución de aplicaciones: Servicio de aplicaciones de Azure, Máquinas virtuales de Azure y Servicios en la nube de Azure. Los tres modelos admiten PHP. Servicios en la nube, que incluye roles web y de trabajo, ofrece el modelo *Plataforma como servicio (PaaS)*. Dentro de un servicio en la nube, un rol web proporciona un servidor web de Internet Information Services (IIS) dedicado para hospedar aplicaciones web front-end. Un rol de trabajo puede ejecutar tareas asincrónicas, de ejecución prolongada o perpetuas, independientes de la entrada o la interacción del usuario.
 
 Para más información sobre estas opciones, consulte [Cálculo de las opciones de hospedaje proporcionadas por Azure](cloud-services/cloud-services-choose-me.md).
 
-## <a name="download-hello-azure-sdk-for-php"></a>Descargar hello Azure SDK para PHP
-Hola [Azure SDK para PHP] consta de varios componentes. Este artículo utiliza dos de ellos: PowerShell de Azure y Hola emuladores de Azure. Estos dos componentes se pueden instalar a través de hello instalador de plataforma Web de Microsoft. Para obtener más información, consulte [cómo tooinstall y configurar Azure PowerShell](/powershell/azure/overview).
+## <a name="download-the-azure-sdk-for-php"></a>Descarga del SDK de Azure para PHP
+El [SDK de Azure para PHP] tiene varios componentes. Este artículo usará dos de ellos: los emuladores de Azure PowerShell y de Azure. Estos dos componentes se pueden instalar a través del instalador de la plataforma web de Microsoft. Para obtener más información, consulte [Instalación y configuración de Azure PowerShell](/powershell/azure/overview).
 
 ## <a name="create-a-cloud-services-project"></a>de un proyecto de servicio en la nube
-Hola primer paso para crear un rol de trabajo o web PHP es toocreate un proyecto de servicio de Azure. un proyecto de servicio de Azure actúa como un contenedor lógico para los roles de web y de trabajo y que contiene el proyecto de hello [(.csdef) de la definición del servicio] y [configuración del servicio (.cscfg)] archivos.
+El primer paso para crear un rol web o de trabajo de PHP es crear un proyecto del servicio de Azure. El primer paso para crear un rol web o de trabajo de PHP es crear un proyecto del servicio de Azure. Un proyecto del servicio de Azure sirve como un contenedor lógico para roles web y de trabajo y contiene los archivos de [definición del servicio (.csdef)] y [configuración del servicio (.cscfg)] del proyecto.
 
-toocreate un nuevo proyecto de servicio de Azure, ejecute Azure PowerShell como administrador y ejecute el siguiente comando de hello:
+Para crear un proyecto nuevo del servicio de Azure, ejecute Azure PowerShell como administrador y, a continuación, ejecute el comando siguiente:
 
     PS C:\>New-AzureServiceProject myProject
 
-Este comando crea un nuevo directorio (`myProject`) toowhich puede agregar los roles web y de trabajo.
+Este comando creará un directorio nuevo (`myProject`) al que puede agregar roles web y de trabajo.
 
 ## <a name="add-php-web-or-worker-roles"></a>de roles web y de trabajo de PHP
-tooadd un proyecto tooa de rol de web PHP, ejecute hello siguiente comando desde dentro del directorio raíz del proyecto de hello:
+Para agregar un rol web de PHP a un proyecto, ejecute el siguiente comando desde el directorio raíz del proyecto:
 
     PS C:\myProject> Add-AzurePHPWebRole roleName
 
@@ -51,16 +51,16 @@ Para un rol de trabajo, use este comando:
     PS C:\myProject> Add-AzurePHPWorkerRole roleName
 
 > [!NOTE]
-> Hola `roleName` parámetro es opcional. Si se omite, se generará automáticamente el nombre del rol de Hola. primer rol de web Hola creado será `WebRole1`, hello en segundo lugar será `WebRole2`, y así sucesivamente. primer rol de trabajo Hola creado será `WorkerRole1`, hello en segundo lugar será `WorkerRole2`, y así sucesivamente.
+> El `roleName` es opcional. Si se omite, el nombre de rol se generará automáticamente. El primer rol web creado será `WebRole1`, el segundo será `WebRole2` y así sucesivamente. El primer rol de trabajo creado será `WorkerRole1`, el segundo será `WorkerRole2` y así sucesivamente.
 >
 >
 
-## <a name="specify-hello-built-in-php-version"></a>Especificar versión PHP integrado Hola
-Cuando se agrega un proyecto PHP tooa de rol de trabajo o web, archivos de configuración del proyecto de Hola se modifican para que PHP se instalará en cada instancia de trabajador o web de la aplicación cuando se implementa. versión de hello toosee de PHP que se instalará de forma predeterminada, ejecute el siguiente comando de hello:
+## <a name="specify-the-built-in-php-version"></a>de la versión de PHP integrada
+Al agregar un rol web o de trabajo de PHP a un proyecto, los archivos de configuración del proyecto se modifican para que PHP se instale en cada instancia de trabajo o web de la aplicación cuando se implementa. Para ver la versión de PHP que se instalará de forma predeterminada, ejecute el comando siguiente:
 
     PS C:\myProject> Get-AzureServiceProjectRoleRuntime
 
-Hello salida del comando hello anterior tendrá un aspecto similar toowhat se muestra a continuación. En este ejemplo, Hola `IsDefault` marca se establece demasiado`true` para PHP 5.3.17, que indica que será versión PHP predeterminado Hola instalada.
+La salida del comando anterior tendrá un aspecto similar al que se muestra a continuación. En este ejemplo, la marca `IsDefault` se define en `true` para PHP 5.3.17, indicando que será la versión de PHP instalada de forma predeterminada.
 
 ```
 Runtime Version     PackageUri                      IsDefault
@@ -74,44 +74,44 @@ PHP 5.3.17          http://nodertncu.blob.core...   True
 PHP 5.4.0           http://nodertncu.blob.core...   False
 ```
 
-Puede establecer Hola PHP en tiempo de ejecución versión tooany de versiones PHP de Hola que aparecen. Por ejemplo, versión de PHP de tooset Hola (para un rol con nombre hello `roleName`) too5.4.0, Hola de uso siguiente comando:
+Puede definir la versión del tiempo de ejecución de PHP con cualquier versión de PHP de la lista. Por ejemplo, para definir la versión de PHP (para un rol con nombre `roleName`) como 5.4.0, use el comando siguiente:
 
     PS C:\myProject> Set-AzureServiceProjectRole roleName php 5.4.0
 
 > [!NOTE]
-> Versiones PHP disponibles pueden cambiar en futuras Hola.
+> Las versiones PHP disponibles pueden cambiar en el futuro.
 >
 >
 
-## <a name="customize-hello-built-in-php-runtime"></a>Personalizar el tiempo de ejecución de hello integrado PHP
-Tiene un control completo sobre la configuración de Hola de en tiempo de ejecución PHP de Hola que se instala al seguir los pasos de hello anteriormente, incluida la modificación de `php.ini` configuración y habilitación de extensiones.
+## <a name="customize-the-built-in-php-runtime"></a>del tiempo de ejecución de PHP integrado
+Tiene el control total de la configuración del tiempo de ejecución de PHO instalado al seguir los pasos anteriores, incluida la modificación de la configuración de `php.ini` y la habilitación de las extensiones.
 
-toocustomize Hola integrado en tiempo de ejecución PHP, siga estos pasos:
+Para personalizar el tiempo de ejecución de PHP integrado, siga estos pasos:
 
-1. Agregar una nueva carpeta denominada `php`, toohello `bin` directorio de su rol web. Para que un rol de trabajo, debe agregarlo directorio de raíz del rol toohello.
-2. Hola `php` carpeta, cree otra carpeta denominada `ext`. Ponga ningún `.dll` archivos de extensión (p. ej., `php_mongo.dll`) que desea tooenable en esta carpeta.
-3. Agregar un `php.ini` archivo toohello `php` carpeta. Habilite todas las extensiones personalizadas y defina todas las directivas de PHP en este archivo. Por ejemplo, si deseara tooturn `display_errors` en y habilitar hello `php_mongo.dll` extensión, el contenido de Hola de su `php.ini` archivo sería como sigue:
+1. Agregue una carpeta nueva, con el  nombre `php`, al directorio `bin` del rol web. Si se trata de un rol de trabajo, agréguelo al directorio raíz del rol.
+2. En la carpeta `php`, cree otra carpeta denominada `ext`. Coloque los archivos de extensión `.dll` (por ejemplo, `php_mongo.dll`) que desee habilitar en esta carpeta.
+3. Agregue un archivo `php.ini` a la carpeta `php`. Habilite todas las extensiones personalizadas y defina todas las directivas de PHP en este archivo. Por ejemplo, si desea activar `display_errors` y habilitar la extensión `php_mongo.dll`, el contenido del archivo `php.ini` será el siguiente:
 
         display_errors=On
         extension=php_mongo.dll
 
 > [!NOTE]
-> Cualquier configuración que no establece explícitamente en hello `php.ini` archivo que proporcione automáticamente will establecerse como valores predeterminados de tootheir. Sin embargo, tenga en cuenta que puede agregar un archivo `php.ini` completo.
+> Cualquier configuración que no defina explícitamente en el archivo `php.ini` que proporcione se definirá automáticamente con los valores predeterminados. Sin embargo, tenga en cuenta que puede agregar un archivo `php.ini` completo.
 >
 >
 
 ## <a name="use-your-own-php-runtime"></a>del tiempo de ejecución de PHP propio
-En algunos casos, en lugar de seleccionar un tiempo de ejecución PHP integrado y configurarlo como se describió anteriormente, puede que desee tooprovide su propio tiempo de ejecución PHP. Por ejemplo, puede usar Hola mismo en tiempo de ejecución PHP en un rol web o de trabajo que se utiliza en el entorno de desarrollo. Esto hace más fácil tooensure esa aplicación hello no cambiará el comportamiento en el entorno de producción.
+En algunos casos, en lugar de seleccionar un tiempo de ejecución de PHP integrado y configurarlo como se ha descrito anteriormente, puede proporcionar el tiempo de ejecución de PHP propio. Por ejemplo, puede usar el mismo tiempo de ejecución de PHP en un rol web o de trabajo que use en el entorno de desarrollo. De esta forma, garantiza de forma más fácil que la aplicación no cambiará su comportamiento en el entorno de producción.
 
-### <a name="configure-a-web-role-toouse-your-own-php-runtime"></a>Configurar una toouse de rol web en su propio tiempo de ejecución PHP
-tooconfigure un toouse de rol web un tiempo de ejecución PHP que proporcione, siga estos pasos:
+### <a name="configure-a-web-role-to-use-your-own-php-runtime"></a>Configuración de un rol web para usar un tiempo de ejecución de PHP propio
+Para configurar un rol web para usar un tiempo de ejecución de PHP proporcionado por el usuario, siga estos pasos:
 
 1. Cree un proyecto del servicio de Azure y agregue un rol web de PHP según se describe anteriormente en este tema.
-2. Crear un `php` carpeta Hola `bin` carpeta que se encuentra en el directorio de raíz del rol web y, a continuación, agregue el toohello de tiempo de ejecución (todos los archivos binarios, archivos de configuración, las subcarpetas, etc.) de PHP `php` carpeta.
-3. (OPCIONAL) Si el tiempo de ejecución PHP usa hello [Microsoft Drivers for PHP para SQL Server][sqlsrv drivers], necesitará tooconfigure su tooinstall de rol web [SQL Server Native Client 2012] [ sql native client] cuando se aprovisiona. toodo, agregar hello [sqlncli.msi x64 installer] toohello `bin` carpeta en el directorio de raíz del rol web. script de inicio de Hola se describe en el paso siguiente Hola ejecutará en modo silencioso instalador hello cuando se aprovisiona el rol de Hola. Si el tiempo de ejecución PHP no usa Hola Microsoft Drivers for PHP para SQL Server, puede quitar Hola siguientes línea de script de Hola mostrado en el paso siguiente de hello:
+2. Cree una carpeta `php` en la carpeta `bin` que se encuentra en el directorio raíz del rol web y, a continuación, agregue el tiempo de ejecución de PHP (todos los binarios, archivos de configuración, subcarpetas, etc.) a la carpeta `php`.
+3. (OPCIONAL) Si el entorno en tiempo de ejecución de PHP usa los [Controladores de Microsoft para PHP en SQL Server][sqlsrv drivers], tendrá que configurar el rol web para instalar [SQL Server Native Client 2012][sql native client] cuando se aprovisione. Para ello, agregue el [instalador sqlncli.msi x64] a la carpeta `bin` en el directorio raíz del rol web. El script de inicio descrito en el siguiente paso ejecutará el instalador silenciosamente cuando se aprovisione el rol. Si el tiempo de ejecución de PHP no usa los controladores de Microsoft para PHP en SQL Server, puede eliminar la línea siguiente del script que se muestra en el paso siguiente:
 
         msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
-4. Defina una tarea de inicio que configura [Internet Information Services (IIS)] [ iis.net] toouse solicita su toohandle en tiempo de ejecución PHP para `.php` páginas. toodo, abra hello `setup_web.cmd` archivo (Hola `bin` archivo del directorio de raíz del rol web) en un editor de texto y reemplazar su contenido con Hola después de la secuencia de comandos:
+4. Defina una tarea de inicio que configura [Internet Information Services (IIS)][iis.net] para que use el entorno en tiempo de ejecución de PHP a fin de que controle las solicitudes para las páginas `.php`. Para ello, abra el archivo `setup_web.cmd` (en el archivo `bin` del directorio raíz del rol web) en un editor de texto y reemplace su contenido por el script siguiente:
 
     ```cmd
     @ECHO ON
@@ -130,30 +130,30 @@ tooconfigure un toouse de rol web un tiempo de ejecución PHP que proporcione, s
     %WINDIR%\system32\inetsrv\appcmd.exe set config -section:system.webServer/handlers /+"[name='PHP',path='*.php',verb='GET,HEAD,POST',modules='FastCgiModule',scriptProcessor='%PHP_FULL_PATH%',resourceType='Either',requireAccess='Script']" /commit:apphost
     %WINDIR%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /"[fullPath='%PHP_FULL_PATH%'].queueLength:50000"
     ```
-5. Agregue el directorio raíz de aplicación archivos tooyour del rol web. Este será el directorio raíz del servidor de hello web.
-6. Publicar su aplicación, como se describe en hello [publicar su aplicación](#publish-your-application) sección más adelante.
+5. Agregue los archivos de la aplicación al directorio raíz del rol web. Será el directorio raíz del servidor web.
+6. Publique la aplicación como se describe en la sección [Publicación de la aplicación](#publish-your-application) más adelante.
 
 > [!NOTE]
-> Hola `download.ps1` secuencia de comandos (Hola `bin` carpeta del directorio de raíz del rol web Hola) se pueden eliminar después de seguir los pasos de hello descritos anteriormente para usar su propio tiempo de ejecución PHP.
+> El script `download.ps1` (en la carpeta `bin` del directorio raíz del rol web) se puede eliminar después de completar los pasos descritos anteriormente para usar el tiempo de ejecución de PHP propio.
 >
 >
 
-### <a name="configure-a-worker-role-toouse-your-own-php-runtime"></a>Configurar una toouse de rol de trabajo en su propio tiempo de ejecución PHP
-tooconfigure un toouse de rol de trabajo un tiempo de ejecución PHP que proporcione, siga estos pasos:
+### <a name="configure-a-worker-role-to-use-your-own-php-runtime"></a>Configuración de un rol de trabajo para usar un tiempo de ejecución de PHP propio
+Para configurar un rol de trabajo para usar un tiempo de ejecución de PHP propio, siga estos pasos:
 
 1. Cree un proyecto del servicio de Azure y agregue un rol de trabajo de PHP según se describe anteriormente en este tema.
-2. Crear un `php` carpeta en el directorio de raíz del rol de trabajo de hello y, a continuación, agregue el toohello de tiempo de ejecución (todos los archivos binarios, archivos de configuración, las subcarpetas, etc.) de PHP `php` carpeta.
-3. (OPCIONAL) Si usa el tiempo de ejecución PHP [Microsoft Drivers for PHP para SQL Server][sqlsrv drivers], necesitará tooconfigure su tooinstall de rol de trabajo [SQL Server Native Client 2012] [ sql native client] cuando se aprovisiona. toodo, agregar hello [sqlncli.msi x64 installer] directorio de raíz del rol de trabajo toohello. script de inicio de Hola se describe en el paso siguiente Hola ejecutará en modo silencioso instalador hello cuando se aprovisiona el rol de Hola. Si el tiempo de ejecución PHP no usa Hola Microsoft Drivers for PHP para SQL Server, puede quitar Hola siguientes línea de script de Hola mostrado en el paso siguiente de hello:
+2. Cree una carpeta `php` en el directorio raíz del rol de trabajo y, a continuación, agregue el tiempo de ejecución de PHP (todos los binarios, archivos de configuración, subcarpetas, etc.) a la carpeta `php`.
+3. .(OPCIONAL) Si el entorno en tiempo de ejecución de PHP usa los [Controladores de Microsoft para PHP en SQL Server][sqlsrv drivers], tendrá que configurar el rol de trabajo para instalar [SQL Server Native Client 2012][sql native client] cuando se aprovisione. Para ello, agregue el [instalador sqlncli.msi x64] al directorio raíz del rol de trabajo. El script de inicio descrito en el siguiente paso ejecutará el instalador silenciosamente cuando se aprovisione el rol. Si el tiempo de ejecución de PHP no usa los controladores de Microsoft para PHP en SQL Server, puede eliminar la línea siguiente del script que se muestra en el paso siguiente:
 
         msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
-4. Defina una tarea de inicio que agrega el `php.exe` variable de entorno de ruta de acceso del rol de trabajo ejecutable toohello cuando se aprovisiona el rol de Hola. toodo, abra hello `setup_worker.cmd` de archivos (en el directorio de raíz del rol de trabajo de Hola) en un editor de texto y reemplace su contenido con hello siguiente secuencia de comandos:
+4. Defina una tarea de inicio que agregue el archivo ejecutable `php.exe` a la variable de entorno PATH del rol de trabajo cuando se aprovisiona el rol. Para ello, abra el archivo `setup_worker.cmd` (en el directorio raíz del rol de trabajo) en un editor de texto y reemplace su contenido por el siguiente script:
 
     ```cmd
     @echo on
 
     cd "%~dp0"
 
-    echo Granting permissions for Network Service toohello web root directory...
+    echo Granting permissions for Network Service to the web root directory...
     icacls ..\ /grant "Network Service":(OI)(CI)W
     if %ERRORLEVEL% neq 0 goto error
     echo OK
@@ -174,42 +174,42 @@ tooconfigure un toouse de rol de trabajo un tiempo de ejecución PHP que proporc
     echo FAILED
     exit /b -1
     ```
-5. Agregue el directorio raíz de la aplicación archivos tooyour del rol de trabajo.
-6. Publicar su aplicación, como se describe en hello [publicar su aplicación](#publish-your-application) sección más adelante.
+5. Agregue los archivos de la aplicación al directorio raíz del rol de trabajo.
+6. Publique la aplicación como se describe en la sección [Publicación de la aplicación](#publish-your-application) más adelante.
 
-## <a name="run-your-application-in-hello-compute-and-storage-emulators"></a>Ejecutar la aplicación en hello emuladores de proceso y almacenamiento
-Hello emuladores de Azure proporcionan un entorno local en el que puede probar la aplicación de Azure antes de implementarla en la nube toohello. Hay algunas diferencias entre los emuladores de Hola y Hola entorno de Azure. toounderstand esto mejor, vea [usar el emulador de almacenamiento de Azure de Hola para desarrollo y pruebas](storage/common/storage-use-emulator.md).
+## <a name="run-your-application-in-the-compute-and-storage-emulators"></a>Ejecución de la aplicación en los emuladores de proceso y de almacenamiento
+Los emuladores de Azure ofrecen un entorno local en el que puede probar la aplicación de Azure antes de implementarla en la nube. Existen algunas diferencias entre los emuladores y el entorno de Azure. Para comprender esto mejor, consulte [Uso del emulador de almacenamiento de Azure para desarrollo y pruebas](storage/common/storage-use-emulator.md).
 
-Tenga en cuenta que debe tener PHP había instalado localmente emulador de proceso de toouse Hola. emulador de proceso de Hello usará su local toorun de instalación de PHP la aplicación.
+Tenga en cuenta que debe tener instalado PHP localmente para usar el emulador de proceso. El emulador de proceso usará la instalación de PHP local para ejecutar la aplicación.
 
-ejecutar el proyecto en emuladores de hello, de toorun Hola siguiente comando desde el directorio raíz de su proyecto:
+Para ejecutar el proyecto en los emuladores, ejecute el comando siguiente desde el directorio raíz del proyecto:
 
     PS C:\MyProject> Start-AzureEmulator
 
-Verá toothis similar de salida:
+Verá una salida similar a esto:
 
     Creating local package...
     Starting Emulator...
     Role is running at http://127.0.0.1:81
     Started
 
-Puede ver la aplicación que se ejecuta en el emulador de hello, abra un explorador web y exploración toohello dirección local se muestra en la salida de hello (`http://127.0.0.1:81` en la salida de ejemplo de Hola anterior).
+Puede ver la aplicación en ejecución en el emulador; para ello, abra un explorador web y vaya a la dirección local que aparece en la salida (`http://127.0.0.1:81` en la salida del ejemplo anterior).
 
-emuladores de hello toostop, ejecute este comando:
+Para detener los emuladores, ejecute este comando:
 
     PS C:\MyProject> Stop-AzureEmulator
 
 ## <a name="publish-your-application"></a>Publicación de la aplicación
-toopublish la aplicación, necesita toofirst importar la configuración de publicación mediante el uso de hello [importación-AzurePublishSettingsFile](https://msdn.microsoft.com/library/azure/dn790370.aspx) cmdlet. A continuación, puede publicar su aplicación mediante el uso de hello [AzureServiceProject publicar](https://msdn.microsoft.com/library/azure/dn495166.aspx) cmdlet. Para obtener información acerca de la firma, consulte [cómo tooinstall y configurar Azure PowerShell](/powershell/azure/overview).
+Para publicar la aplicación, primero tiene que importar la configuración de la publicación con el cmdlet [Import-AzurePublishSettingsFile](https://msdn.microsoft.com/library/azure/dn790370.aspx) . Después, puede publicar la aplicación con el cmdlet [Publish-AzureServiceProject](https://msdn.microsoft.com/library/azure/dn495166.aspx) . Para obtener información sobre cómo iniciar sesión, consulte [Cómo instalar y configurar Azure PowerShell](/powershell/azure/overview).
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para obtener más información, vea hello [Centro para desarrolladores de PHP](/develop/php/).
+Para obtener más información, consulte el [Centro para desarrolladores de PHP](/develop/php/).
 
-[Azure SDK para PHP]: /develop/php/common-tasks/download-php-sdk/
+[SDK de Azure para PHP]: /develop/php/common-tasks/download-php-sdk/
 [install ps and emulators]: http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
-[(.csdef) de la definición del servicio]: http://msdn.microsoft.com/library/windowsazure/ee758711.aspx
+[definición del servicio (.csdef)]: http://msdn.microsoft.com/library/windowsazure/ee758711.aspx
 [configuración del servicio (.cscfg)]: http://msdn.microsoft.com/library/windowsazure/ee758710.aspx
 [iis.net]: http://www.iis.net/
 [sql native client]: http://msdn.microsoft.com/sqlserver/aa937733.aspx
 [sqlsrv drivers]: http://php.net/sqlsrv
-[sqlncli.msi x64 installer]: http://go.microsoft.com/fwlink/?LinkID=239648
+[instalador sqlncli.msi x64]: http://go.microsoft.com/fwlink/?LinkID=239648

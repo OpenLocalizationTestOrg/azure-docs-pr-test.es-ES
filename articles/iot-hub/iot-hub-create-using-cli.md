@@ -1,6 +1,6 @@
 ---
-title: aaaCreate un centro de IoT mediante Azure CLI (az.py) | Documentos de Microsoft
-description: "¿Cómo toocreate un centro de IoT de Azure utilizando Hola multiplataforma Azure CLI 2.0 (az.py)."
+title: "Creación de una instancia de IoT Hub mediante la CLI de Azure (az-py) | Microsoft Docs"
+description: "Creación de una instancia de Azure IoT Hub mediante la CLI de Azure 2.0 (az.py) multiplataforma."
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
@@ -14,49 +14,49 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: dobett
-ms.openlocfilehash: 9c9639235c2ac343e6ceb9578291dafaea26ea24
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 161089159999a4a63a39b059e69a08b7a9297445
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-an-iot-hub-using-hello-azure-cli-20"></a>Crear un centro de IoT con hello 2.0 de CLI de Azure
+# <a name="create-an-iot-hub-using-the-azure-cli-20"></a>Creación de una instancia de IoT Hub mediante la CLI de Azure 2.0
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
 ## <a name="introduction"></a>Introducción
 
-Puede usar toocreate de CLI de Azure 2.0 (az.py) y administrar los centros de IoT de Azure mediante programación. Este artículo muestra cómo toouse Hola toocreate de CLI de Azure 2.0 (az.py) a un centro de IoT.
+Puede usar la CLI de Azure 2.0 (az.py) para crear y administrar las instancias de Azure IoT Hub mediante programación. En este artículo se muestra cómo utilizar la CLI de Azure 2.0 (az.py) para crear una instancia de IoT Hub.
 
-Puede completar la tarea hello mediante uno de hello después de las versiones CLI:
+Puede completar la tarea mediante una de las siguientes versiones de la CLI:
 
-* [CLI de Azure (azure.js)](iot-hub-create-using-cli-nodejs.md) : Hola CLI para modelos de implementación de administración de recursos y clásico Hola.
-* Azure CLI 2.0 (az.py) - Hola CLI de próxima generación para el modelo de implementación de administración de hello recursos tal como se describe en este artículo.
+* [CLI de Azure (azure.js)](iot-hub-create-using-cli-nodejs.md). La CLI de los modelos de implementación clásico y de administración de recursos.
+* CLI de Azure 2.0 (az.py): la CLI de última generación para el modelo de implementación con Resource Manager como se describe en este artículo.
 
-toocomplete este tutorial, necesita Hola siguientes:
+Para completar este tutorial, necesitará lo siguiente:
 
 * Una cuenta de Azure activa. Si no tiene ninguna, puede crear una [cuenta gratuita][lnk-free-trial] en tan solo unos minutos.
 * [CLI de Azure 2.0][lnk-CLI-install].
 
 ## <a name="sign-in-and-set-your-azure-account"></a>Inicio de sesión y configuración de la cuenta de Azure
 
-Inicie sesión en tooyour cuenta de Azure y seleccione su suscripción.
+Inicie sesión en la cuenta de Azure y seleccione su suscripción.
 
-1. En el símbolo de hello, ejecute hello [comando de inicio de sesión][lnk-login-command]:
+1. En el símbolo del sistema, ejecute el [comando de inicio de sesión][lnk-login-command]:
     
     ```azurecli
     az login
     ```
 
-    Siga Hola instrucciones tooauthenticate utilizando el código de hello e inicie sesión en tooyour cuenta de Azure a través de un explorador web.
+    Siga las instrucciones para realizar la autenticación mediante el código e inicie sesión en la cuenta de Azure a través de un explorador web.
 
-2. Si tiene varias suscripciones de Azure, iniciar sesión en tooAzure concede acceso tooall Hola asociadas con sus credenciales de cuentas de Azure. Utilice Hola siguiente [toolist comando Hola cuentas de Azure] [ lnk-az-account-command] disponibles para toouse:
+2. Si tiene varias suscripciones de Azure, iniciar sesión en Azure le concede acceso a todas las cuentas de Azure asociadas con las credenciales. Use el siguiente [comando para mostrar las cuentas de Azure][lnk-az-account-command] que tiene disponibles para su uso:
     
     ```azurecli
     az account list 
     ```
 
-    Usar hello después de suscripción de tooselect de comando que desea toouse toorun Hola comandos toocreate su centro de IoT. Puede usar el nombre de la suscripción de Hola o Id. de salida de hello del comando anterior hello:
+    Use el siguiente comando para seleccionar la suscripción que desea usar para ejecutar los comandos que crearán la instancia de IoT Hub. Puede usar el nombre de la suscripción o el identificador de la salida del comando anterior:
 
     ```azurecli
     az account set --subscription {your subscription name or id}
@@ -64,20 +64,20 @@ Inicie sesión en tooyour cuenta de Azure y seleccione su suscripción.
 
 ## <a name="create-an-iot-hub"></a>Creación de un IoT Hub
 
-Use hello Azure CLI toocreate un grupo de recursos y, a continuación, agregue un centro de IoT.
+Use la CLI de Azure para crear un grupo de recursos y, luego, agregue una instancia de IoT Hub.
 
-1. Cuando crea una instancia de IoT Hub, debe crearla en un grupo de recursos. Utilice un grupo de recursos existente, o bien ejecute hello siguiente [comando toocreate un grupo de recursos][lnk-az-resource-command]:
+1. Cuando crea una instancia de IoT Hub, debe crearla en un grupo de recursos. Use un grupo de recursos existente o ejecute el comando [siguiente para crear un grupo de recursos][lnk-az-resource-command]:
     
     ```azurecli
      az group create --name {your resource group name} --location westus
     ```
 
     > [!TIP]
-    > ejemplo de Hola anterior crea grupo de recursos de hello en hello ubicación oeste de EE.. Puede ver una lista de ubicaciones disponibles mediante la ejecución de comando hello `az account list-locations -o table`.
+    > El ejemplo anterior crea el grupo de recursos en la ubicación del oeste de EE. UU. Puede ejecutar el comando `az account list-locations -o table` para ver una lista de las ubicaciones disponibles.
     >
     >
 
-2. Ejecute hello siguiente [comando toocreate un centro de IoT] [ lnk-az-iot-command] en el grupo de recursos, con un nombre único global para el centro de IoT:
+2. Ejecute el comando [ siguiente para crear una instancia de IoT Hub][lnk-az-iot-command] en el grupo de recursos, con un nombre único global para la instancia de IoT Hub:
     
     ```azurecli
     az iot hub create --name {your iot hub name} --resource-group {your resource group name} --sku S1
@@ -87,34 +87,34 @@ Use hello Azure CLI toocreate un grupo de recursos y, a continuación, agregue u
 
 
 > [!NOTE]
-> comando anterior Hola crea un centro de IoT en hello S1 para el que se le cobra según el nivel de precios. Para más información, consulte el artículo sobre los [precios de Azure IoT Hub][lnk-iot-pricing].
+> El comando anterior crea una instancia de IoT Hub en el plan de tarifa S1 según el que factura. Para más información, consulte el artículo sobre los [precios de Azure IoT Hub][lnk-iot-pricing].
 >
 >
 
 ## <a name="remove-an-iot-hub"></a>Eliminación de una instancia de IoT Hub
 
-Puede usar hello Azure CLI demasiado[eliminar un recurso individual][lnk-az-resource-command], como un centro de IoT o eliminar un grupo de recursos y todos sus recursos, incluidos los centros de IoT.
+Puede usar la CLI de Azure para [eliminar un recurso individual][lnk-az-resource-command], como una instancia de IoT Hub, o para eliminar un grupo de recursos y todos los recursos, incluida cualquier instancia de IoT Hub.
 
-toodelete un centro de IoT, ejecute el siguiente comando de hello:
+Ejecute el comando siguiente para eliminar una instancia de IoT Hub:
 
 ```azurecli
 az iot hub delete --name {your iot hub name} --resource-group {your resource group name}
 ```
 
-toodelete de comandos de un grupo de recursos y todos sus recursos, ejecución Hola siguientes:
+Ejecute el comando siguiente para eliminar un grupo de recursos y todos sus recursos:
 
 ```azurecli
 az group delete --name {your resource group name}
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-toolearn más sobre el desarrollo de centro de IoT, vea Hola siguientes artículos:
+Para obtener más información sobre cómo desarrollar para IoT Hub, consulte los siguientes artículos:
 
 * [Guía para desarrolladores de IoT Hub][lnk-devguide]
 
-toofurther explorar las capacidades de Hola de centro de IoT, vea:
+Para explorar aún más las funcionalidades de Centro de IoT, consulte:
 
-* [Uso de hello toomanage portal Azure centro de IoT][lnk-portal]
+* [Uso de Azure Portal para administrar IoT Hub][lnk-portal]
 
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/

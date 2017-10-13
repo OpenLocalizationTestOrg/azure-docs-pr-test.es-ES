@@ -1,6 +1,6 @@
 ---
-title: aaaPolymorphism en el marco de trabajo de hello Reliable Actors | Documentos de Microsoft
-description: "Crear jerarquías de interfaces de .NET y tipos de funcionalidad de Reliable Actors framework tooreuse hello y definiciones de API."
+title: Polimorfismo en el marco de Reliable Actors | Microsoft Docs
+description: "Cree jerarquías de tipos e interfaces de .NET en el marco de trabajo de Reliable Actors para volver a usar la funcionalidad y las definiciones de la API."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.openlocfilehash: ed9ec442595bd9a5e48c9af1f6aac003439b81f4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 36a59a41b2261369a2062c76ef90aebf7e24a221
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="polymorphism-in-hello-reliable-actors-framework"></a>Polimorfismo en el marco de trabajo de hello Reliable Actors
-Hola Reliable Actors marco de trabajo permite actores toobuild utilizando numerosos Hola mismas técnicas que le gustaría usar en diseño orientado a objetos. Una de estas técnicas es polimorfismo, que permite que los tipos e interfaces tooinherit de más generalizada elementos primarios. Herencia en el marco de trabajo de hello Reliable Actors generalmente sigue el modelo de .NET de hello con algunas restricciones adicionales. En el caso de Java/Linux, sigue modelo de Java de Hola.
+# <a name="polymorphism-in-the-reliable-actors-framework"></a>Polimorfismo en el marco de trabajo de Reliable Actors
+El marco de Reliable Actors permite compilar actores empleando muchas de las mismas técnicas que usaría en el diseño orientado a objetos. Una de esas técnicas es el polimorfismo, que los tipos y las interfaces hereden de elementos primarios más generalizados. La herencia en el marco de Reliable Actors suele seguir el modelo de .NET con algunas restricciones adicionales. En el caso de Java/Linux, sigue el modelo de Java.
 
 ## <a name="interfaces"></a>Interfaces
-el marco de trabajo de Hello Reliable Actors requiere toodefine toobe al menos una interfaz implementada por el tipo de actor. Esta interfaz es toogenerate usa una clase de proxy que puede usarse en los clientes toocommunicate con los actores. Las interfaces pueden heredar elementos de otras interfaces, siempre y cuando todas las implementadas por un tipo de actor y todos sus elementos principales deriven de IActor(C#) o Actor(Java) en última instancia. IActor(C#) y Actor(Java) son interfaces base definido por la plataforma de Hola para actores en marcos de hello .NET y Java respectivamente. Por lo tanto, ejemplo de Hola polimorfismo clásico utilizando formas sería algo parecido a esto:
+El marco Reliable Actors requiere la definición de al menos una interfaz que se implementará por el tipo de actor. Esta interfaz se usa para generar una clase de proxy que se puede usar por los clientes para comunicarse con los actores. Las interfaces pueden heredar elementos de otras interfaces, siempre y cuando todas las implementadas por un tipo de actor y todos sus elementos principales deriven de IActor(C#) o Actor(Java) en última instancia. IActor(C#) y Actor(Java) son las interfaces base definidas por plataforma destinadas a actores en .NET Framework y en la plataforma Java, respectivamente. Así, el ejemplo clásico de polimorfismo en el que se usan formas sería algo parecido a lo siguiente:
 
 ![Jerarquía de la interfaz de los actores de forma][shapes-interface-hierarchy]
 
 ## <a name="types"></a>Tipos
-También puede crear una jerarquía de tipos de actor, que se derivan de la clase base de hello Actor que proporciona la plataforma de Hola. En caso de hello de formas, es posible que tenga una base de `Shape`(C#) o `ShapeImpl`tipo (Java):
+También puede crear una jerarquía de tipos de actores, que se derivan de la clase Actor base proporcionada por la plataforma. En el caso de las formas, es posible tener un tipo base `Shape`(C#) o `ShapeImpl`(Java):
 
 ```csharp
 public abstract class Shape : Actor, IShape
@@ -48,7 +48,7 @@ public abstract class ShapeImpl extends FabricActor implements Shape
 }
 ```
 
-Subtipos de `Shape`(C#) o `ShapeImpl`(Java) puede invalidar los métodos de hello base.
+Los subtipos de `Shape`(C#) o `ShapeImpl`(Java) pueden invalidar métodos del tipo base.
 
 ```csharp
 [ActorService(Name = "Circle")]
@@ -91,11 +91,11 @@ public class Circle extends ShapeImpl implements Circle
 }
 ```
 
-Hola Nota `ActorService` atributo en el tipo de actor Hola. Este atributo indica el marco de trabajo de hello Actor confiable que debe crear automáticamente un servicio de hospedaje actores de este tipo. En algunos casos, puede que quieran toocreate un tipo base que está pensado únicamente para la funcionalidad de uso compartido con subtipos y nunca será tooinstantiate usado actores concretas. En esos casos, debe usar hello `abstract` tooindicate de palabra clave que no se va a crear nunca un actor basado en ese tipo.
+Observe el atributo `ActorService` en el tipo de actor. Este atributo indica al marco de Reliable Actors que debe crear automáticamente un servicio para hospedar actores de este tipo. En algunos casos, quizás quiera crear un tipo base que esté pensado únicamente para compartir la funcionalidad con subtipos y que nunca se usará para crear instancias de actores concretos. En esos casos, debe usar la palabra clave `abstract` para indicar que nunca va a crear un actor basado en ese tipo.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Vea [cómo el marco de trabajo de hello Reliable Actors aprovecha la plataforma Service Fabric de hello](service-fabric-reliable-actors-platform.md) tooprovide confiabilidad, escalabilidad y el estado coherente.
-* Obtenga información acerca de hello [ciclo de vida de actor](service-fabric-reliable-actors-lifecycle.md).
+* Consulte [cómo el marco de trabajo de Reliable Actors aprovecha la plataforma de Service Fabric](service-fabric-reliable-actors-platform.md) para ofrecer confiabilidad, escalabilidad y un estado coherente.
+* Obtenga información sobre el [ciclo de vida de los actores](service-fabric-reliable-actors-lifecycle.md).
 
 <!-- Image references -->
 

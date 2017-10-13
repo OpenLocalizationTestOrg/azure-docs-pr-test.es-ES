@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure aplicación visión telemetría correlación | Documentos de Microsoft"
+title: "Correlación de Telemetría de Application Insights | Microsoft Docs"
 description: "Correlación de Telemetría de Application Insights"
 services: application-insights
 documentationcenter: .net
@@ -12,36 +12,36 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: bwren
-ms.openlocfilehash: 3ed8c589d237cac5daceac939ca893b7d81a2967
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 747c00842f4df9c7fbd816c99771ba8a267106a4
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Correlación de Telemetría en Application Insights
 
-En Hola a todos de micro servicios, cada operación lógica requiere trabajo realizado en los distintos componentes del servicio de Hola. Cada uno de estos componentes puede supervisarse por separado mediante [Application Insights](app-insights-overview.md). componente de aplicación de Hello web se comunica con credenciales de usuario de toovalidate de componente de proveedor de autenticación y con datos de tooget de componente de API de hello para la visualización. componente de API de Hola a su vez puede consultar los datos de otros servicios y utilizar los componentes de proveedor de caché y notificar al componente de facturación de hello sobre esta llamada. Application Insights admite la correlación de telemetría distribuida. Permite toodetect qué componente es responsable de errores o degradación del rendimiento.
+En el mundo de los microservicios, todas las operaciones lógicas requieren que se realice el trabajo en diversos componentes del servicio. Cada uno de estos componentes puede supervisarse por separado mediante [Application Insights](app-insights-overview.md). El componente de la aplicación web se comunica con el componente del proveedor de autenticación para validar las credenciales de usuario y con el componente de API a fin de obtener datos para su visualización. El componente de API, a su vez, puede consultar datos de otros servicios, usar componentes de proveedor de la caché e informar al componente de facturación sobre esta llamada. Application Insights admite la correlación de telemetría distribuida. Permite detectar qué componente es responsable de los errores o las degradaciones del rendimiento.
 
-Este artículo se explica el modelo de datos de hello utilizado por la telemetría de Application Insights toocorrelate enviados por varios componentes. Incluye técnicas de propagación de contexto de Hola y protocolos. También cubre la implementación de Hola de conceptos de correlación de hello en lenguajes diferentes y plataformas.
+Este artículo explica el modelo de datos utilizado por Application Insights para poner en correlación la telemetría enviada por varios componentes. En él se tratan las técnicas y protocolos de propagación de contexto. También se trata la implementación de los conceptos de correlación en distintos idiomas y plataformas.
 
 ## <a name="telemetry-correlation-data-model"></a>Modelo de datos de correlación de telemetría
 
-Application Insights define el [modelo de datos](application-insights-data-model.md) para la correlación de telemetría distribuida. telemetría tooassociate con operación lógica de hello, cada elemento de telemetría tiene un campo de contexto denominado `operation_Id`. Este identificador es compartido por todos los elementos telemetría en seguimiento de hello distribuida. De este modo, aun con la pérdida de telemetría de una sola capa, todavía puede asociar la telemetría notificada por otros componentes.
+Application Insights define el [modelo de datos](application-insights-data-model.md) para la correlación de telemetría distribuida. Para asociar la telemetría con la operación lógica, todos los elementos de telemetría tienen el campo de contexto denominado `operation_Id`. Todos los elementos de telemetría comparten este identificador en el seguimiento distribuido. De este modo, aun con la pérdida de telemetría de una sola capa, todavía puede asociar la telemetría notificada por otros componentes.
 
-Operación lógica distribuida normalmente consta de un conjunto de operaciones más pequeñas - solicitudes procesadas por uno de los componentes de Hola. La [telemetría de solicitudes](application-insights-data-model-request-telemetry.md) define esas operaciones. Cada telemetría de solicitudes cuenta con su propio `id`, que la identifica global y exclusivamente. Y todos los telemetría - seguimientos, excepciones, etc. asociados a esta solicitud debe establecer hello `operation_parentId` toohello valor de solicitud de hello `id`.
+Normalmente, la operación lógica distribuida consta de un conjunto de operaciones más pequeñas: solicitudes procesadas por uno de los componentes. La [telemetría de solicitudes](application-insights-data-model-request-telemetry.md) define esas operaciones. Cada telemetría de solicitudes cuenta con su propio `id`, que la identifica global y exclusivamente. Además, toda la telemetría (seguimientos, excepciones, etc.) asociada a esta solicitud debe establecer `operation_parentId` en el valor de la solicitud `id`.
 
-Cada operación de salida como componente de http llamada tooanother representado por [telemetría dependencia](application-insights-data-model-dependency-telemetry.md). La telemetría de dependencia también define su propio `id`, que es globalmente único. La telemetría de solicitudes, iniciada por esta llamada de dependencia, la usa como `operation_parentId`.
+La [telemetría de dependencia](application-insights-data-model-dependency-telemetry.md) representa todas las operaciones salientes como, por ejemplo, la llamada HTTP a otro componente. La telemetría de dependencia también define su propio `id`, que es globalmente único. La telemetría de solicitudes, iniciada por esta llamada de dependencia, la usa como `operation_parentId`.
 
-Puede crear vista de Hola de operación lógica distribuida mediante `operation_Id`, `operation_parentId`, y `request.id` con `dependency.id`. Esos campos también definen el orden de causalidad de Hola de las llamadas de telemetría.
+Puede crear la vista de la operación lógica distribuida usando `operation_Id`, `operation_parentId` y `request.id` con `dependency.id`. Esos campos también definen el orden de causalidad de las llamadas de telemetría.
 
-En el entorno de servicios micro, seguimientos de componentes pueden enviarse toohello diferentes almacenamientos. Cada componente puede tener su propia clave de instrumentación en Application Insights. tooget telemetría para la operación lógica de hello, deberá tooquery datos desde el almacenamiento de cada. Cuando el número de almacenamiento es muy grande, debe toohave una sugerencia sobre dónde toolook siguiente.
+En el entorno de los microservicios, los seguimientos de componentes pueden ir a los distintos almacenamientos. Cada componente puede tener su propia clave de instrumentación en Application Insights. A fin de obtener la telemetría para la operación lógica, es necesario consultar los datos de cada almacenamiento. Si el número de almacenamientos es muy elevado, debe tener una idea de dónde mirar a continuación.
 
-Application Insights modelo de datos define dos campos toosolve este problema: `request.source` y `dependency.target`. primer campo de Hello identifica el componente de Hola que inició la solicitud de la dependencia de Hola y hello en segundo lugar identifica qué componente devolvió una respuesta de llamada de la dependencia de Hola Hola.
+El modelo de datos de Application Insights define dos campos, `request.source` y `dependency.target`, para solucionar este problema. El primer campo identifica el componente que inició la solicitud de dependencia y, el segundo, el componente que devolvió la respuesta de la llamada de dependencia.
 
 
 ## <a name="example"></a>Ejemplo
 
-Veamos un ejemplo de una aplicación COTIZACIONES mostrando Hola precio actual de mercado de un material utilizando API externa Hola denominado API de COTIZACIONES. Hola aplicación COTIZACIONES tiene una página `Stock page` abre Hola cliente web explorador utilizando `GET /Home/Stock`. las consultas de aplicación Hola Hola existencias API con una llamada HTTP `GET /api/stock/value`.
+Tomemos como ejemplo una aplicación COTIZACIONES BURSÁTILES que muestra el precio de mercado actual de una acción con una API externa denominada API DE COTIZACIONES. La aplicación COTIZACIONES BURSÁTILES tiene una página `Stock page` abierta por el explorador web de cliente mediante `GET /Home/Stock`. La aplicación consulta la API de COTIZACIONES BURSÁTILES mediante el uso de una llamada HTTP `GET /api/stock/value`.
 
 Puede analizar la telemetría resultante mediante la ejecución de una consulta:
 
@@ -51,7 +51,7 @@ Puede analizar la telemetría resultante mediante la ejecución de una consulta:
 | project timestamp, itemType, name, id, operation_ParentId, operation_Id
 ```
 
-En la nota de la vista de resultado Hola que todos los elementos de telemetría compartan la raíz de hello `operation_Id`. Cuando llama ajax realizadas desde la página de hello - nuevo identificador único `qJSXU` es toohello asignado dependencia telemetría e Id. de la vista de página se utiliza como `operation_ParentId`. A su vez, la solicitud de servidor utiliza el id. de ajax como `operation_ParentId`, etc.
+En la vista de resultados, observe que todos los elementos de telemetría comparten la raíz `operation_Id`. Al realizarse la llamada ajax desde la página, el nuevo y único id. `qJSXU` se asigna a la telemetría de dependencia y el id. de pageView se usa como `operation_ParentId`. A su vez, la solicitud de servidor utiliza el id. de ajax como `operation_ParentId`, etc.
 
 | itemType   | name                      | id           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
@@ -60,28 +60,28 @@ En la nota de la vista de resultado Hola que todos los elementos de telemetría 
 | request    | GET Home/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
 | dependency | GET /api/stock/value      | bBrf2L7mm2g= | KqKwlrSt9PA=       | STYz         |
 
-Ahora cuando Hola llamada `GET /api/stock/value` realizados servicio externo tooan desea tooknow Hola identidad de ese servidor. De este modo, puede establecer el campo `dependency.target` adecuadamente. Cuando el servicio externo de hello no admite la supervisión - `target` se establece toohello el nombre de host de servicio de hello como `stock-prices-api.com`. Sin embargo si ese servicio se identifica a sí mismo devolviendo predefinido encabezado HTTP - `target` contiene la identidad de servicio de Hola que permite el seguimiento de toobuild distribuida Application Insights consultando la telemetría de dicho servicio. 
+Ahora, al realizarse la llamada `GET /api/stock/value` a un servicio externo, desea conocer la identidad de ese servidor. De este modo, puede establecer el campo `dependency.target` adecuadamente. Si el servicio externo no admite la supervisión, `target` se establece en el nombre de host del servicio como `stock-prices-api.com`. Sin embargo, si ese servicio se identifica devolviendo un encabezado HTTP predefinido, `target` contiene la identidad de servicio que permite a Application Insights crear un seguimiento distribuido consultando la telemetría de ese servicio. 
 
 ## <a name="correlation-headers"></a>Encabezados de correlación
 
-Estamos trabajando en una propuesta de RFC para hello [correlación protocolo HTTP](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v1.md). Esta propuesta define dos encabezados:
+Estamos trabajando en una propuesta de RFC para el [protocolo HTTP de correlación](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v1.md). Esta propuesta define dos encabezados:
 
-- `Request-Id`llevar el identificador único global de hello de la llamada de Hola
-- `Correlation-Context`-llevar la colección de pares de valor de nombre de Hola de propiedades de la traza de hello distribuida
+- `Request-Id`: lleva el id. único a nivel global de la llamada
+- `Correlation-Context`: lleva la colección de pares nombre-valor de las propiedades de seguimiento distribuidas
 
-Hola estándar también define dos esquemas de `Request-Id` generación - jerárquico y plano. Con un esquema plano hello, hay un conocido `Id` clave definida para hello `Correlation-Context` colección.
+El estándar también define dos esquemas de generación `Request-Id`: sin formato y jerárquico. Con el esquema sin formato, hay una clave de `Id` conocida definida para la colección `Correlation-Context`.
 
-Visión de la aplicación define hello [extensión](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md) para la correlación de hello protocolo HTTP. Usa `Request-Context` asignar nombre a pares de valor de colección de hello toopropagate de propiedades utilizados por el llamador inmediato de Hola o destinatario. Application Insights SDK utiliza este encabezado tooset `dependency.target` y `request.source` campos.
+Application Insights define la [extensión](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md) del protocolo HTTP de correlación. Usa pares nombre-valor `Request-Context` para propagar la colección de propiedades utilizadas por el autor o destinatario de la llamada. El SDK de Application Insights usa este encabezado para establecer los campos `dependency.target` y `request.source`.
 
 ## <a name="open-tracing-and-application-insights"></a>Open Tracing y Application Insights
 
 Aspecto de los modelos de datos de [Open Tracing](http://opentracing.io/) y Application Insights 
 
-- `request`, `pageView` asigna demasiado**intervalo** con`span.kind = server`
-- `dependency`se asigna demasiado**intervalo** con`span.kind = client`
-- `id`de un `request` y `dependency` asigna demasiado**Span.Id**
-- `operation_Id`se asigna demasiado**TraceId**
-- `operation_ParentId`se asigna demasiado**referencia** de tipo`ChileOf`
+- `request`, `pageView` se asigna a **Span** con `span.kind = server`
+- `dependency` se asigna a **Span** con `span.kind = client`
+- `id` de un elemento `request` y `dependency` se asigna a **Span.Id**
+- `operation_Id` se asigna a **TraceId**
+- `operation_ParentId` se asigna a **Reference** de tipo `ChileOf`
 
 Consulte [modelo de datos](application-insights-data-model.md) para los tipos y el modelo de datos de Application Insights.
 
@@ -90,23 +90,23 @@ Consulte [specification](https://github.com/opentracing/specification/blob/maste
 
 ## <a name="telemetry-correlation-in-net"></a>Correlación de telemetría en .NET
 
-Con el tiempo .NET define el número de formas toocorrelate telemetría y diagnósticos registros. No hay `System.Diagnostics.CorrelationManager` permitir tootrack [LogicalOperationStack y ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx). `System.Diagnostics.Tracing.EventSource`y Windows ETW definir método hello [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx). `ILogger` usa [ámbitos de registro](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes). WCF y HTTP conectan la propagación del contexto "actual".
+Con el tiempo, .NET ha definido varias formas de poner en correlación la telemetría y registros de diagnósticos. Hay un elemento, `System.Diagnostics.CorrelationManager`, que permite realizar un seguimiento de [LogicalOperationStack y ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx). `System.Diagnostics.Tracing.EventSource` y el seguimiento de eventos para Windows definen el método [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx). `ILogger` usa [ámbitos de registro](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes). WCF y HTTP conectan la propagación del contexto "actual".
 
-Sin embargo, esos métodos no han habilitado la compatibilidad con el seguimiento distribuido automático. `DiagnosticsSource`es un toosupport de forma automática entre la correlación de la máquina. Bibliotecas de .NET admiten el origen de diagnóstico y permiten la propagación automática entre equipos del contexto de la correlación de Hola a través de transporte de hello como http.
+Sin embargo, esos métodos no han habilitado la compatibilidad con el seguimiento distribuido automático. `DiagnosticsSource` es una forma de admitir la correlación entre máquinas. Las bibliotecas de .NET admiten Diagnostics Source (Origen de diagnóstico) y permiten la propagación entre máquinas del contexto de propagación a través del transporte como http.
 
-Hola [guía tooActivities](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) en origen de diagnóstico se explican conceptos básicos de Hola de seguimiento de actividades. 
+En la [guía de Activities](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) (Actividades) de Diagnostics Source (Origen de diagnóstico) se explican los conceptos básicos de Activities (Actividades) de seguimiento. 
 
-Núcleo de ASP.NET 2.0 admite la extracción de encabezados Http y a partir de Hola nueva actividad. 
+ASP.NET Core 2.0 admite la extracción de encabezados HTTP e inicia la nueva Activity (Actividad). 
 
-`System.Net.HttpClient`versión inicial `<fill in>` admite la inserción automática de correlación Hola encabezados Http y llamada de hello http como una actividad de seguimiento.
+La versión inicial de `System.Net.HttpClient`, `<fill in>`, admite la inserción automática de los encabezados HTTP de correlación y realiza un seguimiento de la llamada HTTP como Activity (Actividad).
 
-Hay un nuevo módulo Http [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/) para hello clásico de ASP.NET. En este módulo se implementa la correlación de telemetría mediante DiagnosticsSource (Origen de diagnóstico). Inicia la actividad en función de los encabezados de solicitud entrantes.  También correlaciona telemetría de las distintas fases de Hola de procesamiento de la solicitud. Incluso en los casos Hola cada fase de procesamiento de IIS se ejecuta en los subprocesos de administrar distintos.
+Hay un nuevo módulo HTTP, [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/) de ASP.NET clásico. En este módulo se implementa la correlación de telemetría mediante DiagnosticsSource (Origen de diagnóstico). Inicia la actividad en función de los encabezados de solicitud entrantes.  También pone en correlación la telemetría de las diversas fases del procesamiento de solicitudes. Incluso en los casos en que se ejecutan todas las fases del procesamiento de IIS en un subproceso administrado distinto.
 
-Versión inicial de aplicación visión SDK `2.4.0-beta1` usa telemetría toocollect DiagnosticsSource y la actividad y asociarla a la actividad actual de hello. 
+La versión inicial del SDK de Application Insights, `2.4.0-beta1`, usa DiagnosticsSource (Origen de diagnóstico) y Activity (Actividad) para recolectar la telemetría y asociarla a la actividad actual. 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
 - [Escritura de telemetría personalizada](app-insights-api-custom-events-metrics.md)
 - Incorpore todos los componentes del microservicio en Application Insights. Consulte las [plataformas compatibles](app-insights-platforms.md).
 - Consulte [modelo de datos](application-insights-data-model.md) para los tipos y el modelo de datos de Application Insights.
-- Obtenga información acerca de cómo demasiado[ampliar y filtrar telemetría](app-insights-api-filtering-sampling.md).
+- Obtenga información sobre cómo [ampliar y filtrar la telemetría](app-insights-api-filtering-sampling.md).

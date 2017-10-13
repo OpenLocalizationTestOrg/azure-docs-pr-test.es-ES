@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure AD AngularJS Introducción | Documentos de Microsoft"
-description: "Cómo toobuild una aplicación de página de AngularJS que se integra con Azure AD para inicio de sesión y llama a las API de protegido por AD Azure mediante el uso de OAuth."
+title: "Introducción a Azure AD AngularJS | Microsoft Docs"
+description: "Creación de una aplicación de una sola página AngularJS que se integra con Azure AD para el inicio de sesión y llama a las API protegidas de Azure AD mediante OAuth."
 services: active-directory
 documentationcenter: 
 author: jmprieur
@@ -15,59 +15,59 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: eca5e1c9662186dfae4f96ca3041f9350583cf79
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 4153910bc03f112f84c26cda6f9c78f11028b934
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="help-secure-angularjs-single-page-apps-by-using-azure-ad"></a>Ayuda para proteger aplicaciones de una sola página AngularJS mediante Azure AD
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-Azure Active Directory (Azure AD) permite simple y sencillo para tooadd inicio de sesión, cierre de sesión, y llamadas de API de OAuth segura tooyour aplicaciones de la página.  Permite a los usuarios de aplicaciones tooauthenticate con sus cuentas de Windows Server Active Directory y consumir cualquier API que Azure AD le ayuda a proteger, como Hola API de Office 365 o hello Azure API web.
+Con Azure Active Directory (Azure AD), es sencillo y directo agregar llamadas de inicio y cierre de sesión, así como llamadas seguras de API de OAuth a las aplicaciones de una sola página.  Permite que la aplicación autentique a los usuarios con sus cuentas de Active Directory de Windows Server, además de consumir cualquier web API que Azure AD ayuda a proteger, como las API de Office 365 o la API de Azure.
 
-Para las aplicaciones de JavaScript que se ejecuta en un explorador, Azure AD proporciona Hola biblioteca de autenticación de Active Directory (ADAL) o adal.js. Hola único propósito de adal.js es toomake más sencilla para los tokens de acceso de tooget de su aplicación. toodemonstrate lo fácil es, a continuación, crearemos una aplicación de la lista de AngularJS tooDo que:
+Para las aplicaciones de JavaScript que se ejecutan en un explorador, Azure AD proporciona la biblioteca de autenticación de Active Directory (ADAL), o adal.js. La única finalidad de adal.js es facilitar a su aplicación la obtención de tokens de acceso. Para demostrar lo fácil que es, crearemos aquí una aplicación de lista de tareas pendientes (ToDo) de AngularJS que permita realizar las siguientes acciones:
 
-* Usuario de hello signos en toohello aplicación mediante Azure AD como proveedor de identidades de Hola.
+* Iniciar sesión del usuario en la aplicación con Azure AD como proveedor de identidades.
 
-* Muestra información acerca del usuario de Hola.
-* Forma segura llamadas Hola tooDo de la aplicación API de la lista mediante el uso de tokens de portador de Azure AD.
-* Signos de Hola usuario fuera de la aplicación hello.
+* Mostrar información sobre el usuario
+* Realizar una llamada con seguridad a la API de la lista de tareas pendientes de la aplicación mediante tokens de portador de Azure AD.
+* Cerrar la sesión del usuario en la aplicación
 
-aplicación toobuild Hola completa, trabajo, debe:
+Para crear la aplicación de trabajo completa, debe realizar estas acciones:
 
 1. Registrar la aplicación con Azure AD.
-2. Instalar AAL y configurar la aplicación de la página de hello.
-3. Usar páginas seguras toohelp AAL en aplicación de la página de hello.
+2. Instalar ADAL y configurar la aplicación de una sola página.
+3. Usar ADAL para ayudar a proteger las páginas en la aplicación de una sola página.
 
-tooget iniciado, [descargar esqueleto de aplicación Hola](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/skeleton.zip) o [Descargar ejemplo Hola completado](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip). También necesita a un inquilino de Azure AD en el que pueda crear usuarios y registrar una aplicación. Si aún no tiene un inquilino, [Obtenga información acerca de cómo tooget uno](active-directory-howto-tenant.md).
+Para empezar, [descargue el esquema de la aplicación](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/skeleton.zip) o [descargue el ejemplo finalizado](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip). También necesita a un inquilino de Azure AD en el que pueda crear usuarios y registrar una aplicación. Si aún no tiene un inquilino, [descubra cómo conseguir uno](active-directory-howto-tenant.md).
 
-## <a name="step-1-register-hello-directorysearcher-application"></a>Paso 1: Registrar aplicación de DirectorySearcher hello
-tooenable aplicación tooauthenticate usuarios y tokens de get, primero debe tooregister en Azure AD de los inquilinos:
+## <a name="step-1-register-the-directorysearcher-application"></a>Paso 1: Registro de la aplicación DirectorySearcher
+Para habilitar la aplicación a fin de autenticar a los usuarios y obtener tokens, primero debe registrarla en el inquilino de Azure AD:
 
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
-2. Si ha iniciado sesión toomultiple directorios, debe tooensure que está viendo el directorio correcto de Hola. toodo por lo tanto, en la barra superior de hello, haga clic en su cuenta. En hello **Directory** elija inquilino hello Azure AD en el que desea tooregister la aplicación.
-3. Haga clic en **más servicios** en Hola panel izquierdo y, a continuación, seleccione **Azure Active Directory**.
-4. Haga clic en **Registros de aplicaciones** y seleccione **Agregar**.
-5. Siga las indicaciones de Hola y cree una nueva aplicación web o API web:
-  * **Nombre** describe su toousers de aplicación.
-  * **Uri de redireccionamiento** es toowhich de ubicación de hello Azure AD devolverá tokens. ubicación predeterminada de Hola para este ejemplo es `https://localhost:44326/`.
-6. Cuando termine de registro, Azure AD le asigna una aplicación de tooyour de Id. de aplicación exclusivo.  Necesitará este valor en las secciones siguientes de hello, por lo tanto cópiela desde la pestaña de la aplicación hello.
-7. Adal.js usa hello OAuth flujo implícito toocommunicate con Azure AD. Debe habilitar el flujo implícito de hello para la aplicación:
-  1. Haga clic en la aplicación hello y seleccione **manifiesto** editor de manifiestos de tooopen hello en línea.
-  2. Busque hello `oauth2AllowImplicitFlow` propiedad. Establezca su valor demasiado`true`.
-  3. Haga clic en **guardar** toosave manifiesto de Hola.
-8. Conceda permisos para la aplicación en todo el inquilino. Vaya demasiado**configuración** > **propiedades** > **permisos necesarios**y haga clic en hello **conceder permisos**botón de barra superior Hola. Haga clic en **Sí** tooconfirm.
+1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
+2. Si inició sesión en varios directorios, debe asegurarse de que está viendo el directorio correcto. Para ello, en la barra superior, haga clic en su cuenta. En la lista **Directorio** lista, elija el inquilino de Azure AD donde desea registrar la aplicación.
+3. Haga clic en **Más servicios** en el panel izquierdo y luego seleccione **Azure Active Directory**.
+4. Haga clic en **Registros de aplicaciones** y luego seleccione **Agregar**.
+5. Siga las indicaciones y cree una nueva aplicación web y/o API web:
+  * **Nombre** describe la aplicación a los usuarios.
+  * **URI de redirección** es la ubicación a la que Azure AD devolverá los tokens. La ubicación predeterminada para este ejemplo es `https://localhost:44326/`.
+6. Cuando termine el registro, Azure AD asignará un identificador de aplicación único a la aplicación.  Necesitará este valor en las secciones siguientes, así que cópielo de la pestaña de la aplicación.
+7. Adal.js utiliza el flujo implícito de OAuth para comunicarse con Azure AD. Debe habilitar el flujo implícito para la aplicación mediante estos pasos:
+  1. Haga clic en la aplicación y seleccione **Manifiesto** para abrir el editor de manifiestos en línea.
+  2. Busque la propiedad `oauth2AllowImplicitFlow`. Establezca su valor en `true`.
+  3. Haga clic en **Guardar** para guardar el manifiesto.
+8. Conceda permisos para la aplicación en todo el inquilino. Vaya a **Configuración** > **Propiedades** > **Permisos necesarios** y haga clic en el botón **Conceder permisos** de la barra superior. Haga clic en **Sí** para continuar.
 
-## <a name="step-2-install-adal-and-configure-hello-single-page-app"></a>Paso 2: Instalar AAL y configurar la aplicación de la página de hello
+## <a name="step-2-install-adal-and-configure-the-single-page-app"></a>Paso 2: Instalación de ADAL y configuración de aplicación de una sola página
 Ahora que tiene una aplicación en Azure AD, puede instalar adal.js y escribir el código relacionado con la identidad.
 
-### <a name="configure-hello-javascript-client"></a>Configurar el cliente de JavaScript de Hola
-Comienza agregando adal.js toohello TodoSPA proyecto mediante el uso de la consola de administrador de paquetes de saludo:
-  1. Descargar [adal.js](https://raw.githubusercontent.com/AzureAD/azure-activedirectory-library-for-js/master/lib/adal.js) y agregue toohello `App/Scripts/` directorio del proyecto.
-  2. Descargar [adal angular.js](https://raw.githubusercontent.com/AzureAD/azure-activedirectory-library-for-js/master/lib/adal-angular.js) y agregue toohello `App/Scripts/` directorio del proyecto.
-  3. Cargar cada script antes del fin de Hola Hola `</body>` en `index.html`:
+### <a name="configure-the-javascript-client"></a>Configuración del cliente de JavaScript
+Comience agregando adal.js al proyecto TodoSPA mediante la Consola del Administrador de paquetes:
+  1. Descargue [adal.js](https://raw.githubusercontent.com/AzureAD/azure-activedirectory-library-for-js/master/lib/adal.js) y agréguelo al directorio del proyecto `App/Scripts/`.
+  2. Descargue [adal-angular.js](https://raw.githubusercontent.com/AzureAD/azure-activedirectory-library-for-js/master/lib/adal-angular.js) y agréguelo al directorio del proyecto `App/Scripts/`.
+  3. Cargue cada script antes del fin de `</body>` in `index.html`:
 
     ```js
     ...
@@ -76,15 +76,15 @@ Comienza agregando adal.js toohello TodoSPA proyecto mediante el uso de la conso
     ...
     ```
 
-### <a name="configure-hello-back-end-server"></a>Configurar servidor de back-end de Hola
-Para los tokens de la aplicación hello página tooDo back-end lista API tooaccept desde el Explorador de hello, back-end de hello necesita información de configuración de registro de una aplicación Hola. En hello TodoSPA proyecto, abra `web.config`. Reemplace los valores de hello de elementos de Hola Hola `<appSettings>` Hola de valores de hello tooreflect una sección que usó en el portal de Azure. El código hará referencia a estos valores siempre que use ADAL.
-  * `ida:Tenant`es el dominio de hello del inquilino de Azure AD: por ejemplo, contoso.onmicrosoft.com.
-  * `ida:Audience`es el Id. de cliente de saludo de la aplicación que ha copiado desde el portal de Hola.
+### <a name="configure-the-back-end-server"></a>Configuración del servidor back-end
+Para que la API de tareas pendientes del back-end de la aplicación de una sola página acepte tokens del explorador, el back-end necesita información de configuración acerca del registro de la aplicación. En el proyecto TodoSPA, abra `web.config`. Reemplace los valores de los elementos de la sección `<appSettings>` para que reflejen los valores usados en Azure Portal. El código hará referencia a estos valores siempre que use ADAL.
+  * `ida:Tenant` es el dominio del inquilino de Azure AD, por ejemplo, contoso.onmicrosoft.com.
+  * `ida:Audience` es el identificador de cliente de la aplicación que copió del portal.
 
-## <a name="step-3-use-adal-toohelp-secure-pages-in-hello-single-page-app"></a>Paso 3: Utilizan toohelp AAL seguras páginas de aplicación de la página de hello
+## <a name="step-3-use-adal-to-help-secure-pages-in-the-single-page-app"></a>Paso 3: Uso de ADAL para ayudar a proteger las páginas en la aplicación de una sola página
 Adal.js se integra con la ruta de AngularJS y los proveedores HTTP, por lo que puede ayudar a proteger vistas individuales en la aplicación de una sola página.
 
-1. En `App/Scripts/app.js`, poner en el módulo de Hola adal.js:
+1. En `App/Scripts/app.js`, importe el módulo adal.js:
 
     ```js
     angular.module('todoApp', ['ngRoute','AdalAngular'])
@@ -92,7 +92,7 @@ Adal.js se integra con la ruta de AngularJS y los proveedores HTTP, por lo que p
      function ($routeProvider, $httpProvider, adalProvider) {
     ...
     ```
-2. Inicializar `adalProvider` mediante los valores de configuración de Hola de su registro de la aplicación, también en `App/Scripts/app.js`:
+2. Inicialice `adalProvider` con los valores de configuración del registro de su aplicación, también en `App/Scripts/app.js`:
 
     ```js
     adalProvider.init(
@@ -106,7 +106,7 @@ Adal.js se integra con la ruta de AngularJS y los proveedores HTTP, por lo que p
       $httpProvider
     );
     ```
-3. Ayudar a Hola segura `TodoList` vista en la aplicación hello mediante el uso de una única línea de código: `requireADLogin`.
+3. Ayude a proteger la vista `TodoList` en la aplicación utilizando solamente una línea de código: `requireADLogin`.
 
     ```js
     ...
@@ -118,11 +118,11 @@ Adal.js se integra con la ruta de AngularJS y los proveedores HTTP, por lo que p
     ```
 
 ## <a name="summary"></a>Resumen
-Ahora tiene una aplicación de página segura que se puede iniciar sesión en los usuarios y emitir solicitudes de token de portador protegido tooits back-end API. Cuando un usuario hace clic en hello **TodoList** vínculo, adal.js le redirigirá automáticamente tooAzure AD para inicio de sesión si es necesario. Además, adal.js se asociará automáticamente un acceso token tooany Ajax solicita que se envían back-end de la aplicación toohello.  
+Ahora tiene una aplicación de una sola página segura con capacidad para iniciar la sesión de los usuarios y emitir solicitudes protegidas de token de portador a su API de back-end. Cuando un usuario hace clic en el vínculo **TodoList**, adal.js le redireccionará automáticamente a Azure AD para iniciar sesión si es necesario. Además, adal.js adjuntará automáticamente un token de acceso a cualquier solicitud de Ajax que se envíe al servidor back-end de la aplicación.  
 
-Hello pasos anteriores están toobuild necesaria mínima una aplicación de la página de reconstrucción de hello mediante adal.js. Pero algunas otras características son útiles en una aplicación de una sola página:
+Los pasos anteriores son los mínimos necesarios para compilar una aplicación de una sola página mediante adal.js. Pero algunas otras características son útiles en una aplicación de una sola página:
 
-* tooexplicitly emitir solicitudes de inicio de sesión y cierre de sesión, puede definir las funciones en los controladores que invocan adal.js.  En `App/Scripts/homeCtrl.js`:
+* Para emitir explícitamente solicitudes de inicio y cierre de sesión, puede definir funciones en sus controladores que invocan adal.js.  En `App/Scripts/homeCtrl.js`:
 
     ```js
     ...
@@ -134,7 +134,7 @@ Hello pasos anteriores están toobuild necesaria mínima una aplicación de la p
     };
     ...
     ```
-* Conviene toopresent información de usuario en la interfaz de usuario de la aplicación hello. Hola AAL servicio ya se ha agregado toohello `userDataCtrl` controlador, para que pueda acceder hello `userInfo` objeto Hola asociado a la vista, `App/Views/UserData.html`:
+* Puede que desee presentar información de usuario en la interfaz de usuario de la aplicación. El servicio ADAL ya se ha agregado al controlador `userDataCtrl`, por lo que puede tener acceso al objeto `userInfo` en la vista asociada, `App/Views/UserData.html`:
 
     ```js
     <p>{{userInfo.userName}}</p>
@@ -143,20 +143,20 @@ Hello pasos anteriores están toobuild necesaria mínima una aplicación de la p
     ...
     ```
 
-* Hay muchos escenarios en los que es conveniente tooknow si el usuario de hello ha iniciado sesión o no. También puede usar hello `userInfo` objeto toogather esta información.  Por ejemplo, en `index.html`, puede mostrar cualquier hello **inicio de sesión** o **Logout** botón de acuerdo con el estado de autenticación:
+* Hay muchos casos en los que deseará saber si el usuario ha iniciado sesión o no. También puede utilizar el objeto `userInfo` para recopilar esta información.  Por ejemplo, en `index.html` puede mostrar el botón **Iniciar sesión** o **Cerrar sesión** en función del estado de autenticación:
 
     ```js
     <li><a class="btn btn-link" ng-show="userInfo.isAuthenticated" ng-click="logout()">Logout</a></li>
     <li><a class="btn btn-link" ng-hide=" userInfo.isAuthenticated" ng-click="login()">Login</a></li>
     ```
 
-La aplicación de página única integrada en AD Azure puede autenticar a los usuarios, con seguridad llame a su back-end mediante OAuth 2.0 y obtener información básica acerca del usuario de Hola. Si no lo ha hecho ya, ahora es Hola tiempo toopopulate el inquilino con algunos usuarios. Ejecutar la aplicación de una página de lista de tooDo y, inicie sesión con uno de esos usuarios. Agregar la lista de tareas del usuario de las tareas toohello, cierre la sesión y volverla a iniciar.
+La aplicación de una sola página integrada con Azure AD puede autenticar a los usuarios, efectuar llamadas seguras a back-end mediante OAuth 2.0 y obtener información básica sobre el usuario. Si todavía no lo ha hecho, ahora es el momento de completar el inquilino con algunos usuarios. Ejecute la aplicación de una sola página de la lista de tareas pendientes e inicie sesión con uno de esos usuarios. Agregue tareas a la lista de tareas pendientes de los usuarios, cierre la sesión y vuelva a iniciarla.
 
-Adal.js hace fácil tooincorporate características de identidad comunes en la aplicación. Se encarga de todo el trabajo dirty Hola para usted: administración de la caché, compatibilidad con el protocolo OAuth, presentar usuario Hola con un inicio de sesión de interfaz de usuario, actualizar tokens caducados y mucho más.
+Adal.js facilita la incorporación de características comunes de identidad en la aplicación. Se encarga de todo el trabajo duro: administración de la memoria caché, compatibilidad con el protocolo OAuth, presentación del usuario con una interfaz de usuario de inicio de sesión, actualización de los tokens caducados, etc.
 
-Como referencia, está disponible en el ejemplo de Hola finalizado (sin los valores de configuración) [GitHub](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip).
+Como referencia, en [GitHub](https://github.com/AzureADQuickStarts/SinglePageApp-AngularJS-DotNet/archive/complete.zip) está disponible el ejemplo finalizado (sin sus valores de configuración).
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora puede mover en escenarios de tooadditional. Es recomendable tootry: [llamar a una API web CORS desde una aplicación de la página](https://github.com/AzureAdSamples/SinglePageApp-WebAPI-AngularJS-DotNet).
+Ahora puede pasar a otros escenarios. Puede intentar [llamar a una API web CORS desde una aplicación de una sola página](https://github.com/AzureAdSamples/SinglePageApp-WebAPI-AngularJS-DotNet).
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]

@@ -1,6 +1,6 @@
 ---
-title: "Ejemplo de secuencia de comandos de CLI - Get hello hostname, puertos y las claves de caché en Redis de Azure aaaAzure | Documentos de Microsoft"
-description: "Azure ejemplo de secuencia de comandos CLI - Get hello hostname, puertos y las claves para una instancia de caché en Redis de Azure"
+title: "Ejemplo de script de la CLI de Azure: obtención del nombre de host, los puertos y las claves para Azure Redis Cache | Microsoft Docs"
+description: "Ejemplo de script de la CLI de Azure: obtención del nombre de host, los puertos y las claves para una instancia de Azure Redis Cache"
 services: redis-cache
 documentationcenter: 
 author: steved0x
@@ -13,17 +13,17 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 04/14/2017
+ms.date: 08/30/2017
 ms.author: sdanie
-ms.openlocfilehash: e6e794558087d6568438c439e2bf99fc46eeb8bc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: aee24e5c478c4453655952cc626d7d6c857e7962
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="get-hello-hostname-ports-and-keys-for-azure-redis-cache"></a>Obtener Hola hostname, puertos y las claves de caché en Redis de Azure
+# <a name="get-the-hostname-ports-and-keys-for-azure-redis-cache"></a>Obtención del nombre de host, los puertos y las claves para Azure Redis Cache
 
-En este escenario, aprenderá cómo claves, puertos y el nombre de host de tooretrieve Hola utilizan la instancia de caché en Redis de Azure de tooconnect tooan.
+En este escenario se aprende a recuperar el nombre de host, los puertos y las claves que se usan para conectarse a una instancia de Azure Redis Cache.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -34,16 +34,16 @@ En este escenario, aprenderá cómo claves, puertos y el nombre de host de toore
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Este script utiliza Hola después el nombre de host de comandos tooretrieve hello, claves y los puertos de una instancia de caché en Redis de Azure. Cada comando de documentación específica de hello tabla vínculos toocommand.
+Este script usa los comandos siguientes para recuperar el nombre de host, las claves y los puertos de una instancia de Azure Redis Cache. Cada comando de la tabla crea un vínculo a documentación específica del comando.
 
 | Comando | Notas |
 |---|---|
-| [az redis show](https://docs.microsoft.com/cli/azure/redis#show) | Recupera detalles de una instancia de Azure Redis Cache. |
-| [az redis list-keys](https://docs.microsoft.com/cli/azure/redis#list-keys) | Recupera las claves de acceso para una instancia de Azure Redis Cache. |
+| [az redis show](https://docs.microsoft.com/cli/azure/redis#az_redis_show) | Recupera detalles de una instancia de Azure Redis Cache. |
+| [az redis list-keys](https://docs.microsoft.com/cli/azure/redis#az_redis_list_keys) | Recupera las claves de acceso para una instancia de Azure Redis Cache. |
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener más información sobre Hola CLI de Azure, consulte [documentación de Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Para más información sobre la CLI de Azure, consulte la [documentación de la CLI de Azure](https://docs.microsoft.com/cli/azure/overview).
 
-Encontrará más ejemplos de secuencias de comandos de CLI de caché de Redis de Azure en hello [documentación de Azure Redis Cache](../cli-samples.md).
+Encontrará más ejemplos de scripts de CLI de Azure Redis Cache en la [documentación de Azure Redis Cache](../cli-samples.md).

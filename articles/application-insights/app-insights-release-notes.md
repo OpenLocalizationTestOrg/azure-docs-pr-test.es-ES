@@ -1,6 +1,6 @@
 ---
-title: "notas de la aaaRelease de visión de la aplicación de Azure | Documentos de Microsoft"
-description: "Hola actualizaciones más recientes de SDK de visión de aplicación."
+title: "Notas de la versión de Azure Application Insights | Microsoft Docs"
+description: "Las últimas actualizaciones para los SDK de Application Insights."
 services: application-insights
 documentationcenter: 
 author: CFreemanwa
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: bwren
-ms.openlocfilehash: 466e5c3be1911f8b87100db96e664f2f7acbeb37
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 0453ec62252bd21bd81bb26c2b01f8a80656d8bf
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sdk-release-notes---application-insights"></a>Notas de la versión del SDK: Application Insights
 Se trata de notas de la versión detalladas e instrucciones de actualización de nuestros SDK:
@@ -31,5 +31,5 @@ Se trata de notas de la versión detalladas e instrucciones de actualización de
 * [Herramientas de Visual Studio](app-insights-release-notes-vsix.md)
 * [Otras plataformas](https://github.com/Microsoft/ApplicationInsights-Home)
 
-Leer también nuestro [blogs](https://azure.microsoft.com/blog/tag/application-insights/) y [las actualizaciones del servicio](https://azure.microsoft.com/updates/?service=application-insights) que resumen las principales mejoras en Hola servicio Application Insights en un conjunto.
+Lea también nuestros [blogs](https://azure.microsoft.com/blog/tag/application-insights/) y el artículo [Actualizaciones del servicio](https://azure.microsoft.com/updates/?service=application-insights), en los que se resumen mejoras importantes en el servicio de Application Insights en su conjunto.
 

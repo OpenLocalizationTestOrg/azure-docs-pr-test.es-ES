@@ -1,6 +1,6 @@
 ---
-title: aaaPay para las suscripciones de Azure con factura | Documentos de Microsoft
-description: "Describe cómo toopay para las suscripciones de Azure con factura"
+title: Pagar las suscripciones de Azure con factura | Microsoft Docs
+description: "Describe cómo pagar las suscripciones de Azure mediante factura"
 services: 
 documentationcenter: 
 author: genlin
@@ -11,32 +11,35 @@ ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/14/2017
+ms.topic: troubleshooting
+ms.date: 08/30/2017
 ms.author: genli
-ms.openlocfilehash: 416890cc1e5109ef4d2bf6a9c2a779ba835f410c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: b9f785a8f24c013f01dd429539239a7396a94953
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="submit-a-request-toopay-azure-subscription-by-invoice"></a>Enviar una suscripción de Azure de solicitud toopay factura
+# <a name="submit-a-request-to-pay-azure-subscription-by-invoice"></a>Enviar una solicitud para pagar una suscripción de Azure mediante factura
 
-Puede cambiar método de pago de Hola para su tooinvoice de suscripción de Azure mediante el envío de un tooAzure de solicitar soporte. Una vez aprobada la solicitud, se proporcionan instrucciones sobre cómo tooset la suscripción para el método de pago de factura de Hola.
+Puede cambiar el método de pago de su suscripción de Azure a factura si envía una solicitud al soporte técnico de Azure. Una vez aprobada su solicitud, se le proporcionarán instrucciones para configurar su suscripción para el método de pago de facturas.
 
 > [!IMPORTANT]
 > * El pago de factura solo está disponible para las cuentas empresariales.
-> * Los [servicios externos o de terceros](billing-understand-your-azure-marketplace-charges.md) no se pueden comprar ni pagar con el pago de factura. Si la suscripción contiene recursos de servicios externos como ClearDB o SendGrid, se deben eliminar antes de cambiar la opción de pago de tooinvoice. toopurchase servicios externos después de cambiar la opción de pago tooinvoice, necesita una suscripción independiente con una tarjeta de crédito o débito.
-> * Una vez que cambie la opción de pago de tooinvoice, no se puede cambiar el pago con tarjeta de toocredit o débito atrás.
+> * Los [servicios externos o de terceros](billing-understand-your-azure-marketplace-charges.md) no se pueden comprar ni pagar con el pago de factura. Si la suscripción contiene recursos de servicios externos como ClearDB o SendGrid, se deben eliminar antes de cambiar al pago de factura. Para comprar servicios externos después de cambiar al pago de factura, necesita una suscripción independiente con una tarjeta de crédito o de débito.
+> * Una vez que cambia al pago de factura, no puede cambiar de vuelta al pago con tarjeta de crédito o de débito.
 
 ## <a name="request-pay-by-invoice"></a>Solicitud de pago con factura
 
-1. Inicio de sesión en hello [portal de Azure](https://portal.azure.com/). Seleccione **Ayuda y soporte técnico** > **Nueva solicitud de soporte técnico**.
+1. Inicie sesión en el [Portal de Azure](https://portal.azure.com/). Seleccione **Ayuda y soporte técnico** > **Nueva solicitud de soporte técnico**.
 
     ![botón de ayuda y soporte técnico](./media/billing-how-to-pay-by-invoice/helpandsupport.png)
-1. Seleccione **facturación** como tipo de problema de hello, seleccione la suscripción de hello para el que desea toopay con factura, seleccione un plan de soporte técnico y, a continuación, seleccione **siguiente**.
-1. Hola **problema** hoja, seleccione **pagar mediante factura** en hello **tipo de problema** cuadro.
-1. Escriba Hola siguiendo la información de hello **detalles** cuadro y, a continuación, seleccione **siguiente**.
+
+1. Seleccione **Facturación** como tipo de problema, seleccione la suscripción que quiere pagar mediante factura, seleccione un plan de soporte técnico y, después, haga clic en **Siguiente**.
+
+1. Seleccione la opción **Pago mediante factura** en el cuadro **Tipo de problema**.
+
+1. Escriba la siguiente información en el cuadro **Detalles** y después haga clic en **Siguiente**.
 
     * Nombre de la empresa
     * Dirección de facturación
@@ -44,8 +47,8 @@ Puede cambiar método de pago de Hola para su tooinvoice de suscripción de Azur
 
 1. Compruebe la información de contacto y el método de contacto preferido, y haga clic en **Crear**.
 
-Si se necesita toorun un crédito comprobar a causa de la cantidad de Hola de crédito que necesita, le enviamos una solicitud de comprobación de crédito. Después de enviar la aplicación hello, solicitud de crédito Hola puede tardar tooprocess de 5 a 7 días.
+Si es necesario realizar una comprobación de crédito debido a la cantidad de crédito que necesita, le enviaremos una solicitud a tal fin. Después de enviar la solicitud, puede tardar 5-7 días en procesarse.
 
 ## <a name="need-help-contact-support"></a>¿Necesita ayuda? Póngase en contacto con el servicio de soporte técnico.
 
-Si aún necesita ayuda, [póngase en contacto con soporte técnico](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) tooget rápidamente para solucionar el problema.
+Si sigue necesitando ayuda, [póngase en contacto con el servicio de soporte técnico](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) para resolver el problema rápidamente.

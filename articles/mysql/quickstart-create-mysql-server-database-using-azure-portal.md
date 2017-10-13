@@ -1,6 +1,6 @@
 ---
 title: "Inicio rápido: Creación de un servidor de Azure Database for MySQL con Azure Portal | Microsoft Docs"
-description: "En este artículo pasos le guían a través de utilizando Hola tooquickly portal Azure crean un ejemplo de la base de datos de MySQL server en aproximadamente cinco minutos."
+description: "Este artículo le ayudará a usar Azure Portal para crear rápidamente un servidor de Azure Database for MySQL de ejemplo, en unos cinco minutos."
 services: mysql
 author: v-chenyh
 ms.author: v-chenyh
@@ -10,117 +10,126 @@ ms.service: mysql-database
 ms.custom: mvc
 ms.topic: hero-article
 ms.date: 08/15/2017
-ms.openlocfilehash: d5754fe7a6f0f0f4b3fa19d456c4e15e64ca396c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 46aee37a00a923addc08dd185ce0326a64ccb48c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-an-azure-database-for-mysql-server-using-azure-portal"></a>Creación de un servidor de Azure Database for MySQL con Azure Portal
-Base de datos de Azure para MySQL es un servicio administrado que le permite toorun, administrar y escalar alta disponibilidad bases de datos MySQL en la nube de Hola. Este tutorial rápido muestra cómo toocreate una Azure base de datos para el servidor de MySQL usando Hola portal de Azure en aproximadamente cinco minutos. 
+# <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Creación de un servidor de Azure Database for MySQL mediante Azure Portal
+Azure Database for MySQL es un servicio administrado que se usa para ejecutar, administrar y escalar bases de datos MySQL de alta disponibilidad en la nube. Esta guía de inicio rápido muestra cómo crear un servidor de Azure Database for MySQL en unos cinco minutos mediante Azure Portal.  
 
-Si no tiene una suscripción a Azure, cree una cuenta [gratuita](https://azure.microsoft.com/free/) antes de empezar.
+Si no tiene una suscripción a Azure, cree una [cuenta gratuita de Azure](https://azure.microsoft.com/free/) antes de empezar.
 
-## <a name="log-in-tooazure"></a>Inicie sesión en tooAzure
-Abra el explorador web y navegue toohello [portal de Microsoft Azure](https://portal.azure.com/). Escriba su credenciales toosign en toohello portal. vista predeterminada de Hello es el panel de servicio.
+## <a name="sign-in-to-azure"></a>Inicio de sesión en Azure
+Abra el explorador web y vaya a [Azure Portal](https://portal.azure.com/). Introduzca sus credenciales para iniciar sesión en el portal. La vista predeterminada es el panel del servicio.
 
-## <a name="create-azure-database-for-mysql-server"></a>Creación de un servidor de Azure Database for MySQL
-Se crea un servidor de Azure Database for MySQL con un conjunto definido de [recursos de proceso y almacenamiento](./concepts-compute-unit-and-storage.md). servidor de Hola se crea dentro de un [grupo de recursos de Azure](../azure-resource-manager/resource-group-overview.md).
+## <a name="create-an-azure-database-for-mysql-server"></a>Creación de un servidor de Azure Database for MySQL
+Cree un servidor de Azure Database for MySQL con un conjunto definido de [recursos de proceso y almacenamiento](./concepts-compute-unit-and-storage.md). Cree el servidor dentro en un [grupo de recursos de Azure](../azure-resource-manager/resource-group-overview.md).
 
-Siga estos toocreate pasos una base de datos de MySQL server:
+Para crear un servidor de Azure Database for MySQL, siga estos pasos:
 
-1. Haga clic en hello **New** botón (+) que se encuentra en la esquina izquierda superior de Hola de hello portal de Azure.
+1. Haga clic en el botón **Nuevo** (+) de la esquina superior izquierda de Azure Portal.
 
-2. Seleccione **bases de datos** de hello **New** página y seleccione **base de datos de Azure para MySQL** de hello **bases de datos** página. También puede escribir **MySQL** Hola servicio de Hola de toofind cuadro de búsqueda de página nueva.
-![Azure Portal: nueva - base de datos - MySQL](./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png)
+2. Seleccione **Bases de datos** > **Azure Database for MySQL**. También puede escribir **MySQL** en el cuadro de búsqueda para encontrar el servicio.
 
-3. Rellene Hola nuevo servidor detalles formulario con hello después de obtener información, como se muestra en hello anterior imagen:
+    ![Opción Azure Database for MySQL](./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png)
+
+4. Rellene el formulario de datos del nuevo servidor con la siguiente información, como se muestra en la imagen anterior:
 
     **Configuración** | **Valor sugerido** | **Descripción del campo** 
     ---|---|---
-    Nombre de servidor | myserver4demo | Elija un nombre único que identifique al servidor de Azure Database for MySQL. nombre de dominio de Hello *mysql.database.azure.com* es toohello anexado nombre del servidor proporciona para las aplicaciones tooconnect a. nombre del servidor Hello puede contener solo letras minúsculas, números y caracteres de guión (-) de Hola y debe contener entre 3 y 63 caracteres.
-    La suscripción | Su suscripción | Hola suscripción de Azure que quiere toouse de su servidor. Si tiene varias suscripciones, elija suscripción adecuado de hello en la que se facturan recursos Hola para.
-    Grupos de recursos | myresourcegroup | Puede crear un nuevo nombre de grupo de recursos o usar uno existente de la suscripción.
-    Inicio de sesión de administrador de servidor | myadmin | Realizar su propia toouse de cuenta de inicio de sesión al conectar el servidor de toohello. nombre de inicio de sesión de administrador de Hello no puede ser 'azure_superuser', 'admin', 'administrator', 'raíz', 'guest' o 'public'.
-    Password | *Su elección* | Crear una nueva contraseña para la cuenta de administrador del servidor de Hola. Debe contener entre 8 caracteres too128. La contraseña debe contener caracteres de tres de hello siguientes categorías – letras en mayúsculas letras, letras minúsculas, números (0-9) y caracteres no alfanuméricos (!, $, #, %, etcetera.).
-    Confirmar contraseña | *Su elección*| Confirme la contraseña de cuenta de administrador de Hola.
-    Ubicación | *usuarios de Hello región más cercanos tooyour*| Elegir ubicación de Hola que sea más cercano tooyour los usuarios u otras aplicaciones de Azure.
-    Versión | *Elija la versión más reciente de Hola*| Elija la versión más reciente de Hola a menos que tenga requisitos específicos.
-    Nivel de precios | **Básico**, **50 unidades de proceso****50 GB** | Haga clic en **tarifa** toospecify Hola nivel y rendimiento de nivel de servicio para la nueva base de datos. Elija **nivel básico** en la pestaña de hello en la parte superior de Hola. Haga clic en el extremo izquierdo de Hola de hello **unidades de proceso** control deslizante tooadjust Hola valor toohello menos cantidad disponible para este tutorial rápido. Haga clic en **Aceptar** hello toosave selección de nivel de precios. Vea Hola siguiente captura de pantalla.
-    Toodashboard de PIN | Comprobar | Comprobar hello **toodashboard Pin** opción tooallow fácil seguimiento del servidor en la página de panel frontal de Hola de su portal de Azure.
+    Nombre de servidor | myserver4demo | Un nombre único que identifica al servidor de Azure Database for MySQL. El nombre de dominio *mysql.database.azure.com* se anexa al nombre del servidor proporcionado. El nombre del servidor solo puede contener letras minúsculas, números y el carácter de guion (-). Debe contener entre 3 y 63 caracteres.
+    La suscripción | Su suscripción | La suscripción de Azure que desea usar para el servidor. Si tiene varias suscripciones, elija aquella en la que se factura el recurso.
+    Grupos de recursos | myresourcegroup | Un nombre de grupo de recursos nuevo o existente.
+    Inicio de sesión de administrador de servidor | myadmin | Una cuenta de inicio de sesión para usarla al conectarse al servidor. El nombre de inicio de sesión de administrador no puede ser **azure_superuser**, **admin**, **administrator**, **root**, **guest** ni **public**.
+    Password | *Su elección* | Una contraseña nueva para la cuenta de administrador del servidor. Debe contener entre 8 y 128 caracteres. La contraseña debe contener caracteres de tres de las siguientes categorías: letras en mayúsculas del alfabeto inglés, letras en minúscula del alfabeto inglés, números (0-9) y caracteres no alfanuméricos (!, $, #, %, etc.).
+    Confirmar contraseña | *Su elección*| La contraseña confirmada de la cuenta de administrador.
+    Ubicación | *Región más cercana a los usuarios*| La ubicación más cercana a los usuarios u otras aplicaciones de Azure.
+    Versión | *La versión más reciente*| La versión más reciente (a menos que tenga requisitos específicos que requieran otra versión).
+    Plan de tarifa  | **Básico**, **50 unidades de proceso**, **50 GB** | El nivel de servicio y el nivel de rendimiento de la base de datos nueva. Seleccione **Nivel básico** en la pestaña de la parte superior. Haga clic en el extremo izquierdo del control deslizante **Unidades de proceso** para ajustar el valor en la cantidad más baja disponible para este tutorial rápido. Haga clic en **Aceptar** para guardar este plan de tarifa. Para obtener más información, consulte la siguiente captura de pantalla.
+    Anclar al panel | Comprobar | Permite realizar un seguimiento fácil del servidor en la página del panel frontal de Azure Portal.
 
     > [!IMPORTANT]
-    > inicio de sesión de administrador de servidor de Hola y la contraseña que especifique aquí son necesario toolog en toohello server y sus bases de datos más adelante en este tutorial rápido. Recuerde o grabe esta información para su uso posterior.
+    > El nombre de usuario y la contraseña de inicio de servidor que se especifiquen aquí son necesarios para iniciar sesión tanto en el servidor como en las bases de datos de esta guía de inicio rápido. Recuerde o grabe esta información para su uso posterior.
     > 
 
-    ![Portal de Azure - crear MySQL proporcionando entrada de formulario de hello necesario](./media/quickstart-create-mysql-server-database-using-azure-portal/3_create-server.png)
+    ![Azure Portal: introducción de los datos del formulario correctos para crear MySQL](./media/quickstart-create-mysql-server-database-using-azure-portal/3_create-server.png)
 
-4.  Haga clic en **crear** servidor de hello tooprovision. Aprovisionamiento tarda unos minutos, los minutos de too20 máximo.
+4.  Seleccione **Crear** para realizar el aprovisionamiento del servidor. El aprovisionamiento puede tardar hasta 20 minutos.
    
-5.  En la barra de herramientas de hello, haga clic en **notificaciones** proceso de implementación de (icono de campana) toomonitor Hola.
+5.  Haga clic en **Notificaciones** en la barra de herramientas (icono de campana) para supervisar el proceso de implementación.
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Configuración de una regla de firewall de nivel de servidor
 
-Hola base de datos de Azure para el servicio MySQL crea un servidor de seguridad en el nivel de servidor hello. Este firewall impide que las aplicaciones externas y las herramientas conexión toohello server y las bases de datos en el servidor de hello, a menos que se crea una regla de firewall tooopen firewall de Hola para direcciones IP concretas. 
+El servicio Azure Database for MySQL crea un firewall en el nivel de servidor. Evita que herramientas y aplicaciones externas se conecten al servidor o a las bases de datos de este, a menos que se cree una regla de firewall que lo abra para direcciones IP concretas. 
 
-1.  Busque el servidor al finalizar la implementación de Hola. Si es necesario, puede buscarlo. Por ejemplo, haga clic en **todos los recursos** del menú izquierdo de Hola y el tipo en el nombre del servidor de hello (como ejemplo de Hola *myserver4demo*) toosearch para el servidor recién creado. Haga clic en el nombre del servidor aparece en el resultado de la búsqueda de Hola. Hola **Introducción** página para el servidor se abre y proporciona opciones para otra configuración.
+1.   Cuando finalice la implementación, busque el servidor. Si es necesario, puede buscarlo. Por ejemplo, seleccione **Todos los recursos** en el menú de la izquierda. Luego, escriba el nombre del servidor, como **myserver4demo**, para buscar el servidor recién creado. Seleccione el nombre del servidor en la lista de resultados de la búsqueda. Se abrirá la página **Introducción** del servidor, que proporciona opciones para continuar la configuración.
 
-2. En la página del servidor hello, seleccione **seguridad de conexión**.
+2. En la página del servidor, seleccione **Seguridad de la conexión**.
 
-3.  En hello **las reglas de Firewall** encabezado, haga clic en cuadro de texto en blanco de Hola Hola **nombre de la regla** toobegin columna Crear regla de firewall de Hola. 
+3.  En el encabezado **Reglas de firewall**, seleccione el cuadro de texto en blanco de la columna **Nombre de regla** para empezar a crear la regla de firewall. 
 
-    Para este tutorial rápido, vamos a permitir todas las direcciones IP en el servidor de hello rellenando en el cuadro de texto hello en cada columna con hello siguientes valores:
+    En esta guía de inicio rápido, vamos a permitir que todas las direcciones IP entren en el servidor, para lo que rellenaremos los cuadros de texto de todas las columnas con los valores siguientes:
 
     Nombre de la regla | Dirección IP inicial | Dirección IP final 
     ---|---|---
     AllowAllIps (permitir todas las direcciones IP) |  0.0.0.0 | 255.255.255.255
 
-4. En la barra de herramientas superior Hola de hello **seguridad de conexión** página, haga clic en **guardar**. Espere unos instantes y Hola de notificación que muestra que la actualización de seguridad de la conexión ha finalizado correctamente antes de continuar.
+4. En la barra de herramientas superior de la página **Seguridad de la conexión**, seleccione **Guardar**. Antes de continuar espere hasta que aparezca la notificación que indica que la actualización ha finalizado correctamente. 
 
     > [!NOTE]
-    > Las conexiones tooAzure base de datos de MySQL que se comunican a través de puerto 3306. Si está tratando de tooconnect desde dentro de una red corporativa, es posible que firewall de su red no permite el tráfico saliente en el puerto 3306. Si es así, no será capaz de tooconnect tooyour servidor a menos que el departamento de TI abre el puerto 3306.
+    > Las conexiones a Azure Database for MySQL se comunican a través del puerto 3306. Si intenta conectarse desde una red corporativa, es posible que no se permita el tráfico saliente a través del puerto 3306. En ese caso no podrá conectarse al servidor, salvo que el departamento de TI abra el puerto 3306.
     > 
 
-## <a name="get-hello-connection-information"></a>Obtener información de conexión de Hola
-servidor de base de datos de tooconnect tooyour, necesita tooremember Hola credenciales de servidor completo administrador y el nombre de inicio de sesión. Puede haber tomado nota de esos valores anteriormente en el artículo de inicio rápido de Hola. En caso de que no lo hizo, se puede encontrar fácilmente servidor hello información de nombre y el inicio de sesión del servidor de hello **Introducción** página o hello **propiedades** página Hola portal de Azure.
+## <a name="get-the-connection-information"></a>Obtención de la información de conexión
+Para conectarse al servidor de bases de datos, es preciso utilizar el nombre completo del servidor y las credenciales de inicio de sesión de administrador. Es posible que anotara dichos valores en el artículo de la guía de inicio rápido. En caso de que no lo haya hecho, tanto el nombre del servidor como la información de inicio de sesión se pueden encontrar con facilidad en la página **Introducción** del servidor o en la página **Propiedades** de Azure Portal.
 
-1. Abra la página **Información general** del servidor. Tome nota de hello **nombre del servidor** y **nombre de inicio de sesión del Administrador de servidor**. 
-    Situar el cursor sobre cada campo e icono de copiar Hola aparece toohello derecha texto hello. Haga clic en icono de copiar hello como valores de hello toocopy necesarios.
+Para ello, siga estos pasos: 
 
-    En este ejemplo, es el nombre del servidor de hello *myserver4demo.mysql.database.azure.com*, y es el inicio de sesión de administrador de servidor de hello  *myadmin@myserver4demo* .
+1. Abra la página **Información general** del servidor. Tome nota del **Nombre del servidor** y del **Server admin login name** (Nombre de inicio de sesión del administrador del servidor). 
 
-## <a name="connect-toomysql-using-mysql-command-line-tool"></a>Conectar tooMySQL mediante la herramienta de línea de comandos de mysql
-Hay una serie de aplicaciones puede usar tooconnect tooyour base de datos de MySQL server. Vamos a usar en primer lugar hello [mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) de línea de comandos herramienta tooillustrate cómo tooconnect toohello server.  Puede usar un explorador web y Shell de nube de Azure como se describe aquí sin Hola Hola necesita tooinstall ningún software adicional. Si dispone de utilidad de mysql Hola instalado localmente en su propio equipo, puede conectarse desde allí también.
+2. Desplace el cursor sobre cada campo y el icono de copiar aparece a la derecha del texto. Seleccione el icono de copiar según sea necesario para copiar los valores.
 
-1. Iniciar Hola Shell en la nube de Azure a través del icono de terminal de hello (> _) en hello parte superior derecha de la página web del portal Azure Hola.
+En este ejemplo, el nombre del servidor es **myserver4demo.mysql.database.azure.com** y el nombre de inicio de sesión del administrador del servidor, **myadmin@myserver4demo**.
 
-2. Hola Shell en la nube de Azure se abre en el explorador, lo que los comandos de shell de bash tootype.
+## <a name="connect-to-mysql-by-using-the-mysql-command-line-tool"></a>Conexión a MySQL mediante la herramienta de línea de comandos mysql
+Hay una serie de aplicaciones que se pueden usar para conectarse al servidor de Azure Database for MySQL. 
+
+Ahora vamos a usar la herramienta de línea de comandos [mysql](https://dev.mysql.com/doc/refman/5.7/en/mysql.html) para conectarnos al servidor. También puede utilizar un explorador web y Azure Cloud Shell como se describe aquí sin instalar software adicional. Si la utilidad mysql está instalada localmente, también se puede conectar desde su propio equipo.
+
+1. Inicie Azure Cloud Shell desde el icono del terminal (**>_**) de la parte superior derecha de Azure Portal.
+
+2.  Azure Cloud Shell se abre en el explorador, donde puede escribir comandos de shell de Bash.
 
     ![Símbolo del sistema: ejemplo de línea de comandos de mysql](./media/quickstart-create-mysql-server-database-using-azure-portal/7_connect-to-server.png)
 
-3. En el símbolo del sistema de hello Shell en la nube, conectar tooyour base de datos de MySQL server escribiendo línea de comandos de mysql de hello en el símbolo del sistema de hello verde.
+3. En el símbolo del sistema de Cloud Shell, conéctese al servidor de Azure Database for MySQL, para lo que debe escribir la línea de comandos de mysql.
 
-    Hola siguiendo el formato es tooconnect usado tooan base de datos de MySQL server con la utilidad de hello mysql:
+    Para conectarse a un servidor de Azure Database for MySQL con la utilidad mysql, use el siguiente formato:
+
     ```bash
     mysql --host <yourserver> --user <server admin login> --password
     ```
 
-    Por ejemplo, hello siguiente comando conecta tooour servidor de ejemplo:
+    Por ejemplo, el siguiente comando conecta con nuestro servidor de ejemplo:
+
     ```azurecli-interactive
     mysql --host myserver4demo.mysql.database.azure.com --user myadmin@myserver4demo --password
     ```
 
     parámetro mysql |Valor sugerido|Descripción
     ---|---|---
-    --host | *nombre del servidor* | Especifique el valor de nombre de servidor de Hola que se usó cuando creó Hola base de datos de Azure para MySQL anteriormente. El servidor de ejemplo que se muestra es myserver4demo.mysql.database.azure.com. Usar el nombre de dominio completo de hello (\*. mysql.database.azure.com) tal y como se muestra en el ejemplo de Hola. Siga los pasos Hola Hola anterior sección tooget Hola información de la conexión si no recuerda el nombre del servidor. 
-    --user | *nombre de inicio de sesión del administrador del servidor* |Escriba Hola server inicio de sesión nombre de usuario administrador especificó al crear Hola base de datos de Azure para MySQL anteriormente. Siga los pasos Hola Hola anterior sección tooget Hola información de la conexión si no recuerda el nombre de usuario de Hola.  formato de Hello es  *username@servername* .
-    --password | *espere hasta que se le pida* | Se le pedirá demasiado "Escriba una contraseña" después de escribe comandos Hola. Cuando se le solicite, escriba Hola misma contraseña que proporcionó cuando creó el servidor de Hola.  Hola Nota escrito contraseña caracteres no se muestran en bash Hola preguntar al escribirlos. Presione ENTRAR después de haber escrito todos los tooauthenticate de caracteres de Hola y conectarse.
+    --host | *Nombre del servidor* | El valor de nombre de servidor que usó al crear el servidor de Azure Database for MySQL. En el ejemplo, el servidor es **myserver4demo.mysql.database.azure.com**. Use el nombre de dominio completo (**\*.mysql.database.azure.com**) como se muestra en el ejemplo. Si no recuerda el nombre del servidor, siga los pasos de la sección anterior para obtener la información de conexión. 
+    --user | *Nombre de inicio de sesión del administrador del servidor* |El nombre de usuario de inicio de sesión del administrador del servidor que suministró al crear el servidor de Azure Database for MySQL. Si no recuerda el nombre de usuario, siga los pasos de la sección anterior para obtener la información de conexión. El formato es *username@servername*.
+    --password | *Espere hasta que se le pida* |La misma contraseña que especificó cuando creó el servidor. Tenga en cuenta que los caracteres de la contraseña escritos no se muestran en el símbolo del sistema de Bash al escribirlos. Después de que haya escrito la contraseña, presione **Entrar**.
 
-   Una vez conectado, utilidad de mysql de hello muestra un `mysql>` pedir que tootype comandos. 
+   Una vez conectado, la utilidad de mysql muestra un símbolo del sistema de `mysql>`, donde puede escribir comandos. 
 
-    Ejemplo de salida de mysql:
+   A continuación puede encontrar un ejemplo de salida de mysql:
+
     ```bash
-    Welcome toohello MySQL monitor.  Commands end with ; or \g.
+    Welcome to the MySQL monitor.  Commands end with ; or \g.
     Your MySQL connection id is 65505
     Server version: 5.6.26.0 MySQL Community Server (GPL)
     
@@ -130,18 +139,19 @@ Hay una serie de aplicaciones puede usar tooconnect tooyour base de datos de MyS
     affiliates. Other names may be trademarks of their respective
     owners.
 
-    Type 'help;' or '\h' for help. Type '\c' tooclear hello current input statement.
+    Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
     
     mysql>
     ```
     > [!TIP]
-    > Si firewall de hello no está configurado tooallow dirección IP de Hola de hello Shell en la nube de Azure, hello ocurre lo siguiente:
+    > Si el firewall no está configurado para permitir la dirección IP de la instancia de Azure Cloud Shell, aparece el siguiente error:
     >
-    > ERROR 2003 (28000): Cliente con la dirección IP 123.456.789.0 no tiene a servidor de hello tooaccess.
+    > ERROR 2003 (28000): no está permitido que el cliente con la dirección IP 123.456.789.0 acceda al servidor.
     >
-    > error de hello tooresolve, asegúrese de seguro Hola server configuration coincidencias Hola los pasos de hello *configurar una regla de firewall de nivel de servidor* sección del artículo Hola.
+    > Para resolver el error, asegúrese de que la configuración del servidor coincida con los pasos descritos en la sección "Configuración de una regla de firewall de nivel de servidor" del artículo.
 
-4. Conexión de Hola de tooensure de estado de servidor de vista es funcional. Tipo `status` en mysql hello > pedir una vez que está conectado.
+4. Para asegurarse de que la conexión es funcional, ver el estado del servidor, para lo que debe escribir `status` en el símbolo del sistema de mysql > .
+
     ```sql
     status
     ```
@@ -149,63 +159,69 @@ Hay una serie de aplicaciones puede usar tooconnect tooyour base de datos de MyS
    > [!TIP]
    > Para otros comandos, consulte el [capítulo 4.5.1 del Manual de referencia de MySQL 5.7](https://dev.mysql.com/doc/refman/5.7/en/mysql.html).
 
-5.  Crear una base de datos en blanco en mysql hello > símbolo del sistema, escriba el siguiente comando de hello:
+5.  Cree una base de datos en blanco en el símbolo del sistema de **mysql>**, para lo que debe escribir el siguiente comando:
     ```sql
     CREATE DATABASE quickstartdb;
     ```
-    comando Hello puede tardar unos toocomplete momentos. 
+    El comando puede tardar un rato en completarse. 
 
-    En un servidor de Azure Database for MySQL, puede crear una o varias bases de datos. Puede participar una base de datos por servidor tooutilize toocreate todos los recursos de Hola o crear tooshare de bases de datos de varios recursos de Hola. No hay ningún toohello limitar el número de bases de datos que se pueden crear, pero varias bases de datos comparten Hola mismos recursos de servidor. 
+    En un servidor de Azure Database for MySQL, puede crear una o varias bases de datos. Puede optar por crear una sola base de datos por servidor para que se usen todos los recursos, o bien crear varias bases de datos para compartir los recursos. No hay límite en el número de bases de datos que se pueden crear, pero varias bases de datos comparten los mismos recursos del servidor. 
 
-6. Lista de bases de datos Hola Hola mysql > símbolo del sistema, escriba el siguiente comando de hello:
+6. Escriba el comando siguiente para enumerar las bases de datos en el símbolo del sistema **mysql>**:
 
     ```sql
     SHOW DATABASES;
     ```
 
-7.  Tipo de `\q` y, a continuación, presione herramienta de mysql de entrar tooquit Hola. Puede cerrar Hola Shell en la nube de Azure cuando haya terminado.
+7.  Escriba `\q` y presione la tecla **Entrar** tecla para cerrar la herramienta mysql. Cuando haya terminado, puede cerrar Azure Cloud Shell.
 
-Ahora está conectado toohello base de datos de Azure para MySQL y crea una base de datos de usuario en blanco. Continuar toohello siguiente sección toorepeat un toohello de tooconnect ejercicio similar mismo servidor mediante la herramienta común MySQL Workbench.
+Ya está conectado al servidor de Azure Database for MySQL y ha creado una base de datos de usuario en blanco. En la sección siguiente encontrará un ejercicio similar. En el siguiente ejercicio se conecta al mismo servidor con otra herramienta común, MySQL Workbench.
 
-## <a name="connect-toohello-server-using-hello-mysql-workbench-gui-tool"></a>Conectar servidor toohello mediante la herramienta de interfaz gráfica de usuario de MySQL Workbench Hola
-servidor de MySQL de tooconnect tooAzure mediante Hola GUI MySQL Workbench:
+## <a name="connect-to-the-server-by-using-the-mysql-workbench-gui-tool"></a>Conexión al servidor mediante la herramienta de interfaz gráfica de usuario MySQL Workbench
+Para conectarse al servidor mediante la herramienta de interfaz gráfica de usuario MySQL Workbench, siga estos pasos:
 
-1.  Inicie Hola aplicación MySQL Workbench en el equipo cliente. Puede descargar e instalar MySQL Workbench desde [aquí](https://dev.mysql.com/downloads/workbench/).
+1.  Abra la aplicación MySQL Workbench en el equipo cliente. MySQL Workbench se puede descargar e instalar desde [Download MySQL Workbench](https://dev.mysql.com/downloads/workbench/) (Descargar MySQL Workbench).
 
-2.  En **el programa de instalación nueva conexión** diálogo cuadro, escriba Hola siguiente información **parámetros** ficha:
+2.  En el cuadro de diálogo **Setup New Connection** (Configurar nueva conexión), escriba la siguiente información en la pestaña **Parameters** (Parámetros):
 
-    ![Configuración de una conexión nueva](./media/quickstart-create-mysql-server-database-using-azure-portal/setup-new-connection.png)
+    ![Configurar una nueva conexión](./media/quickstart-create-mysql-server-database-using-azure-portal/setup-new-connection.png)
 
-    | **Configuración** | **Valor sugerido** | **Descripción del campo** |
+    |Configuración |Valor sugerido|Descripción del campo|
     |---|---|---|
-    |   Nombre de la conexión | Conexión de demostración | Especifique una etiqueta para esta conexión. |
-    | Método de conexión | Estándar (TCP/IP) | Estándar (TCP/IP) es suficiente. |
-    | Nombre de host. | *nombre del servidor* | Especifique el valor de nombre de servidor de Hola que se usó cuando creó Hola base de datos de Azure para MySQL anteriormente. El servidor de ejemplo que se muestra es myserver4demo.mysql.database.azure.com. Usar el nombre de dominio completo de hello (\*. mysql.database.azure.com) tal y como se muestra en el ejemplo de Hola. Siga los pasos Hola Hola anterior sección tooget Hola información de la conexión si no recuerda el nombre del servidor.  |
-    | Port | 3306 | Utilice siempre el puerto 3306 al conectarse tooAzure base de datos de MySQL. |
-    | Nombre de usuario |  *nombre de inicio de sesión del administrador del servidor* | Escriba Hola server inicio de sesión nombre de usuario administrador especificó al crear Hola base de datos de Azure para MySQL anteriormente. El nombre de usuario de nuestro ejemplo es myadmin@myserver4demo. Siga los pasos Hola Hola anterior sección tooget Hola información de la conexión si no recuerda el nombre de usuario de Hola. formato de Hello es  *username@servername* .
-    | Password | la contraseña | Haga clic en almacenar en el almacén de contraseñas de botón toosave Hola.... |
+     Nombre de conexión | Conexión de demostración | Una etiqueta para esta conexión. |
+    Método de conexión | Estándar (TCP/IP) | Estándar (TCP/IP) es suficiente. |
+    Nombre de host. | *Nombre del servidor* | El valor de nombre de servidor que usó al crear el servidor de Azure Database for MySQL. En el ejemplo, el servidor es **myserver4demo.mysql.database.azure.com**. Use el nombre de dominio completo (**\*.mysql.database.azure.com**) como se muestra en el ejemplo. Si no recuerda el nombre del servidor, siga los pasos de la sección anterior para obtener la información de conexión.|
+     Port | 3306 | El puerto que se usa al conectarse al servidor de base de datos de Azure Database for MySQL. |
+    Nombre de usuario |  *Nombre de inicio de sesión del administrador del servidor* | La información de inicio de sesión del administrador del servidor que especificó al crear el servidor de Azure Database for MySQL. El nombre de usuario del ejemplo es **myadmin@myserver4demo**. Si no recuerda el nombre de usuario, siga los pasos de la sección anterior para obtener la información de conexión. El formato es *username@servername*.
+    Password | *Su contraseña* | Haga clic en el botón **Store in Vault...** (Almacenar en almacén) para guardar la contraseña. |
 
-    Haga clic en **Probar conexión** tootest si todos los parámetros están configurados correctamente. Haga clic en Aceptar toosave Hola conexión. 
+3. Seleccione **Probar conexión** para probar si todos los parámetros están configurados correctamente. Luego, seleccione **Aceptar** para guardar la conexión. 
 
     > [!NOTE]
-    > SSL se aplica de forma predeterminada en el servidor y requiere configuración adicional en orden tooconnect correctamente. Vea [tooAzure base de datos de conexión de conectividad de configurar SSL en su aplicación toosecurely para MySQL](./howto-configure-ssl.md).  Si desea toodisable SSL para este tutorial rápido, visite Hola portal de Azure y haga clic en hello conexión seguridad página toodisable Hola exigir SSL conexión botón de alternancia.
+    > SSL se aplica de forma predeterminada en el servidor que requiere mayor configuración para conectarse correctamente. Para más información, consulte [Configuración de la conectividad SSL en la aplicación para conectarse de forma segura a Azure Database for MySQL](./howto-configure-ssl.md). Para deshabilitar SSL para este guía de inicio rápido, vaya a Azure Portal. Luego, seleccione la página de seguridad de la conexión para deshabilitar el botón de alternancia **Aplicar conexión SSL**.
 
 ## <a name="clean-up-resources"></a>Limpieza de recursos
-Limpiar los recursos de Hola que creó en el tutorial rápido de hello ya sea eliminando Hola [grupo de recursos de Azure](../azure-resource-manager/resource-group-overview.md), que incluye todos los recursos de hello en el grupo de recursos de hello, o mediante la eliminación de recursos de un servidor hello si quiere tookeep Hola otros recursos intactos.
+Hay dos forma de eliminar los recursos que ha creado en la guía de inicio rápido. Puede eliminar el [grupo de recursos de Azure](../azure-resource-manager/resource-group-overview.md), lo que incluye todos los recursos del grupo de recursos. Si desea mantener intactos los restantes recursos, elimine solo el único recurso del servidor.
 
 > [!TIP]
-> Otras guías de inicio rápido de esta colección se basan en los valores de esta. Si tiene previsto toocontinue toowork con los siguientes tutoriales rápidos, realice la limpieza no Hola recursos creados en este tutorial rápido. Si no tiene previsto toocontinue, use Hola seguido toodelete pasos creado todos los recursos de este tutorial rápido de hello portal de Azure.
+> Otras guías de inicio rápido de esta colección se basan en esta. Si tiene previsto seguir usando otras guías de inicio rápido, no elimine los recursos que ha creado en esta. Si no tiene previsto continuar, siga estos pasos para eliminar todos los recursos que ha creado en esta.
 >
 
-toodelete Hola todo grupo de recursos incluidos servidor hello recién creado:
-1.  Busque el grupo de recursos en hello portal de Azure. En el menú de la izquierda de Hola Hola portal de Azure, haga clic en **grupos de recursos** y, a continuación, haga clic en nombre de Hola de su grupo de recursos, como en nuestro ejemplo **myresourcegroup**.
-2.  En la página del grupo de recursos, haga clic en **Eliminar**. A continuación, Hola nombre del tipo de su grupo de recursos, como en nuestro ejemplo **myresourcegroup**en Hola eliminación de tooconfirm del cuadro de texto y, a continuación, haga clic en **eliminar**.
+Para eliminar todo el grupo de recursos, incluido el servidor recién creado, siga estos pasos:
 
-O bien, en su lugar, toodelete Hola recién creado servidor:
-1.  Busque el servidor en hello portal de Azure, si no tiene abrir. En el menú de la izquierda de hello en el portal de Azure, haga clic en **todos los recursos**y, a continuación, busque servidor hello que ha creado.
-2.  En hello **Introducción** página, haga clic en hello **eliminar** botón en el panel superior de Hola.
-![Azure Database for MySQL: eliminación del servidor](./media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png)
-3.  Confirme el nombre del servidor hello desee toodelete y mostrar hello las bases de datos en lo que se ven afectados. Escriba el nombre del servidor en el cuadro de texto hello, como en nuestro ejemplo **myserver4demo**y, a continuación, haga clic en **eliminar**.
+1.  Elimine el grupo de recursos en Azure Portal. En el menú de la izquierda, seleccione **Grupos de recursos** y, después, el nombre del grupo de recursos (en el ejemplo, **myresourcegroup**).
+
+2.  En la página del grupo de recursos, seleccione **Eliminar**. Luego, escriba el nombre del grupo de recursos (en el ejemplo, **myresourcegroup**) en el cuadro para confirmar la eliminación y seleccione **Eliminar**.
+
+Para eliminar solo el servidor recién creado, siga estos pasos:
+
+1.  Busque el servidor en Azure Portal si no lo tiene abierto. Seleccione **Todos los recursos** en el menú de la izquierda de Azure Portal. Luego busque el servidor que ha creado.
+
+2.  En la página **Introducción**, seleccione **Eliminar**. 
+
+    ![Azure Database for MySQL: eliminar servidor](./media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png)
+
+3.  Confirme el nombre del servidor que desea eliminar y muestre las bases de datos incluidas. Escriba el nombre del servidor en el cuadro (en nuestro ejemplo, **myserver4demo**). Seleccione **Eliminar**.
 
 ## <a name="next-steps"></a>Pasos siguientes
 

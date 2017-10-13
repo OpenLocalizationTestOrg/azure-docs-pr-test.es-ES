@@ -1,6 +1,6 @@
 ---
-title: "programación de aplicación de revisiones aaaConfigure OS para clústeres de HDInsight basados en Linux - Azure | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo los clústeres de programación de aplicación de revisiones tooconfigure OS para HDInsight basados en Linux."
+title: "Configuración de la programación de aplicación de revisiones de SO para clústeres de HDInsight basado en Linux (Azure) | Microsoft Docs"
+description: "Aprenda a configurar la programación de la aplicación de revisión del SO para clústeres de HDInsight basado en Linux."
 services: hdinsight
 documentationcenter: 
 author: bprakash
@@ -15,38 +15,38 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: bhanupr
-ms.openlocfilehash: 1598d64e594d7e8a68573fc63dd86051a5a9d025
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: af3c5a19ae8e2e606e4b0506f9f6dddb41192e40
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="os-patching-for-hdinsight"></a>Aplicación de revisión del SO para HDInsight 
-Como un servicio administrado de Hadoop, HDInsight se encarga de aplicar revisiones Hola SO de hello subyacentes de las máquinas virtuales que se usan los clústeres de HDInsight. A partir del 1 de agosto de 2016, hemos cambiado directiva de aplicación de revisión de SO de invitado y Hola para clústeres de HDInsight basados en Linux (versión 3.4 o superior). objetivo de Hola de nueva directiva de hello es toosignificantly reducir el número de Hola de reinicios toopatching due. nueva directiva de Hello continuará toopatch las máquinas virtuales (VM) en Linux clústeres cada el lunes o el jueves a partir de 12.00 UTC de forma escalonada en nodos cualquier clúster determinado. Sin embargo, cualquier máquina virtual determinada solo se reiniciará como máximo una vez cada 30 días debido a la aplicación de revisiones tooguest OS. Además, Hola reiniciar por primera vez para un clúster recién creado no se realizará antes de 30 días a partir de la fecha de creación de clúster de Hola. Revisiones serán efectivos cuando se reinician hello las máquinas virtuales.
+Como servicio de Hadoop administrado, HDInsight se preocupa de aplicar las revisiones del SO de las máquinas virtuales subyacentes que los clústeres de HDInsight usan. A partir del 1 de agosto de 2016, cambiamos la directiva de aplicación de revisión del SO invitado para clústeres de HDInsight basado en Linux (versión 3.4 o superior). El objetivo de la nueva directiva consiste en reducir significativamente el número de reinicios debidos a la aplicación de revisión. La nueva directiva seguirá aplicando revisiones en máquinas virtuales de clústeres Linux cada lunes o jueves a partir de las 12:00 (UTC) de manera escalonada en los distintos nodos de cualquier clúster. Sin embargo, las máquinas virtuales solo se reiniciarán, como máximo, una vez cada 30 días debido a la aplicación de revisión de SO invitado. Además, el primer reinicio de un clúster recién creado no se realizará hasta que no hayan transcurrido 30 días desde la fecha de creación del clúster. Las revisiones entrarán en vigor una vez que se reinicien las máquinas virtuales.
 
-## <a name="how-tooconfigure-hello-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>¿Cómo tooconfigure Hola programación de aplicación de revisión de SO para clústeres de HDInsight basados en Linux
-máquinas virtuales de Hello en un clúster de HDInsight necesita toobe reinicia ocasionalmente para que se pueden instalar revisiones de seguridad importantes. A partir del 1 de agosto de 2016, nuevos clústeres de HDInsight basados en Linux (versión 3.4 o superior,) se reinician con hello siguiente programación:
+## <a name="how-to-configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Configuración de la programación de la aplicación de revisión del SO para clústeres de HDInsight basado en Linux
+Las máquinas virtuales de un clúster de HDInsight se deben reiniciar de forma ocasional para poder instalar las revisiones de seguridad importantes. A partir del 1 de agosto de 2016, los nuevos clústeres de HDInsight basado en Linux (versión 3.4 o superior) se reinician según la programación siguiente:
 
-1. Una máquina virtual en clúster de hello puede reiniciar sólo para revisiones a lo sumo, una vez en un período de 30 días.
-2. Hola reinicie inicial 12.00 UTC.
-3. proceso de reinicio de Hola se escalona a lo largo de máquinas virtuales en clúster de hello, por lo que el clúster de hello sigue estando disponible durante el proceso de reinicio de Hola.
-4. Hola reiniciar por primera vez para un clúster recién creado no se realizará antes de 30 días después de la fecha de creación de clúster de Hola.
+1. Una máquina virtual en el clúster solo se puede reiniciar para las revisiones, como máximo, una vez en un período de 30 días.
+2. El reinicio se realiza a las 12:00 a.m., hora UTC.
+3. El reinicio es un proceso escalonado entre las distintas máquinas virtuales del clúster, por lo que el clúster sigue disponible durante el proceso de reinicio.
+4. El primer reinicio de un clúster recién creado no se realizará hasta que hayan transcurrido 30 días después de la fecha de creación del clúster.
 
-Con la acción de secuencia de comandos de Hola que se describe en este artículo, puede modificar programación de aplicación de revisiones de hello OS como sigue:
+Con la acción de script que se describe en este artículo, puede modificar la programación de aplicación de revisión del SO de la siguiente manera:
 1. Habilite o deshabilite los reinicios automáticos.
-2. Frecuencia de Hola de conjunto de reinicia (días entre reinicios)
-3. Establezca Hola día de semana de hello cuando se produce un reinicio
+2. Establezca la frecuencia de los reinicios (días entre reinicios).
+3. Establezca el día de la semana en que se realizará un reinicio.
 
 > [!NOTE]
 > Esta acción de script solo funcionará con clústeres de HDInsight basado en Linux que se hayan creado después del 1 de agosto de 2016. Las revisiones solo entrarán en vigor una vez que se reinicien las máquinas virtuales. 
 >
 
-## <a name="how-toouse-hello-script"></a>¿Cómo toouse hello secuencia de comandos 
+## <a name="how-to-use-the-script"></a>Uso del script 
 
-Cuando requiera Hola siguiendo la información mediante este script:
-1. ubicación del script de Hola: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv01/os-patching-reboot-config.sh.  HDInsight utiliza esta toofind URI y ejecuta script de Hola en todas las máquinas virtuales de hello en clúster de Hola.
+Cuando se usa este script, se requiere la información siguiente:
+1. La ubicación del script: https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv01/os-patching-reboot-config.sh.  HDInsight usa este URI para encontrar y ejecutar el script en todas las máquinas virtuales del clúster.
   
-2. Hola tipos de nodos de clúster que se aplica el script de Hola a: nodo principal, workernode, zookeeper. Esta secuencia de comandos debe ser tipos de nodo de tooall aplicados en el clúster de Hola. Si no es de tipo de nodo tooa aplicado y, a continuación, Hola virtual máquinas para ese tipo de nodo continuará toouse Hola revisiones la programación anterior.
+2. Los tipos de nodo de clúster al que se aplica el script: headnode, workernode, zookeeper. Este script se debe aplicar a todos los tipos de nodo del clúster. Si no se aplica a un tipo de nodo, las máquinas virtuales de ese tipo de nodo seguirán usando la programación de aplicación de revisión anterior.
 
 
 3.  Parámetro: este script acepta tres parámetros numéricos:
@@ -54,18 +54,18 @@ Cuando requiera Hola siguiendo la información mediante este script:
     | Parámetro | Definición |
     | --- | --- |
     | Habilite o deshabilite los reinicios automáticos |0 o 1. El valor 0 deshabilita los reinicios automáticos, mientras que 1 los habilita. |
-    | Frecuencia |too90 7 (inclusive). número de Hola de toowait días antes de reiniciar las máquinas virtuales de Hola para las revisiones que requieren un reinicio. |
-    | Día de la semana |1 too7 (inclusive). Un valor de 1 indica el reinicio de hello debe aparecer un lunes y 7 indica un ejemplo de Sunday.For, con parámetros de 1 60 2 resultados en automático se reinicia cada 60 días (como máximo) del martes. |
-    | Persistencia |Al aplicar un clúster existente de script acción tooan, puede marcar el script de Hola conservada. Las secuencias de comandos persistentes se aplican cuando workernodes nuevos se agregan toohello clúster a través de las operaciones de ajuste de escala. |
+    | Frecuencia |7 a 90 (incluido). La cantidad de días que se esperará antes de reiniciar las máquinas virtuales para las revisiones que requieren un reinicio. |
+    | Día de la semana |1 a 7 (incluido). El valor 1 indica que el reinicio debe realizarse un lunes y el valor 7 indica que se debe realizar el domingo. Por ejemplo, si usa los parámetros 1 60 2, los reinicios automáticos se realizan cada 60 días (como máximo) los martes. |
+    | Persistencia |Cuando aplica una acción de script en un clúster existente, puede marcar el script como persistente. Los scripts persistentes se aplican cuando los nuevos nodos workernode se agregan al clúster a través de operaciones de escalado. |
 
 > [!NOTE]
-> Debe marcar esta secuencia de comandos conservada al aplicar tooan de clúster existente. En caso contrario, los nuevos nodos creados a través de las operaciones de ajuste de escala usará predeterminado de hello programación de aplicación de revisiones.
-Si aplica la secuencia de comandos de Hola como parte del proceso de creación de clúster de Hola, se mantiene automáticamente.
+> Debe marcar este script como resistente cuando lo aplique en un clúster existente. De lo contrario, cualquier nodo nuevo que se creen a través de las operaciones de escalado usarán la programación de aplicación de revisión predeterminada.
+Si aplica el script como parte del proceso de creación de clústeres, se marcará como persistente de forma automática.
 >
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para pasos específicos sobre el uso de la acción de secuencia de comandos de hello, vea Hola siguientes secciones en hello [clústeres de HDInsight basados en Linuz personalizar mediante la acción de secuencia de comandos](hdinsight-hadoop-customize-cluster-linux.md):
+Para los pasos específicos sobre cómo usar la acción de script, consulte las secciones siguiente en [Personalización de clústeres de HDInsight basado en Linux mediante la acción de scripts](hdinsight-hadoop-customize-cluster-linux.md):
 
 * [Uso de una acción de script durante la creación de un clúster](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
-* [Aplicar un tooa de acción de secuencia de comandos ejecutando el clúster](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)
+* [Aplicación de una acción de script a un clúster en ejecución](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)

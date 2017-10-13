@@ -1,6 +1,6 @@
 ---
-title: "¿aaaHow tooquery los datos de tabla en la base de datos de Azure Cosmos? | Microsoft Docs"
-description: "Obtenga información acerca de los datos de la tabla en la base de datos de Azure Cosmos tooquery"
+title: "¿Cómo consultar datos de tabla en Azure Cosmos DB? | Microsoft Docs"
+description: Aprender a consultar datos de tabla en Azure Cosmos DB
 services: cosmos-db
 documentationcenter: 
 author: kanshiG
@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/10/2017
 ms.author: govindk
-ms.openlocfilehash: 32526c3488c589c5be3a4a2f174aa769570f0c0e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e59cfa85c6bf584e44bdc6e88cc19d67df390041
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-cosmos-db-how-tooquery-table-data-by-using-hello-table-api-preview"></a>Azure Cosmos DB: Cómo Hola tooquery datos de la tabla mediante el uso de API de tabla (vista previa)?
+# <a name="azure-cosmos-db-how-to-query-table-data-by-using-the-table-api-preview"></a>Azure Cosmos DB: instrucciones de realización de consultas de tablas de datos con Table API (versión preliminar)
 
-base de datos de Azure Cosmos Hello [API de tabla](table-introduction.md) (vista previa) es compatible con OData y [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) consultas en los datos de clave/valor (tabla).  
+[Table API](table-introduction.md) (versión preliminar) de Azure Cosmos DB admite consultas de OData y [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) en los datos de clave-valor (tabla).  
 
-En este artículo se trata Hola siguientes tareas: 
+En este artículo se tratan las tareas siguientes: 
 
 > [!div class="checklist"]
-> * Consultar datos con hello API de tabla
+> * Consulta de datos con Table API
 
-consultas de este artículo Hello usar Hola según muestra `People` tabla:
+En las consultas de este artículo se usa la tabla `People` de ejemplo siguiente:
 
 | PartitionKey | RowKey | Email | PhoneNumber |
 | --- | --- | --- | --- |
@@ -38,16 +38,16 @@ consultas de este artículo Hello usar Hola según muestra `People` tabla:
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
 | Smith | Jeff | Jeff@contoso.com| 425-555-0104 | 
 
-Dado que base de datos de Azure Cosmos es compatible con hello las API de almacenamiento de tabla de Azure, vea [consultar tablas y entidades] (https://docs.microsoft.com/rest/api/storageservices/fileservices/querying-tables-and-entities) para obtener más información sobre cómo Hola tooquery mediante el uso de API de la tabla. 
+Puesto que Azure Cosmos DB es compatible con las API de Azure Table Storage, consulte [Consulta de tablas y entidades](https://docs.microsoft.com/rest/api/storageservices/fileservices/querying-tables-and-entities) para obtener información sobre cómo realizar consultas con Table API. 
 
-Para obtener más información sobre las capacidades de premium de Hola que ofrece la base de datos de Azure Cosmos, consulte [base de datos de Azure Cosmos: API de tabla](table-introduction.md) y [desarrollar con hello API de tabla en .NET](tutorial-develop-table-dotnet.md). 
+Para obtener más información sobre las funcionalidades premium que ofrece Azure Cosmos DB, consulte [Azure Cosmos DB: Table API](table-introduction.md) y [Azure Cosmos DB: desarrollo con Table API en .NET](tutorial-develop-table-dotnet.md). 
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Para estos toowork consultas, debe tener una cuenta de base de datos de Azure Cosmos y tener datos de la entidad en el contenedor de Hola. ¿No tiene nada de lo anterior? Hola completa [inicio rápido de cinco minutos](https://aka.ms/acdbtnetqs) o hello [tutorial de programadores](https://aka.ms/acdbtabletut) toocreate una cuenta y rellenar la base de datos.
+Para que estas consultas funcionen, debe tener una cuenta de Azure Cosmos DB, así como datos de la entidad en el contenedor. ¿No tiene nada de lo anterior? Efectúe el [inicio rápido en cinco minutos](https://aka.ms/acdbtnetqs) o siga el [tutorial de desarrolladores](https://aka.ms/acdbtabletut) para crear una cuenta y rellenar la base de datos.
 
 ## <a name="query-on-partitionkey-and-rowkey"></a>Consultas en PartitionKey y RowKey
-Dado que las propiedades PartitionKey y RowKey de hello forman la clave principal de una entidad, puede usar Hola después de la entidad de una sintaxis especial tooidentify hello: 
+Dado que las propiedades PartitionKey y RowKey forman la clave principal de una entidad, puede usar la siguiente sintaxis especial para identificar dicha entidad: 
 
 **Consultar**
 
@@ -60,17 +60,17 @@ https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0104 |
 
-Como alternativa, puede especificar estas propiedades como parte del programa Hola `$filter` opción, como se muestra en los pasos de la sección de Hola. Tenga en cuenta que los nombres de propiedad de clave de Hola y valores constantes distinguen mayúsculas de minúsculas. Hola PartitionKey y RowKey propiedades son de tipo String. 
+Como alternativa, puede especificar estas propiedades como parte de la opción `$filter`, tal y como se muestra en la sección siguiente. Tenga en cuenta que los nombres de propiedad de clave y los valores constantes distinguen entre mayúsculas y minúsculas. Las propiedades PartitionKey y RowKey son de tipo String. 
 
 ## <a name="query-by-using-an-odata-filter"></a>Consultas mediante un filtro de OData
 Al construir una cadena de filtro, tenga en cuenta estas reglas: 
 
-* Usar operadores lógicos Hola definidos por la especificación de Protocolo OData toocompare un valor de propiedad tooa Hola. Tenga en cuenta que no se puede comparar un valor dinámico de tooa de propiedad. Un lado de la expresión de hello debe ser una constante. 
-* nombre de la propiedad de Hello, operador y valor constante deben estar separados por espacios codificados de dirección URL. Para codificar un espacio con codificación URL se usa `%20`. 
-* Todas las partes de la cadena de filtro de hello distinguen mayúsculas de minúsculas. 
-* valor constante de Hello debe ser de hello como propiedad Hola para resultados válidos de hello filtro tooreturn de tipo de datos mismas. Para obtener más información acerca de los tipos de propiedad admitidos, consulte [Hola de entender el modelo de datos del servicio de tabla](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model). 
+* Utilice los operadores lógicos definidos por la especificación del protocolo OData para comparar una propiedad con un valor. Tenga en cuenta que no puede comparar una propiedad con un valor dinámico. Un lado de la expresión debe ser una constante. 
+* El nombre de la propiedad, el operador y el valor constante se deben separar por espacios con codificación URL. Para codificar un espacio con codificación URL se usa `%20`. 
+* Todas las partes de la cadena de filtro distinguen mayúsculas de minúsculas. 
+* Para que el filtro devuelva resultados válidos, el valor constante debe ser del mismo tipo de datos que la propiedad. Para obtener más información sobre los tipos de propiedades que se admiten, consulte [Introducción al modelo de datos del servicio Tabla](https://docs.microsoft.com/rest/api/storageservices/understanding-the-table-service-data-model). 
 
-Esta es una consulta de ejemplo que muestra cómo toofilter por Hola PartitionKey y propiedades de correo electrónico mediante el uso de una OData `$filter`.
+Esta es una consulta de ejemplo en la que se muestra cómo filtrar por propiedades PartitionKey e Email con un elemento `$filter` de OData.
 
 **Consultar**
 
@@ -78,7 +78,7 @@ Esta es una consulta de ejemplo que muestra cómo toofilter por Hola PartitionKe
 https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and%20Email%20eq%20'Ben@contoso.com'
 ```
 
-Para obtener más información sobre cómo tooconstruct filtrar expresiones para diversos tipos de datos, vea [consultar tablas y entidades](https://docs.microsoft.com/rest/api/storageservices/querying-tables-and-entities).
+Para obtener más información sobre cómo construir expresiones de filtro para diferentes tipos de datos, consulte [Querying Tables and Entities](https://docs.microsoft.com/rest/api/storageservices/querying-tables-and-entities) (Consulta de tablas y entidades).
 
 **Resultados**
 
@@ -87,7 +87,7 @@ Para obtener más información sobre cómo tooconstruct filtrar expresiones para
 | Ben |Smith | Ben@contoso.com| 425-555-0102 |
 
 ## <a name="query-by-using-linq"></a>Consultas con LINQ 
-También puede consultar mediante el uso de LINQ, que traduce las expresiones de consulta OData correspondientes toohello. Este es un ejemplo de cómo toobuild consultas mediante Hola .NET SDK:
+También puede realizar consultas con LINQ, que se traduce a las correspondientes expresiones de consulta de OData. Este es un ejemplo de cómo compilar consultas mediante el SDK de .NET:
 
 ```csharp
 CloudTableClient tableClient = account.CreateCloudTableClient();
@@ -106,12 +106,12 @@ await table.ExecuteQuerySegmentedAsync<CustomerEntity>(query, null);
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-En este tutorial, ha hecho siguiente de hello:
+En este tutorial, ha hecho lo siguiente:
 
 > [!div class="checklist"]
-> * Aprender cómo tooquery mediante el uso de Hola API de tabla (vista previa) 
+> * Ha aprendido a realizar consultas mediante Table API (versión preliminar). 
 
-Ahora puede continuar toohello siguiente tutorial toolearn cómo toodistribute los datos globales.
+Ahora puede continuar con el tutorial siguiente para obtener información sobre cómo distribuir sus datos globalmente.
 
 > [!div class="nextstepaction"]
 > [Distribución de datos global](tutorial-global-distribution-documentdb.md)

@@ -1,6 +1,6 @@
 ---
-title: "aaaGet a trabajar con consultas entre bases de datos (creación de particiones verticales) | Documentos de Microsoft"
-description: "la consulta de base de datos elástica toouse con dividido verticalmente las bases de datos"
+title: "Introducción a las consultas entre bases de datos (particiones verticales) | Microsoft Docs"
+description: "cómo usar la consulta de base de datos elástica con bases de datos con particiones verticales"
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2016
 ms.author: torsteng
-ms.openlocfilehash: 9e6183268e8bf87e3ac28f502711fcc05a7a3f52
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 17158c4960e9ba9251524659c90af9aec1316774
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>Introducción a las consultas entre bases de datos (particiones verticales) (versión preliminar)
-Consulta de base de datos elástica (versión preliminar) para la base de datos de SQL Azure le permite toorun consultas de T-SQL que abarcan varias bases de datos con un punto de conexión. En este tema se aplica demasiado[dividido verticalmente las bases de datos](sql-database-elastic-query-vertical-partitioning.md).  
+La consulta de base de datos elástica (vista previa) para Base de datos SQL de Azure le permite ejecutar consultas T-SQL que distribuyen varias bases de datos con un único punto de conexión. Este tema se aplica a [bases de datos con particiones verticales](sql-database-elastic-query-vertical-partitioning.md).  
 
-Cuando haya completado, tendrá que: Obtenga información acerca de cómo tooconfigure y usar una base de datos de SQL Azure tooperform las consultas que usan varias bases de datos relacionadas. 
+Una vez completado, sabrá: cómo configurar y usar una Base de datos SQL de Azure para realizar consultas que distribuyan múltiples bases de datos relacionadas. 
 
-Para obtener más información acerca de la característica de consulta de base de datos elástica hello, visite [información general sobre la consulta de base de datos elástica de base de datos de SQL Azure](sql-database-elastic-query-overview.md). 
+Para más información sobre la característica de consulta de bases de datos elásticas, vaya a [Información general sobre la consulta de bases de datos elásticas de Azure SQL Database](sql-database-elastic-query-overview.md). 
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Se debe poseer el permiso ALTER ANY EXTERNAL DATA SOURCE. Este permiso se incluye con el permiso ALTER DATABASE Hola. Los permisos ALTER ANY EXTERNAL DATA SOURCE son toohello toorefer necesario el origen de datos subyacentes.
+Se debe poseer el permiso ALTER ANY EXTERNAL DATA SOURCE. Este permiso está incluido en el permiso ALTER DATABASE. Se necesitan permisos ALTER ANY EXTERNAL DATA SOURCE para hacer referencia al origen de datos subyacente.
 
-## <a name="create-hello-sample-databases"></a>Crear bases de datos de ejemplo de Hola
-toostart con, necesitamos toocreate dos bases de datos, **clientes** y **pedidos**, ya sea en Hola iguales o distintos servidores lógicos.   
+## <a name="create-the-sample-databases"></a>Crear las base de datos de ejemplo
+Para empezar, debemos crear dos bases de datos, **Customers** y **Orders**, ya sea en el mismo servidor o en diferentes servidores lógicos.   
 
-Ejecute hello las siguientes consultas en hello **pedidos** Hola de base de datos toocreate **Informacióndepedido** tabla y entrada de datos de ejemplo de Hola. 
+Ejecute las siguientes consultas en la base de datos **Orders** para crear la tabla **OrderInformation** e introducir los datos de ejemplo. 
 
     CREATE TABLE [dbo].[OrderInformation]( 
         [OrderID] [int] NOT NULL, 
@@ -46,7 +46,7 @@ Ejecute hello las siguientes consultas en hello **pedidos** Hola de base de dato
     INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (321, 1) 
     INSERT INTO [dbo].[OrderInformation] ([OrderID], [CustomerID]) VALUES (564, 8) 
 
-Ahora, ejecute la consulta en hello siguiente **clientes** Hola de base de datos toocreate **Informacióndecliente** tabla y entrada de datos de ejemplo de Hola. 
+Ahora, ejecute la siguiente consulta en la base de datos **Customers** para crear la tabla **CustomerInformation** e introducir los datos de ejemplo. 
 
     CREATE TABLE [dbo].[CustomerInformation]( 
         [CustomerID] [int] NOT NULL, 
@@ -61,18 +61,18 @@ Ahora, ejecute la consulta en hello siguiente **clientes** Hola de base de datos
 ## <a name="create-database-objects"></a>Creación de objetos de base de datos
 ### <a name="database-scoped-master-key-and-credentials"></a>Clave maestra y credenciales de ámbito de base de datos
 1. Abra SQL Server Management Studio o SQL Server Data Tools en Visual Studio.
-2. Conectar la base de datos de pedidos de toohello y ejecute hello siga los comandos del código T-SQL:
+2. Conéctese a la base de datos Pedidos y ejecute los siguientes comandos de T-SQL:
    
         CREATE MASTER KEY ENCRYPTION BY PASSWORD = '<password>'; 
         CREATE DATABASE SCOPED CREDENTIAL ElasticDBQueryCred 
         WITH IDENTITY = '<username>', 
         SECRET = '<password>';  
    
-    Hola "username" y "password" deben ser el nombre de usuario de Hola y contraseña utilizados toologin en base de datos de los clientes de Hola.
+    "username" y "contraseña" deben ser el nombre de usuario y la contraseña usados para iniciar sesión en la base de datos Clientes.
     Actualmente no se admite la autenticación usando Azure Active Directory con consultas elásticas.
 
 ### <a name="external-data-sources"></a>Orígenes de datos externos
-toocreate un origen de datos externo, ejecute hello siguiente comando en la base de datos de pedidos de hello: 
+Para crear un origen de datos externo, ejecute el siguiente comando en la base de datos Pedidos: 
 
     CREATE EXTERNAL DATA SOURCE MyElasticDBQueryDataSrc WITH 
         (TYPE = RDBMS, 
@@ -82,7 +82,7 @@ toocreate un origen de datos externo, ejecute hello siguiente comando en la base
     ) ;
 
 ### <a name="external-tables"></a>Tablas externas
-Crear una tabla externa en hello pedidos base de datos que coincide con la definición de Hola de tabla de hello Informacióndecliente:
+Cree una tabla externa en la base de datos Pedidos, que coincida con la definición de la tabla CustomerInformation:
 
     CREATE EXTERNAL TABLE [dbo].[CustomerInformation] 
     ( [CustomerID] [int] NOT NULL, 
@@ -92,7 +92,7 @@ Crear una tabla externa en hello pedidos base de datos que coincide con la defin
     ( DATA_SOURCE = MyElasticDBQueryDataSrc) 
 
 ## <a name="execute-a-sample-elastic-database-t-sql-query"></a>Ejecución de la consulta de T-SQL de la base de datos elástica de ejemplo
-Una vez que haya definido el origen de datos externo y las tablas externas ahora puede usar las tablas externas tooquery de T-SQL. Ejecute esta consulta en la base de datos de pedidos de hello: 
+Una vez que haya definido su origen de datos externo y las tablas externas, puede usar el T-SQL para consultar sus las tablas externas. Ejecute esta consulta en la base de datos Pedidos: 
 
     SELECT OrderInformation.CustomerID, OrderInformation.OrderId, CustomerInformation.CustomerName, CustomerInformation.Company 
     FROM OrderInformation 
@@ -100,7 +100,7 @@ Una vez que haya definido el origen de datos externo y las tablas externas ahora
     ON CustomerInformation.CustomerID = OrderInformation.CustomerID 
 
 ## <a name="cost"></a>Coste
-Actualmente, característica de consulta de base de datos elástica Hola se incluye en el costo de saludo de la base de datos de SQL Azure.  
+En la actualidad, la característica de consulta de base de datos elástica se incluye en el coste de la base de datos SQL de Azure.  
 
 Para obtener información de precios, vea [Precio de Base de datos SQL](https://azure.microsoft.com/pricing/details/sql-database). 
 

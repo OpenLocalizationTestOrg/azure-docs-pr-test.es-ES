@@ -1,5 +1,5 @@
 ---
-title: aaaAzure estrechamente, perfecto y almacenamiento de blobs de archivo | Documentos de Microsoft
+title: "Almacenamiento de archivo, esporádico y frecuente para blobs | Microsoft Docs"
 description: "Almacenamiento de archivo, esporádico y frecuente para cuentas de Azure Blog Storage."
 services: storage
 documentationcenter: 
@@ -14,76 +14,76 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/05/2017
 ms.author: mihauss
-ms.openlocfilehash: 42fb699bf16147ba8a4d9f75a62debadea5af65e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 544b11d74a926fe62b8ceca51570ce9d2ee7e6e7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-preview-storage-tiers"></a>Azure Blob Storage: niveles de almacenamiento de archivo, esporádico y frecuente (versión preliminar)
 
 ## <a name="overview"></a>Información general
 
-Azure Storage ofrece tres niveles de almacenamiento para el almacenamiento de objetos Blob, por lo que puede almacenar los datos de forma más rentable en función de cómo los use. Hello Azure **capa de almacenamiento activa** está optimizado para almacenar datos que se accede con frecuencia. Hello Azure **capa de almacenamiento frío** está optimizado para almacenar datos que se tiene acceso con poca frecuencia y que se almacenan durante al menos un mes. Hola [capa de almacenamiento de archivo (vista previa)](https://azure.microsoft.com/blog/announcing-the-public-preview-of-azure-archive-blob-storage-and-blob-level-tiering) está optimizado para almacenar datos que raramente se tiene acceso y almacenados durante al menos seis meses con los requisitos de latencia flexible (en orden de Hola de horas). Hola *archivo* capa de almacenamiento solo puede usarse en el nivel de blob de hello y no Hola toda cuenta de almacenamiento. Datos de capa de almacenamiento de acceso esporádico de hello pueden tolerar una disponibilidad ligeramente inferior, pero todavía requiere gran durabilidad y características similares de acceso de tiempo y el rendimiento como datos activos. En el caso de los datos de acceso esporádico y de archivo, un Acuerdo de Nivel de Servicio con una disponibilidad ligeramente inferior y unos costos de acceso mayores se puede aceptar a cambio de unos costos de almacenamiento mucho menores.
+Azure Storage ofrece tres niveles de almacenamiento para el almacenamiento de objetos Blob, por lo que puede almacenar los datos de forma más rentable en función de cómo los use. La **capa de almacenamiento de acceso frecuente** de Azure está optimizada para almacenar datos que se consultan con frecuencia. El **nivel de almacenamiento de acceso esporádico** de Azure está optimizado para almacenar datos a los que se accede con poca frecuencia y al menos durante un mes. El [nivel de almacenamiento de archivo (versión preliminar)](https://azure.microsoft.com/blog/announcing-the-public-preview-of-azure-archive-blob-storage-and-blob-level-tiering) está optimizado para almacenar datos a los que raramente se tiene acceso y se almacenan durante al menos seis meses con requisitos de latencia flexible (del orden de horas). El nivel de almacenamiento de *archivo* solo puede usarse en los blobs y no en toda la cuenta de almacenamiento. Los datos de la capa de almacenamiento de acceso esporádico toleran una disponibilidad ligeramente inferior, pero aun así requieren una gran durabilidad y un tiempo de acceso y unas características de rendimiento similares a las de los datos de acceso frecuente. En el caso de los datos de acceso esporádico y de archivo, un Acuerdo de Nivel de Servicio con una disponibilidad ligeramente inferior y unos costos de acceso mayores se puede aceptar a cambio de unos costos de almacenamiento mucho menores.
 
-En la actualidad, los datos almacenados en la nube de hello crece a un ritmo exponencial. el precio es toomanage para sus necesidades de almacenamiento de expansión, resulta útil tooorganize los datos en función de atributos como la frecuencia de acceso y planeado período de retención. Datos almacenados en la nube de hello pueden ser diferentes en cuanto a cómo se genera, además de procesar y acceder a través de su duración. A algunos datos se accede y se modifican activamente a lo largo de su duración. Algunos datos se obtiene acceso con frecuencia al principio de su duración, con acceso quitar drásticamente como Hola datos edades. Algunos datos permanecen inactivos en la nube de Hola y rara vez es, si alguna vez, tiene acceso a una vez almacenan.
+Hoy en día, los datos almacenados en la nube está creciendo a un ritmo exponencial. Para administrar los costos de las crecientes necesidades de almacenamiento, resulta útil organizar los datos en función de atributos como la frecuencia de acceso y el período de retención planeado. Los datos almacenados en la nube pueden ser diferentes en cuanto a la forma en que se generan, se procesan y se accede a ellos a lo largo de su duración. A algunos datos se accede y se modifican activamente a lo largo de su duración. A algunos datos se accede con frecuencia al principio de su duración, mientras que el acceso cae drásticamente a medida que envejecen los datos. Algunos datos permanecen inactivos en la nube y, una vez almacenados, no se accede a ellos prácticamente nunca.
 
 Cada uno de los escenarios de acceso a los datos se beneficia de un nivel de almacenamiento diferenciado que se optimiza para un patrón de acceso concreto. Con los niveles de almacenamiento de archivo, esporádico y frecuente, Azure Blob Storage satisface la necesidad de que haya niveles de almacenamiento diferenciados con modelos de fijación de precios independientes.
 
 ## <a name="blob-storage-accounts"></a>Cuentas de Almacenamiento de blobs
 
-**Cuentas de Almacenamiento de blobs** son cuentas de almacenamiento especiales para almacenar los datos no estructurados como blobs (objetos) en Almacenamiento de Azure. Con las cuentas de almacenamiento de blobs, ahora puede elegir entre una y capas de almacenamiento de acceso esporádico a nivel de cuenta o sin interrupción, interesantes y niveles en nivel de blob de hello, basándose en los patrones de acceso de archivo. Almacenar los datos inactivos rara vez se accede al costo de almacenamiento más bajo hello, menos datos interesantes que se accede con frecuencia en un almacenamiento de menor costo de los activos y almacenar datos activos que se accede con más frecuencia en hello menor costo de acceso. Las cuentas de almacenamiento de blobs son similares tooyour cuentas de almacenamiento general existente y compartan todos los gran durabilidad de hello, disponibilidad, escalabilidad y características de rendimiento que usan hoy en día, incluida la coherencia de la API de 100 por ciento para blobs en bloques y anexar blobs.
+**Cuentas de Almacenamiento de blobs** son cuentas de almacenamiento especiales para almacenar los datos no estructurados como blobs (objetos) en Almacenamiento de Azure. Con las cuentas de Blob Storage, ahora puede elegir entre los niveles de almacenamiento esporádico y frecuente en el nivel de cuenta, y los niveles de almacenamiento espóradico, frecuente y de archivo en el nivel de blobs, según los patrones de acceso. Almacene con el menor costo de almacenamiento aquellos datos esporádicos a los que rara vez acceda, con un menor costo de almacenamiento aquellos datos esporádicos con acceso menos frecuente que los datos frecuentes y almacene con el menor costo de todos los datos frecuentes a los que se acceda con más frecuencia. Las cuentas de Blob Storage son similares a las de almacenamiento de uso general existentes y comparten las excelentes características de rendimiento, escalabilidad, disponibilidad y durabilidad que se usan en la actualidad, incluida la coherencia total de la API para blobs en bloques y blobs en anexos.
 
 > [!NOTE]
 > Las cuentas de Almacenamiento de blobs solo admiten blobs en bloques y en anexos, pero no blobs en páginas.
 
-Las cuentas de almacenamiento de blobs exponen hello **nivel de acceso a** atributo, lo que permite la capa de almacenamiento de hello toospecify como **activa** o **frío** según datos de hello almacenados en hello cuenta. Si hay un cambio en el patrón de uso de Hola de los datos, también puede cambiar entre estos niveles de almacenamiento en cualquier momento. nivel de archivo Hello (versión preliminar) solo puede aplicarse a nivel de blob de Hola.
+Las cuentas de Blob Storage exponen el atributo **Access Tier**, que permite especificar la capa de almacenamiento como **Frecuente** o **Esporádico**, en función de los datos almacenados en la cuenta. Si hay un cambio en el patrón de uso de los datos, también se puede cambiar de capa de almacenamiento en cualquier momento. El nivel de archivo (versión preliminar) solo puede aplicarse en el nivel de blob.
 
 > [!NOTE]
-> Capa de almacenamiento de hello variación puede costar dinero adicional. Vea hello [precios y facturación](#pricing-and-billing) sección para obtener más detalles.
+> El cambio de la capa de almacenamiento puede conllevar cargos adicionales. Para más información, consulte la sección [Precios y facturación](#pricing-and-billing).
 
 ### <a name="hot-access-tier"></a>Nivel de acceso frecuente
 
-Escenarios de uso de ejemplo para la capa de almacenamiento activas de hello incluyen:
+Entre los ejemplos de escenarios de uso de la capa de almacenamiento de acceso frecuente se incluyen:
 
-* Datos que están en uso activo o toobe esperado acceso (lectura de y se escriba en) con frecuencia.
-* Datos que están almacenado provisionalmente para su procesamiento y eventual capa de almacenamiento de acceso esporádico de toohello de migración.
+* Los datos que están en uso o a los que se espera que se acceda (se lean y se escriban) con frecuencia.
+* Los datos que se almacenan provisionalmente para el procesamiento y la eventual migración a la capa de almacenamiento esporádico.
 
 ### <a name="cool-access-tier"></a>Nivel de acceso esporádico
 
-Escenarios de uso de ejemplo para el nivel de acceso esporádico almacenamiento Hola incluyen:
+Entre los ejemplos de escenarios de uso de la capa de almacenamiento de acceso esporádico se incluyen:
 
 * Conjuntos de datos de copia de seguridad y recuperación ante desastres a corto plazo.
-* Anterior contenido multimedia no verse con frecuencia ya pero es esperado toobe disponible inmediatamente cuando tiene acceso a.
-* Grandes conjuntos de datos que necesita toobe almacenan costo eficazmente mientras que se va a recopilar los datos más para procesarlas en el futuro. (*Por ejemplo,*, almacenamiento a largo plazo de datos científicos, datos de telemetría sin procesar de una instalación de fabricación)
+* Contenido multimedia antiguo que no se ve con frecuencia, pero que se espera que esté disponible de inmediato cuando se acceda a él.
+* Conjuntos de datos grandes que se deben almacenar de forma rentable mientras se recopilan más datos para el procesamiento futuro. (*Por ejemplo,*, almacenamiento a largo plazo de datos científicos, datos de telemetría sin procesar de una instalación de fabricación)
 
 ### <a name="archive-access-tier-preview"></a>Nivel de acceso de archivo (versión preliminar)
 
-[Almacenamiento de archivo](https://azure.microsoft.com/blog/announcing-the-public-preview-of-azure-archive-blob-storage-and-blob-level-tiering) tiene el costo más bajo de almacenamiento de Hola y mayor toohot de costos en comparación con la recuperación de datos y almacenamiento frío.
+[El almacenamiento de archivo](https://azure.microsoft.com/blog/announcing-the-public-preview-of-azure-archive-blob-storage-and-blob-level-tiering) tiene el menor costo de almacenamiento y los costos de recuperación de datos más alto en comparación con el almacenamiento frecuente y esporádico.
 
-Mientras un blob está en un almacenamiento de archivo, no se puede leer, copiar, sobrescribir ni modificar. Tampoco puede tomar instantáneas de un blob en almacenamiento de archivo. Sin embargo, puede utilizar toodelete de las operaciones existentes, mostrar, obtener propiedades y metadatos del blob o cambiar el nivel de hello del blob de. tooread datos de almacenamiento de archivo, primero debe cambiar nivel de Hola de hello blob toohot o bien. Este proceso se conoce como rehidratación y puede tardar hasta too15 horas toocomplete para blobs menor que 50 GB. Tiempo adicional necesario para blobs mayores varía en función de límite de rendimiento de blob de Hola.
+Mientras un blob está en un almacenamiento de archivo, no se puede leer, copiar, sobrescribir ni modificar. Tampoco puede tomar instantáneas de un blob en almacenamiento de archivo. Sin embargo, puede usar las operaciones existentes para eliminar, enumerar, obtener propiedades y metadatos del blob o cambiar el nivel del blob. Para leer datos de un almacenamiento de archivo, primero debe cambiar el nivel del blob a acceso frecuente o esporádico. Este proceso se conoce como rehidratación y puede tardar hasta 15 horas en completarse para blobs de menos de 50 GB. El tiempo adicional necesario para blobs mayores varía según el límite de rendimiento del blob.
 
-Durante la rehidratación, puede comprobar Hola "estado de archivo" blob propiedad tooconfirm si ha cambiado el nivel de Hola. estado de Hello lee "rehidratar-pendientes-a-caliente" o "rehidratar-pendientes-a-frío" según el nivel de destino de Hola. Tras la terminación, Hola se quita la propiedad de blob "archivar el estado" y "nivel de acceso a" hello propiedad de blob. refleja el nivel de acceso rápido o frío de Hola.  
+Durante la rehidratación, puede comprobar la propiedad de blob "archive status" para confirmar si el nivel ha cambiado. El estado indica "rehydrate-pending-to-hot" (rehidratación pendiente para acceso frecuente) o "rehydrate-pending-to-cool" (rehidratación pendiente para acceso esporádico), según el nivel de destino. Al finalizar, se quita la propiedad de blob "archive status" (estado de archivo) y la propiedad de blob "access tier" (nivel de acceso) refleja el nivel de acceso frecuente o esporádico.  
 
-Escenarios de uso de ejemplo para la capa de almacenamiento de archivo hello incluyen:
+Entre los ejemplos de escenarios de uso del nivel de almacenamiento de archivo se incluyen:
 
 * Conjuntos de datos de recuperación ante desastres, archivo y copia de seguridad a largo plazo
 * Datos originales (sin procesar) que deben conservarse, incluso después de que se han procesado en un formato útil final. (*Por ejemplo,*, archivos multimedia sin procesar tras la transcodificación en otros formatos)
-* Cumplimiento de normas y los datos de archivo que necesita toobe almacenan durante mucho tiempo y apenas nunca se tiene acceso. (*Por ejemplo*, grabaciones de cámaras de seguridad, radiografías o resonancias antiguas en centros sanitarios, grabaciones de audio y transcripciones de llamadas de clientes para servicios financieros)
+* Datos de cumplimiento y archivado que se deben almacenar durante un largo período de tiempo y a los que casi nunca se accede. (*Por ejemplo*, grabaciones de cámaras de seguridad, radiografías o resonancias antiguas en centros sanitarios, grabaciones de audio y transcripciones de llamadas de clientes para servicios financieros)
 
 ### <a name="recommendations"></a>Recomendaciones
 
 Para más información sobre las cuentas de almacenamiento, consulte [Acerca de las cuentas de almacenamiento de Azure](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) .
 
-Para las aplicaciones que requieren solo bloquear o anexar el almacenamiento de blobs, se recomienda utilizar cuentas de almacenamiento de blobs, tootake aprovechar Hola diferenciados modelo de precios de almacenamiento en capas. Sin embargo, sabemos que esto puede no ser posible en ciertas circunstancias donde utilizando almacenamiento general serían cuentas Hola toogo de manera, como:
+Para las aplicaciones que requieren silo el almacenamiento blobs en bloques o en anexos, se recomienda utilizar cuentas de Almacenamiento de blobs, con el fin de aprovechar el modelo de precios diferenciado de almacenamiento en niveles. Sin embargo, sabemos que esto puede no ser posible en determinadas circunstancias, donde la mejor solución es usar cuentas de almacenamiento de uso general, como:
 
-* Necesita toouse tablas, colas, o archivos y quiere que los blobs almacenados en Hola la misma cuenta de almacenamiento. Tenga en cuenta que no hay ninguna ventaja técnica toostoring en hello que misma cuenta distinta a tener Hola mismo claves compartidas.
+* Necesita usar tablas, colas o archivos, y desea que los blobs se almacenen en la misma cuenta de almacenamiento. Tenga en cuenta que la única ventaja técnica de almacenarlos en la misma cuenta es que tienen las mismas claves compartidas.
 
-* Todavía es necesario el modelo de implementación de toouse Hola clásico. Las cuentas de almacenamiento de blobs solo están disponibles a través del modelo de implementación de hello Azure Resource Manager.
+* Necesita usar el modelo de implementación clásico. Las cuentas de Almacenamiento de blobs solo están disponibles a través del modelo de implementación de Azure Resource Manager.
 
-* Necesita toouse blobs en páginas. Las cuentas de Almacenamiento de blobs no admiten los blobs en páginas. Por lo general, se recomienda usar blobs en bloques, salvo que se necesiten específicamente blobs en páginas.
+* Necesita usar blobs en páginas. Las cuentas de Almacenamiento de blobs no admiten los blobs en páginas. Por lo general, se recomienda usar blobs en bloques, salvo que se necesiten específicamente blobs en páginas.
 
-* Usar una versión de hello [Storage Services REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) que es anterior a 2014-02-14 o una biblioteca de cliente con una versión inferior a 4.x y no se puede actualizar la aplicación.
+* Usa una versión de la [API de REST de servicios de almacenamiento](https://msdn.microsoft.com/library/azure/dd894041.aspx) anterior al 14-02-2014 o una biblioteca de cliente con una versión inferior a la 4.x y no puede actualizar la aplicación.
 
 > [!NOTE]
 > En la actualidad, las cuentas de Blob Storage se admiten en todas las regiones de Azure.
@@ -91,25 +91,25 @@ Para las aplicaciones que requieren solo bloquear o anexar el almacenamiento de 
 
 ## <a name="blob-level-tiering-feature-preview"></a>Característica de asignación de niveles en blobs (versión preliminar)
 
-Ahora nivel de BLOB de interconexión permite toochange Hola nivel de los datos en el nivel de objeto de hello mediante una operación única denominada [establecer el nivel de Blob](/rest/api/storageservices/set-blob-tier). Puede cambiar fácilmente Hola de nivel de acceso de un blob entre Hola activa, frío o niveles de almacenamiento como cambien los patrones de uso, sin tener datos toomove entre cuentas. Todos los cambios de nivel se realizan de inmediato, excepto cuando se rehidrata un blob desde el archivo. Blobs en todo el almacenamiento de tres niveles pueden coexistir en Hola misma cuenta. Los blobs que no tiene un nivel asignado explícitamente hereda capa Hola de configuración de nivel de acceso de cuenta de hello.
+La asignación de niveles en blobs ahora le permiten cambiar el nivel de los datos en los objetos mediante una única operación denominada [Set Blob Tier](/rest/api/storageservices/set-blob-tier) (establecimiento de nivel de blob). Puede cambiar fácilmente el nivel de acceso de un blob entre el nivel de archivo, esporádico o frecuente a medida que cambien los patrones de uso, sin tener que mover los datos entre las cuentas. Todos los cambios de nivel se realizan de inmediato, excepto cuando se rehidrata un blob desde el archivo. Los blobs en los tres niveles de almacenamiento pueden coexistir dentro de la misma cuenta. Los blobs que no tienen un nivel asignado explícitamente heredan la de la configuración del nivel de acceso de la cuenta.
 
-toouse estas características en vista previa, siga las instrucciones de Hola Hola [almacenamiento de Azure y el nivel de Blob de interconexión anuncio del blog](https://azure.microsoft.com/blog/announcing-the-public-preview-of-azure-archive-blob-storage-and-blob-level-tiering).
+Para usar estas características en la versión preliminar, siga las instrucciones que aparecen en el [anuncio en el blog de la asignación de niveles en blobs y en archivo de Azure](https://azure.microsoft.com/blog/announcing-the-public-preview-of-azure-archive-blob-storage-and-blob-level-tiering).
 
-seguimiento de Hola enumera algunas restricciones que se aplican durante la vista previa para la interconexión de nivel de blob:
+A continuación se enumeran algunas restricciones que se aplican durante la versión preliminar para la asignación de capas en el nivel de blob:
 
 * Solo admiten el almacenamiento de archivo las cuentas nuevas de Blob Storage creadas en el este de EE. UU. 2 después de inscribirse correctamente en la versión preliminar.
 
 * Solo admiten la asignación de capas en el nivel de blob las cuentas nuevas de Blob Storage creadas en regiones públicas después de inscribirse correctamente en la versión preliminar.
 
-* La asignación de niveles en blobs y el almacenamiento de archivo solo se admiten en el almacenamiento [LRS] (../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#locally-redundant-storage). [GRS](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#geo-redundant-storage) y [RA-GRS](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#read-access-geo-redundant-storage) se admitirán en futuras Hola.
+* La asignación de niveles en blobs y el almacenamiento de archivo solo se admiten en el almacenamiento [LRS] (../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#locally-redundant-storage). [GRS](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#geo-redundant-storage) y [RA-GRS](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#read-access-geo-redundant-storage) se admitirán en el futuro.
 
-* No puede cambiar el nivel Hola de un blob con instantáneas.
+* No puede cambiar el nivel de un blob con instantáneas.
 
 * No puede copiar ni crear instantáneas de un blob en almacenamiento de archivo.
 
-## <a name="comparison-of-hello-storage-tiers"></a>Comparación de niveles de almacenamiento de Hola
+## <a name="comparison-of-the-storage-tiers"></a>Comparación de los niveles de almacenamiento
 
-Hello en la tabla siguiente muestra una comparación Hola interactivas y de acceso esporádico de capas de almacenamiento. Hola archivo blob nivel nivel no está en vista previa, por lo que hay ningún SLA para él.
+En la tabla siguiente se muestra una comparación de los niveles de almacenamiento frecuente y esporádico. El nivel de almacenamiento de archivo en blobs está en la versión preliminar, por lo que no se dispone de ningún Acuerdo de Nivel de servicio para ello.
 
 | | **Nivel de almacenamiento frecuente** | **Nivel de almacenamiento esporádico** |
 | ---- | ----- | ----- |
@@ -118,237 +118,237 @@ Hello en la tabla siguiente muestra una comparación Hola interactivas y de acce
 | **Cargos de uso** | Mayores costos de almacenamiento, menores costos de acceso y transacciones | Menores costos de almacenamiento, mayores costos de acceso y transacciones |
 | **Tamaño mínimo de objeto** | N/D | N/D |
 | **Duración mínima del almacenamiento** | N/D | N/D |
-| **Latency** <br> **(Tiempo toofirst byte)** | milisegundos | milisegundos |
+| **Latency** <br> **(Tiempo hasta el primer byte)** | milisegundos | milisegundos |
 | **Objetivos de escalabilidad y rendimiento** | Igual que las cuentas de almacenamiento de uso general | Igual que las cuentas de almacenamiento de uso general |
 
 > [!NOTE]
-> Almacenamiento de blobs cuentas compatibilidad Hola mismos destinos de rendimiento y escalabilidad como cuentas de almacenamiento general. Consulte [Azure Storage Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) para obtener más información.
+> Las cuentas de Almacenamiento de blobs admiten los mismos objetivos de rendimiento y escalabilidad que las cuentas de almacenamiento de uso general. Consulte [Azure Storage Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) para obtener más información.
 
 
 ## <a name="pricing-and-billing"></a>Precios y facturación
-Las cuentas de almacenamiento de blobs usan un modelo de precios para el almacenamiento de blob en función de la capa de almacenamiento de Hola. Cuando se usa una cuenta de almacenamiento de blobs, se aplica Hola después de facturación consideraciones:
+Las cuentas de Blob Storage usan un modelo de fijación de precios para el almacenamiento de blobs que se basa en el nivel de almacenamiento. Si se usa una cuenta de Almacenamiento de blobs, se aplicarán las siguientes consideraciones de facturación:
 
-* **Los costos de almacenamiento**: además toohello cantidad de datos almacenados, costo de hello del almacenamiento de datos varía dependiendo de la capa de almacenamiento de Hola. Hola por gigabyte costo es menor de nivel de acceso esporádico almacenamiento de Hola que para la capa de almacenamiento activas de Hola.
+* **Costos de almacenamiento**: además de la cantidad de datos almacenados, el costo varía en función de la capa de almacenamiento. El costo por gigabyte es inferior en la capa de almacenamiento de acceso esporádico que en la de acceso frecuente.
 
-* **Los costos de acceso a datos**: para los datos en la capa de almacenamiento de acceso esporádico de hello, se le cobrará un cargo de acceso de datos por gigabyte para lecturas y escrituras.
+* **Costos de acceso a datos**: en el nivel de almacenamiento esporádico se cobra un cargo de acceso a datos por gigabyte para lecturas y escrituras.
 
-* **Costos de transacciones**: en ambas capas hay un cargo por transacción. Sin embargo, costo por transacción de hello para el nivel de acceso esporádico almacenamiento hello es mayor que para la capa de almacenamiento activas de Hola.
+* **Costos de transacciones**: en ambas capas hay un cargo por transacción. Sin embargo, el costo por transacción en la capa de almacenamiento de acceso esporádico es mayor que en la de acceso frecuente.
 
-* **Los costos de transferencia de datos de replicación geográfica**: solo se aplica con la replicación geográfica configurada, incluidos GRS y RA-GRS tooaccounts. La transferencia de datos de replicación geográfica incurre en un cargo por gigabyte.
+* **Costos de transferencia de datos de replicación geográfica**: solo se aplica a las cuentas con replicación geográfica configurada, incluidas GRS y RA-GRS. La transferencia de datos de replicación geográfica incurre en un cargo por gigabyte.
 
 * **Costos de transferencia de datos salientes**: las transferencias de datos salientes (los datos que se transfieren fuera de una región de Azure) conllevan un cargo por el uso del ancho de banda por gigabyte, lo que es coherente con las cuentas de almacenamiento de uso general.
 
-* **Capa de almacenamiento de variación Hola**: cambiar la capa de almacenamiento de Hola de toohot frío incurre en un tooreading igual de forma gratuita todos los datos de hello existente en la cuenta de almacenamiento de Hola para cada transición. En hello otra parte, cambiar la capa de almacenamiento de Hola de toocool activa es de forma gratuita.
+* **Cambio del nivel de almacenamiento**: el cambio del nivel de almacenamiento de esporádico a frecuente conlleva un cargo igual a la lectura de todos los datos existentes en la cuenta de almacenamiento en cada transición. Por otro lado, el cambio del nivel de almacenamiento de frecuente a esporádico es gratuito.
 
 > [!NOTE]
-> Para obtener más detalles sobre Hola modelo para las cuentas de almacenamiento de blobs de precios, consulte [precios de almacenamiento de Azure](https://azure.microsoft.com/pricing/details/storage/) página. Para obtener más detalles sobre los gastos de transferencia de datos de salida de hello, consulte [detalles de precios de transferencias de datos](https://azure.microsoft.com/pricing/details/data-transfers/) página.
+> Para más información sobre el modelo de precios de las cuentas de Blob Storage, consulte la página [Azure Storage Pricing](https://azure.microsoft.com/pricing/details/storage/). Para más información sobre los cargos por la transferencia de datos salientes, consulte la página [Detalles de precios de ancho de banda](https://azure.microsoft.com/pricing/details/data-transfers/).
 
 ## <a name="quickstart"></a>Guía de inicio rápido
 
-En esta sección se muestra hello mediante Hola portal de Azure los escenarios siguientes:
+En esta sección se muestran los siguientes escenarios con Azure Portal:
 
-* ¿Cómo toocreate una cuenta de almacenamiento de blobs.
-* ¿Cómo toomanage una cuenta de almacenamiento de blobs.
+* Cómo crear una cuenta de Almacenamiento de blobs.
+* Cómo administrar una cuenta de Almacenamiento de blobs.
 
-No se pueden establecer tooarchive de nivel de acceso de hello en hello en los ejemplos siguientes porque esta configuración aplica la cuenta de almacenamiento completo toohello. El nivel de acceso de archivo solo puede establecerse en un blob concreto.
+No se puede establecer el nivel de acceso de archivo en los ejemplos siguientes porque esta configuración se aplica a la cuenta de almacenamiento completa. El nivel de acceso de archivo solo puede establecerse en un blob concreto.
 
-### <a name="create-a-blob-storage-account-using-hello-azure-portal"></a>Crear una cuenta de almacenamiento de Blob mediante Hola portal de Azure
+### <a name="create-a-blob-storage-account-using-the-azure-portal"></a>Creación de una cuenta de Almacenamiento de blobs mediante el Portal de Azure
 
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
 
-2. En el menú del concentrador hello, seleccione **New** > **datos + almacenamiento** > **cuenta de almacenamiento**.
+2. En el menú del concentrador, seleccione **Nuevo** > **Datos y almacenamiento** > **Cuenta de almacenamiento**.
 
 3. Escriba un nombre para la cuenta de almacenamiento.
    
-    Este nombre debe ser único globalmente; se usa como parte de la dirección URL de hello utiliza objetos de hello tooaccess en la cuenta de almacenamiento de Hola.  
+    Este nombre debe ser único a nivel global; formará parte de la dirección URL utilizada para acceder a los objetos de la cuenta de almacenamiento.  
 
-4. Seleccione **el Administrador de recursos** como modelo de implementación de Hola.
+4. Seleccione **Resource Manager** como modelo de implementación.
    
-    Almacenamiento en capas sólo puede utilizarse con las cuentas de almacenamiento de administrador de recursos; se trata de hello recomendada el modelo de implementación de nuevos recursos. Para obtener más información, consulte hello [Introducción a Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).  
+    El almacenamiento en capas solo puede utilizarse con cuentas de almacenamiento de Resource Manager, que es el modelo de implementación recomendado para nuevos recursos. Para más información, consulte [Información general de Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).  
 
-5. En la lista de desplegable de tipo de cuenta de hello, seleccione **almacenamiento de blobs**.
+5. En la lista desplegable Account Kind (Tipo de cuenta), seleccione **Almacenamiento de blobs**.
    
-    Aquí es donde seleccionar tipo de saludo de la cuenta de almacenamiento. Almacenamiento en capas no está disponible en almacenamiento general; solo está disponible en hello cuenta del tipo de almacenamiento de Blob.     
+    Aquí seleccionará el tipo de cuenta de almacenamiento. El almacenamiento en capas no está disponible en cuentas de almacenamiento de uso general, solo está disponible en cuentas de Almacenamiento de blobs.     
    
-    Tenga en cuenta que cuando se selecciona esta opción, el nivel de rendimiento de Hola se establece tooStandard. Almacenamiento en capas no está disponible con el nivel de rendimiento de hello Premium.
+    Tenga en cuenta que, cuando se selecciona esta opción, se establece el nivel de rendimiento Estándar. El almacenamiento en capas no está disponible con el nivel de rendimiento Premium.
 
-6. Seleccione opción de replicación de Hola Hola cuenta de almacenamiento: **LRS**, **GRS**, o **RA-GRS**. valor predeterminado de Hello es **RA-GRS**.
+6. Seleccione la opción de replicación de la cuenta de almacenamiento: **LRS**, **GRS** o **RA-GRS**. El valor predeterminado es **RA-GRS**.
    
-    LRS = almacenamiento con redundancia local; GRS = almacenamiento con redundancia geográfica (2 regiones); RA-GRS es el almacenamiento con redundancia geográfica con acceso de lectura (2 regiones con lectura acceso a toohello en segundo lugar).
+    LRS = almacenamiento con redundancia local; GRS = almacenamiento con redundancia geográfica (dos regiones); RA-GRS = almacenamiento con redundancia geográfica con acceso de lectura (dos regiones con acceso de lectura a la región secundaria).
    
     Para más información sobre las opciones de replicación del Almacenamiento de Azure, consulte [Replicación de Almacenamiento de Azure](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-7. Capa de almacenamiento derecho de hello SELECT para sus necesidades: Hola conjunto **nivel de acceso a** tooeither **frío** o **activa**. valor predeterminado de Hello es **activa**. 
+7. Seleccione la capa de almacenamiento que más se ajuste a sus necesidades: en **Nivel de acceso** seleccione **Esporádico** o **Frecuente**. El valor predeterminado es **Frecuente**. 
 
-8. Seleccione la suscripción de hello en que desea que la nueva cuenta de almacenamiento de toocreate Hola.
+8. Seleccione la suscripción en la que desea crear la nueva cuenta de almacenamiento.
 
 9. Especifique un nuevo grupo de recursos o seleccione un grupo de recursos existente. Para más información sobre los grupos de recursos, consulte [Información general de Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
 
-10. Seleccione la región de hello para la cuenta de almacenamiento.
+10. Seleccione la región para la cuenta de almacenamiento.
 
-11. Haga clic en **crear** cuenta de almacenamiento de toocreate Hola.
+11. Haga clic en **Crear** para crear la cuenta de almacenamiento.
 
-### <a name="change-hello-storage-tier-of-a-blob-storage-account-using-hello-azure-portal"></a>Cambiar el nivel de almacenamiento de Hola de una cuenta de almacenamiento de Blob mediante Hola portal de Azure
+### <a name="change-the-storage-tier-of-a-blob-storage-account-using-the-azure-portal"></a>Cambio del nivel de almacenamiento de una cuenta de Almacenamiento de blobs mediante el Portal de Azure
 
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
+1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
 
-2. cuenta de almacenamiento de toonavigate tooyour, seleccione todos los recursos, a continuación, seleccione su cuenta de almacenamiento.
+2. Para desplazarse a su cuenta de almacenamiento, seleccione Todos los recursos y, después, seleccione la cuenta de almacenamiento.
 
-3. En la hoja de configuración de hello, haga clic en **configuración** tooview o cambio de configuración de la cuenta de hello.
+3. En la hoja Configuración, haga clic en **Configuración** para ver o cambiar la configuración de la cuenta.
 
-4. Capa de almacenamiento derecho de hello SELECT para sus necesidades: Hola conjunto **nivel de acceso a** tooeither **frío** o **activa**...
+4. Seleccione el nivel de almacenamiento que más se ajuste a sus necesidades: en **Nivel de acceso** seleccione **Esporádico** o **Frecuente**.
 
-5. Haga clic en Guardar en la parte superior de Hola de hoja de Hola.
+5. Haga clic en Guardar en la parte superior de la hoja.
 
 > [!NOTE]
-> Capa de almacenamiento de hello variación puede costar dinero adicional. Vea hello [precios y facturación](#pricing-and-billing) sección para obtener más detalles.
+> El cambio de la capa de almacenamiento puede conllevar cargos adicionales. Para más información, consulte la sección [Precios y facturación](#pricing-and-billing).
 
 
-## <a name="evaluating-and-migrating-tooblob-storage-accounts"></a>La evaluación y la migración de cuentas de almacenamiento de tooBlob
-propósito de esta sección Hello es toohelp usuarios toomake un suave transición toousing cuentas de almacenamiento de blobs. Hay dos escenarios de usuario:
+## <a name="evaluating-and-migrating-to-blob-storage-accounts"></a>Evaluación y migración a cuentas de Almacenamiento de blobs
+El objetivo de esta sección es ayudar a los usuarios a realizar una transición sin problemas al uso de cuentas de Almacenamiento de blobs. Hay dos escenarios de usuario:
 
-* Tiene una cuenta de almacenamiento general existente y desea tooevaluate una cuenta de almacenamiento de blobs con capa de almacenamiento de información adecuada de hello tooa de cambio.
-* Ha decidido toouse una cuenta de almacenamiento de blobs o ya tiene uno y desea tooevaluate si debe utilizar la capa de almacenamiento de acceso rápido o frío de Hola.
+* Tiene una cuenta de almacenamiento de uso general y desea evaluar un cambio en una cuenta de Almacenamiento de blobs con la capa de almacenamiento correcta.
+* Ha decidido usar una cuenta de Almacenamiento de blobs o ya tiene una y desea evaluar si debe utilizar la capa de almacenamiento de acceso frecuente o esporádico.
 
-En ambos casos, Hola primera regla de negocio es tooestimate Hola costo de almacenar y obtener acceso a los datos almacenados en una cuenta de almacenamiento de blobs y comparar los costos actuales.
+En ambos casos, la primera regla de negocio es calcular el costo de almacenar y acceder a los datos almacenados en una cuenta de Almacenamiento de blobs y compararlo con los costos actuales.
 
 ## <a name="evaluating-blob-storage-account-tiers"></a>Evaluación de los niveles de la cuenta de Almacenamiento de blobs
 
-En orden tooestimate Hola del costo de almacenar y obtener acceso a los datos almacenados en una cuenta de almacenamiento de blobs, necesita tooevaluate el patrón de uso existentes o aproximar su patrón de uso esperado. En general, desea tooknow:
+Para calcular el costo de almacenar y acceder a los datos almacenados en una cuenta de Blob Storage, es preciso evaluar el patrón de uso existente o realizar una aproximación al patrón de uso esperado. En general, será preciso conocer:
 
 * El consumo del almacenamiento: ¿cuántos datos se almacenan y cómo cambia esta cifra mensualmente?
 
-* ¿El patrón de acceso de almacenamiento: la cantidad de datos se va leer de y cuenta toohello escrito (incluidos los nuevos datos)? ¿Cuántas transacciones se utilizan para el acceso a datos y qué tipos de transacciones son?
+* El patrón de acceso de almacenamiento: ¿cuántos datos se leen y se escriben en la cuenta (incluidos los datos nuevos)? ¿Cuántas transacciones se utilizan para el acceso a datos y qué tipos de transacciones son?
 
 ## <a name="monitoring-existing-storage-accounts"></a>Supervisión de las cuentas de almacenamiento existentes
 
-toomonitor el almacenamiento existente cuentas y recopilar estos datos, se puede hacer uso de análisis de almacenamiento de Azure que realiza el registro y proporciona datos de métricas para una cuenta de almacenamiento. Análisis de almacenamiento puede almacenar métricas que incluyen datos de estadísticas y la capacidad de transacciones agregados sobre solicitudes toohello servicio de almacenamiento de Blob para las cuentas de almacenamiento general así como las cuentas de almacenamiento de blobs. Estos datos se almacenan en tablas conocidas en hello misma cuenta de almacenamiento.
+Para supervisar las cuentas de almacenamiento existentes y recopilar estos datos, se puede usar Análisis de almacenamiento de Azure, que realiza el registro y proporciona los datos de métricas de una cuenta de almacenamiento. Análisis de almacenamiento puede almacenar métricas que incluyen las estadísticas de transacciones agregadas y los datos de capacidad de las solicitudes al servicio de Almacenamiento de blobs tanto de cuentas de almacenamiento de uso general como cuentas de Almacenamiento de blobs. Estos datos se almacenan en tablas conocidas de la misma cuenta de almacenamiento.
 
 Para más información, consulte [Acerca de las métricas de Storage Analytics](https://msdn.microsoft.com/library/azure/hh343258.aspx) y [Esquema de tabla de métricas de Storage Analytics](https://msdn.microsoft.com/library/azure/hh343264.aspx)
 
 > [!NOTE]
-> Cuentas de almacenamiento de blobs exponen Hola punto de conexión de servicio de la tabla solo para almacenar y tener acceso a datos de métricas de Hola para esa cuenta.
+> Las cuentas de Almacenamiento de blobs exponen el punto de conexión de servicio de tabla solo para almacenar y acceder a los datos de métricas de dicha cuenta.
 
-consumo de almacenamiento de toomonitor hello para el servicio de almacenamiento Blob de hello, necesita las métricas de capacidad de hello tooenable.
-Con esta opción habilitada, los datos de capacidad se registran diariamente para el servicio de Blob de una cuenta de almacenamiento y se graba como una entrada de la tabla que se escribe toohello *$MetricsCapacityBlob* tabla dentro de hello misma cuenta de almacenamiento.
+Para supervisar el consumo de almacenamiento de información del servicio Blob Storage, es preciso que habilite las métricas de capacidad.
+Con esta opción habilitada, se registran diariamente los datos de capacidad de Blob service de una cuenta de almacenamiento y se registran como una entrada de tabla que se escribe en la tabla *$MetricsCapacityBlob* dentro de la misma cuenta de almacenamiento.
 
-Hola a toomonitor Hola el patrón de acceso de datos para el servicio de almacenamiento de blobs, deberá métricas tooenable Hola de transacciones por hora en el nivel de API. Con esta opción habilitada, por la API de transacciones se agregan cada hora y registra como una entrada de la tabla que se escribe toohello *$MetricsHourPrimaryTransactionsBlob* tabla dentro de hello misma cuenta de almacenamiento. Hola *$MetricsHourSecondaryTransactionsBlob* registros en la tabla Hola extremo secundario de las transacciones toohello al usar cuentas de almacenamiento de RA-GRS.
+Para supervisar el patrón de acceso de datos del servicio Blob Storage, es preciso que habilite las métricas de transacción horarias a nivel de API. Con esta opción habilitada, las transacciones por API se agregan cada hora y se registran como una entrada de tabla que se escribe en la tabla *$MetricsHourPrimaryTransactionsBlob* dentro de la misma cuenta de almacenamiento. La tabla *$MetricsHourSecondaryTransactionsBlob* registra las transacciones en el punto de conexión secundario cuando se usan cuentas de almacenamiento de RA-GRS.
 
 > [!NOTE]
-> Si tiene una cuenta de almacenamiento de uso general en la que ha almacenado blobs de páginas y discos de máquinas virtuales junto con datos de blobs en bloques y anexos, este proceso de estimación no se podrá aplicar, Esto es porque no dispone de ninguna manera de distinguir la capacidad y transacción métricas adicionales basadas en el tipo de saludo de blob para solo bloquean y blobs en anexos, lo que pueden migra tooa cuenta de almacenamiento Blob.
+> Si tiene una cuenta de almacenamiento de uso general en la que ha almacenado blobs de páginas y discos de máquinas virtuales junto con datos de blobs en bloques y anexos, este proceso de estimación no se podrá aplicar, ya que no hay forma de distinguir las métricas de capacidad y de transacción en función del tipo de blob solo para los blobs en bloques y anexos que se pueden migrar a una cuenta de Blob Storage.
 
-tooget una buena aproximación de su consumo de datos y el patrón de acceso, se recomienda elegir un período de retención para las métricas de Hola que sea representativa de su uso normal y extrapolar. Una opción es datos de métricas de hello tooretain de 7 días y los datos de hello recopilar todas las semanas, para el análisis final Hola del mes de Hola. Otra opción es últimos 30 días de datos de métricas de hello tooretain para hello y recopile y analice datos Hola final Hola del período de 30 días de Hola.
+Para obtener una buena aproximación a su patrón de acceso y consumo de datos, se recomienda elegir un período de retención de métricas que sea representativo de su uso habitual y extrapolarlo. Una opción es conservar los datos de las métricas de siete días y recopilar los datos todas las semanas, con el fin de realizar el análisis al final del mes. Otra opción es conservar los datos de las métricas de los últimos 30 días y recopilar y analizar los datos al final del período de 30 días.
 
 Para más información acerca de cómo habilitar, recopilar y visualizar datos de métricas, consulte [Habilitar las métricas de Azure Storage y ver sus datos](../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 > [!NOTE]
 > El almacenamiento, acceso y descarga de datos de análisis también se cobra como los datos de usuario normales.
 
-### <a name="utilizing-usage-metrics-tooestimate-costs"></a>Utilización de los costos de tooestimate de métricas de uso
+### <a name="utilizing-usage-metrics-to-estimate-costs"></a>Utilización de métricas de uso para estimar costos
 
 ### <a name="storage-costs"></a>Costos de almacenamiento
 
-Hola entrada más reciente en la tabla de métricas de capacidad de hello *$MetricsCapacityBlob* con clave de fila de hello *"datos"* muestra Hola capacidad de almacenamiento utilizado por los datos de usuario. Hola entrada más reciente en la tabla de métricas de capacidad de hello *$MetricsCapacityBlob* con clave de fila de hello *'análisis'* muestra Hola capacidad de almacenamiento utilizado por los registros de análisis de Hola.
+La entrada más reciente de la tabla de métricas de capacidad *$MetricsCapacityBlob* con la clave de fila *'data'* muestra la capacidad de almacenamiento que han consumido los datos del usuario. La entrada más reciente de la tabla de métricas de capacidad *$MetricsCapacityBlob* con la clave de fila *'analytics'* muestra la capacidad de almacenamiento que han consumido los registros de análisis.
 
-Esta capacidad total consumida por ambos registros de datos y análisis de usuario (si está habilitado) puede ser, a continuación, utiliza el costo de hello tooestimate de almacenar datos en la cuenta de almacenamiento de Hola. Hola mismo método también puede utilizarse para calcular el costo de almacenamiento de bloque y anexar blobs en las cuentas de almacenamiento general.
+Posteriormente, esta capacidad total consumida por los datos del usuario y los registros de análisis (si está habilitado) se puede utilizar para calcular el costo del almacenamiento de datos en la cuenta de almacenamiento. Este mismo método también se puede utilizar para calcular los costos de almacenamiento de los blobs de bloques y anexos en las cuentas de uso general.
 
 ### <a name="transaction-costs"></a>Costos de transacciones
 
-suma de Hola de *'TotalBillableRequests'*, en todas las entradas de una API de transacciones de hello tabla de métricas indica el número total de Hola de transacciones para esa API determinada. *Por ejemplo*, Hola número total de *'GetBlob'* las transacciones en un período determinado se pueden calcular mediante suma de Hola de solicitudes facturables total para todas las entradas con la clave de fila de hello *' usuario; GetBlob'*.
+La suma de *'TotalBillableRequests'*, en todas las entradas de una API en la tabla de métricas de transacciones indica el número total de transacciones de dicha API determinada. *Por ejemplo,*, el número total de transacciones *'GetBlob'* en un período dado se puede calcular mediante la suma del número total de solicitudes facturables para todas las entradas con la clave de fila *'user;GetBlob'*.
 
-Orden tooestimate costos de transacción para las cuentas de almacenamiento de blobs, deberá toobreak hacia abajo de las transacciones de hello en tres grupos ya que tienen un precio distinto.
+Para calcular los costos de transacción de las cuentas de Blob Storage, es preciso que desglose las transacciones en tres grupos, ya que tienen precios diferentes.
 
 * Transacciones de escritura como *'PutBlob'*, *'PutBlock'*, *'PutBlockList'*, *'AppendBlock'*, *'ListBlobs'*, *'ListContainers'*, *'CreateContainer'*, *'SnapshotBlob'* y *'CopyBlob'*.
 * Transacciones de eliminación como *'DeleteBlob'* y *'DeleteContainer'*.
 * Las restantes transacciones.
 
-Orden tooestimate costos de transacción para las cuentas de almacenamiento general, deberá tooaggregate todas las transacciones con independencia de la operación de Hola/API.
+Para calcular los costos de transacción de las cuentas de almacenamiento de uso general, es preciso agregar todas las transacciones, independientemente de la operación o API.
 
 ### <a name="data-access-and-geo-replication-data-transfer-costs"></a>Costos de transferencia de datos de acceso y de replicación geográfica
 
-Mientras no se proporciona el análisis de almacenamiento cantidad Hola de datos lee de y escribir tooa cuenta de almacenamiento, puede calcularse de forma aproximada examinando la tabla de métricas de transacciones de Hola. suma de Hola de *'TotalIngress'* en todas las entradas de una API de métricas de transacciones de hello tabla indica la cantidad total que Hola de datos de entrada en bytes para esa API determinada. De igual forma suma de Hola de *'TotalEgress'* indica la cantidad total de Hola de datos de salida, en bytes.
+Aunque el análisis del almacenamiento no proporciona la cantidad de datos leídos de una cuenta de almacenamiento y escritos en ella, se puede realizar un cálculo aproximado mediante el examen de la tabla de métricas de transacciones. La suma de *'TotalIngress'* en todas las entradas de una API de la tabla de métricas de transacciones indica la cantidad total de datos de entrada, en bytes, de dicha API concreta. De igual modo, la suma de *'TotalEgress'* indica la cantidad total de datos de salida, en bytes.
 
-En orden tooestimate Hola datos acceso a los costes de las cuentas de almacenamiento de blobs, es necesario toobreak hacia abajo de las transacciones de hello en dos grupos. 
+Para calcular los costos de acceso a los datos en las cuentas de Blob Storage, es preciso que desglose las transacciones en dos grupos. 
 
-* puede se puede estimar Hola cantidad de datos recuperados de la cuenta de almacenamiento de hello examinando la suma de Hola de *'TotalEgress'* para principalmente hello *'GetBlob'* y *'CopyBlob'* operaciones.
+* La cantidad de datos que se recuperan de la cuenta de almacenamiento se puede calcular examinando la suma de *'TotalEgress'* principalmente en las operaciones *'GetBlob'* y *'CopyBlob'*.
 
-* cantidad de Hola de los datos escritos toohello cuenta de almacenamiento se puede estimar examinando la suma de Hola de *'TotalIngress'* para principalmente hello *'PutBlob'*, *'PutBlock'*, *'CopyBlob'* y *'AppendBlock'* operaciones.
+* La cantidad de datos que se escriben en la cuenta de almacenamiento se puede calcular examinando la suma de *'TotalIngress'* principalmente en las operaciones *'PutBlob'*, *'PutBlock'*, *'CopyBlob'* y *'AppendBlock'*.
 
-Hola costo de transferencia de datos de replicación geográfica para las cuentas de almacenamiento también se calcula utilizando la estimación de Hola para cantidades de Hola de datos escritos al usar una cuenta de almacenamiento GRS o RA-GRS de Blob.
+El costo de transferencia de datos de replicación geográfica para cuentas de Blob Storage también puede calcularse mediante la valoración de la cantidad de datos escritos cuando se usa una cuenta de almacenamiento GRS o RA-GRS.
 
 > [!NOTE]
-> Para obtener un ejemplo más detallado sobre cómo calcular los costos de hello para el uso de capa de almacenamiento de acceso rápido o frío de Hola, eche un vistazo a Hola P+F titulada *'¿qué niveles de acceso activa y recuperación y ¿cómo se puede determinar qué una toouse'?* Hola [página de precios de almacenamiento de Azure](https://azure.microsoft.com/pricing/details/storage/).
+> Para ver un ejemplo más detallado sobre cómo calcular los costos del uso de la capa de almacenamiento frecuente o esporádico, eche un vistazo a la pregunta *'¿Qué son los niveles de acceso frecuente y esporádico y cómo se puede determinar el que debe usarse?'* de la página [Precios de Almacenamiento de Azure](https://azure.microsoft.com/pricing/details/storage/).
  
 ## <a name="migrating-existing-data"></a>Migración de datos existentes
 
-Las cuentas de Almacenamiento de blobs son especiales para almacenar solo blobs y anexar blobs. Cuentas de almacenamiento general existentes, que le permiten toostore tablas, colas, archivos y discos, así como blobs, no pueden ser convertido tooBlob cuentas de almacenamiento. toouse Hola capas de almacenamiento, que necesita toocreate nuevas cuentas de almacenamiento de blobs y migra los datos existentes en las cuentas de hello recién creado.
+Las cuentas de Almacenamiento de blobs son especiales para almacenar solo blobs y anexar blobs. Las cuentas de almacenamiento de uso general existentes, que permiten almacenar tablas, colas, archivos y discos, así como blobs, no se pueden convertir en cuentas de Blob Storage. Para utilizar los niveles de almacenamiento, debe crear nuevas cuentas de Blob Storage y migrar los datos existentes a las cuentas recién creadas.
 
-Puede usar Hola después los datos existentes de métodos toomigrate en las cuentas de almacenamiento de Blob desde dispositivos de almacenamiento local, de proveedores de almacenamiento de nube de terceros o de las cuentas de almacenamiento general existentes en Azure:
+Puede utilizar los métodos siguientes para migrar los datos existentes a cuentas de Blob Storage desde un dispositivos de almacenamiento local, desde proveedores de almacenamiento en la nube de terceros o desde sus cuentas existentes de almacenamiento de uso general en Azure:
 
 ### <a name="azcopy"></a>AzCopy
 
-AzCopy es una utilidad de línea de comandos de Windows diseñada para la copia de alto rendimiento de tooand de datos del almacenamiento de Azure. Puede usar AzCopy toocopy datos en su cuenta de almacenamiento Blob de las cuentas de almacenamiento general existentes o tooupload datos de los dispositivos de almacenamiento local en su cuenta de almacenamiento de blobs.
+AzCopy es una utilidad de línea de comandos de Windows diseñada para la copia de datos de alto rendimiento a y desde Almacenamiento de Azure. AzCopy se puede usar para copiar datos en una cuenta de Almacenamiento de blobs desde cuentas de almacenamiento de uso general existentes o para cargar datos desde un sistema de dispositivos de almacenamiento local en una cuenta de Almacenamiento de blobs.
 
-Para obtener más información, consulte [transferir datos con la utilidad de línea de comandos de AzCopy hello](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Para más información, consulte [Transferencia de datos con la utilidad en línea de comandos AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ### <a name="data-movement-library"></a>Data Movement Library
 
-Biblioteca de movimiento de datos de almacenamiento Azure para .NET se basa en el marco de movimiento de datos de núcleo de Hola que alimenta AzCopy. biblioteca de Hello está diseñado para alto rendimiento, confiable y tooAzCopy similar de operaciones de transferencia de datos fácil. Esto le permite tootake todas las ventajas de las características de hello proporcionadas por AzCopy en la aplicación de forma nativa sin necesidad de toodeal con ejecutar y supervisar instancias externas de AzCopy.
+La biblioteca de movimiento de datos de Almacenamiento de Azure para .NET se basa en el marco de movimiento de datos principal que se utiliza con AzCopy. La biblioteca está diseñada para operaciones de transferencia de datos de alto rendimiento, confiables y fáciles similares a AzCopy. Esto permite sacar todo el partido a las características que proporciona AzCopy en su aplicación nativa sin tener que ejecutar y supervisar instancias externas de AzCopy.
 
 Para más información, consulte [Azure Storage Data Movement Library for .Net](https://github.com/Azure/azure-storage-net-data-movement)
 
 ### <a name="rest-api-or-client-library"></a>API de REST o biblioteca de cliente
 
-Puede crear una aplicación personalizada toomigrate los datos en una cuenta de almacenamiento Blob mediante una de las bibliotecas de cliente de Azure de Hola u Hola API de REST de servicios de almacenamiento de Azure. Almacenamiento de Azure proporciona bibliotecas de cliente enriquecidas para varios lenguajes y aplicaciones como .NET, Java, C++, Node.JS, PHP, Ruby y Python. bibliotecas de cliente de Hello ofrecen capacidades avanzadas como la lógica de reintento, registro y cargas en paralelo. También puede desarrollar directamente contra Hola API de REST, que se puede llamar mediante cualquier lenguaje que realiza las solicitudes HTTP/HTTPS.
+Puede crear una aplicación personalizada para migrar sus datos a una cuenta de Almacenamiento de blobs con una de las bibliotecas de cliente de Azure o la API de REST de servicios de almacenamiento de Azure. Almacenamiento de Azure proporciona bibliotecas de cliente enriquecidas para varios lenguajes y aplicaciones como .NET, Java, C++, Node.JS, PHP, Ruby y Python. Las bibliotecas de cliente ofrecen capacidades avanzadas, como lógica de reintentos, registro y cargas paralelas. También se puede desarrollar directamente en la API de REST, a la que se puede llamar con cualquier lenguaje que genere solicitudes HTTP/HTTPS.
 
 Para más información, consulte [Introducción al Almacenamiento de blobs de Azure mediante .NET](storage-dotnet-how-to-use-blobs.md).
 
 > [!NOTE]
-> Blobs cifradas mediante el cifrado de cliente almacenan metadatos relacionados con el cifrado almacenada con hello blob. Es fundamental que cualquier mecanismo de copia debe asegurarse de que Hola metadatos del blob y especialmente Hola metadatos relacionados con el cifrado, se conserva. Si copia blobs de hello sin estos metadatos, el contenido de blob Hola puede no recuperar de nuevo. Para más información acerca de los metadatos relacionados con el cifrado, consulte [Cifrado del lado de cliente y Azure Key Vault para Microsoft Azure Storage](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+> BLOB cifrado mediante el cifrado de cliente para almacenar metadatos relacionados con el cifrado almacenados con el blob. Es absolutamente crítico que cualquier mecanismo de copia se asegure de que los metadatos de blob, y especialmente los metadatos relacionados con el cifrado, se preserven. Si copia los blobs sin estos metadatos, su contenido no puede volver a recuperarse. Para más información acerca de los metadatos relacionados con el cifrado, consulte [Cifrado del lado de cliente y Azure Key Vault para Microsoft Azure Storage](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
  
 ## <a name="faq"></a>P+F
 
 1. **¿Siguen disponibles las cuentas de almacenamiento existentes?**
    
-    Sí, las cuentas de almacenamiento existentes siguen estando disponibles y no se han cambiado sus precios ni sus funciones.  No tienen Hola capacidad toochoose una capa de almacenamiento pero no tendrá posibilidades de interconexión en hello futuras.
+    Sí, las cuentas de almacenamiento existentes siguen estando disponibles y no se han cambiado sus precios ni sus funciones.  No tienen la capacidad de elegir una capa de almacenamiento y no tendrán funcionalidades de organización en capas en el futuro.
 
 2. **¿Por qué y cuándo conviene empezar a usar cuentas de Almacenamiento de blobs?**
    
-    Las cuentas de almacenamiento de blobs están adaptadas para almacenar blobs y nos permiten toointroduce nuevas características centrada en el blob. En el futuro, las cuentas de almacenamiento de blobs son Hola recomendada método para almacenar objetos BLOB, como funciones en el futuro, como almacenamiento jerárquico y los niveles se introducirán en función de este tipo de cuenta. Sin embargo, resulta una tooyou cuando le gustaría toomigrate según sus requisitos empresariales.
+    Las cuentas de Almacenamiento de blobs están especializadas en el almacenamiento de blobs y nos permiten introducir nuevas características centradas en los blobs. Es más, las cuentas de Almacenamiento de blobs son el método recomendado para el almacenamiento de blobs, ya que se introducirán funcionalidades futuras como el almacenamiento jerárquico y la organización en niveles basadas en este tipo de cuenta. Sin embargo, cada usuario debe decidir en qué momento desea realizar la migración en función de sus requisitos empresariales.
 
-3. **¿Puedo convertir mi tooa de cuenta de almacenamiento cuenta de almacenamiento Blob existente?**
+3. **¿Se puede convertir una cuenta de almacenamiento existente en una cuenta de Almacenamiento de blogs?**
    
     No. Una cuenta de Blob Storage es un tipo de cuenta de almacenamiento diferente y es preciso crearla desde cero y migrar los datos, como ya se ha explicado.
 
-4. **¿Se puede almacenar objetos en ambas capas de almacenamiento en hello misma cuenta?**
+4. **¿Se pueden almacenar objetos en dos capas de almacenamiento en la misma cuenta?**
    
-    Hola *'Nivel de acceso a'* atributo indica el valor de Hola de capa de almacenamiento de hello establecido en el nivel de cuenta y se aplica a objetos tooall en esa cuenta. Sin embargo, característica Hola nivel de blob de niveles (versión preliminar) permitirá tooset Hola nivel de acceso en blobs específicos, y esto anulará la configuración de nivel de acceso de Hola de cuenta de hello. 
+    El atributo *'Access Tier'* que indica el valor del nivel de almacenamiento se establece en las cuentas y se aplica a todos los objetos de dicha cuenta. Sin embargo, la característica de asignación de niveles en blobs (versión preliminar) le permite establecer los niveles de acceso en blobs específicos, y reemplazará la configuración del nivel de acceso en la cuenta. 
 
-5. **¿Puedo cambiar la capa de almacenamiento de Hola de mi cuenta de almacenamiento de Blob?**
+5. **¿Se puede cambiar la capa de almacenamiento de una cuenta de Almacenamiento de blobs?**
    
-    Sí. Puede cambiar la capa de almacenamiento de Hola Hola establecer *'Nivel de acceso a'* atributo Hola cuenta de almacenamiento. Variación capa de almacenamiento de Hola aplica a objetos tooall almacenados en la cuenta de hello. Capa de almacenamiento de hello cambiante de toocool activa no incurre en cualquier cargo, al cambiar de acceso esporádico toohot incurren en un costo de GB para leer todos los datos de hello en la cuenta de hello por.
+    Sí. Puede cambiar el nivel de almacenamiento estableciendo el atributo *'Access Tier'* en la cuenta de almacenamiento. El cambio del nivel de almacenamiento se aplica a todos los objetos almacenados en la cuenta. El cambio del nivel de almacenamiento de frecuente a esporádico no supone ningún gasto, mientras que el cambio de esporádico a frecuente tiene un costo por GB por la lectura de todos los datos de la cuenta.
 
-6. **¿Con qué frecuencia se puede cambiar capa de almacenamiento de Hola de mi cuenta de almacenamiento de Blob?**
+6. **¿Con qué frecuencia se puede cambiar la capa de almacenamiento de una cuenta de Almacenamiento de blobs?**
    
-    Mientras no se aplican una limitación en con qué frecuencia se puede cambiar la capa de almacenamiento de Hola, tenga en cuenta que cambiar la capa de almacenamiento de Hola de frío toohot puede incurrir en cargos significativos. No se recomienda cambiar la capa de almacenamiento de hello con frecuencia.
+    Aunque no hay ningún límite en la frecuencia con que se puede cambiar el nivel de almacenamiento, tenga en cuenta que el cambio del nivel de almacenamiento de esporádico a frecuente supone unos gastos significativos. Se recomienda no cambiar la capa de almacenamiento con frecuencia.
 
-7. **¿Blobs hello en la capa de almacenamiento de acceso esporádico de hello comportarse de manera diferente que los de la capa de almacenamiento activas de Hola Hola?**
+7. **¿Los blobs en el nivel de almacenamiento esporádico se comportan de forma diferente a los del nivel de almacenamiento frecuente?**
    
-    Los blobs en la capa de almacenamiento activas de hello tienen Hola mismo latencia como blobs en las cuentas de almacenamiento general. Blobs en la capa de almacenamiento de acceso esporádico de hello con una latencia similar (en milisegundos) como blobs en cuentas de almacenamiento general.
+    Los blobs de la capa de almacenamiento frecuente tienen la misma latencia que los de las cuentas de almacenamiento de uso general. Los blobs de la capa de almacenamiento esporádico tienen una latencia similar (en milisegundos) a los de las cuentas de almacenamiento de uso general.
    
-    Blobs en la capa de almacenamiento de acceso esporádico de hello tienen un nivel de servicio disponibilidad (SLA) ligeramente inferior a blobs de hello almacenados en la capa de almacenamiento activas de Hola. Para más información, consulte [Acuerdo de Nivel de Servicio para Almacenamiento](https://azure.microsoft.com/support/legal/sla/storage).
+    Los blobs del nivel de almacenamiento esporádico tienen un Acuerdo de Nivel de Servicio (SLA) de disponibilidad ligeramente inferior a los almacenados en el nivel de almacenamiento frecuente. Para más información, consulte [Acuerdo de Nivel de Servicio para Almacenamiento](https://azure.microsoft.com/support/legal/sla/storage).
 
 8. **¿Puedo almacenar blobs en páginas y discos de máquinas virtuales en las cuentas de Almacenamiento de blobs?**
    
-    Las cuentas de Almacenamiento de blobs solo admiten blobs en bloques y en anexos, pero no blobs en páginas. Discos de máquina virtual de Azure están respaldados por blobs de página y así las cuentas de almacenamiento de blobs no pueden ser toostore usa discos de máquina virtual. Sin embargo, resulta posible toostore copias de seguridad de discos de máquina virtual de hello como blobs en bloques en una cuenta de almacenamiento de blobs.
+    Las cuentas de Almacenamiento de blobs solo admiten blobs en bloques y en anexos, pero no blobs en páginas. Los discos de máquinas virtuales de Azure están respaldados por blobs en páginas y, por tanto, no se pueden utilizar cuentas de Almacenamiento de blobs para almacenar discos de máquinas virtuales. Sin embargo, es posible almacenar copias de seguridad de los discos de máquinas virtuales como blobs en bloques en una cuenta de Almacenamiento de blobs.
 
-9. **¿Es necesario toochange Mis cuentas de almacenamiento de blobs de toouse las aplicaciones existentes?**
+9. **¿Es preciso cambiar las aplicaciones existentes para usar las cuentas de Blosb Storage?**
    
-    Las cuentas de almacenamiento de blobs tienen una coherencia del 100 % con la API con las cuentas de almacenamiento de uso general para blobs en bloques y en anexos. Siempre que la aplicación está utilizando los blobs en bloques o blobs en anexos y utilizas versión 2014-02-14 de Hola de hello [Storage Services REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) o mayor la aplicación debería funcionar. Si está utilizando una versión anterior del protocolo de hello, a continuación, debe actualizar la nueva versión de aplicación toouse Hola así como toowork sin problemas con ambos tipos de cuentas de almacenamiento. En general, se recomienda siempre usando Hola versión más reciente, independientemente de qué tipo de cuenta de almacenamiento que use.
+    Las cuentas de almacenamiento de blobs tienen una coherencia del 100 % con la API con las cuentas de almacenamiento de uso general para blobs en bloques y en anexos. Si la aplicación usa blobs en bloques o blobs en anexos y el usuario utiliza la versión 2014-02-14 de la [API de REST de servicios de almacenamiento](https://msdn.microsoft.com/library/azure/dd894041.aspx), u otra versión superior, la aplicación debería funcionar. Si se utiliza una versión anterior del protocolo, es preciso actualizar la aplicación para que use la nueva versión, con el fin de poder trabajar sin problemas con ambos tipos de cuentas de almacenamiento. En general, siempre se recomienda utilizar la versión más reciente, independientemente del tipo de cuenta de almacenamiento que se use.
 
 10. **¿Hay un cambio en la experiencia del usuario?**
     
-    Las cuentas de almacenamiento de blobs son cuentas de almacenamiento general tooa muy similar para el almacenamiento de bloque y blobs en anexos y admiten todas las características clave de Hola de almacenamiento de Azure, como gran durabilidad y disponibilidad, escalabilidad, rendimiento y seguridad. Distintas cuentas de almacenamiento de tooBlob específicos de características y restricciones hello y sus niveles de almacenamiento que se ha llamado anteriormente, todo lo que sigue siendo else Hola igual.
+    Las cuentas de Almacenamiento de blobs son muy similares a una cuenta de almacenamiento de uso general para almacenar y anexar blobs, y admite todas las características claves de Almacenamiento de Azure, incluidos un gran rendimiento, durabilidad y disponibilidad, escalabilidad y seguridad. Aparte de las características y restricciones concretas de las cuentas de Almacenamiento de blobs y sus capas de almacenamiento ya indicadas, el resto es igual.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
@@ -366,8 +366,8 @@ Para más información, consulte [Introducción al Almacenamiento de blobs de Az
 
 [Introducción al Almacenamiento de blobs de Azure mediante .NET](storage-dotnet-how-to-use-blobs.md)
 
-[Mover datos tooand desde el almacenamiento de Azure](../common/storage-moving-data.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+[Movimiento de datos hacia y desde Almacenamiento de Azure](../common/storage-moving-data.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-[Transferencia de datos con la utilidad de línea de comandos de AzCopy Hola](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+[Transferencia de datos con la utilidad en línea de comandos AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 [Examen y exploración de cuentas de almacenamiento](http://storageexplorer.com/)

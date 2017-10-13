@@ -1,32 +1,32 @@
-### <a name="gwipnoconnection"></a>dirección IP en la puerta de enlace de la red local de hello toomodify - no hay ninguna conexión de puerta de enlace
+### <a name="gwipnoconnection"></a>Para modificar la dirección IP de la puerta de enlace de red local (no hay conexión con la puerta de enlace)
 
-Utilice toomodify de ejemplo de Hola una puerta de enlace de red local que no tiene una conexión de puerta de enlace. Cuando se modifica este valor, también puede modificar los prefijos de direcciones de hello en hello mismo tiempo.
+Use el ejemplo para modificar una puerta de enlace de red local que no tenga una conexión de puerta de enlace. Al modificar este valor, también puede modificar al mismo tiempo los prefijos de dirección.
 
-1. En los recursos de la puerta de enlace de red Local, en Hola Hola **configuración** sección, haga clic en **configuración**.
-2. Hola **dirección IP** cuadro, modifique la dirección IP de Hola.
-3. Haga clic en **guardar** configuración de toosave Hola.
+1. En el recurso de la puerta de enlace de red local, en la sección **Configuración**, haga clic en **Configuración**.
+2. En el cuadro **Dirección IP**, modifique la dirección IP.
+3. Haga clic en **Guardar** para guardar la configuración.
 
-### <a name="gwipwithconnection"></a>dirección IP de puerta de enlace puerta de enlace de toomodify Hola red local - conexión de puerta de enlace existente
+### <a name="gwipwithconnection"></a>Para modificar la dirección IP de la puerta de enlace de red local (conexión de puerta de enlace existente)
 
-toomodify una puerta de enlace de red local que tiene una conexión, debe quitar de la conexión hello toofirst. Después de quita la conexión de hello, puede modificar la dirección IP de puerta de enlace de Hola y volver a crear una nueva conexión. También puede modificar los prefijos de direcciones de hello en hello mismo tiempo. Esto tendrá como resultado un tiempo de inactividad para la conexión VPN. Cuando se modifica la dirección IP de puerta de enlace de hello, no necesita la puerta de enlace VPN toodelete Hola. Solo necesita conexión de hello tooremove.
+Para modificar una puerta de enlace de red local que tenga una conexión, primero es preciso quitar dicha conexión. Después de quitar la conexión, puede modificar la dirección IP de la puerta de enlace y volver a crear una nueva conexión. También puede modificar los prefijos de dirección al mismo tiempo. Esto tendrá como resultado un tiempo de inactividad para la conexión VPN. Al modificar la dirección IP de puerta de enlace, no es necesario eliminar la puerta de enlace VPN. Basta con quitar la conexión.
  
-#### <a name="1-remove-hello-connection"></a>1. Quitar conexión de Hola.
+#### <a name="1-remove-the-connection"></a>1. Cierre la conexión.
 
-1. En los recursos de la puerta de enlace de red Local, en Hola Hola **configuración** sección, haga clic en **conexiones**.
-2. Haga clic en hello **...**  en línea hello para la conexión de hello, a continuación, haga clic en **eliminar**.
-3. Haga clic en **guardar** toosave la configuración.
+1. En el recurso de la puerta de enlace de red local, en la sección **Configuración**, haga clic en **Conexiones**.
+2. Haga clic en **...** en la línea de la conexión y, después, haga clic en **Eliminar**.
+3. Haga clic en **Guardar** para guardar la configuración.
 
-#### <a name="2-modify-hello-ip-address"></a>2. Modificar la dirección IP de Hola.
+#### <a name="2-modify-the-ip-address"></a>2. Modifique la dirección IP.
 
-También puede modificar los prefijos de direcciones de hello en hello mismo tiempo.
+También puede modificar los prefijos de dirección al mismo tiempo.
 
-1. Hola **dirección IP** cuadro, modifique la dirección IP de Hola.
-2. Haga clic en **guardar** configuración de toosave Hola.
+1. En el cuadro **Dirección IP**, modifique la dirección IP.
+2. Haga clic en **Guardar** para guardar la configuración.
 
-#### <a name="3-recreate-hello-connection"></a>3. Vuelva a crear la conexión de Hola.
+#### <a name="3-recreate-the-connection"></a>3. Vuelva a crear la conexión.
 
-1. Navegue toohello puerta de enlace de red Virtual para la red virtual. (No Hola puerta de enlace de red Local.)
-2. En hello puerta de enlace de red Virtual, en hello **configuración** sección, haga clic en **conexiones**.
-3. Haga clic en hello **+ agregar** tooopen hello **Agregar conexión** hoja.
+1. Navegue hasta la puerta de enlace de red virtual de la red virtual. (no la puerta de enlace de red local).
+2. En la puerta de enlace de red virtual, en la sección **Configuración**, haga clic en **Conexiones**.
+3. Haga clic en **+ Agregar** para abrir la hoja **Agregar conexión**.
 4. Vuelva a crear la conexión.
-5. Haga clic en **Aceptar** conexión de hello toocreate.
+5. Haga clic en **Aceptar** para crear la conexión.

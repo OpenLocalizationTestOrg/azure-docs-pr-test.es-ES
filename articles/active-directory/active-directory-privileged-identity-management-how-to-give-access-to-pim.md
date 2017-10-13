@@ -1,6 +1,6 @@
 ---
-title: aaaHow toogive acceso tooPrivileged Identity Management - Azure | Documentos de Microsoft
-description: "Obtenga información acerca de cómo tooadd roles toousers con Hola extensión de Azure Active Directory Privileged Identity Management para que puedan administrar PIM."
+title: "Concesión de acceso para Privileged Identity Management - Azure | Microsoft Docs"
+description: "Aprenda a agregar roles a los usuarios con la extensión Privileged Identity Management de Azure Active Directory para que así puedan administrar PIM."
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 06/06/2017
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 5d99589af4af766e430d7cecd743ace752f63768
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: aeaefb484b29da6e89c2c3c650a79a881b3fa5b6
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="giving-access-toomanage-azure-ad-privileged-identity-management"></a>Lo que proporciona acceso toomanage AD Privileged Identity Management de Azure
-Administrador global de Hello, que permite a Azure AD Privileged Identity Management (PIM) de una organización automáticamente obtener las asignaciones de roles y tener acceso a tooPIM. Nadie más obtiene acceso de escritura de forma predeterminada, ni siquiera otros administradores globales. Otros administradores globales, los administradores de seguridad y los lectores de seguridad tienen acceso de solo lectura tooAzure PIM AD. toogive acceso tooPIM, Hola primer usuario puede asignar a otros usuarios toohello **Administrador de roles con privilegios de** rol. Esta asignación se debe realizar desde dentro de PIM y no se puede cambiar mediante PowerShell u otros portales.
+# <a name="giving-access-to-manage-azure-ad-privileged-identity-management"></a>Concesión de acceso para administrar Azure AD Privileged Identity Management
+El administrador global que habilita Privileged Identity Management (PIM) de Azure AD para una organización, obtiene automáticamente asignaciones de roles y acceso a PIM. Nadie más obtiene acceso de escritura de forma predeterminada, ni siquiera otros administradores globales. Otros administradores globales, administradores de seguridad y lectores de seguridad tienen acceso de solo lectura a PIM de Azure AD. Para proporcionar acceso a PIM, el primer usuario puede asignar a otros el rol **Administrador de rol con privilegios** . Esta asignación se debe realizar desde dentro de PIM y no se puede cambiar mediante PowerShell u otros portales.
 
 > [!NOTE]
 > La administración de PIM de Azure AD requiere Azure MFA. Dado que las cuentas de Microsoft no se pueden registrar en Azure MFA, un usuario que inicia sesión con una cuenta de Microsoft no puede tener acceso a PIM de Azure AD.
@@ -31,29 +31,29 @@ Administrador global de Hello, que permite a Azure AD Privileged Identity Manage
 
 Asegúrese de que siempre haya al menos dos usuarios en un rol de administrador de roles con privilegios, por si se diera el caso de que a un usuario se le impida el acceso o su cuenta se haya eliminado.
 
-## <a name="give-another-user-access-toomanage-pim"></a>Proporcionar a otro usuario acceso toomanage PIM
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com/) y seleccione hello **Azure AD Privileged Identity Management** aplicación en el panel de Hola.
+## <a name="give-another-user-access-to-manage-pim"></a>Concesión de acceso a otro usuario para administrar PIM
+1. Vaya al [Portal de Azure](https://portal.azure.com/) y seleccione la aplicación **Privileged Identity Management de Azure AD** en el panel.
 2. Seleccione **Administrar roles con privilegios** > **Administrador de rol con privilegios** > **Agregar**.
    
     ![Agregar administradores de roles con privilegios: captura de pantalla][1]
-3. En la hoja de hello agregar usuarios administrados, paso 1 ya está completando. Seleccione paso 2, **Seleccionar usuarios** y búsqueda para el usuario de hello desea tooadd.
+3. En la hoja Agregar usuarios administrados, el paso 1 ya está completo. Seleccione el paso 2, **Seleccionar usuarios** y busque el usuario que quiere agregar.
    
     ![Seleccionar usuarios: captura de pantalla][2]
-4. Seleccione el usuario de hello en los resultados de búsqueda de Hola y haga clic en **realiza**.
-5. Haga clic en **Aceptar** toosave la selección. usuario de Hola que ha seleccionado se mostrará en lista de Hola de administradores de roles con privilegios.
+4. Seleccione el usuario en los resultados de búsqueda y haga clic en **Listo**.
+5. Haga clic en **Aceptar** para guardar la selección. El usuario que ha seleccionado aparecerá en la lista de administradores de roles con privilegios.
    
-   * Cada vez que se asigna un nuevo toosomeone de rol, se configuran automáticamente como rol de hello tooactivate elegibles. Si desea que toomake permanente en función de hello, haga clic en usuario de hello en lista de Hola. Seleccione **realizar perm** en el menú de información de usuario de Hola.
-6. Enviar un vínculo al usuario de hello demasiado[Introducción a Azure AD Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md).
+   * Cuando asigne un nuevo rol a alguien, esta persona se configura automáticamente como apto para activar este rol. Si quiere establecer el rol como permanente para este usuario, haga clic en él en la lista. Seleccione **convertir en permanente** en el menú de información de usuario.
+6. Envíe al usuario un vínculo a [Introducción a Privileged Identity Management de Azure AD](active-directory-privileged-identity-management-getting-started.md).
 
 ## <a name="remove-another-users-access-rights-for-managing-pim"></a>Eliminación de los derechos de acceso de otro usuario para administrar PIM
-Antes de quitar un usuario del rol de administrador de roles con privilegios de hello, asegúrese siempre de seguirá habiendo dos usuarios asignados tooit.
+Antes de eliminar a alguien del rol de administrador de roles con privilegios, asegúrese siempre de que haya dos usuarios asignados a él.
 
-1. En el panel PIM de hello, haga clic en el rol de Hola **Administrador de roles con privilegios de**.  se mostrará la lista de Hola de usuarios actualmente en ese rol.
-2. Haga clic en usuario de hello en la lista de usuarios de Hola.
+1. En el panel de PIM, haga clic en el rol **Administrador de roles con privilegios**.  Se mostrará la lista de usuarios que tienen actualmente ese rol.
+2. Haga clic en el usuario en la lista de usuarios.
 3. Haga clic en **Quitar**.  Aparecerá un mensaje de confirmación.
-4. Haga clic en **Sí** tooremove usuario Hola rol Hola.
+4. Haga clic en **Sí** para quitar el usuario del rol.
 
-<!--Every topic should have next steps and links toohello next logical set of content tookeep hello customer engaged-->
+<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Pasos siguientes
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 

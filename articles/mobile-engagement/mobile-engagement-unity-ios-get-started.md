@@ -1,6 +1,6 @@
 ---
-title: "aaaGet Started with Azure Mobile Engagement para la implementación de iOS de Unity"
-description: "Obtenga información acerca de cómo toouse Azure Mobile Engagement con análisis y notificaciones de inserción para las aplicaciones de Unity implementar dispositivos tooiOS."
+title: "Introducción a Azure Mobile Engagement para la implementación de Unity para iOS"
+description: "Aprenda a usar Azure Mobile Engagement con los análisis y las notificaciones push para aplicaciones de Unity que se implementan en dispositivos de iOS."
 services: mobile-engagement
 documentationcenter: unity
 author: piyushjo
@@ -14,63 +14,63 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: f4247b0a9240cbe2bf1a6618388919d3554c07fb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c8f50404771965ec636065346ac04e059d264c3d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-unity-ios-deployment"></a>Introducción a Azure Mobile Engagement para la implementación de Unity para iOS
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
-Este tema muestra cómo toouse Azure Mobile Engagement toounderstand el uso de la aplicación y cómo toosend insertar los usuarios de toosegmented de notificaciones de una aplicación de Unity al implementar el dispositivo iOS tooan.
-Este tutorial se utiliza Hola clásico Unity poner un tutorial de bola como punto de partida de Hola. Debe seguir los pasos de hello en este [tutorial](mobile-engagement-unity-roll-a-ball.md) antes de continuar con hello integración de Mobile Engagement se muestran en el tutorial de Hola a continuación. 
+En este tema se muestra cómo usar Azure Mobile Engagement para comprender el uso de su aplicación y cómo enviar notificaciones push a usuarios segmentados de una aplicación de Unity durante la implementación en un dispositivo de iOS.
+Este tutorial utiliza el tutorial de iniciación clásico de Unity como punto de partida. Debe seguir los pasos de este [tutorial](mobile-engagement-unity-roll-a-ball.md) antes de continuar con la integración de Mobile Engagement que se muestra en el tutorial siguiente. 
 
-Este tutorial requiere siguiente de hello:
+Este tutorial requiere lo siguiente:
 
 * [Editor de Unity](http://unity3d.com/get-unity)
 * [SDK de Unity para Mobile Engagement](https://aka.ms/azmeunitysdk)
 * Editor de XCode
 
 > [!NOTE]
-> toocomplete este tutorial, debe tener una cuenta activa de Azure. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Para obtener más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-unity-ios-get-started).
+> Para completar este tutorial, deberá tener una cuenta de Azure activa. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Para obtener más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-unity-ios-get-started).
 > 
 > 
 
 ## <a id="setup-azme"></a>Configuración de Mobile Engagement para una aplicación iOS
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a id="connecting-app"></a>Conectar el back-end de aplicación toohello Mobile Engagement
-### <a name="import-hello-unity-package"></a>Importar paquete de Unity Hola
-1. Descargar hello [paquete de Mobile Engagement Unity](https://aka.ms/azmeunitysdk) y lo guarda en la máquina local tooyour. 
-2. Vaya demasiado**activos -> Importar paquete -> paquete personalizado** y el paquete de hello seleccione descargado en hello por encima del paso. 
+## <a id="connecting-app"></a>Conectar la aplicación al backend de Mobile Engagement
+### <a name="import-the-unity-package"></a>Importación del paquete de Unity
+1. Descargue el [paquete de Unity para Mobile Engagement](https://aka.ms/azmeunitysdk) y guárdelo en el equipo local. 
+2. Vaya a **Assets -> Import Package -> Custom Package** (Recursos -> Importar paquete -> Paquete personalizado) y seleccione el paquete que descargó en el paso anterior. 
    
     ![][70] 
 3. Asegúrese de que se seleccionan todos los archivos y haga clic en el botón **Import** (Importar). 
    
     ![][71] 
-4. Una vez que la importación es correcta, verá los archivos SDK de hello importado en el proyecto.  
+4. Una vez que la importación termina correctamente, verá los archivos del SDK importados en el proyecto.  
    
     ![][72] 
 
-### <a name="update-hello-engagementconfiguration"></a>Actualizar hello EngagementConfiguration
-1. Abra hello **EngagementConfiguration** archivo de script de Hola de carpeta y actualización SDK de hello **IOS\_conexión\_cadena** con la cadena de conexión de hello obtenido anteriormente de hello portal de Azure.  
+### <a name="update-the-engagementconfiguration"></a>Actualización de EngagementConfiguration
+1. Abra el archivo de script **EngagementConfiguration** desde la carpeta del SDK y actualice **IOS\_CONNECTION\_STRING** con la cadena de conexión que obtuvo anteriormente en Azure Portal.  
    
     ![][73]
-2. Guarde el archivo hello. 
+2. Guarde el archivo . 
 
-### <a name="configure-hello-app-for-basic-tracking"></a>Configurar la aplicación hello para el seguimiento básico
-1. Abra hello **PlayerController** script adjunto toohello objeto del Reproductor para su edición. 
-2. Agregue Hola siguiente instrucción using:
+### <a name="configure-the-app-for-basic-tracking"></a>Configuración de la aplicación para un seguimiento básico
+1. Abra el script **Playercontroller** asociado al objeto Player para su edición. 
+2. Agregue la siguiente instrucción using:
    
         using Microsoft.Azure.Engagement.Unity;
-3. Agregar Hola después toohello `Start()` (método)
+3. Agregue lo siguiente al método `Start()`.
    
         EngagementAgent.Initialize();
         EngagementAgent.StartActivity("Home");
 
-### <a name="deploy-and-run-hello-app"></a>Implementar y ejecutar la aplicación hello
-1. Conectar una máquina de tooyour de dispositivo de iOS. 
+### <a name="deploy-and-run-the-app"></a>Implementación y ejecución de la aplicación
+1. Conecte un dispositivo iOS al equipo. 
 2. Abra **File -> Build Settings** (Archivo -> Configuración de compilación). 
    
     ![][40]
@@ -85,21 +85,21 @@ Este tutorial requiere siguiente de hello:
 5. Por último, haga clic en **Build And Run**
    
     ![][54]
-6. Es posible que más frecuentes tooprovide un paquete de iOS de carpeta nombre toostore Hola. 
+6. Se le pedirá que proporcione un nombre de carpeta para almacenar el paquete de iOS. 
    
     ![][43]
-7. Si todo va bien, se compilará el proyecto de Hola y debería abrirlo de en la aplicación de XCode. 
-8. Asegúrese de que ese hello **identificador de paquete** es correcto en el proyecto de Hola.  
+7. Si todo va bien, se compilará el proyecto y se abrirá en la aplicación de XCode. 
+8. Asegúrese de que el **identificador de la agrupación de trabajos** es correcto en el proyecto.  
    
     ![][75]
-9. Ahora ejecutar aplicación hello en XCode para que el paquete de hello es dispositivo conectado tooyour implementado y debería ver su juego Unity en su teléfono. 
+9. Ejecute la aplicación en XCode para que el paquete se implemente en su dispositivo conectado y con eso debería ver ya el juego de Unity en el teléfono. 
 
 ## <a id="monitor"></a>Conexión de la aplicación con la supervisión en tiempo real
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a id="integrate-push"></a>Habilitación de notificaciones push y mensajería en la aplicación
-Mobile Engagement le permite toointeract con los usuarios y alcance con notificaciones de inserción y en mensajería desde la aplicación en el contexto de Hola de campañas. Este módulo se denomina alcance en el portal de interacción móvil Hola.
-No tiene toodo ninguna configuración adicional en las notificaciones de tooreceive de aplicación y ya está configurado para él.
+## <a id="integrate-push"></a>Habilitación de las notificaciones push y la mensajería en aplicación
+Mobile Engagement permite interactuar y llegar mediante notificaciones push y mensajería en la aplicación en el contexto de las campañas. Este módulo se denomina REACH en el portal de Mobile Engagement.
+No tiene que realizar ninguna configuración adicional en la aplicación para recibir notificaciones ya que ya está configurado para ello.
 
 [!INCLUDE [mobile-engagement-ios-send-push-push](../../includes/mobile-engagement-ios-send-push.md)]
 

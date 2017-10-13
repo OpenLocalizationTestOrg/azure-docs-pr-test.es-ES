@@ -1,29 +1,29 @@
 
 
-## <a name="use-hello-portal-toomove-a-vm-tooa-different-subscription"></a>Usar Hola portal toomove tooa otra suscripción a máquinas virtuales
-Puede mover una máquina virtual y está asociada con el portal de Hola de otra suscripción recursos tooa.
+## <a name="use-the-portal-to-move-a-vm-to-a-different-subscription"></a>Uso del portal para mover una máquina virtual a otra suscripción
+Puede mover una máquina virtual y sus recursos asociados a otra suscripción mediante el portal.
 
-1. Abra hello [portal de Azure](https://portal.azure.com).
-2. Haga clic en **examinar** > **máquinas virtuales** y seleccione Hola VM le gustaría toomove de lista de Hola.
+1. Abra el [Portal de Azure](https://portal.azure.com).
+2. Haga clic en **Examinar** > **Máquinas virtuales** y seleccione la máquina virtual que desee mover de la lista.
    
-    ![Captura de pantalla de sección de Essentials Hola donde haga clic en hoja de hello lápiz icono tooopen Hola mover recursos.](./media/virtual-machines-common-move-vm/move-button.png)
-3. Hola **Essentials** sección, haga clic en hello **cambiar suscripción** lápiz icono siguiente toohello nombre de la suscripción. Hola **mover recursos** se abrirá la hoja.
+    ![Captura de pantalla de la sección Información esencial donde hace clic en el icono de lápiz para abrir la hoja Mover recursos.](./media/virtual-machines-common-move-vm/move-button.png)
+3. En la sección **Información esencial**, haga clic en el icono de lápiz **Cambiar suscripción** que hay junto al nombre de la suscripción. Se abrirá la hoja **Mover recursos** .
    
-    ![Captura de pantalla de hoja de recursos de movimiento de Hola.](./media/virtual-machines-common-move-vm/move.png)
-4. Seleccione cada una de hello recursos toomove. En la mayoría de los casos, debe mover que todos Hola enumerados recursos opcionales.
-5. Seleccione hello **suscripción** donde desea Hola VM toobe movido.
-6. Seleccione una existente **grupo de recursos** o escriba una toohave nombre crea un nuevo grupo de recursos.
-7. Cuando haya terminado, seleccione que entender que recurso nuevo se creará identificadores y los necesitan toobe usará con hello VM una vez que se mueve, a continuación, haga clic en **Aceptar**.
+    ![Captura de pantalla de la hoja Mover recursos.](./media/virtual-machines-common-move-vm/move.png)
+4. Seleccione cada uno de los recursos que quiere mover. En la mayoría de los casos, debe mover todos los recursos opcionales que se muestran.
+5. Seleccione la **suscripción** adonde quiere mover la máquina virtual.
+6. Seleccione un **grupo de recursos** existente o escriba un nombre para que se cree uno nuevo.
+7. Cuando haya terminado, seleccione que comprende que se crearán nuevos identificadores de recursos y que se deberán usar con la máquina virtual cuando se mueva. Después, haga clic en **Aceptar**.
 
-## <a name="use-hello-portal-toomove-a-vm-tooanother-resource-group"></a>Usar Hola portal toomove un grupo de recursos de máquina virtual tooanother
-Puede mover una máquina virtual y tiene asociados recursos tooanother fam. mediante el portal de Hola.
+## <a name="use-the-portal-to-move-a-vm-to-another-resource-group"></a>Uso del portal para mover una máquina virtual a otro grupo de recursos
+Puede mover una máquina virtual y sus recursos asociados a otro grupo de recursos mediante el portal.
 
-1. Abra hello [portal de Azure](https://portal.azure.com).
-2. Haga clic en **examinar** > **grupos de recursos** y grupo de recursos de hello select que contiene Hola máquina virtual.
-3. Hola **grupo de recursos** hoja, seleccione **mover** en el menú de Hola.
+1. Abra el [Portal de Azure](https://portal.azure.com).
+2. Haga clic en **Examinar** > **Grupos de recursos** y seleccione el grupo de recursos que contiene la máquina virtual.
+3. En la hoja **Grupo de recursos**, seleccione **Mover** en el menú.
    
-    ![Captura de pantalla del botón de movimiento de hello en el menú de grupos de recursos de Hola.](./media/virtual-machines-common-move-vm/move-rg.png)
-4. Hola **mover recursos** hoja, seleccione Hola recursos toobe mover y, a continuación, escriba un nombre de grupo de recursos existente o elija toocreate un nuevo grupo de recursos. Cuando haya terminado, seleccione que entender que recurso nuevo se creará identificadores y los necesitan toobe usará con hello VM una vez que se mueve, a continuación, haga clic en **Aceptar**
+    ![Captura de pantalla del botón Mover del menú Grupos de recursos.](./media/virtual-machines-common-move-vm/move-rg.png)
+4. En la hoja **Mover recursos**, seleccione los recursos que se van mover y, luego, escriba el nombre de un grupo de recursos existente o elija crear uno nuevo. Cuando haya terminado, seleccione que comprende que se crearán nuevos identificadores de recursos y que se deberán usar con la máquina virtual cuando se mueva. Después, haga clic en **Aceptar**
    
-    ![Captura de pantalla de hoja de recursos de movimiento de Hola.](./media/virtual-machines-common-move-vm/move-rg-list.png)
+    ![Captura de pantalla de la hoja Mover recursos.](./media/virtual-machines-common-move-vm/move-rg-list.png)
 

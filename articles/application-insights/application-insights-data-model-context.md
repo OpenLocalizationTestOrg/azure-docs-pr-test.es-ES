@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure modelos de datos de telemetría de visión de aplicación, contexto de telemetría | Documentos de Microsoft"
+title: "Modelo de datos de telemetría de Azure Application Insights: contexto de telemetría | Microsoft Docs"
 description: "Modelo de datos de contexto de telemetría de Application Insights"
 services: application-insights
 documentationcenter: .net
@@ -12,108 +12,108 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: sergkanz
-ms.openlocfilehash: 6cdd6240d1c448f883d104a871ee9d5f6b5af2ac
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d6a0cad8bda6ca68aa691867e84f540c5ac9f6f3
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>Contexto de telemetría: modelo de datos de Application Insights
 
-Cada elemento de telemetría puede tener campos de contexto fuertemente tipados. Cada campo permite un escenario de supervisión específico. Utilice Hola propiedades personalizadas colección toostore personalizados o específicos de la aplicación información contextual.
+Cada elemento de telemetría puede tener campos de contexto fuertemente tipados. Cada campo permite un escenario de supervisión específico. Use la recopilación de propiedades personalizadas para guardar información contextual personalizada o específica de aplicaciones.
 
 
 ##<a name="application-version"></a>Versión de la aplicación
 
-La información en los campos de contexto de aplicación Hola está siempre acerca de la aplicación hello que está enviando la telemetría de Hola. Versión de la aplicación es usado tooanalyze tendencia cambios de comportamiento de la aplicación hello y sus implementaciones de toohello de correlación.
+La información de los campos de contexto de la aplicación siempre trata sobre la aplicación que envía la telemetría. La versión de la aplicación se usa para analizar cambios de tendencia en el comportamiento de la aplicación y su correlación con las implementaciones.
 
 Longitud máxima: 1024
 
 
 ##<a name="client-ip-address"></a>Dirección IP de cliente
 
-dirección IP de Hello hello de dispositivo de cliente. Se admiten IPv4 e IPv6. Cuando telemetría se envía desde un servicio, contexto de ubicación de hello es acerca del usuario de Hola que inició la operación de hello en el servicio de Hola. Application Insights extraen información de ubicación geográfica de Hola de dirección IP del cliente de hello y, a continuación, truncan. La IP del cliente no puede usarse por sí misma a modo de información de identificación del usuario final. 
+La dirección IP del dispositivo cliente. Se admiten IPv4 e IPv6. Al enviar telemetría desde un servicio, el contexto de la ubicación trata sobre el usuario que inició la operación en el servicio. Application Insights extrae la información de geolocalización de la IP del cliente y seguidamente la trunca. La IP del cliente no puede usarse por sí misma a modo de información de identificación del usuario final. 
 
 Longitud máxima: 46
 
 
 ##<a name="device-type"></a>Tipo de dispositivo
 
-Este campo se utilizaba originalmente tooindicate Hola tipo de dispositivo de usuario final Hola Hola de aplicación hello. Hoy en día utiliza principalmente toodistinguish JavaScript telemetría con hello tipo de dispositivo 'Browser' de telemetría de servidor con el tipo de dispositivo de hello 'Equipo'.
+Originalmente, este campo se usaba para indicar el tipo de dispositivo que usaba el usuario final de la aplicación. Hoy se usa principalmente para distinguir la telemetría de JavaScript con el tipo de dispositivo "Navegador" de la telemetría del lado del servidor con el tipo de dispositivo "PC".
 
 Longitud máxima: 64
 
 
 ##<a name="operation-id"></a>Identificador de operación
 
-Un identificador único de la operación de raíz de Hola. Este identificador permite toogroup telemetría a través de varios componentes. Consulte [Correlación de telemetría](application-insights-correlation.md) para obtener más información. Id. de operación de Hola se crea mediante una solicitud o una vista de página. Todos los demás telemetría establece este valor de toohello de campo de Hola que contiene la vista de página o de solicitud. 
+Es un identificador único de la operación de raíz. Este identificador permite agrupar telemetría de varios componentes. Consulte [Correlación de telemetría](application-insights-correlation.md) para obtener más información. El identificador de la operación se crea, bien mediante una solicitud, bien mediante una vista de página. El resto de telemetría establece este campo en el valor de la solicitud o la vista de página que la contienen. 
 
 Longitud máxima: 128
 
 
 ##<a name="parent-operation-id"></a>Identificador de la operación principal
 
-Identificador único del primario inmediato del elemento de hello telemetría de Hola. Consulte [Correlación de telemetría](application-insights-correlation.md) para obtener más información.
+Es el identificador único del primario inmediato del elemento de telemetría. Consulte [Correlación de telemetría](application-insights-correlation.md) para obtener más información.
 
 Longitud máxima: 128
 
 
 ##<a name="operation-name"></a>Nombre de la operación
 
-nombre de Hello (grupo) de operación de Hola. nombre de la operación de Hola se crea mediante una solicitud o una vista de página. Todos los demás elementos de telemetría establecer este valor de toohello de campo para hello que contiene la vista de página o de solicitud. Nombre de la operación se utiliza para buscar todos los elementos de telemetría de Hola para un grupo de operaciones (por ejemplo ' GET Home/Index'). Esta propiedad de contexto es usado tooanswer preguntas como "¿Cuáles son Hola típico excepciones de esta página."
+Este es el nombre (grupo) de la operación. El nombre de la operación se crea, bien mediante una solicitud, bien mediante una vista de página. El resto de los elementos de telemetría establece este campo en el valor de la solicitud o la vista de página que la contienen. El nombre de la operación se usa para localizar todos los elementos de telemetría de un grupo de operaciones (por ejemplo, "GET Home/Index"). Esta propiedad del contexto se usa para contestar a preguntas como "¿cuáles son las excepciones habituales que se producen en esta página?".
 
 Longitud máxima: 1024
 
 
-##<a name="synthetic-source-of-hello-operation"></a>Origen sintético de operación de Hola
+##<a name="synthetic-source-of-the-operation"></a>Origen sintético de la operación
 
-Nombre del origen sintético. Algunos telemetría de aplicación hello puede representar tráfico sintético. Puede ser web rastreador (crawler) indización Hola de sitio web, pruebas de disponibilidad de sitio o seguimientos de bibliotecas de diagnóstico como Application Insights SDK propio.
+Nombre del origen sintético. Cierta telemetría de la aplicación puede representar tráfico sintético. Puede tratarse de un robot de búsqueda que esté indexando el sitio web, de pruebas de disponibilidad del sitio o de seguimientos de bibliotecas de diagnóstico, como el propio SDK de Application Insights.
 
 Longitud máxima: 1024
 
 
 ##<a name="session-id"></a>Identificador de la sesión
 
-Id. de sesión - instancia Hola Hola de interacción del usuario con la aplicación hello. Información de los campos de contexto de sesión de hello siempre es acerca del usuario final de Hola. Cuando telemetría se envía desde un servicio, contexto de la sesión de hello es acerca del usuario de Hola que inició la operación de hello en el servicio de Hola.
+Identificador de la sesión: la instancia de la interacción del usuario con la aplicación. La información de los campos de contexto de la sesión siempre trata sobre el usuario final. Al enviar telemetría desde un servicio, el contexto de la sesión trata sobre el usuario que inició la operación en el servicio.
 
 Longitud máxima: 64
 
 
 ##<a name="anonymous-user-id"></a>Identificador del usuario anónimo
 
-Este es el identificador del usuario anónimo. Representa el usuario final de saludo de la aplicación hello. Cuando se envía la telemetría de un servicio, contexto de usuario de hello es acerca del usuario de Hola que inició la operación de hello en el servicio de Hola.
+Este es el identificador del usuario anónimo. Representa al usuario final de la aplicación. Al enviar telemetría desde un servicio, el contexto del usuario trata sobre el usuario que inició la operación en el servicio.
 
-[Muestreo](app-insights-sampling.md) es una cantidad de hello técnicas toominimize Hola de telemetría recopilado. Tooeither de intentos de algoritmo de muestreo ejemplo o alejar Hola todos los ponen en correlación telemetría. El identificador del usuario anónimo se usa para muestrear la generación de puntuaciones. Por ello, el identificador del usuario anónimo debería ser un valor suficiente aleatorio. 
+El [muestreo](app-insights-sampling.md) es una de las técnicas mediante las cuales se reduce al mínimo la cantidad de telemetría recopilada. El algoritmo de muestreo intenta muestrear toda la telemetría correlacionada para aceptarla o rechazarla. El identificador del usuario anónimo se usa para muestrear la generación de puntuaciones. Por ello, el identificador del usuario anónimo debería ser un valor suficiente aleatorio. 
 
-Con nombre de usuario de toostore de Id. de usuario anónimo es un uso inapropiado del campo de Hola. Use el identificador del usuario autenticado.
+Usar el identificador del usuario anónimo para almacenar el nombre de usuario es usar el campo de forma incorrecta. Use el identificador del usuario autenticado.
 
 Longitud máxima: 128
 
 
 ##<a name="authenticated-user-id"></a>Identificador del usuario autenticado
 
-Id. de usuario autenticado. Hola opuesto del identificador de usuario anónimo, este campo representa el usuario Hola con un nombre descriptivo. Puesto que se trata de información de identificación personal, la mayoría de SDK no la recopilan de forma predeterminada.
+Este es el identificador del usuario autenticado. Este campo, el contrario al del identificador del usuario anónimo, representa al usuario con un nombre sencillo. Puesto que se trata de información de identificación personal, la mayoría de SDK no la recopilan de forma predeterminada.
 
 Longitud máxima: 1024
 
 
 ##<a name="account-id"></a>Identificador de la cuenta
 
-En aplicaciones de varios inquilinos es Id. de cuenta de Hola o nombre, qué usuario Hola está actuando con. Algunos ejemplos son el identificador de la suscripción de Azure Portal o el nombre del blog de la plataforma de creación de blogs.
+En aplicaciones multiinquilino, este es el identificador o el nombre de la cuenta con el que actúa el usuario. Algunos ejemplos son el identificador de la suscripción de Azure Portal o el nombre del blog de la plataforma de creación de blogs.
 
 Longitud máxima: 1024
 
 
 ##<a name="cloud-role"></a>Rol en la nube
 
-Nombre de aplicación Hola de hello rol es una parte de. Se asigna directamente toohello nombre del rol en azure. También puede ser usado toodistinguish micro servicios, que son parte de una sola aplicación.
+Este es el nombre del que la aplicación forma parte. Se asigna directamente al nombre del rol de Azure. También puede usarse para distinguir microservicios que formen parte de una única aplicación.
 
 Longitud máxima: 256
 
 
 ##<a name="cloud-role-instance"></a>Instancia de rol en la nube
 
-Nombre de instancia de Hola donde se ejecuta la aplicación hello. El nombre de equipo del nombre de instancia local para Azure.
+Este es el nombre de la instancia en la que se ejecuta la aplicación. El nombre de equipo del nombre de instancia local para Azure.
 
 Longitud máxima: 256
 
@@ -127,13 +127,13 @@ Longitud máxima: 64
 
 ##<a name="internal-node-name"></a>Interno: nombre del nodo
 
-Este campo representa el nombre de nodo Hola usado para la facturación. Usar detección estándar de hello toooverride de nodos.
+Este campo representa el nombre del nodo que se usa para la facturación. Úselo para invalidar la detección estándar de nodos.
 
 Longitud máxima: 256
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-- Obtenga información acerca de cómo demasiado[ampliar y filtrar telemetría](app-insights-api-filtering-sampling.md).
+- Obtenga información sobre cómo [ampliar y filtrar la telemetría](app-insights-api-filtering-sampling.md).
 - Consulte [modelo de datos](application-insights-data-model.md) para los tipos y el modelo de datos de Application Insights.
 - Compruebe la [configuración](app-insights-configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) de la recopilación de propiedades estándar de contexto.

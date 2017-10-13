@@ -1,5 +1,5 @@
 ---
-title: "administración de Estados de los actores aaaReliable | Documentos de Microsoft"
+title: "Administración de estado de Reliable Actors | Microsoft Docs"
 description: "Describe cómo se administra, se conserva y se replica el estado de Reliable Actors para alta disponibilidad."
 services: service-fabric
 documentationcenter: .net
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.openlocfilehash: 346d92426b1890617d108a9504afb179e463bded
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: aca8cf2b94e8b746a5cac6af021c7221a29b7345
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reliable-actors-state-management"></a>Administración de estado de Reliable Actors
-Reliable Actors son objetos uniproceso que encapsulan la lógica y el estado. Como actores se ejecutan en servicios de confianza, mantener el estado de forma confiable mediante el uso de Hola los mismos mecanismos de persistencia y la replicación que usa servicios de confianza. De esta manera, actores no pierdan su estado después de los errores al realizar la reactivación después de la recolección de elementos, o cuando se mueven entre los nodos de un clúster de vencimiento tooresource equilibrio o las actualizaciones.
+Reliable Actors son objetos uniproceso que encapsulan la lógica y el estado. Como los actores se ejecutan en Reliable Services, pueden mantener el estado de forma confiable con los mismos mecanismos de persistencia y replicación utilizados por Reliable Services. De este modo, los actores no pierden su estado después de los errores, cuando se reactivan después de la recolección de elementos no utilizados o cuando se mueven entre los nodos de un clúster debido un equilibrio de los recursos o actualizaciones.
 
 ## <a name="state-persistence-and-replication"></a>Persistencia y replicación del estado
-Todos los actores confiable se consideran *stateful* dado que cada instancia de actor asigna tooa Id. único. Esto significa que toohello llamadas repetidas son el mismo Id. de actor enruta toohello misma instancia de actor. En un sistema sin estado, por el contrario, el cliente llama no se garantiza que toobe enrutado toohello mismo servidor cada vez. Por este motivo, los servicios de actor siempre son servicios con estado.
+Reliable Actors se considera *con estado* porque cada instancia de actor se asigna a un identificador único. Esto significa que las llamadas repetidas al mismo identificador de actor se enrutan a la misma instancia de actor. En un sistema sin estado, en cambio, no se garantiza que las llamadas del cliente se enruten al mismo servidor cada vez. Por este motivo, los servicios de actor siempre son servicios con estado.
 
-Aunque los actores se consideran con estado, no significa que deben almacenar el estado de manera confiable. Actores pueden elegir el nivel de Hola de persistencia de estado y la replicación basada en sus datos requisitos de almacenamiento:
+Aunque los actores se consideran con estado, no significa que deben almacenar el estado de manera confiable. Los actores pueden elegir el nivel de persistencia y replicación de estado basado en los requisitos de almacenamiento de sus datos:
 
-* **Un estado persistente**: estado persistente toodisk y es too3 replicada o varias réplicas. Esto es opción de almacenamiento de estado más duradero hello, donde puede conservar el estado a través de la interrupción de todo el clúster.
-* **Estado volátil**: el estado es too3 replicada o varias réplicas y solo se mantiene en la memoria. Esto proporciona resistencia frente a errores de nodo, errores de actores y durante las actualizaciones y el equilibrio de recursos. Sin embargo, el estado no es persistente toodisk. Por lo que si todas las réplicas se pierden al mismo tiempo, estado de hello también se pierde.
-* **Ningún estado persistente**: estado no se replican o se escribe toodisk. Este nivel es de actores que simplemente no tienen estado toomaintain forma confiable.
+* **Estado persistente:** el estado se conserva en el disco y se replica a tres o más réplicas. Esta es la opción de almacenamiento de estado más duradera, ya que el estado puede persistir a través de la interrupción de todo el clúster.
+* **Estado volátil:** el estado se replica a tres o más réplicas y solo se conserva en memoria. Esto proporciona resistencia frente a errores de nodo, errores de actores y durante las actualizaciones y el equilibrio de recursos. Sin embargo, el estado no persiste en el disco. Por tanto, si se pierden todas las réplicas al mismo tiempo, el estado también se pierde.
+* **Sin estado persistente:** no se replica el estado ni se escribe en el disco. Este nivel es para aquellos actores que simplemente no necesitan mantener el estado de forma confiable.
 
-Cada nivel de persistencia es simplemente otra configuración del *proveedor de estado* y de la *replicación* del servicio. Si no se escribe el estado toodisk depende de proveedor de estado de hello--componente hello en un servicio confiable que almacena el estado. La replicación depende de con cuántas réplicas se ha implementado un servicio. Al igual que con los servicios de confianza, ambos Hola proveedor de estado y número de réplicas puede ajustar fácilmente manualmente. el marco de trabajo de Hello actor proporciona un atributo que, cuando se utiliza en un actor, automáticamente se selecciona un proveedor de estado de forma predeterminada y se genera automáticamente la configuración de réplica recuento tooachieve uno de estos tres valores de persistencia. atributo de StatePersistence de Hello no es heredado por una clase derivada, cada tipo de Actor debe proporcionar su nivel de StatePersistence.
+Cada nivel de persistencia es simplemente otra configuración del *proveedor de estado* y de la *replicación* del servicio. Si el estado se escribe o no en el disco depende del proveedor de estado (el componente de un servicio Reliable Services que almacena el estado). La replicación depende de con cuántas réplicas se ha implementado un servicio. Al igual que con Reliable Services, tanto el proveedor de estado como el número de réplicas pueden establecerse manualmente con facilidad. La plataforma de actores proporciona un atributo, que, cuando se utiliza en un actor, selecciona automáticamente un proveedor de estado predeterminado y genera automáticamente la configuración para el número de réplicas, a fin de lograr una de estas tres opciones de persistencia. El atributo StatePersistence no es heredado por una clase derivada; cada tipo de actor debe proporcionar su nivel de StatePersistence.
 
 ### <a name="persisted-state"></a>Estado persistente
 ```csharp
@@ -47,7 +47,7 @@ class MyActorImpl  extends FabricActor implements MyActor
 {
 }
 ```  
-Esta configuración usa un proveedor de estado que almacena los datos en disco y establece automáticamente Hola servicio réplica recuento too3.
+Esta configuración usa un proveedor de estado que almacena datos en el disco y establece automáticamente el número de réplicas del servicio en 3.
 
 ### <a name="volatile-state"></a>Estado volátil
 ```csharp
@@ -62,7 +62,7 @@ class MyActorImpl extends FabricActor implements MyActor
 {
 }
 ```
-Esta configuración usa un proveedor de estado de solo en memoria y conjuntos de Hola too3 de recuento de réplica.
+Esta configuración utiliza un proveedor de estado solo en memoria y establece el número de réplicas en 3.
 
 ### <a name="no-persisted-state"></a>Sin estado persistente
 ```csharp
@@ -77,12 +77,12 @@ class MyActorImpl extends FabricActor implements MyActor
 {
 }
 ```
-Esta configuración usa un proveedor de estado de solo en memoria y conjuntos de Hola too1 de recuento de réplica.
+Esta configuración utiliza un proveedor de estado solo en memoria y establece el número de réplicas en 1.
 
 ### <a name="defaults-and-generated-settings"></a>Valores predeterminados y configuración generada
-Cuando usas hello `StatePersistence` atributo, un proveedor de estado se selecciona automáticamente en tiempo de ejecución cuando se inicia el servicio de actor Hola. número de réplicas de Hello, sin embargo, se establece en tiempo de compilación por hello actor de Visual Studio herramientas de compilación. Hello herramientas de compilación generan automáticamente un *servicio predeterminado* para servicio de actor hello en ApplicationManifest.xml. Los parámetros se crean para **min replica set size** y **target replica set size**.
+Cuando se usa el atributo `StatePersistence`, se selecciona automáticamente un proveedor de estado en tiempo de ejecución cuando se inicia el servicio de actor. Sin embargo, el número de réplicas, se establece en tiempo de compilación con las herramientas de compilación de actores de Visual Studio. Las herramientas de compilación generan automáticamente un *servicio predeterminado* del servicio de actor en ApplicationManifest.xml. Los parámetros se crean para **min replica set size** y **target replica set size**.
 
-Puede cambiar estos parámetros manualmente. Pero cada Hola tiempo `StatePersistence` se cambia el atributo, parámetros de Hola se establecen los valores de tamaño de conjunto de réplica de toohello predeterminados para hello seleccionado `StatePersistence` atributos, reemplazar los valores anteriores. En otras palabras, son valores de hello que establezca en ServiceManifest.xml *sólo* se reemplaza en tiempo de compilación cuando cambia hello `StatePersistence` valor de atributo.
+Puede cambiar estos parámetros manualmente. Sin embargo, cada vez que se cambia el atributo `StatePersistence`, los parámetros se establecen, de forma predeterminada, en los valores del tamaño del conjunto de réplicas para el atributo `StatePersistence`, invalidando los valores anteriores. Es decir, los valores establecidos en ServiceManifest.xml *solo* se reemplazan al compilar cuando cambia el valor del atributo `StatePersistence`.
 
 ```xml
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application12Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -105,20 +105,20 @@ Puede cambiar estos parámetros manualmente. Pero cada Hola tiempo `StatePersist
 ```
 
 ## <a name="state-manager"></a>Administrador de estado
-Cada instancia de actor tiene su propio administrador de estado: una estructura de datos similar a un diccionario que almacena de manera confiable los pares clave-valor. Administrador de Estados de Hello es un contenedor alrededor de un proveedor de estado. Puede usar lo toostore datos sin tener en cuenta qué configuración de persistencia se utiliza. No se proporciona ninguna garantía de que un servicio en ejecución actor puede cambiarse desde un tooa de configuración de estado volátil (en memoria-solo) conserva la configuración de estado a través de una actualización gradual y conservan los datos. Sin embargo, es posible toochange recuento de réplica para un servicio en ejecución.
+Cada instancia de actor tiene su propio administrador de estado: una estructura de datos similar a un diccionario que almacena de manera confiable los pares clave-valor. El administrador de estado es un contenedor alrededor de un proveedor de estado. Se puede utilizar para almacenar datos, con independencia de la configuración de persistencia que se utilice, pero no proporciona ninguna garantía de que se pueda cambiar un servicio de actor en ejecución de una configuración de estado volátil (solo en memoria) a una configuración de estado persistente mediante una actualización gradual mientras se conservan los datos. Sin embargo, es posible cambiar el número de réplicas para un servicio en ejecución.
 
-Las claves del administrador de estado deben ser cadenas. Los valores son genéricos y pueden ser de cualquier tipo, incluidos los tipos personalizados. Valores almacenados en el Administrador de estado de hello deben ser serializable de contrato de datos porque se puede transmitir a través de nodos de la red tooother Hola durante la replicación y puede escribirse toodisk, dependiendo de la configuración de persistencia de estado de un actor.
+Las claves del administrador de estado deben ser cadenas. Los valores son genéricos y pueden ser de cualquier tipo, incluidos los tipos personalizados. Los valores almacenados en el administrador de estado deben ser serializables en el contrato de datos, ya que pueden transmitirse a través de la red a otros nodos durante la replicación y pueden escribirse en el disco, dependiendo de la configuración de persistencia del estado de un actor.
 
-Administrador de Estados de Hello expone los métodos de diccionario comunes para administrar el estado, similar toothose que se encuentra en el diccionario de confianza.
+El administrador de estado expone los métodos de diccionario comunes para administrar el estado, de manera similar a los que se encuentran en un diccionario confiable.
 
 ### <a name="accessing-state"></a>Acceso al estado
-Estado puede tener acceso a través del Administrador de estado de Hola por clave. Los métodos del administrador de estado son completamente asincrónicos, ya que pueden requerir una E/S de disco cuando los actores tienen un estado persistente. Después del primer acceso, los objetos de estado se almacenan en caché en la memoria. Las operaciones de acceso repetidas acceden a los objetos directamente desde la memoria y devuelven sincrónicamente sin incurrir en la sobrecarga de intercambio de contexto asincrónico o de E/S de disco. Se quita un objeto de estado de caché de Hola Hola casos siguientes:
+Se puede acceder al estado a través del administrador de estado mediante una clave. Los métodos del administrador de estado son completamente asincrónicos, ya que pueden requerir una E/S de disco cuando los actores tienen un estado persistente. Después del primer acceso, los objetos de estado se almacenan en caché en la memoria. Las operaciones de acceso repetidas acceden a los objetos directamente desde la memoria y devuelven sincrónicamente sin incurrir en la sobrecarga de intercambio de contexto asincrónico o de E/S de disco. Se quita un objeto de estado de la memoria caché en los casos siguientes:
 
-* Un método de actor inicia una excepción no controlada después de que recupera un objeto de administrador de Estados de Hola.
+* Un método de actor produce una excepción no controlada después de recuperar un objeto del administrador de estado.
 * Un actor se vuelve a activar después de haberse desactivado o después de un error.
-* páginas de proveedor de estado de Hello estado toodisk. Este comportamiento depende de la implementación del proveedor de estado de Hola. proveedor de estado predeterminado de Hola para hello `Persisted` tiene este comportamiento.
+* El proveedor de estado pagina el estado en el disco. Este comportamiento depende de la implementación del proveedor de estado. El proveedor de estado predeterminado para la configuración `Persisted` tiene este comportamiento.
 
-Puede recuperar el estado mediante el uso de un estándar *obtener* operación que produce `KeyNotFoundException`(C#) o `NoSuchElementException`(Java) si no existe una entrada para la clave de hello:
+El estado se puede recuperar mediante una operación *Get* estándar que inicia `KeyNotFoundException` (C#) o `NoSuchElementException` (Java) si no existe ninguna entrada para la clave:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -194,9 +194,9 @@ class MyActorImpl extends FabricActor implements  MyActor
 ```
 
 ### <a name="saving-state"></a>Almacenamiento del estado
-métodos de recuperación de administrador de estado de Hello devuelven un objeto de tooan de referencia en la memoria local. Modificar este objeto en la memoria local por sí sola no hace que éste toobe guarda de manera duradera. Cuando un objeto se recupera del Administrador de Estados de Hola y modificado, se debe volver a en hello estado manager toobe guarda de manera duradera.
+Los métodos de recuperación del administrador de estado devuelven una referencia a un objeto en la memoria local. La modificación de este objeto solo en la memoria local no hace que se guarde de forma duradera. Cuando un objeto se recupera desde el administrador de estado y se modifica, debe volver a insertarse en el administrador de estado para que se guarde de forma duradera.
 
-Puede insertar el estado mediante el uso de un incondicional *establecer*, que es Hola equivalente de hello `dictionary["key"] = value` sintaxis:
+El estado se puede insertar mediante una operación *Set* no condicional, que equivale a la sintaxis `dictionary["key"] = value`:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -229,7 +229,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-Puede agregar el estado mediante un método *Add*. Este método produce `InvalidOperationException`(C#) o `IllegalStateException`(Java) cuando intente tooadd una clave que ya existe.
+Puede agregar el estado mediante un método *Add*. Este método produce `InvalidOperationException` (C#) o `IllegalStateException` (Java) cuando intenta agregar una clave que ya existe.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -262,7 +262,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-También puede agregar el estado mediante un método *TryAdd*. Este método no se produce al intentar tooadd una clave que ya existe.
+También puede agregar el estado mediante un método *TryAdd*. Este método no se inicia cuando intenta agregar una clave que ya existe.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -305,9 +305,9 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-Al final de Hola de un método de actor, Administrador de Estados de hello guarda automáticamente los valores que se han agregado o modificado por una operación insert o update. Un proceso de "Guardar" puede incluir toodisk conservar y replicación, según los valores de hello utilizados. Los valores que no se han modificado no se conservan ni se replican. Si no se ha modificado ningún valor, Hola operación de guardar no hace nada. Si se produce un error en Guardar, hello estado modificado se descarta y se vuelve a cargar el estado original de Hola.
+Al final de un método de actor, el administrador de estado guarda automáticamente los valores agregados o modificados por una operación de inserción o actualización. El "guardado" puede incluir la persistencia en el disco y la replicación, dependiendo de la configuración utilizada. Los valores que no se han modificado no se conservan ni se replican. Si no se ha modificado ningún valor, la operación de guardar no hace nada. Si se produce un error al guardar, el estado modificado se descarta y se vuelve a cargar el estado original.
 
-También puede guardar estado por llamada hello `SaveStateAsync` método en actor Hola base:
+También puede guardar el estado manualmente con una llamada al método `SaveStateAsync` en la base de actor:
 
 ```csharp
 async Task IMyActor.SetCountAsync(int count)
@@ -329,7 +329,7 @@ interface MyActor {
 ```
 
 ### <a name="removing-state"></a>Eliminación del estado
-Puede quitar permanentemente estado desde el Administrador de estado de un actor por llamada hello *quitar* método. Este método produce `KeyNotFoundException`(C#) o `NoSuchElementException`(Java) cuando intente tooremove una clave que no existe.
+Puede quitar el estado de manera permanente de administrador de estado del actor mediante una llamada al método *Remove*. Este método produce `KeyNotFoundException` (C#) o `NoSuchElementException` (Java) cuando intenta quitar una clave que no existe.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -362,7 +362,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-También puede quitar estado permanentemente mediante hello *TryRemove* método. Este método no se produce al intentar tooremove una clave que no existe.
+También puede quitar el estado de forma permanente con el método *TryRemove*. Este método no se inicia cuando intenta quitar una clave que no existe.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -407,6 +407,6 @@ class MyActorImpl extends FabricActor implements  MyActor
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Estado que se almacena en Reliable Actors debe ser serializado antes de su toodisk escrito y replican para lograr alta disponibilidad. Aprenda más sobre la [serialización del tipo de actor](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
+Un estado que se almacena en Reliable Actors debe serializarse antes de escribirse en el disco y replicarse para lograr alta disponibilidad. Aprenda más sobre la [serialización del tipo de actor](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
 
 A continuación, aprenda más en [Supervisión del rendimiento y diagnósticos de los actores](service-fabric-reliable-actors-diagnostics.md).

@@ -1,5 +1,5 @@
 ---
-title: "aplicación administrada de aaaConsume un Azure | Documentos de Microsoft"
+title: "Uso de una aplicación administrada de Azure | Microsoft Docs"
 description: "Describe cómo crear una aplicación administrada de Azure a partir de archivos publicados."
 services: azure-resource-manager
 author: ravbhatnagar
@@ -10,54 +10,54 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 08/23/2017
 ms.author: gauravbh; tomfitz
-ms.openlocfilehash: b8510086eb05304c0e351a391b7e0cf34a467568
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ed8fbaf2a4546c8e31eeced11cd0b5627fd62c0c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="consume-an-internal-managed-application"></a>Uso de una aplicación administrada interna
 
-Puede usar [aplicaciones administradas](managed-application-overview.md) de Azure que están diseñadas para los miembros de su organización. Por ejemplo, puede seleccionar aplicaciones administradas desde el departamento de TI que garantizan el cumplimiento normativo de los estándares de la organización. Estas aplicaciones administradas están disponibles a través de hello catálogo de servicios, no hello Azure Marketplace.
+Puede usar [aplicaciones administradas](managed-application-overview.md) de Azure que están diseñadas para los miembros de su organización. Por ejemplo, puede seleccionar aplicaciones administradas desde el departamento de TI que garantizan el cumplimiento normativo de los estándares de la organización. Estas aplicaciones administradas están disponibles a través del catálogo de servicios y no en Azure Marketplace.
 
-Antes de continuar con este artículo, debe tener una aplicación administrada disponible en el catálogo de servicios de Hola para su suscripción. Si nadie de la organización ha creado todavía una aplicación administrada, consulte [Publicación de una aplicación administrada para uso interno](managed-application-publishing.md).
+Antes de continuar con este artículo, debe tener una aplicación administrada disponible en el catálogo de servicios de su suscripción. Si nadie de la organización ha creado todavía una aplicación administrada, consulte [Publicación de una aplicación administrada para uso interno](managed-application-publishing.md).
 
-Actualmente, se puede utilizar la CLI de Azure o hello tooconsume portal Azure una aplicación administrada.
+Actualmente, puede utilizar la CLI de Azure o Azure Portal para usar una aplicación administrada.
 
-## <a name="create-hello-managed-application-by-using-hello-portal"></a>Crear aplicación hello administrado mediante el portal de Hola
+## <a name="create-the-managed-application-by-using-the-portal"></a>Creación de una aplicación administrada con Azure Portal
 
-toodeploy una aplicación administrada a través del portal de hello, siga estos pasos:
+Para implementar una aplicación administrada a través del portal, siga estos pasos:
 
-1. Vaya toohello portal de Azure. Búsqueda de una **aplicación administrada del catálogo de servicios**.
+1. Vaya a Azure Portal. Búsqueda de una **aplicación administrada del catálogo de servicios**.
 
    ![Aplicación administrada del catálogo de servicios](./media/managed-application-consumption/create-service-catalog-managed-application.png)
 
-1. Hola seleccione administra aplicación desea toocreate de lista de Hola de las soluciones disponibles. Seleccione **Crear**.
+1. Seleccione la aplicación administrada que desea crear a partir de la lista de soluciones disponibles. Seleccione **Crear**.
 
    ![Selección de aplicaciones administradas](./media/managed-application-consumption/select-offer.png)
 
-1. Proporcionar valores para parámetros de Hola que sean necesarios tooprovision Hola recursos. Seleccione **Centro occidental de EE. UU.** como ubicación. Seleccione **Aceptar**.
+1. Proporcione valores para los parámetros necesarios para aprovisionar los recursos. Seleccione **Centro occidental de EE. UU.** como ubicación. Seleccione **Aceptar**.
 
    ![Parámetros de aplicaciones administradas](./media/managed-application-consumption/input-parameters.png)
 
-1. plantilla de Hola valida valores de hello que proporcionó. Si la validación es correcta, seleccione **Aceptar** implementación de hello toostart.
+1. La plantilla valida los valores que proporcionó. Si la validación es correcta, seleccione **Aceptar** para iniciar la implementación.
 
    ![Validación de aplicaciones administradas](./media/managed-application-consumption/validation.png)
 
-Una vez finalizada la implementación de hello, los recursos adecuados de hello definidos en la plantilla de Hola se aprovisionan en grupo de recursos administrados de hello proporcionada.
+Una vez finalizada la implementación, los recursos adecuados definidos en la plantilla se aprovisionan en el grupo de recursos administrados que proporcionó.
 
-## <a name="create-hello-managed-application-by-using-azure-cli"></a>Crear aplicación hello administrado mediante la CLI de Azure
+## <a name="create-the-managed-application-by-using-azure-cli"></a>Creación de una aplicación administrada con la CLI de Azure
 
-Hay dos toocreate formas una aplicación administrada mediante Azure CLI:
+Hay dos maneras de crear una aplicación administrada mediante la CLI de Azure:
 
-* Use el comando de hello para la creación de aplicaciones administradas.
-* Use el comando de implementación de plantilla Normal Hola.
+* Use el comando para crear aplicaciones administradas.
+* Usar el comando normal de implementación de plantilla.
 
-### <a name="use-hello-template-deployment-command"></a>Use el comando de implementación de plantilla Hola
+### <a name="use-the-template-deployment-command"></a>Uso del comando normal de implementación de plantilla
 
-Implementar archivo applianceMainTemplate.json Hola Hola proveedor creado.
+Implemente el archivo applianceMainTemplate.json que el proveedor creó.
 
-Después, cree dos grupos de recursos. Hello primer grupo de recursos es donde hello recursos de la aplicación administrada que se crea: Microsoft.Solutions/appliances. segundo grupo de recursos de Hello contiene todos los recursos de hello definidos en mainTemplate.json. Hola ISV administra este grupo de recursos.
+Después, cree dos grupos de recursos. El primero es donde se crea el recurso de la aplicación administrada: Microsoft.Solutions/appliances. El segundo contiene todos los recursos definidos en mainTemplate.json. El ISV administra este grupo de recursos.
 
 ```azurecli
 az group create --name mainResourceGroup --location westcentralus
@@ -65,28 +65,28 @@ az group create --name managedResourceGroup --location westcentralus
 ```
 
 > [!NOTE]
-> Use `westcentralus` como ubicación de Hola Hola del grupo de recursos.
+> Use `westcentralus` como la ubicación del grupo de recursos.
 >
 
-toodeploy applianceMainTemplate.json en mainResourceGroup, Hola de uso siguiente comando:
+Para implementar el archivo applianceMainTemplate.json en mainResourceGroup, use el comando siguiente:
 
 ```azurecli
 az group deployment create --name managedAppDeployment --resourceGroup mainResourceGroup --templateUri
 ```
 
-Después de hello anterior se ejecuta de la plantilla, le pedirá Hola valores de parámetros de Hola que se definen en la plantilla de Hola. Además toohello parámetros que necesitan recursos tooprovision en una plantilla, es necesario que dos valores de parámetro de clave:
+Cuando se ejecuta la plantilla anterior, le pide los valores de los parámetros que se definen en la plantilla. Además de los parámetros necesarios para el aprovisionamiento de recursos en una plantilla, necesita los valores de dos parámetros clave:
 
-- **managedResourceGroupId**: Hola identificador hello de recursos de grupo contenedor Hola recursos definidos en applianceMainTemplate.json. Id. de Hello tiene el formato de hello `/subscriptions/{subscriptionId}/resourceGroups/{resoureGroupName}`. En el anterior ejemplo de Hola, lo del Id. de Hola de `managedResourceGroup`.
-- **applianceDefinitionId**: Id. de Hola de hello administra recursos de la definición de aplicación. Este valor se proporciona por hello ISV.
+- **managedResourceGroupId**: identificador del grupo de recursos que contiene los recursos definidos en applianceMainTemplate.json. El identificador tiene el formato `/subscriptions/{subscriptionId}/resourceGroups/{resoureGroupName}`. En el ejemplo anterior, es el identificador de `managedResourceGroup`.
+- **applianceDefinitionId**: identificador del recurso de definición de la aplicación administrada. Este valor es proporcionado por el ISV.
 
 > [!NOTE]
-> publicador de Hello debe conceder el grupo de recursos de toohello de acceso que contiene la definición de la aplicación hello administrado. se crea el recurso de la definición de Hello en la suscripción del publicador de Hola. Por lo tanto, un usuario, el grupo de usuarios o la aplicación en el inquilino de cliente hello necesita acceso de lectura toothis recursos.
+> El publicador debe conceder acceso al grupo de recursos que contiene la definición de la aplicación administrada. El recurso de definición se crea en la suscripción del publicador. Por lo tanto, un usuario, grupo de usuarios o aplicación en el inquilino del cliente necesita acceso de lectura a este recurso.
 
-Cuando finaliza correctamente la implementación de hello, vea Hola administrado aplicación se crea en mainResourceGroup. se crea el recurso de storageAccount de Hello en managedResourceGroup.
+Una vez completada la implementación correctamente, verá que la aplicación administrada se ha creado en mainResourceGroup. El recurso storageAccount se crea en managedResourceGroup.
 
-### <a name="use-hello-create-command"></a>Hola use create, comando
+### <a name="use-the-create-command"></a>Uso del comando create
 
-Puede usar hello `az managedapp create` comando toocreate una aplicación administrada de hello administra la definición de la aplicación.
+Puede usar el comando `az managedapp create` para crear una aplicación administrada a partir de la definición de aplicación administrada.
 
 ```azurecli
 az managedapp create --name ravtestappliance401 --location "westcentralus"
@@ -97,29 +97,29 @@ az managedapp create --name ravtestappliance401 --location "westcentralus"
     --debug
 ```
 
-* **Id. de definición de dispositivo**: definición de aplicación creado en hello anterior paso administrada por Id. de recurso de Hola de hello. tooobtain este identificador, ejecute el siguiente comando de hello:
+* **appliance-definition-Id**: identificador del recurso de definición de la aplicación administrada creado en el paso anterior. Para obtener este identificador, ejecute el siguiente comando:
 
   ```azurecli
   az appliance definition show -n ravtestAppDef1 -g ravApplianceRG2
   ```
 
-  Este comando devuelve la definición de la aplicación hello administrado. Se necesita el valor de Hola de propiedad de Id. de Hola.
+  Este comando devuelve la definición de la aplicación administrada. Se necesita el valor de la propiedad ID.
 
-* **Identificador administrado rg**: nombre de Hola Hola de recursos de grupo contenedor Hola recursos definidos en applianceMainTemplate.json. Este grupo de recursos es el grupo de recursos administrados de Hola. Está administrado por el publicador de Hola. Si no existe, se crea.
-* **grupo de recursos**: se crea el grupo de recursos de Hola donde hello administra el recurso de la aplicación. Hola Microsoft.Solutions/appliance recursos vive en este grupo de recursos.
-* **parámetros**: Hola parámetros que son necesarios para los recursos de hello definidos en applianceMainTemplate.json.
+* **managed-rg-id**: nombre del grupo de recursos que contiene los recursos definidos en applianceMainTemplate.json. Este es el grupo de recursos administrados. Es administrado por el publicador. Si no existe, se crea.
+* **resource-group**: grupo de recursos donde se crea el recurso de la aplicación administrada. El recurso Microsoft.Solutions/appliance reside en este grupo de recursos.
+* **parameters**: parámetros que son necesarios para los recursos definidos en applianceMainTemplate.json.
 
 ## <a name="known-issues"></a>Problemas conocidos
 
-Esta versión de vista previa incluye Hola problemas siguientes:
+Esta versión preliminar presenta los siguientes problemas:
 
-* Aparece un error de servidor interno 500 durante la creación de hello de aplicación hello administrado. Si experimenta este problema, es probable que toobe intermitente. Vuelva a intentar la operación de Hola.
-* Se necesita un nuevo grupo de recursos para el grupo de recursos administrados de Hola. Si utiliza un grupo de recursos existente, se produce un error en la implementación de Hola.
-* Hello grupo de recursos que contiene el recurso de hello Microsoft.Solutions/appliances debe crearse en hello **westcentralus** ubicación.
+* Aparece un error de servidor interno 500 durante la creación de la aplicación administrada. Si experimenta este problema, es probable que sea intermitente. Vuelva a intentar la operación.
+* Se necesita un nuevo grupo de recursos para el grupo de recursos administrados. Si usa un grupo de recursos existente, se produce un error de implementación.
+* El grupo de recursos que contiene el recurso Microsoft.Solutions/appliances debe crearse en la ubicación **westcentralus**.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* Para una aplicación de toomanaged introducción, consulte [Introducción a la aplicación administrada](managed-application-overview.md).
+* Para una introducción a las aplicaciones administradas, consulte [Introducción a las aplicaciones administradas](managed-application-overview.md).
 * Para información sobre cómo publicar una aplicación administrada del catálogo de servicios, consulte [Creación y publicación de una aplicación administrada del catálogo de servicios](managed-application-publishing.md).
-* Para obtener información acerca de la publicación de aplicaciones administradas de toohello Azure Marketplace, vea [Azure administra las aplicaciones de hello Marketplace](managed-application-author-marketplace.md).
-* Para obtener información acerca de cómo consumir una aplicación administrada de hello Marketplace, vea [Azure consumir las aplicaciones en hello Marketplace administradas](managed-application-consume-marketplace.md).
+* Para información sobre cómo publicar aplicaciones administradas en Azure Marketplace, consulte [Aplicaciones administradas de Azure en Marketplace](managed-application-author-marketplace.md).
+* Para información sobre cómo usar una aplicación administrada de Marketplace, consulte [Uso de aplicaciones administradas de Azure en Marketplace](managed-application-consume-marketplace.md).

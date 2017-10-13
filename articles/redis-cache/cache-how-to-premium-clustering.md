@@ -1,6 +1,6 @@
 ---
-title: "aaaHow tooconfigure Redis agrupación en clústeres para una caché en Redis de Azure Premium | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toocreate y administrar instancias de caché en Redis de Azure de clústeres para el nivel Premium de Redis"
+title: "Configuración de la agrupación en clústeres de Redis para una Azure Redis Cache Premium | Microsoft Docs"
+description: "Obtener información sobre cómo crear y administrar la agrupación en clústeres de para sus instancias de Caché en Redis de Azure de nivel Premium"
 services: redis-cache
 documentationcenter: 
 author: steved0x
@@ -14,155 +14,155 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: sdanie
-ms.openlocfilehash: 44d520facb9d1af145b69f1b58f082aabb655d4a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 86a4a605dbb3b11924c14ff42238009742f72898
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-tooconfigure-redis-clustering-for-a-premium-azure-redis-cache"></a>¿Cómo tooconfigure Redis agrupación en clústeres para una caché en Redis de Azure Premium
-Caché en Redis de Azure tiene diferentes ofertas de caché, lo que proporciona flexibilidad en la elección de Hola de tamaño de caché y las características, incluidas las características de nivel Premium como de agrupación en clústeres, la persistencia y la compatibilidad de red virtual. Este artículo describe cómo tooconfigure agrupación en clústeres en una prima Redis de Azure caché de instancia.
+# <a name="how-to-configure-redis-clustering-for-a-premium-azure-redis-cache"></a>Cómo configurar la agrupación en clústeres de Redis para una Caché en Redis de Azure Premium
+Azure Redis Cache tiene diferentes ofertas de caché que proporcionan flexibilidad en la elección del tamaño y las características de la caché, incluidas las características de nivel premium como la agrupación en clústeres, la persistencia y la compatibilidad de red virtual. En este artículo se describe cómo configurar la agrupación en clústeres en una instancia de Caché en Redis de Azure premium.
 
-Para obtener información sobre otras características de caché premium, consulte [nivel Premium de caché de Redis de Azure de introducción toohello](cache-premium-tier-intro.md).
+Para obtener información sobre otras características de caché Premium, consulte [Introducción al nivel Premium de Azure Redis Cache](cache-premium-tier-intro.md).
 
 ## <a name="what-is-redis-cluster"></a>¿Qué es Clúster Redis?
-Caché en Redis de Azure ofrece clúster de Redis como [implementado en Redis](http://redis.io/topics/cluster-tutorial). Con clúster de Redis, obtendrá Hola siguientes ventajas: 
+Caché en Redis de Azure ofrece clúster de Redis como [implementado en Redis](http://redis.io/topics/cluster-tutorial). Con el Clúster de Redis, obtendrá las siguientes ventajas: 
 
-* Hola tooautomatically capacidad dividir el conjunto de datos entre varios nodos. 
-* Hola capacidad toocontinue operaciones cuando un subconjunto de nodos de hello es experimentando errores o no se puede toocommunicate con el resto de Hola de clúster de Hola. 
-* Más rendimiento: rendimiento aumenta linealmente a medida que aumente el número de Hola de particiones. 
-* Aumentar el tamaño de memoria: aumenta linealmente a medida que aumente el número de Hola de particiones.  
+* La capacidad de dividir automáticamente el conjunto de datos entre varios nodos. 
+* La capacidad de continuar las operaciones cuando un subconjunto de los nodos está teniendo errores o no se puede comunicar con el resto del clúster. 
+* Mayor rendimiento: el rendimiento aumenta de manera lineal a medida que aumenta el número de particiones. 
+* Mayor tamaño de memoria: aumenta de manera lineal a medida que aumenta el número de particiones.  
 
 Para obtener información sobre el tamaño, el rendimiento y el ancho de banda con memorias caché premium, vea [¿Qué oferta y tamaño de Caché en Redis debo utilizar?](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)
 
-En Azure, se ofrece Redis clúster como un modelo de réplica principal donde cada partición tiene un par de réplica principal con la replicación donde se administra la replicación de Hola por el servicio de caché de Redis de Azure. 
+En Azure, el clúster de Redis se ofrece como un modelo de principal/réplica donde cada partición tiene un par de principal/réplica con la replicación donde la replicación se administra mediante el servicio de la Caché en Redis de Azure. 
 
 ## <a name="clustering"></a>Agrupación en clústeres
-Agrupación en clústeres está habilitada en hello **nueva caché en Redis** hoja durante la creación de la memoria caché. 
+La agrupación en clústeres se habilita en la hoja **Nueva caché en Redis** durante la creación de la memoria caché. 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
-Agrupación en clústeres se configura en hello **Redis clúster** hoja.
+La agrupación en clústeres se configura en la hoja **Clúster de Redis** .
 
 ![Agrupación en clústeres][redis-cache-clustering]
 
-Puede tener hasta too10 particiones en clúster de Hola. Haga clic en **habilitado** y deslice el control deslizante de Hola o escriba un número entre 1 y 10 para **número de particiones** y haga clic en **Aceptar**.
+Puede tener hasta 10 particiones en el clúster. Haga clic en **Habilitado** y deslice el control deslizante o escriba un número comprendido entre 1 y 10 para **Número de particiones** y haga clic en **Aceptar**.
 
-Cada partición es un par de caché de la réplica principal administrado por Azure y tamaño total de Hola de caché de Hola se calcula multiplicando el número de Hola de particiones por tamaño de caché de hello seleccionado en el nivel de precios de Hola. 
+Cada partición es un par de caché principal/réplica administrado por Azure y el tamaño total de la memoria caché se calcula multiplicando el número de particiones por el tamaño de la memoria caché seleccionado en el plan de tarifa. 
 
-![Agrupación en clústeres][redis-cache-clustering-selected]
+![agrupación en clústeres][redis-cache-clustering-selected]
 
-Una vez que se crea una caché Hola conectarse tooit y usar simplemente como una memoria caché no agrupado y Redis distribuye los datos de Hola a lo largo de particiones de memoria caché de Hola. Si diagnósticos es [habilitado](cache-how-to-monitor.md#enable-cache-diagnostics), las métricas capturadas por separado para cada partición y puede ser [ver](cache-how-to-monitor.md) en hello caché en Redis hoja. 
+Cuando se haya creado la memoria caché, conéctese a ella y úsela simplemente como una memoria caché no agrupada y Redis distribuirá los datos a través de las particiones de memoria caché. Si el diagnóstico está [habilitado](cache-how-to-monitor.md#enable-cache-diagnostics), las métricas se capturan por separado para cada partición y pueden [verse](cache-how-to-monitor.md) en la hoja Caché en Redis. 
 
 > [!NOTE]
 > 
-> Hay algunas diferencias menores necesarias en la aplicación cliente cuando se configura la agrupación en clústeres. Para obtener más información, vea [¿necesito toomake cualquier toouse de aplicación de cliente de cambios toomy de agrupación en clústeres?](#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
+> Hay algunas diferencias menores necesarias en la aplicación cliente cuando se configura la agrupación en clústeres. Para más información, consulte [Configuración de Caché en Redis de Azure](#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
 > 
 > 
 
-Para el código de ejemplo sobre cómo trabajar con la agrupación en clústeres con cliente de StackExchange.Redis hello, vea hello [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) parte de hello [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) ejemplo.
+Para obtener el código de ejemplo sobre el trabajo con clústeres con el cliente StackExchange.Redis, consulte la parte [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) del ejemplo [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld).
 
 <a name="cluster-size"></a>
 
-## <a name="change-hello-cluster-size-on-a-running-premium-cache"></a>Cambiar el tamaño de clúster de hello en un ejecución caché premium
-tamaño del clúster de hello toochange en una ejecución premium almacenar en memoria caché con un clic habilitado, agrupación en clústeres **Redis tamaño del clúster** de hello **menú recursos**.
+## <a name="change-the-cluster-size-on-a-running-premium-cache"></a>Cambio del tamaño del clúster en una caché premium en ejecución
+Para cambiar el tamaño del clúster de una caché premium en ejecución con la agrupación en clústeres habilitada, haga clic en **Tamaño del clúster en Redis** desde el **menú Recursos**.
 
 > [!NOTE]
-> Mientras hello Azure Redis caché Premium nivel ha sido liberado tooGeneral disponibilidad, característica de tamaño de clúster Redis Hola está actualmente en vista previa.
+> A pesar de que el nivel Premium de Azure Redis Cache Premium se publicó con disponibilidad general, la característica Tamaño del clúster en Redis está actualmente en la versión preliminar.
 > 
 > 
 
 ![Tamaño del Clúster en Redis][redis-cache-redis-cluster-size]
 
-tamaño de clúster de toochange hello, utilice el control deslizante de Hola o escriba un número entre 1 y 10 en hello **número de particiones** cuadro de texto y haga clic en **Aceptar** toosave.
+Para modificar el tamaño del clúster, utilice el control deslizante o especifique un número comprendido entre 1 y 10 en el cuadro de texto **Número de particiones**. Después, haga clic en **Aceptar** para guardar.
 
 > [!NOTE]
-> Ajuste de escala en un clúster ejecuta hello [migrar](https://redis.io/commands/migrate) comando, que es un comando costoso, por lo que para minimizar el impacto, considere la posibilidad de realizar esta operación durante horas de poca actividad. Durante el proceso de migración de hello, verá un pico de carga del servidor. Ajuste de escala en un clúster tiene un valor largo proceso y cantidad de Hola de tiempo que se tarda depende Hola número de claves y el tamaño de los valores de hello asociados a esas claves.
+> El escalado de un clúster ejecuta el comando [MIGRATE](https://redis.io/commands/migrate), que es un comando caro. Por lo tanto, para un impacto mínimo, considere ejecutar esta operación durante horas de poca actividad. Durante el proceso de migración, verá un pico de carga del servidor. El escalado de un clúster es un proceso de ejecución duradero y la cantidad de tiempo transcurrido depende del número de claves y el tamaño de los valores asociados a estas claves.
 > 
 > 
 
 ## <a name="clustering-faq"></a>P+F de agrupación en clústeres
-Hello lista siguiente contiene toocommonly respuestas preguntas más frecuentes acerca de los clústeres de caché en Redis de Azure.
+La lista siguiente contiene las respuestas a las preguntas más frecuentes sobre la agrupación en clústeres de Caché en Redis de Azure.
 
-* [¿Es necesario toomake cualquier toouse de aplicación de cliente de cambios toomy de agrupación en clústeres?](#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
+* [¿Es necesario realizar algún cambio en mi aplicación cliente para usar la agrupación en clústeres?](#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
 * [¿Cómo se distribuyen las claves en un clúster?](#how-are-keys-distributed-in-a-cluster)
-* [¿Cuál es el mayor tamaño de caché Hola que puedo crear?](#what-is-the-largest-cache-size-i-can-create)
+* [¿Cuál es el mayor tamaño de caché que puedo crear?](#what-is-the-largest-cache-size-i-can-create)
 * [¿Todos los clientes de Redis admiten la agrupación en clústeres?](#do-all-redis-clients-support-clustering)
-* [¿Cómo conecto toomy caché cuando se habilita la agrupación en clústeres?](#how-do-i-connect-to-my-cache-when-clustering-is-enabled)
-* [¿Puedo conectar directamente toohello particiones individuales de la memoria caché?](#can-i-directly-connect-to-the-individual-shards-of-my-cache)
+* [¿Cómo me conecto a mi memoria caché cuando la agrupación en clústeres esté habilitada?](#how-do-i-connect-to-my-cache-when-clustering-is-enabled)
+* [¿Puedo conectarme directamente a las particiones individuales de mi memoria caché?](#can-i-directly-connect-to-the-individual-shards-of-my-cache)
 * [¿Puedo configurar la agrupación en clústeres para una memoria caché creada anteriormente?](#can-i-configure-clustering-for-a-previously-created-cache)
 * [¿Puedo configurar la agrupación en clústeres para una caché básica o estándar?](#can-i-configure-clustering-for-a-basic-or-standard-cache)
-* [¿Puedo usar la agrupación en clústeres con proveedores de estado de sesión de ASP.NET de Redis y almacenamiento en caché de salida de hello?](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)
+* [¿Puedo usar la agrupación en clústeres con los proveedores de estado de sesión y de almacenamiento en caché de salida de ASP.NET de Redis?.](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)
 * [Estoy recibiendo excepciones MOVE al usar StackExchange.Redis y agrupaciones en clústeres, ¿qué debo hacer?](#i-am-getting-move-exceptions-when-using-stackexchangeredis-and-clustering-what-should-i-do)
 
-### <a name="do-i-need-toomake-any-changes-toomy-client-application-toouse-clustering"></a>¿Es necesario toomake cualquier toouse de aplicación de cliente de cambios toomy de agrupación en clústeres?
-* Cuando la agrupación en clústeres está habilitada, solo está disponible la base de datos 0. Si la aplicación cliente usa varias bases de datos e intenta tooread escritura tooa base de datos o distinto de 0, hello siguiente excepción se produce. `Unhandled Exception: StackExchange.Redis.RedisConnectionException: ProtocolFailure on GET --->``StackExchange.Redis.RedisCommandException: Multiple databases are not supported on this server; cannot switch toodatabase: 6`
+### <a name="do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering"></a>¿Es necesario realizar algún cambio en mi aplicación cliente para usar la agrupación en clústeres?
+* Cuando la agrupación en clústeres está habilitada, solo está disponible la base de datos 0. Si la aplicación cliente usa varias bases de datos e intenta leer o escribir en una base de datos distinta de 0, se produce la siguiente excepción. `Unhandled Exception: StackExchange.Redis.RedisConnectionException: ProtocolFailure on GET --->` `StackExchange.Redis.RedisCommandException: Multiple databases are not supported on this server; cannot switch to database: 6`
   
   Para obtener más información, consulte [Redis Cluster Specification - Implemented subset](http://redis.io/topics/cluster-spec#implemented-subset)(Especificación de clúster en Redis: subconjunto implementado).
-* Si usa [StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/), debe usar la versión 1.0.481 o posterior. Conectar toohello caché usando Hola mismo [puntos de conexión, los puertos y las claves](cache-configure.md#properties) que usar cuando se conecta la memoria caché de tooa que no tiene habilitado de agrupación en clústeres. Hola única diferencia es que todas las lecturas y escrituras deben hacerse toodatabase 0.
+* Si usa [StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/), debe usar la versión 1.0.481 o posterior. Se conecta a la memoria caché con los mismos [puntos de conexión, puertos y claves](cache-configure.md#properties) que usa al conectarse a una memoria caché que no tenga la agrupación en clústeres habilitada. La única diferencia es que se deben realizar todas las lecturas y escrituras en la base de datos 0.
   
   * Otros clientes pueden tener requisitos diferentes. Vea [¿Todos los clientes de Redis admiten la agrupación en clústeres?](#do-all-redis-clients-support-clustering)
-* Si la aplicación usa varias operaciones claves por lotes en un único comando, todas las claves deben estar ubicadas en hello misma partición. ¿las claves de toolocate en Hola la misma partición, vea [cómo se distribuyen las claves en un clúster?](#how-are-keys-distributed-in-a-cluster)
-* Si está usando el proveedor de estado de sesión de ASP.NET de Redis, debe usar 2.0.1 o posterior. ¿Vea [puedo usar clústeres con proveedores de estado de sesión de ASP.NET de Redis y almacenamiento en caché de salida de hello?](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)
+* Si la aplicación usa varias operaciones de claves por lotes en un solo comando, todas las claves deben estar ubicadas en la misma partición. Para ubicar claves en la misma partición, vea [¿Cómo se distribuyen las claves en un clúster?](#how-are-keys-distributed-in-a-cluster)
+* Si está usando el proveedor de estado de sesión de ASP.NET de Redis, debe usar 2.0.1 o posterior. Consulte [¿Puedo usar la agrupación en clústeres con los proveedores de estado de sesión y de almacenamiento en caché de salida de ASP.NET de Redis?](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)
 
 ### <a name="how-are-keys-distributed-in-a-cluster"></a>¿Cómo se distribuyen las claves en un clúster?
-Por hello Redis [modelo de distribución de claves](http://redis.io/topics/cluster-spec#keys-distribution-model) documentación: espacio de claves de Hola se divide en las ranuras de 16384. Cada clave se aplica un algoritmo hash y asigna tooone de estas zonas, que se distribuyen en hello nodos de clúster de Hola. Puede configurar qué parte de la clave de hello es tooensure con algoritmo hash que se encuentran varias claves en Hola misma partición mediante etiquetas de hash.
+Según la documentación del [modelo de distribución de claves](http://redis.io/topics/cluster-spec#keys-distribution-model) de Redis, el espacio de claves se divide en 16 384 espacios. Cada clave tiene un hash y se asigna a una de estas ranuras, que se distribuyen por todos los nodos del clúster. Puede configurar qué parte de la clave está con hash para asegurarse de que varias claves se encuentran en la misma partición con etiquetas hash.
 
-* Claves con una etiqueta de hash: si se incluye a cualquier parte de la clave de hello en `{` y `}`, se aplica un algoritmo hash sólo esa parte de la clave de Hola para fines de Hola de determinar la ranura de hash de Hola de una clave. Por ejemplo, hello siguientes 3 claves debería encontrarse en hello misma partición: `{key}1`, `{key}2`, y `{key}3` desde sólo hello `key` parte del nombre de Hola se aplica un algoritmo hash. Para obtener una lista completa de especificaciones de etiquetas hash de claves, consulte [Etiquetas hash de claves](http://redis.io/topics/cluster-spec#keys-hash-tags).
-* Claves sin una etiqueta de hash: nombre de clave completo de Hola se utiliza para crear valores hash. Esto produce una distribución uniforme estadísticamente entre las particiones de Hola de caché de Hola.
+* Claves con una etiqueta hash: si cualquier parte de la clave está encerrada entre `{` y `}`, se aplica un algoritmo hash únicamente a esa parte de la clave para determinar la ranura hash de una clave. Por ejemplo, las siguientes tres claves se encontrarían en la misma partición: `{key}1`, `{key}2` y `{key}3` ya que solo la parte `key` del nombre está con hash. Para obtener una lista completa de especificaciones de etiquetas hash de claves, consulte [Etiquetas hash de claves](http://redis.io/topics/cluster-spec#keys-hash-tags).
+* Claves sin etiquetas hash: se usa todo el nombre de la clave para aplicar el hash. Esto produce una distribución estadísticamente uniforme entre las particiones de la memoria caché.
 
-Para optimizar el rendimiento y el rendimiento, se recomienda distribuir las claves de hello uniformemente. Si usa claves con una etiqueta de hash es que las claves de la aplicación hello responsabilidad tooensure Hola se distribuyen uniformemente.
+Para optimizar el rendimiento, se recomienda distribuir las claves de manera uniforme. Si usa claves con etiquetas hash, es responsabilidad de la aplicación asegurarse de que las claves se distribuyan de manera uniforme.
 
 Para obtener más información, consulte [Modelo de distribución de claves](http://redis.io/topics/cluster-spec#keys-distribution-model), [Particionamiento de datos de clúster Redis](http://redis.io/topics/cluster-tutorial#redis-cluster-data-sharding) y [Etiquetas hash de claves](http://redis.io/topics/cluster-spec#keys-hash-tags).
 
-Para el código de ejemplo sobre cómo trabajar con la agrupación en clústeres y buscar las claves en hello mismo particionamiento con cliente de StackExchange.Redis hello, vea hello [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) parte de hello [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) ejemplo.
+Para obtener el código de ejemplo sobre el trabajo con agrupación en clústeres y la ubicación de claves en la misma partición con el cliente StackExchange.Redis, consulte la parte [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) del ejemplo [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld).
 
-### <a name="what-is-hello-largest-cache-size-i-can-create"></a>¿Cuál es el mayor tamaño de caché Hola que puedo crear?
-tamaño de caché premium más grande de Hello es 53 GB. Puede crear hasta particiones too10 ofrecerle un tamaño máximo de 530 GB. Si necesita un tamaño mayor, puede [solicitar más](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase). Para obtener más información, consulte [Precios de Caché en Redis de Azure](https://azure.microsoft.com/pricing/details/cache/).
+### <a name="what-is-the-largest-cache-size-i-can-create"></a>¿Cuál es el mayor tamaño de caché que puedo crear?
+El tamaño máximo de caché premium es 53 GB. Puede crear hasta 10 particiones con un tamaño máximo de 530 GB. Si necesita un tamaño mayor, puede [solicitar más](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase). Para obtener más información, consulte [Precios de Caché en Redis de Azure](https://azure.microsoft.com/pricing/details/cache/).
 
 ### <a name="do-all-redis-clients-support-clustering"></a>¿Todos los clientes de Redis admiten la agrupación en clústeres?
-En hello no todos los clientes admiten la hora actual Redis agrupación en clústeres. StackExchange.Redis es uno de los que los admiten. Para obtener más información sobre otros clientes, consulte hello [jugando con clúster de hello](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster) sección de hello [tutorial de clúster de Redis](http://redis.io/topics/cluster-tutorial).
+En este momento no todos los clientes admiten la agrupación en clústeres de Redis. StackExchange.Redis es uno de los que los admiten. Para obtener más información sobre otros clientes, consulte la sección [Jugar con el clúster](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster) del [Tutorial de clúster de Redis](http://redis.io/topics/cluster-tutorial).
 
 > [!NOTE]
-> Si está utilizando StackExchange.Redis como el cliente, asegúrese de que usa la versión más reciente de Hola de [StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/) 1.0.481 o una versión posterior de agrupación en clústeres toowork correctamente. Si tiene problemas con las excepciones move, consulte la explicación sobre [excepciones move](#move-exceptions) para obtener más información.
+> Si está usando StackExchange.Redis como su cliente, asegúrese de que está usando la versión más reciente de [StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/) 1.0.481 o posterior para que la agrupación en clústeres funcione correctamente. Si tiene problemas con las excepciones move, consulte la explicación sobre [excepciones move](#move-exceptions) para obtener más información.
 > 
 > 
 
-### <a name="how-do-i-connect-toomy-cache-when-clustering-is-enabled"></a>¿Cómo conecto toomy caché cuando se habilita la agrupación en clústeres?
-Puede conectarse tooyour caché usando Hola mismo [extremos](cache-configure.md#properties), [puertos](cache-configure.md#properties), y [claves](cache-configure.md#access-keys) que usar cuando se conecta la memoria caché de tooa que no tiene habilitado de agrupación en clústeres. Redis administra Hola agrupación en clústeres en hello back-end para que no tenga toomanage desde el cliente.
+### <a name="how-do-i-connect-to-my-cache-when-clustering-is-enabled"></a>¿Cómo me conecto a mi memoria caché cuando la agrupación en clústeres esté habilitada?
+Puede conectarse a su memoria caché con los mismos [puntos de conexión](cache-configure.md#properties), [puertos](cache-configure.md#properties) y [claves](cache-configure.md#access-keys) que usa al conectarse a una memoria caché que no tenga la agrupación en clústeres habilitada. Redis administra la agrupación en clústeres en el back-end para que no tenga que administrarla desde el cliente.
 
-### <a name="can-i-directly-connect-toohello-individual-shards-of-my-cache"></a>¿Puedo conectar directamente toohello particiones individuales de la memoria caché?
-Esto no se admite oficialmente. Dicho esto, cada partición consta de un par de caché principal/réplica que se conoce colectivamente como una instancia de caché. Puede conectar toothese instancias de caché mediante la utilidad de redis cli de Hola Hola [inestable](http://redis.io/download) rama del repositorio de Redis hello en GitHub. Esta versión implementa la compatibilidad básica cuando se inició con hello `-c` cambiar. Para obtener más información, consulte [jugando con clúster de hello](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster) en [http://redis.io](http://redis.io) en hello [tutorial de clúster de Redis](http://redis.io/topics/cluster-tutorial).
+### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>¿Puedo conectarme directamente a las particiones individuales de mi memoria caché?
+Esto no se admite oficialmente. Dicho esto, cada partición consta de un par de caché principal/réplica que se conoce colectivamente como una instancia de caché. Puede conectarse a estas instancias de caché mediante la utilidad redis-cli en la rama [inestable](http://redis.io/download) del repositorio de Redis en GitHub. Esta versión implementa compatibilidad básica cuando se inicia con el conmutador `-c` . Para más información, consulte la sección [Playing with the cluster](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster) (Jugar con el clúster) del [tutorial de clústeres de Redis](http://redis.io) que encontrará en [http://redis.io](http://redis.io/topics/cluster-tutorial).
 
-Para no ssl, use Hola siga los comandos.
+Cuando no sea ssl, use los siguientes comandos.
 
-    Redis-cli.exe –h <<cachename>> -p 13000 (tooconnect tooinstance 0)
-    Redis-cli.exe –h <<cachename>> -p 13001 (tooconnect tooinstance 1)
-    Redis-cli.exe –h <<cachename>> -p 13002 (tooconnect tooinstance 2)
+    Redis-cli.exe –h <<cachename>> -p 13000 (to connect to instance 0)
+    Redis-cli.exe –h <<cachename>> -p 13001 (to connect to instance 1)
+    Redis-cli.exe –h <<cachename>> -p 13002 (to connect to instance 2)
     ...
-    Redis-cli.exe –h <<cachename>> -p 1300N (tooconnect tooinstance N)
+    Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
 
 Para ssl, reemplace `1300N` por `1500N`.
 
 ### <a name="can-i-configure-clustering-for-a-previously-created-cache"></a>¿Puedo configurar la agrupación en clústeres para una memoria caché creada anteriormente?
-En este momento solo puede habilitar la agrupación en clústeres cuando cree una memoria caché. Puede cambiar el tamaño del clúster Hola después de que se crea una caché hello, pero no se puede agregar memoria caché premium de agrupación en clústeres tooa o quitar el clúster de una caché premium después de que se crea una caché Hola. Una caché premium con clústeres habilitado y solo una partición es diferente de una caché premium de hello mismo tamaño con ninguna agrupación en clústeres.
+En este momento solo puede habilitar la agrupación en clústeres cuando cree una memoria caché. También puede cambiar el tamaño de clúster una vez creada la memoria caché, pero no puede agregar la agrupación en clústeres a una caché premium o quitar la agrupación en clústeres de una memoria caché premium una vez creada la memoria caché. Una memoria caché premium que tiene habilitada la agrupación en clústeres y solo una partición es distinta de una memoria caché premium del mismo tamaño, sin agrupación en clústeres.
 
 ### <a name="can-i-configure-clustering-for-a-basic-or-standard-cache"></a>¿Puedo configurar la agrupación en clústeres para una caché básica o estándar?
 La agrupación en clústeres solo está disponible para las memorias cachés premium.
 
-### <a name="can-i-use-clustering-with-hello-redis-aspnet-session-state-and-output-caching-providers"></a>¿Puedo usar la agrupación en clústeres con proveedores de estado de sesión de ASP.NET de Redis y almacenamiento en caché de salida de hello?
+### <a name="can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers"></a>¿Puedo usar la agrupación en clústeres con los proveedores de estado de sesión y de almacenamiento en caché de salida de ASP.NET de Redis?.
 * **Proveedor de caché de salida de Redis** : no se requieren cambios.
-* **Proveedor de estado de sesión de Redis** -toouse agrupación en clústeres, debe usar [RedisSessionStateProvider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.1 o superior o una excepción se produce. Este es un cambio importante. Para obtener más información, consulte [v2.0.0 Breaking Change Details](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details) (Detalles sobre cambios importantes de la versión 2.0.0).
+* **Proveedor de estado de sesión de Redis**: para usar la agrupación en clústeres, debe usar [RedisSessionStateProvider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.1 o superior o se iniciará una excepción. Este es un cambio importante. Para obtener más información, consulte [v2.0.0 Breaking Change Details](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details) (Detalles sobre cambios importantes de la versión 2.0.0).
 
 <a name="move-exceptions"></a>
 
 ### <a name="i-am-getting-move-exceptions-when-using-stackexchangeredis-and-clustering-what-should-i-do"></a>Estoy recibiendo excepciones MOVE al usar StackExchange.Redis y agrupaciones en clústeres, ¿qué debo hacer?
-Si utiliza StackExchange.Redis y recibe `MOVE` excepciones al emplear agrupaciones en clústeres, asegúrese de que está utilizando la versión [1.1.603 de StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/) o posterior. Para obtener instrucciones acerca de cómo configurar su toouse de las aplicaciones de .NET StackExchange.Redis, consulte [configurar clientes de caché de hello](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
+Si utiliza StackExchange.Redis y recibe `MOVE` excepciones al emplear agrupaciones en clústeres, asegúrese de que está utilizando la versión [1.1.603 de StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/) o posterior. Para obtener instrucciones sobre cómo configurar las aplicaciones .NET para usar StackExchange.Redis, consulte [Configuración de los clientes de caché](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
 
 ## <a name="next-steps"></a>Pasos siguientes
-Obtenga información acerca de cómo toouse premium más características de caché.
+Obtenga información acerca de cómo usar más características de la memoria caché del nivel Premium.
 
-* [Nivel de introducción toohello Premium de caché de Redis de Azure](cache-premium-tier-intro.md)
+* [Introducción al nivel Premium de Caché en Redis de Azure](cache-premium-tier-intro.md)
 
 <!-- IMAGES -->
 

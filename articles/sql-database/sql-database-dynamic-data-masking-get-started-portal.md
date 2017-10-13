@@ -1,6 +1,6 @@
 ---
 title: "Azure Portal: enmascaramiento dinámico de datos de SQL Database | Microsoft Docs"
-description: "¿Cómo tooget partió enmascaramiento Hola Portal de Azure dinámico de datos de base de datos SQL"
+description: "Introducción al uso del enmascaramiento dinámico de datos de SQL Database en Azure Portal"
 services: sql-database
 documentationcenter: 
 author: ronitr
@@ -15,48 +15,48 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 11/22/2016
 ms.author: ronitr; ronmat
-ms.openlocfilehash: 5c5f74682a15d42eceb78c3ca0705401e1ac0ae7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 15184e14d4e1e23b56126bbf9f972c1619dcba80
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="get-started-with-sql-database-dynamic-data-masking-with-hello-azure-portal"></a>Empezar a trabajar con datos dinámicos de base de datos SQL de enmascaramiento con hello Portal de Azure
+# <a name="get-started-with-sql-database-dynamic-data-masking-with-the-azure-portal"></a>Empiece a usar el enmascaramiento dinámico de datos de SQL Database con Azure Portal
 
-Este tema muestra cómo tooimplement [enmascaramiento dinámico de datos](sql-database-dynamic-data-masking-get-started.md) con hello portal de Azure. También puede implementar el enmascaramiento de datos dinámicos mediante [cmdlets de base de datos de SQL Azure](https://msdn.microsoft.com/library/azure/mt574084.aspx) o hello [API de REST](https://msdn.microsoft.com/library/dn505719.aspx).
+En este tema se muestra cómo implementar el [enmascaramiento dinámico de datos](sql-database-dynamic-data-masking-get-started.md) con Azure Portal. También puede implementar el enmascaramiento dinámico de datos mediante [cmdlets de Azure SQL Database](https://msdn.microsoft.com/library/azure/mt574084.aspx) o la [API de REST](https://msdn.microsoft.com/library/dn505719.aspx).
 
 
-## <a name="set-up-dynamic-data-masking-for-your-database-using-hello-azure-portal"></a>Configurar el enmascaramiento dinámico de datos para la base de datos mediante Hola Portal de Azure
-1. Inicio Hola Portal de Azure en [https://portal.azure.com](https://portal.azure.com).
-2. Navegue toohello hoja de configuración de base de datos de Hola que incluya datos confidenciales de hello desea toomask.
-3. Haga clic en hello **Dynamic Data Masking** mosaico que inicia hello **Dynamic Data Masking** hoja de configuración.
+## <a name="set-up-dynamic-data-masking-for-your-database-using-the-azure-portal"></a>Configurar el enmascaramiento de datos dinámicos para la base de datos mediante el Portal de Azure
+1. Inicie el Portal de Azure en [https://portal.azure.com](https://portal.azure.com).
+2. Desplácese hasta la hoja de configuración de la base de datos que incluye los datos confidenciales que desea enmascarar.
+3. Haga clic en el icono **Enmascaramiento de datos dinámicos**, con lo que se iniciará la hoja de configuración **Enmascaramiento de datos dinámicos**.
    
-   * Como alternativa, puede desplazarse hacia abajo toohello **Operations** sección y haga clic en **Dynamic Data Masking**.
+   * Como alternativa, puede desplazarse hacia abajo hasta la sección **Operaciones** y hacer clic en **Enmascaramiento de datos dinámicos**.
      
      ![Panel de navegación](./media/sql-database-dynamic-data-masking-get-started/4_ddm_settings_tile.png)<br/><br/>
-4. Hola **Dynamic Data Masking** hoja de configuración es posible que vea algunas columnas de la base de datos que haya marcado ese motor de recomendaciones de Hola de enmascaramiento. En orden tooaccept recomendaciones de hello, simplemente haga clic en **agregar máscara** para una o varias columnas y una máscara se creará en función de tipo de valor predeterminado de Hola para esta columna. Puede cambiar Hola función de enmascaramiento haciendo clic en la regla de enmascaramiento de Hola y Hola campo formato tooa otro formato que prefiera el enmascaramiento de edición. Ser seguro tooclick **guardar** toosave la configuración.
+4. En la hoja de **Enmascaramiento de datos dinámicos** puede ver algunas columnas de base de datos que el motor de recomendaciones ha marcado para enmascaramiento. Para aceptar las recomendaciones, solo tiene que hacer clic en **Agregar máscara** para una o varias columnas y se creará una máscara en función del tipo predeterminado para esta columna. Para cambiar la función de enmascaramiento, haga clic en la regla de enmascaramiento y edite formato de campo de enmascaramiento en el formato diferente que elija. Asegúrese de hacer clic en **Guardar** para guardar la configuración.
    
     ![Panel de navegación](./media/sql-database-dynamic-data-masking-get-started/5_ddm_recommendations.png)<br/><br/>
-5. tooadd una máscara de cualquier columna de la base de datos, en parte superior de Hola de hello **Dynamic Data Masking** hoja de configuración, haga clic en **agregar máscara** tooopen hello **Agregar regla de enmascaramiento** hoja de configuración
+5. Para agregar una máscara para cualquier columna de la base de datos, en la parte superior de la hoja de configuración **Enmascaramiento de datos dinámicos**, haga clic en **Agregar máscara** para abrir la hoja de configuración **Agregar regla de enmascaramiento**.
    
     ![Panel de navegación](./media/sql-database-dynamic-data-masking-get-started/6_ddm_add_mask.png)<br/><br/>
-6. Seleccione hello **esquema**, **tabla** y **columna** hello toodefine designado de campo que se enmascarará.
-7. Elija un **formato del campo enmascaramiento** de lista de Hola de categorías de enmascaramiento de datos confidenciales.
+6. Seleccione el **esquema**, la **tabla** y la **columna** para definir el campo designado para enmascararse.
+7. Elija un **Formato de campo de enmascaramiento** en la lista de categorías de enmascaramiento de datos confidenciales.
    
     ![Panel de navegación](./media/sql-database-dynamic-data-masking-get-started/7_ddm_mask_field_format.png)<br/><br/>        
-8. Haga clic en **guardar** en conjunto de reglas hoja tooupdate Hola de reglas de directiva de enmascaramiento de datos dinámicos de Hola de enmascaramiento de enmascaramiento de datos de Hola.
-9. Los usuarios SQL de tipo hello o las identidades AAD que deben excluirse del enmascaramiento y tienen datos confidenciales de toohello sin máscara de acceso. Esto debe ser una lista separada por puntos y coma de usuarios. Tenga en cuenta que los usuarios con privilegios de administrador siempre tienen datos sin enmascarar de acceso toohello original.
+8. Haga clic en **Guardar** en la hoja de regla de enmascaramiento de datos para actualizar el conjunto de reglas de enmascaramiento en la directiva de enmascaramiento dinámico.
+9. Escriba los usuarios SQL o las identidades AAD que deben excluirse del enmascaramiento y tengan acceso a los datos confidenciales sin máscara. Esto debe ser una lista separada por puntos y coma de usuarios. Tenga en cuenta que los usuarios con privilegios de administrador siempre tienen acceso a los datos originales sin máscara.
    
     ![Panel de navegación](./media/sql-database-dynamic-data-masking-get-started/8_ddm_excluded_users.png)
    
    > [!TIP]
-   > toomake así Hola a nivel de aplicación puede mostrar datos confidenciales para los usuarios de la aplicación con privilegios, Hola usuario SQL o aplicación hello de identidad AAD utiliza base de datos de tooquery Hola. Se recomienda encarecidamente que esta lista contienen un número mínimo de exposición de toominimize de los usuarios con privilegios de los datos confidenciales de Hola.
+   > Para hacer que el nivel de aplicación pueda mostrar datos confidenciales para los usuarios con privilegios de la aplicación, agregue el usuario SQL o identidad AAD que la aplicación usa para consultar la base de datos. Se recomienda que esta lista incluya un número mínimo de usuarios con privilegio para minimizar la exposición de los datos confidenciales.
    > 
    > 
-10. Haga clic en **guardar** en directiva de enmascaramiento nuevas o actualizadas de configuración hoja toosave Hola de enmascaramiento de datos de Hola.
+10. Haga clic en **Guardar** en la hoja de configuración de enmascaramiento de datos para guardar la directiva de enmascaramiento nueva o actualizada.
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
 * Para obtener información general sobre el enmascaramiento dinámico de datos, consulte [este artículo](sql-database-dynamic-data-masking-get-started.md).
-* También puede implementar el enmascaramiento de datos dinámicos mediante [cmdlets de base de datos de SQL Azure](https://msdn.microsoft.com/library/azure/mt574084.aspx) o hello [API de REST](https://msdn.microsoft.com/library/dn505719.aspx).
+* También puede implementar el enmascaramiento dinámico de datos mediante [cmdlets de Azure SQL Database](https://msdn.microsoft.com/library/azure/mt574084.aspx) o la [API de REST](https://msdn.microsoft.com/library/dn505719.aspx).

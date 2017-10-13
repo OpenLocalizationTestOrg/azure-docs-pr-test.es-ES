@@ -1,5 +1,5 @@
 ---
-title: "aaaScheduler entidades, términos y conceptos | Documentos de Microsoft"
+title: "Conceptos, términos y entidades del programador | Microsoft Docs"
 description: "Conceptos del Programador de Azure, terminología y jerarquía de entidades, incluidos trabajos y colecciones de trabajos.  Proporciona un ejemplo completo de un trabajo programado."
 services: scheduler
 documentationcenter: .NET
@@ -14,45 +14,45 @@ ms.devlang: dotnet
 ms.topic: get-started-article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: 73e7de7bfd2937e401aeab05e0e10fa292cf37b9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0f035b58ccd140a5481703df7e184206da2ed651
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="scheduler-concepts-terminology--entity-hierarchy"></a>Conceptos, terminología y jerarquía de entidades de Programador
 ## <a name="scheduler-entity-hierarchy"></a>Jerarquía de entidades del Programador
-Hello tabla siguiente describe recursos principales de hello expuestos o utilizados por hello API del programador:
+En la tabla siguiente se describen los recursos principales expuestos o utilizados por la API del Programador:
 
 | Recurso | Description |
 | --- | --- |
-| **Colección de trabajos** |Una colección de trabajos contiene un grupo de trabajos y mantiene los valores, cuotas y aceleradores compartidos por los trabajos en la colección de Hola. La colección de trabajos la crea el propietario de la suscripción y agrupa los trabajos en función de los límites de uso o de la aplicación. Es región tooone restringida. También permite cumplimiento Hola de cuotas de uso de hello tooconstrain de todos los trabajos en esa colección. las cuotas de Hello incluyen MaxJobs y MaxRecurrence. |
+| **Colección de trabajos** |Una colección de trabajos contiene un grupo de trabajos y mantiene configuraciones, cuotas y aceleradores compartidos por los trabajos de la colección. La colección de trabajos la crea el propietario de la suscripción y agrupa los trabajos en función de los límites de uso o de la aplicación. Está limitado a una región. También permite la aplicación de cuotas para restringir el uso de todos los trabajos de la colección. Las cuotas incluyen MaxJobs y MaxRecurrence. |
 | **Trabajo** |Un trabajo define una única acción periódica, con estrategias simples o complejas para su ejecución. Las acciones pueden incluir solicitudes HTTP, de cola de almacenamiento, de cola de bus de servicio o de tema de bus de servicio. |
 | **Historial de trabajos** |Un historial de trabajos representa los detalles de una ejecución de un trabajo. Contiene los trabajos realizados correctamente y los errores, así como los detalles de las respuestas. |
 
 ## <a name="scheduler-entity-management"></a>Administración de entidades de Programador
-En un nivel alto, programador de Hola y API de administración de servicios de hello exponen hello las siguientes operaciones en recursos de hello:
+En un nivel superior, el Programador y la API de administración de servicio exponen las operaciones siguientes en los recursos:
 
 | Capacidad | Descripción y dirección URI |
 | --- | --- |
-| **Administración de la colección de trabajos** |GET, PUT y DELETE permiten la creación y modificación de las colecciones de trabajos y trabajos de hello contenidos en él. Una colección de trabajos es un contenedor para trabajos y asigna tooquotas y la configuración compartida. Ejemplos de cuotas, descritos más adelante, son el número máximo de trabajos y un intervalo menor de periodicidad. <p>PUT y DELETE: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`</p><p>GET: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`</p> |
-| **Administración de trabajos** |GET, PUT, POST, PATCH y DELETE permiten la creación y modificación de trabajos. Todos los trabajos deben pertenecer a colección de trabajos de tooa que ya existe, así que no hay ninguna creación implícita. <p>`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}`</p> |
+| **Administración de la colección de trabajos** |GET, PUT y DELETE permiten la creación y modificación de las colecciones de trabajos y trabajos que contienen. Una colección de trabajos es un contenedor para trabajos, asignaciones para cuotas y configuración compartida. Ejemplos de cuotas, descritos más adelante, son el número máximo de trabajos y un intervalo menor de periodicidad. <p>PUT y DELETE: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`</p><p>GET: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`</p> |
+| **Administración de trabajos** |GET, PUT, POST, PATCH y DELETE permiten la creación y modificación de trabajos. Todos los trabajos deben pertenecer a una colección de trabajos que ya existe, así que no hay ninguna creación implícita. <p>`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}`</p> |
 | **Administración del historial de trabajos** |GET admite la recuperación de 60 días de historial de ejecución de trabajos, como el tiempo de trabajo transcurrido y los resultados de la ejecución del trabajo. Agrega compatibilidad de parámetros de cadena de consulta para filtrar basándose en el estado y la situación. <P>`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history`</p> |
 
 ## <a name="job-types"></a>Tipos de trabajo
-Hay varios tipos de trabajos: trabajos HTTP (incluidos trabajos HTTPS que admiten SSL), trabajos de cola de almacenamiento, trabajos de cola de bus de servicio y trabajos de tema de bus de servicio. Los trabajos HTTP son perfectos si dispone de un extremo de una carga de trabajo o servicio existente. Puede utilizar la cola trabajos toopost mensajes toostorage las colas de almacenamiento, por lo que dichos trabajos son ideales para cargas de trabajo que utilizan colas de almacenamiento. De forma similar, los trabajos de bus de servicio son ideales para cargas de trabajo que usan temas y colas de bus de servicio.
+Hay varios tipos de trabajos: trabajos HTTP (incluidos trabajos HTTPS que admiten SSL), trabajos de cola de almacenamiento, trabajos de cola de bus de servicio y trabajos de tema de bus de servicio. Los trabajos HTTP son perfectos si dispone de un extremo de una carga de trabajo o servicio existente. Puede usar trabajos de cola de almacenamiento para enviar mensajes a colas de almacenamiento, por lo que dichos trabajos son ideales para cargas de trabajo que utilizan colas de almacenamiento. De forma similar, los trabajos de bus de servicio son ideales para cargas de trabajo que usan temas y colas de bus de servicio.
 
-## <a name="hello-job-entity-in-detail"></a>entidad de "trabajo" Hello en detalle
+## <a name="the-job-entity-in-detail"></a>La entidad "Trabajo" en detalle
 En un nivel básico, un trabajo programado cuenta con varias partes:
 
-* Hola tooperform acción cuando se activa el temporizador de trabajo de Hola  
-* Trabajo hello toorun Hola (opcional)  
-* (Opcional) Cuándo y con qué frecuencia trabajo de hello toorepeat  
-* (Opcional) Un toofire de acción si se produce un error en la acción principal de Hola  
+* La acción que se va a realizar cuando se activa el temporizador de trabajo  
+* (Opcional) El tiempo para ejecutar el trabajo  
+* (Opcional) Cuándo y con qué frecuencia se debe repetir el trabajo  
+* (Opcional) Una acción que se desencadena si se produce un error en la acción principal  
 
-Internamente, un trabajo programado contiene también datos proporcionados por el sistema como Hola siguiente hora de ejecución programada.
+Internamente, un trabajo programado contiene también datos proporcionados por el sistema, como la siguiente hora de ejecución programada.
 
-Hola siguiente código proporciona un ejemplo completo de un trabajo programado. En las secciones siguientes se proporcionan los detalles.
+El código siguiente proporciona un ejemplo completo de un trabajo programado. En las secciones siguientes se proporcionan los detalles.
 
     {
         "startTime": "2012-08-04T00:00Z",               // optional
@@ -84,14 +84,14 @@ Hola siguiente código proporciona un ejemplo completo de un trabajo programado.
         "recurrence":                                   // optional
         {
             "frequency": "week",                        // can be "year" "month" "day" "week" "minute"
-            "interval": 1,                              // optional, how often toofire (default too1)
+            "interval": 1,                              // optional, how often to fire (default to 1)
             "schedule":                                 // optional (advanced scheduling specifics)
             {
                 "weekDays": ["monday", "wednesday", "friday"],
                 "hours": [10, 22]
             },
-            "count": 10,                                 // optional (default toorecur infinitely)
-            "endTime": "2012-11-04",                     // optional (default toorecur infinitely)
+            "count": 10,                                 // optional (default to recur infinitely)
+            "endTime": "2012-11-04",                     // optional (default to recur infinitely)
         },
         "state": "disabled",                           // enabled or disabled
         "status":                                       // controlled by Scheduler service
@@ -104,7 +104,7 @@ Hola siguiente código proporciona un ejemplo completo de un trabajo programado.
         },
     }
 
-Tal como se muestra en la anterior de trabajo programado de ejemplo de Hola, una definición de trabajo tiene varias partes:
+Como se muestra en el trabajo programado de ejemplo anterior, una definición de trabajo tiene varias partes:
 
 * Hora de inicio ("startTime")  
 * Acción ("action"), que incluye la acción del error ("errorAction")
@@ -116,12 +116,12 @@ Tal como se muestra en la anterior de trabajo programado de ejemplo de Hola, una
 Examinemos cada uno de ellos en detalle:
 
 ## <a name="starttime"></a>startTime
-Hola "startTime" es la hora de inicio de Hola y permite Hola llamador toospecify una zona horaria de desplazamiento en el cable hello en [formato ISO 8601](http://en.wikipedia.org/wiki/ISO_8601).
+"startTime" es la hora de inicio y permite al que llama especificar un desplazamiento de zona horaria en el cable en [formato ISO-8601](http://en.wikipedia.org/wiki/ISO_8601).
 
 ## <a name="action-and-erroraction"></a>action y errorAction
-Hola "action" es la acción de hello invocada cada vez y describe un tipo de invocación del servicio. acción de Hello es lo que se ejecutará en hello proporcionada programación. El Programador admite acciones HTTP, de cola de almacenamiento, de cola de bus de servicio y de tema de bus de servicio.
+"action" es la acción que se invoca en cada repetición y describe un tipo de invocación del servicio. La acción es lo que se ejecutará en la programación especificada. El Programador admite acciones HTTP, de cola de almacenamiento, de cola de bus de servicio y de tema de bus de servicio.
 
-acción de Hello en el ejemplo de Hola anterior es una acción HTTP. A continuación se muestra un ejemplo de una acción de cola de almacenamiento:
+La acción en el ejemplo anterior es una acción http. A continuación se muestra un ejemplo de una acción de cola de almacenamiento:
 
     {
             "type": "storageQueue",
@@ -147,45 +147,45 @@ A continuación se muestra un ejemplo de una acción de cola de bus de servicio.
         "sasKeyName": "QPolicy", "type": "sharedAccessKey" }, "message": "Some message",  
       "brokeredMessageProperties": {}, "customMessageProperties": { "appname": "FromScheduler" } }, "type": "serviceBusQueue" }
 
-Hola "errorAction" es el controlador de errores de hello, acción de Hola se invoca cuando se produce un error en la acción principal de Hola. Puede usar esta variable toocall un punto de conexión de control de errores o enviar una notificación al usuario. Esto se puede utilizar para llegar a un extremo secundario en caso de hello ese Hola principal no está disponible (p. ej., en caso de hello de un desastre en el sitio del punto de conexión de hello) o puede usarse para notificar a un punto de conexión de control de errores. Igual que la acción principal de hello, acción de error de hello puede ser lógica sencilla o compuesta basada en otras acciones. toolearn cómo toocreate un token de SAS, consulte demasiado[crear y usar una firma de acceso compartido](https://msdn.microsoft.com/library/azure/jj721951.aspx).
+"errorAction" es el controlador de errores, la acción que se invoca cuando se produce un error en la acción primaria. Puede usar esta variable para llamar a un extremo de control de errores o para enviar una notificación al usuario. Esto puede usarse para llegar a un extremo secundario en caso de que el principal no esté disponible (por ejemplo, en caso de un desastre en el sitio del extremo) o se puede usar para notificar a un extremo de control de errores. Igual que la acción primaria, la acción de error puede ser una lógica simple o compuesta basada en otras acciones. Para obtener información sobre cómo crear un token de SAS, consulte [Crear y usar una firma de acceso compartido](https://msdn.microsoft.com/library/azure/jj721951.aspx).
 
 ## <a name="recurrence"></a>recurrence
 La periodicidad tiene varias partes:
 
 * Frecuencia: un minuto, hora, día, semana, mes, año  
-* Intervalo: El intervalo en hello dada la frecuencia de repetición de Hola  
-* Programación prescrita: especifique minutos, horas, días de la semana, meses y días mes para de periodicidad de Hola  
+* Intervalo: el intervalo de frecuencia definido para la periodicidad  
+* Programación prescrita: especifique minutos, horas, días de la semana, meses y días de mes para de la periodicidad  
 * Recuento: número de repeticiones  
-* Hora de finalización: trabajos se ejecutarán después de hello especifica hora de finalización  
+* Hora de finalización: ningún trabajo se ejecutará después de la hora de finalización especificada  
 
-Un trabajo es periódico si tiene un objeto de periodicidad especificado en la definición de JSON. Si se especifican el recuento y la hora de finalización, se respeta la regla de finalización Hola que ocurra primero.
+Un trabajo es periódico si tiene un objeto de periodicidad especificado en la definición de JSON. Si se especifican a la vez count y endTime, se respeta la regla de finalización que se produzca primero.
 
 ## <a name="state"></a>state
-estado de Hello del trabajo de hello es uno de cuatro valores: habilitado, deshabilitado, completado o con errores. Puede colocar o revisión lo trabajos como tooupdate les toohello habilita o deshabilita el estado. Si un trabajo se ha completado o con errores, que es un estado final que no se puede actualizar (aunque todavía se puede eliminar el trabajo de hello). Un ejemplo de la propiedad state de hello es como sigue:
+La situación del trabajo es una de cuatro valores: habilitado, deshabilitado, completado o con errores. Puede utilizar PUT o PATCH para los trabajos para actualizarlos al estado habilitado o deshabilitado. Si un trabajo se ha completado o tiene errores, es el estado final el que no se puede actualizar (aunque todavía se pueda eliminar el trabajo). Un ejemplo de la propiedad state es la siguiente:
 
         "state": "disabled", // enabled, disabled, completed, or faulted
 Los trabajos completados y con errores se eliminan después de 60 días.
 
 ## <a name="status"></a>status
-Cuando se inicia un trabajo del programador, se devolverá información sobre el estado actual de Hola de trabajo de Hola. Este objeto no es configurable por el usuario de hello: se establece por sistema Hola. Sin embargo, se incluye en hello objeto de trabajo (en lugar de un recurso vinculado independiente) para que se pueda obtener estado de Hola de un trabajo fácilmente.
+Una vez que se inició un trabajo de Programador, se devolverá información sobre el estado actual del trabajo. Este objeto no es configurable por el usuario: lo establece el sistema. Sin embargo, se incluye en el objeto de trabajo (en lugar de un recurso vinculado independiente) para que se pueda obtener fácilmente el estado de un trabajo.
 
-Estado del trabajo incluye el tiempo de Hola Hola anterior de la ejecución de (si existe) Hola momento de la siguiente ejecución programada hello (para los trabajos en curso) y el recuento de la ejecución del trabajo de Hola Hola.
+El estado del trabajo incluye el tiempo de la ejecución anterior (si hay alguna), el tiempo de la siguiente ejecución programada (para los trabajos en curso) y el recuento de la ejecución del trabajo.
 
 ## <a name="retrypolicy"></a>retryPolicy
-Si se produce un error en un trabajo del programador, es posible toospecify un toodetermine de directiva de reintentos si y cómo se vuelve a intentar la acción de Hola. Esto viene determinado por hello **retryType** objeto: se establece demasiado**ninguno** si no hay ninguna directiva de reintentos, como se indicó anteriormente. Establézcalo demasiado**fijo** si hay una directiva de reintentos.
+Si se produce un error en un trabajo de Programador, es posible especificar una directiva de reintentos para determinar cuándo y cómo se vuelve a intentar la acción. Esto viene determinado por el objeto **retryType**: está establecido en **none** si no hay ninguna directiva de reintentos, como se mostró anteriormente. Establézcalo en **fixed** si hay una directiva de reintentos.
 
-tooset una directiva de reintentos, se pueden especificar dos configuraciones adicionales: un intervalo de reintentos (**retryInterval**) y Hola número de reintentos (**retryCount**).
+Para establecer una directiva de reintentos, se pueden especificar dos configuraciones adicionales: un intervalo de reintento (**retryInterval**) y el número de reintentos (**retryCount**).
 
-intervalo de reintento de Hello, especificado con hello **retryInterval** de objetos, es Hola intervalo entre reintentos. Su valor predeterminado es de 30 segundos, su valor configurable mínimo es de 15 segundos y su valor máximo es de 18 meses. Los trabajos de las colecciones de trabajos gratis tienen un valor configurable mínimo de 1 hora.  Se define en formato ISO 8601 Hola. De forma similar, Hola de número de Hola de reintentos se expresa con hello **retryCount** objeto; es Hola número de veces que se realiza un reintento. Su valor predeterminado es 4, y su valor máximo es 20\. Ambos **retryInterval** y **retryCount** son opcionales. Tienen sus valores predeterminados si **retryType** se establece demasiado**fijo** y se especifica explícitamente ningún valor.
+El intervalo de reintentos, especificado con el objeto **retryInterval** , es el intervalo entre reintentos. Su valor predeterminado es de 30 segundos, su valor configurable mínimo es de 15 segundos y su valor máximo es de 18 meses. Los trabajos de las colecciones de trabajos gratis tienen un valor configurable mínimo de 1 hora.  Se define en el formato ISO 8601. Del mismo modo, se especifica el valor del número de reintentos con el objeto **retryCount** ; es el número de veces que se realiza un reintento. Su valor predeterminado es 4, y su valor máximo es 20\. Ambos **retryInterval** y **retryCount** son opcionales. Obtienen sus valores predeterminados si **retryType** está establecido en **fixed** y no se especifican explícitamente los valores.
 
-## <a name="see-also"></a>Otras referencias
+## <a name="see-also"></a>Consulte también
  [¿Qué es Programador?](scheduler-intro.md)
 
- [Empezar a usar a Scheduler en hello portal de Azure](scheduler-get-started-portal.md)
+ [Introducción al uso de Programador de Azure en el Portal de Azure](scheduler-get-started-portal.md)
 
  [Planes y facturación en Programador de Azure](scheduler-plans-billing.md)
 
- [¿Cómo se programa toobuild complejo y periodicidad avanzada con el programador de Azure](scheduler-advanced-complexity.md)
+ [Creación de programaciones complejas y periodicidad avanzada con Programador de Azure](scheduler-advanced-complexity.md)
 
  [Referencia de API de REST de Programador de Azure](https://msdn.microsoft.com/library/mt629143)
 

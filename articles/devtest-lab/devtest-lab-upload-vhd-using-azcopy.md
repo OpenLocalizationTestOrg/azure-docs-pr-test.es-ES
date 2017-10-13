@@ -1,6 +1,6 @@
 ---
-title: aaaUpload VHD archivo laboratorios de desarrollo y pruebas de tooAzure con AzCopy | Documentos de Microsoft
-description: Cargar la cuenta de almacenamiento del disco duro virtual archivo toolab con AzCopy
+title: Carga de archivos VHD en Azure DevTest Labs mediante AzCopy | Microsoft Docs
+description: Carga de archivos VHD en la cuenta de almacenamiento del laboratorio mediante AzCopy
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: tomarcher
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: tarcher
-ms.openlocfilehash: 14f9e933b0bd27451f6bcb94841ecc381213e578
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a4f43354740d9f17570932b0b9c753f46d67dc33
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="upload-vhd-file-toolabs-storage-account-using-azcopy"></a>Cargar la cuenta de almacenamiento del disco duro virtual archivo toolab con AzCopy
+# <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>Carga de archivos VHD en la cuenta de almacenamiento del laboratorio mediante AzCopy
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-En los laboratorios de desarrollo y pruebas de Azure, archivos de disco duro virtual pueden ser toocreate usa imágenes personalizadas, que son máquinas virtuales de tooprovision usado. Hola pasos orientará sobre el uso de tooupload de utilidad de línea de comandos de AzCopy Hola la cuenta de almacenamiento del laboratorio tooa de archivo de disco duro virtual. Una vez que haya cargado el archivo VHD, Hola [pasos siguientes sección](#next-steps) enumera algunos artículos que ilustran cómo toocreate una imagen personalizada de hello carga archivo de disco duro virtual. Para más información sobre discos y discos duros virtuales en Azure, consulte [Acerca de los discos y los discos duros virtuales para máquinas virtuales](../virtual-machines/linux/about-disks-and-vhds.md).
+En Azure DevTest Labs, se pueden usar archivos VHD para crear imágenes personalizadas, que se usan para aprovisionar máquinas virtuales. Los siguientes pasos le guían en el uso de la utilidad de línea de comandos AzCopy para cargar un archivo VHD en una cuenta de almacenamiento del laboratorio. Cuando haya cargado el archivo VHD, en la sección de [pasos siguientes](#next-steps) se muestran algunos artículos que ilustran cómo crear una imagen personalizada a partir del archivo VHD cargado. Para más información sobre discos y discos duros virtuales en Azure, consulte [Acerca de los discos y los discos duros virtuales para máquinas virtuales](../virtual-machines/linux/about-disks-and-vhds.md).
 
 > [!NOTE] 
 >  
@@ -32,47 +32,47 @@ En los laboratorios de desarrollo y pruebas de Azure, archivos de disco duro vir
 
 ## <a name="step-by-step-instructions"></a>Instrucciones paso a paso
 
-Hola después de recorrido de pasos a través de la carga de un disco duro virtual archivo laboratorios de desarrollo y pruebas de tooAzure con [AzCopy](http://aka.ms/downloadazcopy). 
+Los siguientes pasos le guían en la carga de un archivo VHD en Azure DevTest Labs mediante [AzCopy](http://aka.ms/downloadazcopy). 
 
-1. Obtener nombre de Hola de cuenta de almacenamiento del laboratorio de hello mediante Hola portal de Azure:
+1. Obtenga el nombre de la cuenta de almacenamiento del laboratorio mediante el portal de Azure:
 
-1. Inicie sesión en toohello [portal de Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Inicie sesión en el [Portal de Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Seleccione **más servicios**y, a continuación, seleccione **laboratorios de desarrollo y pruebas** de lista de Hola.
+1. Seleccione **Más servicios** y, luego, **DevTest Labs** en la lista.
 
-1. En lista de Hola de laboratorios, seleccione laboratorio deseado Hola.  
+1. En la lista de laboratorios, seleccione el laboratorio que desee.  
 
-1. En la hoja del laboratorio de hello, seleccione **configuración**. 
+1. En la hoja del laboratorio, seleccione **Configuración**. 
 
-1. En el laboratorio de hello **configuración** hoja, seleccione **imágenes personalizadas (VHD)**.
+1. En la hoja **Configuración** del laboratorio, seleccione **Custom images (VHDs)** (Imágenes personalizadas [VHD]).
 
-1. En hello **imágenes personalizadas** hoja, seleccione **+ agregar**. 
+1. En la hoja **Custom images** (Imágenes personalizadas), seleccione **+Agregar**. 
 
-1. En hello **imagen personalizada** hoja, seleccione **VHD**.
+1. En la hoja **Custom images** (Imágenes personalizadas), seleccione **+Agregar**.
 
-1. En hello **VHD** hoja, seleccione **cargar un VHD con PowerShell**.
+1. En la hoja **VHD**, seleccione **Upload a VHD using PowerShell** (Cargar un VHD mediante PowerShell).
 
     ![Carga del VHD mediante PowerShell](./media/devtest-lab-upload-vhd-using-azcopy/upload-image-using-psh.png)
 
-1. Hola **cargar una imagen con PowerShell** hoja muestra una llamada toohello **Add-AzureVhd** cmdlet. Hola primer parámetro (*destino*) contiene Hola URI para un contenedor de blobs (*carga*) Hola siguiendo el formato:
+1. La hoja **Upload an image using PowerShell** (Cargar una imagen mediante PowerShell) muestra una llamada al cmdlet **Add-AzureVhd**. El primer parámetro (*Destination*) contiene el URI de un contenedor de blobs (*uploads*) en el siguiente formato:
 
     ```
     https://<STORAGE-ACCOUNT-NAME>.blob.core.windows.net/uploads/...
     ``` 
 
-1. Tome nota de hello completa de URI como se utiliza en pasos posteriores.
+1. Anote el URI completo tal como se usa en pasos posteriores.
 
-1. Cargar archivo de disco duro virtual de hello mediante AzCopy:
+1. Carga del archivo VHD mediante AzCopy:
  
-1. [Descargue e instale la versión más reciente de Hola de AzCopy](http://aka.ms/downloadazcopy).
+1. [Descargue e instale la versión más reciente de AzCopy](http://aka.ms/downloadazcopy).
 
-1. Abra una ventana de comandos y desplácese toohello directorio de instalación de AzCopy. Si lo desea, puede agregar hello AzCopy tooyour sistema ruta de instalación. De forma predeterminada, AzCopy está instalado toohello siguiente directorio:
+1. Abra una ventana de comandos y vaya al directorio de instalación de AzCopy. Opcionalmente, puede agregar la ubicación de instalación de AzCopy a la ruta de acceso del sistema. De forma predeterminada, AzCopy se instala en el directorio siguiente:
 
     ```command-line
     %ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy
     ```
 
-1. Ejecute hello siguiente comando en el símbolo del sistema de hello con hello cuenta clave y el blob en contenedor de almacenamiento de URI. Hola *vhdFileName* valor necesita toobe entre comillas. proceso de Hola de cargar un archivo de disco duro virtual puede ser larga según el tamaño de hello del archivo de disco duro virtual de hello y la velocidad de conexión.   
+1. Mediante la clave de la cuenta de almacenamiento y el URI del contenedor de blobs, ejecute el siguiente comando en el símbolo del sistema. El valor *vhdFileName* debe incluirse entre comillas. El proceso de cargar un archivo VHD puede ser largo en función de su tamaño y de la velocidad de conexión.   
 
     ```command-line
     AzCopy /Source:<sourceDirectory> /Dest:<blobContainerUri> /DestKey:<storageAccountKey> /Pattern:"<vhdFileName>" /BlobType:page
@@ -80,5 +80,5 @@ Hola después de recorrido de pasos a través de la carga de un disco duro virtu
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-- [Crear una imagen personalizada en los laboratorios de desarrollo y pruebas de Azure desde un archivo de disco duro virtual mediante Hola portal de Azure](devtest-lab-create-template.md)
+- [Creación de una imagen personalizada en Azure DevTest Labs a partir de un archivo VHD mediante el portal de Azure](devtest-lab-create-template.md)
 - [Creación de una imagen personalizada en Azure DevTest Labs a partir de un archivo VHD mediante PowerShell](devtest-lab-create-custom-image-from-vhd-using-powershell.md)

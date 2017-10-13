@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure documentación del equilibrador de carga - tutoriales, referencia de API | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toouse equilibrador de carga de rendimiento de red de las aplicaciones. Administre el tráfico de las máquinas virtuales y recursos en la nube y en redes virtuales entre locales."
+title: "Documentación sobre Azure Load Balancer: tutoriales y referencia de API | Microsoft Docs"
+description: "Aprenda a usar Load Balancer para mejorar el rendimiento de red de las aplicaciones. Administre el tráfico de las máquinas virtuales y recursos en la nube y en redes virtuales entre locales."
 services: load-balancer
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 877aef347f9d6f97da1562944676c2e95ddba470
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 169ca89ccd80e5a70f3e9ab07b3c34358c154be7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="load-balancer-documentation"></a>Documentación de Load Balancer
 
-Obtenga información acerca de cómo tooconfigure equilibrador de carga toodeliver alta disponibilidad y rendimiento tooyour aplicaciones de red. La documentación muestra cómo tooload equilibrar el tráfico tooand desde máquinas virtuales y recursos de nube y en redes virtuales entre entornos.
+Aprenda a configurar Load Balancer para proporcionar una alta disponibilidad y un elevado rendimiento de red para sus aplicaciones. La documentación le muestra cómo equilibrar la carga hacia y desde máquinas virtuales y recursos en la nube y en redes virtuales entre locales.
 
 <ul class="panelContent cardsFTitle">
     <li>

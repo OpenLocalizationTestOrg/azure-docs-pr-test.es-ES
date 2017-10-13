@@ -1,6 +1,6 @@
 ---
-title: "Administración de API de Azure aaaDeploy services toomultiple Azure regiones | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toodeploy una administración de API de Azure service instancia toomultiple Azure regiones."
+title: "Implementación de servicios de Azure API Management en varias regiones de Azure | Microsoft Docs"
+description: "Aprenda a implementar una instancia del servicio Administración de API de Azure en varias regiones de Azure."
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -14,54 +14,54 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: 04a3e762261237d73a769320a21363f99f1d20cb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 1c39fee739c2f5fd4b928e1e76e1ea57f072b5f8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-toodeploy-an-azure-api-management-service-instance-toomultiple-azure-regions"></a>Cómo toodeploy una administración de API de Azure service instancia toomultiple Azure regiones
-Administración de API admite la implementación de varias regiones que habilita la API publicadores toodistribute un único servicio de administración de API a través de cualquier número de regiones de Azure deseadas. Esto ayuda a reducir la latencia de solicitud que perciben los usuarios de API distribuidos geográficamente y, además, mejora la disponibilidad del servicio en caso de que una región se quede sin conexión. 
+# <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Implementación de una instancia del servicio Administración de API de Azure en varias regiones de Azure
+Administración de API admite la implementación en varias regiones, lo que permite a los publicadores de API distribuir un único servicio de Administración de API en el número de regiones de Azure deseado. Esto ayuda a reducir la latencia de solicitud que perciben los usuarios de API distribuidos geográficamente y, además, mejora la disponibilidad del servicio en caso de que una región se quede sin conexión. 
 
-Cuando se crea inicialmente un servicio de administración de API, contiene solamente un [unidad] [ unit] y reside en una sola región de Azure, que se designa como Hola región principal. Otras regiones pueden agregarse fácilmente a través de hello Portal de Azure. Un servidor de puerta de enlace de administración de API es región tooeach implementado y el tráfico de llamada será toohello enrutado puerta de enlace más cercano. Si una región se queda sin conexión, el tráfico de hello es toohello redirige automáticamente siguiente más cercano puerta de enlace. 
+Al crear inicialmente un servicio de API Management, este contiene solo una [unidad][unit] y reside en una sola región de Azure, designada como región primaria. Pueden agregarse otras regiones fácilmente mediante Azure Portal. El servidor de puerta de enlace de API Management se implementa en cada región y el tráfico de llamada se enruta a la puerta de enlace más cercana. Cuando una región se queda sin conexión, el tráfico se redirige automáticamente a la siguiente puerta de enlace más cercana. 
 
 > [!IMPORTANT]
-> Implementación de varias regiones solo está disponible en hello  **[Premium] [ Premium]**  capa.
+> La implementación en varias regiones solo está disponible en el nivel **[Premium][Premium]**.
 > 
 > 
 
-## <a name="add-region"></a>Implementar un área nueva de administración de API servicio instancia tooa
+## <a name="add-region"></a>Implementación de una instancia del servicio Administración de API en una nueva región
 > [!NOTE]
-> Si aún no ha creado una instancia de servicio de administración de API, consulte [crear una instancia de servicio de administración de API] [ Create an API Management service instance] en hello [Introducción a administración de API de Azure] [ Get started with Azure API Management] tutorial.
+> Si aún no ha creado ninguna instancia del servicio de API Management, consulte [Creación de una instancia del servicio API Management][Create an API Management service instance] en el tutorial [Introducción a Azure API Management][Get started with Azure API Management].
 > 
 > 
 
-Hola Portal de Azure, navegue toohello **escala y precios** página para la instancia de servicio de administración de API. 
+En Azure Portal, vaya a la página de **escala y precios** de su instancia de servicio de API Management. 
 
 ![Pestaña Escala][api-management-scale-service]
 
-toodeploy tooa nueva región, haga clic en **+ Agregar región** de barra de herramientas de Hola.
+Para implementar en una nueva región, haga clic en **+ Agregar región** desde la barra de herramientas.
 
 ![Agregar región][api-management-add-region]
 
-Seleccionar ubicación de hello en la lista desplegable de Hola y establecer el número de Hola de unidades con el control deslizante de Hola.
+Seleccione la ubicación en la lista desplegable y establezca el número de unidades para el control deslizante.
 
 ![Especificar unidades][api-management-select-location-units]
 
-Haga clic en **agregar** tooplace su selección en la tabla de ubicaciones de Hola. 
+Haga clic en **Agregar** para colocar la selección en la tabla de ubicaciones. 
 
-Repita este proceso hasta que haya configurado de todas las ubicaciones y haga clic en **guardar** del proceso de implementación de hello barra de herramientas toostart Hola.
+Repita este proceso hasta que haya configurado todas las ubicaciones y haga clic en **Guardar** en la barra de herramientas para iniciar el proceso de implementación.
 
 ## <a name="remove-region"></a>Eliminación de una instancia de servicio de API Management de una ubicación
-Hola Portal de Azure, navegue toohello **escala y precios** página para la instancia de servicio de administración de API. 
+En Azure Portal, vaya a la página de **escala y precios** de su instancia de servicio de API Management. 
 
 ![Pestaña Escala][api-management-scale-service]
 
-Para la ubicación de hello le gustaría tooremove abrir menú contextual de hello mediante hello **...**  situado en el extremo derecho de Hola de tabla Hola. Seleccione hello **eliminar** opción.
+Para la ubicación que desee quitar, abra el menú contextual mediante el botón **...** situado a la derecha de la tabla. Haga clic en la opción **Eliminar**.
 
 ![Quitar región][api-management-remove-region]
 
-Confirmar eliminación de Hola y haga clic en **guardar** cambios de hello tooapply.
+Confirme la eliminación y haga clic en **Guardar** para aplicar los cambios.
 
 [api-management-management-console]: ./media/api-management-howto-deploy-multi-region/api-management-management-console.png
 
@@ -73,7 +73,7 @@ Confirmar eliminación de Hola y haga clic en **guardar** cambios de hello tooap
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance
 [Get started with Azure API Management]: api-management-get-started.md
 
-[Deploy an API Management service instance tooa new region]: #add-region
+[Deploy an API Management service instance to a new region]: #add-region
 [Delete an API Management service instance from a region]: #remove-region
 
 [unit]: http://azure.microsoft.com/pricing/details/api-management/

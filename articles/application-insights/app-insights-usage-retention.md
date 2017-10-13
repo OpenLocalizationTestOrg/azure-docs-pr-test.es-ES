@@ -1,6 +1,6 @@
 ---
-title: "análisis de retención de aaaUser para aplicaciones web con Azure Application Insights | Documentos de Microsoft"
-description: "¿Cuántos usuarios devuelven tooyour aplicación?"
+title: "Análisis de retención de usuarios para aplicaciones web con Azure Application Insights | Microsoft Docs"
+description: "¿Cuántos usuarios regresan a la aplicación?"
 services: application-insights
 documentationcenter: 
 author: botatoes
@@ -12,42 +12,42 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: bwren
-ms.openlocfilehash: 8bcee5f1611afbd69016ec3eef27832c304762a4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7f7ca19ab171278bbd82f68e3822bc650b25373d
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Análisis de retención de usuarios para aplicaciones web con Application Insights
 
-característica de retención de Hello en [Azure Application Insights](app-insights-overview.md) le ayuda a analizar el número de usuarios devolver tooyour aplicación, y con qué frecuencia realizar determinadas tareas o lograr objetivos. Por ejemplo, si ejecuta un sitio de juego, podría comparar números Hola de usuarios que devuelven toohello sitio después de perder un juego con número de Hola que devuelven después el ganador. Esta información puede ayudarlo a mejorar la experiencia de los usuarios y la estrategia empresarial.
+La característica Retención de [Azure Application Insights](app-insights-overview.md) le ayuda a analizar cuántos usuarios regresan a la aplicación, y con qué frecuencia realizan determinadas tareas o logran objetivos. Por ejemplo, si ejecuta un sitio de juegos, puede comparar el número de usuarios que regresan al sitio después de perder una partida con la cantidad que vuelven tras ganar. Esta información puede ayudarlo a mejorar la experiencia de los usuarios y la estrategia empresarial.
 
 ## <a name="get-started"></a>Primeros pasos
 
-Si aún no ve los datos en la herramienta de retención de hello en el portal de Application Insights hello, [Obtenga información acerca de cómo tooget a trabajar con herramientas de uso de hello](app-insights-usage-overview.md).
+Si aún no ve los datos en la herramienta Retención del portal de Application Insights, [obtenga información sobre cómo empezar a trabajar con las herramientas de uso](app-insights-usage-overview.md).
 
-## <a name="hello-retention-tool"></a>herramienta de retención de Hola
+## <a name="the-retention-tool"></a>La herramienta Retención
 
 ![Herramienta Retención](./media/app-insights-usage-retention/retention.png)
 
-1. barra de herramientas de Hello permite a los usuarios toocreate nuevos informes de retención, abra los informes existentes de retención, guardar el informe de retención actual o guardar como, revertir los cambios realizados toosaved informes, actualizar los datos en hello informe, recurso compartido a través de correo electrónico o vínculo directo y Hola de acceso página de documentación. 
-2. De forma predeterminada, la herramienta de retención muestra todos los usuarios que hicieron algo y que , posteriormente, regresaron e hicieron algo más a lo largo de un período. Puede seleccionar una combinación diferente de eventos toonarrow Hola se centran en las actividades de usuario específico.
-3. Agregue uno o varios filtros en las propiedades. Por ejemplo, puede centrarse en los usuarios de un país o una región determinados. Haga clic en **actualización** después de establecer filtros de Hola. 
-4. Hello general retención gráfico muestra un resumen de retención del usuario a través de hello período de tiempo seleccionado. 
-5. cuadrícula de Hello muestra número Hola de usuarios conserva correspondiente generador de consultas de toohello de #2. Cada fila representa un grupo de edad de los usuarios que llevó a cabo cualquier evento de hello período de tiempo mostrado. Cada celda de la fila de hello muestra cuántas de ese grupo de edad devuelve al menos una vez en un período más adelante. Algunos usuarios pueden regresar en más de un periodo. 
-6. tarjetas de información de Hello muestran los cinco eventos superiores iniciadores y cinco superior devuelve a los usuarios de eventos toogive una mejor comprensión de su informe de retención. 
+1. La barra de herramientas permite a los usuarios crear nuevos informes de retención, abrir los informes ya existentes, guardar el informe de retención actual (o guardarlo mediante la opción Guardar como), revertir los cambios efectuados en los informes guardados, actualizar los datos del informe, compartir un informe por correo electrónico o vínculo directo y acceder a la página de documentación. 
+2. De forma predeterminada, la herramienta de retención muestra todos los usuarios que hicieron algo y que , posteriormente, regresaron e hicieron algo más a lo largo de un período. Puede seleccionar una combinación diferente de eventos para centrar el enfoque en las actividades específicas del usuario.
+3. Agregue uno o varios filtros en las propiedades. Por ejemplo, puede centrarse en los usuarios de un país o una región determinados. Haga clic en **Actualizar** después de establecer los filtros. 
+4. El gráfico de retención general muestra un resumen de la retención del usuario durante un período de tiempo seleccionado. 
+5. La cuadrícula muestra el número de usuarios retenidos según el generador de consultas en 2. Cada fila representa una cohorte de usuarios que llevó a cabo cualquier evento en el periodo mostrado. Cada celda de la fila muestra cuántos de esa cohorte regresaron al menos una vez en un periodo posterior. Algunos usuarios pueden regresar en más de un periodo. 
+6. Las tarjetas de información muestran los cinco eventos de inicio más importantes y los cinco eventos devueltos principales para proporcionar a los usuarios una mejor comprensión de su informe de retención. 
 
 ![Mantener el puntero sobre la retención](./media/app-insights-usage-retention/hover.png)
 
-Los usuarios pueden desplazar el puntero sobre las celdas de botón de análisis de hello retención herramienta tooaccess hello y significa que explique qué celda Hola información sobre herramientas. botón de análisis de Hello toma la herramienta de análisis de los usuarios toohello con un toogenerate consultar rellena automáticamente a los usuarios de celda Hola. 
+Los usuarios pueden mantener el puntero sobre las celdas de la herramienta Retención para acceder al botón de análisis y a la información que explica lo que significa cada celda. El botón Análisis conduce al usuario a la herramienta Análisis con una consulta rellenada previamente para generar usuarios desde la celda. 
 
-## <a name="use-business-events-tootrack-retention"></a>Utilizar la retención de tootrack de eventos empresariales
+## <a name="use-business-events-to-track-retention"></a>Uso de eventos empresariales para realizar un seguimiento de la retención
 
-tooget hello más útil retención análisis, eventos de medida que representan actividades empresariales importantes. 
+Para obtener el análisis de retención más útil, mida los eventos que representan actividades empresariales importantes. 
 
-Por ejemplo, muchos usuarios pueden abrir una página de la aplicación sin juego Hola que muestra. Solo las vistas de página Hola de seguimiento, por tanto, proporcionaría una estimación inexacta de cuántas personas devuelven tooplay juego Hola después de se disfruta previamente. tooget una imagen clara de devolver reproductores, la aplicación debe enviar un evento personalizado cuando se reproduce realmente a un usuario.  
+Por ejemplo, muchos usuarios podrían abrir una página de la aplicación sin jugar al juego que se muestra. Al realizar solo el seguimiento de las vistas de página, se proporcionaría una estimación inexacta de cuántas personas vuelven a reproducir el juego después de haberlo jugado anteriormente. Para obtener una visión clara de los jugadores que regresan, la aplicación debe enviar un evento personalizado cuando un usuario juega realmente.  
 
-Es recomendable toocode los eventos personalizados que representan las acciones de la clave del negocio y usarlos para su análisis de retención. resultado de juegos de hello toocapture, deberá toowrite una línea de código toosend una visión tooApplication de evento personalizado. Si se escribe en el código de la página web de Hola o en Node.JS, parece similar al siguiente:
+Se recomienda codificar los eventos personalizados que representan las acciones clave del negocio y usarlos para realizar el análisis de retención. Para obtener el resultado del juego, tiene que escribir una línea de código con el fin enviar un evento personalizado a Application Insights. Si se escribe en el código de la página web o en Node.JS, se vería similar a esto:
 
 ```JavaScript
     appinsights.trackEvent("won game");
@@ -63,8 +63,8 @@ O en el código del servidor ASP.NET:
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-- uso de tooenable experimenta, empezar a enviar [eventos personalizados](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) o [página vistas](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
-- Si ya envía eventos personalizados o las vistas de página, explorar Hola uso herramientas toolearn cómo los usuarios utilizar el servicio.
+- Para habilitar las experiencias de uso, empiece por enviar [eventos personalizados](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) o [vistas de páginas](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
+- Si ya ha enviado eventos personalizados o vistas de página, explore las herramientas de uso para obtener información sobre cómo los usuarios utilizan el servicio.
     - [Usuarios, sesiones, eventos](app-insights-usage-segmentation.md)
     - [Embudos](usage-funnels.md)
     - [Flujos de usuario](app-insights-usage-flows.md)

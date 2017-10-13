@@ -12,17 +12,17 @@ ms.topic: article
 ms.devlang: na
 ms.date: 05/02/2017
 ms.author: sama
-ms.openlocfilehash: b65271a22c77ea41eeec2126e4a3ad24364edd17
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8f5703d15766f221517cd89352d41685652d32d6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-manage-sso-and-token-customization-with-custom-policies"></a>Azure Active Directory B2C: administración de SSO y personalización de token con directivas personalizadas
-Uso de directivas personalizadas proporciona que Hola mismo control sobre el símbolo (token), sesión y configuraciones de (SSO) de inicio de sesión único como a través de directivas integradas.  toolearn hace el significado de cada configuración, consulte la documentación de hello [aquí](#active-directory-b2c-token-session-sso).
+El uso de directivas personalizadas proporciona el mismo control sobre las configuraciones de token, sesión e inicio de sesión único (SSO) que las directivas integradas.  Para saber lo que hace cada una, consulte la documentación [aquí](#active-directory-b2c-token-session-sso).
 
 ## <a name="token-lifetimes-and-claims-configuration"></a>Configuración de notificaciones y duración del token
-configuración de hello toochange en la vigencia de los tokens, deberá tooadd un `<ClaimsProviders>` elemento en el archivo de usuario confianza hello de directiva de hello desea tooimpact.  Hola `<ClaimsProviders>` es un elemento secundario de hello `<TrustFrameworkPolicy>`.  En, se le solicitará información de Hola de tooput que afecta a la vigencia de los tokens.  Hola XML tiene el siguiente aspecto:
+Para cambiar la configuración de la duración del token, debe agregar un elemento `<ClaimsProviders>` en el archivo de usuario de confianza de la directiva que quiere modificar.  El elemento `<ClaimsProviders>` es secundario de `<TrustFrameworkPolicy>`.  Dentro debe colocar la información que afecta a la duración del token.  El XML tiene este aspecto:
 
 ```XML
 <ClaimsProviders>
@@ -44,28 +44,28 @@ configuración de hello toochange en la vigencia de los tokens, deberá tooadd u
 </ClaimsProviders>
 ```
 
-**Vigencia de los tokens de acceso** Hola acceso duración del token se puede cambiar modificando el valor de hello dentro de hello `<Item>` con hello clave = "token_lifetime_secs" en segundos.  valor predeterminado de Hello en integrada es 3600 segundos (60 minutos).
+**Duración del token de acceso**: la duración del token de acceso se puede cambiar mediante la modificación del valor dentro de `<Item>` con la clave = "token_lifetime_secs" en segundos.  El valor predeterminado en el elemento integrado es 3600 (60 minutos).
 
-**Duración del token de identificador** duración Hola Id. del token se puede cambiar modificando el valor de hello dentro de hello `<Item>` con hello clave = "id_token_lifetime_secs" en segundos.  valor predeterminado de Hello en integrada es 3600 segundos (60 minutos).
+**Duración del token del identificador**: la duración del token del identificador se puede cambiar mediante la modificación del valor `<Item>` con la clave = "id_token_lifetime_secs" en segundos.  El valor predeterminado en el elemento integrado es 3600 (60 minutos).
 
-**Duración del token de actualización** duración del token Hola actualización puede cambiarse modificando el valor de hello dentro de hello `<Item>` con hello clave = "refresh_token_lifetime_secs" en segundos.  valor predeterminado de Hello en integrada es 1209600 segundos (14 días).
+**Duración del token de actualización**: la duración del token de actualización se puede cambiar mediante la modificación del valor dentro de `<Item>` con la clave = "refresh_token_lifetime_secs" en segundos.  El valor predeterminado en el elemento integrado es 1209600 segundos (14 días).
 
-**Actualizar token duración de ventana deslizante** si desea que tooset un token de actualización del tooyour de duración de ventana deslizante, modifique el valor de hello dentro de `<Item>` con hello clave = "rolling_refresh_token_lifetime_secs" en segundos.  valor predeterminado de Hello en integrada es 7776000 (90 días).  Si no desea tooenfore un deslizante duración de ventana, reemplace esta línea con:
+**Duración de la ventana deslizante del token de actualización**: si desea establecer una duración de ventana deslizante para su token de actualización, modifique el valor dentro de `<Item>` con la clave Key="rolling_refresh_token_lifetime_secs" en segundos.  El valor predeterminado del elemento integrado es 7776000 (90 días).  Si no desea exigir una duración de ventana deslizante, reemplace esta línea con:
 ```XML
 <Item Key="allow_infinite_rolling_refresh_token">True</Item>
 ```
 
-**Notificación de emisor (iss)** si desea que la notificación de emisor (iss) de hello toochange, modifique el valor de hello dentro de hello `<Item>` con hello clave = "IssuanceClaimPattern".  Hola los valores aplicables son `AuthorityAndTenantGuid` y `AuthorityWithTfp`.
+**Notificación de emisor (iss)**: si desea cambiar la notificación del emisor (iss), modifique el valor dentro de `<Item>` con la clave = "IssuanceClaimPattern".  Los valores aplicables son `AuthorityAndTenantGuid` y `AuthorityWithTfp`.
 
-**Configuración de notificaciones que representa el Id. de directiva** opciones de Hola para establecer este valor son TFTP (directiva de framework de confianza) y ACR (referencia de contexto de autenticación).  
-Se recomienda establecer este tooTFP, toodo esto, asegúrese de hello `<Item>` con hello clave = "AuthenticationContextReferenceClaimPattern" existe y es el valor de hello `None`.
+**Configuración de notificación que representa el identificador de directiva**: las opciones para configurar este valor son TFTP (directiva de marco de confianza) y ACR (referencia de contexto de autenticación).  
+Se recomienda establecer este valor en TFTP; para ello, asegúrese de que exista `<Item>` con la clave = "AuthenticationContextReferenceClaimPattern" y que el valor sea `None`.
 En su elemento `<OutputClaims>`, agregue este elemento:
 ```XML
 <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />
 ```
-Para el ACR, quitar hello `<Item>` con hello clave = "AuthenticationContextReferenceClaimPattern".
+Para ACR, quite `<Item>` con la clave= "AuthenticationContextReferenceClaimPattern".
 
-**Notificación de asunto (sub)** esta opción es establecidas como valor predeterminado tooObjectID, si desea que tooswitch esto demasiado`Not Supported`, Hola siguientes:
+**Notificación de asunto (sub)**: esta opción se establece de forma predeterminada en ObjectID; si desea cambiarlo a `Not Supported`, haga lo siguiente:
 
 Reemplace esta línea 
 ```XML
@@ -77,7 +77,7 @@ por esta otra:
 ```
 
 ## <a name="session-behavior-and-sso"></a>Comportamiento de sesión y SSO
-toochange su comportamiento de sesión y sus configuraciones de SSO, deberá tooadd un `<UserJourneyBehaviors>` elemento dentro de hello `<RelyingParty>` elemento.  Hola `<UserJourneyBehaviors>` elemento debe seguir inmediatamente a hello `<DefaultUserJourney>`.  Hola dentro de su `<UserJourneyBehavors>` elemento debe ser similar al siguiente:
+Para cambiar las configuraciones de comportamiento de sesión y SSO, debe agregar un elemento `<UserJourneyBehaviors>` dentro del elemento `<RelyingParty>`.  El elemento `<UserJourneyBehaviors>` debe seguir inmediatamente a `<DefaultUserJourney>`.  El interior de su elemento `<UserJourneyBehavors>` debe ser similar al siguiente:
 
 ```XML
 <UserJourneyBehaviors>
@@ -86,8 +86,8 @@ toochange su comportamiento de sesión y sus configuraciones de SSO, deberá too
    <SessionExpiryInSeconds>86400</SessionExpiryInSeconds>
 </UserJourneyBehaviors>
 ```
-**Configuración de inicio de sesión único (SSO)** toochange Hola única configuración sign-on, necesita toomodify Hola valo `<SingleSignOn>`.  Hola los valores aplicables son `Tenant`, `Application`, `Policy` y `Disabled`. 
+**Configuración de inicio de sesión único (SSO)**: para cambiar la configuración del inicio de sesión único, debe modificar el valor de `<SingleSignOn>`.  Los valores aplicables son `Tenant`, `Application`, `Policy` y `Disabled`. 
 
-**Aplicación Web de duración de la sesión (minutos)** toochange Hola Hola web app duración de la sesión, necesita toomodify valo hello `<SessionExpiryInSeconds>` elemento.  valor predeterminado de Hello en directivas integradas es 86400 segundos (1440 minutos).
+**Duración de sesión de aplicación web (minutos)**: para cambiar la duración de la sesión de aplicación web, debe modificar el valor del elemento `<SessionExpiryInSeconds>`.  El valor predeterminado en las directivas integradas es 86400 segundos (1440 minutos).
 
-**Tiempo de espera de sesión de aplicación de Web** tiempo de espera de toochange hello web app sesión, necesita toomodify Hola valo `<SessionExpiryType>`.  Hola los valores aplicables son `Absolute` y `Rolling`.
+**Tiempo de espera de sesión de aplicación web**: para cambiar el tiempo de espera de sesión de una aplicación web, debe modificar el valor de `<SessionExpiryType>`.  Los valores aplicables son `Absolute` y `Rolling`.

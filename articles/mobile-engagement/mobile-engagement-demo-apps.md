@@ -1,6 +1,6 @@
 ---
-title: "aplicación de demostración de Mobile Engagement aaaAzure | Documentos de Microsoft"
-description: "Describe dónde toodownload, cómo toouse y Hola ventajas del uso de Azure Mobile Engagement demostración de aplicación"
+title: "Aplicación de demostración de Azure Mobile Engagement | Microsoft Docs"
+description: "Explica dónde puede usar la aplicación de demostración de Azure Mobile Engagement, cómo usarla y qué ventajas implica su uso"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2016
 ms.author: piyushjo
-ms.openlocfilehash: 9ff0df0d21e1bad6aff573db49304a55593df1c0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8381edb569e19a85c1259f7791b477cfa6e51ea3
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-mobile-engagement-demo-app"></a>Aplicación de demostración de Azure Mobile Engagement
-Hemos publicado una aplicación de demostración de Azure Mobile Engagement para **iOS**, **Android**, y **Windows** toohelp de plataformas que recursos útiles de toofind y obtener más información sobre Mobile Interacción.
+Se ha publicado una aplicación de demostración de Azure Mobile Engagement para las plataformas **iOS**, **Android** y **Windows** para ayudarle a encontrar recursos útiles y obtener más información acerca de Mobile Engagement.
 
-aplicación Hello le ayuda a:
+La aplicación le ayudará a:
 
-* Encontrar fácilmente vínculos útiles recursos de interacción de tooMobile como vídeos, documentación, foro de soporte técnico de hello, y que se solicita toogo tooraise característica.
-* Notificaciones de ejemplo de experiencia que son compatibles con ideas de tooget de Mobile Engagement para sus propias aplicaciones móviles.
-* Usar un toostudy de implementación de referencia cómo tooimplement Mobile Engagement en su aplicación. Puede aprender a:
+* Encontrar fácilmente vínculos útiles a recursos de Mobile Engagement como vídeos, documentación, foros de soporte técnico y sitios dónde debe ir para generar solicitudes de características.
+* Experimentar notificaciones de ejemplo compatibles con Mobile Engagement para obtener ideas para sus propias aplicaciones móviles.
+* Use una implementación de referencia para estudiar cómo implementar Mobile Engagement en su propia aplicación. Puede aprender a:
   
   * Recopilar datos de análisis.
   * Implementar escenarios avanzados de notificación del tipo *Pantalla completa intersticial* o *Emergente*.
@@ -35,20 +35,20 @@ aplicación Hello le ayuda a:
   * Implementar escenarios de inserción silenciosa o inserción de datos.   
 
 ## <a name="app-installation"></a>Instalación de la aplicación
-Esta aplicación está disponible en hello después de tiendas de aplicaciones:
+Esta aplicación está disponible en las siguientes tiendas de aplicaciones:
 
 * **Aplicación de demostración universal de Windows**:
   
-  * Descargar la aplicación hello en hello [tienda de aplicaciones de Windows](https://www.microsoft.com/en-us/store/apps/azure-mobile-engagement/9nblggh4qmh2).
-  * aplicación Hello se desarrolló como una aplicación Universal de Windows 10. está disponible en código fuente de Hello [GitHub](https://github.com/Azure/azure-mobile-engagement-app-windows).
+  * Descargue la aplicación en la [Tienda de aplicaciones Windows](https://www.microsoft.com/en-us/store/apps/azure-mobile-engagement/9nblggh4qmh2).
+  * La aplicación se desarrolló como una aplicación universal de Windows 10. El código fuente está disponible en [GitHub](https://github.com/Azure/azure-mobile-engagement-app-windows).
 * **Aplicación de demostración de iOS**:
   
-  * Descargar la aplicación hello en hello [store de Apple](https://itunes.apple.com/us/app/azure%20mobile%20engagement/id1105090090).
-  * se desarrolló la aplicación Hello en iOS Swift. está disponible en código fuente de Hello [GitHub](https://github.com/Azure/azure-mobile-engagement-app-ios).
+  * Descargue la aplicación en la [Tienda Apple](https://itunes.apple.com/us/app/azure%20mobile%20engagement/id1105090090).
+  * La aplicación se desarrolló en iOS Swift. El código fuente está disponible en [GitHub](https://github.com/Azure/azure-mobile-engagement-app-ios).
 * **Aplicación de demostración de Android**:
   
-  * Descargar la aplicación hello en hello [Google Play store](https://play.google.com/store/apps/details?id=com.microsoft.azure.engagement).
-  * está disponible en código fuente de Hello [GitHub](https://github.com/Azure/azure-mobile-engagement-app-android).
+  * Descargue la aplicación en [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.azure.engagement).
+  * El código fuente está disponible en [GitHub](https://github.com/Azure/azure-mobile-engagement-app-android).
 
 ![Aplicación de demostración universal de Windows][1]
 
@@ -56,62 +56,62 @@ Esta aplicación está disponible en hello después de tiendas de aplicaciones:
 ![aplicación de demostración de Android][3]
 
 ## <a name="usage"></a>Uso
-Puede usar esta aplicación Hola siguientes maneras:
+Puede usar esta aplicación de las siguientes maneras:
 
-**Descargar la aplicación hello en el dispositivo de vínculos de almacén de aplicación Hola (proporcionado anteriormente):**
+**Descargue las aplicaciones en el dispositivo mediante los vínculos de las tiendas de aplicaciones (proporcionados anteriormente):**
 
 > [!IMPORTANT]
-> No necesita una cuenta de Azure y necesita tooconnect Hola aplicación tooa back. aplicación Hello funciona de forma independiente.
+> No necesita ninguna cuenta de Azure ni conectar la aplicación a un back-end. La aplicación funciona de forma independiente.
 > 
 > 
 
-* Una vez que la aplicación hello en el dispositivo, puede ir a través de vínculos de hello en hello menú izquierda toofind Hola recursos útiles acerca de Mobile Engagement.
-* Hemos agregado hello [fuentes RSS del servicio](https://aka.ms/azmerssfeed) en esta aplicación para que siempre esté informado actualizaciones de producto más recientes de Hola.
-* También puede ir a través del tipo hello ejemplo notificación escenarios tooexperience Hola de notificaciones que son compatibles con Mobile Engagement para cada plataforma. Estas notificaciones se pueden experimentados localmente, es decir, puede hacer clic en botones de hello en tooshow de pantallas de Hola Hola experiencia de notificaciones, que es las notificaciones de hello toosending idénticos de plataforma de Mobile Engagement Hola.
+* Una vez que tenga la aplicación en el dispositivo podrá recorrer los vínculos en el menú de la izquierda para buscar los recursos útiles acerca de Mobile Engagement.
+* Hemos agregado la [fuente RSS del servicio](https://aka.ms/azmerssfeed) a esta aplicación para que siempre esté al corriente de las actualizaciones de producto más recientes.
+* También puede ir a través de los escenarios de notificación de ejemplo para experimentar el tipo de notificaciones compatibles con Mobile Engagement para cada plataforma. Estas notificaciones se pueden experimentar localmente, es decir, puede hacer clic en los botones de las pantallas para que le muestren una experiencia de las notificaciones que es idéntica al envío de notificaciones desde la plataforma de Mobile Engagement.
 
 ![Menú de aplicación para Windows][4]
 
 ![Menú de aplicación para iOS][5]
 ![Menú de la aplicación para Android][6]
 
-**Descargar código fuente de Hola de hello vínculos de GitHub (proporcionado anteriormente):**
+**Descargue el código fuente mediante los vínculos de GitHub (proporcionados anteriormente):**
 
-* Una vez que haya descargado el código fuente de hello, ábralo en entorno de desarrollo respectivos de hello--XCode para iOS, Android Studio para Visual Studio para Windows y Android.
-* A continuación deben seguir nuestra [pasos básicos de la integración de SDK](mobile-engagement-windows-store-dotnet-get-started.md) para que le pueda tooconnect esta tooits aplicación posee instancia de back-end de interacción móvil.
-  * Necesita una cadena de conexión en la aplicación hello tooconfigure.
-  * También necesita plataforma de notificación de inserción de hello tooconfigure para la aplicación.
-* Observará que la aplicación hello propio está instrumentada con Mobile Engagement. Por lo tanto, que se abre la aplicación hello después de conectarse toohello back-end, podrá toosee capaz de sesión de usuario de hello, actividades, eventos y así sucesivamente, en hello **Monitor** ficha.
-* También podrá toosend capaz de notificaciones toothis aplicación desde su propia instancia de Mobile Engagement, en lugar de usar notificaciones locales.
+* Una vez que haya descargado el código fuente, puede abrirlo en los respectivos entornos de desarrollo, XCode en el caso de iOS, Android Studio para Android y Visual Studio para Windows.
+* A continuación debe seguir los [pasos de integración básicos de SDK](mobile-engagement-windows-store-dotnet-get-started.md) para que pueda conectar esta aplicación con su propia instancia de back-end de Mobile Engagement.
+  * Debe configurar una cadena de conexión en la aplicación.
+  * También debe configurar la plataforma de notificaciones push de la aplicación.
+* Observará que la propia aplicación cuenta con Mobile Engagement. Por lo tanto, cuando se abre la aplicación después de conectarse al back-end, podrá ver la sesión de usuario, las actividades, los eventos etc., en la pestaña **Monitor** .
+* También podrá enviar notificaciones a esta aplicación desde su propia instancia de Mobile Engagement en lugar de usar notificaciones locales.
   
-  * Aquí puede agregar un dispositivo como un dispositivo de prueba mediante el uso de hello **Get hello Id. de dispositivo** elemento de menú en la aplicación hello. Esto le proporciona un id. de dispositivo que, a continuación, registra como un dispositivo de prueba con la instancia de back-end de la plataforma.
+  * Aquí puede agregar el dispositivo como un dispositivo de prueba mediante el elemento de menú **Get the Device ID** (Obtener el id. de dispositivo) en la aplicación. Esto le proporciona un id. de dispositivo que, a continuación, registra como un dispositivo de prueba con la instancia de back-end de la plataforma.
     
     ![Id. de dispositivo en Windows][7]
     
     ![Id. de dispositivo en iOS][8]
     ![Id. de dispositivo en Android][9]
 
-## <a name="key-features-of-hello-demo-app"></a>Características clave de aplicación de demostración de hello
-* Como se mencionó anteriormente, con esta aplicación, tiene todos los recursos clave Hola para Mobile Engagement en la mano. Puede ir a través de vínculos de hello en el menú de la izquierda Hola.
-* Puede experimentar notificaciones fuera de aplicación para cada plataforma. Estas notificaciones se pueden entregar como **solo notificación**, que simplemente haga clic en notificación Hola abrir una pantalla nativo de la aplicación hello hacia arriba (mediante el uso de **vinculación profunda**)--o como un **Web anuncio**, donde puede entregar contenido HTML adicional de hello terminar de Mobile Engagement volver toobe muestra cuando se hace clic en la notificación de Hola.
+## <a name="key-features-of-the-demo-app"></a>Características principales de la aplicación de demostración
+* Como se mencionó anteriormente, con esta aplicación, tendrá los recursos principales de Mobile Engagement a mano. Puede recorrer los vínculos en el menú de la izquierda.
+* Puede experimentar notificaciones fuera de aplicación para cada plataforma. Estas notificaciones se pueden enviar como **solo notificación** en cuyo caso, al hacer clic en la notificación, simplemente se abrirá una pantalla nativa de la aplicación (mediante **vinculación en profundidad**) o como **anuncio web**, en cuyo caso podrá enviar contenido HTML adicional desde el back-end de Mobile Engagement que aparece cuando se hace clic en la notificación.
   
     ![Notificaciones fuera de la aplicación][29]
-* En iOS, tener tooclose Hola aplicación toosee Hola sistema o aplicación de notificaciones de inserción. Puede mirar Hola aquí la implementación para agregar **botones de acción**, como Hola si son agregados toothis notificación de fuera de la aplicación para *comentarios* y *recurso compartido* (de modo que Hola usuario puede adoptar derecha de la acción de notificación de hello propio).
+* En iOS, tendrá que cerrar la aplicación para ver las notificaciones push fuera de la aplicación o sistema. Puede ver aquí la implementación para agregar **botones de acción** como los que se han agregado a esta notificación fuera de la aplicación para recibir *comentarios* y *compartir* de forma que el usuario pueda realizar acciones directamente desde la notificación.
   
     ![Notificaciones fuera de la aplicación en iOS][11] ![Visualización de notificaciones fuera de la aplicación en iOS][14]
-* En Android, opciones de hello admitidas están agregando texto multilínea (**texto grande**) o una imagen de notificación (**panorama**) toohello notificación, junto con hello **botones de acción** (como compatibles con iOS).
+* En Android, las opciones admitidas son la adición de un texto de varias líneas (**Texto grande**) o la adición de una imagen en la notificación (**Imagen grande**), junto con los **botones de acción** (tal y como se admiten en iOS).
   
     ![Notificaciones fuera de la aplicación en Android][12] ![Visualización de notificaciones fuera de la aplicación en Android][15]
-* En Windows 10, puede ver el aspecto de las notificaciones de hello en hello PC. Esta notificación también se presenta en Windows 10 hello **centro de notificaciones**. No hay compatibilidad para agregar **botones de acción** en el momento de hello en el SDK de Windows hello.
+* En Windows 10, puede ver qué aspecto tendrán las notificaciones en el equipo. Esta notificación también se mostrará en el **Centro de notificaciones**de Windows 10. De momento, no se pueden agregar **botones de acción** con el SDK de Windows.
   
     ![Notificaciones fuera de la aplicación en Windows][10] ![Visualización fuera de la aplicación en Windows][13]
-* Puede probar las notificaciones en aplicación para cada plataforma. Se trata de una experiencia de dos pasos donde se muestra primera una ventana de **notificación** . Al hacer clic en él, se abre una pantalla completa **anuncio**, tal y como se muestra en la siguiente captura de pantalla de Hola. contenido de Hola de este anuncio procede de la instancia de back-end de Mobile Engagement. Hola SDK dispone de plantillas de Hola para las notificaciones y los anuncios. Se pueden personalizar fácilmente, como se muestra en esta aplicación de demostración con adición de Hola de nuestro logotipo y el color de.  
+* Puede probar las notificaciones en aplicación para cada plataforma. Se trata de una experiencia de dos pasos donde se muestra primera una ventana de **notificación** . Al hacer clic en ella, se abre un **anuncio**de pantalla completa, como se muestra en la captura de pantalla siguiente. El contenido de este anuncio procede de la instancia de back-end de Mobile Engagement. El SDK tiene las plantillas para las notificaciones y los anuncios. Puede personalizarlas fácilmente, tal como se muestra en esta aplicación de demostración con la adición de nuestro logotipo y el color.  
   
     ![Notificaciones en aplicación en Windows][16]
   
     ![Notificaciones en aplicación en iOS][17]  ![Notificaciones en aplicación en Android][18]
   
     **iOS**, **Android**
-* También puede usar hello **categoría** característica de Mobile Engagement toocustomize esta experiencia de forma predeterminada. En la aplicación de demostración de hello, hemos demostrado dos formas toochange Hola experiencia común de notificaciones de Hola. Tenga en cuenta que esta característica de categoría de hello no se admite todavía en hello SDK de Windows.
+* También puede utilizar la característica **Categoría** de Mobile Engagement para personalizar esta experiencia predeterminada. En la aplicación de demostración, hemos mostrado dos formas habituales de cambiar la experiencia de las notificaciones. Tenga en cuenta que la característica Categoría no se ha admitido en el SDK de Windows.
   
     **Pantalla completa intersticial:**
   
@@ -127,7 +127,7 @@ Puede usar esta aplicación Hola siguientes maneras:
 
 **iOS**, **Android**
 
-* Mobile Engagement también admite un tipo especializado de notificación de la aplicación denominada **Sondeos**. Esto le permite toosend los usuarios de aplicación de tooyour segmentada encuestas rápidas. Puede agregar preguntas y opciones para cada pregunta como en la siguiente captura de pantalla de Hola. Esto, a continuación, se muestren como un usuario de aplicación de toohello de notificación en la aplicación.   
+* Mobile Engagement también admite un tipo especializado de notificación de la aplicación denominada **Sondeos**. Esto le permite enviar encuestas rápidas a los usuarios segmentados de la aplicación. Puede agregar preguntas y opciones para cada pregunta como en la captura de pantalla siguiente. Estas se mostrarán como una notificación en la aplicación para el usuario de la aplicación.   
   
     ![Notificaciones de sondeo][32]
   
@@ -137,7 +137,7 @@ Puede usar esta aplicación Hola siguientes maneras:
 
 **iOS**, **Android**
 
-* Mobile Engagement también admite el envío de notificaciones de **inserción de datos** silenciosas. Con estas notificaciones, puede enviar datos desde su servicio (por ejemplo, datos JSON de hello en el siguiente ejemplo de Hola), que se pueden controlar en la aplicación y realizar alguna acción. Un ejemplo es cómo estamos cambiando selectivamente precio Hola de un elemento mediante el uso de notificaciones de inserción de datos.
+* Mobile Engagement también admite el envío de notificaciones de **inserción de datos** silenciosas. Con estas notificaciones, puede enviar algunos datos de su servicio (como los datos JSON del ejemplo siguiente), que puede controlar en la aplicación y en los que puede realizar alguna acción. Un ejemplo es cómo estamos cambiando el precio de un artículo selectivamente mediante las notificaciones push de datos.
   
     ![Notificación push de datos][33]
   
@@ -148,7 +148,7 @@ Puede usar esta aplicación Hola siguientes maneras:
 **iOS**, **Android**
 
 > [!NOTE]
-> Encontrará instrucciones detalladas para cualquiera de estas notificaciones, haga clic en **haga clic aquí para obtener instrucciones sobre cómo toosend estas notificaciones de plataforma de Mobile Engagement** en cualquier pantalla de ejemplo de notificación.
+> Puede ver instrucciones por pasos detalladas para cualquiera de estas notificaciones haciendo clic en **Haga clic aquí para obtener instrucciones sobre cómo enviar estas notificaciones desde la plataforma Mobile Engagement** en cualquier pantalla de ejemplo de notificación.
 > 
 > 
 

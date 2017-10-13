@@ -1,6 +1,6 @@
 ---
-title: "aplicaciones de tooChrome de notificaciones de inserción de aaaSend con centros de notificaciones de Azure | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toouse centros de notificaciones de Azure toosend push notificaciones tooa aplicación Chrome."
+title: "Envío de notificaciones push a Chrome con los Azure Notification Hubs | Microsoft Docs"
+description: "Aprenda a usar los Centros de notificaciones de Azure para enviar notificaciones push a una aplicación de Chrome."
 services: notification-hubs
 keywords: "notificaciones push móviles,notificaciones push,notificación push,notificaciones push android"
 documentationcenter: 
@@ -15,79 +15,79 @@ ms.devlang: JavaScript
 ms.topic: hero-article
 ms.date: 10/03/2016
 ms.author: yuaxu
-ms.openlocfilehash: 7dec8ab02622563bc3730a2e96820da8932d22f3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 600b1b7e5f3987c9a0acc33b7049f7118442b931
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="send-push-notifications-toochrome-apps-with-azure-notification-hubs"></a>Enviar notificaciones tooChrome aplicaciones con Azure centros de notificaciones de inserción
+# <a name="send-push-notifications-to-chrome-apps-with-azure-notification-hubs"></a>Envío de notificaciones push a Chrome con los Centros de notificaciones de Azure
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-Este tema muestra cómo toouse centros de notificaciones de Azure toosend push notificaciones tooa aplicación de Chrome, que se mostrará en el contexto de Hola de hello explorador Google Chrome. En este tutorial, creará una aplicación de Chrome que recibirá notificaciones push mediante el [Servicio de mensajería en la nube de Google (GCM)](https://developers.google.com/cloud-messaging/). 
+En este tema se muestra cómo usar los Centros de notificaciones de Azure para enviar notificaciones push a una aplicación de Chrome que se mostrará en el contexto del explorador Google Chrome. En este tutorial, creará una aplicación de Chrome que recibirá notificaciones push mediante el [Servicio de mensajería en la nube de Google (GCM)](https://developers.google.com/cloud-messaging/). 
 
 > [!NOTE]
-> toocomplete este tutorial, debe tener una cuenta activa de Azure. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Para obtener más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%notification-hubs-chrome-get-started%2F).
+> Para completar este tutorial, deberá tener una cuenta de Azure activa. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Para obtener más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%notification-hubs-chrome-get-started%2F).
 > 
 > 
 
-Hola tutorial le guía a través de estas notificaciones de inserción de tooenable pasos básicos:
+Este tutorial le guiará a través de estos pasos básicos para habilitar las notificaciones de inserción:
 
 * [Habilitación del servicio de mensajería en la nube de Google](#register)
 * [Configuración de su Centro de notificaciones](#configure-hub)
-* [Conectar el centro de notificaciones de aplicación de Chrome toohello](#connect-app)
-* [Enviar una tooyour de notificación de inserción aplicación Chrome](#send)
+* [Conexión de la aplicación Chrome con el centro de notificaciones](#connect-app)
+* [Envío de notificaciones push a la aplicación de Chrome](#send)
 * [Funcionalidades y funciones adicionales](#next-steps)
 
 > [!NOTE]
-> Notificaciones de inserción de aplicación de Chrome no son genéricas notificaciones en el explorador: son modelo de extensibilidad de explorador específico toohello (consulte [información general de aplicaciones de Chrome] para obtener más información). Además toohello Explorador de escritorio, aplicaciones de Chrome ejecutan en móviles (iOS y Android) a través de Apache Cordova. Vea [aplicaciones Chrome en Mobile] toolearn más.
+> Las notificaciones push de las aplicaciones de Chrome no son notificaciones en el explorador genéricas, son específicas del modelo de extensibilidad del explorador (consulte [Chrome Apps Overview] (Información general sobre las aplicaciones de Chrome) para más información). Además del explorador de escritorio, las aplicaciones de Chrome se ejecutan en dispositivos móviles (iOS y Android) mediante Apache Cordova. Vea [Aplicaciones de Chrome en dispositivos móviles] para obtener más información.
 > 
 > 
 
-Configuración de GCM y centros de notificaciones de Azure es tooconfiguring idéntico para Android, ya que [Google Cloud Messaging para Chrome] ha quedado desusado y Hola GCM mismo ahora es compatible con los dispositivos Android y las instancias de Chrome.
+La configuración de GCM y de Centros de notificaciones de Azure es idéntica a la configuración para Android ya que el [Servicio de mensajería en la nube de Google para Chrome] está en desuso y el mismo GCM ahora admite dispositivos Android e instancias de Chrome.
 
 ## <a id="register"></a>Habilitación del servicio de mensajería en la nube de Google
-1. Navegue toohello [consola en la nube de Google] de sitio Web, inicie sesión con sus credenciales de cuenta de Google y, a continuación, haga clic en hello **crear proyecto** botón. Proporcione un **nombre del proyecto**y, a continuación, haga clic en hello **crear** botón.
+1. Diríjase al sitio web de la [consola en la nube de Google] , inicie sesión con las credenciales de su cuenta de Google y, luego, haga clic en botón **Create Project** (Crear proyecto). Proporcione un **nombre de proyecto** adecuado y, luego, haga clic en el botón **Create** (Crear).
    
        ![Google Cloud Console - Create Project][1]
-2. Tome nota de hello **número de proyecto** en hello **proyectos** página de proyecto de Hola que acaba de crear. Se usará como hello **Id. de remitente de GCM** en tooregister de Chrome aplicación Hola con GCM.
+2. Tome nota del **número del proyecto** en la página de **proyectos** para el proyecto que acaba de crear. Úselo como **id. de remitente de GCM** en la aplicación Chrome para registrarse con GCM.
    
        ![Google Cloud Console - Project Number][2]
-3. En el panel izquierdo de hello, haga clic en **API & auth**y, a continuación, desplácese hacia abajo y haga clic en hello alternar tooenable **Google Cloud Messaging para Android**. No tienes tooenable **Google Cloud Messaging para Chrome**.
+3. En el panel de la izquierda, haga clic en **APIs & auth** (API y autenticación), y luego desplácese hacia abajo y haga clic en el botón de alternancia para habilitar **Google Cloud Messaging for Android** (Servicio de mensajería en la nube de Google para Android). No es necesario habilitar el **servicio de mensajería en la nube de Google para Chrome**.
    
        ![Google Cloud Console - Server Key][3]
-4. En el panel izquierdo de hello, haga clic en **credenciales** > **crear nueva clave** > **clave Server** > **crear**.
+4. En el panel izquierdo, haga clic en **Credenciales** > **Crear nueva clave** > **Clave de servidor** > **Crear**.
    
        ![Google Cloud Console - Credentials][4]
-5. Tome nota del servidor hello **clave de API**. Se configurará en su tooenable siguiente, del concentrador de notificación tooGCM de notificaciones de inserción de toosend.
+5. Anote el valor de la **clave de API**del servidor. La configurará después en el centro de notificaciones para que pueda enviar notificaciones push a GCM.
    
        ![Google Cloud Console - API Key][5]
 
 ## <a id="configure-hub"></a>Configuración de su Centro de notificaciones
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-&emsp;&emsp;6.   Hola **configuración** hoja, seleccione **Notification Services** y, a continuación, **Google (GCM)**. Escriba la clave de API de Hola y guardar.
+&emsp;&emsp;6.   En la hoja **Configuración**, seleccione **Servicios de notificaciones** y, luego, **Google (GCM)**. Escriba la clave de API y guárdela.
 
 &emsp;&emsp;![Centros de notificaciones de Azure: Google (GCM)](./media/notification-hubs-android-get-started/notification-hubs-gcm-api.png)
 
-## <a id="connect-app"></a>Conectar el centro de notificaciones de aplicación de Chrome toohello
-El centro de notificaciones está ahora configurado toowork con GCM y tiene tooregister de cadenas de conexión de hello tooboth de la aplicación de recepción y envío de notificaciones de inserción. LK
+## <a id="connect-app"></a>Conexión de la aplicación Chrome con el centro de notificaciones
+El centro de notificaciones está configurado para trabajar con GCM y el usuario dispone de las cadenas de conexión necesarias para registrar su aplicación para que reciba y envíe notificaciones push. LK
 
 ### <a name="create-a-new-chrome-app"></a>Creación de una nueva aplicación Chrome
-ejemplo de Hola a continuación se basa en hello [Chrome aplicación GCM ejemplo] y utiliza Hola recomienda forma toocreate una aplicación de Chrome. Nos centraremos en hello pasos relacionados específicamente con tooAzure centros de notificaciones. 
+El siguiente ejemplo se basa en el [ejemplo de GCM de la aplicación de Chrome] y usa la forma recomendada para crear una aplicación de Chrome. Destacaremos los pasos relacionados con Centros de notificaciones de Azure. 
 
 > [!NOTE]
-> Recomendamos que descargue origen Hola para esta aplicación de Chrome desde [ejemplo de concentrador de notificación de aplicación de Chrome].
+> Se recomienda que descargue el origen de esta aplicación Chrome del [ejemplo del centro de notificaciones de la aplicación Chrome].
 > 
 > 
 
-Hola Chrome aplicación se crea a través de JavaScript, y puede utilizar cualquiera de los editores de word preferido para crearlo. A continuación se muestra cuál será el aspecto de esta aplicación Chrome.
+La aplicación Chrome se crea con JavaScript y puede usar su editor de texto preferido para su creación. A continuación se muestra cuál será el aspecto de esta aplicación Chrome.
 
 ![Aplicación de Google Chrome][15]
 
-1. Cree una carpeta y asígnele el nombre `ChromePushApp`. Por supuesto, el nombre de hello es arbitrario: si asigna un nombre algo diferente, asegúrese de que sustituir ruta de acceso de hello en segmentos de código de hello necesario.
-2. Descargar hello [crypto-js biblioteca] en carpeta de Hola que creó en el segundo paso de Hola. Esta carpeta de biblioteca contendrá dos subcarpetas: `components` y `rollups`.
-3. Cree un archivo `manifest.json` . Todas las aplicaciones de Chrome están respaldadas por un archivo de manifiesto que contiene los metadatos de la aplicación hello y, más importante aún, todos los permisos que se conceden toohello aplicación al usuario Hola lo instala.
+1. Cree una carpeta y asígnele el nombre `ChromePushApp`. Por supuesto, el nombre es arbitrario; si el nombre es diferente, asegúrese de sustituir la ruta de acceso en los segmentos de código necesarios.
+2. Descargue la [biblioteca crypto-js] en la carpeta que creó en el segundo paso. Esta carpeta de biblioteca contendrá dos subcarpetas: `components` y `rollups`.
+3. Cree un archivo `manifest.json` . Todas las aplicaciones de Chrome están respaldadas por un archivo de manifiesto que contiene los metadatos de la aplicación y, lo más importante, todos los permisos concedidos a la aplicación cuando el usuario la instala.
    
         {
           "name": "NH-GCM Notifications",
@@ -103,11 +103,11 @@ Hola Chrome aplicación se crea a través de JavaScript, y puede utilizar cualqu
           "icons": { "128": "gcm_128.png" }
         }
    
-    Hola aviso `permissions` elemento, que especifica que esta aplicación de Chrome será capaz de tooreceive notificaciones de inserción de GCM. También debe especificar Hola URI de centros de notificaciones de Azure donde hello Chrome aplicación hará que un tooregister de llamada REST.
-    Nuestra aplicación de ejemplo también usa un archivo de icono, `gcm_128.png`, que encontrará en origen de Hola que reutiliza de muestra de Hola original GCM. Se puede sustituir por cualquier imagen que se adapte a hello [criterios de icono](https://developer.chrome.com/apps/manifest/icons).
-4. Cree un archivo denominado `background.js` con hello siguiente código:
+    Observe el elemento `permissions` , que especifica que esta aplicación de Chrome podrá recibir notificaciones push de GCM. También debe especificar el URI de Centros de notificaciones de Azure donde la aplicación Chrome realizará una llamada REST para registrarse.
+    Nuestra aplicación de ejemplo también usa un archivo de icono, `gcm_128.png`, que encontrará en el código fuente reutilizado del ejemplo original de GCM. Puede sustituirlo por cualquier imagen que cumpla los [criterios de icono](https://developer.chrome.com/apps/manifest/icons).
+4. Cree un archivo llamado `background.js` con el código siguiente:
    
-        // Returns a new notification ID used in hello notification.
+        // Returns a new notification ID used in the notification.
         function getNotificationId() {
           var id = Math.floor(Math.random() * 9007199254740992) + 1;
           return id.toString();
@@ -117,7 +117,7 @@ Hola Chrome aplicación se crea a través de JavaScript, y puede utilizar cualqu
           // A message is an object with a data property that
           // consists of key-value pairs.
    
-          // Concatenate all key-value pairs tooform a display string.
+          // Concatenate all key-value pairs to form a display string.
           var messageString = "";
           for (var key in message.data) {
             if (messageString != "")
@@ -126,7 +126,7 @@ Hola Chrome aplicación se crea a través de JavaScript, y puede utilizar cualqu
           }
           console.log("Message received: " + messageString);
    
-          // Pop up a notification tooshow hello GCM message.
+          // Pop up a notification to show the GCM message.
           chrome.notifications.create(getNotificationId(), {
             title: 'GCM Message',
             iconUrl: 'gcm_128.png',
@@ -155,15 +155,15 @@ Hola Chrome aplicación se crea a través de JavaScript, y puede utilizar cualqu
         // Set up a listener for GCM message event.
         chrome.gcm.onMessage.addListener(messageReceived);
    
-        // Set up listeners tootrigger hello first-time registration.
+        // Set up listeners to trigger the first-time registration.
         chrome.runtime.onInstalled.addListener(firstTimeRegistration);
         chrome.runtime.onStartup.addListener(firstTimeRegistration);
    
-    Se trata de archivo hello que se abre una ventana de aplicación de Chrome Hola HTML (**register.html**) y también define el controlador de hello **messageReceived** notificación de inserción de toohandle Hola entrantes.
-5. Cree un archivo denominado `register.html` -Esto define la interfaz de usuario de hello Chrome aplicación Hola. 
+    Este es el archivo que muestra el HTML de la ventana de la aplicación de Chrome (**register.html**) y también define el controlador **messageReceived** para controlar la notificación push entrante.
+5. Cree un archivo llamado `register.html` , que define la interfaz de usuario de la aplicación de Chrome. 
    
    > [!NOTE]
-   > En este ejemplo se usa **CryptoJS v3.1.2**. Si descargó otra versión de biblioteca de hello, asegúrese de que se sustituye correctamente la versión de Hola Hola `src` ruta de acceso.
+   > En este ejemplo se usa **CryptoJS v3.1.2**. Si descargó otra versión de la biblioteca, asegúrese de reemplazar correctamente la versión en la ruta de acceso `src` .
    > 
    > 
    
@@ -199,7 +199,7 @@ Hola Chrome aplicación se crea a través de JavaScript, y puede utilizar cualqu
         </body>
    
         </html>
-6. Cree un archivo denominado `register.js` con el siguiente código de hello. Este archivo especifica el script de Hola detrás de `register.html`. Aplicaciones de Chrome no permitir la ejecución de en línea, por lo que tendrá toocreate una secuencia de comandos de copia de seguridad independiente para la interfaz de usuario.
+6. Cree un archivo llamado `register.js` con el código siguiente. Este archivo especifica el script subyacente a `register.html`. Las aplicaciones Chrome no permiten la ejecución insertada, por lo que es necesario crear un script de copia de seguridad independiente para la interfaz de usuario.
    
         var registrationId = "";
         var hubName        = "", connectionString = "";
@@ -224,7 +224,7 @@ Hola Chrome aplicación se crea a través de JavaScript, y puede utilizar cualqu
           var senderId = document.getElementById("senderId").value.trim();
           chrome.gcm.register([senderId], registerCallback);
    
-          // Prevent register button from being clicked again before hello registration finishes.
+          // Prevent register button from being clicked again before the registration finishes.
           document.getElementById("registerWithGCM").disabled = true;
         }
    
@@ -233,7 +233,7 @@ Hola Chrome aplicación se crea a través de JavaScript, y puede utilizar cualqu
           document.getElementById("registerWithGCM").disabled = false;
    
           if (chrome.runtime.lastError) {
-            // When hello registration fails, handle hello error and retry the
+            // When the registration fails, handle the error and retry the
             // registration later.
             updateLog("Registration failed: " + chrome.runtime.lastError.message);
             return;
@@ -242,7 +242,7 @@ Hola Chrome aplicación se crea a través de JavaScript, y puede utilizar cualqu
           updateLog("Registration with GCM succeeded.");
           document.getElementById("registerWithNH").disabled = false;
    
-          // Mark that hello first-time registration is done.
+          // Mark that the first-time registration is done.
           chrome.storage.local.set({registered: true});
         }
    
@@ -310,7 +310,7 @@ Hola Chrome aplicación se crea a través de JavaScript, y puede utilizar cualqu
               "</content>" +
           "</entry>";
    
-          // Update hello payload with hello registration ID obtained earlier.
+          // Update the payload with the registration ID obtained earlier.
           registrationPayload = registrationPayload.replace("{GCMRegistrationId}", registrationId);
    
           var url = originalUri + "/registrations/?api-version=2014-09";
@@ -346,38 +346,38 @@ Hola Chrome aplicación se crea a través de JavaScript, y puede utilizar cualqu
           }
         }
    
-    Hola por encima de la secuencia de comandos tiene Hola parámetros claves siguientes:
+    El script anterior tiene los siguientes parámetros clave:
    
-   * **Window.OnLoad** define los eventos de clic de botón de Hola de botones de hello dos en hello interfaz de usuario. Uno se registra con GCM y Hola otro utiliza el Id. de registro de hello que aparece después del registro con GCM tooregister con centros de notificaciones de Azure.
-   * **updateLog** es la función hello que nos permite toohandle capacidades de registro simple.
-   * **registerWithGCM** es controlador de clic de botón primera hello, lo que hace hello `chrome.gcm.register` llamada tooGCM tooregister Hola Chrome aplicación instancia actual.
-   * **registerCallback** es Hola función de devolución de llamada que se invoca cuando la devolución de llamada de registro GCM Hola.
-   * **registerWithNH** es el controlador de clic de botón segundo hello, que se registra con centros de notificaciones. Obtiene `hubName` y `connectionString` (qué usuario Hola especificó) y manualidades Hola llamada API de REST de registro de bases de datos centrales de notificación.
-   * **splitConnectionString** y **generateSaSToken** son aplicaciones auxiliares que representan la implementación de JavaScript de Hola de un proceso de creación del token de SaS, que debe usarse en todas las llamadas de API de REST. Para más información, vea [Conceptos comunes](http://msdn.microsoft.com/library/dn495627.aspx).
-   * **sendNHRegistrationRequest** se tooAzure centros de notificaciones de llamadas a función hello que realiza un HTTP REST.
-   * **registrationPayload** define la carga XML de registro de hello. Para obtener más información, consulte [Crear registro]. Actualizamos Id. del registro de hello en ella con lo que hemos recibido de GCM.
-   * **cliente** es una instancia de **XMLHttpRequest** que usar la solicitud HTTP POST de toomake Hola. Tenga en cuenta que actualizamos hello `Authorization` encabezado con `sasToken`. La finalización correcta de esta llamada registrará esta instancia de la aplicación Chrome con Centros de notificaciones de Azure.
+   * **window.onload** define los eventos de clic de botón de los dos botones de la interfaz de usuario. Uno se registra con GCM y el otro usa el identificador de registro que se devolvió después del registro con GCM para registrarse con Centros de notificaciones de Azure.
+   * **updateLog** es la función que nos permite controlar las funcionalidades de registro simples.
+   * **registerWithGCM** es el primer controlador de clic de botón que hace que la llamada de `chrome.gcm.register` a GCM registre la instancia actual de la aplicación de Chrome.
+   * **registerCallback** es la función de devolución de llamada que se invoca cuando se devuelve la llamada de registro de GCM anterior.
+   * **registerWithNH** es el segundo controlador de clic de botón, que se registra con los Centros de notificaciones. Obtiene los valores de `hubName` y `connectionString` (que el usuario ha especificado) y elabora la llamada a la API de REST de registro en los Centros de notificaciones.
+   * **splitConnectionString** y **generateSaSToken** son los objetos auxiliares que representan la implementación de Javascript del proceso de creación de un token SaS, que debe usarse en todas las llamadas de la API de REST. Para más información, vea [Conceptos comunes](http://msdn.microsoft.com/library/dn495627.aspx).
+   * **sendNHRegistrationRequest** es la función que realiza una llamada HTTP REST a los Centros de notificaciones de Azure.
+   * **registrationPayload** define la carga XML del registro. Para obtener más información, consulte [Crear registro]. Actualizamos el identificador de registro en ella con lo que hemos recibido de GCM.
+   * **client** es una instancia de **XMLHttpRequest** que usamos para realizar la solicitud HTTP POST. Tenga en cuenta que actualizamos el encabezado `Authorization` con `sasToken`. La finalización correcta de esta llamada registrará esta instancia de la aplicación Chrome con Centros de notificaciones de Azure.
 
-Hello general estructura de carpetas para este proyecto debe ser similar a este: ![aplicación de Google Chrome: estructura de carpetas][21]
+La estructura general de las carpetas de este proyecto debe ser similar a esta: ![Aplicación de Google Chrome: estructura de carpetas][21]
 
 ### <a name="set-up-and-test-your-chrome-app"></a>Configuración y prueba de la aplicación Chrome
 1. Abra el explorador Chrome. Abra las **extensiones de Chrome** y habilite el **modo de desarrollador**.
    
        ![Google Chrome - Enable Developer Mode][16]
-2. Haga clic en **cargar la extensión desempaquetado** y desplazarse por las carpetas de toohello donde creó archivos Hola. Opcionalmente, también puede usar hello **aplicaciones Chrome & herramienta de desarrollo de extensiones**. Esta herramienta es una aplicación de Chrome en sí misma (instalada de hello almacén Web de Chrome) y proporciona funciones de depuración avanzadas para el desarrollo de aplicaciones de Chrome.
+2. Haga clic en **Load unpacked extension** (Cargar extensión descomprimida) y vaya a la carpeta donde creó los archivos. Opcionalmente, también puede usar la **herramienta para desarrolladores de aplicaciones y extensiones Chrome**. Esta herramienta es una aplicación Chrome en sí misma (se instala desde el almacén web de Chrome) y proporciona las capacidades de depuración avanzadas para el desarrollo de aplicaciones Chrome.
    
        ![Google Chrome - Load Unpacked Extension][17]
-3. Si Hola Chrome aplicación se crea sin errores, a continuación, verá la aplicación de Chrome mostrarán.
+3. Si la aplicación Chrome se crea sin errores, verá que aparece.
    
        ![Google Chrome - Chrome App Display][18]
-4. Escriba hello **número de proyecto** obtenido anteriormente de hello **consola en la nube de Google** como Id. de remitente de Hola y haga clic en **registrar con GCM**. Debe ver mensajes de bienvenida **registro con GCM se realizó correctamente.**
+4. Escriba el **número de proyecto** que obtuvo anteriormente de la **consola en la nube de Google**, como el identificador del remitente, y haga clic en **Register with GCM** (Registrar con GCM). Debe ver el mensaje **Registration with GCM succeeded**
    
        ![Google Chrome - Chrome App Customization][19]
-5. Escriba su **nombre del concentrador de notificación** hello y **DefaultListenSharedAccessSignature** que obtuvo de portal de hello anteriormente y haga clic en **registrar con el centro de notificaciones de Azure**. Debe ver mensajes de bienvenida **registro de centro de notificaciones correctas.** y detalles de Hola de respuesta de registro de hello, que contiene el registro de los centros de notificaciones de Azure Hola por identificador.
+5. Escriba su **nombre del centro de notificaciones** y el valor de **DefaultListenSharedAccessSignature** obtenido anteriormente del Portal y haga clic en **Register with Azure Notification Hub** (Registrarse en el Centro de notificaciones de Azure). Debe ver el mensaje **Notification Hub Registration succesful!** (El registro en el centro de notificaciones se realizó correctamente) y los detalles de la respuesta de registro, que contienen el identificador de registro de Centros de notificaciones de Azure.
    
        ![Google Chrome - Specify Notification Hub Details][20]  
 
-## <a name="send"></a>Enviar una aplicación de Chrome tooyour de notificación
+## <a name="send"></a>Envío de notificaciones a la aplicación Chrome
 Para las pruebas, enviaremos notificaciones push de Chrome mediante la aplicación de consola de .NET. 
 
 > [!NOTE]
@@ -385,17 +385,17 @@ Para las pruebas, enviaremos notificaciones push de Chrome mediante la aplicaci�
 > 
 > 
 
-1. En Visual Studio, desde hello **archivo** menú, seleccione **New** y, a continuación, **proyecto**. En **Visual C#**, haga clic en **Windows** y **Aplicación de consola** y, luego, haga clic en **Aceptar**.  Esto crea un nuevo proyecto de aplicación de consola.
-2. De hello **herramientas** menú, haga clic en **Administrador de paquetes de biblioteca** y, a continuación, **Package Manager Console**. Esto muestra hello Package Manager Console.
-3. En la ventana de la consola de hello, ejecute Hola siguiente comando:
+1. En Visual Studio, en el menú **Archivole**, seleccione **Nuevo** y, luego, **Proyecto**. En **Visual C#**, haga clic en **Windows** y **Aplicación de consola** y, luego, haga clic en **Aceptar**.  Esto crea un nuevo proyecto de aplicación de consola.
+2. En el menú **Tools** (Herramientas), haga clic en **Library Package Manager** (Administrador de paquetes de biblioteca) y, luego, en **Package Manager Console** (Consola del Administrador de paquetes). Esto muestra la Consola del Administrador de paquetes.
+3. En la ventana de la consola, ejecute el siguiente comando:
    
         Install-Package Microsoft.Azure.NotificationHubs
    
-       This adds a reference toohello Azure Service Bus SDK with hello <a href="http://nuget.org/packages/  WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet package</a>.
-4. Abra `Program.cs` y agregue los siguiente hello `using` instrucción:
+       This adds a reference to the Azure Service Bus SDK with the <a href="http://nuget.org/packages/  WindowsAzure.ServiceBus/">WindowsAzure.ServiceBus NuGet package</a>.
+4. Abra `Program.cs` y agregue la siguiente instrucción `using`:
    
         using Microsoft.Azure.NotificationHubs;
-5. Hola `Program` clase, agregue Hola siguiente método:
+5. En la clase `Program` , agregue el método siguiente:
    
         private static async void SendNotificationAsync()
         {
@@ -404,35 +404,35 @@ Para las pruebas, enviaremos notificaciones push de Chrome mediante la aplicaci�
             await hub.SendGcmNativeNotificationAsync(message);
         }
    
-       Make sure tooreplace hello `<hub name>` placeholder with hello name of hello notification hub that appears in hello [portal](https://portal.azure.com) in your Notification Hub blade. Also, replace hello connection string placeholder with hello connection string called `DefaultFullSharedAccessSignature` that you obtained in hello notification hub configuration section.
+       Make sure to replace the `<hub name>` placeholder with the name of the notification hub that appears in the [portal](https://portal.azure.com) in your Notification Hub blade. Also, replace the connection string placeholder with the connection string called `DefaultFullSharedAccessSignature` that you obtained in the notification hub configuration section.
    
    > [!NOTE]
-   > Asegúrese de que usar cadena de conexión de hello con **completa** acceso, no **escuchar** acceso. Hola **escuchar** cadena de conexión de acceso no conceder permisos de notificaciones de inserción de toosend.
+   > Asegúrese de usar la cadena de conexión con acceso **Total**, no con acceso **Escuchar**. La cadena de conexión de acceso **Listen** no concede permisos para enviar notificaciones push.
    > 
    > 
-6. Agregar llamadas a siguiente hello en hello `Main` método:
+6. Agregue las siguientes llamadas en el método `Main` :
    
          SendNotificationAsync();
          Console.ReadLine();
-7. Asegúrese de que se está ejecutando Chrome y ejecutar la aplicación de consola de Hola.
-8. Debería ver Hola siguiente elemento emergente en el escritorio de notificación.
+7. Asegúrese de que se está ejecutando Chrome y ejecute la aplicación de consola.
+8. Debería ver el siguiente cuadro emergente de notificación en el escritorio.
    
        ![Google Chrome - Notification][13]
-9. También puede ver todas las notificaciones mediante la ventana de notificaciones de cromo de hello en la barra de tareas de hello (en Windows) cuando se está ejecutando Chrome.
+9. También puede ver todas las notificaciones mediante la ventana de notificaciones de Chrome en la barra de tareas (en Windows) cuando Chrome se está ejecutando.
    
        ![Google Chrome - Notifications List][14]
 
 > [!NOTE]
-> No es necesario toohave Hola Chrome aplicación abrir en el Explorador de Hola o en ejecución (aunque el propio explorador de Chrome Hola debe estar ejecutándose). También obtendrá una vista consolidada de todas las notificaciones en la ventana de notificaciones de Chrome hello.
+> No es necesario tener abierta o en ejecución la aplicación Chrome en el explorador (aunque el propio explorador Chrome se debe estar ejecutando). También obtendrá una vista consolidada de todas las notificaciones en la ventana de notificaciones de Chrome.
 > 
 > 
 
 ## <a name="next-steps"></a>Pasos siguientes
 Obtenga más información sobre Centros de notificaciones en [Introducción a los centros de notificaciones].
 
-tootarget usuarios específicos, consulte toohello [notificación centros de notificar a los usuarios de Azure] tutorial. 
+Para dirigirse a usuarios específicos, consulte el tutorial [Los Centros de notificaciones de Azure notifican a los usuarios con back-end de .NET] . 
 
-Si desea toosegment los usuarios por grupos de interés, puede seguir hello [centros de notificaciones de Azure noticias de última hora] tutorial.
+Si desea segmentar los usuarios por grupos de interés, puede leer [Uso de los Centros de notificaciones para enviar noticias de última hora] .
 
 <!-- Images. -->
 [1]: ./media/notification-hubs-chrome-get-started/GoogleConsoleCreateProject.PNG
@@ -458,17 +458,17 @@ Si desea toosegment los usuarios por grupos de interés, puede seguir hello [cen
 [21]: ./media/notification-hubs-chrome-get-started/FinalFolderView.png
 
 <!-- URLs. -->
-[ejemplo de concentrador de notificación de aplicación de Chrome]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToChromeApps
+[ejemplo del centro de notificaciones de la aplicación Chrome]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToChromeApps
 [consola en la nube de Google]: http://cloud.google.com/console
 [Azure Classic Portal]: https://manage.windowsazure.com/
 [Introducción a los centros de notificaciones]: notification-hubs-push-notification-overview.md
-[información general de aplicaciones de Chrome]: https://developer.chrome.com/apps/about_apps
-[Chrome aplicación GCM ejemplo]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/gcm-notifications
+[Chrome Apps Overview]: https://developer.chrome.com/apps/about_apps
+[ejemplo de GCM de la aplicación de Chrome]: https://github.com/GoogleChrome/chrome-app-samples/tree/master/samples/gcm-notifications
 [Installable Web Apps]: https://developers.google.com/chrome/apps/docs/
-[aplicaciones Chrome en Mobile]: https://developer.chrome.com/apps/chrome_apps_on_mobile
+[Aplicaciones de Chrome en dispositivos móviles]: https://developer.chrome.com/apps/chrome_apps_on_mobile
 [Crear registro]: http://msdn.microsoft.com/library/azure/dn223265.aspx
-[crypto-js biblioteca]: http://code.google.com/p/crypto-js/
+[biblioteca crypto-js]: http://code.google.com/p/crypto-js/
 [GCM with Chrome Apps]: https://developer.chrome.com/apps/cloudMessaging
-[Google Cloud Messaging para Chrome]: https://developer.chrome.com/apps/cloudMessagingV1
-[notificación centros de notificar a los usuarios de Azure]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
-[centros de notificaciones de Azure noticias de última hora]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
+[Servicio de mensajería en la nube de Google para Chrome]: https://developer.chrome.com/apps/cloudMessagingV1
+[Los Centros de notificaciones de Azure notifican a los usuarios con back-end de .NET]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+[Uso de los Centros de notificaciones para enviar noticias de última hora]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md

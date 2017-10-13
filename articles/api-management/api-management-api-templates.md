@@ -1,9 +1,9 @@
 ---
-title: "plantillas de aaaAPI en la administración de API de Azure | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toocustomize Hola contenido de las páginas de hello API en el portal para desarrolladores de hello en la administración de API de Azure."
+title: Plantillas de API en Azure API Management | Microsoft Docs
+description: "Aprenda a personalizar el contenido de las páginas de API en el portal para desarrolladores en Azure API Management."
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 3642fd09-ba98-4358-93a6-c48ab0500431
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: fdfa76167cfaf3b23b22d6321904f34da077fecb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 9055c7fc0b562fa02aa2f2ec8425a4a41b69e600
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="api-templates-in-azure-api-management"></a>Plantillas de API en Azure API Management
-Administración de API de Azure proporciona que Hola contenido de hello toocustomize de capacidad de páginas del portal para desarrolladores con un conjunto de plantillas que configure su contenido. Usar [DotLiquid](http://dotliquidmarkup.org/) editor hello y sintaxis de su elección, como [DotLiquid a los diseñadores](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), o cambie de tamaño un conjunto proporcionado de [los recursos de cadena](api-management-template-resources.md#strings), [ Recursos de glifo](api-management-template-resources.md#glyphs), y [página controles](api-management-page-controls.md), tienen contenido de gran flexibilidad tooconfigure Hola de páginas de Hola como considere oportuno mediante estas plantillas.  
+Azure API Management le ofrece la posibilidad de personalizar el contenido de las páginas del portal para desarrolladores mediante un conjunto de plantillas que configuran su contenido. Por medio de la sintaxis [DotLiquid](http://dotliquidmarkup.org/) y el editor que prefiera, como [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers) (DotLiquid para diseñadores), y un conjunto proporcionado de [recursos de cadena](api-management-template-resources.md#strings), [recursos de glifo](api-management-template-resources.md#glyphs) y [controles de página](api-management-page-controls.md) localizados, puede disponer de una gran flexibilidad para configurar el contenido de las páginas como considere oportuno mediante estas plantillas.  
   
- las plantillas de Hello en esta sección permiten contenido de hello toocustomize de páginas de la API de hello en el portal para desarrolladores de Hola.  
+ Las plantillas de esta sección le permiten personalizar el contenido de las páginas de API en el portal para desarrolladores.  
   
 -   [API list](#APIList)  
 -   [Operación](#Product)  
@@ -38,10 +38,10 @@ Administración de API de Azure proporciona que Hola contenido de hello toocusto
     -   [Ruby](#Ruby)  
 
 > [!NOTE]
->  Plantillas predeterminadas de ejemplo se incluyen en hello siguiendo documentación, pero están toochange asunto debido toocontinuous mejoras. Puede ver plantillas de hello predeterminado en vivo en el portal para desarrolladores de hello desplazándose plantillas individuales toohello deseado. Para obtener más información sobre cómo trabajar con plantillas, consulte [cómo toocustomize Hola portal de administración de API para desarrolladores con plantillas de](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  En la siguiente documentación se incluyen plantillas predeterminadas de ejemplo; sin embargo, están sujetas a cambios debido a mejoras continuas. Puede ver las plantillas predeterminadas en vivo en el portal para desarrolladores; para ello, vaya hasta a las plantillas individuales que desee. Para más información sobre cómo trabajar con plantillas, consulte [Cómo personalizar el portal para desarrolladores de API Management mediante plantillas](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
 ##  <a name="APIList"></a> API list  
- Hola **lista de API** plantilla permite cuerpo de hello toocustomize de página de lista de API de hello en el portal para desarrolladores de Hola.  
+ La plantilla **API list** le permite personalizar el cuerpo de la página de lista de API en el portal para desarrolladores.  
   
  ![Lista de API del portal para desarrolladores](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "Plantillas de lista de API del portal para desarrolladores")  
   
@@ -76,7 +76,7 @@ Administración de API de Azure proporciona que Hola contenido de hello toocusto
 ```  
   
 ### <a name="controls"></a>Controles  
- Hola `API list` plantilla puede utilizar la siguiente hello [página controles](api-management-page-controls.md).  
+ La plantilla `API list` puede usar los siguientes [controles de página](api-management-page-controls.md).  
   
 -   [paging-control](api-management-page-controls.md#paging-control)  
   
@@ -86,7 +86,7 @@ Administración de API de Azure proporciona que Hola contenido de hello toocusto
   
 |Propiedad|Escriba|Descripción|  
 |--------------|----------|-----------------|  
-|apis|Colección de entidades de [resumen de API](api-management-template-data-model-reference.md#APISummary).|Hola API toohello visible el usuario actual.|  
+|apis|Colección de entidades de [resumen de API](api-management-template-data-model-reference.md#APISummary).|Las API visibles para el usuario actual.|  
   
 ### <a name="sample-template-data"></a>Ejemplo de datos de plantilla  
   
@@ -109,7 +109,7 @@ Administración de API de Azure proporciona que Hola contenido de hello toocusto
 ```  
   
 ##  <a name="Product"></a> Operation  
- Hola **operación** plantilla permite cuerpo de hello toocustomize de página de la operación de hello en el portal para desarrolladores de Hola.  
+ La plantilla **Operation** le permite personalizar el cuerpo de la página de operación en el portal para desarrolladores.  
   
  ![Página de operación del portal para desarrolladores](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "Página de operación de las plantillas del portal para desarrolladores")  
   
@@ -335,21 +335,21 @@ Administración de API de Azure proporciona que Hola contenido de hello toocusto
 ```  
   
 ### <a name="controls"></a>Controles  
- Hola `Operation` plantilla no permite el uso de Hola de cualquier [página controles](api-management-page-controls.md).  
+ La plantilla `Operation` no permite el uso de ningún [control de página](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Modelo de datos  
   
 |Propiedad|Escriba|Descripción|  
 |--------------|----------|-----------------|  
-|apiId|cadena|Id. de Hola de API actual Hola.|  
-|apiName|cadena|nombre de Hola de hello API.|  
-|apiDescription|cadena|Una descripción de hello API.|  
-|api|Entidad [API summary](api-management-template-data-model-reference.md#APISummary).|Hola API actual.|  
-|operación|[operación](api-management-template-data-model-reference.md#Operation)|operación de Hola que se muestra actualmente.|  
-|sampleUrl|cadena|dirección URL de Hello para la operación actual de Hola.|  
+|apiId|string|Id. de la API actual.|  
+|apiName|string|Nombre de la API.|  
+|apiDescription|string|Descripción de la API.|  
+|api|Entidad [API summary](api-management-template-data-model-reference.md#APISummary).|API actual.|  
+|operación|[Operación](api-management-template-data-model-reference.md#Operation)|La operación mostrada actualmente.|  
+|sampleUrl|string|La dirección URL de la operación actual.|  
 |operationMenu|[Operation menu](api-management-template-data-model-reference.md#Menu)|Un menú de operaciones de esta API.|  
-|consoleUrl|URI|Hola URI para hello **Pruébelo** botón.|  
-|ejemplos|Colección de entidades de [código de ejemplo](api-management-template-data-model-reference.md#Sample).|ejemplos de código de Hello para la operación actual de Hola...|  
+|consoleUrl|URI|El URI del botón **Pruébelo**.|  
+|ejemplos|Colección de entidades de [código de ejemplo](api-management-template-data-model-reference.md#Sample).|Los ejemplos de código de la operación actual...|  
   
 ### <a name="sample-template-data"></a>Ejemplo de datos de plantilla  
   
@@ -376,7 +376,7 @@ Administración de API de Azure proporciona que Hola contenido de hello toocusto
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -456,7 +456,7 @@ Administración de API de Azure proporciona que Hola contenido de hello toocusto
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -480,7 +480,7 @@ Administración de API de Azure proporciona que Hola contenido de hello toocusto
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -504,7 +504,7 @@ Administración de API de Azure proporciona que Hola contenido de hello toocusto
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -528,7 +528,7 @@ Administración de API de Azure proporciona que Hola contenido de hello toocusto
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -552,7 +552,7 @@ Administración de API de Azure proporciona que Hola contenido de hello toocusto
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -576,7 +576,7 @@ Administración de API de Azure proporciona que Hola contenido de hello toocusto
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -600,7 +600,7 @@ Administración de API de Azure proporciona que Hola contenido de hello toocusto
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -624,7 +624,7 @@ Administración de API de Azure proporciona que Hola contenido de hello toocusto
             "headers": [  
                 {  
                     "name": "Ocp-Apim-Subscription-Key",  
-                    "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
+                    "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
                     "value": "{subscription key}",  
                     "typeName": "string",  
                     "options": null,  
@@ -639,7 +639,7 @@ Administración de API de Azure proporciona que Hola contenido de hello toocusto
 ```  
   
 ##  <a name="CodeSamples"></a> Ejemplos de código  
- Hello siguientes las plantillas permiten toocustomize cuerpo de Hola Hola individuales de ejemplos de código en la página de la operación de Hola.  
+ Las siguientes plantillas le permiten personalizar el cuerpo de los ejemplos de código individuales en la página de operación.  
   
  ![Ejemplos de código de plantillas del portal para desarrolladores](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "Ejemplos de código de las plantillas del portal para desarrolladores de APIM")  
   
@@ -660,7 +660,7 @@ Administración de API de Azure proporciona que Hola contenido de hello toocusto
 -   [Ruby](#Ruby)  
   
 ###  <a name="Curl"></a> Curl  
- Hola **DocumentationSamplesCurl** plantilla permite toocustomize que el código de ejemplo en la sección de ejemplos de código de hello de página de la operación de Hola que.  
+ La plantilla **DocumentationSamplesCurl** le permite personalizar ese ejemplo de código en la sección de ejemplos de código de la página de operación.  
   
 #### <a name="default-template"></a>Plantilla predeterminada  
   
@@ -678,7 +678,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 ```  
   
 #### <a name="controls"></a>Controles  
- Hello plantillas de ejemplo de código no permiten usar Hola ninguna [página controles](api-management-page-controls.md).  
+ Las plantillas de ejemplo de código no permiten el uso de ningún [control de página](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Modelo de datos  
  Entidad [Code sample](api-management-template-data-model-reference.md#Sample).  
@@ -700,7 +700,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -713,7 +713,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 ```  
   
 ###  <a name="CSharp"></a> C#  
- Hola **DocumentationSamplesCsharp** plantilla permite toocustomize que el código de ejemplo en la sección de ejemplos de código de hello de página de la operación de Hola que.  
+ La plantilla **DocumentationSamplesCsharp** le permite personalizar ese ejemplo de código en la sección de ejemplos de código de la página de operación.  
   
 #### <a name="default-template"></a>Plantilla predeterminada  
   
@@ -731,7 +731,7 @@ namespace CSHttpClientSample
         static void Main()  
         {  
             MakeRequest();  
-            Console.WriteLine("Hit ENTER tooexit...");  
+            Console.WriteLine("Hit ENTER to exit...");  
             Console.ReadLine();  
         }  
   
@@ -857,7 +857,7 @@ namespace CSHttpClientSample
 ```  
   
 #### <a name="controls"></a>Controles  
- Hello plantillas de ejemplo de código no permiten usar Hola ninguna [página controles](api-management-page-controls.md).  
+ Las plantillas de ejemplo de código no permiten el uso de ningún [control de página](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Modelo de datos  
  Entidad [Code sample](api-management-template-data-model-reference.md#Sample).  
@@ -879,7 +879,7 @@ namespace CSHttpClientSample
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -892,12 +892,12 @@ namespace CSHttpClientSample
 ```  
   
 ###  <a name="Stub"></a> Java  
- Hola **DocumentationSamplesJava** plantilla permite toocustomize que el código de ejemplo en la sección de ejemplos de código de hello de página de la operación de Hola que.  
+ La plantilla **DocumentationSamplesJava** le permite personalizar ese ejemplo de código en la sección de ejemplos de código de la página de operación.  
   
 #### <a name="default-template"></a>Plantilla predeterminada  
   
 ```xml  
-// // This sample uses hello Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
+// // This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
 import java.net.URI;  
 import org.apache.http.HttpEntity;  
 import org.apache.http.HttpResponse;  
@@ -953,7 +953,7 @@ public class JavaSample
 ```  
   
 #### <a name="controls"></a>Controles  
- Hello plantillas de ejemplo de código no permiten usar Hola ninguna [página controles](api-management-page-controls.md).  
+ Las plantillas de ejemplo de código no permiten el uso de ningún [control de página](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Modelo de datos  
  Entidad [Code sample](api-management-template-data-model-reference.md#Sample).  
@@ -975,7 +975,7 @@ public class JavaSample
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -988,7 +988,7 @@ public class JavaSample
 ```  
   
 ###  <a name="JavaScript"></a> JavaScript  
- Hola **DocumentationSamplesJs** plantilla permite toocustomize que el código de ejemplo en la sección de ejemplos de código de hello de página de la operación de Hola que.  
+ La plantilla **DocumentationSamplesJs** le permite personalizar ese ejemplo de código en la sección de ejemplos de código de la página de operación.  
   
 #### <a name="default-template"></a>Plantilla predeterminada  
   
@@ -1042,7 +1042,7 @@ public class JavaSample
 ```  
   
 #### <a name="controls"></a>Controles  
- Hello plantillas de ejemplo de código no permiten usar Hola ninguna [página controles](api-management-page-controls.md).  
+ Las plantillas de ejemplo de código no permiten el uso de ningún [control de página](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Modelo de datos  
  Entidad [Code sample](api-management-template-data-model-reference.md#Sample).  
@@ -1064,7 +1064,7 @@ public class JavaSample
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -1077,7 +1077,7 @@ public class JavaSample
 ```  
   
 ###  <a name="ObjectiveC"></a> Objective C  
- Hola **DocumentationSamplesObjc** plantilla permite toocustomize que el código de ejemplo en la sección de ejemplos de código de hello de página de la operación de Hola que.  
+ La plantilla **DocumentationSamplesObjc** le permite personalizar ese ejemplo de código en la sección de ejemplos de código de la página de operación.  
   
 #### <a name="default-template"></a>Plantilla predeterminada  
   
@@ -1154,7 +1154,7 @@ int main(int argc, const char * argv[])
 ```  
   
 #### <a name="controls"></a>Controles  
- Hello plantillas de ejemplo de código no permiten usar Hola ninguna [página controles](api-management-page-controls.md).  
+ Las plantillas de ejemplo de código no permiten el uso de ningún [control de página](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Modelo de datos  
  Entidad [Code sample](api-management-template-data-model-reference.md#Sample).  
@@ -1176,7 +1176,7 @@ int main(int argc, const char * argv[])
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -1189,13 +1189,13 @@ int main(int argc, const char * argv[])
 ```  
   
 ###  <a name="PHP"></a> PHP  
- Hola **DocumentationSamplesPhp** plantilla permite toocustomize que el código de ejemplo en la sección de ejemplos de código de hello de página de la operación de Hola que.  
+ La plantilla **DocumentationSamplesPhp** le permite personalizar ese ejemplo de código en la sección de ejemplos de código de la página de operación.  
   
 #### <a name="default-template"></a>Plantilla predeterminada  
   
 ```xml  
 <?php  
-// This sample uses hello Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
+// This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
 require_once 'HTTP/Request2.php';  
   
 $request = new Http_Request2('{{scheme}}://{{host}}{{path}}');  
@@ -1244,7 +1244,7 @@ catch (HttpException $ex)
 ```  
   
 #### <a name="controls"></a>Controles  
- Hello plantillas de ejemplo de código no permiten usar Hola ninguna [página controles](api-management-page-controls.md).  
+ Las plantillas de ejemplo de código no permiten el uso de ningún [control de página](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Modelo de datos  
  Entidad [Code sample](api-management-template-data-model-reference.md#Sample).  
@@ -1266,7 +1266,7 @@ catch (HttpException $ex)
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -1279,7 +1279,7 @@ catch (HttpException $ex)
 ```  
   
 ###  <a name="Python"></a> Python  
- Hola **DocumentationSamplesPython** plantilla permite toocustomize que el código de ejemplo en la sección de ejemplos de código de hello de página de la operación de Hola que.  
+ La plantilla **DocumentationSamplesPython** le permite personalizar ese ejemplo de código en la sección de ejemplos de código de la página de operación.  
   
 #### <a name="default-template"></a>Plantilla predeterminada  
   
@@ -1362,7 +1362,7 @@ except Exception as e:
 ```  
   
 #### <a name="controls"></a>Controles  
- Hello plantillas de ejemplo de código no permiten usar Hola ninguna [página controles](api-management-page-controls.md).  
+ Las plantillas de ejemplo de código no permiten el uso de ningún [control de página](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Modelo de datos  
  Entidad [Code sample](api-management-template-data-model-reference.md#Sample).  
@@ -1384,7 +1384,7 @@ except Exception as e:
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -1397,7 +1397,7 @@ except Exception as e:
 ```  
   
 ###  <a name="Ruby"></a> Ruby  
- Hola **DocumentationSamplesRuby** plantilla permite toocustomize que el código de ejemplo en la sección de ejemplos de código de hello de página de la operación de Hola que.  
+ La plantilla **DocumentationSamplesRuby** le permite personalizar ese ejemplo de código en la sección de ejemplos de código de la página de operación.  
   
 #### <a name="default-template"></a>Plantilla predeterminada  
   
@@ -1433,7 +1433,7 @@ puts response.body
 ```  
   
 #### <a name="controls"></a>Controles  
- Hello plantillas de ejemplo de código no permiten usar Hola ninguna [página controles](api-management-page-controls.md).  
+ Las plantillas de ejemplo de código no permiten el uso de ningún [control de página](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Modelo de datos  
  Entidad [Code sample](api-management-template-data-model-reference.md#Sample).  
@@ -1455,7 +1455,7 @@ puts response.body
     "headers": [  
         {  
             "name": "Ocp-Apim-Subscription-Key",  
-            "description": "Subscription key which provides access toothis API. Found in your <a href='/developer'>Profile</a>.",  
+            "description": "Subscription key which provides access to this API. Found in your <a href='/developer'>Profile</a>.",  
             "value": "{subscription key}",  
             "typeName": "string",  
             "options": null,  
@@ -1468,4 +1468,4 @@ puts response.body
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para obtener más información sobre cómo trabajar con plantillas, consulte [cómo toocustomize Hola portal de administración de API para desarrolladores con plantillas de](api-management-developer-portal-templates.md).
+Para más información sobre cómo trabajar con plantillas, consulte [Cómo personalizar el portal para desarrolladores de API Management mediante plantillas](api-management-developer-portal-templates.md).

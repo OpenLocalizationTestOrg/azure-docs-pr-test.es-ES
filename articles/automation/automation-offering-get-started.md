@@ -1,9 +1,9 @@
 ---
-title: "aaa empezar a trabajar con automatización de Azure | Documentos de Microsoft"
-description: "Este artículo proporciona información general del servicio de automatización de Azure de revisar los detalles de diseño e implementación de Hola Hola tooonboard de preparación de la oferta de Azure Marketplace."
+title: "Introducción a Azure Automation | Microsoft Docs"
+description: "Este artículo proporciona una introducción al servicio Azure Automation, y se revisan el diseño y los detalles de implementación como preparación para incorporar las ofertas de Azure Marketplace."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 
@@ -12,39 +12,39 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/18/2017
+ms.date: 08/31/2017
 ms.author: magoedte
-ms.openlocfilehash: 434e8ea28c55ff9bda1d2e46a7a6b8378a3baa0a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: fad13053895c5d6e3c41835fea3cf0bdd3380cd4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-azure-automation"></a>Introducción a Azure Automation
 
-Esta guía de introducción presenta los principales conceptos relacionados toohello implementación de la automatización de Azure. Si tooAutomation nuevo en Azure o que tenga experiencia con el software de flujo de trabajo de automatización como System Center Orchestrator, esta guía le ayudará a entender cómo tooprepare y automatización de la incorporación.  Después, estará preparado toobegin runbooks para admitir las necesidades de automatización del proceso de desarrollo. 
+Esta guía de introducción presenta los conceptos básicos relacionados con la implementación de Azure Automation. Si no está familiarizado con Azure Automation o si tiene experiencia con software de flujo de trabajo de automatización como System Center Orchestrator, esta guía le ayudará a comprender cómo preparar e incorporar Automation.  Después, estará preparado para empezar a desarrollar runbooks que ayuden en las necesidades de automatización del proceso. 
 
 
 ## <a name="automation-architecture-overview"></a>Información general sobre la arquitectura de Automation
 
-![Información general sobre Automatización de Azure](media/automation-offering-get-started/automation-infradiagram-networkcomms.png)
+![Información general sobre Azure Automation](media/automation-offering-get-started/automation-infradiagram-networkcomms.png)
 
-Automatización de Azure es un software como una aplicación de servicio (SaaS) que proporciona varios inquilinos escalables y confiables, entorno tooautomate procesa con runbooks y administrar sistemas de Linux con la configuración de estado deseado y tooWindows de cambios de configuración (DSC) de servicios en la nube de Azure, otro o de forma local. Las entidades contenidas dentro de la cuenta de Automation, como runbooks, recursos y cuentas de ejecución están aisladas de otras cuentas de Automation dentro de la suscripción y de otras suscripciones.  
+Azure Automation es una aplicación de software como servicio (SaaS) que proporciona un entorno multiinquilino escalable y confiable para automatizar procesos con runbooks y administrar los cambios de configuración en sistemas Windows y Linux mediante la configuración del estado deseado (DSC) en Azure, otros servicios en la nube, o locales. Las entidades contenidas dentro de la cuenta de Automation, como runbooks, recursos y cuentas de ejecución están aisladas de otras cuentas de Automation dentro de la suscripción y de otras suscripciones.  
 
-Los runbooks que ejecuta en Azure se ejecutan en espacios aislados de Automation que se hospedan en las máquinas virtuales de la plataforma como servicio (PaaS) de Azure.  Los espacios aislados de Automation proporcionan aislamiento de inquilinos para todos los aspectos de la ejecución del runbook: módulos, almacenamiento, memoria, comunicación de red, flujos de trabajo, etc. Esta función se administra mediante el servicio de hello y no es accesible desde su cuenta de Azure o la automatización de Azure para toocontrol.         
+Los runbooks que ejecuta en Azure se ejecutan en espacios aislados de Automation que se hospedan en las máquinas virtuales de la plataforma como servicio (PaaS) de Azure.  Los espacios aislados de Automation proporcionan aislamiento de inquilinos para todos los aspectos de la ejecución del runbook: módulos, almacenamiento, memoria, comunicación de red, flujos de trabajo, etc. El servicio administra este rol, al que no puede acceder desde su cuenta de Azure o Azure Automation para controlarlo.         
 
-implementación de hello tooautomate y administración de recursos en el centro de datos local o de otros servicios en la nube, después de crear una cuenta de automatización, puede designar uno o más hello de toorun de máquinas [Hybrid Runbook Worker (HRW)](automation-hybrid-runbook-worker.md) rol.  Cada HRW requiere Hola agente de administración de Microsoft con un área de trabajo de análisis de registros de tooa de conexión y una cuenta de automatización.  Análisis de registros es instalación de hello toobootstrap usado, mantener Hola agente de administración de Microsoft y supervisar la funcionalidad de Hola de hello HRW.  entrega de Hola de hello y runbooks toorun instrucción que ellos se realizan mediante la automatización de Azure.
+Para automatizar la implementación y administración de los recursos en su centro de datos local o de otros servicios en la nube, después de crear una cuenta de Automation, puede designar una o varias máquinas para ejecutar el rol de [Hybrid Runbook Worker (HRW)](automation-hybrid-runbook-worker.md).  Cada HRW requiere el Agente de administración de Microsoft con una conexión a un área de trabajo de Log Analytics y una cuenta de Automation.  Log Analytics se utiliza para arrancar la instalación, mantener el Agente de administración de Microsoft y supervisar la funcionalidad de HRW.  Azure Automation realiza la entrega de los runbooks y la instrucción para ejecutarlos.
 
-Puede implementar varios HRW tooprovide alta de disponibilidad para sus runbooks, trabajos de runbook de equilibrio de carga y en algunos casos los dedicar para las cargas de trabajo determinados o entornos.  Hola Microsoft Monitoring Agent en hello HRW inicia la comunicación con el servicio de automatización de hello en el puerto TCP 443 y no hay ningún requisito de firewall de entrada.  Una vez que tiene runbook con un HRW dentro del entorno de Hola y desea tareas de administración de hello runbook tooperform con otros equipos o servicios dentro de ese entorno, puede ser otros puertos que Hola necesita acceso a runbook.  Si las directivas de seguridad de TI no permitir que los equipos en su toohello de tooconnect de la red Internet, revise el artículo de hello [puerta de enlace de OMS](../log-analytics/log-analytics-oms-gateway.md), que actúa como un proxy para hello HRW toocollect estado del trabajo y recibir información de configuración de la cuenta de automatización.
+Puede implementar varios HRW para proporcionar alta disponibilidad para sus runbooks, equilibrar la carga de los trabajos de runbook y, en algunos casos, dedicarlos a cargas de trabajo o entornos determinados.  El agente Microsoft Monitoring Agent de HRW permite iniciar la comunicación con el servicio Automation a través del puerto TCP 443 y no hay ningún requisito de firewall de entrada.  Una vez que el runbook se esté ejecutando en un HRW dentro del entorno y si desea que el runbook realice tareas de administración en otros equipos o servicios de este, puede que el runbook necesite tener acceso a otros puertos.  Si las directivas de seguridad de TI no permiten que los equipos de su red se conecten a Internet, consulte el artículo [Puerta de enlace de OMS](../log-analytics/log-analytics-oms-gateway.md), que actúa como un proxy para que el HRW pueda recopilar el estado del trabajo y recibir información de configuración desde la cuenta de Automation.
 
-Runbooks que se ejecutan en un HRW ejecutar en el contexto de hello de la cuenta de sistema local de hello en el equipo de hello, que se Hola recomienda contexto de seguridad al realizar acciones administrativas en el equipo de Windows local Hola. Si desea que las tareas de hello runbook toorun respecto a recursos fuera de la máquina local hello, deberá toodefine activos de segura de credenciales de cuenta de automatización que puede acceder desde runbook hello y usar tooauthenticate con un recurso externo Hola Hola. Puede usar [credencial](automation-credentials.md), [certificado](automation-certificates.md), y [conexión](automation-connections.md) activos en su runbook con los cmdlets que permiten credenciales toospecify por lo que puede autenticar a ellos.
+Los runbooks que se ejecutan en un HRW, se ejecutan en el contexto de la cuenta del sistema local del equipo, el cual es el contexto de seguridad recomendado cuando se realizan actividades administrativas en la máquina Windows local. Si desea que el runbook ejecute tareas en recursos fuera de la máquina local, puede que necesite definir recursos de credenciales seguros en la cuenta de Automation a la que puede acceder desde el runbook y los use para autenticarse con el recurso externo. Puede usar los recursos [Credencial](automation-credentials.md), [Certificado](automation-certificates.md) y [Conexión](automation-connections.md) en el runbook con cmdlets que le permitan especificar las credenciales, para que así pueda autenticarlos.
 
-Las configuraciones de DSC almacenadas en automatización de Azure pueden ser tooAzure aplicada directamente las máquinas virtuales. Otras máquinas físicas y virtuales pueden solicitar configuraciones de servidor de extracción de DSC de automatización de Azure Hola.  Para administrar las configuraciones de los locales sistemas físicos o virtuales Windows y Linux, no necesita toodeploy cualquier servidor extracción de infraestructura toosupport Hola DSC de automatización, sólo acceso saliente a Internet desde cada toobe sistema administrado por DSC de automatización , comunicarse a través de servicio de OMS de toohello de puerto 443 de TCP.   
+Las configuraciones de DSC almacenadas en Azure Automation pueden aplicarse directamente a máquinas virtuales de Azure. Otras máquinas físicas y virtuales pueden solicitar las configuraciones del servidor de extracción de DSC de Azure Automation.  Para administrar las configuraciones de sus sistemas locales de Windows y Linux físicos o virtuales, no es necesario implementar ninguna infraestructura que admita el servidor de extracción de DSC de Automation, solo un acceso de salida a Internet desde cada sistema que se administrará mediante el DSC de Automation, con comunicación a través del puerto TCP 443 al servicio OMS.   
 
 ## <a name="prerequisites"></a>Requisitos previos
 
 ### <a name="automation-dsc"></a>DSC de Automation
-DSC de automatización de Azure puede ser usado toomanage diversos equipos:
+El DSC de Azure Automation puede usarse para administrar diversas máquinas:
 
 * Máquinas virtuales de Azure (modelo clásico) con Windows o Linux
 * Máquinas virtuales de Azure con Windows o Linux
@@ -52,73 +52,73 @@ DSC de automatización de Azure puede ser usado toomanage diversos equipos:
 * Equipos físicos o virtuales con Windows, locales o en una nube que no sea Azure ni AWS
 * Equipos físicos o virtuales con Linux, locales o en una nube que no sea Azure ni AWS
 
-debe tener instalada la última versión de Hola de WMF 5 para el agente de DSC de PowerShell de Hola para Windows toobe puede toocommunicate con automatización de Azure. versión más reciente de Hola de hello [agente DSC de PowerShell para Linux](https://www.microsoft.com/en-us/download/details.aspx?id=49150) debe estar instalado para Linux toobe puede toocommunicate con automatización de Azure.
+La versión más reciente de WMF 5 debe estar instalada para el agente DSC de PowerShell para que Windows pueda comunicarse con Azure Automation. La versión más reciente del [agente DSC de PowerShell para Linux](https://www.microsoft.com/en-us/download/details.aspx?id=49150) debe estar instalada para que sea posible la comunicación con el servicio Azure Automation.
 
 ### <a name="hybrid-runbook-worker"></a>Hybrid Runbook Worker  
-Al designar un runbook de equipo toorun híbrida trabajos, este equipo debe tener el siguiente de hello:
+Al designar un equipo para que ejecute trabajos híbridos de runbook, debe tener lo siguiente:
 
 * Windows Server 2012 o superior
-* Windows PowerShell 4.0 o posterior.  Se recomienda instalar Windows PowerShell 5.0 en el equipo de Hola para ofrecer mayor confiabilidad. Puede descargar la nueva versión de hello de hello [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=50395)
+* Windows PowerShell 4.0 o posterior.  Se recomienda instalar Windows PowerShell 5.0 en los equipos para una mayor confiabilidad. Puede descargar la nueva versión en el [Centro de descargas de Microsoft](https://www.microsoft.com/download/details.aspx?id=50395).
 * Dos núcleos como mínimo
 * 4 GB de RAM como mínimo
 
-### <a name="permissions-required-toocreate-automation-account"></a>Permisos necesario toocreate cuenta de automatización
-toocreate o una cuenta de automatización de la actualización, debe tener Hola después determinados privilegios y permisos necesarios toocomplete en este tema.   
+### <a name="permissions-required-to-create-automation-account"></a>Permisos necesarios para crear la cuenta de Automation
+Para crear o actualizar una cuenta de Automation, debe tener los siguientes privilegios y permisos, necesarios para completar este tema.   
  
-* En orden toocreate una cuenta de automatización, su cuenta de usuario de AD necesita toobe tooa agregado rol con el rol de propietario de toohello equivalente de permisos para los recursos de Microsoft.Automation tal como se describe en el artículo [control de acceso basado en roles en automatización de Azure ](automation-role-based-access-control.md).  
-* Si los registros de aplicación Hola configuración se establece demasiado**Sí**, los usuarios sin derechos administrativos en el inquilino de Azure AD pueden [registrar aplicaciones AD](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions).  Si los registros de aplicación Hola configuración se establece demasiado**n**, usuario Hola realizar esta acción debe ser un administrador global de Azure AD. 
+* Para crear una cuenta de Automation, debe agregar la cuenta de usuario de AD a un rol con los privilegios equivalentes a los del rol Propietario para los recursos de Microsoft Automation, como se resalta en el artículo [Control de acceso basado en roles en Azure Automation](automation-role-based-access-control.md).  
+* Los usuarios sin privilegios de administrador en el inquilino de Azure AD pueden **registrar aplicaciones de AD** si los registros de aplicaciones se configuran en [Sí](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions).  Si se establecen en **No**, el usuario que realice esta acción debe ser administrador global de Azure AD. 
 
-Si no eres un miembro de instancia de Active Directory de la suscripción de hello antes de que se agreguen toohello global administrador o coadministrator-administrator roles de suscripción de hello, se agregan tooActive directorio como invitado. En este caso, recibirá un "no tiene permisos toocreate..." Advertencia de hello **agregar una cuenta de automatización** hoja. Los usuarios que se agregaron toohello global administrador o coadministrator-administrator roles en primer lugar se pueden quitar de la instancia de Active Directory de la suscripción de Hola y vuelva a agregan toomake a un usuario en Active Directory completo. tooverify esta situación, hello **Azure Active Directory** panel Hola portal de Azure, seleccione **usuarios y grupos**, seleccione **todos los usuarios** y, después de seleccionar Hola un usuario específico, seleccione **perfil**. Hola valo hello **tipo de usuario** atributo en el perfil de los usuarios de hello no debería ser igual **invitado**.
+Si no es miembro de la instancia de Active Directory de la suscripción antes de que le agreguen al rol de administrador global/coadministrador de esta última, se le agregará a Active Directory como invitado. En este caso, recibirá una advertencia tipo "No tiene permisos para crear..." en la hoja **Agregar cuenta de Automation**. Los usuarios que primero se agregaron al rol de administrador global/coadministrador se pueden quitar de la instancia de Active Directory de la suscripción y volverse a agregar para convertirlos en usuarios completos en Active Directory. Para comprobar esta situación, en el panel de **Azure Active Directory** de Azure Portal, seleccione **Usuarios y grupos**, **All Users** y, después de seleccionar el usuario específico, seleccione **Perfil**. El valor del atributo **Tipo de usuario** del perfil de los usuarios no debería ser **Invitado**.
 
 ## <a name="authentication-planning"></a>Planeamiento de la autenticación
-Automatización de Azure permite tooautomate tareas con los recursos en Azure, de forma local y con otros proveedores de nube.  En orden para un runbook tooperform las acciones necesarias, deben tener permisos toosecurely acceso Hola recursos tenga derechos mínimos Hola requeridos dentro de la suscripción de Hola.  
+Azure Automation le permite automatizar tareas en recursos de Azure, locales y de otros proveedores de servicios en la nube.  Para que un runbook realice las acciones necesarias, debe tener permiso de acceso seguro a los recursos con los derechos mínimos necesarios en la suscripción.  
 
 ### <a name="what-is-an-automation-account"></a>¿Qué es una cuenta de Automation? 
-Todas las tareas de automatización de hello que realizar con los recursos mediante cmdlets de Azure de hello en automatización de Azure autentican tooAzure con autenticación de basada en credenciales de identidad organizativa de Azure Active Directory.  Una cuenta de automatización es independiente de la cuenta de hello usa toosign en toohello portal tooconfigure y utiliza recursos de Azure.  Incluido con una cuenta de recursos de automatización son siguientes de hello:
+Todas las tareas de automatización que realice con recursos mediante los cmdlets de Azure en Azure Automation deben autenticarse en Azure con una autenticación basada en credenciales de identidad organizativa de Azure Active Directory.  La cuenta de Automation es independiente de la cuenta que usa para iniciar sesión en el portal para configurar y usar los recursos de Azure.  Los recursos de Automation que se incluyen con una cuenta son los siguientes:
 
 * **Certificados**: contiene un certificado utilizado para la autenticación desde un runbook o configuración de DSC o para agregarlos.
-* **Las conexiones** -contiene autenticación y configuración tooconnect de información necesaria tooan servicio externo o una aplicación desde un runbook o la configuración de DSC.
-* **Credenciales** -es un objeto PSCredential que contiene las credenciales de seguridad, como un nombre de usuario y contraseña necesarios tooauthenticate desde un runbook o la configuración de DSC.
-* **Módulos de integración** -son módulos de PowerShell incluidos con un uso de cmdlets de runbooks y las configuraciones de DSC toomake de cuentas de automatización de Azure.
+* **Conexiones**: contiene la información de autenticación y configuración necesaria para conectarse a un servicio externo o a una aplicación desde un runbook o una configuración de DSC.
+* **Credenciales**: es un objeto PSCredential que contiene credenciales de seguridad, como el nombre de usuario y contraseña necesarios para autenticarse desde un runbook o una configuración de DSC.
+* **Módulos de integración**: son módulos de PowerShell incluidos con una cuenta de Azure Automation para hacer uso de cmdlets en runbooks y configuraciones de DSC.
 * **Programaciones**: contiene programaciones que inician o detienen un runbook en un momento especificado, incluidas las frecuencias de repetición.
 * **Variables**: contiene valores que están disponibles desde un runbook o una configuración de DSC.
-* **Las configuraciones de DSC** -son scripts de PowerShell que describe cómo tooconfigure una característica del sistema operativo o configurar o instalar una aplicación en un equipo Windows o Linux.  
+* **Configuraciones DSC**: son scripts de PowerShell que describen cómo configurar una característica u opción del sistema operativo o instalar una aplicación en un equipo Windows o Linux.  
 * **Runbooks**: son un conjunto de tareas que realizan algún proceso automatizado en Azure Automation basado en Windows PowerShell.    
 
-recursos de automatización de Hola para cada cuenta de automatización están asociados con una sola región de Azure, pero las cuentas de automatización pueden administrar todos los recursos de hello en su suscripción. Crear cuentas de automatización en regiones diferentes si tiene directivas que requieran datos y recursos toobe tooa aislado específico la región.
+Los recursos de Automation de cada cuenta de Automation están asociados con una sola región de Azure, pero las cuentas de Automation pueden administrar recursos en su suscripción. Cree cuentas de Automation en distintas regiones si tiene directivas que requieren que los datos y recursos se aíslen en una región específica.
 
 > [!NOTE]
-> Cuentas de automatización y recursos Hola contienen que se crean en hello portal de Azure, no son accesibles en hello portal de Azure clásico. Si desea que toomanage estas cuentas o sus recursos con Windows PowerShell, debe usar módulos de hello Azure Resource Manager.
+> A las cuentas de automatización y los recursos que contienen, que se crean en Azure Portal, no se puede acceder desde el Portal de Azure clásico. Si desea administrar estas cuentas o sus recursos con Windows PowerShell, debe usar los módulos del Administrador de recursos de Azure.
 > 
 
-Cuando se crea una cuenta de automatización en hello portal de Azure, se crean automáticamente dos entidades de autenticación:
+Al crear una cuenta de Automation en Azure Portal, crea automáticamente dos entidades de autenticación:
 
-* Una cuenta de ejecución. Esta cuenta crea una entidad de servicio en Azure Active Directory (Azure AD) y un certificado. También asigna control de acceso basado en roles de colaborador de hello (RBAC), que administra los recursos del Administrador de recursos mediante el uso de runbooks.
-* Una cuenta de ejecución clásica. Esta cuenta carga un certificado de administración, que es toomanage usa los recursos clásicos mediante runbooks.
+* Una cuenta de ejecución. Esta cuenta crea una entidad de servicio en Azure Active Directory (Azure AD) y un certificado. También asigna el control de acceso basado en rol (RBAC) del colaborador, que administra recursos de Resource Manager mediante runbooks.
+* Una cuenta de ejecución clásica. Esta cuenta carga un certificado de administración, que se usa para administrar recursos clásicos mediante runbooks.
 
-Control de acceso basado en roles está disponible con toogrant de Azure Resource Manager permite la cuenta de usuario de Azure AD de acciones tooan y cuenta de ejecución y autenticar esa entidad de seguridad de servicio.  Lectura [el control de acceso basado en roles en el artículo de automatización de Azure](automation-role-based-access-control.md) para obtener más información toohelp desarrolle su modelo para administrar permisos de automatización.  
+El control de acceso basado en rol está disponible en Azure Resource Manager para conceder las acciones permitidas a una cuenta de usuario de Azure AD y a una cuenta de ejecución, y para autenticar dicha entidad de servicio.  Para más información que le ayude a desarrollar su modelo de administración de permisos de Automation, consulte el [artículo Control de acceso basado en rol en Azure Automation](automation-role-based-access-control.md).  
 
 #### <a name="authentication-methods"></a>Métodos de autenticación
-Hello siguiente tabla resume Hola distintos métodos de autenticación para cada entorno compatible con automatización de Azure.
+La tabla siguiente resume los diferentes métodos de autenticación para cada entorno admitido por Azure Automation.
 
 | Método | Environment 
 | --- | --- | 
 | Cuenta de ejecución y cuenta de ejecución de Azure clásico |Implementación de Azure Resource Manager e implementación clásica |  
 | Cuenta de usuario de Azure AD |Implementación de Azure Resource Manager e implementación clásica |  
-| Autenticación de Windows |Centro de datos local u otro proveedor de nube mediante Hola Hybrid Runbook Worker |  
+| Autenticación de Windows |Centro de datos local u otro proveedor en la nube con Hybrid Runbook Worker |  
 | Credenciales de AWS |Amazon Web Services |  
 
-En hello **cómo to\Authentication y seguridad** sección, son compatibles con artículos proporciona pasos Introducción e implementación de autenticación de tooconfigure para estos entornos, ya sea con una existente o nueva cuenta Dedique para ese entorno.  Hello Azure identificación y cuenta de identificación clásico, Hola tema [actualización automatización de la cuenta de ejecución](automation-create-runas-account.md) describe cómo tooupdate su cuenta de automatización existente con hello ejecutar como cuentas de portal de Hola o mediante PowerShell si aún no se se configuró originalmente con una cuenta de ejecución o identificación clásico. Si desea toocreate ejecutar como y una cuenta de identificación clásico con un certificado emitido por la entidad de certificación (CA) empresarial, revise esta toolearn artículo cómo toocreate Hola cuentas con esta configuración.     
+En la sección **Procedimientos\Autenticación y seguridad** puede encontrar artículos de ayuda que proporcionan un resumen y pasos de implementación para configurar la autenticación para esos entornos, ya sea con una cuenta existente o una nueva dedicada para ese entorno.  Para la cuenta de ejecución de Azure y la cuenta de ejecución de Azure clásica, el tema [Actualización de una cuenta de ejecución de Automation](automation-create-runas-account.md) describe cómo actualizar la cuenta de Automation existente con las cuentas de ejecución desde el portal o mediante PowerShell si no se configuró originalmente con una cuenta de ejecución o una cuenta de ejecución de Azure clásica. Si desea crear una cuenta de ejecución y una cuenta de ejecución de Azure clásica con un certificado emitido por la entidad de certificación (CA), revise este artículo para obtener información sobre cómo crear cuentas con esta configuración.     
  
 ## <a name="network-planning"></a>Planeamiento de red
-Para hello register de tooand tooconnect de Runbook Worker híbrido con Microsoft Operations Management Suite (OMS), debe tener el número de puerto de acceso toohello y hello las direcciones URL se describen a continuación.  Esto es además toohello [puertos y las direcciones URL necesarias para Hola Microsoft Monitoring Agent](../log-analytics/log-analytics-windows-agents.md#network) tooconnect tooOMS. Si utiliza un servidor proxy para la comunicación entre el agente de Hola y el servicio OMS hello, deberá tooensure que los recursos adecuados de hello son accesibles. Si usa un toohello de acceso de firewall toorestrict Internet, deberá tooconfigure el acceso de toopermit firewall.
+Para que la instancia de Hybrid Runbook Worker se conecte a Microsoft Operations Management Suite (OMS) y se registre en él, debe tener acceso al número de puerto y a las direcciones URL que se describen a continuación.  Y esto aparte de los [puertos y las direcciones URL necesarios para que Microsoft Monitoring Agent](../log-analytics/log-analytics-windows-agents.md#network) se conecte a OMS. Si se usa un servidor proxy para realizar la comunicación entre el agente y el servicio de OMS, debe asegurarse de que es posible tener acceso a los recursos adecuados. Si usa un firewall para restringir el acceso a Internet, deberá configurarlo para que permita el acceso.
 
-información de Hello debajo de puerto Hola de lista y las direcciones URL que son necesarias para hello Hybrid Runbook Worker toocommunicate con la automatización.
+A continuación se indican los puertos y las direcciones URL que son necesarios para que Hybrid Runbook Worker se comunique con Automation.
 
 * Puerto: solo se requiere el puerto TCP 443 para el acceso a Internet
 * URL global: *.azure-automation.net
 
-Si tiene una cuenta de automatización definida para una región específica y desea toorestrict comunicación con ese centro de datos regional, hello tabla siguiente proporciona registro DNS de Hola para cada región.
+Si tiene una cuenta de Automation definida para una región específica y quiere restringir la comunicación con ese dentro de datos regional, en la tabla siguiente se proporciona el registro DNS para cada región.
 
 | **Región** | **Registro DNS** |
 | --- | --- |
@@ -135,60 +135,59 @@ Si tiene una cuenta de automatización definida para una región específica y d
 | Sur del Reino Unido 2 | uks-jobruntimedata-prod-su1.azure-automation.net |
 | Gobierno de EE. UU. - Virginia | usge-jobruntimedata-prod-su1.azure-automation.us |
 
-Para obtener una lista de direcciones IP en lugar de nombres, descargue y revise hello [dirección IP del centro de datos de Azure](https://www.microsoft.com/download/details.aspx?id=41653) archivo xml de hello Microsoft Download Center. 
+Para obtener una lista de direcciones IP en lugar de nombres, descargue y revise el archivo XML [Intervalos de direcciones IP de los centros de datos de Microsoft Azure](https://www.microsoft.com/download/details.aspx?id=41653) desde el Centro de descarga de Microsoft. 
 
 > [!NOTE]
-> Este archivo contiene Hola intervalos de direcciones IP (incluidos los intervalos de proceso, SQL y almacenamiento) utilizados en hello centros de datos de Microsoft Azure. Un archivo actualizado se publica una vez que refleja los intervalos de Hola implementada actualmente y los intervalos de IP toohello próximos cambios. Nuevos intervalos que aparecen en el archivo hello no se utilizará en los centros de datos de Hola durante al menos una semana. Por favor, descarga Hola nuevo xml archivo cada semana y realizar los cambios necesarios de hello en el sitio toocorrectly identificar servicios que se ejecutan en Azure. Los usuarios de ruta rápidos pueden tenga en cuenta que este archivo usa tooupdate Hola publicidad de BGP de Azure espacio Hola primera semana de cada mes. 
+> Este archivo contiene los intervalos de direcciones IP (incluidos los intervalos de Compute, SQL y Storage) utilizados en los centros de datos de Microsoft Azure. Semanalmente, se publica un archivo actualizado que refleja los intervalos implementados actualmente y los próximos cambios en los intervalos de direcciones IP. Los nuevos intervalos que aparecen en el archivo no se utilizarán en los centros de datos durante al menos una semana. Descargue el nuevo archivo XML cada semana y realizar los cambios necesarios en su sitio para identificar correctamente los servicios que se ejecutan en Azure. Los usuarios de Express Route observarán que este archivo se usa para actualizar la publicidad de BGP del espacio de Azure en la primera semana de cada mes. 
 > 
 
 ## <a name="creating-an-automation-account"></a>Creación de una cuenta de Automation
 
-Hay diferentes maneras de que crear una cuenta de automatización en hello portal de Azure.  Hello en la tabla siguiente presenta a cada tipo de experiencia de implementación y las diferencias entre ellos.  
+Hay varias formas de crear una cuenta de Automation en Azure Portal.  La tabla siguiente presenta cada tipo de experiencia de implementación y las diferencias entre ellas.  
 
 |Método | Descripción |
 |-------|-------------|
-| Seleccione el Control y automatización de hello Marketplace | Una oferta, que crea una cuenta de automatización y el área de trabajo OMS vinculado tooone otra en Hola mismo grupo de recursos y la región.  Integración con OMS también incluye la ventaja de hello del uso de análisis de registros toomonitor y analizar secuencias de estado y el trabajo del trabajo de runbook con el tiempo y utilizar características avanzadas tooescalate o investigar los problemas. Hola oferta también implementa soluciones de hello seguimiento de cambios y administración de actualizaciones, que están habilitadas de forma predeterminada. |
-| Seleccione automatización de hello Marketplace | Crea una cuenta de automatización en un grupo de recursos nuevo o existente que no está vinculado tooan área de trabajo OMS y no incluye ninguna solución disponible de la oferta de automatización y Control de Hola. Esto es una configuración básica que le presenta tooAutomation y puede ayudarle a aprender cómo toowrite runbooks y las configuraciones de DSC, use Hola funciones de servicio de Hola. |
-| Soluciones de administración seleccionadas | Si selecciona una solución:  **[administración de actualizaciones](../operations-management-suite/oms-solution-update-management.md)**,  **[máquinas virtuales de inicio/detención durante horas de poca actividad](automation-solution-vm-management.md)**, o  **[ Seguimiento de cambios](../log-analytics/log-analytics-change-tracking.md)**  solicitará que el área de trabajo OMS y tooselect una automatización existente, o para ofrecer Hola toocreate opción como necesarios para hello solución toobe implementado en su suscripción. |
+| Seleccionar Automation and Control en Marketplace | Una oferta que crea una cuenta de Automation y un área de trabajo de OMS vinculadas entre sí en el mismo grupo de recursos y región.  La integración con OMS también incluye la ventaja de utilizar Log Analytics para supervisar y analizar el estado de los trabajos de runbook y las secuencias de trabajos en el tiempo y utilizar características avanzadas para remitir o investigar los problemas. La oferta también implementa las soluciones de seguimiento de cambios y administración de actualizaciones, que están habilitadas de forma predeterminada. |
+| Seleccionar Automation en Marketplace | Crea una cuenta de Automation en un grupo de recursos nuevos o ya existente que no está vinculada a un área de trabajo de OMS y no incluye ninguna solución disponible de la oferta de Automation and Control. Se trata de una configuración básica que le sirve de introducción a Automation y puede ayudarle a aprender a escribir runbooks, configuraciones de DSC y a utilizar las funcionalidades del servicio. |
+| Soluciones de administración seleccionadas | Si selecciona una solución como **[Administración de actualizaciones](../operations-management-suite/oms-solution-update-management.md)**, **[Iniciar/Detener las VM fuera de las horas de trabajo](automation-solution-vm-management.md)** o **[Seguimiento de cambios](../log-analytics/log-analytics-change-tracking.md)** se le pedirá que seleccione un área de trabajo de Automation y OMS existente o se le ofrecerá la opción de crear ambas según sea necesario para que la solución se implemente en su suscripción. |
 
-Este tema explica cómo crear un área de trabajo OMS y cuenta de automatización de la oferta de automatización y Control de incorporación Hola.  una cuenta de automatización de pruebas o toopreview Hola un servicio, Hola de revisión del artículo siguiente independiente toocreate [crear cuenta de automatización independiente](automation-create-standalone-account.md).  
+Este tema explica cómo crear una cuenta de Automation y un área de trabajo de OMS mediante la incorporación de la oferta de Automation and Control.  Para crear una cuenta de Automation independiente de prueba o para obtener una vista previa del servicio, revise el artículo siguiente sobre [Creación de una cuenta independiente de Automation](automation-create-standalone-account.md).  
 
 ### <a name="create-automation-account-integrated-with-oms"></a>Creación de una cuenta de Automation integrada con OMS
-Hola recomienda tooonboard método que automatización está seleccionando la oferta de automatización y Control de Hola de hello Marketplace.  Esto crea una cuenta de automatización y establece la integración de hello con un área de trabajo OMS, incluidos Hola opción tooinstall Hola soluciones de administración que están disponibles con la oferta de Hola.  
+Es el método recomendado para incorporar Automation seleccionando la oferta de Automation and Control de Marketplace.  Esto crea una cuenta de Automation y establece la integración con un área de trabajo de OMS, incluida la opción para instalar las soluciones de administración que están disponibles con la oferta.  
 
-1. Inicie sesión en toohello portal de Azure con una cuenta que sea miembro del rol de los administradores de suscripciones de Hola y Coadministrador de suscripción de Hola.
+1. Inicie sesión en Azure Portal con una cuenta que sea miembro del rol Administradores de suscripciones y coadministrador de la suscripción.
 
 2. Haga clic en **Nuevo**.<br><br> ![Seleccione la opción Nuevo en Azure Portal](media/automation-offering-get-started/automation-portal-martketplacestart.png)<br>  
 
-3. Busque **automatización** y, a continuación, en hello resultados de la búsqueda seleccione **Control y automatización***.<br><br> ![Busque y seleccione Automation and Control en Marketplace](media/automation-offering-get-started/automation-portal-martketplace-select-automationandcontrol.png).<br>   
+3. Busque **Automation** y, a continuación, en los resultados de la búsqueda seleccione **Automation and Control***.<br><br> ![Busque y seleccione Automation and Control en Marketplace](media/automation-offering-get-started/automation-portal-martketplace-select-automationandcontrol.png).<br>   
 
-4. Después de leer la descripción de Hola para oferta de hello, haga clic en **crear**.  
+4. Después de leer la descripción de la oferta, haga clic en **Crear**.  
 
-5. En hello **Control y automatización** hoja de configuración, seleccione **área de trabajo de OMS**.  En hello **áreas de trabajo de OMS** hoja, seleccione un toohello de área de trabajo vinculado de OMS misma suscripción de Azure que Hola cuenta de automatización está en o cree un área de trabajo OMS.  Si no tiene un área de trabajo OMS, seleccione **crear nueva área de trabajo** y en hello **área de trabajo de OMS** hoja realizar siguiente hello: 
-   - Especifique un nombre para el nuevo hello **área de trabajo de OMS**.
-   - Seleccione un **suscripción** toolink tooby selección de lista desplegable de hello si predeterminado Hola seleccionado no es adecuado.
+5. En la hoja de configuración de **Automation and Control**, seleccione **Área de trabajo de OMS**.  En la hoja **Áreas de trabajo de OMS**, seleccione un área de trabajo de OMS que esté vinculada a la misma suscripción de Azure en la que se encuentra la cuenta de Automation o cree un área de trabajo de OMS.  Si no tiene un área de trabajo de OMS, puede seleccionar **Crear área de trabajo nueva** y en la hoja **Área de trabajo de OMS** realizar estos pasos: 
+   - Especifique un nombre para el nuevo **espacio de trabajo de OMS**.
+   - Seleccione una **suscripción** a la que vincularlo en la lista desplegable si la opción predeterminada seleccionada no es adecuada.
    - Para **Grupo de recursos**, puede crear un grupo de recursos o seleccionar uno existente.  
-   - Seleccione una **ubicación**.  Actualmente Hola únicas ubicaciones a disponibles son **sudeste de Australia**, **UU**, **sudeste de Asia**, **oeste Ee.uu. Central**y  **Europa occidental**.
-   - Seleccione un **plan de tarifa**.  solución de Hola se ofrece en dos niveles: libre y niveles por nodo (OMS).  nivel gratis Hello tiene un límite de cantidad de Hola de datos recopilados diariamente, período de retención y minutos de tiempo de ejecución del trabajo de runbook.  Hola por nodo (OMS) nivel no tiene un límite de cantidad de Hola de datos recopilados diariamente.  
-   - Seleccione **Cuenta de Automation**.  Si va a crear una nueva área de trabajo OMS, es necesario tooalso crear una cuenta de automatización que se asocia a Hola nueva área de trabajo OMS especificado anteriormente, incluida su suscripción de Azure, el grupo de recursos y la región.  Puede seleccionar **crear una cuenta de automatización** y en hello **cuenta de automatización** hoja, proporciona Hola siguiente: 
-  - Hola **nombre** , escriba el nombre de Hola de hello cuenta de automatización.
+   - Seleccione una **ubicación**.  Para más información, consulte qué [regiones de Azure Automation están disponibles en](https://azure.microsoft.com/regions/services/).  Las soluciones se ofrecen en dos niveles: gratuito y nivel de pago por nodo (OMS).  El nivel gratis tiene un límite sobre la cantidad de datos recopilados diariamente, el período de retención y los minutos de tiempo de ejecución del trabajo de Runbook.  El nivel de pago por nodos (OMS) no tiene ningún límite en la cantidad de datos recopilados a diario.  
+   - Seleccione **Cuenta de Automation**.  Si va a crear una nueva área de trabajo de OMS, será necesario crear también una nueva cuenta de Automation que se asociará con la nueva área de trabajo de OMS especificada anteriormente, lo que incluye la suscripción, el grupo de recursos y la región de Azure.  Puede seleccionar **Crear una cuenta de Automation** y, en la hoja **Cuenta de Automation**, proporcionar la siguiente información: 
+  - En el campo **Nombre**, escriba el nombre de la cuenta de Automation.
 
-    Todas las demás opciones se rellenan automáticamente basándose en el área de trabajo OMS de hello seleccionado y no se puede modificar estas opciones.  Una cuenta de identificación de Azure es método de autenticación predeterminado de Hola para oferta de Hola.  Una vez que pulses **Aceptar**, se validan las opciones de configuración de Hola y Hola cuenta de automatización se crea.  Puede realizar un seguimiento de su progreso en **notificaciones** en el menú de Hola. 
+    Todas las demás opciones se rellenan automáticamente en función del espacio de trabajo de OMS seleccionado y no se pueden modificar.  Una cuenta de ejecución de Azure es el método de autenticación predeterminado de la oferta.  Después de hacer clic en **Aceptar**, se validan las opciones de configuración y se crea la cuenta de Automation.  Puede realizar un seguimiento de su progreso en **Notificaciones** en el menú. 
 
-    En caso contrario, seleccione una cuenta de ejecución de Automation existente.  cuenta de Hello seleccionada ya no puede ser vinculado tooanother área de trabajo OMS, en caso contrario, se presenta un mensaje de notificación en la hoja de Hola.  Si ya está vinculado, necesita tooselect una cuenta de identificación de automatización diferente o crear uno.
+    En caso contrario, seleccione una cuenta de ejecución de Automation existente.  La cuenta seleccionada no puede estar vinculada ya a otra área de trabajo de OMS ya que, en caso contrario, aparecerá un mensaje de notificación en la hoja.  Si ya está vinculada, deberá seleccionar una cuenta de ejecución de Automation diferente o crear una.
 
-    Después de completar la información de hello necesaria, haga clic en **crear**.  se comprueba la información de Hola y se crean las cuentas de automatización de la cuenta y la ejecución de Hola.  Se devuelven toohello **área de trabajo OMS** hoja automáticamente.  
+    Después de rellenar la información necesaria, haga clic en **Crear**.  Se comprueba la información y se crean las cuentas de Automation y de ejecución.  Se le redirigirá a la hoja **Área de trabajo de OMS** automáticamente.  
 
-6. Después de proporcionar información de hello necesario en hello **área de trabajo de OMS** hoja, haga clic en **crear**.  Mientras se comprueba la información de Hola y crea el área de trabajo de hello, puede realizar un seguimiento de su progreso en **notificaciones** en el menú de Hola.  Se devuelven toohello **Agregar solución** hoja.  
+6. Después de proporcionar la información necesaria en la hoja **Área de trabajo de OMS**, haga clic en **Crear**.  Mientras se comprueba la información y se crea el espacio de trabajo, puede realizar un seguimiento de su progreso en **Notificaciones** en el menú.  Volverá a la hoja **Agregar solución**.  
 
-7. En hello **Control y automatización** hoja de configuración, confirme la tooinstall Hola recomienda soluciones seleccionadas previamente. Si anula la selección de alguna de ellas puede instalarlas individualmente más adelante.  
+7. En la hoja de configuración **Automation and Control**, confirme que desea instalar las soluciones recomendadas preseleccionadas. Si anula la selección de alguna de ellas puede instalarlas individualmente más adelante.  
 
-8. Haga clic en **crear** tooproceed con automatización de la incorporación y un área de trabajo OMS. Se validan todas las opciones y, a continuación, intenta hello toodeploy oferta en su suscripción.  Este proceso puede tardar unos segundos toocomplete y se puede realizar un seguimiento de su progreso en **notificaciones** en el menú de Hola. 
+8. Haga clic en **Crear** para continuar con la incorporación de Automation y de un área de trabajo de OMS. Todas las configuraciones se validan y se intenta implementar la oferta en la suscripción.  Este proceso puede tardar varios segundos en completarse y puede realizar el seguimiento de su progreso en **Notificaciones** en el menú. 
 
-Una vez oferta Hola incorporado, puede empezar a crear soluciones de administración que habilitado de runbooks, trabajar con hello, implementar un [Runbook worker híbrido](automation-hybrid-runbook-worker.md) rol o empezar a trabajar con [análisis de registros](https://docs.microsoft.com/azure/log-analytics) datos de toocollect generados por los recursos en su entorno de nube o local.   
+Después de incorporar la oferta, puede empezar a crear runbooks, trabajar con las soluciones de administración que ha habilitado, implementar un rol de [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md) o comenzar a trabajar con [Log Analytics](https://docs.microsoft.com/azure/log-analytics) para recopilar los datos generados por los recursos de su entorno en la nube o local.   
 
 ## <a name="next-steps"></a>Pasos siguientes
 * Puede confirmar la nueva cuenta de Automation para autenticarse con recursos de Azure mediante la revisión del artículo [Comprobación de la autenticación con la cuenta de ejecución de Azure Automation](automation-verify-runas-authentication.md).
-* tooget se inicia con la creación de runbooks, primero consulte hello [tipos de runbook de automatización](automation-runbook-types.md) compatible y relacionados con las consideraciones antes de empezar a crear.
+* Para empezar a trabajar con la creación de runbooks, revise primero los [tipos de runbook de Automation](automation-runbook-types.md) compatibles y otras consideraciones relacionadas antes de empezar a crear.
 
 

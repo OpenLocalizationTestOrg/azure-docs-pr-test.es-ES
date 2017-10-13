@@ -1,6 +1,6 @@
 ---
-title: "aaaMonitor codificación progreso del trabajo con hello portal de Azure"
-description: "Este tutorial le guiará por los pasos de Hola de supervisar el progreso del trabajo con hello portal de Azure."
+title: "Supervisión del progreso de trabajo de codificación con el Portal de Azure"
+description: "Este tutorial lo guiará a través de los pasos de supervisión del progreso de los trabajos con el Portal de Azure."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 4282553d5dbed65ea6427bcd6de778795f1ff9ed
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 571d222068e92a45b0e37bec298bab7a6825f731
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="monitor-encoding-job-progress-with-hello-azure-portal"></a>Supervisar el progreso de trabajo de codificación con hello portal de Azure
+# <a name="monitor-encoding-job-progress-with-the-azure-portal"></a>Supervisión del progreso de trabajo de codificación con el Portal de Azure
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-check-job-progress.md)
 > * [.NET](media-services-check-job-progress.md)
@@ -30,17 +30,17 @@ ms.lasthandoff: 10/06/2017
 
 ## <a name="overview"></a>Información general
 > [!NOTE]
-> toocomplete este tutorial, necesita una cuenta de Azure. Para obtener más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/). 
+> Para completar este tutorial, deberá tener una cuenta de Azure. Para obtener más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/). 
 > 
 > 
 
-Cuando se ejecutan trabajos, a menudo requieren un progreso del trabajo de manera tootrack. 
+Al ejecutar trabajos, muchas veces se requiere una forma de hacer un seguimiento al progreso del trabajo. 
 
-progreso de hello toomonitor de hello codificación de trabajo, haga clic en **configuración** (al principio de Hola de página de hello) y, a continuación, seleccione **trabajos**.
+Para supervisar el progreso del trabajo de codificación, haga clic en **Configuración** (en la parte superior de la página) y, después, seleccione **Trabajos**.
 
 ![Trabajos](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
-Puede hacer clic en hello trabajo toosee más detalles.
+Puede hacer clic en el trabajo para ver más detalles.
 
 ![Trabajos](./media/media-services-portal-vod-get-started/media-services-job-progress2.png)
 

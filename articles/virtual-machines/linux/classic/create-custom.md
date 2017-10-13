@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate una VM de Linux clásica con Hola 1.0 de CLI de Azure | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toocreate una máquina virtual de Linux con el uso de hello Azure CLI 1.0 Hola modelo de implementación clásica"
+title: "Creación de una máquina virtual Linux mediante la CLI de Azure 1.0 | Microsoft Docs"
+description: "Aprenda a crear una máquina virtual Linux con la CLI de Azure 1.0 mediante el modelo de implementación clásica"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -15,28 +15,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
-ms.openlocfilehash: 5c3c54e5d1444a79e8e609c76d04a3a621c8d03f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8ddbacbbb70c0cf1a2537fab4d981a316610a4d7
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toocreate-a-classic-linux-vm-with-hello-azure-cli-10"></a>¿Cómo tooCreate una VM de Linux clásica con Hola 1.0 de CLI de Azure
+# <a name="how-to-create-a-classic-linux-vm-with-the-azure-cli-10"></a>Creación de una máquina virtual Linux con la CLI de Azure 1.0
 > [!IMPORTANT] 
-> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../../../resource-manager-deployment-model.md). Este artículo tratan con modelo de implementación de hello clásico. Microsoft recomienda que más nuevas implementaciones de usar el modelo del Administrador de recursos de Hola. Para la versión del Administrador de recursos de hello, consulte [aquí](../create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../../../resource-manager-deployment-model.md). En este artículo se trata el modelo de implementación clásico. Microsoft recomienda que las implementaciones más recientes usen el modelo del Administrador de recursos. Para la versión de Resource Manager, consulte [aquí](../create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Este tema describe cómo toocreate una máquina virtual de Linux (VM) con el uso de hello Azure CLI 1.0 Hola modelo de implementación clásica. Se utiliza una imagen de Linux de hello disponible **imágenes** en Azure. comandos de Hello 1.0 de CLI de Azure permiten Hola siguientes opciones de configuración, entre otros:
+En este tema se describe cómo crear una máquina virtual (VM) Linux con la CLI de Azure 1.0 mediante el modelo de implementación clásica. Vamos a usar una imagen de Linux de una de las **IMÁGENES** disponibles en Azure. Los comandos de la CLI de Azure 1.0 ofrecen, entre otras, las siguientes opciones de configuración:
 
-* Conexión de red virtual de hello VM tooa
-* Agregar servicio de nube existente de hello VM tooan
-* Agregar cuenta de almacenamiento existente de hello VM tooan
-* Agregar conjunto de disponibilidad de hello VM tooan o ubicación
+* Conexión de la VM a una red virtual
+* Adición de la VM a un servicio en la nube existente
+* Incorporación de la máquina virtual a una cuenta de almacenamiento existente
+* Incorporación de la máquina virtual a un conjunto de disponibilidad o una ubicación
 
 > [!IMPORTANT]
-> Si desea que su toouse de máquina virtual una red virtual para que pueda conectarse tooit directamente por el nombre de host o configurar las conexiones entre entornos, asegúrese de que especificar red virtual de Hola cuando creas Hola máquina virtual. Una máquina virtual solo puede tener toojoin configurado una red virtual cuando cree Hola máquina virtual. Para obtener detalles acerca de las redes virtuales, consulte [Información general sobre redes virtuales de Azure](http://go.microsoft.com/fwlink/p/?LinkID=294063).
+> Si desea que la máquina virtual use una red virtual, con el fin de poder conectarse a ella directamente mediante un nombre de host o configurar conexiones entre locales, asegúrese de que especifica la red virtual al crear la máquina virtual. Puede configurarse una máquina virtual para que se una a una red virtual solo cuando se cree la máquina virtual. Para obtener detalles acerca de las redes virtuales, consulte [Información general sobre redes virtuales de Azure](http://go.microsoft.com/fwlink/p/?LinkID=294063).
 > 
 > 
 
-## <a name="how-toocreate-a-linux-vm-using-hello-classic-deployment-model"></a>¿Cómo toocreate una VM de Linux con Hola modelo de implementación clásica
+## <a name="how-to-create-a-linux-vm-using-the-classic-deployment-model"></a>Creación de una máquina virtual Linux mediante el modelo de implementación clásica
 [!INCLUDE [virtual-machines-create-LinuxVM](../../../../includes/virtual-machines-create-linuxvm.md)]
 

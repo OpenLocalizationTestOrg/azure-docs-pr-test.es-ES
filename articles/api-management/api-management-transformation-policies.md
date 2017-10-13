@@ -1,6 +1,6 @@
 ---
-title: "directivas de transformación de administración de API aaaAzure | Documentos de Microsoft"
-description: "Obtenga información acerca de las directivas de transformación de hello disponibles para su uso en la administración de API de Azure."
+title: "Directivas de transformación de Azure API Management | Microsoft Docs"
+description: "Obtenga información sobre las directivas de transformación disponibles para su uso en Azure API Management."
 services: api-management
 documentationcenter: 
 author: miaojiang
@@ -14,39 +14,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 2891cc52d0017b717b3c12a98bc4941b5fd7ea78
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: c2bed904b82c569b28a6e00d0cc9b49107c148dd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="api-management-transformation-policies"></a>Directivas de transformación de API Management
-En este tema se proporciona una referencia para hello las siguientes directivas de administración de API. Para obtener más información sobre cómo agregar y configurar directivas, consulte [Directivas en Administración de API](http://go.microsoft.com/fwlink/?LinkID=398186).  
+En este tema se proporciona una referencia para las siguientes directivas de API Management. Para obtener más información sobre cómo agregar y configurar directivas, consulte [Directivas en Administración de API](http://go.microsoft.com/fwlink/?LinkID=398186).  
   
 ##  <a name="TransformationPolicies"></a> Directivas de transformación  
   
--   [Convertir JSON tooXML](api-management-transformation-policies.md#ConvertJSONtoXML) : convierte solicitar o cuerpo de la respuesta de JSON tooXML.  
+-   [Convertir JSON a XML](api-management-transformation-policies.md#ConvertJSONtoXML) : convierte el cuerpo de solicitud o respuesta de JSON a XML.  
   
--   [Convertir XML tooJSON](api-management-transformation-policies.md#ConvertXMLtoJSON) : convierte solicitar o cuerpo de la respuesta de XML tooJSON.  
+-   [Convertir XML a JSON](api-management-transformation-policies.md#ConvertXMLtoJSON) : convierte el cuerpo de solicitud o respuesta de XML a JSON.  
   
 -   [Buscar y reemplazar la cadena en el cuerpo](api-management-transformation-policies.md#Findandreplacestringinbody) : encuentra una subcadena de solicitud o de respuesta y la reemplaza por una subcadena diferente.  
   
--   [Enmascarar direcciones URL en contenido](api-management-transformation-policies.md#MaskURLSContent) -reescribe (enmascara) vínculos en la respuesta de hello cuerpo para que apunten toohello vínculo equivalente a través de puerta de enlace de Hola.  
+-   [Enmascarar URL en el contenido](api-management-transformation-policies.md#MaskURLSContent) : reescribe (enmascara) vínculos en el cuerpo de respuesta para que apunten al vínculo equivalente a través de la puerta de enlace.  
   
--   [Establecer el servicio back-end](api-management-transformation-policies.md#SetBackendService) -cambia el servicio back-end de Hola para una solicitud entrante.  
+-   [Establecer el servicio back-end](api-management-transformation-policies.md#SetBackendService) : cambia el servicio back-end para una solicitud entrante.  
   
--   [Establecer cuerpo](api-management-transformation-policies.md#SetBody) -establece el cuerpo del mensaje de Hola para las solicitudes entrantes y salientes.  
+-   [Establecer cuerpo](api-management-transformation-policies.md#SetBody) -establece el cuerpo del mensaje para las solicitudes entrantes y salientes.  
   
--   [Definir el encabezado HTTP](api-management-transformation-policies.md#SetHTTPheader) : asigna una respuesta de valor tooan existente o un encabezado de solicitud o agrega un nuevo encabezado de respuesta y/o de solicitud.  
+-   [Establecer encabezado HTTP](api-management-transformation-policies.md#SetHTTPheader) : asigna un valor a un encabezado de respuesta o de solicitud existente o agrega un nuevo encabezado de este tipo.  
   
 -   [Establecer el parámetro de cadena de consulta](api-management-transformation-policies.md#SetQueryStringParameter) : agrega, reemplaza el valor o elimina el parámetro de la cadena de consulta de la solicitud.  
   
--   [Reescribir dirección URL](api-management-transformation-policies.md#RewriteURL) -convierte una dirección URL de solicitud desde su formato de toohello de formato público esperado por el servicio web de Hola.  
+-   [URL de reescritura](api-management-transformation-policies.md#RewriteURL) : convierte una URL de solicitud de su forma pública a la forma esperada por el servicio web.  
   
--   [Transformar XML mediante una transformación XSLT](api-management-transformation-policies.md#XSLTransform) -se aplica un tooXML de transformación XSL en el cuerpo de solicitud o respuesta Hola.  
+-   [Transformar XML mediante una XSLT](api-management-transformation-policies.md#XSLTransform): aplica una transformación de XSL al XML del cuerpo de la solicitud o respuesta.  
   
-##  <a name="ConvertJSONtoXML"></a>Convertir JSON tooXML  
- Hola `json-to-xml` directiva convierte un cuerpo de solicitud o respuesta de JSON tooXML.  
+##  <a name="ConvertJSONtoXML"></a> Conversión de JSON a XML  
+ La directiva `json-to-xml` convierte un cuerpo de solicitud o respuesta de JSON a XML.  
   
 ### <a name="policy-statement"></a>Instrucción de la directiva  
   
@@ -78,18 +78,18 @@ En este tema se proporciona una referencia para hello las siguientes directivas 
   
 |Nombre|Descripción|Obligatorio|Valor predeterminado|  
 |----------|-----------------|--------------|-------------|  
-|apply|atributo de Hello debe establecerse tooone de hello después de valores.<br /><br /> -   always: indica que se debe aplicar la conversión siempre.<br />-   content-type-json: especifica que solo se debe realizar la conversión si el encabezado Content-Type indica la presencia de JSON.|Sí|N/D|  
-|consider-accept-header|atributo de Hello debe establecerse tooone de hello después de valores.<br /><br /> -   true: especifica que se debe aplicar la conversión si se solicita JSON en el encabezado de aceptación (Accept) de la solicitud.<br />-   false: indica que se debe aplicar siempre la conversión.|No|true|  
+|apply|El atributo debe establecerse en uno de los siguientes valores.<br /><br /> -   always: indica que se debe aplicar la conversión siempre.<br />-   content-type-json: especifica que solo se debe realizar la conversión si el encabezado Content-Type indica la presencia de JSON.|Sí|N/D|  
+|consider-accept-header|El atributo debe establecerse en uno de los siguientes valores.<br /><br /> -   true: especifica que se debe aplicar la conversión si se solicita JSON en el encabezado de aceptación (Accept) de la solicitud.<br />-   false: indica que se debe aplicar siempre la conversión.|No|true|  
   
 ### <a name="usage"></a>Uso  
- Esta directiva puede usarse en hello después de la directiva [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Esta directiva puede usarse en las siguientes [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) de directiva.  
   
 -   **Secciones de la directiva:** entrante, saliente y en caso de error  
   
 -   **Ámbitos de la directiva:** global, producto, API y operación  
   
-##  <a name="ConvertXMLtoJSON"></a>Convertir XML tooJSON  
- Hola `xml-to-json` directiva convierte un cuerpo de solicitud o respuesta de XML tooJSON. Esta directiva puede ser toomodernize usa las API basadas en servicios web de back-end solo XML.  
+##  <a name="ConvertXMLtoJSON"></a> Conversión de XML a JSON  
+ La directiva `xml-to-json` convierte un cuerpo de solicitud o respuesta de XML a JSON. Esta directiva puede usarse para modernizar API basadas en servicios web de back-end de solo XML.  
   
 ### <a name="policy-statement"></a>Instrucción de la directiva  
   
@@ -121,24 +121,24 @@ En este tema se proporciona una referencia para hello las siguientes directivas 
   
 |Nombre|Descripción|Obligatorio|Valor predeterminado|  
 |----------|-----------------|--------------|-------------|  
-|kind|atributo de Hello debe establecerse tooone de hello después de valores.<br /><br /> Hola-javascript friendly: convertir JSON tiene un a los desarrolladores de formularios tooJavaScript descriptivo.<br />-direct: hello JSON convertido refleja Hola original XML estructura de un documento.|Sí|N/D|  
-|apply|atributo de Hello debe establecerse tooone de hello después de valores.<br /><br /> -   always: indica que se debe realizar la conversión siempre.<br />-   content-type-XML: especifica que solo se debe realizar la conversión si el encabezado Content-Type indica la presencia de XML.|Sí|N/D|  
-|consider-accept-header|atributo de Hello debe establecerse tooone de hello después de valores.<br /><br /> -   true: especifica que se debe aplicar la conversión si se solicita XML en el encabezado de aceptación (Accept) de la solicitud.<br />-   false: indica que se debe aplicar siempre la conversión.|No|true|  
+|kind|El atributo debe establecerse en uno de los siguientes valores.<br /><br /> -   javascript-friendly: el código JSON convertido presenta un formato intuitivo para los desarrolladores de JavaScript.<br />-   direct: el código JSON convertido refleja la estructura del documento XML original.|Sí|N/D|  
+|apply|El atributo debe establecerse en uno de los siguientes valores.<br /><br /> -   always: indica que se debe realizar la conversión siempre.<br />-   content-type-XML: especifica que solo se debe realizar la conversión si el encabezado Content-Type indica la presencia de XML.|Sí|N/D|  
+|consider-accept-header|El atributo debe establecerse en uno de los siguientes valores.<br /><br /> -   true: especifica que se debe aplicar la conversión si se solicita XML en el encabezado de aceptación (Accept) de la solicitud.<br />-   false: indica que se debe aplicar siempre la conversión.|No|true|  
   
 ### <a name="usage"></a>Uso  
- Esta directiva puede usarse en hello después de la directiva [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Esta directiva puede usarse en las siguientes [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) de directiva.  
   
 -   **Secciones de la directiva:** entrante, saliente y en caso de error  
   
 -   **Ámbitos de la directiva:** global, producto, API y operación  
   
 ##  <a name="Findandreplacestringinbody"></a> Buscar y reemplazar la cadena en el cuerpo  
- Hola `find-and-replace` directivas busca una subcadena de solicitud o respuesta y lo reemplaza por una subcadena distinta.  
+ La política `find-and-replace` busca una subcadena de solicitud o de respuesta y la sustituye por otra distinta.  
   
 ### <a name="policy-statement"></a>Instrucción de la directiva  
   
 ```xml  
-<find-and-replace from="what tooreplace" to="replacement" />  
+<find-and-replace from="what to replace" to="replacement" />  
 ```  
   
 ### <a name="example"></a>Ejemplo  
@@ -157,21 +157,21 @@ En este tema se proporciona una referencia para hello las siguientes directivas 
   
 |Nombre|Descripción|Obligatorio|Valor predeterminado|  
 |----------|-----------------|--------------|-------------|  
-|De|Hola toosearch de cadena para.|Sí|N/D|  
-|to|cadena de reemplazo de Hola. Especificar una reemplazo cadena tooremove Hola Buscar cadena de longitud cero.|Sí|N/D|  
+|De|La cadena que se va a buscar.|Sí|N/D|  
+|Para|La cadena de sustitución. Especifique una cadena de reemplazo de longitud cero para quitar la cadena de búsqueda.|Sí|N/D|  
   
 ### <a name="usage"></a>Uso  
- Esta directiva puede usarse en hello después de la directiva [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Esta directiva puede usarse en las siguientes [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) de directiva.  
   
 -   **Secciones de la directiva:** entrante, saliente, back-end y en caso de error  
   
 -   **Ámbitos de la directiva:** global, producto, API y operación  
   
 ##  <a name="MaskURLSContent"></a> Enmascarar URL en el contenido  
- Hola `redirect-content-urls` directiva reescribe (enmascara) vínculos en el cuerpo de la respuesta de Hola para que apunten toohello vínculo equivalente a través de puerta de enlace de Hola. Utilizarlos en hello sección saliente toore escritura respuesta cuerpo vínculos toomake toohello de punto de puerta de enlace. Uso de Hola entrantes sección para obtener el resultado opuesto.  
+ La directiva `redirect-content-urls` reescribe (enmascara) los vínculos del cuerpo de la respuesta para que apunten al vinculo equivalente a través de la puerta de enlace. Utilícela en la sección saliente a fin de rescribir los vínculos del cuerpo de la respuesta para hacer que apunten a la puerta de enlace. Úsela en la sección entrante para obtener el resultado opuesto.  
   
 > [!NOTE]
->  Esta directiva no cambia los valores de los encabezados, como los `Location`. los valores de encabezado toochange, usar hello [encabezado del conjunto](api-management-transformation-policies.md#SetHTTPheader) directiva.  
+>  Esta directiva no cambia los valores de los encabezados, como los `Location`. Para cambiar los valores del encabezado, use la directiva [set-header](api-management-transformation-policies.md#SetHTTPheader).  
   
 ### <a name="policy-statement"></a>Instrucción de la directiva  
   
@@ -192,19 +192,19 @@ En este tema se proporciona una referencia para hello las siguientes directivas 
 |redirect-content-urls|Elemento raíz.|Sí|  
   
 ### <a name="usage"></a>Uso  
- Esta directiva puede usarse en hello después de la directiva [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Esta directiva puede usarse en las siguientes [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) de directiva.  
   
 -   **Secciones de la directiva:** entrante y saliente  
   
 -   **Ámbitos de la directiva:** global, producto, API y operación  
   
 ##  <a name="SetBackendService"></a> Establecer el servicio back-end  
- Hola de uso `set-backend-service` tooredirect una entrada de directiva de solicitud back-end diferente de tooa de Hola especificada en la configuración de hello API para esa operación. Esta directiva cambia Hola back-end base dirección URL del servicio de Hola entrantes solicitud toohello especificada en la directiva de Hola.  
+ Use la directiva `set-backend-service` a fin de redirigir una solicitud entrante a un back-end distinto al especificado en la configuración de la API para esa operación. Esta directiva cambia la dirección URL base del servicio back-end de la solicitud entrante a la especificada en la directiva.  
   
 ### <a name="policy-statement"></a>Instrucción de la directiva  
   
 ```xml  
-<set-backend-service base-url="base URL of hello backend service" />  
+<set-backend-service base-url="base URL of the backend service" />  
 ```  
   
 ### <a name="example"></a>Ejemplo  
@@ -227,13 +227,13 @@ En este tema se proporciona una referencia para hello las siguientes directivas 
     </outbound>  
 </policies>  
 ```  
-En este Hola de ejemplo establecer la directiva de servicio de back-end enruta las solicitudes según el valor de la versión de Hola pasado Hola consulta cadena tooa diferentes servicio back-end que Hola Hola especificado en una API.
+En este ejemplo, la directiva del servicio back-end establecida enruta las solicitudes según el valor de versión pasado en la cadena de consulta a un servicio back-end distinto del especificado en la API.
   
-Hola inicialmente la dirección URL base del servicio se deriva de la configuración de la API de Hola de back-end. Hola por lo que la dirección URL de solicitud `https://contoso.azure-api.net/api/partners/15?version=2013-05&subscription-key=abcdef` se convierte en `http://contoso.com/api/10.4/partners/15?version=2013-05&subscription-key=abcdef` donde `http://contoso.com/api/10.4/` es dirección URL de servicio de back-end Hola especificada en la configuración de hello API.  
+Inicialmente, la dirección URL base del servicio back-end se obtiene a partir de la configuración de la API. Por ello, la dirección URL de solicitud `https://contoso.azure-api.net/api/partners/15?version=2013-05&subscription-key=abcdef` se convierte en `http://contoso.com/api/10.4/partners/15?version=2013-05&subscription-key=abcdef`, donde `http://contoso.com/api/10.4/` se corresponde con la dirección URL del servicio back-end especificada en la configuración de la API.  
   
-Cuando Hola [< elija\> ](api-management-advanced-policies.md#choose) declaración de directiva se aplica URL base del servicio de back-end Hola puede cambiar de nuevo demasiado`http://contoso.com/api/8.2` o `http://contoso.com/api/9.1`, en función de valor Hola Hola versión solicitud del parámetro de consulta. Por ejemplo, si hello valor es `"2013-15"` se convierte en dirección URL de solicitud final hello `http://contoso.com/api/8.2/partners/15?version=2013-05&subscription-key=abcdef`.  
+Cuando se aplica la instrucción de la directiva [<choose\>](api-management-advanced-policies.md#choose), la dirección URL base del servicio back-end puede volver a cambiar a `http://contoso.com/api/8.2` o `http://contoso.com/api/9.1`, en función del valor del parámetro de consulta de la solicitud de la versión. Por ejemplo, si el valor es `"2013-15"`, la dirección URL final de la solicitud se convierte en `http://contoso.com/api/8.2/partners/15?version=2013-05&subscription-key=abcdef`.  
   
-Si aún más la transformación de solicitud de hello es deseado, otros [directivas de transformación](api-management-transformation-policies.md#TransformationPolicies) puede utilizarse. Por ejemplo, tooremove Hola versión consulta enruta parámetro ahora que hello solicitud se está tooa versión específica back-end, hello [establecer el parámetro de cadena de consulta](api-management-transformation-policies.md#SetQueryStringParameter) directiva puede ser usado tooremove Hola ya es redundante version (atributo).  
+Si se desea aplicar más transformaciones a la solicitud, es posible usar otras [directivas de transformación](api-management-transformation-policies.md#TransformationPolicies). Por ejemplo, para quitar el parámetro de consulta de la versión ahora que la solicitud se está enrutando a un back-end específico de la versión, se puede usar la directiva de [establecimiento del parámetro de cadena de consulta](api-management-transformation-policies.md#SetQueryStringParameter) para quitar el atributo de versión, que ahora presenta un carácter redundante.  
   
 ### <a name="example"></a>Ejemplo  
   
@@ -247,7 +247,7 @@ Si aún más la transformación de solicitud de hello es deseado, otros [directi
     </outbound>  
 </policies>  
 ```  
-En este ejemplo Hola directiva rutas Hola solicitud tooa service fabric back-end, mediante cadena de consulta de hello userId como clave de partición de Hola y Hola réplica principal de la partición de Hola.  
+En este ejemplo, la directiva enruta la solicitud a un back-end de Service Fabric, con la cadena de consulta userId como la clave de partición y con la réplica principal de la partición.  
 
 ### <a name="elements"></a>Elementos  
   
@@ -260,33 +260,33 @@ En este ejemplo Hola directiva rutas Hola solicitud tooa service fabric back-end
 |Nombre|Descripción|Obligatorio|Valor predeterminado|  
 |----------|-----------------|--------------|-------------|  
 |base-url|Nueva dirección URL base del servicio back-end.|No|N/D|  
-|backend-id|Identificador de hello tooroute de back-end para.|No|N/D|  
-|sf-partition-key|Solo se aplica cuando Hola back-end es un servicio de Service Fabric y se especifica mediante el 'Id. de back-end'. Usar una partición específica del servicio de resolución de nombres de hello tooresolve.|No|N/D|  
-|sf-replica-type|Solo se aplica cuando Hola back-end es un servicio de Service Fabric y se especifica mediante el 'Id. de back-end'. Controla si la solicitud de hello debe ir toohello réplica principal o secundaria de una partición. |No|N/D|    
-|sf-resolve-condition|Solo se aplica cuando Hola back-end es un servicio de Service Fabric. Identificación de condición si Hola llamar a back-end de tooService tejido tiene toobe repetirse con la resolución de nuevo.|No|N/D|    
-|sf-service-instance-name|Solo se aplica cuando Hola back-end es un servicio de Service Fabric. Permite toochange instancias de servicio en tiempo de ejecución. |No|N/D|    
+|backend-id|Identificador del back-end al que se va a enrutar.|No|N/D|  
+|sf-partition-key|Solo se aplica cuando el back-end es un servicio de Service Fabric y se especifica con "backend-id". Se usa para resolver una partición específica desde el servicio de resolución de nombres.|No|N/D|  
+|sf-replica-type|Solo se aplica cuando el back-end es un servicio de Service Fabric y se especifica con "backend-id". Controla si la solicitud debe ir a la réplica principal o secundaria de una partición. |No|N/D|    
+|sf-resolve-condition|Solo se aplica cuando el back-end es un servicio de Service Fabric. Condición que identifica si la llamada al back-end de Service Fabric tiene que repetirse con la nueva resolución.|No|N/D|    
+|sf-service-instance-name|Solo se aplica cuando el back-end es un servicio de Service Fabric. Permite cambiar instancias de servicio en tiempo de ejecución. |No|N/D|    
 
 ### <a name="usage"></a>Uso  
- Esta directiva puede usarse en hello después de la directiva [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Esta directiva puede usarse en las siguientes [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) de directiva.  
   
 -   **Secciones de la directiva:** entrante y back-end  
   
 -   **Ámbitos de la directiva:** global, producto, API y operación  
   
 ##  <a name="SetBody"></a> Establecer cuerpo  
- Hola de uso `set-body` cuerpo del mensaje Hola directiva tooset para las solicitudes entrantes y salientes. tooaccess Hola cuerpo del mensaje puede usar hello `context.Request.Body` propiedad o hello `context.Response.Body`, dependiendo de si es la directiva de Hola Hola sección entrante o saliente.  
+ Utilice la directiva `set-body` con la finalidad de establecer el cuerpo del mensaje para las solicitudes entrantes y salientes. Para acceder al cuerpo del mensaje, puede utilizar las propiedades `context.Request.Body` o `context.Response.Body`, según si la directiva se encuentra en la sección entrante o saliente.  
   
 > [!IMPORTANT]
->  Tenga en cuenta que, de forma predeterminada cuando se tiene acceso Hola cuerpo del mensaje utilizando `context.Request.Body` o `context.Response.Body`, mensaje de Hola original cuerpo se pierde y se debe establecer devolviendo el cuerpo de hello en expresión Hola. cuerpo de hello toopreserve contenido, establecer hello `preserveContent` parámetro demasiado`true` al tener acceso a mensajes de bienvenida. Si `preserveContent` se establece demasiado`true` y un cuerpo diferente se devuelve por expresión de hello, Hola devuelve cuerpo se utiliza.  
+>  Tenga en cuenta que, de forma predeterminada, al acceder al cuerpo del mensaje mediante `context.Request.Body` o `context.Response.Body`, se pierde el cuerpo del mensaje original y se debe establecer devolviendo el cuerpo en la expresión. Para conservar el contenido del cuerpo, establezca el parámetro `preserveContent` en `true` al acceder al mensaje. Si `preserveContent` está establecido en `true` y la expresión devuelve un cuerpo distinto, se utiliza el que se devuelva.  
 >   
->  Tenga en cuenta que hello las siguientes consideraciones cuando utilizando hello `set-body` directiva.  
+>  Tenga en cuenta las siguientes consideraciones al utilizar la directiva `set-body`.  
 >   
->  -   Si usas hello `set-body` tooreturn directiva un cuerpo nuevo o actualizado no es necesario tooset `preserveContent` demasiado`true` porque está proporcionando explícitamente el contenido del cuerpo de hello nueva.  
-> -   Conservar contenido Hola de una respuesta en la canalización de entrada de hello no tiene sentido porque todavía no hay ninguna respuesta.  
-> -   Conservar contenido Hola de una solicitud en la canalización de salida de hello no tiene sentido porque Hola ya se ha enviado solicitud toohello back-end en este momento.  
+>  -   Si usa la directiva `set-body` para devolver un cuerpo nuevo o actualizado, no hay que establecer `preserveContent` en `true` porque estará especificando explícitamente el nuevo contenido del cuerpo.  
+> -   No tiene sentido conservar el contenido de una respuesta en la canalización de entrada porque todavía no hay ninguna respuesta.  
+> -   De igual modo, no tiene sentido conservar el contenido de una solicitud en la canalización de salida porque la solicitud ya se ha enviado al servidor en este momento.  
 > -   Si esta directiva se usa cuando no hay ningún cuerpo de mensaje, por ejemplo, en un GET entrante, se producirá una excepción.  
   
- Para obtener más información, vea hello `context.Request.Body`, `context.Response.Body`, hello y `IMessage` secciones de hello [variable de contexto](api-management-policy-expressions.md#ContextVariables) tabla.  
+ Para obtener más información, consulte las secciones `context.Request.Body`, `context.Response.Body` y `IMessage` de la tabla [Context variable](api-management-policy-expressions.md#ContextVariables) (Variable de contexto).  
   
 ### <a name="policy-statement"></a>Instrucción de la directiva  
   
@@ -302,7 +302,7 @@ En este ejemplo Hola directiva rutas Hola solicitud tooa service fabric back-end
 <set-body>Hello world!</set-body>  
 ```  
   
-#### <a name="example-accessing-hello-body-as-a-string-note-that-we-are-preserving-hello-original-request-body-so-that-we-can-access-it-later-in-hello-pipeline"></a>Ejemplo de cuerpo de hello como una cadena de acceso. Tenga en cuenta que estamos conservando cuerpo de solicitud original de Hola para que podamos acceder a él más adelante en la canalización de Hola.
+#### <a name="example-accessing-the-body-as-a-string-note-that-we-are-preserving-the-original-request-body-so-that-we-can-access-it-later-in-the-pipeline"></a>Ejemplo de acceso al cuerpo como una cadena. Tenga en cuenta que estamos conservando el cuerpo de la solicitud original para que resulte accesible más adelante en la canalización.
   
 ```xml  
 <set-body>  
@@ -316,7 +316,7 @@ En este ejemplo Hola directiva rutas Hola solicitud tooa service fabric back-end
 </set-body>  
 ```  
   
-#### <a name="example-accessing-hello-body-as-a-jobject-note-that-since-we-are-not-reserving-hello-original-request-body-accesing-it-later-in-hello-pipeline-will-result-in-an-exception"></a>Ejemplo de cuerpo de Hola como un JObject de acceso. Tenga en cuenta que, puesto que no nos estamos reservar Hola original cuerpo de la solicitud, el acceso a él más adelante en la canalización de hello dará como resultado una excepción.  
+#### <a name="example-accessing-the-body-as-a-jobject-note-that-since-we-are-not-reserving-the-original-request-body-accesing-it-later-in-the-pipeline-will-result-in-an-exception"></a>Ejemplo de acceso al cuerpo como un elemento JObject. Tenga en cuenta que, al no estar conservando el cuerpo de la solicitud original, el acceso posterior a él en la canalización producirá una excepción.  
   
 ```xml  
 <set-body>   
@@ -332,10 +332,10 @@ En este ejemplo Hola directiva rutas Hola solicitud tooa service fabric back-end
 ```  
   
 #### <a name="filter-response-based-on-product"></a>Filtro de respuesta según un producto  
- Este ejemplo muestra cómo tooperform contenido filtrado mediante la eliminación de elementos de datos de respuesta de Hola recibido del servicio de back-end de hello cuando se usa hello `Starter` producto. Para ver una demostración de cómo configurar y usar esta directiva, consulte [177 episodio abarcan de nube: más características de administración de API con Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) y avancemos too34:30. Iniciar en 31:50 toosee una visión general de [Hola API de previsión de Sky oscuro](https://developer.forecast.io/) utilizada para esta demostración.  
+ En este ejemplo se muestra cómo filtrar contenido quitando elementos de datos de la respuesta recibida del servicio back-end al usar el producto `Starter`. Para ver una demostración de la configuración y el uso de esta directiva, vea [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (Episodio 177 de Cloud Cover: más características API Management con Vlad Vinogradsky) y avance al minuto 34:30. Empiece en el minuto 31:50 para ver una introducción a la [API de previsión de Dark Sky](https://developer.forecast.io/) empleada en esta demostración.  
   
 ```xml  
-<!-- Copy this snippet into hello outbound section tooremove a number of data elements from hello response received from hello backend service based on hello name of hello api product -->  
+<!-- Copy this snippet into the outbound section to remove a number of data elements from the response received from the backend service based on the name of the api product -->  
 <choose>  
   <when condition="@(context.Response.StatusCode == 200 && context.Product.Name.Equals("Starter"))">  
     <set-body>@{  
@@ -351,17 +351,17 @@ En este ejemplo Hola directiva rutas Hola solicitud tooa service fabric back-end
 ```  
 
 ### <a name="using-liquid-templates-with-set-body"></a>Uso de plantillas Liquid con la directiva de establecer cuerpo 
-Hola `set-body` directiva puede ser configurado toouse hello [líquido](https://shopify.github.io/liquid/basics/introduction/) plantillas tootransfom Hola cuerpo de lenguaje una solicitud o respuesta. Esto puede ser muy eficaces si necesita toocompletely remodelación Hola formato del mensaje.
+La directiva `set-body` se puede configurar para usar el lenguaje de plantillas [Liquid](https://shopify.github.io/liquid/basics/introduction/) que transforman el cuerpo de una solicitud o respuesta. Esto puede resultar muy eficaz si necesita cambiar completamente el formato del mensaje.
 
 > [!IMPORTANT]
-> Hola implementación de líquido utilizado en hello `set-body` directiva está configurada en "modo de C#". Esto es especialmente importante al realizar tareas como el filtrado. Por ejemplo, mediante un filtro de fecha requiere el uso de Hola de Pascal de mayúsculas y minúsculas y C# fecha formato p. ej.:
+> La implementación de Liquid que se utiliza en la directiva `set-body` está configurada en el modo de C#. Esto es especialmente importante al realizar tareas como el filtrado. Por ejemplo, para usar un filtro de fecha se requiere usar las mayúsculas y minúsculas de Pascal y el formato de fecha de C#; por ejemplo:
 >
 > {{body.foo.startDateTime| Date:"yyyyMMddTHH:mm:ddZ"}}
 
 > [!IMPORTANT]
-> En orden toocorrectly enlace tooan XML cuerpo mediante plantilla líquido hello, use un `set-header` directiva tooset Content-Type tooeither aplicación/xml, texto/xml (o cualquier tipo que termine con + xml); para un cuerpo JSON, debe ser application/json, texto/json (o el final de cualquier tipo con + json).
+> Para enlazar correctamente con un cuerpo XML mediante la plantilla Liquid, use una directiva `set-header` para establecer que Content-Type sea application/xml, text/xml (o cualquier tipo que termine en +xml); para un cuerpo JSON, debe ser application/json, texto/json (o cualquier tipo que termine en +json).
 
-#### <a name="convert-json-toosoap-using-a-liquid-template"></a>Convertir tooSOAP JSON utilizando una plantilla líquida
+#### <a name="convert-json-to-soap-using-a-liquid-template"></a>Conversión de JSON en SOAP mediante una plantilla Liquid
 ```xml
 <set-body template="liquid">
     <soap:Envelope xmlns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
@@ -388,15 +388,15 @@ Hola `set-body` directiva puede ser configurado toouse hello [líquido](https://
   
 |Nombre|Descripción|Obligatorio|  
 |----------|-----------------|--------------|  
-|set-body|Elemento raíz. Contiene el texto del cuerpo de Hola o una expresión que devuelve un cuerpo.|Sí|  
+|set-body|Elemento raíz. Contiene el cuerpo del texto o una expresión que devuelve un cuerpo.|Sí|  
 
 ### <a name="properties"></a>Propiedades  
   
 |Nombre|Descripción|Obligatorio|Valor predeterminado|  
 |----------|-----------------|--------------|-------------|  
-|template|Se ejecutará modo de creación de plantillas de Hola toochange usado que Hola establecer la directiva de cuerpo. Actualmente, el valor de hello solo admitido es:<br /><br />Hola - líquido - establecer la directiva de cuerpo utilizará el motor de plantillas líquido Hola |No|Liquid|  
+|template|Se utiliza para cambiar el modo de creación de plantillas que ejecutará la directiva de establecer cuerpo. Actualmente, el único valor admitido es:<br /><br />- liquid: la directiva de establecer cuerpo usará el motor de plantillas Liquid |No|Liquid|  
 
-Para tener acceso a información sobre la solicitud de Hola y respuesta, plantilla líquido Hola puede enlazar el objeto de contexto de tooa con hello propiedades siguientes: <br />
+Para acceder a información sobre solicitud y respuesta, la plantilla Liquid puede enlazar a un objeto de contexto con las siguientes propiedades: <br />
 <pre>context.
     Request.
         Url
@@ -437,22 +437,22 @@ OriginalUrl.
 
 
 ### <a name="usage"></a>Uso  
- Esta directiva puede usarse en hello después de la directiva [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Esta directiva puede usarse en las siguientes [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) de directiva.  
   
 -   **Secciones de la directiva:** entrante, saliente y back-end  
   
 -   **Ámbitos de la directiva:** global, producto, API y operación  
   
 ##  <a name="SetHTTPheader"></a> Establecer encabezado HTTP  
- Hola `set-header` directiva asigna una respuesta de valor tooan existente o un encabezado de solicitud o agrega un nuevo encabezado de respuesta y/o de solicitud.  
+ La directiva `set-header` asigna un valor a un encabezado de respuesta o de solicitud existente o agrega un nuevo encabezado de este tipo.  
   
- Inserta una lista de encabezados HTTP en un mensaje HTTP. Cuando se coloca en una canalización de entrada, esta directiva establece los encabezados HTTP de Hola para solicitud de Hola que se pasa toohello servicio de destino. Cuando se coloca en una canalización saliente, esta directiva establece los encabezados HTTP de hello para la respuesta de Hola que se envió el cliente de la puerta de enlace de toohello.  
+ Inserta una lista de encabezados HTTP en un mensaje HTTP. Cuando se coloca en un proceso entrante, esta directiva establece los encabezados HTTP para la solicitud que se pasa al servicio de destino. Cuando se coloca en una canalización saliente, esta directiva establece los encabezados HTTP para la respuesta que se está enviando al cliente de la puerta de enlace.  
   
 ### <a name="policy-statement"></a>Instrucción de la directiva  
   
 ```xml  
 <set-header name="header name" exists-action="override | skip | append | delete">  
-    <value>value</value> <!--for multiple headers with hello same name add additional value elements-->  
+    <value>value</value> <!--for multiple headers with the same name add additional value elements-->  
 </set-header>  
 ```  
   
@@ -466,11 +466,11 @@ OriginalUrl.
 </set-header>  
 ```  
   
-#### <a name="forward-context-information-toohello-backend-service"></a>Reenviar el servicio de back-end de toohello de información de contexto  
- Este ejemplo muestra cómo Directiva tooapply en hello API de nivel de servicio de back-end de toohello de información de contexto de toosupply. Para ver una demostración de cómo configurar y usar esta directiva, consulte [177 episodio abarcan de nube: más características de administración de API con Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) y avancemos too10:30. No hay una demostración de llamar a una operación de portal para desarrolladores de Hola donde puede ver la directiva de hello en el trabajo a las 12:10.  
+#### <a name="forward-context-information-to-the-backend-service"></a>Reenvío de información contextual al servicio back-end  
+ En este ejemplo se muestra cómo aplicar directivas en el nivel de API para proporcionar información contextual al servicio back-end. Para ver una demostración de la configuración y el uso de esta directiva, vea [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (Episodio 177 de Cloud Cover: más características API Management con Vlad Vinogradsky) y avance al minuto 10:30. En el minuto 12:10 se realiza una demostración del llamamiento de una operación en el portal para desarrolladores donde podrá ver la directiva en funcionamiento.  
   
 ```xml  
-<!-- Copy this snippet into hello inbound element tooforward some context information, user id and hello region hello gateway is hosted in, toohello backend service for logging or evaluation -->  
+<!-- Copy this snippet into the inbound element to forward some context information, user id and the region the gateway is hosted in, to the backend service for logging or evaluation -->  
 <set-header name="x-request-context-data" exists-action="override">  
   <value>@(context.User.Id)</value>  
   <value>@(context.Deployment.Region)</value>  
@@ -484,30 +484,30 @@ OriginalUrl.
 |Nombre|Descripción|Obligatorio|  
 |----------|-----------------|--------------|  
 |set-header|Elemento raíz.|Sí|  
-|value|Especifica el valor de Hola de hello encabezado toobe conjunto. Para varios encabezados con hello homónimas agregar más `value` elementos.|Sí|  
+|value|Especifica el valor del encabezado que se va a establecer. Para varios encabezados con el mismo nombre, agregue más elementos `value`.|Sí|  
   
 ### <a name="properties"></a>Propiedades  
   
 |Nombre|Descripción|Obligatorio|Valor predeterminado|  
 |----------|-----------------|--------------|-------------|  
-|exists-action|Especifica qué tootake acción cuando ya se ha especificado el encabezado de Hola. Este atributo debe tener uno de hello después de valores.<br /><br /> -invalidar - reemplaza Hola valor del encabezado existente Hola.<br />-skip: no reemplaza el valor del encabezado de hello existente.<br />-append: anexa el valor del encabezado existente Hola valor toohello.<br />-delete: quita el encabezado de saludo de solicitud de Hola.<br /><br /> Cuando se establece demasiado`override` al enumerar varias entradas con hello igual nombre resultados en el encabezado de Hola que se va a entradas correspondiente del conjunto tooall (que aparecerán enumeradas varias veces); solo los valores mostrados se establecerá en el resultado de hello.|No|override|  
-|name|Especifica el nombre del conjunto de toobe de encabezado de Hola.|Sí|N/D|  
+|exists-action|Especifica la acción que se debe realizar cuando ya se ha especificado un encabezado. Este atributo debe tener uno de los siguientes valores:<br /><br /> -   override: sustituye el valor del encabezado existente.<br />-   skip: no sustituye el valor del encabezado existente.<br />-   append: anexa el valor al encabezado existente.<br />-   delete: quita el encabezado de la solicitud.<br /><br /> Cuando se establece en `override`, si se inscriben varias entradas con el mismo nombre, se establece el encabezado de acuerdo con todas ellas (que se inscribirán varias veces); solo los valores mostrados se establecerán en el resultado.|No|override|  
+|name|Especifica el nombre del encabezado que se va a establecer.|Sí|N/D|  
   
 ### <a name="usage"></a>Uso  
- Esta directiva puede usarse en hello después de la directiva [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Esta directiva puede usarse en las siguientes [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) de directiva.  
   
 -   **Secciones de la directiva:** entrante, saliente, back-end y en caso de error  
   
 -   **Ámbitos de la directiva:** global, producto, API y operación  
   
 ##  <a name="SetQueryStringParameter"></a> Establecimiento del parámetro de cadena de consulta  
- Hola `set-query-parameter` directiva agrega, reemplaza el valor de, o parámetro de cadena de consulta de solicitud de eliminaciones. Puede ser toopass usa parámetros de consulta esperados por el servicio de back-end de Hola que son opcionales o no están nunca presenten en la solicitud de saludo.  
+ La directiva `set-query-parameter` agrega o elimina el parámetro de cadena de consulta de la solicitud, o bien sustituye su valor. Se puede utilizar para pasar parámetros de consulta previstos por el servicio back-end que tienen carácter opcional o que nunca están presentes en la solicitud.  
   
 ### <a name="policy-statement"></a>Instrucción de la directiva  
   
 ```xml  
 <set-query-parameter name="param name" exists-action="override | skip | append | delete">  
-    <value>value</value> <!--for multiple parameters with hello same name add additional value elements-->  
+    <value>value</value> <!--for multiple parameters with the same name add additional value elements-->  
 </set-query-parameter>  
 ```  
   
@@ -521,16 +521,16 @@ OriginalUrl.
   <parameter name="api-key" exists-action="skip">  
     <value>12345678901</value>  
   </parameter>  
-  <!-- for multiple parameters with hello same name add additional value elements -->  
+  <!-- for multiple parameters with the same name add additional value elements -->  
 </set-query-parameter>  
   
 ```  
   
-#### <a name="forward-context-information-toohello-backend-service"></a>Reenviar el servicio de back-end de toohello de información de contexto  
- Este ejemplo muestra cómo Directiva tooapply en hello API de nivel de servicio de back-end de toohello de información de contexto de toosupply. Para ver una demostración de cómo configurar y usar esta directiva, consulte [177 episodio abarcan de nube: más características de administración de API con Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) y avancemos too10:30. No hay una demostración de llamar a una operación de portal para desarrolladores de Hola donde puede ver la directiva de hello en el trabajo a las 12:10.  
+#### <a name="forward-context-information-to-the-backend-service"></a>Reenvío de información contextual al servicio back-end  
+ En este ejemplo se muestra cómo aplicar directivas en el nivel de API para proporcionar información contextual al servicio back-end. Para ver una demostración de la configuración y el uso de esta directiva, vea [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (Episodio 177 de Cloud Cover: más características API Management con Vlad Vinogradsky) y avance al minuto 10:30. En el minuto 12:10 se realiza una demostración del llamamiento de una operación en el portal para desarrolladores donde podrá ver la directiva en funcionamiento.  
   
 ```xml  
-<!-- Copy this snippet into hello inbound element tooforward a piece of context, product name in this example, toohello backend service for logging or evaluation -->  
+<!-- Copy this snippet into the inbound element to forward a piece of context, product name in this example, to the backend service for logging or evaluation -->  
 <set-query-parameter name="x-product-name" exists-action="override">  
   <value>@(context.Product.Name)</value>  
 </set-query-parameter>  
@@ -544,33 +544,33 @@ OriginalUrl.
 |Nombre|Descripción|Obligatorio|  
 |----------|-----------------|--------------|  
 |set-query-parameter|Elemento raíz.|Sí|  
-|value|Especifica el valor de Hola Hola parámetro toobe del conjunto de consulta. Varios parámetros de consulta con hello homónimas agregar más `value` elementos.|Sí|  
+|value|Especifica el valor del parámetro de consulta que se debe establecer. Para varios parámetros de consulta con el mismo nombre, agregue más elementos `value`.|Sí|  
   
 ### <a name="properties"></a>Propiedades  
   
 |Nombre|Descripción|Obligatorio|Valor predeterminado|  
 |----------|-----------------|--------------|-------------|  
-|exists-action|Especifica qué tootake acción cuando ya se ha especificado el parámetro de consulta de Hola. Este atributo debe tener uno de hello después de valores.<br /><br /> -invalidar - reemplaza Hola valor de parámetro de hello existente.<br />-skip: no reemplaza el valor del parámetro de consulta existente de Hola.<br />-Anexar - anexa Hola valor toohello parámetro valor de consulta existente.<br />-delete: quita el parámetro de consulta de Hola de solicitud de Hola.<br /><br /> Cuando se establece demasiado`override` al enumerar varias entradas con hello igual nombre resultados en el parámetro de consulta de Hola que se va a entradas correspondiente del conjunto tooall (que aparecerán enumeradas varias veces); solo los valores mostrados se establecerá en el resultado de hello.|No|override|  
-|name|Especifica el nombre del conjunto de toobe de parámetros de consulta de Hola.|Sí|N/D|  
+|exists-action|Especifica la acción que se debe realizar cuando ya se especifica un parámetro de consulta. Este atributo debe tener uno de los siguientes valores:<br /><br /> -   override: sustituye el valor del parámetro de consulta existente.<br />-   skip: no sustituye el valor del parámetro de consulta existente.<br />-   append: anexa el valor al del parámetro de consulta existente.<br />-   delete: quita el parámetro de consulta de la solicitud.<br /><br /> Cuando se establece en `override`, se inscriben varias entradas con los resultados del mismo nombre del parámetro de consulta que se están estableciendo de acuerdo con todas las entradas (que se inscribirán varias veces); solo los valores mostrados se establecerán en el resultado.|No|override|  
+|name|Especifica el nombre del parámetro de consulta que se debe establecer.|Sí|N/D|  
   
 ### <a name="usage"></a>Uso  
- Esta directiva puede usarse en hello después de la directiva [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Esta directiva puede usarse en las siguientes [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) de directiva.  
   
 -   **Secciones de la directiva:** entrante y back-end  
   
 -   **Ámbitos de la directiva:** global, producto, API y operación  
   
 ##  <a name="RewriteURL"></a> URL de reescritura  
- Hola `rewrite-uri` directiva convierte una dirección URL de solicitud desde su formato de toohello de formato público esperado por el servicio web de hello, como se muestra en el siguiente ejemplo de Hola.  
+ La directiva `rewrite-uri` convierte una dirección URL de solicitud de su forma pública a la que espera recibir el servicio web, como se muestra en el siguiente ejemplo.  
   
 -   URL pública: `http://api.example.com/storenumber/ordernumber`  
   
 -   URL de solicitud: `http://api.example.com/v2/US/hardware/storenumber&ordernumber?City&State`  
   
- Esta directiva puede usarse cuando una dirección URL humana y/o compatible con el explorador debería transformarse en formato de dirección URL de hello esperado por el servicio web de Hola. Esta directiva solo debe toobe aplicado al exponer un formato de dirección URL alternativo, como direcciones URL limpias, direcciones URL RESTful, direcciones URL descriptivas o direcciones URL descriptivas del SEO que son direcciones URL puramente estructurales que no contienen una cadena de consulta y en su lugar contienen sólo ruta de acceso de Hola de Hola recurso (después de esquema de Hola y la autoridad de hello). Este procedimiento se realiza con fines estéticos, de usabilidad o de optimización del motor de búsqueda (SEO).  
+ Esta directiva se puede utilizar cuando una URL apta para el explorador o para individuos debe transformarse en el formato de URL que espera el servicio web. Esta directiva solo debe aplicarse al exponer un formato de URL alternativo, como URL limpias, direcciones URL RESTful y direcciones URL sencillas o aptas para optimización del motor de búsqueda que son URL puramente estructurales que no contienen una cadena de consulta, sino solo la ruta del recurso (después del esquema y la autoridad). Este procedimiento se realiza con fines estéticos, de usabilidad o de optimización del motor de búsqueda (SEO).  
   
 > [!NOTE]
->  Solo puede agregar parámetros de cadena de consulta mediante la directiva de Hola. No se puede agregar parámetros de ruta de acceso de plantilla adicionales en hello reescribir dirección URL.  
+>  Solo puede agregar parámetros de cadena de consulta mediante esta directiva. No puede agregar ningún parámetro de ruta de plantilla adicional en la URL de reescritura.  
 
 ### <a name="policy-statement"></a>Instrucción de la directiva  
   
@@ -592,7 +592,7 @@ OriginalUrl.
 </policies>  
 ```  
 ```xml
-<!-- Assuming incoming request is /get?a=b&c=d and operation template is set too/get?a={b} -->
+<!-- Assuming incoming request is /get?a=b&c=d and operation template is set to /get?a={b} -->
 <policies>  
     <inbound>  
         <base />  
@@ -605,7 +605,7 @@ OriginalUrl.
 <!-- Resulting URL will be /put?c=d -->
 ```  
 ```xml
-<!-- Assuming incoming request is /get?a=b&c=d and operation template is set too/get?a={b} -->
+<!-- Assuming incoming request is /get?a=b&c=d and operation template is set to /get?a={b} -->
 <policies>  
     <inbound>  
         <base />  
@@ -628,18 +628,18 @@ OriginalUrl.
   
 |Atributo|Descripción|Obligatorio|Valor predeterminado|  
 |---------------|-----------------|--------------|-------------|  
-|template|Hola web real dirección URL del servicio con los parámetros de cadena de consulta. Cuando se usan expresiones, el valor completo de hello debe ser una expresión.|Sí|N/D|  
-|copy-unmatched-params|Especifica si los parámetros de consulta en la solicitud entrante de hello no está presente en la plantilla de dirección URL original de Hola se agregan plantilla volver a escribir la dirección URL de toohello definido por hello|No|true|  
+|template|La dirección URL del servicio web real con cualquier parámetro de cadena de consulta. Cuando se usan expresiones, todo el valor debe ser una expresión.|Sí|N/D|  
+|copy-unmatched-params|Especifica si los parámetros de consulta de la solicitud entrante no presentes en la plantilla de la dirección URL original se agregan en la dirección URL definida por la plantilla de reescritura|No|true|  
   
 ### <a name="usage"></a>Uso  
- Esta directiva puede usarse en hello después de la directiva [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Esta directiva puede usarse en las siguientes [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) de directiva.  
   
 -   **Secciones de la directiva:** entrante  
   
 -   **Ámbitos de la directiva:** producto, API y operación  
   
 ##  <a name="XSLTransform"></a> Transformar XML mediante una XSLT  
- Hola `Transform XML using an XSLT` un tooXML de transformación XSL en el cuerpo de solicitud o respuesta Hola aplica la directiva.  
+ La directiva `Transform XML using an XSLT` aplica una transformación XSL al XML del cuerpo de la solicitud o la respuesta.  
   
 ### <a name="policy-statement"></a>Instrucción de la directiva  
   
@@ -692,11 +692,11 @@ OriginalUrl.
 |Nombre|Descripción|Obligatorio|  
 |----------|-----------------|--------------|  
 |xsl-transform|Elemento raíz.|Sí|  
-|Parámetro|Variables de toodefine usado utilizadas en transformación Hola|No|  
-|xsl:stylesheet|Elemento raíz de la hoja de estilo. Todos los elementos y atributos definidos dentro de cumplen el estándar de hello [especificación XSLT](http://www.w3.org/TR/xslt)|Sí|  
+|Parámetro|Permite definir las variables utilizadas en la transformación.|No|  
+|xsl:stylesheet|Elemento raíz de la hoja de estilo. Todos los elementos y atributos definidos dentro de él cumplen la [especificación XSLT](http://www.w3.org/TR/xslt) estándar.|Sí|  
   
 ### <a name="usage"></a>Uso  
- Esta directiva puede usarse en hello después de la directiva [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).  
+ Esta directiva puede usarse en las siguientes [secciones](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) y [ámbitos](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) de directiva.  
   
 -   **Secciones de la directiva:** entrante y saliente  
   

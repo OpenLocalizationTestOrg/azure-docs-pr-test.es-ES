@@ -1,6 +1,6 @@
 ---
-title: pone en cola con Ruby aaaHow toouse Service Bus de Azure | Documentos de Microsoft
-description: "Obtenga información acerca de cómo toouse Bus de servicio pone en cola en Azure. Ejemplos de código escritos en Ruby."
+title: Uso de colas de Service Bus de Azure con Ruby | Microsoft Docs
+description: "Obtenga información acerca de cómo usar las colas del Bus de servicio en Azure. Ejemplos de código escritos en Ruby."
 services: service-bus-messaging
 documentationcenter: ruby
 author: sethmanheim
@@ -14,17 +14,17 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: sethm
-ms.openlocfilehash: 7270154583f98e3372e82efbb967ea7a5acd1686
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 357a7277dd42b6973cf35a9f642b8eec36a745e3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-toouse-service-bus-queues-with-ruby"></a>¿Cómo toouse Bus de servicio pone en cola con Ruby
+# <a name="how-to-use-service-bus-queues-with-ruby"></a>Uso de colas de Service Bus con Ruby
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-Esta guía se describe cómo toouse colas de Service Bus. ejemplos de Hello están escritos en Ruby y usar hello Azure indicador. Hello escenarios descritos se incluyen **crear colas, enviar y recibir mensajes**, y **eliminar colas**. Para obtener más información acerca de las colas de Bus de servicio, vea hello [pasos](#next-steps) sección.
+Esta guía describe cómo utilizar las colas del Bus de servicio. Los ejemplos están escritos en Ruby y usan la gema de Azure. Entre los escenarios proporcionados se incluyen los siguientes: **creación de colas, envío y recepción de mensajes** y **eliminación de colas**. Para obtener más información sobre las colas de Service Bus, vea la sección [Pasos siguientes](#next-steps).
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
@@ -32,8 +32,8 @@ Esta guía se describe cómo toouse colas de Service Bus. ejemplos de Hello est�
    
 [!INCLUDE [service-bus-ruby-setup](../../includes/service-bus-ruby-setup.md)]
 
-## <a name="how-toocreate-a-queue"></a>¿Cómo toocreate una cola
-Hola **Azure::ServiceBusService** objeto permite toowork con colas. toocreate una cola, usar hello `create_queue()` método. Hello en el ejemplo siguiente se crea una cola o imprime los errores.
+## <a name="how-to-create-a-queue"></a>Creación de una cola
+El objeto **Azure::ServiceBusService** le permite trabajar con colas. Para crear una cola, use el método `create_queue()`. En el siguiente ejemplo se crea una cola o se imprime el error.
 
 ```ruby
 azure_service_bus_service = Azure::ServiceBus::ServiceBusService.new(sb_host, { signer: signer})
@@ -44,7 +44,7 @@ rescue
 end
 ```
 
-También puede pasar un **Azure::ServiceBus::Queue** objeto con opciones adicionales, lo que permite toooverride Hola predeterminada configuración de la cola, como el tamaño de cola toolive o máximo de tiempo de mensaje. Hola siguiente ejemplo muestra cómo tooset Hola GB de too5 de tamaño máximo de la cola y too1 toolive minuto de tiempo:
+También puede pasar un objeto **Azure::ServiceBus::Queue** con opciones adicionales, lo que le permite reemplazar la configuración de la cola predeterminada, como el período de vida del mensaje o el tamaño de cola máximo. En el siguiente ejemplo se muestra cómo establecer el tamaño máximo de las colas en 5 GB y el período de vida en 1 minuto:
 
 ```ruby
 queue = Azure::ServiceBus::Queue.new("test-queue")
@@ -54,10 +54,10 @@ queue.default_message_time_to_live = "PT1M"
 queue = azure_service_bus_service.create_queue(queue)
 ```
 
-## <a name="how-toosend-messages-tooa-queue"></a>¿Cómo toosend mensajes tooa cola
-la aplicación llama a una cola de Service Bus de mensajes tooa toosend, hello `send_queue_message()` método en hello **Azure::ServiceBusService** objeto. Los mensajes de las colas son demasiado (recibidos y enviados desde) Bus de servicio **Azure::ServiceBus::BrokeredMessage** objetos y tener un conjunto de propiedades estándar (como `label` y `time_to_live`), un diccionario que es usado toohold propiedades personalizadas de específicos de la aplicación y un cuerpo de datos de aplicación arbitrarios. Una aplicación puede establecer cuerpo Hola de mensaje de bienvenida, pasando el valor de cadena como mensaje de bienvenida y las propiedades estándares necesarias se rellenan con los valores predeterminados.
+## <a name="how-to-send-messages-to-a-queue"></a>Envío de mensajes a una cola
+Para enviar un mensaje a una cola de Service Bus, la aplicación debe llamar al método `send_queue_message()` del objeto **Azure::ServiceBusService**. Los mensajes enviados a las colas de Service Bus (y recibidos de ellas) son objetos **Azure::ServiceBus::BrokeredMessage**, y tienen un conjunto de propiedades estándar (como `label` y `time_to_live`), un diccionario que se usa para mantener las propiedades específicas de la aplicación personalizadas y un conjunto de datos arbitrarios de la aplicación. Una aplicación puede establecer el cuerpo del mensaje pasando un valor de cadena como mensaje, con lo que las propiedades estándar requeridas adquieren valores predeterminados.
 
-Hello en el ejemplo siguiente se muestra cómo toosend una cola de toohello de mensajes de prueba denominado `test-queue` con `send_queue_message()`:
+En el ejemplo siguiente se muestra cómo enviar un mensaje de prueba a la cola `test-queue` mediante `send_queue_message()`:
 
 ```ruby
 message = Azure::ServiceBus::BrokeredMessage.new("test queue message")
@@ -65,16 +65,16 @@ message.correlation_id = "test-correlation-id"
 azure_service_bus_service.send_queue_message("test-queue", message)
 ```
 
-Las colas de Bus de servicio admiten un tamaño máximo de los mensajes de 256 KB en hello [nivel estándar](service-bus-premium-messaging.md) y 1 MB en hello [nivel Premium](service-bus-premium-messaging.md). encabezado de Hello, que incluye estándar de Hola y propiedades de la aplicación personalizada, puede tener un tamaño máximo de 64 KB. No hay ningún límite en el número de Hola de mensajes que se ponen en una cola pero no hay un límite en tamaño total de Hola de mantiene una cola de mensajes de saludo. El tamaño de la cola se define en el momento de la creación, con un límite de 5 GB.
+El tamaño máximo de mensaje que admiten las colas de Service Bus es de 256 KB en el [nivel Estándar](service-bus-premium-messaging.md) y de 1 MB en el [nivel Premium](service-bus-premium-messaging.md). El encabezado, que incluye propiedades de la aplicación estándar y personalizadas, puede tener un tamaño máximo de 64 KB. No hay límite para el número de mensajes que contiene una cola, pero hay un tope para el tamaño total de los mensajes contenidos en una cola. El tamaño de la cola se define en el momento de la creación, con un límite de 5 GB.
 
-## <a name="how-tooreceive-messages-from-a-queue"></a>¿Cómo tooreceive mensajes desde una cola
-Se reciben mensajes de una cola utilizando hello `receive_queue_message()` método en hello **Azure::ServiceBusService** objeto. De forma predeterminada, los mensajes se leen y bloqueados sin que se eliminen de cola de Hola. Sin embargo, puede eliminar los mensajes de cola de hello cuando se leen por establecer hello `:peek_lock` opción demasiado**false**.
+## <a name="how-to-receive-messages-from-a-queue"></a>Recepción de mensajes de una cola
+Los mensajes se reciben de una cola utilizando el método `receive_queue_message()` del objeto **Azure::ServiceBusService**. De forma predeterminada, los mensajes se leen y bloquean sin que se eliminen de la cola. Sin embargo, puede eliminar mensajes de la cola a medida que se leen estableciendo la opción `:peek_lock` en **false**.
 
-comportamiento predeterminado de Hello hace Hola lectura y eliminación de una operación de dos fases, esto también hace que las aplicaciones de toosupport posible que no pueden tolerar mensajes perdidos. Al Bus de servicio recibe una solicitud, busca Hola siguiente mensaje toobe consumido, lo bloquea tooprevent otros consumidores de recibirlo y, a continuación, lo devuelve toohello aplicación. Después de aplicación hello finaliza el procesamiento de mensajes de bienvenida (o lo almacena de forma confiable para el procesamiento futuro), completa Hola segunda fase del programa Hola a recibir el proceso mediante una llamada a `delete_queue_message()` método y proporcionar toobe de mensaje de Hola eliminado como un parámetro. Hola `delete_queue_message()` método marcar Hola mensaje como consumido y quitarlo de la cola de Hola.
+El comportamiento predeterminado convierte la lectura y eliminación en una operación de dos fases que también hace posible admitir aplicaciones que no toleran la pérdida de mensajes. Cuando el Bus de servicio recibe una solicitud, busca el siguiente mensaje que se va a consumir, lo bloquea para impedir que otros consumidores lo reciban y, a continuación, lo devuelve a la aplicación. Una vez que la aplicación termina de procesar el mensaje (o lo almacena de forma fiable para su futuro procesamiento), completa la segunda fase del proceso de recepción llamando al método `delete_queue_message()` y facilitando el mensaje que se va a eliminar a modo de parámetro. El método `delete_queue_message()` marcará el mensaje como consumido y lo eliminará de la cola.
 
-Si hello `:peek_lock` parámetro está establecido demasiado**false**, leer y eliminar mensajes de bienvenida se convierte en el modelo más sencillo de Hola y funciona mejor para escenarios en los que una aplicación puede tolerar no procesar un mensaje en caso de hello de un error. toounderstand esto, considere un escenario en los problemas del consumidor Hola Hola recibir la solicitud y, a continuación, se bloquea antes de procesarlo. Dado que Service Bus se marcado como mensaje de Hola como consumido, cuando la aplicación hello se reinicia y comienza a consumir mensajes de nuevo, habrá perdido mensaje Hola que estaba consumido bloqueo toohello anterior.
+Si el parámetro `:peek_lock` se establece en **false**, la lectura y eliminación del mensaje se convierte en el modelo más simple y funciona mejor para los escenarios en los que una aplicación puede tolerar no procesar un mensaje en caso de error. Para entenderlo mejor, pongamos una situación en la que un consumidor emite la solicitud de recepción que se bloquea antes de procesarla. Como Service Bus ha marcado el mensaje como consumido, cuando la aplicación se reinicie y empiece a consumir mensajes de nuevo, habrá perdido el mensaje que se consumió antes del bloqueo.
 
-Hello en el ejemplo siguiente se muestra cómo tooreceive y procesar mensajes usando `receive_queue_message()`. ejemplo de Hola primero recibe y elimina un mensaje mediante el uso de `:peek_lock` establecido demasiado**false**, a continuación, recibe otro mensaje y, a continuación, elimina Hola mensaje utilizando `delete_queue_message()`:
+En el ejemplo siguiente se muestra cómo recibir y procesar mensajes mediante `receive_queue_message()`. El ejemplo primero recibe y elimina un mensaje mediante `:peek_lock` establecido en **false**; después, recibe otro mensaje y luego elimina el mensaje mediante `delete_queue_message()`:
 
 ```ruby
 message = azure_service_bus_service.receive_queue_message("test-queue",
@@ -83,18 +83,18 @@ message = azure_service_bus_service.receive_queue_message("test-queue")
 azure_service_bus_service.delete_queue_message(message)
 ```
 
-## <a name="how-toohandle-application-crashes-and-unreadable-messages"></a>No se puede leer mensajes y cómo se bloquea la aplicación de toohandle
-Bus de servicio proporciona toohelp de funcionalidad que recuperarse de errores en sus aplicaciones o dificultades para procesar un mensaje. Si una aplicación receptora no puede tooprocess Hola mensaje por alguna razón, a continuación, puede llamar a hello `unlock_queue_message()` método en hello **Azure::ServiceBusService** objeto. Este causas llamada hello toounlock de Bus de servicio de mensajes en cola de Hola y hacerla disponible toobe recibido de nuevo, ya sea por Hola mismo consumen aplicación o por otra aplicación que consume.
+## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Actuación ante errores de la aplicación y mensajes que no se pueden leer
+El Bus de servicio proporciona una funcionalidad que le ayuda a superar sin problemas los errores de la aplicación o las dificultades para procesar un mensaje. Si por cualquier motivo una aplicación de recepción es incapaz de procesar el mensaje, entonces puede llamar al método `unlock_queue_message()` del objeto **Azure::ServiceBusService**. Esta llamada hará que Service Bus desbloquee el mensaje de la cola y esté disponible para volver a recibirse, ya sea por la misma aplicación que lo consume o por otra.
 
-También hay un tiempo de espera asociado a un mensaje bloqueado en cola de Hola y si la aplicación hello produce un error en el mensaje de saludo tooprocess antes de tiempo de espera de bloqueo de Hola expira (por ejemplo, si se bloquea aplicación hello), a continuación, Bus de servicio desbloquea el mensaje de bienvenida de automáticamente y la convierte en disponible toobe recibido de nuevo.
+También hay otro tiempo de espera asociado con un mensaje bloqueado en la cola y, si la aplicación no puede procesar el mensaje antes de que finalice el tiempo de espera del bloqueo (por ejemplo, si la aplicación se bloquea), entonces el Bus de servicio desbloquea el mensaje automáticamente y hace que esté disponible para que pueda volver a recibirse.
 
-Hola eventos que Hola aplicación se bloquea después de procesar el mensaje de bienvenida pero antes de hello `delete_queue_message()` se llama al método, a continuación, mensaje de bienvenida es la aplicación de toohello entregados de nuevo cuando se reinicia. Este proceso se denomina a menudo *al menos una vez procesamiento*; es decir, cada mensaje se procesa al menos una vez, pero en cierto Hola de situaciones puede volverse a entregar el mismo mensaje. Si el escenario de hello no puede tolerar el procesamiento duplicado, los desarrolladores de aplicaciones deben agregar lógica adicional tootheir aplicación toohandle duplicados entrega del mensaje. A menudo esto se logra utilizando hello `message_id` propiedad del mensaje de Hola, que permanece constante en los intentos de entrega.
+En caso de que la aplicación sufra un error después de procesar el mensaje y antes de llamar al método `delete_queue_message()`, entonces el mensaje se vuelve a entregar a la aplicación cuando esta se reinicie. Este proceso habitualmente se denomina *Al menos un procesamiento*, es decir, cada mensaje se procesará al menos una vez; sin embargo, en determinadas situaciones, podría volver a entregarse el mismo mensaje. Si el escenario no puede tolerar el procesamiento duplicado, entonces los desarrolladores de la aplicación deberían agregar lógica adicional a su aplicación para solucionar la entrega de mensajes duplicados. A menudo, esto se consigue con la propiedad `message_id` del mensaje, que permanece constante en todos los intentos de entrega.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora que conoce los fundamentos de Hola de colas de Service Bus, siga estas toolearn de vínculos más.
+Ahora que conoce los fundamentos de las colas del Bus de servicio, siga estos vínculos para obtener más información.
 
 * Información general de [colas, temas y suscripciones](service-bus-queues-topics-subscriptions.md).
-* Visite hello [Azure SDK para Ruby](https://github.com/Azure/azure-sdk-for-ruby) repositorio en GitHub.
+* Visite el repositorio de [SDK de Azure para Ruby](https://github.com/Azure/azure-sdk-for-ruby) en GitHub.
 
-Para obtener una comparación entre las colas de Service Bus de Azure de hello descritas en este artículo y las colas de Azure descrito en hello [cómo toouse Queue storage from. Ruby](../storage/queues/storage-ruby-how-to-use-queue-storage.md) artículo, consulte [colas de Azure y colas de Bus de servicio de Azure: comparación y diferencias](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+Para ver una comparación entre las colas de Azure Service Bus de este artículo y el servicio de colas de Azure que se describe en el artículo [Uso del almacenamiento de colas de Ruby](../storage/queues/storage-ruby-how-to-use-queue-storage.md), vea [Colas de Service Bus y colas de Azure: comparación y diferencias](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 

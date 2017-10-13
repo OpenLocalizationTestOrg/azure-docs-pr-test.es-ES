@@ -1,5 +1,5 @@
 ---
-title: aaaDeploy IDE EHP7 SP3 de SAP para SAP ERP 6.0 en Azure | Documentos de Microsoft
+title: "Implementación de SAP IDES EHP7 SP3 para SAP ERP 6.0 en Azure | Microsoft Docs"
 description: "Implementación de SAP IDES EHP7 SP3 para SAP ERP 6.0 en Azure"
 services: virtual-machines-windows
 documentationcenter: 
@@ -16,112 +16,112 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: 26d88c7b48a91d35602464c4f89ca7a30502c4b2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 91eed294077ff72d0760018b10c98f32db88f3be
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Implementación de SAP IDES EHP7 SP3 para SAP ERP 6.0 en Azure
-Este artículo se describe cómo toodeploy una SAP sistema IDE que se ejecuta con SQL Server y el sistema operativo de Windows hello en Azure a través de hello biblioteca de dispositivo de nube de SAP (SAP CAL) 3.0. capturas de pantalla de Hello muestran el proceso paso a paso de Hola. toodeploy otra solución, siga Hola los mismos pasos.
+En este artículo se describe cómo implementar un sistema SAP IDES que se ejecuta con SQL Server y el sistema operativo Windows en Azure por medio de SAP Cloud Appliance Library (SAP CAL) 3.0. Las capturas de pantalla muestran el proceso paso a paso. Para implementar otra solución, siga los mismos pasos.
 
-toostart con hello CAL de SAP, vaya toohello [biblioteca de dispositivo de nube de SAP](https://cal.sap.com/) sitio Web. SAP también tiene un blog sobre Hola nuevo [SAP en la nube Appliance biblioteca 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience). 
+Para empezar con SAP CAL, vaya al sitio web de [SAP Cloud Appliance Library](https://cal.sap.com/). SAP también tiene un blog acerca de [SAP Cloud Appliance Library 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience). 
 
 > [!NOTE]
-Tal y como del 29 de mayo de 2017, puede usar el modelo de implementación de Azure Resource Manager hello además preferido menor toohello de implementación clásica modelo toodeploy Hola CAL de SAP. Se recomienda que use el nuevo modelo de implementación de administrador de recursos hello y pasar por alto el modelo de implementación clásica de Hola.
+A partir del 29 de mayo de 2017 puede usar el modelo de implementación mediante Azure Resource Manager, además del modelo de implementación clásico, que se usa menos, para implementar SAP CAL. Se recomienda usar el nuevo modelo de implementación mediante Resource Manager, en lugar del modelo de implementación clásico.
 
-Si ha creado una cuenta de CAL de SAP que utiliza el modelo clásico de hello, *necesita toocreate otra cuenta de CAL de SAP*. Esta cuenta debe tooexclusively implementar en Azure mediante el modelo de administrador de recursos de Hola.
+Si ya ha creado una cuenta de SAP CAL que utiliza el modelo clásico, *debe crear otra*. Dicha cuenta se debe implementar exclusivamente en Azure mediante el modelo de Resource Manager.
 
-Después de iniciar sesión en toohello CAL de SAP, primera página de hello normalmente le toohello **soluciones** página. soluciones de Hello ofrecidas en hello CAL de SAP se aumentan continuamente, por lo que tendrá que tooscroll un poco toofind Hola solución. solución de IDE de SAP basados en Windows de Hello resaltado que está disponible exclusivamente en Azure demuestra el proceso de implementación de hello:
+Después de iniciar sesión SAP CAL, la primera página normalmente conducir a la página de **soluciones**. El número de soluciones que se ofrecen en SAP CAL aumenta continuamente, por lo que es posible que deba desplazarse un poco para encontrar la solución que desea. La SAP IDES para Windows resaltada que está disponible exclusivamente en Azure muestra el proceso de implementación:
 
 ![Soluciones de SAP CAL](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic1.jpg)
 
-### <a name="create-an-account-in-hello-sap-cal"></a>Crear una cuenta de hello CAL de SAP
-1. toosign en toohello CAL de SAP para hello primera vez, utilice el usuario S SAP u otro usuario registrado con SAP. A continuación, defina una cuenta de CAL de SAP que se usa por dispositivos de toodeploy Hola CAL de SAP en Azure. En la definición de la cuenta de hello, necesitará:
+### <a name="create-an-account-in-the-sap-cal"></a>Creación de una cuenta en SAP CAL
+1. La primera vez que inicie sesión en SAP CAL, utilice S-User de SAP, o cualquier otro usuario registrado de SAP. A continuación, defina una cuenta de SAP CAL que SAP CAL use para implementar aplicaciones en Azure. En la definición de la cuenta, debe:
 
-    a. Seleccione el modelo de implementación de hello en Azure (Administrador de recursos o estándar).
+    a. Seleccione el modelo de implementación en Azure (Resource Manager o clásico).
 
-    b. Especifique la suscripción a Azure. Puede asignarse a una cuenta de SAP CAL tooone suscripción solo. Si necesita más de una suscripción, deberá toocreate otra cuenta de CAL de SAP.
+    b. Especifique la suscripción a Azure. Una cuenta de SAP CAL no se puede asignar a más de una suscripción. Si necesita más de una suscripción, debe crear otra cuenta de SAP CAL.
     
-    c. Dar permiso toodeploy de hello CAL de SAP en su suscripción de Azure.
+    c. Conceda el permiso de SAP CAL para realizar la implementación en la suscripción de Azure.
 
     > [!NOTE]
-    pasos siguientes Hola muestran cómo cuenta toocreate una CAL de SAP para las implementaciones del Administrador de recursos. Si ya tiene una cuenta de CAL de SAP que sea el modelo de implementación clásica toohello vinculado, se *necesita* toofollow estos toocreate pasos una nueva cuenta de CAL de SAP. nueva cuenta de CAL de SAP Hola debe toodeploy en el modelo de administrador de recursos de Hola.
+    Los pasos siguientes muestran cómo crear una cuenta de SAP CAL para las implementaciones mediante Resource Manager. Si ya tiene una cuenta de SAP CAL vinculada al modelo de implementación clásico, *tendrá que* seguir estos pasos para crear una cuenta de SAP CAL nueva. La nueva cuenta de SAP CAL se tiene que implementar mediante el modelo de Resource Manager.
 
-2. toocreate una nueva CAL de SAP de la cuenta, hello **cuentas** página muestra dos opciones de Azure: 
+2. Para crear una nueva cuenta de SAP CAL, la página **Accounts** (Cuentas) muestra dos opciones para Azure: 
 
-    a. **Microsoft Azure (clásica)** es el modelo de implementación clásica de Hola y ya no se prefiere.
+    a. **Microsoft Azure (classic)** es el modelo de implementación clásico y ya no se suele usar.
 
-    b. **Microsoft Azure** es Hola nuevo modelo de implementación de administrador de recursos.
+    b. **Microsoft Azure** es el nuevo modelo de implementación mediante Resource Manager.
 
     ![Cuentas de SAP CAL](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic-2a.PNG)
 
-    Seleccione toodeploy en el modelo del Administrador de recursos de hello, **Microsoft Azure**.
+    Para implementar mediante el modelo de Resource Manager, seleccione **Microsoft Azure**.
 
     ![Cuentas de SAP CAL](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic3c.PNG)
 
-3. Escriba hello Azure **Id. de suscripción** que pueden encontrarse en hello portal de Azure. 
+3. En el campo **Suscription ID**, especifique el identificador de suscripción de Azure, que se puede encontrar en Azure Portal. 
 
     ![Identificador de suscripción de SAP CAL](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic3c.PNG)
 
-4. tooauthorize Hola SAP CAL toodeploy en hello suscripción de Azure ha definido, haga clic en **Authorize**. Hola después de la página aparece en la pestaña de explorador hello:
+4. Para autorizar que SAP CAL se implemente en la suscripción de Azure que ha definido, haga clic en **Authorize** (Autorizar). La siguiente página aparecerá en la pestaña del explorador:
 
     ![Inicio de sesión de servicios en la nube de Internet Explorer](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic4c.PNG)
 
-5. Si aparece más de un usuario, elija la cuenta de Microsoft de Hola que está vinculado toobe hello coadministrator de hello Azure suscripción que ha seleccionado. Hola después de la página aparece en la pestaña de explorador hello:
+5. Si se enumera más de un usuario, elija la cuenta de Microsoft vinculada para ser el coadministrador de la suscripción de Azure que ha seleccionado. La siguiente página aparecerá en la pestaña del explorador:
 
     ![Confirmación de servicios en la nube de Internet Explorer](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic5a.PNG)
 
-6. Haga clic en **Aceptar**. Si es correcta la autorización de hello, vuelve a mostrar hello definición de la cuenta de CAL de SAP. Después de unos minutos, un mensaje confirmará que el proceso de autorización de hello fue correcta.
+6. Haga clic en **Aceptar**. Si la autorización es correcta, vuelve a mostrarse la definición de la cuenta de SAP CAL. Poco después, un mensaje confirma que el proceso de autorización se ha realizado correctamente.
 
-7. Hola tooassign recién creado tooyour de cuenta SAP CAL de usuario, escriba su **Id. de usuario** en Hola Hola derecho cuadro de texto y haga clic en **agregar**. 
+7. Para asignar la cuenta de SAP CAL recién creada al usuario, escriba en el cuadro de texto de la derecha su **identificador de usuario** y haga clic en **Agregar**. 
 
-    ![Asociación de cuenta toouser](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic8a.PNG)
+    ![Asociación de cuenta a usuario](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic8a.PNG)
 
-8. tooassociate su cuenta con usuario Hola que usas toosign en toohello CAL de SAP, haga clic en **revisión**. 
+8. Para asociar una cuenta con el usuario que utiliza para iniciar sesión en SAP CAL, haga clic en **Review** (Revisar). 
 
-9. asociación de hello toocreate entre el usuario y la cuenta de CAL de SAP de hello recién creado, haga clic en **crear**.
+9. Para crear la asociación entre el usuario y la cuenta de SAP CAL recién creada, haga clic en **Create** (Crear).
 
-    ![Asociación de tooaccount de usuario](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic9b.PNG)
+    ![Asociación de usuario a cuenta](./media/cal-ides-erp6-ehp7-sp3-sql/s4h-pic9b.PNG)
 
 Ha creado correctamente una cuenta de SAP CAL que puede:
 
-- Utilice el modelo de implementación del Administrador de recursos de Hola.
+- Usar el modelo de implementación mediante Resource Manager.
 - Implementar sistemas de SAP en su suscripción a Azure.
 
 > [!NOTE]
-Para poder implementar soluciones SAP IDE Hola basadas en Windows y SQL Server, puede que tenga toosign hacia arriba para una suscripción de CAL de SAP. En caso contrario, podría aparecen solución hello como **bloqueado** en la página de información general de Hola.
+Para poder implementar la solución SAP IDES para Windows y SQL Server, es preciso registrarse para obtener una suscripción de SAP CAL. Si no se hace, la solución podría aparecer como **Locked** (Bloqueado) en la página de información general.
 
 ### <a name="deploy-a-solution"></a>Implementación de una solución
-1. Después de configurar una cuenta de CAL de SAP, seleccione **Hola solución SAP IDE en Windows y SQL Server** solución. Haga clic en **crear instancia**y confirme las condiciones de uso y los términos de Hola. 
+1. Después de configurar una cuenta de SAP CAL, seleccione **La solución SAP IDES en Windows y la solución SQL Server**. Haga clic en **Create Instance** (Crear instancia) y confirme las condiciones de uso. 
 
-2. En hello **modo básico: crear instancia** página, necesita:
+2. En la página **Basic Mode: Create Instance** (Modo básico: crear instancia), tiene que:
 
     a. Especificar en **Name** el nombre de la instancia.
 
-    b. Seleccionar una **región** de Azure. Puede que tenga un tooget de suscripción de CAL de SAP que ofrece varias regiones de Azure.
+    b. Seleccionar una **región** de Azure. Para poder elegir entre varias regiones de Azure, puede que necesite tener una suscripción a SAP CAL.
 
-    c.  Escriba master hello **contraseña** para la solución de hello, tal como se muestra:
+    c.  Escribir en **Master Password** la contraseña maestra de la solución, como se muestra:
 
     ![SAP CAL, Modo básico: crear instancia](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
-3. Haga clic en **Crear**. Más tarde, según el tamaño de Hola y la complejidad de solución de hello (Hola CAL de SAP proporciona una estimación), Hola estado se muestra como activo y preparado para su uso: 
+3. Haga clic en **Create** (Crear). Después de un tiempo, y en función del tamaño y la complejidad de la solución (SAP CAL ofrece una estimación), el estado pasa mostrarse como activo y listo para usarse: 
 
     ![Instancias de SAP CAL](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic12a.png)
 
-4. grupo de recursos de toofind hello y todos los objetos que se crearon Hola CAL de SAP, vaya toohello portal de Azure. máquina virtual de Hello puede encontrarse a partir de hello mismo nombre que se proporcionó en hello CAL de SAP de la instancia.
+4. Para buscar el grupo de recursos y todos los objetos que SAP CAL ha creado, vaya Azure Portal. Se puede ver que la máquina virtual se inicia con el mismo nombre de instancia que se proporcionó en SAP CAL.
 
     ![Objetos del grupo de recursos](./media/cal-ides-erp6-ehp7-sp3-sql/ides_resource_group.PNG)
 
-5. En el portal de SAP CAL hello, toohello implementado instancias y haga clic en **conectar**. Hola después de la ventana emergente aparece: 
+5. En el portal de SAP CAL, vaya a las instancias implementadas y haga clic en **Connect** (Conectar). Aparece la siguiente ventana emergente: 
 
-    ![Conectar toohello instancia](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic14a.PNG)
+    ![Conectarse a la instancia](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic14a.PNG)
 
-6. Para poder usar uno de hello opciones tooconnect toohello implementado sistemas, haga clic en **Getting Started Guide**. nombres de la documentación de Hola Hola a los usuarios para cada uno de los métodos de conectividad de Hola. las contraseñas de Hola para los usuarios se establecen toohello contraseña maestra que ha definido al principio de Hola Hola del proceso de implementación. En la documentación de hello, otros usuarios más funcionales se muestran con sus contraseñas, que se pueden usar toosign en toohello implementa el sistema.
+6. Para poder usar una de las opciones para conectarse a los sistemas implementados, haga clic en **Guía de introducción**. La documentación asigna los nombres de los usuarios en cada uno de los métodos de conectividad. Las contraseñas de dichos usuarios se establecen en la contraseña maestra que se definió al comienzo del proceso de implementación. En la documentación, otros usuarios más funcionales se enumeran junto con sus contraseñas, que se pueden usar para iniciar sesión en el sistema implementado.
 
     ![Documentación de bienvenida de SAP](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic15.jpg)
 
 En unas pocas horas, un sistema SAP IDES en buen estado se implementa en Azure.
 
-Si ha adquirido una suscripción de CAL de SAP, SAP admite totalmente las implementaciones a través de hello CAL de SAP en Azure. cola de soporte técnico de Hello es BC-VCM-CAL.
+Si ha adquirido una suscripción a SAP CAL, SAP admite totalmente implementaciones a través de SAP CAL en Azure. La cola de compatibilidad es BC-VCM-CAL.
 

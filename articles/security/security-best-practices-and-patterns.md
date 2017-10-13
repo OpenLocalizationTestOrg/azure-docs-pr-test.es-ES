@@ -1,6 +1,6 @@
 ---
-title: seguridad aaaAzure procedimientos recomendados y patrones | Documentos de Microsoft
-description: "artículo de Hello proporciona una introducción sobre prácticas recomendadas de seguridad de Azure y patrones y una lista de prácticas recomendadas de seguridad para los distintos recursos de Azure protegida."
+title: Patrones y procedimientos recomendados de seguridad en Azure | Microsoft Docs
+description: "El artículo proporciona una introducción acerca de los patrones y procedimientos recomendados de seguridad de Azure, así como una lista exclusiva de procedimientos recomendados de seguridad para los distintos recursos de Azure."
 services: azure-security
 documentationcenter: na
 author: TomShinder
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/06/2017
 ms.author: terrylan
-ms.openlocfilehash: eaaa9457faa1d5906275eb1fd8988d4d4aad101a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 1cc0d2d1e9a62ff8531f963413ff573713d508ad
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Patrones y procedimientos recomendados de seguridad en Azure
-Actualmente tenemos Hola siguientes artículos mejores patrones y prácticas de seguridad de Azure. Hacer toovisit seguro de que este sitio actualiza periódicamente toosee tooour creciente lista de patrones y prácticas recomendadas de seguridad de Azure:  
+Actualmente se pueden consultar los siguientes artículos de patrones y procedimientos recomendados de seguridad de Azure. Asegúrese de visitar este sitio periódicamente para estar al tanto de las novedades de nuestra lista actualizada de patrones y procedimientos recomendados de seguridad de Azure:  
 
 * [Procedimientos recomendados de seguridad de la red de Azure](azure-security-network-security-best-practices.md)
 * [Procedimientos recomendados de cifrado y seguridad de datos en Azure](azure-security-data-encryption-best-practices.md)
@@ -32,18 +32,18 @@ Actualmente tenemos Hola siguientes artículos mejores patrones y prácticas de 
 * [Implementing a secure hybrid network architecture in Azure (Implementación de una arquitectura de red híbrida segura en Azure)](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md)
 * [Azure PaaS Best Practices] (https://docs.microsoft.com/en-us/azure/security/security-paas-deployments)
 
-Azure ofrece una plataforma segura en la que puede crear sus soluciones. También se proporcionan los servicios y tecnologías toomake sus soluciones en Azure más segura. Debido a Hola muchas opciones tooyou disponible, muchos de los usuarios han expresado interés en lo que Microsoft recomienda como mejor patrones para mejorar la seguridad y los procedimientos recomendados.
+Azure ofrece una plataforma segura en la que puede crear sus soluciones. También proporcionamos servicios y tecnologías para proteger sus soluciones de Azure. Debido a las numerosas opciones disponibles, muchos usuarios han expresado su interés en los procedimientos recomendados y patrones que Microsoft podría recomendar para mejorar la seguridad.
 
-Entendemos su interés y ha creado una colección de documentos que describen acciones que puede realizar, dado el contexto adecuado hello, seguridad de hello tooimprove de implementaciones de Azure.
+Somos conscientes de su interés y por ello hemos creado una serie de documentos que describen las acciones que puede realizar dentro de un contexto adecuado y que, mejorarán la seguridad de las implementaciones de Azure.
 
-En estos artículos se aborda una serie de procedimientos recomendados y patrones útiles para temas determinados. Estos patrones y procedimientos recomendados se derivan de la experiencia con estas tecnologías y experiencias de Hola de clientes como usted.
+En estos artículos se aborda una serie de procedimientos recomendados y patrones útiles para temas determinados. Estos procedimientos recomendados y patrones se han diseñado a partir de nuestras experiencias con estas tecnologías y las experiencias de clientes como usted.
 
-Para cada procedimiento recomendado nos esforzamos por tooexplain:
+Para cada procedimiento recomendado, explicaremos:
 
-* ¿Qué recomienda Hola
-* ¿Por qué desea tooenable este procedimiento recomendado
-* ¿Qué podría ser resultado de hello si no se recomienda tooenable Hola
-* Procedimiento recomendado de las alternativas posibles toohello
-* ¿Cómo puede obtener información práctica recomendada de hello tooenable
+* Qué es el procedimiento recomendado
+* Por qué le conviene habilitar este procedimiento recomendado
+* Cuál podría ser el resultado si no habilita el procedimiento recomendado
+* Alternativas posibles al procedimiento recomendado
+* Cómo aprender a habilitar el procedimiento recomendado
 
-¡Esperamos tener tooincluding muchos más artículos sobre procedimientos recomendados y la arquitectura de seguridad de Azure. Si no hay temas que quiere que nos tooinclude, hacernos saber en el área de discusión de hello en parte inferior de Hola de esta página.
+Esperamos incluir muchos más artículos sobre arquitectura de seguridad de Azure y procedimientos recomendados. Si hay algún tema que le gustaría que incluyéramos, háganoslo saber en el área de discusión en la parte inferior de esta página.

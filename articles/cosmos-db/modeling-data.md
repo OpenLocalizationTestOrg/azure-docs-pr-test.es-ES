@@ -1,5 +1,5 @@
 ---
-title: datos del documento aaaModeling para una base de datos NoSQL | Documentos de Microsoft
+title: Modelado de datos del documento para una base de datos NoSQL | Microsoft Docs
 description: "Obtenga información sobre el modelado de datos para bases de datos NoSQL."
 keywords: modelado de datos
 services: cosmos-db
@@ -15,37 +15,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2016
 ms.author: arramac
-ms.openlocfilehash: 2e388c833f204287896dfa8e6f79c88073731b6b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 16c387fe574243544cf54cf283c7713ddcaa1942
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="modeling-document-data-for-nosql-databases"></a>Modelado de datos del documento para bases de datos NoSQL
-Mientras sin esquemas bases de datos, como la base de datos de Azure Cosmos facilitan super modelo de datos de tooyour tooembrace cambios todavía debe dedicar algún tiempo pensar sobre los datos. 
+Mientras que las bases de datos libres de esquemas, como Azure Cosmos DB, facilitan notablemente la adopción de cambios en el modelo de datos, debe dedicar algo de tiempo a pensar en los datos. 
 
-¿Cómo van toobe almacena datos? ¿Cómo son los datos de tooretrieve y consulta de curso de aplicación? ¿La aplicación realiza muchas operaciones de lectura o escritura? 
+¿Cómo se van a almacenar los datos? ¿Cómo la aplicación va a recuperar y consultar los datos? ¿La aplicación realiza muchas operaciones de lectura o escritura? 
 
-Después de leer este artículo, será hello tooanswer pueda siguientes preguntas:
+Después de leer este artículo, podrá responder a las siguientes preguntas:
 
 * ¿Cómo debo pensar en un documento en una base de datos de documentos?
 * ¿Qué es el modelado de datos y por qué tendría que importarme? 
-* ¿Cómo es modelar los datos en una base de datos documento relacional tooa diferentes de base de datos?
+* ¿Cómo es el modelado de datos en una base de datos de documentos distinta de una base de datos relacional?
 * ¿Cómo expreso relaciones de datos en una base de datos no relacional?
-* ¿Cuándo se puede incrustar los datos y cuándo puedo vincular toodata?
+* ¿Cuándo se incrustan datos y cuándo realizo vinculaciones a los datos?
 
 ## <a name="embedding-data"></a>Incrustación de datos
-Al comenzar a modelar los datos en un almacén de documentos, como la base de datos de Azure Cosmos, intente tootreat las entidades como **documentos independientes** representado en JSON.
+Al comenzar a modelar datos en un almacén de documentos, como Azure Cosmos DB, intente tratar las entidades como **documentos independientes** representados en JSON.
 
-Antes de adentrarnos demasiado, nos gustaría volver a realizar algunos pasos y echar un vistazo a cómo podríamos modelar algo en una base de datos relacional, un asunto con el que muchos de nosotros ya estamos familiarizados. Hello en el ejemplo siguiente se muestra cómo se podría almacenar una persona en una base de datos relacional. 
+Antes de adentrarnos demasiado, nos gustaría volver a realizar algunos pasos y echar un vistazo a cómo podríamos modelar algo en una base de datos relacional, un asunto con el que muchos de nosotros ya estamos familiarizados. En el ejemplo siguiente se muestra puede almacenarse una persona en una base de datos relacional. 
 
 ![Modelo de base de datos relacional](./media/documentdb-modeling-data/relational-data-model.png)
 
-Cuando se trabaja con bases de datos relacionales, nos hemos ha aprendido para toonormalize años, normalizar, normalizar.
+Al trabajar con bases de datos relacionales, hemos aprendido durante años a normalizar constantemente.
 
-Normalizar los datos normalmente implica tomar una entidad, como una persona y presenta la información estructurada en toodiscrete partes de los datos. En el ejemplo de Hola anterior, una persona puede tener varios registros de detalle de contacto, así como varios registros de dirección. Podemos ir incluso un paso más allá y desglosar detalles de contacto extrayendo aún más campos comunes, como un tipo. Al igual que ocurre con la dirección, cada registro aquí tiene un tipo como *doméstico* o *empresarial*. 
+La normalización de los datos implica normalmente tomar una entidad, como una persona, y dividirla en piezas de datos discretas. En el ejemplo anterior, una persona puede tener varios registros de información de contacto, así como varios registros de dirección. Podemos ir incluso un paso más allá y desglosar detalles de contacto extrayendo aún más campos comunes, como un tipo. Al igual que ocurre con la dirección, cada registro aquí tiene un tipo como *doméstico* o *empresarial*. 
 
-Hola guiar local cuando la normalización de datos es demasiado**evitar el almacenamiento de datos redundantes** en cada registro y en su lugar, consulte toodata. En este ejemplo, tooread una persona, con todos sus detalles de contacto y las direcciones, necesita toouse combinaciones tooeffectively agregado los datos en tiempo de ejecución.
+La premisa principal cuando se normalizan datos es la de **evitar el almacenamiento de datos redundantes** en cada registro y, en su lugar, hacer referencia a los datos. En este ejemplo, para leer a una persona, con toda su información de contacto y direcciones, tendrá que utilizar CONEXIONES para agregar de forma eficaz los datos en tiempo de ejecución.
 
     SELECT p.FirstName, p.LastName, a.City, cd.Detail
     FROM Person p
@@ -55,7 +55,7 @@ Hola guiar local cuando la normalización de datos es demasiado**evitar el almac
 
 La actualización de una única persona con su información de contacto y direcciones requiere operaciones de escritura en muchas tablas individuales. 
 
-Ahora vamos a echar un vistazo a cómo se podría modelo Hola mismo datos como una entidad independiente en una base de datos del documento.
+Ahora veamos cómo modelamos los mismos datos como una entidad independiente en una base de datos de documentos.
 
     {
         "id": "1",
@@ -76,39 +76,39 @@ Ahora vamos a echar un vistazo a cómo se podría modelo Hola mismo datos como u
         ] 
     }
 
-Con el anterior de enfoque Hola ahora tenemos **sin normalizar** Hola registro persona donde se **incrustado** todos Hola información relacionada con la persona de toothis, como sus detalles de contacto y direcciones, en tooa único Documento JSON.
-Además, dado que no nos estamos confinados tooa un esquema fijo que tenemos Hola flexibilidad toodo cosas con detalles de contacto de distintas formas completamente. 
+Mediante el enfoque anterior, ahora hemos **desnormalizado** el registro de la persona en el que hemos **incrustado** toda la información relacionada con esta persona, como su información de contacto y direcciones, en un único documento JSON.
+Además, puesto que no estamos limitados a un esquema fijo, contamos con la flexibilidad para hacer cosas como tener información de contacto de formas diferentes por completo. 
 
-La recuperación de un registro de la persona que completa de base de datos de hello es ahora una única operación en una sola colección y de un solo documento de lectura. La actualización de un registro de una persona, con su información de contacto y direcciones, es también una operación de escritura única frente a un documento único.
+Recuperar un registro de persona completa de la base de datos es ahora una única operación de lectura frente a una colección única y para un documento único. La actualización de un registro de una persona, con su información de contacto y direcciones, es también una operación de escritura única frente a un documento único.
 
-Al eliminar la normalización de datos, la aplicación puede necesitar tooissue menos las consultas y actualizaciones toocomplete operaciones comunes. 
+Mediante la desnormalización de datos, es posible que la aplicación tenga que emitir menos consultas y actualizaciones para completar operaciones frecuentes. 
 
-### <a name="when-tooembed"></a>Cuando tooembed
+### <a name="when-to-embed"></a>Cuándo se debe realizar la incrustación
 Por lo general, use los modelos de datos de incrustación cuando:
 
 * Existen relaciones de **inclusión** entre entidades.
 * Existen relaciones de **uno a algunos** entre entidades.
 * Existen datos incrustados que **cambian con poca frecuencia**.
 * Existen datos incrustados que no crecerán **sin límites**.
-* No hay datos incrustados **integral** toodata en un documento.
+* Existen datos incrustados que se **integran** en los datos en un documento.
 
 > [!NOTE]
 > Los modelos de datos desnormalizados normalmente proporcionan un mejor rendimiento de **lectura** .
 > 
 > 
 
-### <a name="when-not-tooembed"></a>Cuando no tooembed
-Mientras Hola regla general en una base de datos de documento es toodenormalize todo el contenido y lo inserte todos los datos en tooa único documento, esto puede provocar situaciones toosome que deberían evitarse.
+### <a name="when-not-to-embed"></a>Cuándo no se debe incrustar
+Puesto que la regla general en una base de datos de documentos es desnormalizarlo todo e incrustar todos los datos en un único documento, es posible que se produzcan situaciones que se deben evitar.
 
 Seleccione este fragmento JSON.
 
     {
         "id": "1",
-        "name": "What's new in hello coolest Cloud",
+        "name": "What's new in the coolest Cloud",
         "summary": "A blog post by someone real famous",
         "comments": [
             {"id": 1, "author": "anon", "comment": "something useful, I'm sure"},
-            {"id": 2, "author": "bob", "comment": "wisdom from hello interwebs"},
+            {"id": 2, "author": "bob", "comment": "wisdom from the interwebs"},
             …
             {"id": 100001, "author": "jane", "comment": "and on we go ..."},
             …
@@ -118,20 +118,20 @@ Seleccione este fragmento JSON.
         ]
     }
 
-Este podría el aspecto de una entidad de publicación con comentarios incrustados si se ha modelado un sistema, CMS o blog normales. problema con este ejemplo Hello es ese hello matriz comentarios es **unbounded**, lo que significa que no hay ningún número de toohello límite (práctico) de los comentarios puede tener cualquier mensaje único. Esto se convertirá en un problema como tamaño de saludo del documento de hello podría crecer significativamente.
+Este podría el aspecto de una entidad de publicación con comentarios incrustados si se ha modelado un sistema, CMS o blog normales. El problema con este ejemplo es que la matriz de comentarios **no está limitada**, lo que significa que no hay ningún límite (práctico) para el número de comentarios que puede tener cualquier publicación única. Esto será un problema, ya que el tamaño del documento puede aumentar notablemente.
 
-Como tamaño de Hola de hello documento crece en datos de saludo capacidad tootransmit Hola sobre conexión de hello, así como la lectura y actualización documento hello, a escala, se verán afectado.
+Puesto que el tamaño del documento aumenta la capacidad de transmisión de los datos a través de la conexión, así como la lectura y actualización del documento, a escala, se producirá un impacto en ellos.
 
-En este caso sería mejor hello tooconsider siguiendo el modelo.
+En este caso sería mejor tener en cuenta el siguiente modelo.
 
     Post document:
     {
         "id": "1",
-        "name": "What's new in hello coolest Cloud",
+        "name": "What's new in the coolest Cloud",
         "summary": "A blog post by someone real famous",
         "recentComments": [
             {"id": 1, "author": "anon", "comment": "something useful, I'm sure"},
-            {"id": 2, "author": "bob", "comment": "wisdom from hello interwebs"},
+            {"id": 2, "author": "bob", "comment": "wisdom from the interwebs"},
             {"id": 3, "author": "jane", "comment": "....."}
         ]
     }
@@ -141,7 +141,7 @@ En este caso sería mejor hello tooconsider siguiendo el modelo.
         "postId": "1"
         "comments": [
             {"id": 4, "author": "anon", "comment": "more goodness"},
-            {"id": 5, "author": "bob", "comment": "tails from hello field"},
+            {"id": 5, "author": "bob", "comment": "tails from the field"},
             ...
             {"id": 99, "author": "angry", "comment": "blah angry blah angry"}
         ]
@@ -155,9 +155,9 @@ En este caso sería mejor hello tooconsider siguiendo el modelo.
         ]
     }
 
-Este modelo tiene comentarios más reciente de hello tres incrustados en hello contabilizar por sí mismo, que es una matriz con un límite fijo esta hora. Hello otros comentarios se agrupan en toobatches de 100 comentarios y se almacenan en documentos independientes. tamaño de Hola de lote de Hola se ha elegido como 100 porque nuestra aplicación ficticia permite Hola comentarios del usuario tooload 100 a la vez.  
+Este modelo tiene los tres últimos comentarios insertados en la propia publicación, que es una matriz con un límite fijo esta vez. Los demás comentarios se agrupan en lotes de 100 comentarios y se almacenan en documentos independientes. El tamaño del lote se ha seleccionado como 100, puesto que nuestra aplicación ficticia permite al usuario cargar 100 comentarios a la vez.  
 
-Otro caso donde la incrustación de datos no son una buena idea es cuando Hola incrusta datos se utilizan con frecuencia en documentos y cambian con frecuencia. 
+Otro caso en el que la incrustación de datos no es una buena opción es cuando los datos incrustados se utilizan a menudo en documentos y cambian con frecuencia. 
 
 Seleccione este fragmento JSON.
 
@@ -177,16 +177,16 @@ Seleccione este fragmento JSON.
         ]
     }
 
-Esto podría representar la cartera de acciones de una persona. Información bursátil de tooembed Hola que hemos elegido en el documento de la cartera de tooeach. En un entorno donde está cambiando con frecuencia, los datos relacionados como una aplicación, de operaciones bursátiles incrustación de datos que cambian con frecuencia va toomean que está actualizando constantemente cada documento cartera cada vez que una cotización.
+Esto podría representar la cartera de acciones de una persona. Hemos elegido incrustar la información de las acciones en cada documento de la cartera. En un entorno donde los datos relacionados cambian con frecuencia, como una aplicación de comercio bursátil, la incrustación de datos que cambian con frecuencia significará que está actualizando constantemente cada documento de la cartera cada vez que se negocia una acción.
 
-Es posible negociar con la acción *zaza* cientos de veces en un solo día y miles de usuarios pueden tener *zaza* en su cartera. Con un modelo de datos como Hola anterior tendríamos tooupdate varios miles de documentos de cartera muchas veces al día a la izquierda tooa sistema que no se escala muy bien. 
+Es posible negociar con la acción *zaza* cientos de veces en un solo día y miles de usuarios pueden tener *zaza* en su cartera. Con un modelo de datos como el anterior, tendríamos que actualizar miles de documentos de cartera varias veces al día, por lo que daría lugar a una escalación del sistema no muy buena. 
 
 ## <a id="Refer"></a>Datos de referencia
 Por lo tanto, la incrustación de datos funciona bien en muchos casos, pero está claro que hay escenarios en los que la desnormalización de los datos provocará más problemas que ventajas. ¿Qué hacemos ahora? 
 
-Bases de datos relacionales no son lugar solo Hola donde puede crear relaciones entre entidades. En una base de datos de documento puede tener información en un documento que está realmente relacionado toodata en otros documentos. Ahora, estoy no recomendando para incluso un minuto que se desarrollan sistemas que serían mejor base de datos relacional tooa adecuado en la base de datos de Azure Cosmos o cualquier otra base de datos del documento, pero relaciones simples son válidas y pueden ser muy útiles. 
+Las bases de datos relacionales no son el único lugar donde puede crear relaciones entre entidades. En una base de datos de documentos puede tener información en un documento que realmente se relacione con los datos en otros documentos. No soy partidario ahora de dedicar ni un solo minuto a crear sistemas que podrían ser más adecuados para una base de datos relacional en Azure Cosmos DB o cualquier otra base de datos de documentos, ya que las relaciones simples son correctas y pueden ser muy útiles. 
 
-Hola JSON siguiente elegimos el ejemplo de Hola a toouse de una cartera de cotizaciones anteriormente pero esta vez que nos referimos toohello elemento estándar en la cartera de hello en lugar de incrustarla. De esta manera, al elemento en existencias Hola cambia con frecuencia a lo largo de hello día Hola solo documento que necesite toobe actualizado es único documento de cotizaciones Hola. 
+En el siguiente JSON hemos optado por utilizar el ejemplo de una cartera de acciones anteriores, pero esta vez hacemos referencia al artículo comercial en la cartera en lugar de incrustarlo. De esa forma, cuando el artículo comercial cambia frecuentemente a lo largo del día, el único documento que tiene que actualizarse es el documento de acciones único. 
 
     Person document:
     {
@@ -222,17 +222,17 @@ Hola JSON siguiente elegimos el ejemplo de Hola a toouse de una cartera de cotiz
     }
 
 
-Un inconveniente inmediata toothis aunque consiste si su aplicación es tooshow requiere información sobre cada acción que se mantiene al mostrar una cartera de una persona; en este caso se necesita toomake varios viajes toohello base de datos tooload Hola información para cada documento estándar. Aquí hemos realizado una decisión tooimprove Hola la eficacia de operaciones de escritura, que ocurrir con frecuencia a lo largo de día de hello, pero a su vez en peligro en hello operaciones de lectura que probablemente tengan menos impacto en el rendimiento de Hola de este sistema determinado.
+Sin embargo, una desventaja de este enfoque inmediato es si la aplicación es necesaria para mostrar información sobre cada acción que se mantiene al mostrar la cartera de una persona; en este caso necesitaría realizar varios viajes a la base de datos para cargar la información de cada documento de acciones. Aquí hemos tomado una decisión de mejorar la eficacia de las operaciones de escritura, que se producen con frecuencia a lo largo del día, pero a su vez, se comprometen las operaciones de lectura que potencialmente tienen un menor impacto en el rendimiento de este sistema en particular.
 
 > [!NOTE]
-> Modelos de datos normalizados **puede requerir más ciclos de ida y** toohello server.
+> Los modelos de datos normalizados **pueden requerir varios viajes de ida y vuelta** al servidor.
 > 
 > 
 
 ### <a name="what-about-foreign-keys"></a>¿Qué sucede con las claves externas?
-Porque actualmente no hay ningún concepto de una restricción, clave externa o de otra manera, las relaciones entre documentos que tienen en los documentos son "puntos débiles" y no se comprobarán Hola propia base de datos. Si desea tooensure que Hola datos que hace referencia a un documento tooactually existe, deberá toodo esto en la aplicación, o mediante el uso de saludo del servidor desencadenadores o procedimientos almacenados en la base de datos de Azure Cosmos.
+Puesto que actualmente no hay ningún concepto de restricción, clave externa o de otra índole, las relaciones entre documentos que tienen en los documentos son efectivamente "puntos débiles" y la base de datos no los comprobará. Si desea asegurarse de que los datos a los que hace referencia un documento existen realmente, debe hacerlo en la aplicación o mediante el uso de desencadenadores de servidor o procedimientos almacenados en Azure Cosmos DB.
 
-### <a name="when-tooreference"></a>Cuando tooreference
+### <a name="when-to-reference"></a>Cuándo se debe establecer referencias
 Por lo general, se deben utilizar modelos de datos normalizados cuando:
 
 * Se realiza una representación de relaciones de **uno a varios** .
@@ -245,10 +245,10 @@ Por lo general, se deben utilizar modelos de datos normalizados cuando:
 > 
 > 
 
-### <a name="where-do-i-put-hello-relationship"></a>¿Dónde se puede colocar relación Hola?
-crecimiento de Hola de relación de hello le ayudará a determinar en qué referencia del documento toostore Hola.
+### <a name="where-do-i-put-the-relationship"></a>¿Dónde coloco la relación?
+El crecimiento de la relación le ayudará a determinar en qué documento almacenar la referencia.
 
-Si miramos Hola JSON siguiente que modela publicadores y libros.
+Si observamos el JSON siguiente que sirve como modelo para los publicadores y los libros.
 
     Publisher document:
     {
@@ -260,15 +260,15 @@ Si miramos Hola JSON siguiente que modela publicadores y libros.
     Book documents:
     {"id": "1", "name": "Azure Cosmos DB 101" }
     {"id": "2", "name": "Azure Cosmos DB for RDBMS Users" }
-    {"id": "3", "name": "Taking over hello world one JSON doc at a time" }
+    {"id": "3", "name": "Taking over the world one JSON doc at a time" }
     ...
     {"id": "100", "name": "Learn about Azure Cosmos DB" }
     ...
-    {"id": "1000", "name": "Deep Dive in tooAzure Cosmos DB" }
+    {"id": "1000", "name": "Deep Dive in to Azure Cosmos DB" }
 
-Si es poco a poco con crecimiento limitado número Hola de libros de Hola por publicador, puede ser útil, a continuación, almacenar referencia del libro de hello dentro de documento de publisher Hola. Sin embargo, si el número de Hola de libros por publicador es ilimitado, este modelo de datos conduciría toomutable, aumentando las matrices, como en el documento de publicador de ejemplo de Hola anterior. 
+Si el número de libros por publicador es reducido con un crecimiento limitado, almacenar la referencia del libro dentro del documento del publicador puede ser útil. Sin embargo, si el número de libros por publicador no tiene un límite, este modelo de datos llevaría provocaría matrices crecientes y mutables como ocurre en el documento de publicador de ejemplo anterior. 
 
-Cambiar cosas alrededor de un bit haría resultado en un modelo que representa todavía Hola los mismos datos pero ahora evita estas grandes colecciones mutables.
+Cambiar las cosas un poco provocaría la creación de un modelo que seguiría representando los mismos datos, pero que evitaría esas grandes colecciones mutables.
 
     Publisher document: 
     {
@@ -279,20 +279,20 @@ Cambiar cosas alrededor de un bit haría resultado en un modelo que representa t
     Book documents: 
     {"id": "1","name": "Azure Cosmos DB 101", "pub-id": "mspress"}
     {"id": "2","name": "Azure Cosmos DB for RDBMS Users", "pub-id": "mspress"}
-    {"id": "3","name": "Taking over hello world one JSON doc at a time"}
+    {"id": "3","name": "Taking over the world one JSON doc at a time"}
     ...
     {"id": "100","name": "Learn about Azure Cosmos DB", "pub-id": "mspress"}
     ...
-    {"id": "1000","name": "Deep Dive in tooAzure Cosmos DB", "pub-id": "mspress"}
+    {"id": "1000","name": "Deep Dive in to Azure Cosmos DB", "pub-id": "mspress"}
 
-Hola ejemplo anterior, hemos eliminado Hola colección sin enlazar en el documento de publisher Hola. En su lugar, basta con un publicador toohello referencia en cada documento del libro.
+En el ejemplo anterior, hemos eliminado la colección ilimitada en el documento del publicador. En su lugar, solo tenemos una referencia al publicador en cada documento del libro.
 
 ### <a name="how-do-i-model-manymany-relationships"></a>¿Cómo se puede modelar las relaciones de varios a varios?
 En una base de datos relacional, las relaciones *varios a varios* modelan con frecuencia con tablas de unión, que simplemente unen registros de otras tablas. 
 
 ![Combinar tablas](./media/documentdb-modeling-data/join-table.png)
 
-Es posible que tooreplicate tentado Hola lo mismo con documentos y crear un modelo de datos que busca a continuación toohello similar.
+Podría verse tentado a replicar lo mismo con documentos y producir un modelo de datos que tenga un aspecto similar al siguiente.
 
     Author documents: 
     {"id": "a1", "name": "Thomas Andersen" }
@@ -301,9 +301,9 @@ Es posible que tooreplicate tentado Hola lo mismo con documentos y crear un mode
     Book documents:
     {"id": "b1", "name": "Azure Cosmos DB 101" }
     {"id": "b2", "name": "Azure Cosmos DB for RDBMS Users" }
-    {"id": "b3", "name": "Taking over hello world one JSON doc at a time" }
+    {"id": "b3", "name": "Taking over the world one JSON doc at a time" }
     {"id": "b4", "name": "Learn about Azure Cosmos DB" }
-    {"id": "b5", "name": "Deep Dive in tooAzure Cosmos DB" }
+    {"id": "b5", "name": "Deep Dive in to Azure Cosmos DB" }
 
     Joining documents: 
     {"authorId": "a1", "bookId": "b1" }
@@ -311,10 +311,10 @@ Es posible que tooreplicate tentado Hola lo mismo con documentos y crear un mode
     {"authorId": "a1", "bookId": "b2" }
     {"authorId": "a1", "bookId": "b3" }
 
-Esto funcionaría. Sin embargo, cargar a cualquier un autor con sus libros o cargar un libro con su autor, siempre requeriría al menos dos consultas adicionales en la base de datos de Hola. Una consulta toohello de unión de documento y, a continuación, otra consulta toofetch Hola documento real que se está combinando. 
+Esto funcionaría. Sin embargo, cargar un autor con sus libros o cargar un libro con su autor siempre requeriría al menos dos consultas adicionales en la base de datos. Una consulta para el documento de unión y, a continuación, otra consulta para capturar el documento real que se está uniendo. 
 
 Si todo lo que hace esta tabla de unión es combinar dos datos, ¿por qué no quitarla completamente?
-Tenga en cuenta Hola siguiente.
+Tenga en cuenta lo siguiente.
 
     Author documents:
     {"id": "a1", "name": "Thomas Andersen", "books": ["b1, "b2", "b3"]}
@@ -324,18 +324,18 @@ Tenga en cuenta Hola siguiente.
     {"id": "b1", "name": "Azure Cosmos DB 101", "authors": ["a1", "a2"]}
     {"id": "b2", "name": "Azure Cosmos DB for RDBMS Users", "authors": ["a1"]}
     {"id": "b3", "name": "Learn about Azure Cosmos DB", "authors": ["a1"]}
-    {"id": "b4", "name": "Deep Dive in tooAzure Cosmos DB", "authors": ["a2"]}
+    {"id": "b4", "name": "Deep Dive in to Azure Cosmos DB", "authors": ["a2"]}
 
-Ahora, si tuviera un autor, inmediatamente saber qué libros que han escrito y a la inversa si tuviera un documento de libro cargado sabría identificadores de Hola de autores de Hola. Esto ahorra esa consulta intermedia en la tabla de combinación de hello reducir el número de saludo del servidor de viajes de ida y la aplicación tiene toomake. 
+Ahora, si tuviera un autor, sabría de inmediato qué libros ha escrito y, a la inversa, si tuviera un documento del libro cargado sabría los identificadores de los autores. Esto ahorra la consulta intermedia de la tabla de unión, por lo que se reduce el número de viajes de ida y vuelta al servidor que tiene que realizar la aplicación. 
 
 ## <a id="WrapUp"></a>Modelos de datos híbridos
 Ya hemos observado la incrustación (o desnormalización) y el establecimiento de referencias (o normalización). Cada opción tiene sus ventajas y compromisos, como hemos visto. 
 
-No siempre tiene toobe o o, no ser un poco toomix asustado cosas up. 
+No tiene por qué ser siempre una u otra. No tenga miedo de mezclarlas un poco. 
 
-En función de los patrones de uso específicos y las cargas de trabajo pueden darse casos donde se incrusta la combinación de la aplicación y los datos que se hace referencia tiene sentido y podría responsable toosimpler la lógica de la aplicación con el servidor de menos de ida y vuelta al mismo tiempo mantienen un buen nivel de rendimiento .
+En función de las cargas de trabajo y los diseños de uso específico de la aplicación, es posible que existan casos en los que mezclar los datos de referencia e incrustados tenga sentido y puede generar una lógica de aplicación más simple con menos viajes de ida y vuelta de servidor a la vez que se sigue manteniendo un buen nivel de rendimiento.
 
-Considere la posibilidad de hello después de JSON. 
+Considere el siguiente JSON. 
 
     Author documents: 
     {
@@ -378,21 +378,21 @@ Considere la posibilidad de hello después de JSON.
         ]
     }
 
-Aquí hemos (principalmente) seguimos modelo incrustados hello, donde los datos de otras entidades se incrustan en los documentos de nivel superior de hello, pero se hace referencia a otros datos. 
+Aquí hemos seguido principalmente el modelo de incrustación, donde los datos de otras entidades se incrustan en el documento de nivel superior, pero se establece la referencia en otros datos. 
 
-Si observa en el documento de la libreta de hello, podemos ver algunas interesantes campos cuando miramos matriz Hola de autores. Hay un *identificador* campo que es el campo de hello usamos documento de autor de toorefer tooan atrás, una práctica estándar en un modelo normalizado, pero, a continuación, también tiene *nombre* y *thumbnailUrl*. Se ha podido detenida simplemente con *Id. de* y deja Hola aplicación tooget cualquier información adicional sea necesario del documento de autor respectivos hello mediante Hola "enlace", pero dado que nuestra aplicación muestra el nombre del autor de Hola y un imagen en miniatura con cada libro muestra podemos guardar un servidor de toohello de ida y vuelta por libro en una lista por eliminar la normalización **algunos** datos del autor de Hola.
+Si observa el documento del libro, podemos ver algunos campos interesantes cuando nos centramos en la matriz de autores. Hay un campo *id* que es el campo que se utiliza para volver a hacer referencia a un documento de autor, una práctica estándar en un modelo normalizado, pero también tenemos *name* y *thumbnailUrl*. Podríamos habernos parado en *id* y dejar la aplicación para obtener información adicional que necesita a partir del documento de autor correspondiente mediante el "vínculo", pero como nuestra aplicación muestra el nombre del autor y una imagen en miniatura con cada libro mostrado, podemos ahorrar un viaje de ida y vuelta al servidor por libro en una lista mediante la desnormalización de **algunos** datos del autor.
 
-Por supuesto, si cambia el nombre del autor de Hola o deseaban tooupdate sus fotos tendríamos toogo una actualización todos los libros que publican alguna vez pero en nuestra aplicación, basado en la suposición de Hola que los autores no cambien sus nombres muy a menudo, es un diseño aceptable Decisión.  
+Por supuesto, si cambia el nombre del autor o desean actualizar sus fotos, tendríamos que realizar una actualización de cada libro publicado, pero para nuestra aplicación, que se basa en la suposición de que los autores no cambian sus nombres muy a menudo, se trata de una decisión de diseño aceptable.  
 
-En el ejemplo de Hola hay **calcula previamente agregados** valores toosave un procesamiento costoso en una operación de lectura. En el ejemplo de Hola, algunos de los datos de hello incrustados en el documento de autor Hola son datos que se calculan en tiempo de ejecución. Cada vez que se publica un nuevo libro, se crea un documento de libro **y** campo de hello countOfBooks está establecido el valor de tooa calculado según el número de Hola de documentos de libro que existen para un autor concreto. Esta optimización sería buena en sistemas muchos lecturas donde se pueden permitirse toodo cálculos en las escrituras en orden toooptimize lecturas.
+En el ejemplo hay valores de **adiciones calculadas previamente** para ahorrar un procesamiento costoso en una operación de lectura. En el ejemplo, algunos de los datos incrustados en el documento del autor son datos que se calculan en tiempo de ejecución. Cada vez que se publica un nuevo libro, se crea un documento de libro **y** el campo countOfBooks se establece en un valor calculado en función del número de documentos de libro que existen para un autor concreto. Esta optimización sería adecuada en sistemas en los que se realizan muchas operaciones de lectura, donde podemos permitirnos hacer cálculos en las escrituras para optimizarlas.
 
-Hola toohave capacidad un modelo con campos calculados previamente pueden evitarse porque admite la base de datos de Azure Cosmos **transacciones de documentos múltiple**. Muchos almacenes NoSQL no pueden realizar transacciones en documentos y defensa, por tanto, al tomar decisiones de diseño, como "siempre incrustar todo", debido a la limitación de toothis. Con Azure Cosmos DB, puede utilizar los desencadenadores del servidor o los procedimientos almacenados que insertan los libros y actualizan los autores dentro de una transacción ACID. Ahora no lo hace **tienen** tooembed todo el contenido de tooone documento simplemente toobe seguro de que los datos de forma coherentes.
+La capacidad de tener un modelo con campos calculados previamente es posible porque Azure Cosmos DB admite **transacciones de varios documentos**. Muchos almacenes NoSQL no pueden realizar transacciones en documentos y, por lo tanto, recomiendan las decisiones de diseño, por ejemplo, "siempre incrustar todo", debido a esa limitación. Con Azure Cosmos DB, puede utilizar los desencadenadores del servidor o los procedimientos almacenados que insertan los libros y actualizan los autores dentro de una transacción ACID. Ahora no **tiene** que incrustar todo en un documento para asegurarse de que los datos sigan siendo coherentes.
 
 ## <a name="NextSteps"></a>Pasos siguientes
-debe recordar más importantes de Hola de este artículo es toounderstand que modelado de datos en un mundo sin esquemas son tan importantes como nunca. 
+Lo más importante de este artículo es comprender que el modelado de datos en un mundo sin esquemas es más importante que nunca. 
 
-Igual que no hay ningún toorepresent de manera única una parte de los datos en una pantalla, no hay ningún toomodel de forma única los datos. Tenga toounderstand su aplicación y cómo generará, consumir y procesar los datos de Hola. A continuación, aplicando algunos Hola instrucciones presentadas aquí se pueden establecer sobre la creación de un modelo que cubre Hola necesidades inmediatas de la aplicación. Cuando las aplicaciones necesitan toochange, puede aprovechar flexibilidad Hola de una base de datos sin esquemas tooembrace que cambian y evolucionar con facilidad el modelo de datos. 
+Como no hay ninguna manera única de representar un elemento de datos en una pantalla, no hay una única forma de modelar los datos. Necesita comprender la aplicación y saber cómo producirá, consumirá y procesará los datos. A continuación, mediante la aplicación de algunas directrices presentadas aquí, puede crear un modelo que aborde las necesidades inmediatas de la aplicación. Cuando las aplicaciones necesitan cambiar, puede aprovechar la flexibilidad de una base de datos sin esquemas para adoptar ese cambio y que el modelo de datos evolucione con facilidad. 
 
-toolearn más información acerca de la base de datos de Cosmos de Azure, consulte del servicio de toohello [documentación](https://azure.microsoft.com/documentation/services/cosmos-db/) página. 
+Para más información sobre Azure Cosmos DB, consulte la página de [documentación](https://azure.microsoft.com/documentation/services/cosmos-db/) del servicio. 
 
-toounderstand cómo tooshard los datos entre varias particiones, consulte demasiado[particiones de datos en la base de datos de Azure Cosmos](documentdb-partition-data.md). 
+Para comprender cómo particionar los datos en varias particiones, consulte [Partición de datos en Azure Cosmos DB](documentdb-partition-data.md). 

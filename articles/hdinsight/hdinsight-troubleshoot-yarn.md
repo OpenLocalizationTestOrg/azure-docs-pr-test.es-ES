@@ -1,6 +1,6 @@
 ---
-title: aaaTroubleshoot YARN mediante el uso de HDInsight de Azure | Documentos de Microsoft
-description: "Obtenga respuestas toocommon preguntas sobre cómo trabajar con Apache Hadoop YARN y HDInsight de Azure."
+title: "Solución de problemas de YARN mediante Azure HDInsight | Microsoft Docs"
+description: "Obtenga respuestas a las preguntas más comunes sobre cómo trabajar con Apache Hadoop YARN y Azure HDInsight."
 keywords: "Azure HDInsight, YARN, preguntas más frecuentes, guía de solución de problemas, preguntas comunes"
 services: Azure HDInsight
 documentationcenter: na
@@ -15,55 +15,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/7/2017
 ms.author: arijitt
-ms.openlocfilehash: 800d9738cb27e05a64db470ee58565af3b85aa99
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 63f2d88ad59661b7fbcffd0aaeb94c58d40bdb73
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="troubleshoot-yarn-by-using-azure-hdinsight"></a>Solución de problemas de YARN mediante Azure HDInsight
 
-Obtenga información acerca de los principales problemas de Hola y sus soluciones cuando se trabaja con cargas de Apache Hadoop YARN en Ambari de Apache.
+Obtenga información sobre los principales problemas y sus soluciones al trabajar con cargas útiles de Apache Hadoop YARN en Apache Ambari.
 
 ## <a name="how-do-i-create-a-new-yarn-queue-on-a-cluster"></a>Creación de una nueva cola de YARN en un clúster
 
 
 ### <a name="resolution-steps"></a>Pasos de la solución 
 
-A continuación Hola use los pasos de Ambari toocreate una nueva cola YARN y equilibrar, a continuación, la asignación de capacidad de hello entre todas las colas de Hola. 
+Para crear una nueva cola de YARN y equilibrar la asignación de capacidad en todas las colas, siga estos pasos en Ambari. 
 
-En este ejemplo, dos colas existentes (**predeterminado** y **thriftsvr**) ambos se cambian de 50% capacidad too25% de la capacidad, que proporciona la nueva capacidad de 50% de cola (spark) Hola.
+En este ejemplo, se cambia la capacidad de las dos colas existentes (**default** (predeterminado) y **thriftsvr**) del 50% al 25%, lo que proporciona una capacidad del 50% a la nueva cola (spark).
 | Cola | Capacity | Capacidad máxima |
 | --- | --- | --- | --- |
 | default | 25 % | 50 % |
 | thrftsvr | 25 % | 50 % |
 | spark | 50 % | 50 % |
 
-1. Seleccione hello **Ambari vistas** icono y el patrón de cuadrícula de hello, a continuación, seleccione. A continuación, seleccione **YARN Queue Manager** (Administrador de colas de YARN).
+1. Seleccione el icono **Ambari Views** (Vistas de Ambari) y, a continuación, seleccione el patrón de cuadrícula. A continuación, seleccione **YARN Queue Manager** (Administrador de colas de YARN).
 
-    ![Seleccione Hola vistas Ambari icono](media/hdinsight-troubleshoot-yarn/create-queue-1.png)
-2. Seleccione hello **predeterminado** cola.
+    ![Selección del icono Vistas de Ambari](media/hdinsight-troubleshoot-yarn/create-queue-1.png)
+2. Seleccione la cola **default**.
 
-    ![Seleccione Hola predeterminado cola](media/hdinsight-troubleshoot-yarn/create-queue-2.png)
-3. Para hello **predeterminado** de cola, cambie hello **capacidad** del 50% too25%. Para hello **thriftsvr** de cola, cambie hello **capacidad** too25%.
+    ![Selección de la cola default (predeterminada)](media/hdinsight-troubleshoot-yarn/create-queue-2.png)
+3. Para la cola **default**, cambie la **capacidad** del 50% al 25%. Para la cola **thriftsvr**, cambie la **capacidad** al 25%.
 
-    ![Cambiar la capacidad de hello too25% para las colas de forma predeterminada y thriftsvr de Hola](media/hdinsight-troubleshoot-yarn/create-queue-3.png)
-4. toocreate una nueva cola, seleccione **agregar cola**.
+    ![Cambio de la capacidad al 25 % para las colas default y thriftsvr](media/hdinsight-troubleshoot-yarn/create-queue-3.png)
+4. Seleccione **Add Queue** (Agregar cola) para crear una nueva cola.
 
     ![Selección de Agregar cola](media/hdinsight-troubleshoot-yarn/create-queue-4.png)
 
-5. Nombre hello nueva cola.
+5. Asigne un nombre a la cola nueva.
 
-    ![Nombre de cola de hello Spark](media/hdinsight-troubleshoot-yarn/create-queue-5.png)  
+    ![Asignación del nombre Spark a la cola](media/hdinsight-troubleshoot-yarn/create-queue-5.png)  
 
-6. Deje hello **capacidad** valores al 50% y, a continuación, seleccione hello **acciones** botón.
+6. Deje los valores de **Capacity** (Capacidad) en el 50 % y seleccione el botón **Actions** (Acciones).
 
-    ![Seleccione el botón de acciones de Hola](media/hdinsight-troubleshoot-yarn/create-queue-6.png)  
+    ![Selección del botón Actions (Acciones)](media/hdinsight-troubleshoot-yarn/create-queue-6.png)  
 7. Seleccione **Save and Refresh Queues** (Guardar y actualizar colas).
 
     ![Selección de Save and Refresh Queues (Guardar y actualizar colas)](media/hdinsight-troubleshoot-yarn/create-queue-7.png)  
 
-Estos cambios son visibles inmediatamente en hello YARN programador UI.
+Estos cambios están visibles inmediatamente en la interfaz de usuario de YARN Scheduler.
 
 ### <a name="additional-reading"></a>Lecturas adicionales
 
@@ -75,14 +75,14 @@ Estos cambios son visibles inmediatamente en hello YARN programador UI.
 
 ### <a name="resolution-steps"></a>Pasos de la solución 
 
-1. Conecta el clúster de HDInsight de toohello con un cliente de Shell seguro (SSH). Para más información, consulte [Lecturas adicionales](#additional-reading-2).
+1. Conéctese al clúster de HDInsight con un cliente Secure Shell (SSH). Para más información, consulte [Lecturas adicionales](#additional-reading-2).
 
-2. toolist todos Hola Id. de aplicación de las aplicaciones de hilo de Hola que se están ejecutando, ejecute hello siguiente comando:
+2. Enumere todos los identificadores de aplicación de las aplicaciones Yarn que se están ejecutando con el siguiente comando:
 
     ```apache
     yarn top
     ```
-    Hello identificadores aparecen en hello **APPLICATIONID** columna. Puede descargar los registros de hello **APPLICATIONID** columna.
+    Los identificadores aparecen en la columna **APPLICATIONID**. Puede descargar los registros desde la columna **APPLICATIONID**.
 
     ```apache
     YARN top - 18:00:07, up 19d, 0:14, 0 active users, queue(s): root
@@ -97,7 +97,7 @@ Estos cambios son visibles inmediatamente en hello YARN programador UI.
      application_1490377567345_0006 hive            spark  thriftsvr       1       0       1       0      1G      0G    1628430    2442645  10.00   18:20:20 Thrift JDBC/ODBC Server
     ```
 
-3. registros de contenedor YARN toodownload para todos los patrones de aplicación, use Hola siguiente comando:
+3. Descargue los registros de contenedor de YARN para todos los maestros de aplicación con el siguiente comando:
    
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am ALL > amlogs.txt
@@ -105,7 +105,7 @@ Estos cambios son visibles inmediatamente en hello YARN programador UI.
 
     Este comando crea un archivo de registro denominado amlogs.txt. 
 
-4. registros de contenedor YARN toodownload para solo Hola última aplicación maestra, utilice Hola siguiente comando:
+4. Descargue los registros de contenedor de YARN solo para el maestro de aplicación más reciente con el siguiente comando:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am -1 > latestamlogs.txt
@@ -113,7 +113,7 @@ Estos cambios son visibles inmediatamente en hello YARN programador UI.
 
     Este comando crea un archivo de registro denominado latestamlogs.txt. 
 
-4. registros de contenedor YARN toodownload para patrones de aplicación dos primera hello, utilice Hola siguiente comando:
+4. Descargue los registros de contenedor de YARN para los dos primeros maestros de aplicación con el siguiente comando:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am 1,2 > first2amlogs.txt 
@@ -121,7 +121,7 @@ Estos cambios son visibles inmediatamente en hello YARN programador UI.
 
     Este comando crea un archivo de registro denominado first2amlogs.txt. 
 
-5. toodownload todos los registros de contenedor de hilo, utilice Hola comando siguiente:
+5. Descargue todos los registros de contenedor de YARN con el siguiente comando:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> > logs.txt
@@ -129,7 +129,7 @@ Estos cambios son visibles inmediatamente en hello YARN programador UI.
 
     Este comando crea un archivo de registro denominado logs.txt. 
 
-6. registro de contenedor de toodownload hello YARN para un contenedor específico, Hola de uso siguiente comando:
+6. Descargue el registro de YARN de un contenedor determinado con el siguiente comando:
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -containerId <container_id> > containerlogs.txt 
@@ -139,7 +139,7 @@ Estos cambios son visibles inmediatamente en hello YARN programador UI.
 
 ### <a name="additional-reading-2"></a>Lecturas adicionales
 
-- [Conectar tooHDInsight (Hadoop) a través de SSH](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
+- [Conexión a HDInsight (Hadoop) a través de SSH](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
 - [Apache Hadoop Yarn concepts and applications](https://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/) (Conceptos y aplicaciones de YARN en Apache Hadoop)
 
 

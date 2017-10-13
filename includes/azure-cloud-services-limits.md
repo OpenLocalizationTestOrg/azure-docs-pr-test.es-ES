@@ -5,5 +5,5 @@
 | [Extremos de entrada](http://msdn.microsoft.com/library/gg557552.aspx#InputEndpoint) por implementación |25 |25 |
 | [Extremos internos](http://msdn.microsoft.com/library/gg557552.aspx#InternalEndpoint) por implementación |25 |25 |
 
-<sup>1</sup>Cada servicio en la nube con roles web y de trabajo puede tener dos implementaciones, una para producción y otra para ensayo. Tenga en cuenta también que hace referencia este límite toohello número de roles diferentes (configuración) y no Hola número de instancias por rol (ajuste de escala).
+<sup>1</sup>Cada servicio en la nube con roles web y de trabajo puede tener dos implementaciones, una para producción y otra para ensayo. Tenga en cuenta también que este límite hace referencia al número de roles (configuración) y no al número de instancias por rol (escalado).
 

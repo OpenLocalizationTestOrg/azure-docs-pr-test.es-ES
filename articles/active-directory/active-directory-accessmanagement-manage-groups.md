@@ -1,6 +1,6 @@
 ---
-title: grupos de aaaManaging en Active Directory de Azure | Documentos de Microsoft
-description: "¿Cómo toocreate y administrar grupos toomanage Azure usuarios con Azure Active Directory."
+title: "Administración de grupos en Azure Active Directory | Microsoft Docs"
+description: "Cómo crear y administrar grupos para administrar usuarios de Azure mediante Azure Active Directory."
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,96 +12,95 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/24/2017
+ms.date: 10/10/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: oldportal;it-pro;
 robots: NOINDEX
-ms.openlocfilehash: 9bee224655639740b3dd99983892b30c3c537aa0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a29bc68e966a3706af557af0c626d369d04149aa
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-groups-in-azure-active-directory"></a>Administración de grupos en Azure Active Directory
 > [!div class="op_single_selector"]
 > * [Portal de Azure](active-directory-groups-create-azure-portal.md)
-> * [Portal de Azure clásico](active-directory-accessmanagement-manage-groups.md)
 > * [PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
 >
 >
 
-Una de las características de Hola de administración de usuarios de Azure Active Directory (Azure AD) es grupos de toocreate de capacidad de Hola de usuarios. Use un tareas de administración de grupo tooperform como la asignación de licencias o permisos tooa número de usuarios a la vez. También puede utilizar grupos el permiso de acceso a tooassign
+Una de las características de la administración de usuarios de Azure Active Directory (Azure AD) es la capacidad para crear grupos de usuarios. Los grupos se usan para realizar tareas de administración, como asignar licencias o permisos a varios usuarios a la vez. También puede usarlos para asignar permiso de acceso a:
 
-* Recursos como los objetos de directorio de Hola
-* Directorio de recursos externos toohello como aplicaciones de SaaS, servicios de Azure, sitios de SharePoint o recursos locales
+* Recursos, como objetos en el directorio;
+* Recursos de fuera del directorio, como aplicaciones de SaaS, servicios de Azure, sitios de SharePoint o recursos locales.
 
-Además, el propietario de un recurso también puede asignar acceso tooa tooan Azure AD fam. pertenece a otra persona. Esta asignación confiere a sus miembros Hola de ese recurso toohello de acceso de grupo. A continuación, propietario Hola del grupo de hello administra la pertenencia a grupo de Hola. De hecho, Hola recursos propietario delegados toohello propietario de hello grupo Hola permiso tooassign usuarios tootheir recurso.
+Además, el propietario de un recurso también puede asignar acceso a un recurso a un grupo de Azure AD cuyo propietario sea otro usuario. La asignación otorga acceso al recurso a los miembros de dicho grupo. A continuación, el propietario del grupo administra la pertenencia al grupo. El propietario del recurso delega efectivamente en el propietario del grupo el permiso para asignar usuarios a sus recursos.
 
 > [!IMPORTANT]
-> Microsoft recomienda que administrar Azure AD utilizando hello [centro de administración de Azure AD](https://aad.portal.azure.com) Hola portal de Azure en lugar de usar Hola portal de Azure clásico que se hace referencia en este artículo. Para cómo toomanage los grupos en el centro de administración de hello Azure AD, consulte [crear un grupo y agregar miembros en Azure Active Directory](active-directory-groups-create-azure-portal.md).
+> Microsoft recomienda administrar Azure AD con el [Centro de administración de Azure AD](https://aad.portal.azure.com) en Azure Portal en lugar de usar el portal de Azure clásico al que se hace referencia en este artículo. Para administrar grupos en el Centro de administración de Azure AD, consulte [Creación de un grupo y adición de miembros en Azure Active Directory](active-directory-groups-create-azure-portal.md).
 
 ## <a name="how-do-i-create-a-group"></a>¿Cómo se crea un grupo?
-Dependiendo de los servicios de hello toowhich que ha suscrito su organización, puede crear un grupo mediante uno de los siguientes hello:
+En función de los servicios a los que se haya suscrito su organización, podrá crear grupos mediante:
 
-* Hola portal de Azure clásico
-* portal de la cuenta de Hello Office 365
-* portal de cuentas de Windows Intune Hola
+* el Portal de Azure clásico
+* el portal de cuentas de Office 365
+* el portal de cuentas de Windows Intune
 
-Describiremos las tareas realizadas en hello portal de Azure clásico. Para obtener más información acerca del uso de portales de Azure no toomanage su directorio Azure AD, consulte [administrar su directorio Azure AD](active-directory-administer.md).
+Aquí se describirán las tareas tal como se realizan en el Portal de Azure clásico. Para más información acerca del uso de portales que no sean el de Azure para administrar un directorio de Azure AD, consulte [Administración del directorio de Azure AD](active-directory-administer.md).
 
-1. Hola [portal de Azure clásico](https://manage.windowsazure.com), seleccione **Active Directory**y, a continuación, seleccione nombre de hello del directorio de Hola para su organización.
-2. Seleccione hello **grupos** ficha.
+1. En el [Portal de Azure clásico](https://manage.windowsazure.com), seleccione **Active Directory**y, luego, el nombre del directorio de la organización.
+2. Seleccione la pestaña **Grupos** .
 3. Seleccione **Agregar grupo**.
-4. Hola **Agregar grupo** ventana, especifique el nombre de Hola y Hola descripción de un grupo.
+4. En la ventana **Agregar grupo** , especifique el nombre y la descripción de un grupo.
 
 ## <a name="how-do-i-add-or-remove-individual-users-in-a-security-group"></a>Asignación o eliminación de usuarios individuales de un grupo de seguridad
-**un grupo de usuarios individuales de tooa tooadd**
+**Para agregar un usuario individual a un grupo**
 
-1. Hola [portal de Azure clásico](https://manage.windowsazure.com), seleccione **Active Directory**y, a continuación, seleccione nombre de hello del directorio de Hola para su organización.
-2. Seleccione hello **grupos** ficha.
-3. Abra Hola grupo toowhich desea que los miembros de tooadd. Abra hello **miembros** ficha de hello seleccionado grupo si aún no se muestra.
+1. En el [Portal de Azure clásico](https://manage.windowsazure.com), seleccione **Active Directory**y, luego, el nombre del directorio de la organización.
+2. Seleccione la pestaña **Grupos** .
+3. Abra el grupo al que desea agregar miembros. Abra la pestaña **Miembros** del grupo seleccionado, en caso de que no se muestre.
 4. Seleccione **Agregar miembros**.
-5. En hello **agregar miembros** página, el nombre de hello select del usuario de Hola o un grupo que desea tooadd sea un miembro de este grupo. Asegúrese de que este nombre se ha agregado toohello **seleccionados** panel.
+5. En la página **Agregar miembros** , seleccione el nombre del usuario o el grupo que desee agregar como miembro de este grupo. Asegúrese de que este nombre se agrega al panel **Seleccionado** .
 
-**tooremove un usuario individual de un grupo**
+**Para quitar un usuario individual de un grupo**
 
-1. Hola [portal de Azure clásico](https://manage.windowsazure.com), seleccione **Active Directory**y, a continuación, seleccione nombre de hello del directorio de Hola para su organización.
-2. Seleccione hello **grupos** ficha.
-3. Abrir grupo Hola desde el que desea que los miembros de tooremove.
-4. Seleccione hello **miembros** ficha, el nombre de hello seleccione del miembro de Hola que desee tooremove de este grupo y, a continuación, haga clic en **quitar**.
-5. Confirmar en el símbolo del sistema de hello tooremove este miembro del grupo de Hola.
+1. En el [Portal de Azure clásico](https://manage.windowsazure.com), seleccione **Active Directory**y, luego, el nombre del directorio de la organización.
+2. Seleccione la pestaña **Grupos** .
+3. Abra el grupo del que desea quitar miembros.
+4. Seleccione la pestaña **Miembros**, seleccione el nombre del miembro que desee quitar de este grupo y haga clic en **Quitar**.
+5. En el símbolo del sistema, confirme que desea quitar este miembro del grupo.
 
-## <a name="how-can-i-manage-hello-membership-of-a-group-dynamically"></a>¿Cómo puedo administrar pertenencia Hola de un grupo dinámicamente?
-En Azure AD, puede configurar fácilmente un toodetermine regla sencilla, los usuarios que son miembros de toobe del grupo de Hola. Una regla sencilla es aquélla que hace solo una comparación única. Por ejemplo, si se asigna a un grupo tooa aplicación SaaS, puede configurar una regla tooadd a los usuarios que tienen un puesto de trabajo de "Representante de ventas". Esta regla, a continuación, concede acceso toothis SaaS aplicación tooall a los usuarios con ese puesto de trabajo en el directorio.
+## <a name="how-can-i-manage-the-membership-of-a-group-dynamically"></a>¿Cómo puedo administrar la pertenencia de un grupo dinámicamente?
+En Azure AD, puede configurar fácilmente una regla sencilla que determine qué usuarios van a ser miembros del grupo. Una regla sencilla es aquélla que hace solo una comparación única. Por ejemplo, si se asigna un grupo a una aplicación SaaS, puede configurar una regla que agregue los usuarios que tengan el puesto "Representante de ventas". Esta regla otorga acceso a esta aplicación SaaS a todos los usuarios del directorio que tengan dicho puesto.
 
-Cuando los atributos de un cambio de usuario, el sistema de hello evalúa todas las reglas de grupo dinámico en un toosee de directorio si cambio de atributo de saludo del usuario de hello desencadenarán ningún grupo agrega o quita. Si un usuario cumple una regla en un grupo, se agregan como un grupo de toothat de miembro. Si ya no se cumplen regla Hola de un grupo que pertenecen, se quitan como un miembro de ese grupo.
+Cuando los atributos de un usuario cambian, el sistema evalúa todas las reglas de grupos dinámicos de un directorio para ver si la modificación de los atributos del usuario en cuestión desencadenaría adiciones o retiradas en el grupo. Si un usuario cumple una regla de un grupo, se agrega a este como miembro. Si, por el contrario, deja de cumplir la regla del grupo al que pertenece, se le quita como miembro de este.
 
 > [!NOTE]
-> Puede configurar una regla de pertenencia dinámica a grupos de seguridad o en grupos de Office 365. Las pertenencias a grupos anidados no se admiten actualmente para la asignación basada en el grupo tooapplications.
+> Puede configurar una regla de pertenencia dinámica a grupos de seguridad o en grupos de Office 365. Actualmente, las pertenencias a grupos anidados no son compatibles con la asignación basada en grupos a aplicaciones.
 >
-> Pertenencia dinámica a grupos requieren un toobe de licencia de Azure AD Premium asignada a
+> La pertenencia dinámica a grupos requiere que haya una licencia de Azure AD Premium asignada
 >
-> * Administrador de Hola que administra la regla de hello en un grupo
-> * Todos los miembros del grupo de Hola
+> * Al administrador que administra la regla en un grupo
+> * Todos los miembros del grupo
 >
 >
 
-**tooenable pertenencia dinámica para un grupo**
+**Para habilitar la pertenencia dinámica para un grupo**
 
-1. Hola [portal de Azure clásico](https://manage.windowsazure.com), seleccione **Active Directory**y, a continuación, seleccione nombre de hello del directorio de Hola para su organización.
-2. Seleccione hello **grupos** ficha y un grupo de hello abierto que desee tooedit.
-3. Seleccione hello **configurar** ficha y, a continuación, establezca **habilitar pertenencias dinámicas** demasiado**Sí**.
-4. Configurar una sola regla simple para hello grupo toocontrol pertenencia dinámica para las funciones de este grupo. Asegúrese de hello seguro **agregar usuarios donde** opción está seleccionada y, a continuación, seleccione una propiedad de usuario de lista de hello (por ejemplo, departamento, jobTitle, etcetera.)
+1. En el [Portal de Azure clásico](https://manage.windowsazure.com), seleccione **Active Directory**y, luego, el nombre del directorio de la organización.
+2. Seleccione la pestaña **Grupos** y abra el grupo que desee editar.
+3. Seleccione la pestaña **Configurar** y en **Habilitar pertenencia dinámica**, seleccione **Sí**.
+4. Configure una sola regla sencilla para que el grupo controle el funcionamiento de la pertenencia dinámica para este grupo. Asegúrese de que la opción **Agregar usuarios donde** está seleccionada y, a continuación, seleccione una propiedad de usuario en la lista (por ejemplo, department, jobTitle, etc.).
 5. A continuación, seleccione una condición (No es igual a, Es igual a, No empieza por, Empieza por, No contiene, Contiene, No coincide, Coincide).
-6. Especifique un valor de comparación para la propiedad de usuario de hello seleccionado.
+6. Especifique un valor de comparación para la propiedad de usuario seleccionada.
 
-toolearn acerca de cómo toocreate *avanzadas* (reglas que puede contener varias comparaciones) para la pertenencia dinámica a grupos, consulte [utilizando atributos toocreate reglas avanzadas](active-directory-accessmanagement-groups-with-advanced-rules.md).
+Para obtener información acerca de cómo crear reglas *avanzadas* (reglas que pueden contener comparaciones múltiples) para la pertenencia a grupos dinámicos, consulte [Uso de atributos para crear reglas avanzadas](active-directory-accessmanagement-groups-with-advanced-rules.md).
 
 ## <a name="additional-information"></a>Información adicional
 Estos artículos proporcionan información adicional sobre Azure Active Directory.
 
-* [Administrar acceso tooresources con grupos de Active Directory de Azure](active-directory-manage-groups.md)
+* [Administración del acceso a los recursos con grupos de Azure Active Directory](active-directory-manage-groups.md)
 * [Cmdlets de Azure Active Directory para configurar las opciones de grupo](active-directory-accessmanagement-groups-settings-cmdlets.md)
 * [Índice de artículos sobre la administración de aplicaciones en Azure Active Directory](active-directory-apps-index.md)
 * [¿Qué es Azure Active Directory?](active-directory-whatis.md)

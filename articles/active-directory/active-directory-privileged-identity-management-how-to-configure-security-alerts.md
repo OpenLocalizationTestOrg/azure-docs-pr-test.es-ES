@@ -1,6 +1,6 @@
 ---
-title: alertas de seguridad de aaaHow tooconfigure | Documentos de Microsoft
-description: "Obtenga información acerca de cómo las alertas de seguridad tooconfigure de extensión de Privileged Identity Management de Azure."
+title: "Configuración de alertas de seguridad | Microsoft Docs"
+description: "Aprenda cómo configurar alertas de seguridad para la extensión de Privileged Identity Management de Azure."
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -15,50 +15,50 @@ ms.workload: identity
 ms.date: 06/06/2017
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 1b3c4a7d36fa3f81bb3fe2574d675fdf0ab34909
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e057120e31eeebc3da274536c09d6d9972854338
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-tooconfigure-security-alerts-in-azure-ad-privileged-identity-management"></a>¿Cómo tooconfigure security muestra una alerta en Azure AD Privileged Identity Management
+# <a name="how-to-configure-security-alerts-in-azure-ad-privileged-identity-management"></a>Configuración de alertas de seguridad en Privileged Identity Management de Azure AD
 ## <a name="security-alerts"></a>Alertas de seguridad
-Privileged Identity Management (PIM) de Azure genera alertas cuando existen actividades sospechosas o no seguras en su entorno. Cuando se desencadene una alerta, muestra en el panel PIM Hola. Seleccione Hola alerta toosee un informe que enumera Hola usuarios o roles que desencadenó la alerta de Hola.
+Privileged Identity Management (PIM) de Azure genera alertas cuando existen actividades sospechosas o no seguras en su entorno. Cuando se desencadena una alerta, se muestra en el panel de PIM. Seleccione la alerta para ver un informe en el que se enumeren los usuarios o roles que activaron la alerta.
 
 ![Alertas de seguridad del panel de PIM: captura de pantalla][1]
 
 | Alerta | Desencadenador | Recomendación |
 | --- | --- | --- |
-| **Se están asignando roles fuera de PIM** |Un administrador asignó permanentemente rol tooa, fuera de la interfaz PIM Hola. |Revise la nueva asignación de roles Hola. Dado que otros servicios solo pueden asignar a los administradores permanentes, cambiar, tooan elegible asignación si es necesario. |
-| **Se están activando roles con demasiada frecuencia** |Se han producido demasiados Reactivaciones de hello mismo rol en tiempo de hello permitido en la configuración de Hola. |Póngase en contacto con hello usuario toosee ¿por qué activó el rol de hello tantas veces. Tiempo de hello quizás límite es demasiado corto para ellos toocomplete sus tareas, o quizás que usas scripts tooautomatically activar un rol. |
-| **No se necesita la autenticación multifactor para la activación de los roles** |Hay funciones sin MFA habilitada en la configuración de Hola. |Se requiere MFA para los roles de hello con más altos privilegiada, pero recomendamos encarecidamente que habilite MFA para la activación de todos los roles. |
-| **Los administradores no están usando sus roles con privilegios** |Hay administradores aptos que no han activado sus roles recientemente. |Iniciar un acceso revisión toodetermine Hola a los usuarios que no necesitan acceso. |
-| **Demasiados administradores globales** |Hay más administradores globales de lo que se recomienda. |Si tiene un gran número de administradores globales, es probable que los usuarios estén obteniendo más permisos de los que necesitan. Mover a los usuarios que no requiere herramientas con privilegios roles, o realizar algunas de ellas aptos para su rol de hello en lugar de asignados permanentemente. |
+| **Se están asignando roles fuera de PIM** |Se ha asignado a un administrador a un rol de forma permanente, fuera de la interfaz de PIM. |Revise la nueva asignación de roles. Puesto que otros servicios solo pueden asignar administradores permanentes, cámbiela por una asignación apta en caso necesario. |
+| **Se están activando roles con demasiada frecuencia** |Había demasiadas reactivaciones del mismo rol en el tiempo permitido en la configuración. |Póngase en contacto con el usuario para ver por qué activó el rol tantas veces. Puede que el límite de tiempo sea demasiado corto para que complete sus tareas, o quizá utilice scripts para activar automáticamente un rol. |
+| **No se necesita la autenticación multifactor para la activación de los roles** |Hay roles sin MFA habilitado en la configuración. |MFA se requiere para los roles con los privilegios más elevados, pero se recomienda encarecidamente habilitar MFA para la activación de todos los roles. |
+| **Los administradores no están usando sus roles con privilegios** |Hay administradores aptos que no han activado sus roles recientemente. |Inicie una revisión de acceso para determinar los usuarios que ya no necesitan acceso. |
+| **Demasiados administradores globales** |Hay más administradores globales de lo que se recomienda. |Si tiene un gran número de administradores globales, es probable que los usuarios estén obteniendo más permisos de los que necesitan. Mueva usuarios a roles con menos privilegios, o establezca algunos de ellos como aptos para el rol en lugar de asignarlos de forma permanente. |
 
 ## <a name="configure-security-alert-settings"></a>Configuración de alertas de seguridad
-Puede personalizar algunas de las alertas de seguridad de hello en PIM toowork con el entorno y los objetivos de seguridad. Siga estos hoja de configuración de pasos tooreach hello:
+Puede personalizar algunas de las alertas de seguridad de PIM para que funcionen con su entorno sus objetivos de entorno y seguridad. Siga estos pasos para llegar a la hoja de configuración:
 
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com/) y seleccione hello **Azure AD Privileged Identity Management** icono de panel de Hola.
+1. Vaya al [Portal de Azure](https://portal.azure.com/) y seleccione el icono **Privileged Identity Management de Azure AD** en el panel.
 2. Seleccione **Roles con privilegios administrados** > **Configuración** > **Configuración de alertas**.
    
-    ![Navegar por la configuración de alertas toosecurity][2]
+    ![Navegación a la configuración de alertas de seguridad][2]
 
 ### <a name="roles-are-being-activated-too-frequently-alert"></a>Alerta "Los roles se están activando con demasiada frecuencia"
-Esta alerta se activa si un usuario activa Hola mismo rol con privilegios varias veces en un período especificado. Puede configurar ambos número de hello y período de tiempo de Hola de activaciones.
+Esta alerta se desencadena si un usuario activa el mismo rol con privilegios varias veces dentro de un período especificado. Puede configurar el período de tiempo y el número de activaciones.
 
-* **Período de tiempo de renovación de activación**: especificar en días, horas, minutos y la segunda vez Hola período que desea toouse tootrack sospechosa renovaciones.
-* **Número de renovaciones de activación**: especificar Hola número de activaciones de too100 2, que tener en cuenta que alerta, en período de tiempo de Hola que eligió. Puede cambiar esta configuración mediante el control deslizante de hello móvil o escribiendo un número en el cuadro de texto de Hola.
+* **Período de tiempo de renovación de activaciones**: especifique en días, horas, minutos y segundos, el período de tiempo que quiere usar para realizar el seguimiento de renovaciones sospechosas.
+* **Number of activation renewals**(Número de renovaciones de activación): especifique el número de activaciones, de 2 a 100, que considere dignas de tener en cuenta, en el período de tiempo que eligió. Puede cambiar este valor moviendo el control deslizante o escribiendo un número en el cuadro de texto.
 
 ### <a name="there-are-too-many-global-administrators-alert"></a>Alerta "Demasiados administradores globales"
-El PIM desencadena esta alerta si se cumplen dos criterios diferentes, y puede configurar ambos. En primer lugar, deberá tooreach un umbral determinado de administradores globales. En segundo lugar, un porcentaje determinado de las asignaciones de roles totales deben ser administradores globales. Si solo se cumple una de estas medidas, alerta de hello no aparece.  
+El PIM desencadena esta alerta si se cumplen dos criterios diferentes, y puede configurar ambos. En primer lugar, debe alcanzar un determinado umbral de administradores globales. En segundo lugar, un porcentaje determinado de las asignaciones de roles totales deben ser administradores globales. Si solo se cumple uno de estos criterios, la alerta no aparece.  
 
-* **Número mínimo de administradores globales**: especificar Hola número de administradores globales, de 2 too100, tenga en cuenta una cantidad no segura.
-* **Porcentaje de administradores globales**: especifique el porcentaje de Hola de los administradores que son administradores globales, de 0% too100%, que no es segura en su entorno.
+* **Número mínimo de administradores globales**: especifique el número de administradores globales, de 2 a 100, que considera una cantidad poco segura.
+* **Porcentaje de administradores globales**: especifique el porcentaje de los administradores que son administradores globales, de 0 % a 100 %, que es poco seguro en su entorno.
 
 ### <a name="administrators-arent-using-their-privileged-roles-alert"></a>Alerta "Los administradores no están usando sus roles con privilegios"
 Esta alerta se desencadena si un usuario pasa un cierto tiempo sin activar un rol.
 
-* **Número de días**: especifique Hola número de días, de 0 too100, que un usuario puede ejecutarse sin activar un rol.
+* **Número de días**: especifique el número de días, de 0 a 100, que un usuario puede pasar sin activar un rol.
 
 ## <a name="next-steps"></a>Pasos siguientes
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]

@@ -1,5 +1,5 @@
 ---
-title: aaaLimitations en la base de datos de Azure para PostgreSQL | Documentos de Microsoft
+title: Limitaciones en Azure Database for PostgreSQL | Microsoft Docs
 description: Describe las limitaciones en Azure Database for PostgreSQL.
 services: postgresql
 author: kamathsun
@@ -10,19 +10,19 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: article
 ms.date: 06/01/2017
-ms.openlocfilehash: f53dd240e55e0633bc1dfb8ad25e1818fa8ae18c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 38988fc5c0dc05331ea078534cd1a05e9eca2493
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Limitaciones en Azure Database for PostgreSQL
-Hola base de datos de Azure para servicio PostgreSQL está en vista previa pública. Hello siguientes secciones describen los límites funcionales en el servicio de base de datos de Hola y capacidad.
+El servicio Azure Database for PostgreSQL se encuentra en versión preliminar pública. En las secciones siguientes se describen los límites de capacidad y funcionales en el servicio de base de datos.
 
 ## <a name="service-tier-maximums"></a>Máximos de nivel de servicio
 Azure Database for PostgreSQL tiene varios niveles de servicio entre los que puede elegir al crear un servidor. Para obtener más información, consulte la [descripción sobre los elementos disponibles en cada nivel de servicio](concepts-service-tiers.md).  
 
-Hay un número máximo de conexiones, unidades de proceso y almacenamiento en cada nivel de servicio durante la vista previa del servicio de hello, como se indica a continuación: 
+Hay un número máximo de conexiones, unidades de proceso y almacenamiento en cada nivel de servicio mientras el servicio esté en versión preliminar, y son los siguientes: 
 
 |                            |                   |
 | :------------------------- | :---------------- |
@@ -40,7 +40,7 @@ Hay un número máximo de conexiones, unidades de proceso y almacenamiento en ca
 | Nivel de servicio Básico         | 1 TB              |
 | Nivel de servicio Estándar      | 1 TB              |
 
-Cuando se alcanzan demasiadas conexiones, recibirá Hola siguiente error:
+Cuando se alcanzan demasiadas conexiones, puede recibir el error siguiente:
 > FATAL:  sorry, too many clients already
 
 ## <a name="preview-functional-limitations"></a>Limitaciones funcionales de la versión preliminar
@@ -56,10 +56,10 @@ Cuando se alcanzan demasiadas conexiones, recibirá Hola siguiente error:
 - El movimiento dinámico de servidores creados previamente entre grupo de suscripciones y recursos no se admite en este momento.
 
 ### <a name="point-in-time-restore"></a>Restauración a un momento dado
-1.  No se admite la restauración de nivel de servicio de toodifferent o tamaño de unidades de proceso y almacenamiento.
+1.  La restauración a un nivel de servicio o unidades de proceso y tamaño de almacenamiento diferente no se admite.
 2.  La restauración a un servidor que se ha quitado no se admite en este momento.
 
 ## <a name="next-steps"></a>Pasos siguientes
 - Comprenda lo que [hay disponible en cada plan de tarifa](concepts-service-tiers.md).
 - Conozca las [versiones de base de datos de PostgreSQL admitidas](concepts-supported-versions.md).
-- Revisión [cómo tooBack seguridad y restauración de un servidor de base de datos de Azure para usar PostgreSQL Hola portal de Azure](howto-restore-server-portal.md)
+- Revise [cómo hacer una copia de seguridad de un servidor y restaurarlo en Azure Database for PostgreSQL mediante Azure Portal](howto-restore-server-portal.md)

@@ -1,6 +1,6 @@
 ---
-title: aaaUse tooback de servidor de copia de seguridad de Azure de las cargas de trabajo tooAzure | Documentos de Microsoft
-description: Usar el servidor de copia de seguridad de Azure tooprotect o respaldar las cargas de trabajo toohello portal de Azure.
+title: Uso del servidor de copia de seguridad de Azure para realizar copias de seguridad de cargas de trabajo en Azure | Microsoft Docs
+description: Use el servidor de copia de seguridad de Azure para proteger cargas de trabajo o realizar una copia de seguridad de ellas en Azure Portal.
 services: backup
 documentationcenter: 
 author: PVRK
@@ -15,45 +15,45 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/20/2017
 ms.author: masaran;trinadhk;pullabhk;markgal
-ms.openlocfilehash: a99b2919ffd44c6133960e3a935038a2bb1281c0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: c54468d71e0b383916e49847576a98303d659d38
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="preparing-tooback-up-workloads-using-azure-backup-server"></a>Preparar tooback seguridad cargas de trabajo utilizando el servidor de copia de seguridad de Azure
+# <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>Preparación para la copia de seguridad de cargas de trabajo en Microsoft Azure
 > [!div class="op_single_selector"]
-> * [Servidor de Copia de seguridad de Azure](backup-azure-microsoft-azure-backup.md)
+> * [Azure Backup Server](backup-azure-microsoft-azure-backup.md)
 > * [SCDPM](backup-azure-dpm-introduction.md)
 >
 >
 
-Este artículo se explica cómo tooprepare su tooback entorno seguridad cargas de trabajo utilizando el servidor de copia de seguridad de Azure. Con Azure Backup Server, puede proteger cargas de trabajo de aplicaciones como máquinas virtuales de Hyper-V, Microsoft SQL Server, SharePoint Server, Microsoft Exchange y clientes Windows desde una única consola.
+En este artículo se explica cómo preparar el entorno para la copia de seguridad de las cargas de trabajo mediante el servidor de Copia de seguridad de Azure. Con Azure Backup Server, puede proteger cargas de trabajo de aplicaciones como máquinas virtuales de Hyper-V, Microsoft SQL Server, SharePoint Server, Microsoft Exchange y clientes Windows desde una única consola.
 
 > [!NOTE]
-> El servidor de copia de seguridad de Azure ahora puede proteger máquinas virtuales de VMware y proporciona mejores funcionalidades de seguridad. Instalar el producto de hello tal como se describe en secciones de hello siguientes; aplicar actualizaciones 1 y Hola a agente de copia de seguridad más reciente de Azure. toolearn más información acerca de la copia de seguridad de servidores de VMware con el servidor de copia de seguridad de Azure, vea el artículo de hello, [tooback de servidor de copia de seguridad de Azure de uso de un servidor de VMware](backup-azure-backup-server-vmware.md). toolearn acerca de las capacidades de seguridad, consulte demasiado[documentación de características de seguridad de copia de seguridad de Azure](backup-azure-security-feature.md).
+> El servidor de copia de seguridad de Azure ahora puede proteger máquinas virtuales de VMware y proporciona mejores funcionalidades de seguridad. Instale el producto tal y como se explica en las secciones de debajo y aplique la actualización 1 y el agente de copia de seguridad de Azure más reciente. Para obtener más información sobre la copia de seguridad de servidores VMware con Azure Backup Server, vea el artículo [Uso de Azure Backup Server para hacer copia de seguridad de un servidor de VMware](backup-azure-backup-server-vmware.md). Para obtener información sobre las funcionalidades de seguridad, consulte la [documentación de características de seguridad de copia de seguridad de Azure](backup-azure-security-feature.md).
 >
 >
 
 También puede proteger las cargas de trabajo de Infraestructura como servicio (IaaS), como es el caso de las máquinas virtuales de Azure.
 
 > [!NOTE]
-> Azure cuenta con dos modelos de implementación para crear recursos y trabajar con ellos: [Resource Manager y el modelo clásico](../azure-resource-manager/resource-manager-deployment-model.md). Este artículo proporciona información de Hola y procedimientos para restaurar máquinas virtuales implementadas mediante el modelo de administrador de recursos de Hola.
+> Azure cuenta con dos modelos de implementación para crear recursos y trabajar con ellos: [Resource Manager y el modelo clásico](../azure-resource-manager/resource-manager-deployment-model.md). En este artículo se proporcionan información y procedimientos para restaurar las máquinas virtuales implementadas mediante el modelo de Resource Manager.
 >
 >
 
-Servidor de copia de seguridad de Azure hereda la mayor parte de la funcionalidad de copia de seguridad de cargas de trabajo de Hola de Data Protection Manager (DPM). En este artículo se vincula tooDPM documentación tooexplain algunos Hola funcionalidad comparten. Aunque el servidor de copia de seguridad de Azure comparten gran parte de hello misma funcionalidad que DPM. Servidor de copia de seguridad de Azure no respaldar tootape ni se integra con System Center.
+El servidor de Copia de seguridad de Azure hereda gran parte de la funcionalidad de copia de seguridad de las cargas de trabajo de Data Protection Manager (DPM). Este artículo incluye vínculos a documentación de DPM para explicar algunas de las funcionalidades compartidas. Si bien, el servidor de Copia de seguridad de Azure comparte gran parte de la misma funcionalidad que DPM. El servidor de Copia de seguridad de Azure no realiza copias de seguridad en cinta, ni se integra con System Center.
 
 ## <a name="1-choose-an-installation-platform"></a>1. Elección de una plataforma de instalación
-Hola primer paso hacia obtener Hola servidor de copia de seguridad de Azure y ejecutar es tooset de un servidor de Windows. El servidor puede estar en Azure o en el entorno local.
+El primer paso para que funcione el servidor de Copia de seguridad de Azure es configurar un equipo con Windows Server. El servidor puede estar en Azure o en el entorno local.
 
 ### <a name="using-a-server-in-azure"></a>Uso de un servidor en Azure
-Al elegir un servidor para ejecutar el servidor de Copia de seguridad de Azure, se recomienda comenzar con una imagen de la galería de Windows Server 2012 R2 Datacenter. artículo de Hello, [crear la primera máquina virtual de Windows en el portal de Azure hello](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), proporciona un tutorial de introducción a Hola recomienda la máquina virtual de Azure, incluso si nunca ha utilizado Azure antes. Hola recomienda requisitos mínimos para la máquina virtual de servidor hello (VM) debe ser: A2 estándar con dos núcleos y 3,5 GB de RAM.
+Al elegir un servidor para ejecutar el servidor de Copia de seguridad de Azure, se recomienda comenzar con una imagen de la galería de Windows Server 2012 R2 Datacenter. En el artículo [Creación de la primera máquina virtual de Windows en el Portal de Azure](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), se proporciona un tutorial de introducción a la máquina virtual recomendada en Azure, incluso si nunca ha usado Azure antes. Los requisitos mínimos recomendados para la máquina virtual (VM) servidor deben ser: A2 estándar con dos núcleos y 3,5 GB de RAM.
 
-La protección de cargas de trabajo con el servidor de Copia de seguridad de Azure tiene muchos matices. artículo de Hello, [instalar DPM como una máquina virtual de Azure](https://technet.microsoft.com/library/jj852163.aspx), le ayudará a comprender estas matices. Antes de implementar la máquina de hello, leer este artículo en su totalidad.
+La protección de cargas de trabajo con el servidor de Copia de seguridad de Azure tiene muchos matices. El artículo [Instalación de DPM como una máquina virtual de Azure](https://technet.microsoft.com/library/jj852163.aspx)le ayudará a comprender estos matices. Lea este artículo completamente antes de implementar la máquina.
 
 ### <a name="using-an-on-premises-server"></a>Uso de un servidor local
-Si no desea que toorun Hola base servidor en Azure, puede ejecutar el servidor de hello en una máquina virtual de Hyper-V, una VM de VMware o en un host físico. Hola recomienda requisitos mínimos de hardware del servidor hello son dos núcleos y 4 GB de RAM. Hola admitida los sistemas operativos se muestran en hello en la tabla siguiente:
+Si no desea ejecutar el servidor de base de Azure, puede ejecutar el servidor en una máquina virtual de Hyper-V, una máquina virtual de VMware o un host físico. Los requisitos mínimos recomendados para el hardware de servidor son dos núcleos y 4 GB de RAM. En la tabla siguiente se muestran los sistemas operativos compatibles:
 
 | Sistema operativo | Plataforma | SKU |
 |:--- | --- |:--- |
@@ -62,182 +62,182 @@ Si no desea que toorun Hola base servidor en Azure, puede ejecutar el servidor d
 | Windows Storage Server 2012 R2 y SP más recientes |64 bits |Standard, Workgroup |
 | Windows Storage Server 2012 y SP más recientes |64 bits |Standard, Workgroup |
 
-Puede desduplicar el almacenamiento DPM de hello con desduplicación de Windows Server. Más información sobre cómo funcionan juntos [DPM y la desduplicación](https://technet.microsoft.com/library/dn891438.aspx) al implementarlos en máquinas virtuales de Hyper-V.
+Puede desduplicar el almacenamiento de DPM con la desduplicación de Windows Server. Más información sobre cómo funcionan juntos [DPM y la desduplicación](https://technet.microsoft.com/library/dn891438.aspx) al implementarlos en máquinas virtuales de Hyper-V.
 
 > [!NOTE]
-> Servidor de copia de seguridad de Azure está diseñado toorun en un servidor dedicado de propósito único. No se puede instalar Azure Backup Server en:
+> Azure Backup Server está diseñado para ejecutarse en un servidor dedicado de objetivo único. No se puede instalar Azure Backup Server en:
 > - Un equipo que se ejecuta como controlador de dominio
-> - Un equipo en qué servidor de aplicaciones de hello rol está instalado
+> - Un equipo en el que está instalado el rol del servidor de aplicaciones
 > - Un equipo que sea un grupo de administración de System Center Operations Manager
 > - Un equipo en el que se ejecute Exchange Server
 > - Un equipo que sea un nodo de un clúster
 
-Unirse a dominio de tooa del servidor de copia de seguridad de Azure. Si tiene previsto dominio diferente del tooa toomove Hola server, se recomienda que unirse Hola server toohello nuevo dominio antes de instalar el servidor de copia de seguridad de Azure. Mover un servidor de copia de seguridad de Azure existente máquina tooa nuevo dominio después de la implementación es *no admite*.
+Siempre una Azure Backup Server a un dominio. Si piensa mover el servidor a un dominio diferente, se recomienda unir el servidor al nuevo dominio antes de instalar el servidor de copia de seguridad de Azure. *No se permite*mover una máquina servidor de Copia de seguridad de Azure existente a un dominio nuevo después de la implementación.
 
-## <a name="2-recovery-services-vault"></a>2. Almacén de Recovery Services
-Si enviar datos de copia de seguridad tooAzure o mantenerlo localmente, software de hello necesita tooAzure toobe conectado. toobe más específica, el equipo del servidor de copia de seguridad de Azure de hello debe toobe registrado con un almacén de servicios de recuperación.
+## <a name="2-recovery-services-vault"></a>2. Almacén de Servicios de recuperación
+Tanto si envía datos de copia de seguridad a Azure como si los mantiene localmente, el software debe estar conectado a Azure. Más concretamente, la máquina del Servidor de Copia de seguridad de Azure debe estar registrada en un almacén de Servicios de recuperación.
 
-almacén de servicios de toocreate una recuperación:
+Para crear un almacén de Servicios de recuperación:
 
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com/).
-2. En el menú del concentrador hello, haga clic en **examinar** y en la lista de Hola de recursos, escriba **servicios de recuperación**. Cuando empiece a escribir, Hola filtros de la lista con los datos especificados. Haga clic en **Almacén de Servicios de recuperación**.
+1. Inicie sesión en el [Portal de Azure](https://portal.azure.com/).
+2. En el menú del centro, haga clic en **Examinar** y, en la lista de recursos, escriba **Recovery Services**. Cuando comience a escribir, la lista se filtrará en función de la entrada. Haga clic en **Almacén de Servicios de recuperación**.
 
     ![Creación del almacén de Servicios de recuperación, paso 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png) <br/>
 
-    se muestra la lista de Hola de almacenes de servicios de recuperación.
-3. En hello **servicios de recuperación de los almacenes de credenciales** menú, haga clic en **agregar**.
+    Se muestra la lista de almacenes de Servicios de recuperación.
+3. En el menú **Almacenes de servicios de recuperación**, haga clic en **Agregar**.
 
     ![Creación del almacén de Servicios de recuperación, paso 2](./media/backup-azure-microsoft-azure-backup/rs-vault-menu.png)
 
-    Servicios de recuperación de Hello del almacén se abre de hoja, que le pide que tooprovide una **nombre**, **suscripción**, **grupo de recursos**, y **ubicación**.
+    Se abre la hoja del almacén de Recovery Services, donde se le pide que especifique los valores de **Nombre**, **Suscripción**, **Grupo de recursos** y **Ubicación**.
 
     ![Creación del almacén de Servicios de recuperación, paso 5](./media/backup-azure-microsoft-azure-backup/rs-vault-attributes.png)
-4. Para **nombre**, escriba en el almacén de hello tooidentify un nombre descriptivo. nombre de Hello debe toobe único para hello suscripción de Azure. Escriba un nombre que tenga entre 2 y 50 caracteres. Debe comenzar por una letra y solo puede contener letras, números y guiones.
-5. Haga clic en **suscripción** lista disponible de hello toosee de suscripciones. Si no está seguro de qué toouse de suscripción, utilice Hola predeterminado (o sugiere) suscripción. Solo hay varias opciones si la cuenta de su organización está asociada a más de una suscripción de Azure.
-6. Haga clic en **grupo de recursos** toosee Hola lista de grupos de recursos disponibles, o haga clic en **New** toocreate un nuevo grupo de recursos. Para más información sobre los grupos de recursos, consulte [Información general de Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
-7. Haga clic en **ubicación** región geográfica de tooselect hello para el almacén de Hola.
-8. Haga clic en **Crear**. Puede tardar unos instantes para hello toobe creado del almacén de servicios de recuperación. Supervisar las notificaciones de estado de hello en el área superior de derecho hello en el portal de Hola.
-   Una vez creado el almacén, se abre en el portal de Hola.
+4. En **Nombre**, escriba un nombre descriptivo que identifique el almacén. El nombre debe ser único para la suscripción de Azure. Escriba un nombre que tenga entre 2 y 50 caracteres. Debe comenzar por una letra y solo puede contener letras, números y guiones.
+5. Haga clic en **Suscripción** para ver la lista de suscripciones disponibles. Si no está seguro de la suscripción que desea utilizar, use la suscripción predeterminada (o sugerida). Solo hay varias opciones si la cuenta de su organización está asociada a más de una suscripción de Azure.
+6. Haga clic en **Grupo de recursos** para ver la lista de grupos de recursos disponibles o haga clic en **Nuevo** para crear uno. Para más información sobre los grupos de recursos, consulte [Información general de Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+7. Haga clic en **Ubicación** para seleccionar la región geográfica del almacén.
+8. Haga clic en **Crear**. La creación del almacén de Servicios de recuperación puede tardar unos minutos. Supervise las notificaciones de estado en la parte superior derecha del portal.
+   Una vez creado el almacén, se abre en el portal.
 
 ### <a name="set-storage-replication"></a>Configuración de la replicación de almacenamiento
-opción de replicación de almacenamiento de Hello permite toochoose entre el almacenamiento con redundancia geográfica y almacenamiento con redundancia local. De forma predeterminada, el almacén tiene almacenamiento con redundancia geográfica. Si este almacén es el almacén principal, deje Hola almacenamiento opción set toogeo el almacenamiento con redundancia. Elija el almacenamiento con redundancia local si desea una opción más económica que no sea tan duradera. Obtenga más información sobre [con redundancia geográfica](../storage/common/storage-redundancy.md#geo-redundant-storage) y [localmente redundante](../storage/common/storage-redundancy.md#locally-redundant-storage) opciones de almacenamiento en hello [información general sobre la replicación de almacenamiento de Azure](../storage/common/storage-redundancy.md).
+La opción de replicación de almacenamiento permite elegir entre almacenamiento con redundancia geográfica y almacenamiento con redundancia local. De forma predeterminada, el almacén tiene almacenamiento con redundancia geográfica. Si este almacén es su almacén principal, deje la opción de almacenamiento establecida en almacenamiento con redundancia geográfica. Elija el almacenamiento con redundancia local si desea una opción más económica que no sea tan duradera. Para más información sobre las opciones de almacenamiento [con redundancia geográfica](../storage/common/storage-redundancy.md#geo-redundant-storage) y [con redundancia local](../storage/common/storage-redundancy.md#locally-redundant-storage), consulte [Replicación de Azure Storage](../storage/common/storage-redundancy.md).
 
-configuración de replicación de almacenamiento de Hola tooedit:
+Para editar la configuración de replicación de almacenamiento:
 
-1. Seleccione el panel de almacén de credenciales de almacén tooopen hello y hoja de configuración de Hola. Si hello **configuración** hoja no se abre, haga clic en **toda la configuración de** en el panel del almacén de Hola.
-2. En hello **configuración** hoja, haga clic en **infraestructura de copia de seguridad** > **configuración de copia de seguridad** tooopen hello **configuración de copia de seguridad** hoja. En hello **configuración de copia de seguridad** hoja, elija la opción de replicación de almacenamiento de hello para el almacén.
+1. Seleccione el almacén para abrir su panel y la hoja de configuración. Si la hoja **Configuración** no se abre, haga clic en la opción **Toda la configuración** del panel del almacén.
+2. En la hoja **Configuración**, haga clic en **Infraestructura de copia de seguridad** > **Configuración de copia de seguridad** para abrir la hoja **Configuración de copia de seguridad**. En la hoja **Configuración de copia de seguridad** , elija la opción de replicación de almacenamiento para su almacén.
 
     ![Lista de copias de seguridad](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
-    Después de elegir la opción de almacenamiento de hello para el almacén, está listo tooassociate Hola VM con el almacén de Hola. asociación de hello toobegin, debería detectar y registrar Hola máquinas virtuales de Azure.
+    Tras elegir la opción de almacenamiento del almacén, está listo para asociar la máquina virtual con el almacén. Para comenzar la asociación, es preciso detectar y registrar las máquinas virtuales de Azure.
 
 ## <a name="3-software-package"></a>3. Paquete de software
-### <a name="downloading-hello-software-package"></a>Descargar paquete de software de Hola
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com/).
-2. Si ya tiene un almacén de servicios de recuperación abierto, continúe toostep 3. Si no tiene un abierto de almacén de servicios de recuperación, pero están en hello portal de Azure, en el menú del concentrador hello, haga clic en **examinar**.
+### <a name="downloading-the-software-package"></a>Descarga del paquete de software
+1. Inicie sesión en el [Portal de Azure](https://portal.azure.com/).
+2. Si ya tiene abierto un almacén de Servicios de recuperación, vaya al paso 3. Si no tiene abierto un almacén de Servicios de recuperación, pero está en el Portal de Azure, en el menú del concentrador, haga clic en **Examinar**.
 
-   * En la lista de Hola de recursos, escriba **servicios de recuperación**.
-   * Cuando empiece a escribir, se filtrará la lista de hello en función de los datos especificados. Haga clic en **Almacenes de Recovery Services**cuando lo vea.
+   * En la lista de recursos, escriba **Servicios de recuperación**.
+   * Cuando comience a escribir, la lista se filtrará en función de la entrada. Haga clic en **Almacenes de Servicios de recuperación**cuando lo vea.
 
-     ![Creación del almacén de Servicios de recuperación, paso 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
+     ![Creación del almacén de Recovery Services, paso 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
-     aparece en la lista de Hola de almacenes de servicios de recuperación.
-   * En lista de Hola de almacenes de servicios de recuperación, seleccione un almacén.
+     Aparece la lista de almacenes de Recovery Services.
+   * En la lista de almacenes de Recovery Services, seleccione un almacén.
 
-     de este modo se abrirá el panel de Hello almacén seleccionado.
+     Se abre el panel del almacén seleccionado.
 
      ![Hoja del almacén abierta](./media/backup-azure-microsoft-azure-backup/vault-dashboard.png)
-3. Hola **configuración** hoja se abre de forma predeterminada. Si está cerrado, haga clic en **configuración** hoja de configuración de tooopen Hola.
+3. La hoja **Configuración** se abre de forma predeterminada. Si está cerrada, haga clic en **Configuración** para abrirla.
 
     ![Hoja del almacén abierta](./media/backup-azure-microsoft-azure-backup/vault-setting.png)
-4. Haga clic en **copia de seguridad** Asistente para introducción de tooopen Hola.
+4. Haga clic en **Copia de seguridad** para abrir el Asistente para introducción.
 
     ![Introducción a la copia de seguridad](./media/backup-azure-microsoft-azure-backup/getting-started-backup.png)
 
-    Hola **Introducción a la copia de seguridad** hoja que se abre, **objetivos de copia de seguridad** estará seleccionado automáticamente.
+    En la hoja **Introducción a Backup** que se abre, **Backup Goals** (Objetivos de Backup) se selecciona automáticamente.
 
     ![Backup-goals-default-opened](./media/backup-azure-microsoft-azure-backup/getting-started.png)
 
-5. Hola **objetivo de copia de seguridad** hoja de hello **donde se está ejecutando la carga de trabajo** menú, seleccione **local**.
+5. En la hoja **Backup Goals**, en el menú desplegable **¿Dónde se ejecuta su carga de trabajo?**, seleccione **Local**.
 
     ![entorno local y cargas de trabajo como objetivos](./media/backup-azure-microsoft-azure-backup/backup-goals-azure-backup-server.png)
 
-    De hello **especifique qué desea toobackup?** menú desplegable, las cargas de trabajo de hello select que desee tooprotect utilizando el servidor de copia de seguridad de Azure y, a continuación, haga clic en **Aceptar**.
+    En el menú desplegable **What do you want to backup?** (¿De qué desea realizar copias de seguridad), seleccione las cargas de trabajo que quiere proteger con el servidor de copia de seguridad de Azure y, después, haga clic en **Aceptar**.
 
-    Hola **Introducción a la copia de seguridad** Asistente conmutadores hello **preparar la infraestructura** tooback opción seguridad tooAzure de cargas de trabajo.
+    El asistente **Introducción a Backup** cambia la opción **Preparar infraestructura** para realizar copias de seguridad de las cargas de trabajo en Azure.
 
    > [!NOTE]
-   > Si solo desea tooback seguridad de archivos y carpetas, se recomienda con el agente de copia de seguridad de Azure de Hola y Hola instrucciones en el artículo de hello, [primer vistazo: copia de seguridad de archivos y carpetas](backup-try-azure-backup-in-10-mins.md). Si va tooprotect en un futuro hello, seleccione más de los archivos y carpetas o va a protección de hello tooexpand necesita las cargas de trabajo.
+   > Si solo desea hacer copia de seguridad de archivos y carpetas, se recomienda utilizar el agente de Azure Backup y seguir las instrucciones del artículo [Primer análisis: Copia de seguridad de archivos y carpetas](backup-try-azure-backup-in-10-mins.md). Si va a proteger más que archivos y carpetas o tiene pensado expandir las necesidades de protección en un futuro, seleccione esas cargas de trabajo.
    >
    >
 
     ![Cambio del Asistente para introducción](./media/backup-azure-microsoft-azure-backup/getting-started-prep-infra.png)
 
-6. Hola **preparar infraestructura** hoja que aparece, haga clic en hello **descargar** vínculos para instalar el servidor de copia de seguridad de Azure y descargar credenciales de almacén. Utilice las credenciales de almacén de Hola durante el registro del almacén de servicios de recuperación de toohello de servidor de copia de seguridad de Azure. vínculos de Hello permitirán toohello donde hello paquete de software se puede descargar el centro de descarga.
+6. En la hoja **Preparar la infraestructura** que se abre, haga clic en los vínculos de **Descarga** para instalar el servidor de Copia de seguridad de Azure y descargar las credenciales del almacén. Utilice las credenciales del almacén durante el registro del servidor de Copia de seguridad de Azure en el almacén de Servicios de recuperación. Los vínculos le llevan al Centro de descarga donde se puede descargar el paquete de software.
 
     ![Preparación de la infraestructura del Servidor de Copia de seguridad de Azure](./media/backup-azure-microsoft-azure-backup/azure-backup-server-prep-infra.png)
 
-7. Seleccione todos los archivos de Hola y haga clic en **siguiente**. Descarga que todos Hola archivos procedentes de la página de descarga de copia de seguridad de Microsoft Azure de Hola y Hola a todos los archivos en el lugar Hola misma carpeta.
+7. Seleccione todos los archivos y haga clic en **Siguiente**. Descargue todos los archivos procedentes de la página de descarga de Copia de seguridad de Microsoft Azure y colóquelos en la misma carpeta.
 
     ![Centro de descarga 1](./media/backup-azure-microsoft-azure-backup/downloadcenter.png)
 
-    Puesto que hello tamaño de descarga de todos los archivos de hello juntos > 3G, en un vínculo de descarga de 10 Mbps puede llevar hasta too60 minutos para hello descargan toocomplete.
+    Puesto que el tamaño de descarga de todos los archivos juntos es de más de 3 GB, con un vínculo de descarga a 10 Mbps, se puede tardar hasta 60 minutos en completarla.
 
-### <a name="extracting-hello-software-package"></a>Extraer el paquete de software de Hola
-Una vez que haya descargado todos los archivos de hello, haga clic en **MicrosoftAzureBackupInstaller.exe**. Esto iniciará hello **el Asistente para la instalación de Microsoft Azure copia de seguridad** el programa de instalación de tooextract Hola archivos ubicación tooa especificado por el usuario. Continuar con el Asistente de Hola y haga clic en hello **extraer** botón proceso de extracción de toobegin Hola.
+### <a name="extracting-the-software-package"></a>Extracción del paquete de software
+Después de descargar todos los archivos, haga clic en **MicrosoftAzureBackupInstaller.exe**. Se inicia el **Asistente para instalación de Microsoft Azure Backup**, que extraerá los archivos de instalación en una ubicación especificada por el usuario. Siga con el asistente y haga clic en el botón **Extraer** para comenzar el proceso de extracción.
 
 > [!WARNING]
-> Al menos 4GB de espacio libre es necesario tooextract Hola los archivos de instalación.
+> Se requieren al menos 4 GB de espacio libre para extraer los archivos de instalación.
 >
 >
 
 ![Asistente para instalación de Microsoft Azure Backup](./media/backup-azure-microsoft-azure-backup/extract/03.png)
 
-Una vez el proceso de extracción de hello completando, verificación Hola cuadro toolaunch Hola recién extraído *setup.exe* toobegin instalar el servidor de copia de seguridad de Microsoft Azure y haga clic en hello **finalizar** botón.
+Después de completar el proceso de extracción, active la casilla para iniciar el archivo *setup.exe* recién extraído y empezar a instalar el servidor de Microsoft Azure Backup. Luego, haga clic en el botón **Finalizar**.
 
-### <a name="installing-hello-software-package"></a>Instalar el paquete de software de Hola
-1. Haga clic en **copia de seguridad de Microsoft Azure** Asistente para la instalación de toolaunch Hola.
+### <a name="installing-the-software-package"></a>Instalación del paquete de software
+1. Haga clic en **Microsoft Azure Backup** para iniciar el asistente para la instalación.
 
     ![Asistente para instalación de Microsoft Azure Backup](./media/backup-azure-microsoft-azure-backup/launch-screen2.png)
-2. En la pantalla de bienvenida de bienvenida, haga clic en hello **siguiente** botón. Esto le llevará toohello *Prerequisite Checks* sección. En esta pantalla, haga clic en **comprobar** toodetermine si se cumplen los requisitos previos de hardware y software de hello para el servidor de copia de seguridad de Azure. Si todos los requisitos previos se cumplen correctamente, verá un mensaje que indica que la máquina Hola cumple los requisitos de Hola. Haga clic en hello **siguiente** botón.
+2. En la pantalla de bienvenida, haga clic en **Siguiente** . Irá a la sección *Prerequisite Checks* (Comprobaciones de requisitos previos). En esta pantalla, haga clic en **Comprobar** para determinar si se cumplieron los requisitos previos de hardware y software para Azure Backup Server. Si se cumplieron correctamente todos los requisitos previos, verá un mensaje que indica que la máquina los cumple. Haga clic en el botón **Siguiente** .
 
     ![Azure Backup Server - Bienvenida y requisitos previos](./media/backup-azure-microsoft-azure-backup/prereq/prereq-screen2.png)
-3. Servidor de copia de seguridad de Microsoft Azure requiere SQL Server Standard y paquete de instalación del servidor de copia de seguridad de Azure de hello viene incluido con los binarios de SQL Server adecuados Hola necesitados. Cuando se inicia con una nueva instalación de servidor de copia de seguridad de Azure, debe elegir la opción de hello **instalar nueva instancia de SQL Server con este programa de instalación** y haga clic en hello **comprobar e instalar** botón. Una vez que los requisitos previos de Hola se instalaron correctamente, haga clic en **siguiente**.
+3. Microsoft Azure Backup Server requiere SQL Server Standard y en el paquete de instalación de Azure Backup Server se incluyen los correspondientes archivos binarios de SQL Server necesarios. Cuando comience una nueva instalación de Azure Backup Server, debe elegir la opción **Install new Instance of SQL Server with this Setup** (Instalar nueva instancia de SQL Server con esta configuración) y hacer clic en el botón **Comprobar e instalar**. Una vez que los requisitos previos se instalen correctamente, haga clic en **Next**(Siguiente).
 
     ![Azure Backup Server - Comprobación de SQL](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 
-    Si se produce un error con una máquina de recomendación toorestart hello, hacerlo y haga clic en **comprobar de nuevo**.
+    Si se produce un error con una recomendación para reiniciar el equipo, proceda a reiniciar y haga clic en **Check Again**(Comprobar de nuevo).
 
    > [!NOTE]
-   > Azure Backup Server no funcionará con una instancia remota de SQL Server. instancia de Hola que se utiliza por servidor de copia de seguridad de Azure debe toobe local.
+   > Azure Backup Server no funcionará con una instancia remota de SQL Server. La instancia que se utiliza en Azure Backup Server debe ser local.
    >
    >
-4. Proporcionar una ubicación para la instalación de Hola de archivos del servidor de copia de seguridad de Microsoft Azure y haga clic en **siguiente**.
+4. Proporcione una ubicación donde instalar los archivos del servidor de Microsoft Azure Backup y haga clic en **Next**(Siguiente).
 
     ![Requisitos previos de Microsoft Azure Backup2](./media/backup-azure-microsoft-azure-backup/space-screen.png)
 
-    ubicación del borrador Hello es un requisito para copia de seguridad tooAzure. Asegúrese de ubicación del borrador hello es al menos del 5% de los datos de hello planeada toobe copia toohello en la nube. Para la protección de disco, es necesario toobe configuran una vez que finalice la instalación de hello discos independientes. Para obtener más información acerca de los grupos de almacenamiento, consulte [Configuración de bloques de almacenamiento y almacenamiento en disco](https://technet.microsoft.com/library/hh758075.aspx).
+    La ubicación temporal es un requisito para hacer copias de seguridad en Azure. Asegúrese de que la ubicación temporal sea al menos el 5% de los datos cuya copia de seguridad se planea hacer en la nube. Para la protección de disco, deben configurarse discos independientes una vez completada la instalación. Para obtener más información acerca de los grupos de almacenamiento, consulte [Configuración de bloques de almacenamiento y almacenamiento en disco](https://technet.microsoft.com/library/hh758075.aspx).
 5. Proporcione una contraseña segura para las cuentas de usuario locales con permisos restringidos y haga clic en **Next**(Siguiente).
 
     ![Requisitos previos de Microsoft Azure Backup2](./media/backup-azure-microsoft-azure-backup/security-screen.png)
-6. Seleccione si desea toouse *Microsoft Update* toocheck si hay actualizaciones y haga clic en **siguiente**.
+6. Seleccione si desea usar *Microsoft Update* para comprobar si hay actualizaciones y haga clic en **Next**(Siguiente).
 
    > [!NOTE]
-   > Se recomienda tener Windows Update redirigir tooMicrosoft actualización, lo que ofrece seguridad y actualizaciones importantes para Windows y otros productos, como servidor de copia de seguridad de Microsoft Azure.
+   > Se recomienda que Windows Update se redirija a Microsoft Update, que ofrece actualizaciones importantes y de seguridad para Windows y otros productos como Microsoft Azure Backup Server.
    >
    >
 
     ![Requisitos previos de Microsoft Azure Backup2](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
-7. Hola de revisión *resumen de la configuración* y haga clic en **instalar**.
+7. Revise *Summary of Settings* (Resumen de la configuración) y haga clic en **Install**(Instalar).
 
     ![Requisitos previos de Microsoft Azure Backup2](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
-8. instalación de Hello sucede en fases. Hola Hola de fase primer agente de servicios de recuperación de Microsoft Azure está instalado en el servidor de Hola. Asistente de Hello también comprueba si la conectividad a Internet. Si está disponible la conectividad a Internet puede continuar con la instalación, si no, debe tooprovide proxy detalles tooconnect toohello Internet.
+8. La instalación se realiza en fases. En la primera fase, se instala el agente de Servicios de recuperación de Microsoft Azure en el servidor. El asistente comprueba igualmente la conectividad a Internet. Si la conectividad a Internet está disponible, puede continuar con la instalación; de lo contrario, debe proporcionar los detalles del proxy para conectarse a Internet.
 
-    Hola siguiente paso es hello tooconfigure agente de servicios de recuperación de Microsoft Azure. Como parte de la configuración de hello, tendrá tooprovide los servicios de recuperación almacén credenciales tooregister Hola máquina toohello almacén. También ofrecerá una frase de contraseña tooencrypt/descifrar Hola datos enviados entre Azure y sus instalaciones. Puede generar una frase de contraseña automáticamente o proporcionar la suya propia, con un mínimo de 16 caracteres. Continúe con el Asistente de hello hasta que se ha configurado el agente de Hola.
+    El siguiente paso es configurar el agente de Servicios de recuperación de Microsoft Azure. Como parte de la configuración, tendrá que proporcionar las credenciales del almacén para registrar la máquina en el almacén de Servicios de recuperación. También proporcionará una frase de contraseña para cifrar y descifrar los datos enviados entre Azure y sus instalaciones. Puede generar una frase de contraseña automáticamente o proporcionar la suya propia, con un mínimo de 16 caracteres. Continúe con el asistente hasta que se haya configurado el agente.
 
     ![Requisitos previos de Azure Backup Server2](./media/backup-azure-microsoft-azure-backup/mars/04.png)
-9. Una vez se complete correctamente el registro del servidor de copia de seguridad de Microsoft Azure hello, hello general Asistente para la instalación continúa toohello instalación y configuración de SQL Server y los componentes de servidor de copia de seguridad de Azure Hola. Una vez completada la instalación de componentes de SQL Server de Hola, se instalan los componentes de servidor de copia de seguridad de Azure Hola.
+9. Una vez que se complete correctamente el registro de Microsoft Azure Backup Server, el asistente para instalación global prosigue con la instalación y configuración de los componentes de SQL Server y de Microsoft Azure Backup Server. Tras completarse la instalación de los componentes de SQL Server, se instalan los componentes de Azure Backup Server.
 
     ![Azure Backup Server](./media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
 
-Cuando haya finalizado el paso de instalación de hello, hello iconos del escritorio del producto se habrá creados así. Hacer doble clic en el producto de hello icono toolaunch Hola.
+Cuando el paso de instalación haya finalizado, se habrán creado también los iconos de escritorio del producto. Haga doble clic en el icono para iniciar el producto.
 
 ### <a name="add-backup-storage"></a>Incorporación de almacenamiento de copia de seguridad
-copia de seguridad primera Hola se mantiene en almacenamiento conectado toohello máquina del servidor de copia de seguridad de Azure. Para obtener más información acerca de los discos, consulte [Configuración de bloques de almacenamiento y almacenamiento en disco](https://technet.microsoft.com/library/hh758075.aspx).
+La primera copia de seguridad se mantiene en el almacenamiento conectado a la máquina de Azure Backup Server. Para obtener más información acerca de los discos, consulte [Configuración de bloques de almacenamiento y almacenamiento en disco](https://technet.microsoft.com/library/hh758075.aspx).
 
 > [!NOTE]
-> Se necesita almacenamiento de copia de seguridad de tooadd incluso si tiene previsto toosend datos tooAzure. En la arquitectura actual de saludo del servidor de copia de seguridad de Azure, el almacén de copia de seguridad de Azure hello contiene hello *segundo* copia de datos de hello mientras almacenamiento local de hello contiene Hola primera (y obligatoria) copia de seguridad.
+> Debe agregar el almacenamiento de copia de seguridad incluso si tiene pensado enviar los datos a Azure. En la arquitectura actual de Azure Backup Server, el almacén de Azure Backup contiene la *segunda* copia de los datos, mientras que el almacenamiento local contiene la primera (y obligatoria) copia de seguridad.
 >
 >
 
 ## <a name="4-network-connectivity"></a>4. Conectividad de red
-Servidor de copia de seguridad de Azure requiere el servicio de copia de seguridad de Azure toohello de conectividad para hello producto toowork correctamente. toovalidate si máquina hello tiene tooAzure de conectividad de hello, usar hello ```Get-DPMCloudConnection``` cmdlet en la consola de servidor de copia de seguridad de Azure PowerShell Hola. Si hello salida del cmdlet de hello es TRUE, a continuación, existe una conexión, lo contrario, no hay conectividad.
+El servidor de Copia de seguridad de Azure requiere conectividad al servicio de Copia de seguridad de Azure para que el producto funcione correctamente. Para validar si la máquina tiene conectividad a Azure, use el cmdlet ```Get-DPMCloudConnection``` en la consola de PowerShell del servidor de Copia de seguridad de Azure. Si la salida del cmdlet es TRUE, entonces existe conectividad, de lo contrario, no hay conectividad.
 
-En hello simultáneamente, Hola suscripción de Azure debe toobe en un estado correcto. toofind el estado de saludo de su suscripción y toomanage lo, inicio de sesión toohello [portal de suscripción](https://account.windowsazure.com/Subscriptions).
+Además, la suscripción de Azure debe encontrarse en un estado correcto. Para averiguar el estado de la suscripción y administrarla, inicie sesión en el [portal de suscripción](https://account.windowsazure.com/Subscriptions).
 
-Una vez que sepa el estado de Hola de hello Azure conectividad y de hello suscripción de Azure, puede usar tabla hello toofind out impacto hello en la funcionalidad de copia de seguridad/restauración de Hola que ofrece.
+Una vez que conozca el estado de la conectividad y suscripción de Azure, puede usar la tabla siguiente para saber el impacto en la funcionalidad de copia de seguridad y restauración que se ofrece.
 
-| Estado de conectividad | Suscripción de Azure | Hacer copia de seguridad tooAzure | Hacer copia de seguridad toodisk | Restauración desde Azure | Restauración desde disco |
+| Estado de conectividad | Suscripción de Azure | Copia de seguridad en Azure | Copia de seguridad en disco | Restauración desde Azure | Restauración desde disco |
 | --- | --- | --- | --- | --- | --- |
 | Conectado |Active |Permitida |Permitida |Permitida |Permitida |
 | Conectado |Expirada |Stopped |Stopped |Permitida |Permitida |
@@ -247,7 +247,7 @@ Una vez que sepa el estado de Hola de hello Azure conectividad y de hello suscri
 | Pérdida de conectividad > 15 días |Desaprovisionada |Stopped |Stopped |Detenida y puntos de recuperación de Azure eliminados |Stopped |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Recuperación de una pérdida de conectividad
-Si tiene un firewall o un proxy que impide el acceso tooAzure, necesita hello toowhitelist después de direcciones de dominio en el perfil de firewall/proxy hello:
+Si tiene un firewall o un proxy que impide el acceso a Azure, deberá permitir primero las siguientes direcciones de dominio en el perfil del firewall/proxy:
 
 * www.msftncsi.com
 * \*.Microsoft.com
@@ -255,22 +255,22 @@ Si tiene un firewall o un proxy que impide el acceso tooAzure, necesita hello to
 * \*.microsoftonline.com
 * \*.windows.net
 
-Una vez conectividad tooAzure ha sido restaurada toohello máquina de servidor de copia de seguridad de Azure, operaciones de Hola que pueden realizarse dependen de hello estado de suscripción de Azure. tabla de Hello anterior incluye detalles acerca de las operaciones de hello permitidas una vez máquina hello es "conectado".
+Una vez restaurada la conectividad a Azure en la máquina de Azure Backup Server, las operaciones que pueden realizarse dependen del estado de la suscripción de Azure. La tabla anterior incluye detalles acerca de las operaciones permitidas una vez que la máquina esté "Conectada".
 
 ### <a name="handling-subscription-states"></a>Control de los estados de la suscripción
-Es posible tootake una suscripción de Azure desde una *expirado* o *Deprovisioned* estado toohello *Active* estado. Sin embargo esto tiene algunas implicaciones en el comportamiento del producto Hola aunque no es el estado de hello *Active*:
+Es posible llevar una suscripción de Azure desde un estado *Expirado* o *Desaprovisionado* hasta un estado *Activo*. Sin embargo, esto tiene algunos efectos sobre el comportamiento del producto mientras el estado no sea *Activo*:
 
-* A *Deprovisioned* suscripción pierde la funcionalidad de período de Hola se desaprovisiona. En cambio *Active*, se restableció la funcionalidad del producto Hola de copia de seguridad/restauración. datos de copia de seguridad de Hello en el disco local de hello también se pueden recuperar si se ha conservado con un período de retención lo suficientemente grande. Sin embargo, se pierden todavía se puede datos de copia de seguridad de hello en Azure una vez Hola entra en hello *Deprovisioned* estado.
-* Una suscripción con estado *Expirado* solo pierde la funcionalidad hasta que pase de nuevo al estado *Activo*. Las copias de seguridad programadas para el período de Hola que Hola suscripción era *expirado* no se ejecutará.
+* Una suscripción con estado *Desaprovisionado* pierde la funcionalidad durante el período en que está desaprovisionada. Al pasar a *Activo*, se reactiva la funcionalidad del producto de copia de seguridad y restauración. Los datos de copia de seguridad del disco local también pueden recuperarse en caso de que se haya mantenido con un período de retención lo suficientemente amplio. No obstante, los datos de copia de seguridad de Azure se pierden irremediablemente una vez que la suscripción pasa al estado *Desaprovisionado* .
+* Una suscripción con estado *Expirado* solo pierde la funcionalidad hasta que pase de nuevo al estado *Activo*. Las copias de seguridad programadas para el período en el que la suscripción tenía el estado *Expirado* no se ejecutarán.
 
 ## <a name="troubleshooting"></a>Solución de problemas
-Si el servidor de copia de seguridad de Microsoft Azure con errores se produce un error durante la fase de la instalación de hello (o copia de seguridad o restauración), consulte toothis [documento de códigos de error](https://support.microsoft.com/kb/3041338) para obtener más información.
-También puede hacer referencia demasiado[preguntas más frecuentes relacionados con la copia de seguridad de Azure](backup-azure-backup-faq.md)
+Si el servidor de Microsoft Azure Backup produce un error durante la fase de instalación (o copia de seguridad o restauración), consulte este [documento de códigos de error](https://support.microsoft.com/kb/3041338) para más información.
+También puede consultar [Azure Backup - Preguntas más frecuentes](backup-azure-backup-faq.md)
 
 ## <a name="next-steps"></a>Pasos siguientes
-También puede obtener información detallada sobre [preparar el entorno para que DPM](https://technet.microsoft.com/library/hh758176.aspx) en el sitio de Microsoft TechNet Hola. También contiene información sobre las configuraciones admitidas en las que se puede implementar y usar Azure Backup Server.
+Para más información sobre la [preparación del entorno para DPM](https://technet.microsoft.com/library/hh758176.aspx) , visite el sitio de Microsoft TechNet. También contiene información sobre las configuraciones admitidas en las que se puede implementar y usar Azure Backup Server.
 
-Puede usar estos toogain artículos una comprensión más profunda de protección de cargas de trabajo usando el servidor de copia de seguridad de Microsoft Azure.
+Puede usar estos artículos para mejorar la comprensión sobre la protección de cargas de trabajo mediante el servidor Microsoft Azure Backup Server.
 
 * [Copia de seguridad de SQL Server](backup-azure-backup-sql.md)
 * [Copia de seguridad de una granja de SharePoint](backup-azure-backup-sharepoint.md)

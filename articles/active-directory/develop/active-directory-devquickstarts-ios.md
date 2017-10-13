@@ -1,6 +1,6 @@
 ---
-title: "aaaIntegrate Azure AD en una aplicación de iOS | Documentos de Microsoft"
-description: "¿Cómo toobuild una aplicación de iOS que se integra con Azure AD para inicio de sesión y llamadas a Azure AD había protegido API mediante OAuth."
+title: "Integrar Azure AD en una aplicación iOS | Microsoft Docs"
+description: "Cómo compilar una aplicación iOS que se integra con Azure AD para el inicio de sesión y llama a las API protegidas de Azure AD mediante OAuth."
 services: active-directory
 documentationcenter: ios
 author: brandwe
@@ -15,76 +15,76 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 6e05745b2b2b122995dcba896ab0f2ed32509e3a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 57f465df99ac234466459b8031f61805d8334b59
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="integrate-azure-ad-into-an-ios-app"></a>Integrar Azure AD en una aplicación iOS
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
 > [!TIP]
-> Probar la versión preliminar de Hola de nuestra nueva [portal para desarrolladores de](https://identity.microsoft.com/Docs/iOS) que le ayuda a ponerse a trabajar con Azure Active Directory en tan solo unos minutos.  portal para desarrolladores de Hello le guía a través del proceso de Hola de registrar una aplicación y la integración de Azure AD en el código.  Cuando haya terminado, tendrá una aplicación sencilla que podrá autenticar a los usuarios del inquilino, así como un back-end con capacidad para aceptar tokens y realizar validaciones. 
+> Pruebe la versión preliminar de nuestro nuevo [portal para desarrolladores](https://identity.microsoft.com/Docs/iOS), que le ayudará a empezar a trabajar con Azure Active Directory en tan solo unos minutos.  El portal para desarrolladores lo guiará a través del proceso de registro de una aplicación y de integración de Azure AD en el código.  Cuando haya terminado, tendrá una aplicación sencilla que podrá autenticar a los usuarios del inquilino, así como un back-end con capacidad para aceptar tokens y realizar validaciones. 
 > 
 > 
 
-Azure Active Directory (Azure AD) proporciona Hola biblioteca de autenticación de Active Directory o AAL, para los clientes de iOS que necesitan tooaccess los recursos protegidos. AAL simplifica el proceso de Hola que su aplicación usa los tokens de acceso tooobtain. toodemonstrate lo fácil es, en este artículo se compila una aplicación de lista de tareas pendientes de C de objetivo que:
+Azure Active Directory (Azure AD) proporciona la biblioteca de autenticación de Active Directory (ADAL) para los clientes de iOS que necesitan tener acceso a recursos protegidos. ADAL simplifica el proceso que la aplicación usa para obtener tokens de acceso. Para demostrar lo fácil que es, en este artículo compilaremos una aplicación Objective-C de lista de tareas pendientes que permita realizar lo siguiente:
 
-* Obtiene acceso para llamar a API de Azure AD Graph hello mediante el uso de hello [protocolo de autenticación de OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx).
+* Obtiene tokens de acceso para llamar a la API Graph de Azure AD mediante el [protocolo de autenticación OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx).
 * Buscar un directorio para los usuarios con un alias determinado
 
-aplicación toobuild Hola completa trabajo, debe:
+Para compilar la aplicación de trabajo completa, debe realizar estas acciones:
 
 1. Registrar la aplicación con Azure AD
 2. Instalar y configurar ADAL.
-3. Usar AAL tooget tokens de Azure AD.
+3. Usar ADAL para obtener tokens de Azure AD.
 
-tooget iniciado, [descargar esqueleto de aplicación Hola](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/skeleton.zip) o [Descargar ejemplo Hola completado](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip). También necesita a un inquilino de Azure AD en el que pueda crear usuarios y registrar una aplicación. Si aún no tiene un inquilino, [Obtenga información acerca de cómo tooget uno](active-directory-howto-tenant.md).
+Para empezar, [descargue el esquema de la aplicación](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/skeleton.zip) o [descargue el ejemplo finalizado](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip). También necesita a un inquilino de Azure AD en el que pueda crear usuarios y registrar una aplicación. Si aún no tiene un inquilino, [descubra cómo conseguir uno](active-directory-howto-tenant.md).
 
 
 > [!TIP]
-> Probar la versión preliminar de Hola de nuestra nueva [portal para desarrolladores de](https://identity.microsoft.com/Docs/iOS) que le ayuda a ponerse en marcha con Azure AD en tan solo unos minutos. portal para desarrolladores de Hello le guía a través del proceso de Hola de registrar una aplicación y la integración de Azure AD en el código. Cuando haya terminado, tendrá una aplicación sencilla que podrá autenticar a los usuarios del inquilino, así como un back-end con capacidad para aceptar tokens y realizar validaciones. 
+> Pruebe la versión preliminar de nuestro nuevo [portal para desarrolladores](https://identity.microsoft.com/Docs/iOS), que le ayudará a empezar a trabajar con Azure AD en tan solo unos minutos. El portal para desarrolladores lo guiará a través del proceso de registro de una aplicación y de integración de Azure AD en el código. Cuando haya terminado, tendrá una aplicación sencilla que podrá autenticar a los usuarios del inquilino, así como un back-end con capacidad para aceptar tokens y realizar validaciones. 
 > 
 > 
 
 ## <a name="1-determine-what-your-redirect-uri-is-for-ios"></a>1. Determinación de cuál es el URI de redireccionamiento para iOS
-toosecurely iniciar las aplicaciones en ciertos escenarios SSO, debe crear un *URI de redireccionamiento* en un formato determinado. Una redirección URI es tooensure usado que Hola tokens toohello devuelto correcta aplicación que solicitó para ellos.
+Para iniciar de forma segura sus aplicaciones en ciertos escenarios SSO, es necesaria la creación de un *URI de redireccionamiento* en un formato determinado. Se usa un URI de redireccionamiento para garantizar que los tokens se devuelven a la aplicación correcta que los solicitó.
 
 
-formato de iOS de Hello en una redirección URI es:
+El formato de iOS para un URI de redireccionamiento es:
 
 ```
 <app-scheme>://<bundle-id>
 ```
 
 * **aap-scheme**: está registrado en el proyecto de XCode. Es el modo en que otras aplicaciones pueden llamarlo. Puede encontrarlo en Info.plist -> Tipos de URL -> Identificador de URL. Debe crear uno si aún no tiene ninguno configurado.
-* **identificador de paquete** -esto es hello bajo "identidad" se encuentra el identificador de paquete anula la configuración del proyecto en XCode.
+* **bundle-id** : es el identificador de paquete que se encuentra en la "identity" de la configuración del proyecto en XCode.
 
 Ejemplo de este código de inicio rápido: ***msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart***.
 
-## <a name="2-register-hello-directorysearcher-application"></a>2. Registrar aplicación de DirectorySearcher hello
-tooset seguridad sus tokens de tooget de aplicación, primero debe tooregister en Azure AD de inquilinos y otórguele Hola de permiso tooaccess API de Azure AD Graph:
+## <a name="2-register-the-directorysearcher-application"></a>2. Registro de la aplicación DirectorySearcher
+Para configurar la aplicación para que obtenga tokens, primero debe registrarla en su inquilino de Azure AD y concederle permiso de acceso a la API de Azure AD Graph:
 
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
-2. En la barra superior de hello, haga clic en su cuenta. En hello **Directory** lista, seleccione la aplicación de inquilino de Active Directory de Hola donde desea tooregister.
-3. Haga clic en **más servicios** en Hola panel de navegación izquierda y, a continuación, seleccione **Azure Active Directory**.
+1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
+2. En la barra superior, haga clic en su cuenta. En la lista **Directorio** lista, elija el inquilino de Active Directory donde desea registrar la aplicación.
+3. Haga clic en **Más servicios** en el panel de navegación izquierdo y seleccione **Azure Active Directory**.
 4. Haga clic en **Registros de aplicaciones** y seleccione **Agregar**.
-5. Siga Hola solicita toocreate un nuevo **aplicación cliente nativa**.
-  * Hola **nombre** de hello aplicación describe los usuarios de tooend de aplicación.
-  * Hola **Uri de redireccionamiento** es una combinación de esquema y la cadena que Azure AD usa tooreturn token respuestas.  Escriba un valor que es específico tooyour aplicación y se basa en información del identificador URI de redireccionamiento anterior de Hola.
-6. Después de haber completado el registro de hello, Azure AD le asigna la aplicación un identificador de aplicación único.  Necesitará este valor en las secciones siguientes de hello, por lo tanto cópiela desde la pestaña de la aplicación hello.
-7. De hello **configuración** página, seleccione **permisos necesarios** y, a continuación, seleccione **agregar**. Seleccione **Microsoft Graph** como Hola API y, a continuación, agregue hello **leer datos de directorio** permiso en **permisos delegados**.  Esta acción configura la Hola de tooquery aplicación API de Azure AD Graph para los usuarios.
+5. Siga las indicaciones para crear una nueva **aplicación cliente nativa**.
+  * El **nombre** de la aplicación describe la aplicación a los usuarios finales.
+  * El **URI de redireccionamiento** es una combinación de esquema y cadena que Azure AD usa para devolver respuestas de tokens.  Escriba un valor que sea específico de la aplicación y que se base en la información del anterior URI de redireccionamiento.
+6. Después de haber completado el registro, Azure AD le asigna a la aplicación un identificador de aplicación único.  Necesitará este valor en las secciones siguientes, así que cópielo de la pestaña de la aplicación.
+7. En la página **Configuración**, seleccione **Permisos necesarios** y **Agregar**. Seleccione **Microsoft Graph** como API y agregue el permiso **Leer datos de directorio** en **Permisos delegados**.  Esto configura la aplicación de modo que consulte la API Graph de Azure AD para los usuarios.
 
 ## <a name="3-install-and-configure-adal"></a>3. Instalación y configuración de ADAL
-Ahora que tiene una aplicación en Azure AD, puede instalar ADAL y escribir el código relacionado con la identidad.  Para obtener toocommunicate ADAL con Azure AD, deberá tooprovide con cierta información sobre el registro de aplicación.
+Ahora que tiene una aplicación en Azure AD, puede instalar ADAL y escribir el código relacionado con la identidad.  Para que ADAL se comunique con Azure AD, hay que proporcionarle información sobre el registro de la aplicación.
 
-1. Comienza agregando toohello AAL DirectorySearcher proyecto mediante el uso de CocoaPods.
+1. Comience agregando ADAL al proyecto de DirectorySearcher mediante CocoaPods.
 
     ```
     $ vi Podfile
     ```
-2. Agregue Hola después toothis podfile:
+2. Agregue lo siguiente a este podfile:
 
     ```
     source 'https://github.com/CocoaPods/Specs.git'
@@ -94,7 +94,7 @@ Ahora que tiene una aplicación en Azure AD, puede instalar ADAL y escribir el c
     pod 'ADALiOS'
     ```
 
-3. Ahora cargue hello podfile utilizando CocoaPods. Mediante este paso se crea un área de trabajo de XCode que cargará.
+3. Cargue el archivo podfile mediante CocoaPods. Mediante este paso se crea un área de trabajo de XCode que cargará.
 
     ```
     $ pod install
@@ -102,15 +102,15 @@ Ahora que tiene una aplicación en Azure AD, puede instalar ADAL y escribir el c
     $ open QuickStart.xcworkspace
     ```
 
-4. En proyecto de inicio rápido de hello, abra el archivo plist de hello `settings.plist`.  Reemplace los valores de hello de elementos de Hola de hello sección tooreflect Hola valores especificados en hello portal de Azure. El código hace referencia a estos valores cada vez que usa ADAL.
-  * Hola `tenant` es Hola dominio del inquilino de Azure AD, por ejemplo, contoso.onmicrosoft.com.
-  * Hola `clientId` es Hola Id. de cliente de la aplicación que ha copiado desde el portal de Hola.
-  * Hola `redirectUri` es la dirección URL de redireccionamiento de Hola que registró en el portal de Hola.
+4. En el proyecto QuickStart, abra el archivo plist `settings.plist`.  Reemplace los valores de los elementos de la sección de modo que reflejen los especificados en Azure Portal. El código hace referencia a estos valores cada vez que usa ADAL.
+  * `tenant` es el dominio del inquilino de Azure AD, por ejemplo, contoso.onmicrosoft.com.
+  * `clientId` es el identificador de cliente de la aplicación que copió del portal.
+  * `redirectUri` es la URL de redireccionamiento que ha registrado en el portal.
 
-## <a name="4----use-adal-tooget-tokens-from-azure-ad"></a>4.    Usar AAL tooget tokens de Azure AD
-Hello principio básico detrás de AAL es que cada vez que la aplicación necesita un token de acceso, simplemente llama un completionBlock `+(void) getToken : `, y AAL Hola rest.  
+## <a name="4----use-adal-to-get-tokens-from-azure-ad"></a>4.    Uso de ADAL para obtener tokens de Azure AD
+El principio básico inherente a ADAL es que cada vez que la aplicación necesita un token de acceso, simplemente llama a un completionBlock `+(void) getToken : ` y ADAL se encarga del resto.  
 
-1. Hola `QuickStart` proyecto abierto `GraphAPICaller.m` y busque hello `// TODO: getToken for generic Web API flows. Returns a token with no additional parameters provided.` comentario cerca de la parte superior de Hola.  Aquí es donde pasan coordenadas Hola AAL a través de un CompletionBlock, toocommunicate con Azure AD y le diga cómo toocache símbolos (tokens).
+1. En el proyecto `QuickStart`, abra `GraphAPICaller.m` y busque el comentario `// TODO: getToken for generic Web API flows. Returns a token with no additional parameters provided.` en la parte superior.  Este es el lugar en el que se pasan a ADAL mediante CompletionBlock las coordenadas necesarias para comunicarse con Azure AD e indicarle cómo almacenar en caché los tokens.
 
     ```ObjC
     +(void) getToken : (BOOL) clearCache
@@ -134,7 +134,7 @@ Hello principio básico detrás de AAL es que cada vez que la aplicación necesi
                                   redirectUri:redirectUri
                                promptBehavior:AD_PROMPT_AUTO
                                        userId:data.userItem.userInformation.userId
-                        extraQueryParameters: @"nux=1" // if this strikes you as strange it was legacy toodisplay hello correct mobile UX. You most likely won't need it in your code.
+                        extraQueryParameters: @"nux=1" // if this strikes you as strange it was legacy to display the correct mobile UX. You most likely won't need it in your code.
                              completionBlock:^(ADAuthenticationResult *result) {
 
                                   if (result.status != AD_SUCCEEDED)
@@ -151,7 +151,7 @@ Hello principio básico detrás de AAL es que cada vez que la aplicación necesi
 
     ```
 
-2. Ahora necesitamos toouse este token toosearch para los usuarios en el gráfico de Hola. Buscar hello `// TODO: implement SearchUsersList` comentario. Este método realiza una tooquery de toohello Azure AD Graph API de solicitud GET para los usuarios cuyo UPN comienza con hello dado el término de búsqueda.  tooquery hello Azure AD Graph API, deberá tooinclude un access_token Hola `Authorization` encabezado de solicitud de saludo. Aquí es donde entra en juego AAL.
+2. Ahora tenemos que utilizar este token para buscar usuarios en el gráfico. Busque el comentario `// TODO: implement SearchUsersList`. Este método realiza una solicitud GET a la API Graph de Azure AD para realizar una consulta sobre los usuarios cuyo UPN comienza con el término de búsqueda especificado.  Para realizar una consulta a la API Graph de Azure AD, tiene que incluir un access_token en el encabezado `Authorization` de la solicitud. Aquí es donde entra en juego AAL.
 
     ```ObjC
     +(void) searchUserList:(NSString*)searchString
@@ -186,10 +186,10 @@ Hello principio básico detrás de AAL es que cada vez que la aplicación necesi
 
                          NSDictionary *dataReturned = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 
-                         // We can grab hello JSON node at hello top tooget our graph data.
+                         // We can grab the JSON node at the top to get our graph data.
                          NSArray *graphDataArray = [dataReturned objectForKey:@"value"];
 
-                         // Don't be thrown off by hello key name being "value". It really is hello name of the
+                         // Don't be thrown off by the key name being "value". It really is the name of the
                          // first node. :-)
 
                          // Each object is a key value pair
@@ -223,25 +223,25 @@ Hello principio básico detrás de AAL es que cada vez que la aplicación necesi
     ```
 
 
-3. Cuando la aplicación solicita un token mediante una llamada a `getToken(...)`, AAL intenta tooreturn un token sin pedir las credenciales de usuario de Hola.  Si AAL determina que el usuario hello toosign en tooget un token es necesario, mostrar un cuadro de diálogo de inicio de sesión, recopilar las credenciales de usuario de hello y, a continuación, devuelve un token después de una autenticación correcta.  Si AAL no es capaz de tooreturn un token por cualquier motivo, produce un `AdalException`.
+3. Cuando la aplicación llama a `getToken(...)` para solicitar un token, ADAL intenta devolver uno sin pedir credenciales al usuario.  Si ADAL determina que el usuario debe iniciar sesión para obtener un token, mostrará un cuadro de diálogo de inicio de sesión, recopilará las credenciales del usuario y devolverá un token tras una autenticación correcta.  Si ADAL no puede devolver un token por alguna razón, mostrará una `AdalException`.
 
 > [!Note] 
-> Hola `AuthenticationResult` objeto contiene un `tokenCacheStoreItem` objeto que puede ser usado toocollect Hola información que necesite la aplicación. Hola de inicio rápido, `tokenCacheStoreItem` es toodetermine usado si ya se realiza la autenticación.
+> El objeto `AuthenticationResult` contiene un objeto `tokenCacheStoreItem` que puede usarse para recopilar información que puede necesitar la aplicación. En QuickStart, `tokenCacheStoreItem` se usa para determinar si ya se ha producido la autenticación.
 >
 >
 
-## <a name="5-build-and-run-hello-application"></a>5. Compilar y ejecutar la aplicación hello
-¡Enhorabuena! Ahora tiene una aplicación de iOS de trabajo que puede autenticar a los usuarios, seguro llamar a las API Web mediante OAuth 2.0 y obtener información básica acerca del usuario de Hola.  Si no lo ha hecho ya, ahora es Hola tiempo toopopulate el inquilino con algunos usuarios.  Inicie la aplicación QuickStart e inicie sesión con uno de esos usuarios.  Busque otros usuarios según su UPN.  Cierre la aplicación hello y, a continuación, vuelva a abrirlo.  Tenga en cuenta que la sesión del usuario de hello permanece intacta.
+## <a name="5-build-and-run-the-application"></a>5. Compilación y ejecución de la aplicación
+¡Enhorabuena! Ahora tiene una aplicación de iOS operativa que puede autenticar usuarios, realizar llamadas seguras a las API web mediante OAuth 2.0 y obtener información básica sobre el usuario.  Si todavía no lo ha hecho, ahora es el momento de completar el inquilino con algunos usuarios.  Inicie la aplicación QuickStart e inicie sesión con uno de esos usuarios.  Busque otros usuarios según su UPN.  Cierre la aplicación y vuelva a abrirla.  Observe que la sesión del usuario permanece intacta.
 
-AAL resulta fácil tooincorporate todas estas características de identidad comunes en la aplicación.  Se encarga de todo el trabajo dirty Hola para usted, como la administración de memoria caché, compatibilidad con protocolos de OAuth, presentaciones usuario Hola con un toosign de interfaz de usuario en y actualizar tokens caducados.  Todo lo que realmente necesita tooknow es una sola llamada API, `getToken`.
+ADAL facilita la incorporación de todas estas características comunes de identidad en la aplicación.  Hace el trabajo sucio por usted: administración en caché, compatibilidad con el protocolo OAuth, presentación al usuario de una interfaz de usuario de inicio de sesión y actualización de tokens expirados.  Todo lo que necesita saber es una única llamada de API, `getToken`.
 
-Como referencia, ejemplo de Hola finalizado (sin los valores de configuración) se proporciona en [GitHub](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip).  
+Como referencia, en [GitHub](https://github.com/AzureADQuickStarts/NativeClient-iOS/archive/complete.zip) puede ver el ejemplo finalizado (sin sus valores de configuración).  
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora puede mover en escenarios de tooadditional.  Puede que desee tootry:
+Ahora puede pasar a otros escenarios.  También puede probar lo siguiente:
 
 * [Proteger una API web de Node.js con Azure AD](active-directory-devquickstarts-webapi-nodejs.md)
-* Obtenga información acerca de [cómo tooenable SSO de aplicación cruzado en iOS mediante AAL](active-directory-sso-ios.md)  
+* Obtener información sobre [cómo habilitar el inicio de sesión único entre aplicaciones en iOS mediante ADAL](active-directory-sso-ios.md)  
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
 

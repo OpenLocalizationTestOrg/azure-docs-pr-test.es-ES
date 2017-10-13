@@ -1,6 +1,6 @@
 ---
-title: "Introducción de plantilla de licencia de PlayReady de los servicios de aaaMedia"
-description: "En este tema se ofrece una visión general de una plantilla de licencia de PlayReady que usa tooconfigure licencias de PlayReady."
+title: "Información general de plantillas de licencias de PlayReady de Media Services"
+description: "En este tema se ofrece información general sobre la plantilla de licencia de PlayReady que se usó para configurar las licencias de PlayReady."
 author: juliako
 manager: cfowler
 editor: 
@@ -14,33 +14,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.openlocfilehash: 5a5ba930c56f70038db204681486ebc4308199fa
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: be19f616e36916655390cd05e738e93c08dcdf68
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="media-services-playready-license-template-overview"></a>Información general de plantillas de licencias de PlayReady de Media Services
-Servicios multimedia de Azure proporciona un servicio para entregar licencias de Microsoft PlayReady. Cuando el Reproductor del usuario final hello (por ejemplo, Silverlight) intenta tooplay contenido protegido con la PlayReady, una solicitud es enviado toohello licencia entrega servicio tooobtain una licencia. Si el servicio de licencias de hello aprueba la solicitud de hello, que emite la licencia de Hola que es enviado toohello cliente y puede ser usado toodecrypt y play Hola contenido especificado.
+Servicios multimedia de Azure proporciona un servicio para entregar licencias de Microsoft PlayReady. Cuando el reproductor del usuario final (por ejemplo, Silverlight) intenta reproduce el contenido protegido de PlayReady, se envía una solicitud al servicio de entrega de licencias para obtener una licencia. Si el servicio de licencia aprueba la solicitud, emite la licencia, la que se envía al cliente y se puede usar para descifrar y reproducir el contenido especificado.
 
-Servicios multimedia también proporciona API que permiten configurar sus licencias de PlayReady. Las licencias contienen los derechos de Hola y restricciones que desea para hello tooenforce en tiempo de ejecución de DRM de PlayReady cuando un usuario trate de tooplayback contenido protegido.
+Servicios multimedia también proporciona API que permiten configurar sus licencias de PlayReady. Las licencias contienen los derechos y restricciones que desea para el tiempo de ejecución de DRM de PlayReady con la finalidad de hacer respetar los requisitos cuando un usuario intenta reproducir contenido protegido.
 A continuación se muestran algunos ejemplos de restricciones de licencia de PlayReady que puede especificar:
 
-* fecha y hora de Hola desde qué Hola licencia es válida.
-* valor de fecha y hora cuando expira la licencia de Hola Hola. 
-* Para toobe de licencia de hello guardada en un almacenamiento persistente en el cliente de Hola. Las licencias persistentes son utilizados normalmente tooallow sin conexión reproducción de contenido de Hola.
-* Hola nivel mínimo de seguridad que debe tener un reproductor tooplay su contenido. 
-* Hola de salida de nivel de protección para los controles de salida de hello para el contenido de audio/vídeo. 
-* Para obtener más información, vea controles de salida de hello (3.5) hello en la sección [reglas de compatibilidad de PlayReady](https://www.microsoft.com/playready/licensing/compliance/) documento.
+* Fecha y hora desde la que la licencia es válida.
+* Fecha y hora cuando caduca la licencia. 
+* Para que la licencia se guarde en un almacenamiento persistente en el cliente. Las licencias permanentes se usan normalmente para permitir la reproducción sin conexión de contenido.
+* El nivel de seguridad mínimo que debe tener un reproductor para reproducir contenido. 
+* El nivel de protección de salida de los controles de salida para el contenido de audio y video. 
+* Para obtener más información, consulte la sección Controles de salida (3.5) en el documento [Reglas de cumplimiento normativo de PlayReady](https://www.microsoft.com/playready/licensing/compliance/) .
 
 > [!NOTE]
-> Actualmente, solo se puede configurar hello PlayRight de licencia de PlayReady de hello (este derecho es necesario). Hola PlayRight le ofrece a cliente hello contenido de hello capacidad tooplayback Hola. Hola PlayRight también permite configurar restricciones específicas tooplayback. Para obtener más información, consulte [PlayReadyPlayRight](media-services-playready-license-template-overview.md#PlayReadyPlayRight).
+> Actualmente, solo puede configurar el derecho de reproducción PlayRight de la licencia de PlayReady (este derecho es necesario). PlayRight da al cliente la capacidad para reproducir el contenido. PlayRight también permite configurar restricciones específicas para la reproducción. Para obtener más información, consulte [PlayReadyPlayRight](media-services-playready-license-template-overview.md#PlayReadyPlayRight).
 > 
 > 
 
-tooconfigure licencias de PlayReady con servicios multimedia, debe configurar la plantilla de licencia de PlayReady de servicios multimedia de Hola. plantilla de Hola se define en XML.
+Para configurar licencias de PlayReady con Servicios multimedia, debe configurar la plantilla de licencias de PlayReady de Servicios multimedia. La plantilla se define en XML.
 
-Hello en el ejemplo siguiente se muestra hello más sencilla (y más común) plantilla que configura una licencia básica de transmisión por secuencias. Con esta licencia, los clientes sería capaz de tooplayback contenido protegido con la PlayReady.
+En el ejemplo siguiente se muestra la plantilla más sencilla (y común) que configura una licencia básica de streaming. Con esta licencia, los clientes podrán reproducir contenido protegido con PlayReady.
 
     <?xml version="1.0" encoding="utf-8"?>
     <PlayReadyLicenseResponseTemplate xmlns:i="http://www.w3.org/2001/XMLSchema-instance" 
@@ -53,30 +53,30 @@ Hello en el ejemplo siguiente se muestra hello más sencilla (y más común) pla
       </LicenseTemplates>
     </PlayReadyLicenseResponseTemplate>
 
-Hola XML cumple el esquema toohello PlayReady licencia plantilla XML definido en la plantilla de licencia de PlayReady de hello sección de esquema XML.
+El código XML se ajusta al esquema XML de la plantilla de licencias de PlayReady definido en la sección de esquema XML de la plantilla de licencias de PlayReady.
 
-Servicios multimedia también define un conjunto de clases de .NET que puede ser usado tooserialized y tooand deserializado de hello XML. Para obtener una descripción de las clases principales, vea [Clases .NET de Media Services](media-services-playready-license-template-overview.md#classes). que son plantillas de licencia de uso tooconfigure.
+Servicios multimedia también define un conjunto de clases de .NET que podría usarse para serializar y deserializar hacia y desde XML. Para obtener una descripción de las clases principales, vea [Clases .NET de Media Services](media-services-playready-license-template-overview.md#classes). que se usan para configurar las plantillas de licencia.
 
-Para un ejemplo de extremo a extremo que utiliza .NET clases de plantilla de licencia de PlayReady tooconfigure hello, consulte [usar cifrado dinámico PlayReady y del servicio de entrega de licencias](media-services-protect-with-drm.md).
+Para ver un ejemplo completo que usa clases .NET para configurar la plantilla de licencia de PlayReady, consulte [Uso del cifrado dinámico de PlayReady y servicio de entrega de licencias](media-services-protect-with-drm.md).
 
-## <a id="classes"></a>Clases de .NET de los servicios multimedia son plantillas de licencia de uso tooconfigure
-siguiente Hola es clases .NET principales de hello son plantillas de licencia de PlayReady de servicios multimedia de tooconfigure usado. Estas clases asignan los tipos de toohello definidos en [esquema XML de plantilla de licencia de PlayReady](media-services-playready-license-template-overview.md#schema).
+## <a id="classes"></a>Clases .NET de Servicios multimedia que se usan para configurar las plantillas de licencia
+Las siguientes son las clases principales de .NET se usan para configurar las plantillas de licencia de PlayReady de Servicios multimedia. Estas clases se asignan a los tipos definidos en [Esquema XML de plantilla de licencia de PlayReady](media-services-playready-license-template-overview.md#schema).
 
-Hola [MediaServicesLicenseTemplateSerializer](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.mediaserviceslicensetemplateserializer.aspx) clase es tooserialize usado y deserializar tooand de plantilla de licencia de servicios multimedia de hello XML.
+La clase [MediaServicesLicenseTemplateSerializer](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.mediaserviceslicensetemplateserializer.aspx) se usa para serializar y deserializar hacia y desde el código XML de la plantilla de licencia de Servicios multimedia.
 
 ### <a name="playreadylicenseresponsetemplate"></a>PlayReadyLicenseResponseTemplate
-[PlayReadyLicenseResponseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicenseresponsetemplate.aspx) -esta clase representa la plantilla de hello para la respuesta de hello envía toohello back-end usuario. Contiene un campo de una cadena de datos personalizados entre el servidor de licencias de Hola y la aplicación hello (pueden ser útiles para la lógica de aplicación personalizada), así como una lista de uno o más plantillas de licencia.
+[PlayReadyLicenseResponseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicenseresponsetemplate.aspx) : esta clase representa la plantilla para la respuesta que se devuelve al usuario final. Contiene un campo para una cadena de datos personalizada entre el servidor de licencias y la aplicación (puede ser útil para la lógica de aplicación personalizada), así como una lista de una o más plantillas de licencia.
 
-Se trata de clase de "nivel superior" hello en la jerarquía de plantillas de Hola. Lo que significa que la plantilla de respuesta de hello incluye una lista de plantillas de licencia y plantillas de licencia de hello incluyen (directa o indirectamente) todos Hola otras clases que constituyen Hola plantilla datos toobe serializado.
+Esta es la clase de "nivel superior" en la jerarquía de plantillas. Lo que significa que la plantilla de respuesta incluye una lista de plantillas de licencia y las plantillas de licencia incluyen (directa o indirectamente) todas las demás clases que conforman los datos de la plantilla que se va a serializar.
 
 ### <a name="playreadylicensetemplate"></a>PlayReadyLicenseTemplate
-[PlayReadyLicenseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicensetemplate.aspx) -clase hello representa una plantilla de licencia para crear toobe de licencias de PlayReady devuelve los usuarios finales de toohello. Contiene datos de tipo hello en la clave de contenido de hello en licencias de Hola y cualquier toobe derechos o restricciones exige hello en tiempo de ejecución de DRM de PlayReady al usar la clave de contenido de Hola.
+[PlayReadyLicenseTemplate](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadylicensetemplate.aspx) : la clase representa una plantilla de licencia para crear licencias de PlayReady que se devuelven a los usuarios finales. Contiene los datos de la clave de contenido de la licencia y los derechos o restricciones que el tiempo de ejecución DRM de PlayReady debe aplicar cuando use la clave de contenido.
 
 ### <a id="PlayReadyPlayRight"></a>PlayReadyPlayRight
-[PlayReadyPlayRight](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadyplayright.aspx) -esta clase representa hello PlayRight de una licencia de PlayReady. Concede Hola usuario Hola capacidad tooplayback Hola contenido sujeto toohello cero o más restricciones configuradas en la licencia de Hola y en hello PlayRight (para reproducir una directiva específica). Gran parte de la directiva de hello en hello PlayRight tiene toodo con las restricciones de salida que controlan Hola tipos de salidas que puede reproducirse el contenido de Hola y las restricciones que se deben incluir en su lugar al usar una salida específica. Por ejemplo, si se habilita DigitalVideoOnlyContentRestriction, el Hola Hola, a continuación, en tiempo de ejecución DRM solo permitirá hello toobe vídeo muestre en salidas digitales (salidas de vídeo analógicas no podrán contenido de hello toopass).
+[PlayReadyPlayRight](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadyplayright.aspx) : esta clase representa el derecho PlayRight de una licencia de PlayReady. Concede al usuario la capacidad de reproducir contenido sujeto a las restricciones configuradas en la licencia y en el propio derecho PlayRight (para la directiva de reproducción específica). En lo referente a PlayRight, gran parte de la directiva tiene que ver con las restricciones de salida que controlan los tipos de salida sobre los que se puede reproducir el contenido y las restricciones que se deben aplicar cuando se usa una salida determinada. Por ejemplo, si DigitalVideoOnlyContentRestriction está habilitada, el tiempo de ejecución DRM solo permitirá que el vídeo se muestre mostrarse en salidas digitales (las salidas de vídeo analógicas no podrán pasar el contenido).
 
 > [!IMPORTANT]
-> Estos tipos de restricciones pueden ser muy eficaces, pero también pueden afectar a la experiencia del consumidor Hola. Si las protecciones de salida de hello están configuradas demasiado restrictiva, contenido de hello podría no reproducirse en algunos clientes. Para obtener más información, vea hello [reglas de compatibilidad de PlayReady](https://www.microsoft.com/playready/licensing/compliance/) documento.
+> Estos tipos de restricciones pueden ser muy eficaces, pero también pueden afectar a la experiencia del consumidor. Si las protecciones de salida son demasiado restrictivas, puede que el contenido no se reproduzca en algunos clientes. Para más información, consulte el documento [PlayReady Compliance Rules](https://www.microsoft.com/playready/licensing/compliance/) .
 > 
 > 
 

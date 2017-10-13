@@ -1,5 +1,5 @@
 ---
-title: "directrices de ajuste del rendimiento de aaaAzure aluvión de almacén de datos Lake | Documentos de Microsoft"
+title: "Guía para la optimización del rendimiento de Azure Data Lake Store | Microsoft Docs"
 description: "Guía para la optimización del rendimiento de Azure Data Lake Store"
 services: data-lake-store
 documentationcenter: 
@@ -14,129 +14,129 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 5412fd46cf2373f5877030913df4fe1fc6f5473a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 1dfa93643f45a96ded3fd022aa8b1c71d487acb4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-store"></a>Guía para la optimización del rendimiento de Storm en HDInsight y Azure Data Lake Store
 
-Entender los factores de Hola que deben tenerse en cuenta al optimizar el rendimiento de Hola de una topología de aluvión de Azure. Por ejemplo, es importante toounderstand características de Hola de trabajo de Hola Hola spouts y tornillos hello (si el trabajo de hello está intensivo de memoria o E/S). En este artículo se describen varias directrices de optimización del rendimiento y se incluyen soluciones a problemas comunes.
+Esta guía le ayuda a comprender los factores que se deben tener en cuenta al optimizar el rendimiento de una topología de Azure Storm. Por ejemplo, es importante comprender las características del trabajo realizado por los spouts y los bolts (si el trabajo hace un uso intensivo de memoria o E/S). En este artículo se describen varias directrices de optimización del rendimiento y se incluyen soluciones a problemas comunes.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
 * **Una suscripción de Azure**. Vea [Obtener evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Una cuenta de Almacén de Azure Data Lake**. Para obtener instrucciones sobre cómo toocreate un, consulte [empezar a trabajar con el almacén de Azure Data Lake](data-lake-store-get-started-portal.md).
-* **Un clúster de HDInsight de Azure** con acceso tooa cuenta de almacén de Data Lake. Consulte [Creación de un clúster de HDInsight con Data Lake Store mediante el Portal de Azure](data-lake-store-hdinsight-hadoop-use-portal.md). Asegúrese de que habilitar Escritorio remoto para el clúster de Hola.
+* **Una cuenta de Almacén de Azure Data Lake**. Para obtener instrucciones sobre cómo crear una, consulte la [introducción a Azure Data Lake Store](data-lake-store-get-started-portal.md).
+* **Clúster de Azure HDInsight** con acceso a una cuenta de Data Lake Store. Consulte [Creación de un clúster de HDInsight con Data Lake Store mediante el Portal de Azure](data-lake-store-hdinsight-hadoop-use-portal.md). Asegúrese de habilitar el Escritorio remoto para el clúster.
 * **Ejecución de un clúster de Storm en Data Lake Store**. Para más información, consulte [Storm en HDInsight](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-storm-overview).
 * **Guía para la optimización del rendimiento en Data Lake Store**.  Para conocer los conceptos generales sobre rendimiento, consulte [Guía para la optimización del rendimiento de Data Lake Store](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-performance-tuning-guidance).  
 
-## <a name="tune-hello-parallelism-of-hello-topology"></a>Optimizar el paralelismo de Hola de topología de Hola
+## <a name="tune-the-parallelism-of-the-topology"></a>Ajuste del paralelismo de la topología
 
-Es posible que pueda tooimprove rendimiento por la simultaneidad de hello creciente de hello tooand de E/S de almacén de Data Lake. Una topología de Storm tiene un conjunto de configuraciones que determinan el paralelismo de hello:
-* Número de procesos de trabajo (trabajadores de Hola se distribuyen uniformemente entre las máquinas virtuales de hello).
+Es posible que pueda mejorar el rendimiento si aumenta la simultaneidad de E/S hacia y desde Data Lake Store. Una topología de Storm tiene un conjunto de configuraciones que determinan el paralelismo:
+* Número de procesos de trabajo: los trabajos se distribuyen uniformemente entre las máquinas virtuales
 * Número de instancias de ejecutor de spout
 * Número de instancias de ejecutor de bolt
 * Número de tareas de spout
 * Número de tareas de bolt
 
-Por ejemplo, en un clúster con 4 VM y 4 procesos de trabajo, ejecutor pitorro 32 y 32 pitorro tareas y 256 ejecutor de rayo y tareas de rayo 512, tenga en cuenta Hola siguiente:
+Por ejemplo, en un clúster con 4 máquinas virtuales y 4 procesos de trabajo, 32 ejecutores de spout, 32 tareas de spout, 256 ejecutores de bolt y 512 tareas de bolt, tenga en cuenta lo siguiente:
 
-Cada supervisor, que es un nodo de trabajo, tiene un solo proceso de trabajo de máquina virtual Java (JVM). Este proceso de JVM administra 4 subprocesos de spout y 64 subprocesos de bolt. Dentro de cada subproceso, las tareas se ejecutan secuencialmente. Con hello anterior configuración, cada subproceso pitorro tiene 1 tarea y, cada subproceso de rayo tiene 2 tareas.
+Cada supervisor, que es un nodo de trabajo, tiene un solo proceso de trabajo de máquina virtual Java (JVM). Este proceso de JVM administra 4 subprocesos de spout y 64 subprocesos de bolt. Dentro de cada subproceso, las tareas se ejecutan secuencialmente. Con la configuración anterior, cada subproceso de spout tiene 1 tarea y cada subproceso de bolt tiene 2 tareas.
 
-En Storm, presentamos Hola diversos componentes implicados y cómo afectan al nivel de Hola de paralelismo que tiene:
-* Hola y nodo principal (llamado Nimbus en Storm) usado toosubmit administrar trabajos. Estos nodos tienen ningún impacto en el grado de paralelismo Hola.
-* nodos de supervisor de Hola. En HDInsight, esto corresponde el nodo de trabajo tooa máquina virtual de Azure.
-* tareas del trabajador Hola son procesos de Storm que se ejecutan en máquinas virtuales de Hola. Cada tarea de trabajo corresponde la instancia JVM tooa. Storm distribuye número Hola de procesos de trabajo especificar nodos de trabajador toohello lo más uniformemente posible.
-* Instancias de ejecutor de bolt y spout. Cada instancia del ejecutor corresponde tooa subproceso que se ejecuta dentro de los trabajadores de hello (JVMs).
-* Tareas de Storm. Son tareas lógicas que ejecuta cada uno de estos subprocesos. Esto no cambia el nivel de Hola de paralelismo, por lo que se debe evaluar si tiene varias tareas por ejecutor o no.
+En Storm, estos son los diversos componentes implicados y así es cómo afectan al nivel de paralelismo que tiene:
+* El nodo principal (denominado Nimbus en Storm) se utiliza para enviar y administrar los trabajos. Estos nodos afectan al grado de paralelismo.
+* Nodos de supervisor. En HDInsight, corresponde a un nodo de trabajo de una máquina virtual de Azure.
+* Las tareas de trabajo son procesos de Storm que se ejecutan en las VM. Cada tarea de trabajo corresponde a una instancia de JVM. Storm distribuye el número de procesos de trabajo que especifique a los nodos de trabajo lo más uniformemente posible.
+* Instancias de ejecutor de bolt y spout. Cada instancia de ejecutor corresponde a un subproceso que se ejecuta dentro de los trabajos (máquinas virtuales Java).
+* Tareas de Storm. Son tareas lógicas que ejecuta cada uno de estos subprocesos. Esto no cambia el nivel de paralelismo, por lo que se debe evaluar si necesita o no varias tareas por ejecutor.
 
-### <a name="get-hello-best-performance-from-data-lake-store"></a>Obtenga un rendimiento mejor Hola del almacén de Data Lake
+### <a name="get-the-best-performance-from-data-lake-store"></a>Obtener el mejor rendimiento de Data Lake Store
 
-Cuando se trabaja con el almacén de Data Lake, obtendrá un rendimiento mejor Hola si Hola siguientes:
+Cuando trabaje con Data Lake Store, obtendrá el mejor rendimiento con estas sugerencias:
 * Fusione sus anexos más pequeños en tamaños más grandes (lo ideal son 4 MB).
-* Realice tantas solicitudes simultáneas como pueda. Dado que cada subproceso de rayo está realizando lecturas bloqueo, es conveniente toohave en algún lugar de intervalo de Hola de 8 a 12 subprocesos por núcleo. Esto impide que la CPU de hello y formación de hello también utilizado. Una máquina virtual más grande permite más solicitudes simultáneas.  
+* Realice tantas solicitudes simultáneas como pueda. Como cada subproceso de bolt realiza lecturas de bloqueo, querrá tener entre 8 y 12 subprocesos por núcleo. De esta manera el nivel de utilización de la NIC y la CPU es adecuado. Una máquina virtual más grande permite más solicitudes simultáneas.  
 
 ### <a name="example-topology"></a>Topología de ejemplo
 
-Supongamos que tiene un clúster de 8 nodos de trabajo con una máquina virtual de Azure D13v2. Esta VM tiene 8 núcleos, por lo que entre Hola 8 nodos de trabajador, tendrá que 64 núcleos total.
+Supongamos que tiene un clúster de 8 nodos de trabajo con una máquina virtual de Azure D13v2. Esta máquina virtual tiene 8 núcleos, así que entre los 8 nodos de trabajo, tiene un total de 64 núcleos.
 
-Digamos que hacemos 8 subprocesos de bolt por núcleo. Como hay 64 núcleos, significa que queremos 512 instancias de ejecutor de bolt (es decir, subprocesos) en total. En este caso, supongamos que se inicie con una JVM por máquina virtual y utiliza principalmente la simultaneidad de subprocesos de hello dentro de simultaneidad de hello JVM tooachieve. Esto significa que necesitamos 8 tareas de trabajo (una por cada VM de Azure) y 512 ejecutores de bolt. Dada esta configuración, Storm intenta toodistribute Hola los trabajadores de manera uniforme entre los nodos de trabajo (también conocidos como nodos de supervisor), dando a cada nodo de trabajo 1 JVM. Ahora en los supervisores de hello, Storm intenta ejecutor de hello toodistribute uniformemente entre los supervisores, lo que proporciona cada supervisor (es decir, JVM) 8 subprocesos cada uno.
+Digamos que hacemos 8 subprocesos de bolt por núcleo. Como hay 64 núcleos, significa que queremos 512 instancias de ejecutor de bolt (es decir, subprocesos) en total. En este caso, supongamos que empezamos con una JVM por máquina virtual y usamos principalmente la simultaneidad de subprocesos dentro de la JVM para conseguir simultaneidad. Esto significa que necesitamos 8 tareas de trabajo (una por cada VM de Azure) y 512 ejecutores de bolt. Dada esta configuración, Storm intenta distribuir los trabajos uniformemente entre los nodos de trabajo (también conocidos como nodos de supervisor), dando a cada nodo de trabajo 1 JVM. Ahora, dentro de los supervisores, Storm intenta distribuir los ejecutores uniformemente entre los supervisores, dando a cada supervisor (es decir, JVM) 8 subprocesos.
 
 ## <a name="tune-additional-parameters"></a>Ajuste de parámetros adicionales
-Una vez haya topología básica de hello, tenga en cuenta si desea tootweak alguno de los parámetros de hello:
-* **Number of JVMs per worker node** (Número total de JVM por nodo de trabajo). Si tiene una estructura de datos de gran tamaño (por ejemplo, una tabla de búsqueda) que se hospeda en memoria, cada JVM requiere una copia independiente. Como alternativa, puede utilizar estructura de datos de hello en muchos subprocesos si tiene menos JVMs. Para la E/S del rayo hello, número de Hola de JVMs no tiene tanta una diferencia como número de Hola de subprocesos que se agregan a través de esas JVMs. Para simplificar, es un toohave buena idea una JVM por trabajo. Dependiendo de lo que está haciendo el rayo o la aplicación de procesamiento necesita, sin embargo, puede que necesite toochange este número.
-* **Number of spout executors** (Número de ejecutores de spout) Dado que hello en el ejemplo anterior se utiliza tornillos para escribir tooData Lake almacén, el número de Hola de spouts no es rendimiento de rayo toohello directamente relevante. Sin embargo, dependiendo de la cantidad de Hola de procesamiento o E/S ocurre en pitorro hello, es una buena idea hello tootune spouts para mejorar el rendimiento. Asegúrese de que tiene suficiente spouts toobe tookeep capaz de hello tornillos ocupado. tasas de salida de Hello de hello spouts deben coincidir con rendimiento Hola de hello tornillos. configuración real de Hello depende pitorro Hola.
-* **Number of tasks** (Número de tareas) Cada bolt se ejecuta como un único subproceso. Las tareas adicionales por bolt no proporcionan ninguna simultaneidad adicional. Hola única ocasión en que son de beneficio es si el proceso de confirmación de tupla hello tiene una gran proporción del tiempo de ejecución de rayo. Es un toogroup buena idea que muchos tuplas en un mayor anexar antes de enviar una confirmación de rayo Hola. Por lo tanto, en la mayoría de los casos, varias tareas no proporcionan ninguna ventaja adicional.
-* **Local or shuffle grouping** (Agrupación local o aleatoria) Cuando esta opción está habilitada, las tuplas se envían toobolts dentro de hello mismo proceso de trabajo. Esta opción reduce las llamadas de red y la comunicación entre procesos. Se recomienda su uso para la mayoría de las topologías.
+Una vez que tenga la topología básica, puede valorar si desea modificar alguno de los parámetros:
+* **Number of JVMs per worker node** (Número total de JVM por nodo de trabajo). Si tiene una estructura de datos de gran tamaño (por ejemplo, una tabla de búsqueda) que se hospeda en memoria, cada JVM requiere una copia independiente. Como alternativa, puede usar la estructura de datos en muchos subprocesos si tiene menos JVM. Para la E/S del bolt, el número de JVM no supone una gran diferencia con respecto al número de subprocesos agregados en esas JVM. Para simplificar, es una buena idea tener una JVM por trabajo. No obstante, dependiendo de lo que haga el bolt o del procesamiento de aplicaciones que requiera, puede que necesite cambiar este número.
+* **Number of spout executors** (Número de ejecutores de spout) Como en el ejemplo anterior se usan bolts para escribir en Data Lake Store, el número de spouts no está relacionado directamente con el rendimiento del bolt. Sin embargo, según la cantidad de procesamiento o E/S que se realice en el spout, es una buena idea ajustar los spouts para mejorar el rendimiento. Asegúrese de tener spouts suficientes para que los bolts se mantengan ocupados. Las velocidades de salida de los spouts deben coincidir con el rendimiento de los bolts. La configuración real depende del spout.
+* **Number of tasks** (Número de tareas) Cada bolt se ejecuta como un único subproceso. Las tareas adicionales por bolt no proporcionan ninguna simultaneidad adicional. La única vez que resultan útiles es cuando el proceso de confirmación de la tupla usa una gran proporción del tiempo de ejecución de los bolts. Es una buena idea agrupar muchas tuplas en un anexo más grande antes de enviar una confirmación del bolt. Por lo tanto, en la mayoría de los casos, varias tareas no proporcionan ninguna ventaja adicional.
+* **Local or shuffle grouping** (Agrupación local o aleatoria) Cuando esta opción está habilitada, las tuplas se envían a bolts dentro del mismo proceso de trabajo. Esta opción reduce las llamadas de red y la comunicación entre procesos. Se recomienda su uso para la mayoría de las topologías.
 
-Este escenario básico es un buen punto de partida. Pruebe con su propio hello tootweak de datos anterior a un rendimiento óptimo tooachieve parámetros.
+Este escenario básico es un buen punto de partida. Pruebe con sus propios datos para ajustar los parámetros anteriores con el fin de alcanzar un rendimiento óptimo.
 
-## <a name="tune-hello-spout"></a>Optimizar pitorro Hola
+## <a name="tune-the-spout"></a>Optimización del spout
 
-Puede modificar Hola después configuración tootune Hola pitorro.
+Puede modificar los valores de configuración siguientes para optimizar el spout.
 
-- **Tuple timeout (Tiempo de espera de tupla): topology.message.timeout.secs**. Esta configuración determina Hola tiempo tarda un mensaje toocomplete y recibir la confirmación, antes de que se considere error.
+- **Tuple timeout (Tiempo de espera de tupla): topology.message.timeout.secs**. Este valor determina la cantidad de tiempo que un mensaje tarda en completarse, y en recibir una confirmación, antes de que se considere erróneo.
 
-- **Max memory per worker process (Memoria máxima por proceso de trabajo): worker.childopts**. Esta configuración permite especificar los trabajadores de Java de toohello de parámetros de línea de comandos adicionales. Hola más frecuente establecer aquí es XmX, que determina el montón de JVM de hello memoria máxima asignada tooa.
+- **Max memory per worker process (Memoria máxima por proceso de trabajo): worker.childopts**. Este valor le permite especificar parámetros de línea de comandos adicionales para los trabajos de Java. El ajuste usado más frecuentemente aquí es XmX, que determina la memoria máxima asignada al montón de una JVM.
 
-- **Max spout pending (Spouts máximos pendientes): topology.max.spout.pending**. Esta configuración determina el número de Hola de tuplas que se pueden en vuelo (aún no se ha confirmado en todos los nodos de la topología de hello) por subproceso pitorro en cualquier momento.
+- **Max spout pending (Spouts máximos pendientes): topology.max.spout.pending**. Este valor determina el número de tuplas que pueden estar en vuelo (que aún no se han confirmado en todos los nodos de la topología) por subproceso de spout en un momento concreto.
 
- Un buen cálculo toodo es el tamaño de Hola de tooestimate de cada uno de sus tuplas. Después, averigüe cuánta memoria tiene un subproceso de spout. Hello memoria total asignada tooa subproceso, dividido por este valor, debe darle límite superior de Hola para pitorro max de hello pendiente de parámetro.
+ Un buen cálculo sería estimar el tamaño de cada una de sus tuplas. Después, averigüe cuánta memoria tiene un subproceso de spout. La memoria total asignada a un subproceso dividida por este valor debe proporcionarle el límite superior para el parámetro de spouts máximos pendientes.
 
-## <a name="tune-hello-bolt"></a>Optimizar rayo Hola
-Cuando escriba tooData Lake almacén, establecer una directiva de sincronización de tamaño (el búfer en el lado del cliente de hello) too4 MB. A continuación, se realiza un vaciado o hsync() sólo cuando el tamaño del búfer de hello es hello en este valor. controlador de almacén de Data Lake Hello en el trabajo de hello VM realiza automáticamente este almacenamiento en búfer, a menos que realice explícitamente un hsync().
+## <a name="tune-the-bolt"></a>Optimización del bolt
+Al escribir en Data Lake Store, establezca una directiva de sincronización de tamaño (el búfer en el lado cliente) en 4 MB. Así, se realizará un vaciado o hsync() solamente cuando el tamaño del búfer sea el valor anterior. El controlador de Data Lake Store en la máquina virtual de trabajo realiza automáticamente este almacenamiento en búfer, a menos que ejecute explícitamente hsync().
 
-rayo de Hello predeterminado aluvión de almacén de datos Lake tiene un parámetro de directiva de sincronización de tamaño (fileBufferSize) que puede ser tootune usa este parámetro.
+El bolt predeterminado de Storm de Data Lake Store tiene un parámetro de directiva de sincronización de tamaño (fileBufferSize) que puede usarse para optimizar este parámetro.
 
-En estas topologías intensivas de entrada, es una buena idea toohave cada subproceso de rayo escribir archivo propio tooits y tooset una directiva de rotación de archivo (fileRotationSize). Cuando el archivo hello alcanza un determinado tamaño, automáticamente se vacía en el flujo de Hola y se escribe un nuevo archivo en. Hola tamaño de archivo para el giro recomendado es 1 GB.
+En topologías con uso intensivo de E/S, se recomienda que cada subproceso de bolt escriba en su propio archivo y que establezca una directiva de rotación de archivos (fileRotationSize). Cuando el archivo alcanza un determinado tamaño, la transmisión se vacía automáticamente y se escribe en un nuevo archivo. El tamaño de archivo recomendado por rotación es de 1 GB.
 
 ### <a name="handle-tuple-data"></a>Administración de los datos de la tupla
 
-En Storm, un pitorro contiene en tooa tupla hasta que se confirman de forma explícita por el rayo Hola. Si una tupla ha sido leída por el rayo Hola pero no se han confirmado aún, podría pitorro hello no se conservan en back-end de almacén de Data Lake. Después de que se confirma una tupla, pitorro Hola puede garantizarse persistencia por rayo de hello y, a continuación, puede eliminar datos de origen de Hola de cualquier origen que se está leyendo.  
+En Storm, un spout se mantiene en una tupla hasta que el bolt lo confirma de forma explícita. Si el bolt ha leído una tupla pero no la ha confirmado aún, es posible que el spout no se haya guardado en el back-end de Data Lake Store. Cuando se confirma una tupla, el bolt garantiza la persistencia del spout, por lo que puede eliminar los datos de origen de cualquier origen que esté leyendo.  
 
-Para obtener el mejor rendimiento en el almacén de Data Lake, tienen rayo Hola búfer de 4 MB de datos de la tupla. A continuación, escribir toohello nuevo almacén de Data Lake terminan siendo una escritura de 4 MB. Después de los datos de hello toohello correctamente escrito almacén (mediante hflush()) que realiza la llamada, rayo Hola puede reconocer Hola datos toohello atrás pitorro. Este es el ejemplo hello tornillo proporcionado hace aquí. También es aceptable toohold un mayor número de tuplas antes de que se realiza la llamada de hflush() de Hola y Hola tuplas confirmado. Sin embargo, esto aumenta el número de Hola de tuplas en vuelo que pitorro Hola necesita toohold, y, por tanto, aumenta Hola cantidad de memoria necesaria por JVM.
+Para obtener el mejor rendimiento en Data Lake Store, el búfer del bolt debe tener 4 MB de datos de tupla. Luego, escriba en el back-end de Data Lake Store como una escritura de 4 MB. Cuando los datos se hayan escrito correctamente en el almacén (mediante la llamada a hflush()), el bolt puede confirmar los datos al spout. Esto es lo que hace el bolt de ejemplo aquí indicado. También es aceptable conservar un mayor número de tuplas antes de realizar la llamada hflush() y de que se confirmen las tuplas. Sin embargo, esto aumenta el número de tuplas en vuelo que el spout debe conservar y, por lo tanto, aumenta la cantidad de memoria necesaria por cada JVM.
 
 > [!NOTE]
-Las aplicaciones pueden presentar un tuplas de tooacknowledge de requisito con más frecuencia (en tamaños de datos es menor que 4 MB) por otras razones de rendimiento no. Sin embargo, que podrían afectar a Hola E/S rendimiento toohello almacenamiento back-end. Detenidamente esta compensación con respecto al rendimiento de E/S del rayo Hola.
+Puede que las aplicaciones tengan la necesidad de confirmar tuplas más a menudo (con tamaños de datos inferiores a 4 MB) por otros motivos no relacionados con el rendimiento. Sin embargo, eso podría afectar al rendimiento de E/S en el back-end de almacenamiento. Por lo tanto, sopese con cuidado este inconveniente con el rendimiento de E/S del bolt.
 
-Si la velocidad de entrada de Hola de tuplas es no alta, por lo que el búfer de 4 MB de hello toma un toofill mucho tiempo, considere la posibilidad de mitigar este problema si:
-* Reducir el número de Hola de tornillos, por lo que hay menos toofill de búferes.
-* Tener una directiva basada en tiempo o basadas en recuento, donde es un hflush() desencadena cada x vaciados o cada milisegundos y y tuplas Hola acumulados hasta ahora se envía una confirmación.
+Si la velocidad de entrada de las tuplas no es alta, por lo que el búfer de 4 MB tarda mucho tiempo en llenarse, considere estas posibilidades para solucionarlo:
+* Reducir el número de bolts para que haya menos búferes que llenar.
+* Tener una directiva basada en recuento o en tiempo, donde se desencadene un hflush() cada X vaciados o cada y milisegundos y se confirmen las tuplas acumuladas hasta entonces.
 
-Tenga en cuenta que rendimiento hello en este caso es inferior, pero con una velocidad lenta de eventos, el rendimiento máximo no es Hola mayor objetivo todos modos. Estas soluciones le ayudarán a reducir Hola el tiempo total que tarda en un tooflow tupla a través de la tienda de toohello. Esto podría ser importante si quiere una canalización en tiempo real incluso con una tasa baja de eventos. Tenga en cuenta también que si la tasa entrante de la tupla es baja, debe ajustar parámetro topology.message.timeout_secs de hello, por lo que las tuplas de hello no tiempo de espera mientras está obteniendo almacenando en búfer o procesar.
+Tenga en cuenta que el rendimiento en este caso es menor, pero como la tasa de eventos es lenta, el objetivo principal tampoco es obtener un rendimiento máximo de todos modos. Estas soluciones le ayudan a reducir el tiempo total que tarda una tupla en atravesar el almacén. Esto podría ser importante si quiere una canalización en tiempo real incluso con una tasa baja de eventos. Tenga en cuenta también que si la tasa de tuplas entrantes es baja, debe ajustar el parámetro topology.message.timeout_secs, de modo que el tiempo de espera de las tuplas no se agote mientras se estén almacenando en búfer o procesando.
 
 ## <a name="monitor-your-topology-in-storm"></a>Supervisión de la topología en Storm  
-Mientras se ejecuta la topología, se puede supervisar en interfaz de usuario de Storm Hola. Estos son toolook parámetros principales de hello en:
+Mientras se ejecuta la topología, puede supervisarla en la interfaz de usuario de Storm. Estos son los principales parámetros que debe examinar:
 
-* **Total process execution latency (Latencia total de ejecución de procesos).** Se trata de tiempo promedio de hello una tupla toma toobe emitidos por pitorro hello, procesados por el rayo de Hola y confirmado.
+* **Total process execution latency (Latencia total de ejecución de procesos).** Es el tiempo medio que una tupla tarda en que la emita el spout, la procese el bolt y se confirme.
 
-* **Total bolt process latency (Latencia total de proceso del bolt).** Se trata de hello tiempo medio por tupla de hello en el rayo Hola hasta que recibe una confirmación.
+* **Total bolt process latency (Latencia total de proceso del bolt).** Es el tiempo medio que está la tupla en el bolt hasta que recibe una confirmación.
 
-* **Total bolt execute latency (Latencia total de ejecución del bolt).** Se trata de promedio de hello tiempo invertido por el rayo de Hola Hola execute (método).
+* **Total bolt execute latency (Latencia total de ejecución del bolt).** Es el tiempo medio empleado por el bolt en el método de ejecución.
 
-* **Number of failures (Número de errores).** Esto refiere toohello número de tuplas que no se pudo toobe procesado totalmente antes de que agotó el tiempo.
+* **Number of failures (Número de errores).** Se refiere al número de tuplas que no se pudieron procesar por completo antes de que se agotara el tiempo de espera.
 
-* **Capacity (Capacidad).** Se trata de una medida de lo ocupado que está su sistema. Si este número es 1, los bolts trabajan tan rápido como pueden. Si es menor que 1, aumentar el paralelismo de Hola. Si es mayor que 1, reducir el paralelismo de Hola.
+* **Capacity (Capacidad).** Se trata de una medida de lo ocupado que está su sistema. Si este número es 1, los bolts trabajan tan rápido como pueden. Si es menor que 1, aumente el paralelismo. Si es mayor que 1, reduzca el paralelismo.
 
 ## <a name="troubleshoot-common-problems"></a>Solución de problemas comunes
 Estos son algunos escenarios comunes de solución de problemas.
-* **El tiempo de espera de muchas tuplas se está agotando.** Buscar en cada nodo de hello topología toodetermine donde es el cuello de botella de Hola. razón más común de Hola para este es que Hola tornillos no son tookeep capaz de seguridad con spouts Hola. Esto conduce tootuples atascada por los búferes internos de hello mientras toobe espera procesados. Considere la posibilidad de aumentar el valor de tiempo de espera de Hola o reduciendo pitorro max de hello pendientes.
+* **El tiempo de espera de muchas tuplas se está agotando.** Examine cada nodo de la topología para determinar dónde está el cuello de botella. El motivo más habitual de ello es que los bolts no puedan seguir el ritmo de los spouts. Como consecuencia, las tuplas quedan atascadas en los búferes internos a la espera de ser procesadas. Considere la posibilidad de aumentar el valor de tiempo de espera o de reducir el número máximo de spouts pendientes.
 
-* **Existe una latencia alta total en la ejecución de los procesos, pero una latencia baja en los procesos de bolt.** En este caso, es posible que Hola tuplas no son va a reconocer suficientemente rápido. Compruebe que hay un número suficiente de elementos de reconocimiento. Otra posibilidad es que están esperando en la cola de Hola durante demasiado tiempo antes de hello tornillos inicio procesarlos. Disminuir pitorro max de hello pendientes.
+* **Existe una latencia alta total en la ejecución de los procesos, pero una latencia baja en los procesos de bolt.** En este caso, es posible que las tuplas no se reconozcan lo suficientemente rápido. Compruebe que hay un número suficiente de elementos de reconocimiento. Otra posibilidad es que esperen en la cola demasiado tiempo hasta que los bolts empiezan a procesarlas. Reduzca el máximo de spouts pendientes.
 
-* **Existe una latencia alta en la ejecución de bolts.** Esto significa que Hola método Execute () de su rayo está tardando demasiado. Optimizar el código de hello, o buscar en tamaños de escritura y vaciar el comportamiento.
+* **Existe una latencia alta en la ejecución de bolts.** Esto significa que el método execute() de su bolt está tardando demasiado. Optimice el código o examine el comportamiento de vaciado y los tamaños de escritura.
 
 ### <a name="data-lake-store-throttling"></a>Limitación de Data Lake Store
-Si alcanza los límites de Hola de ancho de banda proporcionada por el almacén de Data Lake, podrá ver los errores de la tarea. Compruebe los registros de la tarea para ver los errores de limitación. Puede reducir el paralelismo de hello al aumentar el tamaño del contenedor.    
+Si se alcanzan los límites de ancho de banda proporcionados por Data Lake Store, podría experimentar errores en las tareas. Compruebe los registros de la tarea para ver los errores de limitación. Puede reducir el paralelismo mediante un aumento del tamaño del contenedor.    
 
-toocheck si están obteniendo limitados, habilitar el registro en el lado del cliente de Hola de depuración de hello:
+Para comprobar si le están aplicando limitaciones, habilite el registro de depuración en el lado cliente:
 
-1. En **Ambari** > **Storm** > **Config** > **avanzada storm-worker-log4j**, cambiar  **&lt;raíz nivel = "info"&gt;**  demasiado**&lt;raíz nivel = "debug"&gt;**. Reiniciar todos los nodos de Hola/servicio con efecto de tootake de configuración de Hola.
-2. Registros de monitor Hola Storm topología en nodos de trabajador (bajo /var/log/storm/worker-artifacts /&lt;TopologyName&gt;/&lt;puerto&gt;/worker.log) para el almacén de Data Lake excepciones de limitación.
+1. En **Ambari** > **Storm** > **Config** > **Advanced storm-worker-log4j**, cambie **&lt;nivel de raíz="info"&gt;** por **&lt;nivel de raíz=”debug”&gt;**. Reinicie todos los nodos/servicios para que la configuración surta efecto.
+2. Supervise los registros de topología de Storm en los nodos de trabajo (en /var/log/storm/worker-artifacts/&lt;NombreTopología&gt;/&lt;puerto&gt;/worker.log) para controlar las excepciones de limitación de Data Lake Store.
 
 ## <a name="next-steps"></a>Pasos siguientes
 Puede consultar este [blog](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/) para saber más sobre la optimización del rendimiento adicional de Storm.
 
-Para una toorun ejemplo adicional, vea [ésta en GitHub](https://github.com/hdinsight/storm-performance-automation).
+Para ejecutar un ejemplo adicional, consulte [este en GitHub](https://github.com/hdinsight/storm-performance-automation).

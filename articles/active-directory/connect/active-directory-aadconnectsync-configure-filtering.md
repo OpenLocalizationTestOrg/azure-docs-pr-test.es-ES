@@ -1,6 +1,6 @@
 ---
 title: "Configuración de filtrado de sincronización de Azure AD Connect | Microsoft Docs"
-description: "Explica cómo tooconfigure filtrado en la sincronización de Azure AD Connect."
+description: "Explica cómo configurar el filtrado en Azure AD Connect Sync."
 services: active-directory
 documentationcenter: 
 author: andkjell
@@ -14,289 +14,289 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 97979b508c560a6de6cb091b1b621bc1d51b25c4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: baa3ac6473f180e220ec4973ced51369467bf158
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect Sync: configuración del filtrado
-Con el filtrado puede controlar qué objetos aparecen en Azure Active Directory (Azure AD) desde el directorio local. configuración predeterminada de Hello toma todos los objetos en todos los dominios de bosques de hello configurado. En general, se trata de hello configuración recomendada. Los usuarios con cargas de trabajo de Office 365, como Exchange Online y Skype Empresarial, se benefician de una lista global de direcciones completa para poder enviar correo electrónico y llamar a todos los integrantes. Con la configuración predeterminada de hello, tendrían Hola que misma experiencia que tienen con una implementación local de Exchange o Lync.
+Con el filtrado puede controlar qué objetos aparecen en Azure Active Directory (Azure AD) desde el directorio local. La configuración predeterminada aceptará todos los objetos en todos los dominios de los bosques configurados. Por lo general, esta configuración es la recomendada. Los usuarios con cargas de trabajo de Office 365, como Exchange Online y Skype Empresarial, se benefician de una lista global de direcciones completa para poder enviar correo electrónico y llamar a todos los integrantes. Con la configuración predeterminada, obtendrían la misma experiencia que con una implementación local de Exchange o Lync.
 
-Sin embargo, en algunos casos está requiere realizar alguna configuración predeterminada de toohello de cambios. Estos son algunos ejemplos:
+Sin embargo, en algunos casos se necesitan algunos cambios en la configuración predeterminada. Estos son algunos ejemplos:
 
-* Planear hello toouse [topología de directorio de AD Azure varias](active-directory-aadconnect-topologies.md#each-object-only-once-in-an-azure-ad-tenant). A continuación, deberá tooapply un toocontrol filtro qué objetos están sincronizados tooa AD de Azure determinado directorio.
-* Va a ejecutar un piloto para Azure u Office 365 y desea solo un subconjunto de usuarios en Azure AD. En hello pequeña prueba piloto no es importante toohave una lista Global de direcciones toodemonstrate Hola una funcionalidad completa.
+* Quiere usar la [topología de varios directorios de Azure AD](active-directory-aadconnect-topologies.md#each-object-only-once-in-an-azure-ad-tenant). Después, necesita aplicar un filtro para controlar qué objetos se sincronizan en un directorio determinado de Azure AD.
+* Va a ejecutar un piloto para Azure u Office 365 y desea solo un subconjunto de usuarios en Azure AD. En el pequeño proyecto piloto, no es necesaria una lista global de direcciones completa para demostrar la funcionalidad.
 * Tiene numerosas cuentas de servicio y otras de carácter no personal que no desea en Azure AD.
-* Por motivos de cumplimiento, no elimina ninguna cuenta de usuario local. Solo las deshabilita. Pero en Azure AD, sólo desea que las cuentas de active toobe presente.
+* Por motivos de cumplimiento, no elimina ninguna cuenta de usuario local. Solo las deshabilita. Pero solo quiere encontrar las cuentas activas en Azure AD.
 
-Este artículo trata cómo tooconfigure Hola diferentes métodos de filtrado.
+En este artículo, se trata cómo configurar los distintos métodos de filtrado.
 
 > [!IMPORTANT]
-> No es compatible con Microsoft modificar u operando sincronización de Azure AD Connect fuera de las acciones de Hola que están documentadas formalmente. Cualquiera de estas acciones pueden provocar un estado incoherente o incompatible de sincronización de Azure AD Connect. Como resultado, Microsoft no ofrece soporte técnico para estas implementaciones.
+> Microsoft no admite la modificación ni el funcionamiento de la sincronización de Azure AD Connect con acciones distintas a estas que se documentan formalmente. Cualquiera de estas acciones pueden provocar un estado incoherente o incompatible de sincronización de Azure AD Connect. Como resultado, Microsoft no ofrece soporte técnico para estas implementaciones.
 
 ## <a name="basics-and-important-notes"></a>Conceptos básicos y notas importantes
-En Azure AD Connect Sync, puede habilitar el filtrado en cualquier momento. Si comienza con una configuración predeterminada de sincronización de directorios y, a continuación, configurar el filtrado, los objetos de Hola que se filtran ya no están sincronizado tooAzure AD. Por este cambio, en Azure AD se eliminan los objetos de Azure AD que se sincronizaran previamente pero que se filtraran después.
+En Azure AD Connect Sync, puede habilitar el filtrado en cualquier momento. Si comienza con una configuración predeterminada de la sincronización de directorios y después configura el filtrado, los objetos que se filtren ya no se sincronizan con Azure AD. Por este cambio, en Azure AD se eliminan los objetos de Azure AD que se sincronizaran previamente pero que se filtraran después.
 
-Antes de empezar a realizar cambios toofiltering, asegúrese de que se [deshabilitar la tarea programada de hello](#disable-scheduled-task) para no exportar accidentalmente cambios que aún no ha comprobado toobe correcto.
+Antes de empezar a realizar cambios en el filtrado, asegúrese de [deshabilitar la tarea programada](#disable-scheduled-task) para no exportar cambios cuya corrección aún no se ha comprobado por error.
 
-Ya puede eliminar muchos objetos en hello el filtrado mismo tiempo, desea toomake seguro de que los nuevos filtros son correctos antes de empezar cualquier exportación cambia tooAzure AD. Después de haber completado los pasos de configuración de hello, se recomienda que siga hello [pasos de comprobación](#apply-and-verify-changes) para exportar y hacer cambios tooAzure AD.
+Como el filtrado puede quitar varios objetos al mismo tiempo, querrá asegurarse de que los nuevos filtros sean correctos antes de exportar los cambios a Azure AD. Después de completar los pasos de configuración, se recomienda encarecidamente seguir los [pasos de comprobación](#apply-and-verify-changes) antes de exportar y realizar cambios en Azure AD.
 
-característica tooprotect desde eliminar muchos objetos por accidente, hello "[evitar eliminaciones accidentales](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)" está activada de forma predeterminada. Si se eliminan muchos objetos debido a toofiltering (500 de forma predeterminada), necesita conocer pasos de hello toofollow este Hola de tooallow artículo elimina toogo a través de tooAzure AD.
+Para evitar eliminar muchos objetos por error, la característica para [evitar eliminaciones por error](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) está activada de forma predeterminada. Si elimina muchos objetos debido al filtrado (de forma predeterminada, 500), debe seguir los pasos descritos en este artículo para permitir que las eliminaciones se reflejen en Azure AD.
 
-Si usa una compilación antes de noviembre de 2015 ([1.0.9125](active-directory-aadconnect-version-history.md#1091250)), realice una configuración de filtro de cambio tooa y utilizar la sincronización de contraseña, deberá tootrigger una sincronización completa de todas las contraseñas después de haber completado la configuración de Hola. Para conocer los pasos en la sincronización de completa de tootrigger una contraseña, vea [desencadenar una sincronización completa de todas las contraseñas](active-directory-aadconnectsync-troubleshoot-password-synchronization.md#trigger-a-full-sync-of-all-passwords). Si está en la compilación 1.0.9125 o una versión posterior, a continuación, Hola regular **sincronización completa** acción también calcula si se deben sincronizar las contraseñas y si este paso adicional ya no es necesario.
+Si usa una compilación anterior a la de noviembre de 2015 ([1.0.9125](active-directory-aadconnect-version-history.md#1091250)), realiza un cambio en la configuración de filtro y usa la sincronización de contraseñas, deberá desencadenar una sincronización completa de todas las contraseñas una vez terminada la configuración. Para conocer los pasos para desencadenar una sincronización completa de las contraseñas, consulte [Desencadenamiento de una sincronización completa de todas las contraseñas](active-directory-aadconnectsync-troubleshoot-password-synchronization.md#trigger-a-full-sync-of-all-passwords). Si usa la compilación 1.0.9125 o una posterior, la acción de **sincronización completa** normal también calcula si se deben sincronizar las contraseñas, por lo que no se requiere este paso adicional.
 
-Si **usuario** se han eliminado objetos por accidente en Azure AD debido a un error de filtrado, puede volver a crear objetos de usuario de hello en Azure AD mediante la eliminación de las configuraciones de filtrado. A continuación, podrá volver a sincronizar los directorios. Esta acción restaura los usuarios de Hola de Papelera de reciclaje de hello en Azure AD. Sin embargo, no se pueden recuperar otros tipos de objeto. Por ejemplo, si elimina un grupo de seguridad y era tooACL usa un recurso, grupo de Hola y su ACL no se puede recuperar.
+Si los objetos de **usuario** se eliminaron involuntariamente en Azure AD por un error de filtrado, puede volver a crearlos en Azure AD al quitar las configuraciones de filtrado. A continuación, podrá volver a sincronizar los directorios. Esta acción restaura los usuarios de la papelera de reciclaje en Azure AD. Sin embargo, no se pueden recuperar otros tipos de objeto. Por ejemplo, si elimina por error un grupo de seguridad que se usara para incluir un recurso en una ACL, no podrá recuperar ni el grupo ni sus ACL.
 
-Azure AD Connect sólo elimina los objetos que una vez que considera toobe en el ámbito. Si hay objetos en Azure AD que se crearon con otro motor de sincronización y que no estén dentro del ámbito, no se quitarán al agregar el filtrado. Por ejemplo, si empieza con un servidor de sincronización de directorios que crea una copia completa de todo el directorio en Azure AD e instalar a un nuevo servidor de sincronización de Azure AD Connect en paralelo con el filtrado habilitado desde el principio de hello, Azure AD Connect no quita Hola adicional objetos que se crean mediante la sincronización de directorios.
+Azure AD Connect solo elimina objetos que alguna vez haya considerado dentro del ámbito. Si hay objetos en Azure AD que se crearon con otro motor de sincronización y que no estén dentro del ámbito, no se quitarán al agregar el filtrado. Por ejemplo, si comienza con un servidor DirSync que creó una copia completa de todo el directorio en Azure AD e instala un nuevo servidor de sincronización de Azure AD Connect en paralelo con el filtrado habilitado desde el principio, Azure AD Connect no quita los objetos adicionales creados por DirSync.
 
-configuración del filtrado de Hola se conserva al instalar o actualizar la versión más reciente de tooa de Azure AD Connect. Es siempre un tooverify prácticas recomendada que Hola configuración no se cambió por accidente después una versión más reciente de actualización tooa antes de ejecutar Hola primer ciclo de sincronización.
+Se conservan las configuraciones de filtrado cuando instale o actualice a una versión más reciente de Azure AD Connect. Es siempre un procedimiento recomendado comprobar que la configuración no se haya cambiado por error después de una actualización a una nueva versión antes de ejecutar el primer ciclo de sincronización.
 
-Si tiene más de un bosque y, a continuación, debe aplicar Hola filtrado configuraciones que se describen en este bosque tooevery de tema (suponiendo que desea Hola misma configuración para todas ellas).
+Si tiene más de un bosque, debe aplicar las configuraciones de filtrado que se describen en este tema a cada bosque (suponiendo que quiera la misma configuración para todos).
 
-### <a name="disable-hello-scheduled-task"></a>Deshabilitar la tarea programada de Hola
-programador integrados de toodisable Hola que desencadena un ciclo de sincronización cada 30 minutos, siga estos pasos:
+### <a name="disable-the-scheduled-task"></a>Deshabilitación de la tarea programada
+Para deshabilitar el programador integrado que desencadena un ciclo de sincronización cada 30 horas, siga estos pasos:
 
-1. Vaya el símbolo del sistema de PowerShell de tooa.
-2. Ejecutar `Set-ADSyncScheduler -SyncCycleEnabled $False` programador de hello toodisable.
-3. Realice los cambios de Hola que se documentan en este artículo.
-4. Ejecutar `Set-ADSyncScheduler -SyncCycleEnabled $True` tooenable nuevo programador de Hola.
+1. Vaya a un símbolo del sistema de PowerShell.
+2. Ejecute `Set-ADSyncScheduler -SyncCycleEnabled $False` para deshabilitar el programador.
+3. Realice los cambios que se documentan en este artículo.
+4. Ejecute `Set-ADSyncScheduler -SyncCycleEnabled $True` para volver a habilitar el programador.
 
 **Si usa una compilación de Azure AD Connect anterior a 1.1.105.0**  
-tarea programada de toodisable Hola que desencadena un ciclo de sincronización cada tres horas, siga estos pasos:
+Para deshabilitar la tarea programada que desencadena un ciclo de sincronización cada tres horas, siga estos pasos:
 
-1. Iniciar **programador de tareas** de hello **iniciar** menú.
-2. Directamente en **biblioteca del programador de tareas**, tarea de Hola de búsqueda denominada **Azure AD Sync Scheduler**, menú contextual y seleccione **deshabilitar**.  
+1. Abra el **Programador de tareas** en el menú **Inicio**.
+2. Directamente bajo **Biblioteca del Programador de tareas**, busque la tarea **Programador de Sincronización de Azure AD**, haga clic con el botón derecho en ella y seleccione **Deshabilitar**.  
    ![Programador de tareas](./media/active-directory-aadconnectsync-configure-filtering/taskscheduler.png)  
-3. Ahora puede realizar cambios de configuración y ejecutar el motor de sincronización de hello manualmente de hello **Synchronization Service Manager** consola.
+3. Ahora podrá realizar cambios de configuración y ejecutar el motor de sincronización manualmente desde la consola de **Synchronization Service Manager**.
 
-Después de haber completado todos los cambios de filtrado, no olvide volver toocome y **habilitar** tarea hello nuevo.
+Después de completar todos los cambios de filtrado, no olvide volver a seleccionar **Habilitar** para la tarea.
 
 ## <a name="filtering-options"></a>Opciones de filtrado
-Puede aplicar Hola después de la herramienta de sincronización de directorio toohello de tipos de configuración filtrado:
+Puede aplicar los siguientes tipos de configuración de filtrado a la herramienta de sincronización de directorios:
 
-* [**Basado en grupos**](#group-based-filtering): filtrado basado en un único grupo sólo puede configurarse en la instalación inicial usando el Asistente para la instalación de Hola.
-* [**Basado en dominio**](#domain-based-filtering): con esta opción, puede seleccionar qué dominios sincronización tooAzure AD. También puede agregar y quitar dominios de configuración del motor de sincronización de hello cuando se realiza la infraestructura local de cambios tooyour después de instalar sincronización de Azure AD Connect.
-* [**Unidad organizativa (OU) – según**](#organizational-unitbased-filtering): con esta opción, puede seleccionar qué OU sincronizar tooAzure AD. Esta opción está en todos los tipos de objeto de las unidades organizativas seleccionadas.
-* [**Basado en atributos**](#attribute-based-filtering): con esta opción, puede filtrar los objetos basados en valores de atributo en objetos de Hola. También puede tener filtros diferentes para distintos tipos de objetos.
+* [**Por grupo**](#group-based-filtering): el filtrado por grupo único solo se puede configurar durante la instalación inicial con el Asistente para instalación.
+* [**Por dominio**](#domain-based-filtering): esta opción permite seleccionar los dominios que se sincronizarán con Azure AD. También permite agregar y quitar dominios de la configuración del motor de sincronización al realizar cambios en la infraestructura local después de instalar la sincronización de Azure AD Connect.
+* [**Por unidad organizativa (OU)**](#organizational-unitbased-filtering): esta opción permite seleccionar las unidades organizativas que se sincronizarán con Azure AD. Esta opción está en todos los tipos de objeto de las unidades organizativas seleccionadas.
+* [**Por atributo**](#attribute-based-filtering): esta opción permite filtrar objetos en función de los valores de sus atributos. También puede tener filtros diferentes para distintos tipos de objetos.
 
-Puede utilizar varias opciones de filtrado en hello mismo tiempo. Por ejemplo, puede usar el filtrado basado en la unidad organizativa tooonly incluir objetos en una unidad organizativa. Hola al mismo tiempo, puede usar basado en atributos objetos de hello toofilter filtrado aún más. Cuando se usan varios métodos de filtrado, los filtros de hello utilizan un operador lógico "AND" entre los filtros de Hola.
+Puede usar varias opciones de filtrado al mismo tiempo. Por ejemplo, puede usar el filtrado por unidad organizativa para incluir solo los objetos de una unidad organizativa. Al mismo tiempo, puede usar el filtrado por atributo para filtrar los objetos aún más. Cuando se usan varios métodos de filtrado, los filtros utilizan el operador lógico "AND" entre los filtros.
 
 ## <a name="domain-based-filtering"></a>Filtrado basado en dominios
-Esta sección proporciona Hola pasos tooconfigure el filtro de dominios. Si agrega o quitar dominios del bosque después de instalar Azure AD Connect, también tiene hello tooupdate configuración del filtrado.
+En esta sección se proporcionan los pasos para configurar el filtro de dominios. Si agregó o quitó dominios del bosque después de instalar Azure AD Connect, también tendrá que actualizar la configuración del filtrado.
 
-Hola preferido toochange basado en dominio filtrado está ejecutando el Asistente para la instalación de Hola y cambiar de manera [dominio y unidad organizativa filtrado](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering). Asistente para la instalación de Hello automatiza todas las tareas de Hola que se documentan en este tema.
+La mejor manera de cambiar el filtrado por dominio es ejecutar el Asistente para instalación y cambiar el [filtrado por dominio y unidad organizativa](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering). El Asistente para instalación automatiza todas las tareas que se documentan en este tema.
 
-Solo deben seguir estos pasos si eres un Asistente para la instalación no se puede toorun Hola por algún motivo.
+Solo debe seguir estos pasos si por alguna razón no se puede ejecutar el Asistente para instalación.
 
 La configuración del filtrado basado en dominios consta de estos pasos:
 
-1. [Seleccione los dominios de hello](#select-domains-to-be-synchronized) que desea tooinclude en la sincronización de Hola.
-2. Para cada uno de ellos se agregan y se quitan de dominio, ajuste hello [perfiles de ejecución](#update-run-profiles).
+1. [Seleccione los dominios](#select-domains-to-be-synchronized) que quiera incluir en la sincronización.
+2. Para cada dominio agregado o quitado, ajuste de los [perfiles de ejecución](#update-run-profiles).
 3. [Aplicación y comprobación de los cambios](#apply-and-verify-changes).
 
-### <a name="select-hello-domains-toobe-synchronized"></a>Seleccione Hola dominios toobe sincronizado
-dominio de hello tooset filtrar, Hola lo siguiente:
+### <a name="select-the-domains-to-be-synchronized"></a>Selección de los dominios que se van a sincronizar
+Para configurar el filtro de dominio, realice los pasos siguientes:
 
-1. Inicie sesión en el servidor de toohello que se ejecuta la sincronización de Azure AD Connect con una cuenta que sea miembro del programa Hola a **ADSyncAdmins** grupo de seguridad.
-2. Iniciar **servicio de sincronización de** de hello **iniciar** menú.
-3. Seleccione **conectores**y en hello **conectores** seleccione Hola conector con el tipo de hello **los servicios de dominio de Active Directory**. En **Acciones**, seleccione **Propiedades**.  
+1. Inicie sesión en el servidor donde se ejecuta la sincronización de Azure AD Connect con una cuenta que pertenezca al grupo de seguridad **ADSyncAdmins** .
+2. Inicie el **servicio de sincronización** desde el menú **Inicio**.
+3. Seleccione **Conectores** y, en la lista **Conectores**, elija el tipo de conector **Active Directory Domain Services**. En **Acciones**, seleccione **Propiedades**.  
    ![Propiedades del conector](./media/active-directory-aadconnectsync-configure-filtering/connectorproperties.png)  
 4. Haga clic en **Configurar particiones de directorio**.
-5. Hola **seleccionar particiones de directorio** lista, seleccione y anule la selección de dominios según sea necesario. Compruebe que están seleccionadas solo las particiones de Hola que desea toosynchronize.  
+5. En la lista **Select directory partitions** (Seleccionar particiones de directorio), seleccione o anule la selección de los dominios según sea necesario. Compruebe que solo estén seleccionadas las particiones que desee sincronizar.  
    ![Particiones](./media/active-directory-aadconnectsync-configure-filtering/connectorpartitions.png)  
-   Si ha cambiado la infraestructura de Active Directory local y agregar o quitar dominios del bosque de hello, a continuación, haga clic en hello **actualizar** tooget una lista actualizada de botón. Al actualizar, se le pedirán las credenciales. Proporcionar las credenciales con acceso de lectura tooWindows Server Active Directory. No tiene usuarios de hello toobe que se rellena previamente en el cuadro de diálogo de Hola.  
+   Si ha cambiado la infraestructura local de Active Directory y ha agregado dominios al bosque o los ha quitado, haga clic en el botón **Actualizar** para actualizar la lista. Al actualizar, se le pedirán las credenciales. Proporcione las credenciales con acceso de lectura a Windows Server Active Directory. No tiene por qué ser el usuario que aparezca en el cuadro de diálogo.  
    ![Actualización necesaria](./media/active-directory-aadconnectsync-configure-filtering/refreshneeded.png)  
-6. Cuando haya terminado, cierre hello **propiedades** haciendo clic en el cuadro de diálogo **Aceptar**. Si quita dominios del bosque de hello, un mensaje emergente indica que se ha quitado un dominio y que la configuración se limpiarán.
-7. Continuar hello tooadjust [perfiles de ejecución](#update-run-profiles).
+6. Cuando termine, haga clic en el botón **Aceptar** para cerrar el cuadro de diálogo **Propiedades**. Si quitó dominios del bosque, aparecerá un mensaje para indicar que se eliminó un dominio y se borrará esa configuración.
+7. Pase a ajustar el valor de [Run profiles](#update-run-profiles)(Perfiles de ejecución).
 
-### <a name="update-hello-run-profiles"></a>Actualizar los perfiles de hello ejecutar
-Si ha actualizado el filtro de dominios, debe también perfiles de hello ejecutar tooupdate.
+### <a name="update-the-run-profiles"></a>Actualización de los perfiles de ejecución
+Si ha actualizado el filtro de dominio, también debe actualizar los perfiles de ejecución.
 
-1. Hola **conectores** lista, asegúrese de que ese Hola conector que cambió en el paso anterior de hello está seleccionada. En **Acciones**, seleccione **Configure Run Profiles** (Configurar perfiles de ejecución).  
+1. En la lista **Conectores**, asegúrese de que está seleccionado el conector que cambió en el paso anterior. En **Acciones**, seleccione **Configure Run Profiles** (Configurar perfiles de ejecución).  
    ![Perfiles de ejecución de conector 1](./media/active-directory-aadconnectsync-configure-filtering/connectorrunprofiles1.png)  
-2. Busque e identifique Hola siguientes perfiles:
+2. Busque e identifique los siguientes perfiles:
     * Importación completa
     * sincronización completa
     * Importación delta
     * Sincronización delta
     * Exportación
-3. Para cada perfil, ajustar hello **agregado** y **quitado** dominios.
-    1. Para cada uno de los perfiles de hello cinco, Hola lo siguiente para cada **agregado** dominio:
-        1. Seleccione el perfil de hello ejecutar y haga clic en **nuevo paso**.
-        2. En hello **configurar paso** página Hola **tipo** menú desplegable, seleccione Hola el tipo de paso con hello mismo nombre hello perfiles que se va a configurar. A continuación, haga clic en **Siguiente**.  
+3. En cada perfil, ajuste los dominios **agregados** y **quitados**.
+    1. Para cada uno de los cinco perfiles, siga estos pasos para cada dominio **agregado**:
+        1. Seleccione el perfil de ejecución y haga clic en **Nuevo paso**.
+        2. En la página **Configure Step** (Configurar paso), en la lista desplegable **Tipo**, seleccione el tipo de paso que comparta nombre con el perfil que esté configurando. A continuación, haga clic en **Siguiente**.  
         ![Perfiles de ejecución de conector 2](./media/active-directory-aadconnectsync-configure-filtering/runprofilesnewstep1.png)  
-        3. En hello **configuración del conector** página Hola **partición** menú desplegable, el nombre de hello seleccione del dominio de Hola que ha agregado el filtro de dominios tooyour.  
+        3. En la página **Connector Configuration** (Configuración de conector), en la lista desplegable **Partición**, seleccione el nombre del dominio que ha agregado al filtro de dominio.  
         ![Perfiles de ejecución de conector 3](./media/active-directory-aadconnectsync-configure-filtering/runprofilesnewstep2.png)  
-        4. Hola tooclose **configurar perfiles de ejecución** cuadro de diálogo, haga clic en **finalizar**.
-    2. Para cada uno de los perfiles de hello cinco, Hola lo siguiente para cada **quitado** dominio:
-        1. Seleccione el perfil de hello ejecutar.
-        2. Si hello **valor** de hello **partición** atributo es un GUID, seleccione Hola ejecutar paso y haga clic en **eliminar paso**.  
+        4. Para cerrar el cuadro de diálogo **Configurar perfil de ejecución**, haga clic en **Finalizar**.
+    2. Para cada uno de los cinco perfiles, siga estos pasos para cada dominio **quitado**:
+        1. Seleccione el perfil de ejecución.
+        2. Si el campo **Valor** del atributo **Partición**es un GUID, seleccione el paso de ejecución y haga clic en **Eliminar paso**.  
         ![Perfiles de ejecución de conector 4](./media/active-directory-aadconnectsync-configure-filtering/runprofilesdeletestep.png)  
-    3. Compruebe el cambio. Cada dominio que desea toosynchronize debe aparecer como un paso en cada perfil de ejecución.
-4. Hola tooclose **configurar perfiles de ejecución** cuadro de diálogo, haga clic en **Aceptar**.
-5.  configuración de hello toocomplete, deberá toorun un **importación completa** y un **sincronización diferencial**. Continúe leyendo Hola sección [aplicar y comprobar los cambios](#apply-and-verify-changes).
+    3. Compruebe el cambio. Cada dominio que desee sincronizar debe aparecer como paso en cada perfil de ejecución.
+4. Para cerrar el cuadro de diálogo **Configure Run Profiles** (Configurar perfiles de ejecución), haga clic en **Aceptar**.
+5.  Para completar la configuración, debe ejecutar una **Importación completa** y una **Sincronización diferencial**. Continúe leyendo la sección [Aplicación y comprobación de los cambios](#apply-and-verify-changes).
 
 ## <a name="organizational-unitbased-filtering"></a>Filtrado por unidad organizativa
-Hola preferido toochange OU filtrado está ejecutando el Asistente para la instalación de Hola y cambiar de manera [dominio y unidad organizativa filtrado](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering). Asistente para la instalación de Hello automatiza todas las tareas de Hola que se documentan en este tema.
+La mejor manera de cambiar el filtrado por unidad organizativa es ejecutar el Asistente para instalación y cambiar el [filtrado por dominio y unidad organizativa](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering). El Asistente para instalación automatiza todas las tareas que se documentan en este tema.
 
-Solo deben seguir estos pasos si eres un Asistente para la instalación no se puede toorun Hola por algún motivo.
+Solo debe seguir estos pasos si por alguna razón no se puede ejecutar el Asistente para instalación.
 
-tooconfigure organizativa unidad filtrado basado en, Hola lo siguiente:
+Para configurar el filtrado por unidad organizativa, realice los pasos siguientes:
 
-1. Inicie sesión en el servidor de toohello que se ejecuta la sincronización de Azure AD Connect con una cuenta que sea miembro del programa Hola a **ADSyncAdmins** grupo de seguridad.
-2. Iniciar **servicio de sincronización de** de hello **iniciar** menú.
-3. Seleccione **conectores**y en hello **conectores** seleccione Hola conector con el tipo de hello **los servicios de dominio de Active Directory**. En **Acciones**, seleccione **Propiedades**.  
+1. Inicie sesión en el servidor donde se ejecuta la sincronización de Azure AD Connect con una cuenta que pertenezca al grupo de seguridad **ADSyncAdmins** .
+2. Inicie el **servicio de sincronización** desde el menú **Inicio**.
+3. Seleccione **Conectores** y, en la lista **Conectores**, elija el tipo de conector **Active Directory Domain Services**. En **Acciones**, seleccione **Propiedades**.  
    ![Propiedades del conector](./media/active-directory-aadconnectsync-configure-filtering/connectorproperties.png)  
-4. Haga clic en **configurar particiones de directorio**, seleccione dominio de Hola que desee tooconfigure y, a continuación, haga clic en **contenedores**.
-5. Cuando se le pida, proporcione las credenciales con acceso de lectura tooyour en Active Directory local. No tiene usuarios de hello toobe que se rellena previamente en el cuadro de diálogo de Hola.
-6. Hola **seleccionar contenedores** cuadro de diálogo, desactive hello las unidades organizativas que no desee toosynchronize con el directorio de la nube de hello y, a continuación, haga clic en **Aceptar**.  
-   ![Unidades organizativas en el cuadro de diálogo Seleccionar contenedores de Hola](./media/active-directory-aadconnectsync-configure-filtering/ou.png)  
-   * Hola **equipos** contenedor debe seleccionarse para su toobe de equipos de Windows 10 sincronizado correctamente tooAzure AD. Si los equipos unidos a un dominio se encuentran en otras unidades organizativas, asegúrese de que estén seleccionadas.
-   * Hola **ForeignSecurityPrincipals** contenedor debe seleccionarse si tiene varios bosques con relaciones de confianza. Este contenedor permite toobe de pertenencia a grupo de seguridad entre bosques resuelto.
-   * Hola **RegisteredDevices** unidad organizativa debe seleccionarse si habilitó la característica de reescritura de dispositivos de Hola. Si usa otra característica de reescritura, como la de grupos, asegúrese de que estas ubicaciones estén seleccionadas.
-   * Seleccione cualquier otra unidad organizativa donde se encuentren usuarios, objetos InetOrgPerson, grupos, contactos y equipos. En la imagen de hello, todas estas unidades organizativas se encuentran en hello ManagedObjects OU.
-   * Si usa el filtrado basado en el grupo, se debe incluir Hola unidad organizativa donde se encuentra el grupo de Hola.
-   * Tenga en cuenta que puede configurar si unidades organizativas nuevas que se agregan una vez finalizada la configuración del filtrado de Hola se sincronizado o no. Vea la siguiente sección de Hola para obtener más información.
-7. Cuando haya terminado, cierre hello **propiedades** haciendo clic en el cuadro de diálogo **Aceptar**.
-8. configuración de hello toocomplete, deberá toorun un **importación completa** y un **sincronización diferencial**. Continúe leyendo Hola sección [aplicar y comprobar los cambios](#apply-and-verify-changes).
+4. Haga clic en **Configure Directory Partitions** (Configurar particiones de directorio), seleccione el dominio que desee configurar y haga clic en **Contenedores**.
+5. Cuando se le solicite, proporcione las credenciales con acceso de lectura al entorno local de Active Directory. No tiene por qué ser el usuario que aparezca en el cuadro de diálogo.
+6. En el cuadro de diálogo **Select Containers** (Seleccionar contenedores), borre las unidades organizativas que no desee sincronizar con el directorio en la nube y luego haga clic en **Aceptar**.  
+   ![Unidades organizativas en el cuadro de diálogo Select Containers (Seleccionar contenedores)](./media/active-directory-aadconnectsync-configure-filtering/ou.png)  
+   * El contenedor **Computers** debe estar seleccionado para que los equipos con Windows 10 se sincronicen correctamente con Azure AD. Si los equipos unidos a un dominio se encuentran en otras unidades organizativas, asegúrese de que estén seleccionadas.
+   * Se debe seleccionar el contenedor **ForeignSecurityPrincipals** si tiene varios bosques con confianzas. Este contenedor permitirá que se resuelva la pertenencia a grupos de seguridad de otros bosques.
+   * La unidad organizativa **RegisteredDevices** debe estar seleccionada si ha habilitado la característica de escritura diferida de dispositivos. Si usa otra característica de reescritura, como la de grupos, asegúrese de que estas ubicaciones estén seleccionadas.
+   * Seleccione cualquier otra unidad organizativa donde se encuentren usuarios, objetos InetOrgPerson, grupos, contactos y equipos. En la imagen anterior, se encuentran en la unidad organizativa ManagedObjects.
+   * Si usa el filtrado basado en el grupo, se debe incluir la unidad organizativa donde se encuentra el grupo.
+   * Tenga en cuenta que también puede configurar si las nuevas unidades organizativas agregadas tras la configuración de filtrado deben sincronizarse o no. Consulte la siguiente sección para obtener información detallada.
+7. Cuando termine, haga clic en el botón **Aceptar** para cerrar el cuadro de diálogo **Propiedades**.
+8. Para completar la configuración, debe ejecutar una **Importación completa** y una **Sincronización diferencial**. Continúe leyendo la sección [Aplicación y comprobación de los cambios](#apply-and-verify-changes).
 
 ### <a name="synchronize-new-ous"></a>Sincronización de unidades organizativas nuevas
-Las unidades organizativas nuevas creadas una vez que se ha configurado el filtrado se sincronizan de forma predeterminada. Esto se indica mediante una marca en la casilla. También se puede anular la selección de algunas subunidades organizativas. tooget este comportamiento, haga clic en el cuadro de hello hasta que esté en blanco y una marca de verificación azul (su estado predeterminado). A continuación, anule la selección de las subunidades que no desea toosynchronize.
+Las unidades organizativas nuevas creadas una vez que se ha configurado el filtrado se sincronizan de forma predeterminada. Esto se indica mediante una marca en la casilla. También se puede anular la selección de algunas subunidades organizativas. Para conseguirlo, haga clic en la casilla hasta que se ponga blanca con una marca azul (su estado predeterminado). Anule a continuación la selección de las subunidades que no desee sincronizar.
 
-Si no se sincronizan todas las subunidades organizativas, cuadro de hello es blanca con una marca de verificación azul.  
+Si todas las subunidades están sincronizadas, la casilla se pondrá blanca con una marca azul.  
 ![Unidad organizativa con todas las casillas activadas](./media/active-directory-aadconnectsync-configure-filtering/ousyncnewall.png)
 
-Si algunos subunidades ha anulado la selección, cuadro de hello es gris con una marca de verificación blanca.  
+Si ha anulado la selección de algunas subunidades, la casilla estará gris con una marca blanca.  
 ![Unidad organizativa con la selección de algunas subunidades organizativas anulada](./media/active-directory-aadconnectsync-configure-filtering/ousyncnew.png)
 
 Con esta configuración, se sincronizará la nueva unidad organizativa que se creó en ManagedObjects.
 
-Asistente para la instalación de Hello Azure AD Connect siempre crea esta configuración.
+El Asistente para la instalación de Azure AD Connect siempre creará esta configuración.
 
 ### <a name="dont-synchronize-new-ous"></a>No sincronizar unidades organizativas nuevas
-Puede configurar la sincronización de hello motor toonot sincronizar unidades organizativas nuevas una vez finalizada la configuración del filtrado de Hola. Este estado se indica en la interfaz de usuario que aparecen de color gris sólido con ninguna marca de verificación de cuadro de Hola Hola. tooget este comportamiento, haga clic en el cuadro de hello hasta que esté en blanco y sin marca de verificación. A continuación, seleccione Hola subunidades organizativas que desea toosynchronize.
+Puede configurar el motor de sincronización para que no sincronice las unidades organizativas nuevas una vez finalizada la configuración del filtrado. Este estado se indica en la interfaz de usuario con una casilla gris sin marcas. Para conseguirlo, haga clic en la casilla hasta que se ponga blanca sin marcas. A continuación, seleccione las subunidades que desee sincronizar.
 
-![Unidad organizativa con la raíz de hello anular la selección](./media/active-directory-aadconnectsync-configure-filtering/oudonotsyncnew.png)
+![Unidad organizativa con raíz sin seleccionar](./media/active-directory-aadconnectsync-configure-filtering/oudonotsyncnew.png)
 
 Con esta configuración, no se sincronizará la nueva unidad organizativa que se creó en ManagedObjects.
 
 ## <a name="attribute-based-filtering"></a>Filtrado basado en atributos
-Asegúrese de que está usando Hola de noviembre de 2015 ([1.0.9125](active-directory-aadconnect-version-history.md#1091250)) o una compilación posterior para estos pasos toowork.
+Asegúrese de usar la compilación de noviembre de 2015 ([1.0.9125](active-directory-aadconnect-version-history.md#1091250)) o una posterior para que estos pasos funcionen.
 
-Filtrado basado en atributos es objetos de toofilter de manera más flexibles de Hola. Puede usar power Hola de [aprovisionamiento declarativo](active-directory-aadconnectsync-understanding-declarative-provisioning.md) toocontrol prácticamente todos los aspectos de cuando un objeto se encuentra sincronizan tooAzure AD.
+El filtrado por atributo es la manera más flexible de filtrar objetos. Puede usar la capacidad del [aprovisionamiento declarativo](active-directory-aadconnectsync-understanding-declarative-provisioning.md) para controlar prácticamente todos los aspectos de la sincronización de un objeto con Azure AD.
 
-Puede aplicar [entrada](#inbound-filtering) filtrado de metaverso de toohello de Active Directory, y [saliente](#outbound-filtering) filtrado de hello metaverso tooAzure AD. Se recomienda aplicar filtrado entrante, ya es más fácil toomaintain de Hola. Solo se debe utilizar el filtrado de salida si se requiere toojoin objetos de más de un bosque antes de que puede tener lugar la evaluación de Hola.
+Se puede aplicar filtrado [entrante](#inbound-filtering), desde Active Directory hacia el metaverso, y [saliente](#outbound-filtering), desde el metaverso hacia Azure AD. Se recomienda aplicar filtrado entrante, ya que es el más fácil de mantener. El filtrado saliente solo debe usarse si es necesario para unir objetos de más de un bosque para realizar la evaluación.
 
 ### <a name="inbound-filtering"></a>Filtrado entrante
-Filtrado de entrada usa configuración predeterminada de hello, donde objetos tooAzure AD deben establecerse Hola metaverso atributo cloudFiltered no tooa valor toobe sincronizado. Si el valor de este atributo se establece demasiado**True**, a continuación, el objeto de hello no está sincronizado. No debería establecerse demasiado**False**, por diseño. toomake que otras reglas tienen Hola capacidad toocontribute un valor, este atributo solo se supone que los valores de hello toohave **True** o **NULL** (ausente).
+El filtrado entrante utiliza la configuración predeterminada en la que los objetos que se dirigen a Azure AD no tienen el atributo de metaverso cloudFiltered establecido en ningún valor que se vaya a sincronizar. Si el valor de este atributo está establecido en **True**, el objeto no se sincroniza. No debería estar establecido en **False**, por diseño. Para asegurarse de que otras reglas tengan la capacidad de aportar un valor, este atributo solo debería tener los valores **True** o **NULL** (ausente).
 
-En el filtrado de entrada, use power Hola de **ámbito** toodetermine que objetos toosynchronize o no se sincronice. Aquí es donde realizar ajustes toofit los requisitos de su propia organización. módulo de ámbito de Hello tiene un **grupo** y un **cláusula** toodetermine cuando una regla de sincronización está en ámbito. Un grupo contiene una o varias cláusulas. Existe un operador lógico AND entre varias cláusulas y un operador lógico OR entre varios grupos.
+En el filtrado entrante se utilizará el **ámbito** para determinar qué objetos se sincronizan y cuáles no. Aquí realizará ajustes para satisfacer los requisitos de su organización. El módulo de ámbito cuenta con un **grupo** y una **cláusula** para determinar cuándo una regla de sincronización está dentro de él. Un grupo contiene una o varias cláusulas. Existe un operador lógico AND entre varias cláusulas y un operador lógico OR entre varios grupos.
 
 Veamos un ejemplo:   
 ![Ámbito](./media/active-directory-aadconnectsync-configure-filtering/scope.png)  
 Se debe leer como **(departamento = TI) O BIEN (departamento = Ventas Y c = Estados Unidos)**.
 
-En hello después de ejemplos y los pasos, utilice el objeto de usuario de hello como ejemplo, pero se puede usar para todos los tipos de objetos.
+En los ejemplos y los pasos siguientes, usaremos el objeto de usuario como ejemplo, pero esto sirve para todo tipo de objetos.
 
-En los siguientes ejemplos de hello, valor de prioridad de hello empieza con 50. Puede ser cualquier número no usado, pero debe ser menor que 100.
+En los ejemplos siguientes, el valor de precedencia empieza por 50. Puede ser cualquier número no usado, pero debe ser menor que 100.
 
 #### <a name="negative-filtering-do-not-sync-these"></a>Filtrado negativo: "no sincronizar estos"
-En el siguiente ejemplo de Hola, filtra (no sincronizar) todos los usuarios que **extensionAttribute15** tiene el valor de hello **NoSync**.
+En el siguiente ejemplo, filtraremos (no sincronizaremos) todos los usuarios en los que **extensionAttribute15** tenga el valor **NoSync**.
 
-1. Inicie sesión en el servidor de toohello que se ejecuta la sincronización de Azure AD Connect con una cuenta que sea miembro del programa Hola a **ADSyncAdmins** grupo de seguridad.
-2. Iniciar **Editor de reglas de sincronización** de hello **iniciar** menú.
+1. Inicie sesión en el servidor donde se ejecuta la sincronización de Azure AD Connect con una cuenta que pertenezca al grupo de seguridad **ADSyncAdmins** .
+2. Inicie el **Synchronization Rules Editor** (Editor de reglas de sincronización) del menú **Inicio**.
 3. Asegúrese de que **Entrante** esté seleccionado y haga clic en **Agregar nueva regla**.
-4. Asigne a Hola regla un nombre descriptivo, como "*en desde AD – User DoNotSyncFilter*". Bosque correcto de hello seleccione, seleccione **usuario** como hello **tipo de objeto CS**y seleccione **persona** como hello **tipo de objeto MV**. En **Tipo de vínculo**, seleccione **Unir**. En **Precedencia**, escriba un valor que no use actualmente ninguna otra regla de sincronización (por ejemplo, 50) y haga clic en **Siguiente**.  
+4. Asigne a la regla un nombre descriptivo, como "*Entrante desde AD – Usuario FiltroNoSincronizar*". Seleccione el bosque correcto: **Usuario** para **CS object type** (Tipo de objeto de sistema conectado) y **Persona** para **MV object type** (Tipo de objeto de metaverso). En **Tipo de vínculo**, seleccione **Unir**. En **Precedencia**, escriba un valor que no use actualmente ninguna otra regla de sincronización (por ejemplo, 50) y haga clic en **Siguiente**.  
    ![Descripción de entrante 1](./media/active-directory-aadconnectsync-configure-filtering/inbound1.png)  
-5. En **Scoping filter** (Filtro de ámbito), haga clic en **Agregar grupo** y en **Agregar cláusula**. En **Atributo**, seleccione **ExtensionAttribute15**. Asegúrese de que **operador** se establece demasiado**igual**y escriba el valor de hello **NoSync** en hello **valor** cuadro. Haga clic en **Siguiente**.  
+5. En **Scoping filter** (Filtro de ámbito), haga clic en **Agregar grupo** y en **Agregar cláusula**. En **Atributo**, seleccione **ExtensionAttribute15**. Asegúrese de que el **Operador** esté configurado en **EQUAL** y escriba el valor **NoSync** en el cuadro **Valor**. Haga clic en **Siguiente**.  
    ![Ámbito de entrante 2](./media/active-directory-aadconnectsync-configure-filtering/inbound2.png)  
-6. Deje hello **unir** reglas vacío y, a continuación, haga clic en **siguiente**.
-7. Haga clic en **Agregar transformación**, seleccione hello **FlowType** como **constante**y seleccione **cloudFiltered** como hello  **Atributo de destino**. Hola **origen** cuadro de texto, escriba **True**. Haga clic en **agregar** regla de toosave Hola.  
+6. Deje las reglas de **unión** vacías y, después, haga clic en **Siguiente**.
+7. Haga clic en **Add Transformation** (Agregar transformación), establezca **FlowType** en **Constante** y **Atributo de destino** en **cloudFiltered**. En el cuadro de texto **Origen**, escriba **True**. Haga clic en **Agregar** para guardar la regla.  
    ![Transformación de entrante 3](./media/active-directory-aadconnectsync-configure-filtering/inbound3.png)
-8. configuración de hello toocomplete, deberá toorun un **sincronización completa**. Continúe leyendo Hola sección [aplicar y comprobar los cambios](#apply-and-verify-changes).
+8. Para completar la configuración, debe ejecutar una **sincronización completa**. Continúe leyendo la sección [Aplicación y comprobación de los cambios](#apply-and-verify-changes).
 
 #### <a name="positive-filtering-only-sync-these"></a>Filtrado positivo: "solo sincronizar estos"
-Cuando se expresan filtrado positivo puede ser más difícil porque también tiene tooconsider objetos que no son evidente toobe sincronizada, como salas de conferencias. También son filtro predeterminado de curso toooverride Hola regla de out-of-box hello **en desde AD - User Join**. Cuando se crea el filtro personalizado, asegúrese de que toonot incluyen objetos críticos del sistema, objetos de conflictos de replicación, los buzones especiales y las cuentas de servicio de Hola para Azure AD Connect.
+Expresar el filtrado positivo puede ser más complicado, ya que también se deben considerar también objetos que no sea obvio que se vayan a sincronizar, como las salas de conferencias. También va a invalidar el filtro predeterminado de la regla original **In from AD - User Join** (Dentro desde AD: unión de usuario). Cuando cree un filtro personalizado, asegúrese de no incluir objetos críticos del sistema, objetos de conflictos de replicación, buzones especiales y las cuentas de servicio de Azure AD Connect.
 
-opción de filtrado positivo Hola requiere dos reglas de sincronización. Necesitará una regla (o varios) con ámbito correcto de Hola de toosynchronize de objetos. También necesita una segunda regla de sincronización general que filtre todos los objetos que aún no se hayan identificado como objeto para sincronizar.
+La opción de filtrado positivo requiere dos reglas de sincronización. Necesita una regla (o varias) con el ámbito correcto de los objetos para sincronizarlos. También necesita una segunda regla de sincronización general que filtre todos los objetos que aún no se hayan identificado como objeto para sincronizar.
 
-En el siguiente ejemplo de Hola, sólo sincronizar objetos de usuario donde el atributo del departamento de hello tiene valor hello **ventas**.
+En el ejemplo siguiente, solo sincronizaremos los objetos de usuario en los que el atributo departamento tenga el valor **Ventas**.
 
-1. Inicie sesión en el servidor de toohello que se ejecuta la sincronización de Azure AD Connect con una cuenta que sea miembro del programa Hola a **ADSyncAdmins** grupo de seguridad.
-2. Iniciar **Editor de reglas de sincronización** de hello **iniciar** menú.
+1. Inicie sesión en el servidor donde se ejecuta la sincronización de Azure AD Connect con una cuenta que pertenezca al grupo de seguridad **ADSyncAdmins** .
+2. Inicie el **Synchronization Rules Editor** (Editor de reglas de sincronización) del menú **Inicio**.
 3. Asegúrese de que **Entrante** esté seleccionado y haga clic en **Agregar nueva regla**.
-4. Asigne a Hola regla un nombre descriptivo, como "*en desde AD – usuario ventas sincronizar*". Bosque correcto de hello seleccione, seleccione **usuario** como hello **tipo de objeto CS**y seleccione **persona** como hello **tipo de objeto MV**. En **Tipo de vínculo**, seleccione **Unir**. En **Precedencia**, escriba un valor que no use actualmente ninguna otra regla de sincronización (por ejemplo, 51) y haga clic en **Siguiente**.  
+4. Asigne a la regla un nombre descriptivo, como "*Entrante desde AD – Usuario Ventas sincronizar*". Seleccione el bosque correcto: **Usuario** para **CS object type** (Tipo de objeto de sistema conectado) y **Persona** para **MV object type** (Tipo de objeto de metaverso). En **Tipo de vínculo**, seleccione **Unir**. En **Precedencia**, escriba un valor que no use actualmente ninguna otra regla de sincronización (por ejemplo, 51) y haga clic en **Siguiente**.  
    ![Descripción de entrante 4](./media/active-directory-aadconnectsync-configure-filtering/inbound4.png)  
-5. En **Scoping filter** (Filtro de ámbito), haga clic en **Agregar grupo** y en **Agregar cláusula**. En **Atributo**, seleccione **department**. Asegúrese de que el operador está establecido demasiado**igual**y escriba el valor de hello **ventas** en hello **valor** cuadro. Haga clic en **Siguiente**.  
+5. En **Scoping filter** (Filtro de ámbito), haga clic en **Agregar grupo** y en **Agregar cláusula**. En **Atributo**, seleccione **department**. Asegúrese de que el Operador esté configurado en **EQUAL** y escriba el valor **Sales** en el cuadro **Valor**. Haga clic en **Siguiente**.  
    ![Ámbito de entrante 5](./media/active-directory-aadconnectsync-configure-filtering/inbound5.png)  
-6. Deje hello **unir** reglas vacío y, a continuación, haga clic en **siguiente**.
-7. Haga clic en **Agregar transformación**, seleccione **constante** como hello **FlowType**, seleccione hello y **cloudFiltered** como hello  **Atributo de destino**. Hola **origen** , escriba **False**. Haga clic en **agregar** regla de toosave Hola.  
+6. Deje las reglas de **unión** vacías y, después, haga clic en **Siguiente**.
+7. Haga clic en **Add Transformation** (Agregar transformación), establezca **FlowType** en **Constante** y **Atributo de destino** en **cloudFiltered**. En el cuadro **Origen**, escriba **False**. Haga clic en **Agregar** para guardar la regla.  
    ![Transformación de entrante 6](./media/active-directory-aadconnectsync-configure-filtering/inbound6.png)  
-   Se trata de un caso especial que se establece explícitamente cloudFiltered demasiado**False**.
-8. Ahora tenemos la regla de sincronización de catch-all de hello toocreate. Asigne a Hola regla un nombre descriptivo, como "*en de AD: el filtro de usuario general*". Bosque correcto de hello seleccione, seleccione **usuario** como hello **tipo de objeto CS**y seleccione **persona** como hello **tipo de objeto MV**. En **Tipo de vínculo**, seleccione **Unir**. En **Precedencia**, escriba un valor que no use actualmente ninguna otra regla de sincronización (por ejemplo, 99). Ha seleccionado un valor de prioridad que es la prioridad más alta (inferior) que la regla de sincronización anterior Hola. Pero también se ha dejado algo de espacio para que pueda agregar más reglas de filtrado de sincronización más tarde cuando se desea toostart sincronizar departamentos adicionales. Haga clic en **Siguiente**.  
+   Este es un caso especial en el que estableceremos cloudFiltered explícitamente en **False**.
+8. Ahora tenemos que crear la regla de sincronización de comodín. Asigne a la regla un nombre descriptivo, como "*Entrante desde AD – Usuario Filtro de comodín*". Seleccione el bosque correcto: **Usuario** para **CS object type** (Tipo de objeto de sistema conectado) y **Persona** para **MV object type** (Tipo de objeto de metaverso). En **Tipo de vínculo**, seleccione **Unir**. En **Precedencia**, escriba un valor que no use actualmente ninguna otra regla de sincronización (por ejemplo, 99). Ha seleccionado un valor de precedencia mayor (menor prioridad) que la regla de sincronización anterior. Pero también ha dejado algo de espacio para poder agregar más reglas de filtrado de sincronización más tarde, cuando quiera empezar a sincronizar departamentos adicionales. Haga clic en **Siguiente**.  
    ![Descripción de entrante 7](./media/active-directory-aadconnectsync-configure-filtering/inbound7.png)  
-9. Deje **Scoping filter** (Filtro de ámbito) vacío y haga clic en **Siguiente**. Un filtro vacío indica que esa regla hello es toobe aplica tooall objetos.
-10. Deje hello **unir** reglas vacío y, a continuación, haga clic en **siguiente**.
-11. Haga clic en **Agregar transformación**, seleccione **constante** como hello **FlowType**y seleccione **cloudFiltered** como hello  **Atributo de destino**. Hola **origen** , escriba **True**. Haga clic en **agregar** regla de toosave Hola.  
+9. Deje **Scoping filter** (Filtro de ámbito) vacío y haga clic en **Siguiente**. Un filtro vacío indica que la regla se aplica a todos los objetos.
+10. Deje las reglas de **unión** vacías y, después, haga clic en **Siguiente**.
+11. Haga clic en **Add Transformation** (Agregar transformación), establezca **FlowType** en **Constante** y **Atributo de destino** en **cloudFiltered**. En el cuadro **Origen**, escriba **True**. Haga clic en **Agregar** para guardar la regla.  
     ![Transformación de entrante 3](./media/active-directory-aadconnectsync-configure-filtering/inbound3.png)  
-12. configuración de hello toocomplete, deberá toorun un **sincronización completa**. Continúe leyendo Hola sección [aplicar y comprobar los cambios](#apply-and-verify-changes).
+12. Para completar la configuración, debe ejecutar una **sincronización completa**. Continúe leyendo la sección [Aplicación y comprobación de los cambios](#apply-and-verify-changes).
 
-Si necesita, puede crear más reglas de tipo primera Hola donde incluyen más objetos en la sincronización de Hola.
+Si es necesario, puede crear más reglas del primer tipo en las que se incluyan más objetos para la sincronización.
 
 ### <a name="outbound-filtering"></a>Filtrado saliente
-En algunos casos, resulta hello toodo necesarios filtrado después de hello objetos se hayan unido Hola metaverso. Por ejemplo, sería necesario toolook al atributo de correo electrónico de Hola Hola bosque de recursos y al atributo userPrincipalName de Hola Hola bosque de cuenta, toodetermine si se debe sincronizar un objeto. En estos casos, crear Hola filtrado en la regla de salida de hello.
+En algunos casos es necesario realizar el filtrado después de que los objetos se hayan unido en metaverso. Por ejemplo, para determinar si debe sincronizarse un objeto, podría ser necesario observar el atributo mail del bosque de recursos y el atributo userPrincipalName del bosque de cuentas. En estos casos, se crea el filtrado en la regla de salida.
 
-En este ejemplo, cambiar Hola filtrado para que solo los usuarios que tengan su correo electrónico y el userPrincipalName que terminen en @contoso.com se sincronizan:
+En este ejemplo, se cambia el filtrado de manera que se sincronicen solo los usuarios cuyos mail y userPrincipalName terminen en @contoso.com:
 
-1. Inicie sesión en el servidor de toohello que se ejecuta la sincronización de Azure AD Connect con una cuenta que sea miembro del programa Hola a **ADSyncAdmins** grupo de seguridad.
-2. Iniciar **Editor de reglas de sincronización** de hello **iniciar** menú.
+1. Inicie sesión en el servidor donde se ejecuta la sincronización de Azure AD Connect con una cuenta que pertenezca al grupo de seguridad **ADSyncAdmins** .
+2. Inicie el **Synchronization Rules Editor** (Editor de reglas de sincronización) del menú **Inicio**.
 3. En **Rules Type** (Tipo de reglas), haga clic en **Saliente**.
-4. Regla de Hola de búsqueda con el nombre **Out tooAAD – User Join**y haga clic en **editar**.
-5. En el menú emergente de hello, responder **Sí** toocreate una copia de la regla de Hola.
-6. En hello **descripción** página, cambie **prioridad** tooan valor sin usar, como 50.
-7. Haga clic en **filtro de ámbito** en Hola de navegación izquierdo y, a continuación, haga clic en **Agregar cláusula**. En **Atributo**, seleccione **mail**. En **Operador**, seleccione **ENDSWITH**. En **Valor**, escriba **@contoso.com** y haga clic en **Agregar cláusula**. En **Atributo**, seleccione **userPrincipalName**. En **Operador**, seleccione **ENDSWITH**. En **Valor**, escriba **@contoso.com**.
+4. Según la versión de Connect que utilice, o bien busque la regla denominada **Out to AAD – User Join** (Salida a AAD - Unión de usuario) o la regla **Out a AAD - User Join SOAInAD** (Salida a AAD - SOAInAD de unión de usuario) y haga clic en **Editar**.
+5. En el elemento emergente, responda **Sí** para crear una copia de la regla.
+6. En la página **Descripción**, cambie la **Precedencia** a un valor sin usar, como 50.
+7. Haga clic en **Scoping filter** (Filtro de ámbito) en el panel de navegación izquierdo y haga clic en **Agregar cláusula**. En **Atributo**, seleccione **mail**. En **Operador**, seleccione **ENDSWITH**. En **Valor**, escriba **@contoso.com** y haga clic en **Agregar cláusula**. En **Atributo**, seleccione **userPrincipalName**. En **Operador**, seleccione **ENDSWITH**. En **Valor**, escriba **@contoso.com**.
 8. Haga clic en **Guardar**.
-9. configuración de hello toocomplete, deberá toorun un **sincronización completa**. Continúe leyendo Hola sección [aplicar y comprobar los cambios](#apply-and-verify-changes).
+9. Para completar la configuración, debe ejecutar una **sincronización completa**. Continúe leyendo la sección [Aplicación y comprobación de los cambios](#apply-and-verify-changes).
 
 ## <a name="apply-and-verify-changes"></a>Aplicación y comprobación de los cambios
-Después de realizar los cambios de configuración, debe aplicarlos toohello objetos que ya están presentes en los sistemas de Hola. También es posible que los objetos de Hola que no están actualmente en el motor de sincronización de hello deben procesarse (y motor de sincronización de Hola necesita el sistema de origen de hello tooread nuevo tooverify su contenido).
+Una vez realizados los cambios de configuración, debe aplicarlos a los objetos ya presentes en el sistema. También es posible que se deban procesar objetos que no estén en el motor de sincronización (y que el motor de sincronización necesite volver a leer el sistema de origen para comprobar el contenido).
 
-Si se cambió la configuración de hello mediante el uso de **dominio** o **unidad organizativa** filtrado, deberá toodo un **importación completa**, seguido de **Delta sincronización**.
+Si cambió la configuración mediante el filtrado por **dominio** o **unidad organizativa**, deberá realizar una **Importación completa** seguida de una **Sincronización diferencial**.
 
-Si se cambió la configuración de hello mediante el uso de **atributo** filtrado, deberá toodo un **sincronización completa**.
+Si cambió la configuración mediante el filtrado por **atributo**, deberá llevar a cabo una **Sincronización completa**.
 
-Hola lo siguiente:
+Siga estos pasos:
 
-1. Iniciar **servicio de sincronización de** de hello **iniciar** menú.
-2. Seleccione **Conectores**. Hola **conectores** seleccione Hola conector donde se realizó una cambio de configuración anteriormente. En **Acciones**, seleccione **Ejecutar**.  
+1. Inicie el **servicio de sincronización** desde el menú **Inicio**.
+2. Seleccione **Conectores**. En la lista **Conectores**, elija el conector en el que realizó un cambio de configuración antes. En **Acciones**, seleccione **Ejecutar**.  
    ![Ejecución de conector](./media/active-directory-aadconnectsync-configure-filtering/connectorrun.png)  
-3. En **perfiles de ejecución**, seleccione Hola operación que se mencionó en la sección anterior de Hola. Si necesita toorun dos acciones, ha terminado de primera ejecución hello en segundo lugar después de hello. (hello **estado** columna es **inactivo** para conector de hello seleccionado.)
+3. En **Run profiles**(Perfiles de ejecución), seleccione la operación mencionada en la sección anterior. Si tiene que ejecutar dos acciones, ejecute la segunda una vez haya terminado la primera. (La columna **State** (Estado) es **Inactivo** para el conector seleccionado).
 
-Después de la sincronización de hello, todos los cambios están almacenados provisionalmente toobe exportado. Antes de implementar cambios de hello en Azure AD, desea tooverify que todos estos cambios son correctos.
+Después de la sincronización, todos los cambios se almacenan provisionalmente para exportarlos. Antes de realizar los cambios en Azure AD, se quiere comprobar que todos sean correctos.
 
-1. Inicie un símbolo del sistema y vaya demasiado`%Program Files%\Microsoft Azure AD Sync\bin`.
+1. Inicie un símbolo del sistema y vaya a `%Program Files%\Microsoft Azure AD Sync\bin`.
 2. Ejecute `csexport "Name of Connector" %temp%\export.xml /f:x`.  
-   nombre de Hola de hello conector está en el servicio de sincronización. Tiene un too"contoso.com similar nombre – AAD" para Azure AD.
+   El nombre del conector puede encontrarse en el servicio de sincronización. Tendrá un nombre similar a contoso.com – AAD en Azure AD.
 3. Ejecute `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv`.
-4. Ahora tiene un archivo en %temp% denominado export.csv que se puede examinar en Microsoft Excel. Este archivo contiene todos los cambios de hello sobre toobe exportado.
-5. Realice los cambios necesarios de hello toohello datos o configuración y ejecute estos pasos nuevo (importación, sincronizar y compruebe) hasta Hola cambios que tienen aproximadamente toobe exportar son los esperados.
+4. Ahora tiene un archivo en %temp% denominado export.csv que se puede examinar en Microsoft Excel. Este archivo contiene todos los cambios que se van a exportar.
+5. Realice los cambios necesarios en los datos o la configuración y ejecute estos pasos de nuevo (importación y sincronización y comprobación) hasta que los cambios que se vayan a exportar sean los previstos.
 
-Cuando esté satisfecho, exportar Hola cambios tooAzure AD.
+Cuando esté satisfecho, exporte los cambios a Azure AD.
 
-1. Seleccione **Conectores**. Hola **conectores** seleccione Hola conector de Azure AD. En **Acciones**, seleccione **Ejecutar**.
+1. Seleccione **Conectores**. En la lista **Conectores**, elija el conector de Azure AD. En **Acciones**, seleccione **Ejecutar**.
 2. En **Run profiles** (Perfiles de ejecución), seleccione **Exportar**.
-3. Si eliminan muchos objetos a los cambios de configuración, a continuación, verá un error en la exportación de hello al número hello es mayor que el umbral de hello configurado (de forma predeterminada en 500). Si ve este error, deberá tootemporarily disable Hola "[evitar eliminaciones accidentales](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)" característica.
+3. Si los cambios de configuración van a eliminar muchos objetos, verá un error al exportar si el número es mayor que el umbral configurado (de forma predeterminada, 500). Si aparece este error, deberá deshabilitar temporalmente la característica para [evitar eliminaciones por error](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md).
 
-Ahora es el nuevo programador de hello tooenable de tiempo.
+Ahora es el momento de volver a habilitar el programador.
 
-1. Iniciar **programador de tareas** de hello **iniciar** menú.
-2. Directamente en **biblioteca del programador de tareas**, tarea de Hola de búsqueda denominada **Azure AD Sync Scheduler**, menú contextual y seleccione **habilitar**.
+1. Abra el **Programador de tareas** en el menú **Inicio**.
+2. Directamente en **Biblioteca del Programador de tareas**, busque la tarea **Programador de Sincronización de Azure AD**, haga clic con el botón derecho en ella y seleccione **Habilitar**.
 
 ## <a name="group-based-filtering"></a>Filtrado basado en grupo
-Puede configurar Hola filtrado basado en grupos de primera vez que se instala Azure AD Connect con [instalación personalizada](active-directory-aadconnect-get-started-custom.md#sync-filtering-based-on-groups). Su destinados a una implementación piloto donde desea que solo un pequeño conjunto de toobe objetos sincronizado. Cuando deshabilite el filtrado por grupo, no lo podrá volver a habilitar. Tiene *no admite* toouse filtrado en una configuración personalizada basada en grupos. Solo ha admite tooconfigure esta característica utilizando el Asistente para la instalación de Hola. Cuando haya completado la prueba piloto, a continuación, utilice uno de hello otras opciones de filtrado en este tema. Cuando se utiliza OU filtrado junto con el filtrado basado en grupos, se debe incluir Hola unidades organizativas donde se encuentran grupo hello y sus miembros.
+Puede configurar el filtrado por grupo la primera vez que instale Azure AD Connect con la [instalación personalizada](active-directory-aadconnect-get-started-custom.md#sync-filtering-based-on-groups). Se ha diseñado para una implementación piloto donde se vaya a sincronizar solo un pequeño conjunto de objetos. Cuando deshabilite el filtrado por grupo, no lo podrá volver a habilitar. El filtrado por grupo *no es compatible* con la configuración personalizada. Solo se admite para configurar esta característica con el Asistente para instalación. Cuando haya completado la prueba piloto, utilice una de las opciones de filtrado de este tema. Si se usa el filtrado por UO junto con el filtrado basado en grupo, se deben incluir las unidades organizativas donde se encuentran el grupo y sus miembros.
 
-Al sincronizar varios bosques de AD, puede configurar el filtrado basado en grupos mediante la especificación de un grupo diferente para cada conector de AD. Si desea toosynchronize un usuario en un bosque de AD y hello mismo usuario tiene uno o más correspondiente FSP (entidad de seguridad externa) objetos en otros bosques de AD, debe asegurarse de ese objeto de usuario de Hola y sus correspondientes objetos FSP están dentro de basado en grupos filtrar el ámbito. Si uno o varios objetos FSP Hola se excluyen mediante el filtrado basado en el grupo, el objeto de usuario de hello no estará sincronizada tooAzure AD.
+Al sincronizar varios bosques de AD, puede configurar el filtrado basado en grupos mediante la especificación de un grupo diferente para cada conector de AD. Si desea sincronizar un usuario en un bosque de AD y el mismo usuario tiene uno o varios objetos de FSP (entidad de seguridad externa) en otros bosques de AD, debe asegurarse de que el objeto de usuario y todos sus objetos de FSP correspondientes se encuentran en el ámbito de filtrado basado en grupos. Si uno o varios objetos de FSP se excluyen mediante el filtrado basado en grupos, el objeto de usuario no se sincronizará con Azure AD.
 
 ## <a name="next-steps"></a>Pasos siguientes
 - Más información sobre la configuración de la [Sincronización de Azure AD Connect](active-directory-aadconnectsync-whatis.md).

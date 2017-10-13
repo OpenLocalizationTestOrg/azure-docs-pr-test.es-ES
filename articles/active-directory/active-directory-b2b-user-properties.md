@@ -1,5 +1,5 @@
 ---
-title: "aaaProperties de un usuario de la colaboración B2B de Azure Active Directory | Documentos de Microsoft"
+title: "Propiedades de un usuario de colaboración B2B de Azure Active Directory | Microsoft Docs"
 description: "Las propiedades de un usuario de colaboración B2B de Azure Active Directory son configurables."
 services: active-directory
 documentationcenter: 
@@ -15,27 +15,27 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/25/2017
 ms.author: sasubram
-ms.openlocfilehash: 78709f64430ed4c14eadf4dc257f175c24698c5e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6e49cb202ed03bf50fb9ca34d34924cda434829c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Propiedades de un usuario de colaboración B2B de Azure Active Directory
 
-Un usuario de colaboración de negocio a negocio (B2B) de Azure Active Directory (Azure AD) es un usuario con UserType = Guest. Este usuario invitado normalmente proviene de una organización del asociado y tiene limitado privilegios Hola invitar a directorio, de forma predeterminada.
+Un usuario de colaboración de negocio a negocio (B2B) de Azure Active Directory (Azure AD) es un usuario con UserType = Guest. Dicho usuario suele ser de una organización asociada y tiene, de forma predeterminada, privilegios limitados en el directorio de la invitación.
 
-Función hello invitar a las necesidades de organización, un usuario de la colaboración B2B de Azure AD puede estar en uno de hello siguiendo los Estados de cuenta:
+En función de las necesidades de la organización invitadora, un usuario de colaboración de B2B de Azure AD puede tener cualquiera de los siguientes estados de cuenta:
 
-- Estado 1: Alojada en una instancia externa de Azure AD y se representa como un usuario invitado en hello invitar a la organización. En este caso, usuario de B2B de hello inicia sesión con una cuenta de Azure AD que pertenece el inquilino toohello invitado. Si la organización del asociado de hello no usa Azure AD, todavía se crea el usuario guest de hello en Azure AD. requisitos de Hello son que canjear su invitación y Azure AD comprueba su dirección de correo electrónico. Esta solución también se denomina inquilino Just-In-Time (JIT) o inquilino "viral".
+- Estado 1: alojado en una instancia externa de Azure AD y representado como un usuario invitado en la organización que invita. En este caso, el usuario de B2B inicia sesión con una cuenta de Azure AD que pertenece al inquilino invitado. Aunque la organización asociada no use Azure AD, se crea el usuario invitado en Azure AD. Los requisitos son que el usuario canjea su invitación y Azure AD comprueba su dirección de correo electrónico. Esta solución también se denomina inquilino Just-In-Time (JIT) o inquilino "viral".
 
-- Estado 2: Alojada en una cuenta de Microsoft y se representa como un usuario invitado en la organización del host Hola. En este caso, usuario guest de hello inicia sesión con una cuenta de Microsoft. Hola invitó identidades sociales del usuario (google.com o similar), que no es una cuenta de Microsoft, se crea como una cuenta de Microsoft durante la oferta canje.
+- Estado 2: alojado en una cuenta Microsoft y representado como usuario invitado en la organización host. En este caso, el usuario invitado inicia sesión con una cuenta Microsoft. La identidad social (google.com o similar), que no es una cuenta Microsoft, se crea como una cuenta Microsoft durante el canje de la oferta.
 
-- Estado 3: Alojada en Active Directory de la organización del host de hello en local y se sincronizan con Azure la organización del host de hello AD. Durante esta versión, debe usar PowerShell toomanually cambio Hola UserType de dichos usuarios en la nube de Hola.
+- Estado 3: alojado en la instancia de Active Directory local de la organización host y sincronizado con la instancia de Azure AD de la organización host. Durante esta versión se debe usar PowerShell para cambiar manualmente el valor de UserType de dichos usuarios en la nube.
 
-- Estado 4: Alojada en Azure la organización de host AD con UserType = invitado y las credenciales que administra la organización del host Hola.
+- Estado 4: alojado en la instancia de Azure AD de la organización host con UserType = Guest y credenciales que administra dicha organización.
 
-  ![mostrar las iniciales del invitador Hola](media/active-directory-b2b-user-properties/redemption-diagram.png)
+  ![Se muestran las iniciales del invitador](media/active-directory-b2b-user-properties/redemption-diagram.png)
 
 
 Ahora, veamos cómo es un usuario de colaboración de B2B de Azure AD en estado 1 en Azure AD.
@@ -48,45 +48,45 @@ Ahora, veamos cómo es un usuario de colaboración de B2B de Azure AD en estado 
 
 ![Después del canje de la oferta](media/active-directory-b2b-user-properties/after-redemption.png)
 
-## <a name="key-properties-of-hello-azure-ad-b2b-collaboration-user"></a>Propiedades de clave de usuario de la colaboración B2B de Azure AD de Hola
+## <a name="key-properties-of-the-azure-ad-b2b-collaboration-user"></a>Propiedades clave del usuario de colaboración de B2B de Azure AD
 ### <a name="usertype"></a>UserType
-Esta propiedad indica la relación de Hola de inquilinos de hello usuario toohello host. Esta propiedad puede tener dos valores:
-- Miembros: Este valor indica un empleado de la organización del host de Hola y un usuario de nóminas de la organización de Hola. Por ejemplo, este usuario espera sitios que sólo toointernal acceso toohave. Este usuario no se consideraría un colaborador externo.
+Esta propiedad indica la relación del usuario con el espacio host. Esta propiedad puede tener dos valores:
+- Member: este valor indica un empleado de la organización host y un usuario en la plantilla de dicha organización. Por ejemplo, este usuario espera tener acceso solo a sitios internos. Este usuario no se consideraría un colaborador externo.
 
-- Invitado: Este valor indica que un usuario que no sea considerado como empresa toohello interno, como un colaborador externo, un socio, un cliente o un usuario similar. Dicho usuario no ser tooreceive esperado memorando interno del CEO o recibir los beneficios de la empresa, por ejemplo.
+- Invitado: este valor indica un usuario que no se considera interno de la empresa, como un colaborador externo, un asociado, un cliente o un usuario similar. No se espera que un usuario así reciba una comunicación interna del CEO o que reciba beneficios de la empresa, por ejemplo.
 
   > [!NOTE]
-  > Hola UserType no tiene ninguna relación toohow Hola usuario inicia sesión, el rol del directorio Hola de usuario de Hola y así sucesivamente. Esta propiedad simplemente indica la organización del host del usuario de hello relación toohello y permite la organización de hello tooenforce directivas que dependen de esta propiedad.
+  > UserType no tiene relación alguna con la forma en que el usuario inicia sesión, el rol de directorio del usuario, etc. Esta propiedad simplemente indica la relación del usuario con la organización host y permite a la organización exigir directivas que dependan de esta propiedad.
 
-### <a name="source"></a>Origen
-Esta propiedad indica cómo usuario Hola inicia sesión.
+### <a name="source"></a>Source
+Esta propiedad indica la forma en que el usuario inicia sesión.
 
 - Invited User: este usuario ha recibido la invitación, pero aún no la ha canjeado.
 
-- Active Directory externo: Este usuario está alojado en una organización externa y se autentica con una cuenta de Azure AD que pertenece toohello otra organización. Este tipo de inicio de sesión corresponde tooState 1.
+- External Active Directory: este usuario está alojado en una organización externa y se autentica mediante una cuenta de Azure AD que pertenece a la otra organización. Este tipo de inicio de sesión corresponde al estado 1.
 
-- Microsoft account: el usuario está alojado en una cuenta Microsoft y se autentica mediante una cuenta Microsoft. Este tipo de inicio de sesión corresponde tooState 2.
+- Microsoft account: el usuario está alojado en una cuenta Microsoft y se autentica mediante una cuenta Microsoft. Este tipo de inicio de sesión corresponde al estado 2.
 
-- Windows Server Active Directory: Este usuario ha iniciado sesión desde local Active Directory que pertenece toothis organización. Este tipo de inicio de sesión corresponde tooState 3.
+- Windows Server Active Directory: este usuario inicia sesión desde una instancia de Active Directory local que pertenece a esta organización. Este tipo de inicio de sesión corresponde al estado 3.
 
-- Azure Active Directory: Este usuario se autentica con una cuenta de Azure AD que pertenece toothis organización. Este tipo de inicio de sesión corresponde tooState 4.
+- Azure Active Directory: este usuario se autentica mediante una cuenta de Azure AD que pertenece a esta organización. Este tipo de inicio de sesión corresponde al estado 4.
   > [!NOTE]
   > Source y UserType son propiedades independientes. Un valor de Source no implica un valor concreto de UserType.
 
 ## <a name="can-azure-ad-b2b-users-be-added-as-members-instead-of-guests"></a>¿Se pueden agregar usuarios de B2B de Azure AD como miembros, en lugar de como invitados?
-Normalmente, un usuario invitado y uno de B2B de Azure AD son sinónimos. Por tanto, de manera predeterminada los usuarios de colaboración de B2B de Azure AD se agregan como usuario con UserType = Guest. Sin embargo, en algunos casos, organización del asociado de hello es que un miembro de una organización de host más grande de organización toowhich Hola también pertenece. Si es así, la organización de host de hello puede querer tootreat a los usuarios en la organización del asociado de hello como miembros en lugar de los invitados. Usar hello las API de Azure AD B2B invitación Manager tooadd o invitar a un usuario de organización Hola asociada organización toohello host como un miembro.
+Normalmente, un usuario invitado y uno de B2B de Azure AD son sinónimos. Por tanto, de manera predeterminada los usuarios de colaboración de B2B de Azure AD se agregan como usuario con UserType = Guest. Sin embargo, en algunos casos, la organización asociada forma parte de una organización mayor a la que también pertenece la organización host. En ese caso, la organización host puede tratar a los usuarios de la organización asociada como miembros, en lugar de como invitados. Use las API del Administrador de invitaciones de B2B de Azure AD para agregar un usuario de la organización asociada a la organización host como miembro, o para invitarlo.
 
-## <a name="filter-for-guest-users-in-hello-directory"></a>Filtro para usuarios invitados en el directorio de Hola
+## <a name="filter-for-guest-users-in-the-directory"></a>Filtro de usuarios invitados en el directorio
 
 ![Filtrar usuarios invitados](media/active-directory-b2b-user-properties/filter-guest-users.png)
 
 ## <a name="convert-usertype"></a>Conversión de UserType
-Actualmente, es posible que los usuarios tooconvert UserType del miembro tooGuest y viceversa mediante PowerShell. Sin embargo, Hola propiedad UserType debe organización de toohello de relación del usuario de toorepresent Hola. Por lo tanto, debe cambiar valor Hola de esta propiedad si relación Hola de organización de hello usuario toohello cambia. ¿Si se cambia la relación de saludo del usuario de hello, deben ser atendidos problemas, como si debe cambiar el nombre de entidad de seguridad de usuario (UPN) de hello? ¿Debe continuar usuario hello toohave acceso toohello mismos recursos? ¿Debe asignarse un buzón de correo? Por lo tanto, se recomienda no cambiar Hola UserType mediante PowerShell como una actividad atómica. Además, en caso de que esta propiedad se vuelva inmutable mediante PowerShell, no se recomienda depender de este valor.
+Actualmente, los usuarios pueden convertir el valor Member de UserType en Guest, y viceversa, mediante PowerShell. Sin embargo, se supone que la propiedad UserType representa la relación del usuario con la organización. Por tanto, el valor de esta propiedad solo se debe cambiar si cambia la relación del usuario con la organización. Si cambia la relación del usuario, ¿deben atenderse problemas como si se debe cambiar el nombre principal de usuario (UPN)? ¿Debe el usuario seguir teniendo acceso a los mismos recursos? ¿Debe asignarse un buzón de correo? Por lo tanto, no se recomienda cambiar el valor de UserType mediante el uso de PowerShell como una actividad atómica. Además, en caso de que esta propiedad se vuelva inmutable mediante PowerShell, no se recomienda depender de este valor.
 
 ## <a name="remove-guest-user-limitations"></a>Eliminación de limitaciones de usuarios invitados
-Puede haber casos donde probablemente prefiera toogive los privilegios más altos de los usuarios de invitado. Puede agregar un rol de tooany de usuario de invitado e incluso eliminar restricciones de usuario de invitado de hello predeterminadas en hello directory toogive un Hola usuario mismo privilegios como miembros.
+Puede haber casos en los que desee ofrecer a los usuarios invitados privilegios más altos. Puede agregar un usuario invitado a cualquier rol e, incluso, eliminar las restricciones de usuario invitado predeterminadas en el directorio para concederle los mismos privilegios que a los miembros.
 
-Es posible tooturn desactivar limitaciones de usuario de invitado de hello predeterminadas para que se proporciona un usuario invitado en el directorio de la empresa de Hola Hola los mismos permisos que un usuario de miembro.
+Se pueden desactivar las limitaciones de usuarios invitados predeterminadas para que a los usuarios invitados del directorio de la empresa se les concedan los mismos permisos que a los usuarios que son miembros.
 
 ![Eliminación de limitaciones de usuarios invitados](media/active-directory-b2b-user-properties/remove-guest-limitations.png)
 
@@ -95,7 +95,7 @@ Es posible tooturn desactivar limitaciones de usuario de invitado de hello prede
 Examine nuestros otros artículos sobre la colaboración B2B de Azure AD:
 
 * [¿Qué es la colaboración B2B de Azure AD?](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [Agregar un rol de tooa de usuario de la colaboración B2B](active-directory-b2b-add-guest-to-role.md)
+* [Incorporación de usuarios de colaboración B2B a un rol](active-directory-b2b-add-guest-to-role.md)
 * [Delegación de las invitaciones de colaboración B2B](active-directory-b2b-delegate-invitations.md)
 * [Auditoría y generación de informes de usuarios de colaboración B2B](active-directory-b2b-auditing-and-reporting.md)
 * [Grupos dinámicos y colaboración B2B](active-directory-b2b-dynamic-groups.md)

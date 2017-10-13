@@ -1,7 +1,7 @@
-Hola portal de Azure, puede ver estado de conexión de Hola de una puerta de enlace de VPN de administrador de recursos desplazándose toohello conexión. Hello pasos siguientes muestran una manera toonavigate tooyour conexión y comprueben.
+En Azure Portal, puede ver el estado de la conexión de una instancia de VPN Gateway de Resource Manager navegando a la conexión. Los pasos siguientes muestran una manera de navegar a su conexión y realizar las comprobaciones necesarias.
 
-1. Hola [portal de Azure](http://portal.azure.com), haga clic en **todos los recursos** y navegar por la puerta de enlace de red virtual tooyour.
-2. En la hoja de hello para la puerta de enlace de red virtual, haga clic en **conexiones**. Puede ver el estado de Hola de cada conexión.
-3. Haga clic en nombre de Hola de conexión de Hola que desea tooverify tooopen **Essentials**. En Essentials, puede ver más información acerca de la conexión. Hola **estado** es 'Correcto' y 'Conectado' cuando haya realizado una conexión correcta.
+1. En [Azure Portal](http://portal.azure.com), haga clic en **Todos los recursos** y navegue a la puerta de enlace de la red virtual.
+2. En la hoja de la puerta de enlace de la red virtual, haga clic en **Conexiones**. Puede ver el estado de cada conexión.
+3. Haga clic en el nombre de la conexión que desee comprobar para abrir **Essentials**. En Essentials, puede ver más información acerca de la conexión. El valor de **Estado** será "Correcto" y "Conectado" cuando haya realizado una conexión satisfactoria.
 
   ![Comprobación de la conexión de VPN Gateway mediante Azure Portal](./media/vpn-gateway-verify-connection-portal-rm-include/connectionsucceeded.png)

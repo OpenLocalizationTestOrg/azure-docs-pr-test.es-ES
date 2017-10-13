@@ -1,6 +1,6 @@
 ---
-title: "aaaTranslate vínculos y Proxy de aplicación de las direcciones URL Azure AD | Documentos de Microsoft"
-description: "Abarca conceptos básicos de hello acerca de los conectores de Proxy de aplicación de Azure AD."
+title: "Traducción de vínculos y direcciones URL del Proxy de aplicación de Azure AD | Microsoft Docs"
+description: "Se explican los conceptos básicos acerca de los conectores del Proxy de aplicación de Azure AD."
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -15,78 +15,78 @@ ms.date: 08/10/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 7ec2b9fb01617067cf5d676037877bf72c19217b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 57218346d236b376d2227e0ffaea6c6dd5ebe855
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Redirección de los vínculos codificados de manera rígida para las aplicaciones publicadas con el Proxy de aplicación de Azure AD
 
-El Proxy de aplicación de Azure AD hace su toousers disponibles de aplicaciones locales que son remotos o en sus propios dispositivos. Sin embargo, algunas aplicaciones se desarrollaron con vínculos locales incrustados en hello HTML. Estos vínculos no funcionan correctamente cuando se utiliza la aplicación hello de forma remota. Cuando haya varios local las aplicaciones punto tooeach otros, los usuarios esperan Hola vínculos tookeep trabajar cuando no están en la oficina de Hola. 
+El Proxy de aplicación de Azure AD permite que las aplicaciones locales estén disponibles para los usuarios remotos o en sus propios dispositivos. Algunas aplicaciones, sin embargo, se desarrollaron con vínculos locales insertados en el código HTML. Estos vínculos no funcionan correctamente si la aplicación se usa de forma remota. Cuando tiene varias aplicaciones locales que se señalan entre sí, sus usuarios esperan que los vínculos sigan funcionando mientras no se encuentran en la oficina. 
 
-toomake de manera mejor de Hello garantiza que los vínculos funcionen Hola igual tanto dentro y fuera de la red corporativa tooconfigure Hola direcciones URL externas de su toobe de aplicaciones de la misma Hola como su direcciones URL internas. Use [dominios personalizados](active-directory-application-proxy-custom-domains.md) tooconfigure su toohave direcciones URL externa su dominio corporativo nombre en lugar de dominio de proxy de aplicación Hola predeterminado.
+La mejor forma de asegurarse de que los vínculos funcionan del mismo modo tanto dentro como fuera de la red corporativa es configurar las direcciones URL externas de sus aplicaciones para que sean iguales que las direcciones URL internas. Use [dominios personalizados](active-directory-application-proxy-custom-domains.md) para configurar las direcciones URL externas de modo que tengan su nombre de dominio corporativo en lugar del dominio del proxy de aplicación predeterminado.
 
-Si no se puede usar dominios personalizados en el inquilino, la característica de traducción de vínculo de hello del Proxy de aplicación mantiene sus vínculos trabajar independientemente de dónde están los usuarios. Si tiene aplicaciones que apuntan directamente toointernal extremos o puertos, puede asignar estas toohello las direcciones URL internas publicado direcciones URL externas Proxy de aplicación. Cuando se habilita la traducción de vínculos y el Proxy de aplicación busca a través de etiquetas de JavaScript selectas, CSS y HTML para vínculos internos publicados. A continuación, servicio de Proxy de aplicación Hola traduce para que los usuarios obtienen una experiencia sin interrupciones.
+Si no puede usar dominios personalizados en el inquilino, la característica de traducción de vínculos del Proxy de aplicación hará que sus vínculos sigan funcionando independientemente de dónde se encuentren los usuarios. Cuando tiene aplicaciones que apunta directamente a puertos o puntos de conexión internos, puede asignar estas direcciones URL internas a las direcciones URL del proxy de aplicación externas publicadas. Cuando se habilita la traducción de vínculos y el Proxy de aplicación busca a través de etiquetas de JavaScript selectas, CSS y HTML para vínculos internos publicados. A continuación, el servicio de Proxy de aplicación los traduce para que sus usuarios tengan una experiencia sin interrupciones.
 
 >[!NOTE]
->Hola característica de traducción de vínculo es para los inquilinos que, por cualquier motivo, no se pueden usar dominios personalizados toohave Hola mismas direcciones URL internas y externas para sus aplicaciones. Antes de habilitar esta característica, vea si los [dominios personalizados en el Proxy de aplicación de Azure AD](active-directory-application-proxy-custom-domains.md) son adecuados para usted.
+>La característica de traducción de vínculos es para inquilinos que, por cualquier motivo, no pueden usar dominios personalizados para tener las mismas direcciones URL internas y externas para sus aplicaciones. Antes de habilitar esta característica, vea si los [dominios personalizados en el Proxy de aplicación de Azure AD](active-directory-application-proxy-custom-domains.md) son adecuados para usted.
 >
->O bien, si aplicación hello necesita tooconfigure con traducción de vínculos de SharePoint, vea [configurar asignaciones de acceso alternativas para SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx) para vínculos de toomapping de otro enfoque.
+>O, en caso de que la aplicación que necesita configurar con la traducción de vínculos sea SharePoint, consulte [Configurar las asignaciones alternativas de acceso en SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx) para otro enfoque para la asignación de vínculos.
 
 ## <a name="how-link-translation-works"></a>Funcionamiento de la traducción de vínculos
 
-Después de la autenticación, al servidor de proxy de hello pasa usuario de toohello de datos de aplicación Hola, Proxy de aplicación examina la aplicación hello para vínculos codificado de forma rígida y los reemplaza con sus respectivas publicado direcciones URL externas.
+Después de la autenticación, cuando el servidor proxy pasa los datos de aplicación al usuario, el Proxy de aplicación busca vínculos codificados de manera rígida en la aplicación y los reemplaza por sus direcciones URL externas publicadas correspondientes.
 
-El Proxy de aplicación da por supuesto que las aplicaciones están codificadas en UTF-8. Si no es el caso de hello, especificar tipo de codificación de hello en un encabezado de respuesta http, como `Content-Type:text/html;charset=utf-8`.
+El Proxy de aplicación da por supuesto que las aplicaciones están codificadas en UTF-8. Si no es el caso, especifique el tipo de codificación en un encabezado de respuesta HTTP, como `Content-Type:text/html;charset=utf-8`.
 
 ### <a name="which-links-are-affected"></a>¿Qué vínculos se ven afectados?
 
-función de traducción de vínculos de Hello solo busca vínculos que están en las etiquetas de código en el cuerpo de Hola de una aplicación. El Proxy de aplicación tiene una característica independiente para traducir cookies o direcciones URL en los encabezados. 
+La característica de traducción de vínculos solo busca los vínculos que estén en las etiquetas de código del cuerpo de una aplicación. El Proxy de aplicación tiene una característica independiente para traducir cookies o direcciones URL en los encabezados. 
 
 Hay dos tipos comunes de vínculos internos en aplicaciones locales:
 
-- **Los vínculos internos relativos** tooa de ese punto comparten recursos en una estructura de archivo local como `/claims/claims.html`. Estos vínculos automáticamente funcionan en aplicaciones que se publican a través de Proxy de aplicación y seguir toowork con o sin la traducción de vínculos. 
-- **Los vínculos internos codificado de forma rígida** tooother aplicaciones como local `http://expenses` o publicar archivos como `http://expenses/logo.jpg`. función de traducción de vínculos de Hola funciona en los vínculos internos codificado de forma rígida y cambios de toopoint toohello direcciones URL externas que los usuarios remotos deben toogo a través de.
+- **Vínculos internos relativos** que apuntan a un recurso compartido en una estructura de archivos local como `/claims/claims.html`. Estos vínculos funcionan automáticamente en aplicaciones que se publican mediante el Proxy de aplicación y siguen funcionando con o sin traducción de vínculos. 
+- **Vínculos internos codificados de manera rígida** a otras aplicaciones locales como `http://expenses` o archivos publicados como `http://expenses/logo.jpg`. La característica de traducción de vínculos funciona en vínculos internos codificados de manera rígida y los modifica para que apunten a las direcciones URL por las que deben pasar los usuarios remotos.
 
-### <a name="how-do-apps-link-tooeach-other"></a>¿Cómo vincular tooeach otra aplicaciones?
+### <a name="how-do-apps-link-to-each-other"></a>¿Cómo se vinculan entre sí las aplicaciones?
 
-Traducción de vínculos está habilitada para cada aplicación, para que tenga control sobre la experiencia del usuario de hello en hello por aplicación. Activar la traducción de vínculos para una aplicación cuando desee que los vínculos de hello *de* toobe de esa aplicación traducida, no los vínculos *a* esa aplicación. 
+La traducción de vínculos está habilitada para cada aplicación, para que se tenga control sobre la experiencia del usuario en el nivel por aplicación. Active la traducción de vínculos para una aplicación cuando desee que se traduzcan los vínculos *desde* esa aplicación y no los vínculos *hacia* ella. 
 
-Por ejemplo, suponga que tiene tres aplicaciones publicadas a través de Proxy de aplicación que todos vinculan tooeach otro: ventajas y gastos, desplazamiento. Existe una cuarta aplicación, Comentarios, que no se publica mediante el Proxy de aplicación.
+Por ejemplo, imagine que tiene tres aplicaciones publicadas a través del Proxy de aplicación que se vinculan entre sí: Beneficios, Gastos y Viajes. Existe una cuarta aplicación, Comentarios, que no se publica mediante el Proxy de aplicación.
 
-Al habilitar la traducción de vínculos para la aplicación de beneficios de hello, Hola vínculos tooExpenses y desplazamiento son las direcciones URL externas toohello redirigida para esas aplicaciones, pero no se redirige Hola vínculo tooFeedback porque no hay ninguna dirección URL externa. Vínculos de gastos y viajes tooBenefits Atrás no funcionan, porque no se habilitó la traducción de vínculos para esas dos aplicaciones.
+Cuando habilita la traducción de vínculos para la aplicaciones Beneficios, los vínculos a Gastos y Viajes se redirigen a las direcciones URL externas de esas aplicaciones, pero el vínculo a Comentarios no se redirige porque no hay ninguna dirección URL externa. Los vínculos de Gastos y Viajes a Beneficios no funcionan, porque la traducción de vínculos no está habilitada para esas dos aplicaciones.
 
-![Vínculos desde aplicaciones de tooother ventajas cuando se habilita la traducción de vínculos](./media/application-proxy-link-translation/one_app.png)
+![Vínculos desde Beneficios a las otras aplicaciones cuando está habilitada la traducción de vínculos](./media/application-proxy-link-translation/one_app.png)
 
 ### <a name="which-links-arent-translated"></a>¿Qué vínculos no se traducen?
 
-tooimprove rendimiento y seguridad, algunos vínculos no traducido:
+Para mejorar el rendimiento y la seguridad, no se traducen algunos vínculos:
 
 - Los vínculos que no están dentro de las etiquetas de código. 
 - Los vínculos que no están en HTML, CSS o JavaScript. 
-- Los vínculos internos que se abren desde otros programas. No se traducirán los vínculos que se envían a través de correos electrónicos o mensajes instantáneos o que se incluyen en otros documentos. los usuarios de Hello necesitan tooknow toogo toohello dirección URL externa.
+- Los vínculos internos que se abren desde otros programas. No se traducirán los vínculos que se envían a través de correos electrónicos o mensajes instantáneos o que se incluyen en otros documentos. Los usuarios deben saber ir a la dirección URL externa.
 
-Si necesita toosupport uno de estos dos casos, use Hola mismo direcciones URL internas y externas en lugar de traducción de vínculos.  
+Si necesita admitir uno de estos dos escenarios, use las mismas direcciones URL internas y externas en lugar de la traducción de vínculos.  
 
 ## <a name="enable-link-translation"></a>Habilitación de la traducción de vínculos
 
 Comenzar a trabajar con la traducción de vínculos es tan fácil como hacer clic en un botón:
 
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com) como administrador.
-2. Vaya demasiado**Azure Active Directory** > **aplicaciones empresariales** > **todas las aplicaciones** > aplicación Hola seleccione desea toomanage > **Proxy de aplicación**.
-3. Activar **traducir las direcciones URL en el cuerpo de la aplicación** demasiado**Sí**.
+1. Inicie sesión en [Azure Portal](https://portal.azure.com) como administrador.
+2. Vaya a **Azure Active Directory** > **Aplicaciones empresariales** > **Todas las aplicaciones** > seleccione la aplicación que desea administrar > **Proxy de aplicación**.
+3. Establezca **Translate URLs in application body** (Traducir direcciones URL en el cuerpo de la aplicación) en **Sí**.
 
-   ![Seleccione Sí tootranslate URL en el cuerpo de la aplicación](./media/application-proxy-link-translation/select_yes.png).
-4. Seleccione **guardar** tooapply los cambios.
+   ![Seleccionar Sí para traducir las direcciones URL en el cuerpo de la aplicación](./media/application-proxy-link-translation/select_yes.png).
+4. Seleccione **Guardar** para aplicar los cambios.
 
-Ahora, cuando los usuarios tienen acceso a esta aplicación, proxy Hola examinará automáticamente para las direcciones URL internas que se han publicado a través de Proxy de aplicación en su inquilino.
+Ahora, cuando los usuarios accedan a esta aplicación, el proxy examinará automáticamente las direcciones URL que se hayan publicado a través del Proxy de aplicación en el inquilino.
 
 ## <a name="send-feedback"></a>Envío de comentarios
 
-Queremos su toomake ayuda esta característica funcione para todas las aplicaciones. Se buscar más de 30 etiquetas en HTML y CSS y considere qué toosupport de casos de JavaScript. Si tiene un ejemplo de vínculos generados que no se está traduciendo, envíe un fragmento de código demasiado[comentarios de Proxy de aplicación](mailto:aadapfeedback@microsoft.com). 
+Queremos que nos ayude a hacer que esta característica funcione para todas las aplicaciones. Buscamos en más de 30 etiquetas en HTML y CSS y estamos evaluando qué casos de JavaScript admitir. Si tiene un ejemplo de vínculos generados que no está traducido, envíe un fragmento de código a [Comentarios del Proxy de aplicación](mailto:aadapfeedback@microsoft.com). 
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Usar dominios personalizados con el Proxy de aplicación de Azure AD](active-directory-application-proxy-custom-domains.md) toohave Hola la misma dirección URL interna y externa
+[Uso de dominios personalizados con el Proxy de aplicación de Azure AD](active-directory-application-proxy-custom-domains.md) para tener la misma dirección URL interna y externa
 
 [Configurar las asignaciones alternativas de acceso en SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx)

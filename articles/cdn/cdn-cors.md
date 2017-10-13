@@ -1,6 +1,6 @@
 ---
-title: aaaUsing CDN de Azure con CORS | Documentos de Microsoft
-description: "Obtenga información acerca de cómo toouse Hola toowith de red de entrega contenido (CDN) de Azure de uso compartido de recursos entre orígenes (CORS)."
+title: Uso de la red CDN de Azure con CORS | Microsoft Docs
+description: "Descubra cómo usar la red de entrega de contenido (CDN) de Azure con el Uso compartido de recursos entre orígenes (CORS)."
 services: cdn
 documentationcenter: 
 author: zhangmanling
@@ -14,32 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 6c743b56c32a2d3aacc9a77094cb87d61b95d2f7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7070397f6e69b21add75bad8220f0b8ebe36d266
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="using-azure-cdn-with-cors"></a>Uso de la red CDN de Azure con CORS
 ## <a name="what-is-cors"></a>¿Qué es CORS?
-CORS (Cross origen uso compartido de recursos) es una característica HTTP que permite que una aplicación web que se ejecuta en uno de los recursos de tooaccess de dominio en otro dominio. En la posibilidad de Hola de tooreduce de orden de los ataques de scripts entre sitios, todos los exploradores web modernos implementan una restricción de seguridad que se conoce como [directiva de mismo origen](http://www.w3.org/Security/wiki/Same_Origin_Policy).  Esto impide que una página web llame a las API de un dominio distinto.  CORS proporciona un toocall de (dominio de origen de hello) de un origen de tooallow forma segura las API en otro origen.
+CORS (Uso compartido de recursos entre orígenes) es una característica de HTTP que permite que una aplicación web que se ejecuta en un dominio tenga acceso a recursos de otro dominio. Para reducir la posibilidad de ataques de scripts de sitios, todos los exploradores web modernos implementan una restricción de seguridad que se conoce como [directiva del mismo origen](http://www.w3.org/Security/wiki/Same_Origin_Policy).  Esto impide que una página web llame a las API de un dominio distinto.  CORS aporta un modo seguro de permitir que un origen (el dominio de origen) llame a las API de otro origen.
 
 ## <a name="how-it-works"></a>Cómo funciona
 Hay dos tipos de solicitudes de CORS, *solicitudes sencillas* y *solicitudes complejas.*
 
 ### <a name="for-simple-requests"></a>Para solicitudes sencillas:
 
-1. Explorador de Hello envía la solicitud de CORS de hello con más **origen** encabezado de solicitud HTTP. valor de Hola de este encabezado es el origen de Hola que pueda servir página primaria de hello, que se define como la combinación de Hola de *protocolo,* *dominio,* y *puerto.*  Cuando una página de https://www.contoso.com intenta tooaccess datos de un usuario en el origen de fabrikam.com hello, se enviarían Hola siguiente encabezado de solicitud toofabrikam.com:
+1. El explorador envía la solicitud de CORS con un encabezado de solicitud HTTP de **origen** adicional. El valor de este encabezado es el origen del que proviene la página primaria, que se define como la combinación de *protocolo,* *dominio,* y *puerto.*  Cuando una página de https://www.contoso.com intenta acceder a datos de un usuario en el origen fabrikam.com, se envía el siguiente encabezado de solicitud a fabrikam.com:
 
    `Origin: https://www.contoso.com`
 
-2. servidor Hello puede responder con cualquiera de hello siguientes:
+2. El servidor puede responder con lo siguiente:
 
    * Un encabezado **Access-Control-Allow-Origin** en la respuesta, que indica cuál de los sitios de origen se permite. Por ejemplo:
 
      `Access-Control-Allow-Origin: https://www.contoso.com`
 
-   * Código de error HTTP como 403 si Hola servidor no permite la solicitud entre orígenes de hello después de comprobar el encabezado de origen de Hola
+   * Un código de error HTTP como el 403 si el servidor no permite la solicitud de origen cruzado después de comprobar el encabezado de origen
 
    * Un encabezado **Access-Control-Allow-Origin** con un carácter comodín que permite todos los dominios:
 
@@ -47,52 +47,52 @@ Hay dos tipos de solicitudes de CORS, *solicitudes sencillas* y *solicitudes com
 
 ### <a name="for-complex-requests"></a>Para solicitudes complejas:
 
-Una solicitud compleja una solicitud de CORS donde hello examinador es necesario toosend una *solicitud preparatoria* (es decir, un análisis preliminar) antes de enviar la solicitud CORS real Hola. Hello solicitud preparatoria solicita Hola server permiso si solicitud CORS de hello original puede continuar y es un `OPTIONS` solicitar toohello misma dirección URL.
+Una solicitud compleja es una solicitud de CORS en la que es necesario que el explorador envíe una *solicitud preparatoria* (es decir, un sondeo preliminar) antes de enviar la solicitud de CORS real. La solicitud preparatoria solicita el permiso de servidor si la solicitud de CORS original puede continuar y es una solicitud `OPTIONS` a la misma dirección URL.
 
 > [!TIP]
-> Para obtener más detalles sobre los flujos de CORS y los errores comunes, ver hello [guía tooCORS para las API de REST](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/).
+> Para obtener más detalles sobre los flujos de CORS y los errores comunes, consulte la [guía de CORS para las API de REST](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/).
 >
 >
 
 ## <a name="wildcard-or-single-origin-scenarios"></a>Escenarios de origen único o carácter comodín
-CORS en la red CDN de Azure funcionará automáticamente sin ninguna configuración adicional cuando hello **acceso Access-Control-Allow-Origin** encabezado se establece toowildcard (*) o un único origen.  CDN Hola almacenará en memoria caché primera respuesta de Hola y las solicitudes posteriores usarán Hola mismo encabezado.
+En la red CDN de Azure, CORS funcionará automáticamente sin ninguna configuración adicional, cuando el encabezado **Access-Control-Allow-Origin** esté establecido en un carácter comodín (*) o en un solo origen.  La red CDN copiará en caché la primera respuesta, y las solicitudes siguientes usarán el mismo encabezado.
 
-Si las solicitudes se han realizado ya toohello CDN tooCORS anteriores que se establecen en hello su origen, deberá toopurge contenido en su hello tooreload contenido de punto de conexión contenido con hello **acceso Access-Control-Allow-Origin** encabezado.
+Si ya se han enviado solicitudes a la red CDN antes de establecer CORS en el origen, tendrá que purgar el contenido del punto de conexión para volver a cargarlo con el encabezado **Access-Control-Allow-Origin** .
 
 ## <a name="multiple-origin-scenarios"></a>Escenarios de varios orígenes
-Si necesita una lista específica de toobe orígenes permitido para CORS tooallow, puede ser un poco más complicado. se produce un problema de Hello cuando Hola CDN almacena en caché hello **acceso Access-Control-Allow-Origin** encabezado para el primer origen de CORS Hola.  Cuando un origen diferente de CORS realiza una solicitud posterior, CDN Hola servirá hello en caché **acceso Access-Control-Allow-Origin** encabezado, que no coincidirán.  Hay varias toocorrect formas esto.
+Si necesita permitir una lista específica de orígenes admitidos para CORS, el proceso puede resultar un poco más complicado. Encontramos el primer problema cuando la red CDN copia en caché el encabezado **Access-Control-Allow-Origin** el primer origen de CORS.  Cuando un origen de CORS distinto realiza una solicitud posteriormente, la red CDN enviará el encabezado **Access-Control-Allow-Origin** copiado en la caché, que no coincidirá.  Existen diversas formas de corregir este problema.
 
 ### <a name="azure-cdn-premium-from-verizon"></a>Red CDN premium de Azure de Verizon
-Hola tooenable de mejor manera es toouse **Premium de CDN de Azure de Verizon**, que expone algunas funciones avanzadas. 
+La mejor forma de habilitarlo es usar la **red CDN premium de Azure de Verizon**, que expone una serie de funciones avanzadas. 
 
-Necesitará demasiado[crear una regla de](cdn-rules-engine.md) toocheck hello **origen** encabezado de solicitud de saludo.  Si es un origen válido, la regla establecerá hello **acceso Access-Control-Allow-Origin** encabezado con el origen de hello proporcionado en la solicitud de saludo.  Si especifica el origen Hola Hola **origen** encabezado no está permitido, la regla debe omitir hello **acceso Access-Control-Allow-Origin** encabezado lo que hará que la solicitud de hello explorador tooreject Hola. 
+Tendrá que [crear una regla](cdn-rules-engine.md) para comprobar encabezado **Origin** de la solicitud.  Si se trata de un origen válido, la regla establecerá el encabezado **Access-Control-Allow-Origin** con el origen proporcionado en la solicitud.  Si el origen especificado en el encabezado **Origin** no se permite, la regla tendrá que omitir el encabezado **Access-Control-Allow-Origin** que ocasionará que el explorador rechace la solicitud. 
 
-Hay dos toodo formas esto con el motor de reglas de Hola.  En ambos casos, Hola **acceso Access-Control-Allow-Origin** completamente se omite el encabezado de servidor de origen del archivo de hello, motor de reglas de CDN Hola administra completamente Hola permite orígenes CORS.
+Hay dos formas de hacerlo con el motor de reglas.  En ambos casos, el encabezado **Access-Control-Allow-Origin** del servidor de origen del archivo se pasa por alto completamente; el motor de reglas de la red CDN administra totalmente los orígenes de CORS admitidos.
 
 #### <a name="one-regular-expression-with-all-valid-origins"></a>Una expresión regular con todos los orígenes válidos
-En este caso, creará una expresión regular que incluye todos los orígenes de hello desea tooallow: 
+En este caso, creará una expresión regular en la que incluirá todos los orígenes que desea permitir: 
 
     https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
 
 > [!TIP]
-> **red CDN de Azure de Verizon** utiliza las [expresiones regulares compatibles con Perl](http://pcre.org/) como su motor de expresiones regulares.  Puede usar una herramienta como [101 de expresiones regulares](https://regex101.com/) toovalidate la expresión regular.  Tenga en cuenta que Hola "/" de caracteres es válido en expresiones regulares y no necesita toobe caracteres de escape, sin embargo, ese carácter de la secuencia de escape se considera una práctica recomendada y es compatible con algunos controles de validación de expresión regular.
+> **red CDN de Azure de Verizon** utiliza las [expresiones regulares compatibles con Perl](http://pcre.org/) como su motor de expresiones regulares.  Puede usar una herramienta como [Regular Expressions 101](https://regex101.com/) para validar la expresión regular.  Tenga en cuenta que el carácter "/" es válido en expresiones regulares y no hace falta darle formato de escape; sin embargo, darle dicho formato se considera el procedimiento recomendado y algunos validadores de expresiones regulares lo esperan.
 > 
 > 
 
-Si se coincide con la expresión regular de hello, la regla reemplazará hello **acceso Access-Control-Allow-Origin** encabezado (si existe) del origen de hello con origen de Hola que envió la solicitud de saludo.  También puede añadir encabezados de CORS adicionales, como **Access-Control-Allow-Methods**.
+Si la expresión regular coincide, la regla reemplazará el encabezado **Access-Control-Allow-Origin** (en caso de haber alguno) del origen por el origen que envió la solicitud.  También puede añadir encabezados de CORS adicionales, como **Access-Control-Allow-Methods**.
 
 ![Ejemplo de reglas con expresiones regulares](./media/cdn-cors/cdn-cors-regex.png)
 
 #### <a name="request-header-rule-for-each-origin"></a>Regla de encabezado de solicitud para cada origen
-En lugar de expresiones regulares, en su lugar, puede crear otro regla para cada origen desea tooallow con hello **comodín del encabezado de solicitud** [coincide con la condición](https://msdn.microsoft.com/library/mt757336.aspx#Anchor_1). Como con el método de expresión regular de hello, Hola el motor de reglas encabezados conjuntos hello CORS por sí solo. 
+En lugar de usar expresiones regulares, puede crear una regla aparte para cada origen que quiera permitir con la **condición de coincidencia** [carácter comodín del encabezado de solicitud](https://msdn.microsoft.com/library/mt757336.aspx#Anchor_1). Al igual que con el método de expresión regular, el motor de reglas es el único que establece los encabezados de CORS. 
 
 ![Ejemplo de reglas sin expresiones regulares](./media/cdn-cors/cdn-cors-no-regex.png)
 
 > [!TIP]
-> En el ejemplo de Hola anterior, Hola uso del carácter comodín de Hola * indica que el motor de reglas de hello toomatch HTTP y HTTPS.
+> En el ejemplo anterior, el uso del carácter comodín * indica al motor de reglas que se admiten tanto HTTP como HTTPS.
 > 
 > 
 
 ### <a name="azure-cdn-standard"></a>Estándar de red CDN de Azure
-En los perfiles de red CDN de Azure estándar, Hola solo mecanismo tooallow para varios orígenes sin uso Hola de origen de comodín de hello es toouse [almacenamiento en memoria caché en la cadena de consulta](cdn-query-string.md).  Es necesario tooenable configuración de la cadena de consulta para el extremo de red CDN Hola y, a continuación, utilice una cadena de consulta única para las solicitudes de cada dominio permitido. Esto producirá Hola CDN almacenamiento en caché un objeto independiente para cada cadena de consulta única. Este enfoque no es lo ideal, sin embargo, que se producirá en varias copias de hello mismo archivo almacenado en caché en hello CDN.  
+En los perfiles estándar de la red CDN de Azure, el único mecanismo para permitir varios orígenes sin usar el carácter comodín consiste en utilizar el [almacenamiento en caché de la cadena de consulta](cdn-query-string.md).  Debe habilitar la configuración de la cadena de consulta para el punto de conexión de la red CDN y, después, utilizar una cadena de consulta única para las solicitudes de cada dominio permitido. De este modo, la red CDN copiará en caché un objeto independiente para cada cadena de consulta única. Sin embargo, este enfoque no es ideal, ya que conllevará varias copias del mismo archivo en caché en la red CDN.  
 

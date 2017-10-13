@@ -1,6 +1,6 @@
 ---
-title: errores de aaaSimulate en Azure microservicios | Documentos de Microsoft
-description: "¿Cómo tooharden los servicios frente a errores estable e incorrectas."
+title: "Simulación de problemas en microservicios de Azure | Microsoft Docs"
+description: "Protección de los servicios contra errores correctos/incorrectos"
 services: service-fabric
 documentationcenter: .net
 author: anmolah
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: 05467e291dfc0f12a021955f8ea540881ec10746
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7ec671c23e101d0f7401bd4656fb201111602cad
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Simulación de errores durante las cargas de trabajo del servicio
-escenarios de la capacidad de prueba de Hello en Azure Service Fabric permiten a los desarrolladores toonot preocuparse sobre cómo tratar los errores individuales. Sin embargo, hay escenarios donde se necesita una intercalación explícita de la carga de trabajo de cliente y de los errores. Hola intercalación de errores y carga de trabajo de cliente se asegura de que el servicio de hello realmente está realizando alguna acción cuando se produce el error. Dado el nivel de Hola de control que proporciona la capacidad de prueba, pueden ser momentos precisa de la ejecución de la carga de trabajo de Hola. Este inducción de errores en distintos Estados de aplicación hello puede buscar errores y mejorar la calidad.
+Los escenarios de capacidad de prueba en Service Fabric de Azure permiten a los desarrolladores dejar de preocuparse por tratar los errores individuales. Sin embargo, hay escenarios donde se necesita una intercalación explícita de la carga de trabajo de cliente y de los errores. La intercalación de la carga de trabajo de cliente y de los errores garantiza que el servicio realmente realiza alguna acción cuando se produce el error. Dado el nivel de control que ofrece la capacidad de prueba, podrían encontrarse en puntos precisos de la ejecución de la carga de trabajo. Esta inducción de errores en los distintos estados de la aplicación puede buscar errores y mejorar la calidad.
 
 ## <a name="sample-custom-scenario"></a>Escenario de ejemplo personalizado
-Esta prueba muestra un escenario de esa carga de trabajo de negocios de Hola de intercala con [errores estable e incorrectas](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions). deben dar lugar a errores de Hello en medio de Hola de operaciones de servicio o proceso para obtener los mejores resultados.
+Esta prueba muestra un escenario que intercala la carga de trabajo de negocios con [errores correctos e incorrectos](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions). Los errores deben inducirse en el centro de operaciones de servicio o de proceso para obtener mejores resultados.
 
-Analicemos un ejemplo de un servicio que expone cuatro de las cargas de trabajo: A, B, C y D. cada uno de ellos corresponde tooa conjunto de flujos de trabajo y podría ser de proceso, almacenamiento o una combinación. Para hello simplificar, se resuma cargas de trabajo de hello en nuestro ejemplo. errores distintos de Hello ejecutados en este ejemplo son:
+Recorramos en iteración un ejemplo de un servicio que expone cuatro cargas de trabajo: A, B, C y D. Cada una de ellas se corresponde a un conjunto de flujos de trabajo y podrían ser de proceso, almacenamiento o una combinación de ambos. Por simplicidad, se aislarán las cargas de trabajo en nuestro ejemplo. Los diferentes errores ejecutados en este ejemplo son:
 
-* RestartNode: Error incorrectas toosimulate una máquina reiniciar.
-* RestartDeployedCodePackage: Se bloquea el proceso de host de servicio de toosimulate error incorrectas.
-* RemoveReplica: Eliminación de réplicas de toosimulate error estable.
-* MovePrimary: Réplica de toosimulate error estable mueve desencadenadas por el equilibrador de carga de Service Fabric Hola.
+* RestartNode: error sin gracia para simular un reinicio de la máquina.
+* RestartDeployedCodePackage: error sin gracia para simular el bloqueo de los procesos del host de servicio.
+* RemoveReplica: error sin gracia para simular la eliminación de réplicas.
+* MovePrimary: error sin gracia para simular los movimientos de réplica desencadenados por el equilibrador de carga de Service Fabric.
 
 ```csharp
-// Add a reference tooSystem.Fabric.Testability.dll and System.Fabric.dll.
+// Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.
 
 using System;
 using System.Fabric;
@@ -46,7 +46,7 @@ class Test
 {
     public static int Main(string[] args)
     {
-        // Replace these strings with hello actual version for your cluster and application.
+        // Replace these strings with the actual version for your cluster and application.
         string clusterConnection = "localhost:19000";
         Uri applicationName = new Uri("fabric:/samples/PersistentToDoListApp");
         Uri serviceName = new Uri("fabric:/samples/PersistentToDoListApp/PersistentToDoListService");
@@ -93,31 +93,31 @@ class Test
     {
         // Create FabricClient with connection and security information here.
         FabricClient fabricClient = new FabricClient(clusterConnection);
-        // Maximum time toowait for a service toostabilize.
+        // Maximum time to wait for a service to stabilize.
         TimeSpan maxServiceStabilizationTime = TimeSpan.FromSeconds(120);
 
-        // How many loops of faults you want tooexecute.
+        // How many loops of faults you want to execute.
         uint testLoopCount = 20;
         Random random = new Random();
 
         for (var i = 0; i < testLoopCount; ++i)
         {
             var workload = SelectRandomValue<ServiceWorkloads>(random);
-            // Start hello workload.
+            // Start the workload.
             var workloadTask = RunWorkloadAsync(workload);
 
-            // While hello task is running, induce faults into hello service. They can be ungraceful faults like
+            // While the task is running, induce faults into the service. They can be ungraceful faults like
             // RestartNode and RestartDeployedCodePackage or graceful faults like RemoveReplica or MovePrimary.
             var fault = SelectRandomValue<ServiceFabricFaults>(random);
 
-            // Create a replica selector, which will select a primary replica from hello given service tootest.
+            // Create a replica selector, which will select a primary replica from the given service to test.
             var replicaSelector = ReplicaSelector.PrimaryOf(PartitionSelector.RandomOf(serviceName));
-            // Run hello selected random fault.
+            // Run the selected random fault.
             await RunFaultAsync(applicationName, fault, replicaSelector, fabricClient);
-            // Validate hello health and stability of hello service.
+            // Validate the health and stability of the service.
             await fabricClient.ServiceManager.ValidateServiceAsync(serviceName, maxServiceStabilizationTime);
 
-            // Wait for hello workload toofinish successfully.
+            // Wait for the workload to finish successfully.
             await workloadTask;
         }
     }
@@ -145,9 +145,9 @@ class Test
     {
         throw new NotImplementedException();
         // This is where you trigger and complete your service workload.
-        // Note that hello faults induced while your service workload is running will
-        // fault hello primary service. Hence, you will need tooreconnect toocomplete or check
-        // hello status of hello workload.
+        // Note that the faults induced while your service workload is running will
+        // fault the primary service. Hence, you will need to reconnect to complete or check
+        // the status of the workload.
     }
 
     private static T SelectRandomValue<T>(Random random)

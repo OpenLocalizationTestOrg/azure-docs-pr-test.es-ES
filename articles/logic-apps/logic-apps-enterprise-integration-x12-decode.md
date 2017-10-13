@@ -1,6 +1,6 @@
 ---
-title: mensajes de aaaDecode X12 - Azure Logic Apps | Documentos de Microsoft
-description: "Validar EDI y generar confirmaciones con descodificador de mensaje de Hola X12 Hola paquete de integración empresarial para las aplicaciones lógicas de Azure"
+title: "Descodificación de mensajes X12: Azure Logic Apps | Microsoft Docs"
+description: Valide EDI y genere confirmaciones con el descodificador de mensajes X12 en Enterprise Integration Pack para Azure Logic Apps
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 1ffececca1ff835b319b64c85f86c421395833c8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 18719a8f49c74973947517161f7306c233a9323f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="decode-x12-messages-for-azure-logic-apps-with-hello-enterprise-integration-pack"></a>Descodificar X12 mensajes para las aplicaciones lógicas de Azure con hello paquete de integración empresarial
+# <a name="decode-x12-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Descodificación de mensajes X12 para Azure Logic Apps con Enterprise Integration Pack
 
-Con el conector de mensaje de Hola Decode X12, puede validar sobres Hola contra un acuerdo entre socios comerciales, validar EDI y propiedades específicas del partner, dividir intercambios en conjuntos de transacciones o conservar todos intercambios y generar confirmaciones de transacciones procesadas. toouse este conector, debe agregar Hola conector tooan existente desencadenador en la aplicación lógica.
+Con el conector de descodificación de mensajes X12, puede validar el sobre con un acuerdo entre socios comerciales, validar propiedades EDI y específicas de asociados, dividir intercambios en conjuntos de transacciones o conservar intercambios completos y originar la confirmación de las transacciones procesadas. Para usar este conector, debe agregarlo a un desencadenador existente en la aplicación lógica.
 
 ## <a name="before-you-start"></a>Antes de comenzar
 
-Aquí es elementos de Hola que necesita:
+Esto es lo que necesita:
 
 * Una cuenta de Azure; puede crear una [gratuita](https://azure.microsoft.com/free)
-* Una [cuenta de integración](logic-apps-enterprise-integration-create-integration-account.md) que ya esté definida y asociada a su suscripción de Azure. Debe tener un conector integración cuenta toouse Hola Decode X12 mensaje.
+* Una [cuenta de integración](logic-apps-enterprise-integration-create-integration-account.md) que ya esté definida y asociada a su suscripción de Azure. Debe tener una cuenta de integración para usar el conector de descodificación de mensajes X12.
 * Al menos dos [asociados](logic-apps-enterprise-integration-partners.md) que ya estén definidos en su cuenta de integración.
 * Un [contrato X12](logic-apps-enterprise-integration-x12.md) ya definido en su cuenta de integración
 
@@ -37,13 +37,13 @@ Aquí es elementos de Hola que necesita:
 
 1. [Creación de una aplicación lógica](logic-apps-create-a-logic-app.md).
 
-2. Conector de mensaje de Hola Decode X12 no tiene desencadenadores, por lo que debe agregar un desencadenador para iniciar la aplicación lógica, como un desencadenador de la solicitud. Hola diseñador la lógica de aplicación, agregar un desencadenador y, a continuación, agregar una aplicación de lógica de tooyour de acción.
+2. El conector de descodificación de mensajes X12 no tiene desencadenadores, por lo que debe agregar uno para iniciar la aplicación lógica, como un desencadenador de solicitud. En el Diseñador de aplicaciones lógicas, agregue un desencadenador y una acción a la aplicación lógica.
 
-3.  En el cuadro de búsqueda de hello, escriba "x12" para el filtro. Seleccione **X12 - Decode X12 message** (X12 – Descodificación de mensajes X12).
+3.  En el cuadro de búsqueda, escriba "x12" para el filtro. Seleccione **X12 - Decode X12 message** (X12 – Descodificación de mensajes X12).
    
     ![Búsqueda de "x12"](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage1.png)  
 
-3. Si previamente no creó ninguna conexión de cuenta de integración de tooyour, se te pedirá toocreate ahora esa conexión. Nombre de la conexión y seleccione cuenta de integración de Hola que desea tooconnect. 
+3. Si no había creado ninguna conexión a la cuenta de integración, se le pedirá que lo haga ahora. Asigne un nombre a la conexión y seleccione la cuenta de integración que desee conectar. 
 
     ![Proporcionar los detalles de conexión de la cuenta de integración](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage4.png)
 
@@ -52,13 +52,13 @@ Aquí es elementos de Hola que necesita:
     | Propiedad | Detalles |
     | --- | --- |
     | Nombre de la conexión * |Escriba cualquier nombre para la conexión. |
-    | Cuenta de integración* |Escriba un nombre para la cuenta de integración. Asegúrese de que la aplicación de cuenta y la lógica de integración están en hello misma ubicación de Azure. |
+    | Cuenta de integración* |Escriba un nombre para la cuenta de integración. Asegúrese de que la cuenta de integración y la aplicación lógica se encuentren en la misma ubicación de Azure. |
 
-5.  Cuando haya terminado, los detalles de la conexión deben tener un aspecto similar ejemplo toothis. toofinish crear la conexión, elija **crear**.
+5.  Cuando haya terminado, los detalles de la conexión deberían parecerse a este ejemplo. Para terminar de crear la conexión, elija **Crear**.
    
     ![detalles de conexión de la cuenta de integración](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage5.png) 
 
-6. Una vez creada la conexión, como se muestra en este ejemplo, seleccione toodecode de mensaje de archivo sin formato de hello X12.
+6. Una vez creada la conexión, como se muestra en este ejemplo, seleccione el mensaje de archivo plano X12 que desea descodificar.
 
     ![creación de la conexión de la cuenta de integración](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage6.png) 
 
@@ -68,35 +68,35 @@ Aquí es elementos de Hola que necesita:
 
 ## <a name="x12-decode-details"></a>Detalles de X12 Decode
 
-Conector de descodificación de Hello X12 lleva a cabo estas tareas:
+El conector de descodificación X12 lleva a cabo estas tareas:
 
-* Valida sobre hello en el acuerdo de socio comercial
+* Valida el sobre con el acuerdo de socio comercial.
 * Valida propiedades EDI y específicas del asociado.
   * Validación estructural de EDI y validación de esquema extendido
-  * Validación de la estructura de Hola de sobres de intercambio de Hola.
-  * Validación de esquemas de sobres de hello en el esquema de control de Hola.
-  * Validación de esquema de los elementos de datos de conjuntos de transacciones de hello en el esquema de mensaje de Hola.
+  * Validación de la estructura del sobre de intercambio
+  * Validación del esquema del sobre con respecto al esquema de control
+  * Validación del esquema de los elementos de datos del conjunto de transacciones con respecto al esquema de mensaje
   * Validación de EDI realizada en los elementos de datos del conjunto de transacciones 
-* Comprueba que los números de control de conjunto de intercambio, grupo y transacción hello no sean duplicados
-  * Comprueba el número de control de intercambio de hello en los intercambios recibidos anteriormente.
-  * Comprueba el número de control de grupo de hello con los otros números de control de grupo en el intercambio de Hola.
-  * Comprueba el número de control del conjunto de transacciones de hello en otros números de control de conjunto de transacciones de ese grupo.
-* Hola Intercambio en conjuntos de transacciones se divide o conserva todo el intercambio hello:
+* Comprueba que los números de control de intercambio, grupo y conjunto de transacciones no están duplicados.
+  * Comprueba el número de control del intercambio en relación con los intercambios recibidos anteriormente.
+  * Comprueba el número de control del grupo en relación con otros números de control de grupo en el intercambio.
+  * Comprueba el número de control del conjunto de transacciones con otros números de control del conjunto de transacciones de dicho grupo.
+* Divide el intercambio en conjuntos de transacciones o conserva todo el intercambio:
   * Divide el intercambio como conjuntos de transacciones (suspende conjuntos de transacciones en caso de error): divide el intercambio en conjuntos de transacciones y analiza cada conjunto de transacciones. 
-  acción de descodificación de Hello X12 envía solo esos conjuntos de transacciones que no superan la validación demasiado`badMessages`y genera Hola transacciones restantes se establece demasiado`goodMessages`.
+  La acción de descodificación X12 solo genera esos conjuntos de transacciones que no superan la validación para `badMessages` y los resultados de las transacciones restantes se establecen en `goodMessages`.
   * Divide el intercambio como conjuntos de transacciones (suspende el intercambio en caso de error): divide el intercambio en conjuntos de transacciones y analiza cada conjunto de transacciones. 
-  Si una o más conjuntos de transacciones en la validación de un error de intercambio de hello, acción de descodificación de hello X12 genera conjuntos de todas las transacciones de hello en dicho intercambio demasiado`badMessages`.
-  * Conservar intercambio: suspender conjuntos de transacciones en caso de error: conservar intercambio de Hola y proceso Hola todo el intercambio por lotes. 
-  acción de descodificación de Hello X12 envía solo esos conjuntos de transacciones que no superan la validación demasiado`badMessages`y genera Hola transacciones restantes se establece demasiado`goodMessages`.
-  * Conservar intercambio: suspender intercambio en caso de error: conservar intercambio de Hola y proceso Hola todo el intercambio por lotes. 
-  Si una o más conjuntos de transacciones en la validación de un error de intercambio de hello, acción de descodificación de hello X12 genera conjuntos de todas las transacciones de hello en dicho intercambio demasiado`badMessages`. 
+  Si uno o varios conjuntos de transacciones del intercambio no superan la validación, la acción de descodificación de X12 establece todos los conjuntos de transacciones del intercambio en `badMessages`.
+  * Conserva el intercambio (suspende conjuntos de transacciones en caso de error): conserva el intercambio y procesa todo el intercambio por lotes. 
+  La acción de descodificación X12 solo genera esos conjuntos de transacciones que no superan la validación para `badMessages` y los resultados de las transacciones restantes se establecen en `goodMessages`.
+  * Conserva el intercambio (suspende el intercambio en caso de error): conserva el intercambio y procesa todo el intercambio por lotes. 
+  Si uno o varios conjuntos de transacciones del intercambio no superan la validación, la acción de descodificación de X12 establece todos los conjuntos de transacciones del intercambio en `badMessages`. 
 * Genera una confirmación técnica o funcional (si esta opción está configurada).
-  * Se genera una confirmación técnica como resultado de la validación del encabezado. Hola confirmación técnica informa del estado Hola Hola del procesamiento de un encabezado de intercambio y finalizador mediante receptor de direcciones de Hola.
-  * Se genera una confirmación funcional como resultado de la validación del cuerpo. confirmación funcional Hello notifica cada error al procesar Hola recibió el documento
+  * Se genera una confirmación técnica como resultado de la validación del encabezado. La confirmación técnica informa del estado del procesamiento de un encabezado y finalizador de intercambio por parte del receptor de la dirección.
+  * Se genera una confirmación funcional como resultado de la validación del cuerpo. La confirmación funcional informa de cada error encontrado al procesar el documento recibido.
 
-## <a name="view-hello-swagger"></a>Swagger de hello de vista
-Vea hello [swagger detalles](/connectors/x12/). 
+## <a name="view-the-swagger"></a>Visualización de Swagger
+Vea los [detalles de Swagger](/connectors/x12/). 
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Obtener más información sobre Hola paquete de integración empresarial](../logic-apps/logic-apps-enterprise-integration-overview.md "Obtenga más información sobre el paquete de integración empresarial") 
+[Más información sobre Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Información sobre Enterprise Integration Pack") 
 

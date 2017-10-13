@@ -1,6 +1,6 @@
 ---
-title: "aaaOverview de registros de diagnóstico de Azure | Documentos de Microsoft"
-description: "Obtenga información acerca de qué son los registros de diagnóstico de Azure y cómo puede usarlos toounderstand los eventos que se producen en un recurso de Azure."
+title: "Información general sobre los registros de diagnóstico de Azure | Microsoft Docs"
+description: "Aprenda qué son los registros de diagnóstico de Azure y cómo puede usarlos para entender los eventos que se producen en un recurso de Azure."
 author: johnkemnetz
 manager: orenr
 editor: 
@@ -14,36 +14,36 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
 ms.author: johnkem; magoedte
-ms.openlocfilehash: e38991c540626b4bb5b5b9a995276881ee58f368
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d59abde29fc7b73a799e5bf3659b02f824b693de
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Recopile y use los datos de registro provenientes de los recursos de Azure
 
 ## <a name="what-are-azure-resource-diagnostic-logs"></a>Qué son los registros de diagnóstico de Azure
-**Registros de diagnóstico de nivel de recurso de Azure** son registros emitidos por un recurso que proporcionan datos enriquecidos y frecuentes acerca de la operación de Hola de ese recurso. contenido de Hola de estos registros varía según el tipo de recurso. Por ejemplo, los contadores de regla de grupo de seguridad de red y las auditorías de Key Vault son dos categorías de registros de recursos.
+Los **registros de diagnóstico de nivel de recursos de Azure** son registros emitidos por un recurso que proporcionan datos exhaustivos y frecuentes acerca del funcionamiento de ese recurso. El contenido de estos registros varía según el tipo de recurso. Por ejemplo, los contadores de regla de grupo de seguridad de red y las auditorías de Key Vault son dos categorías de registros de recursos.
 
-Registros de diagnóstico de nivel de recursos se diferencian hello [registro de actividad](monitoring-overview-activity-logs.md). Hola registro de actividad proporciona una visión general de las operaciones de Hola que se realizaron en los recursos de la suscripción con el Administrador de recursos, por ejemplo, crear una máquina virtual o eliminar una aplicación de lógica. Hola registro de actividad es un registro de nivel de suscripción. Los registros de diagnóstico de nivel de recursos proporcionan una visión general de las operaciones realizadas dentro del mismo recurso, por ejemplo, obtener un secreto de un almacén de claves.
+Lo registros de diagnóstico de nivel de recursos son distintos del [registro de actividad](monitoring-overview-activity-logs.md). El registro de actividad proporciona una visión general de las operaciones que se realizaron en los recursos de la suscripción con Resource Manager, por ejemplo, crear una máquina virtual o eliminar una aplicación de lógica. El registro de actividad es un registro de nivel de suscripción. Los registros de diagnóstico de nivel de recursos proporcionan una visión general de las operaciones realizadas dentro del mismo recurso, por ejemplo, obtener un secreto de un almacén de claves.
 
-Los registros de diagnóstico de nivel de recursos también difieren de los registros de diagnóstico de nivel de sistema operativo invitado. Estos son los recopilados por un agente que se ejecuta dentro de una máquina virtual u otro tipo de recurso admitido. Registros de diagnóstico de nivel de recursos no requieren ningún dato específico del recurso de agente y capturar de hello plataforma Windows Azure, mientras que los registros de diagnóstico de nivel de sistema operativo invitado capturan datos de sistema operativo de Hola y aplicaciones que se ejecutan en una máquina virtual.
+Los registros de diagnóstico de nivel de recursos también difieren de los registros de diagnóstico de nivel de sistema operativo invitado. Estos son los recopilados por un agente que se ejecuta dentro de una máquina virtual u otro tipo de recurso admitido. Los registros de diagnóstico de nivel de recursos no requieren ningún agente y capturan datos específicos de recurso de la plataforma Azure, mientras que los registros de diagnóstico de nivel de sistema operativo invitado capturan los datos desde el sistema operativo y las aplicaciones que se ejecutan en una máquina virtual.
 
-No todos los recursos admiten Hola nuevo tipo de registros de diagnóstico de recursos que se describen aquí. Este artículo contiene una lista de la sección Qué tipos de recursos admiten registros de diagnóstico de nivel de recurso nuevo Hola.
+No todos los recursos admiten el nuevo tipo de registros de diagnóstico de recursos que se describe aquí. En este artículo se incluye una sección en la que se muestran los tipos de recurso que admiten los nuevos registros de diagnóstico de nivel de recursos.
 
 ![Comparación de los registros de diagnóstico de recursos y otros tipos de registros ](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_vs_other_logs_v5.png)
 
 ## <a name="what-you-can-do-with-resource-level-diagnostic-logs"></a>Qué se puede hacer con los registros de diagnóstico de nivel de recursos
-Estas son algunas cosas de Hola que puede hacer con los registros de diagnóstico de recursos:
+Estas son algunas de las cosas que puede hacer con los registros de diagnóstico de recursos:
 
 ![Ubicación lógica de los registros de diagnóstico de recursos](./media/monitoring-overview-of-diagnostic-logs/Diagnostics_Logs_Actions.png)
 
 
-* Guardarlos tooa [ **cuenta de almacenamiento** ](monitoring-archive-diagnostic-logs.md) para la inspección de auditoría o manual. Puede especificar el tiempo (en días) de retención de hello mediante **configuración de diagnóstico de recurso**.
-* [Transmitirlos demasiado**centros de eventos** ](monitoring-stream-diagnostic-logs-to-event-hubs.md) para ingesta por un servicio de otro fabricante o una solución de análisis personalizada como Power BI.
+* Guardarlos en una [**cuenta de almacenamiento**](monitoring-archive-diagnostic-logs.md) para archivarlos o inspeccionarlos manualmente. Puede especificar el tiempo de retención (en días) usando la **configuración de diagnóstico de recursos**.
+* [Transmitirlos a **Event Hubs**](monitoring-stream-diagnostic-logs-to-event-hubs.md) para la ingestión en un servicio de terceros o una solución de análisis personalizado como PowerBI.
 * Analizarlos con [Log Analytics de OMS](../log-analytics/log-analytics-azure-storage.md)
 
-Puede usar una cuenta de almacenamiento o espacio de nombres de los centros de eventos que no esté en Hola misma suscripción como Hola una emisión de registros. usuario de Hola que configura los valores de hello debe tener las suscripciones tooboth de acceso correspondientes RBAC Hola.
+Puede usar una cuenta de almacenamiento o un espacio de nombres de Event Hubs que no esté en la misma suscripción que el que emite los registros. El usuario que configura los ajustes debe tener el acceso de RBAC adecuado a ambas suscripciones.
 
 ## <a name="resource-diagnostic-settings"></a>Configuración de diagnóstico de recursos
 Los registros de diagnóstico de recursos para recursos que no son de proceso se configuran mediante la configuración de diagnóstico de recursos. **Configuración de diagnóstico de recursos** para un control de recursos:
@@ -51,131 +51,131 @@ Los registros de diagnóstico de recursos para recursos que no son de proceso se
 * Dónde se envían los registros de diagnóstico y las métricas (cuenta de almacenamiento, Event Hubs o Log Analytics de OMS).
 * Qué categorías de registro se envían y si se envían también datos de métrica.
 * Cuánto tiempo se debe conservar cada categoría de registro en una cuenta de almacenamiento
-    - Una retención de cero días significa que los registros se conservan de forma indefinida. En caso contrario, valor de hello puede ser cualquier número de días comprendido entre 1 y 2147483647.
-    - Si se han establecido directivas de retención pero almacenar los registros en una cuenta de almacenamiento está deshabilitada (por ejemplo, si solo se seleccionan las opciones de los centros de eventos o OMS), las directivas de retención de hello no tienen ningún efecto.
-    - Las directivas de retención aplicada por día, por lo que en hello final de un día (UTC), los registros de día de Hola que es ahora más allá de la directiva de retención de Hola se eliminan. Por ejemplo, si tuviera una directiva de retención de un día, en principio de Hola de hoy día de Hola Hola registros de hello anteayer se eliminarán.
+    - Una retención de cero días significa que los registros se conservan de forma indefinida. De lo contrario, el valor puede ser cualquier número de días comprendido entre 1 y 2147483647.
+    - Si se establecen directivas de retención, pero el almacenamiento de registros en una cuenta de almacenamiento está deshabilitado (por ejemplo, si solo se han seleccionado las opciones de Event Hubs u OMS), las directivas de retención no surten ningún efecto.
+    - Las directivas de retención se aplican a diario, por lo que al final de un día (UTC) se eliminan los registros del día que quede fuera de la directiva de retención. Por ejemplo, si tuviera una directiva de retención de un día, se eliminarían los registros de anteayer al principio del día de hoy.
 
-Estas opciones se configuran fácilmente a través de la configuración de diagnóstico de Hola para un recurso en hello portal de Azure, a través de los comandos de PowerShell de Azure y la CLI o hello [API de REST de Azure Monitor](https://msdn.microsoft.com/library/azure/dn931943.aspx).
+Estas opciones se configuran con facilidad a través de la configuración de los diagnósticos para un recurso en Azure Portal, mediante los comandos de Azure PowerShell y de la CLI, o mediante la [API de REST de Azure Monitor](https://msdn.microsoft.com/library/azure/dn931943.aspx).
 
 > [!WARNING]
-> Registros de diagnóstico y las métricas para de capa de SO invitado de Hola de uso de recursos (por ejemplo, las máquinas virtuales o Service Fabric) de proceso [un mecanismo independiente para la configuración y selección de salidas](../azure-diagnostics.md).
+> Los registros de diagnóstico y las métricas de la capa de sistema operativo invitado de los recursos de proceso (por ejemplo, máquinas virtuales o Service Fabric) usan [un mecanismo diferente para la configuración y la selección de salidas](../azure-diagnostics.md).
 >
 >
 
-## <a name="how-tooenable-collection-of-resource-diagnostic-logs"></a>¿Cómo tooenable colección de registros de diagnóstico de recursos
-Recopilación de registros de diagnóstico de recursos se puede habilitar [como parte de la creación de un recurso en una plantilla de administrador de recursos](./monitoring-enable-diagnostic-logs-using-template.md) o después de que se crea un recurso de página de ese recurso en el portal de Hola. También puede habilitar la recopilación en cualquier momento mediante comandos de Azure PowerShell o CLI o con hello API de REST de Monitor de Azure.
+## <a name="how-to-enable-collection-of-resource-diagnostic-logs"></a>Procedimientos para habilitar la recopilación de registros de diagnóstico de recursos
+La recopilación de registros de diagnóstico de recursos se puede habilitar [como parte de la creación de un recurso en una plantilla de Resource Manager](./monitoring-enable-diagnostic-logs-using-template.md) o después de crear un recurso mediante la página del recurso en el portal. También puede habilitar la recolección en cualquier momento mediante comandos de Azure PowerShell o de la CLI, o con la API de REST de Azure Monitor.
 
 > [!TIP]
-> Estas instrucciones no pueden aplicar directamente tooevery recurso. Vea los vínculos de esquema de hello en parte inferior de Hola de este paso especial de toounderstand de página que se pueden aplicar a tipos de recursos de toocertain.
+> Es posible que estas instrucciones no se apliquen directamente a cada recurso. Consulte los vínculos de esquema al final de esta página para ver los pasos especiales que se pueden aplicar a determinados tipos de recursos.
 >
 >
 
-### <a name="enable-collection-of-resource-diagnostic-logs-in-hello-portal"></a>Habilitar la recopilación de registros de diagnóstico de recursos en el portal de Hola
-Puede habilitar la recopilación de registros de diagnóstico de recursos de hello Azure portal después de que se ha creado un recurso por recurso específico tooa va o navegando tooAzure Monitor. tooenable esto a través del Monitor de Azure:
+### <a name="enable-collection-of-resource-diagnostic-logs-in-the-portal"></a>Habilitación de la recopilación de registros de diagnóstico de recursos en el portal
+Puede habilitar la recopilación de registros de diagnóstico de recursos en Azure Portal una vez creado un recurso yendo a un recurso concreto o a Azure Monitor. Para habilitar esta opción a través de Azure Monitor:
 
-1. Hola [portal de Azure](http://portal.azure.com), desplácese tooAzure Monitor y haga clic en **configuración de diagnóstico**
+1. En [Azure Portal](http://portal.azure.com), desplácese a Azure Monitor y haga clic en **Configuración de diagnóstico**
 
     ![Sección de supervisión de Azure Monitor](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-blade.png)
 
-2. Si lo desea Hola lista Filtrar por tipo de recurso o grupo de recursos, a continuación, haga clic en el recurso de hello para el que le gustaría tooset una configuración de diagnóstico.
+2. Si lo desea, filtre la lista por tipo de recurso o por grupo de recursos y, a continuación, haga clic en el recurso para el que desea establecer la configuración de diagnóstico.
 
-3. Si ninguna configuración existe en el recurso de Hola que ha seleccionado, son toocreate solicitada una configuración. Haga clic en "Activar diagnóstico".
+3. Si no existe ninguna configuración en el recurso que ha seleccionado, se le pide que cree una. Haga clic en "Activar diagnóstico".
 
    ![Agregar configuración de diagnóstico: sin configuración actual](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-none.png)
 
-   Si hay una configuración existente en el recurso de hello, verá una lista de configuraciones ya configurado en este recurso. Haga clic en "Agregar configuración de diagnóstico".
+   Si hay una configuración actual en el recurso, verá una lista de opciones ya configuradas en este recurso. Haga clic en "Agregar configuración de diagnóstico".
 
    ![Agregar configuración de diagnóstico: configuración actual](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-multiple.png)
 
-3. Asigne un nombre de su configuración, Hola casillas para cada toowhich de destino que desee toosend datos y configurar el recurso que se utiliza para cada destino. También puede establecer un número de días tooretain estos registros mediante el uso de hello **retención (días)** controles deslizantes (sólo aplicable toohello almacenamiento cuenta de destino). Una retención de cero días almacena los registros de hello indefinidamente.
+3. Asigne un nombre a su configuración, active las casillas para cada destino al que le gustaría enviar datos y configure el recurso que se utiliza para cada uno. Además, puede establecer un número de días para conservar estos registros mediante los controles deslizantes de **Retención (días)** (solo aplicable al destino de la cuenta de almacenamiento). Con una retención de cero días, los registros se almacenan indefinidamente.
    
    ![Agregar configuración de diagnóstico: configuración actual](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-configure.png)
     
 4. Haga clic en **Guardar**.
 
-Transcurridos unos instantes, Hola nueva opción aparece en la lista de valores para este recurso, y registros de diagnóstico se envían toohello especifica destinos tan pronto como los nuevos datos de evento se generan.
+Transcurridos unos instantes, la nueva configuración aparece en la lista de opciones para este recurso y los registros de diagnóstico se envían a los destinos especificados en cuanto se generan nuevos datos de eventos.
 
 ### <a name="enable-collection-of-resource-diagnostic-logs-via-powershell"></a>Habilitación de la recopilación de registros de diagnóstico de recursos mediante PowerShell
-colección de tooenable de registros de diagnóstico de recursos a través de PowerShell de Azure, Hola de uso siguientes comandos:
+Para habilitar la recopilación de registros de diagnóstico de recursos con Azure PowerShell, use los siguientes comandos:
 
-tooenable almacenamiento de registros de diagnóstico en una cuenta de almacenamiento, use este comando:
+Para habilitar el almacenamiento de registros de diagnóstico en una cuenta de almacenamiento, use este comando:
 
 ```powershell
 Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
 ```
 
-identificador de cuenta de almacenamiento de Hola Hola Id. de recurso para los registros de hello almacenamiento cuenta toowhich desea toosend Hola de.
+El identificador de la cuenta de almacenamiento es el identificador de recurso para la cuenta de almacenamiento a la que desea enviar los registros.
 
-tooenable transmisión por secuencias de concentrador de eventos de registros de diagnóstico tooan, use este comando:
+Para habilitar el streaming de registros de diagnóstico a un centro de eventos, use este comando:
 
 ```powershell
 Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your Service Bus rule id] -Enabled $true
 ```
 
-Identificador de regla de bus de servicio de Hello es una cadena con este formato: `{Service Bus resource ID}/authorizationrules/{key name}`.
+El identificador de regla de Service Bus es una cadena con este formato: `{Service Bus resource ID}/authorizationrules/{key name}`.
 
-enviar tooenable del área de trabajo de análisis de registros de tooa registros de diagnóstico, use este comando:
+Para habilitar el envío de registros de diagnóstico a un área de trabajo de Log Analytics, use este comando:
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of hello log analytics workspace] -Enabled $true
+Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
 ```
 
-Puede obtener Id. de recurso de Hola de su área de trabajo de análisis de registros mediante Hola siguiente comando:
+Puede obtener el identificador de recurso de su área de trabajo de Log Analytics con el comando siguiente:
 
 ```powershell
 (Get-AzureRmOperationalInsightsWorkspace).ResourceId
 ```
 
-Puede combinar estos parámetros tooenable varias opciones de salida.
+Puede combinar estos parámetros para habilitar varias opciones de salida.
 
 ### <a name="enable-collection-of-resource-diagnostic-logs-via-cli"></a>Habilitación de la recopilación de registros de diagnóstico de recursos mediante la CLI
-tooenable colección de registros de diagnóstico de recursos a través de hello CLI de Azure, use Hola siguientes comandos:
+Para habilitar la recopilación de registros de diagnóstico de recursos con la CLI de Azure, use los siguientes comandos:
 
-tooenable almacenamiento de registros de diagnóstico en una cuenta de almacenamiento, use este comando:
+Para habilitar el almacenamiento de registros de diagnóstico en una cuenta de almacenamiento, use este comando:
 
 ```azurecli
 azure insights diagnostic set --resourceId <resourceId> --storageId <storageAccountId> --enabled true
 ```
 
-identificador de cuenta de almacenamiento de Hola Hola Id. de recurso para los registros de hello almacenamiento cuenta toowhich desea toosend Hola de.
+El identificador de la cuenta de almacenamiento es el identificador de recurso para la cuenta de almacenamiento a la que desea enviar los registros.
 
-tooenable transmisión por secuencias de concentrador de eventos de registros de diagnóstico tooan, use este comando:
+Para habilitar el streaming de registros de diagnóstico a un centro de eventos, use este comando:
 
 ```azurecli
 azure insights diagnostic set --resourceId <resourceId> --serviceBusRuleId <serviceBusRuleId> --enabled true
 ```
 
-Identificador de regla de bus de servicio de Hello es una cadena con este formato: `{Service Bus resource ID}/authorizationrules/{key name}`.
+El identificador de regla de Service Bus es una cadena con este formato: `{Service Bus resource ID}/authorizationrules/{key name}`.
 
-enviar tooenable del área de trabajo de análisis de registros de tooa registros de diagnóstico, use este comando:
+Para habilitar el envío de registros de diagnóstico a un área de trabajo de Log Analytics, use este comando:
 
 ```azurecli
-azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource id of hello log analytics workspace> --enabled true
+azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource id of the log analytics workspace> --enabled true
 ```
 
-Puede combinar estos parámetros tooenable varias opciones de salida.
+Puede combinar estos parámetros para habilitar varias opciones de salida.
 
 ### <a name="enable-collection-of-resource-diagnostic-logs-via-rest-api"></a>Habilitación de la recopilación de registros de diagnóstico de recursos mediante la API de REST
-configuración de diagnóstico de toochange con hello API de REST de Monitor de Azure, consulte [este documento](https://msdn.microsoft.com/library/azure/dn931931.aspx).
+Para cambiar la configuración de diagnóstico con la API de REST de Azure Monitor, consulte [este documento](https://msdn.microsoft.com/library/azure/dn931931.aspx).
 
-## <a name="manage-resource-diagnostic-settings-in-hello-portal"></a>Administrar la configuración de diagnóstico de recursos en el portal de Hola
-Asegúrese de que todos los recursos estén instalados con la configuración de diagnóstico. Navegue demasiado**Monitor** Hola portal y abra **configuración de diagnóstico**.
+## <a name="manage-resource-diagnostic-settings-in-the-portal"></a>Administración de la configuración de diagnóstico de recursos en el portal
+Asegúrese de que todos los recursos estén instalados con la configuración de diagnóstico. Vaya a **Monitor** en el portal y abra **Configuración de diagnóstico**.
 
-![Hoja de registros de diagnóstico en el portal de Hola](./media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-nav.png)
+![Hoja Registros de diagnóstico en el portal](./media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-nav.png)
 
-Puede que tenga tooclick "más sección"servicios de toofind Hola Monitor.
+Puede que tenga que hacer clic en "More services" (Más servicios) para encontrar la sección Supervisión.
 
-Aquí puede ver y filtrar todos los recursos que admiten la configuración de diagnóstico toosee si tienen los diagnósticos están habilitados. También puede explorar en profundidad toosee si se establecen varias opciones de configuración en un recurso y compruebe qué cuenta de almacenamiento, el espacio de nombres de los centros de eventos o el área de trabajo de análisis de registros que se transmiten datos a.
+Aquí puede ver y filtrar todos los recursos que admiten la configuración de diagnósticos y comprobar si está habilitada para los diagnósticos. También puede explorar en profundidad para comprobar si hay varias opciones de configuración establecidas en un recurso y a qué cuenta de almacenamiento, espacio de nombres de Event Hubs o área de trabajo de Log Analytics se transmiten los datos.
 
 ![Resultados de los registros de diagnóstico en el portal](./media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-blade.png)
 
-Agregar que una configuración de diagnóstico, se abrirá Hola vista de configuración de diagnóstico, donde puede habilitar, deshabilitar o modificar la configuración de diagnóstico para hello recurso seleccionado.
+Al agregar una opción de configuración de diagnóstico, se abre la vista Configuración de diagnóstico, donde puede habilitar, deshabilitar o modificar la configuración de diagnóstico para el recurso seleccionado.
 
 ## <a name="supported-services-categories-and-schemas-for-resource-diagnostic-logs"></a>Servicios admitidos, categorías y esquemas para los registros de diagnóstico de recursos
-[Consulte este artículo](monitoring-diagnostic-logs-schema.md) para obtener una lista completa de los esquemas utilizados por los servicios y las categorías de registro de hello y servicios compatibles.
+[Consulte este artículo](monitoring-diagnostic-logs-schema.md) para obtener una lista completa de los servicios admitidos y las categorías de registro y los esquemas utilizados por esos servicios.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* [Registros de diagnóstico de recursos de secuencia demasiado**centros de eventos**](monitoring-stream-diagnostic-logs-to-event-hubs.md)
-* [Cambiar la configuración de diagnóstico de recursos mediante Hola API de REST de Monitor de Azure](https://msdn.microsoft.com/library/azure/dn931931.aspx)
+* [Transmisión de registros de diagnóstico a **Event Hubs**](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Cambio de la configuración de diagnóstico de recursos con la API de REST de Azure Monitor](https://msdn.microsoft.com/library/azure/dn931931.aspx)
 * [Análisis de registros desde Azure Storage con Log Analytics](../log-analytics/log-analytics-azure-storage.md)

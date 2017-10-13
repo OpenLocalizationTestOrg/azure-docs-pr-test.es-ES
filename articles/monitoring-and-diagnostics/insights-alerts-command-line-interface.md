@@ -1,6 +1,6 @@
 ---
-title: aaaCreate alertas para los servicios de Azure - multiplataforma CLI | Documentos de Microsoft
-description: "Desencadenador los correos electrónicos, notificaciones, llame a direcciones URL de sitios Web (webhooks), o la automatización cuando se cumplen las condiciones de Hola que especifique."
+title: "Creación de alertas para servicios de Azure - CLI multiplataforma | Microsoft Docs"
+description: "Desencadenamiento de correos electrónicos y notificaciones, y llamadas a direcciones URL de sitios web (webhooks) o a la automatización cuando se cumplen las condiciones especificadas."
 author: rboucher
 manager: carmonm
 editor: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: robb
-ms.openlocfilehash: e53701e5377a415038a69fbd32f1e5fc5fe99be9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 92246a8da73a244a1c9a924bed55711d71a20fd8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-metric-alerts-in-azure-monitor-for-azure-services---cross-platform-cli"></a>Creación de alertas de métricas en Azure Monitor para los servicios de Azure: CLI multiplataforma
 > [!div class="op_single_selector"]
@@ -29,24 +29,24 @@ ms.lasthandoff: 10/06/2017
 >
 
 ## <a name="overview"></a>Información general
-Este artículo muestra cómo tooset las alertas de métrica Azure utilizando Hola multiplataforma interfaz de línea de comandos (CLI).
+En este artículo se muestra cómo configurar alertas de métricas de Azure con la interfaz de la línea de comandos (CLI) multiplataforma.
 
 > [!NOTE]
-> Monitor de Azure es Hola nuevo nombre lo que se conoce como "Azure Insights" hasta 25 de septiembre de 2016. Sin embargo, los espacios de nombres de hello y, por lo tanto, comandos de hello siguientes sigue sin contengan visión"Hola".
+> Azure Monitor es el nuevo nombre de lo que se conocía como "Azure Insights" hasta el 25 de septiembre de 2016. Sin embargo, los espacios de nombres y, por tanto, los siguientes comandos aún contienen el término "insights".
 >
 >
 
 Puede recibir una alerta basada en las métricas de supervisión para los servicios de Azure o los eventos sobre ellos.
 
-* **Valores de métrica** : hello desencadenadores de alerta cuando el valor Hola de una métrica especificada está fuera de un umbral asignar en cualquier dirección. Es decir, desencadena tanto cuando primero se cumple la condición de hello y, a continuación, después cuando la condición que ya no se cumple.    
-* **Eventos de registro de actividades**: una alerta puede desencadenarse con *cada* evento o solo cuando se producen ciertos eventos concretos. más información acerca de las alertas de registro de actividad toolearn [haga clic aquí](monitoring-activity-log-alerts.md)
+* **Valores de métrica** : la alerta se desencadena cuando el valor de una métrica específica cruza un umbral asignado en cualquier dirección. Es decir, se desencadena tanto la primera vez que se cumple la condición como después, cuando dicha condición ya deja de cumplirse.    
+* **Eventos de registro de actividades**: una alerta puede desencadenarse con *cada* evento o solo cuando se producen ciertos eventos concretos. Para obtener más información sobre las alertas de registro de actividad, [haga clic aquí](monitoring-activity-log-alerts.md).
 
-Puede configurar una métrica toodo alerta hello las siguientes cuando se desencadena:
+Puede configurar una alerta de métrica para hacer lo siguiente cuando se desencadena:
 
-* enviar el administrador del servicio de toohello de notificaciones de correo electrónico y coadministradores
-* enviar correo electrónico mensajes de correo electrónico de tooadditional que especifique.
+* Enviar notificaciones de correo electrónico al administrador y los coadministradores del servicio.
+* Enviar un correo electrónico a direcciones de correo electrónico adicionales que especifique.
 * Llamar a un webhook.
-* iniciar la ejecución de un runbook de Azure (solo de Hola portal de Azure en este momento)
+* Iniciar la ejecución de un runbook de Azure (en este momento, solo desde Azure Portal).
 
 Puede obtener información sobre las reglas de alerta de métricas y configurarlas mediante:
 
@@ -55,15 +55,15 @@ Puede obtener información sobre las reglas de alerta de métricas y configurarl
 * [Interfaz de la línea de comandos (CLI)](insights-alerts-command-line-interface.md)
 * [API de REST de Azure Monitor](https://msdn.microsoft.com/library/azure/dn931945.aspx)
 
-Siempre puede recibir ayuda para los comandos escribiendo un comando y poner - ayuda al final de Hola. Por ejemplo:
+Siempre puede escribir un comando y agregar -help al final para obtener ayuda sobre dicho comando. Por ejemplo:
 
     ```console
     azure insights alerts -help
     azure insights alerts actions email create -help
     ```
 
-## <a name="create-alert-rules-using-hello-cli"></a>Crear reglas de alerta mediante Hola CLI
-1. Realizar los requisitos previos de Hola y tooAzure de inicio de sesión. Consulte los [ejemplos de CLI de Azure Monitor](insights-cli-samples.md). En resumen, instalar Hola CLI y ejecutar estos comandos. Obtiene se registran en, muestran qué suscripción se está usando y preparación comandos de Azure Monitor toorun.
+## <a name="create-alert-rules-using-the-cli"></a>Creación de reglas de alerta mediante la CLI
+1. Cumpla los requisitos previos e inicie sesión en Azure. Consulte los [ejemplos de CLI de Azure Monitor](insights-cli-samples.md). En pocas palabras, instale la CLI y ejecute estos comandos. Con estos comandos, puede iniciar sesión, ver la suscripción que usa y prepararse para ejecutar comandos de Azure Monitor.
 
     ```console
     azure login
@@ -72,17 +72,17 @@ Siempre puede recibir ayuda para los comandos escribiendo un comando y poner - a
 
     ```
 
-2. las reglas existentes en un grupo de recursos, toolist usar hello siguiente formulario **lista de reglas de alertas de visión azure** *[opciones] &lt;grupo de recursos&gt;*
+2. Para ver las reglas existentes en un grupo de recursos, use el formato siguiente **azure insights alerts rule list** *[opciones] &lt;grupoRecursos&gt;*
 
    ```console
    azure insights alerts rule list myresourcegroupname
 
    ```
-3. toocreate una regla, debe toohave varios fragmentos de información importantes en primer lugar.
-  * Hola **Id. de recurso** para el recurso de hello desea tooset una alerta para
-  * Hola **definiciones de métrica** disponibles para dicho recurso
+3. Para crear una regla, primero debe contar con varios datos importantes.
+  * El **identificador de recurso** del recursos para el que desea establecer una alerta.
+  * Las **definiciones de métricas** disponibles para ese recurso.
 
-     Hola tooget una manera de Id. de recurso es toouse Hola portal de Azure. Suponiendo que ya se ha creado el recurso de hello, selecciónela en el portal de Hola. A continuación, en la hoja de hello siguiente, seleccione *propiedades* en hello *configuración* sección. Hola *Id. de recurso* es un campo en la hoja siguiente Hola. Otra manera es hello toouse [Explorador de recursos de Azure](https://resources.azure.com/).
+     Una forma de obtener el identificador de recurso es usar Azure Portal. Seleccione el recurso en el portal, suponiendo que ya existe. En la sección *Configuración* de la hoja siguiente, seleccione *Propiedades*. El campo *RESOURCE ID* está en la hoja siguiente. Otra forma que puede usar es el [Explorador de recursos de Azure](https://resources.azure.com/).
 
      El siguiente es un ejemplo de identificador de recurso de una aplic. web:
 
@@ -90,24 +90,24 @@ Siempre puede recibir ayuda para los comandos escribiendo un comando y poner - a
      /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename
      ```
 
-     una lista de métricas disponibles hello y las unidades de esas métricas para Hola de uso siguiente comando CLI, el ejemplo anterior de recursos Hola tooget:  
+     Para obtener una lista de las métricas disponibles y las unidades de esas métricas para el ejemplo de recurso anterior, use el siguiente comando de CLI:  
 
      ```console
      azure insights metrics list /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename PT1M
      ```
 
-     *PT1M* es la granularidad de Hola de medida disponibles de hello (intervalos de 1 minuto). El uso de distintas granularidades le brinda opciones de métricas diferentes.
-4. toocreate una regla de alerta basada en la métrica, utilice un comando de hello siguiendo el formato:
+     *PT1M* es la granularidad de la medida disponible (intervalos de 1 minuto). El uso de distintas granularidades le brinda opciones de métricas diferentes.
+4. Para crear una regla de alerta basada en métricas, use un comando con el siguiente formato:
 
     **azure insights alerts rule metric set***[opciones] &lt;nombreRegla&gt;&lt;ubicación&gt;&lt;grupoRecursos&gt;&lt;tamañoVentana&gt;&lt;operador&gt;&lt;umbral&gt;&lt;idRecursoObjetivo&gt;&lt;nombreMétrica&gt;&lt;horaInserciónOperador&gt;*
 
-    Hola siguiendo el ejemplo se configura una alerta en un recurso de sitio web. desencadenadores de alerta de Hello siempre que sea coherente recibe todo el tráfico de 5 minutos y cuando no recibe ningún tipo de tráfico durante 5 minutos.
+    En el ejemplo siguiente se configura una alerta en un recurso de sitio web. La alerta se desencadena cada vez que se recibe constantemente cualquier tráfico durante 5 minutos y nuevamente cuando no se recibe tráfico durante 5 minutos.
 
     ```console
     azure insights alerts rule metric set myrule eastus myreasourcegroup PT5M GreaterThan 2 /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename BytesReceived Total
 
     ```
-5. toocreate webhook o enviar correo electrónico cuando se desencadene una alerta de métricas, en primer lugar crear correo electrónico de Hola o webhook. A continuación, crear reglas de hello inmediatamente después. No se puede asociar webhook o correos electrónicos con ya creado reglas con hello CLI.
+5. Para crear un webhook o enviar un correo electrónico cuando se active una alerta de métrica, debe crear el correo electrónico o los webhooks. Cree la regla inmediatamente después. No puede asociar webhooks o correos electrónicos con reglas ya creadas mediante la CLI.
 
     ```console
     azure insights alerts actions email create --customEmails myemail@contoso.com
@@ -122,11 +122,11 @@ Siempre puede recibir ayuda para los comandos escribiendo un comando y poner - a
     ```console
     azure insights alerts rule list myresourcegroup --ruleName myrule
     ```
-7. reglas de toodelete, utilice un comando de formulario de hello:
+7. Para eliminar reglas, use un comando con este formato:
 
     **insights alerts rule delete** [opciones] &lt;grupoRecursos&gt;&lt;nombreRegla&gt;
 
-    Estos comandos eliminan reglas de Hola que creó anteriormente en este artículo.
+    Estos comandos eliminan las reglas que se crearon anteriormente en este artículo.
 
     ```console
     azure insights alerts rule delete myresourcegroup myrule
@@ -135,9 +135,9 @@ Siempre puede recibir ayuda para los comandos escribiendo un comando y poner - a
     ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-* [Obtener una visión general de supervisión de Azure](monitoring-overview.md) incluidos Hola los tipos de información que puede recopilar y supervisar.
+* [Obtenga información general sobre la supervisión de Azure](monitoring-overview.md) , incluidos los tipos de información que puede recopilar y supervisar.
 * Obtenga más información sobre cómo [configurar webhooks en las alertas](insights-webhooks-alerts.md).
 * Obtenga más información sobre la [configuración de alertas sobre los eventos de registro de actividad](monitoring-activity-log-alerts.md).
 * Obtenga más información sobre los [runbooks de Azure Automation](../automation/automation-starting-a-runbook.md).
-* Obtener un [información general de recopilar registros de diagnóstico](monitoring-overview-of-diagnostic-logs.md) toocollect detallada las métricas de alta frecuencia en su servicio.
-* Obtener un [información general de la colección de métricas](insights-how-to-customize-monitoring.md) toomake que el servicio esté disponible y capacidad de respuesta.
+* Obtenga [información general sobre la colección de registros de diagnóstico](monitoring-overview-of-diagnostic-logs.md) para recopilar métricas detalladas de alta frecuencia sobre el servicio.
+* Obtenga [información general sobre la colección de métricas](insights-how-to-customize-monitoring.md) para garantizar que el servicio está disponible y que responder adecuadamente.

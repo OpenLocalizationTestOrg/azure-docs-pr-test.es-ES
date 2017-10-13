@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure Active Directory v2.0 ámbitos, los permisos y consentimiento | Documentos de Microsoft"
-description: "Una descripción de la autorización en el punto de conexión de v2.0 de hello Azure AD, incluidos los ámbitos, los permisos y consentimiento."
+title: "Ámbitos, permisos y consentimiento de Azure Active Directory v2.0 | Microsoft Docs"
+description: "Descripción de la autorización del punto de conexión v2.0 de Azure AD, que incluye los ámbitos, los permisos y el consentimiento."
 services: active-directory
 documentationcenter: 
 author: dstrockis
@@ -15,64 +15,64 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 5721d368c435868bfb4ae91cff7fbb9bc4a79b66
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 04869a7627ecb3e6a0d11733fae7da2ecb04ed51
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="scopes-permissions-and-consent-in-hello-azure-active-directory-v20-endpoint"></a>Ámbitos, permisos y consentimiento en el punto de conexión de hello Azure Active Directory v2.0
-Las aplicaciones que se integran con Azure Active Directory (Azure AD) siguen un modelo de autorización que ofrece a los usuarios control sobre el modo en que una aplicación puede acceder a sus datos. se ha actualizado la implementación de Hello v2.0 de modelo de autorización de hello, y se cambia cómo una aplicación debe interactuar con Azure AD. Este artículo tratan los conceptos básicos de este modelo de autorización, incluidos los ámbitos, los permisos y consentimiento Hola.
+# <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Ámbitos, permisos y consentimiento en el punto de conexión v2.0 de Azure Active Directory
+Las aplicaciones que se integran con Azure Active Directory (Azure AD) siguen un modelo de autorización que ofrece a los usuarios control sobre el modo en que una aplicación puede acceder a sus datos. La implementación v2.0 del modelo de implementación se ha actualizado, y cambia el modo en que una aplicación debe interactuar con Azure AD. En este artículo se tratan los conceptos básicos de este modelo de autorización, incluidos los ámbitos, los permisos y el consentimiento.
 
 > [!NOTE]
-> el punto de conexión de Hello v2.0 no admite todas las características y escenarios de Azure Active Directory. toodetermine si debe utilizar Hola v2.0 extremo, que conozca [v2.0 limitaciones](active-directory-v2-limitations.md).
+> No todas las características y escenarios de Azure Active Directory son compatibles con la versión 2.0 del punto de conexión. Para determinar si debe usar el punto de conexión v2.0, lea acerca de las [limitaciones de esta versión](active-directory-v2-limitations.md).
 >
 >
 
 ## <a name="scopes-and-permissions"></a>Permisos y ámbitos
-Azure AD implementa hello [OAuth 2.0](active-directory-v2-protocols.md) protocolo de autorización. OAuth 2.0 es un método a través del cual una aplicación de terceros puede acceder a recursos hospedados en Web en nombre de un usuario. Cualquier recurso hospedado en Web que se integre con Azure AD tiene un identificador de recursos o *URI de id. de aplicación*. Por ejemplo, algunos de los recursos de Microsoft hospedados en la web incluyen:
+Azure AD implementa el protocolo de autorización [OAuth 2.0](active-directory-v2-protocols.md). OAuth 2.0 es un método a través del cual una aplicación de terceros puede acceder a recursos hospedados en Web en nombre de un usuario. Cualquier recurso hospedado en Web que se integre con Azure AD tiene un identificador de recursos o *URI de id. de aplicación*. Por ejemplo, algunos de los recursos de Microsoft hospedados en la web incluyen:
 
-* Hola API de correo electrónico unificado de Office 365:`https://outlook.office.com`
-* Hola API de Azure AD Graph:`https://graph.windows.net`
+* La API de Correo unificado de Office 365: `https://outlook.office.com`
+* La API Graph de Azure AD: `https://graph.windows.net`
 * Microsoft Graph: `https://graph.microsoft.com`
 
-Hola que mismo puede decirse de los recursos de terceros que se han integrado con Azure AD. Cualquiera de estos recursos también puede definir un conjunto de permisos que pueden ser utilizados toodivide Hola funcionalidad de ese recurso en fragmentos menores. Por ejemplo, [Microsoft Graph](https://graph.microsoft.io) definió Hola de toodo permisos después de tareas, entre otros:
+Ocurre lo mismo con cualquier recurso de terceros integrado con Azure AD. Cualquiera de estos recursos también puede definir un conjunto de permisos que se puede usar para dividir la funcionalidad de ese recurso en fragmentos menores. Por ejemplo, [Microsoft Graph](https://graph.microsoft.io) tiene permisos definidos para realizar, entre otras, las tareas siguientes:
 
 * Leer el calendario de un usuario
-* Calendario del usuario de escritura tooa
+* Escribir en el calendario de un usuario
 * Enviar correo como un usuario
 
-Mediante la definición de estos tipos de permisos, el recurso de hello tiene control específico sobre sus datos y cómo se exponen los datos de Hola. Una aplicación de terceros puede solicitar estos permisos a un usuario de la aplicación. usuario de aplicación Hola debe aprobar permisos Hola para que aplicación hello puede actuar en nombre de usuario de Hola. Por fragmentación funcionalidad del recurso de hello en conjuntos de permisos más pequeños, aplicaciones de terceros pueden ser toorequest integrado solo Hola específicos los permisos que necesitan tooperform su función. Los usuarios de la aplicación pueden sabe exactamente cómo una aplicación va a utilizar sus datos y pueden ser más seguros de que la aplicación hello no se comporta con malas intenciones.
+Mediante la definición de estos tipos de permisos, el recurso tiene control específico sobre sus datos y el modo en que se exponen. Una aplicación de terceros puede solicitar estos permisos a un usuario de la aplicación. El usuario de la aplicación debe aprobar los permisos para que la aplicación pueda actuar en su nombre. Al fragmentar la funcionalidad del recurso en conjuntos de permisos más pequeños, se pueden crear aplicaciones de terceros para solicitar solo los permisos concretos que necesitan para realizar sus tareas. Los usuarios de la aplicación pueden saber exactamente cómo una aplicación usará sus datos, así pueden estar más seguros de que la aplicación no se comporta de forma malintencionada.
 
-En Azure AD y OAuth, estos tipos de permisos se denominan *ámbitos*. A veces también son tooas que se hace referencia *oAuth2Permissions*. Un ámbito se representa en Azure AD como un valor de cadena. Continuando con el ejemplo de Hola a Microsoft Graph, valor de ámbito de Hola para cada permiso es:
+En Azure AD y OAuth, estos tipos de permisos se denominan *ámbitos*. En ocasiones también se conocen como *oAuth2Permissions*. Un ámbito se representa en Azure AD como un valor de cadena. Al igual que en el ejemplo de Microsoft Graph, el valor de ámbito para cada permiso es:
 
 * Leer el calendario de un usuario mediante `Calendar.Read`
-* Escribir calendario del usuario tooa mediante`Mail.ReadWrite`
+* Escribir en el calendario de un usuario mediante `Mail.ReadWrite`
 * Enviar correo electrónico con un usuario mediante `Mail.Send`
 
-Una aplicación puede solicitar estos permisos mediante la especificación de ámbitos de hello en el punto de conexión de solicitudes toohello v2.0.
+Una aplicación puede solicitar estos permisos mediante la especificación de los ámbitos en las solicitudes al punto de conexión v2.0.
 
 ## <a name="openid-connect-scopes"></a>Ámbitos de OpenID Connect
-implementación de la versión 2.0 de Hola de OpenID Connect tiene unos ámbitos bien definidos que no son aplicables a recursos específicos de tooa: `openid`, `email`, `profile`, y `offline_access`.
+La implementación v2.0 de OpenID Connect tiene unos cuantos ámbitos bien definidos que no se aplican a ningún recurso determinado: `openid`, `email`, `profile` y `offline_access`.
 
 ### <a name="openid"></a>openid
-Si una aplicación realiza inicio de sesión mediante el uso de [OpenID Connect](active-directory-v2-protocols.md), debe solicitar hello `openid` ámbito. Hola `openid` ámbito se muestra en la cuenta de trabajo de hello página de consentimiento Hola permiso "Iniciar sesión en" y en la cuenta de Microsoft personal Hola página de consentimiento como Hola permiso "Ver su perfil y conectar tooapps y los servicios con su cuenta de Microsoft". Con este permiso, una aplicación puede recibir un identificador único para el usuario de hello en forma de Hola de hello `sub` de notificación. También proporciona el punto de conexión de hello aplicación acceso toohello información de usuario. Hola `openid` ámbito puede usarse en hello v2.0 extremo de token tooacquire identificador tokens, que pueden ser utilizados toosecure HTTP llamadas entre distintos componentes de una aplicación.
+Si una aplicación realiza el inicio de sesión mediante [OpenID Connect](active-directory-v2-protocols.md), debe solicitar el ámbito `openid`. El ámbito `openid` aparece en la pantalla de consentimiento de la cuenta profesional como el permiso "Sign you in" (Iniciar sesión) y en la pantalla de consentimiento de la cuenta personal de Microsoft como el permiso "View your profile and connect to apps and services using your Microsoft account" (Ver el perfil y conectarse a las aplicaciones y servicios con la cuenta de Microsoft). Este permiso permite que una aplicación reciba un identificador único para el usuario en forma de la notificación `sub` . También ofrece acceso de la aplicación al punto de conexión UserInfo. El ámbito `openid` se puede usar en el punto de conexión del token v.2.0 para adquirir tokens de identificador que se pueden emplear para proteger las llamadas HTTP entre distintos componentes de una aplicación.
 
 ### <a name="email"></a>email
-Hola `email` ámbito puede usarse con hello `openid` ámbito y cualquier otra. Proporciona la dirección de correo electrónico principal del usuario de hello aplicación acceso toohello en forma Hola Hola `email` de notificación. Hola `email` notificación se incluye en un token solo si una dirección de correo electrónico está asociada a la cuenta de usuario de hello, que no siempre es el caso de hello. Si utiliza hello `email` ámbito, la aplicación debe ser preparado toohandle un caso en que hello `email` notificación no existe en el símbolo (token) de Hola.
+El ámbito `email` puede usarse con el ámbito `openid` y cualquier otro. Proporciona acceso de la aplicación a la dirección de correo electrónico principal del usuario en forma de la notificación `email`. La notificación `email` solo se incluye en los tokens si hay una dirección de correo electrónico asociada a la cuenta de usuario, que no siempre es el caso. Si usa el ámbito `email`, la aplicación debe estar preparada para controlar los casos en los que la notificación `email` no exista en el token.
 
 ### <a name="profile"></a>Perfil
-Hola `profile` ámbito puede usarse con hello `openid` ámbito y cualquier otra. Proporciona Hola aplicación acceso tooa considerable cantidad de información acerca del usuario de Hola. incluye información de Hola que pueda tener acceso, pero no está limitado para Hola nombre dado del usuario, apellido, nombre de usuario preferido e identificador de objeto Para obtener una lista completa de hello perfil notificaciones disponibles en el parámetro de hello id_tokens para un usuario específico, vea hello [v2.0 tokens referencia](active-directory-v2-tokens.md).
+El ámbito `profile` puede usarse con el ámbito `openid` y cualquier otro. Proporciona acceso de la aplicación a una cantidad considerable de información sobre el usuario. Por ejemplo, el nombre propio del usuario, el apellido, el nombre de usuario preferido o el id. de objeto, entre otros datos. Para ver una lista completa de las notificaciones de perfil disponibles en el parámetro id_tokens para un usuario específico, consulte la [referencia de los tokens de v2.0](active-directory-v2-tokens.md).
 
 ### <a name="offlineaccess"></a>offline_access
-Hola [ `offline_access` ámbito](http://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) da su tooresources de acceso de la aplicación en nombre de usuario de Hola durante un período prolongado. En la página de consentimiento de cuenta de trabajo hello, este ámbito aparece como "Obtener acceso a los datos en cualquier momento" permiso de Hola. En hello personal consentimiento página la cuenta Microsoft, aparece como "Obtener acceso a la información en cualquier momento" permiso de Hola. Cuando un usuario aprueba hello `offline_access` ámbito, la aplicación puede recibir tokens de actualización de extremo de token de hello v2.0. Los tokens de actualización tienen una duración larga. La aplicación puede obtener nuevos tokens de acceso cuando expiren los antiguos.
+El ámbito [`offline_access` ](http://openid.net/specs/openid-connect-core-1_0.html#OfflineAccess) proporciona acceso de la aplicación a recursos en nombre del usuario durante un periodo de tiempo prolongado. En la página de consentimiento de la cuenta profesional, este ámbito aparecerá como el permiso "Acceder a sus datos en cualquier momento". En la página de consentimiento de la cuenta personal de Microsoft, aparece como el permiso "Obtener acceso a tu información en cualquier momento". Cuando un usuario aprueba el ámbito `offline_access`, la aplicación puede recibir tokens de actualización del punto de conexión del token v2.0. Los tokens de actualización tienen una duración larga. La aplicación puede obtener nuevos tokens de acceso cuando expiren los antiguos.
 
-Si la aplicación no solicita hello `offline_access` ámbito, que no recibir tokens de actualización. Esto significa que cuando canjear un código de autorización en hello [flujo de código de autorización de OAuth 2.0](active-directory-v2-protocols.md), recibirá solo un token de acceso de hello `/token` punto de conexión. token de acceso de Hello es válida durante un breve período. token de acceso de Hello normalmente expira en una hora. En ese momento, la aplicación necesita tooredirect Hola usuario espera toohello `/authorize` tooget un nuevo código de autorización de punto de conexión. Durante esta redirección, según el tipo de saludo de aplicación, usuario Hola podría necesitará tooenter sus credenciales de nuevo o nuevo consentimiento toopermissions.
+Si la aplicación no solicita el ámbito `offline_access`, no recibirá tokens de actualización. Esto significa que cuando se canjea un código de autorización del [flujo del código de autorización de OAuth 2.0](active-directory-v2-protocols.md), solo se recibirá un token de acceso del punto de conexión `/token`. El token de acceso es válido durante un breve período de tiempo. Normalmente, expira al cabo de una hora. En ese momento, la aplicación tiene que redirigir al usuario de vuelta al punto de conexión `/authorize` para que obtenga un nuevo código de autorización. Durante esta redirección y, en función del tipo de aplicación, puede que el usuario tenga que volver a escribir sus credenciales o dar de nuevo el consentimiento a permisos.
 
-Para obtener más información acerca de cómo tooget y use tokens de actualización, vea hello [referencia del protocolo v2.0](active-directory-v2-protocols.md).
+Para más información sobre cómo obtener y usar tokens de actualización, consulte la [referencia del protocolo v2.0](active-directory-v2-protocols.md).
 
 ## <a name="requesting-individual-user-consent"></a>Solicitud de consentimiento de usuario individual
-En un [OpenID Connect o OAuth 2.0](active-directory-v2-protocols.md) solicitar autorización, una aplicación puede solicitar permisos de Hola que necesita mediante el uso de hello `scope` parámetro de consulta. Por ejemplo, cuando un usuario inicia sesión en la aplicación tooan, aplicación hello envía una solicitud como Hola siguiente ejemplo (con saltos de línea agregados por legibilidad):
+En una solicitud de autorización de [OpenID Connect o OAuth 2.0](active-directory-v2-protocols.md), una aplicación puede solicitar los permisos que necesita mediante el parámetro de consulta `scope`. Por ejemplo, cuando un usuario inicia sesión en una aplicación, la aplicación envía una solicitud como la del ejemplo siguiente (se han agregado saltos de línea para una mayor legibilidad):
 
 ```
 GET https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
@@ -86,47 +86,47 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 &state=12345
 ```
 
-Hola `scope` parámetro es una lista separada por espacios de ámbitos que Hola aplicación está solicitando. Cada ámbito se indica mediante la anexión de identificador del recurso de hello ámbito valor toohello (Hola URI de Id. de la aplicación). En el ejemplo de solicitud de hello, aplicación hello necesita calendario del usuario de permiso tooread hello y enviar correo electrónico como usuario de Hola.
+El parámetro `scope` es una lista separada por espacios que incluye los ámbitos que solicita la aplicación. Cada ámbito individual se indica anexando el valor del ámbito al identificador del recurso (URI del id. de aplicación). En la solicitud de ejemplo, la aplicación necesita permiso para leer el calendario del usuario y enviar correo electrónico en nombre del usuario.
 
-Después de hello usuario escribe sus credenciales, el punto de conexión de hello v2.0 busca un registro coincidente de *consentimiento del usuario*. Si no ha dado su consentimiento del usuario de hello tooany de hello permisos solicitados en hello anterior, el punto de conexión de hello v2.0 pide toogrant de usuario de Hola Hola permisos solicitados.
+Después de que el usuario escribe sus credenciales, el punto de conexión v2.0 busca un registro que coincida con el *consentimiento del usuario*. Si el usuario no ha dado su consentimiento a ninguno de los permisos solicitados en el pasado, el punto de conexión v2.0 le pide al usuario que conceda los permisos solicitados.
 
 ![Consentimiento de la cuenta de trabajo](../../media/active-directory-v2-flows/work_account_consent.png)
 
-Cuando el usuario de hello aprueba permiso hello, consentimiento Hola se registra para que hello el usuario no tiene tooconsent nuevo en inicios de sesión de cuentas subsiguientes.
+Cuando el usuario aprueba el permiso, el consentimiento se registra, así el usuario no tiene que volver a dar su consentimiento en los sucesivos inicios de sesión.
 
 ## <a name="requesting-consent-for-an-entire-tenant"></a>Solicitud de consentimiento para un inquilino al completo
-A menudo, cuando una organización adquiere una licencia o una suscripción para una aplicación, la organización de hello quiere toofully aplicación de hello aprovisionar para sus empleados. Como parte de este proceso, un administrador puede conceder consentimiento para tooact de aplicación hello en nombre de cualquier empleado. Si Hola, administrador concede el consentimiento para el inquilino todo hello, los empleados de la organización de hello no verán una página de consentimiento para la aplicación hello.
+A menudo, cuando una organización adquiere una licencia o una suscripción de una aplicación, quiere aprovisionar totalmente la aplicación para sus empleados. Como parte de este proceso, el administrador puede conceder consentimiento a la aplicación para que actúe en nombre de cualquier empleado. Si el administrador concede el consentimiento del inquilino entero, los empleados de la organización no verán una página de consentimiento para la aplicación.
 
-toorequest consentimiento para todos los usuarios en un inquilino, la aplicación puede utilizar el extremo de consentimiento de administración de Hola.
+Para solicitar el consentimiento de todos los usuarios de un inquilino, la aplicación puede usar el punto de conexión de consentimiento del administrador.
 
 ## <a name="admin-restricted-scopes"></a>Ámbitos restringidos para los administradores
-Se pueden establecer algunos permisos con privilegios elevados en el ecosistema de Microsoft hello demasiado*restringido a administradores*. Algunos ejemplos de estos tipos de ámbitos son Hola los siguientes permisos:
+Algunos permisos de privilegios elevados del ecosistema de Microsoft se pueden establecer en *restringido para los administradores*. Algunos ejemplos de estos tipos de ámbitos son los siguientes permisos:
 
 * Leer datos del directorio de una organización mediante `Directory.Read`
-* Escribir el directorio de la organización de datos tooan mediante`Directory.ReadWrite`
+* Escribir datos en el directorio de una organización mediante `Directory.ReadWrite`
 * Leer grupos de seguridad del directorio de una organización mediante: `Groups.Read.All`
 
-Aunque un usuario de consumidor puede conceder un toothis de acceso de la aplicación de tipo de datos, los usuarios de la organización están restringidos conceder toohello acceso mismo conjunto de datos confidenciales de la empresa. Si la aplicación solicita acceso tooone de estos permisos de un usuario de la organización, usuario de hello recibe un mensaje de error que indica que no son los permisos de la aplicación de tooconsent autorizados tooyour.
+Aunque un usuario consumidor podría conceder acceso de la aplicación a este tipo de datos, los usuarios de la organización tienen la restricción de no conceder acceso al mismo conjunto de datos confidenciales de la empresa. Si la aplicación solicita acceso a uno de estos permisos desde un usuario de la organización, el usuario recibe un mensaje de error que indica que no está autorizado para dar el consentimiento a los permisos de la aplicación.
 
-Si la aplicación necesita acceso restringido tooadmin ámbitos para las organizaciones, se debe solicitan directamente desde un administrador de empresa, también mediante el uso de extremo de consentimiento de administración de hello, que se describe a continuación.
+Si la aplicación necesita acceso a los ámbitos restringidos para los administradores en una organización, debe solicitarlos directamente a un administrador de la empresa, también mediante el punto de conexión de consentimiento del administrador, que se describe a continuación.
 
-Cuando un administrador le conceda que estos permisos a través de Hola, Administrador de consentimiento punto de conexión, se ha dado consentimiento para todos los usuarios de inquilinos de Hola.
+Cuando un administrador concede estos permisos mediante el punto de conexión de consentimiento del administrador, el consentimiento se concede a todos los usuarios del inquilino.
 
-## <a name="using-hello-admin-consent-endpoint"></a>Uso de extremo de consentimiento de administración de Hola
-Si sigue estos pasos, la aplicación puede recopilar permisos para todos los usuarios de un inquilino, incluidos los ámbitos restringido para los administradores. toosee un ejemplo de código que implementa los pasos de hello, vea hello [ejemplo restringido por el Administrador de ámbitos](https://github.com/Azure-Samples/active-directory-dotnet-admin-restricted-scopes-v2).
+## <a name="using-the-admin-consent-endpoint"></a>Uso del punto de conexión de consentimiento del administrador
+Si sigue estos pasos, la aplicación puede recopilar permisos para todos los usuarios de un inquilino, incluidos los ámbitos restringido para los administradores. Para ver un ejemplo de código que implementa lo pasos, consulte el [ejemplo de ámbitos restringidos para los administradores](https://github.com/Azure-Samples/active-directory-dotnet-admin-restricted-scopes-v2).
 
-### <a name="request-hello-permissions-in-hello-app-registration-portal"></a>Solicitar permisos de hello en el portal de registro de aplicación Hola
-1. Vaya tooyour aplicación Hola [Portal de registro de aplicación](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList), o [crear una aplicación](active-directory-v2-app-registration.md) si no lo ha hecho ya.
-2. Busque hello **Microsoft Graph permisos** sección y, a continuación, agregue permisos de Hola que requiere la aplicación.
-3. Asegúrese de que **guardar** Hola de registro de la aplicación.
+### <a name="request-the-permissions-in-the-app-registration-portal"></a>Solicitud de los permisos en el portal de registro de aplicaciones
+1. Vaya a la aplicación en el [Portal de registro de aplicaciones](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) o [cree una aplicación](active-directory-v2-app-registration.md), si todavía no tiene una.
+2. Busque la sección de **permisos de Microsoft Graph** y agregue los permisos que necesite la aplicación.
+3. No olvide **guardar** el registro de la aplicación.
 
-### <a name="recommended-sign-hello-user-in-tooyour-app"></a>Recomendado: Usuario de inicio de sesión hello en tooyour aplicación
-Normalmente, cuando se compila una aplicación que utiliza el punto de conexión de consentimiento de administración de hello, aplicación hello necesita una página o una vista en qué Hola administrador puede aprobar los permisos de la aplicación hello. Esta página puede formar parte del flujo de registro de la aplicación hello, parte de la configuración de la aplicación hello, o bien puede ser dedicado "conectar" flujo. En muchos casos, tiene sentido para hello aplicación tooshow esto "conectar" vista sólo después de que un usuario haya iniciado sesión con un trabajo o escuela cuenta Microsoft.
+### <a name="recommended-sign-the-user-in-to-your-app"></a>Recomendación: inicie la sesión del usuario en la aplicación
+Normalmente, cuando se compila una aplicación que usa el punto de conexión de consentimiento del administrador, la aplicación necesita una página o una vista en la que el administrador pueda aprobar los permisos de la aplicación. Esta página puede ser parte del flujo de inicio de sesión de la aplicación o de la configuración de la aplicación, o bien puede ser un flujo de "conexión" dedicado. En muchos casos, tiene sentido que la aplicación muestre esta vista de conexión solo después de que un usuario haya iniciado sesión con una cuenta Microsoft profesional o educativa.
 
-Al iniciar la sesión de usuario de hello en tooyour aplicación, puede identificar la organización de hello toowhich Hola, Administrador pertenece antes de que se les solicita permisos necesarios de tooapprove Hola. Aunque no es estrictamente necesario, puede ayudarle a crear una experiencia más intuitiva para los usuarios de la organización. usuario de hello toosign en siguen nuestro [tutoriales de protocolo v2.0](active-directory-v2-protocols.md).
+Cuando inicia la sesión del usuario en la aplicación, puede identificar la organización a la que pertenece el administrador antes de pedirle que apruebe los permisos necesarios. Aunque no es estrictamente necesario, puede ayudarle a crear una experiencia más intuitiva para los usuarios de la organización. Para iniciar la sesión del usuario, siga nuestros [tutoriales del protocolo de la versión 2.0](active-directory-v2-protocols.md).
 
-### <a name="request-hello-permissions-from-a-directory-admin"></a>Hola solicitar los permisos de un administrador de directorio
-Cuando esté listo toorequest permisos de administrador de su organización, puede redirigir Hola usuario toohello v2.0 *extremo de consentimiento de administración*.
+### <a name="request-the-permissions-from-a-directory-admin"></a>Solicitud de los permisos de un administrador de directorios
+Cuando esté listo para solicitar permisos al administrador de la organización, puede redirigir al usuario al *punto de conexión de consentimiento del administrador* v2.0.
 
 ```
 // Line breaks are for legibility only.
@@ -138,7 +138,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 ```
-// Pro tip: Try pasting hello below request in a browser!
+// Pro tip: Try pasting the below request in a browser!
 ```
 
 ```
@@ -147,15 +147,15 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 
 | Parámetro | Condición | Descripción |
 | --- | --- | --- |
-| tenant |Obligatorio |inquilino de directorio de Hola que desee toorequest permiso de. Se puede proporcionar en formato de nombre descriptivo o GUID. |
-| client_id |Obligatorio |Hola aplicación Id. que hello [Portal de registro de aplicación](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) asignado tooyour aplicación. |
-| redirect_uri |Obligatorio |Hola redirigir URI donde desee hello toobe de respuesta enviado para su toohandle de aplicación. Debe coincidir exactamente con uno de redirección de hello URI que se ha registrado en el portal de registro de aplicación Hola. |
-| state |Recomendado |Un valor incluido en la solicitud de Hola que también se devolverán en respuesta de token de Hola. Puede ser una cadena de cualquier contenido que desee. Utilice tooencode información de estado de hello acerca del estado del usuario de hello en la aplicación hello antes de que se ha producido en solicitud de autenticación de hello, como página de Hola o vista que estaban en. |
+| tenant |Obligatorio |El inquilino de directorio al que quiere solicitar permiso. Se puede proporcionar en formato de nombre descriptivo o GUID. |
+| client_id |Obligatorio |El identificador de aplicación que el [portal de registro de aplicaciones](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) asignó a la aplicación. |
+| redirect_uri |Obligatorio |El URI de redirección adonde desea que se envíe la respuesta para que la controle la aplicación. Debe coincidir exactamente con uno de los identificadores URI de redirección que registró el Portal de registro de aplicaciones. |
+| state |Recomendado |Un valor incluido en la solicitud que se devolverá también en la respuesta del token. Puede ser una cadena de cualquier contenido que desee. Use el estado para codificar información sobre el estado del usuario en la aplicación antes de que se produzca la solicitud de autenticación, por ejemplo, la página o vista en la que estaba. |
 
-En este momento, Azure AD necesita un toosign del Administrador de inquilinos en solicitud de hello toocomplete. Administrador de Hola se solicita tooapprove que todos Hola permisos que han solicitado para la aplicación de portal de registro de aplicación Hola.
+En este momento, Azure AD requiere que un administrador de inquilinos inicie sesión para completar la solicitud. Se pedirá al administrador que apruebe todos los permisos que ha solicitado para la aplicación en el Portal de registro de aplicaciones.
 
 #### <a name="successful-response"></a>Respuesta correcta
-Si Hola, administrador aprueba permisos hello para la aplicación, la respuesta es correcta Hola se ve así:
+Si el administrador aprueba los permisos para la aplicación, la respuesta correcta tendrá un aspecto similar al siguiente:
 
 ```
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
@@ -163,12 +163,12 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 
 | Parámetro | Description |
 | --- | --- | --- |
-| tenant |inquilino de directorio de Hola que conceden los permisos de aplicación Hola solicita, en formato GUID. |
-| state |Un valor incluido en la solicitud de Hola que también se devolverá como respuesta de token de Hola. Puede ser una cadena de cualquier contenido que desee. estado de Hello es tooencode usa información acerca del estado del usuario de hello en la aplicación hello antes de que se ha producido en solicitud de autenticación de hello, como página de Hola o que estaban en la vista. |
-| admin_consent |Se establece demasiado**true**. |
+| tenant |El inquilino del directorio que concedió los permisos solicitados, en formato GUID. |
+| state |Un valor incluido en la solicitud que también se devolverá en la respuesta del token. Puede ser una cadena de cualquier contenido que desee. El estado se usa para codificar información sobre el estado del usuario en la aplicación antes de que se haya producido la solicitud de autenticación, por ejemplo, la página o vista en la que estaban. |
+| admin_consent |Se establecerá en **true**. |
 
 #### <a name="error-response"></a>Respuesta de error
-Si Hola, administrador no puede aprobar los permisos de hello para la aplicación, Hola error respuesta es similar al siguiente:
+Si el administrador no aprueba los permisos de la aplicación, la respuesta de error tendrá el aspecto siguiente:
 
 ```
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
@@ -176,13 +176,13 @@ GET http://localhost/myapp/permissions?error=permission_denied&error_description
 
 | Parámetro | Description |
 | --- | --- | --- |
-| error |Una cadena de código de error que puede ser utilizados tooclassify tipos de errores que se producen y puede ser usado tooreact tooerrors. |
-| error_description |Un mensaje de error específico que puede ayudar a un desarrollador para identificar la causa de Hola de un error. |
+| error |Una cadena de código de error que puede utilizarse para clasificar los tipos de errores que se producen y para reaccionar ante ellos. |
+| error_description |Un mensaje de error específico que puede ayudar a un desarrollador a identificar la causa de un error. |
 
-Una vez que ha recibido una respuesta correcta desde el punto de conexión de hello administrador consentimiento, la aplicación ha obtenido permisos de Hola que solicita. A continuación, puede solicitar un token de recurso de Hola que desee.
+Cuando haya recibido una respuesta correcta del punto de conexión de consentimiento del administrador, la aplicación habrá obtenido los permisos solicitados. Ahora puede solicitar un token para el recurso que desee.
 
 ## <a name="using-permissions"></a>Uso de permisos
-Después de consentimiento del usuario de hello toopermissions para la aplicación, la aplicación puede adquirir tokens de acceso que representan tooaccess de permiso de la aplicación un recurso cierta capacidad. Un token de acceso puede utilizarse solo para un único recurso, pero se codifica dentro del token de acceso de hello es cada permiso que se ha concedido a la aplicación para ese recurso. tooacquire un token de acceso, la aplicación puede realizar un solicitud toohello v2.0 extremo de token, similar al siguiente:
+Después de que el usuario da su consentimiento para los permisos de la aplicación, la aplicación puede obtener tokens de acceso que representan los permisos de la aplicación para acceder a un recurso de alguna manera. Un token de acceso solo se puede usar para un recurso, pero dentro del token de acceso están todos los permisos codificados que se han concedido a la aplicación para ese recurso. Para adquirir un token de acceso, la aplicación puede realizar una solicitud al punto de conexión del token v2.0, como esta:
 
 ```
 POST common/oauth2/v2.0/token HTTP/1.1
@@ -199,6 +199,6 @@ Content-Type: application/json
 }
 ```
 
-Puede usar el token de acceso resultante de hello en recursos de toohello de las solicitudes HTTP. Forma confiable indica recursos toohello que tu aplicación tiene Hola el permiso adecuado tooperform una tarea específica.  
+Puede usar el token de acceso resultante en las solicitudes HTTP al recurso. Dicho token indica al recurso de forma confiable que la aplicación tiene el permiso apropiado para realizar una tarea específica.  
 
-Para obtener más información acerca de hello OAuth 2.0 del protocolo y tokens de acceso de tooget, vea hello [referencia del protocolo de extremo v2.0](active-directory-v2-protocols.md).
+Para más información sobre el protocolo OAuth 2.0 y cómo obtener tokens de acceso, consulte la [referencia de protocolo del punto de conexión v2.0](active-directory-v2-protocols.md).

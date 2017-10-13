@@ -1,6 +1,6 @@
 ---
-title: "aaaHow toogenerate miniaturas utilizando Media Encoder estándar con .NET"
-description: "Este tema se muestra cómo toouse .NET tooencode un activo y generen miniaturas en hello simultánea mediante el estándar de codificador multimedia."
+title: "Cómo generar vistas en miniatura mediante el Codificador multimedia estándar con .NET"
+description: "En este tema, se muestra cómo se usa .NET para codificar un recurso y generar miniaturas al mismo tiempo con Media Encoder Standard."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -12,25 +12,25 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/14/2017
+ms.date: 09/08/2017
 ms.author: juliako
-ms.openlocfilehash: 23d3e4d9bf64a688d45499c045f19d2792167990
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7b8732a06e54f7828418cba0c0d172e34f1f4ef7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-toogenerate-thumbnails-using-media-encoder-standard-with-net"></a>Cómo miniaturas toogenerate utilizando Media Encoder estándar con .NET
+# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Cómo generar vistas en miniatura mediante el Codificador multimedia estándar con .NET
 
-Puede usar toogenerate Media Encoder estándar uno o más de las vistas en miniatura de la entrada de vídeo en [JPEG](https://en.wikipedia.org/wiki/JPEG), [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics), o [BMP](https://en.wikipedia.org/wiki/BMP_file_format) formatos de archivo de imagen. Puede enviar tareas que producen solo las imágenes o puede combinar la generación de miniaturas con la codificación. Este tema proporciona algunos ejemplos de valores preestablecidos de miniaturas en código XML y JSON para estos escenarios. Al final de Hola de tema de hello, hay un [código de ejemplo](#code_sample) que muestra cómo toouse Hola Media Services .NET SDK tooaccomplish Hola tarea de codificación.
+Puede utilizar Media Encoder Standard para generar una o varias vistas en miniatura de la entrada de vídeo en formatos de archivo de imagen [JPEG](https://en.wikipedia.org/wiki/JPEG), [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics), o [BMP](https://en.wikipedia.org/wiki/BMP_file_format). Puede enviar tareas que producen solo las imágenes o puede combinar la generación de miniaturas con la codificación. Este tema proporciona algunos ejemplos de valores preestablecidos de miniaturas en código XML y JSON para estos escenarios. Al final del tema, hay un [código de ejemplo](#code_sample) que muestra cómo utilizar el SDK de .NET de Media Services para realizar la tarea de codificación.
 
-Para obtener más detalles sobre elementos de Hola que se usan en los valores preestablecidos de ejemplo, debe revisar [Media Encoder estándar esquema](media-services-mes-schema.md).
+Para más detalles sobre los elementos que se usan en los valores preestablecidos de ejemplo, consulte [Esquema de Media Encoder Standard](media-services-mes-schema.md).
 
-Realizar seguro hello tooreview [consideraciones](media-services-dotnet-generate-thumbnail-with-mes.md#considerations) sección.
+Asegúrese de revisar la sección [Consideraciones](media-services-dotnet-generate-thumbnail-with-mes.md#considerations) .
+    
+## <a name="example-of-a-single-png-file-preset"></a>Ejemplo de un valor preestablecido de archivo PNG único
 
-## <a name="example--single-png-file"></a>Ejemplo: archivo PNG único
-
-Hola después de JSON y valor preestablecido XML puede ser tooproduce usa una única salida PNG archivo fuera de hello primero algunos segundos de vídeo de entrada de hello, donde codificador Hola hace un intento de mejor esfuerzo en búsqueda de un marco "interesante". Tenga en cuenta que se han establecido Hola dimensiones de la imagen de salida too100%, lo que significa que estos coincidirá con dimensiones de Hola de vídeo de entrada de Hola. Tenga en cuenta también cómo se requiere la configuración de "Format" Hola "Salidas" uso de hello toomatch de "PngLayers" en la sección de "Códecs" Hola. 
+El siguiente valor preestablecido en código JSON y XML puede usarse para generar un único archivo PNG de salida fuera de los primeros segundos de la entrada de vídeo, donde el codificador realiza un intento de mejor esfuerzo para buscar un fotograma "interesante". Tenga en cuenta que las dimensiones de la imagen de salida se han establecido en 100%, lo que significa que se corresponderán con las dimensiones de la entrada de vídeo. Tenga en cuenta también que es necesaria la configuración de "Format" en "Outputs" para que coincida con el uso de "PngLayers" en la sección "Codecs". 
 
 ### <a name="json-preset"></a>Valor preestablecido JSON
 
@@ -80,9 +80,9 @@ Hola después de JSON y valor preestablecido XML puede ser tooproduce usa una ú
       </Outputs>
     </Preset>
 
-## <a name="example--a-series-of-jpeg-images"></a>Ejemplo: una serie de imágenes JPEG
+## <a name="example-of-a-series-of-jpeg-images-preset"></a>Ejemplo de un valor preestablecido de una serie de imágenes JPEG
 
-Hola después de JSON y valor preestablecido XML puede ser tooproduce usa un conjunto de 10 imágenes en las marcas de tiempo del 5%, 15%,..., el 95% de la escala de tiempo de entrada hello, donde el tamaño de imagen de Hola es toobe especificado un cuarto que de hello una entrada de vídeo.
+El siguiente valor preestablecido en código JSON y XML puede usarse para generar un conjunto de 10 imágenes en marcas de tiempo de 5%, 15%,..., el 95% de la escala de tiempo de entrada y donde se especifica que el tamaño de la imagen sea un cuarto del tamaño de la entrada de vídeo.
 
 ### <a name="json-preset"></a>Valor preestablecido JSON
 
@@ -99,8 +99,8 @@ Hola después de JSON y valor preestablecido XML puede ser tooproduce usa un con
             }
           ],
           "Start": "5%",
-          "Step": "1",
-          "Range": "1",
+          "Step": "10%",
+          "Range": "96%",
           "Type": "JpgImage"
         }
       ],
@@ -136,9 +136,9 @@ Hola después de JSON y valor preestablecido XML puede ser tooproduce usa un con
       </Outputs>
     </Preset>
 
-## <a name="example--one-image-at-a-specific-timestamp"></a>Ejemplo: una imagen en una marca de tiempo específica
+## <a name="example-of-a-one-image-at-a-specific-timestamp-preset"></a>Ejemplo de un valor preestablecido de una imagen en una marca de tiempo específica
 
-Hola siguiente valor preestablecido de JSON y XML puede ser utilizado tooproduce marca de 30 segundos de una sola imagen JPEG en Hola de vídeo de entrada de Hola. Este valor preestablecido espera Hola entrada toobe más de 30 segundos de duración (trabajo de hello else se producirá un error).
+El siguiente valor preestablecido en código JSON y XML puede usarse para generar una única imagen JPEG en la marca de 30 segundos de la entrada de vídeo. Este valor preestablecido espera que el vídeo de entrada sea más de 30 segundos de duración (de lo contrario el trabajo producirá un error).
 
 ### <a name="json-preset"></a>Valor preestablecido JSON
 
@@ -175,7 +175,7 @@ Hola siguiente valor preestablecido de JSON y XML puede ser utilizado tooproduce
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
-        <JpgImage Start="00:00:30" Step="00:00:02" Range="00:00:01">
+        <JpgImage Start="00:00:30" Step="00:00:01" Range="00:00:01">
           <JpgLayers>
             <JpgLayer>
               <Width>25%</Width>
@@ -191,142 +191,82 @@ Hola siguiente valor preestablecido de JSON y XML puede ser utilizado tooproduce
         </Output>
       </Outputs>
     </Preset>
+    
+## <a name="example-of-a-thumbnails-at-different-resolutions-preset"></a>Ejemplo de un valor preestablecido de miniaturas con distintas resoluciones
 
-## <a id="code_sample"></a>Ejemplo: codificar vídeo y generar miniatura
+El siguiente valor preestablecido puede utilizarse para generar miniaturas con diferentes resoluciones en una tarea. En el ejemplo, en las posiciones 5 %, 15 %, …, 95 % de la escala de tiempo de entrada, el codificador generará dos imágenes: una en la posición 100 % de la resolución del vídeo de entrada y otro en la posición 50 %.
 
-Hola el ejemplo de código siguiente utiliza Hola de Media Services .NET SDK tooperform siguiente las tareas:
+Tenga en cuenta el uso de macro {Resolution} en el nombre de archivo. Indica al codificador que utilice el ancho y alto que especificó en la sección de codificación del valor preestablecido al generar el nombre de archivo de las imágenes de salida. Esto también ayuda a distinguir fácilmente entre las distintas imágenes.
 
-* Crear un trabajo de codificación.
-* Obtiene un Codificador multimedia codificador estándar toohello de referencia.
-* Valor preestablecido Hola carga [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) o [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) que contienen Hola codificación preestablecido, así como información necesaria toogenerate miniaturas. Puede guardar esta [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) o [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) un Hola de archivo y use el archivo de código tooload Hola siguiente.
-  
-        // Load hello XML (or JSON) from hello local file.
-        string configuration = File.ReadAllText(fileName);  
-* Agregar un único trabajo de codificación tarea toohello. 
-* Especificar la entrada de hello toobe activo codificado.
-* Crear un recurso de salida que contendrá asset Hola codificado.
-* Agregue un progreso del controlador de eventos toocheck Hola trabajo.
-* Enviar el trabajo de Hola.
+### <a name="json-preset"></a>Valor preestablecido JSON
 
-Vea hello [desarrollo de servicios multimedia con .NET](media-services-dotnet-how-to-use.md) tema para obtener instrucciones acerca de cómo tooset del entorno de desarrollo.
-
-        using System;
-        using System.Configuration;
-        using System.IO;
-        using System.Linq;
-        using Microsoft.WindowsAzure.MediaServices.Client;
-        using System.Threading;
-
-        namespace EncodeAndGenerateThumbnails
+    {
+      "Version": 1.0,
+      "Codecs": [
         {
-        class Program
+          "JpgLayers": [
         {
-            // Read values from hello App.config file.
-            private static readonly string _AADTenantDomain =
-            ConfigurationManager.AppSettings["AADTenantDomain"];
-            private static readonly string _RESTAPIEndpoint =
-            ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
-
-            private static CloudMediaContext _context = null;
-
-            private static readonly string _mediaFiles =
-            Path.GetFullPath(@"../..\Media");
-
-            private static readonly string _singleMP4File =
-            Path.Combine(_mediaFiles, @"BigBuckBunny.mp4");
-
-            static void Main(string[] args)
-            {
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
-            var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
-
-            _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
-
-            // Get an uploaded asset.
-            var asset = _context.Assets.FirstOrDefault();
-
-            // Encode and generate hello thumbnails.
-            EncodeToAdaptiveBitrateMP4Set(asset);
-
-            Console.ReadLine();
-            }
-
-            static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)
-            {
-            // Declare a new job.
-            IJob job = _context.Jobs.Create("Media Encoder Standard Job");
-            // Get a media processor reference, and pass tooit hello name of hello 
-            // processor toouse for hello specific task.
-            IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
-
-            // Load hello XML (or JSON) from hello local file.
-            string configuration = File.ReadAllText("ThumbnailPreset_JSON.json");
-
-            // Create a task
-            ITask task = job.Tasks.AddNew("Media Encoder Standard encoding task",
-                processor,
-                configuration,
-                TaskOptions.None);
-
-            // Specify hello input asset toobe encoded.
-            task.InputAssets.Add(asset);
-            // Add an output asset toocontain hello results of hello job. 
-            // This output is specified as AssetCreationOptions.None, which 
-            // means hello output asset is not encrypted. 
-            task.OutputAssets.AddNew("Output asset",
-                AssetCreationOptions.None);
-
-            job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
-            job.Submit();
-            job.GetExecutionProgressTask(CancellationToken.None).Wait();
-
-            return job.OutputMediaAssets[0];
-            }
-
-            private static void JobStateChanged(object sender, JobStateChangedEventArgs e)
-            {
-            Console.WriteLine("Job state changed event:");
-            Console.WriteLine("  Previous state: " + e.PreviousState);
-            Console.WriteLine("  Current state: " + e.CurrentState);
-            switch (e.CurrentState)
-            {
-                case JobState.Finished:
-                Console.WriteLine();
-                Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
-                break;
-                case JobState.Canceling:
-                case JobState.Queued:
-                case JobState.Scheduled:
-                case JobState.Processing:
-                Console.WriteLine("Please wait...\n");
-                break;
-                case JobState.Canceled:
-                case JobState.Error:
-
-                // Cast sender as a job.
-                IJob job = (IJob)sender;
-
-                // Display or log error details as needed.
-                break;
-                default:
-                break;
-            }
-            }
-
-            private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
-            {
-            var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
-            ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
-
-            if (processor == null)
-                throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
-
-            return processor;
-            }
-        }
+          "Quality": 90,
+          "Type": "JpgLayer",
+          "Width": "100%",
+          "Height": "100%"
+        },
+        {
+          "Quality": 90,
+          "Type": "JpgLayer",
+          "Width": "50%",
+          "Height": "50%"
         }
 
-## <a id="json"></a>Valor preestablecido JSON de miniatura
+          ],
+          "Start": "5%",
+          "Step": "10%",
+          "Range": "96%",
+          "Type": "JpgImage"
+        }
+      ],
+      "Outputs": [
+        {
+          "FileName": "{Basename}_{Resolution}_{Index}{Extension}",
+          "Format": {
+        "Type": "JpgFormat"
+          }
+        }
+      ]
+    }
+
+### <a name="xml-preset"></a>Valor preestablecido XML
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
+    <Encoding>
+    <JpgImage Start="5%" Step="10%" Range="96%"><JpgImage Start="00:00:01" Step="00:00:15">
+      <JpgLayers>
+       <JpgLayer>
+        <Width>100%</Width>
+        <Height>100%</Height>
+        <Quality>90</Quality>
+       </JpgLayer>
+       <JpgLayer>
+        <Width>50%</Width>
+        <Height>50%</Height>
+        <Quality>90</Quality>
+       </JpgLayer>
+      </JpgLayers>
+    </JpgImage>
+    </Encoding>
+    <Outputs>
+      <Output FileName="{Basename}_{Resolution}_{Index}{Extension}">
+        <JpgFormat/>
+      </Output>
+    </Outputs>
+    </Preset>
+    
+## <a name="example-of-generating-a-thumbnail-while-encoding"></a>Ejemplo de cómo generar una miniatura durante la codificación
+
+Aunque todos los ejemplos anteriores han explicado cómo enviar una tarea de codificación que solo generará imágenes, también puede combinar la codificación de audio y vídeo con generación de miniaturas. El siguiente valor preestablecido JSON y XML indica a **Media Encoder Standard** que genere una miniatura durante la codificación.
+
+### <a id="json"></a>Valor preestablecido JSON
 Para obtener información sobre el esquema, consulte [este](https://msdn.microsoft.com/library/mt269962.aspx) tema.
 
     {
@@ -389,7 +329,7 @@ Para obtener información sobre el esquema, consulte [este](https://msdn.microso
       ]
     }
 
-## <a id="xml"></a>Valor preestablecido XML de miniatura
+### <a id="xml"></a>Valor preestablecido XML
 Para obtener información sobre el esquema, consulte [este](https://msdn.microsoft.com/library/mt269962.aspx) tema.
     
     <?xml version="1.0" encoding="utf-16"?>
@@ -440,27 +380,161 @@ Para obtener información sobre el esquema, consulte [este](https://msdn.microso
           <JpgFormat />
         </Output>
       </Outputs>
-    </Preset>
+    </Preset>   
+
+## <a id="code_sample"></a>Codificación de vídeo y generación de miniaturas con .NET
+
+En el ejemplo de código siguiente se usa el último SDK para .NET de Servicios multimedia para realizar las siguientes tareas:
+
+* Crear un trabajo de codificación.
+* Obtener una referencia al codificador Codificador multimedia estándar.
+* Cargue el valor preestablecido [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) o [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) que contiene los valores preestablecidos de codificación, así como la información necesaria para generar vistas en miniatura. Puede guardar este  [XML](media-services-dotnet-generate-thumbnail-with-mes.md#xml) o [JSON](media-services-dotnet-generate-thumbnail-with-mes.md#json) en un archivo y usar el siguiente código para cargar el archivo.
+  
+        // Load the XML (or JSON) from the local file.
+        string configuration = File.ReadAllText(fileName);  
+* Agregar una única tarea de codificación al trabajo. 
+* Especificar el recurso de entrada que se va a codificar.
+* Crear un recurso de salida que contendrá el recurso codificado.
+* Agregar un controlador de eventos para comprobar el progreso del trabajo.
+* Envíe el trabajo.
+
+Consulte el tema [Desarrollo en Media Services con .NET](media-services-dotnet-how-to-use.md) para obtener instrucciones acerca de cómo configurar el entorno de desarrollo.
+
+        using System;
+        using System.Configuration;
+        using System.IO;
+        using System.Linq;
+        using Microsoft.WindowsAzure.MediaServices.Client;
+        using System.Threading;
+
+        namespace EncodeAndGenerateThumbnails
+        {
+        class Program
+        {
+            // Read values from the App.config file.
+            private static readonly string _AADTenantDomain =
+            ConfigurationManager.AppSettings["AADTenantDomain"];
+            private static readonly string _RESTAPIEndpoint =
+            ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+
+            private static CloudMediaContext _context = null;
+
+            private static readonly string _mediaFiles =
+            Path.GetFullPath(@"../..\Media");
+
+            private static readonly string _singleMP4File =
+            Path.Combine(_mediaFiles, @"BigBuckBunny.mp4");
+
+            static void Main(string[] args)
+            {
+            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+            _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
+
+            // Get an uploaded asset.
+            var asset = _context.Assets.FirstOrDefault();
+
+            // Encode and generate the thumbnails.
+            EncodeToAdaptiveBitrateMP4Set(asset);
+
+            Console.ReadLine();
+            }
+
+            static public IAsset EncodeToAdaptiveBitrateMP4Set(IAsset asset)
+            {
+            // Declare a new job.
+            IJob job = _context.Jobs.Create("Media Encoder Standard Thumbnail Job");
+            // Get a media processor reference, and pass to it the name of the 
+            // processor to use for the specific task.
+            IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
+
+            // Load the XML (or JSON) from the local file.
+            string configuration = File.ReadAllText("ThumbnailPreset_JSON.json");
+
+            // Create a task
+            ITask task = job.Tasks.AddNew("Media Encoder Standard Thumbnail task",
+                processor,
+                configuration,
+                TaskOptions.None);
+
+            // Specify the input asset to be encoded.
+            task.InputAssets.Add(asset);
+            // Add an output asset to contain the results of the job. 
+            // This output is specified as AssetCreationOptions.None, which 
+            // means the output asset is not encrypted. 
+            task.OutputAssets.AddNew("Output asset",
+                AssetCreationOptions.None);
+
+            job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
+            job.Submit();
+            job.GetExecutionProgressTask(CancellationToken.None).Wait();
+
+            return job.OutputMediaAssets[0];
+            }
+
+            private static void JobStateChanged(object sender, JobStateChangedEventArgs e)
+            {
+            Console.WriteLine("Job state changed event:");
+            Console.WriteLine("  Previous state: " + e.PreviousState);
+            Console.WriteLine("  Current state: " + e.CurrentState);
+            switch (e.CurrentState)
+            {
+                case JobState.Finished:
+                Console.WriteLine();
+                Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
+                break;
+                case JobState.Canceling:
+                case JobState.Queued:
+                case JobState.Scheduled:
+                case JobState.Processing:
+                Console.WriteLine("Please wait...\n");
+                break;
+                case JobState.Canceled:
+                case JobState.Error:
+
+                // Cast sender as a job.
+                IJob job = (IJob)sender;
+
+                // Display or log error details as needed.
+                break;
+                default:
+                break;
+            }
+            }
+
+            private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
+            {
+            var processor = _context.MediaProcessors.Where(p => p.Name == mediaProcessorName).
+            ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
+
+            if (processor == null)
+                throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
+
+            return processor;
+            }
+        }
+
 
 ## <a name="considerations"></a>Consideraciones
-Hola siguientes consideraciones se aplica:
+Se aplican las siguientes consideraciones:
 
-* uso de Hola de marcas de tiempo explícito para el inicio/paso/intervalo supone que ese origen de entrada de hello es larga de 1 minuto como mínimo.
+* El uso de marcas de tiempo explícitas para inicio/paso/intervalo asume que el origen de la entrada tiene al menos 1 minuto de duración.
 * Los elementos Jpg/Png/BmpImage tienen atributos de cadena Start, Step y Range, que se pueden interpretar como:
   
   * Número de marco si son enteros no negativos, por ejemplo, "Start": "120",
-  * Duración de toosource relativa si expresado como sufijo de %, p. ej. "Start": "15%", O
+  * Relativos a la duración de origen si se expresan como sufijo de %, por ejemplo, "Start": "15%", O
   * Marca de tiempo si se expresa como formato HH:MM:SS… P. ej. "Start" : "00:01:00"
     
     Puede mezclar y hacer coincidir notaciones a su conveniencia.
     
-    Además, inicio también admite una Macro especial: {recomendados}, que intenta toodetermine Hola primer "interesante" marco de contenido de hello Nota: (paso y el intervalo se omiten al inicio se establece demasiado {mejor})
+    Además, Start también admite una macro especial:{Best}, que intenta determinar el primer marco "interesante" del contenido. NOTA: (Step y Range se omiten cuando Start se establece en {Best}).
   * Valores predeterminados: Start:{Best}
-* Formato de salida debe toobe indicado de forma explícita para cada formato de imagen: Jpg o Png/BmpFormat. Cuando está presente, MES coincidirá JpgVideo tooJpgFormat y así sucesivamente. OutputFormat presenta una nueva Macro específica de códecs de imagen: {Index}, que necesita toobe presente (una vez y solo una vez) para formatos de salida de imagen.
+* Es necesario proporcionar explícitamente el formato de salida para cada formato de imagen: Jpg, Png o BmpFormat. Cuando está presente, MES hará coincidir JpgVideo con JpgFormat y así sucesivamente. OutputFormat presenta una nueva macro específica de códec de imagen: {Index}, que debe estar presente (una vez y sólo una vez) para formatos de salida de imagen.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Puede comprobar hello [progreso del trabajo](media-services-check-job-progress.md) al Hola trabajo de codificación está pendiente.
+Puede comprobar el [progreso del trabajo](media-services-check-job-progress.md) mientras el trabajo de codificación está pendiente.
 
 ## <a name="media-services-learning-paths"></a>Rutas de aprendizaje de Servicios multimedia
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

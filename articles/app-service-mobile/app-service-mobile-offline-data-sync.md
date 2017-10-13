@@ -1,6 +1,6 @@
 ---
-title: "aaaOffline Data Sync en aplicaciones móviles de Azure | Documentos de Microsoft"
-description: "Referencia conceptual e información general sobre la característica de sincronización de datos sin conexión de Hola para aplicaciones móviles de Azure"
+title: "Sincronización de datos sin conexión en Azure Mobile Apps | Microsoft Docs"
+description: "Referencia e información general conceptual de la característica de sincronización de datos sin conexión para Aplicaciones móviles de Azure"
 documentationcenter: windows
 author: ggailey777
 manager: syntaxc4
@@ -14,27 +14,27 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: glenga
-ms.openlocfilehash: 58673240ba433651faf1f619ca5da33dd6459d2b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8e2bd755d14319f8c66f7ae7ec64fbd10801b39d
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Sincronización de datos sin conexión en Aplicaciones móviles de Azure
 ## <a name="what-is-offline-data-sync"></a>¿Qué es la sincronización de datos sin conexión?
-Sincronización de datos sin conexión es un cliente y servidor característica SDK de aplicaciones móviles de Azure que facilita a los desarrolladores toocreate aplicaciones que funcionan siempre, sin una conexión de red.
+La sincronización de datos sin conexión es una característica de SDK de cliente y de servidor de Aplicaciones móviles de Azure que facilita a los desarrolladores la creación de aplicaciones que funcionen sin una conexión de red.
 
-Cuando la aplicación está en modo sin conexión, puede crear y modificar los datos, que se guardan el almacén local de tooa. Cuando la aplicación hello es nuevo en línea, puede sincronizar los cambios locales con el back-end de aplicación móvil de Azure. característica de Hello también incluye compatibilidad para detectar los conflictos cuando Hola se cambia el mismo registro en ambos Hola cliente y Hola back-end. Conflictos, a continuación, pueden controlarse en el servidor de Hola o cliente Hola.
+Cuando la aplicación está en modo sin conexión, aún se pueden crear y modificar datos, que se guardan en un almacén local. Cuando la aplicación se vuelve a conectar, esta puede sincronizar los cambios locales con el back-end de la aplicación de Azure. La característica también admite la detección de conflictos cuando se cambia el mismo registro en el cliente y el back-end. Luego, los conflictos se pueden manejar en el servidor o el cliente.
 
 La sincronización sin conexión tiene varias ventajas:
 
-* Mejorar la capacidad de respuesta de la aplicación al almacenamiento en caché de datos del servidor local en el dispositivo de Hola
+* Mejore la capacidad de respuesta de las aplicaciones almacenando en caché datos de servidor de forma local en el dispositivo.
 * Creación de aplicaciones sólidas que sigan siendo útiles cuando hay problemas de red
-* Permitir toocreate de los usuarios finales y modificar datos, incluso cuando no hay ningún acceso a la red, es posible admitir escenarios con poca o ninguna conectividad
-* Sincronizar datos entre varios dispositivos y detectar conflictos cuando hello misma se modifica el registro por dos dispositivos
+* Permitir a los usuarios finales crear y modificar datos incluso cuando no hay acceso de red, proporcionando escenarios con muy poca o ninguna conectividad.
+* Sincronizar datos entre diferentes dispositivos y detectar conflictos cuando dos dispositivos modifican el mismo registro.
 * Limitar el uso de las redes medidas o de alta latencia
 
-Hola tutoriales muestra cómo tooadd sin conexión sincronizar a clientes móviles tooyour con aplicaciones móviles de Azure:
+Los siguientes tutoriales muestran cómo incorporar la sincronización sin conexión a los clientes móviles con Aplicaciones móviles de Azure:
 
 * [Android: habilitar la sincronización sin conexión]
 * [Apache Cordova: habilitación de la sincronización sin conexión](app-service-mobile-cordova-get-started-offline-data.md)
@@ -45,48 +45,48 @@ Hola tutoriales muestra cómo tooadd sin conexión sincronizar a clientes móvil
 * [Plataforma universal de Windows: habilitación de la sincronización sin conexión]
 
 ## <a name="what-is-a-sync-table"></a>¿Qué es una tabla de sincronización?
-Hola tooaccess "/ tablas" punto de conexión, cliente de Azure Mobile Hola SDK proporcionan interfaces como `IMobileServiceTable` (cliente de .NET SDK) o `MSTable` (cliente de iOS). Estas API conectan directamente back-end de toohello aplicación móvil de Azure y se producirá un error si el dispositivo de cliente hello no tiene una conexión de red.
+Para tener acceso al extremo de "/tables", los SDK de cliente móvil de Azure proporcionan interfaces como `IMobileServiceTable` (SDK de cliente de .NET) o `MSTable` (cliente de iOS). Estas API se conectan directamente al back-end de la aplicación móvil de Azure y generan errores si el dispositivo cliente no tiene una conexión de red.
 
-toosupport uso sin conexión, la aplicación en su lugar, debe usar hello *tabla sincronización* API, como `IMobileServiceSyncTable` (cliente de .NET SDK) o `MSSyncTable` (cliente de iOS). Hola todas las mismas operaciones CRUD (creación, lectura, actualización, eliminación) funcionan con la sincronización de las API de tabla, salvo que se lean de o escribir tooa *almacén local*. Para poder realizar cualquier operación de tabla de sincronización, se debe inicializar el almacén local de Hola.
+Para admitir el uso sin conexión, la aplicación debe usar las API de la *tabla de sincronización*, como `IMobileServiceSyncTable` (SDK de cliente de .NET) o `MSSyncTable` (cliente de iOS). Las mismas operaciones CRUD (creación, lectura, actualización, eliminación) funcionan con las API de la tabla de sincronización, salvo que ahora leerán desde un *almacén local* o escribirán en él. Antes de poder realizar cualquier operación de la tabla de sincronización, se debe inicializar el almacén local.
 
 ## <a name="what-is-a-local-store"></a>¿Qué es un almacén local?
-Un almacén local es la capa de persistencia de datos de hello en dispositivo de cliente de Hola. implementación de almacén de cliente de aplicaciones móviles de Azure Hola SDK proporcionan una configuración regional predeterminada. En Windows, Xamarin y Android, se basa en SQLite. En iOS, se basa en Core Data.
+Un almacén local es la capa de persistencia de datos del dispositivo cliente. Los SDK de cliente de Aplicaciones móviles de Azure proporcionan una implementación de almacén local predeterminada. En Windows, Xamarin y Android, se basa en SQLite. En iOS, se basa en Core Data.
 
-toouse Hola SQLite implementación basada en Windows Phone o la tienda Windows 8.1, deberá tooinstall una extensión de SQLite. Para más información, consulte [Plataforma universal de Windows: habilitación de la sincronización sin conexión]. IOS y Android se distribuye con una versión de código en el sistema operativo, por lo que no es necesario tooreference su propia versión de código de dispositivo de Hola.
+Para usar la implementación basada en SQLite en Windows Phone o Windows Store 8.1, debe instalar una extensión de SQLite. Para más información, consulte [Plataforma universal de Windows: habilitación de la sincronización sin conexión]. Android y iOS se distribuyen con una versión de SQLite en el sistema operativo del dispositivo, por lo que no es necesario hacer referencia a su propia versión de SQLite.
 
-Los desarrolladores también pueden implementar su propio almacén local. Por ejemplo, si desea que toostore datos en un formato cifrado en el cliente móvil hello, puede definir un almacén local que usa SQLCipher para el cifrado.
+Los desarrolladores también pueden implementar su propio almacén local. Por ejemplo, si desea almacenar los datos en un formato cifrado en el cliente móvil, puede definir un almacén local que use SQLCipher para el cifrado.
 
 ## <a name="what-is-a-sync-context"></a>¿Qué es un contexto de sincronización?
-Un *contexto de sincronización* está asociado a un objeto de cliente móvil (como `IMobileServiceClient` o `MSClient`) y realiza el seguimiento de los cambios que se realizan con las tablas de sincronización. contexto de sincronización de Hello mantiene un *cola de operación*, que mantiene una lista ordenada de operaciones CUD (Create, Update, Delete) que es una versión posterior, se enviarán toohello server.
+Un *contexto de sincronización* está asociado a un objeto de cliente móvil (como `IMobileServiceClient` o `MSClient`) y realiza el seguimiento de los cambios que se realizan con las tablas de sincronización. El contexto de sincronización mantiene una *cola de operaciones* que tiene una lista ordenada de operaciones CUD (creación, actualización, eliminación) que posteriormente se enviará al servidor.
 
-Un almacén local está asociado con el contexto de sincronización de hello mediante un método de inicialización como `IMobileServicesSyncContext.InitializeAsync(localstore)` en hello [cliente .NET SDK].
+Un almacén local se asocia con el contexto de sincronización mediante un método de inicialización como `IMobileServicesSyncContext.InitializeAsync(localstore)` en el [SDK de cliente de .NET].
 
 ## <a name="how-sync-works"></a>Funcionamiento de la sincronización sin conexión
-Al usar tablas de sincronización, el código de cliente determina el momento en que se sincronizan los cambios locales con un back-end de Azure Mobile App. No se envía nada toohello back-end hasta que haya una llamada*inserción* cambios locales. De forma similar, almacén local de Hola se rellena con datos nuevos solo cuando hay una llamada*extracción* datos.
+Al usar tablas de sincronización, el código de cliente determina el momento en que se sincronizan los cambios locales con un back-end de Azure Mobile App. No se envía nada al back-end hasta que hay una llamada a los cambios locales de *inserción* . De forma similar, el almacén local se rellena con datos nuevos solo cuando hay una llamada a los datos de *extracción* .
 
-* **Inserción**: inserción es una operación en el contexto de sincronización de Hola y envía todos los cambios CUD desde la última inserción de Hola. Tenga en cuenta que TI es toosend no es posible sólo los cambios de una tabla individual, ya que en caso contrario, las operaciones podrían enviarse fuera de servicio. Inserción ejecuta una serie de REST llamadas tooyour aplicación móvil de Azure back-end, lo que a su vez modifica la base de datos de servidor.
-* **Extraer**: extracción se realiza en una base por cada tabla y se puede personalizar con una consulta tooretrieve solo un subconjunto de datos del servidor hello. Hola SDK de cliente de Azure Mobile, a continuación, insertar los datos resultantes de hello en almacén local de Hola.
-* **Inserciones implícita**: si una extracción se ejecuta en una tabla que tiene las actualizaciones locales pendientes, extracción de hello en primer lugar se ejecuta un `push()` en el contexto de sincronización de Hola. Esta inserción le ayuda a minimizar los conflictos entre los cambios que ya se ponen en cola y los nuevos datos del servidor de Hola.
-* **Sincronización incremental**: Hola primer parámetro toohello extracción operación es un *nombre de la consulta* que sólo se utiliza en el cliente de Hola. Si utiliza un nombre de consulta no null, Hola SDK de Azure Mobile realiza una *sincronización incremental*. Cada vez que una operación de extracción devuelve un conjunto de resultados, Hola más reciente `updatedAt` marca de tiempo de ese conjunto de resultados se almacena en tablas de sistema local del SDK de Hola. Las operaciones de extracción posteriores solo recuperarán registros después de esa marca de tiempo.
+* **Inserción**: la inserción es una operación en el contexto de sincronización que envía todos los cambios CUD realizados desde la última inserción. Tenga en cuenta que no es posible enviar solo los cambios de una tabla individual porque las operaciones se podrían enviar desordenadas. La inserción ejecuta una serie de llamadas REST al back-end de Azure Mobile App, que a su vez, modifica la base de datos del servidor.
+* **Extracción**: la extracción se realiza tabla por tabla y se puede personalizar con una consulta para recuperar solo un subconjunto de los datos del servidor. Luego, los SDK de cliente móvil de Azur insertan los datos que se obtienen en el almacén local.
+* **Inserciones implícitas**: si se ejecuta una extracción en una tabla que tiene actualizaciones locales pendientes, la extracción ejecutará primero un elemento `push()` en el contexto de sincronización. Esta inserción ayuda a minimizar los conflictos entre los cambios que ya están en cola y los datos nuevos del servidor.
+* **Sincronización incremental**: el primer parámetro de la operación de extracción es un *nombre de consulta* que solo se usa en el cliente. Si usa un nombre de consulta no nulo, Azure Mobile SDK lleva a cabo una *sincronización incremental*. Cada vez que una operación de extracción devuelve un conjunto de resultados, la última marca de tiempo `updatedAt` de dicho conjunto se almacena en las tablas del sistema local del SDK. Las operaciones de extracción posteriores solo recuperarán registros después de esa marca de tiempo.
 
-  toouse sincronización incremental, el servidor debe devolver significativo `updatedAt` valores y también debe admitir la ordenación por este campo. Sin embargo, puesto que Hola SDK agrega su propio ordenación en el campo de updatedAt hello, no puede usar una consulta de extracción que tiene su propio `orderBy` cláusula.
+  Para usar la sincronización incremental, el servidor debe devolver valores `updatedAt` significativos y también admitir la ordenación mediante este campo. Sin embargo, puesto que el SDK agrega su propio orden en el campo updatedAt, no puede usar una consulta de extracción que tenga su propia cláusula `orderBy` .
 
-  nombre de la consulta de Hello puede ser cualquier cadena que elija, pero debe ser único para cada consulta lógica en la aplicación.
-  De lo contrario, las operaciones de extracción diferentes pudieron sobrescribir Hola misma marca de tiempo de sincronización incremental y las consultas pueden devolver resultados incorrectos.
+  El nombre de consulta puede ser cualquier cadena que elija, pero debe ser único para cada consulta lógica de la aplicación.
+  De lo contrario, diferentes operaciones de extracción podrían sobrescribir la misma marca de tiempo de sincronización incremental y las consultas podrían devolver resultados incorrectos.
 
-  Si consulta hello tiene un parámetro, toocreate una forma de un nombre de consulta única es el valor del parámetro hello tooincorporate.
+  Si la consulta tiene un parámetro, una forma de crear un nombre de consulta único es incorporar el valor del parámetro.
   Por ejemplo, si está filtrando por userid, el nombre de consulta podría ser el siguiente (en C#):
 
         await todoTable.PullAsync("todoItems" + userid,
             syncTable.Where(u => u.UserId == userid));
 
-  Si desea tooopt dejen de estar sincronizados incremental, pase `null` como Hola Id. de consulta. En este caso, se recuperan todos los registros en cada llamada demasiado`PullAsync`, que es potencialmente ineficaz.
-* **Purga**: puede borrar el contenido de hello del uso del almacén local de hello `IMobileServiceSyncTable.PurgeAsync`.
-  Purga puede ser necesaria si tiene datos obsoletos en la base de datos de cliente de hello, o si desea toodiscard todos los cambios pendientes.
+  Si desea cancelar la sincronización incremental, pase `null` como identificador de consulta. En este caso, se recuperan todos los registros en cada llamada a `PullAsync`, que es potencialmente ineficaz.
+* **Purga**: el contenido del almacén local se puede eliminar mediante `IMobileServiceSyncTable.PurgeAsync`.
+  La purga puede ser necesaria si tiene datos obsoletos en la base de datos cliente o si desea descartar todos los cambios pendientes.
 
-  Una purga borra una tabla desde el almacén local Hola. Si no hay operaciones de espera de sincronización con la base de datos de servidor de hello, Hola purga inicia una excepción a menos que Hola *forzar purga* parámetro está establecido.
+  Una purga borra una tabla del almacén local. Si hay operaciones a la espera de sincronizarse con la base de datos del servidor, la purga genera una excepción, a menos que esté establecido el parámetro *force purge*.
 
-  Como ejemplo de datos obsoletos en el cliente de hello, suponga que en el ejemplo de "lista de tareas" ¡hello, dispositivo1 extrae sólo los elementos que no se han completado. Todoitem "Comprar leche" está marcado como completado en el servidor de Hola por otro dispositivo. Sin embargo, dispositivo1 aún hello todoitem "Comprar leche" en el almacén local porque solo extrae elementos que no están marcado completa. Una purga borra este elemento obsoleto.
+  Como un ejemplo de datos obsoletos en el cliente, supongamos que en el ejemplo "lista de tareas pendientes", Dispositivo1 extrae solo los elementos que no se han completado. Otro dispositivo marca una tarea pendiente "Comprar leche" como completada en el servidor. Sin embargo, Dispositivo1 seguirá teniendo la tarea pendiente "Comprar leche" en el almacén local porque solo está extrayendo los elementos que no están marcados como completados Una purga borra este elemento obsoleto.
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [iOS: habilitar la sincronización sin conexión]
@@ -95,7 +95,7 @@ Al usar tablas de sincronización, el código de cliente determina el momento en
 * [Plataforma universal de Windows: habilitación de la sincronización sin conexión]
 
 <!-- Links -->
-[cliente .NET SDK]: app-service-mobile-dotnet-how-to-use-client-library.md
+[SDK de cliente de .NET]: app-service-mobile-dotnet-how-to-use-client-library.md
 [Android: habilitar la sincronización sin conexión]: app-service-mobile-android-get-started-offline-data.md
 [iOS: habilitar la sincronización sin conexión]: app-service-mobile-ios-get-started-offline-data.md
 [Xamarin iOS: habilitar la sincronización sin conexión]: app-service-mobile-xamarin-ios-get-started-offline-data.md

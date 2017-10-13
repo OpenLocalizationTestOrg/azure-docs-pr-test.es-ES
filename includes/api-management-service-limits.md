@@ -6,5 +6,5 @@
 | Unidades de escala |Sin límites<sup>1</sup> |
 | Integración de Azure Active Directory |Cuentas de usuario sin límites<sup>1</sup> |
 
-<sup>1</sup>Los límites de Administración de API son diferentes para cada nivel de precios. toosee Hola precios capas y sus límites asociados y ajuste de escala en Opciones, consulte [API administración precios](https://azure.microsoft.com/pricing/details/api-management/).
+<sup>1</sup>Los límites de Administración de API son diferentes para cada nivel de precios. Para ver los niveles de precios y sus límites asociados y opciones de escalado, consulte [Precios de Administración de API](https://azure.microsoft.com/pricing/details/api-management/).
 

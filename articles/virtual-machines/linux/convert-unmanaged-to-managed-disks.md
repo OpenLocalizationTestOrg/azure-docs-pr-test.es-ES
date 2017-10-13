@@ -1,6 +1,6 @@
 ---
-title: "aaaConvert una máquina virtual de Linux en Azure de código no discos toomanaged discos - Azure administrados | Documentos de Microsoft"
-description: "¿Cómo tooconvert una VM Linux de discos no administrado toomanaged discos mediante el uso de CLI de Azure 2.0 en el modelo de implementación del Administrador de recursos de Hola"
+title: "Conversión de una máquina virtual Linux en Azure con discos no administrados a discos administrados - Azure Managed Disks | Microsoft Docs"
+description: "Conversión de una máquina virtual Linux con discos no administrados en discos administrados mediante la CLI de Azure 2.0 en el modelo de implementación de Resource Manager"
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
@@ -15,17 +15,17 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: iainfou
-ms.openlocfilehash: 1b94da11deab46f344e28ab4491cf220506b6347
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 94f8e3330fb2d6547811315fcfdb8ced338e0247
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-toomanaged-disks"></a>Convertir una máquina virtual Linux de discos de toomanaged de discos no administrado
+# <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Conversión de una máquina virtual Linux con discos no administrados en discos administrados
 
-Si tienes existentes máquinas virtuales (VM) de Linux que usan discos no administrados, puede convertir discos de toouse administrado de máquinas virtuales de Hola a través de hello [discos de Azure administrados](../windows/managed-disks-overview.md) servicio. Este proceso convierte disco Hola OS y los discos de datos adjunto.
+Si ya dispone de máquinas virtuales Linux que usan discos no administrados, puede convertirlas para usar discos administrados mediante el servicio [Azure Managed Disks](../windows/managed-disks-overview.md). Este proceso convierte el disco del SO y los discos de datos conectados.
 
-Este artículo muestra cómo tooconvert máquinas virtuales mediante el uso de Hola CLI de Azure. Si necesita tooinstall o actualizarlo, consulte [instalar Azure CLI 2.0](/cli/azure/install-azure-cli). 
+En este artículo se muestra cómo convertir máquinas virtuales con la CLI de Azure. Si necesita instalarla o actualizarla, consulte [Instalación de la CLI de Azure 2.0](/cli/azure/install-azure-cli). 
 
 ## <a name="before-you-begin"></a>Antes de empezar
 
@@ -33,21 +33,21 @@ Este artículo muestra cómo tooconvert máquinas virtuales mediante el uso de H
 
 
 ## <a name="convert-single-instance-vms"></a>Conversión de máquinas virtuales de instancia única
-Esta sección tratan cómo tooconvert instancia única máquinas virtuales de Azure de código no discos toomanaged discos. (Si las máquinas virtuales están en un conjunto de disponibilidad, consulte la sección siguiente de Hola.) Puede usar este discos de toostandard administrado de discos de máquinas virtuales desde los discos de toopremium administrado de discos premium (SSD) no administrada, o desde estándar (HDD) no administradas de proceso tooconvert Hola.
+En esta sección se explica cómo convertir máquinas virtuales de Azure de instancia única de Unmanaged Disks a Managed Disks. (Si las máquinas virtuales se encuentran en un conjunto de disponibilidad, consulte la sección siguiente). Puede usar este proceso para convertir las máquinas virtuales de discos no administrados premium (SDD) a discos administrados premium, o bien de discos no administrados estándar (HDD) a discos administrados estándar.
 
-1. Desasignar Hola VM utilizando [cancelar la asignación de máquina virtual az](/cli/azure/vm#deallocate). Hello en el ejemplo siguiente se desasigna Hola máquina virtual denominada `myVM` en grupo de recursos de hello llamado `myResourceGroup`:
+1. Desasigne la máquina virtual mediante [az vm deallocate](/cli/azure/vm#deallocate). En el ejemplo siguiente se desasigna la VM `myVM` en el grupo de recursos denominado `myResourceGroup`:
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-2. Convertir discos de máquinas virtuales hello toomanaged mediante [convertir vm az](/cli/azure/vm#convert). Hola siguiendo el proceso convierte Hola máquina virtual denominada `myVM`, incluyendo disco Hola OS y los discos de datos:
+2. Convierta la máquina virtual en discos administrados con [az vm convert](/cli/azure/vm#convert). El proceso siguiente convierte la máquina virtual denominada `myVM`, incluidos el disco del SO y todos los discos de datos:
 
     ```azurecli
     az vm convert --resource-group myResourceGroup --name myVM
     ```
 
-3. Iniciar Hola VM después de discos de toomanaged de conversión de hello mediante [inicio de vm az](/cli/azure/vm#start). Hola siguiendo el ejemplo inicia Hola máquina virtual denominada `myVM` en grupo de recursos de hello llamado `myResourceGroup`.
+3. Inicie la máquina virtual después de la conversión a discos administrados con [az vm start](/cli/azure/vm#start). En el ejemplo siguiente se inicia la VM llamada `myVM` en el grupo de recursos `myResourceGroup`.
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
@@ -55,11 +55,11 @@ Esta sección tratan cómo tooconvert instancia única máquinas virtuales de Az
 
 ## <a name="convert-vms-in-an-availability-set"></a>Conversión de VM de un conjunto de disponibilidad
 
-Si máquinas virtuales de Hola que quieres tooconvert toomanaged discos están en un conjunto de disponibilidad, primero debe tooconvert Hola disponibilidad conjunto tooa administrado conjunto de disponibilidad.
+Si las VM que desea convertir en discos administrados se encuentran en un conjunto de disponibilidad, primero debe convertir el conjunto de disponibilidad en un conjunto de disponibilidad administrado.
 
-Todas las máquinas virtuales en el conjunto de disponibilidad de hello deben desasignarse antes de convertir el conjunto de disponibilidad de Hola. Tooconvert plan todos los discos de toomanaged de máquinas virtuales después de la disponibilidad de hello configurarse automáticamente ha sido convertido tooa administrado conjunto de disponibilidad. A continuación, inicie todas las máquinas virtuales de Hola y seguir funcionando con normalidad.
+Todas las VM del conjunto de disponibilidad deben desasignarse antes de convertir el conjunto de disponibilidad. Planee la conversión de todas las máquinas virtuales a discos administrados después de haber convertido el propio conjunto de disponibilidad en un conjunto de disponibilidad administrado. Después, inicie todas las máquinas virtuales y siga trabajando con normalidad.
 
-1. Enumere todas las máquinas virtuales de un conjunto de disponibilidad con [az vm availability-set list](/cli/azure/vm/availability-set#list). Hello en el ejemplo siguiente se enumera todas las máquinas virtuales en conjunto con nombre de la disponibilidad de hello `myAvailabilitySet` en grupo de recursos de hello llamado `myResourceGroup`:
+1. Enumere todas las máquinas virtuales de un conjunto de disponibilidad con [az vm availability-set list](/cli/azure/vm/availability-set#list). En el ejemplo siguiente se enumeran todas las VM del conjunto de disponibilidad `myAvailabilitySet` en el grupo de recursos denominado `myResourceGroup`:
 
     ```azurecli
     az vm availability-set show \
@@ -69,13 +69,13 @@ Todas las máquinas virtuales en el conjunto de disponibilidad de hello deben de
         --output table
     ```
 
-2. Cancela la asignación de todas las máquinas virtuales de hello mediante el uso de [cancelar la asignación de máquina virtual az](/cli/azure/vm#deallocate). Hello en el ejemplo siguiente se desasigna Hola máquina virtual denominada `myVM` en grupo de recursos de hello llamado `myResourceGroup`:
+2. Desasigne todas las máquinas virtuales con [az vm deallocate](/cli/azure/vm#deallocate). En el ejemplo siguiente se desasigna la VM `myVM` en el grupo de recursos denominado `myResourceGroup`:
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-3. Convertir el conjunto mediante el uso de disponibilidad de hello [convert de conjunto de disponibilidad de vm az](/cli/azure/vm/availability-set#convert). Hello en el ejemplo siguiente se convierte conjunto con nombre de la disponibilidad de hello `myAvailabilitySet` en grupo de recursos de hello llamado `myResourceGroup`:
+3. Convierta el conjunto de disponibilidad con [az vm availability-set convert](/cli/azure/vm/availability-set#convert). En el ejemplo siguiente se convierte el conjunto de disponibilidad `myAvailabilitySet` en el grupo de recursos denominado `myResourceGroup`:
 
     ```azurecli
     az vm availability-set convert \
@@ -83,13 +83,13 @@ Todas las máquinas virtuales en el conjunto de disponibilidad de hello deben de
         --name myAvailabilitySet
     ```
 
-4. Convertir todos los discos de toomanaged de las máquinas virtuales de hello mediante [convertir vm az](/cli/azure/vm#convert). Hola siguiendo el proceso convierte Hola máquina virtual denominada `myVM`, incluyendo disco Hola OS y los discos de datos:
+4. Convierta todas las máquinas virtuales a discos administrados con [az vm convert](/cli/azure/vm#convert). El proceso siguiente convierte la máquina virtual denominada `myVM`, incluidos el disco del SO y todos los discos de datos:
 
     ```azurecli
     az vm convert --resource-group myResourceGroup --name myVM
     ```
 
-5. Iniciar todas las máquinas virtuales de hello después de discos de toomanaged de conversión de hello mediante [inicio de vm az](/cli/azure/vm#start). Hola siguiendo el ejemplo inicia Hola máquina virtual denominada `myVM` en grupo de recursos de hello llamado `myResourceGroup`:
+5. Inicie todas las máquinas virtuales después de la conversión a discos administrados con [az vm start](/cli/azure/vm#start). En el ejemplo siguiente se inicia la máquina virtual llamada `myVM` en el grupo de recursos `myResourceGroup`:
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM

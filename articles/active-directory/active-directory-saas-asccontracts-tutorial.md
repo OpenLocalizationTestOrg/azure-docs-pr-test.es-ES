@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con ASC Contracts | Microsoft Docs"
-description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y los contratos de ASC."
+description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y ASC Contracts."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,111 +13,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
 ms.author: jeedes
-ms.openlocfilehash: 8320af8acfda3e3d37e589c9887cd697d5ab651c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 87ea3cc55f9683e7d5b9912a87d675575cea0347
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asc-contracts"></a>Tutorial: Integración de Azure Active Directory con ASC Contracts
 
-En este tutorial, aprenderá cómo toointegrate ASC contratos con Azure Active Directory (Azure AD).
+En este tutorial, va a aprender a integrar ASC Contracts con Azure Active Directory (Azure AD).
 
-Integración ASC contratos con Azure AD proporciona Hola siguientes ventajas:
+Integrar ASC Contracts con Azure AD proporciona las siguientes ventajas:
 
-- Puede controlar en Azure AD que tenga acceso tooASC contratos
-- Puede habilitar la tooautomatically a los usuarios obtener contratos tooASC ha iniciado sesión (Single Sign-On) con sus cuentas de Azure AD
-- Puede administrar las cuentas en una ubicación central: Hola portal de Azure
+- Puede controlar en Azure AD quién tiene acceso a ASC Contracts.
+- Puede permitir que los usuarios inicien sesión automáticamente en ASC Contracts (inicio de sesión único) con sus cuentas de Azure AD.
+- Puede administrar las cuentas en una sola ubicación central: Azure Portal.
 
-Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Si desea saber más sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-tooconfigure integración de Azure AD con contratos de ASC, necesita Hola siguientes elementos:
+Para configurar la integración de Azure AD con ASC Contracts, necesita los siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción habilitada para inicio de sesión único en ASC Contracts
 
 > [!NOTE]
-> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
+> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
 
-pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
+Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
 
 - No use el entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
 
-1. Adición de contratos de ASC desde galería Hola
+1. Incorporación de ASC Contracts desde la galería
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-asc-contracts-from-hello-gallery"></a>Adición de contratos de ASC desde galería Hola
-integración de hello tooconfigure de ASC contratos en Azure AD, deberá tooadd ASC contratos de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
+## <a name="adding-asc-contracts-from-the-gallery"></a>Incorporación de ASC Contracts desde la galería
+Para configurar la integración de ASC Contracts en Azure AD, tiene que agregar ASC Contracts desde la galería a la lista de aplicaciones SaaS administradas.
 
-**tooadd ASC contratos de galería de hello, lleve a cabo Hola pasos:**
+**Para agregar ASC Contracts desde la galería, realice los pasos siguientes:**
 
-1. Hola  **[portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
+1. En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
+2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
 
     ![Aplicaciones][2]
     
-3. tooadd nueva aplicación, haga clic en **nueva aplicación** botón en la parte superior de saludo del cuadro de diálogo.
+3. Para agregar una nueva aplicación, haga clic en el botón **Nueva aplicación** de la parte superior del cuadro de diálogo.
 
     ![Aplicaciones][3]
 
-4. En el cuadro de búsqueda de hello, escriba **ASC contratos**.
+4. En el cuadro de búsqueda, escriba **ASC Contracts**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-asccontracts-tutorial/tutorial_asccontracts_search.png)
 
-5. En el panel de resultados de hello, seleccione **ASC contratos**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.
+5. En el panel de resultados, seleccione **ASC Contracts** y haga clic en el botón **Agregar** para agregar la aplicación.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-asccontracts-tutorial/tutorial_asccontracts_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuración y comprobación del inicio de sesión único de Azure AD
 En esta sección, puede configurar y probar el inicio de sesión único de Azure AD con ASC Contracts con un usuario de prueba llamado "Britta Simon".
 
-Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en contratos de ASC es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en contratos de ASC debe toobe establecido.
+Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de ASC Contracts para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de ASC Contracts.
 
-Esta relación de vínculo se establece mediante la asignación de valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** en contratos de ASC.
+Para establecer esta relación de vínculo, se asigna el valor del **nombre de usuario** en Azure AD como valor del **nombre de usuario** en ASC Contracts.
 
-tooconfigure y prueba de inicio de sesión único en Azure AD con contratos de ASC, deberá hello toocomplete después de bloques de creación:
+Para configurar y probar el inicio de sesión único de Azure AD con ASC Contracts, es preciso completar los siguientes bloques de creación:
 
-1. **[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.
-2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.
-3. **[Creación de un usuario de prueba de contratos de ASC](#creating-an-asc-contracts-test-user)**  -toohave un equivalente de Britta Simon en contratos de ASC es representación toohello vinculado Azure AD del usuario.
-4. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.
-5. **[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.
+1. **[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.
+2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.
+3. **[Creación de un usuario de prueba de ASC Contracts](#creating-an-asc-contracts-test-user)**: para tener un homólogo de Britta Simon en ASC Contracts que esté vinculado a la representación del usuario en Azure AD.
+4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación de contratos de ASC.
+En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y configurará el inicio de sesión único en la aplicación ASC Contracts.
 
-**inicio de sesión único en Azure AD tooconfigure con contratos de ASC, realizar Hola pasos:**
+**Para configurar el inicio de sesión único de Azure AD con ASC Contracts, realice los pasos siguientes:**
 
-1. En el portal de Azure, en Hola Hola **ASC contratos** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
+1. En Azure Portal, en la página de integración de la aplicación **ASC Contracts**, haga clic en **Inicio de sesión único**.
 
     ![Configurar inicio de sesión único][4]
 
-2. En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.
+2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-asccontracts-tutorial/tutorial_asccontracts_samlbase.png)
 
-3. En hello **ASC contratos de dominio y las direcciones URL** sección, lleve a cabo Hola pasos:
+3. En la sección **Dominio y direcciones URL de ASC Contracts**, lleve a cabo los pasos siguientes:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-asccontracts-tutorial/tutorial_asccontracts_url.png)
 
-    a. Hola **identificador** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<subdomain>.asccontracts.com/shibboleth`
+    a. En el cuadro de texto **Identificador**, escriba una dirección URL con el siguiente patrón: `https://<subdomain>.asccontracts.com/shibboleth`
 
-    b. Hola **dirección URL de respuesta** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<subdomain>.asccontracts.com/shibboleth.sso/login`
+    b. En el cuadro de texto **URL de respuesta**, escriba una dirección URL con el siguiente patrón: `https://<subdomain>.asccontracts.com/shibboleth.sso/login`.
 
     > [!NOTE] 
-    > Estos valores no son reales. Actualizar estos valores con hello URL de identificador y la respuesta real. Póngase en contacto con el equipo de ASC redes Inc. (ASC) en **613.599.6178** tooget estos valores.
+    > Estos valores no son reales. Actualice estos valores con el identificador y la URL de respuesta reales. Póngase en contacto con el equipo de ASC Networks Inc. (ASC) en el **613-599-6178** para obtener estos valores.
 
-4. En hello **el certificado de firma de SAML** sección, haga clic en **Metadata XML** y, a continuación, guarde el archivo de metadatos de hello en el equipo.
+4. En la sección **Certificado de firma de SAML**, haga clic en **XML de metadatos** y luego guarde el archivo de metadatos en el equipo.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-asccontracts-tutorial/tutorial_asccontracts_certificate.png) 
 
@@ -125,63 +125,63 @@ En esta sección, habilitar inicio de sesión único en Azure AD en hello portal
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-asccontracts-tutorial/tutorial_general_400.png)
 
-6. tooconfigure inicio de sesión único en **ASC contratos** cara, llame al soporte técnico de ASC redes Inc. (ASC) en **613.599.6178** y proporcionarles Hola descargado **Metadata XML**. Establecen esta aplicación se pueden instalar toohave Hola configurada correctamente en ambos lados de la conexión de SSO de SAML.
+6. Para configurar el inicio de sesión único en **ASC Contracts**, llame al soporte técnico de ASC Networks Inc. (ASC) en el **613-599-6178** y proporcióneles el **XML de metadatos** descargado. Ellos configuran esta aplicación para establecer la conexión de SSO de SAML correctamente en ambos lados.
 
 > [!TIP]
-> Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!  Después de agregar esta aplicación de hello **Active Directory > aplicaciones empresariales** sección, simplemente haga clic en hello **Single Sign-On** Hola de pestaña y acceso incrustado documentación a través de hello  **Configuración** sección final Hola. Puede leer más acerca de características de documentación de embedded Hola aquí: [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ahora puede leer una versión resumida de estas instrucciones dentro de [Azure Portal](https://portal.azure.com) mientras configura la aplicación.  Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada a través de la sección **Configuración** de la parte inferior. Puede leer más sobre la característica de documentación insertada aquí: [Vista previa: Administración de inicio de sesión único para aplicaciones empresariales en el nuevo Azure Portal]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.
+El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".
 
 ![Creación de un usuario de Azure AD][100]
 
-**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
+**Siga estos pasos para crear un usuario de prueba en Azure AD:**
 
-1. Hola **portal de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.
+1. En el panel de navegación izquierdo de **Azure Portal**, haga clic en el icono de **Azure Active Directory**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-asccontracts-tutorial/create_aaduser_01.png) 
 
-2. lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios**.
+2. Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios**.
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-asccontracts-tutorial/create_aaduser_02.png) 
 
-3. Hola tooopen **usuario** cuadro de diálogo, haga clic en **agregar** en la parte superior de saludo del cuadro de diálogo de Hola.
+3. Para abrir el cuadro de diálogo **Usuario**, haga clic en **Agregar** en la parte superior del cuadro de diálogo.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-asccontracts-tutorial/create_aaduser_03.png) 
 
-4. En hello **usuario** cuadro de diálogo, siga los pasos de hello:
+4. En la página de diálogo **Usuario**, realice los siguientes pasos:
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-asccontracts-tutorial/create_aaduser_04.png) 
 
-    a. Hola **nombre** cuadro de texto, tipo **BrittaSimon**.
+    a. En el cuadro de texto **Nombre**, escriba **BrittaSimon**.
 
-    b. Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.
+    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
 
-    c. Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.
+    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
 
     d. Haga clic en **Crear**.
  
 ### <a name="creating-an-asc-contracts-test-user"></a>Creación de un usuario de prueba de ASC Contracts
 
-Trabajar con el equipo de soporte técnico de ASC redes Inc. (ASC) en **613.599.6178** usuarios de hello tooget agregados en la plataforma de contratos de ASC Hola.
+Trabaje con el equipo de soporte técnico de ASC Networks Inc. (ASC) en el **613-599-6178** para agregar a los usuarios a la plataforma ASC Contracts.
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Asignación de usuario de prueba de hello Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
 
-En esta sección, se habilita Britta Simon toouse un inicio de sesión único Azure concediendo acceso tooASC contratos.
+En esta sección, habilitará a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a ASC Contracts.
 
 ![Asignar usuario][200] 
 
-**tooassign Britta Simon tooASC contratos, lleve a cabo Hola pasos:**
+**Para asignar Britta Simon a ASC Contracts, siga estos pasos:**
 
-1. Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
+1. En Azure Portal, abra la vista de aplicaciones, navegue a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego haga clic en **Todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones de hello, seleccione **ASC contratos**.
+2. En la lista de aplicaciones, seleccione **ASC Contracts**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-asccontracts-tutorial/tutorial_asccontracts_app.png) 
 
-3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
+3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
 
     ![Asignar usuario][202] 
 
@@ -189,7 +189,7 @@ En esta sección, se habilita Britta Simon toouse un inicio de sesión único Az
 
     ![Asignar usuario][203]
 
-5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
+5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -197,13 +197,13 @@ En esta sección, se habilita Britta Simon toouse un inicio de sesión único Az
     
 ### <a name="testing-single-sign-on"></a>Prueba del inicio de sesión único 
 
-En esta sección, comprobará su único inicio de sesión en configuración de Azure AD con hello Panel de acceso.
+En esta sección, probará la configuración de inicio de sesión único de Azure AD mediante el Panel de acceso.
 
-Al hacer clic en hello ASC contratos disponer en mosaico en hello Panel de acceso, deberá obtener automáticamente ha iniciado sesión tooyour aplicación ASC contratos. Para obtener más información sobre el panel de acceso, consulte [Introducción al panel de acceso](https://msdn.microsoft.com/library/dn308586).
+Al hacer clic en el icono de ASC Contracts en el panel de acceso, debería iniciar sesión automáticamente en su aplicación ASC Contracts. Para obtener más información sobre el panel de acceso, consulte [Introducción al panel de acceso](https://msdn.microsoft.com/library/dn308586).
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

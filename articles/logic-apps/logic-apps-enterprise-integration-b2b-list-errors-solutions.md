@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 0340e2979f1972ba631354e206c93969e55946e9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 1865d75f1b4c2aa18d5a3130f639572d19563b3e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="logic-apps-b2b-list-of-errors-and-solutions"></a>Lista de errores y soluciones para Logic Apps B2B  
 Este artículo le ayuda a solucionar los errores que puedan ocurrir en escenarios de Logic Apps B2B y le sugiere las acciones adecuadas para corregirlos.
@@ -31,7 +31,7 @@ Este artículo le ayuda a solucionar los errores que puedan ocurrir en escenario
 |   |   |  
 |---|---|
 | Descripción del error | No se encontró ningún contrato con parámetros de resolución de contrato|    
-| Acción del usuario | acuerdo de Hello debe agregarse toohello cuenta de integración con las identidades de negocio acordada.</br> las identidades de negocio Hola deben coincidir con el Id. de mensaje de entrada de toohello|  
+| Acción del usuario | Se debe agregar el contrato a la cuenta de integración con identidades de negocio acordadas.</br> Las identidades de negocio deben coincidir con los identificadores de mensaje de entrada|  
 |   |   |
 
 ### <a name="-no-agreement-found-with-identities"></a>* No se encontró ningún contrato con las identidades
@@ -39,7 +39,7 @@ Este artículo le ayuda a solucionar los errores que puedan ocurrir en escenario
 |   |   | 
 |---|---|
 | Descripción del error | No se encontró ningún contrato con las identidades: 'AS2Identity'::'Partner1' y 'AS2Identity'::'Partner3'| 
-| Acción del usuario | AS2 no válido-desde o AS2-tooconfigured para el acuerdo. </br> Mensaje de AS2 correcto AS2-de o identificadores de toomatch AS2 AS2 tooheaders o acuerdo AS2 encabezados con configuraciones de contrato de mensaje |
+| Acción del usuario | AS2-From o AS2-To configurados para el contrato no válidos. </br> Corrija los encabezados AS2-From o AS2-To del mensaje AS2 o el contrato para que coincidan con los identificadores AS2 en los encabezados del mensaje AS2 con configuraciones de contrato |
 |   |   |     
 
 ## <a name="as2"></a>AS2
@@ -49,7 +49,7 @@ Este artículo le ayuda a solucionar los errores que puedan ocurrir en escenario
 |   |   |  
 |---|---|
 | Descripción del error| Encabezados AS2 no válidos. Uno de los encabezados "AS2-To" o "AS2-From" está vacío| 
-| Acción del usuario | Se recibió un mensaje AS2 que no contenía Hola AS2-de o AS2 tooor ambos encabezados. </br> Compruebe el mensaje AS2 AS2-de y tooheaders de AS2 y corríjalas en función de la configuración del acuerdo |
+| Acción del usuario | Se recibió un mensaje AS2 que no contenía el encabezado AS2-From, el AS2-To o ambos. </br> Compruebe los encabezados AS2-From y AS2-To del mensaje AS2 y corríjalos basándose en la configuración del contrato |
 |  |  | 
 
 
@@ -57,8 +57,8 @@ Este artículo le ayuda a solucionar los errores que puedan ocurrir en escenario
 
 |   |   |  
 |---|---|
-| Descripción del error| contenido de la solicitud de Hello es nulo o está vacío | 
-| Acción del usuario | Se recibió un mensaje AS2 que no contiene el cuerpo del mensaje Hola |
+| Descripción del error| El contenido de la solicitud es nulo o está vacío | 
+| Acción del usuario | Se recibió un mensaje AS2 que no contenía el cuerpo del mensaje |
 |  |  | 
 
 ### <a name="-as2-message-decryption-failure"></a>* AS2 message decryption failure (Error de descifrado del mensaje AS2)
@@ -66,7 +66,7 @@ Este artículo le ayuda a solucionar los errores que puedan ocurrir en escenario
 |   |   | 
 |---|---|
 | Descripción del error |  [processed/Error: decryption-failed] | 
-| Acción del usuario | Agregar @base64ToBinary tooAS2Message antes de enviar toopartner 
+| Acción del usuario | Agregue @base64ToBinary a AS2Message antes de enviarlo al asociado 
 ```java
             "HTTP": {
                 "inputs": {
@@ -83,7 +83,7 @@ Este artículo le ayuda a solucionar los errores que puedan ocurrir en escenario
 |   |   | 
 |---|---|
 | Descripción del error |  [processed/Error: decryption-failed] | 
-| Acción del usuario | Agregar @base64ToBinary tooMDN antes de enviar toopartner 
+| Acción del usuario | Agregue @base64ToBinary a la MDN antes de enviarlo al asociado 
 ```java
             "Response": {
                 "inputs": {
@@ -98,7 +98,7 @@ Este artículo le ayuda a solucionar los errores que puedan ocurrir en escenario
 
 |   |   |  
 |---|---|
-| Descripción del error| Hello certificado de firma no se configuró para la entidad AS2. </br> AS2-From: partner1 AS2-To: partner2 | 
+| Descripción del error| El certificado de firma no se ha configurado para la entidad AS2. </br> AS2-From: partner1 AS2-To: partner2 | 
 | Acción del usuario | Configure el contrato AS2 con el certificado correcto para la firma |
 |  |  | 
 
@@ -108,34 +108,34 @@ Este artículo le ayuda a solucionar los errores que puedan ocurrir en escenario
     
 |   |   | 
 |---|---|
-| Descripción del error | Error al analizar. Hola conjunto de transacciones con Id. ' 123456 'contenido en el intercambio (sin grupo) con el identificador ' 987654', Id. de remitente 'Partner1', Id. de destinatario 'Asociado2' se está suspendiendo por los errores siguientes: A la izquierda finales separador que se encuentra |
-| Acción del usuario | Hola acuerdo configuración toobe configurado tooallow espacios iniciales y finales. </br> Editar acuerdo configuración tooallow espacios iniciales y finales |
+| Descripción del error | Error al analizar. El conjunto de transacciones Edifact con Id. '123456' contenido en el intercambio (sin grupo) con Id. '987654', Id. de remitente 'Partner1' e Id. de destinatario 'Partner2' se está suspendiendo por los errores siguientes: Separador final encontrado |
+| Acción del usuario | Se debe definir la configuración de contrato para que permita espacios iniciales y finales. </br> Edite la configuración de contrato para permitir un espacio inicial y final |
 |   |   |
 
 ![permitir espacio](./media/logic-apps-enterprise-integration-b2b-list-errors-solutions/leadingandtrailing.png)
 
-### <a name="-duplicate-check-has-enabled-in-hello-agreement"></a>* Comprobación de duplicados habilitó en el acuerdo de Hola
+### <a name="-duplicate-check-has-enabled-in-the-agreement"></a>* Duplicate check has enabled in the agreement (Comprobación de duplicados habilitada en el contrato)
 
 |   |   | 
 |---|---| 
 | Descripción del error | Número de control duplicado |
-| Acción del usuario | Este error indica que el mensaje Hola recibido tiene números de control duplicados. </br> Corrija el número de control de Hola y enviar mensajes de bienvenida |
+| Acción del usuario | Este error indica que el mensaje recibido tiene números de control duplicados. </br> Corrija el número de control y vuelva a enviar el mensaje |
 |   |   |
 
-### <a name="-missing-schema-in-hello-agreement"></a>* Esquema que falta en el acuerdo de Hola
+### <a name="-missing-schema-in-the-agreement"></a>* Missing schema in the agreement (Falta un esquema en el contrato)
 
 |   |   | 
 |---|---| 
-| Descripción del error | Error al analizar. conjunto de transacciones de Hello X12 con Id. '564220001' contenidos en el grupo funcional con Id. '56422', en el intercambio con Id. '000056422', Id. de remitente ' 12345678', Id. de destinatario ' 87654321' se está suspendiendo por los errores siguientes "mensaje de saludo tiene un ty de documento desconocido PE y no se resolvió tooany de esquemas existente Hola configurado en el acuerdo de hello " |
-| Acción del usuario | Configurar el esquema de configuración de un acuerdo Hola  |
+| Descripción del error | Error al analizar. El conjunto de transacciones X12 con Id. '564220001', contenido en el grupo funcional con Id. '56422', en el intercambio con Id. '000056422', con Id. de remitente '12345678' e Id. de destinatario '87654321' se suspende por los siguientes errores. "El mensaje tiene un tipo de documento desconocido y no se resolvió en ninguno de los esquemas existentes configurados en el contrato" |
+| Acción del usuario | Configure el esquema en la configuración del contrato  |
 |   |   |
 
-### <a name="-incorrect-schema-in-hello-agreement"></a>* Esquema incorrecto en el acuerdo de Hola
+### <a name="-incorrect-schema-in-the-agreement"></a>* Incorrect schema in the agreement (Esquema incorrecto en el contrato)
 
 |   |   | 
 |---|---| 
-| Descripción del error | mensaje de saludo tiene un tipo de documento desconocido y no resolvió tooany de esquemas existente Hola configurado en el acuerdo de Hola. |
-| Acción del usuario | Configurar el esquema correcto en la configuración de acuerdo Hola  |
+| Descripción del error | El mensaje tiene un tipo de documento desconocido y no se resolvió en ninguno de los esquemas existentes configurados en el contrato. |
+| Acción del usuario | Configure el esquema correcto en la configuración del contrato  |
 |   |   |
 
 ## <a name="flat-file"></a>Archivo plano
@@ -144,9 +144,9 @@ Este artículo le ayuda a solucionar los errores que puedan ocurrir en escenario
 
 |   |   | 
 |---|---|
-| Descripción del error | InvalidTemplate. Expresiones de lenguaje de plantilla no se puede tooprocess en entradas de acción 'Flat_File_Decoding' en línea '1' y '1902' de la columna: ' requiere la propiedad 'content' espera un valor pero se obtuvo null. Ruta de acceso ''.'. |
-| Acción del usuario | Este error indica el mensaje de entrada de hello no contiene un cuerpo |
+| Descripción del error | InvalidTemplate. No se pueden procesar las expresiones de lenguaje de plantilla en las entradas de la acción 'Flat_File_Decoding' en la línea '1' y la columna '1902': 'La propiedad obligatoria 'content' espera un valor pero obtuvo nulo. Ruta de acceso ''.'. |
+| Acción del usuario | Este error indica que el mensaje de entrada no contiene un cuerpo |
 |   |   | 
 
 ## <a name="learn-more"></a>Más información
-[Obtener más información sobre Hola paquete de integración empresarial](logic-apps-enterprise-integration-overview.md)
+[Más información acerca de Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)

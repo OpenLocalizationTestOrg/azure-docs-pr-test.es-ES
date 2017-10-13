@@ -1,6 +1,6 @@
 ---
-title: "aaaTest oferta de la máquina virtual para hello Marketplace | Documentos de Microsoft"
-description: "Comprender cómo tootest imagen de la máquina virtual para hello Azure Marketplace."
+title: Probar su oferta de VM para Marketplace | Microsoft Docs
+description: "Entienda cómo probar su imagen de VM para Azure Marketplace."
 services: marketplace-publishing
 documentationcenter: 
 author: HannibalSII
@@ -14,51 +14,51 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: hascipio
-ms.openlocfilehash: ab166d2c3c536810a3a8f48330f0482b9b4e58d5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 26f856059b381be91b9cdd1f98a11dc90813c0c5
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="test-your-vm-offer-for-hello-azure-marketplace-in-staging"></a>Probar su oferta VM para hello Azure Marketplace en almacenamiento provisional
-Significa que implementar el SKU en privado "espacio aislado" donde pueda probar y validar su funcionalidad antes de implementarla toohello Marketplace de almacenamiento provisional. Hola SKU aparece en ensayo tal como lo haría a tooa cliente que ha implementado. La imagen de máquina virtual debe ser toostaging toobe certificadas insertado.
+# <a name="test-your-vm-offer-for-the-azure-marketplace-in-staging"></a>Probar su oferta de VM para Azure Marketplace en un entorno de ensayo
+En la etapa de ensayo, se implementa la SKU en un “espacio aislado” privado, donde puede probar y validar su funcionalidad antes de implementarla en Marketplace. La SKU aparece en un entorno de ensayo tal y como lo haría para un cliente que la ha implementado. Su imagen de VM debe estar certificada para trasladarse a un entorno de ensayo.
 
-## <a name="step-1-push-your-offer-toostaging"></a>Paso 1: Insertar su toostaging de oferta
-1. En hello **publicar** , haga clic en **Push tooStaging**.
+## <a name="step-1-push-your-offer-to-staging"></a>Paso 1: trasladar su oferta a un entorno de ensayo
+1. En la pestaña **Publicar**, haga clic en **Push to Staging** (Pasar a ensayo).
    
     ![dibujo](media/marketplace-publishing-vm-image-test-in-staging/vm-image-push-to-staging.png)
-2. Si el Portal de publicación de hello le informa de los errores, corríjalos.
-3. Hola **quién puede acceder a su oferta preconfigurada?** diálogo cuadro, escriba Hola lista de suscripciones de Azure que va a usar toopreview su oferta en hello [portal de vista previa](https://portal.azure.com).
+2. Si el Portal de publicación le informa errores, corríjalos.
+3. En el cuadro de diálogo **¿Quién puede obtener acceso a su oferta de ensayo?** , escriba la lista de suscripciones de Azure que usará para obtener una vista previa de su oferta en el [portal de vista previa de Azure](https://portal.azure.com).
    
    > [!NOTE]
    > En el caso de las plantillas de soluciones y máquinas virtuales, **no** agregue a la lista blanca suscripciones de tipo CSP, DreamSpark o Azure bajo licencia Open.
    > 
    > 
 
-    > En el caso de máquinas virtuales, al hacer clic en el botón de hello **tooSTAGING de INSERCIÓN**, Hola siguiendo los pasos que se llevan a cabo detrás de escena Hola. Será capaz de tooview progreso de Hola de cada paso en la ficha de la publicación de Hola Hola portal de publicación. Debe comprobar esta página en intervalos regulares (hasta que el estado de hello muestra almacenado PROVISIONALMENTE) para cualquier información de error que necesita corrección desde el final.
+    > En el caso de las máquinas virtuales, al hacer clic en el botón **PUSH TO STAGING**(INSERTAR EN ENTORNO DE ENSAYO) para enviar la oferta a producción, los siguientes pasos se realizan automáticamente. Podrá ver el progreso de cada paso en la pestaña Publicar en el Portal de publicación. Debe comprobar esta página de forma periódica (hasta que el estado muestre que está en el entorno provisional) para consultar cualquier información de error que tenga que solucionar.
 
-    > - En primer lugar la solicitud de almacenamiento provisional va toohello equipo de certificación que validar Hola vhd. Sin embargo, si la solicitud tiene solo cambio de marketing, Hola certificación paso se omitirá.
-    > - Una vez completada la certificación de hello, replicación de inicio de la oferta de hello en todas las Hola centros de datos de Azure. Por lo general toma 24-48hours para toocomplete de replicación de Hola pero puede tardar una semana tooa según tamaño Hola de hello disco duro virtual. Sin embargo, si la solicitud tiene solo cambio de marketing, replicación de hello es más rápida.
-    > - Una vez completada la replicación hello, a continuación, oferta Hola estarán disponible en hello [portal de Azure](http:/portal.azure.com). En ese Hola de tiempo se convierten en ensayo estado Hola portal de publicación. Una oferta de ensayada está visible en hello [portal de Azure](http:/portal.azure.com) únicamente con los identificadores de correo electrónico de hello asociados con qué hello intermedia oferta de suscripción de Hola.
+    > - En primer lugar, la solicitud de ensayo pasa al equipo de certificación que valida el VHD. Sin embargo, si la solicitud tiene solo incluye un cambio de marketing, se omite el paso de certificación.
+    > - Cuando se complete la certificación, se inicia la replicación de la oferta en todos los centros de datos de Azure. Normalmente, el proceso de replicación de la oferta tarda en completarse entre 24 y 48 horas, aunque puede extenderse hasta una semana en función del tamaño del VHD. Sin embargo, si la solicitud tiene solo incluye un cambio de marketing, la replicación se realiza más rápidamente.
+    > - Cuando se complete la replicación, la oferta se mostrará en el [Portal de Azure](http:/portal.azure.com). En este momento, el estado muestra que la oferta está en el entorno de ensayo en el Portal de publicación. Una oferta de ensayo está visible en el [Portal de Azure](http:/portal.azure.com) solo con los identificadores de correo electrónico asociados con la suscripción con la que se envío la oferta al entorno de ensayo.
 
-1. Inicie sesión en toohello [portal de vista previa](https://portal.azure.com) mediante uno de hello las suscripciones de Azure aparecen en el paso anterior de Hola.
+1. Inicie sesión en el [Portal de vista previa de Azure](https://portal.azure.com) mediante una de las suscripciones de Azure anteriores que se enumeran en el paso anterior.
 2. Busque su oferta y valide los puntos de su imagen de VM:
    
-   * Asegúrese de que contenido de marketing aparece correctamente en hello Marketplace.
-   * Implementación to-end de la imagen de máquina virtual de Hola.
+   * Asegúrese de que el contenido de marketing se muestra correctamente en el Marketplace.
+   * Implementación completa de la imagen de VM.
      
       ![img-map-portal](media/marketplace-publishing-push-to-staging/pubportal-mapping-azure-portal.jpg)
 
 > [!IMPORTANT]
-> Su oferta permanecerá en almacenamiento provisional hasta que notificar a Microsoft a través del Portal de publicación de hello [**publicar** ficha > haga clic en el botón de hello **"Solicitar aprobación tooPush tooProduction"**] que está listo toopush tooproduction. Se trata de un toohave tiempo ideal que comprobación todos los miembros del equipo a través de todo el contenido de preparación para la oferta va enumeradas.
+> Su oferta permanecerá en un entorno de ensayo hasta que notifique a Microsoft a través del Portal de publicación [pestaña **Publicar** > **"Solicitar aprobación para enviar a producción"**] que está listo para enviar a producción. Este es un momento ideal para que todos los miembros de su equipo revisen todo antes de hacer efectiva la oferta.
 > 
-> Hola plataforma de almacenamiento provisional está diseñada para pruebas oferta de hello en un modo de vista previa por publicador Hola. Se desaconseja encarecidamente usar esta plataforma con fines comerciales.
+> La plataforma de almacenamiento provisional está diseñada para probar la oferta en un modo de versión preliminar del publicador. Se desaconseja encarecidamente usar esta plataforma con fines comerciales.
 > 
 > 
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora que su oferta "intermedia" y haya probado la funcionalidad y el contenido de marketing, puede continuar la publicación final toohello fase, **paso 4**: [implementar el Marketplace de oferta toohello](marketplace-publishing-push-to-production.md).
+Ahora que el estado de su oferta es "de ensayo" y que ha probado su funcionalidad y contenido de marketing, puede continuar con la fase de publicación final, el **Paso 4**: [Implementación de su oferta en Marketplace](marketplace-publishing-push-to-production.md).
 
-## <a name="see-also"></a>Otras referencias
-* [Introducción: cómo toopublish una toohello de oferta de Azure Marketplace](marketplace-publishing-getting-started.md)
+## <a name="see-also"></a>Consulte también
+* [Introducción: Publicación de una oferta en Azure Marketplace](marketplace-publishing-getting-started.md)
 

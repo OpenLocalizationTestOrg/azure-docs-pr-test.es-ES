@@ -1,24 +1,24 @@
-Para poder usar Hola CLI de Azure con el Administrador de recursos comandos y plantillas toodeploy Azure recursos y cargas de trabajo con grupos de recursos, necesitará una cuenta con Azure. Si no tiene una cuenta, puede obtener [aquí una evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/).
+Para poder usar la CLI de Azure con los comandos y plantillas de Resource Manager para implementar los recursos de Azure y las cargas de trabajo mediante grupos de recursos, necesitará una cuenta de Azure. Si no tiene una cuenta, puede obtener [aquí una evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-Si aún no ha instalado hello Azure CLI y suscripción tooyour conectados, consulte [instalación hello Azure CLI](../articles/cli-install-nodejs.md) establecer modo de hello demasiado`arm` con `azure config mode arm`y conecte tooAzure con hello `azure login` comando.
+Si no ha instalado la CLI de Azure y se ha conectado a su suscripción, consulte [Instalación de la CLI de Azure](../articles/cli-install-nodejs.md), establezca el modo en `arm` con `azure config mode arm`, y conéctese a Azure con el comando `azure login`.
 
-## <a name="cli-versions-toocomplete-hello-task"></a>Tarea CLI versiones toocomplete hello
-Puede completar la tarea hello mediante uno de hello después de las versiones CLI:
+## <a name="cli-versions-to-complete-the-task"></a>Versiones de la CLI para completar la tarea
+Puede completar la tarea mediante una de las siguientes versiones de la CLI:
 
-- CLI de Azure 10: la CLI para hello clásico y recursos administración modelos de implementación (en este artículo)
-- [Azure 2.0 CLI](../articles/virtual-machines/linux/cli-manage.md) -nuestro CLI de próxima generación para el modelo de implementación de administración de recursos de Hola
+- CLI de Azure 10: la CLI para los modelos de implementación clásico y de administración de recursos (este artículo)
+- [CLI de Azure 2.0](../articles/virtual-machines/linux/cli-manage.md): la CLI de última generación para el modelo de implementación de administración de recursos
 
 ## <a name="basic-azure-resource-manager-commands-in-azure-cli"></a>Comandos básicos de Azure Resource Manager en la CLI de Azure
-Este artículo explican los comandos básicos que se desea toouse con toomanage de CLI de Azure e interactuar con los recursos (principalmente máquinas virtuales) en su suscripción de Azure.  Para obtener más ayuda con modificadores de línea de comandos específicos y opciones, puede utilizar opciones y ayuda en línea de comandos de hello escribiendo `azure <command> <subcommand> --help` o `azure help <command> <subcommand>`.
+Este artículo trata los comandos básicos que querrá usar con la CLI de Azure para administrar e interactuar con los recursos (principalmente máquinas virtuales) en la suscripción de Azure.  Para obtener información más detallada acerca de las opciones y los modificadores de línea de comandos específicos, puede utilizar las opciones y la ayuda en línea de comandos, para lo que debe escribir `azure <command> <subcommand> --help` o `azure help <command> <subcommand>`.
 
 > [!NOTE]
-> En estos ejemplos no se incluyen las operaciones basadas en plantillas que se recomiendan generalmente para implementaciones de máquina virtual en el Administrador de recursos. Para obtener información, consulte [Hola Utilice CLI de Azure con el Administrador de recursos de Azure](../articles/xplat-cli-azure-resource-manager.md) y [implementar y administrar máquinas virtuales usando plantillas del Administrador de recursos de Azure y hello Azure CLI](../articles/virtual-machines/linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> En estos ejemplos no se incluyen las operaciones basadas en plantillas que se recomiendan generalmente para implementaciones de máquina virtual en el Administrador de recursos. Para obtener información, consulte [Use the Azure CLI to manage Azure resources and resource groups](../articles/xplat-cli-azure-resource-manager.md) (Uso de la CLI de Azure para administrar recursos y grupos de recursos de Azure) e [Implementación y administración de máquinas virtuales con plantillas de Azure Resource Manager y la CLI de Azure](../articles/virtual-machines/linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 > 
 > 
 
-| Tarea | Resource Manager |
+| Task | Resource Manager |
 | --- | --- | --- |
-| Crear Hola más basic para máquina virtual |`azure vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>`<br/><br/>(Obtener hello `image-urn` de hello `azure vm image list` comando. En [este artículo](../articles/virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) encontrará algunos ejemplos.) |
+| Creación de la máquina virtual más básica |`azure vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password>`<br/><br/>(Obtenga `image-urn` del comando `azure vm image list`. En [este artículo](../articles/virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) encontrará algunos ejemplos.) |
 | Creación de una máquina virtual Linux |`azure  vm create [options] <resource-group> <name> <location> -y "Linux"` |
 | Creación de una máquina virtual Windows |`azure  vm create [options] <resource-group> <name> <location> -y "Windows"` |
 | Enumeración de máquinas virtuales |`azure  vm list [options]` |
@@ -31,14 +31,14 @@ Este artículo explican los comandos básicos que se desea toouse con toomanage 
 | Captura de una máquina virtual |`azure vm capture [options] <resource_group> <name>` |
 | Creación de una máquina virtual a partir de una imagen del usuario |`azure  vm create [options] –q <image-name> <resource-group> <name> <location> <os-type>` |
 | Creación de una máquina virtual a partir de un disco especializado |`azue  vm create [options] –d <os-disk-vhd> <resource-group> <name> <location> <os-type>` |
-| Agregar un tooa de disco de datos VM |`azure  vm disk attach-new [options] <resource-group> <vm-name> <size-in-gb> [vhd-name]` |
+| Incorporación de un disco de datos a una máquina virtual |`azure  vm disk attach-new [options] <resource-group> <vm-name> <size-in-gb> [vhd-name]` |
 | Eliminación de un disco de datos de una máquina virtual |`azure  vm disk detach [options] <resource-group> <vm-name> <lun>` |
-| Agregar una máquina virtual de extensión genérico tooa |`azure  vm extension set [options] <resource-group> <vm-name> <name> <publisher-name> <version>` |
-| Agregar acceso de VM extensión tooa VM |`azure vm reset-access [options] <resource-group> <name>` |
-| Agregar extensión de Docker tooa VM |`azure  vm docker create [options] <resource-group> <name> <location> <os-type>` |
+| Incorporación de una extensión genérica a una máquina virtual |`azure  vm extension set [options] <resource-group> <vm-name> <name> <publisher-name> <version>` |
+| Incorporación de la extensión de acceso a máquinas virtuales a una máquina virtual |`azure vm reset-access [options] <resource-group> <name>` |
+| Incorporación de la extensión de Docker a una máquina virtual |`azure  vm docker create [options] <resource-group> <name> <location> <os-type>` |
 | Eliminación de una extensión de máquina virtual |`azure  vm extension set [options] –u <resource-group> <vm-name> <name> <publisher-name> <version>` |
 | Obtención del uso de los recursos de una máquina virtual |`azure vm list-usage [options] <location>` |
 | Obtención de todos los tamaños disponibles de la máquina virtual |`azure vm sizes [options]` |
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para obtener más ejemplos de comandos CLI de hello más allá de la administración básica de VM, consulte [Using Hola CLI de Azure con el Administrador de recursos de Azure](../articles/virtual-machines/azure-cli-arm-commands.md).
+* Para obtener ejemplos adicionales de los comandos de la CLI que superan la administración de la VM básica, consulte [Uso de la CLI de Azure con Azure Resource Manager](../articles/virtual-machines/azure-cli-arm-commands.md).

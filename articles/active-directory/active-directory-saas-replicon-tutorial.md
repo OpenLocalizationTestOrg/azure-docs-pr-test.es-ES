@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con Replicon | Microsoft Docs"
-description: "¡Obtenga información acerca de cómo toouse Replicon con Azure Active Directory tooenable único inicio de sesión, aprovisionamiento automático y mucho más!"
+description: "Aprenda cómo usar Replicon con Azure Active Directory para habilitar el inicio de sesión único, el aprovisionamiento automatizado, etc."
 services: active-directory
 author: jeevansd
 documentationcenter: na
@@ -13,143 +13,143 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 4949eaf959265cfa4f732a2b73317fffe6312a17
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2aeeceb61191962b62892b8409218684f76c6fa8
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-replicon"></a>Tutorial: Integración de Azure Active Directory con Replicon
-objetivo de Hola de este tutorial es la integración de hello tooshow de Azure y Replicon. escenario de Hello descrito en este tutorial se da por supuesto que ya tiene Hola siguientes elementos:
+El objetivo de este tutorial es mostrar la integración de Azure y Replicon. En la situación descrita en este tutorial se supone que ya cuenta con los elementos siguientes:
 
 * Una suscripción de Azure válida
 * Un inquilino de Replicon
 
-Después de completar este tutorial, los usuarios de hello Azure AD que haya asignado tooReplicon será toosingle capaz de inicio de sesión en la aplicación hello en el sitio de empresa de Replicon (servicio iniciado por el proveedor inicio de sesión), o mediante hello [Introducción toohello acceso Panel](active-directory-saas-access-panel-introduction.md).
+Después de completar este tutorial, los usuarios de Azure AD que ha asignado a Replicon podrán realizar un inicio de sesión único en la aplicación en el sitio de la compañía Replicon (inicio de sesión iniciado por el proveedor de servicios) o con la [Introducción al Panel de acceso](active-directory-saas-access-panel-introduction.md).
 
-escenario de Hello descrito en este tutorial consta de hello después de bloques de creación:
+La situación descrita en este tutorial consta de los siguientes bloques de creación:
 
-1. Habilitar la integración de aplicación Hola para Replicon
+1. Habilitación de la integración de aplicaciones para Replicon
 2. Configuración del inicio de sesión único (SSO)
 3. Configuración del aprovisionamiento de usuario
 4. Asignación de usuarios
 
 ![Escenario](./media/active-directory-saas-replicon-tutorial/IC777798.png "Escenario")
 
-## <a name="enable-hello-application-integration-for-replicon"></a>Habilitar la integración de aplicación Hola para Replicon
-objetivo de Hola de esta sección es toooutline la integración de aplicaciones de hello tooenable para Replicon.
+## <a name="enable-the-application-integration-for-replicon"></a>Habilitación de la integración de aplicaciones para Replicon
+El objetivo de esta sección es describir cómo habilitar la integración de aplicaciones para Replicon.
 
-**integración de aplicaciones de hello tooenable para Replicon, lleve a cabo Hola pasos:**
+**Siga estos pasos con el fin de habilitar la integración de aplicaciones para Replicon:**
 
-1. Hola portal de Azure clásico, en el panel de navegación izquierdo de hello, haga clic en **Active Directory**.
+1. En el panel de navegación izquierdo del Portal de Azure clásico, haga clic en **Active Directory**.
    
     ![Active Directory](./media/active-directory-saas-replicon-tutorial/IC700993.png "Active Directory")
-2. De hello **Directory** lista, directorio de Hola select para la que desee tooenable integración de directorios.
-3. Haga clic en vista de aplicaciones de hello tooopen, en la vista de directorio de hello, **aplicaciones** en el menú superior Hola.
+2. En la lista **Directory**, seleccione el directorio cuya integración desee habilitar.
+3. Para abrir la vista de aplicaciones, haga clic en **Applications**, en el menú superior de la vista de directorios.
    
     ![Aplicaciones](./media/active-directory-saas-replicon-tutorial/IC700994.png "Aplicaciones")
-4. Haga clic en **agregar** final Hola de página Hola.
+4. Haga clic en **Agregar** en la parte inferior de la página.
    
     ![Agregar aplicaciones](./media/active-directory-saas-replicon-tutorial/IC749321.png "Agregar aplicaciones")
-5. En hello **especifique qué desea toodo** cuadro de diálogo, haga clic en **agregar una aplicación de la Galería de hello**.
+5. En el cuadro de diálogo **¿Qué desea hacer?**, haga clic en **Agregar una aplicación de la galería**.
    
     ![Agregar una aplicación de la galería](./media/active-directory-saas-replicon-tutorial/IC749322.png "Agregar una aplicación de la galería")
-6. Hola **cuadro de búsqueda**, tipo **Replicon**.
+6. En el **cuadro de búsqueda**, escriba **PolicyStat**.
    
     ![Galería de aplicaciones](./media/active-directory-saas-replicon-tutorial/IC777799.png "Galería de aplicaciones")
-7. En el panel de resultados de hello, seleccione **Replicon**y, a continuación, haga clic en **completar** aplicación de hello tooadd.
+7. En el panel de resultados, seleccione **Replicon** y haga clic en **Completar** para agregar la aplicación.
    
     ![Replicon](./media/active-directory-saas-replicon-tutorial/IC777800.png "Replicon")
    
 ## <a name="configure-single-sign-on"></a>Configurar inicio de sesión único
 
-objetivo de Hola de esta sección es toooutline cómo tooenable usuarios tooauthenticate tooReplicon con su cuenta de Azure AD utilizando federación basada en protocolo SAML de Hola.
+El objetivo de esta sección es describir cómo habilitar usuarios para que se autentiquen en Replicon con su cuenta de Azure AD a través de la federación basada en el protocolo SAML.
 
-**tooconfigure inicio de sesión único, lleve a cabo Hola pasos:**
+**Siga estos pasos para configurar el inicio de sesión único:**
 
-1. En el portal de Azure clásico en Hola Hola **Replicon** página de integración de aplicaciones, haga clic en **configurar inicio de sesión único** tooopen hello **configurar inicio de sesión único** cuadro de diálogo.
+1. En el Portal de Azure clásico, en la página de integración de aplicaciones de **Replicon**, haga clic en **Configurar inicio de sesión único** para abrir el cuadro de diálogo **Configurar inicio de sesión único**.
    
     ![Configurar inicio de sesión único](./media/active-directory-saas-replicon-tutorial/IC777801.png "Configurar inicio de sesión único")
-2. En hello **¿cómo desea que los usuarios toosign en tooReplicon** página, seleccione **Microsoft Azure AD Single Sign-On**y, a continuación, haga clic en **siguiente**.
+2. En la página **¿Cómo desea que los usuarios inicien sesión en Replicon?**, seleccione **Inicio de sesión único de Microsoft Azure AD** y haga clic en **Siguiente**.
    
     ![Configurar inicio de sesión único](./media/active-directory-saas-replicon-tutorial/IC777802.png "Configurar inicio de sesión único")
-3. En hello **configurar URL de aplicación** , siga los pasos de hello:
+3. En la página **Configurar dirección URL de la aplicación** , realice los pasos siguientes:
    
     ![Configurar dirección URL de la aplicación](./media/active-directory-saas-replicon-tutorial/IC777803.png "Configurar dirección URL de la aplicación")
-  1. Hola **Replicon inicio de sesión en la URL** cuadro de texto, escriba la dirección URL de inquilino de Replicon (p. ej.: *https://na2.replicon.com/company/saml2/sp-sso/post*).
-  2. Hola **dirección URL de respuesta de Replicon** cuadro de texto, escriba su Replicon **AssertionConsumerService** dirección URL (p. ej.: *https://global.replicon.com/! / saml2/empresa/sso/post*).  
+  1. En el cuadro de texto **URL de inicio de sesión de Replicon**, escriba la dirección URL del inquilino de Replicon (p. ej.: *https://na2.replicon.com/company/saml2/sp-sso/post*).
+  2. En el cuadro de texto **URL de inicio de sesión de Replicon**, escriba la dirección URL **AssertionConsumerService** de Replicon (p. ej.: *https://global.replicon.com/!/saml2/company/sso/post*).  
       
      >[!NOTE]
-     >Puede obtener dirección URL de Hola de hello metadatos de Replicon en: **https://global.replicon.com/! /saml2/\<YourCompanyKey\>**.
+     >Puede obtener la dirección URL de los metadatos de Replicon en: **https://global.replicon.com/!/saml2/\<SuClaveCompañía\>**.
      > 
      > 
  
   3. Haga clic en **Siguiente**.
 
-4. En hello **configurar inicio de sesión único en Replicon** page, toodownload sus metadatos, haga clic en **descargar metadatos**y, a continuación, guarde los metadatos de hello en el equipo.
+4. En la página **Configurar inicio de sesión único en Replicon**, para descargar los metadatos, haga clic en **Descargar metadatos** y guarde los metadatos en el equipo.
    
     ![Configurar inicio de sesión único](./media/active-directory-saas-replicon-tutorial/IC777804.png "Configurar inicio de sesión único")
 5. En otra ventana del explorador web, inicie sesión en como administrador en el sitio de Replicon de la compañía.
 
-6. tooconfigure SAML 2.0, lleve a cabo Hola pasos:
+6. Lleve a cabo los siguientes pasos para configurar SAML 2.0:
    
     ![Habilitar la autenticación SAML](./media/active-directory-saas-replicon-tutorial/IC777805.png "Habilitar la autenticación SAML")
   
-  1. Hola toodisplay **EnableSAML Authentication2** cuadro de diálogo, anexar Hola después de dirección URL de tooyour, después de la clave de su empresa: **/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2**  
-    * siguiente Hello muestra esquema Hola de dirección URL completa de hello:  
+  1. Para mostrar el cuadro de diálogo **EnableSAMLAuthentication2**, anexe la siguiente cadena a la dirección URL, después de la clave de la empresa: **/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2**.  
+    * Lo siguiente muestra el esquema de la dirección URL completa:  
    **https://na2.replicon.com/\<SuClaveCompañía\>/services/SecurityService1.svc/help/test/EnableSAMLAuthentication2**
-   2. Haga clic en hello  **+**  tooexpand hello **v20Configuration** sección.
-   3. Haga clic en hello  **+**  tooexpand hello **metaDataConfiguration** sección.
-   4. Haga clic en **Elegir archivo**, tooselect su archivo XML de metadatos de proveedor de identidad y haga clic en **enviar**.
+   2. Haga clic en **+** para expandir la sección **v20Configuration**.
+   3. Haga clic en **+** para expandir la sección **metaDataConfiguration**.
+   4. Haga clic en **Elegir archivo** para seleccionar el archivo XML de metadatos del proveedor de identidades y haga clic en **Enviar**.
 
-7. En hello portal de Azure clásico, seleccione la confirmación de configuración de inicio de sesión único de hello y, a continuación, haga clic en **completar** tooclose hello **configurar inicio de sesión único** cuadro de diálogo.
+7. En el Portal de Azure clásico, seleccione la confirmación de configuración de inicio de sesión único y haga clic en **Completar** para cerrar el cuadro de diálogo **Configurar inicio de sesión único**.
    
     ![Configurar inicio de sesión único](./media/active-directory-saas-replicon-tutorial/IC778418.png "Configurar inicio de sesión único")
    
 ## <a name="configure-user-provisioning"></a>Configurar aprovisionamiento de usuarios
 
-En orden tooenable toolog de los usuarios de Azure AD en Replicon, se les deben aprovisionar en Replicon.  
+Para permitir que los usuarios de Azure AD inicien sesión en Replicon, deben aprovisionarse en Replicon.  
 
-En caso de hello de Replicon, el aprovisionamiento es una tarea manual.
+En el caso de Replicon, el aprovisionamiento es una tarea manual.
 
-**tooconfigure aprovisionamiento de usuario, realizar Hola pasos:**
+**Siga estos pasos para configurar el aprovisionamiento de usuario:**
 
 1. En una ventana del explorador web, inicie sesión en como administrador en el sitio de Replicon de la compañía.
-2. Vaya demasiado**administración \> usuarios**.
+2. Vaya a **Administración \> Usuarios**.
    
     ![Usuarios](./media/active-directory-saas-replicon-tutorial/IC777806.png "Usuarios")
 3. Haga clic en **+Agregar usuario**.
    
     ![Agregar usuario](./media/active-directory-saas-replicon-tutorial/IC777807.png "Agregar usuario")
-4. Hola **perfil de usuario** sección, lleve a cabo Hola pasos:
+4. En la sección **Perfil de usuario** , lleve a cabo estos pasos:
    
     ![Perfil de usuario](./media/active-directory-saas-replicon-tutorial/IC777808.png "Perfil de usuario")
    
-  1. Hola **nombre de inicio de sesión** cuadro de texto, hello Azure AD de tipo dirección de correo electrónico del usuario de hello Azure AD que desee tooprovision.
+  1. En el cuadro de texto **Nombre de inicio de sesión** , escriba la dirección de correo electrónico del usuario de Azure AD que quiera aprovisionar.
   2. En **Tipo de autenticación,** seleccione **SSO**.
-  3. Hola **departamento** cuadro de texto, escriba el departamento del usuario de Hola.
+  3. En el cuadro de texto **Departamento** , escriba el departamento del usuario.
   4. En **Tipo de empleado**, seleccione **Administrador**.
   5. Haga clic en **Guardar perfil de usuario**.
 
 >[!NOTE]
->Puede usar cualquier otra Replicon usuario cuenta herramienta de creación o las API proporcionadas por Replicon tooprovision cuentas de usuario AAD.
+>Puede usar cualquier otra API o herramienta de creación de cuentas de usuario de Replicon que proporcione Replicon para aprovisionar cuentas de usuario de AAD.
 > 
 > 
 
 ## <a name="assign-users"></a>Asignar usuarios
-tootest la configuración, debe toogrant los usuarios de hello Azure AD que desee tooallow con su tooit de acceso de la aplicación mediante la asignación de ellos.
+Para probar la configuración, debe conceder acceso a los usuarios de Azure AD a los que quiere permitir el uso de su aplicación.
 
-**tooassign tooReplicon de los usuarios, realizar Hola pasos:**
+**Para asignar usuarios a Replicon, lleve a cabo los siguientes pasos:**
 
-1. Hola portal de Azure clásico, cree una cuenta de prueba.
+1. En el Portal de Azure clásico, cree una cuenta de prueba.
 
-2. En hello **Replicon** página de integración de aplicaciones, haga clic en **asignar usuarios**.
+2. En la página de integración de aplicaciones de **Replicon**, haga clic en **Asignar usuarios**.
    
     ![Asignar usuarios](./media/active-directory-saas-replicon-tutorial/IC777809.png "Asignar usuarios")
 
-3. Seleccione el usuario de prueba, haga clic en **asignar**y, a continuación, haga clic en **Sí** tooconfirm su asignación.
+3. Seleccione su usuario de prueba, haga clic en **Asignar** y en **Sí** para confirmar la asignación.
    
     ![Sí](./media/active-directory-saas-replicon-tutorial/IC767830.png "Sí")
 
-Si desea tootest las opciones de inicio de sesión único, abra Hola Panel de acceso. Para obtener más información acerca de hello Panel de acceso, consulte [Introducción toohello Panel de acceso](active-directory-saas-access-panel-introduction.md).
+Si desea probar la configuración de inicio de sesión único, abra el Panel de acceso. Para obtener más información sobre el Panel de acceso, vea [Introducción al Panel de acceso](active-directory-saas-access-panel-introduction.md).
 

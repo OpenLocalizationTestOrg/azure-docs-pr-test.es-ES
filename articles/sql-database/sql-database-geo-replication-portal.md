@@ -1,6 +1,6 @@
 ---
 title: "Azure Portal: replicación geográfica de SQL Database | Microsoft Docs"
-description: "Configurar la replicación geográfica para la base de datos de SQL Azure en el portal de Azure de Hola y de conmutación por error de inicio"
+description: "Configuración de replicación geográfica para Azure SQL Database en Azure Portal e inicio de la conmutación por error"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -15,85 +15,85 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/06/2016
 ms.author: carlrab
-ms.openlocfilehash: 09cbbdb040f36c42593e3be87ce6db2238f36656
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: db90fad2fe397f0c8466db6bdc1bd8c8d1cf8f15
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="configure-active-geo-replication-for-azure-sql-database-in-hello-azure-portal-and-initiate-failover"></a>Configurar la replicación geográfica activa para base de datos de SQL Azure en el portal de Azure de Hola y de conmutación por error de inicio
+# <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Configuración de replicación geográfica activa para Azure SQL Database en Azure Portal e inicio de la conmutación por error
 
-Este artículo muestra cómo tooconfigure replicación geográfica activa para base de datos SQL en hello [portal de Azure](http://portal.azure.com) y tooinitiate conmutación por error.
+En este artículo se muestra cómo configurar la replicación geográfica activa para SQL Database en [Azure Portal](http://portal.azure.com) y cómo iniciar la conmutación por error.
 
-conmutación por error de tooinitiate con hello portal de Azure, consulte [iniciar una conmutación por error planeada o no planeada de la base de datos de SQL Azure con hello portal de Azure](sql-database-geo-replication-portal.md).
+Para iniciar una conmutación por error planeada con el Portal de Azure, consulte [Inicio de una conmutación por error planeada o no planeada para Base de datos SQL de Azure con el Portal de Azure](sql-database-geo-replication-portal.md).
 
-tooconfigure replicación geográfica activa mediante el uso de hello portal de Azure, necesita Hola siguientes recursos:
+Para configurar la replicación geográfica activa mediante Azure Portal, necesita el siguiente recurso:
 
-* Una base de datos de SQL Azure: Hola base de datos principal que desea tooa tooreplicate otra región geográfica.
+* Una instancia de Azure SQL Database: la base de datos principal que quiere replicar en una región geográfica diferente.
 
 > [!Note]
-Replicación geográfica activa debe estar comprendido entre bases de datos de hello misma suscripción.
+La replicación geográfica activa debe producirse entre bases de datos de la misma suscripción.
 
 ## <a name="add-a-secondary-database"></a>Agregar una base de datos secundaria
-Hello pasos siguientes crea una nueva base de datos secundaria en una asociación de replicación geográfica.  
+Los pasos siguientes crean otra base de datos secundaria en una asociación de replicación geográfica.  
 
-tooadd una base de datos secundaria, debe ser propietario de la suscripción de Hola o copropietario.
+Para agregar una base de datos secundaria, debe ser el propietario o copropietario de la suscripción.
 
-base de datos secundaria de Hello tiene el mismo nombre como base de datos principal de Hola de Hola y tiene, de forma predeterminada, Hola mismo nivel de servicio. base de datos secundaria de Hello puede ser una sola base de datos o una base de datos en un grupo elástico. Para obtener más información, consulte el artículo sobre [niveles de servicio](sql-database-service-tiers.md).
-Después de crear y propagado Hola secundaria, datos comienzan a replicarse de hello base de datos principal toohello nueva base de datos secundaria.
+La base de datos secundaria tiene el mismo nombre que la base de datos principal y, de forma predeterminada, presentan el mismo nivel de servicio. La base de datos secundaria puede ser una base de datos única o una de un grupo elástico. Para obtener más información, consulte el artículo sobre [niveles de servicio](sql-database-service-tiers.md).
+Después de crear e inicializar la base de datos secundaria, los datos comienzan a replicarse desde la base de datos principal a la nueva base de datos secundaria.
 
 > [!NOTE]
-> Si la base de datos de hello asociado ya existe (por ejemplo, como resultado de terminación de una relación de replicación geográfica anterior) Hola comando produce un error.
+> Si la base de datos del asociado ya existe (por ejemplo, como resultado de la terminación de una relación de replicación geográfica anterior), se produce un error en el comando.
 > 
 
-1. Hola [portal de Azure](http://portal.azure.com), examinar la base de datos de toohello que desea tooset hacia arriba para replicación geográfica.
-2. En la página de base de datos SQL de hello, seleccione **georreplicación**y, a continuación, seleccione Hola región toocreate Hola base de datos secundaria. Puede seleccionar una región distinta de región de Hola que hospeda la base de datos principal de hello, pero se recomienda hello [región emparejada](../best-practices-availability-paired-regions.md).
+1. En [Azure Portal](http://portal.azure.com), vaya a la base de datos que desea configurar para replicación geográfica.
+2. En la página de SQL Database, seleccione **Replicación geográfica** y, luego, seleccione la región para crear la base de datos secundaria. Puede seleccionar cualquier región menos la que hospeda la base de datos principal, pero se recomienda la [región emparejada](../best-practices-availability-paired-regions.md).
    
     ![Configuración de la replicación geográfica](./media/sql-database-geo-replication-portal/configure-geo-replication.png)
-3. Seleccione o configurar el servidor de Hola y el nivel de precios para base de datos secundaria de Hola.
+3. Seleccione o configure el servidor y el plan de tarifa de la base de datos secundaria.
    
     ![Configuración de la secundaria](./media/sql-database-geo-replication-portal/create-secondary.png)
-4. Si lo desea, puede agregar un grupo elástico de base de datos secundaria tooan. toocreate Hola base de datos secundaria un grupo, haga clic en **grupo elástico** y seleccione un grupo en el servidor de destino de Hola. Ya debe existir un grupo en el servidor de destino de Hola. Este flujo de trabajo no crea un grupo.
-5. Haga clic en **crear** tooadd Hola secundaria.
-6. se crea la base de datos secundaria de Hola y Hola propagación proceso comienza.
+4. También puede agregar una base de datos secundaria a un grupo elástico. Para crear una base de datos secundaria en un grupo, haga clic en **Grupo elástico** y seleccione un grupo del servidor de destino. Ya debe existir un grupo en el servidor de destino. Este flujo de trabajo no crea un grupo.
+5. Haga clic en **Crear** para agregar la base de datos secundaria.
+6. Se crea la base de datos secundaria y comienza el proceso de inicialización.
    
     ![Configuración de la secundaria](./media/sql-database-geo-replication-portal/seeding0.png)
-7. Una vez completada Hola proceso de transferencia, base de datos secundaria de hello muestra su estado.
+7. Cuando se completa el proceso de propagación, la base de datos secundaria muestra su estado.
    
     ![Propagación completa](./media/sql-database-geo-replication-portal/seeding-complete.png)
 
 ## <a name="initiate-a-failover"></a>Inicio de una conmutación por error
 
-base de datos secundaria de Hello puede ser toobecome conmutada Hola principal.  
+La base de datos secundaria se puede cambiar para convertirse en la principal.  
 
-1. Hola [portal de Azure](http://portal.azure.com), examinar toohello base de datos principal en colaboración de replicación geográfica de Hola.
-2. En la hoja de la base de datos SQL de hello, seleccione **toda la configuración de** > **georreplicación**.
-3. Hola **secundarias** lista, base de datos de hello seleccione desea toobecome Hola nuevo elemento principal y haga clic en **conmutación por error**.
+1. En [Azure Portal](http://portal.azure.com), vaya a la base de datos principal de la asociación de replicación geográfica.
+2. En la hoja SQL Database, seleccione **All settings** (Toda la configuración)  > **Replicación geográfica**.
+3. En la lista **SECUNDARIAS**, seleccione la base de datos que quiere convertir en la nueva base de datos principal y haga clic en **Conmutación por error**.
    
     ![Conmutación por error](./media/sql-database-geo-replication-failover-portal/secondaries.png)
-4. Haga clic en **Sí** conmutación por error de toobegin Hola.
+4. Haga clic en **Sí** para iniciar la conmutación por error.
 
-comando de Hello cambia inmediatamente base de datos secundaria de hello en rol principal Hola. 
+El comando cambiará inmediatamente la base de datos secundaria al rol principal. 
 
-Hay un breve período durante el cual ambas bases de datos no están disponibles (en orden de Hola de 0 segundos too25) mientras conmutación de roles de Hola. Si la base de datos principal de hello tiene varias bases de datos secundarias, comando hello automáticamente reconfigura Hola otro secundarias tooconnect toohello nuevo elemento principal. toda operación de Hello tardará menos de un minuto toocomplete en circunstancias normales. 
+Hay un breve período durante el que ambas bases de datos no están disponibles (del orden de 0 a 25 segundos) mientras se cambian los roles. Si la base de datos principal tiene varias bases de datos secundarias, el comando reconfigura automáticamente las demás secundarias para conectarse a la nueva principal. En circunstancias normales, toda la operación debería tardar menos de un minuto en completarse. 
 
 > [!NOTE]
-> Este comando está diseñado para una rápida recuperación de base de datos de hello en el caso de una interrupción. Desencadena una conmutación por error sin sincronización de datos (conmutación por error forzada).  Si Hola principal está en línea y confirmación de transacciones cuando se emite el comando de hello alguna pérdida de datos puede producir. 
+> Este comando está diseñado para una rápida recuperación de la base de datos en el caso de una interrupción. Desencadena una conmutación por error sin sincronización de datos (conmutación por error forzada).  Si la principal está conectada y confirmando transacciones cuando se emite el comando, es posible que produzca alguna pérdida de datos. 
 > 
 > 
 
 ## <a name="remove-secondary-database"></a>Elimine una base de datos secundaria
-Esta operación finaliza permanentemente la base de datos secundaria de hello replicación toohello y cambios Hola rol de base de datos de lectura y escritura normal de hello tooa secundaria. Si se interrumpe la base de datos secundaria de hello conectividad toohello, comando Hola se realiza correctamente pero Hola secundaria hace que no se convierten en lectura y escritura hasta que una vez restaurada la conectividad.  
+Esta operación termina de forma permanente la replicación en la base de datos secundaria y el rol de la base de datos secundaria cambia al de una base de datos de lectura y escritura normal. Si se interrumpe la conectividad con la base de datos secundaria, el comando se ejecuta correctamente, pero la base de datos secundaria no pasa a ser de lectura y escritura hasta después de restaurarse la conectividad.  
 
-1. Hola [portal de Azure](http://portal.azure.com), examinar toohello base de datos principal en colaboración de replicación geográfica de Hola.
-2. En la página de base de datos SQL de hello, seleccione **georreplicación**.
-3. Hola **secundarias** lista, base de datos de hello seleccione desea tooremove de perfil de replicación geográfica de Hola.
+1. En [Azure Portal](http://portal.azure.com), vaya a la base de datos principal de la asociación de replicación geográfica.
+2. En la página de SQL Database, seleccione **Replicación geográfica**.
+3. En la lista **SECUNDARIAS**, seleccione la base de datos que desee quitar de la asociación de replicación geográfica.
 4. Haga clic en **Detener replicación**.
    
     ![Quitar secundaria](./media/sql-database-geo-replication-portal/remove-secondary.png)
-5. Se abrirá una ventana de confirmación. Haga clic en **Sí** base de datos de tooremove Hola de perfil de replicación geográfica de Hola. (Establecer base de datos de lectura y escritura de tooa no forma parte de ninguna replicación.)
+5. Se abrirá una ventana de confirmación. Haga clic en **Sí** para quitar la base de datos de la asociación de replicación geográfica. (Establezca el valor en una base de datos de lectura y escritura que no forme parte de ninguna replicación).
 
 ## <a name="next-steps"></a>Pasos siguientes
-* toolearn más información acerca de la replicación geográfica activa, consulte [replicación geográfica activa](sql-database-geo-replication-overview.md).
+* Para obtener más información sobre la replicación geográfica activa, consulte [Replicación geográfica activa](sql-database-geo-replication-overview.md).
 * Para obtener una descripción general y los escenarios de la continuidad empresarial, consulte [Información general sobre la continuidad empresarial](sql-database-business-continuity.md).
 

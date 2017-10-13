@@ -1,6 +1,6 @@
 ---
-title: vistas del sistema de almacenamiento de datos aaaSQL | Documentos de Microsoft
-description: Vincula el contenido de las vistas de toosystem para almacenamiento de datos de SQL.
+title: Vistas de sistema de SQL Data Warehouse | Microsoft Docs
+description: "Vínculos al contenido de las vistas de sistema para Almacenamiento de datos de SQL."
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: reference
 ms.date: 07/12/2017
 ms.author: kevin;barbkess
-ms.openlocfilehash: bd4d7184f6c95b37fe16b897c44c46000bbb2746
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a9327388f8789e548610a7d4f140c492afd88fef
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="system-views"></a>Vistas de sistema
 ## <a name="sql-data-warehouse-catalog-views"></a>Vistas de catálogo de almacenamiento de datos SQL
@@ -61,8 +61,8 @@ ms.lasthandoff: 10/06/2017
 * [sys.dm_pdw_wait_stats](http://msdn.microsoft.com/library/mt203909.aspx)
 * [sys.dm_pdw_waits](http://msdn.microsoft.com/library/mt203909.aspx)
 
-## <a name="sql-server-dmvs-applicable-toosql-data-warehouse"></a>SQL Server DMV aplicable tooSQL almacenamiento de datos
-Hola siguientes DMV son aplicable tooSQL almacenamiento de datos, pero deben ejecutarse mediante la conexión toohello **maestro** base de datos.
+## <a name="sql-server-dmvs-applicable-to-sql-data-warehouse"></a>DMV de SQL Server aplicables a Almacenamiento de datos SQL
+Las siguientes DMV son aplicables a Almacenamiento de datos SQL, pero para ejecutarlas, es necesario conectarse a la base de datos **maestra** .
 
 * [sys.database_service_objectives](https://msdn.microsoft.com/library/mt712619.aspx)
 * [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx)
@@ -135,18 +135,18 @@ Hola siguientes DMV son aplicable tooSQL almacenamiento de datos, pero deben eje
 * [sys.views](http://msdn.microsoft.com/library/ms190334.aspx)
 
 ## <a name="sql-server-dmvs-available-in-sql-data-warehouse"></a>DMV del servidor SQL disponibles en Almacenamiento de datos SQL
-Almacenamiento de datos SQL expone muchas vistas de administración dinámica de SQL Server de hello (DMV). Estas vistas, cuando realiza una consulta en el almacén de datos de SQL, notifican estado Hola de bases de datos con distribuciones de Hola.
+El almacenamiento de datos SQL expone gran parte de las vistas de administración dinámica (DMV) de SQL Server. Estas vistas, cuando se consultan en Almacenamiento de datos SQL, están informando del estado de las bases de datos SQL que se ejecuta en las distribuciones.
 
-Puesto que el almacenamiento de datos de SQL se basa en tecnología MPP de Microsoft, almacenamiento de datos SQL y del sistema de la plataforma de análisis de uso de almacenamiento de datos paralelo (PDW) Hola mismo vistas del sistema.
+Puesto que el almacenamiento de datos SQL se basa en tecnología MPP de Microsoft, tanto el almacenamiento de datos SQL, como el almacenamiento de datos paralelos (PDW) del sistema de la plataforma de análisis, utilizan las mismas vistas de sistema.
 
-Es por esto que cada una de estas DMV tiene una columna específica denominada pdw_node_id. Este es el identificador de Hola de hello para el nodo de proceso de Hola. En PDW de nodos de proceso hello es un concepto más fuerte de arquitectura de Hola. En el almacén de datos de SQL, arquitectura de hello depende de mayor importancia distribuciones de Hola.
+Es por esto que cada una de estas DMV tiene una columna específica denominada pdw_node_id. Se trata del identificador para el nodo de cálculo. En PDW el nodo de cálculo es un concepto más fuerte para la arquitectura. En el almacenamiento de datos de SQL, la arquitectura se basa más en las distribuciones.
 
 > [!NOTE]
-> toouse estos ver, insertar 'pdw_nodes_' en nombre de hello, como se muestra en hello en la tabla siguiente.
+> Para utilizar estas vistas, inserte 'pdw_nodes_' en el nombre, como se muestra en la tabla siguiente.
 > 
 > 
 
-| Cambio del nombre de DMV en el almacenamiento de datos SQL | Tema de vínculo tooSQL Transact-SQL Server en MSDN |
+| Cambio del nombre de DMV en el almacenamiento de datos SQL | Vínculo al tema de Transact-SQL de SQL Server en MSDN |
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)| 
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql)| 

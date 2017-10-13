@@ -1,5 +1,5 @@
 ---
-title: aaaAMQP 1.0 en operaciones de Bus de servicio de Azure basada en solicitud-respuesta | Documentos de Microsoft
+title: El protocolo AMQP 1.0 de las operaciones de respuesta o solicitud de Azure Service Bus | Microsoft Docs
 description: Lista de operaciones de respuesta/solicitud de Microsoft Azure Service Bus
 services: service-bus-messaging
 documentationcenter: na
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2017
 ms.author: sethm
-ms.openlocfilehash: e4f26219c53b0c4172747af683fe511d6366ff2d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 756565b3da6e0a818d1ee3d5e17f942d96be14f0
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>El protocolo AMQP 1.0 de Microsoft Azure Service Bus: operaciones de respuesta/solicitud
 
-En este tema define la lista de Hola de operaciones de Microsoft Azure Service Bus basado en solicitud/respuesta. Esta información se basa en el borrador de trabajo de hello AMQP administración versión 1.0.  
+En este tema se define la lista de operaciones de respuesta/solicitud de Microsoft Azure Service Bus. Esta información se basa en la versión 1.0 de Administración de AMQP (fase de borrador).  
   
-Encontrará una guía detallada de nivel de conexión de protocolo AMQP 1.0, que se explica cómo el Bus de servicio implementa y se basa en hello especificaciones técnicas de OASIS AMQP, hello [AMQP 1.0 en la Guía de protocolo de Service Bus de Azure y concentradores de eventos](service-bus-amqp-protocol-guide.md).  
+Si desea obtener una guía detallada a nivel de conexión del protocolo AMQP 1.0, que describe cómo Service Bus se implementa y se basa en la especificación técnica de OASIS AMQP, consulte la [Guía del protocolo AMQP 1.0 en Service Bus de Azure y Event Hubs](service-bus-amqp-protocol-guide.md).  
   
 ## <a name="concepts"></a>Conceptos  
   
 ### <a name="entity-description"></a>Descripción de entidad  
 
-Una descripción de la entidad hace referencia a un Bus de servicio de tooeither [clase QueueDescription](/dotnet/api/microsoft.servicebus.messaging.queuedescription), [TopicDescription clase](/dotnet/api/microsoft.servicebus.messaging.topicdescription), o [clase Queuedescription](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) objeto.  
+Una descripción de entidad hace referencia a un objeto [Clase QueueDescription](/dotnet/api/microsoft.servicebus.messaging.queuedescription), [Clase TopicDescription](/dotnet/api/microsoft.servicebus.messaging.topicdescription) o [Clase SubscriptionDescription](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) de Service Bus.  
   
 ### <a name="brokered-message"></a>Mensaje asincrónico  
 
-Representa un mensaje de Bus de servicio, que es el mensaje AMQP de tooan asignado. se define la asignación de Hola Hola [Guía de protocolo de AMQP de Bus de servicio](service-bus-amqp-protocol-guide.md).  
+Representa un mensaje de Service Bus que se asigna a un mensaje de AMQP. La asignación se define en la [guía del protocolo AMQP de Service Bus](service-bus-amqp-protocol-guide.md).  
   
-## <a name="attach-tooentity-management-node"></a>Conecte el nodo de administración de tooentity  
+## <a name="attach-to-entity-management-node"></a>Asociación al nodo de administración de entidades  
 
-Todas las operaciones de hello descritas en este documento siguen un patrón de solicitud/respuesta, son tooan ámbito entidad y requieren asociar tooan nodo de administración de entidad.  
+Todas las operaciones descritas en este documento siguen un patrón de solicitud/respuesta, se limitan a una entidad y requieren asociarse a un nodo de administración de entidades.  
   
 ### <a name="create-link-for-sending-requests"></a>Creación de un vínculo para enviar solicitudes  
 
-Crea un nodo de administración de vínculo toohello para enviar solicitudes.  
+Crea un vínculo al nodo de administración para enviar solicitudes.  
   
 ```  
 requestLink = session.attach(     
@@ -55,7 +55,7 @@ role: SENDER,
   
 ### <a name="create-link-for-receiving-responses"></a>Creación de un vínculo para recibir respuestas  
 
-Crea un vínculo para recibir respuestas de nodo de administración de Hola.  
+Crea un vínculo para recibir respuestas del nodo de administración.  
   
 ```  
 responseLink = session.attach(    
@@ -85,13 +85,13 @@ requestLink.sendTransfer(
   
 ### <a name="receive-a-response-message"></a>Recepción de un mensaje de respuesta  
 
-Recibe el mensaje de respuesta de Hola desde el vínculo de respuesta de Hola.  
+Recibe el mensaje de respuesta del vínculo de respuesta.  
   
 ```  
 responseMessage = responseLink.receiveTransfer()  
 ```  
   
-mensaje de respuesta de Hello es Hola siguiendo el formato:
+El mensaje de respuesta está en el formato siguiente:
   
 ```  
 Message(  
@@ -120,37 +120,37 @@ Las direcciones de las entidades de Service Bus deben tener el siguiente formato
   
 ### <a name="message-renew-lock"></a>Bloqueo de renovación de mensajes  
 
-Extiende bloqueo Hola de un mensaje Hola de tiempo especificado en la descripción de la entidad de Hola.  
+Extiende el bloqueo de un mensaje cuando se especifique en la descripción de la entidad.  
   
 #### <a name="request"></a>Solicitud  
 
-mensaje de solicitud de saludo debe incluir Hola aplicación propiedades siguientes:  
+El mensaje de solicitud debe incluir las siguientes propiedades de la aplicación:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |operación|string|Sí|`com.microsoft:renew-lock`|  
 |`com.microsoft:server-timeout`|uint|No|Tiempo de espera de funcionamiento del servidor en milisegundos.|  
   
- cuerpo del mensaje de solicitud de Hello debe consistir en una sección de valor de amqp que contiene una asignación con hello siguientes entradas:  
+ El cuerpo del mensaje de solicitud debe constar de una sección con el valor de AMQP que contiene una asignación con las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
-|`lock-tokens`|Matriz de UUID|Sí|Toorenew de símbolos (tokens) de bloqueo de mensaje.|  
+|`lock-tokens`|Matriz de UUID|Sí|Tokens de bloqueo de renovación de mensajes.|  
   
-#### <a name="response"></a>Response  
+#### <a name="response"></a>Respuesta  
 
-mensaje de bienvenida de respuesta debe incluir Hola siguientes propiedades de la aplicación:  
+El mensaje de respuesta debe incluir las siguientes propiedades de la aplicación:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Sí|Código de respuesta HTTP [RFC2616]<br /><br /> 200: operación realizada correctamente; en caso contrario, significa que se ha producido un error.|  
-|statusDescription|string|No|Descripción del estado de Hola.|  
+|statusDescription|string|No|Descripción del estado.|  
   
-cuerpo del mensaje de respuesta de Hello debe consistir en una sección de valor de amqp que contiene una asignación con hello siguientes entradas:  
+El cuerpo del mensaje de respuesta debe constar de una sección con el valor de AMQP que contiene una asignación con las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
-|expirations|Matriz de marca de tiempo|Sí|Mensaje de bloqueo token expiración correspondiente toohello solicitud bloqueo tokens nuevos.|  
+|expirations|Matriz de marca de tiempo|Sí|Nueva expiración de tokenes de bloqueo de mensajes correspondientes a los tokens de bloqueo de solicitudes.|  
   
 ### <a name="peek-message"></a>Inspección de mensajes  
 
@@ -158,36 +158,36 @@ Inspecciona los mensajes sin bloquearlos.
   
 #### <a name="request"></a>Solicitud  
 
-mensaje de solicitud de saludo debe incluir Hola aplicación propiedades siguientes:  
+El mensaje de solicitud debe incluir las siguientes propiedades de la aplicación:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |operación|string|Sí|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|No|Tiempo de espera de funcionamiento del servidor en milisegundos.|  
   
-cuerpo del mensaje de solicitud de Hello debe constar de un **amqp valor** sección que contiene un **mapa** con hello siguientes entradas:  
+El cuerpo del mensaje de solicitud debe constar de una sección con el **valor de AMQP** que contiene una **asignación** con las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
-|`from-sequence-number`|long|Sí|Número de secuencia de qué peek toostart.|  
-|`message-count`|int|Sí|Número máximo de mensajes toopeek.|  
+|`from-sequence-number`|long|Sí|Número de secuencia desde la que se iniciará la inspección.|  
+|`message-count`|int|Sí|Número máximo de mensajes que se inspeccionarán.|  
   
-#### <a name="response"></a>Response  
+#### <a name="response"></a>Respuesta  
 
-mensaje de bienvenida de respuesta debe incluir Hola siguientes propiedades de la aplicación:  
+El mensaje de respuesta debe incluir las siguientes propiedades de la aplicación:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Sí|Código de respuesta HTTP [RFC2616]<br /><br /> 200: operación realizada correctamente; hay más mensajes.<br /><br /> 0xCC: sin contenido; no hay más mensajes.|  
-|statusDescription|string|No|Descripción del estado de Hola.|  
+|statusDescription|string|No|Descripción del estado.|  
   
-cuerpo del mensaje de respuesta de Hello debe constar de un **amqp valor** sección que contiene un **mapa** con hello siguientes entradas:  
+El cuerpo del mensaje de respuesta debe constar de una sección con el **valor de AMQP** que contiene una **asignación** con las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |messages|Lista de asignaciones|Sí|Lista de mensajes en el que cada asignación representa un mensaje.|  
   
-mapa de Hola que representa un mensaje debe contener Hola siguientes entradas:  
+La asignación que representa un mensaje debe contener las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
@@ -199,20 +199,20 @@ Programa mensajes.
   
 #### <a name="request"></a>Solicitud  
 
-mensaje de solicitud de saludo debe incluir Hola aplicación propiedades siguientes:  
+El mensaje de solicitud debe incluir las siguientes propiedades de la aplicación:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |operación|string|Sí|`com.microsoft:schedule-message`|  
 |`com.microsoft:server-timeout`|uint|No|Tiempo de espera de funcionamiento del servidor en milisegundos.|  
   
-cuerpo del mensaje de solicitud de Hello debe constar de un **amqp valor** sección que contiene un **mapa** con hello siguientes entradas:  
+El cuerpo del mensaje de solicitud debe constar de una sección con el **valor de AMQP** que contiene una **asignación** con las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |messages|Lista de asignaciones|Sí|Lista de mensajes en el que cada asignación representa un mensaje.|  
   
-mapa de Hola que representa un mensaje debe contener Hola siguientes entradas:  
+La asignación que representa un mensaje debe contener las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
@@ -223,18 +223,18 @@ mapa de Hola que representa un mensaje debe contener Hola siguientes entradas:
   
 #### <a name="response"></a>Response  
 
-mensaje de bienvenida de respuesta debe incluir Hola siguientes propiedades de la aplicación:  
+El mensaje de respuesta debe incluir las siguientes propiedades de la aplicación:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Sí|Código de respuesta HTTP [RFC2616]<br /><br /> 200: operación realizada correctamente; en caso contrario, significa que se ha producido un error.|  
-|statusDescription|string|No|Descripción del estado de Hola.|  
+|statusDescription|string|No|Descripción del estado.|  
   
-cuerpo del mensaje de respuesta de Hello debe constar de un **amqp valor** sección que contiene una asignación con hello siguientes entradas:  
+El cuerpo del mensaje de respuesta debe constar de una sección con el **valor de AMQP** que contiene una asignación con las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
-|sequence-numbers|Matriz de long|Sí|Número de secuencia de los mensajes programados. Número de secuencia es toocancel usado.|  
+|sequence-numbers|Matriz de long|Sí|Número de secuencia de los mensajes programados. El número de secuencia se utiliza para realizar cancelaciones.|  
   
 ### <a name="cancel-scheduled-message"></a>Cancelación de mensajes programados  
 
@@ -242,50 +242,50 @@ Cancela mensajes programados.
   
 #### <a name="request"></a>Solicitud  
 
-mensaje de solicitud de saludo debe incluir Hola aplicación propiedades siguientes:  
+El mensaje de solicitud debe incluir las siguientes propiedades de la aplicación:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |operación|string|Sí|`com.microsoft:cancel-scheduled-message`|  
 |`com.microsoft:server-timeout`|uint|No|Tiempo de espera de funcionamiento del servidor en milisegundos.|  
   
-cuerpo del mensaje de solicitud de Hello debe constar de un **amqp valor** sección que contiene un **mapa** con hello siguientes entradas:  
+El cuerpo del mensaje de solicitud debe constar de una sección con el **valor de AMQP** que contiene una **asignación** con las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
-|sequence-numbers|Matriz de long|Sí|Números de secuencia de mensajes programados toocancel.|  
+|sequence-numbers|Matriz de long|Sí|Números de secuencia de mensajes programados que se van a cancelar.|  
   
 #### <a name="response"></a>Response  
 
-mensaje de bienvenida de respuesta debe incluir Hola siguientes propiedades de la aplicación:  
+El mensaje de respuesta debe incluir las siguientes propiedades de la aplicación:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Sí|Código de respuesta HTTP [RFC2616]<br /><br /> 200: operación realizada correctamente; en caso contrario, significa que se ha producido un error.|  
-|statusDescription|string|No|Descripción del estado de Hola.|  
+|statusDescription|string|No|Descripción del estado.|  
   
-cuerpo del mensaje de respuesta de Hello debe constar de un **amqp valor** sección que contiene una asignación con hello siguientes entradas:  
+El cuerpo del mensaje de respuesta debe constar de una sección con el **valor de AMQP** que contiene una asignación con las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
-|sequence-numbers|Matriz de long|Sí|Número de secuencia de los mensajes programados. Número de secuencia es toocancel usado.|  
+|sequence-numbers|Matriz de long|Sí|Número de secuencia de los mensajes programados. El número de secuencia se utiliza para realizar cancelaciones.|  
   
 ## <a name="session-operations"></a>Operaciones de sesiones  
   
 ### <a name="session-renew-lock"></a>Bloqueo de renovación de sesiones  
 
-Extiende bloqueo Hola de un mensaje Hola de tiempo especificado en la descripción de la entidad de Hola.  
+Extiende el bloqueo de un mensaje cuando se especifique en la descripción de la entidad.  
   
 #### <a name="request"></a>Solicitud  
 
-mensaje de solicitud de saludo debe incluir Hola aplicación propiedades siguientes:  
+El mensaje de solicitud debe incluir las siguientes propiedades de la aplicación:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |operación|string|Sí|`com.microsoft:renew-session-lock`|  
 |`com.microsoft:server-timeout`|uint|No|Tiempo de espera de funcionamiento del servidor en milisegundos.|  
   
-cuerpo del mensaje de solicitud de Hello debe constar de un **amqp valor** sección que contiene un **mapa** con hello siguientes entradas:  
+El cuerpo del mensaje de solicitud debe constar de una sección con el **valor de AMQP** que contiene una **asignación** con las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
@@ -293,14 +293,14 @@ cuerpo del mensaje de solicitud de Hello debe constar de un **amqp valor** secci
   
 #### <a name="response"></a>Response  
 
-mensaje de bienvenida de respuesta debe incluir Hola siguientes propiedades de la aplicación:  
+El mensaje de respuesta debe incluir las siguientes propiedades de la aplicación:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Sí|Código de respuesta HTTP [RFC2616]<br /><br /> 200: operación realizada correctamente; hay más mensajes.<br /><br /> 0xCC: sin contenido; no hay más mensajes.|  
-|statusDescription|string|No|Descripción del estado de Hola.|  
+|statusDescription|string|No|Descripción del estado.|  
   
-cuerpo del mensaje de respuesta de Hello debe constar de un **amqp valor** sección que contiene una asignación con hello siguientes entradas:  
+El cuerpo del mensaje de respuesta debe constar de una sección con el **valor de AMQP** que contiene una asignación con las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
@@ -312,37 +312,37 @@ Inspecciona mensajes de sesiones sin bloquear.
   
 #### <a name="request"></a>Solicitud  
 
-mensaje de solicitud de saludo debe incluir Hola aplicación propiedades siguientes:  
+El mensaje de solicitud debe incluir las siguientes propiedades de la aplicación:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |operación|string|Sí|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|No|Tiempo de espera de funcionamiento del servidor en milisegundos.|  
   
-cuerpo del mensaje de solicitud de Hello debe constar de un **amqp valor** sección que contiene un **mapa** con hello siguientes entradas:  
+El cuerpo del mensaje de solicitud debe constar de una sección con el **valor de AMQP** que contiene una **asignación** con las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
-|from-sequence-number|long|Sí|Número de secuencia de qué peek toostart.|  
-|message-count|int|Sí|Número máximo de mensajes toopeek.|  
+|from-sequence-number|long|Sí|Número de secuencia desde la que se iniciará la inspección.|  
+|message-count|int|Sí|Número máximo de mensajes que se inspeccionarán.|  
 |session-id|string|Sí|Identificador de sesión.|  
   
 #### <a name="response"></a>Response  
 
-mensaje de bienvenida de respuesta debe incluir Hola siguientes propiedades de la aplicación:  
+El mensaje de respuesta debe incluir las siguientes propiedades de la aplicación:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Sí|Código de respuesta HTTP [RFC2616]<br /><br /> 200: operación realizada correctamente; hay más mensajes.<br /><br /> 0xCC: sin contenido; no hay más mensajes.|  
-|statusDescription|string|No|Descripción del estado de Hola.|  
+|statusDescription|string|No|Descripción del estado.|  
   
-cuerpo del mensaje de respuesta de Hello debe constar de un **amqp valor** sección que contiene una asignación con hello siguientes entradas:  
+El cuerpo del mensaje de respuesta debe constar de una sección con el **valor de AMQP** que contiene una asignación con las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |messages|Lista de asignaciones|Sí|Lista de mensajes en el que cada asignación representa un mensaje.|  
   
- mapa de Hola que representa un mensaje debe contener Hola siguientes entradas:  
+ La asignación que representa un mensaje debe contener las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
@@ -350,18 +350,18 @@ cuerpo del mensaje de respuesta de Hello debe constar de un **amqp valor** secci
   
 ### <a name="set-session-state"></a>Establecimiento del estado de sesiones  
 
-Conjuntos de Hola estado de una sesión.  
+Establece el estado de una sesión.  
   
 #### <a name="request"></a>Solicitud  
 
-mensaje de solicitud de saludo debe incluir Hola aplicación propiedades siguientes:  
+El mensaje de solicitud debe incluir las siguientes propiedades de la aplicación:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |operación|string|Sí|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|No|Tiempo de espera de funcionamiento del servidor en milisegundos.|  
   
-cuerpo del mensaje de solicitud de Hello debe constar de un **amqp valor** sección que contiene un **mapa** con hello siguientes entradas:  
+El cuerpo del mensaje de solicitud debe constar de una sección con el **valor de AMQP** que contiene una **asignación** con las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
@@ -370,27 +370,27 @@ cuerpo del mensaje de solicitud de Hello debe constar de un **amqp valor** secci
   
 #### <a name="response"></a>Response  
 
-mensaje de bienvenida de respuesta debe incluir Hola siguientes propiedades de la aplicación:  
+El mensaje de respuesta debe incluir las siguientes propiedades de la aplicación:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Sí|Código de respuesta HTTP [RFC2616]<br /><br /> 200: operación realizada correctamente; en caso contrario, significa que se ha producido un error.|  
-|statusDescription|string|No|Descripción del estado de Hola.|  
+|statusDescription|string|No|Descripción del estado.|  
   
 ### <a name="get-session-state"></a>Obtención del estado de sesiones  
 
-Obtiene el estado de saludo de una sesión.  
+Obtiene el estado de una sesión.  
   
 #### <a name="request"></a>Solicitud  
 
-mensaje de solicitud de saludo debe incluir Hola aplicación propiedades siguientes:  
+El mensaje de solicitud debe incluir las siguientes propiedades de la aplicación:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |operación|string|Sí|`com.microsoft:get-session-state`|  
 |`com.microsoft:server-timeout`|uint|No|Tiempo de espera de funcionamiento del servidor en milisegundos.|  
   
-cuerpo del mensaje de solicitud de Hello debe constar de un **amqp valor** sección que contiene un **mapa** con hello siguientes entradas:  
+El cuerpo del mensaje de solicitud debe constar de una sección con el **valor de AMQP** que contiene una **asignación** con las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
@@ -398,14 +398,14 @@ cuerpo del mensaje de solicitud de Hello debe constar de un **amqp valor** secci
   
 #### <a name="response"></a>Response  
 
-mensaje de bienvenida de respuesta debe incluir Hola siguientes propiedades de la aplicación:  
+El mensaje de respuesta debe incluir las siguientes propiedades de la aplicación:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Sí|Código de respuesta HTTP [RFC2616]<br /><br /> 200: operación realizada correctamente; en caso contrario, significa que se ha producido un error.|  
-|statusDescription|string|No|Descripción del estado de Hola.|  
+|statusDescription|string|No|Descripción del estado.|  
   
-cuerpo del mensaje de respuesta de Hello debe constar de un **amqp valor** sección que contiene un **mapa** con hello siguientes entradas:  
+El cuerpo del mensaje de respuesta debe constar de una sección con el **valor de AMQP** que contiene una **asignación** con las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
@@ -417,31 +417,31 @@ Enumera las sesiones de una entidad de mensajería.
   
 #### <a name="request"></a>Solicitud  
 
-mensaje de solicitud de saludo debe incluir Hola aplicación propiedades siguientes:  
+El mensaje de solicitud debe incluir las siguientes propiedades de la aplicación:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |operación|string|Sí|`com.microsoft:get-message-sessions`|  
 |`com.microsoft:server-timeout`|uint|No|Tiempo de espera de funcionamiento del servidor en milisegundos.|  
   
-cuerpo del mensaje de solicitud de Hello debe constar de un **amqp valor** sección que contiene un **mapa** con hello siguientes entradas:  
+El cuerpo del mensaje de solicitud debe constar de una sección con el **valor de AMQP** que contiene una **asignación** con las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
-|last-updated-time|timestamp|Sí|Filtrar tooinclude sesiones solo actualizadas después de un momento dado.|  
+|last-updated-time|timestamp|Sí|Filtro para incluir solo las sesiones actualizadas después de un momento dado.|  
 |skip|int|Sí|Omite un número de sesiones.|  
 |top|int|Sí|Número máximo de sesiones.|  
   
 #### <a name="response"></a>Response  
 
-mensaje de bienvenida de respuesta debe incluir Hola siguientes propiedades de la aplicación:  
+El mensaje de respuesta debe incluir las siguientes propiedades de la aplicación:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Sí|Código de respuesta HTTP [RFC2616]<br /><br /> 200: operación realizada correctamente; hay más mensajes.<br /><br /> 0xCC: sin contenido; no hay más mensajes.|  
-|statusDescription|string|No|Descripción del estado de Hola.|  
+|statusDescription|string|No|Descripción del estado.|  
   
-cuerpo del mensaje de respuesta de Hello debe constar de un **amqp valor** sección que contiene un **mapa** con hello siguientes entradas:  
+El cuerpo del mensaje de respuesta debe constar de una sección con el **valor de AMQP** que contiene una **asignación** con las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
@@ -454,35 +454,35 @@ cuerpo del mensaje de respuesta de Hello debe constar de un **amqp valor** secci
   
 #### <a name="request"></a>Solicitud  
 
-mensaje de solicitud de saludo debe incluir Hola aplicación propiedades siguientes:  
+El mensaje de solicitud debe incluir las siguientes propiedades de la aplicación:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |operación|string|Sí|`com.microsoft:add-rule`|  
 |`com.microsoft:server-timeout`|uint|No|Tiempo de espera de funcionamiento del servidor en milisegundos.|  
   
-cuerpo del mensaje de solicitud de Hello debe constar de un **amqp valor** sección que contiene un **mapa** con hello siguientes entradas:  
+El cuerpo del mensaje de solicitud debe constar de una sección con el **valor de AMQP** que contiene una **asignación** con las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |rule-name|string|Sí|Nombre de la regla, sin incluir los nombres de las suscripciones y los temas.|  
 |rule-description|map|Sí|Descripción de la regla tal y como se especifica en la sección siguiente.|  
   
-Hola **descripción de la regla** mapa debe incluir Hola siguiendo las entradas, donde **filtro sql** y **filtro de correlación** son mutuamente excluyentes:  
+La asignación **rule-description** debe incluir las siguientes entradas, donde **sql-filter** y **correlation-filter** son mutuamente excluyentes:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
-|sql-filter|map|Sí|`sql-filter`, como se especifica en la sección siguiente Hola.|  
-|correlation-filter|map|Sí|`correlation-filter`, como se especifica en la sección siguiente Hola.|  
-|sql-rule-action|map|Sí|`sql-rule-action`, como se especifica en la sección siguiente Hola.|  
+|sql-filter|map|Sí|`sql-filter`, tal y como se especifica en la sección siguiente.|  
+|correlation-filter|map|Sí|`correlation-filter`, tal y como se especifica en la sección siguiente.|  
+|sql-rule-action|map|Sí|`sql-rule-action`, tal y como se especifica en la sección siguiente.|  
   
-mapa de filtro sql Hola debe incluir Hola siguientes entradas:  
+La asignación sql-filter debe incluir las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |expresión|string|Sí|Expresión de filtro SQL.|  
   
-Hola **filtro de correlación** mapa debe incluir al menos uno de hello siguientes entradas:  
+La asignación **correlation-filter** debe incluir, al menos, una de las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
@@ -494,9 +494,9 @@ Hola **filtro de correlación** mapa debe incluir al menos uno de hello siguient
 |session-id|string|No||  
 |reply-to-session-id|string|No||  
 |content-type|string|No||  
-|propiedades|map|No|Asigna tooService Bus [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Properties).|  
+|propiedades|map|No|Se asigna [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Properties) a Service Bus.|  
   
-Hola **acción de regla sql** mapa debe incluir Hola siguientes entradas:  
+La asignación**sql-rule-action** debe incluir las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
@@ -504,25 +504,25 @@ Hola **acción de regla sql** mapa debe incluir Hola siguientes entradas:
   
 #### <a name="response"></a>Response  
 
-mensaje de bienvenida de respuesta debe incluir Hola siguientes propiedades de la aplicación:  
+El mensaje de respuesta debe incluir las siguientes propiedades de la aplicación:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Sí|Código de respuesta HTTP [RFC2616]<br /><br /> 200: operación realizada correctamente; en caso contrario, significa que se ha producido un error.|  
-|statusDescription|string|No|Descripción del estado de Hola.|  
+|statusDescription|string|No|Descripción del estado.|  
   
 ### <a name="remove-rule"></a>Eliminación de reglas  
   
 #### <a name="request"></a>Solicitud  
 
-mensaje de solicitud de saludo debe incluir Hola aplicación propiedades siguientes:  
+El mensaje de solicitud debe incluir las siguientes propiedades de la aplicación:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |operación|string|Sí|`com.microsoft:remove-rule`|  
 |`com.microsoft:server-timeout`|uint|No|Tiempo de espera de funcionamiento del servidor en milisegundos.|  
   
-cuerpo del mensaje de solicitud de Hello debe constar de un **amqp valor** sección que contiene un **mapa** con hello siguientes entradas:  
+El cuerpo del mensaje de solicitud debe constar de una sección con el **valor de AMQP** que contiene una **asignación** con las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
@@ -530,12 +530,12 @@ cuerpo del mensaje de solicitud de Hello debe constar de un **amqp valor** secci
   
 #### <a name="response"></a>Response  
 
-mensaje de bienvenida de respuesta debe incluir Hola siguientes propiedades de la aplicación:  
+El mensaje de respuesta debe incluir las siguientes propiedades de la aplicación:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Sí|Código de respuesta HTTP [RFC2616]<br /><br /> 200: operación realizada correctamente; en caso contrario, significa que se ha producido un error.|  
-|statusDescription|string|No|Descripción del estado de Hola.|  
+|statusDescription|string|No|Descripción del estado.|  
   
 ## <a name="deferred-message-operations"></a>Operaciones de mensajes diferidos  
   
@@ -545,14 +545,14 @@ Recibe mensajes diferidos por número de secuencia.
   
 #### <a name="request"></a>Solicitud  
 
-mensaje de solicitud de saludo debe incluir Hola aplicación propiedades siguientes:  
+El mensaje de solicitud debe incluir las siguientes propiedades de la aplicación:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |operación|string|Sí|`com.microsoft:receive-by-sequence-number`|  
 |`com.microsoft:server-timeout`|uint|No|Tiempo de espera de funcionamiento del servidor en milisegundos.|  
   
-cuerpo del mensaje de solicitud de Hello debe constar de un **amqp valor** sección que contiene un **mapa** con hello siguientes entradas:  
+El cuerpo del mensaje de solicitud debe constar de una sección con el **valor de AMQP** que contiene una **asignación** con las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
@@ -561,20 +561,20 @@ cuerpo del mensaje de solicitud de Hello debe constar de un **amqp valor** secci
   
 #### <a name="response"></a>Response  
 
-mensaje de bienvenida de respuesta debe incluir Hola siguientes propiedades de la aplicación:  
+El mensaje de respuesta debe incluir las siguientes propiedades de la aplicación:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Sí|Código de respuesta HTTP [RFC2616]<br /><br /> 200: operación realizada correctamente; en caso contrario, significa que se ha producido un error.|  
-|statusDescription|string|No|Descripción del estado de Hola.|  
+|statusDescription|string|No|Descripción del estado.|  
   
-cuerpo del mensaje de respuesta de Hello debe constar de un **amqp valor** sección que contiene un **mapa** con hello siguientes entradas:  
+El cuerpo del mensaje de respuesta debe constar de una sección con el **valor de AMQP** que contiene una **asignación** con las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |messages|Lista de asignaciones|Sí|Lista de mensajes donde cada asignación representa un mensaje.|  
   
-mapa de Hola que representa un mensaje debe contener Hola siguientes entradas:  
+La asignación que representa un mensaje debe contener las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
@@ -583,39 +583,39 @@ mapa de Hola que representa un mensaje debe contener Hola siguientes entradas:
   
 ### <a name="update-disposition-status"></a>Actualización del estado de disposición  
 
-Actualiza el estado de disposición de Hola de mensajes aplazados.  
+Actualiza el estado de disposición de los mensajes diferidos.  
   
 #### <a name="request"></a>Solicitud  
 
-mensaje de solicitud de saludo debe incluir Hola aplicación propiedades siguientes:  
+El mensaje de solicitud debe incluir las siguientes propiedades de la aplicación:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |operación|string|Sí|`com.microsoft:update-disposition`|  
 |`com.microsoft:server-timeout`|uint|No|Tiempo de espera de funcionamiento del servidor en milisegundos.|  
   
-cuerpo del mensaje de solicitud de Hello debe constar de un **amqp valor** sección que contiene un **mapa** con hello siguientes entradas:  
+El cuerpo del mensaje de solicitud debe constar de una sección con el **valor de AMQP** que contiene una **asignación** con las siguientes entradas:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |disposition-status|string|Sí|completed<br /><br /> abandoned<br /><br /> suspended|  
-|lock-tokens|Matriz de UUID|Sí|El estado de disposición tooupdate los tokens de bloqueo del mensaje.|  
-|deadletter-reason|string|No|Puede establecer si el estado de disposición se establece demasiado**suspendido**.|  
-|deadletter-description|string|No|Puede establecer si el estado de disposición se establece demasiado**suspendido**.|  
-|properties-to-modify|map|No|Lista de Bus de servicio asíncrona toomodify de propiedades de mensaje.|  
+|lock-tokens|Matriz de UUID|Sí|Tokens de bloqueo de mensajes para actualizar el estado de disposición.|  
+|deadletter-reason|string|No|Puede establecerse si el estado de disposición es **suspended**.|  
+|deadletter-description|string|No|Puede establecerse si el estado de disposición es **suspended**.|  
+|properties-to-modify|map|No|Lista de propiedades de mensajes asincrónicos de Service Bus que se van a modificar.|  
   
 #### <a name="response"></a>Response  
 
-mensaje de bienvenida de respuesta debe incluir Hola siguientes propiedades de la aplicación:  
+El mensaje de respuesta debe incluir las siguientes propiedades de la aplicación:  
   
 |Clave|Tipo de valor|Obligatorio|Contenido del valor|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|Sí|Código de respuesta HTTP [RFC2616]<br /><br /> 200: operación realizada correctamente; en caso contrario, significa que se ha producido un error.|  
-|statusDescription|string|No|Descripción del estado de Hola.|
+|statusDescription|string|No|Descripción del estado.|
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-toolearn más información acerca de AMQP y Bus de servicio, visite Hola siguientes vínculos:
+Para obtener más información sobre AMQP y Service Bus, visite los siguientes vínculos:
 
 * [Información general sobre AMQP para Service Bus]
 * [Compatibilidad de AMQP 1.0 con los temas y las colas con particiones de Service Bus]

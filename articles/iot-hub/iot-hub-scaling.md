@@ -1,6 +1,6 @@
 ---
-title: ajuste de escala de centro de IoT aaaAzure | Documentos de Microsoft
-description: "Cómo tooscale su toosupport de centro de IoT el rendimiento de los mensajes previsto. Incluye un resumen de rendimiento de hello admitido para cada nivel y las opciones de particionamiento."
+title: Escalado de Azure IoT Hub | Microsoft Docs
+description: "Cómo escalar el centro de IoT Hub para respaldar el rendimiento de los mensajes previsto. Incluye un resumen del rendimiento admitido para cada nivel y opciones de particionamiento."
 services: iot-hub
 documentationcenter: 
 author: fsautomata
@@ -15,44 +15,44 @@ ms.workload: na
 ms.date: 08/25/2017
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3b8bf6c44631c65b34b69752d9043c21db24bb01
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2cb263103da05b10c24aab71d81c43eb25987565
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="scale-your-iot-hub-solution"></a>Escalado de la solución de IoT Hub
-Centro de IoT de Azure puede admitir la tooa millones de dispositivos conectados al mismo tiempo. Para obtener más información, vea [Precios de IoT Hub][lnk-pricing]. Cada unidad de IoT Hub permite un número determinado de mensajes diarios.
+El Centro de IoT de Azure puede admitir hasta un millón de dispositivos conectados simultáneamente. Para obtener más información, vea [Precios de IoT Hub][lnk-pricing]. Cada unidad de IoT Hub permite un número determinado de mensajes diarios.
 
-tooproperly escalar su solución, considere la posibilidad de su uso particular del centro de IoT. En concreto, tenga en cuenta el rendimiento de máximo de hello necesario para hello siguientes categorías de operaciones:
+Para escalar correctamente su solución, debe tener en cuenta el uso particular que haga de IoT Hub. En concreto, tenga en cuenta la capacidad de procesamiento máxima requerida para las siguientes categorías de operaciones:
 
 * Mensajes de dispositivo a nube
 * Mensajes de nube a dispositivo
 * Operaciones de registro de identidad
 
-En información de rendimiento de toothis de adición, vea [centro de IoT cuotas y aceleradores] [ IoT Hub quotas and throttles] y diseñar la solución según corresponda.
+Además de esta información sobre la capacidad de procesamiento, vea [Cuotas y limitaciones de IoT Hub][IoT Hub quotas and throttles] y diseñe su solución en consecuencia.
 
 ## <a name="device-to-cloud-and-cloud-to-device-message-throughput"></a>Capacidad de procesamiento para los mensajes de dispositivo a nube y de nube a dispositivo
-Hola mejor manera toosize una solución de centro de IoT es tráfico de hello tooevaluate según una por unidad.
+La mejor forma de dimensionar una solución de Centro de IoT es evaluar el tráfico en cada dispositivo.
 
 Los mensajes de dispositivo a nube siguen estas directrices de capacidad de procesamiento sostenida.
 
 | Nivel: | Capacidad de procesamiento sostenida | Velocidad de envío sostenida |
 | --- | --- | --- |
-| S1 |Seguridad too1111 KB por minuto por unidad<br/>(1,5 GB/día/unidad) |Promedio de 278 mensajes/minuto por unidad<br/>(400 000 mensajes/día por unidad) |
-| S2 |Seguridad too16 MB por minuto por unidad<br/>(22,8 GB/día/unidad) |Promedio de 4167 mensajes/minuto por unidad<br/>(6 millones de mensajes/día por unidad) |
-| S3 |Seguridad too814 MB por minuto por unidad<br/>(1144,4 GB/día/unidad) |Promedio de 208.333 mensajes/minuto por unidad<br/>(300 millones de mensajes/día por unidad) |
+| S1 |Hasta 1111 KB/minuto por unidad<br/>(1,5 GB/día/unidad) |Promedio de 278 mensajes/minuto por unidad<br/>(400 000 mensajes/día por unidad) |
+| S2 |Hasta 16 MB/minuto por unidad<br/>(22,8 GB/día/unidad) |Promedio de 4167 mensajes/minuto por unidad<br/>(6 millones de mensajes/día por unidad) |
+| S3 |Hasta 814 MB/minuto por unidad<br/>(1144,4 GB/día/unidad) |Promedio de 208.333 mensajes/minuto por unidad<br/>(300 millones de mensajes/día por unidad) |
 
 ## <a name="identity-registry-operation-throughput"></a>Capacidad de procesamiento para las operaciones de registro de identidad
-Las operaciones del registro de identidad de centro de IoT no deberían toobe operaciones en tiempo de ejecución, ya que son principalmente aprovisionamiento toodevice relacionado.
+Las operaciones de registro de identidad de IoT Hub no deberían ser operaciones en tiempo de ejecución porque tienen que ver principalmente con el aprovisionamiento de dispositivos.
 
 Vea las cifras de rendimiento de ráfaga específicas en [Cuotas y limitaciones de IoT Hub][IoT Hub quotas and throttles].
 
 ## <a name="sharding"></a>Clave de particionamiento
-Mientras que un único centro de IoT puede escalar toomillions de dispositivos, a veces la solución necesita características de rendimiento específicas que no puede garantizar un único centro de IoT. En ese caso, se recomienda realizar particiones de los dispositivos en varios centros de IoT. Varios centros de IoT suavizar ráfagas de tráfico y obtener el rendimiento necesario Hola o los tipos de operación que se necesitan.
+Aunque un único Centro de IoT puede escalarse a millones de dispositivos, a veces la solución requiere características de rendimiento específicas que un único Centro de IoT no puede garantizar. En ese caso, se recomienda realizar particiones de los dispositivos en varios centros de IoT. Varios centros de IoT suavizan las ráfagas de tráfico y obtienen el rendimiento necesario o las velocidades de funcionamiento necesarias.
 
 ## <a name="next-steps"></a>Pasos siguientes
-toofurther explorar las capacidades de Hola de centro de IoT, vea:
+Para explorar aún más las funcionalidades de IoT Hub, consulte:
 
 * [Guía para desarrolladores de IoT Hub][lnk-devguide]
 * [Simular un dispositivo con Azure IoT Edge][lnk-iotedge]

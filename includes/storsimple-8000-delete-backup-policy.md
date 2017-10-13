@@ -1,18 +1,18 @@
 
 <!--author=alkohli last changed: 01/02/17-->
 
-#### <a name="toodelete-a-storsimple-backup-policy"></a>toodelete una directiva de copia de seguridad de StorSimple
+#### <a name="to-delete-a-storsimple-backup-policy"></a>Para eliminar una directiva de copia de seguridad de StorSimple
 
-1. Dispositivo de StorSimple tooyour y haga clic en **directiva de copia de seguridad**.
+1. Vaya al dispositivo StorSimple y haga clic en **Directiva de copia de seguridad**.
 
-2. Hola tabular listado de directivas de copia de seguridad, seleccione Directiva de Hola que desee toodelete. Haga clic en y en el menú contextual de hello, seleccione **eliminar**.
+2. En la lista tabular de directivas de copia de seguridad, seleccione y haga clic en la directiva que desea eliminar. Haga clic con el botón derecho y en el menú contextual, seleccione **Eliminar**.
 
-    ![Seleccione una directiva de copia de seguridad toodelete](./media/storsimple-8000-delete-backup-policy/deletebupol1.png)
+    ![Seleccionar una directiva de copia de seguridad para eliminarla](./media/storsimple-8000-delete-backup-policy/deletebupol1.png)
 
-3. Se le pedirá confirmación. Tenga en cuenta que al eliminar una directiva de copia de seguridad eliminará Hola todas las copias de seguridad asociadas. Haga clic en **Sí** toodelete.
+3. Se le pedirá confirmación. Tenga en cuenta que la eliminación de una directiva de copia de seguridad eliminará todas las copias de seguridad asociadas. Haga clic en **Sí** para eliminar.
 
     ![Confirmar eliminación](./media/storsimple-8000-delete-backup-policy/deletebupol2.png)
 
-lista de directivas de copia de seguridad de Hello será nueva lista de directivas de Hola de toodisplay actualizada.
+La lista de directivas de copia de seguridad se actualizará para mostrar la nueva lista de directivas.
 
 ![Lista actualizada de directivas de copia de seguridad](./media/storsimple-8000-delete-backup-policy/deletebupol5.png)

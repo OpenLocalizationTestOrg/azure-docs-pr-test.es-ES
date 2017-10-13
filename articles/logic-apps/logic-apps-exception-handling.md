@@ -1,5 +1,5 @@
 ---
-title: "aaaError & control de excepciones: las aplicaciones lógicas de Azure | Documentos de Microsoft"
+title: 'Control de errores y excepciones: Azure Logic Apps | Microsoft Docs'
 description: Patrones para el control de errores y excepciones en Azure Logic Apps
 services: logic-apps
 documentationcenter: .net,nodejs,java
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 326a252310c8dfb154e583f91c9421675e448d1f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9af2f71b3d288cc6f4e271d0915545d43a1249bc
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Control de errores y excepciones en Azure Logic Apps
 
-Aplicaciones lógicas de Azure proporciona completas herramientas y toohelp de patrones Asegúrese de que sus integraciones son sólido y flexible frente a errores. Cualquier arquitectura de integración supone Hola desafío de hacer que el tiempo de inactividad del identificador de tooappropriately seguro o problemas de sistemas dependientes. Control de errores de lógica aplicaciones facilita una experiencia de primera clase, lo que le otorga Hola herramientas necesita tooact en excepciones y errores en los flujos de trabajo.
+Azure Logic Apps proporciona completas herramientas y patrones para garantizar la solidez de sus integraciones y su resistencia frente a los errores. Cualquier arquitectura de integración presenta el reto de asegurarse de controlar correctamente el tiempo de inactividad o los problemas con sistemas dependientes. Logic Apps convierte el control de errores en una experiencia de primera clase al proporcionarle las herramientas que necesita para actuar ante las excepciones y los errores en los flujos de trabajo.
 
 ## <a name="retry-policies"></a>Directivas de reintentos
 
-Una directiva de reintentos es tipo más básico de Hola de excepciones y control de errores. Si una solicitud inicial agotó el tiempo o no se pudo (cualquier solicitud que da como resultado un 429 o una respuesta 5xx), esta directiva define si debería volver a intentar la acción de Hola. De forma predeterminada, todas las acciones se reintentan 4 veces adicionales durante intervalos de 20 segundos. Por tanto, si recibe la primera solicitud de hello un `500 Internal Server Error` respuesta, el motor de flujo de trabajo de Hola se detiene durante 20 segundos y los intentos de Hola solicitud de nuevo. Si después de todos los reintentos, respuesta de hello sigue siendo una excepción o error, continúa de flujo de trabajo de Hola y Hola de marcas de estado de la acción como `Failed`.
+Una directiva de reintentos es el tipo más básico de control de errores y excepciones. Si una solicitud inicial ha agotado el tiempo de espera o ha producido error (toda solicitud que tenga como resultado una respuesta 429 o 5xx), esta directiva define si se debe reintentar la acción. De forma predeterminada, todas las acciones se reintentan 4 veces adicionales durante intervalos de 20 segundos. Por lo tanto, si la primera solicitud recibe una respuesta `500 Internal Server Error`, el motor de flujo de trabajo se pausa durante 20 segundos y vuelve a intentar la solicitud. Si, después de todos los reintentos, la respuesta sigue siendo una excepción o un error, el flujo de trabajo continúa y marca el estado de la acción como `Failed`.
 
-Puede configurar directivas de reintento de hello **entradas** para una acción concreta. Por ejemplo, puede configurar una tootry de directiva de reintento hasta 4 veces en intervalos de 1 hora. Para ver detalles completos sobre las propiedades de entrada, consulte [Workflow Actions and Triggers][retryPolicyMSDN] (Acciones y desencadenadores de flujo de trabajo).
+Puede configurar directivas de reintentos en las **entradas** para una acción determinada. Por ejemplo, puede configurar una directiva de reintentos para que haga hasta 4 intentos en intervalos de 1 hora. Para ver detalles completos sobre las propiedades de entrada, consulte [Workflow Actions and Triggers][retryPolicyMSDN] (Acciones y desencadenadores de flujo de trabajo).
 
 ```json
 "retryPolicy" : {
@@ -38,7 +38,7 @@ Puede configurar directivas de reintento de hello **entradas** para una acción 
     }
 ```
 
-Si deseara su tooretry de acción HTTP 4 veces y espere 10 minutos entre cada intento, usaría Hola siguiente definición:
+Si desea que la acción HTTP se reintente 4 veces con intervalos de 10 minutos entre cada reintento, se usaría la siguiente definición:
 
 ```json
 "HTTP": 
@@ -57,11 +57,11 @@ Si deseara su tooretry de acción HTTP 4 veces y espere 10 minutos entre cada in
 }
 ```
 
-Para obtener más información sobre la sintaxis admitida, vea hello [sección Directiva de reintentos en desencadenadores y acciones de flujo de trabajo][retryPolicyMSDN].
+Para más información sobre la sintaxis admitida, consulte la [sección sobre la directiva de reintentos en Workflow Actions and Triggers][retryPolicyMSDN] (Acciones y desencadenadores de flujo de trabajo).
 
-## <a name="catch-failures-with-hello-runafter-property"></a>Detectar errores con hello RunAfter propiedad
+## <a name="catch-failures-with-the-runafter-property"></a>Detección de errores con la propiedad RunAfter
 
-Cada acción de aplicación lógica declara qué acciones deben finalizar antes de que empiece de acción de hello, como clasificación pasos hello en el flujo de trabajo. En la definición de la acción de hello, esta clasificación se denomina hello `runAfter` propiedad. Esta propiedad es un objeto que describe qué acciones y Estados de acción ejecutan la acción de Hola. De forma predeterminada, todas las acciones agregadas a través de hello diseñador la lógica de aplicación se establecen demasiado`runAfter` paso anterior de hello si hello paso anterior `Succeeded`. Sin embargo, puede personalizar esta acciones de toofire valor cuando las acciones anteriores tienen `Failed`, `Skipped`, o un conjunto posibles de estos valores. Si deseara tooadd un tooa elemento designado tema de Bus de servicio después de una acción específica `Insert_Row` se produce un error, podría utilizar Hola después `runAfter` configuración:
+Cada acción de aplicación lógica declara qué acciones deben finalizar antes de que se inicie la acción, algo parecido a ordenar los pasos del flujo de trabajo. En la definición de la acción, esta ordenación se conoce como la propiedad `runAfter`. Esta propiedad es un objeto que describe qué acciones y estados de acciones ejecutan la acción. De forma predeterminada, todas las acciones que se agregan mediante el Diseñador de aplicación lógica se establecen en `runAfter` respecto al paso anterior, si el paso anterior era `Succeeded`. Sin embargo, este valor se puede personalizar para que active acciones cuando las acciones anteriores sean `Failed`, `Skipped` o un posible conjunto de estos valores. Si desea agregar un elemento a un tema de Service Bus designado después de que una acción específica `Insert_Row` produzca un error, podría usar la siguiente configuración `runAfter`:
 
 ```json
 "Send_message": {
@@ -89,7 +89,7 @@ Cada acción de aplicación lógica declara qué acciones deben finalizar antes 
 }
 ```
 
-Hola aviso `runAfter` propiedad se establece toofire si hello `Insert_Row` acción es `Failed`. acción de hello toorun si es el estado de la acción de hello `Succeeded`, `Failed`, o `Skipped`, use esta sintaxis:
+Observe que la propiedad `runAfter` está establecida para desencadenarse si el estado de la acción `Insert_Row` es `Failed`. Para ejecutar la acción si el estado de la acción es `Succeeded`, `Failed` o `Skipped`, use esta sintaxis:
 
 ```json
 "runAfter": {
@@ -100,21 +100,21 @@ Hola aviso `runAfter` propiedad se establece toofire si hello `Insert_Row` acci�
 ```
 
 > [!TIP]
-> Las acciones que se ejecutan y completan correctamente después de que una acción anterior haya producido error se marcan como `Succeeded`. Este comportamiento significa que si se correctamente catch todos los errores en un flujo de trabajo, Hola ejecutarse está marcada como `Succeeded`.
+> Las acciones que se ejecutan y completan correctamente después de que una acción anterior haya producido error se marcan como `Succeeded`. Este comportamiento significa que, si detecta correctamente todos los errores de un flujo de trabajo, la propia ejecución se marca como `Succeeded`.
 
-## <a name="scopes-and-results-tooevaluate-actions"></a>Acciones de tooevaluate ámbitos y resultados
+## <a name="scopes-and-results-to-evaluate-actions"></a>Ámbitos y resultados para evaluar acciones
 
-Toohow similar puede ejecutar después de acciones individuales, también puede agrupar acciones entre sí dentro de un [ámbito](../logic-apps/logic-apps-loops-and-scopes.md), que actúan como una agrupación lógica de acciones. Los ámbitos son útiles para organizar las acciones de aplicación lógica y para realizar evaluaciones agregadas en estado de Hola de un ámbito. ámbito de Hello propia recibe un estado una vez han terminado todas las acciones en un ámbito. el estado del ámbito de Hola se determina con hello mismos criterios como una ejecución. Si Hola acción final en una bifurcación de la ejecución es `Failed` o `Aborted`, estado de hello es `Failed`.
+Del mismo modo que puede establecer la propiedad RunAfter para acciones individuales, también puede agrupar acciones dentro de un [ámbito](../logic-apps/logic-apps-loops-and-scopes.md), que actúa como agrupación lógica de acciones. Los ámbitos son útiles para organizar las acciones de aplicación lógica y para realizar evaluaciones agregadas sobre el estado de un ámbito. El ámbito en sí recibe un estado una vez que hayan terminado todas las acciones en un ámbito. El estado del ámbito se determina con los mismos criterios que una ejecución. Si la acción final en una rama de la ejecución es `Failed` o `Aborted`, el estado es `Failed`.
 
-toofire acciones específicas para los errores que se produjeron en el ámbito de hello, puede usar `runAfter` con un ámbito que está marcado como `Failed`. Si *cualquier* producirá un error en las acciones en el ámbito de hello, ejecutándose después de que se produce un error en un ámbito permite crear una sola acción toocatch errores.
+Para activar acciones específicas para los errores que se produjeran dentro del ámbito, puede usar `runAfter` con un ámbito que esté marcado como `Failed`. Si *cualquier* acción en el ámbito produce un error, la ejecución después de que un ámbito produzca un error permite crear una única acción para detectar errores.
 
-### <a name="getting-hello-context-of-failures-with-results"></a>Introducción al contexto de Hola de errores con resultados
+### <a name="getting-the-context-of-failures-with-results"></a>Obtención del contexto de errores con resultados
 
-Aunque es útil detectar errores de un ámbito, puede que le interese toohelp contexto que entender exactamente qué acciones de error, y los errores o los códigos de estado que se devolvieron. Hola `@result()` función de flujo de trabajo proporciona contexto sobre el resultado de hello de todas las acciones en un ámbito.
+Aunque la detección de errores desde un ámbito es útil, quizás también necesite el contexto como ayuda para comprender exactamente qué acciones han producido un error y los errores o códigos de estado que se hayan devuelto. La función del flujo de trabajo `@result()` proporciona contexto sobre el resultado de todas las acciones en un ámbito.
 
-`@result()`toma un único parámetro, el nombre de ámbito y devuelve una matriz de todos los resultados de acción de Hola desde dentro de ese ámbito. Estos objetos de acción incluyen hello mismo atributos como hello `@actions()` genera el objeto, incluidos la hora de inicio de la acción, hora de finalización de la acción, estado de la acción, entradas de la acción, identificador de correlación de acción y acción. contexto de toosend de todas las acciones que no se pudo dentro de un ámbito, puede emparejar fácilmente un `@result()` funcionando con un `runAfter`.
+`@result()` toma un único parámetro, un nombre de ámbito, y devuelve una matriz de todos los resultados de acción desde dentro de ese ámbito. Estos objetos de acción incluyen los mismos atributos que el objeto `@actions()`, como la hora de inicio de la acción, la hora de finalización de la acción, el estado de la acción, las entradas de acción, los id. de correlación de acción y la salidas de acción. Para enviar el contexto de las acciones que produjeron un error dentro de un ámbito, puede emparejar fácilmente una función `@result()` con una propiedad `runAfter`.
 
-tooexecute una acción *para cada* acción en un ámbito que `Failed`, matriz de Hola de filtro de resultados tooactions que han resultado erróneas, puede emparejar `@result()` con un  **[filtro matriz](../connectors/connectors-native-query.md)**  acción y un  **[ForEach](../logic-apps/logic-apps-loops-and-scopes.md)**  bucle. Puede tomar la matriz de resultados filtrado hello y realizar una acción para cada error mediante hello **ForEach** bucle. Este es un ejemplo, seguido por una explicación detallada, que envía una solicitud HTTP POST con el cuerpo de respuesta de Hola de todas las acciones que no se pudo ámbito hello `My_Scope`.
+Para ejecutar una acción *para cada una* de las acciones de un ámbito con el estado `Failed`, filtre la matriz de resultados para las acciones que produjeron un error; puede emparejar `@result()` con una acción **[Filtrar matriz](../connectors/connectors-native-query.md)** y un bucle **[ForEach](../logic-apps/logic-apps-loops-and-scopes.md)**. Puede tomar la matriz de resultados filtrada y realizar una acción para cada error mediante el bucle **ForEach** . En este ejemplo, seguido de una explicación detallada, se envía una solicitud HTTP POST con el cuerpo de respuesta de todas las acciones que produjeron un error dentro del ámbito `My_Scope`.
 
 ```json
 "Filter_array": {
@@ -155,22 +155,22 @@ tooexecute una acción *para cada* acción en un ámbito que `Failed`, matriz de
 }
 ```
 
-Este es un toodescribe un tutorial detallado, lo que sucede:
+Este es un tutorial detallado que describe lo que sucede:
 
-1. resultado de hello tooget de todas las acciones de `My_Scope`, hello **filtro matriz** filtros de acción `@result('My_Scope')`.
+1. Para obtener el resultado de todas las acciones dentro de `My_Scope`, la acción **Filtrar matriz** filtra `@result('My_Scope')`.
 
-2. Hola condición para **filtro matriz** es cualquier `@result()` elemento que tiene el estado igual demasiado`Failed`. Esta condición filtra la matriz de Hola a todos los resultados de acción de `My_Scope` tooan matriz solamente con resultados de la acción de error.
+2. La condición para **Filtrar matriz** es cualquier elemento `@result()` que tenga el estado `Failed`. Esta condición filtra la matriz con los resultados de todas las acciones de `My_Scope` a una matriz con solo los resultados de acción que hayan producido un error.
 
-3. Realizar una **For Each** acción en hello **filtra matriz** genera. En este paso se realiza una acción *para cada* acción resultante en error que se filtrara antes.
+3. Realización de una acción **For Each** en las salidas **Filtered Array**. En este paso se realiza una acción *para cada* acción resultante en error que se filtrara antes.
 
-    Si se produce un error en una sola acción en el ámbito de hello, Hola acciones en hello `foreach` ejecutar solo una vez. 
+    Si solo hay una acción en el ámbito que produjera error, las acciones en el elemento `foreach` solo se ejecutan una vez. 
     Muchas acciones con error causan una acción por cada error.
 
-4. Enviar una solicitud HTTP POST en hello `foreach` elemento cuerpo de respuesta, o `@item()['outputs']['body']`. Hola `@result()` forma Elem Hola igual como hello `@actions()` forma y se puede analizar Hola igual manera.
+4. Envío de una solicitud HTTP POST en el cuero de respuesta del elemento `foreach`, o `@item()['outputs']['body']`. La forma del elemento `@result()` es la misma que la forma de `@actions()`, y se puede analizar del mismo modo.
 
-5. Incluye dos encabezados personalizados con nombre de la acción error de hello `@item()['name']` y ejecución cliente Id. de seguimiento de error de hello `@item()['clientTrackingId']`.
+5. Incluya dos encabezados personalizados con el nombre de la acción con errores `@item()['name']` y el id. de seguimiento de cliente de la ejecución con errores `@item()['clientTrackingId']`.
 
-Como referencia, este es un ejemplo de una sola `@result()` elemento, que muestra hello `name`, `body`, y `clientTrackingId` propiedades que se analizan en el ejemplo anterior de Hola. Fuera de un elemento `foreach`, `@result()` devuelve una matriz de estos objetos.
+Como referencia, este es un ejemplo de un solo elemento `@result()`, que muestra las propiedades `name`, `body` y `clientTrackingId` que se analizan en el ejemplo anterior. Fuera de un elemento `foreach`, `@result()` devuelve una matriz de estos objetos.
 
 ```json
 {
@@ -202,18 +202,18 @@ Como referencia, este es un ejemplo de una sola `@result()` elemento, que muestr
 }
 ```
 
-patrones de control de excepciones diferentes tooperform, puede usar expresiones de Hola que se ha mostrado anteriormente. Puede elegir una única acción fuera de ámbito de Hola que acepta Hola toda filtrados matriz de errores de control de excepciones de tooexecute y quitar hello `foreach`. También puede incluir otras propiedades útiles de hello `@result()` respuesta se ha mostrado anteriormente.
+Para poner en práctica diferentes patrones de control de excepciones, puede usar las expresiones anteriores. Es posible que elija ejecutar una única acción de control de excepciones fuera del ámbito que acepte toda la matriz filtrada de errores y quite el elemento `foreach`. También puede incluir otras propiedades útiles de la respuesta `@result()` mostrada antes.
 
 ## <a name="azure-diagnostics-and-telemetry"></a>Diagnósticos de Azure y datos de telemetría
 
-Hello modelos anteriores son errores de manera estupenda toohandle y excepciones dentro de una ejecución, pero también puede identificar y responder tooerrors independiente del programa Hola a ejecutarse. 
-[Diagnósticos de Azure](../logic-apps/logic-apps-monitor-your-logic-apps.md) proporciona una manera sencilla de toosend todas las cuenta de almacenamiento de Azure de tooan de eventos (incluidos todos los Estados de ejecución y acción) de flujo de trabajo o un concentrador de eventos de Azure. tooevaluate ejecutar Estados, puede supervisar los registros de Hola y métricas o publicarlos en cualquier herramienta de supervisión que prefiera. Una opción posible es toostream todos los eventos de Hola a través del concentrador de eventos de Azure en [análisis de transmisiones](https://azure.microsoft.com/services/stream-analytics/). En el análisis de transmisiones, puede escribir las consultas actuales de las anomalías, medias o errores de hello registros de diagnóstico. Análisis de transmisiones puede generar fácilmente orígenes de datos de tooother como colas, temas, SQL, base de datos de Azure Cosmos y Power BI.
+Los patrones anteriores son una manera excelente de controlar errores y excepciones dentro de una ejecución, pero también puede identificar y responder a los errores con independencia de la ejecución en sí. 
+[Diagnósticos de Azure](../logic-apps/logic-apps-monitor-your-logic-apps.md) ofrece un método sencillo de enviar todos los eventos de flujo de trabajo (incluidos todos los estados de ejecución y acción) a una cuenta de almacenamiento de Azure o a un Centro de eventos de Azure. Para evaluar los estados de ejecución, puede supervisar los registros y las métricas, o publicarlos en la herramienta de supervisión que prefiera. Una posible opción es transmitir todos los eventos mediante el Centro de eventos de Azure a [Análisis de transmisiones](https://azure.microsoft.com/services/stream-analytics/). En Stream Analytics, puede escribir consultas en directo partiendo de anomalías, promedios o errores en los registros de diagnóstico. Con Stream Analytics es fácil enviar resultados a otros orígenes de datos, como colas, temas, SQL, Azure Cosmos DB y Power BI.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
 * [Vea cómo un cliente crea el control de errores con Azure Logic Apps](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
 * [Encuentre más escenarios y ejemplos de Logic Apps](../logic-apps/logic-apps-examples-and-scenarios.md)
-* [Obtenga información acerca de cómo toocreate automatizar las implementaciones para las aplicaciones lógicas](../logic-apps/logic-apps-create-deploy-template.md)
+* [Aprenda a crear implementaciones automatizadas para aplicaciones lógicas](../logic-apps/logic-apps-create-deploy-template.md)
 * [Creación e implementación de aplicaciones lógicas con Visual Studio](logic-apps-deploy-from-vs.md)
 
 <!-- References -->

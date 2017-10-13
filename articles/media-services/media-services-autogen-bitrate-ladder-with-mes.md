@@ -1,6 +1,6 @@
 ---
-title: "aaaUse Azure Media Encoder estándar tooauto-generar una escalera de velocidad de bits | Documentos de Microsoft"
-description: "Este tema se muestra cómo toouse medios codificador estándar (MES) tooauto-generar una escalera de velocidad de bits en función de la resolución de entrada de Hola y velocidad de bits. velocidad de bits y la resolución de entrada de hello nunca se puede superar. Por ejemplo, si la entrada de hello es 720p en 3 Mbps, salida will permanecen en el mejor 720p y se iniciará a velocidades inferiores a 3 Mbps."
+title: "Uso de Azure Media Encoder Standard para generar automáticamente una escalera de velocidad de bits | Microsoft Docs"
+description: "En este tema se muestra cómo usar Media Encoder Standard (MES) para generar automáticamente una escalera de velocidad de bits en función de la resolución de entrada y la velocidad de bits. La resolución de entrada y la velocidad de bits nunca se superarán. Por ejemplo, si la entrada es 720p a 3 Mbps, la salida permanecerá en 720p en el mejor de los casos y se iniciará a velocidades inferiores a 3 Mbps."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,40 +14,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 5437f54ac28c42ddd4f9d1986549d6da6261c5da
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b5616aa9f8b15ab576d914fbae89a56f64c27f4a
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-#  <a name="use-azure-media-encoder-standard-tooauto-generate-a-bitrate-ladder"></a>Usar Azure Media Encoder estándar tooauto-generar una escalera de velocidad de bits
+#  <a name="use-azure-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Uso de Azure Media Encoder Standard para generar automáticamente una escalera de velocidad de bits
 
 ## <a name="overview"></a>Información general
 
-Este tema se muestra cómo toouse medios codificador estándar (MES) tooauto-generar una escalera de velocidad de bits (pares de resolución de velocidad de bits) en función de la resolución de entrada de Hola y velocidad de bits. Hello valor preestablecido autogenerada nunca superará velocidad de bits y la resolución de Hola de entrada. Por ejemplo, si la entrada de hello es 720p en 3 Mbps, salida will permanecen en el mejor 720p y se iniciará a velocidades inferiores a 3 Mbps.
+En este tema se muestra cómo usar Media Encoder Standard (MES) para generar automáticamente una escalera de velocidad de bits (pares de velocidad de bits-resolución) en función de la velocidad de bits y la resolución de entrada. El valor preestablecido generado automáticamente nunca superará la velocidad de bits y la resolución de entrada. Por ejemplo, si la entrada es 720p a 3 Mbps, la salida permanecerá en 720p en el mejor de los casos y se iniciará a velocidades inferiores a 3 Mbps.
 
 ### <a name="encoding-for-streaming-only"></a>Codificación solo para streaming
 
-Si su intención es tooencode el origen de vídeo solo para la transmisión por secuencias, a continuación, se deben usar hello "Transmisión por secuencias adaptativa" preestablecido al crear una tarea de codificación. Cuando se usa hello **transmisión por secuencias adaptativa** predefinidos, codificador MES de hello inteligentemente limitar una escalera de velocidad de bits. Sin embargo, no será hello toocontrol capaz de codificación de los costes, ya que el servicio Hola determina cuántos toouse de capas y con qué resolución. Puede ver ejemplos de las capas de salida generados por MES como resultado de la codificación con hello **transmisión por secuencias adaptativa** preestablecido final Hola de este tema. Hola salida Asset contendrá archivos MP4 donde el audio y vídeo no se intercalan.
+Si su intención es codificar el vídeo de origen solo para streaming, deberá usar el valor preestablecido "Adaptive Streaming" al crear una tarea de codificación. Cuando se usa el valor preestablecido **Adaptive Streaming**, el codificador MES limitará inteligentemente una escalera de velocidad de bits. Sin embargo, no será capaz de controlar los costos de codificación, ya que el servicio determina cuántos niveles usar y con qué resolución. Puede ver ejemplos de los niveles de salida generados por MES como resultado de la codificación con el valor preestablecido **Adaptive Streaming** al final de este tema. El recurso de salida contendrá archivos MP4 en los que el audio y el vídeo no están intercalados.
 
 ### <a name="encoding-for-streaming-and-progressive-download"></a>Codificación para streaming y descarga progresiva
 
-Si su intención es tooencode el vídeo de origen para la transmisión por secuencias, así como archivos MP4 de tooproduce para la descarga progresiva, a continuación, se deben usar hello "Contenido adaptable varias velocidades de bits MP4" preestablecido al crear una tarea de codificación. Cuando se usa hello **contenido adaptativa MP4 de velocidad de bits múltiples** predefinidos, codificador MES de hello aplicará Hola misma lógica de codificación que anteriormente, pero ahora activo de salida de hello contendrá MP4 archivos donde audio y vídeo son intercalada. Puede usar uno de estos archivos MP4 (por ejemplo, hello versión más alta velocidad de bits) como un archivo de descarga progresiva.
+Si su intención es codificar el vídeo de origen para streaming, así como generar archivos MP4 para la descarga progresiva, deberá usar el valor preestablecido "Content Adaptive Multiple Bitrate MP4" al crear una tarea de codificación. Cuando se usa el valor preestablecido **Content Adaptive Multiple Bitrate MP4**, el codificador MES aplicará la misma lógica de codificación que la mostrada anteriormente, pero el recurso de salida contendrá los archivos MP4 en los que el audio y el vídeo están intercalados. Puede usar uno de estos archivos MP4 (por ejemplo, la versión de velocidad de bits más alta) como un archivo de descarga progresiva.
 
 ## <a id="encoding_with_dotnet"></a>Codificación con el SDK de .NET de Servicios multimedia
 
-Hola el ejemplo de código siguiente utiliza Hola de Media Services .NET SDK tooperform siguiente las tareas:
+En el ejemplo de código siguiente se usa el último SDK para .NET de Servicios multimedia para realizar las siguientes tareas:
 
 - Crear un trabajo de codificación.
-- Obtiene un Codificador multimedia codificador estándar toohello de referencia.
-- Agregar un trabajo de toohello tarea codificación y especificar hello toouse **transmisión por secuencias adaptativa** preestablecido. 
-- Crear un recurso de salida que contendrá asset Hola codificado.
-- Agregue un progreso del controlador de eventos toocheck Hola trabajo.
-- Enviar el trabajo de Hola.
+- Obtener una referencia al codificador Codificador multimedia estándar.
+- Agregue una tarea de codificación al trabajo y especifique que se utilice el valor preestablecido **Adaptive Streaming**. 
+- Crear un recurso de salida que contendrá el recurso codificado.
+- Agregar un controlador de eventos para comprobar el progreso del trabajo.
+- Envíe el trabajo.
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Creación y configuración de un proyecto de Visual Studio
 
-Configurar el entorno de desarrollo y rellenar el archivo app.config de hello con información de conexión, como se describe en [desarrollo de servicios multimedia con .NET](media-services-dotnet-how-to-use.md). 
+Configure el entorno de desarrollo y rellene el archivo app.config con la información de la conexión, como se describe en [Desarrollo de Media Services con .NET](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Ejemplo
 
@@ -61,7 +61,7 @@ Configurar el entorno de desarrollo y rellenar el archivo app.config de hello co
     {
         class Program
         {
-        // Read values from hello App.config file.
+        // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
         ConfigurationManager.AppSettings["AADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
@@ -80,7 +80,7 @@ Configurar el entorno de desarrollo y rellenar el archivo app.config de hello co
             // Get an uploaded asset.
             var asset = _context.Assets.FirstOrDefault();
 
-            // Encode and generate hello output using hello "Adaptive Streaming" preset.
+            // Encode and generate the output using the "Adaptive Streaming" preset.
             EncodeToAdaptiveBitrateMP4Set(asset);
 
             Console.ReadLine();
@@ -91,8 +91,8 @@ Configurar el entorno de desarrollo y rellenar el archivo app.config de hello co
             // Declare a new job.
             IJob job = _context.Jobs.Create("Media Encoder Standard Job");
 
-            // Get a media processor reference, and pass tooit hello name of hello 
-            // processor toouse for hello specific task.
+            // Get a media processor reference, and pass to it the name of the 
+            // processor to use for the specific task.
             IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
             // Create a task
@@ -101,11 +101,11 @@ Configurar el entorno de desarrollo y rellenar el archivo app.config de hello co
             "Adaptive Streaming",
             TaskOptions.None);
 
-            // Specify hello input asset toobe encoded.
+            // Specify the input asset to be encoded.
             task.InputAssets.Add(asset);
-            // Add an output asset toocontain hello results of hello job. 
+            // Add an output asset to contain the results of the job. 
             // This output is specified as AssetCreationOptions.None, which 
-            // means hello output asset is not encrypted. 
+            // means the output asset is not encrypted. 
             task.OutputAssets.AddNew("Output asset",
             AssetCreationOptions.None);
 
@@ -159,7 +159,7 @@ Configurar el entorno de desarrollo y rellenar el archivo app.config de hello co
 
 ## <a id="output"></a>Salida
 
-En esta sección se muestra tres ejemplos de niveles de salida generados por MES como resultado de la codificación con hello **transmisión por secuencias adaptativa** preestablecido. 
+Esta sección muestra tres niveles de salida generados por MES como resultado de la codificación con el valor preestablecido **Adaptive Streaming**. 
 
 ### <a name="example-1"></a>Ejemplo 1
 Un origen con un alto de "1080" y una tasa de fotogramas de "29.970" genera 6 niveles de vídeo:

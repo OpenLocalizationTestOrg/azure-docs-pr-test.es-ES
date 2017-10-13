@@ -1,5 +1,5 @@
 ---
-title: "referencia de aaaQuick para comandos de trabajo de importación de la herramienta de importación y exportación de Azure | Documentos de Microsoft"
+title: "Referencia rápida de los comandos de trabajos de importación de la herramienta Azure Import/Export | Microsoft Docs"
 description: "Referencia sobre los comandos de la herramienta de Azure Import/Export para comandos de trabajos de importación usados con frecuencia."
 author: muralikk
 manager: syadav
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.openlocfilehash: 35e46f24f764a5098ca465adb51badcab2d13e9d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d51ae35ead0e7d8289de663e5b7b48d28271e810
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="quick-reference-for-frequently-used-commands-for-import-jobs"></a>Referencia rápida de comandos usados con frecuencia para trabajos de importación
 
@@ -48,7 +48,7 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2 /AbortSession
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3 /ResumeSession
 ```
 
-## <a name="add-drives-toolatest-session"></a>Agregar unidades toolatest sesión
+## <a name="add-drives-to-latest-session"></a>Adición de unidades a la última sesión
 
 ```
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3 /AdditionalDriveSet:driveset-2.csv
@@ -56,4 +56,4 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3 /AdditionalDriveS
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* [Unidades de disco duro de tooprepare de flujo de trabajo y ejemplo de un trabajo de importación](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md)
+* [Flujo de trabajo de ejemplo para preparar las unidades de disco duro para un trabajo de importación](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow.md)

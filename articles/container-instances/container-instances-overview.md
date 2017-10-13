@@ -1,5 +1,5 @@
 ---
-title: "información general de instancias de contenedor aaaAzure | Documentos de Azure"
+title: "Introducción a Azure Container Instances | Azure Docs"
 description: "Descripción de Azure Container Instances"
 services: container-instances
 documentationcenter: 
@@ -17,21 +17,21 @@ ms.workload: na
 ms.date: 07/20/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: c0662ede1260b15d9841bfc2c3c4cec4c30338d6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 6e614f1120b3dc54871b393ac0a2703c21b30ae8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-container-instances"></a>Azure Container Instances
 
-Los contenedores están convirtiéndose en toopackage de manera Hola preferido, implementar y administrar aplicaciones en la nube. Instancias de contenedor de Azure ofrece hello más rápido y toorun de forma más sencilla un contenedor en Azure, sin necesidad de tooprovision todas las máquinas virtuales y sin necesidad de tooadopt un servicio de nivel superior. 
+Los contenedores están convirtiéndose rápidamente en la manera preferida de empaquetar, implementar y administrar aplicaciones en la nube. Azure Container Instances ofrece la forma más rápida y sencilla de ejecutar un contenedor en Azure, sin tener que aprovisionar ninguna máquina virtual y sin necesidad de adoptar un servicio de nivel superior.
 
-Azure Container Instances es una excelente solución para cualquier escenario que pueda funcionar en contenedores aislados, incluidas las aplicaciones simples, la automatización de tareas y los trabajos de compilación. Para escenarios donde necesita completos orquestación de contenedor, incluida la detección de servicios en varios contenedores, el escalado automático y las actualizaciones de aplicaciones coordinadas, se recomienda hello [servicio de contenedor de Azure](https://docs.microsoft.com/azure/container-service/).
+Azure Container Instances es una excelente solución para cualquier escenario que pueda funcionar en contenedores aislados, incluidas las aplicaciones simples, la automatización de tareas y los trabajos de compilación. En aquellos escenarios donde se necesita una orquestación completa de contenedores, incluida la detección de servicios en varios contenedores, el escalado automático y las actualizaciones de aplicaciones coordinadas, se recomienda [Azure Container Service](https://docs.microsoft.com/azure/container-service/).
 
 ## <a name="fast-startup-times"></a>Tiempos de inicio rápido
 
-Los contenedores ofrecen importantes ventajas de inicio sobre las máquinas virtuales. Con instancias de contenedor de Azure, puede iniciar un contenedor de Azure en segundos sin Hola necesidad tooprovision y administrar las máquinas virtuales.
+Los contenedores ofrecen importantes ventajas de inicio sobre las máquinas virtuales. Con Azure Container Instances, puede iniciar un contenedor en Azure en segundos sin que sea necesario aprovisionar y administrar máquinas virtuales.
 
 ## <a name="hypervisor-level-security"></a>Seguridad de nivel de hipervisor
 
@@ -39,24 +39,24 @@ Históricamente, los contenedores han ofrecido aislamiento a la dependencia entr
 
 ## <a name="custom-sizes"></a>Tamaños personalizados
 
-Los contenedores son normalmente optimizado toorun solo una única aplicación, sino necesidades exactas de Hola de esas aplicaciones pueden diferir considerablemente. Con Azure Container Instances, puede solicitar exactamente lo que necesita en relación a la memoria y núcleos de CPU. Se paga según lo que se solicita, facturado por hello segundo lugar, para que se pueden optimizar con precisión los gastos según sus necesidades.
+Los contenedores normalmente están optimizados para ejecutar una sola aplicación, pero las necesidades exactas de esas aplicaciones pueden diferir considerablemente. Con Azure Container Instances, puede solicitar exactamente lo que necesita en relación a la memoria y núcleos de CPU. El usuario paga según lo que solicita, facturado por segundo, para que pueda optimizar con precisión los gastos según sus necesidades.
 
 ## <a name="public-ip-connectivity"></a>Conectividad IP pública
 
-Con instancias de contenedor de Azure, puede exponer los contenedores directamente toohello internet con una dirección IP pública. Hola futuras, se se expanda nuestra red capacidades tooinclude la integración con redes virtuales, carga equilibradores y otras partes principales de hello Azure infraestructura de red.
+Con Azure Container Instances, puede exponer los contenedores directamente a Internet con una dirección IP pública. En el futuro, expandiremos nuestras funcionalidades de red para incluir la integración con redes virtuales, equilibradores de carga y otras partes principales de la infraestructura de red de Azure.
 
 ## <a name="persistent-storage"></a>Almacenamiento persistente
 
-tooretrieve y conservar el estado con instancias de contenedor de Azure, le ofrecemos recursos compartidos de archivos de montaje directo de Azure.
+Para recuperar y conservar el estado con Azure Container Instances, ofrecemos el montaje directo de los recursos compartidos de archivos de Azure.
 
 ## <a name="linux-and-windows-containers"></a>Contenedores de Linux y Windows
 
-Con instancias de contenedor de Azure, puede programar ambas ventanas y contenedores de Linux con Hola misma API. Simplemente indican el tipo de sistema operativo base de Hola y todo lo demás es idéntica.
+Con Azure Container Instances, puede programar los contenedores de Windows y Linux con la misma API. Simplemente hay que indicar el tipo de sistema operativo base y todo lo demás es idéntico.
 
 ## <a name="co-scheduled-groups"></a>Grupos con programación compartida
 
-Azure Container Instances admite la programación de grupos con varios contenedores que comparten una máquina host, la red local, el almacenamiento y el ciclo de vida. Esto permite toocombine la aplicación principal con otras personas que actúa en una función auxiliar, como el registro.
+Azure Container Instances admite la programación de grupos con varios contenedores que comparten una máquina host, la red local, el almacenamiento y el ciclo de vida. Esto le permite combinar la aplicación principal con otras que actúan en una función auxiliar, como el registro.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Intente implementar un tooAzure de contenedor con un único comando con nuestro [Guía de inicio rápido](container-instances-quickstart.md).
+Pruebe a implementar un contenedor en Azure con un único comando mediante nuestra [Guía de inicio rápido](container-instances-quickstart.md).

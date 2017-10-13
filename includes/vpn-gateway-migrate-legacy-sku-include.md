@@ -1,16 +1,16 @@
 > [!NOTE]
-> * puerta de enlace VPN de Hello dirección IP pública cambiará al migrar desde una antigua tooa SKU SKU nuevo.
-> * No se pueden migrar clásico toohello de puertas de enlace VPN SKU nuevo. VPN puertas de enlace puede solo uso clásico Hola heredadas SKU (antiguas).
+> * La dirección IP pública de VPN Gateway cambiará al migrar de una SKU antigua a una nueva.
+> * No se pueden migrar puertas de enlace de VPN clásicas a las nuevas SKU. Las puertas de enlace de VPN clásicas solo pueden utilizar las SKU heredadas (antiguas).
 > 
 
-No se puede cambiar el tamaño de la VPN de Azure y puertas de enlace entre Hola SKU antiguas Hola nuevas familias de SKU. Si dispone de puertas de enlace VPN en el modelo de implementación del Administrador de recursos de Hola que están usando la versión anterior de Hola de hello SKU, puede migrar toohello SKU nuevo. toomigrate, que elimina la puerta de enlace VPN existente hello para la red virtual y luego cree uno nuevo.
+No se puede cambiar el tamaño de las puertas de enlace de Azure VPN Gateway entre las familias de SKU antiguas y las nuevas. Si tiene puertas de enlace VPN Gateway en el modelo de implementación de Resource Manager que utilizan la versión antigua de la SKU, puede migrar a las SKU nuevas. Para ello, elimine la puerta de enlace VPN Gateway existente en la red virtual y después cree una nueva.
 
 Flujo de trabajo de la migración:
 
-1. Quitar ninguna puerta de enlace de red virtual de toohello de conexiones.
-2. Elimine la puerta de enlace VPN antiguo Hola.
-3. Crear nueva la puerta de enlace VPN Hola.
-4. Actualice los dispositivos VPN local con hello nueva dirección IP de VPN puerta de enlace (para conexiones de sitio a sitio).
-5. Actualizar el valor de dirección IP de puerta de enlace de Hola para las puertas de enlace de red local de red virtual a red virtual que se conectará la puerta de enlace de toothis.
-6. Descargar nuevos paquetes de configuración de VPN de cliente para clientes de P2S conexión toohello de red virtual a través de esta puerta de enlace VPN.
-7. Vuelva a crear la puerta de enlace de red virtual de hello conexiones toohello.
+1. Elimine las conexiones a la puerta de enlace de la red virtual.
+2. Elimine la puerta de enlace VPN Gateway antigua.
+3. Cree la puerta de enlace VPN Gateway nueva.
+4. Actualice los dispositivos VPN locales con la nueva dirección IP de la puerta de enlace VPN Gateway (para las conexiones de sitio a sitio).
+5. Actualice el valor de la dirección IP de puerta de enlace para las puertas de enlace de red local de red virtual a red virtual que se conectarán a esta puerta de enlace.
+6. Descargue los nuevos paquetes de configuración de VPN de cliente para los clientes de P2S que se vayan a conectar a la red virtual a través de esta puerta de enlace VPN Gateway.
+7. Vuelva a crear las conexiones a la puerta de enlace de la red virtual.

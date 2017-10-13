@@ -1,6 +1,6 @@
 ---
-title: aaaMount almacenamiento de archivos de Azure desde una VM de Windows Azure | Documentos de Microsoft
-description: "Almacene el archivo en la nube de hello con almacenamiento de archivos de Azure y montar el recurso compartido de archivos de nube desde una máquina virtual (VM) de Azure."
+title: Montaje de Azure File Storage en una VM de Windows de Azure | Microsoft Docs
+description: "Almacene archivos en la nube con Azure File Storage y monte un recurso compartido de archivos de nube en una máquina virtual (VM) de Azure."
 documentationcenter: 
 author: cynthn
 manager: timlt
@@ -13,62 +13,62 @@ ms.devlang:
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 965f1c1b3f0d07fec6d86f9312a05e02e8ce7fe0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6ffb2d2da1e2439df6f5da543411e3c2c68d3435
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="use-azure-file-shares-with-windows-vms"></a>Uso de recursos compartidos de archivos de Azure con máquinas virtuales de Windows 
 
-Puede usar recursos compartidos de archivos de Azure como los archivos de toostore y acceso de una forma de la máquina virtual. Por ejemplo, puede almacenar una secuencia de comandos o un archivo de configuración de aplicación que desea que su tooshare de máquinas virtuales. En este tema, le mostramos cómo toocreate y montaje un Azure recurso compartido de archivos y cómo tooupload y descarga los archivos.
+Puede usar recursos compartidos de archivos de Azure como una forma de almacenar archivos y acceder a ellos desde la VM. Por ejemplo, puede almacenar un script o un archivo de configuración de la aplicación que quiera que todas las máquinas virtuales compartan. En este tema, se muestra cómo crear un recurso compartido de archivos de Azure y cómo cargar y descargar archivos.
 
-## <a name="connect-tooa-file-share-from-a-vm"></a>Conectar el recurso compartido de archivos de tooa de una máquina virtual
+## <a name="connect-to-a-file-share-from-a-vm"></a>Conexión a un recurso compartido desde una VM
 
-En esta sección se da por supuesto que ya tiene un archivo de recurso compartido que desee tooconnect a. Si necesita toocreate uno, consulte [crear un recurso compartido de archivos](#create-a-file-share) más adelante en este tema.
+En esta sección se da por supuesto que ya tiene un recurso compartido de archivos al que quiere conectarse. Si tiene que crear uno, vea [Creación de un recurso compartido de archivos](#create-a-file-share) más adelante en este capítulo.
 
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
-2. En el menú de la izquierda hello, haga clic en **cuentas de almacenamiento**.
+1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
+2. En el menú de la izquierda, haga clic en **Cuentas de almacenamiento**.
 3. Elija la cuenta de almacenamiento.
-4. Hola **Introducción** página, en **servicios**, seleccione **archivos**.
+4. En la página **Información general**, en **Servicios**, seleccione **Archivos**.
 5. Seleccione un recurso compartido de archivos.
-6. Haga clic en **conectar** tooopen una página que muestra la sintaxis de línea de comandos de hello para el montaje Hola el recurso compartido de archivos de Windows o Linux.
-7. Resalte Hola sintaxis de comando de Hola y péguelo en el Bloc de notas o en otro lugar donde se puede acceder fácilmente a ella. 
-8. Editar líder en hello sintaxis tooremove Hola ** > ** y reemplace *[letra de unidad]* con una letra de unidad de hello (por ejemplo, **Y:**) que desee que el recurso compartido de archivos de toomount Hola.
-8. Conéctese tooyour VM y abra un símbolo del sistema.
-9. Pegar en hello editado la sintaxis de la conexión y presione **ENTRAR**.
-10. Cuando se ha creado la conexión de hello, obtendrá un mensaje de bienvenida de **Hola comando se completó correctamente.**
-11. Compruebe la conexión de hello escribiendo en hello letra tooswitch toothat la unidad y, a continuación, escriba **dir** toosee contenido de Hola Hola recurso compartido de archivos.
+6. Haga clic en **Conectar** para abrir una página que muestra la sintaxis de línea de comandos para el montaje de recursos compartidos de archivos de Windows o Linux.
+7. Resalte la sintaxis del comando y péguela en el Bloc de notas o en otro lugar donde pueda acceder fácilmente a ella. 
+8. Modifique la sintaxis para quitar el **> ** inicial y reemplazar *[letra de unidad]* por la letra de unidad (por ejemplo, **Y:**) donde quiere montar el recurso compartido de archivos.
+8. Conéctese a la máquina virtual y abra un símbolo del sistema.
+9. Pegue la sintaxis de conexión modificada y presione **Entrar**.
+10. Una vez creada la conexión, se recibe el mensaje **El comando se ha completado correctamente.**
+11. Compruebe la conexión escribiendo la letra de unidad para cambiar a esa unidad de disco y escriba **dir** para ver el contenido del recurso compartido de archivos.
 
 
 
 ## <a name="create-a-file-share"></a>Creación de un recurso compartido de archivos 
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
-2. En el menú de la izquierda hello, haga clic en **cuentas de almacenamiento**.
+1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
+2. En el menú de la izquierda, haga clic en **Cuentas de almacenamiento**.
 3. Elija la cuenta de almacenamiento.
-4. Hola **Introducción** página, en **servicios**, seleccione **archivos**.
-5. En la página de servicio de archivos de hello, haga clic en **+ recurso compartido de archivos** toocreate compartir el primer archivo. \
-6. Rellene el nombre de recurso compartido de archivo Hola. Pueden usarse minúsculas, números y guiones individuales en los nombres de recurso compartido de archivos. Hola nombre no puede empezar con un guión y no se puede usar varios guiones consecutivos. 
-7. Puede estar relleno en un límite de tamaño archivo hello, too5120 GB.
-8. Haga clic en **Aceptar** recurso compartido de archivos de toodeploy Hola.
+4. En la página **Información general**, en **Servicios**, seleccione **Archivos**.
+5. En la página de servicio de archivos, haga clic en **+ recurso compartido de archivos** para crear su primer recurso compartido de archivos.\
+6. Rellene el nombre del recurso compartido de archivos. Pueden usarse minúsculas, números y guiones individuales en los nombres de recurso compartido de archivos. El nombre no puede empezar por un guion y no se pueden usar varios guiones consecutivos. 
+7. Rellene un límite para el tamaño máximo del archivo, hasta 5120 GB.
+8. Haga clic en **Aceptar** para implementar el recurso compartido de archivos.
    
 ## <a name="upload-files"></a>Carga de archivos
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
-2. En el menú de la izquierda hello, haga clic en **cuentas de almacenamiento**.
+1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
+2. En el menú de la izquierda, haga clic en **Cuentas de almacenamiento**.
 3. Elija la cuenta de almacenamiento.
-4. Hola **Introducción** página, en **servicios**, seleccione **archivos**.
+4. En la página **Información general**, en **Servicios**, seleccione **Archivos**.
 5. Seleccione un recurso compartido de archivos.
-6. Haga clic en **cargar** tooopen hello **cargar archivos** página.
-7. Haga clic en toobrowse de icono de carpeta de hello su sistema de archivos local para un tooupload de archivo.   
-8. Haga clic en **cargar** recurso compartido de archivos de tooupload Hola archivo toohello.
+6. Haga clic en **Cargar** para abrir la página **Cargar archivos**.
+7. Haga clic en el icono de carpeta para buscar el archivo que quiere cargar en el sistema de archivos local.   
+8. Haga clic en **Cargar** para cargar el archivo en el recurso compartido de archivos.
 
 ## <a name="download-files"></a>Descarga de archivos
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
-2. En el menú de la izquierda hello, haga clic en **cuentas de almacenamiento**.
+1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
+2. En el menú de la izquierda, haga clic en **Cuentas de almacenamiento**.
 3. Elija la cuenta de almacenamiento.
-4. Hola **Introducción** página, en **servicios**, seleccione **archivos**.
+4. En la página **Información general**, en **Servicios**, seleccione **Archivos**.
 5. Seleccione un recurso compartido de archivos.
-6. Haga doble clic en el archivo hello y elija **descargar** toodownload se tooyour de equipo local.
+6. Haga clic con el botón derecho en un archivo y elija **Descargar** para descargarlo en una máquina local.
    
 
 ## <a name="next-steps"></a>Pasos siguientes

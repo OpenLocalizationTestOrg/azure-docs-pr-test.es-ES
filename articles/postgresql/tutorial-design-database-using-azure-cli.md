@@ -1,6 +1,6 @@
 ---
 title: "Diseño de la primera base de datos de Azure Database for PostgreSQL con la CLI de Azure | Microsoft Docs"
-description: "Este tutorial muestra cómo tooDesign Azure primera base de datos de PostgreSQL con CLI de Azure."
+description: "En este tutorial se muestra cómo diseñar la primera base de datos de Azure Database for PostgreSQL con la CLI de Azure."
 services: postgresql
 author: SaloniSonpal
 ms.author: salonis
@@ -11,75 +11,75 @@ ms.custom: mvc
 ms.devlang: azure-cli
 ms.topic: tutorial
 ms.date: 06/13/2017
-ms.openlocfilehash: 7914925c090e0b6f3e7c8a999eedb0b2baf83d7d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: cf536fce8925f9173b541b845af25a8d8c38eabd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="design-your-first-azure-database-for-postgresql-using-azure-cli"></a>Diseño de la primera base de datos de Azure Database for PostgreSQL con la CLI de Azure 
-En este tutorial, usará Azure CLI (interfaz de línea de comandos) y otra utilidades toolearn cómo para:
+En este tutorial, usa la CLI (interfaz de la línea de comandos) de Azure y otras utilidades para aprender a hacer lo siguiente:
 > [!div class="checklist"]
-> * Creación de una instancia de Azure Database for PostgreSQL
-> * Configurar firewall de servidor hello
-> * Use [ **psql** ](https://www.postgresql.org/docs/9.6/static/app-psql.html) utilidad toocreate una base de datos
+> * Creación de una base de datos de Azure Database for PostgreSQL
+> * Configuración del firewall del servidor
+> * Uso de la utilidad [**psql**](https://www.postgresql.org/docs/9.6/static/app-psql.html) para crear una base de datos
 > * Carga de datos de ejemplo
 > * Datos de consulta
 > * Actualización de datos
 > * Restauración de datos
 
-Puede usar hello Shell en la nube de Azure en el Explorador de hello, o [instalar Azure CLI 2.0]( /cli/azure/install-azure-cli) en sus propios bloques de código de equipo toorun hello en este tutorial.
+Puede usar Azure Cloud Shell en el explorador, o bien [instalar la CLI de Azure 2.0]( /cli/azure/install-azure-cli) en su propio equipo para ejecutar los bloques de código de este tutorial.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Si elige tooinstall y usar hello CLI localmente, en este tema requiere que se ejecuten hello Azure CLI versión 2.0 o posterior. Ejecutar `az --version` toofind versión de Hola. Si necesita tooinstall o una actualización, consulte [instalar Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Si decide instalar y usar la CLI localmente, para este tema es preciso que ejecute la CLI de Azure versión 2.0 o posterior. Ejecute `az --version` para encontrar la versión. Si necesita instalarla o actualizarla, consulte [Instalación de la CLI de Azure 2.0]( /cli/azure/install-azure-cli). 
 
-Si tiene varias suscripciones, elija Hola de suscripción adecuado en el que recurso de hello existe o se factura para. Seleccione un identificador de suscripción específico en su cuenta mediante el comando [az account set](/cli/azure/account#set).
+Si tiene varias suscripciones, elija la adecuada donde se encuentre el recurso o para la cual se facture. Seleccione un identificador de suscripción específico en su cuenta mediante el comando [az account set](/cli/azure/account#set).
 ```azurecli-interactive
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
 ## <a name="create-a-resource-group"></a>Crear un grupo de recursos
-Crear un [grupo de recursos de Azure](../azure-resource-manager/resource-group-overview.md) con hello [crear grupo az](/cli/azure/group#create) comando. Un grupo de recursos es un contenedor lógico en el que se implementan y se administran recursos de Azure como un grupo. Hello en el ejemplo siguiente se crea un grupo de recursos denominado `myresourcegroup` en hello `westus` ubicación.
+Cree un [grupo de recursos de Azure](../azure-resource-manager/resource-group-overview.md) con el comando [az group create](/cli/azure/group#create). Un grupo de recursos es un contenedor lógico en el que se implementan y se administran recursos de Azure como un grupo. En el ejemplo siguiente, se crea un grupo de recursos denominado `myresourcegroup` en la ubicación `westus`.
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
 ```
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Creación de un servidor de Azure Database for PostgreSQL
-Crear un [base de datos de Azure para PostgreSQL server](overview.md) con hello [az postgres servidor crear](/cli/azure/postgres/server#create) comando. Un servidor contiene un conjunto de bases de datos administradas como un grupo. 
+Cree un [servidor de Azure Database for PostgreSQL](overview.md) con el comando [az postgres server create](/cli/azure/postgres/server#create). Un servidor contiene un conjunto de bases de datos administradas como un grupo. 
 
-Hello en el ejemplo siguiente se crea un servidor denominado `mypgserver-20170401` en el grupo de recursos `myresourcegroup` con inicio de sesión de administrador de servidor `mylogin`. Nombre de un servidor asigna nombre tooDNS y, por tanto, es necesario toobe globalmente único en Azure. Hola sustituto `<server_admin_password>` con su propio valor.
+En el ejemplo siguiente se crea un servidor denominado `mypgserver-20170401` en el grupo de recursos `myresourcegroup` con el inicio de sesión de administrador de servidor `mylogin`. El nombre de un servidor se asigna al nombre DNS y, por tanto, debe ser único a nivel global en Azure. Sustituya `<server_admin_password>` por su propio valor.
 ```azurecli-interactive
 az postgres server create --resource-group myresourcegroup --name mypgserver-20170401 --location westus --admin-user mylogin --admin-password <server_admin_password> --performance-tier Basic --compute-units 50 --version 9.6
 ```
 
 > [!IMPORTANT]
-> inicio de sesión de administrador de servidor de Hola y la contraseña que especifique aquí son necesario toolog en toohello server y sus bases de datos más adelante en esta guía de inicio rápido. Recuerde o grabe esta información para su uso posterior.
+> Se requiere el inicio de sesión y la contraseña de administrador de servidor que especifique aquí para iniciar sesión en el servidor y a sus bases de datos más adelante en esta guía de inicio rápido. Recuerde o grabe esta información para su uso posterior.
 
-De forma predeterminada, la base de datos de **postgres** se crea en el servidor. Hola [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html) base de datos es una base de datos predeterminada destinado a los usuarios, utilidades y aplicaciones de otros fabricantes. 
+De forma predeterminada, la base de datos de **postgres** se crea en el servidor. La base de datos [postgres](https://www.postgresql.org/docs/9.6/static/app-initdb.html) es una base de datos predeterminada pensada para que la usen los usuarios, las utilidades y aplicaciones de otros fabricantes. 
 
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Configuración de una regla de firewall de nivel de servidor
 
-Crear una regla de firewall de nivel de servidor de Azure PostgreSQL con hello [crear az postgres servidor regla de firewall](/cli/azure/postgres/server/firewall-rule#create) comando. Una regla de firewall de nivel de servidor permite que una aplicación externa, como [psql](https://www.postgresql.org/docs/9.2/static/app-psql.html) o [PgAdmin](https://www.pgadmin.org/) tooconnect tooyour server a través de firewall de servicio de hello Azure PostgreSQL. 
+Cree una regla de firewall de nivel de servidor de Azure PostgreSQL con el comando [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule#create). Una regla de firewall de nivel de servidor permite que una aplicación externa, como [psql](https://www.postgresql.org/docs/9.2/static/app-psql.html) o [PgAdmin](https://www.pgadmin.org/), se conecte al servidor a través del firewall del servicio Azure PostgreSQL. 
 
-Puede establecer una regla de firewall que abarca un intervalo IP toobe tooconnect capaz de la red. Hello siguiente ejemplo se utiliza [crear az postgres servidor regla de firewall](/cli/azure/postgres/server/firewall-rule#create) toocreate una regla de firewall `AllowAllIps` para una dirección IP, intervalo. tooopen todas las direcciones IP, utilice 0.0.0.0 como Hola a partir de dirección IP y 255.255.255.255 como Hola dirección final.
+Puede establecer una regla de firewall que abarque un intervalo de IP para poder conectarse desde la red. En el ejemplo siguiente se usa [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule#create) para crear una regla de firewall `AllowAllIps` para un intervalo de direcciones IP. Para abrir todas las direcciones IP, utilice 0.0.0.0 como la dirección IP inicial y 255.255.255.255 como la dirección final.
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myresourcegroup --server mypgserver-20170401 --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
 ```
 
 > [!NOTE]
-> El servidor Azure PostgreSQL se comunica a través de puerto 5432. Al conectarse desde una red corporativa, es posible que el firewall de la red no permita el tráfico saliente a través del puerto 5432. Tiene el departamento de TI abrir puerto 5432 tooconnect tooyour base de datos de Azure SQL server.
+> El servidor Azure PostgreSQL se comunica a través de puerto 5432. Al conectarse desde una red corporativa, es posible que el firewall de la red no permita el tráfico saliente a través del puerto 5432. Haga que el departamento de TI abra el puerto 5432 para conectarse al servidor de Azure SQL Database.
 >
 
-## <a name="get-hello-connection-information"></a>Obtener información de conexión de Hola
+## <a name="get-the-connection-information"></a>Obtención de la información de conexión
 
-tooconnect tooyour server, necesita credenciales de acceso y la información de host de tooprovide.
+Para conectarse al servidor, debe proporcionar las credenciales de acceso y la información del host.
 ```azurecli-interactive
 az postgres server show --resource-group myresourcegroup --name mypgserver-20170401
 ```
 
-resultado de Hello es en formato JSON. Tome nota de hello **Iniciodesesióndeadministrador** y **fullyQualifiedDomainName**.
+El resultado está en formato JSON. Tome nota de los valores de **administratorLogin** y **fullyQualifiedDomainName**.
 ```json
 {
   "administratorLogin": "mylogin",
@@ -104,32 +104,32 @@ resultado de Hello es en formato JSON. Tome nota de hello **Iniciodesesióndeadm
 }
 ```
 
-## <a name="connect-tooazure-database-for-postgresql-database-using-psql"></a>Conectar tooAzure base de datos para la base de datos de PostgreSQL mediante psql
-Si el equipo cliente tenga PostgreSQL instalado, puede usar una instancia local de [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html), o el servidor de hello consola en la nube de Azure tooconnect tooan PostgreSQL de Azure. Vamos a usar ahora hello psql utilidad de línea de comandos tooconnect toohello base de datos de Azure para servidor de PostgreSQL.
+## <a name="connect-to-azure-database-for-postgresql-database-using-psql"></a>Conexión a la base de datos de Azure Database for PostgreSQL mediante psql
+Si el equipo cliente tiene PostgreSQL instalado, puede usar una instancia local de [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) o usar la consola de Azure Cloud para conectarse a un servidor Azure PostgreSQL. Ahora vamos a usar la utilidad de línea de comandos psql para conectarnos al servidor de Azure Database for PostgreSQL.
 
-1. Ejecute hello después psql comandos tooconnect tooan base de datos de Azure para servidor de PostgreSQL
+1. Ejecute el comando psql siguiente para conectarse a un servidor de Azure Database for PostgreSQL
 ```azurecli-interactive
 psql --host=<servername> --port=<port> --username=<user@servername> --dbname=<dbname>
 ```
 
-  Por ejemplo, hello siguiente comando conecta a base de datos de toohello predeterminada denominada **postgres** en el servidor de PostgreSQL **mypgserver 20170401.postgres.database.azure.com** utilizando las credenciales de acceso. Escriba hello `<server_admin_password>` elegido cuando se le solicite una contraseña.
+  Por ejemplo, el siguiente comando se conecta a la base de datos predeterminada denominada **postgres** en el servidor PostgreSQL **mypgserver-20170401.postgres.database.azure.com** con las credenciales de acceso. Escriba el valor de `<server_admin_password>` que eligió cuando se le solicitó una contraseña.
   
   ```azurecli-interactive
 psql --host=mypgserver-20170401.postgres.database.azure.com --port=5432 --username=mylogin@mypgserver-20170401 ---dbname=postgres
 ```
 
-2.  Una vez que esté conectado toohello server, cree una base de datos en blanco en el símbolo del sistema de Hola.
+2.  Una vez conectado al servidor, cree una base de datos vacía en el símbolo del sistema.
 ```sql
 CREATE DATABASE mypgsqldb;
 ```
 
-3.  En el símbolo del sistema de hello, ejecute hello después de la base de datos de comando tooswitch conexión toohello recién creado **mypgsqldb**:
+3.  En el símbolo del sistema, ejecute el siguiente comando para cambiar la conexión a la base de datos **mypgsqldb** recién creada:
 ```sql
 \c mypgsqldb
 ```
 
-## <a name="create-tables-in-hello-database"></a>Crear tablas de base de datos de Hola
-Ahora que sabe cómo tooconnect toohello base de datos de Azure para PostgreSQL, podemos ver cómo toocomplete algunas tareas básicas.
+## <a name="create-tables-in-the-database"></a>Creación de tablas en la base de datos
+Ahora que sabe cómo conectarse a Azure Database for PostgreSQL, podemos ver cómo completar algunas tareas básicas.
 
 En primer lugar, podemos crear una tabla y cargarla con algunos datos. Vamos a crear una tabla que hace el seguimiento de información del inventario.
 ```sql
@@ -140,65 +140,65 @@ CREATE TABLE inventory (
 );
 ```
 
-Puede ver Hola recién creado tabla en la lista de Hola de tablas ahora escribiendo:
+Puede ver la tabla recién creada ahora en la lista de tablas si escribe lo siguiente:
 ```sql
 \dt
 ```
 
-## <a name="load-data-into-hello-tables"></a>Cargar datos en tablas de Hola
-Ahora que tenemos una tabla, podemos insertar algunos datos en ella. En la ventana de símbolo del sistema abierto hello, ejecute hello después consulta tooinsert algunas filas de datos
+## <a name="load-data-into-the-tables"></a>Carga de datos en las tablas
+Ahora que tenemos una tabla, podemos insertar algunos datos en ella. En la ventana de símbolo del sistema abierta, ejecute la consulta siguiente para insertar algunas filas de datos
 ```sql
 INSERT INTO inventory (id, name, quantity) VALUES (1, 'banana', 150); 
 INSERT INTO inventory (id, name, quantity) VALUES (2, 'orange', 154);
 ```
 
-Tiene ahora dos filas de datos de ejemplo en la tabla de Hola que creó anteriormente.
+Ahora tiene dos filas de datos de ejemplo en la tabla que creó anteriormente.
 
-## <a name="query-and-update-hello-data-in-hello-tables"></a>Consultar y actualizar los datos de hello en tablas de Hola
-Ejecute hello siguientes tooretrieve información de consulta de tabla de base de datos de Hola. 
+## <a name="query-and-update-the-data-in-the-tables"></a>Consulta y actualización de los datos en las tablas
+Ejecute la consulta siguiente para recuperar información de la tabla de base de datos. 
 ```sql
 SELECT * FROM inventory;
 ```
 
-También puede actualizar los datos de hello en tablas de Hola
+También puede actualizar los datos en las tablas
 ```sql
 UPDATE inventory SET quantity = 200 WHERE name = 'banana';
 ```
 
-fila de Hola se actualiza en consecuencia cuando se recuperan datos.
+La fila se actualiza en consecuencia cuando se recuperan los datos.
 ```sql
 SELECT * FROM inventory;
 ```
 
-## <a name="restore-a-database-tooa-previous-point-in-time"></a>Restaurar un punto anterior de tooa de base de datos en el tiempo
-Imagine que ha eliminado accidentalmente una tabla. No se puede recuperar con facilidad. Base de datos de Azure para PostgreSQL permite toogo tooany atrás en un momento (en Hola última too7 días (Basic) y 35 días (estándar)) y restaurar este punto-in-time tooa nuevo servidor. Puede usar esta nueva toorecover server los datos eliminados. Hola siguiendo los pasos restauración Hola ejemplo servidor tooa punto antes de que se ha agregado Hola tabla.
+## <a name="restore-a-database-to-a-previous-point-in-time"></a>Restauración de una base de datos a un momento anterior en el tiempo
+Imagine que ha eliminado accidentalmente una tabla. No se puede recuperar con facilidad. Azure Database for PostgreSQL permite volver a cualquier momento dado en el período de los últimos 7 días (Básico) y los últimos 35 días (Estándar) y restaurar este momento dado en un servidor nuevo. Puede usar este servidor nuevo para recuperar los datos eliminados. Los pasos siguientes restauran el servidor de ejemplo a un punto antes de que se agregara la tabla.
 
 ```azurecli-interactive
 az postgres server restore --resource-group myResourceGroup --name mypgserver-restored --restore-point-in-time 2017-04-13T13:59:00Z --source-server mypgserver-20170401
 ```
 
-Hola `az postgres server restore` comando necesita Hola parámetros siguientes:
+El comando `az postgres server restore` necesita los parámetros siguientes:
 | Configuración | Valor sugerido | Descripción  |
 | --- | --- | --- |
-| --resource-group |  myResourceGroup |  El grupo de recursos en qué Hola existe el servidor de origen.  |
-| --name | mypgserver-restored | nombre de Hola de hello nuevo servidor que se crea mediante el comando de restauración de Hola. |
-| restore-point-in-time | 2017-04-13T13:59:00Z | Seleccione un toorestore en un momento a. Esta fecha y hora deben ser dentro del período de retención de copia de seguridad del servidor de origen de Hola. Use el formato de fecha y hora ISO8601. Por ejemplo, puede usar su propia zona horaria local, como `2017-04-13T05:59:00-08:00`, o usar el formato de hora Zulú UTC `2017-04-13T13:59:00Z`. |
-| --source-server | mypgserver-20170401 | nombre de Hola o Id. de hello toorestore de servidor de origen de. |
+| --resource-group |  myResourceGroup |  Grupo de recursos en el que existe el servidor de origen.  |
+| --name | mypgserver-restored | Nombre del nuevo servidor que se crea mediante el comando de restauración. |
+| restore-point-in-time | 2017-04-13T13:59:00Z | Seleccione un momento dado en el que quiere restaurar. Esta fecha y hora debe estar dentro del período de retención de copia de seguridad del servidor de origen. Use el formato de fecha y hora ISO8601. Por ejemplo, puede usar su propia zona horaria local, como `2017-04-13T05:59:00-08:00`, o usar el formato de hora Zulú UTC `2017-04-13T13:59:00Z`. |
+| --source-server | mypgserver-20170401 | Nombre o identificador del servidor de origen desde el que se va a restaurar. |
 
-Restaurar un servidor tooa en un momento, crea un nuevo servidor, copiar como servidor original, Hola desde el punto de hello en el tiempo que especifique. ubicación de Hola y precios valores de nivel de servidor hello restaurado se Hola igual que el servidor de origen de Hola.
+Al restaurar un servidor a un momento dado, se crea un servidor y se copia el servidor original a un momento dado que especifique. Los valores de ubicación y plan de tarifa del servidor restaurado son los mismos que los del servidor de origen.
 
-comando Hello es sincrónico y se devolverá una vez se haya restaurado el servidor de Hola. Una vez finalizada la restauración de hello, busque servidor nuevo de Hola que se creó. Compruebe Hola se restauran datos según lo previsto.
+El comando es sincrónico y se devolverá después de que se haya restaurado el servidor. Una vez finalizada la restauración, busque el servidor que ha creado. Compruebe que los datos se han restaurado del modo esperado.
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-En este tutorial, se habrá aprendido cómo toouse Azure CLI (interfaz de línea de comandos) y otras utilidades para:
+En este tutorial, aprendió a usar la CLI (interfaz de la línea de comandos) de Azure y otras utilidades para hacer lo siguiente:
 > [!div class="checklist"]
-> * Creación de una instancia de Azure Database for PostgreSQL
-> * Configurar firewall de servidor hello
-> * Use [ **psql** ](https://www.postgresql.org/docs/9.6/static/app-psql.html) utilidad toocreate una base de datos
+> * Creación de una base de datos de Azure Database for PostgreSQL
+> * Configuración del firewall del servidor
+> * Uso de la utilidad [**psql**](https://www.postgresql.org/docs/9.6/static/app-psql.html) para crear una base de datos
 > * Carga de datos de ejemplo
 > * Datos de consulta
 > * Actualización de datos
 > * Restauración de datos
 
-A continuación, obtenga información acerca de cómo toouse Hola tareas similares de Azure toodo portal, revise este tutorial: [diseñar la primera base de datos de Azure para usar PostgreSQL Hola portal de Azure](tutorial-design-database-using-azure-portal.md)
+A continuación, obtenga información sobre cómo usar Azure Portal para hacer tareas simulares en el tutorial [Diseño de la primera base de datos de Azure Database for PostgreSQL con Azure Portal](tutorial-design-database-using-azure-portal.md)

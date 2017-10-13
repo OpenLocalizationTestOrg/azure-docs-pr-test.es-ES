@@ -1,5 +1,5 @@
 ---
-title: aaaReceive eventos desde los centros de eventos de Azure con Apache Storm | Documentos de Microsoft
+title: "Recepción de eventos desde Azure Event Hubs mediante Apache Storm | Microsoft Docs"
 description: "Introducción a la recepción de eventos desde Event Hubs mediante Apache Storm"
 services: event-hubs
 documentationcenter: 
@@ -14,25 +14,25 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: sethm
-ms.openlocfilehash: a0ab860ee8d504a28aac380c504c928f0d6dbc1e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3e15370c7602276ef323708632b324fe05497f41
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="receive-events-from-event-hubs-using-apache-storm"></a>Recepción de eventos desde Event Hubs mediante Apache Storm
 
-[Apache Storm](https://storm.incubator.apache.org) es un sistema distribuido de cálculo en tiempo real que simplifica el procesamiento confiable de flujos de datos sin enlazar. Esta sección muestra cómo toouse un aluvión de concentradores de eventos de Azure apetezca charlar tooreceive eventos desde los centros de eventos. Con Apache Storm, se pueden dividir los eventos en varios procesos hospedados en distintos nodos. Hola integración de los centros de eventos con Storm simplifica el consumo de eventos por puntos de forma transparente su progreso mediante una instalación de Zookeeper del aluvión, administrar los puntos de control persistentes y paralelo recibe de los centros de eventos.
+[Apache Storm](https://storm.incubator.apache.org) es un sistema distribuido de cálculo en tiempo real que simplifica el procesamiento confiable de flujos de datos sin enlazar. Esta sección muestra cómo utilizar un spout de Storm para Azure Event Hubs a fin de recibir eventos de Event Hubs. Con Apache Storm, se pueden dividir los eventos en varios procesos hospedados en distintos nodos. La integración de los Centros de eventos con Storm simplifica el consumo de eventos al comprobar de forma transparente el progreso mediante la instalación de Zookeeper de Storm, la administración de puntos de comprobación persistentes y las recepciones en paralelo de los Centros de eventos.
 
-Para obtener más información acerca de los centros de eventos de recepción patrones, vea hello [información general de los centros de eventos][Event Hubs overview].
+Para más información sobre los patrones de recepción de Event Hubs, vea la [información general de Event Hubs][Event Hubs overview].
 
 ## <a name="create-project-and-add-code"></a>Creación del proyecto y adición de código
 
-Este tutorial se usa un [aluvión de HDInsight] [ HDInsight Storm] instalación, que se incluye con hello apetezca charlar centros de eventos ya disponible.
+Este tutorial usa una instalación de [HDInsight Storm][HDInsight Storm], que integra el emisor de Event Hubs que ya está disponible.
 
-1. Siga hello [HDInsight Storm - Introducción](../hdinsight/hdinsight-storm-overview.md) procedimiento toocreate un nuevo HDInsight del clúster y conecte tooit a través de escritorio remoto.
-2. Hola copia `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` entorno de desarrollo local tooyour de archivo. Esto contiene Hola eventos-storm-pitorro.
-3. Usar hello siguiente paquete de comando tooinstall hello en el almacén local de Maven de Hola. Esto le permite tooadd como una referencia en hello aluvión de proyecto en un paso posterior.
+1. Siga el procedimiento descrito en [Introducción a HDInsight Storm](../hdinsight/hdinsight-storm-overview.md) para crear un clúster nuevo de HDInsight y conectarlo a través del Escritorio remoto.
+2. Copie el archivo `%STORM_HOME%\examples\eventhubspout\eventhubs-storm-spout-0.9-jar-with-dependencies.jar` en su entorno de desarrollo local. Contiene events-storm-spout.
+3. Utilice el comando siguiente para instalar el paquete en el almacén Maven local. Esto permite agregarlo como referencia en el proyecto de Storm en un paso posterior.
 
     ```shell
     mvn install:install-file -Dfile=target\eventhubs-storm-spout-0.9-jar-with-dependencies.jar -DgroupId=com.microsoft.eventhubs -DartifactId=eventhubs-storm-spout -Dversion=0.9 -Dpackaging=jar
@@ -41,9 +41,9 @@ Este tutorial se usa un [aluvión de HDInsight] [ HDInsight Storm] instalación,
    
     ![][12]
 5. Seleccione **Usar ubicación del área de trabajo predeterminada** y, a continuación, haga clic en **Siguiente**
-6. Seleccione hello **maven-Arquetipo-inicio rápido** Arquetipo, a continuación, haga clic en **siguiente**
+6. Seleccione el arquetipo **maven-archetype-quickstart** y, a continuación, haga clic en **Siguiente**
 7. Inserte un **GroupId** y **ArtifactId** y, a continuación, haga clic en **Finalizar**
-8. En **pom.xml**, agregar Hola siguiendo las dependencias en hello `<dependency>` nodo.
+8. En **pom.xml**, agregue las siguientes dependencias en el nodo `<dependency>`.
 
     ```xml  
     <dependency>
@@ -75,7 +75,7 @@ Este tutorial se usa un [aluvión de HDInsight] [ HDInsight Storm] instalación,
     </dependency>
     ```
 
-9. Hola **src** carpeta, cree un archivo denominado **Config.properties** copia hello siguen contenido, sustituyendo hello y `receive rule key` y `event hub name` valores:
+9. En la carpeta **src**, cree un archivo llamado **Config.properties** y copie el siguiente contenido, sustituyendo los valores `receive rule key` y `event hub name`:
 
     ```java
     eventhubspout.username = ReceiveRule
@@ -90,8 +90,8 @@ Este tutorial se usa un [aluvión de HDInsight] [ HDInsight Storm] instalación,
     eventhubspout.checkpoint.interval = 10
     eventhub.receiver.credits = 10
     ```
-    Hola valor para **eventhub.receiver.credits** determina cuántos eventos se procesan por lotes antes de liberarlos canalización aluvión de toohello. Para simplificar Hola simplicidad, este ejemplo establece este valor too10. En producción, normalmente se debe establecer valores de toohigher; Por ejemplo, 1024.
-10. Crear una nueva clase denominada **LoggerBolt** con hello siguiente código:
+    El valor de **eventhub.receiver.credits** determina cuántos eventos se procesan por lotes antes de liberarlos a la canalización de Storm. Por simplicidad, este ejemplo establece el valor en 10. En producción, se debe normalmente establecer en valores más altos; Por ejemplo, 1024.
+10. Cree una clase nueva denominada **LoggerBolt** con el código siguiente:
     
     ```java
     import java.util.Map;
@@ -130,8 +130,8 @@ Este tutorial se usa un [aluvión de HDInsight] [ HDInsight Storm] instalación,
     }
     ```
     
-    Este rayo Storm registra contenido Hola de eventos de hello recibido. Esto se puede ampliar fácilmente toostore tuplas en un servicio de almacenamiento. Hola [tutorial de analysis del sensor de HDInsight] utiliza estos mismos datos toostore de enfoque en HBase.
-11. Cree una clase denominada **LogTopology** con hello siguiente código:
+    Este elemento de Storm registra el contenido de los eventos recibidos. Esto se puede ampliar fácilmente para almacenar las tuplas en un servicio de almacenamiento. El [tutorial de análisis de sensores de HDInsight] usa este mismo enfoque para almacenar datos en HBase.
+11. Cree una clase denominada **LogTopology** con el código siguiente:
     
     ```java
     import java.io.FileReader;
@@ -182,9 +182,9 @@ Este tutorial se usa un [aluvión de HDInsight] [ HDInsight Storm] instalación,
                     namespaceName, entityPath, partitionCount, zkEndpointAddress,
                     checkpointIntervalInSeconds, receiverCredits);
         
-            // set hello number of workers toobe hello same as partition number.
-            // hello idea is toohave a spout and a logger bolt co-exist in one
-            // worker tooavoid shuffling messages across workers in storm cluster.
+            // set the number of workers to be the same as partition number.
+            // the idea is to have a spout and a logger bolt co-exist in one
+            // worker to avoid shuffling messages across workers in storm cluster.
             numWorkers = spoutConfig.getPartitionCount();
         
             if (args.length > 0) {
@@ -235,10 +235,10 @@ Este tutorial se usa un [aluvión de HDInsight] [ HDInsight Storm] instalación,
     }
     ```
 
-    Esta clase crea un nuevo pitorro centros de eventos, mediante las propiedades de hello en tooinstantiate de archivo de configuración de Hola. Es importante toonote que este ejemplo se crea tantos spouts tareas como número de Hola de particiones en el centro de eventos de hello, en orden toouse Hola máximo paralelismo permitido por ese centro de eventos.
+    Esta clase crea un emisor de Event Hubs, utilizando las propiedades del archivo de configuración para crear una instancia. Es importante tener en cuenta que este ejemplo crea tantas tareas de spout como número de particiones hay en el centro de eventos, para poder usar el paralelismo máximo permitido por ese centro de eventos.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para obtener más información acerca de los centros de eventos información visitando Hola siguientes vínculos:
+Para más información acerca de Event Hubs, visite los vínculos siguientes:
 
 * [Información general de Event Hubs][Event Hubs overview]
 * [Creación de un centro de eventos](event-hubs-create.md)
@@ -247,7 +247,7 @@ Para obtener más información acerca de los centros de eventos información vis
 <!-- Links -->
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
 [HDInsight Storm]: ../hdinsight/hdinsight-storm-overview.md
-[tutorial de analysis del sensor de HDInsight]: ../hdinsight/hdinsight-storm-sensor-data-analysis.md
+[tutorial de análisis de sensores de HDInsight]: ../hdinsight/hdinsight-storm-sensor-data-analysis.md
 
 <!-- Images -->
 

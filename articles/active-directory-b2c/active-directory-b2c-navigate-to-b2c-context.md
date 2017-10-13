@@ -1,6 +1,6 @@
 ---
-title: 'Azure B2C Directory Active: Inquilino cambiar tooa B2C | Documentos de Microsoft'
-description: "Cómo inquilino tooswitch en el contexto de Hola de su B2C de directorio activo"
+title: 'Azure Active Directory B2C: cambio a inquilino B2C | Microsoft Docs'
+description: "Cómo se cambia de inquilino de Active Directory B2C"
 services: active-directory-b2c
 documentationcenter: 
 author: parakhj
@@ -14,33 +14,33 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/13/2017
 ms.author: parakhj
-ms.openlocfilehash: 572f9ab283ecac68d284bb04fdfc98575bcf9393
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 40d8d57d974a949fbdc0a06eeceb2d06bfbaa09f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="switching-tooyour-azure-ad-b2c-tenant"></a>Cambiar el inquilino de Azure AD B2C tooyour
+# <a name="switching-to-your-azure-ad-b2c-tenant"></a>Cambio a inquilino de Azure AD B2C
 
-En orden tooconfigure Azure AD B2C, deberá toobe en el contexto de Hola de su inquilino de Azure AD B2C.
+Para configurar Azure AD B2C, debe estar con el inquilino de Azure AD B2C.
 
 ## <a name="log-into-azure-ad-b2c-tenant"></a>Inicio de sesión en el inquilino de Azure AD B2C
 
-inquilino de Azure AD B2C toonavigate tooyour, debe haber iniciado en hello portal de Azure como administrador global del inquilino de Azure AD B2C Hola.
+Para ir hasta el inquilino de Azure AD B2C, debe haber iniciado sesión en Azure Portal como administrador global del inquilino de Azure AD B2C.
 
-1. Inicio de sesión en hello [portal de Azure](http://portal.azure.com).
-1. Cambie los inquilinos haciendo clic en la dirección de correo electrónico o una imagen en la esquina superior derecha de Hola.
-1. Hola `Directory` lista que aparece, inquilino seleccione hello Azure AD B2C que desea toomanage.
+1. Inicie sesión en el [Portal de Azure](http://portal.azure.com).
+1. Para cambiar el inquilino, haga clic en la dirección de correo electrónico o la imagen de la esquina superior derecha.
+1. En la lista `Directory` que aparece, seleccione el inquilino de Azure AD B2C que desea administrar.
 
-Hola Portal de Azure se actualizará.  Ahora se firman en hello Portal de Azure en el contexto de Hola de su inquilino de Azure AD B2C.
+Azure Portal se actualizará.  Ahora estará conectado en Azure Portal al inquilino de Azure AD B2C.
 
-## <a name="navigate-toohello-b2c-features-blade"></a>Navegar por hoja de características toohello B2C
+## <a name="navigate-to-the-b2c-features-blade"></a>Navegación a la hoja de características B2C
 
-1. Haga clic en **examinar** en hello espacio de navegación izquierdo.
-1. Haga clic en **> servicios más** y, a continuación, busque `Azure AD B2C` en el panel de navegación izquierdo de Hola.  (toopin tooyour panel izquierdo de inicio, haga clic en hello toohello estrella izquierda de Azure AD B2C)
-1. Haga clic en **Azure AD B2C** tooaccess Hola B2C hoja de características.
+1. Haga clic en **Examinar** en el panel de navegación de la izquierda.
+1. Haga clic en **> Más servicios** y busque `Azure AD B2C` en el panel de navegación izquierdo.  (Para anclar al panel de inicio izquierdo, haga clic en la estrella a la izquierda de Azure AD B2C)
+1. Haga clic en **Azure AD B2C** para tener acceso a la hoja de características de B2C.
    
-    ![Captura de pantalla de hoja de características de exploración tooB2C](./media/active-directory-b2c-get-started/b2c-browse.png)
+    ![Captura de pantalla de la hoja de características de B2C](./media/active-directory-b2c-get-started/b2c-browse.png)
 
 > [!IMPORTANT]
-> Necesita un administrador Global de hoja de hello B2C inquilino toobe tooaccess capaz de hello B2C características toobe. Un administrador global de cualquier otro inquilino o un usuario de cualquier inquilino no puede acceder a dicha hoja.  Puede cambiar a tooyour B2C inquilino mediante el selector del inquilino de hello en hello superior derecho de hello portal de Azure.
+> Necesita ser administrador global del inquilino B2C para poder acceder a la hoja Características B2C. Un administrador global de cualquier otro inquilino o un usuario de cualquier inquilino no puede acceder a dicha hoja.  Puede cambiar a su inquilino B2C mediante el selector de inquilinos de la esquina superior derecha de Azure Portal.

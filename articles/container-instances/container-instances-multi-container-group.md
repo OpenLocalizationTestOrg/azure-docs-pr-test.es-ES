@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure instancias de contenedor - grupo contenedor múltiples | Documentos de Azure"
+title: 'Azure Container Instances: grupo con varios contenedores | Azure Docs'
 description: 'Azure Container Instances: grupo con varios contenedores'
 services: container-instances
 documentationcenter: 
@@ -17,25 +17,25 @@ ms.workload: na
 ms.date: 07/26/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 976f578cd2a9bf7f05ab97f24662139bb72062ea
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 140f58582645ea32f77e901eb13364ed145bbecf
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-a-container-group"></a>Implementación de un grupo de contenedores
 
-Instancias de contenedor de Azure compatible con la implementación de Hola de varios contenedores en un solo host mediante un *grupo contenedor*. Esto es útil cuando se crea un sidecar de aplicación para el registro, la supervisión o cualquier otra configuración donde un servicio necesita un segundo proceso asociado. 
+Azure Container Instances admite compatible la implementación de varios contenedores en un solo host mediante un *grupo de contenedores*. Esto es útil cuando se crea un sidecar de aplicación para el registro, la supervisión o cualquier otra configuración donde un servicio necesita un segundo proceso asociado. 
 
 Este documento describe la ejecución de una configuración de sidecar de varios contenedores sencilla mediante una plantilla de Azure Resource Manager.
 
-## <a name="configure-hello-template"></a>Configurar plantilla Hola
+## <a name="configure-the-template"></a>Configuración de la plantilla
 
-Cree un archivo denominado `azuredeploy.json` y Hola copia siguiendo json en él. 
+Cree un archivo denominado `azuredeploy.json` y copie el siguiente código json en él. 
 
-En este ejemplo, se definen un grupo de contenedores con dos contenedores y una dirección IP pública. primer contenedor de grupo de Hola de Hola ejecuta una aplicación con conexión a internet. segundo contenedor Hello, asociado hello, hace que una aplicación de web principal de toohello de solicitud HTTP a través de la red local del grupo de Hola. 
+En este ejemplo, se definen un grupo de contenedores con dos contenedores y una dirección IP pública. El primer contenedor del grupo ejecuta una aplicación accesible desde Internet. El segundo contenedor, el sidecar, realiza una solicitud HTTP a la aplicación web principal a través de la red local del grupo. 
 
-En este ejemplo asociado puede ser tootrigger expandido una alerta si recibió un código de respuesta HTTP distintos de 200 OK. 
+Este ejemplo de sidecar podría ampliarse para desencadenar una alerta si recibe un código de respuesta HTTP distinto de 200 OK. 
 
 ```json
 {
@@ -109,7 +109,7 @@ En este ejemplo asociado puede ser tootrigger expandido una alerta si recibió u
   }
 ```
 
-toouse un registro de imagen de contenedor privado, agregar un documento de json de objeto toohello con hello siguiendo el formato.
+Para usar un registro de imagen de contenedor privado, agregue un objeto al documento json con el formato siguiente.
 
 ```json
 "imageRegistryCredentials": [
@@ -121,15 +121,15 @@ toouse un registro de imagen de contenedor privado, agregar un documento de json
 ]
 ```
 
-## <a name="deploy-hello-template"></a>Implementar la plantilla de Hola
+## <a name="deploy-the-template"></a>Implementación de la plantilla
 
-Crear un grupo de recursos con hello [crear grupo az](/cli/azure/group#create) comando.
+Cree un grupo de recursos con el comando [az group create](/cli/azure/group#create).
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus
 ```
 
-Implementar la plantilla de hello con hello [Crear implementación de grupo az](/cli/azure/group/deployment#create) comando.
+Implemente la plantilla con el comando [az group deployment create](/cli/azure/group/deployment#create).
 
 ```azurecli-interactive
 az group deployment create --name myContainerGroup --resource-group myResourceGroup --template-file azuredeploy.json
@@ -139,7 +139,7 @@ Al cabo de unos segundos, recibirá una respuesta inicial de Azure.
 
 ## <a name="view-deployment-state"></a>Visualización del estado de la implementación
 
-estado de hello tooview de implementación de hello, use hello `az container show` comando. Esto devuelve la dirección IP pública Hola aprovisionado sobre qué Hola pueden tener acceso a aplicaciones.
+Para ver el estado de la implementación, use el comando `az container show`. Esto devuelve la dirección IP pública aprovisionada a través de la cual se puede acceder a la aplicación.
 
 ```azurecli-interactive
 az container show --name myContainerGroup --resource-group myResourceGroup -o table
@@ -155,7 +155,7 @@ myContainerGroup  myResourceGrou2  Succeeded            microsoft/aci-tutorial-s
 
 ## <a name="view-logs"></a>Ver registros   
 
-Ver la salida de registro de hello de un contenedor con hello `az container logs` comando. Hola `--container-name` argumento especifica el contenedor de Hola de qué registros se toopull. En este ejemplo, se especifica el primer contenedor de Hola. 
+Vea la salida del registro de un contenedor mediante el comando `az container logs`. El argumento `--container-name` especifica el contenedor del que se van a extraer registros. En este ejemplo, se especifica el primer contenedor. 
 
 ```azurecli-interactive
 az container logs --name myContainerGroup --container-name aci-tutorial-app --resource-group myResourceGroup
@@ -171,7 +171,7 @@ istening on port 80
 ::1 - - [27/Jul/2017:17:35:38 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
-Hola toosee los registros para contenedor de lado automóvil hello, ejecute hello mismo nombre del comando especificando Hola segundo contenedor.
+Para ver los registros para el contenedor sidecar, ejecute el mismo comando especificando el segundo nombre del contenedor.
 
 ```azurecli-interactive
 az container logs --name myContainerGroup --container-name aci-tutorial-sidecar --resource-group myResourceGroup
@@ -193,11 +193,11 @@ Last-Modified: Sun, 16 Jul 2017 02:08:22 GMT
 Date: Mon, 17 Jul 2017 18:27:36 GMT
 ```
 
-Como puede ver, asociado Hola realiza periódicamente una aplicación de web principal de toohello de solicitud HTTP a través de tooensure de red local del grupo de Hola que se está ejecutando.
+Como puede ver, el sidecar realiza periódicamente una solicitud HTTP a la aplicación web principal a través de la red local del grupo para asegurarse de que se está ejecutando.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Este documento trata los pasos de hello necesarios para implementar un contenedor de la instancia del contenedor de Azure. Para un tooend final que experiencia de instancias de contenedor de Azure, vea el tutorial de instancias de contenedor de Azure de Hola.
+En este documento se explican los pasos necesarios para implementar una instancia de contenedor de Azure de varios contenedores. Para obtener una experiencia integral de Azure Container Instances, consulte el tutorial de Azure Container Instances.
 
 > [!div class="nextstepaction"]
 > [Tutorial de Azure Container Instances]: ./container-instances-tutorial-prepare-app.md

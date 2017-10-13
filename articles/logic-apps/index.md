@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure documentación de lógica de aplicaciones - tutoriales, referencia de API | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo las aplicaciones lógicas toodevelop que automatizan y simplifican los flujos de trabajo empresariales a través de hello y local en la nube. Tutoriales, plantillas y referencias de API."
+title: "Documentación sobre Azure Logic Apps: tutoriales y referencia de API | Microsoft Docs"
+description: "Aprenda a desarrollar aplicaciones lógicas que automatizan y simplifican los flujos de trabajo empresariales entre servidores locales y en la nube. Tutoriales, plantillas y referencias de API."
 services: logic-apps
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 5cc3a730b1b6abcb3ec0132f6e8ebf2e54775836
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ff3f9ba6c225294e7570c5204701dd2f6b927318
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="logic-apps-documentation"></a>Documentación de Logic Apps
 
-Obtenga información acerca de cómo toodevelop Logic Apps que simplifican e integrar flujos de trabajo escalables en hello en la nube. Tutoriales, plantillas y API hace referencia le ayudan a diseñar e implementar flujos de trabajo empresariales automatizados entre locales y hello en la nube.
+Aprenda a desarrollar aplicaciones lógicas que simplifican e integran los flujos de trabajo escalables en la nube. Los tutoriales, las plantillas y las referencias de API le ayudan a diseñar e implementar flujos de trabajo empresariales automatizados entre servidores locales y en la nube.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -106,7 +106,7 @@ Obtenga información acerca de cómo toodevelop Logic Apps que simplifican e int
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Empezar a crear una personalizada toouse de API a las aplicaciones lógicas</h3>
+                        <h3>Introducción a la creación de una API personalizada para usarla con Logic Apps</h3>
                     </div>
                 </div>
             </div>

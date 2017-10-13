@@ -1,6 +1,6 @@
 ---
-title: "las directivas de laboratorio básico aaaManage en los laboratorios de desarrollo y pruebas de Azure | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo tooset algunos hello básico de directivas de (configuración) para un laboratorio de prácticas de desarrollo y pruebas"
+title: "Administración de directivas de laboratorio básicas en Azure DevTest Labs | Microsoft Docs"
+description: "Obtenga información sobre cómo establecer algunas de las directivas básicas (configuración) para un laboratorio de DevTest Labs."
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: tomarcher
@@ -14,78 +14,78 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: tarcher
-ms.openlocfilehash: 792c0d19cfe73964be9c03d3de7751a868fd86e8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ed35d081b191ec41ed9e5970515057a4715c0d59
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-basic-policies-for-a-lab-in-azure-devtest-labs"></a>Administración de directivas básicas para un laboratorio de Azure DevTest Labs
 
-Laboratorios de desarrollo y pruebas de Azure permite toocontrol costo y minimizar residuos en los laboratorios de mediante la administración de directivas (valores) para cada laboratorio. En este artículo, empezar a trabajar con las directivas de aprendizaje cómo tooset dos directivas más importantes de hello - limitar Hola número de máquinas virtuales (VM) que se puede crear o presentadas por un usuario individual y configurar apagado automático. tooview cómo tooset todas las directivas de laboratorio, consulte el artículo de hello, [definir directivas de laboratorio en los laboratorios de desarrollo y pruebas de Azure](devtest-lab-set-lab-policy.md).  
+Azure DevTest Labs permite controlar los costos y desperdiciar lo mínimo posible en sus laboratorios gracias a la posibilidad de administrar políticas (configuración) en cada uno de ellos. En este artículo, empezará a trabajar con las directivas. Aprenderá a establecer dos de las directivas más importantes: limitar el número de máquinas virtuales que puede crear o reclamar un solo usuario, y configurar el apagado automático. Para ver cómo establecer todas las directivas de laboratorio, consulte el artículo [Definición de directivas de laboratorio en Azure DevTest Labs](devtest-lab-set-lab-policy.md).  
 
 ## <a name="accessing-a-labs-policies-in-azure-devtest-labs"></a>Acceso a las directivas de laboratorio en Azure DevTest Labs
-Hello siguientes pasos le guiarán configuración de directivas para un laboratorio de prácticas de desarrollo y pruebas de Azure:
+Los siguientes pasos le guiarán a través de la configuración de directivas para un laboratorio en Azure DevTest Labs:
 
-directivas de hello tooview (y cambiar) para un laboratorio, siga estos pasos:
+Para ver (y cambiar) las directivas de un laboratorio, siga estos pasos:
 
-1. Inicie sesión en toohello [portal de Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Inicie sesión en el [Portal de Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Seleccione **más servicios**y, a continuación, seleccione **laboratorios de desarrollo y pruebas** de lista de Hola.
+1. Seleccione **Más servicios** y, luego, **DevTest Labs** en la lista.
 
-1. En lista de Hola de laboratorios, seleccione laboratorio deseado Hola.   
+1. En la lista de laboratorios, seleccione el laboratorio que desee.   
 
 1. Seleccione **Configuration and policies** (Directivas y configuración).
 
     ![Hoja de configuración de directiva](./media/devtest-lab-set-lab-policy/policies-menu.png)
 
-1. Hola **directivas y configuración** hoja contiene un menú de opciones que puede especificar. En este artículo se analizan sólo las opciones de Hola para **máquinas virtuales por usuario** y **apagado automático**. toolearn sobre Hola restantes de la configuración, consulte [administrar todas las directivas para un laboratorio de prácticas de desarrollo y pruebas de Azure](./devtest-lab-set-lab-policy.md). 
+1. La hoja **Configuration and policies** (Directivas y configuración) contiene un menú de configuración donde puede especificar parámetros. Este artículo trata solo la configuración de **máquinas virtuales por usuario** y el **apagado automático**. Para obtener información sobre las opciones restantes, vea [Definición de directivas de laboratorio en Azure DevTest Labs](./devtest-lab-set-lab-policy.md). 
    
 ## <a name="set-virtual-machines-per-user"></a>Establecimiento de máquinas virtuales por usuario
-Hola directiva para **máquinas virtuales por usuario** permite un número máximo de hello toospecify de máquinas virtuales que se pueden crear un usuario individual. Si un usuario intenta toocreate o notificación de una máquina virtual cuando se ha alcanzado el límite de usuarios de hello, un mensaje de error indica que Hola que VM no se puede que crear/presentado. 
+La directiva de **Máquinas virtuales por usuario** le permite especificar el número máximo de máquinas virtuales que puede crear un usuario individual. Si un usuario trata de crear o reclamar una máquina virtual una vez alcanzado el límite, aparece un mensaje de error que indica que la máquina virtual no se puede crear ni exigir. 
 
-1. En el laboratorio de hello **directivas y configuración** menú, seleccione **máquinas virtuales por usuario**.
+1. En el menú **Configuration and policies** (Directivas y configuración) del laboratorio, seleccione **Máquinas virtuales por usuario**.
    
     ![Máquinas virtuales por usuario](./media/devtest-lab-set-lab-policy/max-vms-per-user.png)
 
-1. Seleccione **Sí** toolimit número de Hola de máquinas virtuales por usuario. Si no desea toolimit número de Hola de máquinas virtuales por usuario, seleccione **No**. Si selecciona **Sí**, especifique un valor numérico que indica el número máximo de Hola de máquinas virtuales que se puede crear o presentado por un usuario. 
+1. Seleccione **Sí** para limitar el número de máquinas virtuales por usuario. Si no quiere limitar el número de máquinas virtuales por usuario, seleccione **No**. Si elige **Sí**, escriba un valor numérico que indique el número máximo de máquinas virtuales que un usuario puede crear o reclamar. 
 
-1. Seleccione **Sí** número de hello toolimit de máquinas virtuales que puede usar SSD (disco de estado sólido). Si no desea toolimit número de Hola de máquinas virtuales que puede usar SSD, seleccione **No**. Si selecciona **Sí**, escriba un valor que indica el número máximo de Hola de máquinas virtuales que pueden crearse con SSD. 
+1. Seleccione **Sí** para limitar el número de máquinas virtuales que puede usar SSD (discos de estado sólido). Si no quiere limitar el número de máquinas virtuales que puede usar SSD, seleccione **No**. Si elige **Sí**, escriba un valor que indique el número máximo de máquinas virtuales que se pueden crear con SSD. 
 
 1. Seleccione **Guardar**.
 
 ## <a name="set-auto-shutdown"></a>Establecimiento del apagado automático
-Directiva de cierre automático de Hello ayuda toominimize laboratorio residuos permitiéndole tiempo de hello toospecify que apagar máquinas virtuales de este laboratorio.
+La directiva de apagado automático ayuda a minimizar la pérdida del laboratorio, ya que permite especificar la hora de apagado de la máquina virtual de este laboratorio.
 
-1. En el laboratorio de hello **directivas y configuración** hoja, seleccione **apagado automático**.
+1. En la hoja **Configuration and Policies** (Directivas y configuración) del laboratorio, seleccione **Apagado automático**.
    
     ![Apagado automático](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
 
-1. Seleccione **en** tooenable esta directiva, y **desactivar** toodisable lo.
+1. Seleccione **Activado** para habilitar esta directiva, y **Desactivado** para deshabilitarla.
 
-1. Si habilita esta directiva, especifique hello tooshut hora (y zona horaria) hacia abajo de todas las máquinas virtuales en laboratorio actual Hola.
+1. Si habilita esta directiva, especifique la hora local (y la zona horaria) para apagar todas las máquinas virtuales del laboratorio actual.
 
-1. Especifique **Sí** o **n** para hello opción toosend un toohello antes de 15 minutos de notificación especificado tiempo de cierre automático. Si especifica **Sí**, escriba una notificación de hello webhook tooreceive de punto de conexión de dirección URL. Para obtener más información sobre los webhooks, consulte [Creación de un webhook o una función de API de Azure](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
+1. Especifique **Sí** o **No** en la opción de enviar una notificación 15 minutos antes de la hora especificada para el apagado automático. Si selecciona **Sí**, escriba un punto de conexión de URL de webhooks para recibir la notificación. Para obtener más información sobre los webhooks, consulte [Creación de un webhook o una función de API de Azure](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
 
 1. Seleccione **Guardar**.
 
-    De forma predeterminada, una vez habilitada, esta directiva aplica a máquinas virtuales de tooall en laboratorio actual Hola. tooremove esta configuración de una máquina virtual específica, abra la máquina virtual de hello hoja y cambie su **apagado automático** configuración 
+    De manera predeterminada, una vez que se habilite, esta directiva se aplica a todas las máquinas virtuales del laboratorio actual. Para quitar esta configuración de una máquina virtual específica, abra la hoja de la máquina virtual y cambie la configuración de **Apagado automático** . 
 
 ## <a name="set-auto-start"></a>Establecimiento del inicio automático
-Directiva de inicio automático de Hello permite toospecify cuando se debe iniciar hello las máquinas virtuales en el laboratorio actual de Hola.  
+La directiva de inicio automático le permite especificar cuándo se deben iniciar las máquinas virtuales del laboratorio actual.  
 
-1. En el laboratorio de hello **directivas y configuración** hoja, seleccione **inicio automático**.
+1. En la hoja **Configuration and Policies** (Directivas y configuración) del laboratorio, seleccione **Inicio automático**.
    
     ![Inicio automático](./media/devtest-lab-set-lab-policy/auto-start.png)
 
-2. Seleccione **en** tooenable esta directiva, y **desactivar** toodisable lo.
+2. Seleccione **Activado** para habilitar esta directiva, y **Desactivado** para deshabilitarla.
 
-3. Si habilita esta directiva, especifique la hora de inicio programada de hello, zona horaria y Hola días de la semana de Hola para qué hello tiempo se aplica. 
+3. Si habilita esta directiva, especifique a la hora local de inicio programado, la zona horaria los días de la semana en los que se aplica esta hora. 
 
 4. Seleccione **Guardar**.
 
-    Una vez habilitada, esta directiva no está tooany aplica automáticamente las máquinas virtuales en laboratorio actual Hola. tooapply este tooa configuración VM específica, la máquina virtual de hello Abrir hoja y cambie su **inicio automático** configuración 
+    Una vez que se habilite, esta directiva no se aplica automáticamente a ninguna máquina virtual del laboratorio actual. Para aplicar esta configuración a una máquina virtual específica, abra la hoja de la máquina virtual y cambie su configuración de **Inicio automático** . 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-- [Definir directivas de laboratorio en los laboratorios de desarrollo y pruebas de Azure](devtest-lab-set-lab-policy.md) -Obtenga información acerca de cómo toomodify otras directivas de laboratorio 
+- [Definición de directivas de laboratorio en Azure DevTest Labs](devtest-lab-set-lab-policy.md) (información sobre cómo modificar otras directivas de laboratorio) 

@@ -1,6 +1,6 @@
 ---
-title: aaaAzure B2C de Active Directory | Documentos de Microsoft
-description: "¿Cómo toobuild una aplicación Web de .NET y llamar a una web api con tokens de acceso de Azure Active Directory B2C y OAuth 2.0."
+title: Azure Active Directory B2C | Microsoft Docs
+description: "Creación de una aplic. web de .NET y llamada a una API web con Azure Active Directory B2C y tokens de acceso de OAuth 2.0."
 services: active-directory-b2c
 documentationcenter: .net
 author: parakhj
@@ -14,56 +14,56 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: parakhj
-ms.openlocfilehash: 9b248e3bf18968e12aae73c07083fa8278befb3b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 48452eb68f826d1c7aa61d5e5531f941ac1422b0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-b2c-call-a-net-web-api-from-a-net-web-app"></a>Azure AD B2C: llamada a una API web de .NET desde una aplic. web de .NET
 
-Mediante el uso de Azure AD B2C, puede agregar aplicaciones web de identidad eficaz administración características tooyour y las API web. Este artículo describe cómo toorequest tokens de acceso y realizar llamadas desde una "lista de tareas pendientes" de .NET tooa de aplicación web .NET web api.
+Con Azure AD B2C, puede agregar características eficaces de administración de identidades a las aplicaciones web y las API web. En este artículo se describe cómo solicitar tokens de acceso y hacer llamadas desde una aplic. web de "tareas pendientes" .NET a una API web de .NET.
 
-En este artículo no cubre cómo tooimplement sesión, inicio de sesión y el perfil de administración con Azure AD B2C. Se centra en las API de web que realiza la llamada después de hello usuario ya está autenticado. Si todavía no lo ha hecho, debe hacer lo siguiente:
+Este artículo no trata de la implementación de la administración de registros, inicios de sesión y perfiles con Azure AD B2C. Se centra en la llamada a las API web después de que el usuario ya está autenticado. Si todavía no lo ha hecho, debe hacer lo siguiente:
 
 * Comenzar a trabajar con una [aplicación web .NET](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
 * Comenzar a trabajar con una [API web .NET](active-directory-b2c-devquickstarts-api-dotnet.md)
 
 ## <a name="prerequisite"></a>Requisito previo
 
-toobuild una aplicación web que llama a una web api, necesita:
+Para crear una aplicación web que llama a una API web, debe hacer lo siguiente:
 
 1. [Crear un inquilino de Azure AD B2C](active-directory-b2c-get-started.md).
 2. [Registrar una API web](active-directory-b2c-app-registration.md#register-a-web-api).
 3. [Registrar una aplicación web](active-directory-b2c-app-registration.md#register-a-web-app).
 4. [Configurar directivas](active-directory-b2c-reference-policies.md).
-5. [GRANT Hola web app permisos toouse Hola web api](active-directory-b2c-access-tokens.md#publishing-permissions).
+5. [Conceder a la aplicación web permisos para usar la API web](active-directory-b2c-access-tokens.md#publishing-permissions).
 
 > [!IMPORTANT]
-> aplicación de cliente de Hello y API web deben usar directorio de hello misma instancia de Azure AD B2C.
+> La API de web y la aplicación de cliente deben usar el mismo directorio de Azure AD B2C.
 >
 
-## <a name="download-hello-code"></a>Descargar código de hello
+## <a name="download-the-code"></a>Descargar el código
 
-código de Hello para este tutorial se mantiene en [GitHub](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi). Puede clonar el ejemplo hello ejecutando:
+El código de este tutorial se conserva [en GitHub](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi). Puede clonar el ejemplo al ejecutar lo siguiente:
 
 ```console
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
-Después de descargar el código de ejemplo de Hola, inició tooget de archivo .sln de hello abrir Visual Studio. archivo de solución de Hello contiene dos proyectos: `TaskWebApp` y `TaskService`. `TaskWebApp`es una aplicación web MVC que Hola usuario interactúa con. `TaskService`es la API de web back-end de la aplicación hello que almacena la lista de tareas pendientes de cada usuario. En este artículo no cubre creación hello `TaskWebApp` aplicación web o hello `TaskService` web api. toolearn cómo toobuild Hola .NET web aplicación con Azure AD B2C, consulte nuestro [tutorial de aplicación web de .NET](active-directory-b2c-devquickstarts-web-dotnet-susi.md). toolearn cómo toobuild Hola .NET web API protegida con Azure AD B2C, consulte nuestro [tutorial de API web de .NET](active-directory-b2c-devquickstarts-api-dotnet.md).
+Una vez descargado el código de ejemplo, abra el archivo .sln de Visual Studio para empezar. El archivo de solución contiene dos proyectos: `TaskWebApp` y `TaskService`. `TaskWebApp` es una aplicación web MVC con la que el usuario interactúa. `TaskService` es la API web del back-end de la aplicación que almacena la lista de tareas pendientes de cada usuario. En este artículo no se incluye la creación de la aplicación web `TaskWebApp` ni de la API web `TaskService`. Para información sobre cómo crear la aplicación web .NET con Azure AD B2C, consulte el [tutorial de aplicación web .NET](active-directory-b2c-devquickstarts-web-dotnet-susi.md). Para información sobre cómo crear la API web .NET protegida con Azure AD B2C, consulte el [tutorial de API web .NET](active-directory-b2c-devquickstarts-api-dotnet.md).
 
-### <a name="update-hello-azure-ad-b2c-configuration"></a>Actualizar configuración de hello Azure AD B2C
+### <a name="update-the-azure-ad-b2c-configuration"></a>Actualización de la configuración de Azure AD B2C
 
-Nuestro ejemplo es toouse configurado Hola directivas e ID de cliente de nuestro inquilino de demostración. Si desea que toouse su propio inquilino:
+Nuestro ejemplo está configurado para usar las directivas y el identificador de cliente de nuestro inquilino de demostración. Si desea usar su propio inquilino:
 
-1. Abra `web.config` en hello `TaskService` de proyectos y valores de hello para
+1. Abra `web.config` en el proyecto `TaskService` y reemplace los valores de
 
     * `ida:Tenant` por el nombre del inquilino
     * `ida:ClientId` por el identificador de la aplicación de API web
     * `ida:SignUpSignInPolicyId` por el nombre de directiva "Inicio de sesión o registro"
 
-2. Abra `web.config` en hello `TaskWebApp` de proyectos y valores de hello para
+2. Abra `web.config` en el proyecto `TaskWebApp` y reemplace los valores de
 
     * `ida:Tenant` por el nombre del inquilino
     * `ida:ClientId` por el identificador de la aplicación de API web
@@ -76,11 +76,11 @@ Nuestro ejemplo es toouse configurado Hola directivas e ID de cliente de nuestro
 
 ## <a name="requesting-and-saving-an-access-token"></a>Solicitud y guardado de un token de acceso
 
-### <a name="specify-hello-permissions"></a>Especificar permisos de Hola
+### <a name="specify-the-permissions"></a>Especificación de los permisos
 
-En orden toomake Hola llamada toohello API web, necesita tooauthenticate Hola usuario (mediante la directiva de inicio de sesión-up/inicio de sesión de) y [recibir un token de acceso](active-directory-b2c-access-tokens.md) de Azure AD B2C. En orden tooreceive un token de acceso, primero debe especificar permisos de hello le gustaría toogrant de token de acceso de Hola. los permisos de Hola se especifican en hello `scope` parámetro al realizar Hola solicitud toohello `/authorize` punto de conexión. Por ejemplo, tooacquire aplicación de recursos de toohello de permiso que tiene un token de acceso con hello "lectura" Hola App ID URI de `https://contoso.onmicrosoft.com/tasks`, ámbito Hola sería `https://contoso.onmicrosoft.com/tasks/read`.
+Para realizar la llamada a la API web, deberá autenticar el usuario (con la directiva de registro o inicio de sesión) y [recibir un token de acceso](active-directory-b2c-access-tokens.md) de Azure AD B2C. Para recibir un token de acceso, primero debe especificar los permisos que le gustaría que concediera el token de acceso. Los parámetros se especifican en el parámetro `scope` cuando hace la solicitud al punto de conexión `/authorize`. Por ejemplo, para adquirir un token de acceso con el permiso de "lectura" a la aplicación de recursos que tiene el URI de id. de aplicación de `https://contoso.onmicrosoft.com/tasks`, el ámbito sería `https://contoso.onmicrosoft.com/tasks/read`.
 
-ámbito de hello toospecify en nuestro archivo de ejemplo, abra hello `App_Start\Startup.Auth.cs` y definir hello `Scope` variable OpenIdConnectAuthenticationOptions.
+Para especificar el ámbito del ejemplo, abra el archivo `App_Start\Startup.Auth.cs` y defina la variable `Scope` en OpenIdConnectAuthenticationOptions.
 
 ```CSharp
 // App_Start\Startup.Auth.cs
@@ -90,16 +90,16 @@ En orden toomake Hola llamada toohello API web, necesita tooauthenticate Hola us
         {
             ...
 
-            // Specify hello scope by appending all of hello scopes requested into one string (seperated by a blank space)
+            // Specify the scope by appending all of the scopes requested into one string (seperated by a blank space)
             Scope = $"{OpenIdConnectScopes.OpenId} {ReadTasksScope} {WriteTasksScope}"
         }
     );
 }
 ```
 
-### <a name="exchange-hello-authorization-code-for-an-access-token"></a>Código de autorización de Hola para un token de acceso de Exchange
+### <a name="exchange-the-authorization-code-for-an-access-token"></a>Intercambio del código de autorización por un token de acceso
 
-Al finalizar un usuario de la experiencia de inicio de sesión o inicio de sesión de hello, la aplicación recibirá un código de autorización de Azure AD B2C. middleware de OWIN OpenID Connect de Hello almacenará el código de hello, pero no la intercambiar para un token de acceso. Puede usar hello [biblioteca MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) toomake exchange de Hola. En nuestro ejemplo, configuramos una devolución de llamada de notificación en el middleware de OpenID Connect de hello siempre que se recibe un código de autorización. En la devolución de llamada de hello, se MSAL tooexchange Hola código se utiliza un token y guardar el token de hello en la memoria caché de Hola.
+Después de que un usuario completa la experiencia de registro o inicio de sesión, la aplicación recibirá un código de autorización de Azure AD B2C. El middleware de OpenID Connect de OWIN almacenará el código, pero no lo intercambiará por un token de acceso. Puede usar la [biblioteca de MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) para hacer el intercambio. En el ejemplo, configuramos una devolución de llamada de notificación en el middleware de OpenID Connect para cada vez que se reciba un código de autorización. En la devolución de llamada, usamos MSAL para intercambiar el código por un token y guardar el token en la caché.
 
 ```CSharp
 /*
@@ -107,14 +107,14 @@ Al finalizar un usuario de la experiencia de inicio de sesión o inicio de sesi�
 */
 private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotification notification)
 {
-    // Extract hello code from hello response notification
+    // Extract the code from the response notification
     var code = notification.Code;
 
     var userObjectId = notification.AuthenticationTicket.Identity.FindFirst(ObjectIdElement).Value;
     var authority = String.Format(AadInstance, Tenant, DefaultPolicy);
     var httpContext = notification.OwinContext.Environment["System.Web.HttpContextBase"] as HttpContextBase;
 
-    // Exchange hello code for a token. Make sure toospecify hello necessary scopes
+    // Exchange the code for a token. Make sure to specify the necessary scopes
     ClientCredential cred = new ClientCredential(ClientSecret);
     ConfidentialClientApplication app = new ConfidentialClientApplication(authority, Startup.ClientId,
                                             RedirectUri, cred, new NaiveSessionCache(userObjectId, httpContext));
@@ -122,19 +122,19 @@ private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotifica
 }
 ```
 
-## <a name="calling-hello-web-api"></a>Llamar a API web de Hola
+## <a name="calling-the-web-api"></a>Llamada a la API web
 
-Esta sección describe cómo el token de hello toouse recibido durante la sesión-up/inicie sesión con Azure AD B2C en orden tooaccess Hola API web.
+En esta sección se describe cómo usar el token recibido durante el registro o el inicio de sesión con Azure AD B2C para tener acceso a la API web.
 
-### <a name="retrieve-hello-saved-token-in-hello-controllers"></a>Recuperar el token de hello guardado en los controladores de Hola
+### <a name="retrieve-the-saved-token-in-the-controllers"></a>Recuperación del token guardado en los controladores
 
-Hola `TasksController` es responsable de comunicarse con la API web de Hola y para el envío de HTTP solicitudes toohello API tooread, crear y eliminar tareas. Como Hola API está protegida por Azure AD B2C, deberá toofirst recuperar Hola símbolo (token) que guardó en hello por encima del paso.
+`TasksController` es responsable de comunicarse con la API web y de enviar solicitudes HTTP a la API para leer, crear y eliminar tareas. Debido a que la API está protegida por Azure AD B2C, debe recuperar primero el token que guardó en el paso anterior.
 
 ```CSharp
 // Controllers\TasksController.cs
 
 /*
-* Uses MSAL tooretrieve hello token from hello cache
+* Uses MSAL to retrieve the token from the cache
 */
 private async void acquireToken(String[] scope)
 {
@@ -143,7 +143,7 @@ private async void acquireToken(String[] scope)
 
     ClientCredential credential = new ClientCredential(Startup.ClientSecret);
 
-    // Retrieve hello token using hello provided scopes
+    // Retrieve the token using the provided scopes
     ConfidentialClientApplication app = new ConfidentialClientApplication(authority, Startup.ClientId,
                                         Startup.RedirectUri, credential,
                                         new NaiveSessionCache(userObjectID, this.HttpContext));
@@ -153,9 +153,9 @@ private async void acquireToken(String[] scope)
 }
 ```
 
-### <a name="read-tasks-from-hello-web-api"></a>Leer tareas de API web de Hola
+### <a name="read-tasks-from-the-web-api"></a>Leer tareas de la API web
 
-Cuando tenga un token, se puede adjuntar toohello HTTP `GET` solicitud Hola `Authorization` llamada toosecurely de encabezado `TaskService`:
+Cuando tenga un token, puede adjuntarlo a la solicitud `GET` HTTP en el encabezado `Authorization` para llamar de forma segura a `TaskService`:
 
 ```CSharp
 // Controllers\TasksController.cs
@@ -164,13 +164,13 @@ public async Task<ActionResult> Index()
 {
     try {
 
-        // Retrieve hello token with hello specified scopes
+        // Retrieve the token with the specified scopes
         acquireToken(new string[] { Startup.ReadTasksScope });
 
         HttpClient client = new HttpClient();
         HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, apiEndpoint);
 
-        // Add token toohello Authorization header and make hello request
+        // Add token to the Authorization header and make the request
         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
         HttpResponseMessage response = await client.SendAsync(request);
 
@@ -179,11 +179,11 @@ public async Task<ActionResult> Index()
 
 ```
 
-### <a name="create-and-delete-tasks-on-hello-web-api"></a>Crear y eliminar las tareas en API web de Hola
+### <a name="create-and-delete-tasks-on-the-web-api"></a>Creación y eliminación de tareas de la API web
 
-Hola seguimiento mismo patrón al enviar `POST` y `DELETE` solicita toohello web API, utilizando el token de acceso MSAL tooretrieve Hola de caché de Hola.
+Siga el mismo patrón al enviar las solicitudes `POST` y `DELETE` a la API web, mediante el uso de MSAL para recuperar el token de acceso desde la caché.
 
-## <a name="run-hello-sample-app"></a>Ejecutar la aplicación de ejemplo de Hola
+## <a name="run-the-sample-app"></a>Ejecutar la aplicación de ejemplo
 
-Por último, compile y ejecute ambas aplicaciones Hola. Registrarse iniciar sesión y crear tareas para el usuario que inició sesión Hola. Cierre la sesión y iníciela con otro usuario diferente. Cree tareas para ese usuario. Observe cómo las tareas de hello almacenados por usuario en hello API, porque Hola API extrae la identidad del usuario de Hola de recibe el token de Hola. También intente reproducir con ámbitos Hola. Quitar el permiso de hello demasiado "escritura" y, a continuación, intente agregar una tarea. Siempre que se toosign seguro out cada vez que cambie el ámbito de Hola.
+Por último, compile y ejecute ambas aplicaciones. Regístrese o inicie sesión en la aplicación y cree tareas para el usuario que ha iniciado sesión. Cierre la sesión y iníciela con otro usuario diferente. Cree tareas para ese usuario. Observe cómo se almacenan las tareas por usuario en la API, puesto que la API extrae la identidad del usuario del token que recibe. Intente también jugar con los ámbitos. Quite el permiso para "escribir" y, luego, intente agregar una tarea. Solo debe asegurarse de cerrar sesión cada vez que cambia el ámbito.
 

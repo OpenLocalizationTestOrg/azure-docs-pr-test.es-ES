@@ -1,5 +1,5 @@
 ---
-title: aaaCreate y publicar un elemento de Marketplace en pila de Azure | Documentos de Microsoft
+title: "Creación y publicación de un elemento de Marketplace en Azure Stack | Microsoft Docs"
 description: Cree y publique un elemento de Marketplace en Azure Stack.
 services: azure-stack
 documentationcenter: 
@@ -14,16 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
 ms.author: erikje
-ms.openlocfilehash: 6f6a7af96f9d8de9098ac7eee4ba2ac9bc3d6a50
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 64203ce186665aada98fbe8daed971164a650399
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Creación y publicación de un producto en Marketplace
+
+*Se aplica a: Sistemas integrados de Azure Stack y Azure Stack Development Kit*
+
 ## <a name="create-a-marketplace-item"></a>Creación de un elemento para Marketplace
-1. [Descargar](http://www.aka.ms/azurestackmarketplaceitem) herramienta Empaquetador de galería de Azure de Hola y elemento de Azure Marketplace de pila de ejemplo de Hola.
-2. Abrir elemento de catálogo de soluciones de ejemplo de Hola y cambie el nombre hello **SimpleVMTemplate** carpeta. (Hola uso mismo nombre como el elemento de Marketplace: por ejemplo, **Contoso.TodoList**.) Esta carpeta contiene:
+1. [Descargue](http://www.aka.ms/azurestackmarketplaceitem) la herramienta Azure Gallery Packager y el elemento de ejemplo de la plataforma Marketplace de Azure Stack.
+2. Abra el elemento de Marketplace de ejemplo y cambie el nombre de la carpeta **SimpleVMTemplate**. (Use el mismo nombre que el del elemento de Marketplace, por ejemplo, **Contoso.TodoList**). Esta carpeta contiene:
    
        /Contoso.TodoList/
        /Contoso.TodoList/Manifest.json
@@ -31,18 +34,18 @@ ms.lasthandoff: 10/06/2017
        /Contoso.TodoList/Icons/
        /Contoso.TodoList/Strings/
        /Contoso.TodoList/DeploymentTemplates/
-3. [Cree una plantilla de Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) o elija una de GitHub. elemento de Marketplace de Hello usa este toocreate un recurso de plantilla.
-4. toomake seguro de que el recurso de Hola pueden implementarse correctamente, probar plantilla Hola con hello las API de pila de Microsoft Azure.
-5. Si la plantilla se basa en una imagen de máquina virtual, siga las instrucciones de hello demasiado[agregar un tooAzure de imagen de máquina virtual pila](azure-stack-add-vm-image.md).
-6. Guarde la plantilla de administrador de recursos de Azure en hello **/Contoso.TodoList/DeploymentTemplates/** carpeta.
-7. Elija los iconos de Hola y texto para el elemento de Marketplace. Agregar iconos toohello **iconos** carpeta y agregar texto toohello **recursos** archivo Hola **cadenas** carpeta. Usar hello pequeño, mediano, grande y toda la convención de nomenclatura para los iconos. Consulte la sección [Referencia de UI del elemento de Marketplace](#reference-marketplace-item-ui) para obtener una descripción detallada.
+3. [Cree una plantilla de Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) o elija una de GitHub. El elemento de Marketplace usa esta plantilla para crear un recurso.
+4. Pruebe la plantilla con las API de Microsoft Azure Stack para asegurarse de que el recurso puede implementarse correctamente.
+5. Si la plantilla se basa en una imagen de máquina virtual, siga las instrucciones para [agregar una imagen de máquina virtual a Azure Stack](azure-stack-add-vm-image.md).
+6. Guarde la plantilla de Azure Resource Manager en la carpeta **/Contoso.TodoList/DeploymentTemplates/**.
+7. Elija los iconos y el texto para el elemento de Marketplace. Agregue iconos a la carpeta **Iconos** y agregue texto al archivo **recursos** de la carpeta **Cadenas**. Use la convención de nomenclatura de pequeño, mediano, grande y ancho para los iconos. Consulte la sección [Referencia de UI del elemento de Marketplace](#reference-marketplace-item-ui) para obtener una descripción detallada.
    
    > [!NOTE]
-   > Todos los tamaños de icono cuatro (pequeño, mediano y grande, todo) son necesarios para generar el elemento de Marketplace de hello correctamente.
+   > Los tamaños de los cuatro iconos (pequeño, mediano, grande y ancho) son necesarios para compilar correctamente el elemento de Marketplace.
    > 
    > 
-8. Hola **manifest.json** de archivos, cambiar **nombre** toohello nombre de su elemento de Marketplace. Cambiar **publisher** tooyour nombre u organización.
-9. En **artefactos**, cambiar **nombre** y **ruta de acceso** toohello información correcta para la plantilla de Azure Resource Manager Hola incluidas.
+8. En el archivo **manifest.json**, cambie **name** por el nombre de su elemento de Marketplace. Cambie también **publisher** por su nombre o al de su empresa.
+9. En **artifacts**, cambie **name** y **path** por la información correcta para la plantilla de Azure Resource Manager que incluye.
    
          "artifacts": [
             {
@@ -51,47 +54,47 @@ ms.lasthandoff: 10/06/2017
                 "path": "DeploymentTemplates\\Type your path",
                 "isDefault": true
             }
-10. Reemplace **Mis elementos de Marketplace** con una lista de categorías de Hola donde debe aparecer el elemento de Marketplace.
+10. Reemplace **My Marketplace Items** por una lista de las categorías en donde aparecerá su elemento de Marketplace.
     
              "categories":[
                  "My Marketplace Items"
               ],
-11. Para las demás ediciones toomanifest.json, consulte demasiado[referencia: Marketplace elemento manifest.json](#reference-marketplace-item-manifestjson).
-12. carpetas de hello toopackage en un archivo .azpkg, abra un símbolo del sistema y ejecute el siguiente comando de hello:
+11. Para cualquier modificación adicional a manifest.json, consulte la sección [Referencia: elemento manifest.json de Marketplace](#reference-marketplace-item-manifestjson).
+12. Abra un símbolo del sistema y ejecute el siguiente comando para empaquetar las carpetas en un archivo .azpkg:
     
-        AzureGalleryPackager.exe package –m <path toomanifest.json> -o <output location for hello package>
+        AzureGalleryPackager.exe package –m <path to manifest.json> -o <output location for the package>
     
     > [!NOTE]
-    > paquete de salida de toohello de ruta de acceso completa de Hello debe existir. Por ejemplo, si la ruta de acceso de salida de hello es C:\MarketPlaceItem\yourpackage.azpkg, Hola carpeta C:\MarketPlaceItem debe existir.
+    > Debe existir la ruta de acceso completa para el paquete de salida. Por ejemplo, si la ruta de acceso de salida es C:\MarketPlaceItem\yourpackage.azpkg, debe existir la carpeta C:\MarketPlaceItem.
     > 
     > 
 
 ## <a name="publish-a-marketplace-item"></a>Publicación de un elemento de Marketplace
-1. Utilice tooupload PowerShell o en el Explorador de almacenamiento de Azure su tooAzure de elemento (.azpkg) de Marketplace almacenamiento de blobs. Puede cargar el almacenamiento de Azure pila toolocal o cargue tooAzure almacenamiento. (Es una ubicación temporal para el paquete de hello). Asegúrese de que ese blob hello es accesible públicamente.
-2. En hello la máquina virtual de cliente en el entorno de Microsoft Azure pila hello, asegúrese de que la sesión de PowerShell se ha configurado con sus credenciales de administrador de servicio. Encontrará instrucciones sobre cómo tooauthenticate PowerShell en la pila de Azure en [implementar una plantilla con PowerShell](azure-stack-deploy-template-powershell.md).
-3. Hola de uso **AzureRMGalleryItem agregar** PowerShell cmdlet toopublish Hola Marketplace elemento tooAzure pila. Por ejemplo:
+1. Use PowerShell o el Explorador de Azure Storage para cargar el elemento de Marketplace (.azpkg) a Azure Blob Storage. Puede cargar en el almacenamiento de Azure Stack local o cargar en Azure Storage. (Se trata de una ubicación temporal para el paquete.) Asegúrese de que el blob es accesible públicamente.
+2. En la máquina virtual de cliente del entorno de Microsoft Azure Stack, asegúrese de que la sesión de PowerShell está configurada con sus credenciales de administrador de servicios. Puede encontrar instrucciones para la autenticación de PowerShell en Azure Stack en [Deploy a template with PowerShell](user/azure-stack-deploy-template-powershell.md) (Implementar una plantilla con PowerShell).
+3. Utilice el cmdlet **Add-AzureRMGalleryItem** de PowerShell para publicar el elemento de Marketplace en Azure Stack. Por ejemplo:
    
        Add-AzureRMGalleryItem -GalleryItemUri `
        https://sample.blob.core.windows.net/gallerypackages/Microsoft.SimpleTemplate.1.0.0.azpkg –Verbose
    
    | Parámetro | Descripción |
    | --- | --- |
-   | SubscriptionID |Identificador de suscripción de administrador de Azure. Puede recuperarlo mediante el uso de PowerShell. Si prefiere tooget en el portal de hello, vaya la suscripción del proveedor de toohello y copie Hola Id. de suscripción. |
-   | GalleryItemUri |URI del BLOB para el paquete de la galería que ya se ha cargado toostorage. |
+   | SubscriptionID |Identificador de suscripción de administrador de Azure. Puede recuperarlo mediante el uso de PowerShell. Si prefiere obtenerlo en el portal, vaya a la suscripción del proveedor y copie el identificador de suscripción. |
+   | GalleryItemUri |URI del blob del paquete de la galería que ya se ha cargado en el almacenamiento. |
    | ApiVersion |Establecido como **2015-04-01**. |
-4. Vaya toohello portal. Ahora puede ver elementos de Marketplace de hello en el portal de hello--como administrador o como un inquilino.
+4. Vaya al portal. Ahora puede ver el elemento de Marketplace en el portal, como operador o como usuario.
    
    > [!NOTE]
-   > paquete de Hello podría tardar varios tooappear minutos.
+   > El paquete puede tardar varios minutos en aparecer.
    > 
    > 
-5. El elemento de Marketplace ahora se ha guardado toohello Azure Marketplace de pila. Puede elegir toodelete desde la ubicación de almacenamiento de blobs.
-6. Puede quitar un elemento de Marketplace mediante hello **Remove-AzureRMGalleryItem** cmdlet. Ejemplo:
+5. El elemento de Marketplace ahora se ha guardado en la plataforma Marketplace de Azure Stack. Puede elegir eliminarlo de la ubicación de almacenamiento de blobs.
+6. Puede quitar un elemento de Marketplace mediante el cmdlet **Remove-AzureRMGalleryItem**. Ejemplo:
    
         Remove-AzureRMGalleryItem -Name Microsoft.SimpleTemplate.1.0.0  –Verbose
    
    > [!NOTE]
-   > Hola Marketplace de interfaz de usuario puede mostrar un error después de quitar un elemento. error de hello toofix, haga clic en **configuración** en el portal de Hola. A continuación, seleccione **Descartar modificaciones** en **Personalización del portal**.
+   > La interfaz de usuario de Marketplace puede mostrar un error después de quitar un elemento. Para solucionarlo, haga clic en **Configuración** en el portal. A continuación, seleccione **Descartar modificaciones** en **Personalización del portal**.
    > 
    > 
 
@@ -106,15 +109,15 @@ ms.lasthandoff: 10/06/2017
 ### <a name="metadata"></a>Metadatos
 | Nombre | Obligatorio | Tipo | Restricciones | Descripción |
 | --- | --- | --- | --- | --- |
-| DisplayName |X |String |Se recomiendan 80 caracteres |portal de Hello podría no mostrar el nombre de elemento correctamente si tiene más de 80 caracteres. |
-| PublisherDisplayName |X |String |Se recomiendan 30 caracteres |portal de Hello podría no mostrar el nombre del publicador correctamente si tiene más de 30 caracteres. |
+| DisplayName |X |String |Se recomiendan 80 caracteres |Es posible que el portal no muestre el nombre del elemento correctamente si tiene más de 80 caracteres. |
+| PublisherDisplayName |X |String |Se recomiendan 30 caracteres |Es posible que el portal no muestre el nombre del editor correctamente si tiene más de 30 caracteres. |
 | PublisherLegalName |X |String |256 caracteres como máximo | |
-| Resumen |X |String |60 caracteres too100 | |
-| LongSummary |X |String |140 caracteres too256 |Aún no se aplica a Azure Stack. |
-| Descripción |X |[HTML](https://auxdocs.azurewebsites.net/en-us/documentation/articles/gallery-metadata#html-sanitization) |too5 500, 000 caracteres | |
+| Resumen |X |String |entre 60 y 100 caracteres | |
+| LongSummary |X |String |entre 140 y 256 caracteres |Aún no se aplica a Azure Stack. |
+| Descripción |X |[HTML](https://auxdocs.azurewebsites.net/en-us/documentation/articles/gallery-metadata#html-sanitization) |Entre 500 y 5000 caracteres | |
 
 ### <a name="images"></a>Imágenes
-Hola Marketplace utiliza Hola siguientes iconos:
+Marketplace usa los siguientes iconos:
 
 | Nombre | Ancho | Alto | Notas |
 | --- | --- | --- | --- |
@@ -125,10 +128,10 @@ Hola Marketplace utiliza Hola siguientes iconos:
 | Instantánea |533 px |32 px |Opcional |
 
 ### <a name="categories"></a>Categorías
-Cada elemento de Marketplace se debe etiquetar con una categoría que identifica de dónde aparece el elemento hello en el portal de hello interfaz de usuario. Puede elegir una de las categorías existentes de hello en la pila de Azure (proceso, datos y almacenamiento, etc.) o elija uno nuevo.
+Todos los elementos de Marketplace deben etiquetarse con una categoría que identifique el lugar donde el elemento aparece en la interfaz de usuario del portal. Puede elegir una de las categorías existentes de Azure Stack (Compute, Data + Storage, etc.) o elegir una nueva.
 
 ### <a name="links"></a>Vínculos
-Cada elemento de catálogo de soluciones puede incluir diverso contenido tooadditional de vínculos. vínculos de Hola se especifican como una lista de nombres e identificadores URI.
+Cada elemento de Marketplace puede incluir varios vínculos a contenido adicional. Los vínculos se especifican en forma de lista de nombres e identificadores URI.
 
 | Nombre | Obligatorio | Tipo | Restricciones | Descripción |
 | --- | --- | --- | --- | --- |
@@ -136,7 +139,7 @@ Cada elemento de catálogo de soluciones puede incluir diverso contenido tooaddi
 | Identificador URI |X |URI | | |
 
 ### <a name="additional-properties"></a>Propiedades adicionales
-En suma toohello anterior metadatos, los autores de Marketplace pueden proporcionar datos de par clave/valor personalizado en hello siguiendo el formato:
+Además de los metadatos anteriores, los creadores de Marketplace pueden proporcionar datos con el par clave-valor personalizado de la forma siguiente:
 
 | Nombre | Obligatorio | Tipo | Restricciones | Descripción |
 | --- | --- | --- | --- | --- |
@@ -144,12 +147,12 @@ En suma toohello anterior metadatos, los autores de Marketplace pueden proporcio
 | Valor |X |String |30 caracteres como máximo | |
 
 ### <a name="html-sanitization"></a>Comprobación del estado de HTML
-Para cualquier campo que permite a HTML, hello atributos y los elementos siguientes se permiten:
+Todos los campos que permitan HTML pueden tener los siguientes elementos y atributos:
 
 h1, h2, h3, h4, h5, p, ol, ul, li, a[target|href], br, strong, em, b, i
 
 ## <a name="reference-marketplace-item-ui"></a>Referencia: UI del elemento de Marketplace
-Los iconos y texto para los elementos de Marketplace, tal como se muestra en el portal de Azure pila Hola son los siguientes.
+Los iconos y el texto de los elementos de Marketplace, tal como se muestran en el portal de Azure Stack son los siguientes.
 
 ### <a name="create-blade"></a>Hoja Creación
 ![Hoja Creación](media/azure-stack-marketplace-item-ui-reference/image1.png)

@@ -1,9 +1,9 @@
 ---
-title: "aaaAzure documentación de análisis de datos Lake - tutoriales, referencia de API | Documentos de Microsoft"
-description: "Aprenda a realizar análisis de macrodatos con Data Lake Analytics. Los tutoriales muestra cómo toorun procesar por lotes, en tiempo real y el análisis interactivo y cómo las consultas de toowrite U-SQL."
+title: "Documentación sobre Azure Data Lake Analytics: tutoriales y referencia de API | Microsoft Docs"
+description: "Aprenda a realizar análisis de macrodatos con Data Lake Analytics. Los tutoriales muestran cómo ejecutar análisis por lotes, en tiempo real e interactivos, y cómo escribir consultas U-SQL."
 services: data-lake-analytics
-author: saveenr
-manager: saveenr
+author: czeumault
+manager: carolz
 layout: LandingPage
 ms.assetid: 
 ms.service: data-lake-analytics
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 515ad4c2a9023e970f1da05785bf3583d37cfccf
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 0cad8acb88494755522e0772c77afcc4793d8e74
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-lake-analytics-documentation"></a>Documentación de Data Lake Analytics
 
-Obtenga información acerca de cómo toouse análisis de grandes cantidades de datos de análisis de Data Lake toorun trabajos que conjuntos de datos de toomassive de escala. Tutoriales y otra documentación mostrarle cómo toocreate y administrar el lote, en tiempo real y trabajos de análisis interactivo y cómo usar tooquery Hola lenguaje SQL U.
+Aprenda a usar Data Lake Analytics para ejecutar trabajos de análisis de macrodatos con capacidad de escalado a conjuntos de datos masivos. Los tutoriales y otra documentación muestran cómo crear y administrar trabajos de análisis por lotes, en tiempo real e interactivos, y cómo realizar consultas mediante el lenguaje U-SQL.
 
 <ul class="panelContent cardsFTitle">
     <li>

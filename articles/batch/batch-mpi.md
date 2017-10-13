@@ -1,6 +1,6 @@
 ---
-title: tareas de varias instancias de aaaUse aplicaciones de MPI toorun - Azure Batch | Documentos de Microsoft
-description: "Obtenga información acerca de cómo las aplicaciones de interfaz de paso de mensajes (MPI) tooexecute mediante la tarea de varias instancias de hello escriban en el lote de Azure."
+title: "Uso de tareas de instancias múltiples para ejecutar aplicaciones de MPI: Azure Batch | Microsoft Docs"
+description: "Obtenga información sobre cómo ejecutar aplicaciones de Interfaz de paso de mensajes (MPI) con el tipo de tarea de instancias múltiples en Lote de Azure."
 services: batch
 documentationcenter: .net
 author: tamram
@@ -14,43 +14,43 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: 5/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b0e3295a6aeb76267c26d5504bcff59de3dc5e22
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 77d12d6d48b22dfb3e7f09f273dffc11401bb15f
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="use-multi-instance-tasks-toorun-message-passing-interface-mpi-applications-in-batch"></a>Usar las aplicaciones de interfaz de paso de mensajes (MPI) de toorun de tareas de varias instancias de lote
+# <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Uso de tareas de instancias múltiples para ejecutar aplicaciones de la Interfaz de paso de mensajes (MPI) en Batch
 
-Tareas de varias instancias le permiten toorun una tarea de lote de Azure en varios nodos de ejecución al mismo tiempo. Estas tareas permiten escenarios de informática de alto rendimiento como las aplicaciones de interfaz de paso de mensajes (MPI) en Lote. En este artículo, aprenderá cómo Hola mediante las tareas de varias instancias de tooexecute [.NET de lotes] [ api_net] biblioteca.
+Las tareas de instancias múltiples le permiten ejecutar una tarea de Lote de Azure en varios nodos de proceso al mismo tiempo. Estas tareas permiten escenarios de informática de alto rendimiento como las aplicaciones de interfaz de paso de mensajes (MPI) en Lote. En este artículo, aprenderá a ejecutar tareas de instancias múltiples mediante la biblioteca [.NET de Batch][api_net].
 
 > [!NOTE]
-> Aunque los ejemplos de hello en este artículo se centran en .NET de lotes, MS-MPI, y nodos de proceso de Windows, conceptos de tarea de varias instancias de Hola que se tratan aquí son tooother aplicables plataformas y tecnologías (Python y Intel MPI en nodos de Linux, por ejemplo).
+> Aunque los ejemplos de este artículo se centran en .NET de Batch, MS-MPI y los nodos de proceso de Windows, los conceptos de tareas de múltiples instancias aquí tratados son aplicables a otras plataformas y tecnologías (Python e Intel MPI en nodos de Linux, por ejemplo).
 >
 >
 
 ## <a name="multi-instance-task-overview"></a>Información general de las tareas de instancias múltiples
-En el lote, cada tarea suele ejecutar en un nodo de proceso único--que envíe varias tareas tooa trabajo y Hola servicio por lotes programa cada tarea para su ejecución en un nodo. Sin embargo, mediante la configuración de una tarea **configuración de varias instancias**, puede indicar a lote tooinstead crear una tarea principal y varias subtareas que, a continuación, se ejecutan en varios nodos.
+En Lote, cada tarea se ejecuta normalmente en un solo nodo de proceso: se envían varias tareas a un trabajo y el servicio Lote programa la ejecución de cada tarea en un nodo. No obstante, si establece la **configuración de instancias múltiples** en una tarea, le estará diciendo a Batch que cree una tarea principal y varias tareas secundarias que se ejecutarán después en varios nodos.
 
 ![Información general de las tareas de instancias múltiples][1]
 
-Cuando se envía una tarea de trabajo de tooa de configuración de varias instancias, lote realiza varias tareas de instancia única de toomulti de pasos:
+Al enviar una tarea con configuración de instancias múltiples a un trabajo, el servicio Lote realiza  varios pasos que son específicos de las tareas de instancias múltiples:
 
-1. Hola servicio por lotes crea una **principal** y varios **subtareas** en función de la configuración de varias instancias de Hola. número total de Hola de tareas (principales además de todas las subtareas) coincide con número de Hola de **instancias** (nodos de proceso) especificados en la configuración de varias instancias de Hola.
-2. Lote designa uno de hello nodos de proceso como hello **maestro**, y programaciones Hola tooexecute tarea principal en el patrón de Hola. Programa hello subtareas tooexecute en el resto de Hola de tarea de hello proceso nodos toohello asignado varias instancias, una subtarea por nodo.
-3. Hola principal y todas las subtareas descargar cualquiera **archivos de recursos comunes** especificados en la configuración de varias instancias de Hola.
-4. Después de que se han descargado los archivos de recursos comunes de hello, hello principal y subtareas ejecutan hello **comando coordinación** especificados en la configuración de varias instancias de Hola. comando de coordinación de Hello es nodos tooprepare normalmente se usan para ejecutar la tarea hello. Esto puede incluir a partir de servicios de fondo (como [Microsoft MPI][msmpi_msdn]del `smpd.exe`) y comprobar que los nodos de hello son mensajes de tooprocess listo entre nodos.
-5. tarea principal de Hello ejecuta hello **comando de la aplicación** en el nodo principal de hello *después* comando de coordinación de Hola se ha completado correctamente por hello principal y todas las subtareas. comando de la aplicación Hello es Hola de línea de comandos de la propia tarea de varias instancias hello y se ejecuta solo por la tarea principal de hello. En una solución basada en [MS-MPI][msmpi_msdn], se trata del lugar donde ejecuta la aplicación habilitada para MPI mediante `mpiexec.exe`.
+1. El servicio Batch crea una tarea **principal** y varias tareas **secundarias** en función de la configuración de instancias múltiples definida. El número total de tareas (principales y todas las subtareas) coincide con el número de **instancias** (nodos de proceso) especificado en la configuración de múltiples instancias.
+2. Batch designa uno de los nodos de proceso como el **maestro**, y programa la tarea principal para que se ejecute en el maestro. Programa las subtareas para que se ejecuten en el resto de los nodos de proceso asignados a la tarea de múltiples instancias, una subtarea por nodo.
+3. Estas tareas, tanto la principal como las subtareas, descargan los **archivos de recursos comunes** que se especifican en la configuración de múltiples instancias.
+4. Cuando se han descargado los archivos de recursos comunes, la tarea principal y las subtareas ejecutan el **comando de coordinación** que se especifica en la configuración de instancias múltiples. El comando de coordinación normalmente se utiliza para preparar los nodos para ejecutar la tarea. Esto puede incluir iniciar servicios en segundo plano (como los de [Microsoft MPI][msmpi_msdn]`smpd.exe`) y comprobar que los nodos están listos para procesar los mensajes entre nodos.
+5. La tarea principal ejecuta el **comando de aplicación** en el nodo maestro *después de* que la principal y todas las subtareas hayan completado correctamente el comando de coordinación. Solo la tarea principal ejecuta el comando de aplicación, que es la línea de comandos especificada de la tarea de múltiples instancias. En una solución basada en [MS-MPI][msmpi_msdn], se trata del lugar donde ejecuta la aplicación habilitada para MPI mediante `mpiexec.exe`.
 
 > [!NOTE]
-> Aunque es funcionalmente distinto, Hola "tarea de varias instancias" no es un tipo de tarea único como hello [StartTask] [ net_starttask] o [JobPreparationTask] [ net_jobprep]. tarea de varias instancias de Hello es simplemente una tarea de lote estándar ([CloudTask] [ net_task] en .NET de lote) se configuró cuya configuración de varias instancias. En este artículo, nos referiremos toothis como hello **tareas varias instancias**.
+> Aunque es funcionalmente distinta, la "tarea de instancias múltiples" no es un tipo de tarea única como [StartTask][net_starttask] o [JobPreparationTask][net_jobprep]. La tarea de instancias múltiples es simplemente una tarea de Batch estándar ([CloudTask][net_task] en .NET de Batch) cuya opción de instancias múltiples se ha configurado. En este artículo, nos referiremos a ella como **tarea de instancias múltiples**.
 >
 >
 
 ## <a name="requirements-for-multi-instance-tasks"></a>Requisitos de las tareas de instancias múltiples
-Las tareas de múltiples instancias requieren un grupo con la **comunicación ente nodos habilitada** y la **ejecución simultánea de tareas deshabilitada**. ejecución de tareas simultáneas toodisable, conjunto hello [CloudPool.MaxTasksPerComputeNode](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool#Microsoft_Azure_Batch_CloudPool_MaxTasksPerComputeNode) too1 de propiedad.
+Las tareas de múltiples instancias requieren un grupo con la **comunicación ente nodos habilitada** y la **ejecución simultánea de tareas deshabilitada**. Para deshabilitar la ejecución de tareas simultáneas, establezca la propiedad [CloudPool.MaxTasksPerComputeNode](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool#Microsoft_Azure_Batch_CloudPool_MaxTasksPerComputeNode) en 1.
 
-Este fragmento de código muestra cómo toocreate un grupo de instancias múltiples tareas utilizando la biblioteca de .NET de lotes de Hola.
+Este fragmento de código muestra cómo crear un grupo para tareas de varias instancias mediante la biblioteca de .NET de Batch.
 
 ```csharp
 CloudPool myCloudPool =
@@ -67,18 +67,18 @@ myCloudPool.MaxTasksPerComputeNode = 1;
 ```
 
 > [!NOTE]
-> Si intentas toorun deshabilitada una tarea de varias instancias en un grupo con la comunicación entre nodos, o con un *maxTasksPerNode* valor mayor que 1, nunca se programa la tarea hello--indefinidamente permanece en estado de "activo" Hola. 
+> Si intenta ejecutar una tarea de instancias múltiples en un grupo con la comunicación entre nodos deshabilitada o con un valor de *maxTasksPerNode* superior a 1, la tarea nunca será programada, sino que permanecerá indefinidamente en estado "activo". 
 >
 > Se podrán ejecutar tareas de varias instancias solo en nodos de los grupos creados después del 14 de diciembre de 2015.
 >
 >
 
-### <a name="use-a-starttask-tooinstall-mpi"></a>Usar un tooinstall StartTask MPI
-aplicaciones de MPI toorun con una tarea de varias instancias, primero debe tooinstall una implementación de MPI en nodos de proceso de hello en el grupo de hello (MS-MPI o MPI de Intel, por ejemplo). Se trata de un buen momento toouse una [StartTask][net_starttask], que se ejecuta cada vez que un nodo une a un grupo o se ha reiniciado. Este fragmento de código crea un StartTask que especifica el paquete de instalación de hello MS-MPI como un [archivo de recursos][net_resourcefile]. línea de comandos de la tarea de inicio de Hola se ejecuta después de archivo de recursos de hello es nodo toohello descargado. En este caso, la línea de comandos de hello realiza una instalación desatendida de MS-MPI.
+### <a name="use-a-starttask-to-install-mpi"></a>Uso de StartTask para instalar MPI
+Para ejecutar aplicaciones MPI con una tarea de instancias múltiples, primero debe instalar una implementación de MPI (por ejemplo, MS-MPI o Intel MPI) en los nodos de proceso del grupo. Es un buen momento para utilizar una instancia de [StartTask][net_starttask], que se ejecuta cada vez que un nodo se une a un grupo o se ha reiniciado. En este fragmento de código se crea un objeto StartTask que especifica el paquete de instalación de MS-MPI como un [archivo de recursos][net_resourcefile]. La línea de comandos de la tarea de inicio se ejecuta una vez que el archivo de recurso se ha descargado en el nodo. En este caso, la línea de comandos realiza una instalación desatendida de MS-MPI.
 
 ```csharp
-// Create a StartTask for hello pool which we use for installing MS-MPI on
-// hello nodes as they join hello pool (or when they are restarted).
+// Create a StartTask for the pool which we use for installing MS-MPI on
+// the nodes as they join the pool (or when they are restarted).
 StartTask startTask = new StartTask
 {
     CommandLine = "cmd /c MSMpiSetup.exe -unattend -force",
@@ -88,15 +88,15 @@ StartTask startTask = new StartTask
 };
 myCloudPool.StartTask = startTask;
 
-// Commit hello fully configured pool toohello Batch service tooactually create
-// hello pool and its compute nodes.
+// Commit the fully configured pool to the Batch service to actually create
+// the pool and its compute nodes.
 await myCloudPool.CommitAsync();
 ```
 
 ### <a name="remote-direct-memory-access-rdma"></a>Acceso directo a memoria remota (RDMA)
-Cuando se elige un [tamaño compatibles con RDMA](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) como A9 para hello nodos de cálculo en el grupo de lote, la aplicación de MPI puede aprovechar las ventajas de alto rendimiento, latencia baja memoria directa remota (RDMA) de acceso de red de Azure.
+Cuando elige el [tamaño con capacidad RDMA](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) como A9 para los nodos de proceso del grupo de Batch, la aplicación de MPI puede aprovechar la red de acceso directo a memoria remota (RDMA) de alto rendimiento y baja latencia de Azure.
 
-Busque los tamaños de hello especificados como "Capacidad RDMA" Hola siguientes artículos:
+Consulte los tamaños compatibles con RDMA en los siguientes artículos:
 
 * Grupos de **CloudServiceConfiguration**
 
@@ -107,22 +107,22 @@ Busque los tamaños de hello especificados como "Capacidad RDMA" Hola siguientes
   * [Tamaños de las máquinas virtuales en Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
 
 > [!NOTE]
-> tootake aprovechar RDMA en [nodos de proceso de Linux](batch-linux-nodes.md), debe usar **MPI Intel** en nodos de Hola. Para obtener más información acerca de los grupos CloudServiceConfiguration y VirtualMachineConfiguration, vea Hola sección Pool de hello [Introducción a la característica por lotes](batch-api-basics.md).
+> Para sacar el máximo provecho a RDMA en los [nodos de proceso de Linux](batch-linux-nodes.md), debe utilizar **Intel MPI** en esos nodos. Para obtener más información sobre los grupos de CloudServiceConfiguration y VirtualMachineConfiguration, consulte la sección [Grupo](batch-api-basics.md) de la información general sobre las características de Batch.
 >
 >
 
 ## <a name="create-a-multi-instance-task-with-batch-net"></a>Creación de una tarea de instancias múltiples con .NET de Lote
-Ahora que hemos analizado los requisitos de grupo de hello e instalación de paquete MPI, vamos a crear la tarea de varias instancias de hello. En este fragmento de código, creamos una instancia de [CloudTask][net_task] estándar y luego configuramos su propiedad [MultiInstanceSettings][net_multiinstance_prop]. Como se mencionó anteriormente, tarea de varias instancias de hello no es un tipo de tarea distintos, pero una tarea por lotes estándar configurado con la configuración de varias instancias.
+Ahora que hemos analizado los requisitos de grupo y la instalación del paquete MPI, vamos a crear la tarea de instancias múltiples. En este fragmento de código, creamos una instancia de [CloudTask][net_task] estándar y luego configuramos su propiedad [MultiInstanceSettings][net_multiinstance_prop]. Como se mencionó anteriormente, la tarea de instancias múltiples no es un tipo de tarea distinto, sino una tarea de Lote estándar configurada con la opción de instancias múltiples.
 
 ```csharp
-// Create hello multi-instance task. Its command line is hello "application command"
-// and will be executed *only* by hello primary, and only after hello primary and
-// subtasks execute hello CoordinationCommandLine.
+// Create the multi-instance task. Its command line is the "application command"
+// and will be executed *only* by the primary, and only after the primary and
+// subtasks execute the CoordinationCommandLine.
 CloudTask myMultiInstanceTask = new CloudTask(id: "mymultiinstancetask",
     commandline: "cmd /c mpiexec.exe -wdir %AZ_BATCH_TASK_SHARED_DIR% MyMPIApplication.exe");
 
-// Configure hello task's MultiInstanceSettings. hello CoordinationCommandLine will be executed by
-// hello primary and all subtasks.
+// Configure the task's MultiInstanceSettings. The CoordinationCommandLine will be executed by
+// the primary and all subtasks.
 myMultiInstanceTask.MultiInstanceSettings =
     new MultiInstanceSettings(numberOfNodes) {
     CoordinationCommandLine = @"cmd /c start cmd /c ""%MSMPI_BIN%\smpd.exe"" -d",
@@ -132,15 +132,15 @@ myMultiInstanceTask.MultiInstanceSettings =
     }
 };
 
-// Submit hello task toohello job. Batch will take care of splitting it into subtasks and
-// scheduling them for execution on hello nodes.
+// Submit the task to the job. Batch will take care of splitting it into subtasks and
+// scheduling them for execution on the nodes.
 await myBatchClient.JobOperations.AddTaskAsync("mybatchjob", myMultiInstanceTask);
 ```
 
 ## <a name="primary-task-and-subtasks"></a>Tarea principal y subtareas
-Cuando creas Hola configuración de varias instancias de una tarea, especifique número Hola de nodos de proceso que son tareas de hello tooexecute. Cuando se envía el trabajo de la tarea tooa hello, Hola servicio por lotes crea una **principal** tareas y suficientes **subtareas** que coincidan conjuntamente con número de Hola de nodos especificado.
+Cuando se crea la configuración de instancias múltiples para una tarea, se especifica el número de nodos de proceso que ejecutarán la tarea. Cuando se envía la tarea a un trabajo, el servicio Batch crea una tarea **principal** y suficientes **subtareas** que, juntas, coinciden con el número de nodos especificado.
 
-Estas tareas se asignan un identificador entero del intervalo de hello 0 demasiado*numberOfInstances* - 1. tarea de Hello con Id. 0 es tarea principal de hello y todos los otros identificadores son subtareas. Por ejemplo, si creas Hola después de la configuración de varias instancias de una tarea, tarea principal de hello tendría un identificador de 0 y Hola subtareas tendría identificadores del 1 al 9.
+A estas tareas se les asigna a un identificador entero del intervalo de 0 a *numberOfInstances* - 1. La tarea con el identificador 0 es la tarea principal y todos los demás identificadores son subtareas. Por ejemplo, si crea la siguiente configuración de instancias múltiples para una tarea, la tarea principal tendrá un identificador de 0 y las subtareas tendrán los identificadores del 1 al 9.
 
 ```csharp
 int numberOfNodes = 10;
@@ -148,37 +148,37 @@ myMultiInstanceTask.MultiInstanceSettings = new MultiInstanceSettings(numberOfNo
 ```
 
 ### <a name="master-node"></a>Nodo maestro
-Cuando se envía una tarea de varias instancias, Hola servicio por lotes designa uno de hello nodos de proceso como nodo de "maestro" hello y programaciones Hola tooexecute tarea principal en el nodo principal de Hola. Hola subtareas son tooexecute programada del resto de nodos de hello asignado la tarea de varias instancias de toohello Hola.
+Cuando se envía una tarea de múltiples instancias, el servicio Batch designa uno de los nodos de proceso como el nodo "maestro" y programa la tarea principal para que se ejecute en el nodo maestro. Las subtareas se programan para ejecutarse en el resto de los nodos asignados a la tarea de múltiples instancias.
 
 ## <a name="coordination-command"></a>comando de coordinación
-Hola **comando coordinación** se ejecuta Hola principal y las subtareas.
+El **comando de coordinación** ejecuta tanto tareas principales como subtareas.
 
-está bloqueando la invocación de Hola de comando de coordinación de hello--por lotes no ejecutan el comando de la aplicación hello hasta que el comando de coordinación de hello ha devuelto correctamente para todas las subtareas. comando de coordinación de Hello, por tanto, debe iniciar los servicios de fondo requerido, compruebe que están listas para su uso y, a continuación, salir. Por ejemplo, este comando de coordinación en una solución mediante MS-MPI versión 7 inicia el servicio SMPD de hello en el nodo de hello, entonces se cierra:
+La invocación del comando de coordinación se bloquea: el servicio Lote no ejecuta el comando de aplicación hasta que el comando de coordinación se ha devuelto correctamente para todas las subtareas. Por lo tanto, el comando de coordinación debe iniciar los servicios en segundo plano necesarios, comprobar que están listos para utilizarse y luego cerrarse. Por ejemplo, este comando de coordinación para una solución que utiliza la versión 7 de MS-MPI inicia el servicio SMPD en el nodo y luego se cierra:
 
 ```
 cmd /c start cmd /c ""%MSMPI_BIN%\smpd.exe"" -d
 ```
 
-Tenga en cuenta uso Hola de `start` en este comando de coordinación. Esto es necesario porque hello `smpd.exe` aplicación no se devuelve inmediatamente después de la ejecución. Sin usar Hola Hola [iniciar] [ cmd_start] de comandos, este comando de coordinación no devolvería y, por tanto, bloquearían Hola aplicación ejecución del comando.
+Observe el uso de `start` en este comando de coordinación. Esto es necesario porque la aplicación `smpd.exe` no devuelve resultados inmediatamente después de la ejecución. Sin el uso del comando [start][cmd_start], este comando de coordinación no devolvería resultados y, por tanto, impediría que se ejecutara el comando de aplicación.
 
 ## <a name="application-command"></a>Comando de aplicación
-Una vez que la tarea principal de hello y todas las subtareas han terminado de ejecutar el comando de coordinación de hello, línea de comandos de la tarea de varias instancias de Hola se ejecuta por la tarea principal de hello *sólo*. Llamamos a este hello **comando aplicación** toodistinguish de comando de coordinación de Hola.
+Una vez que la tarea principal y todas las subtareas han terminado de ejecutar el comando de coordinación, *solo*la tarea principal ejecuta la línea de comandos de la tarea de instancias múltiples. Llamaremos a este el **comando de aplicación** para distinguirlo del comando de coordinación.
 
-Para las aplicaciones de MS-MPI, use Hola aplicación comando tooexecute una aplicación habilitada para MPI con `mpiexec.exe`. Por ejemplo, este es un comando de aplicación para una solución mediante la versión 7 de MS-MPI:
+Para las aplicaciones de MS-MPI, use el comando de aplicación para ejecutar la aplicación habilitada para MPI con `mpiexec.exe`. Por ejemplo, este es un comando de aplicación para una solución mediante la versión 7 de MS-MPI:
 
 ```
 cmd /c ""%MSMPI_BIN%\mpiexec.exe"" -c 1 -wdir %AZ_BATCH_TASK_SHARED_DIR% MyMPIApplication.exe
 ```
 
 > [!NOTE]
-> Dado que MS-MPI `mpiexec.exe` usa Hola `CCP_NODES` variable de forma predeterminada (vea [variables de entorno](#environment-variables)) hello (ejemplo) se excluye la línea de comandos de la aplicación anterior.
+> Dado que `mpiexec.exe` de MS-MPI utiliza la variable `CCP_NODES` de forma predeterminada (consulte [Variables de entorno](#environment-variables)), la línea de comandos de aplicación del ejemplo anterior la excluye.
 >
 >
 
 ## <a name="environment-variables"></a>Variables de entorno
-Proceso por lotes crea varios [variables de entorno] [ msdn_env_var] tareas toomulti-instancia específica en hello nodos asignan la tarea de varias instancias de tooa de proceso. Las líneas de comando de coordinación y la aplicación puede hacer referencia a estas variables de entorno, como puede Hola scripts y programas que se ejecutan.
+Batch crea varias [variables de entorno][msdn_env_var] específicas de las tareas de múltiples instancias en los nodos de proceso asignados a una tarea de múltiples instancias. Las líneas de comando de coordinación y de la aplicación pueden hacer referencia a estas variables de entorno, como los scripts y programas que se ejecutan.
 
-Hello siguientes variables de entorno se crean Hola servicio por lotes para su uso por las tareas de varias instancias:
+Las siguientes variables de entorno las crea el servicio Batch para su uso por las tareas de múltiples instancias:
 
 * `CCP_NODES`
 * `AZ_BATCH_NODE_LIST`
@@ -187,56 +187,56 @@ Hello siguientes variables de entorno se crean Hola servicio por lotes para su u
 * `AZ_BATCH_TASK_SHARED_DIR`
 * `AZ_BATCH_IS_CURRENT_NODE_MASTER`
 
-Para obtener detalles completos sobre estos y Hola otras variables de entorno de proceso por lotes proceso nodo, incluido su contenido y la visibilidad, vea [variables de entorno de nodo de proceso][msdn_env_var].
+Para obtener detalles completos sobre estas y las demás variables de entorno del nodo de proceso de Batch, incluido su contenido y la visibilidad, consulte [Variables de entorno del nodo de proceso][msdn_env_var].
 
 > [!TIP]
-> ejemplo de código de Hello MPI de Linux de lote contiene un ejemplo de cómo se pueden utilizar algunas de estas variables de entorno. Hola [coordinación cmd] [ coord_cmd_example] Bash script descarga la aplicación comunes y los archivos de entrada desde el almacenamiento de Azure, permite a un recurso compartido de Network File System (NFS) en el nodo principal de Hola y configura Hola otros nodos asignar tareas de varias instancias de toohello como clientes NFS.
+> El ejemplo de código de Linux MPI de Batch contiene un ejemplo de cómo se pueden usar varias de estas variables de entorno. El script de Batch [coordination-cmd][coord_cmd_example] descarga archivos de aplicación y entrada comunes desde Azure Storage, permite a un recurso compartido de Network File System (NFS) en el nodo maestro y configura los demás nodos asignados a la tarea de múltiples instancias, como clientes NFS.
 >
 >
 
 ## <a name="resource-files"></a>Archivos de recursos
-Hay dos conjuntos de tooconsider de archivos de recursos para tareas de varias instancias: **archivos de recursos comunes** que *todos los* descargar tareas (ambos principal y subtareas), hello y **dearchivosderecursos** especificado para hello varias instancias de tareas, que *sólo Hola principal* descargas de tareas.
+Hay dos conjuntos de archivos de recursos que se deben tener en cuenta para las tareas de múltiples instancias: **archivos de recursos comunes** que descargan *todas* las tareas (tanto principales como subtareas) y **archivos de recursos** especificados para la propia tarea de múltiples instancias, que descarga *solo la tarea principal*.
 
-Puede especificar uno o varios **archivos de recursos comunes** en la configuración de varias instancias de Hola para una tarea. Estos archivos de recursos comunes se descargan desde [el almacenamiento de Azure](../storage/common/storage-introduction.md) en cada nodo **directorio compartido de tarea** Hola principal y todas las subtareas. Puede tener acceso a directorio compartido de hello tareas de líneas de comandos de la aplicación y la coordinación mediante hello `AZ_BATCH_TASK_SHARED_DIR` variable de entorno. Hola `AZ_BATCH_TASK_SHARED_DIR` ruta de acceso es idéntico en cada tarea de varias instancias de nodo toohello asignado, lo que puede compartir un comando único coordinación entre Hola principal y todas las subtareas. Lote no "compartir" directorio de hello en un sentido de acceso remoto, pero puede usar como un montaje o compartir punto tal y como se mencionó anteriormente en la sugerencia de hello en variables de entorno.
+Puede especificar uno o más **archivos de recursos comunes** en la configuración de instancias múltiples de una tarea. La tarea principal y todas las subtareas descargan estos archivos de recursos comunes desde el [Azure Storage](../storage/common/storage-introduction.md) en el **directorio compartido de tareas** de cada nodo. Puede tener acceso al directorio compartido de tareas desde las líneas de comandos de coordinación y aplicación mediante la variable de entorno `AZ_BATCH_TASK_SHARED_DIR` . La ruta de acceso `AZ_BATCH_TASK_SHARED_DIR` es idéntica en todos los nodos asignados a la tarea de múltiples instancias, por lo que puede compartir un único comando de coordinación entre el principal y todas las subtareas. Batch no "comparte" el directorio en un sentido de acceso remoto, pero puede usarlo como un montaje o punto de recurso compartido, tal como se mencionó anteriormente en la información sobre las variables de entorno.
 
-Archivos de recursos que especifique para la propia tarea de varias instancias hello son directorio de trabajo de la tarea de toohello descargado, `AZ_BATCH_TASK_WORKING_DIR`, de forma predeterminada. Tal y como se ha mencionado, en cambio toocommon archivos de recursos, solo tarea principal de hello descarga archivos de recursos especificados para la propia tarea de varias instancias Hola.
+Los archivos de recursos que especifique para la propia tarea de múltiples instancias se descargan en el directorio de trabajo de la tarea, `AZ_BATCH_TASK_WORKING_DIR`, de forma predeterminada. Como se mencionó, a diferencia de los archivos de recursos comunes, solo la tarea principal descarga los archivos de recursos especificados para la propia tarea de múltiples instancias.
 
 > [!IMPORTANT]
-> Utilice siempre las variables de entorno de hello `AZ_BATCH_TASK_SHARED_DIR` y `AZ_BATCH_TASK_WORKING_DIR` directorios de toothese toorefer en las líneas de comando. No intente manualmente las rutas de acceso de tooconstruct Hola.
+> Utilice siempre las variables de entorno `AZ_BATCH_TASK_SHARED_DIR` y `AZ_BATCH_TASK_WORKING_DIR` para hacer referencia a estos directorios en las líneas de comando. No intente construir las rutas de acceso manualmente.
 >
 >
 
 ## <a name="task-lifetime"></a>Duración de la tarea
-duración de Hola de duración de hello tarea principal controles Hola de tarea de hello todo varias instancias. Cuando se cierra Hola principal, se terminan todas Hola subtareas. código de salida de Hello de hello principal es el código de salida de hello de tarea hello y es, por tanto, toodetermine usado Hola éxito o error de tarea de Hola para fines de reintento.
+La duración de la tarea principal controla la duración de toda la tarea de instancias múltiples. Cuando se cierra la tarea principal, todas las subtareas se terminan. El código de salida de la tarea principal es el código de salida de la tarea y, por tanto, se utiliza para determinar el éxito o fracaso de la tarea con fines de reintento.
 
-Si se produce un error en cualquiera de las subtareas hello, salir con un código de retorno distinto de cero, por ejemplo, hello todo varias instancias tarea genera un error. tarea de varias instancias de Hello, a continuación, se terminan y se vuelve a intentar la tooits límite de reintentos.
+Si se produce un error en alguna de las subtareas, por ejemplo, se cierra con un código de error distinto de cero, la tarea de instancias múltiples entera dará error. Entonces la tarea de instancias múltiples se termina y se reintenta, hasta su límite de reintento.
 
-Cuando se elimina una tarea de varias instancias, también se eliminan por servicio por lotes de Hola Hola principal y todas las subtareas. Todos los directorios de subtarea y sus archivos se eliminan de los nodos de proceso de hello, como ocurre con una tarea estándar.
+Cuando se elimina una tarea de instancias múltiples, el servicio Lote también elimina la tarea principal y todas las subtareas. Todos los directorios de subtarea y sus archivos se eliminan de los nodos de proceso, igual que en el caso de una tarea estándar.
 
-[TaskConstraints] [ net_taskconstraints] para una tarea de varias instancias, como hello [MaxTaskRetryCount][net_taskconstraint_maxretry], [MaxWallClockTime] [ net_taskconstraint_maxwallclock], y [RetentionTime] [ net_taskconstraint_retention] se respetan las propiedades, como son para una tarea estándar y aplicar toohello principal y todas las subtareas. Sin embargo, si cambia hello [RetentionTime] [ net_taskconstraint_retention] propiedad después de agregar el trabajo de toohello tarea hello varias instancias, este cambio es tarea principal toohello solo aplicada. Todas las subtareas de hello contribuyen toouse Hola original [RetentionTime][net_taskconstraint_retention].
+Los valores de [TaskConstraints][net_taskconstraints] para una tarea de instancias múltiples, como las propiedades [MaxTaskRetryCount][net_taskconstraint_maxretry], [MaxWallClockTime][net_taskconstraint_maxwallclock] y [RetentionTime][net_taskconstraint_retention], se respetan ya que son para una tarea estándar, y se aplican a la tarea principal y a todas las subtareas. Sin embargo, si cambia la propiedad [RetentionTime][net_taskconstraint_retention] después de agregar la tarea de instancias múltiples al trabajo, este cambio solo se aplica a la tarea principal. Todas las subtareas seguirán usando la propiedad [RetentionTime][net_taskconstraint_retention] original.
 
-Lista de tareas recientes de un nodo de proceso refleja identificador hello de una subtarea si tareas recientes Hola formaba parte de una tarea de varias instancias.
+La lista de tareas recientes de un nodo de proceso reflejará el identificador de una subtarea si la tarea reciente era parte de una tarea de instancias múltiples.
 
 ## <a name="obtain-information-about-subtasks"></a>Obtención de información sobre las subtareas
-información de tooobtain en subtareas mediante .NET de lote Hola biblioteca, llamada hello [CloudTask.ListSubtasks] [ net_task_listsubtasks] método. Este método devuelve información sobre todas las subtareas y obtener información acerca de hello proceso nodo que ejecuta tareas de Hola. De esta información, puede determinar el directorio de raíz de cada subtarea, Id. de grupo de hello, su estado actual, código de salida y mucho más. Esta información se puede utilizar en combinación con hello [PoolOperations.GetNodeFile] [ poolops_getnodefile] archivos de subtarea de método tooobtain Hola. Tenga en cuenta que este método no devuelve información de la tarea principal de hello (Id. 0).
+Para obtener información sobre las subtareas mediante la biblioteca .NET de Batch, llame al método [CloudTask.ListSubtasks][net_task_listsubtasks]. Este método devuelve información sobre todas las subtareas e información sobre el nodo de proceso que ejecuta las tareas. A partir de esta información, puede determinar el directorio raíz de cada subtarea, el identificador de grupo, su estado actual, el código de salida, etc. Esta información se puede utilizar en combinación con el método [PoolOperations.GetNodeFile][poolops_getnodefile] para obtener los archivos de la subtarea. Tenga en cuenta que este método no devuelve información de la tarea principal (id. 0).
 
 > [!NOTE]
-> A menos que se indique lo contrario, los métodos de .NET de lotes que operan en Hola varias instancias [CloudTask] [ net_task] propio aplicar *sólo* toohello de tarea principal. Por ejemplo, cuando se llama a hello [CloudTask.ListNodeFiles] [ net_task_listnodefiles] método en una tarea de varias instancias, se devuelven únicamente los archivos de la tarea principal de Hola.
+> A menos que se indique lo contrario, los métodos .NET de Batch que operan en la propia clase [CloudTask][net_task] de varias instancias, *solo* se aplican a la tarea principal. Por ejemplo, al llamar al método [CloudTask.ListNodeFiles][net_task_listnodefiles] en una tarea de instancias múltiples, solo se devuelven los archivos de la tarea principal.
 >
 >
 
-Hello fragmento de código siguiente muestra cómo tooobtain subtarea información, así como contenido del archivo de solicitud de nodos de hello en el que ejecuta.
+El fragmento de código siguiente muestra cómo obtener información de la subtarea y cómo solicitar contenido de archivos de los nodos en los que se ejecuta.
 
 ```csharp
-// Obtain hello job and hello multi-instance task from hello Batch service
+// Obtain the job and the multi-instance task from the Batch service
 CloudJob boundJob = batchClient.JobOperations.GetJob("mybatchjob");
 CloudTask myMultiInstanceTask = boundJob.GetTask("mymultiinstancetask");
 
-// Now obtain hello list of subtasks for hello task
+// Now obtain the list of subtasks for the task
 IPagedEnumerable<SubtaskInformation> subtasks = myMultiInstanceTask.ListSubtasks();
 
-// Asynchronously iterate over hello subtasks and print their stdout and stderr
-// output if hello subtask has completed
+// Asynchronously iterate over the subtasks and print their stdout and stderr
+// output if the subtask has completed
 await subtasks.ForEachAsync(async (subtask) =>
 {
     Console.WriteLine("subtask: {0}", subtask.Id);
@@ -265,39 +265,39 @@ await subtasks.ForEachAsync(async (subtask) =>
 ```
 
 ## <a name="code-sample"></a>Código de ejemplo
-Hola [MultiInstanceTasks] [ github_mpi] ejemplo de código en GitHub muestra cómo toouse una instancia de varias tareas toorun una [MS-MPI] [ msmpi_msdn] aplicación de nodos de proceso por lotes. Siga los pasos de hello en [preparación](#preparation) y [ejecución](#execution) ejemplo de Hola a toorun.
+En el ejemplo de código [MultiInstanceTasks][github_mpi] que se encuentra en GitHub se muestra cómo puede usarse una tarea de instancias múltiples para ejecutar una aplicación de [MS-MPI][msmpi_msdn] en los nodos de proceso de Batch. Siga los pasos que se describen en las secciones [Preparación](#preparation) y [Ejecución](#execution) para ejecutar el ejemplo.
 
 ### <a name="preparation"></a>Preparación
-1. Siga los dos primeros pasos de hello en [cómo toocompile y ejecutar un programa sencillo de MS-MPI][msmpi_howto]. Esto cumple hello prerequesites para hello siguiendo el paso.
-2. Crear un *versión* versión de hello [MPIHelloWorld] [ helloworld_proj] programa de MPI de ejemplo. Se trata de un programa hello que se ejecutará en los nodos de proceso mediante la tarea de varias instancias de hello.
-3. Cree un archivo zip que contenga `MPIHelloWorld.exe` (creado en el paso 2) y `MSMpiSetup.exe` (descargado en el paso 1). Cargue este archivo zip como un paquete de aplicación en el paso siguiente de saludo.
-4. Hola de uso [portal de Azure] [ portal] toocreate un lote [aplicación](batch-application-packages.md) denominado "MPIHelloWorld" y especifique el archivo zip de hello creado en el paso anterior de hello como versión "1.0" de paquete de aplicación Hola. Para más información, consulte [Carga y administración de aplicaciones](batch-application-packages.md#upload-and-manage-applications).
+1. Siga los dos primeros pasos que se indican en [Compilación y ejecución de un sencillo programa de MS-MPI][msmpi_howto]. De este modo, cumplirá los requisitos necesarios para el siguiente paso.
+2. Compile una versión de *lanzamiento* del programa de ejemplo [MPIHelloWorld][helloworld_proj] de MPI. La tarea de instancias múltiples ejecutará este programa en los nodos de proceso.
+3. Cree un archivo zip que contenga `MPIHelloWorld.exe` (creado en el paso 2) y `MSMpiSetup.exe` (descargado en el paso 1). En el siguiente paso, cargará este archivo zip como paquete de aplicación.
+4. Use [Azure Portal][portal] para crear una [aplicación](batch-application-packages.md) de Batch llamada "MPIHelloWorld" y establezca el archivo zip que creó en el paso anterior como versión "1.0" del paquete de aplicación. Para más información, consulte [Carga y administración de aplicaciones](batch-application-packages.md#upload-and-manage-applications).
 
 > [!TIP]
-> Crear un *versión* versión de `MPIHelloWorld.exe` para que no tengan tooinclude las dependencias adicionales (por ejemplo, `msvcp140d.dll` o `vcruntime140d.dll`) en el paquete de aplicación.
+> Cree una versión de *lanzamiento* de `MPIHelloWorld.exe` para que no tenga que incluir otras dependencias (por ejemplo, `msvcp140d.dll` o `vcruntime140d.dll`) en el paquete de aplicación.
 >
 >
 
 ### <a name="execution"></a>Ejecución
-1. Descargar hello [ejemplos de lote de azure] [ github_samples_zip] desde GitHub.
-2. Abra hello MultiInstanceTasks **solución** en Visual Studio 2015 o versiones más recientes. Hola `MultiInstanceTasks.sln` archivo de solución se encuentra en:
+1. Descargue [azure-batch-samples][github_samples_zip] de GitHub.
+2. Abra la **solución** MultiInstanceTasks en Visual Studio 2015 o una versión posterior. El archivo de solución de `MultiInstanceTasks.sln` se encuentra en:
 
     `azure-batch-samples\CSharp\ArticleProjects\MultiInstanceTasks\`
-3. Escriba sus credenciales de cuenta de lote y el almacenamiento en `AccountSettings.settings` en hello **Microsoft.Azure.Batch.Samples.Common** proyecto.
-4. **Compilar y ejecutar** el aplicación de ejemplo de Hola MultiInstanceTasks solución tooexecute Hola MPI en nodos de cálculo en un grupo de lote.
-5. *Opcional*: Hola de uso [portal de Azure] [ portal] o hello [Explorer lote] [ batch_explorer] tooexamine grupo de ejemplo de Hola, trabajo, y tarea ("MultiInstanceSamplePool", "MultiInstanceSampleJob", "MultiInstanceSampleTask") antes de eliminar los recursos de Hola.
+3. En el proyecto **Microsoft.Azure.Batch.Samples.Common**, especifique las credenciales de la cuenta de Batch y Storage en `AccountSettings.settings`.
+4. **Compile y ejecute** la solución MultiInstanceTasks. De este modo, ejecutará la aplicación de ejemplo de MPI en los nodos de proceso de un grupo de Batch.
+5. *Opcional*: puede usar [Azure Portal][portal] o el [explorador de Batch][batch_explorer] para examinar el grupo, el trabajo y la tarea de ejemplo ("MultiInstanceSamplePool", "MultiInstanceSampleJob" y "MultiInstanceSampleTask") antes de eliminar los recursos.
 
 > [!TIP]
 > Si no tiene Visual Studio, puede descargar gratis [Visual Studio Community][visual_studio].
 >
 >
 
-Resultado de `MultiInstanceTasks.exe` es similar siguiente toohello:
+La salida de `MultiInstanceTasks.exe` será similar a la siguiente:
 
 ```
 Creating pool [MultiInstanceSamplePool]...
 Creating job [MultiInstanceSampleJob]...
-Adding task [MultiInstanceSampleTask] toojob [MultiInstanceSampleJob]...
+Adding task [MultiInstanceSampleTask] to job [MultiInstanceSampleJob]...
 Awaiting task completion, timeout in 00:30:00...
 
 Main task [MultiInstanceSampleTask] is in state [Completed] and ran on compute node [tvm-1219235766_1-20161017t162002z]:
@@ -307,7 +307,7 @@ Rank 1 received string "Hello world" from Rank 0
 
 ---- stderr.txt ----
 
-Main task completed, waiting 00:00:10 for subtasks toocomplete...
+Main task completed, waiting 00:00:10 for subtasks to complete...
 
 ---- Subtask information ----
 subtask: 1
@@ -324,12 +324,12 @@ subtask: 2
 Delete job? [yes] no: yes
 Delete pool? [yes] no: yes
 
-Sample complete, hit ENTER tooexit...
+Sample complete, hit ENTER to exit...
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-* blog del equipo de lote de Azure y Microsoft HPC Hola describe [MPI compatibilidad con Linux en Azure Batch][blog_mpi_linux]e incluye información sobre el uso de [OpenFOAM] [ openfoam] con el lote. Puede encontrar ejemplos de código de Python para hello [ejemplo OpenFOAM en GitHub][github_mpi].
-* Obtenga información acerca de cómo demasiado[crear grupos de nodos de proceso de Linux](batch-linux-nodes.md) para su uso en sus soluciones de MPI de lote de Azure.
+* En el blog Microsoft HPC & Azure Batch Team se trata sobre la [compatibilidad de MPI para Linux en Azure Batch][blog_mpi_linux], e incluye información sobre el uso de [OpenFOAM][openfoam] con Batch. Puede encontrar ejemplos de código de Python para el [ejemplo de OpenFOAM en GitHub][github_mpi].
+* Aprenda a [crear grupos de nodos de proceso de Linux](batch-linux-nodes.md) para utilizarlos en soluciones de MPI con Azure Batch.
 
 [helloworld_proj]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/MultiInstanceTasks/MPIHelloWorld
 

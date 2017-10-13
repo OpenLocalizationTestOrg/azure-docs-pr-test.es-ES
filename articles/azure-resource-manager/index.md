@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure documentación del Administrador de recursos - tutoriales, referencia de API | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toouse toodeploy del Administrador de recursos y administrar recursos de la solución como un grupo y toocreate plantillas para la implementación de recursos coherente y repetible."
+title: "Documentación sobre Azure Resource Manager: tutoriales y referencia de API | Microsoft Docs"
+description: "Aprenda a usar Resource Manager para implementar y administrar recursos de solución en grupo y para crear plantillas para la implementación de recursos de forma uniforme y repetible."
 services: azure-resource-manager
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: dc920b14e84bbad1a178fc91a61a1d2642d644b1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ab6725298c9e9c496d2e20b4e68ff72af1432bb2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="azure-resource-manager-documentation"></a>Documentación de Azure Resource Manager
 
-Obtenga información acerca de cómo toouse toodeploy del Administrador de recursos, supervisar y administrar recursos de la solución como un grupo. Tutoriales, referencias de API y otra documentación mostrarle cómo agrupa tooset recurso y cómo crear plantillas para la implementación coherente y repetible.
+Aprenda a usar Resource Manager para implementar, supervisar y administrar recursos de solución en grupo. En los tutoriales, las referencias de API y otra documentación, se muestra cómo configurar grupos de recursos y crear plantillas para la implementación uniforme y repetible.
 
 <ul class="panelContent cardsFTitle">
     <li>

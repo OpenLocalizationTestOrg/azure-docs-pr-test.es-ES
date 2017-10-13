@@ -1,6 +1,6 @@
 ---
-title: "portal de desarrollador de administración de API aaaCustomize hello mediante plantillas-Azure | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toocustomize Hola portal para desarrolladores de administración de API de Azure mediante plantillas."
+title: "Personalización del portal para desarrolladores para API Management mediante plantillas - Azure| Microsoft Docs"
+description: "Obtenga información sobre cómo personalizar el portal para desarrolladores para Administración de API de Azure mediante plantillas"
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -14,58 +14,58 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: b00d5f1534e9466f30ff3920e7aae048feb8b8c4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 40d25726d31d2018785b77d169a8811c565316bf
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toocustomize-hello-azure-api-management-developer-portal-using-templates"></a>¿Cómo toocustomize Hola portal para desarrolladores de administración de API de Azure mediante plantillas
+# <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Cómo personalizar el portal para desarrolladores de Administración de API de Azure mediante plantillas
 
-Hay tres portal para desarrolladores de aspectos fundamentales toocustomize hello en administración de API de Azure:
+Existen tres maneras fundamentales de personalizar el portal para desarrolladores en Azure API Management:
 
-* [Editar contenido de Hola de páginas estáticas y elementos de diseño de página][modify-content-layout]
-* [Actualizar estilos de hello utilizados para los elementos de la página a través del portal para desarrolladores de Hola][customize-styles]
-* [Modificar plantillas de hello utilizadas para las páginas generadas por el portal de hello] [ portal-templates] (que se explica en esta guía)
+* [Editar el contenido de las páginas estáticas y los elementos de diseño de página][modify-content-layout]
+* [Actualizar los estilos usados para los elementos de página en el portal para desarrolladores] [ customize-styles]
+* [Modificar las plantillas que se usan para las páginas generadas por el portal de] [ portal-templates] (que se explica en esta guía)
 
-Las plantillas son utilizados toocustomize Hola contenido de páginas del portal para desarrolladores generados por el sistema (por ejemplo, documentos de API, productos, autenticación de usuario, etcetera). Usar [DotLiquid](http://dotliquidmarkup.org/) sintaxis y un conjunto proporcionado de recursos de cadena traducida, iconos y controles de la página tienen contenido de gran flexibilidad tooconfigure Hola de páginas de hello como considere oportuno.
+Las plantillas se usan para personalizar el contenido de las páginas del portal para desarrolladores generadas por el sistema (por ejemplo, documentos de API, productos, autenticación de usuario, etc.). Mediante la sintaxis [DotLiquid](http://dotliquidmarkup.org/) y un conjunto proporcionado de recursos de cadena localizada, iconos y controles de página, dispone de una gran flexibilidad para configurar el contenido de las páginas según le convenga.
 
 ## <a name="developer-portal-templates-overview"></a>Información general sobre las plantillas del portal para desarrolladores
-Edición de plantillas se realiza de hello **portal para desarrolladores de** al que se va a iniciado sesión como administrador. tooget no existe en primer lugar abra Hola Portal de Azure y haga clic en **portal para desarrolladores de** de barra de herramientas de servicio de saludo de la instancia de la administración de API.
+La edición de las reglas de estilo se realiza en el **portal para desarrolladores** durante el inicio de sesión como administrador. Para llegar hasta allí, primero abra Azure Portal y haga clic en **Portal para editores** en la barra de herramientas de servicios de su instancia de API Management.
 
 ![Portal del publicador][api-management-management-console]
 
-A continuación, haga clic en **portal para desarrolladores de** en hello superior derecha. 
+A continuación, haga clic en **Portal para desarrolladores de** en la parte superior derecha. 
 
 ![Menú del portal para desarrolladores][api-management-developer-portal-menu]
 
-tooaccess Hola plantillas del portal para desarrolladores, haga clic en hello personalizar el icono de menú de personalización de hello toodisplay izquierdo hello y haga clic en **plantillas**.
+Para acceder a las plantillas del portal para desarrolladores, haga clic en el icono de personalización de la izquierda para mostrar el menú de personalización y haga clic en **Plantillas**.
 
 ![Plantillas del portal para desarrolladores][api-management-customize-menu]
 
-lista de plantillas de Hello muestra varias categorías de plantillas que tratan sobre las distintas páginas de hello en el portal para desarrolladores de Hola. Cada plantilla es diferente, pero Hola pasos tooedit ellos y publicar los cambios de Hola se Hola igual. tooedit una plantilla, haga clic en nombre de Hola de plantilla de Hola.
+La lista de plantillas muestra varias categorías de plantillas que abarcan las distintas páginas del portal para desarrolladores. Cada plantilla es diferente, pero los pasos para editarlas y publicar los cambios son los mismos. Para editar una plantilla, haga clic en el nombre.
 
 ![Plantillas del portal para desarrolladores][api-management-templates-menu]
 
-Al hacer clic en una plantilla, se le toohello developer página del portal que se puede personalizar por esa plantilla. En este Hola ejemplo **lista de productos** se muestra la plantilla. Hola **lista de productos** área de pantalla de bienvenida indicado por el rectángulo rojo Hola Hola a controles de la plantilla. 
+Cuando hace clic en una plantilla, se abre la página del portal para desarrolladores que se puede personalizar con esa plantilla. En este ejemplo se muestra la plantilla **Lista de productos** . La plantilla **Lista de productos** controla el área de la pantalla que se indica con un rectángulo rojo. 
 
 ![Plantilla de lista de productos][api-management-developer-portal-templates-overview]
 
-Algunas plantillas, como hello **perfil de usuario** plantillas, personalizar diferentes partes de hello sintonía. 
+Algunas plantillas, como las plantillas **Perfil de usuario** , personalizan partes diferentes de la misma página. 
 
 ![Plantillas de perfil de usuario][api-management-user-profile-templates]
 
-editor de Hola para cada plantilla del portal para desarrolladores tiene dos secciones muestra final Hola de página Hola. lado izquierdo de Hello muestra hello editar panel para la plantilla de Hola y derecha hello muestra el modelo de datos de hello para la plantilla de Hola. 
+El editor de cada plantilla del portal para desarrolladores tiene dos secciones que se muestran en la parte inferior de la página. El lado izquierdo muestra el panel de edición de la plantilla y el lado derecho muestra el modelo de datos de la plantilla. 
 
-panel de edición de la plantilla de Hello contiene marcado Hola que controla la apariencia de Hola y el comportamiento de la página correspondiente de hello en el portal para desarrolladores de Hola. marcado de Hello en plantilla hello usa hello [DotLiquid](http://dotliquidmarkup.org/) sintaxis. Un editor popular de DotLiquid es [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers). Cualquier plantilla de toohello los cambios realizados durante la edición se muestra en tiempo real en el Explorador de hello, pero son los clientes de tooyour no es visible hasta que [guardar](#to-save-a-template) y [publicar](#to-publish-a-template) plantilla Hola.
+El panel de edición de plantillas contiene el marcado que controla la apariencia y el comportamiento de la página correspondiente en el portal para desarrolladores. El marcado de la plantilla usa la sintaxis [DotLiquid](http://dotliquidmarkup.org/) . Un editor popular de DotLiquid es [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers). Todos los cambios que se realizan en la plantilla durante la edición se muestran en tiempo real en el explorador, pero no son visibles para los clientes mientras no se [guarda](#to-save-a-template) y se [publica](#to-publish-a-template) la plantilla.
 
 ![Marcado de plantilla][api-management-template]
 
-Hola **datos de la plantilla** panel proporciona una guía toohello datos modelo para entidades de Hola que están disponibles para su uso en una plantilla determinada. Esta guía proporciona mostrando los datos en directo de Hola que actualmente se muestran en el portal para desarrolladores de Hola. Se pueden expandir paneles de plantilla de hello haciendo clic en el rectángulo de hello en la esquina superior derecha de Hola de hello **datos de la plantilla** panel.
+El panel **Template data** (Datos de plantilla) proporciona indicaciones sobre el modelo de datos de las entidades que están disponibles para su uso en una plantilla determinada. Dichas indicaciones consisten en los datos actuales que se muestran actualmente en el portal para desarrolladores. Para expandir los paneles de plantilla, haga clic en el rectángulo de la esquina superior derecha del panel **Template data** (Datos de plantilla).
 
 ![Modelo de datos de plantilla][api-management-template-data]
 
-En el ejemplo anterior de hello hay dos productos que se muestran en el portal para desarrolladores de Hola y que se recuperaron de datos de hello mostrados en hello **datos de la plantilla** panel, como se muestra en el siguiente ejemplo de Hola.
+En el ejemplo anterior, se muestran en el portal para desarrolladores dos productos que se recuperaron de los datos mostrados en el panel **Template data** (Datos de plantilla), tal como se muestra en el ejemplo siguiente.
 
 ```json
 {
@@ -84,7 +84,7 @@ En el ejemplo anterior de hello hay dos productos que se muestran en el portal p
         {
             "Id": "56ec64c380ed850042060001",
             "Title": "Starter",
-            "Description": "Subscribers will be able toorun 5 calls/minute up tooa maximum of 100 calls/week.",
+            "Description": "Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week.",
             "Terms": "",
             "ProductState": 1,
             "AllowMultipleSubscriptions": false,
@@ -93,7 +93,7 @@ En el ejemplo anterior de hello hay dos productos que se muestran en el portal p
         {
             "Id": "56ec64c380ed850042060002",
             "Title": "Unlimited",
-            "Description": "Subscribers have completely unlimited access toohello API. Administrator approval is required.",
+            "Description": "Subscribers have completely unlimited access to the API. Administrator approval is required.",
             "Terms": null,
             "ProductState": 1,
             "AllowMultipleSubscriptions": false,
@@ -103,7 +103,7 @@ En el ejemplo anterior de hello hay dos productos que se muestran en el portal p
 }
 ```
 
-marcado de Hola Hola **lista de productos** procesos de plantilla Hola salida de datos tooprovide Hola deseado recorriendo en iteración la colección de Hola de información de toodisplay de productos y un vínculo tooeach cada producto individual. Hola Nota `<search-control>` y `<page-control>` elementos de marcado de Hola. Estos controlan la presentación de Hola de hello, búsqueda y controles de página de Hola de paginación. `ProductsStrings|PageTitleProducts`es una referencia de cadena localizada que contiene Hola `h2` texto del encabezado de página de Hola. Para obtener una lista de recursos de cadena, controles de página e iconos disponibles para su uso en plantillas del portal para desarrolladores, consulte la [referencia de plantillas del portal para desarrolladores de API Management](api-management-developer-portal-templates-reference.md).
+El marcado de la plantilla **Lista de productos** procesa los datos para proporcionar el resultado deseado. Para ello, itere a través de la colección de productos para mostrar información y un vínculo a cada producto. Observe los elementos `<search-control>` y `<page-control>` del marcado. Controlan la presentación de la búsqueda y los controles de paginación en la página. `ProductsStrings|PageTitleProducts` es una referencia de cadena localizada que contiene el texto del encabezado `h2` de la página. Para obtener una lista de recursos de cadena, controles de página e iconos disponibles para su uso en plantillas del portal para desarrolladores, consulte la [referencia de plantillas del portal para desarrolladores de API Management](api-management-developer-portal-templates-reference.md).
 
 ```html
 <search-control></search-control>
@@ -131,59 +131,59 @@ marcado de Hola Hola **lista de productos** procesos de plantilla Hola salida de
 </div>
 ```
 
-## <a name="toosave-a-template"></a>toosave una plantilla
-toosave una plantilla, haga clic en Guardar en el editor de plantillas de Hola.
+## <a name="to-save-a-template"></a>Para guardar una plantilla
+Para guardar una plantilla, haga clic en guardar en el editor de plantillas.
 
 ![Guardar plantilla][api-management-save-template]
 
-Los cambios se guardaron no están activos en el portal para desarrolladores de hello hasta que se publican.
+Los cambios guardados no se activan en el portal para desarrolladores mientras no se publiquen.
 
-## <a name="toopublish-a-template"></a>toopublish una plantilla
-Las plantillas guardadas se pueden publicar individualmente o todas juntas. toopublish una plantilla individual, haga clic en publicar en el editor de plantillas de Hola.
+## <a name="to-publish-a-template"></a>Para publicar una plantilla
+Las plantillas guardadas se pueden publicar individualmente o todas juntas. Para publicar una plantilla individual, haga clic en publicar en el editor de plantillas.
 
 ![Publicar plantilla][api-management-publish-template]
 
-Haga clic en **Sí** tooconfirm y asegúrese de plantilla de hello en vivo en el portal para desarrolladores de Hola.
+Haga clic en **Sí** para confirmar y hacer que la plantilla se active en el portal para desarrolladores.
 
 ![Confirmar publicación][api-management-publish-template-confirm]
 
-toopublish actualmente todas las versiones de plantillas se anuló la publicación, haga clic en **publicar** en la lista de plantillas de Hola. Plantillas no publicadas se designan mediante un asterisco después de nombre de la plantilla de Hola. En este ejemplo, Hola **lista de productos** y **producto** plantillas se publican.
+Para publicar todas las versiones de plantillas actualmente sin publicar, haga clic en **Publicar** en la lista de plantillas. Las plantillas no publicadas se indican con un asterisco después del nombre de la plantilla. En este ejemplo, se van a publicar las plantillas **Lista de productos** y **Producto**.
 
 ![Publicar plantillas][api-management-publish-templates]
 
-Haga clic en **publicar personalizaciones** tooconfirm.
+Haga clic en **Publicar personalizaciones** para confirmar.
 
 ![Confirmar publicación][api-management-publish-customizations]
 
-Las plantillas publicadas recientemente son efectivos inmediatamente en el portal para desarrolladores de Hola.
+Las plantillas recién publicadas entran en vigor de inmediato en el portal para desarrolladores.
 
-## <a name="toorevert-a-template-toohello-previous-version"></a>toorevert una versión anterior de toohello de plantilla
-toorevert una versión publicada de plantilla toohello anterior, haga clic en revertir en el editor de plantillas de Hola.
+## <a name="to-revert-a-template-to-the-previous-version"></a>Para revertir una plantilla a la versión anterior
+Para revertir una plantilla a la versión publicada anterior, haga clic en revertir en el editor de plantillas.
 
 ![Revertir plantilla][api-management-revert-template]
 
-Haga clic en **Sí** tooconfirm.
+Haga clic en **Sí** para continuar.
 
 ![Confirm][api-management-revert-template-confirm]
 
-Hola previamente versión publicada de una plantilla es viven en el portal para desarrolladores de Hola una vez que la operación de reversión de hello está completa.
+La versión de una plantilla publicada anteriormente estará activa en el portal para desarrolladores en cuanto se complete la operación de reversión.
 
-## <a name="toorestore-a-template-toohello-default-version"></a>toorestore una versión de plantilla toohello predeterminada
-Versión de restauración plantillas tootheir predeterminada es un proceso de dos pasos. Deben restaurarse la primera plantillas de hello y, a continuación, se deben publicar versiones Hola restaurado.
+## <a name="to-restore-a-template-to-the-default-version"></a>Para restaurar una plantilla a la versión predeterminada
+La restauración de las plantillas a su versión predeterminada es un proceso que consta de dos pasos. Primero deben restaurarse las plantillas y después deben publicarse las versiones restauradas.
 
-toorestore una versión de plantilla único toohello predeterminada haga clic en restaurar en el editor de plantillas de Hola.
+Para restaurar una sola plantilla a la versión predeterminada, haga clic en restaurar en el editor de plantillas.
 
 ![Revertir plantilla][api-management-reset-template]
 
-Haga clic en **Sí** tooconfirm.
+Haga clic en **Sí** para continuar.
 
 ![Confirm][api-management-reset-template-confirm]
 
-toorestore versiones predeterminadas de todas las plantillas tootheir, haga clic en ejecutar **Restaurar plantillas predeterminadas** en la lista de plantillas de Hola.
+Para restaurar todas las plantillas a las versiones predeterminadas, haga clic en **Restore default templates** (Restaurar plantillas predeterminadas) en la lista de plantillas.
 
 ![Restaurar plantillas][api-management-restore-templates]
 
-Hello plantillas restauradas, a continuación, se deben publicar individualmente o a la vez siguiendo los pasos de hello en [toopublish una plantilla de](#to-publish-a-template).
+Las plantillas restauradas deben publicarse individualmente o a la vez siguiendo los pasos descritos en [Para publicar una plantilla](#to-publish-a-template).
 
 ## <a name="next-steps"></a>Pasos siguientes
 Para obtener información de referencia sobre plantillas del portal para desarrolladores, recursos de cadena, iconos y controles de página, consulte la [referencia de plantillas del portal para desarrolladores de Administración de API](api-management-developer-portal-templates-reference.md).

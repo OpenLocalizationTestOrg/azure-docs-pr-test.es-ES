@@ -1,6 +1,6 @@
 ---
-title: Hola aaaUnderstand lenguaje de consultas del centro de IoT de Azure | Documentos de Microsoft
-description: "Guía del desarrollador - descripción del lenguaje de consulta similar a SQL centro de IoT hello usa tooretrieve saber: los gemelos de dispositivo y los trabajos desde el centro de IoT."
+title: "Información sobre el lenguaje de consulta de IoT Hub de Azure | Microsoft Docs"
+description: "Guía del desarrollador: descripción del lenguaje de consulta de IoT Hub de tipo SQL que se usa para recuperar información sobre los dispositivos gemelos y trabajos desde IoT Hub."
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/17
 ms.author: elioda
-ms.openlocfilehash: 01a7c8ffdf44c6c27b834739d02c8fef1dd3d3fd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a7650104eda58923558892f6f0f6666d16dbce28
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reference---iot-hub-query-language-for-device-twins-jobs-and-message-routing"></a>Referencia: Lenguaje de consulta de IoT Hub para dispositivos gemelos, trabajos y enrutamiento de mensajes
 
-Centro de IoT proporciona una información de tooretrieve eficaz lenguaje similar a SQL con respecto a [: los gemelos de dispositivo] [ lnk-twins] y [trabajos][lnk-jobs]y [enrutamiento de mensajes][lnk-devguide-messaging-routes]. Este artículo presenta:
+IoT Hub proporciona un lenguaje eficaz de tipo SQL para recuperar información sobre [dispositivos gemelos][lnk-twins], [trabajos][lnk-jobs] y [enrutamiento de mensajes][lnk-devguide-messaging-routes]. Este artículo presenta:
 
-* Una introducción toohello principales las funciones de lenguaje de consultas del centro de IoT, hello y
-* Hola descripción detallada del lenguaje de Hola.
+* una introducción a las características principales del lenguaje de consulta de IoT Hub y
+* una descripción más detallada del lenguaje.
 
 ## <a name="get-started-with-device-twin-queries"></a>Introducción a las consultas de dispositivos gemelos
-Los [dispositivos gemelos][lnk-twins] pueden contener objetos JSON arbitrarios como etiquetas y propiedades. Centro de IoT permite: los gemelos de tooquery dispositivo como un solo documento JSON que contiene toda la información de dispositivo gemelas.
-Da por supuesto, por ejemplo, que su: los gemelos de IoT hub dispositivo Hola siguiente estructura:
+Los [dispositivos gemelos][lnk-twins] pueden contener objetos JSON arbitrarios como etiquetas y propiedades. IoT Hub permite consultar los dispositivos gemelos como un solo documento JSON que contiene toda la información de los dispositivos gemelos.
+Por ejemplo, supongamos que los dispositivos gemelos de IoT Hub tienen la siguiente estructura:
 
 ```json
 {
@@ -70,8 +70,8 @@ Da por supuesto, por ejemplo, que su: los gemelos de IoT hub dispositivo Hola si
 }
 ```
 
-Centro de IoT expone: los gemelos de hello dispositivo como una colección de documentos denominada **dispositivos**.
-Por lo que Hola después de consulta recupera el conjunto completo de Hola de: los gemelos de dispositivo:
+IoT Hub expone los dispositivos gemelos como una colección de documentos denominada **devices**.
+Por lo tanto, la consulta siguiente recupera el conjunto completo de dispositivos gemelos:
 
 ```sql
 SELECT * FROM devices
@@ -80,14 +80,14 @@ SELECT * FROM devices
 > [!NOTE]
 > Los [SDK IoT de Azure][lnk-hub-sdks] admiten la paginación de resultados de gran tamaño.
 
-Centro de IoT le permite filtrar con condiciones arbitrarias de: los gemelos de tooretrieve dispositivo. Por ejemplo,
+IoT Hub permite recuperar dispositivos gemelos filtrando por condiciones arbitrarias. Por ejemplo,
 
 ```sql
 SELECT * FROM devices
 WHERE tags.location.region = 'US'
 ```
 
-Recupera Hola: los gemelos de dispositivo con hello **location.region** etiqueta establecido demasiado**US**.
+recupera los dispositivos gemelos con la etiqueta **location.region** establecida en **US**.
 También se admiten operadores booleanos y comparaciones aritméticas, por ejemplo,
 
 ```sql
@@ -96,21 +96,21 @@ WHERE tags.location.region = 'US'
     AND properties.reported.telemetryConfig.sendFrequencyInSecs >= 60
 ```
 
-Recupera todos los gemelos de dispositivo ubicados en hello nos configurado toosend telemetría menor frecuencia que cada minuto. Para su comodidad, también es posible toouse constantes de matriz con hello **IN** y **NEN** operadores (no en). Por ejemplo,
+recupera todos los dispositivos gemelos ubicados en Estados Unidos configurados para enviar datos de telemetría con una frecuencia inferior a un minuto. Por comodidad, también es posible usar constantes de matriz con los operadores **IN** (En) y **NIN** (No en). Por ejemplo,
 
 ```sql
 SELECT * FROM devices
 WHERE properties.reported.connectivity IN ['wired', 'wifi']
 ```
 
-recupera todos los dispositivos gemelos que notificaron conectividad WiFi o con cable. Es a menudo necesario tooidentify todos los gemelos de dispositivo que contienen una propiedad concreta. Centro de IoT es compatible con la función de hello `is_defined()` para este propósito. Por ejemplo,
+recupera todos los dispositivos gemelos que notificaron conectividad WiFi o con cable. A menudo, es necesario identificar a todos los dispositivos gemelos que contienen una propiedad concreta. IoT Hub admite la función `is_defined()` para esta finalidad. Por ejemplo,
 
 ```SQL
 SELECT * FROM devices
 WHERE is_defined(properties.reported.connectivity)
 ```
 
-recuperar todos los gemelos de dispositivo que definen hello `connectivity` informa de la propiedad. Consulte toohello [cláusula WHERE] [ lnk-query-where] sección de referencia completa de Hola de hello capacidades de filtrado.
+recupera todos los dispositivos gemelos que definen la propiedad notificada `connectivity`. Consulte la sección [Cláusula WHERE][lnk-query-where] para obtener la referencia completa de las funcionalidades de filtrado.
 
 También se admiten la agrupación y las agregaciones. Por ejemplo,
 
@@ -121,7 +121,7 @@ FROM devices
 GROUP BY properties.reported.telemetryConfig.status
 ```
 
-Devuelve el recuento de Hola de dispositivos de hello en cada estado de la configuración de telemetría.
+devuelve el recuento de los dispositivos en cada estado de configuración de telemetría.
 
 ```json
 [
@@ -140,10 +140,10 @@ Devuelve el recuento de Hola de dispositivos de hello en cada estado de la confi
 ]
 ```
 
-Hello en el ejemplo anterior se muestra una situación donde tres dispositivos notifican una configuración correcta, dos se sigue aplicando configuración hello y uno informó de un error.
+En el ejemplo anterior, se demuestra una situación en la que tres dispositivos notificaron una configuración correcta, dos aún están aplicándola y uno notificó un error.
 
 ### <a name="c-example"></a>Ejemplo de C#
-funcionalidad de consulta de Hola se expone mediante hello [C# SDK del servicio] [ lnk-hub-sdks] en hello **RegistryManager** clase.
+El [SDK del servicio C#][lnk-hub-sdks] expone la funcionalidad de consulta en la clase **RegistryManager**.
 Este ejemplo corresponde a una consulta simple:
 
 ```csharp
@@ -158,20 +158,20 @@ while (query.HasMoreResults)
 }
 ```
 
-Tenga en cuenta cómo Hola **consulta** se crea una instancia de objeto con un tamaño de página (arriba too1000) y, a continuación, se pueden recuperar varias páginas que realiza la llamada hello **GetNextAsTwinAsync** métodos varias veces.
-Tenga en cuenta ese objeto de consulta de hello expone varios **siguiente\***, dependiendo de opción de deserialización Hola requeridos por la consulta de hello, como objetos de trabajo o gemelas del dispositivo, o sin formato toobe JSON que usar cuando se empleen las proyecciones.
+Observe cómo se crea una instancia del objeto **query** con un tamaño de página (hasta 1000) y después se pueden recuperar varias páginas llamando a los métodos **GetNextAsTwinAsync** varias veces.
+Tenga en cuenta que el objeto query expone varios elementos **next\***, según la opción de deserialización que requiera la consulta, como objetos de trabajo o dispositivo gemelo, o JSON sin formato que se usará cuando se utilicen proyecciones.
 
 ### <a name="nodejs-example"></a>Ejemplo de Node.js
-funcionalidad de consulta de Hola se expone mediante hello [servicio IoT de Azure SDK para Node.js] [ lnk-hub-sdks] en hello **registro** objeto.
+El [SDK de servicios IoT de Azure para Node.js][lnk-hub-sdks] expone la funcionalidad de consulta en el objeto **Registry**.
 Este ejemplo corresponde a una consulta simple:
 
 ```nodejs
 var query = registry.createQuery('SELECT * FROM devices', 100);
 var onResults = function(err, results) {
     if (err) {
-        console.error('Failed toofetch hello results: ' + err.message);
+        console.error('Failed to fetch the results: ' + err.message);
     } else {
-        // Do something with hello results
+        // Do something with the results
         results.forEach(function(twin) {
             console.log(twin.deviceId);
         });
@@ -184,17 +184,17 @@ var onResults = function(err, results) {
 query.nextAsTwin(onResults);
 ```
 
-Tenga en cuenta cómo Hola **consulta** se crea una instancia de objeto con un tamaño de página (arriba too1000) y, a continuación, se pueden recuperar varias páginas que realiza la llamada hello **nextAsTwin** métodos varias veces.
-Tenga en cuenta ese objeto de consulta de hello expone varios **siguiente\***, dependiendo de opción de deserialización Hola requeridos por la consulta de hello, como objetos de trabajo o gemelas del dispositivo, o sin formato toobe JSON que usar cuando se empleen las proyecciones.
+Observe cómo se crea una instancia del objeto **query** con un tamaño de página (hasta 1000) y después se pueden recuperar varias páginas llamando a los métodos **nextAsTwin** varias veces.
+Tenga en cuenta que el objeto query expone varios elementos **next\***, según la opción de deserialización que requiera la consulta, como objetos de trabajo o dispositivo gemelo, o JSON sin formato que se usará cuando se utilicen proyecciones.
 
 ### <a name="limitations"></a>Limitaciones
 > [!IMPORTANT]
-> Resultados de la consulta pueden tener unos minutos de retraso con valores más recientes de respeto toohello en: los gemelos de dispositivo. Si consulta: los gemelos de dispositivos individuales por Id., siempre es preferible toouse Hola recuperar dispositivo gemelas API, que siempre contiene valores más recientes de Hola y tiene el límite superior de límites.
+> Los resultados de las consultas pueden demorarse unos minutos con respecto a los valores más recientes en los dispositivos gemelos. Si realiza consultas a dispositivos gemelos individuales por identificador, siempre resultará preferible utilizar la API de dispositivos gemelos de recuperación, que contendrá en todo momento los valores más recientes y cuenta con umbrales de limitación superiores.
 
 Actualmente, las comparaciones solo se admiten entre tipos primitivos (no objetos), por ejemplo `... WHERE properties.desired.config = properties.reported.config` solo se admite si esas propiedades tienen valores primitivos.
 
 ## <a name="get-started-with-jobs-queries"></a>Introducción a las consultas de trabajos
-[Trabajos] [ lnk-jobs] proporcionan una manera tooexecute operaciones en conjuntos de dispositivos. Cada gemelas dispositivo contiene información de Hola de trabajos de hello del cual forma parte de una colección denominada **trabajos**.
+Los [trabajos][lnk-jobs] proporcionan una forma de ejecutar operaciones en conjuntos de dispositivos. Cada dispositivo gemelo contiene la información de los trabajos de los que forma parte en una colección denominada **jobs**.
 Lógicamente,
 
 ```json
@@ -226,23 +226,23 @@ Lógicamente,
 }
 ```
 
-Actualmente, esta colección es consultable como **devices.jobs** Hola lenguaje de consultas del centro de IoT.
+Ahora, esta colección se puede consultar como **devices.jobs** en el lenguaje de consulta de IoT Hub.
 
 > [!IMPORTANT]
-> Actualmente, la propiedad de trabajos de hello nunca se devuelve al consultar a: los gemelos de dispositivo (es decir, las consultas que contiene 'desde dispositivos'). Solo es accesible directamente con las consultas que utilizan `FROM devices.jobs`.
+> Actualmente, la propiedad jobs no se devuelve nunca cuando se consulta a dispositivos gemelos (es decir, las consultas que contienen "FROM devices"). Solo es accesible directamente con las consultas que utilizan `FROM devices.jobs`.
 >
 >
 
-Por ejemplo, tooget todos los trabajos (pasados y programados) que afectan a un único dispositivo, puede usar Hola después de consulta:
+Por ejemplo, para obtener todos los trabajos (pasados y programados) que afecten a un único dispositivo, puede usar la siguiente consulta:
 
 ```sql
 SELECT * FROM devices.jobs
 WHERE devices.jobs.deviceId = 'myDeviceId'
 ```
 
-Tenga en cuenta cómo esta consulta proporciona el estado específico del dispositivo de hello (y posiblemente Hola método directo respuesta) de cada trabajo que se devuelve.
-También es posible toofilter con condiciones booleanas arbitrarias en todas las propiedades de objeto de hello **devices.jobs** colección.
-Por ejemplo, Hola consulta siguiente:
+Observe cómo esta consulta proporciona el estado específico del dispositivo (y posiblemente la respuesta del método directo) para cada trabajo devuelto.
+También es posible filtrar por condiciones booleanas arbitrarias en todas las propiedades de objeto de la colección **devices.jobs**.
+Por ejemplo, la siguiente consulta:
 
 ```sql
 SELECT * FROM devices.jobs
@@ -254,7 +254,7 @@ WHERE devices.jobs.deviceId = 'myDeviceId'
 
 recupera todos los trabajos de actualización de dispositivos gemelos completados para el dispositivo **myDeviceId** que se crearon después de septiembre de 2016.
 
-También es posible tooretrieve resultados de por dispositivo de Hola de un único trabajo.
+También es posible recuperar los resultados por dispositivo de un único trabajo.
 
 ```sql
 SELECT * FROM devices.jobs
@@ -265,18 +265,18 @@ WHERE devices.jobs.jobId = 'myJobId'
 Actualmente, las consultas en **devices.jobs** no admiten:
 
 * proyecciones, por lo tanto, solo `SELECT *` es posible.
-* Condiciones que hacen referencia a toohello gemelas de dispositivo en las propiedades de toojob de suma (vea la sección anterior de hello).
+* condiciones que hagan referencia al dispositivo gemelo, además de a las propiedades de trabajo (vea la sección anterior).
 * realizar agregaciones, como count, avg, group by.
 
 ## <a name="get-started-with-device-to-cloud-message-routes-query-expressions"></a>Introducción a expresiones de consulta de rutas de mensajes de dispositivo a la nube
 
-Usar [rutas de dispositivo para la nube][lnk-devguide-messaging-routes], puede configurar centro de IoT toodispatch dispositivo a la nube mensajes extremos de toodifferent basados en expresiones evaluadas en mensajes individuales.
+Con las [rutas de dispositivo a la nube][lnk-devguide-messaging-routes], puede configurar IoT Hub para enviar mensajes de dispositivo a la nube en diferentes puntos de conexión en función de expresiones evaluadas frente a mensajes individuales.
 
-ruta de Hello [condición] [ lnk-query-expressions] usa Hola mismo lenguaje de consultas del centro de IoT como condiciones en las consultas gemelas y trabajo. Condiciones de ruta se evalúan en los encabezados de mensaje de Hola y cuerpo. La expresión de consulta de enrutamiento puede implicar sólo los encabezados de mensaje, sólo cuerpo del mensaje hello, o ambos encabezados de mensaje y cuerpo del mensaje. Centro de IoT se da por supuesto un esquema específico para los encabezados de Hola y el cuerpo del mensaje en mensajes de pedido tooroute y hello las secciones siguientes describe lo que se requiere para la ruta de centro de IoT tooproperly:
+La ruta [condición][lnk-query-expressions] utiliza el mismo lenguaje de consultas de IoT Hub como condiciones en consultas gemelas y de trabajo. Las condiciones de enrutamiento se evalúan en el cuerpo y los encabezados del mensaje. La expresión de consulta de enrutamiento puede implicar solo los encabezados del mensaje, solo el cuerpo del mensaje o tanto los encabezados como el cuerpo del mensaje. IoT Hub da por supuesto un esquema específico para los encabezados y el cuerpo del mensaje con el fin de enrutar mensajes, y las secciones siguientes describen los elementos que se necesitan para que IoT Hub realice correctamente el enrutamiento:
 
 ### <a name="routing-on-message-headers"></a>Enrutamiento en los encabezados del mensaje
 
-Centro de IoT se da por supuesto Hola después de la representación JSON de encabezados de mensaje para enrutar el mensaje:
+IoT Hub da por supuesto la siguiente representación JSON de los encabezados del mensaje para el enrutamiento del mensaje:
 
 ```json
 {
@@ -298,41 +298,41 @@ Centro de IoT se da por supuesto Hola después de la representación JSON de enc
 }
 ```
 
-Propiedades de sistema de mensajes tienen el prefijo hello `'$'` símbolos.
-Siempre se accede a las propiedades de usuario con su nombre. Si un nombre de propiedad de usuario produce toocoincide con una propiedad del sistema (como `$to`), se recuperará la propiedad de usuario de hello con hello `$to` expresión.
-Siempre puede tener acceso a propiedad de sistema de hello mediante corchetes `{}`: por ejemplo, puede utilizar la expresión de hello `{$to}` tooaccess Hola propiedad del sistema `to`. Nombres de propiedad entre corchetes siempre recuperan la propiedad del sistema correspondiente Hola.
+Las propiedades del sistema de mensajes tienen como prefijo el símbolo `'$'`.
+Siempre se accede a las propiedades de usuario con su nombre. Si sucede que un nombre de propiedad de usuario coincide con el de una propiedad del sistema (como `$to`), se recuperará la propiedad de usuario con la expresión `$to`.
+Siempre puede acceder a la propiedad del sistema mediante corchetes `{}`: por ejemplo, puede usar la expresión `{$to}` para acceder a la propiedad del sistema `to`. Los nombres de propiedad entre corchetes siempre permiten recuperar la propiedad del sistema correspondiente.
 
 Recuerde que los nombres de propiedad no distinguen mayúsculas de minúsculas.
 
 > [!NOTE]
-> Todas las propiedades de mensaje son cadenas. Propiedades del sistema, como se describe en hello [Guía del desarrollador][lnk-devguide-messaging-format], no están actualmente disponible toouse en las consultas.
+> Todas las propiedades de mensaje son cadenas. Las propiedades del sistema, como se describen en la [guía del desarrollador][lnk-devguide-messaging-format], no están disponibles para su uso en las consultas.
 >
 
-Por ejemplo, si utiliza un `messageType` propiedad, puede que desee tooroute todos los extremos de tooone de telemetría y el punto de conexión de todas las alertas tooanother. Puede escribir Hola después de telemetría de hello tooroute de expresión:
+Por ejemplo, si utiliza una propiedad `messageType`, puede enrutar toda la telemetría a un punto de conexión y todas las alertas a otro punto de conexión. Puede escribir la siguiente expresión para enrutar la telemetría:
 
 ```sql
 messageType = 'telemetry'
 ```
 
-Y Hola siguiendo los mensajes de alerta Hola expresión tooroute:
+Y la siguiente expresión para enrutar los mensajes de alerta:
 
 ```sql
 messageType = 'alert'
 ```
 
-También se admiten las funciones y expresiones booleanas. Esta característica permite toodistinguish entre el nivel de gravedad, por ejemplo:
+También se admiten las funciones y expresiones booleanas. Esta característica le permite distinguir entre el nivel de gravedad, por ejemplo:
 
 ```sql
 messageType = 'alerts' AND as_number(severity) <= 2
 ```
 
-Consulte toohello [expresiones y condiciones] [ lnk-query-expressions] sección de la lista completa de Hola de funciones y operadores compatibles.
+Consulte la sección [Expresiones y condiciones][lnk-query-expressions] para obtener la lista completa de funciones y operadores compatibles.
 
 ### <a name="routing-on-message-bodies"></a>Enrutamiento en los cuerpos del mensaje
 
-Centro de IoT solamente puede enrutar basado en el cuerpo del mensaje contenido si el cuerpo del mensaje Hola esté correctamente formado JSON codificado en UTF-8, UTF-16 o UTF-32. Debe establecer el tipo de contenido de Hola de mensaje de saludo demasiado`application/json` y Hola contenido tooone de codificación de hello admite las codificaciones UTF en tooallow de encabezados de mensaje de Hola mensajes de bienvenida del centro de IoT tooroute según el contenido del cuerpo de Hola. Si no se especifica cualquiera de los encabezados de hello, centro de IoT no intentará tooevaluate cualquier expresión de consulta que contenga cuerpo hello en el mensaje de bienvenida. Si el mensaje no es un mensaje JSON, o si no especifica mensajes de bienvenida del tipo de contenido de Hola y codificación de contenido, puede seguir utilizando tooroute mensaje de saludo en función de los encabezados de mensaje de Hola el enrutamiento de mensajes.
+IoT Hub solo puede realizar el enrutamiento según el contenido del cuerpo del mensaje si este tiene un formato JSON correcto codificado en UTF-8, UTF-16 o UTF-32. Debe establecer el tipo de contenido del mensaje en `application/json` y la codificación de contenido en una de las codificaciones UTF compatibles en los encabezados del mensaje para permitir que IoT Hub enrute el mensaje según el contenido del cuerpo. Si no se especifica cualquiera de los encabezados, IoT Hub no intentará evaluar ninguna expresión de consulta que implique el cuerpo con respecto al mensaje. Si el mensaje no es un mensaje JSON o si no especifica el tipo de contenido ni la codificación de contenido, se puede seguir usando el enrutamiento de mensaje para enrutar el mensaje según los encabezados del mensaje.
 
-Puede usar `$body` en el mensaje de saludo de tooroute de expresión de consulta de Hola. Puede usar una referencia de cuerpo simple, referencia de la matriz de cuerpo o varias referencias de cuerpo en la expresión de consulta de Hola. La expresión de consulta también puede combinar una referencia al cuerpo con una referencia al encabezado del mensaje. Por ejemplo, la siguiente Hola es todas las expresiones de consulta válida:
+Puede usar `$body` en la expresión de consulta para enrutar el mensaje. Puede usar una referencia al cuerpo simple, una referencia a la matriz del cuerpo o varias referencias al cuerpo en la expresión de consulta. La expresión de consulta también puede combinar una referencia al cuerpo con una referencia al encabezado del mensaje. Por ejemplo, todas las expresiones siguientes son expresiones de consulta válidas:
 
 ```sql
 $body.message.Weather.Location.State = 'WA'
@@ -343,7 +343,7 @@ $body.Weather.Temperature = 50 AND Status = 'Active'
 ```
 
 ## <a name="basics-of-an-iot-hub-query"></a>Conceptos básicos de una consulta de IoT Hub
-Cada consulta de IoT Hub consta de cláusulas SELECT y FROM, y de cláusulas WHERE y GROUP BY opcionales. Cada consulta se ejecuta en una colección de documentos JSON, por ejemplo, dispositivos gemelos. cláusula FROM de Hello indica Hola documento colección toobe recorren en iteración en (**dispositivos** o **devices.jobs**). A continuación, Hola filtro Hola donde se aplica la cláusula. Con agregaciones, se agrupan los resultados de Hola de este paso como se especifica en Hola de cláusula GROUP BY y, para cada grupo, se genera una fila según se haya especificado en la cláusula SELECT Hola.
+Cada consulta de IoT Hub consta de cláusulas SELECT y FROM, y de cláusulas WHERE y GROUP BY opcionales. Cada consulta se ejecuta en una colección de documentos JSON, por ejemplo, dispositivos gemelos. La cláusula FROM indica la colección de documentos en la que se va a iterar (**devices** o **devices.jobs**). Después se aplica el filtro en la cláusula WHERE. Con las agregaciones, se agrupan los resultados de este paso como se especifica en la cláusula GROUP BY y, para cada grupo, se genera una fila como se especifica en la cláusula SELECT.
 
 ```sql
 SELECT <select_list>
@@ -353,18 +353,18 @@ FROM <from_specification>
 ```
 
 ## <a name="from-clause"></a>Cláusula FROM
-Hola **de < from_specification >** cláusula puede asumir solo dos valores: **desde dispositivos**, tooquery: los gemelos de dispositivo, o **de devices.jobs**, trabajo tooquery por dispositivo detalles.
+La cláusula **FROM <from_specification>** solo puede suponer dos valores: **FROM devices**, para consultar dispositivos gemelos, o **FROM devices.jobs**, para consultar detalles por dispositivo del trabajo.
 
 ## <a name="where-clause"></a>Cláusula WHERE
-Hola **donde < filter_condition >** cláusula es opcional. Especifica una o varias condiciones que deben satisfacer los documentos JSON de hello en la colección de hello FROM toobe incluido como parte del resultado de hello. Se debe evaluar cualquier documento JSON Hola especifica condiciones demasiado "true" toobe incluida en el resultado de hello.
+La cláusula **WHERE <filter_condition>** es opcional. Especifica una o varias condiciones que los documentos JSON en la colección FROM deben satisfacer para incluirse como parte del resultado. Cualquier documento JSON debe evaluar las condiciones especificadas como "true" para que se incluya en el resultado.
 
-Hola permite condiciones se describen en la sección [expresiones y condiciones][lnk-query-expressions].
+Las condiciones permitidas se describen en la sección [Expresiones y condiciones][lnk-query-expressions].
 
 ## <a name="select-clause"></a>Cláusula SELECT
-cláusula SELECT Hello (**seleccione < select_list >**) es obligatorio y especifica qué valores se recuperan de la consulta de Hola. Especifica Hola JSON valores toobe utiliza toogenerate nuevos objetos JSON.
-Para cada elemento de Hola subconjunto filtrado (y, opcionalmente, agrupado) del conjunto de FROM de hello, fase de proyección de hello genera un nuevo objeto JSON, construido con valores de hello especificados en la cláusula SELECT Hola.
+La cláusula SELECT (**SELECT <select_list>**) es obligatoria y especifica qué valores se recuperan de la consulta. Especifica los valores JSON que se usarán para generar nuevos objetos JSON.
+Para cada elemento del subconjunto filtrado (y, opcionalmente, agrupado) de la colección FROM, la fase de proyección genera un nuevo objeto JSON, construido con los valores especificados en la cláusula SELECT.
 
-Aquí te mostramos gramática Hola de cláusula SELECT hello:
+Esta es la gramática de la cláusula SELECT:
 
 ```
 SELECT [TOP <max number>] <projection list>
@@ -386,12 +386,12 @@ SELECT [TOP <max number>] <projection list>
     | max(<projection_element>)
 ```
 
-donde **attribute_name** hace referencia la propiedad tooany del documento JSON de hello en la colección de hello FROM. Algunos ejemplos de las cláusulas SELECT pueden encontrarse en hello [Introducción a las consultas de dispositivo gemelas] [ lnk-query-getstarted] sección.
+donde **attribute_name** hace referencia a cualquier propiedad del documento JSON en la colección FROM. Puede ver algunos ejemplos de las cláusulas SELECT en la sección [Introducción a las consultas de gemelos][lnk-query-getstarted].
 
 Actualmente, las cláusulas de selección distintas a **SELECT \*** solo se admiten en las consultas agregadas de dispositivos gemelos.
 
 ## <a name="group-by-clause"></a>Cláusula GROUP BY
-Hola **GROUP BY < group_specification >** cláusula es un paso opcional que se puede ejecutar después de filtro de hello especificado Hola de cláusula WHERE y antes de la proyección de hello especificada en hello seleccione. Agrupa documentos basados en el valor de Hola de un atributo. Estos grupos son utilizados toogenerate agregado valores tal como se especifica en la cláusula SELECT Hola.
+La cláusula **GROUP BY <group_specification>** es un paso opcional que se puede ejecutar después del filtro especificado en la cláusula WHERE y antes de la proyección especificada en la cláusula SELECT. Agrupa los documentos según el valor de un atributo. Estos grupos se usan para generar valores agregados, como se especifica en la cláusula SELECT.
 
 Un ejemplo de consulta con GROUP BY es:
 
@@ -402,7 +402,7 @@ FROM devices
 GROUP BY properties.reported.telemetryConfig.status
 ```
 
-sintaxis formal de Hola de GROUP BY es:
+La sintaxis formal de GROUP BY es:
 
 ```
 GROUP BY <group_by_element>
@@ -411,19 +411,19 @@ GROUP BY <group_by_element>
     | < group_by_element > '.' attribute_name
 ```
 
-donde **attribute_name** hace referencia la propiedad tooany del documento JSON de hello en la colección de hello FROM.
+donde **attribute_name** hace referencia a cualquier propiedad del documento JSON en la colección FROM.
 
-Actualmente, solo se admite la cláusula GROUP BY Hola al consultar a: los gemelos de dispositivo.
+Actualmente, solo se admite la cláusula GROUP BY al consultar dispositivos gemelos.
 
 ## <a name="expressions-and-conditions"></a>Expresiones y condiciones
 Brevemente, una *expresión*:
 
-* Se evalúa como instancia de tooan de un tipo JSON (por ejemplo, un valor booleano, número, cadena, matriz u objeto), y
-* Se define mediante la manipulación de datos procedentes de documento JSON de dispositivo de Hola y constantes que se utilizan funciones y operadores integrados.
+* Se evalúa como una instancia de tipo JSON (como booleano, número, cadena, matriz u objeto), y
+* Se define manipulando datos procedentes del documento JSON del dispositivo y constantes mediante funciones y operadores integrados.
 
-*Condiciones* son expresiones que se evalúan tooa un valor booleano. Cualquier constante diferente a un valor booleano **true** se considera como **false** (incluidos **null**, **indefinido**, cualquier instancia de objeto o matriz, cualquier cadena, claramente hello y un valor booleano **false**).
+Las *condiciones* son expresiones que se evalúan como un valor booleano. Cualquier constante diferente del booleano **true** se considera **false** (incluidos **null**, **undefined**, cualquier instancia de objeto o matriz, cualquier cadena y, obviamente, el booleano **false**).
 
-sintaxis de Hola de expresiones es:
+La sintaxis de las expresiones es:
 
 ```
 <expression> ::=
@@ -455,15 +455,15 @@ donde:
 
 | Símbolo | Definición |
 | --- | --- |
-| attribute_name | Cualquier propiedad de documento JSON de Hola Hola **FROM** colección. |
-| binary_operator | Cualquier operador binario enumerados en hello [operadores](#operators) sección. |
-| function_name| Cualquier función que se muestra en hello [funciones](#functions) sección. |
+| attribute_name | Cualquier propiedad del documento JSON en la colección **FROM**. |
+| binary_operator | Cualquier operador binario que figure en la sección [Operadores](#operators). |
+| function_name| Cualquier función que figure en la sección [Funciones](#functions). |
 | decimal_literal |Un valor float expresado en notación decimal. |
-| hexadecimal_literal |Un número expresado por cadena hello '0 x' seguido por una cadena de dígitos hexadecimales. |
+| hexadecimal_literal |Un número expresado por la cadena "0x" seguida de una cadena de dígitos hexadecimales. |
 | string_literal |Los literales de cadena son cadenas Unicode representadas por una secuencia de cero o varios caracteres Unicode o secuencias de escape. Los literales de cadena se encierran entre comillas simples (apóstrofo: ') o comillas dobles (comillas: "). Caracteres de escape permitidos: `\'`, `\"`, `\\`, `\uXXXX` para los caracteres Unicode definidos con 4 dígitos hexadecimales. |
 
 ### <a name="operators"></a>Operadores
-se admite Hola siguientes operadores:
+Se admiten los siguientes operadores:
 
 | Familia | Operadores |
 | --- | --- |
@@ -471,56 +471,56 @@ se admite Hola siguientes operadores:
 | Lógicos |AND, OR, NOT |
 | De comparación |=, !=, <, >, <=, >=, <> |
 
-### <a name="functions"></a>Functions
-Cuando se consultan hello: los gemelos y los trabajos solo admitido la función es:
+### <a name="functions"></a>Funciones
+Cuando se consultan gemelos y trabajos, la única función admitida es:
 
 | Función | Descripción |
 | -------- | ----------- |
-| IS_DEFINED(property) | Devuelve un valor booleano que indica si la propiedad de Hola se ha asignado un valor (incluido `null`). |
+| IS_DEFINED(property) | Devuelve un valor booleano que indica si se ha asignado un valor a la propiedad (incluido `null`). |
 
-En condiciones de rutas, se admite Hola siguientes funciones matemáticas:
-
-| Función | Descripción |
-| -------- | ----------- |
-| ABS(x) | Devuelve Hola valor absoluto (positivo) de hello especifica la expresión numérica. |
-| EXP(x) | Devuelve Hola valor exponencial de hello especifica la expresión numérica (e ^ x). |
-| POWER(x,y) | Devuelve Hola valo Hola especificado expresión toohello potencia especificada (x ^ y).|
-| SQUARE(x) | Hola devuelve cuadrado de hello especifica el valor numérico. |
-| CEILING(x) | Devuelve Hola valor entero más pequeño mayor o igual a, Hola expresión numérica especificada. |
-| FLOOR(x) | Devuelve Hola mayor entero menor o igual toohello especifica la expresión numérica. |
-| SIGN(x) | Devuelve Hola positivo (+ 1), cero (0), o signo negativo (-1) de hello especificado expresión numérica.|
-| SQRT(x) | Hola devuelve cuadrado de hello especifica el valor numérico. |
-
-En condiciones de rutas, se admite Hola después el tipo de comprobación y las funciones de conversión:
+En condiciones de rutas, se admiten las siguientes funciones matemáticas:
 
 | Función | Descripción |
 | -------- | ----------- |
-| AS_NUMBER | Convierte el número de tooa de cadena de entrada de Hola. `noop` si la entrada es un número; `Undefined` si la cadena no representa un número.|
-| IS_ARRAY | Devuelve un valor booleano que indica si el tipo de saludo de hello especifica expresión es una matriz. |
-| IS_BOOL | Devuelve un valor booleano que indica si el tipo de saludo de hello especifica expresión es un valor booleano. |
-| IS_DEFINED | Devuelve un valor booleano que indica si la propiedad de Hola se ha asignado un valor. |
-| IS_NULL | Devuelve un valor booleano que indica si el tipo de saludo de hello especifica expresión es null. |
-| IS_NUMBER | Devuelve un valor booleano que indica si el tipo de saludo de hello especifica expresión es un número. |
-| IS_OBJECT | Devuelve un valor booleano que indica si el tipo de saludo de hello especifica expresión es un objeto JSON. |
-| IS_PRIMITIVE | Devuelve un valor booleano que indica si el tipo de saludo de hello especifica expresión es un tipo primitivo (cadena, booleano, numérico o `null`). |
-| IS_STRING | Devuelve un valor booleano que indica si el tipo de saludo de hello especifica expresión es una cadena. |
+| ABS(x) | Devuelve el valor absoluto (positivo) de la expresión numérica especificada. |
+| EXP(x) | Devuelve el valor exponencial de la expresión numérica especificada (e^x). |
+| POWER(x,y) | Devuelve el valor de la expresión especificada a la potencia especificada (x^y).|
+| SQUARE(x) | Devuelve el cuadrado del valor numérico especificado. |
+| CEILING(x) | Devuelve el valor entero más pequeño mayor o igual que la expresión numérica especificada. |
+| FLOOR(x) | Devuelve el valor entero más grande menor o igual que la expresión numérica especificada. |
+| SIGN(x) | Devuelve el signo positivo (+1), cero (0) o negativo (-1) de la expresión numérica especificada.|
+| SQRT(x) | Devuelve el cuadrado del valor numérico especificado. |
 
-En condiciones de rutas, se admite Hola siguiendo las funciones de cadena:
+En condiciones de rutas, se admiten las funciones de conversión y comprobación de tipos siguientes:
 
 | Función | Descripción |
 | -------- | ----------- |
-| CONCAT(x, …) | Devuelve una cadena que es el resultado de hello de concatenar dos o más valores de cadena. |
-| LENGTH(x) | Devuelve el número de caracteres de Hola Hola especificado expresión de cadena.|
-| LOWER(x) | Devuelve una expresión de cadena después de convertir toolowercase de datos de caracteres en mayúsculas. |
-| UPPER(x) | Devuelve una expresión de cadena después de convertir toouppercase de datos de carácter en minúscula. |
-| SUBSTRING(string, start [, length]) | Devuelve parte de una expresión de cadena a partir de hello especifica la posición de base cero del carácter y continúa toohello especifica la longitud o toohello final de cadena de Hola. |
-| INDEX_OF(string, fragment) | Devuelve Hola a partir de la posición de la primera aparición de hello de la segunda expresión de cadena Hola dentro de la primera expresión de cadena especificada de hello, o -1 si no se encuentra la cadena de Hola.|
-| STARTS_WITH(x, y) | Devuelve un valor booleano que indica si primera expresión de cadena Hola empieza por hello en segundo lugar. |
-| ENDS_WITH(x, y) | Devuelve un valor booleano que indica si primera expresión de cadena Hola termina con hello en segundo lugar. |
-| CONTAINS(x,y) | Devuelve un valor booleano que indica si primera expresión de cadena hello contiene hello en segundo lugar. |
+| AS_NUMBER | Convierte la cadena de entrada en un número. `noop` si la entrada es un número; `Undefined` si la cadena no representa un número.|
+| IS_ARRAY | Devuelve un valor booleano que indica si el tipo de la expresión especificada es una matriz. |
+| IS_BOOL | Devuelve un valor booleano que indica si el tipo de la expresión especificada es un valor booleano. |
+| IS_DEFINED | Devuelve un valor booleano que indica si se ha asignado un valor a la propiedad. |
+| IS_NULL | Devuelve un valor booleano que indica si el tipo de la expresión especificada es nulo. |
+| IS_NUMBER | Devuelve un valor booleano que indica si el tipo de la expresión especificada es un número. |
+| IS_OBJECT | Devuelve un valor booleano que indica si el tipo de la expresión especificada es un objeto JSON. |
+| IS_PRIMITIVE | Devuelve un valor booleano que indica si el tipo de la expresión especificada es un tipo primitivo (cadena, booleano, numérico o `null`). |
+| IS_STRING | Devuelve un valor booleano que indica si el tipo de la expresión especificada es una cadena. |
+
+En condiciones de rutas, se admiten las siguientes funciones de cadena:
+
+| Función | Descripción |
+| -------- | ----------- |
+| CONCAT(x, …) | Devuelve una cadena que es el resultado de concatenar dos o más valores de cadena. |
+| LENGTH(x) | Devuelve el número de caracteres de la expresión de cadena especificada.|
+| LOWER(x) | Devuelve una expresión de cadena después de convertir los datos de caracteres en mayúsculas a minúsculas. |
+| UPPER(x) | Devuelve una expresión de cadena después de convertir datos de caracteres en minúsculas a mayúsculas. |
+| SUBSTRING(string, start [, length]) | Devuelve parte de una expresión de cadena a partir de la posición de base cero del carácter especificado y continúa hasta la longitud especificada, o hasta el final de la cadena. |
+| INDEX_OF(string, fragment) | Devuelve la posición inicial de la primera aparición de la expresión de la segunda cadena dentro de la primera expresión de cadena especificada, o -1 si no se encuentra la cadena.|
+| STARTS_WITH(x, y) | Devuelve un valor booleano que indica si la primera expresión de cadena empieza con la segunda. |
+| ENDS_WITH(x, y) | Devuelve un valor booleano que indica si la primera expresión de cadena finaliza con la segunda. |
+| CONTAINS(x,y) | Devuelve un valor booleano que indica si la primera expresión de cadena contiene la segunda. |
 
 ## <a name="next-steps"></a>Pasos siguientes
-Obtenga información acerca de cómo tooexecute las consultas en sus aplicaciones usando [SDK de Azure IoT][lnk-hub-sdks].
+Aprenda a ejecutar consultas en sus aplicaciones mediante los [SDK IoT de Azure ][lnk-hub-sdks].
 
 [lnk-query-where]: iot-hub-devguide-query-language.md#where-clause
 [lnk-query-expressions]: iot-hub-devguide-query-language.md#expressions-and-conditions

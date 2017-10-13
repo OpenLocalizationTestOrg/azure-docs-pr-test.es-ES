@@ -1,14 +1,14 @@
 ### <a name="prerequisites"></a>Requisitos previos
 * Una cuenta de [SFTP](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol)  
 
-Antes de poder usar su cuenta SFTP en una aplicación de lógica, debe autorizar la cuenta de hello lógica aplicación tooconnect tooyour SFTP. Afortunadamente, puede hacer esto fácilmente desde dentro de la aplicación lógica en hello Portal de Azure.  
+Para poder usar su cuenta de SFTP en una aplicación lógica, debe autorizar a la aplicación lógica a conectarse a dicha cuenta. Por suerte, esto es muy fácil de hacer desde la aplicación lógica en el Portal de Azure.  
 
-Estos es Hola pasos tooauthorize su cuenta lógica aplicación tooconnect tooyour SFTP:  
+Aquí se explica cómo autorizar a la aplicación lógica a conectarse a su cuenta de SFTP:  
 
-1. toocreate tooSFTP de conexión, en el Diseñador de aplicaciones de la lógica de hello, seleccione **API administradas de Microsoft mostrar** en hello, lista desplegable, a continuación, escriba *SFTP* en el cuadro de búsqueda de Hola. Seleccione hello **SFTP - cuando se agrega o modifica un archivo** desencadenador:  
+1. Para crear una conexión a SFTP, en el diseñador de Logic Apps, seleccione **Mostrar las API administradas por Microsoft** en la lista desplegable y, luego, escriba *SFTP* en el cuadro de búsqueda. Seleccione el desencadenador **SFTP - When a file is added or modified** (SFTP: cuando se agrega o modifica un archivo).  
    ![Imagen 1 de conexión en línea de SFTP](./media/connectors-create-api-sftp/sftp-1.png)  
-2. Si no ha creado ningún tooSFTP conexiones antes, obtendrá tooprovide solicitada sus credenciales SFTP. Estas credenciales se usa tooauthorize su tooconnect de aplicación lógica para y tener acceso a datos de la cuenta SFTP:  
+2. Si no ha creado ninguna conexión a SFTP antes, se le pedirá que indique sus credenciales de SFTP. Estas credenciales se usarán para autorizar a la aplicación lógica a conectarse y acceder a los datos de su cuenta de SFTP:  
    ![Imagen 2 de conexión en línea de SFTP](./media/connectors-create-api-sftp/sftp-2.png)  
-3. Tenga en cuenta se ha creado la conexión de Hola y está ahora disponible tooproceed con hello otro pasos en la aplicación lógica:   
+3. Observe que la conexión se ha creado y que puede continuar sin problemas con el resto de pasos en la aplicación lógica:   
    ![Imagen 3 de conexión en línea de SFTP](./media/connectors-create-api-sftp/sftp-3.png) 
 

@@ -1,5 +1,5 @@
 ---
-title: opciones - servicios de nube de proceso aaaAzure | Documentos de Microsoft
+title: Opciones de proceso de Azure (Cloud Services) | Microsoft Docs
 description: "Obtenga información sobre cómo Azure hospeda las opciones y cómo funcionan: Servicio de aplicaciones, servicios en la nube y máquinas virtuales"
 services: cloud-services
 documentationcenter: 
@@ -13,27 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.openlocfilehash: e7f109a54c61cc2f37644d39a61d2d932a374587
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e8053b74e0e4d721523f49bcbb9e33b08bb7a1dc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="should-i-choose-cloud-services-or-something-else"></a>¿Debo elegir los servicios en la nube o alguna otra opción?
-¿Es la elección de hello de servicios en la nube para usted? Azure proporciona distintos modelos de hospedaje para ejecutar aplicaciones. Cada una de ellas ofrece un conjunto diferente de servicios, por lo que cuál que elija depende exactamente lo que está tratando de toodo.
+¿Son los servicios en la nube de Azure la opción que mejor se adapta a sus necesidades? Azure proporciona distintos modelos de hospedaje para ejecutar aplicaciones. Cada una de ellas proporciona un conjunto diferente de servicios; por tanto, lo que elija dependerá exactamente lo intenta hacer.
 
 [!INCLUDE [compute-table](../../includes/compute-options-table.md)]
 
 <a name="tellmecs"></a>
 
 ## <a name="tell-me-about-cloud-services"></a>Información sobre los servicios en la nube
-Los servicios en la nube son un ejemplo de [plataforma como servicio](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Al igual que [servicio de aplicaciones](../app-service-web/app-service-web-overview.md), esta tecnología es toosupport diseñado aplicaciones escalables y fiables y toooperate barato. Al igual que un servicio de aplicación se hospeda en máquinas virtuales, por lo que también son servicios en la nube, sin embargo, tener más control sobre hello las máquinas virtuales. Puede instalar su propio software en máquinas virtuales de Servicio en la nube y tener acceso remoto a ellas.
+Los servicios en la nube son un ejemplo de [plataforma como servicio](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Al igual que [Servicio de aplicaciones](../app-service/app-service-web-overview.md), esta tecnología está diseñada para ser compatible con aplicaciones escalables, confiables y de funcionamiento asequible. Al igual que un Servicio de aplicaciones, se hospedan en máquinas virtuales, así que también son servicios en la nube; sin embargo, se tiene más control sobre las máquinas virtuales. Puede instalar su propio software en máquinas virtuales de Servicio en la nube y tener acceso remoto a ellas.
 
 ![cs_diagram](./media/cloud-services-choose-me/diagram.png)
 
-Más control también significa menos facilidad de uso. A menos que necesita opciones de control adicionales de hello, normalmente es más rápido y fácil tooget una aplicación web y ejecutan en aplicaciones Web en el servicio de aplicaciones en comparación con servicios de tooCloud.
+Más control también significa menos facilidad de uso. A menos que necesite opciones de control adicionales, por lo general es más rápido y fácil poner en marcha una aplicación web y que funcione en Web Apps en App Service que en Cloud Services.
 
-Existen dos tipos de roles de servicio en la nube. Hello la única diferencia entre Hola dos es cómo se hospeda su rol en la máquina virtual de Hola.
+Existen dos tipos de roles de servicio en la nube. La única diferencia entre los dos es cómo se hospeda el rol en la máquina virtual.
 
 * **Rol web**  
 Implementa y hospeda automáticamente la aplicación a través de IIS.
@@ -41,21 +41,21 @@ Implementa y hospeda automáticamente la aplicación a través de IIS.
 * **Rol de trabajo**  
 No usa IIS y ejecuta la aplicación independiente.
 
-Por ejemplo, una aplicación simple podría utilizar solo un rol web, para dar servicio a un sitio web. Una aplicación más compleja podría usar un toohandle de rol web las solicitudes entrantes de los usuarios, a continuación, pasar las solicitudes en tooa el rol de trabajo para el procesamiento. (esta comunicación podría utilizar [Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md) o [Azure Queues](../storage/common/storage-introduction.md)).
+Por ejemplo, una aplicación simple podría utilizar solo un rol web, para dar servicio a un sitio web. Una aplicación más compleja podría utilizar un rol web para manejar solicitudes entrantes provenientes de los usuarios y luego transmitir esas solicitudes a un rol de trabajo para su procesamiento. (esta comunicación podría utilizar [Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md) o [Azure Queues](../storage/common/storage-introduction.md)).
 
-Como Hola sugiere la figura anterior, todas las máquinas virtuales de Hola en una sola aplicación que se ejecute en hello mismo servicio en la nube. Los usuarios acceso Hola aplicación a través de una única dirección IP pública, con las solicitudes automáticamente la carga equilibrada entre máquinas virtuales de la aplicación hello. plataforma de Hello [escala e implementa](cloud-services-how-to-scale.md) Hola máquinas virtuales en una aplicación de servicios en la nube de forma que evita un único punto de error de hardware.
+Como sugiere la ilustración anterior, todas las VM de una sola aplicación se ejecutan en el mismo servicio en la nube. Los usuarios acceden a la aplicación a través de una sola dirección IP pública y el equilibrio de carga de las solicitudes se realiza automáticamente en todas las VM de la aplicación. La plataforma [escala e implementa](cloud-services-how-to-scale.md) las máquinas virtuales en una aplicación de Cloud Services para así evitar un único punto de errores de hardware.
 
-Aunque las aplicaciones se ejecutan en máquinas virtuales, es importante toounderstand que los servicios de nube proporciona PaaS, no IaaS. Esta es una manera de toothink sobre él: con IaaS, como máquinas de virtuales de Azure, crear y configurar la aplicación se ejecuta en el entorno de Hola y después implementar la aplicación en este entorno. Es responsable de administrar gran parte de este mundo, hacer las cosas como la implementación de nuevas versiones revisadas del sistema operativo de hello en cada máquina virtual. En PaaS, por el contrario, es como si el entorno de hello ya existe. Lo único que toodo es implementar la aplicación. Administración de plataforma de Hola que se ejecuta, incluida la implementación de nuevas versiones del sistema operativo de hello, se administra para usted.
+A pesar de que las aplicaciones se ejecutan en máquinas virtuales, resulta importante comprender que Servicios en la nube proporciona PaaS y no IaaS. Piénselo así: con IaaS, como en Azure Virtual Machines, primero crea y configura el entorno en el que se ejecuta la aplicación, para luego implementar la aplicación en este entorno. Es responsabilidad suya administrar gran parte de este mundo, como por ejemplo, implementar nuevas versiones revisadas del sistema operativo en cada máquina virtual. Por el contrario, en PaaS ocurre como si el entorno ya existiese. Todo lo que tiene que hacer es implementar la aplicación. Usted maneja la administración de la plataforma en que se ejecuta, incluida la implementación de versiones nuevas del sistema operativo.
 
 ## <a name="scaling-and-management"></a>Escalado y administración
-Con Servicios en la nube no se crean máquinas virtuales. En su lugar, proporcionar un archivo de configuración que informa de cuántas de cada uno de ellos lo desea, como Azure **tres instancias de rol de web** y **dos instancias de rol de trabajo**, y plataforma de hello las creará automáticamente.  Sigue siendo necesario que elija [qué tamaño](cloud-services-sizes-specs.md) deben tener esas máquinas virtuales (las opciones son las mismas que con las máquinas virtuales de Azure), pero no tiene que crearlas por sí mismo explícitamente. Si la aplicación necesita toohandle una carga mayor, puede pedir más máquinas virtuales y Azure crea esas instancias. Si se reduce la carga de hello, puede apagar esas instancias y detener pagar por ellos.
+Con Servicios en la nube no se crean máquinas virtuales. En lugar de eso, se proporciona un archivo de configuración que le indica a Azure qué cantidad de cada una le gustaría tener, como por ejemplo, **tres instancias de rol web** y **dos instancias de rol de trabajo**, y la plataforma las crea por usted.  Sigue siendo necesario que elija [qué tamaño](cloud-services-sizes-specs.md) deben tener esas máquinas virtuales (las opciones son las mismas que con las máquinas virtuales de Azure), pero no tiene que crearlas por sí mismo explícitamente. Si la aplicación necesita manejar una carga mayor, puede pedir más VM y Azure creará esas instancias. Si la carga disminuye, puede apagar esas instancias y así dejar de pagar por ellas.
 
-Una aplicación de servicios en la nube se realiza normalmente toousers disponible a través de un proceso de dos pasos. Un desarrollador primera [cargas Hola aplicación](cloud-services-how-to-create-deploy.md) toohello plataforma del área de ensayo. Cuando esté listo para desarrolladores de hello en vivo de la aplicación de hello toomake, usan almacenamiento provisional de hello Azure tooswap portal con producción. Esto [conmutador entre ensayo y producción](cloud-services-nodejs-stage-application.md) puede realizarse sin tiempo de inactividad, lo que permite que una aplicación en ejecución pueden tooa actualizado nueva versión sin afectar a sus usuarios.
+Una aplicación de Servicios en la nube normalmente está a disposición de los usuarios a través de un proceso de dos pasos. Un desarrollador primero [carga la aplicación](cloud-services-how-to-create-deploy.md) en el área de ensayo de la plataforma. Cuando el desarrollador está preparado para activar definitivamente la aplicación, utiliza Azure Portal para intercambiar el ensayo por la producción. Este [intercambio entre el área de ensayo y la producción](cloud-services-nodejs-stage-application.md) se puede llevar a cabo sin tiempo de inactividad, lo que permite actualizar una aplicación en ejecución a una versión nueva sin interrumpir ni molestar a sus usuarios.
 
 ## <a name="monitoring"></a>Supervisión
-Servicios en la nube también brinda supervisión. Como máquinas de virtuales de Azure, se detecta un error al servidor físico y reinicia las máquinas virtuales de Hola que se estaban ejecutando en ese servidor en un equipo nuevo. Pero Servicios en la nube también detecta máquinas virtuales y aplicaciones con errores, no solo errores de hardware. A diferencia de las máquinas virtuales, tiene un agente en cada rol web y de trabajo y, por lo que es capaz de toostart nuevas máquinas virtuales e instancias de aplicación cuando se producen errores.
+Servicios en la nube también brinda supervisión. Al igual que con Azure Virtual Machines, detecta un servidor físico con errores y reinicia las VM que se ejecutaban en ese servidor en una máquina nueva. Pero Servicios en la nube también detecta máquinas virtuales y aplicaciones con errores, no solo errores de hardware. A diferencia de Máquinas virtuales, Servicios en la nube tiene un agente dentro de cada rol web o rol de trabajo, por lo que puede iniciar nuevas instancias de aplicaciones y máquinas virtuales cuando se produce un error.
 
-Hola naturaleza de PaaS de servicios en la nube tiene otras consecuencias, demasiado. Uno de hello más importante es que las aplicaciones basadas en esta tecnología deben escribirse toorun correctamente cuando se produce un error en cualquier instancia de rol web o de trabajo. tooachieve esto, una aplicación no debe mantener los servicios de nube de estado de sistema de archivos de sus propias máquinas virtuales de Hola. A diferencia de las máquinas virtuales creadas con máquinas virtuales de Azure, escrituras que se efectúen las máquinas virtuales de tooCloud servicios no son persistentes; No hay nada como un disco de datos de máquinas virtuales. En su lugar, una aplicación debe explícitamente los servicios de nube escribir tooSQL de estado de todas las bases de datos, blobs, tablas, o algún otro tipo de almacenamiento externo. Compilar aplicaciones de este modo hace que sean tooscale más fácil y más resistente toofailure, dos objetivos importantes de servicios en la nube.
+La naturaleza de PaaS de Servicios en la nube tiene también otras implicaciones. Una de las más importantes es que las aplicaciones creadas sobre la base de esta tecnología deben estar escritas para ejecutarse correctamente en caso de cualquier error en instancia de rol web o de trabajo. Para lograrlo, una aplicación de Servicios en la nube no debiera mantener estado en el sistema de archivos de sus propias máquinas virtuales. A diferencia de las máquinas virtuales creadas con Máquinas virtuales de Azure, las escrituras que se realizan en las máquinas virtuales de Servicios en la nube no son permanentes; no hay nada parecido a un disco de datos de Máquinas virtuales. En lugar de eso, una aplicación de Servicios en la nube debe escribir explícitamente todo estado en la base de datos de SQL, blogs, tablas u algún otro tipo de almacenamiento externo. Cuando se crean aplicaciones de esta manera, estas resultan más fáciles de escalar y son más resistentes ante los errores, ambos objetivos importantes de Servicios en la nube.
 
 ## <a name="next-steps"></a>Pasos siguientes
 [Crear una aplicación de servicio en la nube en .NET](cloud-services-dotnet-get-started.md)  

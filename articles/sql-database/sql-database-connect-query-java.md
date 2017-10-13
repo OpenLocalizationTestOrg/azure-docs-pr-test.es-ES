@@ -1,6 +1,6 @@
 ---
-title: aaaUse Java tooquery base de datos de SQL de Azure | Documentos de Microsoft
-description: "Este tema muestra cómo toouse Java toocreate un programa que conecta tooan base de datos de SQL Azure y consultas mediante instrucciones Transact-SQL."
+title: Uso de Java para consultar Azure SQL Database | Microsoft Docs
+description: "En este tema se muestra cómo usar Java para crear un programa que se conecta a una base de datos SQL de Azure y realiza consultas mediante instrucciones Transact-SQL."
 services: sql-database
 documentationcenter: 
 author: ajlam
@@ -12,58 +12,58 @@ ms.custom: mvc,develop apps
 ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: java
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 07/10/2017
 ms.author: andrela
-ms.openlocfilehash: f014edbe38ca0e7b6e43f4eb4d2e53d3561bf3e7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 943e355ffcc6c0670585936ec2e559b7fb592ff5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="use-java-tooquery-an-azure-sql-database"></a>Usar Java tooquery una base de datos de SQL Azure
+# <a name="use-java-to-query-an-azure-sql-database"></a>Uso de Java para consultar una base de datos SQL de Azure
 
-Este inicio rápido se muestra cómo toouse [Java](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) tooconnect tooan SQL Azure la base de datos y, a continuación, usar datos de tooquery de instrucciones de Transact-SQL.
+Esta guía de introducción muestra cómo utilizar [Java](https://docs.microsoft.com/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server) para conectarse a una base de datos SQL de Azure y utilizar instrucciones Transact-SQL para consultar los datos.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-toocomplete rápida de este tutorial de inicio, asegúrese de tener Hola siguiendo los requisitos previos:
+Para completar este tutorial, asegúrese de cumplir los siguientes requisitos previos:
 
-- Una base de datos SQL de Azure. Este inicio rápido utiliza recursos de hello creados mediante uno de estos tutoriales: 
+- Una base de datos SQL de Azure. En esta guía de inicio rápido se utilizan como punto de partida los recursos creados en una de las siguientes guías: 
 
    - [Creación de la base de datos: Azure Portal](sql-database-get-started-portal.md)
    - [Creación de la base de datos: CLI](sql-database-get-started-cli.md)
    - [Creación de la base de datos: PowerShell](sql-database-get-started-powershell.md)
 
-- A [regla de firewall de nivel de servidor](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) para la dirección IP pública de hello del equipo de Hola se usa para este tutorial de inicio rápido.
+- Una [regla de firewall de nivel de servidor](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) para la dirección IP pública del equipo que usa para seguir este tutorial.
 
 - Ha instalado Java y el software relacionado para el sistema operativo.
 
     - **MacOS**: instalación de Homebrew y Java y, a continuación, instalación de Maven. Consulte [pasos 1.2 y 1.3](https://www.microsoft.com/sql-server/developer-get-started/java/mac/).
-    - **Ubuntu**: instalar Hola Kit de desarrollo de Java y Maven. Consulte [pasos 1.2, 1.3 y 1.4](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/).
-    - **Windows**: instalar Hola Kit de desarrollo de Java y Maven. Consulte [pasos 1.2 y 1.3](https://www.microsoft.com/sql-server/developer-get-started/java/windows/).    
+    - **Ubuntu**: instalación del Kit de desarrollo de Java e instalación de Maven. Consulte [pasos 1.2, 1.3 y 1.4](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/).
+    - **Windows**: instalación del Kit de desarrollo de Java e instalación de Maven. Consulte [pasos 1.2 y 1.3](https://www.microsoft.com/sql-server/developer-get-started/java/windows/).    
 
 ## <a name="sql-server-connection-information"></a>Información de conexión de SQL server
 
-Obtener base de datos SQL de Azure de toohello de tooconnect de hello conexión información necesaria. Necesitará el nombre del servidor de acceso completa de hello, nombre de base de datos y la información de inicio de sesión en los procedimientos siguientes de Hola.
+Obtención de la información de conexión necesaria para conectarse a Azure SQL Database. En los procedimientos siguientes, necesitará el nombre completo del servidor, el nombre de la base de datos y la información de inicio de sesión.
 
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com/).
-2. Seleccione **bases de datos SQL** desde el menú de la izquierda, hello y haga clic en la base de datos en hello **bases de datos SQL** página. 
-3. En hello **Introducción** página para la base de datos, revise el nombre del servidor de acceso completa de hello como se muestra en hello después de la imagen: puede mantener el mouse sobre toobring de nombre de servidor hello seguridad hello **haga clic en toocopy** opción.  
+1. Inicie sesión en [Azure Portal](https://portal.azure.com/).
+2. Seleccione **Bases de datos SQL** en el menú de la izquierda y haga clic en la base de datos en la página **Bases de datos SQL**. 
+3. En la página **Información general** de la base de datos, revise el nombre completo del servidor tal como se muestra en la siguiente imagen: puede mantener el ratón sobre el nombre del servidor para que aparezca la opción **Haga clic aquí para copiar**.  
 
    ![server-name](./media/sql-database-connect-query-dotnet/server-name.png) 
 
-4. Si olvida su información de inicio de sesión de servidor, navegue toohello base de datos de SQL server página tooview Hola administrador nombre del servidor.  Si es necesario, Hola de restablecimiento de contraseña.     
+4. Si ha olvidado la información de inicio de sesión, vaya a la página del servidor de SQL Database para ver el nombre del administrador del servidor.  Si es necesario, restablezca la contraseña.     
 
 ## <a name="create-maven-project-and-dependencies"></a>**Creación de un proyecto de Maven y sus dependencias**
-1. De hello terminal, cree un nuevo proyecto de Maven llama **sqltest**. 
+1. Desde el terminal, cree un nuevo proyecto de Maven llamado **sqltest**. 
 
    ```bash
    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=sqltest" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
    ```
 
 2. Cuando se le solicite, escriba **Y** (Sí).
-3. Cambie el directorio demasiado**sqltest** y abra ***pom.xml*** con su editor de texto que prefiera.  Agregar hello **Microsoft JDBC Driver para SQL Server** Hola dependencias del proyecto tooyour mediante código siguiente:
+3. Cambie al directorio **sqltest** y abra ***pom.xml*** con el editor de texto.  Agregue **Microsoft JDBC Driver para SQL Server** a las dependencias del proyecto mediante el código siguiente:
 
    ```xml
    <dependency>
@@ -73,7 +73,7 @@ Obtener base de datos SQL de Azure de toohello de tooconnect de hello conexión 
    </dependency>
    ```
 
-4. También en ***pom.xml***, agregar Hola después proyecto tooyour de propiedades.  Si no tiene una sección de propiedades, puede agregarlo después de las dependencias de Hola.
+4. También en ***pom.xml***, agregue las siguientes propiedades al proyecto.  Si no tiene una sección de propiedades, puede agregarla después de las dependencias.
 
    ```xml
    <properties>
@@ -84,11 +84,11 @@ Obtener base de datos SQL de Azure de toohello de tooconnect de hello conexión 
 
 5. Guarde y cierre el archivo ***pom.xml***.
 
-## <a name="insert-code-tooquery-sql-database"></a>Insertar la base de datos SQL de tooquery de código
+## <a name="insert-code-to-query-sql-database"></a>Inserción de código para consultar la base de datos SQL
 
 1. Ya debe tener un archivo denominado ***App.java*** en el proyecto Maven ubicado en: ..\sqltest\src\main\java\com\sqlsamples\App.java
 
-2. Abra el archivo hello y reemplazar su contenido con siguiente Hola de código y agregue los valores adecuados de hello para el servidor, la base de datos, el usuario y la contraseña.
+2. Abra el archivo y reemplace el contenido con el código siguiente y agregue los valores adecuados para el servidor, la base de datos, el usuario y la contraseña.
 
    ```java
    package com.sqldbsamples;
@@ -103,7 +103,7 @@ Obtener base de datos SQL de Azure de toohello de tooconnect de hello conexión 
 
     public static void main(String[] args) {
     
-        // Connect toodatabase
+        // Connect to database
            String hostName = "your_server.database.windows.net";
            String dbName = "your_database";
            String user = "your_username";
@@ -144,16 +144,16 @@ Obtener base de datos SQL de Azure de toohello de tooconnect de hello conexión 
    }
    ```
 
-## <a name="run-hello-code"></a>Ejecutar código de hello
+## <a name="run-the-code"></a>Ejecución del código
 
-1. En hello símbolo del sistema, ejecute hello siguientes comandos:
+1. En el símbolo del sistema, ejecute los siguientes comandos:
 
    ```bash
    mvn package
    mvn -q exec:java "-Dexec.mainClass=com.sqldbsamples.App"
    ```
 
-2. Compruebe que 20 filas de top Hola se devuelven y, a continuación, cierre la ventana de la aplicación hello.
+2. Compruebe que se han devuelto las primeras 20 filas y, a continuación, cierre la ventana de la aplicación.
 
 
 ## <a name="next-steps"></a>Pasos siguientes

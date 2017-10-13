@@ -1,60 +1,60 @@
 ## <a name="create-an-iot-hub"></a>Crear un centro de IoT
 
-1. Hola [portal de Azure](https://portal.azure.com/), haga clic en **New** > **Internet de las cosas** > **centro de IoT**.
+1. En [Azure Portal](https://portal.azure.com/), haga clic en **Nuevo** > **Internet de las cosas** > **IoT Hub**.
 
-   ![Crear un centro de IoT en hello portal de Azure](../articles/iot-hub/media/iot-hub-create-hub-and-device/1_create-azure-iot-hub-portal.png)
-2. Hola **centro de IoT** panel, escriba la siguiente información para su centro de IoT de Hola:
+   ![Creación de un centro de IoT mediante Azure Portal](../articles/iot-hub/media/iot-hub-create-hub-and-device/1_create-azure-iot-hub-portal.png)
+2. En el panel **Centro de IoT**, escriba la información necesaria para su centro de IoT:
 
-     **Nombre**: escriba Hola nombre de su centro de IoT. Si el nombre de Hola que escribió es válida, aparece una marca de verificación verde.
+     **Nombre**: escriba el nombre de su centro de IoT. Si el nombre que escribe es válido, aparece una marca de verificación verde.
 
-     **Nivel de precios y de escala**: Hola seleccione **F1 - libre** capa. Esta opción es suficiente para esta demostración. Para obtener más información, vea hello [nivel de precios y escala](https://azure.microsoft.com/pricing/details/iot-hub/).
+     **Nivel de precios y de escala**: seleccione el nivel **F1 - Gratis**. Esta opción es suficiente para esta demostración. Para más información, consulte la página de [precios de IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
-     **Grupo de recursos**: crear un centro de IoT de recursos grupo toohost Hola o utilizar uno existente. Para obtener más información, consulte [grupos de recursos de uso toomanage los recursos de Azure](../articles/azure-resource-manager/resource-group-portal.md).
+     **Grupo de recursos**: cree un grupo de recursos para hospedar el centro de IoT o use uno existente. Para más información, consulte [Administración de los recursos de Azure a través del Portal](../articles/azure-resource-manager/resource-group-portal.md).
 
-     **Ubicación**: seleccione Hola más cercano tooyou ubicación donde se crea el centro de IoT Hola.
+     **Ubicación**: seleccione la ubicación más cercana a usted donde se crea el centro de IoT.
 
-     **PIN toodashboard**: seleccione esta opción para el centro de IoT tooyour de fácil acceso desde el panel de Hola.
+     **Anclar al panel**: seleccione esta opción para facilitar el acceso al centro de IoT desde el panel.
 
-   ![Escriba información toocreate su centro de IoT](../articles/iot-hub/media/iot-hub-create-hub-and-device/2_fill-in-fields-for-azure-iot-hub-portal.png)
+   ![Escribir la información necesaria para crear su centro de IoT](../articles/iot-hub/media/iot-hub-create-hub-and-device/2_fill-in-fields-for-azure-iot-hub-portal.png)
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
 
-3. Haga clic en **Crear**. El centro de IoT podría tardar toocreate unos minutos. Puede ver el progreso en hello **notificaciones** panel.
+3. Haga clic en **Crear**. El centro de IoT puede tardar varios minutos en crearse. Puede ver el progreso en el panel **Notificaciones**.
 
    ![Ver las notificaciones de progreso para el centro de IoT](../articles/iot-hub/media/iot-hub-create-hub-and-device/3_notification-azure-iot-hub-creation-progress-portal.png)
 
-4. Después de crea el centro de IoT, haga clic en él en el panel de Hola. Tome nota de hello **Hostname**y, a continuación, haga clic en **directivas de acceso compartido**.
+4. Después de crear el centro de IoT, haga clic en él en el panel. Anote el **Nombre de host** y haga clic en **Directivas de acceso compartido**.
 
-   ![Obtener nombre de host de Hola de su centro de IoT](../articles/iot-hub/media/iot-hub-create-hub-and-device/4_get-azure-iot-hub-hostname-portal.png)
+   ![Obtener el nombre de host de su centro de IoT](../articles/iot-hub/media/iot-hub-create-hub-and-device/4_get-azure-iot-hub-hostname-portal.png)
 
-5. Hola **directivas de acceso compartido** panel, haga clic en hello **iothubowner** directiva y, a continuación, copia y ha anotado de hello **cadena de conexión** de su centro de IoT. Para obtener más información, consulte [tooIoT de acceso de Control concentrador](../articles/iot-hub/iot-hub-devguide-security.md).
+5. En el panel **Directivas de acceso compartido**, haga clic en la directiva **iothubowner** y, luego, copie y anote la **cadena de conexión** de su centro de IoT. Para más información, consulte [Control del acceso a IoT Hub](../articles/iot-hub/iot-hub-devguide-security.md).
 
 > [!NOTE] 
-En este tutorial de configuración, no necesita esta cadena de conexión iothubowner. Sin embargo, puede necesitarlo para algunos de los tutoriales de hello en diferentes escenarios de IoT después de completar esta instalación.
+En este tutorial de configuración, no necesita esta cadena de conexión iothubowner. Sin embargo, puede necesitarla en algunos de los tutoriales en diferentes escenarios de IoT después de realizar esta configuración.
 
    ![Obtener la cadena de conexión del centro de IoT](../articles/iot-hub/media/iot-hub-create-hub-and-device/5_get-azure-iot-hub-connection-string-portal.png)
 
-## <a name="register-a-device-in-hello-iot-hub-for-your-device"></a>Registrar un dispositivo en el centro de IoT de hello para el dispositivo
+## <a name="register-a-device-in-the-iot-hub-for-your-device"></a>Registro de su dispositivo en IoT Hub
 
-1. Hola [portal de Azure](https://portal.azure.com/), abra el centro de IoT.
+1. En [Azure Portal](https://portal.azure.com/), abra su centro de IoT.
 
 2. Haga clic en **Explorador de dispositivos**.
-3. En el panel del explorador de dispositivo de hello, haga clic en **agregar** tooadd un centro de IoT tooyour de dispositivo. A continuación, Hola siguientes:
+3. En el panel Explorador del dispositivo, haga clic en **Agregar** para agregar un dispositivo a su centro de IoT. A continuación, haga lo siguiente:
 
-   **Id. de dispositivo**: escriba el identificador de Hola de nuevo dispositivo de Hola. Los identificadores de dispositivos distinguen mayúsculas de minúsculas.
+   **Id. de dispositivo**: escriba el identificador del nuevo dispositivo. Los identificadores de dispositivos distinguen mayúsculas de minúsculas.
 
    **Tipo de autenticación**: seleccione **Clave simétrica**.
 
    **Generar claves automáticamente**: active esta casilla de verificación.
 
-   **Conectar dispositivo tooIoT concentrador**: haga clic en **habilitar**.
+   **Connect device to IoT Hub** (Conectar dispositivos a IoT Hub): haga clic en **Habilitar**.
 
-   ![Agregar un dispositivo en el Explorador de dispositivos de su centro de IoT Hola](../articles/iot-hub/media/iot-hub-create-hub-and-device/6_add-device-in-azure-iot-hub-device-explorer-portal.png)
+   ![Agregar un dispositivo en Device Explorer de su centro de IoT](../articles/iot-hub/media/iot-hub-create-hub-and-device/6_add-device-in-azure-iot-hub-device-explorer-portal.png)
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
 4. Haga clic en **Guardar**.
-5. Una vez creado el dispositivo de hello, abrir el dispositivo de Hola Hola **dispositivo explorador** panel.
-6. Tome nota de la clave principal de Hola de cadena de conexión de Hola.
+5. Después de crear el dispositivo, ábralo en el panel **Explorador de dispositivos**.
+6. Anote la clave principal de la cadena de la cadena de conexión.
 
-   ![Obtener la cadena de conexión de dispositivo de Hola](../articles/iot-hub/media/iot-hub-create-hub-and-device/7_get-device-connection-string-in-device-explorer-portal.png)
+   ![Obtener la cadena de conexión del dispositivo](../articles/iot-hub/media/iot-hub-create-hub-and-device/7_get-device-connection-string-in-device-explorer-portal.png)

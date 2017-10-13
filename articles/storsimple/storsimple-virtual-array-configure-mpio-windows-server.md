@@ -1,6 +1,6 @@
 ---
-title: aaaConfigure MPIO en el host conectado tooStorSimple Virtual Array | Documentos de Microsoft
-description: "Describe cómo tooconfigure E/S de múltiples rutas (MPIO) de la matriz Virtual de StorSimple conecta host tooa ejecuta Windows Server 2012 R2."
+title: "Configuración de MPIO en un host conectado a StorSimple Virtual Array | Microsoft Docs"
+description: "Describe cómo configurar la E/S de múltiples rutas (MPIO) para una instancia de StorSimple Virtual Array conectada a un host que ejecuta Windows Server 2012 R2."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,94 +14,94 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/01/2017
 ms.author: alkohli
-ms.openlocfilehash: 0e6df23bba29395329685cbf2c968675abb04cfc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c75c6ed40754aee964e2b68f4f569dc1422507f2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="configure-multipath-io-on-windows-server-host-for-hello-storsimple-virtual-array"></a>Configurar E/S de múltiples rutas en el host de Windows Server para hello StorSimple Virtual Array
+# <a name="configure-multipath-io-on-windows-server-host-for-the-storsimple-virtual-array"></a>Configuración de E/S de múltiples rutas en el host de Windows Server para la matriz Virtual de StorSimple
 ## <a name="overview"></a>Información general
-Este artículo describe cómo aplicar opciones de configuración específicas para volúmenes de StorSimple solo tooinstall característica de E/S de múltiples rutas (MPIO) en el host de Windows Server y, a continuación, comprobar MPIO para volúmenes de StorSimple. Hola, se asume que la matriz Virtual de StorSimple 1200 con dos interfaces de red está conectado tooa host de Windows Server con dos interfaces de red. información de Hello contenida en este artículo aplica solo toohello de matriz virtual. Para obtener información sobre los dispositivos de la serie StorSimple 8000, vaya demasiado[configurar MPIO para StorSimple host](storsimple-configure-mpio-windows-server.md). 
+Este artículo describe cómo instalar la característica E/S de múltiples rutas (MPIO) en el host de Windows Server, aplicar una configuración específica solo para volúmenes de StorSimple y, a continuación, comprobar MPIO para volúmenes de StorSimple. En el procedimiento se supone que la matriz virtual de StorSimple 1200 con dos interfaces de red está conectada a un host de Windows Server con dos interfaces de red. La información contenida en este artículo se aplica solo a la matriz virtual. Para más información sobre los dispositivos de la serie 8000 de StorSimple, vaya a [Configuración de MPIO para el host de StorSimple](storsimple-configure-mpio-windows-server.md). 
 
-característica MPIO de Hello en configuraciones de almacenamiento de alta disponibilidad y tolerancia de compilación de Ayuda de Windows Server. MPIO usa componentes de ruta de acceso física redundantes, adaptadores, cables y conmutadores: toocreate rutas de acceso lógicas entre el servidor de Hola y de dispositivo de almacenamiento de Hola. Si se produce un error de componente, provoque un toofail ruta de acceso lógica, lógica de múltiples rutas usa una ruta de acceso alternativa para E/S de modo que aplicaciones todavía pueden tener acceso a sus datos. Además dependiendo de la configuración MPIO puede mejorar el rendimiento al volver a equilibrar la carga de hello en estas rutas de acceso. Para más información, consulte [Introducción a E/S de múltiples rutas](https://technet.microsoft.com/library/cc725907.aspx "Introducción a E/S de múltiples rutas and features").
+La característica MPIO en Windows Server ayuda a crear configuraciones de almacenamiento de alta disponibilidad y de tolerancia a fallos. MPIO usa componentes de ruta de acceso físicas redundantes (es decir, adaptadores, cables y conmutadores) para crear rutas de acceso lógicas entre el servidor y el dispositivo de almacenamiento. Si se produce un error de componente, lo que haría que la ruta de acceso lógica no funcionara, la lógica de múltiples rutas usa una ruta alternativa para E/S a fin de que las aplicaciones puedan seguir teniendo acceso a los datos. Además, dependiendo de la configuración de MPIO, puede mejorar el rendimiento al volver a equilibrar la carga entre estas rutas de acceso. Para más información, consulte [Introducción a E/S de múltiples rutas](https://technet.microsoft.com/library/cc725907.aspx "Introducción a E/S de múltiples rutas and features").
 
-Para hello alta disponibilidad de la solución de StorSimple, configurar MPIO en hello tooyour conectado de hosts de Windows Server StorSimple Virtual Array (modelo de 1200). servidores de host de Hello, a continuación, pueden tolerar un vínculo, red o errores de interfaz. 
+Para la alta disponibilidad de la solución StorSimple, configure MPIO en los hosts de Windows Server conectados a StorSimple Virtual Array (modelo 1200). Los servidores de host pueden tolerar errores de interfaz, red o vínculo. 
 
-Necesitará toofollow estos tooconfigure pasos MPIO: 
+Realice estos pasos para configurar MPIO: 
 
 * Requisitos previos de configuración
-* Paso 1: Instalar MPIO en el host de Windows Server de Hola
+* Paso 1: instalar MPIO en el host de Windows Server
 * Paso 2: configurar MPIO para volúmenes de StorSimple
-* Paso 3: Montar volúmenes de StorSimple en el host de Hola
+* Paso 3: montar los volúmenes de StorSimple en el host
 
-Cada uno de hello por encima de los pasos se explica en las secciones siguientes de Hola.
+En las siguientes secciones se detallan cada uno de estos pasos.
 
 ## <a name="prerequisites"></a>Requisitos previos
-Esta sección detallan los requisitos previos de hello configuración de host de Windows Server de Hola y de la matriz virtual.
+En esta sección se detallan los requisitos previos de configuración para la matriz virtual y el host de Windows Server.
 
 ### <a name="on-windows-server-host"></a>En el host de Windows Server
 * Asegúrese de que el host de Windows Server tiene dos interfaces de red habilitadas.
 
 ### <a name="on-storsimple-virtual-array"></a>En StorSimple Virtual Array
-* matriz virtual Hola debe configurarse como un servidor de iSCSI. más información, consulte toolearn [configurar matriz virtual como un servidor de iSCSI](storsimple-virtual-array-deploy3-iscsi-setup.md). Una o varias interfaces de red deben estar habilitadas en la matriz de Hola.   
-* interfaces de red de Hello en la matriz virtual deben ser accesibles desde el host de Windows Server de Hola.
-* Deben crearse uno o más volúmenes en la matriz virtual de StorSimple. más información, consulte toolearn [agregar un volumen](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume) en la matriz Virtual de StorSimple. En este procedimiento, creamos 3 volúmenes (1 anclado localmente y 2 en capas tal como se muestra a continuación) en la matriz virtual Hola.
+* La matriz virtual debe estar configurada como un servidor iSCSI. Para más información, consulte [Implementación de StorSimple Virtual Array: configurar el dispositivo virtual como servidor iSCSI](storsimple-virtual-array-deploy3-iscsi-setup.md). Debe habilitarse una o más interfaces de red en la matriz.   
+* Las interfaces de red en la matriz virtual deben ser accesibles desde el host de Windows Server.
+* Deben crearse uno o más volúmenes en la matriz virtual de StorSimple. Para más información, consulte [Adición de un volumen](storsimple-virtual-array-deploy3-iscsi-setup.md#step-3-add-a-volume) en StorSimple Virtual Array. En este procedimiento, hemos creado tres volúmenes (uno anclado localmente y dos volúmenes en capas, tal como se muestra a continuación) en la matriz virtual.
   
     ![mpio0](./media/storsimple-virtual-array-configure-mpio-windows-server/mpio0.png)
 
 ### <a name="hardware-configuration-for-storsimple-virtual-array"></a>Configuración de hardware para StorSimple Virtual Array
-Hola siguiente ilustración muestra la configuración de hardware de Hola para lograr alta disponibilidad y equilibrio de carga de múltiples rutas para el host de Windows Server y de StorSimple Virtual Array utilizadas en este procedimiento.
+La siguiente ilustración muestra la configuración de hardware para múltiples rutas de alta disponibilidad y equilibrio de carga para el host de Windows Server y StorSimple Virtual Array usados en este procedimiento.
 
 ![Configuración de hardware de mpio](./media/storsimple-virtual-array-configure-mpio-windows-server/1200hardwareconfig.png)
 
-Como se muestra en hello anterior figura:
+Como se muestra en la ilustración anterior:
 
 * StorSimple Virtual Array aprovisionado en Hyper-V es un dispositivo activo de nodo único configurado como un servidor iSCSI.
-* Se habilitan dos interfaces de red virtual en la matriz. En la interfaz de usuario de la matriz virtual web local de hello, compruebe que los dos interfaces de red están habilitadas desplazándose demasiado**configuración de red** tal y como se muestra a continuación:
+* Se habilitan dos interfaces de red virtual en la matriz. En la interfaz de usuario web local de su matriz virtual, compruebe que hay dos interfaces de red habilitadas, para lo que debe navegar a **Configuración de red**, como se muestra a continuación:
   
     ![Interfaces de red habilitadas en 1200](./media/storsimple-virtual-array-configure-mpio-windows-server/mpio9.png)
   
-    Nota Hola IPv4 direcciones de hello habilitado (Ethernet, Ethernet 2 de forma predeterminada) de interfaces de red y guardar para su uso posterior en el host de Hola.
-* Se habilitan dos interfaces de red en el host de Windows Server. Si hello conectados interfaces de host y la matriz se encuentran en Hola misma subred, habrá 4 rutas disponibles. Este era el caso de hello en este procedimiento. Sin embargo, si cada interfaz de red en la interfaz de matriz y el host de Hola se encuentran en una subred IP diferente (y no enrutables), a continuación, las rutas de acceso de solo 2 estará disponibles.
+    Tenga en cuenta las direcciones IPv4 de las interfaces de red habilitadas (Ethernet, Ethernet 2 de forma predeterminada) y guárdelas para su uso posterior en el host.
+* Se habilitan dos interfaces de red en el host de Windows Server. Si las interfaces conectadas para el host y la matriz están en la misma subred, habrá 4 rutas de acceso disponibles. Este era el caso de este procedimiento. Sin embargo, si cada interfaz de red en la interfaz en la interfaz del host y la matriz están en una subred IP diferente (y no enrutable), solo estarán disponibles dos rutas de acceso.
 
-## <a name="step-1-install-mpio-on-hello-windows-server-host"></a>Paso 1: Instalar MPIO en el host de Windows Server de Hola
-MPIO es una característica opcional en Windows Server y no se instala de forma predeterminada. Se debe instalar como una característica a través del Administrador del servidor. tooinstall esta característica en el host de Windows Server, completar Hola siguiendo el procedimiento.
+## <a name="step-1-install-mpio-on-the-windows-server-host"></a>Paso 1: instalar MPIO en el host de Windows Server
+MPIO es una característica opcional en Windows Server y no se instala de forma predeterminada. Se debe instalar como una característica a través del Administrador del servidor. Haga lo siguiente para instalar esta característica en el host de Windows Server.
 
 [!INCLUDE [storsimple-install-mpio-windows-server-host](../../includes/storsimple-install-mpio-windows-server-host.md)]
 
 ## <a name="step-2-configure-mpio-for-storsimple-volumes"></a>Paso 2: configurar MPIO para volúmenes de StorSimple
-MPIO debe volúmenes de StorSimple de tooidentify toobe configurado. volúmenes de StorSimple de tooconfigure MPIO toorecognize, realizar Hola pasos.
+MPIO tiene que configurarse de forma que identifique los volúmenes de StorSimple. Haga lo siguiente para configurar MPIO para reconocer volúmenes de StorSimple.
 
 [!INCLUDE [storsimple-configure-mpio-volumes](../../includes/storsimple-configure-mpio-volumes.md)]
 
-## <a name="step-3-mount-storsimple-volumes-on-hello-host"></a>Paso 3: Montar volúmenes de StorSimple en el host de Hola
-Una vez configurado MPIO en Windows Server, volúmenes creados en la matriz de StorSimple de Hola se pueden montar y, a continuación, pueden aprovechar las ventajas de MPIO para redundancia. toomount un volumen, realizar Hola pasos.
+## <a name="step-3-mount-storsimple-volumes-on-the-host"></a>Paso 3: montar los volúmenes de StorSimple en el host
+Después de configurar MPIO en Windows Server, los volúmenes creados en la matriz de StorSimple se pueden montar para que puedan usar MPIO para la redundancia. Haga lo siguiente para montar un volumen.
 
-#### <a name="toomount-volumes-on-hello-host"></a>volúmenes de toomount en host Hola
-1. Abra hello **propiedades del iniciador iSCSI** ventana en el host de servidor de Windows hello. Vaya demasiado**el administrador del servidor > panel > Herramientas > iniciador iSCSI**.
-2. Hola **propiedades del iniciador iSCSI** cuadro de diálogo, haga clic en **detección**y, a continuación, haga clic en **detectar Portal de destino**.
-3. Hola **detectar Portal de destino** diálogo cuadro, Hola siguientes:
+#### <a name="to-mount-volumes-on-the-host"></a>Para montar volúmenes en el host
+1. Abra la ventana **Propiedades del iniciador iSCSI** en el host de Windows Server. Vaya a **Administrador del servidor > Panel > Herramientas > Iniciador iSCSI**.
+2. En el cuadro de diálogo **Propiedades del iniciador iSCSI**, haga clic en **Detección** y, después, en **Detectar portal de destino**.
+3. Haga lo siguiente en el cuadro de diálogo **Detectar portal de destino** :
    
-    1. Escriba la dirección IP de Hola de interfaz de red habilitado primera hello en la matriz Virtual de StorSimple. De forma predeterminada, el valor de configuración sería **Ethernet**. 
-    2. Haga clic en **Aceptar** tooreturn toohello **propiedades del iniciador iSCSI** cuadro de diálogo.
+    1. Escriba la dirección IP de la primera interfaz de red habilitada en StorSimple Virtual Array. De forma predeterminada, el valor de configuración sería **Ethernet**. 
+    2. Haga clic en **Aceptar** para volver al cuadro de diálogo **Propiedades del iniciador iSCSI**.
      
     > [!IMPORTANT]
-    > Si está utilizando una red privada para las conexiones iSCSI, escriba la dirección IP de hello del puerto de datos de Hola que está conectado toohello red privada.
+    > Si está usando una red privada para las conexiones iSCSI, escriba la dirección IP del puerto DATA que esté conectado a la red privada.
      
 4. Repita los pasos 2 y 3 para una segunda interfaz de red (por ejemplo, Ethernet 2) en la matriz. 
-5. Seleccione hello **destinos** ficha hello **propiedades del iniciador iSCSI** cuadro de diálogo. Para la matriz virtual, debería ver la superficie de cada volumen como un destino en **Destinos detectados**. En este caso, se descubren tres destinos (volúmenes toothree correspondiente).
+5. Seleccione la pestaña **Destinos** del cuadro de diálogo **Propiedades del iniciador iSCSI**. Para la matriz virtual, debería ver la superficie de cada volumen como un destino en **Destinos detectados**. En este caso, se detectan tres destinos (correspondiente a tres volúmenes).
    
     ![mpio1](./media/storsimple-virtual-array-configure-mpio-windows-server/mpio1.png)
-6. Haga clic en **conectar** tooestablish una sesión de iSCSI con la matriz Virtual de StorSimple. A **conectar tooTarget** se abre el cuadro de diálogo. Seleccione hello **habilitar múltiples rutas** casilla de verificación. Haga clic en **Avanzadas**.
+6. Haga clic en **Conectar** para establecer una sesión iSCSI con StorSimple Virtual Array. Aparecerá el cuadro de diálogo **Conectarse al destino** . Active la casilla **Habilitar múltiples rutas** . Haga clic en **Avanzadas**.
    
     ![mpio2](./media/storsimple-virtual-array-configure-mpio-windows-server/mpio2.png)
-7. Hola **configuración avanzada** diálogo cuadro, Hola siguientes:                                        
+7. Haga lo siguiente en el cuadro de diálogo **Configuración avanzada** :                                        
    
-    1. En hello **adaptador Local** lista desplegable, seleccione **iniciador iSCSI de Microsoft**.
-    2. En hello **IP del iniciador** lista desplegable, seleccione Hola dirección IP host Hola.
-    3. En hello **Portal de destino** lista desplegable IP, seleccione Hola IP de interfaz de la matriz.
-    4. Haga clic en **Aceptar** tooreturn toohello **propiedades del iniciador iSCSI** cuadro de diálogo.
+    1. En la lista desplegable **Adaptador local**, seleccione **Iniciador iSCSI de Microsoft**.
+    2. En la lista desplegable **IP de iniciador** , seleccione la dirección IP del host.
+    3. En la lista desplegable **IP del portal de destino** , seleccione la dirección IP de la interfaz de la matriz.
+    4. Haga clic en **Aceptar** para volver al cuadro de diálogo **Propiedades del iniciador iSCSI**.
      
         ![mpio3](./media/storsimple-ova-configure-mpio-windows-server/mpio3.png)
 
@@ -109,42 +109,42 @@ Una vez configurado MPIO en Windows Server, volúmenes creados en la matriz de S
    
     ![mpio4](./media/storsimple-ova-configure-mpio-windows-server/mpio4.png)
 
-9. Hola **propiedades** cuadro de diálogo, haga clic en **Agregar sesión**.
+9. En el cuadro de diálogo **Propiedades**, haga clic en **Agregar sesión**.
    
    ![mpio5](./media/storsimple-ova-configure-mpio-windows-server/mpio5.png)
-10. Hola **conectar tooTarget** cuadro de diálogo, seleccione hello **habilitar múltiples rutas** casilla de verificación. Haga clic en **Avanzadas**.
-11. Hola **configuración avanzada** cuadro de diálogo:                                        
+10. En el cuadro de diálogo **Conectarse al destino**, active la casilla **Habilitar múltiples rutas**. Haga clic en **Avanzadas**.
+11. En el cuadro de diálogo **Configuración avanzada** :                                        
     
-    1. En hello **adaptador Local** lista desplegable, seleccione iniciador de iSCSI de Microsoft.
+    1. En la lista desplegable **Adaptador local** , seleccione Iniciador iSCSI de Microsoft.
 
-    2. En hello **IP del iniciador** lista desplegable, host de toohello correspondiente de dirección IP de hello seleccione. En este caso, va a conectar dos interfaces de red en hello matriz tooa única interfaz de red en el host de Hola. Por lo tanto, esta interfaz es Hola igual que proporcionó para hello primera sesión.
+    2. En la lista desplegable **IP de iniciador** , seleccione la dirección IP correspondiente al host. En este caso, estamos conectando dos interfaces de red en la matriz o a una única interfaz de red en el host. Por lo tanto, esta interfaz es la misma que la proporcionada para la primera sesión.
 
-    3. En hello **IP del Portal de destino** lista desplegable, dirección IP de hello seleccione para la segunda interfaz de datos Hola habilitado en la matriz de Hola.
+    3. En la lista desplegable **IP del portal de destino** , seleccione la dirección IP de la segunda interfaz de datos habilitada en la matriz.
 
-    4. Haga clic en **Aceptar** cuadro de diálogo de propiedades del iniciador iSCSI de tooreturn toohello. Ha agregado un segundo destino toohello de sesión.
+    4. Haga clic en **Aceptar** para volver al cuadro de diálogo Propiedades del iniciador iSCSI. Agregó una segunda sesión al destino.
       
        ![mpio11](./media/storsimple-virtual-array-configure-mpio-windows-server/mpio11.png)
     
-    5. Después de agregar las sesiones de hello deseado (rutas de acceso), en hello **propiedades del iniciador iSCSI** cuadro de diálogo, destino Hola seleccione y haga clic en **propiedades**. En la ficha sesiones del Hola de hello **propiedades** cuadro de diálogo, tenga en cuenta Hola cuatro identificadores de sesión que corresponden toohello posibles permutaciones de ruta. toocancel una sesión, seleccione Hola casilla de verificación siguiente tooa identificador de la sesión y, a continuación, haga clic en **desconexión**.
+    5. Después de agregar las sesiones (rutas de acceso) que quiera, en el cuadro de diálogo **Propiedades del iniciador iSCSI**, seleccione el destino y haga clic en **Propiedades**. En la pestaña Sesiones del cuadro de diálogo **Propiedades** , fíjese en los cuatro identificadores de sesión, que se corresponden con las posibles permutaciones de ruta de acceso. Para cancelar una sesión, active la casilla situada junto a un identificador de sesión y, luego, haga clic en **Desconectar**.
 
-    6. dispositivos de tooview presentados en las sesiones, seleccione hello **dispositivos** Hola de tooconfigure ficha Directiva MPIO para un dispositivo seleccionado, haga clic en **MPIO**.
+    6. Para ver los dispositivos presentados en las sesiones, seleccione la pestaña **Dispositivos** . Para configurar la directiva MPIO de un dispositivo seleccionado, haga clic en **MPIO**.
 
-    7. Hola **detalles** aparecerá el cuadro de diálogo. En hello **MPIO** ficha, puede seleccionar Hola adecuado **directiva de equilibrio de carga** configuración. También puede ver hello **Active** o **Standby** tipo de ruta de acceso.
-12. Repita el destino de toohello de pasos del 8 al 11 tooadd sesiones adicionales (rutas de acceso). Con dos interfaces en el host de Hola y dos de la matriz virtual hello, puede agregar un total de cuatro sesiones para cada destino. 
+    7. Aparecerá el cuadro de diálogo **Detalles**. En la pestaña **MPIO**, puede seleccionar la configuración de **Directiva de equilibrio de carga** apropiada. También puede ver el tipo de ruta de acceso **Activo** o **En espera**.
+12. Repita los pasos del 8 al 11 para agregar más sesiones (rutas de acceso) al destino. Con dos interfaces en el host y dos en la matriz virtual, puede agregar un total de cuatro sesiones para cada destino. 
     
     ![mpio14](./media/storsimple-virtual-array-configure-mpio-windows-server/mpio14.png)
-13. Necesitará toorepeat estos pasos para cada volumen (superficies como destino).
+13. Debe repetir estos pasos para cada volumen (superficies como destino).
     
     ![mpio 15](./media/storsimple-virtual-array-configure-mpio-windows-server/mpio15.png)
-14. Abra **administración de equipos** desplazándose demasiado**el administrador del servidor > panel > Administración de equipos**. En el panel izquierdo de hello, haga clic en **almacenamiento > Administración de discos**. Hello volúmenes creados en hello StorSimple Virtual Array que dependen del host de toothis visible aparecerá en **administración de discos** como nuevos discos.
-15. Inicialice el disco de Hola y crear un nuevo volumen. Durante el proceso de formato de hello, seleccione un tamaño de unidad de asignación (AUS) de 64 KB. Repita el proceso de Hola para todos los volúmenes disponibles Hola.
+14. Abra **Administración de equipos**; para ello, vaya a **Administrador del servidor > Panel > Administración de equipos**. En el panel izquierdo, haga clic en **Almacenamiento > Administración de discos**. Los volúmenes creados en StorSimple Virtual Array que pueda ver este host aparecerán en **Administración de discos** como discos nuevos.
+15. Inicialice el disco y cree otro volumen. Durante el proceso de formato, seleccione un tamaño de unidad de asignación (AUS) de 64 KB. Repita el proceso para todos los volúmenes disponibles.
     
     ![Administración de discos](./media/storsimple-virtual-array-configure-mpio-windows-server/mpio20.png)
-16. En **administración de discos**, contextual hello **disco** y seleccione **propiedades**.
-17. Hola **propiedades de dispositivo de disco de múltiples rutas** diálogo cuadro, haga clic en hello **MPIO** ficha.
+16. En **Administración de discos**, haga clic con el botón derecho en el **disco** y seleccione **Propiedades**.
+17. En el cuadro de diálogo **Propiedades del dispositivo de disco de múltiples rutas**, haga clic en la pestaña **MPIO**.
     
     ![Propiedades de disco](./media/storsimple-virtual-array-configure-mpio-windows-server/mpio21.png)
-18. Hola **nombre del DSM** sección, haga clic en **detalles** y compruebe que los parámetros de hello están establecidos toohello los parámetros predeterminados. parámetros de Hello predeterminados son:
+18. En la sección **Nombre DSM**, haga clic en **Detalles** y compruebe que los parámetros están establecidos en los valores predeterminados. Los parámetros predeterminados son los siguientes:
     
     * Período de comprob. de ruta = 30
     * Número de reintentos = 3
@@ -153,8 +153,8 @@ Una vez configurado MPIO en Windows Server, volúmenes creados en la matriz de S
     * Comprobación de ruta habilitada = Sin seleccionar
     
     > [!NOTE]
-    > **No modifique los parámetros predeterminados Hola.**
+    > **No modifique los parámetros predeterminados.**
    
 ## <a name="next-steps"></a>Pasos siguientes
-Obtenga más información sobre [utilizando Hola tooadminister de servicio de administrador de dispositivos de StorSimple la matriz Virtual de StorSimple](storsimple-virtual-array-manager-service-administration.md).
+Más información sobre el [uso del servicio StorSimple Device Manager para administrar StorSimple Virtual Array](storsimple-virtual-array-manager-service-administration.md).
 

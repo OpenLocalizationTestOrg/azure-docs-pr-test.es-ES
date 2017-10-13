@@ -1,6 +1,6 @@
 ---
-title: aaaProblems configurar y aprovisionamiento de usuarios tooan application"
-description: "Problemas de configuración y el aprovisionamiento de usuarios tooan application\""
+title: "Problemas al configurar y aprovisionar usuarios en una aplicación\""
+description: "Problemas al configurar y aprovisionar usuarios en una aplicación\""
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -12,24 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: bc8465ff3d1b706ce752def5f3d999bddbdf6e48
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 55c5abccb2472d653a4e355e39a19a224b979b85
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="problems-configuring-and-provisioning-users-tooan-application"></a>Problemas de configuración y el aprovisionamiento de usuarios tooan application
+# <a name="problems-configuring-and-provisioning-users-to-an-application"></a>Problemas al configurar y aprovisionar usuarios en una aplicación
 
 
 
-## <a name="i-want-tooknow-when-provisioning-will-finish"></a>Deseo tooknow al aprovisionar finalizará
-  Hello documentos siguientes pueden ayudarle a tooresolve algunos de los problemas más comunes de hello en esta categoría.
-  * [No sé cómo toofind espera cuando un usuario específico será capaz de tooaccess una aplicación](https://docs.microsoft.com/azure/active-directory/application-provisioning-when-will-provisioning-finish-specific-user/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
-  * [Aprovisionar la aplicación de la Galería de Azure AD toomy funciona, pero el proceso de aprovisionamiento de hello es tomar horas o más](https://docs.microsoft.com/azure/active-directory/application-provisioning-when-will-provisioning-finish/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+## <a name="i-want-to-know-when-provisioning-will-finish"></a>Deseo saber cuándo finalizará el aprovisionamiento
+  Los siguientes documentos pueden ayudarle a resolver algunos de los problemas más comunes de esta categoría.
+  * [No sé cómo averiguar cuándo un usuario específico podrá tener acceso a una aplicación](https://docs.microsoft.com/azure/active-directory/application-provisioning-when-will-provisioning-finish-specific-user/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+  * [El aprovisionamiento en mi aplicación de la galería de Azure AD funciona, pero el proceso de aprovisionamiento está llevando horas o más](https://docs.microsoft.com/azure/active-directory/application-provisioning-when-will-provisioning-finish/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
 
-## <a name="im-having-problems-configuring-user-provisioning-tooan-application"></a>Tengo problemas al configurar la aplicación de tooan de aprovisionamiento de usuarios
-  Hello documentos siguientes pueden ayudarle a tooresolve algunos de los problemas más comunes de hello en esta categoría.
-  * [No sé cómo aprovisionar la aplicación de la Galería de Azure AD tooan de usuario de tooconfigure](https://docs.microsoft.com/azure/active-directory/application-provisioning-config-how-to/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
-  * [Detectó un problema al configurar la aplicación de la Galería de Azure AD tooan de aprovisionamiento de usuarios](https://docs.microsoft.com/azure/active-directory/application-provisioning-config-problem/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
-  * [He configurado aprovisionamiento toomy aplicación de la Galería de Azure AD, pero ningún usuario que se van a aprovisionar](https://docs.microsoft.com/azure/active-directory/application-provisioning-config-problem-no-users-provisioned/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
-  * [Aprovisionar la aplicación de la Galería de Azure AD de toomy funciona, pero hello conjunto incorrecto de los usuarios se van a aprovisionar](https://docs.microsoft.com/azure/active-directory/application-provisioning-config-problem-wrong-users-provisioned/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+## <a name="im-having-problems-configuring-user-provisioning-to-an-application"></a>Tengo problemas al configurar el aprovisionamiento de usuarios en una aplicación
+  Los siguientes documentos pueden ayudarle a resolver algunos de los problemas más comunes de esta categoría.
+  * [No sé cómo configurar el aprovisionamiento de usuarios en una aplicación de la galería de Azure AD](https://docs.microsoft.com/azure/active-directory/application-provisioning-config-how-to/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+  * [Se detectó un problema al configurar el aprovisionamiento de usuarios en una aplicación de la galería de Azure AD](https://docs.microsoft.com/azure/active-directory/application-provisioning-config-problem/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+  * [He configurado el aprovisionamiento en mi aplicación de la galería de Azure AD, pero no se está aprovisionando ningún usuario](https://docs.microsoft.com/azure/active-directory/application-provisioning-config-problem-no-users-provisioned/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+  * [El aprovisionamiento en mi aplicación de la galería de Azure AD funciona, pero se está aprovisionando el conjunto de usuarios incorrecto](https://docs.microsoft.com/azure/active-directory/application-provisioning-config-problem-wrong-users-provisioned/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)

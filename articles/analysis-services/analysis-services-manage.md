@@ -1,6 +1,6 @@
 ---
-title: aaaManage Azure Analysis Services | Documentos de Microsoft
-description: "Obtenga información acerca de cómo toomanage un Analysis Services server en Azure."
+title: "Administración de Azure Analysis Services | Microsoft Docs"
+description: Aprenda a administrar un servidor de Analysis Services en Azure.
 services: analysis-services
 documentationcenter: 
 author: minewiskan
@@ -15,57 +15,57 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/15/2017
 ms.author: owend
-ms.openlocfilehash: b03bc440801a68162039e28cdb4f863da374014e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: b897e81351ebee11c292e67ac76ba8202a6f0108
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-analysis-services"></a>Administración de Analysis Services
-Una vez que ha creado un servidor de Analysis Services en Azure, puede haber algunas tareas de administración y administración necesita tooperform inmediatamente o algún tiempo inactivo road Hola. Por ejemplo, ejecutar el procesamiento toohello de actualización de datos, controlar quién puede tener acceso a los modelos de hello en el servidor o supervisar el estado del servidor. Varias de estas tareas solo se pueden realizar en Azure Portal, otras en SQL Server Management Studio (SSMS) y otras se pueden realizar indistintamente en ambos.
+Una vez que se ha creado un servidor de Analysis Services en Azure, es posible que haya que realizar varias tareas de administración inmediatamente o en algún momento del futuro. Por ejemplo, ejecutar el procesamiento de los datos de la actualización, controlar quién puede acceder a los modelos del servidor o supervisar el estado del servidor. Varias de estas tareas solo se pueden realizar en Azure Portal, otras en SQL Server Management Studio (SSMS) y otras se pueden realizar indistintamente en ambos.
 
-## <a name="azure-portal"></a>Azure Portal
-[Portal de Azure](http://portal.azure.com/) es donde puede crear y eliminar servidores, supervisar los recursos de servidor, cambiar el tamaño y administrar quién tiene acceso tooyour servidores.  Si tiene problemas, también puede enviar una solicitud de soporte técnico.
+## <a name="azure-portal"></a>Portal de Azure
+[Azure Portal](http://portal.azure.com/) es el lugar donde se puede crear y eliminar servidores, supervisar los recursos de los servidores, y cambiar el tamaño de los servidores y administrar quién tiene acceso a ellos.  Si tiene problemas, también puede enviar una solicitud de soporte técnico.
 
 ![Obtención del nombre del servidor en Azure](./media/analysis-services-manage/aas-manage-portal.png)
 
 ## <a name="sql-server-management-studio"></a>SQL Server Management Studio
-Conectar el servidor de tooyour en Azure es igual que conecta la instancia del servidor tooa en su propia organización. En SSMS, puede realizar muchas de hello mismo tareas como procesar los datos o crear una secuencia de comandos de procesamiento, administrar roles y usar PowerShell.
+En Azure, la conexión a los servidores se realiza de la misma forma que la conexión a una instancia de servidor en una organización. Desde SSMS se pueden realizar muchas de las mismas tareas, como procesar datos o crear una script de procesamiento, administrar roles y usar PowerShell.
   
 ![SQL Server Management Studio](./media/analysis-services-manage/aas-manage-ssms.png)
 
 ### <a name="download-and-install-ssms"></a>Descarga e instalación de SSMS
-tooget todos Hola características más recientes y experiencia más fluida de hello cuando se conecta el servidor de Analysis Services de Azure de tooyour, asegúrese de utiliza la versión más reciente de Hola de SSMS. 
+Para obtener las últimas características y la experiencia más completa al conectarse al servidor de Azure Analysis Services, asegúrese de estar usando la versión más reciente de SSMS. 
 
 [Descargue SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
 
 
-### <a name="tooconnect-with-ssms"></a>tooconnect con SSMS
- Cuando se usa SSMS, antes de conectar saludos del servidor tooyour primera vez, asegúrese de que el nombre de usuario se incluye en el grupo de administradores de servicios de análisis de Hola. más información, consulte toolearn [los administradores del servidor](#server-administrators) más adelante en este artículo.
+### <a name="to-connect-with-ssms"></a>Para conectarse con SSMS
+ Si se usa SSMS, antes de conectarse al servidor por primera vez, asegúrese de que su nombre de usuario se incluye en el grupo de administradores de Analysis Services. Para más información, consulte la sección[Administradores de servidor](#server-administrators) en este mismo artículo.
 
-1. Antes de conectar, necesita el nombre del servidor de tooget Hola. En **portal de Azure** > servidor > **Introducción** > **nombre del servidor**, el nombre del servidor de copia Hola.
+1. Antes de establecer la conexión, es necesario obtener el nombre del servidor. En **Azure Portal** > servidor > **Información general** > **Nombre de servidor**, copie el nombre del servidor.
    
     ![Obtención del nombre del servidor en Azure](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 2. En SSMS > **Explorador de objetos**, haga clic en **Conectar** > **Analysis Services**.
-3. Hola **conectar tooServer** cuadro de diálogo, pegar en nombre del servidor hello, a continuación, en **autenticación**, elija uno de los siguientes tipos de autenticación de hello:
+3. En el cuadro de diálogo **Conectarse al servidor**, pegue el nombre del servidor y en **Autenticación**, elija uno de los siguientes tipos de autenticación:
    
-    **Autenticación de Windows** toouse sus credenciales de dominio ombre de usuario y la contraseña de Windows.
+    **Autenticación de Windows** para usar las credenciales de dominio o nombre de usuario y contraseña de Windows.
 
-    **Autenticación de contraseña de Active Directory** toouse una cuenta profesional. Por ejemplo, al establecer conexión desde un equipo unido que no es de dominio.
+    **Autenticación de contraseña de Active Directory** para usar una cuenta de organización. Por ejemplo, al establecer conexión desde un equipo unido que no es de dominio.
 
-    **Autenticación Universal de Active Directory** toouse [la autenticación no interactiva o multifactor](../sql-database/sql-database-ssms-mfa-authentication.md). 
+    **Autenticación Universal de Active Directory** para usar [autenticación multifactor o no interactiva](../sql-database/sql-database-ssms-mfa-authentication.md). 
    
     ![Conectar en SSMS](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 
 ## <a name="server-administrators-and-database-users"></a>Administradores del servidor y usuarios de la base de datos
-En Azure Analysis Services hay dos tipos de usuarios: los administradores del servidor y los usuarios de la base de datos. Ambos tipos de usuarios deben estar en su instancia de Azure Active Directory y se deben especificar mediante la dirección de correo electrónico profesional o UPN. más información, consulte toolearn [permisos de usuario y la autenticación](analysis-services-manage-users.md).
+En Azure Analysis Services hay dos tipos de usuarios: los administradores del servidor y los usuarios de la base de datos. Ambos tipos de usuarios deben estar en su instancia de Azure Active Directory y se deben especificar mediante la dirección de correo electrónico profesional o UPN. Para más información, consulte [Permisos de usuario y autenticación](analysis-services-manage-users.md).
 
 
 ## <a name="troubleshooting-connection-problems"></a>Solución de problemas de conexión
-Cuando se conecta mediante SSMS, si experimenta problemas, puede que necesite caché de inicio de sesión de tooclear Hola. Nada es toodisc almacenado en caché. proceso de conexión de la caché de hello tooclear, cierre y reinicio Hola. 
+Cuando se conecta mediante SSMS, si experimenta problemas, puede que deba borrar la caché de inicio de sesión. Nada se almacena en caché en el disco. Para borrar la caché, cierre y reinicie el proceso de conexión. 
 
 ## <a name="next-steps"></a>Pasos siguientes
-Si ya no ha implementado un nuevo servidor de modelo tabular tooyour, ahora es un buen momento. más información, consulte toolearn [implementar tooAzure Analysis Services](analysis-services-deploy.md).
+Si aún no ha implementado un modelo tabular en el nuevo servidor, ahora es buen momento para hacerlo. Para más información, consulte [Deploy to Azure Analysis Services](analysis-services-deploy.md) (Implementación en Azure Analysis Services).
 
-Si ha implementado un servidor de tooyour de modelo, le tooit tooconnect listo con un cliente o un explorador. más información, consulte toolearn [obtener datos del servidor de Analysis Services de Azure](analysis-services-connect.md).
+Si ha implementado un modelo en un servidor, está listo para conectarse a él mediante un cliente o un explorador. Para más información, consulte [Get data from Azure Analysis Services](analysis-services-connect.md) (Obtención de datos del servidor de Azure Analysis Services).
 

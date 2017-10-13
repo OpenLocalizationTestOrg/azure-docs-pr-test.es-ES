@@ -1,10 +1,10 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### <a name="tooinstall-regular-updates-via-hello-azure-classic-portal"></a>tooinstall actualizaciones periódicas a través de hello portal de Azure clásico
-1. En hello **dispositivos** página, el dispositivo de hello select en la que desea que las actualizaciones de tooinstall.
-2. Navegue demasiado**dispositivos** > **mantenimiento** y desplácese hacia abajo demasiado**las actualizaciones de Software**.
-3. toocheck para las actualizaciones, haga clic en **comprobar actualizaciones** final Hola de página Hola.
-4. Verá un mensaje si hay actualizaciones de software disponibles. Haga clic en **instalar actualizaciones** toobegin actualizar dispositivo Hola.
+#### <a name="to-install-regular-updates-via-the-azure-classic-portal"></a>Instalación de actualizaciones normales a través del Portal de Azure clásico
+1. En la página **Dispositivos** , seleccione el dispositivo en el que desea instalar las actualizaciones.
+2. Navegue a **Dispositivos** > **Mantenimiento** y desplácese hacia abajo hasta **Actualizaciones de software**.
+3. Para buscar actualizaciones, haga clic en **Buscar actualizaciones** en la parte inferior de la página.
+4. Verá un mensaje si hay actualizaciones de software disponibles. Haga clic en **Instalar actualizaciones** para iniciar la actualización del dispositivo.
    
-    Se le notificará cuando Hola actualización se instala correctamente.
+    Recibirá una notificación cuando la actualización esté correctamente instalada.
 

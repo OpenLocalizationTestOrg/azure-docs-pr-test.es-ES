@@ -1,5 +1,5 @@
 ---
-title: "recuperación de aaaDisaster de cuenta de integración B2B; las aplicaciones lógicas de Azure | Documentos de Microsoft"
+title: "Recuperación ante desastres de cuentas de integración B2B: Azure Logic Apps | Microsoft Docs"
 description: "Recuperación ante desastres de Logic Apps B2B"
 services: logic-apps
 documentationcenter: .net,nodejs,java
@@ -14,81 +14,81 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: e86564a3c5a2607d22514936c606e2843cba0416
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 4896d9da456bcc17b1a4d92259ef3d57f8575d8b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="logic-apps-b2b-cross-region-disaster-recovery"></a>Recuperación ante desastres de Logic Apps B2B entre regiones
 
-Las cargas de trabajo de B2B implican transacciones monetarias como pedidos y facturas. Durante un desastre, es fundamental para un hello toomeet de negocios tooquickly recuperación que SLA de nivel de negocio acordados con sus socios. En este artículo se muestra cómo planear toobuild una continuidad del negocio para cargas de trabajo de B2B. 
+Las cargas de trabajo de B2B implican transacciones monetarias como pedidos y facturas. Durante un evento de desastre, es fundamental que una empresa se recupere rápidamente a fin de cumplir los Acuerdos de Nivel de Servicio a nivel de negocio acordados con sus asociados. En este artículo se demuestra cómo crear un plan de continuidad empresarial para cargas de trabajo de B2B. 
 
 * Preparación para la recuperación ante desastres 
-* Conmutar por región toosecondary durante un evento de desastre 
-* Revertir tooprimary región después de un evento de desastre
+* Conmutar por error a la región secundaria durante un desastre 
+* Recurrir a la región primaria después de un evento de desastre
 
 ## <a name="disaster-recovery-readiness"></a>Preparación para la recuperación ante desastres  
 
-1. Identificar una región secundaria y crear un [cuenta integración](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) en la región secundaria Hola.
+1. Identifique una región secundaria y cree una [cuenta de integración](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) en ella.
 
-2. Agregar socios comerciales, esquemas y acuerdos para flujos de mensajes de Hola necesario donde hello estado de ejecución necesita toobe replican toosecondary región integración cuenta.
+2. Agregue socios, esquemas y acuerdos para los flujos de mensajes necesarios donde el estado de ejecución se tenga que replicar a la cuenta de integración de la región secundaria.
 
    > [!TIP]
-   > Asegúrese de que hay coherencia en la convención de nomenclatura del artefacto de cuenta de hello integración entre las regiones. 
+   > Asegúrese de que haya coherencia en la convención de nomenclatura de los artefactos de la cuenta de integración entre regiones. 
 
-3. Hola toopull estado de la ejecución de la región principal de hello, cree una aplicación de lógica en la región secundaria Hola. 
+3. Para extraer el estado de ejecución de la región primaria, cree una aplicación lógica en la región secundaria. 
 
    Esta aplicación lógica debe tener un *desencadenador* y una *acción*. 
-   desencadenador Hola debe conectarse la cuenta de integración de región tooprimary y acción de hello debe conectar con cuenta de integración de región de toosecondary. 
-   En función de intervalo de tiempo de hello, desencadenador de Hola sondea la tabla de estado de la región principal ejecute hello y extrae los nuevos registros de hello, si existe. acción de Hello las actualiza toosecondary cuenta de integración de región. 
-   Esto ayuda a estado incremental en tiempo de ejecución de tooget desde una región principal toosecondary otra.
+   El desencadenador debe conectarse a la cuenta de integración de la región primaria y la acción debe conectarse a la cuenta de integración de la región secundaria. 
+   Según el intervalo de tiempo, el desencadenador sondea la tabla de estado de ejecución de la región primaria y extrae los nuevos registros, si los hubiera. La acción los actualiza en la cuenta de integración de una región secundaria. 
+   Esto ayuda a obtener el estado incremental en tiempo de ejecución de la región primaria a la secundaria.
 
-4. Continuidad del negocio en aplicaciones de lógica de la cuenta de integración es diseñado toosupport basada en protocolos B2B - X12, AS2 y EDIFACT. toofind los pasos detallados, seleccione Hola enlaces correspondientes.
+4. La continuidad empresarial de la cuenta de integración de Logic Apps está diseñada para admitir protocolos basados en B2B: X12, AS2 y EDIFACT. Para ver los pasos detallados, seleccione los vínculos correspondientes.
 
-5. Hola recomendación es toodeploy todos los recursos de la región principal en una región secundaria demasiado. 
+5. Se recomienda implementar todos los recursos de la región primaria también en la región secundaria. 
 
-   Recursos de la región principal incluyen base de datos de SQL Azure o base de datos de Azure Cosmos, Service Bus de Azure y concentradores de eventos de Azure utiliza para la mensajería, administración de API de Azure y la característica de Azure Logic Apps hello en el servicio de aplicación de Azure.   
+   Los recursos de la región primaria incluyen Azure SQL Database o Azure Cosmos DB, Azure Service Bus/Azure Event Hubs para mensajería, Azure API Management y la característica Azure Logic Apps de Azure App Service.   
 
-6. Establecer una conexión de una región secundaria de tooa de región principal. Hola toopull estado de la ejecución de una región principal, cree una aplicación de lógica en una región secundaria. 
+6. Establezca una conexión desde una región primaria a una región secundaria. Para extraer el estado de ejecución de una región primaria, cree una aplicación lógica en una región secundaria. 
 
-   aplicación de la lógica de Hello debe tener un desencadenador y una acción. 
-   desencadenador de Hello debe conectar tooa cuenta de integración de región principal. 
-   acción de Hello debe conectar tooa cuenta de integración de región secundaria. 
-   En función de intervalo de tiempo de hello, desencadenador de Hola sondea la tabla de estado de la región principal ejecute hello y extrae los nuevos registros de hello, si existe. 
-   acción de Hello las actualiza tooa cuenta de integración de región secundaria. 
-   Este proceso ayuda a estado incremental en tiempo de ejecución de tooget desde región secundaria de hello región principal toohello.
+   Esta aplicación lógica debe tener un desencadenador y una acción. 
+   El desencadenador se debe conectar a la cuenta de integración de una región primaria. 
+   La acción se debe conectar a la cuenta de integración de una región secundaria. 
+   Según el intervalo de tiempo, el desencadenador sondea la tabla de estado de ejecución de la región primaria y extrae los nuevos registros, si los hubiera. 
+   La acción los actualiza en la cuenta de integración de una región secundaria. 
+   Este proceso ayuda a obtener el estado incremental en el entorno de tiempo de ejecución de la región primaria a la secundaria.
 
-Continuidad del negocio en una cuenta de integración de aplicaciones lógicas proporciona compatibilidad basada en protocolos de B2B hello X12, AS2 y EDIFACT. Para ver los pasos detallados sobre cómo usar X12 y AS2, consulte [X12](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md#x12) y [AS2](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md#as2) en este artículo.
+La continuidad empresarial en una cuenta de integración de Logic Apps proporciona compatibilidad con los protocolos B2B X12, AS2 y EDIFACT. Para ver los pasos detallados sobre cómo usar X12 y AS2, consulte [X12](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md#x12) y [AS2](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md#as2) en este artículo.
 
-## <a name="fail-over-tooa-secondary-region-during-a-disaster-event"></a>Conmutar por región secundaria tooa durante un evento de desastre
+## <a name="fail-over-to-a-secondary-region-during-a-disaster-event"></a>Conmutación por error a una región secundaria durante un evento de desastre
 
-Durante un evento de desastre, cuando no está disponible para la continuidad del negocio, región secundaria de dirigir el tráfico toohello región principal Hola. Una región secundaria le ayuda a un toorecover empresariales rápidamente funciones hello toomeet RPO/RTO acordado con sus asociados. También minimiza toofail esfuerzos a través de una región tooanother otra. 
+Durante un desastre, si la región primaria no está disponible para la continuidad empresarial, el tráfico se dirige a la región secundaria. Una región secundaria ayuda a que una empresa recupere rápidamente sus funciones para cumplir con el RPO y RTO acordado con sus asociados. También minimiza los esfuerzos de conmutación por error de una región a otra. 
 
-Hay una latencia esperada mientras se copiaban números de control de una región secundaria de tooa de región principal. tooavoid Enviar control generado duplicados números toopartners durante un evento de desastre, recomendación de hello es tooincrement números de control de hello en los contratos de la región secundaria de hello mediante [cmdlets de PowerShell](https://blogs.msdn.microsoft.com/david_burgs_blog/2017/03/09/fresh-of-the-press-new-azure-powershell-cmdlets-for-upcoming-x12-connector-disaster-recovery).
+Hay una latencia prevista mientras se copian números de control de una región primaria a una secundaria. Para evitar el envío de números de control generados duplicados a los asociados durante un desastre, se recomienda aumentar los números de control en los contratos de región secundaria con [cmdlets de PowerShell](https://blogs.msdn.microsoft.com/david_burgs_blog/2017/03/09/fresh-of-the-press-new-azure-powershell-cmdlets-for-upcoming-x12-connector-disaster-recovery).
 
-## <a name="fall-back-tooa-primary-region-post-disaster-event"></a>Revertir el evento de desastre posterior a la región principal tooa
+## <a name="fall-back-to-a-primary-region-post-disaster-event"></a>Reversión al evento posterior al desastre de la región primaria
 
-región principal de toofall tooa atrás cuando esté disponible, siga estos pasos:
+Para revertir a una región primaria si está disponible, siga estos pasos:
 
-1. Dejar de aceptar mensajes de socios en la región secundaria Hola.  
+1. Deje de aceptar mensajes de socios en la región secundaria.  
 
-2. Incrementar los números de control de hello generado para todos los contratos de la región principal de hello mediante el uso de [cmdlets de PowerShell](https://blogs.msdn.microsoft.com/david_burgs_blog/2017/03/09/fresh-of-the-press-new-azure-powershell-cmdlets-for-upcoming-x12-connector-disaster-recovery).  
+2. Aumente los números de control generados para todos los contratos de región primaria con [cmdlets de PowerShell](https://blogs.msdn.microsoft.com/david_burgs_blog/2017/03/09/fresh-of-the-press-new-azure-powershell-cmdlets-for-upcoming-x12-connector-disaster-recovery).  
 
-3. Dirigir el tráfico de la región principal de hello región secundaria toohello.
+3. Dirigir el tráfico desde la región secundaria a la región primaria.
 
-4. Comprobar esa aplicación de lógica de hello creada en la región secundaria de Hola para extraer el estado de la ejecución de la región principal de Hola está habilitada.
+4. Compruebe que la aplicación lógica creada en la región secundaria para extraer el estado de ejecución de la región primaria está habilitada.
 
 ## <a name="x12"></a>X12 
 
 La continuidad empresarial de los documentos EDI X12 se basa en los números de control:
 
 > [!TIP]
-> También puede usar hello [X12 rápido iniciar plantilla](https://azure.microsoft.com/documentation/templates/201-logic-app-x12-disaster-recovery-replication/) toocreate las aplicaciones lógicas. Creación de cuentas de integración principal y secundaria es plantillas de hello toouse de requisitos previos. Hello plantilla ayuda toocreate dos aplicaciones de lógica, uno para números de control recibidos y otro para los números de control generado. Acciones y desencadenadores respectivos se crean en las aplicaciones lógicas de hello, conexión de cuenta de hello desencadenador toohello integración principal y cuenta de hello acción toohello integración secundaria.
+> También puede usar la [plantilla de inicio rápido de X12](https://azure.microsoft.com/documentation/templates/201-logic-app-x12-disaster-recovery-replication/) para crear aplicaciones lógicas. La creación de cuentas de integración primaria y secundaria es un requisito previo para usar la plantilla. La plantilla ayuda a crear dos aplicaciones lógicas, una para números de control recibidos y otra para números de control generados. Las acciones y los desencadenadores respectivos se crean en las aplicaciones lógicas, conectando el desencadenador a la cuenta de integración primaria y la acción a la cuenta de integración secundaria.
 
 **Requisitos previos**
 
-recuperación ante desastres de tooenable para los mensajes entrantes, seleccione Configuración de comprobación de duplicados de hello en configuración de recepción del acuerdo de hello X12.
+Seleccione comprobar la configuración duplicada en la configuración de recepción de contrato X12 a fin de habilitar la recuperación ante desastres para los mensajes entrantes.
 
 ![Seleccionar comprobar la configuración duplicada](./media/logic-apps-enterprise-integration-b2b-business-continuity/dupcheck.png)  
 
@@ -98,14 +98,14 @@ recuperación ante desastres de tooenable para los mensajes entrantes, seleccion
 
    ![Búsqueda de X12](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn1.png)
 
-   desencadenador de Hello solicita tooestablish una cuenta de conexión de integración tooan. 
-   Hola desencadenador debe estar conectado tooa cuenta de integración de región principal.
+   El desencadenador le pide que establezca una conexión con una cuenta de integración. 
+   El desencadenador se debe conectar a la cuenta de integración de una región primaria.
 
-3. Escriba un nombre de conexión, seleccione la *cuenta de integración de la región principal* de hello lista y elija **crear**.   
+3. Escriba un nombre de conexión, seleccione la *cuenta de integración de la región primaria* en la lista y seleccione **Crear**.   
 
    ![Nombre de la cuenta de integración de la región primaria](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn2.png)
 
-4. Hola **número sincronización de fecha y hora toostart control** configuración es opcional. Hola **frecuencia** puede establecerse demasiado**día**, **hora**, **minuto**, o **segundo** con un intervalo.   
+4. La configuración **DateTime para iniciar la sincronización de números de control** es opcional. La **frecuencia** se puede establecer en **Día**, **Hora**, **Minuto** o **Segundo** con un intervalo.   
 
    ![DateTime y frecuencia](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
@@ -117,25 +117,25 @@ recuperación ante desastres de tooenable para los mensajes entrantes, seleccion
 
    ![Agregar o actualizar los números de control](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn5.png)
 
-7. tooconnect una cuenta de integración de acción tooa región secundaria, seleccione **cambiar conexión** > **agregar nueva conexión** para obtener una lista de cuentas de integración disponible en Hola. Escriba un nombre de conexión, seleccione la *cuenta de integración de la región secundaria* de hello lista y elija **crear**. 
+7. Para conectar una acción a la cuenta de integración de una región secundaria, seleccione **Cambiar conexión** > **Agregar nueva conexión** para ver una lista de las cuentas de integración disponibles. Escriba un nombre de conexión, seleccione la *cuenta de integración de la región secundaria* en la lista y haga clic en **Crear**. 
 
    ![Nombre de la cuenta de integración de la región secundaria](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
-8. Intercambiar entradas de tooraw haciendo clic en el icono de hello en la esquina superior derecha.
+8. Cambie a entradas sin procesar haciendo clic en el icono situado en la esquina superior derecha.
 
-   ![Intercambiar entradas tooraw](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12rawinputs.png)
+   ![Cambiar a entradas sin procesar](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12rawinputs.png)
 
-9. Seleccione cuerpo en el selector de contenido dinámico de Hola y guarde la aplicación lógica de hello.
+9. Seleccione Cuerpo en el selector de contenido dinámico y guarde la aplicación lógica.
 
    ![Campos de contenido dinámico](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn7.png)
 
-   Según el intervalo de tiempo de hello, desencadenador de hello sondea la tabla de números de control de región principal recibe hello y extrae los registros nuevos de Hola. 
-   acción de Hello actualiza los registros de hello en la cuenta de integración de hello región secundaria. 
-   Si no hay actualizaciones, estado de desencadenador de hello aparece como **omitidos**.   
+   Según el intervalo de tiempo, el desencadenador sondea la tabla de número de control recibido de la región primaria y extrae los nuevos registros. 
+   La acción los actualiza en la cuenta de integración de una región secundaria. 
+   Si no hay actualizaciones, el estado del desencadenador aparece como **Omitido**.   
 
    ![Tabla de número de control](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12recevicedcn8.png)
 
-En función de intervalo de tiempo de hello, estado incremental en tiempo de ejecución de hello replica desde una región secundaria de tooa de región principal. Durante un evento de desastre, cuando Hola principal región no está disponibles y directa tráfico toohello secundaria para continuidad del negocio. 
+Según el intervalo de tiempo, el estado en tiempo de ejecución incremental se replica de una región primaria a una secundaria. Durante un desastre, si la región primaria no está disponible, el tráfico se dirige a la región secundaria para la continuidad empresarial. 
 
 ## <a name="edifact"></a>EDIFACT 
 
@@ -143,7 +143,7 @@ La continuidad empresarial de los documentos EDI EDIFACT se basa en los números
 
 **Requisitos previos**
 
-recuperación ante desastres de tooenable para los mensajes entrantes, seleccione Configuración de comprobación de duplicados de hello en configuración de recepción de su acuerdo EDIFACT.
+Seleccione comprobar la configuración duplicada en la configuración de recepción de contrato EDIFACT a fin de habilitar la recuperación ante desastres para los mensajes entrantes.
 
 ![Seleccionar comprobar la configuración duplicada](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactdupcheck.png)  
 
@@ -153,14 +153,14 @@ recuperación ante desastres de tooenable para los mensajes entrantes, seleccion
 
    ![Búsqueda de EDIFACT](./media/logic-apps-enterprise-integration-b2b-business-continuity/edifactcn1.png)
 
-   desencadenador de Hello solicita tooestablish una cuenta de conexión de integración tooan. 
-   Hola desencadenador debe estar conectado tooa cuenta de integración de región principal. 
+   El desencadenador le pide que establezca una conexión con una cuenta de integración. 
+   El desencadenador se debe conectar a la cuenta de integración de una región primaria. 
 
-3. Escriba un nombre de conexión, seleccione la *cuenta de integración de la región principal* de hello lista y elija **crear**.    
+3. Escriba un nombre de conexión, seleccione la *cuenta de integración de la región primaria* en la lista y seleccione **Crear**.    
 
    ![Nombre de la cuenta de integración de la región primaria](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12CN2.png)
 
-4. Hola **número sincronización de fecha y hora toostart control** configuración es opcional. Hola **frecuencia** puede establecerse demasiado**día**, **hora**, **minuto**, o **segundo** con un intervalo.    
+4. La configuración **DateTime para iniciar la sincronización de números de control** es opcional. La **frecuencia** se puede establecer en **Día**, **Hora**, **Minuto** o **Segundo** con un intervalo.    
 
    ![DateTime y frecuencia](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn3.png)
 
@@ -172,47 +172,47 @@ recuperación ante desastres de tooenable para los mensajes entrantes, seleccion
 
    ![Agregar o actualizar los números de control](./media/logic-apps-enterprise-integration-b2b-business-continuity/EdifactChooseAction.png)
 
-8. tooconnect una cuenta de integración de acción tooa región secundaria, seleccione **cambiar conexión** > **agregar nueva conexión** para obtener una lista de cuentas de integración disponible en Hola. Escriba un nombre de conexión, seleccione la *cuenta de integración de la región secundaria* de hello lista y elija **crear**.
+8. Para conectar una acción a la cuenta de integración de una región secundaria, seleccione **Cambiar conexión** > **Agregar nueva conexión** para ver una lista de las cuentas de integración disponibles. Escriba un nombre de conexión, seleccione la *cuenta de integración de la región secundaria* en la lista y haga clic en **Crear**.
 
    ![Nombre de la cuenta de integración de la región secundaria](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12cn6.png)
 
-9. Intercambiar entradas de tooraw haciendo clic en el icono de hello en la esquina superior derecha.
+9. Cambie a entradas sin procesar haciendo clic en el icono situado en la esquina superior derecha.
 
-   ![Intercambiar entradas tooraw](./media/logic-apps-enterprise-integration-b2b-business-continuity/Edifactrawinputs.png)
+   ![Cambiar a entradas sin procesar](./media/logic-apps-enterprise-integration-b2b-business-continuity/Edifactrawinputs.png)
 
-10. Seleccione cuerpo en el selector de contenido dinámico de Hola y guarde la aplicación lógica de hello.   
+10. Seleccione Cuerpo en el selector de contenido dinámico y guarde la aplicación lógica.   
 
    ![Campos de contenido dinámico](./media/logic-apps-enterprise-integration-b2b-business-continuity/X12CN7.png)
 
-   Según el intervalo de tiempo de hello, desencadenador de hello sondea la tabla de números de control de región principal recibe hello y extrae los registros nuevos de Hola.
-   acción de Hello actualiza cuenta de integración de hello registros toohello región secundaria. 
-   Si no hay actualizaciones, estado de desencadenador de hello aparece como **omitidos**.
+   Según el intervalo de tiempo, el desencadenador sondea la tabla de número de control recibido de la región primaria y extrae los nuevos registros.
+   La acción los actualiza en la cuenta de integración de una región secundaria. 
+   Si no hay actualizaciones, el estado del desencadenador aparece como **Omitido**.
 
    ![Tabla de número de control](./media/logic-apps-enterprise-integration-b2b-business-continuity/x12recevicedcn8.png)
 
-En función de intervalo de tiempo de hello, estado incremental en tiempo de ejecución de hello replica desde una región secundaria de tooa de región principal. Durante un evento de desastre, cuando Hola principal región no está disponibles y directa tráfico toohello secundaria para continuidad del negocio. 
+Según el intervalo de tiempo, el estado en tiempo de ejecución incremental se replica de una región primaria a una secundaria. Durante un desastre, si la región primaria no está disponible, el tráfico se dirige a la región secundaria para la continuidad empresarial. 
 
 ## <a name="as2"></a>AS2 
 
-Continuidad del negocio en documentos que utilizan el protocolo de AS2 Hola se basa en el Id. de mensaje de Hola y el valor MIC Hola.
+La continuidad empresarial de los documentos que usan el protocolo AS2 se basa en el identificador de mensaje y el valor MIC.
 
 > [!TIP]
-> También puede usar hello [plantilla de inicio rápido de AS2](https://github.com/Azure/azure-quickstart-templates/pull/3302) toocreate las aplicaciones lógicas. Creación de cuentas de integración principal y secundaria es plantillas de hello toouse de requisitos previos. plantilla de Hello le ayuda a crear una aplicación de lógica que tiene un desencadenador y una acción. aplicación de la lógica de Hello crea una conexión de una cuenta de desencadenador tooa integración principal y una cuenta de acción tooa integración secundaria.
+> También puede usar la [plantilla de inicio rápido de AS2](https://github.com/Azure/azure-quickstart-templates/pull/3302) para crear aplicaciones lógicas. La creación de cuentas de integración primaria y secundaria es un requisito previo para usar la plantilla. La plantilla ayuda a crear una aplicación lógica que tiene un desencadenador y una acción. La aplicación lógica crea una conexión desde un desencadenador a una cuenta de integración primaria y una acción a una cuenta de integración secundaria.
 
-1. Crear un [aplicación lógica](../logic-apps/logic-apps-create-a-logic-app.md) en la región secundaria Hola.  
+1. Cree una [aplicación lógica](../logic-apps/logic-apps-create-a-logic-app.md) en la región secundaria.  
 
 2. Busque en **AS2** y seleccione **AS2: Cuando se crea un valor MIC**.   
 
    ![Búsqueda de AS2](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid1.png)
 
-   Un desencadenador le tooestablish una cuenta de conexión de integración tooan. 
-   Hola desencadenador debe estar conectado tooa cuenta de integración de región principal. 
+   Un desencadenador le pide que establezca una conexión con una cuenta de integración. 
+   El desencadenador se debe conectar a la cuenta de integración de una región primaria. 
    
-3. Escriba un nombre de conexión, seleccione la *cuenta de integración de la región principal* de hello lista y elija **crear**.
+3. Escriba un nombre de conexión, seleccione la *cuenta de integración de la región primaria* en la lista y seleccione **Crear**.
 
    ![Nombre de la cuenta de integración de la región primaria](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid2.png)
 
-4. Hola **sincronización de valor de fecha y hora toostart MIC** configuración es opcional. Hola **frecuencia** puede establecerse demasiado**día**, **hora**, **minuto**, o **segundo** con un intervalo.   
+4. La configuración **DateTime para iniciar la sincronización del valor MIC** es opcional. La **frecuencia** se puede establecer en **Día**, **Hora**, **Minuto** o **Segundo** con un intervalo.   
 
    ![DateTime y frecuencia](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid3.png)
 
@@ -224,24 +224,24 @@ Continuidad del negocio en documentos que utilizan el protocolo de AS2 Hola se b
 
    ![Incorporación o actualización de MIC](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid5.png)
 
-7. Seleccione una cuenta de acción de integración secundaria tooa tooconnect **cambiar conexión** > **agregar nueva conexión** para obtener una lista de cuentas de integración disponible en Hola. Escriba un nombre de conexión, seleccione la *cuenta de integración de la región secundaria* de hello lista y elija **crear**.
+7. Para conectar una acción a la cuenta de integración secundaria, seleccione **Cambiar conexión** > **Agregar nueva conexión** para ver una lista de las cuentas de integración disponibles. Escriba un nombre de conexión, seleccione la *cuenta de integración de la región secundaria* en la lista y haga clic en **Crear**.
 
    ![Nombre de la cuenta de integración de la región secundaria](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid6.png)
 
-8. Intercambiar entradas de tooraw haciendo clic en el icono de hello en la esquina superior derecha.
+8. Cambie a entradas sin procesar haciendo clic en el icono situado en la esquina superior derecha.
 
-   ![Intercambiar entradas tooraw](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2rawinputs.png)
+   ![Cambiar a entradas sin procesar](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2rawinputs.png)
 
-9. Seleccione cuerpo en el selector de contenido dinámico de Hola y guarde la aplicación lógica de hello.   
+9. Seleccione Cuerpo en el selector de contenido dinámico y guarde la aplicación lógica.   
 
    ![Contenido dinámico](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid7.png)
 
-   En función de intervalo de tiempo de hello, desencadenador de hello sondea la tabla de la región principal de Hola y extrae los registros nuevos de Hola. acción de Hello las actualiza toohello cuenta de integración de región secundaria. 
-   Si no hay actualizaciones, estado de desencadenador de hello aparece como **omitidos**.  
+   Según el intervalo de tiempo, el desencadenador sondea la tabla de la región primaria y extrae los nuevos registros. La acción los actualiza en la cuenta de integración de una región secundaria. 
+   Si no hay actualizaciones, el estado del desencadenador aparece como **Omitido**.  
 
    ![Tabla de la región primaria](./media/logic-apps-enterprise-integration-b2b-business-continuity/as2messageid8.png)
 
-En función de intervalo de tiempo de hello, estado incremental en tiempo de ejecución de hello replica de región secundaria de hello región principal toohello. Durante un evento de desastre, cuando Hola principal región no está disponibles y directa tráfico toohello secundaria para continuidad del negocio. 
+Según el intervalo de tiempo, el estado en tiempo de ejecución incremental se replica de la región primaria a la secundaria. Durante un desastre, si la región primaria no está disponible, el tráfico se dirige a la región secundaria para la continuidad empresarial. 
 
 ## <a name="next-steps"></a>Pasos siguientes
 

@@ -1,6 +1,6 @@
 ---
-title: "batería de aaaReplace en el dispositivo StorSimple de Microsoft Azure | Documentos de Microsoft"
-description: "Describe cómo reemplazar tooremove y mantener el módulo de batería de reserva de hello en el dispositivo StorSimple."
+title: "Reemplazo de la batería del dispositivo Microsoft Azure StorSimple | Microsoft Docs"
+description: "Describe cómo quitar, reemplazar y mantener el módulo de baterías de reserva en el dispositivo StorSimple."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,33 +14,33 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-ms.openlocfilehash: 542774a5f451ec7ad2bd442f88598df318d8b285
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f8b89b3f6851ec9ee0570f551b5407419fdba2d6
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="replace-hello-backup-battery-module-on-your-storsimple-device"></a>Reemplazar el módulo de batería de reserva de hello en el dispositivo StorSimple
+# <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>Reemplazar el módulo de baterías de reserva en el dispositivo StorSimple
 ## <a name="overview"></a>Información general
-alojamiento principal Hola Power y módulo de refrigeración (PCM) en el dispositivo de StorSimple de Microsoft Azure tiene un paquete de baterías adicional. Este módulo proporciona alimentación para que hello dispositivo StorSimple puede guardar los datos si hay pérdida de alojamiento principal de toohello de alimentación de CA. Este módulo de batería es que se hace referencia tooas hello *módulo de batería de reserva*. módulo de batería de reserva de Hello existe únicamente para el alojamiento principal de hello en el dispositivo StorSimple (Hola alojamiento de EBOD no contiene un módulo de batería de reserva). 
+El Módulo de alimentación y refrigeración (PCM) del gabinete primario en el dispositivo StorSimple de Microsoft Azure tiene un paquete de baterías adicional. Este paquete proporciona energía para que el dispositivo StorSimple pueda guardar los datos si hay una pérdida de alimentación de CA para el gabinete principal. Este paquete de baterías se conoce como el *módulo de baterías de reserva*. El módulo de baterías de reserva solo existe para el gabinete principal del dispositivo StorSimple (el gabinete de EBOD no contiene un módulo de baterías de reserva). 
 
 Este tutorial explica cómo realizar lo siguiente:
 
-* Quitar el módulo de batería de reserva de Hola 
+* Quitar el módulo de baterías de reserva 
 * Instalar un nuevo módulo de baterías de reserva
-* Mantener el módulo de batería de reserva de Hola
+* Mantener el módulo de baterías de reserva
 
 > [!IMPORTANT]
-> Antes de quitar y reemplazar un módulo de baterías de reserva, revise la información de seguridad de Hola Hola [sustitución de componentes de hardware de introducción tooStorSimple](storsimple-hardware-component-replacement.md).
+> Antes de quitar y reemplazar un módulo de baterías de reserva, revise la información de seguridad de [Introducción al reemplazo de componentes de hardware de StorSimple](storsimple-hardware-component-replacement.md).
 > 
 > 
 
-## <a name="remove-hello-backup-battery-module"></a>Quitar el módulo de batería de reserva de Hola
-módulo de batería de reserva de Hello para el dispositivo StorSimple es una unidad reemplazable en campo. Antes de instalarla en hello PCM, módulo de baterías de hello debe almacenarse en su embalaje original. Realizar Hola después de batería de reserva de pasos tooremove Hola.
+## <a name="remove-the-backup-battery-module"></a>Quitar el módulo de baterías de reserva
+El módulo de baterías de reserva para el dispositivo StorSimple es una unidad reemplazable en situ. Antes de instalar en el PCM, el módulo de baterías debería almacenarse en su paquete original. Realice los siguientes pasos para extraer la batería de reserva.
 
-#### <a name="tooremove-hello-backup-battery-module"></a>módulo de batería de reserva de hello tooremove
-1. En el portal de Azure clásico de Hola, vaya demasiado**dispositivos** > **mantenimiento** > **estado del Hardware**. En **componentes compartidos**, mire Hola estado de batería Hola.
-2. Identifique el PCM de hello en qué Hola batería ha fallado. La figura 1 muestra hello parte posterior del dispositivo de StorSimple Hola.
+#### <a name="to-remove-the-backup-battery-module"></a>Para quitar el módulo de baterías de reserva
+1. En el Portal de Azure clásico, vaya a **Dispositivos** > **Mantenimiento** > **Estado de hardware**. En **Componentes compartidos**, examine el estado de la batería.
+2. Identifique el PCM en el que ha fallado la batería. La Figura 1 muestra la parte posterior del dispositivo StorSimple.
    
     ![Backplane de módulos del gabinete principal del dispositivo](./media/storsimple-battery-replacement/IC740994.png)
    
@@ -53,11 +53,11 @@ módulo de batería de reserva de Hello para el dispositivo StorSimple es una un
    | 3 |Controlador 0 |
    | 4 |Controlador 1 |
    
-    Como se muestra en el número 3 en la figura 2 hello, Hola supervisión indicador LED en PCM 0 que corresponde demasiado**error de batería** debe estar encendido.
+    Tal como se muestra el número 3 en la Figura 2, el LED indicador de supervisión en PCM 0 que corresponde a **Error de batería** debe estar encendido.
    
     ![Backplane de supervisión de LED indicadores de supervisión del PCM del dispositivo](./media/storsimple-battery-replacement/IC740992.png)
    
-    **Figura 2** Hola de mostrando parte posterior del PCM LED indicadores de supervisión
+    **Figura 2** Parte posterior del PCM que muestra los LED indicadores de supervisión
    
    | Etiqueta | Descripción |
    |:--- |:--- |
@@ -67,44 +67,44 @@ módulo de batería de reserva de Hello para el dispositivo StorSimple es una un
    | 4 |PCM correcto |
    | 5 |Error de alimentación de CD |
    | 6 |Batería en funcionamiento |
-3. Hola tooremove PCM con una batería averiada, siga los pasos de hello en [quite el PCM con](storsimple-power-cooling-module-replacement.md#remove-a-pcm).
-4. Con hello PCM extraído, elevación y batería Hola girar módulo controlar hacia arriba tal como se indica en la figura siguiente de Hola y extraer la batería de hello tooremove.
+3. Para quitar el PCM con una batería que no funciona, siga los pasos descritos en [Quitar un PCM](storsimple-power-cooling-module-replacement.md#remove-a-pcm).
+4. Después de quitar el PCM, eleve y gire el asas del módulo de batería hacia arriba como se indica en la siguiente figura, y tire de él para quitar la batería.
    
     ![Quitar batería del PCM](./media/storsimple-battery-replacement/IC741019.png)
    
-    **Figura 3** quitando batería de Hola de hello PCM
-5. Coloque el módulo de hello en unidad reemplazable en campo Hola empaquetado.
-6. Devolver Hola unidad defectuosa tooMicrosoft de servicio y gestión adecuados.
+    **Figura 3** Quitar la batería del PCM
+5. Coloque el módulo en el paquete de unidad reemplazable en campo.
+6. Devolver la unidad defectuosa a Microsoft para el mantenimiento y control adecuado.
 
 ## <a name="install-a-new-backup-battery-module"></a>Instalar un nuevo módulo de baterías de reserva
-Realizar Hola después de módulo de baterías de sustitución pasos tooinstall hello en Hola PCM del alojamiento principal de hello de dispositivo StorSimple.
+Realice los pasos siguientes para instalar el módulo de baterías de sustitución en el PCM del receptáculo principal del dispositivo StorSimple.
 
-#### <a name="tooinstall-hello-battery-module"></a>módulo de baterías de hello tooinstall
-1. Coloque el módulo de batería de reserva de hello en la orientación correcta de Hola Hola PCM.
-2. Presione hacia abajo el módulo de baterías de hello controlar conector de todas las Hola forma tooseat Hola.
-3. Reemplace Hola PCM en el alojamiento principal Hola siguiendo las instrucciones de hello en [reemplazar una alimentación y refrigeración módulo en el dispositivo StorSimple](storsimple-power-cooling-module-replacement.md).
-4. Una vez completada la sustitución de hello, vaya demasiado**dispositivos** > **mantenimiento** > **estado del Hardware** Hola portal de Azure clásico. Comprobar estado de Hola de hello batería toomake seguro de que Hola instalación es correcta. Estado verde indica que la batería de hello es correcto.
+#### <a name="to-install-the-battery-module"></a>Para instalar el módulo de batería
+1. Coloque el módulo de baterías de reserva en la orientación correcta en el PCM.
+2. Presione el asa del módulo de batería por completo para asentar el conector.
+3. Sustituya el PCM en el gabinete principal siguiendo las directrices de [Reemplazar un Módulo de alimentación y refrigeración en su dispositivo StorSimple](storsimple-power-cooling-module-replacement.md).
+4. Una vez completada la sustitución, vaya a **Dispositivos** > **Mantenimiento** >  **Estado de hardware** en el Portal de Azure clásico. Compruebe el estado de la batería para asegurarse de que la instalación fue correcta. Un estado verde indica que el estado de la batería es correcto.
 
-## <a name="maintain-hello-backup-battery-module"></a>Mantener el módulo de batería de reserva de Hola
-En el dispositivo StorSimple, módulo de batería de reserva de hello proporciona controlador toohello de energía durante un evento de pérdida de energía. Permite hello StorSimple dispositivo toosave datos críticos anterior tooshutting hacia abajo de una manera controlada. Con dos baterías totalmente cargadas en hello PCM, sistema de hello puede controlar dos eventos de corte consecutivos.
+## <a name="maintain-the-backup-battery-module"></a>Mantener el módulo de baterías de reserva
+En el dispositivo StorSimple, el módulo de baterías de reserva proporciona energía al controlador durante un evento de pérdida de alimentación. Permite que el dispositivo StorSimple guarde los datos críticos antes de apagar el equipo de una manera controlada. Con dos baterías totalmente cargadas en los PCM, el sistema puede controlar dos eventos de pérdida consecutivos.
 
-Hola portal de Azure clásico, Hola **estado del Hardware** en hello **mantenimiento** página indica si está funcionando mal batería Hola o de obsolescencia de saludo se está agotando. estado de la batería de Hola se indica mediante **batería en PCM 0** o **batería en PCM 1** en **componentes compartidos**. Esta página muestra un estado **DEGRADADO** cuando se aproxima el final del ciclo de vida, y **ERROR** cuando se alcanza el final del ciclo de vida. 
+En el Portal de Azure clásico, el **Estado de hardware** en la página **Mantenimiento** indica si la batería funciona mal o si se aproxima el final del ciclo de vida. El estado de la batería se indica en **Batería en PCM 0** o **Batería en PCM 1** en **Componentes compartidos**. Esta página muestra un estado **DEGRADADO** cuando se aproxima el final del ciclo de vida, y **ERROR** cuando se alcanza el final del ciclo de vida. 
 
 > [!NOTE]
-> Hola batería puede mostrar **error** cuando necesita simplemente toobe cobra.
+> La batería puede mostrar **ERROR** cuando simplemente necesita cargarse.
 > 
 > 
 
-Si hello **degradado** aparece estado, se recomienda Hola siguiendo el curso de acción:
+Si aparece el estado **DEGRADADO** , se recomienda lo siguiente:
 
-* sistema de Hola que haya tenido una pérdida de energía reciente o baterías Hola pueden se está llevando a cabo mantenimiento periódico. Observe el sistema de Hola durante 12 horas antes de continuar.
+* Puede que el sistema haya experimentado una pérdida de energía reciente o las baterías pueden estar llevando a cabo el mantenimiento periódico. Observe el sistema durante 12 horas antes de continuar.
   
-  * Si el estado de hello sigue siendo **degradado** después de 12 horas de alimentación de tooAC de conexión continua con hello de controladores y PCM en ejecución, a continuación, Hola batería debe toobe reemplazado. [Póngase en contacto con Microsoft Support](storsimple-contact-microsoft-support.md) para obtener un módulo de baterías de reserva de reemplazo.
-  * Si se convierte en un estado de hello correcto después de 12 horas, batería Hola está operativo y solo necesita un coste de mantenimiento.
-* Si no ha habido un corte de alimentación de CA y Hola PCM asociado esté encendido y conectado tooAC power, batería Hola debe toobe reemplazado. [Póngase en contacto con Microsoft Support](storsimple-contact-microsoft-support.md) tooorder un módulo de batería de reserva de reemplazo.
+  * Si el estado sigue siendo **DEGRADADO** después de 12 horas de conexión continua a alimentación de CA con los controladores y PCM en ejecución, a continuación, la batería debe reemplazarse. [Póngase en contacto con Microsoft Support](storsimple-contact-microsoft-support.md) para obtener un módulo de baterías de reserva de reemplazo.
+  * Si el estado cambia a CORRECTO después de 12 horas, la batería funciona y solo necesita una carga de mantenimiento.
+* Si no ha habido una pérdida de alimentación de CA asociada y el PCM está encendido y conectado a CA, debe reemplazar la batería. [Póngase en contacto con Microsoft Support](storsimple-contact-microsoft-support.md) para obtener un módulo de baterías de reserva de reemplazo.
 
 > [!IMPORTANT]
-> Dispose de hello error batería según toonational y la normativa regional. 
+> Deseche la batería que no funciona según las normas nacionales y regionales. 
 > 
 > 
 

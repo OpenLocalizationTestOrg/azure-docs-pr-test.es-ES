@@ -1,89 +1,92 @@
 ---
-title: las funciones de Azure mediante Visual Studio aaaDevelop | Documentos de Microsoft
-description: "Obtenga información acerca de cómo toodevelop y probar las funciones de Azure mediante el uso de funciones de Azure Tools para Visual Studio de 2017."
+title: Desarrollo de Azure Functions con Visual Studio | Microsoft Docs
+description: "Obtenga información sobre cómo desarrollar y probar Azure Functions mediante Herramientas de Azure Functions para Visual Studio 2017."
 services: functions
 documentationcenter: .net
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 09/06/2017
 ms.author: glenga
-ms.openlocfilehash: c9baf882bf58068cb9a8930bea337fe51b2a77ea
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5f0b346ec1c4a42d11ef74ab8ac8701dd45b00eb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>Herramientas de Azure Functions para Visual Studio  
 
-Herramientas de funciones de Azure para Visual Studio de 2017 es una extensión de Visual Studio que le permite desarrollar, probar e implementar tooAzure de funciones de C#. Si se trata de la primera experiencia con las funciones de Azure, se puede obtener más información en [un tooAzure Introducción funciones](functions-overview.md).
+Herramientas de Azure Functions para Visual Studio 2017 es una extensión para Visual Studio que le permite desarrollar, probar e implementar funciones de C# en Azure. Si esta es su primera experiencia con Azure Functions, puede obtener más información en [Introducción a Azure Functions](functions-overview.md).
 
-Hola herramientas de funciones de Azure proporciona Hola siguientes ventajas: 
+Herramientas de Azure Functions proporciona los siguientes beneficios: 
 
 * Editar, compilar y ejecutar funciones en el equipo de desarrollo local. 
-* Publicar las funciones de Azure directamente proyecto tooAzure. 
-* Usar enlaces de función de trabajos Web atributos toodeclare directamente en código de C# en lugar de mantener un function.json independiente para las definiciones de enlace de Hola.
+* Publicar su proyecto de Azure Functions directamente en Azure. 
+* Usar atributos de WebJobs para declarar los enlaces de función directamente en el código C# en lugar de mantener un function.json separado para enlazar definiciones.
 * Desarrollar e implementar funciones de C# compiladas previamente. Las funciones compiladas previamente proporcionan un mejor rendimiento de arranque en frío que las funciones basadas en scripts de C#. 
-* Código de las funciones de C# al tiempo que tiene todas las ventajas de Hola de desarrollo de Visual Studio. 
+* Programar las funciones en C# a la vez que se tienen todos los beneficios del desarrollo de Visual Studio. 
 
-Este tema muestra cómo toouse hello las funciones de Azure Tools para Visual Studio de 2017 toodevelop sus funciones en C#. También aprenderá cómo toopublish su tooAzure de proyecto como un ensamblado. NET.
+En este tema se muestra cómo usar Herramientas de Azure Functions para Visual Studio 2017 a fin de desarrollar las funciones en C#. También puede obtener información sobre cómo publicar el proyecto en Azure como un ensamblado .NET.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Herramientas de funciones de Azure se incluye en la carga de trabajo de desarrollo de Azure de Hola de [Visual Studio 2017 versión 15.3](https://www.visualstudio.com/vs/), o una versión posterior. Asegúrese de incluir hello **desarrollo Azure** carga de trabajo en la instalación de la versión 15.3 2017 de Visual Studio:
+Las herramientas de Azure Functions forman parte de la carga de trabajo de desarrollo de Azure de la [versión 15.3 de Visual Studio 2017](https://www.visualstudio.com/vs/) y las posteriores. Asegúrese de incluir la carga de trabajo de **desarrollo Azure** en la instalación de la versión 15.3 de Visual Studio 2017:
 
-![Instalar Visual Studio de 2017 con cargas de trabajo de desarrollo de Azure Hola](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
+![Instalar Visual Studio 2017 con la cargas de trabajo Desarrollo de Azure](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
-toocreate e implementar funciones, también deberá:
+>[!NOTE]  
+>Después de instalar Visual Studio 2017 versión 15.3 o actualizar a esta versión, también debe actualizar manualmente las herramientas de Visual Studio 2017 para Azure Functions. Puede actualizar las herramientas del menú **Herramientas** situado bajo **Extensiones y actualizaciones...**  > **Actualizaciones** > **Visual Studio Marketplace** > **Herramientas de Azure Functions y Web Jobs** > **Actualizar**. 
+
+Para crear e implementar funciones, también necesita:
 
 * Una suscripción de Azure activa. Si no tiene una suscripción de Azure, hay disponibles [cuentas gratis](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Una cuenta de almacenamiento de Azure. toocreate una cuenta de almacenamiento, consulte [crear una cuenta de almacenamiento](../storage/common/storage-create-storage-account.md#create-a-storage-account).  
+* Una cuenta de Almacenamiento de Azure. Para crear una cuenta de almacenamiento, consulte [Creación de una cuenta de almacenamiento](../storage/common/storage-create-storage-account.md#create-a-storage-account).  
 ## <a name="create-an-azure-functions-project"></a>Creación de un proyecto de Azure Functions 
 
-[!INCLUDE [Create a project using hello Azure Functions](../../includes/functions-vstools-create.md)]
+[!INCLUDE [Create a project using the Azure Functions](../../includes/functions-vstools-create.md)]
 
 
-## <a name="configure-hello-project-for-local-development"></a>Configurar proyecto hello para el desarrollo local
+## <a name="configure-the-project-for-local-development"></a>Configuración del proyecto para el desarrollo local
 
-Cuando crea un nuevo proyecto mediante la plantilla de funciones de Azure de hello, obtendrá un proyecto vacío en C# que contiene Hola siguientes archivos:
+Cuando crea un proyecto nuevo con la plantilla de Azure Functions, obtiene un proyecto C# vacío que contiene los archivos siguientes:
 
-* **host.JSON**: le permite configurar Hola host de funciones. Esta configuración se aplica tanto cuando se ejecuta localmente como en Azure. Para más información, consulte el artículo de referencia sobre [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json).
+* **host.json**: permite configurar el host de Functions. Esta configuración se aplica tanto cuando se ejecuta localmente como en Azure. Para más información, consulte la [referencia sobre host.json](functions-host-json.md).
     
-* **local.settings.json**: mantiene la configuración que se usa cuando se ejecutan localmente las funciones. Esta configuración no se usa Azure, que se usan en hello [herramientas básicas de las funciones de Azure](functions-run-local.md). Use esta configuración de toospecify de archivo, como las cadenas de conexión tooother Azure servicios. Agregar un nuevo toohello clave **valores** matriz para cada conexión requerido por las funciones en el proyecto. Para obtener más información, consulte [archivo de configuración Local](functions-run-local.md#local-settings-file) de tema de hello herramientas básicas de las funciones de Azure.
+* **local.settings.json**: mantiene la configuración que se usa cuando se ejecutan localmente las funciones. Azure no usa estas configuraciones, sino que las usa [Azure Functions Core Tools](functions-run-local.md). Use este archivo para especificar la configuración, tal como las cadenas de conexión a otros servicios de Azure. Agregue una clave nueva a la matriz de **valores** para cada conexión que requieren las funciones de su proyecto. Para más información, consulte [Archivo de configuración local](functions-run-local.md#local-settings-file) en el tema Azure Functions Core Tools.
 
-en tiempo de ejecución de funciones de Hello usa una cuenta de almacenamiento de Azure internamente. Todo desencadenador tipos distintos de HTTP y webhooks, deben configurarse hello **Values.AzureWebJobsStorage** clave de cadena de conexión en la cuenta de almacenamiento de Azure de tooa válido.
+El entorno de tiempo de ejecución de Functions usa internamente una cuenta de Azure Storage. Para todos los tipos de desencadenadores distintos de HTTP y webhooks, debe establecer la clave **Values.AzureWebJobsStorage** en una cadena de conexión de cuenta de Azure Storage válida.
 
-[!INCLUDE [Note toonot use local storage](../../includes/functions-local-settings-note.md)]
+[!INCLUDE [Note to not use local storage](../../includes/functions-local-settings-note.md)]
 
- cadena de conexión de cuenta de almacenamiento de tooset hello:
+ Para establecer la cadena de conexión de cuenta de almacenamiento:
 
-1. En Visual Studio, abra **Explorer nube**, expanda **cuenta de almacenamiento** > **la cuenta de almacenamiento**, a continuación, seleccione **propiedades**copia hello y **cadena de conexión principal** valor.   
+1. En Visual Studio, abra **Cloud Explorer**, expanda **Cuenta de almacenamiento** > **Su cuenta de almacenamiento** y seleccione **Propiedades** y copie el valor **Cadena de conexión principal**.   
 
-2. En el proyecto, abrir el archivo de proyecto de hello local.settings.json y establecer valor de Hola de hello **AzureWebJobsStorage** clave de cadena de conexión de toohello que ha copiado.
+2. En el proyecto, abra el archivo del proyecto local.settings.json y establezca el valor de la clave **AzureWebJobsStorage** en la cadena de conexión que copió.
 
-3. Repita Hola anterior paso tooadd claves únicas toohello **valores** matriz para cualquier otra conexión requeridos por las funciones.  
+3. Repita el paso anterior para agregar claves únicas a la matriz de **valores** para cualquier otra conexión que requieran sus funciones.  
 
 ## <a name="create-a-function"></a>Creación de una función
 
-En las funciones compiladas previamente, se definen los enlaces de hello utilizados por la función hello aplicando los atributos en el código de hello. Cuando usas hello las funciones de Azure Tools toocreate las funciones de plantillas de hello proporcionado, estos atributos se aplican automáticamente. 
+En las funciones compiladas previamente, los enlaces que la función usa se definen mediante la aplicación de atributos en el código. Cuando usa Herramientas de Azure Functions para crear las funciones a partir de las plantillas proporcionadas, estos atributos se aplican automáticamente. 
 
-1. En el **Explorador de soluciones**, haga clic con el botón derecho en el nodo del proyecto y seleccione **Agregar** > **Nuevo elemento**. Seleccione **función Azure**, escriba un **nombre** clase hello y haga clic en **agregar**.
+1. En el **Explorador de soluciones**, haga clic con el botón derecho en el nodo del proyecto y seleccione **Agregar** > **Nuevo elemento**. Seleccione **Función de Azure**, escriba un **nombre** para la clase y, luego, haga clic en **Agregar**.
 
-2. Elija el desencadenador, definir propiedades de enlace de Hola y haga clic en **crear**. Hello en el ejemplo siguiente se muestra hello configuración cuando crea un almacenamiento de cola activa la función. 
+2. Elija el desencadenador, establezca las propiedades de enlace y haga clic en **Crear**. En el ejemplo siguiente se muestra la configuración cuando se crea una función desencadenada de Queue Storage. 
 
     ![](./media/functions-develop-vs/functions-vstools-create-queuetrigger.png)
     
-    Una clave de cadena de conexión denominada **QueueStorage** se proporciona, que se define en el archivo de hello local.settings.json. 
+    Se suministra una clave de cadena de conexión de nominada **QueueStorage**, que se define en el archivo local.settings.json. 
  
-3. Examinar Hola recién agregado la clase. Vea una variable static **ejecutar** método, que tiene el atributo hello **FunctionName** atributo. Este atributo indica que el método de hello es punto de entrada de hello para la función hello. 
+3. Examine la clase recién agregada. Verá un método **Run** estático, que cuenta con el atributo **FunctionName**. Este atributo indica que el método es el punto de entrada de la función. 
 
-    Por ejemplo, hello después de la clase de C# representa una función básica de almacenamiento que se desencadena de cola:
+    Por ejemplo, la clase C# siguiente representa una función desencadenada de Queue Storage:
 
     ````csharp
     using System;
@@ -103,34 +106,34 @@ En las funciones compiladas previamente, se definen los enlaces de hello utiliza
     } 
     ````
  
-    Un atributo específico de enlace es el método de punto de entrada de toohello tooeach aplicado enlace parámetro especificado. atributo de Hello toma la información de enlace de hello como parámetros. En el ejemplo anterior de hello, Hola primer parámetro tiene un **QueueTrigger** atributo aplicado, que indica la función de la cola activada. nombre de la cola de Hola y el nombre de configuración de cadena de conexión se pasan como parámetros.  
+    Se aplica un atributo específico de enlace a cada parámetro de enlace que se suministra al método de punto de entrada. El atributo toma la información de enlace como parámetros. En el ejemplo anterior, el primer parámetro tiene aplicado un atributo **QueueTrigger**, que indica la función desencadenada de cola. El nombre de la configuración de cadena de conexión y el nombre de cola se pasan como parámetros.  
 
 ## <a name="testing-functions"></a>Funciones de prueba
 
-Azure Functions Core Tools le permite ejecutar un proyecto de Azure Functions en el equipo de desarrollo local. Son solicitada tooinstall estas herramientas Hola la primera vez que inicie una función de Visual Studio.  
+Azure Functions Core Tools le permite ejecutar un proyecto de Azure Functions en el equipo de desarrollo local. Se le solicita que instale estas herramientas la primera vez que inicie una función de Visual Studio.  
 
-tootest su función, presione F5. Si se le solicita, Aceptar solicitud Hola de toodownload de Visual Studio e instalar herramientas de núcleo de las funciones de Azure (CLI).  También deberá tooenable una excepción de firewall para que las herramientas de hello pueden administrar las solicitudes HTTP.
+Para probar la función, presione F5. Si se le solicita, acepte la solicitud de Visual Studio para descargar e instalar las herramientas de Azure Functions Core (CLI).  También es preciso que habilite una excepción de firewall para que las herramientas para controlen las solicitudes de HTTP.
 
-Con proyecto Hola que se ejecuta, puede probar el código de modo que probaría función implementada. Para más información, consulte [Estrategias para probar el código en Azure Functions](functions-test-a-function.md). Cuando se ejecuta en modo de depuración, los puntos de interrupción se alcanzan en Visual Studio tal como se esperaba. 
+Con el proyecto en ejecución, puede probar el código tal como probaría la función implementada. Para más información, consulte [Estrategias para probar el código en Azure Functions](functions-test-a-function.md). Cuando se ejecuta en modo de depuración, los puntos de interrupción se alcanzan en Visual Studio tal como se esperaba. 
 
-Para obtener un ejemplo de cómo tootest una cola desencadenó la función, vea hello [tutorial de inicio rápido de función de cola activada](functions-create-storage-queue-triggered-function.md#test-the-function).  
+Para un ejemplo de cómo probar una función desencadenada de cola, consulte el [tutorial de inicio rápido de la función desencadenada de cola](functions-create-storage-queue-triggered-function.md#test-the-function).  
 
-toolearn más sobre el uso de herramientas de hello Azure funciones principales, vea [código y probar las funciones de Azure localmente](functions-run-local.md).
+Para más información sobre cómo usar Azure Functions Core Tools, consulte [Codificación y comprobación de las funciones de Azure en un entorno local](functions-run-local.md).
 
-## <a name="publish-tooazure"></a>Publicar tooAzure
+## <a name="publish-to-azure"></a>Publicación en Azure
 
-[!INCLUDE [Publish hello project tooAzure](../../includes/functions-vstools-publish.md)]
+[!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 
 >[!NOTE]  
->Cualquier configuración que agregó en hello local.settings.json debe también agregará toohello función aplicación en Azure. Esta configuración no se agrega automáticamente. Puede agregar la configuración necesaria tooyour función aplicación de una de estas maneras:
+>Cualquier configuración que agregue en local.settings.json debe agregarse a la aplicación de función en Azure. Esta configuración no se agrega automáticamente. Puede agregar la configuración necesaria a la aplicación de función de alguna de estas maneras:
 >
->* [Uso de Hola portal de Azure](functions-how-to-use-azure-function-app-settings.md#settings).
->* [Con hello `--publish-local-settings` opción de publicación en hello Azure funciones principales herramientas](functions-run-local.md#publish).
->* [Uso de Hola CLI de Azure](/cli/azure/functionapp/config/appsettings#set). 
+>* [Uso de Azure Portal](functions-how-to-use-azure-function-app-settings.md#settings).
+>* [Uso de la opción de publicación de `--publish-local-settings` en Herramientas principales de Azure Functions](functions-run-local.md#publish).
+>* [Uso de la CLI de Azure](/cli/azure/functionapp/config/appsettings#set). 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener más información acerca de las herramientas de funciones de Azure, vea Hola comunes sección de preguntas frecuentes de hello [Visual Studio Tools de 2017 para las funciones de Azure](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/) entrada de blog.
+Para más información sobre Herramientas de Azure Functions, consulte la sección Preguntas comunes de la entrada de blog [Herramientas de Visual Studio 2017 para Azure Functions](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/).
 
-toolearn más información sobre herramientas de hello Azure funciones principales, vea [código y probar las funciones de Azure localmente](functions-run-local.md).  
-toolearn más sobre el desarrollo de las funciones como bibliotecas de clases. NET, vea [bibliotecas de clases de .NET usando con funciones de Azure](functions-dotnet-class-library.md). En este tema también proporciona ejemplos de cómo toouse atributos toodeclare Hola diversos tipos de enlaces admitidos por las funciones de Azure.    
+Para más información sobre Azure Functions Core Tools, consulte [Codificación y comprobación de las funciones de Azure en un entorno local](functions-run-local.md).  
+Para más información sobre el desarrollo de funciones como bibliotecas de clases .NET, consulte [Utilizar bibliotecas de clases de .NET con Azure Functions](functions-dotnet-class-library.md). En este tema también se ofrecen ejemplos sobre cómo usar atributos para declarar varios tipos de vínculos admitidos por Azure Functions.    

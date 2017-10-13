@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con SciQuest Spend Director | Microsoft Docs"
-description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y SciQuest dedicar Director."
+description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y SciQuest Spend Director."
 services: active-directory
 documentationcenter: 
 author: jeevansd
@@ -14,223 +14,223 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 47c46f1297054fd96b86c1d8c66e1a55ec151497
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 84b707668dc45e92e6151f422f1c919f638533b1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sciquest-spend-director"></a>Tutorial: Integración de Azure Active Directory con SciQuest Spend Director
-objetivo de Hola de este tutorial es tooshow, cómo toointegrate SciQuest dedicar Director con Azure Active Directory (Azure AD).  
-Integración SciQuest dedicar Director con Azure AD proporciona Hola siguientes ventajas: 
+El objetivo de este tutorial es mostrar cómo integrar SciQuest Spend Director con Azure Active Directory (Azure AD).  
+La integración de SciQuest Spend Director con Azure AD le proporciona las siguientes ventajas: 
 
-* Puede controlar en Azure AD que tenga acceso tooSciQuest Director de gastos 
-* Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooSciQuest Director de gastos (Single Sign-On) con sus cuentas de Azure AD
-* Puede administrar las cuentas en una ubicación central: Hola portal de Azure clásico
+* Puede controlar en Azure AD quién tiene acceso a SciQuest Spend Director. 
+* Puede permitir que los usuarios inicien sesión automáticamente en SciQuest Spend Director (inicio de sesión único) con sus cuentas de Azure AD.
+* Puede administrar sus cuentas en una ubicación central: el Portal de Azure clásico.
 
-Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Si desea obtener más información sobre la integración de aplicaciones SaaS con Azure AD, vea [Qué es el acceso a las aplicaciones y el inicio de sesión único en Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
-tooconfigure integración de Azure AD con SciQuest dedicar Director, necesita Hola siguientes elementos:
+Para configurar la integración de Azure AD con SciQuest Spend Director, necesita los siguientes elementos:
 
 * Una suscripción de Azure AD
 * Una suscripción de SciQuest Spend Director habilitada para el inicio de sesión único
 
 > [!NOTE]
-> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
+> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
 > 
 > 
 
-pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
+Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
 
 * No debe usar el entorno de producción, a menos que sea necesario.
 * Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/). 
 
 ## <a name="scenario-description"></a>Descripción del escenario
-objetivo de Hola de este tutorial es tooenable tootest inicio de sesión único en Azure AD en un entorno de prueba.  
-escenario de Hello descrito en este tutorial consta de dos bloques principales:
+El objetivo de este tutorial es permitirle probar el inicio de sesión único de Azure AD en un entorno de prueba.  
+La situación descrita en este tutorial consta de dos bloques de creación principales:
 
-1. Agregar SciQuest dedicar Director de galería de Hola 
+1. Agregar SciQuest Spend Director desde la galería 
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-sciquest-spend-director-from-hello-gallery"></a>Agregar SciQuest dedicar Director de galería de Hola
-integración de hello tooconfigure de Director de dedicar SciQuest en Azure AD, deberá tooadd SciQuest dedicar Director de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
+## <a name="adding-sciquest-spend-director-from-the-gallery"></a>Agregar SciQuest Spend Director desde la galería
+Para configurar la integración de SciQuest Spend Director en Azure AD, deberá agregar SciQuest Spend Director desde la galería a la lista de aplicaciones SaaS administradas.
 
-**tooadd SciQuest dedicar Director de galería de hello, lleve a cabo Hola pasos:**
+**Para agregar SciQuest Spend Director desde la galería, realice los pasos siguientes:**
 
-1. Hola **portal de Azure clásico**, en Hola panel de navegación izquierdo, haga clic en **Active Directory**. 
+1. En el panel de navegación izquierdo del **Portal de Azure clásico**, haga clic en **Active Directory**. 
    
     ![Active Directory][1]
 
-2. De hello **Directory** lista, directorio de Hola select para la que desee tooenable integración de directorios.
+2. En la lista **Directory** , seleccione el directorio cuya integración desee habilitar.
 
-3. Haga clic en vista de aplicaciones de hello tooopen, en la vista de directorio de hello, **aplicaciones** en el menú superior Hola.
+3. Para abrir la vista de aplicaciones, haga clic en **Applications** , en el menú superior de la vista de directorios.
    
-    ![Aplicaciones][2]
+    ![Applications][2]
 
-4. Haga clic en **agregar** final Hola de página Hola.
+4. Haga clic en **Agregar** en la parte inferior de la página.
    
     ![Aplicaciones][3]
 
-5. En hello **especifique qué desea toodo** cuadro de diálogo, haga clic en **agregar una aplicación de la Galería de hello**.
+5. En el cuadro de diálogo **¿Qué desea hacer?**, haga clic en **Agregar una aplicación de la galería**.
    
     ![Aplicaciones][4]
 
-6. En el cuadro de búsqueda de hello, escriba **sciQuest dedicar director**.
+6. En el cuadro de búsqueda, escriba **SciQuest Spend Director**.
    
     ![Aplicaciones][5]
 
-7. En el panel de resultados de hello, seleccione **SciQuest dedicar Director**y, a continuación, haga clic en **completar** aplicación de hello tooadd.
+7. En el panel de resultados, seleccione **SciQuest Spend Director** y, después, haga clic en **Completar** para agregar la aplicación.
    
     ![Aplicaciones][6]
 
 ## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuración y comprobación del inicio de sesión único de Azure AD
-objetivo de Hola de esta sección es tooshow cómo tooconfigure y prueba de inicio de sesión único en Azure AD con SciQuest dedicar Director a partir de un usuario de prueba denominado "Britta Simon".
+El objetivo de esta sección es mostrar cómo configurar y probar el inicio de sesión único de Azure AD con SciQuest Spend Director según un usuario de prueba denominado "Britta Simon".
 
-Para toowork de inicio de sesión único, Azure AD necesita tooknow es qué usuario equivalente de hello en Director de gasto de SciQuest tooan usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en SciQuest dedicar Director debe toobe establecido.  
-Esta relación de vínculo se establece mediante la asignación de valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** en SciQuest dedicar Director.
+Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de SciQuest Spend Director para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de SciQuest Spend Director.  
+Para establecer esta relación de vínculo, se asigna el valor del **nombre de usuario** en Azure AD como el valor del **nombre de usuario** en SciQuest Spend Director.
 
-tooconfigure y prueba de inicio de sesión único en Azure AD con SciQuest dedicar Director, deberá hello toocomplete después de bloques de creación:
+Para configurar y probar el inicio de sesión único de Azure AD con SciQuest Spend Director, debe completar los siguientes bloques de creación:
 
-1. **[Configuración de Azure AD único Single Sign-On](#configuring-azure-ad-single-single-sign-on) ** -tooenable la toouse usuarios esta característica.
-2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user) ** -inicio de sesión único en Azure AD tootest con Britta Simon.
-3. **[Crear un usuario de prueba de Director de gasto de SciQuest](#creating-a-halogen-software-test-user) ** -toohave un equivalente de Britta Simon en SciQuest dedicar Director es representación toohello vinculado Azure AD de ella.
-4. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user) ** -tooenable Britta Simon toouse Azure AD inicio de sesión único.
-5. **[Pruebas de Single Sign-On](#testing-single-sign-on) ** -tooverify Hola si funciona la configuración.
+1. **[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-single-sign-on)** : para permitir a los usuarios usar esta característica.
+2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.
+3. **[Creación de un usuario de prueba de SciQuest Spend Director](#creating-a-halogen-software-test-user)** : para tener un homólogo de Britta Simon en SciQuest Spend Director que esté vinculado a la representación de ella en Azure AD.
+4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.
+5. **[Prueba del inicio de sesión único](#testing-single-sign-on)** : para comprobar si funciona la configuración.
 
 ### <a name="configuring-azure-ad-single-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
-objetivo de Hola de esta sección es tooenable Azure AD single sign-on Hola portal de Azure clásico y tooconfigure inicio de sesión único en la aplicación SciQuest dedicar Director.
+El objetivo de esta sección es habilitar el inicio de sesión único de Azure AD en el Portal de Azure clásico y configurar el inicio de sesión único en la aplicación de SciQuest Spend Director.
 
-**tooconfigure inicio de sesión único en Azure AD con SciQuest dedicar Director, lleve a cabo Hola pasos:**
+**Para configurar el inicio de sesión único de Azure AD con SciQuest Spend Director, realice los pasos siguientes:**
 
-1. En el portal de Azure clásico en Hola Hola **SciQuest dedicar Director** página de integración de aplicaciones, haga clic en **configurar inicio de sesión único** tooopen hello **configurar Single Sign-On**cuadro de diálogo.
+1. En el Portal de Azure clásico, en la página de integración de aplicaciones de **SciQuest Spend Director**, haga clic en **Configurar inicio de sesión único** para abrir el diálogo **Configurar inicio de sesión único**.
    
     ![Configurar inicio de sesión único][8]
 
-2. En hello **¿cómo desea que los usuarios toosign en tooSciQuest Director de gastos** página, seleccione **Azure AD Single Sign-On**y, a continuación, haga clic en **siguiente**.
+2. En la página **¿Cómo desea que los usuarios inicien sesión en SciQuest Spend Director?**, seleccione **Inicio de sesión único de Microsoft Azure AD** y haga clic en **Siguiente**.
    
     ![Inicio de sesión único de Azure AD ][9]
 
-3. En hello **configurar opciones de aplicación** cuadro de diálogo, siga los pasos de hello: 
+3. En la página de diálogo **Configurar las opciones de la aplicación** , realice los pasos siguientes: 
    
     ![Configurar las opciones de la aplicación][10]
    
-     a. Hola **dirección URL de inicio de sesión** cuadro de texto, escriba la dirección URL que utilizan su toosign a los usuarios de aplicación de Director de gasto de SciQuest de tooyour utiliza Hola siguiente patrón: *https://.* SciQuest.com/.**
+     a. En el cuadro de texto **Dirección URL de inicio de sesión**, escriba la dirección URL que utilizan los usuarios para iniciar sesión en la aplicación de SciQuest Spend Director con el patrón siguiente: *https://.*sciquest.com/.**
    
-     b. Hola **dirección URL de respuesta** cuadro de texto, hello tipo mismo valor ha escrito en hello **dirección URL de inicio de sesión** cuadro de texto. 
+     b. En el cuadro de texto **URL de respuesta**, escriba el mismo valor que ha escrito en el cuadro de texto **Dirección URL de inicio de sesión**. 
    
      c. Haga clic en **Siguiente**.
 
-4. En hello **configurar inicio de sesión único en el Director de dedicar SciQuest** página, haga clic en **descargar metadatos**y, a continuación, guarde el archivo de metadatos de hello localmente en el equipo.
+4. En la página **Configurar inicio de sesión único en SciQuest Spend Director**, haga clic en **Descargar metadatos** y, después, guarde el archivo de metadatos de forma local en el equipo.
    
     ![Qué es Azure AD Connect][11]
 
-5. Póngase en contacto con SciQuest tooenable de compatibilidad con este método de autenticación mediante metadatos de hello anterior descargado.
+5. Póngase en contacto con el soporte técnico de SciQuest para habilitar este método de autenticación mediante los datos descargados anteriores.
 
-6. En hello portal de Azure clásico, seleccione la confirmación de configuración de inicio de sesión único de hello y, a continuación, haga clic en **completar** tooclose hello **configurar inicio de sesión único** cuadro de diálogo. 
+6. En el Portal de Azure clásico, seleccione la confirmación de configuración de inicio de sesión único y haga clic en **Completar** para cerrar el cuadro de diálogo **Configurar inicio de sesión único**. 
    
     ![Qué es Azure AD Connect][15]
 
-7. En hello **única confirmación de inicio de sesión** página, haga clic en **completar**.  
+7. En la página **Confirmación del inicio de sesión único**, haga clic en **Completar**.  
 
 ### <a name="creating-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-objetivo de Hola de esta sección es un usuario de prueba en el portal de Azure clásico que se llama a Britta Simon hello toocreate.
+El objetivo de esta sección es crear un usuario de prueba en el Portal de Azure clásico llamado Britta Simon.
 
-**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
+**Siga estos pasos para crear un usuario de prueba en Azure AD:**
 
-1. Hola **portal de Azure clásico**, en Hola panel de navegación izquierdo, haga clic en **Active Directory**.
+1. En el panel de navegación izquierdo del **Portal de Azure clásico**, haga clic en **Active Directory**.
    
     ![Qué es Azure AD Connect][100] 
 
-2. De hello **Directory** lista, directorio de Hola select para la que desee tooenable integración de directorios.
+2. En la lista **Directory** , seleccione el directorio cuya integración desee habilitar.
 
-3. Haga clic en lista de hello toodisplay de usuarios, en el menú de hello en la parte superior de hello, **usuarios**.
+3. Para mostrar la lista de usuarios, en el menú de la parte superior, haga clic en **Usuarios**.
    
     ![Qué es Azure AD Connect][101] 
 
-4. Hola tooopen **Agregar usuario** cuadro de diálogo, en la barra de herramientas de hello en la parte inferior de hello, haga clic en **Agregar usuario**. 
+4. Para abrir el cuadro de diálogo **Agregar usuario**, en la barra de herramientas de la parte inferior, haga clic en **Agregar usuario**. 
    
     ![Qué es Azure AD Connect][102] 
 
-5. En hello **envíenos comentarios acerca de este usuario** cuadro de diálogo, siga los pasos de hello:
+5. En la página de diálogo **Proporcione información sobre este usuario** , realice los pasos siguientes:
    
     ![Qué es Azure AD Connect][103] 
    
     a. En **Tipo de usuario**, seleccione **Nuevo usuario de la organización**.
    
-    b. En nombre de usuario de hello **cuadro de texto**, tipo **BrittaSimon**.
+    b. En el cuadro de texto **Nombre de usuario**, escriba**BrittaSimon**.
    
     c. Haga clic en **Siguiente**.
 
-6. En hello **perfil de usuario** cuadro de diálogo, siga los pasos de hello: 
+6. En la página de diálogo **Perfil de usuario** , realice los pasos siguientes: 
    
     ![Qué es Azure AD Connect][104] 
    
-    a. Hola **nombre** cuadro de texto, tipo **Bárbara**.  
+    a. En el cuadro de texto **Nombre**, escriba **Britta**.  
    
-    b. Hola **Last Name** txtbox, tipo, **Simon**.
+    b. En el cuadro de texto **Apellidos**, escriba **Simon**.
    
-    c. Hola **nombre para mostrar** cuadro de texto, tipo **Britta Simon**.
+    c. En el cuadro de texto **Nombre para mostrar**, escriba **Britta Simon**.
    
-    d. Hola **rol** lista, seleccione **usuario**.
+    d. En la lista **Rol**, seleccione **Usuario**.
    
     e. Haga clic en **Siguiente**.
 
-7. En hello **obtener contraseña temporal** página del cuadro de diálogo, haga clic en **crear**.
+7. En el cuadro de diálogo **Obtener contraseña temporal**, haga clic en **Crear**.
    
     ![Qué es Azure AD Connect][105]  
 
-8. En hello **obtener contraseña temporal** cuadro de diálogo, siga los pasos de hello:
+8. En la página de diálogo **Obtener contraseña temporal** , realice los pasos siguientes:
    
     ![Qué es Azure AD Connect][106]   
    
-    a. Anote el valor de Hola de hello **nueva contraseña**.
+    a. Anote el valor del campo **Nueva contraseña**.
    
     b. Haga clic en **Completo**.   
 
 ### <a name="creating-a-sciquest-spend-director-test-user"></a>Creación de un usuario de prueba de SciQuest Spend Director
-objetivo de Hola de esta sección es toocreate un usuario llamado a Britta Simon en SciQuest dedicar Director.
+El objetivo de esta sección es crear un usuario de prueba llamado Britta Simon en SciQuest Spend Director.
 
-El equipo de soporte de SciQuest dedicar Director es necesario toocontact y proporcionarles detalles Hola sobre su tooget de cuenta de prueba que creó.
+Deberá ponerse en contacto con el equipo de soporte técnico de SciQuest Spend Director y proporcionarles los detalles acerca de la cuenta de prueba que se ha creado.
 
 Como alternativa, también puede aprovechar el aprovisionamiento Just-In-Time, una característica de inicio de sesión único que es compatible con SciQuest Spend Director.  
-Si el aprovisionamiento Just-In-Time está habilitado, los usuarios se crean automáticamente en SciQuest Spend Director durante un intento de inicio de sesión único, si no existen. Esta característica elimina la necesidad de hello toomanually crear equivalente de inicio de sesión único a los usuarios.
+Si el aprovisionamiento Just-In-Time está habilitado, los usuarios se crean automáticamente en SciQuest Spend Director durante un intento de inicio de sesión único, si no existen. Esta característica elimina la necesidad de crear manualmente usuarios homólogos de inicio de sesión único.
 
-el aprovisionamiento de just-in-time de tooget habilitado, debe toocontact está el equipo de soporte de SciQuest dedicar Director.
+Para habilitar el aprovisionamiento Just-In-Timed, deberá ponerse en contacto con el equipo de soporte técnico de SciQuest Spend Director.
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Asignación de usuario de prueba de hello Azure AD
-objetivo de Hola de esta sección es tooenabling Britta Simon toouse Azure inicio de sesión único mediante la concesión de su tooSciQuest acceso Director de gastos.
+### <a name="assigning-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
+El objetivo de esta sección es permitir que Britta Simon utilice el inicio de sesión único de Azure concediéndole acceso a SciQuest Spend Director.
 
 ![Qué es Azure AD Connect][200]
 
-**tooassign Britta Simon tooSciQuest Director de gasto, lleve a cabo Hola pasos:**
+**Para asignar a Britta Simon a SciQuest Spend Director, realice los pasos siguientes:**
 
-1. En hello Azure portal clásico, vista de aplicaciones de hello tooopen, en la vista de directorio de hello, haga clic en **aplicaciones** en el menú superior Hola.
+1. En el Portal de Azure clásico, para abrir la vista de aplicaciones, en la vista del directorio, haga clic en **Aplicaciones** en el menú superior.
    
     ![Qué es Azure AD Connect][201]
 
-2. En la lista de aplicaciones de hello, seleccione **SciQuest dedicar Director**.
+2. En la lista de aplicaciones, seleccione **SciQuest Spend Director**.
    
     ![Qué es Azure AD Connect][202]
 
-3. En el menú de hello en la parte superior de hello, haga clic en **usuarios**.
+3. En el menú de la parte superior, haga clic en **Usuarios**.
    
     ![Qué es Azure AD Connect][203]
 
-4. En la lista de usuarios de hello, seleccione **Britta Simon**.
+4. En la lista Usuarios, seleccione **Britta Simon**.
    
     ![Qué es Azure AD Connect][204]
 
-5. En la barra de herramientas de hello en la parte inferior de hello, haga clic en **asignar**.
+5. En la barra de herramientas de la parte inferior, haga clic en **Asignar**.
    
     ![Qué es Azure AD Connect][205]
 
 ### <a name="testing-single-sign-on"></a>Prueba del inicio de sesión único 
-objetivo de Hola de esta sección es tootest su configuración de inicio de sesión único de Azure AD mediante Hola Panel de acceso.  
-Al hacer clic en icono de Director de dedicar SciQuest Hola Hola Panel de acceso, deberá obtener automáticamente ha iniciado sesión tooyour SciQuest dedicar Director aplicación.
+El objetivo de esta sección es probar la configuración del inicio de sesión único de Azure AD mediante el panel de acceso.  
+Al hacer clic en el icono de SciQuest Spend Director en el Panel de acceso, debería iniciar sesión automáticamente en su aplicación de SciQuest Spend Director.
 
 ## <a name="additional-resources"></a>Recursos adicionales
-* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

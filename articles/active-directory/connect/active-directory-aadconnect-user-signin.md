@@ -12,55 +12,52 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: 7848b419f3855b25cfa074a46779d258bd534bae
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 1d580ae43925bfb2cbe0fd9461cfb7e207fa56ec
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Opciones para el inicio de sesión de los usuarios en Azure AD Connect
-Connect de Azure Active Directory (Azure AD) permite la toosign de los usuarios en la nube de tooboth y recursos locales mediante el uso de Hola mismas contraseñas. Este artículo describe los conceptos clave para cada toohelp de modelo de identidad que elegir identidad Hola que desee toouse para iniciar sesión en tooAzure AD.
+Azure Active Directory (Azure AD) Connect permite que los usuarios inicien sesión en los recursos en la nube y locales con las mismas contraseñas. En este artículo se describen los conceptos clave para cada modelo de identidad para ayudarlo a elegir la identidad que desea utilizar con el fin de iniciar sesión en Azure AD.
 
-Si ya está familiarizado con el modelo de identidad de Azure AD de Hola y desea toolearn más información acerca de un método específico, consulte vínculo adecuado de hello:
+Si ya está familiarizado con el modelo de identidad de Azure AD y desea obtener más información sobre un método específico, haga clic más abajo en el vínculo que corresponda:
 
-* [Sincronización de contraseñas](#password-synchronization) con [inicio de sesión único (SSO)](active-directory-aadconnect-sso.md)
-* [Autenticación de paso a través](active-directory-aadconnect-pass-through-authentication.md)
+* [Sincronización de hash de contraseña](#password-synchronization) con [Inicio de sesión único de conexión directa](active-directory-aadconnect-sso.md)
+* [Autenticación de paso a través](active-directory-aadconnect-pass-through-authentication.md) con [Inicio de sesión único de conexión directa](active-directory-aadconnect-sso.md)
 * [SSO federado (con Active Directory Federation Services [AD FS])](#federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2)
 
-## <a name="choosing-hello-user-sign-in-method-for-your-organization"></a>Elegir Hola usuario método Inicio de sesión para su organización
-Para la mayoría de las organizaciones que simplemente desee tooenable usuario inicio de sesión tooOffice 365, aplicaciones SaaS y otros recursos basados en AD de Azure, se recomienda opción de sincronización de contraseña de Hola de forma predeterminada. Algunas organizaciones, sin embargo, tienen un motivo concreto que no son toouse capaz de esta opción. Pueden elegir una opción de inicio de sesión federado, como AD FS, o la autenticación de paso a través. Puede usar Hola después toohelp tabla realizar elección correcta Hola.
+## <a name="choosing-the-user-sign-in-method-for-your-organization"></a>Elección del método de inicio de sesión de usuario para su organización
+Para la mayoría de las organizaciones que simplemente quieren habilitar el inicio de sesión de usuarios en Office 365, aplicaciones SaaS y otros recursos basados en Azure AD, se recomienda la opción de sincronización de hash de contraseña predeterminada. No obstante, algunas organizaciones tienen un motivo concreto por el que no pueden usar esta opción. Pueden elegir una opción de inicio de sesión federado, como AD FS, o la autenticación de paso a través. Puede usar la tabla siguiente para ayudarlo a tomar la decisión correcta.
 
-Se necesita demasiado| PS con SSO| PA con SSO| AD FS |
+Hay que | PHS con SSO| PTA con SSO| AD FS |
  --- | --- | --- | --- |
-Sincronizar automáticamente el nuevo usuario, contacto y cuentas de grupo en la nube de toohello de Active Directory local.|x|x|x|
+Sincronizar nuevas cuentas de usuarios, contactos y grupos en Active Directory local con la nube automáticamente|x|x|x|
 Configurar mi inquilino para escenarios híbridos de Office 365|x|x|x|
-Habilitar mis usuarios toosign en y servicios en la nube de acceso mediante su contraseña local.|x|x|x|
+Permitir que mis usuarios inicien sesión en Cloud Services y accedan con su contraseña local|x|x|x|
 Implementar el inicio de sesión único utilizando credenciales corporativas|x|x|x|
-Asegúrese de que ninguna contraseña se almacena en la nube de Hola.||x*|x|
+Asegurarse de que ninguna contraseña está almacenada en la nube||x*|x|
 Habilitar soluciones locales de autenticación multifactor|||x|
 
-* A través de un conector ligero.
+* A través de un agente ligero.
 
->[!NOTE]
-> La autenticación de paso a través actualmente tiene algunas limitaciones con los clientes enriquecidos. Vea [Autenticación de paso a través](active-directory-aadconnect-pass-through-authentication.md) para obtener más detalles.
+### <a name="password-hash-synchronization"></a>Sincronización de hash de contraseña
+Con la sincronización de hash de contraseña, se sincronizan los valores hash de las contraseñas de los usuarios de Active Directory local con Azure AD. Cuando las contraseñas se cambian o se restablecen de forma local, los nuevos hash de contraseña se sincronizan de inmediato con Azure AD para que los usuarios puedan usar siempre en los recursos en la nube la misma contraseña que usan de manera local. Las contraseñas nunca se envían a Azure AD ni se almacenan en Azure AD en texto no cifrado. La sincronización de hash de contraseña puede usarse junto con la escritura diferida de contraseñas para habilitar el autoservicio de restablecimiento de contraseña en Azure AD.
 
-### <a name="password-synchronization"></a>Sincronización de contraseñas
-Con la sincronización de contraseña, los valores hash de las contraseñas de usuario se sincronizan desde tooAzure de Active Directory local AD. Cuando las contraseñas se cambian o restablecer en local, las nuevas contraseñas Hola están sincronizado tooAzure AD inmediatamente para que los usuarios siempre pueden usar Hola igual contraseña para los recursos de nube y recursos locales. las contraseñas de Hola nunca se envían tooAzure AD o se almacenan en Azure AD en texto no cifrado. Puede utilizar la sincronización de contraseña junto con la contraseña tooenable de reescritura de restablecimiento de contraseña en Azure AD.
+También puede habilitar el [inicio de sesión único de conexión directa](active-directory-aadconnect-sso.md) para usuarios en máquinas unidas a un dominio que se encuentran en la red corporativa. Con el inicio de sesión único, los usuarios habilitados solo necesitan escribir un nombre de usuario para acceder a los recursos de nube de manera segura.
 
-Además, puede habilitar [SSO](active-directory-aadconnect-sso.md) para los usuarios en los equipos unidos a un dominio que se encuentran en la red corporativa de Hola. Con inicio de sesión único, habilitada, los usuarios solo necesidad tooenter un toohelp de nombre de usuario a obtener acceso seguro a recursos de nube.
+![Sincronización de hash de contraseña](./media/active-directory-aadconnect-user-signin/passwordhash.png)
 
-![Sincronización de contraseñas](./media/active-directory-aadconnect-user-signin/passwordhash.png)
-
-Para obtener más información, vea hello [la sincronización de contraseña](active-directory-aadconnectsync-implement-password-synchronization.md) artículo.
+Para más información, vea el artículo [Implementación de la sincronización de contraseña mediante la sincronización de Azure AD Connect](active-directory-aadconnectsync-implement-password-synchronization.md).
 
 ### <a name="pass-through-authentication"></a>Autenticación de paso a través
-Con la autenticación de paso a través, contraseña del usuario de Hola se valida con controlador de Active Directory de hello en local. contraseña de Hello no necesita toobe presente en Azure AD de ninguna forma. Esto permite para las directivas locales, como restricciones en la hora de inicio de sesión, toobe evaluada durante toocloud los servicios de autenticación.
+Con la autenticación de paso a través, la contraseña del usuario se valida con el controlador de Active Directory local, y la contraseña no necesita estar presente en Azure AD de ninguna forma. Esto permite evaluar las directivas locales, como las restricciones en la hora de inicio de sesión, durante la autenticación en Cloud Services.
 
-Este tipo de autenticación usa a un agente simple en un equipo unido a un dominio de Windows Server 2012 R2 en el entorno local de Hola. que escucha las solicitudes de validación de contraseñas. Que no requiere ningún toohello abra Internet toobe de puertos de entrada.
+La autenticación de paso a través utiliza un agente sencillo en una máquina unida a un dominio de Windows Server 2012 R2 en el entorno local, que escucha las solicitudes de validación de contraseñas. Este agente no requiere que ningún puerto de entrada esté abierto a Internet.
 
-Además, también puede habilitar un inicio de sesión único para los usuarios en los equipos unidos a un dominio que se encuentran en la red corporativa de Hola. Con inicio de sesión único, habilitada, los usuarios solo necesidad tooenter un toohelp de nombre de usuario a obtener acceso seguro a recursos de nube.
+También puede habilitar el inicio de sesión único para usuarios en máquinas unidas a un dominio que se encuentran en la red corporativa. Con el inicio de sesión único, los usuarios habilitados solo necesitan escribir un nombre de usuario para acceder a los recursos de nube de manera segura.
 ![Autenticación de paso a través](./media/active-directory-aadconnect-user-signin/pta.png)
 
 Para más información, consulte:
@@ -68,7 +65,7 @@ Para más información, consulte:
 - [Inicio de sesión único](active-directory-aadconnect-sso.md)
 
 ### <a name="federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2"></a>Federación con AD FS nuevo o existente en granja de Windows Server 2012 R2
-Con el inicio de sesión federada, los usuarios pueden iniciar sesión en tooAzure servicios basados en AD con sus contraseñas locales. Mientras encuentra en la red corporativa de Hola, incluso no tienen tooenter sus contraseñas. Con la opción de federación de hello con AD FS, puede implementar una granja de servidores nuevo o existente con AD FS en Windows Server 2012 R2. Si elige toospecify una granja existente, Azure AD Connect configura Hola confianza entre la granja de servidores y Azure AD para que los usuarios pueden iniciar sesión.
+Con el inicio de sesión federado, los usuarios pueden iniciar sesión en servicios basados en Azure con sus contraseñas locales. Aunque se encuentren en la red corporativa, no tendrán que escribir sus contraseñas. La opción de federación con AD FS permite implementar una granja nueva o existente con AD FS en Windows Server 2012 R2. Si decide especificar una granja existente, Azure AD Connect configurará la confianza entre la granja y Azure AD para que los usuarios puedan iniciar sesión.
 
 <center>![Federación con AD FS en Windows Server 2012 R2](./media/active-directory-aadconnect-user-signin/federatedsignin.png)</center>
 
@@ -76,102 +73,102 @@ Con el inicio de sesión federada, los usuarios pueden iniciar sesión en tooAzu
 
 Si va a implementar una nueva granja, necesita lo siguiente:
 
-* Un servidor de Windows Server 2012 R2 para servidor de federación de Hola.
-* Un servidor de Windows Server 2012 R2 para hello Proxy de aplicación Web.
+* Un servidor Windows Server 2012 R2 para el servidor de federación.
+* Un servidor Windows Server 2012 R2 para el Proxy de aplicación web.
 * Un archivo .pfx con un certificado SSL para el nombre de servicio de federación previsto. Por ejemplo: fs.contoso.com.
 
 Si va a implementar una nueva granja o va a utilizar una existente, necesita esto:
 
 * Credenciales de administrador local en los servidores de federación.
-* Credenciales de administrador local en los servidores de grupo de trabajo (no unidos a un dominio) que piensa toodeploy Hola rol Proxy de aplicación Web en.
-* máquina de Hello ejecutar a Asistente de hello en toobe tooconnect pueda tooany otras máquinas que quiere tooinstall AD FS o Proxy de aplicación Web en, mediante la administración remota de Windows.
+* Credenciales de administrador local en cualquier servidor de grupo de trabajo (no unido a dominio) en el que pretenda implementar el rol Proxy de aplicación web.
+* La máquina en la que se ejecuta el Asistente debe poder conectarse a otras máquinas en las que va a instalar AD FS o el Proxy de aplicación web a través de Administración remota de Windows.
 
 Para obtener más información, consulte [Configuración de SSO con AD FS](active-directory-aadconnect-get-started-custom.md#configuring-federation-with-ad-fs).
 
 #### <a name="sign-in-by-using-an-earlier-version-of-ad-fs-or-a-third-party-solution"></a>Inicio de sesión con una versión anterior de AD FS o una solución de terceros
-Si ya ha configurado en el inicio de sesión en la nube mediante el uso de una versión anterior de AD FS (por ejemplo, AD FS 2.0) o un proveedor de federación de terceros, puede elegir tooskip inicio de sesión en configuración de usuario a través de Azure AD Connect. Esto le permitirá sincronización más reciente de tooget hello y otras capacidades de Azure AD Connect mientras se sigue usando su solución existente para el inicio de sesión.
+Si ya ha configurado el inicio de sesión en la nube con una versión anterior de AD FS (por ejemplo, AD FS 2.0) o un proveedor de federación de terceros, puede optar por omitir la configuración del inicio de sesión de usuarios a través de Azure AD Connect. De este modo, podrá obtener la sincronización más reciente y otras funcionalidades de Azure AD Connect mientras sigue usando la solución existente para el inicio de sesión.
 
-Para obtener más información, vea hello [lista de compatibilidad de federación de terceros de Azure AD](active-directory-aadconnect-federation-compatibility.md).
+Para obtener más información, consulte [Lista de compatibilidad de federación de terceros de AD Azure](active-directory-aadconnect-federation-compatibility.md).
 
 
 ## <a name="user-sign-in-and-user-principal-name"></a>Inicio de sesión de usuario y nombre principal de usuario (UPN)
 ### <a name="understanding-user-principal-name"></a>Descripción del nombre principal de usuario
-En Active Directory, sufijo de nombre principal (UPN) de usuario de hello predeterminado es nombre DNS de hello del dominio de Hola donde se creó la cuenta de usuario de Hola. En la mayoría de los casos, se trata de nombre de dominio de Hola que está registrado como dominio de empresa de hello en hello Internet. Sin embargo, puede agregar más sufijos UPN usando Dominios y confianzas de Active Directory.
+En Active Directory, el sufijo UPN predeterminado es el nombre DNS del dominio en el que se creó la cuenta de usuario. En la mayoría de los casos, se trata del nombre de dominio registrado como dominio de empresa en Internet. Sin embargo, puede agregar más sufijos UPN usando Dominios y confianzas de Active Directory.
 
-Hola UPN del usuario de hello tiene formato de hello username@domain. Por ejemplo, para un dominio de Active Directory denominado "contoso.com", un usuario denominado John podría tener Hola UPN "john@contoso.com". Hola UPN del usuario de Hola se basa en RFC 822. Aunque hello UPN y recurso compartido de correo electrónico hello el mismo formato, valor Hola de hello UPN para un usuario puede ser o no igual Hola como dirección de correo electrónico de saludo del usuario de Hola.
+El UPN del usuario tiene el formato username@domain. Por ejemplo, para un dominio de Active Directory denominado "contoso.com", un usuario llamado Héctor puede tener el UPN john@contoso.com. El UPN del usuario se basa en la especificación RFC 822. Aunque el UPN y el correo electrónico comparten el mismo formato, el valor de UPN de un usuario podría ser o no el mismo que la dirección de correo electrónico del usuario.
 
 ### <a name="user-principal-name-in-azure-ad"></a>Nombre principal de usuario en Azure AD
-Asistente de Azure AD Connect de Hello usa el atributo userPrincipalName de Hola o permite que especificar Hola toobe de atributo (en una instalación personalizada) que se usan desde el entorno local como nombre principal de usuario de hello en Azure AD. Este es el valor de Hola que se usa para iniciar sesión en tooAzure AD. Si Hola valor del atributo userPrincipalName de hello no corresponde tooa comprobado dominio en Azure AD, Azure AD lo reemplaza con un valor predeterminado. onmicrosoft.com valor.
+El Asistente para Azure AD Connect usará el atributo userPrincipalName o le permiten especificar el atributo (en la instalación personalizada) para su uso local como nombre principal de usuario en Azure AD. Este es el valor que se usará para iniciar sesión en Azure AD. Si el valor del atributo userPrincipalName no corresponde a un dominio comprobado en Azure AD, a continuación, Azure AD lo reemplazará con un valor predeterminado ".onmicrosoft.com".
 
-Todos los directorios de Azure Active Directory incluyen un nombre de dominio integrado, con formato hello contoso.onmicrosoft.com, que permite empezar a utilizar Azure u otros servicios de Microsoft. Puede mejorar y simplificar la experiencia de inicio de sesión de hello mediante el uso de dominios personalizados. Para obtener información sobre los nombres de dominio personalizado en Azure AD y cómo ver un dominio, tooverify [agregar su tooAzure de nombre de dominio personalizado Active Directory](../add-custom-domain.md#add-your-custom-domain).
+Todos los directorios de Azure Active Directory vienen con un nombre de dominio integrado con el formato "contoso.onmicrosoft.com", lo que le permite empezar a utilizar Azure u otros servicios de Microsoft. Puede mejorar y simplificar la experiencia de inicio de sesión utilizando dominios personalizados. Para informarse sobre los nombres de dominio personalizado en Azure AD y cómo comprobar un dominio, consulte [Incorporación de su nombre de dominio personalizado a Azure Active Directory](../add-custom-domain.md#add-the-custom-domain-name-to-your-directory).
 
 ## <a name="azure-ad-sign-in-configuration"></a>Configuración de inicio de sesión de Azure AD
 ### <a name="azure-ad-sign-in-configuration-with-azure-ad-connect"></a>Configuración de inicio de sesión de Azure AD con Azure AD Connect
-experiencia de inicio de sesión de Hello Azure AD depende de si Azure AD puede coincidir con el sufijo de nombre principal de usuario de Hola de un usuario que se va a tooone sincronizado de dominios personalizados de Hola que se comprueban en el directorio de Azure AD Hola. Azure AD Connect proporciona ayuda mientras configurar opciones de inicio de sesión Azure AD, por lo que Hola inicio de sesión de experiencia del usuario en la nube de hello es similar toohello local experiencia.
+La experiencia de inicio de sesión de Azure AD depende de si este puede hacer coincidir el sufijo del nombre principal del usuario que se esté sincronizando con uno de los dominios personalizados comprobados en el directorio de Azure AD. Azure AD Connect proporciona ayuda durante la configuración del inicio de sesión de Azure AD, para que la experiencia de inicio de sesión de usuario en la nube sea similar a la experiencia local.
 
-Listas de Azure AD Connect Hola sufijos UPN que se definen para toomatch de dominios y los intentos de hello ellas con un dominio personalizado en Azure AD. A continuación, puede ayudarle con la acción adecuada de Hola que necesita toobe realizada.
-página de inicio de sesión de Hello Azure AD muestra los sufijos UPN de Hola que se definen para la instancia local de Active Directory y muestra el estado correspondiente de hello en cada sufijo. los valores de estado de Hola pueden ser uno de hello siguientes:
+Azure AD Connect muestra los sufijos UPN definidos para los dominios y trata de hacerlos coincidir con un dominio personalizado de Azure AD. Después, puede ayudarlo con la acción pertinente que necesite realizar.
+La página de inicio de sesión de Azure AD enumera los sufijos UPN definidos para Active Directory local y muestra el estado correspondiente en cada sufijo. Los valores de estado pueden ser uno de los siguientes:
 
 | Estado | Descripción | Se requiere acción |
 |:--- |:--- |:--- |
 | Verified |Azure AD Connect ha encontrado un dominio comprobado coincidente en Azure AD. Todos los usuarios de este dominio pueden iniciar sesión con sus credenciales locales. |No se requiere ninguna acción. |
-| Not verified (Sin comprobar) |Azure AD Connect encontró una coincidencia de dominio personalizado en Azure AD, pero no está comprobada. sufijo UPN de Hola de usuarios de Hola de este dominio será cambia de forma predeterminada toohello. sufijo de onmicrosoft.com después de la sincronización si Hola dominio no comprobado. | [Comprobar el dominio personalizado de hello en Azure AD.](../add-custom-domain.md#verify-the-domain-name-with-azure-ad) |
-| Not added (Sin agregar) |Azure AD Connect no encontró un dominio personalizado que sufijo UPN toohello correspondía. sufijo UPN de Hola de usuarios de Hola de este dominio será cambiado toohello predeterminado. onmicrosoft.com sufijo si dominio hello no agregado y comprobado en Azure. | [Agregar y comprobar un dominio personalizado que se corresponde el sufijo UPN toohello.](../add-custom-domain.md) |
+| Not verified (Sin comprobar) |Azure AD Connect encontró una coincidencia de dominio personalizado en Azure AD, pero no está comprobada. Se cambiará el sufijo UPN de los usuarios de este dominio al sufijo predeterminado .onmicrosoft.com después de la sincronización si el dominio no se comprueba. | [Compruebe el dominio personalizado en Azure AD.](../add-custom-domain.md#verify-the-custom-domain-name-in-azure-ad) |
+| Not added (Sin agregar) |Azure AD Connect no encontró un dominio personalizado que se correspondiera con el sufijo UPN. Se cambiará el sufijo UPN de los usuarios de este dominio al sufijo predeterminado .onmicrosoft.com después de la sincronización si el dominio no se agrega y comprueba en Azure. | [Agregue y compruebe un dominio personalizado que se corresponda con el sufijo UPN.](../add-custom-domain.md) |
 
-página de inicio de sesión de Hello Azure AD muestra sufijos UPN de Hola que se definen para la instancia local de Active Directory y Hola correspondiente dominio personalizado en Azure AD con el estado de comprobación actual Hola. En una instalación personalizada, ahora puede seleccionar atributos de hello para el nombre principal de usuario de hello en hello **inicio de sesión en Azure AD** página.
+La página de inicio de sesión de AD Azure muestra los sufijos UPN definidos para Active Directory local y el dominio personalizado correspondiente en Azure AD con el estado actual de comprobación. En una instalación personalizada, ahora puede seleccionar el atributo de nombre principal de usuario en la página de **inicio de sesión en Azure AD** .
 
 ![Página de inicio de sesión de AD Azure](./media/active-directory-aadconnect-user-signin/custom_azure_sign_in.png)
 
-Puede hacer clic en hello actualización botón fetch toore Hola estado más reciente de los dominios personalizados Hola de Azure AD.
+Puede hacer clic en el botón de actualización para volver a capturar el estado más reciente de los dominios personalizados de Azure AD.
 
-### <a name="selecting-hello-attribute-for-hello-user-principal-name-in-azure-ad"></a>Seleccionar atributo hello para el nombre principal de usuario de hello en Azure AD
-Hola atributo userPrincipalName es el atributo de Hola que utilizan los usuarios cuando inician sesión en tooAzure AD y Office 365. Debe comprobar los dominios de hello (también conocido como sufijos UPN) que se usan en Azure AD antes de que los usuarios de Hola se sincronizan.
+### <a name="selecting-the-attribute-for-the-user-principal-name-in-azure-ad"></a>Seleccione el atributo de nombre principal de usuario en Azure AD
+userPrincipalName es el atributo que los usuarios utilizan al iniciar sesión en Azure AD y Office 365. Los dominios utilizados, también conocidos como "sufijo UPN", deben comprobarse en Azure AD antes de que se sincronicen los usuarios.
 
-Se recomienda que mantenga Hola predeterminado atributo userPrincipalName. Si este atributo es nonroutable y no se puede comprobar, es posible tooselect otro atributo (por ejemplo, correo electrónico) como atributo de Hola que contiene Hola identificador de inicio de sesión. Esto se conoce como Id. alternativo de Hola valor del atributo Id. alternativo de Hello debe seguir Hola RFC 822 estándar. Puede utilizar un identificador alternativo con contraseña SSO y federación SSO como solución de inicio de sesión de Hola.
+Se recomienda encarecidamente mantener el atributo userPrincipalName predeterminado. Si este atributo no es enrutable y no se puede comprobar, se puede seleccionar otro atributo, por ejemplo, email, como que contiene el identificador de inicio de sesión. Esto se conoce como un "identificador alternativo". El valor del atributo Alternate ID debe seguir el estándar RFC822. Un identificador alternativo puede usarse como solución de inicio de sesión tanto con el SSO de contraseña como con el SSO de federación.
 
 > [!NOTE]
 > El uso de un identificador alternativo no es compatible con todas las cargas de trabajo de Office 365. Para obtener más información, consulte [Configuración del identificador de inicio de sesión alternativo](https://technet.microsoft.com/library/dn659436.aspx).
 >
 >
 
-#### <a name="different-custom-domain-states-and-their-effect-on-hello-azure-sign-in-experience"></a>Estados de otro dominio personalizado y su efecto en la experiencia de Hola de inicio de sesión Azure
-Es muy importante toounderstand Hola relación entre los Estados de dominio personalizado de Hola de su directorio Azure AD y hello sufijos UPN que están definidos en local. Analicemos Hola diferentes posibles Azure inicio de sesión experiencias cuando se está estableciendo la sincronización mediante el uso de Azure AD Connect.
+#### <a name="different-custom-domain-states-and-their-effect-on-the-azure-sign-in-experience"></a>Diferentes estados de los dominios personalizados y su efecto en el inicio de sesión en Azure
+Es muy importante comprender la relación entre los estados de un dominio personalizado en el directorio de Azure AD y los sufijos UPN definidos de forma local. Vamos a revisar las distintas experiencias de inicio de sesión de Azure cuando se configura la sincronización usando Azure AD Connect.
 
-En hello siguiente información, supongamos que estamos interesarán contoso.com de sufijo UPN de hello, que se usa en el directorio local de hello como parte del UPN, por ejemplo user@contoso.com.
+Para la siguiente información, supongamos que estamos interesados en el sufijo UPN "contoso.com" que se usa en el directorio local como parte del UPN, por ejemplo, user@contoso.com.
 
-###### <a name="express-settingspassword-synchronization"></a>Configuración rápida y sincronización de contraseñas
+###### <a name="express-settingspassword-hash-synchronization"></a>Configuración rápida y sincronización de hash de contraseña
 | Estado | Efecto en la experiencia de usuario sobre el inicio de sesión de Azure |
 |:---:|:--- |
-| Not added (Sin agregar) |En este caso, no se agregó ningún dominio personalizado para contoso.com Hola directorio de Azure AD. Los usuarios que tienen el UPN local con el sufijo de hello @contoso.com no será capaz de toouse su toosign UPN local en tooAzure. Toouse en su lugar deberá tienen un UPN nuevo que ha proporcionado toothem por Azure AD mediante la adición de sufijo de hello para el directorio de Azure AD de Hola de forma predeterminada. Por ejemplo, si está sincronizando usuarios toohello AD de Azure directory azurecontoso.onmicrosoft.com, a continuación, Hola local usuario user@contoso.com se proporcionará un UPN de user@azurecontoso.onmicrosoft.com. |
-| Not verified (Sin comprobar) |En este caso, tenemos un contoso.com de dominio personalizado que se agrega en el directorio de hello Azure AD. Sin embargo, aún no se ha comprobado. Si continúe con la sincronización a los usuarios sin comprobar el dominio de hello, entonces los usuarios de Hola se va a asignar un UPN nuevo Azure AD, igual que en el escenario de "No se agrega" hello. |
-| Verified |En este caso, tenemos un contoso.com de dominio personalizado que ya se ha agregado y comprobado en Azure AD para hello sufijo UPN. Los usuarios será capaz de toouse su nombre principal de usuario local, por ejemplo user@contoso.com, toosign en tooAzure después de que se sincronicen tooAzure AD. |
+| Not added (Sin agregar) |En este caso no se ha agregado ningún dominio personalizado para "contoso.com" en el directorio de Azure AD. Los usuarios que tienen el UPN local con el sufijo @contoso.com, no podrán usar su UPN local para iniciar sesión en Azure. En su lugar, tendrán que utilizar un UPN nuevo que les proporcionará Azure AD, agregando el sufijo para el directorio predeterminado de Azure AD. Por ejemplo, si la sincronización de los usuarios es con el directorio de Azure AD azurecontoso.onmicrosoft.com, al usuario local user@contoso.com se le dará un UPN user@azurecontoso.onmicrosoft.com. |
+| Not verified (Sin comprobar) |En este caso tenemos un dominio personalizado de "contoso.com" agregado en el directorio de Azure AD, pero que no se ha comprobado. Sin embargo, aún no se ha comprobado. Si continúa con la sincronización de los usuarios sin comprobar el dominio, Azure AD asignará a los usuarios un UPN nuevo igual que lo hizo en el escenario "Sin agregar". |
+| Verified |En este caso, tenemos un dominio personalizado de "contoso.com" que ya está agregado y comprobado en Azure AD para el sufijo UPN. Los usuarios podrán utilizar su nombre principal de usuario local, por ejemplo, user@contoso.com, para iniciar sesión en Azure una vez que se hayan sincronizado con Azure AD. |
 
 ###### <a name="ad-fs-federation"></a>Federación de AD FS
-No se puede crear una federación no tiene valor predeterminado de Hola. dominio de onmicrosoft.com en Azure AD o un dominio personalizado no comprobado en Azure AD. Cuando se ejecutan Asistente de hello Azure AD Connect, si selecciona un dominio no comprobado toocreate una federación con, a continuación, indicaciones de Azure AD Connect con hello necesario registra toobe creado donde esté hospedado el DNS de dominio de Hola. Para obtener más información, consulte [comprobar dominio de hello Azure AD seleccionado para la federación](active-directory-aadconnect-get-started-custom.md#verify-the-azure-ad-domain-selected-for-federation).
+En Azure AD no se puede crear una federación con el dominio predeterminado ".onmicrosoft.com", ni un dominio personalizado no comprobado. Cuando se ejecuta el Asistente para Azure AD Connect, si selecciona un dominio no comprobado para crear una federación, Azure AD Connect le pedirá que cree los registros necesarios en donde esté hospedado el DNS para el dominio. Para obtener más información, consulte [Comprobación del dominio de Azure AD seleccionado para la federación](active-directory-aadconnect-get-started-custom.md#verify-the-azure-ad-domain-selected-for-federation).
 
-Si ha seleccionado la opción de inicio de sesión de usuario de hello **federación con AD FS**, a continuación, debe tener un toocontinue de dominio personalizado creando una federación en Azure AD. Para nuestro análisis, esto significa que debemos tenemos un contoso.com dominio personalizado que agregó en el directorio de hello Azure AD.
+Si seleccionó la opción de inicio de sesión de usuario como **Federación con AD FS**, tiene que tener un dominio personalizado para continuar con la creación de una federación en Azure AD. Para el caso que estamos tratando, esto significa que deberíamos tener un dominio personalizado "contoso.com" agregado en el directorio de Azure AD.
 
-| Estado | Efecto en la experiencia del usuario de inicio de sesión Azure Hola |
+| Estado | Efecto en la experiencia de usuario sobre el inicio de sesión de Azure |
 |:---:|:--- |
-| Not added (Sin agregar) |En este caso, Azure AD Connect no encontró un dominio personalizado correspondiente para contoso.com de sufijo UPN de Hola Hola directorio de Azure AD. Deberá tooadd un dominio personalizado contoso.com si tiene usuarios toosign en mediante AD FS con su UPN local (como user@contoso.com). |
+| Not added (Sin agregar) |En este caso Azure AD Connect no pudo encontrar un dominio personalizado coincidente para el sufijo UPN "contoso.com" en el directorio de Azure AD. Tiene que agregar un dominio personalizado "contoso.com" si los usuarios necesitan iniciar sesión usando AD FS con su UPN local como user@contoso.com. |
 | Not verified (Sin comprobar) |En este caso, Azure AD Connect le indicará los detalles sobre cómo puede comprobar el dominio en una etapa posterior. |
-| Verified |En este caso, puede ir hacia delante con la configuración de hello sin ninguna acción adicional. |
+| Verified |En este caso, puede proseguir con la configuración sin realizar ninguna acción. |
 
-## <a name="changing-hello-user-sign-in-method"></a>Cambiar el método de inicio de sesión de usuario de Hola
-Puede cambiar el método de inicio de sesión de usuario de Hola de federación, la sincronización de contraseña o la autenticación de paso a través mediante tareas de Hola que están disponibles en Azure AD Connect tras la configuración inicial de Hola de Azure AD Connect con el Asistente de Hola. Vuelva a ejecutar el Asistente de Azure AD Connect de Hola y verá una lista de tareas que puede realizar. Seleccione **cambio en el inicio de sesión de usuario** en lista de Hola de tareas.
+## <a name="changing-the-user-sign-in-method"></a>Cambio del método de inicio de sesión de usuario
+Puede cambiar el método de inicio de sesión de federación a sincronización de hash de contraseña o a autenticación de paso a través usando las tareas que estarán disponibles en Azure AD Connect después de la configuración inicial de Azure AD Connect realizada con el asistente. Vuelva a ejecutar al Asistente para Azure AD Connect y verá una lista de tareas que puede realizar. Seleccione **Cambiar inicio de sesión de usuario** de la lista de tareas.
 
 ![Cambiar inicio de sesión de usuario](./media/active-directory-aadconnect-user-signin/changeusersignin.png)
 
-En la página siguiente de hello, se le pide las credenciales de hello tooprovide para Azure AD.
+En la página siguiente, deberá proporcionar las credenciales de Azure AD.
 
-![Conectar tooAzure AD](./media/active-directory-aadconnect-user-signin/changeusersignin2.png)
+![Conectarse a Azure](./media/active-directory-aadconnect-user-signin/changeusersignin2.png)
 
-En hello **inicio de sesión de usuario** , seleccione Inicio de sesión de usuario de hello deseado.
+En la página **Inicio de sesión de usuario**, seleccione el inicio de sesión de usuario deseado.
 
-![Conectar tooAzure AD](./media/active-directory-aadconnect-user-signin/changeusersignin2a.png)
+![Conectarse a Azure](./media/active-directory-aadconnect-user-signin/changeusersignin2a.png)
 
 > [!NOTE]
-> Si sólo realiza una sincronización de toopassword modificador temporal, a continuación, seleccione hello **no se convierten las cuentas de usuario** casilla de verificación. Si no activa la opción de hello convertirá cada toofederated de usuario y puede tardar varias horas.
+> Si el cambio a sincronización de hash de contraseña es solo temporal, active la casilla **No convertir las cuentas de usuario**. Si no lo hace, se realizará la conversión de cada usuario a federado lo que puede llevar varias horas.
 >
 >
 

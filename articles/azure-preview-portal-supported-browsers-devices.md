@@ -1,6 +1,6 @@
 ---
-title: aaaSupported exploradores y dispositivos para el portal de Azure | Documentos de Microsoft
-description: "Describe en qué hello Azure portal funcionará de dispositivos y exploradores de Hola."
+title: Exploradores y dispositivos compatibles con Azure Portal | Microsoft Docs
+description: "Describe los exploradores y dispositivos en los que funcionará el Portal de Azure."
 services: 
 documentationcenter: 
 author: flanakin
@@ -16,20 +16,20 @@ ms.topic: article
 ms.date: 06/28/2017
 ms.author: micflan
 ms.custom: accessibility
-ms.openlocfilehash: 1adac737e062803e67d4b820738bb0fcd21c81b0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f8718e240eaefb47b18b6098be083e335ccbc89d
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="supported-browsers-and-devices-for-hello-azure-portal"></a>Dispositivos para hello portal de Azure y exploradores admitidos
-Puede ejecutar hello [portal de Azure](https://portal.azure.com) en todos los escritorio moderna, Tablet PC dispositivos y exploradores.
+# <a name="supported-browsers-and-devices-for-the-azure-portal"></a>Exploradores y dispositivos compatibles con Azure Portal
+Puede ejecutar [Azure Portal](https://portal.azure.com) en todos los escritorios, los dispositivos de tableta y los exploradores modernos.
 
 ### <a name="supported-devices"></a>Dispositivos compatibles
-Hola portal de Azure se ejecuta excelente en moderna tabletas, equipos Mac y equipos. Si necesita toomanage los recursos de Azure desde un dispositivo móvil, intente Hola aplicación de Azure que está disponible para la vista previa en iPhone y Android. Para obtener más información, consulte el blog de hello [versión preliminar pública de introducir hello Azure aplicación](https://azure.microsoft.com/blog/azure-app-preview/).
+Azure Portal se ejecuta de manera excelente en tabletas, Mac y PC modernos. Si necesita administrar los recursos de Azure desde un dispositivo móvil, pruebe la aplicación de Azure disponible para versión preliminar en iPhone y Android. Para más información, consulte la entrada de blog sobre la [presentación de la versión preliminar pública de las aplicaciones de Azure](https://azure.microsoft.com/blog/azure-app-preview/).
 
 ### <a name="supported-browsers"></a>Exploradores compatibles
-Recomendamos que utilice explorador más actualizada de Hola que es compatible con el sistema operativo. Hola siguientes exploradores es compatibles:
+Se recomienda usar el explorador más actualizado compatible con el sistema operativo. Se admiten los siguientes exploradores:
 
 * Microsoft Edge (versión más recientes)
 * Internet Explorer 11

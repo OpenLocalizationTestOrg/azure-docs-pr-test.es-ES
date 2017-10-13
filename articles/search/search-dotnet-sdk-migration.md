@@ -1,6 +1,6 @@
 ---
-title: "aaaUpgrading toohello versión 1.1 del SDK de .NET de búsqueda de Azure | Documentos de Microsoft"
-description: "Actualizar toohello versión 1.1 del SDK de .NET de búsqueda de Azure"
+title: "Actualización a la versión 1.1 del SDK de .NET para Azure Search | Microsoft Docs"
+description: "Actualización a la versión 1.1 del SDK de .NET para Búsqueda de Azure"
 services: search
 documentationcenter: 
 author: brjohnstmsft
@@ -14,60 +14,60 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 01/11/2017
 ms.author: brjohnst
-ms.openlocfilehash: 291ae5731546e47b3c22c721d3552a79bdea80c1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9782454e3bfc697b63cde8aa28a14be0c393c36b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="upgrading-toohello-azure-search-net-sdk-version-3"></a>Actualizar toohello .NET de búsqueda de Azure SDK versión 3
-Si está utilizando la versión preview de 2.0 o anterior de hello [SDK de .NET de búsqueda de Azure](https://aka.ms/search-sdk), este artículo le ayudará a actualizar la versión de toouse aplicación 3.
+# <a name="upgrading-to-the-azure-search-net-sdk-version-3"></a>Actualización a la versión 3 del SDK de .NET para Azure Search
+Si usa la versión preliminar 2.0 o posterior del [SDK de .NET para Azure Search](https://aka.ms/search-sdk), este artículo le ayudará a actualizar la aplicación para que use la versión 3.
 
-Para ver un tutorial más general de hello SDK incluidos ejemplos, vea [cómo toouse Azure buscar desde una aplicación .NET](search-howto-dotnet-sdk.md).
+Para obtener un tutorial más general del SDK que incluya ejemplos, vea [Cómo usar Búsqueda de Azure desde una aplicación .NET](search-howto-dotnet-sdk.md).
 
-Versión 3 de hello SDK de .NET de búsqueda de Azure contiene algunos cambios de versiones anteriores. La mayoría son de menor importancia, por lo que cambiar el código solo precisará del mínimo esfuerzo. Vea [tooupgrade pasos](#UpgradeSteps) para obtener instrucciones sobre cómo toochange su código toouse Hola nueva versión del SDK.
+La versión 3 del SDK de .NET para Azure Search contiene algunos cambios de versiones anteriores. La mayoría son de menor importancia, por lo que cambiar el código solo precisará del mínimo esfuerzo. Vea [Pasos para actualizar](#UpgradeSteps) , a fin de obtener instrucciones sobre cómo cambiar el código para usar la nueva versión del SDK.
 
 > [!NOTE]
-> Si está usando la versión 1.0.2-preview o anterior, debe actualizar tooversion 1.1 en primer lugar y, a continuación, actualizar tooversion 3. Vea [Apéndice: pasos tooupgrade tooversion 1.1](#UpgradeStepsV1) para obtener instrucciones.
+> Si usa la versión 1.0.2-preview o anterior, debe actualizar primero a la versión 1.1 y luego a la versión 3. Consulte [Apéndice: pasos para actualizar a la versión 1.1](#UpgradeStepsV1) para obtener instrucciones.
 >
-> La instancia de servicio de búsqueda de Azure es compatible con varias versiones de API de REST, incluidas hello más reciente. Puede continuar toouse una versión cuando ya no es Hola más reciente, pero se recomienda que migre la versión más reciente de código toouse Hola. Cuando se utiliza la API de REST de Hola, debe especificar versión de API de hello en cada solicitud realizada a través del parámetro de versión de la api de Hola. Cuando se usa Hola .NET SDK, versión de Hola de hello SDK usa determina versión correspondiente de Hola de hello API de REST. Si usas un SDK anterior, puede continuar toorun ese código sin cambios aunque servicio hello es la versión de toosupport actualizada una API más recientes.
+> La instancia del servicio Azure Search es compatible con varias versiones de API de REST, incluida la más reciente. Puede seguir usando una versión aunque no sea la más reciente, pero es recomendable que migre el código para usar la versión más actualizada. Cuando se usa la API de REST, debe especificar la versión de API en cada solicitud realizada a través del parámetro api-version. Al usar el SDK. NET, la versión del SDK que usa determina la versión correspondiente de la API de REST. Si usa un SDK anterior, puede seguir ejecutando ese código sin realizar ningún cambio, incluso si el servicio se ha actualizado para admitir una versión más reciente de la API.
 
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-3"></a>Novedades de la versión 3
-Versión 3 de Hola de destinos de SDK de .NET de búsqueda de Azure de hello última versión disponible con carácter general de hello API de REST de búsqueda de Azure, específicamente 2016-09-01. Esto hace posible toouse muchas características nuevas de búsqueda de Azure desde una aplicación. NET, incluidos Hola siguientes:
+La versión 3 del SDK de .NET para Azure Search tiene como destino la versión más reciente con disponibilidad general de la API de REST de Azure Search, en concreto la del 01-09-2016. Esto hace posible el uso de muchas características de Azure Search desde una aplicación. NET, incluidas las siguientes:
 
 * [Analizadores personalizados](https://aka.ms/customanalyzers)
 * Compatibilidad del indexador de [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) y [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * Personalización de indizador mediante [asignaciones de campos](search-indexer-field-mappings.md)
-* ETags admite la actualización simultánea seguro tooenable de orígenes de datos, los indizadores y las definiciones de índice
-* Compatibilidad para generar definiciones de campo de índice mediante declaración al decorar la clase de modelo y con hello nuevo `FieldBuilder` clase.
+* Compatibilidad con ETags para permitir actualizaciones seguras simultáneas de definiciones de índice, indizadores y orígenes de datos
+* Compatibilidad con la generación de definiciones de campos de índice de forma declarativa mediante la decoración de la clase model y el uso de la nueva clase `FieldBuilder`.
 * Compatibilidad con .NET Core y .NET Portable Profile 111
 
 <a name="UpgradeSteps"></a>
 
-## <a name="steps-tooupgrade"></a>Tooupgrade de pasos
-En primer lugar, actualice la referencia de NuGet para `Microsoft.Azure.Search` utilizando cualquier consola de administrador de paquetes de NuGet de Hola o por el botón secundario en las referencias del proyecto y seleccione "Administrar... de paquetes de NuGet" en Visual Studio.
+## <a name="steps-to-upgrade"></a>Pasos para actualizar
+En primer lugar, actualice la referencia de NuGet para `Microsoft.Azure.Search` mediante la Consola del Administrador de paquetes NuGet, o bien haga clic con el botón derecho en las referencias del proyecto y seleccione "Administrar paquetes NuGet" en Visual Studio.
 
-Una vez que haya descargado NuGet Hola nuevos paquetes y sus dependencias, recompile el proyecto. Dependiendo de cómo se estructura el código, se podrá volver a compilar correctamente. Si es así, está listo toogo.
+Una vez que NuGet ha descargado los nuevos paquetes y sus dependencias, recompile el proyecto. Dependiendo de cómo se estructura el código, se podrá volver a compilar correctamente. Si lo consigue, ya estará listo para empezar.
 
-Si se produce un error en la compilación, verá un error de compilación como Hola siguiente:
+Si se produce un error en la compilación, verá un mensaje similar al siguiente:
 
-    Program.cs(31,45,31,86): error CS0266: Cannot implicitly convert type 'Microsoft.Azure.Search.ISearchIndexClient' too'Microsoft.Azure.Search.SearchIndexClient'. An explicit conversion exists (are you missing a cast?)
+    Program.cs(31,45,31,86): error CS0266: Cannot implicitly convert type 'Microsoft.Azure.Search.ISearchIndexClient' to 'Microsoft.Azure.Search.SearchIndexClient'. An explicit conversion exists (are you missing a cast?)
 
-paso siguiente Hello es toofix este error de compilación. Vea [cambios importantes en la versión 3](#ListOfChanges) para obtener más información acerca de las causas de error de Hola y cómo toofix lo.
+El paso siguiente consiste en corregir los errores de compilación. Consulte [Cambios importantes en la versión 3](#ListOfChanges) para más información sobre las causas del error y cómo corregirlo.
 
-Es posible que vea compilación adicionales relacionados con advertencias tooobsolete métodos o propiedades. advertencias de Hola incluyen instrucciones sobre qué toouse en su lugar de hello característica en desuso. Por ejemplo, si la aplicación utiliza hello `IndexingParameters.Base64EncodeKeys` propiedad, recibirá una advertencia que indica que`"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
+Puede ver las advertencias de compilación adicionales relacionadas con propiedades o métodos obsoletos. Las advertencias incluyen instrucciones sobre qué utilizar en lugar de la característica en desuso. Por ejemplo, si la aplicación utiliza la propiedad `IndexingParameters.Base64EncodeKeys`, recibirá una advertencia que indica lo siguiente: `"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
 
-Una vez que haya solucionado los errores de compilación, puede realizar cambios tooyour aplicación tootake aprovechar las nuevas funcionalidades si lo desea. Nuevas características de hello SDK se detallan en [cuáles son las novedades en la versión 3](#WhatsNew).
+Una vez que haya solucionado los errores de compilación, puede realizar cambios a la aplicación para aprovechar las ventajas de la nueva funcionalidad, si lo desea. Las nuevas características en el SDK se detallan en [Novedades de la versión 3](#WhatsNew).
 
 <a name="ListOfChanges"></a>
 
 ## <a name="breaking-changes-in-version-3"></a>Cambios importantes en la versión 3
-No existe un número reducido de cambios importantes en la versión 3 que requieran código cambia además toorebuilding la aplicación.
+Hay solo algunos cambios importantes en la versión 3 que pueden requerir cambios de código además de la recompilación de la aplicación.
 
 ### <a name="indexesgetclient-return-type"></a>Tipo de valor devuelto de Indexes.GetClient
-Hola `Indexes.GetClient` método tiene un nuevo tipo de valor devuelto. Anteriormente devolvía `SearchIndexClient`, pero esto se cambió demasiado`ISearchIndexClient` en vista previa versión 2.0 lo que conlleva cambios sobre tooversion 3. Se trata de los clientes de toosupport que desea toomock hello `GetClient` método para las pruebas unitarias mediante la devolución de una implementación ficticia del `ISearchIndexClient`.
+El método `Indexes.GetClient` tiene un nuevo tipo de valor devuelto. Anteriormente devolvía `SearchIndexClient`, pero se ha cambiado a `ISearchIndexClient` en la versión 2.0-preview, y ese cambio se traslada a la versión 3. Sirve para admitir clientes que deseen simular el método `GetClient` para las pruebas unitarias devolviendo una implementación ficticia de `ISearchIndexClient`.
 
 #### <a name="example"></a>Ejemplo
 Si el código tiene el siguiente aspecto:
@@ -76,14 +76,14 @@ Si el código tiene el siguiente aspecto:
 SearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
-Se puede cambiar toothis toofix cualquier error de compilación:
+Puede cambiarlo por este para corregir cualquier error de compilación:
 
 ```csharp
 ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
-### <a name="analyzername-datatype-and-others-are-no-longer-implicitly-convertible-toostrings"></a>AnalyzerName, tipo de datos u otros datos ya no son toostrings implícitamente convertibles
-Hay muchos tipos de hello SDK de .NET de búsqueda de Azure que derivan de `ExtensibleEnum`. Anteriormente, estos tipos eran tootype convertirse implícitamente todos los `string`. Sin embargo, se ha detectado un error en hello `Object.Equals` implementación de estas clases y corregir errores de hello necesario deshabilitar esta conversión implícita. Conversión explícita demasiado`string` todavía se permiten.
+### <a name="analyzername-datatype-and-others-are-no-longer-implicitly-convertible-to-strings"></a>AnalyzerName, DataType y otros ya no se pueden convertir de manera implícita en cadenas
+Hay muchos tipos en el SDK de .NET para Azure Search que derivan de `ExtensibleEnum`. Anteriormente, todos estos tipos eran convertibles de manera implícita en el tipo `string`. Sin embargo, se detectó un error en la implementación de `Object.Equals` para estas clases y para corregir el error fue necesario deshabilitar esta conversión implícita. La conversión explícita a `string` todavía se permite.
 
 #### <a name="example"></a>Ejemplo
 Si el código tiene el siguiente aspecto:
@@ -104,7 +104,7 @@ index.Analyzers = new Analyzer[]
 }; 
 ```
 
-Se puede cambiar toothis toofix cualquier error de compilación:
+Puede cambiarlo por este para corregir cualquier error de compilación:
 
 ```csharp
 const string CustomTokenizerName = "my_tokenizer"; 
@@ -124,65 +124,65 @@ index.Analyzers = new Analyzer[]
 
 ### <a name="removed-obsolete-members"></a>Miembros obsoletos quitados
 
-Puede que vea toomethods relacionados de errores de compilación o propiedades que se han marcado como obsoleto en la versión 2.0-vista previa y posteriormente, se elimina con la versión 3. Si se producen estos errores, mostramos cómo tooresolve ellos:
+Es posible que vea errores de compilación relacionados con métodos o propiedades que se marcaron como obsoletos en la versión 2.0-preview y que posteriormente se eliminaron en la versión 3. Si se encuentra con tales errores, aquí le decimos cómo resolverlos:
 
 - Si usaba este constructor: `ScoringParameter(string name, string value)`, utilice en su lugar este: `ScoringParameter(string name, IEnumerable<string> values)`
-- Si usaba hello `ScoringParameter.Value` propiedad, utilice hello `ScoringParameter.Values` propiedad o hello `ToString` método en su lugar.
-- Si usaba hello `SearchRequestOptions.RequestId` propiedad, utilice hello `ClientRequestId` propiedad en su lugar.
+- Si usaba la propiedad `ScoringParameter.Value`, utilice en su lugar la propiedad `ScoringParameter.Values` o el método `ToString`.
+- Si usaba la propiedad `SearchRequestOptions.RequestId`, utilice en su lugar la propiedad `ClientRequestId`.
 
 ### <a name="removed-preview-features"></a>Características quitadas de la versión preliminar
 
-Si va a actualizar desde la versión 2.0-versión preliminar tooversion 3, tenga en cuenta que JSON y análisis de compatibilidad para los indizadores de Blob CSV se ha quitado ya que estas características están aún en la vista previa. En concreto, Hola siguiendo métodos de hello `IndexingParametersExtensions` clase se han quitado:
+Si va a actualizar de la versión 2.0-preview a la versión 3, debe saber que se ha eliminado la compatibilidad con el análisis de JSON y CSV en los indexadores de blobs dado que estás características se encuentran aún en versión preliminar. En concreto, se han quitado los siguientes métodos de la clase `IndexingParametersExtensions`:
 
 - `ParseJson`
 - `ParseJsonArrays`
 - `ParseDelimitedTextFiles`
 
-Si la aplicación tiene una dependencia fuerte acerca de estas características, no será capaz de tooupgrade tooversion 3 de hello SDK de .NET de búsqueda de Azure. Puede continuar toouse versión 2.0-vista previa. Sin embargo, tenga en cuenta que **no se recomienda usar SDK de versión preliminar en aplicaciones de producción**. Las características de versión preliminar son solo para evaluación y pueden cambiar.
+Si la aplicación tiene una dependencia fuerte de estas características, no podrá actualizar a la versión 3 del SDK de Azure Search para .NET. Podrá seguir usando la versión 2.0-preview. Sin embargo, tenga en cuenta que **no se recomienda usar SDK de versión preliminar en aplicaciones de producción**. Las características de versión preliminar son solo para evaluación y pueden cambiar.
 
 ## <a name="conclusion"></a>Conclusión
-Si necesita más detalles sobre el uso de hello SDK de .NET de búsqueda de Azure, consulte nuestro actualizados recientemente [procedimientos](search-howto-dotnet-sdk.md).
+Si necesita más detalles sobre el uso del SDK de .NET para Búsqueda de Azure, vea nuestras instrucciones actualizadas recientemente y los artículos de [procedimientos](search-howto-dotnet-sdk.md).
 
-Le agradecemos sus comentarios en hello SDK. Si tiene problemas, puede tooask libre nos para obtener ayuda sobre hello [foro de MSDN de búsqueda de Azure](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch). Si encuentra un error, puede registrar un problema en hello [repositorio de GitHub de SDK de Azure .NET](https://github.com/Azure/azure-sdk-for-net/issues). Asegúrese de que tooprefix el título del problema con "SDK de búsqueda:".
+Agradecemos sus comentarios sobre el SDK. Si tiene algún problema, no dude en pedirnos ayuda en el [foro de MSDN sobre Búsqueda de Azure](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch). Si encuentra un error, puede enviarlo al [repositorio de GitHub del SDK de .NET para Azure](https://github.com/Azure/azure-sdk-for-net/issues). Asegúrese de que prefija el título del problema con "SDK de búsqueda: ".
 
 Gracias por usar Búsqueda de Azure.
 
 <a name="UpgradeStepsV1"></a>
 
-## <a name="appendix-steps-tooupgrade-tooversion-11"></a>Apéndice: Pasos tooupgrade tooversion 1.1
+## <a name="appendix-steps-to-upgrade-to-version-11"></a>Apéndice: pasos para actualizar a la versión 1.1
 > [!NOTE]
-> En esta sección se aplica solo toousers de hello .NET de búsqueda de Azure SDK versión 1.0.2-preview y anteriores.
+> Esta sección se aplica únicamente a los usuarios de la versión de SDK de Azure Search para .NET 1.0.2-preview y anteriores.
 > 
 > 
 
-En primer lugar, actualice la referencia de NuGet para `Microsoft.Azure.Search` utilizando cualquier consola de administrador de paquetes de NuGet de Hola o por el botón secundario en las referencias del proyecto y seleccione "Administrar... de paquetes de NuGet" en Visual Studio.
+En primer lugar, actualice la referencia de NuGet para `Microsoft.Azure.Search` mediante la Consola del Administrador de paquetes NuGet, o bien haga clic con el botón derecho en las referencias del proyecto y seleccione "Administrar paquetes NuGet" en Visual Studio.
 
-Una vez que haya descargado NuGet Hola nuevos paquetes y sus dependencias, recompile el proyecto.
+Una vez que NuGet ha descargado los nuevos paquetes y sus dependencias, recompile el proyecto.
 
-Si estuviera previamente mediante versión 1.0.0-preview, 1.0.1-preview o 1.0.2-preview, compilación Hola debe ejecutarse correctamente y está listo toogo!
+Si antes usaba las versiones preliminares 1.0.0, 1.0.1 o 1.0.2, la compilación debería ejecutarse correctamente y estará lista para comenzar a usarse.
 
-Si antes usaba versión 0.13.0-preview o anterior, verá errores como Hola siguiente compilación:
+De lo contrario, si usaba la versión preliminar 0.13.0 u otra anterior, verá errores de compilación como los siguientes:
 
     Program.cs(137,56,137,62): error CS0117: 'Microsoft.Azure.Search.Models.IndexBatch' does not contain a definition for 'Create'
     Program.cs(137,99,137,105): error CS0117: 'Microsoft.Azure.Search.Models.IndexAction' does not contain a definition for 'Create'
     Program.cs(146,41,146,54): error CS1061: 'Microsoft.Azure.Search.IndexBatchException' does not contain a definition for 'IndexResponse' and no extension method 'IndexResponse' accepting a first argument of type 'Microsoft.Azure.Search.IndexBatchException' could be found (are you missing a using directive or an assembly reference?)
-    Program.cs(163,13,163,42): error CS0246: hello type or namespace name 'DocumentSearchResponse' could not be found (are you missing a using directive or an assembly reference?)
+    Program.cs(163,13,163,42): error CS0246: The type or namespace name 'DocumentSearchResponse' could not be found (are you missing a using directive or an assembly reference?)
 
-Hola siguiente paso es errores de compilación de hello toofix uno por uno. La mayor parte requerirán cambiar algunos nombres de clase y método cuyo nombre ha cambiado en hello SDK. [lista de cambios importantes de la versión 1.1](#ListOfChangesV1) contiene una lista de estos cambios de nombre.
+El paso siguiente consiste en corregir los errores de compilación uno a uno. La mayoría requiere cambiar algunos nombres de clase y método cuyo nombre ha cambiado en el SDK. [lista de cambios importantes de la versión 1.1](#ListOfChangesV1) contiene una lista de estos cambios de nombre.
 
-Si usa las clases personalizadas toomodel los documentos y las clases tienen propiedades de tipos primitivos que no aceptan valores null (por ejemplo, `int` o `bool` en C#), hay una corrección de errores en la versión de Hola 1.1 del SDK de Hola de los cuales debe tener en cuenta. Para obtener más información, consulte la sección [Correcciones de errores en la versión 1.1](#BugFixesV1) .
+Si usa clases personalizadas para modelar los documentos, y esas clases tienen propiedades de tipos primitivos que no aceptan valores nulos (por ejemplo, `int` o `bool` en C#), hay una corrección de errores en la versión 1.1 del SDK que debe tener en cuenta. Para obtener más información, consulte la sección [Correcciones de errores en la versión 1.1](#BugFixesV1) .
 
-Por último, una vez que haya solucionado los errores de compilación, puede realizar cambios tooyour aplicación tootake aprovechar las nuevas funcionalidades si lo desea.
+Por último, una vez que haya solucionado los errores de compilación, puede realizar cambios a la aplicación para aprovechar las ventajas de la nueva funcionalidad, si lo desea.
 
 <a name="ListOfChangesV1"></a>
 
 ### <a name="list-of-breaking-changes-in-version-11"></a>lista de cambios importantes de la versión 1.1
-Hello siguiente lista se ordena por probabilidad de Hola que cambio de hello afectará el código de aplicación.
+La siguiente lista se ordena por la probabilidad de que el cambio afecte al código de aplicación.
 
 #### <a name="indexbatch-and-indexaction-changes"></a>Cambios de IndexBatch e IndexAction
-`IndexBatch.Create`se ha cambiado el nombre demasiado`IndexBatch.New` y ya no tiene un `params` argumento. Puede usar `IndexBatch.New` para los lotes que mezclan distintos tipos de acciones (combinaciones, eliminaciones, etc.). Además, existen nuevos métodos estáticos para crear lotes donde todas las acciones de Hola se Hola igual: `Delete`, `Merge`, `MergeOrUpload`, y `Upload`.
+Se ha cambiado el nombre de `IndexBatch.Create` por `IndexBatch.New` y ya no tiene un argumento `params`. Puede usar `IndexBatch.New` para los lotes que mezclan distintos tipos de acciones (combinaciones, eliminaciones, etc.). Además, existen nuevos métodos estáticos para crear lotes donde todas las acciones son las mismas: `Delete`, `Merge`, `MergeOrUpload` y `Upload`.
 
-`IndexAction` ya no tiene constructores públicos y sus propiedades ahora son inmutables. Debe usar métodos estáticos de hello nueva para la creación de acciones para propósitos diferentes: `Delete`, `Merge`, `MergeOrUpload`, y `Upload`. `IndexAction.Create` se ha quitado. Si utiliza la sobrecarga de Hola que toma solo un documento, asegúrese de toouse seguro `Upload` en su lugar.
+`IndexAction` ya no tiene constructores públicos y sus propiedades ahora son inmutables. Necesita usar los nuevos métodos estáticos para crear acciones para propósitos diferentes: `Delete`, `Merge`, `MergeOrUpload` y `Upload`. `IndexAction.Create` se ha quitado. Si utiliza la sobrecarga que solo usa un documento, asegúrese de usar `Upload` en su lugar.
 
 ##### <a name="example"></a>Ejemplo
 Si el código tiene el siguiente aspecto:
@@ -190,18 +190,18 @@ Si el código tiene el siguiente aspecto:
     var batch = IndexBatch.Create(documents.Select(doc => IndexAction.Create(doc)));
     indexClient.Documents.Index(batch);
 
-Se puede cambiar toothis toofix cualquier error de compilación:
+Puede cambiarlo por este para corregir cualquier error de compilación:
 
     var batch = IndexBatch.New(documents.Select(doc => IndexAction.Upload(doc)));
     indexClient.Documents.Index(batch);
 
-Si lo desea, se puede simplificar aún más lo toothis:
+Si lo desea, puede simplificarlo aún más y optar por este:
 
     var batch = IndexBatch.Upload(documents);
     indexClient.Documents.Index(batch);
 
 #### <a name="indexbatchexception-changes"></a>Cambios de IndexBatchException
-Hola `IndexBatchException.IndexResponse` propiedad ha cambiado de nombre demasiado`IndexingResults`, y su tipo es ahora `IList<IndexingResult>`.
+La propiedad `IndexBatchException.IndexResponse` ha cambiado a `IndexingResults`, y su tipo ahora es `IList<IndexingResult>`.
 
 ##### <a name="example"></a>Ejemplo
 Si el código tiene el siguiente aspecto:
@@ -209,25 +209,25 @@ Si el código tiene el siguiente aspecto:
     catch (IndexBatchException e)
     {
         Console.WriteLine(
-            "Failed tooindex some of hello documents: {0}",
+            "Failed to index some of the documents: {0}",
             String.Join(", ", e.IndexResponse.Results.Where(r => !r.Succeeded).Select(r => r.Key)));
     }
 
-Se puede cambiar toothis toofix cualquier error de compilación:
+Puede cambiarlo por este para corregir cualquier error de compilación:
 
     catch (IndexBatchException e)
     {
         Console.WriteLine(
-            "Failed tooindex some of hello documents: {0}",
+            "Failed to index some of the documents: {0}",
             String.Join(", ", e.IndexingResults.Where(r => !r.Succeeded).Select(r => r.Key)));
     }
 
 <a name="OperationMethodChanges"></a>
 
 #### <a name="operation-method-changes"></a>Cambios del método de operación
-Cada operación de hello SDK de .NET de búsqueda de Azure se expone como un conjunto de sobrecargas de método para los autores de llamadas sincrónicas y asincrónicas. Hello las firmas y la factorización de estas sobrecargas de método ha cambiado en la versión 1.1.
+Cada operación del SDK de .NET para Búsqueda de Azure se expone como un conjunto de sobrecargas de método para los autores de llamadas sincrónicas y asincrónicas. Las firmas y la factorización de estas sobrecargas de método han cambiado en la versión 1.1.
 
-Por ejemplo, hello operación "Obtener estadísticas de índices" en versiones anteriores de hello SDK expone estas firmas:
+Por ejemplo, la operación de "Obtener estadísticas de índice" en versiones anteriores del SDK expone estas firmas:
 
 En `IIndexOperations`:
 
@@ -248,7 +248,7 @@ En `IndexOperationsExtensions`:
         this IIndexOperations operations,
         string indexName);
 
-firmas de métodos de Hola Hola misma operación en la versión 1.1 este aspecto:
+Las firmas de método para la misma operación en la versión 1.1 tienen este aspecto:
 
 En `IIndexesOperations`:
 
@@ -274,14 +274,14 @@ En `IndexesOperationsExtensions`:
         string indexName,
         SearchRequestOptions searchRequestOptions = default(SearchRequestOptions));
 
-A partir de la versión 1.1, Hola SDK de .NET de búsqueda de Azure organiza métodos de operación de manera diferente:
+A partir de la versión 1.1, el SDK de .NET para Búsqueda de Azure organiza los métodos de operación de forma diferente:
 
-* Los parámetros opcionales ahora se modelan como predeterminados en lugar de como sobrecargas de método adicionales. Esto reduce número Hola de sobrecargas del método, en ocasiones drásticamente.
-* métodos de extensión de Hello ocultan ahora muchos detalles extraños Hola de HTTP desde el llamador de Hola. Por ejemplo, las versiones anteriores de hello SDK devuelve un objeto de respuesta con un código de estado HTTP, que a menudo no necesitan toocheck debido a que los métodos de operación producen `CloudException` para cualquier código de estado que indica un error. Hola nuevos objetos del modelo de valor devuelto de métodos de extensión, ahorrar Hola problema de tener toounwrap ellas en el código.
-* Por el contrario, hello interfaces principales ahora exponen métodos que ofrecen un mayor control en el nivel de hello HTTP si lo necesita. Ahora puede pasar en toobe de encabezados HTTP personalizado incluido en las solicitudes y Hola nueva `AzureOperationResponse<T>` devolver tipo da acceso directo toohello `HttpRequestMessage` y `HttpResponseMessage` para la operación de Hola. `AzureOperationResponse`se define en hello `Microsoft.Rest.Azure` espacio de nombres y reemplaza `Hyak.Common.OperationResponse`.
+* Los parámetros opcionales ahora se modelan como predeterminados en lugar de como sobrecargas de método adicionales. Esto reduce el número de sobrecargas de método, en ocasiones drásticamente.
+* Los métodos de extensión ahora ocultan muchos de los detalles superfluos de HTTP del autor de llamada. Por ejemplo, las versiones anteriores del SDK devuelven un objeto de respuesta con un código de estado HTTP, que a menudo no necesitará comprobar, ya que los métodos de operación lanzan `CloudException` para cualquier código de estado que indica un error. Los nuevos métodos de extensión solo devuelven objetos de modelo, lo que le ahorra la molestia de tener que desencapsularlos en el código.
+* Por el contrario, las interfaces principales ahora exponen métodos que permiten ejercer un mayor control a nivel de HTTP en caso de que sea necesario. Ahora puede pasar encabezados HTTP personalizados para incluirlos en solicitudes y el nuevo tipo de valor devuelto `AzureOperationResponse<T>` le ofrece acceso directo a `HttpRequestMessage` y `HttpResponseMessage` para la operación. `AzureOperationResponse` se define en el espacio de nombres `Microsoft.Rest.Azure` y reemplaza a `Hyak.Common.OperationResponse`.
 
 #### <a name="scoringparameters-changes"></a>Cambios de ScoringParameters
-Una nueva clase denominada `ScoringParameter` ha sido agregado en hello toomake SDK más reciente sea más fácil tooprovide parámetros tooscoring los perfiles en una consulta de búsqueda. Hola anteriormente `ScoringProfiles` propiedad de hello `SearchParameters` clase se ha escrito como `IList<string>`; Ahora se ha escrito como `IList<ScoringParameter>`.
+En el último SDK se agregó una nueva clase llamada `ScoringParameter` para que resulte más fácil proporcionar parámetros a los perfiles de puntuación en una consulta de búsqueda. Antes, la propiedad `ScoringProfiles` de la clase `SearchParameters` tenía el tipo `IList<string>`. Ahora, el tipo es `IList<ScoringParameter>`.
 
 ##### <a name="example"></a>Ejemplo
 Si el código tiene el siguiente aspecto:
@@ -290,7 +290,7 @@ Si el código tiene el siguiente aspecto:
     sp.ScoringProfile = "jobsScoringFeatured";      // Use a scoring profile
     sp.ScoringParameters = new[] { "featuredParam-featured", "mapCenterParam-" + lon + "," + lat };
 
-Se puede cambiar toothis toofix cualquier error de compilación: 
+Puede cambiarlo por este para corregir cualquier error de compilación: 
 
     var sp = new SearchParameters();
     sp.ScoringProfile = "jobsScoringFeatured";      // Use a scoring profile
@@ -302,16 +302,16 @@ Se puede cambiar toothis toofix cualquier error de compilación:
         };
 
 #### <a name="model-class-changes"></a>Cambios de la clase de modelo
-Debido a cambios de firma de toohello descritos en [cambios de método de operación](#OperationMethodChanges), muchas clases de hello `Microsoft.Azure.Search.Models` espacio de nombres se han cambiado de nombre o eliminado. Por ejemplo:
+Debido a los cambios de firma descritos en [Cambios del método de operación](#OperationMethodChanges), muchas clases del espacio de nombres `Microsoft.Azure.Search.Models` han cambiado de nombre o se han eliminado. Por ejemplo:
 
 * `IndexDefinitionResponse` se ha reemplazado por `AzureOperationResponse<Index>`
-* `DocumentSearchResponse`se ha cambiado el nombre demasiado`DocumentSearchResult`
-* `IndexResult`se ha cambiado el nombre demasiado`IndexingResult`
-* `Documents.Count()`ahora devuelve un `long` con recuento de documentos de hello en lugar de un`DocumentCountResponse`
-* `IndexGetStatisticsResponse`se ha cambiado el nombre demasiado`IndexGetStatisticsResult`
-* `IndexListResponse`se ha cambiado el nombre demasiado`IndexListResult`
+* El nombre de `DocumentSearchResponse` ha cambiado a `DocumentSearchResult`
+* El nombre de `IndexResult` ha cambiado a `IndexingResult`
+* `Documents.Count()` ahora devuelve `long` con el número de documentos en lugar de `DocumentCountResponse`
+* El nombre de `IndexGetStatisticsResponse` ha cambiado a `IndexGetStatisticsResult`
+* El nombre de `IndexListResponse` ha cambiado a `IndexListResult`
 
-toosummarize, `OperationResponse`-las clases derivadas que existían solo toowrap un objeto de modelo se han quitado. Hello clases restantes han tenido su sufijo cambió de `Response` demasiado`Result`.
+Para resumir, las clases derivadas de `OperationResponse`que existían solo para encapsular un objeto de modelo se han quitado. El sufijo de las demás clases ha cambiado de `Response` a `Result`.
 
 ##### <a name="example"></a>Ejemplo
 Si el código tiene el siguiente aspecto:
@@ -330,7 +330,7 @@ Si el código tiene el siguiente aspecto:
 
     IndexerExecutionResult lastResult = statusResponse.ExecutionInfo.LastResult;
 
-Se puede cambiar toothis toofix cualquier error de compilación:
+Puede cambiarlo por este para corregir cualquier error de compilación:
 
     IndexerExecutionInfo status = null;
 
@@ -347,7 +347,7 @@ Se puede cambiar toothis toofix cualquier error de compilación:
     IndexerExecutionResult lastResult = status.LastResult;
 
 ##### <a name="response-classes-and-ienumerable"></a>Clases de respuesta e IEnumerable
-Un cambio adicional que puede afectar a su código es que las clases de respuesta que contienen colecciones ya no implementan `IEnumerable<T>`. En su lugar, puede tener acceso la propiedad de colección Hola directamente. Por ejemplo, si el código tiene el siguiente aspecto:
+Un cambio adicional que puede afectar a su código es que las clases de respuesta que contienen colecciones ya no implementan `IEnumerable<T>`. En su lugar, puede acceder a la propiedad de colección directamente. Por ejemplo, si el código tiene el siguiente aspecto:
 
     DocumentSearchResponse<Hotel> response = indexClient.Documents.Search<Hotel>(searchText, sp);
     foreach (SearchResult<Hotel> result in response)
@@ -355,7 +355,7 @@ Un cambio adicional que puede afectar a su código es que las clases de respuest
         Console.WriteLine(result.Document);
     }
 
-Se puede cambiar toothis toofix cualquier error de compilación:
+Puede cambiarlo por este para corregir cualquier error de compilación:
 
     DocumentSearchResult<Hotel> response = indexClient.Documents.Search<Hotel>(searchText, sp);
     foreach (SearchResult<Hotel> result in response.Results)
@@ -364,11 +364,11 @@ Se puede cambiar toothis toofix cualquier error de compilación:
     }
 
 ##### <a name="special-case-for-web-applications"></a>Caso especial para aplicaciones web
-Si tiene una aplicación web que serializa `DocumentSearchResponse` directamente los resultados de búsqueda de toosend toohello explorador, deberá toochange el código o los resultados de hello no serializará correctamente. Por ejemplo, si el código tiene el siguiente aspecto:
+Si tiene una aplicación web que serializa `DocumentSearchResponse` directamente para enviar los resultados de la búsqueda al explorador, debe cambiar el código o los resultados no se serializarán correctamente. Por ejemplo, si el código tiene el siguiente aspecto:
 
     public ActionResult Search(string q = "")
     {
-        // If blank search, assume they want toosearch everything
+        // If blank search, assume they want to search everything
         if (string.IsNullOrWhiteSpace(q))
             q = "*";
 
@@ -379,11 +379,11 @@ Si tiene una aplicación web que serializa `DocumentSearchResponse` directamente
         };
     }
 
-Puede cambiarlo obteniendo hello `.Results` propiedad de la representación de resultados de búsqueda de hello búsqueda respuesta toofix:
+Para cambiarlo, obtenga la propiedad `.Results` de la respuesta de búsqueda para corregir la representación de los resultados de la búsqueda:
 
     public ActionResult Search(string q = "")
     {
-        // If blank search, assume they want toosearch everything
+        // If blank search, assume they want to search everything
         if (string.IsNullOrWhiteSpace(q))
             q = "*";
 
@@ -394,37 +394,37 @@ Puede cambiarlo obteniendo hello `.Results` propiedad de la representación de r
         };
     }
 
-Habrá toolook para estos casos en el código por sí mismo; **compilador hello no le avisará** porque `JsonResult.Data` es de tipo `object`.
+Tendrá que buscar esos casos en el código por su cuenta. **El compilador no muestra advertencias** porque `JsonResult.Data` es del tipo `object`.
 
 #### <a name="cloudexception-changes"></a>Cambios de CloudException
-Hola `CloudException` clase ha pasado de hello `Hyak.Common` toohello de espacio de nombres `Microsoft.Rest.Azure` espacio de nombres. Además, su `Error` propiedad ha cambiado de nombre demasiado`Body`.
+La clase `CloudException` se ha desplazado desde el espacio de nombres `Hyak.Common` al espacio de nombres `Microsoft.Rest.Azure`. Además, el nombre de su propiedad `Error` ha cambiado a `Body`.
 
 #### <a name="searchserviceclient-and-searchindexclient-changes"></a>Cambios de SearchServiceClient y SearchIndexClient
-Hola tipo de hello `Credentials` propiedad ha cambiado respecto de `SearchCredentials` tooits de la clase base `ServiceClientCredentials`. Si necesita hello tooaccess `SearchCredentials` de un `SearchIndexClient` o `SearchServiceClient`, use Hola nuevo `SearchCredentials` propiedad.
+El tipo de la propiedad `Credentials` ha cambiado de `SearchCredentials` a su clase base, `ServiceClientCredentials`. Si necesita acceder al valor de `SearchCredentials` de `SearchIndexClient` o `SearchServiceClient`, use la nueva propiedad `SearchCredentials`.
 
-En versiones anteriores de hello SDK, `SearchServiceClient` y `SearchIndexClient` tenía constructores que tuvieron un `HttpClient` parámetro. Estos se han reemplazado con constructores que obtienen `HttpClientHandler` y una matriz de objetos `DelegatingHandler`. Esto hace más fácil tooinstall controladores personalizados toopre proceso las solicitudes HTTP si es necesario.
+En versiones anteriores del SDK, `SearchServiceClient` y `SearchIndexClient` tenían constructores con un parámetro `HttpClient`. Estos se han reemplazado con constructores que obtienen `HttpClientHandler` y una matriz de objetos `DelegatingHandler`. Esto facilita instalar controladores personalizados para procesar previamente las solicitudes HTTP si es necesario.
 
-Por último, Hola constructores que tardan una `Uri` y `SearchCredentials` han cambiado. Por ejemplo, si tiene código con este aspecto:
+Por último, los constructores que requerían `Uri` y `SearchCredentials` han cambiado. Por ejemplo, si tiene código con este aspecto:
 
     var client =
         new SearchServiceClient(
             new SearchCredentials("abc123"),
             new Uri("http://myservice.search.windows.net"));
 
-Se puede cambiar toothis toofix cualquier error de compilación:
+Puede cambiarlo por este para corregir cualquier error de compilación:
 
     var client =
         new SearchServiceClient(
             new Uri("http://myservice.search.windows.net"),
             new SearchCredentials("abc123"));
 
-También tenga en cuenta que el tipo hello de hello credenciales parámetro ha cambiado demasiado`ServiceClientCredentials`. Esto es improbable tooaffect su código desde `SearchCredentials` se deriva de `ServiceClientCredentials`.
+Observe también que el tipo del parámetro de credenciales ha cambiado a `ServiceClientCredentials`. Es poco probable que esto afecte al código, ya que `SearchCredentials` deriva de `ServiceClientCredentials`.
 
 #### <a name="passing-a-request-id"></a>Transferir un identificador de solicitud
-En versiones anteriores de hello SDK, puede establecer un identificador de solicitud en hello `SearchServiceClient` o `SearchIndexClient` y se incluiría en cada toohello de solicitud API de REST. Esto es útil para solucionar problemas con el servicio de búsqueda si necesita compatibilidad con toocontact. Sin embargo, resulta más útil tooset un identificador único de la solicitud para cada operación en lugar de toouse Hola mismo identificador para todas las operaciones. Por esta razón, Hola `SetClientRequestId` métodos de `SearchServiceClient` y `SearchIndexClient` se han quitado. En su lugar, puede pasar un método de operación de tooeach de Id. de solicitud a través de hello opcional `SearchRequestOptions` parámetro.
+En versiones anteriores del SDK, se podía establecer un identificador de solicitud en `SearchServiceClient` o `SearchIndexClient`, que se incluiría en cada solicitud a la API de REST. Esto es útil para solucionar problemas con el servicio de búsqueda si necesita ponerse en contacto con soporte técnico. Sin embargo, es más útil establecer un identificador único de solicitud para cada operación, en lugar de utilizar el mismo identificador para todas las operaciones. Por este motivo, los métodos `SetClientRequestId` de `SearchServiceClient` y `SearchIndexClient` se han quitado. En su lugar, puede pasar un identificador de solicitud a cada método de operación mediante el parámetro opcional `SearchRequestOptions` .
 
 > [!NOTE]
-> En una futura versión de SDK de hello, agregaremos un nuevo mecanismo para establecer un identificador de solicitud global en el cliente de hello objetos que es coherente con el enfoque de hello utilizado por otros SDK de Azure.
+> En una futura versión del SDK, agregaremos un nuevo mecanismo para establecer un identificador de solicitud globalmente en los objetos cliente que sea coherente con el enfoque usado por otros SDK de Azure.
 > 
 > 
 
@@ -435,34 +435,34 @@ Si tiene código con este aspecto:
     ...
     long count = client.Documents.Count();
 
-Se puede cambiar toothis toofix cualquier error de compilación:
+Puede cambiarlo por este para corregir cualquier error de compilación:
 
     long count = client.Documents.Count(new SearchRequestOptions(requestId: Guid.NewGuid()));
 
 #### <a name="interface-name-changes"></a>Cambios de nombre de interfaz
-nombres de interfaz de Hello operación grupo tienen todos los toobe modificados coherente con sus nombres de propiedad correspondientes:
+Los nombres de interfaz del grupo de operaciones han cambiado por coherencia con sus nombres de propiedad correspondientes:
 
-* Hola tipo de `ISearchServiceClient.Indexes` se ha cambiado de `IIndexOperations` demasiado`IIndexesOperations`.
-* Hola tipo de `ISearchServiceClient.Indexers` se ha cambiado de `IIndexerOperations` demasiado`IIndexersOperations`.
-* Hola tipo de `ISearchServiceClient.DataSources` se ha cambiado de `IDataSourceOperations` demasiado`IDataSourcesOperations`.
-* Hola tipo de `ISearchIndexClient.Documents` se ha cambiado de `IDocumentOperations` demasiado`IDocumentsOperations`.
+* El nombre del tipo de `ISearchServiceClient.Indexes` ha cambiado de `IIndexOperations` a `IIndexesOperations`.
+* El nombre del tipo de `ISearchServiceClient.Indexers` ha cambiado de `IIndexerOperations` a `IIndexersOperations`.
+* El nombre del tipo de `ISearchServiceClient.DataSources` ha cambiado de `IDataSourceOperations` a `IDataSourcesOperations`.
+* El nombre del tipo de `ISearchIndexClient.Documents` ha cambiado de `IDocumentOperations` a `IDocumentsOperations`.
 
-Este cambio es poco probable que tooaffect su código a menos que cree las simulaciones de estas interfaces para fines de prueba.
+Es poco probable que este cambio afecte al código, a menos que cree simulacros de estas interfaces a efectos de pruebas.
 
 <a name="BugFixesV1"></a>
 
 ### <a name="bug-fixes-in-version-11"></a>Correcciones de errores en la versión 1.1
-Se produjo un error en las versiones anteriores de hello SDK de .NET de búsqueda de Azure relacionado tooserialization de clases de modelos personalizados. Error de Hello puede producirse si ha creado una clase de modelo personalizado con una propiedad de un tipo de valor no acepta valores NULL.
+Se produjo un error en las versiones anteriores del SDK de .NET para Búsqueda de Azure en relación con la serialización de clases de modelos personalizados. El error puede producirse si ha creado una clase de modelo personalizado con una propiedad de un tipo de valor que no acepta valores NULL.
 
-#### <a name="steps-tooreproduce"></a>Tooreproduce de pasos
+#### <a name="steps-to-reproduce"></a>Pasos para reproducir
 Cree una clase de modelo personalizado con una propiedad de tipo de valor que no acepta valores NULL. Por ejemplo, agregue una propiedad `UnitCount` pública de tipo `int` en lugar de `int?`.
 
-Si se puede indizar un documento con el valor predeterminado de Hola de ese tipo (por ejemplo, 0 para `int`), campo Hola será null en la búsqueda de Azure. Si posteriormente desea buscar ese documento, Hola `Search` llamada producirá `JsonSerializationException` quejan de que no se puede convertir `null` demasiado`int`.
+Si indexa un documento con el valor predeterminado de ese tipo (por ejemplo, 0 para `int`), el campo será null en Búsqueda de Azure. Si desea buscar posteriormente ese documento, la llamada `Search` producirá `JsonSerializationException` indicando que no se puede convertir `null` a `int`.
 
-Además, los filtros no funcionen según lo esperado desde que null se escribió toohello índice en lugar de valor de hello diseñado.
+Además, los filtros pueden no funcionar según lo esperado, ya que se escribió null en el índice, en lugar del valor previsto.
 
 #### <a name="fix-details"></a>Detalles de corrección
-Este problema se ha corregido en la versión 1.1 de hello SDK. Ahora, si tiene una clase de modelo similar a la siguiente:
+Corregimos este problema en la versión 1.1 del SDK. Ahora, si tiene una clase de modelo similar a la siguiente:
 
     public class Model
     {
@@ -471,15 +471,15 @@ Este problema se ha corregido en la versión 1.1 de hello SDK. Ahora, si tiene u
         public int IntValue { get; set; }
     }
 
-y establece `IntValue` too0, que valor es ahora correctamente serializado como 0 en el cable de Hola y almacenado como 0 en el índice de Hola. El recorrido de ida y vuelta también funciona según lo previsto.
+y establece `IntValue` en 0, ese valor ahora se serializa correctamente como 0 en la conexión y se almacena como 0 en el índice. El recorrido de ida y vuelta también funciona según lo previsto.
 
-Hay un toobe problema potencial en cuenta con este enfoque: si usa un tipo de modelo con una propiedad que no acepta valores NULL, tienen también**garantizar** ningún documentos en el índice que contienen un valor nulo para el campo correspondiente Hola. Hola SDK ni Hola API de REST de búsqueda de Azure le ayudará a tooenforce esto.
+Hay un posible problema que hay que tener en cuenta con este enfoque: si usa un tipo de modelo con una propiedad que no acepta valores NULL, tendrá que **garantizar** que ningún documento del índice contiene un valor NULL para el campo correspondiente. Ni el SDK ni la API de REST para Búsqueda de Azure le permitirá aplicar esto.
 
-Esto no es simplemente un problema hipotético: Imagine un escenario donde agrega un nuevo índice existente de campo tooan que es de tipo `Edm.Int32`. Después de actualizar la definición del índice hello, todos los documentos tendrá un valor null para ese campo nuevo (ya que todos los tipos admiten valores NULL en la búsqueda de Azure). Si, a continuación, usa una clase de modelo con un acepta valores NULL `int` propiedad para ese campo, obtendrá un `JsonSerializationException` similar a éste al tratar de tooretrieve documentos:
+Esto no es solo una inquietud hipotética: imagine un escenario donde se agrega un nuevo campo a un índice existente que es de tipo `Edm.Int32`. Después de actualizar la definición del índice, todos los documentos tendrán un valor null para ese campo nuevo (ya que todos los tipos aceptan valores NULL en Búsqueda de Azure). Si después usa una clase de modelo con una propiedad `int` que no acepta valores NULL para ese campo, obtendrá `JsonSerializationException` así al intentar recuperar documentos:
 
-    Error converting value {null} tootype 'System.Int32'. Path 'IntValue'.
+    Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
 
 Por este motivo, recomendamos utilizar tipos que aceptan valores null en las clases de modelo como procedimiento recomendado.
 
-Para obtener más detalles sobre esta corrección hello y errores, vea [este problema en GitHub](https://github.com/Azure/azure-sdk-for-net/issues/1063).
+Para más detalles sobre este error y la corrección, vea [este problema en GitHub](https://github.com/Azure/azure-sdk-for-net/issues/1063).
 

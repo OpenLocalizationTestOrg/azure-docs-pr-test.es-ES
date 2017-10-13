@@ -1,5 +1,5 @@
 ---
-title: "aaaLearn sobre limitación en servicios de BizTalk | Documentos de Microsoft"
+title: "Información sobre la limitación en BizTalk Services | Microsoft Docs"
 description: "Obtenga información acerca de los umbrales de limitación y comportamientos en tiempo de ejecución resultantes para los Servicios de BizTalk. La limitación se basa en el uso de la memoria y el número de mensajes. MABS, WABS"
 services: biztalk-services
 documentationcenter: 
@@ -14,51 +14,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 46c8806c3a1f4eeb793f721f849771e0ec155197
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 145e7470bbc01c676a1fb5856c0f9a8726e667fc
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="biztalk-services-throttling"></a>Servicios de BizTalk: limitaciones
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
-Servicios de BizTalk de Azure implementa el servicio limitación basada en dos condiciones: número de hello y uso de memoria de mensajes simultáneos que se procesan. Este tema enumeran Hola umbrales de limitación y describe el comportamiento de hello en tiempo de ejecución cuando se produce una condición de limitación.
+Los servicios de BizTalk de Azure implementan limitaciones del servicio según dos condiciones: uso de memoria y el número de mensajes simultáneos que se procesan. En este tema se enumeran los umbrales de limitación y se describe el comportamiento del tiempo de ejecución cuando se produce una condición de limitación.
 
 ## <a name="throttling-thresholds"></a>Umbrales de limitación
-Hola tabla siguiente se muestran Hola origen limitación y los umbrales:
+La siguiente tabla muestra los orígenes y umbrales de limitación:
 
-|  | Descripción | Umbral bajo | Umbral alto |
+|  | Description | Umbral bajo | Umbral alto |
 | --- | --- | --- | --- |
-| Memoria |% de memoria total del sistema disponible/PageFileBytes. <p><p>Total PageFileBytes disponible es aproximadamente 2 veces Hola RAM del sistema de Hola. |60% |70% |
+| Memoria |% de memoria total del sistema disponible/PageFileBytes. <p><p>La cantidad total disponible de PageFileBytes es de aproximadamente 2 veces la memoria RAM del sistema. |60% |70% |
 | Procesamiento de mensajes |Número de mensajes que se procesan simultáneamente |40 * número de núcleos |100 * número de núcleos |
 
-Cuando se alcanza un umbral alta, servicios de BizTalk de Azure inicia toothrottle. La limitación se detiene cuando se alcanza el umbral inferior Hola. Por ejemplo, el servicio está utilizando un 65 % de la memoria del sistema. En esta situación, no limitar el servicio de Hola. El servicio empieza a usar un 70 % de la memoria del sistema. En esta situación, el servicio de hello limita y continúa toothrottle hasta que el servicio de hello utiliza memoria del sistema de 60% (umbral inferior).
+Cuando se alcanza un umbral alto, Servicios de BizTalk de Azure empieza a limitarse. La limitación se detiene cuando se alcanza el umbral bajo. Por ejemplo, el servicio está utilizando un 65 % de la memoria del sistema. En esta situación, el servicio no se limita. El servicio empieza a usar un 70 % de la memoria del sistema. En esta situación, el servicio se limita y sigue limitándose hasta que el servicio utiliza un 60 % de la memoria del sistema (umbral bajo).
 
-Servicios de BizTalk de Azure realiza un seguimiento de hello duración de limitación y Hola limitación estado (estado normal frente a estado limitada).
+Los servicios de BizTalk de Azure realizan un seguimiento del estado de las limitaciones (estado normal frente a estado limitado) y de la duración de la limitación.
 
 ## <a name="runtime-behavior"></a>Comportamiento del tiempo de ejecución
-Cuando los servicios de BizTalk de Azure entra en un estado de limitación, se produce el siguiente hello:
+Cuando los servicios de BizTalk de Azure entran en un estado de limitación, ocurre lo siguiente:
 
 * La limitación es por instancia de rol. Por ejemplo:<br/>
-  RoleInstanceA se está limitando. RoleInstanceB no se está limitando. En esta situación, los mensajes en RoleInstanceB se procesan según lo esperado. Mensajes de RoleInstanceA se descartan y se producirá un error con hello siguiente error:<br/><br/>
+  RoleInstanceA se está limitando. RoleInstanceB no se está limitando. En esta situación, los mensajes en RoleInstanceB se procesan según lo esperado. Los mensajes en RoleInstanceA se descartan y producen el siguiente error:<br/><br/>
   **El servidor está ocupado. Vuelva a intentarlo.**<br/><br/>
 * Ningún origen de extracción sondea ni descarga un mensaje. Por ejemplo,<br/>
-  una canalización extrae los mensajes desde un origen FTP externo. instancia de rol de Hello realizar la extracción de hello pone en un estado de limitación. En esta situación, detiene el Hola canalización descargar mensajes adicionales hasta que finaliza la instancia de rol de hello limitación.
-* Se envía una respuesta toohello cliente para que cliente hello puede volver a enviar los mensajes de bienvenida.
-* Debe esperar hasta que se resuelva la limitación de Hola. En concreto, debe esperar hasta que se alcanza el umbral inferior Hola.
+  una canalización extrae los mensajes desde un origen FTP externo. La instancia de rol que realiza la extracción entra en un estado de limitación. En esta situación, la canalización deja de descargar mensajes adicionales hasta que la instancia de rol detiene la limitación.
+* Se envía una respuesta al cliente para que el cliente pueda volver a enviar el mensaje.
+* Debe esperar a que se resuelva la limitación. Específicamente, debe esperar hasta que se alcance el umbral bajo.
 
 ## <a name="important-notes"></a>Notas importantes
 * La limitación no se puede deshabilitar.
 * Los umbrales de limitación no se pueden modificar.
 * La limitación está implementada en todo el sistema.
-* Hola servidor de base de datos de SQL Azure también tiene la limitación integrados.
+* El servidor de Base de datos SQL de Azure también tiene limitaciones integradas.
 
 ## <a name="additional-azure-biztalk-services-topics"></a>Otros temas acerca de los servicios de BizTalk de Azure
-* [Hola instalar SDK de servicios de BizTalk de Azure](http://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
+* [Instalación del SDK de Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
 * [Tutoriales: Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
-* [¿Cómo puedo comenzar a utilizar Hola SDK de servicios de BizTalk de Azure](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
+* [¿Cómo puedo comenzar a utilizar el SDK de Servicios de BizTalk de Azure?](http://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 * [Servicios de BizTalk de Azure](http://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
 
 ## <a name="see-also"></a>Otras referencias

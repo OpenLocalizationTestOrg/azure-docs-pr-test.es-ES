@@ -1,6 +1,6 @@
 ---
-title: las latencias informes de Active Directory de aaaAzure | Documentos de Microsoft
-description: "Obtenga información acerca de la cantidad de Hola de tiempo que tarda informando tooshow de eventos en el portal de Azure"
+title: Latencias de informes de Azure Active Directory | Microsoft Docs
+description: "Obtenga información acerca de la cantidad de tiempo necesaria para que los eventos de informes aparezcan en Azure Portal"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,27 +15,27 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: markvi;dhanyahk
 ms.reviewer: dhanyahk
-ms.openlocfilehash: eee959331262ba59b313dd038cb54699dbef48a4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 93cb0baeab8f13f81257ed1bd32ed08561c54b72
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Latencias de informes de Azure Active Directory
 
-Con [reporting](active-directory-preview-explainer.md) en hello Azure Active Directory, se obtiene toda la información de hello necesita toodetermine cómo está haciendo su entorno. cantidad de Hola de tiempo que tarda reporting tooshow datos seguridad Hola portal de Azure es también se denomina latencia. 
+Con los [informes](active-directory-preview-explainer.md) de Azure Active Directory, obtendrá toda la información que necesita para determinar cómo funciona el entorno. La cantidad de tiempo necesaria para que los datos de informes aparezcan en Azure Portal se denomina latencia. 
 
-En este tema muestra información de latencia de Hola de hello todas las categorías informes en hello portal de Azure. 
+En este tema se muestra la información de latencia de todas las categorías de informes en Azure Portal. 
 
 
 ## <a name="activity-reports"></a>Informes de actividad
 
 Hay dos áreas de informes de actividad:
 
-- **Las actividades de inicio de sesión** : información sobre el uso de Hola de las aplicaciones administradas y las actividades de inicio de sesión de usuario
+- **Actividades de inicio de sesión** : información sobre el uso de las aplicaciones administradas y las actividades de inicio de sesión de usuario
 - **Registros de auditoría** : información de la actividad del sistema acerca de los usuarios y administración de grupos, sus aplicaciones administradas y actividades de directorio
 
-Hello en la tabla siguiente muestra información de latencia de Hola para los informes de actividad.
+La tabla siguiente enumera la información de latencia para los informes de actividad.
 
 | Informe | Mínima | Media | Máxima |
 | :-- | --- | --- | --- |
@@ -43,17 +43,17 @@ Hello en la tabla siguiente muestra información de latencia de Hola para los in
 | Inicios de sesión               | 15 minutos  | 15 minutos | 2 horas*   |
 
 >[!NOTE]
-> Para algunos datos de actividad de inicios de sesión procedentes de aplicaciones de office heredado, puede tardar horas too8 Hola informando tooshow de datos. 
+> En el caso de algunos datos de actividades de inicio de sesión procedentes de aplicaciones de oficina heredadas, los datos del informe pueden tardar hasta 8 horas en aparecer. 
 
 
 ## <a name="security-reports"></a>Informes de seguridad
 
 Hay dos áreas de informes de seguridad:
 
-- **Inicios de sesión arriesgados** -un inicio de sesión de riesgo es un indicador de un intento de inicio de sesión que es posible que se han realizado por alguien que no es propietario legítimo de Hola de una cuenta de usuario. 
+- **Inicios de sesión peligrosos**: un inicio de sesión peligroso es un indicador de un intento de inicio de sesión que puede haber realizado alguien que no es el propietario legítimo de una cuenta de usuario. 
 - **Usuarios marcados en riesgo**: un usuario en peligro es un indicador de una cuenta de usuario que puede haber estado en peligro. 
 
-Hello en la tabla siguiente muestra información de latencia de Hola de informes de seguridad.
+La tabla siguiente enumera la información de latencia para los informes de seguridad.
 
 | Informe | Mínima | Media | Máxima |
 | :-- | --- | --- | --- |
@@ -62,16 +62,16 @@ Hello en la tabla siguiente muestra información de latencia de Hola de informes
 
 ## <a name="risk-events"></a>Eventos de riesgo
 
-Azure Active Directory utiliza algoritmos y heurística acciones sospechosas toodetect que son cuentas de usuario de tooyour relacionados de aprendizaje de automático adaptable. Cada acción sospechosa detectada se almacena en un registro llamado evento de riesgo.
+Azure Active Directory utiliza algoritmos y heurística de aprendizaje automático adaptable para detectar acciones sospechosas que están relacionadas con las cuentas de usuario. Cada acción sospechosa detectada se almacena en un registro llamado evento de riesgo.
 
-Hello en la tabla siguiente muestra información de latencia de Hola de eventos de riesgo.
+La tabla siguiente enumera la información de latencia para eventos de riesgo.
 
 | Informe | Mínima | Media | Máxima |
 | :-- | --- | --- | --- |
 | Inicios de sesión desde direcciones IP anónimas |5 minutos |15 minutos |2 horas |
 | Inicios de sesión desde ubicaciones desconocidas |5 minutos |15 minutos |2 horas |
 | Usuarios con credenciales perdidas |2 horas |4 horas |8 horas |
-| Viaje imposible tooatypical ubicaciones |5 minutos |1 hora |8 horas  |
+| Viaje imposible a ubicaciones inusuales |5 minutos |1 hora |8 horas  |
 | Inicios de sesión desde dispositivos infectados |2 horas |4 horas |8 horas  |
 | Inicios de sesión desde direcciones IP con actividad sospechosa |2 horas |4 horas |8 horas  |
 
@@ -79,14 +79,14 @@ Hello en la tabla siguiente muestra información de latencia de Hola de eventos 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Si desea que tooknow más acerca de los informes de actividad de Hola Hola portal de Azure, vea:
+Si desea obtener más información acerca de los informes de actividad en Azure Portal, consulte:
 
-- [Informes de actividad de inicio de sesión en el portal de Azure Active Directory Hola](active-directory-reporting-activity-sign-ins.md)
-- [Informes de actividad en el portal de Azure Active Directory Hola de auditoría](active-directory-reporting-activity-audit-logs.md)
+- [Informes de actividad de inicio de sesión en el portal de Azure Active Directory](active-directory-reporting-activity-sign-ins.md)
+- [Informes de actividad de auditoría en el portal de Azure Active Directory](active-directory-reporting-activity-audit-logs.md)
 
-Si desea que tooknow más acerca de los informes de seguridad de Hola Hola portal de Azure, vea:
+Si desea obtener más información acerca de los informes de seguridad en Azure Portal, consulte:
 
-- [Usuarios de informes de seguridad de riesgo en el portal de Azure Active Directory Hola](active-directory-reporting-security-user-at-risk.md)
-- [Informe de riesgo de inicios de sesión en el portal de Azure Active Directory Hola](active-directory-reporting-security-risky-sign-ins.md)
+- [Informe de seguridad de usuarios en riesgo en el portal de Azure Active Directory](active-directory-reporting-security-user-at-risk.md)
+- [Informe de inicios de sesión poco seguros en el portal de Azure Active Directory](active-directory-reporting-security-risky-sign-ins.md)
 
-Si desea más información acerca de los eventos de riesgo tooknow, consulte [eventos de riesgo de Azure Active Directory](active-directory-reporting-risk-events.md).
+Si desea obtener más información acerca de los eventos de riesgo, consulte [Eventos de riesgo de Azure Active Directory](active-directory-reporting-risk-events.md).

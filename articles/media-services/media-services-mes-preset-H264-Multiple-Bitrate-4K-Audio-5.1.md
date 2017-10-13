@@ -1,6 +1,6 @@
 ---
-title: "aaa264 múltiples de 4K con velocidad de bits Audio 5.1 | Documentos de Microsoft"
-description: "Hola tema encontrará un resumen de Hola ** 264 Audio de varias velocidades de bits 4K 5.1* * valor predefinido de tarea."
+title: 264 Multiple Bitrate 4K Audio 5.1 | Microsoft Docs
+description: "El tema proporciona información general sobre el valor predeterminado de tarea **264 Multiple Bitrate 4K Audio 5.1**."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: ea0169a86b132002233488ba748a6583fe08d51b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 10e5c41be42b73e3e1458adac9642547c182530b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="h264-multiple-bitrate-4k-audio-51"></a>H264 Multiple Bitrate 4K Audio 5.1
-`Media Encoder Standard` define un conjunto de valores predeterminados de Encoding que puede usar al crear trabajos de Encoding. Puede utilizar un `preset name` toospecify en qué formato desea tooencode su archivo multimedia. O bien, puede crear sus propios valores predeterminados basados en XML o JSON (mediante la codificación UTF-8 o UTF-16). A continuación, pasaría codificador de hello toohello valores preestablecidos personalizados. Para obtener lista de hello del programa Hola a todos los preestablecido nombres admitidos por este `Media Encoder Standard` codificador, vea [valores preestablecidos de tarea para Media Encoder estándar](media-services-mes-presets-overview.md).  
+`Media Encoder Standard` define un conjunto de valores predeterminados de Encoding que puede usar al crear trabajos de Encoding. Puede usar `preset name` para especificar en qué formato desea codificar el archivo multimedia. O bien, puede crear sus propios valores predeterminados basados en XML o JSON (mediante la codificación UTF-8 o UTF-16). Después pasaría el valor predeterminado personalizado al codificador. Para obtener la lista de todos los nombres predeterminados admitidos por este codificador `Media Encoder Standard`, vea [Task Presets for Media Encoder Standard](media-services-mes-presets-overview.md) (Valores predeterminados de tarea para Media Encoder Standard).  
   
- Este tema muestra hello `H264 Multiple Bitrate 4K Audio 5.1` preestablecido en formato XML y JSON.  
+ En este tema se muestra el valor predeterminado `H264 Multiple Bitrate 4K Audio 5.1` en formato XML y JSON.  
   
- Este valor preestablecido produce un conjunto de 12 archivos MP4 alineados con GOP, comprendido entre 20000 kbps too1000 kbps y audio AAC 5.1. Para obtener información detallada sobre el perfil, velocidad de bits, frecuencia de muestreo, etc. de este valor preestablecido, examine Hola XML o JSON definido más adelante. Para explicaciones de cada elemento de qué significa y los valores válidos de Hola para cada elemento, vea hello [Media Encoder estándar esquema](media-services-mes-schema.md).  
-  
-> [!NOTE]
->  Debe obtener Hola Premium reservado codifica el tipo de unidad con 4K. Para obtener más información, consulte [cómo tooScale codificación](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units).  
+ Este valor predeterminado genera un conjunto de 12 archivos MP4 alineados con GOP, que abarcan desde 20 000 kbps hasta 1000 kbps y audio AAC 5.1. Para información detallada sobre el perfil, la velocidad de bits, la frecuencia de muestreo, etc. de este valor predeterminado, examine el código XML o JSON definido más adelante. Para obtener explicaciones de lo que cada elemento significa y los valores válidos para cada elemento, vea el tema sobre el [esquema de Media Encoder Standard](media-services-mes-schema.md).  
   
 > [!NOTE]
->  Cuando se modifica hello `Width` y `Height` los valores de las capas, asegúrese de que esa relación de aspecto de hello siga siendo coherente. Por ejemplo: 1920x1080, 1280x720, 1080x576 y 640x360. No debe utilizar una combinación de relaciones de aspecto, como 1280x720, 720x480 y 640x360.  
+>  Debe obtener el tipo de unidad reservada premium con codificación 4K. Para obtener más información, consulte [Escalación de codificación](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units).  
+  
+> [!NOTE]
+>  Cuando se modifiquen los valores `Width` y `Height` en las capas, asegúrese de que la relación de aspecto no cambia. Por ejemplo: 1920x1080, 1280x720, 1080x576 y 640x360. No debe utilizar una combinación de relaciones de aspecto, como 1280x720, 720x480 y 640x360.  
   
  XML  
   

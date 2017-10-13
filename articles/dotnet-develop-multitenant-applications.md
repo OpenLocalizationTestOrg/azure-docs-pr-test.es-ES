@@ -1,6 +1,6 @@
 ---
-title: "Patrón de aplicación Web de inquilino aaaMulti | Documentos de Microsoft"
-description: "Encuentre información general de arquitectura y patrones de diseño que describen cómo tooimplement de varios inquilinos web aplicación en Azure."
+title: "Patrón de aplicación web multiinquilino | Microsoft Docs"
+description: "Encuentre información general de arquitectura y patrones de diseño que describan cómo implementar una aplicación web multiempresa en Azure."
 services: 
 documentationcenter: .net
 author: wadepickett
@@ -14,79 +14,79 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/05/2015
 ms.author: wpickett
-ms.openlocfilehash: 3b7822c8ca4aa50d295a174973ae4746c230ba66
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 57ba0e46139bda2d74c9f7db0ffab2f2122b0df2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="multitenant-applications-in-azure"></a>Aplicaciones multiempresa en Azure
-Una aplicación para varios inquilinos es un recurso compartido que permite tooview independientes sobre los usuarios, o "inquilinos," hello aplicación como si fuese su propios. Un escenario típico que se presta tooa de aplicación para varios inquilinos es uno en las que todos los usuarios de hello aplicación puede desea la experiencia del usuario de hello toocustomize pero en caso contrario Hola los mismos requisitos empresariales básicos. Office 365, Outlook.com y visualstudio.com son ejemplos de grandes aplicaciones multiempresa.
+Una aplicación multiempresa es un recurso compartido que permite a usuarios independientes, o "inquilinos", ver la aplicación como si fuera propia. Un escenario típico de una aplicación multiempresa es aquel en que todos los usuarios de la aplicación pueden querer personalizar la experiencia de usuario pero, por otra parte, tienen los mismos requisitos empresariales básicos. Office 365, Outlook.com y visualstudio.com son ejemplos de grandes aplicaciones multiempresa.
 
-Desde la perspectiva del proveedor de la aplicación, ventajas de saludo de la arquitectura multiempresa principalmente relacionan toooperational y una reducción de costes. Una versión de la aplicación puede satisfacer las necesidades de Hola de muchos inquilinos/customers, lo que permite la consolidación del sistema de las tareas de administración, como supervisión, ajuste del rendimiento, mantenimiento de software y las copias de seguridad de datos.
+Desde la perspectiva del proveedor de una aplicación, los beneficios de la arquitectura multiempresa se relacionan principalmente con la eficacia operativa y de costes. Una versión de la aplicación puede satisfacer las necesidades de muchos inquilinos/clientes, de manera que se permita la consolidación de las tareas de administración del sistema, como la supervisión, el ajuste del rendimiento, el mantenimiento del software y las copias de seguridad de los datos.
 
-siguiente Hola proporciona una lista de los objetivos más importantes de Hola y requisitos desde la perspectiva de un proveedor de servicios.
+A continuación se ofrece una lista de los objetivos y los requisitos más importantes desde la perspectiva de un proveedor.
 
-* **Aprovisionamiento**: debe ser capaz de tooprovision nuevos inquilinos para la aplicación hello.  Aplicaciones para varios inquilinos con un gran número de los inquilinos, es tooautomate suele ser necesario hacerlo por habilitar el aprovisionamiento de autoservicio.
-* **Mantenimiento**: debe ser capaz de tooupgrade Hola aplicación y realizar otras tareas de mantenimiento mientras lo están usando varios inquilinos.
-* **Supervisión**: se debe ser capaz de toomonitor aplicación de hello en todo momento tooidentify los problemas y tootroubleshoot ellos. Esto incluye la supervisión cómo cada inquilino está usando la aplicación hello.
+* **Aprovisionamiento**: debe tener la capacidad de aprovisionar nuevos inquilinos para la aplicación.  En aplicaciones multiempresa con un gran número de inquilinos, suele ser necesario automatizar este proceso mediante la habilitación del aprovisionamiento de autoservicio.
+* **Mantenimiento**: bebe tener la capacidad de actualizar la aplicación y ejecutar otras tareas de mantenimiento mientras varios inquilinos la utilizan.
+* **Supervisión**: debe tener la capacidad de supervisar la aplicación en todo momento para identificar todos los problemas y solucionarlos. Esto comprende supervisar el uso que cada inquilino hace de la aplicación.
 
-Una aplicación para varios inquilinos implementada correctamente proporciona siguiente Hola beneficia toousers.
+Una aplicación multiempresa correctamente implementada ofrece los siguientes beneficios a los usuarios.
 
-* **Aislamiento**: actividades de Hola de inquilinos individuales no afectan al uso de Hola de aplicación hello otros inquilinos de. Los inquilinos no pueden tener acceso a los datos de los demás. Parece toohello inquilino como si tuvieran el uso exclusivo de aplicación hello.
-* **Disponibilidad**: parte de inquilinos individuales desea toobe de aplicación Hola constantemente disponible, quizás con garantías definidas en un SLA. Nuevo, actividades Hola de otros inquilinos no deberían afectar a la disponibilidad de Hola de aplicación hello.
-* **Escalabilidad**: aplicación Hola adapta a petición de hello toomeet de inquilinos individuales. Hello presencia y las acciones de otros inquilinos no deberían afectar al rendimiento de Hola de aplicación hello.
-* **Los costos de**: los costos son menores que ejecutan una aplicación dedicada, único inquilino porque la arquitectura multiempresa permite Hola uso compartido de recursos.
-* **Personalización**. aplicación de Hello capacidad toocustomize Hola para un inquilino individual de varias maneras, como agregar o quitar características, cambiar colores y logotipos o incluso agregar su propio código o script.
+* **Aislamiento**: las actividades de los inquilinos a nivel individual no afectan al uso que otros inquilinos hacen de la aplicación. Los inquilinos no pueden tener acceso a los datos de los demás. Ante el inquilino, parecerán tener uso exclusivo de la aplicación.
+* **Disponibilidad**: los inquilinos individuales desean que la aplicación esté constantemente disponible, quizá con garantías definidas en un contrato de nivel de servicio. De nuevo, las actividades de otros inquilinos no deben afectar a la disponibilidad de la aplicación.
+* **Escalabilidad**: la aplicación se escala para satisfacer la demanda de cada uno de los inquilinos. La presencia y las acciones de otros inquilinos no deben afectar al rendimiento de la aplicación.
+* **Costes**: los costes son más bajos en comparación con la ejecución de una aplicación dedicada de un solo inquilino, ya que la arquitectura multiempresa permite compartir recursos.
+* **Personalización**. la capacidad de personalizar la aplicación para un inquilino individual de varias formas, como agregar o eliminar características, cambiar el color y los logotipos o incluso agregar su propio código o script.
 
-En resumen, aunque hay muchas consideraciones que debe tener en cuenta tooprovide un servicio altamente escalable, también hay una serie de objetivos de Hola y requisitos de aplicaciones para varios inquilinos de toomany comunes. Algunos pueden no ser relevante en escenarios específicos y la importancia de Hola de objetivos individuales y requisitos serán diferentes en cada escenario. Como proveedor de la aplicación para varios inquilinos de hello, también tendrá objetivos y requisitos como, cumpliendo los inquilinos de hello objetivos y requisitos, rentabilidad, facturación, varios niveles de servicio, aprovisionamiento, mantenimiento de supervisión y automatización.
+En resumen, si bien hay muchas consideraciones que debe tener en cuenta para ofrecer un servicio de alta escalabilidad, también hay una serie de objetivos y requisitos comunes a muchas aplicaciones multiempresa. Algunos pueden no resultar pertinentes en escenarios específicos y la importancia de los objetivos y requisitos individuales variará en cada escenario. Como proveedor de la aplicación multiempresa, también tendrá objetivos y requisitos como satisfacer los requisitos y los objetivos de los inquilinos, rentabilidad, facturación, varios niveles de servicio, aprovisionamiento, mantenimiento, supervisión y automatización.
 
 Para obtener más información acerca de consideraciones de diseño adicionales de una aplicación multiinquilino, consulte [Hospedaje de una aplicación multiinquilino en Azure][Hosting a Multi-Tenant Application on Azure]. Para obtener información sobre los patrones comunes de la arquitectura de datos de aplicaciones de base de datos de software como servicio (SaaS) multiinquilino, consulte [Modelos de diseño para las aplicaciones SaaS multiinquilino con base de datos SQL de Azure](sql-database/sql-database-design-patterns-multi-tenancy-saas-applications.md). 
 
-Azure proporciona muchas características que le permiten tooaddress Hola problemas claves que se producen al diseñar un sistema para varios inquilinos.
+Azure ofrece muchas características que le permiten solucionar los principales problemas detectados al diseñar un sistema multiempresa.
 
 **Aislamiento**
 
 * Segmentación de inquilinos de sitios web mediante encabezados host con o sin comunicación de SSL
 * Segmentar inquilinos de sitio web según parámetros de consulta
 * Servicios web en roles de trabajo
-  * Roles de trabajo por lo general que procesan los datos en hello back-end de una aplicación.
-  * Roles de Web que normalmente actúan como Hola front-end para las aplicaciones.
+  * Roles de trabajo que suelen procesar datos en el back-end de una aplicación.
+  * Roles web que suelen actuar como el front-end de las aplicaciones
 
 **Almacenamiento**
 
-Administración de datos como los servicios de almacenamiento de Azure o base de datos de SQL Azure como Hola tabla servicio que proporciona servicios de almacenamiento de grandes cantidades de datos no estructurados y Hola servicio Blob que proporciona servicios toostore grandes cantidades de texto no estructurado o datos binarios, como vídeo, audio e imágenes.
+Administración de datos como los servicios Base de datos SQL de Azure o Almacenamiento de Azure, como el servicio Tabla, que ofrece servicios para el almacenamiento de grandes volúmenes de datos no estructurados, y el servicio BLOB, que ofrece servicios para almacenar grandes volúmenes de texto no estructurado o datos binarios, como vídeo, audio e imágenes.
 
 * Proteger los datos multiempresa en la Base de datos SQL apropiada para inicios de sesión de SQL Server por inquilino.
-* Uso de tablas de Azure para aplicación de recursos mediante la especificación de una directiva de acceso de nivel de contenedor, puede Hola permisos tooadjust de capacidad sin necesidad de tooissue direcciones URL nuevas para los recursos de hello protegidos con firmas de acceso compartido.
-* Las colas de Azure para las colas de recursos de aplicaciones de Azure son toodrive utilizada en nombre de inquilinos de procesamiento, pero también puede ser usado toodistribute trabajo necesario para el aprovisionamiento y administración.
-* Colas de Bus de servicio para recursos de la aplicación que tooa de trabajo inserta un servicio compartido, puede usar una cola única donde cada remitente del inquilino solo tiene cola de toothat toopush permisos (según se derive de las notificaciones emitidas desde ACS), mientras solo destinatarios de hello del servicio de Hola tener permiso toopull de datos de Hola de cola de Hola procedentes de varios inquilinos.
+* Con el uso de las Tablas de Azure para recursos de la aplicación mediante la definición de una política de acceso a nivel de contenedor, tiene la posibilidad de ajustar permisos sin tener que emitir la nueva URL para los recursos protegidos con firmas de acceso compartido.
+* Las colas de Azure para recursos de la aplicación se suelen usar para dirigir el procesamiento en nombre de los inquilinos, pero también se pueden usar para distribuir el trabajo necesario para el aprovisionamiento o la administración.
+* Colas del bus de servicio para recursos de aplicaciones que insertan el trabajo en un servicio compartido, donde puede usar una única cola en la que cada remitente inquilino solo tiene permisos (según se deriva de las notificaciones emitidas desde ACS) para insertar en dicha cola, mientras que solo los receptores del servicio tienen permiso para extraer de la cola los datos procedentes de varios inquilinos.
 
 **Servicios de conexión y seguridad**
 
-* Service Bus de Azure, una infraestructura de mensajería que se ubica entre aplicaciones permitiéndoles tooexchange mensajes de una manera de acoplamiento flexible para escalabilidad mejorada y resistencia.
+* El Bus de servicio de Azure, una infraestructura de mensajería que se ubica entre las aplicaciones, de manera que les permite intercambiar mensajes sin conexión directa, a fin de ofrecer mayor escalabilidad y resistencia.
 
 **Servicios de red**
 
-Azure ofrece varios servicios de red que admiten la autenticación y mejoran la manejabilidad de las aplicaciones hospedadas. Estos servicios Hola siguientes:
+Azure ofrece varios servicios de red que admiten la autenticación y mejoran la manejabilidad de las aplicaciones hospedadas. Estos servicios incluyen lo siguiente:
 
 * La Red virtual de Azure le permite aprovisionar y administrar redes privadas virtuales (VPN) en Azure, así como vincularlas de forma segura con la infraestructura de TI local.
-* Administrador de tráfico de red virtual le permite equilibrar tooload el tráfico entrante a través de Azure hospedado varios servicios si se está ejecutando en hello mismo centro de datos o entre distintos centros de datos alrededor de Hola a todos.
-* Azure Active Directory (Azure AD) es un servicio moderno basado en REST que ofrece capacidades de administración de identidades y control de acceso para las aplicaciones en la nube. Con Azure AD para recursos de la aplicación Azure AD tooprovides una manera sencilla de autenticar y autorizar a los usuarios toogain acceso tooyour aplicaciones y servicios web al que permite que las características de Hola de autenticación y autorización toobe factorizado fuera de su código.
-* El Bus de servicio de Azure ofrece una capacidad de flujo de datos y mensajería segura para aplicaciones distribuidas e híbridas, como la comunicación entre aplicaciones hospedadas de Azure y aplicaciones y servicios locales, sin requerir infraestructuras de seguridad y firewall complejas. Con Service Bus Relay para toohello de recursos de la aplicación de servicios que se exponen como extremos pueden pertenecer toohello inquilinos (por ejemplo, hospedado fuera de sistema de hello, como local) o pueden ser servicios aprovisionados específicamente para (inquilino) Hola Dado que los datos confidenciales, específicos del inquilino se pasan a través de ellos).
+* El administrador de tráfico de red virtual le permite cargar tráfico entrante equilibrado entre varios servicios de Azure hospedados, independientemente de que se ejecuten en el mismo centro de datos o en diferentes centros de datos en todo el mundo.
+* Azure Active Directory (Azure AD) es un servicio moderno basado en REST que ofrece capacidades de administración de identidades y control de acceso para las aplicaciones en la nube. El uso de Azure AD para Recursos de aplicaciones ofrece una forma sencilla de autenticar y autorizar a los usuarios a la hora de tener acceso a las aplicaciones y los servicios web, a la vez que se permite que las características de autenticación y autorización queden excluidas del código.
+* El Bus de servicio de Azure ofrece una capacidad de flujo de datos y mensajería segura para aplicaciones distribuidas e híbridas, como la comunicación entre aplicaciones hospedadas de Azure y aplicaciones y servicios locales, sin requerir infraestructuras de seguridad y firewall complejas. El uso de Service Bus Relay para recursos de aplicación en los servicios expuestos como puntos de conexión puede recaer en el inquilino (por ejemplo, hospedados fuera del sistema, como en local), o bien puede tratarse de servicios aprovisionados específicamente para el inquilino (porque los datos importantes específicos del inquilino se transfieren a través de ellos).
 
 **Aprovisionamiento de recursos**
 
-Azure proporciona a varias maneras de nuevos inquilinos de aprovisionamiento para la aplicación hello. Aplicaciones para varios inquilinos con un gran número de los inquilinos, es tooautomate suele ser necesario hacerlo por habilitar el aprovisionamiento de autoservicio.
+Azure ofrece diferentes formas de aprovisionar nuevos inquilinos para la aplicación. En aplicaciones multiempresa con un gran número de inquilinos, suele ser necesario automatizar este proceso mediante la habilitación del aprovisionamiento de autoservicio.
 
-* Roles de trabajo permite tooprovision y eliminación aprovisionar recursos por inquilino (por ejemplo, cuando un nuevo inquilino registra o cancela), recopilar métricas para medición de usar y administrar el escalado de una programación específica o en respuesta toohello haber superado los umbrales de clave indicadores de rendimiento. Este mismo rol también puede ser utilizado toopush horizontal de las actualizaciones de solución toohello.
-* Blobs de Azure pueden ser usado tooprovision compute o recursos de almacenamiento ya inicializado para nuevos inquilinos proporcionando contenedor acceso a las directivas tooprotect Hola proceso paquetes de servicios, imágenes VHD y otros recursos.
+* Los roles de trabajo le permiten aprovisionar y desaprovisionar recursos por inquilino (como cuando un nuevo inquilino inicia sesión o la cancela), recopilar métricas para medir el uso y administrar la escalación conforme a un programa determinado o para responder al cruce de umbrales de indicadores de rendimiento claves. Este mismo rol se puede usar también para realizar actualizaciones de la solución.
+* Los blobs de Azure se pueden usar para aprovisionar recursos de almacenamiento informáticos o preinicializados para nuevos inquilinos, a la vez que se ofrecen directivas de acceso de nivel de contenedor para proteger los paquetes de servicios informáticos, las imágenes VHD y otros recursos.
 * Las opciones para aprovisionar los recursos de la Base de datos SQL para un inquilino incluyen:
   
   * DDL en scripts o insertados como recursos en ensamblados
   * Paquetes SQL Server 2008 R2 DAC implementados mediante programación
   * Copiar desde una base de datos de referencia maestra
-  * Usa la base de datos de importación y exportación tooprovision nuevas bases de datos desde un archivo.
+  * Usar la importación y exportación de base de datos para aprovisionar bases de datos nuevas desde un archivo
 
 <!--links-->
 

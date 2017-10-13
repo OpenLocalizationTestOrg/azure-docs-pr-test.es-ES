@@ -1,9 +1,9 @@
 ---
-title: "aaaMonitor administración de API con el Monitor de Azure | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toomonitor administración de API de Azure service mediante el Monitor de Azure."
+title: "Supervisión de API Management con Azure Monitor | Microsoft Docs"
+description: Aprenda a supervisar el servicio Azure API Management con Azure Monitor.
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 2fa193cd-ea71-4b33-a5ca-1f55e5351e23
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: 5012d8ed57ea4f94ea6bc1b7c4e1102516ec4414
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 717e033aa4bbd4dd8ebcc727c3f551aee81770dc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-api-management-with-azure-monitor"></a>Supervisión de API Management con Azure Monitor
-Azure Monitor es un servicio de Azure que proporciona un único origen para la supervisión de todos los recursos de Azure. Con el Monitor de Azure, puede visualizar, consultar, enrutar, archivar y realizar acciones en las métricas de Hola y registros procedentes de recursos de Azure como la API de administración. 
+Azure Monitor es un servicio de Azure que proporciona un único origen para la supervisión de todos los recursos de Azure. Con Azure Monitor, puede visualizar, consultar, redirigir y archivar las métricas y los registros procedentes de recursos de Azure como API Management, así como tomar medidas relacionadas. 
 
-Hola siguiendo el vídeo muestra cómo toomonitor administración de API con el Monitor de Azure. Para más información acerca de Azure Monitor, consulte [Introducción a Azure Monitor]. 
+En el vídeo siguiente se muestra cómo supervisar API Management con Azure Monitor. Para más información acerca de Azure Monitor, consulte [Introducción a Azure Monitor]. 
 
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Monitor-API-Management-with-Azure-Monitor/player]
@@ -31,47 +31,47 @@ Hola siguiendo el vídeo muestra cómo toomonitor administración de API con el 
 >
  
 ## <a name="metrics"></a>Métricas
-Administración de API actualmente emite cinco métricas y tenemos previsto tooadd más en hello futuras. Estas métricas se emiten cada minuto, lo que le ofrece visibilidad en tiempo real en estado de Hola y el estado de sus API casi. Aquí te mostramos un resumen de las métricas de hello:
-* Nº total de puerta de enlace solicitudes: número de Hola de API de solicitudes en el período de Hola. 
-* Solicitudes correctas de puerta de enlace: número de Hola de solicitudes de API que recibió correctamente códigos de respuesta HTTP como 304, 307 y nada más pequeño que 301 (por ejemplo, 200). 
-* Puerta de enlace solicitudes con error: el número de Hola de solicitudes de API que recibió erróneos códigos de respuesta HTTP como 400 y cualquier valor mayor que 500.
-* Solicitudes no autorizadas de puerta de enlace: número de Hola de solicitudes de API que reciben los códigos de respuesta HTTP incluidos 401 y 403, 429. 
-* Otras solicitudes de puerta de enlace: número de Hola de solicitudes de API que reciben los códigos de respuesta HTTP que no pertenecen tooany de hello anteriores categorías (por ejemplo, 418).
+Actualmente, API Management emite cinco métricas y está previsto agregar más en el futuro. Estas métricas se emiten cada minuto, lo que le ofrece visibilidad casi en tiempo real sobre el estado y el mantenimiento de las API. A continuación, se presenta un resumen de las métricas:
+* Solicitudes de puerta de enlace en total: el número de solicitudes API en el período. 
+* Solicitudes de puerta de enlace correctas: el número de solicitudes API que recibieron correctamente códigos de respuesta HTTP, como 304, 307 y los menores de 301 (por ejemplo, 200). 
+* Solicitudes de puerta de enlace con error: el número de solicitudes API que recibieron códigos de respuesta HTTP erróneos, como 400 y cualquiera mayor que 500.
+* Solicitudes de puerta de enlace no autorizadas: el número de solicitudes API que recibieron códigos de respuesta HTTP, incluidos 401, 403 y 429. 
+* Otras solicitudes de puerta de enlace: el número de solicitudes API que recibieron códigos de respuesta HTTP que no pertenecen a ninguna de las categorías anteriores (por ejemplo, 418).
 
-Puede acceder a métricas en el servicio API Management o a las métricas de todos los recursos de Azure en Azure Monitor. métricas de tooview en el servicio de administración de API:
-1. Hola abrir portal de Azure.
-2. Servicio de administración de API de tooyour go.
+Puede acceder a métricas en el servicio API Management o a las métricas de todos los recursos de Azure en Azure Monitor. Para ver métricas en el servicio API Management:
+1. Abra Azure Portal.
+2. Vaya al servicio API Management.
 3. Haga clic en **Métricas**.
 
 ![Hoja Métricas][metrics-blade]
 
-Para obtener más información acerca de cómo toouse métricas, vea [información general de las métricas].
+Para más información sobre cómo usar las métricas, consulte [Información general sobre las métricas].
 
 ## <a name="activity-logs"></a>Registros de actividad
-Registros de actividad proporcionan una visión general de las operaciones de Hola que se realizaron en los servicios de administración de API. Antes se los conocía como "registros de auditoría" o "registros operativos". Utilizar registros de actividad, puede determinar Hola "qué, quién y cuándo" para las operaciones (PUT, POST, DELETE) realizadas en los servicios de administración de API de escritura. 
+Los registros de actividad proporcionan información sobre las operaciones llevadas a cabo en los servicios API Management. Antes se los conocía como "registros de auditoría" o "registros operativos". Con los registros de actividades, puede determinar los interrogantes “qué, quién y cuándo” de las operaciones de escritura (PUT, POST, DELETE) llevadas a cabo en los servicios API Management. 
 
 > [!NOTE]
-> Registros de actividad no incluyen las operaciones de lectura (GET) o las operaciones realizadas en Hola clásico Portal para desarrolladores o usar Hola original de las API de administración.
+> Los registros de actividad no incluyen las operaciones de lectura (GET) ni las realizadas en el portal para editores clásico o mediante las API de administración originales.
 
-Puede acceder a registros de actividad en el servicio API Management o a los registros de todos los recursos de Azure en Azure Monitor. actividad de tooview se registra en el servicio de administración de API:
-1. Hola abrir portal de Azure.
-2. Servicio de administración de API de tooyour go.
+Puede acceder a registros de actividad en el servicio API Management o a los registros de todos los recursos de Azure en Azure Monitor. Para ver registros de actividad en el servicio API Management:
+1. Abra Azure Portal.
+2. Vaya al servicio API Management.
 3. Haga clic en **Registro de actividad**.
 
 ![Hoja Registro de actividad][activity-logs-blade]
 
-Para obtener más información acerca de cómo toouse métricas, vea [información general de los registros de actividad].
+Para más información sobre cómo usar los registros de actividad, consulte [Información general sobre el registro de actividad].
 
 ## <a name="alerts"></a>Alertas
-Puede configurar alertas de tooreceive basadas en métricas y registros de actividades. Monitor de Azure permite tooconfigure una alerta toodo hello las siguientes cuando se desencadena:
+Puede configurar la recepción de alertas en función de métricas y registros de actividad. Azure Monitor permite configurar una alerta que haga lo siguiente cuando se desencadena:
 
 * Enviar una notificación por correo electrónico
 * Llamar a un webhook
 * Invocar una aplicación lógica de Azure
 
-Puede configurar reglas de alerta en el servicio API Management o en Azure Monitor. tooconfigure en administración de API: 
-1. Hola abrir portal de Azure.
-2. Servicio de administración de API de tooyour go.
+Puede configurar reglas de alerta en el servicio API Management o en Azure Monitor. Para configurarlas en API Management: 
+1. Abra Azure Portal.
+2. Vaya al servicio API Management.
 3. Haga clic en **Reglas de alerta**.
 
 ![Hoja Reglas de alertas][alert-rules-blade]
@@ -79,9 +79,9 @@ Puede configurar reglas de alerta en el servicio API Management o en Azure Monit
 Para más información sobre el uso de alertas, consulte la [introducción a las alertas].
 
 ## <a name="diagnostic-logs"></a>Registros de diagnóstico
-Los registros de diagnóstico proporcionan información valiosa acerca de las operaciones y los errores que son importantes para la auditoría, así como para solucionar problemas. Los registros de diagnóstico son diferentes de los registros de actividad. Registros de actividad proporcionan información sobre las operaciones de Hola que se realizaron en los recursos de Azure. Los registros de diagnóstico proporcionan información detallada sobre las operaciones que el mismo recurso realiza.
+Los registros de diagnóstico proporcionan información valiosa acerca de las operaciones y los errores que son importantes para la auditoría, así como para solucionar problemas. Los registros de diagnóstico son diferentes de los registros de actividad. Los registros de actividad proporcionan información sobre las operaciones llevadas a cabo en los recursos de Azure. Los registros de diagnóstico proporcionan información detallada sobre las operaciones que el mismo recurso realiza.
 
-Administración de API actualmente proporciona diagnósticos de registros (cada hora por lotes) sobre API individual solicitar a cada entrada de hello siguiente estructura:
+Actualmente, API Management proporciona registros de diagnóstico (cada hora por lotes) sobre solicitudes API individuales con cada entrada que tenga la estructura siguiente:
 
 ```
 {
@@ -113,27 +113,27 @@ Administración de API actualmente proporciona diagnósticos de registros (cada 
  }
 ```
 
-Puede acceder a registros de diagnóstico en el servicio API Management o a los registros de todos los recursos de Azure en Azure Monitor. tooview registros de diagnóstico en el servicio de administración de API:
-1. Hola abrir portal de Azure.
-2. Servicio de administración de API de tooyour go.
+Puede acceder a registros de diagnóstico en el servicio API Management o a los registros de todos los recursos de Azure en Azure Monitor. Para ver registros de diagnóstico en el servicio API Management:
+1. Abra Azure Portal.
+2. Vaya al servicio API Management.
 3. Haga clic en **Registro de diagnóstico**.
 
 ![Hoja Registros de diagnóstico][diagnostic-logs-blade]
 
-Para obtener más información acerca de cómo toouse métricas, vea [información general de registros de diagnóstico].
+Para más información sobre cómo usar los registros de diagnóstico, consulte la [introducción a los registros de diagnóstico].
 
-## <a name="next-step"></a>siguiente paso
+## <a name="next-step"></a>Paso siguiente
 
 * [Introducción a Azure Monitor]
-* [información general de las métricas]
-* [información general de los registros de actividad]
-* [información general de registros de diagnóstico]
+* [Información general sobre las métricas]
+* [Información general sobre el registro de actividad]
+* [introducción a los registros de diagnóstico]
 * [introducción a las alertas]
 
 [Introducción a Azure Monitor]: ../monitoring-and-diagnostics/monitoring-get-started.md
-[información general de las métricas]: ../monitoring-and-diagnostics/monitoring-overview-metrics.md
-[información general de los registros de actividad]: ../monitoring-and-diagnostics/monitoring-overview-activity-logs.md
-[información general de registros de diagnóstico]: ../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md
+[Información general sobre las métricas]: ../monitoring-and-diagnostics/monitoring-overview-metrics.md
+[Información general sobre el registro de actividad]: ../monitoring-and-diagnostics/monitoring-overview-activity-logs.md
+[introducción a los registros de diagnóstico]: ../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md
 [introducción a las alertas]: ../monitoring-and-diagnostics/insights-alerts-portal.md
 
 

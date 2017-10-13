@@ -1,5 +1,5 @@
 ---
-title: "jerarquía de aaaCountry o región utilizado por el tipo de distribución geográfica de Azure Traffic Manager | Documentos de Microsoft"
+title: "Jerarquía de país o región usada por el tipo de enrutamiento geográfico de Azure Traffic Manager | Microsoft Docs"
 description: "En este artículo se muestra la jerarquía de país o región usada por el tipo de enrutamiento geográfico de Azure Traffic Manager"
 services: traffic-manager
 documentationcenter: 
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
-ms.openlocfilehash: d09fc896951fa1086822d69316468e7a98861591
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 93db099e9e25856e13c398c4a03a5728d178e5dd
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="countryregion-hierarchy-used-by-azure-traffic-manager-for-geographic-traffic-routing-method"></a>Jerarquía de país o región usada por Azure Traffic Manager para el método de enrutamiento de tráfico geográfico
 
-Este artículo enumeran países de Hola y regiones utilizadas por hello **geográfico** en Azure Traffic Manager de método de enrutamiento de tráfico. También puede obtener esta información mediante programación si llama a la [API de REST de Azure Traffic Manager](https://docs.microsoft.com/rest/api/trafficmanager/). 
+En este artículo se muestran los países y las regiones que usa el método de enrutamiento de tráfico **geográfico** en Azure Traffic Manager. También puede obtener esta información mediante programación si llama a la [API de REST de Azure Traffic Manager](https://docs.microsoft.com/rest/api/trafficmanager/). 
 
 - WORLD(mundo)
 
@@ -384,7 +384,7 @@ Este artículo enumeran países de Hola y regiones utilizadas por hello **geogr�
 
             - US-WY(Wyoming)
 
-        - VC (SAN Vicente y las Granadinas hello)
+        - VC(San Vicente y las Granadinas)
 
         - VG(Islas Vírgenes Británicas)
 

@@ -1,8 +1,8 @@
 ---
-title: "Documentación de Operations Management Suite (OMS) - tutoriales aaaAzure | Documentos de Microsoft"
-description: "Microsoft Operations Management Suite (OMS) es la solución de administración de TI basada en la nube de Microsoft que le ayuda a administrar y proteger su infraestructura local y en la nube. En este artículo se identifican Hola servicios diferentes incluidos en OMS y se proporcionan vínculos tootheir detallada contenido."
+title: "Documentación sobre Azure Operations Management Suite (OMS): tutoriales y referencia de API | Microsoft Docs"
+description: "Microsoft Operations Management Suite (OMS) es la solución de administración de TI basada en la nube de Microsoft que le ayuda a administrar y proteger su infraestructura local y en la nube. Este artículo identifica los distintos servicios que se incluyen en OMS y proporciona vínculos a contenido detallado."
 services: operations-management-suite
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,40 +12,40 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 11a8f5ecb3d84aed90554510fc1bb43320fdebb2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 12f959376d4923e4e2481e37108ade632ac14902
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-operations-management-suite-oms"></a>¿Qué es Operations Management Suite (OMS)?
 Microsoft Operations Management Suite (OMS) es la solución de administración de TI basada en la nube de Microsoft que le ayuda a administrar y proteger su infraestructura local y en la nube.  Puesto que OMS se implementa como un servicio basado en la nube, puede hacer que funcione rápidamente con una inversión mínima en servicios de infraestructura.  Las características nuevas se entregan automáticamente, lo que le ahorra el mantenimiento continuo y los costos de actualización.
 
-Además tooproviding servicios valiosos en su propio, OMS pueden integrarse con componentes de System Center como System Center Operations Manager tooextend sus inversiones de administración existente en la nube de Hola.  System Center y OMS pueden trabajar juntos tooprovide experiencia de una administración híbrida completa.
+Además de proporcionar servicios valiosos por sí solo, OMS puede integrarse con componentes de System Center, como System Center Operations Manager para ampliar sus inversiones existentes de administración en la nube.  System Center y OMS pueden trabajar juntos para proporcionar una experiencia de administración totalmente híbrida.
 
-Hola las secciones siguientes proporciona una descripción de alto nivel de hello diferentes áreas de valor de los servicios OMS y Hola que las implementan.  Puede hacer referencia tooOMS arquitectura para obtener información general de los distintos componentes de OMS Hola antes de revisar Hola documentación detallada de cada uno de ellos.
+Las secciones siguientes proporcionan una descripción de alto nivel de las áreas de valor diferentes de OMS y los servicios que las implementan.  Puede hacer referencia a la arquitectura de OMS para obtener información general de los distintos componentes de OMS antes de revisar la documentación detallada para cada uno.
 
 ## <a name="insight-and-analyticsmediaoperations-management-suite-overviewicon-insight-analyticspng-insight-and-analytics"></a>![Insight and Analytics](media/operations-management-suite-overview/icon-insight-analytics.png) Insight and Analytics
-[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) ayuda a recopilar, correlacionar, buscar y actuar en los datos de rendimiento y registro generados por sistemas operativos y aplicaciones. Le ofrece visión operativa en tiempo real mediante búsqueda integrada y paneles personalizados tooreadily analizar millones de registros en todas sus cargas de trabajo y servidores, independientemente de su ubicación física.
+[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) ayuda a recopilar, correlacionar, buscar y actuar en los datos de rendimiento y registro generados por sistemas operativos y aplicaciones. Proporciona una visión operativa en tiempo real mediante el uso de paneles personalizados y de búsqueda para analizar fácilmente millones de registros en todas las cargas de trabajo y los servidores, independientemente de su ubicación física.
 
-Puede agregar fácilmente soluciones tooLog análisis que definen toobe datos recopilado y Hola lógica para su análisis.  Las soluciones pueden incluir funcionalidad adicional que se entrega automáticamente tooagents con mínima o ninguna configuración.  Además herramientas de análisis de toousing proporcionados por las soluciones individuales, puede realizar búsquedas personalizadas en un conjunto de datos completo de hello en los datos de toocorrelate de orden entre sistemas y aplicaciones.  
+Puede agregar fácilmente soluciones a Log Analytics que definan los datos que se vana a recopilar y la lógica para su análisis.  Las soluciones pueden incluir funcionalidad adicional que se entrega automáticamente a los agentes con una configuración mínima o sin configuración.  Además de utilizar las herramientas de análisis proporcionadas por las soluciones individuales, puede realizar búsquedas personalizadas a través de todo el conjunto de datos para correlacionar datos entre sistemas y aplicaciones.  
 
 ## <a name="automation--controlmediaoperations-management-suite-overviewicon-automation-controlpng-automation--control"></a>![Automation & Control](media/operations-management-suite-overview/icon-automation-control.png) Automation & Control
-Automatización de Azure automatiza los procesos administrativos con [runbooks](../automation/automation-runbook-types.md) que se basan en PowerShell y ejecutar en hello nube de Azure.  Los runbooks pueden obtener acceso a cualquier producto o servicio que se puede administrar con PowerShell, incluidos los recursos de otras nubes como Amazon Web Services (AWS).  Runbooks también se pueden ejecutar en un servidor en los recursos de local de toomanage de centros de datos locales.
+Azure Automation automatiza los procesos administrativos con [Runbooks](../automation/automation-runbook-types.md) que se basan en PowerShell y se ejecutan en la nube de Azure.  Los runbooks pueden obtener acceso a cualquier producto o servicio que se puede administrar con PowerShell, incluidos los recursos de otras nubes como Amazon Web Services (AWS).  Los runbooks pueden ejecutarse en un servidor en el centro de datos local para administrar recursos locales.
 
-Azure Automation proporciona administración de configuración con [DSC de PowerShell](../automation/automation-dsc-overview.md).  Puede crear y administrar recursos de DSC hospedados en Azure y aplicarlos toodefine sistemas toocloud y local y aplicar automáticamente su configuración.
+Azure Automation proporciona administración de configuración con [DSC de PowerShell](../automation/automation-dsc-overview.md).  Puede crear y administrar recursos de DSC hospedados en Azure y aplicarlos a los sistemas de nube y locales para definir y aplicar automáticamente su configuración.
 
 ## <a name="protection-and-recoverymediaoperations-management-suite-overviewicon-protection-recoverypng-protection-and-disaster-recovery"></a>![Protección y recuperación](media/operations-management-suite-overview/icon-protection-recovery.png) Protección y recuperación ante desastres
-[Azure Site Backup](http://azure.microsoft.com/documentation/services/backup) protege los datos de las aplicaciones y los conserva durante años sin necesidad de realizar ninguna inversión y afrontando unos costes operativos mínimos.  Hacer una copia de datos desde servidores Windows físicos y virtuales en las cargas de trabajo tooapplication de suma, como SQL Server y SharePoint.  También puede utilizarse por tooAzure de datos de System Center Data Protection Manager (DPM) tooreplicate protegido para ofrecer redundancia y almacenamiento a largo plazo.
+[Azure Site Backup](http://azure.microsoft.com/documentation/services/backup) protege los datos de las aplicaciones y los conserva durante años sin necesidad de realizar ninguna inversión y afrontando unos costes operativos mínimos.  Permite realizar la copia de seguridad a partir de los servidores físicos y virtuales de Windows, además de cargas de trabajo de aplicaciones como SQL Server y SharePoint.  También puede usar esa solución System Center Data Protection Manager (DPM) para replicar los datos protegidos en Azure para obtener redundancia y almacenamiento a largo plazo.
 
-[Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery) contribuye tooyour la continuidad del negocio y una estrategia de recuperación (BCDR) mediante la coordinación de la replicación, la conmutación por error y la recuperación de máquinas virtuales de Hyper-V de locales, máquinas virtuales de VMware y Windows físico / Servidores de Linux. Puede replicar el centro de datos secundario tooa máquinas o ampliar su centro de datos mediante replicación tooAzure. Site Recovery también proporciona conmutación por error simple y recuperación para cargas de trabajo. Se integra con mecanismos de recuperación ante desastres, como SQL Server AlwaysOn y proporciona planes de recuperación para una conmutación por error sencilla de cargas de trabajo que están organizados en niveles entre varias máquinas.
+[Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery) contribuye a su estrategia de continuidad de negocio y recuperación ante desastres (BCDR) mediante la coordinación de la replicación, la conmutación por error y la recuperación de máquinas virtuales de Hyper-V locales, máquinas virtuales de VMware y servidores Windows/Linux físicos. Puede replicar las máquinas en un centro de datos secundario o ampliar su centro de datos mediante la replicación en Azure. Site Recovery también proporciona conmutación por error simple y recuperación para cargas de trabajo. Se integra con mecanismos de recuperación ante desastres, como SQL Server AlwaysOn y proporciona planes de recuperación para una conmutación por error sencilla de cargas de trabajo que están organizados en niveles entre varias máquinas.
 
 ## <a name="oms-security-and-compliancemediaoperations-management-suite-overviewicon-security-compliancepng-security-and-compliance"></a>![Seguridad y cumplimiento normativo de OMS](media/operations-management-suite-overview/icon-security-compliance.png) Seguridad y cumplimiento normativo
-Seguridad y cumplimiento de normas le ayuda a identificar, evaluar y mitigar los riesgos de seguridad tooyour infraestructura.  Estas características de OMS se implementan a través de varias soluciones de análisis de registros que se analizan los datos de registro y la configuración de agente sistemas tooassist en garantizar Hola seguridad continua de su entorno.
+Seguridad y cumplimiento normativo le ayuda a identificar, evaluar y mitigar los riesgos de seguridad de su infraestructura.  Estas características de OMS se implementan a través de varias soluciones de Log Analytics que analizan los datos de registro y configuración de sistemas de agente que le ayudarán a garantizar la seguridad continua de su entorno.
 
-* Hola [solución seguridad y auditoría](oms-security-getting-started.md) recopila y analiza los eventos de seguridad en cualquier actividad sospechosa tooidentify sistemas administrados.
-* Hola [solución Antimalware](../log-analytics/log-analytics-malware.md) informa sobre el estado de Hola de protección antimalware en sistemas administrados.  
-* Hola solución actualizaciones del sistema realiza un análisis de las actualizaciones de seguridad de Hola y otras actualizaciones en sus sistemas administrados para que se puedan identificar fácilmente sistemas que requieren la aplicación de revisiones.
+* La solución [Seguridad y auditoría](oms-security-getting-started.md) recopila y analiza los eventos de seguridad en sistemas administrados para identificar cualquier actividad sospechosa.
+* La solución [Antimalware](../log-analytics/log-analytics-malware.md) informa del estado de la protección antimalware en sistemas administrados.  
+* La solución Actualizaciones del sistema realiza un análisis de las actualizaciones de seguridad y otras actualizaciones en los sistemas administrados poder identificar fácilmente los sistemas que requieren la aplicación de revisiones.
 
 ## <a name="next-steps"></a>Pasos siguientes
 * Obtenga información sobre [Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics).

@@ -1,6 +1,6 @@
 ---
-title: "carga aaaData en búsqueda de Azure | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo tooupload tooan de datos de índice de búsqueda de Azure."
+title: Carga de datos en Azure Search | Microsoft Docs
+description: "Aprenda a cargar datos en un índice en Búsqueda de Azure."
 services: search
 documentationcenter: 
 author: ashmaka
@@ -15,13 +15,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: ashmaka
-ms.openlocfilehash: a95eae94f72c1d0926804ff7e1152f21773fcabf
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5a601b75ec67824e72d8736bc3c45f8e1231ca86
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="upload-data-tooazure-search"></a>Cargar datos tooAzure búsqueda
+# <a name="upload-data-to-azure-search"></a>Carga de datos en Búsqueda de Azure
 > [!div class="op_single_selector"]
 > * [Información general](search-what-is-data-import.md)
 > * [.NET](search-import-data-dotnet.md)
@@ -29,31 +29,31 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Hay dos toopopulate de formas de un índice con los datos. primera opción de Hello es insertar manualmente los datos en índice de hello mediante Hola búsqueda de Azure [API de REST](search-import-data-rest-api.md) o [.NET SDK](search-import-data-dotnet.md). segunda opción de Hello es demasiado[seleccione un origen de datos admitidos](search-indexer-overview.md) tooyour indizar y permiten la búsqueda de Azure incorporar automáticamente los cambios de datos de Hola.
+Hay dos maneras de rellenar un índice con sus datos. La primera opción es insertar manualmente los datos en el índice mediante la [API de REST](search-import-data-rest-api.md) o el [SDK de .NET](search-import-data-dotnet.md) de Azure Search. La segunda opción es [señalar un origen de datos admitido](search-indexer-overview.md) hacia el índice y dejar que Azure Search y extraiga automáticamente los datos.
 
-## <a name="push-data-tooan-index"></a>Índice de tooan de inserción de datos
-Este enfoque refiere tooprogrammatically enviar su toomake de búsqueda de tooAzure de datos estén disponibles para las búsquedas. Para las aplicaciones con requisitos de una latencia muy baja (por ejemplo, si necesita buscar toobe operaciones sincronizada con las bases de datos de inventario dinámico), modelo de inserción de hello es la única opción.
+## <a name="push-data-to-an-index"></a>Inserción de datos en un índice
+Este enfoque se basa en cómo enviar mediante programación los datos a Búsqueda de Azure para que estén disponibles para las búsquedas. En el caso de las aplicaciones con requisitos de latencia muy baja (por ejemplo, si se necesita que las operaciones de búsqueda estén sincronizadas con las bases de datos dinámicas del inventario), la única opción es un modelo de inserción.
 
-Puede usar hello [API de REST](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) o [.NET SDK](search-import-data-dotnet.md) toopush índice de tooan de datos. Actualmente no hay ninguna compatibilidad de herramienta de inserción de datos mediante el portal de Hola.
+Para insertar datos en un índice, se pueden usar la [API de REST](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) o el [SDK de .NET](search-import-data-dotnet.md). Actualmente no se admite ninguna herramienta para insertar datos mediante el portal.
 
-Este enfoque es más flexible que el modelo de extracción de hello porque puede cargar documentos individualmente o en lotes (seguridad too1000 por lote o 16 MB, el límite ocurra primero). modelo de inserción de Hello también le permite tooupload documentos tooAzure búsqueda sin tener en cuenta que los datos son.
+Este enfoque es más flexible que el modelo de extracción, ya que los documentos se pueden cargar individualmente o en lotes (hasta 1000 por lote o 16 MB, lo que ocurra primero). El modelo de inserción también le permite cargar documentos en Búsqueda de Azure independientemente de dónde están los datos.
 
-formato de datos de Hello reconocido por búsqueda de Azure es JSON, y todos los documentos en el conjunto de datos de hello deben tener campos que se asignan toofields definidos en el esquema de índice. 
+El formato de datos que entiende Azure Search es JSON, y todos los documentos del conjunto de datos deben tener campos que se asignen a los campos definidos en el esquema del índice. 
 
 ## <a name="pull-data-into-an-index"></a>Extracción de datos e introducción en un índice
-modelo de extracción de Hello rastrea un origen de datos admitidos y carga automáticamente los datos de hello en el índice. En Azure Search, esta funcionalidad se implementa mediante *indexadores*, que actualmente están disponibles para [Blob Storage](search-howto-indexing-azure-blob-storage.md), [Table Storage](search-howto-indexing-azure-tables.md), [Azure Cosmos DB](http://aka.ms/documentdb-search-indexer), [Azure SQL Database y SQL Server en máquinas virtuales de Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md). 
+El modelo de extracción rastrea un origen de datos compatible y carga automáticamente los datos en el índice. En Azure Search, esta funcionalidad se implementa mediante *indexadores*, que actualmente están disponibles para [Blob Storage](search-howto-indexing-azure-blob-storage.md), [Table Storage](search-howto-indexing-azure-tables.md), [Azure Cosmos DB](http://aka.ms/documentdb-search-indexer), [Azure SQL Database y SQL Server en máquinas virtuales de Azure](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md). 
 
-Los indizadores conectan con un origen de datos de índice tooa (normalmente una tabla, vista o estructura equivalente) y asignan los campos de tooequivalent de campos de origen de índice de Hola. Durante la ejecución, el conjunto de filas de Hola se tooJSON transformado automáticamente y se carga en el índice especificado de Hola. Todos los indizadores admiten programación para que se puede especificar la frecuencia con datos de hello toobe actualizado. La mayoría de los indizadores proporcionan si el origen de datos de hello es compatible con el seguimiento de cambios. Seguimiento de cambios y eliminaciones tooexisting documentos además toorecognizing nuevos documentos, los indizadores eliminan la necesidad de hello tooactively administrar datos de hello en el índice. 
+Los indexadores conectan un índice a un origen de datos (normalmente una tabla, vista o estructura equivalente) y asignan campos de origen a los campos equivalentes del índice. Durante la ejecución, el conjunto de filas se transforma automáticamente en JSON y se carga en el índice especificado. Todos los indexadores admiten la programación, de modo que se puede especificar con qué frecuencia se deben actualizar los datos. La mayoría de los indexadores proporcionan seguimiento de cambios, siempre el origen de datos lo admita. Mediante el seguimiento de cambios y eliminaciones en documentos existentes, además de reconocer nuevos documentos, los indexadores eliminan la necesidad de administrar activamente los datos del índice. 
 
-Funcionalidad de indizador se expone en hello [portal de Azure](search-import-data-portal.md), hello [API de REST](/rest/api/searchservice/Indexer-operations), hello y [.NET SDK](/dotnet/api/microsoft.azure.search.indexersoperations). 
+La funcionalidad del indexador se expone en [Azure Portal](search-import-data-portal.md) así como en la [API de REST](/rest/api/searchservice/Indexer-operations) y el [SDK de .NET](/dotnet/api/microsoft.azure.search.indexersoperations). 
 
-Un portal de hello toousing ventaja es que búsqueda de Azure normalmente va a generar un esquema de índice predeterminado leyendo Hola metadatos del conjunto de datos de origen de Hola. Puede modificar el índice generado Hola hasta que se procesa el índice de hello, después de que Hola se permiten modificaciones de esquema solo son aquellos que no requieren volver a indizar. Si los cambios de Hola que desee toomake impacto hello esquema directamente, necesitaría índice de hello toorebuild. 
+Una ventaja del uso el portal es que Azure Search normalmente puede generar automáticamente un esquema de índice predeterminado mediante la lectura de los metadatos del conjunto de datos de origen. El índice generado se puede modificar hasta que se procese, tras lo cual las únicas modificaciones de esquema que se permiten son las que no requieren volver a indexar. Si los cambios que desea realizar afectan directamente el esquema, necesitaría volver a generar el índice. 
 
-Después de que se rellena el índice de hello, puede usar **buscar en el explorador** en la barra de comandos de portal de Hola como un paso de verificación.
+Una vez que se rellena el índice, puede usar el **Explorador de búsqueda** de la barra de comandos del portal como paso de verificación.
 
 ## <a name="query-an-index-using-search-explorer"></a>Realización de consultas en un índice mediante el Explorador de búsqueda
 
-Un tooperform de forma rápida una comprobación preliminar de carga de un documento hello es toouse **buscar en el explorador** en el portal de Hola. el Explorador de Hello permite consultar un índice sin necesidad de toowrite cualquier código. Hello experiencia de búsqueda se basa valores predeterminados, como hello [sintaxis simple](/rest/api/searchservice/simple-query-syntax-in-azure-search) y default [searchMode parámetro de consulta](/rest/api/searchservice/search-documents). Resultados se devuelven en JSON que puede inspeccionar todo el documento Hola.
+Una forma rápida de realizar una comprobación preliminar en la carga de documentos es usar el **Explorador de búsqueda** en el portal. El explorador permite consultar un índice sin tener que escribir código. La búsqueda se basa en los valores predeterminados, como la [sintaxis simple](/rest/api/searchservice/simple-query-syntax-in-azure-search) y el [parámetro de consulta searchMode](/rest/api/searchservice/search-documents) predeterminado. Los resultados se devuelven en formato JSON, con el fin de que pueda revisar todo el documento.
 
 > [!TIP]
-> Numerosos [ejemplos de código de búsqueda de Azure](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search) incluir conjuntos de datos incrustado o estén disponibles, inicia un tooget de manera sencilla de la oferta. portal de Hello también proporciona un indizador de ejemplo y un origen de datos que consta de un conjunto de datos pequeño inmobiliaria (denominada "realestate-us-sample"). Al ejecutar indizador preconfigurada de hello en el origen de datos de ejemplo de Hola, se crea un índice y se cargan con documentos que, a continuación, se pueden consultar en el Explorador de búsqueda o el código que se escribe.
+> Muchos [ejemplos de código de Azure Search](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search) incluyen conjuntos de datos incrustados o rápidamente disponibles, lo que supone una forma sencilla de empezar a trabajar. El portal también proporciona un indexador de ejemplo y un origen de datos que consta del conjunto de datos de una pequeña inmobiliaria (denominado "realestate-us-sample"). Al ejecutar el indexador preconfigurado en el origen de datos de ejemplo, se crea un índice que se carga con documentos que, luego, se pueden consultar en el Explorador de búsqueda o mediante un código creado por usted.

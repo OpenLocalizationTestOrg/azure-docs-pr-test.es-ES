@@ -1,6 +1,6 @@
 ---
-title: bibliotecas de aaaConnection para la base de datos de Azure para MySQL | Documentos de Microsoft
-description: "Este artículo enumeran cada biblioteca o el controlador que los programas cliente pueden utilizar para conectarse tooAzure base de datos de MySQL."
+title: Bibliotecas de conexiones de Azure Database for MySQL | Microsoft Docs
+description: "En este artículo se enumera cada biblioteca o controlador que pueden usar los programas cliente al conectarse a Azure Database for MySQL."
 services: mysql
 author: mswutao
 ms.author: wutao
@@ -9,14 +9,14 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 06/08/2017
-ms.openlocfilehash: ff439274ec5865d7713dec18d53e7e44f5886457
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e746f28829063f8437ad408c4681f90aec6c0e0a
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>Bibliotecas de conexiones de Azure Database for MySQL
-Este tema enumeran cada biblioteca o el controlador que los programas cliente pueden utilizar para conectarse tooAzure base de datos de MySQL.
+En este tema se muestra cada biblioteca o controlador que pueden usar los programas cliente al conectarse a Azure Database for MySQL.
 
 ## <a name="client-interfaces"></a>Interfaces de cliente
 MySQL ofrece conectividad de controlador de base de datos estándar para el uso de MySQL con aplicaciones y herramientas que son compatibles con los estándares del sector ODBC y JDBC. Cualquier sistema que funciona con ODBC o JDBC puede usar MySQL.

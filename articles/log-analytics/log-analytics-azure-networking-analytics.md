@@ -1,6 +1,6 @@
 ---
-title: "solución de análisis de red en el análisis de registros aaaAzure | Documentos de Microsoft"
-description: "Puede usar Hola soluciones de análisis de redes de Azure en registros de puerta de enlace de aplicaciones de Azure y análisis de registros tooreview registros de grupo de seguridad de red de Azure."
+title: "Solución Azure Networking Analytics de Log Analytics | Microsoft Docs"
+description: "Puede usar la solución Azure Networking Analytics en Log Analytics para revisar los registros de los grupos de seguridad de red de Azure y los registros de Azure Application Gateway."
 services: log-analytics
 documentationcenter: 
 author: richrundmsft
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: richrund
-ms.openlocfilehash: 3674189786bacccc82e6708e78f14c92178e6676
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 06b67322b3812a668a515ecc357171ede1d85441
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Soluciones de supervisión de redes de Azure en Log Analytics
 
-Análisis de registros ofrecen Hola siguientes soluciones para supervisar las redes:
+Log Analytics ofrece las siguientes soluciones para supervisar las redes:
 * Monitor de rendimiento de red (NPM)
- * Supervisar el estado de saludo de la red
-* Azure tooreview de análisis de puerta de enlace de aplicaciones
+ * Supervisión del mantenimiento de la red
+* Azure Application Gateway Analytics para revisar
  * Registros de Azure Application Gateway
  * Métricas de Azure Application Gateway
-* Tooreview de análisis del grupo de seguridad de red de Azure
+* Azure Network Security Group Analytics para revisar
  * Registros de Azure Network Security Group
 
 ## <a name="network-performance-monitor-npm"></a>Network Performance Monitor (NPM) (monitor de rendimiento de red)
 
-Hola [Monitor de rendimiento de red](log-analytics-network-performance-monitor.md) solución de administración es una solución, que supervisa la disponibilidad de redes, la disponibilidad y el estado de Hola de supervisión de red.  Es utilizado toomonitor conectividad entre:
+La Solución de administración [Network Performance Monitor](log-analytics-network-performance-monitor.md) supervisa el mantenimiento, la disponibilidad y accesibilidad de las redes.  Se utiliza para supervisar la conectividad entre:
 
 * Nube pública y entorno local
 * Centros de datos y ubicaciones de usuario (sucursales)
@@ -42,23 +42,23 @@ Hola [Monitor de rendimiento de red](log-analytics-network-performance-monitor.m
 Para más información consulte [Network Performance Monitor](log-analytics-network-performance-monitor.md).
 
 ## <a name="azure-application-gateway-and-network-security-group-analytics"></a>Azure Application Gateway y Network Security Group Analytics
-soluciones de Hola toouse:
-1. Agregar tooLog de solución de administración de hello análisis, y
-2. Habilitar el área de trabajo de diagnóstico toodirect Hola diagnósticos tooa análisis de registros. No es necesario toowrite Hola registros tooAzure almacenamiento de blobs.
+Para usar las soluciones:
+1. Agregue la Solución de administración a Log Analytics y
+2. Habilite los diagnósticos para que se dirijan a un área de trabajo de Log Analytics. No se requiere escribir los registros en Azure Blob Storage.
 
-Puede habilitar el diagnóstico y solución de hello correspondientes para uno o ambos de los grupos de seguridad de red y puerta de enlace de aplicaciones.
+Puede habilitar los diagnósticos y la solución correspondiente solo para Application Gateway, solo para Networking Security Groups o para ambas.
 
-Si no habilita el registro de diagnóstico para un tipo de recurso determinado, pero instalar soluciones de hello, hojas de panel de Hola para ese recurso están en blanco y mostrar un mensaje de error.
+Si no habilita el registro de diagnósticos para un tipo de recurso en particular, pero instala la solución, las hojas de panel para ese recurso estarán en blanco y mostrarán un mensaje de error.
 
 > [!NOTE]
-> En enero de 2017 Hola admite manera de enviar registros de puertas de enlace de aplicaciones y grupos de seguridad de red tooLog cambiado de análisis. Si ve hello **el análisis de redes de Azure (en desuso)** solución, consulte demasiado[migrar desde soluciones de análisis de red antiguo hello](#migrating-from-the-old-networking-analytics-solution) para conocer los pasos necesita toofollow.
+> En enero de 2017, cambia la forma de enviar registros de Application Gateway y Network Security Group a Log Analytics. Si consulta la solución **Azure Networking Analytics (en desuso)**, remítase a la sección [Migración desde la solución Networking Analytics antigua ](#migrating-from-the-old-networking-analytics-solution) para conocer los pasos que debe seguir.
 >
 >
 
 ## <a name="review-azure-networking-data-collection-details"></a>Revisión de los detalles de recopilación de datos de redes de Azure
-análisis de la puerta de enlace de aplicaciones de Azure de Hola y soluciones de administración de análisis de grupo de seguridad de red de hello recopilan registros de diagnósticos directamente desde las puertas de enlace de aplicaciones de Azure y los grupos de seguridad de red. No es necesario toowrite Hola registros tooAzure almacenamiento de blobs y no hay ningún agente es necesario para la recopilación de datos.
+Las soluciones de administración Azure Application Gateway Analytics y Network Security Group Analytics recopilan registros de diagnósticos directamente de Azure Application Gateways y Network Security Groups. No es necesario escribir los registros en Azure Blob Storage y no se requiere ningún agente para la recopilación de datos.
 
-Hello tabla siguiente muestran los métodos de recopilación de datos y otros detalles acerca de cómo se recopilan los datos para el análisis de la puerta de enlace de aplicaciones de Azure y análisis del grupo de seguridad de red de Hola.
+En la siguiente tabla se muestran los métodos de recopilación de datos y otros detalles sobre cómo se reúnen los datos análisis de Azure Application Gateway y Network Security Group.
 
 | Plataforma | Agente directo | Agente System Center Operations Manager | Azure | ¿Se requiere Operations Manager? | Se envían los datos del agente de Operations Manager a través del grupo de administración | Frecuencia de recopilación |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -69,40 +69,40 @@ Hello tabla siguiente muestran los métodos de recopilación de datos y otros de
 
 ![Símbolo de Azure Application Gateway Analytics](./media/log-analytics-azure-networking/azure-analytics-symbol.png)
 
-Hola siguiendo los registros es compatibles con las puertas de enlace de la aplicación:
+Para Application Gateway se admiten los siguientes registros:
 
 * ApplicationGatewayAccessLog
 * ApplicationGatewayPerformanceLog
 * ApplicationGatewayFirewallLog
 
-Hola siguiendo las métricas se admite para las puertas de enlace de la aplicación:
+Las métricas siguientes son compatibles con Application Gateway:
 
 * Rendimiento de 5 minutos
 
-### <a name="install-and-configure-hello-solution"></a>Instalar y configurar soluciones de Hola
-Usar hello siguiendo las instrucciones tooinstall y configurar soluciones de análisis de hello puerta de enlace de aplicaciones de Azure:
+### <a name="install-and-configure-the-solution"></a>Instalación y configuración de la solución
+Para instalar y configurar la solución Azure Application Gateway, siga estas instrucciones:
 
-1. Habilitar la solución de análisis de puerta de enlace de aplicaciones de Azure Hola de [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) o mediante el proceso de hello descrito en [soluciones de análisis de registro agregar desde la Galería de soluciones de hello](log-analytics-add-solutions.md).
-2. Habilitar el registro de diagnóstico para hello [las puertas de enlace de la aplicación](../application-gateway/application-gateway-diagnostics.md) desea toomonitor.
+1. Habilite la solución Azure Application Gateway Analytics desde [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) o mediante el proceso descrito en el artículo sobre[ incorporación de soluciones de Log Analytics desde la Galería de soluciones](log-analytics-add-solutions.md).
+2. Habilite el registro de diagnósticos para las [Application Gateway](../application-gateway/application-gateway-diagnostics.md) que desea supervisar.
 
-#### <a name="enable-azure-application-gateway-diagnostics-in-hello-portal"></a>Habilitar los diagnósticos de puerta de enlace de aplicaciones de Azure en el portal de Hola
+#### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>Habilitación de los diagnósticos de Azure Application Gateway en el portal
 
-1. Hola portal de Azure, navegue toohello Application Gateway recursos toomonitor
-2. Seleccione *registros de diagnóstico* hello tooopen después de la página
+1. En Azure Portal, navegue hasta el recurso de Application Gateway que se va a supervisar.
+2. Seleccione *Registros de diagnósticos* para abrir la página siguiente.
 
    ![imagen del recurso de Application Gateway](./media/log-analytics-azure-networking/log-analytics-appgateway-enable-diagnostics01.png)
-3. Haga clic en *Activar diagnósticos* hello tooopen después de la página
+3. Haga clic en *Activar diagnósticos* para abrir la página siguiente.
 
    ![imagen del recurso de Application Gateway](./media/log-analytics-azure-networking/log-analytics-appgateway-enable-diagnostics02.png)
-4. tooturn en diagnóstico, haga clic en *en* en *estado*
-5. Haga clic en la casilla de verificación de Hola para *enviar tooLog análisis*
+4. Para activar los diagnósticos, haga clic en *Activar* en *Estado*.
+5. Haga clic en la casilla *Send to Log Analytics* (Enviar a Log Analytics).
 6. Seleccione un área de trabajo de Log Analytics existente o cree un área de trabajo.
-7. Haga clic en la casilla de hello en **registro** para cada uno de toocollect de tipos de registro de hello
-8. Haga clic en *guardar* registro de hello tooenable de diagnóstico tooLog análisis
+7. En **Registro**, haga clic en la casilla correspondiente a cada uno de los tipos de registro para recopilar.
+8. Haga clic en *Guardar* para habilitar el registro de diagnósticos en Log Analytics.
 
 #### <a name="enable-azure-network-diagnostics-using-powershell"></a>Habilitación de los diagnósticos de red de Azure con PowerShell
 
-Hola siguiente script de PowerShell ofrece un ejemplo de cómo tooenable registro de diagnóstico para las puertas de enlace de la aplicación.
+El siguiente script de PowerShell proporciona un ejemplo de cómo habilitar el registro de diagnósticos puertas de enlace de aplicaciones.
 
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -115,7 +115,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $work
 ### <a name="use-azure-application-gateway-analytics"></a>Uso de análisis de Azure Application Gateway
 ![imagen del icono de análisis de Azure Application Gateway](./media/log-analytics-azure-networking/log-analytics-appgateway-tile.png)
 
-Tras hacer clic en hello **análisis de puerta de enlace de aplicaciones de Azure** icono en hello información general, puede ver resúmenes de los registros y, a continuación, profundizar en toodetails para hello siguientes categorías:
+Tras hacer clic en el icono **Azure Application Gateway analytics** (Análisis de Azure Application Gateway) en Overview (Información general), puede ver resúmenes de los registros y desplazarse hasta los detalles de las categorías siguientes:
 
 * Registros de acceso de Application Gateway
   * Errores de cliente y servidor de los registros de acceso de Application Gateway
@@ -130,44 +130,44 @@ Tras hacer clic en hello **análisis de puerta de enlace de aplicaciones de Azur
 
 ![imagen del panel de análisis de Azure Application Gateway](./media/log-analytics-azure-networking/log-analytics-appgateway02.png)
 
-En hello **análisis de puerta de enlace de aplicaciones de Azure** panel, revise la información de resumen de Hola de uno de los módulos de hello y, a continuación, haga clic en uno tooview para obtener información acerca de la página de búsqueda de registros de Hola.
+En el panel **Azure Application Gateway analytics** (Análisis de Azure Application Gateway), revise la información de resumen en una de las hojas y haga clic en una para obtener información detallada sobre la página de búsqueda de registros.
 
-En cualquiera de las páginas de búsqueda de registro de hello, puede ver los resultados por tiempo, resultados detallados y el historial de búsqueda de registros. También puede filtrar por resultados de facetas toonarrow Hola.
+En cualquiera de las páginas de búsqueda de registros, puede ver los resultados por tiempo, resultados detallados y el historial de búsqueda de registros. También puede filtrar por las facetas para restringir los resultados.
 
 
 ## <a name="azure-network-security-group-analytics-solution-in-log-analytics"></a>Solución Azure Network Security Group Analytics de Log Analytics
 
 ![Símbolo de Azure Network Security Group Analytics](./media/log-analytics-azure-networking/azure-analytics-symbol.png)
 
-Hola siguiendo los registros es compatibles con grupos de seguridad de red:
+Para los grupos de seguridad de red se admiten los siguientes registros:
 
 * NetworkSecurityGroupEvent
 * NetworkSecurityGroupRuleCounter
 
-### <a name="install-and-configure-hello-solution"></a>Instalar y configurar soluciones de Hola
-Usar hello siguiendo las instrucciones tooinstall y configurar soluciones de análisis de redes de Azure de hello:
+### <a name="install-and-configure-the-solution"></a>Instalación y configuración de la solución
+Para instalar y configurar la solución Azure Networking Analytics, siga estas instrucciones:
 
-1. Habilitar la solución de análisis de grupo de seguridad de red de Azure Hola de [Azure marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) o mediante el proceso de hello descrito en [soluciones de análisis de registro agregar desde la Galería de soluciones de hello](log-analytics-add-solutions.md).
-2. Habilitar el registro de diagnóstico para hello [grupo de seguridad de red](../virtual-network/virtual-network-nsg-manage-log.md) recursos que desee toomonitor.
+1. Habilite la solución Azure Network Security Group Analytics desde [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) o mediante el proceso descrito en el artículo sobre[ incorporación de soluciones de Log Analytics desde la Galería de soluciones](log-analytics-add-solutions.md).
+2. Habilite el registro de diagnósticos para los recursos de [Network Security Group](../virtual-network/virtual-network-nsg-manage-log.md) que desea supervisar.
 
-### <a name="enable-azure-network-security-group-diagnostics-in-hello-portal"></a>Habilitar los diagnósticos de grupo de seguridad de red de Azure en el portal de Hola
+### <a name="enable-azure-network-security-group-diagnostics-in-the-portal"></a>Habilitación de los diagnósticos de Azure Network Security Group en el portal
 
-1. Hola portal de Azure, navegue toomonitor de recurso de grupo de seguridad de red toohello
-2. Seleccione *registros de diagnóstico* hello tooopen después de la página
+1. En Azure Portal, navegue hasta el recurso Grupo de seguridad de red que se va a supervisar.
+2. Seleccione *Registros de diagnósticos* para abrir la página siguiente.
 
    ![imagen del recurso Grupo de seguridad de red de Azure](./media/log-analytics-azure-networking/log-analytics-nsg-enable-diagnostics01.png)
-3. Haga clic en *Activar diagnósticos* hello tooopen después de la página
+3. Haga clic en *Activar diagnósticos* para abrir la página siguiente.
 
    ![imagen del recurso Grupo de seguridad de red de Azure](./media/log-analytics-azure-networking/log-analytics-nsg-enable-diagnostics02.png)
-4. tooturn en diagnóstico, haga clic en *en* en *estado*
-5. Haga clic en la casilla de verificación de Hola para *enviar tooLog análisis*
+4. Para activar los diagnósticos, haga clic en *Activar* en *Estado*.
+5. Haga clic en la casilla *Send to Log Analytics* (Enviar a Log Analytics).
 6. Seleccione un área de trabajo de Log Analytics existente o cree un área de trabajo.
-7. Haga clic en la casilla de hello en **registro** para cada uno de toocollect de tipos de registro de hello
-8. Haga clic en *guardar* registro de hello tooenable de diagnóstico tooLog análisis
+7. En **Registro**, haga clic en la casilla correspondiente a cada uno de los tipos de registro para recopilar.
+8. Haga clic en *Guardar* para habilitar el registro de diagnósticos en Log Analytics.
 
 ### <a name="enable-azure-network-diagnostics-using-powershell"></a>Habilitación de los diagnósticos de red de Azure con PowerShell
 
-Hola siguiente script de PowerShell ofrece un ejemplo de cómo tooenable registro de diagnóstico para los grupos de seguridad de red
+El siguiente script de PowerShell proporciona un ejemplo de cómo habilitar el registro de diagnósticos para grupos de seguridad de red:
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
@@ -177,7 +177,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $nsg.ResourceId  -WorkspaceId $workspac
 ```
 
 ### <a name="use-azure-network-security-group-analytics"></a>Uso de Azure Network Security Group Analytics
-Tras hacer clic en hello **análisis de grupo de seguridad de red de Azure** icono en hello información general, puede ver resúmenes de los registros y, a continuación, profundizar en toodetails para hello siguientes categorías:
+Tras hacer clic en el icono **Azure Network Security Group Analytics** en Overview (Información general), puede ver resúmenes de los registros y desplazarse hasta los detalles de las categorías siguientes:
 
 * Flujos bloqueados de grupos de seguridad de red
   * Reglas de los grupos de seguridad de red con flujos bloqueados
@@ -190,24 +190,24 @@ Tras hacer clic en hello **análisis de grupo de seguridad de red de Azure** ico
 
 ![imagen del panel Azure Network Security Group Analytics](./media/log-analytics-azure-networking/log-analytics-nsg02.png)
 
-En hello **análisis de grupo de seguridad de red de Azure** panel, revise la información de resumen de Hola de uno de los módulos de hello y, a continuación, haga clic en uno tooview para obtener información acerca de la página de búsqueda de registros de Hola.
+En el panel **Azure Network Security Group Analytics**, revise la información de resumen en una de las hojas y haga clic en una para obtener información detallada sobre la página de búsqueda de registros.
 
-En cualquiera de las páginas de búsqueda de registro de hello, puede ver los resultados por tiempo, resultados detallados y el historial de búsqueda de registros. También puede filtrar por resultados de facetas toonarrow Hola.
+En cualquiera de las páginas de búsqueda de registros, puede ver los resultados por tiempo, resultados detallados y el historial de búsqueda de registros. También puede filtrar por las facetas para restringir los resultados.
 
-## <a name="migrating-from-hello-old-networking-analytics-solution"></a>Migración de soluciones de análisis de red antiguo Hola
-En enero de 2017 Hola admite la manera de enviar registros de puertas de enlace de aplicaciones de Azure y grupos de seguridad de red de Azure tooLog cambiado de análisis. Estos cambios proporcionan Hola siguientes ventajas:
-+ Los registros se escriben directamente tooLog análisis sin Hola necesita toouse una cuenta de almacenamiento
-+ Menor latencia de tiempo de hello cuando los registros están genera toothem está disponible en el análisis de registros
+## <a name="migrating-from-the-old-networking-analytics-solution"></a>Migración desde la solución Networking Analytics antigua
+En enero de 2017, cambia la forma de enviar registros de Azure Application Gateway y Azure Network Security Group a Log Analytics. Estos cambios proporcionan las siguientes ventajas:
++ Los registros se escriben directamente en Log Analytics sin necesidad de usar una cuenta de almacenamiento
++ Menor latencia desde el momento en el que los registros se generan hasta que están disponibles en Log Analytics
 + Menos pasos de configuración
 + Un formato común para todos los tipos de diagnósticos de Azure
 
-Hola toouse actualiza soluciones:
+Para usar las soluciones actualizadas:
 
-1. [Configurar toobe de diagnóstico enviado tooLog análisis directamente desde las puertas de enlace de aplicaciones de Azure](#enable-azure-application-gateway-diagnostics-in-the-portal)
-2. [Configurar toobe de diagnóstico que se envían directamente tooLog análisis de grupos de seguridad de red de Azure](#enable-azure-network-security-group-diagnostics-in-the-portal)
-2. Habilitar hello *análisis de puerta de enlace de aplicaciones de Azure* hello y *análisis de grupo de seguridad de red de Azure* solución mediante Hola proceso se describe en [soluciones de análisis de registros agregar desde Hola Galería de soluciones](log-analytics-add-solutions.md)
-3. Actualizar cualquier consulta guardada, paneles o alertas toouse Hola nuevo tipo de datos
-  + El tipo es tooAzureDiagnostics. Puede usar registros de red de hello ResourceType toofilter tooAzure.
+1. [Configure los diagnósticos que se van a enviar directamente a Log Analytics desde Azure Application Gateway](#enable-azure-application-gateway-diagnostics-in-the-portal).
+2. [Configure los diagnósticos que se van a enviar directamente a Log Analytics desde Azure Network Security Group](#enable-azure-network-security-group-diagnostics-in-the-portal).
+2. Habilite la solución *Azure Application Gateway Analytics* y *Azure Network Security Group Analytics* mediante el proceso que se describe en [Incorporación de soluciones de administración de Log Analytics](log-analytics-add-solutions.md).
+3. Actualice cualquier consulta guardada, panel o alerta para usar el nuevo tipo de datos.
+  + El tipo es AzureDiagnostics. Puede usar ResourceType para filtrar registros de redes de Azure.
 
     | En lugar de: | Uso: |
     | --- | --- |
@@ -215,15 +215,15 @@ Hola toouse actualiza soluciones:
     |`Type=NetworkApplicationgateways OperationName=ApplicationGatewayPerformance` | `Type=AzureDiagnostics ResourceType=APPLICATIONGATEWAYS OperationName=ApplicationGatewayPerformance` |
     | `Type=NetworkSecuritygroups` | `Type=AzureDiagnostics ResourceType=NETWORKSECURITYGROUPS` |
 
-   + Para cualquier campo que tenga un sufijo de \_s, \_d., o \_g en nombre de hello, cambiar Hola primer carácter toolower mayúsculas y minúsculas
-   + Para cualquier campo que tenga un sufijo de \_o en nombre, datos de Hola se divide en campos individuales en función de los nombres de campo de hello anidado.
-4. Quitar hello *análisis de redes de Azure (en desuso)* solución.
-  + Si usa PowerShell, utilice `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that hello workspace is in> -WorkspaceName <name of hello log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`.
+   + Para todos los campos que tengan un sufijo \_s, \_d o \_g en el nombre, cambie el primer carácter a minúsculas.
+   + Para todos los campos que tengan un sufijo \_o en el nombre, los datos se dividen en campos individuales según los nombres de campo anidados.
+4. Quite la solución *Azure Networking Analytics (en desuso)*.
+  + Si usa PowerShell, utilice `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`.
 
-Datos recopilan antes de cambiar de hello no está visible en la nueva solución de Hola. Puede seguir tooquery para este uso de datos Hola tipo anterior y nombres de campo.
+Los datos recopilados antes del cambio no aparecen en la nueva solución. Puede seguir consultando estos datos con el tipo y los nombres de campo anteriores.
 
 ## <a name="troubleshooting"></a>Solución de problemas
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Use [búsquedas de registro de análisis de registros](log-analytics-log-searches.md) tooview obtener datos de diagnóstico de Azure.
+* Use [Búsquedas de registros en Log Analytics](log-analytics-log-searches.md) para ver datos detallados sobre los diagnósticos de Azure.

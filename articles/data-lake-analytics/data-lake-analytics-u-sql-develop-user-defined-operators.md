@@ -1,6 +1,6 @@
 ---
-title: aaaDevelop U-SQL los operadores definidos por el usuario (UDO) | Documentos de Microsoft
-description: "Obtenga información acerca de cómo se usa y reutiliza en los análisis de Data Lake trabajos toodevelop operadores definidos por el usuario toobe. "
+title: Desarrollo de operadores U-SQL definidos por el usuario (UDO) | Microsoft Docs
+description: "Aprenda a desarrollar operadores definidos por el usuario para usarse y volverse a usar en trabajos de Análisis de Data Lake. "
 services: data-lake-analytics
 documentationcenter: 
 author: edmacauley
@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-ms.openlocfilehash: 6b86618efd3751cd9a5e91875879d7dd6d6a7b02
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: fdee02fb60b633c26704fc1774dfc3a7825b5e0d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>Desarrollo de operadores U-SQL definidos por el usuario (UDO)
-Obtenga información acerca de cómo toodevelop definido por el usuario datos tooprocess de operadores en un trabajo de SQL U.
+Aprenda a desarrollar operadores definidos por el usuario para procesar datos en un trabajo de U-SQL.
 
 Para instrucciones sobre cómo desarrollar ensamblados de propósito general para U-SQL, consulte [Desarrollo de ensamblados U-SQL para trabajos de Azure Data Lake Analytics](data-lake-analytics-u-sql-develop-assemblies.md)
 
 ## <a name="define-and-use-a-user-defined-operator-in-u-sql"></a>Definición y uso de un operador definido por el usuario en U-SQL
-**toocreate y enviar un trabajo de SQL U**
+**Para crear y enviar un trabajo de U-SQL**
 
-1. En Visual Studio Hola seleccione **archivo > Nuevo > proyecto > U-SQL proyecto**.
+1. En el menú de Visual Studio, seleccione **Archivo > Nuevo > Proyecto > U-SQL Project** (Proyecto de U-SQL).
 2. Haga clic en **Aceptar**. Visual Studio crea una solución con un archivo Script.usql.
 3. En el **Explorador de soluciones**, expanda Script.usql y haga doble clic en **Script.usql.cs**.
-4. Pegue Hola siguiente código en el archivo hello:
+4. Pegue el código siguiente en el archivo:
 
         using Microsoft.Analytics.Interfaces;
         using System.Collections.Generic;
@@ -88,7 +88,7 @@ Para instrucciones sobre cómo desarrollar ensamblados de propósito general par
                 }
             }
         }
-6. Abra **Script.usql**, y pegar Hola siguiendo script U-SQL:
+6. Abra **Script.usql** y pegue el siguiente script de U-SQL:
 
         @drivers =
             EXTRACT UserID      string,
@@ -115,21 +115,21 @@ Para instrucciones sobre cómo desarrollar ensamblados de propósito general par
             USING new USQL_UDO.CountryName();    
 
         OUTPUT @drivers_CountryName
-            too"/Samples/Outputs/Drivers.csv"
+            TO "/Samples/Outputs/Drivers.csv"
             USING Outputters.Csv(Encoding.Unicode);
-7. Especifique la cuenta de análisis de Data Lake hello, base de datos y esquema.
+7. Especifique la cuenta de Análisis de Data Lake, la base de datos y el esquema.
 8. En el **Explorador de soluciones**, haga clic con el botón derecho en **Script.usql** y después haga clic en **Build Script** (Compilar script).
 9. En el **Explorador de soluciones**, haga clic con el botón derecho en **Script.usql** y después haga clic en **Submit Script** (Enviar script).
-10. Si aún no lo ha conectado tooyour suscripción de Azure, que se van a ser solicitada tooenter sus credenciales de cuenta de Azure.
-11. Haga clic en **Enviar**. Resultados de envío y de vínculo de trabajo están disponibles en la ventana de resultados de hello cuando se completa el envío de Hola.
-12. Haga clic en hello **actualizar** botón toosee hello más reciente trabajo estado y la actualización de pantalla de bienvenida.
+10. Si no se ha conectado a su suscripción de Azure, se le pedirá que especifique sus credenciales de la cuenta de Azure.
+11. Haga clic en **Enviar**. Los resultados del envío y el vínculo del trabajo están disponibles en la ventana de resultados cuando se completa el envío.
+12. Haga clic en el botón **Actualizar** para ver el estado del trabajo más reciente y actualizar la pantalla.
 
-**salida de hello toosee**
+**Para ver la salida**:
 
-1. De **Explorador de servidores**, expanda **Azure**, expanda **análisis de Data Lake**, expanda y su cuenta de análisis de Data Lake **decuentasdealmacenamiento**, haga clic en hello almacenamiento predeterminado y, a continuación, haga clic en **Explorer**.
+1. En el **Explorador de servidores**, expanda **Azure**, **Data Lake Analytics**, su cuenta de Data Lake Analytics y **Cuentas de almacenamiento**, haga clic con el botón derecho en el almacén predeterminado y, finalmente, haga clic en **Explorador**.
 2. Expanda Ejemplos, expanda Salidas y, finalmente, haga doble clic en **Drivers.csv**.
 
 ## <a name="see-also"></a>Otras referencias
 * [Introducción a Análisis de Data Lake mediante PowerShell](data-lake-analytics-get-started-powershell.md)
-* [Empezar a trabajar con análisis de Data Lake con hello portal de Azure](data-lake-analytics-get-started-portal.md)
+* [Introducción a Análisis de Data Lake mediante el Portal de Azure](data-lake-analytics-get-started-portal.md)
 * [Uso de Data Lake Tools for Visual Studio para desarrollar aplicaciones de U-SQL](data-lake-analytics-data-lake-tools-get-started.md)

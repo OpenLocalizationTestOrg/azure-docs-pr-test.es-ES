@@ -1,6 +1,6 @@
 ---
-title: aaaLinux VM agente y extensiones de Azure | Documentos de Microsoft
-description: "Ofrezca una visión general de cómo tooinstall Hola a agente, mediante el modelo de implementación clásica de hello en una VM de Linux, agente hello y extensiones."
+title: Extensiones y agente de VM de Linux en Azure | Microsoft Docs
+description: "Proporciona información general de los agentes y las extensiones y sobre cómo instalar el agente mediante el modelo de implementación clásico en máquinas virtuales Linux."
 services: virtual-machines-linux
 documentationcenter: 
 author: squillace
@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 03/02/2017
 ms.author: rasquill
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a50cfe9964a44986f681e2cecb0c09a54ccdca75
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 06b802c408ea5d1b2b40d05321e1a0014e99ca8b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="about-hello-virtual-machine-agent-and-extensions-for-linux"></a>Acerca de agente de máquina virtual de Hola y extensiones para Linux
+# <a name="about-the-virtual-machine-agent-and-extensions-for-linux"></a>Acerca de las extensiones y del agente de máquina virtual para Linux
 > [!IMPORTANT]
-> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../../../resource-manager-deployment-model.md). Este artículo tratan con modelo de implementación de hello clásico. Microsoft recomienda que más nuevas implementaciones de usar el modelo del Administrador de recursos de Hola. Para más información sobre los agentes y las extensiones de máquina virtual mediante Resource Manager, consulte [aquí](../extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../../../resource-manager-deployment-model.md). En este artículo se trata el modelo de implementación clásico. Microsoft recomienda que las implementaciones más recientes usen el modelo del Administrador de recursos. Para más información sobre los agentes y las extensiones de máquina virtual mediante Resource Manager, consulte [aquí](../extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-classic-agents-and-extensions](../../../../includes/virtual-machines-common-classic-agents-and-extensions.md)]

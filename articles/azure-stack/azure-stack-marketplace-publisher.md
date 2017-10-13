@@ -1,6 +1,6 @@
 ---
-title: aaaUse Hola toocreate del Kit de herramientas de Marketplace y publicar elementos de marketplace | Documentos de Microsoft
-description: "Obtenga información acerca de cómo tooquickly crear elementos de marketplace con hello Kit de herramientas de publicación"
+title: Usar el kit de herramientas de Marketplace para crear y publicar elementos de Marketplace | Microsoft Docs
+description: "Aprenda a crear rápidamente elementos de Marketplace con el kit de herramientas de publicación"
 services: azure-stack
 documentationcenter: 
 author: HeathL17
@@ -14,75 +14,75 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/14/2017
 ms.author: helaw
-ms.openlocfilehash: c1cf9ad1da44787901297eec12faf2a3dea82a6c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5b2c04d2cbc06e1572dc2e40712f6cf9d886aa1e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #  <a name="add-marketplace-items-using-publishing-tool"></a>Agregar elementos de Marketplace con la herramienta de publicación
-Agregar el contenido toohello [Azure Marketplace de pila](azure-stack-marketplace.md) hace que su tooyou disponibles de soluciones y los inquilinos para la implementación.  Hola Kit de herramientas de Marketplace crea archivos de paquetes de Azure Marketplace (.azpkg) basados en plantillas del Administrador de recursos de Azure IaaS o extensiones de máquina virtual.  También puede usar archivos de hello Kit de herramientas de Marketplace toopublish .azpkg, creado con la herramienta de Hola o mediante [manual](azure-stack-create-and-publish-marketplace-item.md) pasos.  En este tema le guía por descargar herramienta hello, creación de un elemento de marketplace basado en una plantilla de máquina virtual y, a continuación, publicar ese toohello elemento Azure Marketplace de pila.     
+Agregar el contenido a [Azure Stack Marketplace](azure-stack-marketplace.md) hace que sus soluciones estén disponibles para implementación por su parte y la de sus inquilinos.  El kit de herramientas de Marketplace crea archivos de paquetes de Azure Marketplace (.azpkg) basados en extensiones de VM o plantillas de Azure Resource Manager de IaaS.  También puede usar el kit de herramientas de Marketplace para publicar archivos .azpkg creados con la herramienta o mediante pasos [manuales](azure-stack-create-and-publish-marketplace-item.md).  En este tema, conocerá los pasos para descargar la herramienta, crear un elemento de Marketplace basado en una plantilla de VM y, a continuación, publicar ese elemento en Azure Stack Marketplace.     
 
 
 ## <a name="prerequisites"></a>Requisitos previos
- - Debe ejecutar el Kit de herramientas de hello en el host de la pila de Azure de Hola o tener [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) conectividad de la máquina de Hola donde se ejecuta la herramienta de Hola.
+ - Debe ejecutar el kit de herramientas en el host de Azure Stack o tener conectividad [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) desde el equipo en que se ejecuta la herramienta.
 
- - Descargar hello [plantillas de inicio rápido de Azure pila](https://github.com/Azure/AzureStack-QuickStart-Templates/archive/master.zip) y extraer.
+ - Descargue las [plantillas de inicio rápidos de Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates/archive/master.zip) y extráigalas.
 
- - Descargar hello [herramienta de empaquetado de la Galería de Azure](http://aka.ms/azurestackmarketplaceitem) (AzureGalleryPackage.exe). 
+ - Descargue la [herramienta de empaquetado de la Galería de Azure](http://aka.ms/azurestackmarketplaceitem) (AzureGalleryPackage.exe). 
 
- - Publicar toohello marketplace requiere iconos y un archivo en miniatura.  Puede utilizar su propia o guardar hello [ejemplo](azure-stack-marketplace-publisher.md#support-files) archivos localmente en este ejemplo.
+ - La publicación en el Marketplace requiere iconos y un archivo de miniaturas.  Puede utilizar los suyos o guardar archivos de [muestra](azure-stack-marketplace-publisher.md#support-files) localmente para este ejemplo.
 
-## <a name="download-hello-tool"></a>Descargar la herramienta de Hola
-Hello Kit de herramientas de Marketplace puede ser [descargado desde el repositorio de herramientas de la pila de Azure de hello](azure-stack-powershell-download.md).
+## <a name="download-the-tool"></a>Descargar la herramienta
+El kit de herramientas de Marketplace puede [descargarse desde el repositorio de herramientas de Azure Stack](azure-stack-powershell-download.md).
 
 
 ##  <a name="create-marketplace-items"></a>Crear elementos de Marketplace
-En esta sección, utilice Hola Kit de herramientas de Marketplace toocreate un paquete de elemento de marketplace en formato .azpkg.  
+En esta sección, el kit de herramientas de Marketplace se utiliza para crear un paquete de elementos de Marketplace en formato .azpkg.  
 
 ### <a name="provide-marketplace-information-with-wizard"></a>Proporcionar información de Marketplace con el Asistente
-1. Ejecute hello Kit de herramientas de Marketplace desde una sesión de PowerShell:
+1. Ejecute el kit de herramientas de Marketplace desde una sesión de PowerShell:
 ```PowerShell
     .\MarketplaceToolkit.ps1
 ```
 
-2. Haga clic en hello **solución** ficha.  Esta pantalla acepta información sobre el elemento de Marketplace. Escriba información sobre el elemento como se desee tooappear en marketplace Hola.  También puede especificar un [archivo de parámetros](azure-stack-marketplace-publisher.md#use-a-parameters-file) formulario de hello tooprepopulate.  
+2. Haga clic en la pestaña **Solución**.  Esta pantalla acepta información sobre el elemento de Marketplace. Escriba información sobre el elemento como desee que aparezca en Marketplace.  También puede especificar un [archivo de parámetros](azure-stack-marketplace-publisher.md#use-a-parameters-file) para rellenar previamente el formulario.  
     
     ![captura de pantalla de la primera pantalla del kit de herramientas de Marketplace](./media/azure-stack-marketplace-publisher/image7.png)
-3. Haga clic en **Examinar** y seleccione un archivo de imagen para cada campo de icono y captura de pantalla.  Puede utilizar sus propios iconos u Hola iconos de ejemplo Hola [archivos auxiliares](azure-stack-marketplace-publisher.md#support-files) sección.
-4. Una vez que se rellenan todos los campos, seleccione "Vista previa de la solución" para una vista previa de la solución de hello dentro de hello Marketplace.  Puede revisar y editar texto hello, imágenes y captura de pantalla antes de hacer clic **siguiente**.  
+3. Haga clic en **Examinar** y seleccione un archivo de imagen para cada campo de icono y captura de pantalla.  Puede utilizar sus propios iconos o los iconos de muestra de la sección [Archivos auxiliares](azure-stack-marketplace-publisher.md#support-files).
+4. Una vez que rellene todos los campos, seleccione “Preview Solution” para obtener una vista previa de la solución en Marketplace.  Puede revisar y editar el texto, las imágenes y las capturas de pantalla antes de hacer clic en **Siguiente**.  
 
 ### <a name="import-template-and-create-package"></a>Importar la plantilla y crear el paquete
-En esta sección, importar plantilla hello y trabajar con entradas de la solución.
+En esta sección, importe la plantilla y trabaje con entradas para la solución.
 
-1.  Haga clic en **examinar** y seleccione hello *azuredeploy.json* desde la carpeta de 101-Simple-VM de Windows hello en hello descargar plantillas.
+1.  Haga clic en **Examinar** y seleccione *azuredeploy.json* desde la carpeta 101-Simple-Windows-VM en las plantillas descargadas.
 
     ![captura de pantalla de la segunda pantalla del kit de herramientas de Marketplace](./media/azure-stack-marketplace-publisher/image8.png)
-2.  Asistente para la implementación Hello se rellena una con un *básica* elementos de paso y entrada para cada parámetro especificado en la plantilla de Hola.  Puede agregar pasos adicionales y mover entradas entre pasos.  Por ejemplo, puede que quiera pasos “Configuración de front-end” y “Configuración de back-end” para la solución.
-3.  Especifique Hola ruta de acceso tooAzureGalleryPackager.exe.  
-4.  Haga clic en **crear** y Hola Kit de herramientas de Marketplace empaqueta la solución en un archivo .azpkg.  Una vez que haya finalizado, el Asistente de hello muestra archivo de solución de tooyour de ruta de acceso de Hola y conceda a Hola toocontinue opción publicar su pila tooAzure de paquete.
+2.  El Asistente para la implementación se rellena con un paso *Básico* y elementos de entrada para cada parámetro especificado en la plantilla.  Puede agregar pasos adicionales y mover entradas entre pasos.  Por ejemplo, puede que quiera pasos “Configuración de front-end” y “Configuración de back-end” para la solución.
+3.  Especifique la ruta de acceso a AzureGalleryPackager.exe.  
+4.  Haga clic en **Crear** y el kit de herramientas de Marketplace empaqueta la solución en un archivo .azpkg.  Una vez que haya finalizado, el asistente muestra la ruta de acceso al archivo de la solución y le ofrece la opción de continuar publicando el paquete en Azure Stack.
 
 
 ## <a name="publish-marketplace-items"></a>Publicar elementos de Marketplace
-En esta sección, publicar Hola marketplace elemento tooyour Azure Marketplace de pila.
+En esta sección, debe publicar el elemento de Marketplace en Azure Stack Marketplace.
 
 ![captura de pantalla de la primera pantalla del kit de herramientas de Marketplace](./media/azure-stack-marketplace-publisher/image9.png)
 
-1.  Asistente de Hello requiere información toopublish la solución:
+1.  El asistente necesita información para publicar la solución:
     
     |Campo|Descripción|
     |-----|-----|
     | Service Admin Name (Nombre del administrador de servicios) | Cuenta del administrador del servicio  Ejemplo: ServiceAdmin@mydomain.onmicrosoft.com |
     | Password | Contraseña de cuenta del administrador de servicios. |
     | Punto de conexión de API | Punto de conexión de Azure Resource Manager de Azure Stack.  Ejemplo: management.local.azurestack.external |
-2.  Haga clic en **publicar** y se muestra el registro de hello de publicación.
-3.  Se está toodeploy ahora se puede el elemento publicado a través del portal de Azure pila Hola.
+2.  Cuando haga clic en **Publicar**, aparecerá el registro de publicación.
+3.  Ahora es posible implementar el elemento publicado a través del portal de Azure Stack.
 
 
 ## <a name="use-a-parameters-file"></a>Usar un archivo de parámetros
-También puede utilizar un archivo toocomplete Hola marketplace elemento información de parámetros de.  
+También puede usar un archivo de parámetros para completar la información del elemento de Marketplace.  
 
-Hello Marketplace Kit de herramientas incluye un *solution.parameters.ps1* toocreate puede utilizar su propio archivo de parámetros.
+El kit de herramientas de Marketplace incluye un archivo *solution.parameters.ps1* que puede usar para crear su propio archivo de parámetros.
 
 
 ## <a name="support-files"></a>Archivos auxiliares

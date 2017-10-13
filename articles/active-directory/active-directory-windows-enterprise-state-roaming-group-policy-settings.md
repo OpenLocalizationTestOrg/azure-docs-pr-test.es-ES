@@ -1,6 +1,6 @@
 ---
-title: "configuración de directiva y MDM aaaGroup | Documentos de Microsoft"
-description: "Proporciona información sobre la configuración de directiva de grupo y la administración de dispositivos móviles (MDM) que debe usarse en dispositivos de empresa. Estas directivas son dispositivo completo del usuario toohello aplicada."
+title: "Configuración de MDM y directivas de grupo | Microsoft Docs"
+description: "Proporciona información sobre la configuración de directiva de grupo y la administración de dispositivos móviles (MDM) que debe usarse en dispositivos de empresa. Estas directivas se aplican al dispositivo completo del usuario."
 services: active-directory
 keywords: "¿cuál es la configuración de directiva de grupo y MDM para Enterprise State Roaming, Enterprise State Roaming, nube de windows"
 documentationcenter: 
@@ -15,35 +15,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/08/2017
 ms.author: markvi
-ms.openlocfilehash: 762419b47014b1fb4d92ac528785e20078afe689
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 71dd5281a618fe7367eab3e97daac069f77ab491
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="group-policy-and-mdm-settings"></a>Configuración de MDM y directivas de grupo
-Usar estas directivas de grupo y configuración de dispositivos móviles (MDM) de administración en los dispositivos corporativos como estas directivas son dispositivo completo del usuario toohello aplicada. Aplicar una sincronización de configuración de MDM directiva toodisable para un personal, dispositivo de usuario de la empresa afectará negativamente al uso de Hola de dicho dispositivo. Además, otras cuentas de usuario en el dispositivo de hello también se verá afectadas por la directiva de Hola.
+Use esta configuración de directiva de grupo y de dispositivos móviles (MDM) de solo en dispositivos de empresa, dado que estas directivas se aplican en todo el dispositivo del usuario. Aplicar una directiva MDM para deshabilitar la sincronización de configuración para un dispositivo de usuario personal ejercerá un impacto negativo en el uso de ese dispositivo. Además, otras cuentas de usuario en el dispositivo también se verán afectadas por la directiva.
 
-Empresas que quieren toomanage móviles para sus dispositivos personales (no administrados) se puede usar hello Azure tooenable portal o deshabilitar la movilidad, en lugar de mediante la directiva de grupo o MDM.
-Hello las tablas siguientes describe la configuración de directiva de hello disponible.
+Las empresas que desean administrar la movilidad para sus dispositivos personales (no administrados) pueden usar el Portal de Azure para habilitar o deshabilitar la movilidad, en lugar de usar la directiva de grupo o MDM.
+Las tablas siguientes describen la configuración de la directiva disponible.
 
 ## <a name="mdm-settings"></a>Configuración de MDM
-configuración de directivas MDM de Hello aplica tooboth Windows 10 y Windows 10 Mobile.  El soporte para Windows 10 Mobile existe solo para la itinerancia basada en cuentas de Microsoft a través de la cuenta OneDrive del usuario.  Consulte demasiado sección "Dispositivos y los puntos de conexión" para obtener detalles sobre qué dispositivos son compatibles con Azure AD según la sincronización.
+La configuración de directiva MDM se aplica a Windows 10 y Windows 10 Mobile.  El soporte para Windows 10 Mobile existe solo para la itinerancia basada en cuentas de Microsoft a través de la cuenta OneDrive del usuario.  Consulte la sección "Dispositivos y puntos de conexión" para obtener detalles sobre qué dispositivos son compatibles para la sincronización basad en Azure AD.
 
 | Nombre | Description |
 | --- | --- |
-| Permitir la conexión con una cuenta de Microsoft |Permite tooauthenticate a los usuarios con una cuenta de Microsoft en el dispositivo de Hola |
-| Permitir la sincronización de mi configuración |Permite la configuración de Windows de los usuarios tooroam y datos de la aplicación; Si se deshabilita esta directiva, se deshabilitará sincronización, así como las copias de seguridad en dispositivos móviles |
+| Permitir la conexión con una cuenta de Microsoft |Permite a los usuarios autenticarse con una cuenta de Microsoft en el dispositivo. |
+| Permitir la sincronización de mi configuración |Permite a los usuarios usar un perfil itinerante para la configuración de Windows y los datos de la aplicación; si deshabilita esta directiva se deshabilitará la sincronización, así como las copias de seguridad en dispositivos móviles |
 
 ## <a name="group-policy-settings"></a>Configuración de directiva de grupo
-configuración de directiva de grupo de Hello aplica tooWindows 10 dispositivos que están tooan Unidos a un dominio de Active Directory. tabla de Hello también incluye la configuración heredada que aparecería toomanage la configuración de sincronización, pero que no funcionan para Enterprise estado de movilidad de Windows 10, que está anotadas con 'No utilice' en la descripción de Hola.
+La configuración de directiva de grupo se aplica a dispositivos de Windows 10 que están unidos a un dominio de Active Directory. La tabla incluye también la configuración heredada que aparecerá para administrar la configuración de sincronización, pero que no funciona para Enterprise State Roaming para Windows 10. Esto se indica con "No utilizar" en la descripción.
 
 | Nombre | Description |
 | --- | --- |
 | Cuentas: bloquear cuentas Microsoft |Esta configuración de directiva impide a los usuarios agregar nuevas cuentas de Microsoft en este equipo. |
-| No sincronizar |Impide que la configuración de Windows de los usuarios tooroam y datos de la aplicación |
-| No sincronizar personalización |Deshabilita la sincronización del grupo de temas de Hola |
-| No sincronizar la configuración del explorador |Deshabilita la sincronización del grupo de Internet Explorer Hola |
+| No sincronizar |Impide a los usuarios usar un perfil itinerante para los datos de la aplicación y la configuración de Windows. |
+| No sincronizar personalización |Deshabilita la sincronización del grupo Temas. |
+| No sincronizar la configuración del explorador |Deshabilita la sincronización del grupo Internet Explorer. |
 | No sincronizar contraseñas |Deshabilita la sincronización del grupo Contraseñas. |
 | No sincronizar otra configuración de Windows |Deshabilita la sincronización del grupo Otra configuración de Windows. |
 | No sincronizar la personalización del escritorio |No se usa; no tiene efecto. |

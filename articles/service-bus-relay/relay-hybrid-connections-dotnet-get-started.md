@@ -1,5 +1,5 @@
 ---
-title: "aaaGet a trabajar con las conexiones híbridas de retransmisión de Azure en .NET | Documentos de Microsoft"
+title: "Introducción a las conexiones híbridas de Azure Relay en .NET | Microsoft Docs"
 description: "Escriba una aplicación de consola en C# para Conexiones híbridas de Azure Relay."
 services: service-bus-relay
 documentationcenter: .net
@@ -14,58 +14,58 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 07/07/2017
 ms.author: sethm
-ms.openlocfilehash: 1e4af28e7cd4393c8ca965a149a0b83ebcc44f22
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1af23bfd46dd7d3781505473f7c1d86e65ea9bc7
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="get-started-with-relay-hybrid-connections"></a>Introducción a las conexiones híbridas de Relay
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
 
-Este tutorial proporciona una introducción demasiado[conexiones híbridas de Azure retransmisión](relay-what-is-it.md#hybrid-connections)y muestra cómo toouse .NET toocreate una aplicación cliente que envía mensajes de aplicación de agente de escucha de tooa correspondiente. 
+Este tutorial proporciona una introducción a las [conexiones híbridas de Azure Relay](relay-what-is-it.md#hybrid-connections) y muestra la forma cómo usar .NET para crear una aplicación de escucha correspondiente envía mensajes a una aplicación de escucha correspondiente. 
 
 ## <a name="what-will-be-accomplished"></a>Lo que se logrará
-Dado que las conexiones híbridas requiere un cliente y un componente de servidor, tutorial Hola crea dos aplicaciones de consola. Estos son los pasos de hello:
+Dado que las conexiones híbridas requieren un cliente y un componente de servidor, se van a crear dos aplicaciones de consola en este tutorial. Estos son los pasos que se deben seguir:
 
-1. Crear un espacio de nombres de retransmisión, mediante Hola portal de Azure.
-2. Crear una conexión híbrida en ese espacio de nombres, mediante Hola portal de Azure.
-3. Escribir mensajes de tooreceive la aplicación de una consola de servidor (agente de escucha).
-4. Escribir mensajes de toosend la aplicación de una consola de cliente (remitente).
+1. Creación de un espacio de nombres de Relay mediante Azure Portal.
+2. Creación de una conexión híbrida en dicho espacio de nombres mediante Azure Portal.
+3. Escritura de una aplicación de consola de servidor (de escucha) para recibir mensajes.
+4. Escritura de una aplicación de consola de cliente (remitente) para enviar mensajes.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-toocomplete este tutorial, necesitará Hola siguiendo los requisitos previos:
+Para completar este tutorial, debe cumplir los siguientes requisitos previos:
 
-1. [Visual Studio 2015 o posterior](http://www.visualstudio.com). ejemplos de Hello en este tutorial utiliza Visual Studio de 2017.
+1. [Visual Studio 2015 o posterior](http://www.visualstudio.com). En los ejemplos de este tutorial se usa Visual Studio 2017.
 2. Una suscripción de Azure.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="1-create-a-namespace-using-hello-azure-portal"></a>1. Crear un espacio de nombres mediante Hola portal de Azure
-Si ya ha creado un espacio de nombres de retransmisión, consulte el toohello [crear una conexión híbrida con hello portal de Azure](#2-create-a-hybrid-connection-using-the-azure-portal) sección.
+## <a name="1-create-a-namespace-using-the-azure-portal"></a>1. Creación de un espacio de nombres mediante Azure Portal
+Si ya ha creado un espacio de nombres de Relay, vaya a la sección [Creación de una conexión híbrida mediante Azure Portal](#2-create-a-hybrid-connection-using-the-azure-portal).
 
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
-## <a name="2-create-a-hybrid-connection-using-hello-azure-portal"></a>2. Crear una conexión híbrida con hello portal de Azure
-Si ya ha creado una conexión híbrida, saltar toohello [crear una aplicación de servidor](#3-create-a-server-application-listener) sección.
+## <a name="2-create-a-hybrid-connection-using-the-azure-portal"></a>2. Creación de una conexión híbrida mediante Azure Portal
+Si ya ha creado una conexión híbrida, vaya a la sección [Creación de una aplicación de servidor](#3-create-a-server-application-listener).
 
 [!INCLUDE [relay-create-hybrid-connection-portal](../../includes/relay-create-hybrid-connection-portal.md)]
 
 ## <a name="3-create-a-server-application-listener"></a>3. Creación de una aplicación de servidor (agente de escucha)
-toolisten y recibir mensajes de Hola retransmisión, se escribirá una aplicación de consola de C# con Visual Studio.
+Para escuchar y recibir mensajes desde Relay, escribiremos una aplicación de consola en C# con Visual Studio.
 
 [!INCLUDE [relay-hybrid-connections-dotnet-get-started-server](../../includes/relay-hybrid-connections-dotnet-get-started-server.md)]
 
 ## <a name="4-create-a-client-application-sender"></a>4. Creación de una aplicación de cliente (remitente)
-Retransmitir toosend mensajes toohello, que se va a escribir una aplicación de consola de C# con Visual Studio.
+Para enviar mensajes a Relay, escribiremos una aplicación de consola en C# con Visual Studio.
 
 [!INCLUDE [relay-hybrid-connections-dotnet-get-started-client](../../includes/relay-hybrid-connections-dotnet-get-started-client.md)]
 
-## <a name="5-run-hello-applications"></a>5. Ejecutar aplicaciones de Hola
-1. Ejecute la aplicación de servidor hello.
-2. Ejecute la aplicación de cliente de hello y escriba algún texto.
-3. Compruebe a que el servidor hello aplicación salidas Hola texto de la consola que se escribió en la aplicación de cliente de Hola.
+## <a name="5-run-the-applications"></a>5. Ejecución de las aplicaciones
+1. Ejecute la aplicación de servidor.
+2. Ejecute la aplicación de cliente y escriba algún texto.
+3. Asegúrese de que la consola de aplicación de servidor genera el texto que escribió en la aplicación de cliente.
 
 ![running-applications](./media/relay-hybrid-connections-dotnet-get-started/running-applications.png)
 

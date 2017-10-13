@@ -1,6 +1,6 @@
 ---
-title: propiedades de gemelas los dispositivos aaaUse centro de IoT de Azure (nodo/.NET) | Documentos de Microsoft
-description: "Cómo los dispositivos del centro de IoT de Azure toouse gemelos tooconfigure dispositivos. Utilice hello servicio IoT de Azure SDK para .NET tooimplement una aplicación de servicio que se modifica una configuración de dispositivo mediante un doble de dispositivo y el dispositivo de hello IoT de Azure SDK para Node.js tooimplement una aplicación de dispositivo simulado."
+title: Uso de las propiedades de dispositivos gemelos de IoT Hub de Azure (.NET y Node) | Microsoft Docs
+description: "En este artículo se describe cómo usar los dispositivos gemelos de IoT Hub de Azure para configurar dispositivos. Usará el SDK de dispositivo IoT de Azure para Node.js con el fin de implementar una aplicación de dispositivo simulado, además del SDK de servicio IoT de Azure para .NET con el objetivo de implementar una aplicación de servicio que modifica una configuración de dispositivo que emplea un dispositivo gemelo."
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
@@ -14,53 +14,53 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: elioda
-ms.openlocfilehash: 840a1b2e45f4763131299577583aa89015dcdd1d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8f9626fc47e7d32cb104b960bea9b7de9efa6f3e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="use-desired-properties-tooconfigure-devices"></a>Usar propiedades deseadas tooconfigure dispositivos
+# <a name="use-desired-properties-to-configure-devices"></a>Uso de las propiedades deseadas para configurar dispositivos
 [!INCLUDE [iot-hub-selector-twin-how-to-configure](../../includes/iot-hub-selector-twin-how-to-configure.md)]
 
-Al final de Hola de este tutorial, tendrá dos aplicaciones de consola:
+Al final de este tutorial tendrá dos aplicaciones de consola:
 
-* **SimulateDeviceConfiguration.js**, una aplicación de dispositivo simulado que espera una actualización de la configuración deseada e informa del estado de Hola de un proceso de actualización de configuración simulada.
-* **SetDesiredConfigurationAndQuery**, una aplicación de back-end. NET, que establece Hola la configuración en un dispositivo deseado y consultas Hola el proceso de actualización de configuración.
+* **SimulateDeviceConfiguration.js**, una aplicación de dispositivo simulado que espera por una actualización de la configuración deseada y notifica el estado de un proceso de actualización de configuración simulada.
+* **SetDesiredConfigurationAndQuery**, una aplicación .NET diseñada para ejecutarse desde el back-end, que establece la configuración deseada en un dispositivo y consulta el proceso de actualización de la configuración.
 
 > [!NOTE]
-> artículo de Hello [SDK de Azure IoT] [ lnk-hub-sdks] proporciona información acerca de hello Azure IoT SDK que se puede usar toobuild aplicaciones de dispositivo y back-end.
+> En el artículo [SDK de IoT de Azure][lnk-hub-sdks] se proporciona información sobre los SDK que puede usar para crear aplicaciones de dispositivo y de back-end.
 > 
 > 
 
-toocomplete este tutorial necesita Hola siguiente:
+Para completar este tutorial, necesitará lo siguiente:
 
 * Visual Studio 2015 o Visual Studio 2017.
-* Node.js versión 0.10.x, o posteriores.
-* Una cuenta de Azure activa. Si no tiene ninguna, puede crear una [cuenta gratuita][lnk-free-trial] en tan solo unos minutos.
+* Node.js, versión 4.0.x o posterior.
+* Una cuenta de Azure activa. En caso de no tener ninguna, puede crear una [cuenta gratuita][lnk-free-trial] en tan solo unos minutos.
 
-Si ha seguido hello [empezar a trabajar con: los gemelos de dispositivo] [ lnk-twin-tutorial] tutorial, ya tiene un centro de IoT y una identidad de dispositivo llama **myDeviceId**. En ese caso, puede omitir toohello [aplicación de dispositivo simulado de hello crear] [ lnk-how-to-configure-createapp] sección.
+Si ha seguido el tutorial [Introducción a los dispositivos gemelos][lnk-twin-tutorial], ya tiene una instancia de IoT Hub y una identidad de dispositivo denominada **myDeviceId**. En ese caso, puede ir directamente a la sección [Creación de la aplicación de dispositivo simulado][lnk-how-to-configure-createapp].
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 <a id="#create-the-simulated-device-app"></a>
-## <a name="create-hello-simulated-device-app"></a>Crear aplicación de dispositivo simulado de hello
-En esta sección, creará una aplicación de consola de Node.js que conecta el concentrador de tooyour como **myDeviceId**, espera a que una actualización de la configuración deseada y, a continuación, informa de las actualizaciones en el proceso de actualización de configuración de Hola simulada.
+## <a name="create-the-simulated-device-app"></a>Creación de la aplicación de dispositivo simulado
+En esta sección, creará una aplicación de consola de Node.js que se conecta a su centro como **myDeviceId**, espera por una actualización de la configuración deseada y, a continuación, informa de las actualizaciones en el proceso de actualización de configuración simulada.
 
-1. Cree una nueva carpeta vacía denominada **simulatedeviceconfiguration**. Hola **simulatedeviceconfiguration** carpeta, cree un nuevo archivo package.json mediante el siguiente comando en el símbolo del sistema de Hola. Acepte todos los valores predeterminados de Hola.
+1. Cree una nueva carpeta vacía denominada **simulatedeviceconfiguration**. En la carpeta **simulatedeviceconfiguration** , cree un nuevo archivo package.json con el siguiente comando en el símbolo del sistema. Acepte todos los valores predeterminados.
    
     ```
     npm init
     ```
-1. En el símbolo del sistema en hello **simulatedeviceconfiguration** carpeta, ejecute hello después comando tooinstall hello **dispositivos de iot de azure** y **azure iot dispositivo-mqtt**paquetes:
+1. En el símbolo del sistema, en la carpeta **simulatedeviceconfiguration**, ejecute el siguiente comando para instalar **azure-iot-device** y los paquetes **azure-iot-device-mqtt**:
    
     ```
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
-1. Con un editor de texto, cree un nuevo **SimulateDeviceConfiguration.js** archivo Hola **simulatedeviceconfiguration** carpeta.
-1. Agregar Hola después código toohello **SimulateDeviceConfiguration.js** archivo y sustituya hello **{cadena de conexión de dispositivo}** marcador de posición con la cadena de conexión de dispositivo Hola copió cuando se crea hello **myDeviceId** identidad del dispositivo:
+1. Con un editor de texto, cree un nuevo archivo **SimulateDeviceConfiguration.js** en la carpeta **simulatedeviceconfiguration**.
+1. Agregue el código siguiente al archivo **SimulateDeviceConfiguration.js** y sustituya el marcador de posición **{device connection string}** con la cadena de conexión del dispositivo que copió al crear la identidad de dispositivo **myDeviceId**:
    
         'use strict';
         var Client = require('azure-iot-device').Client;
@@ -94,15 +94,15 @@ En esta sección, creará una aplicación de consola de Node.js que conecta el c
             }
         });
    
-    Hola **cliente** objeto expone métodos toointeract necesarios de hello con: los gemelos de dispositivo del dispositivo de Hola. Este código inicializa hello **cliente** objeto, recupera Hola gemelas de dispositivo para **myDeviceId**y, a continuación, se adjunta un controlador de actualización de hello en *deseado propiedades*. controlador de Hello comprueba que hay es una solicitud de cambio de la configuración real mediante la comparación de hello configIds, a continuación, invoca un método que inicia el cambio de configuración de Hola.
+    El objeto **Cliente** expone todos los métodos necesarios para interactuar con dispositivos gemelos del dispositivo. Este código, inicializa el objeto **Cliente**, recupera el dispositivo gemelo de **myDeviceId** y, posteriormente, adjunta un controlador para la actualización en las *propiedades deseadas*. El controlador comprueba que hay una solicitud real de cambio de la configuración comparando los configId, y a continuación, invoca un método que inicia el cambio de configuración.
    
-    Tenga en cuenta que para hello simplificar, este código usa el valor predeterminado codificado de forma rígida para la configuración inicial de Hola. Una aplicación real probablemente cargaría esa configuración desde un almacenamiento local.
+    Tenga en cuenta que, por simplicidad, este código usa un valor predeterminado codificado de forma rígida para la configuración inicial. Una aplicación real probablemente cargaría esa configuración desde un almacenamiento local.
    
    > [!IMPORTANT]
-   > Los eventos de cambio de propiedad deseados siempre se emiten una vez en la conexión de dispositivo. Asegúrese de que toocheck que hay un cambio real en hello las propiedades adecuadas antes de realizar cualquier acción.
+   > Los eventos de cambio de propiedad deseados siempre se emiten una vez en la conexión de dispositivo. Asegúrese de comprobar que hay un cambio real en las propiedades deseadas antes de realizar cualquier acción.
    > 
    > 
-1. Agregar Hola siguientes métodos antes de hello `client.open()` invocación:
+1. Agregue los métodos siguientes antes de la invocación `client.open()`:
    
         var initConfigChange = function(twin) {
             var currentTelemetryConfig = twin.properties.reported.telemetryConfig;
@@ -143,40 +143,40 @@ En esta sección, creará una aplicación de consola de Node.js que conecta el c
             });
         };
    
-    Hola **initConfigChange** método actualizaciones Hola notificado propiedades Hola dispositivo local gemelas objeto con la configuración de hello actualizan solicitud y establece el estado de Hola demasiado**pendiente**, a continuación, Hola de actualizaciones gemelos de dispositivo en el servicio de Hola. Después de actualizar correctamente los gemelos de dispositivo de hello, simula un proceso de ejecución prolongada que finaliza en la ejecución de Hola de **completeConfigChange**. Este método actualiza las propiedades del incluido local Hola establecer el estado de hello demasiado**correcto** y quitar hello **pendingConfig** objeto. A continuación, actualiza a gemelas de dispositivo de hello en el servicio de Hola.
+    El método **initConfigChange** actualiza propiedades notificadas en el objeto del dispositivo gemelo local con la solicitud de actualización de la configuración y establece el estado en **Pendiente**, a continuación, actualiza el dispositivo gemelo en el servicio. Después de actualizar correctamente el dispositivo gemelo, simula un proceso de ejecución prolongada que finaliza en la ejecución de **completeConfigChange**. Este método actualiza las propiedades notificadas locales estableciendo el estado en **Correcto** y eliminado el objeto **pendingConfig**. A continuación, actualiza el dispositivo gemelo en el servicio.
    
-    Tenga en cuenta que, ancho de banda toosave, indica que se actualizan propiedades especificando solo Hola propiedades toobe modificado (denominado **revisión** Hola por encima del código), en lugar de reemplazar todo el documento Hola.
+    Tenga en cuenta que, para ahorrar ancho de banda, las propiedades notificadas se actualizan especificando solo las propiedades que se van a modificar (denominadas **revisión** en el código anterior), en lugar de reemplazar el documento completo.
    
    > [!NOTE]
-   > Este tutorial no simula ningún comportamiento de las actualizaciones de configuración simultáneas. Algunos procesos de actualización de la configuración podrían ser capaz de tooaccommodate cambios de configuración de destino mientras se ejecuta la actualización de hello, algunas pueden disponer de tooqueue ellos así como algunos pudieron rechazar ellos con una condición de error. Asegúrese de tooconsider seguro Hola comportamiento deseado para el proceso de configuración específica y cómo agregar lógica adecuada de hello antes de iniciar el cambio de configuración de Hola.
+   > Este tutorial no simula ningún comportamiento de las actualizaciones de configuración simultáneas. Algunos procesos de actualización de configuración pueden dar cabida a cambios de configuración de destino mientras se está ejecutando la actualización, otros tiene que ponerlos en cola, y otros podría rechazarlos con una condición de error. Asegúrese de que considera el comportamiento deseado para el proceso de configuración específica y agregue la lógica adecuada antes de iniciar el cambio de configuración.
    > 
    > 
-1. Ejecute la aplicación de dispositivo de hello:
+1. Ejecute la aplicación del dispositivo:
    
         node SimulateDeviceConfiguration.js
    
-    Debe aparecer un mensaje Hola `retrieved device twin`. Mantenga la aplicación hello ejecutando.
+    Verá el mensaje `retrieved device twin`. Mantenga la aplicación en ejecución.
 
-## <a name="create-hello-service-app"></a>Crear aplicación de servicio de hello
-En esta sección, aprenderá a crear una aplicación de consola .NET que hello las actualizaciones *deseado propiedades* en hello dispositivo gemelas asociada **myDeviceId** con un nuevo objeto de configuración de telemetría. A continuación, consulta: los gemelos de dispositivo de hello almacenados en el centro de IoT de Hola y muestra diferenciar hello en hello deseado y notifica las configuraciones de dispositivo de Hola.
+## <a name="create-the-service-app"></a>Creación de la aplicación de servicio
+En esta sección, creará una aplicación de consola .NET que actualiza las *propiedades deseadas* en el dispositivo gemelo asociado con **myDeviceId** con un nuevo objeto de configuración de telemetría. A continuación, consulta los dispositivos gemelos almacenados en IoT Hub y muestra la diferencia entre las configuraciones deseada y notificada del dispositivo.
 
-1. En Visual Studio, agregue una solución actual de toohello de proyectos de Visual C# escritorio clásico de Windows mediante el uso de hello **aplicación de consola** plantilla de proyecto. Proyecto de hello Name **SetDesiredConfigurationAndQuery**.
+1. En Visual Studio, agregue un proyecto de escritorio clásico de Windows de Visual C# a la solución actual mediante la plantilla de proyecto **Aplicación de consola** . Asigne el nombre **SetDesiredConfigurationAndQuery** al proyecto.
    
     ![Nuevo proyecto de escritorio clásico de Windows de Visual C#][img-createapp]
-1. En el Explorador de soluciones, haga clic en hello **SetDesiredConfigurationAndQuery** del proyecto y, a continuación, haga clic en **administrar paquetes de NuGet...** .
-1. Hola **Administrador de paquetes de NuGet** ventana, seleccione **examinar**, busque **microsoft.azure.devices**, seleccione **instalar** tooinstall Hola **Microsoft.Azure.Devices** empaquetar y acepte los términos de Hola de uso. Este procedimiento se descarga, se instala y se agrega una referencia toohello [IoT de Azure SDK del servicio] [ lnk-nuget-service-sdk] NuGet paquete y sus dependencias.
+1. En el Explorador de soluciones, haga clic con el botón derecho en el proyecto **SetDesiredConfigurationAndQuery** y luego seleccione **Administrar paquetes NuGet...**.
+1. En la ventana **Administrador de paquetes NuGet**, seleccione **Examinar**, busque **microsoft.azure.devices**, seleccione **Instalar** para instalar el paquete **Microsoft.Azure.Devices** y acepte los términos de uso. Este procedimiento permite descargar, instalar y agregar una referencia al [paquete NuGet del SDK de dispositivo de IoT de Azure][lnk-nuget-service-sdk] y sus dependencias.
    
     ![Ventana del Administrador de paquetes NuGet][img-servicenuget]
-1. Agregue los siguiente hello `using` las instrucciones en la parte superior de Hola de hello **Program.cs** archivo:
+1. Agregue las siguientes instrucciones `using` al principio del archivo **Program.cs** :
    
         using Microsoft.Azure.Devices;
         using System.Threading;
         using Newtonsoft.Json;
-1. Agregar Hola después campos toohello **programa** clase. Sustituya el valor de marcador de posición de hello con la cadena de conexión de centro de IoT para los concentradores de Hola que creó en la sección anterior de Hola Hola.
+1. Agregue los campos siguientes a la clase **Program** . Sustituya el valor de marcador de posición por la cadena de conexión de IoT Hub para el centro que creó en la sección anterior.
    
         static RegistryManager registryManager;
         static string connectionString = "{iot hub connection string}";
-1. Agregar Hola siguiendo el método toohello **programa** clase:
+1. Agregue el método siguiente a la clase **Program** :
    
         static private async Task SetDesiredConfigurationAndQuery()
         {
@@ -217,37 +217,37 @@ En esta sección, aprenderá a crear una aplicación de consola .NET que hello l
             }
         }
    
-    Hola **registro** objeto expone métodos toointeract necesarios de hello con: los gemelos de dispositivo del servicio de Hola. Este código inicializa hello **registro** objeto, recupera Hola gemelas de dispositivo para **myDeviceId**y, a continuación, actualiza sus propiedades deseados con un nuevo objeto de configuración de telemetría.
-    Después de eso, consulta: los gemelos de dispositivo de hello almacenados en el centro de IoT Hola cada 10 segundos y copias fotográficas Hola deseado y notifica las configuraciones de telemetría. Consulte toohello [lenguaje de consultas del centro de IoT] [ lnk-query] toolearn cómo toogenerate enriquecido informes en todos los dispositivos.
+    El objeto **Registro** expone todos los métodos necesarios para interactuar con dispositivos gemelos del servicio. Este código inicializa el objeto **Registro**, recupera el dispositivo gemelo de **myDeviceId** y actualiza sus propiedades deseadas con un nuevo objeto de configuración de telemetría.
+    Después, cada 10 segundos, consulta los dispositivos gemelos almacenados en IoT Hub e imprime las configuraciones de telemetría deseadas y notificadas. Consulte el [lenguaje de consulta de IoT Hub][lnk-query] para obtener información sobre cómo generar informes completos en todos los dispositivos.
    
    > [!IMPORTANT]
-   > Esta aplicación consulta IoT Hub cada 10 segundos con fines ilustrativos. Use consultas toogenerate orientadas al usuario informes a través de varios dispositivos y no toodetect cambios. Si la solución requiere notificaciones en tiempo real de eventos de dispositivo, use [notificaciones gemelas][lnk-twin-notifications].
+   > Esta aplicación consulta IoT Hub cada 10 segundos con fines ilustrativos. Use consultas para generar informes de cara al usuario en muchos dispositivos y no para detectar cambios. Si la solución requiere notificaciones en tiempo real de eventos de dispositivo, use [notificaciones gemelas][lnk-twin-notifications].
    > 
    > 
-1. Por último, agregue Hola después líneas toohello **Main** método:
+1. Por último, agregue las líneas siguientes al método **Main** :
    
         registryManager = RegistryManager.CreateFromConnectionString(connectionString);
         SetDesiredConfigurationAndQuery().Wait();
-        Console.WriteLine("Press any key tooquit.");
+        Console.WriteLine("Press any key to quit.");
         Console.ReadLine();
-1. Hola el Explorador de soluciones, abra hello **proyectos de inicio establecido...**  y asegúrese de que hello **acción** para **SetDesiredConfigurationAndQuery** proyecto es **iniciar**. Compile la solución de Hola.
-1. Con **SimulateDeviceConfiguration.js** ejecutando, ejecute la aplicación de .NET de Hola desde Visual Studio mediante **F5** y debería ver Hola notificado configuración cambia de **correcto** demasiado**pendiente** demasiado**correcto** nuevo con activo nuevo Hola enviar frecuencia de cinco minutos en lugar de 24 horas.
+1. En el Explorador de soluciones, abra **Establecer proyectos de inicio...** y asegúrese de que la **acción** de **SetDesiredConfigurationAndQuery** sea **Iniciar**. Compile la solución.
+1. Con **SimulateDeviceConfiguration.js** ejecutándose, ejecute la aplicación .NET desde Visual Studio mediante **F5** y debería ver cómo la configuración notificada cambia de **Correcto** a **Pendiente** a **Correcto** de nuevo con la nueva frecuencia de envío activa de cinco minutos en lugar de 24 horas.
 
  ![Dispositivo configurado correctamente][img-deviceconfigured]
    
    > [!IMPORTANT]
-   > Hay un retraso de tooa minuto entre la operación de informe de dispositivo de Hola y el resultado de la consulta de Hola. Se trata de tooenable Hola consulta infraestructura toowork a gran escala. tooretrieve vistas coherentes de doble de un único dispositivo usan hello **getDeviceTwin** método Hola **registro** clase.
+   > Hay un retraso de hasta un minuto entre la operación de informe de dispositivo y el resultado de la consulta. Esto es para habilitar la infraestructura de consulta para que funcione a gran escala. Para recuperar vistas coherentes de un único dispositivo gemelo, use el método **getDeviceTwin** en la clase **Registro**.
    > 
    > 
 
 ## <a name="next-steps"></a>Pasos siguientes
-En este tutorial, establezca una configuración deseada como *deseado propiedades* de solución de hello back-end y escribió una toodetect de aplicación de dispositivo que cambian y simular un proceso de actualización de varios pasos reporting su estado a través de hello notificado Propiedades.
+En este tutorial, ha establecido una configuración deseada como *propiedades deseadas* desde el back-end de solución, y ha escrito una aplicación de dispositivo para detectar ese cambio y simular un proceso de actualización de varios pasos que informe de su estado mediante las propiedades notificadas.
 
-Hola de uso después cómo toolearn de recursos para:
+Use los siguientes recursos para obtener información sobre cómo:
 
-* enviar telemetría desde dispositivos con hello [empezar a trabajar con el centro de IoT] [ lnk-iothub-getstarted] tutorial,
-* programar o realizar operaciones en conjuntos grandes de dispositivos Consulte hello [programación y los trabajos de difusión] [ lnk-schedule-jobs] tutorial.
-* controlar los dispositivos de forma interactiva (por ejemplo, al activar un ventilador desde una aplicación controlada por el usuario), con hello [usar métodos directos] [ lnk-methods-tutorial] tutorial.
+* enviar telemetría desde dispositivos con el tutorial [Introducción a IoT Hub][lnk-iothub-getstarted];
+* programar o realizar operaciones en grandes conjuntos de dispositivos (consulte el tutorial [Schedule and broadcast jobs][lnk-schedule-jobs] [Programación y difusión de trabajos]);
+* controlar los dispositivos de forma interactiva (por ejemplo, encender un ventilador desde una aplicación controlada por el usuario), con el tutorial [Uso de métodos directos][lnk-methods-tutorial].
 
 <!-- images -->
 [img-servicenuget]: media/iot-hub-csharp-node-twin-how-to-configure/servicesdknuget.png

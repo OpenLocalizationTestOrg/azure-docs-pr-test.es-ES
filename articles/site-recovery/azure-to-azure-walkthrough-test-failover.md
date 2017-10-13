@@ -1,6 +1,6 @@
 ---
-title: "aaaRun una conmutación por error de prueba para la replicación de máquina virtual de Azure con Azure Site Recovery | Documentos de Microsoft"
-description: "Resume los pasos de Hola que necesita para ejecutar una prueba de conmutación por error de replicación de máquinas virtuales de Azure tooanother usando de región de Azure hello Azure Site Recovery de servicio."
+title: "Ejecución de una conmutación por error de prueba para la replicación de VM de Azure con Azure Site Recovery | Microsoft Docs"
+description: "Se resumen los pasos necesarios para ejecutar una conmutación por error de prueba para VM de Azure que se replican en otra región de Azure con el servicio Azure Site Recovery."
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: raynew
-ms.openlocfilehash: c1f765aa94c59dd70b33317ebbcd04beb7977969
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8babb0d016729f318442af93596d206c38d91206
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-6-run-a-test-failover-for-azure-vm-replication"></a>Paso 6: Ejecución de una conmutación por error de prueba para la replicación de VM de Azure
 
-Después de habilitar la replicación de la máquina virtual de Azure (VM), siga los pasos de hello en este artículo, conmutación por error de prueba de toorun de tooanother de una región de Azure, mediante hello [Azure Site Recovery](site-recovery-overview.md) servicio Hola portal de Azure.
+Después de habilitar la replicación de la máquina virtual (VM) de Azure, siga los pasos descritos en este artículo para ejecutar la conmutación por error de una región de Azure a otra mediante el servicio [Azure Site Recovery](site-recovery-overview.md) en Azure Portal.
 
-- Cuando termine de artículo hello, debería ha comprobado que con una conmutación por error de prueba, que al menos una máquina virtual de Azure puede conmutar por error tooyour región secundaria de Azure. 
-- Registrar los comentarios de la parte inferior de Hola de este artículo, o formular alguna pregunta en hello [foro de servicios de recuperación de Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)
+- Cuando termine el artículo, también debe haber realizado una comprobación con una conmutación por error de prueba de que al menos una VM de Azure puede conmutar por error la región secundaria de Azure. 
+- Publique cualquier comentario en la parte inferior de este artículo, o bien en el [foro de Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 >[!NOTE]
 >
@@ -34,25 +34,25 @@ Después de habilitar la replicación de la máquina virtual de Azure (VM), siga
 
 ## <a name="before-you-start"></a>Antes de comenzar
 
-- Antes de ejecutar una prueba de conmutación por error, se recomienda que compruebe las propiedades de la máquina virtual de Hola y realizar cualquier cambio que necesite. puede tener acceso a propiedades de la máquina virtual de hello en **replican elementos**. Hola **Essentials** hoja muestra información sobre la configuración de máquinas y estado.
-- Se recomienda usar una red de máquina virtual de Azure independiente para la conmutación por error de prueba de hello y no en red hello (valor predeterminado o personalizado) que se configuró para conmutación por error de producción.
-- Hola prueba de conmutación por error se produce un error sobre máquinas virtuales de Azure (y su almacenamiento) toohello región secundaria de Azure. No se replican aplicaciones o recursos dependientes. Si las aplicaciones que se ejecutan en errores con las máquinas virtuales se depende de otros recursos, como Active Directory o DNS, debe tooreplicate estos demasiado, si no están disponibles en su región secundaria. [Más información](site-recovery-test-failover-to-azure.md#prepare-active-directory-and-dns)
-- Si desea tooaccess replicar las máquinas virtuales después de la conmutación por error de un sitio local, necesita demasiado[preparar tooconnect](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover) toothese máquinas virtuales.
+- Antes de ejecutar una conmutación por error de prueba, se recomienda comprobar las propiedades del servidor y realizar los cambios necesarios. Puede acceder a las propiedades de la VM en **Elementos replicados**. En la hoja **Información esencial** se detalla la configuración y el estado de las máquinas.
+- Se recomienda usar una red de VM de Azure independiente para la conmutación por error de prueba y no en la red (predeterminada o personalizada) que se configuró para la conmutación por error de producción.
+- La conmutación por error de prueba realiza dicha conmutación en VM de Azure (y su almacenamiento) en la región secundaria de Azure. No se replican aplicaciones o recursos dependientes. Si las aplicaciones que se ejecutan en VM con conmutación por error dependen de otros recursos, como Active Directory o DNS, debe replicarlos también si no están disponibles en su región secundaria. [Más información](site-recovery-test-failover-to-azure.md#prepare-active-directory-and-dns)
+- Si desea acceder a VM replicadas después de la conmutación por error desde un sitio local, tiene que [prepararse para conectarse](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover) a estas VM.
 
 ## <a name="run-a-test-failover"></a>Ejecución de una conmutación por error de prueba
 
-1. En **configuración** > **replican elementos**, haga clic en hello VM **+ conmutación por error de prueba** icono. 
+1. En **Configuración** > **Elementos replicados**, haga clic en la VM > icono **+Probar conmutación por error**. 
 
-2. En **conmutación por error de prueba**, seleccione un toouse de punto de recuperación para hello conmutación por error:
+2. En **Conmutación por error**, seleccione el punto de recuperación que usar para la conmutación por error:
 
-    - **Procesar más reciente**: se produce un error Hola VM en el último punto de recuperación de toohello que se procesó por servicio de Site Recovery Hola. se muestra la marca de tiempo de Hola. Con esta opción, no se empleó tiempo en el procesamiento de datos, por lo que se proporciona un objetivo de tiempo de recuperación (RTO) bajo.
-    - **Más reciente coherente con la aplicación**: esta opción se conmuta punto coherente con la aplicación de recuperación de todas las máquinas virtuales toohello más reciente. se muestra la marca de tiempo de Hola. 
+    - **Procesado más recientemente**: error de la VM en el último punto de recuperación procesado por el servicio Site Recovery. Se muestra la marca de tiempo. Con esta opción, no se empleó tiempo en el procesamiento de datos, por lo que se proporciona un objetivo de tiempo de recuperación (RTO) bajo.
+    - **Más reciente coherente con la aplicación**: esta opción conmuta por error todas las VM en el punto de recuperación más reciente coherente con la aplicación. Se muestra la marca de tiempo. 
     - **Personalizado**: seleccione un punto de recuperación.
  
-3. Después de producirse la conmutación por error de hello, se conectará toowhich de red virtual de Azure de destino Hola seleccione máquinas virtuales de Azure en la región secundaria de Hola.
-4. toostart Hola conmutación por error, haga clic en **Aceptar**. tootrack de progreso, haga clic en hello VM tooopen sus propiedades. O bien, puede hacer clic en hello **conmutación por error de prueba** trabajo en el nombre del almacén de hello > **configuración** > **trabajos** > **detrabajosderecuperacióndesitio**.
-5. Después de hello conmutación por error finaliza, réplica de hello Azure VM aparece en hello portal de Azure > **máquinas virtuales**. Asegúrese de que ese hello VM es el tamaño adecuado de hello, que ha conectado toohello de red adecuada y que se está ejecutando.
-6. Hola toodelete las máquinas virtuales que se crearon durante la conmutación por error de prueba hello, haga clic en **conmutación por error de prueba de limpieza** en hello replicar Hola o elemento de plan de recuperación. En **notas**, registrar y guardar las observaciones asociadas con conmutación por error de prueba de Hola. 
+3. Seleccione la red virtual de Azure de destino a la se conectarán las VM de Azure en la región secundaria después de que se produzca la conmutación por error.
+4. Para iniciar la conmutación por error, haga clic en **Aceptar**. Para realizar el seguimiento del progreso, haga clic en la máquina virtual para abrir sus propiedades. También puede hacer clic en el trabajo **Conmutación por error de prueba** en el nombre del almacén > **Configuración** > **Trabajos** > **Trabajos de Site Recovery**.
+5. Una vez finalizada la conmutación por error, la VM de Azure de réplica aparece en Azure Portal > **Virtual Machines**. Debe asegurarse de que la VM tiene el tamaño adecuado, que está conectada a la red correspondiente y que se está ejecutando.
+6. Para eliminar las máquinas virtuales que se crearon durante la conmutación por error de prueba, haga clic en **Cleanup test failover** (Limpiar conmutación por error de prueba) en el artículo replicado o el plan de recuperación. En **Notas**, registre y guarde las observaciones asociadas a la conmutación por error de prueba. 
 
 [Más información](site-recovery-test-failover-to-azure.md) sobre las conmutaciones por error de prueba.
 
@@ -60,7 +60,7 @@ Después de habilitar la replicación de la máquina virtual de Azure (VM), siga
 
 Después de realizar la conmutación por error, este tutorial se habrá completado. Ahora, obtenga información sobre la ejecución de conmutaciones por error en producción:
 
-- [Obtener más información](site-recovery-failover.md) acerca de los diferentes tipos de conmutaciones por error y cómo toorun ellos.
+- [Aprenda más](site-recovery-failover.md) sobre los diferentes tipos de conmutación por error y cómo ejecutarlos.
 - Obtenga más información sobre la conmutación por error de varias VM [con un plan de recuperación](site-recovery-create-recovery-plans.md).
 - Aprenda sobre el [uso de planes de recuperación](site-recovery-create-recovery-plans.md).
 - Más información sobre la [reprotección de máquinas virtuales de Azure](site-recovery-how-to-reprotect.md) después de una conmutación por error.

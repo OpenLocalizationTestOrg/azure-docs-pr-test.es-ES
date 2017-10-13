@@ -1,6 +1,6 @@
 ---
-title: "aaaPlan la asignación de red para la replicación de máquina virtual de Hyper-V con Site Recovery | Documentos de Microsoft"
-description: "Configurar la asignación de red para la replicación de máquina virtual de Hyper-V desde un tooAzure de centro de datos local o sitio secundario de tooa."
+title: "Planear la asignación de red para la replicación de máquinas virtuales de Hyper-V con Site Recovery | Microsoft Docs"
+description: "Configure la asignación de red para la replicación de máquinas virtuales de Hyper-V desde un centro de datos local a Azure, o a un sitio secundario."
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,71 +14,71 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/23/2017
 ms.author: raynew
-ms.openlocfilehash: 86199b5840ea10fd33630bcc75d14340a49e01bd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: b1b8b1ebc013a5dfb69528f9353369e18f84e61f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="plan-network-mapping-for-hyper-v-vm-replication-with-site-recovery"></a>Planear la asignación de red para la replicación de máquinas virtuales de Hyper-V con Site Recovery
 
 
 
-En este artículo le ayuda a toounderstand y el plan para la red durante la replicación de máquinas virtuales de Hyper-V tooAzure, o un sitio secundario de tooa de asignación, el uso de hello [servicio Azure Site Recovery](site-recovery-overview.md).
+Este artículo le ayuda a entender y planear la asignación de red durante la replicación de máquinas virtuales de Hyper-V en Azure, o en un sitio secundario, mediante el [servicio Azure Site Recovery](site-recovery-overview.md).
 
-Después de leer este artículo registrar los comentarios de la parte inferior de Hola de este artículo, o hacer preguntas técnicas en hello [foro de servicios de recuperación de Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Cuando haya terminado de leer este artículo, publique cualquier comentario en la parte inferior de este artículo, o bien realice preguntas técnicas en el [foro de Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
-## <a name="network-mapping-for-replication-tooazure"></a>Asignación de red para la replicación tooAzure
+## <a name="network-mapping-for-replication-to-azure"></a>Asignación de redes para la replicación en Azure
 
-Asignación de red se utiliza al replicar tooAzure de máquinas virtuales de Hyper-V (que se administren en VMM). La asignación de red se produce entre redes de máquinas virtuales en un servidor VMM de origen y redes de Azure de destino. Asignación Hola siguientes:
+La asignación de red se usa cuando se replican máquinas virtuales de Hyper-V (administradas en VMM) en Azure. La asignación de red se produce entre redes de máquinas virtuales en un servidor VMM de origen y redes de Azure de destino. La asignación hace lo siguiente:
 
-- **Conexión de red**: garantiza que replicada máquinas virtuales de Azure están conectados toohello de red asignadas. Todas las máquinas que conmutar por error en hello misma red puede conectarse tooeach otra, aunque conmutado por error en los planes de recuperación diferente.
-- **Puerta de enlace de red**: si se configura una puerta de enlace de red en red Azure de destino de hello, las máquinas virtuales pueden conectarse máquinas virtuales de tooother local.
-
-Observe lo siguiente:
-
-- Asignar un origen de red de VM de VMM tooan red virtual de Azure.
-- Después de la conmutación por error máquinas virtuales de Azure en hello red de origen será red virtual de destino asignada toohello conectado.
-- Agregan de nuevas máquinas virtuales conectadas toohello red de VM de origen toohello asigna red de Azure cuando se produce la replicación.
-- Si la red de destino de hello tiene varias subredes y una de estas subredes se Hola mismo nombre que la subred en la máquina virtual de origen de Hola se encuentra, máquina virtual de réplica de hello conecta toothat subred de destino después de la conmutación por error.
-- Si no hay ninguna subred de destino con un nombre coincidente, máquina virtual de hello conecta toohello primera subred de red de Hola.
-
-
-## <a name="network-mapping-for-replication-tooa-secondary-datacenter"></a>Asignación de red para el centro de datos de replicación tooa secundario
-
-Asignación de red se utiliza al replicar el centro de datos secundario tooa de máquinas virtuales de Hyper-V (administrado en System Center Virtual Machine Manager (VMM)). La asignación de red se produce entre redes de máquinas virtuales en un servidor VMM de origen y redes de máquinas virtuales en un servidor VMM de destino. Asignación Hola siguientes:
-
-- **Conexión de red**: redes de máquinas virtuales se conecta tooappropriate después de la conmutación por error. VM de réplica de Hello será toohello conectado red de destino que está asignada toohello red de origen.
-- **Una ubicación óptima**: óptimamente lugares Hola máquinas virtuales de réplica en los servidores de host de Hyper-V. Máquinas virtuales de réplica se colocan en hosts que pueden asignar Hola de acceso a redes de máquinas virtuales.
-- **Ninguna asignación de red**: si no configura la asignación de red, las máquinas virtuales de réplica no estará conectado tooany redes de máquinas virtuales después de la conmutación por error.
+- **Conexión de red**: garantiza que las máquinas virtuales replicadas de Azure se conecten a la red asignada. Todas las máquinas con conmutación por error en la misma red pueden conectarse entre sí, aunque lo hagan en planes de recuperación diferentes.
+- **Puerta de enlace de red**: si se configura una puerta de enlace de red en la red de Azure de destino, las máquinas virtuales se pueden conectar a otras máquinas virtuales locales.
 
 Observe lo siguiente:
 
-- Asignación de red se puede configurar entre redes de VM en dos servidores VMM o en un único servidor VMM si administra dos sitios Hola mismo servidor.
-- Cuando se configura correctamente la asignación y está habilitada la replicación, una máquina virtual en la ubicación principal Hola será red tooa conectado y se conectará su réplica en la ubicación de destino de hello tooits asigna la red.
+- Una red de máquinas virtuales de VMM de origen se asigna a una red virtual de Azure.
+- Después de la conmutación por error, las máquinas virtuales de Azure en la red de origen se conectarán a la red virtual de destino asignada.
+- Las nuevas máquinas virtuales agregadas a la red de máquinas virtuales de origen se conectarán a la red de Azure asignada cuando se produzca la replicación.
+- Si la red de destino tiene varias subredes y una de estas subredes tiene el mismo nombre que la subred en la que se encuentra la máquina virtual de origen, la máquina virtual de réplica se conectará a esa subred de destino después de la conmutación por error.
+- Si no hay ninguna subred de destino con un nombre coincidente, la máquina virtual se conectará a la primera subred de la red.
+
+
+## <a name="network-mapping-for-replication-to-a-secondary-datacenter"></a>Asignación de red para la replicación en un centro de datos secundario
+
+La asignación de red se usa al replicar máquinas virtuales de Hyper-V (administradas en System Center Virtual Machine Manager (VMM)) en un centro de datos secundario. La asignación de red se produce entre redes de máquinas virtuales en un servidor VMM de origen y redes de máquinas virtuales en un servidor VMM de destino. La asignación hace lo siguiente:
+
+- **Conexión de red**: las máquinas virtuales se conectan a las redes adecuadas después de la conmutación por error. La máquina virtual de réplica se conectará a la red de destino que se asigna a la red de origen.
+- **Ubicación óptima**: coloca las máquinas virtuales de réplica en los servidores host de Hyper-V de forma óptima. Las máquinas virtuales de réplica se colocarán en los hosts que pueden tener acceso a las redes de máquinas virtuales asignadas.
+- **Sin asignación de redes**: si no configura la asignación de redes, las máquinas virtuales de réplica no se conectarán a ninguna red de máquinas virtuales después de la conmutación por error.
+
+Observe lo siguiente:
+
+- La asignación de redes se puede configurar entre redes de máquinas virtuales en dos servidores VMM o en un único servidor VMM si el mismo servidor administra dos sitios.
+- Cuando se configura correctamente la asignación y se habilita la replicación, se conectará una máquina virtual de la ubicación principal a una red y su réplica de la ubicación de destino se conectará a la red asignada.
 -
-- Si redes se ha configurado correctamente en VMM, al seleccionar una red de VM de destino durante la asignación de red, nubes de origen VMM de Hola que usan la red de VM de origen Hola se mostrarán junto con redes de VM de destino disponibles de hello en nubes de destino de Hola que sirven para protección.
-- Si la red de destino de hello tiene varias subredes y una de dichas subredes tiene Hola mismo nombre como Hola subred en qué Hola máquina virtual de origen se encuentra, a continuación, Hola máquina virtual de réplica será toothat conectado subred de destino después de la conmutación por error. Si no hay ninguna subred de destino con un nombre coincidente, máquina virtual de hello estará conectado toohello primera subred de red de Hola.
+- Si las redes se han configurado correctamente en VMM, al seleccionar una red de máquinas virtuales de destino durante la asignación de redes, se mostrará las nubes VMM de origen que utilizan la red de máquinas virtuales de origen, junto con las redes de máquinas virtuales de destino disponibles en las nubes de destino que se usan para la protección.
+- Si la red de destino tiene varias subredes y una de estas subredes tiene el mismo nombre que la subred en la que se encuentra la máquina virtual de origen, la máquina virtual de réplica se conectará a esa subred de destino después de la conmutación por error. Si no hay ninguna subred de destino con un nombre coincidente, la máquina virtual se conectará a la primera subred de la red.
 
 
 
 ### <a name="example"></a>Ejemplo
 
-Este es un ejemplo tooillustrate este mecanismo. Vamos a utilizar una organización con dos ubicaciones en Nueva York y Chicago.
+Este es un ejemplo para ilustrar este mecanismo. Vamos a utilizar una organización con dos ubicaciones en Nueva York y Chicago.
 
 **Ubicación** | **Servidor VMM** | **Redes de máquinas virtuales** | **Asignado a**
 ---|---|---|---
-Nueva York | VMM-NewYork| VMNetwork1-NewYork | TooVMNetwork1-Chicago asignada
+Nueva York | VMM-NewYork| VMNetwork1-NewYork | Asignado a VMNetwork1-Chicago
  |  | VMNetwork2-NewYork | No asignado
-Chicago | VMM-Chicago| VMNetwork1-Chicago | TooVMNetwork1-NewYork asignada
+Chicago | VMM-Chicago| VMNetwork1-Chicago | Asignado a VMNetwork1-NewYork
  | | VMNetwork1-Chicago | No asignado
 
 En este ejemplo:
 
-- Cuando se crea una máquina virtual de réplica para cualquier máquina virtual que está conectado tooVMNetwork1-NewYork, estará conectado tooVMNetwork1-Chicago.
-- Cuando se crea una máquina virtual de réplica para VMNetwork2-NewYork o VMNetwork2-Chicago, no estará conectada tooany red.
+- Cuando se crea una máquina virtual de réplica para cualquier máquina virtual que está conectada a VMNetwork1-NewYork, se conectará a VMNetwork1-Chicago.
+- Cuando se crea una máquina virtual de réplica para VMNetwork2-NewYork o VMNetwork2-Chicago, no se conectará a ninguna red.
 
-Aquí es cómo se configuran las nubes de VMM en nuestra organización de ejemplo y redes lógicas Hola asociadas a nubes de Hola.
+Aquí es cómo se configuran las nubes de VMM en nuestra organización de ejemplo y las redes lógicas asociadas a las nubes.
 
 #### <a name="cloud-protection-settings"></a>Configuración de la protección de la nube
 
@@ -99,7 +99,7 @@ Chicago | LogicalNetwork1-Chicago | VMNetwork1-Chicago
 
 #### <a name="target-network-settings"></a>Configuración de red de destino
 
-Según estos valores, al seleccionar red de VM de destino de hello, hello en la tabla siguiente muestra las opciones de Hola que estarán disponibles.
+Según esta configuración, cuando selecciona la red de máquinas virtuales de destino, en la siguiente tabla se muestran las opciones que estarán disponibles.
 
 **Selección** | **Nube protegida** | **Proteger nube** | **Red de destino disponible**
 ---|---|---|---
@@ -109,15 +109,15 @@ VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | No disponible
  | GoldCloud1 | GoldCloud2 | Disponible
 
 
-Si la red de destino de hello tiene varias subredes y una de dichas subredes tiene Hola mismo nombre como Hola subred en qué Hola máquina virtual de origen se encuentra, a continuación, Hola máquina virtual de réplica será toothat conectado subred de destino después de la conmutación por error. Si no hay ninguna subred de destino con un nombre coincidente, máquina virtual de hello estará conectado toohello primera subred de red de Hola.
+Si la red de destino tiene varias subredes y una de estas subredes tiene el mismo nombre que la subred en la que se encuentra la máquina virtual de origen, la máquina virtual de réplica se conectará a esa subred de destino después de la conmutación por error. Si no hay ninguna subred de destino con un nombre coincidente, la máquina virtual se conectará a la primera subred de la red.
 
 
 #### <a name="failback-behavior"></a>Comportamiento de conmutación por recuperación
 
-toosee lo que ocurre en el caso de hello de conmutación por recuperación (replicación inversa), vamos a suponer que VMNetwork1-NewYork está asignada tooVMNetwork1-Chicago, con hello después de la configuración.
+Para ver lo que ocurre en el caso de conmutación por recuperación (replicación inversa), supongamos que VMNetwork1-NewYork se asigna a VMNetwork1-Chicago, con la siguiente configuración.
 
 
-**Máquina virtual** | **Red tooVM conectado**
+**Máquina virtual** | **Conectada a la red de VM**
 ---|---
 VM1 | VMNetwork1-Network
 VM2 (réplica de VM1) | VMNetwork1-Chicago
@@ -126,13 +126,13 @@ Con esta configuración, revisemos lo que ocurre en un par de escenarios posible
 
 **Escenario** | **Resultado**
 ---|---
-Ningún cambio hello en Propiedades de red de VM-2 después de la conmutación por error. | VM-1 permanece conectado toohello red de origen.
+Sin cambios en las propiedades de red de VM-2 después de la conmutación por error. | VM-1 sigue estando conectada a la red de origen
 Las propiedades de red de VM-2 cambian después de la conmutación por error y está desconectada. | VM-1 se desconecta.
-Propiedades de red de VM-2 cambian después de la conmutación por error y está conectado tooVMNetwork2-Chicago. | Si no está asignada VMNetwork2-Chicago, se desconectará VM-1.
-Se cambia la asignación de redes de VMNetwork1-Chicago. | VM-1 será toohello conectado red ahora asignada tooVMNetwork1-Chicago.
+Las propiedades de red de VM-2 cambian después de la conmutación por error y está conectada a VMNetwork2-Chicago. | Si no está asignada VMNetwork2-Chicago, se desconectará VM-1.
+Se cambia la asignación de redes de VMNetwork1-Chicago. | VM-1 se conectará a la red ahora asignada a VMNetwork1-Chicago.
 
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Obtenga información acerca de [planear la infraestructura de red de hello](site-recovery-network-design.md).
+Obtenga información sobre la [planificación de la infraestructura de red](site-recovery-network-design.md).

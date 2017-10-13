@@ -1,24 +1,24 @@
 ### <a name="record-names"></a>Nombres de registro
 
-En DNS de Azure, los registros se especifican mediante el uso de nombres relativos. A *completo* nombre de dominio (FQDN) incluye el nombre de la zona de hello, mientras que un *relativa* nombre no lo hace. Por ejemplo, nombre de registro relativo de Hola "www" en la zona de hello 'contoso.com' da nombre de registro completo de hello 'www.contoso.com'.
+En DNS de Azure, los registros se especifican mediante el uso de nombres relativos. En un nombre de dominio *completo* (FQDN) se incluye el nombre de zona, mientras que uno *relativo*, no. Por ejemplo, el nombre de registro relativo "www" de la zona "contoso.com" proporciona el nombre de registro completo "www.contoso.com".
 
-Un *vértice* registro es un registro DNS en la raíz de hello (o *vértice*) de una zona DNS. Por ejemplo, en la zona DNS de Hola "contoso.com", un registro de vértice tiene también nombre completo de hello 'contoso.com' (Esto se denomina a veces un *naked* dominio).  Por convención, Hola nombre relativo ' @' es toorepresent usa registros de vértice.
+Un registro de *vértice* es un registro DNS en la raíz (o *vértice*) de una zona DNS. Por ejemplo, en la zona DNS "contoso.com", un registro de vértice también tiene el nombre completo "contoso.com" (que a veces se denomina dominio *simple*).  Por convención, el nombre relativo '@' se utiliza para representar registros de vértice.
 
 ### <a name="record-types"></a>Tipos de registro
 
-Cada registro DNS tiene un nombre y un tipo. Los registros se organizan en diferentes tipos según datos toohello que contienen. tipo más común de Hello es un registro "A", que se asigna una dirección IPv4 de tooan de nombre. Otro tipo común es un registro de 'MX', que se asigna un servidor de correo electrónico de tooa de nombres.
+Cada registro DNS tiene un nombre y un tipo. Los registros se organizan en distintos tipos según los datos que contengan. El tipo más común es un registro "A", que asigna un nombre a una dirección IPv4. Otro tipo común es un registro "MX", que asigna un nombre a un servidor de correo.
 
 DNS de Azure es compatible con todos los tipos de registro DNS comunes: A, AAAA, CNAME, MX, NS, PTR, SOA, SRV y TXT. Tenga en cuenta que [los registros de SPF se representan mediante registros TXT](../articles/dns/dns-zones-records.md#spf-records).
 
 ### <a name="record-sets"></a>Conjuntos de registros
 
-En ciertas ocasiones necesitará toocreate más de un registro DNS con un nombre especificado y el tipo. Por ejemplo, suponga que se hospeda el sitio web de hello 'www.contoso.com' en dos direcciones IP. sitio Web de Hello requiere dos diferentes registros, uno para cada dirección IP. Este es un ejemplo de un conjunto de registros:
+En ocasiones, tendrá que crear más de un registro DNS con un nombre y un tipo concretos. Por ejemplo, supongamos que el sitio web www.contoso.com se hospeda en dos direcciones IP diferentes. En este caso, se requieren dos registros A distintos, uno para cada dirección IP. Este es un ejemplo de un conjunto de registros:
 
     www.contoso.com.        3600    IN    A    134.170.185.46
     www.contoso.com.        3600    IN    A    134.170.188.221
 
-Azure DNS administra todos los registros DNS con *conjuntos de registros*. Un conjunto de registros (también conocido como un *recursos* grabar conjunto) es Hola colección de registros DNS en una zona que han Hola mismo nombre y son de hello mismo tipo. La mayoría de conjuntos de registros contienen un único registro. Sin embargo, los ejemplos como Hola anteriormente, en que un conjunto de registros contiene más de un registro, no son habituales.
+Azure DNS administra todos los registros DNS con *conjuntos de registros*. Un conjunto de registros (también denominado conjunto de registros de *recurso*) es la colección de registros DNS de una zona con el mismo nombre y del mismo tipo. La mayoría de conjuntos de registros contienen un único registro. Sin embargo, es habitual encontrar ejemplos como el anterior, en el que un conjunto de registros contiene más de un registro.
 
-Por ejemplo, supongamos que ya ha creado un registro a "www" en la zona de hello 'contoso.com', que señala toohello IP direcciones '134.170.185.46' (Hola primer registro anterior).  toocreate Hola segundo registro agregaría que registran el registro existente toohello establecer, en lugar de crear un conjunto de registros adicional.
+Por ejemplo, supongamos que ya ha creado un registro "www" en la zona "contoso.com", que apunta a la dirección IP "134.170.185.46" (el primer registro anterior).  Para crear el segundo registro se agregaría ese registro al conjunto de registros existente, en lugar de crear otro conjunto de registros.
 
-Hola SOA y tipos de registros CNAME son excepciones. los estándares de DNS de Hello no admiten varios registros con el mismo nombre para estos tipos de Hola, por lo tanto, estos conjuntos de registros solo pueden contener un único registro.
+Los tipos de registros SOA y CNAME se consideran excepciones. Los estándares DNS no permiten varios registros con el mismo nombre para estos tipos, por lo tanto, los conjuntos de estos registros solo pueden contener un único registro.

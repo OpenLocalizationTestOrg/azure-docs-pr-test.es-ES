@@ -1,6 +1,6 @@
 ---
-title: aaaAzure servidor de copia de seguridad protege el estado del sistema y restaura el sistema operativo toobare | Documentos de Microsoft
-description: "Servidor de copia de seguridad de Azure tooback hay que usar el estado del sistema y proporcionar protección de reconstrucción completa (BMR)."
+title: "Azure Backup Server protege el estado del sistema y restaura a una reconstrucción completa | Microsoft Docs"
+description: "Use Azure Backup Server para realizar una copia de seguridad del estado del sistema y proporcionar protección de reconstrucción completa (BMR)."
 services: backup
 documentationcenter: 
 author: markgalioto
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: markgal,masaran
-ms.openlocfilehash: d34c8bbdc7cc24c905f81ceaf199698c1ee923db
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 30f70a702d7d9a3e1196c04096708c035e406607
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="back-up-system-state-and-restore-toobare-metal-with-azure-backup-server"></a>Copia de seguridad de estado del sistema y restaurar el sistema operativo toobare con el servidor de copia de seguridad de Azure
+# <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Realizar una copia de seguridad del estado del sistema y restaurar a una reconstrucción completa con Azure Backup Server
 
 Azure Backup Server realiza una copia de seguridad del estado del sistema y proporciona protección de reconstrucción completa (BMR).
 
-*   **Copia de seguridad de estado de sistema**: realiza una copia de archivos del sistema operativo, por lo que puede recuperar cuando se inicia un equipo, pero los archivos del sistema y el registro de hello se pierden. Una copia de seguridad del estado del sistema incluye lo siguiente:
+*   **Copia de seguridad del estado de sistema**: realiza una copia de seguridad de los archivos del sistema operativo, para que se pueda recuperar cuando se inicia un equipo, pero los archivos de sistema y el Registro se pierden. Una copia de seguridad del estado del sistema incluye lo siguiente:
     * Miembro de dominio: archivos de arranque, base de datos de registro de clase COM+, Registro.
     * Controlador de dominio: Windows Server Active Directory (NTDS), archivos de arranque, base de datos de registro de clase COM+, Registro, volumen del sistema (SYSVOL).
     * Equipo que ejecuta servicios de clúster: metadatos del servidor de clúster.
     * Equipo que ejecuta servicios de certificados: datos del certificado.
-* **Copia de seguridad de reconstrucción completa**: realiza una copia de seguridad de los archivos del sistema operativo y de todos los datos de volúmenes críticos (excepto los datos de usuario). Por definición, una copia de seguridad de BMR incluye una copia de seguridad del estado del sistema. Proporciona protección cuando no se inicia un equipo y ha toorecover todo.
+* **Copia de seguridad de reconstrucción completa**: realiza una copia de seguridad de los archivos del sistema operativo y de todos los datos de volúmenes críticos (excepto los datos de usuario). Por definición, una copia de seguridad de BMR incluye una copia de seguridad del estado del sistema. Proporciona protección cuando un equipo no se inicia y es necesario recuperarlo todo.
 
-Hello en la tabla siguiente resume lo que puede realizar copias de y recuperar. Para obtener información detallada sobre las versiones de las aplicaciones que se pueden proteger con el estado del sistema y BMR, vea [los elementos de los que Azure Backup Server puede realizar una copia de seguridad](backup-mabs-protection-matrix.md).
+En la tabla siguiente se resumen los elementos de los que se pueden realizar copias de seguridad y que se pueden recuperar. Para obtener información detallada sobre las versiones de las aplicaciones que se pueden proteger con el estado del sistema y BMR, vea [los elementos de los que Azure Backup Server puede realizar una copia de seguridad](backup-mabs-protection-matrix.md).
 
 |Backup|Problema|Recuperación a partir de una copia de seguridad de Azure Backup Server|Recuperación a partir de una copia de seguridad del estado de sistema|BMR|
 |----------|---------|---------------------------|------------------------------------|-------|
@@ -53,50 +53,50 @@ Hello en la tabla siguiente resume lo que puede realizar copias de y recuperar. 
 
 ## <a name="how-system-state-backup-works"></a>Cómo funciona la copia de seguridad del estado del sistema
 
-Cuando se ejecuta una copia de seguridad de estado del sistema, copia de seguridad de servidor se comunica con toorequest copias de seguridad de Windows Server una copia de seguridad de estado del sistema del servidor de Hola. De forma predeterminada, el servidor de copia de seguridad y copia de seguridad de Windows Server usan unidad de Hola que tiene hello más espacio libre. Información acerca de esta unidad se guarda en el archivo PSDataSourceConfig.xml de Hola. Se trata de una unidad de Hola que copias de seguridad de Windows Server que se usa para las copias de seguridad.
+Cuando se ejecuta una copia de seguridad del estado del sistema, Backup Server se comunica con Copias de seguridad de Windows Server para solicitar una copia de seguridad del estado del sistema del servidor. De forma predeterminada, Backup Server y Copias de seguridad de Windows Server usan la unidad que tiene más espacio libre disponible. La información de esta unidad se guarda en el archivo PSDataSourceConfig.xml. Esta es la unidad que Copias de seguridad de Windows Server usa para las copias de seguridad.
 
-Puede personalizar la unidad de Hola que usa el servidor de copia de seguridad para copia de seguridad de estado de sistema de Hola. En el servidor de hello protegido, vaya tooC:\Program Files\Microsoft Manager\MABS\Datasources de protección de datos. Abrir archivo de hello PSDataSourceConfig.xml para su edición. Hola de cambio \<FilesToProtect\> valor de letra de unidad de Hola. Guarde y cierre el archivo hello. Si hay que un grupo de protección establece tooprotect Hola estado del sistema Hola equipo, ejecute una comprobación de coherencia. Si se genera una alerta, seleccione **Modificar grupo de protección** de alerta de Hola y Asistente de hello, a continuación, completa. Después, ejecute otra comprobación de coherencia.
+Puede personalizar la unidad que Backup Server usa para la copia de seguridad del estado del sistema. En el servidor protegido, vaya a C:\Archivos de programa\Microsoft Data Protection Manager\MABS\Datasources. Abra el archivo PSDataSourceConfig.xml para editarlo. Cambie el valor de \<FilesToProtect\> de la letra de unidad. Guarde y cierre el archivo. Si se ha establecido un grupo de protección para proteger el estado del sistema del equipo, ejecute una comprobación de coherencia. Si se genera una alerta, seleccione **Modificar grupo de protección** en la alerta y complete el asistente. Después, ejecute otra comprobación de coherencia.
 
-Tenga en cuenta que si el servidor de protección de hello está en un clúster, es posible que se seleccionará una unidad agrupada como unidad de hello con hello más espacio libre. Si esa propiedad de la unidad se ha conmutado tooanother nodo y se ejecuta una copia de seguridad de estado del sistema, unidad de hello no está disponible y se produce un error en la copia de seguridad de Hola. En este escenario, modifique toopoint PSDataSourceConfig.xml tooa la unidad local.
+Tenga en cuenta que si el servidor de protección está en un clúster, es posible que se seleccione una unidad de clúster como la unidad con más espacio libre. Si la propiedad de esa unidad se ha cambiado a otro nodo y se ejecuta una copia de seguridad del estado de sistema, la unidad no estará disponible y se producirá un error en la copia de seguridad. En este caso, modifique PSDataSourceConfig.xml para que apunte a una unidad local.
 
-A continuación, copia de seguridad de Windows Server crea una carpeta llamada WindowsImageBackup en raíz de Hola de carpeta de restauración de Hola. Copias de seguridad de Windows Server crea copias de seguridad de hello, todos los datos de saludo se colocan en esta carpeta. Cuando haya finalizado la copia de seguridad de hello, archivo hello sea el equipo del servidor de copia de seguridad de toohello transferidos. Tenga en cuenta Hola siguiente información:
+Después, Copias de seguridad de Windows Server crea una carpeta denominada WindowsImageBackup en la raíz de la carpeta de restauración. Cuando Copias de seguridad de Windows Server crea la copia de seguridad, todos los datos se colocan en esta carpeta. Cuando finaliza la copia de seguridad, el archivo se transfiere al equipo con Backup Server. Tenga en cuenta la información siguiente:
 
-* Esta carpeta y su contenido no se limpia cuando finaliza la copia de seguridad de Hola o transferencia. Hola toothink de manera mejor de esta es que Hola se se reserva espacio para hello próxima vez que finaliza una copia de seguridad.
-* Hola carpeta se crea cada vez que se realiza una copia de seguridad. marca de fecha y hora de Hello refleja el tiempo de saludo de la última copia de seguridad del estado de sistema.
+* Esta carpeta y su contenido no se limpian al finalizar la copia de seguridad o la transferencia. Lo mejor es que considere que el espacio se está reservando para la próxima vez que se realice una copia de seguridad.
+* Esta carpeta se crea cada vez que se realiza una copia de seguridad. La marca de fecha y hora refleja el momento en que se ha realizado la última copia de seguridad del estado del sistema.
 
 ## <a name="bmr-backup"></a>Copia de seguridad de BMR
 
-Para BMR (incluida una copia de seguridad de estado del sistema), trabajo de copia de seguridad de Hola se guarda tooa compartir directamente en el equipo del servidor de copia de seguridad de Hola. No se guarda tooa carpeta en el servidor de hello protegido.
+En el caso de BMR (incluida una copia de seguridad del estado del sistema), el trabajo de copia de seguridad se guarda directamente en un recurso compartido en el equipo con Backup Server. No se guarda en una carpeta en el servidor protegido.
 
-Servidor de copia de seguridad llama a copias de seguridad de Windows Server y comparte volumen de réplica de Hola para esa copia de seguridad de reconstrucción completa. En este caso, no indica a unidad de copia de seguridad de Windows Server toouse Hola con hello más espacio libre. En su lugar, utiliza el recurso compartido de Hola que se creó para el trabajo de Hola.
+Backup Server llama a Copias de seguridad de Windows Server y comparte el volumen de réplica para esa copia de seguridad de BMR. En este caso, no le indica a Copias de seguridad de Windows Server que use la unidad con más espacio libre. En su lugar, usa el recurso compartido que se ha creado para el trabajo.
 
-Cuando haya finalizado la copia de seguridad de hello, archivo hello sea el equipo del servidor de copia de seguridad de toohello transferidos. Los registros se almacenan en C:\Windows\Logs\WindowsServerBackup.
+Cuando finaliza la copia de seguridad, el archivo se transfiere al equipo con Backup Server. Los registros se almacenan en C:\Windows\Logs\WindowsServerBackup.
 
 ## <a name="prerequisites-and-limitations"></a>Requisitos previos y limitaciones
 
 -   No se admite BMR para los equipos que ejecutan Windows Server 2003 o para los equipos que ejecutan un sistema operativo cliente.
 
--   No se puede proteger BMR y estado de sistema para hello mismo equipo en diferentes grupos de protección.
+-   No se puede proteger BMR y el estado del sistema para el mismo equipo en grupos de protección diferentes.
 
 -   Un equipo con Backup Server no puede protegerse a sí mismo para BMR.
 
--   Tootape de protección a corto plazo (disco a cinta o D2T) no se admite para BMR. Se admite tootape de almacenamiento a largo plazo (disco a disco a cinta o D2D2T).
+-   No admite la protección a corto plazo en cinta (de disco a cinta o D2T) para BMR. En cambio, se admite el almacenamiento a largo plazo en cinta (de disco a disco y a cinta o D2D2T).
 
--   Para la protección de BMR, copias de seguridad de Windows Server debe instalarse en el equipo de hello protegido.
+-   Para la protección de BMR, es necesario instalar Copias de seguridad de Windows Server en el equipo protegido.
 
--   Para la protección de BMR, a diferencia de para la protección de estado del sistema, copia de seguridad de servidor no tiene ningún requisito de espacio en el equipo de hello protegido. Copia de seguridad de Windows Server transfiere directamente el equipo del servidor de copia de seguridad de las copias de seguridad toohello. trabajo de copia de seguridad de transferencia de Hello no aparece en hello servidor de copia de seguridad **trabajos** vista.
+-   Para la protección de BMR, a diferencia de la protección del estado del sistema, Backup Server no tiene ningún requisito de espacio en el equipo protegido. Copias de seguridad de Windows Server transfiere directamente las copias de seguridad al equipo con Backup Server. El trabajo de transferencia de copia de seguridad no aparece en la vista **Trabajos** de Backup Server.
 
--   Servidor de copia de seguridad reserva 30 GB de espacio en el volumen de réplica de Hola para BMR. Puede cambiar esta configuración en hello **asignación de disco** página en el Asistente Modificar grupo de protección de Hola o mediante Hola Get-DatasourceDiskAllocation y Set-DatasourceDiskAllocation cmdlets de PowerShell. En el volumen del punto de recuperación de hello, protección de BMR requiere unos 6 GB para una retención de cinco días.
-    * Tenga en cuenta que no se puede reducir a Hola réplica volumen tamaño que no requiere herramientas de 15 GB.
-    * Servidor de copia de seguridad no calcula el tamaño de Hola Hola reconstrucción completa del origen de datos. y da por supuesto que son 30 GB para todos los servidores. Cambiar valor de hello basado en tamaño de Hola de copias de seguridad de reconstrucción completa que esperan en el entorno. tamaño de Hola de una copia de seguridad de reconstrucción completa se puede calcular aproximadamente como suma Hola de espacio utilizado en todos los volúmenes críticos. Volúmenes críticos = volumen de arranque + volumen del sistema + volumen que hospeda los datos del estado del sistema, como Active Directory.
+-   Backup Server reserva 30 GB de espacio en el volumen de réplica para BMR. Puede cambiar esta configuración en la página **Asignación de disco** en el Asistente para modificar grupo de protección o mediante los cmdlets de PowerShell Get-DatasourceDiskAllocation y Set-DatasourceDiskAllocation. En el volumen de puntos de recuperación, la protección de BMR requiere unos 6 GB para una retención de cinco días.
+    * Tenga en cuenta que no se puede reducir el tamaño del volumen de réplica a menos de 15 GB.
+    * Backup Server no calcula el tamaño del origen de datos de BMR y da por supuesto que son 30 GB para todos los servidores. Cambie el valor en función del tamaño de las copias de seguridad de BMR que espera que se realicen en el entorno. El tamaño aproximado de una copia de seguridad de BMR se puede calcular como la suma del espacio usado en todos los volúmenes críticos. Volúmenes críticos = volumen de arranque + volumen del sistema + volumen que hospeda los datos del estado del sistema, como Active Directory.
 
--   Si cambia de protección tooBMR protección de estado del sistema, protección de BMR requiere menos espacio en hello *volumen del punto de recuperación*. Sin embargo, hello espacio adicional en el volumen de hello no se recupera. Puede reducir manualmente el tamaño del volumen de hello en hello **modificar asignación de disco** página del Asistente para modificar grupo de protección de Hola o mediante el uso de hello Get-DatasourceDiskAllocation y Set-DatasourceDiskAllocation cmdlets de PowerShell.
+-   Cuando se pasa de la protección del estado del sistema a la protección de BMR, esta requiere menos espacio en el *volumen de puntos de recuperación*, pero el espacio que sobra en el volumen no se recupera. Puede reducir manualmente el tamaño del volumen en la página **Modificar asignación de disco** en el Asistente para modificar grupo de protección o mediante los cmdlets de PowerShell Get-DatasourceDiskAllocation y Set-DatasourceDiskAllocation.
 
-    Si cambia de protección tooBMR protección de estado del sistema, protección de BMR requiere más espacio en hello *volumen de réplica*. automáticamente se extenderá el volumen de Hola. Si desea que las asignaciones de espacio predeterminadas toochange hello, utilice cmdlet de PowerShell Modify-DiskAllocation Hola.
+    Cuando se pasa de la protección del estado del sistema a la protección de BMR, esta requiere más espacio en el *volumen de réplica* y el volumen se amplía automáticamente. Si quiere cambiar las asignaciones de espacio predeterminadas, use el cmdlet de PowerShell Modify-DiskAllocation.
 
--   Si cambia de la protección de estado de toosystem de protección de BMR, necesita más espacio en volumen de punto de recuperación de Hola. Servidor de copia de seguridad puede intentar tooautomatically aumentar el volumen de Hola. Si no hay suficiente espacio en el bloque de almacenamiento de hello, se produce un error.
+-   Cuando se pasa de la protección de BMR a la protección del estado del sistema, se necesita más espacio en el volumen de puntos de recuperación. Backup Server podría intentar aumentar automáticamente el volumen. Si no hay suficiente espacio en el grupo de almacenamiento, se produce un error.
 
-    Si cambia de la protección de estado de toosystem de protección de BMR, necesitará espacio en el equipo de hello protegido. Esto es porque la protección de estado del sistema escribe primero el equipo local de hello réplica toohello y, a continuación, transfiere el equipo del servidor de copia de seguridad de toohello.
+    Cuando se pasa de la protección de BMR a la protección del estado del sistema, se necesita espacio en el equipo protegido. Esto se debe a que la protección del estado del sistema primero escribe la réplica en el equipo local y, después, la transfiere al equipo con Backup Server.
 
 ## <a name="before-you-begin"></a>Antes de empezar
 
@@ -104,125 +104,125 @@ Cuando haya finalizado la copia de seguridad de hello, archivo hello sea el equi
     * [Requisitos del sistema para Azure Backup Server](http://docs.microsoft.com/system-center/dpm/install-dpm#setup-prerequisites)
     * [Matriz de protección de Backup Server](backup-mabs-protection-matrix.md)
 
-2.  **Configure el almacenamiento**. Puede almacenar datos de copia de seguridad en disco, cinta y en nube Hola con Azure. Para obtener más información, vea [Prepare data storage](https://docs.microsoft.com/system-center/dpm/plan-long-and-short-term-data-storage) (Preparar el almacenamiento de datos).
+2.  **Configure el almacenamiento**. Puede almacenar los datos de la copia de seguridad en disco, en cinta y en la nube con Azure. Para obtener más información, vea [Prepare data storage](https://docs.microsoft.com/system-center/dpm/plan-long-and-short-term-data-storage) (Preparar el almacenamiento de datos).
 
-3.  **Configurar el agente de protección de hello**. Instalar a agente de protección de Hola Hola otro equipo tooback seguridad. Para obtener más información, consulte [agente de protección DPM implementar hello](http://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent).
+3.  **Configure el agente de protección**. Instale el agente de protección en el equipo del que quiere hacer una copia de seguridad. Para obtener más información, vea [Deploy the DPM protection agent](http://docs.microsoft.com/system-center/dpm/deploy-dpm-protection-agent) (Implementar el agente de protección DPM).
 
 ## <a name="back-up-system-state-and-bare-metal"></a>Copia de seguridad del estado del sistema y reconstrucción completa
-Configure un grupo de protección como se describe en [Deploy protection groups](http://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups) (Implementar grupos de protección). Tenga en cuenta que no puede proteger BMR y estado de sistema para hello mismo equipo en diferentes grupos. Además, cuando se selecciona BMR, el estado del sistema se habilita automáticamente.
+Configure un grupo de protección como se describe en [Deploy protection groups](http://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups) (Implementar grupos de protección). Tenga en cuenta que no se puede proteger BMR y el estado del sistema para el mismo equipo en grupos diferentes. Además, cuando se selecciona BMR, el estado del sistema se habilita automáticamente.
 
 
-1.  Asistente para crear nuevo grupo de protección Hola de tooopen en la consola del administrador del servidor de copia de seguridad, seleccione hello **protección** > **acciones** > **crear grupo de protección Grupo**.
+1.  Para abrir el Asistente para crear grupo de protección en la consola de administrador de Backup Server, seleccione **Protección** > **Acciones** > **Crear grupo de protección**.
 
-2.  En hello **Seleccionar tipo de grupo de protección** , seleccione **servidores**y, a continuación, seleccione **siguiente**.
+2.  En la página **Seleccionar tipo de grupo de protección**, seleccione **Servidores** y haga clic en **Siguiente**.
 
-3.  En hello **seleccionar miembros del grupo** página, expanda equipo hello y, a continuación, seleccione **BMR** o **estado del sistema**.
+3.  En la página **Seleccionar miembros del grupo**, expanda el equipo y seleccione **BMR** o **Estado del sistema**.
 
-    Recuerde que no se puede proteger el estado de sistema y BMR para hello mismo equipo en diferentes grupos. Además, cuando se selecciona BMR, el estado del sistema se habilita automáticamente. Para obtener más información, vea [Deploy protection groups](http://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups) (Implementar grupos de protección).
+    Recuerde en cuenta que no se puede proteger BMR y el estado del sistema para el mismo equipo en grupos diferentes. Además, cuando se selecciona BMR, el estado del sistema se habilita automáticamente. Para obtener más información, vea [Deploy protection groups](http://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups) (Implementar grupos de protección).
 
-4.  En hello **Seleccionar método de protección de datos** , seleccione cómo desea toohandle copia de seguridad a corto plazo y a largo plazo. Copia de seguridad a corto plazo siempre es toodisk en primer lugar, con la opción de Hola de copia de seguridad de disco de hello toohello Azure en la nube mediante Azure copia de seguridad (a corto o a largo plazo). Una nube de copia de seguridad toohello toolong-término alternativo es tooset seguridad a largo plazo tooa copia de seguridad independiente dispositivo o una cinta biblioteca de cintas que se ha conectado tooBackup Server.
+4.  En la página **Seleccionar método de protección de datos**, seleccione cómo quiere controlar la copia de seguridad a corto y largo plazo. La copia de seguridad a corto plazo siempre se realiza primero en disco, pero existe la opción de realizar una copia de seguridad desde el disco a la nube de Azure mediante Azure Backup (a corto o largo plazo). Como alternativa a la copia de seguridad a largo plazo en la nube, puede configurar la copia de seguridad a largo plazo en un dispositivo de cinta o biblioteca de cintas independiente conectados a Backup Server.
 
-5.  En hello **seleccionar objetivos a corto plazo** página, seleccione cómo desea que tooback el almacenamiento de término tooshort en disco:
-    1. Para **duración de retención**, seleccione cuánto tiempo desea tookeep datos de hello en el disco. 
-    2. Para **frecuencia de sincronización**, seleccione la frecuencia con la que desea toorun una toodisk de copia de seguridad incremental. Si no desea tooset un intervalo de copia de seguridad, puede comprobar hello **sólo antes de un punto de recuperación** opción. Backup Server ejecutará una copia de seguridad rápida y completa justo antes de la programación de cada punto de recuperación.
+5.  En la página **Especificar objetivos a corto plazo**, seleccione cómo quiere realizar la copia de seguridad en el almacenamiento a corto plazo en disco:
+    1. Para **Duración de retención**, seleccione cuánto tiempo quiere conservar los datos en el disco. 
+    2. Para **Frecuencia de sincronización**, seleccione con qué frecuencia quiere ejecutar una copia de seguridad incremental en el disco. Si no quiere establecer un intervalo de copia de seguridad, puede activar la opción **Solo antes de un punto de recuperación**. Backup Server ejecutará una copia de seguridad rápida y completa justo antes de la programación de cada punto de recuperación.
 
-6.  Si desea que toostore datos en cinta para almacenamiento a largo plazo, en hello **especificar objetivos a largo plazo** , seleccione cuánto tiempo desea que los datos de la cinta de tookeep (1-99 años). 
-    1. Para **frecuencia de copia de seguridad**, seleccione con qué frecuencia se debe ejecutar tootape copia de seguridad. frecuencia de Hola se basa en la duración de retención de Hola que ha seleccionado:
-        * Cuando la duración de retención de hello es 1-99 años, puede seleccionar las copias de seguridad toooccur diaria, semanal, quincenal, mensual, trimestral, semestral o anual.
-        * Cuando la duración de retención de hello es 1-11 meses, puede seleccionar las copias de seguridad toooccur diaria, semanal, bisemanal o mensual.
-        * Cuando la duración de retención de hello es 1-4 semanas, puede seleccionar las copias de seguridad toooccur diaria o semanal.
+6.  Si quiere almacenar los datos en cinta para el almacenamiento a largo plazo, en la página **Especificar objetivos a largo plazo**, seleccione durante cuánto tiempo quiere conservar los datos de la cinta (de 1 a 99 años). 
+    1. Para **Frecuencia de copia de seguridad**, seleccione con qué frecuencia se debe ejecutar una copia de seguridad en cinta. La frecuencia se basa en la duración de retención que ha seleccionado:
+        * Cuando la duración de retención es de 1 a 99 años, puede seleccionar que las copias de seguridad se realicen con frecuencia diaria, semanal, quincenal, mensual, trimestral, semestral o anual.
+        * Cuando la duración de retención es de 1 a 11 meses, puede seleccionar que las copias de seguridad se realicen con frecuencia diaria, semanal, quincenal o mensual.
+        * Cuando la duración de retención es de 1 a 4 semanas, puede seleccionar que las copias de seguridad se realicen con frecuencia diaria o semanal.
 
-    2. En hello **seleccionar detalles de biblioteca y cinta** página, seleccione hello toouse de biblioteca y cinta, y si los datos deben estar comprimidos y cifrados.
+    2. En la página **Select Tape and Library Details** (Seleccionar detalles de biblioteca y cinta), seleccione la cinta y la biblioteca que quiere usar, y si los datos deben comprimirse y cifrarse.
 
-7.  En hello **Revisar asignación de disco** página, revise el espacio de disco de grupo de almacenamiento de Hola que se asigna para el grupo de protección de Hola.
+7.  En la página **Revisar asignación de disco**, revise el espacio en disco del grupo de almacenamiento que se ha asignado al grupo de protección.
 
-    1. **Total de tamaño de los datos** es Hola tamaño de datos de hello desea tooback.
-    2. **Toobe de espacio en disco aprovisionado en el servidor de copia de seguridad de Azure** Hola espacio recomendado por el servidor de copia de seguridad para el grupo de protección de Hola. Servidor de copia de seguridad elige en función de la configuración de Hola de volumen de copia de seguridad ideal Hola. Sin embargo, puede modificar las opciones de copia de seguridad del volumen de hello en **detalles de asignación de disco**. 
-    3. Para las cargas de trabajo, en el menú desplegable de hello, seleccione Hola almacenamiento que prefiera. Las modificaciones cambiarán los valores de hello de **almacenamiento Total** y **espacio de almacenamiento** en hello **almacenamiento en disco disponible** panel. Espacio insuficiente es la cantidad de Hola de almacenamiento que el servidor de copia de seguridad sugiere que agregar toohello volumen, las copias de seguridad tooensure suave.
+    1. **Tamaño total de datos** es el tamaño de los datos de los que quiere hacer una copia de seguridad.
+    2. **Disk space to be provisioned on Azure Backup Server** (Espacio en disco que se aprovisionará en Azure Backup Server) es el espacio que Backup Server recomienda para el grupo de protección. Backup Server elige el volumen ideal para la copia de seguridad en función de la configuración, pero puede modificar las opciones del volumen de copia de seguridad en **Disk allocation details** (Detalles de asignación del disco). 
+    3. En el caso de las cargas de trabajo, seleccione el almacenamiento preferido en el menú desplegable. Las modificaciones cambiarán los valores de **Almacenamiento total** y **Free Storage** (Almacenamiento libre) en el panel **Almacenamiento en disco disponible**. El espacio insuficiente es la cantidad de almacenamiento que Backup Server sugiere agregar al volumen para garantizar la realización de las copias de seguridad sin problemas.
 
-8.  En hello **Seleccionar método de creación de réplica** , seleccione cómo desea que la replicación de datos completa inicial de toohandle Hola. Si elige tooreplicate a través de red de hello, recomendamos que elija una hora de poca actividad. Para grandes cantidades de datos o las condiciones de red que no sean óptimas, considere la posibilidad de replicar datos Hola sin conexión mediante un medio extraíble.
+8.  En la página **Seleccionar método de creación de réplicas**, seleccione cómo quiere controlar la replicación inicial completa de los datos. Si quiere replicar por la red, se recomienda que elija una hora de poco tráfico. En el caso de grandes cantidades de datos o condiciones de red no del todo óptimas, considere la posibilidad de replicar los datos sin conexión mediante medios extraíbles.
 
-9. En hello **elegir opciones de comprobación de coherencia** página, seleccione cómo desea que tooautomate las comprobaciones de coherencia. Puede elegir una comprobación de toorun solo cuando los datos de réplica se vuelvan incoherentes, o según una programación. Si no desea que la comprobación de coherencia automáticas tooconfigure, puede ejecutar una comprobación manual en cualquier momento. una comprobación manual en hello toorun **protección** área de hello consola de administrador del servidor de copia de seguridad, haga clic en protección de hello grupo y, a continuación, seleccione **realizar comprobación de coherencia**.
+9. En la página **Elegir las opciones de la comprobación de coherencia**, seleccione cómo quiere automatizar las comprobaciones de coherencia. Puede ejecutar una comprobación únicamente cuando los datos de réplica sean incoherentes, o bien según una programación. Si no quiere configurar la comprobación de coherencia automática, puede ejecutar una comprobación manual en cualquier momento. Para ejecutar una comprobación manual, en el área **Protección** de la consola de administrador de Backup Server, haga clic con el botón derecho en el grupo de protección y seleccione **Realizar comprobación de coherencia**.
 
-10. Si ha seleccionado tooback seguridad toohello en la nube mediante copia de seguridad de Azure, en hello **especificar datos de protección en línea** página, asegúrese de que selecciona las cargas de trabajo de hello desea tooback una tooAzure.
+10. Si ha seleccionado realizar una copia de seguridad en la nube mediante Azure Backup, asegúrese de que en la página **Especificar datos de protección en línea** selecciona las cargas de trabajo de las que quiere realizar una copia de seguridad en Azure.
 
-11. En hello **especificar programación de copia de seguridad en línea** , seleccione las copias de seguridad incrementales con qué frecuencia se producirá tooAzure. Puede programar copias de seguridad toorun cada día, semana, mes y año y seleccione Hola fecha y hora en que debe ejecutarse. Las copias de seguridad se pueden producir una tootwice un día. Cada vez que se ejecuta una copia de seguridad, un punto de recuperación de datos se crea en Azure desde copia de Hola de los datos de copia de seguridad de hello almacenados en disco del servidor de copia de seguridad de Hola.
+11. En la página **Especificar la programación de copia de seguridad en línea**, seleccione con qué frecuencia se producirán las copias de seguridad incrementales en Azure. Puede programar que se ejecuten copias de seguridad cada día, semana, mes y año, y seleccionar la fecha y hora a la que deben ejecutarse. Pueden realizarse copias de seguridad hasta dos veces al día. Cada vez que se ejecuta una copia de seguridad, se crea un punto de recuperación de datos en Azure a partir de la copia de los datos de copia de seguridad almacenados en el disco de Backup Server.
 
-12. En hello **especificar directiva de retención en línea** , seleccione cómo se conservan los puntos de recuperación de Hola que se crean a partir de copias de seguridad diarias, semanales, mensuales y anuales de hello en Azure.
+12. En la página **Especificar la directiva de retención en línea**, seleccione cómo se conservan en Azure los puntos de recuperación creados a partir de copias de seguridad diarias, semanales, mensuales y anuales.
 
-13. En hello **elegir la replicación en línea** , seleccione cómo se produce la replicación completa inicial de Hola de datos. Puede replicar a través de la red de Hola o hacer sin conexión (propagación sin conexión) de la copia de seguridad. Copia de seguridad sin conexión usa la característica de importación de Azure Hola. Para obtener más información, vea [Flujo de trabajo de copia de seguridad sin conexión en Azure Backup](backup-azure-backup-import-export.md).
+13. En la página **Elegir replicación en línea**, seleccione cómo se realiza la replicación inicial completa de los datos. Puede replicar por la red o realizar una copia de seguridad sin conexión (propagación sin conexión). Las copias de seguridad sin conexión usan la característica Azure Import. Para obtener más información, vea [Flujo de trabajo de copia de seguridad sin conexión en Azure Backup](backup-azure-backup-import-export.md).
 
-14. En hello **resumen** página, revise la configuración. Después de seleccionar **crear grupo**, se produce la replicación inicial de datos de Hola. Cuando finalice la replicación de datos, en hello **estado** página, es el estado del grupo de protección de hello **Aceptar**. Copia de seguridad, a continuación, realiza por protección de hello grupo configuración.
+14. En la página **Resumen**, revise la configuración. Después de seleccionar **Crear grupo**, se produce la replicación inicial de los datos. Cuando finalice la replicación de los datos, en la página **Estado**, el estado del grupo de protección será **Aceptar**. Después se realiza una copia de seguridad según la configuración del grupo de protección.
 
 ## <a name="recover-system-state-or-bmr"></a>Recuperar el estado del sistema o BMR
-Puede recuperar la ubicación de red de tooa estado BMR o del sistema. Si ha realizado una copia seguridad BMR, usar el entorno de recuperación de Windows (WinRE) toostart el sistema y conectarlo toohello red. A continuación, utilice toorecover de copia de seguridad de Windows Server desde la ubicación de red de Hola. Si ha realizado una copia seguridad de estado del sistema, utilice únicamente toorecover de copia de seguridad de Windows Server desde la ubicación de red de Hola.
+Puede recuperar el estado del sistema o BMR en una ubicación de red. Si ha realizado una copia seguridad de BMR, use el Entorno de recuperación de Windows (WinRE) para iniciar el sistema y conectarlo a la red. Después, use Copias de seguridad de Windows Server para recuperar desde la ubicación de red. Si ha realizado una copia seguridad del estado del sistema, basta con que use Copias de seguridad de Windows Server para recuperar desde la ubicación de red.
 
 ### <a name="restore-bmr"></a>Restaurar BME
-Ejecutar la recuperación en el equipo del servidor de copia de seguridad de hello:
+Ejecute la recuperación en el equipo con Backup Server:
 
-1.  Hola **recuperación** panel, el equipo de Hola de búsqueda que desee toorecover y, a continuación, seleccione **reconstrucción completa**.
+1.  En el panel **Recuperación**, busque el equipo que quiere recuperar y seleccione **Reconstrucción completa**.
 
-2.  Puntos de recuperación disponibles se indican en negrita en el calendario de Hola. Seleccione Hola fecha y hora de punto de recuperación de Hola que desea toouse.
+2.  Los puntos de recuperación disponibles se indican en negrita en el calendario. Seleccione la fecha y hora para el punto de recuperación que quiere usar.
 
-3.  En hello **Seleccionar tipo de recuperación** , seleccione **copiar la carpeta de red de tooa.**
+3.  En la página **Seleccionar tipo de recuperación**, elija **Copiar en una carpeta de red**.
 
-4.  En hello **especificar destino** página, seleccione donde desea que los datos de Hola de toocopy. Recuerde que ese destino seleccionado Hola necesita toohave espacio suficiente. Le recomendamos que cree una carpeta nueva.
+4.  En la página **Especificar destino**, seleccione dónde quiere copiar los datos. Recuerde que el destino seleccionado debe tener espacio suficiente. Le recomendamos que cree una carpeta nueva.
 
-5.  En hello **especificar opciones de recuperación** page, tooapply de configuración de seguridad de hello select. A continuación, seleccione si desea que la red de área de almacenamiento (SAN) de toouse-según las instantáneas de hardware, para una recuperación más rápida. (Esto es una opción sólo si tiene una red SAN con esta funcionalidad está disponible y Hola toocreate de capacidad y dividir un clon toomake se puede escribir. In Addition, hello equipo protegido y el equipo del servidor de copia de seguridad deben estar conectado toohello misma red.)
+5.  En la página **Especificar opciones de recuperación**, seleccione la configuración de seguridad que quiere aplicar. Después, seleccione si quiere usar instantáneas de hardware basadas en la red de área de almacenamiento (SAN) para una recuperación más rápida. (Solo puede hacerlo si tiene una SAN con esta funcionalidad disponible y si puede crear y dividir un clon para permitir la escritura. Además, el equipo protegido y el equipo con Backup Server deben estar conectados a la misma red).
 
-6.  Configure las opciones de notificación. En hello **confirmación** página, seleccione **recuperar**.
+6.  Configure las opciones de notificación. En la página **Confirmación**, seleccione **Recuperar**.
 
-Configure la ubicación del recurso compartido de hello:
+Configure la ubicación del recurso compartido:
 
-1.  En la ubicación de restauración hello, vaya toohello carpeta cuya copia de seguridad de Hola.
+1.  En la ubicación de restauración, vaya a la carpeta que contenga la copia de seguridad.
 
-2.  Comparta la carpeta de Hola que está un nivel anterior WindowsImageBackup, para que la raíz de la carpeta compartida de Hola Hola sea carpeta WindowsImageBackup de Hola. Si no lo hace, restauración no encontrará la copia de seguridad de Hola. tooconnect utilizando el entorno de recuperación de Windows (WinRE), necesita un recurso compartido que puede tener acceso en WinRE con las credenciales y la dirección IP correcta de Hola.
+2.  Comparta la carpeta que esté un nivel por encima de WindowsImageBackup, para que la raíz de la carpeta compartida sea la carpeta WindowsImageBackup. Si no lo hace, la restauración no encontrará la copia de seguridad. Para conectarse con el Entorno de recuperación de Windows (WinRE), necesita un recurso compartido al que pueda tener acceso en WinRE con la dirección IP y las credenciales correctas.
 
-Restaurar sistema hello:
+Restaure el sistema:
 
-1.  Hola se inicia el equipo en el que desea que toorestore Hola imagen mediante el uso de hello DVD de Windows para el sistema de hello va a restaurar.
+1.  Inicie el equipo en el que quiere restaurar la imagen con el DVD de Windows del sistema que va a restaurar.
 
-2.  En la primera página de hello, compruebe la configuración de idioma y configuración regional. En hello **instalar** página, seleccione **reparar el equipo**.
+2.  En la primera página, compruebe la configuración regional y de idioma. En la página **Instalar**, seleccione **Reparar el equipo**.
 
-3.  En hello **opciones de recuperación del sistema** página, seleccione **restaure el equipo con una imagen de sistema que creó anteriormente**.
+3.  En la página **Opciones de recuperación del sistema**, seleccione **Restaure el equipo con una imagen del sistema que haya creado anteriormente**.
 
-4.  En hello **seleccionar una copia de seguridad de la imagen de sistema** , seleccione **seleccionar una imagen de sistema** > **avanzadas** > **busque un sistema imagen de red de hello**. Si aparece una advertencia, seleccione **Sí**. Paso toohello ruta del recurso compartido, escriba las credenciales de hello y, a continuación, seleccione el punto de recuperación de Hola. De este modo, se buscan las copias de seguridad específicas que estén disponibles en ese punto de recuperación. Seleccione el punto de recuperación de Hola que desea toouse.
+4.  En la página **Seleccionar una copia de seguridad de imagen del sistema**, elija **Seleccionar una imagen del sistema** > **Avanzadas** > **Buscar una imagen de sistema en la red**. Si aparece una advertencia, seleccione **Sí**. Vaya a la ruta de acceso del recurso compartido, escriba las credenciales y seleccione el punto de recuperación. De este modo, se buscan las copias de seguridad específicas que estén disponibles en ese punto de recuperación. Seleccione el punto de recuperación que quiere usar.
 
-5.  En hello **elegir cómo Hola copia de seguridad toorestore** página, seleccione **formatear y volver a particionar discos**. En la página siguiente de hello, compruebe la configuración. 
+5.  En la página **Elegir cómo restaurar la copia de seguridad**, seleccione **Formatear y volver a particionar discos**. En la página siguiente, compruebe la configuración. 
 
-6.  restauración de hello toobegin, seleccione **finalizar**. Es necesario reiniciar.
+6.  Para comenzar la restauración, seleccione **Finalizar**. Es necesario reiniciar.
 
 ### <a name="restore-system-state"></a>Restaurar el estado del sistema
 
 Ejecute la recuperación en Backup Server:
 
-1.  Hola **recuperación** panel, equipo de Hola de búsqueda que desee toorecover y, a continuación, seleccione **reconstrucción completa**.
+1.  En el panel **Recuperación**, busque el equipo que quiere recuperar y seleccione **Reconstrucción completa**.
 
-2.  Puntos de recuperación disponibles se indican en negrita en el calendario de Hola. Seleccione Hola fecha y hora de punto de recuperación de Hola que desea toouse.
+2.  Los puntos de recuperación disponibles se indican en negrita en el calendario. Seleccione la fecha y hora para el punto de recuperación que quiere usar.
 
-3.  En hello **Seleccionar tipo de recuperación** , seleccione **copiar la carpeta de red de tooa**.
+3.  En la página **Seleccionar tipo de recuperación**, elija **Copiar en una carpeta de red**.
 
-4.  En hello **especificar destino** página, seleccione dónde desea toocopy Hola datos. Recuerde que ese destino seleccionado Hola necesita espacio suficiente. Le recomendamos que cree una carpeta nueva.
+4.  En la página **Especificar destino**, seleccione dónde quiere copiar los datos. Recuerde que el destino seleccionado debe tener espacio suficiente. Le recomendamos que cree una carpeta nueva.
 
-5.  En hello **especificar opciones de recuperación** page, tooapply de configuración de seguridad de hello select. A continuación, seleccione si desea toouse instantáneas de hardware basadas en SAN para una recuperación más rápida. (Esta es una opción únicamente si tiene una red SAN con esta funcionalidad y capacidad toocreate de Hola y dividir un clon toomake se puede escribir. In Addition, Hola equipo protegido y servidores de copia de seguridad deben estar conectado toohello misma red.)
+5.  En la página **Especificar opciones de recuperación**, seleccione la configuración de seguridad que quiere aplicar. Después, seleccione si quiere usar instantáneas de hardware basadas en SAN para una recuperación más rápida. (Solo puede hacerlo si tiene una SAN con esta funcionalidad y si puede crear y dividir un clon para permitir la escritura. Además, el equipo protegido y Backup Server deben estar conectados a la misma red).
 
-6.  Configure las opciones de notificación. En hello **confirmación** página, seleccione **recuperar**.
+6.  Configure las opciones de notificación. En la página **Confirmación**, seleccione **Recuperar**.
 
 Ejecute Copias de seguridad de Windows Server:
 
 1.  Seleccione **Acciones** > **Recuperar** > **Este servidor** > **Siguiente**.
 
-2.  Seleccione **otro servidor**, seleccione hello **especificar tipo de ubicación** página y, a continuación, seleccione **carpeta compartida remota**. Escriba hello toohello ruta de acceso que contiene el punto de recuperación de Hola.
+2.  Seleccione **Otro servidor**, **Especificar tipo de ubicación** y **Carpeta compartida remota**. Escriba la ruta de acceso a la carpeta que contiene el punto de recuperación.
 
-3.  En hello **Seleccionar tipo de recuperación** , seleccione **estado del sistema**. 
+3.  En la página **Seleccionar tipo de recuperación**, elija **Estado del sistema**. 
 
-4. En hello **seleccionar la ubicación de recuperación del estado del sistema** , seleccione **ubicación Original**.
+4. En la página **Seleccione la ubicación de la recuperación de estado del sistema**, seleccione **Ubicación original**.
 
-5.  En hello **confirmación** página, seleccione **recuperar**. Después de la restauración de hello, reinicie el servidor de Hola.
+5.  En la página **Confirmación**, seleccione **Recuperar**. Después de la restauración, reinicie el servidor.
 
-6.  También puede ejecutar Hola restauración del estado del sistema en un símbolo del sistema. toodo, inicie copia de seguridad de Windows Server en el equipo de hello desea toorecover. identificador de versión de hello tooget, en un símbolo del sistema, escriba:```wbadmin get versions -backuptarget \<servername\sharename\>```
+6.  También puede ejecutar la restauración del estado del sistema en un símbolo del sistema. Para ello, inicie Copias de seguridad de Windows Server en el equipo que quiere recuperar. Para obtener el identificador de versión, en un símbolo del sistema, escriba: ```wbadmin get versions -backuptarget \<servername\sharename\>```.
 
-    Use la restauración de estado del sistema de hello versión identificador toostart Hola. En hello símbolo del sistema, escriba:```wbadmin start systemstaterecovery -version:<versionidentified> -backuptarget:<servername\sharename>```
+    Use el identificador de versión para iniciar la restauración del estado del sistema. En el símbolo del sistema, escriba: ```wbadmin start systemstaterecovery -version:<versionidentified> -backuptarget:<servername\sharename>```.
 
-    Confirme que desea que la recuperación de hello toostart. Puede ver el proceso de hello en la ventana de símbolo del sistema de hello. Se crea un registro de restauración. Después de la restauración de hello, reinicie el servidor de Hola.
+    Confirme que quiere iniciar la recuperación. Puede ver el proceso en la ventana del símbolo del sistema. Se crea un registro de restauración. Después de la restauración, reinicie el servidor.
 

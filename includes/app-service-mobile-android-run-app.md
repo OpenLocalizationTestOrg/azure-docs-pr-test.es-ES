@@ -1,8 +1,8 @@
 
-1. Visite hello [Portal de Azure]. Haga clic en **examinar todos los** > **aplicaciones móviles** > Hola back-end que acaba de crear. En la configuración de la aplicación móvil de hello, haga clic en **inicio rápido** > **Android)**. En **Configurar la aplicación cliente**, haga clic en **Descargar**. Este paquete descargará un proyecto de Android completando para un back-end de aplicación configurado previamente tooconnect tooyour. 
-2. Hola Abrir proyecto mediante **Android Studio**con **Importar proyecto (Eclipse ADT, Gradle, etcetera.)** . Asegúrese de que realizar esta tooavoid de selección de importación de los errores JDK.
-3. Hola presione **ejecutar 'app'** botón proyecto de hello toobuild e iniciar la aplicación hello en simulador Android Hola.
-4. En la aplicación hello, escriba texto significativo, como *tutorial Hola completa* y, a continuación, haga clic en botón de hello 'Add'. Este modo envía una toohello de solicitud POST Azure back-end que implementó anteriormente. inserciones de back-end de Hello datos de solicitud de hello es en hello tabla TodoItem SQL y devuelve información acerca de hello recién almacena elementos de realizar una copia de aplicaciones móviles toohello. aplicación móvil de Hello muestra estos datos en la lista de Hola. 
+1. Visite el [Portal de Azure]. Haga clic en **Examinar todo** > **Aplicaciones móviles** > el back-end que acaba de crear. En la configuración de la aplicación móvil, haga clic en **Inicio rápido** > **Android**. En **Configurar la aplicación cliente**, haga clic en **Descargar**. Así se descarga un proyecto de Android completo para que una aplicación previamente configurada pueda conectarse al back-end. 
+2. Abra el proyecto mediante **Android Studio**, con **Importar proyecto (Eclipse ADT, Gradle, etc.)**. Asegúrese de que realice esta selección de importación para evitar los errores del JDK.
+3. Presione el botón **Ejecutar "aplicación"** para compilar el proyecto e iniciar la aplicación en el simulador de Android.
+4. En la aplicación, escriba un texto significativo, como *Realizar el tutorial* y luego haga clic en el botón "Agregar". Esto envía una solicitud POST al back-end de Azure implementado anteriormente. El back-end inserta datos de la solicitud que está en la tabla TodoItem SQL y devuelve información acerca de los elementos recién almacenados a la aplicación móvil. La aplicación móvil muestra estos datos en la lista. 
    
     ![](./media/app-service-mobile-android-quickstart/mobile-quickstart-startup-android.png)
 

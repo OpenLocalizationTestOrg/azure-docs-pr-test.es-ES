@@ -1,11 +1,11 @@
-Crear un grupo de recursos con hello [crear grupo az](/cli/azure/group#create) comando.
+Cree un grupo de recursos con el comando [az group create](/cli/azure/group#create).
 
 [!INCLUDE [resource group intro text](resource-group.md)]
 
-Hello en el ejemplo siguiente se crea un grupo de recursos denominado *myResourceGroup* en hello *westeurope* ubicación.
+En el ejemplo siguiente, se crea un grupo de recursos denominado *myResourceGroup* en la ubicación *westeurope*.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
 ```
 
-toosee hello las ubicaciones disponibles, ejecute hello `az appservice list-locations` comando. Generalmente crea recursos en una región cercana.
+Para ver las ubicaciones disponibles, ejecute el comando `az appservice list-locations`. Generalmente crea recursos en una región cercana.

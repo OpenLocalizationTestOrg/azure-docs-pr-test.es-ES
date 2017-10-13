@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure documentación de Active Directory B2C - tutoriales, referencia de API | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toodeploy administración de identidades de consumidor completa en hello en la nube. Documentación se muestra cómo tooprotect consumo web y aplicaciones móviles."
+title: "Documentación sobre Azure Active Directory B2C: tutoriales y referencia de API | Microsoft Docs"
+description: "Aprenda a implementar una administración de identidades de consumidor integral en la nube. La documentación muestra cómo proteger las aplicaciones móviles y web de consumo."
 services: active-directory-b2c
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: f9f6939d4d5bbe49533cad037a9085ce3da63155
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e36baddffd634cb7d601d09ccebaf40b27798c7b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="active-directory-b2c-documentation"></a>Documentación de Active Directory B2C
 
-Obtenga información acerca de cómo tooset una copia de seguridad y administración de administración de identidades de consumidor completa en la nube de hello con B2C de Active Directory. Tutoriales, referencias y otra documentación mostrarán cómo tooprotect consumo web y aplicaciones móviles con la seguridad del inicio de sesión.
+Aprenda a configurar y administrar la administración de identidades de consumidor completa en la nube con Active Directory B2C. Los tutoriales, las referencias y otra documentación muestran cómo proteger las aplicaciones móviles y web de consumo con inicio de sesión seguro.
 
 <ul class="panelContent cardsFTitle">
     <li>

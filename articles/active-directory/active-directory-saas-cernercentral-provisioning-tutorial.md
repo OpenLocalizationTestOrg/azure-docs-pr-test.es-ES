@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Configuración de Cerner Central para el aprovisionamiento automático de usuarios con Azure Active Directory | Microsoft Docs"
-description: "Obtenga información acerca de cómo tooconfigure Azure Active Directory tooautomatically aprovisionar lista tooa de usuarios en el centro de Cerner."
+description: "Aprenda a configurar Azure Active Directory para aprovisionar usuarios en una lista de Cerner Central automáticamente."
 services: active-directory
 documentationcenter: 
 author: asmalser-msft
@@ -14,64 +14,64 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: asmalser-msft
-ms.openlocfilehash: e96da98e783d24e7f34ae924824f909eead75f54
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 84613b7f8d7bd031d492a62da0bc53be96ac45a3
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="tutorial-configuring-cerner-central-for-automatic-user-provisioning"></a>Tutorial: configuración de Cerner Central para el aprovisionamiento automático de usuarios
 
-objetivo de Hola de este tutorial es tooshow Hola pasos que debe tooperform Cerner Central y Azure AD tooautomatically aprovisionar y eliminación de aprovisionamiento en cuentas de usuario de la lista de usuarios de Azure AD tooa en Cerner Central. 
+El objetivo de este tutorial es explicar los pasos que debe realizar en Cerner Central y Azure AD para aprovisionar y cancelar el aprovisionamiento de cuentas de usuario de Azure AD en una lista de Cerner Central automáticamente. 
 
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-escenario de Hello descrito en este tutorial se da por supuesto que ya tiene Hola siguientes elementos:
+En la situación descrita en este tutorial se supone que ya cuenta con los elementos siguientes:
 
 *   Un inquilino de Azure Active Directory
 *   Un inquilino de Cerner Central 
 
 > [!NOTE]
-> Azure Active Directory se integra con el centro de Cerner con hello [SCIM](http://www.simplecloud.info/) protocolo.
+> Azure Active Directory se integra con Cerner Central mediante el protocolo [SCIM](http://www.simplecloud.info/).
 
-## <a name="assigning-users-toocerner-central"></a>Asignar usuarios tooCerner Central
+## <a name="assigning-users-to-cerner-central"></a>Asignación de usuarios a Cerner Central
 
-Azure Active Directory utiliza un concepto que se denomina toodetermine "asignaciones" que los usuarios deben recibir acceso tooselected aplicaciones. En el contexto de Hola de aprovisionamiento de cuentas de usuario automática, se sincronizan sólo los usuarios de Hola y grupos que se han "asignados" tooan aplicación en Azure AD. 
+Azure Active Directory usa un concepto que se denomina "asignaciones" para determinar qué usuarios deben recibir acceso a determinadas aplicaciones. En el contexto de aprovisionamiento automático de cuentas de usuario, solo se sincronizarán los usuarios y grupos que se han "asignado" a una aplicación en Azure AD. 
 
-Antes de configurar y habilitar el aprovisionamiento del servicio de hello, debe decidir qué usuarios o grupos en Azure AD representan a usuarios de Hola que necesitan tener acceso a tooCerner Central. Una vez decidido, puede asignar estas tooCerner centro de usuarios siguiendo las instrucciones de hello aquí:
+Antes de configurar y habilitar el servicio de aprovisionamiento, debe decidir qué usuarios y/o grupos de Azure AD representan a los usuarios que necesitan acceso a Cerner Central. Una vez decidido, puede asignar estos usuarios a la aplicación Cerner Central siguiendo estas instrucciones:
 
-[Asignar un usuario o grupo tooan su aplicación empresarial](active-directory-coreapps-assign-user-azure-portal.md)
+[Asignar un usuario o grupo a una aplicación empresarial](active-directory-coreapps-assign-user-azure-portal.md)
 
-### <a name="important-tips-for-assigning-users-toocerner-central"></a>Sugerencias importantes para asignar usuarios tooCerner Central
+### <a name="important-tips-for-assigning-users-to-cerner-central"></a>Sugerencias importantes para asignar usuarios a Cerner Central
 
-*   Se recomienda que un único usuario de Azure AD asignarse tooCerner tootest Central Hola aprovisionamiento de configuración. Más tarde, se pueden asignar otros usuarios o grupos.
+*   Se recomienda asignar un solo usuario de Azure AD a Cerner Central para probar la configuración del aprovisionamiento. Más tarde, se pueden asignar otros usuarios o grupos.
 
-* Una vez completada para un solo usuario la comprobación inicial, Cerner Central recomienda asignar Hola toda la lista de usuarios crea tooaccess lista de usuarios de la tooCerner de cualquier toobe aprovisionado de soluciones (no solo Cerner Central) Cerner.  Otras soluciones de Cerner aprovechan esta lista de usuarios en la lista de usuarios de Hola.
+* Una vez completada la prueba inicial para un solo usuario, Cerner Central recomienda que se aprovisione en la lista de usuarios de Cerner la asignación de toda la lista de usuarios para que tengan acceso a cualquier solución de Cerner (no solo Cerner Central).  Otras soluciones de Cerner aprovechan esta lista de usuarios en la lista de usuarios de Cerner.
 
-*   Al asignar un centro de tooCerner de usuario, debe seleccionar hello **usuario** rol en el cuadro de diálogo de hello asignación. Los usuarios con el rol de "Acceso predeterminado" Hola se excluyen de aprovisionamiento.
+*   Al asignar un usuario a Cerner Central, debe seleccionar el rol **Usuario** en el cuadro de diálogo de asignación. Los usuarios con el rol de "Acceso predeterminado" quedan excluidos del aprovisionamiento.
 
 
-## <a name="configuring-user-provisioning-toocerner-central"></a>Configuración de aprovisionamiento tooCerner centro de usuarios
+## <a name="configuring-user-provisioning-to-cerner-central"></a>Configuración del aprovisionamiento de usuarios en Cerner Central
 
-Esta sección le guía a través de conexión de lista de usuarios de su Azure AD tooCerner Central mediante la API de aprovisionamiento de cuentas de usuario del Cerner SCIM y configurar hello toocreate de servicio de aprovisionamiento, actualizar y deshabilitar cuentas en el centro de Cerner en función de usuario asignado en la asignación de usuario y de grupo en Azure AD.
+Esta sección le guía a través de los pasos necesarios para conectar Azure AD con la lista de usuarios de Cerner Central mediante la API de aprovisionamiento de la cuenta de usuario SCIM de Cerner Central, así como para configurar el servicio de aprovisionamiento con el fin de crear, actualizar y deshabilitar cuentas de usuario asignadas en Cerner Central en función de la asignación de grupos y usuarios en Azure AD.
 
 > [!TIP]
-> También puede elegir tooenabled basado en SAML Single Sign-On para Cerner Central, siguiendo instrucciones de hello proporcionadas en [portal de Azure (https://portal.azure.com). El inicio de sesión único puede configurarse independientemente del aprovisionamiento automático, aunque estas dos características se complementan entre sí. Para obtener más información, vea hello [tutorial de inicio de sesión único de centro de Cerner](active-directory-saas-cernercentral-tutorial.md).
+> También puede decidir habilitar el inicio de sesión único basado en SAML para Cerner Central siguiendo las instrucciones de Azure Portal [https://portal.azure.com]. El inicio de sesión único puede configurarse independientemente del aprovisionamiento automático, aunque estas dos características se complementan entre sí. Para más información, vea el [Tutorial: Integración de Azure Active Directory con Cerner Central](active-directory-saas-cernercentral-tutorial.md).
 
 
-### <a name="tooconfigure-automatic-user-account-provisioning-toocerner-central-in-azure-ad"></a>cuenta de usuario automática de tooconfigure tooCerner Central de aprovisionamiento en Azure AD:
+### <a name="to-configure-automatic-user-account-provisioning-to-cerner-central-in-azure-ad"></a>Para configurar el aprovisionamiento de cuentas de usuario automático para Cerner Central en Azure AD, siga estos pasos:
 
 
-En orden tooprovision usuario cuentas tooCerner Central, podrá necesita una cuenta de sistema Cerner centro de Cerner toorequest y generar un token de portador de OAuth que Azure AD puede utilizar el punto de conexión del tooconnect tooCerner SCIM. También se recomienda que la integración de Hola se realizan en un entorno de espacio aislado de Cerner antes de implementar tooproduction.
+Para aprovisionar cuentas de usuario en Cerner Central, debe crear una cuenta del sistema de Cerner Central en Cerner y generar un token de portador de OAuth que Azure AD puede usar para conectarse al punto de conexión SCIM de Cerner. También se recomienda realizar la integración en un entorno de espacio aislado de Cerner antes de su implementación en producción.
 
-1.  Hola primer paso es personas de hello tooensure administrar Hola Cerner e integración de Azure AD tiene una cuenta de CernerCare, que es necesario tooaccess Hola documentación necesarios toocomplete Hola instrucciones. Si es necesario, usar direcciones URL de hello debajo toocreate CernerCare cuentas en cada entorno es aplicable.
+1.  El primer paso consiste en asegurarse de que las personas que administran la integración de Cerner y Azure AD tienen una cuenta de CernerCare, obligatoria para acceder a la documentación necesaria para llevar a cabo las instrucciones. Si es necesario, utilice las direcciones URL siguientes para crear cuentas de CernerCare en los entornos correspondientes.
 
    * Espacio aislado: https://sandboxcernercare.com/accounts/create
 
    * Producción: https://cernercare.com/accounts/create  
 
-2.  A continuación, se debe crear una cuenta de sistema para Azure AD. Use las instrucciones de hello debajo toorequest una cuenta de sistema para los entornos de producción y de espacio aislado.
+2.  A continuación, se debe crear una cuenta de sistema para Azure AD. Siga estas instrucciones para solicitar una cuenta del sistema para los entornos de producción y de espacio aislado.
 
    * Instrucciones: https://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
 
@@ -79,7 +79,7 @@ En orden tooprovision usuario cuentas tooCerner Central, podrá necesita una cue
 
    * Producción: https://cernercentral.com/system-accounts/
 
-3.  A continuación, genere un token de portador de OAuth para cada una de las cuentas del sistema. toodo this, follow Hola estas instrucciones.
+3.  A continuación, genere un token de portador de OAuth para cada una de las cuentas del sistema. Para ello, siga las instrucciones que se describen a continuación.
 
    * Instrucciones: https://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
 
@@ -87,43 +87,43 @@ En orden tooprovision usuario cuentas tooCerner Central, podrá necesita una cue
 
    * Producción: https://cernercentral.com/system-accounts/
 
-4. Por último, debe tooacquire usuario lista territorio identificadores para ambos entornos de espacio aislado y de producción de hello en la configuración de Cerner toocomplete Hola. Para obtener información acerca de cómo tooacquire, vea: https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM. 
+4. Por último, para completar la configuración, tiene que adquirir identificadores de dominio kerberos de lista de usuarios tanto para el espacio aislado como para los entornos de producción en Cerner. Para información sobre cómo adquirirlo, consulte: https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+SCIM. 
 
-5. Ahora puede configurar tooCerner de cuentas de usuario de Azure AD tooprovision. Inicie sesión en toohello [portal de Azure](https://portal.azure.com)y examinar toohello **Azure Active Directory > aplicaciones empresariales > todas las aplicaciones** sección.
+5. Ahora puede configurar Azure AD para aprovisionar cuentas de usuario para Cerner. Inicie sesión en [Azure Portal](https://portal.azure.com) y vaya a la sección **Azure Active Directory > Aplicaciones empresariales > Todas las aplicaciones**.
 
-6. Si ya has configurado Cerner Central para el inicio de sesión único, busque la instancia del centro de Cerner mediante el campo de búsqueda de Hola. En caso contrario, seleccione **agregar** y busque **Cerner Central** en Galería de aplicaciones de Hola. Seleccione Cerner Central en los resultados de búsqueda de Hola y agregarlo a tooyour lista de aplicaciones.
+6. Si ya ha configurado Cerner Central para el inicio de sesión único, busque la instancia de Cerner Central con el campo de búsqueda. En caso contrario, seleccione **Agregar** y busque **Cerner Central** en la galería de aplicaciones. Seleccione Cerner Central en los resultados de búsqueda y agréguelo a la lista de aplicaciones.
 
-7.  Seleccione la instancia del centro de Cerner, a continuación, seleccione hello **Provisioning** ficha.
+7.  Seleccione la instancia de Cerner Central y la pestaña **Aprovisionamiento**.
 
-8.  Conjunto hello **modo de aprovisionamiento** demasiado**automática**.
+8.  Establezca el **modo de aprovisionamiento** en **Automático**.
 
    ![Aprovisionamiento de Cerner Central](./media/active-directory-saas-cernercentral-provisioning-tutorial/Cerner.PNG)
 
-9.  Rellene Hola después de campos en **las credenciales de administrador**:
+9.  Rellene los campos siguientes en **Credenciales de administrador**:
 
-   * Hola **dirección URL del inquilino** , a continuación, escriba una dirección URL en formato de hello siguiente, reemplazando "User-lista-dominio-ID" con el Id. de dominio Kerberos de hello adquiridos en el paso 4 de #.
+   * En el campo **URL de inquilino**, escriba una dirección URL en el formato siguiente y sustituya "User-Roster-Realm-ID" por el identificador de dominio kerberos que obtuvo en el paso 4.
 
 > Espacio aislado: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
 > Producción: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
-   * Hola **secreto Token** campo, escriba el token de portador de OAuth de Hola que generó en el paso 3 de # y haga clic en **Probar conexión**.
+   * En el campo **Token secreto**, escriba el token de portador de OAuth que generó en el paso 3 y haga clic en **Prueba de conexión**.
 
-   * Verá una notificación de éxito en el lado superior derecho de hello del portal.
+   * Debería ver una notificación que le indica que el proceso se ha realizado correctamente en el lado superior derecho del portal.
 
-10. Escriba la dirección de correo electrónico de Hola de una persona o grupo que debe recibir las notificaciones de error aprovisionamiento en hello **correo electrónico de notificación** campo y comprobar Hola casilla incluida a continuación.
+10. Escriba la dirección de correo electrónico de una persona o grupo que debe recibir las notificaciones de error aprovisionamiento en el campo **Correo electrónico de notificación** y active la casilla que aparece a continuación.
 
 11. Haga clic en **Guardar**. 
 
-12. Hola **asignaciones de atributos** sección, revise el usuario de Hola y toobe de atributos de grupo sincronizado desde Azure AD tooCerner Central. Hola atributos seleccionados como **coincidencia** propiedades son cuentas de usuario de hello toomatch utilizado y los grupos en Cerner Central para las operaciones de actualización. Seleccione toocommit de botón de hello guardar los cambios.
+12. En la sección **Asignaciones de atributos**, revise los atributos de usuario y de grupo que se van a sincronizar desde Azure AD con Cerner Central. Los atributos seleccionados como propiedades **Matching** se usarán para establecer coincidencias con las cuentas de usuario y los grupos de Cerner Central para las operaciones de actualización. Seleccione el botón Guardar para confirmar los cambios.
 
-13. tooenable Hola servicio de aprovisionamiento de Azure AD para Cerner Central, cambio hello **estado de aprovisionamiento** demasiado**en** en hello **configuración** sección
+13. Para habilitar el servicio de aprovisionamiento de Azure AD para Cerner Central, cambie el **Estado de aprovisionamiento** a **Activado** en la sección **Configuración**.
 
 14. Haga clic en **Guardar**. 
 
-Esto inicia la sincronización inicial de Hola de los usuarios o grupos asignados tooCerner Central en la sección usuarios y grupos de Hola. la sincronización inicial Hola toma tooperform más que las sincronizaciones posteriores, que se producen aproximadamente cada 20 minutos mientras se esté ejecutando Hola servicio de aprovisionamiento de Azure AD. Puede usar hello **detalles de sincronización** sección toomonitor progreso y siga los informes de actividad del tooprovisioning vínculos, que describen todas las acciones realizadas por hello aprovisionamiento del servicio en la aplicación de centro de Cerner.
+Esta acción inicia la sincronización inicial de todos los usuarios y grupos asignados a Cerner Central en la sección Usuarios y grupos. La sincronización inicial tardará más tiempo en realizarse que las posteriores, que se producen aproximadamente cada 20 minutos si el servicio de aprovisionamiento de Azure AD está en ejecución. Puede usar la sección **Detalles de sincronización** para supervisar el progreso y hacer clic en los vínculos a los informes de actividad de aprovisionamiento, que describen todas las acciones que ha llevado a cabo el servicio de aprovisionamiento en la aplicación de Cerner Central.
 
-Para obtener más información sobre cómo registra el aprovisionamiento de tooread hello Azure AD, consulte [informes sobre el aprovisionamiento de cuentas de usuario automática](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting).
+Para más información sobre cómo leer los registros de aprovisionamiento de Azure AD, consulte el tutorial de [Creación de informes sobre el aprovisionamiento automático de cuentas de usuario](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting).
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
@@ -133,4 +133,4 @@ Para obtener más información sobre cómo registra el aprovisionamiento de toor
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 ## <a name="next-steps"></a>Pasos siguientes
-* [Obtenga información acerca de cómo se registra tooreview y get informa sobre el aprovisionamiento de actividad](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting).
+* [Aprenda a revisar los registros y a obtener informes sobre la actividad de aprovisionamiento](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting).

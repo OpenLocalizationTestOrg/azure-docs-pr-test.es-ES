@@ -1,6 +1,6 @@
 ---
-title: aaaDeploy varias instancias de recursos de Azure | Documentos de Microsoft
-description: "Usar operación de copia y matrices en un tooiterate de plantilla de Azure Resource Manager varias veces al implementar los recursos."
+title: "Implementación de varias instancias de recursos de Azure | Microsoft Docs"
+description: "Use la operación de copia y matrices en una plantilla del Administrador de recursos de Azure para iterar varias veces al implementar recursos."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/26/2017
 ms.author: tomfitz
-ms.openlocfilehash: a3bd42f694053317c30b639c33dc4efae41a9a9b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ed8e3081d2b2e07938d7cf3aa5f95f6dde81bc66
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Implementación de varias instancias de un recurso o una propiedad en plantillas de Azure Resource Manager
-Este tema muestra cómo tooiterate en su toocreate de plantilla de Azure Resource Manager varias instancias de un recurso, o varias instancias de una propiedad en un recurso.
+En este tema se muestra cómo iterar en la plantilla de Azure Resource Manager para crear varias instancias de un recurso o varias instancias de una propiedad de un recurso.
 
-Si necesita tooadd lógica tooyour plantilla que le permite toospecify si se implementa un recurso, vea [implementar de forma condicional recursos](#conditionally-deploy-resource).
+Si tiene que agregar lógica a la plantilla que le permita especificar si se ha implementado un recurso, vea [Implementar recursos de forma condicional](#conditionally-deploy-resource).
 
 ## <a name="resource-iteration"></a>Iteración de recursos
-toocreate varias instancias de un tipo de recurso, agregue un `copy` tipo de recurso de toohello de elemento. En el elemento de la copia de hello, especificar número de Hola de iteraciones y un nombre para este bucle. el valor del recuento de Hello debe ser un entero positivo y no puede superar los 800. El Administrador de recursos crea recursos de hello en paralelo. Por lo tanto, no se garantiza el orden de hello en el que se crean. toocreate recorren en iteración los recursos de secuencia, vea [serie copia](#serial-copy). 
+Para crear varias instancias de un tipo de recurso, agregue un elemento `copy` al tipo de recurso. En el elemento de copia, especifique el número de iteraciones y un nombre para este bucle. El valor de recuento debe ser un número entero positivo y no puede ser superior a 800. Resource Manager crea los recursos en paralelo. Por lo tanto, no se garantiza el orden en el que se crean. Para crear recursos iterados en secuencia, consulte [Copia en serie](#serial-copy). 
 
-Hola recursos toocreate varias veces toma Hola siguiendo el formato:
+El recurso para crear varias veces tiene el formato siguiente:
 
 ```json
 {
@@ -55,7 +55,7 @@ Hola recursos toocreate varias veces toma Hola siguiendo el formato:
 }
 ```
 
-Tenga en cuenta que Hola nombre de cada recurso incluye hello `copyIndex()` función, que devuelve la iteración actual de hello en bucle Hola. `copyIndex()` es de base cero. Por lo tanto, Hola siguiente ejemplo:
+Tenga en cuenta que el nombre de cada recurso incluye la función `copyIndex()`, que devuelve la iteración actual del bucle. `copyIndex()` es de base cero. Así, en el ejemplo siguiente:
 
 ```json
 "name": "[concat('storage', copyIndex())]",
@@ -67,7 +67,7 @@ Crea estos nombres:
 * storage1
 * storage2.
 
-valor de índice de hello toooffset, puede pasar un valor en función de copyIndex() Hola. Hello número de iteraciones tooperform todavía está especificada en el elemento de la copia de hello, pero valor Hola de copyIndex se desplaza por hello especificado valor. Por lo tanto, Hola siguiente ejemplo:
+Para desplazar el valor de índice, puede pasar un valor de la función copyIndex(). El número de iteraciones que se deben realizar todavía se especifica en el elemento copy, pero el valor de copyIndex se desplaza el valor especificado. Así, en el ejemplo siguiente:
 
 ```json
 "name": "[concat('storage', copyIndex(1))]",
@@ -79,7 +79,7 @@ Crea estos nombres:
 * storage2
 * storage3
 
-operación de copia de Hello es útil al trabajar con matrices, ya que puede recorrer en iteración cada elemento de matriz de Hola. Hola de uso `length` función en hello matriz toospecify Hola un recuento de iteraciones, y `copyIndex` índice actual de hello tooretrieve de matriz de Hola. Por lo tanto, Hola siguiente ejemplo:
+La operación de copia es útil al trabajar con matrices, ya que puede iterar a través de cada elemento de la matriz. Use la función `length` en la matriz para especificar el número de iteraciones, y `copyIndex` para recuperar el índice actual de la matriz. Así, en el ejemplo siguiente:
 
 ```json
 "parameters": { 
@@ -112,9 +112,9 @@ Crea estos nombres:
 
 ## <a name="serial-copy"></a>Copia en serie
 
-Cuando usas Hola copiar elemento toocreate varias instancias de un tipo de recurso, el Administrador de recursos de forma predeterminada, implementa esas instancias en paralelo. Sin embargo, puede que desee toospecify ese Hola recursos se implementan en secuencia. Por ejemplo, al actualizar un entorno de producción, puede que desee toostagger Hola actualiza tan solo un número determinado se actualizan al mismo tiempo.
+Al usar el elemento de copia para crear varias instancias de un tipo de recurso, Resource Manager implementa esas instancias en paralelo de forma predeterminada. Sin embargo, es posible que quiera especificar que los recursos se implementen en secuencia. Por ejemplo, al actualizar un entorno de producción, puede que quiera escalonar las actualizaciones para que solo una cantidad determinada se actualice al mismo tiempo.
 
-Administrador de recursos proporciona propiedades de elemento de la copia de Hola que permiten tooserially implementan varias instancias. En conjunto de elementos de la copia de hello, `mode` demasiado**serie** y `batchSize` toohello número de instancias toodeploy a la vez. Con el modo de serie, el Administrador de recursos crea una dependencia en las instancias anteriores de bucle de hello, por lo que no se inicia un proceso por lotes hasta que se completa el lote anterior Hola.
+Resource Manager proporciona las propiedades sobre el elemento de copia que le permiten implementar varias instancias en serie. En el elemento de copia, establezca `mode` en **serial** y `batchSize` en el número de instancias que se implementarán a la vez. Con mode establecido en serial, Resource Manager crea una dependencia en las instancias anteriores del bucle, por lo que no se inicia ningún lote hasta que se completa el lote anterior.
 
 ```json
 "copy": {
@@ -125,9 +125,9 @@ Administrador de recursos proporciona propiedades de elemento de la copia de Hol
 },
 ```
 
-Hello propiedad mode también acepta **paralelo**, que es el valor predeterminado de Hola.
+La propiedad mode también acepta **parallel**, que es el valor predeterminado.
 
-tootest serie copia sin crear recursos reales, Hola de uso después de plantilla que implementa las plantillas anidadas vacías:
+Para probar la copia en serie sin crear recursos reales, use la siguiente plantilla, que implementa plantillas anidadas vacías:
 
 ```json
 {
@@ -170,11 +170,11 @@ tootest serie copia sin crear recursos reales, Hola de uso después de plantilla
 }
 ```
 
-En el historial de implementación de hello, tenga en cuenta que Hola implementaciones anidadas se procesan en secuencia.
+En el historial de implementación, observe que las implementaciones anidadas se procesan en secuencia.
 
 ![implementación en serie](./media/resource-group-create-multiple/serial-copy.png)
 
-Para un escenario más realista, Hola siguiente ejemplo implementa dos instancias en el momento de una VM de Linux desde una plantilla anidada:
+Para un escenario más realista, en el ejemplo siguiente se implementan dos instancias a la vez de una VM de Linux a partir de una plantilla anidada:
 
 ```json
 {
@@ -184,19 +184,19 @@ Para un escenario más realista, Hola siguiente ejemplo implementa dos instancia
         "adminUsername": {
             "type": "string",
             "metadata": {
-                "description": "User name for hello Virtual Machine."
+                "description": "User name for the Virtual Machine."
             }
         },
         "adminPassword": {
             "type": "securestring",
             "metadata": {
-                "description": "Password for hello Virtual Machine."
+                "description": "Password for the Virtual Machine."
             }
         },
         "dnsLabelPrefix": {
             "type": "string",
             "metadata": {
-                "description": "Unique DNS Name for hello Public IP used tooaccess hello Virtual Machine."
+                "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
             }
         },
         "ubuntuOSVersion": {
@@ -209,7 +209,7 @@ Para un escenario más realista, Hola siguiente ejemplo implementa dos instancia
                 "16.04.0-LTS"
             ],
             "metadata": {
-                "description": "hello Ubuntu version for hello VM. This will pick a fully patched image of this given Ubuntu version."
+                "description": "The Ubuntu version for the VM. This will pick a fully patched image of this given Ubuntu version."
             }
         }
     },
@@ -258,13 +258,13 @@ Para un escenario más realista, Hola siguiente ejemplo implementa dos instancia
 
 ## <a name="property-iteration"></a>Iteración de propiedades
 
-toocreate varios valores para una propiedad en un recurso, agregue un `copy` matriz en elemento de propiedades de Hola. Esta matriz contiene objetos, y cada objeto tiene Hola propiedades siguientes:
+Para crear varios valores para una propiedad de un recurso, agregue una matriz `copy` en el elemento properties. Esta matriz contiene objetos, y cada objeto tiene las siguientes propiedades:
 
-* nombre: nombre de Hola de hello propiedad toocreate varios valores para
-* número - número de Hola de toocreate de valores
-* entrada: un objeto que contiene la propiedad Hola valores tooassign toohello  
+* nombre: el nombre de la propiedad para la que se van a crear varios valores
+* recuento: el número de valores que se van a crear
+* entrada: un objeto que contiene los valores que se van a asignar a la propiedad  
 
-Hola siguiente ejemplo se muestra cómo tooapply `copy` toohello dataDisks propiedad en una máquina virtual:
+En el ejemplo siguiente se muestra cómo aplicar `copy` a la propiedad dataDisks en una máquina virtual:
 
 ```json
 {
@@ -285,9 +285,9 @@ Hola siguiente ejemplo se muestra cómo tooapply `copy` toohello dataDisks propi
       ...
 ```
 
-Tenga en cuenta que, cuando se usa `copyIndex` dentro de una iteración de la propiedad, debe proporcionar el nombre de Hola de iteración de Hola. No tiene nombre de hello tooprovide cuando se usa con la iteración de recursos.
+Tenga en cuenta que, cuando se usa `copyIndex` dentro de una iteración de propiedad, debe proporcionar el nombre de la iteración. No tiene que proporcionar el nombre cuando se usa con la iteración de recursos.
 
-El Administrador de recursos se expande hello `copy` matriz durante la implementación. nombre de Hola de matriz de Hola se convierte en nombre de Hola de propiedad Hola. los valores de entrada de Hola se convierten en Propiedades del objeto Hola. plantilla de Hello implementado se convierte en:
+Resource Manager expande la matriz `copy` durante la implementación. El nombre de la matriz se convierte en el nombre de la propiedad. Los valores de entrada se convierten en las propiedades del objeto. La plantilla implementada se convierte en:
 
 ```json
 {
@@ -316,7 +316,7 @@ El Administrador de recursos se expande hello `copy` matriz durante la implement
       ...
 ```
 
-Puede usar la iteración de recursos y propiedades conjuntamente. Iteración de propiedad de Hola de referencia por su nombre.
+Puede usar la iteración de recursos y propiedades conjuntamente. Haga referencia a la iteración de la propiedad por el nombre.
 
 ```json
 {
@@ -350,7 +350,7 @@ Puede usar la iteración de recursos y propiedades conjuntamente. Iteración de 
 }
 ```
 
-Solo puede incluir un elemento de la copia en Propiedades de Hola para cada recurso. toospecify un bucle de iteración de más de una propiedad, se definen varios objetos de matriz de copia de Hola. Cada objeto se recorre en iteración por separado. Por ejemplo, toocreate varias instancias de ambos hello `frontendIPConfigurations` hello y propiedad `loadBalancingRules` propiedad en un equilibrador de carga, definir los objetos en un elemento de solo copia: 
+Solo puede incluir un elemento de copia en las propiedades de cada recurso. Para especificar un bucle de iteración para más de una propiedad, defina varios objetos en la matriz de copia. Cada objeto se recorre en iteración por separado. Por ejemplo, para crear varias instancias de las propiedades `frontendIPConfigurations` y `loadBalancingRules` en un equilibrador de carga, defina los dos objetos en un solo elemento de copia: 
 
 ```json
 {
@@ -398,7 +398,7 @@ Solo puede incluir un elemento de la copia en Propiedades de Hola para cada recu
 ```
 
 ## <a name="depend-on-resources-in-a-loop"></a>Dependencia de los recursos de un bucle
-Especifica que se ha implementado un recurso después de otro recurso mediante el uso de hello `dependsOn` elemento. toodeploy un recurso que dependa de colección de Hola de recursos en un bucle, proporcionar nombre Hola de bucle de copia de hello en el elemento dependsOn de Hola. Hola de ejemplo siguiente muestra cómo toodeploy tres cuentas de almacenamiento antes de implementar Hola Máquina Virtual. no se muestra la definición de máquina Virtual completa Hola. Observe que ese elemento de la copia de hello tiene nombre establecido demasiado`storagecopy` y elemento de dependsOn de Hola para hello máquinas virtuales también se establece demasiado`storagecopy`.
+Especifique que un recurso se implemente después de otro recurso mediante el elemento `dependsOn`. Para implementar un recurso que dependa de la colección de recursos de un bucle, proporcione el nombre del bucle copy en el elemento dependsOn. En el ejemplo siguiente se muestra cómo implementar tres cuentas de almacenamiento antes de implementar la máquina virtual. La definición de la máquina virtual no se muestra. Tenga en cuenta que el elemento copy tiene el nombre establecido en `storagecopy` y el elemento dependsOn para las máquinas virtuales también se establece en `storagecopy`.
 
 ```json
 {
@@ -434,7 +434,7 @@ Especifica que se ha implementado un recurso después de otro recurso mediante e
 ```
 
 ## <a name="create-multiple-instances-of-a-child-resource"></a>Creación de varias instancias de un recurso secundario
-No puede usar un bucle copy en un recurso secundario. toocreate varias instancias de un recurso que se define normalmente como anidados dentro de otro recurso, en su lugar, debe crear ese recurso como un recurso de nivel superior. Definir relación Hola con recurso primario de Hola a través de las propiedades de tipo y el nombre de Hola.
+No puede usar un bucle copy en un recurso secundario. Para crear varias instancias de un recurso que se define normalmente como anidado dentro de otro recurso, debe crear en su lugar dicho recurso como uno de nivel superior. La relación con el recurso principal se define a través de las propiedades type y name.
 
 Por ejemplo, supongamos que suele definir un conjunto de datos como un recurso secundario dentro de una factoría de datos.
 
@@ -456,11 +456,11 @@ Por ejemplo, supongamos que suele definir un conjunto de datos como un recurso s
 }]
 ```
 
-toocreate varias instancias de conjuntos de datos, muévala fuera de la factoría de datos de Hola. Hola conjunto de datos debe estar en hello como factoría de datos de Hola de mismo nivel, pero sigue siendo un recurso secundario Hola factoría de datos. Conservar la relación de hello entre factoría de datos a través de las propiedades de tipo y el nombre de Hola y el conjunto de datos. Puesto que ya no se puede inferir el tipo de su posición en la plantilla de hello, debe proporcionar el tipo hello completo en formato de hello: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.
+Para crear varias instancias de conjuntos de datos, muévalos fuera de la factoría de datos. El conjunto de datos debe estar en el mismo nivel que la factoría de datos, pero seguirá siendo un recurso secundario de la factoría de datos. La relación entre el conjunto de datos y la factoría de datos se conserva a través de los parámetros type y name. Puesto que la propiedad de type ya no se puede inferir de su posición en la plantilla, debe proporcionar el nombre completo del tipo con el formato: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.
 
-tooestablish una relación primaria-secundaria con una instancia de la factoría de datos de hello, proporcione un nombre para el conjunto de datos de Hola que incluye el nombre del recurso primario Hola. Usar el formato de hello: `{parent-resource-name}/{child-resource-name}`.  
+Para establecer una relación de principal-secundario con una instancia de la factoría de datos, proporcione un nombre para el conjunto de datos que incluya el nombre de recurso principal. Utilice el formato: `{parent-resource-name}/{child-resource-name}`.  
 
-Hello en el ejemplo siguiente se muestra hello implementación:
+En el siguiente ejemplo se muestra la implementación:
 
 ```json
 "resources": [
@@ -485,7 +485,7 @@ Hello en el ejemplo siguiente se muestra hello implementación:
 
 ## <a name="conditionally-deploy-resource"></a>Implementar recursos de forma condicional
 
-toospecify si se implementa un recurso, usar hello `condition` elemento. valor de Hola de este elemento resuelve tootrue o false. Hola valor es true, se implementa el recurso de Hola. Hola valor es false, no se implementa el recurso de Hola. Por ejemplo, toospecify si se implementa una nueva cuenta de almacenamiento o se utiliza una cuenta de almacenamiento existente, use:
+Para especificar si se ha implementado un recurso, use el elemento `condition`. El valor de este elemento se resuelve como true o false. Cuando el valor es true, el recurso se implementa. Cuando el valor es false, el recurso no se implementa. Por ejemplo, para especificar si se implementa una nueva cuenta de almacenamiento o se usa una cuenta de almacenamiento existente, use:
 
 ```json
 {
@@ -504,9 +504,9 @@ toospecify si se implementa un recurso, usar hello `condition` elemento. valor d
 
 Para obtener un ejemplo del uso de un recurso nuevo o existente, vea la [plantilla de condición nueva o existente](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResources.NewOrExisting.json).
 
-Para obtener un ejemplo del uso de una contraseña o una máquina virtual de toodeploy clave de SSH, consulte [plantilla de condición de nombre de usuario o SSH](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResourcesUsernameOrSsh.json).
+Para obtener un ejemplo del uso de una contraseña o clave SSH para implementar la máquina virtual, vea la [plantilla de condición de nombre de usuario o SSH](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResourcesUsernameOrSsh.json).
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Si desea toolearn sobre secciones de Hola de una plantilla, consulte [creación de plantillas de administrador de recursos de Azure](resource-group-authoring-templates.md).
-* toolearn cómo toodeploy la plantilla, vea [implementar una aplicación con la plantilla de administrador de recursos de Azure](resource-group-template-deploy.md).
+* Para obtener información sobre las secciones de una plantilla, consulte el artículo sobre cómo [crear plantillas de Azure Resource Manager](resource-group-authoring-templates.md).
+* Para obtener información sobre cómo implementar la plantilla, consulte [Implementación de una aplicación con la plantilla del Administrador de recursos de Azure](resource-group-template-deploy.md).
 

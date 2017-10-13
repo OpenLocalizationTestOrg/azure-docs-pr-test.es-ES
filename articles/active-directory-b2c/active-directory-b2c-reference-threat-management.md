@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2016
 ms.author: 
-ms.openlocfilehash: 60bc0cc392b332cc4e9741ddb97dfa58e68ed420
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 9472cb01eb713e297053727b1a314293574bb657
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-threat-management"></a>Azure Active Directory B2C: administración de amenazas
 
-La administración de amenazas incluye la planeación de la protección frente a ataques contra el sistema y las redes. Ataques por denegación de servicio podrían hacer que los recursos toointended disponible a los usuarios. Contraseña ataques responsable toounauthorized acceso tooresources. Azure Active Directory B2C (Azure AD B2C) tiene características integradas que le pueden ayudar a proteger los datos frente a estas amenazas de varias maneras.
+La administración de amenazas incluye la planeación de la protección frente a ataques contra el sistema y las redes. Los ataques por denegación de servicio pueden hacer que los recursos no estén disponibles para los usuarios previstos. Los ataques a contraseñas pueden dar lugar a un acceso no autorizado a los recursos. Azure Active Directory B2C (Azure AD B2C) tiene características integradas que le pueden ayudar a proteger los datos frente a estas amenazas de varias maneras.
 
 ## <a name="denial-of-service-attacks"></a>Ataques por denegación de servicio
 
-B2C de Azure AD usa técnicas de mitigación y detección como cookies SYN y tooprotect de límites de velocidad y la conexión subyacente recursos frente a ataques por denegación de servicio.
+Azure AD B2C usa técnicas de detección y mitigación, como las cookies SYN y los límites de velocidad y conexión, para proteger los recursos subyacentes frente a los ataques por denegación de servicio.
 
 ## <a name="password-attacks"></a>Ataques a contraseñas
 
-Azure AD B2C también dispone de técnicas de mitigación para los ataques a contraseñas. La mitigación incluye ataques a contraseñas por fuerza bruta y ataques de diccionario. Las contraseñas establecidas por los usuarios son necesario toobe bastante compleja. Mediante el uso de diversas señales, Azure AD B2C analiza integridad Hola de solicitudes. Se ha diseñado B2C de Azure AD toointelligently diferenciar el usuario de los hackers y botnets. B2C de Azure AD proporciona una estrategia sofisticadas toolock cuentas en función de las contraseñas de hello especificadas, en la probabilidad de Hola de un ataque.
+Azure AD B2C también dispone de técnicas de mitigación para los ataques a contraseñas. La mitigación incluye ataques a contraseñas por fuerza bruta y ataques de diccionario. Las contraseñas establecidas por los usuarios deben tener una complejidad razonable. Mediante el uso de diversas señales, Azure AD B2C analiza la integridad de las solicitudes. Azure AD B2C está diseñado para diferenciar de forma inteligente los usuarios previstos frente a los hackers y las redes de robots (botnets). Azure AD B2C proporciona una estrategia sofisticada para bloquear cuentas en función de las contraseñas usadas ante la posibilidad de un ataque.
 
-Para obtener más información, visite hello [Microsoft Trust Center](https://www.microsoft.com/trustcenter/security/threatmanagement).
+Para obtener más información, visite el [Centro de confianza de Microsoft](https://www.microsoft.com/trustcenter/security/threatmanagement).

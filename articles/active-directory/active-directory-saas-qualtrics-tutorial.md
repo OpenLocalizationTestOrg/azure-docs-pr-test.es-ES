@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: integración de Azure Active Directory con Qualtrics | Microsoft Docs"
-description: "¡Obtenga información acerca de cómo toouse Qualtrics con Azure Active Directory tooenable único inicio de sesión, aprovisionamiento automático y mucho más!"
+description: "Aprenda cómo usar Qualtrics con Azure Active Directory para habilitar el inicio de sesión único, el aprovisionamiento automatizado, etc."
 services: active-directory
 author: jeevansd
 documentationcenter: na
@@ -13,102 +13,102 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 03/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 941642e74b90bb13a5ce37ce6665cfa32cd86016
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2fcde595a40dafda7549f5bccb582b57585b314e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qualtrics"></a>Tutorial: Integración de Azure Active Directory con Qualtrics
-objetivo de Hola de este tutorial es la integración de hello tooshow de Azure y Qualtrics.  
+El objetivo de este tutorial es mostrar la integración de Azure y Qualtrics.  
 
-escenario de Hello descrito en este tutorial se da por supuesto que ya tiene Hola siguientes elementos:
+En la situación descrita en este tutorial se supone que ya cuenta con los elementos siguientes:
 
 * Una suscripción de Azure válida
 * Una suscripción habilitada para el inicio de sesión único (SSO) en Qualtrics
 
-Después de completar este tutorial, los usuarios de hello Azure AD que haya asignado tooQualtrics será toosingle capaz de inicio de sesión en la aplicación hello en el sitio de empresa de Qualtrics (servicio iniciado por el proveedor inicio de sesión), o mediante hello [toohello de introducción Obtener acceso al Panel](active-directory-saas-access-panel-introduction.md).
+Después de completar este tutorial, los usuarios de Azure AD asignados a Qualtrics podrán realizar un inicio de sesión único en la aplicación en el sitio de la compañía Qualtrics (inicio de sesión iniciado por el proveedor de servicios) o con la [Introducción al Panel de acceso](active-directory-saas-access-panel-introduction.md).
 
-escenario de Hello descrito en este tutorial consta de hello después de bloques de creación:
+La situación descrita en este tutorial consta de los siguientes bloques de creación:
 
-1. Habilitar la integración de aplicación Hola para Qualtrics
+1. Habilitación de la integración de aplicaciones para Qualtrics
 2. Configuración del inicio de sesión único (SSO)
 3. Configuración del aprovisionamiento de usuario
 4. Asignación de usuarios
 
 ![Escenario](./media/active-directory-saas-qualtrics-tutorial/IC789542.png "Escenario")
 
-## <a name="enabling-hello-application-integration-for-qualtrics"></a>Habilitar la integración de aplicación Hola para Qualtrics
-objetivo de Hola de esta sección es toooutline la integración de aplicaciones de hello tooenable para Qualtrics.
+## <a name="enabling-the-application-integration-for-qualtrics"></a>Habilitación de la integración de aplicaciones para Qualtrics
+El objetivo de esta sección es describir cómo habilitar la integración de las aplicaciones para Qualtrics.
 
-**integración de aplicaciones de hello tooenable para Qualtrics, lleve a cabo Hola pasos:**
+**Siga estos pasos con el fin de habilitar la integración de aplicaciones para Qualtrics:**
 
-1. Hola portal de Azure clásico, en el panel de navegación izquierdo de hello, haga clic en **Active Directory**.
+1. En el panel de navegación izquierdo del Portal de Azure clásico, haga clic en **Active Directory**.
    
    ![Active Directory](./media/active-directory-saas-qualtrics-tutorial/IC700993.png "Active Directory")
-2. De hello **Directory** lista, directorio de Hola select para la que desee tooenable integración de directorios.
-3. Haga clic en vista de aplicaciones de hello tooopen, en la vista de directorio de hello, **aplicaciones** en el menú superior Hola.
+2. En la lista **Directory**, seleccione el directorio cuya integración desee habilitar.
+3. Para abrir la vista de aplicaciones, haga clic en **Applications**, en el menú superior de la vista de directorios.
    
    ![Aplicaciones](./media/active-directory-saas-qualtrics-tutorial/IC700994.png "Aplicaciones")
-4. Haga clic en **agregar** final Hola de página Hola.
+4. Haga clic en **Agregar** en la parte inferior de la página.
    
    ![Agregar aplicaciones](./media/active-directory-saas-qualtrics-tutorial/IC749321.png "Agregar aplicaciones")
-5. En hello **especifique qué desea toodo** cuadro de diálogo, haga clic en **agregar una aplicación de la Galería de hello**.
+5. En el cuadro de diálogo **¿Qué desea hacer?**, haga clic en **Agregar una aplicación de la galería**.
    
    ![Agregar una aplicación de la galería](./media/active-directory-saas-qualtrics-tutorial/IC749322.png "Agregar una aplicación de la galería")
-6. Hola **cuadro de búsqueda**, tipo **Qualtrics**.
+6. En el **cuadro de búsqueda**, escriba **Qualtrics**.
    
    ![Galería de aplicaciones](./media/active-directory-saas-qualtrics-tutorial/IC789543.png "Galería de aplicaciones")
-7. En el panel de resultados de hello, seleccione **Qualtrics**y, a continuación, haga clic en **completar** aplicación de hello tooadd.
+7. En el panel de resultados, seleccione **Qualtrics** y haga clic en **Completar** para agregar la aplicación.
    
    ![Qualtrics](./media/active-directory-saas-qualtrics-tutorial/IC789544.png "Qualtrics")
    
 ## <a name="configure-single-sign-on"></a>Configurar inicio de sesión único
 
-objetivo de Hola de esta sección es toooutline cómo tooenable usuarios tooauthenticate tooQualtrics con su cuenta de Azure AD utilizando federación basada en protocolo SAML de Hola.
+El objetivo de esta sección es describir cómo se habilita la autenticación de los usuarios en Qualtrics con su cuenta de Azure AD usando el protocolo SAML basado en la federación.
 
-**tooconfigure inicio de sesión único, lleve a cabo Hola pasos:**
+**Siga estos pasos para configurar el inicio de sesión único:**
 
-1. En el portal de Azure clásico en Hola Hola **Qualtrics** página de integración de aplicaciones, haga clic en **configurar inicio de sesión único** tooopen hello **configurar inicio de sesión único** cuadro de diálogo.
+1. En el Portal de Azure clásico, en la página de integración de aplicaciones de **Qualtrics**, haga clic en **Configurar inicio de sesión único** para abrir el cuadro de diálogo **Configurar inicio de sesión único**.
    
    ![Configurar inicio de sesión único](./media/active-directory-saas-qualtrics-tutorial/IC789545.png "Configurar inicio de sesión único")
-2. En hello **¿cómo desea que los usuarios toosign en tooQualtrics** página, seleccione **Microsoft Azure AD Single Sign-On**y, a continuación, haga clic en **siguiente**.
+2. En la página **¿Cómo desea que los usuarios inicien sesión en Qualtrics?**, seleccione **Inicio de sesión único de Microsoft Azure AD** y haga clic en **Siguiente**.
    
    ![Configurar inicio de sesión único](./media/active-directory-saas-qualtrics-tutorial/IC789546.png "Configurar inicio de sesión único")
-3. En hello **configurar URL de aplicación** página Hola **Qualtrics inicio de sesión en la URL** cuadro de texto, escriba la dirección URL (p. ej.: "*https://ssotest2ut1.qualtrics.com*") y, a continuación, haga clic en **Siguiente**.
+3. En la página **Configurar dirección URL de la aplicación**, en el cuadro de texto de **URL de inicio de sesión de Qualtrics**, escriba su dirección URL (por ejemplo, “*https://ssotest2ut1.qualtrics.com*") y haga clic en **Siguiente**.
    
    ![Configurar dirección URL de la aplicación](./media/active-directory-saas-qualtrics-tutorial/IC789547.png "Configurar dirección URL de la aplicación")
-4. En hello **configurar inicio de sesión único en Qualtrics** página, haga clic en **descargar metadatos**y, a continuación, guarde el archivo de metadatos de hello en el equipo.
+4. En la página **Configuración de inicio de sesión único en Qualtrics**, haga clic en **Descargar metadatos** y guarde el archivo de metadatos en el equipo.
    
    ![Configurar inicio de sesión único](./media/active-directory-saas-qualtrics-tutorial/IC789548.png "Configurar inicio de sesión único")
-5. Enviar Hola metadatos archivo toohello equipo de soporte técnico de Qualtrics.
+5. Envíe el archivo de metadatos al equipo de soporte técnico de Qualtrics.
    
    >[!NOTE]
-   >configuración de SSO de Hello tiene toobe realizada por el equipo de soporte técnico de Qualtrics Hola. Recibirá una notificación en cuanto se ha completado la configuración de Hola.
+   >La configuración del inicio de sesión único la debe realizar el equipo de soporte técnico de Qualtrics. Tan pronto como se complete la configuración, recibirá una notificación.
    > 
    > 
-6. En hello portal de Azure clásico, seleccione la confirmación de configuración de inicio de sesión único de hello y, a continuación, haga clic en **completar** tooclose hello **configurar inicio de sesión único** cuadro de diálogo.
+6. En el Portal de Azure clásico, seleccione la confirmación de configuración de inicio de sesión único y haga clic en **Completar** para cerrar el cuadro de diálogo **Configurar inicio de sesión único**.
    
    ![Configurar inicio de sesión único](./media/active-directory-saas-qualtrics-tutorial/IC789549.png "Configurar inicio de sesión único")
    
 ## <a name="configure-user-provisioning"></a>Configurar aprovisionamiento de usuarios
 
-No hay ningún elemento de acción tooconfigure de aprovisionamiento de usuarios tooQualtrics. Cuando un usuario asignado intenta toolog en Qualtrics a través de panel de acceso de hello, Qualtrics comprueba si existe el usuario de Hola.  
+No hay elemento de acción para que configure el aprovisionamiento de usuarios en Qualtrics. Cuando un usuario asignado intenta iniciar sesión en Qualtrics desde el panel de acceso, Qualtrics comprueba si el usuario existe.  
 
 Si no hay cuentas de usuario disponibles, Qualtrics crea una automáticamente.
 
 ## <a name="assign-users"></a>Asignar usuarios
-tootest la configuración, debe toogrant los usuarios de hello Azure AD que desee tooallow con su tooit de acceso de la aplicación mediante la asignación de ellos.
+Para probar la configuración, debe conceder acceso a los usuarios de Azure AD a los que quiere permitir el uso de su aplicación.
 
-**tooassign tooQualtrics de los usuarios, lleve a cabo Hola pasos:**
+**Para asignar usuarios a Qualtrics, lleve a cabo los siguientes pasos:**
 
-1. Hola portal de Azure clásico, cree una cuenta de prueba.
-2. En hello **Qualtrics** página de integración de aplicaciones, haga clic en **asignar usuarios**.
+1. En el Portal de Azure clásico, cree una cuenta de prueba.
+2. En la página de integración de aplicaciones de **Qualtrics**, haga clic en **Asignar usuarios**.
    
    ![Asignar usuarios](./media/active-directory-saas-qualtrics-tutorial/IC789550.png "Asignar usuarios")
-3. Seleccione el usuario de prueba, haga clic en **asignar**y, a continuación, haga clic en **Sí** tooconfirm su asignación.
+3. Seleccione su usuario de prueba, haga clic en **Asignar** y en **Sí** para confirmar la asignación.
    
    ![Sí](./media/active-directory-saas-qualtrics-tutorial/IC767830.png "Sí")
 
-Si desea tootest la configuración de SSO, abra Hola Panel de acceso. Para obtener más información acerca de hello Panel de acceso, consulte [Introducción toohello Panel de acceso](active-directory-saas-access-panel-introduction.md).
+Si desea probar la configuración de inicio de sesión único (SSO), abra el panel de acceso. Para obtener más información sobre el Panel de acceso, vea [Introducción al Panel de acceso](active-directory-saas-access-panel-introduction.md).
 

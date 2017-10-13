@@ -1,6 +1,6 @@
 ---
-title: "aaaInstall SAP HANA en SAP HANA en Azure (instancias de gran tamaño) | Documentos de Microsoft"
-description: "¿Cómo tooinstall SAP HANA en un SAP HANA en Azure (instancia grande)."
+title: "Instalación de SAP HANA en SAP HANA en Azure (instancias grandes) | Microsoft Docs"
+description: "Instalación de SAP HANA en SAP HANA en Azure (instancia grande)."
 services: virtual-machines-linux
 documentationcenter: 
 author: hermanndms
@@ -14,42 +14,42 @@ ms.workload: infrastructure
 ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b2fe242270a1166cabcfae2f9249a8dd70ff3b93
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 280001f9057825b9dcd98c5180340a54e2e239cf
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="how-tooinstall-and-configure-sap-hana-large-instances-on-azure"></a>¿Cómo tooinstall y configure SAP HANA (instancias de gran tamaño) en Azure
+# <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Procedimiento para instalar y configurar SAP HANA en Azure (instancias grandes)
 
-Los siguientes son algunos tooknow definiciones importantes antes de leer a esta guía. En [Introducción y arquitectura de SAP HANA en Azure (instancias grandes)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) se presentan dos clases distintas de unidades de HANA (Instancias grandes) con:
+A continuación se muestran algunas definiciones importantes que debe conocer antes de leer esta guía. En [Introducción y arquitectura de SAP HANA en Azure (instancias grandes)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) se presentaron dos clases distintas de unidades de instancia grande de HANA con:
 
-- S72, S72m, S144, S144m, S192 y S192m, que nos referiremos tooas hello 'Tipo clase' de SKU.
-- S384, S384m, S384xm, S576, S768 y S960, que nos referiremos tooas Hola 'Clase de tipo II' de SKU.
+- S72, S72m, S144, S144m, S192 y S192m, a las que se hace referencia como "clase de tipo I" de SKU.
+- S384, S384m, S384xm, S576, S768 y S960, a las que se hace referencia como "clase de tipo II" de SKU.
 
-especificador de clase de Hello es toobe continuo utilizada a lo largo de hello HANA instancia grande documentación tooeventually consulte toodifferent capacidades y requisitos basándose en las SKU de HANA grandes instancia.
+El especificador de clase se va a usar en toda la documentación sobre Instancia grande de HANA para hacer referencia a diferentes capacidades y requisitos en función de las SKU de Instancia grande de HANA.
 
 Otras definiciones que se usan con frecuencia son:
-- **Marca de la instancia de gran tamaño:** una pila de infraestructura de hardware que es SAP HANA TDI certificadas y dedicado instancias de SAP HANA toorun dentro de Azure.
-- **SAP HANA en Azure (instancias de gran tamaño):** nombre oficial de oferta de hello en instancias HANA toorun Azure en SAP HANA TDI certificadas hardware que se implementa en marcas de instancia grande en diferentes regiones de Azure. Hola relacionadas con los términos **instancia grande de HANA** es corto para SAP HANA en Azure (instancias de gran tamaño) y es muy utilizado esta guía de implementación técnica.
+- **Sello de instancias grandes:** una pila de infraestructura de hardware que está certificada para SAP HANA TDI y se dedica a ejecutar instancias de SAP HANA dentro de Azure.
+- **SAP HANA en Azure (Instancias grandes):** nombre oficial de la oferta de Azure para ejecutar instancias de HANA en hardware con certificación SAP HANA TDI que se implementa en sellos de instancias grandes en diferentes regiones de Azure. El término relacionado **Instancia grande de HANA** es la versión abreviada de SAP HANA en Azure (instancias grandes) y se usa con frecuencia en esta guía de implementación técnica.
 
 
-instalación de Hola de SAP HANA es su responsabilidad y puede empezar a actividad hello después de la entrega de un nuevo SAP HANA en servidor de Azure (instancias de gran tamaño). Y después se obtuvo establecida conectividad de hello entre la VNet(s) de Azure y Hola instancia grande de HANA unidades. 
+La instalación de SAP HANA es su responsabilidad y puede hacerlo inmediatamente después de la entrega de un nuevo servidor de SAP HANA en Azure (instancias de grandes). Y después de establecer la conectividad entre las redes virtuales de Azure y las unidades de instancia grande de HANA. 
 
 > [!Note]
-> Por directiva SAP, instalación de Hola de SAP HANA debe realizarse por una persona certificadas tooperform instalaciones de SAP HANA. Una persona, que ha pasado el examen Hola certificadas asociar de tecnología de SAP, exámenes de certificación de SAP HANA instalación, o por un integrador de sistema SAP certificado (SI).
+> Según la directiva de SAP, la instalación de SAP HANA debe realizarla una persona certificada para realizar instalaciones de SAP HANA. Una persona que haya superado el examen de Certified SAP Technology Associate, el examen de certificación Instalación de SAP HANA o un integrador de sistemas (SI) certificado de SAP.
 
-Comprueba otra vez, especialmente al planear tooinstall HANA 2.0, [SAP compatibilidad Nota #2235581 - SAP HANA: sistemas operativos compatibles](https://launchpad.support.sap.com/#/notes/2235581/E) en orden toomake seguro liberar ese hello en el sistema operativo es compatible con hello SAP HANA decidió tooinstall. Tenga en cuenta que Hola sistemas operativos compatibles para HANA 2.0 es más restringido que Hola SO compatible para HANA 1.0. 
+Vuelva a comprobar, en especial si tiene pensado instalar HANA 2.0, [Nota de compatibilidad de SAP n.º 2235581 - SAP HANA: Sistemas operativos admitidos](https://launchpad.support.sap.com/#/notes/2235581/E) que el sistema operativo es compatible con la versión de SAP HANA que ha decidido instalar. Comprobará que el sistema operativo compatible con HANA 2.0 tiene más restricciones que el sistema operativo compatible con HANA 1.0. 
 
-## <a name="first-steps-after-receiving-hello-hana-large-instance-units"></a>Primeros pasos después de recibir Hola HANA grandes unidades de instancia
+## <a name="first-steps-after-receiving-the-hana-large-instance-units"></a>Primeros pasos después de recibir las unidades de instancia grande de HANA
 
-**Primer paso** después de su recepción Hola HANA grandes instancia y una vez establecido el acceso y la conectividad de instancias de toohello, es tooregister Hola SO de instancia de hello con su proveedor de sistema operativo. Este paso incluye el registro del sistema operativo Linux de SUSE en una instancia de SUSE SMT que necesite toohave implementado en una máquina virtual en Azure. unidad de instancia grande de HANA Hola puede conectar la instancia SMT de toothis (vea más adelante en esta documentación). O para su sistema operativo RedHat necesidades toobe registrado con hello necesita tooconnect para el Administrador de suscripción de Hat rojo. Vea también los comentarios de este [documento](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Este paso también es necesario toobe toopatch capaz de hello SO. Una tarea que se encuentra en la responsabilidad de Hola de cliente de Hola. Para SUSE, encontrar documentación tooinstall y configurar SMT [aquí](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html).
+El **primer paso** después de recibir la instancia grande de HANA y establecer el acceso y la conectividad a las instancias consiste en registrar el sistema operativo de la instancia con el proveedor de este. Este paso incluye el registro del sistema operativo SUSE Linux en una instancia de SUSE SMT que debe haber implementado en una máquina virtual en Azure. La unidad de instancia grande de HANA puede conectarse a esta instancia de SMT (como verá más adelante en esta documentación). O bien, debe registrar el sistema operativo RedHat con la instancia de RedHat Subscription Manager a la que necesite conectarse. Vea también los comentarios de este [documento](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Este paso también es necesario para poder aplicar la revisión del sistema operativo. Una tarea que es responsabilidad del cliente. Para SUSE, encuentre documentación para instalar y configurar SMT [aquí](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html).
 
-**Segundo paso** es toocheck para nuevas revisiones y correcciones de hello específico SO/versión de lanzamiento. Compruebe si el nivel de revisión de Hola de hello HANA grandes instancia está en estado más reciente de Hola. En función de tiempo de revisión/versiones y cambios toohello imagen del sistema operativo que puede implementar Microsoft, podría haber casos donde las últimas revisiones de hello no se pueden incluidas. Por lo tanto, es un paso obligatorio después de asumir una unidad de instancia grande de HANA toocheck si pertinentes para la seguridad, funcionalidad, disponibilidad y rendimiento se liberaron mientras tanto por proveedor determinado de Linux de Hola y necesitan toobe aplicado.
+El **segundo paso** es comprobar si hay nuevas revisiones y correcciones de la versión del sistema operativo específica. Compruebe si la versión de la instancia grande de HANA es la más reciente. En función del momento en el que Microsoft implemente las versiones o revisiones del sistema operativo, y los cambios de imagen, es posible que haya casos en los que no se incluyan las revisiones más recientes. Por tanto, comprobar si el proveedor particular de Linux ha publicado revisiones importantes para la seguridad, la funcionalidad, la disponibilidad y el rendimiento que necesiten implementarse es un paso obligatorio después de asumir una unidad de instancia grande de HANA.
 
-**Tercer paso** es toocheck out Hola notas pertinentes de SAP para instalar y configurar SAP HANA en hello específico SO/versión de lanzamiento. Pagar toochanging recomendaciones o cambios tooSAP notas o configuraciones que dependen de los escenarios de instalación individuales, Microsoft no siempre será capaz de toohave una unidad de instancia grande de HANA configurada perfectamente. Por lo tanto, es obligatorio para usted como un cliente, tooread hello las notas de SAP relacionado tooSAP HANA en la versión exacta de Linux. También debe comprobar las configuraciones de Hola de hello SO/versión necesario y aplicar opciones de configuración de Hola donde no ha hecho.
+El **tercer paso** consiste en comprobar las notas de SAP correspondientes a la instalación y configuración de SAP HANA en la versión concreta del sistema operativo. Por cambios en las recomendaciones o en las notas de SAP o las configuraciones que dependen de los distintos escenarios de instalación, Microsoft no siempre podrá tener una unidad de instancia grande de HANA configurada a la perfección. Por tanto, como cliente es obligatorio que lea las notas de SAP relacionadas con SAP HANA en la versión exacta de Linux. Compruebe también las configuraciones de la versión del sistema operativo necesaria y aplique los valores de configuración donde no se haya hecho.
 
-En específicos, compruebe Hola parámetros siguientes y finalmente ajustados para:
+Para casos particulares, compruebe los siguientes parámetros y, si es necesario, ajústelos a:
 
 - net.core.rmem_max = 16777216
 - net.core.wmem_max = 16777216
@@ -59,44 +59,44 @@ En específicos, compruebe Hola parámetros siguientes y finalmente ajustados pa
 - net.ipv4.tcp_rmem = 65536 16777216 16777216
 - net.ipv4.tcp_wmem = 65536 16777216 16777216
 
-A partir de SP1 SLES12 y RHEL 7.2, se deben establecer estos parámetros en un archivo de configuración en el directorio de /etc/sysctl.d Hola. Por ejemplo, debe crearse un archivo de configuración con nombre hello 91-NetApp-HANA.conf. Para las versiones anteriores de SLES y RHEL, estos parámetros deben establecerse en in/etc/sysctl.conf.
+A partir de SP1 SLES12 y RHEL 7.2, se deben establecer estos parámetros en un archivo de configuración en el directorio /etc/sysctl.d. Por ejemplo, se debe crear un archivo de configuración con el nombre 91-NetApp-HANA.conf. Para las versiones anteriores de SLES y RHEL, estos parámetros deben establecerse en in/etc/sysctl.conf.
 
-RHEL todas las versiones y a partir de SLES12, Hola 
+Para todas las versiones de RHEL y a partir de SLES12, el parámetro 
 - sunrpc.tcp_slot_table_entries = 128
 
-se debe establecer en in/etc/modprobe.d/sunrpc-local.conf. Si no existe el archivo hello, primero debe crearse mediante la adición de hello siguiente entrada: 
+se debe establecer en in/etc/modprobe.d/sunrpc-local.conf. Si el archivo no existe, primero debe crearse; para ello, agregue la entrada siguiente: 
 - options sunrpc tcp_max_slot_table_entries=128
 
-**Cuarto paso** hora del sistema de hello toocheck de su unidad de instancia HANA grandes. instancias de Hola se implementan con una zona horaria del sistema que representan la ubicación de Hola de Hola Hola de región de Azure en que HANA grandes marca de la instancia se encuentra. Es libre toochange Hola la hora del sistema o zona horaria de instancias de Hola que usted es el propietario. Si lo hace y ordenar las instancias más en su inquilino, preparado que necesita tooadapt zona de horaria Hola de hello recién entregar instancias. Las operaciones de Microsoft no tienen ningún visiones Hola zona horaria del sistema que configure con instancias de hello después entrega Hola. Por lo tanto, instancias recién implementados no se podrían establecer en hello misma zona de horaria como Hola uno cambia a. Como resultado, es su responsabilidad como toocheck de cliente y si es necesario adaptar la zona horaria de Hola de todas las instancias de hello entregadas. 
+El **cuarto paso** consiste en comprobar la hora del sistema de la unidad de instancia grande de HANA. Las instancias se implementan con una zona horaria del sistema que represente la ubicación de la región de Azure donde se encuentre el sello de la instancia grande de HANA. Es libre de cambiar la hora de su sistema o la zona horaria de sus instancias. Si lo hace, al pedir más instancias para su inquilino, necesitará adaptar la zona horaria de las instancias recién entregadas. Las operaciones de Microsoft no tienen ninguna información sobre la zona horaria del sistema donde instale las instancias tras la entrega. Por lo tanto, las instancias recién implementadas pueden no tener la misma zona horaria que a las que cambió. Como resultado, es su responsabilidad como cliente comprobarlo y, si es necesario, adaptar la zona horaria de las instancias entregadas. 
 
-**Quinto paso** es toocheck etcetera/hosts. Como hojas de hello obtengan entregue, tienen diferentes direcciones IP asignadas para propósitos diferentes (consulte la sección siguiente). Compruebe el archivo etcetera/hosts de hello. En casos donde se agregan unidades en un inquilino existente, no debería toohave etcetera/hosts de sistemas de hello recién implementado mantenidos correctamente con direcciones IP de Hola de versiones anteriores de los sistemas entregados. Por lo tanto, resulta depende de usted como la configuración correcta de cliente toocheck Hola por lo tanto, que una instancia recién implementada puede interactuar y resolver los nombres de Hola de unidades de implementada anteriormente en el inquilino. 
+El **quinto paso** consiste en comprobar etc/hosts. A medida que van entregando las hojas, se les asignan direcciones IP diferentes con fines distintos (consulte la sección siguiente). Compruebe el archivo /etc/hosts. Cuando se agreguen unidades a un inquilino existente, no espere que etc/hosts en los sistemas recién implementados se mantenga correctamente con las direcciones IP de los sistemas entregados anteriormente. Depende de usted como cliente comprobar que la configuración sea la correcta, de manera que una instancia recién implementada pueda interactuar y resolver los nombres de las unidades implementadas anteriormente en el inquilino. 
 
 ## <a name="networking"></a>Redes
-Se supone que ha seguido las recomendaciones de hello en el diseño de sus redes virtuales de Azure y conectar esas instancias grandes de redes virtuales toohello HANA tal y como se describe en estos documentos:
+Se supone que ha seguido las recomendaciones de diseño de las redes virtuales de Azure y de conexión de esas redes a las instancias grandes de HANA tal y como se describe en estos documentos:
 
 - [Introducción y arquitectura de SAP HANA en Azure (instancias grandes)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
 - [Infraestructura y conectividad con SAP HANA en Azure (instancias grandes)](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-Hay algunos detalles que vale la pena toomention acerca de las redes de Hola de unidades de hello único. Cada unidad de instancia grande de HANA viene con dos o tres direcciones IP que se asignan tootwo o tres puertos NIC de unidad de Hola. Tres direcciones IP se utilizan en las configuraciones de escalado horizontal HANA y escenario de replicación del sistema de archivos de HANA Hola. Una de las direcciones IP Hola asignado toohello NIC de unidad de hello está fuera del Hola grupo de dirección IP del servidor que se ha descrito en hello [información general de SAP HANA (instancia grande) y la arquitectura en Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
+Hay algunos detalles que vale la pena mencionar acerca de las funciones de red de las unidades individuales. Cada unidad de instancia grande de HANA viene con dos o tres direcciones IP asignadas a dos o tres puertos NIC de la unidad. En las configuraciones de escalado horizontal de HANA y el escenario de replicación del sistema de HANA se utilizan tres direcciones IP. Una de las direcciones IP asignadas a la NIC de la unidad está fuera del grupo de direcciones IP del servidor que se describió en la [Introducción y arquitectura de SAP HANA en Azure (instancias grandes)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
 
-distribución de Hola para las unidades con dos direcciones IP asignadas debería ser similar:
+La distribución para las unidades con dos direcciones IP asignadas debería ser como lo siguiente:
 
-- eth0.xx debe tener una dirección IP asignada que está fuera del Hola intervalo de direcciones de grupo de IP de servidor que envió tooMicrosoft. Esta dirección IP se usará para mantener en/etc/hosts de hello SO.
-- eth1.xx debe tener una dirección IP asignada que se usa para comunicación tooNFS. Por lo tanto, hacer estas direcciones **no** necesita toobe mantiene en etcetera/hosts en el tráfico de orden tooallow instancia tooinstance dentro de inquilino de Hola.
+- eth0.xx debe tener una dirección IP asignada fuera del intervalo de direcciones del grupo de direcciones IP de servidor que envió a Microsoft. Esta dirección IP se usará para el mantenimiento en /etc/hosts del sistema operativo.
+- eth1.xx debe tener una dirección IP asignada, que se usa para la comunicación con NFS. Por lo tanto, estas direcciones **NO** necesitan permanecer en etc/hosts para permitir el tráfico de instancia a instancia dentro del inquilino.
 
-Para los casos de implementación de la replicación del sistema de HANA o el escalado horizontal de HANA, una configuración de hoja con dos direcciones IP asignadas no es adecuada. Si tiene dos direcciones IP asignadas solo y que desean toodeploy tal configuración, póngase en contacto con SAP HANA en administración de servicios de Azure tooget una tercera dirección IP en una tercera VLAN asignado. Unidades de instancia grande de HANA tener tres direcciones IP asignadas en tres puertos NIC, hello siguientes se rige por reglas:
+Para los casos de implementación de la replicación del sistema de HANA o el escalado horizontal de HANA, una configuración de hoja con dos direcciones IP asignadas no es adecuada. Si solo tiene dos direcciones IP asignadas y quiere implementar este tipo de configuración, póngase en contacto con SAP HANA en Azure Service Management para obtener una tercera dirección IP en otra red VLAN asignada. Para las unidades de instancia grande de HANA con tres direcciones IP asignadas en tres puertos de NIC, se aplican las reglas de uso siguientes:
 
-- eth0.xx debe tener una dirección IP asignada que está fuera del Hola intervalo de direcciones de grupo de IP de servidor que envió tooMicrosoft. Por lo tanto, esta dirección IP no se usará para mantener en/etc/hosts de hello SO.
-- eth1.xx debe tener una dirección IP asignada que se usa para el almacenamiento de tooNFS de comunicación. Por lo tanto, este tipo de direcciones no debe permanecer en etc/hosts.
-- eth2.xx debe ser exclusivamente se mantienen en etcetera/hosts para la comunicación entre distintas instancias de hello toobe usado. Estas direcciones también sería direcciones IP de Hola que necesitan toobe mantiene en las configuraciones de escalado horizontal HANA como direcciones IP que HANA se usa para la configuración de hello entre nodos.
+- eth0.xx debe tener una dirección IP asignada fuera del intervalo de direcciones del grupo de direcciones IP de servidor que envió a Microsoft. Por lo tanto, esta dirección IP no se usará para el mantenimiento en /etc/hosts del sistema operativo.
+- eth1.xx debe tener una dirección IP asignada, que se usa para la comunicación con el almacenamiento NFS. Por lo tanto, este tipo de direcciones no debe permanecer en etc/hosts.
+- eth2.xx debe usarse exclusivamente para el mantenimiento en etc/hosts, para la comunicación entre las distintas instancias. Estas direcciones también serían las direcciones IP que deben mantenerse en las configuraciones de escalado horizontal de HANA como las direcciones IP que HANA usa para la configuración entre nodos.
 
 
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>Almacenamiento
 
-Hello distribución de almacenamiento para SAP HANA en Azure (instancias de gran tamaño) se configura SAP HANA en administración de servicios de Azure a través de SAP recomendada las líneas de guía, como se documenta en [requisitos de almacenamiento de SAP HANA](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) notas del producto. Hola aproximados tamaños de volúmenes diferentes Hola con hello diferentes SKU de instancias de gran tamaño HANA obtuvo documentadas en [información general de SAP HANA (instancia grande) y la arquitectura en Azure](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+El diseño de almacenamiento para SAP HANA en Azure (instancias grandes) lo configura SAP HANA en Azure Service Management a través de directrices recomendadas de SAP, como se documenta en las notas del producto [SAP HANA Storage Requirements](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) (Requisitos de almacenamiento de SAP HANA). Los tamaños aproximados de los diferentes volúmenes con las diferentes SKU de grandes instancias de HANA se documentan en [Introducción y arquitectura de SAP HANA en Azure (instancias grandes)](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-convenciones de nomenclatura de Hola Hola de volúmenes de almacenamiento se muestran en hello en la tabla siguiente:
+Las convenciones de nomenclatura de los volúmenes de almacenamiento se muestran en la tabla siguiente:
 
 | Uso del almacenamiento | Nombre de montaje | Nombre del volumen | 
 | --- | --- | ---|
@@ -106,57 +106,57 @@ convenciones de nomenclatura de Hola Hola de volúmenes de almacenamiento se mue
 | HANA compartido | /hana/shared/SID | Almacenamiento IP: IP:/hana_shared_SID_mnt00001_tenant_vol/shared |
 | usr/sap | /usr/sap/SID | Almacenamiento IP: /hana_shared_SID_mnt00001_tenant_vol/usr_sap |
 
-Donde SID = identificador de sistema de la instancia HANA Hola 
+Donde "SID" = el identificador de sistema de la instancia de HANA 
 
 Y "tenant" = una enumeración interna de operaciones al implementar un inquilino.
 
-Como puede ver, HANA compartido y usr/sap están compartiendo Hola mismo volumen. nomenclatura de Hola de puntos de montaje de hello incluyen hello identificador de instancias HANA hello, así como número de montaje de hello el sistema. En las implementaciones de escalado vertical solo hay un montaje, como mnt00001. Al mismo tiempo, en la implementación de escalado horizontal puede que vea tantos montajes como nodos de trabajo y principales tiene. Para entorno de escalado horizontal de hello, datos, registro, volúmenes de copia de seguridad del registro son tooeach compartido y adjunta los nodos de configuración de escalado horizontal de Hola. Ejecutar varias instancias SAP en las configuraciones, un conjunto diferente de volúmenes es la unidad de instancia grande HAN de toohello creado y conectado.
+Como puede ver, HANA compartido y usr/sap están compartiendo el mismo volumen. La nomenclatura de los puntos de montaje incluye el identificador de sistema de las instancias de HANA así como el número de montaje. En las implementaciones de escalado vertical solo hay un montaje, como mnt00001. Al mismo tiempo, en la implementación de escalado horizontal puede que vea tantos montajes como nodos de trabajo y principales tiene. Para el entorno de escalado horizontal, los datos, el registro y los volúmenes de copia de seguridad del registro se comparten y se adjuntan a cada nodo en la configuración de escalado horizontal. Para las configuraciones que ejecutan varias instancias de SAP, se crea un conjunto diferente de volúmenes y se adjunta a la unidad de instancia grande de HANA.
 
-Lea el documento de Hola y buscar una unidad de la instancia de HANA grande, se tenga en cuenta que unidades Hola vienen con el volumen de disco en su lugar más amplio de HANA/datos y que tenemos un volumen HANA/registro/copia de seguridad. motivo de Hello ¿por qué se tamaño Hola HANA/datos tan grande es que ofrecemos de como un cliente usa las instantáneas de almacenamiento de Hola Hola mismo volumen de disco. Significa hello más instantáneas de almacenamiento que llevar a cabo, Hola instantáneas en los volúmenes de almacenamiento que se asignó consume más espacio. Hola HANA registro/copia de seguridad o volumen es no pensamiento toobe Hola copias de seguridad de base de datos de tooput en. Es toobe tamaño utilizado como volumen de copia de seguridad para copias de seguridad de registro de transacciones de hello HANA. En futuras versiones de almacenamiento de hello instantáneas instantáneas de autoservicio, que se aplicará a este toohave volumen específico más frecuentes. Y con el que más frecuentan sitio de recuperación ante desastres de replicaciones toohello si así lo desea toooption en para la funcionalidad de recuperación ante desastres de hello proporcionada por la infraestructura de instancia grande de HANA Hola. Vea los detalles en [Alta disponibilidad y recuperación ante desastres de SAP HANA en Azure (instancias grandes)](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 
+Según vaya leyendo el documento y buscando una unidad de instancia grande de HANA, se dará cuenta de que las unidades vienen con un volumen de disco bastante amplio para HANA/data y que tenemos un volumen HANA/log/backup. El motivo por el que el tamaño de HANA/data es tan grande es que las instantáneas de almacenamiento que le ofrecemos como cliente usan el mismo volumen de disco. Esto significa que cuantas más instantáneas de almacenamiento realice, más espacio consumen las instantáneas en los volúmenes de almacenamiento asignados. HANA/log/backup no se considera el volumen en el que colocar las copias de seguridad de base de datos. Su tamaño se ajusta para usarlo como volumen de copia de seguridad para las copias de seguridad del registro de transacciones de HANA. En futuras versiones del autoservicio de almacenamiento de instantáneas, este volumen específico será el destino para tener instantáneas más frecuentes. Y con eso, replicaciones más frecuentes en el sitio de recuperación ante desastres si quiere participar en la funcionalidad de recuperación ante desastres que proporciona la infraestructura de instancias grandes de HANA. Vea los detalles en [Alta disponibilidad y recuperación ante desastres de SAP HANA en Azure (instancias grandes)](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 
 
-Además proporciona almacenamiento toohello, puede adquirir la capacidad de almacenamiento adicional en incrementos de 1 TB. Este almacenamiento adicional puede agregarse como nuevos volúmenes tooa HANA instancias de gran tamaño.
+Además del almacenamiento proporcionado, puede adquirir capacidad de almacenamiento adicional en incrementos de 1 TB. Este almacenamiento adicional se puede agregar como nuevos volúmenes a instancias grandes de HANA.
 
-Durante la incorporación con SAP HANA en administración de servicios de Azure, Hola el cliente especifica un identificador de usuario (UID) y el Id. de grupo (GID) de grupo de usuario y sapsys SIDADM Hola (p. ej: 1000,500) es necesario que durante la instalación de sistema de SAP HANA hello, se utilizan estos mismos valores. Como se desee toodeploy varias instancias HANA en una unidad, dispone de varios conjuntos de volúmenes (un conjunto por cada instancia). Como resultado, durante la implementación debe toodefine:
+Durante la incorporación de SAP HANA en Azure Service Management, el cliente especifica un identificador de usuario (UID) e Id. de grupo (GID) para el usuario sidadm y el grupo sapsys (p. ej.: 1000,500). Es necesario que durante la instalación del sistema SAP HANA se usen estos mismos valores. Cuando quiera implementar varias instancias de HANA en una unidad, obtendrá varios conjuntos de volúmenes (un conjunto por cada instancia). Como resultado, durante la implementación tendrá que definir:
 
-- Hola SID de distintas instancias HANA hello (SIDADM se deriva fuera de ella).
-- Tamaños de memoria de distintas instancias HANA Hola. Puesto que tamaño de memoria de Hola por instancias define tamaño Hola de volúmenes de hello en cada conjunto de volúmenes individuales.
+- El SID de las distintas instancias de HANA (del que se deriva sidadm).
+- Tamaños de memoria de las distintas instancias de HANA. Dado que el tamaño de memoria por instancia define el tamaño de los volúmenes en cada conjunto de volúmenes individuales.
 
-En función de las recomendaciones del proveedor de almacenamiento Hola siguientes opciones de montaje se configura para todos los volúmenes montados (excluye los LUN de inicio):
+En función de las recomendaciones del proveedor de almacenamiento se configuran las siguientes opciones de montaje para todos los volúmenes montados (se excluyen los LUN de inicio):
 
 - nfs    rw, vers=4, hard, timeo=600, rsize=1048576, wsize=1048576, intr, noatime, lock 0 0
 
-Estos puntos se configuran en/etcetera/fstab como se muestra en hello después de gráficos de montaje:
+Estos puntos de montaje se configuran en /etc/fstab como se muestra en los gráficos siguientes:
 
 ![fstab de volúmenes montados en la unidad de instancia grande de HANA](./media/hana-installation/image1_fstab.PNG)
 
-salida de Hello de hello comando df -h en una unidad de instancia grande de HANA S72m sería:
+La salida del comando df -h en una unidad de instancia grande de HANA S72m tendría este aspecto:
 
 ![fstab de volúmenes montados en la unidad de instancia grande de HANA](./media/hana-installation/image2_df_output.PNG)
 
 
-Controladora de almacenamiento de Hola y nodos de marcas de instancia grande de hello son servidores de tooNTP sincronizados. Con usted sincronizar Hola SAP HANA en unidades de Azure (instancias de gran tamaño) y máquinas virtuales de Azure en un servidor NTP, no debería haber ningún pase de una desviación de mucho tiempo entre la infraestructura de Hola y unidades de proceso de hello en Azure o instancia grande sellos.
+El controlador de almacenamiento y los nodos de las marcas de instancia grandes se sincronizan con los servidores NTP. Mediante la sincronización de SAP HANA en unidades de Azure (instancias grandes) y Azure Virtual Machines con un servidor NTP, no debería haber un desfase de tiempo significativo entre la infraestructura y las unidades de proceso de Azure o las marcas de instancias grandes.
 
-En orden toooptimize almacenamiento de información de SAP HANA toohello utilizado por debajo, también debe establecer Hola parámetros de configuración de SAP HANA siguientes:
+Con el fin de optimizar SAP HANA para el almacenamiento subyacente, también debe establecer los parámetros de configuración de SAP HANA siguientes:
 
 - max_parallel_io_requests 128
 - async_read_submit on
 - async_write_submit_active on
 - async_write_submit_blocks all
  
-En las versiones de SAP HANA 1.0 seguridad tooSPS12, estos parámetros se pueden establecer durante la instalación de Hola de base de datos de SAP HANA hello, como se describe en [SAP nota #2267798 - configuración de base de datos de SAP HANA hello](https://launchpad.support.sap.com/#/notes/2267798)
+En las versiones de SAP HANA 1.0 hasta SPS12, estos parámetros se pueden establecer durante la instalación de la base de datos de SAP HANA, tal y como se describe en la [nota de SAP n.º 2267798: Configuración de la base de datos de SAP HANA](https://launchpad.support.sap.com/#/notes/2267798)
 
-También puede configurar parámetros de hello después de la instalación de base de datos de SAP HANA hello mediante el marco de trabajo de hello hdbparam. 
+También puede configurar los parámetros después de la instalación de la base de datos de SAP HANA mediante el marco de hdbparam. 
 
-SAP HANA 2.0, el marco de trabajo de hello hdbparam está en desuso. Como resultado se deben establecer los parámetros de hello mediante comandos SQL. Para más información, consulte la [nota de SAP n.º 2399079: Eliminación de hdbparam en HANA 2](https://launchpad.support.sap.com/#/notes/2399079).
+Con SAP HANA 2.0, el marco de hdbparam está en desuso. Como resultado, los parámetros deben establecerse mediante comandos SQL. Para más información, consulte la [nota de SAP n.º 2399079: Eliminación de hdbparam en HANA 2](https://launchpad.support.sap.com/#/notes/2399079).
 
 
-## <a name="operating-system"></a>Sistema operativos
+## <a name="operating-system"></a>Sistema operativo
 
-Espacio de intercambio de hello entregado la imagen del sistema operativo se establece GB too2 según toohello [SAP compatibilidad Nota #1999997 - preguntas más frecuentes: SAP HANA memoria](https://launchpad.support.sap.com/#/notes/1999997/E). Un valor diferente que se desee necesidades toobe establecido por el usuario como un cliente.
+El espacio de intercambio de la imagen del sistema operativo proporcionada está establecido en 2 GB de acuerdo con la [SAP Support Note #1999997 - FAQ: SAP HANA Memory](https://launchpad.support.sap.com/#/notes/1999997/E) (Nota de compatibilidad de SAP 1999997: Preguntas más frecuentes sobre la memoria de SAP HANA). Cualquier valor diferente deseado debe establecerlo el cliente.
 
-[SUSE Linux Enterprise Server 12 SP1 para aplicaciones de SAP](https://www.suse.com/products/sles-for-sap/hana) es Hola distribución de Linux instalado para SAP HANA en Azure (instancias de gran tamaño). Esta distribución particular proporciona capacidades específicas de SAP &quot;fuera del cuadro de hello&quot; (incluidos los parámetros predefinidos para ejecutar de forma eficaz SAP en SLES).
+[SUSE Linux Enterprise Server 12 SP1 for SAP Applications](https://www.suse.com/products/sles-for-sap/hana) es la distribución de Linux instalada para SAP HANA en Azure (instancias grandes). Esta distribución particular proporciona funcionalidades específicas de SAP &quot;listas para usar&quot; (incluidos los parámetros predefinidos para ejecutar SAP en SLES de forma eficaz).
 
-Vea [recurso de biblioteca/White Papers](https://www.suse.com/products/sles-for-sap/resource-library#white-papers) en el sitio Web SUSE hello y [SAP en SUSE](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE) en Hola red de la Comunidad de SAP (SCN) para varios recursos útiles relacionados con SAP HANA en SLES (incluido Hola instalación toodeploying de alta disponibilidad, operaciones de tooSAP específico de la protección de seguridad etc.).
+Vea [Biblioteca de recursos/Informes oficiales](https://www.suse.com/products/sles-for-sap/resource-library#white-papers) en el sitio web de SUSE y [SAP on SUSE](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE) (SAP en SUSE) en la red de la comunidad de SAP (SCN) para varios recursos útiles relacionados con la implementación de SAP HANA en SLES (incluida la configuración de alta disponibilidad, el endurecimiento de la seguridad específico de las operaciones de SAP etc.).
 
 Vínculos adicionales y útiles relacionados sobre SAP en SUSE:
 
@@ -164,7 +164,7 @@ Vínculos adicionales y útiles relacionados sobre SAP en SUSE:
 - [Best Practice for SAP: Enqueue Replication – SAP NetWeaver on SUSE Linux Enterprise 12](https://www.suse.com/docrepcontent/container.jsp?containerId=9113) (Procedimiento recomendado para SAP: poner en cola la replicación - SAP NetWeaver en SUSE Linux Enterprise 12)
 - [ClamSAP – SLES Virus Protection for SAP](http://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap) (ClamSAP: protección contra virus de SLES para SAP), incluido SLES 12 para SAP Applications
 
-SAP tooimplementing aplicable de notas de compatibilidad con SAP HANA en SLES 12:
+Notas de compatibilidad de SAP aplicables a la implementación de SAP HANA en SLES 12:
 
 - [Nota de compatibilidad de SAP n.º 1944799: Instrucciones de SAP HANA para la instalación de sistema operativo](http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
 - [Nota de compatibilidad de SAP n.º 2205917: Configuración recomendada del sistema operativo de SAP HANA DB para SLES 12 en aplicaciones SAP](https://launchpad.support.sap.com/#/notes/2205917/E)
@@ -177,7 +177,7 @@ SAP tooimplementing aplicable de notas de compatibilidad con SAP HANA en SLES 12
 Vínculos adicionales y útiles relacionados sobre SAP en Red Hat:
 - [Sitio de SAP HANA en Red Hat Linux](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+Red+Hat).
 
-Notas de compatibilidad con aplicable tooimplementing SAP HANA en Red Hat de SAP:
+Notas de compatibilidad de SAP aplicables a la implementación de SAP HANA en Red Hat:
 
 - [Nota de compatibilidad de SAP n.º 2009879: Directrices de SAP HANA para el sistema operativo Red Hat Enterprise Linux (RHEL)](https://launchpad.support.sap.com/#/notes/2009879/E)
 - [2292690 - SAP HANA DB: Configuración recomendada del sistema operativo para RHEL 7](https://launchpad.support.sap.com/#/notes/2292690)
@@ -190,69 +190,69 @@ Notas de compatibilidad con aplicable tooimplementing SAP HANA en Red Hat de SAP
 
 ## <a name="time-synchronization"></a>Sincronización de la hora
 
-Aplicaciones de SAP depende de la arquitectura de SAP NetWeaver Hola distinguen las diferencias de tiempo para diversos componentes que conforman la Hola Hola sistema SAP. Volcados de SAP ABAP corto con título de error de Hola de ZDATE\_grande\_tiempo\_diferencias probablemente esté familiarizado, como estos archivos de volcado cortos aparecen cuando hello hora del sistema de diferentes servidores o máquinas virtuales se deriva mucho tiempo.
+Las aplicaciones de SAP basadas en la arquitectura de SAP NetWeaver son sensibles a las diferencias de hora para los distintos componentes que conforman el sistema SAP. Los volcados cortos de ABAP de SAP con el título de error de ZDATE\_LARGE\_TIME\_DIFF probablemente le resulten familiares, ya que estos volcados cortos aparecen cuando la hora del sistema de diferentes servidores o máquinas virtuales se distancia demasiado.
 
-Para SAP HANA en Azure (instancias grandes), sincronización de hora que se realiza en Azure &#39; t aplicar toohello unidades de proceso en marcas de hello instancia grande. Esta sincronización no se aplica para ejecutar aplicaciones de SAP en máquinas virtuales nativas de Azure, ya que Azure garantiza que la hora del sistema está correctamente sincronizada. Como resultado, un servidor debe estar configurado de tiempo independiente que puede utilizarse en servidores de aplicaciones de SAP con máquinas virtuales de Azure y Hola SAP HANA base de datos de instancias que se ejecutan en instancias grandes HANA. infraestructura de almacenamiento de Hello en marcas de instancia grande es sincronizados con los servidores NTP.
+Para SAP HANA en Azure (instancias grandes), la sincronización de la hora que se realiza en Azure no se aplica a las unidades de proceso en las marcas de instancia grande. Esta sincronización no se aplica para ejecutar aplicaciones de SAP en máquinas virtuales nativas de Azure, ya que Azure garantiza que la hora del sistema está correctamente sincronizada. Como consecuencia de esto, se debe configurar un servidor horario independiente, que lo puedan usar servidores de aplicaciones SAP que se ejecutan en VM de Azure y las instancias de base de datos de SAP HANA que se ejecutan en instancias grandes de HANA. La infraestructura de almacenamiento en marcas de instancias grandes se sincronizado con los servidores NTP.
 
 ## <a name="setting-up-smt-server-for-suse-linux"></a>Configuración de servidor SMT para SUSE Linux
-Instancias de SAP HANA grandes no tiene toohello de conexión directa con Internet. Por lo tanto, no es un tooregister proceso sencillo como una unidad con el proveedor del sistema operativo de Hola y toodownload y aplicar revisiones. En caso de hello de SUSE Linux, una solución podría ser tooset de un servidor de SMT en una máquina virtual de Azure. Mientras que necesita hello Azure VM toobe había hospedado en una red virtual de Azure, que está conectado toohello instancia grande de HANA. Con este tipo un servidor SMT, unidad de instancia grande de HANA Hola podría registrar y descargar revisiones. 
+Las instancias grandes de SAP HANA no tienen conectividad directa a Internet. Por tanto, no es un proceso sencillo registrar una de estas unidades con el proveedor de sistema operativo y descargar y aplicar las revisiones. En el caso de SUSE Linux, una solución podría ser configurar un servidor SMT en una máquina virtual de Azure. Al mismo tiempo, la máquina virtual de Azure debe estar hospedada en una red virtual de Azure, que está conectada a la instancia grande de HANA. Con este tipo de servidor SMT, la unidad de instancia grande de HANA podría registrar y descargar las revisiones. 
 
 SUSE proporciona una guía más extensa en [Subscription Management Tool for SLES 12 SP2](https://www.suse.com/documentation/sles-12/pdfdoc/book_smt/book_smt.pdf) (Herramienta de administración de suscripciones para SLES 12 SP2). 
 
-Como condición previa para la instalación de Hola de un servidor SMT que cumple la tarea hello para la instancia de HANA grande, deberá:
+Como condición previa para la instalación de un servidor SMT que realice la tarea para la instancia grande de HANA, necesitará:
 
-- Una red virtual de Azure que está conectado toohello circuito HANA grandes instancia ER.
-- Una cuenta de SUSE que esté asociada a una organización. Mientras que la organización de hello necesitaría toohave alguna suscripción SUSE válida.
+- Una red virtual de Azure conectada al circuito ER de instancias grandes de HANA.
+- Una cuenta de SUSE que esté asociada a una organización. La organización necesitaría tener alguna suscripción válida de SUSE.
 
 ### <a name="installation-of-smt-server-on-azure-vm"></a>Instalación del servidor SMT en la máquina virtual de Azure
 
-En este paso, instale a Hola SMT server en una máquina virtual de Azure. primera medida de Hello es toolog en toohello [centro de atención al cliente de SUSE](https://scc.suse.com/)
+En este paso, se instala al servidor SMT en una máquina virtual de Azure. La primera medida consiste en iniciar sesión en [SUSE Customer Center](https://scc.suse.com/) (Centro de servicios al cliente de SUSE).
 
-Tal y como se ha iniciado sesión, vaya tooOrganization--> credenciales de la organización. En esa sección debería encontrar credenciales hello tooset necesario de servidor de SMT Hola.
+Después de iniciar sesión, vaya a Organización--> Credenciales de organización. En esa sección debería encontrar las credenciales necesarias para configurar el servidor SMT.
 
-Hola tercer paso es tooinstall una VM de Linux SUSE Hola red virtual de Azure. Hola toodeploy VM, tomar una imagen de la Galería de SLES 12 SP2 de Azure. En el proceso de implementación de hello, no defina un nombre DNS y no use direcciones IP estáticas, tal como se muestra en esta captura de pantalla
+El tercer paso consiste en instalar una máquina virtual de SUSE Linux en la red virtual de Azure. Para implementar la máquina virtual, tome una imagen de SLES 12 SP2 de la galería de Azure. En el proceso de implementación, no defina un nombre DNS y no use direcciones IP estáticas, tal como se muestra en esta captura de pantalla
 
 ![implementación de VM para servidor SMT](./media/hana-installation/image3_vm_deployment.png)
 
-Hello VM implementada era una máquina virtual más pequeña y tiene la dirección IP interna de hello en hello red virtual de Azure de 10.34.1.4. Nombre de máquina virtual de hello era smtserver. Después de la instalación de hello, se comprobaba Hola conectividad toohello HANA grandes unidades de instancia. Depende de cómo se organiza la resolución de nombres tendrá que tooconfigure resolución de unidades de instancia grande de HANA hello en etcetera/hosts de máquina virtual de Azure hello. Agregar una máquina virtual que se va toobe utiliza revisiones de hello toohold toohello de disco adicional. disco de arranque de Hello propio podría ser demasiado pequeño. En el caso de hello muestra, disco de hello tenemos montada demasiado/srv/www/htdocs tal y como se muestra en la siguiente captura de pantalla de Hola. Un disco de 100 GB debería ser suficiente.
+La máquina virtual implementada era una máquina virtual más pequeña y tenía la dirección IP interna 10.34.1.4 en la red virtual de Azure. El nombre de la máquina virtual era smtserver. Después de la instalación, se comprobó la conectividad con las unidades de instancia grande de HANA. En función de cómo haya organizado la resolución de nombres, es posible que tenga que configurar la resolución de las unidades de instancia grande de HANA en etc/hosts en la máquina virtual de Azure. Agregue un disco adicional a la máquina virtual que se va a usar para contener las revisiones. El propio disco de arranque podría ser demasiado pequeño. En el caso del ejemplo, el disco se montó en /srv/www/htdocs, como se muestra en la captura de pantalla siguiente. Un disco de 100 GB debería ser suficiente.
 
 ![implementación de VM para servidor SMT](./media/hana-installation/image4_additional_disk_on_smtserver.PNG)
 
-Inicie sesión en unidades de instancia grande de HANA toohello, mantener/etc/hosts y compruebe si puede alcanzar Hola VM de Azure que se supone que el servidor de toorun Hola SMT a través de red de Hola.
+Inicie sesión en las unidades de instancia grande de HANA, mantenga /etc/hosts y compruebe si puede tener acceso a la máquina virtual de Azure en la que supuestamente se ejecuta el servidor SMT a través de la red.
 
-Después de esta comprobación se realiza correctamente, debe toolog en toohello VM de Azure que se debe ejecutar el servidor SMT Hola. Si utilizas putty toolog en toohello VM, debe tooexecute esta secuencia de comandos en la ventana de bash:
+Después de realizar correctamente esta comprobación, debe iniciar sesión en la máquina virtual de Azure en la que se debe ejecutar el servidor SMT. Si usa putty para iniciar sesión en la máquina virtual, debe ejecutar esta secuencia de comandos en la ventana de Bash:
 
 ```
 cd ~
 echo "export NCURSES_NO_UTF8_ACS=1" >> .bashrc
 ```
 
-Después de ejecutar estos comandos, reinicie la configuración de hello tooactivate intensiva de errores. Después, inicie YAST.
+Después de ejecutar estos comandos, reinicie Bash para activar la configuración. Después, inicie YAST.
 
-En YAST, vaya tooSoftware mantenimiento y busque smt. Seleccione smt, que se activa automáticamente smt tooyast2 tal y como se muestra a continuación
+En YAST, vaya a Mantenimiento de software y busque smt. Seleccione smt, que cambia automáticamente a yast2-smt, como se muestra a continuación
 
 ![SMT en yast](./media/hana-installation/image5_smt_in_yast.PNG)
 
 
-Acepte la selección de Hola para su instalación en smtserver Hola. Una vez instalado, vaya a configuración del servidor toohello SMT y especificar credenciales de la organización Hola de hello SUSE centro de atención al cliente recuperó anteriormente. Especifique también el nombre de host de máquina virtual de Azure Hola SMT dirección URL del servidor. En esta demostración, era https://smtserver como se muestra en el gráfico siguiente Hola.
+Acepte la selección para la instalación en el servidor SMT. Una vez instalado, vaya a la configuración del servidor SMT y escriba las credenciales de la organización que recuperó anteriormente desde el Centro de servicios al cliente de SUSE. Escriba también el nombre de host de la máquina virtual de Azure y la dirección URL del servidor SMT. En este ejemplo era https://smtserver, como se muestra en el gráfico siguiente.
 
 ![Configuración del servidor SMT](./media/hana-installation/image6_configuration_of_smtserver1.png)
 
-Como paso siguiente, es necesario tootest si funciona el centro de atención al cliente de hello conexión toohello SUSE. Como se ve en hello después de gráficos, en caso de demostración de hello, ha funcionado.
+Como paso siguiente, debe comprobar si funciona la conexión al Centro de servicios al cliente de SUSE. Como se ve en los gráficos siguientes, en el caso del ejemplo, ha funcionado.
 
-![Centro de atención al cliente de tooSUSE de conectarse de prueba](./media/hana-installation/image7_test_connect.png)
+![Probar la conexión al Centro de servicios al cliente de SUSE](./media/hana-installation/image7_test_connect.png)
 
-Una vez Hola SMT se inicia el programa de instalación, deberá tooprovide una contraseña de base de datos. Puesto que es una instalación nueva, debe toodefine que la contraseña tal y como se muestra en el gráfico siguiente Hola.
+Una vez se inicia el programa de instalación de SMT, debe proporcionar una contraseña de base de datos. Como es una instalación nueva, debe definir esa contraseña como se muestra en el gráfico siguiente.
 
 ![Definir la contraseña de la base de datos](./media/hana-installation/image8_define_db_passwd.PNG)
 
-interacción siguiente Hello que tiene es cuando se crea un certificado. Vaya a través del cuadro de diálogo de hello tal y como se muestra a continuación y paso Hola debe continuar.
+La interacción siguiente tiene lugar cuando se crea un certificado. Recorra el cuadro de diálogo como se muestra a continuación y continúe con el siguiente paso.
 
 ![Crear certificado para el servidor SMT](./media/hana-installation/image9_certificate_creation.PNG)
 
-Puede haber algunos minutos empleados en el paso de Hola de 'Comprobación de la sincronización de ejecución' final Hola de configuración de Hola. Después de la instalación de Hola y la configuración del servidor SMT hello, debería buscar repositorio de directorio de hello en hello montaje punto /srv/www/htdocs/junto con algunos subdirectorios en el repositorio. 
+Es posible que se tarden varios minutos en el paso de "Ejecutar comprobación de sincronización" al final de la configuración. Después de la instalación y configuración del servidor SMT, debería encontrar el repositorio de directorio bajo el punto de montaje /srv/www/htdocs/ junto con varios subdirectorios. 
 
-Reinicie el servidor SMT de Hola y sus servicios relacionados con estos comandos.
+Reinicie el servidor SMT y sus servicios relacionados con estos comandos.
 
 ```
 rcsmt restart
@@ -262,154 +262,154 @@ systemctl restart apache2
 
 ### <a name="download-of-packages-onto-smt-server"></a>Descarga de paquetes al servidor SMT
 
-Después de que todos hello se reinicien los servicios, seleccione Hola paquetes adecuados en la administración de SMT usando Yast. selección de paquetes de saludo depende imagen del sistema operativo Hola del servidor de instancia grande de HANA hello y no de hello SLES versión o una versión de servidor en hello VM ejecución Hola SMT. A continuación se muestra un ejemplo de pantalla de selección de bienvenida.
+Después de reiniciar todos los servicios, seleccione los paquetes adecuados en la administración de SMT con Yast. La selección de paquetes depende de la imagen del sistema operativo del servidor de instancias grandes de HANA y no de la versión de SLES de la máquina virtual en la que se ejecuta el servidor SMT. A continuación se muestra un ejemplo de la pantalla de selección.
 
 ![Seleccionar paquetes](./media/hana-installation/image10_select_packages.PNG)
 
-Una vez haya terminado con la selección de paquetes de saludo, necesita copia inicial de hello toostart de servidor de SMT Hola Seleccionar paquete toohello que configurar. Esta copia se desencadena en el shell de hello mediante Hola comando smt-reflejado tal y como se muestra a continuación
+Una vez haya terminado con la selección de paquetes, debe iniciar la copia inicial de los paquetes seleccionados en el servidor SMT que configuró. Esta copia se desencadena en el shell mediante el comando smt-mirror como se muestra a continuación
 
 
-![Descargar paquetes tooSMT server](./media/hana-installation/image11_download_packages.PNG)
+![Descargar los paquetes al servidor SMT](./media/hana-installation/image11_download_packages.PNG)
 
-Como se ve por encima, obtener deben copiar paquetes de saludo en directorios de hello creados en hello montaje punto /srv/www/htdocs. Este proceso puede tardar unos minutos. Según el número de paquetes que seleccione, pueden tardar tooone hora o más.
-Cuando finalice este proceso, deberá toomove toohello config cliente. 
+Como puede ver arriba, los paquetes se deben copiar en los directorios creados bajo el punto de montaje /srv/www/htdocs. Este proceso puede tardar unos minutos. Según el número de paquetes que seleccione, se puede tardar una hora o más.
+Cuando finalice este proceso, debe pasar a la configuración del cliente SMT. 
 
-### <a name="set-up-hello-smt-client-on-hana-large-instance-units"></a>Configurar Hola SMT cliente en las unidades de la instancia de HANA grande
+### <a name="set-up-the-smt-client-on-hana-large-instance-units"></a>Configurar el cliente SMT en unidades de instancia grande de HANA
 
-clientes de Hello en este caso son unidades de instancia grande de HANA de Hola. config de servidor de Hello copia Hola script clientSetup4SMT.sh en hello VM de Azure. Copie ese script sobre toohello unidad instancia grande de HANA desea tooconnect tooyour SMT servidor. Inicia el script de Hola con la opción -h de Hola y asígnele como nombre del parámetro hello del servidor SMT. En este ejemplo es smtserver.
+En este caso, los clientes son las unidades de instancia grande de HANA. El programa de instalación del servidor SMT copió el script clientSetup4SMT.sh en la máquina virtual de Azure. Copie ese script en la unidad de instancia grande de HANA que quiere conectar a su servidor SMT. Inicie el script con la opción -h y asígnele como parámetro el nombre del servidor SMT. En este ejemplo es smtserver.
 
 ![Configurar el cliente SMT](./media/hana-installation/image12_configure_client.PNG)
 
-Puede haber un escenario donde hello carga del certificado de Hola desde servidor hello de cliente de Hola se realizó correctamente, pero el error en el registro de hello tal y como se muestra a continuación.
+Es posible que haya un escenario en el que la carga del certificado desde el servidor por el cliente se realice correctamente, pero como se muestra a continuación no se pudo realizar el registro.
 
 ![Se produce un error en el registro de cliente](./media/hana-installation/image13_registration_failed.PNG)
 
-Si el error en el registro de hello, lea esta [SUSE admite documento](https://www.suse.com/de-de/support/kb/doc/?id=7006024) y ejecutar pasos de hello descritos no existe.
+Si se produce un error en el registro, lea este [documento de soporte de SUSE](https://www.suse.com/de-de/support/kb/doc/?id=7006024) y ejecute los pasos que describe.
 
 > [!IMPORTANT] 
-> Como nombre de servidor necesita tooprovide Hola nombre del programa Hola a máquina virtual, en este caso smtserver, sin un nombre de dominio completo de Hola. Simplemente Hola VM nombre funciona. 
+> Como nombre del servidor debe proporcionar el nombre de la máquina virtual, en este caso smtserver, sin el nombre de dominio completo. Con el nombre de la máquina virtual es suficiente. 
 
-Después de ejecutar estos pasos, necesita hello tooexecute siguiente comando en la unidad de instancia grande de HANA Hola
+Después de ejecutar estos pasos, debe ejecutar el comando siguiente en la unidad de instancia grande de HANA.
 
 ```
 SUSEConnect –cleanup
 ```
 
 > [!Note] 
-> En nuestras pruebas siempre ha surgido toowait unos minutos después de ese paso. Hello clientSetup4SMT.sh ejecución inmediata, tras hello medidas correctoras que se describen en hello artículo SUSE, finalizó con mensajes de que ese certificado hello no sería válido aún. Para configurar correctamente el cliente normalmente se tenía que esperar 5-10 minutos y ejecutar clientSetup4SMT.sh.
+> En nuestras pruebas siempre se tuvieron que esperar unos minutos después de ese paso. La ejecución inmediata de clientSetup4SMT.sh, después de las medidas correctoras que se describen en el artículo de SUSE, finalizó con mensajes que indicaban que el certificado todavía no era válido. Para configurar correctamente el cliente normalmente se tenía que esperar 5-10 minutos y ejecutar clientSetup4SMT.sh.
 
-Si ha ejecutado en el problema de Hola que necesitan toofix basándose en los pasos del artículo SUSE Hola Hola, se necesitará toorestart clientSetup4SMT.sh en la unidad de instancia grande de HANA Hola de nuevo. Ahora debería finalizar correctamente como se muestra a continuación.
+Si se produce el problema que tuvo que corregir según los pasos descritos en el artículo de SUSE, debe reiniciar clientSetup4SMT.sh en la unidad de instancia grande de HANA de nuevo. Ahora debería finalizar correctamente como se muestra a continuación.
 
 ![Registro correcto del cliente](./media/hana-installation/image14_finish_client_config.PNG)
 
-Con este paso, configuró a Hola SMT cliente de hello instancia grande de HANA unidad tooconnect en servidor SMT Hola que instaló en hello VM de Azure. Ahora puede tomar 'zypper una' o 'zypper en' tooinstall OS revisiones instancias grandes tooHANA o instalar paquetes adicionales. Se entiende que sólo puede obtener las revisiones que se descargó antes en el servidor SMT Hola.
+Con este paso, ha configurado el cliente SMT de la unidad de instancia grande de HANA para conectarse con el servidor SMT instalado en la máquina virtual de Azure. Ahora puede ejecutar "zypper up" o "zypper in" para instalar revisiones del sistema operativo en instancias grandes de HANA o instalar paquetes adicionales. Se entiende que solo puede obtener las revisiones que descargó antes en el servidor SMT.
 
 
 ## <a name="example-of-an-sap-hana-installation-on-hana-large-instances"></a>Ejemplo de una instalación de SAP HANA en instancias grandes de HANA
-Esta sección muestra cómo tooinstall SAP HANA en una unidad de la instancia de HANA grande. estado de inicio de Hello tenemos tiene el siguiente aspecto:
+En esta sección se muestra cómo instalar SAP HANA en una unidad de instancia grande de HANA. El estado de inicio que tenemos tiene el siguiente aspecto:
 
-- Proporciona Microsoft toodeploy de datos de hello todos los que una instancia de gran tamaño de SAP HANA.
-- Hola instancia grande de SAP HANA que recibió de Microsoft.
-- Crea una red virtual de Azure que está conectado tooyour en la red local.
-- Conectado circuito de ExpressRotue de Hola para instancias grandes HANA toohello misma red virtual de Azure.
+- Ha proporcionado a Microsoft todos los datos para implementar una instancia grande de SAP HANA.
+- Ha recibido la instancia grande de SAP HANA de Microsoft.
+- Ha creado una red virtual de Azure que está conectada a la red local.
+- Ha conectado el circuito ExpressRotue para instancias grandes de HANA a la misma red virtual de Azure.
 - Ha instalado una máquina virtual de Azure que se usa como host administrativo seguro para instancias grandes de HANA.
-- Se haya asegurado de que puede conectarse desde la unidad de instancia grande de HANA de hello salto cuadro tooyour y viceversa.
-- Comprueba si todos los paquetes necesarios de Hola y revisiones que se instalan.
-- Lea las notas de SAP hello y documentaciones relativa a la instalación de HANA en hello OS está usando y asegurado de que versión HANA Hola de elección es compatible con la versión de SO Hola.
+- Se ha asegurado de que puede conectarse desde el host administrativo seguro a la unidad de instancia grande de HANA y viceversa.
+- Ha comprobado si están instalados todos los paquetes y revisiones necesarios.
+- Ha leído las notas de SAP y la documentación relativa a la instalación de HANA en el sistema operativo que usa y se ha asegurado de que la versión de HANA seleccionada es compatible con la versión del sistema operativo.
 
-Lo que se muestra en las secuencias de hello siguientes es la descarga de Hola de hello HANA instalación paquetes toohello salto cuadro VM, en este caso se ejecuta en un sistema operativo de Windows, copia de Hola de unidad de hello paquetes toohello instancia grande de HANA y secuencia de hello del programa de instalación de Hola.
+En las secuencias siguientes se muestra la descarga de los paquetes de instalación de HANA a la máquina virtual de host administrativo seguro, que en este caso se ejecuta en un sistema operativo de Windows, la copia de los paquetes a la unidad de instancia grande de HANA y la secuencia de la instalación.
 
-### <a name="download-of-hello-sap-hana-installation-bits"></a>Descarga de bits de instalación de SAP HANA Hola
-Puesto que unidades de instancia grande de HANA hello no tienen conectividad directa toohello internet, directamente no se puede descargar los paquetes de instalación de Hola de toohello SAP HANA grandes máquinas virtuales de la instancia. tooovercome Hola falta conectividad directa a internet, deberá cuadro saltar de Hola. Descargar Hola paquetes toohello salto cuadro máquina virtual.
+### <a name="download-of-the-sap-hana-installation-bits"></a>Descarga de los elementos de instalación de SAP HANA
+Puesto que las unidades de instancia grande de HANA no tienen conectividad directa a Internet, no puede descargar directamente los paquetes de instalación desde SAP en la máquina virtual de la instancia grande de HANA. Para solucionar la falta de conectividad directa a Internet, se necesita el host administrativo seguro. Descargue los paquetes a la máquina virtual de host administrativo seguro.
 
-En orden toodownload Hola HANA los paquetes de instalación, necesita un usuario de S SAP u otro usuario, lo que permite tooaccess Hola Marketplace de SAP. Después de iniciar sesión, recorra esta secuencia de pantallas:
+Para descargar los paquetes de instalación de HANA, necesitará un usuario S de SAP u otro usuario, lo que le permite obtener acceso a la tienda de SAP. Después de iniciar sesión, recorra esta secuencia de pantallas:
 
-Vaya demasiado[SAP Service Marketplace](https://support.sap.com/en/index.html) > haga clic en descargar Software > instalaciones y actualización > por índice alfabético > en H: SAP HANA Platform Edition > SAP HANA Platform Edition 2.0 > instalación > Hola de descarga archivos siguientes
+Vaya a [SAP Service Marketplace](https://support.sap.com/en/index.html) (Tienda del servicio SAP) > haga clic en Descargar Software > Instalaciones y actualización > Por índice alfabético > En H: SAP HANA Platform Edition > SAP HANA Platform Edition 2.0 > Instalación > descargue los archivos siguientes.
 
 ![Descargar la instalación de HANA](./media/hana-installation/image16_download_hana.PNG)
 
-En caso de demostración de hello, se descargan los paquetes de instalación de SAP HANA 2.0. En cuadro de hello salto Azure VM, expandir autoextraíbles hello en directorio de hello tal y como se muestra a continuación.
+En el caso de ejemplo, se descargan los paquetes de instalación de SAP HANA 2.0. En la máquina virtual de host administrativo seguro de Azure, expanda los archivos autoextraíbles en el directorio tal y como se muestra a continuación.
 
 ![Extraer la instalación de HANA](./media/hana-installation/image17_extract_hana.PNG)
 
-Tal y como se extraen los archivos de hello, copie directory Hola creado por extracción hello, en caso de hello anteriormente 51052030, unidad de instancia HANA grandes toohello en volumen de /hana/shared hello en un directorio que creó.
+Una vez extraídos los archivos, copie el directorio creado por la extracción, 51052030 en el caso anterior, a la unidad de instancia grande de HANA en el volumen /hana/shared en un directorio que haya creado.
 
 > [!Important]
-> No copie los paquetes de instalación de hello en raíz de Hola o LUN de arranque desde espacio es limitado y necesita toobe utilizado por otros procesos también.
+> No copie los paquetes de instalación en la raíz o el LUN de inicio dado que el espacio es limitado y también debe usarse por otros procesos.
 
 
-### <a name="install-sap-hana-on-hello-hana-large-instance-unit"></a>Instalar SAP HANA en la unidad de instancia grande de HANA Hola
-En orden tooinstall SAP HANA, debe toolog en como raíz del usuario. Sólo raíz tiene suficiente tooinstall permisos SAP HANA.
-Hola primera cosa que necesita toodo es tooset permisos en el directorio de Hola que copió en/hana/shared. permisos de Hello necesitan tooset como
+### <a name="install-sap-hana-on-the-hana-large-instance-unit"></a>Instalar SAP HANA en la unidad de instancia grande de HANA
+Para poder instalar SAP HANA, debe iniciar sesión como raíz del usuario. Solo la raíz tiene los permisos suficientes para instalar SAP HANA.
+Lo primero que debe hacer es establecer permisos en el directorio que copió en /hana/shared. Los permisos deben establecerse de esta forma
 
 ```
 chmod –R 744 <Installation bits folder>
 ```
 
-Si desea que tooinstall SAP HANA con hello gráfica de la instalación, Hola gtk2 paquete necesidades toobe instalado en instancias de hello HANA grandes. Compruebe si se ha instalado con el comando hello
+Si quiere instalar SAP HANA mediante el programa de instalación gráfico, es necesario instalar el paquete gtk2 en las instancias grandes de HANA. Compruebe si está instalado con el comando
 
 ```
 rpm –qa | grep gtk2
 ```
 
-En más pasos, estamos demostrar la instalación de SAP HANA Hola con interfaz gráfica de usuario de Hola. Como paso siguiente, vaya al directorio de instalación de Hola y navegue al directorio de sub hello HDB_LCM_LINUX_X86_64. Iniciar
+En los pasos siguientes se describe la instalación de SAP HANA con la interfaz gráfica de usuario. Como paso siguiente, vaya al directorio de instalación y navegue al subdirectorio HDB_LCM_LINUX_X86_64. Iniciar
 
 ```
 ./hdblcmgui 
 ```
-desde ese directorio. Ahora se Introducción le guía a través de una secuencia de pantallas donde necesita datos de hello tooprovide para la instalación de Hola. En caso de hello muestra, se están instalando servidor de base de datos de SAP HANA hello y componentes de cliente de SAP HANA Hola. Por tanto, nuestra selección es "SAP HANA Database" (Base de datos de SAP HANA) como se muestra a continuación
+desde ese directorio. Ahora se le guiará por una secuencia de pantallas donde debe proporcionar los datos de la instalación. En el caso del ejemplo, se instalan los componentes de servidor de base de datos y cliente de SAP HANA. Por tanto, nuestra selección es "SAP HANA Database" (Base de datos de SAP HANA) como se muestra a continuación
 
 ![Seleccionar HANA en la instalación](./media/hana-installation/image18_hana_selection.PNG)
 
-En la siguiente pantalla de bienvenida, se elija la opción de hello 'Instalar nuevo sistema'
+En la siguiente pantalla, elija la opción "Install New System" (Instalar nuevo sistema).
 
 ![Seleccionar la nueva instalación de HANA](./media/hana-installation/image19_select_new.PNG)
 
-Después de este paso, necesita tooselect entre varios componentes adicionales que se puede instalar además servidor de base de datos de SAP HANA toohello.
+Después de este paso, debe seleccionar entre varios componentes adicionales que también se pueden instalar en el servidor de base de datos de SAP HANA.
 
 ![Seleccionar componentes adicionales de HANA](./media/hana-installation/image20_select_components.PNG)
 
-A fin de Hola de esta documentación, elegimos SAP HANA cliente Hola y Hola SAP HANA Studio. También se instala una instancia de escalado vertical. por lo tanto, en la siguiente pantalla de bienvenida, deberá toochoose 'Host único sistema' 
+En esta documentación, elegimos el cliente de SAP HANA y SAP HANA Studio. También se instala una instancia de escalado vertical. Por tanto, en la siguiente pantalla, debe elegir "Single-Host System" (Sistema de un único host). 
 
 ![Seleccionar la instalación de escala vertical](./media/hana-installation/image21_single_host.PNG)
 
-En la siguiente pantalla de bienvenida, deberá tooprovide algunos datos
+En la siguiente pantalla, debe proporcionar algunos datos.
 
 ![Proporcionar el SID de SAP HANA](./media/hana-installation/image22_provide_sid.PNG)
 
 > [!Important]
-> Como el Id. de sistema de HANA (SID), necesita tooprovide Hola mismo SID, tal y como se proporcionó a Microsoft cuando se haya solicitado la implementación de instancia grande de HANA Hola. Elegir a un SID diferente hace instalación Hola producirá un error debido a problemas de permisos de tooaccess en volúmenes diferentes Hola
+> Como Id. de sistema de HANA (SID), debe proporcionar el mismo SID que proporcionó a Microsoft cuando solicitó la implementación de la instancia grande de HANA. Elegir un SID distinto hace que se produzca un error en la instalación debido a problemas de permisos de acceso en los diferentes volúmenes.
 
-Como directorio de instalación utiliza hello /hana/shared directory. En el paso siguiente de hello, necesita tooprovide ubicaciones de Hola Hola HANA archivos de datos y archivos de registro de hello HANA
+Como directorio de instalación use el directorio /hana/shared. En el paso siguiente, debe proporcionar las ubicaciones para los archivos de datos y de registro de HANA.
 
 
 ![Proporcionar la ubicación del registro de HANA](./media/hana-installation/image23_provide_log.PNG)
 
 > [!Note]
-> Debe definir como archivos de registro y datos Hola volúmenes ya suministrada con puntos de montaje de Hola que contienen Hola SID que eligió en la selección de la pantalla de hello antes de esta pantalla. Si el error de coincidencia de hello SID con hello uno que escribió en el, en la pantalla de bienvenida antes, volver atrás y ajustar el valor del SID toohello tienen en los puntos de montaje de Hola Hola.
+> Como archivos de datos y de registro debe definir los volúmenes que ya se incluían con los puntos de montaje que contienen al SID que eligió en la selección de la pantalla anterior a esta. Si el SID no coincide con el que escribió en la pantalla anterior, vuelva atrás y ajuste el SID en el valor de los puntos de montaje.
 
-En el paso siguiente de hello, revise el nombre de host de Hola y finalmente corregirlo. 
+En el paso siguiente, revise el nombre de host y corríjalo si es necesario. 
 
 ![Revisar el nombre de host](./media/hana-installation/image24_review_host_name.PNG)
 
-En el paso siguiente de hello, también necesita datos tooretrieve dio tooMicrosoft cuando haya solicitado la implementación de instancia grande de HANA Hola. 
+En el paso siguiente, también debe recuperar los datos que proporcionó a Microsoft cuando solicitó la implementación de la instancia grande de HANA. 
 
 ![Proporcionar el UID y GID del usuario del sistema](./media/hana-installation/image25_provide_guid.PNG)
 
 > [!Important]
-> Necesita tooprovide Hola el mismo Id. de usuario del sistema y el Id. de grupo de usuarios que proporciona Microsoft como pedido implementación de la unidad de Hola. Si no toogive Hola muy mismos identificadores, instalación de Hola de SAP HANA en unidad de instancia grande de HANA Hola produce un error.
+> Debe proporcionar el mismo Id. de usuario del sistema y el mismo Id. de grupo de usuarios que proporcionó a Microsoft cuando solicitó la implementación de la unidad. Si no proporciona los mismos identificadores, se produce un error en la instalación de SAP HANA en la unidad de instancia grande de HANA.
 
-En las pantallas siguientes dos hello, que no vamos a presentar en esta documentación, necesita tooprovide Hola contraseña de usuario del sistema Hola de base de datos de SAP HANA hello y una contraseña de hello para el usuario de sapadm hello, que se usa para hello agente de Host de SAP que se instala como parte de instancia de base de datos de SAP HANA Hola.
+En las dos pantallas siguientes, que no se muestran en esta documentación, tiene que proporcionar la contraseña para el usuario SYSTEM de la base de datos de SAP HANA y la contraseña para el usuario sapadm, que se usa para el agente de host de SAP que se instala como parte de la instancia de base de datos de SAP HANA.
 
-Después de definir la contraseña de hello, una pantalla de confirmación aparece. Compruebe todos los datos de hello enumeran y continuar con la instalación de Hola. Llegar a una pantalla de progreso documentos Hola progreso de la instalación, como Hola a continuación
+Después de definir la contraseña, aparece una pantalla de confirmación. Compruebe todos los datos que se muestran y continúe con la instalación. Llegará a una pantalla de progreso en la que se documenta el progreso de la instalación, como la siguiente:
 
 ![Comprobar el progreso de la instalación](./media/hana-installation/image27_show_progress.PNG)
 
-Cuando finalice la instalación de hello, debería una imagen como Hola sigue uno
+Cuando finalice la instalación, debería ver una imagen como la siguiente:
 
 ![La instalación ha finalizado](./media/hana-installation/image28_install_finished.PNG)
 
-En este momento, instancia de SAP HANA Hola debe ser hasta y ejecución y listo para su uso. Debe ser capaz de tooconnect tooit desde SAP HANA Studio. También asegúrese de que busque las últimas revisiones de Hola de SAP HANA y aplicar las revisiones.
+En este momento, la instancia de SAP HANA debe estar en ejecución y lista para su uso. Debe poder conectarse a ella desde SAP HANA Studio. Asegúrese también de buscar y aplicar las últimas revisiones de SAP HANA.
 
 
 

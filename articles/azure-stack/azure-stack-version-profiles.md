@@ -1,5 +1,5 @@
 ---
-title: "perfiles de la versión de aaaUsing API en la pila de Azure | Documentos de Microsoft"
+title: "Usar de perfiles de la versión de la API de Azure Stack | Microsoft Docs"
 description: "Aprenda los perfiles de la versión de API en Azure Stack."
 services: azure-stack
 documentationcenter: 
@@ -12,26 +12,28 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2017
+ms.date: 09/25/2017
 ms.author: sngun
-ms.openlocfilehash: cb54a683054f08fd123bcb6245d88aaa30c29882
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: b9a010409dc7f49333ab188b89280f3ad54816c1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Administre los perfiles de la versión de API en Azure Stack
 
-Perfiles de la versión de API proporcionan una manera toomanage diferencias de versión entre Azure y la pila de Azure. Un perfil de la versión de la API es un conjunto de módulos de PowerShell AzureRM con versiones específicas de la API. Cada plataforma de la nube tiene un conjunto de perfiles de versión de API compatibles. Por ejemplo, pila de Azure es compatible con una versión de perfil con fecha específico como **2017-03-09-perfil**, Azure es compatible con hello y **más reciente** perfil de la versión de API. Cuando se instala un perfil, hello módulos AzureRM PowerShell correspondientes toohello especificadas perfil están instaladas.
+*Se aplica a: Sistemas integrados de Azure Stack y Azure Stack Development Kit*
 
-## <a name="install-hello-powershell-module-required-toouse-api-version-profiles"></a>Instalar perfiles de la versión de Hola PowerShell los módulos necesarios toouse API
+Los perfiles de versión de la API proporcionan una manera de administrar las diferencias de versión entre Azure y Azure Stack. Un perfil de la versión de la API es un conjunto de módulos de PowerShell AzureRM con versiones específicas de la API. Cada plataforma de la nube tiene un conjunto de perfiles de versión de API compatibles. Por ejemplo, Azure Stack es compatible con una versión de perfil con fecha específica **2017-03-09-perfil**, y Azure es compatible con la versión de perfil **más reciente** de la API. Cuando se instala un perfil, se instalan los módulos de PowerShell AzureRM que se corresponden con el perfil especificado.
 
-Hola **AzureRM.Bootstrapper** módulo que está disponible a través de hello Galería de PowerShell proporciona cmdlets de PowerShell que son necesario toowork con perfiles de la versión de API. Usar hello después de módulo de cmdlets tooinstall Hola AzureRM.Bootstrapper:
+## <a name="install-the-powershell-module-required-to-use-api-version-profiles"></a>Instale el módulo de PowerShell necesario para usar perfiles de la versión de la API
+
+El módulo **AzureRM.Bootstrapper** que está disponible a través de la Galería de PowerShell proporciona cmdlet de PowerShell que son necesarios para trabajar con perfiles de la versión de API. Use el siguiente cmdlet para instalar el módulo AzureRM.Bootstrapper:
 
 ```PowerShell
 Install-Module -Name AzureRm.BootStrapper
 ```
-módulo de Hello AzureRM.Bootstrapper está en vista previa; detalles y las funcionalidades están toochange de asunto. toodownload e instalar Hola versión más reciente de este módulo de hello Galería de PowerShell, ejecute hello siguiente cmdlet:
+El módulo AzureRM.Bootstrapper es una versión preliminar, los detalles y las funcionalidades están sujetos a cambios. Para descargar e instalar la versión más reciente de este módulo desde la Galería de PowerShell, ejecute el siguiente cmdlet:
 
 ```PowerShell
 Update-Module -Name "AzureRm.BootStrapper"
@@ -39,72 +41,72 @@ Update-Module -Name "AzureRm.BootStrapper"
 
 ## <a name="install-a-profile"></a>Instalar un perfil
 
-Hola de uso **Install-AzureRmProfile** cmdlet con hello **2017-03-09-perfil** API versión perfil tooinstall hello AzureRM módulos requeridos por la pila de Azure. Tenga en cuenta que no se instalan módulos de administrador de hello pila de Azure en la nube con este perfil de la versión de API, y deben instalarse por separado según lo especificado en hello paso 3 de hello [instale PowerShell para Azure pila](azure-stack-powershell-install.md) artículo.
+Use el cmdlet **Install-AzureRmProfile** con el perfil de versión **2017-03-09-perfil** de la API para instalar los módulos de AzureRM que necesita Azure Stack. Tenga en cuenta que los módulos de operador de Azure Stack no están instalados con este perfil de la versión de la API, y deben instalarse por separado según lo especificado en el paso 3 del artículo [Instalación de PowerShell para Azure Stack](azure-stack-powershell-install.md).
 
 ```PowerShell 
 Install-AzureRMProfile -Profile 2017-03-09-profile
 ```
 ## <a name="install-and-import-modules-in-a-profile"></a>Instalar e importar módulos en un perfil
 
-Hola de uso **AzureRmProfile Use** módulos tooinstall e importación de cmdlets que están asociados a un perfil de la versión de API. Puede importar un solo perfil de la versión de la API en una sesión de PowerShell. perfil de la versión de tooimport una API diferente, debe abrir una nueva sesión de PowerShell. Hola siguiente las tareas ejecuta el cmdlet de Hello AzureRMProfile de uso:  
-1. Comprueba si el perfil de versión de API especificado de módulos de PowerShell de hello asociados con hello se instala en el ámbito actual de Hola.  
-2. Descarga e instala los módulos de hello si ya no están instalados.   
-3. Importaciones Hola módulos en la sesión actual de PowerShell de Hola. 
+Use el cmdlet de **AzureRmProfile Use** para instalar e importar módulos que están asociados a un perfil de la versión de la API. Puede importar un solo perfil de la versión de la API en una sesión de PowerShell. Para importar un perfil de versión de la API diferente, debe abrir una nueva sesión de PowerShell. El cmdlet Use-AzureRMProfile ejecuta las siguientes tareas:  
+1. Comprueba si están instalados los módulos de PowerShell asociados al perfil de versión de la API especificado en el ámbito actual.  
+2. Descarga e instala los módulos si no están ya instalados.   
+3. Importa los módulos en la sesión actual de PowerShell. 
 
 ```PowerShell
-# Installs and imports hello specified API version profile into hello current PowerShell session.
+# Installs and imports the specified API version profile into the current PowerShell session.
 Use-AzureRmProfile -Profile 2017-03-09-profile -Scope CurrentUser
 
-# Installs and imports hello specified API version profile into hello current PowerShell session without any prompts
+# Installs and imports the specified API version profile into the current PowerShell session without any prompts
 Use-AzureRmProfile -Profile 2017-03-09-profile -Scope CurrentUser -Force
 ```
 
-tooinstall e importación seleccionan AzureRM módulos de un perfil de versión de API, ejecute el cmdlet hello AzureRMProfile de uso con hello **módulo** parámetro:
+Para instalar e importar los módulos seleccionados de AzureRM de un perfil de la versión de la API, ejecute el cmdlet Use-AzureRMProfile con el parámetro **Módulo**:
 
 ```PowerShell
-# Installs and imports hello compute, Storage and Network modules from hello specified API version profile into your current PowerShell session.
+# Installs and imports the compute, Storage and Network modules from the specified API version profile into your current PowerShell session.
 Use-AzureRmProfile -Profile 2017-03-09-profile -Module AzureRM.Compute, AzureRM.Storage, AzureRM.Network
 ```
 
-## <a name="get-hello-installed-profiles"></a>Obtener perfiles Hola instalado
+## <a name="get-the-installed-profiles"></a>Obtener los perfiles instalados
 
-Hola de uso **AzureRmProfile Get** lista de cmdlets tooget Hola de perfiles de versión de API disponibles: 
+Use el cmdlet **Get AzureRmProfile** para obtener una lista disponible de perfiles de versión de la API: 
 
 ```PowerShell
-# lists all API version profiles provided by hello AzureRM.BootStrapper module.
+# lists all API version profiles provided by the AzureRM.BootStrapper module.
 Get-AzureRmProfile -ListAvailable 
 
-# lists hello API version profiles which are installed on your machine
+# lists the API version profiles which are installed on your machine
 Get-AzureRmProfile
 ```
 ## <a name="update-profiles"></a>Administrar perfiles
 
-Hola de uso **AzureRmProfile actualización** módulos de cmdlet tooupdate hello en una versión perfil toohello última versión de API de módulos que están disponibles en Hola PSGallery. Se recomienda tooalways ejecute hello **AzureRmProfile actualización** cmdlet en una nueva tooavoid de sesión de PowerShell entra en conflicto al importar módulos. Hola siguiente las tareas ejecuta el cmdlet de Hello AzureRmProfile de actualización:
+Use el cmdlet **Update-AzureRmProfile** para actualizar los módulos de un perfil de versión de la API a la versión más reciente de los módulos que están disponibles en la PSGallery. Se recomienda ejecutar siempre el cmdlet **Update-AzureRmProfile** cmdlet en una nueva sesión de PowerShell para evitar conflictos al importar módulos. El cmdlet Update-AzureRmProfile ejecuta las siguientes tareas:
 
-1. Comprueba si las últimas versiones de Hola de módulos se instalan en hello dado el perfil de la versión de API para el ámbito actual de Hola.  
-2. Le pide que tooinstall si no están ya instalados.  
-3. Instala e importa módulos Hola actualizado en la sesión actual de PowerShell de Hola.  
+1. Comprueba si se instalan las versiones más recientes de módulos en el perfil determinado de versión de API para el ámbito actual.  
+2. Le pide que las instale si no están ya instaladas.  
+3. Instala e importa los módulos actualizados en la sesión actual de PowerShell.  
 
 ```PowerShell
 Update-AzureRmProfile -Profile 2017-03-09-profile
 ```
 
-versiones de hello previamente instalado tooremove de módulos de hello antes de actualizar toohello última versión disponible, usar el cmdlet de hello AzureRmProfile actualización junto con hello **- RemovePreviousVersions** parámetro:
+Para quitar las versiones de los módulos instaladas anteriormente antes de actualizar a la versión más reciente disponible, use el cmdlet Update-AzureRmProfile junto con el parámetro **-RemovePreviousVersions**:
 
 ```PowerShell 
 Update-AzureRmProfile -Profile 2017-03-09-profile -RemovePreviousVersions
 ```
 
-Este cmdlet ejecuta Hola siguientes tareas:  
+Este cmdlet ejecuta las siguientes tareas:  
 
-1. Comprueba si las últimas versiones de Hola de módulos se instalan en hello dado el perfil de la versión de API para el ámbito actual de Hola.  
-2. Quita las versiones anteriores de Hola de módulos de perfil de versión de API actual de Hola y en la sesión actual de PowerShell de Hola.  
-4. le versión más reciente de tooinstall Hola.  
-5. Instala e importa módulos Hola actualizado en la sesión actual de PowerShell de Hola.  
+1. Comprueba si se instalan las versiones más recientes de módulos en el perfil determinado de versión de API para el ámbito actual.  
+2. Quita las versiones anteriores de módulos con el perfil de versión de API actual y en la sesión actual de PowerShell.  
+4. le pide que instale la versión más reciente.  
+5. Instala e importa los módulos actualizados en la sesión actual de PowerShell.  
  
 ## <a name="uninstall-profiles"></a>Desinstalar perfiles
 
-Hola de uso **AzureRmProfile desinstalar** cmdlet toouninstall Hola especifica el perfil de la versión de API.
+Use el cmdlet **Uninstall-AzureRmProfile** para desinstalar el perfil de versión de API especificado.
 
 ```PowerShell 
 Uninstall-AzureRmProfile -Profile 2017-03-09-profile
@@ -112,4 +114,4 @@ Uninstall-AzureRmProfile -Profile 2017-03-09-profile
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Install PowerShell for Azure Stack](azure-stack-powershell-install.md) (Instalación de PowerShell para Azure Stack)
-* [Configurar el entorno de PowerShell del usuario de hello pila de Azure](azure-stack-powershell-configure-user.md)  
+* [Configuración del entorno de PowerShell del usuario de Azure Stack](user/azure-stack-powershell-configure-user.md)  

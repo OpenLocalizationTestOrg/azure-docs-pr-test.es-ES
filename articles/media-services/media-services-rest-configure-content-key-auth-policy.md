@@ -1,6 +1,6 @@
 ---
-title: "Directiva de autorización de clave de contenido de aaaConfigure con REST - Azure | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo tooconfigure una directiva de autorización para una clave de contenido mediante la API de REST de servicios multimedia."
+title: "Configuración de la directiva de autorización de claves de contenido mediante REST: Azure | Microsoft Docs"
+description: "Aprenda a configurar una directiva de autorización para una clave de contenido mediante la API de REST de Servicios multimedia."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: juliako
-ms.openlocfilehash: c058b7682bcbfb736faba18ec7fce33f2f2acb49
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ed20fca35070c190bb63925d0a57cf919bcdd96c
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="dynamic-encryption-configure-content-key-authorization-policy"></a>Cifrado dinámico: configuración de la directiva de autorización de claves de contenido
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
 
 ## <a name="overview"></a>Información general
-Servicios de multimedia de Microsoft Azure permite toodeliver su contenido (dinámicamente) cifrado con PlayReady y Widevine DRM de Advanced Encryption Standard (AES) (con claves de cifrado de 128 bits). Servicios multimedia también proporciona un servicio para entregar las claves y licencias de PlayReady/Widevine tooauthorized clientes.
+Servicios multimedia de Microsoft Azure permite entregar el contenido cifrado de forma dinámica con Estándar de cifrado avanzado (AES) (mediante claves de cifrado de 128 bits) y PlayReady o Widevine DRM. Servicios multimedia también proporciona un servicio para entregar claves y licencias de PlayReady o Widevine a los clientes autorizados.
 
-Si desea para los servicios multimedia tooencrypt un activo, que tooassociate una clave de cifrado (**CommonEncryption** o **EnvelopeEncryption**) a activo hello (tal como se describe [aquí](media-services-rest-create-contentkey.md)) y también configurar directivas de autorización para la clave de hello (como se describe en este artículo).
+Si desea que Media Services cifre un recurso, debe asociar una clave de cifrado (**CommonEncryption** o **EnvelopeEncryption**) con el recurso (tal como se describe [aquí](media-services-rest-create-contentkey.md)) y también configurar directivas de autorización para la clave (como se describe en este artículo).
 
-Cuando un Reproductor solicita una secuencia, los servicios multimedia usa Hola especificado toodynamically clave cifrar el contenido con cifrado de AES o PlayReady. secuencia de hello toodecrypt, Hola Reproductor solicitará clave Hola del servicio de entrega de claves de Hola. toodecide si es usuario de hello autorizado tooget clave de hello, servicio de hello evalúa las directivas de autorización de Hola que especificó para la clave de Hola.
+Cuando un reproductor solicita una secuencia, los Servicios multimedia usan la clave especificada para cifrar de forma dinámica el contenido mediante AES o el cifrado de PlayReady. Para descifrar la secuencia, el reproductor solicitará la clave del servicio de entrega de claves. Para decidir si el usuario está o no autorizado para obtener la clave, el servicio evalúa las directivas de autorización que especificó para la clave.
 
-Servicios multimedia admite varias formas de autenticar a los usuarios que realizan solicitudes de clave. Hello directiva de autorización de clave de contenido podría tener una o más restricciones de autorización: **abrir** o **token** restricción. directiva restringida de tokens de Hello debe ir acompañada de un token emitido por un Token seguro servicio (STS). Servicios multimedia admite tokens en hello **Tokens Web simples** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) formato y ** formato JSON Web Token **(JWT).
+Servicios multimedia admite varias formas de autenticar a los usuarios que realizan solicitudes de clave. La directiva de autorización de claves de acceso podría tener una o más restricciones de autorización: **abrir** o restricción de **token**. La directiva con restricción token debe ir acompañada de un token emitido por un Servicio de tokens seguros (STS). Media Services admite tokens en los formatos de **tokens web simples** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) y **JSON Web Token** (JWT).
 
-Los Servicios multimedia no proporcionan Servicios de tokens seguros. Puede crear a un STS personalizado o aprovechar símbolos (tokens) de Microsoft Azure ACS tooissue. Hola STS debe estar configurado toocreate un token firmado con la clave especificada de Hola y emiten notificaciones que especificó en la configuración de restricción de token de hello (como se describe en este artículo). Hello servicio de entrega de claves de servicios multimedia devolverá a cliente de toohello clave de cifrado de hello si Hola token es válido y hello notificaciones de token de hello coinciden con los configurados para la clave de contenido de Hola.
+Los Servicios multimedia no proporcionan Servicios de tokens seguros. Puede crear un STS personalizado o aprovechar el Servicio de control de acceso (ACS) de Microsoft Azure para emitir tokens. El STS debe configurarse para crear un token firmado con las notificaciones especificadas de clave y el número que especificó en la configuración de restricción de token (como se describe en este artículo). El servicio de entrega de claves de los Servicios multimedia devolverá la clave de cifrado al cliente si el token es válido y las notificaciones del token coinciden con las configuradas para la clave de contenido.
 
 Para obtener más información, consulte
 
@@ -40,31 +40,31 @@ Para obtener más información, consulte
 
 [Integración de la aplicación OWIN basada en MVC de Servicios multimedia de Azure con Azure Active Directory y restricción de la entrega de claves de contenido basada en notificaciones de JWT](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/).
 
-[Usar tokens de ACS de Azure tooissue](http://mingfeiy.com/acs-with-key-services).
+[Uso de ACS de Azure para emitir tokens](http://mingfeiy.com/acs-with-key-services).
 
 ### <a name="some-considerations-apply"></a>Se aplican algunas consideraciones:
-* toobe toouse capaz el empaquetado dinámico y cifrado dinámico, asegúrese de hello origen desde el que desea que toostream el contenido está en hello **ejecutando** estado.
+* Para utilizar el empaquetado dinámico y el cifrado dinámico, asegúrese de que el punto de conexión de streaming desde el que va a transmitir el contenido esté en estado **Running** (En ejecución).
 * El recurso debe contener un conjunto de archivos MP4 de velocidad de bits adaptable o archivos Smooth Streaming de velocidad de bits adaptable. Para obtener más información, consulte [Codificación de un recurso](media-services-encode-asset.md).
 * Cargue y codifique sus recursos con la opción **AssetCreationOptions.StorageEncrypted** .
-* Si tiene previsto toohave varias claves de contenido que requieran Hola misma configuración de directiva, es muy recomendable toocreate una directiva de autorización única y volver a usarla con varias claves de contenido.
-* Hola servicio de entrega de claves almacena en caché ContentKeyAuthorizationPolicy y sus objetos relacionados (opciones de directivas y restricciones) durante 15 minutos.  Si una contentkeyauthorizationpolicy y especificar una restricción de "Token", toouse, a continuación, probarlo y, a continuación, actualizar la directiva de Hola "Abierto" demasiado restricción, se tardará aproximadamente 15 minutos antes de hello conmutadores toohello "Abierta" versión de la directiva de directiva de Hola.
+* Si planea tener varias claves de contenido que requieran la misma configuración de directiva, se recomienda encarecidamente crear una sola directiva de autorización y volverla a utilizar con varias claves de contenido.
+* El servicio de entrega de claves almacena en caché ContentKeyAuthorizationPolicy y sus objetos relacionados (opciones y restricciones de directiva) durante 15 minutos.  Si crea una entidad ContentKeyAuthorizationPolicy y especifica el uso de una restricción "Token", pruébela y, a continuación, actualice la directiva a la restricción "Open"; la directiva tardará aproximadamente 15 minutos antes de cambiar a la versión "Open" de la misma.
 * Si agrega o actualiza la directiva de entrega de recursos, debe eliminar un localizador existente (si hay) y crear uno nuevo.
 * En este momento no se pueden cifrar las descargas progresivas.
 
 ## <a name="aes-128-dynamic-encryption"></a>Cifrado dinámico AES-128
 > [!NOTE]
-> Al trabajar con la API de REST de servicios multimedia, Hola Hola se aplican las consideraciones siguientes:
+> Al trabajar con la API de REST de Servicios multimedia, se aplican las consideraciones siguientes:
 > 
 > Al obtener acceso a las entidades de Servicios multimedia, debe establecer los campos de encabezado específicos y los valores en las solicitudes HTTP. Para obtener más información, consulte [Configuración del desarrollo de la API de REST de Servicios multimedia](media-services-rest-how-to-use.md).
 > 
-> Después de conectarse correctamente toohttps://media.windows.net, recibirá una redirección 301 especificando otra URI de servicios multimedia. Debe realizar las llamadas subsiguientes toohello nuevo URI. Para obtener información sobre cómo tooconnect toohello AMS API, consulte [Hola acceso API de servicios multimedia de Azure con autenticación de Azure AD](media-services-use-aad-auth-to-access-ams-api.md).
+> Después de conectarse correctamente a https://media.windows.net, recibirá una redirección 301 que especifica otro URI de Servicios multimedia. Debe realizar las llamadas posteriores al nuevo URI. Para más información sobre cómo conectarse a la API de Azure Media Services, vea [Acceso a Azure Media Services API con la autenticación de Azure AD](media-services-use-aad-auth-to-access-ams-api.md).
 > 
 > 
 
 ### <a name="open-restriction"></a>Restricción open
-Restricción abierta significa sistema Hola ofrecerá hello tooanyone clave que realiza una solicitud de clave. Esta restricción puede ser útil para realizar pruebas.
+La restricción open significa que el sistema entregará la clave a cualquier persona que realice una solicitud de clave. Esta restricción puede ser útil para realizar pruebas.
 
-Hola de ejemplo siguiente crea una directiva de autorización abierta y agrega toohello clave de contenido.
+En el ejemplo siguiente se crea una directiva de autorización abierta y se agrega a la clave de contenido.
 
 #### <a id="ContentKeyAuthorizationPolicies"></a>Creación de ContentKeyAuthorizationPolicies
 Solicitud:
@@ -159,7 +159,7 @@ Respuesta:
 
     HTTP/1.1 204 No Content
 
-#### <a id="AddAuthorizationPolicyToKey"></a>Agregar clave de contenido de toohello de directiva de autorización
+#### <a id="AddAuthorizationPolicyToKey"></a>Incorporación de una directiva de autorización a la clave de contenido
 Solicitud:
 
     PUT https://wamsbayclus001rest-hs.cloudapp.net/api/ContentKeys('nb%3Akid%3AUUID%3A2e6d36a7-a17c-4e9a-830d-eca23ad1a6f9') HTTP/1.1
@@ -181,9 +181,9 @@ Respuesta:
     HTTP/1.1 204 No Content
 
 ### <a name="token-restriction"></a>Restricción de token
-Esta sección describe cómo toocreate un contenido directiva de autorización de clave y lo asocia con la clave de contenido de Hola. Directiva de autorización de Hello describe los requisitos de autorización deben ser toodetermine cumpla si usuario hello es clave de hello tooreceive autorizados (por ejemplo, lista de "clave de verificación" hello contienen clave Hola ese token Hola se firmó con).
+En esta sección se describe cómo crear una directiva de autorización de claves de contenido y asociarla a la clave de contenido. La directiva de autorización describe los requisitos de autorización que se deben cumplir para determinar si el usuario está autorizado para recibir la clave (por ejemplo, si la lista de "claves de comprobación" contiene la clave con la que se firmó el token).
 
-opción de restricción de token de hello tooconfigure, deberá toouse un documento XML requisitos de autorización del token de toodescribe Hola. XML de configuración de restricción de token de Hello debe ajustarse toohello después de esquema XML.
+Para configurar la opción de restricción de token, debe usar un archivo XML para describir los requisitos de autorización del token. El archivo XML de configuración de restricción de token debe cumplir el siguiente esquema XML.
 
 #### <a id="schema"></a>Esquema de restricción de token
     <?xml version="1.0" encoding="utf-8"?>
@@ -233,12 +233,12 @@ opción de restricción de token de hello tooconfigure, deberá toouse un docume
       <xs:element name="SymmetricVerificationKey" nillable="true" type="tns:SymmetricVerificationKey" />
     </xs:schema>
 
-Al configurar hello **token** restringe la directiva, debe especificar Hola principal ** comprobación clave **, **emisor** y **audiencia** parámetros. Hola ** clave de verificación principal ** contiene clave Hola Hola token se firmó con, **emisor** es servicio de token seguro Hola ese token de Hola de problemas. Hola **audiencia** (a veces denominado **ámbito**) describe la intención de Hola de token de Hola o recurso de hello token Hola autoriza el acceso a. Hola servicio de entrega de claves de servicios multimedia valida que estos valores de símbolo (token) de hello coinciden con los valores de hello en plantilla Hola. 
+Al configurar la directiva restringida por **token**, debe especificar los parámetros de **clave de comprobación principal**, **emisor** y **público**. La **clave de comprobación principal** contiene la clave con la que se ha firmado el token y el **emisor** es el servicio de token seguro que emite el token. El **público** (a veces denominado **ámbito**) describe la intención del token o del recurso cuyo acceso está autorizado por el token. El servicio de entrega de claves de los Servicios multimedia valida que estos valores del token coincidan con los valores de la plantilla. 
 
-Hola de ejemplo siguiente crea una directiva de autorización con una restricción de token. En este ejemplo, cliente hello tiene toopresent un token que contenga: firma de clave (VerificationKey), un emisor de tokens y notificaciones requeridas.
+En el ejemplo siguiente se crea una directiva de autorización con una restricción de token. En este ejemplo, el cliente tendría que presentar un token que contenga: una clave de firma (VerificationKey), un emisor de tokens y las notificaciones necesarias.
 
 ### <a name="create-contentkeyauthorizationpolicies"></a>Creación de ContentKeyAuthorizationPolicies
-Crear Hola "Directiva de restricción de Token", como se muestra [aquí](#ContentKeyAuthorizationPolicies).
+Cree la "directiva de restricción de token" tal como se muestra [aquí](#ContentKeyAuthorizationPolicies).
 
 ### <a name="create-contentkeyauthorizationpolicyoptions"></a>Creación de ContentKeyAuthorizationPolicyOptions
 Solicitud:
@@ -279,18 +279,18 @@ Respuesta:
 #### <a name="link-contentkeyauthorizationpolicies-with-options"></a>Vinculación de ContentKeyAuthorizationPolicies con opciones
 Vincule ContentKeyAuthorizationPolicies con opciones tal como se muestra [aquí](#ContentKeyAuthorizationPolicies).
 
-#### <a name="add-authorization-policy-toohello-content-key"></a>Agregar clave de contenido de toohello de directiva de autorización
-Agregar AuthorizationPolicy toohello ContentKey tal y como se muestra [aquí](#AddAuthorizationPolicyToKey).
+#### <a name="add-authorization-policy-to-the-content-key"></a>Incorporación de una directiva de autorización a la clave de contenido
+Agregue AuthorizationPolicy a ContentKey tal como se muestra [aquí](#AddAuthorizationPolicyToKey).
 
 ## <a name="playready-dynamic-encryption"></a>Cifrado dinámico PlayReady.
-Servicios multimedia permite derechos de hello tooconfigure y restricciones donde desea que hello tooenforce en tiempo de ejecución de DRM de PlayReady cuando un usuario trate de tooplay volver el contenido protegido. 
+Los Servicios multimedia le permiten configurar los derechos y las restricciones que desee para que el tiempo de ejecución de PlayReady DRM las aplique cuando un usuario intente reproducir contenido protegido. 
 
-Al proteger el contenido con PlayReady, una de estas cosas Hola deberá toospecify en la directiva de autorización es una cadena XML que define hello [plantilla de licencia de PlayReady](media-services-playready-license-template-overview.md). 
+Al proteger su contenido con PlayReady, una de las cosas que debe especificar en la directiva de autorización es una cadena XML que defina la [plantilla de licencias PlayReady](media-services-playready-license-template-overview.md). 
 
 ### <a name="open-restriction"></a>Restricción open
-Restricción abierta significa sistema Hola ofrecerá hello tooanyone clave que realiza una solicitud de clave. Esta restricción puede ser útil para realizar pruebas.
+La restricción open significa que el sistema entregará la clave a cualquier persona que realice una solicitud de clave. Esta restricción puede ser útil para realizar pruebas.
 
-Hola de ejemplo siguiente crea una directiva de autorización abierta y agrega toohello clave de contenido.
+En el ejemplo siguiente se crea una directiva de autorización abierta y se agrega a la clave de contenido.
 
 #### <a id="ContentKeyAuthorizationPolicies2"></a>Creación de ContentKeyAuthorizationPolicies
 Solicitud:
@@ -368,11 +368,11 @@ Respuesta:
 #### <a name="link-contentkeyauthorizationpolicies-with-options"></a>Vinculación de ContentKeyAuthorizationPolicies con opciones
 Vincule ContentKeyAuthorizationPolicies con opciones tal como se muestra [aquí](#ContentKeyAuthorizationPolicies).
 
-#### <a name="add-authorization-policy-toohello-content-key"></a>Agregar clave de contenido de toohello de directiva de autorización
-Agregar AuthorizationPolicy toohello ContentKey tal y como se muestra [aquí](#AddAuthorizationPolicyToKey).
+#### <a name="add-authorization-policy-to-the-content-key"></a>Incorporación de una directiva de autorización a la clave de contenido
+Agregue AuthorizationPolicy a ContentKey tal como se muestra [aquí](#AddAuthorizationPolicyToKey).
 
 ### <a name="token-restriction"></a>Restricción de token
-opción de restricción de token de hello tooconfigure, deberá toouse un documento XML requisitos de autorización del token de toodescribe Hola. configuración de restricción de token de Hello XML debe ajustarse toohello esquema XML se muestra en [esto](#schema) sección.
+Para configurar la opción de restricción de token, debe usar un archivo XML para describir los requisitos de autorización del token. El archivo XML de configuración de restricción de token debe cumplir el esquema XML que se muestra en [esta](#schema) sección.
 
 #### <a name="create-contentkeyauthorizationpolicies"></a>Creación de ContentKeyAuthorizationPolicies
 Cree ContentKeyAuthorizationPolicies tal como se muestra [aquí](#ContentKeyAuthorizationPolicies2).
@@ -416,8 +416,8 @@ Respuesta:
 #### <a name="link-contentkeyauthorizationpolicies-with-options"></a>Vinculación de ContentKeyAuthorizationPolicies con opciones
 Vincule ContentKeyAuthorizationPolicies con opciones tal como se muestra [aquí](#ContentKeyAuthorizationPolicies).
 
-#### <a name="add-authorization-policy-toohello-content-key"></a>Agregar clave de contenido de toohello de directiva de autorización
-Agregar AuthorizationPolicy toohello ContentKey tal y como se muestra [aquí](#AddAuthorizationPolicyToKey).
+#### <a name="add-authorization-policy-to-the-content-key"></a>Incorporación de una directiva de autorización a la clave de contenido
+Agregue AuthorizationPolicy a ContentKey tal como se muestra [aquí](#AddAuthorizationPolicyToKey).
 
 ## <a id="types"></a>Tipos usados al definir ContentKeyAuthorizationPolicy
 ### <a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
@@ -445,5 +445,5 @@ Agregar AuthorizationPolicy toohello ContentKey tal y como se muestra [aquí](#A
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora que ha configurado la directiva de autorización de la clave de contenido, vaya toohello [la directiva de entrega del activo de tooconfigure](media-services-rest-configure-asset-delivery-policy.md) tema.
+Ahora que ha configurado la directiva de autorización de la clave de contenido, consulte el tema [Configuración de la directiva de entrega de recursos](media-services-rest-configure-asset-delivery-policy.md) .
 

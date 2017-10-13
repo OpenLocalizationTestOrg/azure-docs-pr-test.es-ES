@@ -1,6 +1,6 @@
 ---
-title: aaaOverview de Hola varios portales necesario Hola toocreate una oferta de Marketplace | Documentos de Microsoft
-description: "Información general de Hola varios portales necesario Hola toocreate una oferta de Marketplace"
+title: "Introducción a los diversos portales necesarios para crear una oferta en Marketplace | Microsoft Docs"
+description: "Información general de los diversos portales necesarios para crear una oferta en Marketplace"
 services: marketplace-publishing
 documentationcenter: 
 author: HannibalSII
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2016
 ms.author: hascipio
-ms.openlocfilehash: 6fbd7ecbbd873445f01f0ac4e1e5fee59e08c033
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 093d3ee3ecce89c86a12e7e216072ece57f82f9d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="portals-you-will-need"></a>Portales que necesitará
-Antes de empezar el proceso Hola sobre la publicación de una oferta, vamos a introdujo toohello varios portales que necesitará. A continuación se muestra breve resumen de hello sobre portales Hola--Centro para desarrolladores, Portal de publicación de Azure y Portal de Azure, en orden de Hola que interactuará con ellos.                                                                            
+Antes de que empiece el proceso de la publicación de una oferta, vamos a presentarle los diversos portales que necesitará. A continuación se muestra un resumen breve de los portales: Centro de desarrolladores, Portal de publicación de Azure y Portal de Azure, en el orden en que se interactúa con ellos.                                                                            
 
 ## <a name="developer-center"></a>Centro de desarrolladores
 Vaya a [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure).
 
 ### <a name="description"></a>Descripción
-La creación de la cuenta del Centro de desarrolladores de Microsoft es una tarea que solo se realiza una vez. Asegúrese de que empresa hello no ya tiene una cuenta del Centro para desarrolladores antes de intentar toocreate uno. Durante el proceso de hello, recopilamos información de cuenta bancaria, la información de impuestos y la información de dirección de la empresa.
+La creación de la cuenta del Centro de desarrolladores de Microsoft es una tarea que solo se realiza una vez. Asegúrese de que la compañía no tenga ya una cuenta del Centro de desarrolladores antes de intentar crear una nueva. Durante el proceso, recopilamos los datos de su cuenta bancaria, su información fiscal y la dirección de la compañía.
 
 > [!NOTE]
 > Si solo va a publicar ofertas gratuitas (u ofertas de tipo traiga su propia licencia), no necesitamos información bancaria ni fiscal.
@@ -35,10 +35,10 @@ La creación de la cuenta del Centro de desarrolladores de Microsoft es una tare
 > 
 
 ### <a name="identityaccount-used"></a>Identidad y cuenta usadas
-Idealmente, se trata de una lista de distribución o un grupo de seguridad (p. ej., azurepublishing @*partnercompany*.com). grupo de seguridad o lista de distribución de Hello **debe** registrarse como una cuenta de Microsoft.
+Idealmente, se trata de una lista de distribución o un grupo de seguridad (p. ej., azurepublishing @*partnercompany*.com). La lista de distribución o el grupo de seguridad **debe** registrarse como cuenta de Microsoft.
 
 > [!TIP]
-> Se recomienda usar una lista de distribución o un grupo de seguridad porque elimina la dependencia de Hola en cualquier persona, aunque también se puede usar una cuenta individual.
+> Se recomienda usar una lista de distribución o un grupo de seguridad porque que elimina la dependencia de cualquier persona aunque también se puede usar una cuenta individual.
 > 
 > 
 
@@ -46,20 +46,20 @@ Idealmente, se trata de una lista de distribución o un grupo de seguridad (p. e
 [https://publish.windowsazure.com](https://publish.windowsazure.com)
 
 ### <a name="description"></a>Descripción
-Se trata de portal de Hola que la use toowork en toopublish y oferta de hello (marketing, precios, publicación, certificación si es aplicable, etcetera).
+Este es el portal para que usa para trabajar en la ofertas y publicarla (marketing, precios, publicación, certificación si es aplicable, etc.).
 
 ### <a name="identityaccount-used"></a>Identidad y cuenta usadas
-Hola por encima del grupo de seguridad o lista de distribución debe utilizarse para hello primera hora toosign en el portal de publicación de toohello. Más adelante, se pueden agregar otros usuarios como coadministradores. Se trata cómo obtiene datos de registro del Centro para desarrolladores de toohello asignado.
+Se debe usar la lista de distribución o el grupo de seguridad por primera vez para iniciar sesión en el portal de publicación. Más adelante, se pueden agregar otros usuarios como coadministradores. Así es cómo se asignan a los datos de registro del Centro para desarrolladores.
 
 ## <a name="azure-portal"></a>Portal de Azure
 [https://portal.azure.com](https://portal.azure.com)
 
 ### <a name="description"></a>Descripción
-Se trata de portal de Hola donde puede ver las ofertas de ensayada y publicadas en hello Azure Marketplace (se aplica para máquinas virtuales, plantillas de solución y servicios para desarrolladores basado en Azure Resource Manager).
+Este es el portal donde puede ver sus ofertas publicadas y de ensayo en Azure Marketplace (aplicable a máquinas virtuales, plantillas de solución y servicios de desarrolladores basados en el Administrador de recursos de Azure).
 
 ### <a name="identityaccount-used"></a>Identidad y cuenta usadas
-Mientras está ensayo una oferta desde el portal de publicación de hello, un identificador de suscripción debe toobe en la lista blanca. Hello misma suscripción (no hay un nombre de usuario y la contraseña asociada con él) debe toobe que se usa para iniciar sesión en toothis portal tootest Hola provisionalmente oferta.
+Mientras pone en ensayo una oferta del portal de publicación, es preciso que se incluya un identificador de suscripción en la lista blanca. Para probar la oferta de ensayo, hay que usar la misma suscripción (no hay nombre de usuario ni contraseña asociados) al iniciar sesión en este portal.
 
-## <a name="see-also"></a>Otras referencias
-* [Introducción: cómo toopublish una oferta de hello Azure Marketplace](marketplace-publishing-getting-started.md)
+## <a name="see-also"></a>Consulte también
+* [Introducción: Publicación de una oferta en Azure Marketplace](marketplace-publishing-getting-started.md)
 

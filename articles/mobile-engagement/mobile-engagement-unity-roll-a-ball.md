@@ -1,6 +1,6 @@
 ---
-title: aaaUnity poner un tutorial de bola
-description: "Pasos toocreate Hola clásico Unity poner un juego con bolas que es un requisito previo para todos los tutoriales de Mobile Engagement Unity"
+title: juego de Rodar la bola de Unity
+description: "Pasos para crear el juego clásico de Rodar una bola, que es un requisito previo de todos los tutoriales de Unity para Mobile Engagement."
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 10d923682432961207594886b08e5db60cf60d9a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6392d1f780b1bc2348fee5947550b05e86ea4de2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a id="unity-roll-a-ball"></a>Creación de un juego de Rodar la bola de Unity
-Este tutorial le guía a través de los pasos principales de Hola para ligeramente modificada [Unity poner un tutorial de bola](http://unity3d.com/learn/tutorials/projects/roll-ball-tutorial). Este juego de ejemplo consta de un objeto esférica 'jugador' que está controlado por el usuario de la aplicación de Hola y objetivo de Hola de juego hello es too'collect' recopilables objetos por objeto de Reproductor Hola colisión con estos objetos recopilables. Se supone que está familiarizado con los aspectos básicos del entorno del Editor de Unity. Si surge algún problema, a continuación, se debe hacer referencia tutorial completo toohello. 
+Este tutorial le lleva por los pasos principales de un tutorial ligeramente modificado del [juego de Rodar la bola de Unity](http://unity3d.com/learn/tutorials/projects/roll-ball-tutorial). Este juego de ejemplo consta de un objeto esférico, el "jugador", que controla el usuario de la aplicación, y el objetivo del juego consiste en ir recopilando los objetos recopilables al chocar con ellos. Se supone que está familiarizado con los aspectos básicos del entorno del Editor de Unity. Si se tropieza con algún problema, consulte el tutorial completo. 
 
-### <a name="setting-up-hello-game"></a>Configuración de juego Hola
-Hola pasos son de hello [tutorial de Unity](https://unity3d.com/learn/tutorials/projects/roll-a-ball/set-up?playlist=17141)
+### <a name="setting-up-the-game"></a>Configuración del juego
+Los pasos siguientes son del [tutorial de Unity](https://unity3d.com/learn/tutorials/projects/roll-a-ball/set-up?playlist=17141)
 
 1. Abra el **Editor de Unity** y haga clic en **New** (Nuevo). 
    
@@ -32,54 +32,54 @@ Hola pasos son de hello [tutorial de Unity](https://unity3d.com/learn/tutorials/
 2. Proporcione datos para **Project name** (Nombre del proyecto) y  & **Location** (Ubicación) seleccione **3D** y haga clic en **Create project** (Crear proyecto).
    
     ![][52]
-3. Guardar Hola predeterminado escena acaba de crear como parte del nuevo proyecto de hello al igual que con el nombre de hello **MiniGame** dentro de un nuevo  **\_plano** carpeta bajo **activos** carpeta:
+3. Guarde la escena predeterminada que acaba de crear como parte del nuevo proyecto con el nombre **MiniGame** (MiniJuego) en una nueva carpeta **\_Scenes** (Escenas) en la carpeta **Assets** (Activos):
    
     ![][53]
-4. Crear un **objeto 3D -> plano** como "reproduciendo" Hola, campo y cambiar el nombre de este objeto de plano como **terreno**
+4. En **3D Object (Objeto 3D) -> Plane (Plano)**, cree un objeto 3D plano como campo de juego y llame a este objeto plano **Ground** (Terreno).
    
     ![][1]
-5. Componente de transformación de Hola de restablecimiento para esta **terreno** para que resulte en hello origen del objeto. 
+5. Restablezca el componente de transformación de este objeto **Ground** (Terreno) de modo que esté en el origen. 
    
     ![][3]
-6. Desactive la opción **Mostrar cuadrícula** de **menú chismes** para hello **terreno** objeto.
+6. Desactive **Show Grid** (Mostrar cuadrícula) en **Gizmos menu** (Menú Gizmos) para el objeto **Ground** (Terreno).
    
     ![][4]
-7. Hola de actualización **escala** componente para hello **terreno** objeto toobe [X = 2, Y = 1, Z = 2]. 
+7. Actualice el componente **Scale** (Escala) del objeto **Ground** (Terreno) a [X = 2,Y = 1, Z = 2]. 
    
     ![][5]
-8. Agregue un nuevo **objeto 3D -> esfera** toohello proyecto y cambie el nombre del objeto como esta esfera **Reproductor**. 
+8. En **3D Object (Objeto 3D) -> Sphere (Esfera)**, agregue un nuevo objeto 3D esférico y llame a este objeto esférico **Player** (Jugador). 
    
     ![][6]
-9. Seleccione hello **Reproductor** objeto y haga clic en **Restablecer transformación** objeto de plano toohello similar. 
-10. Actualización **transformación -> posición -> coordenada** componente para hello Y Reproductor como 0,5.  
+9. Seleccione el objeto **Player** (Jugador) y haga clic en **Reset Transform** (Restablecer transformación) igual que hizo con el objeto plano. 
+10. Actualice el componente **Transform (Transformación) -> Position (Posición) -> Y Coordinate (Coordenada Y)** para Player Y (Jugador Y) a 0.5.  
     
     ![][7]
-11. Cree una carpeta nueva denominada **materiales** en proyecto de Hola donde se creará el Reproductor de hello toocolor material Hola. 
+11. Cree una nueva carpeta llamada **Materials** (Materiales) en el proyecto donde vamos a crear el material para colorear el jugador. 
 12. Cree un nuevo **material** llamado **Background** (Fondo) en esta carpeta. 
     
     ![][8]
-13. Actualizar el color de Hola de material de hello actualizando Hola **Albedo** propiedad del mismo. Puede seleccionar los valores RGB Hola de [0,32,64]. 
+13. Actualice el color del material actualizando su propiedad **Albedo** . Puede seleccionar los valores RGB de [0,32,64]. 
     
     ![][9]
-14. Arrastre este material Hola escena vista tooapply color toohello **terreno** objeto. 
+14. Arrastre este material a la vista de escena para aplicar el color al objeto **Ground** (Terreno). 
     
     ![][10]
-15. Por último, actualizar hello **transformación -> rotación -> Y** too60 en objeto de luz direccional de Hola para mayor claridad. 
+15. Finalmente, actualice los valores de **Transform (Transformación)-> Rotation (Rotación) -> Y** a 60 en el objeto Directional Light (Luz direccional) para definir la claridad. 
     
     ![][12]
 
-### <a name="moving-hello-player"></a>Reproductor de hello móvil
-Hola pasos son de hello [tutorial de Unity](https://unity3d.com/learn/tutorials/projects/roll-a-ball/moving-the-player?playlist=17141)
+### <a name="moving-the-player"></a>Movimiento del jugador
+Los pasos siguientes son del [tutorial de Unity](https://unity3d.com/learn/tutorials/projects/roll-a-ball/moving-the-player?playlist=17141)
 
-1. Agregar un **RigidBody** componente toohello **Reproductor** objeto. 
+1. Agregue un componente **RigidBody** al objeto **Player** (Jugador). 
    
     ![][13]
-2. Cree una carpeta nueva denominada **Scripts** Hola proyecto. 
-3. Haga clic en **Add Component (Agregar componente)-> New Script (Nuevo script) -> C# Script (Script de C#)**. Asígnele el nombre **PlayerController** y haga clic en **Create and Add** (Crear y agregar). Esto creará y adjuntar un objeto de secuencia de comandos toohello Reproductor.  
+2. Cree una carpeta nueva llamada **Scripts** en el proyecto. 
+3. Haga clic en **Add Component (Agregar componente)-> New Script (Nuevo script) -> C# Script (Script de C#)**. Asígnele el nombre **PlayerController** y haga clic en **Create and Add** (Crear y agregar). De esta forma se creará y adjuntará un script al objeto Player (Jugador).  
    
     ![][14]
-4. Mueva este script en hello **Scripts** carpeta proyecto Hola. 
-5. Abrir el script de Hola para su edición en su editor favorito de la secuencia de comandos, actualice el código de script de Hola con el siguiente código de hello y guárdelo. 
+4. Mueva este script a la carpeta **Scripts** del proyecto. 
+5. Abra el script para editarlo en su editor de scripts preferido, actualice el código del script con el siguiente código y guárdelo. 
    
         using UnityEngine;
         using System.Collections;
@@ -100,22 +100,22 @@ Hola pasos son de hello [tutorial de Unity](https://unity3d.com/learn/tutorials/
                 rb.AddForce (movement * speed);
             }
         }
-6. Tenga en cuenta esa secuencia de comandos de hello anterior se usa un **velocidad** propiedad. En el editor de Unity hello, actualizar Hola velocidad propiedad too10.  
+6. Tenga en cuenta que el script anterior usa una propiedad **Speed** . En el Editor de Unity, actualice esta propiedad a 10.  
    
     ![][15]
-7. Aciertos **reproducir** Hola Editor de Unity. Ahora debe ser la bola de hello toocontrol capaz de usar teclado hello y debe girar y moverse. 
+7. Presione **Play** (Reproducir) en el Editor de Unity. Ahora la bola debe poder controlarse mediante el teclado y debe girar y moverse. 
 
-### <a name="moving-hello-camera"></a>Cámara de hello móvil
-Hola pasos son de hello [tutorial Unity](https://unity3d.com/learn/tutorials/projects/roll-a-ball/moving-the-camera?playlist=17141) y se asociará hello **Main cámara** toohello **Reproductor** objeto. 
+### <a name="moving-the-camera"></a>Movimiento de la cámara
+Los pasos siguientes son del [tutorial de Unity](https://unity3d.com/learn/tutorials/projects/roll-a-ball/moving-the-camera?playlist=17141) y en ellos se asociará el objeto **Main Camera** (Cámara principal) al objeto **Player** (Jugador). 
 
-1. Hola de actualización **Transform.Position** toobe X = 0, Y = 10.5, Z =-10.  
-2. Hola de actualización **Transform.Rotation** toobe X = 45, Y = 0, Z = 0.  
+1. Actualice **Transform.Position** a X = 0, Y = 10.5, Z=-10.  
+2. Actualice **Transform.Rotation** a X = 45, Y = 0, Z = 0.  
    
     ![][16]
-3. Agregar un script nuevo denominado **CameraController** toohello **MainCamera** y muévala a la carpeta de Scripts de Hola. 
+3. Agregue un nuevo script llamado **CameraController** a **MainCamera** y muévalo a la carpeta Scripts. 
    
     ![][17]
-4. Abra una secuencia de comandos de Hola para su edición y agregue Hola siguiente código en él:
+4. Abra el script para editarlo y agréguele el siguiente código:
    
         using UnityEngine;
         using System.Collections;
@@ -136,13 +136,13 @@ Hola pasos son de hello [tutorial Unity](https://unity3d.com/learn/tutorials/pro
                 transform.position = player.transform.position + offset;
             }
         }
-5. En el entorno de Unity: arrastre variable del Reproductor de hello en la ranura de Reproductor de hello para el objeto de cámara principal de Hola para que hello dos están asociadas con otro. 
+5. En el entorno de Unity, arrastre la variable Player a la ranura Player del objeto Main Camera (Cámara principal) de modo que los dos queden asociados. 
    
     ![][18]
-6. Ahora si presiona la tecla Play en editor de Unity de Hola y el objeto de Reproductor bola Hola girar, a continuación, verá Hola cámara después en movimiento Hola.  
+6. Ahora, si hace clic en Play (Reproducir) en el Editor de Unity y gira el objeto Player Ball (Bola jugador), verá cómo la cámara sigue su movimiento.  
 
-### <a name="setting-up-hello-play-area"></a>Configuración de área de reproducción de Hola
-Hola pasos son de hello [tutorial Unity](https://unity3d.com/learn/tutorials/projects/roll-a-ball/setting-up-the-play-area?playlist=17141). Crearemos paredes de Hola que rodean Hola terreno para que hello objeto bola del Reproductor no entrega área de reproducción de hello en su movimiento. 
+### <a name="setting-up-the-play-area"></a>Configuración del área de juego
+Los pasos siguientes son del [tutorial de Unity](https://unity3d.com/learn/tutorials/projects/roll-a-ball/setting-up-the-play-area?playlist=17141). Vamos a crear las paredes que rodean el terreno para que el objeto Player Ball (Bola jugador) no se salga del área de juego en su movimiento. 
 
 1. Haga clic en **Create (Crear) -> Create Empty (Crear vacío) -> Game Object (Objeto de juego)** y asigne el nombre **Walls** (Paredes).
    
@@ -150,30 +150,30 @@ Hola pasos son de hello [tutorial Unity](https://unity3d.com/learn/tutorials/pro
 2. En este objeto Walls (Paredes), cree un nuevo objeto 3D cúbico en **3D Object (Objeto 3D) -> Cube (Cubo)** y llámelo "West Wall" (Pared oeste). 
    
     ![][20]
-3. Hola de actualización **transformación -> posición** y **transformación -> escala** para este objeto de pared oeste. 
+3. Actualice los datos de **Transform (Transformación) -> Position (Posición)** y **Transform (Transformación) -> Scale (Escala)** de este objeto. 
    
     ![][21]
-4. Duplicar Hola oeste pared toocreate una **pared este** con hello actualizado transformar la posición y la escala. 
+4. Duplique el objeto West Wall (Pared oeste) para crear un objeto **East Wall** (Pared este) con la posición y la escala de transformación actualizadas. 
    
     ![][22]
-5. Duplicar Hola este pared toocreate una **pared Norte** con hello actualizado transformar la posición y ajustar la escala. 
+5. Duplique el objeto East Wall (Pared este) para crear un objeto **North Wall** (Pared norte) con la posición y la escala de transformación actualizadas. 
    
     ![][23]
-6. Duplicar la pared de hello Norte y crear un **pared sur** con hello actualizado transformar la posición y ajustar la escala. 
+6. Duplique el objeto North Wall (Pared norte) y cree un objeto **South Wall** (Pared sur) con la posición y la escala de transformación actualizadas. 
    
     ![][24]
 
 ### <a name="creating-collectible-objects"></a>Creación de objetos recopilables
-Hola pasos son de hello [tutorial Unity](https://unity3d.com/learn/tutorials/projects/roll-a-ball/creating-collectables?playlist=17141). Crearemos algunas atractivos buscar objetos que conformarán conjunto de Hola de objetos recopilables qué objeto de Reproductor bola Hola necesita too'collect' por entren con ellos. 
+Los pasos siguientes son del [tutorial de Unity](https://unity3d.com/learn/tutorials/projects/roll-a-ball/creating-collectables?playlist=17141). Crearemos algunos objetos atractivos que constituirán el conjunto de objetos recopilables que el objeto Player Ball (Bola jugador) debe recopilar chocando con ellos. 
 
 1. Cree un nuevo **objeto cubo 3D** y llámelo Pickup (Recogida). 
-2. Ajustar hello **transformación -> rotación** & **transformación -> escala** del objeto de recogida de Hola. 
+2. Ajuste los valores de **Transform (Transformación) -> Rotation (Rotación)** &  y **Transform (Transformación) -> Scale (Escala)** del objeto Pickup (Recogida). 
    
     ![][25]
-3. Crear y adjuntar un **nuevo Script de C#** llama **rotación** toohello recogida objeto. Asegúrese de script de Hola tooput seguro en la carpeta de Scripts de Hola. 
+3. Cree y asocie un **nuevo script de C#** denominado **Rotator** al objeto Pickup (Recogida). Asegúrese de colocar el script en la carpeta Scripts. 
    
     ![][26]
-4. Abra este script para su edición y actualícelo hello toobe siguientes: 
+4. Abra este script para editarlo y actualizarlo a lo siguiente: 
    
         using UnityEngine;
         using System.Collections;
@@ -185,30 +185,30 @@ Hola pasos son de hello [tutorial Unity](https://unity3d.com/learn/tutorials/pro
                 transform.Rotate (new Vector3 (15, 30, 45) * Time.deltaTime);
             }
         }
-5. Ahora se rotación de modo de reproducción de posicionamiento hello en hello Editor de Unity y el programa de objeto recogida en el eje.
+5. Ahora, presione el modo Play (Reproducir) del Editor de Unity y el objeto Pickup (Recogida) se mostrará girando sobre su eje.
 6. Cree una nueva carpeta llamada **Prefabs** 
    
     ![][27]
-7. Hola arrastre **recogida** objeto y colóquelo en la carpeta de Prefabs Hola.
+7. Arrastre el objeto **Pickup** (Recogida) y colóquelo en la carpeta Prefabs (Prefabricados).
    
     ![][28]
-8. Cree un nuevo **objeto de juego vacío** llamado **Pickups** (Recogidas). Restablecer su tooorigin de posición y, a continuación, arrastre el objeto de recogida de hello bajo este objeto de juego.  
+8. Cree un nuevo **objeto de juego vacío** llamado **Pickups** (Recogidas). Restablezca su posición al origen y arrastre el objeto Pickup (Recogida) a este objeto de juego.  
    
     ![][29]
-9. Hola duplicado **recogida** objeto y repartidas en hello **terreno** objeto alrededor de hello **Reproductor** objeto actualizando hello **del Transform.Position X & Z**  valores correctamente. 
+9. Duplique el objeto **Pickup** (Recogida) y distribúyalo por el objeto **Ground** (Terreno) alrededor del objeto **Player** (Jugador) actualizando los valores X y Z de **Transform.Position** de forma adecuada. 
    
     ![][30]
-10. Crear un **nuevo material** llama **recogida** y actualizarla toobe rojo en color actualizando hello **propiedad Albedo** toowhat similar se para actualizar Hola tierra del objeto. 
+10. Cree un **nuevo material** llamado **Pickup** (Recogida) y actualícelo para que sea de color rojo; para ello, actualice la **propiedad Albedo** de manera parecida a como lo hicimos para actualizar el objeto Ground (Terreno). 
     
     ![][31]
-11. Aplicar hello tooall material Hola 4 recogida objetos.
+11. Aplique el material a los 4 objetos de recogida.
     
     ![][32]
 
-### <a name="collecting-hello-pickup-objects"></a>Recopilación de objetos de recogida de Hola
-Hola pasos son de hello [tutorial Unity](https://unity3d.com/learn/tutorials/projects/roll-a-ball/collecting-pick-up-objects?playlist=17141). Actualizaremos Hola Reproductor para que sea capaz de too'collect' hello objetos recogidos por entren con ellos. 
+### <a name="collecting-the-pickup-objects"></a>Recopilación de objetos de recogida
+Los pasos siguientes son del [tutorial de Unity](https://unity3d.com/learn/tutorials/projects/roll-a-ball/collecting-pick-up-objects?playlist=17141). Actualizaremos el objeto Player (Jugador) para que pueda recopilar los objetos Pickup (Recogida) al chocar con ellos. 
 
-1. Abra hello **PlayerController** generar un script adjunto toohello Reproductor objeto para su edición y actualizarla toohello siguientes:  
+1. Abra el script **Playercontroller** asociado al objeto Player (Jugador) para editarlo y actualizarlo a lo siguiente:  
    
         using UnityEngine;
         using System.Collections;
@@ -242,29 +242,29 @@ Hola pasos son de hello [tutorial Unity](https://unity3d.com/learn/tutorials/pro
                 }
             }
         }
-2. Crear un nuevo **etiqueta** llama **elegir una** (debe coincidir con lo que aparece en el script de Hola)  
+2. Cree una nueva **etiqueta** llamada **Pick up** (Recogida) (debe coincidir con lo que está en el script).  
    
     ![][33]
    
     ![][34]
-3. Aplicar este **etiqueta** objeto de recogida Prefab toohello. 
+3. Aplique esta **etiqueta** al objeto Prefab Pickup (Recogida prefabricados). 
    
     ![][35]
-4. Habilitar **IsTrigger** casilla de verificación hello Prefab objeto.
+4. Active la casilla **IsTrigger** para el objeto Prefab (Prefabricado).
    
     ![][36]
-5. Agregar un objeto de cuerpo rígida tooPickup Prefab. Para optimizar el rendimiento actualizamos collider estático Hola que hemos usado tooa dinámico collider. 
+5. Agregue un componente Rigid Body al objeto Pickup Prefab (Recogida prefabricados). Para optimizar el rendimiento, actualizaremos el colisionador estático que hemos usado a colisionador dinámico. 
    
     ![][37]
-6. Por último, comprobar hello **IsKinematic** propiedad del objeto prefab Hola. 
+6. Finalmente, marque la propiedad **IsKinematic** del objeto Prefab (Prefabricado). 
    
     ![][38]
-7. Aciertos **reproducir** en el editor de Unity hello y será capaz de tooplay este **poner una bola** juego moviendo Hola objeto Reproductor utilizando las teclas del teclado para la entrada de dirección. 
+7. Presione **Play** (Reproducir) en el Editor de Unity y podrá jugar a este juego de **Rodar la bola** moviendo el objeto Player (Jugador) con las teclas del teclado para indicar la dirección. 
 
-### <a name="updating-hello-game-for-mobile-play"></a>Actualizar Hola juego para móvil play
-secciones de Hello anteriormente tutorial básico de hello terminada desde Unity. Ahora vamos a modificar Hola toomake juego lo descriptivo de dispositivos móviles. Tenga en cuenta que utilizamos entrada de teclado para hello juego hasta ahora para realizar pruebas. Ahora vamos a modificar, por lo que podemos controlar Reproductor hello mediante el uso de movimiento de Hola de hello teléfono es decir, mediante acelerómetro como entrada de Hola. 
+### <a name="updating-the-game-for-mobile-play"></a>Actualización del juego para dispositivos móviles
+En las secciones anteriores hemos concluido el tutorial básico de Unity. Ahora modificaremos el juego para que pueda usarse en dispositivos móviles. Tenga en cuenta que hasta ahora hemos usado la entrada del teclado para probar el juego. Ahora vamos a cambiar eso de modo que podamos controlar el jugador con el movimiento del teléfono, por ejemplo, usando el acelerómetro como entrada. 
 
-Abra hello **PlayerController** secuencia de comandos para editar y actualizar hello **FixedUpdate** movimiento de hello toouse de método del objeto de Reproductor de hello acelerómetro toomove Hola. 
+Abra el script **PlayerController** para editarlo y actualice el método **FixedUpdate** para usar el movimiento del acelerómetro para mover el objeto Player (Jugador). 
 
         void FixedUpdate()
         {
@@ -274,7 +274,7 @@ Abra hello **PlayerController** secuencia de comandos para editar y actualizar h
             rb.AddForce(Input.acceleration.x * Speed, 0, -Input.acceleration.z * Speed);
         }
 
-Este tutorial finaliza la creación de un juego básica con Unity y se puede implementar en un dispositivo de su juego de elección tooplay Hola. 
+Con este tutorial concluye la creación de un juego básico con Unity, que puede implementar para jugar en el dispositivo de su elección. 
 
 <!-- Images -->
 [1]: ./media/mobile-engagement-unity-roll-a-ball/1.png    

@@ -1,6 +1,6 @@
 ---
-title: temas de Bus de servicio de aaaHow toouse (Ruby) | Documentos de Microsoft
-description: "Obtenga información acerca de cómo toouse Service Bus temas y suscripciones de Azure. Los ejemplos de código están escritos para aplicaciones Ruby."
+title: Uso de temas de Service Bus (Ruby) | Microsoft Docs
+description: "Aprenda a usar los temas y las suscripciones del Bus de servicio de Azure. Los ejemplos de código están escritos para aplicaciones Ruby."
 services: service-bus-messaging
 documentationcenter: ruby
 author: sethmanheim
@@ -14,17 +14,17 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: sethm
-ms.openlocfilehash: 236d6495825e68e336c23e1b500d0764ee512e49
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4a4c9949843b16ae6be2f516de4fd1e3f7415959
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="how-toouse-service-bus-topics-and-subscriptions-with-ruby"></a>¿Cómo toouse Service Bus temas y suscripciones con Ruby
+# <a name="how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>Uso de temas y suscripciones de Service Bus con Ruby
  
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-Este artículo se describe cómo toouse Service Bus temas y suscripciones desde aplicaciones Ruby. Hello escenarios descritos se incluyen **crear temas y suscripciones, crear filtros de suscripción, enviar mensajes** tooa tema, **recibir mensajes de una suscripción**, y  **eliminar temas y suscripciones**. Para obtener más información sobre los temas y suscripciones, vea hello [pasos](#next-steps) sección.
+En este artículo se describe cómo usar los temas y las suscripciones de Service Bus desde aplicaciones Ruby. Entre los escenarios tratados se incluyen la **creación de temas y suscripciones, la creación de filtros de suscripción, el envío de mensajes** a un tema, la **recepción de mensajes de una suscripción** y la **eliminación de temas y suscripciones**. Para más información sobre los temas y las suscripciones, vea la sección [Pasos siguientes](#next-steps).
 
 [!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
 
@@ -32,8 +32,8 @@ Este artículo se describe cómo toouse Service Bus temas y suscripciones desde 
 
 [!INCLUDE [service-bus-ruby-setup](../../includes/service-bus-ruby-setup.md)]
 
-## <a name="create-a-topic"></a>de un tema
-Hola **Azure::ServiceBusService** objeto permite toowork con temas. Hello código siguiente se crea un **Azure::ServiceBusService** objeto. toocreate un tema, usar hello `create_topic()` método. Hola de ejemplo siguiente crea un tema o imprime errores Hola si hay alguno.
+## <a name="create-a-topic"></a>Creación de un tema
+El objeto **Azure::ServiceBusService** le permite trabajar con temas. El siguiente código crea un objeto **Azure::ServiceBusService**. Para crear un tema, use el método `create_topic()`. En el siguiente ejemplo se crea un tema o se imprime el error si lo hubiera.
 
 ```ruby
 azure_service_bus_service = Azure::ServiceBus::ServiceBusService.new(sb_host, { signer: signer})
@@ -44,7 +44,7 @@ rescue
 end
 ```
 
-También puede pasar un **Azure::ServiceBus::Topic** objeto con opciones adicionales, que permiten la configuración de tema predeterminada toooverride como el tamaño de cola toolive o máximo de tiempo de mensaje. Hello ejemplo siguiente se muestra configuración máximo de cola de hello too5 GB de tamaño y de tiempo too1 toolive minuto:
+También puede pasar un objeto **Azure::ServiceBus::Topic** con opciones adicionales, lo que le permite reemplazar la configuración de la cola predeterminada, como el período de vida del mensaje o el tamaño de cola máximo. En el siguiente ejemplo se muestra cómo establecer el tamaño máximo de las colas en 5 GB y el período de vida en 1 minuto:
 
 ```ruby
 topic = Azure::ServiceBus::Topic.new("test-topic")
@@ -55,27 +55,27 @@ topic = azure_service_bus_service.create_topic(topic)
 ```
 
 ## <a name="create-subscriptions"></a>Creación de suscripciones
-Suscripciones al tema también se crean con hello **Azure::ServiceBusService** objeto. Las suscripciones se denominan y pueden tener un filtro opcional que restringe el conjunto de Hola de mensajes entregados cola virtual de la suscripción de toohello.
+Las suscripciones a temas también se crean con el objeto **Azure::ServiceBusService**. A las suscripciones se les asigna un nombre y pueden tener un filtro opcional que restrinja el conjunto de mensajes que se entregan a su cola virtual.
 
-Las suscripciones son persistentes y continuará tooexist hasta que ambos se o hello tema están asociadas, se eliminan. Si la aplicación contiene lógica toocreate una suscripción, debe comprobar primero si Hola ya existe la suscripción mediante hello getSubscription método.
+Las suscripciones son permanentes y seguirán existiendo hasta que se eliminen, o se elimine el tema al que están asociadas. Si la aplicación contiene lógica para crear una suscripción, primero debe comprobar si esta ya existe utilizando el método getSubscription.
 
-### <a name="create-a-subscription-with-hello-default-matchall-filter"></a>Crea una suscripción con el filtro de hello predeterminado (MatchAll)
-Hola **MatchAll** filtro es Hola predeterminado que se usa si se especifica ningún filtro cuando se crea una nueva suscripción. Cuando Hola **MatchAll** se utiliza el filtro, tema de toohello publicada de todos los mensajes se colocan en cola virtual de la suscripción de Hola. Hello en el ejemplo siguiente se crea una suscripción denominada "todos los mensajes" y usa Hola predeterminado **MatchAll** filtro.
+### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Creación de una suscripción con el filtro predeterminado (MatchAll)
+El filtro predeterminado **MatchAll** se usa en caso de que no se haya especificado ninguno al crear una suscripción. Al usar el filtro **MatchAll**, todos los mensajes publicados en el tema se colocan en la cola virtual de la suscripción. En el ejemplo siguiente se crea una suscripción llamada "all-messages" que usa el filtro predeterminado **MatchAll**.
 
 ```ruby
 subscription = azure_service_bus_service.create_subscription("test-topic", "all-messages")
 ```
 
 ### <a name="create-subscriptions-with-filters"></a>Creación de suscripciones con filtros
-También puede definir filtros que le permiten toospecify que envían los mensajes tooa tema debe aparecer en un plazo de una suscripción específica.
+También puede definir filtros que le permitan especificar qué mensajes enviados a un tema deben mostrarse dentro de una suscripción a una suscripción determinada.
 
-el tipo más flexible de filtro compatible con las suscripciones Hello es hello **Azure::ServiceBus::SqlFilter**, que implementa un subconjunto de SQL92. Filtros SQL funcionan en las propiedades de Hola de mensajes de Hola que están publicados toohello tema. Para obtener más información acerca de las expresiones de Hola que pueden usarse con un filtro SQL, revise hello [SqlFilter](service-bus-messaging-sql-filter.md) sintaxis.
+El tipo de filtro más flexible compatible con las suscripciones es **Azure::ServiceBus::SqlFilter**, que implementa un subconjunto de SQL92. Los filtros de SQL operan en las propiedades de los mensajes que se publican en el tema. Para obtener más información sobre las expresiones que se pueden usar con un filtro de SQL, revise la sintaxis de [SqlFilter](service-bus-messaging-sql-filter.md).
 
-Puede agregar filtros tooa suscripción mediante hello `create_rule()` método de hello **Azure::ServiceBusService** objeto. Este método permite tooadd nueva filtros tooan existente suscripción.
+Es posible agregar filtros a una suscripción a través del método `create_rule()` del objeto **Azure::ServiceBusService**. Este método le permite agregar nuevos filtros a una suscripción existente.
 
-Puesto que el filtro de hello predeterminado se aplica automáticamente tooall nuevas suscripciones, primero debe quitar el filtro predeterminado de Hola u Hola **MatchAll** invalidará cualquier otro filtro que se puede especificar. Puede quitar regla predeterminada de hello mediante hello `delete_rule()` método en hello **Azure::ServiceBusService** objeto.
+Dado que el filtro predeterminado se aplica automáticamente a todas las suscripciones nuevas, primero debe eliminar el filtro predeterminado si no quiere que **MatchAll** anule todos los otros filtros que especifique. Puede eliminar la regla predeterminada utilizando el método `delete_rule()` en el objeto **Azure::ServiceBusService**.
 
-Hello en el ejemplo siguiente se crea una suscripción denominada "mensajes de alta" con un **Azure::ServiceBus::SqlFilter** que selecciona sólo los mensajes que tienen un personalizado `message_number` propiedad mayor que 3:
+En el ejemplos siguiente se crea una suscripción llamada "high-messages" con **Azure::ServiceBus::SqlFilter** que solo selecciona los mensajes que tienen una propiedad `message_number` personalizada superior a 3:
 
 ```ruby
 subscription = azure_service_bus_service.create_subscription("test-topic", "high-messages")
@@ -89,7 +89,7 @@ rule.filter = Azure::ServiceBus::SqlFilter.new({
 rule = azure_service_bus_service.create_rule(rule)
 ```
 
-De forma similar, hello en el ejemplo siguiente se crea una suscripción denominada `low-messages` con una **Azure::ServiceBus::SqlFilter** que selecciona sólo los mensajes que tienen un `message_number` propiedad menor o igual too3:
+Del mismo modo, en el ejemplo que aparece a continuación, se crea una suscripción denominada `low-messages` con un filtro **Azure::ServiceBus::SqlFilter** que solo selecciona los mensajes cuyo valor de la propiedad `message_number` es menor o igual que 3:
 
 ```ruby
 subscription = azure_service_bus_service.create_subscription("test-topic", "low-messages")
@@ -103,12 +103,12 @@ rule.filter = Azure::ServiceBus::SqlFilter.new({
 rule = azure_service_bus_service.create_rule(rule)
 ```
 
-Cuando se envía un mensaje ahora demasiado`test-topic`, es siempre ser entregado tooreceivers suscrito toohello `all-messages` suscripción al tema y tooreceivers selectivamente entregado suscrito toohello `high-messages` y `low-messages` (suscripciones de tema según el contenido del mensaje de Hola).
+Cuando ahora se envía un mensaje a `test-topic`, siempre se entrega a los destinatarios que están suscritos al tema `all-messages`, mientras que se entrega de forma selectiva a los que están suscritos a los temas `high-messages` y `low-messages` (según el contenido del mensaje).
 
-## <a name="send-messages-tooa-topic"></a>Enviar tema tooa de mensajes
-toosend un tema de Bus de servicio de tooa de mensaje, la aplicación debe utilizar hello `send_topic_message()` método en hello **Azure::ServiceBusService** objeto. Mensajes envían a temas de Bus tooService son instancias de hello **Azure::ServiceBus::BrokeredMessage** objetos. **Azure::ServiceBus::BrokeredMessage** objetos tienen un conjunto de propiedades estándar (como `label` y `time_to_live`), un diccionario de propiedades de toohold usado personalizadas específicas de la aplicación y un cuerpo de datos de cadena. Una aplicación puede establecer el cuerpo de Hola de mensaje de saludo pasando un toohello del valor de cadena `send_topic_message()` método y las necesarias propiedades estándar se rellenará con valores predeterminados.
+## <a name="send-messages-to-a-topic"></a>Envío de mensajes a un tema
+Para enviar un mensaje a un tema de Service Bus, la aplicación debe utilizar el método `send_topic_message()` en el objeto **Azure::ServiceBusService**. Los mensajes enviados a los temas de Service Bus son instancias de los objetos **Azure::ServiceBus::BrokeredMessage**. Los objetos **Azure::ServiceBus::BrokeredMessage** cuentan con un conjunto de propiedades estándar (como `label` y `time_to_live`), un diccionario que se usa para mantener las propiedades personalizadas específicas de la aplicación y un conjunto de datos de cadenas. Una aplicación puede establecer el cuerpo del mensaje pasando un valor de cadena al método `send_topic_message()`, con lo que las propiedades estándar requeridas adquieren valores predeterminados.
 
-Hello en el ejemplo siguiente se muestra cómo prueba toosend cinco mensajes demasiado`test-topic`. Tenga en cuenta que hello `message_number` valor de propiedad personalizada de cada mensaje varía en función de iteración de Hola de bucle de hello (Esto determina qué suscripción lo recibe):
+En el ejemplo siguiente se demuestra cómo enviar cinco mensajes de prueba a `test-topic`. Tenga en cuenta que el valor de la propiedad personalizado `message_number` de cada mensaje varía en función de la iteración del bucle (lo que determina qué suscripción lo recibe):
 
 ```ruby
 5.times do |i|
@@ -118,16 +118,16 @@ Hello en el ejemplo siguiente se muestra cómo prueba toosend cinco mensajes dem
 end
 ```
 
-Temas de Bus de servicio admiten un tamaño máximo de los mensajes de 256 KB en hello [nivel estándar](service-bus-premium-messaging.md) y 1 MB en hello [nivel Premium](service-bus-premium-messaging.md). encabezado de Hello, que incluye estándar de Hola y propiedades de la aplicación personalizada, puede tener un tamaño máximo de 64 KB. No hay ningún límite en el número de Hola de mensajes retenidos en un tema, pero hay un límite en el tamaño total de Hola de mensajes de Hola mantenidos por un tema. El tamaño de los temas se define en el momento de la creación (el límite máximo es de 5 GB).
+El tamaño máximo de mensaje que admiten los temas de Service Bus es de 256 KB en el [nivel Estándar](service-bus-premium-messaging.md) y de 1 MB en el [nivel Premium](service-bus-premium-messaging.md). El encabezado, que incluye propiedades de la aplicación estándar y personalizadas, puede tener un tamaño máximo de 64 KB. No hay límite para el número de mensajes que contiene un tema, pero hay un tope para el tamaño total de los mensajes contenidos en un tema. El tamaño de los temas se define en el momento de la creación (el límite máximo es de 5 GB).
 
 ## <a name="receive-messages-from-a-subscription"></a>Recepción de mensajes de una suscripción
-Los mensajes se reciben de una suscripción mediante hello `receive_subscription_message()` método en hello **Azure::ServiceBusService** objeto. De forma predeterminada, los mensajes son read(peak) y bloqueado sin eliminarla de la suscripción de Hola. Puede leer y eliminar mensajes de bienvenida de suscripción Hola Hola establecer `peek_lock` opción demasiado**false**.
+Los mensajes se reciben de una suscripción utilizando el método `receive_subscription_message()` del objeto **Azure::ServiceBusService**. De forma predeterminada, los mensajes se leen (máximo) y bloquean sin que se eliminen de la suscripción. Puede leer y eliminar el mensaje de la suscripción estableciendo la opción `peek_lock` en **false**.
 
-comportamiento predeterminado de Hello hace Hola lectura y eliminación de una operación de dos fases, esto también hace que las aplicaciones de toosupport posible que no pueden tolerar mensajes perdidos. Al Bus de servicio recibe una solicitud, busca Hola siguiente mensaje toobe consumido, lo bloquea tooprevent otros consumidores de recibirlo y, a continuación, lo devuelve toohello aplicación. Después de aplicación hello finaliza el procesamiento de mensajes de bienvenida (o lo almacena de forma confiable para el procesamiento futuro), completa Hola segunda fase del programa Hola a recibir el proceso mediante una llamada a `delete_subscription_message()` método y proporcionar toobe de mensaje de Hola eliminado como un parámetro. Hola `delete_subscription_message()` método marcar Hola mensaje como consumido y quitarlo de la suscripción de Hola.
+El comportamiento predeterminado convierte la lectura y eliminación en una operación de dos fases que también hace posible admitir aplicaciones que no toleran la pérdida de mensajes. Cuando el Bus de servicio recibe una solicitud, busca el siguiente mensaje que se va a consumir, lo bloquea para impedir que otros consumidores lo reciban y, a continuación, lo devuelve a la aplicación. Una vez que la aplicación termina de procesar el mensaje (o lo almacena de forma fiable para su futuro procesamiento), completa la segunda fase del proceso de recepción llamando al método `delete_subscription_message()` y facilitando el mensaje que se va a eliminar a modo de parámetro. El método `delete_subscription_message()` marcará el mensaje como consumido y lo eliminará de la suscripción.
 
-Si hello `:peek_lock` parámetro está establecido demasiado**false**, leer y eliminar mensajes de bienvenida se convierte en el modelo más sencillo de Hola y funciona mejor para escenarios en los que una aplicación puede tolerar no procesar un mensaje en caso de hello de un error. toounderstand esto, considere un escenario en los problemas del consumidor Hola Hola recibir la solicitud y, a continuación, se bloquea antes de procesarlo. Dado que Service Bus habrá marcado Hola mensaje como consumido, a continuación, cuando la aplicación hello se reinicia y comienza a consumir mensajes de nuevo, habrá perdido mensaje Hola que estaba consumido bloqueo toohello anterior.
+Si el parámetro `:peek_lock` se establece en **false**, la lectura y eliminación del mensaje se convierte en el modelo más simple y funciona mejor para los escenarios en los que una aplicación puede tolerar no procesar un mensaje en caso de error. Para entenderlo mejor, pongamos una situación en la que un consumidor emite la solicitud de recepción que se bloquea antes de procesarla. Como el Bus de servicio habrá marcado el mensaje como consumido, cuando la aplicación se reinicie y empiece a consumir mensajes de nuevo, habrá perdido el mensaje que se consumió antes del bloqueo.
 
-Hello en el ejemplo siguiente se muestra cómo se pueden recibir mensajes y el uso de procesado `receive_subscription_message()`. ejemplo Hello primero recibe y elimina un mensaje de Hola `low-messages` suscripción mediante el uso de `:peek_lock` establecido demasiado**false**, a continuación, recibe otro mensaje de Hola `high-messages` y, a continuación, elimina Hola mensaje utilizando `delete_subscription_message()`:
+En el ejemplo siguiente se muestra cómo se pueden recibir y procesar mensajes mediante `receive_subscription_message()`. El ejemplo primero recibe y elimina un mensaje de la suscripción `low-messages` mediante `:peek_lock` establecido en **false**; después, recibe otro mensaje de `high-messages` y, por último, elimina el mensaje mediante `delete_subscription_message()`:
 
 ```ruby
 message = azure_service_bus_service.receive_subscription_message(
@@ -137,31 +137,31 @@ message = azure_service_bus_service.receive_subscription_message(
 azure_service_bus_service.delete_subscription_message(message)
 ```
 
-## <a name="how-toohandle-application-crashes-and-unreadable-messages"></a>No se puede leer mensajes y cómo se bloquea la aplicación de toohandle
-Bus de servicio proporciona toohelp de funcionalidad que recuperarse de errores en sus aplicaciones o dificultades para procesar un mensaje. Si una aplicación receptora no puede tooprocess Hola mensaje por alguna razón, a continuación, puede llamar a hello `unlock_subscription_message()` método en hello **Azure::ServiceBusService** objeto. Este causas hello toounlock de Bus de servicio de mensajes dentro de la suscripción de Hola y hacerla disponible toobe recibido de nuevo, ya sea por Hola mismo consumen aplicación o por otra aplicación que consume.
+## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Actuación ante errores de la aplicación y mensajes que no se pueden leer
+El Bus de servicio proporciona una funcionalidad que le ayuda a superar sin problemas los errores de la aplicación o las dificultades para procesar un mensaje. Si por cualquier motivo una aplicación de recepción es incapaz de procesar el mensaje, entonces puede llamar al método `unlock_subscription_message()` del objeto **Azure::ServiceBusService**. Esto hace que Service Bus desbloquee el mensaje de la suscripción y esté disponible para que pueda volver a recibirse, ya sea por la misma aplicación que lo consume o por otra.
 
-También hay un tiempo de espera asociado a un mensaje bloqueado dentro de suscripción de Hola y si la aplicación hello produce un error en el mensaje de saludo tooprocess antes de tiempo de espera de bloqueo de hello expira (por ejemplo, si se bloquea aplicación hello), a continuación, Bus de servicio desbloqueará el mensaje de bienvenida de automáticamente y hacerla disponible toobe recibido de nuevo.
+También hay un tiempo de espera asociado con un mensaje bloqueado en la suscripción y, si la aplicación no puede procesar el mensaje antes de que finalice el tiempo de espera del bloqueo (por ejemplo, si la aplicación sufre un error), entonces Service Bus desbloquea el mensaje automáticamente y hace que esté disponible para que pueda volver a recibirse.
 
-Hola eventos que Hola aplicación se bloquea después de procesar el mensaje de bienvenida pero antes de hello `delete_subscription_message()` se llama al método, a continuación, mensaje de bienvenida es la aplicación de toohello entregados de nuevo cuando se reinicia. Esto se suele denominar *al menos una vez procesamiento*; es decir, cada mensaje se procesará al menos una vez, pero en cierto Hola de situaciones puede volverse a entregar el mismo mensaje. Si el escenario de hello no puede tolerar el procesamiento duplicado, los desarrolladores de aplicaciones deben agregar lógica adicional tootheir aplicación toohandle duplicados entrega del mensaje. Esta lógica a menudo se logra mediante hello `message_id` propiedad del mensaje de Hola, que permanece constante entre intentos de entrega.
+En caso de que la aplicación sufra un error después de procesar el mensaje y antes de llamar al método `delete_subscription_message()`, entonces el mensaje se vuelve a entregar a la aplicación cuando esta se reinicie. Habitualmente se denomina *Al menos un procesamiento*, es decir, cada mensaje se procesará al menos una vez; aunque en determinadas situaciones podría volver a entregarse el mismo mensaje. Si el escenario no puede tolerar el procesamiento duplicado, entonces los desarrolladores de la aplicación deberían agregar lógica adicional a su aplicación para solucionar la entrega de mensajes duplicados. A menudo, esta lógica se consigue usando la propiedad `message_id` del mensaje, que permanecerá constante en todos los intentos de entrega.
 
 ## <a name="delete-topics-and-subscriptions"></a>Eliminación de temas y suscripciones
-Temas y suscripciones son persistentes y debe ser explícitamente eliminados a través de hello [portal de Azure] [ Azure portal] o mediante programación. ejemplo de Hola siguiente muestra cómo se denomina tema de hello toodelete `test-topic`.
+Los temas y las suscripciones son permanentes, por lo que deben eliminarse explícitamente a través del [Azure Portal][Azure portal] o mediante programación. En el ejemplo siguiente se muestra cómo eliminar el tema llamado `test-topic`.
 
 ```ruby
 azure_service_bus_service.delete_topic("test-topic")
 ```
 
-Eliminar un tema, también elimina todas las suscripciones que están registradas en el tema de Hola. También se pueden eliminar las suscripciones de forma independiente. Hello código siguiente muestra cómo se denomina suscripción de hello toodelete `high-messages` de hello `test-topic` tema:
+Al eliminar un tema también se eliminan todas las suscripciones que estén registradas con él. También se pueden eliminar las suscripciones de forma independiente. El código siguiente muestra cómo eliminar la suscripción denominada `high-messages` del tema `test-topic`:
 
 ```ruby
 azure_service_bus_service.delete_subscription("test-topic", "high-messages")
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora que conoce los fundamentos de Hola de temas de Bus de servicio, siga estos toolearn de vínculos más.
+Ahora que conoce los fundamentos de los temas del Bus de servicio, siga estos vínculos para obtener más información.
 
 * Vea [Colas, temas y suscripciones](service-bus-queues-topics-subscriptions.md).
 * Referencia de API para [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter#microsoft_servicebus_messaging_sqlfilter).
-* Visite hello [Azure SDK para Ruby](https://github.com/Azure/azure-sdk-for-ruby) repositorio en GitHub.
+* Visite el repositorio de [SDK de Azure para Ruby](https://github.com/Azure/azure-sdk-for-ruby) en GitHub.
 
 [Azure portal]: https://portal.azure.com

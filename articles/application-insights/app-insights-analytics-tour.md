@@ -1,6 +1,6 @@
 ---
-title: "Paseo aaaA a través del análisis de visión de la aplicación de Azure | Documentos de Microsoft"
-description: "Breves ejemplos de todas las consultas principales de hello en el análisis, Hola eficaz herramienta de búsqueda de Application Insights."
+title: Un paseo por Analytics de Azure Application Insights | Microsoft Docs
+description: "Ejemplos breves de todas las principales consultas de Analytics, la potente herramienta de búsqueda de Application Insights."
 services: application-insights
 documentationcenter: 
 author: CFreemanwa
@@ -13,35 +13,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2017
 ms.author: bwren
-ms.openlocfilehash: c268e26c6bf93ac2ee2a9d5e83613150dcf90b04
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ccea92dda99c3b76cbb7d37b20ce810b210a8217
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Un paseo por Analytics de Application Insights
-[Análisis de](app-insights-analytics.md) es característica de búsqueda eficaces Hola de [Application Insights](app-insights-overview.md). En estas páginas se describe el lenguaje de consulta de Log Analytics.
+[Analytics](app-insights-analytics.md) es la eficaz característica de búsqueda de [Application Insights](app-insights-overview.md). En estas páginas se describe el lenguaje de consulta de Log Analytics.
 
-* **[Ver vídeo de introducción de hello](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**.
-* **[Análisis de prueba con nuestros datos simulados](https://analytics.applicationinsights.io/demo)**  si la aplicación no envía datos tooApplication visión todavía.
-* **[Hoja de referencia rápida de SQL-usuarios](https://aka.ms/sql-analytics)**  traduce giros de hello más comunes.
+* **[Vea el vídeo de introducción](https://applicationanalytics-media.azureedge.net/home_page_video.mp4)**.
+* **[Use una versión de prueba de Analytics en nuestros datos simulados](https://analytics.applicationinsights.io/demo)** si su aplicación aún no envía datos a Application Insights.
+* **[La hoja de referencia rápida de usuarios de SQL](https://aka.ms/sql-analytics)** traduce las expresiones más comunes.
 
-¡Eche un recorrido a través de algunas tooget consultas básicas que se inició.
+Recorramos algunas preguntas básicas para comenzar.
 
-## <a name="connect-tooyour-application-insights-data"></a>Conexión de datos de Application Insights tooyour
+## <a name="connect-to-your-application-insights-data"></a>Conexión a los datos de Application Insights
 Abra Analytics desde la [hoja de información general](app-insights-dashboards.md) de su aplicación en Application Insights:
 
 ![Abra portal.azure.com, abra su recurso de Application Insights y haga clic en Análisis.](./media/app-insights-analytics-tour/001.png)
 
 ## <a name="takehttpsdocsloganalyticsioquerylanguagequerylanguagetakeoperatorhtml-show-me-n-rows"></a>[Take](https://docs.loganalytics.io/queryLanguage/query_language_takeoperator.html): mostrarme n filas
-Los puntos de datos que registran las operaciones de usuario (normalmente solicitudes HTTP recibidas mediante la aplicación web) se almacenan en una tabla denominada `requests`. Cada fila tiene un punto de datos de telemetría recibido de hello Application Insights SDK en la aplicación.
+Los puntos de datos que registran las operaciones de usuario (normalmente solicitudes HTTP recibidas mediante la aplicación web) se almacenan en una tabla denominada `requests`. Cada fila es un punto de datos de telemetría procedente del SDK de Application Insights en una aplicación.
 
-Empecemos examinando algunas filas de ejemplo de tabla de hello:
+Comencemos examinando algunas filas de ejemplo de la tabla:
 
 ![results](./media/app-insights-analytics-tour/010.png)
 
 > [!NOTE]
-> Coloque el cursor de hello en alguna parte en la instrucción de hello antes de hacer clic en Ir. Puede dividir una instrucción en varias líneas, pero no incluya líneas en blanco en una instrucción. Líneas en blanco son una manera cómoda de tookeep varios separan las consultas en la ventana hello.
+> Coloque el cursor en algún lugar de la instrucción antes de hacer clic en Go (Ir). Puede dividir una instrucción en varias líneas, pero no incluya líneas en blanco en una instrucción. Las líneas en blanco son una forma práctica de tener varias consultas diferentes en la ventana.
 >
 >
 
@@ -49,19 +49,29 @@ Elija columnas, arrástrelas, agrupe por columnas y filtre:
 
 ![Hacer clic en la selección de columna en la parte superior derecha de los resultados](./media/app-insights-analytics-tour/030.png)
 
-Expanda cualquier detalle de hello toosee de elemento:
+Expanda cualquier elemento para ver los detalles:
 
 ![Seleccione Table (Tabla) y use Configure Columns (Configurar columnas).](./media/app-insights-analytics-tour/040.png)
 
 > [!NOTE]
-> Haga clic en el encabezado de Hola de una columna toore-ordenar Hola los resultados disponibles en el Explorador de web Hola. Pero tenga en cuenta que para un conjunto de resultados grandes, se limita Hola número de filas descargadas toohello explorador. Este modo de ordenación no siempre puede mostrar Hola real mayor o menor de elementos. elementos toosort usan de forma confiable, hello `top` o `sort` operador.
+> Haga clic en el encabezado de una columna para cambiar el orden de los resultados disponibles en el explorador web. Tenga en cuenta que, para un conjunto grande de resultados, el número de filas que se descargan en el explorador es limitado. Esta forma de ordenación no siempre muestra los elementos mayores o menores reales. Para ordenar los elementos de forma confiable, use el operador `top` o `sort`.
 >
 >
+
+## <a name="query-across-applications"></a>Consultas entre aplicaciones
+Si desea combinar datos de varias aplicaciones de Application Insights, use la palabra clave **app** para especificar la aplicación junto con el nombre de tabla.  Esta consulta combina las solicitudes de dos aplicaciones diferentes mediante el comando **union**.
+
+
+```AIQL
+
+    union app('fabrikamstage').requests, app('fabrikamprod').requests
+    
+```
 
 ## <a name="tophttpsdocsloganalyticsioquerylanguagequerylanguagetopoperatorhtml-and-sorthttpsdocsloganalyticsioquerylanguagequerylanguagesortoperatorhtml"></a>[Top](https://docs.loganalytics.io/queryLanguage/query_language_topoperator.html) y [sort](https://docs.loganalytics.io/queryLanguage/query_language_sortoperator.html)
-`take`es un ejemplo rápido de un resultado de tooget útil, pero muestra filas de tabla de hello en ningún orden concreto. usar una vista ordenada, tooget `top` (para obtener un ejemplo) o `sort` (a través de hello toda la tabla).
+`take` resulta útil para obtener un ejemplo rápido de un resultado, pero muestra filas de la tabla sin ningún orden determinado. Para obtener una vista ordenada, use `top` (para un ejemplo) o `sort` (toda la tabla).
 
-Mostrarme Hola n primeras filas, ordenadas por una columna concreta:
+Muéstrame las primeras n filas, ordenadas por una columna en particular:
 
 ```AIQL
 
@@ -80,9 +90,9 @@ Mostrarme Hola n primeras filas, ordenadas por una columna concreta:
     requests | sort by timestamp desc | take 10
 ```
 
-resultado de Hello sería Hola mismo, pero se ejecutaría un poco más lentamente. (También podría escribir `order`, que es un alias de `sort`).
+El resultado sería el mismo, pero se ejecutaría un poco más lento. (También podría escribir `order`, que es un alias de `sort`).
 
-encabezados de columna de Hello en la vista de tabla de hello también pueden ser utilizados toosort Hola resultados en pantalla de bienvenida. Pero, por supuesto, si ha usado `take` o `top` tooretrieve parte de una tabla, verá solo reordenar Hola registros que se han recuperado.
+Los encabezados de columna en la vista de tabla también pueden utilizarse para ordenar los resultados en la pantalla. Pero por supuesto, si ha usado `take` o `top` para recuperar solo parte de una tabla, solamente reordenará los registros que ha recuperado.
 
 ## <a name="wherehttpsdocsloganalyticsioquerylanguagequerylanguagewhereoperatorhtml-filtering-on-a-condition"></a>[Where](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html): filtrado de una condición.
 
@@ -97,7 +107,7 @@ Veamos las solicitudes que devuelven un código de resultado determinado:
 
 ![](./media/app-insights-analytics-tour/250.png)
 
-Hola `where` operador toma una expresión booleana. He aquí algunos puntos clave:
+El operador `where` acepta una expresión booleana. He aquí algunos puntos clave:
 
 * `and`, `or`: Operadores booleanos
 * `==`, `<>`, `!=`: igual que y no igual que
@@ -105,7 +115,7 @@ Hola `where` operador toma una expresión booleana. He aquí algunos puntos clav
 
 <!---Read all about [scalar expressions]().--->
 
-### <a name="getting-hello-right-type"></a>Introducción al tipo correcto de Hola
+### <a name="getting-the-right-type"></a>Obtención del tipo correcto
 Buscar solicitudes incorrectas:
 
 ```AIQL
@@ -119,21 +129,21 @@ Buscar solicitudes incorrectas:
 
 ## <a name="time"></a>Hora
 
-De forma predeterminada, las consultas son toohello restringido últimas 24 horas. Pero puede cambiar este intervalo:
+De forma predeterminada, las consultas se restringen a las últimas 24 horas. Pero puede cambiar este intervalo:
 
 ![](./media/app-insights-analytics-tour/change-time-range.png)
 
-Invalidar el intervalo de tiempo de hello escribiendo cualquier consulta que se mencionan `timestamp` en una cláusula where. Por ejemplo:
+Reemplace el intervalo de tiempo mediante la escritura de cualquier consulta que mencione `timestamp` en una cláusula where. Por ejemplo:
 
 ```AIQL
 
-    // What were hello slowest requests over hello past 3 days?
+    // What were the slowest requests over the past 3 days?
     requests
-    | where timestamp > ago(3d)  // Override hello time range
+    | where timestamp > ago(3d)  // Override the time range
     | top 5 by duration
 ```
 
-característica de intervalo de tiempo de Hello es equivalente tooa 'where' inserta cláusula después de cada mención de una de las tablas de origen Hola.
+La característica de intervalo de tiempo es equivalente a una cláusula "where" insertada después de cada mención de una de las tablas de origen.
 
 `ago(3d)` significa "hace tres días". Otras unidades de tiempo son horas (`2h`, `2.5h`), minutos (`25m`) y segundos (`10s`).
 
@@ -163,7 +173,7 @@ Otros ejemplos:
 
 
 ## <a name="projecthttpsdocsloganalyticsioquerylanguagequerylanguageprojectoperatorhtml-select-rename-and-compute-columns"></a>[Project](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html): seleccionar, cambiar nombre y calcular columnas
-Use [ `project` ](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html) toopick solo las columnas de Hola que desee:
+Use [`project`](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html) para seleccionar solamente las columnas que desea:
 
 ```AIQL
 
@@ -189,14 +199,14 @@ También puede cambiar el nombre de las columnas y definir otras nuevas:
 ![result](./media/app-insights-analytics-tour/270.png)
 
 * Los nombres de columna pueden incluir espacios o símbolos si están entre corchetes, tal como se muestra: `['...']` o `["..."]`
-* `%`es habitual operador de módulo hello.
+* `%` es el operador de módulo habitual.
 * `1d` (es decir, el dígito uno y luego una "d") es un literal de intervalo de tiempo que significa un día. Aquí se indican otros literales de intervalo de tiempo: `12h`, `30m`, `10s` y `0.01s`.
-* `floor`(alias `bin`) Redondea un valor de profundidad toohello múltiplo más cercano de valor base Hola que proporcione. Por lo que `floor(aTime, 1s)` redondea una hora hacia abajo toohello más cercano de segundo.
+* `floor` (alias `bin`) redondea un valor a la baja al múltiplo más cercano del valor base que proporciona. Por lo tanto, `floor(aTime, 1s)` redondea un tiempo a la baja al segundo más cercano.
 
-Las expresiones pueden incluir todos los operadores habituales de hello (`+`, `-`,...), y no hay una gama de funciones útiles.
+Las expresiones pueden incluir todos los operadores habituales (`+`, `-`, etc.) y hay una amplia gama de funciones útiles.
 
 ## <a name="extend"></a>Extend
-Si solo desea tooadd toohello de las columnas existentes, utilice [ `extend` ](https://docs.loganalytics.io/queryLanguage/query_language_extendoperator.html):
+Si solo desea agregar columnas a las ya existentes, use [`extend`](https://docs.loganalytics.io/queryLanguage/query_language_extendoperator.html):
 
 ```AIQL
 
@@ -205,11 +215,11 @@ Si solo desea tooadd toohello de las columnas existentes, utilice [ `extend` ](h
     | extend timeOfDay = floor(timestamp % 1d, 1s)
 ```
 
-Usar [ `extend` ](https://docs.loganalytics.io/queryLanguage/query_language_extendoperator.html) es menos detallado [ `project` ](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html) si desea tookeep Hola a todas las columnas existentes.
+El uso de [`extend`](https://docs.loganalytics.io/queryLanguage/query_language_extendoperator.html) es menos detallado que [`project`](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html) si desea conservar todas las columnas existentes.
 
-### <a name="convert-toolocal-time"></a>Convertir la hora de toolocal
+### <a name="convert-to-local-time"></a>Conversión a la hora local
 
-Las marcas de tiempo siempre se expresan en formato UTC. Por lo que si se encuentra en hello nos suroeste y es temporada de invierno, podría como esta:
+Las marcas de tiempo siempre se expresan en formato UTC. Por lo que si se encuentra en la costa Pacífico y es temporada de invierno, sería de esta forma:
 
 ```AIQL
 
@@ -222,44 +232,44 @@ Las marcas de tiempo siempre se expresan en formato UTC. Por lo que si se encuen
 ## <a name="summarizehttpsdocsloganalyticsioquerylanguagequerylanguagesummarizeoperatorhtml-aggregate-groups-of-rows"></a>[Summarize](https://docs.loganalytics.io/queryLanguage/query_language_summarizeoperator.html): adición de grupos de filas
 `Summarize` aplica una *función de agregación* específica sobre grupos de filas.
 
-Por ejemplo, hello tarda la aplicación web toorespond tooa solicitud se notifica en el campo de hello `duration`. Veamos medio de respuesta de hello tooall solicitudes de tiempo:
+Por ejemplo, el tiempo que su aplicación web tarda en responder a una solicitud se notifica en el campo `duration`. Veamos el tiempo medio de respuesta de todas las solicitudes:
 
 ![](./media/app-insights-analytics-tour/410.png)
 
-O se puede separar resultado de hello en las solicitudes de nombres diferentes:
+O bien, podríamos separar el resultado en solicitudes de nombres diferentes:
 
 ![](./media/app-insights-analytics-tour/420.png)
 
-`Summarize`recopila Hola puntos de datos de flujo de hello en grupos para qué hello `by` cláusula evalúa igualmente. Cada valor de hello `by` expresión - cada nombre de la operación en hello ejemplo anterior - da como resultado de una fila en la tabla de resultados de Hola.
+`Summarize` recopila los puntos de datos de la transmisión en grupos que la cláusula `by` calcula por igual. Cada valor de la expresión `by` (cada nombre de la operación en el ejemplo anterior) da como resultado una fila de la tabla de resultados.
 
 O bien, podríamos agrupar los resultados en función de la hora del día:
 
 ![](./media/app-insights-analytics-tour/430.png)
 
-Tenga en cuenta cómo usamos hello `bin` (función) (también conocido como `floor`). Si solo usáramos `by timestamp`, cada fila de entrada terminaría en su pequeño grupo. Para cualquier valor escalar continua veces like o números, tenemos intervalo continuo de hello toobreak en un número de valores discretos fáciles de administrar. `bin`-que es simplemente Hola familiarizado redondeo en profundidad `floor` función; es toodo de manera más fácil de Hola que.
+Observe cómo usamos la función `bin` (también conocida como "`floor`"). Si solo usáramos `by timestamp`, cada fila de entrada terminaría en su pequeño grupo. Para cualquier escalar continuo, como horas o números, tenemos que dividir el intervalo continuo en un número de valores discretos fácil de administrar. `bin`, que es simplemente la conocida función de redondeo `floor`, es la manera más sencilla de hacerlo.
 
-Podemos usar Hola mismos intervalos de tooreduce técnica de cadenas:
+Podemos usar la misma técnica para reducir los intervalos de cadenas:
 
 ![](./media/app-insights-analytics-tour/440.png)
 
-Tenga en cuenta que puede usar `name=` tooset nombre de Hola de una columna de resultados, en las expresiones de agregado de Hola o por la cláusula de Hola.
+Tenga en cuenta que puede usar `name=` para establecer el nombre de una columna de resultados, en las expresiones de agregación o mediante la cláusula by.
 
 ## <a name="counting-sampled-data"></a>Recuento de datos muestreados
-`sum(itemCount)`es recomendable de hello agregación toocount eventos. En muchos casos, itemCount == 1, por lo que la función de hello simplemente cuenta el número de Hola de filas en un grupo de Hola. Pero cuando [muestreo](app-insights-sampling.md) está en funcionamiento, sólo una fracción de eventos de hello original se conservan como puntos de datos de Application Insights, por lo que para cada punto de datos que se ven, hay `itemCount` eventos.
+`sum(itemCount)` es la agregación recomendada para contar eventos. En muchos casos, itemCount == 1, por lo que la función simplemente cuenta el número de filas del grupo. Pero cuando el [muestreo](app-insights-sampling.md) está en funcionamiento, solo se conserva una fracción de los eventos originales como puntos de datos en Application Insights, de modo que por cada punto de datos que vea, haya eventos `itemCount`.
 
-Por ejemplo, si el muestreo descarta el 75% de los eventos originales de hello y, a continuación, itemCount == 4 en registros de hello conservan: es decir, para cada registro retenido, había cuatro registros originales.
+Por ejemplo, si el muestreo descarta el 75 % de los eventos originales, itemCount ==4 en los registros retenidos; es decir, para cada registro retenido, había cuatro registros originales.
 
-Muestreo adaptativo hace itemCount toobe superior durante los períodos de la aplicación cuando se utilice con un alto grado.
+El muestreo adaptable hace que itemCount sea mayor durante los períodos en que la aplicación se utiliza más.
 
-Por lo tanto, se suma de itemCount ofrece una buena estimación del número original de Hola de eventos.
+Por lo tanto, resumir itemCount proporciona una buena estimación del número original de eventos.
 
 ![](./media/app-insights-analytics-tour/510.png)
 
-También hay un `count()` agregación (y una operación de recuento), para los casos donde realmente desea toocount Hola número de filas de un grupo.
+También existe una agregación `count()` (y una operación de recuento) para los casos en los que realmente desea contar el número de filas de un grupo.
 
 Existe una gama de [funciones de agregación](https://docs.loganalytics.io/learn/tutorials/aggregations.html).
 
-## <a name="charting-hello-results"></a>Gráficos de resultados de Hola
+## <a name="charting-the-results"></a>Crear gráficos de los resultados
 ```AIQL
 
     exceptions
@@ -271,11 +281,11 @@ De forma predeterminada, los resultados se muestran como una tabla:
 
 ![](./media/app-insights-analytics-tour/225.png)
 
-Podemos hacer un mejor rendimiento que la vista de tabla de Hola. Echemos un vistazo a los resultados de hello en la vista de gráfico de hello con la opción de barra vertical de hello:
+Podemos hacerlo mejor que la vista de la tabla. Echemos un vistazo a los resultados en la vista del gráfico con la opción de barra vertical:
 
 ![Haga clic Chart (Gráfico) y después elija Vertical bar chart (Gráfico de barras verticales) y asigne los ejes x e y.](./media/app-insights-analytics-tour/230.png)
 
-Tenga en cuenta que, aunque se no ordenación resultados de Hola por hora (como puede ver en la visualización de la tabla de hello), Hola gráfico siempre muestran fechas y horas en el orden correcto.
+Tenga en cuenta que aunque no ordenamos los resultados por tiempo (como puede ver en la visualización de la tabla), la visualización del gráfico siempre muestra las fechas en el orden correcto.
 
 
 ## <a name="timecharts"></a>Gráficos de tiempo
@@ -288,14 +298,14 @@ Mostrar cuántos eventos hay cada hora:
         by bin(timestamp, 1h)
 ```
 
-Seleccione la opción de visualización del gráfico de hello:
+Seleccionar la opción de visualización de gráfico:
 
 ![timechart](./media/app-insights-analytics-tour/080.png)
 
 ## <a name="multiple-series"></a>Varias series
-Varias expresiones en hello `summarize` cláusula crea varias columnas.
+Varias expresiones en la cláusula `summarize` crean varias columnas.
 
-Varias expresiones en hello `by` cláusula crea varias filas, una para cada combinación de valores.
+Varias expresiones en la cláusula `by` crea varias filas, una para cada combinación de valores.
 
 ```AIQL
 
@@ -308,13 +318,13 @@ Varias expresiones en hello `by` cláusula crea varias filas, una para cada comb
 ![Tabla de solicitudes por hora y ubicación](./media/app-insights-analytics-tour/090.png)
 
 ### <a name="segment-a-chart-by-dimensions"></a>Segmentación de un gráfico por dimensiones
-Si se pueden toosplit usado Hola datos numéricos en series independientes de los puntos de gráfico una tabla que tiene una columna de cadenas y una columna numérica, cadena de Hola. Si hay más de una columna de cadena, puede elegir qué toouse de columna como discriminador Hola.
+Si utiliza una tabla que tiene una columna de cadena y una columna numérica, la cadena puede utilizarse para dividir los datos numéricos en series independientes de puntos. Si hay más de una columna de cadena, puede elegir qué columna debe utilizar como discriminador.
 
 ![Segmentación de un gráfico de análisis](./media/app-insights-analytics-tour/100.png)
 
 #### <a name="bounce-rate"></a>Tasa de devolución
 
-Convertir una toouse de cadena booleano tooa como un discriminador:
+Convierte un valor booleano en una cadena que se utiliza como discriminador:
 
 ```AIQL
 
@@ -331,16 +341,16 @@ Convertir una toouse de cadena booleano tooa como un discriminador:
 ```
 
 ### <a name="display-multiple-metrics"></a>Muestra de varias métricas
-Si el gráfico de una tabla que tiene más de una columna numérica, en la marca de tiempo de suma toohello, puede mostrar cualquier combinación de ellos.
+Si utiliza una tabla con más de una columna numérica, además de la marca de tiempo, puede mostrar cualquier combinación de ellas.
 
 ![Segmentación de un gráfico de análisis](./media/app-insights-analytics-tour/110.png)
 
-Debe seleccionar **Don't Split** (No dividir) para poder seleccionar varias columnas numéricas. No se divide por una columna de cadenas en hello mismo tiempo como mostrar más de una columna numérica.
+Debe seleccionar **Don't Split** (No dividir) para poder seleccionar varias columnas numéricas. No se puede dividir por una columna de cadena al mismo tiempo que se muestra más de una columna numérica.
 
 ## <a name="daily-average-cycle"></a>Ciclo medio diario
-¿Cómo varía en uso en día promedio Hola?
+¿Cómo varía el uso a lo largo del día normal?
 
-Solicitudes de recuento por tiempo Hola módulo un día, segmentan en horas:
+Contar solicitudes por el módulo de tiempo un día, discretizadas en horas:
 
 ```AIQL
 
@@ -355,12 +365,12 @@ Solicitudes de recuento por tiempo Hola módulo un día, segmentan en horas:
 ![Gráfico de líneas de horas en un día normal](./media/app-insights-analytics-tour/120.png)
 
 > [!NOTE]
-> Tenga en cuenta que actualmente tenemos tooconvert tiempo duraciones toodatetimes en orden toodisplay en un gráfico de líneas.
+> Observe que actualmente tenemos convertir las duraciones de tiempo en fechas y horas para mostrar en el gráfico de líneas.
 >
 >
 
 ## <a name="compare-multiple-daily-series"></a>Comparación de varias series diarias
-¿Cómo varía en uso con el tiempo de hello del día en distintos países?
+¿Cómo varía el uso a lo largo de la hora del día en distintos países?
 
 ```AIQL
 
@@ -392,16 +402,16 @@ Solicitudes de recuento por tiempo Hola módulo un día, segmentan en horas:
     | project d = sessionDuration + datetime("2016-01-01"), count_
 ```
 
-Hola la última línea es necesario tooconvert toodatetime. Actualmente Hola x eje de un gráfico se muestra como un valor escalar solo si es una fecha y hora.
+La última línea es necesaria para convertir a un valor datetime. Actualmente el eje x de un gráfico se muestra como un valor escalar solo si es un valor datetime.
 
-Hola `where` cláusula excluye las sesiones Monoestable (sessionDuration == 0) y conjuntos de Hola longitud del eje x de Hola.
+La cláusula `where` excluye las sesiones únicas (sessionDuration==0) y establece la longitud del eje X.
 
 ![](./media/app-insights-analytics-tour/290.png)
 
 ## <a name="percentileshttpsdocsloganalyticsioquerylanguagequerylanguagepercentilesaggfunctionhtml"></a>[Percentiles](https://docs.loganalytics.io/queryLanguage/query_language_percentiles_aggfunction.html)
 ¿Qué intervalos de duraciones cubren diferentes porcentajes de sesiones?
 
-Usar hello por encima de la consulta, pero reemplace Hola última línea:
+Utilice la consulta anterior, pero reemplace la última línea:
 
 ```AIQL
 
@@ -415,7 +425,7 @@ Usar hello por encima de la consulta, pero reemplace Hola última línea:
     | summarize percentiles(sesh, 5, 20, 50, 80, 95)
 ```
 
-Eliminamos límite superior de Hola Hola donde cláusula, en orden tooget corregir cifras incluidas todas las sesiones con más de una solicitud:
+También eliminamos el límite superior en la cláusula where con el fin de obtener cifras correctas, incluidas las sesiones con más de una solicitud:
 
 ![result](./media/app-insights-analytics-tour/180.png)
 
@@ -425,7 +435,7 @@ De lo que podemos ver que:
 * El 50 % de las sesiones dura menos de 36 minutos;
 * El 5 % de las sesiones dura más de 7 días.
 
-tooget un desglose independiente para cada país, solo tenemos toobring hello client_CountryOrRegion columna por separado a través de los operadores de resumen:
+Para obtener un desglose independiente para cada país, simplemente tiene que conservar la columna client_CountryOrRegion por separado en ambos operadores de resumen:
 
 ```AIQL
 
@@ -443,9 +453,9 @@ tooget un desglose independiente para cada país, solo tenemos toobring hello cl
 ![](./media/app-insights-analytics-tour/190.png)
 
 ## <a name="join"></a>Unión
-Tenemos que tooseveral acceso a tablas, incluidas las excepciones y las solicitudes.
+Tenemos acceso a varias tablas, incluidas las solicitudes y las excepciones.
 
-toofind Hola excepciones relacionadas tooa solicitud que devuelve una respuesta de error, se pueden combinar tablas de hello en `session_Id`:
+Para encontrar las excepciones relacionadas con una solicitud que devolvió una respuesta de error, podemos combinar las tablas en `session_Id`:
 
 ```AIQL
 
@@ -456,12 +466,12 @@ toofind Hola excepciones relacionadas tooa solicitud que devuelve una respuesta 
 ```
 
 
-Es recomendable toouse `project` tooselect columnas de hello solo es necesario antes de realizar Hola combinación.
-Hola mismas cláusulas, cambiamos el nombre de columna de marca de tiempo de Hola.
+Es recomendable usar `project` para seleccionar solo las columnas que se necesitan antes de realizar la combinación.
+En las mismas cláusulas, cambiamos el nombre de la columna de marca de tiempo.
 
-## <a name="lethttpsdocsloganalyticsioquerylanguagequerylanguageletstatementhtml-assign-a-result-tooa-variable"></a>[Permiten](https://docs.loganalytics.io/queryLanguage/query_language_letstatement.html): asignar una variable de resultado tooa
+## <a name="lethttpsdocsloganalyticsioquerylanguagequerylanguageletstatementhtml-assign-a-result-to-a-variable"></a>[Let](https://docs.loganalytics.io/queryLanguage/query_language_letstatement.html): asignación de un resultado a una variable
 
-Use `let` tooseparate partes de saludo de la expresión anterior Hola. resultados de Hello son iguales:
+Use `let` para separar las partes de la expresión anterior. Los resultados no cambian:
 
 ```AIQL
 
@@ -474,10 +484,10 @@ Use `let` tooseparate partes de saludo de la expresión anterior Hola. resultado
 ```
 
 > [!Tip] 
-> En el cliente de análisis de hello, no incluya líneas en blanco entre las partes de Hola de consulta de Hola. Asegúrese de tooexecute seguro todos del mismo.
+> En el cliente de Analytics, no incluya líneas en blanco entre las partes de la consulta. Asegúrese de ejecutar todo.
 >
 
-Use `toscalar` tooconvert un valor de tooa de celda de tabla única:
+Use `toscalar` para convertir una celda de tabla única en un valor:
 
 ```AIQL
 let topCities =  toscalar (
@@ -491,9 +501,9 @@ requests
 ```
 
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Funciones
 
-Use *permiten* toodefine una función:
+Use *Let* para definir una función:
 
 ```AIQL
 
@@ -507,11 +517,11 @@ Use *permiten* toodefine una función:
 ```
 
 ## <a name="accessing-nested-objects"></a>Acceso a objetos anidados
-Se puede acceder fácilmente a los objetos anidados. Por ejemplo, en la secuencia de excepciones de hello, puede ver objetos estructurados similar al siguiente:
+Se puede acceder fácilmente a los objetos anidados. Por ejemplo, en la transmisión de excepciones verá objetos estructurados así:
 
 ![result](./media/app-insights-analytics-tour/520.png)
 
-Es posible simplificar eligiendo Propiedades Hola que le interesa:
+Es posible aplanarlo si selecciona las propiedades que le interesan:
 
 ```AIQL
 
@@ -519,11 +529,11 @@ Es posible simplificar eligiendo Propiedades Hola que le interesa:
     | extend method1 = tostring(details[0].parsedStack[1].method)
 ```
 
-Tenga en cuenta que necesita el tipo adecuado de toocast Hola resultado toohello.
+Tenga en cuenta que debe utilizar una conversión al tipo adecuado.
 
 
 ## <a name="custom-properties-and-measurements"></a>Propiedades y medidas personalizadas
-Si la aplicación se asocia [dimensiones personalizadas (propiedades) y las medidas personalizadas](app-insights-api-custom-events-metrics.md#properties) tooevents, a continuación, se verán en hello `customDimensions` y `customMeasurements` objetos.
+Si la aplicación adjunta [dimensiones personalizadas (propiedades) y medidas personalizadas](app-insights-api-custom-events-metrics.md#properties) a eventos, las verá en los objetos `customDimensions` y `customMeasurements`.
 
 Por ejemplo, si la aplicación incluye:
 
@@ -536,17 +546,17 @@ Por ejemplo, si la aplicación incluye:
     telemetryClient.TrackEvent("myEvent", dimensions, measurements);
 ```
 
-tooextract estos valores en el análisis:
+Para extraer estos valores en Analytics:
 
 ```AIQL
 
     customEvents
     | extend p1 = customDimensions.p1,
-      m1 = todouble(customMeasurements.m1) // cast tooexpected type
+      m1 = todouble(customMeasurements.m1) // cast to expected type
 
 ```
 
-tooverify si es una dimensión personalizada de un tipo determinado:
+Para comprobar si una dimensión personalizada es de un tipo determinado:
 
 ```AIQL
 
@@ -556,47 +566,47 @@ tooverify si es una dimensión personalizada de un tipo determinado:
 ```
 
 ## <a name="dashboards"></a>Paneles
-Puede anclar el panel de resultados tooa en orden toobring juntos todos los gráficos y sus tablas más importantes.
+Puede anclar los resultados a un panel para reunir todos los gráficos y tablas más importantes.
 
-* [Panel compartido Azure](app-insights-dashboards.md#share-dashboards): haga clic en el icono de alfiler Hola. Antes de hacerlo, debe tener un panel compartido. Hola portal de Azure, abrir o crear un panel y haga clic en compartir.
+* [Panel compartido de Azure](app-insights-dashboards.md#share-dashboards): haga clic en el icono de anclar. Antes de hacerlo, debe tener un panel compartido. En Azure Portal, abra o cree un panel y haga clic en Compartir.
 * [Panel de Power BI](app-insights-export-power-bi.md): haga clic en Exportar, Consulta de Power BI. Una ventaja de esta alternativa es que puede mostrar la consulta junto con otros resultados procedentes de una gran variedad de orígenes.
 
 ## <a name="combine-with-imported-data"></a>Combinación con datos importados
 
-Informes de análisis un aspecto excelentes en el panel de hello, pero a veces desea tootranslate Hola datos tooa forma por más. Por ejemplo, suponga que los usuarios autenticados se identifican en la telemetría de hello mediante un alias. Le gustaría tooshow nombres su real en los resultados. toodo, necesita un archivo CSV que se asigna desde los nombres reales de hello alias toohello.
+Los informes de análisis se ven perfectos en el panel, pero a veces desea convertir los datos a una forma más simplificada. Por ejemplo, suponga que los usuarios autenticados se identifican en la telemetría mediante un alias. Le gustaría mostrar sus nombres reales en los resultados. Para ello, necesita un archivo CSV que asigna los nombres reales a partir de los alias.
 
-Puede importar un archivo de datos y usarla como cualquiera de las tablas estándar hello (solicitudes, excepciones etc.). Puede consultarla por sí sola o combinarla con otras tablas. Por ejemplo, si tiene una tabla denominada usermap y tiene columnas `realName` y `userId`, puede usar tootranslate hello `user_AuthenticatedId` campo telemetría de solicitud de hello:
+Puede importar un archivo de datos y usarlo como cualquiera de las tablas estándares (solicitudes, excepciones, etc.). Puede consultarla por sí sola o combinarla con otras tablas. Por ejemplo, si tiene una tabla denominada usermap y tiene las columnas `realName` y `userId`, se puede utilizar para traducir el campo `user_AuthenticatedId` en la telemetría de solicitud:
 
 ```AIQL
 
     requests
     | where notempty(user_AuthenticatedId)
     | project userId = user_AuthenticatedId
-      // get hello realName field from hello usermap table:
+      // get the realName field from the usermap table:
     | join kind=leftouter ( usermap ) on userId
       // count transactions by name:
     | summarize count() by realName
 ```
 
-tooimport una tabla, en la hoja de esquema de hello, en **otros orígenes de datos**, siga Hola instrucciones tooadd un nuevo origen de datos, mediante la carga de una muestra de los datos. A continuación, puede utilizar estas tablas de tooupload de definición.
+Para importar una tabla, en la hoja de esquema, en **Other Data Sources** (Otros orígenes de datos), siga las instrucciones para agregar un nuevo origen de datos, mediante la carga de una muestra de los datos. Luego puede usar esta definición para cargar las tablas.
 
-la característica de importación de Hello está actualmente en vista previa, por lo que inicialmente se verá un vínculo "Póngase en contacto con nosotros" bajo "Otros orígenes de datos." Utilice este toosign toohello programa de vista previa y vínculo de hello, a continuación, se reemplazará por un botón "Agregar nuevo origen de datos".
+La característica de importación está actualmente en versión preliminar, por lo que verá inicialmente un vínculo "Póngase en contacto con nosotros" en "Other data sources" (Otros orígenes de datos). Úselo para suscribirse al programa de versión preliminar y luego el vínculo se reemplazará por un botón "Add new data source" (Agregar nuevo origen de datos).
 
 
 ## <a name="tables"></a>Tablas
-secuencia de Hola de telemetría recibido de la aplicación sea accesible a través de varias tablas. esquema de Hola de propiedades disponibles para cada tabla es visible a la izquierda de Hola de ventana hello.
+A la transmisión de datos de telemetría recibidos de la aplicación se puede acceder a través de varias tablas. El esquema de propiedades disponibles para cada tabla se puede ver a la izquierda de la ventana.
 
 ### <a name="requests-table"></a>Tabla de solicitudes
-Recuento de las solicitudes HTTP tooyour web app y segmento por nombre de página:
+Contar solicitudes HTTP para su aplicación web y segmento por nombre de página:
 
 ![Contar solicitudes segmentadas por nombre](./media/app-insights-analytics-tour/analytics-count-requests.png)
 
-Busque solicitudes de Hola que producirá un error en la mayoría:
+Buscar solicitudes con más errores:
 
 ![Contar solicitudes segmentadas por nombre](./media/app-insights-analytics-tour/analytics-failed-requests.png)
 
 ### <a name="custom-events-table"></a>Tabla de eventos personalizados
-Si usa [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent) toosend sus propios eventos, puede leerlos desde esta tabla.
+Si utiliza [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent) para enviar sus propios eventos, puede leerlo desde esta tabla.
 
 Veamos un ejemplo en el que el código de aplicación contiene estas líneas:
 
@@ -609,66 +619,66 @@ Veamos un ejemplo en el que el código de aplicación contiene estas líneas:
            {"querytime", totalTime}})
 ```
 
-Muestra la frecuencia de Hola de estos eventos:
+Mostrar la frecuencia de estos eventos:
 
 ![Mostrar la tasa de eventos personalizados](./media/app-insights-analytics-tour/analytics-custom-events-rate.png)
 
-Extraer las medidas y dimensiones de eventos de hello:
+Extraer las medidas y dimensiones de los eventos:
 
 ![Mostrar la tasa de eventos personalizados](./media/app-insights-analytics-tour/analytics-custom-events-dimensions.png)
 
 ### <a name="custom-metrics-table"></a>Tabla de métricas personalizadas
-Si utilizas [TrackMetric()](app-insights-api-custom-events-metrics.md#trackmetric) toosend sus propios valores de métrica, encontrará sus resultados en hello **customMetrics** secuencia. Por ejemplo:  
+Si utiliza [TrackMetric()](app-insights-api-custom-events-metrics.md#trackmetric) para enviar sus propios valores de métrica, encontrará los resultados en la transmisión **customMetrics**. Por ejemplo:  
 
 ![Métricas personalizadas en Application Insights Analytics](./media/app-insights-analytics-tour/analytics-custom-metrics.png)
 
 > [!NOTE]
-> En [Explorer métricas](app-insights-metrics-explorer.md), todas las medidas personalizadas de tipo tooany adjunto de telemetría aparecen juntas en la hoja de métricas de hello junto con las métricas que se envían con `TrackMetric()`. Pero en el análisis, las medidas personalizadas siguen siendo adjunta toowhichever tipo de telemetría que se llevaron a en - eventos o las solicitudes etc. - mientras métricas enviadas por TrackMetric aparecen en su propia secuencia.
+> En el [Explorador de métricas](app-insights-metrics-explorer.md), todas las medidas personalizadas adjuntas a cualquier tipo de telemetría aparecen juntas en la hoja de métricas, junto con las métricas enviadas mediante `TrackMetric()`. Sin embargo, en Analytics, las medidas personalizadas siguen adjuntas al tipo de telemetría en que se realizaron (eventos, solicitudes, etc.), mientras que las enviadas por TrackMetric aparecen en su propia transmisión.
 >
 >
 
 ### <a name="performance-counters-table"></a>Tabla de contadores de rendimiento
-Los [contadores de rendimiento](app-insights-performance-counters.md) muestran métricas del sistema básico de la aplicación, como CPU, memoria y la utilización de la red. Puede configurar Hola SDK toosend adicionales, incluidos sus propios contadores.
+Los [contadores de rendimiento](app-insights-performance-counters.md) muestran métricas del sistema básico de la aplicación, como CPU, memoria y la utilización de la red. Puede configurar el SDK para que envíe contadores adicionales, entre los que se incluyen sus propios contadores.
 
-Hola **performanceCounters** esquema expone hello `category`, `counter` nombre, y `instance` nombre de cada contador de rendimiento. Nombres de instancia de contador son solo los contadores de rendimiento de toosome aplicables y suelen indican nombre Hola de hello proceso toowhich Hola recuento está relacionada con. En la telemetría de Hola para cada aplicación, verá solo los contadores de Hola para esa aplicación. Por ejemplo, toosee qué contadores están disponibles:
+El esquema **performanceCounters** expone `category`, el nombre de `counter` y el nombre de `instance` de cada contador de rendimiento. Los nombres de instancia de contador solo se pueden aplicar a algunos contadores de rendimiento y suele indicar el nombre del proceso con el que está relacionado el recuento. En la telemetría de cada aplicación, solo se ven los contadores de dicha aplicación. Por ejemplo, para ver qué contadores están disponibles:
 
 ![Contadores de rendimiento en Application Insights Analytics](./media/app-insights-analytics-tour/analytics-performance-counters.png)
 
-un gráfico de memoria disponible a través de hello tooget periodo seleccionado:
+Para obtener un gráfico de la memoria disponible en un período seleccionado:
 
 ![Gráfico de tiempo de la memoria in Application Insights Analytics](./media/app-insights-analytics-tour/analytics-available-memory.png)
 
-Al igual que otros telemetría **performanceCounters** también tiene una columna `cloud_RoleInstance` que indica la identidad de Hola de máquina de host de hello en el que se ejecuta la aplicación. Por ejemplo, toocompare Hola rendimiento de la aplicación en equipos diferentes de hello:
+Al igual que otros datos de telemetría, **performanceCounters** también tiene una columna `cloud_RoleInstance` que indica la identidad del equipo host en el que se ejecuta la aplicación. Por ejemplo, para comparar el rendimiento de una aplicación en distintas máquinas:
 
 ![Rendimiento segmentado por instancia de rol en Application Insights Analytics](./media/app-insights-analytics-tour/analytics-metrics-role-instance.png)
 
 ### <a name="exceptions-table"></a>Tabla de excepciones
 [Las excepciones que notifica la aplicación](app-insights-asp-net-exceptions.md) están disponibles en esta tabla.
 
-toofind Hola solicitud HTTP que estaba controlando la aplicación cuando se produce la excepción de hello, combine operation_Id:
+Para buscar la solicitud HTTP que controlaba la aplicación cuando se produjo la excepción, combine operation_Id:
 
 ![Combinar excepciones con solicitudes en operation_Id](./media/app-insights-analytics-tour/analytics-exception-request.png)
 
 ### <a name="browser-timings-table"></a>Tabla de intervalos de explorador
 `browserTimings` muestra los datos de carga de las páginas recopilados en los exploradores de los usuarios.
 
-[Configurar la aplicación para telemetría de cliente](app-insights-javascript.md) en orden toosee estas métricas.
+[Configure su aplicación para la telemetría del lado cliente](app-insights-javascript.md) para ver estas métricas.
 
-esquema de Hello incluye [métricas que indica la longitud de Hola de distintas fases del proceso de carga de página de hello](app-insights-javascript.md#page-load-performance). (No indican longitud Hola de tiempo a los usuarios leen una página.)  
+El esquema incluye [métricas que indican las duraciones de las distintas fases del proceso de carga de las páginas](app-insights-javascript.md#page-load-performance) (no indican el periodo durante el que los usuarios leen una página).  
 
-Mostrar popularities Hola de diferentes páginas y tiempos de cada página de carga:
+Mostrar la popularidad de las distintas páginas y los tiempos de carga de cada página:
 
 ![Tiempos de carga de páginas en Analytics](./media/app-insights-analytics-tour/analytics-page-load.png)
 
 ### <a name="availability-results-table"></a>Tabla de resultados de la disponibilidad
-`availabilityResults`Muestra Hola resultados de la [pruebas web](app-insights-monitor-web-app-availability.md). Cada ejecución de las pruebas en cada una de las ubicaciones se notifica por separado.
+`availabilityResults` muestra los resultados de sus [pruebas web](app-insights-monitor-web-app-availability.md). Cada ejecución de las pruebas en cada una de las ubicaciones se notifica por separado.
 
 ![Tiempos de carga de páginas en Analytics](./media/app-insights-analytics-tour/analytics-availability.png)
 
 ### <a name="dependencies-table"></a>Tabla de dependencias
-Contiene los resultados de las llamadas que la aplicación hace toodatabases y las API de REST y otros llama tooTrackDependency(). También incluye las llamadas AJAX realizadas desde el Explorador de Hola.
+Contiene los resultados de las llamadas que su aplicación realiza a las bases de datos y a las API de REST, así como de otras llamadas a TrackDependency(). También incluye las llamadas AJAX realizadas desde el explorador.
 
-Llamadas AJAX desde el Explorador de hello:
+Llamadas AJAX desde el explorador:
 
 ```AIQL
 
@@ -676,7 +686,7 @@ Llamadas AJAX desde el Explorador de hello:
     | take 10
 ```
 
-Llamadas de dependencia del servidor hello:
+Llamadas de dependencia desde el servidor:
 
 ```AIQL
 
@@ -684,10 +694,10 @@ Llamadas de dependencia del servidor hello:
     | take 10
 ```
 
-Resultados de la dependencia de servidor siempre muestran `success==False` si hello no está instalado el agente de visión de la aplicación. Sin embargo, hello otros datos son correctos.
+Los resultados de la dependencia de servidor siempre muestran `success==False` si no está instalado el agente de Application Insights. Sin embargo, los demás datos son correctos.
 
 ### <a name="traces-table"></a>Tabla de seguimientos
-Contiene la telemetría de hello enviado por una aplicación que use TrackTrace(), o [otros marcos de registro](app-insights-asp-net-trace-logs.md).
+Contiene los datos de telemetría que ha enviado la aplicación mediante TrackTrace(), u [otras plataformas de registro](app-insights-asp-net-trace-logs.md).
 
 ## <a name="video"></a>Vídeo 
 
@@ -700,6 +710,6 @@ Consultas avanzadas:
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Referencia de idioma de Analytics](app-insights-analytics-reference.md)
-* [Hoja de referencia rápida de SQL-usuarios](https://aka.ms/sql-analytics) traduce giros de hello más comunes.
+* [La hoja de referencia rápida de usuarios de SQL](https://aka.ms/sql-analytics) traduce las expresiones más comunes.
 
 [!INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]

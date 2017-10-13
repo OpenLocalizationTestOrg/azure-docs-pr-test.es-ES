@@ -1,6 +1,6 @@
 ---
-title: "¿aaaWhat es el panel de acceso de hello en Azure Active Directory? | Microsoft Docs"
-description: "Obtenga información acerca de cómo toouse variaciones del programa Hola a tener acceso a aplicaciones SaaS del panel (explorador web, aplicación de Android, aplicación de iPhone y iPad) tooaccess."
+title: "¿Qué es el panel de acceso de Azure Active Directory? | Microsoft Docs"
+description: "Aprenda a usar las variaciones del panel de acceso (explorador web, aplicación Android, y aplicación iPhone y iPad) para tener acceso a las aplicaciones SaaS."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,83 +15,83 @@ ms.date: 07/31/2017
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 800be6a69f13978c5b88e2fe28a416d4b763656c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: bd9066c251188c0f18fe1a9403baa2beaeeb987c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="what-is-hello-access-panel"></a>¿Qué es el panel de acceso de hello?
+# <a name="what-is-the-access-panel"></a>¿Qué es el panel de acceso?
 
-panel de acceso de Hello es un portal basado en web. Permite que un usuario con un trabajo o cuenta del centro educativo en aplicaciones de Azure Active Directory tooview y de inicio en la nube un administrador de Azure AD le haya concedido acceso a. También puede usar grupos de autoservicio y las capacidades de administración de aplicaciones a través del panel de acceso de Hola.
+El panel de acceso es un portal web. Permite que un usuario con una cuenta profesional o educativa en Azure Active Directory (Azure AD) vea e inicie aplicaciones basadas en la nube a las que el administrador de Azure AD le concedió acceso. También se pueden usar las funcionalidades de administración de grupos de autoservicio y aplicaciones a través del panel de acceso.
 
-panel de acceso de Hola se es independiente de hello portal de Azure y realiza no has sido tu toohave una suscripción de Azure.
+El panel de acceso es independiente de Azure Portal y no requiere que los usuarios tengan una suscripción de Azure.
 
 ![Panel de acceso][1]
 
-panel de acceso de Hello permite tooedit parte de la configuración del perfil, incluidos Hola capacidad:
+El panel de acceso permite que los usuarios editen parte de la configuración de su perfil, por ejemplo, para lo siguiente:
 
-- Cambiar la contraseña de hello asociado a una cuenta profesional o educativa
+- Cambiar la contraseña asociada a una cuenta profesional o educativa.
 
 - Editar configuración de restablecimiento de contraseña
 
-- Editar contacto y autenticación de factor de toomulti relacionadas de la configuración de preferencias (para las cuentas que se han toouse requiere que un administrador)
+- Editar la configuración de contacto y preferencias relacionada con la autenticación multifactor (en el caso de las cuentas para las que un administrador requirió su uso)
 
 - Ver detalles de la cuenta, como el identificador de usuario, el correo electrónico alternativo, y los números de teléfono móvil y del trabajo.
 
-- Ver e iniciar aplicaciones de basado en la nube que Hola Administrador de Azure AD le haya concedido acceso a. Para obtener más información acerca del panel de acceso de Hola desde la perspectiva de los usuarios de hello, consulte uso de panel de acceso de Hola. 
+- Ver e iniciar aplicaciones basadas en la nube a las que el administrador de Azure AD les concedió acceso. Para obtener más información sobre el panel de acceso desde la perspectiva de los usuarios, consulte Utilización del panel de acceso. 
 
-- Autoadministrar grupos. Más específicamente, el Administrador de Hola puede crear y administrar grupos de seguridad y solicitar suscripciones a grupos de seguridad en Azure AD. Para más información, consulte [Configuración de Azure Active Directory para la administración de grupos de autoservicio](active-directory-accessmanagement-self-service-group-management.md) y [Administración del acceso a los recursos con grupos de Azure Active Directory](active-directory-manage-groups.md).
-
-
+- Autoadministrar grupos. Más concretamente, el administrador puede crear y administrar grupos de seguridad y solicitar pertenencias a grupos de seguridad en Azure AD. Para más información, consulte [Configuración de Azure Active Directory para la administración de grupos de autoservicio](active-directory-accessmanagement-self-service-group-management.md) y [Administración del acceso a los recursos con grupos de Azure Active Directory](active-directory-manage-groups.md).
 
 
-## <a name="accessing-hello-access-panel"></a>Al tener acceso al panel de acceso de Hola
 
-Puede obtener acceso al panel de acceso de hello visitando Hola siguiente dirección URL en un explorador web:`http://myapps.microsoft.com`
 
-Si tiene la configuración de la página de inicio de sesión de marca personalizada, puede cargar esta personalización de marca mediante la anexión de final de toohello de dominio de su organización de dirección URL de hello:`http://myapps.microsoft.com/<your domain>.com`
+## <a name="accessing-the-access-panel"></a>Acceso al panel de acceso
+
+Los usuarios pueden acceder al panel de acceso visitando la siguiente dirección URL en un explorador web: `http://myapps.microsoft.com`.
+
+Con la configuración de marca personalizada en la página de inicio de sesión, se puede cargar esta personalización de marca de forma predeterminada anexando el dominio de su organización al final de la dirección URL: `http://myapps.microsoft.com/<your domain>.com`.
 
 En este caso, se puede utilizar cualquier nombre de dominio activo o comprobado que se haya configurado en Azure Portal.
 
 ![Nombre de dominio de Wingtip Toys][2]  
 
-Necesita toodistribute Hola URL tooall a los usuarios que iniciarán sesión en tooapplications que se integran con Azure AD.
+La dirección URL se debe distribuir a todos los usuarios que iniciarán sesión en las aplicaciones integradas con Azure AD.
 
 ## <a name="authentication"></a>Autenticación
 
-panel de acceso de hello tooreach, se debe autenticar a través de una cuenta profesional o educativa en Azure AD. Puede ser autenticado tooAzure AD directamente. Además, si una organización configuró la federación mediante Servicios de federación de Active Directory (AD FS) u otras tecnologías, Windows Server Active Directory puede autenticar a los usuarios.
+Para llegar al panel de acceso, hay que autenticarse con una cuenta profesional o educativa en Azure AD. Un usuario se puede autenticar en Azure AD directamente. Además, si una organización configuró la federación mediante Servicios de federación de Active Directory (AD FS) u otras tecnologías, Windows Server Active Directory puede autenticar a los usuarios.
 
-Si tiene una suscripción de Azure u Office 365 y ha estado utilizando Hola portal de Azure o una aplicación de Office 365, puede ver lista de Hola de aplicaciones sin firmar de nuevo. No se autentican si eres están toosign solicitada en mediante Hola username y password para su cuenta de Azure AD. Si su organización ha configurado federación, escriba el nombre de usuario de hello es suficiente.
+Si un usuario tiene una suscripción para Azure u Office 365 y ha usado Azure Portal o una aplicación de Office 365, verá la lista de aplicaciones sin necesidad de volver a iniciar sesión. A los usuarios que no se han autenticado se les solicitará que inicien sesión utilizando el nombre de usuario y la contraseña de su cuenta en Azure AD. Si la organización configuró la federación, bastará con escribir el nombre de usuario.
 
-Cuando se autentique, puede interactuar con las aplicaciones de Hola que el administrador ha integrado con el directorio de Hola. toolearn toointegrate aplicaciones con Azure AD, vea [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Después de la autenticación, los usuarios pueden interactuar con las aplicaciones que el administrador integró con el directorio. Para obtener información sobre cómo integrar las aplicaciones con Azure AD, vea [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 ## <a name="web-browser-requirements"></a>Requisitos del explorador web
 
-Como mínimo, panel de acceso de hello requiere un explorador que admita JavaScript y se han habilitado de CSS. Para el usuario de hello toobe firmado en tooapplications a través de basada en contraseña de inicio de sesión único (SSO), extensión del panel de acceso de hello debe instalarse en el explorador. extensión de Hola se descarga automáticamente cuando se selecciona una aplicación que está configurada para el SSO basado en contraseña.
+Como mínimo, el panel de acceso requiere un explorador que admita JavaScript y que tenga CSS habilitado. Para que el usuario inicie sesión en aplicaciones mediante el inicio de sesión único (SSO) basado en contraseña, debe instalarse la extensión del panel de acceso en el explorador. Esta extensión se descarga automáticamente cuando un usuario selecciona una aplicación que está configurada para SSO basado en contraseña.
 
-extensión del panel de acceso de Hello está actualmente disponible para Internet Explorer 8 y versiones posteriores, Edge, Chrome y Firefox los exploradores.
+En estos momentos, la extensión del panel de acceso está disponible para los exploradores Internet Explorer 8 y versiones posteriores, Edge, Chrome y Firefox.
 
 ## <a name="mobile-app-support"></a>Compatibilidad para aplicación móvil
 
-equipo de Azure Active Directory Hola publica Hola mi aplicación móvil de aplicaciones. Cuando se instala la aplicación hello, puede iniciar sesión en aplicaciones de SSO basada en toopassword en dispositivos iOS y Android.
+El equipo de Azure Active Directory publica la aplicación móvil Mis aplicaciones. Cuando los usuarios instalan esta aplicación, pueden iniciar sesión en aplicaciones SSO basadas en contraseña en dispositivos iOS y Android.
 
 > [!NOTE]
-> Puede iniciar sesión tooapplications que admitan una federación con Azure AD (incluyendo Salesforce, Google Apps, Dropbox, cuadro, Concur, Workday, Office 365 y otras más de 70 más) en prácticamente cualquier explorador web, en cualquier dispositivo, sin necesidad de una aplicación de complemento o móvil. Todos los demás [tener acceso a las experiencias de panel](https://myapps.microsoft.com/) también no requieren Hola mi toobe de aplicación móvil de las aplicaciones que se usa en un dispositivo móvil.
+> Los usuarios pueden iniciar sesión en aplicaciones que admitan la federación con Azure AD (como Salesforce, Google Apps, Dropbox, Box, Concur, Workday, Office 365 y otras 70 más) prácticamente en cualquier explorador web, en cualquier dispositivo, sin necesidad de instalar complementos o una aplicación móvil. Tampoco necesitará usar la aplicación móvil Mis aplicaciones en un dispositivo móvil para disfrutar del resto de la [experiencia del panel de acceso](https://myapps.microsoft.com/).
 >
 >
 
 ### <a name="my-apps-for-android"></a>Mis aplicaciones para Android
 
 Mis aplicaciones para Android es compatible con cualquier dispositivo Android que ejecute la versión 4.1 o posterior de Android.  
-Está disponible en hello [Google Play store](https://play.google.com/store/apps/details?id=com.microsoft.myapps).
+Está disponible actualmente en [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.myapps).
 
 ![Mis aplicaciones para Android][3]   
 
 ### <a name="my-apps-for-iphone-and-ipad"></a>Mis aplicaciones para iPhone y iPad
 
 Mis aplicaciones para iOS es compatible con cualquier dispositivo iPhone o iPad que ejecute la versión 7 o posterior de iOS.  
-Está disponible en hello [App Store de Apple](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8).
+Está disponible actualmente en el [App Store de Apple](https://itunes.apple.com/us/app/my-apps-azure-active-directory/id824048653?mt=8).
 
 ![Mis aplicaciones para iOS][4]    
 
@@ -99,10 +99,10 @@ Está disponible en hello [App Store de Apple](https://itunes.apple.com/us/app/m
 
 ## <a name="managed-browser-for-my-apps"></a>Explorador administrado para Mis aplicaciones
 
-Mis aplicaciones también se integra en hello Intune Managed Browser. Hola Intune Managed Browser para dispositivos iOS y Android desempeña un papel clave para garantizar que los datos en dispositivos móviles se mantienen seguros. Asimismo, permite ver y explorar páginas web que podrían contener información de la compañía, además de proporcionar una experiencia de exploración web segura.  
-Buscar aplicaciones de toomy de acceso rápido en la página principal del explorador administrado y en los marcadores, lo que le proporciona menos hace clic en tooreach cualquier aplicación que desee tooaccess.
+Mis aplicaciones también se integra en Intune Managed Browser. La solución Intune Managed Browser para dispositivos iOS y Android desempeña un rol clave a la hora de garantizar que los datos de los dispositivos móviles se mantengan seguros. Asimismo, permite ver y explorar páginas web que podrían contener información de la compañía, además de proporcionar una experiencia de exploración web segura.  
+Puede encontrar un acceso rápido a Mis aplicaciones en la página principal de Managed Browser y en los marcadores; de este modo, llegará más rápido a cualquier aplicación a la que quiera acceder.
 
-Está disponible en hello [App Store de Apple](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) y [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser&hl=en).
+Está disponible en el [App Store de Apple](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) y en [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser&hl=en).
 
 ![Explorador administrado para Mis aplicaciones][5]    
 
@@ -110,81 +110,81 @@ Está disponible en hello [App Store de Apple](https://itunes.apple.com/us/app/m
 
 
 
-## <a name="tips-for-testing-hello-user-experience"></a>Sugerencias para la experiencia del usuario de prueba Hola
+## <a name="tips-for-testing-the-user-experience"></a>Sugerencias para probar la experiencia del usuario
 
-Si es un administrador de Azure y ha iniciado sesión toohello portal de Azure con una cuenta en el directorio de hello, están firmados automáticamente en el panel de acceso toohello como su cuenta actual. En este caso, puede ver todas las aplicaciones que se han asignado tooyou.
+Los administradores de Azure que hayan iniciado sesión en Azure Portal con una cuenta en el directorio iniciarán la sesión automáticamente en el panel de acceso con la cuenta de administrador actual. En este caso, puede ver todas las aplicaciones que se han asignado a esta cuenta.
 
-**tootest como un *diferentes* cuenta de usuario:**
+**Para probar con *otra* cuenta de usuario, siga estos pasos:**
 
-1. Haga clic en el menú de usuario de hello en la esquina superior derecha de Hola de Hola portal de Azure o panel de acceso de hello y, a continuación, seleccione **cerrar sesión**. 
-2. Vaya toohello [panel de acceso](http://myapps.microsoft.com).
-3. En la página de inicio de sesión de hello, el nombre de usuario de tipo hello y contraseña de cuenta de hello en el directorio que desee tootest.
+1. Haga clic en el menú de usuario de la esquina superior derecha de Azure Portal o del panel de acceso; luego, seleccione **Cerrar sesión**. 
+2. Vaya al [panel de acceso](http://myapps.microsoft.com).
+3. En la página de inicio de sesión, escriba el nombre de usuario y la contraseña de la cuenta del directorio que desea probar.
 
 
 ## <a name="starting-applications"></a>Inicio de aplicaciones
 
-Varios tipos de aplicaciones pueden aparecer en el panel de acceso de Hola.
+Pueden aparecer varios tipos de aplicaciones en el panel de acceso.
 
 ### <a name="office-365-applications"></a>Aplicaciones de Office 365
 
-Si su organización utiliza aplicaciones de Office 365 y que están autorizados para ellos, las aplicaciones de Office 365 Hola aparecen en el panel de acceso.
+Si una organización usa aplicaciones de Office 365 y el usuario dispone de licencia para ellas, esas aplicaciones aparecen en el panel de acceso del usuario.
 
-Al hacer clic en una ventana de aplicación para una aplicación de Office 365, son toohello redirigido automáticamente con la sesión iniciada y aplicación.
+Cuando un usuario hace clic en un icono de una aplicación de Office 365, se redirige a esa aplicación e inicia sesión automáticamente.
 
 ### <a name="microsoft-and-third-party-applications-configured-with-federation-based-sso"></a>Aplicaciones de Microsoft y de terceros configuradas con SSO basado en federación
 
-El administrador puede agregar aplicaciones en la sección de Active Directory del portal de Azure Hola Hola con modo SSO de hello establecido demasiado**Azure AD Single Sign-On**. Solamente puede ver estas aplicaciones si el administrador haya concedido explícitamente que acceso toohello aplicaciones.
+El administrador puede agregar aplicaciones en la sección Active Directory de Azure Portal con el modo de SSO establecido en **Inicio de sesión único de Azure AD**. Un usuario ve estas aplicaciones solo si el administrador concedió expresamente acceso a las aplicaciones a ese usuario.
 
-Al hacer clic en un icono para una de estas aplicaciones, se redirigen y toohello aplicación inicia sesión automáticamente.
+Cuando un usuario hace clic en el icono de una de estas aplicaciones, se le redirige a esa aplicación e inicia sesión automáticamente.
 
 ### <a name="password-based-sso-without-identity-provisioning"></a>SSO basado en contraseña sin aprovisionamiento de identidad
 
-El administrador puede agregar aplicaciones en la sección de Active Directory del portal de Azure Hola Hola con modo SSO de hello establecido demasiado**basado en contraseña Single Sign-On**. Todos los usuarios en el directorio de hello pueden ver todas las aplicaciones que se han configurado en este modo.
+El administrador puede agregar aplicaciones en la sección Active Directory de Azure Portal con el modo de SSO establecido en **Inicio de sesión único basado en contraseña**. Todos los usuarios del directorio ven todas las aplicaciones que se han configurado en este modo.
 
-Hello primera vez, hace clic en un icono para una de estas aplicaciones, son tooinstall solicitadas Hola complemento para Internet Explorer o Chrome SSO de contraseña. instalación de Hello puede requerir toorestart el explorador web. Al devolver el panel de acceso de toohello y haga clic en icono de aplicación Hola de nuevo, se le solicitará un nombre de usuario y una contraseña para la aplicación hello. Una vez haya escrito el nombre de usuario y la contraseña, estas credenciales se almacenan de forma segura y vinculan tooyour cuenta en Azure AD.
+La primera vez que un usuario haga clic en el icono de una de estas aplicaciones, se le pedirá que instale el complemento SSO de contraseña para Internet Explorer o Chrome. La instalación podría requerir que el usuario reinicie el explorador web. Cuando el usuario vuelve al panel de acceso y hace clic de nuevo en el icono de la aplicación, se le pide el nombre de usuario y la contraseña de dicha aplicación. Una vez que escribe el nombre de usuario y la contraseña, estas credenciales se almacenan de forma segura en Azure AD y se vinculan con su cuenta en Azure AD.
 
-Hola próxima vez que haga clic en ventana de la aplicación hello, iniciará sesión automáticamente en la aplicación toohello.  
-No tiene tooenter sus credenciales de nuevo y o instalar Hola complemento SSO de contraseña.
+La próxima vez que el usuario haga clic en el icono de la aplicación, iniciará sesión automáticamente en la aplicación.  
+No tendrá que volver a escribir las credenciales ni instalar otra vez el complemento SSO de contraseña.
 
-Si han cambiado sus credenciales en la aplicación de terceros de destino de hello, también debe actualizar las credenciales que se almacenan en Azure AD. 
+Si las credenciales de un usuario han cambiado en la aplicación de terceros de destino, el usuario también debe actualizar sus credenciales almacenadas en Azure AD. 
 
-**credenciales de tooupdate:**
+**Para actualizar las credenciales, siga estos pasos:**
 
-1. Seleccione el icono de hello en la ventana de la aplicación hello.
-2. Seleccione **Actualizar credenciales** Hola a tooreenter Hola username y la contraseña de aplicación.
+1. Seleccione el icono en el icono de la aplicación.
+2. Seleccione **Actualizar credenciales** para volver a escribir el nombre de usuario y la contraseña de la aplicación.
 
 
 ### <a name="password-based-sso-with-identity-provisioning"></a>SSO basado en contraseña con aprovisionamiento de identidad
 
-El administrador puede agregar aplicaciones en hello **Active Directory** sección del portal de Azure con el modo SSO de Hola Hola establecido demasiado**basado en contraseña Single Sign-On**, junto con el aprovisionamiento de identidad.
+El administrador puede agregar aplicaciones en la sección **Active Directory** de Azure Portal con el modo de SSO establecido en **Inicio de sesión único basado en contraseña**, además del aprovisionamiento de identidad.
 
-Hello primera vez, hace clic en una ventana de aplicación para una de estas aplicaciones, son tooinstall solicitadas hello **SSO de contraseña complemento para Internet Explorer o Chrome**. instalación de Hello puede requerir toorestart el explorador web.  
-Al devolver el panel de acceso de toohello y haga clic en icono de aplicación Hola de nuevo, iniciará sesión automáticamente en la aplicación toohello.
+La primera vez que un usuario haga clic en el icono de una de estas aplicaciones, se le pedirá que instale el **complemento SSO de contraseña para Internet Explorer o Chrome**. La instalación podría requerir que el usuario reinicie el explorador web.  
+Cuando vuelva al panel de acceso y haga clic otra vez en el icono de la aplicación, iniciará sesión automáticamente en ella.
 
-Algunas aplicaciones pueden necesitar toochange la contraseña de inicio de sesión primero en Hola. Si han cambiado sus credenciales en la aplicación de terceros de destino de hello, también debe actualizar las credenciales de Hola que se almacenan en Azure AD. 
+Algunas aplicaciones pueden requerir que el usuario cambie su contraseña en el primer inicio de sesión. Si las credenciales de un usuario han cambiado en la aplicación de terceros de destino, este también debe actualizar sus credenciales almacenadas en Azure AD. 
 
-**credenciales de tooupdate:**
+**Para actualizar las credenciales, siga estos pasos:**
 
-1. Seleccione el icono de hello en la ventana de la aplicación hello.
-2. Seleccione **Actualizar credenciales** Hola a tooreenter Hola username y la contraseña de aplicación.
+1. Seleccione el icono en el icono de la aplicación.
+2. Seleccione **Actualizar credenciales** para volver a escribir el nombre de usuario y la contraseña de la aplicación.
 
 
 ### <a name="application-with-existing-sso-solutions"></a>Aplicación con soluciones SSO existentes
 
-tooconfigure SSO para una aplicación, Hola portal de Azure proporciona una tercera opción llama **existente Single Sign-On**. Esta opción permite la toocreate administrador una aplicación de tooan de vínculo y lo coloca en el panel de acceso de Hola para los usuarios seleccionados.
+Para configurar SSO en una aplicación, Azure Portal proporciona una tercera opción: **Inicio de sesión único existente**. Esta opción permite que el administrador cree un vínculo a una aplicación y lo coloque en el panel de acceso de los usuarios seleccionados.
 
-Por ejemplo, si una aplicación está configurada tooauthenticate a los usuarios mediante AD FS 2.0, el administrador puede usar hello **existente Single Sign-On** opción toocreate un tooit de vínculo en el panel de acceso de Hola. Cuando se tiene acceso el vínculo de hello, se autentican a través de AD FS 2.0 o cualquier aplicación de Hola de solución SSO existente proporciona.
+Por ejemplo, si hay una aplicación configurada para autenticar usuarios mediante AD FS 2.0, el administrador puede usar la opción **Inicio de sesión único existente** y crearle un vínculo en el panel de acceso. Cuando los usuarios tienen acceso al vínculo, se autentican mediante AD FS 2.0 o cualquier solución SSO existente que brinde la aplicación.
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-- toosee una lista de todos los temas que son la administración de tooapplication relacionados, vea hello [índice de artículos para la administración de la aplicación en Azure Active Directory](active-directory-apps-index.md).
+- Para ver una lista de todos los temas relacionados con la administración de aplicaciones, consulte [Índice de artículos sobre la administración de aplicaciones en Azure Active Directory](active-directory-apps-index.md).
  
-- toolearn toointegrate una aplicación SaaS en Azure AD, vea hello [lista de tutoriales sobre cómo las aplicaciones de SaaS toointegrate](active-directory-saas-tutorial-list.md).
+- Si quiere saber cómo integrar una aplicación SaaS en Azure AD, vea [Lista de tutoriales sobre cómo integrar aplicaciones SaaS](active-directory-saas-tutorial-list.md).
  
-- toolearn más información acerca de la administración de aplicaciones con Azure AD, vea hello [Introducción toosingle-inicio de sesión y administrar el acceso a la aplicación con Azure Active Directory](active-directory-appssoaccess-whatis.md).
+- En el caso de que necesite más detalles sobre cómo administrar aplicaciones con Azure AD, consulte [Introducción al inicio de sesión único y la administración del acceso a las aplicaciones con Azure Active Directory](active-directory-appssoaccess-whatis.md).
  
-- toolearn más información acerca de aprovisionamiento de usuarios, consulte [automatizar el aprovisionamiento de usuarios y la cancelación de las aplicaciones de tooSaaS](active-directory-saas-app-provisioning.md).
+- Para obtener más información sobre el aprovisionamiento de usuarios, vea [Aprovisionamiento y desaprovisionamiento automático de usuarios para aplicaciones SaaS](active-directory-saas-app-provisioning.md).
 
 <!--Image references-->
 [1]: ./media/active-directory-saas-access-panel-introduction/01.png

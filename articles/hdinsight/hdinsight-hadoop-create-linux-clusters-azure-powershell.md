@@ -1,6 +1,6 @@
 ---
-title: "clústeres de Hadoop de aaaCreate con PowerShell, HDInsight de Azure | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toocreate Hadoop, HBase, tormenta o Spark clusters en Linux para HDInsight mediante Azure PowerShell."
+title: "Creación de clústeres de Hadoop con PowerShell - Azure HDInsight | Microsoft Docs"
+description: "Aprenda a crear clústeres de Hadoop, HBase, Storm o Spark en Linux para HDInsight con Azure PowerShell."
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -14,77 +14,77 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/10/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 53afe4702f6b61a0720ceda48a4a34d7fa8797d1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 079a3d1c7f91477d641dbc65fe0f04e86a0dcd30
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Crear clústeres basados en Linux en HDInsight con Azure PowerShell
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Azure PowerShell es un entorno de scripting eficaz que puede usar toocontrol y automatizar la implementación de Hola y administración de las cargas de trabajo en Microsoft Azure. Este documento proporciona información sobre cómo agrupar toocreate un HDInsight basados en Linux mediante el uso de PowerShell de Azure. También se incluye un script de ejemplo.
+Azure PowerShell es un eficaz entorno de scripting que puede usar para controlar y automatizar la implementación y la administración de sus cargas de trabajo en Microsoft Azure. En este documento se ofrece información sobre cómo crear un clúster de HDInsight basado en Linux mediante Azure PowerShell. También se incluye un script de ejemplo.
 
 > [!NOTE]
-> Azure PowerShell solo está disponible en clientes de Windows. Si utiliza un cliente de Mac OS X, Unix o Linux, consulte [crear un clúster de HDInsight basados en Linux mediante Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md) para obtener información acerca del uso de hello Azure CLI toocreate un clúster.
+> Azure PowerShell solo está disponible en clientes de Windows. Si está usando un cliente de Linux, Unix o Mac OS X, consulte [Crear clústeres basados en Linux en HDInsight con la CLI de Azure](hdinsight-hadoop-create-linux-clusters-azure-cli.md) para más información sobre el uso de la CLI de Azure para crear un clúster.
 
 ## <a name="prerequisites"></a>Requisitos previos
-Debe disponer de hello siguiente antes de iniciar este procedimiento:
+Antes de iniciar este procedimiento, debe tener lo siguiente:
 
 * Una suscripción de Azure. Vea [Obtener evaluación gratuita de Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * [Azure PowerShell](/powershell/azure/install-azurerm-ps)
 
     > [!IMPORTANT]
-    > La compatibilidad con Azure PowerShell para administrar recursos de HDInsight mediante Azure Service Manager está **en desuso** y dejó de estar disponible por completo el 1 de enero de 2017. Hola pasos de este documento use Hola nuevos cmdlets de HDInsight que funcionan con el Administrador de recursos de Azure.
+    > La compatibilidad con Azure PowerShell para administrar recursos de HDInsight mediante Azure Service Manager está **en desuso** y dejó de estar disponible por completo el 1 de enero de 2017. En los pasos descritos en este documento, se usan los nuevos cmdlets de HDInsight que funcionan con Azure Resource Manager.
     >
-    > Siga los pasos de hello en [instale Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) versión más reciente de hello tooinstall de PowerShell de Azure. Si tiene scripts de ese toobe necesidad de modifica toouse Hola nuevos cmdlets que funcionan con el Administrador de recursos de Azure, consulte [tooAzure desarrollo basado en el Administrador de recursos de migración de las herramientas de clústeres de HDInsight](hdinsight-hadoop-development-using-azure-resource-manager.md) para obtener más información.
+    > Para instalar la última versión de Azure PowerShell, siga los pasos descritos en [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Si tiene scripts que se deben modificar para usar los nuevos cmdlets que funcionan con Azure Resource Manager, consulte [Migrating to Azure Resource Manager-based development tools for HDInsight clusters](hdinsight-hadoop-development-using-azure-resource-manager.md) (Migración a herramientas de desarrollo basadas en Azure Resource Manager para clústeres de HDInsight) para más información.
 
 ## <a name="create-cluster"></a>Crear clúster
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-toocreate un clúster de HDInsight mediante el uso de PowerShell de Azure, debe completar Hola procedimientos siguientes:
+Para crear un clúster de HDInsight con Azure PowerShell, debe realizar los procedimientos siguientes:
 
 * Creación de un grupo de recursos de Azure
 * Creación de una cuenta de almacenamiento de Azure
 * Creación de un contenedor de blobs de Azure
 * Creación de un clúster de HDInsight
 
-Hello secuencia de comandos siguiente se muestra cómo toocreate un nuevo clúster:
+El script siguiente muestra cómo crear un nuevo clúster:
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/create-cluster/create-cluster.ps1?range=5-71)]
 
-valores de Hello especificados para el inicio de sesión de hello clúster son toocreate usado Hola cuenta de usuario de Hadoop para clústeres de Hola. Utilice este tooservices de tooconnect cuenta hospedadas en clúster de hello como web API de REST o interfaces de usuario.
+Los valores que se especifican para el inicio de sesión de clúster se usan para crear la cuenta de usuario de Hadoop del clúster. Use esta cuenta para conectarse a servicios hospedados en el clúster como interfaces de usuario web o API de REST.
 
-valores de Hello especificados para el usuario SSH de hello son usuario SSH de hello toocreate usado para clúster Hola. Utilice esta cuenta toostart una sesión SSH remoto en clúster de Hola y ejecutar trabajos. Para obtener más información, vea hello [utilizar SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md) documento.
+Los valores que se especifican para el usuario SSH se usan para crear el usuario SSH para el clúster. Use esta cuenta para iniciar una sesión remota de SSH en el clúster y ejecutar trabajos. Para más información, vea el documento [Uso de SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 > [!IMPORTANT]
-> Si tiene previsto toouse más de 32 nodos de trabajador (en la creación del clúster o Hola escalado del clúster después de la creación), también debe especificar un tamaño de nodo principal con un mínimo de 8 núcleos y 14 GB de RAM.
+> Si tiene pensado usar más de 32 nodos de trabajo (en el momento de crear el clúster o cambiando el tamaño del clúster después de su creación), también debe especificar un tamaño de nodo principal con al menos 8 núcleos y 14 GB de RAM.
 >
 > Para obtener más información acerca de los tamaños de nodo y los costos asociados, consulte [Precios de HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-Puede pasar hasta too20 minutos toocreate un clúster.
+Un clúster puede tardar hasta 20 minutos en crearse.
 
 ## <a name="create-cluster-configuration-object"></a>Creación de un clúster: objeto de configuración
 
-También puede crear un objeto de configuración de HDInsight mediante el cmdlet `New-AzureRmHDInsightClusterConfig`. A continuación, puede modificar estas opciones de configuración adicionales de tooenable de objeto de configuración para el clúster. Por último, utilice hello `-Config` parámetro de hello `New-AzureRmHDInsightCluster` configuración de cmdlet toouse Hola.
+También puede crear un objeto de configuración de HDInsight mediante el cmdlet `New-AzureRmHDInsightClusterConfig`. A continuación, puede modificar este objeto de configuración con el fin de habilitar otras opciones de configuración para el clúster. Por último, utilice el parámetro `-Config` del cmdlet `New-AzureRmHDInsightCluster` para emplear la configuración.
 
-Hello script siguiente crea un tooconfigure de objeto de configuración un servidor de R en el tipo de clúster de HDInsight. configuración de Hello permite a un nodo del borde, RStudio y una cuenta de almacenamiento adicional.
+El script siguiente crea un objeto de configuración para configurar un R Server en el tipo de clúster de HDInsight. La configuración habilita un nodo perimetral, RStudio y una cuenta de almacenamiento adicional.
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/create-cluster/create-cluster-with-config.ps1?range=59-98)]
 
 > [!WARNING]
-> No se admite el uso de una cuenta de almacenamiento en una ubicación diferente que el clúster de HDInsight de Hola. Cuando se usa en este ejemplo, crear cuenta de almacenamiento adicional de Hola Hola misma ubicación que el servidor de Hola.
+> No se admite el uso de una cuenta de almacenamiento en una ubicación diferente a la del clúster de HDInsight. Cuando utilice este ejemplo, cree la cuenta de almacenamiento adicional en la misma ubicación que el servidor.
 
 ## <a name="customize-clusters"></a>Personalización de los clústeres
 
 * Consulte [Personalización de los clústeres de HDInsight con Bootstrap](hdinsight-hadoop-customize-cluster-bootstrap.md#use-azure-powershell).
 * Consulte [Personalización de clústeres de HDInsight mediante la acción de scripts](hdinsight-hadoop-customize-cluster-linux.md).
 
-## <a name="delete-hello-cluster"></a>Eliminar el clúster de Hola
+## <a name="delete-the-cluster"></a>Eliminación del clúster
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -94,7 +94,7 @@ Si experimenta problemas con la creación de clústeres de HDInsight, consulte l
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Ahora que ha creado correctamente un clúster de HDInsight, usar hello después cómo toolearn recursos toowork con el clúster.
+Ahora que ya ha creado con éxito un clúster de HDInsight, use los siguientes recursos para aprender a trabajar con él.
 
 ### <a name="hadoop-clusters"></a>Clústeres Hadoop
 
@@ -118,6 +118,6 @@ Ahora que ha creado correctamente un clúster de HDInsight, usar hello después 
 * [Crear una aplicación independiente con Scala](hdinsight-apache-spark-create-standalone-application.md)
 * [Ejecutar trabajos de forma remota en un clúster de Spark mediante Livy](hdinsight-apache-spark-livy-rest-interface.md)
 * [Spark with BI: Realizar el análisis de datos interactivos con Spark en HDInsight con las herramientas de BI](hdinsight-apache-spark-use-bi-tools.md)
-* [Spark con aprendizaje automático: Use Spark en HDInsight toopredict de resultados de la inspección de alimentos](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+* [Spark con aprendizaje automático: uso de Spark en HDInsight para predecir los resultados de la inspección de alimentos](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Streaming con Spark: uso de Spark en HDInsight para compilar aplicaciones de streaming en tiempo real](hdinsight-apache-spark-eventhub-streaming.md)
 

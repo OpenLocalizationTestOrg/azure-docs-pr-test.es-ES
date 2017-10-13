@@ -1,6 +1,6 @@
 ---
-title: pone en cola con Python aaaHow toouse Service Bus de Azure | Documentos de Microsoft
-description: "Obtenga información acerca de cómo toouse Service Bus de Azure pone en cola de Python."
+title: Uso de colas de Service Bus de Azure con Python | Microsoft Docs
+description: Aprenda a usar las colas de del Bus de servicio de Azure desde Python.
 services: service-bus-messaging
 documentationcenter: python
 author: sethmanheim
@@ -14,35 +14,35 @@ ms.devlang: python
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: sethm;lmazuel
-ms.openlocfilehash: bceb84d04ff3445c3087a9c246c583d6630f07af
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e1e81ad1d7b4fe0e044917f090cac59dfd5b6332
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-toouse-service-bus-queues-with-python"></a>¿Cómo toouse Bus de servicio pone en cola con Python
+# <a name="how-to-use-service-bus-queues-with-python"></a>Uso de colas de Service Bus con Python
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-Este artículo se describe cómo toouse colas de Service Bus. ejemplos de Hello están escritos en Python y usar hello [paquete de Python Azure Service Bus][Python Azure Service Bus package]. Hello escenarios descritos se incluyen **crear colas, enviar y recibir mensajes**, y **eliminar colas**.
+Este artículo describe cómo usar las colas del Bus de servicio. Los ejemplos están escritos en Python y usan el [paquete de Service Bus de Azure para Python][Python Azure Service Bus package]. Entre los escenarios proporcionados se incluyen los siguientes: **creación de colas, envío y recepción de mensajes** y **eliminación de colas**.
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 > [!NOTE]
-> tooinstall Python o hello [paquete de Python Azure Service Bus][Python Azure Service Bus package], vea hello [Guía de instalación de Python](../python-how-to-install.md).
+> Para instalar Python o el [paquete de Service Bus de Azure para Python][Python Azure Service Bus package], consulte la [Guía de instalación de Python](../python-how-to-install.md).
 > 
 > 
 
 ## <a name="create-a-queue"></a>Creación de una cola
-Hola **ServiceBusService** objeto permite toowork con colas. Agregue Hola después código cerca de la parte superior de Hola de cualquier archivo de Python en el que desea acceso tooprogrammatically Bus de servicio:
+El objeto **ServiceBusService** le permite trabajar con colas. Agregue el siguiente código cerca de la parte superior de todo archivo Python en el que desee obtener acceso al Bus de servicio mediante programación:
 
 ```python
 from azure.servicebus import ServiceBusService, Message, Queue
 ```
 
-Hello código siguiente se crea un **ServiceBusService** objeto. Reemplace `mynamespace`, `sharedaccesskeyname` y `sharedaccesskey` por el espacio de nombres, el valor y el nombre de clave de la firma de acceso compartido (SAS).
+El siguiente código crea un objeto **ServiceBusService**. Reemplace `mynamespace`, `sharedaccesskeyname` y `sharedaccesskey` por el espacio de nombres, el valor y el nombre de clave de la firma de acceso compartido (SAS).
 
 ```python
 bus_service = ServiceBusService(
@@ -51,13 +51,13 @@ bus_service = ServiceBusService(
     shared_access_key_value='sharedaccesskey')
 ```
 
-Hello valores de nombre de clave de SAS de Hola y el valor pueden encontrarse en hello [portal de Azure] [ Azure portal] información de conexión, o en Visual Studio hello **propiedades** panel al seleccionar Hola nombres de Bus de servicio en el Explorador de servidores (como se muestra en la sección anterior de hello).
+Los valores para el nombre de clave y el valor de la SAS pueden encontrarse en la información de conexión de [Azure Portal][Azure portal] o en el panel **Propiedades** de Visual Studio al seleccionar el espacio de nombres de Service Bus en el Explorador de servidores (como se muestra en la sección anterior).
 
 ```python
 bus_service.create_queue('taskqueue')
 ```
 
-Hola `create_queue` método es compatible también con opciones adicionales, que permiten la configuración de la cola de toooverride de forma predeterminada como la hora del mensaje toolive (TTL) o tamaño máximo de cola. Hello en el ejemplo siguiente se establece Hola cola máximo tamaño too5 GB y minuto de hello TTL valor too1:
+El método `create_queue` también admite opciones adicionales, que le permiten invalidar la configuración predeterminada de las colas, como el período de vida de los mensajes (TTL) o el tamaño máximo de las colas. En el siguiente ejemplo se establece el tamaño máximo de las colas en 5 GB y el valor de TTL en 1 minuto:
 
 ```python
 queue_options = Queue()
@@ -67,31 +67,31 @@ queue_options.default_message_time_to_live = 'PT1M'
 bus_service.create_queue('taskqueue', queue_options)
 ```
 
-## <a name="send-messages-tooa-queue"></a>Cola de mensajes tooa de envío
-la aplicación llama a una cola de Service Bus de mensajes tooa toosend, hello `send_queue_message` método en hello **ServiceBusService** objeto.
+## <a name="send-messages-to-a-queue"></a>mensajes a una cola
+Para enviar un mensaje a una cola de Service Bus, la aplicación debe llamar al método `send_queue_message` del objeto **ServiceBusService**.
 
-Hello en el ejemplo siguiente se muestra cómo toosend una cola de toohello de mensajes de prueba denominado `taskqueue` con `send_queue_message`:
+En el ejemplo siguiente se muestra cómo enviar un mensaje de prueba a la cola `taskqueue` mediante `send_queue_message`:
 
 ```python
 msg = Message(b'Test Message')
 bus_service.send_queue_message('taskqueue', msg)
 ```
 
-Las colas de Bus de servicio admiten un tamaño máximo de los mensajes de 256 KB en hello [nivel estándar](service-bus-premium-messaging.md) y 1 MB en hello [nivel Premium](service-bus-premium-messaging.md). encabezado de Hello, que incluye estándar de Hola y propiedades de la aplicación personalizada, puede tener un tamaño máximo de 64 KB. No hay ningún límite en el número de Hola de mensajes que se ponen en una cola pero no hay un límite en tamaño total de Hola de mantiene una cola de mensajes de saludo. El tamaño de la cola se define en el momento de la creación, con un límite de 5 GB. Para obtener más información sobre las cuotas, vea [Cuotas de Service Bus][Service Bus quotas].
+El tamaño máximo de mensaje que admiten las colas de Service Bus es de 256 KB en el [nivel Estándar](service-bus-premium-messaging.md) y de 1 MB en el [nivel Premium](service-bus-premium-messaging.md). El encabezado, que incluye propiedades de la aplicación estándar y personalizadas, puede tener un tamaño máximo de 64 KB. No hay límite para el número de mensajes que contiene una cola, pero hay un tope para el tamaño total de los mensajes contenidos en una cola. El tamaño de la cola se define en el momento de la creación, con un límite de 5 GB. Para obtener más información sobre las cuotas, vea [Cuotas de Service Bus][Service Bus quotas].
 
 ## <a name="receive-messages-from-a-queue"></a>mensajes de una cola
-Se reciben mensajes de una cola utilizando hello `receive_queue_message` método en hello **ServiceBusService** objeto:
+Los mensajes se reciben de una cola utilizando el método `receive_queue_message` del objeto **ServiceBusService**:
 
 ```python
 msg = bus_service.receive_queue_message('taskqueue', peek_lock=False)
 print(msg.body)
 ```
 
-Se eliminan mensajes de cola de hello cuando se leen cuando Hola parámetro `peek_lock` se establece demasiado**False**. Puede leer (peek) y bloquear los mensajes de bienvenida sin eliminarla de la cola de Hola por establecer el parámetro de hello `peek_lock` demasiado**True**.
+Los mensajes se eliminan de la cola a medida que se leen cuando el parámetro `peek_lock` está establecido en **False**. Puede leer y bloquear los mensajes sin eliminarlos de la cola si establece el parámetro opcional `peek_lock` en **True**.
 
-Hola comportamiento de lectura y eliminación de mensajes de bienvenida tal como parte del programa Hola a la operación de recepción es el modelo más sencillo de Hola y funciona mejor para escenarios en los que una aplicación puede tolerar no procesar un mensaje en caso de hello de un error. toounderstand esto, considere un escenario en los problemas del consumidor Hola Hola recibir la solicitud y, a continuación, se bloquea antes de procesarlo. Dado que Service Bus habrá marcado Hola mensaje como consumido, a continuación, cuando la aplicación hello se reinicia y comienza a consumir mensajes de nuevo, habrá perdido mensaje Hola que estaba consumido bloqueo toohello anterior.
+El comportamiento por el que los mensajes se eliminan tras leerlos como parte del proceso de recepción es el modelo más sencillo y el que mejor funciona en aquellas situaciones en las que una aplicación puede tolerar que no se procese un mensaje en caso de error. Para entenderlo mejor, pongamos una situación en la que un consumidor emite la solicitud de recepción que se bloquea antes de procesarla. Como el Bus de servicio habrá marcado el mensaje como consumido, cuando la aplicación se reinicie y empiece a consumir mensajes de nuevo, habrá perdido el mensaje que se consumió antes del bloqueo.
 
-Si hello `peek_lock` parámetro está establecido demasiado**True**, Hola de recepción se convierte en una operación de dos fases, lo que hace posible toosupport aplicaciones que no pueden tolerar mensajes perdidos. Al Bus de servicio recibe una solicitud, busca Hola siguiente mensaje toobe consumido, lo bloquea tooprevent otros consumidores de recibirlo y, a continuación, lo devuelve toohello aplicación. Después de aplicación hello finaliza el procesamiento de mensajes de bienvenida (o lo almacena de forma confiable para el procesamiento futuro), completa Hola segunda fase del programa Hola recibir proceso que realiza la llamada hello **eliminar** método en hello **mensaje** objeto. Hola **eliminar** método marcar Hola mensaje como consumido y quitarlo de la cola de Hola.
+Si el parámetro `peek_lock` está establecido en **True**, el proceso de recepción se convierte en una operación en dos fases que permite admitir aplicaciones que no toleran la pérdida de mensajes. Cuando el Bus de servicio recibe una solicitud, busca el siguiente mensaje que se va a consumir, lo bloquea para impedir que otros consumidores lo reciban y, a continuación, lo devuelve a la aplicación. Una vez que la aplicación termina de procesar el mensaje (o lo almacena de forma confiable para su futuro procesamiento), completa la segunda fase del proceso de recepción llamando al método **delete** en el objeto **Message**. El método **delete** marcará el mensaje como consumido y lo eliminará de la cola.
 
 ```python
 msg = bus_service.receive_queue_message('taskqueue', peek_lock=True)
@@ -100,15 +100,15 @@ print(msg.body)
 msg.delete()
 ```
 
-## <a name="how-toohandle-application-crashes-and-unreadable-messages"></a>No se puede leer mensajes y cómo se bloquea la aplicación de toohandle
-Bus de servicio proporciona toohelp de funcionalidad que recuperarse de errores en sus aplicaciones o dificultades para procesar un mensaje. Si una aplicación receptora no puede tooprocess Hola mensaje por alguna razón, a continuación, puede llamar a hello **desbloquear** método en hello **mensaje** objeto. Esto provocará el mensaje de saludo toounlock de Bus de servicio de cola de Hola y hacerla disponible toobe recibido de nuevo, ya sea por Hola mismo consumen aplicación o por otra aplicación que consume.
+## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Actuación ante errores de la aplicación y mensajes que no se pueden leer
+El Bus de servicio proporciona una funcionalidad que le ayuda a superar sin problemas los errores de la aplicación o las dificultades para procesar un mensaje. Si por cualquier motivo una aplicación de recepción es incapaz de procesar el mensaje, entonces puede llamar al método **unlock** del objeto **Message**. Esto hará que el Bus de servicio desbloquee el mensaje de la cola y esté disponible para que pueda volver a recibirse, ya sea por la misma aplicación que lo consume o por otra.
 
-También hay un tiempo de espera asociado a un mensaje bloqueado en cola de Hola y si se produce un error de aplicación de hello tooprocess Hola mensaje antes de Hola tiempo de espera de bloqueo expira (por ejemplo, si se bloquea aplicación hello), a continuación, Bus de servicio desbloqueará automáticamente mensajes de bienvenida y hacerla disponible toobe recibido de nuevo.
+También hay un tiempo de espera asociado con un mensaje bloqueado en la cola y, si la aplicación no puede procesar el mensaje antes de que finalice el tiempo de espera del bloqueo (por ejemplo, si la aplicación sufre un error), entonces el bus de servicio desbloquea el mensaje automáticamente y hace que esté disponible para que pueda volver a recibirse.
 
-Hola eventos que Hola aplicación se bloquea después de procesar el mensaje de bienvenida pero antes de hello **eliminar** se llama al método, mensaje de saludo será aplicación toohello entregados de nuevo cuando se reinicia. Esto se suele denominar **al menos una vez procesamiento**; es decir, cada mensaje se procesará al menos una vez, pero en cierto Hola de situaciones puede volverse a entregar el mismo mensaje. Si el escenario de hello no puede tolerar el procesamiento duplicado, los desarrolladores de aplicaciones deben agregar lógica adicional tootheir aplicación toohandle duplicados entrega del mensaje. A menudo esto se logra utilizando hello **MessageId** propiedad del mensaje de Hola, que permanece constante entre intentos de entrega.
+En caso de que la aplicación sufra un error después de procesar el mensaje y antes de llamar al método **delete**, entonces el mensaje se volverá a entregar a la aplicación cuando esta se reinicie. Habitualmente se denomina **Al menos un procesamiento**, es decir, cada mensaje se procesará al menos una vez; aunque en determinadas situaciones podría volver a entregarse el mismo mensaje. Si el escenario no puede tolerar el procesamiento duplicado, entonces los desarrolladores de la aplicación deberían agregar lógica adicional a su aplicación para solucionar la entrega de mensajes duplicados. A menudo, esto se consigue usando la propiedad **MessageId** del mensaje, que permanecerá constante en todos los intentos de entrega.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora que ha aprendido los conceptos básicos de Hola de colas de Service Bus, vea estos toolearn artículos más.
+Ahora que conoce los fundamentos de las colas de Service Bus, consulte estos vínculos para obtener más información.
 
 * [Colas, temas y suscripciones][Queues, topics, and subscriptions]
 

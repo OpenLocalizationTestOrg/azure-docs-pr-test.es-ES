@@ -1,6 +1,6 @@
 ---
-title: Conector de Domino aaaLotus | Documentos de Microsoft
-description: "Este artículo se describe cómo Lotus Domino conector tooconfigure Microsoft."
+title: Conector de Lotus Domino | Microsoft Docs
+description: "En este artículo, se describe cómo configurar el conector de Lotus Domino para Microsoft."
 services: active-directory
 documentationcenter: 
 author: AndKjell
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: affef1fec91eb39f7e91ec274fdd1b3a9c4a32fe
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 328e2039bbaa8988dc35b46712fd0de6f8bcbee8
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="lotus-domino-connector-technical-reference"></a>Referencia técnica del conector de Lotus Domino
-Este artículo describe Hola conector para Lotus Domino. artículo de Hola aplica toohello siguientes productos:
+En este artículo, se describe el conector de Lotus Domino. El artículo se aplica a los siguientes productos:
 
 * Microsoft Identity Manager 2016 (MIM2016)
 * Forefront Identity Manager 2010 R2 (FIM2010R2)
   * Debe usar la revisión 4.1.3671.0 o posterior ( [KB3092178](https://support.microsoft.com/kb/3092178)).
 
-Para MIM2016 y FIM2010R2, está disponible como una descarga de Hola Hola conector [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=717495).
+Para MIM2016 y FIM2010R2, el conector está disponible como descarga desde el [Centro de descarga de Microsoft](http://go.microsoft.com/fwlink/?LinkId=717495).
 
-## <a name="overview-of-hello-lotus-domino-connector"></a>Información general de hello conector para Lotus Domino
-Hola conector para Lotus Domino le permite el servicio de sincronización de hello toointegrate con el servidor de Lotus Domino de IBM.
+## <a name="overview-of-the-lotus-domino-connector"></a>Información general sobre el conector de Lotus Domino
+El conector de Lotus Domino le permite integrar el servicio de sincronización con el servidor de Lotus Domino de IBM.
 
-Desde una perspectiva de alto nivel, Hola siguientes características es compatibles con la versión actual de Hola de conector de hello:
+Desde una perspectiva de alto nivel, las siguientes características son compatibles con la versión actual del conector:
 
 | Característica | Soporte técnico |
 | --- | --- |
@@ -41,31 +41,31 @@ Desde una perspectiva de alto nivel, Hola siguientes características es compati
 | Operaciones |<li>Importación completa y diferencial</li><li>Exportación</li><li>Establecer y cambiar la contraseña en Contraseña de HTTP</li> |
 | Esquema |<li>Persona (usuario móvil, contacto (personas sin certificado))</li><li>Grupo</li><li>Recurso (recurso, sala, reunión en línea)</li><li>Base de datos de correo de entrada</li><li>Detección dinámica de atributos para los objetos admitidos</li> |
 
-Conector de Lotus Domino de Hello usa toocommunicate de cliente de Lotus Notes Hola con Lotus Domino Server. Como consecuencia de esta dependencia, un cliente de Lotus Notes compatible debe instalarse en el servidor de sincronización de Hola. Hola la comunicación entre el cliente de Hola y el servidor de Hola se implementa a través de la interfaz de interoperabilidad de .NET de Lotus Notes (Interop.domino.dll) Hola. Esta interfaz facilita la comunicación de hello entre el cliente de Lotus Notes y la plataforma de Microsoft.NET de Hola y admite acceso tooLotus Domino documentos y vistas. Para la importación de delta, también es posible que se utiliza esa interfaz nativo Hola C++ (según el método de importación de delta de hello seleccionado).
+El conector de Lotus Domino usa el cliente de Lotus Notes para comunicarse con el servidor de Lotus Domino. Como consecuencia de esta dependencia, debe instalarse un cliente de Lotus Notes compatible en el servidor de sincronización. La comunicación entre el cliente y el servidor se implementa a través de la interfaz de interoperabilidad .NET de Lotus Notes (Interop.domino.dll). Esta interfaz facilita la comunicación entre el cliente de Lotus Notes y la plataforma de Microsoft .NET, y admite el acceso a documentos y vistas de Lotus Domino. Para la importación diferencial, es también posible que se use la interfaz nativa de C++ (según el método de importación diferencial seleccionado).
 
 ### <a name="prerequisites"></a>Requisitos previos
-Antes de usar Hola conector, asegúrese de que tiene Hola siguiendo los requisitos previos en el servidor de sincronización de hello:
+Antes de usar el conector, asegúrese de que cumple los siguientes requisitos previos en el servidor de sincronización:
 
 * Microsoft .NET 4.5.2 Framework o posterior
-* cliente de Lotus Notes Hola debe instalarse en el servidor de sincronización
-* Hola conector para Lotus Domino requiere Hola predeterminado Lotus Domino LDAP esquema (schema.nsf) de la base de datos toobe existe en el servidor de directorio de Domino de Hola. Si no está presente, puede instalarlo ejecutando o reiniciar el servicio LDAP de hello en el servidor de Domino de Hola.
+* El cliente de Lotus Notes debe estar instalado en el servidor de sincronización.
+* El conector de Lotus Domino requiere que la base de datos predeterminada del esquema LDAP de Lotus Domino (schema.nsf) esté presente en el servidor del Directorio de Domino. Si no lo está, para instalarla, ejecute o reinicie el servicio LDAP en el servidor de Domino.
 
 ### <a name="connected-data-source-permissions"></a>Permisos del origen de datos conectado
-tooperform admite cualquiera de hello tareas en el conector de Lotus Domino, debe ser miembro de los grupos siguientes:
+Para realizar cualquiera de las tareas admitidas en el conector de Lotus Domino, debe ser miembro de los grupos siguientes:
 
 * Administradores de acceso total
 * Administradores
 * Administradores de bases de datos
 
-Hello tabla siguiente enumeran los permisos de Hola que son necesarios para cada operación:
+En la tabla siguiente, se muestran los permisos necesarios para cada operación:
 
 | Operación | Derechos de acceso |
 | --- | --- |
-| Importar |<li>Leer documentos públicos</li><li> Administrador de acceso total (cuando son miembros del grupo de administradores de acceso completo, automáticamente tiene acceso efectivo de hello tooin ACL.)</li> |
-| Exportación y establecimiento de contraseña |Acceso efectivo:  <li>Creación de documentos</li><li>Eliminar documentos</li><li>Leer documentos públicos</li><li>Escribir documentos públicos</li><li>Replicar o copiar documentos</li>Para las operaciones de exportación, también necesita Hola siguientes roles: <li>CreateResource</li><li>GroupCreator</li><li>GroupModifier</li><li>UserCreator</li><li>UserModifier</li> |
+| Importar |<li>Leer documentos públicos</li><li> Administrador de acceso total (cuando se es miembro del grupo Administradores de acceso total, se dispone automáticamente de acceso efectivo a la ACL).</li> |
+| Exportación y establecimiento de contraseña |Acceso efectivo:  <li>Creación de documentos</li><li>Eliminar documentos</li><li>Leer documentos públicos</li><li>Escribir documentos públicos</li><li>Replicar o copiar documentos</li>Para las operaciones de exportación, también necesitará los roles siguientes: <li>CreateResource</li><li>GroupCreator</li><li>GroupModifier</li><li>UserCreator</li><li>UserModifier</li> |
 
 ### <a name="direct-operations-and-adminp"></a>Operaciones directas y AdminP
-Operaciones de ir directamente a toohello Domino directory o a través de hello AdminP procesan. Hello siguientes tablas enumeran todos los objetos admitidos, las operaciones y, si procede, Hola relacionados con el método de implementación:
+Las operaciones van directamente al directorio de Domino o a través del proceso AdminP. En las siguientes tablas, se incluyen todos los objetos admitidos, las operaciones y, si procede, el método de implementación relacionado:
 
 **Libreta de direcciones principal**
 
@@ -85,217 +85,217 @@ Operaciones de ir directamente a toohello Domino directory o a través de hello 
 | MailInDB |Directo |Directo |Directo |
 | Recurso |N/D |N/D |N/D |
 
-Cuando se cree un recurso, se crea un documento de Notes. De forma similar, cuando se elimina un recurso, se elimina el documento de notas de Hola.
+Cuando se cree un recurso, se crea un documento de Notes. De forma similar, cuando se elimine un recurso, se elimina el documento de Notes.
 
 ### <a name="ports-and-protocols"></a>Puertos y protocolos
-El cliente de IBM Lotus Notes y los servidores de Domino se comunican mediante una llamada a procedimiento remoto de Notes (NRPC) en la que NRPC debe usar TCP/IP. número de puerto predeterminado de Hello es 1352, pero puede cambiarse mediante el Administrador de Domino de Hola.
+El cliente de IBM Lotus Notes y los servidores de Domino se comunican mediante una llamada a procedimiento remoto de Notes (NRPC) en la que NRPC debe usar TCP/IP. El número de puerto predeterminado es 1352, pero el administrador de Domino puede cambiarlo.
 
 ### <a name="not-supported"></a>No compatible
-Hola las siguientes operaciones no es compatibles con la versión actual de Hola de conector de Lotus Domino de hello:
+La versión actual del conector de Lotus Domino no admite las siguientes operaciones:
 
 * Mover un buzón entre servidores.
 
 ## <a name="create-a-new-connector"></a>Creación de un nuevo conector
 ### <a name="client-software-installation-and-configuration"></a>Instalación y configuración del software de cliente
-Lotus Notes deben estar instalado en el servidor de hello **antes de** Hola conector está instalado.
+Se debe instalar Lotus Notes en el servidor **antes de** instalar el conector.
 
-Durante la instalación, asegúrese de realizar una **instalación para un solo usuario (Single User Install)**. Hola predeterminado **instalar multiusuario** no funciona.  
+Durante la instalación, asegúrese de realizar una **instalación para un solo usuario (Single User Install)**. El valor predeterminado **Multi-User Install** (Instalación para varios usuarios) no funciona.  
 ![Notes1](./media/active-directory-aadconnectsync-connector-domino/notes1.png)
 
-En la página de características de hello, instalar solo Hola requiere características de Lotus Notes y **inicio de sesión único de cliente**. Inicio de sesión único se requiere para hello conector toobe puede toolog en el servidor de Domino de toohello.  
+En la página de características, instale solo las características necesarias de Lotus Notes y **Client Single Logon**(Inicio de sesión único para el cliente). Esta última característica se necesita para que el conector pueda iniciar sesión en el servidor de Domino.  
 ![Notes2](./media/active-directory-aadconnectsync-connector-domino/notes2.png)
 
-**Nota:** inicio Lotus Notes una vez con un usuario que se encuentra en hello mismo servidor que Hola cuenta se usa como cuenta de servicio del conector de Hola. También asegúrese de cliente de Lotus Notes de hello tooclose seguro en el servidor de Hola. No se puede ejecutar en Hola Hola de tiempo mismo conector intenta tooconnect toohello Domino server.
+**Nota:** Inicie Lotus Notes una vez con un usuario que se encuentre en el mismo servidor que la cuenta que usa como cuenta de servicio del conector. Además, asegúrese de cerrar el cliente Lotus Notes en el servidor. No se puede ejecutar al mismo tiempo que el conector intenta conectarse al servidor Domino.
 
 ### <a name="create-connector"></a>Creación del conector
-tooCreate un conector de Lotus Domino, en **servicio de sincronización de** seleccione **Management Agent** y **crear**. Seleccione hello **Lotus Domino (Microsoft)** conector.  
+Para crear un conector de Lotus Domino, en **Servicio de sincronización**, seleccione **Agente de administración** y **Crear**. Seleccione el conector **Lotus Domino (Microsoft)** .  
 ![CreateConnector](./media/active-directory-aadconnectsync-connector-domino/createconnector.png)
 
-Si la versión del servicio de sincronización ofrece Hola capacidad tooconfigure **arquitectura**, asegúrese de que el conector Hola se ha establecido tooits predeterminado valor toorun **proceso**.
+Si la versión del servicio de sincronización ofrece la capacidad de establecer un valor para **Arquitectura**, asegúrese de que el conector esté establecido en su valor predeterminado para ejecutarse en **Proceso**.
 
 ### <a name="connectivity"></a>Conectividad
-En la página de conectividad de hello, debe especificar el nombre del servidor de Lotus Domino de Hola y escriba las credenciales de inicio de sesión de Hola.  
+En la página Conectividad, debe especificar el nombre del servidor de Lotus Domino y escribir las credenciales de inicio de sesión.  
 ![Conectividad](./media/active-directory-aadconnectsync-connector-domino/connectivity.png)
 
-Hola propiedad del servidor de Domino admite dos formatos para el nombre del servidor de hello:
+La propiedad Servidor de Domino admite dos formatos para el nombre del servidor:
 
 * nombreDeServidor
 * nombreDeServidor/nombreDeDirectorio
 
-Hola **ServerName/DirectoryName** formato es Hola preferido para este atributo porque proporciona una respuesta más rápida cuando contactos de conector de Hola Hola servidor Domino.
+El formato **nombreDeServidor/nombreDeDirectorio** es el preferido para este atributo, porque proporciona una respuesta más rápida cuando el conector se pone en contacto con el servidor de Domino.
 
-Hola proporciona UserID archivo se almacena en la base de datos de configuración de hello del servicio de sincronización de Hola.
+El archivo UserID proporcionado se almacena en la base de datos de configuración del servicio de sincronización.
 
 Para **Importación diferencial** , tiene estas opciones:
 
-* **Ninguna**. Hola conector no lleva a cabo las importaciones de delta.
-* **Adición y actualización**. Hola conector hace delta import agregar y las operaciones de actualización. Para las de eliminación, se necesita una operación **Importación completa** . Esta operación es mediante la interoperabilidad de .net de Hola.
-* **Adición, actualización y eliminación**. Hola conector hace delta import agregar, actualizar y eliminar operaciones. Esta operación es mediante interfaces de C++ nativo de Hola.
+* **Ninguna**. El conector no realiza ninguna importación diferencial.
+* **Adición y actualización**. El conector realiza una importación diferencial de las operaciones de adición y actualización. Para las de eliminación, se necesita una operación **Importación completa** . Esta operación emplea la interoperabilidad .NET.
+* **Adición, actualización y eliminación**. El conector realiza una importación diferencial de las operaciones de adición, actualización y eliminación. Esta operación usa las interfaces de C++ nativo.
 
-En **opciones de esquema** tiene Hola siguientes opciones:
+En **Opción de esquema** , dispone de las siguientes opciones:
 
-* **Esquema predeterminado**. Hola conector detecta esquema Hola desde el servidor de Domino de Hola. Esta selección es la opción predeterminada de Hola.
-* **Esquema DSML**. Solo se usa si servidor de Domino de hello no expone el esquema de Hola. A continuación, puede crear un archivo DSML con el esquema de Hola e importarlo en su lugar. Para más información sobre DSML, consulte [OASIS](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=dsml).
+* **Esquema predeterminado**. El conector detecta el esquema en el servidor de Domino. Esta selección es la opción predeterminada.
+* **Esquema DSML**. Solo se usa si el servidor de Domino no expone el esquema. Después, puede crear un archivo DSML con el esquema e importarlo en su lugar. Para más información sobre DSML, consulte [OASIS](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=dsml).
 
-Al hacer clic en siguiente, se comprueban Hola UserID y parámetros de configuración de contraseña.
+Cuando hace clic en Siguiente, se comprueban los parámetros de configuración de UserID y contraseña.
 
 ### <a name="global-parameters"></a>Parámetros globales
-En la página de parámetros globales de hello, configurar la zona de horaria de Hola y la importación de Hola y opción de operación de exportación.  
+En la página Parámetros globales, configure la zona horaria y la opción para la operación de importación y exportación.  
 ![Parámetros globales](./media/active-directory-aadconnectsync-connector-domino/globalparameters.png)
 
-Hola **zona horaria del servidor Domino** parámetro define la ubicación de Hola de su servidor de Domino.
+El parámetro **Zona horaria del servidor de Domino** define la ubicación de su servidor de Domino.
 
-Esta opción de configuración es necesario toosupport **importación diferencial** operaciones porque permite que el servicio de sincronización de hello determinar los cambios entre las dos últimas importaciones de Hola.
+Esta opción de configuración es necesaria para admitir las operaciones de **importación diferencial** porque permite que el servicio de sincronización determine los cambios entre las dos últimas importaciones.
 
 >[!Note]
-A partir de la pantalla de bienvenida marzo de 2017 actualización Hola parámetros globales incluye la base de datos de correo electrónico del usuario de hello opción toodelete Hola durante la eliminación del usuario de Hola.
+A partir de la actualización de marzo de 2017, la pantalla de parámetros globales incluye una opción para eliminar la base de datos de correo del usuario durante la eliminación del usuario.
 
 ![Eliminación del buzón del usuario](./media/active-directory-aadconnectsync-connector-domino/AdminP.png)
 
 #### <a name="import-settings-method"></a>Configuración de importación: método
-Hola **realizar la importación completa por** tiene estas opciones:
+En **Realizar importación completa mediante** , aparecen estas opciones:
 
 * Search
 * Vista (recomendada)
 
-**Búsqueda** está utilizando la indización en Domino, pero es habitual que no se actualizan los índices de hello en tiempo real y datos de hello devueltas por el servidor hello no siempre son correctos. Para un sistema con muchos cambios, esta opción normalmente no funciona bien y proporciona eliminaciones falsas en algunas situaciones. Sin embargo, la **búsqueda** es más rápida que la **vista**.
+**Búsqueda** usa la indexación en Domino, pero es habitual que los índices no se actualicen en tiempo real y los datos devueltos desde el servidor no son siempre correctos. Para un sistema con muchos cambios, esta opción normalmente no funciona bien y proporciona eliminaciones falsas en algunas situaciones. Sin embargo, la **búsqueda** es más rápida que la **vista**.
 
-**Vista** se recomienda opción Hola puesto que ofrece un estado correcto Hola de datos. Es ligeramente más lenta que la búsqueda.
+**Vista** es la opción recomendada, ya que proporciona el estado correcto de los datos. Es ligeramente más lenta que la búsqueda.
 
 #### <a name="creation-of-virtual-contact-objects"></a>Creación de objetos _Contact virtuales
-Hola **habilitar la creación de \_objeto contacto** tiene estas opciones:
+En el cuadro desplegable **Habilitar la creación del objeto \_Contact**, se ofrecen estas opciones:
 
 * None
 * Valores sin referencia
 * Valores de referencia y sin referencia
 
-En Domino, atributos de referencia pueden contener muchos tooreference diferentes formatos otros objetos. toobe toorepresent capaz de distintas variaciones, Hola implementa conector \_póngase en contacto con objetos, también conocido como **contactos Virtual** (VC). Estos objetos se crean para que puedan unirse tooexisting MV objetos o se proyecta como nuevos objetos. De esta forma, se conservan las referencias de atributo.
+En Domino, los atributos de referencia pueden contener muchos formatos diferentes para hacer referencia a otros objetos. Para poder representar distintas variaciones, el conector implementa objetos \_Contact, también conocido como **contactos virtuales** (VC). Estos objetos se crean para que puedan unirse a los objetos existentes de MV o proyectarse como nuevos objetos. De esta forma, se conservan las referencias de atributo.
 
-Al habilitar esta opción y si el contenido de Hola de un atributo de referencia no es un formato DN, un \_se crea el objeto de contacto. Por ejemplo, un atributo member de un grupo puede contener direcciones SMTP. También es posible toohave shortName y otros atributos presentes en los atributos de referencia. En este escenario, seleccione **Valores sin referencia**. Esta configuración es la configuración más común de Hola para las implementaciones de Domino.
+Si habilita esta configuración y si el contenido de un atributo de referencia no es un formato DN, se crea un objeto \_Contact. Por ejemplo, un atributo member de un grupo puede contener direcciones SMTP. También es posible que shortName y otros atributos estén presentes en los atributos de referencia. En este escenario, seleccione **Valores sin referencia**. Esta configuración es la más común para las implementaciones de Domino.
 
-Lotus Domino una vez configurado toohave dirección independiente libros con diferentes nombres completos que representa Hola mismo objeto, crear su posible tooalso \_objetos de contacto para todos los valores de referencia que se encuentran en una libreta de direcciones. En este escenario, seleccione hello **referencia y los valores de referencia no** opción.
+Cuando se configura Lotus Domino de forma que tenga libretas de direcciones independientes con diferentes nombres completos que representan al mismo objeto, es posible crear también objetos \_Contact para todos los valores de referencia que se encuentran en una libreta de direcciones. En este escenario, seleccione la opción **Valores de referencia y sin referencia** .
 
-Si tiene varios valores de atributo de hello **FullName** Domino, a continuación, desea también creación de hello tooenable de contactos Virtual por lo que se pueden resolver las referencias. Por ejemplo, este atributo puede poseer varios valores después de un cambio de nombre. Seleccione la casilla de verificación de hello **habilitar... objeto _Contact cuando "FullName" tenga varios valores para una persona** para este escenario.
+Si tiene varios valores en el atributo **FullName** en Domino, también conviene que habilite la creación de contactos virtuales para que se puedan resolver las referencias. Por ejemplo, este atributo puede poseer varios valores después de un cambio de nombre. Active la casilla **Habilitar la creación del objeto _Contact cuando "FullName" tenga varios valores para una persona** para este escenario.
 
-Mediante la combinación de atributos correctos de hello, Hola \_objetos de contacto sería MV de toohello Unidos a un objeto.
+Mediante la combinación por los atributos correctos, los objetos \_Contact se combinarían con el objeto MV.
 
-Estos objetos tienen VC =\_contacto agregado tootheir DN.
+Para estos objetos, se agrega VC=\_Contact a su DN.
 
 #### <a name="import-settings-conflict-object"></a>Configuración de importación: objeto de conflicto
 **Excluir objeto de conflicto**
 
-En una implementación mayor de Domino, es posible que varios objetos han Hola mismo DN debido a problemas de tooreplication. En estos casos, el conector de hello vería dos objetos con UniversalIDs diferentes pero mismo DN. Este conflicto hará que un objeto temporal se crea en el espacio de conector de Hola. Hola conector puede omitir los objetos de Hola que se han seleccionado en el Domino como sujetos de replicación. recomendación de Hello es tookeep activa esta casilla.
+En una implementación de Domino de gran envergadura, es posible que haya varios objetos con el mismo DN debido a problemas de replicación. En estos casos, el conector vería dos objetos con atributos UniversalID diferentes pero el mismo DN. Este conflicto hace que se cree un objeto temporal en el espacio del conector. El conector puede pasar por alto los objetos que se han seleccionado en Domino como elementos afectados de replicación. La recomendación es mantener activada esta casilla.
 
 #### <a name="export-settings"></a>Exportar configuración
-Si hello opción **AdminP usar para actualizar referencias** está seleccionada, la exportación de los atributos de referencia, como miembro, es una llamada directa y no utiliza el proceso de AdminP Hola. Use esta opción solo si AdminP no ha sido configurado toomaintain la integridad referencial.
+Si la opción **Usar AdminP para actualizar referencias** no está seleccionada, la exportación de atributos de referencia, como member, es una llamada directa y no se usa el proceso AdminP. Solo use esta opción si no se ha configurado AdminP para mantener la integridad referencial.
 
 #### <a name="routing-information"></a>Información de enrutamiento
-En Domino, es posible que un atributo de referencia tiene información de enrutamiento incrusta como un toohello sufijo DN. Por ejemplo, podría contener el atributo de miembro de hello en un grupo de **CN =example/organization@ABC**. sufijo de Hello @ABC es información de enrutamiento de Hola. información de enrutamiento de Hola se usa por Domino toosend mensajes de correo electrónico toohello Domino sistema correcto, que puede ser un sistema en otra organización. En el campo de información de enrutamiento de hello, puede especificar usado en la organización de hello en el ámbito de hello conector de enrutamiento de sufijos de Hola. Si uno de estos valores se encuentra en un atributo de referencia como sufijo, información de enrutamiento de Hola se quita de la referencia de Hola. Si el sufijo de enrutamiento de hello en un valor de referencia no puede ser tooone coincidente de los valores especificados, un \_se crea el objeto de contacto. Estos \_objetos de contacto se crean con **RO = @<RoutingSuffix>**  inserta Hola DN. Para estos \_objetos de póngase en contacto con hello siguientes atributos es también agregan tooallow unir objeto real tooa si es necesario: \_routingName, \_contactName, \_displayName y UniversalID.
+En Domino, es posible que un atributo de referencia tenga información de enrutamiento insertada como sufijo del DN. Por ejemplo, el atributo member de un grupo podría contener **CN=example/organization@ABC**. El sufijo @ABC es la información de enrutamiento. Domino usa esta información de enrutamiento para enviar correos electrónicos al sistema de Domino correcto, que puede estar en una organización diferente. En el campo Información de enrutamiento, puede especificar los sufijos de enrutamiento usados dentro de la organización en el ámbito del conector. Si uno de estos valores se encuentra como sufijo en un atributo de referencia, la información de enrutamiento se quita de la referencia. Si el sufijo de enrutamiento de un valor de referencia no coincide con uno de los valores especificados, se crea un objeto \_Contact. Estos objetos \_Contact se crean con **RO=@<RoutingSuffix>** insertado en el DN. Para estos objetos \_Contact, también se agregan los atributos siguientes para permitir combinarlos con un objeto real, si es necesario: \_routingName, \_contactName, \_displayName y UniversalID.
 
 #### <a name="additional-address-books"></a>Libretas de direcciones adicionales
-Si no tiene **guía telefónica** instalado, que proporciona el nombre de Hola de libretas de direcciones secundarias, a continuación, puede escribir manualmente estas libretas de direcciones.
+Si no tiene instalada la característica **Directory Assistance** , que proporciona el nombre de las libretas de direcciones secundarias, puede escribirlos manualmente.
 
 #### <a name="multivalued-transformation"></a>Transformación multivalor
-Muchos de los atributos de Lotus Domino son multivalor. Hello correspondiente metaverso atributos son normalmente solo con valores. Mediante la configuración de importación hello y opción de operación de exportación de hello, habilitar Hola conector toohelp con traducción de hello necesario de atributos de hello afectado.
+Muchos de los atributos de Lotus Domino son multivalor. Los atributos de metaverso correspondientes son normalmente de un solo valor. Al configurar la opción para la operación de importación y exportación, permite que el conector ayude con la traducción necesaria de los atributos afectados.
 
 **Exportarar**  
-opción de operación de exportación de Hello admite dos modos:
+La opción para la operación de exportación admite dos modos:
 
 * Anexar elemento
 * Reemplazar elemento
 
-**Reemplace el elemento** : al seleccionar esta opción, el conector de hello siempre remove Hola valores actuales del atributo de hello en Domino y sustituirlos por otros valores de hello proporcionado. Hola proporcionada con valores puede ser un valor único o con varios valores.
+**Reemplazar elemento** : cuando se selecciona esta opción, el conector siempre quita los valores actuales del atributo en Domino y los reemplazará por los valores proporcionados. El valor proporcionado puede ser un solo valor o multivalor.
 
-Ejemplo: atributo de Asistente de Hola de un objeto person tiene Hola siguientes valores:
+Por ejemplo, el atributo Assistant (Asistente) de un objeto de persona tiene los siguientes valores:
 
 * CN=Greg Winston/OU=Contoso/O=Americas,NAB=names.nsf
 * CN=John Smith/OU=Contoso/O=Americas,NAB=names.nsf
 
-Si un asistente de nueva denominado **David Alexander** está asignado el objeto de la persona de toothis, resultado de hello es:
+Si se asigna un nuevo asistente llamado **David Alexander** a este objeto de persona, el resultado es:
 
 * CN=David Alexander/OU=Contoso/O=Americas,NAB=names.nsf
 
-**Anexar elemento** : cuando se selecciona esta opción, conector Hola conserva los valores existentes en el atributo de hello Domino e insertar nuevos valores en parte superior de Hola de lista de datos de Hola Hola.
+**Anexar elemento** : cuando se selecciona esta opción, el conector conserva los valores existentes en el atributo de Domino e insertará otros nuevos al principio de la lista de datos.
 
-Ejemplo: atributo de Asistente de Hola de un objeto person tiene Hola siguientes valores:
+Por ejemplo, el atributo Assistant (Asistente) de un objeto de persona tiene los siguientes valores:
 
 * CN=Greg Winston/OU=Contoso/O=Americas,NAB=names.nsf
 * CN=John Smith/OU=Contoso/O=Americas,NAB=names.nsf
 
-Si un asistente de nueva denominado **David Alexander** está asignado el objeto de la persona de toothis, resultado de hello es:
+Si se asigna un nuevo asistente llamado **David Alexander** a este objeto de persona, el resultado es:
 
 * CN=David Alexander/OU=Contoso/O=Americas,NAB=names.nsf
 * CN=Greg Winston/OU=Contoso/O=Americas,NAB=names.nsf
 * CN=John Smith/OU=Contoso/O=Americas,NAB=names.nsf
 
 **Importaciónación**  
-opción de la operación de importación de Hello admite dos modos:
+La opción para la operación de importación admite dos modos:
 
 * Valor predeterminado
-* Valor de tooSingle con varios valores
+* Multivalor en un solo valor
 
-**Predeterminado** : cuando se seleccione la opción predeterminada de hello, todos los valores del programa Hola a todos los atributos se importan.
+**Predeterminada** : cuando se selecciona la opción Predeterminada, se importan todos los valores de todos los atributos.
 
-**Valor de varios valores tooSingle** : cuando se selecciona esta opción, un atributo multivalor se convierte en un atributo de valor único. Si existe más de un valor, se utiliza el valor de hello en la parte superior de hello (este valor es normalmente también hello más reciente).
+**Multivalor en un solo valor** : cuando se selecciona esta opción, un atributo multivalor se convierte en uno de un solo valor. Si existe más de un valor, se usa el del principio (este valor suele ser también el más reciente).
 
-Ejemplo: atributo de Asistente de Hola de un objeto person tiene Hola siguientes valores:
+Por ejemplo, el atributo Assistant (Asistente) de un objeto de persona tiene los siguientes valores:
 
 * CN=David Alexander/OU=Contoso/O=Americas,NAB=names.nsf
 * CN=Greg Winston/OU=Contoso/O=Americas,NAB=names.nsf
 * CN=John Smith/OU=Contoso/O=Americas,NAB=names.nsf
 
-Hola atributo de toothis de actualización más reciente es **David Alexander**. Puesto Hola opción de la operación de importación se establece tooMultivalued tooSingle valor, solo importa conector **David Alexander** hasta el espacio del conector de Hola.
+La actualización más reciente de este atributo es **David Alexander**. Como la opción para la operación de importación está establecida en Multivalor en un solo valor, el conector solamente importa **David Alexander** al espacio del conector.
 
-tooconvert de atributos con varios valores en atributos de valor único para la lógica Hello no hay ningún atributo de miembro del grupo de toohello y atributo de toohello persona fullname.
+La lógica para convertir los atributos multivalor en otros de un solo valor no se aplica al atributo member de un grupo ni al atributo fullname de persona.
 
-Lo tooconfigure posible importar y exportar reglas de transformación para los atributos con varios valores por atributo, como una regla de excepción de toohello global. tooconfigure esta opción, escriba [objecttype]. [NombreAtributo] Hola **importar la lista de atributos de exclusión** y **exportar la lista de atributos de exclusión** cuadros de texto. Por ejemplo, si escribes Person.Assistant y marca global de Hola se establece tooimport se importa del Asistente de Hola para todos los valores, el único valor primera Hola.
+También es posible configurar las reglas de transformación para la importación y la exportación para los atributos multivalor en función del atributo, como una excepción a la regla global. Para configurar esta opción, escriba [tipoDeObjeto].[nombreDeAtributo] en los cuadros de texto **Lista de atributos de exclusión de importación** y **Lista de atributos de exclusión de exportación**. Por ejemplo, si escribe Person.Assistant y se establece la marca global para importar todos los valores, solo se importa el primer valor para el asistente.
 
 #### <a name="certifiers"></a>Certificadores
-Se muestran todas las unidades de organización/organización por conector Hola. toobe tooexport capaz de persona objetos toohello principal libreta de direcciones un certificador con su contraseña es necesario.
+Se muestran todas las organizaciones y las unidades organizativas por el conector. Para poder exportar objetos de persona a la libreta de direcciones principal, es necesario un certificador con su contraseña.
 
-Si dispone de todos los certificadores Hola misma contraseña, hello **contraseña para todos los Certifers** puede utilizarse. A continuación, puede introducir aquí la contraseña de Hola y solo especificar archivo de certificador hello.
+Si todos los certificadores comparten la misma contraseña, se puede usar el campo **Password for all Certifers** (Contraseña para todos los certificadores). Entonces, puede escribir la contraseña aquí y solo especificar el archivo de certificador.
 
-Si solo se importa, no tendrá toospecify cualquier los certificadores.
+Si solo va a importar, no es necesario especificar ningún certificador.
 
 ### <a name="configure-provisioning-hierarchy"></a>Configurar la jerarquía de aprovisionamiento
-Cuando se configura el conector de Lotus Domino de hello, omitir esta página del cuadro de diálogo. el conector de Lotus Domino de Hello no admite la jerarquía de aprovisionamiento.  
+Al configurar el conector de Lotus Domino, omita esta página del cuadro de diálogo. El conector de Lotus Domino no admite el aprovisionamiento de jerarquía.  
 ![Jerarquía de aprovisionamiento](./media/active-directory-aadconnectsync-connector-domino/provisioninghierarchy.png)
 
 ### <a name="configure-partitions-and-hierarchies"></a>Configurar particiones y jerarquías
-Al configurar particiones y jerarquías, debe seleccionar la libreta de direcciones principal de hello denominado NAB=names.nsf. Además toohello libreta de dirección principal, puede seleccionar libretas de direcciones secundarias si existen.  
+Cuando configure particiones y jerarquías, debe seleccionar la libreta de direcciones principal denominada NAB=names.nsf. Además de la libreta de direcciones principal, puede seleccionar otras secundarias, si existen.  
 ![Particiones](./media/active-directory-aadconnectsync-connector-domino/partitions.png)
 
 ### <a name="select-attributes"></a>Seleccionar atributos
-Cuando configure los atributos, debe seleccionar todos aquellos con el prefijo **\_MMS\_**. Estos atributos son obligatorios al aprovisionar nuevos objetos tooLotus Domino
+Cuando configure los atributos, debe seleccionar todos aquellos con el prefijo **\_MMS\_**. Estos atributos son obligatorios cuando se aprovisionan nuevos objetos en Lotus Domino.
 
-![Attributes](./media/active-directory-aadconnectsync-connector-domino/attributes.png)
+![Atributos](./media/active-directory-aadconnectsync-connector-domino/attributes.png)
 
 ## <a name="object-lifecycle-management"></a>Administración del ciclo de vida de objetos
-Esta sección proporciona información general sobre los distintos objetos de Hola de Domino.
+En esta sección, se proporciona información general sobre los diferentes objetos en Domino.
 
 ### <a name="person-objects"></a>Objetos de persona
-objeto de Hello person representa a los usuarios en la organización y las unidades de organización. Además los atributos predeterminados toohello, Administrador de Domino de hello pueden agregar objeto Person de tooa de atributos personalizados. Como mínimo, un objeto de persona debe incluir todos los atributos obligatorios. Para obtener una lista completa de los atributos obligatorios, consulte [Propiedades de Lotus Notes](#lotus-notes-properties). debe cumplirse tooregister un objeto person, Hola siguiendo los requisitos previos:
+El objeto de persona representa a los usuarios de la organización y las unidades organizativas. Además de los atributos predeterminados, el administrador de Domino puede agregar atributos personalizados a un objeto de persona. Como mínimo, un objeto de persona debe incluir todos los atributos obligatorios. Para obtener una lista completa de los atributos obligatorios, consulte [Propiedades de Lotus Notes](#lotus-notes-properties). Para registrar un objeto de persona, deben cumplirse los siguientes requisitos previos:
 
-* Libreta de direcciones de Hello (names.nsf) se debe haber definido y debe ser libreta de direcciones principal de Hola.
-* Debe tener Hola O/OU tooregister de certificador hello y el Id. de contraseña un usuario determinado en hello organización o unidad organizativa.
-* Debe establecer un conjunto específico de propiedades de Lotus Notes para un objeto de persona. Estas propiedades se utilizan para el aprovisionamiento de objeto de hello person. Para obtener más información, vea la sección Hola denominada [Lotus Notes Properties](#lotus-notes-properties) más adelante en este documento.
-* Hola de contraseña HTTP inicial para una persona es un atributo y un conjunto durante el aprovisionamiento.
-* objeto person de Hello debe ser uno de los siguientes tres tipos admitidos de hello:
+* Se debe haber definido la libreta de direcciones (names.nsf), que debe ser la libreta de direcciones principal.
+* Debería tener la identificación y la contraseña del certificador de organización o unidad organizativa (O/OU) para registrar un usuario determinado en la organización o unidad organizativa.
+* Debe establecer un conjunto específico de propiedades de Lotus Notes para un objeto de persona. Estas propiedades se usan para aprovisionar el objeto de persona. Para obtener más detalles, consulte la sección llamada [Propiedades de Lotus Notes](#lotus-notes-properties) más adelante en este documento.
+* La contraseña HTTP inicial de una persona es un atributo y se establece durante el aprovisionamiento.
+* El objeto de persona debe ser de uno de los tres tipos admitidos siguientes:
   1. Usuario normal que tiene un archivo de correo y un archivo de identificación de usuario
   2. Usuario móvil (un usuario normal que incluye todos los archivos de base de datos móvil)
   3. Contactos (usuarios sin archivo de identificación)
 
-Personas (excepto los contactos) más pueden agruparse en los usuarios nos e internacional tal como se define por valor de Hola de hello \_MMS\_IDRegType propiedad. Estas personas usar Hola cliente Notes tooaccess servidores Lotus Domino, tiene un identificador de notas y un documento de la persona. Si usan el correo de Notes, también tienen un archivo de correo. usuario de Hello debe ser registrado toobecome active. Para más información, consulte:
+Las personas (excepto los contactos) se pueden agrupar además en usuarios de EE. UU. y usuarios de fuera de EE. UU. de acuerdo con el valor de la propiedad \_MMS\_IDRegType. Estas personas usan al cliente de Notes para acceder a los servidores de Lotus Domino, que tienen una identificación de Notes y un documento de persona. Si usan el correo de Notes, también tienen un archivo de correo. El usuario debe estar registrado para activarse. Para más información, consulte:
 
 * [Setting up Notes users](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=/com.ibm.help.domino.admin85.doc/H_SETTING_UP_NOTES_USERS.html)
 * [User Registration](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=/com.ibm.help.domino.admin85.doc/H_REGISTERING_USERS.html)
 * [Administración de usuarios](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=/com.ibm.help.domino.admin85.doc/H_MANAGING_USERS_5151.html)
 * [Renaming users](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=/com.ibm.help.domino.admin85.doc/H_RENAMING_A_USER_AUTOMATICALLY.html)
 
-Todas estas operaciones se realizan en Lotus Domino y, a continuación, se importan en el servicio de sincronización de Hola.
+Todas estas operaciones se realizan en Lotus Domino y después se importan al servicio de sincronización.
 
 ### <a name="resources-and-rooms"></a>Recursos y salas
-Un recurso es otro tipo de base de datos de Lotus Domino. Los recursos pueden ser las salas de conferencia con varios tipos de equipos como proyectores. Hay subtipos de recursos admitidos por el conector de Lotus Domino que se definen mediante el atributo de tipo de recurso de hello:
+Un recurso es otro tipo de base de datos de Lotus Domino. Los recursos pueden ser las salas de conferencia con varios tipos de equipos como proyectores. Existen subtipos de recursos admitidos por el conector de Lotus Domino que se definen por el atributo de tipo de recurso:
 
 | Tipo de recurso | Atributo de tipo de recurso |
 | --- | --- |
@@ -303,38 +303,38 @@ Un recurso es otro tipo de base de datos de Lotus Domino. Los recursos pueden se
 | Recurso (otros) |2 |
 | Reunión en línea |3 |
 
-Para toowork de tipo de objeto de recurso de hello, se requiere lo siguiente hello:
+Para que el tipo de objeto de recurso funcione, es necesario lo siguiente:
 
-* Base de datos de reserva de recursos ya debe existir en el servidor de Domino de hello conectado
-* Hola sitio ya está definido para hello recursos
+* La base de datos de reserva de recursos ya debería existir en el servidor de Domino conectado.
+* El sitio ya está definido para el recurso.
 
-base de datos de reserva de recursos de Hello contiene tres tipos de documentos:
+La base de datos de reserva de recursos contiene tres tipos de documentos:
 
 * Perfil de sitio
 * Recurso
 * Reserva
 
-Para obtener más información sobre la configuración de base de datos de reserva de recursos, consulte [Configurar base de datos de las reservas de recursos de hello](https://www-01.ibm.com/support/knowledgecenter/SSKTMJ_8.0.1/com.ibm.help.domino.admin.doc/DOC/H_SETTING_UP_THE_RESOURCE_RESERVATIONS_DATABASE.html).
+Para obtener más detalles sobre la configuración de la base de datos de reserva de recursos, consulte [Setting up the Resource Reservations database](https://www-01.ibm.com/support/knowledgecenter/SSKTMJ_8.0.1/com.ibm.help.domino.admin.doc/DOC/H_SETTING_UP_THE_RESOURCE_RESERVATIONS_DATABASE.html) (Configuración de la base de datos de reserva de recursos).
 
 **Crear, actualizar y eliminar recursos**  
-Hola se realizan las operaciones Create, Update y Delete mediante el conector de Lotus Domino de hello en la base de datos de reserva de recursos de Hola. Los recursos se crean como documentos en Names.nsf (es decir, libreta de direcciones principal de hello). Para obtener más información sobre cómo modificar y eliminar recursos, consulte [Editing and deleting Resource documents](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=/com.ibm.help.domino.admin85.doc/H_EDITING_AND_DELETING_RESOURCE_DOCUMENTS.html) (Edición y eliminación de documentos de recursos).
+Las operaciones de creación, actualización y eliminación se realizan mediante el conector de Lotus Domino en la base de datos de reserva de recursos. Los recursos se crean como documentos en Names.nsf (es decir, la libreta de direcciones principal). Para obtener más información sobre cómo modificar y eliminar recursos, consulte [Editing and deleting Resource documents](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=/com.ibm.help.domino.admin85.doc/H_EDITING_AND_DELETING_RESOURCE_DOCUMENTS.html) (Edición y eliminación de documentos de recursos).
 
 **Operación de importación y exportación para recursos**  
-Hola recursos puede ser importado tooand exportada desde el servicio de sincronización de hello, como cualquier otro tipo de objeto. Tipo de objeto seleccione hello como recurso durante la configuración. Para que la operación de exportación se realice correctamente, debería tener información sobre el tipo de recurso, la base de datos de conferencias y el nombre del sitio.
+Los recursos se pueden importar al servicio de sincronización y exportarlos desde él igual que cualquier otro tipo de objeto. Seleccione el tipo de objeto como recurso durante la configuración. Para que la operación de exportación se realice correctamente, debería tener información sobre el tipo de recurso, la base de datos de conferencias y el nombre del sitio.
 
 ### <a name="mail-in-databases"></a>Bases de datos de correo de entrada
-Una base de datos de correo electrónico es una base de datos que está diseñada tooreceive correos. Es un buzón de Lotus Domino que no está asociado a ninguna cuenta de usuario de Lotus Domino específica (es decir, no tiene archivo de identificación ni contraseña propios). Una base de datos de correo de entrada tiene un valor UserId único ("nombre corto") asociado y su propia dirección de correo electrónico.
+Una base de datos de correo de entrada está diseñada para recibir mensajes de correo. Es un buzón de Lotus Domino que no está asociado a ninguna cuenta de usuario de Lotus Domino específica (es decir, no tiene archivo de identificación ni contraseña propios). Una base de datos de correo de entrada tiene un valor UserId único ("nombre corto") asociado y su propia dirección de correo electrónico.
 
-Si se necesita un buzón independiente con su propia dirección de correo electrónico que se pueda compartir entre distintos usuarios (por ejemplo: group@contoso.com), se crea una base de datos de correo de entrada. el buzón de correo de Hello acceso toothis se controla a través de su lista de Control de acceso (ACL), que contiene los nombres de Hola de usuarios de notas de Hola que se permiten los buzones de correo de tooopen Hola.
+Si se necesita un buzón independiente con su propia dirección de correo electrónico que se pueda compartir entre distintos usuarios (por ejemplo: group@contoso.com), se crea una base de datos de correo de entrada. El acceso a este buzón se controla a través de su lista de control de acceso (ACL), que contiene los nombres de los usuarios de Notes que tienen permiso para abrir el buzón.
 
-Para obtener una lista de atributos de hello necesario, consulte sección Hola denominada [atributos obligatorios](#mandatory-attributes) más adelante en este artículo.
+Para ver una lista de los atributos necesarios, consulte la sección llamada [Atributos obligatorios](#mandatory-attributes) más adelante en este artículo.
 
-Cuando una base de datos está diseñada tooreceive un correo electrónico, se crea un documento de correo electrónico de base de datos de Lotus Domino. Este documento debe existir en el directorio de Domino de todos los servidores que almacenan una copia de base de datos de Hola. Para ver una descripción detallada de cómo crear un documento de base de datos de correo de entrada, consulte [Creating a Mail-In Database document](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=/com.ibm.help.domino.admin85.doc/H_CREATING_A_MAILIN_DATABASE_DOCUMENT_FOR_A_NEW_DATABASE_OVERVIEW.html)(Creación de un documento de base de datos de correo de entrada).
+Cuando se ha diseñado una base de datos para recibir un mensaje de correo, se crea un documento de base de datos de correo de entrada en Lotus Domino. Este documento debe existir en el Directorio de Domino de cada servidor que almacene una copia de la base de datos. Para ver una descripción detallada de cómo crear un documento de base de datos de correo de entrada, consulte [Creating a Mail-In Database document](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=/com.ibm.help.domino.admin85.doc/H_CREATING_A_MAILIN_DATABASE_DOCUMENT_FOR_A_NEW_DATABASE_OVERVIEW.html)(Creación de un documento de base de datos de correo de entrada).
 
-Antes de crear una base de datos de correo electrónico, ya debe existir la base de datos de hello (deben se han creado por el Administrador de Lotus) en el servidor de Domino de Hola.
+Antes de crear una base de datos de correo de entrada, ya debería existir la base de datos (debería haberla creado el administrador de Lotus) en el servidor de Domino.
 
 ### <a name="group-management"></a>Administración de grupos
-Puede obtener una descripción detallada de administración de grupos de Lotus Domino Hola de hello recursos siguientes:
+Puede obtener una descripción detallada de la administración de grupos en Lotus Domino de los siguientes recursos:
 
 * [Using groups](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=/com.ibm.help.domino.admin85.doc/H_USING_GROUPS_OVER.html)
 * [Creating a group](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=/com.ibm.help.domino.admin85.doc/H_CREATING_AND_MODIFYING_GROUPS_STEPS_MIDTOPIC_55038956829238418.html)
@@ -348,59 +348,59 @@ Para un usuario registrado de Lotus Domino, existen dos tipos de contraseñas:
 1. Contraseña de usuario (se almacena en el archivo User.id)
 2. Contraseña HTTP/Internet
 
-Conector de Lotus Domino Hola solo admite operaciones con contraseña HTTP.
+El conector de Lotus Domino solo admite operaciones con la contraseña HTTP.
 
-administración de contraseñas de tooperform, debe habilitar la administración de contraseñas para el conector de hello en hello diseñador del agente de administración. administración de contraseñas tooenable, seleccione **habilitar la administración de contraseñas** en hello **configurar extensiones** página de diálogo.  
+Para realizar la administración de contraseñas, debe habilitarla para el conector en el Diseñador de agente de administración. Para habilitar la administración de contraseñas, active **Habilitar la administración de contraseñas** en la página **Configure Extensions** (Configurar extensiones) del cuadro de diálogo.  
 ![Configurar extensiones](./media/active-directory-aadconnectsync-connector-domino/configureextensions.png)
 
-soporte de conector de Lotus Domino de Hello las siguientes operaciones en la contraseña de Internet:
+El conector de Lotus Domino admite las siguientes operaciones para la contraseña de Internet:
 
-* Establecer contraseña: Contraseña del conjunto establece una nueva contraseña HTTP de Internet en usuario de hello en Domino. De forma predeterminada la cuenta de hello también está desbloqueada. Hola desbloquear marca se expone en la interfaz WMI de Hola de hello motor de sincronización.
-* Cambiar la contraseña: En este escenario, un usuario conviene toochange contraseña de Hola o toochange solicitadas contraseña después de una hora especificada. Para este sitio de tootake operación, tanto (Hola antigua y nueva contraseña de hello) son obligatorios. Una vez cambiada, Hola nueva contraseña se actualiza en Lotus Domino.
+* Establecer contraseña: esta opción establece una nueva contraseña HTTP/Internet en el usuario de Domino. Además, de forma predeterminada, la cuenta también se desbloquea. La marca de desbloqueo se expone en la interfaz de WMI del motor de sincronización.
+* Cambiar contraseña: en este escenario, con la opción Solo cambiar, un usuario puede cambiar la contraseña o se le pide que la cambie tras un tiempo especificado. Para que esta operación se lleve a cabo, son obligatorias ambas contraseñas (la antigua y la nueva). Una vez cambiada, la nueva contraseña se actualiza en Lotus Domino.
 
 Para más información, consulte:
 
-* [Utilizando la característica de bloqueo de Internet de Hola](http://www.ibm.com/developerworks/lotus/library/domino8-lockout/)
+* [Using the Internet lockout feature](http://www.ibm.com/developerworks/lotus/library/domino8-lockout/)
 * [Managing Internet passwords](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=/com.ibm.help.domino.admin85.doc/H_NOTES_AND_INTERNET_PASSWORD_SYNCHRONIZATION_7570_OVER.html)
 
 ## <a name="reference-information"></a>Información de referencia
-Esta sección se enumeran como requisitos de los atributos para el conector de Lotus Domino de Hola y descripciones de atributo.
+En esta sección, se muestran las descripciones de atributos y los requisitos de los atributos para el conector de Lotus Domino.
 
 ### <a name="lotus-notes-properties"></a>Propiedades de Lotus Notes
-Al aprovisionamiento de directorio de Lotus Domino de Person objetos tooyour, los objetos deben tener un conjunto específico de propiedades con valores específicos que se rellena. Estos valores solo son necesarios para las operaciones de creación.
+Cuando se aprovisionan objetos de persona en el directorio de Lotus Domino, los objetos deben poseer un conjunto específico de propiedades con valores específicos rellenados. Estos valores solo son necesarios para las operaciones de creación.
 
-Hola tabla siguiente enumera estas propiedades y proporciona una descripción de ellos.
+En la tabla siguiente, se incluyen estas propiedades y se proporciona su descripción.
 
 | Propiedad | Descripción |
 | --- | --- |
-| \_MMS_AltFullName |Hola alternativo nombre completo del usuario. |
-| \_MMS_AltFullNameLanguage |Hola toobe de lenguaje utilizado para especificar el nombre completo alternativo de saludo del usuario. |
-| \_MMS_CertDaysToExpire |número de Hola de días a partir de hello fecha actual antes de certificado de hello expira. Si no se especifica, fecha de hello predeterminada es de dos años de hello fecha actual. |
-| \_MMS_Certifier |Propiedad que contiene el nombre de jerarquía organizativa de Hola de certificador Hola. Por ejemplo: OU=OrganizationUnit,O=Org,C=Country. |
-| \_MMS_IDPath |Si Hola propiedad está vacía, ningún archivo de identificación de usuario se crea localmente en el servidor de sincronización de Hola. Si la propiedad de hello contiene un nombre de archivo, un archivo de Id. de usuario se crea en la carpeta de madata Hola. propiedad Hello también puede contener una ruta de acceso completa. |
-| \_MMS_IDRegType |Las personas se pueden clasificar como contactos, usuarios de Estados Unidos y usuarios de fuera de Estados Unidos. Hello tabla siguiente enumeran los valores posibles de hello: <li>0 - Contacto</li><li>1 - Usuario Estados Unidos</li><li>2 - Usuario internacional</li> |
-| \_MMS_IDStoreType |Propiedad obligatoria para los usuarios de Estados Unidos y de fuera de Estados Unidos. propiedad Hello contiene un valor entero que especifica si la identificación de usuario de Hola se almacena como datos adjuntos en la libreta de direcciones de hello notas o en el archivo de correo electrónico de la persona de Hola. Si el archivo de Id. de usuario de hello es un archivo adjunto en la libreta de direcciones de hello, opcionalmente, se puede crear como un archivo con \_MMS_IDPath. <li>Almacenar el archivo de identificación en el almacén de identificaciones, sin archivo de identificación (se usa para contactos).</li><li> 1 - attachment en Libreta de direcciones de hello notas. Hola \_MMS_Password propiedad debe establecerse para los archivos de identificación de usuario que son los datos adjuntos</li><li>2: almacenar la identificación en el archivo de correo de la persona. Hola \_MMS_UseAdminP debe establecerse correo de hello toolet toofalse archivo se crea durante Hola registro de la persona. Hola \_MMS_Password propiedad debe establecerse para los archivos de identificación de usuario.</li> |
-| \_MMS_MailQuotaSizeLimit |número de Hola de megabytes que se permiten para la base de datos de archivo de correo electrónico de Hola. |
-| \_MMS_MailQuotaWarningThreshold |número de Hola de megabytes que se permiten para la base de datos de archivo de correo electrónico de hello antes de que se emite una advertencia. |
-| \_MMS_MailTemplateName |archivo de la plantilla de correo electrónico Hola que es el archivo de correo electrónico del usuario de hello toocreate usado. Si se especifica una plantilla, archivo de correo electrónico de hello se crea utilizando la plantilla Hola especificados. Si no se especifica ninguna plantilla, archivo de plantilla predeterminado de hello es el archivo de Hola de toocreate usado. |
-| \_MMS_OU |Propiedad opcional que es nombre de unidad organizativa de hello en certificador Hola. Esta propiedad debe estar vacía para los contactos. |
-| \_MMS_Password |Propiedad obligatoria para los usuarios. propiedad Hello contiene la contraseña de hello para el archivo de identificación de Hola de objeto Hola. |
-| \_MMS_UseAdminP |Propiedad debe ser conjunto tootrue si se debe crear el archivo de correo electrónico de hello por proceso de AdminP hello en el servidor de Domino de hello (proceso de exportación de toohello asincrónica). Si la propiedad está establecida en toofalse, archivo de correo electrónico de hello se crea con hello usuario de Domino (sincrónico en el proceso de exportación de hello). |
+| \_MMS_AltFullName |El nombre completo alternativo del usuario. |
+| \_MMS_AltFullNameLanguage |El idioma que se usa para especificar el nombre completo alternativo del usuario. |
+| \_MMS_CertDaysToExpire |El número de días en que expira el certificado a partir de la fecha actual. Si no se especifica, la fecha predeterminada es dos años desde la fecha actual. |
+| \_MMS_Certifier |Propiedad que contiene el nombre de la jerarquía organizativa del certificador. Por ejemplo: OU=OrganizationUnit,O=Org,C=Country. |
+| \_MMS_IDPath |Si la propiedad está vacía, no se crea ningún archivo de identificación de usuario localmente en el servidor de sincronización. Si la propiedad contiene un nombre de archivo, se crea un archivo de identificación de usuario en la carpeta madata. La propiedad también puede contener una ruta de acceso completa. |
+| \_MMS_IDRegType |Las personas se pueden clasificar como contactos, usuarios de Estados Unidos y usuarios de fuera de Estados Unidos. En la tabla siguiente, se ofrecen los valores posibles: <li>0 - Contacto</li><li>1 - Usuario Estados Unidos</li><li>2 - Usuario internacional</li> |
+| \_MMS_IDStoreType |Propiedad obligatoria para los usuarios de Estados Unidos y de fuera de Estados Unidos. La propiedad contiene un valor entero que especifica si la identificación de usuario se almacena como datos adjuntos en la libreta de direcciones de Notes o en el archivo de correo de la persona. Si el archivo de identificación de usuario está adjunto a la libreta de direcciones, existe la opción de crearlo como archivo con \_MMS_IDPath. <li>Almacenar el archivo de identificación en el almacén de identificaciones, sin archivo de identificación (se usa para contactos).</li><li> 1: adjunto a la libreta de direcciones de Notes. La propiedad \_MMS_Password debe establecerse para los archivos de identificación de usuario que son datos adjuntos.</li><li>2: almacenar la identificación en el archivo de correo de la persona. \_MMS_UseAdminP debe establecerse en false para permitir que el archivo de correo se cree durante el registro de la persona. La propiedad \_MMS_Password debe establecerse para los archivos de identificación de usuario.</li> |
+| \_MMS_MailQuotaSizeLimit |El número de megabytes que se permiten para la base de datos de archivos de correo electrónico. |
+| \_MMS_MailQuotaWarningThreshold |El número de megabytes que se permiten para la base de datos de archivos de correo electrónico antes de que se emita una advertencia. |
+| \_MMS_MailTemplateName |El archivo de plantilla de correo electrónico que se usa para crear el archivo de correo electrónico del usuario. Si se especifica una plantilla, se crea el archivo de correo con ella. Si no se especifica ninguna, se emplea el archivo de plantilla predeterminado para crear el archivo. |
+| \_MMS_OU |Propiedad opcional que es el nombre de la unidad organizativa en el certificador. Esta propiedad debe estar vacía para los contactos. |
+| \_MMS_Password |Propiedad obligatoria para los usuarios. La propiedad contiene la contraseña para el archivo de identificación del objeto. |
+| \_MMS_UseAdminP |La propiedad debe establecerse en true si el proceso AdminP debe crear el archivo de correo en el servidor de Domino (asincrónico respecto al proceso de exportación). Si la propiedad se establece en false, se crea el archivo de correo con el usuario de Domino (sincrónico en el proceso de exportación). |
 
-Para un usuario con un archivo de identificación asociados, Hola \_MMS_Password propiedad debe contener un valor. Para el acceso de correo electrónico a través del cliente de Lotus Notes hello, servidor de correo electrónico de Hola y MailFile propiedades de un usuario deben contener un valor.
+Para un usuario con un archivo de identificación asociado, la propiedad \_MMS_Password debe contener un valor. Para el acceso a correo electrónico a través del cliente de Lotus Notes, las propiedades MailServer y MailFile de un usuario deben contener un valor.
 
-tooaccess de correo electrónico a través de un explorador Web, Hola propiedades siguientes debe contener valores:
+Para acceder al correo electrónico mediante un explorador web, las siguientes propiedades deben contener valores:
 
-* MailFile - propiedad necesaria que contiene la ruta de acceso de hello en servidor de Lotus Domino Hola donde se almacena el archivo de correo electrónico de hello.
-* Servidor de correo electrónico - propiedad necesaria que contiene Hola nombre del servidor de Lotus Domino Hola. Este valor es Hola nombre toouse cuando se creó el archivo de correo electrónico de Lotus hello en el servidor de Domino de Hola.
-* HTTPPassword - propiedad opcional que contiene la contraseña de acceso Web de hello para el objeto de Hola.
+* MailFile: propiedad obligatoria que contiene la ruta de acceso en el servidor de Lotus Domino donde se almacena el archivo de correo.
+* MailServer: propiedad obligatoria que contiene el nombre del servidor de Lotus Domino. Este valor es el nombre que se usa al crear el archivo de correo de Lotus en el servidor de Domino.
+* HTTPPassword: propiedad opcional que contiene la contraseña de acceso web para el objeto.
 
-tooaccess Hola servidor Domino sin la funcionalidad de correo electrónico, hello HTTPPassword propiedad debe contener un valor. propiedad MailFile de Hola y Hola propiedad de servidor de correo electrónico puede estar vacío.
+Para acceder al servidor Domino sin la funcionalidad de correo, la propiedad HTTPPassword debe contener un valor. La propiedad MailFile y la propiedad MailServer pueden estar vacías.
 
-Con \_MMS_ IDStoreType = 2 (identificador de almacén en el archivo de correo electrónico), Hola propiedad MailSystem de NotesRegistrationclass se establece tooREG_MAILSYSTEM_INOTES (3).
+Con \_MMS_IDStoreType = 2 (almacenar la identificación en el archivo de correo), se establece la propiedad MailSystem de NotesRegistrationclass en REG_MAILSYSTEM_INOTES (3).
 
 ### <a name="mandatory-attributes"></a>Atributos obligatorios
-Conector de Lotus Domino de Hello principalmente admite estos tipos de objetos (tipos de documento):
+El conector de Lotus Domino admite principalmente estos tipos de objetos (tipos de documento):
 
 * Grupo
 * Base de datos de correo de entrada
@@ -408,7 +408,7 @@ Conector de Lotus Domino de Hello principalmente admite estos tipos de objetos (
 * Contacto (persona sin certificador)
 * Recurso
 
-En esta sección se enumera los atributos de Hola que son obligatorios para cada servidor de Domino de objeto compatible tooexport tooa.
+En esta sección, se incluyen los atributos que son obligatorios para cada tipo de objeto admitido con el fin de exportar el objeto admitido a un servidor de Domino.
 
 | Tipo de objeto | Atributos obligatorios |
 | --- | --- |
@@ -420,77 +420,77 @@ En esta sección se enumera los atributos de Hola que son obligatorios para cada
 
 ## <a name="common-issues-and-questions"></a>Problemas y preguntas comunes
 ### <a name="schema-detection-does-not-work"></a>La detección de esquema no funciona
-esquema de toobe toodetect capaz de hello, es necesario que schema.nsf Hola el archivo esté presente en el servidor de Domino de Hola. Este archivo solo aparece si LDAP está instalado en el servidor de Hola. Si el esquema de hello no es detectable, compruebe Hola siguiente:
+Para poder detectar el esquema, es necesario que el archivo schema.nsf esté presente en el servidor de Domino. Este archivo solo aparece si LDAP está instalado en el servidor. Si no se detecta el esquema, compruebe lo siguiente:
 
-* Hola archivo schema.nsf está presente en la carpeta raíz de Hola de hello servidor Domino
-* usuario de Hello tiene archivo de permisos toosee hello schema.nsf.
-* Forzar un reinicio del servidor LDAP de Hola. Abra **Lotus Domino consola** y usar **saber LDAP ReloadSchema** esquema de comando tooreload Hola.
+* El archivo schema.nsf está presente en la carpeta raíz del servidor de Domino.
+* El usuario tiene permisos para ver el archivo schema.nsf.
+* Fuerce el reinicio del servidor LDAP. Abra **Lotus Domino Console** (Consola de Lotus Domino) y use el comando **Tell LDAP ReloadSchema** (Indicar a LDAP ReloadSchema) para volver a cargar el esquema.
 
 ### <a name="not-all-secondary-address-books-are-visible"></a>No todas las libretas de direcciones secundarias son visibles
-Hello Domino conector se basa en la característica de hello **Directory asistencia** toobe toofind capaz de hello secundaria libretas. Si faltan libretas de direcciones secundarias de hello, compruebe si [Directory asistencia](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_ABOUT_DIRECTORY_ASSISTANCE.html) se ha habilitado y configurado en hello servidor Domino.
+El conector de Domino se basa en la característica **Directory Assistance** para encontrar las libretas de direcciones secundarias. Si faltan las libretas de direcciones secundarias, compruebe si [Directory Assistance](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_ABOUT_DIRECTORY_ASSISTANCE.html) se ha habilitado y configurado en el servidor de Domino.
 
 ### <a name="custom-attributes-in-domino"></a>Atributos personalizados de Domino
-Hay varias maneras de esquema de Domino tooextend Hola por lo que aparece como un atributo personalizado que se pueden utilizar por hello conector.
+En Domino, existen varias maneras de extender el esquema para que aparezca como atributo personalizado que el conector puede consumir.
 
 **Enfoque 1: Extender el esquema de Lotus Domino**
 
-1. Crear una copia de la plantilla del directorio de Domino {PUBNAMES. NTF} siguiendo [estos pasos](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_CREATING_A_COPY_OF_THE_DEFAULT_PUBIC_ADDRESS_BOOK_TEMPLATE.html) (no debe personalizar directorio de IBM Lotus Domino predeterminado de hello plantilla):
-2. Plantilla de directorio de copia de Domino de abrir Hola {CONTOSO. Plantilla NTF} que se creó en el Diseñador de Domino y siga estos pasos:
+1. Cree una copia de la plantilla del directorio de Domino {PUBNAMES.NTF} siguiendo [estos pasos](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_CREATING_A_COPY_OF_THE_DEFAULT_PUBIC_ADDRESS_BOOK_TEMPLATE.html) (no debe personalizar la plantilla del Directorio de IBM Lotus Domino predeterminada):
+2. Abra la copia de la plantilla del directorio de Domino {CONTOSO.NTF} que se ha creado en Domino Designer y siga estos pasos:
    * Haga clic en Shared Elements (Elementos compartidos) y expanda Subforms (Subformularios).
-   * Haga doble clic en subformulario de ${nombreDeObjeto} InheritableSchema (donde {nombreDeObjeto} es nombre Hola de clase de objeto estructural de hello de forma predeterminada, por ejemplo: persona).
-   * Nombre de atributo de Hola que quiera tooadd en esquema {MyPersonAtrribute} y atributo toothat correspondiente. Crear un campo seleccione hello **crear** menú y, a continuación, seleccione **campo** de menú.
-   * En campo agregado de hello, establecer sus propiedades, seleccione su tipo, estilo, tamaño, fuente y otros parámetros relacionados en la ventana de propiedades de campo.
-   * Atributo de hello mantener mismo valor predeterminado como nombre de hello proporcionado para ese atributo (por ejemplo, si el nombre del atributo es MyPersonAttribute, mantener el valor predeterminado de hello con hello mismo nombre).
-   * Guardar subformulario de hello ${nombreDeObjeto} InheritableSchema con valores actualizados.
-3. Reemplace Hola Domino Directory plantilla {PUBNAMES. NTF} con plantilla personalizada nueva de Hola {CONTOSO. NTF} siguiendo [estos pasos](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_ABOUT_RULES_FOR_CUSTOMIZING_THE_PUBLIC_ADDRESS_BOOK.html).
-4. Cierre el Administrador de Domino y abra hello de la consola de Domino toorestart servicio LDAP y tooReload Hola esquema LDAP:
-   * En la consola de Domino, insert, comando hello en **Domino comando** texto presentado servicio LDAP de toorestart Hola - [reiniciar tarea LDAP](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_STARTING_AND_STOPPING_THE_LDAP_SERVER_OVER.html).
-   * esquema de LDAP de tooreload utilizar comandos LDAP indicar - indicar ReloadSchema de LDAP
-5. Abra Administrador de Domino y seleccione toosee pestaña usuarios y grupos agrega el atributo se refleja en el domino agregar una persona.
+   * Haga doble clic en el subformulario ${nombreDeObjeto}InheritableSchema (donde {nombreDeObjeto} es el nombre de la clase de objeto estructural predeterminada, como, por ejemplo, Person).
+   * Nombre del atributo que desea agregar en el esquema {MyPersonAtrribute} y el correspondiente a ese atributo. Cree un campo, seleccione el menú **Crear** y, después seleccione un **campo** en el menú.
+   * En el campo agregado, establezca sus propiedades seleccionando el tipo, el estilo, el tamaño, la fuente y otros parámetros relacionados en la ventana de propiedades del campo.
+   * Mantenga el mismo valor predeterminado de atributo que el nombre asignado a ese atributo (por ejemplo, si el nombre del atributo es miAtributoDePersona, mantenga el valor predeterminado con el mismo nombre).
+   * Guarde el subformulario ${nombreDeObjeto}InheritableSchema con valores actualizados.
+3. Reemplace la plantilla del Directorio de Domino {PUBNAMES.NTF} por la nueva plantilla personalizada {CONTOSO.NTF} siguiendo [estos pasos](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_ABOUT_RULES_FOR_CUSTOMIZING_THE_PUBLIC_ADDRESS_BOOK.html).
+4. Cierre el administrador de Domino y abra la consola de Domino para reiniciar el servicio LDAP y volver a cargar el esquema LDAP:
+   * En la consola de Domino, inserte el comando en el campo de texto **Domino Command** (Comando de Domino) para reiniciar el servicio LDAP: [Restart Task LDAP](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_STARTING_AND_STOPPING_THE_LDAP_SERVER_OVER.html) (Reiniciar tarea LDAP).
+   * Para volver a cargar el esquema LDAP, use el comando Tell LDAP: Tell LDAP ReloadSchema (Indicar a LDAP ReloadSchema).
+5. Abra el administrador de Domino y seleccione la pestaña People & Groups (Personas y grupos) para ver que el atributo agregado se refleja en Add Person (Agregar persona) en Domino.
 6. Abra Schema.nsf en la pestaña **Files** (Archivos) y compruebe que el atributo agregado se refleja en la clase de objeto de LDAP dominoPerson.
 
-**Método 2: Crear un auxClass con el atributo personalizado y asociar a la clase de objeto de hello**
+**Enfoque 2: Crear una clase auxiliar con un atributo personalizado y asociarla con la clase de objeto**
 
-1. Crear una copia de la plantilla del directorio de Domino {PUBNAMES. NTF} siguiendo [estos pasos](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_CREATING_A_COPY_OF_THE_DEFAULT_PUBIC_ADDRESS_BOOK_TEMPLATE.html) (nunca Personalizar directorio de IBM Lotus Domino predeterminado de hello plantilla):
-2. Plantilla de directorio de copia de Domino de abrir Hola {CONTOSO. Plantilla NTF} que se creó en el Diseñador de Domino.
-3. En el panel izquierdo de hello, seleccione el código compartido y, a continuación, subformularios.
+1. Cree una copia de la plantilla del Directorio de Domino {PUBNAMES.NTF} siguiendo [estos pasos](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_CREATING_A_COPY_OF_THE_DEFAULT_PUBIC_ADDRESS_BOOK_TEMPLATE.html) (no personalice nunca la plantilla del Directorio de IBM Lotus Domino predeterminada):
+2. Abra en Domino Designer la copia de la plantilla del Directorio de Domino {CONTOSO.NTF} que se ha creado.
+3. En el panel izquierdo, seleccione Shared Code (Código compartido) y después Subforms (Subformularios).
 4. Haga clic en New Subform (Nuevo subformulario).
-5. Hola siguientes toospecify Hola propiedades subformulario nueva hello:
-   * Con subformulario nueva Hola abierto, seleccione diseño - propiedades de subformulario
-   * Toohello siguiente propiedad de nombre, escriba un nombre para la clase de objeto auxiliar de hello: por ejemplo, TestSubform.
-   * Mantener la propiedad Options de Hola "Incluyen subformulario Insert... cuadro de diálogo" seleccionado
-   * Anule la selección de propiedades de opciones de Hola "Representación pasan a través de HTML en notas."
-   * Deje Hola otras propiedades Hola igual y cerrar Hola subformulario propiedades cuadro.
-   * Guarde y cierre subformulario nueva Hola.
-6. Hola después de una clase de objeto auxiliar de campo toodefine Hola tooadd:
-   * Abrir subformulario Hola que creó.
+5. Siga este procedimiento para especificar las propiedades del nuevo subformulario:
+   * Con el nuevo subformulario abierto, seleccione Design - Subform Properties (Diseñar - Propiedades del subformulario).
+   * Junto a la propiedad Name (Nombre), escriba un nombre para la clase auxiliar de objeto, por ejemplo, subformularioPrueba.
+   * Mantenga la propiedad "Include in Insert Subform... dialog" (Incluir en el cuadro de diálogo Insertar subformulario) de Options (Opciones) seleccionada.
+   * Anule la selección de la propiedad "Render pass through HTML in Notes" (Representar texto HTML en Notes) de Options (Opciones).
+   * Deje las demás propiedades como están y cierre el cuadro Subform Properties (Propiedades del subformulario).
+   * Guarde y cierre el subformulario nuevo.
+6. Siga este procedimiento para agregar un campo para definir la clase auxiliar de objeto:
+   * Abra el subformulario que ha creado.
    * Elija Create - Field (Crear - Campo).
-   * Siguiente tooName en ficha de conceptos básicos de Hola Hola campo del cuadro de diálogo, especifique cualquier nombre, por ejemplo: {MyPersonTestAttribute}.
-   * En campo agregado de hello, establecer sus propiedades, seleccione su tipo, estilo, tamaño, fuente y propiedades relacionadas.
-   * Atributo de hello mantener mismo valor predeterminado como nombre de hello proporcionado para ese atributo (por ejemplo, si el nombre del atributo es MyPersonTestAttribute, mantener el valor predeterminado de hello con hello mismo nombre).
-   * Guardar subformulario Hola con valores actualizados y Hola siguientes:
-     * En el panel izquierdo de hello, seleccione el código compartido y, a continuación, subformularios
-     * Seleccione nuevo subformulario de Hola y elija Diseño - propiedades de diseño.
-     * Haga clic en hello tercera ficha de hello izquierda y seleccione **propagar esta prohibición de cambio de diseño**.
-7. Abrir subformulario de ExtensibleSchema ${nombreDeObjeto}, (donde {nombreDeObjeto} es nombre Hola de clase de objeto estructural de Hola de forma predeterminada, por ejemplo: persona).
-8. Insertar recurso y seleccione Hola subformulario (que ha creado, por ejemplo: TestSubform) y guardar subformulario ExtensibleSchema de hello ${nombreDeObjeto}.
-9. Reemplace Hola Domino Directory plantilla {PUBNAMES. NTF} con plantilla personalizada nueva de Hola {CONTOSO. NTF} siguiendo [estos pasos](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_ABOUT_RULES_FOR_CUSTOMIZING_THE_PUBLIC_ADDRESS_BOOK.html).
-10. Cierre el Administrador de Domino y abra hello de la consola de Domino toorestart servicio LDAP y tooReload Hola esquema LDAP:
-    * En la consola de Domino, insert, comando hello en **Domino comando** texto presentado servicio LDAP de toorestart Hola - [reiniciar tarea LDAP](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_STARTING_AND_STOPPING_THE_LDAP_SERVER_OVER.html).
-    * esquema de LDAP de tooreload utilizar comandos LDAP indicar **saber LDAP ReloadSchema**.
-11. Abra Administrador de Domino y seleccione toosee pestaña usuarios y grupos agrega el atributo se refleja en el domino agregar una persona (en otras personas de tabulación).
+   * Junto a Name (Nombre) en la pestaña Basics (Básico) del cuadro de diálogo Field (Campo), especifique un nombre, como {miAtributoDePruebaDePersona}.
+   * En el campo agregado, establezca sus propiedades seleccionando el tipo, el estilo, el tamaño, la fuente y otras propiedades relacionadas.
+   * Mantenga el mismo valor predeterminado de atributo que el nombre asignado a ese atributo (por ejemplo, si el nombre del atributo es miAtributoDePruebaDePersona, mantenga el valor predeterminado con el mismo nombre).
+   * Guarde el subformulario con valores actualizados y haga lo siguiente:
+     * En el panel izquierdo, seleccione Shared Code (Código compartido) y después Subforms (Subformularios).
+     * Seleccione el nuevo subformulario y elija Design - Design Properties (Diseñar - Propiedades del diseño).
+     * Haga clic en la tercera pestaña desde la izquierda y seleccione **Propagate this prohibition of design change**(Propagar esta prohibición de cambios en el diseño).
+7. Abra el subformulario ${nombreDeObjeto}ExtensibleSchema (donde {nombreDeObjeto} es el nombre de la clase de objeto estructural predeterminada, como, por ejemplo, Person).
+8. Inserte el recurso y seleccione el subformulario (que ha creado, por ejemplo: subformularioDePrueba) y guarde el subformulario ${nombreDeObjeto}ExtensibleSchema.
+9. Reemplace la plantilla del Directorio de Domino {PUBNAMES.NTF} por la nueva plantilla personalizada {CONTOSO.NTF} siguiendo [estos pasos](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_ABOUT_RULES_FOR_CUSTOMIZING_THE_PUBLIC_ADDRESS_BOOK.html).
+10. Cierre el administrador de Domino y abra la consola de Domino para reiniciar el servicio LDAP y volver a cargar el esquema LDAP:
+    * En la consola de Domino, inserte el comando en el campo de texto **Domino Command** (Comando de Domino) para reiniciar el servicio LDAP: [Restart Task LDAP](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_STARTING_AND_STOPPING_THE_LDAP_SERVER_OVER.html)(Reiniciar tarea LDAP).
+    * Para volver a cargar el esquema LDAP, use el comando Tell LDAP **Tell LDAP ReloadSchema**(Indicar a LDAP ReloadSchema).
+11. Abra el administrador de Domino y seleccione la pestaña People & Groups (Personas y grupos) para ver que el atributo agregado se refleja en Add Person (Agregar persona) en Domino (en la pestaña Others [Otros]).
 12. Abra Schema.nsf en la pestaña **Files** (Archivos) y compruebe que el atributo agregado se refleja en la clase auxiliar de objeto de LDAP subformularioDePrueba.
 
-**Método 3: Agregar clase de hello atributo personalizado toohello ExtensibleObject**
+**Enfoque 3: Agregar el atributo personalizado a la clase ExtensibleObject**
 
-1. Abrir archivo {Schema.nsf} que se coloca en el directorio raíz de Hola
-2. Seleccione las clases de objeto LDAP de menú de la izquierda hello en **todos los documentos de esquema** y haga clic en **agregar Object (clase)** botón:
-3. Proporcione el nombre de LDAP en forma de Hola de {zzzExtensibleSchema} (donde zzz es nombre Hola de clase de objeto estructural de Hola de forma predeterminada, por ejemplo persona). Por ejemplo, esquemas de hello tooextend para la clase de objeto de persona, proporcione el nombre LDAP {PersonExtensibleSchema}.
-4. Proporcionar el nombre de clase de objeto Superior, que se desea esquema de hello tooextend. Por ejemplo, esquema de hello tooextend para la clase de objeto de persona, proporcionar el nombre de clase de objeto de una mejor opción {dominoPerson}:
-5. Proporciona una clase de objeto toohello correspondiente de OID válida.
-6. Seleccionar atributos extendidos/personalizados en campos obligatorio u opcional de los tipos de atributo según los requisitos de Hola:
-7. Después de agregar requiere atributos toohello ExtensibleObjectClass, haga clic en **guardar y cerrar**.
+1. Abra el archivo {Schema.nsf} ubicado en el directorio raíz.
+2. Seleccione LDAP Object Classes (Clases de objeto LDAP) en el menú izquierdo bajo **All Schema Documents** (Todos los documentos del esquema) y haga clic en el botón **Add Object class** (Agregar clase de objeto):
+3. Proporcione el nombre LDAP con el formato {zzzExtensibleSchema} (donde zzz es el nombre de la clase de objeto estructural predeterminada, por ejemplo, Person). Por ejemplo, para extender el esquema de la clase de objeto Person, proporcione el nombre LDAP {PersonExtensibleSchema}.
+4. Proporcione el nombre de la clase de objeto superior, para la que desea extender el esquema. Por ejemplo, para extender el esquema para la clase de objeto Person, proporcione el nombre de clase de objeto superior {dominoPerson}:
+5. Proporcione un OID válido correspondiente a la clase de objeto.
+6. Seleccione los atributos extendidos o personalizados en los campos de tipos de atributos opcionales u obligatorios según los requisitos:
+7. Después de agregar los atributos requeridos para ExtensibleObjectClass, haga clic en **Save & Close** (Guardar y cerrar).
 8. Se crea un elemento ExtensibleObjectClass para la clase de objeto predeterminada respectiva con atributos extendidos.
 
 ## <a name="troubleshooting"></a>Solución de problemas
-* Para obtener información sobre cómo registro tooenable tootroubleshoot Hola conector, vea hello [cómo tooEnable seguimiento de ETW para conectores](http://go.microsoft.com/fwlink/?LinkId=335731).
+* Para más información acerca de cómo habilitar el registro para solucionar problemas del conector, consulte [How to Enable ETW Tracing for FIM 2010 R2 Connectors](http://go.microsoft.com/fwlink/?LinkId=335731).

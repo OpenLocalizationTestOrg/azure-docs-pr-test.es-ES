@@ -1,6 +1,6 @@
 ---
-title: "copias de seguridad del almacenamiento de datos SQL aaaAzure - instantáneas, con redundancia geográfica | Documentos de Microsoft"
-description: "Obtenga información acerca de las copias de seguridad de base de datos integrada de almacenamiento de datos de SQL que le permiten toorestore un punto de restauración del almacén de datos de SQL Azure tooa o una región geográfica diferente."
+title: "Copias de seguridad de Azure SQL Data Warehouse: instantáneas, redundancia geográfica | Microsoft Docs"
+description: "Aprenda sobre las copias de seguridad de base de datos integradas de SQL Data Warehouse que permiten restaurar una instancia de Azure SQL Data Warehouse a un punto de restauración o una región geográfica distinta."
 services: sql-data-warehouse
 documentationcenter: 
 author: Lakshmi1812
@@ -15,42 +15,42 @@ ms.workload: NA
 ms.custom: backup-restore
 ms.date: 10/31/2016
 ms.author: lakshmir;barbkess
-ms.openlocfilehash: 34659480485246f54a1490e185fc1b903fb2520d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 54c0149a769e654139bbdf709802d49127f041ac
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-data-warehouse-backups"></a>Copias de seguridad de SQL Data Warehouse
-SQL Data Warehouse ofrece copias de seguridad locales y geográficas como parte de sus funcionalidades de copia de seguridad de almacenamiento de datos. Aquí se incluyen instantáneas de Azure Storage Blob y almacenamiento con redundancia geográfica. Utilice toorestore de copias de seguridad de almacenamiento de datos la restauración de tooa de almacenamiento de datos de punto en la región principal de Hola o restaurar tooa otra región geográfica. Este artículo explica detalles Hola de copias de seguridad en el almacén de datos de SQL.
+SQL Data Warehouse ofrece copias de seguridad locales y geográficas como parte de sus funcionalidades de copia de seguridad de almacenamiento de datos. Aquí se incluyen instantáneas de Azure Storage Blob y almacenamiento con redundancia geográfica. Use copias de seguridad de almacenamiento de datos para restaurar el almacenamiento de datos a un punto de restauración en la región primaria o a una región geográfica diferente. En este artículo se explican los aspectos específicos de las copias de seguridad en SQL Data Warehouse.
 
 ## <a name="what-is-a-data-warehouse-backup"></a>¿Qué es una copia de seguridad de almacenamiento de datos?
-Una copia de seguridad del almacén de datos es datos de hello puede usar toorestore en un momento determinado de datos almacén tooa.  Como SQL Data Warehouse es un sistema distribuido, una copia de seguridad de almacenamiento de datos consta de muchos archivos que se almacenan en blobs de Azure. 
+Una copia de seguridad de almacenamiento de datos son los datos que se pueden usar para restaurar un almacenamiento de datos a un momento específico.  Como SQL Data Warehouse es un sistema distribuido, una copia de seguridad de almacenamiento de datos consta de muchos archivos que se almacenan en blobs de Azure. 
 
 Las copias de seguridad de base de datos son una parte esencial de cualquier estrategia de recuperación ante desastres y continuidad del negocio, ya que protegen los datos de daños o eliminaciones accidentales. Para más información, consulte [Información general sobre la continuidad empresarial](../sql-database/sql-database-business-continuity.md).
 
 ## <a name="data-redundancy"></a>Redundancia de datos
-SQL Data Warehouse protege los datos al almacenarlos en Azure Premium Storage con redundancia local (LRS). Esta característica de almacenamiento de Azure almacena varias copias sincrónicos datos Hola Hola local center tooguarantee transparente de los datos en protección de datos si se produce un error localizado. Gracias a la redundancia de datos, se garantiza que estos puedan sobrevivir a problemas de infraestructura, por ejemplo, errores de disco. Asimismo, asegura la continuidad empresarial mediante una infraestructura de alta disponibilidad con tolerancia a errores.
+SQL Data Warehouse protege los datos al almacenarlos en Azure Premium Storage con redundancia local (LRS). Esta característica de Azure Storage almacena varias copias sincrónicas de los datos en el centro de datos local para garantizar la protección transparente de los datos en caso de errores localizados. Gracias a la redundancia de datos, se garantiza que estos puedan sobrevivir a problemas de infraestructura, por ejemplo, errores de disco. Asimismo, asegura la continuidad empresarial mediante una infraestructura de alta disponibilidad con tolerancia a errores.
 
-toolearn más información sobre:
+Para más información sobre:
 
-* Almacenamiento Premium de Azure, consulte [Introducción tooAzure almacenamiento Premium](../storage/common/storage-premium-storage.md).
+* Azure Premium Storage, consulte [Introducción a Azure Premium Storage](../storage/common/storage-premium-storage.md).
 * Almacenamiento con redundancia local, consulte [Replicación de Azure Storage](../storage/common/storage-redundancy.md#locally-redundant-storage).
 
 ## <a name="azure-storage-blob-snapshots"></a>Instantáneas de Azure Storage Blob
-Como una ventaja del uso de almacenamiento Premium de Azure, almacenamiento de datos de SQL utiliza almacenamiento de datos de Blob de almacenamiento de Azure instantáneas toobackup Hola localmente. Puede restaurar un punto de restauración de instantáneas de datos almacén tooa. Las instantáneas se inician como mínimo cada ocho horas y están disponibles durante siete días.  
+Una de las ventajas de usar Azure Premium Storage, es que SQL Data Warehouse usa instantáneas de Azure Storage Blob para realizar la copia de seguridad del almacenamiento de datos local. Puede restaurar un almacén de datos a un punto de restauración de instantáneas. Las instantáneas se inician como mínimo cada ocho horas y están disponibles durante siete días.  
 
-toolearn más información sobre:
+Para más información sobre:
 
 * Instantáneas de blobs de Azure, consulte [Creación de una instantánea de un blob](../storage/blobs/storage-blob-snapshots.md).
 
 ## <a name="geo-redundant-backups"></a>Copias de seguridad con redundancia geográfica
-Cada 24 horas, almacenamiento de datos de SQL almacena el almacenamiento de datos completa de hello en almacenamiento estándar. Hello almacenamiento de datos completa se crea toomatch Hola momento de la última instantánea de Hola. almacenamiento estándar Hola pertenece tooa cuenta de almacenamiento con redundancia geográfica con acceso de lectura (RA-GRS). característica de almacenamiento de Azure RA-GRS Hola replica Hola archivos de copia de seguridad tooa [centro de datos emparejado](../best-practices-availability-paired-regions.md). Esta replicación geográfica garantiza que puede restaurar el almacén de datos en caso de que no se puede obtener acceso a instantáneas de hello en su región primaria. 
+Cada 24 horas, SQL Data Warehouse almacena el almacenamiento de datos completo en almacenamiento Estándar. El almacenamiento de datos completo se crea para que coincida con la hora de la última instantánea. El almacenamiento estándar pertenece a una cuenta de almacenamiento con redundancia geográfica con acceso de lectura (RA-GRS). La característica RA-GRS de Azure Storage replica los archivos de copias de seguridad en un [centro de datos emparejado](../best-practices-availability-paired-regions.md). Esta replicación geográfica garantiza que pueda restaurar el almacenamiento de datos en caso de que no se pueda acceder a las instantáneas de la región primaria. 
 
-Esta característica está activada de forma predeterminada. Si no desea que copias de seguridad con redundancia geográfica toouse, que puede [descartar] (https://docs.microsoft.com/powershell/resourcemanager/Azurerm.sql/v2.1.0/Set-AzureRmSqlDatabaseGeoBackupPolicy?redirectedfrom=msdn). 
+Esta característica está activada de forma predeterminada. Si no desea utilizar copias de seguridad con redundancia geográfica, puede [descartar] (https://docs.microsoft.com/powershell/resourcemanager/Azurerm.sql/v2.1.0/Set-AzureRmSqlDatabaseGeoBackupPolicy?redirectedfrom=msdn). 
 
 > [!NOTE]
-> En el almacenamiento de Azure, término hello *replicación* hace referencia toocopying archivos desde una ubicación tooanother. De SQL *replicación de base de datos* hace referencia a bases de datos de tookeeping toomultiple secundarias sincronizadas con una base de datos principal. 
+> En Azure Storage, el término *replicación* hace referencia a la copia de archivos desde una ubicación a otra. La *replicación de base de datos* de SQL hace referencia a mantener varias bases de datos secundarias sincronizadas con una base de datos principal. 
 > 
 > 
 
@@ -59,15 +59,15 @@ Esta característica está activada de forma predeterminada. Si no desea que cop
 >
 > 
 
-toolearn más información sobre:
+Para más información sobre:
 
 * Almacenamiento con redundancia geográfica, consulte [Replicación de Azure Storage](../storage/common/storage-redundancy.md).
 * Almacenamiento de RA-GRS, consulte [Almacenamiento con redundancia geográfica con acceso de lectura](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage).
 
 ## <a name="data-warehouse-backup-schedule-and-retention-period"></a>Programación de copia de seguridad de almacenamiento de datos y período de retención
-Almacenamiento de datos SQL se crean instantáneas en los almacenes de datos en línea cada cuatro horas tooeight y conserva cada instantánea durante siete días. Puede restaurar la tooone de base de datos en línea de puntos de restauración de Hola Hola últimos siete días. 
+SQL Data Warehouse crea instantáneas en los almacenamientos de datos en línea entre cada cuatro y ocho horas y guarda cada instantánea durante siete días. Puede restaurar la base de datos en línea a uno de los puntos de restauración de los últimos siete días. 
 
-toosee cuando se inicia la última instantánea de hello, ejecute esta consulta en el almacén de datos de SQL en línea. 
+Para ver cuándo se inició la última instantánea, ejecute esta consulta en SQL Data Warehouse en línea. 
 
 ```sql
 select top 1 *
@@ -75,39 +75,39 @@ from sys.pdw_loader_backup_runs
 order by run_id desc;
 ```
 
-Si necesita una instantánea de tooretain durante más de siete días, puede restaurar tooa de punto de restauración un nuevo almacén de datos. Una vez finalizada la restauración de hello, almacenamiento de datos SQL comienza a crear instantáneas en almacenamiento de datos nueva Hola. Si no realiza el nuevo almacén de datos de cambios toohello, instantáneas de hello permanecen vacías y, por tanto, el costo de instantánea de hello es mínimo. También puede pausar tookeep de base de datos de hello almacenamiento de datos SQL desde la creación de instantáneas.
+Si necesita conservar una instantánea durante más de siete días, puede restaurar un punto de restauración a un nuevo almacenamiento de datos. Cuando finaliza la restauración, SQL Data Warehouse comienza a crear instantáneas en el nuevo almacenamiento de datos. Si no realiza cambios en el nuevo almacenamiento de datos, las instantáneas permanecen vacías y, por tanto, el costo de la instantánea es mínimo. También puede pausar la base de datos para evitar que SQL Data Warehouse cree instantáneas.
 
-### <a name="what-happens-toomy-backup-retention-while-my-data-warehouse-is-paused"></a>¿Qué ocurre retención de copia de seguridad de toomy mientras está en pausa el almacenamiento de datos?
-SQL Data Warehouse no crea instantáneas y no caduca las copias de seguridad mientras un almacenamiento de datos está en pausa. antigüedad de la instantánea de Hello no cambia mientras está en pausa el almacenamiento de datos de Hola. Retención de instantáneas se basa en el número de Hola de días de almacenamiento de datos de hello está en línea, no los días de calendario.
+### <a name="what-happens-to-my-backup-retention-while-my-data-warehouse-is-paused"></a>¿Qué pasa con la retención de mi copia de seguridad mientras el almacenamiento de datos está pausado?
+SQL Data Warehouse no crea instantáneas y no caduca las copias de seguridad mientras un almacenamiento de datos está en pausa. Y tampoco cambia la antigüedad de la instantánea mientras el almacenamiento de datos está en pausa. La retención de instantáneas se basa en el número de días que el almacenamiento de datos está en línea, no en los días de calendario.
 
-Por ejemplo, si una instantánea se inicia el 1 de octubre a las 4 p.m. y almacenamiento de datos de Hola se detiene el 3 de octubre a las 4 p.m., instantánea de hello es dos días de antigüedad. Cada vez que se pone en línea el almacenamiento de datos de hello instantánea hello es dos días de antigüedad. Si el almacén de datos de Hola se pone en línea 5 de octubre a las 4 p.m., instantánea hello es dos días de antigüedad y permanece durante cinco días más.
+Por ejemplo, si una instantánea comienza el 1 de octubre a las 4 de la tarde y el almacenamiento de datos se detiene el 3 de octubre a kas 4 de la tarde, la instantánea tiene dos días de antigüedad. Cada vez que el almacenamiento de datos vuelve a estar en línea, la instantánea tiene dos días de antigüedad. Si el almacenamiento de datos vuelve a estar en línea el 5 de octubre a las 4 de la tarde, la instantánea tiene dos días de antigüedad y permanece cinco días más.
 
-Al almacenamiento de datos de hello vuelve a estar conectado, almacenamiento de datos SQL se reanuda nuevas instantáneas y expira instantáneas cuando tienen más de siete días de datos.
+Cuando el almacenamiento de datos vuelve a estar en línea, SQL Data Warehouse reanuda las nuevas instantáneas y caduca aquellas que tienen más de siete días de datos.
 
-### <a name="how-long-is-hello-retention-period-for-a-dropped-data-warehouse"></a>¿Cuánto tiempo es período de retención de Hola para un almacenamiento de datos colocados?
-Cuando se quita un almacén de datos, instantáneas de Hola y Hola data warehouse son guardan durante siete días y, a continuación, se quitan. Puede restaurar tooany de almacenamiento de datos de Hola Hola guardado de puntos de restauración.
+### <a name="how-long-is-the-retention-period-for-a-dropped-data-warehouse"></a>¿Cuánto dura el período de retención para un almacenamiento de datos quitado?
+Cuando se quita un almacenamiento de datos, este y las instantáneas se guardan durante siete días y luego se quitan. Puede restaurar el almacenamiento de datos a cualquiera de los puntos de restauración guardados.
 
 > [!IMPORTANT]
-> Si elimina una instancia SQL server lógica, todas las bases de datos que pertenecen la instancia de toohello también se eliminan y no se puede recuperar. No puede restaurar un servidor eliminado.
+> Si elimina una instancia de servidor de SQL lógica, todas las bases de datos que pertenecen a la instancia también se eliminan y no se pueden recuperar. No puede restaurar un servidor eliminado.
 > 
 > 
 
 ## <a name="data-warehouse-backup-costs"></a>Costos de la copia de seguridad del almacenamiento de datos
-Hola total de costo para el almacén de datos principal y siete días a partir de las instantáneas de Blob de Azure es toohello redondeado más cercano TB. Por ejemplo, si el almacenamiento de datos es 1,5 TB y las instantáneas de hello usan 100 GB, se le facturará de 2 TB de datos a velocidades de almacenamiento Premium de Azure. 
+El costo total del almacenamiento de datos principal y de los siete días de instantáneas de Azure Blob se redondea al TB más cercano. Por ejemplo, si el almacenamiento de datos es de 1,5 TB y las instantáneas usan 100 GB, se le facturan 2 TB de datos según las tarifas de Azure Premium Storage. 
 
 > [!NOTE]
-> Cada instantánea inicialmente está vacía y crece a medida que el almacén de datos principal de toohello de cambios. Todas las instantáneas aumentan de tamaño cuando cambia de almacenamiento de datos de Hola. Por lo tanto, los costos de almacenamiento de Hola para instantáneas crecen correspondiente de toohello de tasa de cambio.
+> Cada instantánea está vacía inicialmente y crece a medida que se realizan cambios en el almacenamiento de datos principal. Todas las instantáneas aumentan de tamaño cuando cambia el almacenamiento de datos. Por lo tanto, los costos de almacenamiento de las instantáneas crecen según el porcentaje de cambio.
 > 
 > 
 
-Si usa almacenamiento con redundancia geográfica, recibirá un cargo de almacenamiento por separado. almacenamiento con redundancia geográfica Hola se factura a velocidad de hello estándar almacenamiento geográficamente redundante con acceso de lectura (RA-GRS).
+Si usa almacenamiento con redundancia geográfica, recibirá un cargo de almacenamiento por separado. El almacenamiento con redundancia geográfica se factura según la tarifa estándar de almacenamiento geográficamente redundante con acceso de lectura (RA-GRS).
 
 Para más información sobre los precios de SQL Data Warehouse, consulte [Precios de SQL Data Warehouse](https://azure.microsoft.com/pricing/details/sql-data-warehouse/).
 
 ## <a name="using-database-backups"></a>Uso de copias de seguridad de base de datos
-uso principal de Hola para copias de seguridad del almacén de datos SQL es tooone de almacenamiento de datos de toorestore Hola Hola de puntos de restauración en el período de retención de Hola.  
+El uso principal de copias de seguridad de almacenamiento de datos SQL consiste en restaurar el almacenamiento de datos a uno de los puntos de restauración dentro del período de retención.  
 
-* toorestore un almacén de datos SQL, consulte [restaurar un almacén de datos SQL](sql-data-warehouse-restore-database-overview.md).
+* Para restaurar un almacenamiento de datos SQL, consulte [Restauración de un almacenamiento de datos SQL](sql-data-warehouse-restore-database-overview.md).
 
 ## <a name="related-topics"></a>Temas relacionados
 ### <a name="scenarios"></a>Escenarios
@@ -115,7 +115,7 @@ uso principal de Hola para copias de seguridad del almacén de datos SQL es tooo
 
 <!-- ### Tasks -->
 
-* toorestore un almacenamiento de datos, vea [restaurar un almacén de datos SQL](sql-data-warehouse-restore-database-overview.md)
+* Para restaurar un almacenamiento de datos, consulte [Restauración de un almacenamiento de datos SQL](sql-data-warehouse-restore-database-overview.md).
 
 <!-- ### Tutorials -->
 

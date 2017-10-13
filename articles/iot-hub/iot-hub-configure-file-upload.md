@@ -1,6 +1,6 @@
 ---
-title: cargar el archivo aaaUse hello tooconfigure de portal de Azure | Documentos de Microsoft
-description: "Cómo toouse Hola tooconfigure portal Azure carga el archivo de tooenable del centro de IoT desde dispositivos conectados. Incluye información acerca de cómo configurar la cuenta de almacenamiento de Azure de destino de Hola."
+title: Uso de Azure Portal para configurar la carga de archivos | Microsoft Docs
+description: "Describe cómo usar Azure Portal para configurar el centro de IoT Hub con el fin de habilitar las cargas de archivo desde dispositivos conectados. Incluye información sobre cómo configurar la cuenta de Azure Storage."
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -14,51 +14,51 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: dobett
-ms.openlocfilehash: b90c3fbed47b4eb144d3cb7480068b7cfc776ba6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 149dd84d7d8f4ff9cd30f9fc649ced3cb364cfb7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="configure-iot-hub-file-uploads-using-hello-azure-portal"></a>Configurar cargas de archivos del centro de IoT con hello portal de Azure
+# <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>Configuración de cargas de archivos de IoT Hub mediante Azure Portal
 
 [!INCLUDE [iot-hub-file-upload-selector](../../includes/iot-hub-file-upload-selector.md)]
 
 ## <a name="file-upload"></a>Carga de archivos
 
-Hola toouse [funcionalidad de carga de archivos en el centro de IoT][lnk-upload], primero debe asociar una cuenta de almacenamiento de Azure con el centro. Seleccione **cargar el archivo** toodisplay una lista de propiedades de carga de archivo para el centro de IoT de Hola que se está modificando.
+Para utilizar la [funcionalidad de carga de archivos en el centro de IoT Hub][lnk-upload], primero debe asociar una cuenta de Azure Storage con su centro. Seleccione **Carga de archivos** para mostrar una lista de las propiedades de carga de archivos para el IoT Hub que se está modificando.
 
-![Archivo de vista del centro de IoT cargar la configuración en el portal de Hola][13]
+![Visualización de la configuración de carga de archivos de IoT Hub en el portal][13]
 
-**Contenedor de almacenamiento**: Use Hola tooselect portal Azure de un contenedor de blobs en una cuenta de almacenamiento de Azure con su tooassociate de suscripción de Azure actual con el centro de IoT. Si es necesario, puede crear una cuenta de almacenamiento de Azure en hello **cuentas de almacenamiento** contenedor hoja y blob en hello **contenedores** hoja. Centro de IoT genera automáticamente el URI de SAS con el contenedor de blobs de toothis de permisos de escritura para dispositivos toouse cuando cargan archivos.
+**Contenedor de almacenamiento:** Use Azure Portal para seleccionar un contenedor de blobs en una cuenta de Azure Storage de su suscripción actual de Azure con el fin de asociarlo a su IoT Hub. Si es necesario, puede crear una cuenta de Azure Storage en la hoja **Cuentas de almacenamiento** y el contenedor de blobs en la hoja **Contenedores**. El Centro de IoT genera automáticamente identificadores URI de SAS con permisos de escritura en este contenedor de blobs para los dispositivos que se utilizarán cuando se carguen archivos.
 
-![Ver contenedores de almacenamiento para cargar el archivo en el portal de Hola][14]
+![Visualización de contenedores de almacenamiento para la carga de archivos en el portal][14]
 
-**Recibir notificaciones para los archivos cargados**: habilitar o deshabilitar las notificaciones de carga de archivo a través de alternancia de Hola.
+**Receive notifications for uploaded files**(Recibir notificaciones para archivos cargados): habilite o deshabilite las notificaciones de carga de archivos mediante el botón de alternancia.
 
-**SAS TTL**: esta opción es hello time-to-live de hello SAS URI devuelto toohello dispositivo por centro de IoT. Establecer tooone hora de forma predeterminada, pero pueden ser valores tooother personalizados con control deslizante de Hola.
+**SAS TTL**(TTL SAS): este valor es el periodo de vida de los URI de SAS que el Centro de IoT devuelve al dispositivo. Se establece en una hora de forma predeterminada, pero se puede personalizar con otros valores mediante el control deslizante.
 
-**Notificación de configuración de TTL predeterminado de archivos**: Hola tiempo de vida de una notificación de carga de archivo antes de que expire. Establecer tooone día de forma predeterminada, pero pueden ser valores tooother personalizados con control deslizante de Hola.
+**File notification settings default TTL**(TTL predeterminado de configuración de notificación de archivos): el periodo de vida de una notificación de carga de archivos antes de que caduque. Se establece en un día de forma predeterminada, pero se puede personalizar con otros valores mediante el control deslizante.
 
-**Número máximo de entregas de notificación de archivos**: número de Hola de tiempo de espera hello toodeliver de intentos de centro de IoT una notificación de carga de archivo. Establecer too10 de forma predeterminada, pero pueden ser valores tooother personalizados con control deslizante Hola.
+**File notification maximum delivery count**(Número máximo de entregas de notificaciones de archivo): el número de veces que el Centro de IoT tratará de entregar una notificación de carga de archivos. Se establece en 10 días de forma predeterminada, pero se puede personalizar con otros valores mediante el control deslizante.
 
-![Configurar la carga de archivos del centro de IoT en portal de Hola][15]
+![Configuración de la carga de archivos de IoT Hub en el portal][15]
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener más información acerca de las capacidades de carga de archivo Hola de centro de IoT, consulte [cargar archivos desde un dispositivo] [ lnk-upload] Hola Guía del desarrollador de centro de IoT.
+Para información sobre las funcionalidades de carga archivos de IoT Hub, consulte [Upload files from a device][lnk-upload] (Carga de archivos desde un dispositivo) en la guía para desarrolladores.
 
-Siga estos toolearn de vínculos más acerca de cómo administrar el centro de IoT de Azure:
+Siga estos vínculos para más información sobre la administración del Centro de IoT de Azure:
 
 * [Administración masiva de dispositivos de IoT][lnk-bulk]
 * [Métricas de IoT Hub][lnk-metrics]
 * [Supervisión de operaciones][lnk-monitor]
 
-toofurther explorar las capacidades de Hola de centro de IoT, vea:
+Para explorar aún más las funcionalidades de IoT Hub, consulte:
 
 * [Guía para desarrolladores de IoT Hub][lnk-devguide]
 * [Simular un dispositivo con IoT Edge][lnk-iotedge]
-* [Proteger la solución de IoT de hello masa][lnk-securing]
+* [Protección total de la solución de IoT][lnk-securing]
 
 [13]: ./media/iot-hub-configure-file-upload/file-upload-settings.png
 [14]: ./media/iot-hub-configure-file-upload/file-upload-container-selection.png

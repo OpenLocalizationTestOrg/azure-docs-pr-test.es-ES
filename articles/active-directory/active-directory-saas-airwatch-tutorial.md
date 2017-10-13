@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con AirWatch | Microsoft Docs"
-description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y AirWatch."
+description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y AirWatch."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,141 +14,141 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.openlocfilehash: e5230d5a36824778a4d9804dadf9f13a0d11a68d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1996ec97e7c0d94c5606ca43bb5956548f1f3712
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-airwatch"></a>Tutorial: Integración de Azure Active Directory con AirWatch
 
-En este tutorial, aprenderá cómo toointegrate AirWatch con Azure Active Directory (Azure AD).
+En este tutorial, aprenderá a integrar AirWatch con Azure Active Directory (Azure AD).
 
-Integración de AirWatch con Azure AD proporciona Hola siguientes ventajas:
+La integración de AirWatch con Azure AD proporciona las siguientes ventajas:
 
-- Puede controlar en Azure AD que tenga acceso tooAirWatch
-- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooAirWatch (Single Sign-On) con sus cuentas de Azure AD
-- Puede administrar las cuentas en una ubicación central: Hola portal de Azure
+- Puede controlar en Azure AD quién tiene acceso a AirWatch.
+- Puede permitir que los usuarios inicien sesión automáticamente en AirWatch (inicio de sesión único) con sus cuentas de Azure AD.
+- Puede administrar las cuentas en una sola ubicación central: Azure Portal.
 
-Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Si desea saber más sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-integración de Azure AD con AirWatch tooconfigure, necesita Hola siguientes elementos:
+Para configurar la integración de Azure AD con AirWatch, se necesitan los siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción habilitada para el inicio de sesión único en AirWatch
 
 > [!NOTE]
-> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
+> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
 
-pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
+Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
 
 - No use el entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
 
-1. Agregar AirWatch desde la Galería de Hola
+1. Incorporación de AirWatch desde la Galería
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-airwatch-from-hello-gallery"></a>Agregar AirWatch desde la Galería de Hola
-integración de hello tooconfigure de AirWatch en Azure AD, deberá tooadd AirWatch de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
+## <a name="adding-airwatch-from-the-gallery"></a>Incorporación de AirWatch desde la Galería
+Para configurar la integración de AirWatch en Azure AD, es preciso agregarlo desde la galería a la lista de aplicaciones SaaS administradas.
 
-**tooadd AirWatch de galería de hello, lleve a cabo Hola pasos:**
+**Para agregar AirWatch desde la galería, realice los pasos siguientes:**
 
-1. Hola  **[portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
+1. En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
+2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
 
     ![Aplicaciones][2]
     
-3. tooadd nueva aplicación, haga clic en **nueva aplicación** botón en la parte superior de saludo del cuadro de diálogo.
+3. Para agregar una nueva aplicación, haga clic en el botón **Nueva aplicación** de la parte superior del cuadro de diálogo.
 
     ![Aplicaciones][3]
 
-4. En el cuadro de búsqueda de hello, escriba **AirWatch**.
+4. En el cuadro de búsqueda, escriba **AirWatch**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-airwatch-tutorial/tutorial_airwatch_search.png)
 
-5. En el panel de resultados de hello, seleccione **AirWatch**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.
+5. En el panel de resultados, seleccione **AirWatch** y haga clic en el botón **Agregar** para agregar la aplicación.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-airwatch-tutorial/tutorial_airwatch_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuración y comprobación del inicio de sesión único de Azure AD
 En esta sección, podrá configurar y probar el inicio de sesión único de Azure AD con AirWatch con un usuario de prueba llamado Britta Simon.
 
-Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en AirWatch es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en AirWatch debe toobe establecido.
+Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de AirWatch para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario asociado de AirWatch.
 
-Esta relación de vínculo se establece mediante la asignación de valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** en AirWatch.
+Para establecer esta relación de vínculo, se asigna el valor del **nombre de usuario** en Azure AD como valor de **Nombre de usuario** en AirWatch.
 
-tooconfigure y prueba de inicio de sesión único en Azure AD con AirWatch, deberá hello toocomplete después de bloques de creación:
+Para configurar y probar el inicio de sesión único de Azure AD con AirWatch, es preciso completar los siguientes bloques de creación:
 
-1. **[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.
-2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.
-3. **[Crear un usuario de prueba de AirWatch](#creating-a-airwatch-test-user)**  -toohave un equivalente de Britta Simon en AirWatch que es la representación toohello vinculado Azure AD del usuario.
-4. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.
-5. **[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.
+1. **[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.
+2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.
+3. **[Creación de un usuario de prueba de AirWatch](#creating-a-airwatch-test-user)**: para tener un homólogo de Britta Simon en AirWatch vinculado a la representación del usuario en Azure AD.
+4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación AirWatch.
+En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y configurará el inicio de sesión único en la aplicación AirWatch.
 
-**inicio de sesión único en Azure AD tooconfigure con AirWatch, realice Hola pasos:**
+**Para configurar el inicio de sesión único de Azure AD con AirWatch, realice los pasos siguientes:**
 
-1. En el portal de Azure, en Hola Hola **AirWatch** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
+1. En Azure Portal, en la página de integración de la aplicación **AirWatch**, haga clic en **Inicio de sesión único**.
 
     ![Configurar inicio de sesión único][4]
 
-2. En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.
+2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-airwatch-tutorial/tutorial_airwatch_samlbase.png)
 
-3. En hello **AirWatch dominio y las direcciones URL** sección, lleve a cabo Hola pasos:
+3. En la sección **AirWatch Domain and URLs** (Dominios y direcciones URL de AirWatch), lleve a cabo los pasos siguientes:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-airwatch-tutorial/tutorial_airwatch_url.png)
 
-    a. Hola **dirección URL de inicio de sesión** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<subdomain>.awmdm.com/AirWatch/Login?gid=companycode`
+    a. En el cuadro de texto **URL de inicio de sesión**, escriba una dirección URL con el siguiente patrón: `https://<subdomain>.awmdm.com/AirWatch/Login?gid=companycode`.
 
-    b. Hola **identificador** cuadro de texto, valor de tipo hello como`AirWatch`
+    b. En el cuadro de texto **Identificador**, escriba el valor como `AirWatch`.
 
     > [!NOTE] 
-    > Este valor no es hello real. Actualizar este valor con la URL de inicio de sesión real de Hola. Póngase en contacto con [equipo de soporte técnico de cliente de AirWatch](http://www.air-watch.com/company/contact-us/) tooget este valor. 
+    > Este valor no es real. Actualícelo con la dirección URL de inicio de sesión real. Póngase en contacto con el [equipo de soporte técnico de AirWatch](http://www.air-watch.com/company/contact-us/) para obtenerlo. 
  
-4. En hello **el certificado de firma de SAML** sección, haga clic en **Metadata XML** y, a continuación, guarde el archivo XML de hello en el equipo.
+4. En la sección **Certificado de firma de SAML**, haga clic en **XML de metadatos** y luego guarde el archivo XML en el equipo.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-airwatch-tutorial/tutorial_airwatch_certificate.png) 
 
-5. En hello **configuración de AirWatch** sección, haga clic en **configurar AirWatch** tooopen **configurar inicio de sesión** ventana. Hola copia **SAML Single Sign-On dirección URL del servicio** de hello **sección de referencia rápida.**
+5. En la sección **AirWatch Configuration** (Configuración de AirWatch), haga clic en **Configure AirWatch** (Configurar AirWatch) para abrir la ventana **Configurar inicio de sesión**. Copie la **dirección URL de servicio de inicio de sesión único de SAML** de la sección **Referencia rápida**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-airwatch-tutorial/tutorial_airwatch_configure.png) 
 
 6. Haga clic en el botón **Guardar**.
 
-    ![Configuración del inicio de sesión único](./media/active-directory-saas-airwatch-tutorial/tutorial_general_400.png)
+    ![Configurar inicio de sesión único](./media/active-directory-saas-airwatch-tutorial/tutorial_general_400.png)
 <CS>
-7. En una ventana del explorador web diferente, inicie sesión en el sitio de la empresa tooyour AirWatch como administrador.
+7. En otra ventana del explorador web, inicie sesión en el sitio de AirWatch de la compañía como administrador.
 
-8. En el panel de navegación izquierdo de hello, haga clic en **cuentas**y, a continuación, haga clic en **administradores**.
+8. En el panel de navegación izquierdo, haga clic en **Accounts** (Cuentas) y, luego, en **Administrators** (Administradores).
    
    ![Administradores](./media/active-directory-saas-airwatch-tutorial/ic791920.png "Administradores")
 
-9. Expanda hello **configuración** menú y, a continuación, haga clic en **servicios de directorio**.
+9. Expanda el menú **Settings** (Configuración) y, a continuación, haga clic en **Directory Services** (Servicios de directorio).
    
    ![Configuración](./media/active-directory-saas-airwatch-tutorial/ic791921.png "Configuración")
 
-10. Haga clic en hello **usuario** ficha Hola **DN Base** cuadro de texto, escriba el nombre de dominio y, a continuación, haga clic en **guardar**.
+10. Haga clic en la pestaña **Usuario**; en el cuadro de texto **DN base**, escriba el nombre de dominio y haga clic en **Guardar**.
    
    ![Usuario](./media/active-directory-saas-airwatch-tutorial/ic791922.png "Usuario")
 
-11. Haga clic en hello **Server** ficha.
+11. Haga clic en la pestaña **Server** (Servidor).
    
    ![Servidor](./media/active-directory-saas-airwatch-tutorial/ic791923.png "Servidor")
 
-12. Lleve a cabo Hola pasos:
+12. Lleve a cabo los siguiente pasos:
     
     ![Cargar](./media/active-directory-saas-airwatch-tutorial/ic791924.png "Cargar")   
     
@@ -156,117 +156,117 @@ En esta sección, habilitar inicio de sesión único en Azure AD en hello portal
 
     b. Seleccione **Use SAML For Authentication**(Usar SAML para autenticación).
 
-    c. tooupload Hola certificado descargado, haga clic en **cargar**.
+    c. Para cargar el certificado descargado, haga clic en **Upload**(Cargar).
 
-13. Hola **solicitar** sección, lleve a cabo Hola pasos:
+13. En la sección **Request** (Solicitud), siga estos pasos:
     
     ![Solicitud](./media/active-directory-saas-airwatch-tutorial/ic791925.png "Solicitud")  
 
     a. En **Request Binding Type** (Tipo de enlace de solicitud), seleccione **POST**.
 
-    b. En el portal de Azure, en Hola Hola **configurar inicio de sesión único en Airwatch** página de diálogo, Hola copia **SAML Single Sign-On dirección URL del servicio** valor y, a continuación, péguelo en hello **proveedor de identidades Solo la dirección URL de inicio de sesión** cuadro de texto.
+    b. En Azure Portal, en la página de diálogo **Configure single sign-on at Airwatch** (Configurar inicio de sesión único en Airwatch), copie el valor de **SAML Single Sign-On Service URL** (Dirección URL del servicio de inicio de sesión único de SAML) y péguelo en el cuadro de texto **Identity Provider Single Sign On URL** (Dirección URL de inicio de sesión del proveedor de identidades).
 
     c. En la lista **NameID Format** (Formato de NameID), seleccione **Email address** (Dirección de correo electrónico).
 
     d. Haga clic en **Guardar**.
 
-14. Haga clic en hello **usuario** ficha de nuevo.
+14. Haga clic de nuevo en la pestaña **User** (Usuario).
     
     ![Usuario](./media/active-directory-saas-airwatch-tutorial/ic791926.png "Usuario")
 
-15. Hola **atributo** sección, lleve a cabo Hola pasos:
+15. En la sección **Attribute** (Atributo), realice estos pasos:
     
     ![Atributo](./media/active-directory-saas-airwatch-tutorial/ic791927.png "Atributo")
 
-    a. Hola **identificador de objeto** cuadro de texto, tipo **http://schemas.microsoft.com/identity/claims/objectidentifier**.
+    a. En el cuadro de texto **Identificador de objeto**, escriba **http://schemas.microsoft.com/identity/claims/objectidentifier**.
 
-    b. Hola **nombre de usuario** cuadro de texto, tipo **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**.
+    b. En el cuadro de texto **Nombre de usuario**, escriba **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**.
 
-    c. Hola **nombre para mostrar** cuadro de texto, tipo **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**.
+    c. En el cuadro de texto **Nombre para mostrar**, escriba **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**.
 
-    d. Hola **nombre** cuadro de texto, tipo **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**.
+    d. En el cuadro de texto **Nombre**, escriba **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**.
 
-    e. Hola **Last Name** cuadro de texto, tipo **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**.
+    e. En el cuadro de texto **Apellidos**, escriba **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**.
 
-    f. Hola **correo electrónico** cuadro de texto, tipo **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**.
+    f. En el cuadro de texto **Correo electrónico**, escriba **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**.
 
     g. Haga clic en **Guardar**.
 
 <CE>
 
 ### <a name="creating-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.
+El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".
 
 ![Creación de un usuario de Azure AD][100]
 
-**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
+**Siga estos pasos para crear un usuario de prueba en Azure AD:**
 
-1. Hola **portal de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.
+1. En el panel de navegación izquierdo de **Azure Portal**, haga clic en el icono de **Azure Active Directory**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-airwatch-tutorial/create_aaduser_01.png) 
 
-2. lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios**.
+2. Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios**.
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-airwatch-tutorial/create_aaduser_02.png) 
 
-3. Hola tooopen **usuario** cuadro de diálogo, haga clic en **agregar** en la parte superior de saludo del cuadro de diálogo de Hola.
+3. Para abrir el cuadro de diálogo **Usuario**, haga clic en **Agregar** en la parte superior del cuadro de diálogo.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-airwatch-tutorial/create_aaduser_03.png) 
 
-4. En hello **usuario** cuadro de diálogo, siga los pasos de hello:
+4. En la página de diálogo **Usuario**, realice los siguientes pasos:
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-airwatch-tutorial/create_aaduser_04.png) 
 
-    a. Hola **nombre** cuadro de texto, tipo **BrittaSimon**.
+    a. En el cuadro de texto **Nombre**, escriba **BrittaSimon**.
 
-    b. Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de Britta Simon.
+    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
 
-    c. Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.
+    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
 
     d. Haga clic en **Crear**.
  
 ### <a name="creating-a-airwatch-test-user"></a>Creación de un usuario de prueba de AirWatch
 
-toolog de los usuarios de Azure AD tooenable en tooAirWatch, se les deben aprovisionar en tooAirWatch.
+Para permitir que los usuarios de Azure AD inicien sesión en AirWatch, tienen que aprovisionarse en AirWatch.
 
 * En el caso de AirWatch, el aprovisionamiento es una tarea manual.
 
-**tooprovision una cuenta de usuario, lleve a cabo Hola pasos:**
+**Para aprovisionar una cuenta de usuario, realice estos pasos:**
 
-1. Inicie sesión en tooyour **AirWatch** como administrador.
-2. En el panel de navegación de hello en el lado izquierdo de hello, haga clic en **cuentas**y, a continuación, haga clic en **usuarios**.
+1. Inicie sesión en el sitio de la compañía de **AirWatch** como administrador.
+2. En el panel de navegación izquierdo, haga clic en **Accounts** (Cuentas) y luego en **Users** (Usuarios).
    
    ![Usuarios](./media/active-directory-saas-airwatch-tutorial/ic791929.png "Usuarios")
-3. Hola **usuarios** menú, haga clic en **vista de lista**y, a continuación, haga clic en **agregar \> Agregar usuario**.
+3. En el menú **Users** (Usuarios), haga clic en **List View** (Vista de lista) y, a continuación, haga clic en **Add \> Add User** (Agregar > Agregar usuario).
    
    ![Agregar usuario](./media/active-directory-saas-airwatch-tutorial/ic791930.png "Agregar usuario")
-4. En hello **Agregar / Editar usuario** cuadro de diálogo, realizar Hola pasos:
+4. En el cuadro de diálogo **Add / Edit User** (Agregar/Editar usuario), realice los siguientes pasos:
 
    ![Agregar usuario](./media/active-directory-saas-airwatch-tutorial/ic791931.png "Agregar usuario")   
-   1. Hola de tipo **nombre de usuario**, **contraseña**, **Confirmar contraseña**, **nombre**, **Last Name**,  **Dirección de correo electrónico** de un Azure válida cuadros de texto relacionadas con la cuenta de Active Directory que quiera tooprovision en Hola.
+   1. Especifique **Username** (Nombre de usuario), **Password** (Contraseña), **Confirm Password** (Confirmar contraseña), **First Name** (Nombre), **Last Name** (Apellido), **Email Address** (Correo electrónico) de una cuenta de Azure Active Directory válida que quiera aprovisionar en los cuadros de texto relacionados.
    2. Haga clic en **Guardar**.
 
 >[!NOTE]
->Puede usar cualquier otra AirWatch usuario cuenta herramienta de creación o las API proporcionadas por AirWatch tooprovision cuentas de usuario AAD.
+>Puede usar cualquier otra API o herramienta de creación de cuentas de usuario de AirWatch ofrecida por AirWatch para aprovisionar cuentas de usuario de AAD.
 >  
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Asignación de usuario de prueba de hello Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
 
-En esta sección, se habilita Britta Simon toouse un inicio de sesión único Azure concediendo acceso tooAirWatch.
+En esta sección, habilitará a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a AirWatch.
 
 ![Asignar usuario][200] 
 
-**tooassign Britta Simon tooAirWatch, lleve a cabo Hola pasos:**
+**Para asignar Britta Simon a AirWatch, realice los pasos siguientes:**
 
-1. Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
+1. En Azure Portal, abra la vista de aplicaciones, navegue a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego haga clic en **Todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones de hello, seleccione **AirWatch**.
+2. En la lista de aplicaciones, seleccione **AirWatch**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-airwatch-tutorial/tutorial_airwatch_app.png) 
 
-3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
+3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
 
     ![Asignar usuario][202] 
 
@@ -274,7 +274,7 @@ En esta sección, se habilita Britta Simon toouse un inicio de sesión único Az
 
     ![Asignar usuario][203]
 
-5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
+5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -282,14 +282,14 @@ En esta sección, se habilita Britta Simon toouse un inicio de sesión único Az
     
 ### <a name="testing-single-sign-on"></a>Prueba del inicio de sesión único 
 
-En esta sección, comprobará su único inicio de sesión en configuración de Azure AD con hello Panel de acceso.
+En esta sección, probará la configuración de inicio de sesión único de Azure AD mediante el Panel de acceso.
 
-Si desea tootest las opciones de inicio de sesión único, abra Hola Panel de acceso. Para obtener más información acerca de hello Panel de acceso, consulte [Introducción toohello Panel de acceso](active-directory-saas-access-panel-introduction.md).
+Si desea probar la configuración de inicio de sesión único, abra el Panel de acceso. Para más información sobre el Panel de acceso, consulte [Introducción al Panel de acceso](active-directory-saas-access-panel-introduction.md).
 
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

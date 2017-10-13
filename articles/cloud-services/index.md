@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure documentación de servicios de nube - tutoriales, referencia de API | Documentos de Microsoft"
-description: "Tutoriales, referencias de API y otra documentación mostrarle cómo toouse toohost de servicios en la nube y ejecutar aplicaciones en la nube altamente disponible y escalable y API."
+title: "Documentación sobre Azure Cloud Services: tutoriales y referencia de API | Microsoft Docs"
+description: "Los tutoriales, las referencias de API y otra documentación muestran cómo usar Cloud Services para hospedar y ejecutar API y aplicaciones de nube escalables de alta disponibilidad."
 services: cloud-services
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 80793de5a66c9f125c23caf2664fbf08015298ab
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 566daede7e0b32110ceae2afa473e427992bc3a8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="cloud-services-documentation"></a>Documentación de Cloud Services
 
-Obtenga información acerca de cómo en la nube toouse toohost y ejecutar aplicaciones de nube de alta disponibilidad, escalable y las API de los servicios.  Tutoriales, referencias de API y otra documentación mostrarle cómo toomanage virtual machine hospeda y configurar, aplicar la revisión e instalar software.
+Aprenda a usar Cloud Services para hospedar y ejecutar API y aplicaciones de nube escalables de alta disponibilidad.  Los tutoriales, las referencias de API y otra documentación muestran cómo administrar hosts de máquina virtual, y cómo configurar, aplicar revisiones e instalar software.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -107,8 +107,14 @@ Obtenga información acerca de cómo en la nube toouse toohost y ejecutar aplica
                 <div class="card">
                     <div class="cardText">
                         <h3>Idiomas</h3>
-                        <p><a href="https://msdn.microsoft.com/library/azure/ee758711">.csdef XMLSchema</a></p>
-                        <p><a href="https://msdn.microsoft.com/library/azure/ee758710">.cscfg XMLSchema</a></p>
+                        <p><a href="/azure/cloud-services/schema-csdef-file">Esquema XML de .csdef</a></p>
+                        <p><a href="/azure/cloud-services/schema-csdef-loadbalancerprobe">Esquema LoadBalancerProbe</a></p>
+                        <p><a href="/azure/cloud-services/schema-csdef-webrole">Esquema WebRole</a></p>
+                        <p><a href="/azure/cloud-services/schema-csdef-workerrole">Esquema WorkerRole</a></p>
+                        <p><a href="/azure/cloud-services/schema-csdef-networktrafficrules">Esquema NetworkTrafficRules</a></p>
+                        <p><a href="/azure/cloud-services/schema-cscfg-file">Esquema XML de .cscfg</a></p>
+                        <p><a href="/azure/cloud-services/schema-cscfg-role">Esquema de rol</a></p>
+                        <p><a href="/azure/cloud-services/schema-cscfg-networkconfiguration">Esquema de NetworkConfiguration</a></p>
                     </div>
                 </div>
             </div>
@@ -127,5 +133,3 @@ Obtenga información acerca de cómo en la nube toouse toohost y ejecutar aplica
         </div>
     </li>
 </ul>
-
-

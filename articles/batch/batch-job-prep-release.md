@@ -1,6 +1,6 @@
 ---
-title: aaaCreate tareas tooprepare trabajos y tareas completadas en nodos de proceso - Azure Batch | Documentos de Microsoft
-description: "Usar datos de toominimize de tareas de preparación de nivel de trabajo transferir nodos de proceso por lotes de tooAzure y tareas de limpieza de nodo a la conclusión del trabajo de la versión."
+title: "Creación de tareas para preparar trabajos y completarlos en nodos de proceso - Azure Batch | Microsoft Docs"
+description: "Utilice las tareas de preparación en el nivel de trabajo para minimizar la transferencia de datos a los nodos de proceso de Azure Batch y las tareas de liberación para la limpieza del nodo tras la finalización del trabajo."
 services: batch
 documentationcenter: .net
 author: tamram
@@ -15,99 +15,99 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fd5fb47ae6700281e63048c49a1241f4e935baba
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6a2525c02ce7bd3969469d2e28a5fccc948f89b1
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Ejecución de tareas de preparación y liberación de trabajos en nodos de proceso de Batch
 
- A menudo, Azure Batch requiere algún tipo de configuración antes de ejecutar sus tareas y un mantenimiento posterior al trabajo una vez completadas sus tareas. Tal vez necesite toodownload comunes tarea datos de entrada tooyour proceso nodos, o se puede cargar tooAzure de datos de salida de tareas almacenamiento una vez completado el trabajo de Hola. Puede usar **preparación del trabajo** y **trabajo versión** tareas tooperform estas operaciones.
+ A menudo, Azure Batch requiere algún tipo de configuración antes de ejecutar sus tareas y un mantenimiento posterior al trabajo una vez completadas sus tareas. Puede ser necesario descargar los datos de entrada de tareas comunes en los nodos de proceso, o bien cargar datos de salida de tareas en Azure Storage una vez completado el trabajo. Puede usar las tareas de **preparación del trabajo** y **liberación del trabajo** para realizar estas operaciones.
 
 ## <a name="what-are-job-preparation-and-release-tasks"></a>Tareas de preparación y liberación de trabajos
-Antes de ejecutarán las tareas de un trabajo, tarea de preparación del trabajo de hello ejecuta en todos los toorun programada nodos de proceso al menos una tarea. Una vez que se complete el trabajo de hello, tarea de liberación del trabajo de Hola se ejecuta en cada nodo de grupo de Hola que ejecuta al menos una tarea. Al igual que con las tareas normales de lote, puede especificar un toobe de línea de comandos que se invoca cuando una preparación del trabajo o se ejecuta la tarea de liberación.
+Antes de ejecutar las tareas de un trabajo, la tarea de preparación del trabajo se ejecuta en todos los nodos de proceso programados para ejecutar al menos una tarea. Cuando el trabajo se ha completado, la tarea de liberación del trabajo se ejecuta en cada nodo del grupo que ejecutó al menos una tarea. Al igual que con las tareas normales de Batch, puede especificar una línea de comandos para que se invoque cuando se ejecute una tarea de preparación o liberación.
 
 Las tareas de preparación y liberación ofrecen características de tareas de Batch familiares, como la descarga de archivos ([archivos de recursos][net_job_prep_resourcefiles]), la ejecución con elevación de privilegios, las variables de entorno personalizadas, la duración máxima de ejecución, el número de reintentos y el tiempo de retención de archivos.
 
-Hola siguientes secciones, aprenderá cómo hello toouse [JobPreparationTask] [ net_job_prep] y [JobReleaseTask] [ net_job_release] clases se encuentran en hello [.NET de lotes] [ api_net] biblioteca.
+En las siguientes secciones, aprenderá cómo utilizar las clases [JobPreparationTask][net_job_prep] y [JobReleaseTask][net_job_release] que se encuentran en la biblioteca de [.NET para Batch][api_net].
 
 > [!TIP]
 > Las tareas de preparación y liberación de trabajos son especialmente útiles en entornos de "grupo compartido", en los que un grupo de nodos de proceso persiste entre ejecuciones de trabajo y muchos trabajos lo usan.
 > 
 > 
 
-## <a name="when-toouse-job-preparation-and-release-tasks"></a>Cuando toouse preparación del trabajo y tareas de la versión
-Preparación del trabajo y tareas de la versión de trabajo son una buena elección para hello siguientes situaciones:
+## <a name="when-to-use-job-preparation-and-release-tasks"></a>Uso de las tareas de preparación y liberación de trabajos
+Las tareas de preparación y liberación de trabajos son una buena opción en las situaciones siguientes:
 
 **Descarga de datos de tareas comunes**
 
-Trabajos por lotes requieren a menudo un conjunto común de datos como entrada para las tareas del trabajo de Hola. Por ejemplo, en los cálculos de análisis de riesgos diaria, datos de mercado son específicos del trabajo, pero common tareas tooall trabajo de Hola. Estos datos de mercado, a menudo varios gigabytes de tamaño, deben ser una sola vez tooeach descargado de nodos de proceso que puede utilizar cualquier tarea que se ejecuta en el nodo de Hola. Use un **tareas de preparación del trabajo** toodownload este nodo de tooeach datos antes ejecución Hola de trabajo de Hola de otras tareas.
+A menudo, los trabajos de Lote requieren un conjunto común de datos como entrada para las tareas del trabajo. Por ejemplo, en cálculos de análisis de riesgos diarios, los datos de mercado son específicos del trabajo, pero comunes a todas las tareas incluidas en él. Estos datos de mercado, a menudo con un tamaño de varios gigabytes, deben descargarse en cada nodo de proceso una sola vez, para que cualquier tarea que se ejecuta en el nodo pueda usarlos. Puede usar una **tarea de preparación del trabajo** para descargar estos datos en cada nodo antes de la ejecución de otras tareas del trabajo.
 
 **Trabajo persistente y resultado de la tarea**
 
-En un entorno compartido» grupo", donde los nodos de proceso del grupo no están dado de baja entre los trabajos, puede ser necesario toodelete datos del trabajo entre ejecuciones. Es posible que tenga tooconserve espacio en disco en los nodos de Hola o cumplir las directivas de seguridad de su organización. Use un **tarea de liberación del trabajo** datos toodelete descargados por una tarea de preparación del trabajo, o generados durante la ejecución de la tarea.
+En un entorno de "grupo compartido", cuando no se dan de baja los nodos de proceso de un grupo entre los trabajos, puede ser necesario eliminar datos del trabajo entre ejecuciones. Puede ser necesario conservar espacio en disco en los nodos o cumplir las directivas de seguridad de su organización. Use una **tarea de liberación del trabajo** para eliminar los datos descargados por una tarea de preparación del trabajo o generados durante la ejecución de la tarea.
 
 **Retención de registro**
 
-Puede ser conveniente tookeep una copia de archivos de registro que generan las tareas, o quizás archivos de volcado que se pueden generar aplicaciones con errores. Use un **tarea de liberación del trabajo** en tales casos toocompress y cargar este tooan datos [el almacenamiento de Azure] [ azure_storage] cuenta.
+Puede que desee conservar una copia de los archivos de registro generados por las tareas o quizás los archivos de volcado de memoria generados por aplicaciones con errores. Puede usar una **tarea de liberación del trabajo** en estos casos para comprimir y cargar estos datos en una cuenta de [Azure Storage][azure_storage].
 
 > [!TIP]
-> Toopersist de otra manera datos se toouse Hola de salida de registros y otros trabajos y tareas [convenciones de archivos por lotes de Azure](batch-task-output.md) biblioteca.
+> Otra manera de conservar los registros y otros datos de salida de los trabajos y las tareas es usar la biblioteca [Azure Batch File Conventions](batch-task-output.md) (Convenciones de archivos de Azure Batch).
 > 
 > 
 
 ## <a name="job-preparation-task"></a>tarea de preparación del trabajo
-Antes de la ejecución de tareas de un trabajo, lote ejecuta la tarea de preparación del trabajo de hello en cada nodo de proceso que está programada toorun una tarea. De manera predeterminada, Hola servicio por lotes espera toobe de tareas de preparación Hola trabajo completado antes de ejecutar tooexecute de hello tareas programadas en el nodo de Hola. Sin embargo, puede configurar el servicio de hello no toowait. Si se reinicia el nodo de hello, tarea de preparación de hello trabajo se ejecuta de nuevo, pero también se puede deshabilitar este comportamiento.
+Antes de ejecutar las tareas de un trabajo, Batch ejecuta la tarea de preparación del trabajo en cada nodo de proceso programado para ejecutar una tarea. De forma predeterminada, el servicio Batch esperará hasta que la tarea de preparación del trabajo se complete antes de ejecutar las tareas programadas para ejecutarse en el nodo. Sin embargo, puede configurar el servicio para que no espere. Si se reinicia el nodo, la tarea de preparación del trabajo se ejecutará de nuevo, pero también puede deshabilitar este comportamiento.
 
-se ejecuta la tarea de preparación del trabajo de Hello solo en nodos que estén programada toorun una tarea. Esto impide la ejecución innecesarios de Hola de una tarea de preparación en caso de que un nodo no está asignado a una tarea. Esto puede ocurrir cuando número Hola de tareas para un trabajo es menor que el número de Hola de nodos en un grupo. También se aplica cuando [ejecución de tareas simultáneas](batch-parallel-node-tasks.md) está habilitada, lo que deja a algunos nodos inactivo si recuento de tareas de hello es inferior a tareas simultáneas posibles total Hola. No ejecutando tarea de preparación del trabajo de hello en nodos inactivos, puede ahorrar dinero en gastos de transferencia de datos.
+La tarea de preparación del trabajo solo se ejecuta en los nodos programados para ejecutar una tarea. Esto impide la ejecución innecesaria de una tarea de preparación en caso de que un nodo no tenga una tarea asignada. Esto puede ocurrir cuando el número de tareas de un trabajo es menor que el número de nodos de un grupo. También se aplica cuando la [ejecución de tareas simultáneas](batch-parallel-node-tasks.md) está habilitada, lo que deja algunos nodos inactivos si el número de tareas es menor que el total de posibles tareas simultáneas. Si no ejecuta la tarea de preparación del trabajo en nodos inactivos, puede ahorrar dinero en gastos de transferencia de datos.
 
 > [!NOTE]
-> [JobPreparationTask] [ net_job_prep_cloudjob] difiere de [CloudPool.StartTask] [ pool_starttask] en que JobPreparationTask se ejecuta en el inicio de Hola de cada trabajo, mientras que StartTask se ejecuta solo cuando un nodo de proceso en primer lugar une a un grupo o se reinicia.
+> [JobPreparationTask][net_job_prep_cloudjob] difiere de [CloudPool.StartTask][pool_starttask] en que JobPreparationTask se ejecuta al principio de cada trabajo, mientras que StartTask solo se ejecuta cuando un nodo de proceso se une por primera vez a un grupo o se reinicia.
 > 
 > 
 
 ## <a name="job-release-task"></a>tarea de liberación del trabajo
-Una vez que un trabajo está marcado como completada, la tarea de liberación del trabajo de Hola se ejecuta en cada nodo de grupo de Hola que ejecuta al menos una tarea. El trabajo se marca como completado mediante la emisión de una solicitud de finalización. Hola servicio por lotes, a continuación, Establece Hola estado del trabajo demasiado*terminación*, finaliza las tareas activas o en ejecución asociadas con el trabajo de Hola y ejecuta la tarea de liberación del trabajo de Hola. trabajo de Hello, a continuación, mueve toohello *completado* estado.
+Cuando un trabajo se marca como completado, se ejecuta la tarea de liberación del trabajo en cada nodo del grupo que ejecutó al menos una tarea. El trabajo se marca como completado mediante la emisión de una solicitud de finalización. A continuación, el servicio Batch establece el estado del trabajo en *terminando*, finaliza las tareas activas o en ejecución asociadas al trabajo y ejecuta la tarea de liberación del trabajo. A continuación, el trabajo se mueve al estado *completado* .
 
 > [!NOTE]
-> Eliminación de trabajo también ejecuta la tarea de liberación del trabajo de Hola. Sin embargo, si ya ha finalizado un trabajo, tarea de liberación de hello no se ejecuta una segunda vez si más adelante se elimina el trabajo de Hola.
+> La eliminación de un trabajo también ejecuta la tarea de liberación del trabajo. Sin embargo, si un trabajo ya se ha terminado, la tarea no se ejecuta una segunda vez si el trabajo se va a eliminar más adelante.
 > 
 > 
 
 ## <a name="job-prep-and-release-tasks-with-batch-net"></a>Tareas de preparación y liberación de trabajos con Lote para .NET
-asignar una tarea de preparación del trabajo, toouse una [JobPreparationTask] [ net_job_prep] del trabajo de objeto tooyour [CloudJob.JobPreparationTask] [ net_job_prep_cloudjob] propiedad . Inicializar de forma similar, un [JobReleaseTask] [ net_job_release] y asígnele el nombre del trabajo de tooyour [CloudJob.JobReleaseTask] [ net_job_prep_cloudjob] hello tooset de propiedad tarea de liberación del trabajo.
+Para usar una tarea de preparación del trabajo, asigne un objeto [JobPreparationTask][net_job_prep] a la propiedad [CloudJob.JobPreparationTask][net_job_prep_cloudjob] del trabajo. De forma similar, para establecer la tarea de liberación del trabajo, inicialice una [JobReleaseTask][net_job_release] y asígnela a la propiedad [CloudJob.JobReleaseTask][net_job_prep_cloudjob] del trabajo.
 
-En este fragmento de código, `myBatchClient` es una instancia de [BatchClient][net_batch_client], y `myPool` es un grupo existente dentro de hello cuenta de lote.
+En este fragmento de código, `myBatchClient` es una instancia de [BatchClient][net_batch_client] y `myPool` es un grupo existente en la cuenta de Batch.
 
 ```csharp
-// Create hello CloudJob for CloudPool "myPool"
+// Create the CloudJob for CloudPool "myPool"
 CloudJob myJob =
     myBatchClient.JobOperations.CreateJob(
         "JobPrepReleaseSampleJob",
         new PoolInformation() { PoolId = "myPool" });
 
-// Specify hello command lines for hello job preparation and release tasks
+// Specify the command lines for the job preparation and release tasks
 string jobPrepCmdLine =
     "cmd /c echo %AZ_BATCH_NODE_ID% > %AZ_BATCH_NODE_SHARED_DIR%\\shared_file.txt";
 string jobReleaseCmdLine =
     "cmd /c del %AZ_BATCH_NODE_SHARED_DIR%\\shared_file.txt";
 
-// Assign hello job preparation task toohello job
+// Assign the job preparation task to the job
 myJob.JobPreparationTask =
     new JobPreparationTask { CommandLine = jobPrepCmdLine };
 
-// Assign hello job release task toohello job
+// Assign the job release task to the job
 myJob.JobReleaseTask =
     new JobPreparationTask { CommandLine = jobReleaseCmdLine };
 
 await myJob.CommitAsync();
 ```
 
-Tal y como se mencionó anteriormente, la tarea de versión de Hola se ejecuta cuando se finaliza o se elimina un trabajo. Finalice un trabajo con [JobOperations.TerminateJobAsync][net_job_terminate]. Elimine un trabajo con [JobOperations.DeleteJobAsync][net_job_delete]. Normalmente un trabajo se termina o elimina cuando se han completado sus tareas o cuando se ha alcanzado el tiempo de espera que haya definido.
+Como se mencionó antes, la tarea de liberación se ejecuta cuando se finaliza o se elimina un trabajo. Finalice un trabajo con [JobOperations.TerminateJobAsync][net_job_terminate]. Elimine un trabajo con [JobOperations.DeleteJobAsync][net_job_delete]. Normalmente un trabajo se termina o elimina cuando se han completado sus tareas o cuando se ha alcanzado el tiempo de espera que haya definido.
 
 ```csharp
-// Terminate hello job toomark it as Completed; this will initiate the
+// Terminate the job to mark it as Completed; this will initiate the
 // Job Release Task on any node that executed job tasks. Note that the
 // Job Release Task is also executed when a job is deleted, thus you
 // need not call Terminate if you typically delete jobs after task completion.
@@ -115,21 +115,21 @@ await myBatchClient.JobOperations.TerminateJobAsy("JobPrepReleaseSampleJob");
 ```
 
 ## <a name="code-sample-on-github"></a>Código de ejemplo en GitHub
-las tareas de preparación y la versión del trabajo de toosee en acción, visite hello [JobPrepRelease] [ job_prep_release_sample] proyecto de ejemplo en GitHub. Esta aplicación de consola Hola siguientes:
+Para ver cómo funcionan las tareas de preparación y liberación del trabajo, consulte el proyecto de ejemplo [JobPrepRelease][job_prep_release_sample] en GitHub. Esta aplicación de consola hace lo siguiente:
 
 1. Crea un grupo con dos nodos "pequeños".
 2. Crea un trabajo con las tareas de preparación y de liberación del trabajo, además de las estándar.
-3. Se ejecuta Hola tarea de preparación del trabajo, que escribe primero el archivo de texto de tooa de Id. de nodo de hello en el directorio "compartido" de un nodo.
-4. Ejecuta una tarea en cada nodo que escribe su toohello de Id. de tarea mismo archivo de texto.
-5. Una vez que se completan todas las tareas (o se alcanza el tiempo de espera de hello), imprime el contenido de Hola de consola de toohello de archivos de texto de cada nodo.
-6. Cuando se completa el trabajo de hello, ejecuta archivo de hello trabajo versión tarea toodelete Hola de nodo de Hola.
-7. Hola imprime códigos de preparación del trabajo Hola de salida y las tareas para cada nodo en el que ejecuta la versión.
-8. Confirmación de tooallow de la ejecución de las pausas de eliminación de trabajo o grupo.
+3. Ejecuta la tarea de preparación del trabajo, que en primer lugar escribe el identificador de nodo en un archivo de texto en el directorio "shared" de un nodo.
+4. Ejecuta una tarea en cada nodo que escribe su identificador de tarea en el mismo archivo de texto.
+5. Una vez que se han completado todas las tareas (o se alcanza el tiempo de espera), imprime el contenido del archivo de texto de cada nodo en la consola.
+6. Cuando se ha completado el trabajo, ejecuta la tarea de liberación del trabajo para eliminar el archivo del nodo.
+7. Imprime los códigos de salida de las tareas de preparación y liberación del trabajo para cada nodo donde se ejecutaron.
+8. Pausa la ejecución para permitir la confirmación de la eliminación del trabajo o el grupo.
 
-Resultado de la aplicación de ejemplo de Hola es siguiente de toohello similar:
+La salida de la aplicación de ejemplo es similar a la siguiente:
 
 ```
-Attempting toocreate pool: JobPrepReleaseSamplePool
+Attempting to create pool: JobPrepReleaseSamplePool
 Created pool JobPrepReleaseSamplePool with 2 small nodes
 Checking for existing job JobPrepReleaseSampleJob...
 Job JobPrepReleaseSampleJob not found, creating...
@@ -152,7 +152,7 @@ tvm-2434664350_2-20160623t173951z tasks:
   task003
   task007
 
-Waiting for job JobPrepReleaseSampleJob tooreach state Completed
+Waiting for job JobPrepReleaseSampleJob to reach state Completed
 ...
 
 tvm-2434664350_1-20160623t173951z:
@@ -168,31 +168,31 @@ yes
 Delete pool? [yes] no
 yes
 
-Sample complete, hit ENTER tooexit...
+Sample complete, hit ENTER to exit...
 ```
 
 > [!NOTE]
-> Pagar toohello variable creación y hora de inicio de nodos en un grupo nuevo (algunos nodos no están listos para tareas antes que otras), puede ver un resultado diferente. En concreto, dado que las tareas de hello completan rápidamente, uno de los nodos del grupo de hello puede ejecutar todas las tareas del trabajo de Hola de. Si esto ocurre, observará que Hola prep del trabajo y tareas de la versión no existe para el nodo de Hola que no ejecutar ninguna tarea.
+> Debido a la creación de variables y a la hora de inicio de los nodos en un nuevo grupo (algunos nodos están listos para las tareas antes que otros), puede que la salida sea diferente. En concreto, como las tareas se realizan rápidamente, uno de los nodos del grupo podría ejecutar todas las tareas del trabajo. Si esto sucede, observará que las tareas de preparación y liberación del trabajo no existen para el nodo que no ha ejecutado ninguna tarea.
 > 
 > 
 
-### <a name="inspect-job-preparation-and-release-tasks-in-hello-azure-portal"></a>Inspeccionar la preparación del trabajo y las tareas de la versión de Hola portal de Azure
-Cuando se ejecuta la aplicación de ejemplo de Hola, puede usar hello [portal de Azure] [ portal] tooview Hola propiedades del trabajo de Hola y sus tareas, o incluso descargar archivo de texto compartida hello modificado por tareas del trabajo de Hola.
+### <a name="inspect-job-preparation-and-release-tasks-in-the-azure-portal"></a>Inspección de las tareas de preparación y liberación en Azure Portal
+Cuando ejecute la aplicación de ejemplo, puede usar [Azure Portal][portal] para ver las propiedades del trabajo y sus tareas, o incluso descargar el archivo de texto compartido modificado por las tareas del trabajo.
 
-Hola de captura de pantalla siguiente muestra hello **hoja de tareas de preparación** en el portal de Azure después de una ejecución de la aplicación de ejemplo de Hola Hola. Navegue toohello *JobPrepReleaseSampleJob* propiedades después de han completado las tareas (pero antes de eliminar el trabajo y grupo) y haga clic en **tareas de preparación** o **versión tareas** tooview sus propiedades.
+La captura de pantalla siguiente muestra la **hoja de tareas de preparación** en Azure Portal después de una ejecución de la aplicación de ejemplo. Vaya a las propiedades *JobPrepReleaseSampleJob* después de que sus tareas se hayan completado (pero antes de eliminar el trabajo y el grupo) y haga clic en **Tareas de preparación** o **Tareas de liberación** para ver sus propiedades.
 
 ![Propiedades de preparación del trabajo en el Portal de Azure][1]
 
 ## <a name="next-steps"></a>Pasos siguientes
-### <a name="application-packages"></a>paquetes de aplicación
-En la tarea de preparación de suma toohello trabajo, también puede utilizar hello [paquetes de aplicación](batch-application-packages.md) nodos para la ejecución de la tarea de ejecución de la característica de tooprepare de lote. Esta característica es especialmente útil para implementar aplicaciones que no requieren que se ejecute un instalador, aplicaciones que contienen muchos archivos (más de 100) o aplicaciones que requieren un control estricto de la versión.
+### <a name="application-packages"></a>Paquetes de aplicación
+Además de la tarea de preparación del trabajo, puede usar la característica de [paquetes de aplicación](batch-application-packages.md) de Batch para preparar los nodos de proceso de cara a la ejecución de tareas. Esta característica es especialmente útil para implementar aplicaciones que no requieren que se ejecute un instalador, aplicaciones que contienen muchos archivos (más de 100) o aplicaciones que requieren un control estricto de la versión.
 
 ### <a name="installing-applications-and-staging-data"></a>Instalación de aplicaciones y datos de ensayo
 Este foro de MSDN proporciona información general de varios métodos de preparación de los nodos para la ejecución de tareas:
 
 [Installing applications and staging data on Batch compute nodes][forum_post] (Instalación de aplicaciones y datos de ensayo en nodos de proceso de Batch)
 
-Escrito por uno de los miembros del equipo de Azure Batch de hello, describe varias técnicas que puede usar los nodos de toocompute de aplicaciones y datos de toodeploy.
+Escrito por uno de los miembros del equipo de Azure Batch, describe varias técnicas que puede utilizar para implementar aplicaciones y datos en los nodos de proceso.
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_listjobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx

@@ -1,6 +1,6 @@
 ---
-title: "aaaHow tooencode un recurso de Azure mediante el uso de medios codificador estándar | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toouse Media Encoder estándar tooencode medios de contenido en servicios multimedia de Azure. Los ejemplos de código usan la API de REST."
+title: "Codificación de un recurso de Azure mediante Media Encoder Standard | Microsoft Docs"
+description: "Aprenda a usar Media Encoder Standard para codificar el contenido multimedia en Azure Media Services. Los ejemplos de código usan la API de REST."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
-ms.openlocfilehash: b766bafded7ee98eda3e6ef149c31d5d8fe406fc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 796f3b5a4dd56a0160986600cbbcf38faf8add56
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="how-tooencode-an-asset-by-using-media-encoder-standard"></a>¿Cómo tooencode un activo mediante el uso de medios codificador estándar
+# <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Codificación de un recurso mediante Media Encoder Standard
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encode-with-media-encoder-standard.md)
 > * [REST](media-services-rest-encode-asset.md)
@@ -29,45 +29,45 @@ ms.lasthandoff: 10/06/2017
 >
 
 ## <a name="overview"></a>Información general
-toodeliver vídeo digital a través de Internet de hello, debe comprimir medios Hola. Archivos de vídeo digital son grandes y pueden ser demasiado grande toodeliver a través de Internet de hello, o para toodisplay de dispositivos de los clientes correctamente. La codificación es el proceso de Hola de compresión de vídeo y audio para que los clientes puedan ver los medios.
+Para entregar vídeo digital a través de Internet, debe comprimir los archivos multimedia. Los archivos de vídeo digital son grandes y pueden ser demasiado pesados para entregarlos a través de Internet o para que los dispositivos de sus clientes los muestren correctamente. La codificación es el proceso de compresión de vídeo y audio para que los clientes puedan ver el contenido multimedia.
 
-Trabajos de codificación son una de las operaciones de procesamiento más habituales de hello en los servicios de multimedia de Azure. Crear archivos multimedia de codificación trabajos tooconvert desde una tooanother de codificación. Al codificar, puede usar (estándar de codificador multimedia) de codificador integrado de servicios multimedia de Hola. También puede usar un codificador proporcionado por un partner de Media Services. Codificadores de terceros están disponibles a través de hello Azure Marketplace. Puede especificar detalles de Hola de tareas de codificación mediante cadenas de valores preestablecidos definidas para el codificador o mediante el uso de archivos de configuración de valores predefinidos. toosee Hola tipos de valores predefinidos que están disponibles, consulte [valores preestablecidos de tarea para Media Encoder estándar](http://msdn.microsoft.com/library/mt269960).
+Los trabajos de codificación son una de las operaciones de procesamiento más habituales en Azure Media Services. Los trabajos de codificación se crean para convertir archivos multimedia de una codificación a otra. Al codificar, puede usar el codificador integrado en Servicios multimedia (Codificador multimedia estándar). También puede usar un codificador proporcionado por un partner de Media Services. Los codificadores de terceros están disponibles a través de Azure Marketplace. Puede especificar los detalles de las tareas de codificación mediante cadenas preestablecidas definidas para el codificador o mediante archivos de configuración preestablecidos. Para consultar los tipos de valores preestablecidos disponibles, vea [Valores preestablecidos de tareas para el Codificador multimedia estándar](http://msdn.microsoft.com/library/mt269960).
 
-Cada trabajo puede tener uno o más tareas según el tipo de saludo de procesamiento que desea tooaccomplish. A través de la API de REST de hello, puede crear trabajos y sus tareas relacionadas en una de dos maneras:
+Cada trabajo puede tener una o más tareas según el tipo de procesamiento que desee llevar a cabo. A través de la API de REST, puede crear trabajos y sus tareas relacionadas en una de las dos maneras siguientes:
 
-* Las tareas pueden definir en línea a través de la propiedad de navegación de las tareas de hello en entidades de trabajos.
+* Las tareas se pueden definir en línea mediante la propiedad de navegación Tasks en entidades Job.
 * Uso del procesamiento por lotes de OData.
 
-Se recomienda codificar siempre los archivos de origen en un conjunto de MP4 de velocidad de bits adaptativa y, a continuación, convertir el formato deseado de hello conjunto toohello mediante [empaquetado dinámico](media-services-dynamic-packaging-overview.md).
+Se recomienda codificar siempre los archivos fuente en un conjunto MP4 de velocidad de bits adaptable y, a continuación, convertirlo al formato deseado con el [empaquetado dinámico](media-services-dynamic-packaging-overview.md).
 
-Si su recurso de salida es el almacenamiento de cifrado, debe configurar la directiva de entrega del activo de Hola. Para obtener más información, consulte [Configuración de directivas de entrega de recursos](media-services-rest-configure-asset-delivery-policy.md).
+Si el recurso de salida tiene el almacenamiento cifrado, asegúrese de configurar la directiva de entrega de recursos. Para obtener más información, consulte [Configuración de directivas de entrega de recursos](media-services-rest-configure-asset-delivery-policy.md).
 
 ## <a name="considerations"></a>Consideraciones
 
 Al obtener acceso a las entidades de Servicios multimedia, debe establecer los campos de encabezado específicos y los valores en las solicitudes HTTP. Para obtener más información, consulte [Configuración del desarrollo de la API de REST de Servicios multimedia](media-services-rest-how-to-use.md).
 
-Antes de iniciar que hacen referencia a procesadores multimedia, compruebe que haya Hola Id. de procesador de medios correctos. Para obtener más información, consulte [Obtención de procesadores multimedia](media-services-rest-get-media-processor.md).
+Antes de empezar a hacer referencia a procesadores de multimedia, compruebe que dispone del identificador de procesador de multimedia correcto. Para obtener más información, consulte [Obtención de procesadores multimedia](media-services-rest-get-media-processor.md).
 
-## <a name="connect-toomedia-services"></a>Conectar servicios de tooMedia
+## <a name="connect-to-media-services"></a>Conexión con Servicios multimedia
 
-Para obtener información sobre cómo tooconnect toohello AMS API, consulte [Hola acceso API de servicios multimedia de Azure con autenticación de Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Para obtener más información sobre cómo conectarse a la API de Azure Media Services, consulte [Acceso a la API de Azure Media Services con la autenticación de Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 >[!NOTE]
->Después de conectarse correctamente toohttps://media.windows.net, recibirá una redirección 301 especificando otra URI de servicios multimedia. Debe realizar las llamadas subsiguientes toohello nuevo URI.
+>Después de conectarse correctamente a https://media.windows.net, recibirá una redirección 301 que especifica otro URI de Servicios multimedia. Debe realizar las llamadas posteriores al nuevo URI.
 
 ## <a name="create-a-job-with-a-single-encoding-task"></a>Creación de un trabajo con una sola tarea de codificación
 > [!NOTE]
-> Cuando se trabaja con API de REST de servicios multimedia de hello, hello siguientes consideraciones:
+> Al trabajar con la API de REST de Media Services, se aplican las consideraciones siguientes:
 >
 > Al obtener acceso a las entidades de Servicios multimedia, debe establecer los campos de encabezado específicos y los valores en las solicitudes HTTP. Para obtener más información, consulte [Configuración del desarrollo de la API de REST de Media Services](media-services-rest-how-to-use.md).
 >
-> Después de conectarse correctamente toohttps://media.windows.net, recibirá una redirección 301 especificando otra URI de servicios multimedia. Debe realizar las llamadas subsiguientes toohello nuevo URI. Para obtener información sobre cómo tooconnect toohello AMS API, consulte [Hola acceso API de servicios multimedia de Azure con autenticación de Azure AD](media-services-use-aad-auth-to-access-ams-api.md).
+> Después de conectarse correctamente a https://media.windows.net, recibirá una redirección 301 que especifica otro URI de Servicios multimedia. Debe realizar las llamadas posteriores al nuevo URI. Para más información sobre cómo conectarse a la API de Azure Media Services, vea [Acceso a Azure Media Services API con la autenticación de Azure AD](media-services-use-aad-auth-to-access-ams-api.md).
 >
-> Cuando usa JSON y especifica toouse hello **__metadata** palabra clave en la solicitud de hello (por ejemplo, tooreferences un objeto vinculado), debe establecer hello **Accept** encabezado demasiado[formato JSON detallado ](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/): Aceptar: application/json; odata = detallado.
+> Cuando se utiliza JSON y se especifica el uso de la palabra clave **__metadata** en la solicitud (por ejemplo, para referencias a un objeto vinculado), debe establecer el encabezado **Accept** en [formato JSON detallado](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/): Accept: application/json;odata=verbose.
 >
 >
 
-Hola de ejemplo siguiente muestra cómo toocreate y post un trabajo con una tarea establece tooencode un vídeo en una resolución y calidad específicas. Al codificar con Media Encoder Standard, puede usar los valores preestablecidos de configuración de tareas especificados [aquí](http://msdn.microsoft.com/library/mt269960).
+En el ejemplo siguiente se muestra cómo crear y publicar un trabajo con un conjunto de tareas para codificar un vídeo con una resolución y calidad específicas. Al codificar con Media Encoder Standard, puede usar los valores preestablecidos de configuración de tareas especificados [aquí](http://msdn.microsoft.com/library/mt269960).
 
 Solicitud:
 
@@ -89,27 +89,27 @@ Respuesta:
 
     . . .
 
-### <a name="set-hello-output-assets-name"></a>Establece el nombre del recurso de salida de hello
-Hola de ejemplo siguiente muestra cómo tooset Hola atributo assetName:
+### <a name="set-the-output-assets-name"></a>Establecimiento del nombre del recurso de salida
+En el ejemplo siguiente se muestra cómo establecer el atributo assetName:
 
     { "TaskBody" : "<?xml version=\"1.0\" encoding=\"utf-8\"?><taskBody><inputAsset>JobInputAsset(0)</inputAsset><outputAsset assetName=\"CustomOutputAssetName\">JobOutputAsset(0)</outputAsset></taskBody>"}
 
 ## <a name="considerations"></a>Consideraciones
-* Propiedades TaskBody deben usar el número de hello literal de toodefine XML de entrada o recursos de salida que se usan por tarea hello. tema de la tarea Hello contiene Hola definición de esquemas XML para hello XML.
-* Hola definición TaskBody, cada interna valor <inputAsset> y <outputAsset> debe establecerse como JobInputAsset(value) o JobOutputAsset(value).
+* Las propiedades TaskBody deben usar archivos XML literales para definir el número de recursos de entrada o salida que se usarán en la tarea. El tema Tarea incluye la definición de esquema XML para el archivo XML.
+* En la definición de TaskBody, cada valor interno para <inputAsset> y <outputAsset> se debe establecer como JobInputAsset(value) o JobOutputAsset(value).
 * Una tarea puede tener varios recursos de salida. Un elemento JobOutputAsset(x) solo se puede usar una vez como salida de una tarea en un trabajo.
 * Puede especificar JobInputAsset o JobOutputAsset como un recurso de entrada de una tarea.
 * Las tareas no pueden formar un ciclo.
-* valor del parámetro Hello que pasar tooJobInputAsset o JobOutputAsset representa el valor de índice de Hola para un activo. recursos reales de Hola se definen en hello InputMediaAssets y OutputMediaAssets propiedades de navegación en la definición de la entidad de hello trabajo.
-* Dado que los servicios multimedia se fundamentan en OData v3, Hola activos individuales en hello InputMediaAssets y OutputMediaAssets colecciones de propiedades de navegación se hace referencia a través de un "__metadata: uri" par nombre / valor.
-* InputMediaAssets asigna tooone o más activos que creó en los servicios multimedia. Sistema de hello crea los OutputMediaAssets. Estos no hacen referencia a ningún recurso existente.
-* Los OutputMediaAssets puede llamarse mediante hello assetName atributo. Si este atributo no está presente, el nombre de Hola de hello OutputMediaAsset es cualquier valor de texto interno de Hola de hello <outputAsset> elemento es con un sufijo de valor de nombre del trabajo de Hola o valor de Id. de trabajo de hello (en caso de hello donde no se ha definido la propiedad de nombre de hello). Por ejemplo, si establece un valor para assetName demasiado "Sample" y, a continuación, Hola nombre OutputMediaAsset se establece la propiedad demasiado "Sample." Sin embargo, si no ha configurado un valor para assetName, pero ha especificado el nombre del trabajo Hola demasiado "como NewJob" y, a continuación, Hola nombre OutputMediaAsset sería "JobOutputAsset (valor) _NewJob".
+* El parámetro de valor que se pasa a JobInputAsset o JobOutputAsset representa el valor de índice para un recurso. Los recursos reales se definen en las propiedades de navegación InputMediaAssets y OutputMediaAssets en la definición de la entidad Job.
+* Dado que Media Services se basa en OData v3, se hace referencia a los recursos individuales de las colecciones de propiedades de navegación InputMediaAssets y OutputMediaAssets a través de un par nombre-valor "__metadata : uri".
+* InputMediaAssets se asigna a uno o más recursos que ha creado en Media Services. El sistema crea OutputMediaAssets. Estos no hacen referencia a ningún recurso existente.
+* Se puede asignar un nombre a OutputMediaAssets con el atributo assetName. Si este atributo no está presente, el nombre de OutputMediaAsset será el valor del texto interno del elemento <outputAsset> con un sufijo del valor Job Name o del valor Job Id (en el caso de que no se haya definido la propiedad Name). Por ejemplo, si establece un valor para assetName como "Sample", se establece la propiedad de OutputMediaAsset Name en "Sample". Sin embargo, si no se ha definido un valor para assetName, pero se ha especificado el nombre del trabajo como "NewJob", OutputMediaAsset Name será "JobOutputAsset(value)_NewJob".
 
 ## <a name="create-a-job-with-chained-tasks"></a>Creación de un trabajo con tareas encadenadas
-En muchos escenarios de aplicación, los desarrolladores desean toocreate una serie de tareas de procesamiento. En Servicios multimedia, puede crear una serie de tareas encadenadas. Cada tarea realiza distintos pasos de procesamiento diferentes y puede usar diferentes procesadores multimedia. tareas de Hello encadenada pueden entregar un activo de una tarea tooanother, realizar una secuencia lineal de tareas en activos de Hola. Sin embargo, las tareas de hello realizadas en un trabajo no son toobe necesario en una secuencia. Cuando se crea una tarea encadenada, Hola encadenadas **ITask** objetos se crean en un único **IJob** objeto.
+En muchos escenarios de aplicaciones, los desarrolladores desean crear una serie de tareas de procesamiento. En Servicios multimedia, puede crear una serie de tareas encadenadas. Cada tarea realiza distintos pasos de procesamiento diferentes y puede usar diferentes procesadores multimedia. Las tareas encadenadas pueden entregar un recurso de una tarea a otra, realizando una secuencia lineal de tareas en el recurso. Sin embargo, no es necesario que las tareas realizadas en un trabajo estén en una secuencia. Al crear una tarea encadenada, los objetos **ITask** encadenados se crean en un solo objeto **IJob**.
 
 > [!NOTE]
-> Actualmente hay un límite de 30 tareas por trabajo. Si necesita más de 30 tareas toochain, cree más de un trabajo de tareas de Hola de toocontain.
+> Actualmente hay un límite de 30 tareas por trabajo. Si necesita encadenar más de 30 tareas, cree más de un trabajo para incluir las tareas.
 >
 >
 
@@ -147,13 +147,13 @@ En muchos escenarios de aplicación, los desarrolladores desean toocreate una se
 
 
 ### <a name="considerations"></a>Consideraciones
-tooenable encadenamiento de tareas:
+Para habilitar el encadenamiento de tareas:
 
 * Un trabajo debe tener al menos dos tareas.
-* Debe haber al menos una tarea cuya entrada sea salida de hello de otra tarea en el trabajo de Hola.
+* Debe haber al menos una tarea cuya entrada sea la salida de otra tarea del trabajo.
 
 ## <a name="use-odata-batch-processing"></a>Uso del procesamiento por lotes de OData
-Hola de ejemplo siguiente muestra cómo toouse OData por lotes las toocreate de procesamiento de un trabajo y tareas. Para obtener información sobre el procesamiento por lotes, consulte [Procesamiento por lotes del protocolo Open Data (OData)](http://www.odata.org/documentation/odata-version-3-0/batch-processing/).
+En el ejemplo siguiente se muestra cómo usar el procesamiento por lotes de OData para crear un trabajo y tareas. Para obtener información sobre el procesamiento por lotes, consulte [Procesamiento por lotes del protocolo Open Data (OData)](http://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
     POST https://media.windows.net/api/$batch HTTP/1.1
     DataServiceVersion: 1.0;NetFx
@@ -214,9 +214,9 @@ Hola de ejemplo siguiente muestra cómo toouse OData por lotes las toocreate de 
 
 
 ## <a name="create-a-job-by-using-a-jobtemplate"></a>Creación de un trabajo mediante una plantilla JobTemplate
-Cuando se procesan varios recursos mediante el uso de un conjunto común de tareas, utilice que una tarea de forma predeterminada de JobTemplate toospecify Hola presintonías u orden de hello tooset de tareas.
+Al procesar varios recursos usando un conjunto común de tareas, utilice una plantilla JobTemplate para especificar los valores preestablecidos de las tareas predeterminadas o establezca el orden de las tareas.
 
-Hola siguiente ejemplo muestra cómo toocreate una JobTemplate con una TaskTemplate que está había definido en línea. Hola TaskTemplate usa Hola Media Encoder estándar como archivo de recursos de hello MediaProcessor tooencode Hola. Sin embargo, también se pueden usar otros elementos MediaProcessor.
+En el ejemplo siguiente se muestra cómo crear una plantilla JobTemplate con una plantilla TaskTemplate definida en línea. La plantilla TaskTemplate usa Media Encoder Standard como elemento MediaProcessor para codificar el archivo de recursos. Sin embargo, también se pueden usar otros elementos MediaProcessor.
 
     POST https://media.windows.net/API/JobTemplates HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -232,18 +232,18 @@ Hola siguiente ejemplo muestra cómo toocreate una JobTemplate con una TaskTempl
 
 
 > [!NOTE]
-> A diferencia de otras entidades de servicios multimedia, debe definir un nuevo identificador GUID para cada TaskTemplate y colocarlo en taskTemplateId de Hola y la propiedad Id en el cuerpo de la solicitud. esquema de identificación de contenido de Hello debe seguir el esquema de hello descrito en identificar las entidades de servicios de multimedia de Azure. Además, las plantillas de trabajo no se pueden actualizar. Por el contrario, debe crear una nueva con los cambios actualizados.
+> A diferencia de otras entidades de Servicios multimedia, debe definir un nuevo identificador GUID para cada plantilla de tarea y colocarlo en el identificador de la plantilla de tarea y en la propiedad Id en el cuerpo de la solicitud. El esquema de identificación de contenido debe seguir el esquema descrito en Identificación de entidades de Servicios multimedia de Azure. Además, las plantillas de trabajo no se pueden actualizar. Por el contrario, debe crear una nueva con los cambios actualizados.
 >
 >
 
-Si se realiza correctamente, se devuelve Hola después de respuesta:
+Si se realiza correctamente, se devuelve la respuesta siguiente:
 
     HTTP/1.1 201 Created
 
     . . .
 
 
-Hola siguiente ejemplo se muestra cómo toocreate un trabajo que hace referencia a un identificador de JobTemplate:
+En el ejemplo siguiente se muestra cómo crear un trabajo que hace referencia a un identificador de plantilla JobTemplate:
 
     POST https://media.windows.net/API/Jobs HTTP/1.1
     Content-Type: application/json;odata=verbose
@@ -258,7 +258,7 @@ Hola siguiente ejemplo se muestra cómo toocreate un trabajo que hace referencia
     {"Name" : "NewTestJob", "InputMediaAssets" : [{"__metadata" : {"uri" : "https://media.windows.net/api/Assets('nb%3Acid%3AUUID%3A3f1fe4a2-68f5-4190-9557-cd45beccef92')"}}], "TemplateId" : "nb:jtid:UUID:15e6e5e6-ac85-084e-9dc2-db3645fbf0aa"}
 
 
-Si se realiza correctamente, se devuelve Hola después de respuesta:
+Si se realiza correctamente, se devuelve la respuesta siguiente:
 
     HTTP/1.1 201 Created
 
@@ -273,7 +273,7 @@ Si se realiza correctamente, se devuelve Hola después de respuesta:
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora que sabe cómo toocreate una tooencode trabajo un activo, consulte [cómo toocheck trabajo progreso con servicios multimedia](media-services-rest-check-job-progress.md).
+Ahora que sabe cómo crear un trabajo para codificar un recurso, consulte [Comprobación del progreso del trabajo con Media Services](media-services-rest-check-job-progress.md).
 
-## <a name="see-also"></a>Otras referencias
+## <a name="see-also"></a>Consulte también
 [Obtención de una instancia de procesador multimedia](media-services-rest-get-media-processor.md)

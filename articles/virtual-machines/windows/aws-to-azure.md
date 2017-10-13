@@ -1,6 +1,6 @@
 ---
-title: "aaaMove una tooAzure de las máquinas virtuales de Windows AWS | Documentos de Microsoft"
-description: "Mover un tooAzure de instancia de Amazon Web Services (AWS) EC2 Windows máquinas virtuales con PowerShell de Azure."
+title: "Migración de máquinas virtuales Windows AWS a Azure | Microsoft Docs"
+description: Migre una instancia de EC2 Windows de Amazon Web Services (AWS) a Azure Virtual Machines con Azure PowerShell.
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,56 +15,56 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: cynthn
-ms.openlocfilehash: f912c28d3ffe585162c3add715a1318ac3cd4643
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7d2b498d3f84c4fd6cccf97c6d7781f293f5b395
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="move-a-windows-vm-from-amazon-web-services-aws-tooazure-using-powershell"></a>Mover una máquina virtual de Windows de tooAzure de Amazon Web Services (AWS) mediante PowerShell
+# <a name="move-a-windows-vm-from-amazon-web-services-aws-to-azure-using-powershell"></a>Migración de una máquina virtual Windows de Amazon Web Services (AWS) a Azure con PowerShell
 
-Si va a evaluar máquinas virtuales de Azure para hospedar las cargas de trabajo, puede exportar una instancia existente de la máquina virtual de Windows de Amazon Web Services (AWS) EC2 luego cargar hello tooAzure de disco duro virtual (VHD). Una vez Hola generalizada, puede crear una nueva máquina virtual en Azure de hello VHD. 
+Si va a evaluar las máquinas virtuales de Azure para hospedar las cargas de trabajo, puede exportar una instancia existente de la máquina virtual Windows de Amazon Web Services (AWS) EC2 y cargar el disco duro virtual (VHD) en Azure. Una vez cargado el disco duro virtual, puede crear una nueva máquina virtual en Azure desde el disco duro virtual. 
 
-Este tema cubre la migración de una sola máquina virtual desde AWS tooAzure. Si desea que las máquinas virtuales de toomove de AWS tooAzure a escala, vea [Migre máquinas virtuales de Amazon Web Services (AWS) tooAzure con Azure Site Recovery](../../site-recovery/site-recovery-migrate-aws-to-azure.md).
+En este tema se cubre la migración de una sola máquina virtual de AWS a Azure. Si quiere migrar máquinas virtuales de AWS a Azure en escala, consulte [Migrar máquinas virtuales de Amazon Web Services (AWS) a Azure con Azure Site Recovery](../../site-recovery/site-recovery-migrate-aws-to-azure.md).
 
-## <a name="prepare-hello-vm"></a>Preparar Hola VM 
+## <a name="prepare-the-vm"></a>Preparación de la VM 
  
-Puede cargar tooAzure de discos duros virtuales especializada y generalizada. Cada tipo requiere que preparar Hola VM antes de exportar desde AWS. 
+Puede cargar VHD generalizados y especializados en Azure. Todos requieren la preparación de la máquina virtual antes de la exportación desde AWS. 
 
-- **VHD generalizado**: Se ha quitado toda la información de cuenta personal con Sysprep de un VHD generalizado. Si piensa toouse Hola VHD como una imagen toocreate nuevas máquinas virtuales desde, debe: 
+- **VHD generalizado**: Se ha quitado toda la información de cuenta personal con Sysprep de un VHD generalizado. Si tiene previsto usar VHD como una imagen desde la que crear nuevas VM, debe: 
  
     * [Preparación de una máquina virtual Windows](prepare-for-upload-vhd-image.md).  
-    * Generalice la máquina virtual de hello mediante Sysprep.  
+    * Generalice la máquina virtual mediante Sysprep.  
 
  
-- **Especializado VHD** -un disco duro virtual especializado mantiene las cuentas de usuario de hello, aplicaciones y otros datos de estado de la máquina virtual original. Si piensa toouse Hola VHD como-es toocreate una nueva máquina virtual, asegúrese de que se completa Hola pasos.  
-    * [Preparar una tooAzure de tooupload de disco duro virtual de Windows](prepare-for-upload-vhd-image.md). **No** generalizar Hola VM con Sysprep. 
-    * Quite todas las herramientas de virtualización de invitado y los agentes instalados en hello VM (es decir, herramientas de VMware). 
-    * Asegúrese de hello VM es toopull configurado su dirección IP y la configuración de DNS a través de DHCP. Esto garantiza que el servidor hello Obtiene una dirección IP dentro de la red virtual de hello cuando se inicia.  
+- **VHD especializado**: un disco duro virtual especializado mantiene las cuentas de usuario, las aplicaciones y otros datos de estado de la máquina virtual original. Si tiene previsto usar el VHD como está para crear una nueva VM, asegúrese de completar los pasos siguientes.  
+    * [Preparar de un VHD de Windows para cargar en Azure](prepare-for-upload-vhd-image.md). **No** generalice la VM mediante Sysprep. 
+    * Quite todas las herramientas de virtualización de invitado y los agentes instalados en la VM (es decir, herramientas de VMware). 
+    * Asegúrese de que la VM se configura para extraer su dirección IP y la configuración de DNS a través de DHCP. Esto garantiza que el servidor obtiene una dirección IP dentro de la red virtual cuando se inicia.  
 
 
-## <a name="export-and-download-hello-vhd"></a>Exportar y descargar Hola VHD 
+## <a name="export-and-download-the-vhd"></a>Exportación y descarga del disco duro virtual 
 
-Exportar Hola EC2 instancia tooa disco duro virtual en un depósito de S3 de Amazon. Siga los pasos de hello descritos en el tema de documentación de Amazon hello [exportar como una máquina virtual usando VM importación y exportación de una instancia](http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) ejecución hello y [crear instancia-export-tareas](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) comando tooexport hello EC2 archivo de disco duro virtual de tooa de instancia. 
+Exporte la instancia de EC2 a un disco duro virtual de un cubo de Amazon S3. Siga los pasos que se describen en el tema [Exporting an Instance as a VM Using VM Import/Export](http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html) (Exportación de una instancia como una máquina virtual con la importación/exportación de máquinas virtuales) de la documentación de Amazon y ejecute el comando [create-instance-export-task](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) para exportar la instancia de EC2 a un archivo VHD. 
 
-Hello VHD archivo exportado se guarda en el cubo de hello Amazon S3 que especifique. Hello sintaxis básica para exportar Hola VHD está por debajo, solo tiene que reemplazar texto de marcador de posición de hello en <brackets> con su información.
+El archivo VHD exportado se guarda en el cubo de Amazon S3 que haya especificado. La sintaxis básica para exportar el disco duro virtual se encuentra justo debajo, solo tiene que reemplazar el texto del marcador de posición de <brackets> con su información.
 
 ```
 aws ec2 create-instance-export-task --instance-id <instanceID> --target-environment Microsoft \
   --export-to-s3-task DiskImageFormat=VHD,ContainerFormat=ova,S3Bucket=<bucket>,S3Prefix=<prefix>
 ```
 
-Una vez que se ha exportado Hola VHD, siga las instrucciones de hello en [cómo descargar un objeto de un depósito de S3?](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/download-objects.html) hello toodownload VHD de archivos de depósitos de hello S3. 
+Una vez exportado el disco duro virtual, siga las instrucciones de [How Do I Download an Object from an S3 Bucket?](http://docs.aws.amazon.com/AmazonS3/latest/user-guide/download-objects.html) (Descarga de objetos desde un cubo de S3) para descargar el archivo VHD desde el cubo de S3. 
 
 > [!IMPORTANT]
-> AWS cargos por las cuotas de transferencia de datos para la descarga de hello VHD. Consulte [Precios de Amazon S3](https://aws.amazon.com/s3/pricing/) para más información.
+> Por la descarga del disco duro virtual, AWS cobra una tarifa de transferencia de datos. Consulte [Precios de Amazon S3](https://aws.amazon.com/s3/pricing/) para más información.
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Ahora puede cargar tooAzure de disco duro virtual de Hola y crear una nueva máquina virtual. 
+Ahora puede cargar el disco duro virtual en Azure y crear una máquina virtual. 
 
-- Si ha ejecutado Sysprep en el origen demasiado**generalizar** , antes de exportar, vea [cargar un disco duro virtual generalizado y utilizar toocreate un nuevas máquinas virtuales de Azure](upload-generalized-managed.md)
-- Si no se ejecutó Sysprep antes de exportar, hello VHD se considera **especializada**, consulte [cargar un tooAzure especializada de VHD y crear una nueva máquina virtual](create-vm-specialized.md)
+- Si ha ejecutado Sysprep en el origen para la **generalización** antes de exportarlo, consulte el artículo de [Carga de un disco duro virtual generalizado y creación de máquinas virtuales en Azure con él](upload-generalized-managed.md)
+- Si no ejecutó Sysprep antes de la exportación, se considera que el disco duro virtual es **especializado**; consulte el artículo de [Carga de un disco duro virtual especializado en Azure y creación de máquinas virtuales con él](create-vm-specialized.md)
 
  

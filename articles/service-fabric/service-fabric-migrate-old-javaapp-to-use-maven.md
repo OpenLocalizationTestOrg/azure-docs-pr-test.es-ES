@@ -1,6 +1,6 @@
 ---
-title: aaaMigrate del SDK de Java tooMaven - actualizar toouse de aplicaciones de Java de Azure Service Fabric antiguo Maven | Documentos de Microsoft
-description: "Actualizar Hola Java aplicaciones anteriores que usa toouse Hola SDK de Java del tejido de servicio, las dependencias de Java de tejido de servicio de toofetch de Maven. Después de completar la instalación, las aplicaciones de Java anteriores sería capaz de toobuild."
+title: "Migración del SDK de Java a Maven: actualización de las aplicaciones Java anteriores de Azure Service Fabric para usar Maven | Microsoft Docs"
+description: "Actualice las aplicaciones de Java anteriores que usaban el SDK de Java de Service Fabric para capturar las dependencias de Java de Service Fabric desde Maven. Después de completar esta instalación, sus aplicaciones de Java anteriores podrían compilarse."
 services: service-fabric
 documentationcenter: java
 author: sayantancs
@@ -14,36 +14,36 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2017
 ms.author: saysa
-ms.openlocfilehash: 11b979facd7b3865141a6d3a035a6021dd06ca0c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2123c5f26d77045bd22af56a844fdbf222930e7b
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="update-your-previous-java-service-fabric-application-toofetch-java-libraries-from-maven"></a>Actualizar las bibliotecas de Java anteriores de toofetch aplicación de Java Service Fabric desde Maven
-Recientemente se han transferido los archivos binarios de Java de tejido de servicio de hello servicio SDK de Java de tejido tooMaven hospedaje. Ahora puede usar **mavencentral** dependencias de Java de tejido de servicio más recientes de toofetch Hola. Este inicio rápido le ayuda a actualizar las aplicaciones de Java existentes, que creó anteriormente toobe se usa con el SDK de Java de tejido de servicio, utilizando a cualquier Yeoman Eclipse, toobe compatible con la compilación de Maven en función de Hola o plantilla.
+# <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Actualice la aplicación de Java de Service Fabric anterior para capturar las bibliotecas de Java desde Maven
+Recientemente, se han transferido los archivos binarios de Java de Service Fabric desde el SDK de Java de Service Fabric al hospedaje de Maven. Ahora puede usar **mavencentral** para capturar las dependencias de Java de Service Fabric más recientes. Esta guía de inicio rápido le ayuda a actualizar las aplicaciones de Java existentes, que creó anteriormente para usarse con el SDK de Java de Service Fabric, utilizando cualquier plantilla Yeoman o Eclipse, para ser compatibles con la compilación basada en Maven.
 
 ## <a name="prerequisites"></a>Requisitos previos
-1. En primer lugar debe toouninstall Hola existente SDK de Java.
+1. Primero debe desinstalar el SDK de Java existente.
 
   ```bash
   sudo dpkg -r servicefabricsdkjava
   ```
-2. Siguiente de CLI de tejido de servicio más reciente de instalación Hola Hola pasos mencionados [aquí](service-fabric-cli.md).
+2. Instale la CLI de Service Fabric más reciente siguiendo los pasos mencionados [aquí](service-fabric-cli.md).
 
-3. toobuild y trabajo en aplicaciones de Java de tejido de servicio de hello, deberá tooensure que tiene JDK 1.8 y Gradle instalados. Si aún no se ha instalado, puede ejecutar Hola siguientes tooinstall JDK 1.8 (openjdk-8-jdk) y Gradle -
+3. Para compilar y trabajar con las aplicaciones de Java de Service Fabric debe asegurarse de que tiene JDK 1.8 y Gradle instalados. Si aún no se han instalado, puede ejecutar el siguiente procedimiento para instalar JDK 1.8 (openjdk-8-jdk) y Gradle:
 
  ```bash
  sudo apt-get install openjdk-8-jdk-headless
  sudo apt-get install gradle
  ```
-4. Scripts de instalación/desinstalación Hola de actualización de la aplicación toouse Hola nueva CLI de tejido de servicio siguiendo los pasos de hello mencionados [aquí](service-fabric-application-lifecycle-sfctl.md). Se puede hacer referencia tooour Introducción [ejemplos](https://github.com/Azure-Samples/service-fabric-java-getting-started) como referencia.
+4. Actualice los scripts de instalación o desinstalación de la aplicación para utilizar la nueva CLI de Service Fabric siguiendo los pasos mencionados [aquí](service-fabric-application-lifecycle-sfctl.md). Puede hacer referencia a nuestros [ejemplos](https://github.com/Azure-Samples/service-fabric-java-getting-started) de introducción como referencia.
 
 >[!TIP]
-> Después de desinstalar Hola servicio SDK de Java de tejido, Yeoman no funcionará. Siga los requisitos previos de hello mencionados [aquí](service-fabric-create-your-first-linux-application-with-java.md) toohave Yeoman de tejido de servicio Java generador de plantilla de seguridad y en funcionamiento.
+> Después de desinstalar el SDK de Java de Service Fabric, Yeoman no funcionará. Siga los requisitos previos mencionados [aquí](service-fabric-create-your-first-linux-application-with-java.md) para que el generador de plantillas Java de Yeoman de Service Fabric funcione.
 
 ## <a name="service-fabric-java-libraries-on-maven"></a>Bibliotecas de Java de Service Fabric en Maven
-Las bibliotecas de Java de Service Fabric han sido hospedadas en Maven. También puede agregar dependencias de Hola Hola ``pom.xml`` o ``build.gradle`` de las bibliotecas de Java de tejido de servicio de proyectos toouse desde **mavenCentral**.
+Las bibliotecas de Java de Service Fabric han sido hospedadas en Maven. Puede agregar las dependencias en el archivo ``pom.xml`` o ``build.gradle`` de sus proyectos para usar las bibliotecas de Java de Service Fabric desde **mavenCentral**.
 
 ### <a name="actors"></a>Actores
 
@@ -90,7 +90,7 @@ Compatibilidad con el servicio sin estado de Service Fabric para la aplicación.
 ### <a name="others"></a>Otros
 #### <a name="transport"></a>Transporte
 
-Compatibilidad de la capa de transporte para aplicaciones Java de Service Fabric. No es necesario tooexplicitly agregar esta dependencia tooyour Actor confiable o aplicaciones de servicio, a menos que se programan en la capa de transporte de Hola.
+Compatibilidad de la capa de transporte para aplicaciones Java de Service Fabric. No es necesario agregar explícitamente esta dependencia a sus aplicaciones Reliable Actor o de servicio, a menos que programe la capa de transporte.
 
   ```XML
   <dependency>
@@ -111,7 +111,7 @@ Compatibilidad de la capa de transporte para aplicaciones Java de Service Fabric
 
 #### <a name="fabric-support"></a>Compatibilidad con Fabric
 
-Compatibilidad de nivel de sistema para Service Fabric, que se comunica en tiempo de ejecución de toonative Service Fabric. No es necesario tooexplicitly agregar esta dependencia tooyour Actor confiable o las aplicaciones de servicio. Esto obtiene capturan automáticamente desde Maven, al incluir Hola otras dependencias anteriores.
+Compatibilidad en el nivel de sistema para Service Fabric, que se comunica con el entorno de tiempo de ejecución nativo de Service Fabric. No es necesario agregar explícitamente esta dependencia a sus aplicaciones Reliable Actor o de servicio. Se recuperan automáticamente desde Maven, cuando se incluyen las dependencias anteriores.
 
   ```XML
   <dependency>
@@ -133,7 +133,7 @@ Compatibilidad de nivel de sistema para Service Fabric, que se comunica en tiemp
 
 ## <a name="migrating-service-fabric-stateless-service"></a>Migración del servicio sin estado de Service Fabric
 
-toobe toobuild capaz de su Service Fabric sin estado Java servicio existente con dependencias de Service Fabric Maven se captura, necesita hello tooupdate ``build.gradle`` archivo dentro de hello servicio. Usaban toobe como las siguientes:
+Para poder crear su servicio de Java sin estado de Service Fabric existente con las dependencias de Service Fabric capturadas desde Maven, debe actualizar el archivo ``build.gradle`` dentro del servicio. Antes solían ser como las siguientes:
 ```
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
@@ -166,7 +166,7 @@ task copyDeps <<{
     }
 }
 ```
-Ahora, las dependencias de Hola de toofetch de Maven, Hola **actualizar** ``build.gradle`` tendría los elementos correspondientes de hello las siguientes:
+Ahora, para capturar las dependencias desde Maven, el archivo **actualizado** ``build.gradle`` tendría los elementos correspondientes como se indica a continuación:
 ```
 repositories {
         mavenCentral()
@@ -219,20 +219,20 @@ task copyDeps <<{
     }
 }
 ```
-En general, tooget una idea general acerca de cómo crear Hola de script sería similar para un servicio de Service Fabric sin estado Java, puede consultar tooany ejemplo de nuestros ejemplos de iniciación. Aquí es hello [build.gradle](https://github.com/Azure-Samples/service-fabric-java-getting-started/blob/master/Services/EchoServer/EchoServer1.0/EchoServerService/build.gradle) de ejemplo de Hola a EchoServer.
+En general, para hacerse una idea general acerca de cómo sería el script de compilación para un servicio Java sin estado de Service Fabric, puede remitirse a cualquiera de nuestros ejemplos de introducción. Este es el archivo [build.gradle](https://github.com/Azure-Samples/service-fabric-java-getting-started/blob/master/Services/EchoServer/EchoServer1.0/EchoServerService/build.gradle) del ejemplo EchoServer.
 
 ## <a name="migrating-service-fabric-actor-service"></a>Migración del servicio Actor de Service Fabric
 
-toobe toobuild capaz de la aplicación existente de Service Fabric Actor Java con dependencias de Service Fabric Maven se captura, necesita hello tooupdate ``build.gradle`` archivo dentro del paquete de interfaz de Hola y en el paquete del servicio de Hola. Si tiene un paquete TestClient, necesita tooupdate es así. Así, para su actor ``Myactor``, siguiente Hola sería lugares hello en las que necesite tooupdate -
+Para poder crear su aplicación Java Actor de Service Fabric existente con las dependencias de Service Fabric capturadas desde Maven, debe actualizar el archivo ``build.gradle`` dentro del paquete de interfaz y en el paquete de servicio. Si tiene un paquete TestClient, debe actualizarlo también. Así, para el actor ``Myactor``, lo siguiente sería localizar los lugares donde necesita actualizar:
 ```
 ./Myactor/build.gradle
 ./MyactorInterface/build.gradle
 ./MyactorTestClient/build.gradle
 ```
 
-#### <a name="updating-build-script-for-hello-interface-project"></a>Actualización del script de compilación para el proyecto de la interfaz de Hola
+#### <a name="updating-build-script-for-the-interface-project"></a>Actualización del script de compilación para el proyecto de interfaz
 
-Usaban toobe como las siguientes:
+Antes solían ser como las siguientes:
 ```
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
@@ -240,7 +240,7 @@ dependencies {
 .
 .
 ```
-Ahora, las dependencias de Hola de toofetch de Maven, Hola **actualizar** ``build.gradle`` tendría los elementos correspondientes de hello las siguientes:
+Ahora, para capturar las dependencias desde Maven, el archivo **actualizado** ``build.gradle`` tendría los elementos correspondientes como se indica a continuación:
 ```
 repositories {
     mavenCentral()
@@ -271,9 +271,9 @@ compileJava.dependsOn(explodeDeps)
 .
 ```
 
-#### <a name="updating-build-script-for-hello-actor-project"></a>Actualización del script de compilación para el proyecto de actor Hola
+#### <a name="updating-build-script-for-the-actor-project"></a>Actualización del script de compilación para el proyecto de actor
 
-Usaban toobe como las siguientes:
+Antes solían ser como las siguientes:
 ```
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
@@ -312,7 +312,7 @@ task copyDeps<< {
     }
 }
 ```
-Ahora, las dependencias de Hola de toofetch de Maven, Hola **actualizar** ``build.gradle`` tendría los elementos correspondientes de hello las siguientes:
+Ahora, para capturar las dependencias desde Maven, el archivo **actualizado** ``build.gradle`` tendría los elementos correspondientes como se indica a continuación:
 ```
 repositories {
     mavenCentral()
@@ -370,9 +370,9 @@ task copyDeps<< {
 }
 ```
 
-#### <a name="updating-build-script-for-hello-test-client-project"></a>Actualización del script de compilación para el proyecto de cliente de prueba de Hola
+#### <a name="updating-build-script-for-the-test-client-project"></a>Actualización del script de compilación para el proyecto de cliente de prueba
 
-Cambios relacionados con aquí son similares toohello mencionadas en la sección anterior, es decir, el proyecto de actor Hola. Hola anteriormente Gradle toobe de script que se utiliza, como las siguientes:
+Los cambios aquí son similares a los que se describen en la sección anterior, es decir, el proyecto de actor. Anteriormente el script Gradle solía ser como el siguiente:
 ```
 dependencies {
     compile fileTree(dir: '/opt/microsoft/sdk/servicefabric/java/packages/lib', include: ['*.jar'])
@@ -412,7 +412,7 @@ task copyDeps<< {
         }
 }
 ```
-Ahora, las dependencias de Hola de toofetch de Maven, Hola **actualizar** ``build.gradle`` tendría los elementos correspondientes de hello las siguientes:
+Ahora, para capturar las dependencias desde Maven, el archivo **actualizado** ``build.gradle`` tendría los elementos correspondientes como se indica a continuación:
 ```
 repositories {
     mavenCentral()
@@ -476,4 +476,4 @@ task copyDeps<< {
 
 * [Creación e implementación de la primera aplicación de Java para Service Fabric en Linux con Yeoman](service-fabric-create-your-first-linux-application-with-java.md)
 * [Creación e implementación de la primera aplicación de Java para Service Fabric en Linux con el complemento de Eclipse para Service Fabric](service-fabric-get-started-eclipse.md)
-* [Interactuar con los clústeres de Service Fabric mediante Hola CLI de tejido de servicio](service-fabric-cli.md)
+* [Interacción con los clústeres de Service Fabric mediante la CLI de Service Fabric](service-fabric-cli.md)

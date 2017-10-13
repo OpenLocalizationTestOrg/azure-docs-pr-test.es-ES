@@ -1,6 +1,6 @@
 ---
-title: "Cosmos Azure DB: Cómo usar tooquery Hola API de documentos? | Microsoft Docs"
-description: "Obtenga información acerca de tooquery con hello documentos API de base de datos de Azure Cosmos"
+title: "Azure Cosmos DB: ¿cómo realizar consultas mediante DocumentDB API? | Microsoft Docs"
+description: Aprenda a realizar consultas con la DocumentDB API para Azure Cosmos DB
 services: cosmos-db
 documentationcenter: 
 author: mimig1
@@ -15,24 +15,24 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: e3e5a49f7510942bcfb15330e5f86c5dd8b1e5d9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: feffc553a9aa931d96cec71c101674fce08a466b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="azure-cosmos-db-how-tooquery-with-api-for-mongodb"></a>Azure Cosmos DB: Cómo tooquery con API para MongoDB?
+# <a name="azure-cosmos-db-how-to-query-with-api-for-mongodb"></a>Azure Cosmos DB: ¿cómo realizar consultas con la API para MongoDB?
 
-base de datos de Azure Cosmos Hello [API para MongoDB](mongodb-introduction.md) admite [consultas de shell de MongoDB](https://docs.mongodb.com/manual/tutorial/query-documents/). 
+La [API para MongoDB](mongodb-introduction.md) de Azure Cosmos DB admite las [consultas de shell de MongoDB](https://docs.mongodb.com/manual/tutorial/query-documents/). 
 
-En este artículo se trata Hola siguientes tareas: 
+En este artículo se tratan las tareas siguientes: 
 
 > [!div class="checklist"]
 > * Consulta de datos con MongoDB
 
 ## <a name="sample-document"></a>Documento de ejemplo
 
-las consultas de Hello en este artículo usan Hola siguiente documento de ejemplo.
+En las consultas de este artículo se usa el documento de ejemplo siguiente.
 
 ```json
 {
@@ -64,7 +64,7 @@ las consultas de Hello en este artículo usan Hola siguiente documento de ejempl
 ```
 ## <a id="examplequery1"></a> Consulta 1 de ejemplo 
 
-Dado anterior de documento familia de ejemplo de Hola, Hola siguiente consulta se devuelve documentos de Hola que coincide con el campo de Id. de hello `WakefieldFamily`.
+Dado el documento de familia de ejemplo anterior, la consulta siguiente devuelve los documentos donde el campo Id. coincide con `WakefieldFamily`.
 
 **Consultar**
     
@@ -114,7 +114,7 @@ Dado anterior de documento familia de ejemplo de Hola, Hola siguiente consulta s
 
 ## <a id="examplequery2"></a>Consulta 2 de ejemplo 
 
-consulta siguiente Hola devuelve a todos los elementos secundarios de hello en la familia de Hola. 
+La consulta siguiente devuelve todos los elementos secundarios de la familia. 
 
 **Consultar**
     
@@ -147,7 +147,7 @@ consulta siguiente Hola devuelve a todos los elementos secundarios de hello en l
 
 ## <a id="examplequery3"></a>Consulta 3 de ejemplo 
 
-consulta de Hello siguiente devuelve todas las familias de Hola que están registradas. 
+La consulta siguiente devuelve todas las familias que están registradas. 
 
 **Consultar**
     
@@ -156,7 +156,7 @@ consulta de Hello siguiente devuelve todas las familias de Hola que están regis
 
 ## <a id="examplequery4"></a>Consulta 4 de ejemplo
 
-consulta de Hello siguiente devuelve todas las familias de Hola que no están registradas. 
+La consulta siguiente devuelve todas las familias que no están registradas. 
 
 **Consultar**
     
@@ -200,7 +200,7 @@ consulta de Hello siguiente devuelve todas las familias de Hola que no están re
 
 ## <a id="examplequery5"></a>Consulta 5 de ejemplo
 
-consulta de Hello siguiente devuelve todas las familias de Hola que no están registradas y el estado es NY. 
+La consulta siguiente devuelve todas las familias que no están registradas y el estado es NY. 
 
 **Consultar**
     
@@ -246,7 +246,7 @@ consulta de Hello siguiente devuelve todas las familias de Hola que no están re
 
 ## <a id="examplequery6"></a>Consulta 6 de ejemplo
 
-consulta siguiente Hola devuelve todas las familias de Hola donde grados de elementos secundarios son 8.
+La consulta siguiente devuelve todas las familias en las que los grados de los elementos secundarios son 8.
 
 **Consultar**
   
@@ -291,7 +291,7 @@ consulta siguiente Hola devuelve todas las familias de Hola donde grados de elem
 
 ## <a id="examplequery7"></a>Consulta 7 de ejemplo
 
-consulta de Hello siguiente devuelve todas las familias de Hola donde el tamaño de matriz de elementos secundarios es 3.
+La consulta siguiente devuelve todas las familias en las que el valor de tamaño de la matriz secundaria es 3.
 
 **Consultar**
   
@@ -299,16 +299,16 @@ consulta de Hello siguiente devuelve todas las familias de Hola donde el tamaño
 
 **Resultados**
 
-No se devolverá ningún resultado, ya que no tenemos más de dos elementos secundarios. Solo cuando el parámetro es 2 esta consulta se realizará correctamente y devolver documento "hello" completo.
+No se devolverá ningún resultado, ya que no tenemos más de dos elementos secundarios. Solo si el parámetro es 2, esta consulta se realizará correctamente y devolverá el documento completo.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-En este tutorial, ha hecho siguiente de hello:
+En este tutorial, ha hecho lo siguiente:
 
 > [!div class="checklist"]
-> * Ha aprendido cómo tooquery con MongoDB 
+> * Ha obtenido información sobre cómo realizar consultas con MongoDB 
 
-Ahora puede continuar toohello siguiente tutorial toolearn cómo toodistribute los datos globales.
+Ahora puede continuar con el tutorial siguiente para obtener información sobre cómo distribuir sus datos globalmente.
 
 > [!div class="nextstepaction"]
 > [Distribución de datos global](tutorial-global-distribution-documentdb.md)

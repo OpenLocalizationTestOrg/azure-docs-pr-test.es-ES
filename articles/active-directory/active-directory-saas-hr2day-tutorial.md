@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: integración de Azure Active Directory con HR2day by Merces | Microsoft Docs"
-description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y HR2day por Merces."
+description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y HR2day by Merces."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,243 +13,243 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 257233767e1fddbaf115878cb0455acf61b2f5f5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 77e2fcf9c306259286b15767f3a992510d6d79d8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Tutorial: Integración de Azure Active Directory con HR2day by Merces
 
-En este tutorial, aprenderá cómo toointegrate HR2day por Merces con Azure Active Directory (Azure AD).
+En este tutorial, obtendrá información sobre cómo integrar HR2day by Merces con Azure Active Directory (Azure AD).
 
-Integración HR2day por Merces con Azure AD proporciona Hola siguientes ventajas:
+La integración de HR2day by Merces con Azure AD proporciona las siguientes ventajas:
 
-- Puede controlar en Azure AD que tenga acceso tooHR2day por Merces.
-- Puede permitir a los usuarios tooautomatically obtener inicia sesión en tooHR2day Merces con sus cuentas de Azure AD.
-- Puede administrar las cuentas en una ubicación central: Hola portal de Azure.
+- Puede controlar en Azure AD quién tiene acceso a HR2day by Merces.
+- Puede permitir que los usuarios inicien sesión automáticamente en HR2day by Merces con sus cuentas de Azure AD.
+- Puede administrar sus cuentas en una ubicación central: Azure Portal.
 
 Para más información sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-integración de Azure AD con HR2day por Merces tooconfigure, necesita Hola siguientes elementos:
+Para configurar la integración de Azure AD con HR2day by Merces, necesita los siguientes elementos:
 
 - Una suscripción de Azure AD.
 - Una suscripción habilitada para el inicio de sesión único en HR2day by Merces.
 
 > [!NOTE]
-> No se recomienda usar un Hola de tootest del entorno de producción de los pasos en este tutorial.
+> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
 
-pasos de hello tootest en este tutorial, siga estas recomendaciones:
+Para probar los pasos de este tutorial, siga estas recomendaciones:
 
 - No use el entorno de producción, salvo que sea necesario.
 - Puede obtener [un versión de evaluación gratuita de un mes de Azure AD](https://azure.microsoft.com/pricing/free-trial/) si aún no la tiene.  
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hola que se detallan en este documento consta de dos bloques principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La escenario descrito aquí consta de dos bloques de creación principales:
 
-1. Agregar HR2day por Merces desde la Galería de Hola.
+1. Agregación de HR2day by Merces desde la galería.
 2. Configuración y prueba del inicio de sesión único de Azure AD
 
-## <a name="add-hr2day-by-merces-from-hello-gallery"></a>Agregar HR2day por Merces de galería de Hola
-integración de hello tooconfigure de HR2day por Merces en Azure AD, agregue HR2day por Merces de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
+## <a name="add-hr2day-by-merces-from-the-gallery"></a>Agregación de HR2day by Merces desde la galería
+Para configurar la integración de HR2day by Merces en Azure AD, debe agregar HR2day by Merces desde la galería a la lista de aplicaciones SaaS administradas.
 
-**tooadd HR2day por Merces de galería de hello, tomar Hola pasos:**
+**Para agregar HR2day by Merces desde la galería, realice los pasos siguientes:**
 
-1. Hola [portal de Azure](https://portal.azure.com), en Hola panel de navegación izquierdo, seleccione hello **Azure Active Directory** icono. 
+1. En el panel de navegación izquierdo de [Azure Portal](https://portal.azure.com), seleccione el icono de **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Vaya demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
+2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
 
     ![Aplicaciones][2]
     
-3. tooadd una nueva aplicación, seleccione hello **nueva aplicación** botón en la parte superior de Hola Hola del cuadro de diálogo.
+3. Para agregar una nueva aplicación, seleccione el botón **Nueva aplicación** en la parte superior del cuadro de diálogo.
 
     ![Aplicaciones][3]
 
-4. En el cuadro de búsqueda de hello, escriba **HR2day por Merces**.
+4. En el cuadro Buscar, escriba **HR2day by Merces**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-hr2day-tutorial/tutorial_hr2daybymerces_search.png)
 
-5. En el panel de resultados de hello, seleccione **HR2day por Merces**y, a continuación, seleccione hello **agregar** botón aplicación hello de tooadd.
+5. En el panel de resultados, seleccione **HR2day by Merces** y haga clic en el botón **Agregar** para agregar la aplicación.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-hr2day-tutorial/tutorial_hr2daybymerces_addfromgallery.png)
 
 ##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Configuración y prueba del inicio de sesión único en Azure AD
 En esta sección, se configura y se prueba el inicio de sesión único de Azure AD con HR2day by Merces con un usuario de prueba llamado "Britta Simon."
 
-Para toowork de inicio de sesión único, Azure AD necesita tooknow quién Hola homólogo usuario en HR2day por Merces tooa usuario en Azure AD. En otras palabras, necesita tooestablish un vínculo entre un usuario de Azure AD y el usuario relacionado de hello en HR2day por Merces.
+Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de HR2day by Merces para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de HR2day by Merces.
 
-En HR2day por Merces, asigne hello **nombre de usuario** en Azure AD demasiado **nombre de usuario** relación de hello tooestablish.
+Para establecer la relación de vínculo, en HR2day by Merces, asigne el valor de **nombre de usuario** de Azure AD como valor de **Nombre de usuario**.
 
-tooconfigure y prueba de inicio de sesión único en Azure AD con HR2day por Merces, deberá hello toocomplete después de bloques de creación:
+Para configurar y probar el inicio de sesión único de Azure AD con HR2day by Merces, es preciso completar los siguientes bloques de creación:
 
-1. [Configurar inicio de sesión único en Azure AD](#configuring-azure-ad-single-sign-on): habilitar el toouse de los usuarios de esta característica.
+1. [Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on): permita que los usuarios utilicen esta característica.
 2. [Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user): pruebe el inicio de sesión único de Azure AD con Britta Simon.
-3. [Crear un HR2day por usuario de prueba de Merces](#creating-an-hr2day-by-merces-test-user): crear un equivalente de Britta Simon en HR2day por Merces que es la representación toohello vinculado Azure AD del usuario.
-4. [Asignar el usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user): habilitar Britta Simon toouse inicio de sesión único en Azure AD.
-5. [Probar el inicio de sesión único](#testing-single-sign-on): comprobar si la configuración de hello funciona.
+3. [Creación de un usuario de prueba de HR2day by Merces](#creating-an-hr2day-by-merces-test-user): cree un homólogo de Britta Simon en HR2day by Merces que esté vinculado a la representación del usuario en Azure AD.
+4. [Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user): permita que Britta Simon use el inicio de sesión único de Azure AD.
+5. [Prueba del inicio de sesión único](#testing-single-sign-on): compruebe que la configuración funciona.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en su HR2day Merces aplicación.
+En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y configurará el inicio de sesión único en la aplicación HR2day by Merces.
 
-**inicio de sesión único en Azure AD tooconfigure con HR2day por Merces, tomar Hola pasos:**
+**Para configurar el inicio de sesión único de Azure AD con HR2day by Merces, realice los pasos siguientes:**
 
-1. En el portal de Azure, en Hola Hola **HR2day por Merces** página de integración de aplicaciones, seleccione **inicio de sesión único**.
+1. En Azure Portal, en la página de integración de la aplicación **HR2day by Merces**, seleccione **Inicio de sesión único**.
 
     ![Configurar inicio de sesión único][4]
 
-2. tooenable inicio de sesión único, Hola **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML**.
+2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-hr2day-tutorial/tutorial_hr2daybymerces_samlbase.png)
 
-3. Hola **HR2day Merces dominio y las direcciones URL** sección, llevar Hola pasos:
+3. En la sección **Dominio y direcciones URL de HR2day by Merces**, lleve a cabo los pasos siguientes:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-hr2day-tutorial/tutorial_hr2daybymerces_url.png)
 
-    a. Hola **dirección URL de inicio de sesión** cuadro, escriba una dirección URL mediante el uso de hello siguiente patrón: `https://<tenantname>.force.com/<instancename>`.
+    a. En el cuadro de texto **Dirección URL de inicio de sesión**, escriba una dirección URL con el siguiente patrón: `https://<tenantname>.force.com/<instancename>`.
 
-    b. Hola **identificador** cuadro, escriba una dirección URL mediante el uso de hello siguiente patrón: `https://hr2day.force.com/<companyname>`.
+    b. En el cuadro de texto **Identificador**, escriba una dirección URL con el siguiente patrón: `https://hr2day.force.com/<companyname>`.
 
     > [!NOTE] 
-    > Estos valores no son reales. Actualizar estos valores con URL de inicio de sesión real de Hola y el identificador. Póngase en contacto con hello [HR2day equipo de soporte técnico de cliente de Merces](mailto:servicedesk@merces.nl) tooget estos valores. 
+    > Estos valores no son reales. Debe actualizarlos con la dirección URL de inicio de sesión y el identificador reales. Póngase en contacto con el [equipo de soporte técnico de HR2day by Merces](mailto:servicedesk@merces.nl) para obtener estos valores. 
  
 
 
-4. En hello **el certificado de firma de SAML** sección, seleccione **Certificate(Base64)**y, a continuación, guarde el archivo de certificado de hello en el equipo.
+4. En la sección **Certificado de firma de SAML**, seleccione **Certificado (Base64)** y, luego, guarde el archivo de certificado en el equipo.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-hr2day-tutorial/tutorial_hr2daybymerces_certificate.png) 
 
-5. Esta sección se describe cómo tooenable usuarios tooauthenticate tooHR2day por Merces con su cuenta en Azure AD. Para hacerlo mediante el uso de federación que se basa en hello protocolo SAML.
+5. Esta sección describe cómo se habilita la autenticación de usuarios en HR2day by Merces con sus cuentas de Azure AD. Se realiza utilizando la federación basada en el protocolo SAML.
 
-    Su HR2day Merces aplicación espera las aserciones de SAML de hello en un formato específico, que requiere el token SAML de tooyour de asignaciones de atributo personalizado de tooadd. Hola siguiente captura de pantalla muestra un ejemplo de esto. 
+    La aplicación HR2day by Merces espera las aserciones SAML en un formato específico, lo que requiere que se agreguen asignaciones de atributos personalizados al token SAML. La siguiente captura de pantalla le muestra un ejemplo de esto. 
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-hr2day-tutorial/tutorial_hr2day_00.png)
     
     > [!NOTE] 
-    Para poder configurar la aserción de SAML de hello, debe ponerse en contacto con hello [HR2day equipo de soporte técnico de Merces cliente](mailto:servicedesk@merces.nl) y solicite el valor de Hola de atributo del identificador único de hello para el inquilino. Necesita esta valor toocomplete Hola se analiza en la sección siguiente Hola. 
+    Antes de configurar la aserción SAML, debe ponerse en contacto con el [equipo de soporte técnico de HR2day by Merces](mailto:servicedesk@merces.nl) y solicitar el valor del atributo de identificador único del inquilino. Necesita este valor para completar los pasos descritos en la sección siguiente. 
 
-6. Hola **inicio de sesión único** cuadro de diálogo hello **atributos de usuario** sección, configure el atributo de token de SAML de hello como se muestra en hello después de la imagen. A continuación, tomar Hola pasos.
+6. En el cuadro de diálogo **Inicio de sesión único**, en la sección **Atributos de usuario**, configure el atributo token SAML como muestra la imagen siguiente. A continuación, siga estos pasos.
     
       | Nombre del atributo    |   Valor de atributo |  
     | ------------------- | -------------------- |    
     | ATTR_LOGINCLAIM | join([mail],"102938475Z","@" |
     
-      a. Hola tooopen **Agregar atributo** cuadro de diálogo, seleccione **Agregar atributo**.
+      a. Seleccione **Agregar atributo** para abrir el cuadro de diálogo **Agregar atributo**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-hr2day-tutorial/tutorial_attribute_04.png)
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-hr2day-tutorial/tutorial_attribute_05.png)
 
-    b. Hola **nombre** , escriba **ATTR_LOGINCLAIM**.
+    b. En el cuadro de texto **Nombre**, escriba **ATTR_LOGINCLAIM**.
 
-    c. De hello **valor** lista, seleccione **Join()**.
+    c. En la lista **Valor**, seleccione **Join()**.
 
-    d. De hello **String1** lista, seleccione **user.mail**.
+    d. En la lista **Cadena1**, seleccione **user.mail**.
 
-    e. Para **String2**, escriba Hola identificador único proporcionado por el equipo de HR2day.
+    e. Para **Cadena2**, escriba el identificador único proporcionado por el equipo de HR2day.
 
-    f. Hola **separador** , escriba  **@** .
+    f. En el cuadro de texto **Separador**, escriba **@**.
     
     g. Seleccione **Aceptar**.
 
-7. Seleccione hello **guardar** botón.
+7. Seleccione el botón **Guardar**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-hr2day-tutorial/tutorial_general_400.png)
 
-8. Hola **HR2day por la configuración de Merces** sección, seleccione **HR2day configurar por Merces** tooopen hello **configurar inicio de sesión** ventana. Hola copia **dirección URL de cierre de sesión**, **Id. de entidad SAML**, y **SAML Single Sign-On dirección URL del servicio** de hello **referencia rápida** sección.
+8. En la sección **Configuración de HR2day by Merces**, seleccione **Configurar HR2day by Merces** para abrir la ventana **Configurar inicio de sesión**. Copie la **Dirección URL de cierre de sesión**, el **Identificador de entidad de SAML** y la **Dirección URL del servicio de inicio de sesión único de SAML** de la sección **Referencia rápida**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-hr2day-tutorial/tutorial_hr2daybymerces_configure.png) 
 
-9. tooconfigure SSO para su aplicación, póngase en contacto con hello [HR2day Merces equipo de soporte técnico de cliente](mailTo:servicedesk@merces.nl). Adjuntar Hola descargado **Certificate(Base64)** correo electrónico tooyour de archivos. También proporcionan hello **dirección URL de cierre de sesión**, **Id. de entidad SAML**, y **SAML Single Sign-On dirección URL del servicio** para que se pueden configurar para la integración de SSO.
+9. Para configurar el SSO para la aplicación, póngase en contacto con el [equipo de soporte técnico de HR2day by Merces](mailTo:servicedesk@merces.nl). Adjunte el archivo de **Certificado (Base64)** descargado a su correo electrónico. Además, proporcione la **dirección URL de cierre de sesión**, el **identificador de entidad de SAML** y la **dirección URL del servicio de inicio de sesión único de SAML** para que puedan configurar la integración del inicio de sesión único.
 
     > [!NOTE]
-    >Indique el equipo de Merces toohello que esta integración debe Hola toobe de Id. de entidad establecida con el patrón de hello **https://hr2day.force.com/INSTANCENAME**.
+    >Indique al equipo de Merces que esta integración necesita que el id. de entidad se establezca con el patrón **https://hr2day.force.com/INSTANCENAME**.
 
     > [!TIP]
-    >Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!  Después de agregar esta aplicación de hello **Active Directory** > **aplicaciones empresariales** sección, seleccione hello **Single Sign-On** ficha. Hola acceso incrusta documentación a través de hello **configuración** sección final Hola. Puede leer más acerca de la característica de documentación de embedded Hola Hola [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985).
+    >Ahora puede leer una versión resumida de estas instrucciones dentro de [Azure Portal](https://portal.azure.com) mientras configura la aplicación.  Después de agregar esta aplicación desde la sección **Active Directory** > **Aplicaciones empresariales**, seleccione la pestaña **Inicio de sesión único**. A continuación, consulte la documentación insertada en la sección **Configuración** en la parte inferior. Puede leer más sobre la característica de documentación insertada en el artículo sobre la [documentación insertada de Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.
+El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".
 
 ![Creación de un usuario de Azure AD][100]
 
-**toocreate un usuario de prueba en Azure AD, tomar Hola pasos:**
+**Siga estos pasos para crear un usuario de prueba en Azure AD:**
 
-1. Hola **portal de Azure**, en Hola panel de navegación izquierdo, seleccione hello **Azure Active Directory** icono.
+1. En el panel de navegación izquierdo de **Azure Portal**, seleccione el icono de **Azure Active Directory**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-hr2day-tutorial/create_aaduser_01.png) 
 
-2. lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos**y, a continuación, seleccione **todos los usuarios**.
+2. Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y, luego, seleccione **Todos los usuarios**.
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-hr2day-tutorial/create_aaduser_02.png) 
 
-3. Hola tooopen **usuario** cuadro de diálogo, seleccione **agregar** en la parte superior de Hola Hola del cuadro de diálogo.
+3. En la parte superior del cuadro de diálogo, seleccione **Agregar** para abrir el cuadro de diálogo **Usuario**.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-hr2day-tutorial/create_aaduser_03.png) 
 
-4. Hola **usuario** cuadro de diálogo, Hola toman pasos:
+4. En el cuadro de diálogo **Usuario**, realice los pasos siguientes:
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-hr2day-tutorial/create_aaduser_04.png) 
 
-    a. Hola **nombre** , escriba **BrittaSimon**.
+    a. En el cuadro **Nombre**, escriba **BrittaSimon**.
 
-    b. Hola **nombre de usuario** cuadro, Hola de tipo **dirección de correo electrónico** de BrittaSimon.
+    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
 
-    c. Seleccione **Mostrar contraseña**a continuación, anote la contraseña de Hola.
+    c. Seleccione **Mostrar contraseña** y anote la contraseña.
 
     d. Seleccione **Crear**.
  
 ### <a name="create-an-hr2day-by-merces-test-user"></a>Creación de un usuario de prueba de HR2day by Merces
 
-objetivo de Hola de esta sección es un usuario llamado a Britta Simon en HR2day Merces toocreate. los usuarios de hello tooadd en la cuenta de hello HR2day, trabajar con hello [HR2day Merces equipo de soporte técnico de cliente](mailto:servicedesk@merces.nl). 
+El objetivo de esta sección es crear una usuaria de prueba llamado Britta Simon en HR2day by Merces. Trabaje con el [equipo de soporte técnico de HR2day by Merces](mailto:servicedesk@merces.nl) para agregar los usuarios en la cuenta de HR2day. 
 
 > [!NOTE]
-> Si necesita un usuario toocreate manualmente, póngase en contacto con hello [HR2day Merces equipo de soporte técnico de cliente](mailto:servicedesk@merces.nl).
+> Si necesita crear manualmente un usuario, es preciso que se ponga contacto con el [equipo de soporte técnico de HR2day by Merces](mailto:servicedesk@merces.nl).
 
-### <a name="assign-hello-azure-ad-test-user"></a>Asignar el usuario de prueba de hello Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
 
-En esta sección, se habilita Britta Simon toouse Azure inicio de sesión único mediante la concesión de su tooHR2day acceso por Merces.
+En esta sección, habilitará a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a HR2day by Merces.
 
 ![Asignar usuario][200] 
 
-**tooassign Britta Simon tooHR2day por Merces, tome Hola pasos:**
+**Para asignar a Britta Simon a HR2day by Merces, realice los pasos siguientes:**
 
-1. Hola Azure ver aplicaciones de portal, abra Hola, vaya toohello vista del directorio y, a continuación, vaya demasiado**aplicaciones empresariales**. A continuación, seleccione **Todas las aplicaciones**.
+1. En Azure Portal, abra la vista de aplicaciones, vaya a la vista de directorio y vaya a **Aplicaciones empresariales**. A continuación, seleccione **Todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones de hello, seleccione **HR2day por Merces**.
+2. En la lista de aplicaciones, seleccione **HR2day by Merces**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-hr2day-tutorial/tutorial_hr2daybymerces_app.png) 
 
-3. En el menú de Hola Hola izquierda, seleccione **usuarios y grupos**.
+3. En el menú de la izquierda, seleccione **Usuarios y grupos**.
 
     ![Asignar usuario][202] 
 
-4. Seleccione hello **agregar** botón. A continuación, en hello **Agregar asignación** cuadro de diálogo, seleccione **usuarios y grupos**.
+4. Seleccione el botón **Agregar**. Después, en el cuadro de diálogo **Agregar asignación**, seleccione **Usuarios y grupos**.
 
     ![Asignar usuario][203]
 
-5. Hola **usuarios y grupos** cuadro de diálogo hello **usuarios** lista, seleccione **Britta Simon**.
+5. En el cuadro de diálogo **Usuarios y grupos**, en la lista **Usuarios** seleccione **Britta Simon**.
 
-6. Haga clic en hello **seleccione** botón.
+6. Haga clic en el botón **Seleccionar**.
 
-7. Hola **Agregar asignación** cuadro de diálogo, seleccione **asignar**.
+7. En el cuadro de diálogo **Agregar asignación**, seleccione **Asignar**.
     
 ### <a name="test-single-sign-on"></a>Prueba de inicio de sesión único
 
-Hola objetivo de esta sección es tootest su único inicio de sesión en configuración de Azure AD mediante el uso de Hola Panel de acceso.  
+El objetivo de esta sección es probar la configuración del inicio de sesión único de Azure AD mediante el panel de acceso.  
 
-Al seleccionar hello HR2day Merces icono en el Panel de acceso de hello, que automáticamente obtener iniciado sesión en tooyour HR2day Merces aplicación.
+Al seleccionar el icono de HR2day by Merces en el panel de acceso, iniciará sesión automáticamente en la aplicación HR2day by Merces.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre la integración de aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

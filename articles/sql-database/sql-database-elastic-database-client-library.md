@@ -1,6 +1,6 @@
 ---
-title: las bases de datos en la nube escalables de aaaBuilding | Documentos de Microsoft
-description: "Compilar aplicaciones de base de datos escalables de .NET con la biblioteca de cliente de base de datos elástica Hola"
+title: "Creación de bases de datos escalables en la nube | Microsoft Docs"
+description: "Crear aplicaciones de bases de datos de .NET escalables con la Biblioteca de cliente de Base de datos elástica"
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -15,22 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: ddove
-ms.openlocfilehash: ca34eff2078c0700dee1bc587f264bbfca979eb6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0128b333f04847ab646dcb0759fcef5f7e86ffd9
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="building-scalable-cloud-databases"></a>Creación de bases de datos escalables en la nube
-El escalado horizontal de bases de datos puede realizarse con facilidad mediante herramientas y características escalables de Base de datos SQL de Azure. En concreto, puede usar hello **biblioteca de cliente de base de datos elástica** toocreate y administrar las bases de datos de escala horizontal. Esta característica permite desarrollar fácilmente aplicaciones particionadas mediante cientos (o incluso miles) de bases de datos SQL de Azure. [Trabajos elásticos](sql-database-elastic-jobs-powershell.md) , a continuación, puede ser usado toohelp facilitar la administración de las bases de datos.
+El escalado horizontal de bases de datos puede realizarse con facilidad mediante herramientas y características escalables de Base de datos SQL de Azure. En concreto, puede usar la **Biblioteca de cliente de Base de datos elástica** para crear y administrar bases de datos de escalado horizontal. Esta característica permite desarrollar fácilmente aplicaciones particionadas mediante cientos (o incluso miles) de bases de datos SQL de Azure. [trabajos elásticos](sql-database-elastic-jobs-powershell.md) para ayudar a facilitar la administración de estas bases de datos.
 
-biblioteca de hello tooinstall, vaya demasiado[Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/). 
+Para instalar la biblioteca, vaya a [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/). 
 
 ## <a name="documentation"></a>Documentación
 1. [Introducción a las herramientas de base de datos elástica](sql-database-elastic-scale-get-started.md)
 2. [Características de Base de datos elástica](sql-database-elastic-scale-introduction.md)
 3. [Administración de mapas de particiones.](sql-database-elastic-scale-shard-map-management.md)
-4. [Migrar tooscale-fuera de las bases de datos existente](sql-database-elastic-convert-to-use-elastic-tools.md)
+4. [Migrate existing databases to scale-out (Migrar bases de datos existentes de escalado horizontal)](sql-database-elastic-convert-to-use-elastic-tools.md)
 5. [Enrutamiento dependiente de los datos](sql-database-elastic-scale-data-dependent-routing.md)
 6. [Consultas en varias particiones](sql-database-elastic-scale-multishard-querying.md)
 7. [Incorporación de una partición con herramientas de bases de datos elásticas](sql-database-elastic-scale-add-a-shard.md)
@@ -45,27 +45,27 @@ biblioteca de hello tooinstall, vaya demasiado[Microsoft.Azure.SqlDatabase.Elast
 16. [Preguntas frecuentes de herramientas de Base de datos elástica](sql-database-elastic-scale-faq.md)
 
 ## <a name="client-capabilities"></a>Capacidades de cliente
-Las aplicaciones que usan el escalado *particionamiento* presenta desafíos para desarrolladores de hello así como administrador de Hola. biblioteca de cliente de Hello simplifica las tareas de administración de hello proporcionándoles herramientas que permiten tanto a los desarrolladores y los administradores administrar las bases de datos de escala horizontal. En un ejemplo típico, hay muchas bases de datos, conocidos como "particiones", toomanage. Los clientes están colocados en Hola la misma base de datos, y no hay una base de datos por cliente (un esquema único inquilino). biblioteca de cliente de Hello incluye estas características:
+El escalado horizontal de aplicaciones mediante *particionamiento* presenta desafíos tanto para el desarrollador como para el administrador. La biblioteca de cliente simplifica las tareas de administración mediante herramientas que permiten a los desarrolladores y administradores administrar bases de datos de escalado horizontal. En un ejemplo típico, hay muchas bases de datos, conocidas como "particiones", que administrar. Los clientes se colocan en la misma base de datos, habiendo una por cliente (un esquema de inquilino único). La biblioteca de cliente incluye estas características:
 
-- **Administración de mapa de particiones**: se crea una base de datos especial denominada Hola "shard map manager". Administración de mapa de particiones es la capacidad de Hola de metadatos de toomanage de una aplicación acerca de sus particiones. Los programadores pueden usar las bases de datos de este tooregister de funcionalidad como particiones, describen las asignaciones de las claves de particionamiento individuales o bases de datos de intervalos de clave toothose y mantener estos metadatos como número de Hola y composición de las bases de datos evoluciona tooreflect cambios en la capacidad. Sin la biblioteca de cliente de base de datos elástica hello, deberá toospend mucho tiempo escribir código de administración de hello al implementar el particionamiento. Para obtener más información, consulte [Administración de mapas de particiones](sql-database-elastic-scale-shard-map-management.md).
+- **Administración de Shard Map Manager**: se crea una base de datos especial llamada "Shard Map Manager". La administración de mapas de particiones es la capacidad que tiene una aplicación de administrar metadatos sobre sus particiones. Los desarrolladores pueden usar esta funcionalidad para registrar bases de datos como particiones, describir las asignaciones de claves de particionamiento individuales o intervalos de claves para esas bases de datos y mantener estos metadatos a medida que la cantidad y la composición de bases de datos evoluciona para reflejar los cambios en la capacidad. Sin la biblioteca de cliente de bases de datos flexible, necesitará dedicar mucho tiempo a escribir el código de administración al implementar el particionamiento. Para obtener más información, consulte [Administración de mapas de particiones](sql-database-elastic-scale-shard-map-management.md).
 
-- **Enrutamiento dependiente de datos**: Imagine una solicitud que entran en la aplicación hello. Según el valor de clave de particionamiento de saludo de solicitud de hello, aplicación hello debe toodetermine Hola correcto de base de datos se basa en el valor de clave de Hola. A continuación, abre una solicitud de conexión toohello base de datos tooprocess Hola. Enrutamiento dependiente de datos permite hello tooopen conexiones con una sola llamada fácil en mapa de particiones de Hola de aplicación hello. Enrutamiento dependiente de datos era otra área del código de infraestructura que ahora está cubierto por las funciones de biblioteca de cliente de base de datos elástica Hola. Para obtener más información, consulte [Enrutamiento dependiente de los datos](sql-database-elastic-scale-data-dependent-routing.md).
-- **Consultas a través de particiones múltiples (MSQ)**: las consultas a través de particiones múltiples cuando una solicitud implica varias particiones (o todas). Una consulta de varias particiones ejecuta Hola mismo código de T-SQL en todas las particiones o un conjunto de particiones. resultados de Hola de hello participa particiones se combinan en un conjunto utilizando la semántica de UNION ALL de resultados general. funcionalidad tal como se expone a través de la biblioteca de cliente de Hola Hola controla diversas tareas, incluidas: administración de conexiones, administración de subprocesos, control de errores y procesar los resultados intermedios. Puede consultar MSQ seguridad toohundreds de particiones. Para obtener más información, consulte [Consultas a través de particiones múltiples](sql-database-elastic-scale-multishard-querying.md).
+- **Enrutamiento dependiente de los datos**: imagine que la aplicación recibe una solicitud. Según el valor de clave de particionamiento de la solicitud, la aplicación necesita determinar la base de datos correcta basada en el valor de clave. A continuación, abre una conexión a la base de datos para procesar la solicitud. El enrutamiento dependiente de los datos proporciona la capacidad de abrir conexiones con una sola llamada simple al mapa de particiones de la aplicación. El enrutamiento dependiente de los datos era otra área del código de infraestructura que ahora está cubierta por la funcionalidad de la biblioteca de cliente de bases de datos elásticas. Para obtener más información, consulte [Enrutamiento dependiente de los datos](sql-database-elastic-scale-data-dependent-routing.md).
+- **Consultas a través de particiones múltiples (MSQ)**: las consultas a través de particiones múltiples cuando una solicitud implica varias particiones (o todas). Una consulta a través de particiones múltiples ejecuta el mismo código T-SQL en todas las particiones o en un conjunto de particiones. Los resultados de las particiones implicadas se combinan en un conjunto de resultados global usando la semántica UNION ALL. La funcionalidad que se expone a través de la biblioteca de cliente gestiona muchas tareas, como: administración de conexiones, administración de subprocesos, gestión de errores y procesamiento de resultados intermedios. MSQ puede consultar hasta cientos de particiones. Para obtener más información, consulte [Consultas a través de particiones múltiples](sql-database-elastic-scale-multishard-querying.md).
 
-En general, los clientes que usan herramientas de base de datos elástica pueden esperar tooget toda la funcionalidad de T-SQL al enviar las operaciones de partición local como operaciones de lugar toocross particiones que tienen su propia semántica.
+En general, los clientes que usan las herramientas de bases de datos elásticas pueden esperar obtener toda la funcionalidad de T-SQL al enviar las operaciones de partición local en lugar de las operaciones entre particiones que tienen su propia semántica.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Intente hello [aplicación de ejemplo](sql-database-elastic-scale-get-started.md) que muestra las funciones de cliente de Hola. 
+Pruebe la [aplicación de ejemplo](sql-database-elastic-scale-get-started.md) que muestra las funciones de cliente. 
 
-biblioteca de hello tooinstall, vaya demasiado[biblioteca de cliente de base de datos elástica](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
+Para instalar la biblioteca, vaya a la [biblioteca de cliente de Base de datos elástica](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
 
-Para obtener instrucciones sobre cómo utilizar la herramienta de combinación de la división de hello, vea hello [Introducción a la herramienta Dividir-combinar](sql-database-elastic-scale-overview-split-and-merge.md).
+Para obtener instrucciones sobre cómo usar la herramienta de división y combinación, consulte la [información general de la herramienta de división y combinación](sql-database-elastic-scale-overview-split-and-merge.md).
 
 [La biblioteca de cliente de bases de datos elásticas tiene ahora código abierto.](https://azure.microsoft.com/blog/elastic-database-client-library-is-now-open-sourced/)
 
 Use [consultas elásticas](sql-database-elastic-query-overview.md).
 
-Hello biblioteca está disponible como software de código abierto en [GitHub](https://github.com/Azure/elastic-db-tools). 
+La biblioteca está disponible como software de código abierto en [GitHub](https://github.com/Azure/elastic-db-tools). 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

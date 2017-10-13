@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con Workday | Microsoft Docs"
-description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y los días laborables."
+description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y Workday."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,112 +13,112 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: aaa41e372e45f464c4540a70fc79c98dbc06d6b4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 164d5c644f120fa86e2b690649241892764b64b7
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>Tutorial: Integración de Azure Active Directory con Workday
 
-En este tutorial, aprenderá cómo toointegrate Workday con Azure Active Directory (Azure AD).
+En este tutorial, obtendrá información sobre cómo integrar Workday con Azure Active Directory (Azure AD).
 
-Integración de Workday con Azure AD proporciona Hola siguientes ventajas:
+La integración de Workday con Azure AD proporciona las siguientes ventajas:
 
-- Puede controlar en Azure AD que tenga acceso tooWorkday
-- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooWorkday (Single Sign-On) con sus cuentas de Azure AD
-- Puede administrar las cuentas en una ubicación central: Hola portal de Azure
+- Puede controlar en Azure AD quién tiene acceso a Workday.
+- Puede permitir que los usuarios inicien sesión automáticamente en Workday (inicio de sesión único) con sus cuentas de Azure AD.
+- Puede administrar sus cuentas en una ubicación central: el nuevo Azure Portal.
 
-Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Si desea saber más sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-integración de Azure AD con Workday tooconfigure, necesita Hola siguientes elementos:
+Para configurar la integración de Azure AD con Workday, necesita los siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción habilitada para el inicio de sesión único en Workday
 
 > [!NOTE]
-> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
+> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
 
-pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
+Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
 
 - No use el entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
 
-1. Adición de jornada laboral de galería de Hola
+1. Incorporación de Workday desde la galería
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-workday-from-hello-gallery"></a>Adición de jornada laboral de galería de Hola
-integración de hello tooconfigure de jornada laboral en Azure AD, deberá tooadd Workday de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
+## <a name="adding-workday-from-the-gallery"></a>Incorporación de Workday desde la galería
+Para configurar la integración de Workday en Azure AD, hay que agregar Workday desde la galería a la lista de aplicaciones SaaS administradas.
 
-**tooadd Workday de galería de hello, lleve a cabo Hola pasos:**
+**Para agregar Workday desde la galería, realice los pasos siguientes:**
 
-1. Hola  **[portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
+1. En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
+2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
 
     ![Aplicaciones][2]
     
-3. tooadd nueva aplicación, haga clic en **nueva aplicación** botón en la parte superior de saludo del cuadro de diálogo.
+3. Para agregar una nueva aplicación, haga clic en el botón **Nueva aplicación** de la parte superior del cuadro de diálogo.
 
     ![Aplicaciones][3]
 
-4. En el cuadro de búsqueda de hello, escriba **Workday**.
+4. En el cuadro de búsqueda, escriba **Workday**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-workday-tutorial/tutorial_workday_search.png)
 
-5. En el panel de resultados de hello, seleccione **Workday**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.
+5. En el panel de resultados, seleccione **Workday** y, luego, haga clic en el botón **Agregar** para agregar la aplicación.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-workday-tutorial/tutorial_workday_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuración y comprobación del inicio de sesión único de Azure AD
 En esta sección, puede configurar y probar el inicio de sesión único de Azure AD con Workday con un usuario de prueba llamado "Britta Simon".
 
-Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en Workday es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en Workday debe toobe establecido.
+Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de Workday para un usuario de Azure AD. Es decir, hay que establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de Workday.
 
-Esta relación de vínculo se establece mediante la asignación de valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** en jornada laboral.
+Para establecer esta relación de vínculo, se asigna el valor del **nombre de usuario** en Azure AD como el valor del **nombre de usuario** en Workday.
 
-tooconfigure y prueba de inicio de sesión único en Azure AD con Workday, deberá hello toocomplete después de bloques de creación:
+Para configurar y probar el inicio de sesión único de Azure AD con Workday, hay que completar los siguientes bloques de creación:
 
-1. **[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.
-2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.
-3. **[Crear un usuario de prueba de jornada laboral](#creating-a-workday-test-user)**  -toohave un equivalente de Britta Simon en jornada laboral que es la representación toohello vinculado Azure AD del usuario.
-4. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.
-5. **[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.
+1. **[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.
+2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.
+3. **[Creación de un usuario de prueba de Workday](#creating-a-workday-test-user)**: para tener un homólogo de Britta Simon en Workday que esté vinculado a la representación del usuario en Azure AD.
+4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación de jornada laboral.
+En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y lo configurará en su aplicación Workday.
 
-**inicio de sesión único en tooconfigure Azure AD con Workday, siga Hola pasos:**
+**Para configurar el inicio de sesión único de Azure AD con Workday, realice los pasos siguientes:**
 
-1. En el portal de Azure, en Hola Hola **Workday** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
+1. En Azure Portal, en la página de integración de la aplicación **Workday**, haga clic en **Inicio de sesión único**.
 
     ![Configurar inicio de sesión único][4]
 
-2. En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.
+2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-workday-tutorial/tutorial_workday_samlbase.png)
 
-3. En hello **Workday dominio y las direcciones URL** sección, lleve a cabo Hola pasos:
+3. En la sección **Dominio y direcciones URL de Workday**, lleve a cabo los pasos siguientes:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-workday-tutorial/tutorial_workday_url.png)
 
-    a. Hola **dirección URL de inicio de sesión** cuadro de texto, valor de tipo hello como:`https://impl.workday.com/<tenant>/login-saml2.htmld`
+    a. En el cuadro de texto **URL de inicio de sesión**, escriba el valor como: `https://impl.workday.com/<tenant>/login-saml2.htmld`
 
-    b. Hola **dirección URL de respuesta** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://impl.workday.com/<tenant>/login-saml.htmld`
+    b. En el cuadro de texto **URL de respuesta**, escriba una dirección URL con el siguiente patrón: `https://impl.workday.com/<tenant>/login-saml.htmld`.
 
     > [!NOTE] 
-    > Estos valores no son Hola real. Actualizar estos valores con la URL de inicio de sesión real de Hola y la dirección URL de respuesta. La URL de respuesta debe tener un subdominio (por ejemplo, www, wd2, wd3, wd3-impl, wd5 y wd5-impl). Usar algo como "*http://www.myworkday.com*" funciona, pero "*http://myworkday.com*" no funciona. Póngase en contacto con [equipo de soporte técnico de Workday cliente](https://www.workday.com/en-us/partners-services/services/support.html) tooget estos valores. 
+    > Estos valores no son reales. Actualice estos valores con los valores reales de URL de respuesta y URL de inicio de sesión. La URL de respuesta debe tener un subdominio (por ejemplo, www, wd2, wd3, wd3-impl, wd5 y wd5-impl). Usar algo como "*http://www.myworkday.com*" funciona, pero "*http://myworkday.com*" no funciona. Póngase en contacto con el [equipo de soporte técnico de Workday](https://www.workday.com/en-us/partners-services/services/support.html) para obtener estos valores. 
  
 
-4. En hello **el certificado de firma de SAML** sección, haga clic en **certificado (Base64)** y, a continuación, guarde el archivo de certificado de hello en el equipo.
+4. En la sección **Certificado de firma de SAML**, haga clic en **Certificado (Base64)** y, luego, guarde el archivo de certificado en el equipo.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-workday-tutorial/tutorial_workday_certificate.png) 
 
@@ -126,42 +126,42 @@ En esta sección, habilitar inicio de sesión único en Azure AD en hello portal
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-workday-tutorial/tutorial_general_400.png)
 
-6. En hello **configuración de Workday** sección, haga clic en **configurar Workday** tooopen **configurar inicio de sesión** ventana. Hola copia **dirección URL de cierre de sesión, Id. de entidad de SAML y SAML Single Sign-On dirección URL del servicio** de hello **sección de referencia rápida.**
+6. En la sección **Configuración de Workday**, haga clic en **Configurar Workday** para abrir la ventana **Configurar inicio de sesión**. Copie la **URL del servicio de inicio de sesión único de SAML, el identificador de entidad de SAML y la dirección URL de cierre de sesión** de la sección **Referencia rápida**.
 
-    ![Configuración del inicio de sesión único](./media/active-directory-saas-workday-tutorial/tutorial_workday_configure.png) 
+    ![Configurar inicio de sesión único](./media/active-directory-saas-workday-tutorial/tutorial_workday_configure.png) 
 <CS>
-7. En una ventana del explorador web diferente, inicie sesión en el sitio de la compañía Workday tooyour como administrador.
+7. En otra ventana del explorador web, inicie sesión en el sitio de la compañía de Workday como administrador.
 
-8. Vaya demasiado**menú \> Workbench**.
+8. Vaya a **Menú \> Workbench**.
    
     ![Workbench](./media/active-directory-saas-workday-tutorial/IC782923.png "Workbench")
 
-9. Vaya demasiado**administración de cuentas**.
+9. Vaya a **Administración de cuentas**.
    
     ![Administración de cuentas](./media/active-directory-saas-workday-tutorial/IC782924.png "Administración de cuentas")
 
-10. Vaya demasiado**Editar configuración de inquilino – seguridad**.
+10. Vaya a **Editar configuración de inquilino: Seguridad**.
    
     ![Edición de seguridad del inquilino](./media/active-directory-saas-workday-tutorial/IC782925.png "Edición de seguridad del inquilino")
 
-11. Hola **direcciones URL de redirección** sección, lleve a cabo Hola pasos:
+11. En la sección **URL de redireccionamiento** , siga estos pasos:
    
     ![Direcciones URL de redirección](./media/active-directory-saas-workday-tutorial/IC7829581.png "Direcciones URL de redirección")
    
     a. Haga clic en **Add Row**(Agregar fila).
    
-    b. Hola **dirección URL de redireccionamiento de inicio de sesión** cuadro de texto hello y **dirección URL de redireccionamiento de Mobile** cuadro de texto, hello tipo **dirección URL de inicio de sesión** que ha escrito en hello **Workday dominio y Las direcciones URL** sección de hello portal de Azure.
+    b. En los cuadros de texto **Dirección URL de redireccionamiento de inicio de sesión** y **URL de redireccionamiento móvil**, escriba la **dirección URL de inicio de sesión** que ha especificado en la sección **Dominio y direcciones URL de Workday** de Azure Portal.
    
-    c. En el portal de Azure, en Hola Hola **configurar inicio de sesión** ventana, Hola copia **dirección URL de cierre de sesión**y, a continuación, péguelo en hello **dirección URL de redireccionamiento de cierre de sesión** cuadro de texto.
+    c. En la ventana **Configurar inicio de sesión único** de Azure Portal, copie la **dirección URL de cierre de sesión único** y péguela en el cuadro de texto **Logout Redirect URL** (URL de redireccionamiento de cierre de sesión).
    
-    d.  En **entorno** cuadro de texto, el nombre del entorno de tipo hello.  
+    d.  En el cuadro de texto **Entorno** , escriba el nombre del entorno.  
 
     >[!NOTE]
-    > Hello valor del atributo de entorno Hola está ligado toohello valor de dirección URL del inquilino hello:  
-    >-Si nombre de dominio de Hola de URL de inquilino de Workday Hola comienza con impl por ejemplo: *https://impl.workday.com/\<inquilino\>/login-saml2.htmld*), hello **entorno** debe establecer el atributo tooImplementation.  
-    >-Si el nombre de dominio de hello empieza por algo más, necesita toocontact [equipo de soporte técnico de Workday cliente](https://www.workday.com/en-us/partners-services/services/support.html) tooget Hola coincidencia **entorno** valor.
+    > El valor del atributo Entorno está vinculado con el valor de la URL del inquilino:  
+    >Si el nombre de dominio de la URL de inquilino de Workday empieza por impl (por ejemplo, *https://impl.workday.com/\<inquilino\>/login-saml2.htmld*), el atributo **Entorno** tiene que establecerse en Implementación.  
+    >Si el nombre de dominio empieza por otra cosa, deberá ponerse en contacto con el [equipo de soporte técnico de Workday](https://www.workday.com/en-us/partners-services/services/support.html) para obtener el valor de **Entorno** coincidente.
 
-12. Hola **configuración de SAML** sección, lleve a cabo Hola pasos:
+12. En la sección **Configuración de SAML** , realice los pasos siguientes:
    
     ![Configuración de SAML](./media/active-directory-saas-workday-tutorial/IC782926.png "Configuración de SAML")
    
@@ -169,17 +169,17 @@ En esta sección, habilitar inicio de sesión único en Azure AD en hello portal
    
     b.  Haga clic en **Add Row**(Agregar fila).
 
-13. Hola sección proveedores de identidades SAML, siga Hola siguiendo los pasos:
+13. En la sección Proveedores de identidades SAML, realice los pasos siguientes:
    
     ![Proveedores de identidades SAML](./media/active-directory-saas-workday-tutorial/IC7829271.png "Proveedores de identidades SAML")
    
-    a. En el cuadro de texto de nombre de proveedor de identidad de hello, escriba un nombre de proveedor (por ejemplo: *SPInitiatedSSO*).
+    a. En el cuadro de texto Nombre del proveedor de identidad, escriba un nombre de proveedor (por ejemplo, *SPInitiatedSSO*).
    
-    b. En el portal de Azure, en Hola Hola **configurar inicio de sesión** ventana, Hola copia **Id. de entidad SAML** valor y, a continuación, péguelo en hello **emisor** cuadro de texto.
+    b. En la ventana **Configurar inicio de sesión único** de Azure Portal, copie el valor de **SAML Entity ID** (Identificador de entidad de SAML) y, luego, péguelo en el cuadro de texto **Emisor**.
    
     c. Seleccione **Enable Workday Initiated Logout** (Habilitar el cierre de sesión iniciado de Workday).
    
-    d. En el portal de Azure, en Hola Hola **configurar inicio de sesión** ventana, Hola copia **dirección URL de cierre de sesión** valor y, a continuación, péguelo en hello **URL de solicitud de cierre de sesión** cuadro de texto.
+    d. En la ventana **Configurar inicio de sesión único** de Azure Portal, copie el valor de **Dirección URL de cierre de sesión** y péguela en el cuadro de texto **Logout Request URL** (URL de solicitud de cierre de sesión).
 
     e. Haga clic en **Identity Provider Public Key Certificate** (Certificado de clave pública de proveedor de identidades) y, después, en **Crear**. 
 
@@ -190,38 +190,38 @@ En esta sección, habilitar inicio de sesión único en Azure AD en hello portal
     ![Crear](./media/active-directory-saas-workday-tutorial/IC782929.png "Crear")
 
 
-14. Hola **x509 ver clave pública** sección, lleve a cabo Hola pasos: 
+14. En la sección **View x509 Public Key** (Ver clave pública x509), siga estos pasos: 
    
     ![Visualización de clave pública x509](./media/active-directory-saas-workday-tutorial/IC782930.png "Visualización de clave pública x509") 
    
-    a. Hola **nombre** cuadro de texto, escriba un nombre para el certificado (por ejemplo: *PPE\_SP*).
+    a. En el cuadro de texto **Nombre**, escriba el nombre del certificado (por ejemplo, *PPE\_SP*).
    
-    b. Hola **válido desde** cuadro de texto, hello de tipo válido de valor de atributo de su certificado.
+    b. En el cuadro de texto **Válido desde** , escriba el valor del atributo Válido desde del certificado.
    
-    c.  Hola **válido hasta** cuadro de texto, valor de tipo hello tooattribute válida de su certificado.
+    c.  En el cuadro de texto **Válido hasta** , escriba el valor del atributo Válido hasta del certificado.
    
     > [!NOTE]
-    > Puede obtener Hola válido de fecha y Hola toodate válida de hello Descargar certificado haciendo doble clic en él.  aparecen las fechas de Hello en hello **detalles** ficha.
+    > Puede obtener la fecha válido desde y la fecha válido hasta del certificado descargado haciendo doble clic en él.  Las fechas se muestran bajo la pestaña **Detalles** .
     > 
     >
    
-    d.  Abra el certificado codificado en base 64 en el Bloc de notas y, a continuación, Hola copia contenido del mismo.
+    d.  Abra el certificado codificado en base 64 en el Bloc de notas y luego copie el contenido del mismo.
    
-    e.  Hola **certificado** cuadro de texto, contenido de hello Pegar del Portapapeles.
+    e.  En el cuadro de texto **Certificado** , pegue el contenido del portapapeles.
    
     f.  Haga clic en **Aceptar**.
 
-15. Lleve a cabo Hola pasos: 
+15. Lleve a cabo los siguiente pasos: 
    
     ![Configuración de SSO](./media/active-directory-saas-workday-tutorial/WorkdaySSOConfiguratio.png "Configuración de SSO")
    
-    a.  Habilitar hello **x509 par de claves privada**.
+    a.  Habilite el **par de claves privadas x509**.
    
-    b.  Hola **Id. de proveedor de servicio** cuadro de texto, tipo **http://www.workday.com**.
+    b.  En el cuadro de texto **Id. de proveedor de servicios**, escriba **http://www.workday.com**.
    
     c.  Seleccione **Habilitar autenticación SAML iniciada por el proveedor de servicios**.
    
-    d.  En el portal de Azure, en Hola Hola **configurar inicio de sesión** ventana, Hola copia **SAML Single Sign-On dirección URL del servicio** valor y, a continuación, péguelo en hello **dirección URL de servicio de SSO IdP** cuadro de texto.
+    d.  En la ventana **Configurar inicio de sesión único** de Azure Portal, copie el valor de **SAML Single Sign-On Service URL** (Dirección URL del servicio de inicio de sesión único de SAML) y péguelo en el cuadro de texto **IdP SSO Service URL** (URL de servicio SSO de IdP).
    
     e. Seleccione **No desinflar la solicitud de autenticación iniciada por el SP**.
    
@@ -235,62 +235,62 @@ En esta sección, habilitar inicio de sesión único en Azure AD en hello portal
 <CE>
 
 > [!TIP]
-> Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!  Después de agregar esta aplicación de hello **Active Directory > aplicaciones empresariales** sección, simplemente haga clic en hello **Single Sign-On** Hola de pestaña y acceso incrustado documentación a través de hello  **Configuración** sección final Hola. Puede leer más acerca de características de documentación de embedded Hola aquí: [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ahora puede leer una versión resumida de estas instrucciones dentro de [Azure Portal](https://portal.azure.com) mientras configura la aplicación.  Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada a través de la sección **Configuración** de la parte inferior. Puede leer más sobre la característica de documentación insertada aquí: [Vista previa: Administración de inicio de sesión único para aplicaciones empresariales en el nuevo Azure Portal]( https://go.microsoft.com/fwlink/?linkid=845985)
 >
 
 ### <a name="creating-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.
+El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".
 
 ![Creación de un usuario de Azure AD][100]
 
-**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
+**Siga estos pasos para crear un usuario de prueba en Azure AD:**
 
-1. Hola **portal de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.
+1. En el panel de navegación izquierdo de **Azure Portal**, haga clic en el icono de **Azure Active Directory**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-workday-tutorial/create_aaduser_01.png) 
 
-2. lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios**.
+2. Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios**.
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-workday-tutorial/create_aaduser_02.png) 
 
-3. Hola tooopen **usuario** cuadro de diálogo, haga clic en **agregar** en la parte superior de saludo del cuadro de diálogo de Hola.
+3. Para abrir el cuadro de diálogo **Usuario**, haga clic en **Agregar** en la parte superior del cuadro de diálogo.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-workday-tutorial/create_aaduser_03.png) 
 
-4. En hello **usuario** cuadro de diálogo, siga los pasos de hello:
+4. En la página de diálogo **Usuario**, realice los siguientes pasos:
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-workday-tutorial/create_aaduser_04.png) 
 
-    a. Hola **nombre** cuadro de texto, tipo **BrittaSimon**.
+    a. En el cuadro de texto **Nombre**, escriba **BrittaSimon**.
 
-    b. Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.
+    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
 
-    c. Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.
+    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
 
     d. Haga clic en **Crear**.
  
 ### <a name="creating-a-workday-test-user"></a>Creación de un usuario de prueba de Workday
 
-tooget un usuario de prueba aprovisionado en Workday, deberá hello toocontact [equipo de soporte técnico de Workday cliente](https://www.workday.com/en-us/partners-services/services/support.html).
-Hola [equipo de soporte técnico de Workday cliente](https://www.workday.com/en-us/partners-services/services/support.html) crea usuario Hola para usted.
+Para obtener un usuario de prueba aprovisionado en Workday, deberá ponerse en contacto con el [equipo de soporte técnico de Workday](https://www.workday.com/en-us/partners-services/services/support.html).
+El [equipo de soporte técnico de Workday](https://www.workday.com/en-us/partners-services/services/support.html) creará el usuario.
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Asignación de usuario de prueba de hello Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
 
-En esta sección, se habilita Britta Simon toouse un inicio de sesión único Azure concediendo acceso tooWorkday.
+En esta sección, habilitará a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a Workday.
 
 ![Asignar usuario][200] 
 
-**tooassign Britta Simon tooWorkday, lleve a cabo Hola pasos:**
+**Para asignar Britta Simon a Workday, realice los pasos siguientes:**
 
-1. Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
+1. En Azure Portal, abra la vista de aplicaciones, vaya a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego, haga clic en **Todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones de hello, seleccione **Workday**.
+2. En la lista de aplicaciones, seleccione **Workday**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-workday-tutorial/tutorial_workday_app.png) 
 
-3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
+3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
 
     ![Asignar usuario][202] 
 
@@ -298,7 +298,7 @@ En esta sección, se habilita Britta Simon toouse un inicio de sesión único Az
 
     ![Asignar usuario][203]
 
-5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
+5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -306,11 +306,11 @@ En esta sección, se habilita Britta Simon toouse un inicio de sesión único Az
     
 ### <a name="testing-single-sign-on"></a>Prueba del inicio de sesión único 
 
-Si desea tootest las opciones de inicio de sesión único, abra Hola Panel de acceso. Para obtener más información acerca de hello Panel de acceso, consulte [Introducción toohello Panel de acceso](active-directory-saas-access-panel-introduction.md).
+Si desea probar la configuración de inicio de sesión único, abra el Panel de acceso. Para más información sobre el Panel de acceso, consulte [Introducción al Panel de acceso](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 * [Configuración del aprovisionamiento de usuarios](active-directory-saas-workday-inbound-tutorial.md)
 

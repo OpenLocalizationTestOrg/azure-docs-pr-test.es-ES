@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure documentación de automatización - tutoriales, referencia de API | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo tooautomate procesos de toouse automatización y administración de configuración en orden toosave tiempo y aumenten la confiabilidad de las tareas administrativas normales."
+title: "Documentación sobre Azure Automation: tutoriales y referencia de API | Microsoft Docs"
+description: "Aprenda a usar Automation para automatizar los procesos y la administración de configuración con el fin de ahorrar tiempo y aumentar la confiabilidad de las tareas administrativas normales."
 services: automation
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: eda979bac2434d9b4a91a4e661f5b46a6540a1d2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ed25b6abaacbdd44b718a1a5febce5a02dacc334
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="automation-documentation"></a>Documentación de Automation
 
-Obtenga información acerca de cómo aumentar y toouse automatización toosave tiempo Hola confiabilidad de tareas administrativas normales que se realizan en un entorno de nube. Tutoriales, referencias de API y otra documentación mostrarán cómo tooautomate procesa el uso de runbooks o automatizar la administración de configuración mediante la configuración de estado deseado.
+Aprenda a usar Automation para ahorrar tiempo y aumentar la confiabilidad de las tareas administrativas normales que se realizan en un entorno de nube. En los tutoriales, las referencias de API y otra documentación, se muestra cómo automatizar procesos mediante Runbooks o cómo automatizar la administración de configuración mediante Configuración de estado deseado.
 
 <ul class="panelContent cardsFTitle">
     <li>

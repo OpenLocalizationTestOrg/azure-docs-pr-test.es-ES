@@ -2,7 +2,7 @@
 # Inicios rápidos
 ## [OpenShift: Plantilla de la comunidad](https://azure.microsoft.com/en-us/resources/templates/openshift-origin-rhel/)
 # Tutoriales
-## [Implementar máquinas virtuales tooAzure](/azure/virtual-machines/linux/openshift-get-started)
+## [Implementación en máquinas virtuales de Azure](/azure/virtual-machines/linux/openshift-get-started)
 # Recursos
 ## [Azure Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Plantilla de contenedor de OpenShift](https://github.com/Microsoft/openshift-container-platform)

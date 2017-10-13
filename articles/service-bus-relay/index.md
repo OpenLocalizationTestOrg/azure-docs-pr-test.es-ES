@@ -1,15 +1,26 @@
 ---
+title: "Documentación sobre Service Bus Relay"
+description: "Obtenga información acerca de cómo el servicio de retransmisión de Azure funciona en un entorno híbrido local y en la nube, junto con procedimientos, tutoriales, vídeos, referencias de API y mucho más."
+services: service-bus
+author: czeumault
+manager: carolz
 layout: LandingPage
-title: "aaaService documentación de retransmisión de Bus"
-description: "Obtenga información acerca de cómo funcionan las Hola servicio de retransmisión de Azure en una nube y locales entorno híbrido, junto con cómo, tutoriales, vídeos, referencias de API y mucho más."
-ms.openlocfilehash: c042c82c90fa03e91ee9c1b513e325d7e8d33c08
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.assetid: 
+ms.service: service-bus
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 03/14/2017
+ms.author: carolz
+ms.openlocfilehash: 9305e85ff075e8e7ee3e21315d28f63613ac01f4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
+---
 ---
 # <a name="service-bus-relay-documentation"></a>Documentación sobre Service Bus Relay
-Obtenga información acerca de cómo Azure retransmisión servicio facilita aplicaciones híbridas entre locales y entornos dentro de una empresa corporativa hello y red nube pública, en la nube sin necesidad de tooopen una conexión de servidor de seguridad o requerir cambios intrusivo tooa corporativa infraestructura de red.
+Aprenda cómo el servicio Azure Relay facilita las aplicaciones híbridas entre entornos locales y de nube en una red empresarial corporativa y en la nube pública, sin tener que abrir una conexión de firewall y sin que sea necesario realizar cambios molestos en una infraestructura de red corporativa.
 
 <ul class="panelContent cardsFTitle">
     <li>

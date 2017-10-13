@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate una máquina virtual con una dirección pública estática de IP - plantilla de Azure Resource Manager | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toocreate una máquina virtual con una dirección IP pública estática direccionan usando una plantilla de Azure Resource Manager."
+title: "Creación de una máquina virtual con una dirección IP pública estática (plantilla de Azure Resource Manager) | Microsoft Docs"
+description: "Obtenga información sobre cómo crear una máquina virtual con una dirección IP pública estática mediante una plantilla de Azure Resource Manager."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a8640ed4fad06b0e09820e6114fd6789db73847
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2f503aa60fdd9b7cf66ef482a1041e34c88e5c01
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-a-vm-with-a-static-public-ip-address-using-an-azure-resource-manager-template"></a>Creación de una máquina virtual con una dirección IP pública estática mediante una plantilla de Azure Resource Manager
 
@@ -34,14 +34,14 @@ ms.lasthandoff: 10/06/2017
 [!INCLUDE [virtual-network-deploy-static-pip-intro-include.md](../../includes/virtual-network-deploy-static-pip-intro-include.md)]
 
 > [!NOTE]
-> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../resource-manager-deployment-model.md). Este artículo incluye el uso de modelo de implementación de administrador de recursos de hello, que Microsoft recomienda para la mayoría de las nueva implementaciones en lugar del modelo de implementación clásica de Hola.
+> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../resource-manager-deployment-model.md). En este artículo se describe el uso del modelo de implementación de Resource Manager, recomendado por Microsoft para la mayoría de las nuevas implementaciones en lugar del modelo de implementación clásica.
 
 [!INCLUDE [virtual-network-deploy-static-pip-scenario-include.md](../../includes/virtual-network-deploy-static-pip-scenario-include.md)]
 
 ## <a name="public-ip-address-resources-in-a-template-file"></a>Recursos de dirección IP pública en un archivo de plantilla
-Puede ver y descargar hello [plantilla de ejemplo](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.json).
+Puede ver y descargar la [plantilla de ejemplo](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.json).
 
-Hello siguiente sección muestra hello definición de recurso IP público hello, basado en el escenario de hello anterior:
+En la sección siguiente se muestra la definición del recurso de dirección IP pública, basada en el escenario anterior:
 
 ```json
 {
@@ -58,9 +58,9 @@ Hello siguiente sección muestra hello definición de recurso IP público hello,
 },
 ```
 
-Hola aviso **publicIPAllocationMethod** propiedad, que se establece demasiado*estático*. Esta propiedad puede ser *Dynamic* (valor predeterminado) o *Static*. Si se establece toostatic garantiza que nunca se cambiará la dirección IP pública Hola asignada.
+Observe la propiedad **publicIPAllocationMethod** , que se establece en *Static*. Esta propiedad puede ser *Dynamic* (valor predeterminado) o *Static*. Si se establece en estática, se garantiza que la dirección IP pública asignada no cambiará nunca.
 
-Hello siguiente sección muestra la asociación de Hola de dirección IP pública de hello con una interfaz de red:
+En la sección siguiente se muestra la asociación de la dirección IP pública con una interfaz de red:
 
 ```json
   {
@@ -95,9 +95,9 @@ Hello siguiente sección muestra la asociación de Hola de dirección IP públic
 },
 ```
 
-Hola aviso **publicIPAddress** propiedad que señala toohello **identificador** de un recurso denominado **variables('webVMSetting').pipName**. Que es el nombre de hello del recurso IP público Hola mostrado anteriormente.
+Observe la propiedad **publicIPAddress** que señala a **Id** de un recurso denominado **variables('webVMSetting').pipName**. Se trata del nombre del recurso de IP pública que se muestra arriba.
 
-Por último, interfaz de red de hello anterior se muestra en hello **networkProfile** propiedad de hello VM que se está creando.
+Por último, la interfaz de red anterior se muestra en la propiedad **networkProfile** de la máquina virtual que se va a crear.
 
 ```json
       "networkProfile": {
@@ -109,16 +109,16 @@ Por último, interfaz de red de hello anterior se muestra en hello **networkProf
       }
 ```
 
-## <a name="deploy-hello-template-by-using-click-toodeploy"></a>Implementar la plantilla de hello mediante haga clic en toodeploy
+## <a name="deploy-the-template-by-using-click-to-deploy"></a>Implementar la plantilla por medio de un solo clic para implementar
 
-plantilla de ejemplo Hola disponible en el repositorio público de hello usa un archivo de parámetros que contiene el escenario Hola predeterminada valores utilizados toogenerate Hola descrito anteriormente. toodeploy este uso de la plantilla, haga clic en toodeploy, haga clic en **implementar tooAzure** en archivo Readme.md Hola Hola [VM con PIP estático](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/03-Static-public-IP) plantilla. Reemplace los valores de parámetro predeterminados Hola si lo desea y especifique valores para parámetros de hello en blanco.  Siga las instrucciones de hello en hello portal toocreate una máquina virtual con una dirección IP pública estática.
+La plantilla de ejemplo disponible en el repositorio público usa un archivo de parámetros que contiene los valores predeterminados utilizados para generar el escenario descrito anteriormente. Para implementar esta plantilla haciendo clic para implementar, haga clic en **Implementar en Azure** en el archivo Readme.md para la plantilla [Máquina virtual con PIP estático](https://github.com/Azure/azure-quickstart-templates/tree/master/IaaS-Story/03-Static-public-IP) . Reemplace los valores de parámetro predeterminados si lo desea y escriba los valores para los parámetros en blanco.  Siga las instrucciones en el portal para crear una máquina virtual con una dirección IP pública estática.
 
-## <a name="deploy-hello-template-by-using-powershell"></a>Implementar la plantilla de hello mediante PowerShell
+## <a name="deploy-the-template-by-using-powershell"></a>Implementación de la plantilla mediante PowerShell
 
-plantilla de hello toodeploy que ha descargado con PowerShell, siga los pasos de Hola a continuación.
+Para implementar la plantilla que descargó con PowerShell, siga estos pasos.
 
-1. Si nunca ha usado PowerShell de Azure, Hola completa los pasos de hello [cómo tooInstall y configurar Azure PowerShell](/powershell/azure/overview) artículo.
-2. En una consola de PowerShell, ejecute hello `New-AzureRmResourceGroup` cmdlet toocreate un nuevo grupo de recursos, si es necesario. Si ya tiene un grupo de recursos creado, vaya toostep 3.
+1. Si nunca usó Azure PowerShell, complete los pasos del artículo [How to Install and Configure Azure PowerShell](/powershell/azure/overview) (Cómo instalar y configurar Azure PowerShell).
+2. En una consola de PowerShell, ejecute el cmdlet `New-AzureRmResourceGroup` para crear un nuevo grupo de recursos, si fuera necesario. Si ya tiene un grupo de recursos creado, vaya al paso 3.
 
     ```powershell
     New-AzureRmResourceGroup -Name PIPTEST -Location westus
@@ -132,7 +132,7 @@ plantilla de hello toodeploy que ha descargado con PowerShell, siga los pasos de
         Tags              :
         ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/StaticPublicIP
 
-3. En una consola de PowerShell, ejecute hello `New-AzureRmResourceGroupDeployment` plantilla de cmdlet toodeploy Hola.
+3. En una consola de PowerShell, ejecute el cmdlet `New-AzureRmResourceGroupDeployment` para implementar la plantilla.
 
     ```powershell
     New-AzureRmResourceGroupDeployment -Name DeployVM -ResourceGroupName PIPTEST `
@@ -167,22 +167,22 @@ plantilla de hello toodeploy que ha descargado con PowerShell, siga los pasos de
    
         Outputs           :
 
-## <a name="deploy-hello-template-by-using-hello-azure-cli"></a>Implementar la plantilla de hello mediante Hola CLI de Azure
-plantilla de hello toodeploy utilizando Hola CLI de Azure, Hola completa pasos:
+## <a name="deploy-the-template-by-using-the-azure-cli"></a>Implementación la plantilla ARM mediante la CLI de Azure
+Para implementar la plantilla mediante la CLI de Azure, complete los siguientes pasos:
 
-1. Si nunca ha utilizado la CLI de Azure, siga los pasos de Hola Hola [instalar y configurar hello Azure CLI](../cli-install-nodejs.md) artículo tooinstall y configurarlo.
-2. Ejecute hello `azure config mode` modo de administrador de tooResource de comandos tooswitch, tal y como se muestra a continuación.
+1. Si no ha usado nunca la CLI de Azure, siga los pasos del artículo [Instalación de la CLI de Azure](../cli-install-nodejs.md) para instalarla y configurarla.
+2. Ejecute el comando `azure config mode` para cambiar al modo Resource Manager, como se muestra a continuación.
 
     ```azurecli
     azure config mode arm
     ```
 
-    Hola espera salida de hello comando anterior:
+    Este es el resultado esperado del comando anterior:
 
         info:    New mode is arm
 
-3. Abra hello [archivo de parámetros](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.parameters.json), seleccione su contenido y guarde el archivo tooa en el equipo. En este ejemplo, los parámetros de Hola se guardan con el nombre de archivo de tooa *parameters.json*. Cambiar los valores de parámetro hello en el archivo de hello si lo desea, pero como mínimo, se recomienda que se cambia de valor de Hola de hello adminPassword parámetro tooa complejos contraseña única.
-4. Ejecute hello `azure group deployment create` cmd toodeploy Hola archivos de red virtual nueva mediante el uso de la plantilla de Hola y los parámetros que ha descargado y modificado anteriormente. En el siguiente comando de hello, reemplace <path> con ruta de acceso de Hola que guardó el archivo de Hola a. 
+3. Abra el [archivo de parámetros](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.parameters.json), seleccione su contenido y guárdelo en un archivo del equipo. En este ejemplo, los parámetros se guardan en un archivo denominado *parameters.json*. Cambie los valores de parámetro en el archivo si lo desea, pero como mínimo, se recomienda que cambie el valor para el parámetro adminPassword a una contraseña única y compleja.
+4. Ejecute el cmd `azure group deployment create` para implementar la nueva red virtual mediante la plantilla y los archivos de parámetros que descargó y modificó anteriormente. En el siguiente comando, reemplace <path> por la ruta de acceso en la que guardó el archivo. 
 
     ```azurecli
     azure group create -n PIPTEST2 -l westus --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/03-Static-public-IP/azuredeploy.json -e <path>\parameters.json

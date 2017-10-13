@@ -1,6 +1,6 @@
 ---
-title: aaaOperations Management Suite (OMS) SDK | Documentos de Microsoft
-description: "Este artículo enumeran documentación de Hola y otros recursos disponibles para tener acceso a servicios de OMS fuera Hola OMS y los portales de Azure.  Esto incluye la API de REST para el acceso desde varias interfaces de programación y los motores de scripting como PowerShell"
+title: SDK de Operations Management Suite (OMS) | Microsoft Docs
+description: "En este artículo se muestra la documentación y otros recursos disponibles para obtener acceso a servicios OMS fuera de los portales OMS y Azure.  Esto incluye la API de REST para el acceso desde varias interfaces de programación y los motores de scripting como PowerShell"
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/01/2017
 ms.author: bwren
-ms.openlocfilehash: 7144f10bba70a8f08cc97cec45b4b0a148892c90
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 03e0f5b6fa26806083cd7852e123495c898bcf0c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="operations-management-suite-oms-sdk"></a>SDK de Operations Management Suite (OMS)
-[Operations Management Suite (OMS)](operations-management-suite-overview.md) es la solución de administración de TI basada en la nube de Microsoft que le ayuda a administrar y proteger su infraestructura local y en la nube.  Este artículo enumeran documentación de Hola y otros recursos disponibles para tener acceso a servicios de OMS fuera Hola OMS y los portales de Azure.  Esto incluye la API de REST para el acceso desde varias interfaces de programación y los motores de scripting como PowerShell. 
+[Operations Management Suite (OMS)](operations-management-suite-overview.md) es la solución de administración de TI basada en la nube de Microsoft que le ayuda a administrar y proteger su infraestructura local y en la nube.  En este artículo se muestra la documentación y otros recursos disponibles para obtener acceso a servicios OMS fuera de los portales OMS y Azure.  Esto incluye la API de REST para el acceso desde varias interfaces de programación y los motores de scripting como PowerShell. 
 
 ## <a name="automation"></a>Automatización
 * [Documentación de Azure Automation](http://azure.microsoft.com/documentation/services/automation)
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/06/2017
 * [Documentación de Azure Backup](http://azure.microsoft.com/documentation/services/backup)
 * [Cmdlets de PowerShell de Backup](https://msdn.microsoft.com/library/mt619253.aspx)
 * [API de REST de Backup](https://msdn.microsoft.com/library/azure/mt772375.aspx)
-* [Implementar y administrar tooAzure copia de seguridad para el cliente de Windows del servidor de Windows con PowerShell](../backup/backup-client-automation.md)
+* [Implementar y administrar copias de seguridad en Azure para Windows Server o cliente de Windows mediante PowerShell](../backup/backup-client-automation.md)
 
 ## <a name="log-analytics"></a>Log Analytics
 * [Documentación sobre Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics)
@@ -51,10 +51,10 @@ ms.lasthandoff: 10/06/2017
 ## <a name="site-recovery"></a>Site Recovery
 * [Cmdlets de PowerShell de Site Recovery](https://msdn.microsoft.com/library/mt637930.aspx)
 * [API de REST de Site Recovery](https://msdn.microsoft.com/library/azure/mt750497.aspx)
-* [Agregar planes de toorecovery de runbooks de automatización de Azure](../site-recovery/site-recovery-runbook-automation.md)
+* [Adición de runbooks de Azure Automation a los planes de recuperación](../site-recovery/site-recovery-runbook-automation.md)
 * [Replicación entre máquinas virtuales de Hyper-V local y Azure con PowerShell y Azure Resource Manager](../site-recovery/site-recovery-deploy-with-powershell-resource-manager.md)
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Obtenga información sobre las distintas opciones de Hola para [integración con servicios de OMS](operations-management-suite-integration.md).
+* Obtenga información acerca de las diferentes opciones para [integración con servicios OMS](operations-management-suite-integration.md).
 * Cree una [solución personalizada en OMS](operations-management-suite-solutions-creating.md).
 

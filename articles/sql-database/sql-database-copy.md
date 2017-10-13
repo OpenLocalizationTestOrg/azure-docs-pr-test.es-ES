@@ -1,5 +1,5 @@
 ---
-title: aaaCopy una base de datos SQL de Azure | Documentos de Microsoft
+title: Copia de una base de datos SQL de Azure | Microsoft Docs
 description: "Creación de una copia de una base de datos SQL de Azure"
 services: sql-database
 documentationcenter: 
@@ -15,39 +15,39 @@ ms.author: carlrab
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.openlocfilehash: 64a297d819d6da89600fda60abe8394ae405abfe
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8c1e3c80b9f24089dc99463d6ea8ae5d0ea7b19d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-an-azure-sql-database"></a>Copiar una base de datos SQL de Azure
 
-La base de datos de SQL Azure proporciona varios métodos para crear una copia transaccionalmente coherente de SQL Azure existentes de base de datos en cualquier Hola mismo servidor o en otro servidor. Puede copiar una base de datos SQL mediante Hola portal de Azure, PowerShell o código T-SQL. 
+Azure SQL Database proporciona varios métodos para crear una copia transaccionalmente coherente de una instancia de Azure SQL Database existente en el mismo servidor o en un servidor diferente. Puede copiar una instancia de SQL Database mediante Azure Portal, PowerShell o T-SQL. 
 
 ## <a name="overview"></a>Información general
 
-Una copia de la base de datos es una instantánea de base de datos de origen de Hola a partir de la hora de Hola de solicitud de copia de Hola. Puede seleccionar Hola el mismo servidor o un servidor diferente, su nivel de rendimiento y de nivel de servicio o un nivel de rendimiento diferentes dentro de hello mismo nivel de servicio (edición). Una vez completada la copia de hello, se convierte en una base de datos totalmente funcional e independiente. En este momento, puede actualizar o degradar tooany edition. permisos, los usuarios e inicios de sesión de hello pueden administrarse de forma independiente.  
+Una copia de la base de datos es una instantánea de la base de datos de origen en el momento de la solicitud de copia. Puede seleccionar el mismo servidor o un servidor diferente, su nivel de servicio, el nivel de rendimiento o un nivel de rendimiento diferente dentro del mismo nivel de servicio (edición). Cuando se complete la copia, esta se convierte en una base de datos independiente y completamente funcional. Llegado a este punto, puede actualizar a cualquier edición o cambiar a una edición anterior. Los inicios de sesión, usuarios y permisos pueden administrarse de forma independiente.  
 
-## <a name="logins-in-hello-database-copy"></a>Inicios de sesión de copia de la base de datos de Hola
+## <a name="logins-in-the-database-copy"></a>Inicios de sesión en la copia de la base de datos
 
-Al copiar una base de datos toohello mismo servidor lógico, Hola mismos inicios de sesión se pueden usar en ambas bases de datos. seguridad de Hello principal que usar base de datos de toocopy Hola se convierte en propietario de la base de datos de hello en la nueva base de datos de Hola. Todos los usuarios de base de datos, sus permisos y su seguridad (SID) de los identificadores son copian toohello copia de base de datos.  
+Al copiar una base de datos en el mismo servidor lógico, los mismos inicios de sesión se pueden usar en ambas bases de datos. La entidad de seguridad que usa para copiar la base de datos se convierte en el propietario de la base de datos en la nueva base de datos. Todos los usuarios de base de datos, sus permisos y sus identificadores de seguridad (SID) se copian en la copia de la base de datos.  
 
-Al copiar un servidor lógica diferente de tooa de base de datos, seguridad Hola principal en el nuevo servidor de Hola se convierte en propietario de la base de datos de hello en la nueva base de datos de Hola. Si usa [usuarios de base de datos independiente](sql-database-manage-logins.md) para acceso a datos, asegúrese de que ambos Hola principal y bases de datos secundarias siempre tienen Hola mismas credenciales de usuario, por lo que complete una vez copia hello, inmediatamente pueden tener acceso a lo mismo Hola credenciales. 
+Al copiar una base de datos en un servidor lógico diferente, la entidad de seguridad del nuevo servidor se convierte en el propietario de la nueva base de datos. Si usa [usuarios de base de datos contenidos](sql-database-manage-logins.md) para el acceso a datos, asegúrese de que tanto las bases de datos principales como las secundarias tengan siempre las mismas credenciales de usuario, de tal forma que, una vez completada la copia, pueda obtener acceso inmediato a ellas con las mismas credenciales. 
 
-Si usa [Azure Active Directory](../active-directory/active-directory-whatis.md), puede eliminar completamente Hola necesario para administrar las credenciales de copia de Hola. Sin embargo, cuando copia tooa nuevo servidor de base de datos de hello, no funcionen un acceso de inicio de sesión de hello, dado que los inicios de sesión de hello no existe en el nuevo servidor de Hola. toolearn sobre cómo administrar inicios de sesión al copiar un base de datos tooa otro servidor lógico, consulte [cómo toomanage SQL Azure seguridad bases de datos después de la recuperación ante desastres](sql-database-geo-replication-security-config.md). 
+Si usa [Azure Active Directory](../active-directory/active-directory-whatis.md), puede eliminar completamente la necesidad de administrar las credenciales en la copia. Pero al copiar la base de datos a un nuevo servidor, puede que el acceso basado en inicios de sesión no funcione debido a que esas cuentas de inicio de sesión no se encuentran en el nuevo servidor. Consulte [Administración de la seguridad de Azure SQL Database después de la recuperación ante desastres](sql-database-geo-replication-security-config.md) para obtener información sobre cómo administrar inicios de sesión al copiar una base de datos a un servidor lógico diferente. 
 
-Después de hello copia se realiza correctamente y antes de que se reasignan a otros usuarios, solo hello inicio de sesión que inició Hola copiar, propietario de la base de datos de hello, puede iniciar sesión toohello nueva base de datos. vea los inicios de sesión de tooresolve una vez completada, la operación de copia de hello [resolver inicios de sesión](#resolve-logins).
+Cuando la copia se realiza correctamente y antes de que se reasignen otros usuarios, solo el inicio de sesión que inició la copia, el propietario de la base de datos, puede iniciar sesión en la nueva base de datos. Para resolver los inicios de sesión una vez completada la operación de copia, consulte [Resolución de inicios de sesión](#resolve-logins).
 
-## <a name="copy-a-database-by-using-hello-azure-portal"></a>Copiar una base de datos mediante el uso de hello portal de Azure
+## <a name="copy-a-database-by-using-the-azure-portal"></a>Copia de base de datos mediante Azure Portal
 
-toocopy una base de datos mediante el uso de Hola portal de Azure, página Hola abierto para la base de datos y, a continuación, haga clic en **copia**. 
+Para copiar una base de datos mediante Azure Portal, abra la página de la base de datos y haga clic en **Copiar**. 
 
    ![Copia de base de datos](./media/sql-database-copy/database-copy.png)
 
 ## <a name="copy-a-database-by-using-powershell"></a>Copia de base de datos mediante PowerShell
 
-una base de datos mediante el uso de PowerShell, use hello toocopy [AzureRmSqlDatabaseCopy New](/powershell/module/azurerm.sql/new-azurermsqldatabasecopy) cmdlet. 
+Para copiar una base de datos con PowerShell, use el cmdlet [New-AzureRmSqlDatabaseCopy](/powershell/module/azurerm.sql/new-azurermsqldatabasecopy). 
 
 ```PowerShell
 New-AzureRmSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
@@ -58,54 +58,54 @@ New-AzureRmSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
     -CopyDatabaseName "CopyOfMySampleDatabase"
 ```
 
-Para obtener un script de ejemplo completo, vea [copiar un nuevo servidor de base de datos tooa](scripts/sql-database-copy-database-to-new-server-powershell.md).
+Para obtener un script de ejemplo completo, consulte [Copia de una base de datos en un nuevo servidor](scripts/sql-database-copy-database-to-new-server-powershell.md).
 
 ## <a name="copy-a-database-by-using-transact-sql"></a>Copia de una base de datos mediante Transact-SQL
 
-Inicie sesión en master toohello base de datos con inicio de sesión principal del nivel de servidor de Hola o inicio de sesión de Hola que creó la base de datos de hello desea toocopy. Para copiar toosucceed la base de datos, inicios de sesión que no son de entidad de seguridad de nivel de servidor hello deben ser miembros del rol dbmanager de Hola. Para obtener más información acerca de los inicios de sesión y servidor toohello conexión, consulte [administrar inicios de sesión](sql-database-manage-logins.md).
+Inicie sesión en la base de datos maestra mediante el inicio de sesión de entidad de seguridad de nivel de servidor o el inicio de sesión que creó la base de datos que quiere copiar. Para que la copia de la base de datos sea correcta, los inicios de sesión que no son de la entidad de seguridad de nivel de servidor deben ser miembros del rol dbmanager. Para obtener más información sobre los inicios de sesión y conectarse al servidor, consulte [Administración de inicios de sesión](sql-database-manage-logins.md).
 
-Empezar a copiar la base de datos de origen de hello con hello [CREATE DATABASE](https://msdn.microsoft.com/library/ms176061.aspx) instrucción. Ejecutar esta instrucción inicia el proceso de copia de base de datos de Hola. Como la copia una base de datos es un proceso asincrónico, Hola instrucción CREATE DATABASE devuelve antes de copia de la base de datos de hello finalice.
+Inicie la copia de la base de datos de origen con la instrucción [CREATE DATABASE](https://msdn.microsoft.com/library/ms176061.aspx) . Con la ejecución de esta instrucción se inicia el proceso de copia de la base de datos. Dado que copiar una base de datos es un proceso asincrónico, se devuelve la instrucción CREATE DATABASE antes de que la base de datos complete la copia.
 
-### <a name="copy-a-sql-database-toohello-same-server"></a>Copiar un toohello de base de datos SQL server mismo
-Inicie sesión en master toohello base de datos con inicio de sesión principal del nivel de servidor de Hola o inicio de sesión de Hola que creó la base de datos de hello desea toocopy. Para copiar toosucceed la base de datos, inicios de sesión que no son de entidad de seguridad de nivel de servidor hello deben ser miembros del rol dbmanager de Hola.
+### <a name="copy-a-sql-database-to-the-same-server"></a>Copiar una base de datos SQL en el mismo servidor
+Inicie sesión en la base de datos maestra mediante el inicio de sesión de entidad de seguridad de nivel de servidor o el inicio de sesión que creó la base de datos que quiere copiar. Para que la copia de la base de datos sea correcta, los inicios de sesión que no son de la entidad de seguridad de nivel de servidor deben ser miembros del rol dbmanager.
 
-Este comando copia la base de datos de Database1 tooa nueva llamada Database2 Hola mismo servidor. Según el tamaño de saludo de la base de datos, Hola operación de copia puede tardar algunos toocomplete de tiempo.
+Este comando copia Base de datos1 en una base de datos nueva denominada Base de datos2 del mismo servidor. Según el tamaño de su base de datos, la operación de copia puede tardar algún tiempo en completarse.
 
-    -- Execute on hello master database.
+    -- Execute on the master database.
     -- Start copying.
     CREATE DATABASE Database1_copy AS COPY OF Database1;
 
-### <a name="copy-a-sql-database-tooa-different-server"></a>Copiar un servidor diferente de la tooa de base de datos SQL
+### <a name="copy-a-sql-database-to-a-different-server"></a>Copiar una base de datos SQL en un servidor diferente
 
-Inicie sesión en master toohello base de datos del servidor de destino de hello, servidor de base de datos SQL de Hola donde la nueva base de datos de hello es toobe creado. Utilice un inicio de sesión que ha Hola mismo nombre y contraseña como propietario de la base de datos de Hola de base de datos de origen de hello en el servidor de base de datos SQL de origen de Hola. inicio de sesión de Hello en el servidor de destino de hello también debe ser miembro del rol dbmanager de Hola o inicio de sesión de entidad de seguridad de nivel de servidor hello.
+Inicie sesión en la base de datos maestra del servidor de destino, el servidor de SQL Database donde se creará la nueva base de datos. Use un inicio de sesión que tenga el mismo nombre y contraseña que el propietario de la base de datos de la base de datos de origen en el servidor de SQL Database de origen. El inicio de sesión en el servidor de destino también debe ser miembro del rol dbmanager o ser el inicio de sesión de entidad de seguridad de nivel de servidor.
 
-Este comando copia Database1 en server1 tooa base de datos denominada Database2 en server2. Según el tamaño de saludo de la base de datos, Hola operación de copia puede tardar algunos toocomplete de tiempo.
+Este comando copia Base de datos1 del servidor1 en una nueva base de datos denominada Base de datos2 del servidor2. Según el tamaño de su base de datos, la operación de copia puede tardar algún tiempo en completarse.
 
-    -- Execute on hello master database of hello target server (server2)
-    -- Start copying from Server1 tooServer2
+    -- Execute on the master database of the target server (server2)
+    -- Start copying from Server1 to Server2
     CREATE DATABASE Database1_copy AS COPY OF server1.Database1;
 
 
-### <a name="monitor-hello-progress-of-hello-copying-operation"></a>Supervisar el progreso de Hola de hello operación de copia
+### <a name="monitor-the-progress-of-the-copying-operation"></a>Supervisión del progreso de la operación de copia
 
-Supervisar el proceso de copia de hello consultando las vistas sys.databases y sys.dm_database_copies Hola. Hola mientras Hola copia está en curso, **state_desc** columna de vista de sys.databases hello para la nueva base de datos de Hola se establece demasiado**COPYING**.
+Supervise el proceso de copia consultando las vistas sys.databases y sys.dm_database_copies. Mientras que la copia esté en curso, la columna **state_desc** de la vista sys.databases para la nueva base de datos se establece en **COPYING**.
 
-* Si se produce un error en la copia de hello, Hola **state_desc** columna de vista de sys.databases hello para la nueva base de datos de Hola se establece demasiado**SOSPECHA**. Ejecutar Hola instrucción DROP en la nueva base de datos de Hola y vuelva a intentarlo.
-* Si Hola copia se realiza correctamente, hello **state_desc** columna de vista de sys.databases hello para la nueva base de datos de Hola se establece demasiado**ONLINE**. Hola copia se ha completado y Hola nueva base de datos es normal que se puede cambiar independientemente de la base de datos de origen de Hola.
+* Si se produce un error en el proceso de copia, la columna **state_desc** de la vista sys.databases para la nueva base de datos se establece en **SUSPECT**. Ejecute la instrucción DROP en la nueva base de datos e inténtelo de nuevo más tarde.
+* Si el proceso de copia es correcto, la columna **state_desc** de la vista sys.databases para la nueva base de datos se establece en **ONLINE**. Se completa la copia y la nueva base de datos es una base de datos normal, que se puede modificar independientemente de la base de datos de origen.
 
 > [!NOTE]
-> Si decide toocancel Hola copia mientras está en curso, ejecute hello [DROP DATABASE](https://msdn.microsoft.com/library/ms178613.aspx) ejecutada en la base de datos nueva Hola. Como alternativa, ejecutar la instrucción DROP DATABASE de hello en la base de datos de origen de hello también cancela Hola proceso de copia.
+> Si decide cancelar la copia mientras está en curso, ejecute la instrucción [DROP DATABASE](https://msdn.microsoft.com/library/ms178613.aspx) en la nueva base de datos. Como alternativa, al ejecutar la instrucción DROP DATABASE en la base de datos de origen también se cancelará el proceso de copia.
 > 
 
 ## <a name="resolve-logins"></a>Resolución de inicios de sesión
 
-Una vez en línea en el servidor de destino de hello nueva base de datos de hello, utilice hello [ALTER USER](https://msdn.microsoft.com/library/ms176060.aspx) a los usuarios de instrucción tooremap Hola de hello toologins en el servidor de destino de hello nueva base de datos. los usuarios tooresolve huérfano, vea [solucionar problemas de usuarios huérfanos](https://msdn.microsoft.com/library/ms175475.aspx). Vea también [cómo toomanage SQL Azure seguridad bases de datos después de la recuperación ante desastres](sql-database-geo-replication-security-config.md).
+Después de que la nueva base de datos esté en línea en el servidor de destino, use la instrucción [ALTER USER](https://msdn.microsoft.com/library/ms176060.aspx) para volver a asignar los usuarios de la nueva base de datos a inicios de sesión en el servidor de destino. Para resolver los usuarios huérfanos, consulte [Solucionar problemas de usuarios huérfanos (SQL Server)](https://msdn.microsoft.com/library/ms175475.aspx). Consulte también [Administración de la seguridad de Base de datos SQL de Azure después de la recuperación ante desastres](sql-database-geo-replication-security-config.md).
 
-Todos los usuarios de base de datos nueva Hola conservan los permisos de Hola que tenían en la base de datos de origen de Hola. usuario de Hola que inició la copia de la base de datos de Hola se convierte en propietario de la base de datos de Hola de base de datos nueva de Hola y se asigna un nuevo identificador de seguridad (SID). Después de hello copia se realiza correctamente y antes de que se reasignan a otros usuarios, solo hello inicio de sesión que inició Hola copiar, propietario de la base de datos de hello, puede iniciar sesión toohello nueva base de datos.
+Todos los usuarios de la nueva base de datos mantienen los permisos que tenían en la base de datos de origen. El usuario que inició la copia de la base de datos se convierte en el propietario de la base de datos de la nueva base de datos y se le asigna un nuevo identificador de seguridad (SID). Cuando la copia se realiza correctamente y antes de que se reasignen otros usuarios, solo el inicio de sesión que inició la copia, el propietario de la base de datos, puede iniciar sesión en la nueva base de datos.
 
-toolearn sobre cómo administrar los usuarios e inicios de sesión al copiar un base de datos tooa otro servidor lógico, consulte [cómo toomanage SQL Azure seguridad bases de datos después de la recuperación ante desastres](sql-database-geo-replication-security-config.md).
+Para obtener información sobre cómo administrar usuarios e inicios de sesión al copiar una base de datos a un servidor lógico diferente, consulte [Administración de la seguridad de Azure SQL Database después de la recuperación ante desastres](sql-database-geo-replication-security-config.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* Para obtener información acerca de los inicios de sesión, vea [administrar inicios de sesión](sql-database-manage-logins.md) y [cómo toomanage SQL Azure seguridad bases de datos después de la recuperación ante desastres](sql-database-geo-replication-security-config.md).
-* tooexport una base de datos, vea [exportar base de datos de hello tooa BACPAC](sql-database-export.md).
+* Para más información sobre los inicios de sesión, consulte [Administración de inicios de sesión](sql-database-manage-logins.md) y [Administración de la seguridad de Azure SQL Database después de la recuperación ante desastres](sql-database-geo-replication-security-config.md).
+* Para exportar una base de datos, consulte [Exportación de una base de datos a un archivo BACPAC](sql-database-export.md).

@@ -1,6 +1,6 @@
 ---
-title: "códigos de error de codificación de servicios multimedia aaaAzure | Documentos de Microsoft"
-description: "Este tema enumeran los códigos de error que se pueden devolver en caso de que se detectó un error durante la ejecución de la tarea de codificación de Hola..."
+title: "Códigos de error de codificación de Azure Media Services | Microsoft Docs"
+description: "En este tema se indican los códigos de error que se podrían devolver en caso de que se encuentre un error durante la ejecución de la tarea de Encoding."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,30 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.openlocfilehash: b69b6abee797c40c9b8b8f23bf2398273c170e7f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f4fd2212d19f89148dde08c75c5a48cdd322d029
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="encoding-error-codes"></a>Códigos de error de Encoding
 
-Hello tabla siguiente enumeran los códigos de error que se pueden devolver en caso de que se detectó un error durante la ejecución de la tarea de codificación de Hola.  tooget detalles del error en el código. NET, use hello [ErrorDetails](http://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) clase. tooget detalles del error en el código REST, usar hello [ErrorDetail](https://msdn.microsoft.com/library/jj853026.aspx) API de REST.
+En la tabla siguiente se indican los códigos de error que se podrían devolver en caso de que se encuentre un error durante la ejecución de la tarea de codificación.  Para obtener detalles del error en el código .NET, use la clase [ErrorDetails](http://msdn.microsoft.com/library/microsoft.windowsazure.mediaservices.client.errordetail.aspx) . Para obtener detalles del error en el código REST, use la API de REST [ErrorDetail](https://msdn.microsoft.com/library/jj853026.aspx) .
 
 | ErrorDetail.Code | Posibles causas de error |
 | --- | --- |
-| Desconocido |Error desconocido al ejecutar la tarea hello |
+| Desconocido |Error desconocido al ejecutar la tarea |
 | ErrorDownloadingInputAssetMalformedContent |Categoría de errores en la que se incluyen errores en la descarga de recursos de entrada, como nombres de archivo no válidos, archivos de longitud cero, formatos incorrectos, etc. |
-| ErrorDownloadingInputAssetServiceFailure |Categoría de errores que se trata problemas en lado de servicio de hello - errores de red o almacenamiento de ejemplo mientras se descargaba. |
-| ErrorParsingConfiguration |Categoría de errores donde tarea <see cref="MediaTask.PrivateData"/> (configuración) no es válida, por ejemplo Hola configuración no es un sistema válido preestablecido o contiene un XML no válido. |
-| ErrorExecutingTaskMalformedContent |Categoría de errores durante la ejecución de Hola de tarea hello donde problemas dentro de hello entrada archivos multimedia provocan un error. |
-| ErrorExecutingTaskUnsupportedFormat |Categoría de errores donde procesador de multimedia de hello no puede procesar archivos Hola proporcionados: media de formato no compatible o no coincide con la configuración de Hola. Por ejemplo, al tratar de tooproduce una salida de solo audio desde un recurso que tiene solo vídeo |
-| ErrorProcessingTask |Categoría de otros errores que Hola procesador multimedia se encuentra durante el procesamiento de Hola de tarea de Hola que están relacionados con toocontent. |
-| ErrorUploadingOutputAsset |Categoría de errores al cargar el recurso de salida de hello |
-| ErrorCancelingTask |Categoría de errores de toocover de errores al intentar toocancel Hola tarea |
-| TransientError |Categoría de errores toocover problemas transitorios (p. ej. ej., problemas de red temporales con Almacenamiento de Azure). |
+| ErrorDownloadingInputAssetServiceFailure |Categoría de errores en la que se incluyen problemas en el servicio, por ejemplo, errores de red o de almacenamiento durante la descarga. |
+| ErrorParsingConfiguration |Categoría de errores en la que la tarea <see cref="MediaTask.PrivateData"/> (configuración) no es válida; por ejemplo, la configuración no es un valor preestablecido del sistema válido o contiene XML no válido. |
+| ErrorExecutingTaskMalformedContent |Categoría de errores durante la ejecución de la tarea en la que problemas en los archivos multimedia de entrada provocan errores. |
+| ErrorExecutingTaskUnsupportedFormat |Categoría de errores en la que el procesador de contenido multimedia no puede procesar los archivos proporcionados: formato de contenido multimedia no compatible o que no coincide con la configuración. Por ejemplo, intentar producir una salida de solo audio desde un activo que tenga solo vídeo. |
+| ErrorProcessingTask |Categoría de otros errores que detecta el procesador de contenido multimedia durante el procesamiento de la tarea y que no están relacionados con el contenido. |
+| ErrorUploadingOutputAsset |Categoría de errores al cargar el activo de salida. |
+| ErrorCancelingTask |Categoría de errores en la que se incluyen errores al intentar cancelar la tarea. |
+| TransientError |Categoría de errores en la que se incluyen problemas transitorios (p. ej., problemas de red temporales con Almacenamiento de Azure). |
 
-Ayuda de tooget de hello **servicios multimedia** equipo, abra un [incidencia de soporte técnico](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Para obtener ayuda del equipo de **Servicios multimedia** , abra una [incidencia de soporte técnico](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ## <a name="media-services-learning-paths"></a>Rutas de aprendizaje de Servicios multimedia
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

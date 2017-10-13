@@ -1,9 +1,9 @@
 ---
-title: aaaMutiple VIP para un servicio de nube
-description: "Información general de varias VIP y cómo tooset varias VIP en un servicio de nube"
+title: Varias direcciones VIP para un servicio en la nube
+description: "Información general sobre multiVIP y cómo establecer varias direcciones VIP en un servicio en la nube"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 ms.assetid: 85f6d26a-3df5-4b8e-96a1-92b2793b5284
 ms.service: load-balancer
@@ -11,76 +11,78 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: b3e0f2b24968cb75a7064484a09ffe94505bb70b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: b6b7b0b2d7a7f33facaf72bbd2d7937364770673
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-multiple-vips-for-a-cloud-service"></a>Configuración de varias direcciones VIP para un servicio en la nube
 
-Puede tener acceso a los servicios de nube de Azure a través de hello Internet pública mediante una dirección IP proporcionada por Azure. Esta dirección IP pública es tooas que se hace referencia una VIP (IP virtual) desde que se vinculó toohello Azure equilibrador de carga y no Hola instancias de máquina Virtual (VM) Hola del servicio en nube. Con una sola dirección VIP puede tener acceso a cualquier instancia de máquina virtual dentro de un servicio en la nube.
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
-Sin embargo, hay escenarios en los que puede que necesite más de una VIP como un toohello de punto de entrada mismo servicio en la nube. Por ejemplo, el servicio de nube puede hospedar varios sitios Web que requieren conectividad SSL utiliza Hola puerto predeterminado 443, tal y como se hospeda cada sitio para un cliente diferente, o de inquilino. En este escenario, debe toohave una dirección IP pública con orientación diferente para cada sitio Web. Hello diagrama siguiente ilustra un hospedaje web multiempresa típica con una necesidad SSL varios certificados en hello mismo puerto público.
+Puede tener acceso a los servicios en la nube de Azure a través de la Internet pública mediante una dirección IP proporcionada por Azure. Esta dirección IP pública se conoce como una dirección VIP (IP virtual) dado que está vinculada a Azure Load Balancer y no realmente a las instancias de máquina virtual dentro del servicio en la nube. Con una sola dirección VIP puede tener acceso a cualquier instancia de máquina virtual dentro de un servicio en la nube.
+
+Sin embargo, hay escenarios en los que puede que necesite más de una dirección VIP como punto de entrada al mismo servicio en la nube. Por ejemplo, el servicio en la nube podría hospedar varios sitios web que requieren conectividad SSL usando el puerto predeterminado de 443, y cada sitio hospedarse para un cliente o inquilino diferente. En este escenario, deberá tener una dirección IP accesible de forma pública diferente para cada sitio web. El siguiente diagrama muestra un hospedaje web multiempresa típico en el que se necesitan varios certificados SSL en el mismo puerto público.
 
 ![Escenario SSL de varias direcciones VIP](./media/load-balancer-multivip/Figure1.png)
 
-En el ejemplo de Hola anterior, todas las direcciones VIP uso Hola mismo puerto público (443) y el tráfico se tooone redirigida o más carga equilibrada de máquinas virtuales en un único puerto privado para la dirección IP interna de Hola de todos los sitios Web de Hola de hospedaje de servicio de nube de Hola.
+En el escenario anterior, todas las direcciones VIP usan el mismo puerto público (443) y el tráfico se redirige a una o varias máquinas virtuales con equilibrio de carga en un único puerto privado, según la dirección IP interna del servicio en la nube que hospeda todos los sitios web.
 
 > [!NOTE]
-> Otra situación que requiera Hola uso Hola varias VIP hospeda varios agentes de escucha de grupo de disponibilidad de AlwaysOn de SQL en el mismo conjunto de máquinas virtuales de Hola.
+> Otro escenario de uso de varias direcciones VIP es el hospedaje de varios agentes de escucha de grupo de disponibilidad SQL AlwaysOn en el mismo conjunto de máquinas virtuales.
 
-VIP son dinámicas de forma predeterminada, lo que significa que puede cambiar Hola real dirección IP asignada toohello servicio en la nube con el tiempo. tooprevent que suceda, puede reservar a una VIP para el servicio. toolearn más información acerca de la VIP reservada, consulte [IP pública reservada](../virtual-network/virtual-networks-reserved-public-ip.md).
+Las direcciones VIP son dinámicas de forma predeterminada, lo que significa que la dirección IP real asignada al servicio en la nube puede cambiar con el tiempo. Para evitar que esto suceda, puede reservar una dirección VIP para su servicio. Para obtener más información sobre las direcciones VIP reservadas, consulte [IP pública reservada](../virtual-network/virtual-networks-reserved-public-ip.md).
 
 > [!NOTE]
 > Consulte [Precios de las direcciones IP](https://azure.microsoft.com/pricing/details/ip-addresses/) para obtener información sobre los precios de las direcciones VIP y las direcciones IP reservadas.
 
-Puede usar PowerShell tooverify hello VIP utilizada los servicios de nube, así como agregar y quitar a VIP, asociar un punto de conexión de tooan VIP y configurar Equilibrio de carga en una sola dirección VIP específica.
+Puede usar PowerShell para comprobar las direcciones VIP usadas por los servicios en la nube, y también para agregar y quitar direcciones VIP, asociar una dirección VIP a un extremo y configurar el equilibrio de carga para una dirección VIP específica.
 
 ## <a name="limitations"></a>Limitaciones
 
-En este momento, la funcionalidad de varias VIP está limitado toohello los escenarios siguientes:
+En este momento, la funcionalidad de VIP múltiples se limita a los siguientes escenarios:
 
 * **Solo IaaS**. Solo puede habilitar VIP múltiples en servicios en la nube que contengan máquinas virtuales. No puede usar VIP múltiples en escenarios de PaaS, con instancias de rol.
 * **Solo PowerShell**. Los VIP múltiples solo se pueden administrar mediante PowerShell.
 
-Estas limitaciones son temporales y pueden cambiar en cualquier momento. Asegúrese de toorevisit seguro de esta página tooverify los cambios futuros.
+Estas limitaciones son temporales y pueden cambiar en cualquier momento. Asegúrese de volver a visitar esta página para comprobar los cambios futuros.
 
-## <a name="how-tooadd-a-vip-tooa-cloud-service"></a>¿Cómo tooadd una VIP tooa servicio en la nube
-servicio de tooyour tooadd una VIP, ejecute el siguiente comando de PowerShell de hello:
+## <a name="how-to-add-a-vip-to-a-cloud-service"></a>Agregar una dirección VIP a un servicio en la nube
+Para agregar una dirección VIP a su servicio, ejecute el siguiente comando de PowerShell:
 
 ```powershell
 Add-AzureVirtualIP -VirtualIPName Vip3 -ServiceName myService
 ```
 
-Este comando muestra un toohello similar resultado según muestra:
+Este comando muestra un resultado similar al siguiente ejemplo:
 
     OperationDescription OperationId                          OperationStatus
     -------------------- -----------                          ---------------
     Add-AzureVirtualIP   4bd7b638-d2e7-216f-ba38-5221233d70ce Succeeded
 
-## <a name="how-tooremove-a-vip-from-a-cloud-service"></a>¿Cómo tooremove una VIP de un servicio de nube
-Hola tooremove VIP agregados servicio tooyour en el ejemplo de Hola anteriormente, Hola ejecución siguiente comando de PowerShell:
+## <a name="how-to-remove-a-vip-from-a-cloud-service"></a>Eliminación de una dirección VIP de un servicio en la nube
+Para quitar la dirección VIP agregada al servicio en el  ejemplo anterior, ejecute el siguiente comando de PowerShell:
 
 ```powershell
 Remove-AzureVirtualIP -VirtualIPName Vip3 -ServiceName myService
 ```
 
 > [!IMPORTANT]
-> Sólo se puede quitar a una VIP si no tiene ningún tooit extremos asociados.
+> Solo puede quitar una dirección VIP si no tiene ningún extremo asociado a ella.
 
 
-## <a name="how-tooretrieve-vip-information-from-a-cloud-service"></a>La información de tooretrieve VIP de un servicio de nube
-Hola tooretrieve VIP asociada a un servicio en la nube, ejecute el siguiente script de PowerShell de hello:
+## <a name="how-to-retrieve-vip-information-from-a-cloud-service"></a>Recuperación de la información de dirección VIP de un servicio en la nube
+Para recuperar las direcciones VIP asociadas a un servicio en la nube, ejecute el siguiente script de PowerShell:
 
 ```powershell
 $deployment = Get-AzureDeployment -ServiceName myService
 $deployment.VirtualIPs
 ```
 
-script de Hola muestra un toohello similar resultado según muestra:
+El script muestra un resultado similar al siguiente ejemplo:
 
     Address         : 191.238.74.148
     IsDnsProgrammed : True
@@ -100,17 +102,17 @@ script de Hola muestra un toohello similar resultado según muestra:
     ReservedIPName  :
     ExtensionData   :
 
-En este ejemplo, el servicio de nube de hello tiene 3 VIP:
+En este ejemplo, el servicio en la nube tiene 3 direcciones VIP:
 
-* **Vip1** se Hola predeterminado VIP, sabrá que porque se establece el valor de Hola para IsDnsProgrammedName tootrue.
-* **Vip2** y **Vip3** no se usan, ya que no tienen ninguna dirección IP. Sólo se utilizarán si asocia un toohello extremo VIP.
+* **Vip1** es la dirección VIP predeterminada. Se sabe porque el valor de IsDnsProgrammedName está establecido en true.
+* **Vip2** y **Vip3** no se usan, ya que no tienen ninguna dirección IP. Solo se usarán si asocia un extremo a la dirección VIP.
 
 > [!NOTE]
 > Solo se cobrarán las direcciones VIP adicionales de su suscripción una vez que estén asociadas a un punto de conexión. Para obtener más información sobre los precios, consulte [Precios de las direcciones IP](https://azure.microsoft.com/pricing/details/ip-addresses/).
 
-## <a name="how-tooassociate-a-vip-tooan-endpoint"></a>¿Cómo tooassociate una VIP tooan extremo
+## <a name="how-to-associate-a-vip-to-an-endpoint"></a>Asociación de una dirección VIP a un extremo
 
-tooassociate una VIP en un extremo de tooan de servicio de nube, ejecute el siguiente comando de PowerShell de hello:
+Para asociar una dirección VIP de un servicio en la nube a un extremo, ejecute el siguiente comando de PowerShell:
 
 ```powershell
 Get-AzureVM -ServiceName myService -Name myVM1 |
@@ -118,16 +120,16 @@ Get-AzureVM -ServiceName myService -Name myVM1 |
     Update-AzureVM
 ```
 
-comando Hello crea un extremo VIP toohello vinculado llamado *Vip2* en el puerto *80*y se proporcionan vínculos toohello máquina virtual denominada *myVM1* en un servicio de nube denominado * myService* con *TCP* en el puerto *8080*.
+El comando anterior crea un punto de conexión vinculado a la dirección VIP denominada *Vip2* en el puerto *80*, y lo vincula a la máquina virtual denominada *myVM1* en un servicio en la nube denominado *myService* con *TCP* en el puerto *8080*.
 
-configuración de hello tooverify, ejecute el siguiente comando de PowerShell de hello:
+Para comprobar la configuración, ejecute el siguiente comando de PowerShell:
 
 ```powershell
 $deployment = Get-AzureDeployment -ServiceName myService
 $deployment.VirtualIPs
 ```
 
-salida de Hello tiene un aspecto similar toohello siguiente ejemplo:
+La salida es similar a la siguiente:
 
     Address         : 191.238.74.148
     IsDnsProgrammed : True
@@ -147,9 +149,9 @@ salida de Hello tiene un aspecto similar toohello siguiente ejemplo:
     ReservedIPName  :
     ExtensionData   :
 
-## <a name="how-tooenable-load-balancing-on-a-specific-vip"></a>¿Cómo tooenable equilibrio de carga en una sola dirección VIP específica
+## <a name="how-to-enable-load-balancing-on-a-specific-vip"></a>Habilitación del equilibrio de carga en una dirección VIP específica
 
-Puede asociar una sola dirección VIP a varias máquinas virtuales con el fin de equilibrar la carga. Por ejemplo, suponga que tiene un servicio en la nube denominado *myService* y dos máquinas virtuales denominadas *myVM1* y *myVM2*. Y el servicio en la nube tiene varias direcciones VIP, una de ellas denominada *Vip2*. Si desea que todo el tráfico tooport de tooensure *81* en *Vip2* se equilibra entre *myVM1* y *myVM2* en el puerto *8181 *, ejecute hello siguiente script de PowerShell:
+Puede asociar una sola dirección VIP a varias máquinas virtuales con el fin de equilibrar la carga. Por ejemplo, suponga que tiene un servicio en la nube denominado *myService* y dos máquinas virtuales denominadas *myVM1* y *myVM2*. Y el servicio en la nube tiene varias direcciones VIP, una de ellas denominada *Vip2*. Si desea asegurarse de que todo el tráfico al puerto *81* en *Vip2* se equilibre entre *myVM1* y *myVM2* en el puerto *8181*, ejecute el siguiente script de PowerShell:
 
 ```powershell
 Get-AzureVM -ServiceName myService -Name myVM1 |
@@ -161,7 +163,7 @@ Get-AzureVM -ServiceName myService -Name myVM2 |
     Update-AzureVM
 ```
 
-También puede actualizar su toouse de equilibrador de carga una VIP diferente. Por ejemplo, si ejecuta Hola comando de PowerShell a continuación, cambiará el conjunto toouse una VIP con el nombre de la Vip1 de equilibrio de carga de hello:
+También puede actualizar el equilibrador de carga para que use una dirección VIP diferente. Por ejemplo, si ejecuta el siguiente comando de PowerShell, cambiará el conjunto de equilibrio de carga para que use una dirección VIP denominada Vip1:
 
 ```powershell
 Set-AzureLoadBalancedEndpoint -ServiceName myService -LBSetName myLBSet -VirtualIPName Vip1

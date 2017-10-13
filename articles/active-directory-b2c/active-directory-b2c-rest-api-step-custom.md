@@ -14,48 +14,48 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/24/2017
 ms.author: joroja
-ms.openlocfilehash: 90a495029f48d70232ef3f99de4ea4d351395aa7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: dc319c97e64e55861b84cc3943667418077a05d8
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>Tutorial: Integración de intercambios de notificaciones de API de REST en los recorridos de usuario de Azure AD B2C como un paso de orquestación
 
-Hola Framework de experiencia de identidad (IEF) que subyace a Azure Active Directory B2C (Azure AD B2C) permite Hola identidad developer toointegrate una interacción con la API de REST en un viaje de usuario.  
+El marco de experiencia de identidad (IEF) subyacente a Azure Active Directory B2C (Azure AD B2C) permite al desarrollador de identidades integrar una interacción con una API de RESTful en un recorrido del usuario.  
 
-Al final de Hola de este tutorial, será capaz de toocreate un viaje de usuario de Azure AD B2C que interactúa con los servicios RESTful.
+Al final de este tutorial podrá crear un recorrido del usuario de Azure AD B2C que interactúe con servicios RESTful.
 
-Hola IEF envía datos en las notificaciones y recibe los datos en las notificaciones. Hola exchange de notificaciones de API de REST:
+El IEF envía datos en notificaciones y recibe los datos en notificaciones. El intercambio de notificaciones de la API de REST:
 
 - Puede diseñarse como un paso de orquestación.
 - Puede desencadenar una acción externa. Por ejemplo, puede registrar un evento en una base de datos externa.
-- Puede ser toofetch usa un valor y, a continuación, almacenarla en la base de datos de usuario de Hola.
+- Puede usarse para capturar un valor y almacenarlo en la base de datos de usuario.
 
-Puede usar notificaciones de hello recibido posterior toochange Hola flujo de la ejecución.
+Puede usar las notificaciones recibidas posteriormente para cambiar el flujo de ejecución.
 
-También puede diseñar interacción Hola como un perfil de validación. Para obtener más información, vea [Tutorial: Integración de intercambios de notificaciones de API de REST en los recorridos de usuario de Azure AD B2C como validación en entradas de usuario](active-directory-b2c-rest-api-validation-custom.md).
+También puede diseñar la interacción como un perfil de validación. Para obtener más información, vea [Tutorial: Integración de intercambios de notificaciones de API de REST en los recorridos de usuario de Azure AD B2C como validación en entradas de usuario](active-directory-b2c-rest-api-validation-custom.md).
 
-escenario de Hello es que cuando un usuario realiza una operación de edición perfil, deseamos:
+La situación es que cuando un usuario realiza una edición de perfil, nos gustaría:
 
-1. Buscar usuario hello en un sistema externo.
-2. Obtener ciudad Hola donde se registra que el usuario.
-3. Devolver esa aplicación toohello de atributo como una notificación.
+1. Buscar al usuario en un sistema externo.
+2. Obtener la ciudad donde está registrado.
+3. Devolver ese atributo como una notificación a la aplicación.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-- Un toocomplete de Azure AD B2C inquilino configura una cuenta local de sesión-up/inicio de sesión de, como se describe en [Introducción](active-directory-b2c-get-started-custom.md).
-- Un punto de conexión de API de REST toointeract con. Este tutorial usa como ejemplo un webhook simple de la aplicación de función de Azure.
-- *Se recomienda*: Hola completa [tutorial de exchange como un paso de validación de notificaciones de la API de REST](active-directory-b2c-rest-api-validation-custom.md).
+- Configuración de un inquilino de Azure AD B2C para completar el registro o inicio de sesión de una cuenta local como se describe en [Introducción](active-directory-b2c-get-started-custom.md).
+- Un punto de conexión de API de REST con el que interactuar. Este tutorial usa como ejemplo un webhook simple de la aplicación de función de Azure.
+- *Recomendado*: realice el [tutorial sobre el intercambio de notificaciones de API de REST como paso de validación](active-directory-b2c-rest-api-validation-custom.md).
 
-## <a name="step-1-prepare-hello-rest-api-function"></a>Paso 1: Preparar la función de la API de REST de Hola
+## <a name="step-1-prepare-the-rest-api-function"></a>Paso 1: Preparación de la función de API de REST
 
 > [!NOTE]
-> El programa de instalación de funciones de la API de REST está fuera de ámbito de Hola de este artículo. [Las funciones de Azure](https://docs.microsoft.com/azure/azure-functions/functions-reference) proporciona un Kit de herramientas de excelente toocreate servicios RESTful en nube Hola.
+> La configuración de funciones de la API de REST está fuera del ámbito de este artículo. [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) proporciona un excelente conjunto de herramientas para crear servicios de RESTful en la nube.
 
-Hemos configurado con una función de Azure que recibe una notificación que se llama `email`, y, a continuación, devuelve Hola notificación `city` con valor de hello asignado de `Redmond`. ejemplo de Hola función Azure está en [GitHub](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples).
+Hemos configurado una función de Azure que recibe una notificación denominada `email` y devuelve la notificación `city` con el valor asignado de `Redmond`. La función de Azure de ejemplo está en [GitHub](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples).
 
-Hola `userMessage` notificación que Hola devueltos de funciones de Azure es opcional en este contexto y hello IEF pasará por alto. Potencialmente puede usarlo como un mensaje pasa la aplicación toohello y presenta toohello usuario más adelante.
+La notificación `userMessage` que devuelve la función de Azure es opcional en este contexto y el IEF la ignorará. Se podría usar posiblemente como un mensaje transmitido a la aplicación y presentado al usuario posteriormente.
 
 ```csharp
 if (requestContentAsJObject.email == null)
@@ -78,14 +78,14 @@ return request.CreateResponse<ResponseContent>(
     "application/json");
 ```
 
-Una aplicación de Azure función hace fácil tooget Hola función URL, que incluye el identificador hello de función específicos de Hola. En este caso, es la dirección URL de hello: https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==. Puede usarla para realizar pruebas.
+Una aplicación de función de Azure facilita la obtención de la dirección URL de la función, lo que incluye el identificador de la función específica. En este caso, la dirección URL es: https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw==. Puede usarla para realizar pruebas.
 
-## <a name="step-2-configure-hello-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworextensionsxml-file"></a>Paso 2: Configurar exchange de notificaciones de API de REST de Hola como un perfil técnico en el archivo TrustFrameworExtensions.xml
+## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworextensionsxml-file"></a>Paso 2: Configuración del intercambio de notificaciones de API de RESTful como perfil técnico en el archivo TrustFrameworkExtensions.xml
 
-Un perfil técnico es la configuración completa de Hola de exchange Hola deseado con hello servicio RESTful. Abra el archivo de TrustFrameworkExtensions.xml hello y agregue Hola siguiente fragmento XML dentro de hello `<ClaimsProvider>` elemento.
+Un perfil técnico es la configuración completa del intercambio deseado con el servicio RESTful. Abra el archivo TrustFrameworkExtensions.xml y agregue el siguiente fragmento de código XML dentro del elemento `<ClaimsProvider>`.
 
 > [!NOTE]
-> Hola continuación de XML, proveedor RESTful `Version=1.0.0.0` se describe como protocolo de Hola. Considérelo como función hello que interactúa con el servicio externo de Hola. <!-- TODO: A full definition of hello schema can be found...link tooRESTful Provider schema definition>-->
+> En el siguiente código XML, el proveedor de RESTful `Version=1.0.0.0` se describe como el protocolo. Considérelo como la función que interactuará con el servicio externo. <!-- TODO: A full definition of the schema can be found...link to RESTful Provider schema definition>-->
 
 ```XML
 <ClaimsProvider>
@@ -111,18 +111,18 @@ Un perfil técnico es la configuración completa de Hola de exchange Hola desead
 </ClaimsProvider>
 ```
 
-Hola `<InputClaims>` elemento define notificaciones de Hola que se enviarán desde Hola servicio REST de IEF toohello. En este ejemplo, Hola contenido de notificación de hello `givenName` enviarán servicio REST de toohello como notificación de hello `email`.  
+El elemento `<InputClaims>` define las notificaciones que se enviarán desde el IEF al servicio REST. En este ejemplo, el contenido de la notificación `givenName` se enviará al servicio REST como la notificación `email`.  
 
-Hola `<OutputClaims>` elemento define Hola notificaciones que hello IEF esperará de servicio REST de Hola. Independientemente del número de Hola de notificaciones que se reciben, hello IEF utilizará sólo aquellas identificado aquí. En este ejemplo, se recibe una notificación como `city` tooan asignada IEF notificación llamará `city`.
+El elemento `<OutputClaims>` define las notificaciones que esperará el IEF del servicio REST. Independientemente del número de notificaciones que se reciban, el IEF solo usa las identificadas aquí. En este ejemplo, una notificación recibida como `city` se asignará a una notificación del IEF denominada `city`.
 
-## <a name="step-3-add-hello-new-claim-city-toohello-schema-of-your-trustframeworkextensionsxml-file"></a>Paso 3: Agregar nueva notificación de hello `city` toohello esquema del archivo TrustFrameworkExtensions.xml
+## <a name="step-3-add-the-new-claim-city-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>Paso 3: Adición de la nueva notificación `city` al esquema de su archivo TrustFrameworkExtensions.xml
 
-notificación de Hello `city` todavía no está definido en cualquier lugar en el esquema. Por lo tanto, agregar una definición de elemento de hello `<BuildingBlocks>`. Puede encontrar este elemento al principio de hello del archivo de hello TrustFrameworkExtensions.xml.
+La notificación `city` todavía no se ha definido en ninguna parte de nuestro esquema. Por lo tanto, debe agregar una definición dentro del elemento `<BuildingBlocks>`. Encontrará dicho elemento al principio del archivo TrustFrameworkExtensions.xml.
 
 ```XML
 <BuildingBlocks>
-    <!--hello claimtype city must be added toohello TrustFrameworkPolicy-->
-    <!-- You can add new claims in hello BASE file Section III, or in hello extensions file-->
+    <!--The claimtype city must be added to the TrustFrameworkPolicy-->
+    <!-- You can add new claims in the BASE file Section III, or in the extensions file-->
     <ClaimsSchema>
         <ClaimType Id="city">
             <DisplayName>City</DisplayName>
@@ -134,14 +134,14 @@ notificación de Hello `city` todavía no está definido en cualquier lugar en e
 </BuildingBlocks>
 ```
 
-## <a name="step-4-include-hello-rest-service-claims-exchange-as-an-orchestration-step-in-your-profile-edit-user-journey-in-trustframeworkextensionsxml"></a>Paso 4: Incluir el intercambio de notificaciones del servicio de REST de Hola como un paso de orquestación en su viaje de usuario de edición de perfil en TrustFrameworkExtensions.xml
+## <a name="step-4-include-the-rest-service-claims-exchange-as-an-orchestration-step-in-your-profile-edit-user-journey-in-trustframeworkextensionsxml"></a>Paso 4: Inclusión del intercambio de notificaciones del servicio REST como paso de orquestación en el recorrido del usuario de edición de perfil del archivo TrustFrameworkExtensions.xml
 
-Agregar un paso de viaje de usuario de edición de perfil toohello, después de haber usuario Hola autenticado (pasos 1 a 4 de orquestación en hello continuación de XML) y usuario de hello ha proporcionado información de perfil de hello actualizado (paso 5).
+Agregue un paso al recorrido del usuario de edición de perfil después de que el usuario se haya autenticado (pasos de orquestación del 1 al 4 en el siguiente código XML) y haya proporcionado la información de perfil actualizada (paso 5).
 
 > [!NOTE]
-> Hay muchos casos donde hello llamada API de REST puede usarse como un paso de la orquestación. Como un paso de la orquestación, que puede usarse como un sistema externo de tooan de actualización después de que un usuario se haya completado correctamente una tarea como registro por primera vez, o como un perfil de actualización sincronizada la información de tookeep. En este caso, es la información de hello tooaugment usado proporcionada toohello aplicación después de editar el perfil de Hola.
+> Hay muchos casos donde la llamada de API de REST puede usarse como paso de orquestación. Como tal, se puede usar como actualización a un sistema externo una vez que un usuario haya realizado correctamente una tarea, por ejemplo, el registro por primera vez, o como actualización de perfil para mantener la información sincronizada. En este caso, se usa para aumentar la información proporcionada a la aplicación después de la edición del perfil.
 
-Copiar Hola perfil editar código de usuario viaje XML de hello TrustFrameworkBase.xml tooyour TrustFrameworkExtensions.xml archivo dentro de hello `<UserJourneys>` elemento. A continuación, asegúrese de modificación de hello en el paso 6.
+Copie el código XML del recorrido del usuario de edición de perfil del archivo TrustFrameworkBase.xml en el archivo TrustFrameworkExtensions.xml dentro del elemento `<UserJourneys>`. Después, realice la modificación en el paso 6.
 
 ```XML
 <OrchestrationStep Order="6" Type="ClaimsExchange">
@@ -152,9 +152,9 @@ Copiar Hola perfil editar código de usuario viaje XML de hello TrustFrameworkBa
 ```
 
 > [!IMPORTANT]
-> Si el orden de hello no coincide con su versión, asegúrese de que inserte código de hello como paso Hola antes de Hola `ClaimsExchange` tipo `SendClaims`.
+> Si el orden no coincide con su versión, asegúrese de insertar el código como paso antes del tipo `SendClaims` de `ClaimsExchange`.
 
-Hello debe ser XML final para viaje de usuario de hello similar al siguiente:
+El código XML final del recorrido del usuario debe tener este aspecto:
 
 ```XML
 <UserJourney Id="ProfileEdit">
@@ -200,7 +200,7 @@ Hello debe ser XML final para viaje de usuario de hello similar al siguiente:
                 <ClaimsExchange Id="B2CUserProfileUpdateExchange" TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate" />
             </ClaimsExchanges>
         </OrchestrationStep>
-        <!-- Add a step 6 toohello user journey before hello JWT token is created-->
+        <!-- Add a step 6 to the user journey before the JWT token is created-->
         <OrchestrationStep Order="6" Type="ClaimsExchange">
             <ClaimsExchanges>
                 <ClaimsExchange Id="GetLoyaltyData" TechnicalProfileReferenceId="AzureFunctions-LookUpLoyaltyWebHook" />
@@ -212,11 +212,11 @@ Hello debe ser XML final para viaje de usuario de hello similar al siguiente:
 </UserJourney>
 ```
 
-## <a name="step-5-add-hello-claim-city-tooyour-relying-party-policy-file-so-hello-claim-is-sent-tooyour-application"></a>Paso 5: Agregar notificación de hello `city` para notificación de Hola se envía la aplicación tooyour de los archivos de directiva de entidad de confianza de tooyour
+## <a name="step-5-add-the-claim-city-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>Paso 5: Adición de la notificación `city` al archivo de directiva de usuario de confianza para que la notificación se envíe a la aplicación
 
-Edite el archivo de entidad (RP) de confianza de ProfileEdit.xml y modificar hello `<TechnicalProfile Id="PolicyProfile">` siguiente de elemento tooadd Hola: `<OutputClaim ClaimTypeReferenceId="city" />`.
+Edite el archivo de usuario de confianza (RP) ProfileEdit.xml y modifique el elemento `<TechnicalProfile Id="PolicyProfile">` para agregar lo siguiente: `<OutputClaim ClaimTypeReferenceId="city" />`.
 
-Después de agregar la nueva notificación de hello, perfil técnico hello tiene este aspecto:
+Después de agregar la nueva notificación, el perfil técnico tendrá el siguiente aspecto:
 
 ```XML
 <DisplayName>PolicyProfile</DisplayName>
@@ -231,15 +231,15 @@ Después de agregar la nueva notificación de hello, perfil técnico hello tiene
 
 ## <a name="step-6-upload-your-changes-and-test"></a>Paso 6: Carga de los cambios y prueba
 
-Sobrescribir las versiones existentes de directiva de Hola Hola.
+Sobrescriba las versiones existentes de la directiva.
 
-1.  (Opcional:) Guardar la versión existente de hello (mediante la descarga) del archivo extensiones antes de continuar. tookeep Hola inicial complejidad baja, se recomienda que no cargar varias versiones de archivo de las extensiones de hello.
-2.  (Opcional:) Cambiar el nombre de nueva versión de hello de Id. de directiva de Hola para editar archivo de directiva de hello cambiando `PolicyId="B2C_1A_TrustFrameworkProfileEdit"`.
-3.  Cargar archivo de extensiones de hello.
-4.  Cargar archivo de RP de edición de directivas de Hola.
-5.  Use **ejecutar ahora** tootest directiva de Hola. Token de Hola de revisión que Hola IEF devuelve toohello aplicación.
+1.  (Opcional) Guarde la versión existente (mediante descarga) del archivo de extensiones antes de continuar. Para mantener baja la complejidad inicial, se recomienda no cargar varias versiones del archivo de extensiones.
+2.  (Opcional) Cambie el nombre de la nueva versión del identificador de directiva del archivo de edición de directiva. Para ello, cambie `PolicyId="B2C_1A_TrustFrameworkProfileEdit"`.
+3.  Cargue el archivo de extensiones.
+4.  Cargue el archivo de RP de edición de directiva.
+5.  Use **Ejecutar ahora** para probar la directiva. Revise el token devuelto por el IEF a la aplicación.
 
-Si todo está configurado correctamente, el token de hello incluirá nueva notificación de hello `city`, con el valor de hello `Redmond`.
+Si todo está configurado correctamente, el token incluirá la nueva notificación `city`, con el valor `Redmond`.
 
 ```JSON
 {
@@ -261,4 +261,4 @@ Si todo está configurado correctamente, el token de hello incluirá nueva notif
 
 [Uso de una API de REST como paso de validación](active-directory-b2c-rest-api-validation-custom.md)
 
-[Modificar Hola perfil editar toogather información adicional de los usuarios](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
+[Modificación de la edición de perfil para recopilar información adicional de sus usuarios](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)

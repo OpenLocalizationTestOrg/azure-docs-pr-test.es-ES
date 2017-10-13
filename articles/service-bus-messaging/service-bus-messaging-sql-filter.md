@@ -1,5 +1,5 @@
 ---
-title: referencia de la sintaxis de SQLFilter de Bus de servicio aaaAzure | Documentos de Microsoft
+title: Referencia de la sintaxis de SQLFilter de Azure Service Bus | Microsoft Docs
 description: "Obtenga más información sobre la gramática de SQLFilter."
 services: service-bus-messaging
 documentationcenter: na
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2017
 ms.author: sethm
-ms.openlocfilehash: ea49d42e343a6b324eb34c7831ff6be2855346e9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 3aaec8f9b6a3bbcf814f771405c3b589de6f7ae0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sqlfilter-syntax"></a>Sintaxis de SQLFilter
 
-A *SqlFilter* es una instancia de hello [SqlFilter clase](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)y representa una expresión de filtro basada en lenguaje SQL que se evalúa con un [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). Un SqlFilter admite un subconjunto del estándar SQL-92 Hola.  
+*SqlFilter* es una instancia de la [clase SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) y representa una expresión de filtro en basada en lenguaje SQL que se evalúa con respecto a un objeto [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). SqlFilter admite un subconjunto del estándar SQL-92.  
   
  En este tema se ofrece información sobre la gramática de SqlFilter.  
   
@@ -59,11 +59,11 @@ A *SqlFilter* es una instancia de hello [SqlFilter clase](/dotnet/api/microsoft.
   
 ## <a name="arguments"></a>Argumentos  
   
--   `<scope>`es una cadena opcional que indica el ámbito de Hola de hello `<property_name>`. Los valores válidos son `sys` o `user`. Hola `sys` valor indica el ámbito del sistema donde `<property_name>` es un nombre de propiedad pública de hello [clase BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user`indica el ámbito de usuario donde `<property_name>` es una clave de hello [clase BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) diccionario. `user`ámbito es el ámbito predeterminado de hello si `<scope>` no se ha especificado.  
+-   `<scope>` es una cadena opcional que indica el ámbito de `<property_name>`. Los valores válidos son `sys` o `user`. El valor `sys` indica el ámbito del sistema, donde `<property_name>` es un nombre de propiedad pública de la [clase BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). `user` indica el ámbito de usuario, donde `<property_name>` es una clave del diccionario de la [clase BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage). El ámbito de `user` es el predeterminado si no se especifica `<scope>`.  
   
 ## <a name="remarks"></a>Comentarios
 
-Un intento de tooaccess una propiedad inexistente por el sistema es un error, mientras que una propiedad de usuario de tooaccess un inexistente intento no es un error. En su lugar, una propiedad de usuario inexistente internamente se evalúa como un valor desconocido. Un valor desconocido se trata de una forma especial durante la evaluación de operador.  
+Un intento de acceso a una propiedad de sistema que no existe es un error, mientras que uno a una propiedad de usuario inexistente, no lo es. En su lugar, una propiedad de usuario inexistente internamente se evalúa como un valor desconocido. Un valor desconocido se trata de una forma especial durante la evaluación de operador.  
   
 ## <a name="propertyname"></a>property_name  
   
@@ -79,7 +79,7 @@ Un intento de tooaccess una propiedad inexistente por el sistema es un error, mi
   
 ### <a name="arguments"></a>Argumentos  
 
- `<regular_identifier>`es una cadena representada por hello después de expresión regular:  
+ `<regular_identifier>` es una cadena que se representa mediante la siguiente expresión regular:  
   
 ```  
 [[:IsLetter:]][_[:IsLetter:][:IsDigit:]]*  
@@ -93,7 +93,7 @@ Esta gramática significa cualquier cadena que empiece por una letra y vaya segu
   
 `<regular_identifier>` no puede ser una palabra clave reservada.  
   
-`<delimited_identifier>` es cualquier cadena que se incluye con corchetes izquierdos y derechos ([]). Un corchete derecho se representan como dos corchetes derechos. Hello siguientes son ejemplos de `<delimited_identifier>`:  
+`<delimited_identifier>` es cualquier cadena que se incluye con corchetes izquierdos y derechos ([]). Un corchete derecho se representan como dos corchetes derechos. A continuación, se muestran ejemplos de `<delimited_identifier>`:  
   
 ```  
 [Property With Space]  
@@ -101,7 +101,7 @@ Esta gramática significa cualquier cadena que empiece por una letra y vaya segu
   
 ```  
   
-`<quoted_identifier>` es cualquier cadena que se incluye entre comillas dobles. Las comillas dobles en el identificador se representan como dos comillas dobles. No se recomienda toouse identificadores entrecomillados, ya que pueden confundirse fácilmente con una constante de cadena. Si es posible, utilice un identificador delimitado. Hello aquí te mostramos un ejemplo de `<quoted_identifier>`:  
+`<quoted_identifier>` es cualquier cadena que se incluye entre comillas dobles. Las comillas dobles en el identificador se representan como dos comillas dobles. No se recomienda utilizar identificadores entre comillas, ya que pueden confundirse fácilmente con una constante de cadena. Si es posible, utilice un identificador delimitado. A continuación, se muestra un ejemplo de `<quoted_identifier>`:  
   
 ```  
 "Contoso & Northwind"  
@@ -116,7 +116,7 @@ Esta gramática significa cualquier cadena que empiece por una letra y vaya segu
   
 ### <a name="remarks"></a>Comentarios
   
-`<pattern>` debe ser una expresión que se evalúa como una cadena. Se utiliza como patrón para hello LIKE (operador).      Puede contener Hola siguientes caracteres comodín:  
+`<pattern>` debe ser una expresión que se evalúa como una cadena. Se utiliza como patrón para el operador LIKE.      Puede contener los siguientes caracteres comodín:  
   
 -   `%`: cualquier cadena de cero o más caracteres.  
   
@@ -131,7 +131,7 @@ Esta gramática significa cualquier cadena que empiece por una letra y vaya segu
   
 ### <a name="remarks"></a>Comentarios  
 
-`<escape_char>` debe ser una expresión que se evalúa como una cadena de longitud 1. Se utiliza como carácter de escape para hello LIKE (operador).  
+`<escape_char>` debe ser una expresión que se evalúa como una cadena de longitud 1. Se utiliza como carácter de escape para el operador LIKE.  
   
  Por ejemplo, `property LIKE 'ABC\%' ESCAPE '\'` coincide con `ABC%`, en lugar de con una cadena que comienza con `ABC`.  
   
@@ -144,7 +144,7 @@ Esta gramática significa cualquier cadena que empiece por una letra y vaya segu
   
 ### <a name="arguments"></a>Argumentos  
   
--   `<integer_constant>` es una cadena de números que no se incluyen entre comillas y no contienen decimales. Hola valores se almacenan como `System.Int64` internamente, y seguimiento Hola mismo intervalo.  
+-   `<integer_constant>` es una cadena de números que no se incluyen entre comillas y no contienen decimales. Los valores se almacenan como `System.Int64` internamente y siguen el mismo intervalo.  
   
      A continuación, se muestran ejemplos de constantes largas:  
   
@@ -153,18 +153,18 @@ Esta gramática significa cualquier cadena que empiece por una letra y vaya segu
     2  
     ```  
   
--   `<decimal_constant>` es una cadena de números que no se incluyen entre comillas y contienen un separador decimal. Hola valores se almacenan como `System.Double` internamente y seguir Hola mismo intervalo y precisión.  
+-   `<decimal_constant>` es una cadena de números que no se incluyen entre comillas y contienen un separador decimal. Los valores se almacenan como `System.Double` internamente y siguen el mismo intervalo o la misma precisión.  
   
-     En una versión futura, este número puede almacenarse en una datos diferentes toosupport exacta numérica la semántica de tipos, por lo que no deben depender Hola hechos Hola subyacente es el tipo de datos `System.Double` para `<decimal_constant>`.  
+     En una versión futura, este número podría almacenarse en un tipo de datos diferente para admitir la semántica de número exacto. Por lo tanto, no debe confiar en el hecho de que el tipo de datos subyacente es `System.Double` en `<decimal_constant>`.  
   
-     siguiente Hola es ejemplos de constantes de tipo decimal:  
+     A continuación, se muestran ejemplos de constantes decimales:  
   
     ```  
     1894.1204  
     2.0  
     ```  
   
--   `<approximate_number_constant>` es un número escrito en la notación científica. Hola valores se almacenan como `System.Double` internamente y seguir Hola mismo intervalo y precisión. siguiente Hola es ejemplos de constantes de número aproximados:  
+-   `<approximate_number_constant>` es un número escrito en la notación científica. Los valores se almacenan como `System.Double` internamente y siguen el mismo intervalo o la misma precisión. A continuación, se muestran ejemplos de constantes de número aproximado:  
   
     ```  
     101.5E5  
@@ -180,7 +180,7 @@ Esta gramática significa cualquier cadena que empiece por una letra y vaya segu
   
 ### <a name="remarks"></a>Comentarios  
 
-Constantes booleanas se representan mediante palabras clave de hello **TRUE** o **FALSE**. Hola valores se almacenan como `System.Boolean`.  
+Las constantes booleanas se representan mediante las palabras clave **TRUE** o **FALSE**. Los valores se almacenan como `System.Boolean`.  
   
 ## <a name="stringconstant"></a>string_constant  
   
@@ -202,13 +202,13 @@ Las constantes de cadena se incluyen entre comillas simples y contienen caracter
   
 ### <a name="remarks"></a>Comentarios
   
-Hola `newid()` función devuelve un **System.Guid** generados por hello `System.Guid.NewGuid()` método.  
+La función `newid()` devuelve un elemento **System.Guid** generado por el método `System.Guid.NewGuid()`.  
   
-Hola `property(name)` función devuelve el valor de Hola de propiedad Hola al que hace referencia `name`. Hola `name` valor puede ser cualquier expresión válida que devuelve un valor de cadena.  
+La función `property(name)` devuelve el valor de la propiedad a la que hace referencia `name`. El valor `name` puede ser cualquier expresión válida que devuelve un valor de cadena.  
   
 ## <a name="considerations"></a>Consideraciones
   
-Tenga en cuenta los siguiente hello [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) semántica:  
+Tenga en cuenta la siguiente semántica de [SqlFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter):  
   
 -   Los nombres de propiedad distinguen entre mayúsculas y minúsculas.  
   
@@ -216,33 +216,33 @@ Tenga en cuenta los siguiente hello [SqlFilter](/dotnet/api/microsoft.servicebus
   
 -   Las propiedades del sistema son propiedades públicas expuestas en instancias de [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage).  
   
-    Tenga en cuenta los siguiente hello `IS [NOT] NULL` semántica:  
+    Tenga en cuenta la siguiente semántica de `IS [NOT] NULL`:  
   
-    -   `property IS NULL`se evalúa como `true` si cualquiera de estas propiedades de hello no existe u Hola el valor de la propiedad es `null`.  
+    -   `property IS NULL` se evalúa como `true` si no existe la propiedad o valor de la propiedad es `null`.  
   
 ### <a name="property-evaluation-semantics"></a>Semántica de evaluación de propiedades  
   
--   Un tooevaluate de intento de una propiedad inexistente por el sistema produce una [FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception) excepción.  
+-   Un intento de evaluar una propiedad no existente del sistema genera una excepción [FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception).  
   
 -   Una propiedad que no existe se evalúa internamente como **valor desconocido**.  
   
  Evaluación desconocida en operadores aritméticos:  
   
--   Para los operadores binarios, si bien Hola izquierda o derecha de los operandos se evalúa como **desconocido**, entonces el resultado de hello es **desconocido**.  
+-   Para los operadores binarios, si la parte izquierda o derecha de los operandos se evalúa como **valor desconocido**, el resultado será **desconocido**.  
   
--   Para los operadores unarios, si un operando se evalúa como **desconocido**, entonces el resultado de hello es **desconocido**.  
+-   Para los operadores unarios, si un operando se evalúa como **desconocido**, el resultado será **desconocido**.  
   
  Evaluación desconocida en los operadores de comparación binaria:  
   
--   Si bien Hola izquierda o derecha de los operandos se evalúa como **desconocido**, entonces el resultado de hello es **desconocido**.  
+-   Si la parte izquierda o derecha de los operandos se evalúa como **valor desconocido**, el resultado será **desconocido**.  
   
  Evaluación desconocida en `[NOT] LIKE`:  
   
--   Si cualquier operando se evalúa como **desconocido**, entonces el resultado de hello es **desconocido**.  
+-   Si cualquier operando se evalúa como **desconocido**, el resultado es **desconocido**.  
   
  Evaluación desconocida en `[NOT] IN`:  
   
--   Si Hola operando izquierdo se evalúa como **desconocido**, entonces el resultado de hello es **desconocido**.  
+-   Si el operando izquierdo se evalúa como **desconocido**, el resultado es **desconocido**.  
   
  Evaluación desconocida en el operador **AND**:  
   
@@ -274,9 +274,9 @@ Tenga en cuenta los siguiente hello [SqlFilter](/dotnet/api/microsoft.servicebus
   
 ### <a name="operator-binding-semantics"></a>Semántica de enlace de operadores
   
--   Operadores de comparación, como `>`, `>=`, `<`, `<=`, `!=`, y `=` seguimiento Hola misma semántica que el enlace de datos de operador de hello C# escriba promociones y las conversiones implícitas.  
+-   Los operadores de comparación, como `>`, `>=`, `<`, `<=`, `!=` y `=`, siguen la misma semántica que el enlace de operadores de C# en promociones de tipo de datos y conversiones implícitas.  
   
--   Operadores aritméticos, como `+`, `-`, `*`, `/`, y `%` seguimiento Hola misma semántica que el enlace de datos de operador de hello C# escriba promociones y las conversiones implícitas.
+-   Los operadores aritméticos, como `+`, `-`, `*`, `/` y `%`, siguen la misma semántica que el enlace de operadores de C# en promociones de tipo de datos y conversiones implícitas.
 
 ## <a name="next-steps"></a>Pasos siguientes
 

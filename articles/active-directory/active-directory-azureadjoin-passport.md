@@ -1,5 +1,5 @@
 ---
-title: "aaaAuthenticating identidades sin contraseñas a través de Windows Hello para el negocio y Azure AD | Documentos de Microsoft"
+title: "Autenticación de identidades sin contraseñas a través de Windows Hello para empresas y Azure AD | Microsoft Docs"
 description: "Proporciona una visión general de Windows Hello para empresas e información adicional sobre la implementación de Windows Hello para empresas."
 services: active-directory
 documentationcenter: 
@@ -15,59 +15,59 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: markvi
-ms.openlocfilehash: 7c1c52e10b7ab7a89ec3226ffa7cf01896267871
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 62adf8a9fd4400a056e2c0f59c79431acbad5865
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="authenticating-identities-without-passwords-through-windows-hello-for-business"></a>Autenticación de identidades sin contraseñas a través de Windows Hello para empresas
-Hola métodos actual de autenticación con contraseñas por sí sola no son suficientes usuarios tookeep seguros. Los usuarios reutilizan y olvidan las contraseñas. Las contraseñas son breachable, phishable, toocracks propensas a y adivinar. También obtienen tooremember difícil y propensos tooattacks como "[pasar el hash de hello](https://technet.microsoft.com/dn785092.aspx)".
+Los métodos actuales de autenticación con contraseña, por sí solos, no son suficientes para proteger a los usuarios. Los usuarios reutilizan y olvidan las contraseñas. Las contraseñas se pueden violar, son susceptibles a la suplantación de identidad (phishing), son propensas al descifrado y se pueden adivinar. También son difíciles de recordar y tienden a ataques del tipo "[pass the hash](https://technet.microsoft.com/dn785092.aspx)".
 
 ## <a name="about-windows-hello-for-business"></a>Acerca de Windows Hello para empresas
-Windows Hello para empresas es un enfoque de autenticación basado en certificado o clave pública/privada dirigido a organizaciones y consumidores que no se limita a las contraseñas. Este tipo de autenticación se basa en las credenciales de par de claves que se pueden reemplazar las contraseñas y toobreaches son resistentes, robos y "phishing".
+Windows Hello para empresas es un enfoque de autenticación basado en certificado o clave pública/privada dirigido a organizaciones y consumidores que no se limita a las contraseñas. Esta forma de autenticación se basa en credenciales de par de claves que pueden reemplazar a las contraseñas y que resisten las infracciones, los robos y las suplantaciones de identidad.
 
- Windows Hello para empresas permite al usuario autenticar la cuenta de Microsoft tooa, una cuenta de Windows Server Active Directory, una cuenta de Microsoft Azure Active Directory (Azure AD) o un servicio de terceros que admita la autenticación de rápido identidad en línea (BOBI). Después de una comprobación de dos pasos iniciales durante Windows Hello para la inscripción de negocio, Windows Hello para empresas se ha configurado en el dispositivo del usuario de Hola y usuario Hola establece un movimiento, que puede ser Windows Hello o un PIN. usuario de Hello proporciona Hola gesto tooverify su identidad. Windows, a continuación, usa Windows Hello para usuarios de empresa tooauthenticate hello y ayudarles a servicios y recursos de tooaccess protegidos.
+ Windows Hello para empresas permite a los usuarios autenticarse en una cuenta Microsoft, una cuenta de Windows Server Active Directory, una cuenta de Microsoft Azure Active Directory (Azure AD) o un servicio que no sea de Microsoft compatible con la autenticación Fast IDentity Online (FIDO). Tras una comprobación inicial en dos pasos durante la inscripción en Windows Hello para empresas, Windows Hello para empresas se instala en el dispositivo del usuario y este define un gesto, que puede ser Windows Hello o un PIN. El usuario proporciona el gesto para comprobar su identidad. Windows usa entonces Windows Hello para empresas para autenticar al usuario y ayudarle a acceder a servicios y recursos protegidos.
 
-clave privada de Hello debe ponerse a disposición únicamente a través de un gesto de usuario de"" como un PIN, biométrica o un dispositivo remoto como una tarjeta inteligente que Hola usuario utiliza toosign toohello dispositivo. Esta información es certificado tooa vinculado o un par de claves asimétrico. clave privada de Hello es hardware attested si el dispositivo de hello tiene un chip de módulo de plataforma segura (TPM). clave privada de Hello nunca abandona el dispositivo de Hola.
+La clave privada queda disponible únicamente a través de un "gesto de usuario" como un PIN, biometría o un dispositivo remoto como una tarjeta inteligente que el usuario utiliza para iniciar sesión en el dispositivo. Esta información se vincula a un certificado o un par de claves asimétrico. Esta clave privada es certificada por el hardware si el dispositivo cuenta con un chip de Módulo de plataforma segura (TPM). La clave privada nunca abandona el dispositivo.
 
-clave pública de Hola se registra con Azure Active Directory y Windows Server Active Directory (para local). Proveedores de identidades (IDPs) comprueba que el usuario de hello mediante clave pública de hello asignación de clave privada de hello usuario toohello y proporcionan información de inicio de sesión a través de un tiempo de contraseña (OTP), PhoneFactor o un mecanismo de notificación diferente.
+La clave pública se registra en Azure Active Directory y Windows Server Active Directory (para el entorno local). Los proveedores de identidades (IDP) validan al usuario mediante la asignación de la clave pública del usuario a la clave privada y proporcionan información de inicio de sesión mediante una contraseña de un solo uso (OTP), Phonefactor o un mecanismo de notificación diferente.
 
 ## <a name="why-enterprises-should-adopt-windows-hello-for-business"></a>¿Por qué las empresas deben adoptar Windows Hello para empresas?
 Al habilitar Windows Hello para empresas, las empresas pueden proteger sus recursos aún mejor:
 
-* Mediante la configuración de Windows Hello para empresas con una opción preferida de hardware. Esto significa que las claves se generarán en TPM 1.2 o TPM 2.0 cuando sea posible. Cuando TPM no está disponible, el software generará clave Hola.
-* Definición de Hola de complejidad y la duración de hello ANCLAR y, si está habilitado el uso de Hello en su organización.
-* Configurar Windows Hello para escenarios de tipo de tarjeta inteligente toosupport empresariales mediante basada en certificados de confianza.
+* Mediante la configuración de Windows Hello para empresas con una opción preferida de hardware. Esto significa que las claves se generarán en TPM 1.2 o TPM 2.0 cuando sea posible. Cuando TPM no esté disponible, el software generará la clave.
+* La definición de la complejidad y la longitud del PIN, y la posibilidad de habilitar el uso de Hello en su organización.
+* Mediante la configuración de Windows Hello para empresas para admitir escenarios de tipo tarjeta inteligente con confianza basada en certificados.
 
 ## <a name="how-windows-hello-for-business-works"></a>Funcionamiento de Windows Hello para empresas
-1. Las claves se generan en un hardware Hola TPM o el software. Muchos dispositivos tienen un chip TPM integrado que protege el hardware de hello mediante la integración de las claves de cifrado en dispositivos. TPM 1.2 o 2.0 de TPM genera claves o certificados que se crean a partir de las claves de hello generado.
-2. Hola TPM da fe estas claves de hardware enlazado.
-3. Un gesto de desbloqueo solo desbloquea el dispositivo de Hola. Este movimiento permite acceder a los recursos de toomultiple si Hola dispositivo está unido a un dominio Azure Unidos a AD.
+1. Las claves se generan en el hardware por TPM o el software. Muchos dispositivos tienen un chip TPM integrado que protege el hardware mediante la integración de claves de cifrado en los dispositivos. TPM 1.2 o TPM 2.0 genera claves o certificados que se crean a partir de las claves generadas.
+2. TPM certifica estas claves enlazadas al hardware.
+3. Un único gesto de desbloqueo desbloquea el dispositivo. Este gesto permite el acceso a varios recursos si el dispositivo está unido a un dominio o a Azure AD.
 
-## <a name="how-hello-windows-hello-for-business-lifecycle-works"></a>Cómo funciona la hello Windows Hello para el ciclo de vida empresarial
+## <a name="how-the-windows-hello-for-business-lifecycle-works"></a>Funcionamiento del ciclo de vida de Windows Hello empresas
 ![Ciclo de vida de Windows Hello para empresas](./media/active-directory-azureadjoin/active-directory-azureadjoin-microsoft-passport.png)
 
-Hello diagrama anterior muestra par de claves pública/privada hello y validación de hello proveedor de identidades de Hola. Cada uno de estos pasos se explica con detalle a continuación:
+El diagrama anterior muestra el par de claves pública y privada y la validación por el proveedor de identidades. Cada uno de estos pasos se explica con detalle a continuación:
 
-1. Hola usuario demuestre su identidad a través de varios métodos integrados de corrección (gestos, las tarjetas inteligentes físicas, la autenticación multifactor) y envía este tooan información del proveedor de identidades (IDP) como Azure Active Directory o Active Directory local.
-2. dispositivo Hello, a continuación, crea la clave de Hola, da fe clave Hola, toma parte pública de Hola de esta clave, asocia con instrucciones de estación, inicia sesión en y lo envía clave de hello tooregister toohello IDP.
-3. Tan pronto como Hola IDP registra la parte pública de Hola de clave de hello, desafíos de IDP de Hola Hola toosign de dispositivo con la parte privada de Hola de clave de Hola.
-4. Hola IDP, a continuación, valida y problemas Hola token de autenticación que permite a usuario de Hola y Hola dispositivo acceso a Hola protegida los recursos. IDPs puede escribir aplicaciones multiplataforma o usar toocreate de compatibilidad (a través de la API de JavaScript/Webcrypto) del explorador y usar Windows Hello para las credenciales de negocio para sus usuarios.
+1. El usuario prueba su identidad a través de varios métodos de verificación integrados (gestos, tarjetas inteligentes físicas, autenticación multifactor) y envía esta información al proveedor de identidades, como Azure Active Directory o el entorno Active Directory local.
+2. A continuación, el dispositivo crea la clave, la certifica, toma la parte pública de esta clave, la asocia con las instrucciones de la estación, inicia sesión y envía la clave al proveedor de identidades para registrarla.
+3. En cuanto el proveedor de identidades registra la parte pública de la clave, este desafía al dispositivo a que firme con la parte privada de la clave.
+4. El proveedor de identidades valida y emite entonces el token de autenticación que permite al usuario y al dispositivo tener acceso a los recursos protegidos. El proveedor de identidades puede escribir aplicaciones multiplataforma o usar la compatibilidad con el explorador (mediante las API de JavaScript/Webcrypto) para crear y usar las credenciales de Windows Hello para empresas para sus usuarios.
 
-## <a name="hello-deployment-requirements-for-windows-hello-for-business"></a>Hola requisitos de implementación de Windows Hello para empresas
-### <a name="at-hello-enterprise-level"></a>En el nivel de empresa de Hola
-* enterprise Hello tiene una suscripción de Azure.
+## <a name="the-deployment-requirements-for-windows-hello-for-business"></a>Requisitos de implementación de Windows Hello para empresas
+### <a name="at-the-enterprise-level"></a>En el nivel de empresa
+* La empresa tiene una suscripción de Azure.
 
-### <a name="at-hello-user-level"></a>En el nivel de usuario de Hola
-* equipo del usuario de Hola ejecuta Windows 10 Professional o Enterprise.
+### <a name="at-the-user-level"></a>En el nivel de usuario
+* El equipo del usuario ejecuta Windows 10 Professional o Enterprise.
 
-Para obtener instrucciones de implementación detallada, consulte [habilitar Windows Hello para empresas de organización de hello](active-directory-azureadjoin-passport-deployment.md).
+Para obtener instrucciones detalladas sobre la implementación, consulte [Habilitación de Windows Hello para empresas en la organización](active-directory-azureadjoin-passport-deployment.md).
 
 ## <a name="additional-information"></a>Información adicional
-* [Windows 10 para empresa hello: dispositivos de toouse de formas de trabajo](active-directory-azureadjoin-windows10-devices-overview.md)
-* [Extender nube dispositivos de tooWindows 10 capacidades a través de Azure Active Directory Join](active-directory-azureadjoin-user-upgrade.md)
+* [Windows 10 para la empresa: formas de usar dispositivos para trabajar](active-directory-azureadjoin-windows10-devices-overview.md)
+* [Ampliación de las capacidades de nube a dispositivos de Windows 10 a través de Azure Active Directory Join](active-directory-azureadjoin-user-upgrade.md)
 * [Conozca los escenarios de uso de Azure AD Join](active-directory-azureadjoin-deployment-aadjoindirect.md)
-* [Conectar dispositivos Unidos a dominio tooAzure AD para experiencias de Windows 10](active-directory-azureadjoin-devices-group-policy.md)
+* [Experiencias de conexión de dispositivos unidos a un dominio a Azure AD para Windows 10](active-directory-azureadjoin-devices-group-policy.md)
 * [Configuración de Azure AD Join](active-directory-azureadjoin-setup.md)
 

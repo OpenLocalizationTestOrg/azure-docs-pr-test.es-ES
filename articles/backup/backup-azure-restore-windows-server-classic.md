@@ -1,6 +1,6 @@
 ---
-title: "Hola a aaaRestore datos tooa Windows Server o cliente de Windows de Azure mediante el modelo de implementación clásica | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toorestore desde un cliente de Windows o Windows Server."
+title: "Restauración de datos en Windows Server o un cliente de Windows desde Azure mediante el modelo de implementación clásica| Microsoft Docs"
+description: Aprenda a restaurar desde Windows Server o desde el Cliente de Windows.
 services: backup
 documentationcenter: 
 author: saurabhsensharma
@@ -14,229 +14,229 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: saurse;trinadhk;markgal;
-ms.openlocfilehash: 4d1458d5233c4f55004ecfa95cbf7b3b18a03dde
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 300b2b17b44e21ed446fd63d572a2461e2fc1343
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="restore-files-tooa-windows-server-or-windows-client-machine-using-hello-classic-deployment-model"></a>Restaurar archivos tooa Windows server o el equipo de cliente de Windows mediante el modelo de implementación clásica de Hola
+# <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-the-classic-deployment-model"></a>Restauración de archivos en un equipo de Windows Server o cliente de Windows mediante el modelo de implementación de clásica
 > [!div class="op_single_selector"]
 > * [Portal clásico](backup-azure-restore-windows-server-classic.md)
 > * [Portal de Azure](backup-azure-restore-windows-server.md)
 >
 >
 
-Este artículo explica cómo toorecover datos desde una copia de seguridad del almacén y restauración tooa servidor o equipo. A partir de marzo de 2017, ya no se pueden crear almacenes de copia de seguridad en el portal clásico de Hola.
+En este artículo se explica cómo recuperar datos de un almacén de Backup y restaurarlos en un servidor o equipo. A partir de marzo de 2017, no se podrán crear almacenes de Backup en el portal clásico.
 
 > [!IMPORTANT]
-> Ahora puede actualizar los almacenes de servicios de tooRecovery de almacenes de copia de seguridad. Para obtener más información, consulte el artículo de hello [actualizar un tooa de almacén de copia de seguridad del almacén de servicios de recuperación](backup-azure-upgrade-backup-to-recovery-services.md). Microsoft le anima tooupgrade tooRecovery almacenes de servicios de almacenes de credenciales de la copia de seguridad.<br/> **15 de octubre de 2017**, ya no estará almacenes de copia de seguridad de toocreate de toouse capaz de PowerShell. <br/> **A partir del 1 de noviembre de 2017**:
->- Los almacenes de copia de seguridad restantes será almacenes de servicios de tooRecovery actualizado automáticamente.
->- No será capaz de tooaccess los datos de copia de seguridad en el portal clásico de Hola. En su lugar, use hello tooaccess portal Azure los datos de copia de seguridad en los almacenes de servicios de recuperación.
+> Ahora puede actualizar los almacenes de Backup a almacenes de Recovery Services. Para más información, consulte el artículo [Actualización de un almacén de Backup a un almacén de Recovery Services](backup-azure-upgrade-backup-to-recovery-services.md). Microsoft anima a actualizar los almacenes de Backup a almacenes de Recovery Services.<br/> **15 de octubre de 2017**, ya no podrá usar PowerShell para crear almacenes de Backup. <br/> **A partir del 1 de noviembre de 2017**:
+>- Los almacenes de Backup restantes se actualizarán automáticamente a almacenes de Recovery Services.
+>- No podrá acceder a los datos de copia de seguridad en el portal clásico. En su lugar, utilice Azure Portal para tener acceso a los datos de copia de seguridad en los almacenes de Recovery Services.
 >
 
-datos de toorestore, usar a Asistente para recuperar datos de hello en el agente de servicios de recuperación de Microsoft Azure (MARS) Hola. Al restaurar datos, es posible realizar las siguientes tareas:
+Para restaurar datos, utilice al Asistente para recuperar datos del agente de Microsoft Azure Recovery Services (MARS). Al restaurar datos, es posible realizar las siguientes tareas:
 
-* Restaurar datos toohello mismo equipo desde las copias de seguridad de Hola se tomaron.
-* Restaurar datos tooan alternativo máquina.
+* La restauración de datos en la misma máquina desde la cual se realizaron las copias de seguridad.
+* Restaurar datos en una máquina alternativa.
 
-En enero de 2017 Microsoft lanzó a un agente de MARS de toohello de actualización de vista previa. Junto con correcciones de errores, esta actualización permite restaurar instantánea, lo que permite toomount una instantánea de punto de recuperación puede escribir como un volumen de recuperación. A continuación, puede explorar Hola recuperación volumen y copia archivos tooa equipo local, por tanto, de forma selectiva restaurar archivos.
+En enero de 2017, Microsoft publicó una actualización de versión preliminar para el agente de MARS. Además de las correcciones de errores, esta actualización permite restaurar de forma instantánea, lo que permite montar una instantánea de punto de recuperación grabable como un volumen de recuperación. Después, puede explorar el volumen y copiar archivos de recuperación en un equipo local, por tanto, restaurando los archivos de forma selectiva.
 
 > [!NOTE]
-> Hola [de enero de 2017 actualización de copia de seguridad de Azure](https://support.microsoft.com/en-us/help/3216528?preview) es necesario si desea toouse Restore instantáneo toorestore los datos. También se deben proteger los datos de copia de seguridad de hello en los almacenes en configuraciones regionales que aparecen en el artículo de soporte técnico de Hola. Consulte hello [de enero de 2017 actualización de copia de seguridad de Azure](https://support.microsoft.com/en-us/help/3216528?preview) para la lista más reciente de Hola de configuraciones regionales que admitan la restauración de instantánea. La restauración instantánea **no** está actualmente disponible en todas las configuraciones regionales.
+> Se necesita la [actualización de enero de 2017 de Azure Backup](https://support.microsoft.com/en-us/help/3216528?preview) si desea utilizar la restauración instantánea para restaurar datos. También se deben proteger los datos de copia de seguridad en los almacenes en configuraciones regionales que aparecen en el artículo de soporte técnico. Consulte la [actualización de Azure Backup de enero de 2017](https://support.microsoft.com/en-us/help/3216528?preview) para obtener la lista más reciente de configuraciones regionales que admitan la restauración instantánea. La restauración instantánea **no** está actualmente disponible en todas las configuraciones regionales.
 >
 
-Restauración de instantánea está disponible para su uso en los almacenes de servicios de recuperación en hello portal de Azure y almacenes de copia de seguridad en portal clásico de Hola. Si desea toouse Restore instantáneo, descargar la actualización de hello MARS y siga los procedimientos de Hola que mencionan restaurar instantánea.
+La restauración instantánea está disponible en los almacenes de Recovery Services de Azure Portal y en los almacenes de Backup del portal clásico. Si desea usar la restauración instantánea, descargue la actualización de MARS y siga los procedimientos que mencionan la restauración instantánea.
 
 
-## <a name="use-instant-restore-toorecover-data-toohello-same-machine"></a>Use Restore instantáneo toorecover datos toohello mismo equipo
+## <a name="use-instant-restore-to-recover-data-to-the-same-machine"></a>Uso de la restauración instantánea para recuperar datos en la misma máquina
 
-Si ha eliminado accidentalmente un archivo y deseos toorestore se toohello al mismo equipo (de qué Hola se realiza copia de seguridad), Hola siguiendo los pasos le ayudarán a recuperar datos de Hola.
+Si ha eliminado accidentalmente un archivo y desea restaurarlo en la misma máquina (desde la que se realizó la copia de seguridad), los pasos siguientes le ayudarán a recuperar esos datos.
 
-1. Abra hello **copia de seguridad de Microsoft Azure** ajuste en. Si no sabe que se instaló el complemento de hello en, buscar Hola equipo o servidor para **copia de seguridad de Microsoft Azure**.
+1. Abra el complemento **Microsoft Azure Backup** . Si no conoce la ubicación donde se instaló el complemento, busque el equipo o servidor para **Microsoft Azure Backup**.
 
-    aplicación de escritorio de Hello debe aparecer en los resultados de búsqueda de Hola.
+    La aplicación de escritorio debe aparecer en los resultados de búsqueda.
 
-2. Haga clic en **recuperar datos** Asistente de hello toostart.
+2. Haga clic en **Recuperar datos** para iniciar el asistente.
 
     ![Recuperar datos](./media/backup-azure-restore-windows-server/recover.png)
 
-3. En hello **Introducción** panel, toorestore Hola datos toohello mismo servidor o equipo, seleccione **este servidor (`<server name>`)** y haga clic en **siguiente**.
+3. En el panel **Introducción**, para restaurar los datos en el mismo servidor o equipo, seleccione **Este servidor (`<server name>`)** y haga clic en **Siguiente**.
 
-    ![Elija este toohello de datos de servidor opción toorestore Hola mismo equipo](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
+    ![Elegir la opción Este servidor para restaurar los datos en la misma máquina](./media/backup-azure-restore-windows-server/samemachine_gettingstarted_instantrestore.png)
 
-4. En hello **seleccionar modo de recuperación** panel, elija **archivos y carpetas individuales** y, a continuación, haga clic en **siguiente**.
+4. En el panel **Seleccionar modo de recuperación**, seleccione **Archivos y carpetas individuales** y, luego, haga clic en **Siguiente**.
 
     ![Examinar archivos](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
 
-5. En hello **Seleccionar volumen y fecha** panel, volumen de hello select que contiene los archivos de Hola o carpetas que desee toorestore.
+5. En el panel **Seleccionar volumen y fecha**, seleccione el volumen que contiene los archivos y/o carpetas que desea restaurar.
 
-    En el calendario de hello, seleccione un punto de recuperación. Puede realizar la restauración desde cualquier momento dado de recuperación. Las fechas en **negrita** indicar la disponibilidad de Hola de al menos un punto de recuperación. Cuando selecciona una fecha, si existen varios puntos de recuperación, elija punto de recuperación específico de Hola de hello **tiempo** menú desplegable.
+    En el calendario, seleccione un punto de recuperación. Puede realizar la restauración desde cualquier momento dado de recuperación. Las fechas en **negrita** indican la disponibilidad de al menos un punto de recuperación. Cuando selecciona una fecha, si están disponibles varios puntos de recuperación, elija el punto de recuperación específico desde el menú desplegable **Hora**.
 
     ![Fecha y volumen](./media/backup-azure-restore-windows-server/samemachine_selectvolumedate_instantrestore.png)
 
-6. Una vez que haya elegido toorestore de punto de recuperación de hello, haga clic en **montar**.
+6. Una vez que haya elegido el punto de recuperación para restaurar, haga clic en **Montar**.
 
-    Copia de seguridad de Azure monta el punto de recuperación local de Hola y lo utiliza como un volumen de recuperación.
+    Azure Backup monta el punto de recuperación local y lo usa como volumen de recuperación.
 
-7. En hello **examinar y recuperar archivos** panel, haga clic en **examinar** tooopen el Explorador de Windows y buscar Hola archivos y carpetas que desee.
+7. En el panel **Examinar y recuperar archivos**, haga clic en **Examinar** para abrir el Explorador de Windows y buscar los archivos y carpetas que desea.
 
     ![Opciones de recuperación](./media/backup-azure-restore-windows-server/samemachine_browserecover_instantrestore.png)
 
 
-8. En el Explorador de Windows, copia Hola archivos o carpetas desea toorestore y péguelos tooany ubicación local toohello servidor o equipo. Puede abrir o transmitir Hola archivos directamente desde el volumen de recuperación de Hola y comprobar Hola correcto de las versiones recuperadas.
+8. En el Explorador de Windows, copie los archivos y/o carpetas que desea restaurar y péguelos en cualquier ubicación local en el servidor o equipo. Puede abrir o transmitir los archivos directamente desde el volumen de recuperación y comprobar que se recuperan las versiones correctas.
 
-    ![Copie y pegue los archivos y carpetas desde la ubicación de toolocal volumen montado](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
+    ![Copia y pegado de archivos y carpetas desde el volumen montado en la ubicación local](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
 
-9. Cuando termine de restaurar los archivos de Hola o las carpetas, en hello **examinar y recuperación** panel, haga clic en **desmontar**. A continuación, haga clic en **Sí** tooconfirm que desea que el volumen de hello toounmount.
+9. Cuando termine de restaurar los archivos y/o carpetas, en el panel **Examinar y recuperar archivos**, haga clic en **Desmontar**. Haga clic en **Sí** para confirmar que desea desmontar el volumen.
 
-    ![Desmonte el volumen de Hola y confirmar](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
+    ![Desmontaje del volumen y confirmación](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > Si no hace clic en desmontar, Hola recuperación volumen permanecerá montada durante seis horas desde el momento de hello cuando donde se montó. No hay ninguna operación de copia de seguridad se ejecutará mientras está montado el volumen de Hola. Cualquier toorun de operación de copia de seguridad programada durante el tiempo de hello cuando está montado el volumen de hello, se ejecutará después de volumen de recuperación de Hola se desmonta.
+    > Si no hace clic en Desmontar, el volumen de recuperación permanecerá montado durante seis horas desde el momento en el que se montó. No se ejecutará ninguna operación de copia de seguridad mientras el volumen esté montado. Cualquier operación de copia de seguridad programada para ejecutarse durante el tiempo en el que el volumen está montado, se ejecutará después de desmontar el volumen de recuperación.
     >
 
 
-## <a name="recover-data-toohello-same-machine"></a>Recuperar datos toohello mismo equipo
-Si ha eliminado accidentalmente un archivo y deseos toorestore se toohello al mismo equipo (de qué Hola se realiza copia de seguridad), Hola siguiendo los pasos le ayudarán a recuperar datos de Hola.
+## <a name="recover-data-to-the-same-machine"></a>Recuperar los datos en la misma máquina
+Si ha eliminado accidentalmente un archivo y desea restaurarlo en la misma máquina (desde la que se realizó la copia de seguridad), los pasos siguientes le ayudarán a recuperar esos datos.
 
-1. Abra hello **copia de seguridad de Microsoft Azure** ajuste en.
-2. Haga clic en **recuperar datos** el flujo de trabajo de tooinitiate Hola.
+1. Abra el complemento **Microsoft Azure Backup** .
+2. Haga clic en **Recuperar datos** para iniciar el flujo de trabajo.
 
     ![Recuperar datos](./media/backup-azure-restore-windows-server-classic/recover.png)
-3. Seleccione hello  **este servidor (*nombreDelEquipo*) ** Hola de toorestore opción copia de archivo en hello misma máquina.
+3. Seleccione la opción **Este servidor (*nombreDeLaMáquina*)**, para restaurar en la misma máquina el archivo del que ha creado una copia de seguridad.
 
     ![Misma máquina](./media/backup-azure-restore-windows-server-classic/samemachine.png)
-4. Elija demasiado**examinar archivos** o **buscar archivos**.
+4. Elija entre **Examinar archivos** o **Buscar archivos**.
 
-    Deje Hola predeterminado opción si tiene previsto toorestore uno o más archivos cuya ruta de acceso se conoce. Si no está seguro acerca de la estructura de carpetas de hello pero desea toosearch para un archivo, elegir hello **buscar archivos** opción. A fin de Hola de esta sección, se continuará con la opción predeterminada de Hola.
+    Deje la opción predeterminada si va a restaurar uno o varios archivos cuya ruta de acceso se conoce. Si no está seguro de la estructura de carpetas pero desea buscar un archivo, escoja la opción **Buscar archivos** . En esta sección, se continuará con la opción predeterminada.
 
     ![Examinar archivos](./media/backup-azure-restore-windows-server-classic/browseandsearch.png)
-5. Seleccione el volumen de Hola desde el que desea que el archivo de hello toorestore.
+5. Seleccione el volumen desde el que desea restaurar el archivo.
 
-    Puede realizar la restauración a un momento dado. Las fechas que aparecen en **negrita** en control de calendario Hola indicar disponibilidad Hola de un punto de restauración. Una vez que se selecciona una fecha, en función de la programación de copia de seguridad (y el éxito de Hola de una operación de copia de seguridad), puede seleccionar un punto en el tiempo de hello **tiempo** de lista desplegable.
+    Puede realizar la restauración a un momento dado. Las fechas que aparecen en **negrita** en el control del calendario indican la disponibilidad de un punto de restauración. Una vez seleccionada una fecha, según su programación de copia de seguridad (y el éxito que haya tenido al realizar una operación de copia de seguridad), puede seleccionar un momento dato en el menú desplegable **Tiempo** .
 
     ![Fecha y volumen](./media/backup-azure-restore-windows-server-classic/volanddate.png)
-6. Seleccione Hola elementos toorecover. Puede seleccionar varias carpetas y archivos que se va toorestore.
+6. Seleccione los elementos que desea recuperar. Puede seleccionar varias carpetas y archivos para restaurar.
 
     ![Seleccionar archivos](./media/backup-azure-restore-windows-server-classic/selectfiles.png)
-7. Especificar parámetros de recuperación de Hola.
+7. Especifique los parámetros de recuperación.
 
     ![Opciones de recuperación](./media/backup-azure-restore-windows-server-classic/recoveroptions.png)
 
-   * Tiene la opción de restauración toohello ubicación original (en qué Hola archivo o carpeta se sobrescribiría) o una ubicación de tooanother en hello mismo equipo.
-   * Si Hola de archivo o carpeta que se va a toorestore existe en la ubicación de destino de hello, puede crear copias (dos versiones de hello mismo archivo), sobrescribir los archivos de hello en la ubicación de destino de Hola u omitir recuperación de Hola de archivos de Hola que existe en el destino de Hola.
-   * Se recomienda que deje opción predeterminada Hola restaurar las ACL de hello en los archivos de Hola que se van a recuperar.
-8. Una vez proporcionadas estas entradas, haga clic en **Siguiente**. Hola recuperación flujo de trabajo, que restaura una máquina de hello archivos toothis, se iniciará.
+   * Tiene la opción de restaurar en la ubicación original (en la que la carpeta o el archivos se sobrescribirán) o en otra ubicación en la misma máquina.
+   * Si el archivo o carpeta que desea restaurar existe en la ubicación de destino, tiene la opción de crear copias (dos versiones del mismo archivo), sobrescribir los archivos en la ubicación de destino u omitir la recuperación de los archivos que existen en el destino.
+   * Se recomienda que deje la opción predeterminada de la restauración de las ACL en los archivos que se está recuperando.
+8. Una vez proporcionadas estas entradas, haga clic en **Siguiente**. El flujo de trabajo de recuperación que se encarga de restaurar los archivos de la máquina, se iniciará.
 
-## <a name="recover-tooan-alternate-machine"></a>Recuperar máquina alternativo tooan
-Si se pierde todo el servidor, todavía puede recuperar datos desde otro equipo de copia de seguridad de Azure tooa. Hola pasos muestra el flujo de trabajo de Hola.  
+## <a name="recover-to-an-alternate-machine"></a>Recuperar en una máquina alternativa
+Si ha perdido todo el servidor, todavía puede recuperar los datos de Azure Backup en una máquina diferente. Los pasos siguientes muestran el flujo de trabajo.  
 
-terminología de Hola que se usa en estos pasos se incluye:
+La terminología usada en estos pasos incluye:
 
-* *Máquina de origen* : tomada máquina original de Hola desde la copia de seguridad de Hola y que no está disponible actualmente.
-* *El equipo de destino* : se va a recuperar datos de saludo máquina toowhich Hola.
-* *Almacén de ejemplo* : Hola Hola de toowhich de almacén de copia de seguridad *máquina de origen* y *equipo de destino* están registrados. <br/>
+* *Máquina de origen* : es la máquina original desde la que se realizó la copia de seguridad y que no está disponible actualmente.
+* *Máquina de destino* : es la máquina en la que se recuperan los datos.
+* *Almacén de ejemplo*: almacén de copia de seguridad en el que se registran la *máquina de origen* y la *máquina de destino*. <br/>
 
 > [!NOTE]
-> No se puede restaurar copias de seguridad realizadas desde un equipo en un equipo que está ejecutando una versión anterior del sistema operativo de Hola. Por ejemplo, si se realizan copias de seguridad de una máquina con Windows 7, esta puede restaurarse en un Windows 8 o una máquina con una versión superior. Sin embargo, al contrario de hello no cumplirse.
+> No se pueden restaurar copias de seguridad realizadas desde una máquina en una máquina que está ejecutando una versión anterior del sistema operativo. Por ejemplo, si se realizan copias de seguridad de una máquina con Windows 7, esta puede restaurarse en un Windows 8 o una máquina con una versión superior. Sin embargo, la acción a la inversa no está asegurada.
 >
 >
 
-1. Abra hello **copia de seguridad de Microsoft Azure** ajuste en hello *equipo de destino*.
-2. Asegúrese de que hello *equipo de destino* hello y *máquina de origen* están registrado toohello mismo almacén de copia de seguridad.
-3. Haga clic en **recuperar datos** el flujo de trabajo de tooinitiate Hola.
+1. Abra el complemento **Microsoft Azure Backup** en la *Máquina de destino*.
+2. Asegúrese de que tanto la *Máquina de destino* como la *Máquina de origen* están registradas en el mismo almacén de copia de seguridad.
+3. Haga clic en **Recuperar datos** para iniciar el flujo de trabajo.
 
     ![Recuperar datos](./media/backup-azure-restore-windows-server-classic/recover.png)
 4. Seleccione **Otro servidor**
 
     ![Otro servidor](./media/backup-azure-restore-windows-server-classic/anotherserver.png)
-5. Proporcione el archivo de credenciales de almacén de hello correspondiente toohello *el almacén de ejemplo*. Si el archivo de credenciales de almacén de hello es válida (o expiró) descargar un nuevo archivo de credenciales de almacén de hello *almacén ejemplo* Hola portal de Azure clásico. Una vez que se proporciona el archivo de credenciales de almacén de hello, se muestra el almacén de copia de seguridad de hello en el archivo de credenciales de almacén de Hola.
-6. Seleccione hello *máquina de origen* en lista de Hola de máquinas mostradas.
+5. Proporcione el archivo de credenciales de almacén que se corresponde con el *Almacén de ejemplo*. Si el archivo de credenciales de almacén no es válido (o ha expirado), descargue un nuevo archivo de credenciales de almacén desde el *almacén de ejemplo* en el Portal de Azure clásico. Una vez que se proporciona el archivo de almacén de credenciales, se muestra el almacén de copia de seguridad en el archivo de almacén de credenciales.
+6. Seleccione la *Máquina de origen* en la lista de máquinas mostradas.
 
     ![Lista de máquinas](./media/backup-azure-restore-windows-server-classic/machinelist.png)
-7. Seleccione cualquier hello **buscar archivos** o **examinar archivos** opción. Para el propósito de Hola de esta sección, se utilizará hello **buscar archivos** opción.
+7. Seleccione la opción **Buscar archivos** o **Examinar archivos**. En esta sección, usaremos la opción **Buscar archivos** .
 
     ![Search](./media/backup-azure-restore-windows-server-classic/search.png)
-8. Seleccionar volumen hello y la fecha en la pantalla de bienvenida siguiente. Búsqueda de nombre de archivo/carpeta Hola desea toorestore.
+8. Seleccione el volumen y la fecha en la pantalla siguiente. Busque el nombre de la carpeta o el archivo que desea restaurar.
 
     ![Buscar artículos](./media/backup-azure-restore-windows-server-classic/searchitems.png)
-9. Seleccionar ubicación de Hola donde es necesario toobe restaurar archivos de Hola.
+9. Seleccione la ubicación en la que se deben restaurar los archivos.
 
     ![Restaurar ubicación](./media/backup-azure-restore-windows-server-classic/restorelocation.png)
-10. Proporcione la frase de contraseña de cifrado de Hola que se proporcionó durante la *la máquina de origen* registro demasiado*el almacén de ejemplo*.
+10. Proporcione la frase de contraseña de cifrado que se proporcionó durante el registro de la *Máquina de origen* en el *Almacén de ejemplo*.
 
     ![Cifrado](./media/backup-azure-restore-windows-server-classic/encryption.png)
-11. Una vez que se proporciona la entrada de hello, haga clic en **recuperar**, qué desencadenadores Hola restauración de hello copia archivos toohello destino proporcionado.
+11. Una vez especificada la entrada, haga clic en **Recuperar**, para desencadenar la restauración de los archivos con copia de seguridad en el destino proporcionado.
 
-## <a name="use-instant-restore-toorestore-data-tooan-alternate-machine"></a>Use Restore instantáneo toorestore datos tooan alternativo máquina
-Si se pierde todo el servidor, todavía puede recuperar datos desde otro equipo de copia de seguridad de Azure tooa. Hola pasos muestra el flujo de trabajo de Hola.
+## <a name="use-instant-restore-to-restore-data-to-an-alternate-machine"></a>Uso de restauración instantánea para restaurar datos en una máquina alternativa
+Si ha perdido todo el servidor, todavía puede recuperar los datos de Azure Backup en una máquina diferente. Los pasos siguientes muestran el flujo de trabajo.
 
-terminología de Hola que se usa en estos pasos se incluye:
+La terminología usada en estos pasos incluye:
 
-* *Máquina de origen* : tomada máquina original de Hola desde la copia de seguridad de Hola y que no está disponible actualmente.
-* *El equipo de destino* : se va a recuperar datos de saludo máquina toowhich Hola.
-* *Almacén de ejemplo* : Hola Hola de toowhich de almacén de servicios de recuperación *máquina de origen* y *equipo de destino* están registrados. <br/>
+* *Máquina de origen* : es la máquina original desde la que se realizó la copia de seguridad y que no está disponible actualmente.
+* *Máquina de destino* : es la máquina en la que se recuperan los datos.
+* *Almacén de ejemplo*: el almacén de Recovery Services en el que se registran la*máquina de origen* y la *máquina de destino*. <br/>
 
 > [!NOTE]
-> Las copias de seguridad no pueden ser restaurada tooa equipo de destino ejecuta una versión anterior del sistema operativo de Hola. Por ejemplo, una copia de seguridad perteneciente a un equipo con Windows 7 se puede restaurar en un equipo con Windows 8 o posterior. Una copia de seguridad desde un equipo Windows 8 no puede ser el equipo restaurado tooa Windows 7.
+> Las copias de seguridad no se pueden restaurar en una máquina de destino en la que se ejecuta una versión anterior del sistema operativo. Por ejemplo, una copia de seguridad perteneciente a un equipo con Windows 7 se puede restaurar en un equipo con Windows 8 o posterior. Una copia de seguridad perteneciente a un equipo con Windows 8 no se puede restaurar en un equipo con Windows 7.
 >
 >
 
-1. Abra hello **copia de seguridad de Microsoft Azure** ajuste en hello *equipo de destino*.
+1. Abra el complemento **Microsoft Azure Backup** en la *Máquina de destino*.
 
-2. Asegúrese de hello *equipo de destino* hello y *máquina de origen* están registrado toohello mismos servicios de recuperación del almacén.
+2. Asegúrese de que tanto la *máquina de destino* como la *máquina de origen* están registradas en el mismo almacén de Recovery Services.
 
-3. Haga clic en **recuperar datos** tooopen hello **Asistente para recuperar datos**.
+3. Haga clic en **Recuperar datos** para abrir el **Asistente de recuperación de datos**.
 
     ![Recuperar datos](./media/backup-azure-restore-windows-server/recover.png)
 
-4. En hello **Introducción** panel, seleccione **otro servidor**
+4. En el panel **Introducción**, seleccione **Otro servidor**.
 
     ![Otro servidor](./media/backup-azure-restore-windows-server/alternatemachine_gettingstarted_instantrestore.png)
 
-5. Proporcione el archivo de credenciales de almacén de hello correspondiente toohello *almacén ejemplo*y haga clic en **siguiente**.
+5. Proporcione el archivo de credenciales de almacén que se corresponde con el *Almacén de ejemplo* y haga clic en **Siguiente**.
 
-    Si el archivo de credenciales de almacén de hello es válida (o expiró), descargue un nuevo archivo de credenciales de almacén de hello *almacén ejemplo* Hola portal de Azure. Una vez que proporcione una credencial de almacén válido, el nombre de Hola de hello que aparece de almacén de copia de seguridad correspondiente.
+    Si el archivo de credenciales de almacén no es válido (o ha expirado), descargue un nuevo archivo de credenciales de almacén desde el *Almacén de ejemplo* en Azure Portal. Cuando proporcione una credencial de almacén válida, aparecerá el nombre del almacén de copia de seguridad correspondiente.
 
-6. En hello **Seleccionar servidor de copia de seguridad** panel, seleccione hello *máquina de origen* en lista de Hola de máquinas mostradas y proporcionar la frase de contraseña de Hola. A continuación, haga clic en **Siguiente**.
+6. En el panel **Seleccionar servidor de copia de seguridad**, seleccione la *máquina de origen* en la lista de máquinas mostradas y proporcione la frase de contraseña. A continuación, haga clic en **Siguiente**.
 
     ![Lista de máquinas](./media/backup-azure-restore-windows-server/alternatemachine_selectmachine_instantrestore.png)
 
-7. En hello **seleccionar modo de recuperación** panel, seleccione **archivos y carpetas individuales** y haga clic en **siguiente**.
+7. En el panel **Seleccionar modo de recuperación**, seleccione **Archivos y carpetas individuales** y haga clic en **siguiente**.
 
     ![Search](./media/backup-azure-restore-windows-server/alternatemachine_selectrecoverymode_instantrestore.png)
 
-8. En hello **Seleccionar volumen y fecha** panel, volumen de hello select que contiene los archivos de Hola o carpetas que desee toorestore.
+8. En el panel **Seleccionar volumen y fecha**, seleccione el volumen que contiene los archivos y/o carpetas que desea restaurar.
 
-    En el calendario de hello, seleccione un punto de recuperación. Puede realizar la restauración desde cualquier momento dado de recuperación. Las fechas en **negrita** indicar la disponibilidad de Hola de al menos un punto de recuperación. Cuando selecciona una fecha, si existen varios puntos de recuperación, elija punto de recuperación específico de Hola de hello **tiempo** menú desplegable.
+    En el calendario, seleccione un punto de recuperación. Puede realizar la restauración desde cualquier momento dado de recuperación. Las fechas en **negrita** indican la disponibilidad de al menos un punto de recuperación. Cuando selecciona una fecha, si están disponibles varios puntos de recuperación, elija el punto de recuperación específico desde el menú desplegable **Hora**.
 
     ![Buscar artículos](./media/backup-azure-restore-windows-server/alternatemachine_selectvolumedate_instantrestore.png)
 
-9. Haga clic en **montar** toolocally montaje el punto de recuperación de Hola como un volumen de recuperación en el *equipo de destino*.
+9. Haga clic en **Montar** para montar localmente el punto de recuperación como un volumen de recuperación en la *máquina de destino*.
 
-10. En hello **examinar y recuperar archivos** panel, haga clic en **examinar** tooopen el Explorador de Windows y buscar Hola archivos y carpetas que desee.
+10. En el panel **Examinar y recuperar archivos**, haga clic en **Examinar** para abrir el Explorador de Windows y buscar los archivos y carpetas que desea.
 
     ![Cifrado](./media/backup-azure-restore-windows-server/alternatemachine_browserecover_instantrestore.png)
 
-11. En el Explorador de Windows, copie Hola archivos o carpetas del volumen de recuperación de Hola y péguelos tooyour *equipo de destino* ubicación. Puede abrir o transmitir Hola archivos directamente desde el volumen de recuperación de Hola y comprobar Hola correcto de las versiones recuperadas.
+11. En el Explorador de Windows, copie los archivos y/o carpetas desde el volumen de recuperación y péguelos en la ubicación *Máquina de destino*. Puede abrir o transmitir los archivos directamente desde el volumen de recuperación y comprobar que se recuperan las versiones correctas.
 
     ![Cifrado](./media/backup-azure-restore-windows-server/alternatemachine_copy_instantrestore.png)
 
-12. Cuando termine de restaurar los archivos de Hola o las carpetas, en hello **examinar y recuperación** panel, haga clic en **desmontar**. A continuación, haga clic en **Sí** tooconfirm que desea que el volumen de hello toounmount.
+12. Cuando termine de restaurar los archivos y/o carpetas, en el panel **Examinar y recuperar archivos**, haga clic en **Desmontar**. Haga clic en **Sí** para confirmar que desea desmontar el volumen.
 
     ![Cifrado](./media/backup-azure-restore-windows-server/alternatemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > Si no hace clic en desmontar, Hola recuperación volumen permanecerá montada durante seis horas desde el momento de hello cuando donde se montó. No hay ninguna operación de copia de seguridad se ejecutará mientras está montado el volumen de Hola. Cualquier toorun de operación de copia de seguridad programada durante el tiempo de hello cuando está montado el volumen de hello, se ejecutará después de volumen de recuperación de Hola se desmonta.
+    > Si no hace clic en Desmontar, el volumen de recuperación permanecerá montado durante seis horas desde el momento en el que se montó. No se ejecutará ninguna operación de copia de seguridad mientras el volumen esté montado. Cualquier operación de copia de seguridad programada para ejecutarse durante el tiempo en el que el volumen está montado, se ejecutará después de desmontar el volumen de recuperación.
     >
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-* [Preguntas más frecuentes de Copia de seguridad de Azure](backup-azure-backup-faq.md)
-* Visite hello [foro de copia de seguridad de Azure](http://go.microsoft.com/fwlink/p/?LinkId=290933).
+* [Preguntas más frecuentes de Azure Backup](backup-azure-backup-faq.md)
+* Visite el [Foro de Azure Backup](http://go.microsoft.com/fwlink/p/?LinkId=290933).
 
 ## <a name="learn-more"></a>Más información
-* [Información general de Copia de seguridad de Azure](http://go.microsoft.com/fwlink/p/?LinkId=222425)
+* [Información general de Azure Backup](http://go.microsoft.com/fwlink/p/?LinkId=222425)
 * [Copia de seguridad de máquinas virtuales de Azure](backup-azure-vms-introduction.md)
 * [Copia de seguridad de las cargas de trabajo de Microsoft](backup-azure-dpm-introduction.md)

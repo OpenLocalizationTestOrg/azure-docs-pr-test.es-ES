@@ -1,35 +1,35 @@
 
 ## <a name="planning-and-implementation"></a>Planeamiento e implementación
-título: aaaSAP NetWeaver en máquinas virtuales de Azure: Guía de implementación y planificación
+Título: SAP NetWeaver en máquinas virtuales de Azure: guía de planeación e implementación
 
-Resumen: Trata Hola papel toostart con si está pensando en ejecutar SAP NetWeaver en máquinas virtuales de Azure. Esta guía de planificación e implementación le ayudará a evaluar si una existente o sistema basadas en SAP NetWeaver planeado puede ser implementado tooan entorno de máquinas virtuales de Azure. Que se cubre varios escenarios de implementación de SAP NetWeaver e incluyen configuraciones SAP tooAzure específico. papel de Hello enumera y describe todos los Hola configuración necesaria información que necesitará en hello toorun de lado SAP/Azure un entorno SAP híbrido. También se tratan las medidas que puede tomar tooensure alta disponibilidad de los sistemas basados en SAP NetWeaver en IaaS.
+Resumen: Este es el documento por donde debe empezar si está pensando en ejecutar SAP NetWeaver en máquinas virtuales de Azure. Esta guía de planeación e implementación le ayudará a evaluar si un sistema basado SAP NetWeaver planeado o existente puede implementarse en un entorno de máquinas virtuales de Azure. Cubre varios escenarios de implementación de SAP NetWeaver e incluye configuraciones SAP específicas para Azure. Este documento enumera y describe toda la información de configuración necesaria que deberá tener al lado de SAP/Azure para ejecutar un entorno SAP híbrido. También cubre las medidas que se pueden tomar para garantizar una alta disponibilidad de los sistemas basados en SAP NetWeaver en IaaS.
 
 Actualizado: agosto de 2015
 
 [Descargar esta guía ahora](http://go.microsoft.com/fwlink/?LinkId=397963)
 
 ## <a name="deployment"></a>Implementación
-título: aaaSAP NetWeaver en máquinas virtuales de Azure: Guía de implementación
+Título: SAP NetWeaver en máquinas virtuales de Azure: Guía de implementación
 
-Resumen: Este documento proporciona los procedimientos necesarios para implementar máquinas de toovirtual de software de SAP NetWeaver en Azure. Este documento se centra en tres escenarios de implementación específico, con énfasis en la habilitación de las extensiones de supervisión de hello Azure para SAP, incluidas las recomendaciones para hello extensiones de supervisión de Azure para SAP solucionar. Este documento se da por supuesto que ha leído Hola planeamiento y la Guía de implementación.
+Resumen: Este documento proporciona una guía de los procedimientos necesarios para implementar el software SAP NetWeaver en máquinas virtuales de Azure Este documento se centra en tres escenarios de implementación específicos, con énfasis en la habilitación de las Extensiones de supervisión de Azure para SAP, incluidas las recomendaciones para la solución de problemas de las Extensiones de supervisión de Azure para SAP. Este documento supone que ha leído la guía de planeación e implementación.
 
 Actualizado: septiembre de 2015
 
 [Descargar esta guía ahora](http://go.microsoft.com/fwlink/?LinkId=397964)
 
 ## <a name="sap-dbms-on-azure"></a>SAP DBMS en Azure
-título: aaaSAP DBMS en la Guía de implementación de Azure
+Título: SAP DBMS en la guía de implementación de Azure
 
-Resumen: En este documento se trata las consideraciones de planificación e implementación para los sistemas DBMS de Hola que deben ejecutarse junto con SAP. En la primera parte de hello, se enumeran consideraciones generales y se presentan. Hello las partes siguientes de papel Hola relacionan toodeployments de diferentes DBMS en Azure que son compatibles con SAP. Diferentes DBMS que se presentan son SQL Server, ASE de SAP, Oracle, SAP MaxDB e IBM DB2 para Linux, Unix y Windows. En esas partes específicas se tratan las consideraciones que tener tooaccount para cuando se ejecutan los sistemas SAP en Azure junto con los DBMS. Asuntos como los métodos de copia de seguridad y de alta disponibilidad que son compatibles con hello que distintos DBMS en Azure se presentan para el uso de hello con aplicaciones de SAP.
+Resumen: Este documento cubre las consideraciones de planeación e implementación para los sistemas DBMS que deben ejecutarse con SAP. En la primera parte se presentan y se enumeran consideraciones generales. Las siguientes partes del documento están relacionadas con las implementaciones de diferentes DBMS en Azure que admite SAP. Diferentes DBMS que se presentan son SQL Server, ASE de SAP, Oracle, SAP MaxDB e IBM DB2 para Linux, Unix y Windows. En estas partes concretas, se tratan las consideraciones que debe tener en cuenta al ejecutar sistemas SAP en Azure junto con los DBMS. Se incluyen temas como los métodos de copia de seguridad y de alta disponibilidad que admiten los distintos DBMS en Azure para el uso con aplicaciones SAP.
 
 Actualización: diciembre de 2015
 
 [Descargar esta guía ahora](http://go.microsoft.com/fwlink/?LinkId=397965)
 
 ## <a name="sap-netweaver-on-azure"></a>SAP NetWeaver en Azure
-título: aaaSAP NetWeaver: creación de un Azure según la solución de recuperación ante desastres
+Título: SAP NetWeaver: creación de una solución de recuperación ante desastres basada en Azure
 
-Resumen: Este documento proporciona una guía paso a paso para crear una solución de recuperación ante desastres basada en Azure para SAP NetWeaver. solución de Hello descrita asume que Hola panorama SAP ejecuta virtualizado en función de Hyper-V en local. En primera parte del documento de hello Azure Site Recovery (ASR) de hello servicios se presentan en sus componentes. Hola segunda parte del documento de hello describe características específicas para los entornos basadas en SAP NetWeaver. Se explican y describen las posibilidades de uso de ASR con instancias de aplicación de SAP NetWeaver y los servicios centrales de SAP. Un enfoque de la segunda parte de Hola aprovecha ASR para los servicios centrales de SAP que están protegidos con las configuraciones de clúster de conmutación por error de servidor de windows.
+Resumen: Este documento proporciona una guía paso a paso para crear una solución de recuperación ante desastres basada en Azure para SAP NetWeaver. En la solución descrita se da por supuesto que el entorno SAP se ejecuta en instalaciones locales virtualizadas basadas en Hyper-V. En la primera parte del documento, los servicios de Azure Site Recovery (ASR) se presentan en sus componentes. La segunda parte del documento describe características específicas para entornos basados en SAP NetWeaver. Se explican y describen las posibilidades de uso de ASR con instancias de aplicación de SAP NetWeaver y los servicios centrales de SAP. La segunda parte se centra en cómo usar ASR para los servicios centrales de SAP protegidos con configuraciones del clúster de conmutación por error de Windows Server.
 
 Actualizado: septiembre de 2015
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure AD Connect y federación | Documentos de Microsoft"
-description: "Esta página es la ubicación central de Hola para toda la documentación relacionada con las operaciones de AD FS que usan Azure AD Connect."
+title: "Azure AD Connect y federación | Microsoft Docs"
+description: "Esta página es la ubicación central para toda la documentación relacionada con las operaciones de AD FS que usan Azure AD Connect."
 services: active-directory
 documentationcenter: 
 author: anandyadavmsft
@@ -14,37 +14,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: anandy
-ms.openlocfilehash: dc70206eee2296c2320712ef2ade48ccebcc912d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 6822320c92d106d28607289a90f2f08a51e04070
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect y la federación
-Connect de Azure Active Directory (Azure AD) le permite configurar la federación con Servicios de federación de Active Directory (AD FS) locales y Azure AD. Con inicio de sesión de federación, puede habilitar usuarios toosign en tooAzure basados en AD con sus contraseñas locales--y servicios, mientras que en la red corporativa de hello, sin tener tooenter sus contraseñas de nuevo. Con la opción de federación de hello con AD FS, puede implementar una nueva instalación de AD FS o puede especificar una instalación existente en una granja de servidores de Windows Server 2012 R2.
+Connect de Azure Active Directory (Azure AD) le permite configurar la federación con Servicios de federación de Active Directory (AD FS) locales y Azure AD. Con el inicio de sesión federado, puede habilitar a los usuarios para que inicien sesión en los servicios basados en Azure AD con sus contraseñas locales y, mientras se encuentren en la red corporativa, sin necesidad de volver a escribir sus contraseñas. Mediante la opción de federación con AD FS, puede implementar una nueva instalación de AD FS o puede especificar una instalación existente en una granja de servidores de Windows Server 2012 R2.
 
-Este tema es hello doméstica para obtener información relacionada con la federación funcionalidades de Azure AD Connect. Enumera vínculos tooall temas relacionados. Para vínculos tooAzure AD Connect, consulte [integrar las identidades locales con Azure Active Directory](active-directory-aadconnect.md).
+Este tema constituye la principal referencia de las funcionalidades relacionadas con la federación correspondientes a Azure AD Connect. Ofrece vínculos a todos los demás temas relacionados. Para obtener vínculos para Azure AD Connect, consulte [Integración de las identidades locales con Azure Active Directory](active-directory-aadconnect.md).
 
 ## <a name="azure-ad-connect-federation-topics"></a>Azure AD Connect: temas de federación
-| Tema. | ¿Qué incluye y cuándo tooread, |
+| Tema. | ¿Qué aspectos cubre y cuándo debe leerlos? |
 |:--- |:--- |
 | **Opciones para el inicio de sesión de los usuarios en Azure AD Connect** | |
-| [Descripción de las opciones de inicio de sesión de los usuarios](active-directory-aadconnect-user-signin.md) |Obtenga información sobre las distintas opciones de inicio de sesión de usuario y cómo afectan a la experiencia del usuario Hola de inicio de sesión Azure. |
+| [Descripción de las opciones de inicio de sesión de los usuarios](active-directory-aadconnect-user-signin.md) |Obtenga información sobre diferentes opciones de inicio de sesión de usuario y cómo afectan a la experiencia de inicio de sesión del usuario en Azure. |
 | **Instalación de AD FS mediante Azure AD Connect** | |
-| [Requisitos previos](active-directory-aadconnect-get-started-custom.md#ad-fs-configuration-pre-requisites) |Consulte los requisitos previos de Hola para una correcta instalación de AD FS a través de Azure AD Connect. |
+| [Requisitos previos](active-directory-aadconnect-get-started-custom.md#ad-fs-configuration-pre-requisites) |Consulte los requisitos previos para una correcta instalación de AD FS a través de Azure AD Connect. |
 | [Configuración de una granja de servidores de AD FS](active-directory-aadconnect-get-started-custom.md#configuring-federation-with-ad-fs) |Instale una nueva granja de servidores de AD FS mediante Azure AD Connect. |
 | [Federación con Azure AD mediante un identificador de inicio de sesión alternativo](active-directory-aadconnect-federation-management.md#alternateid) | Configuración de la federación con un identificador de inicio de sesión alternativo  |
-| **Modificar configuración de hello AD FS** | |
-| [Confianza de Hola de reparación](active-directory-aadconnect-federation-management.md#repairthetrust) |Reparación Hola actual confianza entre local de AD FS y Office 365 o SQL Azure. |
+| **Modificación de la configuración de AD FS** | |
+| [Reparación de la confianza](active-directory-aadconnect-federation-management.md#repairthetrust) |Repare la confianza actual entre AD FS local y Office 365 o Azure. |
 | [Adición de un nuevo servidor de AD FS](active-directory-aadconnect-federation-management.md#addadfsserver) |Expansión de la granja de servidores de AD FS con un servidor de AD FS adicional después de la instalación inicial. |
 | [Incorporación de un nuevo servidor WAP de AD FS](active-directory-aadconnect-federation-management.md#addwapserver) |Expanda una granja de servidores de AD FS con un servidor proxy de aplicación web (WAP) adicional después de la instalación inicial. |
-| [Incorporación de un nuevo dominio federado](active-directory-aadconnect-federation-management.md#addfeddomain) |Agregue otro toobe dominio federado con Azure AD. |
-| [Actualiza el certificado SSL de Hola](active-directory-aadconnectfed-ssl-update.md)| Actualiza el certificado SSL de Hola para una granja de servidores de AD FS. |
+| [Incorporación de un nuevo dominio federado](active-directory-aadconnect-federation-management.md#addfeddomain) |Agregue otro dominio para que se federe con Azure AD. |
+| [Actualizar el certificado SSL](active-directory-aadconnectfed-ssl-update.md)| Actualice el certificado SSL para una granja de servidores de AD FS. |
 | **Otros parámetros de configuración de la federación** | |
 | [Federación de varias instancias de Azure AD con una instancia única de AD FS](active-directory-aadconnectfed-single-adfs-multitenant-federation.md) | Federación de varias instancias de Azure AD con una granja única de servidores de AD FS| 
-| [Incorporación de una ilustración o un logotipo personalizado de la compañía](active-directory-aadconnect-federation-management.md#customlogo) |Modificar la experiencia de inicio de sesión de hello mediante la especificación logotipo personalizado de Hola que se muestra en el inicio de sesión página de hello AD FS. |
-| [Adición de la descripción de inicio de sesión](active-directory-aadconnect-federation-management.md#addsignindescription) |Cambiar Hola inicio de sesión descripción en la página de inicio de sesión de hello AD FS. |
-| [Modificación de las reglas de notificaciones de AD FS](active-directory-aadconnect-federation-management.md#modclaims) |Modificar o agregar reglas de notificaciones de AD FS que corresponden a configuración de sincronización de tooAzure AD Connect. |
+| [Incorporación de una ilustración o un logotipo personalizado de la compañía](active-directory-aadconnect-federation-management.md#customlogo) |Modifique la experiencia de inicio de sesión especificando el logotipo personalizado que se muestra en la página de inicio de sesión de AD FS. |
+| [Adición de la descripción de inicio de sesión](active-directory-aadconnect-federation-management.md#addsignindescription) |Cambie la descripción de inicio de sesión en la página de inicio de sesión de AD FS. |
+| [Modificación de las reglas de notificaciones de AD FS](active-directory-aadconnect-federation-management.md#modclaims) |Modifique o agregue reglas de notificaciones de AD FS que se corresponden con la configuración de sincronización de Azure AD Connect. |
 
 
 ## <a name="additional-resources"></a>Recursos adicionales

@@ -1,6 +1,6 @@
 ---
-title: aaaCreate ContentKeys con .NET
-description: "Obtenga información acerca de cómo toocreate claves de contenido que proporcionan segura tiene acceso a tooAssets."
+title: "Creación de claves de contenido con .NET"
+description: Aprenda a crear claves de contenido que proporcionen un acceso seguro a los recursos.
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 35909c64e8393e228be75c464a034ffc40122952
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3280a6fcde59bae360da7cb9fea4bb649f984e43
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-contentkeys-with-net"></a>Creación de claves de contenido con .NET
 > [!div class="op_single_selector"]
@@ -27,28 +27,28 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Servicios multimedia permite toocreate y entregar a los recursos cifrados. A **ContentKey** proporciona un acceso seguro tooyour **Asset**s. 
+Servicios multimedia permite crear nuevos recursos y entregar recursos cifrados. Una **ContentKey** proporciona acceso seguro a los **recursos**. 
 
-Cuando se crea un nuevo recurso (por ejemplo, antes de [cargar archivos](media-services-dotnet-upload-files.md)), puede especificar Hola siguientes opciones de cifrado: **StorageEncrypted**, **CommonEncryptionProtected**, o **EnvelopeEncryptionProtected**. 
+Al crear un nuevo recurso (por ejemplo, antes de [cargar archivos](media-services-dotnet-upload-files.md)), puede especificar las siguientes opciones de cifrado: **StorageEncrypted**, **CommonEncryptionProtected** o **EnvelopeEncryptionProtected**. 
 
-Al entregar activos tooyour clientes, es posible realizar [configurar para toobe activos dinámicamente cifrado](media-services-dotnet-configure-asset-delivery-policy.md) con uno de hello después de cifrar los dos datos: **DynamicEnvelopeEncryption** o  **DynamicCommonEncryption**.
+Al entregar recursos a los clientes, puede [configurar que los recursos se cifren de forma dinámica](media-services-dotnet-configure-asset-delivery-policy.md) con uno de los dos cifrados siguientes: **DynamicEnvelopeEncryption** o **DynamicCommonEncryption**.
 
-Los recursos cifrados tienen toobe asociada **ContentKey**s. Este artículo se describe cómo toocreate una clave de contenido.
+Los recursos cifrados tienen que estar asociados con **ContentKey**. En este artículo se describe cómo crear una clave de contenido.
 
 > [!NOTE]
-> Al crear un nuevo **StorageEncrypted** recurso a través Hola Media Services .NET SDK, hello **ContentKey** automáticamente se crea y se vincula con asset Hola.
+> Al crear un nuevo recurso **StorageEncrypted** con el SDK de Media Services para .NET, se crea automáticamente el valor de **ContentKey** y se vincula al recurso.
 > 
 > 
 
 ## <a name="contentkeytype"></a>ContentKeyType
-Uno de los valores de hello que debe establecer al crear un contenido clave es el tipo de clave de contenido de Hola. Elija uno de hello después de valores. 
+Uno de los valores que debe configurar al crear una clave de contenido es el tipo de clave de contenido. Elija uno de los valores siguientes. 
 
     public enum ContentKeyType
     {
         /// <summary>
         /// Specifies a content key for common encryption.
         /// </summary>
-        /// <remarks>This is hello default value.</remarks>
+        /// <remarks>This is the default value.</remarks>
         CommonEncryption = 0,
 
         /// <summary>
@@ -68,7 +68,7 @@ Uno de los valores de hello que debe establecer al crear un contenido clave es e
     }
 
 ## <a id="envelope_contentkey"></a>Crear ContentKey de tipo de sobre
-Hello fragmento de código siguiente crea una clave de contenido Hola envolvente del tipo de cifrado. A continuación, asocia clave Hola activos especificado Hola.
+El siguiente fragmento de código crea una clave de contenido del tipo de cifrado de sobre. A continuación, asocia la clave con el recurso especificado.
 
     static public IContentKey CreateEnvelopeTypeContentKey(IAsset asset)
     {
@@ -105,7 +105,7 @@ llamada
 
 
 ## <a id="common_contentkey"></a>Crear ContentKey de tipo común
-Hello fragmento de código siguiente crea una clave de contenido de tipo de cifrado común de Hola. A continuación, asocia clave Hola activos especificado Hola.
+El fragmento de código siguiente crea una clave de contenido del tipo de cifrado común. A continuación, asocia la clave con el recurso especificado.
 
     static public IContentKey CreateCommonTypeContentKey(IAsset asset)
     {
@@ -119,7 +119,7 @@ Hello fragmento de código siguiente crea una clave de contenido de tipo de cifr
                                 "ContentKey",
                                 ContentKeyType.CommonEncryption);
 
-        // Associate hello key with hello asset.
+        // Associate the key with the asset.
         asset.ContentKeys.Add(key);
 
         return key;

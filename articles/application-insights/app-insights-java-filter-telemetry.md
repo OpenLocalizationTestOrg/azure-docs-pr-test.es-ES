@@ -1,6 +1,6 @@
 ---
-title: "aaaFilter telemetría de Azure Application Insights en la aplicación web de Java | Documentos de Microsoft"
-description: "Reducir el tráfico de telemetría mediante el filtrado de los eventos de hello no es necesario toomonitor."
+title: "Filtrado de la telemetría de Azure Application Insights en la aplicación web de Java | Microsoft Docs"
+description: "Reduzca el tráfico de telemetría mediante el filtrado de los eventos que no necesita supervisar."
 services: application-insights
 documentationcenter: 
 author: CFreemanwa
@@ -12,25 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: bwren
-ms.openlocfilehash: 95713e11d5f86472777c67e4e7f3177fbf2cd0b4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5f6d6d4ad590b85810c42e9f9520850024c5446a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Filtrado de telemetría en la aplicación web de Java
 
-Filtros proporcionan una telemetría de hello tooselect de manera que su [aplicación web de Java envía información de tooApplication](app-insights-java-get-started.md). Hay algunos filtros de serie que puede utilizar y también puede escribir sus propios filtros personalizados.
+Los filtros proporcionan una manera de seleccionar la telemetría que su [aplicación web de Java envía a Application Insights](app-insights-java-get-started.md). Hay algunos filtros de serie que puede utilizar y también puede escribir sus propios filtros personalizados.
 
-Hola de cuadro filtros incluye:
+Los filtros de serie incluyen:
 
 * El nivel de gravedad del seguimiento
 * Direcciones URL específicas, palabras clave o códigos de respuesta
-* Respuestas rápidas: es decir, solicitudes toowhich la aplicación respondió tooquickly
+* Respuestas rápidas, es decir, las solicitudes a las que la aplicación responde rápidamente
 * Nombres de eventos específicos
 
 > [!NOTE]
-> Filtros sesgar las métricas de saludo de la aplicación. Por ejemplo, podría decidir que, en orden toodiagnose lentitud, establecerá un filtro toodiscard rápidos tiempos de respuesta. Pero debe ser consciente de que los tiempos de respuesta promedio de hello notificados por Application Insights, a continuación, será más lentos que la velocidad de hello true y recuento de Hola de solicitudes será menor que el número real de Hola.
+> Los filtros sesgan las métricas de la aplicación. Por ejemplo, puede decidir que, para diagnosticar respuestas lentas, hay que establecer un filtro para descartar los tiempos de respuesta rápidos. Pero debe tener en cuenta que los tiempos de respuesta promedio notificados por Application Insights serán más lentos que la velocidad real y que el recuento de las solicitudes será menor que el recuento real.
 > Si puede resultar un problema, use el [muestreo](app-insights-sampling.md) en su lugar.
 
 ## <a name="setting-filters"></a>Establecimiento de filtros
@@ -60,7 +60,7 @@ En ApplicationInsights.xml, agregue una sección `TelemetryProcessors` como la d
            </Processor>
 
            <Processor type="TelemetryEventFilter">
-                  <!-- Names of events we don't want toosee -->
+                  <!-- Names of events we don't want to see -->
                   <Add name="NotNeededNames" value="Start,Stop,Pause"/>
            </Processor>
 
@@ -88,7 +88,7 @@ En ApplicationInsights.xml, agregue una sección `TelemetryProcessors` como la d
 
 
 
-[Inspeccionar el conjunto completo de Hola de procesadores integrados](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
+[Inspeccione el conjunto completo de procesadores integrados](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
 
 ## <a name="built-in-filters"></a>Filtros integrados
 
@@ -115,9 +115,9 @@ En ApplicationInsights.xml, agregue una sección `TelemetryProcessors` como la d
            </Processor>
 ```
 
-* `DurationThresholdInMS`-Duración refiere a tiempo toohello página de hello tooload. Si está establecido el tiempo, no se notifican las páginas que se cargan más rápido que en este momento.
+* `DurationThresholdInMS`: la duración se refiere al tiempo dedicado a cargar la página. Si está establecido el tiempo, no se notifican las páginas que se cargan más rápido que en este momento.
 * `NotNeededNames`: lista de nombres de página separados por comas.
-* `NotNeededUrls`: lista de fragmentos de URL separados por comas. Por ejemplo, `"home"` filtra todas las páginas que tienen "inicio" en la dirección URL de Hola.
+* `NotNeededUrls`: lista de fragmentos de URL separados por comas. Por ejemplo, `"home"` filtra todas las páginas que tienen "inicio" en la dirección URL.
 
 
 ### <a name="request-telemetry-filter"></a>Filtro de telemetría de solicitudes
@@ -136,7 +136,7 @@ En ApplicationInsights.xml, agregue una sección `TelemetryProcessors` como la d
 
 ### <a name="synthetic-source-filter"></a>Filtro de origen sintético
 
-Filtra todos los telemetría que tienen valores en hello SyntheticSource propiedad. Incluye solicitudes de bots, spiders y pruebas de disponibilidad.
+Filtra toda la telemetría con valores en la propiedad SyntheticSource. Incluye solicitudes de bots, spiders y pruebas de disponibilidad.
 
 Filtre la telemetría para todas las solicitudes sintéticas:
 
@@ -187,7 +187,7 @@ Filtra los seguimientos de registros (registrados mediante [TrackTrace()](app-in
 
 * Los valores válidos de `FromSeverityLevel` son:
  *  OFF             - Filtra TODOS los seguimientos
- *  TRACE           - Sin filtrado. es igual a nivel de tooTrace
+ *  TRACE           - Sin filtrado. es igual al nivel de seguimiento
  *  INFO            - Filtra el nivel TRACE
  *  WARN            - Filtra el nivel TRACE e INFO
  *  ERROR           - Filtra WARN, INFO, TRACE
@@ -208,18 +208,18 @@ En el código, cree una clase que implemente `TelemetryProcessor`:
 
     public class SuccessFilter implements TelemetryProcessor {
 
-       /* Any parameters that are required toosupport hello filter.*/
+       /* Any parameters that are required to support the filter.*/
        private final String successful;
 
-       /* Initializers for hello parameters, named "setParameterName" */
+       /* Initializers for the parameters, named "setParameterName" */
        public void setNotNeeded(String successful)
        {
           this.successful = successful;
        }
 
-       /* This method is called for each item of telemetry toobe sent.
-          Return false toodiscard it.
-          Return true tooallow other processors tooinspect it. */
+       /* This method is called for each item of telemetry to be sent.
+          Return false to discard it.
+          Return true to allow other processors to inspect it. */
        @Override
        public boolean process(Telemetry telemetry) {
         if (telemetry == null) { return true; }
@@ -235,7 +235,7 @@ En el código, cree una clase que implemente `TelemetryProcessor`:
 ```
 
 
-### <a name="2-invoke-your-filter-in-hello-configuration-file"></a>2. Invocar el filtro en el archivo de configuración de hello
+### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. Invocación del filtro en el archivo de configuración
 
 En ApplicationInsights.xml:
 
@@ -258,7 +258,7 @@ En ApplicationInsights.xml:
 
 *El filtro no funciona.*
 
-* Compruebe que ha proporcionado valores de parámetro válidos. Por ejemplo, las duraciones deben ser números enteros. Valores no válidos harán que Hola filtro toobe pasa por alto. Si el filtro personalizado produce una excepción desde un constructor o el método set, se omitirá.
+* Compruebe que ha proporcionado valores de parámetro válidos. Por ejemplo, las duraciones deben ser números enteros. Unos valores no válidos hará que el filtro que ignore. Si el filtro personalizado produce una excepción desde un constructor o el método set, se omitirá.
 
 ## <a name="next-steps"></a>Pasos siguientes
 

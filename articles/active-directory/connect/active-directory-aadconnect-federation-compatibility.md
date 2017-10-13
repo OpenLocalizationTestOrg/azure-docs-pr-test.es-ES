@@ -1,6 +1,6 @@
 ---
-title: "lista de compatibilidad de federación de AD aaaAzure"
-description: "Esta página contiene otros fabricantes proveedores de identidades que pueden ser utilizado tooimplement inicio de sesión único."
+title: "Lista de compatibilidad de federación de Azure AD"
+description: "Esta página presenta proveedores de identidades de terceros que se pueden utilizar para implementar el inicio de sesión único."
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: ac2f9ad324c8ca6b587b73ea465426ad6b074b03
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: bce5867017647764546d872d97943d5d4f01f2d2
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-ad-federation-compatibility-list"></a>Lista de compatibilidad de federación de Azure AD
-Azure Active Directory brinda mayor seguridad en el acceso a la aplicación e inicio de sesión único para Office 365 y otros servicios en línea de Microsoft para implementaciones híbridas y solo en la nube sin que sea necesaria ninguna solución de terceros. Office 365, al igual que la mayoría de los servicios en línea de Microsoft, está integrado con Azure Active Directory para autorización, autenticación y servicios de directorio. Azure Active Directory también proporciona toothousands de inicio de sesión único de aplicaciones SaaS y local de aplicaciones web. Consulte la Galería de aplicaciones de Azure Active Directory de Hola para las aplicaciones SaaS compatibles.
+Azure Active Directory brinda mayor seguridad en el acceso a la aplicación e inicio de sesión único para Office 365 y otros servicios en línea de Microsoft para implementaciones híbridas y solo en la nube sin que sea necesaria ninguna solución de terceros. Office 365, al igual que la mayoría de los servicios en línea de Microsoft, está integrado con Azure Active Directory para autorización, autenticación y servicios de directorio. Azure Active Directory también proporciona inicio de sesión único a miles de aplicaciones SaaS y aplicaciones web locales. Consulte la galería de aplicaciones de Azure Active Directory para ver las aplicaciones SaaS compatibles.
 
-Para las organizaciones que han invertido en soluciones de federación no sean de Microsoft, este tema contiene instrucciones para configurar el inicio de sesión único para los usuarios de Active Directory de Windows Server con Microsoft Online services mediante el uso de proveedores de identidades de otros fabricantes de Hola "Azure Active Directory federation lista de compatibilidad de" a continuación. 
+En el caso de las organizaciones que invirtieron en soluciones de federación de terceros, este tema contiene guías sobre cómo configurar el inicio de sesión único para sus usuarios de Windows Server Active Directory con servicios en línea de Microsoft mediante el uso de proveedores de identidades de terceros que se incluyen en la "Lista de compatibilidad de federación de Azure Active Directory" que aparece más adelante. 
 
 ![](./media/active-directory-aadconnect-federation-compatibility/oxford2.jpg)   
 [Oxford Computer Group](http://oxfordcomputergroup.com/), un tercero, probó, en nombre de Microsoft, estas experiencias de inicio de sesión único con proveedores de identidades de terceros en relación con un conjunto de casos de uso común con Azure Active Directory.
@@ -31,9 +31,9 @@ Para las organizaciones que han invertido en soluciones de federación no sean d
 Para obtener información sobre cómo obtener el proveedor de identidades de terceros que figura aquí, póngase en contacto con Oxford Computer Group en [idp@oxfordcomputergroup.com](mailto:idp@oxfordcomputergroup.com).
 
 > [!IMPORTANT]
-> Grupo de equipos Oxford había probado solo Hola federación la funcionalidad de estos escenarios de inicio de sesión único. Grupo de equipos Oxford no realizó ninguna prueba de sincronización de hello, autenticación en dos fases, etc., componentes de estos escenarios de inicio de sesión único.
+> Oxford Computer Group probó únicamente la funcionalidad de federación de estos escenarios de inicio de sesión único. Oxford Computer Group no llevó a cabo ninguna prueba de sincronización, de autenticación de dos factores, etc., componentes de estos escenarios de inicio de sesión único.
 > 
-> Tampoco se prueba el uso de inicio de sesión por Id. alternativo tooUPN en este programa.
+> En este programa, tampoco se prueba el uso de inicio de sesión por un identificador alternativo a UPN.
 > 
 > 
 
@@ -57,22 +57,22 @@ Para obtener información sobre cómo obtener el proveedor de identidades de ter
 * [RadiantOne CFS 3.0](#radiantone-cfs-30) 
 * [Sailpoint IdentityNow](#sailpoint-identitynow)
 * [SecureAuth IdP 7.2.0](#secureauth-idp-720) 
-* [Sign&amp;go 5.3](#signgo-53) 
+* [Sign&go 5.3](#signgo-53) 
 * [SoftBank Technology Online Service Gate](#softbank)
 * [VMware Workspace One](#vmware-workspace-one)
 
 
 
 > [!IMPORTANT]
-> Puesto que estos son productos de otros fabricantes, Microsoft no ofrece soporte para hello implementación, configuración, solución de problemas, mejores prácticas, ni para los problemas y preguntas con respecto a estos proveedores de identidad. Para obtener soporte técnico y preguntas con respecto a estos proveedores de identidad, póngase en contacto con terceros Hola admitida directamente.
+> Dado que estos son productos de otros fabricantes, Microsoft no proporciona soporte técnico para la implementación, la configuración, la solución de problemas, los procedimientos recomendados, etc., ni para los problemas o las preguntas que surjan con respecto a estos proveedores de identidades. Para obtener soporte técnico o para preguntas relacionadas con estos proveedores de identidades, póngase en contacto directamente con los fabricantes.
 > 
-> Se ha probado la interoperabilidad de estos proveedores de identidades de terceros con los servicios en la nube de Microsoft usando únicamente los protocolos WS-Federation y WS-Trust. La prueba no incluyó el uso del protocolo SAML de Hola.
+> Se ha probado la interoperabilidad de estos proveedores de identidades de terceros con los servicios en la nube de Microsoft usando únicamente los protocolos WS-Federation y WS-Trust. La prueba no incluyó el protocolo SAML.
 > 
 
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
-Hola te mostramos matriz de compatibilidad de escenario de Hola para esta experiencia de inicio de sesión: 
+A continuación, se presenta la matriz de compatibilidad de escenarios para esta experiencia de inicio de sesión:  
 
 | Cliente | Soporte técnico | Excepciones |
 | --- | --- | --- |
@@ -87,7 +87,7 @@ Para más información sobre el uso de Azure Active Directory con sincronizació
 
 ## <a name="authanvil-single-sign-on-45"></a>AuthAnvil Single Sign On 4.5
 
-Hola te mostramos matriz de compatibilidad de escenario de Hola para esta experiencia de inicio de sesión único:
+A continuación, se presenta la matriz de compatibilidad de escenarios para esta experiencia de inicio de sesión único:
 
 | Cliente | Soporte técnico | Excepciones |
 | --- | --- | --- |
@@ -100,7 +100,7 @@ Para obtener más información, vea [AuthAnvil Single Sign On](https://help.scor
 
 ## <a name="big-ip-with-access-policy-manager-big-ip-ver-113x--116x"></a>BIG-IP con Access Policy Manager BIG-IP ver. 11.3x – 11.6x
 
-Hola te mostramos matriz de compatibilidad de escenario de Hola para esta experiencia de inicio de sesión único: 
+A continuación, se presenta la matriz de compatibilidad de escenarios para esta experiencia de inicio de sesión único: 
 
 | Cliente | Soporte técnico | Excepciones |
 | --- | --- | --- |
@@ -110,11 +110,11 @@ Hola te mostramos matriz de compatibilidad de escenario de Hola para esta experi
 
 Para más información sobre BIG-IP Access Policy Manager, consulte la referencia sobre [BIG-IP Access Policy Manager](https://f5.com/products/modules/access-policy-manager) 
 
-Para obtener instrucciones de BIG-IP Access Policy Manager hello en cómo tooconfigure esta experiencia de inicio de sesión único de hello STS tooprovide tooyour usuarios de Active Directory, descargar Hola pdf [BIG-IP](http://www.f5.com/pdf/deployment-guides/microsoft-office-365-idp-dg.pdf).
+Para obtener instrucciones de BIG-IP Access Policy Manager para configurar este STS con el fin de proporcionar una experiencia de inicio de sesión único a los usuarios de Active Directory, descargue el archivo .pdf [BIG-IP](http://www.f5.com/pdf/deployment-guides/microsoft-office-365-idp-dg.pdf).
 
 ## <a name="bitglass"></a>BitGlass
 
-Hola te mostramos matriz de compatibilidad de escenario de Hola para esta experiencia de inicio de sesión único:
+A continuación, se presenta la matriz de compatibilidad de escenarios para esta experiencia de inicio de sesión único:
 
 | Cliente | Soporte técnico | Excepciones |
 | --- | --- | --- |
@@ -126,7 +126,7 @@ Para obtener más información sobre BitGlass, vea [BitGlass](http://www.bitglas
 
 ## <a name="ca-secure-cloud"></a>CA Secure Cloud
 
-Hola te mostramos matriz de compatibilidad de escenario de Hola para esta experiencia de inicio de sesión único:
+A continuación, se presenta la matriz de compatibilidad de escenarios para esta experiencia de inicio de sesión único:
 
 | Cliente | Soporte técnico | Excepciones |
 | --- | --- | --- |
@@ -138,7 +138,7 @@ Para obtener más información sobre CA Secure Cloud, vea [CA Secure Cloud](http
 
 ## <a name="ca-siteminder-1252-sp1-cumulative-release-4"></a>CA SiteMinder 12.52 SP1 Cumulative Release 4
 
-Hola te mostramos matriz de compatibilidad de escenario de Hola para esta experiencia de inicio de sesión único: 
+A continuación, se presenta la matriz de compatibilidad de escenarios para esta experiencia de inicio de sesión único: 
 
 | Cliente | Soporte técnico | Excepciones |
 | --- | --- | --- |
@@ -150,7 +150,7 @@ Para obtener más información sobre CA SiteMinder, vea [CA SiteMinder Federatio
 
 ## <a name="centrify"></a>Centrify
 
-Hola te mostramos matriz de compatibilidad de escenario de Hola para esta experiencia de inicio de sesión único:
+A continuación, se presenta la matriz de compatibilidad de escenarios para esta experiencia de inicio de sesión único:
 
 | Cliente | Soporte técnico | Excepciones |
 | --- | --- | --- |
@@ -162,7 +162,7 @@ Para obtener más información sobre Centrify, vea [Centrify](http://www.centrif
 
 ## <a name="dell-one-identity-cloud-access-manager-v71"></a>Dell One Identity Cloud Access Manager v7.1
 
-Hola te mostramos matriz de compatibilidad de escenario de Hola para esta experiencia de inicio de sesión único:
+A continuación, se presenta la matriz de compatibilidad de escenarios para esta experiencia de inicio de sesión único:
 
 | Cliente | Soporte técnico | Excepciones |
 | --- | --- | --- |
@@ -172,11 +172,11 @@ Hola te mostramos matriz de compatibilidad de escenario de Hola para esta experi
 
 Para obtener más información sobre Dell One Identity Cloud Access Manager, vea [Dell One Identity Cloud Access Manager](http://software.dell.com/products/cloud-access-manager).
 
- Para obtener instrucciones de hello en tooconfigure esta experiencia de inicio de sesión único de hello STS tooprovide tooyour a los usuarios de Office 365, vea [configurar usuarios de Office 365](http://documents.software.dell.com/dell-one-identity-cloud-access-manager/7.1/how-to-configure-microsoft-office-365). 
+ Para obtener instrucciones sobre cómo configurar este STS con el fin de proporcionar la experiencia de inicio de sesión único a los usuarios de Office 365, vea [Configurar Usuarios de Office 365](http://documents.software.dell.com/dell-one-identity-cloud-access-manager/7.1/how-to-configure-microsoft-office-365). 
 
 ## <a name="digitalpersona-composite-authentication"></a>DigitalPersona Composite Authentication  
 
-Hola te mostramos matriz de compatibilidad de escenario de Hola para esta experiencia de inicio de sesión único:
+A continuación, se presenta la matriz de compatibilidad de escenarios para esta experiencia de inicio de sesión único:
 
 | Cliente | Soporte técnico | Excepciones |
 | --- | --- | --- |
@@ -189,7 +189,7 @@ Para obtener más información, vea [DigitalPersona Composite Authentication](ht
 
 ## <a name="ibm-tivoli-federated-identity-manager-622"></a>IBM Tivoli Federated Identity Manager 6.2.2
 
-Hola te mostramos matriz de compatibilidad de escenario de Hola para esta experiencia de inicio de sesión único: 
+A continuación, se presenta la matriz de compatibilidad de escenarios para esta experiencia de inicio de sesión único: 
 
 | Cliente | Soporte técnico | Excepciones |
 | --- | --- | --- |
@@ -201,7 +201,7 @@ Para obtener más información sobre IBM Tivoli Federated Identity Manager, vea 
 
 ## <a name="icewall-federation-version-30"></a>IceWall Federation versión 3.0
 
-Hola te mostramos matriz de compatibilidad de escenario de Hola para esta experiencia de inicio de sesión único:
+A continuación, se presenta la matriz de compatibilidad de escenarios para esta experiencia de inicio de sesión único:
 
 | Cliente | Soporte técnico | Excepciones |
 | --- | --- | --- |
@@ -213,7 +213,7 @@ Para obtener más información sobre IceWall Federation, vea [IceWall Federation
 
 ## <a name="memority"></a>Memority
 
-Hola te mostramos matriz de compatibilidad de escenario de Hola para esta experiencia de inicio de sesión: 
+A continuación, se presenta la matriz de compatibilidad de escenarios para esta experiencia de inicio de sesión:  
 
 | Cliente | Soporte técnico | Excepciones |
 | --- | --- | --- |
@@ -226,7 +226,7 @@ Para obtener más información sobre el uso de Memority, vea [Memority](http://w
 
 ## <a name="netiq-access-manager-4x"></a>NetIQ Access Manager 4.x
 
-Hola te mostramos matriz de compatibilidad de escenario de Hola para esta experiencia de inicio de sesión único:
+A continuación, se presenta la matriz de compatibilidad de escenarios para esta experiencia de inicio de sesión único:
 
 | Cliente | Soporte técnico | Excepciones |
 | --- | --- | --- |
@@ -238,7 +238,7 @@ Para obtener más información, vea [NetIQ Access Manager](https://www.netiq.com
 
 ## <a name="okta"></a>Okta
 
-Hola te mostramos matriz de compatibilidad de escenario de Hola para esta experiencia de inicio de sesión único: 
+A continuación, se presenta la matriz de compatibilidad de escenarios para esta experiencia de inicio de sesión único: 
 
 | Cliente | Soporte técnico | Excepciones |
 | --- | --- | --- |
@@ -250,7 +250,7 @@ Para obtener más información sobre Okta, vea [Okta](https://www.okta.com/).
 
 ## <a name="onelogin"></a>OneLogin
 
-Hola te mostramos matriz de compatibilidad de escenario de Hola para esta experiencia de inicio de sesión único: 
+A continuación, se presenta la matriz de compatibilidad de escenarios para esta experiencia de inicio de sesión único: 
 
 | Cliente | Soporte técnico | Excepciones |
 | --- | --- | --- |
@@ -262,7 +262,7 @@ Para obtener más información sobre OneLogin, vea [OneLogin](https://www.onelog
 
 ## <a name="optimal-idm-virtual-identity-server-federation-services"></a>Servicios de federación de servidores de identidad virtual de Optimal IDM
 
-siguiente Hello es Hola matriz de compatibilidad de escenario esta experiencia de inicio de sesión único:
+A continuación, se presenta la matriz de compatibilidad de escenarios para esta experiencia de inicio de sesión único:
 
 | Cliente | Soporte técnico | Excepciones |
 | --- | --- | --- |
@@ -270,7 +270,7 @@ siguiente Hello es Hola matriz de compatibilidad de escenario esta experiencia d
 | Aplicaciones cliente enriquecidas como Lync, suscripción a Office, CRM |Compatible |Autenticación integrada de Windows |
 | Clientes de correo electrónico enriquecidos, como Outlook y ActiveSync |Compatible |
 
-Para obtener más información sobre los clientes acceso a las directivas vea [tooOffice de limitar el acceso 365 servicios basados en hello ubicación de hello cliente](https://technet.microsoft.com/library/hh526961.aspx).
+Para obtener más información sobre las directivas de acceso de cliente, vea [Limiting Access to Office 365 Services Based on the Location of the Client](https://technet.microsoft.com/library/hh526961.aspx) (Limitación del acceso a los servicios de Office 365 en función de la ubicación del cliente).
 
 
 
@@ -278,7 +278,7 @@ Para obtener más información sobre los clientes acceso a las directivas vea [t
 
 ## <a name="pingfederate-611-72-8x"></a>PingFederate 6.11, 7.2, 8.x
 
-Hola te mostramos matriz de compatibilidad de escenario de Hola para esta experiencia de inicio de sesión único:
+A continuación, se presenta la matriz de compatibilidad de escenarios para esta experiencia de inicio de sesión único:
 
 | Cliente | Soporte técnico | Excepciones |
 | --- | --- | --- |
@@ -286,7 +286,7 @@ Hola te mostramos matriz de compatibilidad de escenario de Hola para esta experi
 | Aplicaciones cliente enriquecidas como Lync, suscripción a Office, CRM |Compatible |None |
 | Clientes de correo electrónico enriquecidos, como Outlook y ActiveSync |Compatible |None |
 
-Para obtener instrucciones de PingFederate hello en cómo tooconfigure este STS tooprovide Hola inicio de sesión único experimentar tooyour usuarios de Active Directory, consulte uno de los siguientes hello: 
+Para conocer las instrucciones de PingFederate sobre cómo configurar este STS para ofrecer una experiencia de inicio de sesión único a los usuarios de Active Directory, vea uno de los siguientes vínculos: 
 
 - [PingFederate 6.11](http://go.microsoft.com/fwlink/?LinkID=266321)
 - [PingFederate 7.2](http://documentation.pingidentity.com/display/PF72/PingFederate+7.2)
@@ -294,7 +294,7 @@ Para obtener instrucciones de PingFederate hello en cómo tooconfigure este STS 
 
 ## <a name="radiantone-cfs-30"></a>RadiantOne CFS 3.0
 
-Hola te mostramos matriz de compatibilidad de escenario de Hola para esta experiencia de inicio de sesión único: 
+A continuación, se presenta la matriz de compatibilidad de escenarios para esta experiencia de inicio de sesión único: 
 
 | Cliente | Soporte técnico | Excepciones |
 | --- | --- | --- |
@@ -306,7 +306,7 @@ Para obtener más información sobre RadiantOne CFS, vea [RadiantOne CFS](http:/
 
 ## <a name="sailpoint-identitynow"></a>Sailpoint IdentityNow
 
-Hola te mostramos matriz de compatibilidad de escenario de Hola para esta experiencia de inicio de sesión único:
+A continuación, se presenta la matriz de compatibilidad de escenarios para esta experiencia de inicio de sesión único:
 
 | Cliente | Soporte técnico | Excepciones |
 | --- | --- | --- |
@@ -318,7 +318,7 @@ Para obtener más información, vea [Sailpoint IdentityNow](https://www.sailpoin
 
 ## <a name="secureauth-idp-720"></a>SecureAuth IdP 7.2.0
 
-Hola te mostramos matriz de compatibilidad de escenario de Hola para esta experiencia de inicio de sesión único: 
+A continuación, se presenta la matriz de compatibilidad de escenarios para esta experiencia de inicio de sesión único: 
 
 | Cliente | Soporte técnico | Excepciones |
 | --- | --- | --- |
@@ -343,7 +343,7 @@ Para más información sobre SecureAuth, consulte [SecureAuth IdP](http://go.mic
 
 ## <a name="signgo-53"></a>Sign&go 5.3
 
-Hola te mostramos matriz de compatibilidad de escenario de Hola para esta experiencia de inicio de sesión único:
+A continuación, se presenta la matriz de compatibilidad de escenarios para esta experiencia de inicio de sesión único:
 
 | Cliente | Soporte técnico | Excepciones |
 | --- | --- | --- |
@@ -351,11 +351,11 @@ Hola te mostramos matriz de compatibilidad de escenario de Hola para esta experi
 | Aplicaciones cliente enriquecidas como Lync, suscripción a Office, CRM |Compatible |None |
 | Clientes de correo electrónico enriquecidos, como Outlook y ActiveSync |Compatible |None |
 
-Sign&go 5.3 admite la autenticación Kerberos mediante la configuración de un contrato con Kerberos.  Para obtener ayuda con esta configuración, póngase en contacto con Ilex o Vista Guía de instalación de hello [Sign & go](http://www.ilex-international.com/docs/sign&go_wsfederation_en.pdf)
+Sign&go 5.3 admite la autenticación Kerberos mediante la configuración de un contrato con Kerberos.  Para obtener ayuda sobre esta configuración, póngase en contacto con Ilex o vea la guía de configuración [Sign&go](http://www.ilex-international.com/docs/sign&go_wsfederation_en.pdf).
 
 ## <a name="softbank-technology-online-service-gate"></a>SoftBank Technology Online Service Gate
 
-Hola te mostramos matriz de compatibilidad de escenario de Hola para esta experiencia de inicio de sesión único:
+A continuación, se presenta la matriz de compatibilidad de escenarios para esta experiencia de inicio de sesión único:
 
 | Cliente | Soporte técnico | Excepciones |
 | --- | --- | --- |
@@ -367,7 +367,7 @@ Para obtener más información sobre SoftBank Technology Online Service Gate, ve
 
 ## <a name="vmware-workspace-one"></a>VMware Workspace One
 
-Hola te mostramos matriz de compatibilidad de escenario de Hola para esta experiencia de inicio de sesión único:
+A continuación, se presenta la matriz de compatibilidad de escenarios para esta experiencia de inicio de sesión único:
 
 | Cliente | Soporte técnico | Excepciones |
 | --- | --- | --- |

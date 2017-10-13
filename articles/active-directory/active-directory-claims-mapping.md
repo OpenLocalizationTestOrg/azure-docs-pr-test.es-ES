@@ -11,43 +11,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: billmath
-ms.openlocfilehash: ff07b9954d5c2ce71ab0ffd0db49fde15f323586
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 78dbbe085fca26ad529c6262ba852f3c06ace404
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="claims-mapping-in-azure-active-directory-public-preview"></a>Asignación de notificaciones en Azure Active Directory (versión preliminar pública)
 
 >[!NOTE]
->Esta característica reemplaza y reemplaza a hello [notificaciones personalización](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization) ofrecen a través de portal de hello hoy en día. Si personaliza notificaciones mediante el portal de hello además toohello método gráfico/PowerShell detalla en este documento en hello misma aplicación, los tokens emitidos para esa aplicación pasará por alto la configuración de hello en el portal de Hola.
-Las configuraciones realizadas a través de métodos de hello detallados en este documento no se verán reflejadas en el portal de Hola.
+>Esta característica reemplaza a la [personalización de notificaciones](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization) que se ofrece actualmente a través del portal. Si personaliza las notificaciones mediante el portal además del método de Graph/PowerShell que se detalla en este documento en la misma aplicación, los tokens emitidos para esa aplicación ignorarán la configuración en el portal.
+Las configuraciones realizadas mediante los métodos que se detallan en este documento no se reflejarán en el portal.
 
-Esta característica se usa por inquilino administradores toocustomize Hola notificaciones emitidos en tokens para una aplicación específica en su inquilino. Puede usar directivas de asignación de notificaciones para:
+Los administradores de inquilinos usan esta característica para personalizar las notificaciones que se emiten en tokens para una aplicación específica de su inquilino. Puede usar directivas de asignación de notificaciones para:
 
 - Seleccionar las notificaciones que se incluyen en tokens.
 - Crear tipos de notificación que aún no existen.
-- Elegir o cambiar origen de Hola de datos que se emite en notificaciones específicas.
+- Elegir o cambiar el origen de los datos emitidos en notificaciones concretas.
 
 >[!NOTE]
->Esta funcionalidad se encuentra actualmente en versión preliminar pública. Prepararán toorevert o quitar los cambios. Hola característica está disponible en ninguna suscripción de Azure Active Directory (Azure AD) durante la vista previa pública. Sin embargo, cuando característica Hola deja de estar disponible con carácter general, algunos aspectos de la característica de hello pueden requerir una suscripción premium a Azure Active Directory.
+>Esta funcionalidad se encuentra actualmente en versión preliminar pública. Debe estar preparado para deshacer o eliminar los cambios. La característica está disponible en cualquier suscripción de Azure Active Directory (Azure AD) durante el período de versión preliminar pública. Pero cuando ya esté disponible con carácter general, algunos aspectos de ella podrían requerir una suscripción Premium de Azure Active Directory.
 
 ## <a name="claims-mapping-policy-type"></a>Tipo de directiva de asignación de notificaciones
-En Azure AD, un objeto de **directiva** representa un conjunto de reglas que se exigen en algunas o todas las aplicaciones de una organización. Cada tipo de directiva tiene una estructura única, con un conjunto de propiedades que son, a continuación, aplica toowhich tooobjects que están asignados.
+En Azure AD, un objeto de **directiva** representa un conjunto de reglas que se exigen en algunas o todas las aplicaciones de una organización. Cada tipo de directiva tiene una estructura única con un conjunto de propiedades que luego se aplican a los objetos a los que están asignadas.
 
-Notificaciones de una asignación de directiva es un tipo de **directiva** objeto que modifica Hola notificaciones emite en los tokens emitidos para aplicaciones específicas.
+Una directiva de asignación de notificaciones es un tipo de objeto de **directiva** que modifica las notificaciones emitidas en tokens para aplicaciones concretas.
 
 ## <a name="claim-sets"></a>Conjuntos de notificaciones
 Hay determinados conjuntos de notificaciones que definen cómo y cuándo se usan en los tokens.
 
 ### <a name="core-claim-set"></a>Conjunto de notificaciones principales
-Notificaciones en core Hola notificaciones están presentes en cada token, independientemente de la directiva. Estas notificaciones se consideran también restringidas y no se pueden modificar.
+Las notificaciones del conjunto de notificaciones principales están presentes en todos los tokens independientemente de la directiva. Estas notificaciones se consideran también restringidas y no se pueden modificar.
 
 ### <a name="basic-claim-set"></a>Conjunto de notificaciones básicas
-conjunto de notificaciones básico de Hello incluye notificaciones de Hola que se emiten de forma predeterminada para los tokens (en el conjunto de notificaciones de adición toohello core). Estas notificaciones se omite o modificar mediante las directivas de asignación de notificaciones de Hola.
+El conjunto de notificaciones básicas incluye las notificaciones que se emiten de forma predeterminada para los tokens (además del conjunto de notificaciones principales). Estas notificaciones se pueden omitir o modificar mediante las directivas de asignación de notificaciones.
 
 ### <a name="restricted-claim-set"></a>Conjunto de notificaciones restringidas
-Las notificaciones restringidas no se pueden modificar mediante una directiva. no se puede cambiar el origen de datos de Hola y ninguna transformación se aplica al generar estas notificaciones.
+Las notificaciones restringidas no se pueden modificar mediante una directiva. No se puede cambiar el origen de datos ni se aplica ninguna transformación al generar estas notificaciones.
 
 #### <a name="table-1-json-web-token-jwt-restricted-claim-set"></a>Tabla 1: Conjunto de notificaciones restringidas de JSON Web Token (JWT)
 |Tipo de notificación (nombre)|
@@ -234,7 +234,7 @@ Las notificaciones restringidas no se pueden modificar mediante una directiva. n
 |http://schemas.microsoft.com/identity/claims/scope|
 
 ## <a name="claims-mapping-policy-properties"></a>Propiedades de la directiva de asignación de notificaciones
-Utilizar propiedades de Hola de una asignación de directiva toocontrol se emiten las notificaciones y donde se origen datos Hola de notificaciones. Si no se establece ninguna directiva, sistema Hola emite tokens que contiene el conjunto de notificaciones de núcleo de hello, conjunto de notificaciones de hello básico y las notificaciones opcionales que Hola aplicación elegida tooreceive.
+Use las propiedades de una directiva de asignación de notificaciones para controlar las notificaciones que se emiten y de dónde se originan los datos. Si no se establece ninguna directiva, el sistema emite los tokens que contienen el conjunto de notificaciones principales, el conjunto de notificaciones básicas y las notificaciones opcionales que la aplicación ha elegido recibir.
 
 ### <a name="include-basic-claim-set"></a>Inclusión del conjunto de notificaciones básicas
 
@@ -242,13 +242,13 @@ Utilizar propiedades de Hola de una asignación de directiva toocontrol se emite
 
 **Tipo de datos:** valor booleano (True o False)
 
-**Resumen:** esta propiedad determina si el conjunto de notificaciones básico de Hola se incluye en tokens afectados por esta directiva. 
+**Resumen:** esta propiedad determina si el conjunto de notificaciones principales se incluye en los tokens afectados por esta directiva. 
 
-- Si set tooTrue, todas las notificaciones en el conjunto de notificaciones básico de Hola se emite en símbolos (tokens), afectadas por la directiva de Hola. 
-- Si tooFalse de conjunto, las notificaciones en el conjunto de notificaciones básico de hello no está en tokens de hello, a menos que se individualmente agreguen en hello notificaciones esquema propiedad de hello misma directiva.
+- Si se establece en True, todas las notificaciones del conjunto de notificaciones básicas se emiten en los tokens afectados por esta directiva. 
+- Si se establece en False, las notificaciones del conjunto de notificaciones básicas no se incluyen en los tokens a menos que se agreguen individualmente a la propiedad de esquema de notificaciones de la misma directiva.
 
 >[!NOTE] 
->Notificaciones en core Hola notificaciones están presentes en cada token, independientemente de lo que esta propiedad se establece en conjunto. 
+>Las notificaciones del conjunto de notificaciones principales están presentes en todos los tokens, independientemente del valor en que se establezca esta propiedad. 
 
 ### <a name="claims-schema"></a>Esquema de notificaciones
 
@@ -256,28 +256,28 @@ Utilizar propiedades de Hola de una asignación de directiva toocontrol se emite
 
 **Tipo de datos:** blob de JSON con una o más entradas de esquema de notificación
 
-**Resumen:** esta propiedad define qué notificaciones están presentes en tokens de hello afectados por la directiva de hello, además el conjunto de notificaciones toohello básica y conjunto de notificaciones de núcleo de Hola.
-Para cada entrada de esquema de notificación definida en esta propiedad, se requiere cierta información. Debe especificar de donde provienen los datos de hello (**valor** o **par origen/identificador**), y que los datos de Hola de notificación se emite como (**tipo de notificación de**).
+**Resumen:** En esta propiedad se definen las notificaciones que están presentes en los tokens afectados por la directiva, además del conjunto de notificaciones básicas y el conjunto de notificaciones principales.
+Para cada entrada de esquema de notificación definida en esta propiedad, se requiere cierta información. Debe especificar de dónde provienen los datos (**Value** o **Par Source/ID**), y como qué notificación se emiten los datos (**Tipo de notificación**).
 
 ### <a name="claim-schema-entry-elements"></a>Elementos de entrada de esquema de notificación
 
-**Valor:** Value (elemento) Hola define un valor estático como Hola datos toobe emitida en hello notificación.
+**Value:** este elemento define un valor estático para los datos que se emiten en la notificación.
 
-**Par de origen/ID:** Hola origen y un identificador elementos definen donde tiene como el origen de datos hello en hello notificación de. 
+**Par Source/ID:** los elementos Source e ID definen en dónde se originan los datos de la notificación. 
 
-elemento de origen de Hello debe establecerse tooone de siguientes hello: 
+El elemento Source debe establecerse en uno de los valores siguientes: 
 
 
-- "usuario": datos de Hola Hola de notificación es una propiedad de objeto de usuario de Hola. 
-- "aplicación": datos de Hola Hola de notificación es una propiedad de entidad de servicio de aplicación (cliente) de Hola. 
-- "recurso": datos de Hola Hola de notificación es una propiedad de entidad de servicio de recurso de Hola.
-- "público": datos hello en hello notificación están una propiedad de entidad de seguridad de servicio de hello es Hola audiencia del token de hello (ya sea Hola cliente o recurso de entidad de servicio).
-- "company": datos de Hola Hola de notificación es una propiedad de objeto de empresa del inquilino de hello recursos.
-- "transformación": datos de Hola Hola de notificación es de transformación de notificaciones (vea la sección de Hola "transformación de notificaciones" más adelante en este artículo). 
+- "user": los datos de la notificación son una propiedad en el objeto User. 
+- "application": los datos de la notificación son una propiedad en la entidad de servicio de la aplicación (cliente). 
+- "resource": los datos de la notificación son una propiedad en la entidad de servicio del recurso.
+- "audience": los datos de la notificación son una propiedad en la entidad de servicio que es la audiencia del token (la entidad de servicio de recurso o cliente).
+- "company": los datos de la notificación son una propiedad en el objeto Company del inquilino del recurso.
+- "transformation": los datos de la notificación proceden de la transformación de notificaciones (vea la sección "Transformación de notificaciones" más adelante en este artículo). 
 
-Si el origen de hello es la transformación, Hola **TransformationID** elemento debe incluirse en esta definición de la notificación.
+Si el origen es una transformación, debe incluirse también el elemento **TransformationID** en la definición de esta notificación.
 
-elemento de identificador de Hello identifica qué propiedad de origen de hello proporciona el valor de Hola para notificación de Hola. Hello siguiente tabla enumera los valores de hello de Id. válido para cada valor de origen.
+El elemento ID identifica la propiedad en el origen que proporciona el valor de la notificación. En la tabla siguiente se muestran los valores de ID válidos para cada valor de Source.
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tabla 3: Valores de ID válidos por origen
 |Origen|ID|Descripción|
@@ -326,17 +326,17 @@ elemento de identificador de Hello identifica qué propiedad de origen de hello 
 |application, resource, audience|etiquetas|Etiqueta de entidad de servicio|
 |Compañía|tenantcountry|País del inquilino|
 
-**TransformationID:** elemento TransformationID de hello debe proporcionarse la solo si hello elemento de origen se establece demasiado "transformación".
+**TransformationID:** el elemento TransformationID solo debe indicarse si el elemento Source está establecido en “transformation”.
 
-- Este elemento debe coincidir con el elemento de identificador de Hola de entrada de transformación de hello en hello **ClaimsTransformation** propiedad que define cómo se generan datos de Hola para esta notificación.
+- Este elemento debe coincidir con el elemento ID de la entrada de transformación en la propiedad **ClaimsTransformation** que define cómo se generan los datos de esta notificación.
 
-**Tipo de notificación:** hello **JwtClaimType** y **SamlClaimType** que notificación esta entrada de esquema de notificación se refiere a los elementos definen.
+**Tipo de notificación:** los elementos **JwtClaimType** y **SamlClaimType** definen la notificación a la que esta entrada de esquema de notificación hace referencia.
 
-- Hola JwtClaimType debe contener el nombre de Hola de hello notificación toobe emitida en los Jwt.
-- Hola SamlClaimType debe contener Hola URI de hello notificación toobe emite en tokens SAML.
+- El elemento JwtClaimType tiene que contener el nombre de la notificación que se va a emitir en los token JWT.
+- El elemento SamlClaimType debe contener el identificador URI de la notificación que se va a emitir en los token SAML.
 
 >[!NOTE]
->Nombres e identificadores URI de notificaciones de hello restringido no se puede usar el conjunto de elementos de tipo de notificación de Hola de notificación. Para obtener más información, vea la sección de "Excepciones y restricciones" de hello más adelante en este artículo.
+>Los nombres e identificadores URI de las notificaciones del conjunto de notificaciones restringidas no se pueden usar en los elementos de tipo de notificación. Para más información, vea la sección "Excepciones y restricciones" más adelante en este artículo.
 
 ### <a name="claims-transformation"></a>Transformación de notificaciones
 
@@ -344,38 +344,38 @@ elemento de identificador de Hello identifica qué propiedad de origen de hello 
 
 **Tipo de datos:** blob de JSON, con una o más entradas de transformación 
 
-**Resumen:** usar esta propiedad tooapply transformaciones toosource los datos comunes, datos de salida de hello toogenerate para notificaciones se especifican en Hola esquema de notificaciones.
+**Resumen:** Use esta propiedad para aplicar transformaciones comunes a datos de origen para generar los datos de salida de las notificaciones especificadas en el esquema de notificaciones.
 
-**Id.:** uso Hola ID elemento tooreference esta entrada de transformación en hello entrada de esquema de notificaciones de TransformationID. Este valor debe ser único para cada entrada de transformación comprendida en la directiva.
+**ID:** Use el elemento ID para hacer referencia a esta entrada de transformación en el elemento TransformationID del esquema de notificaciones. Este valor debe ser único para cada entrada de transformación comprendida en la directiva.
 
-**TransformationMethod:** elemento de TransformationMethod de hello identifica qué operación es toogenerate realizada Hola datos para notificación de Hola.
+**TransformationMethod:** El elemento TransformationMethod identifica la operación que se ejecuta para generar los datos de la notificación.
 
-En función de método hello elegido, se espera que un conjunto de entradas y salidas. Se definen mediante el uso de hello **InputClaims**, **InputParameters** y **OutputClaims** elementos.
+En función del método elegido, se espera un conjunto de entradas y salidas. Estas se definen mediante los elementos **InputClaims**, **InputParameters** y **OutputClaims**.
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tabla 4: Métodos de transformación y entradas y salidas previstas
 |TransformationMethod|Entrada prevista|Salida prevista|Descripción|
 |-----|-----|-----|-----|
 |Unión|string1, string2, separator|outputClaim|Se combinan las cadenas de entrada mediante un separador entre ellas. Por ejemplo: string1:"foo@bar.com" , string2:"sandbox" , separator:"." da como resultado outputClaim:"foo@bar.com.sandbox"|
-|ExtractMailPrefix|mail|outputClaim|Extrae la parte local de Hola de una dirección de correo electrónico. Por ejemplo: mail:"foo@bar.com" da como resultado outputClaim:"foo". Si no @ inicio de sesión está presente, se devuelve la cadena de entrada original Hola tal cual.|
+|ExtractMailPrefix|mail|outputClaim|Extrae la parte local de una dirección de correo electrónico. Por ejemplo: mail:"foo@bar.com" da como resultado outputClaim:"foo". Si no hay ningún signo "@" presente, la cadena de entrada original se devuelve tal y como está.|
 
-**InputClaims:** usa una InputClaims elemento toopass Hola datos desde una transformación de tooa de entrada de esquema de notificación. Tiene dos atributos: **ClaimTypeReferenceId** y **TransformationClaimType**.
+**InputClaims:** Use un elemento InputClaims para pasar los datos de una entrada de esquema de notificación a una transformación. Tiene dos atributos: **ClaimTypeReferenceId** y **TransformationClaimType**.
 
-- **ClaimTypeReferenceId** se combina con el elemento ID de hello notificación esquema entrada toofind Hola adecuado notificación de entrada. 
-- **TransformationClaimType** es toogive usa una entrada de toothis de nombre único. Este nombre debe coincidir con una de las entradas de hello esperada para el método de transformación de hello.
+- **ClaimTypeReferenceId** se combina con el elemento ID de la entrada de esquema de notificación para buscar la notificación de entrada adecuada. 
+- **TransformationClaimType** se usa para asignar un nombre único a esta entrada. Este nombre debe coincidir con una de las entradas esperadas para el método de transformación.
 
-**InputParameters:** usar un toopass de elemento InputParameters una transformación de tooa valor constante. Tiene dos atributos: **Value** e **ID**.
+**InputParameters:** Use un elemento InputParameters para pasar un valor constante a una transformación. Tiene dos atributos: **Value** e **ID**.
 
-- **Valor** se pasa de hello real valor constante toobe.
-- **Id. de** es toogive usa una entrada de toothis de nombre único. Este nombre debe coincidir con una de las entradas de hello esperada para el método de transformación de hello.
+- **Value** es el valor constante real que se pasa.
+- **ID** se usa para asignar un nombre único a esta entrada. Este nombre debe coincidir con una de las entradas esperadas para el método de transformación.
 
-**OutputClaims:** usa una OutputClaims elemento toohold Hola datos generados por una transformación y asociarla tooa entrada de esquema de notificación. Tiene dos atributos: **ClaimTypeReferenceId** y **TransformationClaimType**.
+**OutputClaims:** Use un elemento OutputClaims para contener los datos generados por una transformación y vincularlos a una entrada de esquema de notificación. Tiene dos atributos: **ClaimTypeReferenceId** y **TransformationClaimType**.
 
-- **ClaimTypeReferenceId** se combina con el Id. de Hola de notificación de hello notificación esquema entrada toofind Hola salida correspondiente.
-- **TransformationClaimType** es toogive usa una salida de toothis de nombre único. Este nombre debe coincidir con una de las salidas de hello esperada para el método de transformación de hello.
+- **ClaimTypeReferenceId** se combina con el elemento ID de la entrada de esquema de notificación para buscar la notificación de salida adecuada.
+- **TransformationClaimType** se usa para asignar un nombre único a esta salida. Este nombre debe coincidir con una de las salidas esperadas para el método de transformación.
 
 ### <a name="exceptions-and-restrictions"></a>Excepciones y restricciones
 
-**NameID de SAML y UPN:** Hola atributos desde el que origen valores NameID y UPN de Hola y Hola notificaciones transformaciones que se permiten, están limitados.
+**NameID de SAML y UPN:** Los atributos desde los que se originan los valores de NameID y UPN, y las transformaciones de notificaciones que se permiten, están limitados.
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabla 5: Atributos permitidos como origen de datos en NameID de SAML
 |Origen|ID|Descripción|
@@ -404,104 +404,104 @@ En función de método hello elegido, se espera que un conjunto de entradas y sa
 |TransformationMethod|Restricciones|
 | ----- | ----- |
 |ExtractMailPrefix|None|
-|Unión|sufijo de Hola que se están combinando debe ser un dominio comprobado del inquilino de recursos de Hola.|
+|Unión|El sufijo que se combine debe ser un dominio comprobado del inquilino del recurso.|
 
 ### <a name="custom-signing-key"></a>Clave de firma de personalizada
-Una clave de firma personalizada debe asignarse como objeto de entidad de servicio de toohello un efecto de tootake de directiva de asignación de notificaciones. Todos los tokens emitidos que se han visto afectados por la directiva de Hola se firman con esta clave. Aplicaciones deben ser tokens de tooaccept configurado firmados con esta clave. Esto garantiza que la directiva de asignación de notificaciones de confirmación que se han modificado los tokens creador de Hola de Hola. Protege a las aplicaciones de directivas de asignación de notificaciones creadas por actores malintencionados.
+Debe asignarse una clave de firma personalizada al objeto de entidad de servicio para que una directiva de asignación de notificaciones surta efecto. Con esta clave se firman todos los tokens emitidos que se hayan visto afectados por la directiva. Las aplicaciones se deben configurar para que acepten los tokens firmados con esta clave. Así se garantiza la confirmación de que los tokens han sido modificados por el creador de la directiva de asignación de notificaciones. Protege a las aplicaciones de directivas de asignación de notificaciones creadas por actores malintencionados.
 
 ### <a name="cross-tenant-scenarios"></a>Escenarios de varios inquilinos
-Las directivas de asignación no aplican a los usuarios de tooguest de notificaciones. Si un usuario invitado intentos tooaccess una aplicación con una notificación de asignación directiva asignada tooits servicio entidad de seguridad, se emite el token de hello predeterminado (directiva de hello no tiene ningún efecto).
+Las directivas de asignación de notificaciones no se aplican a los usuarios invitados. Si un usuario invitado intenta obtener acceso a una aplicación que tiene una directiva de asignación de notificaciones asignada a su entidad de servicio, se emite el token predeterminado (la directiva no tiene ningún efecto).
 
 ## <a name="claims-mapping-policy-assignment"></a>Asignación de directivas de asignación de notificaciones
-Las directivas de asignación solo se puede asignar objetos de entidad de tooservice de notificaciones.
+Las directivas de asignación de notificaciones solo se pueden asignar a objetos de entidades de servicio.
 
 ### <a name="example-claims-mapping-policies"></a>Directivas de asignación de notificaciones de ejemplo
 
-En Azure AD hay muchos escenarios posibles en los que se pueden personalizar las notificaciones emitidas en tokens para entidades de servicio concretas. En esta sección se abordan algunos escenarios comunes que pueden ayudarle a entender cómo toouse Hola el tipo de directiva de asignación de notificaciones.
+En Azure AD hay muchos escenarios posibles en los que se pueden personalizar las notificaciones emitidas en tokens para entidades de servicio concretas. En esta sección se abordan algunos escenarios comunes que pueden ayudarle a entender cómo usar el tipo de directiva de asignación de notificaciones.
 
 #### <a name="prerequisites"></a>Requisitos previos
-Hola en los ejemplos siguientes, crear, actualizar, vincular y eliminar directivas para las entidades de servicio. Si es nuevo tooAzure AD, se recomienda que desea obtener información sobre cómo tooget un Azure AD inquilino antes de continuar con estos ejemplos. 
+En los ejemplos siguientes, va a crear, actualizar, vincular y eliminar directivas de entidades de servicio. Si no está familiarizado con Azure AD, se recomienda que aprenda a obtener un inquilino de Azure AD antes de continuar con estos ejemplos. 
 
-Hola tooget iniciado, siga los pasos:
+Para comenzar, realice uno de los pasos siguientes:
 
 
-1. Descargar más reciente hello [versión de vista previa de módulo de PowerShell de Azure AD](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.127).
-2.  Ejecute hello conectar comando toosign en tooyour cuenta de administrador de Azure AD. Ejecute este comando cada vez que inicie una nueva sesión.
+1. Descargue la [versión preliminar pública más reciente del módulo de PowerShell de Azure AD](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.127).
+2.  Ejecute el comando Connect para iniciar sesión en la cuenta de administrador de Azure AD. Ejecute este comando cada vez que inicie una nueva sesión.
     
      ``` powershell
     Connect-AzureAD -Confirm
     
     ```
-3.  toosee todas las directivas que se han creado en su organización, ejecución Hola siguiendo este comando. Se recomienda ejecutar este comando después de la mayoría de las operaciones en hello siguientes escenarios, toocheck que las directivas se crean como se esperaba.
+3.  Ejecute el siguiente comando para ver todas las directivas que se han creado en la organización. Se recomienda ejecutar este comando después de la mayoría de las operaciones en los escenarios siguientes, para comprobar que las directivas se van a crear según lo previsto.
    
     ``` powershell
         Get-AzureADPolicy
     
     ```
-#### <a name="example-create-and-assign-a-policy-tooomit-hello-basic-claims-from-tokens-issued-tooa-service-principal"></a>Ejemplo: Crear y asignar una directiva tooomit Hola afirmaciones básico, versión de entidad de servicio de tokens emitidos tooa.
-En este ejemplo, cree una directiva que quita el conjunto de notificaciones básico de Hola de tokens emitidos toolinked entidades de servicio.
+#### <a name="example-create-and-assign-a-policy-to-omit-the-basic-claims-from-tokens-issued-to-a-service-principal"></a>Ejemplo: Creación y asignación de una directiva que omita las notificaciones básicas de tokens emitidos para una entidad de servicio.
+En este ejemplo se crea una directiva que quita el conjunto de notificaciones básicas de los tokens emitidos para entidades de servicio vinculadas.
 
 
-1. Cree una directiva de asignación de notificaciones. Esta directiva, las entidades de servicio vinculado toospecific, quita conjunto de notificaciones básico de Hola de símbolos (tokens).
-    1. Directiva de hello toocreate, ejecute este comando: 
+1. Cree una directiva de asignación de notificaciones. Esta directiva, que se vincula a entidades de servicio concretas, quita el conjunto de notificaciones básicas de los tokens.
+    1. Ejecute este comando para crear la directiva: 
     
      ``` powershell
     New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"false"}}') -DisplayName "OmitBasicClaims” -Type "ClaimsMappingPolicy"
     ```
-    2. toosee de comandos de la nueva directiva y directiva de hello tooget ObjectId, Hola ejecución después de:
+    2. Para ver la nueva directiva y obtener su ObjectID, ejecute el siguiente comando:
     
      ``` powershell
     Get-AzureADPolicy
     ```
-2.  Asignar la entidad de servicio de hello directiva tooyour. También debe tooget Hola ObjectId de la entidad de servicio. 
-    1.  toosee entidades de servicio de todos los de su organización, puede consultar Microsoft Graph. O bien, en el Explorador de Azure AD Graph, inicie sesión en tooyour cuenta de Azure AD.
-    2.  Una vez Hola ObjectId de su servicio principal, ejecute ¡hello siguiente comando:  
+2.  Asigne la directiva a su entidad de servicio. También necesita obtener el valor de ObjectId de su entidad de servicio. 
+    1.  Para ver todas las entidades de servicio de su organización, puede consultar Microsoft Graph. O bien, en Azure AD Graph Explorer, inicie sesión en su cuenta de Azure AD.
+    2.  Cuando tenga el valor de ObjectId de la entidad de servicio, ejecute el siguiente comando:  
      
      ``` powershell
-    Add-AzureADServicePrincipalPolicy -Id <ObjectId of hello ServicePrincipal> -RefObjectId <ObjectId of hello Policy>
+    Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
     ```
-#### <a name="example-create-and-assign-a-policy-tooinclude-hello-employeeid-and-tenantcountry-as-claims-in-tokens-issued-tooa-service-principal"></a>Ejemplo: Crear y asignar una directiva tooinclude Hola EmployeeID y TenantCountry notificaciones en tokens emitidos tooa entidad de servicio.
-En este ejemplo, se crea una directiva que agrega Hola EmployeeID y TenantCountry tootokens emitido toolinked entidades de servicio. Hola EmployeeID se genera como tipo de notificación de nombre de hello en tokens SAML y Jwt. Hola TenantCountry se genera como tipo de tokens SAML y Jwt de notificación de país de Hola. En este ejemplo, seguimos establecidas en tokens de hello las afirmaciones de tooinclude hello básico.
+#### <a name="example-create-and-assign-a-policy-to-include-the-employeeid-and-tenantcountry-as-claims-in-tokens-issued-to-a-service-principal"></a>Ejemplo: Creación y asignación de una directiva que incluya EmployeeID y TenantCountry como notificaciones en tokens emitidos para una entidad de servicio.
+En este ejemplo se crea una directiva que agrega EmployeeID y TenantCountry a los tokens emitidos para entidades de servicio vinculadas. EmployeeID se emite como tipo de notificación de nombre en los tokens SAML y JWT. TenantCountry se emite como tipo de notificación de país en los tokens SAML y JWT. En este ejemplo se sigue incluyendo el conjunto de notificaciones básicas en los tokens.
 
-1. Cree una directiva de asignación de notificaciones. Esta directiva, las entidades de servicio vinculado toospecific, agrega Hola EmployeeID y TenantCountry tootokens de notificaciones.
-    1. Directiva de hello toocreate, ejecute este comando:  
+1. Cree una directiva de asignación de notificaciones. Esta directiva, que se vincula a entidades de servicio concretas, agrega las notificaciones EmployeeID y TenantCountry a los tokens.
+    1. Ejecute este comando para crear la directiva:  
      
      ``` powershell
     New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","JwtClaimType":"name"},{"Source":"company","ID":" tenantcountry ","SamlClaimType":" http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country ","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample” -Type "ClaimsMappingPolicy"
     ```
     
-    2. toosee de comandos de la nueva directiva y directiva de hello tooget ObjectId, Hola ejecución después de:
+    2. Para ver la nueva directiva y obtener su ObjectID, ejecute el siguiente comando:
      
      ``` powershell  
     Get-AzureADPolicy
     ```
-2.  Asignar la entidad de servicio de hello directiva tooyour. También debe tooget Hola ObjectId de la entidad de servicio. 
-    1.  toosee entidades de servicio de todos los de su organización, puede consultar Microsoft Graph. O bien, en el Explorador de Azure AD Graph, inicie sesión en tooyour cuenta de Azure AD.
-    2.  Una vez Hola ObjectId de su servicio principal, ejecute ¡hello siguiente comando:  
+2.  Asigne la directiva a su entidad de servicio. También necesita obtener el valor de ObjectId de su entidad de servicio. 
+    1.  Para ver todas las entidades de servicio de su organización, puede consultar Microsoft Graph. O bien, en Azure AD Graph Explorer, inicie sesión en su cuenta de Azure AD.
+    2.  Cuando tenga el valor de ObjectId de la entidad de servicio, ejecute el siguiente comando:  
      
      ``` powershell
-    Add-AzureADServicePrincipalPolicy -Id <ObjectId of hello ServicePrincipal> -RefObjectId <ObjectId of hello Policy>
+    Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
     ```
-#### <a name="example-create-and-assign-a-policy-that-uses-a-claims-transformation-in-tokens-issued-tooa-service-principal"></a>Ejemplo: Crear y asignar una directiva que usa una transformación de notificaciones de tokens emitidos tooa entidad de servicio.
-En este ejemplo, cree una directiva que emite una notificación personalizada "JoinedData" tooJWTs emitido a toolinked entidades de servicio. Esta notificación contiene un valor que se crea mediante la combinación de datos de hello almacenados en el atributo de atributodeextensión1 hello en el objeto de usuario de hello con ".sandbox". En este ejemplo, excluimos notificaciones básica hello establecidos en tokens de Hola.
+#### <a name="example-create-and-assign-a-policy-that-uses-a-claims-transformation-in-tokens-issued-to-a-service-principal"></a>Ejemplo: Creación y asignación de una directiva que usa una transformación de notificaciones en los tokens emitidos para una entidad de servicio.
+En este ejemplo se crea una directiva que emite una notificación "JoinedData" personalizada para los tokens JWT emitidos para entidades de servicio vinculadas. Esta notificación contiene un valor creado mediante la combinación de los datos almacenados en el atributo extensionattribute1 en el objeto de usuario que incluye ".sandbox". En este ejemplo se excluye el conjunto de notificaciones básicas en los tokens.
 
 
-1. Cree una directiva de asignación de notificaciones. Esta directiva, las entidades de servicio vinculado toospecific, agrega Hola EmployeeID y TenantCountry tootokens de notificaciones.
-    1. Directiva de hello toocreate, ejecute este comando: 
+1. Cree una directiva de asignación de notificaciones. Esta directiva, que se vincula a entidades de servicio concretas, agrega las notificaciones EmployeeID y TenantCountry a los tokens.
+    1. Ejecute este comando para crear la directiva: 
      
      ``` powershell
     New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformation":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"Id":"string2","Value":"sandbox"},{"Id":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample” -Type "ClaimsMappingPolicy"
     ```
     
-    2. toosee de comandos de la nueva directiva y directiva de hello tooget ObjectId, Hola ejecución después de: 
+    2. Para ver la nueva directiva y obtener su ObjectID, ejecute el siguiente comando: 
      
      ``` powershell
     Get-AzureADPolicy
     ```
-2.  Asignar la entidad de servicio de hello directiva tooyour. También debe tooget Hola ObjectId de la entidad de servicio. 
-    1.  toosee entidades de servicio de todos los de su organización, puede consultar Microsoft Graph. O bien, en el Explorador de Azure AD Graph, inicie sesión en tooyour cuenta de Azure AD.
-    2.  Una vez Hola ObjectId de su servicio principal, ejecute ¡hello siguiente comando: 
+2.  Asigne la directiva a su entidad de servicio. También necesita obtener el valor de ObjectId de su entidad de servicio. 
+    1.  Para ver todas las entidades de servicio de su organización, puede consultar Microsoft Graph. O bien, en Azure AD Graph Explorer, inicie sesión en su cuenta de Azure AD.
+    2.  Cuando tenga el valor de ObjectId de la entidad de servicio, ejecute el siguiente comando: 
      
      ``` powershell
-    Add-AzureADServicePrincipalPolicy -Id <ObjectId of hello ServicePrincipal> -RefObjectId <ObjectId of hello Policy>
+    Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
     ```

@@ -1,5 +1,5 @@
 ---
-title: aaaAzure contenido de SDK de Mobile Engagement iOS
+title: Contenido del SDK de iOS de Azure Mobile Engagement
 description: "Actualizaciones y procedimientos más recientes para el SDK de iOS para Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,19 +14,19 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 9f735226b98431cf0a68d0cbe8f9112f4c8df019
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: bdc96cd47ece6054184d167192ebec4cd4bd081c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="sdk-content"></a>Contenido del SDK
-Este documento enumera y describe el contenido de Hola de archivo SDK de Hola.
+En este documento se indica y describe el contenido del archivo SDK.
 
 ## <a name="engagement-sdk"></a>SDK de Engagement
 `EngagementSDK`
 
-> que contiene encabezados de Hello core SDK de contratación, biblioteca y una clase adicional que se proporciona como la recopilación de IDFA de tooenable o deshabilitar de código fuente.
+> El SDK de Engagement principal, que contiene encabezados, una biblioteca y una clase adicional que se proporciona como código fuente para habilitar o deshabilitar la recopilación de IDFA.
 > 
 > 
 
@@ -44,9 +44,9 @@ Este documento enumera y describe el contenido de Hola de archivo SDK de Hola.
 > 
 > 
 
-`src`
+`src` 
 
-> Ver controladores de contratación y el código de origen del SDK de alcanzar (para usuarios avanzados que deseen tooadapt interacción clases tootheir necesidades).
+> Controladores de visualización de Engagement y código fuente del SDK de cobertura (para usuarios avanzados que desean adaptar las clases de Engagement a sus necesidades).
 > 
 > 
 

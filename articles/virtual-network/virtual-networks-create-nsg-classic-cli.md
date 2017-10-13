@@ -1,6 +1,6 @@
 ---
-title: "aaaHow toocreate NSG en modo clásico mediante Hola CLI de Azure | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toocreate e implementar los NSG en el modo clásico mediante Hola CLI de Azure"
+title: "Creación de grupos de seguridad de red en el modo clásico mediante la CLI de Azure | Microsoft Docs"
+description: "Aprenda a crear e implementar grupos de seguridad de red en modo clásico mediante la CLI de Azure"
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,37 +15,37 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
-ms.openlocfilehash: eb78861e10a0dd950bb2c3783ee957d1cce55016
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 115a1937a4c88ba2b986a40c84b1b759ed5e03b5
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toocreate-nsgs-classic-in-hello-azure-cli"></a>Cómo toocreate NSG (clásicos) en Hola CLI de Azure
+# <a name="how-to-create-nsgs-classic-in-the-azure-cli"></a>Creación de grupos de seguridad de red (modo clásico) en la CLI de Azure
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]
 
 [!INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Este artículo trata el modelo de implementación clásica de Hola. También puede [crear NSG en el modelo de implementación del Administrador de recursos de hello](virtual-networks-create-nsg-arm-cli.md).
+Este artículo trata sobre el modelo de implementación clásico. También puede [crear grupos de seguridad de red con el modelo de implementación del Administrador de recursos](virtual-networks-create-nsg-arm-cli.md).
 
 [!INCLUDE [virtual-networks-create-nsg-scenario-include](../../includes/virtual-networks-create-nsg-scenario-include.md)]
 
-comandos de CLI de Azure de ejemplo de Hola a continuación esperan un entorno simple ya creado basándose en el escenario de hello anterior. Si desea toorun comandos de hello, que se muestran en este documento, en primer lugar crear entorno de prueba de Hola por [crear una red virtual](virtual-networks-create-vnet-classic-cli.md).
+En los siguientes comandos de CLI de Azure de ejemplo se presupone que ya se ha creado un entorno simple según el escenario anterior. Si desea ejecutar los comandos tal y como aparecen en este documento, compile primero el entorno de prueba mediante la [creación de una red virtual](virtual-networks-create-vnet-classic-cli.md).
 
-## <a name="how-toocreate-hello-nsg-for-hello-front-end-subnet"></a>¿Cómo toocreate Hola NSG para la subred de front-end de Hola
-toocreate un NSG denominado denominado **front-end de NSG** en función de escenario Hola anterior, siga estos pasos Hola.
+## <a name="how-to-create-the-nsg-for-the-front-end-subnet"></a>Creación del grupo de seguridad de red para la subred front-end
+Para crear un grupo de seguridad de red denominado **NSG-FrontEnd** según el escenario anterior, siga estos pasos.
 
-1. Si nunca ha utilizado la CLI de Azure, consulte [instalar y configurar hello Azure CLI](../cli-install-nodejs.md) y siga las instrucciones de hello punto toohello donde seleccionar su cuenta de Azure y la suscripción.
-2. Ejecute hello  **`azure config mode`**  tooswitch tooclassic modo de comandos, tal y como se muestra a continuación.
+1. Si nunca ha usado la CLI de Azure, consulte [Instalación y configuración de la CLI de Azure](../cli-install-nodejs.md) y siga las instrucciones hasta el punto donde deba seleccionar su cuenta y suscripción de Azure.
+2. Ejecute el comando **`azure config mode`** para cambiar al modo clásico, como se muestra a continuación.
    
         azure config mode asm
    
     Resultado esperado:
    
         info:    New mode is asm
-3. Ejecute hello  **`azure network nsg create`**  comando toocreate un NSG.
+3. Ejecute el comando **`azure network nsg create`** para crear un grupo de seguridad de red.
    
         azure network nsg create -l uswest -n NSG-FrontEnd
    
@@ -53,7 +53,7 @@ toocreate un NSG denominado denominado **front-end de NSG** en función de escen
    
         info:    Executing command network nsg create
         info:    Creating a network security group "NSG-FrontEnd"
-        info:    Looking up hello network security group "NSG-FrontEnd"
+        info:    Looking up the network security group "NSG-FrontEnd"
         data:    Name                            : NSG-FrontEnd
         data:    Location                        : West US
         data:    Security group rules:
@@ -77,18 +77,18 @@ toocreate un NSG denominado denominado **front-end de NSG** en función de escen
    
     Parámetros:
    
-   * **-l (o --location)**. Región de Azure donde hello nuevo NSG se creará. En este escenario, *TestRG*.
-   * **-n (o --name)**. Nombre de hello nuevo NSG. En este escenario, *NSG-FrontEnd*.
-4. Ejecute hello  **`azure network nsg rule create`**  comando toocreate una regla que permita acceso tooport 3389 (RDP) de hello Internet.
+   * **-l (o --location)**. Región de Azure donde se creará la red virtual. En este escenario, *TestRG*.
+   * **-n (o --name)**. Nombre del nuevo grupo de seguridad de red. En este escenario, *NSG-FrontEnd*.
+4. Ejecute el comando **`azure network nsg rule create`** para crear una regla que permita el acceso al puerto 3389 (RDP) desde Internet.
    
         azure network nsg rule create -a NSG-FrontEnd -n rdp-rule -c Allow -p Tcp -r Inbound -y 100 -f Internet -o * -e * -u 3389
    
     Resultado esperado:
    
         info:    Executing command network nsg rule create
-        info:    Looking up hello network security group "NSG-FrontEnd"
+        info:    Looking up the network security group "NSG-FrontEnd"
         info:    Creating a network security rule "rdp-rule"
-        info:    Looking up hello network security group "NSG-FrontEnd"
+        info:    Looking up the network security group "NSG-FrontEnd"
         data:    Name                            : rdp-rule
         data:    Source address prefix           : INTERNET
         data:    Source Port                     : *
@@ -102,26 +102,26 @@ toocreate un NSG denominado denominado **front-end de NSG** en función de escen
    
     Parámetros:
    
-   * **- a (o --nsg-name)**. Nombre del NSG de hello en qué Hola se creará la regla. En este escenario, *NSG-FrontEnd*.
-   * **-n (o --name)**. Nombre de nueva regla de Hola. En este escenario, *rdp-rule*.
-   * **-c (o --action)**. Nivel de acceso para la regla de hello (denegar o permitir).
-   * **-p (o --protocol)**. Protocolo (Tcp, Udp o *) para la regla de Hola.
+   * **- a (o --nsg-name)**. Nombre del grupo de seguridad de red en el que se creará la regla. En este escenario, *NSG-FrontEnd*.
+   * **-n (o --name)**. Nombre de la nueva regla. En este escenario, *rdp-rule*.
+   * **-c (o --action)**. Nivel de acceso de la regla (Denegar o Permitir).
+   * **-p (o --protocol)**. Protocolo (Tcp, Udp o *) para la regla.
    * **-r (o --type)**. Dirección de conexión (Entrante o Saliente).
-   * **-y (o --priority)**. Prioridad de la regla de Hola.
+   * **-y (o --priority)**. Prioridad de la regla.
    * **-f (o --source-address-prefix)**. Prefijo de dirección de origen en CIDR o con las etiquetas predeterminadas.
    * **-o (o --source-port-range)**. Puerto de origen, o intervalo de puertos.
    * **-e (o --destination-address-prefix)**. Prefijo de dirección de destino en CIDR o con las etiquetas predeterminadas.
    * **-u (o --destination-port-range)**. Puerto de destino, o intervalo de puertos.
-5. Ejecute hello  **`azure network nsg rule create`**  comando toocreate una regla que permita acceso tooport 80 (HTTP) de hello Internet.
+5. Ejecute el comando **`azure network nsg rule create`** para crear una regla que permita el acceso al puerto 80 (HTTP) desde Internet.
    
         azure network nsg rule create -a NSG-FrontEnd -n web-rule -c Allow -p Tcp -r Inbound -y 200 -f Internet -o * -e * -u 80
    
     Resultado esperado:
    
         info:    Executing command network nsg rule create
-        info:    Looking up hello network security group "NSG-FrontEnd"
+        info:    Looking up the network security group "NSG-FrontEnd"
         info:    Creating a network security rule "web-rule"
-        info:    Looking up hello network security group "NSG-FrontEnd"
+        info:    Looking up the network security group "NSG-FrontEnd"
         data:    Name                            : web-rule
         data:    Source address prefix           : INTERNET
         data:    Source Port                     : *
@@ -132,23 +132,23 @@ toocreate un NSG denominado denominado **front-end de NSG** en función de escen
         data:    Action                          : Allow
         data:    Priority                        : 200
         info:    network nsg rule create command OK
-6. Ejecute hello  **`azure network nsg subnet add`**  subred de front-end de comando toolink hello NSG toohello.
+6. Ejecute el comando **`azure network nsg subnet add`** para vincular el grupo de seguridad de red a la subred front-end.
    
         azure network nsg subnet add -a NSG-FrontEnd --vnet-name TestVNet --subnet-name FrontEnd
    
     Resultado esperado:
    
         info:    Executing command network nsg subnet add
-        info:    Looking up hello network security group "NSG-FrontEnd"
-        info:    Looking up hello subnet "FrontEnd"
+        info:    Looking up the network security group "NSG-FrontEnd"
+        info:    Looking up the subnet "FrontEnd"
         info:    Looking up network configuration
         info:    Creating a network security group "NSG-FrontEnd"
         info:    network nsg subnet add command OK
 
-## <a name="how-toocreate-hello-nsg-for-hello-back-end-subnet"></a>Cómo toocreate hello NSG para volver Hola finalizar subred
-toocreate un NSG denominado denominado *back-end de NSG* en función de escenario Hola anterior, siga estos pasos Hola.
+## <a name="how-to-create-the-nsg-for-the-back-end-subnet"></a>Creación del grupo de seguridad de red para la subred back-end
+Para crear un grupo de seguridad de red denominado *NSG-BackEnd* según el escenario anterior, siga estos pasos.
 
-1. Ejecute hello  **`azure network nsg create`**  comando toocreate un NSG.
+1. Ejecute el comando **`azure network nsg create`** para crear un grupo de seguridad de red.
    
         azure network nsg create -l uswest -n NSG-BackEnd
    
@@ -156,7 +156,7 @@ toocreate un NSG denominado denominado *back-end de NSG* en función de escenari
    
         info:    Executing command network nsg create
         info:    Creating a network security group "NSG-BackEnd"
-        info:    Looking up hello network security group "NSG-BackEnd"
+        info:    Looking up the network security group "NSG-BackEnd"
         data:    Name                            : NSG-BackEnd
         data:    Location                        : West US
         data:    Security group rules:
@@ -180,18 +180,18 @@ toocreate un NSG denominado denominado *back-end de NSG* en función de escenari
    
     Parámetros:
    
-   * **-l (o --location)**. Región de Azure donde hello nuevo NSG se creará. En este escenario, *TestRG*.
-   * **-n (o --name)**. Nombre de hello nuevo NSG. En este escenario, *NSG-FrontEnd*.
-2. Ejecute hello  **`azure network nsg rule create`**  comando toocreate una regla que permita acceso tooport 1433 (SQL) de la subred de front-end de Hola.
+   * **-l (o --location)**. Región de Azure donde se creará la red virtual. En este escenario, *TestRG*.
+   * **-n (o --name)**. Nombre del nuevo grupo de seguridad de red. En este escenario, *NSG-FrontEnd*.
+2. Ejecute el comando **`azure network nsg rule create`** para crear una regla que permita el acceso al puerto 1433 (SQL) desde la subred front-end.
    
         azure network nsg rule create -a NSG-BackEnd -n sql-rule -c Allow -p Tcp -r Inbound -y 100 -f 192.168.1.0/24 -o * -e * -u 1433
    
     Resultado esperado:
    
         info:    Executing command network nsg rule create
-        info:    Looking up hello network security group "NSG-BackEnd"
+        info:    Looking up the network security group "NSG-BackEnd"
         info:    Creating a network security rule "sql-rule"
-        info:    Looking up hello network security group "NSG-BackEnd"
+        info:    Looking up the network security group "NSG-BackEnd"
         data:    Name                            : sql-rule
         data:    Source address prefix           : 192.168.1.0/24
         data:    Source Port                     : *
@@ -202,16 +202,16 @@ toocreate un NSG denominado denominado *back-end de NSG* en función de escenari
         data:    Action                          : Allow
         data:    Priority                        : 100
         info:    network nsg rule create command OK
-3. Ejecute hello  **`azure network nsg rule create`**  comando toocreate una regla que deniegue toohello de acceso a Internet.
+3. Ejecute el comando **`azure network nsg rule create`** para crear una regla que deniegue el acceso a Internet.
    
         azure network nsg rule create -a NSG-BackEnd -n web-rule -c Deny -p Tcp -r Outbound -y 200 -f * -o * -e Internet -u 80
    
     Resultado esperado:
    
         info:    Executing command network nsg rule create
-        info:    Looking up hello network security group "NSG-BackEnd"
+        info:    Looking up the network security group "NSG-BackEnd"
         info:    Creating a network security rule "web-rule"
-        info:    Looking up hello network security group "NSG-BackEnd"
+        info:    Looking up the network security group "NSG-BackEnd"
         data:    Name                            : web-rule
         data:    Source address prefix           : *
         data:    Source Port                     : *
@@ -222,15 +222,15 @@ toocreate un NSG denominado denominado *back-end de NSG* en función de escenari
         data:    Action                          : Deny
         data:    Priority                        : 200
         info:    network nsg rule create command OK
-4. Ejecute hello  **`azure network nsg subnet add`**  comando toolink hello NSG toohello volver finalizar subred.
+4. Ejecute el comando **`azure network nsg subnet add`** para vincular el grupo de seguridad de red a la subred de back-end.
    
         azure network nsg subnet add -a NSG-BackEnd --vnet-name TestVNet --subnet-name BackEnd
    
     Resultado esperado:
    
         info:    Executing command network nsg subnet add
-        info:    Looking up hello network security group "NSG-BackEndX"
-        info:    Looking up hello subnet "BackEnd"
+        info:    Looking up the network security group "NSG-BackEndX"
+        info:    Looking up the subnet "BackEnd"
         info:    Looking up network configuration
         info:    Creating a network security group "NSG-BackEndX"
         info:    network nsg subnet add command OK

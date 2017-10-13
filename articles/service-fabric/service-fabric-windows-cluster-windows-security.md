@@ -1,6 +1,6 @@
 ---
-title: "aaaSecure un clúster se ejecuta en Windows mediante la seguridad de Windows | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo tooconfigure seguridad de nodo a nodo a y nodo de cliente en una independiente de clúster que se ejecuta en Windows mediante la seguridad de Windows."
+title: "Protección de un clúster en ejecución en Windows mediante la seguridad de Windows | Microsoft Docs"
+description: "Aprenda a configurar la seguridad de nodo a nodo y de cliente a nodo en un clúster independiente que se ejecute en Windows mediante la seguridad de Windows."
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.openlocfilehash: 44f3011eb630357f342052a48d6c852b17dccec4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e093a631b0cf81195981a8e3d345504ebce02723
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Proteger un clúster independiente en Windows mediante la seguridad de Windows
-clúster de Service Fabric tooa de acceso no autorizado el tooprevent, debe proteger el clúster de Hola. Seguridad es especialmente importante al clúster Hola ejecuta cargas de trabajo de producción. Este artículo se describe cómo tooconfigure seguridad de nodo a nodo a y nodo de cliente utilizando la seguridad de Windows en hello *ClusterConfig.JSON* archivo.  proceso de Hello corresponde toohello configurar paso de seguridad de [crear un clúster independiente que se ejecute en Windows](service-fabric-cluster-creation-for-windows-server.md). Para más información sobre cómo Service Fabric usa la seguridad de Windows, consulte [Escenarios de seguridad de los clústeres](service-fabric-cluster-security.md).
+Para evitar accesos no autorizados a un clúster de Service Fabric, debe proteger el clúster. La seguridad es especialmente importante cuando el clúster ejecuta cargas de trabajo de producción. En este artículo se describe cómo configurar la seguridad de nodo a nodo y de cliente a nodo mediante la seguridad de Windows en el archivo *ClusterConfig.JSON*.  El proceso se corresponde con el paso de seguridad de configuración descrito en [Creación de un clúster independiente con Windows Server](service-fabric-cluster-creation-for-windows-server.md). Para más información sobre cómo Service Fabric usa la seguridad de Windows, consulte [Escenarios de seguridad de los clústeres](service-fabric-cluster-security.md).
 
 > [!NOTE]
-> Debe considerar detenidamente selección Hola de nodo a nodo seguridad porque no hay ninguna actualización de clúster desde un tooanother de opción de seguridad. selección de seguridad de toochange hello, deberá toorebuild Hola completo del clúster.
+> Considere la selección de seguridad de nodo a nodo con cuidado, ya que no hay ninguna actualización de clúster de una opción de seguridad a otra. Para cambiar la selección de seguridad, tendrá que volver a generar el clúster completo.
 >
 >
 
 ## <a name="configure-windows-security-using-gmsa"></a>Configuración de la seguridad de Windows mediante gMSA  
-ejemplo de Hola a *ClusterConfig.gMSA.Windows.MultiMachine.JSON* descargar el archivo de configuración con hello [Microsoft.Azure.ServiceFabric.WindowsServer.<version>. zip](http://go.microsoft.com/fwlink/?LinkId=730690) paquete de clúster independiente contiene una plantilla para la configuración de seguridad de Windows mediante [cuenta de servicio administrada de grupo (gMSA)](https://technet.microsoft.com/library/hh831782.aspx):  
+El archivo de configuración de ejemplo *ClusterConfig.gMSA.Windows.MultiMachine.JSON* descargado junto con el paquete de clúster independiente [Microsoft.Azure.ServiceFabric.WindowsServer<version>.zip](http://go.microsoft.com/fwlink/?LinkId=730690) contiene una plantilla para configurar la seguridad de Windows mediante una [cuenta de servicio administrada de grupo (gMSA)](https://technet.microsoft.com/library/hh831782.aspx):  
 
 ```  
 "security": {  
@@ -48,19 +48,19 @@ ejemplo de Hola a *ClusterConfig.gMSA.Windows.MultiMachine.JSON* descargar el ar
   
 | **Opciones de configuración.** | **Descripción** |  
 | --- | --- |  
-| WindowsIdentities |Contiene las identidades de cliente y el clúster de Hola. |  
+| WindowsIdentities |Contiene las identidades de cliente y del clúster. |  
 | ClustergMSAIdentity |Permite configurar la seguridad de nodo a nodo. Una cuenta de servicio administrada de grupo. |  
 | ClusterSPN |SPN completo de dominio para la cuenta gMSA|  
 | ClientIdentities |Permite configurar la seguridad de cliente a nodo. Una matriz de cuentas de usuario de cliente. |  
-| Identidad |identidad del cliente Hello, un usuario de dominio. |  
-| IsAdmin |True especifica que ese usuario de dominio de hello tiene acceso de cliente de administrador, false para el acceso de cliente de usuario. |  
+| Identidad |La identidad del cliente, un usuario de dominio. |  
+| IsAdmin |True especifica que el usuario de dominio tiene acceso de cliente de administrador, mientras que False especifica un acceso de cliente de usuario. |  
   
-[Seguridad de nodo toonode](service-fabric-cluster-security.md#node-to-node-security) se configura al establecer **ClustergMSAIdentity** cuando el tejido de servicio tiene toorun en gMSA. En orden toobuild las relaciones de confianza entre los nodos, deben realizar relacionados entre sí. Esto puede realizarse de dos maneras diferentes: especificar Hola grupo cuenta de servicio administrada que incluye todos los nodos de clúster de Hola o grupo Hola de máquina del dominio que incluye todos los nodos de clúster de Hola. Se recomienda encarecidamente usar hello [cuenta de servicio administrada de grupo (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) enfoque, especialmente para clústeres más grandes (más de 10 nodos) o para los clústeres que son probable toogrow o se reducción.  
-Este enfoque no requiere Hola de creación de un grupo de dominio para el que ha concedido tooadd de derechos de acceso a los administradores de clústeres y quitarán a miembros. Estas cuentas también son útiles para la administración automática de contraseñas. Para más información, consulte [Introducción a las cuentas de servicio administradas de grupo](http://technet.microsoft.com/library/jj128431.aspx).  
+La [seguridad de nodo a nodo](service-fabric-cluster-security.md#node-to-node-security) se configura estableciendo **ClustergMSAIdentity** cuando Service Fabric tiene que ejecutarse en gMSA. Para crear relaciones de confianza entre los nodos, debe asegurarse de que ambos conocen su existencia mutuamente. Esto puede realizarse de dos maneras diferentes: especificando la cuenta de servicio administrada de grupos que incluye todos los nodos del clúster o especificando el grupo de máquinas de dominio de todos los nodos del clúster. Se recomienda encarecidamente usar el enfoque que emplea la [cuenta de servicio administrada de grupos (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) , especialmente para los clústeres más grandes (más de 10 nodos) o para los clústeres que es probable que crezcan o se reduzcan.  
+Este enfoque no requiere la creación de un grupo de dominio para el que se hayan otorgado derechos de accesos a los administradores de clústeres para agregar y quitar miembros. Estas cuentas también son útiles para la administración automática de contraseñas. Para más información, consulte [Introducción a las cuentas de servicio administradas de grupo](http://technet.microsoft.com/library/jj128431.aspx).  
  
-[Seguridad de cliente toonode](service-fabric-cluster-security.md#client-to-node-security) se configura mediante **ClientIdentities**. En orden tooestablish confianza entre un clúster de hello y cliente, debe configurar Hola clúster tooknow qué identidades de cliente que puede confiar. Esto puede hacerse de dos maneras diferentes: especifique los usuarios del grupo de dominio Hola que pueden conectarse o especificar Hola a los usuarios de nodo del dominio que se pueden conectar. Service Fabric admite dos tipos de control de acceso diferente para los clientes que están conectados tooa clúster de Service Fabric: administrador y usuario. Control de acceso permite Hola para hello clúster administrador toolimit acceso toocertain tipos de operaciones de clúster para los diferentes grupos de usuarios, mejorar la seguridad de clúster de Hola.  Los administradores tienen capacidades de toomanagement de acceso completa (incluidas las capacidades de lectura/escritura). Los usuarios, de forma predeterminada, tienen sólo capacidades de toomanagement de acceso de lectura (por ejemplo, capacidades de consulta) y las aplicaciones de tooresolve de capacidad de Hola y servicios. Para más información sobre los controles de acceso, consulte [Control de acceso basado en roles para clientes de Service Fabric](service-fabric-cluster-security-roles.md).  
+[seguridad de cliente a nodo](service-fabric-cluster-security.md#client-to-node-security) se configura mediante **ClientIdentities**. Para establecer la confianza entre un cliente y el clúster, debe configurar el clúster para que sepa en qué identidades de cliente puede confiar. Esto puede hacerse de dos maneras diferentes: especificando el grupo de usuarios de dominio que puede conectarse o especificando los usuarios del nodo de dominio que se pueden conectar. Service Fabrics admite dos tipos distintos de control de acceso para los clientes que están conectados a un clúster de Service Fabric: administrador y usuario. El control de acceso permite al administrador de clústeres limitar el acceso a determinados tipos de operaciones de clúster para distintos grupos de usuarios, lo que aumenta la seguridad del clúster.  Los administradores tienen acceso total a las capacidades de administración (incluidas las capacidades de lectura y escritura). Los usuarios, de forma predeterminada, tienen acceso de solo lectura a las capacidades de administración (por ejemplo, capacidad de consulta) y a la capacidad para resolver las aplicaciones y los servicios. Para más información sobre los controles de acceso, consulte [Control de acceso basado en roles para clientes de Service Fabric](service-fabric-cluster-security-roles.md).  
  
-Hola después ejemplo **seguridad** sección configura la seguridad de Windows que usan gMSA y especifica ese Hola máquinas en *ServiceFabric.clusterA.contoso.com* gMSA forman parte del clúster de Hola y que *CONTOSO\usera* tiene acceso de cliente de administración:  
+La sección de **seguridad** del ejemplo siguiente configura la seguridad de Windows mediante gMSA y especifica que las máquinas de la gMSA *ServiceFabric/clusterA.contoso.com* forman parte del clúster y que *CONTOSO\usera* tiene acceso de cliente de administrador:  
   
 ```  
 "security": {  
@@ -76,7 +76,7 @@ Hola después ejemplo **seguridad** sección configura la seguridad de Windows q
 ```  
   
 ## <a name="configure-windows-security-using-a-machine-group"></a>Configuración de la seguridad de Windows mediante un grupo de máquinas  
-ejemplo de Hola a *ClusterConfig.Windows.MultiMachine.JSON* descargar el archivo de configuración con hello [Microsoft.Azure.ServiceFabric.WindowsServer.<version>. zip](http://go.microsoft.com/fwlink/?LinkId=730690) paquete de clúster independiente contiene una plantilla para configurar la seguridad de Windows.  Seguridad de Windows está configurada en hello **propiedades** sección: 
+El archivo de configuración de ejemplo *ClusterConfig.Windows.MultiMachine.JSON* descargado junto con el paquete de clúster independiente [Microsoft.Azure.ServiceFabric.WindowsServer<version>.zip](http://go.microsoft.com/fwlink/?LinkId=730690) contiene una plantilla para configurar la seguridad de Windows.  La seguridad de Windows se configura en la sección **Propiedades** : 
 
 ```
 "security": {
@@ -94,24 +94,24 @@ ejemplo de Hola a *ClusterConfig.Windows.MultiMachine.JSON* descargar el archivo
 
 | **Opciones de configuración** | **Descripción** |
 | --- | --- |
-| ClusterCredentialType |**ClusterCredentialType** se establece demasiado*Windows* si ClusterIdentity especifica un nombre de grupo de equipo de Active Directory. |  
-| ServerCredentialType |Establecer demasiado*Windows* tooenable la seguridad de Windows para los clientes.<br /><br />Esto indica que los clientes de Hola de clúster de Hola y el propio clúster Hola se ejecuta dentro de un dominio de Active Directory. |  
-| WindowsIdentities |Contiene las identidades de cliente y el clúster de Hola. |  
-| ClusterIdentity |Utilice un nombre de grupo del equipo, domain\machinegroup, seguridad de nodo a nodo tooconfigure. |  
+| ClusterCredentialType |**ClusterCredentialType** se establece en *Windows* si ClusterIdentity especifica un nombre de grupo de máquinas de Active Directory. |  
+| ServerCredentialType |Establézcalo en *Windows* para habilitar la seguridad de Windows para clientes.<br /><br />Esto indica que los clientes del clúster, y el clúster propiamente dicho, se están ejecutando dentro de un dominio de Active Directory. |  
+| WindowsIdentities |Contiene las identidades de cliente y del clúster. |  
+| ClusterIdentity |Utilice un nombre de grupo de máquina como, por ejemplo, domain\machinegroup, para configurar la seguridad de nodo a nodo. |  
 | ClientIdentities |Permite configurar la seguridad de cliente a nodo. Una matriz de cuentas de usuario de cliente. |  
-| Identidad |Agregar usuario de dominio de hello, dominio ombre de usuario para la identidad del cliente Hola. |  
-| IsAdmin |Conjunto tootrue toospecify que Hola de usuario de dominio no tiene acceso de cliente de administrador o false para el acceso de cliente de usuario. |  
+| Identidad |Agregue el usuario de dominio, domain\username, como identidad del cliente. |  
+| IsAdmin |Establézcala en true para especificar que el usuario de dominio tiene acceso de cliente de administrador, mientras que false especifica un acceso de cliente de usuario. |  
 
-[Seguridad de nodo toonode](service-fabric-cluster-security.md#node-to-node-security) se configura mediante el uso de la configuración **ClusterIdentity** si desea que toouse un grupo de equipo dentro de un dominio de Active Directory. Para más información, consulte el artículo [Create a Machine Group in Active Directory](https://msdn.microsoft.com/library/aa545347(v=cs.70).aspx) (Creación de un grupo de máquinas en Active Directory).
+[La seguridad de nodo a nodo](service-fabric-cluster-security.md#node-to-node-security) se configura mediante el uso de **ClusterIdentity** si desea usar un grupo de máquinas dentro de un dominio de Active Directory. Para más información, consulte el artículo [Create a Machine Group in Active Directory](https://msdn.microsoft.com/library/aa545347(v=cs.70).aspx) (Creación de un grupo de máquinas en Active Directory).
 
-La [seguridad de cliente a nodo](service-fabric-cluster-security.md#client-to-node-security) se configura mediante **ClientIdentities**. tooestablish confianza entre un clúster de hello y cliente, debe configurar Hola clúster tooknow Hola cliente pueden confiar en las identidades que Hola clúster. Puede establecer la confianza de dos maneras diferentes:
+La [seguridad de cliente a nodo](service-fabric-cluster-security.md#client-to-node-security) se configura mediante **ClientIdentities**. Para establecer la confianza entre un cliente y el clúster, debe configurar el clúster para que sepa en qué identidades de cliente puede confiar. Puede establecer la confianza de dos maneras diferentes:
 
-- Especificar usuarios Hola de grupo del dominio que se pueden conectar.
-- Especificar usuarios Hola de nodo del dominio que se pueden conectar.
+- Especifique los usuarios del grupo de dominio que se pueden conectar.
+- Especifique los usuarios del nodo de dominio que se pueden conectar.
 
-Service Fabric admite dos tipos de control de acceso diferente para los clientes que están conectados tooa clúster de Service Fabric: administrador y usuario. Control de acceso permite a Hola clúster administrador toolimit acceso toocertain los tipos de operaciones de clúster para los diferentes grupos de usuarios, lo que hace que el clúster de hello más segura.  Los administradores tienen capacidades de toomanagement de acceso completa (incluidas las capacidades de lectura/escritura). Los usuarios, de forma predeterminada, tienen sólo capacidades de toomanagement de acceso de lectura (por ejemplo, capacidades de consulta) y las aplicaciones de tooresolve de capacidad de Hola y servicios.  
+Service Fabrics admite dos tipos distintos de control de acceso para los clientes que están conectados a un clúster de Service Fabric: administrador y usuario. El control de acceso permite al administrador de clústeres limitar el acceso a determinados tipos de operaciones de clúster para distintos grupos de usuarios, lo que aumenta la seguridad del clúster.  Los administradores tienen acceso total a las capacidades de administración (incluidas las capacidades de lectura y escritura). Los usuarios, de forma predeterminada, tienen acceso de solo lectura a las capacidades de administración (por ejemplo, capacidad de consulta) y a la capacidad para resolver las aplicaciones y los servicios.  
 
-Hola después ejemplo **seguridad** sección configura la seguridad de Windows, especifica que Hola máquinas en *ServiceFabric/clusterA.contoso.com* forman parte del clúster de Hola y especifica que  *CONTOSO\usera* tiene acceso de cliente de administración:
+La sección de **seguridad** del ejemplo siguiente configura la seguridad de Windows y especifica que las máquinas de *ServiceFabric/clusterA.contoso.com* forman parte del clúster y que *CONTOSO\usera* tiene acceso de cliente de administrador:
 
 ```
 "security": {
@@ -128,13 +128,13 @@ Hola después ejemplo **seguridad** sección configura la seguridad de Windows, 
 ```
 
 > [!NOTE]
-> Service Fabric no debe implementarse en un controlador de dominio. Asegúrese de que ClusterConfig.json no incluye la dirección IP de Hola Hola del controlador de dominio cuando se usa un grupo de equipos o grupo cuentas de servicio administradas (gMSA).
+> Service Fabric no debe implementarse en un controlador de dominio. Asegúrese de que el archivo ClusterConfig.json no incluye la dirección IP del controlador de dominio cuando use un grupo de máquinas o una cuenta de servicio administrada de grupo (gMSA).
 >
 >
 
 ## <a name="next-steps"></a>Pasos siguientes
-Después de configurar la seguridad de Windows en hello *ClusterConfig.JSON* de archivos, reanudar el proceso de creación de clúster de hello en [crear un clúster independiente que se ejecute en Windows](service-fabric-cluster-creation-for-windows-server.md).
+Después de configurar la seguridad de Windows en el archivo *ClusterConfig.JSON* , reanude el proceso de creación de clústeres en [Creación de un clúster independiente que se ejecuta en Windows](service-fabric-cluster-creation-for-windows-server.md).
 
 Para más información sobre la seguridad de nodo a nodo, la seguridad de cliente a nodo y el control de acceso basado en roles, consulte [Escenarios de seguridad de clúster](service-fabric-cluster-security.md).
 
-Vea [clúster segura de conectar tooa](service-fabric-connect-to-secure-cluster.md) para obtener ejemplos de conectarse con PowerShell o FabricClient.
+Consulte [Conexión a un clúster seguro](service-fabric-connect-to-secure-cluster.md) para obtener ejemplos de conexión mediante PowerShell o FabricClient.

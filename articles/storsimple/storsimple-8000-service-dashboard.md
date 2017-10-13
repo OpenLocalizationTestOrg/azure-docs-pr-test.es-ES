@@ -1,6 +1,6 @@
 ---
-title: dispositivo de la serie StorSimple 8000 aaaUse resumen | Documentos de Microsoft
-description: "Describe la hoja de resumen de servicio de StorSimple de Hola y explica cómo toouse, mantenimiento de hello toomonitor de la solución StorSimple."
+title: Uso del resumen del dispositivo de la serie StorSimple 8000 | Microsoft Docs
+description: "Describe la hoja del resumen del servicio de StorSimple y explica cómo se usa para supervisar el estado de la solución de StorSimple."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,77 +14,77 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
-ms.openlocfilehash: ec1d971a8656df0be6eb1e3ec2603d97737ff070
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d987a4ae170f21532a886552cbe1eb5a0d25fc3f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="use-hello-service-summary-blade-for-storsimple-8000-series-device"></a>Usar hoja de resumen de servicio de hello de dispositivo de la serie 8000 de StorSimple
+# <a name="use-the-service-summary-blade-for-storsimple-8000-series-device"></a>Uso de la hoja de resumen del servicio del dispositivo de la serie StorSimple 8000
 
 ## <a name="overview"></a>Información general
 
-hoja de resumen de servicio de administrador de dispositivos de StorSimple de Hello proporciona un resumen de todos los dispositivos de Hola que están conectado toohello servicio de administrador de dispositivos de StorSimple y resalta los dispositivos que necesitan la atención del administrador del sistema. Este tutorial presenta hoja de resumen de servicio de hello, explica la función y el contenido del panel de Hola y describe las tareas de Hola que puede realizar desde esta página.
+La hoja del resumen del servicio StorSimple Device Manager proporciona una vista resumida de todos los dispositivos conectados al servicio StorSimple Device Manager y resalta los que requieren la atención del administrador del sistema. En este tutorial se presenta la hoja de resumen del servicio, se explica el contenido y la función del panel y se describen las tareas que se pueden realizar desde esta página.
 
 ![Resumen del servicio](./media/storsimple-8000-service-dashboard/service-summary1.png)
 
 
 ## <a name="management-commands"></a>Comandos de administración
 
-En la hoja de resumen de hello StorSimple servicio, consulte Opciones de Hola para administrar el servicio de administrador de dispositivos de StorSimple y hello StorSimple 8000 series dispositivos registrados toothis servicio. Verá los comandos de administración de Hola a lo largo de la parte superior de Hola de hoja de Hola y en el lado izquierdo de Hola.
+En la hoja de resumen del servicio de StorSimple se ven las opciones para administrar tanto el servicio StorSimple Device Manager como los dispositivos de la serie StorSimple 8000 registrados en dicho servicio. Verá los comandos de administración en la parte superior de la hoja y en el lado izquierdo.
 
 ![Barra de comandos](./media/storsimple-8000-service-dashboard/service-summary2.png)
 
-Use estos tooperform opciones varias operaciones como agregar volúmenes o recursos compartidos u Hola monitor varios trabajos que se ejecutan en dispositivos de StorSimple Hola.
+Estas opciones se pueden usar para realizar diversas operaciones tales como agregar recursos compartidos o volúmenes, o supervisar los distintos trabajos que se ejecutan en los dispositivos de StorSimple.
 
 
 ## <a name="essentials"></a>Essentials
 
-área de essentials Hola captura algunas propiedades importantes de hello como grupo de recursos de hello, la ubicación y la suscripción en la que se creó el dispositivo de StorSimple Manager.
+El área de información esencial captura algunas de las propiedades importantes, como el grupo de recursos, la ubicación y la suscripción en la que se creó StorSimple Device Manager.
 
 ![Essentials](./media/storsimple-8000-service-dashboard/service-summary3.png)
 
 ## <a name="storsimple-device-manager-service-summary"></a>Resumen del servicio StorSimple Device Manager
 
-* Hola **alertas** mosaico proporciona una instantánea de todas las alertas activas de hello en todos los dispositivos, agrupados por gravedad.
+* El icono **Alertas** (Alertas) proporciona una instantánea de todas las alertas activas en todos los dispositivos virtuales, agrupadas por gravedad.
 
     ![Icono Alerts (Alertas)](./media/storsimple-8000-service-dashboard/service-summary4.png)
 
-    Haga clic en icono de hello abre hello **alertas** hoja, puede hacer clic en un detalles adicionales de tooview alertas individuales sobre esa alerta, las incluidas acciones recomendadas. También puede desactivar alerta Hola si se ha resuelto el problema de Hola.
+    Si hace clic en el icono, se abrirá la hoja **Alertas**, en la que puede hacer clic en una alerta individual para ver detalles adicionales acerca de ella, incluidas las acciones recomendadas. También puede desactivar la alerta si el problema se ha resuelto.
 
     ![Hacer clic en el icono de alertas](./media/storsimple-8000-service-dashboard/service-summary8.png)
 
-* Hola **capacidad** mosaico muestra muestra hello almacenamiento principal se ha aprovisionado y restante en todos los dispositivos toohello relativa almacenamiento total disponible en todos los dispositivos. **Aprovisionar** hace referencia toohello cantidad de almacenamiento que está preparado y asignado para su uso, **restante** hace referencia toohello restante capacidad que se puede aprovisionar en todos los dispositivos.
+* El icono **Capacidad** muestra tanto el almacenamiento principal que se aprovisiona como el restante que queda en todos los dispositivos, en comparación con el almacenamiento total disponible en todos los dispositivos. **Aprovisionado** hace referencia a la cantidad de almacenamiento que está preparada y asignada para su uso. **Restante** hace referencia a la capacidad restante que se puede aprovisionar en todos los dispositivos.
 
     ![Icono Capacity (Capacidad)](./media/storsimple-8000-service-dashboard/service-summary6.png)
 
-    Hola **niveles restantes** capacidad es Hola capacidad disponible que se puede aprovisionar incluidos en la nube, mientras hello **restantes Local** es capacidad de hello restante en discos de hello adjunta toohello Dispositivos de la serie StorSimple 8000.
+    La capacidad **en capas restante** es la capacidad disponible que se puede aprovisionar incluyendo la nube, mientras que la capacidad **local restante** es la capacidad que queda en los discos conectados a los dispositivos de la serie StorSimple 8000.
 
 
-* Hola **uso** gráfico, puede ver métricas de hello pertinente para sus dispositivos. Puede ver el almacenamiento principal de hello usado por todos los dispositivos y almacenamiento en nube Hola utilizado por dispositivos a través de hello últimos 7 días, predeterminado Hola período de tiempo. 
+* En el gráfico **Uso**, puede ver las métricas pertinentes para los dispositivos. Puede ver el almacenamiento principal que se usa en todos los dispositivos, así como el almacenamiento en la nube que han consumido los dispositivos durante los últimos 7 días, el período de tiempo predeterminado. 
 
     ![Icono de Uso](./media/storsimple-8000-service-dashboard/service-summary7.png) 
 
-    toochoose una escala de tiempo diferente, utilice hello **editar** opción en la esquina superior derecha de hello del gráfico de Hola.
+    Para elegir otra escala de tiempo, ese la opción **Editar** de la esquina superior derecha del gráfico.
 
      ![Hacer clic en el icono de uso](./media/storsimple-8000-service-dashboard/service-summary10.png)
 
      ![Exportar datos de un gráfico](./media/storsimple-8000-service-dashboard/service-summary11.png)
 
-* Hola **dispositivos** mosaico proporciona un resumen del número de Hola de dispositivos de la serie 8000 de StorSimple en el administrador dispositivo de StorSimple, agrupados por estado del dispositivo. 
+* El icono **Devices** (Dispositivos) proporciona un resumen del número de dispositivos de la serie StorSimple 8000 en StorSimple Device Manager agrupados por el estado del dispositivo. 
 
     ![Icono Devices (Dispositivos)](./media/storsimple-8000-service-dashboard/service-summary5.png)
 
-    Haga clic en esta Hola de mosaico tooopen **dispositivos** lista hoja y, a continuación, haga clic en un dispositivo individual toodrill en hello de dispositivo resumen toohello específico de dispositivo. También puede realizar acciones específicas del dispositivo desde una hoja de resumen de un dispositivo determinado. Para obtener más información acerca de la hoja de resumen de dispositivo de hello, vaya demasiado[hoja de resumen de dispositivo](storsimple-8000-device-dashboard.md).
+    Haga clic en este icono para abrir la hoja de la lista **Dispositivos** y, a continuación, haga clic en un dispositivo individual para profundizar sobre el resumen específico del dispositivo. También puede realizar acciones específicas del dispositivo desde una hoja de resumen de un dispositivo determinado. Para más información acerca de la hoja de resumen del dispositivo, vaya a [Hoja de resumen de dispositivo](storsimple-8000-device-dashboard.md).
 
     ![Hacer clic en icono de dispositivos](./media/storsimple-8000-service-dashboard/service-summary9.png)
 
-## <a name="view-hello-activity-logs"></a>Ver registros de actividad de Hola
+## <a name="view-the-activity-logs"></a>Visualizar los registros de actividad
 
-Hola tooview varias operaciones que llevan a cabo en el Administrador de dispositivos de StorSimple, haga clic en hello **registros de actividad** vínculo en la parte izquierda de la hoja de resumen de servicio de StorSimple de Hola. Esto le llevará toohello **registros de actividad** hoja, donde puede ver un resumen de las operaciones recientes Hola llevan a cabo.
+Para ver las distintas operaciones que se llevan a cabo en StorSimple Device Manager, haga clic en el vínculo **Registros de actividad** en el lado izquierdo de la hoja de resumen del servicio StorSimple. Esto le llevará a la hoja **Registros de actividad**, donde puede ver un resumen de las operaciones recientes que se llevan a cabo.
 
 ![Registros de actividad](./media/storsimple-8000-service-dashboard/activity-logs1.png)
 ## <a name="next-steps"></a>Pasos siguientes
 
-* Más información acerca de cómo demasiado[uso Hola tooadminister de servicio de administrador de dispositivos de StorSimple el dispositivo StorSimple](storsimple-8000-manager-service-administration.md).
+* Obtenga más información acerca de cómo [usar el servicio StorSimple Device Manager para administrar cualquier dispositivo StorSimple](storsimple-8000-manager-service-administration.md).
 

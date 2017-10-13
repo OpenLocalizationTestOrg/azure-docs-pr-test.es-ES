@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: integración de Azure Active Directory con SECURE DELIVER | Microsoft Docs"
-description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y seguro a entregar."
+description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y SECURE DELIVER."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,111 +13,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 13699a9abb8be24054b0810a8178cd5ef170c338
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f6e5b1e34893f6b8fe14e238e24086bb47d009a5
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secure-deliver"></a>Tutorial: Integración de Azure Active Directory con SECURE DELIVER
 
-En este tutorial, aprenderá cómo proteger toointegrate entrega con Azure Active Directory (Azure AD).
+En este tutorial, obtendrá información sobre cómo integrar SECURE DELIVER con Azure Active Directory (Azure AD).
 
-Integración seguros entregar con Azure AD proporciona Hola siguientes ventajas:
+Integrar SECURE DELIVER con Azure AD le proporciona las siguientes ventajas:
 
-- Puede controlar en Azure AD que tenga acceso tooSECURE entrega
-- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooSECURE entregar (Single Sign-On) con sus cuentas de Azure AD
-- Puede administrar las cuentas en una ubicación central: Hola portal de Azure
+- Puede controlar en Azure AD quién tiene acceso a SECURE DELIVER.
+- Puede permitir que los usuarios inicien sesión automáticamente en SECURE DELIVER (inicio de sesión único) con sus cuentas de Azure AD.
+- Puede administrar sus cuentas en una ubicación central: el nuevo Azure Portal.
 
-Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Si desea saber más sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-tooconfigure integración de Azure AD con SECURE entregar, necesita Hola siguientes elementos:
+Para configurar la integración de Azure AD con SECURE DELIVER, necesita los siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción habilitada para el inicio de sesión único en SECURE DELIVER
 
 > [!NOTE]
-> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
+> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
 
-pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
+Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
 
 - No use el entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
 
-1. Agregar seguros entregar desde galería Hola
+1. Incorporación de SECURE DELIVER desde la galería
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-secure-deliver-from-hello-gallery"></a>Agregar seguros entregar desde galería Hola
-integración de hello tooconfigure de seguros entregar en Azure AD, deberá tooadd seguro entregar de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
+## <a name="adding-secure-deliver-from-the-gallery"></a>Incorporación de SECURE DELIVER desde la galería
+Para configurar la integración de SECURE DELIVER en Azure AD, es preciso agregar SECURE DELIVER desde la galería a la lista de aplicaciones SaaS administradas.
 
-**tooadd seguro entregar desde la Galería de hello, lleve a cabo Hola pasos:**
+**Para agregar SECURE DELIVER desde la galería, realice los pasos siguientes:**
 
-1. Hola  **[portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
+1. En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
+2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
 
     ![Aplicaciones][2]
     
-3. tooadd nueva aplicación, haga clic en **nueva aplicación** botón en la parte superior de saludo del cuadro de diálogo.
+3. Para agregar una nueva aplicación, haga clic en el botón **Nueva aplicación** de la parte superior del cuadro de diálogo.
 
     ![Aplicaciones][3]
 
-4. En el cuadro de búsqueda de hello, escriba **seguros entregar**.
+4. En el cuadro Buscar, escriba **SECURE DELIVER**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_search.png)
 
-5. En el panel de resultados de hello, seleccione **seguros entregar**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.
+5. En el panel de resultados, seleccione **SECURE DELIVER** y, luego, haga clic en el botón **Agregar** para agregar la aplicación.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuración y comprobación del inicio de sesión único de Azure AD
 En esta sección, podrá configurar y probar el inicio de sesión único de Azure AD con SECURE DELIVER utilizando un usuario de prueba llamado "Britta Simon".
 
-Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en seguros entregar es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en seguros entregar debe toobe establecido.
+Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de SECURE DELIVER para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de SECURE DELIVER.
 
-En proteger entregar, asigne el valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** tooestablish la relación de vínculo de Hola.
+Para establecer la relación de vínculo, en SECURE DELIVER, asigne el valor de **nombre de usuario** de Azure AD como valor de **Nombre de usuario**.
 
-tooconfigure y prueba de inicio de sesión único en Azure AD con SECURE entregar, deberá hello toocomplete después de bloques de creación:
+Para configurar y probar el inicio de sesión único de Azure AD con SECURE DELIVER, es preciso completar los siguientes bloques de creación:
 
-1. **[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.
-2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.
-3. **[Crear un usuario de prueba seguro entregar](#creating-a-secure-deliver-test-user)**  -toohave un equivalente de Britta Simon en seguros ofrecen que es la representación toohello vinculado Azure AD del usuario.
-4. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.
-5. **[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.
+1. **[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.
+2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.
+3. **[Creación de un usuario de prueba de SECURE DELIVER](#creating-a-secure-deliver-test-user)**: para tener un homólogo de Britta Simon en SECURE DELIVER que esté vinculado a su representación en Azure AD.
+4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación SECURE entregar.
+En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y lo configurará en la aplicación SECURE DELIVER.
 
-**inicio de sesión único en tooconfigure Azure AD con SECURE entregar, realizar Hola pasos:**
+**Para configurar el inicio de sesión único de Azure AD con SECURE DELIVER, realice los pasos siguientes:**
 
-1. En el portal de Azure, en Hola Hola **seguros entregar** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
+1. En Azure Portal, en la página de integración de la aplicación **SECURE DELIVER**, haga clic en **Inicio de sesión único**.
 
     ![Configurar inicio de sesión único][4]
 
-2. En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.
+2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_samlbase.png)
 
-3. En hello **dominio seguro de entregar y las direcciones URL** sección, lleve a cabo Hola pasos:
+3. En la sección **Dominio y direcciones URL de SECURE DELIVER**, lleve a cabo los pasos siguientes:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_url.png)
 
-    a. Hola **dirección URL de inicio de sesión** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<companyname>.i-securedeliver.jp/sd/<tenantname>/jsf/login/sso`
+    a. En el cuadro de texto **URL de inicio de sesión**, escriba una dirección URL con el siguiente patrón: `https://<companyname>.i-securedeliver.jp/sd/<tenantname>/jsf/login/sso`.
 
-    b. Hola **identificador** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<companyname>.i-securedeliver.jp/sd/<tenantname>/postResponse`
+    b. En el cuadro de texto **Identificador**, escriba una dirección URL con el siguiente patrón: `https://<companyname>.i-securedeliver.jp/sd/<tenantname>/postResponse`
 
     > [!NOTE] 
-    > Estos valores no son reales. Actualizar estos valores con hello real de dirección URL de inicio de sesión y el identificador. Póngase en contacto con [equipo de soporte técnico de seguros cliente entregar](mailto:iw-sd-support@fujifilm.com) tooget estos valores. 
+    > Estos valores no son reales. Debe actualizarlos con la dirección URL y el identificador reales de inicio de sesión. Póngase en contacto con el [equipo de soporte técnico de SECURE DELIVER](mailto:iw-sd-support@fujifilm.com) para obtener estos valores. 
  
-4. En hello **el certificado de firma de SAML** sección, haga clic en **certificado (Base64)** y, a continuación, guarde el archivo de certificado de hello en el equipo.
+4. En la sección **Certificado de firma de SAML**, haga clic en **Certificado (Base64)** y, luego, guarde el archivo de certificado en el equipo.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_certificate.png) 
 
@@ -125,68 +125,68 @@ En esta sección, habilitar inicio de sesión único en Azure AD en hello portal
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-securedeliver-tutorial/tutorial_general_400.png)
 
-6. En hello **proteger configuración entregar** sección, haga clic en **configurar SECURE entregar** tooopen **configurar inicio de sesión** ventana. Hola copia **dirección URL de cierre de sesión, Id. de entidad de SAML y SAML Single Sign-On dirección URL del servicio** de hello **sección de referencia rápida.**
+6. En la sección **Configuración de SECURE DELIVER** , haga clic en **Configurar SECURE DELIVER** para abrir la ventana **Configurar inicio de sesión**. Copie la **URL del servicio de inicio de sesión único de SAML, el identificador de entidad de SAML y la dirección URL de cierre de sesión** de la sección **Referencia rápida**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_configure.png) 
 
-7. tooconfigure inicio de sesión único en **seguros entregar** lado, necesita hello toosend descargado **certificado (Base64)**, **dirección URL de cierre de sesión, Id. de entidad de SAML y SAML Single Sign-On dirección URL del servicio** demasiado[seguro de entregar el equipo de soporte técnico](mailto:iw-sd-support@fujifilm.com). Establecen esta Hola de toohave configuración configurada correctamente en ambos lados de la conexión de SSO de SAML.
+7. Para configurar el inicio de sesión único en **SECURE DELIVER**, es preciso enviar el **Certificado (Base64)** descargado, la **dirección URL de cierre de sesión, el identificador de identidad de SAML y la dirección URL del servicio de inicio de sesión único de SAML** al [equipo de soporte técnico de SECURE DELIVER](mailto:iw-sd-support@fujifilm.com). El equipo de soporte técnico lo configura para establecer la conexión de SSO de SAML correctamente en ambos lados.
 
 > [!TIP]
-> Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!  Después de agregar esta aplicación de hello **Active Directory > aplicaciones empresariales** sección, simplemente haga clic en hello **Single Sign-On** Hola de pestaña y acceso incrustado documentación a través de hello  **Configuración** sección final Hola. Puede leer más acerca de características de documentación de embedded Hola aquí: [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ahora puede leer una versión resumida de estas instrucciones dentro de [Azure Portal](https://portal.azure.com) mientras configura la aplicación.  Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada a través de la sección **Configuración** de la parte inferior. Puede leer más sobre la característica de documentación insertada aquí: [Vista previa: Administración de inicio de sesión único para aplicaciones empresariales en el nuevo Azure Portal]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.
+El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".
 
 ![Creación de un usuario de Azure AD][100]
 
-**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
+**Siga estos pasos para crear un usuario de prueba en Azure AD:**
 
-1. Hola **portal de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.
+1. En el panel de navegación izquierdo de **Azure Portal**, haga clic en el icono de **Azure Active Directory**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-securedeliver-tutorial/create_aaduser_01.png) 
 
-2. lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios**.
+2. Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios**.
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-securedeliver-tutorial/create_aaduser_02.png) 
 
-3. Hola tooopen **usuario** cuadro de diálogo, haga clic en **agregar** en la parte superior de saludo del cuadro de diálogo de Hola.
+3. Para abrir el cuadro de diálogo **Usuario**, haga clic en **Agregar** en la parte superior del cuadro de diálogo.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-securedeliver-tutorial/create_aaduser_03.png) 
 
-4. En hello **usuario** cuadro de diálogo, siga los pasos de hello:
+4. En la página de diálogo **Usuario**, realice los siguientes pasos:
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-securedeliver-tutorial/create_aaduser_04.png) 
 
-    a. Hola **nombre** cuadro de texto, tipo **BrittaSimon**.
+    a. En el cuadro de texto **Nombre**, escriba **BrittaSimon**.
 
-    b. Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.
+    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
 
-    c. Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.
+    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
 
     d. Haga clic en **Crear**.
  
 ### <a name="creating-a-secure-deliver-test-user"></a>Creación de un usuario de prueba de SECURE DELIVER
 
-objetivo de Hola de esta sección es toocreate un usuario llamado a Britta Simon en seguros entregar. Trabajar con [seguro de entregar el equipo de soporte técnico](mailto:iw-sd-support@fujifilm.com) a los usuarios de tooadd Hola Hola cuenta segura a entregar.
+El objetivo de esta sección es crear un usuario de prueba llamado Britta Simon en SECURE DELIVER. Colabore con el [equipo de soporte técnico de SECURE DELIVER](mailto:iw-sd-support@fujifilm.com) para agregar los usuarios a la cuenta de SECURE DELIVER.
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Asignación de usuario de prueba de hello Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
 
-En esta sección, se habilita Britta Simon toouse un inicio de sesión único Azure concediendo acceso tooSECURE entregar.
+En esta sección, concederá acceso a Britta Simon a SECURE DELIVER para que use el inicio de sesión único de Azure.
 
 ![Asignar usuario][200] 
 
-**tooassign Britta Simon tooSECURE entregar, lleve a cabo Hola pasos:**
+**Para asignar a Britta Simon a SECURE DELIVER, siga estos pasos:**
 
-1. Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
+1. En Azure Portal, abra la vista de aplicaciones, vaya a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego, haga clic en **Todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones de hello, seleccione **seguros entregar**.
+2. En la lista de aplicaciones, seleccione **SECURE DELIVER**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-securedeliver-tutorial/tutorial_securedeliver_app.png) 
 
-3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
+3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
 
     ![Asignar usuario][202] 
 
@@ -194,7 +194,7 @@ En esta sección, se habilita Britta Simon toouse un inicio de sesión único Az
 
     ![Asignar usuario][203]
 
-5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
+5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -202,13 +202,13 @@ En esta sección, se habilita Britta Simon toouse un inicio de sesión único Az
     
 ### <a name="testing-single-sign-on"></a>Prueba del inicio de sesión único 
 
-objetivo de Hola de esta sección es tootest la configuración de SSO de Azure AD mediante Hola Panel de acceso.  
+El objetivo de esta sección es probar la configuración del inicio de sesión único de Azure AD mediante el panel de acceso.  
 
-Al hacer clic en icono de seguros entregar Hola Hola Panel de acceso, deberá obtener automáticamente ha iniciado sesión tooyour seguros entregar aplicaciones.
+Al hacer clic en el icono de SECURE DELIVER en el panel de acceso, debería iniciar sesión automáticamente en su aplicación SECURE DELIVER.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

@@ -1,5 +1,5 @@
 ---
-title: "Ejemplo de secuencia de comandos de CLI - aaaAzure de grupos de administración en el lote | Documentos de Microsoft"
+title: "Ejemplo de script de la CLI de Azure: administración de grupos en Batch | Microsoft Docs"
 description: "Ejemplo de script de la CLI de Azure: administración de grupos en Batch"
 services: batch
 documentationcenter: 
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/02/2017
 ms.author: antisch
-ms.openlocfilehash: 6c9ca9515565aff42752231a080943be8e4c810b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ae7eab97c1da1113b0248b74a9dd67de8ce49e36
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-azure-batch-pools-with-azure-cli"></a>Administración de grupos de Azure Batch con la CLI de Azure
 
-Estas secuencias de comandos muestra algunas de las herramientas de hello disponibles en hello toocreate de CLI de Azure y administrar grupos de nodos de proceso en el servicio de Azure Batch Hola.
+Estos scripts muestran algunas de las herramientas disponibles en la CLI de Azure para crear y administrar grupos de nodos de ejecución en el servicio de Azure Batch.
 
 > [!NOTE]
-> comandos de Hello en este ejemplo crean máquinas virtuales de Azure. Máquinas virtuales en ejecución se acumularán cuenta tooyour de cargos. toominimize estos cargos, eliminar hello las máquinas virtuales una vez que haya terminado el ejemplo hello en ejecución. Consulte el artículo sobre cómo [limpiar los grupos](#clean-up-pools).
+> Los comandos de este ejemplo crean máquinas virtuales de Azure. La ejecución de máquinas virtuales acumulará cargos en su cuenta. Para minimizarlos, elimine las máquinas virtuales cuando termine de ejecutar el ejemplo. Consulte el artículo sobre cómo [limpiar los grupos](#clean-up-pools).
 
-Los grupos de Batch se pueden configurar de dos formas, ya sea con una configuración de Cloud Services (solo Windows) o una configuración de Virtual Machine (Windows y Linux). scripts de ejemplo de Hola a continuación muestran cómo toocreate grupos con ambas configuraciones.
+Los grupos de Batch se pueden configurar de dos formas, ya sea con una configuración de Cloud Services (solo Windows) o una configuración de Virtual Machine (Windows y Linux). Los scripts de ejemplo siguientes muestran cómo crear grupos con ambas configuraciones.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-- Instalación Hola CLI de Azure utilizando instrucciones de hello proporcionadas en hello [Guía de instalación de CLI de Azure](https://docs.microsoft.com/cli/azure/install-azure-cli), si aún no lo ha hecho.
-- Cree una cuenta de Batch si aún no tiene una. Vea [crear una cuenta de lote con hello Azure CLI](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-create-account) para una secuencia de comandos de ejemplo que crea una cuenta.
-- Configurar una toorun de aplicación de una tarea de inicio si aún no lo ha hecho. Vea [agregar aplicaciones tooAzure por lotes con Azure CLI](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-add-application) para una secuencia de comandos de ejemplo que crea una aplicación y carga un tooAzure del paquete de aplicación.
+- Instale la CLI de Azure con las instrucciones que se encuentran en la [guía de instalación de la CLI de Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) si aún no lo ha hecho.
+- Cree una cuenta de Batch si aún no tiene una. Consulte [Creación de una cuenta de Batch con la CLI de Azure](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-create-account) para ver un script de ejemplo que crea una cuenta.
+- Configure una aplicación para que se ejecute desde una tarea de inicio si aún no lo ha hecho. Consulte [Adición de aplicaciones a Azure Batch con la CLI de Azure](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-add-application) para ver un script de ejemplo que crea una aplicación y carga un paquete de aplicación en Azure.
 
 ## <a name="pool-with-cloud-service-configuration-sample-script"></a>Grupo con script de ejemplo de configuración de Cloud Services
 
@@ -45,7 +45,7 @@ Los grupos de Batch se pueden configurar de dos formas, ya sea con una configura
 
 ## <a name="clean-up-pools"></a>Limpieza de grupos
 
-Después de ejecutar Hola por encima de la secuencia de comandos de ejemplo, ejecute hello siguientes grupos de comando toodelete Hola.
+Después de ejecutar el script de ejemplo anterior, ejecute el comando siguiente para eliminar los grupos.
 ```azurecli
 az batch pool delete --pool-id mypool-windows
 az batch pool delete --pool-id mypool-linux
@@ -53,28 +53,28 @@ az batch pool delete --pool-id mypool-linux
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Este script utiliza Hola después toocreate de comandos y manipular grupos de proceso por lotes.
-Cada comando de la tabla de hello vincula documentación específica del toocommand.
+Este script usa los comandos siguientes para crear grupos de Batch y manipularlos.
+Cada comando de la tabla crea un vínculo a documentación específica del comando.
 
 | Comando | Notas |
 |---|---|
-| [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#login) | Autenticarse en una cuenta de Batch.  |
-| [az batch application summary list](https://docs.microsoft.com/cli/azure/batch/application/summary#list) | Enumerar las aplicaciones disponibles de Hola Hola cuenta de lote.  |
-| [az batch pool create](https://docs.microsoft.com/cli/azure/batch/pool#create) | Crear un grupo de máquinas virtuales.  |
-| [az batch pool set](https://docs.microsoft.com/cli/azure/batch/pool#set) | Actualizar propiedades de un grupo.  |
-| [az batch pool node-agent-skus list](https://docs.microsoft.com/cli/azure/batch/pool/node-agent-skus#list) | Enumerar la información disponible de imagen y SKU de agente del nodo.  |
-| [az batch pool resize](https://docs.microsoft.com/cli/azure/batch/pool#resize) | Número de Hola de cambio de tamaño de las máquinas virtuales en ejecución en hello especificado grupo.  |
-| [az batch pool show](https://docs.microsoft.com/cli/azure/batch/pool#show) | Mostrar propiedades de Hola de un grupo.  |
-| [az batch pool delete](https://docs.microsoft.com/cli/azure/batch/pool#delete) | Eliminar Hola especificado grupo.  |
-| [az batch pool autoscale enable](https://docs.microsoft.com/cli/azure/batch/pool/autoscale#enable) | Habilitar el escalado automático de un grupo y aplicar una fórmula.  |
-| [az batch pool autoscale disable](https://docs.microsoft.com/cli/azure/batch/pool/autoscale#disable) | Deshabilitar el escalado automático de un grupo.  |
-| [az batch node list](https://docs.microsoft.com/cli/azure/batch/node#list) | Lista de todos los nodos de proceso de hello en hello especificado grupo.  |
-| [az batch node reboot](https://docs.microsoft.com/cli/azure/batch/node#reboot) | Reinicie el nodo de cálculo especificado de Hola.  |
-| [az batch node delete](https://docs.microsoft.com/cli/azure/batch/node#delete) | Los nodos de hello enumerado de eliminación de hello especificar grupo.  |
+| [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_login) | Autenticarse en una cuenta de Batch.  |
+| [az batch application summary list](https://docs.microsoft.com/cli/azure/batch/application/summary#az_batch_application_summary_list) | Enumerar las aplicaciones disponibles en la cuenta de Batch.  |
+| [az batch pool create](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_create) | Crear un grupo de máquinas virtuales.  |
+| [az batch pool set](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_set) | Actualizar propiedades de un grupo.  |
+| [az batch pool node-agent-skus list](https://docs.microsoft.com/cli/azure/batch/pool/node-agent-skus#az_batch_pool_node_agent_skus_list) | Enumerar la información disponible de imagen y SKU de agente del nodo.  |
+| [az batch pool resize](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_resize) | Cambiar la cantidad de máquinas virtuales en ejecución en el grupo especificado.  |
+| [az batch pool show](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_show) | Mostrar las propiedades de un grupo.  |
+| [az batch pool delete](https://docs.microsoft.com/cli/azure/batch/pool#az_batch_pool_delete) | Eliminar el grupo especificado.  |
+| [az batch pool autoscale enable](https://docs.microsoft.com/cli/azure/batch/pool/autoscale#az_batch_pool_autoscale_enable) | Habilitar el escalado automático de un grupo y aplicar una fórmula.  |
+| [az batch pool autoscale disable](https://docs.microsoft.com/cli/azure/batch/pool/autoscale#az_batch_pool_autoscale_disable) | Deshabilitar el escalado automático de un grupo.  |
+| [az batch node list](https://docs.microsoft.com/cli/azure/batch/node#az_batch_node_list) | Enumerar todos los nodos de ejecución del grupo especificado.  |
+| [az batch node reboot](https://docs.microsoft.com/cli/azure/batch/node#az_batch_node_reboot) | Reiniciar el nodo de ejecución especificado.  |
+| [az batch node delete](https://docs.microsoft.com/cli/azure/batch/node#az_batch_node_delete) | Eliminar los nodos de la lista del grupo especificado.  |
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener más información sobre Hola CLI de Azure, consulte [documentación de Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Para más información sobre la CLI de Azure, consulte la [documentación de la CLI de Azure](https://docs.microsoft.com/cli/azure/overview).
 
-Encontrará más ejemplos de secuencias de comandos de CLI de lote en hello [documentación de CLI de lote de Azure](../batch-cli-samples.md).
+Puede encontrar ejemplos de script adicionales de la CLI de Batch en la [documentación de la CLI de Azure Batch](../batch-cli-samples.md).
 

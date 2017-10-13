@@ -1,6 +1,6 @@
 ---
-title: "aaaConfiguring telemetría de servicios multimedia de Azure con .NET | Documentos de Microsoft"
-description: "Este artículo muestra cómo toouse Hola telemetría de servicios multimedia de Azure con .NET SDK."
+title: "Configuración de la telemetría de Azure Media Services con .NET | Microsoft Docs"
+description: "En este artículo se muestra cómo usar la telemetría de Azure Media Services mediante el SDK de .NET."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,40 +14,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
-ms.openlocfilehash: 4019fa7d080ca3f8a8709bd1e666f7062b883954
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1d857f3d062d8d1b15c64fa4b8c3e27ad6c2247e
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="configuring-azure-media-services-telemetry-with-net"></a>Configuración de la telemetría de Azure Media Services con .NET
 
-Este tema describe los pasos generales que puede llevar a cabo al configurar la telemetría de servicios de multimedia de Azure (AMS) Hola con .NET SDK. 
+En este tema se describen los pasos generales que puede llevar a cabo al configurar la telemetría de Azure Media Services (AMS) mediante el SDK de .NET. 
 
 >[!NOTE]
->Para una explicación detallada de lo que hello es telemetría AMS y cómo tooconsume, vea hello [Introducción](media-services-telemetry-overview.md) tema.
+>Para una explicación detallada de lo que es la telemetría AMS y cómo consumirla, consulte el tema de [información general](media-services-telemetry-overview.md).
 
-Puede consumir datos de telemetría en uno de hello siguientes maneras:
+Puede utilizar los datos de telemetría de una de las maneras siguientes:
 
-- Leer datos directamente desde el almacenamiento de tabla de Azure (por ejemplo, mediante Hola SDK de almacenamiento). Para descripción de Hola de tablas de almacenamiento de información de telemetría, vea hello **consumir información de telemetría** en [esto](https://msdn.microsoft.com/library/mt742089.aspx) tema.
+- Leer datos directamente desde Almacenamiento de tablas de Azure (por ejemplo, mediante el SDK de almacenamiento). Para la descripción de las tablas de almacenamiento de datos de telemetría, consulte la sección sobre **uso de información de telemetría** de [este](https://msdn.microsoft.com/library/mt742089.aspx) tema.
 
 O
 
-- Utilice la compatibilidad de hello en hello SDK de .NET de servicios multimedia para leer los datos de almacenamiento. Este tema muestra cómo tooenable telemetría para hello especifica cuenta AMS y cómo las métricas de hello tooquery con hello Azure Media Services .NET SDK.  
+- Aproveche la compatibilidad del SDK de .NET de Servicios multimedia para leer los datos de almacenamiento. Este tema muestra cómo habilitar la telemetría de la cuenta de AMS especifica y cómo consultar las métricas usando el SDK de .NET de Servicios Multimedia de Azure.  
 
 ## <a name="configuring-telemetry-for-a-media-services-account"></a>Configuración de telemetría para una cuenta de Servicios multimedia
 
-Hello siguientes pasos son necesarios tooenable telemetría:
+Para habilitar la telemetría es necesario realizar los pasos siguientes:
 
-- Obtiene las credenciales de Hola de hello almacenamiento cuenta vinculada toohello cuenta de servicios multimedia. 
-- Crear un extremo de notificación con **EndPointType** establecido demasiado**AzureTable** y endPointAddress que señala toohello tabla de almacenamiento.
+- Obtener las credenciales de la cuenta de almacenamiento vinculada a la cuenta de Servicios multimedia. 
+- Cree un punto de conexión de notificación con **EndPointType** establecido en **AzureTable** y endPointAddress apuntando a la tabla de almacenamiento.
 
         INotificationEndPoint notificationEndPoint = 
                       _context.NotificationEndPoints.Create("monitoring", 
                       NotificationEndPointType.AzureTable,
                       "https://" + _mediaServicesStorageAccountName + ".table.core.windows.net/");
 
-- Crear una configuración de supervisión de configuración para hello de servicios desea toomonitor. No se permite más que una configuración de supervisión. 
+- Crear unos valores de configuración de supervisión para los servicios que desea supervisar. No se permite más que una configuración de supervisión. 
   
         IMonitoringConfiguration monitoringConfiguration = _context.MonitoringConfigurations.Create(notificationEndPoint.Id,
             new List<ComponentMonitoringSetting>()
@@ -62,15 +62,15 @@ Para información sobre el consumo de la información de telemetría, consulte [
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Creación y configuración de un proyecto de Visual Studio
 
-1. Configurar el entorno de desarrollo y rellenar el archivo app.config de hello con información de conexión, como se describe en [desarrollo de servicios multimedia con .NET](media-services-dotnet-how-to-use.md). 
+1. Configure el entorno de desarrollo y rellene el archivo app.config con la información de la conexión, como se describe en [Desarrollo de Media Services con .NET](media-services-dotnet-how-to-use.md). 
 
-2. Agregar Hola siguiente elemento demasiado**appSettings** definido en el archivo app.config:
+2. Agregue los siguientes elementos al elemento **appSettings** definido en el archivo app.config:
 
     <add key="StorageAccountName" value="storage_name" />
  
 ## <a name="example"></a>Ejemplo  
     
-Hola de ejemplo siguiente muestra cómo tooenable telemetría para hello especifica cuenta AMS y cómo las métricas de hello tooquery con hello Azure Media Services .NET SDK.  
+El ejemplo siguiente muestra cómo habilitar la telemetría de la cuenta de AMS especifica y cómo consultar las métricas usando el SDK de .NET de Servicios Multimedia de Azure.  
 
     using System;
     using System.Collections.Generic;
@@ -192,7 +192,7 @@ Hola de ejemplo siguiente muestra cómo tooenable telemetría para hello especif
 
             var channelMetrics = telemetry.GetChannelHeartbeats(timerangeStart, timerangeEnd);
 
-            // Print hello channel metrics.
+            // Print the channel metrics.
             Console.WriteLine("Channel metrics:");
 
             foreach (var channelHeartbeat in channelMetrics.OrderBy(x => x.ObservedTime))

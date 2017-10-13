@@ -1,7 +1,7 @@
-En suma tooautomatically conectar la réplica principal de los clientes toohello, un agente de escucha puede ser usado tooredirect las cargas de trabajo de solo lectura toohello secundarias. Este uso puede mejorar el rendimiento de Hola y la escalabilidad de la solución general. Para más información, consulte [Use ReadIntent Routing with Azure Always On availability group listener](http://go.microsoft.com/fwlink/?LinkId=522515) (Uso del enrutamiento ReadIntent con el agente de escucha del grupo de disponibilidad de Azure Always On).
+Además de conectar automáticamente los clientes a la réplica principal, un agente de escucha se puede utilizar para redirigir las cargas de trabajo de solo lectura a las secundarias. Esto puede mejorar el rendimiento y la escalabilidad de la solución en general. Para más información, consulte [Use ReadIntent Routing with Azure Always On availability group listener](http://go.microsoft.com/fwlink/?LinkId=522515) (Uso del enrutamiento ReadIntent con el agente de escucha del grupo de disponibilidad de Azure Always On).
 
 > [!NOTE]
-> Sugerencias para resolver problemas en los agentes de escucha de Azure, consulte [agente de escucha del grupo de disponibilidad de solución de problemas en Azure](https://blogs.msdn.microsoft.com/alwaysonpro/2017/02/22/troubleshooting-internal-load-balancer-listener-connectivity-in-azure) en el equipo de soporte técnico de AlwaysOn hello [blog](http://blogs.msdn.com/b/alwaysonpro/).
+> Para obtener sugerencias sobre solución de problemas en los agentes de escucha de Azure, consulte [Troubleshooting Availability Group Listener in Azure](https://blogs.msdn.microsoft.com/alwaysonpro/2017/02/22/troubleshooting-internal-load-balancer-listener-connectivity-in-azure) (Solución de problemas de agentes de escucha de grupos de disponibilidad en Azure) en el [blog](http://blogs.msdn.com/b/alwaysonpro/) del equipo de soporte técnico de AlwaysOn.
 > 
 > 
 

@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: integración de Azure Active Directory con Clarizen | Microsoft Docs"
-description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y Clarizen."
+description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y Clarizen."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,42 +13,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: jeedes
-ms.openlocfilehash: f24ccda3b90e5df9a203a444dfda905043b30276
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 574c6877bddac8be7d6d541bfabbdc10f6be3101
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Tutorial: integración de Azure Active Directory con Clarizen
 
-En este tutorial, aprenderá cómo toointegrate Azure Active Directory (Azure AD) con Clarizen. Esto proporciona integración Hola siguientes ventajas:
+En este tutorial, aprenderá a integrar Azure Active Directory (Azure AD) con Clarizen. Esta integración ofrece las siguientes ventajas:
 
-- Puede controlar, en Azure AD, que tiene acceso tooClarizen.
-- Puede habilitar la toobe usuarios tooClarizen (inicio de sesión único) con sus cuentas de Azure AD inicia sesión automáticamente.
-- Puede administrar las cuentas en una ubicación central, Hola portal de Azure.
+- Puede controlar en Azure AD quién tiene acceso a Clarizen.
+- Puede permitir que los usuarios inicien sesión automáticamente en Clarizen (inicio de sesión único) con sus cuentas de Azure AD.
+- Puede administrar sus cuentas en una ubicación central: Azure Portal.
 
-escenario de Hello en este tutorial consta de dos tareas principales:
+El escenario de este tutorial consta de dos tareas principales:
 
-1. Agregar Clarizen de hello Galería.
+1. Incorporación de Clarizen desde la galería.
 2. Configuración y prueba del inicio de sesión único en Azure AD.
 
 Si desea obtener más información sobre la integración de aplicaciones SaaS con Azure AD, vea [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
-integración de Azure AD con Clarizen tooconfigure, necesita Hola siguientes elementos:
+Para configurar la integración de Azure AD con Clarizen, necesita los siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción de Clarizen con inicio de sesión único habilitado
 
-pasos de hello tootest en este tutorial, siga estas recomendaciones:
+Para probar los pasos de este tutorial, siga estas recomendaciones:
 
 - Pruebe el inicio de sesión único de Azure AD en un entorno de prueba. No use su entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede [obtener una versión de prueba durante un mes](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="add-clarizen-from-hello-gallery"></a>Agregar Clarizen de galería de Hola
-integración de hello tooconfigure de Clarizen en Azure AD, agregue Clarizen de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
+## <a name="add-clarizen-from-the-gallery"></a>Incorporación de Clarizen desde la galería
+Para configurar la integración de Clarizen en Azure AD, debe agregar Clarizen desde la galería a la lista de aplicaciones SaaS administradas.
 
-1. Hola [portal de Azure](https://portal.azure.com), en Hola panel izquierdo, haga clic en hello **Azure Active Directory** icono.
+1. En el panel izquierdo de [Azure Portal](https://portal.azure.com), haga clic en el icono de **Azure Active Directory**.
 
     ![Icono de Azure Active Directory][1]
 
@@ -56,138 +56,138 @@ integración de hello tooconfigure de Clarizen en Azure AD, agregue Clarizen de 
 
     ![Clic en "Aplicaciones empresariales" y "Todas las aplicaciones"][2]
 
-3. Haga clic en hello **agregar** situado en la parte superior de Hola Hola del cuadro de diálogo.
+3. Haga clic en el botón **Agregar** situado en la parte superior del cuadro de diálogo.
 
-    ![botón de "Agregar" Hello][3]
+    ![Botón "Agregar"][3]
 
-4. En el cuadro de búsqueda de hello, escriba **Clarizen**.
+4. En el cuadro de búsqueda, escriba **Clarizen**.
 
-    ![Escriba "Clarizen" en el cuadro de búsqueda de Hola](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_000.png)
+    ![Escribir "Clarizen" en el cuadro de búsqueda](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_000.png)
 
-5. En el panel de resultados de hello, seleccione **Clarizen**y, a continuación, haga clic en **agregar** aplicación de hello tooadd.
+5. En el panel de resultados, seleccione **Clarizen** y luego haga clic en **Agregar** para agregar la aplicación.
 
-    ![Seleccionar Clarizen en el panel de resultados de Hola](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_0001.png)
+    ![Selección de Clarizen en el panel de resultados](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_0001.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configuración y prueba del inicio de sesión único en Azure AD
-En las secciones siguientes de hello, configurar y probar el inicio de sesión único en Azure AD con Clarizen en función de usuario de prueba de hello Britta Simon.
+En las secciones siguientes, va a configurar y probar el inicio de sesión único de Azure AD con Clarizen con el usuario de prueba Britta Simon.
 
-Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en Clarizen es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en Clarizen debe toobe establecido. Establecer esta relación de vínculo asignando el valor de Hola de **nombre de usuario** en Azure AD como valor de Hola de **nombre de usuario** en Clarizen.
+Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de Clarizen para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de Clarizen. Esta relación de vínculo se establece mediante la asignación del valor del **nombre de usuario** en Azure AD como el valor del **nombre de usuario** en Clarizen.
 
-tooconfigure y prueba de inicio de sesión único en Azure AD con Clarizen, Hola completa después de bloques de creación:
+Para configurar y probar el inicio de sesión único de Azure AD con Clarizen, complete los siguientes bloques de creación:
 
-1. **[Configurar inicio de sesión único en Azure AD](#configure-azure-ad-single-sign-on)**  tooenable su toouse usuarios esta característica.
-2. **[Crear un usuario de prueba de Azure AD](#create-an-azure-ad-test-user)**  tootest inicio de sesión único en Azure AD con Britta Simon.
-3. **[Crear un usuario de prueba de Clarizen](#create-a-clarizen-test-user)**  toohave un equivalente de Britta Simon en Clarizen que está vinculado toohello Azure AD representación de ella.
-4. **[Asignar el usuario de prueba de hello Azure AD](#assign-the-azure-ad-test-user)**  tooenable Britta Simon toouse Azure AD inicio de sesión único.
-5. **[Probar el inicio de sesión único](#test-single-sign-on)**  tooverify Hola si funciona la configuración.
+1. **[Configuración del inicio de sesión único de Azure AD](#configure-azure-ad-single-sign-on)**, para permitir que los usuarios utilicen esta característica.
+2. **[Creación de un usuario de prueba de Azure AD](#create-an-azure-ad-test-user)**, para probar el inicio de sesión único de Azure AD con Britta Simon.
+3. **[Creación de un usuario de prueba de Clarizen](#create-a-clarizen-test-user)**, para tener un homólogo de Britta Simon en Clarizen que esté vinculado a la representación de ella en Azure AD.
+4. **[Asignación del usuario de prueba de Azure AD](#assign-the-azure-ad-test-user)**, para permitir que Britta Simon use el inicio de sesión único de Azure AD.
+5. **[Prueba del inicio de sesión único](#test-single-sign-on)**, para comprobar si funciona la configuración.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
-Habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación de Clarizen.
+Habilite el inicio de sesión único de Azure AD en Azure Portal y configure el inicio de sesión único en la aplicación Clarizen.
 
-1. En el portal de Azure, en Hola Hola **Clarizen** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
+1. En Azure Portal, en la página de integración de la aplicación **Clarizen**, haga clic en **Inicio de sesión único**.
 
     ![Clic en "Inicio de sesión único"][4]
 
-2. Hola **inicio de sesión único** cuadro de diálogo para **modo**, seleccione **sesión basado en SAML** tooenable inicio de sesión único.
+2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo**, seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
 
     ![Selección de "Inicio de sesión basado en SAML"](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_01.png)
 
-3. Hola **Clarizen dominio y las direcciones URL** sección, lleve a cabo Hola pasos:
+3. En la sección **Dominio y direcciones URL de Clarizen**, lleve a cabo los pasos siguientes:
 
     ![Cuadros de identificador y dirección URL de respuesta](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_02.png)
 
-    a. Hola **identificador** cuadro de valor de tipo hello como: **Clarizen**
+    a. En el cuadro **Identificador**, escriba el valor: **Clarizen**
 
-    b. Hola **dirección URL de respuesta** , escriba una dirección URL mediante el uso de hello siguiente patrón: **https://<company name>.clarizen.com/Clarizen/Pages/Integrations/SAML/SamlResponse.aspx**
+    b. En el cuadro **URL de respuesta**, escriba la dirección URL según este patrón: **https://<company name>.clarizen.com/Clarizen/Pages/Integrations/SAML/SamlResponse.aspx**
 
     > [!NOTE]
-    > Estas no son valores reales de Hola. Ha identificador real de toouse hello y dirección URL de respuesta. Aquí se recomienda usar valor de una cadena única de hello como Hola identificador. tooget Hola valores reales, póngase en contacto con hello [equipo de soporte técnico de Clarizen](https://success.clarizen.com/hc/en-us/requests/new).
+    > Estos valores no son reales. Tiene que usar el identificador y la dirección URL de respuesta reales. Aquí se recomienda que utilice el valor de cadena único en el identificador. Para obtener los valores reales, póngase en contacto con el [equipo de soporte técnico de Clarizen](https://success.clarizen.com/hc/en-us/requests/new).
 
-4. En hello **el certificado de firma de SAML** sección, haga clic en **crear un nuevo certificado**.
+4. En la sección **Certificado de firma de SAML**, haga clic en **Crear nuevo certificado**.
 
     ![Clic en "Crear un nuevo certificado"](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_03.png)  
 
-5. Hola **crear nuevo certificado** diálogo cuadro, haga clic en el icono del calendario de Hola y seleccione una fecha de expiración. A continuación, haga clic en **Guardar**.
+5. En el cuadro de diálogo **Crear nuevo certificado**, haga clic en el icono del calendario y seleccione una fecha de expiración. A continuación, haga clic en **Guardar**.
 
     ![Seleccionar y guardar una fecha de expiración](./media/active-directory-saas-clarizen-tutorial/tutorial_general_300.png)
 
-6. Hola **el certificado de firma de SAML** sección, seleccione **activar el nuevo certificado**y, a continuación, haga clic en **guardar**.
+6. En la sección **Certificado de firma de SAML**, seleccione **Activar el certificado nuevo** y haga clic en el botón **Guardar**.
 
-    ![Activar casilla de verificación de Hola para hacer que el nuevo certificado de hello active](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_04.png)
+    ![Selección de la casilla para activar el nuevo certificado](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_04.png)
 
-7. Hola **el certificado de sustitución** cuadro de diálogo, haga clic en **Aceptar**.
+7. En el cuadro de diálogo **Certificado de sustitución**, haga clic en **Aceptar**.
 
-    ![Al hacer clic en "Aceptar" tooconfirm que desea toomake Hola certificado activo](./media/active-directory-saas-clarizen-tutorial/tutorial_general_400.png)
+    ![Clic en "Aceptar" para confirmar que desea activar el certificado](./media/active-directory-saas-clarizen-tutorial/tutorial_general_400.png)
 
-8. Hola **el certificado de firma de SAML** sección, haga clic en **certificado (Base64)** y, a continuación, guarde el archivo de certificado de hello en el equipo.
+8. En la sección **Certificado de firma de SAML**, haga clic en **Certificado (Base64)** y, luego, guarde el archivo de certificado en el equipo.
 
-    ![Haga clic en descarga de hello toostart "Certificado (Base64)"](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_05.png)
+    ![Clic en "Certificado (Base64)" para iniciar la descarga](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_05.png)
 
-9. Hola **configuración de Clarizen** sección, haga clic en **configurar Clarizen** tooopen hello **configurar inicio de sesión** ventana.
+9. En la sección **Configuración de Clarizen**, haga clic en **Configurar Clarizen** para abrir la ventana **Configurar inicio de sesión**.
 
     ![Clic en "Configurar Clarizen"](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_06.png)
 
     ![Ventana "Configurar inicio de sesión", incluidos los archivos y las direcciones URL](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_07.png)
 
-10. En una ventana del explorador web diferente, inicie sesión en el sitio de la compañía Clarizen tooyour como administrador.
+10. En otra ventana del explorador web, inicie sesión en el sitio de la compañía de Clarizen como administrador.
 
 11. Haga clic en el nombre de usuario y luego haga clic en **Settings** (Configuración).
 
     ![Clic en "Settings" (Configuración) debajo del nombre de usuario](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_001.png "Configuración")
 
-12. Haga clic en hello **configuración Global** ficha. A continuación, siguiente demasiado**autenticación federada**, haga clic en **editar**.
+12. Haga clic en la pestaña **Global Settings** (Configuración global). A continuación, junto a **Federated Authentication** (Autenticación federada), haga clic en **edit** (Editar).
 
     ![Pestaña "Global Settings"](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_002.png "Global Settings")
 
-13. Hola **autenticación federada** diálogo cuadro, lleve a cabo Hola pasos:
+13. En el cuadro de diálogo **Federated Authentication** (Autenticación federada), realice los pasos siguientes:
 
     ![Cuadro de diálogo "Federated Authentication"](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_003.png "Federated Authentication")
 
     a. Seleccione **Habilitar autenticación federada**.
 
-    b. Haga clic en **cargar** tooupload el certificado descargado.
+    b. Para cargar el certificado descargado, haga clic en **Cargar** .
 
-    c. Hola **dirección URL de inicio de sesión** cuadro, escriba el valor de Hola de **SAML Single Sign-On dirección URL del servicio** desde la ventana de configuración de aplicación hello Azure AD.
+    c. En el cuadro **URL de inicio de sesión**, coloque el valor de **SAML Single Sign-On Service URL** (Dirección URL del servicio de inicio de sesión único de SAML) en la ventana de configuración de aplicaciones de Azure AD.
 
-    d. Hola **dirección URL de cierre de sesión** cuadro, escriba el valor de Hola de **dirección URL de cierre de sesión** desde la ventana de configuración de aplicación hello Azure AD.
+    d. En el cuadro **Sign-out URL** (URL de cierre de sesión), coloque el valor de **Sign-out URL** (URL de cierre de sesión) en la ventana de configuración de aplicaciones de Azure AD.
 
     e. Seleccione **Usar POST**.
 
     f. Haga clic en **Guardar**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-Hola portal de Azure, cree un usuario de prueba llamado a Britta Simon.
+En Azure Portal, cree un usuario de prueba denominado Britta Simon.
 
-![Nombre y direcciones de correo del usuario de prueba de hello Azure AD][100]
+![Nombre y dirección de correo electrónico del usuario de prueba de Azure AD][100]
 
-1. Hola portal de Azure, en el panel izquierdo de hello, haga clic en hello **Azure Active Directory** icono.
+1. En el panel izquierdo de Azure Portal, haga clic en el icono de **Azure Active Directory**.
 
     ![Icono de Azure Active Directory](./media/active-directory-saas-clarizen-tutorial/create_aaduser_01.png)
 
-2. Haga clic en **usuarios y grupos**y, a continuación, haga clic en **todos los usuarios** toodisplay lista de Hola de usuarios.
+2. Haga clic en **Usuarios y grupos** y luego en **Todos los usuarios** para mostrar la lista de usuarios.
 
     ![Clic en "Usuarios y grupos" y "Todos los usuarios"](./media/active-directory-saas-clarizen-tutorial/create_aaduser_02.png)
 
-3. En la parte superior de Hola Hola del cuadro de diálogo, haga clic en **agregar** tooopen hello **usuario** cuadro de diálogo.
+3. En la parte superior del cuadro de diálogo, haga clic en **Agregar** para abrir el cuadro de diálogo **Usuario**.
 
-    ![botón de "Agregar" Hello](./media/active-directory-saas-clarizen-tutorial/create_aaduser_03.png)
+    ![Botón "Agregar"](./media/active-directory-saas-clarizen-tutorial/create_aaduser_03.png)
 
-4. Hola **usuario** diálogo cuadro, lleve a cabo Hola pasos:
+4. En el cuadro de diálogo **Usuario** , realice los pasos siguientes:
 
     ![Cuadro de diálogo "Usuario" con los campos nombre, dirección de correo electrónico y contraseña cumplimentados](./media/active-directory-saas-clarizen-tutorial/create_aaduser_04.png)
 
-    a. Hola **nombre** , escriba **BrittaSimon**.
+    a. En el cuadro **Nombre**, escriba **BrittaSimon**.
 
-    b. Hola **nombre de usuario** cuadro de dirección de correo electrónico de tipo hello de hello cuenta Britta Simon.
+    b. En el cuadro de texto **Nombre de usuario**, escriba la dirección de correo electrónico de la cuenta de Britta Simon.
 
-    c. Seleccione **Mostrar contraseña** y anote el valor de Hola de **contraseña**.
+    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
 
     d. Haga clic en **Create**(Crear).
 
 ### <a name="create-a-clarizen-test-user"></a>Creación de un usuario de prueba de Clarizen
-tooenable toosign de los usuarios de Azure AD en tooClarizen, debe aprovisionar las cuentas de usuario. En caso de hello de Clarizen, el aprovisionamiento es una tarea manual.
+Para permitir que los usuarios de Azure AD inicien sesión en Clarizen, debe aprovisionar las cuentas de usuario. En el caso de Clarizen, el aprovisionamiento es una tarea manual.
 
-1. Inicie sesión en tooyour Clarizen sitio de su compañía como administrador.
+1. Inicie sesión en el sitio de la compañía de Clarizen como administrador.
 
 2. Haga clic en **Contactos**.
 
@@ -197,52 +197,52 @@ tooenable toosign de los usuarios de Azure AD en tooClarizen, debe aprovisionar 
 
     ![Botón "Invite User"](./media/active-directory-saas-clarizen-tutorial/create_aaduser_002.png "Invite Users")
 
-4. Hola **invitar personas** diálogo cuadro, lleve a cabo Hola pasos:
+4. En el cuadro de diálogo **Invite People** (Invitar a personas), siga estos pasos:
 
     ![Cuadro de diálogo "Invite People"](./media/active-directory-saas-clarizen-tutorial/create_aaduser_003.png "Invite People")
 
-    a. Hola **correo electrónico** cuadro de dirección de correo electrónico de tipo hello de hello cuenta Britta Simon.
+    a. En el cuadro **Email** (Correo electrónico), escriba la dirección de correo electrónico de la cuenta de Britta Simon.
 
     b. Haga clic en **Invitar**.
 
     > [!NOTE]
-    > titular de la cuenta de Hello Azure Active Directory recibirá un correo electrónico y seguir un vínculo tooconfirm su cuenta antes de activarla.
+    > El titular de la cuenta de Azure Active Directory recibirá un mensaje de correo y seguirá un vínculo para confirmar su cuenta antes de que se active.
 
-### <a name="assign-hello-azure-ad-test-user"></a>Asignar el usuario de prueba de hello Azure AD
-Habilitar Britta Simon toouse Azure inicio de sesión único mediante la concesión de su tooClarizen de acceso.
+### <a name="assign-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
+Habilite a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a Clarizen.
 
 ![Usuario de prueba asignado][200]
 
-1. Hola portal de Azure, abrir vista de aplicaciones de hello, examinar vista del directorio toohello, haga clic en **aplicaciones empresariales**y, a continuación, haga clic en **todas las aplicaciones**.
+1. En Azure Portal, abra la vista de aplicaciones, vaya a la vista de directorio y haga clic en **Aplicaciones empresariales**. Después, haga clic en **Todas las aplicaciones**.
 
     ![Clic en "Aplicaciones empresariales" y "Todas las aplicaciones"][201]
 
-2. En la lista de aplicaciones de hello, seleccione **Clarizen**.
+2. En la lista de aplicaciones, seleccione **Clarizen**.
 
-    ![Al seleccionar Clarizen en lista de Hola](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_50.png)
+    ![Selección de Clarizen en la lista](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_50.png)
 
-3. En el panel izquierdo de hello, haga clic en **usuarios y grupos**.
+3. En el panel izquierdo, haga clic en **Usuarios y grupos**.
 
     ![Clic en "Usuarios y grupos"][202]
 
-4. Haga clic en hello **agregar** botón. A continuación, en hello **Agregar asignación** cuadro de diálogo, seleccione **usuarios y grupos**.
+4. Haga clic en el botón **Add** (Agregar). Después, en el cuadro de diálogo **Agregar asignación**, seleccione **Usuarios y grupos**.
 
-    ![botón de "Agregar" Hello y cuadro de diálogo "Agregar asignación" hello][203]
+    ![Botón "Agregar" y cuadro de diálogo "Agregar asignación"][203]
 
-5. Hola **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en lista de Hola de usuarios.
+5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
 
-6. Hola **usuarios y grupos** diálogo cuadro, haga clic en hello **seleccione** botón.
+6. En el cuadro de diálogo **Usuarios y grupos**, haga clic en el botón **Seleccionar**.
 
-7. Hola **Agregar asignación** diálogo cuadro, haga clic en hello **asignar** botón.
+7. En el cuadro de diálogo **Agregar asignación**, haga clic en el botón **Asignar**.
 
 ### <a name="test-single-sign-on"></a>Prueba de inicio de sesión único
-Probar la configuración de inicio de sesión única de Azure AD mediante Hola Panel de acceso.
+Pruebe la configuración de inicio de sesión único de Azure AD mediante el panel de acceso.
 
-Al hacer clic en icono de Clarizen Hola Hola Panel de acceso, debería firmar automáticamente en tooyour aplicación Clarizen.
+Al hacer clic en el icono de Clarizen en el panel de acceso, debería iniciar sesión automáticamente en la aplicación Clarizen.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo toointegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

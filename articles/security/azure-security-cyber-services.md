@@ -1,6 +1,6 @@
 ---
-title: Servicios de aaaMicrosoft en ciberseguridad | Documentos de Microsoft
-description: "Hola artículo proporciona una introducción sobre toocybersecurity relacionado de servicios de Microsoft y cómo tooobtain obtener más información acerca de estos servicios."
+title: Servicios de Microsoft en ciberseguridad | Microsoft Docs
+description: "El artículo proporciona una introducción acerca de los servicios de Microsoft relacionados con la ciberseguridad y cómo obtener más información acerca de estos servicios."
 services: security
 documentationcenter: na
 author: TomShinder
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2017
 ms.author: yurid
-ms.openlocfilehash: d29832f0ffa10020ab44ff69306971e55d393b97
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 1560ea8b224be0f6bc723f64d8f154805b2771e5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoft-services-in-cybersecurity"></a>Servicios de Microsoft en ciberseguridad
-Microsoft Services proporciona un enfoque integral toosecurity, identidad y ciberseguridad. Servicios de Microsoft proporciona una matriz de servicios de seguridad e identidad mediante la estrategia, planificación, implementación y soporte técnico continuo; dicha matriz puede ayudar a nuestros clientes empresariales a implementar soluciones de seguridad integral adaptadas a sus objetivos estratégicos.
+Microsoft Services proporciona un enfoque integral para la seguridad, identidad y ciberseguridad. Servicios de Microsoft proporciona una matriz de servicios de seguridad e identidad mediante la estrategia, planificación, implementación y soporte técnico continuo; dicha matriz puede ayudar a nuestros clientes empresariales a implementar soluciones de seguridad integral adaptadas a sus objetivos estratégicos.
 
-Con los equipos de desarrollo de tooproduct de acceso directo, podemos crear soluciones que se integran y mejorar la seguridad más reciente de Hola y funciones de identidad de nuestro productos toohelp protegen impulsar la innovación y del negocio de nuestros clientes.
+Gracias a un acceso directo a los equipos de desarrollo de productos, podemos crear soluciones que integren y mejoren las funcionalidades de seguridad e identidad más recientes de nuestros productos para ayudar a proteger los negocios de nuestros clientes e impulsar la innovación.
 
-Cuentan con que ayudan a proteger y permiten a las organizaciones mayor de Hola a todos, nuestro amplio grupo de profesionales técnicos formada por cualificados expertos que ofrecen una gran cantidad de seguridad y la experiencia de identidad.
+Dedicado a ayudar a proteger a las organizaciones más grandes del mundo, nuestro diverso grupo de profesionales técnicos está formado por expertos altamente cualificados que ofrecen una gran experiencia en identidad y seguridad.
 
 Aprenda más acerca de los servicios proporcionados por Servicios de Microsoft:
 

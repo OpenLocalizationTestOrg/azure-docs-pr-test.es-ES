@@ -1,6 +1,6 @@
 ---
-title: "directorio de hello aaaManage para la suscripción a Office 365 en Azure | Documentos de Microsoft"
-description: "Administrar un directorio de suscripción de Office 365 con Azure Active Directory y Hola portal de Azure clásico"
+title: "Administración del directorio para una suscripción a Office 365 en Azure | Microsoft Docs"
+description: "Administración de un directorio de la suscripción a Office 365 con Azure Active Directory y el Portal de Azure clásico"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,60 +12,61 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/25/2017
+ms.date: 10/10/2017
 ms.author: curtand
+ms.reviewer: rodejo
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 4faf9936d7e94b85356a18adfcf3d2a48e5b025f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 497beb75d1bd4c0709929948a9f857a034364f44
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="manage-hello-directory-for-your-office-365-subscription-in-azure"></a>Administrar el directorio de hello para la suscripción a Office 365 en Azure
-Este artículo se describe cómo toomanage un directorio que se creó para una suscripción a Office 365, utilizando Hola portal de Azure clásico. Debe ser Hola Administrador de servicios o un CO-Administrador de una toosign de suscripción de Azure en toohello portal de Azure clásico. Si aún no dispone de una suscripción de Azure, desde este vínculo puede registrarse ahora mismo para disfrutar de una [evaluación gratuita durante 30 días](https://azure.microsoft.com/trial/get-started-active-directory/) e implementar su primera solución en la nube en menos de 5 minutos. Toouse seguro Hola trabajo o académica cuenta que usa toosign en tooOffice 365.
+# <a name="manage-the-directory-for-your-office-365-subscription-in-azure"></a>Administración del directorio para la suscripción de Office 365 en Azure
+En este artículo se describe cómo administrar un directorio que se creó para una suscripción de Office 365 mediante el Portal de Azure clásico. Para iniciar sesión en el Portal de Azure clásico, es preciso ser administrador de servicios o coadministrador de una suscripción de Azure. Si aún no dispone de una suscripción de Azure, desde este vínculo puede registrarse ahora mismo para disfrutar de una [evaluación gratuita durante 30 días](https://azure.microsoft.com/trial/get-started-active-directory/) e implementar su primera solución en la nube en menos de 5 minutos. Asegúrese de que utiliza la misma cuenta profesional o educativa que utilizó para iniciar sesión en Office 365.
 
 > [!IMPORTANT]
-> Microsoft recomienda que administrar Azure AD utilizando hello [centro de administración de Azure AD](https://aad.portal.azure.com) Hola portal de Azure en lugar de usar Hola portal de Azure clásico que se hace referencia en este artículo.
+> Microsoft recomienda administrar Azure AD con el [Centro de administración de Azure AD](https://aad.portal.azure.com) en Azure Portal en lugar de usar el portal de Azure clásico al que se hace referencia en este artículo.
 
-Después de completar Hola suscripción de Azure, puede iniciar sesión en el portal de Azure clásico toohello y tener acceso a los servicios de Azure. Haga clic en la extensión de Active Directory de hello toomanage Hola el mismo directorio que autentica a los usuarios de Office 365.
+Después de completar la suscripción a Azure, puede iniciar sesión en el Portal de Azure clásico y acceder a los servicios de Azure. Haga clic en la extensión de Active Directory para administrar el mismo directorio que autentica a los usuarios de Office 365.
 
-Si ya tiene una suscripción de Azure, Hola proceso toomanage un directorio adicional es también muy sencillo. Por ejemplo, suponga que Michael Smith tiene una suscripción a Office 365 para Contoso.com. También tiene una suscripción a Azure, que realizó con su cuenta Microsoft, msmith@hotmail.com. En este caso, administra dos directorios.
+Si ya tiene una suscripción a Azure, el proceso para administrar un directorio adicional también es sencillo y directo. Por ejemplo, suponga que Michael Smith tiene una suscripción a Office 365 para Contoso.com. También tiene una suscripción a Azure, que realizó con su cuenta Microsoft, msmith@hotmail.com. En este caso, administra dos directorios.
 
 | Subscription | Office 365 | Las tablas de Azure |
 | --- | --- | --- |
-|   Nombre para mostrar |Contoso |Directorio de Azure Active Directory (Azure AD) predeterminado |
-|   Nombre de dominio |contoso.com |msmithhotmail.onmicrosoft.com |
+|   Nombre para mostrar | Contoso | Directorio de Azure Active Directory (Azure AD) predeterminado |
+|   Nombre de dominio | contoso.com | msmithhotmail.onmicrosoft.com |
 
-Quiere toomanage identidades de usuario de hello en el directorio de Contoso Hola mientras tiene iniciada una sesión en tooAzure utilizando su cuenta de Microsoft, para que poder habilitar características de Azure AD como la autenticación multifactor. Hola después de diagrama puede ayudar en proceso de hello tooillustrate.
+Michael Smith desea administrar las identidades de usuario en el directorio Contoso, ya que ha iniciado sesión en Azure con su cuenta de Microsoft. Quiere habilitar características de Azure AD, como la autenticación multifactor. El diagrama siguiente puede ayudarle a ilustrar el proceso.
 
-![Crear un diagrama de toomanage dos directorios independientes](./media/active-directory-manage-o365-subscription/AAD_O365_03.png)
+![Diagrama para administrar dos directorios independientes](./media/active-directory-manage-o365-subscription/AAD_O365_03.png)
 
-En este caso, los dos directorios de hello son independientes entre sí.
+En este caso, ambos directorios son independientes entre sí.
 
-## <a name="toomanage-two-independent-directories"></a>directorios independientes toomanage dos
-En el criterio de Michael Smith toomanage dos directorios mientras tiene iniciada una sesión en tooAzure como msmith@hotmail.com, debe completar Hola pasos:
+## <a name="to-manage-two-independent-directories"></a>Para administrar dos directorios independientes
+Para que Michael Smith pueda administrar ambos directorios mientras tenga una sesión iniciada en Azure como msmith@hotmail.com, debe llevar a cabo los siguientes pasos:
 
 > [!NOTE]
-> Estos pasos solo se pueden realizar cuando un usuario ha iniciado sesión con una cuenta Microsoft. Si el usuario de hello ha iniciado sesión con una cuenta profesional o educativa, Hola opción demasiado**usar directorio existente** no está disponible. Una cuenta profesional o educativa puede solo puede autenticarla su directorio particular (es decir, directorio de hello, donde hello cuenta profesional o educativa se almacena y posee ese negocio Hola o centro educativo).
+> Estos pasos solo se pueden realizar cuando un usuario ha iniciado sesión con una cuenta Microsoft. Si el usuario ha iniciado sesión con una cuenta profesional o educativa, la opción **Usar directorio existente** no está disponible. Las cuentas profesionales o educativas solo se pueden autenticar por su directorio particular (es decir, el directorio donde se almacena la cuenta profesional o educativa, y que posee el negocio o la escuela).
 >
 >
 
-1. Inicie sesión en toohello [portal de Azure clásico](https://manage.windowsazure.com) como msmith@hotmail.com.
+1. Inicie sesión en el [Portal de Azure clásico](https://manage.windowsazure.com) como msmith@hotmail.com.
 2. Haga clic en **Nuevo** > **App Services** > **Active Directory** > **Directorio** > **Creación personalizada**.
-3. Haga clic en usar existente Hola de directorio y seleccione **estoy listo toobe cerrar la sesión ahora** casilla de verificación.
-4. Inicie sesión en toohello portal de Azure clásico como administrador global de Contoso.onmicrosoft.com (por ejemplo, msmith@contoso.com).
-5. Cuando se le solicite demasiado**utilizar el directorio de Contoso con Azure Hola?**, haga clic en **continuar**.
+3. Haga clic en Usar directorio existente y active la casilla **Estoy listo para cerrar la sesión ahora** .
+4. Inicie sesión en el Portal de Azure clásico como administrador global de Contoso.onmicrosoft.com (por ejemplo, msmith@contoso.com).
+5. Cuando se le pregunte **¿Usar el directorio Contoso con Azure?**, haga clic en **Continuar**.
 6. Haga clic en **Cerrar sesión ahora**.
-7. Inicie sesión en toohello portal de Azure clásico como msmith@hotmail.com. directorio de Contoso de Hola y Hola predeterminado aparecen en hello extensión de Active Directory.
+7. Inicie sesión en el Portal de Azure clásico como msmith@hotmail.com. El directorio Contoso y el directorio predeterminado aparecen en la extensión de Active Directory.
 
-Después de completar estos pasos, msmith@hotmail.com es un administrador global en el directorio de Contoso Hola.
+Después de realizar estos pasos, msmith@hotmail.com es un administrador global en el directorio Contoso.
 
-## <a name="tooadminister-resources-as-hello-global-admin"></a>tooadminister recursos como Hola administrador global
-Ahora imaginemos que Jane Doe necesita administrar sitios Web y recursos de base de datos que están asociados a Hola suscripción de Azure para msmith@hotmail.com. Antes de que puede hacerlo, Michael Smith necesita toocomplete estos pasos adicionales:
+## <a name="to-administer-resources-as-the-global-admin"></a>Para administrar recursos como administrador global
+Ahora supongamos que Jane Doe necesita administrar sitios web y recursos de la base de datos asociados con la suscripción de Azure de msmith@hotmail.com. Antes de que pueda hacerlo, Michael Smith debe realizar estos pasos adicionales:
 
-1. Inicie sesión en toohello [portal de Azure clásico](https://manage.windowsazure.com) con cuenta de administrador de servicio de Hola Hola suscripción de Azure (en este ejemplo, msmith@hotmail.com).
-2. Transferencia de directorio de Contoso de hello suscripción toohello: haga clic en **configuración** > **suscripciones** > seleccione suscripción hello > **editar directorio** > seleccione **Contoso (Contoso.com)**. Como parte de la transferencia de hello, cualquier trabajo o escuela se quitan las cuentas que son los coadministradores tienen permisos de suscripción de Hola.
-3. Agregar Jane Doe como Coadministrador de suscripción de hello: haga clic en **configuración** > **administradores** > seleccione suscripción hello > **agregar** > tipo **JohnDoe@Contoso.com**.
+1. Inicie sesión en el [Portal de Azure clásico](https://manage.windowsazure.com) mediante la cuenta de administrador de servicios de la suscripción de Azure (en este ejemplo, msmith@hotmail.com).
+2. Transfiera la suscripción al directorio Contoso: haga clic en **Configuración** > **Suscripciones** > seleccione la suscripción > **Editar directorio** > y seleccione **Contoso (Contoso.com)**. Como parte de la transferencia, se eliminan todas las cuentas profesionales o educativas que sean coadministradores de la suscripción.
+3. Agregue a Jane Doe como coadministradora de la suscripción: haga clic en **Configuración** > **Administradores** > seleccione la suscripción > **Agregar**> y escriba **JohnDoe@Contoso.com**.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para obtener más información acerca de la relación de hello entre suscripciones y directorios, vea [cómo se asocia a un directorio de una suscripción](active-directory-how-subscriptions-associated-directory.md).
+Para más información sobre la relación entre suscripciones y directorios, consulte [Asociación de una suscripción con un directorio](active-directory-how-subscriptions-associated-directory.md).

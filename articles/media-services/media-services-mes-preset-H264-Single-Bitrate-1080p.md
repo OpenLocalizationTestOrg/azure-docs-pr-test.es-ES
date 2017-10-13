@@ -1,6 +1,6 @@
 ---
-title: "velocidad de bits única del aaaH264 Media Encoder estándar preestablecido - 1080p Azure | Documentos de Microsoft"
-description: "Hola tema encontrará un resumen de Hola ** velocidad de bits única H264 1080 p ** valor predefinido de tarea."
+title: Valores predeterminados de Media Encoder Standard para H264 Single Bitrate 1080p - Azure | Microsoft Docs
+description: "El tema proporciona información general sobre el valor predeterminado de tarea **H264 Single Bitrate 1080p**."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: e06c68e3372c7f1e5903413840c118e2c3426168
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 1cfce559dae6533b62283764e8aff62f8a141946
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="h264-single-bitrate-1080p"></a>H264 Single Bitrate 1080p
-`Media Encoder Standard` define un conjunto de valores predeterminados de Encoding que puede usar al crear trabajos de Encoding. Puede utilizar un `preset name` toospecify en qué formato desea tooencode su archivo multimedia. O bien, puede crear sus propios valores predeterminados basados en XML o JSON (mediante la codificación UTF-8 o UTF-16). A continuación, pasaría codificador de hello toohello valores preestablecidos personalizados. Para obtener lista de hello del programa Hola a todos los preestablecido nombres admitidos por este `Media Encoder Standard` codificador, vea [valores preestablecidos de tarea para Media Encoder estándar](media-services-mes-presets-overview.md).  
+`Media Encoder Standard` define un conjunto de valores predeterminados de Encoding que puede usar al crear trabajos de Encoding. Puede usar `preset name` para especificar en qué formato desea codificar el archivo multimedia. O bien, puede crear sus propios valores predeterminados basados en XML o JSON (mediante la codificación UTF-8 o UTF-16). Después pasaría el valor predeterminado personalizado al codificador. Para obtener la lista de todos los nombres predeterminados admitidos por este codificador `Media Encoder Standard`, vea [Task Presets for Media Encoder Standard](media-services-mes-presets-overview.md) (Valores predeterminados de tarea para Media Encoder Standard).  
   
- Este tema muestra hello `H264 Single Bitrate 1080p` preestablecido en formato XML y JSON.  
+ En este tema se muestra el valor predeterminado `H264 Single Bitrate 1080p` en formato XML y JSON.  
   
- Este valor predeterminado genera un único archivo MP4 con una velocidad de bits de 6750 kbps y audio AAC estéreo. Para obtener información detallada sobre el perfil, velocidad de bits, frecuencia de muestreo, etc. de este valor preestablecido, examine Hola XML o JSON definido más adelante. Para obtener una explicación de cada elemento de qué en estos medios de valores predefinidos y los valores válidos de Hola para cada elemento, vea hello [Media Encoder estándar esquema](media-services-mes-schema.md) tema.  
+ Este valor predeterminado genera un único archivo MP4 con una velocidad de bits de 6750 kbps y audio AAC estéreo. Para información detallada sobre el perfil, la velocidad de bits, la frecuencia de muestreo, etc. de este valor predeterminado, examine el código XML o JSON definido más adelante. Para obtener explicaciones de lo que cada elemento significa en estos nombres predeterminados y los valores válidos para cada elemento, vea el tema sobre el [esquema de Media Encoder Standard](media-services-mes-schema.md).  
   
  XML  
   

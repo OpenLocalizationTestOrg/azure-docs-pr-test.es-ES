@@ -1,6 +1,6 @@
 ---
-title: aaaGet a trabajar con DNS de Azure mediante Azure CLI 1.0 | Documentos de Microsoft
-description: "Obtenga información acerca de cómo toocreate un DNS zona y este registro de DNS de Azure. Esto es una guía paso a paso toocreate y administrar la primera zona DNS y el registro mediante Hola 1.0 de CLI de Azure."
+title: "Introducción a Azure DNS con la CLI de Azure 1.0 | Microsoft Docs"
+description: "Obtenga información sobre cómo crear una zona y un registro DNS en Azure DNS. Esta es una guía paso a paso para crear y administrar su primera zona y su primer registro DNS con la CLI de Azure 1.0."
 services: dns
 documentationcenter: na
 author: jtuliani
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
-ms.openlocfilehash: e200c848ad261160e593306dbb8a1d92bf26880b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f7943b71bbd16c36df09436973d92539eb62b210
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-dns-using-azure-cli-10"></a>Introducción a Azure DNS con la CLI de Azure 1.0
 
@@ -29,15 +29,15 @@ ms.lasthandoff: 10/06/2017
 > * [CLI de Azure 1.0](dns-getstarted-cli-nodejs.md)
 > * [CLI de Azure 2.0](dns-getstarted-cli.md)
 
-Este artículo le guiará a través de hello pasos toocreate la primera zona DNS y registro mediante Hola multiplataforma Azure CLI 1.0, que está disponible para Windows, Mac y Linux. También puede realizar estos pasos con el portal de Azure de Hola o Azure PowerShell.
+Este artículo lo guiará por los pasos necesarios para crear su primera zona y su primer registro DNS mediante la CLI de Azure 1.0 multiplataforma, que está disponible para Windows, Mac y Linux. También puede llevar a cabo estos pasos con Azure Portal o Azure PowerShell.
 
-Una zona DNS es toohost usado Hola registros DNS para un dominio en particular. toostart hospedaje de su dominio de DNS de Azure, necesita toocreate una zona DNS para ese nombre de dominio. Cada registro DNS del dominio se crea luego en esta zona DNS. Por último, toopublish su DNS de la zona toohello Internet, necesitará servidores de nombres de hello tooconfigure para dominio de Hola. A continuación, se describen cada uno de estos pasos.
+Una zona DNS se usa para hospedar los registros DNS de un dominio concreto. Para iniciar el hospedaje de su dominio en DNS de Azure, debe crear una zona DNS para ese nombre de dominio. Cada registro DNS del dominio se crea luego en esta zona DNS. Finalmente, para publicar la zona DNS en Internet, debe configurar los servidores de nombres para el dominio. A continuación, se describen cada uno de estos pasos.
 
-Estas instrucciones se supone que ya haya instalado y firmado en tooAzure CLI 1.0. Para obtener ayuda, consulte [cómo toomanage DNS zonas mediante Azure CLI 1.0](dns-operations-dnszones-cli-nodejs.md).
+En estas instrucciones se da por hecho que ya haya instalado la CLI de Azure 1.0 e iniciado sesión en ella. Para obtener ayuda, consulte [Cómo administrar zonas DNS en Azure DNS con la CLI de Azure 1.0](dns-operations-dnszones-cli-nodejs.md).
 
-## <a name="create-hello-resource-group"></a>Crear grupo de recursos de Hola
+## <a name="create-the-resource-group"></a>Creación del grupo de recursos
 
-Antes de crear la zona DNS de hello, un grupo de recursos se crea la zona DNS de toocontain Hola. siguiente Hello muestra comandos de Hola.
+Antes de crear la zona DNS, se crea un grupo de recursos para que contenga la zona DNS. A continuación, se muestra el comando.
 
 ```azurecli
 azure group create --name MyResourceGroup --location "West US"
@@ -45,9 +45,9 @@ azure group create --name MyResourceGroup --location "West US"
 
 ## <a name="create-a-dns-zone"></a>Creación de una zona DNS
 
-Se crea una zona DNS con hello `azure network dns zone create` comando. Ayuda de toosee para este comando, escriba `azure network dns zone create -h`.
+Una zona DNS se crea con el comando `azure network dns zone create` . Para ver la ayuda sobre este comando, escriba `azure network dns zone create -h`.
 
-Hello en el ejemplo siguiente se crea una zona DNS denominada *contoso.com* en grupo de recursos de hello denominado *MyResourceGroup*. Utilice toocreate de ejemplo de Hola una zona DNS, sustituyendo los valores de hello para su propio.
+En el ejemplo siguiente, se crea una zona DNS llamada *contoso.com* en el grupo de recursos *MyResourceGroup*. Utilice el ejemplo para crear una zona DNS, sustituyendo los valores por los suyos.
 
 ```azurecli
 azure network dns zone create MyResourceGroup contoso.com
@@ -56,20 +56,20 @@ azure network dns zone create MyResourceGroup contoso.com
 
 ## <a name="create-a-dns-record"></a>Creación de un registro de DNS
 
-toocreate un registro DNS, usar hello `azure network dns record-set add-record` comando. Para obtener ayuda, consulte `azure network dns record-set add-record -h`.
+Para crear un registro de DNS, use el comando `azure network dns record-set add-record`. Para obtener ayuda, consulte `azure network dns record-set add-record -h`.
 
-Hello en el ejemplo siguiente se crea un registro con el nombre relativo de Hola "www" Hola "contoso.com", en el grupo de recursos "MyResourceGroup" de la zona DNS. nombre completo de Hola de conjunto de registros de hello es "www.contoso.com". tipo de registro de Hello es "A", con la dirección IP "1.2.3.4" y se utiliza un valor predeterminado TTL de 3600 segundos (1 hora).
+En el ejemplo siguiente se crea un conjunto de registros con el nombre relativo "www" en la zona DNS "contoso.com" del grupo de recursos "MyResourceGroup". El nombre completo del conjunto de registros es www.contoso.com. El tipo de registro es "A", con la dirección IP "1.2.3.4", y se utiliza un valor predeterminado TTL de 3600 segundos (1 hora).
 
 ```azurecli
 azure network dns record-set add-record MyResourceGroup contoso.com www A -a 1.2.3.4
 ```
 
-Para otros tipos de registros, para conjuntos de registros con más de un registro, para los valores TTL alternativos y toomodify los registros existentes, consulte [registros administrar DNS y los conjuntos de registros con hello Azure CLI 1.0](dns-operations-recordsets-cli-nodejs.md).
+Para ver otros tipos de registros, conjuntos de registros con más de un registro, valores de TTL alternativos, y para modificar los registros existentes, consulte [Administración de registros de DNS en Azure DNS mediante la CLI de Azure 1.0](dns-operations-recordsets-cli-nodejs.md).
 
 
 ## <a name="view-records"></a>Visualización de los registros
 
-registros DNS de hello toolist en su zona, use:
+Para enumerar los registros DNS de su zona, use lo siguiente:
 
 ```azurecli
 azure network dns record-set list MyResourceGroup contoso.com
@@ -78,15 +78,15 @@ azure network dns record-set list MyResourceGroup contoso.com
 
 ## <a name="update-name-servers"></a>Actualización de los servidores de nombres
 
-Una vez haya satisface que la zona DNS y los registros se han configurado correctamente, necesita tooconfigure su nombre de dominio toouse servidores de nombres DNS de Azure Hola. Esto permite a otros usuarios Hola Internet toofind los registros DNS.
+Una vez haya comprobado que la zona y los registros DNS se han configurado correctamente, tiene que configurar el nombre de dominio para usar los servidores de nombres DNS de Azure. De esta forma, otros usuarios en Internet podrán encontrar los registros DNS.
 
-servidores de nombres de Hello para la zona se proporcionan por hello `azure network dns zone show` comando:
+Los servidores de nombres de su zona se proporcionan con el comando `azure network dns zone show`:
 
 ```azurecli
 azure network dns zone show MyResourceGroup contoso.com
 
 info:    Executing command network dns zone show
-+ Looking up hello dns zone "contoso.com"
++ Looking up the dns zone "contoso.com"
 data:    Id                              : /subscriptions/a385a691-bd93-41b0-8084-8213ebc5bff7/resourceGroups/myresourcegroup/providers/Microsoft.Network/dnszones/contoso.com
 data:    Name                            : contoso.com
 data:    Type                            : Microsoft.Network/dnszones
@@ -102,11 +102,11 @@ data:    Tags                            :
 info:    network dns zone show command OK
 ```
 
-Estos servidores de nombres deben configurarse con el registrador de nombres de dominio de hello (que adquirió nombre de dominio de hello). El registrador proporcionará Hola opción tooset los servidores de nombres de hello para el dominio de Hola. Para obtener más información, consulte [delegar su tooAzure de dominio DNS](dns-domain-delegation.md).
+Estos servidores de nombres deben configurarse con el registrador de nombres de dominio (donde adquirió el nombre de dominio). El registrador ofrece la opción de configurar los servidores de nombres para el dominio. Si quiere obtener más información, consulte [Delegación del dominio en DNS de Azure](dns-domain-delegation.md).
 
 ## <a name="delete-all-resources"></a>Eliminación de todos los recursos
  
-toodelete todos los recursos que se crean en este artículo, Hola toman siguiendo el paso:
+Para eliminar todos los recursos creados en este artículo, realice el paso siguiente:
 
 ```azurecli
 azure group delete --name MyResourceGroup
@@ -114,9 +114,9 @@ azure group delete --name MyResourceGroup
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-toolearn más información acerca de DNS de Azure, consulte [Introducción a DNS de Azure](dns-overview.md).
+Para obtener más información sobre Azure DNS, lea [Introducción a DNS de Azure](dns-overview.md).
 
-toolearn más acerca de cómo administrar zonas DNS en DNS de Azure, consulte [zonas DNS de administrar en DNS de Azure mediante Azure CLI 1.0](dns-operations-dnszones-cli-nodejs.md).
+Si quiere saber cómo administrar zonas DNS en Azure DNS, consulte [Cómo administrar zonas DNS en Azure DNS con la CLI de Azure 1.0](dns-operations-dnszones-cli-nodejs.md).
 
-toolearn más información acerca de la administración de registros DNS en DNS de Azure, consulte [registros administrar DNS y un registro se establece en DNS de Azure mediante Azure CLI 1.0](dns-operations-recordsets-cli-nodejs.md).
+Para aprender a administrar registros DNS en Azure DNS, consulte [Administración de registros de DNS en Azure DNS mediante la CLI de Azure 1.0](dns-operations-recordsets-cli-nodejs.md).
 

@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con Procore SSO | Microsoft Docs"
-description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y SSO Procore."
+description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y Procore SSO."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,112 +13,112 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: jeedes
-ms.openlocfilehash: bb918617f18ba3f44ddde469e6fc411977752f15
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 042a41eaa6bb21670b4c12068f1b017222f64b99
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Tutorial: Integración de Azure Active Directory con Procore SSO
 
-En este tutorial, aprenderá cómo toointegrate Procore SSO con Azure Active Directory (Azure AD).
+En este tutorial aprenderá a integrar Procore SSO con Azure Active Directory (Azure AD).
 
-Integración de SSO Procore con Azure AD proporciona Hola siguientes ventajas:
+La integración de Procore SSO con Azure AD le proporciona las siguientes ventajas:
 
-- Puede controlar en Azure AD que tenga acceso tooProcore SSO
-- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooProcore SSO (inicio de sesión único) con sus cuentas de Azure AD
-- Puede administrar las cuentas en una ubicación central: portal de administración de Azure de Hola
+- Puede controlar en Azure AD quién tiene acceso a Procore SSO.
+- Puede permitir que los usuarios inicien sesión automáticamente en Procore SSO (inicio de sesión único) con sus cuentas de Azure AD.
+- Puede administrar sus cuentas en una ubicación central: el Portal de administración de Azure.
 
-Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Si desea obtener más información sobre la integración de aplicaciones SaaS con Azure AD, vea [Qué es el acceso a las aplicaciones y el inicio de sesión único en Azure Active Directory](active-directory-appssoaccess-whatis.md).
 
 <!--## Overview
 
-tooenable single sign-on with Procore SSO, it must be configured toouse Azure Active Directory as an identity provider. This guide provides information and tips on how tooperform this configuration in Procore SSO.
+To enable single sign-on with Procore SSO, it must be configured to use Azure Active Directory as an identity provider. This guide provides information and tips on how to perform this configuration in Procore SSO.
 
 >[!Note]: 
->This embedded guide is brand new in hello new Azure portal, and we’d love toohear your thoughts. Use hello Feedback ? button at hello top of hello portal tooprovide feedback. hello older guide for using hello [Azure classic portal](https://manage.windowsazure.com) tooconfigure this application can be found [here](https://github.com/Azure/AzureAD-App-Docs/blob/master/articles/en-us/_/sso_configure.md).-->
+>This embedded guide is brand new in the new Azure portal, and we’d love to hear your thoughts. Use the Feedback ? button at the top of the portal to provide feedback. The older guide for using the [Azure classic portal](https://manage.windowsazure.com) to configure this application can be found [here](https://github.com/Azure/AzureAD-App-Docs/blob/master/articles/en-us/_/sso_configure.md).-->
 
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-integración de Azure AD con SSO Procore tooconfigure, necesita Hola siguientes elementos:
+Para configurar la integración de Azure AD con Procore SSO, necesita lo siguiente:
 
 - Una suscripción de Azure AD
 - Una suscripción habilitada para el inicio de sesión único en Procore SSO
 
 > [!NOTE]
-> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
+> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
 
-pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
+Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
 
 - No debe usar el entorno de producción, a menos que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
 
-1. Agregar SSO Procore desde la Galería de Hola
+1. Agregar Procore SSO desde la galería
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-procore-sso-from-hello-gallery"></a>Agregar SSO Procore desde la Galería de Hola
-integración de hello tooconfigure de SSO Procore en Azure AD, deberá tooadd SSO Procore de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
+## <a name="adding-procore-sso-from-the-gallery"></a>Agregar Procore SSO desde la galería
+Para configurar la integración de Procore SSO en Azure AD, tiene que agregar Procore SSO desde la galería a la lista de aplicaciones SaaS administradas.
 
-**tooadd Procore SSO de galería de hello, lleve a cabo Hola pasos:**
+**Para agregar Procore SSO desde la galería, realice los pasos siguientes:**
 
-1. Hola  **[Portal de administración de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
+1. En el panel de navegación izquierdo del **[Portal de administración de Azure](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
+2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
 
     ![Aplicaciones][2]
     
-3. Haga clic en **agregar** botón en la parte superior de saludo del cuadro de diálogo de Hola.
+3. Haga clic en el botón **Agregar** situado en la parte superior del cuadro de diálogo.
 
     ![Aplicaciones][3]
 
-4. En el cuadro de búsqueda de hello, escriba **Procore SSO**.
+4. En el cuadro de búsqueda, escriba **Procore SSO**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_search.png)
 
-5. En el panel de resultados de hello, seleccione **SSO Procore**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.
+5. En el panel de resultados, seleccione **Procore SSO** y haga clic en el botón **Agregar** para agregar la aplicación.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuración y comprobación del inicio de sesión único de Azure AD
 En esta sección, configurará y probará el inicio de sesión único de Azure AD con Procore SSO con un usuario de prueba llamado "Britta Simon".
 
-Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en SSO Procore es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en SSO Procore debe toobe establecido.
+Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de Procore SSO para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de Procore SSO.
 
-Esta relación de vínculo se establece mediante la asignación de valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** en Procore SSO.
+Esta relación de vínculo se establece mediante la asignación del valor de **nombre de usuario** en Azure AD como valor de **Username** (Nombre de usuario) en Procore SSO.
 
-tooconfigure y prueba de inicio de sesión único en Azure AD con SSO Procore, deberá hello toocomplete después de bloques de creación:
+Para configurar y probar el inicio de sesión único de Azure AD con Procore SSO, es preciso completar los siguientes bloques de creación:
 
-1. **[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.
-2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.
-3. **[Crear un usuario de prueba de SSO Procore](#creating-a-procore-sso-test-user)**  -toohave un equivalente de Britta Simon en Procore SSO que está vinculado toohello Azure AD representación de ella.
-4. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.
-5. **[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.
+1. **[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.
+2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.
+3. **[Creación de un usuario de prueba de Procore SSO](#creating-a-procore-sso-test-user)**: para tener un homólogo de Britta Simon en Procore SSO que esté vinculado a su representación en Azure AD.
+4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitar inicio de sesión único en Azure AD en el portal de administración de Azure de Hola y configurar el inicio de sesión único en la aplicación SSO Procore.
+En esta sección, habilitará el inicio de sesión único de Azure AD en el Portal de administración de Azure y configurará el inicio de sesión único en la aplicación Procore SSO.
 
-**inicio de sesión único en tooconfigure Azure AD con SSO Procore, realizar Hola pasos:**
+**Para configurar el inicio de sesión único de Azure AD con Procore SSO, realice los pasos siguientes:**
 
-1. En el portal de administración de Azure de hello, en hello **SSO Procore** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
+1. En el Portal de administración de Azure, en la página de integración de aplicaciones de **Procore SSO**, haga clic en **Inicio de sesión único**.
 
     ![Configurar inicio de sesión único][4]
 
-2. En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.
+2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_samlbase.png)
 
-3. En hello **Procore de SSO de dominio y las direcciones URL** sección, hello usuario no tiene tooperform todos los pasos tal y como aplicación hello ya está integrado previamente con Azure.
+3. En la sección **Dominio y direcciones URL de Procore SSO**, el usuario no tiene que realizar ningún paso ya que la aplicación se ha integrado previamente con Azure.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_url.png)
 
-4. En hello **el certificado de firma de SAML** sección, haga clic en **Metadata XML** y, a continuación, guarde el archivo XML de hello en el equipo.
+4. En la sección **Certificado de firma de SAML**, haga clic en **XML de metadatos** y luego guarde el archivo XML en el equipo.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_certificate.png) 
 
@@ -126,123 +126,123 @@ En esta sección, habilitar inicio de sesión único en Azure AD en el portal de
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-procoresso-tutorial/tutorial_general_400.png)
 
-6. En hello **Procore configuración de SSO** sección, haga clic en **configurar SSO Procore** tooopen **configurar inicio de sesión** ventana. Hola copia **Id. de entidad de SAML y SAML Single Sign-On dirección URL del servicio** de hello **sección de referencia rápida.**
+6. En la sección **Configuración de Procore SSO**, haga clic en **Configurar Procore SSO** para abrir la ventana **Configurar inicio de sesión único**. Copie la **SAML Entity ID and SAML Single Sign-On Service URL** (URL del servicio de inicio de sesión único de SAML e Id. de entidad de SAML) de la sección **Referencia rápida**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_configure.png) 
 
-7. inicio de sesión único en tooconfigure en **Procore SSO** lado, un sitio de empresa procore tooyour de inicio de sesión como administrador.
+7. Para configurar el inicio de sesión único en **Procore SSO**, inicie sesión como administrador en su sitio de la compañía de procore.
 
-8. De colocación del cuadro de herramientas de hello hacia abajo, haga clic en **administración** página de configuración de SSO de tooopen Hola.
+8. En la lista desplegable del cuadro de herramientas, haga clic en **Administrador** para abrir la página de configuración del SSO.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-procoresso-tutorial/procore_tool_admin.png)
 
-9. Describen los valores de hello pegar Hola que en los cuadros siguientes:
+9. Pegue los valores en los cuadros tal y como se describe a continuación:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-procoresso-tutorial/procore_setting_admin.png)    
 
-    a. Hola **único inicio de sesión en dirección URL del emisor** cuadro, pegue Hola Id. de entidad SAML copiado de hello portal de Azure.
+    a. En el cuadro **Single Sign On Issuer URL** (URL del emisor de inicio de sesión único), pegue el Id. de entidad de SAML que copió de Azure Portal.
 
-    b. Hola **SAML inicio de sesión en dirección URL de destino** cuadro, pegue Hola SAML Single Sign-On dirección URL del servicio se copian de hello portal de Azure.
+    b. En el cuadro **SAML Sign On Target URL** (URL de destino de inicio de sesión de SAML), pegue la URL del servicio de inicio de sesión único de SAML que copio de Azure Portal.
 
-    c. Ahora, abra hello **Metadata XML** descargado anteriormente de hello portal de Azure y copia certificados de hello en etiqueta Hola denominado **X509Certificate**. Hola pegar copia valor en hello **Single Sign On x509 certificado** cuadro.
+    c. Abra ahora el **XML de metadatos** que descargó antes de Azure Portal y copie el certificado en el etiqueta de nombre **X509Certificate**. Pegue el valor copiado en el cuadro **Single Sign On x509 Certificate** (Certificado x509 de inicio de sesión único).
 
 10. Haga clic en **Guardar cambios**.
 
-11. Después de esta configuración, debe hello toosend **nombre de dominio** (por ejemplo **contoso.com**) a través de que está iniciando en toohello Procore [equipo de soporte técnico Procore](https://support.procore.com/) y Activar SSO federado para ese dominio.
+11. Al finalizar esta configuración, tiene que enviar el **nombre de dominio** (por ejemplo, **contoso.com**) con el que inicia sesión en Procore al [equipo de soporte técnico de Procore](https://support.procore.com/) y ellos activarán el SSO federado para ese dominio.
 
 <!--### Next steps
 
-tooensure users can sign-in tooProcore SSO after it has been configured toouse Azure Active Directory, review hello following tasks and topics:
+To ensure users can sign-in to Procore SSO after it has been configured to use Azure Active Directory, review the following tasks and topics:
 
-- User accounts must be pre-provisioned into Procore SSO prior toosign-in. tooset this up, see Provisioning.
+- User accounts must be pre-provisioned into Procore SSO prior to sign-in. To set this up, see Provisioning.
  
-- Users must be assigned access tooProcore SSO in Azure AD toosign-in. tooassign users, see Users.
+- Users must be assigned access to Procore SSO in Azure AD to sign-in. To assign users, see Users.
  
-- tooconfigure access polices for Procore SSO users, see Access Policies.
+- To configure access polices for Procore SSO users, see Access Policies.
  
-- For additional information on deploying single sign-on toousers, see [this article](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-appssoaccess-whatis#deploying-azure-ad-integrated-applications-to-users).-->
+- For additional information on deploying single sign-on to users, see [this article](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-appssoaccess-whatis#deploying-azure-ad-integrated-applications-to-users).-->
 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-objetivo de Hola de esta sección es un usuario de prueba en el portal de administración de Azure de hello llamado a Britta Simon toocreate.
+El objetivo de esta sección es crear un usuario de prueba en el Portal de administración de Azure llamado Britta Simon.
 
 ![Creación de un usuario de Azure AD][100]
 
-**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
+**Siga estos pasos para crear un usuario de prueba en Azure AD:**
 
-1. Hola **portal de administración de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.
+1. En el panel de navegación izquierdo del **Portal de administración de Azure**, haga clic en el icono de **Azure Active Directory**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-procoresso-tutorial/create_aaduser_01.png) 
 
-2. Vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios** toodisplay lista de Hola de usuarios.
+2. Vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios** para mostrar la lista de usuarios.
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-procoresso-tutorial/create_aaduser_02.png) 
 
-3. En la parte superior de saludo del cuadro de diálogo de hello haga clic en **agregar** tooopen hello **usuario** cuadro de diálogo.
+3. En la parte superior del diálogo, haga clic en **Agregar** para abrir el diálogo **Usuario**.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-procoresso-tutorial/create_aaduser_03.png) 
 
-4. En hello **usuario** cuadro de diálogo, siga los pasos de hello:
+4. En la página de diálogo **Usuario**, realice los siguientes pasos:
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-procoresso-tutorial/create_aaduser_04.png) 
 
-    a. Hola **nombre** cuadro de texto, tipo **BrittaSimon**.
+    a. En el cuadro de texto **Nombre**, escriba **BrittaSimon**.
 
-    b. Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.
+    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
 
-    c. Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.
+    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
 
     d. Haga clic en **Crear**.
  
 ### <a name="creating-a-procore-sso-test-user"></a>Creación de un usuario de prueba de Procore SSO
 
-Siga Hola por debajo de los pasos toocreate un usuario de prueba Procore en uno de su lados.
+Siga estos pasos para crear un usuario de prueba en Procore.
 
-1. Sitio de empresa procore de tooyour de inicio de sesión como administrador.  
+1. Inicie sesión como administrador en su sitio de la compañía de procore.  
 
-2. De colocación del cuadro de herramientas de hello hacia abajo, haga clic en **Directory** página del directorio de la compañía de tooopen Hola.
+2. En la lista desplegable del cuadro de herramientas, haga clic en **Directorio** para abrir la página de directorio de la compañía.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-procoresso-tutorial/Procore_sso_directory.png)
 
-3. Haga clic en **agregar una persona** opción tooopen formulario de Hola y escriba realizar las siguientes opciones:
+3. Haga clic en la opción **Add a Person** (Agregar una persona) para abrir el formulario y especificar la ejecución de las opciones siguientes:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-procoresso-tutorial/Procore_user_add.png)
 
-    a. Hola **nombre** cuadro de texto Nombre del usuario de tipo como **Bárbara**.
+    a. En el cuadro de texto **Nombre**, escriba el nombre del usuario, por ejemplo, **Britta**.
 
-    b. Hola **apellidos** cuadro de texto, apellido del usuario de tipo como **Simon**.
+    b. En el cuadro de texto **Apellido**, escriba el apellido del usuario, por ejemplo, **Simon**.
 
-    c. Hola **dirección de correo electrónico** como dirección de correo electrónico del usuario del tipo de cuadro de texto,  **BrittaSimon@contoso.com** .
+    c. En el cuadro de texto **Dirección de correo electrónico**, escriba la dirección de correo del usuario**BrittaSimon@contoso.com**.
 
     d. Seleccione **Permission Template** (Plantilla de permisos) como **Apply Permission Template Later** (Aplicar plantilla de permisos más tarde).
 
     e. Haga clic en **Crear**.
 
-4. Comprobar y actualizar los detalles de Hola Hola recién agregado contacto.
+4. Compruebe los datos del contacto recién agregado y actualícelos.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-procoresso-tutorial/Procore_user_check.png)
 
-5. Haga clic en **guardar y Enviar invitación** (si se requiere una invitación por correo electrónico) o **guardar** (guardar directamente) registro de usuario de toocomplete Hola.
+5. Haga clic en **Save and Send Invitiation** (Guardar y enviar invitación), si se requiere una invitación por correo electrónico, o en **Guardar** (guardar directamente) para completar el registro del usuario.
     
     ![Configurar inicio de sesión único](./media/active-directory-saas-procoresso-tutorial/Procore_user_save.png)    
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Asignación de usuario de prueba de hello Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
 
-En esta sección, se habilita Britta Simon toouse Azure inicio de sesión único mediante la concesión de su tooProcore acceso SSO.
+En esta sección, permitirá que Britta Simon use el inicio de sesión único de Azure concediéndole acceso a Procore SSO.
 
 ![Asignar usuario][200] 
 
-**tooassign Britta Simon tooProcore SSO, lleve a cabo Hola pasos:**
+**Para asignar a Britta Simon a Procore SSO, realice los pasos siguientes:**
 
-1. En el portal de administración de Azure de hello, abrir vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
+1. En el Portal de administración de Azure, abra la vista de aplicaciones, vaya a la vista de directorio y vaya a **Aplicaciones empresariales**. A continuación, haga clic en **All applications** (Todas las aplicaciones).
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones de hello, seleccione **Procore SSO**.
+2. En la lista de aplicaciones, seleccione **Procore SSO**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-procoresso-tutorial/tutorial_procoresso_app.png) 
 
-3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
+3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
 
     ![Asignar usuario][202] 
 
@@ -250,7 +250,7 @@ En esta sección, se habilita Britta Simon toouse Azure inicio de sesión único
 
     ![Asignar usuario][203]
 
-5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
+5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -258,13 +258,13 @@ En esta sección, se habilita Britta Simon toouse Azure inicio de sesión único
     
 ### <a name="testing-single-sign-on"></a>Prueba del inicio de sesión único 
 
-En esta sección, comprobará su único inicio de sesión en configuración de Azure AD con hello Panel de acceso.
+En esta sección, probará la configuración de inicio de sesión único de Azure AD mediante el Panel de acceso.
 
-Si desea probar la configuración de inicio de sesión único, abra el Panel de acceso. Para obtener más información sobre el Panel de acceso, vea [Introducción al Panel de acceso](https://msdn.microsoft.com/library/dn308586). Al hacer clic en icono de SSO Procore Hola Hola Panel de acceso, deberá obtener la aplicación de SSO Procore tooyour automáticamente ha iniciado sesión.
+Si desea probar la configuración de inicio de sesión único, abra el Panel de acceso. Para obtener más información sobre el Panel de acceso, vea [Introducción al Panel de acceso](https://msdn.microsoft.com/library/dn308586). Al hacer clic en el icono de Procore SSO del panel de acceso, debería iniciar sesión automáticamente en su aplicación Procore SSO.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

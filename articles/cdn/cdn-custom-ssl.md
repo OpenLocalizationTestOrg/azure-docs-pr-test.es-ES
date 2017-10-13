@@ -1,6 +1,6 @@
 ---
-title: aaa "Habilitar HTTPS en un dominio personalizado de CDN de Azure | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo tooenable HTTPS en el punto de conexión de red CDN de Azure con un dominio personalizado."
+title: "Habilitación o deshabilitación de HTTPS en un dominio personalizado de Azure Content Delivery Network | Microsoft Docs"
+description: "Aprenda a habilitar o deshabilitar HTTPS en un punto de conexión de la red CDN de Azure con un dominio personalizado."
 services: cdn
 documentationcenter: 
 author: camsoper
@@ -14,100 +14,174 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: casoper
-ms.openlocfilehash: 93746222616c9ed7977ec3b22c38ac1d43b118f8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: c92f1e20acf55b8bd791fad43f17e162a5cb3847
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="enable-https-on-an-azure-cdn-custom-domain"></a>Habilitación de HTTPS en un dominio personalizado de la red CDN de Azure
+# <a name="enable-or-disable-https-on-an-azure-content-delivery-network-custom-domain"></a>Habilitación o deshabilitación de HTTPS en un dominio personalizado de Azure Content Delivery Network
 
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-Compatibilidad con HTTPS para dominios personalizados de CDN de Azure permite toodeliver contenido seguro a través de SSL con su propia seguridad de dominio nombre tooimprove Hola de datos mientras están en tránsito. Hola tooenable de flujo de trabajo de extremo a extremo HTTPS para su dominio personalizado se simplifica mediante la habilitación de un solo clic, la administración de certificados completa y todo sin ningún coste adicional.
+La compatibilidad de HTTPS con los dominios personalizados de Microsoft Azure Content Delivery Network (CDN) permite entregar contenido seguro a través de SSL con su propio nombre de dominio para mejorar la seguridad de los datos mientras están en tránsito. El flujo de trabajo de un extremo a otro para habilitar HTTPS en un dominio personalizado se simplifica mediante la habilitación con un solo clic y la administración completa de certificados, y todo ello sin ningún costo adicional.
 
-Es privacidad de hello tooensure críticos y la integridad de los datos de todos los datos confidenciales de las aplicaciones web mientras están en tránsito. Utilizando el protocolo HTTPS se asegura de que la información confidencial se cifra cuando se envía a través de Hola Hola internet. Proporciona confianza y autenticación, y protege las aplicaciones web de posibles ataques. Actualmente, la red CDN de Azure admite HTTPS en un punto de conexión de la red CDN. Por ejemplo, si crea un punto de conexión de la red CDN desde la propia red CDN de Azure (p.ej., https://contoso.azureedge.net), HTTPS se habilita de manera predeterminada. Ahora, con HTTPS de dominio personalizado, también se puede habilitar la entrega segura para un dominio personalizado (p. ej., https://www.contoso.com). 
+Es fundamental para garantizar tanto la privacidad como la integridad de todos los datos confidenciales de las aplicaciones web mientras están en tránsito. El uso del protocolo HTTPS garantiza que la información confidencial se cifra cuando se envía a través de Internet. Proporciona confianza, autenticación y protege las aplicaciones web de posibles ataques. Actualmente, la red CDN de Azure admite HTTPS en un punto de conexión de la red CDN. Por ejemplo, si crea un punto de conexión de la red CDN desde la propia red CDN de Azure (p.ej., https://contoso.azureedge.net), HTTPS se habilita de manera predeterminada. Ahora, con HTTPS en un dominio personalizado, también se puede habilitar la entrega segura para un dominio personalizado (p. ej., https://www.contoso.com). 
 
-Algunos de los atributos de clave de Hola de característica HTTPS son:
+Algunos de los atributos clave de la característica de HTTPS son:
 
-- Sin costo adicional: la adquisición o renovación de certificados no tiene costos y el tráfico HTTPS no supone un costo adicional. Solo paga por GB de salida de la red CDN Hola.
+- Sin costo adicional: la adquisición o renovación de certificados no tiene costos y el tráfico HTTPS no supone un costo adicional. Solo es preciso pagar por los GB de salida de la red CDN.
 
-- Habilitación simple: haga clic en uno de aprovisionamiento está disponible en hello [portal de Azure](https://portal.azure.com). También puede utilizar la API de REST u otra característica de Hola de tooenable de herramientas de desarrollador.
+- Habilitación simple: el aprovisionamiento en un solo clic está disponible desde [Azure Portal](https://portal.azure.com). También puede utilizar la API de REST u otras herramientas de desarrollo para habilitar la característica.
 
-- Administración de certificados completa: toda la adquisición y administración de certificados se controla de manera automática. Los certificados se aprovisionan automáticamente y renuevan tooexpiration anterior. Esto quita completamente los riesgos de Hola de interrupción del servicio como resultado de un certificado que caduca.
+- Administración de certificados completa: toda la adquisición y administración de certificados se controla de manera automática. Los certificados se aprovisionan y renuevan automáticamente antes de su expiración. De esta forma desaparece completamente el riesgo de que se interrumpa el servicio como consecuencia de la expiración del certificado.
 
 >[!NOTE] 
->Tooenabling anterior la compatibilidad con HTTPS, debe ya se ha establecido un [dominio personalizado de CDN de Azure](./cdn-map-content-to-custom-domain.md).
+>Antes de habilitar la compatibilidad con HTTPS, se debe haber establecido un [dominio personalizado de la red CDN de Azure](./cdn-map-content-to-custom-domain.md).
 
-## <a name="step-1-enabling-hello-feature"></a>Paso 1: Habilitar la característica de Hola 
+## <a name="enabling-https"></a>Habilitación de HTTPS
 
-1. Hola [portal de Azure](https://portal.azure.com), examinar el perfil de CDN estándar o premium Verizon de tooyour.
+Para habilitar HTTPS, siga estos pasos:
 
-2. Hola lista de puntos de conexión, haga clic en punto de conexión de Hola que contiene el dominio personalizado.
+### <a name="step-1-enable-the-feature"></a>Paso 1: Habilitación de la característica 
 
-3. Haga clic en el dominio personalizado de hello para el que desea tooenable HTTPS.
+1. En [Azure Portal](https://portal.azure.com), vaya a su perfil de CDN estándar o Premium de Verizon.
+
+2. En la lista de puntos de conexión, haga clic en el que contiene el dominio personalizado.
+
+3. Haga clic en el dominio personalizado en el que desea habilitar HTTPS.
 
     ![Hoja de puntos de conexión](./media/cdn-custom-ssl/cdn-custom-domain.png)
 
-4. Haga clic en **en** tooenable HTTPS y guardar el cambio de Hola.
+4. Haga clic en **Activar** para habilitar HTTPS y, a continuación, haga clic en **Aplicar**.
 
     ![Cuadro de diálogo Personalizar HTTPS](./media/cdn-custom-ssl/cdn-enable-custom-ssl.png)
 
 
-## <a name="step-2-domain-validation"></a>Paso 2: Validación de dominio
+### <a name="step-2-validate-domain"></a>Paso 2: Validación del dominio
 
 >[!IMPORTANT] 
->Para que HTTPS pueda activarse en un dominio personalizado, antes es preciso completar la validación del dominio. Tiene 6 business días tooapprove Hola dominio. Si no se realiza la aprobación en 6 días laborables, la solicitud se cancelará.  
+>Para que HTTPS pueda activarse en un dominio personalizado, antes es preciso completar la validación del dominio. Dispone de seis días laborables para aprobar el dominio. Se cancelarán automáticamente las solicitudes que no estén aprobadas en seis días laborables. 
 
-Después de habilitar HTTPS en su dominio personalizado, el proveedor de certificados HTTPS DigiCert validará propiedad del dominio poniéndose en contacto persona registrada hello para el dominio, en función de la información del titular WHOIS, a través de correo electrónico (de forma predeterminada) o un teléfono. DigiCert también enviará toohello de correo electrónico de comprobación de hello debajo de direcciones. Si la información del inscrito de WHOIS es privada, asegúrese de que puede realizar las aprobaciones directamente desde una de estas direcciones.
+Después de habilitar HTTPS en un dominio personalizado, nuestro proveedor de certificados HTTPS, DigiCert, validará la propiedad del dominio, para lo que se pondrá en contacto con el usuario inscrito del dominio, según la información de [WHOIS](http://whois.domaintools.com/) del dominio. El contacto se realiza a través de la dirección de correo electrónico (de forma predeterminada) o el número de teléfono que aparece en el registro WHOIS. 
 
->admin@<su-nombre-de-dominio.com> administrator@<su-nombre-de-dominio.com>  
->webmaster@<su-nombre-de-dominio.com>  
->hostmaster@<su-nombre-de-dominio.com>  
->postmaster@<su-nombre-de-dominio.com>
+![Registro WHOIS](./media/cdn-custom-ssl/whois-record.png)
 
+DigiCert también enviará el correo electrónico de comprobación a las siguientes direcciones. Si la información del usuario inscrito de WHOIS es privada, asegúrese de que puede realizar las aprobaciones directamente desde una de estas direcciones:
 
-Al recibir correo electrónico de hello, tienes dos opciones de comprobación:
+admin@&lt;su-nombre-de-dominio.com&gt;  
+administrator@&lt;su-nombre-de-dominio.com&gt;  
+webmaster@&lt;su-nombre-de-dominio.com&gt;  
+hostmaster@&lt;su-nombre-de-dominio.com&gt;  
+postmaster@&lt;su-nombre-de-dominio.com&gt;  
 
-1. Puede aprobar todas las futuras pedidos realizados a través de hello misma cuenta para hello dominio raíz del mismo, por ejemplo, consoto.com. Éste es un enfoque recomendado si tiene previsto dominios personalizados adicionales de tooadd en futuras para Hola Hola dominio raíz del mismo.
- 
-2. Solo puede aprobar el nombre de host específico de hello usado en esta solicitud. Para las solicitudes posteriores se requerirá una aprobación adicional.
-
-    Correo electrónico de ejemplo:
+Debería recibir un correo electrónico en unos minutos, de forma similar al ejemplo siguiente, solicitando que apruebe la solicitud. Si utiliza un filtro de correo no deseado, agregue admin@digicert.com a la lista de permitidos. Si no recibe un correo electrónico en 24 horas, póngase en contacto con el equipo de soporte técnico de Microsoft.
     
-    ![Cuadro de diálogo Personalizar HTTPS](./media/cdn-custom-ssl/domain-validation-email-example.png)
+![Cuadro de diálogo Personalizar HTTPS](./media/cdn-custom-ssl/domain-validation-email.png)
 
-Tras la aprobación, DigiCert agregará el certificado de SAN de toohello de nombre de dominio personalizado. certificado de Hello será válida durante un año y se auto renovará antes de haya expirado.
+Al hacer clic en el vínculo de aprobación, se le dirigirá al formulario de aprobación en línea siguiente: 
+    
+![Cuadro de diálogo Personalizar HTTPS](./media/cdn-custom-ssl/domain-validation-form.png)
 
-## <a name="step-3-wait-for-hello-propagation-then-start-using-your-feature"></a>Paso 3: Esperar a la propagación de hello, a continuación, empezar a usar la característica
+Siga las instrucciones que aparecen en el formulario; tiene dos opciones de comprobación:
 
-Después de valida el nombre de dominio de hello ocupará too6-8 horas para hello dominio personalizado HTTPS característica toobe active. Una vez completado el proceso de hello, estado de "HTTPS personalizado" Hola Hola portal de Azure se establecerá demasiado "Enabled". HTTPS con el dominio personalizado ya está listo para su uso.
+- Puede aprobar todos los pedidos futuros realizados a través de la misma cuenta del mismo dominio raíz, por ejemplo, contoso.com. Se recomienda este enfoque si se planea agregar dominios personalizados adicionales en el futuro al mismo dominio raíz.
+
+- Puede aprobar solo el nombre de host específico usado en esta solicitud. Para las solicitudes posteriores se requerirá una aprobación adicional.
+
+Tras la aprobación, DigiCert agregará el nombre de dominio personalizado al certificado de nombre alternativo del firmante (SAN). El certificado tiene una validez de un año y se renovará automáticamente antes de expirar.
+
+### <a name="step-3-wait-for-propagation"></a>Paso 3: Esperar a la propagación
+
+Una vez que el nombre de dominio se valide, la característica HTTPS del dominio personalizado tarda entre 6 y 8 horas en estar activa. Una vez completado el proceso, el estado de "HTTPS personalizado" en Azure Portal se establece en "Habilitado" y los cuatro pasos de la operación en la hoja HTTPS del dominio personalizado se marcan como completados. El dominio personalizado ahora está listo para usar HTTPS.
+
+![Cuadro de diálogo Habilitar HTTPS](./media/cdn-custom-ssl/cdn-enable-custom-ssl-complete.png)
+
+### <a name="operation-progress"></a>Progreso de la operación
+
+En la tabla siguiente se muestra el progreso de la operación que se produce cuando se habilita HTTPS. Después de habilitar HTTPS, los cuatro pasos de la operación aparecen en la hoja HTTPS del dominio personalizado. A medida que cada paso se activa, aparecen detalles adicionales bajo el paso indicando su progreso. Después de que un paso se completa correctamente, aparece una marca de verificación verde junto a él. 
+
+| Paso de la operación | Detalles del paso de la operación | 
+| --- | --- |
+| 1 Envío de la solicitud | Envío de la solicitud |
+| | Se está enviando la solicitud HTTPS. |
+| | Se ha enviado correctamente la solicitud HTTPS. |
+| 2 Validación del dominio | Le hemos enviado un correo electrónico que le pide que validar la propiedad de dominio. Esperando su confirmación. |
+| | La propiedad del dominio se ha validado correctamente. |
+| | La solicitud de validación de la propiedad del dominio ha expirado (el cliente probablemente no respondió dentro del plazo de 6 días). HTTPS no se habilitará en el dominio. * |
+| | El cliente rechazó la solicitud de validación de la propiedad del dominio. HTTPS no se habilitará en el dominio. * |
+| 3 Aprovisionamiento del certificado | La entidad de certificación está emitiendo actualmente el certificado necesario para habilitar HTTPS en el dominio. |
+| | El certificado se ha emitido y actualmente se está implementando en la red CDN. Esto puede tardar hasta 6 horas. |
+| | El certificado se ha implementado correctamente en la red CDN. |
+| 4 Finalizado | Se habilitó correctamente HTTPS en el dominio. |
+
+\*Este mensaje no aparecerá a menos que se haya producido un error. 
+
+Si se produce un error antes de que se envíe la solicitud, verá el mensaje de error siguiente:
+
+<code>
+We encountered an unexpected error while processing your HTTPS request. Please try again and contact support if the issue persists.
+</code>
+
+## <a name="disabling-https"></a>Deshabilitación de HTTPS
+
+Después de haber habilitado HTTPS, más adelante se puede deshabilitar. Para deshabilitar HTTPS, siga estos pasos:
+
+### <a name="step-1-disable-the-feature"></a>Paso 1: Deshabilitación de la característica 
+
+1. En [Azure Portal](https://portal.azure.com), vaya a su perfil de CDN estándar o Premium de Verizon.
+
+2. En la lista de puntos de conexión, haga clic en el que contiene el dominio personalizado.
+
+3. Haga clic en el dominio personalizado en el que desea deshabilitar HTTPS.
+
+    ![Hoja de puntos de conexión](./media/cdn-custom-ssl/cdn-custom-domain-HTTPS-enabled.png)
+
+4. Haga clic en **Desactivar** para deshabilitar HTTPS y, a continuación, haga clic en **Aplicar**.
+
+    ![Cuadro de diálogo Personalizar HTTPS](./media/cdn-custom-ssl/cdn-disable-custom-ssl.png)
+
+### <a name="step-2-wait-for-propagation"></a>Paso 2: Esperar a la propagación
+
+Cuando se deshabilita la característica HTTPS del dominio personalizado, puede tardar hasta 6 a 8 horas para que surta efecto. Una vez completado el proceso, el estado de "HTTPS personalizado" en Azure Portal se establece en "Deshabilitado" y los tres pasos de la operación en la hoja HTTPS del dominio personalizado se marcan como completados. El dominio personalizado ya no usa HTTPS.
+
+![Cuadro de diálogo Deshabilitar HTTPS](./media/cdn-custom-ssl/cdn-disable-custom-ssl-complete.png)
+
+### <a name="operation-progress"></a>Progreso de la operación
+
+En la tabla siguiente se muestra el progreso de la operación que se produce cuando se deshabilita HTTPS. Después de deshabilitar HTTPS, los tres pasos de la operación aparecen en la hoja HTTPS del dominio personalizado. A medida que cada paso se activa, aparecen detalles adicionales bajo el paso. Después de que un paso se completa correctamente, aparece una marca de verificación verde junto a él. 
+
+| Progreso de la operación | Detalles de la operación | 
+| --- | --- |
+| 1 Envío de la solicitud | Enviando la solicitud |
+| 2 Desaprovisionamiento del certificado | Eliminando certificado |
+| 3 Finalizado | Certificado eliminado |
 
 ## <a name="frequently-asked-questions"></a>Preguntas más frecuentes
 
-1. *¿Quién es el proveedor de certificados de Hola y se utiliza el tipo de certificado?*
+1. *¿Quién es el proveedor de certificados y qué tipo de certificado se utiliza?*
 
     Se usa el certificado SAN (nombres alternativos de firmantes) proporcionado por DigiCert. Un certificado SAN puede proteger varios nombres de dominio completo con un solo certificado.
 
 2. *¿Puedo usar mi certificado dedicado?*
     
-    No actualmente, pero su plan de hello en.
+    Actualmente, no, pero está en nuestros planes.
 
-3. *¿Qué ocurre si no recibo correo electrónico de comprobación de dominio Hola de DigiCert?*
+3. *¿Qué debo hacer si no recibo el correo electrónico de comprobación de dominio de DigiCert?*
 
-    Si no recibe un correo electrónico en 24 horas, póngase en contacto con Microsoft.
+    Si no recibe un correo electrónico en 24 horas, póngase en contacto con el equipo de soporte técnico de Microsoft.
 
 4. *¿Son menos seguros los certificados SAN que los certificados dedicados?*
     
-    Un certificado SAN sigue Hola mismos estándares de cifrado y seguridad, como un certificado dedicado. Todos los certificados SSL emitidos utilizan SHA-256 para mejorar la seguridad del servidor.
+    Los certificados SAN siguen los mismos estándares de cifrado y seguridad que los certificados dedicados. Todos los certificados SSL emitidos utilizan SHA-256 para mejorar la seguridad del servidor.
 
 5. *¿Puedo usar HTTPS de dominio personalizado con la red CDN de Azure de Akamai?*
 
-    Actualmente, esta característica solo está disponible en la red CDN de Azure de Verizon. Estamos trabajando en la compatibilidad con esta característica con Azure CDN de Akamai en los próximos meses de Hola.
+    Actualmente, esta característica solo está disponible en la red CDN de Azure de Verizon. Estamos trabajando para que esta característica con esté disponible en la red CDN de Azure CDN de Akamai.
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-- Obtenga información acerca de cómo tooset seguridad un [dominio personalizado en el punto de conexión de red CDN de Azure](./cdn-map-content-to-custom-domain.md)
+- Aprenda a configurar un [dominio personalizado en un punto de conexión de la red CDN de Azure](./cdn-map-content-to-custom-domain.md)
 
 

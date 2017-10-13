@@ -1,6 +1,6 @@
 ---
 title: 'Azure Active Directory Domain Services: contacto | Microsoft Docs'
-description: "Póngase en contacto con el equipo de producto de servicios de dominio de AD de Azure Hola"
+description: "Póngase en contacto con el equipo de productos de Servicios de dominio de Azure AD"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: maheshu
-ms.openlocfilehash: 7a23d50a392549f6c7e1182bcd9a328a28e74bff
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0a4a08a58302c113405756ad7d3bb6487887a72a
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-ad-domain-services---contact-us"></a>Azure AD Domain Services: contacto
-## <a name="contact-hello-product-team"></a>Equipo de producto de hello contacto
-Si tiene problemas con su dominio administrado, comprobar toosee si pasos Hola describen en hello [Troubleshooting Guide](active-directory-ds-troubleshooting.md) resolver el problema de Hola. Si sigue teniendo problemas, puede toocontact libre nos.
+## <a name="contact-the-product-team"></a>Póngase en contacto con el equipo de productos
+Si tiene problemas con su dominio administrado, compruebe si los pasos descritos en la [Guía de solución de problemas](active-directory-ds-troubleshooting.md) resuelven el problema. Si sigue teniendo problemas, no dude en ponerse en contacto con nosotros.
 
 Puede enviarnos un correo electrónico a la sección de [comentarios sobre los Servicios de dominio de Azure AD](mailto:aaddsfb@microsoft.com).
 
-Asegúrese de que incluye siguiente hello, que nos permita investigar el problema de Hola.
+Asegúrese de incluir lo siguiente para que podamos investigar el problema.
 
-* Hola **identificador de Id. o directorio de inquilino** para su directorio Azure AD. Id. de inquilino de Hello es hello GUID que se ven en el campo de Id. de directorio de hello en hello [página de propiedades de su directorio](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)
-* Hola **nombre de dominio DNS** ha configurado para el dominio administrado de los servicios de dominio de AAD.
+* El **identificador de inquilino o directorio** de su directorio de Azure AD. El identificador de inquilino es el GUID que se ve en el campo del identificador de directorio en la [página de propiedades del directorio](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties).
+* El **nombre de dominio DNS** que ha configurado para el dominio administrado de Servicios de dominio de AAD.
 
 ## <a name="provide-feedback"></a>Envío de comentarios
-Le agradecemos sus comentarios acerca de los servicios de dominio de Azure AD a través de hello  **[canal de Azure Active Directory User Voice](https://feedback.azure.com/forums/169401-azure-active-directory/)**.
+Le agradecemos que nos haga llegar sus comentarios acerca de Azure AD Domain Services a través del **[canal UserVoice de Azure Active Directory](https://feedback.azure.com/forums/169401-azure-active-directory/)**.
 
-Asegúrese de que se pre-pendientes tu pregunta o comentarios con palabras hello **'AADDS'**, para él tooreach nosotros.
+Asegúrese de anteponer **"AADDS"**a su pregunta o sus comentarios para que nos lleguen.

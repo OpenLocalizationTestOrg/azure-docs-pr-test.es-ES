@@ -1,14 +1,14 @@
 ## <a name="scenario"></a>Escenario
-toobetter ilustran cómo toocreate UDRs, este documento empleará escenario hello más adelante.
+Para ilustrar mejor cómo crear enrutamientos definidos por el usuario, en este documento se usará el siguiente escenario.
 
 ![DESCRIPCIÓN DE LA IMAGEN](./media/virtual-network-create-udr-scenario-include/figure1.png)
 
-En este escenario creará un UDR para hello *subred de Front end* y otra UDR para hello *subred de Back end* , tal y como se describe a continuación: 
+En este escenario creará un enrutamiento definido por el usuario para la *subred de front-end* y otro para la *subred de back-end*, como se describe a continuación: 
 
-* **UDR-FrontEnd**. Hello front-end UDR será aplicado toohello *front-end* subred y contener una ruta:    
-  * **RouteToBackend**. Esta ruta enviará todos los toohello de subred back-end de tráfico toohello **FW1** máquina virtual.
-* **UDR-BackEnd**. back-end de Hello UDR será aplicado toohello *back-end* subred y contener una ruta:    
-  * **RouteToFrontend**. Esta ruta enviará todos los toohello de subred front-end de tráfico toohello **FW1** máquina virtual.
+* **UDR-FrontEnd**. El enrutamiento definido por el usuario front-end se aplicará a la subred *FrontEnd* y contiene una ruta:    
+  * **RouteToBackend**. Esta ruta enviará todo el tráfico a la subred de back-end a la máquina virtual **FW1** .
+* **UDR-BackEnd**. El UDR de back-end se aplicará a la subred *BackEnd* y contiene una ruta:    
+  * **RouteToFrontend**. Esta ruta enviará todo el tráfico de la subred de front-end a la máquina virtual **FW1** .
 
-combinación de Hola de estas rutas se asegurará de que todo el tráfico destinado de un tooanother de subred será enrutado toohello **FW1** máquina virtual, que se usa como un dispositivo virtual. También deberá tooturn de reenvío IP para esa máquina virtual, tooensure pueda recibir el tráfico destinado tooother las máquinas virtuales.
+La combinación de estas rutas garantizará de que todo el tráfico destinado de una subred a otra se enrutará a la máquina virtual **FW1** , que se utiliza como aplicación virtual. También debe activar el reenvío IP para esa VM, para asegurarse de que esta puede recibir el tráfico destinado a otras VM.
 

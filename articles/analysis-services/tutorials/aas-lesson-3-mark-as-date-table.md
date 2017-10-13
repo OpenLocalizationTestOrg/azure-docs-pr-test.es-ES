@@ -1,7 +1,25 @@
 ---
-título: aaa "lección de Azure Analysis Services tutorial 3: marcar como tabla de fechas | Descripción de Microsoft Docs": describe cómo toomark tabla de una fecha en el proyecto tutorial de hello Azure Analysis Services. servicios: documentationcenter de analysis services: '' autor: minewiskan manager: erikre editor: '' etiquetas: ''
-
-MS.AssetId: ms.service: ms.devlang de analysis services: NA ms.topic: get-started-article ms.tgt_pltfrm: NA ms.workload: na ms.date: 01/06/2017 ms.author: owend
+title: "Lección 3 del tutorial de Azure Analysis Services: Marcar como tabla de fechas |Microsoft Docs"
+description: "Se describe cómo marcar una tabla de fechas en el proyecto del tutorial de Azure Analysis Services."
+services: analysis-services
+documentationcenter: 
+author: Minewiskan
+manager: erikre
+editor: 
+tags: 
+ms.assetid: 
+ms.service: analysis-services
+ms.devlang: NA
+ms.topic: get-started-article
+ms.tgt_pltfrm: NA
+ms.workload: na
+ms.date: 09/20/2017
+ms.author: owend
+ms.openlocfilehash: 94ea44091c8a7befaf0c82349c47dce7a36c1fd8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: es-ES
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="lesson-3-mark-as-date-table"></a>Lección 3: Marcar como tabla de fechas
 
@@ -11,29 +29,29 @@ En la lección 2: Obtención de datos, importó una tabla de dimensiones denomin
   
 Cada vez que se usan funciones de inteligencia de tiempo de DAX, igual que hará cuando cree medidas un poco más tarde, debe especificar propiedades que incluyan una *tabla de fechas* y un identificador único de *columna de fecha* en esa tabla.
   
-En esta lección, se marca la tabla de DimDate de hello como hello *tabla de fechas* y la columna de fecha de hello (en la tabla de fechas de hello) como hello *columna de fecha* (identificador único).  
+En esta lección, marcará la tabla DimDate como la *tabla de fechas* y la columna de fecha (de la tabla de fechas) como la *columna de fecha* (identificador único).  
 
-Antes de marcar la columna de tabla y la fecha de la fecha de hello, es un toodo buen momento un poco de limpieza toomake su toounderstand sea más fácil de modelo. Observe que en la tabla de hello DimDate una columna denominada **FullDateAlternateKey**. Esta columna contiene una fila por cada día de cada año de calendario incluido en la tabla de Hola. Esta columna se usa mucho en las fórmulas de medida y los informes. Sin embargo, FullDateAlternateKey no es realmente un buen identificador en esta columna. Cámbiele demasiado**fecha**, lo que sea más fácil tooidentify e incluir en las fórmulas. Siempre que sea posible, es una buena idea toorename objetos como tablas y columnas toomake les sea más fácil tooidentify en SSDT y las aplicaciones como Power BI y Excel de informes. 
+Antes de marcar la tabla de fechas y la columna de fecha, es hora de realizar algunas tareas para que su modelo sea más fácil de comprender. Observe en la tabla DimDate una columna llamada **FullDateAlternateKey**. Esta columna contiene una fila por cada día de cada año de calendario incluido en la tabla. Esta columna se usa mucho en las fórmulas de medida y los informes. Sin embargo, FullDateAlternateKey no es realmente un buen identificador en esta columna. Cambie el nombre por **Date**, para que sea más fácil identificarlo e incluirlo en fórmulas. Siempre que sea posible, es una buena idea cambiar el nombre de los objetos, como tablas y columnas, para que sean más fáciles de identificar en SSDT y en aplicaciones cliente de generación de informes como Power BI y Excel. 
   
-Estimado toocomplete de tiempo en esta lección: **tres minutos**  
+Tiempo estimado para completar esta lección: **tres minutos**  
   
 ## <a name="prerequisites"></a>Requisitos previos  
-Este tema forma parte de un tutorial de modelado tabular, que se debe completar en orden. Antes de realizar tareas de hello en esta lección, debe haber completado la lección anterior hello: [lección 2: obtener datos](../tutorials/aas-lesson-2-get-data.md). 
+Este tema forma parte de un tutorial de modelado tabular, que se debe completar en orden. Antes de realizar las tareas de esta lección, debe haber completado la lección anterior: [Lección 2: Obtención de datos](../tutorials/aas-lesson-2-get-data.md). 
 
-### <a name="toorename-hello-fulldatealternatekey-column"></a>columna de toorename hello FullDateAlternateKey
+### <a name="to-rename-the-fulldatealternatekey-column"></a>Para cambiar el nombre de la columna FullDateAlternateKey, siga estos pasos:
 
-1.  En el Diseñador de modelos de hello, haga clic en hello **DimDate** tabla.
+1.  En el diseñador de modelos, haga clic en la tabla **DimDate**.
 
-2.  Haga doble clic en el encabezado de Hola para hello **FullDateAlternateKey** columna y, a continuación, cambie su nombre demasiado**fecha**.
+2.  Haga doble clic en el encabezado de la columna **FullDateAlternateKey** y luego cambie su nombre por **Date**.
 
   
-### <a name="tooset-mark-as-date-table"></a>tooset marcar como tabla de fechas  
+### <a name="to-set-mark-as-date-table"></a>Para establecer Marcar como tabla de fechas, siga estos pasos:  
   
-1.  Seleccione hello **fecha** columna y, a continuación, en hello **propiedades** ventana, en **tipo de datos**, asegúrese de que **fecha** está seleccionada.  
+1.  Seleccione la columna **Date** y, luego, en la ventana **Propiedades**, en **Tipo de datos**, asegúrese de que esté seleccionado **Fecha**.  
   
-2.  Haga clic en hello **tabla** menú, a continuación, haga clic en **fecha**y, a continuación, haga clic en **marcar como tabla de fechas**.  
+2.  Haga clic en el menú **Tabla**, haga clic en **Fecha** y luego en **Marcar como tabla de fechas**.  
   
-3.  Hola **marcar como tabla de fechas** cuadro de diálogo hello **fecha** cuadro de lista, seleccione hello **fecha** columna como identificador único de Hola. Normalmente se selecciona de forma predeterminada. Haga clic en **Aceptar**. 
+3.  En el cuadro de diálogo **Marcar como tabla de fechas**, en el cuadro de lista **Fecha**, seleccione la columna **Date** como identificador único. Normalmente se selecciona de forma predeterminada. Haga clic en **Aceptar**. 
 
     ![aas-lesson3-date-table](../tutorials/media/aas-lesson3-date-table.png)
   

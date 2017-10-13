@@ -1,6 +1,6 @@
 ---
-title: "información general de las funciones en tiempo de ejecución aaaAzure | Documentos de Microsoft"
-description: "Información general de hello vista previa en tiempo de ejecución de funciones de Azure"
+title: "Introducción al Sistema en ejecución de Azure Functions | Microsoft Docs"
+description: "Introducción al Sistema en ejecución de Azure Functions (versión preliminar)"
 services: functions
 documentationcenter: 
 author: apwestgarth
@@ -14,43 +14,43 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: anwestg
-ms.openlocfilehash: 8ce3e5037731d499c330b395c89c90109d18d65b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: cb98d5f2aaa526555820c15ba5a32fb7e78ffc5a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-runtime-overview"></a>Introducción al Sistema en ejecución de Azure Functions
 
-Hola en tiempo de ejecución de funciones de Azure proporciona una nueva forma para tootake aprovechar simplicidad de Hola y la flexibilidad de las funciones de Azure de hello en local de modelo de programación. Basado en hello mismo abra raíces de origen como funciones de Azure, en tiempo de ejecución de funciones de Azure es tooprovide implementado de forma local un desarrollo casi idéntico experiencia como servicio en la nube Hola.
+El Sistema en ejecución de Azure Functions proporciona una nueva forma de aprovechar la simplicidad y flexibilidad del modelo de programación de Azure Functions de forma local. Basado en las mismas raíces de código abierto que Azure Functions, el Sistema en ejecución de Azure Functions se implementa de forma local para proporcionar una experiencia de desarrollo prácticamente idéntica al servicio en la nube.
 
 ![Portal del Sistema en ejecución de Azure Functions (versión preliminar)][1]
 
-Hola en tiempo de ejecución de funciones de Azure proporciona una manera para que las funciones de Azure tooexperience antes de confirmar toohello en la nube. De esta manera, recursos de código de hello que compilar, a continuación, pueden considerarse con se toohello en la nube cuando se migra.  en tiempo de ejecución de Hello también abre nuevas opciones para usted, como el uso de capacidad de proceso de reserva de Hola de los procesos de lote de toorun de equipos local durante la noche. También puede usar dispositivos dentro de sus organización tooconditionally envío datos tooother los sistemas, tanto de forma local y en la nube de Hola.
+El Sistema en ejecución de Azure Functions proporciona una forma de experimentar Azure Functions antes de pasarse a la nube. De esta manera, se puede llevar a la nube los recursos de código que cree cuando migre.  El sistema en tiempo de ejecución también le ofrece nuevas opciones, como el uso de la capacidad de proceso adicional de sus equipos locales para ejecutar procesos por lotes durante la noche. También puede usar dispositivos dentro de su organización para enviar datos de forma condicional a otros sistemas, tanto locales como en la nube.
 
-Hola en tiempo de ejecución de funciones de Azure consta de dos partes:
+El Sistema en ejecución de Azure Functions consta de dos partes:
 * Rol de administración del Sistema en ejecución de Azure Functions
 * Rol de trabajo del Sistema en ejecución de Azure Functions
 
 ## <a name="azure-functions-management-role"></a>Rol de administración de Azure Functions
 
-Hola rol de administración de funciones de Azure proporciona un host para la administración de Hola de funciones local. Esta función realiza Hola siguientes tareas:
+El rol de administración de Azure Functions proporciona un host para la administración de Functions de forma local. Este rol realiza las siguientes tareas:
 
-* Hospedaje del Portal de administración de funciones de Azure, que es Hola Hola Hola misma vea Hola [portal de Azure](https://portal.azure.com). Esto permite desarrollar sus funciones en Hola igual manera que lo haría en hello portal de Azure.
+* Hospedaje del Portal de administración de Azure Functions, que es el mismo que se ve en [Azure Portal](https://portal.azure.com). Esto le permite desarrollar las funciones de la misma manera que lo haría en Azure Portal.
 * Distribución de funciones entre varios trabajadores de Functions.
 * Proporciona un punto de conexión de publicación para que pueda publicar sus funciones directamente desde Microsoft Visual Studio.
 
 ## <a name="azure-functions-worker-role"></a>Rol de trabajo de Azure Functions
 
-Roles de trabajo de Hello Azure funciones se implementan en los contenedores de Windows y es donde se ejecuta el código de función.  Puede implementar varios roles de trabajo en toda la organización; se trata de una manera clave en que los clientes pueden hacer uso de la capacidad de proceso que sobra.
+Los roles de trabajo de Azure Functions se implementan en los contenedores de Windows y son donde se ejecuta el código de la función.  Puede implementar varios roles de trabajo en toda la organización; se trata de una manera clave en que los clientes pueden hacer uso de la capacidad de proceso que sobra.
 
 ## <a name="minimum-requirements"></a>Requisitos mínimos
 
-tooget partió hello en tiempo de ejecución las funciones de Azure debe tener una máquina con **Windows Server 2016 o Windows 10 creadores Update** con acceso tooa **SQL Server** instancia.
+Para empezar a trabajar con el Sistema en ejecución de Azure Functions, debe tener una máquina con **Windows Server 2016 o Windows 10 Creators Update** y acceso a una instancia de **SQL Server**.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Instalar hello [vista previa en tiempo de ejecución de funciones de Azure](https://aka.ms/azafr)
+Instale la [versión preliminar del Sistema en ejecución de Azure Functions](https://aka.ms/azafr)
 
 <!--Image references-->
 [1]: ./media/functions-runtime-overview/AzureFunctionsRuntime_Portal.png

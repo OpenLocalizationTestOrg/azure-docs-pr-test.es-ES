@@ -1,263 +1,227 @@
 ---
 title: "Tutorial: integración de Azure Active Directory con Soonr Workplace | Microsoft Docs"
-description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y Soonr al área de trabajo."
+description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y Soonr Workplace."
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: femila
-editor: na
 ms.assetid: b75f5f00-ea8b-4850-ae2e-134e5d678d97
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 08/11/2017
 ms.author: jeedes
-ms.openlocfilehash: f950b45d0beceab2fa17b7690c9de81ec6603089
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 39a82e581d9b1eee19b5be9a5aa8a425c150dcdb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-soonr-workplace"></a>Tutorial: integración de Azure Active Directory con Soonr Workplace
 
-objetivo de Hola de este tutorial es tooshow, cómo toointegrate Soonr al área de trabajo con Azure Active Directory (Azure AD).  
-Integración Soonr al área de trabajo con Azure AD proporciona Hola siguientes ventajas:
+En este tutorial, obtendrá información sobre cómo integrar Soonr Workplace con Azure Active Directory (Azure AD).
 
-- Puede controlar en Azure AD que tenga acceso tooSoonr al área de trabajo
-- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooSoonr al área de trabajo (Single Sign-On) con sus cuentas de Azure AD
-- Puede administrar las cuentas en una ubicación central: Hola portal de Azure clásico
+Integrar Soonr Workplace con Azure AD le proporciona las siguientes ventajas:
 
-Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
+- Puede controlar en Azure AD quién tiene acceso a Soonr Workplace.
+- Puede permitir que los usuarios inicien sesión automáticamente en Soonr Workplace (inicio de sesión único) con sus cuentas de Azure AD.
+- Puede administrar sus cuentas en una ubicación central: el nuevo Azure Portal.
+
+Si desea saber más sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-integración de Azure AD con un área de trabajo de Soonr tooconfigure, necesita Hola siguientes elementos:
+Para configurar la integración de Azure AD con Soonr Workplace, necesita los siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción habilitada para inicio de sesión único en Soonr Workplace
 
+> [!NOTE]
+> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
 
-> [!NOTE] 
-> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
+Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
 
-
-pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
-
-- No debe usar el entorno de producción, a menos que sea necesario.
+- No use el entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).
 
-
 ## <a name="scenario-description"></a>Descripción del escenario
-objetivo de Hola de este tutorial es tooenable tootest inicio de sesión único en Azure AD en un entorno de prueba.  
-escenario de Hello descrito en este tutorial consta de dos bloques principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
 
-1. Agregar un área de trabajo Soonr de galería de Hola
+1. Incorporación de Soonr Workplace desde la galería
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
+## <a name="adding-soonr-workplace-from-the-gallery"></a>Incorporación de Soonr Workplace desde la galería
+Para configurar la integración de Soonr Workplace en Azure AD, deberá agregar Soonr Workplace desde la galería a la lista de aplicaciones SaaS administradas.
 
-## <a name="adding-soonr-workplace-from-hello-gallery"></a>Agregar un área de trabajo Soonr de galería de Hola
-integración de hello tooconfigure Soonr área de trabajo en Azure AD, deberá tooadd Soonr al área de trabajo de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
+**Para agregar Soonr Workplace desde la galería, siga estos pasos:**
 
-**tooadd Soonr al área de trabajo desde la Galería de hello, lleve a cabo Hola pasos:**
-
-1. Hola **portal de Azure clásico**, en Hola panel de navegación izquierdo, haga clic en **Active Directory**. 
+1. En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. De hello **Directory** lista, directorio de Hola select para la que desee tooenable integración de directorios.
-
-3. Haga clic en vista de aplicaciones de hello tooopen, en la vista de directorio de hello, **aplicaciones** en el menú superior Hola.
+2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
 
     ![Aplicaciones][2]
-
-4. Haga clic en **agregar** final Hola de página Hola.
+    
+3. Para agregar una nueva aplicación, haga clic en el botón **Nueva aplicación** de la parte superior del cuadro de diálogo.
 
     ![Aplicaciones][3]
 
-5. En hello **especifique qué desea toodo** cuadro de diálogo, haga clic en **agregar una aplicación de la Galería de hello**.
- 
-    ![Aplicaciones][4]
+4. En el cuadro de búsqueda, escriba **Soonr Workplace**.
 
-6. En el cuadro de búsqueda de hello, escriba **al área de trabajo de Soonr**.
- 
-    ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_01.png)
+    ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_search.png)
 
-7. En el panel de resultados de hello, seleccione **al área de trabajo de Soonr**y, a continuación, haga clic en **completar** aplicación de hello tooadd.
+5. En el panel de resultados, seleccione **Soonr Workplace** y haga clic en el botón **Agregar** para agregar la aplicación.
 
-    ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_02.png)
+    ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuración y comprobación del inicio de sesión único de Azure AD
-objetivo de Hola de esta sección es tooshow cómo tooconfigure y prueba de inicio de sesión único en Azure AD con Soonr al área de trabajo a partir de un usuario de prueba denominado "Britta Simon".
+En esta sección, podrá configurar y probar el inicio de sesión único de Azure AD con Soonr Workplace con un usuario de prueba llamado "Britta Simon".
 
-Para toowork de inicio de sesión único, Azure AD necesita tooknow es qué usuario equivalente de hello en usuario de un área de trabajo de Soonr tooan en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en el área de trabajo de Soonr debe toobe establecido.  
+Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de Soonr Workplace para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de Soonr Workplace.
 
-Esta relación de vínculo se establece mediante la asignación de valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** en lugar de trabajo Soonr.
+Para establecer la relación de vínculo, en Soonr Workplace, asigne el valor de **nombre de usuario** de Azure AD como valor de **Nombre de usuario**.
 
-tooconfigure y prueba de inicio de sesión único en Azure AD con Soonr al área de trabajo, deberá hello toocomplete después de bloques de creación:
+Para configurar y probar el inicio de sesión único de Azure AD con Soonr Workplace, es preciso completar los siguientes bloques de creación:
 
-1. **[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)**  -tooenable la toouse usuarios esta característica.
-2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.
-3. **[Crear un usuario de prueba al área de trabajo de Soonr](#creating-a-soonr-workplace-test-user)**  -toohave un equivalente de Britta Simon en lugar de trabajo de Soonr es representación toohello vinculado Azure AD de ella.
-4. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.
-5. **[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.
+2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.
+3. **[Creación de un usuario de prueba de Soonr Workplace](#creating-a-soonr-workplace-test-user)**: para tener un homólogo de Britta Simon en Soonr Workplace que esté vinculado a la representación del usuario en Azure AD.
+4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitar inicio de sesión único en Azure AD en el portal clásico de Hola y configurar el inicio de sesión único en la aplicación de área de trabajo de Soonr.
+En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y configurará el inicio de sesión único en la aplicación Soonr Workplace.
 
+**Para configurar el inicio de sesión único de Azure AD con Soonr Workplace, siga estos pasos:**
 
-**inicio de sesión único en tooconfigure Azure AD con Soonr al área de trabajo, realizar Hola pasos:**
+1. En la página de integración de la aplicación **Soonr Workplace** de Azure Portal, haga clic en **Inicio de sesión único**.
 
-1. En el portal de Azure clásico en Hola Hola **al área de trabajo de Soonr** página de integración de aplicaciones, haga clic en **configurar inicio de sesión único** tooopen hello **configurar Single Sign-On**  cuadro de diálogo.
+    ![Configurar inicio de sesión único][4]
 
-    ![Configurar inicio de sesión único][6] 
+2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
+ 
+    ![Configurar inicio de sesión único](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_samlbase.png)
 
-2. En hello **¿cómo desea que los usuarios toosign en tooSoonr al área de trabajo** página, seleccione **Azure AD Single Sign-On**y, a continuación, haga clic en **siguiente**.
+3. En la sección **Dominio y direcciones URL de Soonr Workplace**, siga estos pasos:
 
-    ![Configurar inicio de sesión único](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_03.png) 
+    ![Configurar inicio de sesión único](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_url.png)
 
-3. En hello **configurar opciones de aplicación** cuadro de diálogo, siga los pasos de hello:.
+    a. En el cuadro de texto **Identificador**, escriba una dirección URL con el siguiente patrón: `https://<servername>.soonr.com/singlesignon/saml/metadata`
 
-    ![Configurar inicio de sesión único](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_04.png) 
+    b. En el cuadro de texto **URL de respuesta**, escriba una dirección URL con el siguiente patrón: `https://<servername>.soonr.com/singlesignon/saml/SSO`.
 
-    a. Hola **dirección URL de inicio de sesión** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón: `https://<server-name>.soonr.com/singlesignon/saml/SSO`.
+4. En la sección **Dominio y direcciones URL de Soonr Workplace**, si quiere configurar la aplicación en **Modo iniciado por SP**, realice los siguientes pasos:
+    
+    ![Configurar inicio de sesión único](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_url1.png)
 
-    b. Haga clic en **Siguiente**.
+    a. Haga clic en la opción **Mostrar configuración avanzada de URL**.
+
+    b. En el cuadro de texto **URL de inicio de sesión**, escriba una dirección URL con el siguiente patrón: `https://<servername>.soonr.com/singlesignon/saml/SSO`.
 
     > [!NOTE] 
-    > Tenga en cuenta que esto no es un valor real Hola. Tendrá que tooupdate este valor con hello real iniciar sesión en la dirección URL. Póngase en contacto con tooget de equipo de soporte técnico al área de trabajo de Soonr este valor.
+    > Estos valores no son reales. Actualice estos valores con el identificador y las direcciones URL de inicio de sesión y de respuesta reales. Póngase en contacto con el [equipo de soporte técnico de Soonr Workplace](https://awp.autotask.net/help/) para obtener estos valores.
+ 
+5. En la sección **Certificado de firma de SAML**, haga clic en **XML de metadatos** y luego guarde el archivo de metadatos en el equipo.
 
-4. En hello **configurar inicio de sesión único en el área de trabajo de Soonr** página, haga clic en **descargar metadatos** y, a continuación, guarde el archivo hello en el equipo:
+    ![Configurar inicio de sesión único](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_certificate.png) 
 
-    ![Configurar inicio de sesión único](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_05.png) 
+6. Haga clic en el botón **Guardar** .
 
-5. tooget SSO configurado para la aplicación, póngase en contacto con el equipo de soporte técnico al área de trabajo Soonr y proporcionarles siguiente hello: 
+    ![Configurar inicio de sesión único](./media/active-directory-saas-soonr-tutorial/tutorial_general_400.png)
 
-    Hola • descargado **metadatos** archivo
+7. En la sección **Configuración de Soonr Workplace**, haga clic en **Configurar Soonr Workplace** para abrir la ventana **Configurar inicio de sesión**. Copie la **URL del servicio de inicio de sesión único de SAML, el identificador de entidad de SAML y la dirección URL de cierre de sesión** de la sección **Referencia rápida**.
 
-    • hello **dirección URL del emisor**
+    ![Configurar inicio de sesión único](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_configure.png) 
 
-    • hello **dirección URL SSO SAML**
+8. Para configurar el inicio de sesión único en **Soonr Workplace**, es preciso enviar los valores descargados de **XML de metadatos**, **Dirección URL de cierre de sesión, SAML Entity ID (Identificador de entidad de SAML) y SAML Single Sign-On Service URL (Dirección URL del servicio de inicio de sesión único de SAML)** al [equipo de soporte técnico de Soonr Workplace](https://awp.autotask.net/help/). Dicho equipo lo configura para establecer la conexión de SSO de SAML correctamente en ambos lados.
 
-    • hello **dirección URL del servicio de cierre de sesión único**
+    >[!Note]
+    >Si necesita ayuda con la configuración de Autotask Workplace, consulte [esta página](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) para obtener asistencia con la cuenta de Workplace.
 
-    >[!NOTE]
-    >Esta aplicación es sustituida por <a href="https://azure.microsoft.com/en-us/marketplace/partners/autotask-corporataion/autotask/">al área de trabajo de Autotask</a> y hacer referencia <a href="https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-autotaskworkplace-tutorial">esto</a> tutorial para configurar la aplicación hello con Azure AD.
-   
-6. Hola portal de Azure clásico, seleccione la confirmación de configuración de inicio de sesión único de hello y, a continuación, haga clic en **siguiente**.
-
-    ![Inicio de sesión único de Azure AD ][10]
-
-7. En hello **única confirmación de inicio de sesión** página, haga clic en **completar**.  
-  
-    ![Inicio de sesión único de Azure AD ][11]
-
-
+> [!TIP]
+> Ahora puede leer una versión resumida de estas instrucciones dentro de [Azure Portal](https://portal.azure.com) mientras configura la aplicación.  Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada a través de la sección **Configuración** de la parte inferior. Puede leer más sobre la característica de documentación insertada aquí: [Vista previa: Administración de inicio de sesión único para aplicaciones empresariales en el nuevo Azure Portal]( https://go.microsoft.com/fwlink/?linkid=845985)
+> 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-objetivo de Hola de esta sección es un usuario de prueba en el portal de Azure clásico que se llama a Britta Simon hello toocreate.  
+El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".
 
-![Creación de un usuario de Azure AD][20]
+![Creación de un usuario de Azure AD][100]
 
-**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
+**Siga estos pasos para crear un usuario de prueba en Azure AD:**
 
-1. Hola **portal de Azure clásico**, en Hola panel de navegación izquierdo, haga clic en **Active Directory**.
+1. En el panel de navegación izquierdo de **Azure Portal**, haga clic en el icono de **Azure Active Directory**.
 
-    ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-soonr-tutorial/create_aaduser_09.png) 
+    ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-soonr-tutorial/create_aaduser_01.png) 
 
-2. De hello **Directory** lista, directorio de Hola select para la que desee tooenable integración de directorios.
+2. Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios**.
+    
+    ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-soonr-tutorial/create_aaduser_02.png) 
 
-3. Haga clic en lista de hello toodisplay de usuarios, en el menú de hello en la parte superior de hello, **usuarios**.
-
+3. Para abrir el cuadro de diálogo **Usuario**, haga clic en **Agregar** en la parte superior del cuadro de diálogo.
+ 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-soonr-tutorial/create_aaduser_03.png) 
 
-4. Hola tooopen **Agregar usuario** cuadro de diálogo, en la barra de herramientas de hello en la parte inferior de hello, haga clic en **Agregar usuario**.
-
+4. En la página de diálogo **Usuario**, realice los siguientes pasos:
+ 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-soonr-tutorial/create_aaduser_04.png) 
 
-5. En hello **envíenos comentarios acerca de este usuario** cuadro de diálogo, siga los pasos de hello:
+    a. En el cuadro de texto **Nombre**, escriba **BrittaSimon**.
 
-    ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-soonr-tutorial/create_aaduser_05.png) 
+    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
 
-    a. En Tipo de usuario, seleccione Nuevo usuario de la organización.
+    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
 
-    b. En nombre de usuario de hello **cuadro de texto**, tipo **BrittaSimon**.
-
-    c. Haga clic en **Siguiente**.
-
-6.  En hello **perfil de usuario** cuadro de diálogo, siga los pasos de hello:
-
-    ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-soonr-tutorial/create_aaduser_06.png) 
-
-    a. Hola **nombre** cuadro de texto, tipo **Bárbara**.  
-
-    b. Hola **Last Name** cuadro de texto, tipo, **Simon**.
-
-    c. Hola **nombre para mostrar** cuadro de texto, tipo **Britta Simon**.
-
-    d. Hola **rol** lista, seleccione **usuario**.
-
-    e. Haga clic en **Siguiente**.
-
-7. En hello **obtener contraseña temporal** página del cuadro de diálogo, haga clic en **crear**.
-
-    ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-soonr-tutorial/create_aaduser_07.png) 
-
-8. En hello **obtener contraseña temporal** cuadro de diálogo, siga los pasos de hello:
-
-    ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-soonr-tutorial/create_aaduser_08.png) 
-
-    a. Anote el valor de Hola de hello **nueva contraseña**.
-
-    b. Haga clic en **Completo**.   
-
-
-
+    d. Haga clic en **Crear**.
+ 
 ### <a name="creating-a-soonr-workplace-test-user"></a>Creación de un usuario de prueba de Soonr Workplace
 
-objetivo de Hola de esta sección es un usuario llamado a Britta Simon en lugar de trabajo de Soonr toocreate. Trabaje con toocreate de equipo de soporte técnico al área de trabajo de Soonr un usuario en la plataforma de Hola. Puede generar incidencia de soporte técnico de hello con Soonr de <a href="https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fsoonr.com%2FAWPHelp%2FContent%2F0_HOME%2FSupport_for_End_Clients.htm&data=01%7C01%7Cv-saikra%40microsoft.com%7Ccbb4367ab09b4dacaac408d3eebe3f42%7C72f988bf86f141af91ab2d7cd011db47%7C1&sdata=FB92qtE6m%2Fd8yox7AnL2f1h%2FGXwSkma9x9H8Pz0955M%3D&reserved=0/">aquí</a>.
+El objetivo de esta sección es crear una usuaria llamada Britta Simon en Soonr Workplace. Trabaje con el [equipo de soporte técnico de Soonr Workplace](https://awp.autotask.net/help/) para crear un usuario en la plataforma. Puede enviar la incidencia de soporte técnico a Soonr desde <a href="https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fsoonr.com%2FAWPHelp%2FContent%2F0_HOME%2FSupport_for_End_Clients.htm&data=01%7C01%7Cv-saikra%40microsoft.com%7Ccbb4367ab09b4dacaac408d3eebe3f42%7C72f988bf86f141af91ab2d7cd011db47%7C1&sdata=FB92qtE6m%2Fd8yox7AnL2f1h%2FGXwSkma9x9H8Pz0955M%3D&reserved=0/">aquí</a>.
 
+### <a name="assigning-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Asignación de usuario de prueba de hello Azure AD
-
-objetivo de Hola de esta sección es tooenabling Britta Simon toouse Azure inicio de sesión único mediante la concesión de su tooSoonr de acceso al área de trabajo.
+En esta sección, habilitará a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a Soonr Workplace.
 
 ![Asignar usuario][200] 
 
-**tooassign Britta Simon tooSoonr al área de trabajo, lleve a cabo Hola pasos:**
+**Para asignar la usuaria Britta Simon a Soonr Workplace, siga estos pasos:**
 
-1. En hello Azure portal clásico, vista de aplicaciones de hello tooopen, en la vista de directorio de hello, haga clic en **aplicaciones** en el menú superior Hola.
+1. En Azure Portal, abra la vista de aplicaciones, vaya a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego, haga clic en **Todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones de hello, seleccione **al área de trabajo de Soonr**.
+2. En la lista de aplicaciones, seleccione **Soonr Workplace**.
 
-    ![Configurar inicio de sesión único](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_50.png) 
+    ![Configurar inicio de sesión único](./media/active-directory-saas-soonr-tutorial/tutorial_soonr_app.png) 
 
-1. En el menú de hello en la parte superior de hello, haga clic en **usuarios**.
+3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
 
-    ![Asignar usuario][203] 
+    ![Asignar usuario][202] 
 
-1. En la lista de usuarios de hello, seleccione **Britta Simon**.
+4. Haga clic en el botón **Agregar**. Después, seleccione **Usuarios y grupos** en el cuadro de diálogo **Agregar asignación**.
 
-2. En la barra de herramientas de hello en la parte inferior de hello, haga clic en **asignar**.
+    ![Asignar usuario][203]
 
-    ![Asignar usuario][205]
+5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
 
+6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
-
+7. Haga clic en el botón **Asignar** del cuadro de diálogo **Agregar asignación**.
+    
 ### <a name="testing-single-sign-on"></a>Prueba del inicio de sesión único 
 
-objetivo de Hola de esta sección es tootest su configuración de inicio de sesión único de Azure AD mediante Hola Panel de acceso.  
-Al hacer clic en hello al área de trabajo Soonr el icono Hola Panel de acceso, deberá obtener automáticamente ha iniciado sesión tooyour aplicación Soonr al área de trabajo.
+El objetivo de esta sección es probar la configuración del inicio de sesión único de Azure AD mediante el panel de acceso.  
 
+Al hacer clic en el icono de Soonr Workplace en el panel de acceso, debería iniciar sesión automáticamente en su aplicación de Soonr Workplace.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+
 
 
 <!--Image references-->
@@ -267,13 +231,10 @@ Al hacer clic en hello al área de trabajo Soonr el icono Hola Panel de acceso, 
 [3]: ./media/active-directory-saas-soonr-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-soonr-tutorial/tutorial_general_04.png
 
-[6]: ./media/active-directory-saas-soonr-tutorial/tutorial_general_05.png
-[10]: ./media/active-directory-saas-soonr-tutorial/tutorial_general_06.png
-[11]: ./media/active-directory-saas-soonr-tutorial/tutorial_general_07.png
-[20]: ./media/active-directory-saas-soonr-tutorial/tutorial_general_100.png
+[100]: ./media/active-directory-saas-soonr-tutorial/tutorial_general_100.png
 
 [200]: ./media/active-directory-saas-soonr-tutorial/tutorial_general_200.png
 [201]: ./media/active-directory-saas-soonr-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-soonr-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-soonr-tutorial/tutorial_general_203.png
-[204]: ./media/active-directory-saas-soonr-tutorial/tutorial_general_204.png
-[205]: ./media/active-directory-saas-soonr-tutorial/tutorial_general_205.png
+

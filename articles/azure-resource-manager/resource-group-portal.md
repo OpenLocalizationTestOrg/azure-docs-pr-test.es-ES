@@ -1,6 +1,6 @@
 ---
-title: aaaUse toomanage portal Azure recursos de Azure | Documentos de Microsoft
-description: "Usar el portal de Azure y administración de recursos de Azure toomanage los recursos. Muestra cómo toowork con recursos de toomonitor de paneles."
+title: Uso de Azure Portal para administrar los recursos de Azure | Microsoft Docs
+description: "Uso del Portal de Azure y de Azure Resource Manager para implementar los recursos. Muestra cómo trabajar con paneles para supervisar recursos."
 services: azure-resource-manager,azure-portal
 documentationcenter: 
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: tomfitz
-ms.openlocfilehash: 0c89a197a31c5b6dd03ba457cb4d1fdf9f6d00f6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7a94fd5065de93384460e851627a9813d439956b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-azure-resources-through-portal"></a>Administración de los recursos de Azure a través del Portal
 > [!div class="op_single_selector"]
@@ -29,89 +29,89 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Este tema se muestra cómo hello toouse [portal de Azure](https://portal.azure.com) con [Azure Resource Manager](resource-group-overview.md) toomanage los recursos de Azure. toolearn acerca de cómo implementar los recursos a través del portal de hello, consulte [implementar los recursos con plantillas de administrador de recursos y el portal de Azure](resource-group-template-deploy-portal.md).
+En este tema se muestra cómo utilizar el [Azure Portal](https://portal.azure.com) con [Azure Resource Manager](resource-group-overview.md) para administrar los recursos de Azure. Para aprender sobre la implementación de recursos a través del Portal, consulte [Implementación de recursos con las plantillas de Resource Manager y el Portal de Azure](resource-group-template-deploy-portal.md).
 
-Actualmente, no todos los servicios es compatible con el portal de Hola o administrador de recursos. Para esos servicios, deberá hello toouse [portal clásico](https://manage.windowsazure.com). Para el estado de Hola de cada servicio, consulte [gráfico de disponibilidad de portal de Azure](https://azure.microsoft.com/features/azure-portal/availability/).
+Actualmente, no todos los servicios son compatibles con el portal o con el Administrador de recursos. Para esos servicios, deberá usar el [portal clásico](https://manage.windowsazure.com). Para más información sobre el estado de cada servicio, consulte [Tabla de disponibilidad de los portales de Azure](https://azure.microsoft.com/features/azure-portal/availability/).
 
 ## <a name="manage-resource-groups"></a>Administración de grupos de recursos
 
-Un grupo de recursos es un contenedor que almacena los recursos relacionados con una solución de Azure. grupo de recursos de Hello puede incluir todos los recursos de hello para la solución de hello, o sólo aquellos recursos que desea toomanage como un grupo. Decida cómo desea que los recursos de tooallocate tooresource grupos basan en lo que le resulte hello más conveniente para su organización. Por lo general, agregar recursos que comparten Hola mismo toohello de ciclo de vida mismo recurso de grupo para fácilmente puede implementar, actualizar y eliminar como un grupo. 
+Un grupo de recursos es un contenedor que almacena los recursos relacionados con una solución de Azure. El grupo de recursos puede incluir todos los recursos de la solución o solo aquellos que se desean administrar como grupo. Para decidir cómo asignar los recursos a los grupos de recursos, tenga en cuenta lo que más conviene a su organización. Por lo general, se recomienda agregar recursos que compartan el mismo ciclo de vida al mismo grupo de recursos para que los pueda implementar, actualizar y eliminar con facilidad como un grupo. 
 
-grupo de recursos de Hello almacena metadatos acerca de los recursos de Hola. Por lo tanto, cuando se especifica una ubicación para el grupo de recursos de hello, está especificando donde se almacenan los metadatos. Por motivos de cumplimiento, puede que necesite tooensure que se almacenan los datos en una región determinada.
+Los grupos de recursos almacenan metadatos acerca de los recursos. Por consiguiente, al especificar la ubicación del grupo de recursos, se especifica el lugar en que se almacenan dichos metadatos. Por motivos de compatibilidad, es posible que sea preciso asegurarse de que los datos se almacenan en una región concreta.
 
-1. toosee todos los grupos de recursos de hello en su suscripción, seleccione **grupos de recursos**.
+1. Para ver todos los grupos de recursos de su suscripción, seleccione **Grupos de recursos**.
    
     ![buscar grupos de recursos](./media/resource-group-portal/browse-groups.png)
-2. Seleccione un grupo de recursos vacío, toocreate **agregar**.
+2. Seleccione **Agregar**para crear un grupo de recursos vacío.
    
     ![agregar grupo de recursos](./media/resource-group-portal/add-resource-group.png)
-3. Proporcione un nombre y ubicación para el nuevo grupo de recursos Hola. Seleccione **Crear**.
+3. Proporcione un nombre y una ubicación para el nuevo grupo de recursos. Seleccione **Crear**.
    
-    ![Creación de un grupo de recursos](./media/resource-group-portal/create-empty-group.png)
-4. Puede que necesite tooselect **actualizar** grupo de recursos de toosee Hola creado recientemente.
+    ![crear grupo de recursos](./media/resource-group-portal/create-empty-group.png)
+4. Debe seleccionar **Actualizar** para ver el grupo de recursos creado recientemente.
    
     ![actualizar grupo de recursos](./media/resource-group-portal/refresh-resource-groups.png)
-5. toocustomize Hola muestre la información de los grupos de recursos, seleccione **columnas**.
+5. Para personalizar la información que se muestra para los grupos de recursos, seleccione **Columnas**.
    
     ![personalizar columnas](./media/resource-group-portal/select-columns.png)
-6. Seleccione Hola columnas tooadd y, a continuación, seleccione **actualización**.
+6. Seleccione las columnas que desea agregar y, después, seleccione **Actualizar**.
    
     ![agregar columnas](./media/resource-group-portal/add-columns.png)
-7. toolearn acerca de cómo implementar recursos tooyour nuevo grupo de recursos, consulte [implementar los recursos con plantillas de administrador de recursos y el portal de Azure](resource-group-template-deploy-portal.md).
-8. Para el grupo de recursos de tooa de acceso rápido, puede anclar panel tooyour de hello hoja.
+7. Si quiere aprender cómo implementar recursos en su nuevo grupo de recursos, consulte [Implementación de recursos con las plantillas de Resource Manager y el Portal de Azure](resource-group-template-deploy-portal.md).
+8. Para obtener un acceso rápido al grupo de recursos, puede anclar la hoja en el panel.
    
     ![anclar un grupo de recursos](./media/resource-group-portal/pin-group.png)
-9. panel de Hello muestra el grupo de recursos de Hola y sus recursos. Puede seleccionar los grupos de recursos de Hola o cualquiera de sus elementos de toohello toonavigate de recursos.
+9. El panel muestra el grupo de recursos y sus recursos. Puede seleccionar los grupos de recursos o cualquiera de sus recursos para navegar hasta el elemento.
    
     ![anclar un grupo de recursos](./media/resource-group-portal/show-resource-group-dashboard.png)
 
 ## <a name="tag-resources"></a>Etiquetado de recursos
-Puede aplicar etiquetas tooresource grupos y recursos toologically organizar sus recursos. Para obtener información sobre cómo trabajar con etiquetas, consulte [mediante etiquetas tooorganize los recursos de Azure](resource-group-using-tags.md).
+Puede aplicar etiquetas a los recursos y grupos de recursos para organizar de manera lógica los recursos. Para más información sobre cómo trabajar con etiquetas, consulte [Uso de etiquetas para organizar los recursos de Azure](resource-group-using-tags.md).
 
 [!INCLUDE [resource-manager-tag-resource](../../includes/resource-manager-tag-resources.md)]
 
 ## <a name="monitor-resources"></a>Supervisión de recursos
-Cuando seleccione un recurso, hoja de recursos de hello presenta predeterminado gráficos y tablas para la supervisión de ese tipo de recurso.
+Cuando se selecciona un recurso, la hoja del recurso presenta los gráficos y las tablas predeterminados para supervisar ese tipo de recurso.
 
-1. Seleccione un recurso y observe hello **supervisión** sección. Incluye gráficos que son el tipo de recurso toohello relevante. Hello siguiente imagen muestra la Hola predeterminada datos de supervisión de una cuenta de almacenamiento.
+1. Seleccione un recurso y observe la sección **Supervisión** . Incluye gráficos que son pertinentes para el tipo de recurso. En la imagen siguiente se muestran los datos de supervisión predeterminados para una cuenta de almacenamiento.
    
     ![mostrar supervisión](./media/resource-group-portal/show-monitoring.png)
-2. Puede anclar una sección del panel de hello hoja tooyour seleccionando puntos suspensivos de hello (...) por encima de la sección de Hola. También puede personalizar la sección de Hola Hola tamaño en la hoja de Hola o quitarlo completamente. Hello siguiente imagen muestra cómo personalizar toopin, o quitar la sección de memoria y CPU Hola.
+2. Para anclar una sección de la hoja al panel, seleccione el botón de puntos suspensivos (...) que se encuentra encima de la sección. Asimismo puede personalizar el tamaño de la sección en la hoja o quitarlo. La siguiente imagen muestra cómo anclar, personalizar o quitar la sección CPU y memoria.
    
     ![anclar sección](./media/resource-group-portal/pin-cpu-section.png)
-3. Después de anclar el panel de toohello sección hello, verá Hola resumen en el panel de Hola. Y, si lo selecciona inmediatamente tardarán toomore detalles acerca de los datos de Hola.
+3. Después de anclar la sección en el panel, verá el resumen en el panel. Y, si lo selecciona inmediatamente, obtendrá más detalles de los datos.
    
     ![ver panel](./media/resource-group-portal/view-startboard.png)
-4. toocompletely personalizar datos de Hola para supervisar a través del portal de hello, vaya a Panel de tooyour predeterminado y seleccione **nuevo panel**.
+4. Para personalizar completamente los datos que supervisa mediante el portal, vaya al panel predeterminado y seleccione **Nuevo panel**.
    
     ![dashboard](./media/resource-group-portal/dashboard.png)
-5. Asigne un nombre a su nuevo panel y arrastre iconos de panel Hola. Hola mosaicos se filtran por distintas opciones.
+5. Asigne un nombre al nuevo panel y arrastre hasta ahí los iconos. Los iconos se filtran por distintas opciones.
    
     ![dashboard](./media/resource-group-portal/create-dashboard.png)
    
-     toolearn acerca de cómo trabajar con los paneles, consulte [crear y compartir paneles en el portal de Azure hello](../azure-portal/azure-portal-dashboards.md).
+     Para aprender a trabajar con paneles, vea el vídeo [Creación y uso compartido de paneles en Azure Portal](../azure-portal/azure-portal-dashboards.md).
 
 ## <a name="manage-resources"></a>Administración de recursos
-En la hoja de Hola para un recurso, verá opciones de Hola para administrar recursos de Hola. portal de Hello presenta opciones de administración para ese tipo de recurso determinado. Vea los comandos de administración de Hola a través de la parte superior de Hola de hoja de recursos de Hola y en el lado izquierdo de Hola.
+En la hoja de un recurso, verá las opciones para administrar el recurso. El portal presenta opciones de administración para ese tipo de recurso en particular. Verá los comandos de administración en la parte superior de la hoja de recursos y en el lado izquierdo.
 
 ![Administración de recursos](./media/resource-group-portal/manage-resources.png)
 
-En estas opciones, puede realizar operaciones como iniciar y detener una máquina virtual o volver a configurar las propiedades de Hola de máquina virtual de Hola.
+Desde estas opciones, puede realizar operaciones como iniciar y detener una máquina virtual o volver a configurar las propiedades de la máquina virtual.
 
 ## <a name="move-resources"></a>Traslado de recursos
-Si tiene otra suscripción o grupo de recursos de toomove recursos tooanother, consulte [Mover grupo de recursos de toonew de recursos o suscripción](resource-group-move-resources.md).
+Si necesita trasladar un recurso a otro grupo de recursos u otra suscripción, consulte [Traslado de los recursos a un nuevo grupo de recursos o a una nueva suscripción](resource-group-move-resources.md).
 
 ## <a name="lock-resources"></a>Bloqueo de recursos
-Se pueden bloquear una suscripción, el grupo de recursos o el recurso tooprevent otros usuarios de su organización accidentalmente eliminen o modifiquen los recursos críticos. Para obtener más información, consulte [Bloqueo de recursos con el Administrador de recursos de Azure](resource-group-lock-resources.md).
+Puede bloquear una suscripción, un grupo de recursos o un recurso para impedir que otros usuarios de su organización eliminen o modifiquen por error recursos esenciales. Para obtener más información, consulte [Bloqueo de recursos con el Administrador de recursos de Azure](resource-group-lock-resources.md).
 
 [!INCLUDE [resource-manager-lock-resources](../../includes/resource-manager-lock-resources.md)]
 
 ## <a name="view-your-subscription-and-costs"></a>Consulta de sus datos de suscripción y costos
-Puede ver información acerca de su suscripción y los costos de hello consolidadas para todos los recursos. Seleccione **suscripciones** y suscripción de Hola que desea toosee. Solo tendrá una tooselect de suscripción.
+Puede ver información acerca de la suscripción y los costos acumulados de todos los recursos. Seleccione **Suscripciones** y la suscripción que quiere ver. Es posible que solo tenga una suscripción para seleccionar.
 
 ![suscripción](./media/resource-group-portal/select-subscription.png)
 
-En la hoja de la suscripción de hello, verá una tasa de avance.
+En la hoja de suscripciones, verá una tasa de evolución.
 
 ![tasa de evolución](./media/resource-group-portal/burn-rate.png)
 
@@ -120,22 +120,22 @@ Y un desglose de costos por tipo de recurso.
 ![costo de recursos](./media/resource-group-portal/cost-by-resource.png)
 
 ## <a name="export-template"></a>Exportación de la plantilla
-Después de configurar el grupo de recursos, puede que desee plantilla de administrador de recursos de tooview Hola Hola para grupo de recursos. Exportar plantilla Hola ofrece dos ventajas:
+Después de configurar el grupo de recursos, quizás quiera ver la plantilla de Resource Manager para el grupo de recursos. Exportar la plantilla ofrece dos ventajas:
 
-1. Puede automatizar fácilmente las futuras implementaciones de soluciones de hello como plantilla de hello contiene toda la infraestructura de hello todos los.
-2. Familiarícese con la sintaxis de plantilla examinando Hola JavaScript Object Notation (JSON) que representa la solución.
+1. Puede automatizar fácilmente las futuras implementaciones de la solución porque la plantilla contiene la infraestructura completa.
+2. Para familiarizarse con la sintaxis de la plantilla, consulte la notación de objetos JavaScript (JSON) que representa la solución.
 
 Para obtener instrucciones detalladas, consulte [Exportación de plantillas de Azure Resource Manager desde recursos existentes](resource-manager-export-template.md).
 
 ## <a name="delete-resource-group-or-resources"></a>Eliminación de los recursos o grupos de recursos
-Eliminar un grupo de recursos, elimina todos los recursos de hello incluidos en él. También puede eliminar recursos individuales de un grupo de recursos. Desea tooexercise cuidado al eliminar un grupo de recursos porque podría haber recursos en otros grupos de recursos que están vinculado tooit. El Administrador de recursos no se eliminan los recursos vinculados, pero no pueden funcionar correctamente sin recursos Hola esperado.
+Al eliminar un grupo de recursos se eliminan todos los recursos contenidos en el mismo. También puede eliminar recursos individuales de un grupo de recursos. Debe prestar atención cuando elimine un grupo de recursos porque podría haber recursos vinculados a él en otros grupos de recursos. Resource Manager no elimina los recursos vinculados, pero podrían no funcionar correctamente sin los recursos esperados.
 
 ![eliminar grupo](./media/resource-group-portal/delete-group.png)
 
 ## <a name="next-steps"></a>Pasos siguientes
-* registros de actividad de tooview, consulte [auditoría de las operaciones con el Administrador de recursos](resource-group-audit.md).
-* tooview obtener información detallada acerca de una implementación, vea [ver las operaciones de implementación](resource-manager-deployment-operations.md).
-* toodeploy recursos a través del portal de hello, consulte [implementar los recursos con plantillas de administrador de recursos y el portal de Azure](resource-group-template-deploy-portal.md).
-* toomanage tooresources de acceso, consulte [usar recursos de suscripción de Azure de rol asignaciones toomanage acceso tooyour](../active-directory/role-based-access-control-configure.md).
-* Para obtener instrucciones sobre cómo las empresas pueden usar el Administrador de recursos tooeffectively administrar suscripciones, vea [scaffold Azure enterprise - regulador prescriptiva suscripción](resource-manager-subscription-governance.md).
+* Para ver los registros de auditoría, consulte el artículo sobre [operaciones de auditoría con Resource Manager](resource-group-audit.md).
+* Para ver detalles acerca de una implementación, consulte [View deployment operations](resource-manager-deployment-operations.md) (Ver operaciones de implementación).
+* Para implementar recursos mediante el Portal, consulte [Implementación de recursos con las plantillas de Resource Manager y el Portal de Azure](resource-group-template-deploy-portal.md).
+* Para administrar el acceso a los recursos, consulte [Uso de asignaciones de roles para administrar el acceso a los recursos de la suscripción de Azure](../active-directory/role-based-access-control-configure.md).
+* Para obtener instrucciones sobre cómo las empresas pueden utilizar Resource Manager para administrar eficazmente las suscripciones, vea [Scaffold empresarial de Azure: Gobierno de suscripción prescriptivo](resource-manager-subscription-governance.md).
 

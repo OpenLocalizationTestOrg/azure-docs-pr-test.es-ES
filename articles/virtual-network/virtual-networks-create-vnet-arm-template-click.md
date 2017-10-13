@@ -1,6 +1,6 @@
 ---
-title: aaaCreate una red virtual | Plantilla de administrador de recursos de Azure | Documentos de Microsoft
-description: "Obtenga información acerca de cómo toocreate a virtual de red usando una plantilla de Azure Resource Manager."
+title: "Creación de una red virtual mediante una plantilla de Azure Resource Manager | Microsoft Docs"
+description: Aprenda a crear una red virtual mediante una plantilla de Azure Resource Manager.
 services: virtual-network
 documentationcenter: 
 author: jimdial
@@ -16,19 +16,19 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b9c289433ff2a84bec19eac25fa28ab40d131c7d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 81602766848a91331c8d811ea1c8ec3ffae44b96
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-a-virtual-network-using-an-azure-resource-manager-template"></a>Creación de una red virtual mediante una plantilla de Azure Resource Manager
 
 [!INCLUDE [virtual-networks-create-vnet-intro](../../includes/virtual-networks-create-vnet-intro-include.md)]
 
-Azure cuenta con dos modelos de implementación: Azure Resource Manager y el clásico. Microsoft recomienda crear recursos a través del modelo de implementación del Administrador de recursos de Hola. Obtenga más información sobre toolearn Hola diferencias entre Hola dos modelos, leer hello [modelos de implementación de Azure comprender](../azure-resource-manager/resource-manager-deployment-model.md) artículo.
+Azure cuenta con dos modelos de implementación: Azure Resource Manager y el clásico. Microsoft recomienda crear recursos mediante el modelo de implementación de Resource Manager. Para más información acerca de las diferencias entre los dos modelos, lea el artículo [Understand Azure deployment models](../azure-resource-manager/resource-manager-deployment-model.md) (Descripción de los modelos de implementación de Azure).
  
-Este artículo explica cómo toocreate una red virtual a través de la implementación del Administrador de recursos de hello modelo usando una plantilla de Azure Resource Manager. También puede crear una red virtual mediante el Administrador de recursos con otras herramientas o crear una red virtual a través del modelo de implementación clásica de hello seleccionando una opción diferente de hello lista siguiente:
+En este artículo se describe cómo crear una red virtual con el modelo de implementación de Resource Manager mediante una plantilla de Azure Resource Manager. También puede crear una red virtual mediante Resource Manager con otras herramientas o crear una red virtual a través del modelo de implementación clásica seleccionando una opción diferente en la lista siguiente:
 
 > [!div class="op_single_selector"]
 - [Portal](virtual-networks-create-vnet-arm-pportal.md)
@@ -39,44 +39,44 @@ Este artículo explica cómo toocreate una red virtual a través de la implement
 - [PowerShell (clásico)](virtual-networks-create-vnet-classic-netcfg-ps.md)
 - [CLI (clásico)](virtual-networks-create-vnet-classic-cli.md)
 
-Obtendrá información sobre cómo toodownload y modificar y existente de la plantilla de ARM de GitHub e implementar plantilla Hola de hello CLI de Azure, PowerShell y GitHub.
+Aprenderá a descargar y modificar una plantilla de ARM existente desde GitHub, así como a implementar la plantilla de GitHub, PowerShell y la CLI de Azure.
 
-Si va a implementar simplemente plantilla de ARM de hello directamente desde GitHub, sin realizar ningún cambio, omitir demasiado[implementar una plantilla de github](#deploy-the-arm-template-by-using-click-to-deploy).
+Si simplemente va a implementar la plantilla de ARM directamente desde GitHub, sin realizar ningún cambio, vaya a [implementar una plantilla desde github](#deploy-the-arm-template-by-using-click-to-deploy).
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 
-## <a name="download-and-understand-hello-azure-resource-manager-template"></a>Descargar y comprender la plantilla de Azure Resource Manager Hola
-Puede descargar Hola plantilla existente para crear una red virtual y dos subredes desde GitHub, realice los cambios que podría desee y volver a usarla. toodo por lo tanto, complete Hola pasos:
+## <a name="download-and-understand-the-azure-resource-manager-template"></a>Descarga e información sobre la plantilla del Administrador de recursos de Azure
+Puede descargar la plantilla existente para crear una red virtual y dos subredes desde GitHub, realizar los cambios que desee y volver a utilizarla. Para hacerlo, complete los pasos siguientes:
 
-1. Navegue demasiado[página de plantilla de ejemplo de Hola](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets).
+1. Navegue a [la página de la plantilla de ejemplo](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets).
 2. Haga clic en **azuredeploy.json** y luego en **RAW**.
-3. Guardar Hola archivo tooa una carpeta local en el equipo.
-4. Si está familiarizado con las plantillas, omitir toostep 7.
-5. Abrir archivo hello que acaba de guardar y ver contenido de hello en **parámetros** en la línea 5. Los parámetros de plantilla ARM proporcionan un marcador de posición para los valores que se pueden rellenar durante la implementación.
+3. Guarde el archivo en un una carpeta local en su equipo.
+4. Si está familiarizado con las plantillas, salte al paso 7.
+5. Abra el archivo que acaba de guardar y vea el contenido de la línea 5 en **parameters** . Los parámetros de plantilla ARM proporcionan un marcador de posición para los valores que se pueden rellenar durante la implementación.
    
    | Parámetro | Descripción |
    | --- | --- |
-   | **ubicación** |Región de Azure donde se creará Hola red virtual |
-   | **vnetName** |Nombre de hello red virtual nueva |
-   | **addressPrefix** |Espacio de direcciones de Hola de red virtual, en formato CIDR |
-   | **subnet1Name** |Nombre de hello primera red virtual |
-   | **subnet1Prefix** |Bloque CIDR para la primera subred de Hola |
-   | **subnet2Name** |Nombre de hello segunda red virtual |
-   | **subnet2Prefix** |Bloque CIDR para la segunda subred de Hola |
+   | **ubicación** |Región de Azure donde se creará la red virtual |
+   | **vnetName** |Nombre de la red virtual nueva |
+   | **addressPrefix** |Espacio de direcciones de la red virtual, en formato CIDR |
+   | **subnet1Name** |Nombre de la primera red virtual |
+   | **subnet1Prefix** |Bloque CIDR de la primera subred |
+   | **subnet2Name** |Nombre de la segunda red virtual |
+   | **subnet2Prefix** |Bloque CIDR de la segunda subred |
    
    > [!IMPORTANT]
-   > Las plantillas del Administrador de recursos de Azure que se mantienen en GitHub pueden cambiar con el tiempo. Asegúrese de que ha activado plantilla Hola antes de usarlo.
+   > Las plantillas del Administrador de recursos de Azure que se mantienen en GitHub pueden cambiar con el tiempo. Asegúrese de comprobar la plantilla antes de usarla.
    > 
    > 
-6. Compruebe el contenido de hello en **recursos** y observe el siguiente hello:
+6. Compruebe el contenido en **resources** y observe lo siguiente:
    
-   * **type**. Tipo de recurso que se está creando plantilla Hola. En este caso, **Microsoft.Network/virtualNetworks**, que representan una red virtual.
-   * **nombre**. Nombre de recurso de Hola. Uso de Hola de aviso de **[parameters('vnetName')]**, que significa Hola will nombre proporcionado como entrada por usuario de Hola o un archivo de parámetros durante la implementación.
-   * **propiedades**. Lista de propiedades para el recurso de Hola. Esta plantilla utiliza propiedades de espacio y la subred de la dirección de Hola durante la creación de la red virtual.
-7. Navegue hacia atrás demasiado[página de plantilla de ejemplo de Hola](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets).
+   * **type**. Tipo de recurso que creó la plantilla. En este caso, **Microsoft.Network/virtualNetworks**, que representan una red virtual.
+   * **nombre**. Nombre del recurso. Observe el uso de **[parameters('vnetName')]**, lo que significa que será el usuario quien proporcione el nombre como entrada o como archivo de parámetros durante la implementación.
+   * **propiedades**. Lista de propiedades para el recurso. Esta plantilla usa las propiedades de espacio de direcciones y subred durante la creación de la red virtual.
+7. Vuelva a [la página de la plantilla de ejemplo](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets).
 8. Haga clic en **azuredeploy-paremeters.json** y luego en **RAW**.
-9. Guardar Hola archivo tooa una carpeta local en el equipo.
-10. Abra el archivo hello que acaba de guardar y modificar los valores de hello para los parámetros de Hola. Usar hello siguiendo los valores inferiores a toodeploy Hola descrito en hello escenario de red virtual:
+9. Guarde el archivo en un una carpeta local en su equipo.
+10. Abra el archivo que acaba de guardar y edite los valores de los parámetros. Utilice los siguientes valores para implementar la red virtual que se describe en este escenario:
 
     ```json
         {
@@ -104,21 +104,21 @@ Puede descargar Hola plantilla existente para crear una red virtual y dos subred
         }
     ```
 
-11. Guarde el archivo hello.
+11. Guarde el archivo .
 
 
-## <a name="deploy-hello-template-using-powershell"></a>Implementar la plantilla de hello mediante PowerShell
+## <a name="deploy-the-template-using-powershell"></a>Implementación de la plantilla mediante PowerShell
 
-Completar Hola sigue pasos toodeploy Hola template que descargan mediante PowerShell:
+Complete los siguientes pasos para implementar la plantilla que descargó con PowerShell:
 
-1. Instalar y configurar Azure PowerShell siguiendo los pasos de Hola Hola [cómo tooInstall y configurar Azure PowerShell](/powershell/azure/overview) artículo.
-2. Ejecute hello después comando toocreate un nuevo grupo de recursos:
+1. Instale y configure Azure PowerShell completando los pasos del artículo [Cómo instalar y configurar Azure PowerShell](/powershell/azure/overview).
+2. Ejecute el comando siguiente para crear un nuevo grupo de recursos:
 
     ```powershell
     New-AzureRmResourceGroup -Name TestRG -Location centralus
     ```
 
-    comando de Hello crea un grupo de recursos denominado *TestRG* en hello *Central US* región de azure. Para obtener más información sobre los grupos de recursos, visite [Información general del Administrador de recursos de Azure](../azure-resource-manager/resource-group-overview.md).
+    El comando crea un grupo de recursos denominado *TestRG* en la región *Centro de EE. UU.* de Azure. Para más información acerca de los grupos de recursos, visite [Información general de Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 
     Resultado esperado:
 
@@ -132,7 +132,7 @@ Completar Hola sigue pasos toodeploy Hola template que descargan mediante PowerS
                             *
         ResourceId        : /subscriptions/[Id]/resourceGroups/TestRG
 
-3. Ejecute hello siguiente comando toodeploy Hola nueva red virtual con hello de archivos de plantilla y los parámetros que descargó y modificado anteriormente:
+3. Ejecute el siguiente comando para implementar la nueva red virtual mediante la plantilla y los archivos de parámetros que descargó y modificó antes:
 
     ```powershell
     New-AzureRmResourceGroupDeployment -Name TestVNetDeployment -ResourceGroupName TestRG `
@@ -159,7 +159,7 @@ Completar Hola sigue pasos toodeploy Hola template que descargan mediante PowerS
                             subnet2Name      String                     BackEnd
    
         Outputs           :
-4. Siguiente ejecución Hola comando Propiedades de hello tooview de hello nueva red virtual:
+4. Ejecute el siguiente comando para ver las propiedades de la nueva red virtual:
 
     ```powershell
     Get-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
@@ -206,39 +206,39 @@ Completar Hola sigue pasos toodeploy Hola template que descargan mediante PowerS
                               }
                             ]
 
-## <a name="deploy-hello-template-using-click-to-deploy"></a>Implementar la plantilla de hello mediante haga clic en implementar
+## <a name="deploy-the-template-using-click-to-deploy"></a>Implementación de la plantilla por medio de un solo clic para implementar
 
-Puede volver a usar predefinido repositorio de GitHub tooa cargado de plantillas de Azure Resource Manager, mantenido por Microsoft y de la Comunidad de toohello abrir. Estas plantillas se pueden implementar sin desviarse para extraerla de GitHub, o descargaron y modificación toofit sus necesidades. toodeploy una plantilla que crea una red virtual con dos subredes, Hola completa pasos:
+Puede reutilizar plantillas de Azure Resource Manager predefinidas que se han cargado en un repositorio GitHub que mantiene Microsoft y está abierto a la comunidad. Estas plantillas pueden implementarse directamente desde GitHub o pueden descargarse y modificarse para ajustarlas a sus necesidades. Para implementar una plantilla que crea una red virtual con dos subredes, complete los siguientes pasos:
 
-1. Desde un explorador, navegue demasiado[https://github.com/Azure/azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates).
-2. Desplácese hacia abajo Hola lista de plantillas y haga clic en **101-red virtual dos subredes**. Comprobar hello **README.md** de archivos, tal y como se muestra a continuación.
+1. Desde un explorador, vaya a [https://github.com/Azure/azure-quickstart-templates](https://github.com/Azure/azure-quickstart-templates).
+2. Desplácese hacia abajo por la lista de plantillas y haga clic en **101-vnet-two-subnets**. Compruebe el archivo **README.md** , como se muestra a continuación.
 
     ![Archivo README.md en github](./media/virtual-networks-create-vnet-arm-template-click-include/figure1.png)
 
-3. Haga clic en **implementar tooAzure**. Si es necesario, escriba sus credenciales de inicio de sesión de Azure. 
-4. Hola **parámetros** hoja, escriba los valores de hello que desee toouse toocreate la red virtual nueva y, a continuación, haga clic en **Aceptar**. Hello en la ilustración siguiente se muestra los valores de hello para el escenario de hello:
+3. Haga clic en **Implementar en Azure**. Si es necesario, escriba sus credenciales de inicio de sesión de Azure. 
+4. En la hoja **Parámetros**, escriba los valores que desee utilizar para crear la red virtual nueva y, a continuación, haga clic en **Aceptar**. En la siguiente ilustración se muestran los valores para el escenario:
    
     ![Parámetros de plantilla ARM](./media/virtual-networks-create-vnet-arm-template-click-include/figure2.png)
 
-5. Haga clic en **grupo de recursos** y seleccione Hola red virtual a un tooadd de grupo de recursos, o haga clic en **crear nuevo** tooadd Hola red virtual tooa nuevo grupo de recursos. Hello en la ilustración siguiente se muestra hello recurso configuración de grupo para un grupo de recursos nuevo llamado **TestRG**:
+5. Haga clic en **Grupo de recursos** y seleccione un grupo de recursos al que va a agregar la red virtual, o haga clic en **Crear nuevo** para agregar la red virtual a un nuevo grupo de recursos. En la siguiente ilustración se muestra la configuración de grupo de recursos de uno nuevo denominado **TestRG**:
 
     ![Grupos de recursos](./media/virtual-networks-create-vnet-arm-template-click-include/figure3.png)
 
-6. Si es necesario, cambie hello **suscripción** y **ubicación** configuración de la red virtual.
-7. Si no desea toosee Hola red virtual como un icono en hello **panel de inicio**, deshabilitar **tooStartboard Pin**.
-8. Haga clic en **condiciones legales**, lea los términos de Hola y haga clic en **comprar** tooagree. 
-9. Haga clic en **crear** toocreate Hola red virtual.
+6. Si es necesario, cambie la configuración de la **Suscripción** y la **Ubicación** de la red virtual.
+7. Si no desea ver la red virtual como un icono en el **Panel de inicio**, deshabilite **Anclar a panel de inicio**.
+8. Haga clic en **Términos legales**, lea los términos y haga clic en **Comprar** para aceptar. 
+9. Haga clic en **Crear** para crear la red virtual.
    
     ![Enviar icono de implementación al portal de vista previa](./media/virtual-networks-create-vnet-arm-template-click-include/figure4.png)
 
-10. Una vez completada la implementación de hello, Hola portal de Azure haga clic en **más servicios**, tipo *redes virtuales* en el cuadro de filtro de Hola que aparece, haga clic en hoja de redes de Virtual de Virtual redes toosee Hola. En la hoja de hello, haga clic en *TestVNet*. Hola *TestVNet* hoja, haga clic en **subredes** subredes de hello crea toosee, como se muestra en hello después de imagen:
+10. Una vez finalizada la implementación, en Azure Portal, haga clic en **Más servicios**, escriba *redes virtuales* en el cuadro de filtro que aparece y haga clic en Redes virtuales para ver la hoja Redes virtuales. En la hoja, haga clic en *TestVNet*. En la hoja *TestVNet*, haga clic en **Subredes** para ver las subredes creadas, como se muestra en la siguiente imagen:
     
      ![Crear red virtual en el portal de vista previa](./media/virtual-networks-create-vnet-arm-template-click-include/figure5.png)
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Obtenga información acerca de cómo tooconnect:
+Aprenda a conectar:
 
-- Una red virtual de máquina virtual (VM) tooa por leer hello [crear una VM de Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md) o [crear una VM Linux](../virtual-machines/linux/quick-create-portal.md) artículos. En lugar de crear una red virtual y la subred en los pasos de Hola de artículos de hello, puede seleccionar una red virtual existente y la subred tooconnect una máquina virtual a.
-- Hola redes virtuales de red virtual tooother leyendo hello [conectar redes virtuales](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md) artículo.
-- Hola tooan de red virtual local de la red mediante una red privada virtual (VPN) de sitio a sitio o el circuito de ExpressRoute. Obtenga información acerca de cómo leyendo hello [conectar una red de red virtual tooan local mediante una VPN de sitio a sitio](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) y [vincular un circuito de ExpressRoute de red virtual tooan](../expressroute/expressroute-howto-linkvnet-arm.md) artículos.
+- Una máquina virtual (VM) a una red virtual, para lo cual debería leer los artículos [Creación de una máquina virtual Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md) o [Creación de una máquina virtual Linux](../virtual-machines/linux/quick-create-portal.md). En lugar de crear una red virtual y la subred en los pasos de los artículos, puede seleccionar una red virtual y una subred a la que conectar una máquina virtual.
+- La red virtual a otras redes virtuales. Para ello, lea el artículo [Conexión de redes virtuales](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md).
+- La red virtual a una red local mediante una red privada virtual (VPN) de sitio a sitio o un circuito ExpressRoute. Aprenda cómo hacerlo mediante los artículos [Connect a VNet to an on-premises network using a site-to-site VPN](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) (Conexión de una red virtual a una red local mediante una VPN de sitio a sitio) y [Vinculación de una red virtual a un circuito ExpressRoute](../expressroute/expressroute-howto-linkvnet-arm.md).

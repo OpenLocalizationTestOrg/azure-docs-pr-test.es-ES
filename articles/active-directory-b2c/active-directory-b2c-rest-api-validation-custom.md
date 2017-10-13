@@ -14,40 +14,40 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/24/2017
 ms.author: joroja
-ms.openlocfilehash: cec6c6e110514a8bbe0e0780f36738ff21ae2f00
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: eb44a0d2234c9ee3801d8b3a1655d877aa2f4fef
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Tutorial: Integración de intercambios de notificaciones de API de REST en el recorrido del usuario de Azure AD B2C como validación en entradas de usuario
 
-Hola Framework de experiencia de identidad (IEF) que subyace a Azure Active Directory B2C (Azure AD B2C) permite Hola identidad developer toointegrate una interacción con la API de REST en un viaje de usuario.  
+El marco de experiencia de identidad (IEF) subyacente a Azure Active Directory B2C (Azure AD B2C) permite al desarrollador de identidades integrar una interacción con una API de RESTful en un recorrido del usuario.  
 
-Al final de Hola de este tutorial, será capaz de toocreate un viaje de usuario de Azure AD B2C que interactúa con los servicios RESTful.
+Al final de este tutorial podrá crear un recorrido del usuario de Azure AD B2C que interactúe con servicios RESTful.
 
-Hola IEF envía datos en las notificaciones y recibe los datos en las notificaciones. interacción de Hello con hello API:
+El IEF envía datos en notificaciones y recibe los datos en notificaciones. La interacción con la API:
 
 - Se puede diseñar como un intercambio de notificaciones de API de REST, a modo de un perfil de validación, que tiene lugar dentro de un paso de orquestación.
-- Normalmente valida la entrada de usuario de Hola. Si se rechaza el valor de Hola de usuario de hello, usuario Hola puede intentar volver a tooenter un valor válido con hello oportunidad tooreturn un mensaje de error.
+- Normalmente valida la entrada del usuario. Si se rechaza el valor del usuario, el usuario puede intentar escribir de nuevo un valor válido con la posibilidad de que reciba un mensaje de error.
 
-También puede diseñar interacción Hola como un paso de la orquestación. Para obtener más información, vea [Tutorial: Integración de intercambios de notificaciones de API de REST en los recorridos de usuario de Azure AD B2C como un paso de orquestación](active-directory-b2c-rest-api-step-custom.md).
+La interacción también se puede diseñar como un paso de orquestación. Para obtener más información, vea [Tutorial: Integración de intercambios de notificaciones de API de REST en los recorridos de usuario de Azure AD B2C como un paso de orquestación](active-directory-b2c-rest-api-step-custom.md).
 
-Por ejemplo de perfil de validación de hello, usaremos viaje de usuario de edición de perfil de hello en archivo de módulo de inicio de hello ProfileEdit.xml.
+En el ejemplo de perfil de validación, usaremos el recorrido de usuario de edición de perfil del archivo del paquete de inicio ProfileEdit.xml.
 
-Podemos comprobar ese nombre hello proporcionado por usuario de hello en el perfil de hello edición no forma parte de una lista de exclusión.
+Podemos comprobar que el nombre proporcionado por el usuario en la edición del perfil no es parte de una lista de exclusión.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-- Un toocomplete de Azure AD B2C inquilino configura una cuenta local de sesión-up/inicio de sesión de, como se describe en [Introducción](active-directory-b2c-get-started-custom.md).
-- Un punto de conexión de API de REST toointeract con. En este tutorial, hemos configurado un sitio de demostración denominado [WingTipGames](https://wingtipgamesb2c.azurewebsites.net/) con un servicio de API de REST.
+- Configuración de un inquilino de Azure AD B2C para completar el registro o inicio de sesión de una cuenta local como se describe en [Introducción](active-directory-b2c-get-started-custom.md).
+- Un punto de conexión de API de REST con el que interactuar. En este tutorial, hemos configurado un sitio de demostración denominado [WingTipGames](https://wingtipgamesb2c.azurewebsites.net/) con un servicio de API de REST.
 
-## <a name="step-1-prepare-hello-rest-api-function"></a>Paso 1: Preparar la función de la API de REST de Hola
+## <a name="step-1-prepare-the-rest-api-function"></a>Paso 1: Preparación de la función de API de REST
 
 > [!NOTE]
-> El programa de instalación de funciones de la API de REST está fuera de ámbito de Hola de este artículo. [Las funciones de Azure](https://docs.microsoft.com/azure/azure-functions/functions-reference) proporciona un Kit de herramientas de excelente toocreate servicios RESTful en nube Hola.
+> La configuración de funciones de la API de REST está fuera del ámbito de este artículo. [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-reference) proporciona un excelente conjunto de herramientas para crear servicios de RESTful en la nube.
 
-Hemos creado una función de Azure que recibe una notificación que espera como `playerTag`. función Hello valida si existe esta notificación. Puede tener acceso a código de la función de Azure completo de hello en [GitHub](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples).
+Hemos creado una función de Azure que recibe una notificación que espera como `playerTag`. La función valida si existe esta notificación. Puede acceder al código completo de la función de Azure en [GitHub](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/AzureFunctionsSamples).
 
 ```csharp
 if (requestContentAsJObject.playerTag == null)
@@ -65,7 +65,7 @@ if (playerTag == "mcvinny" || playerTag == "msgates123" || playerTag == "revcott
     {
       version = "1.0.0",
       status = (int) HttpStatusCode.Conflict,
-      userMessage = $"hello player tag '{requestContentAsJObject.playerTag}' is already used."
+      userMessage = $"The player tag '{requestContentAsJObject.playerTag}' is already used."
     },
     new JsonMediaTypeFormatter(),
     "application/json");
@@ -74,14 +74,14 @@ if (playerTag == "mcvinny" || playerTag == "msgates123" || playerTag == "revcott
 return request.CreateResponse(HttpStatusCode.OK);
 ```
 
-Hola IEF espera hello `userMessage` devuelve esa función Azure Hola de notificación. Esta notificación se presentará como un usuario de toohello cadena si falla la validación de hello, por ejemplo, cuando se devuelve un estado de 409 Conflicto en el anterior ejemplo de Hola.
+El IEF espera la notificación `userMessage` que devuelve la función de Azure. Esta notificación se le presentará al usuario como una cadena si se produce un error en la validación, por ejemplo, si se devuelve un estado de conflicto 409 en el ejemplo anterior.
 
-## <a name="step-2-configure-hello-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworkextensionsxml-file"></a>Paso 2: Configurar exchange de notificaciones de API de REST de Hola como un perfil técnico en el archivo TrustFrameworkExtensions.xml
+## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworkextensionsxml-file"></a>Paso 2: Configuración del intercambio de notificaciones de API de RESTful como perfil técnico en el archivo TrustFrameworkExtensions.xml
 
-Un perfil técnico es la configuración completa de Hola de exchange Hola deseado con hello servicio RESTful. Abra el archivo de TrustFrameworkExtensions.xml hello y agregue Hola siguiente fragmento XML dentro de hello `<ClaimsProviders>` elemento.
+Un perfil técnico es la configuración completa del intercambio deseado con el servicio RESTful. Abra el archivo TrustFrameworkExtensions.xml y agregue el siguiente fragmento de código XML dentro del elemento `<ClaimsProviders>`.
 
 > [!NOTE]
-> Hola continuación de XML, proveedor RESTful `Version=1.0.0.0` se describe como protocolo de Hola. Considérelo como función hello que interactúa con el servicio externo de Hola. <!-- TODO: A full definition of hello schema can be found...link tooRESTful Provider schema definition>-->
+> En el siguiente código XML, el proveedor de RESTful `Version=1.0.0.0` se describe como el protocolo. Considérelo como la función que interactuará con el servicio externo. <!-- TODO: A full definition of the schema can be found...link to RESTful Provider schema definition>-->
 
 ```xml
 <ClaimsProvider>
@@ -109,26 +109,26 @@ Un perfil técnico es la configuración completa de Hola de exchange Hola desead
 </ClaimsProvider>
 ```
 
-Hola `InputClaims` elemento define notificaciones de Hola que se enviarán desde Hola servicio REST de IEF toohello. En este ejemplo, Hola contenido de notificación de hello `givenName` se enviará al servicio REST de toohello como `playerTag`. En este ejemplo, hello que IEF no espera notificaciones de nuevo. En su lugar, se espera una respuesta de servicio REST de Hola y actúa en función de los códigos de estado de Hola que recibe.
+El elemento `InputClaims` define las notificaciones que se enviarán desde el IEF al servicio REST. En este ejemplo, el contenido de la notificación `givenName` se enviará al servicio REST como `playerTag`. En este ejemplo, el IEF no espera que se devuelvan notificaciones. En su lugar, espera una respuesta del servicio REST y actúa en función de los códigos de estado recibidos.
 
-## <a name="step-3-include-hello-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-toovalidate-hello-user-input"></a>Paso 3: Incluir el intercambio de notificaciones del servicio RESTful de hello en autoafirmadas perfil técnica donde desea toovalidate Hola proporcionados por el usuario
+## <a name="step-3-include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-to-validate-the-user-input"></a>Paso 3: Inclusión del intercambio de notificaciones del servicio RESTful en un perfil técnico autoafirmado donde quiere validar la entrada del usuario
 
-Hola uso más común del paso de validación de Hola está en la interacción de Hola a un usuario. Todas las interacciones donde usuario hello es tooprovide esperado de entrada están *impone automáticamente perfiles técnicos*. En este ejemplo, agregaremos perfil de autoservicio Asserted ProfileUpdate de toohello de validación de hello técnica. Hola perfil técnica que Hola archivo de directiva de confianza (RP) de la entidad `Profile Edit` usa.
+El uso más común del paso de validación es en la interacción con un usuario. Todas las interacciones en las que se espera que el usuario proporcione una entrada son *perfiles técnicos autoafirmados*. En este ejemplo, agregaremos esta validación al perfil técnico Self-Asserted-ProfileUpdate. Se trata del perfil técnico que usa el archivo de directiva de usuario de confianza (RP) `Profile Edit`.
 
-tooadd Hola notificaciones exchange toohello impuesto automáticamente perfil técnico:
+Para agregar el intercambio de notificaciones al perfil técnico autoafirmado:
 
-1. Abra el archivo TrustFrameworkBase.xml de Hola y busque `<TechnicalProfile Id="SelfAsserted-ProfileUpdate">`.
-2. Revise la configuración de Hola de este perfil técnica. Observe cómo exchange Hola con usuario Hola se define como las notificaciones que se le pide del usuario de hello (notificaciones de entrada) y que se espera de proveedor de hello autoafirmadas (notificaciones de salida).
+1. Abra el archivo TrustFrameworkBase.xml y busque `<TechnicalProfile Id="SelfAsserted-ProfileUpdate">`.
+2. Revise la configuración de este perfil técnico. Observe cómo el intercambio con el usuario se define como notificaciones que se pedirán al usuario (notificaciones de entrada) y notificaciones que se espera que devuelva el proveedor autoafirmado (notificaciones de salida).
 3. Busque `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`; observe que este perfil se invoca como el paso de orquestación n.º 6 de `<UserJourney Id="ProfileEdit">`.
 
-## <a name="step-4-upload-and-test-hello-profile-edit-rp-policy-file"></a>Paso 4: Cargar y probar el archivo de directiva de hello perfil editar RP
+## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>Paso 4: Carga y prueba del archivo de directiva RP de edición de perfil
 
-1. Cargue Hola nueva versión del archivo de TrustFrameworkExtensions.xml Hola.
-2. Use **ejecutar ahora** perfil de hello tootest editar el archivo de directiva RP.
-3. Probar la validación de hello proporcionando uno de los nombres existentes hello (por ejemplo, mcvinny) en hello **nombre dado** campo. Si todo está configurado correctamente, debería recibir un mensaje que notifica al usuario de Hola que etiqueta de hello Reproductor ya está en uso.
+1. Cargue la nueva versión del archivo TrustFrameworkExtensions.xml.
+2. Use **Ejecutar ahora** para probar el archivo de directiva RP de edición de perfil.
+3. Para probar la validación, proporcione uno de los nombres existentes (por ejemplo: mcvinny) en el campo **Nombre propio**. Si todo está configurado correctamente, debería recibir un mensaje que informa al usuario de que la etiqueta player ya está en uso.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-[Modificar Hola perfil Editar usuario toogather adicional información de registro y de los usuarios](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
+[Modificación de la edición de perfil y el registro de usuario para recopilar información adicional de sus usuarios](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 
 [Tutorial: Integración de intercambios de notificaciones de API de REST en los recorridos de usuario de Azure AD B2C como un paso de orquestación](active-directory-b2c-rest-api-step-custom.md)

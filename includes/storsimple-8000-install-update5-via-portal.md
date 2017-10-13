@@ -1,44 +1,44 @@
 <!--author=alkohli last changed: 08/04/17-->
 
-#### <a name="tooinstall-an-update-from-hello-azure-portal"></a>tooinstall una actualización de hello portal de Azure
+#### <a name="to-install-an-update-from-the-azure-portal"></a>Instalar una actualización desde el Portal de Azure
 
-1. En la página de servicio de StorSimple de hello, seleccione el dispositivo.
+1. En la página de servicio de StorSimple, seleccione el dispositivo.
 
     ![Selección del dispositivo](./media/storsimple-8000-install-update5-via-portal/update1.png)
 
-2. Navegue demasiado**configuración de dispositivo** > **actualizaciones del dispositivo**.
+2. Vaya a **Configuración del dispositivo** > **Actualizaciones del dispositivo**.
 
     ![Haga clic en Actualizaciones del dispositivo.](./media/storsimple-8000-install-update5-via-portal/update2.png)
 
-2. Aparecerá una notificación si hay nuevas actualizaciones disponibles. O bien, en hello **actualizaciones del dispositivo** hoja, haga clic en **examinar actualizaciones**. Se crea un trabajo tooscan si hay actualizaciones disponibles. Se le notifica cuando se completa correctamente el trabajo de Hola.
+2. Aparecerá una notificación si hay nuevas actualizaciones disponibles. O bien, en la hoja **Actualizaciones del dispositivo**, haga clic en **Buscar actualizaciones**. Se crea un trabajo para buscar las actualizaciones disponibles. Se le notificará cuando el trabajo se complete correctamente.
 
     ![Haga clic en Actualizaciones del dispositivo.](./media/storsimple-8000-install-update5-via-portal/update3.png)
 
-3. Se recomienda que revise notas de la versión de Hola antes de aplicar una actualización en el dispositivo. tooapply actualizaciones, haga clic en **instalar actualizaciones**. Hola **confirmar las actualizaciones normales** hoja, los requisitos previos de revisión hello toocomplete antes de aplicar las actualizaciones. Seleccione hello tooindicate de casilla de verificación que sean tooupdate listo Hola dispositivo y, a continuación, haga clic en **instalar**.
+3. Se recomienda revisar las notas de la versión antes de aplicar una actualización en el dispositivo. Para aplicar las actualizaciones, haga clic en **Instalar actualizaciones**. En la hoja **Confirmar actualizaciones normales**, revise los requisitos previos que debe completar antes de aplicar las actualizaciones. Seleccione la casilla para indicar que está listo para actualizar el dispositivo y, a continuación, haga clic en **Instalar**.
 
     ![Haga clic en Actualizaciones del dispositivo.](./media/storsimple-8000-install-update5-via-portal/update4.png)
 
 6. Ahora se inicia un conjunto de comprobaciones previas. Estas comprobaciones incluyen:
    
-   * **Comprobaciones de estado del controlador** tooverify que ambos Hola controladores de dispositivo están activados y en línea.
-   * **Comprobaciones de estado del componente de hardware** tooverify que Hola a todos los componentes de hardware en el dispositivo StorSimple sean correctos.
-   * **DATA 0 comprueba** tooverify que DATA 0 está habilitado en el dispositivo. Si la interfaz no está habilitada, tendrá que habilitarla y, después, volver a intentarlo.
+   * **Comprobaciones del estado del controlador** para comprobar que los controladores del dispositivo están en buen estado y en línea.
+   * **Comprobaciones de mantenimiento de componentes de hardware** para comprobar que todos los componentes de hardware del dispositivo StorSimple están en buen estado.
+   * **Comprobaciones de DATA 0** para comprobar DATA 0 está habilitado en el dispositivo. Si la interfaz no está habilitada, tendrá que habilitarla y, después, volver a intentarlo.
 
-    actualización de Hola se descarga e instala sólo si todas las comprobaciones de Hola se completan correctamente. Se le notificará cuando Hola comprobaciones están en curso. Si se producen errores hello prechecks, a continuación, le proporcionará motivos hello para el error. Solucionar los problemas y, a continuación, vuelva a intentar la operación de Hola. Si no se puede resolver estos problemas por sí mismo, puede que tenga toocontact Microsoft Support.
+    La actualización se descargará e instalará solo si todas las comprobaciones se completan correctamente. Recibirá una notificación cuando las comprobaciones están en curso. Si se produce un error en la comprobación previa, se le indicarán las causas del error. Resuelva estos problemas e intente realizar de nuevo la operación. Puede que necesite ponerse en contacto con el soporte técnico de Microsoft si no puede resolver estos problemas por sí mismo.
 
-7. Después de hello prechecks se haya completado correctamente, se crea un trabajo de actualización. Se le notificará cuando el trabajo de actualización de Hola se creó correctamente.
+7. Una vez realizadas correctamente las comprobaciones previas, se crea un trabajo de actualización. Recibirá una notificación cuando el trabajo de actualización esté correctamente creado.
    
     ![Creación del trabajo de actualización](./media/storsimple-8000-install-update5-via-portal/update6.png)
    
-    a continuación, se aplica la actualización de Hello en el dispositivo.
+    La actualización se aplica en el dispositivo.
 
-9. Hola actualización puede tardar unos toocomplete horas. Seleccione el trabajo de actualización de Hola y haga clic en **detalles** detalles de hello tooview de trabajo de Hola en cualquier momento.
+9. La actualización tarda unas horas en completarse. Seleccione el trabajo de actualización y haga clic en **Detalles** para ver los detalles del trabajo en cualquier momento.
 
     ![Creación del trabajo de actualización](./media/storsimple-8000-install-update5-via-portal/update8.png)
 
-     También puede supervisar el progreso de Hola de trabajo de actualización de Hola de **configuración del dispositivo > trabajos**. En hello **trabajos** hoja, puede ver Hola progreso de la actualización.
+     También puede supervisar el progreso del trabajo de actualización desde **Configuración del dispositivo > Trabajos**. En la hoja **Trabajos**, puede ver el progreso de la actualización.
 
      ![Creación del trabajo de actualización](./media/storsimple-8000-install-update5-via-portal/update7.png)
 
-10. Una vez completado el trabajo de hello, navegue toohello **configuración del dispositivo > actualizaciones del dispositivo**. Esto se actualizará la versión de software de Hola.
+10. Una vez completado el trabajo, vaya a **Configuración del dispositivo > Actualizaciones del dispositivo**. La versión del software ya debería estar actualizada.
 

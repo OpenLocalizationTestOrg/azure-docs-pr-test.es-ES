@@ -1,5 +1,5 @@
 ---
-title: aaaOverview de configuraciones de alta disponibilidad con puertas de enlace de VPN de Azure | Documentos de Microsoft
+title: "Introducción a las configuraciones de alta disponibilidad con instancias de Azure VPN Gateway | Microsoft Docs"
 description: "En este artículo se proporciona información general sobre las opciones de configuración de alta disponibilidad mediante instancias de Azure VPN Gateway."
 services: vpn-gateway
 documentationcenter: na
@@ -15,72 +15,72 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2016
 ms.author: yushwang
-ms.openlocfilehash: 316293b9ac79645bf9bb9e89fbc4aa8f3eacd209
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3708a2f7c445a161f02416cf8427b1707e1db8f0
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>Conectividad de alta disponibilidad entre locales y de red virtual a red virtual
 En este artículo se proporciona información general sobre las opciones de configuración de alta disponibilidad para la conectividad entre locales y de red virtual a red virtual con instancias de Azure VPN Gateway.
 
 ## <a name = "activestandby"></a>Acerca de la redundancia de Azure VPN Gateway
-Cada instancia de Azure VPN Gateway consta de dos instancias en una configuración activa-en espera. Para cualquier mantenimiento planeado o no planeada interrupción que se produce instancias activas de toohello, instancia de hello en espera se ocupe automáticamente (conmutación por error) y reanudar Hola VPN S2S o las conexiones de red virtual a red virtual. cambiar Hola producirá una breve interrupción. Para el mantenimiento planeado, se debe restaurar la conectividad de hello dentro de 10 segundos de too15. Para problemas no planeados, recuperar la conexión Hola será mayor, sobre too1 minuto 1 y una mitad minutos en el peor de los casos Hola. Para P2S cliente conexiones toohello puerta de enlace VPN, se desconectará las conexiones de P2S de Hola y Hola usuarios necesitan tooreconnect desde equipos de cliente de Hola.
+Cada instancia de Azure VPN Gateway consta de dos instancias en una configuración activa-en espera. Con cualquier mantenimiento planeado o interrupción imprevista que suceda en la instancia activa, la instancia en modo de espera se hace cargo automáticamente (conmutación por error) y reanuda las conexiones de VPN S2S o de red virtual a red virtual. El cambio causará una breve interrupción. Para el mantenimiento planeado, la conectividad se debería restaurar en un plazo de 10 a 15 segundos. Para problemas no planeados, la recuperación de la conexión llevará más tiempo, aproximadamente entre un minuto a uno y medio, en el peor de los casos. Para las conexiones de cliente VPN P2S a la puerta de enlace, se desconectarán las conexiones P2S y los usuarios deberán volver a conectarse desde los equipos cliente.
 
 ![Activa-en espera](./media/vpn-gateway-highlyavailable/active-standby.png)
 
 ## <a name="highly-available-cross-premises-connectivity"></a>Conectividad entre entornos locales de alta disponibilidad
-tooprovide mejor disponibilidad para su entre locales las conexiones, hay un par de opciones disponibles:
+Para proporcionar mejor disponibilidad para las conexiones entre locales, hay un par de opciones disponibles:
 
 * Varios dispositivos VPN locales
 * Azure VPN Gateway activa-activa
 * Combinación de ambos
 
 ### <a name = "activeactiveonprem"></a>Varios dispositivos VPN locales
-Puede usar varios dispositivos VPN de su local red tooconnect tooyour puerta de enlace VPN, como se muestra en hello siguiente diagrama:
+Puede usar varios dispositivos VPN desde la red local para conectarse a su instancia de Azure VPN Gateway, como se muestra en el diagrama siguiente:
 
 ![Varias VPN locales](./media/vpn-gateway-highlyavailable/multiple-onprem-vpns.png)
 
-Esta configuración proporciona varios túneles activos de hello mismos VPN de Azure puerta de enlace tooyour local dispositivos Hola misma ubicación. Existen algunos requisitos y restricciones:
+Esta configuración proporciona varios túneles activos desde la propia instancia de Azure VPN Gateway hacia los dispositivos locales en la misma ubicación. Existen algunos requisitos y restricciones:
 
-1. Debe toocreate varias conexiones VPN de S2S de su tooAzure de dispositivos VPN. Cuando se conectan a varios dispositivos VPN de hello mismo de red local tooAzure, deberá toocreate la puerta de enlace de red local uno para cada dispositivo VPN y una conexión de la puerta de enlace de red local del toohello de puerta de enlace VPN de Azure.
-2. puertas de enlace de red local de Hello correspondiente tooyour los dispositivos VPN deben tener direcciones IP públicas únicas Hola propiedad "GatewayIpAddress".
-3. Se necesita BGP para esta configuración. Cada puerta de enlace de red local que representa un dispositivo VPN debe tener una dirección IP del elemento del mismo nivel BGP única especificada en la propiedad de "BgpPeerIpAddress" Hola.
-4. campo de propiedad de Hello AddressPrefix en cada puerta de enlace de red local no debe solaparse. Debe especificar "BgpPeerIpAddress" hello en /32 formato CIDR en el campo de AddressPrefix hello, por ejemplo, 10.200.200.254/32.
-5. Debe utilizar BGP tooadvertise Hola mismos prefijos de hello mismo de red local puerta de enlace de VPN de Azure de tooyour de prefijos y tráfico de Hola se reenviarán a través de estos túneles simultáneamente.
-6. Cada conexión se cuenta para el número máximo de Hola de túneles para la puerta de enlace de VPN de Azure, 10 para Basic y SKU estándar y 30 para HighPerformance SKU. 
+1. Debe crear varias conexiones de VPN S2S desde los dispositivos VPN a Azure. Cuando conecta varios dispositivos VPN desde la misma red local a Azure, necesita crear una puerta de enlace de red local para cada dispositivo VPN y una conexión desde su instancia de Azure VPN Gateway a la puerta de enlace de red local.
+2. Las puertas de enlace de red locales correspondientes a sus dispositivos VPN deben tener direcciones IP públicas únicas en la propiedad "GatewayIpAddress".
+3. Se necesita BGP para esta configuración. Cada puerta de enlace de red local que representa un dispositivo VPN debe tener una dirección IP de par BGP única especificada en la propiedad "BgpPeerIpAddress".
+4. Los campos de la propiedad AddressPrefix en cada puerta de enlace de red local no deben superponerse. Debe especificar la propiedad "BgpPeerIpAddress" en formato CIDR /32 en el campo AddressPrefix, por ejemplo, 10.200.200.254/32.
+5. Debería usar BGP para anunciar los mismos prefijos que los de la red local a su instancia de Azure VPN Gateway y el tráfico se reenviará a través de estos túneles simultáneamente.
+6. Cada conexión cuenta para el número máximo de túneles para su instancia de Azure VPN Gateway, 10 para las SKU Básica y Estándar, y 30 para la SKU HighPerformance. 
 
-En esta configuración, puerta de enlace de VPN de Azure de Hola aún está en modo de espera activa, Hola así mismo comportamiento de conmutación por error y breve interrupción todavía se realizará como se describe [anteriormente](#activestandby). Sin embargo, esta configuración protege contra errores o interrupciones en la red local y los dispositivos VPN.
+En esta configuración, Azure VPN Gateway sigue en modo activo-en espera, por lo que se producirán el mismo comportamiento de conmutación por error y una breve interrupción, como se ha descrito [antes](#activestandby). Sin embargo, esta configuración protege contra errores o interrupciones en la red local y los dispositivos VPN.
 
 ### <a name="active-active-azure-vpn-gateway"></a>Azure VPN Gateway activa-activa
-Ahora puede crear una puerta de enlace de VPN de Azure en una configuración activo / activo, donde ambas instancias de puerta de enlace de hello de que las máquinas virtuales, se establecerán que VPN S2S túnel de dispositivo VPN de tooyour local, como se muestra hello después crear un diagrama de:
+Ahora puede crear una instancia de Azure VPN Gateway en una configuración activa-activa, donde ambas instancias de las máquinas virtuales de la puerta de enlace establecerán túneles VPN S2S al dispositivo VPN local, como se muestra en el diagrama siguiente:
 
 ![Activo-activo](./media/vpn-gateway-highlyavailable/active-active.png)
 
-En esta configuración, cada instancia de puerta de enlace de Azure tendrá una dirección IP pública única y cada una, establecerá un dispositivo VPN IPsec/IKE S2S VPN túnel tooyour local especificado en la puerta de enlace de red local y la conexión. Tenga en cuenta que ambos túneles VPN son realmente parte del programa Hola misma conexión. Todavía se necesita tooconfigure su tooaccept de dispositivo VPN local o establecer dos VPN S2S túneles toothose dos VPN de Azure puerta de enlace las direcciones IP públicas.
+En esta configuración, cada instancia de puerta de enlace de Azure tendrá una dirección IP pública única y cada una establecerá un túnel VPN S2S IPsec/IKE al dispositivo VPN local especificado en la conexión y la puerta de enlace de red local. Tenga en cuenta que los túneles VPN son realmente parte de la misma conexión. Todavía necesitará configurar el dispositivo VPN local para que acepte o establezca dos túneles VPN S2S a esas dos direcciones IP públicas de la instancia de Azure VPN Gateway.
 
-Porque no hay instancia de Azure de la puerta de enlace de hello en configuración activo / activo, tráfico de Hola desde la red virtual de Azure tooyour local red se enrutará a través de los túneles al mismo tiempo, incluso si el dispositivo VPN local puede favorecer un túnel de sobre Hola otro. Tenga en cuenta si Hola atravesará siempre el mismo flujo TCP o UDP Hola mismo túnel o ruta de acceso, a menos que se produce un evento de mantenimiento en una de las instancias de Hola.
+Dado que las instancias de puerta de enlace de Azure están en una configuración activa-activa, el tráfico desde su instancia de Azure Virtual Network hasta su red local se enrutará a través de ambos túneles simultáneamente, aunque el dispositivo VPN local pueda favorecer un túnel sobre el otro. Aun así, tenga en cuenta que el mismo flujo TCP o UDP atravesará siempre el mismo túnel o ruta, a menos que se produzca un evento de mantenimiento en una de las instancias.
 
-Cuando un mantenimiento planificado o evento no planeado ocurre la instancia de puerta de enlace de tooone, túnel de IPsec de Hola desde esa instancia tooyour local se desconectará el dispositivo VPN. Hello las rutas correspondientes en los dispositivos VPN deben quitarse o retiradas automáticamente para que se cambiará el tráfico de hello sobre toohello otro túnel de IPsec activa. En hello parte de Azure, cambiar Hola realizará automáticamente de instancias activas de hello afectado instancia toohello.
+Cuando se produce un mantenimiento planeado o un evento imprevisto en una instancia de puerta de enlace, se desconectará el túnel IPsec desde esa instancia hacia el dispositivo VPN local. Las rutas correspondientes en los dispositivos VPN se deben eliminar o retirar automáticamente para que el tráfico cambie al otro túnel IPsec activo. En el lado de Azure, el cambio se realizará automáticamente de la instancia afectada a la activa.
 
 ### <a name="dual-redundancy-active-active-vpn-gateways-for-both-azure-and-on-premises-networks"></a>Redundancia doble: puertas de enlace de VPN activas-activas para redes locales y Azure
-opción más fiable de Hello es puertas de enlace de toocombine Hola activo / activo en su red y en Azure, como se muestra en el siguiente diagrama de Hola.
+La opción más confiable es combinar las puertas de enlace activas-activas tanto en su red como en Azure, como se muestra en el diagrama siguiente.
 
 ![Redundancia doble](./media/vpn-gateway-highlyavailable/dual-redundancy.png)
 
-Aquí crear y configurar la puerta de enlace de VPN de Azure de hello en una configuración activo / activo y crear dos puertas de enlace de red local y dos conexiones para los dos VPN dispositivos locales como se describió anteriormente. resultado de Hello es una conectividad de malla completa de 4 túneles IPsec entre la red virtual de Azure y la red local.
+Aquí se crea y configura la instancia de Azure VPN Gateway con una configuración activa-activa, y se crean dos puertas de enlace de red locales y dos conexiones para los dos dispositivos VPN locales como se describió antes. El resultado es una conectividad de malla completa con 4 túneles IPsec entre su instancia de Azure Virtual Network y la red local.
 
-Todas las puertas de enlace y túneles estén activos Hola parte de Azure, por lo que será el tráfico de hello repartidos en todos los 4 túneles al mismo tiempo, aunque cada TCP o UDP flujo tendrá nuevo seguimiento Hola mismo túnel Hola de ruta de acceso de parte de Azure. Aunque al distribuir el tráfico de hello, verá ligeramente mejor rendimiento a través de túneles de IPsec de hello, objetivo principal de Hola de esta configuración es de alta disponibilidad. Y debido toohello naturaleza estadística de propagación de hello, resulta difícil tooprovide medida de hello en el tráfico de aplicación diferentes condiciones afectará al rendimiento agregado de Hola.
+Todas las puertas de enlace y los túneles están activos desde el lado de Azure, por lo que el tráfico se reparte entre los 4 túneles simultáneamente, aunque cada flujo TCP o UDP seguirá de nuevo el mismo túnel o ruta desde el lado de Azure. Aunque al repartir el tráfico podría notar un rendimiento algo mejor en los túneles IPsec, el objetivo principal de esta configuración es la alta disponibilidad. Además, dada la naturaleza estadística de este método, es difícil proporcionar la medida en que las diferentes situaciones de tráfico de aplicaciones afectarán al rendimiento agregado.
 
-Esta topología requiere dos puertas de enlace de red local y par de hello toosupport de dos conexiones de los dispositivos VPN locales y BGP es necesario tooallow Hola dos conexiones toohello misma red local. Estos requisitos son Hola igual como hello [anteriormente](#activeactiveonprem). 
+Esta topología requerirá dos puertas de enlace de red locales y dos conexiones para admitir el par de dispositivos VPN locales; también se necesita BGP para permitir las dos conexiones a la misma red local. Estos requisitos son iguales que los [anteriores](#activeactiveonprem). 
 
 ## <a name="highly-available-vnet-to-vnet-connectivity-through-azure-vpn-gateways"></a>Conectividad de alta disponibilidad de red virtual a red virtual a través de instancias de Azure VPN Gateway
-Hello misma configuración activo / activo también puede aplicar las conexiones de red virtual a red virtual tooAzure. Puede crear puertas de enlace VPN de activo / activo para ambas redes virtuales y conectarlos hello tooform juntos mismo completa de la malla conectividad de 4 túneles entre Hola dos redes virtuales, como se muestra en hello diagrama a continuación:
+También se puede aplicar la misma configuración activa-activa a las conexiones de red virtual a red virtual de Azure. Puede crear instancias de Azure VPN Gateway activa-activa para ambas redes virtuales y conectarlas entre sí para formar la misma conectividad de malla completa con 4 túneles entre las dos redes virtuales, como se muestra en el diagrama siguiente:
 
 ![De red virtual a red virtual](./media/vpn-gateway-highlyavailable/vnet-to-vnet.png)
 
-Esto garantiza que siempre hay un par de túneles entre dos redes virtuales Hola para cualquier evento de mantenimiento planeado, lo que proporciona disponibilidad aún mejor. Aunque hello misma topología para la conectividad entre entornos requiere dos conexiones, topología de red virtual a red virtual de hello mostrado anteriormente tendrá sólo una conexión para cada puerta de enlace. Además, BGP es opcional, a menos que el enrutamiento del tránsito sobre Hola conexión de red virtual a red virtual es necesario.
+Esto garantiza que siempre haya un par de túneles entre las dos redes virtuales para cualquier evento de mantenimiento planeado, por lo que se proporciona una disponibilidad aún mejor. A pesar de que la misma topología para conectividad entre locales requiere dos conexiones, la topología de red virtual a red virtual mostrada antes solo necesitará una conexión para cada puerta de enlace. Además, BGP es opcional, a menos que sea necesario enrutar el tránsito por la conexión de red virtual a red virtual.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Vea [configuración activo / activo VPN las puertas de enlace para las conexiones de red virtual a red virtual y entre entornos](vpn-gateway-activeactive-rm-powershell.md) para las conexiones de red virtual a red virtual y pasos tooconfigure de activo / activo entre entornos.
+Consulte [Configuración activa-activa de puertas de enlace de VPN para conexiones entre locales y de red virtual a red virtual](vpn-gateway-activeactive-rm-powershell.md) para ver los pasos para configurar de modo activo-activo conexiones entre locales y de red virtual a red virtual.
 

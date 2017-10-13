@@ -1,6 +1,6 @@
 ---
-title: "aaaProblems iniciar sesión en la aplicación de tooan desde el panel de acceso de Hola | Documentos de Microsoft"
-description: "Cómo los problemas de tootroubleshoot acceso a una aplicación de Hola Panel de acceso de Microsoft Azure AD en myapps.microsoft.com"
+title: "Problemas de inicio de sesión en una aplicación desde el panel de acceso | Microsoft Docs"
+description: "Cómo solucionar problemas de acceso a una aplicación desde el Panel de acceso de Microsoft Azure AD de myapps.microsoft.com"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.reviewer: japere
-ms.openlocfilehash: 346c4da06416bb9b330bdd5b1201253af19ba58b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 188a00db59b0aa8d26facc678fb52d96272183b6
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="problems-signing-in-tooan-application-from-hello-access-panel"></a>Problemas para iniciar sesión en la aplicación tooan desde el panel de acceso de Hola
+# <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>Problemas de inicio de sesión en una aplicación desde el panel de acceso
 
-Hola Panel de acceso es un portal basado en web que permite a los usuarios con un trabajo o cuenta educativa en aplicaciones de Azure Active Directory (Azure AD) tooview y de inicio en la nube que Hola Administrador de Azure AD le haya concedido acceso a. 
+El Panel de acceso es un portal basado en web que permite que un usuario con una cuenta profesional o educativa de Azure Active Directory (Azure AD) vea e inicie las aplicaciones basadas en la nube a las que el administrador de Azure AD le ha concedido acceso. 
 
-Estas aplicaciones se configuran en nombre de usuario de hello en el portal de Azure AD Hola. aplicación Hello debe configurarse correctamente y asignado toohello usuario o un grupo de usuario de hello es miembro de la aplicación de hello toosee Hola Panel de acceso.
+Estas aplicaciones se configuran en nombre del usuario en el portal de Azure AD. La aplicación debe configurarse correctamente y asignarse al usuario o al grupo del que el usuario es miembro para poder ver la aplicación en el Panel de acceso.
 
-tipo Hello de aplicaciones posible que un usuario esté viendo se dividen en hello siguientes categorías:
+El tipo de aplicaciones que un usuario puede ver se dividen en las siguientes categorías:
 
 -   Aplicaciones de Office 365
 
@@ -36,33 +36,33 @@ tipo Hello de aplicaciones posible que un usuario esté viendo se dividen en hel
 
 -   Aplicaciones con soluciones SSO existentes
 
-## <a name="general-issues-toocheck-first"></a>General emite toocheck primero
+## <a name="general-issues-to-check-first"></a>Problemas generales para comprobar primero
 
--   Asegúrese de que el uso de un **explorador** que cumple los requisitos mínimos de Hola para hello Panel de acceso.
+-   Que se usa un **explorador** que cumpla los requisitos mínimos del Panel de acceso.
 
--   Asegúrese de explorador del usuario de hello agregada URL Hola de hello aplicación tooits **sitios de confianza**.
+-   Que se ha agregado la dirección URL de la aplicación a los **sitios de confianza** del explorador del usuario.
 
--   Asegúrese de que es de aplicación de hello toocheck **configurado** correctamente.
+-   Que la aplicación está **configurada** correctamente.
 
--   Asegúrese de que es la cuenta de usuario de hello **habilitado** para inicios de sesión.
+-   Que la cuenta del usuario está **habilitada** para los inicios de sesión.
 
--   Asegúrese de que es la cuenta de usuario de hello **no está bloqueada.**
+-   Que la cuenta del usuario **no está bloqueada**.
 
--   Asegúrese de que usuario hello **contraseña no se ha caducado o se olvida.**
+-   Que la **contraseña del usuario no ha expirado o se ha olvidado**.
 
 -   Que **Multi-Factor Authentication** no bloquea el acceso del usuario.
 
 -   Que una **directiva de acceso condicional** o una directiva de **protección de identidad** no bloquea el acceso del usuario.
 
--   Asegúrese de que un usuario **información de contacto de autenticación** es hacia arriba toodate tooallow la autenticación multifactor o acceso condicional directivas toobe aplicada.
+-   Que la **información de contacto de autenticación** del usuario está actualizada para permitir la aplicación de directivas de Multi-Factor Authentication o de acceso condicional.
 
--   Asegúrese de tooalso seguro intente borrar las cookies del explorador y vuelva a probar toosign en.
+-   Que se intenta borrar también las cookies del explorador y volver a iniciar sesión.
 
-## <a name="meeting-browser-requirements-for-hello-access-panel"></a>Se cumplen los requisitos de explorador para hello Panel de acceso
+## <a name="meeting-browser-requirements-for-the-access-panel"></a>Cumplimiento de los requisitos del explorador para el Panel de acceso
 
-Hola Panel de acceso requiere un explorador que admita JavaScript y se han habilitado de CSS. toouse basada en contraseña inicio de sesión único (SSO) en el Panel de acceso, extensión del Panel de acceso de Hola Hola debe instalarse en el explorador del usuario de Hola. Esta extensión se descarga automáticamente cuando un usuario selecciona una aplicación que está configurada para SSO basado en contraseña.
+El Panel de acceso requiere un explorador compatible con JavaScript y que tenga habilitado CSS. Para usar el inicio de sesión único (SSO) basado en contraseña en el Panel de acceso, se debe instalar la extensión del Panel de acceso en el explorador del usuario. Esta extensión se descarga automáticamente cuando un usuario selecciona una aplicación que está configurada para SSO basado en contraseña.
 
-Para el SSO basado en contraseña, pueden ser Hola exploradores de los usuarios:
+Para el SSO basado en contraseña, los exploradores del usuario final pueden ser:
 
 -   Internet Explorer 8, 9, 10, 11 (en Windows 7 o posterior)
 
@@ -72,445 +72,445 @@ Para el SSO basado en contraseña, pueden ser Hola exploradores de los usuarios:
 
 -   Firefox 26.0 o posterior (en Windows XP SP2 o posterior y en Mac OS X 10.6 o posterior)
 
-## <a name="how-tooinstall-hello-access-panel-browser-extension"></a>¿Cómo tooinstall Hola extensión de explorador del Panel de acceso
+## <a name="how-to-install-the-access-panel-browser-extension"></a>Cómo instalar la extensión de explorador del Panel de acceso
 
-Hola tooinstall extensión de explorador del Panel de acceso, siga Hola pasos:
+Para instalar la extensión de explorador del Panel de acceso, siga estos pasos:
 
-1.  Abra hello [Panel de acceso](https://myapps.microsoft.com) en uno de los exploradores compatibles de Hola y de inicio de sesión como un **usuario** en Azure AD.
+1.  Abra el [Panel de acceso](https://myapps.microsoft.com) en uno de los exploradores admitidos e inicie sesión como **usuario** en su instancia de Azure AD.
 
-2.  Haga clic en un **aplicación SSO de contraseña** Hola Panel de acceso.
+2.  Haga clic en una **aplicación de SSO con contraseña** en el Panel de acceso.
 
-3.  En hello símbolo del sistema que se pregunta tooinstall Hola software, seleccione **instalar ahora**.
+3.  En el mensaje que le pregunta si desea instalar el software, seleccione **Instalar ahora**.
 
-4.  Basado en el explorador es que el vínculo de descarga de toohello dirigida. **Agregar** tooyour Explorador de hello extensión.
+4.  Se le dirigirá al vínculo de descarga en función del explorador. **Agregue** la extensión al explorador.
 
-5.  Si el explorador solicita, seleccione tooeither **habilitar** o **permitir** Hola extensión.
+5.  Si el explorador lo solicita, seleccione **Habilitar** o **Permitir** la extensión.
 
 6.  Una vez instalada, **reinicie** la sesión del explorador.
 
-7.  Inicie sesión en el Panel de acceso de Hola y vea si puede **iniciar** las aplicaciones de SSO de contraseña
+7.  Inicie sesión en el Panel de acceso y vea si puede **iniciar** las aplicaciones de SSO con contraseña
 
-También puede descargar extensión Hola para Chrome y borde de vínculos directos de Hola a continuación:
+También puede descargar la extensión para Chrome y Edge desde los siguientes vínculos directos:
 
 -   [Extensión del Panel de acceso para Chrome](https://chrome.google.com/webstore/detail/access-panel-extension/ggjhpefgjjfobnfoldnjipclpcfbgbhl)
 
 -   [Extensión del Panel de acceso para Edge](https://www.microsoft.com/store/apps/9pc9sckkzk84)
 
-## <a name="how-tooconfigure-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>¿Cómo tooconfigure federado inicio de sesión único para una aplicación de la Galería de Azure AD
+## <a name="how-to-configure-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Configuración del inicio de sesión único federado para una aplicación de la galería de Azure AD
 
-Todas las aplicaciones en Galería de Azure AD Hola habilitada con capacidad de Enterprise Single Sign-On tienen un tutorial paso a paso disponible. Puede tener acceso a hello [lista de tutoriales sobre cómo toointegrate aplicaciones de SaaS con Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) para obtener instrucciones paso a paso detallados.
+Todas las aplicaciones de la galería de Azure AD habilitadas con funcionalidad de Enterprise Single Sign-On tienen un tutorial paso a paso disponible. Para instrucciones detalladas paso a paso, acceda a la [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/).
 
-una aplicación desde la Galería de Azure AD de hello tooconfigure debe:
+Para configurar una aplicación desde la galería de Azure AD, realice los siguientes pasos:
 
--   [Agregar una aplicación de la Galería de Azure AD Hola](#add-an-application)
+-   [Incorporación de una aplicación desde la galería de Azure AD](#add-an-application)
 
--   [Configurar valores de metadatos de la aplicación hello en Azure AD (inicio de sesión en la dirección URL de respuesta de dirección URL, identificador)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
+-   [Configuración de los valores de los metadatos de la aplicación en Azure AD (URL de inicio de sesión, identificador, URL de respuesta)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
 
--   [Seleccione el identificador de usuario y agregar usuario atributos toobe enviado toohello aplicación](#select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application)
+-   [Selección del identificador de usuario e incorporación de los atributos de usuario para enviarlos a la aplicación](#select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application)
 
 -   [Recuperación de los metadatos y el certificado de Azure AD](#download-the-azure-ad-metadata-or-certificate)
 
--   [Configurar los valores de metadatos de Azure AD de la aplicación hello (inicio de sesión en la dirección URL, emisor, dirección URL de cierre de sesión y certificado)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
+-   [Configuración de los valores de los metadatos de Azure AD en la aplicación (URL de inicio de sesión, emisor, URL de cierre de sesión y certificado)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
 
--   [Asignar a usuarios de aplicación toohello](#assign-users-to-the-application)
+-   [Asignación de usuarios a la aplicación](#assign-users-to-the-application)
 
-### <a name="add-an-application-from-hello-azure-ad-gallery"></a>Agregar una aplicación de la Galería de Azure AD Hola
+### <a name="add-an-application-from-the-azure-ad-gallery"></a>Incorporación de una aplicación desde la galería de Azure AD
 
-tooadd una aplicación Hola Galería de Azure AD, siga estos pasos hello:
+Para agregar una aplicación desde la galería de Azure AD, siga estos pasos:
 
-1.  Abra hello [Portal de Azure](https://portal.azure.com) e inicie sesión como un **administrador Global** o **Coadministrador**
+1.  Abra [Azure Portal](https://portal.azure.com) e inicie sesión como **administrador global** o **coadministrador**
 
-2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
+2.  Abra la **extensión de Azure Active Directory** haciendo clic en **More services** (Más servicios) en la parte inferior del menú de navegación izquierdo principal.
 
-3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
+3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
 
-4.  Haga clic en **aplicaciones empresariales** desde el menú de navegación izquierdo de hello Azure Active Directory.
+4.  Haga clic en **Aplicaciones empresariales** en el menú de navegación izquierdo de Azure Active Directory.
 
-5.  Haga clic en hello **agregar** situado en la esquina superior derecha de hello en hello **aplicaciones empresariales** hoja
+5.  Haga clic en el botón **Agregar** situado en la esquina superior derecha de la hoja **Aplicaciones empresariales**.
 
-6.  Hola **escriba un nombre** cuadro de texto de hello **agregar a partir de la Galería de hello** sección, escriba un nombre de aplicación hello como Hola.
+6.  En el cuadro de texto **Escriba un nombre** de la sección **Agregar desde la galería**, escriba el nombre de la aplicación.
 
-7.  Seleccionar aplicación hello tooconfigure que desee para el inicio de sesión único.
+7.  Seleccione la aplicación que desea configurar para el inicio de sesión único.
 
-8.  Antes de agregar la aplicación hello, puede cambiar su nombre de hello **nombre** cuadro de texto.
+8.  Antes de agregar la aplicación, puede cambiar su nombre en el cuadro de texto **Nombre**.
 
-9.  Haga clic en **agregar** button, aplicación de hello tooadd.
+9.  Haga clic en el botón **Agregar** para agregar la aplicación.
 
-Tras un breve período, es que la hoja de configuración de la aplicación pueda toosee Hola.
+Tras un breve período, podrá ver la hoja de configuración de la aplicación.
 
-### <a name="configure-single-sign-on-for-an-application-from-hello-azure-ad-gallery"></a>Configurar inicio de sesión único para una aplicación desde la Galería de Azure AD Hola
+### <a name="configure-single-sign-on-for-an-application-from-the-azure-ad-gallery"></a>Configuración del inicio de sesión único para una aplicación de la galería de Azure AD
 
-tooconfigure inicio de sesión único para una aplicación, siga estos pasos hello:
+Para configurar el inicio de sesión único para una aplicación, siga los pasos siguientes:
 
-1.  <span id="_Hlk477187909" class="anchor"><span id="_Hlk477001983" class="anchor"></span></span>Abra hello [ **Portal de Azure** ](https://portal.azure.com/) e inicie sesión como un **administrador Global** o **Co-administrador.**
+1.  <span id="_Hlk477187909" class="anchor"><span id="_Hlk477001983" class="anchor"></span></span>Abra [**Azure Portal**](https://portal.azure.com/) e inicie sesión como **administrador global** o **coadministrador**.
 
-2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
+2.  Abra la **extensión de Azure Active Directory** haciendo clic en **More services** (Más servicios) en la parte inferior del menú de navegación izquierdo principal.
 
-3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
+3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
 
-4.  Haga clic en **aplicaciones empresariales** desde el menú de navegación izquierdo de hello Azure Active Directory.
+4.  Haga clic en **Aplicaciones empresariales** en el menú de navegación izquierdo de Azure Active Directory.
 
-5.  Haga clic en **todas las aplicaciones** tooview una lista de todas las aplicaciones.
+5.  Haga clic en **Todas las aplicaciones** para ver una lista de todas las aplicaciones.
 
-  * Si no ve la aplicación hello que le interese mostrar aquí, usar hello **filtro** control parte superior de Hola de hello **lista de todas las aplicaciones** conjunto hello y **mostrar** opción demasiado **Todas las aplicaciones.**
+  * Si no ve la aplicación que desea que aparezca aquí, use el control **Filtro** de la parte superior de la lista **Todas las aplicaciones** y establezca la opción **Mostrar** en **Todas las aplicaciones.**
 
-6.  Seleccionar aplicación hello desea tooconfigure inicio de sesión único.
+6.  Seleccione la aplicación que desea configurar para el inicio de sesión único.
 
-7.  Una vez que se carga la aplicación hello, haga clic en hello **inicio de sesión único** del menú de navegación izquierdo de la aplicación hello.
+7.  Cuando se cargue la aplicación, haga clic en **Inicio de sesión único** desde el menú de navegación izquierdo de la aplicación.
 
-8.  Seleccione **sesión basado en SAML** de hello **modo** lista desplegable.
+8.  En la lista desplegable **Modo**, seleccione **Inicio de sesión basado en SAML**.
 
-9.  Especifique los valores de hello necesario en **dominio y las direcciones URL.** Deberá obtener estos valores del proveedor de la aplicación hello.
+9.  Especifique los valores obligatorios en **Dominio y direcciones URL**. El proveedor de la aplicación le proporcionará estos valores.
 
-   1. aplicación de hello tooconfigure como SSO iniciado por el SP, Hola inicio de sesión en la dirección URL es un valor necesario. En algunas aplicaciones, Hola identificador también es un valor obligatorio.
+   1. Para configurar la aplicación como SSO iniciado por el SP, la dirección URL de inicio de sesión es obligatoria. En algunas aplicaciones, el identificador también es obligatorio.
 
-   2. aplicación de hello tooconfigure como SSO iniciado por IdP, Hola dirección URL de respuesta es un valor necesario. En algunas aplicaciones, Hola identificador también es un valor obligatorio.
+   2. Para configurar la aplicación como SSO iniciado por el IdP, la dirección URL de respuesta es obligatoria. En algunas aplicaciones, el identificador también es obligatorio.
 
-10. **Opcional:** haga clic en **mostrar avanzadas de configuración de direcciones URL** si desea que los valores no sean necesarios de hello toosee.
+10. **Opcional:** haga clic en **Mostrar configuración avanzada de URL** si desea ver los valores opcionales.
 
-11. Hola **atributos de usuario**, seleccione Hola identificador único para los usuarios en hello **identificador de usuario** lista desplegable.
+11. En **Atributos de usuario**, seleccione el identificador único para los usuarios de la lista desplegable **Identificador de usuario**.
 
-12. **Opcional:** haga clic en **ver y editar todos los demás atributos de usuario** tooedit Hola atributos toobe enviado toohello aplicación en el token SAML de hello al usuario iniciar sesión en.
+12. **Opcional:** haga clic en **Ver y editar todos los demás atributos de usuario** para editar los atributos que se enviarán a la aplicación en el token de SAML cuando el usuario inicie sesión.
 
-   tooadd un atributo:
+   Para agregar un atributo:
 
-   1. Haga clic en **Agregar atributo**. Escriba hello **nombre** y Hola Hola seleccione **valor** de lista desplegable de Hola.
+   1. Haga clic en **Agregar atributo**. Escriba el **Nombre** y seleccione el **Valor** de la lista desplegable.
 
-   2. Haga clic en **Guardar**. Verá el nuevo atributo de hello en la tabla de Hola.
+   2. Haga clic en **Guardar**. En la tabla verá el nuevo atributo.
 
-13. Haga clic en **configurar &lt;nombre de la aplicación&gt;**  tooaccess documentación sobre cómo tooconfigure inicio de sesión único en la aplicación hello. Además, tendrá las direcciones URL de metadatos de Hola y requiere un certificado toosetup SSO con la aplicación hello.
+13. Haga clic en **Configurar &lt;nombre de la aplicación&gt;** para acceder a documentación sobre cómo configurar el inicio de sesión único en la aplicación. Además, tiene las direcciones URL de los metadatos y el certificado necesario para la instalación de SSO con la aplicación.
 
-14. Haga clic en **guardar** configuración de toosave Hola.
+14. Para guardar la configuración, haga clic en **Guardar**.
 
-15. Asignar a usuarios de aplicación de toohello.
+15. Asigne usuarios a la aplicación.
 
-### <a name="select-user-identifier-and-add-user-attributes-toobe-sent-toohello-application"></a>Seleccione el identificador de usuario y agregar usuario atributos toobe enviado toohello aplicación
+### <a name="select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application"></a>Selección del identificador de usuario e incorporación de los atributos de usuario para enviarlos a la aplicación
 
-tooselect Hola identificador de usuario o agregar atributos de usuario, siga estos pasos hello:
+Para seleccionar el identificador de usuario o agregar atributos de usuario, siga estos pasos:
 
-1.  Abra hello [ **Portal de Azure** ](https://portal.azure.com/) e inicie sesión como un **administrador Global** o **Co-administrador.**
+1.  Abra [**Azure Portal**](https://portal.azure.com/) e inicie sesión como **Administrador global** o **Coadministrador**.
 
-2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
+2.  Abra la **extensión de Azure Active Directory** haciendo clic en **More services** (Más servicios) en la parte inferior del menú de navegación izquierdo principal.
 
-3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
+3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
 
-4.  Haga clic en **aplicaciones empresariales** desde el menú de navegación izquierdo de hello Azure Active Directory.
+4.  Haga clic en **Aplicaciones empresariales** en el menú de navegación izquierdo de Azure Active Directory.
 
-5.  Haga clic en **todas las aplicaciones** tooview una lista de todas las aplicaciones.
+5.  Haga clic en **Todas las aplicaciones** para ver una lista de todas las aplicaciones.
 
-  * Si no ve la aplicación hello desea tooshow aquí, usar hello **filtro** control parte superior de Hola de hello **lista de todas las aplicaciones** conjunto hello y **mostrar** opción demasiado **Todas las aplicaciones.**
+  * Si no ve la aplicación que desea que aparezca aquí, use el control **Filtro** de la parte superior de la lista **Todas las aplicaciones** y establezca la opción **Mostrar** en **Todas las aplicaciones**.
 
-6.  Seleccionar aplicación hello ha configurado el inicio de sesión único.
+6.  Seleccione la aplicación para la que ha configurado el inicio de sesión único.
 
-7.  Una vez que se carga la aplicación hello, haga clic en hello **inicio de sesión único** del menú de navegación izquierdo de la aplicación hello.
+7.  Cuando se cargue la aplicación, haga clic en **Inicio de sesión único** desde el menú de navegación izquierdo de la aplicación.
 
-8.  En hello **atributos de usuario** Hola de sección, seleccione un identificador único para los usuarios en hello **identificador de usuario** lista desplegable. Hello opción seleccionada debe toomatch Hola esperado valor en hello aplicación tooauthenticate Hola del usuario.
+8.  En la sección **Atributos de usuario**, seleccione el identificador único para los usuarios de la lista desplegable **Identificador de usuario**. La opción seleccionada debe coincidir con el valor esperado de la aplicación para autenticar al usuario.
 
     >[!NOTE]
-    >Azure formato AD seleccione Hola Hola NameID atributo (identificador de usuario) en función de valor de hello seleccionado u Hola formato solicitado por la aplicación hello en hello AuthRequest de SAML. Para obtener más información, visite el artículo de hello [protocolo SAML de inicio de sesión único](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) en hello sección NameIDPolicy.
+    >AD Azure selecciona el formato del atributo NameID (Identificador de usuario) en función del valor seleccionado o del formato que solicite la aplicación en el elemento AuthRequest de SAML. Para más información, visite la sección NameIDPolicy del artículo [Protocolo SAML de inicio de sesión único](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest).
     >
     >
 
-9.  atributos de usuario de tooadd, haga clic en **ver y editar todos los demás atributos de usuario** tooedit Hola atributos toobe enviado toohello aplicación en el token SAML de hello al usuario iniciar sesión en.
+9.  Para agregar atributos de usuario, haga clic en **Ver y editar todos los demás atributos de usuario** para editar los atributos que se enviarán a la aplicación en el token de SAML cuando el usuario inicie sesión.
 
-   tooadd un atributo:
+   Para agregar un atributo:
 
-   1. Haga clic en **Agregar atributo**. Escriba hello **nombre** y Hola Hola seleccione **valor** de lista desplegable de Hola.
+   1. Haga clic en **Agregar atributo**. Escriba el **Nombre** y seleccione el **Valor** de la lista desplegable.
 
-   2. Haga clic en **Guardar**. Verá el nuevo atributo de hello en la tabla de Hola.
+   2. Haga clic en **Guardar**. En la tabla verá el nuevo atributo.
 
-### <a name="download-hello-azure-ad-metadata-or-certificate"></a>Descargar los metadatos de Azure AD de Hola o certificado
+### <a name="download-the-azure-ad-metadata-or-certificate"></a>Descarga del certificado o los metadatos de Azure AD
 
-metadatos de la aplicación hello toodownload o certificado de Azure AD, siga los pasos de hello siguientes:
+Para descargar el certificado o los metadatos de la aplicación de Azure AD, siga estos pasos:
 
-1.  Abra hello [ **Portal de Azure** ](https://portal.azure.com/) e inicie sesión como un **administrador Global** o **Co-administrador.**
+1.  Abra [**Azure Portal**](https://portal.azure.com/) e inicie sesión como **Administrador global** o **Coadministrador**.
 
-2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
+2.  Abra la **extensión de Azure Active Directory** haciendo clic en **More services** (Más servicios) en la parte inferior del menú de navegación izquierdo principal.
 
-3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
+3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
 
-4.  Haga clic en **aplicaciones empresariales** desde el menú de navegación izquierdo de hello Azure Active Directory.
+4.  Haga clic en **Aplicaciones empresariales** en el menú de navegación izquierdo de Azure Active Directory.
 
-5.  Haga clic en **todas las aplicaciones** tooview una lista de todas las aplicaciones.
+5.  Haga clic en **Todas las aplicaciones** para ver una lista de todas las aplicaciones.
 
-  * Si no ve la aplicación hello que le interese mostrar aquí, usar hello **filtro** control parte superior de Hola de hello **lista de todas las aplicaciones** conjunto hello y **mostrar** opción demasiado **Todas las aplicaciones.**
+  * Si no ve la aplicación que desea que aparezca aquí, use el control **Filtro** de la parte superior de la lista **Todas las aplicaciones** y establezca la opción **Mostrar** en **Todas las aplicaciones.**
 
-6.  Seleccionar aplicación hello ha configurado el inicio de sesión único.
+6.  Seleccione la aplicación para la que ha configurado el inicio de sesión único.
 
-7.  Una vez que se carga la aplicación hello, haga clic en hello **inicio de sesión único** del menú de navegación izquierdo de la aplicación hello.
+7.  Cuando se cargue la aplicación, haga clic en **Inicio de sesión único** desde el menú de navegación izquierdo de la aplicación.
 
-8.  Vaya demasiado**el certificado de firma de SAML** sección, a continuación, haga clic en **descargar** valor de la columna. Dependiendo de qué aplicación hello es necesario configurar el inicio de sesión único, vea cualquier toodownload de opción Hola Hola Metadata XML u Hola certificado.
+8.  Vaya a la sección **Certificado de firma de SAML** y haga clic en el valor de la columna **Descargar**. Según lo que necesite la aplicación para configurar el inicio de sesión único, verá la opción para descargar el archivo XML de metadatos o el certificado.
 
-    Azure AD no proporciona la dirección URL tooget Hola metadatos. solo se pueden recuperar metadatos de Hola como un archivo XML.
+    Azure AD no proporciona una dirección URL para obtener los metadatos. Solo se pueden recuperar como un archivo XML.
 
-## <a name="how-tooconfigure-federated-single-sign-on-for-a-non-gallery-application"></a>¿Cómo tooconfigure federado inicio de sesión único para una aplicación no Galería
+## <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>Configuración del inicio de sesión único federado para una aplicación ajena a la galería
 
-una aplicación no Galería tooconfigure, necesita toohave Azure AD premium y aplicación hello es compatible con SAML 2.0. Para más información acerca de las versiones de Azure AD, visite [Precios de Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
+Para configurar una aplicación ajena a la galería, debe tener Azure AD Premium y que la aplicación admita SAML 2.0. Para más información acerca de las versiones de Azure AD, visite [Precios de Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
 
--   [Configurar valores de metadatos de la aplicación hello en Azure AD (inicio de sesión en la dirección URL de respuesta de dirección URL, identificador)](#configuring-single-sign-on)
+-   [Configuración de los valores de los metadatos de la aplicación en Azure AD (URL de inicio de sesión, identificador, URL de respuesta)](#configuring-single-sign-on)
 
--   [Seleccione el identificador de usuario y agregar usuario atributos toobe enviado toohello aplicación](#select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application)
+-   [Selección del identificador de usuario e incorporación de los atributos de usuario para enviarlos a la aplicación](#select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application)
 
 -   [Recuperación de los metadatos y el certificado de Azure AD](#download-the-azure-ad-metadata-or-certificate)
 
--   [Configurar los valores de metadatos de Azure AD de la aplicación hello (inicio de sesión en la dirección URL, emisor, dirección URL de cierre de sesión y certificado)](#configuring-single-sign-on)
+-   [Configuración de los valores de los metadatos de Azure AD en la aplicación (URL de inicio de sesión, emisor, URL de cierre de sesión y certificado)](#configuring-single-sign-on)
 
-### <a name="configure-hello-applications-metadata-values-in-azure-ad-sign-on-url-identifier-reply-url"></a>Configurar valores de metadatos de la aplicación hello en Azure AD (inicio de sesión en la dirección URL de respuesta de dirección URL, identificador)
+### <a name="configure-the-applications-metadata-values-in-azure-ad-sign-on-url-identifier-reply-url"></a>Configuración de los valores de los metadatos de la aplicación en Azure AD (URL de inicio de sesión, identificador, URL de respuesta)
 
-tooconfigure inicio de sesión único para una aplicación que no está en la Galería de Azure AD de hello, siga Hola pasos siguientes:
+Para configurar el inicio de sesión único para una aplicación ajena a la galería de Azure AD, siga estos pasos:
 
-1.  Abra hello [ **Portal de Azure** ](https://portal.azure.com/) e inicie sesión como un **administrador Global** o **Co-administrador.**
+1.  Abra [**Azure Portal**](https://portal.azure.com/) e inicie sesión como **Administrador global** o **Coadministrador**.
 
-2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
+2.  Abra la **extensión de Azure Active Directory** haciendo clic en **More services** (Más servicios) en la parte inferior del menú de navegación izquierdo principal.
 
-3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
+3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
 
-4.  Haga clic en **aplicaciones empresariales** desde el menú de navegación izquierdo de hello Azure Active Directory.
+4.  Haga clic en **Aplicaciones empresariales** en el menú de navegación izquierdo de Azure Active Directory.
 
-5.  Haga clic en hello **agregar** situado en la esquina superior derecha de hello en hello **aplicaciones empresariales** hoja
+5.  Haga clic en el botón **Agregar** situado en la esquina superior derecha de la hoja **Aplicaciones empresariales**.
 
-6.  Haga clic en **aplicación gallery no** en hello **agregar su propia aplicación** sección
+6.  En la sección **Agregar aplicación propia**, haga clic en **Aplicación situada fuera de la galería**
 
-7.  Escriba el nombre de Hola de aplicación Hola Hola **nombre** cuadro de texto.
+7.  Escriba el nombre de la aplicación en el cuadro de texto **Nombre**.
 
-8.  Haga clic en **agregar** button, aplicación de hello tooadd.
+8.  Haga clic en el botón **Agregar** para agregar la aplicación.
 
-9.  Una vez que se carga la aplicación hello, haga clic en hello **inicio de sesión único** del menú de navegación izquierdo de la aplicación hello.
+9.  Cuando se cargue la aplicación, haga clic en **Inicio de sesión único** desde el menú de navegación izquierdo de la aplicación.
 
-10. Seleccione **sesión basado en SAML** en hello **modo** desplegable
+10. En la lista desplegable **Modo**, seleccione **Inicio de sesión basado en SAML**.
 
-11. Especifique los valores de hello necesario en **dominio y las direcciones URL.** Deberá obtener estos valores del proveedor de la aplicación hello.
+11. Especifique los valores obligatorios en **Dominio y direcciones URL**. El proveedor de la aplicación le proporcionará estos valores.
 
-  1. aplicación de hello tooconfigure como SSO iniciado por IdP, escriba Hola dirección URL de respuesta y Hola identificador.
+  1. Para configurar la aplicación como SSO iniciado por el IdP, escriba la dirección URL de respuesta y el identificador.
 
-  2. **Opcional:** Hola de aplicación de hello tooconfigure como SSO iniciado por el SP, inicio de sesión en la dirección URL es un valor necesario.
+  2. **Opcional:** para configurar la aplicación como SSO iniciado por el SP, la dirección URL de inicio de sesión es obligatoria.
 
-12. Hola **atributos de usuario**, seleccione Hola identificador único para los usuarios en hello **identificador de usuario** lista desplegable.
+12. En **Atributos de usuario**, seleccione el identificador único para los usuarios de la lista desplegable **Identificador de usuario**.
 
-13. **Opcional:** haga clic en **ver y editar todos los demás atributos de usuario** tooedit Hola atributos toobe enviado toohello aplicación en el token SAML de hello al usuario iniciar sesión en.
+13. **Opcional:** haga clic en **Ver y editar todos los demás atributos de usuario** para editar los atributos que se enviarán a la aplicación en el token de SAML cuando el usuario inicie sesión.
 
-   tooadd un atributo:
+   Para agregar un atributo:
 
-   1. Haga clic en **Agregar atributo**. Escriba hello **nombre** y Hola Hola seleccione **valor** de lista desplegable de Hola.
+   1. Haga clic en **Agregar atributo**. Escriba el **Nombre** y seleccione el **Valor** de la lista desplegable.
 
-   2. Haga clic en **Guardar**. Verá el nuevo atributo de hello en la tabla de Hola.
+   2. Haga clic en **Guardar**. En la tabla verá el nuevo atributo.
 
-14. Haga clic en **configurar &lt;nombre de la aplicación&gt;**  tooaccess documentación sobre cómo tooconfigure inicio de sesión único en la aplicación hello. Además, tiene las direcciones URL de Azure AD y certificados necesarios para la aplicación hello.
+14. Haga clic en **Configurar &lt;nombre de la aplicación&gt;** para acceder a documentación sobre cómo configurar el inicio de sesión único en la aplicación. Además, tiene las direcciones URL de Azure AD y los certificados necesarios para la aplicación.
 
-### <a name="select-user-identifier-and-add-user-attributes-toobe-sent-toohello-application"></a>Seleccione el identificador de usuario y agregar usuario atributos toobe enviado toohello aplicación
+### <a name="select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application"></a>Selección del identificador de usuario e incorporación de los atributos de usuario para enviarlos a la aplicación
 
-tooselect Hola identificador de usuario o agregar atributos de usuario, siga estos pasos hello:
+Para seleccionar el identificador de usuario o agregar atributos de usuario, siga estos pasos:
 
-1.  Abra hello [ **Portal de Azure** ](https://portal.azure.com/) e inicie sesión como un **administrador Global** o **Co-administrador.**
+1.  Abra [**Azure Portal**](https://portal.azure.com/) e inicie sesión como **Administrador global** o **Coadministrador**.
 
-2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
+2.  Abra la **extensión de Azure Active Directory** haciendo clic en **More services** (Más servicios) en la parte inferior del menú de navegación izquierdo principal.
 
-3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
+3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
 
-4.  Haga clic en **aplicaciones empresariales** desde el menú de navegación izquierdo de hello Azure Active Directory.
+4.  Haga clic en **Aplicaciones empresariales** en el menú de navegación izquierdo de Azure Active Directory.
 
-5.  Haga clic en **todas las aplicaciones** tooview una lista de todas las aplicaciones.
+5.  Haga clic en **Todas las aplicaciones** para ver una lista de todas las aplicaciones.
 
-  * Si no ve la aplicación hello que le interese mostrar aquí, usar hello **filtro** control parte superior de Hola de hello **lista de todas las aplicaciones** conjunto hello y **mostrar** opción demasiado **Todas las aplicaciones.**
+  * Si no ve la aplicación que desea que aparezca aquí, use el control **Filtro** de la parte superior de la lista **Todas las aplicaciones** y establezca la opción **Mostrar** en **Todas las aplicaciones.**
 
-6.  Seleccionar aplicación hello ha configurado el inicio de sesión único.
+6.  Seleccione la aplicación para la que ha configurado el inicio de sesión único.
 
-7.  Una vez que se carga la aplicación hello, haga clic en hello **inicio de sesión único** del menú de navegación izquierdo de la aplicación hello.
+7.  Cuando se cargue la aplicación, haga clic en **Inicio de sesión único** desde el menú de navegación izquierdo de la aplicación.
 
-8.  En hello **atributos de usuario** Hola de sección, seleccione un identificador único para los usuarios en hello **identificador de usuario** lista desplegable. Hello opción seleccionada debe toomatch Hola esperado valor en hello aplicación tooauthenticate Hola del usuario.
+8.  En la sección **Atributos de usuario**, seleccione el identificador único para los usuarios de la lista desplegable **Identificador de usuario**. La opción seleccionada debe coincidir con el valor esperado de la aplicación para autenticar al usuario.
 
    >[!NOTE]
-   >Azure formato AD seleccione Hola Hola NameID atributo (identificador de usuario) en función de valor de hello seleccionado u Hola formato solicitado por la aplicación hello en hello AuthRequest de SAML. Para obtener más información, visite el artículo de hello [protocolo SAML de inicio de sesión único](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest) en hello sección NameIDPolicy.
+   >AD Azure selecciona el formato del atributo NameID (Identificador de usuario) en función del valor seleccionado o del formato que solicite la aplicación en el elemento AuthRequest de SAML. Para más información, visite la sección NameIDPolicy del artículo [Protocolo SAML de inicio de sesión único](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest).
    >
    >
 
-9.  atributos de usuario de tooadd, haga clic en **ver y editar todos los demás atributos de usuario** tooedit Hola atributos toobe enviado toohello aplicación en el token SAML de hello al usuario iniciar sesión en.
+9.  Para agregar atributos de usuario, haga clic en **Ver y editar todos los demás atributos de usuario** para editar los atributos que se enviarán a la aplicación en el token de SAML cuando el usuario inicie sesión.
 
-   tooadd un atributo:
+   Para agregar un atributo:
 
-   1. Haga clic en **Agregar atributo**. Escriba hello **nombre** y Hola Hola seleccione **valor** de lista desplegable de Hola.
+   1. Haga clic en **Agregar atributo**. Escriba el **Nombre** y seleccione el **Valor** de la lista desplegable.
 
-   2. Haga clic en **Guardar**. Verá el nuevo atributo de hello en la tabla de Hola.
+   2. Haga clic en **Guardar**. En la tabla verá el nuevo atributo.
 
-### <a name="download-hello-azure-ad-metadata-or-certificate"></a>Descargar los metadatos de Azure AD de Hola o certificado
+### <a name="download-the-azure-ad-metadata-or-certificate"></a>Descarga del certificado o los metadatos de Azure AD
 
-metadatos de la aplicación hello toodownload o certificado de Azure AD, siga los pasos de hello siguientes:
+Para descargar el certificado o los metadatos de la aplicación de Azure AD, siga estos pasos:
 
-1.  Abra hello [ **Portal de Azure** ](https://portal.azure.com/) e inicie sesión como un **administrador Global** o **Co-administrador.**
+1.  Abra [**Azure Portal**](https://portal.azure.com/) e inicie sesión como **Administrador global** o **Coadministrador**.
 
-2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
+2.  Abra la **extensión de Azure Active Directory** haciendo clic en **More services** (Más servicios) en la parte inferior del menú de navegación izquierdo principal.
 
-3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
+3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
 
-4.  Haga clic en **aplicaciones empresariales** desde el menú de navegación izquierdo de hello Azure Active Directory.
+4.  Haga clic en **Aplicaciones empresariales** en el menú de navegación izquierdo de Azure Active Directory.
 
-5.  Haga clic en **todas las aplicaciones** tooview una lista de todas las aplicaciones.
+5.  Haga clic en **Todas las aplicaciones** para ver una lista de todas las aplicaciones.
 
-   * Si no ve la aplicación hello que le interese mostrar aquí, usar hello **filtro** control parte superior de Hola de hello **lista de todas las aplicaciones** conjunto hello y **mostrar** opción demasiado **Todas las aplicaciones.**
+   * Si no ve la aplicación que desea que aparezca aquí, use el control **Filtro** de la parte superior de la lista **Todas las aplicaciones** y establezca la opción **Mostrar** en **Todas las aplicaciones.**
 
-6.  Seleccionar aplicación hello ha configurado el inicio de sesión único.
+6.  Seleccione la aplicación para la que ha configurado el inicio de sesión único.
 
-7.  Una vez que se carga la aplicación hello, haga clic en hello **inicio de sesión único** del menú de navegación izquierdo de la aplicación hello.
+7.  Cuando se cargue la aplicación, haga clic en **Inicio de sesión único** desde el menú de navegación izquierdo de la aplicación.
 
-8.  Vaya demasiado**el certificado de firma de SAML** sección, a continuación, haga clic en **descargar** valor de la columna. Dependiendo de qué aplicación hello es necesario configurar el inicio de sesión único, vea cualquier toodownload de opción Hola Hola Metadata XML u Hola certificado.
+8.  Vaya a la sección **Certificado de firma de SAML** y haga clic en el valor de la columna **Descargar**. Según lo que necesite la aplicación para configurar el inicio de sesión único, verá la opción para descargar el archivo XML de metadatos o el certificado.
 
-    Azure AD no proporciona la dirección URL tooget Hola metadatos. solo se pueden recuperar metadatos de Hola como un archivo XML.
+    Azure AD no proporciona una dirección URL para obtener los metadatos. Solo se pueden recuperar como un archivo XML.
 
-## <a name="how-tooconfigure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>¿Cómo tooconfigure contraseña inicio de sesión único para una aplicación de la Galería de Azure AD
+## <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Configuración del inicio de sesión único con contraseña para una aplicación de la galería de Azure AD
 
-una aplicación desde la Galería de Azure AD de hello tooconfigure debe:
+Para configurar una aplicación desde la galería de Azure AD, realice los siguientes pasos:
 
--   [Agregar una aplicación de la Galería de Azure AD Hola](#add-an-application)
+-   [Incorporación de una aplicación desde la galería de Azure AD](#add-an-application)
 
--   [Configurar la aplicación hello para el inicio de sesión único en la contraseña](#configure-the-application)
+-   [Configuración de la aplicación para el inicio de sesión único con contraseña](#configure-the-application)
 
-### <a name="add-an-application-from-hello-azure-ad-gallery"></a>Agregar una aplicación de la Galería de Azure AD Hola
+### <a name="add-an-application-from-the-azure-ad-gallery"></a>Incorporación de una aplicación desde la galería de Azure AD
 
-tooadd una aplicación Hola Galería de Azure AD, siga estos pasos hello:
+Para agregar una aplicación desde la galería de Azure AD, siga estos pasos:
 
-1.  Abra hello [Portal de Azure](https://portal.azure.com) e inicie sesión como un **administrador Global** o **Coadministrador**
+1.  Abra [Azure Portal](https://portal.azure.com) e inicie sesión como **administrador global** o **coadministrador**
 
-2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
+2.  Abra la **extensión de Azure Active Directory** haciendo clic en **More services** (Más servicios) en la parte inferior del menú de navegación izquierdo principal.
 
-3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
+3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
 
-4.  Haga clic en **aplicaciones empresariales** desde el menú de navegación izquierdo de hello Azure Active Directory.
+4.  Haga clic en **Aplicaciones empresariales** en el menú de navegación izquierdo de Azure Active Directory.
 
-5.  Haga clic en hello **agregar** situado en la esquina superior derecha de hello en hello **aplicaciones empresariales** hoja
+5.  Haga clic en el botón **Agregar** situado en la esquina superior derecha de la hoja **Aplicaciones empresariales**.
 
-6.  Hola **escriba un nombre** cuadro de texto de hello **agregar a partir de la Galería de hello** sección, escriba un nombre Hola de aplicación hello
+6.  En el cuadro de texto **Escriba un nombre** de la sección **Agregar desde la galería**, escriba el nombre de la aplicación.
 
-7.  Seleccionar aplicación hello tooconfigure que desee para el inicio de sesión único
+7.  Seleccione la aplicación que desea configurar para el inicio de sesión único.
 
-8.  Antes de agregar la aplicación hello, puede cambiar su nombre de hello **nombre** cuadro de texto.
+8.  Antes de agregar la aplicación, puede cambiar su nombre en el cuadro de texto **Nombre**.
 
-9.  Haga clic en **agregar** button, aplicación de hello tooadd.
+9.  Haga clic en el botón **Agregar** para agregar la aplicación.
 
-Tras un breve período, es que la hoja de configuración de la aplicación pueda toosee Hola.
+Tras un breve período, podrá ver la hoja de configuración de la aplicación.
 
-### <a name="configure-hello-application-for-password-single-sign-on"></a>Configurar la aplicación hello para el inicio de sesión único en la contraseña
+### <a name="configure-the-application-for-password-single-sign-on"></a>Configuración de la aplicación para el inicio de sesión único con contraseña
 
-tooconfigure inicio de sesión único para una aplicación, siga estos pasos hello:
+Para configurar el inicio de sesión único para una aplicación, siga estos pasos:
 
-1.  Abra hello [ **Portal de Azure** ](https://portal.azure.com/) e inicie sesión como un **administrador Global** o **Co-administrador.**
+1.  Abra [**Azure Portal**](https://portal.azure.com/) e inicie sesión como **administrador global** o **coadministrador**.
 
-2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
+2.  Abra la **extensión de Azure Active Directory** haciendo clic en **More services** (Más servicios) en la parte inferior del menú de navegación izquierdo principal.
 
-3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
+3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
 
-4.  Haga clic en **aplicaciones empresariales** desde el menú de navegación izquierdo de hello Azure Active Directory.
+4.  Haga clic en **Aplicaciones empresariales** en el menú de navegación izquierdo de Azure Active Directory.
 
-5.  Haga clic en **todas las aplicaciones** tooview una lista de todas las aplicaciones.
+5.  Haga clic en **Todas las aplicaciones** para ver una lista de todas las aplicaciones.
 
- * Si no ve la aplicación hello que le interese mostrar aquí, usar hello **filtro** control parte superior de Hola de hello **lista de todas las aplicaciones** conjunto hello y **mostrar** opción demasiado **Todas las aplicaciones.**
+ * Si no ve la aplicación que desea que aparezca aquí, use el control **Filtro** de la parte superior de la lista **Todas las aplicaciones** y establezca la opción **Mostrar** en **Todas las aplicaciones.**
 
-6.  Seleccione la aplicación hello desea tooconfigure inicio de sesión único
+6.  Seleccionar la aplicación que desea configurar para el inicio de sesión único
 
-7.  Una vez que se carga la aplicación hello, haga clic en hello **inicio de sesión único** del menú de navegación izquierdo de la aplicación hello.
+7.  Cuando se cargue la aplicación, haga clic en **Inicio de sesión único** desde el menú de navegación izquierdo de la aplicación.
 
-8.  Modo de hello seleccione **sesión basada en contraseña.**
+8.  Seleccione el modo de **Inicio de sesión con contraseña**.
 
-9.  Asignar a usuarios de aplicación de toohello.
+9.  Asigne usuarios a la aplicación.
 
-10. Además, también puede proporcionar credenciales en nombre de usuario de hello selección de filas de Hola de usuarios de Hola y haciendo clic en **las credenciales de actualización** y especificando Hola username y password en nombre de los usuarios de Hola. En caso contrario, los usuarios ser solicitadas tooenter Hola credenciales por sí mismos tras el inicio.
+10. Además, también puede proporcionar credenciales en nombre del usuario; para ello, seleccione las filas de los usuarios, haga clic en **Actualizar credenciales** y escriba el nombre de usuario y la contraseña en nombre de los usuarios. En caso contrario, se solicitará a los usuarios que especifiquen ellos mismos las credenciales al inicio.
 
-## <a name="how-tooconfigure-password-single-sign-on-for-a-non-gallery-application"></a>¿Cómo tooconfigure contraseña inicio de sesión único para una aplicación no Galería
+## <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Configuración del inicio de sesión único con contraseña para una aplicación ajena a la galería
 
-una aplicación desde la Galería de Azure AD de hello tooconfigure debe:
+Para configurar una aplicación desde la galería de Azure AD, realice los siguientes pasos:
 
 -   [Incorporación de una aplicación ajena a la galería](#add-a-non-gallery-application)
 
--   [Configurar la aplicación hello para el inicio de sesión único en la contraseña](#configure-the-application-for-password-single-sign-on)
+-   [Configuración de la aplicación para el inicio de sesión único con contraseña](#configure-the-application-for-password-single-sign-on)
 
 ### <a name="add-a-non-gallery-application"></a>Incorporación de una aplicación ajena a la galería
 
-tooadd una aplicación Hola Galería de Azure AD, siga estos pasos hello:
+Para agregar una aplicación desde la galería de Azure AD, siga estos pasos:
 
-1.  Abra hello [Portal de Azure](https://portal.azure.com) e inicie sesión como un **administrador Global** o **Coadministrador**
+1.  Abra [Azure Portal](https://portal.azure.com) e inicie sesión como **administrador global** o **coadministrador**
 
-2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
+2.  Abra la **extensión de Azure Active Directory** haciendo clic en **More services** (Más servicios) en la parte inferior del menú de navegación izquierdo principal.
 
-3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
+3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
 
-4.  Haga clic en **aplicaciones empresariales** desde el menú de navegación izquierdo de hello Azure Active Directory.
+4.  Haga clic en **Aplicaciones empresariales** en el menú de navegación izquierdo de Azure Active Directory.
 
-5.  Haga clic en hello **agregar** situado en la esquina superior derecha de hello en hello **aplicaciones empresariales** hoja
+5.  Haga clic en el botón **Agregar** situado en la esquina superior derecha de la hoja **Aplicaciones empresariales**.
 
 6.  Haga clic en **Aplicación situada fuera de la galería**.
 
-7.  Escriba el nombre de saludo de la aplicación Hola **nombre** cuadro de texto. Seleccione **Agregar**.
+7.  Escriba el nombre de la aplicación en el cuadro de texto **Nombre**. Seleccione **Agregar**.
 
-Tras un breve período, es que la hoja de configuración de la aplicación pueda toosee Hola.
+Tras un breve período, podrá ver la hoja de configuración de la aplicación.
 
-### <a name="configure-hello-application-for-password-single-sign-on"></a>Configurar la aplicación hello para el inicio de sesión único en la contraseña
+### <a name="configure-the-application-for-password-single-sign-on"></a>Configuración de la aplicación para el inicio de sesión único con contraseña
 
-tooconfigure inicio de sesión único para una aplicación, siga estos pasos hello:
+Para configurar el inicio de sesión único para una aplicación, siga estos pasos:
 
-1.  Abra hello [ **Portal de Azure** ](https://portal.azure.com/) e inicie sesión como un **administrador Global** o **Co-administrador.**
+1.  Abra [**Azure Portal**](https://portal.azure.com/) e inicie sesión como **administrador global** o **coadministrador**.
 
-2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
+2.  Abra la **extensión de Azure Active Directory** haciendo clic en **More services** (Más servicios) en la parte inferior del menú de navegación izquierdo principal.
 
-3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
+3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
 
-4.  Haga clic en **aplicaciones empresariales** desde el menú de navegación izquierdo de hello Azure Active Directory.
+4.  Haga clic en **Aplicaciones empresariales** en el menú de navegación izquierdo de Azure Active Directory.
 
-5.  Haga clic en **todas las aplicaciones** tooview una lista de todas las aplicaciones.
+5.  Haga clic en **Todas las aplicaciones** para ver una lista de todas las aplicaciones.
 
- * Si no ve la aplicación hello que le interese mostrar aquí, usar hello **filtro** control parte superior de Hola de hello **lista de todas las aplicaciones** conjunto hello y **mostrar** opción demasiado **Todas las aplicaciones.**
+ * Si no ve la aplicación que desea que aparezca aquí, use el control **Filtro** de la parte superior de la lista **Todas las aplicaciones** y establezca la opción **Mostrar** en **Todas las aplicaciones.**
 
-6.  Seleccionar aplicación hello desea tooconfigure inicio de sesión único.
+6.  Seleccione la aplicación que desea configurar para el inicio de sesión único.
 
-7.  Una vez que se carga la aplicación hello, haga clic en hello **inicio de sesión único** del menú de navegación izquierdo de la aplicación hello.
+7.  Cuando se cargue la aplicación, haga clic en **Inicio de sesión único** desde el menú de navegación izquierdo de la aplicación.
 
-8.  Modo de hello seleccione **sesión basada en contraseña.**
+8.  Seleccione el modo de **Inicio de sesión con contraseña**.
 
-9.  Escriba hello **dirección URL de inicio de sesión**. Se trata de dirección URL de Hola donde los usuarios escribir su toosign en nombre de usuario y contraseña a. Asegúrese de que está visible en la dirección URL de Hola Hola campos inicio de sesión.
+9.  Escriba la **dirección URL de inicio de sesión**. Es la dirección URL en la que los usuarios escriben su nombre de usuario y contraseña para iniciar sesión. Asegúrese de que los campos de inicio de sesión estén visibles en la dirección URL.
 
-10. Asignar a usuarios de aplicación de toohello.
+10. Asigne usuarios a la aplicación.
 
-11. Además, también puede proporcionar credenciales en nombre de usuario de hello selección de filas de Hola de usuarios de Hola y haciendo clic en **las credenciales de actualización** y especificando Hola username y password en nombre de los usuarios de Hola. En caso contrario, los usuarios ser solicitadas tooenter Hola credenciales por sí mismos tras el inicio.
+11. Además, también puede proporcionar credenciales en nombre del usuario; para ello, seleccione las filas de los usuarios, haga clic en **Actualizar credenciales** y escriba el nombre de usuario y la contraseña en nombre de los usuarios. En caso contrario, se solicitará a los usuarios que especifiquen ellos mismos las credenciales al inicio.
 
-## <a name="how-tooassign-a-user-tooan-application-directly"></a>¿Cómo tooassign directamente una aplicación de tooan de usuario
+## <a name="how-to-assign-a-user-to-an-application-directly"></a>Asignación de un usuario a una aplicación directamente
 
-tooassign uno o más usuarios tooan application directamente, siga estos pasos hello:
+Para asignar uno o varios usuarios a una aplicación directamente, siga los pasos siguientes:
 
-1.  Abra hello [ **Portal de Azure** ](https://portal.azure.com/) e inicie sesión como un **administrador Global.**
+1.  Abra [**Azure Portal**](https://portal.azure.com/) e inicie sesión como **administrador global**.
 
-2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
+2.  Abra la **extensión de Azure Active Directory** haciendo clic en **Más servicios** en la parte inferior del menú de navegación izquierdo principal.
 
-3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
+3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
 
-4.  Haga clic en **aplicaciones empresariales** desde el menú de navegación izquierdo de hello Azure Active Directory.
+4.  Haga clic en **Aplicaciones empresariales** en el menú de navegación izquierdo de Azure Active Directory.
 
-5.  Haga clic en **todas las aplicaciones** tooview una lista de todas las aplicaciones.
+5.  Haga clic en **Todas las aplicaciones** para ver una lista de todas las aplicaciones.
 
-  * Si no ve la aplicación hello que le interese mostrar aquí, usar hello **filtro** control parte superior de Hola de hello **lista de todas las aplicaciones** conjunto hello y **mostrar** opción demasiado **Todas las aplicaciones.**
+  * Si no ve la aplicación que desea que aparezca aquí, use el control **Filtro** de la parte superior de la lista **Todas las aplicaciones** y establezca la opción **Mostrar** en **Todas las aplicaciones.**
 
-6.  Seleccionar aplicación hello desea tooassign una lista de hello toofrom de usuario.
+6.  Seleccione la aplicación que desea asignar a un usuario de la lista.
 
-7.  Una vez que se carga la aplicación hello, haga clic en **usuarios y grupos** del menú de navegación izquierdo de la aplicación hello.
+7.  Cuando se cargue la aplicación, haga clic en **Usuarios y grupos** desde el menú de navegación izquierdo de la aplicación.
 
-8.  Haga clic en hello **agregar** botón encima de hello **usuarios y grupos** Hola de lista tooopen **Agregar asignación** hoja.
+8.  Haga clic en el botón **Agregar** en la parte superior de la lista **Usuarios y grupos** para abrir la hoja **Agregar asignación**.
 
-9.  Haga clic en hello **usuarios y grupos** selector de hello **Agregar asignación** hoja.
+9.  Haga clic en el selector **Usuarios y grupos** de la hoja **Agregar asignación**.
 
-10. Tipo de hello **nombre completo** o **dirección de correo electrónico** del usuario de hello está interesado en la asignación en hello **buscar por nombre o dirección de correo** cuadro de búsqueda.
+10. Escriba el **nombre completo** o la **dirección de correo electrónico** del usuario al que quiere asignar en el cuadro de búsqueda **Buscar por nombre o dirección de correo**.
 
-11. Mantenga el mouse sobre hello **usuario** en hello lista tooreveal una **casilla**. Haga clic en tooadd de foto o el logotipo de perfil de hello casilla toohello del siguiente usuario su usuario toohello **seleccionados** lista.
+11. Mantenga el puntero sobre el **usuario** en la lista para que aparezca una **casilla**. Haga clic en la casilla situada junto a la foto o el logotipo del perfil del usuario para agregar ese usuario a la lista de **seleccionados**.
 
-12. **Opcional:** si lo desea demasiado**agregar más de un usuario**, tipo de otro **nombre completo** o **dirección de correo electrónico** en hello **buscar por nombre o dirección de correo electrónico** cuadro de búsqueda y haga clic en hello casilla tooadd este usuario toohello **seleccionados** lista.
+12. **Opcional:** si desea **agregar más de un usuario**, escriba otro **nombre completo** o **dirección de correo electrónico** en el cuadro de búsqueda **Buscar por nombre o dirección de correo** y haga clic en la casilla para agregar ese usuario a la lista de **seleccionados**.
 
-13. Cuando haya terminado de seleccionar usuarios, haga clic en hello **seleccione** botón tooadd les toohello lista de usuarios y grupos toobe asignado toohello aplicación.
+13. Cuando haya terminado de seleccionar usuarios, haga clic en el botón **Seleccionar** para agregarlos a la lista de usuarios y grupos que se asignarán a la aplicación.
 
-14. **Opcional:** haga clic en hello **Seleccionar rol** selector Hola **Agregar asignación** hoja tooselect un rol tooassign toohello usuarios que ha seleccionado.
+14. **Opcional:** haga clic en el selector **Seleccionar rol** de la hoja **Agregar asignación** para seleccionar un rol que se asignará a los usuarios que ha seleccionado.
 
-15. Haga clic en hello **asignar** botón tooassign Hola aplicación toohello los usuarios seleccionados.
+15. Haga clic en el botón **Asignar** para asignar la aplicación a los usuarios seleccionados.
 
-Después de un breve período, los usuarios de Hola que seleccionó ser capaz de toolaunch estas aplicaciones en Hola Panel de acceso.
+Tras un breve período, los usuarios que seleccionó podrán iniciar estas aplicaciones en el panel de acceso.
 
-## <a name="if-these-troubleshooting-steps-do-not-hello-resolve-hello-issue"></a>Si estos pasos no Hola resolver el problema de Hola
+## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Si después de seguir estos pasos, el problema no se ha resuelto,
 
-Abra una incidencia de soporte técnico con hello siguiente información si está disponible:
+abra una incidencia de soporte técnico con la información siguiente si está disponible:
 
 -   Id. de error de correlación
 
@@ -525,5 +525,5 @@ Abra una incidencia de soporte técnico con hello siguiente información si est�
 -   Seguimientos de Fiddler
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Proporcionan aplicaciones de tooyour de inicio de sesión único con el Proxy de aplicación](active-directory-application-proxy-sso-using-kcd.md)
+[Proporcionar un inicio de sesión único a las aplicaciones con el proxy de aplicación](active-directory-application-proxy-sso-using-kcd.md)
 

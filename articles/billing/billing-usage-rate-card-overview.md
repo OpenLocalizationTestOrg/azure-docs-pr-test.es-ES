@@ -1,6 +1,6 @@
 ---
-title: "las API de facturación aaaAzure | Documentos de Microsoft"
-description: "Obtenga información acerca del uso de facturación de Azure y RateCard APIs, que son visiones tooprovide usado del consumo de recursos de Azure y tendencias."
+title: "API de facturación de Azure | Microsoft Docs"
+description: "Obtenga información sobre las API de RateCard y de uso de facturación de Azure que se usan para proporcionar información sobre el consumo de recursos y tendencias de Azure."
 services: 
 documentationcenter: 
 author: BryanLa
@@ -13,67 +13,65 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: billing
-ms.date: 04/18/2017
+ms.date: 10/9/2017
 ms.author: mobandyo;bryanla
-ms.openlocfilehash: b3214996cc3279f76fdc7f0dbd2059c3ae7bb15c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 26217d6f4e14166a89fbb561cb12d0af78ae6f4d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="use-azure-billing-apis-tooprogrammatically-get-insight-into-your-azure-usage"></a>Use las API de facturación de Azure tooprogrammatically obtener información sobre el uso de Azure
-Usar datos de uso y los recursos de toopull de las API de facturación de Azure en las herramientas de análisis de datos preferido. Hola, uso de recursos de Azure y RateCard APIs pueden ayudarle a predecir de forma precisa y administrar los costos. Hola API se implementan como un proveedor de recursos y la parte de la familia de Hola de API que expone hello Azure Resource Manager.  
+# <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Use las API de facturación de Azure para obtener información mediante programación sobre cómo usa Azure
+Use las API de facturación de Azure para extraer datos de uso y de recursos e incorporarlos en las herramientas de análisis de datos de su preferencia. Las API de RateCard y de uso de recursos de Azure pueden ayudarlo a predecir y administrar los costos de forma precisa. Las API se implementan como proveedor de recursos, como parte de la familia de API expuesta por Azure Resource Manager.  
 
 ## <a name="azure-invoice-download-api-preview"></a>API de descarga de facturas de Azure (vista previa)
-Una vez Hola [participación ha sido completada](billing-manage-access.md#opt-in), facturas de descarga con la versión de vista previa de hello [API factura](/rest/api/billing). Hola características incluyen:
+Una vez [completada la suscripción](billing-manage-access.md#opt-in), descargue facturas con la versión de vista previa de [API de facturas](/rest/api/billing). Las características incluyen:
 
-* **Control de acceso basada en roles de Azure** -configurar el acceso de directivas en hello [portal de Azure](https://portal.azure.com) o a través [cmdlets de PowerShell de Azure](/powershell/azure/overview) toospecify aplicaciones o que los usuarios puede obtener acceso datos de uso de la suscripción de toohello. Los autores de llamadas deben utilizar tokens de Azure Active Directory estándar para la autenticación. Agregar Hola llamador tooeither Hola lector de facturación, lector, propietario o Colaborador rol tooget acceso toohello datos de uso para una suscripción de Azure específica.
-* **Filtrado de fechas** -Hola de uso `$filter` tooget parámetro todas las facturas de hello en orden cronológico inverso por hello facturación fecha final del período. 
+* **Control de acceso basado en rol de Azure**: configure las directivas de acceso en [Azure Portal](https://portal.azure.com) o mediante [cmdlets de Azure PowerShell](/powershell/azure/overview) para especificar qué usuarios o aplicaciones pueden obtener acceso a los datos de uso de la suscripción. Los autores de llamadas deben utilizar tokens de Azure Active Directory estándar para la autenticación. Agregue el autor de la llamada al rol Lector de facturación, Lector, Propietario o Colaborador para que obtenga acceso a los datos de uso de una suscripción de Azure específica.
+* **Filtrado de fechas**: use el parámetro `$filter` para obtener todas las facturas en orden cronológico inverso por la fecha de finalización del periodo de facturación. 
 
 > [!NOTE]
-> Esta característica se encuentra en la primera versión de vista previa y puede modificarse sujeto toobackward incompatible. De momento no está disponible para determinadas ofertas de suscripción (EA, CSP, AIO no admitidas) y Azure Germany.
+> Esta característica se encuentra en su primera versión de vista previa y puede estar sujeta a cambios no compatibles con versiones anteriores. De momento no está disponible para determinadas ofertas de suscripción (EA, CSP, AIO no admitidas) y Azure Germany.
 
 ## <a name="azure-resource-usage-api-preview"></a>API de uso de recursos de Azure (vista previa)
-Hola utilice Azure [API de uso de recursos](https://msdn.microsoft.com/library/azure/mt219003) tooget los datos de consumo de Azure estimado. Hola API incluye:
+Use la [API de uso de recursos](https://msdn.microsoft.com/library/azure/mt219003) de Azure para obtener los datos estimados de consumo de Azure. La API incluye:
 
-* **Control de acceso basada en roles de Azure** -configurar el acceso de directivas en hello [portal de Azure](https://portal.azure.com) o a través [cmdlets de PowerShell de Azure](/powershell/azure/overview) toospecify aplicaciones o que los usuarios puede obtener acceso datos de uso de la suscripción de toohello. Los autores de llamadas deben utilizar tokens de Azure Active Directory estándar para la autenticación. Agregar Hola llamador tooeither Hola lector de facturación, lector, propietario o Colaborador rol tooget acceso toohello datos de uso para una suscripción de Azure específica.
-* **Agregaciones cada hora o diarias** : los autores de llamadas pueden especificar si desean sus datos de uso de Azure en depósitos cada hora o diarios. valor predeterminado de Hello es diaria.
-* **Metadatos de la instancia (incluye las etiquetas del recurso)** : obtener detalles de nivel de instancia como Hola uri de recurso completo (/ subscriptions / {Id. de suscripción} /..), Hola información del grupo de recursos y las etiquetas del recurso. Estos metadatos le ayuda a determinista y asignar mediante programación el uso por etiquetas de hello, para casos de uso como carga entre.
-* **Metadatos de recursos** -detalles de recursos como nombre de medidor de hello, medidor de la categoría, subcategoría de medidor, unidad y región permiten llamador Hola una mejor comprensión de lo que se consumió. También estamos trabajando terminología de metadatos de recursos tooalign en hello portal de Azure, Azure uso CSV, CSV, de facturación de EA y otras experiencias de acceso público, toolet correlacionar los datos a través de experiencias.
-* **Uso para todos los tipos de ofertas**: los datos de uso están disponibles para todos los tipos de ofertas, incluidos el pago por uso, MSDN, compromiso monetario, crédito monetario y EA.
+* **Control de acceso basado en rol de Azure**: configure las directivas de acceso en [Azure Portal](https://portal.azure.com) o mediante [cmdlets de Azure PowerShell](/powershell/azure/overview) para especificar qué usuarios o aplicaciones pueden obtener acceso a los datos de uso de la suscripción. Los autores de llamadas deben utilizar tokens de Azure Active Directory estándar para la autenticación. Agregue el autor de la llamada al rol Lector de facturación, Lector, Propietario o Colaborador para que obtenga acceso a los datos de uso de una suscripción de Azure específica.
+* **Agregaciones cada hora o diarias** : los autores de llamadas pueden especificar si desean sus datos de uso de Azure en depósitos cada hora o diarios. El valor predeterminado es diario.
+* **Metadatos de instancia (incluye etiquetas de recursos)**: obtenga detalles de nivel de instancia, como el URI de recurso completo (/subscriptions/{id-suscripción}/..), la información del grupo de recursos y las etiquetas de recursos. Estos metadatos lo ayudarán de forma determinista y mediante programación a asignar el uso mediante las etiquetas, para casos de uso como cargos cruzados.
+* **Metadatos de recursos**: detalles de recursos, como el nombre del medidor, la categoría del medidor, la subcategoría del medidor, la unidad y la región permiten que el autor de la llamada comprenda mejor lo que se ha consumido. También estamos trabajando para alinear la terminología de metadatos de recursos en todo Azure Portal, CSV de uso de Azure, CSV de facturación de EA y otras experiencias orientadas al público, para permitirle que pueda poner en correlación los datos en todas las experiencias.
+* **Uso para diferentes tipos de ofertas**: los datos de uso están disponibles para tipos de ofertas como el pago por uso, MSDN, compromiso monetario, crédito monetario y EA, excepto [CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-invoice#retrieve-usage-data-for-a-specific-subscription).
 
 ## <a name="azure-resource-ratecard-api-preview"></a>API de RateCard de recursos de Azure (vista previa)
-Hola de uso [API RateCard de recursos de Azure](https://msdn.microsoft.com/library/azure/mt219005) lista de Hola de tooget de recursos de Azure disponibles e información de precios estimado para cada uno. Hola API incluye:
+Use la [API de RateCard de recursos de Azure](https://msdn.microsoft.com/library/azure/mt219005) para obtener la lista de recursos disponibles de Azure y una información de precios estimada para cada uno. La API incluye:
 
-* **Control de acceso basado en roles Azure** -configurar las directivas de acceso en hello [portal de Azure](https://portal.azure.com) o a través [cmdlets de PowerShell de Azure](/powershell/azure/overview) toospecify aplicaciones o que los usuarios puede obtener acceso toohello RateCard datos. Los autores de llamadas deben utilizar tokens de Azure Active Directory estándar para la autenticación. Agregar Hola llamador tooeither Hola lector, el propietario o Colaborador rol tooget acceso toohello datos de uso para una suscripción de Azure.
-* **Compatibilidad con ofertas de pago por uso, MSDN, compromiso monetario y crédito monetario (no compatible con EA)**: esta API proporciona información de tarifas de nivel de oferta de Azure.  autor de llamada de Hola de esta API debe pasar las tasas y detalles de tooget información del recurso de la oferta de Hola. Estamos tasas EA tooprovide actualmente no es posible porque EA ofertas han personalizado las tasas por la inscripción. 
+* **Control de acceso basado en rol de Azure**: configure las directivas de acceso en [Azure Portal](https://portal.azure.com) o mediante [cmdlets de Azure PowerShell](/powershell/azure/overview) para especificar qué usuarios o aplicaciones pueden obtener acceso a los datos de RateCard. Los autores de llamadas deben utilizar tokens de Azure Active Directory estándar para la autenticación. Agregue el autor de la llamada al rol Lector, Propietario o Colaborador para que obtenga acceso a los datos de uso de una suscripción de Azure determinada.
+* **Compatibilidad con ofertas de pago por uso, MSDN, compromiso monetario y crédito monetario (no compatible con EA y [CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-pricelist#get-prices-by-using-the-azure-rate-card))**: esta API proporciona información de tarifas de nivel de oferta de Azure.  El autor de llamada de esta API debe pasar la información de oferta para obtener detalles y tarifas de recursos Actualmente no podemos proporcionar tarifas de EA porque las ofertas de EA tienen tarifas personalizadas por inscripción. 
 
 ## <a name="scenarios"></a>Escenarios
-Estos son algunos de los escenarios de Hola que son posibles con combinación de Hola de uso de Hola y Hola RateCard APIs:
+Éstos son algunos de los escenarios posibles con la combinación de las API de uso y de RateCard:
 
-* **Azure gastará durante el mes de hello** -combinación de Hola de uso de hello uso y RateCard APIs tooget una mejor percepción en la nube dedicar durante los meses de Hola. Puede analizar Hola cada hora y las estimaciones de depósitos diarias de uso y carga.
-* **Configurar alertas** : usar hello uso y hello tooget RateCard APIs estimación de consumo de la nube y los cargos y configurar alertas basada en moneda o basada en recursos.
-* **Predecir factura** : Get su consumo estimado y la nube invierte y aplican toopredict algoritmos de aprendizaje qué factura Hola sería final Hola de hello ciclo de facturación automático.
-* **Consumo previo análisis de costos** : usar Hola API RateCard toopredict sería la cantidad de la factura para su uso esperado cuando se mueve el tooAzure de las cargas de trabajo. Si tiene cargas de trabajo existentes en otras nubes o nubes privadas, también se puede asignar su uso con hello Azure tasas tooget dedique una mejor estimación de Azure. Esto deja de estimación Hola toopivot de capacidad en la oferta y comparar y contrastar entre tipos de oferta distintos de hello más allá de pago por uso, como un compromiso monetario y crédito monetario. Hola API también le ofrece Hola capacidad toosee costo diferencias por región y permitiéndole toodo un toohelp de análisis de hipótesis costo tomar decisiones de implementación.
+* **Gasto en Azure durante el mes**: use la combinación de las API de uso y de RateCard para obtener información más detallada sobre el gasto por usar la nube durante el mes. Puede analizar los depósitos por hora y diarios de las estimaciones de usos y cargos.
+* **Configurar alertas**: use las API de uso y de RateCard para obtener una estimación del consumo de la nube y los cargos, y configure alertas basadas en recursos o basadas en importes monetarios.
+* **Predicción de facturas**: obtenga el gasto en la nube y el consumo estimados, y aplique algoritmos de aprendizaje automático para poder predecir cuál sería la factura al final del ciclo de facturación.
+* **Análisis de costos previos al consumo**: use la API de RateCard para predecir cuál sería el importe de su factura para el uso esperado cuando mueva las cargas de trabajo a Azure. Si tiene cargas de trabajo existentes en otras nubes o nubes privadas, también puede asignar su uso con las tarifas de Azure para obtener una mejor estimación del gasto de Azure. Esta estimación le permite tener la capacidad de dinamizar una oferta y de comparar y contrastar los distintos tipos de ofertas que van más allá del pago por uso, como son el compromiso monetario y el crédito monetario. La API también le ofrece la posibilidad de ver las diferencias de costos por región y le permite realizar un análisis de hipótesis para ayudarlo a tomar decisiones en cuanto a la implementación.
 * **Análisis de hipótesis** -
   
-  * Puede determinar si es más cargas de trabajo de toorun rentable en otra región o en otra configuración del programa Hola a recursos de Azure. Recursos de Azure los costos pueden diferir según Hola región de Azure que está usando.
+  * Puede determinar si es más rentable ejecutar las cargas de trabajo en otra región o en otra configuración del recurso de Azure. Los costos de los recursos de Azure pueden variar en función de la región de Azure que usa.
   * También puede determinar si otro tipo de oferta de Azure ofrece una mejor tarifa en un recurso de Azure.
   
 ## <a name="partner-solutions"></a>Soluciones de socios
-[Uso de Microsoft Azure y RateCard API habilitar Cloudyn tooProvide ITFM para los clientes](billing-usage-rate-card-partner-solution-cloudyn.md) describe la experiencia de integración de hello ofrecida por socios de API de facturación de Azure [Cloudyn](https://www.cloudyn.com/microsoft-azure/). En este artículo se habla sobre sus experiencias y se incluye un vídeo que muestra cómo puede utilizar Cloudyn y Hola visión tooget de las API de facturación de Azure de datos de consumo de Azure.
-
-[Cloud Cruiser y la integración de la API de facturación de Microsoft Azure](billing-usage-rate-card-partner-solution-cloudcruiser.md) describe cómo [Express de Cloud Cruiser para Azure Pack](http://www.cloudcruiser.com/partners/microsoft/) funciona directamente desde el portal de Windows Azure Pack (WAP) Hola. Puede administrar sin ningún problema ambos aspectos operativos y financieros de Hola de hello Microsoft hospedada o privada nube pública de Azure desde una sola interfaz de usuario.   
+[Integración de Cloud Cruiser y de las API de facturación de Microsoft Azure](billing-usage-rate-card-partner-solution-cloudcruiser.md) describe cómo [Cloud Cruiser Express para el paquete de Azure](http://www.cloudcruiser.com/partners/microsoft/) funciona directamente desde el portal de Windows Azure Pack (WAP). Puede administrar sin ningún problema los aspectos operativos y financieros de la nube pública hospedada o privada de Microsoft Azure desde una interfaz de usuario única.   
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Consulte los ejemplos de código de hello en GitHub:
+* Vea los ejemplos de código en GitHub:
   * [Ejemplo de código de API de facturas](https://go.microsoft.com/fwlink/?linkid=845124)
 
   * [Ejemplo de código de API de uso](https://github.com/Azure-Samples/billing-dotnet-usage-api)
 
   * [Ejemplo de código de API de RateCard](https://github.com/Azure-Samples/billing-dotnet-ratecard-api)
 
-* toolearn más información acerca de hello Azure Resource Manager, consulte [Azure Resource Manager Overview](../azure-resource-manager/resource-group-overview.md). 
+* Para más información sobre Azure Resource Manager, vea [Información general de Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). 
 
-* Para obtener más información sobre suite Hola de herramientas dedicar toohelp es necesario obtener una descripción de la nube, consulte el artículo de Gartner hello [Guía de mercado para herramientas de administración de financieros TI (ITFM)](http://www.gartner.com/technology/reprints.do?id=1-212F7AL&ct=140909&st=sb).
+* Para más información sobre el conjunto de herramientas necesarias para ayudarlo a comprender el gasto en la nube, consulte el artículo de Gartner [Guía de mercado para las herramientas de administración financiera de IT (ITFM)](http://www.gartner.com/technology/reprints.do?id=1-212F7AL&ct=140909&st=sb).
 

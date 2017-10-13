@@ -1,6 +1,6 @@
 ---
-title: "aaaSecure tener acceso a las aplicaciones lógicas tooAzure | Documentos de Microsoft"
-description: "Aumenta la seguridad para la protección de acceso tootriggers, entradas y salidas, parámetros de acción y servicios que se utilizan con flujos de trabajo en las aplicaciones lógicas de Azure."
+title: Acceso seguro a Azure Logic Apps | Microsoft Docs
+description: "Aumente la seguridad para proteger el acceso a desencadenadores, entradas y salidas, parámetros de acción y servicios que se utilizan con flujos de trabajo en Azure Logic Apps."
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: jeffhollan
@@ -14,80 +14,80 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/22/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: abda2179e4cc2d2295cd8332ec017c848a456264
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 45a4e476f930e0f5f6633dc5b3b35b66dc6dfa20
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="secure-access-tooyour-logic-apps"></a>Proteger el acceso a las aplicaciones lógicas tooyour
+# <a name="secure-access-to-your-logic-apps"></a>Acceso seguro a aplicaciones lógicas
 
-Hay muchas herramientas toohelp disponibles que proteja la aplicación lógica.
+Hay muchas herramientas disponibles que le ayudarán a proteger la aplicación lógica.
 
-* Protección de acceso tootrigger una aplicación lógica (desencadenador de solicitud de HTTP)
-* Protección de acceso toomanage, editar o leer una lógica de aplicación
-* Protección de acceso toocontents de entradas y salidas para una ejecución
+* Protección del acceso para desencadenar una aplicación lógica (desencadenador de solicitud de HTTP)
+* Protección del acceso para administrar, editar o leer una aplicación lógica
+* Protección del acceso al contenido de entradas y salidas para una ejecución
 * Protección de parámetros o entradas en las acciones de un flujo de trabajo
-* Protección de acceso tooservices que reciben las solicitudes de un flujo de trabajo
+* Protección del acceso a los servicios que reciben solicitudes de un flujo de trabajo
 
-## <a name="secure-access-tootrigger"></a>Acceso seguro tootrigger
+## <a name="secure-access-to-trigger"></a>Acceso seguro al desencadenador
 
-Cuando se trabaja con una aplicación de la lógica que se activa en una solicitud HTTP ([solicitar](../connectors/connectors-native-reqres.md) o [Webhook](../connectors/connectors-native-webhook.md)), puede restringir el acceso para que solo los clientes autorizados pueden activar la aplicación de la lógica de hello. Todas las solicitudes en una aplicación lógica se cifrarán y se protegerán mediante SSL.
+Cuando se trabaja con una aplicación lógica que se activa con una solicitud HTTP ([solicitud](../connectors/connectors-native-reqres.md) o [webhook](../connectors/connectors-native-webhook.md)), puede restringir el acceso a aquellos clientes autorizados que pueden activar la aplicación lógica. Todas las solicitudes en una aplicación lógica se cifrarán y se protegerán mediante SSL.
 
 ### <a name="shared-access-signature"></a>Firma de acceso compartido
 
-Cada extremo de la solicitud para una aplicación de lógica incluye un [firma de acceso compartido (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) como parte de la dirección URL de Hola. Cada dirección URL contiene un parámetro de consulta `sp`, `sv` y `sig`. Los permisos se especifican mediante `sp`, y corresponden a los métodos de tooHTTP permitidos, `sv` es toogenerate de la versión utilizada de hello, y `sig` es tooauthenticate usa acceso tootrigger. firma de Hola se genera mediante el algoritmo de hello SHA256 con una clave secreta en todas las rutas de acceso de dirección URL de Hola y propiedades. clave secreta de Hello nunca se exponen y se publica y se mantienen cifrados y almacenados como parte de la aplicación de la lógica de hello. La aplicación lógica sólo autoriza a los desencadenadores que contienen una firma válida creada con la clave secreta de Hola.
+Cada punto de conexión de la solicitud para una aplicación lógica incluye una [Firma de acceso compartido](../storage/common/storage-dotnet-shared-access-signature-part-1.md) (SAS) como parte de la dirección URL. Cada dirección URL contiene un parámetro de consulta `sp`, `sv` y `sig`. Los permisos se especifican mediante `sp` y se corresponden a los métodos HTTP permitidos, `sv` es la versión utilizada para generar y `sig` se usa para autenticar el acceso al desencadenador. La firma se genera mediante el algoritmo SHA256 con una clave secreta en todas las rutas de acceso de direcciones URL y propiedades. La clave secreta nunca se expone ni se publica, y se mantiene cifrada y almacenada como parte de la aplicación lógica. La aplicación lógica solo autoriza desencadenadores que contienen una firma válida creada con la clave secreta.
 
 #### <a name="regenerate-access-keys"></a>Regenerar las claves de acceso
 
-Puede volver a generar una nueva clave segura en cualquier momento a través del portal de Azure o la API de REST de Hola. Todas las direcciones URL actuales que se generaron anteriormente usando Hola antigua clave son aplicación de lógica de hello toofire invalidado y ya no está autorizado.
+Puede volver a generar una nueva clave segura en cualquier momento mediante la API de REST o Azure Portal. Todas las direcciones URL actuales generadas anteriormente con la clave antigua se invalidan y dejan de estar autorizadas para activar la aplicación lógica.
 
-1. Hola portal de Azure, abra la aplicación de lógica de hello desea tooregenerate una clave
-1. Haga clic en hello **teclas de acceso** elemento de menú en **configuración**
-1. Elegir tooregenerate clave hello y proceso de hello completa
+1. En Azure Portal, abra la aplicación lógica para la que desea volver a generar una clave.
+1. Haga clic en el elemento de menú **Access Keys** (Claves de acceso) en **Settings** (Configuración).
+1. Elija la clave que se va a regenerar y complete el proceso.
 
-Recuperar después de la regeneración de las direcciones URL se firman con la nueva clave de acceso Hola.
+Las direcciones URL que se recuperan tras la regeneración se firman con la nueva clave de acceso.
 
 #### <a name="creating-callback-urls-with-an-expiration-date"></a>Creación de direcciones URL de devolución de llamada con una fecha de expiración
 
-Si va a compartir la dirección URL de hello con otras entidades, puede generar direcciones URL con determinadas claves y fechas de caducidad según sea necesario. Puede, a continuación, perfectamente recorrer las claves, o asegúrese de toofire de acceso a una aplicación está restringido tooa cierto timespan. Puede especificar una fecha de expiración para una dirección URL a través de hello [las aplicaciones lógicas de API de REST](https://docs.microsoft.com/rest/api/logic/workflowtriggers):
+Si va a compartir la dirección URL con terceros, puede generar direcciones URL con claves específicas y fechas de caducidad según sea necesario. De esta forma puede acumular claves sin problema, o asegurarse de que el acceso para activar una aplicación está restringido a un determinado intervalo de tiempo. Puede especificar una fecha de expiración para una dirección URL a través de la [API de REST de Logic Apps](https://docs.microsoft.com/rest/api/logic/workflowtriggers):
 
 ``` http
 POST 
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/listCallbackUrl?api-version=2016-06-01
 ```
 
-En el cuerpo de hello, incluir propiedad hello `NotAfter` como una cadena de fecha JSON, que devuelve una dirección URL de devolución de llamada que solo es válida hasta hello `NotAfter` fecha y hora.
+En el cuerpo, incluya la propiedad `NotAfter` como una cadena de fecha JSON, que devuelve una dirección URL de devolución de llamada que solo es válida hasta la fecha y hora `NotAfter`.
 
 #### <a name="creating-urls-with-primary-or-secondary-secret-key"></a>Creación de direcciones URL con clave secreta principal o secundaria
 
-Cuando se genera o lista de direcciones URL de devolución de llamada para los desencadenadores basados en la solicitud, también puede especificar la dirección URL de toouse clave toosign Hola.  Puede generar una dirección URL firmada por una clave específica a través de hello [las aplicaciones lógicas de API de REST](https://docs.microsoft.com/rest/api/logic/workflowtriggers) como se indica a continuación:
+Al generar o enumerar direcciones URL de devolución de llamada para desencadenadores basados en solicitud, también puede especificar qué clave se va a usar para firmar la dirección URL.  Puede generar una dirección URL firmada por una clave específica a través de la [API de REST de Logic Apps](https://docs.microsoft.com/rest/api/logic/workflowtriggers), tal como se indica a continuación:
 
 ``` http
 POST 
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/workflows/{workflowName}/triggers/{triggerName}/listCallbackUrl?api-version=2016-06-01
 ```
 
-En el cuerpo de hello, incluir propiedad hello `KeyType` como `Primary` o `Secondary`.  Esto devuelve una dirección URL firmada por la clave segura Hola especificada.
+En el cuerpo, incluya la propiedad `KeyType` como `Primary` o `Secondary`.  Esto devuelve una dirección URL firmada por la clave segura especificada.
 
 ### <a name="restrict-incoming-ip-addresses"></a>Restricción de las direcciones IP entrantes
 
-Además toohello firma de acceso compartido, puede llamar toorestrict llamar a una aplicación lógica solo desde clientes específicos.  Por ejemplo, si administra el punto de conexión a través de administración de API de Azure, puede restringir la lógica de hello tooonly aplicación aceptar la solicitud de hello cuando solicitud de hello provenga de hello dirección IP de instancia de administración de API.
+Además de la Firma de acceso compartido, es posible que desee restringir las llamadas a una aplicación lógica solo desde clientes específicos.  Por ejemplo, si administra el punto de conexión a través de Azure API Management, puede restringir la aplicación lógica para que acepte únicamente la solicitud cuando esta provenga de la dirección IP de la instancia de API Management.
 
-Esta configuración se puede configurar en la configuración de la aplicación hello lógica:
+Esta opción se puede configurar en la configuración de la aplicación lógica:
 
-1. Hola portal de Azure, abra la aplicación de lógica de hello desea tooadd restricciones de dirección IP
-1. Haga clic en hello **configuración de control de acceso** elemento de menú en **configuración**
-1. Especificar lista de Hola de toobe de intervalos de direcciones IP aceptada por el desencadenador de Hola
+1. En Azure Portal, abra la aplicación lógica a la que desea agregar las restricciones de dirección IP
+1. Haga clic en el elemento de menú **Access control configuration** (Configuración de control de acceso) en **Settings** (Configuración).
+1. Especifique la lista de intervalos de direcciones IP que van a ser aceptados por el desencadenador.
 
-Un intervalo IP válido toma el formato de hello `192.168.1.1/255`. Si desea que Hola lógica aplicación tooonly incendio como una aplicación de lógica anidadas, seleccione hello **otras aplicaciones de la lógica** opción. Esta opción escribe un recurso de toohello matriz vacía, lo que significa que sólo las llamadas realizadas desde Hola propio servicio incendio (aplicaciones de la lógica principal) correctamente.
+Un intervalo IP válido adopta el formato `192.168.1.1/255`. Si quiere que la aplicación lógica solo se active como una aplicación lógica anidada, seleccione la opción **Solo otras aplicaciones lógicas**. Esta opción escribe una matriz vacía en el recurso, lo que significa que solo las llamadas realizadas desde el mismo servicio (aplicaciones lógicas principales) se activan correctamente.
 
 > [!NOTE]
-> Todavía puede ejecutar una aplicación de lógica con un desencadenador de solicitud a través de la API de REST de Hola / administración `/triggers/{triggerName}/run` independientemente de IP. Este escenario requiere autenticación contra Hola API de REST de Azure, y todos los eventos aparecería en hello registro de auditoría de Azure. Establezca las directivas de control de acceso en consecuencia.
+> Todavía puede ejecutar una aplicación de lógica con un desencadenador de solicitud a través de la API de REST/Management `/triggers/{triggerName}/run`, con independencia de la IP. Este escenario requiere la autenticación con la API de REST de Azure y todos los eventos podrían aparecer en el registro de auditoría de Azure. Establezca las directivas de control de acceso en consecuencia.
 
-#### <a name="setting-ip-ranges-on-hello-resource-definition"></a>Establecer los intervalos de IP en la definición de recursos de Hola
+#### <a name="setting-ip-ranges-on-the-resource-definition"></a>Establecimiento de los intervalos de IP en la definición de recursos
 
-Si usas un [plantilla de implementación](logic-apps-create-deploy-template.md) tooautomate las implementaciones, la configuración de intervalos IP de hello pueden configurarse en la plantilla de recursos de Hola.  
+Si está usando una [plantilla de implementación](logic-apps-create-deploy-template.md) para automatizar las implementaciones, los valores del intervalo de IP pueden configurarse en la plantilla de recursos.  
 
 ``` json
 {
@@ -115,32 +115,32 @@ Si usas un [plantilla de implementación](logic-apps-create-deploy-template.md) 
 
 ### <a name="adding-azure-active-directory-oauth-or-other-security"></a>Adición de Azure Active Directory, OAuth u otra seguridad
 
-tooadd autorización más protocolos encima de una aplicación lógica, [administración de API de Azure](https://azure.microsoft.com/services/api-management/) ofrece enriquecido supervisión, seguridad, directivas y documentación para cualquier extremo con hello capacidad tooexpose una aplicación lógica como una API. Administración de API de Azure puede exponer un punto de conexión público o privado para la aplicación de lógica de hello, que puede usar Azure Active Directory, certificado, OAuth u otros estándares de seguridad. Cuando se recibe una solicitud, administración de API de Azure reenvía Hola solicitud toohello lógica aplicación (realizando las transformaciones necesarias o restricciones sobre la marcha). Puede usar el intervalo de IP entrante Hola configuración en tooonly de aplicación lógica de hello permite desencadena toobe de aplicación lógica de hello de la API de administración de.
+Para agregar más protocolos de autorización basados en una aplicación lógica, [Azure API Management](https://azure.microsoft.com/services/api-management/) ofrece supervisión enriquecida, seguridad, directivas y documentación para cualquier punto de conexión con la funcionalidad de exponer una aplicación lógica como una API. Azure API Management puede exponer un punto de conexión público o privado para la aplicación lógica, que podría usar Azure Active Directory, certificados, OAuth u otros estándares de seguridad. Cuando se recibe una solicitud, Azure API Management la reenvía a la aplicación lógica (realizando las transformaciones o restricciones necesarias sobre la marcha). Puede usar los valores del intervalo IP entrantes en la aplicación lógica para permitir solo que la aplicación lógica se desencadene desde API Management.
 
-## <a name="secure-access-toomanage-or-edit-logic-apps"></a>Proteger el acceso a las aplicaciones lógicas toomanage o editar
+## <a name="secure-access-to-manage-or-edit-logic-apps"></a>Protección del acceso para administrar o modificar aplicaciones lógicas
 
-Puede restringir las operaciones de toomanagement de acceso en una aplicación de la lógica para que sólo determinados usuarios o grupos estén tooperform capaz de operaciones en recursos de Hola. Las aplicaciones lógicas usan hello Azure [Control de acceso basado en roles (RBAC)](../active-directory/role-based-access-control-configure.md) de características y puede personalizarse con hello mismas herramientas.  Hay algunas funciones integradas que puede asignar a los miembros de su suscripción tooas bien:
+Puede restringir el acceso a las operaciones de administración en una aplicación lógica para que solo determinados usuarios o grupos puedan realizar operaciones en el recurso. Las aplicaciones lógicas usan la característica de Azure [Control de acceso basado en rol (RBAC)](../active-directory/role-based-access-control-configure.md), y se puede personalizar con las mismas herramientas.  Hay algunas funciones integradas que puede asignar también a los miembros de la suscripción:
 
-* **Colaborador de aplicación lógica** -proporciona acceso tooview, editar y actualizar una aplicación de lógica.  No se puede quitar el recurso de Hola o realizar operaciones de administración.
-* **Operador de aplicación lógica** : puede ver la aplicación de la lógica de Hola y el historial de ejecución y habilitar o deshabilitar.  No se puede editar o actualizar la definición de Hola.
+* **Colaborador de aplicación lógica**: proporciona acceso para consultar, modificar y actualizar una aplicación lógica.  No puede quitar el recurso ni realizar operaciones de administración.
+* **Operador de aplicación lógica**: puede consultar la aplicación lógica y el historial de ejecución, así como habilitarla o deshabilitarla.  No puede modificar ni actualizar la definición.
 
-También puede usar [bloqueo de recurso de Azure](../azure-resource-manager/resource-group-lock-resources.md) tooprevent cambiar o eliminar aplicaciones lógicas. Esta capacidad es tooprevent valiosos recursos de producción de cambios o eliminaciones.
+También puede usar el [bloqueo de recurso de Azure](../azure-resource-manager/resource-group-lock-resources.md) para evitar cambiar o eliminar aplicaciones lógicas. Esta funcionalidad es útil para evitar que los recursos de producción se modifiquen o eliminen.
 
-## <a name="secure-access-toocontents-of-hello-run-history"></a>Acceso seguro toocontents de hello historial de ejecución
+## <a name="secure-access-to-contents-of-the-run-history"></a>Protección del acceso al contenido del historial de ejecución
 
-Puede restringir el acceso toocontents de entradas o salidas de intervalos de direcciones IP de anterior se ejecuta toospecific.  
+Puede restringir el acceso al contenido de entradas o salidas de ejecuciones anteriores a intervalos de direcciones IP específicos.  
 
-Todos los datos dentro de una ejecución de flujo de trabajo se cifran en tránsito y en reposo. Cuando se realiza un historial de toorun de llamada, el servicio de hello autentica la solicitud de Hola y proporciona vínculos toohello solicitud y respuesta entradas y salidas de. Este vínculo puede ser protegidas solicitudes para que solamente tooview contenido de un intervalo de direcciones IP designado devolver el contenido de Hola. Puede utilizar esta funcionalidad para el control de acceso adicional. Incluso puede especificar una dirección IP como `0.0.0.0` para que nadie tenga acceso a las entradas o salidas. Sólo un usuario con permisos de administrador puede quitar esta restricción, proporcionando la posibilidad de Hola para contenido de acceso 'just-in-time' tooworkflow.
+Todos los datos dentro de una ejecución de flujo de trabajo se cifran en tránsito y en reposo. Cuando se realiza una llamada al historial de ejecución, el servicio autentica la solicitud y proporciona vínculos a las entradas y salidas de las solicitudes y respuestas. Este vínculo se puede proteger para que solo las solicitudes para consultar contenido de un intervalo de direcciones IP designado devuelvan contenido. Puede utilizar esta funcionalidad para el control de acceso adicional. Incluso puede especificar una dirección IP como `0.0.0.0` para que nadie tenga acceso a las entradas o salidas. Solo un usuario con permisos de administrador puede quitar esta restricción, ofreciendo la posibilidad de un acceso 'Just-in-time' al contenido de flujo de trabajo.
 
-Este valor se puede configurar en la configuración de recursos de Hola de hello portal de Azure:
+Esta opción se puede configurar en la configuración de los recursos de Azure Portal:
 
-1. Hola portal de Azure, abra la aplicación de lógica de hello desea tooadd restricciones de dirección IP
-1. Haga clic en hello **configuración de control de acceso** elemento de menú en **configuración**
-1. Especificar lista de Hola de intervalos de direcciones IP para toocontent de acceso
+1. En Azure Portal, abra la aplicación lógica a la que desea agregar las restricciones de dirección IP
+1. Haga clic en el elemento de menú **Access control configuration** (Configuración de control de acceso) en **Settings** (Configuración).
+1. Especifique la lista de intervalos de direcciones IP para acceder al contenido.
 
-#### <a name="setting-ip-ranges-on-hello-resource-definition"></a>Establecer los intervalos de IP en la definición de recursos de Hola
+#### <a name="setting-ip-ranges-on-the-resource-definition"></a>Establecimiento de los intervalos de IP en la definición de recursos
 
-Si usas un [plantilla de implementación](logic-apps-create-deploy-template.md) tooautomate las implementaciones, la configuración de intervalos IP de hello pueden configurarse en la plantilla de recursos de Hola.  
+Si está usando una [plantilla de implementación](logic-apps-create-deploy-template.md) para automatizar las implementaciones, los valores del intervalo de IP pueden configurarse en la plantilla de recursos.  
 
 ``` json
 {
@@ -167,19 +167,19 @@ Si usas un [plantilla de implementación](logic-apps-create-deploy-template.md) 
 
 ## <a name="secure-parameters-and-inputs-within-a-workflow"></a>Parámetros seguros y entradas dentro de un flujo de trabajo
 
-Puede ser conveniente tooparameterize algunos aspectos de una definición de flujo de trabajo para la implementación a través de entornos. Además, algunos parámetros pueden ser parámetros de seguros no desea tooappear al editar un flujo de trabajo, como un identificador de cliente y el secreto del cliente para [autenticación de Azure Active Directory](../connectors/connectors-native-http.md#authentication) de una acción HTTP.
+Puede desear parametrizar algunos aspectos de una definición de flujo de trabajo para una implementación a través de entornos. Además, algunos parámetros pueden ser parámetros seguros que no desea que aparezcan al editar un flujo de trabajo, como un identificador de cliente y el secreto del cliente para la [autenticación de Azure Active Directory](../connectors/connectors-native-http.md#authentication) de una acción HTTP.
 
 ### <a name="using-parameters-and-secure-parameters"></a>Uso de parámetros y parámetros seguros
 
-Hola tooaccess valor de un parámetro de recurso en tiempo de ejecución, hello [lenguaje de definición de flujo de trabajo](http://aka.ms/logicappsdocs) proporciona un `@parameters()` operación. Asimismo, puede [especificar parámetros de plantilla de implementación de recursos de hello](../azure-resource-manager/resource-group-authoring-templates.md#parameters). Sin embargo, si especifica el tipo de parámetro hello como `securestring`, parámetro hello no se devolverá con rest Hola Hola de definición de recurso y no será accesible mediante la visualización de los recursos de hello después de la implementación.
+Para acceder al valor de un parámetro de recurso en tiempo de ejecución, el [lenguaje de definición de flujo de trabajo](http://aka.ms/logicappsdocs) proporciona una operación `@parameters()`. Además, puede [especificar parámetros en la plantilla de implementación de recursos](../azure-resource-manager/resource-group-authoring-templates.md#parameters). No obstante, si especifica el tipo de parámetro como `securestring`, el parámetro no se devolverá con el resto de la definición de recurso, lo que significa que no será accesible al visualizar el recurso después de la implementación.
 
 > [!NOTE]
-> Si el parámetro se utiliza en encabezados de Hola o el cuerpo de una solicitud, parámetro hello puede verse obtengan acceso al historial de hello ejecutar y solicitud HTTP de salida. Asegúrese de tooset seguro de las directivas de acceso al contenido en consecuencia.
-> Los encabezados de autorización nunca son visibles a través de entradas o salidas. Por lo que si se utiliza el secreto de hello no existe, secreto de hello no está recuperable.
+> Si el parámetro se usa en los encabezados o en el cuerpo de una solicitud, el parámetro se puede ver al acceder al historial de ejecución y a la solicitud HTTP saliente. Asegúrese de configurar las directivas de acceso al contenido en consecuencia.
+> Los encabezados de autorización nunca son visibles a través de entradas o salidas. Por tanto, si el secreto se usa ahí, este no se puede recuperar.
 
 #### <a name="resource-deployment-template-with-secrets"></a>Plantilla de implementación de recursos con secretos
 
-Hello en el ejemplo siguiente se muestra una implementación que hace referencia a un parámetro de secure `secret` en tiempo de ejecución. En un archivo de parámetros separados, puede especificar valor de entorno de Hola para hello `secret`, o use [Azure Resource Manager KeyVault](../azure-resource-manager/resource-manager-keyvault-parameter.md) tooretrieve secretos en tiempo de implementación.
+A continuación se presenta un ejemplo en que se muestra una implementación que hace referencia a un parámetro seguro de `secret` en tiempo de ejecución. En un archivo de parámetros independiente podría especificar el valor de entorno para `secret` o usar el [almacén de claves de Azure Resource Manager](../azure-resource-manager/resource-manager-keyvault-parameter.md) para recuperar los secretos en tiempo de implementación.
 
 ``` json
 {
@@ -210,7 +210,7 @@ Hello en el ejemplo siguiente se muestra una implementación que hace referencia
                 "headers": {
                   "Authorization": "@parameters('secret')"
                 },
-                "body": "This is hello request"
+                "body": "This is the request"
               },
               "runAfter": {}
             }
@@ -244,33 +244,29 @@ Hello en el ejemplo siguiente se muestra una implementación que hace referencia
 }
 ```
 
-## <a name="secure-access-tooservices-receiving-requests-from-a-workflow"></a>Proteger el acceso a las solicitudes de recepción de tooservices de un flujo de trabajo
+## <a name="secure-access-to-services-receiving-requests-from-a-workflow"></a>Protección del acceso a los servicios mediante solicitudes de un flujo de trabajo
 
-Hay segura de que cualquier aplicación de lógica de hello de punto de conexión debe tooaccess toohelp de muchas maneras.
+Hay muchas maneras de ayudar a proteger los puntos de conexión a los que la aplicación lógica necesita acceder.
 
 ### <a name="using-authentication-on-outbound-requests"></a>Uso de la autenticación en las solicitudes salientes
 
-Cuando se trabaja con un HTTP, HTTP + Swagger (API abierta) o Webhook acción, puede agregar solicitud de toohello de autenticación que se envían. Podría incluir la autenticación básica, la autenticación de certificados o la autenticación de Azure Active Directory. Obtener más información sobre cómo tooconfigure esta autenticación puede encontrarse [en este artículo](../connectors/connectors-native-http.md#authentication).
+Cuando se trabaja con una acción HTTP, HTTP + Swagger (Open API) o webhook acción, puede agregar autenticación a la solicitud que se envía. Podría incluir la autenticación básica, la autenticación de certificados o la autenticación de Azure Active Directory. Encontrará detalles sobre cómo configurar esta autenticación [en este artículo](../connectors/connectors-native-http.md#authentication).
 
-### <a name="restricting-access-toologic-app-ip-addresses"></a>Restringir el acceso toologic aplicación las direcciones IP
+### <a name="restricting-access-to-logic-app-ip-addresses"></a>Restricción del acceso a direcciones IP de aplicación lógica
 
-Todas las llamadas de las aplicaciones lógicas proceden de un conjunto específico de direcciones IP por región. Puede agregar un filtrado adicional tooonly Aceptar las solicitudes de los designa las direcciones IP. Para obtener una lista de esas direcciones IP, vea [Límites y configuración de Logic Apps](logic-apps-limits-and-config.md#configuration).
+Todas las llamadas de las aplicaciones lógicas proceden de un conjunto específico de direcciones IP por región. Puede agregar filtrado adicional para aceptar solo las solicitudes procedentes de esas direcciones IP designadas. Para obtener una lista de esas direcciones IP, vea [Límites y configuración de Logic Apps](logic-apps-limits-and-config.md#configuration).
 
 ### <a name="on-premises-connectivity"></a>Conectividad local
 
-Las aplicaciones lógicas proporcionan integración con varios tooprovide de servicios seguras y confiables comunicación local.
+Las aplicaciones lógicas proporcionan integración con varios servicios para ofrecer una comunicación local segura y de confianza.
 
 #### <a name="on-premises-data-gateway"></a>Puerta de enlace de datos local
 
-Muchos conectores administrados para las aplicaciones lógicas proporcionan una conectividad segura sistemas de tooon locales, como sistema de archivos, SQL, SharePoint, DB2 etc.. puerta de enlace de Hello transmite datos desde orígenes locales en los canales cifrados a través de hello Azure Service Bus. Todo el tráfico se origina como proteger el tráfico saliente desde el agente de puerta de enlace de Hola. Obtenga más información sobre [cómo funciona la puerta de enlace de datos de hello](logic-apps-gateway-install.md#gateway-cloud-service).
+Muchos de los conectores administrados de las aplicaciones lógicas proporcionan conectividad segura a sistemas locales, como el sistema de archivos, SQL, SharePoint o DB2, entre otros. La puerta de enlace retransmite datos desde orígenes locales en canales cifrados hasta Azure Service Bus. Todo el tráfico se origina como tráfico de salida seguro desde el agente de puerta de enlace. Más información sobre [cómo funciona la puerta de enlace de datos](logic-apps-gateway-install.md#gateway-cloud-service).
 
 #### <a name="azure-api-management"></a>Administración de API de Azure
 
-[Administración de API de Azure](https://azure.microsoft.com/services/api-management/) tiene opciones de conectividad local, incluida la integración de ExpressRoute y VPN de sitio a sitio para sistemas de tooon locales de proxy y la comunicación seguras. Hola diseñador la lógica de aplicación, puede seleccionar rápidamente una API expuesta de administración de API de Azure dentro de un flujo de trabajo, proporciona acceso rápido sistemas tooon locales.
-
-#### <a name="hybrid-connections-from-azure-app-service"></a>Conexiones híbridas desde Azure App Service
-
-Puede usar características de conexión híbrida de hello locales para la API de Azure y Web aplicaciones toocommunicate en instalaciones locales.  Obtener más información sobre las conexiones híbridas y cómo puede encontrarse tooconfigure [en este artículo](../app-service-web/web-sites-hybrid-connection-get-started.md).
+[Azure API Management](https://azure.microsoft.com/services/api-management/) tiene opciones de conectividad local, incluida la integración de ExpressRoute y VPN de sitio a sitio para el proxy protegido y la comunicación en los sistemas locales. En el Diseñador de aplicación lógica, puede seleccionar rápidamente una API expuesta desde Azure API Management dentro de un flujo de trabajo, proporcionando acceso rápido a los sistemas locales.
 
 ## <a name="next-steps"></a>Pasos siguientes
 [Creación de una plantilla de implementación](logic-apps-create-deploy-template.md)  

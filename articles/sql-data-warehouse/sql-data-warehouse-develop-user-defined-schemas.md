@@ -1,5 +1,5 @@
 ---
-title: "esquemas definidos por el aaaUser en el almacén de datos de SQL | Documentos de Microsoft"
+title: Esquemas definidos por el usuario en SQL Data Warehouse | Microsoft Docs
 description: Sugerencias para usar los esquemas Transact-SQL en el Almacenamiento de datos SQL Azure para desarrollar soluciones.
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,39 +15,39 @@ ms.workload: data-services
 ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
-ms.openlocfilehash: c411d6fed68e67c444a5871eab06182eaeb6dbf5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: dfb58956ad6637cf0f50b4c052ab98fb7c26139d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="user-defined-schemas-in-sql-data-warehouse"></a>Esquemas definidos por el usuario en el Almacenamiento de datos SQL
-Almacenamientos de datos tradicionales suelen usar bases de datos independientes toocreate los límites de aplicación en función de la carga de trabajo, dominio o seguridad. Por ejemplo, un almacenamiento de datos de SQL Server tradicional podría incluir una base de datos provisional, una base de datos de almacenamiento de datos y algunas bases de datos data mart. En esta topología, cada base de datos funciona como una carga de trabajo y el límite de seguridad de la arquitectura de Hola.
+Los almacenamientos de datos tradicionales suelen utilizar bases de datos independientes para crear los límites de la aplicación en función de la carga de trabajo, el dominio o la seguridad. Por ejemplo, un almacenamiento de datos de SQL Server tradicional podría incluir una base de datos provisional, una base de datos de almacenamiento de datos y algunas bases de datos data mart. En esta topología, cada base de datos funciona como una carga de trabajo y el límite de seguridad de la arquitectura.
 
-Por el contrario, el almacenamiento de datos SQL se ejecuta como carga de trabajo del almacenamiento de datos todo de hello dentro de una base de datos. No se permiten las combinaciones entre bases de datos. Por lo tanto, almacenamiento de datos de SQL espera que todas las tablas utilizadas por hello toobe de almacenamiento almacenado en una base de datos de Hola.
+Por el contrario, el Almacenamiento de datos SQL ejecuta la carga de trabajo completa del almacenamiento de datos dentro de una base de datos. No se permiten las combinaciones entre bases de datos. Por lo tanto, el Almacenamiento de datos SQL espera que todas las tablas que el almacenamiento utiliza se almacenen en una base de datos.
 
 > [!NOTE]
-> El Almacenamiento de datos SQL no admite consultas entre bases de datos de cualquier tipo. Por lo tanto, las implementaciones de almacenamiento de datos que aprovechan este patrón deberá toobe revisado.
+> El Almacenamiento de datos SQL no admite consultas entre bases de datos de cualquier tipo. En consecuencia, deben revisarse las implementaciones de almacenamiento de datos que utilizan este patrón.
 > 
 > 
 
 ## <a name="recommendations"></a>Recomendaciones
 Se trata de recomendaciones para consolidar los límites de cargas de trabajo, seguridad, dominio y funcionales con esquemas definidos por el usuario.
 
-1. Usar la carga de trabajo de almacenamiento de datos completo de toorun de base de datos de un almacén de datos SQL
-2. Consolidar los datos almacenamiento entorno toouse un almacenamiento de datos SQL base de datos existente
-3. Aproveche **esquemas definidos por el usuario** límites de hello tooprovide previamente implementado mediante bases de datos.
+1. Use una base de datos de Almacenamiento de datos SQL para ejecutar la carga de trabajo completa del almacenamiento de datos.
+2. Consolide el entorno de almacenamiento de datos existente para utilizar una base de datos de Almacenamiento de datos SQL.
+3. Utilice **esquemas definidos por el usuario** para proporcionar el límite implementado anteriormente con las bases de datos.
 
-Si los esquemas definidos por el usuario no se han utilizado anteriormente, tendrá una pizarra limpia. Basta con usar nombre de base de datos anterior de hello como base de Hola para los esquemas definidos por el usuario de base de datos de almacenamiento de datos SQL de Hola.
+Si los esquemas definidos por el usuario no se han utilizado anteriormente, tendrá una pizarra limpia. Utilice simplemente el nombre anterior de la base de datos como base para los esquemas definidos por el usuario en la base de datos de Almacenamiento de datos SQL.
 
 Si ya se han utilizado los esquemas, tienen algunas opciones:
 
-1. Quitar los nombres de esquema heredado de Hola y empezar de cero
-2. Conservar los nombres de esquema heredado de Hola por nombre de tabla de hello previamente pendiente esquema heredado nombre toohello
-3. Conservar los nombres de esquema heredado de hello mediante la implementación de vistas de tabla de hello en un esquema adicional toore-crear la estructura de esquema antigua Hola.
+1. Quitar los nombres de esquemas heredados y empezar desde cero.
+2. Conservar los nombres de esquemas heredados anteponiendo el nombre de esquema heredado al nombre de tabla.
+3. Conservar los nombres de esquemas heredados mediante la implementación de vistas sobre la tabla en un esquema adicional para volver a crear la estructura del esquema anterior.
 
 > [!NOTE]
-> En la primera inspección opción 3 puede parecer opción más atractiva Hola. Sin embargo, el demonio de hello es detalladamente Hola. Las vistas son de solo lectura en el Almacenamiento de datos SQL. Cualquier modificación de datos o tabla tendría toobe realizada en la tabla de base de Hola. La opción 3 también introduce una capa de vistas en el sistema. Conviene toogive este algunas consideraciones adicionales si se utilizan vistas ya parte de la arquitectura.
+> En la primera inspección, la opción 3 puede resultar la opción más atractiva. No obstante, el problema radica en los detalles. Las vistas son de solo lectura en el Almacenamiento de datos SQL. Cualquier modificación de datos o tablas tendría que realizarse según la tabla de base. La opción 3 también introduce una capa de vistas en el sistema. Desea incorporar algunas más a pesar de que ya utiliza vistas en la arquitectura.
 > 
 > 
 
@@ -57,32 +57,32 @@ Implementar los esquemas definidos por el usuario en función de los nombres de 
 ```sql
 CREATE SCHEMA [stg]; -- stg previously database name for staging database
 GO
-CREATE SCHEMA [edw]; -- edw previously database name for hello data warehouse
+CREATE SCHEMA [edw]; -- edw previously database name for the data warehouse
 GO
-CREATE TABLE [stg].[customer] -- create staging tables in hello stg schema
+CREATE TABLE [stg].[customer] -- create staging tables in the stg schema
 (       CustKey BIGINT NOT NULL
 ,       ...
 );
 GO
-CREATE TABLE [edw].[customer] -- create data warehouse tables in hello edw schema
+CREATE TABLE [edw].[customer] -- create data warehouse tables in the edw schema
 (       CustKey BIGINT NOT NULL
 ,       ...
 );
 ```
 
-Conservar esquema heredado les da un nombre por previamente pendiente toohello nombre de la tabla. Utilizar esquemas para límite de carga de trabajo de Hola.
+Conservar los nombres de esquemas heredados anteponiendo estos nombres al nombre de tabla. Utilizar esquemas para el límite de carga de trabajo.
 
 ```sql
-CREATE SCHEMA [stg]; -- stg defines hello staging boundary
+CREATE SCHEMA [stg]; -- stg defines the staging boundary
 GO
-CREATE SCHEMA [edw]; -- edw defines hello data warehouse boundary
+CREATE SCHEMA [edw]; -- edw defines the data warehouse boundary
 GO
-CREATE TABLE [stg].[dim_customer] --pre-pend hello old schema name toohello table and create in hello staging boundary
+CREATE TABLE [stg].[dim_customer] --pre-pend the old schema name to the table and create in the staging boundary
 (       CustKey BIGINT NOT NULL
 ,       ...
 );
 GO
-CREATE TABLE [edw].[dim_customer] --pre-pend hello old schema name toohello table and create in hello data warehouse boundary
+CREATE TABLE [edw].[dim_customer] --pre-pend the old schema name to the table and create in the data warehouse boundary
 (       CustKey BIGINT NOT NULL
 ,       ...
 );
@@ -91,23 +91,23 @@ CREATE TABLE [edw].[dim_customer] --pre-pend hello old schema name toohello tabl
 Conservar los nombres de esquemas heredados con vistas.
 
 ```sql
-CREATE SCHEMA [stg]; -- stg defines hello staging boundary
+CREATE SCHEMA [stg]; -- stg defines the staging boundary
 GO
-CREATE SCHEMA [edw]; -- stg defines hello data warehouse boundary
+CREATE SCHEMA [edw]; -- stg defines the data warehouse boundary
 GO
-CREATE SCHEMA [dim]; -- edw defines hello legacy schema name boundary
+CREATE SCHEMA [dim]; -- edw defines the legacy schema name boundary
 GO
-CREATE TABLE [stg].[customer] -- create hello base staging tables in hello staging boundary
+CREATE TABLE [stg].[customer] -- create the base staging tables in the staging boundary
 (       CustKey    BIGINT NOT NULL
 ,       ...
 )
 GO
-CREATE TABLE [edw].[customer] -- create hello base data warehouse tables in hello data warehouse boundary
+CREATE TABLE [edw].[customer] -- create the base data warehouse tables in the data warehouse boundary
 (       CustKey    BIGINT NOT NULL
 ,       ...
 )
 GO
-CREATE VIEW [dim].[customer] -- create a view in hello legacy schema name boundary for presentation consistency purposes only
+CREATE VIEW [dim].[customer] -- create a view in the legacy schema name boundary for presentation consistency purposes only
 AS
 SELECT  CustKey
 ,       ...
@@ -116,7 +116,7 @@ FROM    [edw].customer
 ```
 
 > [!NOTE]
-> Cualquier cambio en la estrategia de esquema necesita una revisión del modelo de seguridad de Hola para base de datos de Hola. En muchos casos es posible que el modelo de seguridad de hello toosimplify capaz de mediante la asignación de permisos en el nivel del esquema de Hola. Si se requieren permisos más granulares, puede utilizar funciones de base de datos.
+> Cualquier cambio en la estrategia de esquema necesita una revisión del modelo de seguridad de la base de datos. En muchos casos puede simplificar el modelo de seguridad mediante la asignación de permisos a nivel de esquema. Si se requieren permisos más granulares, puede utilizar funciones de base de datos.
 > 
 > 
 

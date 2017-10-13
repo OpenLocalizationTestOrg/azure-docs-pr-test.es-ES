@@ -1,6 +1,6 @@
 ---
-title: aaaHow tooresize una VM de Linux con hello 2.0 de CLI de Azure | Documentos de Microsoft
-description: "¿Cómo tooscale seguridad o reduzca verticalmente una máquina virtual de Linux, cambiando Hola tamaño de máquina virtual."
+title: "Procedimiento para cambiar el tamaño de una máquina virtual Linux con la CLI de Azure 2.0 | Microsoft Docs"
+description: "Escalado o reducción en vertical de una máquina virtual de Linux cambiando el tamaño de la VM."
 services: virtual-machines-linux
 documentationcenter: na
 author: mikewasson
@@ -16,34 +16,34 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2017
 ms.author: mwasson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e8fba485b5bcc7824f546de5cf3df77624a28008
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 23fc9f7f34732079682857d4ee685fe811751698
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="resize-a-linux-virtual-machine-using-cli-20"></a>Cambio de tamaño de una máquina virtual Linux que usa CLI 2.0
 
-Después de aprovisionar una máquina virtual (VM), puede escalar Hola VM hacia arriba o hacia abajo cambiando hello [tamaño de máquina virtual][vm-sizes]. En algunos casos, debe desasignar Hola VM en primer lugar. Necesitará toodeallocate Hola VM si Hola deseado tamaño no está disponible en el clúster de hardware de Hola que hospeda Hola VM. Este artículo detalla cómo tooresize una VM de Linux con Hola 2.0 de CLI de Azure. También puede realizar estos pasos con hello [Azure CLI 1.0](change-vm-size-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Después de aprovisionar una máquina virtual (VM), puede escalarla o reducirla verticalmente cambiando su [tamaño][vm-sizes]. En algunos casos, hay que desasignarla antes. Necesita desasignar la VM si el tamaño deseado no se encuentra disponible en el clúster de hardware que hospeda la VM. En este artículo se detalla cómo cambiar el tamaño de una máquina virtual Linux con la CLI de Azure 2.0. También puede llevar a cabo estos pasos con la [CLI de Azure 1.0](change-vm-size-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="resize-a-vm"></a>Cambiar el tamaño de una máquina virtual
-tooresize una máquina virtual, deberá hello más reciente [CLI de Azure 2.0](/cli/azure/install-az-cli2) instalado y registrado en tooan cuenta de Azure mediante [inicio de sesión de az](/cli/azure/#login).
+Para cambiar el tamaño de una máquina virtual, necesita tener instalada la última versión de la [CLI de Azure 2.0](/cli/azure/install-az-cli2) e iniciar sesión en una cuenta de Azure con [az login](/cli/azure/#login).
 
-1. Cambia el tamaño de lista de Hola de vista de la máquina virtual disponible en clúster de hardware de Hola donde se hospeda Hola VM con [lista de vm az-vm-resize-options](/cli/azure/vm#list-vm-resize-options). Hello en el ejemplo siguiente se enumera los tamaños de máquina virtual para la máquina virtual denominada hello `myVM` en grupo de recursos de hello `myResourceGroup` región:
+1. Consulte la lista de tamaños de VM disponibles en el clúster de hardware que hospeda la VM con [az vm list-vm-resize-options](/cli/azure/vm#list-vm-resize-options). En el ejemplo siguiente se enumeran los tamaños para la VM denominada `myVM` en la región del grupo de recursos `myResourceGroup`:
    
     ```azurecli
     az vm list-vm-resize-options --resource-group myResourceGroup --name myVM --output table
     ```
 
-2. Si Hola deseado se muestra el tamaño de máquina virtual, cambiar el tamaño de Hola VM con [cambiar el tamaño de vm az](/cli/azure/vm#resize). Hola después cambia de tamaño de ejemplo Hola máquina virtual denominada `myVM` toohello `Standard_DS3_v2` tamaño:
+2. Si aparece el tamaño de máquina virtual deseado, cambie el tamaño de la máquina virtual con [az vm resize](/cli/azure/vm#resize). En el ejemplo siguiente se cambia el tamaño de la VM denominada `myVM` por el tamaño `Standard_DS3_v2`:
    
     ```azurecli
     az vm resize --resource-group myResourceGroup --name myVM --size Standard_DS3_v2
     ```
    
-    Hola VM se reiniciará durante este proceso. Después del reinicio de hello, se reasignan los discos de datos y el sistema operativo existente. Cualquier cosa en disco temporal de Hola se pierde.
+    La VM se reinicia durante este proceso. Tras reiniciar, se reasignan los discos del SO y de datos. Se pierde todo lo que haya en el disco temporal.
 
-3. Si Hola deseado no se muestra el tamaño de máquina virtual, deberá toofirst desasignar Hola VM con [az vm desasignar](/cli/azure/vm#deallocate). Este proceso permite Hola VM toothen tooany cuyo tamaño ha cambiado tamaño disponible que Hola admite la región y, a continuación, se inicia. Hello pasos siguientes desasignar, cambiar el tamaño e inicie Hola máquina virtual denominada `myVM` en grupo de recursos de hello llamado `myResourceGroup`:
+3. Si no aparece el tamaño de VM deseado, debe desasignar primero la VM con [az vm deallocate](/cli/azure/vm#deallocate). Este proceso permite cambiar el tamaño de la VM por otro tamaño disponible que la región admite y, a continuación, se inicia. Los siguientes pasos permiten desasignar, cambiar de tamaño y luego iniciar la VM denominada `myVM` en el grupo de recursos llamado `myResourceGroup`:
    
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
@@ -52,7 +52,7 @@ tooresize una máquina virtual, deberá hello más reciente [CLI de Azure 2.0](/
     ```
    
    > [!WARNING]
-   > Hola desasignar VM también libera todas las direcciones IP dinámicas asignadas toohello máquina virtual. Hola OS y discos de datos no se ven afectados.
+   > Al desasignar la máquina virtual, también se liberan todas las direcciones IP dinámicas asignadas a ella. Esto no afecta a los discos del SO y de datos.
 
 ## <a name="next-steps"></a>Pasos siguientes
 Para obtener una mayor escalabilidad, ejecute varias instancias de VM y escálelas horizontalmente. Para obtener más información, consulte [Escalado automático de máquinas de Linux en un conjunto de escalado de máquinas virtuales][scale-set]. 

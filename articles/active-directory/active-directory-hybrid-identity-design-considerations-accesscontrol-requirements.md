@@ -1,6 +1,6 @@
 ---
-title: "Consideraciones de diseño de identidad de aaaAzure Active Directory híbrida - determinar los requisitos de control de acceso | Documentos de Microsoft"
-description: "Portadas Hola pilares de identidad y los requisitos de acceso de identificación de los recursos para los usuarios en un entorno híbrido."
+title: "Consideraciones sobre el diseño de identidad híbrida de Azure Active Directory: determinación de los requisitos de control de acceso| Microsoft Docs"
+description: "Cubre los pilares de identidad y la identificación de los requisitos de acceso de los recursos para los usuarios de un entorno híbrido."
 documentationcenter: 
 services: active-directory
 author: billmath
@@ -14,63 +14,63 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: f0c22629f732a4c13ee7a24456651bec7637c387
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6404940da460461632616fe49f055d50c2a7aba3
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>Determinación de los requisitos de control de acceso para la solución de identidad híbrida
-Cuando se está diseñando una organización su solución de identidad híbrida también pueden usar esta oportunidad tooreview acceder a los requisitos para los recursos de Hola que están organizando toomake estén disponibles para los usuarios. acceso a datos de Hello entre todos los cuatro pilares de identidad, que son:
+Cuando una organización va a diseñar su solución de identidad híbrida también pueden usar esta oportunidad para revisar los requisitos de acceso de los recursos que tienen pensado poner a disposición de los usuarios. El acceso a los datos atraviesa los cuatro pilares de identidad, que son:
 
 * Administración
 * Autenticación
 * Autorización
 * Auditoría
 
-secciones de Hola que sigue cubrirá autenticación y autorización con más detalle, administración y auditoría forman parte del ciclo de vida de identidad híbrida de Hola. Lea [Determinación de las tareas de administración de identidad híbrida](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) para más información acerca de estas funcionalidades.
+En las secciones que siguen ahora se analiza con más detalle la autenticación y la autorización. La administración y la auditoría forman parte del ciclo de vida de identidad híbrida. Lea [Determinación de las tareas de administración de identidad híbrida](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) para más información acerca de estas funcionalidades.
 
 > [!NOTE]
-> Lectura [Hola cuatro pilares de la identidad - Identity Management Hola edad de TI híbrida](http://social.technet.microsoft.com/wiki/contents/articles/15530.the-four-pillars-of-identity-identity-management-in-the-age-of-hybrid-it.aspx) para obtener más información acerca de cada una de esas columnas.
+> Lea [Los cuatro pilares de identidad: la administración de identidades en la era de la TI híbrida](http://social.technet.microsoft.com/wiki/contents/articles/15530.the-four-pillars-of-identity-identity-management-in-the-age-of-hybrid-it.aspx) para obtener más información sobre cada uno de esos pilares.
 > 
 > 
 
 ## <a name="authentication-and-authorization"></a>Autenticación y autorización
-Hay escenarios diferentes para la autenticación y autorización, estos escenarios tendrá requisitos específicos que deben cumplirse mediante la solución de identidad híbrida de Hola que empresa hello es tooadopt continuo. Escenarios que implican tooBusiness de negocio (B2B) comunicación puede agregar un desafío adicional para los administradores de TI ya que necesitan tooensure que el método de autenticación y autorización de hello, utilizado por la organización de hello puede comunicarse con sus socios comerciales. Durante la Hola diseñar el proceso para los requisitos de autenticación y autorización, asegúrese de respuestas a esa Hola siguientes preguntas:
+Existen diferentes escenarios para la autenticación y la autorización. Estos escenarios tendrán requisitos específicos que debe cumplir la solución de identidad híbrida que la empresa va a adoptar. Los escenarios en los que interviene la comunicación de negocio a negocio (B2B) pueden suponer una dificultad añadida para los administradores de TI, quienes deberán asegurarse de que el método de autenticación y autorización empleado por la organización puede establecer comunicación con sus socios comerciales. Durante el proceso de diseño de los requisitos de autenticación y autorización, asegúrese de que puede responder a las siguientes cuestiones:
 
 * ¿Su organización va a autenticar y autorizar solamente a los usuarios ubicados en su sistema de administración de identidades?
   * ¿Existen planes para escenarios B2B?
-  * En caso afirmativo, ¿ya sabe qué protocolos (SAML, OAuth, Kerberos, Tokens o certificados) le puede tooconnect usa dos empresas?
-* ¿Solución de identidad híbrida de Hola que se van tooadopt admite estos protocolos?
+  * En caso afirmativo, ¿ya sabe qué protocolos (SAML, OAuth, Kerberos, tokens o certificados) se usarán para conectar ambas empresas?
+* ¿Admite la solución de identidad híbrida estos protocolos?
 
-Otro tooconsider punto importante es donde se ubicarán los repositorios de autenticación de Hola que utilizarán los usuarios y socios y Hola modelo administrativo toobe usa. Considere la posibilidad de hello siguientes dos opciones principales:
+Otro punto importante a tener en cuenta es dónde estará el repositorio de autenticación que usarán los usuarios y los socios, y el modelo administrativo que se empleará. Considere las dos opciones básicas siguientes:
 
-* Centralizado: en este Hola modelo las credenciales del usuario, las directivas y administración pueden ser centralizado en un entorno local o en la nube de Hola.
-* Híbrido: en este Hola de modelo las credenciales del usuario, las directivas y administración será centralizado en un entorno local y se replica de una en la nube de Hola.
+* Centralizado: en este modelo, las credenciales, las directivas y la administración del usuario pueden estar centralizadas en el entorno local o en la nube.
+* Híbrido: en este modelo, las credenciales, las directivas y la administración del usuario pueden estar centralizadas en el entorno local y tener una réplica en la nube.
 
-Qué modelo de su organización adopte varían los requerimientos del negocio tootheir correspondiente, que le interese hello tooanswer después preguntas tooidentify donde residen sistema de administración de identidades de Hola y Hola toouse de modo de administrador:
+¿Qué modelo adoptará su organización¿ ¿Variará según sus requisitos empresariales? Querrá responder a las siguientes preguntas con el fin de identificar donde residirá el sistema de administración de identidades y el modo administrativo que usará:
 
 * ¿Su organización cuenta actualmente con administración de identidades local?
-  * En caso afirmativo, ¿piensan tookeep él?
-  * ¿Hay algún requisito de cumplimiento o normativa que su organización debe seguir que indica dónde debe residir sistema de administración de identidades de hello?
-* ¿Su organización utiliza un inicio de sesión único para aplicaciones que se encuentran en local o en la nube de hello?
-  * ¿En caso afirmativo, la adopción de un modelo de identidad híbrida Hola afecta este proceso?
+  * En caso afirmativo, ¿tienen pensado mantenerla?
+  * ¿Existe algún requisito o normativa que su organización deba seguir que dictamine dónde debe residir el sistema de administración de identidades?
+* ¿Usa su organización inicio de sesión único para las aplicaciones ubicadas en el entorno local o en la nube?
+  * En caso afirmativo, ¿la adopción de un modelo de identidad híbrida afectará a este proceso?
 
 ## <a name="access-control"></a>Control de acceso
-Mientras que la autenticación y autorización son datos core elementos tooenable acceso toocorporate mediante la validación del usuario, también es de nivel de hello toocontrol importante de acceso que estos usuarios tendrán y nivel de Hola de administradores de acceso tendrá sobre Hola recursos que administran. La solución de identidad híbrida debe ser capaz de tooprovide acceso granular tooresources, delegación y el control de acceso base del rol. Asegúrese de que Hola siguiente pregunta se responden en relación con el control de acceso:
+Si bien la autenticación y la autorización son elementos esenciales para permitir el acceso a los datos corporativos mediante la validación del usuario, también es importante controlar el nivel de acceso que estos usuarios tendrán y el que tendrán los administradores sobre los recursos que administran. La solución de identidad híbrida debe ser capaz de proporcionar acceso granular a los recursos, delegación y control de acceso basado en roles. Asegúrese de que la siguiente pregunta respecto al control de acceso queda respondida:
 
-* ¿La compañía tiene más de un usuario con privilegios elevados toomanage su sistema de identidad?
-  * ¿Si Sí, cada usuario necesita Hola mismo nivel de acceso?
-* ¿Sería necesario toodelegate acceso toousers toomanage específico recursos de la empresa?
+* ¿Su empresa cuenta con más de un usuario con privilegios elevados para administrar el sistema de identidad?
+  * En caso afirmativo, ¿todos los usuarios necesitan el mismo nivel de acceso?
+* ¿Deberá delegar su empresa el acceso a los usuarios para administrar recursos específicos?
   * En caso afirmativo, ¿con qué frecuencia sucede esto?
-* ¿La compañía necesita capacidades de control de acceso de toointegrate entre local y la nube recursos?
-* ¿La compañía necesita toolimit acceso tooresources según las condiciones de toosome?
-* ¿La compañía tiene cualquier aplicación que necesita recursos de toosome de acceso de control personalizado?
-  * ¿En caso afirmativo, dónde se ubican las aplicaciones (local o en la nube de hello)?
-  * ¿En caso afirmativo, donde están los recursos de destino encuentra (local o en la nube de hello)?
+* ¿Necesitará su empresa integrar las funcionalidades de control de acceso entre los recursos locales y de nube?
+* ¿Necesitará su empresa limitar el acceso a los recursos de acuerdo con algunas condiciones?
+* ¿Tiene su empresa alguna aplicación que necesite control de acceso personalizado a algunos recursos?
+  * En caso afirmativo, ¿donde se encuentran esas aplicaciones (en el entorno local o en la nube)?
+  * En caso afirmativo, ¿donde están ubicados esos recursos de destino (en el entorno local o en la nube)?
 
 > [!NOTE]
-> Hacer notas de tootake seguro de cada respuesta y entender el razonamiento de hello detrás de respuesta de Hola. [Definir la estrategia de protección de datos](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md) irá Hola opciones disponibles y las ventajas y desventajas de cada opción.  Las respuestas que obtenga  partir de estas preguntas le servirán para seleccionar la opción que mejor se adapte a sus necesidades empresariales.
+> Asegúrese de anotar cada respuesta y de que comprende las razones que se esconden detrás. [Definición de la estrategia de protección de datos](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md) se recorren las opciones disponibles y las ventajas y desventajas de cada una.  Las respuestas que obtenga  partir de estas preguntas le servirán para seleccionar la opción que mejor se adapte a sus necesidades empresariales.
 > 
 > 
 

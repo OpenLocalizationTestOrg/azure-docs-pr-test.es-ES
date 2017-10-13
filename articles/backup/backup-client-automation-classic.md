@@ -1,5 +1,5 @@
 ---
-title: aaaUse copias de seguridad de Windows Server de toomanage de PowerShell de Azure | Documentos de Microsoft
+title: Uso de PowerShell para administrar las copias de seguridad de Windows Server en Azure | Microsoft Docs
 description: Implemente y administre las copias de seguridad de Windows Server mediante PowerShell.
 services: backup
 documentationcenter: 
@@ -14,83 +14,83 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: saurse;markgal;nkolli;trinadhk
-ms.openlocfilehash: 72292e510b0f059102440bd49a195be4ef700a6a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a8e20356ae383ee4fa2158ea544d5d0905028124
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="deploy-and-manage-backup-tooazure-for-windows-serverwindows-client-using-powershell"></a>Implementar y administrar tooAzure copia de seguridad para el cliente de Windows del servidor de Windows con PowerShell
+# <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Implementación y administración de copias de seguridad en Azure para Windows Server o cliente de Windows mediante PowerShell
 > [!div class="op_single_selector"]
 > * [ARM](backup-client-automation.md)
 > * [Clásico](backup-client-automation-classic.md)
 >
 >
 
-Este artículo explica cómo toouse PowerShell tooback tooa de datos de estación de trabajo de Windows de servidor de Windows o una copia de seguridad el almacén. Microsoft recomienda el uso de almacenes de Recovery Services para todas las implementaciones nuevas. Si es un nuevo usuario de copia de seguridad de Azure y no se ha creado un almacén de copia de seguridad en su suscripción, use el artículo de hello, [implementar y administrar tooAzure de datos de Data Protection Manager mediante PowerShell](backup-client-automation.md) para almacenar los datos en un almacén de servicios de recuperación. 
+En este artículo se explica cómo usar PowerShell para realizar una copia de seguridad de Windows Server o de datos de la estación de trabajo de Windows en un almacén de Backup. Microsoft recomienda el uso de almacenes de Recovery Services para todas las implementaciones nuevas. Si es un nuevo usuario de Azure Backup y todavía no ha creado un almacén de Backup en su suscripción, use artículo [Implementación y administración de copias de seguridad en Azure para Windows Server o cliente de Windows mediante PowerShell](backup-client-automation.md) para almacenar los datos en un almacén de Recovery Services. 
 
 > [!IMPORTANT]
-> Ahora puede actualizar los almacenes de servicios de tooRecovery de almacenes de copia de seguridad. Para obtener más información, consulte el artículo de hello [actualizar un tooa de almacén de copia de seguridad del almacén de servicios de recuperación](backup-azure-upgrade-backup-to-recovery-services.md). Microsoft le anima tooupgrade tooRecovery almacenes de servicios de almacenes de credenciales de la copia de seguridad.<br/> Después de 15 de octubre de 2017, no puede usar almacenes de copia de seguridad de toocreate de PowerShell. **El 1 de noviembre de 2017**:
->- Todos los almacenes de copia de seguridad restantes será almacenes de servicios de tooRecovery actualizado automáticamente.
->- No será capaz de tooaccess los datos de copia de seguridad en el portal clásico de Hola. En su lugar, use hello tooaccess portal Azure los datos de copia de seguridad en los almacenes de servicios de recuperación.
+> Ahora puede actualizar los almacenes de Backup a almacenes de Recovery Services. Para más información, consulte el artículo [Actualización de un almacén de Backup a un almacén de Recovery Services](backup-azure-upgrade-backup-to-recovery-services.md). Microsoft anima a actualizar los almacenes de Backup a almacenes de Recovery Services.<br/> A partir del 15 de octubre de 2017, no podrá usar PowerShell para crear almacenes de Backup. **El 1 de noviembre de 2017**:
+>- Todos los almacenes de Backup restantes se actualizarán automáticamente a almacenes de Recovery Services.
+>- No podrá acceder a los datos de copia de seguridad en el portal clásico. En su lugar, utilice Azure Portal para tener acceso a los datos de copia de seguridad en los almacenes de Recovery Services.
 >
 
-## <a name="install-azure-powershell"></a>Azure PowerShell
+## <a name="install-azure-powershell"></a>Instalar Azure Powershell
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
 
-En octubre de 2015, se lanzó Azure PowerShell 1.0. Esta versión se realizó correctamente la versión de Hola 0.9.8 e imperiosa algunos cambios importantes, especialmente en el patrón de nomenclatura de Hola de cmdlets de Hola. 1.0 seguimiento cmdlets Hola patrón de nomenclatura {verbo}-AzureRm {nombre}; mientras que no incluyen nombres de hello 0.9.8 **Rm** (por ejemplo, New-AzureRmResourceGroup en lugar de New-AzureResourceGroup). Al usar Azure PowerShell 0.9.8, primero debe habilitar el modo de administrador de recursos de hello ejecutando hello **Switch-AzureMode AzureResourceManager** comando. Este comando no es necesario en la versión 1.0 o posteriores.
+En octubre de 2015, se lanzó Azure PowerShell 1.0. Esta versión sucedió a la versión 0.9.8 e introdujo algunos cambios importantes, sobre todo en el patrón de nombres de los cmdlets. Los cmdlets de 1.0 siguen el patrón de nomenclatura {verbo}-AzureRm{nombre}; en el que, los nombres de 0.9.8 no incluyen **Rm** (por ejemplo, New-AzureRmResourceGroup en lugar de New-AzureResourceGroup). Al usar Azure PowerShell 0.9.8, primero debe habilitar el modo de Administrador de recursos mediante la ejecución del comando **Switch-AzureMode AzureResourceManager** . Este comando no es necesario en la versión 1.0 o posteriores.
 
-Si desea toouse los scripts escritos para el entorno de hello 0.9.8, en Hola 1.0 o posterior entorno, cuidadosamente debe probar las secuencias de comandos de hello en un entorno de preproducción antes de usarlos en producción tooavoid impacto inesperado.
+Si desea utilizar scripts escritos para los entornos de 0.9.8, de 1.0 o posterior, debe probar detenidamente los scripts en un entorno de preproducción antes de usarlos en producción para evitar un impacto inesperado.
 
-[Descargar la versión más reciente de PowerShell de hello](https://github.com/Azure/azure-powershell/releases) (versión mínima necesaria es: 1.0.0)
+[Descargue la versión de PowerShell más reciente](https://github.com/Azure/azure-powershell/releases) (la versión mínima necesaria es 1.0.0).
 
 [!INCLUDE [arm-getting-setup-powershell](../../includes/arm-getting-setup-powershell.md)]
 
 ## <a name="create-a-backup-vault"></a>Creación de un almacén de copia de seguridad
 > [!WARNING]
-> Para los clientes mediante copia de seguridad de Azure Hola primera vez, deberá toobe de proveedor de copia de seguridad de Azure tooregister Hola usado con su suscripción. Puede hacerlo ejecutando el siguiente comando de hello: Register-AzureProvider - ProviderNamespace "Microsoft.Backup"
+> La primera vez que los clientes usen Azure Backup deben registrar el proveedor de Azure Backup que se va a usar con su suscripción. Para ello, ejecute el siguiente comando: Register-AzureProvider -ProviderNamespace "Microsoft.Backup"
 >
 >
 
-Puede crear un nuevo almacén de copia de seguridad mediante hello **AzureRMBackupVault New** cmdlet. almacén de copia de seguridad de Hello es un recurso ARM, por lo que necesita tooplace dentro de un grupo de recursos. En una consola de Azure PowerShell con privilegios elevados, ejecute hello siguientes comandos:
+Puede crear un nuevo almacén de copia de seguridad mediante el cmdlet **New-AzureRMBackupVault** . El almacén de copia de seguridad es un recurso ARM, por lo que necesita colocarlo dentro de un grupo de recursos. En una consola de Azure PowerShell, ejecute los comandos siguientes:
 
 ```
 PS C:\> New-AzureResourceGroup –Name “test-rg” -Region “West US”
 PS C:\> $backupvault = New-AzureRMBackupVault –ResourceGroupName “test-rg” –Name “test-vault” –Region “West US” –Storage GeoRedundant
 ```
 
-Hola de uso **AzureRMBackupVault Get** almacenes de credenciales de copia de seguridad de cmdlet toolist hello en una suscripción.
+Use el cmdlet **Get-AzureRMBackupVault** para enumerar los almacenes de copia de seguridad en una suscripción.
 
-## <a name="installing-hello-azure-backup-agent"></a>Instalar el agente de copia de seguridad de Azure Hola
-Antes de instalar el agente de copia de seguridad de Azure de hello, necesita a instalador de hello toohave descargado y presente en hello Windows Server. Puede obtener última versión del instalador de Hola de Hola de hello [Microsoft Download Center](http://aka.ms/azurebackup_agent) o desde la página del panel del almacén de hello copia de seguridad. Guardar instalador hello tooan ubicación fácilmente accesible como * C:\Downloads\*.
+## <a name="installing-the-azure-backup-agent"></a>Instalación del agente de Azure Backup
+Antes de instalar el agente de Azure Backup, necesitará tener el instalador descargado y disponible en el servidor de Windows. Puede obtener la versión más reciente del instalador en el [Centro de descarga de Microsoft](http://aka.ms/azurebackup_agent) o en la página Panel del almacén de copia de seguridad. Guarde el instalador en una ubicación que tenga fácil acceso, como *C:\Downloads\*.
 
-agente de hello tooinstall, ejecute el siguiente comando en una consola de PowerShell con privilegios elevados de Hola:
+Para instalar el agente, ejecute el comando siguiente en una consola de PowerShell con privilegios elevados:
 
 ```
 PS C:\> MARSAgentInstaller.exe /q
 ```
 
-Agente de Hola se instala con todas las opciones predeterminadas de Hola. instalación de Hello tarda unos minutos en segundo plano de Hola. Si no se especifica hello */nu* opción, a continuación, hello **Windows Update** se abrirá la ventana final Hola de hello toocheck de instalación para las actualizaciones. Una vez instalado, agente de Hola se mostrará en la lista de Hola de programas instalados.
+Esto instala el agente con todas las opciones predeterminadas. La instalación está unos minutos en segundo plano. Si no se especifica la opción */nu* , se abrirá la ventana de **Windows Update** al final de la instalación para comprobar si hay actualizaciones. Una vez instalado, el agente se mostrará en la lista de programas instalados.
 
-lista de hello toosee de programas instalados, vaya demasiado**el Panel de Control** > **programas** > **programas y características**.
+Para ver la lista de programas instalados, vaya a **Panel de Control** > **Programas** > **Programas y características**.
 
 ![Agente instalado](./media/backup-client-automation/installed-agent-listing.png)
 
 ### <a name="installation-options"></a>Opciones de instalación
-toosee todas las opciones disponibles a través de Hola Hola de línea de comandos, utilice Hola siguiente comando:
+Para ver todas las opciones disponibles a través de la línea de comandos, use el siguiente comando:
 
 ```
 PS C:\> MARSAgentInstaller.exe /?
 ```
 
-Hola las opciones disponibles incluyen:
+Las opciones disponibles incluyen:
 
 | Opción | Detalles | Valor predeterminado |
 | --- | --- | --- |
 | /q |Instalación silenciosa |- |
-| /p:"ubicación" |Carpeta de instalación de toohello de ruta de acceso para el agente de copia de seguridad de Azure Hola. |C:\Archivos de programa\Microsoft Azure Recovery Services Agent |
-| /s:"ubicación" |Carpeta de caché de ruta de acceso toohello para el agente de copia de seguridad de Azure Hola. |C:\Archivos de programa\Microsoft Azure Recovery Services Agent\Scratch |
-| /m |Participación en tooMicrosoft actualización |- |
+| /p:"ubicación" |Ruta de acceso a la carpeta de instalación para el agente de Azure Backup. |C:\Archivos de programa\Microsoft Azure Recovery Services Agent |
+| /s:"ubicación" |Ruta de acceso a la carpeta de caché para el agente de Azure Backup. |C:\Archivos de programa\Microsoft Azure Recovery Services Agent\Scratch |
+| /m |Participación en Microsoft Update |- |
 | /nu |No busca actualizaciones una vez completada la instalación |- |
 | /d |Desinstala el agente de Microsoft Azure Recovery Services. |- |
 | /ph |Dirección host del proxy |- |
@@ -98,13 +98,13 @@ Hola las opciones disponibles incluyen:
 | /pu |Nombre de usuario del host de proxy |- |
 | /pw |Contraseña de proxy |- |
 
-## <a name="registering-with-hello-azure-backup-service"></a>Registrar con hello servicio de copia de seguridad de Azure
-Para poder registrar con hello servicio de copia de seguridad de Azure, necesita tooensure ese hello [requisitos previos](backup-configure-vault.md) se cumplen. Debe:
+## <a name="registering-with-the-azure-backup-service"></a>Registro con el servicio de Azure Backup
+Para poder registrarse con el servicio Azure Backup, debe asegurarse de que se cumplen los [requisitos previos](backup-configure-vault.md) . Debe:
 
 * Disponer de una suscripción válida a Azure
 * Disponer de un almacén de copia de seguridad
 
-las credenciales de almacén de hello toodownload, ejecute hello **Get AzureRMBackupVaultCredentials** cmdlet en una consola de PowerShell de Azure y el almacén en una ubicación conveniente, como * C:\Downloads\*.
+Para descargar las credenciales del almacén, ejecute el cmdlet **Get-AzureRMBackupVaultCredentials** en una consola de Azure PowerShell y almacénelo en una ubicación adecuada como *C:\Descargas\*.
 
 ```
 PS C:\> $credspath = "C:\"
@@ -113,7 +113,7 @@ PS C:\> $credsfilename
 f5303a0b-fae4-4cdb-b44d-0e4c032dde26_backuprg_backuprn_2015-08-11--06-22-35.VaultCredentials
 ```
 
-Máquina de hello registrar con el almacén de Hola se lleva a cabo mediante hello [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) cmdlet:
+El registro de la máquina con el almacén de claves se realiza mediante el cmdlet [Start-OBRegistration](https://technet.microsoft.com/library/hh770398%28v=wps.630%29.aspx) :
 
 ```
 PS C:\> $cred = $credspath + $credsfilename
@@ -128,16 +128,16 @@ Machine registration succeeded.
 ```
 
 > [!IMPORTANT]
-> No utilice el archivo de credenciales de almacén de rutas de acceso relativas toospecify Hola. Debe proporcionar una ruta de acceso absoluta como un cmdlet de entrada toohello.
+> No use rutas de acceso relativas para especificar el archivo de credenciales del almacén de claves. Debe proporcionar una ruta de acceso absoluta como entrada para el cmdlet.
 >
 >
 
 ## <a name="networking-settings"></a>Configuración de redes
-Cuando la conectividad de Hola de hello Windows máquina toohello que Internet es a través de un servidor proxy, configuración de proxy de hello también puede proporcionarse a toohello agente. En este ejemplo, no hay ningún servidor proxy y por tanto se borra explícitamente cualquier información relacionada con el proxy.
+Cuando la conectividad de la máquina de Windows a Internet se realiza a través de un servidor proxy, también se puede proporcionar la configuración del proxy al agente. En este ejemplo, no hay ningún servidor proxy y por tanto se borra explícitamente cualquier información relacionada con el proxy.
 
-Uso de ancho de banda también puede controlarse con opciones de Hola de ```work hour bandwidth``` y ```non-work hour bandwidth``` para un conjunto determinado de días de la semana de Hola.
+También puede controlar el uso de ancho de banda con las opciones de ```work hour bandwidth``` y ```non-work hour bandwidth``` para un conjunto determinado de días de la semana.
 
-Establecer detalles de servidor proxy y el ancho de banda de Hola se realiza mediante hello [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409%28v=wps.630%29.aspx) cmdlet:
+El establecimiento de los detalles de ancho de banda y del proxy se realiza mediante el cmdlet [Set-OBMachineSetting](https://technet.microsoft.com/library/hh770409%28v=wps.630%29.aspx) :
 
 ```
 PS C:\> Set-OBMachineSetting -NoProxy
@@ -148,7 +148,7 @@ Server properties updated successfully.
 ```
 
 ## <a name="encryption-settings"></a>Configuración de cifrado
-Hola copia de seguridad de datos enviados tooAzure copia de seguridad es cifrada tooprotect Hola confidencialidad de datos de Hola. Hola frase de contraseña es datos de contraseña"hello" toodecrypt hello en tiempo de Hola de restauración.
+Los datos de copia de seguridad enviados a Azure Backup se cifran para proteger la confidencialidad de los datos. La frase de contraseña de cifrado es la "contraseña" que permite descifrar los datos en el momento de la restauración.
 
 ```
 PS C:\> ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force | Set-OBMachineSetting
@@ -156,30 +156,30 @@ Server properties updated successfully
 ```
 
 > [!IMPORTANT]
-> Almacenar información de la frase de contraseña de hello seguro y protegido una vez que se establece. No será capaz de toorestore datos de Azure sin esta frase de contraseña.
+> Mantenga la información de la frase de contraseña segura una vez establecida. No podrá restaurar los datos de Azure sin esta frase de contraseña.
 >
 >
 
 ## <a name="back-up-files-and-folders"></a>Realizar copias de seguridad de archivos y carpetas
-Todas las copias de seguridad de clientes y servidores de Windows tooAzure copia de seguridad se rigen por una directiva. Directiva de Hello consta de tres partes:
+Todas las copias de seguridad de servidores y clientes de Windows en Azure Backup se rigen por una directiva. La directiva consta de tres partes:
 
-1. A **programar copia de seguridad** que especifica si las copias de seguridad necesitan toobe realizada y se sincronice con el servicio de Hola.
-2. A **programación de retención** que especifica cuánto tiempo los puntos de recuperación de hello tooretain en Azure.
+1. Un **programa de copia de seguridad** que especifica cuándo deben efectuarse y sincronizarse las copias de seguridad con el servicio.
+2. Una **programación de retención** que especifica cuánto tiempo se conservarán los puntos de recuperación en Azure.
 3. Una **especificación de inclusión o exclusión de archivo** que determina los elementos de los que se debe efectuar una copia de seguridad.
 
-En este documento, dado que se está automatizando la copia de seguridad, supondremos que no se ha configurado nada. Comenzamos creando una nueva directiva de copia de seguridad mediante hello [New-OBPolicy](https://technet.microsoft.com/library/hh770416.aspx) cmdlet y utilizándolo.
+En este documento, dado que se está automatizando la copia de seguridad, supondremos que no se ha configurado nada. Comenzamos creando una nueva directiva de copia de seguridad mediante el cmdlet [New-OBPolicy](https://technet.microsoft.com/library/hh770416.aspx) y usándolo.
 
 ```
 PS C:\> $newpolicy = New-OBPolicy
 ```
 
-En este Hola tiempo directiva está vacía y otros cmdlets están toodefine necesario qué elementos se pueden incluir o excluir, cuando las copias de seguridad se ejecuta y Hola donde se almacenarán las copias de seguridad.
+En este momento la directiva está vacía y se necesitan otros cmdlet para definir qué elementos se incluirán o excluirán, cuándo se ejecutarán las copias de seguridad y dónde se almacenarán las copias de seguridad.
 
-### <a name="configuring-hello-backup-schedule"></a>Configuración de programación de copia de seguridad de Hola
-Hola primero de hello 3 partes de una directiva es la programación de copia de seguridad hello, que se crea utilizando hello [New-OBSchedule](https://technet.microsoft.com/library/hh770401) cmdlet. programación de copia de seguridad de Hello define cuándo las copias de seguridad necesitan toobe realizada. Al crear una programación tiene parámetros de entrada de toospecify 2:
+### <a name="configuring-the-backup-schedule"></a>Configuración de la programación de la copia de seguridad
+La primera de las tres partes de una directiva es la programación de copia de seguridad, que se crea usando el cmdlet [New-OBSchedule](https://technet.microsoft.com/library/hh770401) . La programación de copia de seguridad define cuándo deben realizarse copias de seguridad. Al crear una programación se deben especificar dos parámetros de entrada:
 
-* **Días de la semana de hello** debe ejecutar esa copia de seguridad de Hola. Puede ejecutar el trabajo de copia de seguridad de hello en sólo un día o cada día de semana de Hola o cualquier combinación de entre.
-* **Horas del día de hello** cuándo se debe ejecutar copia de seguridad de Hola. Puede definir una too3 diferentes horas del día de hello cuando se activará la copia de seguridad de Hola.
+* **Días de la semana** en los que se debe ejecutar la copia de seguridad. Puede ejecutar el trabajo de copia de seguridad en solo un día o cada día de la semana, o cualquier combinación intermedia.
+* **Horas del día** a las que se debe ejecutar la copia de seguridad. Puede definir hasta tres horas distintas del día en las que se activará la copia de seguridad.
 
 Por ejemplo, podría configurar una directiva de copia de seguridad que se ejecute a las 4 p.m. cada sábado y domingo.
 
@@ -187,20 +187,20 @@ Por ejemplo, podría configurar una directiva de copia de seguridad que se ejecu
 PS C:\> $sched = New-OBSchedule -DaysofWeek Saturday, Sunday -TimesofDay 16:00
 ```
 
-programación de copia de seguridad de Hello necesita toobe asociado a una directiva, y esto puede lograrse mediante el uso de hello [Set-OBSchedule](https://technet.microsoft.com/library/hh770407) cmdlet.
+La programación de copia de seguridad debe estar asociada con una directiva y esto puede lograrse mediante el uso del cmdlet [Set-OBSchedule](https://technet.microsoft.com/library/hh770407) .
 
 ```
 PS C:> Set-OBSchedule -Policy $newpolicy -Schedule $sched
 BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s) DsList : PolicyName : RetentionPolicy : State : New PolicyState : Valid
 ```
 ### <a name="configuring-a-retention-policy"></a>Configuración de una directiva de retención
-Directiva de retención de Hello define cuánto tiempo de recuperación se conservan los puntos creados a partir de los trabajos de copia de seguridad. Al crear una nueva directiva de retención mediante hello [OBRetentionPolicy New](https://technet.microsoft.com/library/hh770425) cmdlet, puede especificar el número de Hola de días que Hola puntos de recuperación de copia de seguridad necesita toobe conservan con copia de seguridad de Azure. ejemplo de Hola siguiente establece una directiva de retención de 7 días.
+La directiva de retención define cuánto tiempo se conservan los puntos de recuperación de los trabajos de copia de seguridad. Al crear una nueva directiva de retención mediante el cmdlet [New-OBRetentionPolicy](https://technet.microsoft.com/library/hh770425), puede especificar el número de días que los puntos de recuperación de copia de seguridad deben conservarse con Azure Backup. En el ejemplo siguiente se establece una directiva de retención de 7 días.
 
 ```
 PS C:\> $retentionpolicy = New-OBRetentionPolicy -RetentionDays 7
 ```
 
-Hello directiva de retención debe estar asociada con la directiva principal hello mediante el cmdlet de hello [OBRetentionPolicy conjunto](https://technet.microsoft.com/library/hh770405):
+La directiva de retención debe estar asociada con la directiva principal mediante el cmdlet [Set-OBRetentionPolicy](https://technet.microsoft.com/library/hh770405):
 
 ```
 PS C:\> Set-OBRetentionPolicy -Policy $newpolicy -RetentionPolicy $retentionpolicy
@@ -224,16 +224,16 @@ RetentionPolicy : Retention Days : 7
 State           : New
 PolicyState     : Valid
 ```
-### <a name="including-and-excluding-files-toobe-backed-up"></a>Incluir y excluir archivos toobe copia de seguridad
-Un ```OBFileSpec``` objeto define hello toobe de archivos incluidos y excluidos de una copia de seguridad. Se trata de un conjunto de reglas que ámbito out Hola proteger archivos y carpetas en un equipo. Puede tener tantas reglas de inclusión o exclusión de archivos como se necesiten y asociarlas con una directiva. Al crear un nuevo objeto OBFileSpec, puede:
+### <a name="including-and-excluding-files-to-be-backed-up"></a>Incluir y excluir archivos de copia de seguridad
+Un objeto ```OBFileSpec``` define los archivos incluidos y excluidos de una copia de seguridad. Se trata de un conjunto de reglas de ámbito de los archivos y carpetas protegidos de un equipo. Puede tener tantas reglas de inclusión o exclusión de archivos como se necesiten y asociarlas con una directiva. Al crear un nuevo objeto OBFileSpec, puede:
 
-* Especificar hello toobe de archivos y carpetas incluido
-* Especificar hello toobe de archivos y carpetas excluido
-* Especifique recursiva copia de seguridad de datos en una carpeta (o) si deben respaldar solo Hola archivos de nivel superior en la carpeta especificada de hello hasta.
+* Especificar los archivos y carpetas que se van a incluir
+* Especificar los archivos y carpetas que se van a excluir
+* Especificar la copia de seguridad recursiva de los datos en una carpeta (o) si se deben copiar solo los archivos de nivel superior en la carpeta especificada.
 
-Hola este último se logra mediante la marca de - no recursivas de hello en el comando New-OBFileSpec Hola.
+Esto último se consigue mediante la marca -NonRecursive del comando New-OBFileSpec.
 
-En el siguiente ejemplo de Hola, comenzaremos hacer una copia de volumen C: y D: y excluir los archivos binarios de sistema operativo de hello en la carpeta de Windows hello y las carpetas temporales. toodo por lo que vamos a crear dos especificaciones de archivo mediante hello [New-OBFileSpec](https://technet.microsoft.com/library/hh770408) cmdlet: uno para la inclusión y uno para su exclusión. Una vez que se han creado las especificaciones de archivo hello, está asociados con la directiva de hello mediante hello [Add-OBFileSpec](https://technet.microsoft.com/library/hh770424) cmdlet.
+En el ejemplo siguiente, crearemos copias de seguridad del volumen C: y D: y excluiremos los archivos binarios de sistema operativo de la carpeta de Windows y las carpetas temporales. Para ello, crearemos dos especificaciones de archivos mediante el cmdlet [New-OBFileSpec](https://technet.microsoft.com/library/hh770408) : uno para la inclusión y otro para la exclusión. Una vez que se hayan creado las especificaciones de archivo, se asocian con la directiva mediante el cmdlet [Add-OBFileSpec](https://technet.microsoft.com/library/hh770424) .
 
 ```
 PS C:\> $inclusions = New-OBFileSpec -FileSpec @("C:\", "D:\")
@@ -324,19 +324,19 @@ State           : New
 PolicyState     : Valid
 ```
 
-### <a name="applying-hello-policy"></a>Aplicar una directiva de Hola
-Ahora el objeto de directiva de hello está finalizado y tiene una programación de copia de seguridad asociada, directiva de retención y una lista de inclusión/exclusión de archivos. Ahora se puede confirmar para copia de seguridad de Azure toouse esta directiva. Antes de aplicar Hola recién creado directiva asegurarse de que no hay ninguna directiva de copia de seguridad existente asociada con el servidor de hello mediante hello [Remove-OBPolicy](https://technet.microsoft.com/library/hh770415) cmdlet. Quitar la directiva de hello le pedirá confirmación. confirmación de hello tooskip usar hello ```-Confirm:$false``` marca con el cmdlet de Hola.
+### <a name="applying-the-policy"></a>Aplicación de la directiva
+Ahora el objeto de la directiva está finalizado y tiene una programación de copia de seguridad asociada, una directiva de retención y una lista de inclusión o exclusión de archivos. Ahora se puede confirmar esta directiva para ser usada por Azure Backup. Antes de aplicar la directiva recién creada, asegúrese de que no haya ninguna directiva de copia de seguridad existente asociada con el servidor mediante el uso del cmdlet [Remove-OBPolicy](https://technet.microsoft.com/library/hh770415) . Para eliminar la directiva, se le pedirá confirmación. Para omitir el uso de la confirmación, use la marca ```-Confirm:$false``` con el cmdlet.
 
 ```
 PS C:> Get-OBPolicy | Remove-OBPolicy
-Microsoft Azure Backup Are you sure you want tooremove this backup policy? This will delete all hello backed up data. [Y] Yes [A] Yes tooAll [N] No [L] No tooAll [S] Suspend [?] Help (default is "Y"):
+Microsoft Azure Backup Are you sure you want to remove this backup policy? This will delete all the backed up data. [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 ```
 
-Objeto de directiva de hello confirmación se realiza mediante hello [Set-OBPolicy](https://technet.microsoft.com/library/hh770421) cmdlet. Esto también requerirá confirmación. confirmación de hello tooskip usar hello ```-Confirm:$false``` marca con el cmdlet de Hola.
+La confirmación del objeto de la directiva se lleva a cabo usando el cmdlet [Set-OBPolicy](https://technet.microsoft.com/library/hh770421) . Esto también requerirá confirmación. Para omitir el uso de la confirmación, use la marca ```-Confirm:$false``` con el cmdlet.
 
 ```
 PS C:> Set-OBPolicy -Policy $newpolicy
-Microsoft Azure Backup Do you want toosave this backup policy ? [Y] Yes [A] Yes tooAll [N] No [L] No tooAll [S] Suspend [?] Help (default is "Y"):
+Microsoft Azure Backup Do you want to save this backup policy ? [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 BackupSchedule : 4:00 PM Saturday, Sunday, Every 1 week(s)
 DsList : {DataSource
          DatasourceId:4508156004108672185
@@ -377,7 +377,7 @@ RetentionPolicy : Retention Days : 7
 State : Existing PolicyState : Valid
 ```
 
-Puede ver los detalles de Hola de directiva de copia de seguridad existente de hello mediante hello [Get-OBPolicy](https://technet.microsoft.com/library/hh770406) cmdlet. Puede desplazarse mediante hello [Get-OBSchedule](https://technet.microsoft.com/library/hh770423) cmdlet para programar copia de seguridad de Hola y Hola [OBRetentionPolicy Get](https://technet.microsoft.com/library/hh770427) cmdlet para las directivas de retención de Hola
+Puede ver los detalles de la directiva de copia de seguridad existente con el cmdlet [Get-OBPolicy](https://technet.microsoft.com/library/hh770406) . Puede profundizar más mediante el cmdlet [Get-OBSchedule](https://technet.microsoft.com/library/hh770423) de la programación de copia de seguridad y el cmdlet [Get-OBRetentionPolicy](https://technet.microsoft.com/library/hh770427) de las directivas de retención
 
 ```
 PS C:> Get-OBPolicy | Get-OBSchedule
@@ -418,7 +418,7 @@ IsRecursive : True
 ```
 
 ### <a name="performing-an-ad-hoc-backup"></a>Realización de una copia de seguridad ad-hoc
-Una vez que se ha establecido una directiva de copia de seguridad realizar copias de seguridad de hello según la programación de Hola. También es posible usar Hola desencadenar una copia de seguridad de ad-hoc [OBBackup inicio](https://technet.microsoft.com/library/hh770426) cmdlet:
+Una vez establecida una directiva de copia de seguridad, las copias de seguridad se producirán en función de la programación. Desencadenar una copia de seguridad ad-hoc también es posible usando el cmdlet [Start-OBBackup](https://technet.microsoft.com/library/hh770426) :
 
 ```
 PS C:> Get-OBPolicy | Start-OBBackup
@@ -429,19 +429,19 @@ Estimating size of backup items...
 Transferring data...
 Verifying backup...
 Job completed.
-hello backup operation completed successfully.
+The backup operation completed successfully.
 ```
 
 ## <a name="restore-data-from-azure-backup"></a>Restaurar datos de Azure Backup
-En esta sección le guiará a través de los pasos de Hola para automatizar la recuperación de datos de copia de seguridad de Azure. Hacerlo implica Hola pasos:
+Esta sección le guiará por los pasos necesarios para automatizar la recuperación de datos de Azure Backup. Esto implica los pasos siguientes:
 
-1. Seleccione el volumen de origen de Hola
-2. Elija un toorestore de punto de copia de seguridad
-3. Elija un elemento toorestore
-4. Proceso de restauración de Hola de desencadenador
+1. Seleccionar el volumen de origen
+2. Elegir un punto de copia de seguridad desde el que efectuar la restauración
+3. Selección de un elemento para restaurar
+4. Desencadenar el proceso de restauración
 
-### <a name="picking-hello-source-volume"></a>Seleccionar volumen de origen de Hola
-En orden toorestore un elemento de la copia de seguridad de Azure, primero debe origen de hello tooidentify de elemento de Hola. Porque nos estamos ejecutando comandos de hello en contexto de Hola de un servidor de Windows o un cliente de Windows, ya se ha identificado máquina Hola. Hola siguiente paso para identificar el origen de hello es volumen de hello tooidentify que lo contiene. Una lista de volúmenes u orígenes haciendo copias de seguridad de este equipo se puede recuperar mediante la ejecución de hello [Get-OBRecoverableSource](https://technet.microsoft.com/library/hh770410) cmdlet. Este comando devuelve una matriz de todos los orígenes de Hola de este cliente/servidor de copia de seguridad.
+### <a name="picking-the-source-volume"></a>Selección del volumen de origen
+Para restaurar un elemento de Azure Backup, primero deberá identificar el origen del elemento. Dado que los comandos se están ejecutando en el contexto de un servidor o un cliente de Windows, el equipo ya se ha identificado. El siguiente paso para identificar el origen es identificar el volumen que lo contiene. Se puede recuperar una lista de los volúmenes u orígenes de los que se está efectuando una copia de seguridad desde esta máquina mediante la ejecución del cmdlet [Get-OBRecoverableSource](https://technet.microsoft.com/library/hh770410) . Este comando devuelve una matriz de todos los orígenes de los que se ha efectuado una copia de seguridad desde este servidor/cliente.
 
 ```
 PS C:> $source = Get-OBRecoverableSource
@@ -455,8 +455,8 @@ RecoverySourceName : D:\
 ServerName : myserver.microsoft.com
 ```
 
-### <a name="choosing-a-backup-point-toorestore"></a>Elegir un toorestore de punto de copia de seguridad
-Hello lista de puntos de copia de seguridad se puede recuperar mediante la ejecución de hello [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) cmdlet con parámetros adecuados. En nuestro ejemplo, elegiremos punto de copia de seguridad más reciente de hello para el volumen de origen de hello *D:* y usar toorecover un archivo específico.
+### <a name="choosing-a-backup-point-to-restore"></a>Elegir un punto de copia de seguridad para restaurar
+La lista de puntos de copia de seguridad se puede recuperar ejecutando el cmdlet [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) con los parámetros adecuados. En nuestro ejemplo, elegiremos el punto de copia de seguridad más reciente para el volumen de origen *D:* y lo usaremos para recuperar un archivo específico.
 
 ```
 PS C:> $rps = Get-OBRecoverableItem -Source $source[1]
@@ -482,12 +482,12 @@ ServerName : myserver.microsoft.com
 ItemSize :
 ItemLastModifiedTime :
 ```
-objeto de Hello ```$rps``` es una matriz de puntos de copia de seguridad. Hola primer elemento es el último punto de Hola y elemento n-ésima de hello es punto más antiguo de Hola. punto más reciente de toochoose hello, usaremos ```$rps[0]```.
+El objeto ```$rps``` es una matriz de puntos de copia de seguridad. El primer elemento es el punto más reciente y el enésimo elemento es el punto más antiguo. Para elegir el punto más reciente, usaremos ```$rps[0]```.
 
-### <a name="choosing-an-item-toorestore"></a>Elegir un elemento toorestore
-tooidentify Hola exacto del archivo o carpeta toorestore, recursivamente usar hello [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) cmdlet. Se pueden examinar esa jerarquía de carpetas de manera Hola únicamente con hello ```Get-OBRecoverableItem```.
+### <a name="choosing-an-item-to-restore"></a>Selección de un elemento para restaurar
+Para identificar el archivo o carpeta exacto que desea restaurar, use de forma recursiva el cmdlet [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) . De esta forma se puede examinar la jerarquía de carpetas exclusivamente mediante el ```Get-OBRecoverableItem```.
 
-En este ejemplo, si queremos que el archivo de hello toorestore *finances.xls* podemos hacer referencia a que cuando se utiliza el objeto de hello ```$filesFolders[1]```.
+En este ejemplo, si se desea restaurar el archivo *finances.xls* se puede hacer referencia a este con el objeto ```$filesFolders[1]```.
 
 ```
 PS C:> $filesFolders = Get-OBRecoverableItem $rps[0]
@@ -528,20 +528,20 @@ ItemSize : 96256
 ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
 ```
 
-También puede buscar toorestore elementos mediante hello ```Get-OBRecoverableItem``` cmdlet. En nuestro ejemplo, toosearch para *finances.xls* se pudo obtener un identificador en el archivo hello, ejecute este comando:
+También puede buscar elementos para restaurar usando el cmdlet ```Get-OBRecoverableItem``` . En nuestro ejemplo, para buscar *finances.xls* podríamos obtener un identificador en el archivo mediante la ejecución de este comando:
 
 ```
 PS C:\> $item = Get-OBRecoverableItem -RecoveryPoint $rps[0] -Location "D:\MyData" -SearchString "finance*"
 ```
 
-### <a name="triggering-hello-restore-process"></a>Proceso de restauración de desencadenamiento Hola
-proceso de restauración de hello tootrigger, primero necesitamos opciones de recuperación de toospecify Hola. Esto puede hacerse mediante el uso de hello [OBRecoveryOption New](https://technet.microsoft.com/library/hh770417.aspx) cmdlet. En este ejemplo, supongamos que queremos archivos de hello toorestore demasiado*C:\temp*. Supongamos también que deseamos tooskip archivos que ya existen en la carpeta de destino de hello *C:\temp*. toocreate tal una opción de recuperación, utilice Hola siguiente comando:
+### <a name="triggering-the-restore-process"></a>Desencadenar el proceso de restauración
+Para desencadenar el proceso de restauración, primero es necesario especificar las opciones de recuperación. Esto puede hacerse mediante el uso del cmdlet [New-OBRecoveryOption](https://technet.microsoft.com/library/hh770417.aspx) . En este ejemplo, supongamos que deseamos restaurar los archivos en *C:\temp*. Supongamos también que deseamos omitir archivos que ya existen en la carpeta de destino *C:\temp*. Para crear dicha opción de recuperación, use el siguiente comando:
 
 ```
 PS C:\> $recovery_option = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip
 ```
 
-Ahora desencadenar restauración mediante hello [Start-OBRecovery](https://technet.microsoft.com/library/hh770402.aspx) comando hello seleccionado ```$item``` de salida de hello de hello ```Get-OBRecoverableItem``` cmdlet:
+Ahora, desencadene la restauración con el comando [Start-OBRecovery](https://technet.microsoft.com/library/hh770402.aspx) en el ```$item``` seleccionado desde la salida del cmdlet ```Get-OBRecoverableItem```:
 
 ```
 PS C:\> Start-OBRecovery -RecoverableItem $item -RecoveryOption $recover_option
@@ -550,29 +550,29 @@ Estimating size of backup items...
 Estimating size of backup items...
 Estimating size of backup items...
 Job completed.
-hello recovery operation completed successfully.
+The recovery operation completed successfully.
 ```
 
 
-## <a name="uninstalling-hello-azure-backup-agent"></a>La desinstalación de agente de copia de seguridad de Azure Hola
-Desinstalar agente de copia de seguridad de Azure de hello puede hacerse mediante el uso de hello siguiente comando:
+## <a name="uninstalling-the-azure-backup-agent"></a>Desinstalación del agente de Azure Backup
+La desinstalación del agente de Azure Backup se puede realizar con el comando siguiente:
 
 ```
 PS C:\> .\MARSAgentInstaller.exe /d /q
 ```
 
-Desinstalación de archivos binarios del agente de hello de la máquina de hello tiene algunos tooconsider consecuencias:
+Desinstalación de los archivos binarios del agente de la máquina tiene algunas consecuencias a tener en cuenta:
 
-* Quita el filtro de archivos Hola de máquina de Hola y se detiene el seguimiento de cambios.
-* Se quita toda la información de directiva de máquina de hello, pero información de la directiva de hello continúa toobe almacenado en el servicio de Hola.
+* Elimina el filtro de archivos de la máquina y se detiene el seguimiento de los cambios.
+* Se elimina toda la información de directivas de la máquina, pero continúa almacenada en el servicio.
 * Se eliminan todas las programaciones de copia de seguridad y no se realizan más copias de seguridad.
 
-Sin embargo, Hola datos almacenados en Azure permanece y se mantiene según la configuración de directiva de retención de Hola por parte del usuario. Los puntos más antiguos vencen automáticamente.
+Sin embargo, los datos almacenados en Azure permanecen y se mantienen de acuerdo con la configuración de la directiva de retención establecida por usted. Los puntos más antiguos vencen automáticamente.
 
 ## <a name="remote-management"></a>Administración remota
-Toda la administración de hello alrededor de agente de copia de seguridad de Azure de hello, directivas y orígenes de datos puede realizarse de forma remota a través de PowerShell. máquina de Hola que se administrará de forma remota debe toobe preparado correctamente.
+Toda la administración relacionada con el agente, las políticas y los orígenes de datos de Azure Backup puede realizarse de forma remota mediante PowerShell. La máquina que se administrará de forma remota debe estar preparada correctamente.
 
-De forma predeterminada, Hola servicio WinRM está configurado para iniciarse manualmente. tipo de inicio de Hello debe establecerse demasiado*automática* y se debe iniciar el servicio de Hola. tooverify que Hola servicio WinRM se está ejecutando, debería Hola el valor de la propiedad Status de hello *ejecutando*.
+De forma predeterminada, el servicio WinRM está configurado para iniciarse manualmente. El tipo de inicio debe establecerse en *Automatic* y se debe iniciar el servicio. Para comprobar que el servicio WinRM se está ejecutando, el valor de la propiedad Status debe ser *Running*.
 
 ```
 PS C:\> Get-Service WinRM
@@ -586,14 +586,14 @@ PowerShell debe configurarse para la comunicación remota.
 
 ```
 PS C:\> Enable-PSRemoting -force
-WinRM is already set up tooreceive requests on this computer.
+WinRM is already set up to receive requests on this computer.
 WinRM has been updated for remote management.
 WinRM firewall exception enabled.
 
 PS C:\> Set-ExecutionPolicy unrestricted -force
 ```
 
-máquina de Hello ahora pueden administrarse de forma remota: a partir de la instalación de Hola de agente de Hola. Por ejemplo, hello siguiente secuencia de comandos copia máquina remota de hello agente toohello y lo instala.
+La máquina puede ahora administrarse de forma remota: empezando por la instalación del agente. Por ejemplo, el script siguiente copia al agente en la máquina remota y lo instala.
 
 ```
 PS C:\> $dloc = "\\REMOTESERVER01\c$\Windows\Temp"
@@ -608,5 +608,5 @@ PS C:\> Invoke-Command -Session $s -Script { param($d, $a) Start-Process -FilePa
 ## <a name="next-steps"></a>Pasos siguientes
 Para obtener más información sobre Azure Backup para Windows Server o cliente de Windows, consulte
 
-* [Introducción tooAzure copia de seguridad](backup-introduction-to-azure-backup.md)
+* [Introducción a Azure Backup](backup-introduction-to-azure-backup.md)
 * [Copia de seguridad de servidores Windows](backup-configure-vault.md)

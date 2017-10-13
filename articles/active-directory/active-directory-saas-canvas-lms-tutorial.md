@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con Canvas Lms | Microsoft Docs"
-description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y Canvas LMS."
+description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y Canvas Lms."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,111 +13,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 8f4a09266a108e2c92326b0909dd0650b1c84d6a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 2212b7a81b66d1afd1aa78d1487b07b6d7b84129
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas-lms"></a>Tutorial: integración de Azure Active Directory con Canvas Lms
 
-En este tutorial, aprenderá cómo toointegrate lienzo con Azure Active Directory (Azure AD).
+En este tutorial, aprenderá a integrar Canvas con Azure Active Directory (Azure AD).
 
-Integración lienzo con Azure AD proporciona Hola siguientes ventajas:
+Integrar Canvas con Azure AD le proporciona las siguientes ventajas:
 
-- Puede controlar en Azure AD que tenga acceso tooCanvas
-- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooCanvas (Single Sign-On) con sus cuentas de Azure AD
-- Puede administrar las cuentas en una ubicación central: Hola portal de Azure
+- En Azure AD se puede controlar quién tiene acceso a Canvas.
+- Puede permitir que los usuarios inicien sesión automáticamente en Canvas (inicio de sesión único) con sus cuentas de Azure AD.
+- Puede administrar las cuentas en una sola ubicación central: Azure Portal.
 
-Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Si desea saber más sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-tooconfigure integración de Azure AD con Canvas, necesita Hola siguientes elementos:
+Para configurar la integración de Azure AD con Canvas, necesita los siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción habilitada para el inicio de sesión único en Canvas
 
 > [!NOTE]
-> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
+> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
 
-pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
+Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
 
 - No use el entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
 
-1. Agregar lienzo de galería de Hola
+1. Adición de Canvas desde la galería
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-canvas-from-hello-gallery"></a>Agregar lienzo de galería de Hola
-integración de hello tooconfigure del lienzo en Azure AD, deberá tooadd lienzo de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
+## <a name="adding-canvas-from-the-gallery"></a>Adición de Canvas desde la galería
+Para configurar la integración de Canvas en Azure AD, deberá agregar Canvas desde la galería a la lista de aplicaciones SaaS administradas.
 
-**tooadd lienzo de galería de hello, lleve a cabo Hola pasos:**
+**Para agregar Canvas desde la galería, realice los pasos siguientes:**
 
-1. Hola  **[portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
+1. En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
+2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
 
     ![Aplicaciones][2]
     
-3. tooadd nueva aplicación, haga clic en **nueva aplicación** botón en la parte superior de saludo del cuadro de diálogo.
+3. Para agregar una nueva aplicación, haga clic en el botón **Nueva aplicación** de la parte superior del cuadro de diálogo.
 
     ![Aplicaciones][3]
 
-4. En el cuadro de búsqueda de hello, escriba **lienzo**.
+4. En el cuadro de búsqueda, escriba **Canvas**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-canvas-lms-tutorial/tutorial_canvaslms_search.png)
 
-5. En el panel de resultados de hello, seleccione **lienzo**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.
+5. En el panel de resultados, seleccione **Canvas** y luego haga clic en el botón **Agregar** para agregar la aplicación.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-canvas-lms-tutorial/tutorial_canvaslms_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuración y comprobación del inicio de sesión único de Azure AD
 En esta sección, podrá configurar y probar el inicio de sesión único de Azure AD con Canvas con un usuario de prueba llamado "Britta Simon".
 
-Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en el lienzo es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en el lienzo debe toobe establecido.
+Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de Canvas para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de Canvas.
 
-En el lienzo, asigne el valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** tooestablish la relación de vínculo de Hola.
+Para establecer la relación de vínculo, en Canvas, asigne el valor de **nombre de usuario** de Azure AD como valor de **nombre de usuario**.
 
-tooconfigure y prueba de inicio de sesión único en Azure AD con Canvas, deberá hello toocomplete después de bloques de creación:
+Para configurar y probar el inicio de sesión único de Azure AD con Canvas, es preciso completar los siguientes bloques de creación:
 
-1. **[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.
-2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.
-3. **[Crear un usuario de prueba de lienzo](#creating-a-canvas-test-user)**  -toohave un equivalente de Britta Simon en lienzo que es la representación toohello vinculado Azure AD del usuario.
-4. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.
-5. **[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.
+1. **[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.
+2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.
+3. **[Creación de un usuario de prueba de Canvas](#creating-a-canvas-test-user)**: para tener un homólogo de Britta Simon en Canvas que esté vinculado a la representación de Azure AD de usuario.
+4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación del lienzo.
+En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y configurará el inicio de sesión único en la aplicación Canvas.
 
-**inicio de sesión único en tooconfigure Azure AD con Canvas, siga Hola pasos:**
+**Para configurar el inicio de sesión único de Azure AD con Canvas, realice los pasos siguientes:**
 
-1. En el portal de Azure, en Hola Hola **lienzo** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
+1. En Azure Portal, en la página de integración de la aplicación **Canvas**, haga clic en **Inicio de sesión único**.
 
     ![Configurar inicio de sesión único][4]
 
-2. En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.
+2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-canvas-lms-tutorial/tutorial_canvaslms_samlbase.png)
 
-3. En hello **lienzo de dominio y las direcciones URL** sección, lleve a cabo Hola pasos:
+3. En la sección **Dominio y direcciones URL de Canvas**, lleve a cabo los pasos siguientes:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-canvas-lms-tutorial/tutorial_canvaslms_url.png)
 
-    a. Hola **dirección URL de inicio de sesión** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<tenant-name>.instructure.com`
+    a. En el cuadro de texto **URL de inicio de sesión**, escriba una dirección URL con el siguiente patrón: `https://<tenant-name>.instructure.com`.
 
-    b. Hola **identificador** cuadro de texto, valor de tipo hello mediante Hola sigue el patrón:`https://<tenant-name>.instructure.com/saml2`
+    b. En el cuadro de texto **Identificador**, escriba el valor con el siguiente patrón: `https://<tenant-name>.instructure.com/saml2`
 
     > [!NOTE] 
-    > Estos valores no son reales. Actualizar estos valores con hello real de dirección URL de inicio de sesión y el identificador. Póngase en contacto con [equipo de soporte técnico de cliente de lienzo](https://community.canvaslms.com/community/help) tooget estos valores. 
+    > Estos valores no son reales. Debe actualizarlos con la dirección URL y el identificador reales de inicio de sesión. Póngase en contacto con el [equipo de soporte de cliente de Canvas](https://community.canvaslms.com/community/help) para obtener estos valores. 
  
-4. En hello **el certificado de firma de SAML** Hola de copia, en una sección **huella digital** el valor de certificado.
+4. En la sección **Certificado de firma de SAML**, copie el valor de **HUELLA DIGITAL** certificado.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-canvas-lms-tutorial/tutorial_canvaslms_certificate.png) 
 
@@ -125,85 +125,85 @@ En esta sección, habilitar inicio de sesión único en Azure AD en hello portal
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-canvas-lms-tutorial/tutorial_general_400.png)
 
-6. En hello **configuración lienzo** sección, haga clic en **configurar lienzo** tooopen **configurar inicio de sesión** ventana. Hola copia **cambiar dirección URL de contraseña, dirección URL de cierre de sesión, Id. de entidad de SAML y SAML Single Sign-On dirección URL del servicio** de hello **sección de referencia rápida.**
+6. En la sección **Configuración de Canvas**, haga clic en **Configurar Canvas** para abrir la ventana **Configurar inicio de sesión**. Copie la **dirección URL cambiada de la contraseña, la dirección URL de cierre de sesión, el identificador de entidad de SAML y la dirección URL del servicio de inicio de sesión único de SAML** de la sección **Referencia rápida**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-canvas-lms-tutorial/tutorial_canvaslms_configure.png) 
  
-7. En una ventana del explorador web diferente, inicie sesión en el sitio de empresa de Canvas de tooyour como administrador.
+7. En otra ventana del explorador web, inicie sesión como administrador en el sitio de la compañía de Canvas.
 
-8. Vaya demasiado**cursos \> cuentas administradas \> Microsoft**.
+8. Vaya a **Cursos \> Cuentas administradas \> Microsoft**.
    
     ![Canvas](./media/active-directory-saas-canvas-lms-tutorial/IC775990.png "Canvas")
 
-9. En el panel de navegación de Hola Hola izquierda, seleccione **autenticación**y, a continuación, haga clic en **agregar nueva configuración de SAML**.
+9. En el panel de navegación izquierdo, seleccione **Authentication** (Autenticación) y, después, haga clic en **Add New SAML Config** (Agregar nueva configuración de SAML).
    
     ![Autenticación](./media/active-directory-saas-canvas-lms-tutorial/IC775991.png "Autenticación")
 
-10. En la página de integración actual de hello, realizar Hola pasos:
+10. En la página Curent Integration (integración actual) realice los siguientes pasos:
    
     ![Integración actual](./media/active-directory-saas-canvas-lms-tutorial/IC775992.png "Integración actual")
 
-    a. En **Id. de entidad IdP** cuadro de texto, pegue Hola valo **Id. de entidad SAML** que haya copiado desde el portal de Azure.
+    a. En el cuadro de texto **IdP Entity ID** (Id. de entidad IdP), pegue el valor de **SAML Entity ID** (Identificador de entidad de SAML) que copió de Azure Portal.
 
-    b. En **dirección URL de registro** cuadro de texto, pegue Hola valo **SAML Single Sign-On dirección URL del servicio** que haya copiado desde el portal de Azure.
+    b. En el cuadro de texto **URL de inicio de sesión**, pegue el valor de **SAML Single Sign-On Service URL** (Dirección URL del servicio de inicio de sesión único de SAML) que ha copiado de Azure Portal.
 
-    c. En **URL de cierre de registro** cuadro de texto, pegue Hola valo **dirección URL de cierre de sesión** que haya copiado desde el portal de Azure.
+    c. En el cuadro de texto **URL de cierre de sesión**, pegue el valor de **Sign-Out URL** (Dirección URL de cierre de sesión) que copió de Azure Portal.
 
-    d. En **vínculo de cambio de contraseña** cuadro de texto, pegue Hola valo **cambiar dirección URL de contraseña** que haya copiado desde el portal de Azure. 
+    d. En el cuadro de texto **Change Password Link** (Cambiar vínculo de contraseña), pegue el valor de **Cambiar dirección URL de contraseña** que copió de Azure Portal. 
 
-    e. En **huella digital de certificado** cuadro de texto, pegue hello **huella digital** el valor de certificado que haya copiado desde el portal de Azure.      
+    e. En el cuadro de texto **Certificate Fingerprint** (Huella digital de certificado), pegue el valor de **Huella digital** del certificado que haya copiado de Azure Portal.      
         
-    f. De hello **atributo de inicio de sesión** lista, seleccione **NameID**.
+    f. En la lista **Atributo de inicio de sesión**, seleccione **NameID**.
 
-    g. De hello **formato de identificador** lista, seleccione **emailAddress**.
+    g. En la lista **Formato de identificador**, seleccione **emailAddress**.
 
     h. Haga clic en **Guardar configuración de autenticación**.
 
 > [!TIP]
-> Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!  Después de agregar esta aplicación de hello **Active Directory > aplicaciones empresariales** sección, simplemente haga clic en hello **Single Sign-On** Hola de pestaña y acceso incrustado documentación a través de hello  **Configuración** sección final Hola. Puede leer más acerca de características de documentación de embedded Hola aquí: [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ahora puede leer una versión concisa de estas instrucciones en [Azure Portal](https://portal.azure.com) mientras configura la aplicación.  Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada a través de la sección **Configuración** de la parte inferior. Puede leer más sobre la característica de documentación insertada aquí: [Vista previa: Administración de inicio de sesión único para aplicaciones empresariales en el nuevo Azure Portal]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.
+El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".
 
 ![Creación de un usuario de Azure AD][100]
 
-**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
+**Siga estos pasos para crear un usuario de prueba en Azure AD:**
 
-1. Hola **portal de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.
+1. En el panel de navegación izquierdo de **Azure Portal**, haga clic en el icono de **Azure Active Directory**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-canvas-lms-tutorial/create_aaduser_01.png) 
 
-2. lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios**.
+2. Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios**.
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-canvas-lms-tutorial/create_aaduser_02.png) 
 
-3. Hola tooopen **usuario** cuadro de diálogo, haga clic en **agregar** en la parte superior de saludo del cuadro de diálogo de Hola.
+3. Para abrir el cuadro de diálogo **Usuario**, haga clic en **Agregar** en la parte superior del cuadro de diálogo.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-canvas-lms-tutorial/create_aaduser_03.png) 
 
-4. En hello **usuario** cuadro de diálogo, siga los pasos de hello:
+4. En la página de diálogo **Usuario**, realice los siguientes pasos:
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-canvas-lms-tutorial/create_aaduser_04.png) 
 
-    a. Hola **nombre** cuadro de texto, tipo **BrittaSimon**.
+    a. En el cuadro de texto **Nombre**, escriba **BrittaSimon**.
 
-    b. Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.
+    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
 
-    c. Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.
+    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
 
     d. Haga clic en **Crear**.
  
 ### <a name="creating-a-canvas-test-user"></a>Creación de un usuario de prueba de Canvas
 
-toolog de los usuarios de Azure AD tooenable en tooCanvas, se les deben aprovisionar en el lienzo.
+Para permitir que los usuarios de Azure AD inicien sesión en Canvas, tienen que aprovisionarse en Canvas.
 
 En el caso de Canvas, el aprovisionamiento de usuario es una tarea manual.
 
-**tooprovision una cuenta de usuario, lleve a cabo Hola pasos:**
+**Para aprovisionar una cuenta de usuario, realice estos pasos:**
 
-1. Inicie sesión en tooyour **lienzo** inquilino.
+1. Inicie sesión en su inquilino de **Canvas** .
 
-2. Vaya demasiado**cursos \> cuentas administradas \> Microsoft**.
+2. Vaya a **Cursos \> Cuentas administradas \> Microsoft**.
    
    ![Canvas](./media/active-directory-saas-canvas-lms-tutorial/IC775990.png "Canvas")
 
@@ -215,40 +215,40 @@ En el caso de Canvas, el aprovisionamiento de usuario es una tarea manual.
    
    ![Usuarios](./media/active-directory-saas-canvas-lms-tutorial/IC775996.png "Usuarios")
 
-5. En hello agregar una página de diálogo nuevo usuario, siga Hola pasos:
+5. En la página de diálogo Agregar nuevo usuario, realice los pasos siguientes:
    
    ![Agregar usuario](./media/active-directory-saas-canvas-lms-tutorial/IC775997.png "Agregar usuario")
    
-   a. Hola **nombre completo** cuadro de texto, escriba Hola nombre de usuario como **BrittaSimon**.
+   a. En el cuadro de texto **Nombre completo**, escriba el nombre de usuario, por ejemplo, **BrittaSimon**.
 
-   b. Hola **correo electrónico** cuadro de texto, escriba el correo electrónico de saludo del usuario como  **brittasimon@contoso.com** .
+   b. En el cuadro de texto **E-mail** (Correo electrónico), escriba el correo electrónico del usuario con el siguiente formato **brittasimon@contoso.com**.
 
-   c. Hola **inicio de sesión** cuadro de texto, escriba la dirección de correo electrónico del usuario de hello Azure AD como  **brittasimon@contoso.com** .
+   c. En el cuadro de texto **Login** (Inicio de sesión), escriba la dirección de correo electrónico de Azure AD del usuario **brittasimon@contoso.com**.
 
-   d. Seleccione **usuario Hola de correo electrónico acerca de la creación de esta cuenta**.
+   d. Seleccione **Email the user about this account creation**(Enviar correo electrónico al usuario sobre la creación de esta cuenta).
 
    e. Haga clic en **Agregar usuario**.
 
 >[!NOTE]
->Puede usar cualquier otra lienzo usuario cuenta herramienta de creación o las API proporcionadas por Canvas tooprovision cuentas de usuario AAD.
+>Puede usar cualquier otra API o herramienta de creación de cuentas de usuario de Canvas ofrecida por Canvas para aprovisionar cuentas de usuario de AAD.
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Asignación de usuario de prueba de hello Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
 
-En esta sección, se habilita Britta Simon toouse un inicio de sesión único Azure concediendo acceso tooCanvas.
+En esta sección, habilitará a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a Canvas.
 
 ![Asignar usuario][200] 
 
-**tooassign Britta Simon tooCanvas, lleve a cabo Hola pasos:**
+**Para asignar Britta Simon a Canvas, realice los pasos siguientes:**
 
-1. Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
+1. En Azure Portal, abra la vista de aplicaciones, navegue a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego haga clic en **Todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones de hello, seleccione **lienzo**.
+2. En la lista de aplicaciones, seleccione **Canvas**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-canvas-lms-tutorial/tutorial_canvaslms_app.png) 
 
-3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
+3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
 
     ![Asignar usuario][202] 
 
@@ -256,7 +256,7 @@ En esta sección, se habilita Britta Simon toouse un inicio de sesión único Az
 
     ![Asignar usuario][203]
 
-5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
+5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -264,14 +264,14 @@ En esta sección, se habilita Britta Simon toouse un inicio de sesión único Az
     
 ### <a name="testing-single-sign-on"></a>Prueba del inicio de sesión único 
 
-En esta sección, comprobará su único inicio de sesión en configuración de Azure AD con hello Panel de acceso.
+En esta sección, probará la configuración de inicio de sesión único de Azure AD mediante el Panel de acceso.
 
-Al hacer clic en icono de lienzo Hola Hola Panel de acceso, deberá obtener la aplicación de lienzo tooyour automáticamente ha iniciado sesión.
-Para obtener más información acerca de hello Panel de acceso, consulte [Introducción toohello Panel de acceso](active-directory-saas-access-panel-introduction.md).
+Al hacer clic en el icono de Canvas en el panel de acceso, debería iniciar sesión automáticamente en su aplicación de Canvas.
+Para más información sobre el Panel de acceso, consulte [Introducción al Panel de acceso](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

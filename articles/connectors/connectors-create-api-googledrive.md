@@ -1,6 +1,6 @@
 ---
-title: "Conector de Google Drive aaaAdd hello en las aplicaciones lógicas | Documentos de Microsoft"
-description: "Información general del conector de Google Drive Hola con parámetros de la API de REST"
+title: "Incorporación del conector de Google Drive a Logic Apps | Microsoft Docs"
+description: "Información general del conector de Google Drive con parámetros de la API de REST"
 services: 
 suite: 
 documentationcenter: 
@@ -16,32 +16,32 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/07/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: d572cc07462713c3496e2cc3081e1758828bdcde
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: c066a10b33e172eb5f16eede43ec407794000c90
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="get-started-with-hello-google-drive-connector"></a>Empezar a trabajar con el conector de Google Drive Hola
-Conecte tooGoogle unidad toocreate archivos, obtener filas y mucho más. Con Google Drive, puede: 
+# <a name="get-started-with-the-google-drive-connector"></a>Introducción al conector de Google Drive
+Conéctese a Google Drive para crear archivos, obtener filas, etc. Con Google Drive, puede: 
 
-* Genera el flujo de negocios basado en datos de hello que obtendrá de la búsqueda. 
-* Use acciones toosearch imágenes, noticias de Hola de búsqueda y mucho más. Estas acciones obtención una respuesta y, a continuación, asegúrese de salida de hello disponibles para las demás acciones. Por ejemplo, puede buscar para ver un vídeo y, a continuación, usar Twitter toopost que tooa vídeo que fuente Twitter.
+* Compilar el flujo de negocio en función de los datos obtenidos de la búsqueda. 
+* Usar acciones para buscar imágenes, noticias, etc. Estas acciones obtienen una respuesta y luego dejan el resultado a disposición de otras acciones. Por ejemplo, puede buscar un vídeo y luego usar Twitter para publicar ese vídeo en una fuente de Twitter.
 
 Puede empezar creando una aplicación lógica ahora. Para ello, consulte [Creación de una aplicación lógica](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="create-hello-connection-toogoogle-drive"></a>Crear Hola conexión tooGoogle unidad
-Al agregar las aplicaciones lógicas de tooyour este conector, debe autorizar lógica aplicaciones tooconnect tooyour Google Drive.
+## <a name="create-the-connection-to-google-drive"></a>Creación de la conexión a Google Drive
+Al agregar este conector a las aplicaciones lógicas, debe autorizar a estas para que se conecten a su Google Drive.
 
-> [!INCLUDE [Steps toocreate a connection toogoogledrive](../../includes/connectors-create-api-googledrive.md)]
+> [!INCLUDE [Steps to create a connection to googledrive](../../includes/connectors-create-api-googledrive.md)]
 > 
 > 
 
-Después de crear la conexión de hello, especifique propiedades de Google Drive hello, como nombre de archivo o ruta de acceso de la carpeta de Hola. 
+Después de crear la conexión, especifique las propiedades de Google Drive, como la ruta de acceso a la carpeta o el nombre de archivo. 
 
 ## <a name="connector-specific-details"></a>Detalles específicos del conector
 
-Ver los desencadenadores y las acciones definidas en swagger hello y también los límites de hello [detalles del conector](/connectors/googledrive/).
+Vea los desencadenadores y las acciones definidos en Swagger y vea también todos los límites en los [detalles del conector](/connectors/googledrive/).
 
 ## <a name="more-connectors"></a>Más conectores
-Volver atrás toohello [lista de las API](apis-list.md).
+Volver a la [lista de API](apis-list.md).

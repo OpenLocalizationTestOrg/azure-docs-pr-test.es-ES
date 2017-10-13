@@ -1,6 +1,6 @@
 ---
-title: "aaaRedact caras con el tutorial de análisis de multimedia de Azure | Documentos de Microsoft"
-description: "En este tema se muestra instrucciones paso a paso acerca de cómo toorun un flujo de trabajo de redacción completa mediante el Explorador de servicios multimedia de Azure (AMSE) y Azure Media Redactor visualizador (herramienta de código abierto)."
+title: Tutorial de censura de rostros con Azure Media Analytics | Microsoft Docs
+description: "En este tema se muestran instrucciones paso a paso sobre cómo ejecutar un flujo de trabajo de censura completa mediante el Explorador de Azure Media Services (AMSE) y Azure Media Redactor Visualizer (herramienta de código abierto)."
 services: media-services
 documentationcenter: 
 author: Lichard
@@ -12,38 +12,36 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/03/2017
+ms.date: 09/03/2017
 ms.author: rli; juliako;
-ms.openlocfilehash: ab28f4052b73fdb74fcd5766235eab35402a0c9d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 0bd385ba78028a722c52cdf1508f3348ff90f05f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Tutorial de censura de rostros con Azure Media Analytics
 
 ## <a name="overview"></a>Información general
 
-**Redactor de Azure Media** es un [análisis de multimedia de Azure](media-services-analytics-overview.md) procesador multimedia (MP) que ofrece la redacción de cara escalable en la nube de Hola. Redacción de cara permite toomodify el vídeo en caras de tooblur de orden de los usuarios seleccionados. Puede desear toouse Hola el servicio de redacción de cara en escenarios de seguridad y medios de noticias públicos. Unos pocos minutos después de material de archivo que contiene varios tipos pueden tardar horas tooredact manualmente, pero con esta imagen de hello servicio proceso de redacción requiere unos pocos pasos sencillos. Para más información, consulte [este blog](https://azure.microsoft.com/blog/azure-media-redactor/).
+**Redactor multimedia de Azure** es un procesador multimedia (MP) de [Análisis multimedia de Azure](media-services-analytics-overview.md) que ofrece censura de rostros escalable en la nube. La censura de rostros le permite modificar un vídeo con el fin de difuminar las caras de personas seleccionadas. Puede usar el servicio de censura de rostros en escenarios de seguridad pública y de noticias en los medios de comunicación. Unos minutos de material de archivo que contenga varias caras puede tardar horas en censurarse manualmente, pero con este servicio, el proceso de censura de caras requiere solamente unos pocos pasos sencillos. Para más información, consulte [este blog](https://azure.microsoft.com/blog/azure-media-redactor/).
 
-Para obtener más información acerca de **Redactor de multimedia de Azure**, vea hello [información general de redacción de cara](media-services-face-redaction.md) tema.
+Para obtener más información sobre **Azure Media Redactor**, consulte el tema de [información general sobre Censura de rostros](media-services-face-redaction.md).
 
-En este tema se muestra instrucciones paso a paso acerca de cómo toorun un flujo de trabajo de redacción completa mediante el Explorador de servicios multimedia de Azure (AMSE) y Azure Media Redactor visualizador (herramienta de código abierto).
-
-Hola **Redactor de multimedia de Azure** MP está actualmente en vista previa. Está disponible en todas las regiones de Azure públicas, así como en los centros de datos de China y el gobierno de Estados Unidos. Actualmente, esta versión preliminar es gratuita. En la versión actual de hello, hay un límite de 10 minutos en la duración del vídeo procesado.
+En este tema se muestran instrucciones paso a paso sobre cómo ejecutar un flujo de trabajo de censura completa mediante el Explorador de Azure Media Services (AMSE) y Azure Media Redactor Visualizer (herramienta de código abierto).
 
 Para más información, consulte [este blog](https://azure.microsoft.com/en-us/blog/redaction-preview-available-globally) .
 
 ## <a name="azure-media-services-explorer-workflow"></a>Flujo de trabajo del Explorador de Azure Media Services
 
-Hello tooget de manera más fácil trabajar con Redactor es la herramienta de AMSE de código abierto toouse hello en github. Puede ejecutar un flujo de trabajo simplificado a través de **combinan** modo si no necesita acceso toohello anotación json o hello cara imágenes jpg.
+La manera más fácil de empezar a trabajar con Censura de rostros es usar la herramienta AMSE de código abierto en GitHub. Puede ejecutar un flujo de trabajo simplificado a través del modo **combinado** si no necesita acceso al JSON de anotaciones o a las imágenes JPG de rostros.
 
 ### <a name="download-and-setup"></a>Descarga e instalación
 
-1. Herramienta de AMSE Hola descargar [aquí](https://github.com/Azure/Azure-Media-Services-Explorer).
-1. Inicie sesión en tooyour cuenta de servicios multimedia mediante la clave del servicio.
+1. Descargue la herramienta AMSE [aquí](https://github.com/Azure/Azure-Media-Services-Explorer).
+1. Inicie sesión en su cuenta de Media Services mediante la clave del servicio.
 
-    tooobtain Hola nombre de cuenta y la información de clave, vaya toohello [portal de Azure](https://portal.azure.com/) y seleccione su cuenta de AMS. A continuación, seleccione Configuración > Claves. ventanas de Hello administrar claves muestra el nombre de la cuenta de hello y claves primarias y secundarias de Hola se muestra. Copiar valores de nombre de la cuenta de Hola y Hola primary key.
+    Para obtener el nombre de la cuenta y la información de la clave, vaya a [Azure Portal](https://portal.azure.com/) y seleccione la cuenta de Azure Media Services. A continuación, seleccione Configuración > Claves. Aparece la ventana Administrar claves que muestra el nombre de la cuenta y la clave principal y la secundaria. Copie los valores del nombre de la cuenta y la clave principal.
 
 ![Censura de rostros](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough001.png)
 
@@ -57,69 +55,69 @@ Hello tooget de manera más fácil trabajar con Redactor es la herramienta de AM
 
 ![Censura de rostros](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough003.png)
 
-salida de Hello incluirá un archivo json de anotaciones con datos de ubicación de fuente, así como un jpg de cada tipo detectado. 
+El resultado incluirá un archivo JSON de anotaciones con datos de ubicación de rostros, así como un JPG de cada rostro detectado. 
 
 ![Censura de rostros](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough004.png)
 
 ###<a name="second-pass--redact-mode"></a>Segundo paso: Modo Redact (Censurar)
 
-1. Cargue su toohello de recurso de vídeo original de salida desde la primera pasada de Hola y establecer como un recurso principal. 
+1. Cargue el recurso de vídeo original en la salida del primer paso y establézcalo como un recurso principal. 
 
     ![Censura de rostros](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough005.png)
 
-2. (Opcional) Cargar un archivo de 'Dance_idlist.txt' que incluye una lista de nueva línea delimitada de identificadores que se va tooredact hello. 
+2. Opcional: cargue un archivo Dance_idlist.txt que incluya una lista delimitada de nueva línea de los identificadores que se van a censurar. 
 
     ![Censura de rostros](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough006.png)
 
-3. (Opcional) Asegúrese de cualquier archivo de annotations.json toohello modificaciones, tal como aumentar Hola límites del cuadro de límite. 
-4. Haga clic Hola activo de salida desde la primera pasada de hello, seleccionar Hola Redactor y ejecutar con hello **Redact** modo. 
+3. Opcional: realice las modificaciones en el archivo annotations.json, por ejemplo, aumentar los límites del cuadro de límite. 
+4. Haga clic con el botón derecho en el recurso de salida del primer paso, seleccione Redactor y ejecútelo con el modo **Redact** (Censurar). 
 
     ![Censura de rostros](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough007.png)
 
-5. Para descargar o compartirlos Hola salida redactado final activo. 
+5. Descargue o comparta el recurso de salida censurado final. 
 
     ![Censura de rostros](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough008.png)
 
 ##<a name="azure-media-redactor-visualizer-open-source-tool"></a>Herramienta de código abierto Azure Media Redactor Visualizer
 
-Un código abierto [herramienta visualizador](https://github.com/Microsoft/azure-media-redactor-visualizer) es toohelp diseñada a los desarrolladores iniciándose con formato de anotaciones de hello con salida de hello y análisis.
+La [herramienta de visualización](https://github.com/Microsoft/azure-media-redactor-visualizer) de código abierto está diseñada para ayudar a los desarrolladores a iniciarse en el formato de anotaciones analizando y utilizando la salida.
 
-Después de clonar el repositorio de hello, en el proyecto de orden toorun hello, necesitará toodownload FFMPEG desde su [sitio oficial](https://ffmpeg.org/download.html).
+Después de clonar el repositorio, con el fin de ejecutar el proyecto, necesitará descargar FFMPEG desde el [sitio oficial](https://ffmpeg.org/download.html).
 
-Si es un desarrollador que trate de hello tooparse dato de anotación de JSON, buscar dentro de Models.MetaData para obtener ejemplos de código de ejemplo.
+Si como desarrollador trata de analizar los datos de anotaciones del JSON, busque dentro de Models.MetaData ejemplos de código.
 
-### <a name="set-up-hello-tool"></a>Configurar la herramienta de Hola
+### <a name="set-up-the-tool"></a>Configuración de la herramienta
 
-1.  Descargue y generar solución completa de Hola. 
+1.  Descargue y genere la solución completa. 
 
     ![Censura de rostros](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough009.png)
 
 2.  Descargue FFMPEG desde [aquí](https://ffmpeg.org/download.html). Este proyecto se desarrolló originalmente mediante la versión be1d324 (2016-10-04) con vinculación estática. 
-3.  Copie ffmpeg.exe y ffprobe.exe toohello misma carpeta de salida como AzureMediaRedactor.exe. 
+3.  Copie ffmpeg.exe y ffprobe.exe en la misma carpeta de salida que AzureMediaRedactor.exe. 
 
     ![Censura de rostros](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough010.png)
 
 4. Ejecute AzureMediaRedactor.exe. 
 
-### <a name="use-hello-tool"></a>Usar la herramienta Hola
+### <a name="use-the-tool"></a>Uso de la herramienta
 
-1. Procesar sus vídeos en su cuenta de servicios multimedia de Azure con hello Redactor MP en modo de analizar. 
-2. Descargar archivo de vídeo original de Hola y de salida de hello de redacción de hello: analizar el trabajo. 
-3. Ejecutar la aplicación del visualizador de hello y elija archivos Hola anteriores. 
+1. Procese sus vídeos en su cuenta de Azure Media Services con el módulo de administración de Redactor en Modo Analizar. 
+2. Descargue el archivo de vídeo original y la salida de Redaction (Censura) - trabajo Analizar. 
+3. Ejecute la aplicación de visualización y elija los archivos anteriores. 
 
     ![Censura de rostros](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough011.png)
 
-4. Obtenga una vista previa del archivo. Seleccione cara le gustaría tooblur a través de la barra lateral de hello en hello derecho. 
+4. Obtenga una vista previa del archivo. Seleccione qué rostros le gustaría desenfocar a través de la barra lateral de la derecha. 
     
     ![Censura de rostros](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough012.png)
 
-5.  campo de texto de Hello inferior se actualizará con la cara Hola identificadores. Cree un archivo denominado "idlist.txt" con estos identificadores como una lista delimitada de nueva línea. 
+5.  El campo de texto de la parte inferior se actualizará con los identificadores de los rostros. Cree un archivo denominado "idlist.txt" con estos identificadores como una lista delimitada de nueva línea. 
 
     >[!NOTE]
-    > Hola idlist.txt debe guardarse en ANSI. Puede utilizar el Bloc de notas toosave en ANSI.
+    > El archivo idlist.txt debe guardarse en ANSI. Puede usar el Bloc de notas para guardarlo en tal codificación.
     
-6.  Cargar este recurso de salida de archivo toohello del paso 1. Cargar activo original de vídeo toothis Hola así y establecer como elemento principal. 
-7.  Ejecutar trabajo de redacción de este recurso con "Redact" modo tooget Hola redactado vídeo final. 
+6.  Cargue el archivo en el recurso de salida del paso 1. Cargue el vídeo original en este recurso y establézcalo como recurso principal. 
+7.  Ejecute el trabajo Redaction (Censura) de este recurso con el modo "Redact" (Censurar) para obtener el vídeo censurado final. 
 
 ## <a name="next-steps"></a>Pasos siguientes 
 

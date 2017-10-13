@@ -1,6 +1,6 @@
 ---
 title: "Obtención de tablas ARP: Implementación clásica: Solución de problemas de Azure ExpressRoute | Microsoft Docs"
-description: "Esta página proporciona instrucciones para obtener Hola ARP tablas por un circuito ExpressRoute."
+description: "En esta página se proporcionan instrucciones para obtener tablas ARP para un circuito ExpressRoute."
 documentationcenter: na
 services: expressroute
 author: ganesr
@@ -14,34 +14,34 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/30/2017
 ms.author: ganesr
-ms.openlocfilehash: 2b01304a38fa0e0def27dbd7c391d7ad8bbdabff
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: fcc847b7e30fd55ca759830e0254ab7542e7663e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="getting-arp-tables-in-hello-classic-deployment-model"></a>Obtener tablas de ARP en el modelo de implementación clásica de Hola
+# <a name="getting-arp-tables-in-the-classic-deployment-model"></a>Obtención de tablas ARP en el modelo de implementación clásica
 > [!div class="op_single_selector"]
 > * [PowerShell: administrador de recursos](expressroute-troubleshooting-arp-resource-manager.md)
 > * [PowerShell: clásico](expressroute-troubleshooting-arp-classic.md)
 > 
 > 
 
-En este artículo le guiará por los pasos de hello para la obtención de tablas de protocolo de resolución de direcciones (ARP) de hello para el circuito de ExpressRoute de Azure.
+Este artículo le guiará a través de los pasos para obtener las tablas del Protocolo de resolución de direcciones (ARP) para su circuito Azure ExpressRoute.
 
 > [!IMPORTANT]
-> Este documento está previsto toohelp diagnosticar y corregir problemas sencillos. No está previsto toobe un sustituto de soporte técnico de Microsoft. Si no puede resolver el problema de hello mediante el uso de instrucciones de hello, abra una solicitud de soporte técnico con [Microsoft Azure ayuda y soporte técnico](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+> Este documento está pensado para ayudarle a diagnosticar y corregir problemas sencillos. No pretende sustituir al soporte técnico de Microsoft. Si no puede solucionar el problema mediante las siguientes instrucciones, abra una solicitud de soporte técnico con [Ayuda y soporte técnico de Microsoft Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 > 
 > 
 
 ## <a name="address-resolution-protocol-arp-and-arp-tables"></a>Protocolo de resolución de direcciones (ARP) y tablas ARP
-ARP es un protocolo de nivel 2 que se define en [RFC 826](https://tools.ietf.org/html/rfc826). ARP es toomap usa una dirección IP de tooan de direcciones (dirección MAC) Ethernet.
+ARP es un protocolo de nivel 2 que se define en [RFC 826](https://tools.ietf.org/html/rfc826). ARP se usa para asignar una dirección Ethernet (dirección MAC) a una dirección IP.
 
-Una tabla ARP proporciona una asignación de dirección IPv4 de Hola y dirección MAC para un emparejamiento determinado. Hola tabla ARP de un circuito de ExpressRoute emparejamiento proporciona Hola siguiente información para cada interfaz (principal y secundaria):
+Una tabla ARP proporciona una asignación de la dirección IPv4 y la dirección MAC para un emparejamiento determinado. La tabla ARP de un emparejamiento de circuito ExpressRoute proporciona la siguiente información para cada interfaz (principal y secundaria):
 
-1. Asignación de una dirección local enrutador interfaz IP dirección tooa MAC
-2. Asignación de una ExpressRoute interfaz dirección IP del enrutador dirección tooa MAC
-3. antigüedad de Hola de asignación de Hola
+1. Asignación de una dirección IP de la interfaz del enrutador local a la dirección MAC
+2. Asignación de la dirección IP de la interfaz del enrutador de ExpressRoute a la dirección MAC
+3. La antigüedad de la asignación
 
 Las tablas ARP pueden ayudar a validar la configuración de capa 2 y a solucionar los problemas básicos de conectividad de nivel 2.
 
@@ -53,21 +53,21 @@ A continuación, se muestra un ejemplo de una tabla ARP:
           0 Microsoft         10.0.0.2 aaaa.bbbb.cccc
 
 
-Hola siguiente sección proporciona información acerca de cómo tooview Hola tablas de ARP que ven los enrutadores de borde de ExpressRoute Hola.
+En la siguiente sección se proporciona información sobre cómo puede ver las tablas ARP que ven los enrutadores de borde de ExpressRoute.
 
 ## <a name="prerequisites-for-using-arp-tables"></a>Requisitos previos para usar las tablas ARP
-Asegúrese de que tiene Hola siguientes antes de continuar:
+Asegúrese de que tiene lo siguiente antes de continuar:
 
-* Un circuito ExpressRoute válido configurado con al menos un emparejamiento. circuito Hola debe configurarse totalmente por el proveedor de conectividad de Hola. Usted (o el proveedor de conectividad) debe configurar al menos uno de los emparejamientos de hello (Azure privada o Azure público o Microsoft) en este circuito.
-* Intervalos de direcciones IP que se usan para configurar los emparejamientos de hello (público privado y Azure, Azure y Microsoft). Revisar ejemplos de asignación de direcciones IP de Hola Hola [página requisitos de enrutamiento de ExpressRoute](expressroute-routing.md) tooget una descripción de cómo son las direcciones IP asignado toointerfaces en su aise y en el lado de ExpressRoute de Hola. Para obtener información acerca de la configuración de emparejamiento de hello revisando hello [página de configuración de emparejamiento de ExpressRoute](expressroute-howto-routing-classic.md).
-* Información de su proveedor de equipo o conectividad de red acerca de las direcciones MAC de Hola de interfaces de Hola que se usan con estas direcciones IP.
-* Hola módulo más reciente Windows PowerShell para Azure (versión 1.50 o posterior).
+* Un circuito ExpressRoute válido configurado con al menos un emparejamiento. El circuito debe estar completamente configurado por el proveedor de conectividad. Usted (o su proveedor de conectividad) debe configurar al menos uno de los emparejamientos (privado de Azure, público de Azure o Microsoft) en este circuito.
+* Intervalos de direcciones IP que se usan para configurar los emparejamientos (privado de Azure, público de Azure y Microsoft). Revise los ejemplos de asignación de dirección IP en [Requisitos de enrutamiento de ExpressRoute](expressroute-routing.md) para comprender cómo se asignan las direcciones IP a las interfaces en su sitio y el sitio de ExpressRoute. Puede obtener información sobre la configuración de emparejamiento en la página [Creación y modificación del enrutamiento de un circuito ExpressRoute](expressroute-howto-routing-classic.md).
+* Información del equipo de red o del proveedor de conectividad sobre las direcciones MAC de las interfaces que se usan con estas direcciones IP.
+* El módulo más reciente de Windows PowerShell para Azure (versión 1.50 o superior).
 
 ## <a name="arp-tables-for-your-expressroute-circuit"></a>Tablas ARP para el circuito ExpressRoute
-Esta sección proporciona instrucciones sobre cómo tooview Hola ARP tablas para cada tipo de intercambio de tráfico mediante el uso de PowerShell. Antes de continuar, usted o el proveedor de conectividad debe tooconfigure Hola emparejamiento. Cada circuito tiene dos rutas de acceso (principal y secundaria). Puede comprobar Hola tabla ARP para cada ruta de acceso de forma independiente.
+En esta sección se proporcionan instrucciones sobre cómo ver las tablas ARP para cada tipo de emparejamiento mediante PowerShell. Antes de continuar, usted o su proveedor de conectividad necesita configurar el emparejamiento. Cada circuito tiene dos rutas de acceso (principal y secundaria). Puede comprobar en la tabla ARP cada ruta de acceso de forma independiente.
 
 ### <a name="arp-tables-for-azure-private-peering"></a>Tablas ARP para el emparejamiento privado de Azure
-Hola siguiente cmdlet proporciona Hola ARP tablas para el emparejamiento privado Azure:
+El siguiente cmdlet proporciona el emparejamiento privado de Azure para las tablas ARP:
 
         # Required variables
         $ckt = "<your Service Key here>
@@ -78,7 +78,7 @@ Hola siguiente cmdlet proporciona Hola ARP tablas para el emparejamiento privado
         # ARP table for Azure private peering--secondary path
         Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Private -Path Secondary
 
-Aquí te mostramos la salida de ejemplo para una de las rutas de acceso de hello:
+A continuación, se muestra el resultado de ejemplo de una de las rutas de acceso:
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
@@ -87,7 +87,7 @@ Aquí te mostramos la salida de ejemplo para una de las rutas de acceso de hello
 
 
 ### <a name="arp-tables-for-azure-public-peering"></a>Tablas ARP para el emparejamiento público de Azure:
-Hola siguiente cmdlet proporciona Hola ARP tablas para pares públicos de Azure:
+El siguiente cmdlet proporciona las tablas ARP para el emparejamiento público de Azure:
 
         # Required variables
         $ckt = "<your Service Key here>
@@ -98,7 +98,7 @@ Hola siguiente cmdlet proporciona Hola ARP tablas para pares públicos de Azure:
         # ARP table for Azure public peering--secondary path
         Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Public -Path Secondary
 
-Aquí te mostramos la salida de ejemplo para una de las rutas de acceso de hello:
+A continuación, se muestra el resultado de ejemplo de una de las rutas de acceso:
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
@@ -106,7 +106,7 @@ Aquí te mostramos la salida de ejemplo para una de las rutas de acceso de hello
           0 Microsoft         10.0.0.2 aaaa.bbbb.cccc
 
 
-Aquí te mostramos la salida de ejemplo para una de las rutas de acceso de hello:
+A continuación, se muestra el resultado de ejemplo de una de las rutas de acceso:
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
@@ -115,7 +115,7 @@ Aquí te mostramos la salida de ejemplo para una de las rutas de acceso de hello
 
 
 ### <a name="arp-tables-for-microsoft-peering"></a>Tablas ARP para el emparejamiento de Microsoft
-Hola siguiente cmdlet proporciona Hola ARP tablas para el emparejamiento de Microsoft:
+El siguiente cmdlet proporciona las tablas ARP para el emparejamiento de Microsoft:
 
     # ARP table for Microsoft peering--primary path
     Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Microsoft -Path Primary
@@ -124,7 +124,7 @@ Hola siguiente cmdlet proporciona Hola ARP tablas para el emparejamiento de Micr
     Get-AzureDedicatedCircuitPeeringArpInfo -ServiceKey $ckt -AccessType Microsoft -Path Secondary
 
 
-Resultados del ejemplo se muestran a continuación para una de las rutas de acceso de hello:
+A continuación se muestra el resultado de ejemplo de una de las rutas de acceso:
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
@@ -132,40 +132,40 @@ Resultados del ejemplo se muestran a continuación para una de las rutas de acce
           0 Microsoft         65.0.0.2 aaaa.bbbb.cccc
 
 
-## <a name="how-toouse-this-information"></a>¿Cómo toouse esta información
-Hola tabla ARP de un emparejamiento puede ser conectividad y la configuración de toovalidate usa capa 2. En esta sección se proporciona información general sobre la apariencia de las tablas ARP en distintos escenarios.
+## <a name="how-to-use-this-information"></a>Uso de esta información
+La tabla ARP de un emparejamiento se puede usar para validar la configuración y la conectividad de nivel 2. En esta sección se proporciona información general sobre la apariencia de las tablas ARP en distintos escenarios.
 
 ### <a name="arp-table-when-a-circuit-is-in-an-operational-expected-state"></a>Tabla ARP cuando un circuito está en un estado operativo (esperado)
-* Hola tabla ARP tiene una entrada para el lado local de hello con una dirección IP y MAC válida y una entrada similar para hello side de Microsoft.
-* último octeto de Hola de dirección IP de hello local siempre es un número impar.
-* último octeto de Hola de hello dirección IP de Microsoft siempre es un número par.
-* Hola la misma dirección MAC aparece en hello lado de Microsoft para todos los emparejamientos de tres (principal o secundario).
+* La tabla ARP tiene una entrada para el lado local con una dirección IP válida y la dirección MAC, y una entrada similar para el lado de Microsoft.
+* El último octeto de la dirección IP local siempre será un número impar.
+* El último octeto de la dirección IP de Microsoft siempre será un número par.
+* La misma dirección MAC aparece en el lado de Microsoft para los tres emparejamientos (principales o secundarios).
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
          10 On-Prem           65.0.0.1 ffff.eeee.dddd
           0 Microsoft         65.0.0.2 aaaa.bbbb.cccc
 
-### <a name="arp-table-when-its-on-premises-or-when-hello-connectivity-provider-side-has-problems"></a>Tabla de ARP cuando es local o al lado de proveedor de conectividad de hello tiene problemas
- Sólo una entrada aparece en la tabla ARP Hola. Muestra la asignación de hello entre la dirección MAC de Hola y la dirección IP de Hola que se usa en hello side de Microsoft.
+### <a name="arp-table-when-its-on-premises-or-when-the-connectivity-provider-side-has-problems"></a>Tabla ARP cuando es local o cuando el lado del proveedor de conectividad tiene problemas
+ Solo aparece una entrada en la tabla ARP. Muestra la asignación entre la dirección MAC y la dirección IP que se usa en el lado de Microsoft.
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
           0 Microsoft         65.0.0.2 aaaa.bbbb.cccc
 
 > [!NOTE]
-> Si experimenta un problema parecido a esto, abra un soporte solicitarla con su tooresolve de proveedor de conectividad.
+> Si experimenta un problema como este, abra una solicitud de soporte con su proveedor de conectividad para resolverlo.
 > 
 > 
 
-### <a name="arp-table-when-hello-microsoft-side-has-problems"></a>Tabla de ARP cuando Hola side de Microsoft tiene problemas
-* No verá una tabla de ARP que se muestra para un emparejamiento si hay problemas en hello side de Microsoft.
+### <a name="arp-table-when-the-microsoft-side-has-problems"></a>Tabla ARP cuando el lado de Microsoft tiene problemas
+* Cuando hay problemas en el lado de Microsoft, no verá una tabla ARP para un emparejamiento.
 * Abra una solicitud de soporte con [Ayuda y soporte técnico de Microsoft Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Especifique que tiene un problema con la conectividad de nivel 2.
 
 ## <a name="next-steps"></a>Pasos siguientes
 * Validar las configuraciones de nivel 3 para el circuito ExpressRoute:
-  * Obtiene un estado de Hola de ruta toodetermine resumen de sesiones de BGP.
-  * Obtener un toodetermine de la tabla de ruta qué prefijos se anuncian a través de ExpressRoute.
+  * Obtenga un resumen de ruta para determinar el estado de las sesiones BGP.
+  * Obtenga una tabla de rutas para determinar qué prefijos se anuncian a través de ExpressRoute.
 * Validar la transferencia de datos revisando los bytes de entrada y de salida.
 * Si sigue teniendo problemas, abra una solicitud de soporte técnico en [Ayuda y soporte técnico de Microsoft Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) .
 

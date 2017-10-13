@@ -1,6 +1,6 @@
 ---
-title: "aaaUse Hive con Hadoop para análisis de registros de sitio Web - HDInsight de Azure | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo se registra toouse Hive con el sitio Web de tooanalyze de HDInsight. Podrá utilizar un archivo de registro como entrada en una tabla de HDInsight y usar datos de HiveQL tooquery Hola."
+title: "Uso de Hive con Hadoop para el análisis de registros de sitios web: Azure HDInsight | Microsoft Docs"
+description: "Vea cómo usar Hive con HDInsight para analizar registros de sitios web. Usará un archivo de registro como entrada en una tabla de HDInsight y HiveQL para consultar los datos."
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -16,44 +16,44 @@ ms.topic: article
 ms.date: 05/17/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9cbce3cc8cf8bc3ad104dc4ca6a5628802c8fe89
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e1cdb786bb6049980aafc0213abf53013e342618
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="use-hive-with-windows-based-hdinsight-tooanalyze-logs-from-websites"></a>Usar el subárbol con registros de tooanalyze de HDInsight basados en Windows de sitios Web
-Obtenga información acerca de cómo se registra toouse HiveQL con HDInsight tooanalyze desde un sitio Web. Análisis de registro del sitio Web que pueden ser utilizado toosegment la audiencia basada en actividades similares, clasificar los visitantes del sitio por datos demográficos y toofind contenido Hola vean, los sitios Web de hello provienen de y así sucesivamente.
+# <a name="use-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>Uso de Hive con HDInsight basado en Windows para analizar registros de sitios web
+Vea cómo usar HiveQL con HDInsight para analizar registros de un sitio web. El análisis de registros de sitios web se puede usar para segmentar su público en función de actividades parecidas, clasificar los visitantes a los sitios por datos demográficos, descubrir el contenido que ven, los sitios web de los que proceden, etc.
 
 > [!IMPORTANT]
-> Hola pasos de este trabajo único documento con clústeres de HDInsight basados en Windows. HDInsight solo está disponible en Windows en versiones inferiores a la 3.4. Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Los pasos de este tutorial solo se aplican a los clústeres de HDInsight basados en Windows. HDInsight solo está disponible en Windows en versiones inferiores a la 3.4. Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-En este ejemplo, usará una HDInsight clúster tooanalyze sitio Web registro archivos tooget una visión general de frecuencia de Hola de toohello visita el sitio Web de sitios Web externos en un día. También generará un resumen de errores de sitio Web que los usuarios de hello experimentar. Aprenderá a:
+En este ejemplo, usará un clúster de HDInsight para analizar archivos de registro de sitios web a fin de conocer la frecuencia de las visitas al sitio web en un día desde sitios web externos en un día. También generará un resumen de errores de sitios web que experimentan los usuarios. Aprenderá a:
 
-* Conectar tooa almacenamiento de blobs de Azure, que contiene los archivos de registro del sitio Web.
-* Crear tablas de HIVE tooquery esos registros.
-* Crear consultas de HIVE tooanalyze datos de saludo.
-* Usar Microsoft Excel tooconnect tooHDInsight (mediante datos de abrir base de datos ODBC (conectividad) tooretrieve Hola analizado.
+* Conectarse a un almacenamiento de blobs de Azure, que contiene archivos de registro de sitios web.
+* Crear tablas de HIVE para consultar esos registros.
+* Crear consultas de HIVE para analizar los datos.
+* Usar Microsoft Excel para conectarse a HDInsight (usando conectividad abierta de base de datos, ODBC) para recuperar los datos analizados.
 
 ![HDI.Samples.Website.Log.Analysis][img-hdi-weblogs-sample]
 
 ## <a name="prerequisites"></a>Requisitos previos
 * Debe aprovisionar un clúster de Hadoop en HDInsight de Azure. Para obtener instrucciones, consulte [Aprovisionamiento de clústeres de HDInsight][hdinsight-provision].
 * Debe tener instalado Microsoft Excel 2013 o Excel 2010.
-* Debe tener [Microsoft Hive ODBC Driver](http://www.microsoft.com/download/details.aspx?id=40886) tooimport datos de Hive en Excel.
+* Debe tener [Microsoft Hive ODBC Driver para](http://www.microsoft.com/download/details.aspx?id=40886) importar datos de Hive en Excel.
 
-## <a name="toorun-hello-sample"></a>ejemplo de Hola a toorun
-1. De hello [Portal de Azure](https://portal.azure.com/), de hello panel de inicio (si está anclado clúster de hello no existe), haga clic en el icono de clúster de Hola que servirá de ejemplo de Hola a toorun.
-2. De hello clúster hoja, en **vínculos rápidos**, haga clic en **panel clúster**y, a continuación, desde hello **panel clúster** hoja, haga clic en **clúster de HDInsight Panel**. Como alternativa, puede abrir directamente panel hello mediante Hola después de la dirección URL:
+## <a name="to-run-the-sample"></a>Para ejecutar el ejemplo
+1. En el [Portal de Azure](https://portal.azure.com/), en el panel de inicio (si ancló el clúster allí), haga clic en el icono de clúster en el que quiera ejecutar el ejemplo.
+2. En la hoja del clúster, en **Vínculos rápidos**, haga clic en el **panel del clúster** y luego, en la hoja **Panel de clúster**, haga clic en el **panel del clúster de HDInsight**. También puede abrir directamente el panel con la siguiente dirección URL:
 
          https://<clustername>.azurehdinsight.net
 
-    Cuando se le solicite, autenticar mediante nombre de usuario de administrador de Hola y la contraseña que usó al aprovisionar el clúster de Hola.
-3. Desde Hola página web que se abre, haga clic en hello **Galería de introducción** ficha y, a continuación, en hello **soluciones con datos de ejemplo** categoría, haga clic en hello **análisis de registro del sitio Web** ejemplo.
-4. Siga las instrucciones de hello proporcionadas en el ejemplo de Hola Hola a toofinish página web.
+    Cuando se le pida, autentíquese con el nombre de usuario y la contraseña de administrador que usó cuando aprovisionó el clúster.
+3. En la página web que se abre, haga clic en la pestaña **Galería de introducción** y, a continuación, en la categoría **Soluciones con datos de ejemplo**, haga clic en el ejemplo **Análisis de registro del sitio web**.
+4. Siga las instrucciones que se proporcionan en la página web para finalizar el ejemplo.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Intente Hola según muestra: [analizar datos de sensor con Hive con HDInsight](hdinsight-hive-analyze-sensor-data.md).
+Pruebe el siguiente ejemplo: [Análisis de datos de sensor usando Hive con HDInsight](hdinsight-hive-analyze-sensor-data.md).
 
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-sensor-data-sample]: ../hdinsight-use-hive-sensor-data-analysis.md

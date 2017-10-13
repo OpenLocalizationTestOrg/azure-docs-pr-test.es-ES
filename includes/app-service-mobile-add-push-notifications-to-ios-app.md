@@ -1,16 +1,16 @@
 
 **Objective-C**:
 
-1. En **QSAppDelegate.m**, importar SDK de iOS de Hola y **QSTodoService.h**:
+1. En **QSAppDelegate.m**, importe el SDK de iOS y **QSTodoService.h**:
    
         #import <MicrosoftAzureMobile/MicrosoftAzureMobile.h>
         #import "QSTodoService.h"
-2. En `didFinishLaunchingWithOptions` en **QSAppDelegate.m**, siguientes de Hola de inserción líneas justo antes de `return YES;`:
+2. En `didFinishLaunchingWithOptions`, en **QSAppDelegate.m**, inserte las líneas siguientes justo antes de `return YES;`:
    
         UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
         [[UIApplication sharedApplication] registerForRemoteNotifications];
-3. En **QSAppDelegate.m**, agregar Hola siguiendo los métodos de control. La aplicación ya está actualizado toosupport notificaciones de inserción. 
+3. En **QSAppDelegate.m**, agregue los métodos de controlador siguientes. Ahora su aplicación está actualizada para que sea compatible con las notificaciones push. 
    
         // Registration with APNs is successful
         - (void)application:(UIApplication *)application
@@ -26,13 +26,13 @@
             }];
         }
    
-        // Handle any failure tooregister
+        // Handle any failure to register
         - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:
         (NSError *)error {
-            NSLog(@"Failed tooregister for remote notifications: %@", error);
+            NSLog(@"Failed to register for remote notifications: %@", error);
         }
    
-        // Use userInfo in hello payload toodisplay an alert.
+        // Use userInfo in the payload to display an alert.
         - (void)application:(UIApplication *)application
               didReceiveRemoteNotification:(NSDictionary *)userInfo {
             NSLog(@"%@", userInfo);
@@ -77,17 +77,17 @@
    
         }
 
-**SWIFT**:
+**Swift**:
 
-1. Agregar archivo **ClientManager.swift** con hello después de contenido. Reemplace *AppUrl %* por dirección URL de Hola de back-end de hello aplicación móvil de Azure.
+1. Agregue el archivo **ClientManager.swift** con el siguiente contenido. Reemplace *%AppUrl%* por la dirección URL del back-end de la aplicación móvil de Azure.
    
         class ClientManager {
             static let sharedClient = MSClient(applicationURLString: "%AppUrl%")
         }
-2. En **ToDoTableViewController.swift**, reemplace hello `let client` línea que inicializa un `MSClient` por esta línea:
+2. En **ToDoTableViewController.swift**, reemplace la línea `let client` que inicializa un `MSClient` por esta línea:
    
         let client = ClientManager.sharedClient
-3. En **AppDelegate.swift**, sustituir el cuerpo de Hola de `func application` como se indica a continuación:
+3. En **AppDelegate.swift**, reemplace el cuerpo de `func application` de la siguiente manera:
    
         func application(application: UIApplication,
           didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -97,7 +97,7 @@
            application.registerForRemoteNotifications()
            return true
         }
-4. En **AppDelegate.swift**, agregar Hola siguiendo los métodos de control. La aplicación ya está actualizado toosupport notificaciones de inserción.
+4. En **AppDelegate.swift**, agregue los métodos de controlador siguientes. Ahora su aplicación está actualizada para que sea compatible con las notificaciones push.
    
         func application(application: UIApplication,
            didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
@@ -108,7 +108,7 @@
    
         func application(application: UIApplication,
            didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-            print("Failed tooregister for remote notifications: ", error.description)
+            print("Failed to register for remote notifications: ", error.description)
         }
    
         func application(application: UIApplication,
@@ -119,11 +119,11 @@
             let apsNotification = userInfo["aps"] as? NSDictionary
             let apsString       = apsNotification?["alert"] as? String
    
-            let alert = UIAlertController(title: aaa"Alert", message: apsString, preferredStyle: .Alert)
-            let okAction = UIAlertAction(title: aaa"OK", style: .Default) { _ in
+            let alert = UIAlertController(title: "Alert", message: apsString, preferredStyle: .Alert)
+            let okAction = UIAlertAction(title: "OK", style: .Default) { _ in
                 print("OK")
             }
-            let cancelAction = UIAlertAction(title: aaa"Cancel", style: .Default) { _ in
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Default) { _ in
                 print("Cancel")
             }
    

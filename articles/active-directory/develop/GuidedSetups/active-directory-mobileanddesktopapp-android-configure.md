@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure AD v2 para introducción de Android: configurar | Documentos de Microsoft"
+title: "Introducción a Android en Azure AD v2: configuración | Microsoft Docs"
 description: "Cómo puede una aplicación de Android obtener un token de acceso y llamar a las API Graph que requieren tokens de acceso desde el punto de conexión de Azure Active Directory v2"
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,40 +15,40 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: e14796c37ab0c30d948b6f783dac80059375afa3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 945b09ccdb7537987da33d32d94a3ccacd829ffd
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 ## <a name="create-an-application-express"></a>Creación de una aplicación (proceso rápido)
-Ahora deberá tooregister la aplicación Hola *Portal de registro de aplicación de Microsoft*:
-1. Registrar la aplicación a través de hello [Portal de registro de aplicación de Microsoft](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=android&step=configure)
+Ahora tiene que registrar la aplicación en el *Portal de registro de aplicaciones de Microsoft*:
+1. Registre la aplicación en el [Portal de registro de aplicaciones de Microsoft](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=android&step=configure).
 2.  Escriba el nombre de la aplicación y su correo electrónico.
-3.  Asegúrese de que está activada la opción de hello para el programa de instalación interactiva
-4.  Siga el identificador de la aplicación de hello instrucciones tooobtain hello y péguelo en el código
+3.  Asegúrese de que está activada la opción de configuración paso a paso.
+4.  Siga las instrucciones para obtener el identificador de aplicación y péguelo en el código.
 
-### <a name="add-your-application-registration-information-tooyour-solution-advanced"></a>Agregar la solución de tooyour información de registro de aplicación (avanzado)
-Ahora deberá tooregister la aplicación Hola *Portal de registro de aplicación de Microsoft*:
-1. Vaya toohello [Portal de registro de aplicación de Microsoft](https://apps.dev.microsoft.com/portal/register-app) tooregister una aplicación
+### <a name="add-your-application-registration-information-to-your-solution-advanced"></a>Adición de la información de registro de la aplicación a la solución (avanzado)
+Ahora tiene que registrar la aplicación en el *Portal de registro de aplicaciones de Microsoft*:
+1. Vaya al [Portal de registro de aplicaciones de Microsoft](https://apps.dev.microsoft.com/portal/register-app) para registrar una aplicación.
 2. Escriba el nombre de la aplicación y su correo electrónico. 
-3. Asegúrese de que está desactivada la opción de hello para el programa de instalación interactiva
+3. Asegúrese de que está desactivada la opción de configuración paso a paso.
 4. Haga clic en `Add Platform`, a continuación, seleccione `Native Application` y haga clic en Guardar.
 5.  Abra `MainActivity` (en `app` > `java` > *`{host}.{namespace}`*)
-6.  Reemplace hello *[Escriba aplicación Id. de hello aquí]* en línea hello a partir de `final static String CLIENT_ID` con el Id. de aplicación Hola que acaba de registrar:
+6.  Reemplace *[escriba el id. de aplicación aquí]* en la línea que empieza con `final static String CLIENT_ID` por el identificador de aplicación que acaba de registrar:
 
 ```java
-final static String CLIENT_ID = "[Enter hello application Id here]";
+final static String CLIENT_ID = "[Enter the application Id here]";
 ```
 <!-- Workaround for Docs conversion bug -->
 <ol start="7">
 <li>
-Abra `AndroidManifest.xml` (en `app`  >  `manifests`) Hola agregar después actividad demasiado`manifest\application` nodo. Esta forma se registra un `BrowserTabActivity` tooallow Hola tooresume de sistema operativo de la aplicación después de completar la autenticación de hello:
+Abra `AndroidManifest.xml` (en `app` > `manifests`) Agregue la actividad siguiente al nodo `manifest\application`. De este modo se registra un `BrowserTabActivity` para permitir que el sistema operativo reanude la aplicación después de completar la autenticación:
 </li>
 </ol>
 
 ```xml
-<!--Intent filter toocapture System Browser calling back tooour app after Sign In-->
+<!--Intent filter to capture System Browser calling back to our app after Sign In-->
 <activity
     android:name="com.microsoft.identity.client.BrowserTabActivity">
     <intent-filter>
@@ -57,8 +57,8 @@ Abra `AndroidManifest.xml` (en `app`  >  `manifests`) Hola agregar después acti
         <category android:name="android.intent.category.BROWSABLE" />
         
         <!--Add in your scheme/host from registered redirect URI-->
-        <!--By default, hello scheme should be similar too'msal[appId]' -->
-        <data android:scheme="msal[Enter hello application Id here]"
+        <!--By default, the scheme should be similar to 'msal[appId]' -->
+        <data android:scheme="msal[Enter the application Id here]"
             android:host="auth" />
     </intent-filter>
 </activity>
@@ -66,6 +66,6 @@ Abra `AndroidManifest.xml` (en `app`  >  `manifests`) Hola agregar después acti
 <!-- Workaround for Docs conversion bug -->
 <ol start="8">
 <li>
-Hola `BrowserTabActivity`, reemplace `[Enter hello application Id here]` con el identificador de la aplicación hello.
+En `BrowserTabActivity`, reemplace `[Enter the application Id here]` por el identificador de aplicación.
 </li>
 </ol>

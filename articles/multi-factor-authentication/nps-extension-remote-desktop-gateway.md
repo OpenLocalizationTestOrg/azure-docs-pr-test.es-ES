@@ -1,6 +1,6 @@
 ---
-title: "integración de la puerta de enlace de escritorio con la extensión de Azure MFA NPS aaaRemote | Documentos de Microsoft"
-description: "Este artículo describe la integración de la infraestructura de la puerta de enlace de escritorio remoto con Azure MFA con la extensión de servidor de directivas de redes (NPS) de Hola para Microsoft Azure."
+title: "Integración de la puerta de enlace de Escritorio remoto con la extensión NPS de Azure MFA | Microsoft Docs"
+description: "Este artículo describe la integración de la infraestructura de la puerta de enlace de Escritorio remoto con Azure MFA utilizando la extensión Servidor de directivas de redes (NPS) para Microsoft Azure."
 services: active-directory
 keywords: "Azure MFA, integración de puerta de enlace de Escritorio remoto, Azure Active Directory, extensión Servidor de directivas de redes"
 documentationcenter: 
@@ -16,51 +16,51 @@ ms.date: 08/15/2017
 ms.author: kgremban
 ms.reviewer: jsnow
 ms.custom: it-pro
-ms.openlocfilehash: ae5f6864416582bd82b787005ca787988d23a813
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 6ff9a341b31e5005949dcc0ecb2591060269846e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-#  <a name="integrate-your-remote-desktop-gateway-infrastructure-using-hello-network-policy-server-nps-extension-and-azure-ad"></a>Integrar la infraestructura de la puerta de enlace de escritorio remoto mediante la extensión de servidor de directivas de redes (NPS) de Hola y Azure AD
+#  <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integración de la infraestructura de la puerta de enlace de Escritorio remoto utilizando la extensión Servidor de directivas de redes (NPS) y Azure AD
 
-Este artículo proporciona detalles para integrar la infraestructura de la puerta de enlace de escritorio remoto con Azure Multi-factor Authentication (MFA) con la extensión de servidor de directivas de redes (NPS) de Hola para Microsoft Azure. 
+Este proporciona detalles para la integración de la infraestructura de la puerta de enlace de Escritorio remoto con Azure Multi-Factor Authentication (MFA) utilizando la extensión Servidor de directivas de redes (NPS) para Microsoft Azure. 
 
-Hola extensión de servicio de directivas de redes (NPS) de Azure permite el uso de Azure de la autenticación del cliente de servicio de autenticación remota telefónica de usuario (RADIUS) de los clientes toosafeguard's basado en la nube [la autenticación multifactor (MFA)](multi-factor-authentication.md). Esta solución proporciona una comprobación de dos pasos para agregar una segunda capa de inicios de sesión de seguridad toouser y las transacciones.
+La extensión Servidor de directivas de redes (NPS) para Azure permite a los clientes proteger la autenticación de cliente del Servicio de autenticación remota telefónica de usuario (RADIUS) utilizando la autenticación basada en la nube [Multi-Factor Authentication (MFA)](multi-factor-authentication.md) de Azure. Esta solución proporciona una verificación en dos pasos para agregar una segunda capa de seguridad a los inicios de sesión y transacciones de los usuarios.
 
-Este artículo proporciona instrucciones paso a paso para integrar la infraestructura de hello NPS con Azure MFA mediante la extensión NPS Hola de Azure. Esto permite la comprobación de seguridad para los usuarios que intentan toolog en tooa puerta de enlace de escritorio remoto. 
+Este artículo proporciona instrucciones paso a paso para la integración de la infraestructura NPS con Azure MFA con la extensión NPS para Azure. Esto permite la comprobación de seguridad para los usuarios que intenten iniciar sesión en una puerta de enlace de Escritorio remoto. 
 
-Hola directivas de redes y servicios de acceso (NPS) ofrece a las empresas Hola capacidad toodo Hola a continuación:
-* Definir ubicaciones centrales para la administración de Hola y control de las solicitudes de red al especificar quién puede conectarse, Hola a qué horas del día en que se permiten las conexiones, duración de las conexiones y el nivel de Hola de seguridad que los clientes deben usar tooconnect y así sucesivamente. En vez de especificar estas directivas en cada VPN o servidor de puerta de enlace de Escritorio remoto (RD), estas directivas se especifican una vez en una ubicación central. Hola protocolo RADIUS proporciona Hola centralizada de autenticación, autorización y contabilidad (AAA). 
-* Establecer y aplicar directivas de mantenimiento de cliente de protección de acceso a redes (NAP) que determinan si los dispositivos se conceden acceso restringido o sin restricción toonetwork recursos.
-* Proporcione un medio tooenforce autenticación y autorización para conmutadores Ethernet y puntos de acceso inalámbricos compatibles con too802.1x de acceso.    
+La directiva de red y los servicios de acceso (NPS) dan a las organizaciones la posibilidad de hacer lo siguiente:
+* Definir ubicaciones centrales para la administración y el control de las solicitudes de red mediante la especificación de quién puede conectarse, las franjas horarias en las que se permiten conexiones, la duración de las conexiones y el nivel de seguridad que los clientes deben usar para conectarse y así sucesivamente. En vez de especificar estas directivas en cada VPN o servidor de puerta de enlace de Escritorio remoto (RD), estas directivas se especifican una vez en una ubicación central. El protocolo RADIUS proporciona autenticación, autorización y contabilización de cuentas (AAA) centralizadas. 
+* Establecer y aplicar directivas de mantenimiento de cliente de Protección de acceso a redes (NAP) que determinan si los dispositivos tienen acceso restringido o sin restricciones a los recursos de la red.
+* Proporcionar un medio para aplicar la autenticación y autorización para el acceso a puntos de acceso inalámbricos 802.1x y conmutadores Ethernet.    
 
-Normalmente, las organizaciones usar toosimplify NPS (RADIUS) y centralizar la administración de Hola de VPN directivas. Sin embargo, muchas organizaciones también usar NPS toosimplify y centralizar la administración de Hola de directivas de autorización de conexión de escritorio de escritorio remoto (CAP de RD). 
+Normalmente, las organizaciones usan NPS (RADIUS) para simplificar y centralizar la administración de directivas de VPN. Sin embargo, muchas organizaciones también usan NPS para simplificar y centralizar la administración de directivas de autorización de conexiones de Escritorio remoto (CAP de RD). 
 
-Las organizaciones también pueden integrar NPS con seguridad de Azure MFA tooenhance y proporcionar un alto nivel de compatibilidad. Esto ayuda a asegurarse de que los usuarios establezcan toolog de comprobación de dos pasos en toohello puerta de enlace de escritorio remoto. Para los usuarios toobe concedido acceso, deberán proporcionar su combinación de nombre de usuario/contraseña con la información que Hola usuario tiene en su control. Esta información debe ser de confianza y no duplicable fácilmente, como un número de teléfono móvil, el número fijo o una aplicación en un dispositivo móvil, entre otros.
+Las organizaciones también pueden integrar NPS con Azure MFA para mejorar la seguridad y proporcionar un alto nivel de cumplimiento. Esto ayuda a asegurarse de que los usuarios establecen la verificación en dos pasos para iniciar sesión en la puerta de enlace de Escritorio remoto. Para tener acceso, los usuarios deben proporcionar su combinación de nombre de usuario y contraseña junto con información que el usuario tiene bajo su control. Esta información debe ser de confianza y no duplicable fácilmente, como un número de teléfono móvil, el número fijo o una aplicación en un dispositivo móvil, entre otros.
 
-Disponibilidad de toohello anteriores de hello extensión NPS para Azure, los clientes que deseaban tooimplement verificacion de integran NPS y los entornos de Azure MFA tenían tooconfigure y mantienen un servidor independiente de MFA en el entorno local de hello como documentados en [puerta de enlace de escritorio remoto y servidor de Azure Multi-factor Authentication con RADIUS](multi-factor-authentication-get-started-server-rdg.md).
+Antes de la disponibilidad de la extensión NPS para Azure, los clientes que querían implementar la verificación en dos pasos para entornos integrados de NPS y Azure MFA tenían que configurar y mantener un servidor independiente de MFA en el entorno local tal como se documenta en [Puerta de enlace de Escritorio remoto y Servidor Azure Multi-Factor Authentication con RADIUS](multi-factor-authentication-get-started-server-rdg.md).
 
-disponibilidad de Hola de extensión NPS de Hola para Azure le proporciona las organizaciones Hola elección toodeploy una solución MFA basándose en local o una autenticación de cliente RADIUS de basado en la nube MFA solución toosecure.
+La disponibilidad de la extensión NPS para Azure ahora da a las organizaciones la opción de implementar una solución MFA basada en el entorno local o una solución MFA basada en la nube para la autenticación segura de clientes RADIUS.
 
 ## <a name="authentication-flow"></a>Flujo de autenticación
 
-Para que los usuarios toobe concede acceso a los recursos de toonetwork a través de una puerta de enlace de escritorio remoto, deben cumplir con las condiciones de hello especificadas en una directiva de autorización de conexión de escritorio remoto (CAP de RD) y una directiva de autorización de recursos de escritorio remoto (RAP de RD). CAP de RD especificar quién está autorizado tooconnect tooRD puertas de enlace. RAP de RD especificar recursos de red de hello, como equipos de escritorio remotos o aplicaciones remotas, se permite que el usuario hello tooconnect toothrough Hola puerta de enlace de escritorio remoto. 
+Para que los usuarios obtengan acceso a los recursos de red a través de una puerta de enlace de Escritorio remoto, deben cumplir con las condiciones especificadas en una directiva de autorización de conexiones de Escritorio remoto (CAP de RD) y en una directiva de administración de recursos de Escritorio remoto (RAP de RD). Las CAP de RD especifican quién está autorizado para conectarse a las puertas de enlace de Escritorio remoto. Las RAP de RD especifican los recursos de red, como equipos de escritorio remoto o aplicaciones remotas, a los que el usuario tiene permiso para conectarse a través de la puerta de enlace de Escritorio remoto. 
 
-Una puerta de enlace de escritorio remoto puede ser toouse configurado un almacén de directivas central de CAP de RD. RAP de RD no puede usar una directiva central, tal y como se procesan en hello puerta de enlace de escritorio remoto. Un ejemplo de una puerta de enlace de escritorio remoto configurado toouse un almacén de directivas central de CAP de RD es un servidor NPS tooanother de cliente RADIUS que sirve como almacén de directiva central Hola.
+Una puerta de enlace de Escritorio remoto se puede configurar para usar un almacén de directivas central para las CAP de RD. Las RAP de RD no pueden usar una directiva central, ya que se procesan en la puerta de enlace de Escritorio remoto. Un ejemplo de una puerta de enlace de Escritorio remoto configurada para usar un almacén de directivas central para las CAP de RD podría ser un cliente RADIUS a otro servidor NPS que actúa como el almacén de directivas central.
 
-Cuando Hola extensión NPS para Azure está integrado con hello NPS y puerta de enlace de escritorio remoto, flujo de una autenticación correcta de hello es como sigue:
+Cuando la extensión NPS para Azure está integrada con el NPS y la puerta de enlace de Escritorio remoto, el flujo de una autenticación correcta es como sigue:
 
-1. servidor de puerta de enlace de escritorio remoto de Hello recibe una solicitud de autenticación de un recurso de tooa tooconnect de usuario de escritorio remoto, como una sesión de escritorio remoto. Actúa como cliente RADIUS, servidor de puerta de enlace de escritorio remoto de hello convierte el mensaje de solicitud de acceso RADIUS de hello solicitud tooa y envía Hola de mensajes toohello RADIUS (NPS) del servidor donde se instala la extensión NPS Hola. 
-2. Hola nombre de usuario y se comprueba la combinación de contraseña en Active Directory y Hola usuario está autenticado.
-3. Si todos los Hola condiciones como se especifica en Hola de solicitud de conexión de NPS y se cumplen las directivas de redes de hello (por ejemplo, la hora del día o de grupo restricciones de pertenencia), Hola extensión NPS desencadena una solicitud de autenticación secundaria con Azure MFA. 
-4. MFA de Azure se comunica con Azure AD, recupera los detalles de usuario de Hola y realiza la autenticación secundaria de hello mediante método hello configurado por el usuario de hello (mensaje de texto, aplicación móvil etc.). 
-5. Cuando se realiza correctamente de hello desafío MFA, MFA de Azure se comunica extensión de hello resultado toohello NPS.
-6. servidor NPS Hola donde se instala la extensión de Hola envía un mensaje de aceptación de acceso RADIUS para el servidor de puerta de enlace de escritorio remoto de toohello de directivas de hello CAP de RD.
-7. se concede acceso usuario Hello toohello solicita el recurso de red a través de hello puerta de enlace de escritorio remoto.
+1. El servidor de la puerta de enlace de Escritorio remoto recibe una solicitud de autenticación de un usuario de escritorio remoto para conectarse a un recurso, como una sesión de escritorio remoto. Actuando como un cliente RADIUS, el servidor de puerta de enlace de Escritorio remoto convierte la solicitud en un mensaje de solicitud de acceso RADIUS y envía el mensaje al servidor RADIUS (NPS) donde está instalada la extensión NPS. 
+2. Se comprueba la combinación de nombre de usuario y contraseña en Active Directory y se autentica al usuario.
+3. Si se cumplen todas las condiciones especificadas en la solicitud de conexión NPS y las directivas de red (por ejemplo, la hora del día o restricciones por pertenencia a un grupo), la extensión NPS desencadena una solicitud de autenticación secundaria con Azure MFA. 
+4. Azure MFA se comunica con Azure AD, recupera los detalles del usuario y realiza la autenticación secundaria con el método de verificación configurado por el usuario (mensaje de texto, aplicación móvil, etc). 
+5. Cuando se realiza correctamente el desafío de MFA, Azure MFA comunica el resultado a la extensión NPS.
+6. El servidor NPS donde está instalada la extensión envía un mensaje de aceptación de acceso de RADIUS para la directiva CAP de RD al servidor de puerta de enlace de Escritorio remoto.
+7. Se concede al usuario acceso al recurso de red solicitado a través de la puerta de enlace de Escritorio remoto.
 
 ## <a name="prerequisites"></a>Requisitos previos
-En esta sección se detalla los requisitos previos de hello necesarios antes de integrar Azure MFA con hello puerta de enlace de escritorio remoto. Antes de comenzar, debe tener Hola siguiendo los requisitos previos en su lugar.  
+En esta sección se detallan los requisitos previos necesarios antes de integrar Azure MFA con la puerta de enlace de Escritorio remoto. Antes de comenzar, debe cumplir los siguientes requisitos previos.  
 
 * Infraestructura de Servicios de Escritorio remoto (RDS)
 * Licencia de Azure MFA
@@ -70,312 +70,312 @@ En esta sección se detalla los requisitos previos de hello necesarios antes de 
 * Identificador de GUID de Azure Active Directory
 
 ### <a name="remote-desktop-services-rds-infrastructure"></a>Infraestructura de Servicios de Escritorio remoto (RDS)
-Debe tener una infraestructura de Servicios de Escritorio remoto (RDS) en funcionamiento. Si no lo hace, a continuación, puede crear rápidamente esta infraestructura de Azure con hello siguientes de inicio rápido plantilla: [implementación Crear colección de sesiones de escritorio remoto](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment). 
+Debe tener una infraestructura de Servicios de Escritorio remoto (RDS) en funcionamiento. Si no dispone de ella, puede crear rápidamente esta infraestructura en Azure con la siguiente plantilla de inicio rápido: [Creación de una implementación de una colección de sesiones de Escritorio remoto](https://github.com/Azure/azure-quickstart-templates/tree/ad20c78b36d8e1246f96bb0e7a8741db481f957f/rds-deployment). 
 
-Si desea toomanually crear una infraestructura RDS local rápidamente para realizar pruebas, seguimiento Hola pasos toodeploy uno. 
+Si desea crear manualmente una infraestructura local de RDS rápidamente con fines de prueba, siga los pasos para implementar una. 
 **Para más información**: [Implementación de RDS con la plantilla de inicio rápido de Azure](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure) e [Implementación de la infraestructura de RDS básica](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure). 
 
 ### <a name="licenses"></a>Licencias
-Es necesaria una licencia para Azure MFA, que está disponible a través de una suscripción de Azure AD Premium, de Enterprise Mobility + Security (EMS) o de MFA. Para obtener más información, consulte [cómo tooget la autenticación multifactor Azure](multi-factor-authentication-versions-plans.md). Para realizar pruebas, puede usar una suscripción de evaluación.
+Es necesaria una licencia para Azure MFA, que está disponible a través de una suscripción de Azure AD Premium, de Enterprise Mobility + Security (EMS) o de MFA. Para más información, consulte [Cómo obtener Azure Multi-Factor Authentication](multi-factor-authentication-versions-plans.md). Para realizar pruebas, puede usar una suscripción de evaluación.
 
 ### <a name="software"></a>Software
-Hola extensión NPS requiere Windows Server 2008 R2 SP1 o posterior con el servicio de rol NPS Hola instalado. Todos los pasos de hello en esta sección se han ejecutado con Windows Server 2016.
+La extensión NPS requiere Windows Server 2008 R2 SP1 o posterior con el servicio de rol NPS instalado. Todos los pasos de esta sección se han realizado con Windows Server 2016.
 
 ### <a name="network-policy-and-access-services-nps-role"></a>Directiva de red y rol de servicios de acceso (NPS)
-Hola servicio de rol NPS proporciona cliente y servidor RADIUS de hello funcionalidad, así como el servicio de mantenimiento de directiva de acceso de red. Este rol debe instalarse en al menos dos equipos de la infraestructura: Hola puerta de enlace de escritorio remoto y otro servidor miembro o controlador de dominio. De forma predeterminada, rol Hola ya está presente en el equipo de hello configurado como puerta de enlace de escritorio remoto de Hola.  También debe instalar rol NPS de hello en al menos en otro equipo, como un servidor miembro o controlador de dominio.
+El servicio de rol NPS proporciona la funcionalidad de servidor y cliente RADIUS, así como el servicio de mantenimiento de Directiva de acceso de red. Este rol debe instalarse en al menos dos equipos de la infraestructura: la puerta de enlace de Escritorio remoto y otro servidor miembro o controlador de dominio. De forma predeterminada, el rol ya está presente en el equipo configurado como puerta de enlace de Escritorio remoto.  También debe instalar el rol NPS al menos en otro equipo, como un servidor miembro o controlador de dominio.
 
-Para obtener información acerca de cómo instalar el rol NPS Hola servicio Windows Server 2012 o anterior, vea [instalar un servidor de directivas de mantenimiento de NAP](https://technet.microsoft.com/library/dd296890.aspx). Para obtener una descripción de las prácticas recomendadas para NPS, incluidas Hola recomendación tooinstall NPS en un controlador de dominio, consulte [recomendaciones para NPS](https://technet.microsoft.com/library/cc771746).
+Para obtener información acerca de cómo instalar el servicio de rol NPS en Windows Server 2012 o anterior, consulte [Instalación de un servidor de directivas de mantenimiento de NAP](https://technet.microsoft.com/library/dd296890.aspx). Para obtener una descripción de las prácticas recomendadas para NPS, incluida la recomendación de instalar NPS en un controlador de dominio, consulte [Prácticas recomendadas para NPS](https://technet.microsoft.com/library/cc771746).
 
 ### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>Azure Active Directory sincronizado con Active Directory local 
-Hola toouse extensión NPS, local de los usuarios deben estar sincronizados con Azure AD y habilitados para MFA. En esta sección se da por supuesto que los usuarios locales están sincronizados con Azure AD mediante AD Connect. Para obtener información sobre Azure AD Connect, consulte [Integración de los directorios locales con Azure Active Directory](../active-directory/connect/active-directory-aadconnect.md). 
+Para usar la extensión NPS, los usuarios locales deben estar sincronizados con Azure AD y habilitados para MFA. En esta sección se da por supuesto que los usuarios locales están sincronizados con Azure AD mediante AD Connect. Para obtener información sobre Azure AD Connect, consulte [Integración de los directorios locales con Azure Active Directory](../active-directory/connect/active-directory-aadconnect.md). 
 
 ### <a name="azure-active-directory-guid-id"></a>Identificador de GUID de Azure Active Directory
-tooinstall NPS, debe tooknow Hola GUID de hello Azure AD. A continuación se proporcionan instrucciones para buscar Hola GUID de hello Azure AD.
+Para instalar NPS, debe conocer el GUID de Azure AD. A continuación, se proporcionan instrucciones para buscar el GUID de Azure AD.
 
 ## <a name="configure-multi-factor-authentication"></a>Configuración de Multi-Factor Authentication 
-Esta sección proporciona instrucciones para la integración de Azure MFA con hello puerta de enlace de escritorio remoto. Como administrador, debe configurar el servicio de Azure MFA Hola antes de que los usuarios pueden registrarse ellos mismos sus aplicaciones o dispositivos de varios factores.
+Esta sección proporciona instrucciones para la integración de Azure MFA con la puerta de enlace de Escritorio remoto. Como administrador, debe configurar el servicio Azure MFA antes de que los usuarios puedan registrar ellos mismos sus aplicaciones o dispositivos de varios factores.
 
-Siga los pasos de hello en [Introducción a la autenticación multifactor Azure en la nube de hello](multi-factor-authentication-get-started-cloud.md) tooenable MFA para los usuarios de Azure AD. 
+Siga los pasos de [Introducción a Azure Multi-Factor Authentication en la nube](multi-factor-authentication-get-started-cloud.md) para habilitar MFA para los usuarios de Azure AD. 
 
 ### <a name="configure-accounts-for-two-step-verification"></a>Configuración de cuentas para la verificación en dos pasos
-Una vez que una cuenta se ha habilitado para MFA, no se puede iniciar sesión en tooresources rige por hello directiva de MFA hasta que se ha configurado correctamente un dispositivo de confianza toouse de segundo factor de autenticación Hola han autenticado mediante verificación en dos pasos.
+Una vez que una cuenta se ha habilitado para MFA, no puede iniciar sesión en los recursos controlados por la directiva MFA hasta que se haya configurado correctamente un dispositivo de confianza que se utilizará para el segundo factor de autenticación de la verificación en dos pasos.
 
-Siga los pasos de hello en [¿qué significa la autenticación multifactor Azure para mí?](./end-user/multi-factor-authentication-end-user.md) toounderstand y configurar correctamente los dispositivos para MFA con su cuenta de usuario.
+Siga los pasos de [¿Qué significa Azure Multi-Factor Authentication para mí?](./end-user/multi-factor-authentication-end-user.md) para comprender y configurar correctamente los dispositivos para MFA con su cuenta de usuario.
 
 ## <a name="install-and-configure-nps-extension"></a>Instalación y configuración de la extensión NPS
-Esta sección proporciona instrucciones para configurar RDS infraestructura toouse Azure MFA para la autenticación de cliente con hello puerta de enlace de escritorio remoto.
+Esta sección proporciona instrucciones para configurar la infraestructura de RDS para usar Azure MFA para la autenticación de cliente con la puerta de enlace de Escritorio remoto.
 
 ### <a name="acquire-azure-active-directory-guid-id"></a>Obtener el identificador de GUID de Azure Active Directory
 
-Como parte de configuración de Hola de hello extensión NPS, necesita credenciales de administrador de toosupply y el identificador de Azure AD de hello para el inquilino de Azure AD. Hola siguientes pasos muestra cómo identificador de inquilino de hello tooget.
+Como parte de la configuración de la extensión NPS, debe proporcionar las credenciales de administrador y el identificador de Azure AD para el inquilino de Azure AD. Los pasos siguientes muestran cómo obtener el identificador del inquilino.
 
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com) como administrador global de Hola de hello Azure de inquilinos.
-2. Hola barra de navegación izquierda, seleccione hello **Azure Active Directory** icono.
+1. Inicie sesión en [Azure Portal](https://portal.azure.com) como administrador global del inquilino de Azure.
+2. En la barra de navegación de la izquierda, seleccione el icono de **Azure Active Directory**.
 3. Seleccione **Propiedades**.
-4. En la hoja de propiedades de hello, al lado de hello Id. de directorio, haga clic en hello **copia** icono, tal y como se muestra a continuación, toocopy Hola identificador tooclipboard.
+4. En la hoja Propiedades, junto a la identificación de directorio, haga clic en el icono **Copiar**, tal y como se muestra a continuación, para copiar el identificador en el Portapapeles.
 
  ![Propiedades](./media/nps-extension-remote-desktop-gateway/image1.png)
 
-### <a name="install-hello-nps-extension"></a>Instalar extensión NPS Hola
-Instalar extensión NPS de hello en un servidor que tenga instalado el rol de servicios de acceso (NPS) y de saludo directiva de red. Esto funciona como servidor RADIUS de hello para el diseño. 
+### <a name="install-the-nps-extension"></a>Instalación de la extensión de NPS
+Instale la extensión NPS en un servidor que tenga instalado el rol Servicios de acceso y directiva de red (NPS). Este actúa como el servidor RADIUS en su diseño. 
 
 >[!Important]
-> Asegúrese de que no instalar extensión NPS de hello en el servidor de puerta de enlace de escritorio remoto.
+> Asegúrese de no instalar la extensión NPS en el servidor de puerta de enlace de Escritorio remoto.
 > 
 
-1. Descargar hello [extensión NPS](https://aka.ms/npsmfa). 
-2. Copie el servidor NPS toohello de hello el programa de instalación (NpsExtnForAzureMfaInstaller.exe) del archivo ejecutable.
-3. En el servidor NPS de hello, haga doble clic en **NpsExtnForAzureMfaInstaller.exe**. Cuando se le solicite, haga clic en **Ejecutar**.
-4. En hello extensión de NPS para el cuadro de diálogo de MFA de Azure, revisar los términos de licencia del software de hello, comprobar **acepto los términos de licencia de toohello y condiciones**y haga clic en **instalar**.
+1. Descargue la [extensión NPS](https://aka.ms/npsmfa). 
+2. Copie el archivo ejecutable de instalación (NpsExtnForAzureMfaInstaller.exe) en el servidor NPS.
+3. En el servidor NPS, haga doble clic en **NpsExtnForAzureMfaInstaller.exe**. Cuando se le solicite, haga clic en **Ejecutar**.
+4. En el cuadro de diálogo Extensión NPS para Azure MFA, revise los términos de licencia de software, marque la casilla **Acepto los términos de licencia y condiciones** y haga clic en **Instalar**.
  
   ![Instalación de Azure MFA](./media/nps-extension-remote-desktop-gateway/image2.png)
 
-5. Hola extensión de NPS para el cuadro de diálogo de MFA de Azure, haga clic en Cerrar. 
+5. En el cuadro de diálogo Extensión NPS para Azure MFA, haga clic en Cerrar. 
 
   ![Extensión NPS para Azure MFA](./media/nps-extension-remote-desktop-gateway/image3.png)
 
-### <a name="configure-certificates-for-use-with-hello-nps-extension-using-a-powershell-script"></a>Configurar certificados para su uso con la extensión NPS hello mediante un script de PowerShell
-A continuación, se necesitan certificados de tooconfigure para su uso por hello NPS extensión tooensure las comunicaciones seguras y la seguridad. los componentes NPS Hola incluyen un script de Windows PowerShell que configure un certificado autofirmado para su uso con NPS. 
+### <a name="configure-certificates-for-use-with-the-nps-extension-using-a-powershell-script"></a>Configuración de los certificados para su uso con la extensión NPS mediante un script de PowerShell
+A continuación, debe configurar los certificados para su uso por la extensión NPS para garantizar la seguridad de las comunicaciones. Los componentes de NPS incluyen un script de Windows PowerShell que configura un certificado autofirmado para su uso con NPS. 
 
-script de Hola realiza Hola siguientes acciones:
+Este script realiza las acciones siguientes:
 
 * Crea un certificado autofirmado
-* Asocia la clave pública del certificado tooservice principal en Azure AD
-* Hola a almacenes de certificados en el almacén del equipo local de Hola
-* Concede acceso de usuario de la red toohello clave privada del certificado de toohello
+* Asocia la clave pública del certificado a la entidad de servicio en Azure AD
+* Almacena el certificado en el almacén de certificados del equipo local
+* Concede acceso a la clave privada del certificado al usuario de red
 * Reinicia el servicio Servidor de directivas de redes
 
-Si desea toouse sus propios certificados, necesita tooassociate Hola público de la entidad de seguridad de servicio de certificado toohello en Azure AD y así sucesivamente.
+Si desea utilizar sus propios certificados, debe asociar la clave pública de su certificado para la entidad de servicio en Azure AD, etc.
 
-script de Hola toouse, proporcionar extensión Hola con sus credenciales de administrador de AD de Azure y Hola Id. de inquilino de Azure AD que copió anteriormente. Ejecutar script de Hola en cada servidor NPS donde instaló la extensión NPS Hola. A continuación, Hola siguientes:
+Para usar el script, indique a la extensión sus credenciales de administrador de Azure AD y el identificador del inquilino de Azure AD que copió anteriormente. Ejecute el script en cada servidor NPS donde instaló la extensión NPS. A continuación, haga lo siguiente:
 
 1. Abra un símbolo del sistema administrativo de Windows PowerShell.
-2. En el símbolo del sistema de PowerShell hello, escriba **cd 'c:\Program Files\Microsoft\AzureMfa\Config'**y presione **ENTRAR**.
-3. Escriba _.\AzureMfsNpsExtnConfigSetup.ps1_ y presione **ENTRAR**. script de Hola comprueba toosee si está instalado el módulo de PowerShell de Azure Active Directory de Hola. Si no está instalado, el script de Hola instala módulo Hola.
+2. En el símbolo del sistema de PowerShell, escriba **cd 'c:\Program Files\Microsoft\AzureMfa\Config'** y presione **ENTRAR**.
+3. Escriba _.\AzureMfsNpsExtnConfigSetup.ps1_ y presione **ENTRAR**. El script comprueba si está instalado el módulo de PowerShell de Azure Active Directory. Si no está instalado, el script instala el módulo.
 
   ![PowerShell de Azure AD](./media/nps-extension-remote-desktop-gateway/image4.png)
   
-4. Después de que el script de Hola comprueba la instalación de Hola Hola del módulo de PowerShell, muestra el cuadro de diálogo de módulo de Azure Active Directory PowerShell Hola. En el cuadro de diálogo de hello, escriba sus credenciales de administrador de Azure AD y la contraseña y haga clic en **inicio de sesión**.
+4. Una vez que el script comprueba la instalación del módulo de PowerShell, muestra el cuadro de diálogo del módulo de PowerShell de Azure Active Directory. En el cuadro de diálogo, escriba sus credenciales de administrador de Azure AD y la contraseña y haga clic en **Iniciar sesión**.
 
   ![Abrir cuenta de Powershell](./media/nps-extension-remote-desktop-gateway/image5.png)
 
-5. Cuando se le solicite, pegue el Id. de inquilino de Hola que copió anteriormente toohello Portapapeles y presione **ENTRAR**.
+5. Cuando se le solicite, pegue el identificador del inquilino que copió al Portapapeles anteriormente y presione **ENTRAR**.
 
   ![Escriba el identificador del inquilino](./media/nps-extension-remote-desktop-gateway/image6.png)
 
-6. script de Hola crea un certificado autofirmado y realiza otros cambios de configuración. Hola resultado debe ser similar a la imagen de Hola se muestra a continuación.
+6. El script crea un certificado autofirmado y realiza otros cambios en la configuración. La salida será similar a la imagen que se muestra a continuación.
 
   ![Certificado autofirmado](./media/nps-extension-remote-desktop-gateway/image7.png)
 
 ## <a name="configure-nps-components-on-remote-desktop-gateway"></a>Configuración de los componentes de NPS en la puerta de enlace de Escritorio remoto
-En esta sección, configurar directivas de autorización de conexión de puerta de enlace de escritorio remoto de Hola y otras opciones de RADIUS.
+En esta sección, configurará las directivas de autorización de conexión de la puerta de enlace de Escritorio remoto y otras opciones de RADIUS.
 
-flujo de autenticación de Hello requiere que los mensajes RADIUS intercambiarse entre Hola hello y puerta de enlace de escritorio remoto servidor NPS donde está instalado el servidor NPS Hola. Esto significa que debe configurar la configuración del cliente RADIUS en la puerta de enlace de escritorio remoto y Hola servidor NPS donde se instala la extensión NPS Hola. 
+El flujo de autenticación requiere que se intercambien mensajes RADIUS entre la puerta de enlace de Escritorio remoto y el servidor NPS donde está instalado el servicio NPS. Esto significa que debe configurar los valores del cliente RADIUS tanto en la puerta de enlace de Escritorio remoto como en el servidor NPS donde está instalada la extensión NPS. 
 
-### <a name="configure-remote-desktop-gateway-connection-authorization-policies-toouse-central-store"></a>Configurar el almacén central del toouse de directivas de autorización de conexiones para la puerta de enlace de escritorio remoto
-Directivas de autorización de conexión a Escritorio remoto (CAP de RD) especifican los requisitos de hello para el servidor de puerta de enlace de escritorio remoto de conexión tooa. Las CAP de RD pueden almacenarse localmente (valor predeterminado) o pueden almacenarse en un almacén de CAP de RD central que ejecute NPS. integración de tooconfigure de MFA de Azure con RDS, es necesario utilizar de Hola de toospecify de un almacén central.
+### <a name="configure-remote-desktop-gateway-connection-authorization-policies-to-use-central-store"></a>Configuración de las directivas de autorización de conexiones de la puerta de enlace de Escritorio remoto para usar un almacén central
+Las directivas de autorización de conexiones de Escritorio remoto (CAP de RD) especifican los requisitos para conectarse a un servidor de puerta de enlace de Escritorio remoto. Las CAP de RD pueden almacenarse localmente (valor predeterminado) o pueden almacenarse en un almacén de CAP de RD central que ejecute NPS. Para configurar la integración de Azure MFA con RDS, debe especificar el uso de un almacén central.
 
-1. En el servidor de puerta de enlace de escritorio remoto de hello, abra **el administrador del servidor**. 
-2. En el menú de hello, haga clic en **herramientas**, seleccione demasiado**servicios de escritorio remoto**y, a continuación, haga clic en **el Administrador de puerta de enlace de escritorio remoto**.
+1. En el servidor de la puerta de enlace de Escritorio remoto, abra el **Administrador del servidor**. 
+2. En el menú, haga clic en **Herramientas**, seleccione **Servicios de escritorio remoto** y, a continuación, haga clic en el **Administrador de puerta de enlace de Escritorio remoto**.
 
   ![Servicios de Escritorio remoto](./media/nps-extension-remote-desktop-gateway/image8.png)
 
-3. Hola Administrador de puerta de enlace de escritorio remoto, haga clic en  **\[nombre del servidor\] (Local)**y haga clic en **propiedades**.
+3. En el Administrador de puerta de enlace de Escritorio remoto, haga clic con el botón derecho en  **\[Nombre del servidor\] (Local)** y haga clic en **Propiedades**.
 
   ![Nombre del servidor](./media/nps-extension-remote-desktop-gateway/image9.png)
 
-4. En el cuadro de diálogo de propiedades de hello, seleccione hello **CAP de RD** pestaña almacén.
-5. En la ficha de almacén de CAP de RD de hello, seleccione **servidor Central que ejecuta NPS**. 
-6. Hola **escriba un nombre o dirección IP de servidor hello que ejecuta NPS** campo, tipo hello IP dirección o el nombre del servidor de Hola donde instaló la extensión NPS Hola.
+4. En el cuadro de diálogo Propiedades, seleccione la pestaña Almacén de **CAP de RD**.
+5. En la pestaña Almacén de CAP de RD, seleccione **Servidor central que ejecuta NPS**. 
+6. En el campo **Escriba un nombre o dirección IP para el servidor que ejecuta NPS**, escriba la dirección IP o nombre del servidor donde instaló la extensión NPS.
 
   ![Escriba el nombre o dirección IP](./media/nps-extension-remote-desktop-gateway/image10.png)
   
 7. Haga clic en **Agregar**.
-8. Hola **secreto compartido** cuadro de diálogo, escriba un secreto compartido y, a continuación, haga clic en **Aceptar**. Asegúrese de registrar este secreto compartido y almacenar de forma segura el registro de hello.
+8. En el cuadro de diálogo **Secreto compartido**, escriba un secreto compartido y, a continuación, haga clic en **Aceptar**. Asegúrese de registrar este secreto compartido y almacenar el registro de forma segura.
 
  >[!NOTE]
- >Se usa el secreto compartido tooestablish confianza entre clientes y servidores RADIUS de Hola. Cree una contraseña larga y compleja.
+ >El secreto compartido se utiliza para establecer la confianza entre los clientes y servidores RADIUS. Cree una contraseña larga y compleja.
  >
 
  ![Secreto compartido](./media/nps-extension-remote-desktop-gateway/image11.png)
 
-9. Haga clic en **Aceptar** cuadro de diálogo de tooclose Hola.
+9. Haga clic en **Aceptar** para cerrar el cuadro de diálogo.
 
 ### <a name="configure-radius-timeout-value-on-remote-desktop-gateway-nps"></a>Configuración del valor de tiempo de espera de RADIUS en el NPS de la puerta de enlace de Escritorio remoto
-tooensure hay es hora de credenciales de los usuarios toovalidate, realizar la verificación en dos pasos, recibir respuestas y responde mensajes tooRADIUS, es el valor de tiempo de espera RADIUS de hello tooadjust necesarios.
+Para asegurarse de que hay tiempo para validar las credenciales de los usuarios, realizar la verificación en dos pasos, recibir respuestas y responder a los mensajes de RADIUS, es necesario ajustar el valor de tiempo de espera de RADIUS.
 
-1. En el servidor de puerta de enlace de escritorio remoto de hello, en el administrador del servidor, haga clic en **herramientas**y, a continuación, haga clic en **servidor de directivas de red**. 
-2. Hola **NPS (Local)** de la consola, expanda **clientes y servidores RADIUS**y seleccione **servidor RADIUS remoto**.
+1. En el servidor de la puerta de enlace de Escritorio remoto, en el administrador del servidor, haga clic en **Herramientas** y, a continuación, haga clic en **Servidor de directivas de redes**. 
+2. En la consola de **NPS (Local)**, expanda **Clientes y servidores RADIUS** y seleccione **Servidor RADIUS remoto**.
 
  ![Servidor RADIUS remoto](./media/nps-extension-remote-desktop-gateway/image12.png)
 
-3. En el panel de detalles de hello, haga doble clic en **grupo de servidores de puerta de enlace de TS**.
+3. En el panel de detalles, haga doble clic en **Grupo de servidores de puerta de enlace de TS**.
 
  >[!NOTE]
- >Este grupo de servidores RADIUS se creó al configurar Hola server central para las directivas NPS. Hola puerta de enlace de escritorio remoto reenvía el servidor de toothis de mensajes RADIUS o un grupo de servidores, si más de un grupo de Hola.
+ >Este grupo de servidores RADIUS se creó al configurar el servidor de directivas NPS central. La puerta de enlace de Escritorio remoto reenvía los mensajes RADIUS a este servidor o grupo de servidores, si hay más de uno en el grupo.
  >
 
-4. Hola **propiedades de grupo de servidores de puerta de enlace de TS** cuadro de diálogo, dirección IP de hello select o nombre de servidor NPS configurado CAP de RD toostore de Hola y, a continuación, haga clic en **editar**. 
+4. En el cuadro de diálogo **Propiedades del grupo de servidores de puerta de enlace de TS**, seleccione la dirección IP o el nombre del servidor NPS configurado para almacenar las CAP de RD y, a continuación, haga clic en **Editar**. 
 
  ![Grupo de servidores de puerta de enlace de TS](./media/nps-extension-remote-desktop-gateway/image13.png)
 
-5. Hola **Editar servidor RADIUS** cuadro de diálogo, seleccione hello **equilibrio de carga** ficha.
-6. Hola **equilibrio de carga** ficha Hola **quita el número de segundos sin respuesta antes de solicitud se considera** campo, cambiar el valor predeterminado de Hola de 3 valor tooa entre 30 y 60 segundos.
-7. Hola **número de segundos entre solicitudes cuando el servidor se identifica como no disponible** campo, cambie el valor predeterminado de hello del valor de tooa de 30 segundos que es mayor que el valor de Hola que especificó en el paso anterior de Hola de tooor igual.
+5. En el cuadro de diálogo **Editar servidor RADIUS**, seleccione la pestaña **Equilibrio de carga**.
+6. En la pestaña **Equilibrio de carga**, en el campo **Número de segundos sin respuesta antes de descartar la solicitud**, cambie el valor predeterminado de 3 a un valor entre 30 y 60 segundos.
+7. En el campo **Número de segundos entre solicitudes cuando el servidor se identifica como no disponible**, cambie el valor predeterminado de 30 segundos a un valor igual o mayor que el valor especificado en el paso anterior.
 
  ![Editar servidor Radius](./media/nps-extension-remote-desktop-gateway/image14.png)
 
-8.  Haga clic en Aceptar dos veces tooclose Hola los cuadros de diálogo.
+8.  Haga clic dos veces en Aceptar para cerrar los cuadros de diálogo.
 
 ### <a name="verify-connection-request-policies"></a>Verificación de las directivas de solicitud de conexión 
-De forma predeterminada, al configurar la puerta de enlace de escritorio remoto de hello toouse un almacén de directivas central para las directivas de autorización de conexión, Hola puerta de enlace de escritorio remoto es el servidor NPS toohello de tooforward configurado CAP solicitudes. servidor NPS Hola con la extensión de Azure MFA Hola instalado, solicitud de acceso RADIUS de Hola de procesos. Hola pasos muestra cómo Directiva de solicitud de conexión predeterminada de tooverify Hola. 
+De forma predeterminada, al configurar la puerta de enlace de Escritorio remoto para usar un almacén de directivas central para las directivas de autorización de conexiones, la puerta de enlace de Escritorio remoto se configura para reenviar las solicitudes de CAP al servidor NPS. El servidor NPS con la extensión Azure MFA instalada procesa la solicitud de acceso RADIUS. Los pasos siguientes muestran cómo verificar la directiva de solicitud de conexión predeterminada. 
 
-1. En hello puerta de enlace de escritorio remoto, en la consola NPS (Local) de hello, expanda **directivas**y seleccione **directivas de solicitud de conexión**.
+1. En la puerta de enlace de Escritorio remoto, en la consola NPS (Local), expanda **Directivas** y seleccione **Directivas de solicitud de conexión**.
 2. Haga clic con el botón derecho en **Directivas de solicitud de conexión** y haga doble clic en **Directiva de autorización de puerta de enlace de TS**.
-3. Hola **propiedades de la directiva de autorización de puerta de enlace de TS** diálogo cuadro, haga clic en hello **configuración** ficha.
-4. En la pestaña **Configuración**, bajo Reenvío de solicitud de conexión, haga clic en **Autenticación**. Cliente RADIUS está configurado tooforward solicitudes de autenticación.
+3. En el cuadro de diálogo **Propiedades de la directiva de autorización de puerta de enlace de TS**, haga clic en la pestaña **Configuración**.
+4. En la pestaña **Configuración**, bajo Reenvío de solicitud de conexión, haga clic en **Autenticación**. El cliente RADIUS está configurado para reenviar las solicitudes de autenticación.
 
  ![Configuración de autenticación](./media/nps-extension-remote-desktop-gateway/image15.png)
  
 5. Haga clic en **Cancelar**. 
 
-## <a name="configure-nps-on-hello-server-where-hello-nps-extension-is-installed"></a>Configure NPS en el servidor de Hola donde está instalado Hola extensión NPS
-servidor NPS Hola donde extensión NPS de hello es necesidades instalado toobe tooexchange capaz de RADIUS mensajes con servidor NPS de hello en hello puerta de enlace de escritorio remoto. Este mensaje de tooenable exchange, necesitará tooconfigure Hola NPS componentes en servidor hello donde está instalado el servicio de extensión NPS Hola. 
+## <a name="configure-nps-on-the-server-where-the-nps-extension-is-installed"></a>Configuración de NPS en el servidor donde está instalada la extensión NPS
+El servidor NPS donde está instalada la extensión NPS debe ser capaz de intercambiar mensajes de RADIUS con el servidor NPS de la puerta de enlace de Escritorio remoto. Para habilitar este intercambio de mensajes, debe configurar los componentes de NPS en el servidor donde está instalado el servicio de la extensión NPS. 
 
 ### <a name="register-server-in-active-directory"></a>Registro del servidor en Active Directory
-toofunction correctamente en este escenario, el servidor NPS de hello debe toobe registrado en Active Directory.
+Para que funcione correctamente en este escenario, el servidor NPS debe estar registrado en Active Directory.
 
 1. Abra el **Administrador del servidor**.
 2. En el Administrador del servidor, haga clic en **Herramientas** y, a continuación, haga clic en **Servidor de directivas de redes**. 
-3. En la consola de servidor de directivas de red de hello, haga clic en **NPS (Local)**y, a continuación, haga clic en **Registrar servidor en Active Directory**. 
+3. En la consola del servidor de directivas de redes, haga clic con el botón derecho en **NPS (Local)** y, a continuación, haga clic en **Registrar el servidor en Active Directory**. 
 4. Haga clic en **Aceptar** dos veces.
 
  ![Registro del servidor en AD](./media/nps-extension-remote-desktop-gateway/image16.png)
 
-5. Deje abierta para el procedimiento siguiente Hola Hola consola.
+5. Deje la consola abierta para el siguiente procedimiento.
 
 ### <a name="create-and-configure-radius-client"></a>Creación y configuración del cliente RADIUS 
-Hola puerta de enlace de escritorio remoto debe toobe configurado como un servidor NPS de toohello de cliente RADIUS. 
+La puerta de enlace de Escritorio remoto debe configurarse como un cliente RADIUS en el servidor NPS. 
 
-1. En servidor NPS Hola Hola extensión NPS está instalado, en hello **NPS (Local)** de la consola, haga clic en **clientes RADIUS** y haga clic en **nuevo**.
+1. En el servidor NPS donde está instalada la extensión NPS, en la consola **NPS (Local)**, haga clic con el botón derecho en **Clientes RADIUS** y haga clic en **Nuevo**.
 
  ![Nuevo cliente RADIUS](./media/nps-extension-remote-desktop-gateway/image17.png)
 
-2. Hola **cliente RADIUS nuevo** diálogo cuadro, proporcione un nombre descriptivo, como _puerta de enlace_, y Hola dirección IP o nombre DNS del servidor de puerta de enlace de escritorio remoto de Hola. 
-3. Hola **secreto compartido** hello y **Confirmar secreto compartido** campos, escriba Hola mismo secreto que usó anteriormente.
+2. En el cuadro de diálogo **Nuevo cliente RADIUS**, proporcione un nombre descriptivo, como _Puerta_de_enlace_ y la dirección IP o nombre DNS del servidor de puerta de enlace de Escritorio remoto. 
+3. En los campos **Secreto compartido** y **Confirmar secreto compartido**, escriba el mismo secreto que usó anteriormente.
 
  ![Nombre y dirección](./media/nps-extension-remote-desktop-gateway/image18.png)
 
-4. Haga clic en **Aceptar** el cuadro de diálogo de tooclose Hola RADIUS nuevo cliente.
+4. Haga clic en **Aceptar** para cerrar el cuadro de diálogo Nuevo cliente RADIUS.
 
 ### <a name="configure-network-policy"></a>Configuración de la directiva de red
-Servidor de recuperación Hola NPS con hello extensión de Azure MFA es Hola directiva central designado almacén Hola directiva de autorización de conexiones (CAP). Por lo tanto, deberá tooimplement un límite en las solicitudes de conexiones válidas de hello NPS server tooauthorize.  
+Recuerde que el servidor NPS con la extensión de Azure MFA es el almacén de directivas central designado para la directiva de autorización de conexiones (CAP). Por lo tanto, debe implementar un CAP en el servidor NPS para autorizar las solicitudes de conexión válidas.  
 
-1. En la consola NPS (Local) de hello, expanda **directivas**y haga clic en **las directivas de red**.
-2. Haga clic en **servidores de acceso a las conexiones tooother**y haga clic en **Duplicar directiva**. 
+1. En la consola NPS (Local), expanda **Directivas** y haga clic en **Directivas de red**.
+2. Haga clic con el botón derecho en **Conexiones a otros servidores de acceso** y haga clic en **Duplicar directiva**. 
 
  ![Duplicar directiva](./media/nps-extension-remote-desktop-gateway/image19.png)
 
-3. Haga clic en **servidores de acceso de copia de las conexiones tooother**y haga clic en **propiedades**.
+3. Haga clic con el botón derecho en **Copia de Conexiones a otros servidores de acceso** y haga clic en **Propiedades**.
 
  ![Propiedades de red](./media/nps-extension-remote-desktop-gateway/image20.png)
 
-4. Hola **servidores de acceso de copia de las conexiones tooother** cuadro de diálogo, en nombre de directiva, escriba un nombre adecuado, como **RDG_CAP**. Marque la casilla **Directiva habilitada** y seleccione **Conceder acceso**. Si lo desea, en Tipo de acceso a la red, seleccione **Puerta de enlace de Escritorio remoto** o puede dejarlo como **Sin especificar**.
+4. En el cuadro de diálogo **Copia de Conexiones a otros servidores de acceso**, en Nombre de directiva, escriba un nombre adecuado, como **RDG_CAP**. Marque la casilla **Directiva habilitada** y seleccione **Conceder acceso**. Si lo desea, en Tipo de acceso a la red, seleccione **Puerta de enlace de Escritorio remoto** o puede dejarlo como **Sin especificar**.
 
  ![Copia de las conexiones](./media/nps-extension-remote-desktop-gateway/image21.png)
 
-5.  Haga clic en hello **restricciones** ficha y compruebe **tooconnect de permitir que los clientes sin negociar un método de autenticación**.
+5.  Haga clic en la pestaña **Restricciones** y marque la casilla **Permitir que los clientes se conecten sin negociar un método de autenticación**.
 
- ![Permitir a los clientes tooconnect](./media/nps-extension-remote-desktop-gateway/image22.png)
+ ![Permitir que los clientes se conecten](./media/nps-extension-remote-desktop-gateway/image22.png)
 
-6. Si lo desea, haga clic en hello **condiciones** pestaña y agregar las condiciones que deben cumplirse para hello conexión toobe autorizado, por ejemplo, pertenencia a un grupo de Windows específico.
+6. Si lo desea, haga clic en la pestaña **Condiciones** y agregue las condiciones que deben cumplirse para que la conexión se autorice, por ejemplo, la pertenencia a un grupo de Windows específico.
 
  ![Condiciones](./media/nps-extension-remote-desktop-gateway/image23.png)
 
-7. Haga clic en **Aceptar**. Cuando tooview solicitada hello tema de ayuda correspondiente, haga clic en **No**.
-8. Asegúrese de que la nueva directiva se encuentra en parte superior de Hola de lista de hello, que está habilitada la directiva de hello, y que concede acceso.
+7. Haga clic en **Aceptar**. Cuando se le solicite ver el tema de ayuda correspondiente, haga clic en **No**.
+8. Asegúrese de que la nueva directiva está en la parte superior de la lista, que la directiva está habilitada y que concede acceso.
 
  ![Directivas de red](./media/nps-extension-remote-desktop-gateway/image24.png)
 
 ## <a name="verify-configuration"></a>Comprobación de la configuración
-configuración de hello tooverify, deberá toolog en hello puerta de enlace de escritorio remoto con un cliente RDP adecuado. Toouse seguro de que sea una cuenta está permitida por las directivas de autorización de conexión y está habilitada para Azure MFA. 
+Para comprobar la configuración, debe iniciar sesión en la puerta de enlace de Escritorio remoto con un cliente RDP adecuado. Asegúrese de usar una cuenta que está permitida por las directivas de autorización de conexión y está habilitada para Azure MFA. 
 
-Como se muestra en la imagen de Hola a continuación, puede usar hello **acceso Web a Escritorio remoto** página.
+Como se muestra en la siguiente imagen, puede utilizar la página **Acceso web a Escritorio remoto**.
 
 ![Acceso web de Escritorio remoto](./media/nps-extension-remote-desktop-gateway/image25.png)
 
-Cuando se especifica correctamente las credenciales para la autenticación principal, cuadro de diálogo de conexión a Escritorio remoto de hello muestra un estado de iniciar una conexión remota, tal y como se muestra a continuación. 
+Después de especificar correctamente las credenciales para la autenticación principal, el cuadro de diálogo Conexión a Escritorio remoto muestra un estado de Iniciando conexión remota, tal y como se muestra a continuación. 
 
-Si se autentica correctamente con método de autenticación secundario Hola que configuró previamente en Azure MFA, son recursos toohello conectado. Sin embargo, si la autenticación secundaria hello no es correcta, se le deniega el acceso tooresource. 
+Si se autentica correctamente con el método de autenticación secundario que ha configurado previamente en Azure MFA, se conecta al recurso. Sin embargo, si la autenticación secundaria no se realiza correctamente, se deniega el acceso al recurso. 
 
 ![Iniciar la conexión remota](./media/nps-extension-remote-desktop-gateway/image26.png)
 
-En el ejemplo de Hola siguiente, Hola autenticador aplicación en un dispositivo Windows phone es autenticación secundaria de hello tooprovide usado.
+En el ejemplo siguiente, la aplicación Authenticator en un dispositivo Windows Phone se utiliza para proporcionar la autenticación secundaria.
 
 ![Cuentas](./media/nps-extension-remote-desktop-gateway/image27.png)
 
-Una vez que se haya autenticado correctamente utilizando el método de autenticación secundario hello, se registran en hello puerta de enlace de escritorio remoto como normalmente. Sin embargo, dado que son toouse requiere un método de autenticación secundario con una aplicación móvil en un dispositivo de confianza, proceso de registro de hello es más seguro que sería lo contrario.
+Una vez que se haya autenticado correctamente con el método de autenticación secundario, iniciará sesión de modo normal en la puerta de enlace de Escritorio remoto. Sin embargo, como ha sido necesario usar un método de autenticación secundario con una aplicación móvil en un dispositivo de confianza, el proceso de inicio de sesión es más seguro que de otro modo.
 
 ### <a name="view-event-viewer-logs-for-successful-logon-events"></a>Ver los registros del Visor de eventos para eventos de inicio de sesión correcto
-tooview Hola inicio de sesión de eventos correctos en los registros del Visor de eventos de Windows hello, puede emitir Hola siguientes comando tooquery hello Windows Terminal Services de Windows PowerShell y registros de seguridad de Windows.
+Para ver los eventos de inicio de sesión correctos en los registros del Visor de eventos de Windows, puede utilizar el siguiente comando de Windows PowerShell para consultar los registros de Windows Terminal Services y el registro de seguridad de Windows.
 
-tooquery inicio de sesión de eventos correctos de registros operativos de puerta de enlace de hello _(Visor de eventos y servicios Logs\Microsoft\Windows\TerminalServices-Gateway\Operational_, usar hello siguientes comandos:
+Para consultar los eventos de inicio de sesión correctos de los registros operativos de la puerta de enlace _(Event Viewer\Applications and Services Logs\Microsoft\Windows\TerminalServices-Gateway\Operational_, use los siguientes comandos:
 
 * _Get-WinEvent -Logname Microsoft-Windows-TerminalServices-Gateway/Operational_ | where {$_.ID -eq '300'} | FL 
-* Este comando muestra los eventos de Windows que muestra el usuario Hola cumple los requisitos de directiva de autorización de recursos (RAP de RD) y se le concedió acceso.
+* Este comando muestra los eventos de Windows que muestran que el usuario cumple los requisitos de la directiva de administración de recursos (RAP de RD) y se le concedió acceso.
 
 ![Visualización del Visor de eventos](./media/nps-extension-remote-desktop-gateway/image28.png)
 
 * _Get-WinEvent -Logname Microsoft-Windows-TerminalServices-Gateway/Operational_ | where {$_.ID -eq '200'} | FL
-* Este comando muestra los eventos de Hola que se muestran cuando el usuario cumplió los requisitos de directiva de autorización de conexión.
+* Este comando muestra los eventos que muestran que el usuario cumplió los requisitos de la directiva de autorización de conexiones.
 
 ![Autorización de conexión](./media/nps-extension-remote-desktop-gateway/image29.png)
 
-También puede ver este registro y filtrar por los identificadores de los eventos, 300 y 200. eventos de inicio de sesión correcto de tooquery en registros de Visor de eventos de seguridad de hello, utilice Hola siguiente comando:
+También puede ver este registro y filtrar por los identificadores de los eventos, 300 y 200. Para consultar los eventos de inicio de sesión correcto en los registros del Visor de eventos de seguridad, use el comando siguiente:
 
 * _Get-WinEvent -Logname Security_ | where {$_.ID -eq '6272'} | FL 
-* Este comando se puede ejecutar en cualquier Hola NPS central o servidor de puerta de enlace de escritorio remoto de bienvenida. 
+* Este comando se puede ejecutar en el NPS central o en el servidor de puerta de enlace de Escritorio remoto. 
 
 ![Eventos de inicio de sesión correcto](./media/nps-extension-remote-desktop-gateway/image30.png)
 
-También puede ver el registro de seguridad de Hola u Hola servicios de acceso y directivas de redes vista personalizada, tal y como se muestra a continuación:
+También puede ver el registro de seguridad o la vista personalizada de Directivas de red y servicios de acceso, tal y como se muestra a continuación:
 
 ![Directiva de red y servicios de acceso](./media/nps-extension-remote-desktop-gateway/image31.png)
 
-En el servidor de Hola donde instaló la extensión NPS de Hola para MFA de Azure, puede encontrar registros del Visor de eventos de aplicación toohello específico de extensión en _aplicaciones y servicios Logs\Microsoft\AzureMfa_. 
+En el servidor donde instaló la extensión NPS para Azure MFA, puede encontrar registros de aplicación del Visor de eventos específicos de la extensión en _Application and Services Logs\Microsoft\AzureMfa_. 
 
 ![Registros de aplicación del Visor de eventos](./media/nps-extension-remote-desktop-gateway/image32.png)
 
 ## <a name="troubleshoot-guide"></a>Guía de solución de problemas
 
-Si la configuración de hello no funciona según lo esperado, Hola primer lugar toostart tootroubleshoot es tooverify que Hola usuario toouse configurado Azure MFA. Hacer que el usuario de Hola se conecten toohello [portal de Azure](https://portal.azure.com). Si a los usuarios se les solicita la comprobación secundaria y se pueden autenticar correctamente, puede descartar una configuración incorrecta de Azure MFA.
+Si la configuración no funciona según lo esperado, el primer lugar para comenzar es comprobar que el usuario está configurado para usar Azure MFA. Haga que el usuario se conecte a [Azure Portal](https://portal.azure.com). Si a los usuarios se les solicita la comprobación secundaria y se pueden autenticar correctamente, puede descartar una configuración incorrecta de Azure MFA.
 
-Si funciona Azure MFA para usuarios de hello, debe revisar los registros de eventos relevantes Hola. Esto incluye registros de eventos de seguridad, operativa de la puerta de enlace y de Azure MFA de Hola que se describen en la sección anterior de Hola. 
+Si Azure MFA está funcionando para los usuarios, debe revisar los registros de eventos pertinentes. Esto incluye los eventos de seguridad, de operativa de la puerta de enlace y los registros de Azure MFA que se describen en la sección anterior. 
 
 A continuación, se muestra un ejemplo de salida del registro de seguridad que muestra un evento de inicio de sesión incorrecto (identificador de evento 6273).
 
 ![Evento de inicio de sesión incorrecto](./media/nps-extension-remote-desktop-gateway/image33.png)
 
-A continuación se muestra un evento relacionado de hello AzureMFA registros:
+A continuación, se muestra un evento relacionado de los registros de AzureMFA:
 
 ![Registro de Azure MFA](./media/nps-extension-remote-desktop-gateway/image34.png)
 
-tooperform avanzada solucionar problemas de opciones, consulte archivos de registro de la formato de hello NPS base de datos donde está instalado el servicio NPS Hola. Estos archivos de registro se crean en la carpeta _%SystemRoot%\System32\Logs_ como archivos de texto delimitado por comas. 
+Para realizar opciones avanzadas de solución de problemas, consulte los archivos de registro de formato de la base de datos de NPS donde está instalado el servicio NPS. Estos archivos de registro se crean en la carpeta _%SystemRoot%\System32\Logs_ como archivos de texto delimitado por comas. 
 
-Para obtener una descripción de estos archivos de registro, consulte [Interpretación de los archivos de registro de formato de la base de datos de NPS](https://technet.microsoft.com/library/cc771748.aspx). las entradas de Hello en estos archivos de registro pueden ser difícil toointerpret sin importarlos en una hoja de cálculo o una base de datos. Puede encontrar varios analizadores de IAS tooassist en línea, en la interpretación de Hola archivos de registro. 
+Para obtener una descripción de estos archivos de registro, consulte [Interpretación de los archivos de registro de formato de la base de datos de NPS](https://technet.microsoft.com/library/cc771748.aspx). Las entradas de estos archivos de registro pueden ser difíciles de interpretar sin importarlos en una hoja de cálculo o una base de datos. Puede encontrar varios analizadores de IAS en línea que le ayudarán a interpretar los archivos de registro. 
 
-Hello imagen siguiente muestra la salida de hello de uno estos descargable [aplicación shareware](http://www.deepsoftware.com/iasviewer). 
+La imagen siguiente muestra la salida de una [aplicación shareware](http://www.deepsoftware.com/iasviewer) que se puede descargar. 
 
 ![Aplicación shareware](./media/nps-extension-remote-desktop-gateway/image35.png)
 
 Por último, para más opciones de solución de problemas, puede utilizar un analizador de protocolos, como el [Analizador de mensajes de Microsoft](https://technet.microsoft.com/library/jj649776.aspx). 
 
-la imagen siguiente desde el analizador de mensajes de Microsoft Hello muestra el tráfico de red filtrado en el protocolo RADIUS que contiene el nombre de usuario de hello **Contoso\AliceC**.
+La imagen siguiente del Analizador de mensajes de Microsoft muestra el tráfico de red filtrado por el protocolo RADIUS y que contiene el nombre de usuario **Contoso\AliceC**.
 
 ![Analizador de mensajes de Microsoft](./media/nps-extension-remote-desktop-gateway/image36.png)
 
 ## <a name="next-steps"></a>Pasos siguientes
-[¿Cómo tooget la autenticación multifactor Azure](multi-factor-authentication-versions-plans.md)
+[Cómo conseguir Azure Multi-Factor Authentication](multi-factor-authentication-versions-plans.md)
 
 [Puerta de enlace de Escritorio remoto y Servidor Azure Multi-Factor Authentication con RADIUS](multi-factor-authentication-get-started-server-rdg.md)
 

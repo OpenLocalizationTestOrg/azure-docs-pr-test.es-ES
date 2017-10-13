@@ -1,10 +1,10 @@
-Azure determinará la versión de Hola de Python toouse para su entorno virtual con hello después de prioridad:
+Azure determinará la versión de Python que se usará para su entorno virtual con la siguiente prioridad:
 
-1. versión especificada en runtime.txt en la carpeta raíz de Hola
-2. versión especificada por el valor de Python en configuración de la aplicación hello web (Hola **configuración** > **configuración de la aplicación** hoja para la aplicación web en hello Portal de Azure)
-3. Python 2.7 es valor predeterminado de hello si no se especifica ninguna Hola anterior
+1. versión especificada en runtime.txt en la carpeta raíz
+2. versión especificada en la configuración de Python en la configuración de la aplicación web (la hoja **Configuración** > **Configuración de la aplicación** de su aplicación web en Azure Portal)
+3. python-2.7 es el valor predeterminado si no se especifica ninguno de los anteriores
 
-Valores válidos para el contenido de Hola de 
+Los valores válidos para el contenido 
 
     \runtime.txt
 
@@ -13,5 +13,5 @@ son:
 * python-2.7
 * python-3.4
 
-Si versión micro hello (tercer dígito) se especifica, se omite.
+Si se especifica la versión micro (tercer dígito), se ignora.
 

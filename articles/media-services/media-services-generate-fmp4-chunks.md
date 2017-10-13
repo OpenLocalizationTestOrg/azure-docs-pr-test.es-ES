@@ -1,6 +1,6 @@
 ---
-title: "una tarea de codificación de servicios multimedia de Azure que genera fmp4 dinámico fragmentos aaaCreate | Documentos de Microsoft"
-description: "Este tema muestra cómo toocreate una tarea de codificación que genera fmp4 dinámico fragmentos. Cuando esta tarea se usa con hello Media Encoder estándar o codificador de flujo de trabajo de Premium de codificación de medios, recurso de salida de hello contendrá fragmentos fmp4 dinámico en lugar de archivos ISO MP4."
+title: "Creación de una tarea de codificación de Azure Media Services que genera fragmentos fMP4s | Microsoft Docs"
+description: "En este tema se muestra cómo crear una tarea de codificación que genera fragmentos fMP4. Cuando esta tarea se usa con los codificadores Media Encoder Standard o Flujo de trabajo premium de codificación de medios, el recurso de salida contendrá fragmentos fMP4 en lugar de archivos ISO MP4."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
-ms.openlocfilehash: 388f3ccb9865b5c4e159af86d5a9ee2f4e3f6120
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 55dca4bcb80e8daab2b4d293a9cc85a087055110
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 #  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>Creación de una tarea de codificación que genera fragmentos fMP4
 
 ## <a name="overview"></a>Información general
 
-Este tema muestra cómo toocreate una tarea de codificación que genera fragmentado MP4 fragmentos (fmp4 dinámico) en lugar de archivos ISO MP4. fragmentos de toogenerate fmp4 dinámico, usar hello **Media Encoder estándar** o **flujo de trabajo de Premium de codificación de medios** toocreate de codificador una codificación de tareas y especificar  **AssetFormatOption.AdaptiveStreaming** opción, como se muestra en este fragmento de código:  
+En este tema se muestra cómo crear una tarea de codificación que genera fragmentos MP4 (fMP4) en lugar de archivos ISO MP4. Para generar fragmentos fMP4, use los codificadores **Media Encoder Standard** o **Flujo de trabajo premium de codificación de medios** para crear una tarea de codificación, y especifique también la opción **AssetFormatOption.AdaptiveStreaming**, tal y como se muestra en este fragmento de código:  
     
     task.OutputAssets.AddNew(@"Output Asset containing fMP4 chunks", 
             options: AssetCreationOptions.None, 
@@ -33,18 +33,18 @@ Este tema muestra cómo toocreate una tarea de codificación que genera fragment
 
 ## <a id="encoding_with_dotnet"></a>Codificación con el SDK de .NET de Servicios multimedia
 
-Hola el ejemplo de código siguiente utiliza Hola de Media Services .NET SDK tooperform siguiente las tareas:
+En el ejemplo de código siguiente se usa el último SDK para .NET de Servicios multimedia para realizar las siguientes tareas:
 
 - Crear un trabajo de codificación.
-- Obtener una referencia toohello **Media Encoder estándar** codificador.
-- Agregar un trabajo de toohello tarea codificación y especificar hello toouse **transmisión por secuencias adaptativa** preestablecido. 
+- Obtener una referencia al codificador **Media Encoder Standard**.
+- Agregar una tarea de codificación al trabajo y especifique que se utilice el valor preestablecido **Adaptive Streaming**. 
 - Crear un recurso de salida que contendrá los fragmentos fMP4 y un archivo .ism.
-- Agregue un progreso del controlador de eventos toocheck Hola trabajo.
-- Enviar el trabajo de Hola.
+- Agregar un controlador de eventos para comprobar el progreso del trabajo.
+- Envíe el trabajo.
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Creación y configuración de un proyecto de Visual Studio
 
-Configurar el entorno de desarrollo y rellenar el archivo app.config de hello con información de conexión, como se describe en [desarrollo de servicios multimedia con .NET](media-services-dotnet-how-to-use.md). 
+Configure el entorno de desarrollo y rellene el archivo app.config con la información de la conexión, como se describe en [Desarrollo de Media Services con .NET](media-services-dotnet-how-to-use.md). 
 
 #### <a name="example"></a>Ejemplo
 
@@ -58,7 +58,7 @@ Configurar el entorno de desarrollo y rellenar el archivo app.config de hello co
     {
         class Program
         {
-        // Read values from hello App.config file.
+        // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
             ConfigurationManager.AppSettings["AADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
@@ -77,7 +77,7 @@ Configurar el entorno de desarrollo y rellenar el archivo app.config de hello co
             // Get an uploaded asset.
             var asset = _context.Assets.FirstOrDefault();
 
-            // Encode and generate hello output using hello "Adaptive Streaming" preset.
+            // Encode and generate the output using the "Adaptive Streaming" preset.
             EncodeToAdaptiveBitrateMP4Set(asset);
 
             Console.ReadLine();
@@ -87,8 +87,8 @@ Configurar el entorno de desarrollo y rellenar el archivo app.config de hello co
             // Declare a new job.
             IJob job = _context.Jobs.Create("Media Encoder Standard Job");
 
-            // Get a media processor reference, and pass tooit hello name of hello 
-            // processor toouse for hello specific task.
+            // Get a media processor reference, and pass to it the name of the 
+            // processor to use for the specific task.
             IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
             // Create a task
@@ -97,15 +97,15 @@ Configurar el entorno de desarrollo y rellenar el archivo app.config de hello co
             "Adaptive Streaming",
             TaskOptions.None);
 
-            // Specify hello input asset toobe encoded.
+            // Specify the input asset to be encoded.
             task.InputAssets.Add(asset);
 
-            // Add an output asset toocontain hello results of hello job. 
+            // Add an output asset to contain the results of the job. 
 
             // This output is specified as AssetCreationOptions.None, which 
-            // means hello output asset is not encrypted. 
-            // It is also specified toouse AssetFormatOption.AdaptiveStreaming, 
-            // which means hello output asset will contain fMP4 chunks.
+            // means the output asset is not encrypted. 
+            // It is also specified to use AssetFormatOption.AdaptiveStreaming, 
+            // which means the output asset will contain fMP4 chunks.
 
             task.OutputAssets.AddNew(@"Output Asset containing fMP4 chunks",
             options: AssetCreationOptions.None,

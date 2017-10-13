@@ -1,6 +1,6 @@
 ---
-title: "toocreate aaaUse 2.0 CLI una aplicación de Azure AD y configúrelo tooaccess API de servicios multimedia de Azure | Documentos de Microsoft"
-description: "Este tema se muestra cómo toouse CLI 2.0 toocreate una aplicación de Azure AD y configúrelo tooaccess API de servicios multimedia de Azure."
+title: "Uso de la CLI 2.0 para crear una aplicación de Azure AD y configurarla para acceder a la API de Azure Media Services | Microsoft Docs"
+description: "En este tema se explica cómo usar la CLI 2.0 para crear una aplicación de Azure AD y configurarla para acceder a la API de Azure Media Services."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -13,31 +13,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
-ms.openlocfilehash: c865e2701722374b5dd17b0e20fa848c07065006
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 01a2bb6d99776feec936315bc882c3097ce832d4
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="use-cli-20-toocreate-an-aad-app-and-configure-it-tooaccess-azure-media-services-api"></a>Utilice CLI 2.0 toocreate una aplicación AAD y configúrelo tooaccess API de servicios multimedia de Azure
+# <a name="use-cli-20-to-create-an-aad-app-and-configure-it-to-access-azure-media-services-api"></a>Uso de la CLI 2.0 para crear una aplicación de AAD y configurarla para acceder a la API de Azure Media Services
 
-Este tema muestra cómo toouse CLI 2.0 toocreate una aplicación de Azure Active Directory (Azure AD) y servicio principal tooaccess servicios multimedia de Azure recursos. 
+En este tema se muestra cómo utilizar la CLI 2.0 para crear una aplicación de Azure Active Directory (Azure AD) y la entidad de servicio para acceder a recursos de Azure Media Services. 
 
 ## <a name="prerequisites"></a>Requisitos previos
 
 - Una cuenta de Azure. Para más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/). 
-- Una cuenta de Media Services. Para obtener más información, consulte [crear una cuenta de servicios multimedia de Azure mediante el portal de Azure de hello](media-services-portal-create-account.md).
+- Una cuenta de Servicios multimedia. Para más información, vea [Creación de una cuenta de Azure Media Services mediante Azure Portal](media-services-portal-create-account.md).
 
-## <a name="use-hello-azure-cloud-shell"></a>Usar hello Shell en la nube de Azure
+## <a name="use-the-azure-cloud-shell"></a>Uso de Azure Cloud Shell
 
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com/).
-2. Inicie Hola Shell en la nube desde el panel de navegación superior de hello del portal de Hola.
+1. Inicie sesión en el [Portal de Azure](https://portal.azure.com/).
+2. Inicie Cloud Shell desde el panel de navegación superior del portal.
 
     ![Cloud Shell](./media/media-services-cli-create-and-configure-aad-app/media-services-cli-create-and-configure-aad-app01.png) 
 
 Para más información, vea [Introducción a Azure Cloud Shell](../cloud-shell/overview.md).
 
-## <a name="create-an-azure-ad-app-and-configure-access-toohello-media-account-with-cli-20"></a>Crear una aplicación de Azure AD y configurar la cuenta de acceso de medios toohello con CLI 2.0
+## <a name="create-an-azure-ad-app-and-configure-access-to-the-media-account-with-cli-20"></a>Creación de una aplicación de Azure AD y configuración del acceso a la cuenta multimedia con la CLI 2.0
  
 ```azurecli
 az login
@@ -51,18 +51,18 @@ Por ejemplo:
 az role assignment create --assignee a3e068fa-f739-44e5-ba4d-ad57866e25a1 --role Contributor --scope /subscriptions/0b65e280-7917-4874-9fed-1307f2615ea2/resourceGroups/Default-AzureBatch-SouthCentralUS/providers/microsoft.media/mediaservices/sbbash
 ```
 
-En este ejemplo, Hola **ámbito** es ruta de acceso de recurso completo de Hola para medios de hello cuenta de servicios. Sin embargo, Hola **ámbito** puede estar en cualquier nivel.
+En este ejemplo, el **ámbito** es la ruta de acceso completa al recurso para la cuenta de Media Services. Sin embargo, el **ámbito** puede estar en cualquier nivel.
 
-Por ejemplo, podría ser uno de hello siguientes niveles:
+Por ejemplo, podría ser uno de los siguientes niveles:
  
-* Hola **suscripción** nivel.
-* Hola **grupo de recursos** nivel.
-* Hola **recursos** (por ejemplo, una cuenta de medios).
+* El nivel de **suscripción**.
+* El nivel de **grupo de recursos**.
+* El nivel de **recurso** (por ejemplo, una cuenta multimedia).
 
 Para más información, vea [Creación de una entidad de servicio de Azure con la CLI de Azure 2.0](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)
 
-Consulte también [Manage Role-Based el Control de acceso con hello Azure interfaz de línea de comandos](../active-directory/role-based-access-control-manage-access-azure-cli.md). 
+Vea también [Administración del control de acceso basado en rol con la interfaz de la línea de comandos de Azure](../active-directory/role-based-access-control-manage-access-azure-cli.md). 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Empezar a trabajar con [cargar archivos tooyour cuenta](media-services-portal-upload-files.md).
+Empiece a trabajar en la [carga de archivos en la cuenta](media-services-portal-upload-files.md).

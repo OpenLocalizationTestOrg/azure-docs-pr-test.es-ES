@@ -1,6 +1,6 @@
 ---
-title: aaaUse DPM tooback de portal de cargas de trabajo tooAzure | Documentos de Microsoft
-description: "Un toobacking de introducción de los servidores DPM con el servicio de copia de seguridad de Azure Hola"
+title: Uso de DPM para realizar copias de seguridad de cargas de trabajo en Azure Portal | Microsoft Docs
+description: "Una introducción a la copia de seguridad de servidores DPM mediante el servicio Copia de seguridad de Azure"
 services: backup
 documentationcenter: 
 author: adigan
@@ -15,168 +15,168 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: adigan;giridham;jimpark;markgal;trinadhk
-ms.openlocfilehash: 1dd988ae55012ac7dc485d2416458542c60b6ae3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 3422c8d57bdd786ce5d1a41fbb4c12cc4efffddd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="preparing-tooback-up-workloads-tooazure-with-dpm"></a>Preparar tooback una tooAzure de las cargas de trabajo con DPM
+# <a name="preparing-to-back-up-workloads-to-azure-with-dpm"></a>Preparación para la copia de seguridad de cargas de trabajo en Azure con DPM
 > [!div class="op_single_selector"]
-> * [Servidor de Copia de seguridad de Azure](backup-azure-microsoft-azure-backup.md)
+> * [Azure Backup Server](backup-azure-microsoft-azure-backup.md)
 > * [SCDPM](backup-azure-dpm-introduction.md)
 > * [Azure Backup Server (clásico)](backup-azure-microsoft-azure-backup-classic.md)
 > * [SCDPM (clásico)](backup-azure-dpm-introduction-classic.md)
 >
 >
 
-Este artículo proporciona una tooprotect de copia de seguridad de Microsoft Azure toousing de introducción de los servidores de System Center Data Protection Manager (DPM) y las cargas de trabajo. Cuando lo lea, comprenderá:
+En este artículo se proporciona una introducción al uso de Microsoft Azure Backup con el objeto de proteger los servidores y las cargas de trabajo de System Center Data Protection Manager (DPM). Cuando lo lea, comprenderá:
 
 * Cómo funciona la copia de seguridad de servidor DPM de Azure
-* requisitos previos de Hello tooachieve una experiencia sin problemas de copia de seguridad
-* Hola típicos errores detectados y cómo toodeal con ellos
+* Los requisitos previos para lograr una experiencia fluida de la copia de seguridad
+* Los errores típicos y cómo resolverlos
 * Escenarios admitidos
 
 > [!NOTE]
-> Azure cuenta con dos modelos de implementación para crear recursos y trabajar con ellos: [Resource Manager y el modelo clásico](../azure-resource-manager/resource-manager-deployment-model.md). Este artículo proporciona información de Hola y procedimientos para restaurar máquinas virtuales implementadas mediante el modelo de administrador de recursos de Hola.
+> Azure cuenta con dos modelos de implementación para crear recursos y trabajar con ellos: [Resource Manager y el modelo clásico](../azure-resource-manager/resource-manager-deployment-model.md). En este artículo se proporcionan información y procedimientos para restaurar las máquinas virtuales implementadas mediante el modelo de Resource Manager.
 >
 >
 
-Datos de aplicación y archivo de copia de seguridad de System Center DMP. Datos de copia de seguridad tooDPM se pueden almacenar en cinta, en el disco, o copias de seguridad tooAzure con copia de seguridad de Microsoft Azure. DPM interactúa con Azure Backup de la manera siguiente:
+Datos de aplicación y archivo de copia de seguridad de System Center DMP. Los datos con copia de seguridad en DPM se pueden almacenar en una cinta o en un disco, o se puede crear una copia de seguridad de ellos en Azure con Microsoft Azure Backup. DPM interactúa con Copia de seguridad de Azure de la manera siguiente:
 
-* **DPM implementado como una máquina de virtual server o de forma local física** : Si DPM se implementa como un servidor físico o como máquina virtual de Hyper-V local puede realizar copias de seguridad de datos tooa servicios de recuperación además del almacén de toodisk y copia de seguridad en cinta.
-* **DPM implementado como una máquina virtual de Azure** : desde System Center 2012 R2 con Update 3, DPM puede implementarse como una máquina virtual de Azure. Si DPM se implementa como una máquina virtual de Azure, puede realizar copias de seguridad datos tooAzure discos conectados máquina virtual de Azure de DPM de toohello o puede descargar el almacenamiento de datos de hello al hacer una copia de seguridad tooa que del almacén de servicios de recuperación.
+* **DPM implementado como un servidor físico o una máquina virtual local** : si DPM se implementa como un servidor físico o una máquina virtual de Hyper-V local, además de en disco y cinta, puede crear una copia de seguridad de los datos en un almacén de Servicios de recuperación.
+* **DPM implementado como una máquina virtual de Azure** : desde System Center 2012 R2 con Update 3, DPM puede implementarse como una máquina virtual de Azure. Si DPM se implementa como una máquina virtual de Azure, puede crear una copia de seguridad de los datos en discos de Azure conectados a la máquina virtual de DPM Azure, o puede descargar el almacenamiento de datos creando una copia de seguridad de ellos en un almacén de Servicios de recuperación.
 
-## <a name="why-backup-from-dpm-tooazure"></a>¿Por qué copia de seguridad de DPM tooAzure?
-ventajas empresariales de Hola de copia de seguridad de servidores DPM mediante copia de seguridad de Azure incluyen:
+## <a name="why-backup-from-dpm-to-azure"></a>¿Por qué hacer una copia de seguridad de DPM a Azure?
+Algunas de las ventajas empresariales del uso de Copia de seguridad de Azure para la copia de seguridad de servidores DMP son las siguientes:
 
-* Para la implementación local de DPM, puede usar Azure como un tootape de implementación toolong-término alternativo.
-* Para las implementaciones de DPM en Azure, copia de seguridad de Azure permite almacenamiento toooffload de hello disco de Azure, permitiéndole tooscale seguridad almacenando datos antiguos en el almacén de servicios de recuperación y los datos nuevos en el disco.
+* Para la implementación de DPM local, puede usar Azure como alternativa a la implementación a largo plazo en cinta.
+* Para las implementaciones de DPM en Azure, Copia de seguridad de Azure le permite descargar el almacenamiento del disco de Azure, de forma que es posible escalar verticalmente gracias a que los datos más antiguos se almacenan en Servicios de recuperación y los nuevos en el disco.
 
 ## <a name="prerequisites"></a>Requisitos previos
-Preparar la copia de seguridad de Azure tooback datos de DPM como se indica a continuación:
+Prepare Copia de seguridad de Azure para crear copias de seguridad de los datos de DPM de la manera siguiente:
 
 1. **Crear un almacén de Servicios de recuperación** : cree un almacén en el Portal de Azure.
-2. **Descargar las credenciales de almacén** : descargar credenciales de Hola que use tooregister Hola DPM server tooRecovery del almacén de servicios.
-3. **Instalar el agente de copia de seguridad de Azure de Hola** : de Azure Backup, instalar el agente de hello en cada servidor DPM.
-4. **Registrar servidor hello** : almacén de servicios de registro de hello DPM server tooRecovery.
+2. **Descargar credenciales de almacén** : descargue las credenciales que va a usar para registrar el servidor DPM en el almacén de Servicios de recuperación.
+3. **Instalar el agente Copia de seguridad de Azure** : desde Copia de seguridad de Azure, instale el agente en cada servidor DPM.
+4. **Registrar el servidor** : registre el servidor DPM en el almacén de Servicios de recuperación.
 
 ### <a name="1-create-a-recovery-services-vault"></a>1. Creación de un almacén de Servicios de recuperación
-almacén de servicios de toocreate una recuperación:
+Para crear un almacén de Servicios de recuperación:
 
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com/).
-2. En el menú del concentrador hello, haga clic en **examinar** y en la lista de Hola de recursos, escriba **servicios de recuperación**. Cuando empiece a escribir, se filtrará la lista de hello en función de los datos especificados. Haga clic en **Almacén de Servicios de recuperación**.
+1. Inicie sesión en el [Portal de Azure](https://portal.azure.com/).
+2. En el menú del centro, haga clic en **Examinar** y, en la lista de recursos, escriba **Recovery Services**. Cuando comience a escribir, la lista se filtrará en función de la entrada. Haga clic en **Almacén de Servicios de recuperación**.
 
     ![Creación del almacén de Servicios de recuperación, paso 1](./media/backup-azure-dpm-introduction/open-recovery-services-vault.png)
 
-    se muestra la lista de Hola de almacenes de servicios de recuperación.
-3. En hello **servicios de recuperación de los almacenes de credenciales** menú, haga clic en **agregar**.
+    Se muestra la lista de almacenes de Servicios de recuperación.
+3. En el menú **Almacenes de servicios de recuperación**, haga clic en **Agregar**.
 
     ![Creación del almacén de Servicios de recuperación, paso 2](./media/backup-azure-dpm-introduction/rs-vault-menu.png)
 
-    Servicios de recuperación de Hello del almacén se abre de hoja, que le pide que tooprovide una **nombre**, **suscripción**, **grupo de recursos**, y **ubicación**.
+    Se abre la hoja del almacén de Recovery Services, donde se le pide que especifique los valores de **Nombre**, **Suscripción**, **Grupo de recursos** y **Ubicación**.
 
     ![Creación del almacén de Servicios de recuperación, paso 5](./media/backup-azure-dpm-introduction/rs-vault-attributes.png)
-4. Para **nombre**, escriba en el almacén de hello tooidentify un nombre descriptivo. nombre de Hello debe toobe único para hello suscripción de Azure. Escriba un nombre que tenga entre 2 y 50 caracteres. Debe comenzar por una letra y solo puede contener letras, números y guiones.
-5. Haga clic en **suscripción** lista disponible de hello toosee de suscripciones. Si no está seguro de qué toouse de suscripción, utilice Hola predeterminado (o sugiere) suscripción. Solo habrá varias opciones si la cuenta de su organización está asociada a varias suscripciones de Azure.
-6. Haga clic en **grupo de recursos** toosee Hola lista de grupos de recursos disponibles, o haga clic en **New** toocreate un nuevo grupo de recursos. Para más información sobre los grupos de recursos, consulte [Información general de Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
-7. Haga clic en **ubicación** región geográfica de tooselect hello para el almacén de Hola.
-8. Haga clic en **Crear**. Puede tardar unos instantes para hello toobe creado del almacén de servicios de recuperación. Supervisar las notificaciones de estado de hello en el área superior de derecho hello en el portal de Hola.
-   Una vez creado el almacén, se abre en el portal de Hola.
+4. En **Nombre**, escriba un nombre descriptivo que identifique el almacén. El nombre debe ser único para la suscripción de Azure. Escriba un nombre que tenga entre 2 y 50 caracteres. Debe comenzar por una letra y solo puede contener letras, números y guiones.
+5. Haga clic en **Suscripción** para ver la lista de suscripciones disponibles. Si no está seguro de la suscripción que desea utilizar, use la suscripción predeterminada (o sugerida). Solo habrá varias opciones si la cuenta de su organización está asociada a varias suscripciones de Azure.
+6. Haga clic en **Grupo de recursos** para ver la lista de grupos de recursos disponibles o haga clic en **Nuevo** para crear uno. Para más información sobre los grupos de recursos, consulte [Información general de Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+7. Haga clic en **Ubicación** para seleccionar la región geográfica del almacén.
+8. Haga clic en **Crear**. La creación del almacén de Servicios de recuperación puede tardar unos minutos. Supervise las notificaciones de estado en la parte superior derecha del portal.
+   Una vez creado el almacén, se abre en el portal.
 
 ### <a name="set-storage-replication"></a>Configuración de la replicación de almacenamiento
-opción de replicación de almacenamiento de Hello permite toochoose entre el almacenamiento con redundancia geográfica y almacenamiento con redundancia local. De forma predeterminada, el almacén tiene almacenamiento con redundancia geográfica. Deje Hola opción set toogeo redundantes almacenamiento si se trata de la copia de seguridad principal. Elija el almacenamiento con redundancia local si desea una opción más económica que no sea tan duradera. Obtenga más información sobre [con redundancia geográfica](../storage/common/storage-redundancy.md#geo-redundant-storage) y [localmente redundante](../storage/common/storage-redundancy.md#locally-redundant-storage) opciones de almacenamiento en hello [información general sobre la replicación de almacenamiento de Azure](../storage/common/storage-redundancy.md).
+La opción de replicación de almacenamiento permite elegir entre almacenamiento con redundancia geográfica y almacenamiento con redundancia local. De forma predeterminada, el almacén tiene almacenamiento con redundancia geográfica. Si esta es su copia de seguridad principal, elija el almacenamiento con redundancia geográfica. Elija el almacenamiento con redundancia local si desea una opción más económica que no sea tan duradera. Para más información sobre las opciones de almacenamiento [con redundancia geográfica](../storage/common/storage-redundancy.md#geo-redundant-storage) y [con redundancia local](../storage/common/storage-redundancy.md#locally-redundant-storage), consulte [Replicación de Azure Storage](../storage/common/storage-redundancy.md).
 
-configuración de replicación de almacenamiento de Hola tooedit:
+Para editar la configuración de replicación de almacenamiento:
 
-1. Seleccione el panel de almacén de credenciales de almacén tooopen hello y hoja de configuración de Hola. Si hello **configuración** hoja no se abre, haga clic en **toda la configuración de** en el panel del almacén de Hola.
-2. En hello **configuración** hoja, haga clic en **infraestructura de copia de seguridad** > **configuración de copia de seguridad** tooopen hello **configuración de copia de seguridad** hoja. En hello **configuración de copia de seguridad** hoja, elija la opción de replicación de almacenamiento de hello para el almacén.
+1. Seleccione el almacén para abrir su panel y la hoja de configuración. Si la hoja **Configuración** no se abre, haga clic en la opción **Toda la configuración** del panel del almacén.
+2. En la hoja **Configuración**, haga clic en **Infraestructura de copia de seguridad** > **Configuración de copia de seguridad** para abrir la hoja **Configuración de copia de seguridad**. En la hoja **Configuración de copia de seguridad** , elija la opción de replicación de almacenamiento para su almacén.
 
     ![Lista de copias de seguridad](./media/backup-azure-vms-first-look-arm/choose-storage-configuration-rs-vault.png)
 
-    Después de elegir la opción de almacenamiento de hello para el almacén, está listo tooassociate Hola VM con el almacén de Hola. asociación de hello toobegin, debería detectar y registrar Hola máquinas virtuales de Azure.
+    Tras elegir la opción de almacenamiento del almacén, está listo para asociar la máquina virtual con el almacén. Para comenzar la asociación, es preciso detectar y registrar las máquinas virtuales de Azure.
 
 ### <a name="2-download-vault-credentials"></a>2. Descarga de las credenciales de almacén
-archivo de credenciales de almacén de Hello es un certificado generado por el portal de Hola para cada almacén de copia de seguridad. portal de Hello, a continuación, carga hello toohello clave pública Access Control Service (ACS). clave privada de Hello del certificado de Hola estará disponible toohello usuario como parte del flujo de trabajo de Hola que se proporciona como una entrada en el flujo de trabajo de registro de hello máquina. Esto autentica Hola máquina toosend una copia de seguridad tooan identificado almacén Hola servicio copia de seguridad de Azure.
+El archivo de credenciales de almacén es un certificado generado por el portal para cada almacén de copia de seguridad. Luego el portal carga la clave pública en el Servicio de control de acceso (ACS). La clave privada del certificado estará disponible para el usuario como parte del flujo de trabajo que se proporciona como entrada del flujo de trabajo de registro de máquina. Esto autentica la máquina para enviar datos de copia de seguridad a un almacén identificado en el servicio de Copia de seguridad de Azure.
 
-las credenciales del almacén Hola se utilizan solo durante el flujo de trabajo de registro de hello. Es tooensure de responsabilidad del usuario de Hola que hello las credenciales de almacén archivo no se ve comprometido. Si se encuentra en manos de Hola de cualquier usuario no autorizado, archivo de credenciales de almacén de hello puede ser usado tooregister otras máquinas en Hola mismo almacén. Sin embargo, como datos de copia de seguridad de Hola se cifran con una frase de contraseña que pertenece al cliente de toohello, los datos de copia de seguridad existentes no pueden estar en peligro. toomitigate este problema, las credenciales de almacén se establecen tooexpire en 48 horas. Puede descargar las credenciales de almacén de hello de servicios de recuperación de un número ilimitado de veces: pero solo Hola archivo más reciente almacén credencial sigue intacta durante el flujo de trabajo de registro de hello.
+El archivo de credenciales de almacén se usa solo durante el flujo de trabajo de registro. Es responsabilidad del usuario asegurarse de que el archivo de credenciales de almacén no se ve comprometido. Si cae en manos de un usuario no autorizado, el archivo de credenciales de almacén puede utilizarse para registrar otras máquinas en el mismo almacén. Sin embargo, como los datos de copia de seguridad se cifran mediante una frase de contraseña que pertenece al cliente, los datos de copia de seguridad existentes no pueden estar en peligro. Para mitigar este problema, se establece la expiración de las credenciales de almacén en 48 horas. Puede descargar las credenciales de almacén de un almacén de Servicios de recuperación cualquier número de veces, pero solo el último archivo es aplicable durante el flujo de trabajo de registro.
 
-archivo de credenciales de almacén de Hola se descarga a través de un canal seguro de hello portal de Azure. Hola servicio de copia de seguridad de Azure no es consciente de clave privada de hello del certificado de Hola y clave privada de hello no se conserva en el portal de Hola o servicio Hola. Usar hello siguiendo los pasos toodownload Hola almacén credencial archivo tooa equipo local.
+El archivo de credenciales de almacén se descarga a través de un canal seguro desde el Portal de Azure. El servicio de Copia de seguridad de Azure no conoce la clave privada del certificado, y la clave privada no se conserva en el portal o el servicio. Siga estos pasos para descargar el archivo de credenciales de almacén a una máquina local.
 
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com/).
-2. Abra Servicios de recuperación almacén toowhich toowhich desea tooregister el equipo de DPM.
-3. La hoja Configuración se abre de forma predeterminada. Si está cerrado, haga clic en **configuración** en la hoja de configuración de almacén panel tooopen Hola. En dicha hoja, haga clic en **Propiedades**.
+1. Inicie sesión en el [Portal de Azure](https://portal.azure.com/).
+2. Abra almacén de Servicios de recuperación en que quiere registrar el equipo DPM.
+3. La hoja Configuración se abre de forma predeterminada. Si está cerrada, haga clic en **Configuración** en el panel de almacén para abrirla. En dicha hoja, haga clic en **Propiedades**.
 
     ![Hoja del almacén abierta](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
-4. En la página de propiedades de hello, haga clic en **descargar** en **credenciales de copia de seguridad**. portal de Hello genera el archivo de credenciales de almacén de hello, que están disponible para su descarga.
+4. En la página Propiedades, en **Credenciales de copia de seguridad**, haga clic en **Descargar**. El portal genera el archivo de credenciales del almacén, que puede descargarse.
 
     ![Descargar](./media/backup-azure-dpm-introduction/vault-credentials.png)
 
-portal de Hello generará una credencial de almacén mediante una combinación de nombre de almacén de Hola y Hola fecha actual. Haga clic en **guardar** toodownload Hola almacén credenciales toohello cuenta local descargas de carpeta o seleccione Guardar como de hello Guardar menú toospecify una ubicación para las credenciales de almacén de Hola. Ocupará el minuto tooa Hola archivo toobe generado.
+El portal generará una credencial de almacén mediante una combinación del nombre del almacén y la fecha actual. Haga clic en **Guardar** para descargar las credenciales de almacén en la carpeta de descargas de la cuenta local, o seleccione Guardar como desde el menú Guardar para especificar una ubicación para las credenciales de almacén. El archivo tarda un minuto en generarse.
 
 ### <a name="note"></a>Nota:
-* Asegúrese de que ese archivo de credenciales de almacén de Hola se guarda en una ubicación que se puede acceder desde el equipo. Si se almacena en un recurso compartido de archivo/SMB, busque los permisos de acceso de Hola.
-* archivo de credenciales de almacén de Hola se utiliza solo durante el flujo de trabajo de registro de hello.
-* archivo de credenciales de almacén de Hello expira después de 48 horas y puede descargarse desde el portal de Hola.
+* Asegúrese de que el archivo de credenciales de almacén se guarde en una ubicación a la que se pueda acceder desde la máquina. Si se almacenan en un recurso compartido/SMB de archivo, compruebe los permisos de acceso.
+* El archivo de credenciales de almacén se utiliza solo durante el flujo de trabajo de registro.
+* El archivo de credenciales de almacén caduca después de 48 horas y puede descargarse desde el portal.
 
 ### <a name="3-install-backup-agent"></a>3. Instalación del agente de copia de seguridad
-Después de crear el almacén de copia de seguridad de Azure hello, debe instalarse un agente en cada uno de los equipos de Windows (Windows Server, el cliente de Windows, servidor de System Center Data Protection Manager o equipo del servidor de copia de seguridad de Azure) que permite realizar copias de seguridad de datos y aplicaciones tooAzure.
+Después de crear el almacén de Copia de seguridad de Azure, se debe instalar un agente en cada una de las máquinas de Windows (servidor de Windows Server, cliente de Windows, servidor de System Center Data Protection Manager o la máquina del Servidor de copia de seguridad de Azure) que habilite la copia de seguridad de los datos y las aplicaciones en Azure.
 
-1. Abra Servicios de recuperación almacén toowhich toowhich desea tooregister el equipo de DPM.
-2. La hoja Configuración se abre de forma predeterminada. Si está cerrado, haga clic en **configuración** hoja de configuración de tooopen Hola. En dicha hoja, haga clic en **Propiedades**.
+1. Abra almacén de Servicios de recuperación en que quiere registrar el equipo DPM.
+2. La hoja Configuración se abre de forma predeterminada. Si está cerrada, haga clic en **Configuración** para abrirla. En dicha hoja, haga clic en **Propiedades**.
 
     ![Hoja del almacén abierta](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
-3. En la página de configuración de hello, haga clic en **descargar** en **Azure Backup Agent**.
+3. En la página Configuración, en **Agente de copia de seguridad de Azure**, haga clic en **Descargar**.
 
     ![Descargar](./media/backup-azure-dpm-introduction/azure-backup-agent.png)
 
-   Una vez que se descarga el agente de hello, haga doble clic en instalación de hello MARSAgentInstaller.exe toolaunch de agente de copia de seguridad de Azure Hola. Elija la carpeta de instalación de Hola y carpeta temporal requerido para el agente de Hola. ubicación de caché de Hello especificada debe tener espacio libre que es al menos del 5% de datos de copia de seguridad de saludo.
-4. Si utiliza un toohello de tooconnect de servidor proxy internet Hola **configuración de Proxy** pantalla, escriba los detalles del servidor proxy Hola. Si usa a un proxy autenticado, escriba los detalles de nombre y la contraseña del usuario de hello en esta pantalla.
-5. agente de copia de seguridad de Azure Hola instala .NET Framework 4.5 y Windows PowerShell (si aún no está disponible) toocomplete Hola instalación.
-6. Una vez instalado el agente de hello, **cerrar** ventana hello.
+   Después de instalar el agente, haga doble clic en MARSAgentInstaller.exe para iniciar la instalación de Azure Backup Agent. Elija la carpeta de instalación y la carpeta temporal requerido para el agente. La ubicación de caché especificada debe tener un espacio libre de al menos el 5% de los datos de copia de seguridad.
+4. Si usa un servidor proxy para conectarse a Internet, en la pantalla **Configuración de proxy** , especifique los detalles del servidor proxy. Si utiliza a un servidor proxy autenticado, escriba los detalles de nombre y la contraseña del usuario en esta pantalla.
+5. El agente de Copia de seguridad de Azure instala .NET Framework 4.5 y Windows PowerShell (si aún no está disponible) para completar la instalación.
+6. Una vez instalado el agente, **cierre** la ventana.
 
    ![cierre](../../includes/media/backup-install-agent/dpm_FinishInstallation.png)
-7. demasiado**Hola de registrar el servidor DPM** toohello almacén, Hola **administración** ficha, haga clic en **Online**. Después, seleccione **Registrar**. Se abrirá el Asistente para registrar el programa de instalación de Hola.
-8. Si utiliza un toohello de tooconnect de servidor proxy internet Hola **configuración de Proxy** pantalla, escriba los detalles del servidor proxy Hola. Si usa a un proxy autenticado, escriba los detalles de nombre y la contraseña del usuario de hello en esta pantalla.
+7. Para **registrar el servidor DPM** en el almacén, en la pestaña **Administración**, haga clic en **En línea**. Después, seleccione **Registrar**. Se abrirá al Asistente para registrar el programa de instalación.
+8. Si usa un servidor proxy para conectarse a Internet, en la pantalla **Configuración de proxy** , especifique los detalles del servidor proxy. Si utiliza a un servidor proxy autenticado, escriba los detalles de nombre y la contraseña del usuario en esta pantalla.
 
     ![Configuración de proxy](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Proxy.png)
-9. En la pantalla de credenciales de almacén de hello, examinar tooand archivo de credenciales de almacén de hello select que se descargó anteriormente.
+9. En la pantalla de credenciales del almacén, busque y seleccione el archivo de credenciales del almacén que se descargó anteriormente.
 
     ![Credenciales de almacén](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Credentials.jpg)
 
-    archivo de credenciales de almacén de Hello es válido únicamente para los 48 horas (después de descargarlo desde el portal de hello). Si se produce algún error en esta pantalla (por ejemplo, "Del almacén de credenciales de archivo proporcionado ha expirado"), inicio de sesión toohello Azure portal y descarga Hola almacén archivo de credenciales de nuevo.
+    El archivo de almacén de credenciales solo es válido durante 48 horas (después de descargarlo desde el portal). Si encuentra algún error en esta pantalla (por ejemplo "El archivo de credenciales de almacén especificado expiró"), inicie sesión en el Portal de Azure y vuelva a descargar el archivo de credenciales de almacén.
 
-    Asegúrese de que ese archivo de credenciales de almacén de hello está disponible en una ubicación que se puede acceder mediante la aplicación de instalación de Hola. Si se producen errores relacionados de acceso, las credenciales de almacén de copia hello tooa ubicación temporal en esta máquina del archivo y vuelva a intentar la operación de Hola.
+    Asegúrese de que el archivo de almacén de credenciales está disponible en una ubicación a la que puede tener acceso la aplicación de instalación. Si encuentra errores relacionados con el acceso, copie el archivo de almacén de credenciales en una ubicación temporal en esta máquina y vuelva a intentar la operación.
 
-    Si se produce un error de credencial de almacén no es válido (por ejemplo, "almacén no es válido credenciales proporcionadas") archivo hello está dañado o no haya Hola últimas credenciales asociadas con el servicio de recuperación de Hola. Vuelva a intentar la operación de hello después de descargar un nuevo archivo de credenciales de almacén desde el portal de Hola. Normalmente, este error aparece si hace clic en un usuario de hello en hello **descarga las credenciales del almacén** opción Hola portal de Azure, en una sucesión rápida. En este caso, solo Hola segundo almacén credencial archivo es válido.
-10. uso de hello toocontrol de ancho de banda de red durante el trabajo y horas de descanso, Hola **configuración de límite** pantalla, puede establecer límites de uso de ancho de banda de Hola y definir el trabajo de hello y no laborables horas.
+    Si se produce un error de credenciales de almacén no válidas (por ejemplo, "Las credenciales del almacén no son válidas"), el archivo está dañado o no tiene asociadas las credenciales más recientes con el servicio de recuperación. Vuelva a intentar la operación después de descargar un nuevo archivo de credenciales de almacén desde el portal. Este error suele aparecer si el usuario hace clic en la opción **Descargar credenciales de almacén** en el Portal de Azure, en sucesión rápida. En este caso, solo es válido el segundo archivo de credenciales de almacén.
+10. Para controlar el uso de ancho de banda de red durante el trabajo y las horas no laborables, en la pantalla **Configuración de límite** , puede establecer los límites de uso de ancho de banda y definir las horas de trabajo y no laborables.
 
     ![Configuración de límite](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Throttling.png)
-11. Hola **configuración de la carpeta de recuperación** pantalla, Buscar carpeta Hola donde descargan los archivos de Hola de Azure se almacenará provisionalmente temporalmente.
+11. En la pantalla **Recovery Folder Setting** (Configuración de la carpeta de recuperación), examine la carpeta donde los archivos descargados de Azure se almacenarán temporalmente.
 
     ![Recovery Folder Setting](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_RecoveryFolder.png)
-12. Hola **configuración de cifrado** pantalla, puede generar una frase de contraseña o proporcione una frase de contraseña (mínimo de 16 caracteres). Recuerde la frase de contraseña de toosave hello en una ubicación segura.
+12. En la pantalla **Configuración de cifrado** , puede generar una frase de contraseña o proporcionarla (mínimo de 16 caracteres). Recuerde guardar la frase de contraseña en una ubicación segura.
 
     ![Cifrado](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Encryption.png)
 
     > [!WARNING]
-    > Si hello frase de contraseña se pierde u olvida; Microsoft no puede ayudar en la recuperación de datos de copia de seguridad de Hola. usuario final de Hello posee Hola frase de contraseña y Microsoft no tiene visibilidad en la frase de contraseña de hello usada por el usuario final de Hola. Guarde el archivo de hello en una ubicación segura ya que es necesario durante una operación de recuperación.
+    > Si la frase de contraseña se pierde u olvida; Microsoft no puede ayudar a recuperar los datos de copia de seguridad. El usuario final posee la frase de contraseña de cifrado y Microsoft no puede ver la frase de contraseña que usa el usuario final. Guarde el archivo en una ubicación segura, ya que puede ser necesario durante una operación de recuperación.
     >
     >
-13. Una vez que pulses hello **registrar** botón, hello máquina se ha registrado correctamente toohello almacén y si ahora está listo toostart copia de seguridad tooMicrosoft Azure.
-14. Al usar el Administrador de protección de datos, puede modificar la configuración de hello especificado durante el flujo de trabajo de registro de hello haciendo clic en hello **configurar** opción seleccionando **en línea** en hello  **Administración** ficha.
+13. Al hacer clic en el botón **Registrar** , la máquina se ha registrado correctamente en el almacén y ahora está lista para iniciar la copia de seguridad en Microsoft Azure.
+14. Cuando use Data Protection Manager, puede modificar la configuración especificada durante el flujo de trabajo de registro haciendo clic en la opción **Configurar** y seleccionando **En línea** en la pestaña **Administración**.
 
 ## <a name="requirements-and-limitations"></a>Requisitos y limitaciones
 * DPM se puede ejecutar como un servidor físico o como una máquina virtual de Hyper-V, instalado en System Center 2012 SP1 o System Center 2012 R2. También se puede ejecutar como una máquina virtual de Azure que ejecuta System Center 2012 R2 con al menos el paquete acumulativo de actualizaciones 3 para DPM 2012 R2, o como una máquina virtual de Windows en VMWare que se ejecuta en System Center 2012 R2 con al menos el paquete acumulativo de actualizaciones 5.
-* Si ejecuta DPM con System Center 2012 SP1, debe instalar el paquete acumulativo de actualizaciones 2 para System Center Data Protection Manager SP1. Esto es necesario para poder instalar hello Azure Backup Agent.
-* servidor DPM de Hello debe tener Windows PowerShell y .net Framework 4.5 instalado.
-* DPM puede respaldar la mayoría de las cargas de trabajo de tooAzure copia de seguridad. Para obtener una lista completa de los elementos compatibles, vea Hola copia de seguridad de Azure admite los siguientes elementos.
-* No se puede recuperar los datos almacenados en la copia de seguridad de Azure con la opción de "Copiar tootape" Hola.
-* Necesitará una cuenta de Azure con la característica de copia de seguridad de Azure Hola habilitada. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Lea acerca de los [Precios de Backup](https://azure.microsoft.com/pricing/details/backup/).
-* Mediante copia de seguridad de Azure requiere hello Azure Backup Agent toobe instalado en los servidores de hello que desea tooback. Cada servidor debe tener al menos del 5% del tamaño de Hola de datos de Hola que están haciendo copias de seguridad, disponible como espacio de almacenamiento local. Por ejemplo, la copia de seguridad de 100 GB de datos requiere un mínimo de 5 GB de espacio libre en la ubicación del borrador Hola.
-* Datos se almacenarán en hello almacén de Azure. No hay ninguna cantidad de toohello límite de datos que pueda respaldar el almacén de copia de seguridad de Azure tooan pero tamaño Hola de un origen de datos (por ejemplo una máquina virtual o una base de datos) no debe superar 54400 GB.
+* Si ejecuta DPM con System Center 2012 SP1, debe instalar el paquete acumulativo de actualizaciones 2 para System Center Data Protection Manager SP1. Esto es necesario para poder instalar Azure Backup Agent.
+* El servidor DPM debe tener instalado Windows PowerShell y .Net Framework 4.5.
+* DPM puede realizar una copia de seguridad de la mayoría de las cargas de trabajo en Azure Backup. Para obtener una lista completa de compatibilidad, vea a continuación los elementos admitidos en Azure Backup.
+* Los datos almacenados en Azure Backup no se pueden recuperar con la opción "copiar en cinta".
+* Necesitará una cuenta de Azure con la característica Azure Backup habilitada. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Lea acerca de los [Precios de Backup](https://azure.microsoft.com/pricing/details/backup/).
+* El uso de Copia de seguridad de Azure requiere la instalación de Azure Backup Agent en los servidores de los que desee realizar una copia de seguridad. Cada servidor debe tener disponible como espacio de almacenamiento local al menos un 5 % del tamaño de los datos de los que se va a realizar la copia de seguridad. Por ejemplo, realizar una copia de seguridad de 100 GB de datos requiere un mínimo de 5 GB de espacio libre en la ubicación temporal.
+* Los datos se almacenarán en el almacenamiento de almacén de Azure. No hay ningún límite en la cantidad de datos de los que puede realizar una copia de seguridad en el almacén de Copia de seguridad de Azure; sin embargo, el tamaño de un origen de datos (por ejemplo, una máquina virtual o una base de datos) no debe superar los 54.400 GB.
 
-Se admiten estos tipos de archivo de copia de seguridad tooAzure:
+Los siguientes tipos de archivo se admiten para la copia de seguridad en Azure:
 
 * Cifrados (solo copias de seguridad completas)
 * Comprimidos (copias de seguridad incrementales compatibles)
@@ -194,6 +194,6 @@ No se admiten los siguientes:
 * Flujo disperso
 
 > [!NOTE]
-> Desde en System Center 2012 DPM con SP1 y posteriores, puede hacer una copia seguridad de cargas de trabajo protegidas por tooAzure DPM mediante copia de seguridad de Microsoft Azure.
+> A partir de System Center 2012 DPM con SP1 en adelante, puede realizar una copia de seguridad de las cargas protegidas por DPM en Azure con Copia de seguridad de Microsoft Azure.
 >
 >

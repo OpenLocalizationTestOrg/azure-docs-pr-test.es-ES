@@ -1,6 +1,6 @@
 ---
-title: "ejemplos de API de informes de actividad de aaaAzure inicio de sesión de Active Directory | Documentos de Microsoft"
-description: "¿Cómo tooget partió hello Azure Active Directory Reporting API"
+title: "Ejemplos de la API de informes de actividad de inicio de sesión de Azure Active Directory | Microsoft Docs"
+description: "Introducción a la API de informes de Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,28 +15,28 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d4fbbea95fe0b52828673b997681ae37481e21bc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7fc2b59fe37ed2ffe85925c457300ef8fd83c3c7
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-active-directory-sign-in-activity-report-api-samples"></a>Ejemplos de la API de informe de actividad de inicio de sesión de Azure Active Directory
-Este tema forma parte de una colección de temas sobre hello Azure Active Directory API de informes.  
-Reporting de Azure AD proporciona una API que permite datos de actividad de inicio de sesión de tooaccess mediante código o herramientas relacionadas.  
-Hola ámbito de este tema es tooprovide, con el ejemplo de código de hello **API de actividad de inicio de sesión**.
+Este tema forma parte de una serie de temas sobre la API de informes de Azure Active Directory.  
+La característica de generación de informes de Azure AD proporciona una API que permite acceder a los datos de actividades de inicio de sesión mediante el uso de código o herramientas relacionadas.  
+Este tema se centra en proporcionar el código de ejemplo para la **API de actividad de inicio de sesión**.
 
 Consulte:
 
 * [Registros de auditoría](active-directory-reporting-azure-portal.md#activity-reports) para más información conceptual
-* [Introducción a Azure Active Directory Reporting API hello](active-directory-reporting-api-getting-started.md) para obtener más información acerca de la API de informes de Hola.
+* [Introducción a la API de generación de informes de Azure Active Directory](active-directory-reporting-api-getting-started.md) para obtener más información sobre esta API
 
 
 ## <a name="prerequisites"></a>Requisitos previos
-Para poder usar los ejemplos de hello en este tema, deberá hello toocomplete [API de generación de informes de requisitos previos tooaccess hello Azure AD](active-directory-reporting-api-prerequisites.md).  
+Para poder usar los ejemplos de este tema, debe completar la [requisitos previos para tener acceso a la API de generación de informes de Azure AD](active-directory-reporting-api-prerequisites.md).  
 
 ## <a name="powershell-script"></a>Script de PowerShell
-    # This script will require hello Web Application and permissions setup in Azure Active Directory
+    # This script will require the Web Application and permissions setup in Azure Active Directory
     $ClientID       = "<clientId>"             # Should be a ~35 character string insert your info here
     $ClientSecret   = "<clientSecret>"         # Should be a ~44 character string insert your info here
     $loginURL       = "https://login.microsoftonline.com/"
@@ -63,7 +63,7 @@ Para poder usar los ejemplos de hello en este tema, deberá hello toocomplete [A
     Do{
         Write-Output "Fetching data using Uri: $url"
         $myReport = (Invoke-WebRequest -UseBasicParsing -Headers $headerParams -Uri $url)
-        Write-Output "Save hello output tooa file SigninActivities$i.json"
+        Write-Output "Save the output to a file SigninActivities$i.json"
         Write-Output "---------------------------------------------"
         $myReport.Content | Out-File -FilePath SigninActivities$i.json -Force
         $url = ($myReport.Content | ConvertFrom-Json).'@odata.nextLink'
@@ -78,13 +78,13 @@ Para poder usar los ejemplos de hello en este tema, deberá hello toocomplete [A
 
 
 
-## <a name="executing-hello-script"></a>Ejecutando script de Hola
-Una vez termine de editar el script de Hola, ejecutarlo y compruebe que Hola se espera que se devuelven datos de informe de registros de auditoría de Hola.
+## <a name="executing-the-script"></a>Ejecución del script
+Una vez que termine de editar el script, ejecútelo y compruebe que el informe de registros de auditoría devuelve los datos esperados.
 
-script de Hola devuelve una salida de hello inicio de sesión de informe en formato JSON. También se crea un `SigninActivities.json` archivos con hello el mismo resultado. Puede experimentar mediante la modificación de datos de tooreturn de script de Hola desde otros informes, y marque como comentario los formatos de salida de hello que no es necesario.
+El script devuelve la salida del informe de inicio de sesión en formato JSON. También se crea un archivo `SigninActivities.json` con la misma salida. Puede experimentar modificando el script para que devuelva datos de otros informes y convertir en comentario los formatos de salida que no necesite.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* ¿Le gustaría toocustomize ejemplos de hello en este tema? Extraer del repositorio hello [Azure Active Directory inicio de sesión-actividad de referencia de la API](active-directory-reporting-api-sign-in-activity-reference.md). 
-* Si desea que toosee información general completa del uso de hello Azure Active Directory API de informes, consulte [Introducción a Azure Active Directory API de informes de Hola](active-directory-reporting-api-getting-started.md).
-* Si desea que toofind más acerca de los informes de Azure Active Directory, vea hello [Azure Active Directory Reporting guía](active-directory-reporting-guide.md).  
+* ¿Quiere personalizar los ejemplos de este tema? Consulte [Azure Active Directory sign-in activity report API samples](active-directory-reporting-api-sign-in-activity-reference.md)(Referencia de la API de la actividad de inicio de sesión de Azure Active Directory). 
+* Si quiere obtener una descripción completa del uso de la API de generación de informes de Azure Active Directory, consulte el artículo de [introducción a la API de generación de informes de Azure Active Directory](active-directory-reporting-api-getting-started.md).
+* Si quiere obtener más información sobre informes de Azure Active Directory, consulte la [guía de generación de informes de Azure Active Directory](active-directory-reporting-guide.md).  
 

@@ -1,31 +1,31 @@
-## <a name="view-hello-telemetry"></a>Vista Hola telemetría
+## <a name="view-the-telemetry"></a>Visualización de la telemetría
 
-Hola frambuesa Pi ahora está enviando la solución de supervisión remota de telemetría toohello. Puede ver la telemetría de hello en el panel de la solución de Hola. También puede enviar mensajes tooyour frambuesa Pi desde el panel de la solución de Hola.
+Raspberry Pi ahora está enviando telemetría a la solución de supervisión remota. Puede verla en el panel de soluciones. También puede enviar mensajes a su Raspberry Pi desde el panel de soluciones.
 
-- Vaya a Panel de solución toohello.
-- Seleccione el dispositivo en hello **tooView dispositivo** lista desplegable.
-- telemetría Hola de hello frambuesa Pi muestra en el panel de Hola.
+- Vaya al panel de soluciones.
+- Seleccione el dispositivo en la lista desplegable **Dispositivo que se visualizará**.
+- La telemetría de Raspberry Pi se muestra en el panel.
 
-![Mostrar la telemetría de hello frambuesa Pi][img-telemetry-display]
+![Mostrar telemetría desde Raspberry Pi][img-telemetry-display]
 
-## <a name="act-on-hello-device"></a>Actuar en dispositivo Hola
+## <a name="act-on-the-device"></a>Actuación en el dispositivo
 
-En el panel de la solución de hello, puede invocar métodos en el instalador de plataforma de frambuesa. Cuando Hola frambuesa Pi conecta toohello solución de supervisión remoto, se enviará información acerca de los métodos de hello es compatible con.
+En el panel de soluciones, puede invocar métodos en su Raspberry Pi. Cuando Raspberry Pi se conecta a la solución de supervisión remota, envía información acerca de los métodos que admite.
 
-- En el panel de la solución de hello, haga clic en **dispositivos** toovisit hello **dispositivos** página. Seleccione el instalador de plataforma de frambuesa Hola **lista de dispositivos**. A continuación, elija **Métodos**:
+- En el panel de soluciones, haga clic en **Dispositivos** para visitar la página **Dispositivos**. Seleccione su Raspberry Pi en la **lista de dispositivos**. A continuación, elija **Métodos**:
 
     ![Lista de dispositivos en el panel][img-list-devices]
 
-- En hello **invocar método** página, elija **LightBlink** en hello **método** lista desplegable.
+- En la página **Invocar método**, elija **LightBlink** en la lista desplegable **Método**.
 
-- Elija **Invocar método**. simulador de Hello imprime un mensaje en la consola de hello en hello frambuesa Pi. aplicación de Hello en hello frambuesa Pi envía un panel de solución de toohello espera de confirmación:
+- Elija **Invocar método**. El simulador imprime un mensaje en la consola de Raspberry Pi. La aplicación en Raspberry Pi envía una confirmación de vuelta al panel de soluciones:
 
     ![Mostrar el historial de métodos][img-method-history]
 
-- Puede cambiar los LED de Hola activar y desactivar mediante hello **ChangeLightStatus** método con un **LightStatusValue** establecido demasiado**1** para en o **0** para desactivar.
+- Puede activar el LED y desactivarlo mediante el método **ChangeLightStatus** con un valor de **LightStatusValue** establecido en **1** para activado o **0** para desactivado.
 
 > [!WARNING]
-> Si deja Hola supervisión de solución que se ejecuta en su cuenta de Azure remota, se le facturará por vez Hola que se ejecuta. Para obtener más información acerca de cómo reducir el consumo de Hola se ejecuta la solución de supervisión remota, consulte [configurar Azure IoT conjunto preconfigurado soluciones para fines de demostración][lnk-demo-config]. Eliminar soluciones Hola preconfigurado de su cuenta de Azure cuando termine de usarlo.
+> Si deja la solución de supervisión remota ejecutándose en su cuenta de Azure, se le cobra por el tiempo que se ejecute. Para más información sobre cómo reducir el consumo mientras se ejecuta la solución de supervisión remota, consulte [Configuring Azure IoT Suite preconfigured solutions for demo purposes][lnk-demo-config] (Configuración de soluciones preconfiguradas del Conjunto de aplicaciones de IoT de Azure para fines de demostración). Elimine la solución preconfigurada de su cuenta de Azure cuando haya terminado de usarla.
 
 
 [img-telemetry-display]: media/iot-suite-raspberry-pi-kit-view-telemetry-simulator/telemetry.png

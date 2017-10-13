@@ -1,6 +1,6 @@
 ---
 title: "Configuración de la retención de copias de seguridad a largo plazo (Azure SQL Database) | Microsoft Docs"
-description: "Obtenga información acerca de cómo toostore automatizar las copias de seguridad en hello del almacén de servicios de recuperación de Azure y toorestore de hello que del almacén de servicios de recuperación de Azure"
+description: "Aprenda a almacenar copias de seguridad automáticas en el almacén de Azure Recovery Services y a restaurarlas en él"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -15,25 +15,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: carlrab
-ms.openlocfilehash: 603f4dd21cee4407d46f749655aba8f9ef3322c0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ed9f74a59f0ca512e2758c6db4c5c9075030f859
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-and-restore-from-azure-sql-database-long-term-backup-retention"></a>Configuración de la retención de copias de seguridad a largo plazo de Azure SQL Database
 
-Puede configurar copias de seguridad de SQL Azure de hello servicios de recuperación de Azure almacén toostore y, a continuación, recuperar una base de datos con copias de seguridad se conserva en hello almacén con Hola portal de Azure o PowerShell.
+El almacén de Azure Recovery Services se puede configurar para almacenar copias de seguridad de Azure SQL Database y, después, recuperar una base de datos con las copias de seguridad que se conservan en el almacén mediante Azure Portal o PowerShell.
 
-## <a name="azure-portal"></a>Azure Portal
+## <a name="azure-portal"></a>Portal de Azure
 
-Hola siguientes secciones muestra también cómo almacén toouse Hola tooconfigure portal Azure Hola servicios de recuperación de Azure, ver las copias de seguridad en el almacén de Hola y restaurar desde el almacén de Hola.
+Las secciones siguientes muestran cómo usar Azure Portal para configurar el almacén de Azure Recovery Services, ver las copias de seguridad del almacén y restaurarlas del almacén.
 
-### <a name="configure-hello-vault-register-hello-server-and-select-databases"></a>Configurar el almacén de hello, Registrar servidor hello y seleccione las bases de datos
+### <a name="configure-the-vault-register-the-server-and-select-databases"></a>Configuración del almacén, registro del servidor y selección de bases de datos
 
-Se [configurar un copias de seguridad de servicios de recuperación de Azure almacén tooretain automatizada](sql-database-long-term-retention.md) para un periodo superior al período de retención de hello para el nivel de servicio. 
+[Configure un almacén de Azure Recovery Services para conservar las copias de seguridad automáticas](sql-database-long-term-retention.md) durante un período superior al período de retención del nivel de servicio. 
 
-1. Abra hello **SQL Server** página del servidor.
+1. Abra la página **SQL Server** del servidor.
 
    ![página de sql server](./media/sql-database-get-started-portal/sql-server-blade.png)
 
@@ -41,118 +41,118 @@ Se [configurar un copias de seguridad de servicios de recuperación de Azure alm
 
    ![vínculo de retención de copia de seguridad a largo plazo](./media/sql-database-get-started-backup-recovery/long-term-backup-retention-link.png)
 
-3. En hello **retención de copia de seguridad a largo plazo** página para el servidor, revise y acepte los términos de vista previa de hello (a menos que aún lo ha hecho - o esta característica ya no está en vista previa).
+3. En la página **Long-term backup retention** (Retención de copia de seguridad a largo plazo) del servidor, revise y acepte los términos de la versión preliminar (a no ser que ya lo haya hecho, o que esta característica ya no esté en versión preliminar).
 
-   ![Acepte los términos de vista previa de Hola](./media/sql-database-get-started-backup-recovery/accept-the-preview-terms.png)
+   ![aceptar los términos de versión preliminar](./media/sql-database-get-started-backup-recovery/accept-the-preview-terms.png)
 
-4. retención de copia de seguridad a largo plazo de tooconfigure, seleccione esa base de datos en la cuadrícula de hello y, a continuación, haga clic en **configurar** en la barra de herramientas de Hola.
+4. Para configurar la retención de copia de seguridad a largo plazo, seleccione la base de datos en la cuadrícula y haga clic en **Configurar** en la barra de herramientas.
 
    ![seleccionar base de datos para retención de copia de seguridad a largo plazo](./media/sql-database-get-started-backup-recovery/select-database-for-long-term-backup-retention.png)
 
-5. En hello **configurar** página, haga clic en **establecer configuración obligatoria** en **almacén del servicio de recuperación de**.
+5. En la página **Configurar**, haga clic en **Configurar los valores obligatorios** en **Almacén de Recovery Services**.
 
    ![vínculo para configurar almacén](./media/sql-database-get-started-backup-recovery/configure-vault-link.png)
 
-6. En hello **almacén de servicios de recuperación** , seleccione un almacén existente, si existe. En caso contrario, si ningún almacén de servicios de recuperación encontró para la suscripción, haga clic en el flujo de hello tooexit y crear un almacén de servicios de recuperación.
+6. En la página **Almacén de Recovery Services**, seleccione un almacén existente, si lo hay. Si no se encuentra ningún almacén de servicios de recuperación para su suscripción, haga clic para salir del flujo y crear uno.
 
    ![crear vinculo de almacén](./media/sql-database-get-started-backup-recovery/create-new-vault-link.png)
 
-7. En hello **servicios de recuperación de los almacenes de credenciales** página, haga clic en **agregar**.
+7. En la página **Almacenes de Recovery Services**, haga clic en **Agregar**.
 
    ![agregar vinculo de almacén](./media/sql-database-get-started-backup-recovery/add-new-vault-link.png)
    
-8. En hello **del almacén de servicios de recuperación** , proporcione un nombre válido para el almacén de servicios de recuperación de Hola.
+8. En la página **Almacén de Recovery Services**, especifique un nombre válido para el almacén de Recovery Services.
 
    ![nuevo nombre de almacén](./media/sql-database-get-started-backup-recovery/new-vault-name.png)
 
-9. Seleccione la suscripción y el grupo de recursos y, a continuación, seleccione la ubicación de hello para el almacén de Hola. Cuando termine, haga clic en **Crear**.
+9. Seleccione la suscripción y el grupo de recursos y luego seleccione la ubicación del almacén. Cuando termine, haga clic en **Crear**.
 
    ![crear almacén](./media/sql-database-get-started-backup-recovery/create-new-vault.png)
 
    > [!IMPORTANT]
-   > almacén de Hello debe estar ubicado en Hola misma región que el servidor lógico de SQL Azure de Hola y debe usar Hola mismo grupo de recursos que el servidor lógico de Hola.
+   > El almacén debe estar ubicado en la misma región que el servidor lógico de Azure SQL y debe usar el mismo grupo de recursos que el servidor lógico.
    >
 
-10. Después de crea el nuevo almacén de hello, ejecute hello pasos necesarios tooreturn toohello **almacén de servicios de recuperación** página.
+10. Después de crear el nuevo almacén, ejecute los pasos necesarios para volver a la página **Almacén de Recovery Services**.
 
-11. En hello **almacén de servicios de recuperación** página, haga clic en el almacén de hello y, a continuación, haga clic en **seleccione**.
+11. En la página **Almacén de Recovery Services**, haga clic en el almacén y luego en **Seleccionar**.
 
    ![seleccionar almacén existente](./media/sql-database-get-started-backup-recovery/select-existing-vault.png)
 
-12. En hello **configurar** página, proporcione un nombre válido para la nueva directiva de retención hello, modificar la directiva de retención predeterminada de hello según corresponda y, a continuación, haga clic en **Aceptar**.
+12. En la página **Configurar**, especifique un nombre válido para la nueva directiva de retención, modifique la directiva de retención predeterminada como sea pertinente y haga clic en **Aceptar**.
 
    ![definir directiva de retención](./media/sql-database-get-started-backup-recovery/define-retention-policy.png)
 
-13. En hello **retención de copia de seguridad a largo plazo** página de la base de datos, haga clic en **guardar** y, a continuación, haga clic en **Aceptar** tooapply Hola a largo plazo tooall de directiva de retención de copia de seguridad seleccionada bases de datos.
+13. En la página **Long-term backup retention** (Retención de copia de seguridad a largo plazo) de la base de datos, haga clic en **Guardar** y luego en **Aceptar** para aplicar la directiva de retención de copia de seguridad a largo plazo a todas las bases de datos seleccionadas.
 
    ![definir directiva de retención](./media/sql-database-get-started-backup-recovery/save-retention-policy.png)
 
-14. Haga clic en **guardar** tooenable retención de copia de seguridad a largo plazo con este nuevo almacén de servicios de recuperación de Azure de toohello de directiva que ha configurado.
+14. Haga clic en **Guardar** para habilitar la retención de copia de seguridad a largo plazo mediante esta nueva directiva para el almacén de Azure Recovery Services que ha configurado.
 
    ![definir directiva de retención](./media/sql-database-get-started-backup-recovery/enable-long-term-retention.png)
 
 > [!IMPORTANT]
-> Una vez configurado, las copias de seguridad aparecen en el almacén de hello en siete días siguientes. No continúe con este tutorial hasta que las copias de seguridad que se mostrarán en el almacén de Hola.
+> Una vez configurado, las copias de seguridad se mostrarán en el almacén en los próximos siete días. No continúe con este tutorial hasta que las copias de seguridad se muestren en el almacén.
 >
 
 ### <a name="view-backups-in-long-term-retention-using-azure-portal"></a>Visualización de copias de seguridad en retención a largo plazo mediante Azure Portal
 
 Visualización de información acerca de las copias de seguridad de su base de datos en la [retención de copia de seguridad a largo plazo](sql-database-long-term-retention.md). 
 
-1. En el portal de Azure de Hola, abrir el almacén de servicios de recuperación de Azure para las copias de seguridad de base de datos (ir demasiado**todos los recursos** y selecciónelo en la lista de Hola de los recursos de su suscripción) tooview cantidad de Hola de almacenamiento utilizado por la base de datos copias de seguridad en el almacén de Hola.
+1. En Azure Portal, abra el almacén de Azure Recovery Services de las copias de seguridad de su base de datos (vaya a **Todos los recursos** y selecciónela en la lista de recursos de su suscripción) para ver la cantidad de almacenamiento que usan las copias de seguridad de su base de datos en el almacén.
 
    ![ver almacén de servicios de recuperación con copias de seguridad](./media/sql-database-get-started-backup-recovery/view-recovery-services-vault-with-data.png)
 
-2. Abra hello **base de datos SQL** página de la base de datos.
+2. Abra la página **SQL Database** de la base de datos.
 
    ![página nueva de base de datos de ejemplo](./media/sql-database-get-started-portal/new-sample-db-blade.png)
 
-3. En la barra de herramientas de hello, haga clic en **restaurar**.
+3. En la barra de herramientas, haga clic en **Restaurar**.
 
    ![barra de herramientas restaurar](./media/sql-database-get-started-backup-recovery/restore-toolbar.png)
 
-4. En la página de la restauración de hello, haga clic en **a largo plazo**.
+4. En la página Restaurar, haga clic en **Largo plazo**.
 
-5. En copias de seguridad del almacén de Azure, haga clic en **Seleccionar copia de seguridad** tooview copias de seguridad de bases de datos disponibles de hello en retención de copia de seguridad a largo plazo.
+5. En Azure vault backups (Copias de seguridad de Azure Vault), haga clic en **Seleccionar una copia de seguridad** para ver las copias de seguridad de base de datos disponibles con retención a largo plazo.
 
    ![copias de seguridad en almacén](./media/sql-database-get-started-backup-recovery/view-backups-in-vault.png)
 
-### <a name="restore-a-database-from-a-backup-in-long-term-backup-retention-using-hello-azure-portal"></a>Restaurar una base de datos desde una copia de seguridad de retención de copia de seguridad a largo plazo con hello portal de Azure
+### <a name="restore-a-database-from-a-backup-in-long-term-backup-retention-using-the-azure-portal"></a>Restauración de una base de datos desde una copia de seguridad de la retención a largo plazo mediante Azure Portal
 
-Restaurar hello tooa nueva base de datos desde una copia de seguridad en hello que del almacén de servicios de recuperación de Azure.
+Restaure la base de datos en una nueva desde una copia de seguridad del almacén de Azure Recovery Services.
 
-1. En hello **copias de seguridad del almacén de Azure** página, haga clic en toorestore de copia de seguridad de hello y, a continuación, haga clic en **seleccione**.
+1. En la página **Copias de seguridad del almacén de Azure**, haga clic en la copia de seguridad que va a restaurar y luego en **Seleccionar**.
 
    ![seleccionar copia de seguridad en almacén](./media/sql-database-get-started-backup-recovery/select-backup-in-vault.png)
 
-2. Hola **nombre de base de datos** texto cuadro, proporcione el nombre hello para la base de datos de hello restaurado.
+2. En el cuadro de texto **Nombre de la base de datos**, proporcione el nombre de la base de datos restaurada.
 
    ![nombre de nueva base de datos](./media/sql-database-get-started-backup-recovery/new-database-name.png)
 
-3. Haga clic en **Aceptar** toorestore la base de datos de copia de seguridad de Hola Hola almacén toohello nueva base de datos.
+3. Haga clic en **Aceptar** para restaurar la base de datos de la copia de seguridad del almacén en la nueva base de datos.
 
-4. En la barra de herramientas de hello, haga clic en estado hello tooview de icono de notificación de Hola de trabajo de restauración de Hola.
+4. En la barra de herramientas, haga clic en el icono de notificación para ver el estado del trabajo de restauración.
 
    ![progreso de trabajo de restauración del almacén](./media/sql-database-get-started-backup-recovery/restore-job-progress-long-term.png)
 
-5. Cuando se completa el trabajo de restauración de hello, abra hello **bases de datos SQL** base de datos de página tooview Hola recién restaurado.
+5. Cuando se complete el trabajo de restauración, abra la página **Bases de datos SQL** para ver la base de datos recién restaurada.
 
    ![base de datos restaurada desde almacén](./media/sql-database-get-started-backup-recovery/restored-database-from-vault.png)
 
 > [!NOTE]
-> Desde aquí, puede conectarse toohello Restaurar base de datos mediante las tareas de SQL Server Management Studio tooperform necesitado, como demasiado[extraer una porción de datos de toocopy de hello Restaurar base de datos en la base de datos existente de Hola o toodelete Hola existente base de datos y cambiar el nombre hello Restaurar base de datos toohello existente en nombre de base de datos](sql-database-recovery-using-backups.md#point-in-time-restore).
+> Desde aquí, puede conectarse a la base de datos restaurada mediante SQL Server Management Studio para realizar las tareas necesarias, como [extraer un bit de datos de la base de datos restaurada para copiarlo en la base de datos existente o para eliminar la base de datos existente y cambiar el nombre de la base de datos restaurada por el nombre de la base de datos existente](sql-database-recovery-using-backups.md#point-in-time-restore).
 >
 
 ## <a name="powershell"></a>PowerShell
 
-Hola las secciones siguientes muestra cómo ver las copias de seguridad en el almacén de hello toouse PowerShell tooconfigure Hola el almacén de servicios de recuperación de Azure y restaurar desde el almacén de Hola.
+Las secciones siguientes muestran cómo usar PowerShell para configurar el almacén de Azure Recovery Services, ver las copias de seguridad del almacén y restaurarlas del almacén.
 
 ### <a name="create-a-recovery-services-vault"></a>Creación de un almacén de Servicios de recuperación
 
-Hola de uso [New-AzureRmRecoveryServicesVault](/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault) toocreate una recuperación del almacén de servicios.
+Utilice el cmdlet [New-AzureRmRecoveryServicesVault](/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault) para crear un almacén de Recovery Services.
 
 > [!IMPORTANT]
-> almacén de Hello debe estar ubicado en Hola misma región que el servidor lógico de SQL Azure de Hola y debe usar Hola mismo grupo de recursos que el servidor lógico de Hola.
+> El almacén debe estar ubicado en la misma región que el servidor lógico de Azure SQL y debe usar el mismo grupo de recursos que el servidor lógico.
 
 ```PowerShell
 # Create a recovery services vault
@@ -166,44 +166,44 @@ $vault = New-AzureRmRecoveryServicesVault -Name $recoveryServiceVaultName -Resou
 Set-AzureRmRecoveryServicesBackupProperties -BackupStorageRedundancy LocallyRedundant -Vault $vault
 ```
 
-### <a name="set-your-server-toouse-hello-recovery-vault-for-its-long-term-retention-backups"></a>Establecer el almacén de recuperación de servidor toouse Hola para sus copias de seguridad de retención a largo plazo
+### <a name="set-your-server-to-use-the-recovery-vault-for-its-long-term-retention-backups"></a>Establecimiento de un servidor para que use el almacén de recuperación para sus copias de seguridad de retención a largo plazo
 
-Hola de uso [AzureRmSqlServerBackupLongTermRetentionVault conjunto](/powershell/module/azurerm.sql/set-azurermsqlserverbackuplongtermretentionvault) tooassociate cmdlet creado anteriormente con un servidor SQL Azure específico del almacén de servicios de recuperación.
+Utilice el cmdlet [Set-AzureRmSqlServerBackupLongTermRetentionVault](/powershell/module/azurerm.sql/set-azurermsqlserverbackuplongtermretentionvault) para asociar un almacén de Recovery Services creado anteriormente a un servidor SQL específico de Azure.
 
 ```PowerShell
-# Set your server toouse hello vault toofor long-term backup retention 
+# Set your server to use the vault to for long-term backup retention 
 
 Set-AzureRmSqlServerBackupLongTermRetentionVault -ResourceGroupName $resourceGroupName -ServerName $serverName -ResourceId $vault.Id
 ```
 
 ### <a name="create-a-retention-policy"></a>Creación de una directiva de retención
 
-Una directiva de retención es donde se establece tookeep cuánto tiempo una copia de seguridad de base de datos. Hola de uso [AzureRmRecoveryServicesBackupRetentionPolicyObject Get](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/get-azurermrecoveryservicesbackupretentionpolicyobject) cmdlet toouse de directiva de retención tooget Hola predeterminado como plantilla de Hola para crear directivas de. En esta plantilla, se establece el período de retención de Hola durante dos años. A continuación, ejecute hello [New-AzureRmRecoveryServicesBackupProtectionPolicy](/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy) toofinally Crear directiva de Hola. 
+Una directiva de retención permite establecer cuánto tiempo desea conservar una copia de seguridad de una base de datos. Use el cmdlet [Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/get-azurermrecoveryservicesbackupretentionpolicyobject) para obtener la directiva de retención predeterminada que se utiliza como plantilla para crear directivas. En esta plantilla, el período de retención se establece en 2 años. A continuación, ejecute el cmdlet [AzureRmRecoveryServicesBackupProtectionPolicy New](/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy) para crear la directiva. 
 
 > [!NOTE]
-> Algunos cmdlets requieren que se establece el contexto de almacén de hello antes de ejecutar ([AzureRmRecoveryServicesVaultContext Set](/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)) para ver este cmdlet en algunos fragmentos de código relacionados. Para establecer el contexto de hello porque la directiva de hello es parte del almacén de Hola. Puede crear varias directivas de retención para cada almacén y, a continuación, aplicar las bases de datos de hello deseado directiva toospecific. 
+> Algunos cmdlets requieren que defina el contexto del almacén antes de ejecutarlos ([Set-AzureRmRecoveryServicesVaultContext](/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)) por lo que verá este cmdlet en algunos fragmentos de código relacionados. El contexto se establece porque la directiva forma parte del almacén. Puede crear varias directivas de retención para cada almacén y, a continuación, aplicar la directiva que desee a bases de datos específicas. 
 
 
 ```PowerShell
-# Retrieve hello default retention policy for hello AzureSQLDatabase workload type
+# Retrieve the default retention policy for the AzureSQLDatabase workload type
 $retentionPolicy = Get-AzureRmRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureSQLDatabase
 
-# Set hello retention value tootwo years (you can set tooany time between 1 week and 10 years)
+# Set the retention value to two years (you can set to any time between 1 week and 10 years)
 $retentionPolicy.RetentionDurationType = "Years"
 $retentionPolicy.RetentionCount = 2
 $retentionPolicyName = "my2YearRetentionPolicy"
 
-# Set hello vault context toohello vault you are creating hello policy for
+# Set the vault context to the vault you are creating the policy for
 Set-AzureRmRecoveryServicesVaultContext -Vault $vault
 
-# Create hello new policy
+# Create the new policy
 $policy = New-AzureRmRecoveryServicesBackupProtectionPolicy -name $retentionPolicyName -WorkloadType AzureSQLDatabase -retentionPolicy $retentionPolicy
 $policy
 ```
 
-### <a name="configure-a-database-toouse-hello-previously-defined-retention-policy"></a>Configurar una directiva de retención de base de datos toouse Hola definido anteriormente
+### <a name="configure-a-database-to-use-the-previously-defined-retention-policy"></a>Configuración de una base de datos para que use la directiva de retención definida anteriormente
 
-Hola de uso [AzureRmSqlDatabaseBackupLongTermRetentionPolicy conjunto](/powershell/module/azurerm.sql/set-azurermsqldatabasebackuplongtermretentionpolicy) cmdlet tooapply Hola nueva directiva tooa base de datos específica.
+Utilice el cmdlet [Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy](/powershell/module/azurerm.sql/set-azurermsqldatabasebackuplongtermretentionpolicy) para aplicar la nueva directiva a una base de datos concreta.
 
 ```PowerShell
 # Enable long-term retention for a specific SQL database
@@ -215,7 +215,7 @@ Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resource
 
 Visualización de información acerca de las copias de seguridad de su base de datos en la [retención de copia de seguridad a largo plazo](sql-database-long-term-retention.md). 
 
-Usar hello siguiendo la información de copia de seguridad de tooview de cmdlets:
+Use los siguientes cmdlets para ver la información de copia de seguridad:
 
 - [Get-AzureRmRecoveryServicesBackupContainer](/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)
 - [Get-AzureRmRecoveryServicesBackupItem](/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)
@@ -226,28 +226,28 @@ Usar hello siguiendo la información de copia de seguridad de tooview de cmdlets
 #$serverName = "{server-name}"
 $databaseNeedingRestore = $databaseName
 
-# Set hello vault context toohello vault we want toorestore from
+# Set the vault context to the vault we want to restore from
 #$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName $resourceGroupName
 Set-AzureRmRecoveryServicesVaultContext -Vault $vault
 
-# hello following commands find hello container associated with hello server 'myserver' under resource group 'myresourcegroup'
+# the following commands find the container associated with the server 'myserver' under resource group 'myresourcegroup'
 $container = Get-AzureRmRecoveryServicesBackupContainer -ContainerType AzureSQL -FriendlyName $vault.Name
 
-# Get hello long-term retention metadata associated with a specific database
+# Get the long-term retention metadata associated with a specific database
 $item = Get-AzureRmRecoveryServicesBackupItem -Container $container -WorkloadType AzureSQLDatabase -Name $databaseNeedingRestore
 
-# Get all available backups for hello previously indicated database
-# Optionally, set hello -StartDate and -EndDate parameters tooreturn backups within a specific time period
+# Get all available backups for the previously indicated database
+# Optionally, set the -StartDate and -EndDate parameters to return backups within a specific time period
 $availableBackups = Get-AzureRmRecoveryServicesBackupRecoveryPoint -Item $item
 $availableBackups
 ```
 
 ### <a name="restore-a-database-from-a-backup-in-long-term-backup-retention"></a>Restauración de una base de datos de una copia de seguridad con retención a largo plazo
 
-Restaurar a partir de retención de copia de seguridad a largo plazo usa hello [AzureRmSqlDatabase restauración](/powershell/module/azurerm.sql/restore-azurermsqldatabase) cmdlet.
+La restauración a partir de la retención de la copia de seguridad a largo plazo usa el cmdlet [AzureRmSqlDatabase restauración](/powershell/module/azurerm.sql/restore-azurermsqldatabase).
 
 ```PowerShell
-# Restore hello most recent backup: $availableBackups[0]
+# Restore the most recent backup: $availableBackups[0]
 #$resourceGroupName = "{resource-group-name}"
 #$serverName = "{server-name}"
 $restoredDatabaseName = "{new-database-name}"
@@ -261,10 +261,10 @@ $restoredDb
 
 
 > [!NOTE]
-> Desde aquí, puede conectarse toohello Restaurar base de datos mediante las tareas de SQL Server Management Studio tooperform necesarios, como tooextract una porción de datos de hello restaura toocopy de base de datos en base de datos existente de Hola o base de datos existente de toodelete Hola y el nombre Hola restaura el nombre de base de datos existente de base de datos toohello. Consulte la [restauración a un momento dado](sql-database-recovery-using-backups.md#point-in-time-restore).
+> Desde aquí, puede conectarse a la base de datos restaurada mediante SQL Server Management Studio para realizar las tareas necesarias, como extraer un bit de datos de la base de datos restaurada para copiarlo en la base de datos existente o para eliminar la base de datos existente y cambiar el nombre de la base de datos restaurada por el nombre de la base de datos existente. Consulte la [restauración a un momento dado](sql-database-recovery-using-backups.md#point-in-time-restore).
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-- toolearn sobre generados por el servicio de copias de seguridad automáticas, consulte [copias de seguridad automáticas](sql-database-automated-backups.md)
-- toolearn acerca de la retención de copia de seguridad a largo plazo, vea [retención de copia de seguridad a largo plazo](sql-database-long-term-retention.md)
-- toolearn acerca de la restauración de copias de seguridad, consulte [restaurar copia de seguridad](sql-database-recovery-using-backups.md)
+- Para aprender sobre las copias de seguridad automáticas generadas por el servicio, consulte [copias de seguridad automáticas](sql-database-automated-backups.md)
+- Para más información sobre la retención de copia de seguridad a largo plazo, consulte sobre la [retención de copia de seguridad a largo plazo](sql-database-long-term-retention.md).
+- Para aprender sobre la restauración a partir de copias de seguridad, consulte sobre la [restauración desde una copia de seguridad](sql-database-recovery-using-backups.md).

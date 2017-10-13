@@ -1,6 +1,6 @@
 ---
-title: aaaH264 varias velocidades de bits 16 x 9 para iOS | Documentos de Microsoft
-description: "Hola tema encontrará un resumen de Hola ** H264 varias velocidades de bits 16 x 9 para el valor predefinido de tarea iOS **."
+title: H264 Multiple Bitrate 16x9 for iOS | Microsoft Docs
+description: "El tema proporciona información general sobre el valor predeterminado de tarea **H264 Multiple Bitrate 16x9 for iOS**."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: bfdddc7023ca1d3622f92a9343844b7335feaa51
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9b938a5396e9f29fc9f2222056b84fbf13179dff
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="h264-multiple-bitrate-16x9-for-ios"></a>H264 Multiple Bitrate 16x9 for iOS
-`Media Encoder Standard` define un conjunto de valores predeterminados de Encoding que puede usar al crear trabajos de Encoding. Puede utilizar un `preset name` toospecify en qué formato desea tooencode su archivo multimedia. O bien, puede crear sus propios valores predeterminados basados en XML o JSON (mediante la codificación UTF-8 o UTF-16). A continuación, pasaría codificador de hello toohello valores preestablecidos personalizados. Para obtener lista de hello del programa Hola a todos los preestablecido nombres admitidos por este `Media Encoder Standard` codificador, vea [valores preestablecidos de tarea para Media Encoder estándar](media-services-mes-presets-overview.md).  
+`Media Encoder Standard` define un conjunto de valores predeterminados de Encoding que puede usar al crear trabajos de Encoding. Puede usar `preset name` para especificar en qué formato desea codificar el archivo multimedia. O bien, puede crear sus propios valores predeterminados basados en XML o JSON (mediante la codificación UTF-8 o UTF-16). Después pasaría el valor predeterminado personalizado al codificador. Para obtener la lista de todos los nombres predeterminados admitidos por este codificador `Media Encoder Standard`, vea [Task Presets for Media Encoder Standard](media-services-mes-presets-overview.md) (Valores predeterminados de tarea para Media Encoder Standard).  
   
- Este tema muestra hello `H264 Multiple Bitrate 16x9 for iOS` preestablecido en formato XML y JSON.  
+ En este tema se muestra el valor predeterminado `H264 Multiple Bitrate 16x9 for iOS` en formato XML y JSON.  
   
- Este valor preestablecido produce un conjunto de 8 archivos MP4 alineados con GOP, comprendido entre 8500 kbps too200 kbps y audio AAC estéreo. Para obtener información detallada sobre el perfil, velocidad de bits, frecuencia de muestreo, etc. de este valor preestablecido, examine Hola XML o JSON definido más adelante. Para obtener una explicación de cada elemento de qué en estos medios de valores predefinidos y los valores válidos de Hola para cada elemento, vea hello [Media Encoder estándar esquema](media-services-mes-schema.md) tema.  
+ Este valor predeterminado genera un conjunto de 8 archivos MP4 alineados con GOP, que abarcan desde 8500 kbps hasta 200 kbps y audio AAC estéreo. Para información detallada sobre el perfil, la velocidad de bits, la frecuencia de muestreo, etc. de este valor predeterminado, examine el código XML o JSON definido más adelante. Para obtener explicaciones de lo que cada elemento significa en estos nombres predeterminados y los valores válidos para cada elemento, vea el tema sobre el [esquema de Media Encoder Standard](media-services-mes-schema.md).  
   
 > [!NOTE]
->  Cuando se modifica hello `Width` y `Height` los valores de las capas, asegúrese de que esa relación de aspecto de hello siga siendo coherente. Por ejemplo: 1920x1080, 1280x720, 1080x576 y 640x360. No debe utilizar una combinación de relaciones de aspecto, como 1280x720, 720x480 y 640x360.  
+>  Cuando se modifiquen los valores `Width` y `Height` en las capas, asegúrese de que la relación de aspecto no cambia. Por ejemplo: 1920x1080, 1280x720, 1080x576 y 640x360. No debe utilizar una combinación de relaciones de aspecto, como 1280x720, 720x480 y 640x360.  
   
  XML  
   

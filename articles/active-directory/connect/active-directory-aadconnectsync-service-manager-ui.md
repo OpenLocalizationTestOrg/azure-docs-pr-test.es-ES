@@ -15,24 +15,24 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d33f02822097aa7f83042606ba46fd533e85ac23
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 05dd28bf850a84ff4644c46a45bd941b7c6e7d01
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="introduction-toohello-azure-ad-connect-synchronization-service-manager-ui"></a>Introducción toohello Synchronization Service Manager interfaz de usuario de Azure AD Connect
+# <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a>Introducción a la interfaz de usuario de Azure AD Connect Synchronization Service Manager
 
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/ssmui.png)
 
-Hola **Synchronization Service Manager** interfaz de usuario es tooconfigure usado más avanzadas de aspectos de hello sincronización motor y toosee Hola aspectos operativos del servicio de Hola.
+La interfaz de usuario de **Synchronization Service Manager** se utiliza para configurar aspectos más avanzados del motor de sincronización y ver los aspectos operativos del servicio.
 
-Iniciar hello **Synchronization Service Manager** menú de inicio de interfaz de usuario de Hola. Se denomina **servicio de sincronización de** y puede encontrarse en hello **Azure AD Connect** grupo.  
+La interfaz de usuario de **Synchronization Service Manager** se inicia en el menú Inicio. Se llama **Servicio de sincronización** y puede encontrarse en el grupo **Azure AD Connect**.  
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)
 
-Haga clic en vínculos de hello en parte superior de Hola de este toolearn tema más acerca de las diferentes pestañas de Hola Hola interfaz de usuario.
+Haga clic en los vínculos que se encuentran en la parte superior de este tema para obtener más información sobre las distintas pestañas de la interfaz de usuario.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Obtener más información sobre hello [sincronización de Azure AD Connect](active-directory-aadconnectsync-whatis.md) configuración.
+Obtenga más información sobre la configuración de la [Sincronización de Azure AD Connect](active-directory-aadconnectsync-whatis.md) .
 
 Obtenga más información sobre la [Integración de las identidades locales con Azure Active Directory](active-directory-aadconnect.md).

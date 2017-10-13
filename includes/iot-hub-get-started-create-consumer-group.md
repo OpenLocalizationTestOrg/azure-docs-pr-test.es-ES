@@ -1,10 +1,10 @@
-## <a name="add-a-consumer-group-tooyour-iot-hub"></a>Agregar un centro de IoT consumidor tooyour de grupo
+## <a name="add-a-consumer-group-to-your-iot-hub"></a>Adición de un grupo de consumidores a IoT Hub
 
-Grupos de consumidores usan los datos de toopull de las aplicaciones de centro de IoT de Azure. En este tutorial, creará un toobe de grupo de consumidores usado por un próximos datos tooread del servicio de Azure desde el centro de IoT.
+Las aplicaciones usan grupos de consumidores para extraer datos de Azure IoT Hub. En este tutorial, se va a crear un grupo de consumidores que un próximo servicio de Azure utilizará para leer los datos de IoT Hub.
 
-tooadd un centro de IoT tooyour del grupo de consumidores, siga estos pasos:
+Para agregar un grupo de consumidores a su centro de IoT, siga estos pasos:
 
-1. Hola [portal de Azure](https://ms.portal.azure.com/), abra el centro de IoT.
-2. En el panel izquierdo de hello, haga clic en **extremos**, seleccione **eventos** en el panel central de hello, escriba un nombre en **grupos de consumidores** en Hola panel derecho y, a continuación, haga clic en  **Guardar**.
+1. En el [portal de Azure](https://ms.portal.azure.com/), abra su centro de IoT.
+2. En el panel izquierdo, haga clic en **Puntos de conexión**, seleccione **Eventos** en el panel central, escriba un nombre en **Grupos de consumidores** en el panel derecho y, a continuación, haga clic en **Guardar**.
 
    ![Creación de un grupo de consumidores para el IoT Hub](../articles/iot-hub/media/iot-hub-create-consumer-group/1_iot-hub-create-consumer-group-azure.png)

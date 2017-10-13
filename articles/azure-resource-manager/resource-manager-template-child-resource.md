@@ -1,6 +1,6 @@
 ---
-title: recurso de aaaDefine secundario en la plantilla de Azure | Documentos de Microsoft
-description: "Muestra cómo tooset Hola tipo de recurso y el nombre de recurso secundario en una plantilla de Azure Resource Manager"
+title: "Definición de recursos secundarios en la plantilla de Azure | Microsoft Docs"
+description: "Muestra cómo se establece el tipo y el nombre de un recurso secundario en una plantilla de Azure Resource Manager"
 services: azure-resource-manager
 documentationcenter: 
 author: tfitzmac
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: tomfitz
-ms.openlocfilehash: c502c589100d7ae864d7fb01b5ba10ddfaf92592
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5b6ce5526f354008eb4a697deec737876f22391f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-name-and-type-for-child-resource-in-resource-manager-template"></a>Establecimiento del nombre y el tipo de recurso secundario en la plantilla de Resource Manager
-Al crear una plantilla, con frecuencia necesitan tooinclude un recurso secundario que es el recurso primario de tooa relacionados. Por ejemplo, la plantilla puede incluir un servidor SQL Server y una base de datos. Hola SQL server es el recurso primario de Hola, y base de datos de Hola Hola secundarios recursos. 
+Al crear una plantilla, con frecuencia es necesario incluir un recurso secundario relacionado con uno primario. Por ejemplo, la plantilla puede incluir un servidor SQL Server y una base de datos. SQL Server es el recurso primario y la base de datos, el secundario. 
 
-formato de Hola Hola secundarios del tipo de recurso es:`{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`
+El formato del tipo de recurso secundario es: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`
 
-Hola formato del nombre de recurso de hello secundarios es:`{parent-resource-name}/{child-resource-name}`
+El formato del nombre de recurso secundario es: `{parent-resource-name}/{child-resource-name}`
 
-Sin embargo, especificar tipo de Hola y el nombre de una plantilla diferente en función de si está anidada dentro de recurso primario de hello, o en su propio en nivel superior de Hola. Este tema muestra cómo toohandle ambos enfoques.
+Sin embargo, el tipo y el nombre se especifican en una plantilla de manera diferente en función de si se anida dentro del recurso primario o por sí misma en el nivel superior. En este tema se muestra cómo aplicar ambos enfoques.
 
-Al construir un recurso de tooa de referencia completa, Hola orden toocombine segmentos de tipo hello y nombre no es simplemente una concatenación de hello dos.  En su lugar, después de espacio de nombres de hello, utilice una secuencia de */nombre de tipo* pares de toomost menos específica específico:
+Al construir una referencia completa a un recurso, el orden para combinar los segmentos a partir del tipo y el nombre no es simplemente una concatenación de los dos.  En su lugar, después del espacio de nombres, use una secuencia de pares *tipo/nombre* de menos a más específico:
 
 ```json
 {resource-provider-namespace}/{parent-resource-type}/{parent-resource-name}[/{child-resource-type}/{child-resource-name}]*
@@ -40,7 +40,7 @@ Por ejemplo:
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` es correcto `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` no es correcto
 
 ## <a name="nested-child-resource"></a>Recurso secundario anidado
-toodefine de manera más fácil de Hello un recurso secundario es toonest dentro de recurso primario de Hola. Hello en el ejemplo siguiente se muestra una base de datos SQL anidado dentro de un servidor SQL Server.
+La manera más fácil de definir un recurso secundario es anidarlo en el primario. En el ejemplo siguiente se muestra una base de datos de SQL anidada en un servidor SQL Server.
 
 ```json
 {
@@ -59,10 +59,10 @@ toodefine de manera más fácil de Hello un recurso secundario es toonest dentro
 }
 ```
 
-Para recursos secundarios de hello, tipo de Hola se establece demasiado`databases` , pero su tipo de recurso completo es `Microsoft.Sql/servers/databases`. No proporciona `Microsoft.Sql/servers/` porque se da por supuesto Hola primario tipo de recurso. nombre de recurso de Hello secundario está establecido demasiado`exampledatabase` pero el nombre completo de hello incluye el nombre de elemento primario de Hola. No proporciona `exampleserver` porque se da por supuesto de recurso primario de Hola.
+Para el recurso secundario, el tipo se establece en `databases`, pero el tipo de recurso completo es `Microsoft.Sql/servers/databases`. No proporciona `Microsoft.Sql/servers/`, porque lo adopta del tipo de recurso primario. El nombre del recurso secundario se establece en `exampledatabase`, pero el nombre completo incluye el primario. No proporciona `exampleserver`, porque lo adopta del recurso primario.
 
 ## <a name="top-level-child-resource"></a>Recurso secundario de nivel superior
-Puede definir recursos secundarios de hello en el nivel superior de Hola. Puede usar este enfoque si no se ha implementado el recurso primario de Hola Hola misma plantilla, o si desea toouse `copy` toocreate varios recursos secundarios. Con este enfoque, debe proporcionar el tipo de recurso completo de Hola e incluir nombre de recurso primario de hello en nombre de recurso de hello secundarios.
+Puede definir el recurso secundario en el nivel superior. Este enfoque puede usarse si el recurso primario no está implementado en la misma plantilla o si desea usar `copy` para crear varios recursos secundarios. En este enfoque, es necesario proporcionar el tipo de recurso completo, así como incluir el nombre del recurso primario en el del secundario.
 
 ```json
 {
@@ -81,8 +81,8 @@ Puede definir recursos secundarios de hello en el nivel superior de Hola. Puede 
 }
 ```
 
-base de datos de Hello es un servidor de toohello de recursos secundarios aunque se definen en hello al mismo nivel en la plantilla de Hola.
+La base de datos es un recurso secundario del servidor, aunque se definan en el mismo nivel en la plantilla.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para obtener recomendaciones sobre cómo toocreate plantillas, consulte [las prácticas recomendadas para la creación de plantillas de Azure Resource Manager](resource-manager-template-best-practices.md).
+* Para más recomendaciones sobre la creación de plantillas, consulte [Procedimientos recomendados para crear plantillas de Azure Resource Manager](resource-manager-template-best-practices.md).
 * Para obtener un ejemplo de creación de varios recursos secundarios, consulte [Implementación de varias instancias de recursos en plantillas de Azure Resource Manager](resource-group-create-multiple.md).

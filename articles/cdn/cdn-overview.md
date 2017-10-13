@@ -1,6 +1,6 @@
 ---
-title: "información general de la red CDN aaaAzure | Documentos de Microsoft"
-description: "Obtenga información acerca de qué hello es la red de entrega de contenido (CDN) de Azure y cómo toouse se toodeliver contenido de gran ancho de banda almacenando en memoria caché los blobs y el contenido estático."
+title: "Información general de CDN de Azure | Microsoft Docs"
+description: "Obtenga información acerca de Content Delivery Network (CDN) de Azure y de cómo usarla para ofrecer contenido con alto ancho de banda mediante el almacenamiento en caché de blobs y contenidos estáticos."
 services: cdn
 documentationcenter: 
 author: smcevoy
@@ -14,38 +14,38 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 02/08/2017
 ms.author: v-semcev
-ms.openlocfilehash: e0230a6e107969b845985f2f4d357bf93cd40d42
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 909c4dc3feaeaedf56ecacc78f4b7e0e15d98875
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="overview-of-hello-azure-content-delivery-network-cdn"></a>Información general de hello red de entrega de contenido (CDN) de Azure
+# <a name="overview-of-the-azure-content-delivery-network-cdn"></a>Información general de Content Delivery Network (CDN) de Azure
 > [!NOTE]
-> Este documento describe qué hello es la red de entrega de contenido (CDN) de Azure, cómo funciona y características de Hola de cada producto de la red CDN de Azure.  Si desea que esta información tooskip y vaya tooa recta tutorial acerca de cómo toocreate un extremo de red CDN, vea [CDN de Azure utilizando](cdn-create-new-endpoint.md).  Si desea toosee una lista de ubicaciones actuales de nodos de CDN, vea [ubicaciones de POP de CDN de Azure](cdn-pop-locations.md).
+> En este documento se describe qué es Content Delivery Network (CDN) de Azure, cómo funciona y las características de cada producto CDN de Azure.  Si desea omitir esta información y pasar directamente a un tutorial sobre cómo crear un punto de conexión de CDN, consulte [Uso de CDN de Azure](cdn-create-new-endpoint.md).  Para ver una lista de ubicaciones actuales de nodos de CDN, consulte [Ubicaciones POP de la Red de entrega de contenido (CDN) de Azure](cdn-pop-locations.md).
 > 
 > 
 
-Hola red de entrega de contenido (CDN) de Azure almacena en caché el contenido web estático en el rendimiento máximo de tooprovide situadas estratégicamente para entregar contenido toousers.  Hola CDN ofrece a los desarrolladores una solución global para entregar contenido con alto ancho de banda al almacenar en caché contenido de hello en nodos físicos a través de Hola a todos. 
+Content Delivery Network (CDN) de Azure almacena en caché contenido de web estático en ubicaciones colocadas estratégicamente para proporcionar el máximo rendimiento a la hora de proporcionar contenido a los usuarios.  CDN ofrece a los desarrolladores una solución global para entregar contenido de alto ancho de banda almacenando en caché el contenido en nodos físicos en todo el mundo. 
 
-Hola ventajas del uso de recursos de sitio web de toocache CDN Hola se incluyen:
+Entre las ventajas de utilizar la red CDN para almacenar en memoria caché los recursos de sitios web se incluyen:
 
-* Mejor rendimiento y experiencia de usuario para los usuarios finales, especialmente cuando el uso de aplicaciones donde es varios ida y vuelta necesarios contenido tooload.
-* Gran escala toobetter identificador cargas instantáneas pesadas, como en el inicio de Hola de un producto de iniciar el evento.
-* Al distribuir las solicitudes de usuario y que sirve al contenido de los servidores de borde, menos tráfico se envía toohello origen.
+* Mejor rendimiento y experiencia del usuario para los usuarios finales sobre todo a la hora de utilizar aplicaciones donde son necesarios varios recorridos de ida y vuelta para cargar el contenido
+* Gran escalado para mejorar la administración de cargas instantáneas pesadas, por ejemplo, al comienzo de un evento de lanzamiento de un producto.
+* Al distribuir solicitudes de usuarios y ofrecer contenido desde servidores perimetrales, se envía menos tráfico al origen.
 
 ## <a name="how-it-works"></a>Cómo funciona
 ![Información general de la red CDN](./media/cdn-overview/cdn-overview.png)
 
-1. Un usuario (Alice) solicita un archivo (también denominado un recurso) mediante una dirección URL con un nombre de dominio especial, como `<endpointname>.azureedge.net`.  DNS enruta la ubicación de punto de presencia (POP) mejor rendimiento de hello solicitud toohello.  Normalmente, se trata de hello POP que sea usuario de toohello más cercano geográficamente.
-2. Si servidores perimetrales de Hola Hola POP no tiene archivo hello en la memoria caché, hello borde servidor solicita archivo hello origen Hola.  Hola origen puede ser una aplicación Web de Azure, servicio de nube de Azure, cuenta de almacenamiento de Azure o cualquier servidor web accesible públicamente.
-3. origen de Hello devuelve Hola archivo toohello borde del servidor, incluidos los encabezados HTTP opcionales que describen Time-to-Live del archivo hello (TTL).
-4. servidor perimetral de Hello almacena en caché archivo hello y devuelve el solicitante original de hello archivo toohello (Alicia).  archivo Hello permanece en la caché en el servidor perimetral de hello hasta que expire Hola TTL.  Si el origen de hello no especifica un valor de TTL, el TTL predeterminado de hello es siete días.
-5. Los usuarios adicionales pueden Hola de solicitud mismo archivo con esa misma dirección URL y, también puede ser dirigido toothat mismo POP.
-6. Si no ha expirado hello TTL para archivo hello, servidor perimetral de hello devuelve archivo hello de memoria caché de Hola.  Esto genera una experiencia de usuario más rápida y una mayor capacidad de respuesta.
+1. Un usuario (Alice) solicita un archivo (también denominado un recurso) mediante una dirección URL con un nombre de dominio especial, como `<endpointname>.azureedge.net`.  DNS enruta la solicitud hacia la ubicación del punto de presencia (POP) con mejor rendimiento.  Este es normalmente el POP geográficamente más cercano al usuario.
+2. Si los servidores perimetrales del POP no tienen el archivo en la memoria caché, el servidor perimetral solicitará el archivo desde el origen.  El origen puede ser una aplicación web, servicio en la nube o cuenta de Azure Storage, o cualquier servidor web accesible públicamente.
+3. El origen devuelve el archivo al servidor perimetral, incluidos los encabezados HTTP opcionales que describen el período de vida (TTL) del archivo.
+4. El servidor perimetral almacena el archivo en caché y devuelve el archivo al solicitante original (Alice).  El archivo permanece en caché en el servidor perimetral hasta que expire el TTL.  Si el origen no ha especificado ningún TTL, el valor predeterminado será de siete días.
+5. Después, los usuarios adicionales pueden solicitar el mismo archivo mediante la misma dirección URL y también se les puede dirigir al mismo POP.
+6. Si no ha expirado el TTL para el archivo, el servidor perimetral devolverá el archivo desde la memoria caché.  Esto genera una experiencia de usuario más rápida y una mayor capacidad de respuesta.
 
 ## <a name="azure-cdn-features"></a>Características de la red CDN de Azure
-Hay tres productos del servicio CDN de Azure: **Azure CDN Standard de Akamai**, **Azure CDN Standard de Verizon** y **Azure CDN Premium de Verizon**.  Hello siguiente tabla enumeran Hola características disponibles con cada producto.
+Hay tres productos del servicio CDN de Azure: **Azure CDN Standard de Akamai**, **Azure CDN Standard de Verizon** y **Azure CDN Premium de Verizon**.  En la tabla siguiente se enumeran las características disponibles con cada producto.
 
 |  | Estándar de Akamai | Estándar de Verizon | Premium de Verizone |
 | --- | --- | --- | --- |
@@ -74,7 +74,7 @@ Hay tres productos del servicio CDN de Azure: **Azure CDN Standard de Akamai**, 
 | [Estadísticas en tiempo real](cdn-real-time-stats.md) | | |**&amp;#x2713;** |
 | [Alertas en tiempo real](cdn-real-time-alerts.md) | | |**&amp;#x2713;** |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  __Facilidad de uso__ |
-| Fácil integración con servicios de Azure, como [Storage](cdn-create-a-storage-account-with-cdn.md), [Cloud Services](cdn-cloud-service-with-cdn.md), [Web Apps](../app-service-web/app-service-web-tutorial-content-delivery-network.md) y [Media Services](../media-services/media-services-portal-manage-streaming-endpoints.md) |**&amp;#x2713;** |**&amp;#x2713;** |**&amp;#x2713;** |
+| Fácil integración con servicios de Azure, como [Storage](cdn-create-a-storage-account-with-cdn.md), [Cloud Services](cdn-cloud-service-with-cdn.md), [Web Apps](../app-service/app-service-web-tutorial-content-delivery-network.md) y [Media Services](../media-services/media-services-portal-manage-streaming-endpoints.md) |**&amp;#x2713;** |**&amp;#x2713;** |**&amp;#x2713;** |
 | Se puede administrar mediante la [API de REST](https://msdn.microsoft.com/library/mt634456.aspx), [.NET](cdn-app-dev-net.md), [Node.js](cdn-app-dev-node.md) o [PowerShell](cdn-manage-powershell.md). |**&amp;#x2713;** |**&amp;#x2713;** |**&amp;#x2713;** |
 | [Motor de entrega de contenido personalizable, basado en reglas](cdn-rules-engine.md) | | |**&amp;#x2713;** |
 | Configuración de la memoria caché o del encabezado (mediante un [motor de reglas](cdn-rules-engine.md)) | | |**&amp;#x2713;** |
@@ -85,18 +85,18 @@ Hay tres productos del servicio CDN de Azure: **Azure CDN Standard de Akamai**, 
 
 
 > [!TIP]
-> ¿Hay una característica que te gustaría toosee en la red CDN de Azure?  [Envíenos sus comentarios](https://feedback.azure.com/forums/169397-cdn). 
+> ¿Hay una característica que le gustaría ver en CDN de Azure?  [Envíenos sus comentarios](https://feedback.azure.com/forums/169397-cdn). 
 > 
 > 
 
 ## <a name="next-steps"></a>Pasos siguientes
-tooget partió CDN, vea [CDN de Azure utilizando](cdn-create-new-endpoint.md).
+Para empezar a trabajar con la red CDN, consulte [Uso de CDN de Azure](cdn-create-new-endpoint.md).
 
-Si es un cliente existente de la red CDN, ahora puede administrar los extremos de red CDN mediante hello [portal de Microsoft Azure](https://portal.azure.com) o con [PowerShell](cdn-manage-powershell.md).
+Si ya es cliente del servicio CDN, ahora puede administrar los puntos de conexión de CDN utilizando [Microsoft Azure Portal](https://portal.azure.com) o [PowerShell](cdn-manage-powershell.md).
 
-toosee Hola CDN en acción, visite hello [vídeo de la sesión de 2016 de compilación](https://azure.microsoft.com/documentation/videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/).
+Para ver la red CDN en acción, consulte el [vídeo sobre nuestra sesión de Build 2016](https://azure.microsoft.com/documentation/videos/build-2016-leveraging-the-new-azure-cdn-apis-to-build-wicked-fast-applications/).
 
-Obtenga información acerca de cómo tooautomate CDN de Azure con [.NET](cdn-app-dev-net.md) o [Node.js](cdn-app-dev-node.md).
+Aprenda a automatizar Azure CDN con [.NET](cdn-app-dev-net.md) o [Node.js](cdn-app-dev-node.md).
 
 Para más información sobre los precios, consulte [Precios de Red de entrega de contenido (CDN)](https://azure.microsoft.com/pricing/details/cdn/).
 

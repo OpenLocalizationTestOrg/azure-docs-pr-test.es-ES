@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con Druva | Microsoft Docs"
-description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y Druva."
+description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y Druva."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,125 +14,125 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: a1c36c06d6d005e0aa363fbf34efe630e4cca1ad
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b23e73c47b9a00893e036b67826e4b7ead819a1d
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-druva"></a>Tutorial: Integración de Azure Active Directory con Druva
 
-En este tutorial, aprenderá cómo toointegrate Druva con Azure Active Directory (Azure AD).
+En este tutorial, obtendrá información sobre cómo integrar Druva con Azure Active Directory (Azure AD).
 
-Integración de Druva con Azure AD proporciona Hola siguientes ventajas:
+La integración de Druva con Azure AD le proporciona las siguientes ventajas:
 
-- Puede controlar en Azure AD que tenga acceso tooDruva.
-- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooDruva (Single Sign-On) con sus cuentas de Azure AD.
-- Puede administrar las cuentas en una ubicación central: Hola portal de Azure.
+- Puede controlar en Azure AD quién tiene acceso a Druva.
+- Puede permitir que los usuarios inicien sesión automáticamente en Druva (inicio de sesión único) con sus cuentas de Azure AD.
+- Puede administrar sus cuentas en una ubicación central: Azure Portal.
 
-Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Si desea saber más sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-integración de Azure AD con Druva tooconfigure, necesita Hola siguientes elementos:
+Para configurar la integración de Azure AD con Druva, necesita los siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción habilitada para el inicio de sesión único en Druva
 
 > [!NOTE]
-> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
+> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
 
-pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
+Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
 
 - No use el entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede [obtener una versión de prueba durante un mes](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
 
-1. Agregar Druva desde la Galería de Hola
+1. Incorporación de Druva desde la galería
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-druva-from-hello-gallery"></a>Agregar Druva desde la Galería de Hola
-integración de hello tooconfigure de Druva en Azure AD, deberá tooadd Druva de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
+## <a name="adding-druva-from-the-gallery"></a>Incorporación de Druva desde la galería
+Para configurar la integración de Druva en Azure AD, tendrá que agregar Druva desde la galería a la lista de aplicaciones SaaS administradas.
 
-**tooadd Druva de galería de hello, lleve a cabo Hola pasos:**
+**Para agregar Druva desde la galería, realice los pasos siguientes:**
 
-1. Hola  **[portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
+1. En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
 
-    ![botón de Hello Azure Active Directory][1]
+    ![Botón Azure Active Directory][1]
 
-2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
+2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
 
-    ![hoja de aplicaciones de empresa de Hola][2]
+    ![Hoja Aplicaciones empresariales][2]
     
-3. tooadd nueva aplicación, haga clic en **nueva aplicación** botón en la parte superior de saludo del cuadro de diálogo.
+3. Para agregar una nueva aplicación, haga clic en el botón **Nueva aplicación** de la parte superior del cuadro de diálogo.
 
-    ![botón de nueva aplicación Hola][3]
+    ![Botón Nueva aplicación][3]
 
-4. En el cuadro de búsqueda de hello, escriba **Druva**, seleccione **Druva** desde el panel de resultados, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.
+4. En el cuadro de búsqueda, escriba **Druva**, seleccione **Druva** en el panel de resultados y, luego, haga clic en el botón **Agregar** para añadir la aplicación.
 
-    ![Lista de resultados de Druva Hola](./media/active-directory-saas-druva-tutorial/tutorial_druva_addfromgallery.png)
+    ![Druva en la lista de resultados](./media/active-directory-saas-druva-tutorial/tutorial_druva_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configuración y prueba del inicio de sesión único en Azure AD
 
 En esta sección, podrá configurar y probar el inicio de sesión único de Azure AD con Druva con un usuario de prueba llamado "Britta Simon".
 
-Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en Druva es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en Druva debe toobe establecido.
+Para que el inicio de sesión único funcione, Azure AD necesita saber cuál es el usuario homólogo de Druva para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de Druva.
 
-En Druva, asigne el valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** tooestablish la relación de vínculo de Hola.
+Para establecer la relación de vínculo, en Druva, asigne el valor de **nombre de usuario** de Azure AD como valor de **nombre de usuario**.
 
-tooconfigure y prueba de inicio de sesión único en Azure AD con Druva, deberá hello toocomplete después de bloques de creación:
+Para configurar y probar el inicio de sesión único de Azure AD con Druva, es preciso completar los siguientes bloques de creación:
 
-1. **[Configurar Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.
-2. **[Crear un usuario de prueba de Azure AD](#create-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.
-3. **[Crear un usuario de prueba de Druva](#create-a-druva-test-user)**  -toohave un equivalente de Britta Simon en Druva que es la representación toohello vinculado Azure AD del usuario.
-4. **[Asignar el usuario de prueba de hello Azure AD](#assign-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.
-5. **[Probar el inicio de sesión único](#test-single-sign-on)**  -tooverify Hola si funciona la configuración.
+1. **[Configuración del inicio de sesión único de Azure AD](#configure-azure-ad-single-sign-on)**: para permitir que los usuarios utilicen esta característica.
+2. **[Creación de un usuario de prueba de Azure AD](#create-an-azure-ad-test-user)**: para probar el inicio de sesión único de Azure AD con Britta Simon.
+3. **[Creación de un usuario de prueba de Druva](#create-a-druva-test-user)**: para tener un homólogo de Britta Simon en Druva que esté vinculado a la representación del usuario en Azure AD.
+4. **[Asignación del usuario de prueba de Azure AD](#assign-the-azure-ad-test-user)**: para permitir que Britta Simon use el inicio de sesión único de Azure AD.
+5. **[Prueba del inicio de sesión único](#test-single-sign-on)**: para comprobar si la configuración funciona.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación de Druva.
+En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y lo configurará en su aplicación Druva.
 
-**inicio de sesión único en Azure AD tooconfigure con Druva, siga Hola pasos:**
+**Para configurar el inicio de sesión único de Azure AD con Druva, realice los pasos siguientes:**
 
-1. En el portal de Azure, en Hola Hola **Druva** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
+1. En Azure Portal, en la página de integración de la aplicación **Druva**, haga clic en **Inicio de sesión único**.
 
     ![Vínculo Configurar inicio de sesión único][4]
 
-2. En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.
+2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
  
     ![Cuadro de diálogo Inicio de sesión único](./media/active-directory-saas-druva-tutorial/tutorial_druva_samlbase.png)
 
-3. En hello **Druva dominio y las direcciones URL** sección, lleve a cabo Hola pasos:
+3. En la sección **Dominio y direcciones URL de Druva**, lleve a cabo los pasos siguientes:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-druva-tutorial/tutorial_druva_url.png)
 
-    Hola **dirección URL de inicio de sesión** cuadro de texto, escriba la dirección URL hello:`https://cloud.druva.com/home`
+    En el cuadro de texto **URL de inicio de sesión**, escriba la dirección URL: `https://cloud.druva.com/home`
 
-4. En hello **el certificado de firma de SAML** sección, haga clic en **Certificate(Base64)** y, a continuación, guarde el archivo de certificado de hello en el equipo.
+4. En la sección **Certificado de firma de SAML**, haga clic en **Certificado (Base64)** y, luego, guarde el archivo de certificado en el equipo.
 
-    ![vínculo de descarga del certificado de Hola](./media/active-directory-saas-druva-tutorial/tutorial_druva_certificate.png) 
+    ![Vínculo de descarga del certificado](./media/active-directory-saas-druva-tutorial/tutorial_druva_certificate.png) 
 
-5. La aplicación Druva espera las aserciones de SAML de hello en un formato específico, lo que requiere tooyour de asignaciones de atributo personalizado de tooadd **atributos de Token SAML** configuración. 
+5. La aplicación Druva espera las aserciones de SAML en un formato específico, lo que requiere que se agreguen asignaciones de atributos personalizados a la configuración de los **atributos del token SAML**. 
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-druva-tutorial/tutorial_druva_attribute.png)
 
-6. Hola **atributos de usuario** sección en hello **inicio de sesión único** cuadro de diálogo, configurar atributos de token de SAML como se muestra en hello delante de la imagen y realizar Hola pasos:
+6. En la sección **Atributos de usuario** del cuadro de diálogo **Inicio de sesión único**, configure el atributo del token de SAML como muestra la imagen anterior y realice los siguientes pasos:
 
     | Nombre del atributo      | Valor de atributo      |
     | ------------------- | -------------------- |
-    | insync\_auth\_token |Escriba Hola token generado valor |
+    | insync\_auth\_token |Escriba el valor del token generado |
     
-    a. Haga clic en **Agregar atributo** tooopen hello **Agregar atributo** cuadro de diálogo.
+    a. Haga clic en **Agregar atributo** para abrir el cuadro de diálogo **Agregar atributo**.
     
     ![Configurar inicio de sesión único](./media/active-directory-saas-druva-tutorial/tutorial_attribute_04.png)
     
     ![Configurar inicio de sesión único](./media/active-directory-saas-druva-tutorial/tutorial_attribute_05.png)
     
-    b. Hola **nombre** cuadro de texto, nombre de atributo de tipo hello se muestra para esa fila.
+    b. En el cuadro de texto **Nombre**, escriba el nombre que se muestra para la fila.
 
-    c. De hello **valor** lista, el valor de atributo de tipo hello se muestra para esa fila. valor del token generado Hola se explica más adelante en el tutorial.
+    c. En la lista **Valor**, seleccione el atributo que se muestra para esa fila. El valor del token generado se explica más adelante en el tutorial.
     
     d. Haga clic en **Aceptar**.    
 
@@ -140,85 +140,85 @@ En esta sección, habilitar inicio de sesión único en Azure AD en hello portal
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-druva-tutorial/tutorial_general_400.png)
 
-8. En hello **configuración de Druva** sección, haga clic en **configurar Druva** tooopen **configurar inicio de sesión** ventana. Hola copia **dirección URL de cierre de sesión y SAML Single Sign-On dirección URL del servicio** de hello **sección de referencia rápida.**
+8. En la sección **Configuración de Druva**, haga clic en **Configurar Druva** para abrir la ventana **Configurar inicio de sesión**. Copie las **direcciones URL del servicio de inicio de sesión único de SAML y de cierre de sesión** de la sección **Referencia rápida**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-druva-tutorial/tutorial_druva_configure.png) 
 
-9. En una ventana del explorador web diferente, inicie sesión en el sitio de empresa de Druva tooyour como administrador.
+9. En otra ventana del explorador web, inicie sesión como administrador en el sitio de la compañía en Druva.
 
-10. Vaya demasiado**administrar \> configuración**.
+10. Vaya a **Administrar \> Configuración**.
 
     ![Configuración](./media/active-directory-saas-druva-tutorial/ic795091.png "Configuración")
 
-11. En el cuadro de diálogo de configuración de inicio de sesión único de hello, realizar Hola pasos:
+11. En el cuadro de diálogo Single Sign-On Settings (Configuración de inicio de sesión único), siga estos pasos:
 
     ![Configuración de inicio de sesión único](./media/active-directory-saas-druva-tutorial/ic795092.png "Configuración de inicio de sesión único")
     
-    a. Pegar **SAML Single Sign-On dirección URL del servicio** valor, que haya copiado desde Hola portal de Azure en hello **dirección URL de inicio de sesión de Id. de proveedor** cuadro de texto.
+    a. Pegue el valor de **SAML Single Sign-On Service URL** (Dirección URL del servicio de inicio de sesión único de SAML) que copió de Azure Portal en el cuadro de texto **ID Provider Login URL** (Dirección URL de inicio de sesión del proveedor de identidades).
     
-    b. Pegar **dirección URL de cierre de sesión** valor, que haya copiado desde Hola portal de Azure en hello **dirección URL de cierre de sesión de Id. de proveedor** cuadro de texto.
+    b. Pegue el valor de **Sign-Out URL** (Dirección URL de cierre de sesión) que copió de Azure Portal en el cuadro de texto **ID Provider Logout URL** (Dirección URL de cierre de sesión del proveedor de identidades).
     
-     c. Abra el certificado codificado en base 64 en el Bloc de notas, Hola copia contenido del mismo en el Portapapeles y, a continuación, péguelo toohello **Id. de proveedor certificado** cuadro de texto
+     c. Abra el certificado codificado en base 64 en el Bloc de notas, copie su contenido en el Portapapeles y luego péguelo en el cuadro de texto **Certificado de proveedor de Id.** .
      
-     d. Hola tooopen **configuración** página, haga clic en **guardar**.
+     d. Para abrir la página **Configuración**, haga clic en **Guardar**.
 
-12. En hello **configuración** página, haga clic en **generar Token de SSO**.
+12. En la página **Configuración**, haga clic en**Generar token de SSO**.
 
     ![Configuración](./media/active-directory-saas-druva-tutorial/ic795093.png "Configuración")
 
-13. En hello **único inicio de sesión autenticación de Token** cuadro de diálogo, realizar Hola pasos:
+13. En el cuadro de diálogo **Token de autenticación de inicio de sesión único** , siga estos pasos:
 
     ![Token de SSO](./media/active-directory-saas-druva-tutorial/ic795094.png "Token de SSO")
     
-    a. Haga clic en **copia**, pegar copia valor en hello **valor** cuadro de texto en hello **Agregar atributo** sección.
+    a. Haga clic en **Copiar**, pegue el valor copiado en el cuadro de texto **Valor** en la sección **Agregar atributo**.
     
     b. Haga clic en **Cerrar**.
 
 > [!TIP]
-> Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!  Después de agregar esta aplicación de hello **Active Directory > aplicaciones empresariales** sección, simplemente haga clic en hello **Single Sign-On** Hola de pestaña y acceso incrustado documentación a través de hello  **Configuración** sección final Hola. Puede leer más acerca de características de documentación de embedded Hola aquí: [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ahora puede leer una versión resumida de estas instrucciones dentro de [Azure Portal](https://portal.azure.com) mientras configura la aplicación.  Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada a través de la sección **Configuración** de la parte inferior. Puede leer más sobre la característica de documentación insertada aquí: [Vista previa: Administración de inicio de sesión único para aplicaciones empresariales en el nuevo Azure Portal]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
 
-objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.
+El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".
 
    ![Creación de un usuario de prueba de Azure AD][100]
 
-**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
+**Siga estos pasos para crear un usuario de prueba en Azure AD:**
 
-1. Hola portal de Azure, en el panel izquierdo de hello, haga clic en hello **Azure Active Directory** botón.
+1. En el panel izquierdo de Azure Portal, haga clic en el botón **Azure Active Directory**.
 
-    ![botón de Hello Azure Active Directory](./media/active-directory-saas-druva-tutorial/create_aaduser_01.png)
+    ![Botón Azure Active Directory](./media/active-directory-saas-druva-tutorial/create_aaduser_01.png)
 
-2. lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos**y, a continuación, haga clic en **todos los usuarios**.
+2. Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y, luego, haga clic en **Todos los usuarios**.
 
-    ![Hola "Usuarios y grupos" y "Todos los usuarios" vínculos](./media/active-directory-saas-druva-tutorial/create_aaduser_02.png)
+    ![Vínculos "Usuarios y grupos" y "Todos los usuarios"](./media/active-directory-saas-druva-tutorial/create_aaduser_02.png)
 
-3. Hola tooopen **usuario** cuadro de diálogo, haga clic en **agregar** en parte superior de Hola de hello **todos los usuarios** cuadro de diálogo.
+3. En la parte superior del cuadro de diálogo **Todos los usuarios**, haga clic en **Agregar** para abrir el cuadro de diálogo **Agregar**.
 
-    ![botón de agregar Hola](./media/active-directory-saas-druva-tutorial/create_aaduser_03.png)
+    ![Botón Agregar](./media/active-directory-saas-druva-tutorial/create_aaduser_03.png)
 
-4. Hola **usuario** diálogo cuadro, lleve a cabo Hola pasos:
+4. En el cuadro de diálogo **Usuario** , realice los pasos siguientes:
 
-    ![cuadro de diálogo de usuario de Hola](./media/active-directory-saas-druva-tutorial/create_aaduser_04.png)
+    ![Cuadro de diálogo Usuario](./media/active-directory-saas-druva-tutorial/create_aaduser_04.png)
 
-    a. Hola **nombre** , escriba **BrittaSimon**.
+    a. En el cuadro **Nombre**, escriba **BrittaSimon**.
 
-    b. Hola **nombre de usuario** cuadro de dirección de correo electrónico de tipo hello del usuario Britta Simon.
+    b. En el cuadro de texto **Nombre de usuario**, escriba la dirección de correo electrónico del usuario Britta Simon.
 
-    c. Seleccione hello **Mostrar contraseña** casilla de verificación y, a continuación, anote el valor de Hola que se muestra en hello **contraseña** cuadro.
+    c. Active la casilla **Mostrar contraseña** y, después, anote el valor que se muestra en el cuadro **Contraseña**.
 
     d. Haga clic en **Crear**.
  
 ### <a name="create-a-druva-test-user"></a>Crear un usuario de prueba de Druva
 
-En orden tooenable toolog de los usuarios de Azure AD en tooDruva, se les deben aprovisionar en Druva. En caso de hello de Druva, el aprovisionamiento es una tarea manual.
+Para permitir que los usuarios de Azure AD inicien sesión en Druva, tiene que aprovisionarse en Druva. En el caso de Druva, el aprovisionamiento es una tarea manual.
 
-**tooconfigure aprovisionamiento de usuario, realizar Hola pasos:**
+**Siga estos pasos para configurar el aprovisionamiento de usuario:**
 
-1. Inicie sesión en tooyour **Druva** como administrador.
+1. Inicie sesión en el sitio de la compañía de **Druva** como administrador.
 
-2. Vaya demasiado**administrar \> usuarios**.
+2. Vaya a **Administrar \> usuarios**.
    
    ![Administración de usuarios](./media/active-directory-saas-druva-tutorial/ic795097.png "Administración de usuarios")
 
@@ -226,44 +226,44 @@ En orden tooenable toolog de los usuarios de Azure AD en tooDruva, se les deben 
    
    ![Administración de usuarios](./media/active-directory-saas-druva-tutorial/ic795098.png "Administración de usuarios")
 
-4. En cuadro de diálogo Crear nuevo usuario de hello realizar Hola pasos:
+4. En el cuadro de diálogo Create New User (Crear nuevo usuario), realice los pasos siguientes:
    
    ![Creación de un nuevo usuario](./media/active-directory-saas-druva-tutorial/ic795099.png "Creación de un nuevo usuario")
    
-   a. Hola **dirección de correo electrónico** cuadro de texto, escriba el correo electrónico de saludo del usuario como  **brittasimon@contoso.com** .
+   a. En el cuadro de texto **Email address** (Dirección de correo electrónico), escriba el correo electrónico del usuario, en este caso, **brittasimon@contoso.com**.
    
-   b. Hola **nombre** cuadro de texto, escriba Hola nombre de usuario como **BrittaSimon**.
+   b. En el cuadro de texto **Name** (Nombre), escriba el nombre de usuario, por ejemplo, **BrittaSimon**.
    
    c. Haga clic en **Crear usuario**.
 
 >[!NOTE]
->Puede usar cualquier otra Druva usuario cuenta herramienta de creación o las API proporcionadas por Druva tooprovision cuentas de usuario de Azure AD.
+>Puede usar cualquier otra API o herramienta de creación de cuentas de usuario de Druva que proporcione Druva para aprovisionar cuentas de usuario de Azure AD.
 
-### <a name="assign-hello-azure-ad-test-user"></a>Asignar el usuario de prueba de hello Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
 
-En esta sección, se habilita Britta Simon toouse un inicio de sesión único Azure concediendo acceso tooDruva.
+En esta sección, habilitará a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a Druva.
 
-![Asigne el rol de usuario de Hola][200] 
+![Asignación del rol de usuario][200] 
 
-**tooassign Britta Simon tooDruva, lleve a cabo Hola pasos:**
+**Para asignar el usuario Britta Simon a Druva, realice los pasos siguientes:**
 
-1. Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
+1. En Azure Portal, abra la vista de aplicaciones, vaya a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego, haga clic en **Todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones de hello, seleccione **Druva**.
+2. En la lista de aplicaciones, seleccione **Druva**.
 
-    ![vínculo de Druva Hello en la lista de aplicaciones de Hola](./media/active-directory-saas-druva-tutorial/tutorial_druva_app.png)  
+    ![Vínculo a Druva en la lista de aplicaciones](./media/active-directory-saas-druva-tutorial/tutorial_druva_app.png)  
 
-3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
+3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
 
-    ![vínculo de "Usuarios y grupos" Hello][202]
+    ![Vínculo "Usuarios y grupos"][202]
 
 4. Haga clic en el botón **Agregar**. Después, seleccione **Usuarios y grupos** en el cuadro de diálogo **Agregar asignación**.
 
-    ![panel de agregar asignación de Hola][203]
+    ![Panel Agregar asignación][203]
 
-5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
+5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -271,14 +271,14 @@ En esta sección, se habilita Britta Simon toouse un inicio de sesión único Az
     
 ### <a name="test-single-sign-on"></a>Prueba de inicio de sesión único
 
-En esta sección, comprobará su único inicio de sesión en configuración de Azure AD con hello Panel de acceso.
+En esta sección, probará la configuración de inicio de sesión único de Azure AD mediante el Panel de acceso.
 
-Al hacer clic en icono de Druva Hola Hola Panel de acceso, deberá obtener la aplicación de Druva tooyour automáticamente ha iniciado sesión.
-Para obtener más información sobre el Panel de acceso, consulte [Introducción toohello Panel de acceso](active-directory-saas-access-panel-introduction.md). 
+Al hacer clic en el icono de Druva en el panel de acceso, debería iniciar sesión automáticamente en su aplicación Druva.
+Para más información sobre el Panel de acceso, consulte [Introducción al Panel de acceso](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

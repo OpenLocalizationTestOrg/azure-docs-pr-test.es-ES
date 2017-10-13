@@ -1,6 +1,6 @@
 ---
-title: "uso de clústeres de HDInsight de aaaCustomize script acciones - Azure | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toocustomize HDInsight clústeres utilizando la acción de secuencia de comandos."
+title: "Personalización de clústeres de HDInsight mediante acciones de script - Azure | Microsoft Docs"
+description: "Obtenga información acerca de cómo personalizar clústeres de HDInsight mediante la acción de script."
 services: hdinsight
 documentationcenter: 
 author: nitinme
@@ -16,41 +16,41 @@ ms.topic: article
 ms.date: 10/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 076fff23e016db47bc7e9963582a545ad638e691
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ec95b6d66c71b4278dd1e16807fcc75f5e8b1c36
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Personalización de clústeres de HDInsight mediante la acción de scripts (Windows)
-**Acción de secuencia de comandos** puede ser usado tooinvoke [scripts personalizados](hdinsight-hadoop-script-actions.md) durante el proceso de creación de clúster de Hola para instalar software adicional en un clúster.
+**acción de script** se puede usar para invocar [scripts personalizados](hdinsight-hadoop-script-actions.md) durante el proceso de creación de clústeres para instalar software adicional en un clúster.
 
-información de Hello en este artículo es específicos clústeres de HDInsight basados en tooWindows. Para obtener más información sobre clústeres basados en Linux, vea [Personalización de clústeres de HDInsight mediante la acción de scripts (Linux)](hdinsight-hadoop-customize-cluster-linux.md).
+La información de este artículo es específica de los clústeres de HDInsight basados en Windows. Para obtener más información sobre clústeres basados en Linux, vea [Personalización de clústeres de HDInsight mediante la acción de scripts (Linux)](hdinsight-hadoop-customize-cluster-linux.md).
 
 > [!IMPORTANT]
-> Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-Clústeres de HDInsight pueden personalizarse en una variedad de otras maneras, como la inclusión de las cuentas de almacenamiento de Azure adicionales, cambiar hello Hadoop (core-site.xml, hive-site.xml, etc.) de los archivos de configuración o agregar compartidas bibliotecas (p. ej., Hive y Oozie) en ubicaciones comunes en clúster de Hola. Estas personalizaciones pueden hacerse a través de PowerShell de Azure, hello Azure HDInsight .NET SDK, u Hola portal de Azure. Para obtener más información, consulte [Creación de clústeres de Hadoop en HDInsight][hdinsight-provision-cluster].
+Los clústeres de HDInsight se pueden personalizar de muchas maneras distintas, por ejemplo, con la inclusión de cuentas de almacenamiento de Azure adicionales, mediante el cambio de archivos de configuración de Hadoop (core-site.xml, hive-site.xml, etc.) o mediante la adición de bibliotecas compartidas (por ejemplo, Oozie o Hive) en ubicaciones comunes en el clúster. Estas personalizaciones pueden realizarse a través de Azure PowerShell, el SDK para .NET de HDInsight de Azure o Azure Portal. Para obtener más información, consulte [Creación de clústeres de Hadoop en HDInsight][hdinsight-provision-cluster].
 
 [!INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell-cli-and-dotnet-sdk.md)]
 
-## <a name="script-action-in-hello-cluster-creation-process"></a>Acción de secuencia de comandos en el proceso de creación de clúster de Hola
-Generar script de acción solo se usa cuando un clúster está en proceso de Hola de que se está creando. Hello siguiente diagrama se muestra cuando se ejecuta la acción de secuencia de comandos durante el proceso de creación de hello:
+## <a name="script-action-in-the-cluster-creation-process"></a>Acción de script en el proceso de aprovisionamiento de clústeres
+Acción de script solo se utiliza mientras un clúster está en proceso de creación. El siguiente diagrama ilustra el momento en que acción de script se ejecuta durante el proceso de aprovisionamiento:
 
 ![Fases y personalización de clústeres de HDInsight durante la creación de clústeres][img-hdi-cluster-states]
 
-Cuando se ejecuta el script de Hola, clúster de hello entra en hello **ClusterCustomization** fase. En esta fase, Hola script se ejecuta bajo la cuenta de administrador del sistema de hello, en paralelo en todos los Hola especificado nodos de clúster de Hola y proporciona privilegios de administrador total en nodos de Hola.
+Cuando se ejecuta el script, el clúster entra en la fase **ClusterCustomization**. En esta fase, el script se ejecuta bajo la cuenta de administrador del sistema, de forma paralela a todos los nodos especificados en el clúster. Asimismo, proporciona privilegios completos de administrador en los nodos.
 
 > [!NOTE]
-> Dado que tiene privilegios de administrador en los nodos de clúster de Hola durante el **ClusterCustomization** fase, puede utilizar operaciones de tooperform de script de Hola como detener e iniciar servicios, incluidos los servicios relacionados con Hadoop. Por lo tanto, como parte del script de Hola, debe asegurarse de esa hello Ambari servicios y otros servicios relacionados con Hadoop están activados y ejecutándose antes de que finaliza la ejecución de script de Hola. Estos servicios son necesarios toosuccessfully determinar Hola mantenimiento y el estado del clúster de hello mientras se está creando. Si cambia cualquier configuración en el clúster que afecta a estos servicios, debe utilizar las funciones de aplicación auxiliar de Hola que se proporcionan. Para obtener más información sobre las funciones auxiliares, consulte [Desarrollo de la acción de script con HDInsight][hdinsight-write-script].
+> Puesto que dispone de privilegios de administrador en los nodos del clúster durante la fase **ClusterCustomization** , podrá usar el script para realizar operaciones como la detención o el inicio de servicios, incluidos los servicios de Hadoop. Por lo tanto, como parte del script, debe asegurarse de que los servicios de Ambari y los demás servicios de Hadoop estén en funcionamiento antes de que finalice el script. Estos servicios son necesarios para determinar correctamente el estado del clúster durante la creación. Si modifica cualquier configuración en el clúster que afecte a estos servicios, deberá usar las funciones auxiliares proporcionadas. Para obtener más información sobre las funciones auxiliares, consulte [Desarrollo de la acción de script con HDInsight][hdinsight-write-script].
 >
 >
 
-salida de Hello y registros de errores de Hola para script de Hola se almacenan en la cuenta de almacenamiento predeterminada de Hola que especificó para el clúster de Hola. Hello registros almacenan en una tabla con nombre de hello **u < \cluster-name-fragment >< \time-stamp > setuplog**. Se trata de registros agregados desde un script de Hola ejecutar en todos los nodos de hello (nodo principal y nodos de trabajador) en clúster de Hola.
+Los registros de errores y resultados del script se almacenan en la cuenta de almacenamiento predeterminada especificada para el clúster. Los registros se almacenan en una tabla con el nombre **u<\cluster-name-fragment><\time-stamp>setuplog**. Estos son registros agregados desde la ejecución del script en todos los nodos (nodos principal y de trabajo) del clúster.
 
-Cada clúster puede aceptar varias acciones de script que se invocan en orden de hello en el que se especifican. Una secuencia de comandos se pueda ejecutar en el nodo principal de hello, nodos de trabajador de Hola o ambos.
+Cada clúster puede aceptar varias acciones de script, que se invocan en el orden en que se hayan especificado. Los scripts se pueden ejecutar en el nodo principal, los nodos de trabajo, o ambos.
 
-HDInsight proporciona varios Hola de tooinstall de secuencias de comandos de los componentes siguientes en clústeres de HDInsight:
+HDInsight proporciona varios scripts para instalar los siguientes componentes en clústeres de HDInsight:
 
 | Nombre | Script |
 | --- | --- |
@@ -60,36 +60,36 @@ HDInsight proporciona varios Hola de tooinstall de secuencias de comandos de los
 | - **Instalar Giraph** |https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1. Vea [Instalación y uso de Giraph en clústeres de HDInsight](hdinsight-hadoop-giraph-install.md). |
 | **Carga previa de las bibliotecas de Hive** |https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1. Vea [Incorporación de bibliotecas de Hive durante la creación de clústeres de HDInsight](hdinsight-hadoop-add-hive-libraries.md) |
 
-## <a name="call-scripts-using-hello-azure-portal"></a>Llamar a secuencias de comandos mediante Hola portal de Azure
-**De hello portal de Azure**
+## <a name="call-scripts-using-the-azure-portal"></a>Llamada a scripts con Azure Portal
+**En Azure portal**
 
 1. Comience a crear un clúster, tal y como se describe en [Creación de clústeres de Hadoop en HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
-2. En configuración opcional para hello **acciones de Script** hoja, haga clic en **Agregar acción de secuencia de comandos** tooprovide detalles sobre la acción de secuencia de comandos de hello, tal y como se muestra a continuación:
+2. En Configuración opcional de la hoja **Acciones de script**, haga clic en **Agregar acción de script** para proporcionar detalles sobre la acción de script, tal y como se muestra a continuación:
 
-    ![Use la acción de secuencia de comandos toocustomize un clúster](./media/hdinsight-hadoop-customize-cluster/HDI.CreateCluster.8.png "toocustomize de acción de secuencia de comandos de uso un clúster")
+    ![Uso de la acción de script para personalizar un clúster](./media/hdinsight-hadoop-customize-cluster/HDI.CreateCluster.8.png "Uso de la acción de script para personalizar un clúster")
 
     <table border='1'>
         <tr><th>Propiedad</th><th>Valor</th></tr>
         <tr><td>Nombre</td>
-            <td>Especifique un nombre para la acción de secuencia de comandos de Hola.</td></tr>
+            <td>Especifique un nombre para la acción de script.</td></tr>
         <tr><td>Identificador URI de script</td>
-            <td>Especifique Hola URI toohello script que es invocado toocustomize Hola clúster. s</td></tr>
+            <td>Especifique el identificador URI al script que se ha invocado para personalizar el clúster. s</td></tr>
         <tr><td>Head/Worker</td>
-            <td>Especifique los nodos de hello (**Head** o **trabajo**) en qué personalización Hola se ejecuta el script.</b>.
-        <tr><td>parameters</td>
-            <td>Especificar parámetros de hello, si así lo requiere el script de Hola.</td></tr>
+            <td>Especifique los nodos (**Head** o **Worker**) en los que se ejecuta el script de personalización</b>.
+        <tr><td>Parámetros</td>
+            <td>Especifique los parámetros, si lo requiere el script.</td></tr>
     </table>
 
-    Presione ENTRAR tooadd más de una secuencia de comandos acción tooinstall varios componentes de clúster de Hola.
-3. Haga clic en **seleccione** toosave Hola configuración de acción de secuencia de comandos y continuar con la creación del clúster.
+    Presione ENTRAR para agregar más de una acción de script para instalar varios componentes en el clúster.
+3. Haga clic en **Seleccionar** para guardar la configuración de la acción de script y continúe con la creación del clúster.
 
 ## <a name="call-scripts-using-azure-powershell"></a>Llamada a scripts con Azure PowerShell
-Este script de PowerShell siguiente muestra cómo tooinstall Spark en Windows en la función de clúster de HDInsight.  
+Este script de PowerShell muestra cómo instalar Spark en un clúster de HDInsight basado en Windows.  
 
     # Provide values for these variables
-    $subscriptionID = "<Azure Suscription ID>" # After "Login-AzureRmAccount", use "Get-AzureRmSubscription" toolist IDs.
+    $subscriptionID = "<Azure Suscription ID>" # After "Login-AzureRmAccount", use "Get-AzureRmSubscription" to list IDs.
 
-    $nameToken = "<Enter A Name Token>"  # hello token is use toocreate Azure service names.
+    $nameToken = "<Enter A Name Token>"  # The token is use to create Azure service names.
     $namePrefix = $nameToken.ToLower() + (Get-Date -Format "MMdd")
 
     $resourceGroupName = $namePrefix + "rg"
@@ -103,7 +103,7 @@ Este script de PowerShell siguiente muestra cómo tooinstall Spark en Windows en
     $defaultBlobContainerName = $hdinsightClusterName
 
     #############################################################
-    # Connect tooAzure
+    # Connect to Azure
     #############################################################
 
     Try{
@@ -115,7 +115,7 @@ Este script de PowerShell siguiente muestra cómo tooinstall Spark en Windows en
     Select-AzureRmSubscription -SubscriptionId $subscriptionID
 
     #############################################################
-    # Prepare hello dependent components
+    # Prepare the dependent components
     #############################################################
 
     # Create resource group
@@ -141,13 +141,13 @@ Este script de PowerShell siguiente muestra cómo tooinstall Spark en Windows en
     # Create cluster with ApacheSpark
     #############################################################
 
-    # Specify hello configuration options
+    # Specify the configuration options
     $config = New-AzureRmHDInsightClusterConfig `
                 -DefaultStorageAccountName "$defaultStorageAccountName.blob.core.windows.net" `
                 -DefaultStorageAccountKey $defaultStorageAccountKey
 
 
-    # Add a script action toohello cluster configuration
+    # Add a script action to the cluster configuration
     $config = Add-AzureRmHDInsightScriptAction `
                 -Config $config `
                 -Name "Install Spark" `
@@ -166,22 +166,22 @@ Este script de PowerShell siguiente muestra cómo tooinstall Spark en Windows en
             -Config $config
 
 
-tooinstall otro software, deberá tooreplace archivo de script de Hola en script de Hola:
+Para instalar otro software, deberá reemplazar el archivo de script en el script:
 
-Cuando se le solicite, escriba credenciales de hello para el clúster de Hola. Puede tardar varios minutos antes de que se crea un clúster Hola.
+Cuando el sistema lo pida, escriba las credenciales para el clúster. El clúster puede tardar varios minutos en crearse.
 
 ## <a name="call-scripts-using-net-sdk"></a>Llamada a scripts mediante .NET SDK
-Hello en el ejemplo siguiente se muestra cómo tooinstall Spark en Windows en la función de clúster de HDInsight. tooinstall otro software, deberá tooreplace archivo de script de hello en el código de hello.
+En el ejemplo siguiente se muestra cómo instalar Spark en un clúster de HDInsight basado en Windows. Para instalar otro software, deberá reemplazar el archivo de script en el código.
 
-**un clúster de HDInsight con Spark toocreate**
+**Para crear un clúster de HDInsight con Spark**
 
 1. Cree una aplicación de consola en C# mediante Visual Studio.
-2. Desde la consola de administrador de paquetes de Nuget hello, ejecute hello siguiente comando.
+2. En la Consola del administrador de paquetes Nuget, ejecute el siguiente comando.
 
         Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
         Install-Package Microsoft.Azure.Management.ResourceManager -Pre
         Install-Package Microsoft.Azure.Management.HDInsight
-3. Hola de uso después de usar las instrucciones en el archivo Program.cs de hello:
+3. Use las siguientes instrucciones using en el archivo Program.cs:
 
         using System;
         using System.Security;
@@ -192,14 +192,14 @@ Hello en el ejemplo siguiente se muestra cómo tooinstall Spark en Windows en la
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
         using Microsoft.Rest;
         using Microsoft.Rest.Azure.Authentication;
-4. Coloque el código de hello en clase hello con siguiente hello:
+4. Coloque el código de la clase con lo siguiente:
 
         private static HDInsightManagementClient _hdiManagementClient;
 
         // Replace with your AAD tenant ID if necessary
         private const string TenantId = UserTokenProvider.CommonTenantId;
         private const string SubscriptionId = "<Your Azure Subscription ID>";
-        // This is hello GUID for hello PowerShell client. Used for interactive logins in this example.
+        // This is the GUID for the PowerShell client. Used for interactive logins in this example.
         private const string ClientId = "1950a258-227b-4e31-a9cf-717495945fc2";
         private const string ResourceGroupName = "<ExistingAzureResourceGroupName>";
         private const string NewClusterName = "<NewAzureHDInsightClusterName>";
@@ -252,11 +252,11 @@ Hello en el ejemplo siguiente se muestra cómo tooinstall Spark en Windows en la
         }
 
         /// <summary>
-        /// Authenticate tooan Azure subscription and retrieve an authentication token
+        /// Authenticate to an Azure subscription and retrieve an authentication token
         /// </summary>
-        /// <param name="TenantId">hello AAD tenant ID</param>
-        /// <param name="ClientId">hello AAD client ID</param>
-        /// <param name="SubscriptionId">hello Azure subscription ID</param>
+        /// <param name="TenantId">The AAD tenant ID</param>
+        /// <param name="ClientId">The AAD client ID</param>
+        /// <param name="SubscriptionId">The Azure subscription ID</param>
         /// <returns></returns>
         static TokenCloudCredentials Authenticate(string TenantId, string ClientId, string SubscriptionId)
         {
@@ -276,42 +276,42 @@ Hello en el ejemplo siguiente se muestra cómo tooinstall Spark en Windows en la
         /// <param name="authToken">An authentication token for your Azure subscription</param>
         static void EnableHDInsight(TokenCloudCredentials authToken)
         {
-            // Create a client for hello Resource manager and set hello subscription ID
+            // Create a client for the Resource manager and set the subscription ID
             var resourceManagementClient = new ResourceManagementClient(new TokenCredentials(authToken.Token));
             resourceManagementClient.SubscriptionId = SubscriptionId;
-            // Register hello HDInsight provider
+            // Register the HDInsight provider
             var rpResult = resourceManagementClient.Providers.Register("Microsoft.HDInsight");
         }
-5. Presione **F5** aplicación de hello toorun.
+5. Presione **F5** para ejecutar la aplicación.
 
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>Soporte técnico para el software de código abierto utilizado en clústeres de HDInsight
-Hola servicio HDInsight de Azure de Microsoft es una plataforma flexible que permite toobuild aplicaciones de grandes cantidades de datos en la nube de hello mediante el uso de un ecosistema de tecnologías de código abierto formado alrededor de Hadoop. Microsoft Azure proporciona un nivel de compatibilidad general para las tecnologías de código abierto, como se describe en hello **admite ámbito** sección de hello <a href="http://azure.microsoft.com/support/faq/" target="_blank">sitio Web de preguntas frecuentes de soporte de Azure</a>. Hola servicio HDInsight proporciona un nivel adicional de compatibilidad con algunos componentes de hello, tal y como se describe a continuación.
+El servicio HDInsight de Microsoft Azure es una plataforma flexible que permite compilar aplicaciones con grandes volúmenes de datos en la nube mediante el ecosistema de tecnologías de código abierto formadas en torno a Hadoop. Microsoft Azure ofrece un nivel general de soporte técnico para las tecnologías de código abierto, tal como se describe en la sección **Ámbito de soporte técnico** del <a href="http://azure.microsoft.com/support/faq/" target="_blank">sitio web de Preguntas más frecuentes de soporte técnico de Azure</a>. Además, el servicio de HDInsight ofrece un nivel adicional de soporte técnico para algunos de los componentes, como se describe a continuación.
 
-Hay dos tipos de componentes de código abierto que están disponibles en hello servicio HDInsight:
+Hay dos tipos de componentes de código abierto que están disponibles en el servicio de HDInsight:
 
-* **Componentes integrados** -estos componentes se instalan previamente en clústeres de HDInsight y proporcionan la funcionalidad básica de clúster de Hola. Por ejemplo, ResourceManager hilo, lenguaje de consulta de Hive hello (HiveQL) y biblioteca de Mahout Hola pertenecen toothis categoría. Una lista completa de componentes del clúster está disponible en [cuáles son las novedades en las versiones de clúster de Hadoop Hola proporcionadas por HDInsight?](hdinsight-component-versioning.md) </a>.
-* **Componentes personalizados** -, como un usuario del clúster hello, puede instalar o usar en la carga de trabajo cualquier componente disponible en la Comunidad de Hola o creado por el usuario.
+* **Componentes integrados** : estos componentes están instalados previamente en clústeres de HDInsight y proporcionan la funcionalidad básica del clúster. Por ejemplo, el administrador de recursos de YARN, el lenguaje de consulta Hive (HiveQL) y la biblioteca Mahout pertenecen a esta categoría. Hay una lista completa de los componentes del clúster disponible en [Novedades en las versiones de clústeres de Hadoop proporcionadas por HDInsight](hdinsight-component-versioning.md)</a>.
+* **Componentes personalizados** : el usuario del clúster puede instalar o usar en la carga de trabajo cualquier componente que esté disponible en la comunidad o que haya creado personalmente.
 
-Componentes integrados son totalmente compatibles, y Microsoft Support le ayudarán tooisolate y resolver los problemas relacionados toothese componentes.
+Los componentes integrados son totalmente compatibles, y el soporte técnico de Microsoft le ayudará a aislar y resolver problemas relacionados con estos componentes.
 
 > [!WARNING]
-> Componentes suministrados con clúster de HDInsight de hello son totalmente compatibles y Microsoft Support le ayudarán tooisolate y resolver los problemas relacionados toothese componentes.
+> Los componentes ofrecidos con HDInsight son totalmente compatibles. Además, el soporte técnico de Microsoft le ayudará a aislar y resolver problemas relacionados con estos componentes.
 >
-> Componentes personalizados reciben soporte comercialmente razonable toohelp toofurther solucionar el problema de Hola. Esto podría producir en resolver el problema de hello ni pedir que tooengage canales disponibles para hello abrir tecnologías de origen donde se encuentra la amplia experiencia para que la tecnología. Por ejemplo, hay diversos sitios de la comunidad que se pueden usar, como el [foro de MSDN para HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Además, los proyectos de Apache tienen sitios del proyecto en [http://apache.org](http://apache.org), por ejemplo, [Hadoop](http://hadoop.apache.org/) y [Spark](http://spark.apache.org/).
+> Los componentes personalizados reciben soporte técnico comercialmente razonable para ayudarle a solucionar el problema. Esto podría resolver el problema o pedirle que forme parte de los canales disponibles para las tecnologías de código abierto donde se encuentra la más amplia experiencia para esa tecnología. Por ejemplo, hay diversos sitios de la comunidad que se pueden usar, como el [foro de MSDN para HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Además, los proyectos de Apache tienen sitios del proyecto en [http://apache.org](http://apache.org), por ejemplo, [Hadoop](http://hadoop.apache.org/) y [Spark](http://spark.apache.org/).
 >
 >
 
-Hola servicio HDInsight proporciona varias maneras de componentes personalizados de toouse. Independientemente de cómo un componente se utiliza o instalado en el clúster de hello, hello mismo nivel de compatibilidad se aplica. A continuación se muestra una lista de las maneras más habituales de Hola que los componentes personalizados pueden utilizarse en clústeres de HDInsight:
+El servicio HDInsight proporciona varias maneras de utilizar los componentes personalizados. Independientemente de cómo se use el componente o cómo se instale en el clúster, se aplica el mismo nivel de soporte técnico. A continuación, se muestra una lista de las maneras más comunes que se pueden usar los componentes personalizados en los clústeres de HDInsight:
 
-1. Envío de trabajos - Hadoop u otros tipos de trabajos que se ejecutan o utilizan componentes personalizados pueden clúster toohello enviado.
-2. Personalización de clúster - durante la creación del clúster, puede especificar opciones de configuración adicionales y componentes personalizados que se instalarán en los nodos de clúster de Hola.
-3. Ejemplos: para componentes personalizados populares, Microsoft y otros elementos pueden proporcionar ejemplos de cómo se pueden usar estos componentes en clústeres de HDInsight Hola. Estas muestras se proporcionan sin soporte técnico.
+1. Envío de trabajos: se pueden enviar al clúster trabajos de Hadoop o de otros tipos que ejecuten o usen componentes personalizados.
+2. Personalización del clúster: durante la creación del clúster puede especificar una configuración adicional y componentes personalizados que se instalarán en los nodos del clúster.
+3. Muestras: para los componentes personalizados más populares, Microsoft y otros pueden proporcionar muestras de cómo estos componentes se pueden utilizar en los clústeres de HDInsight. Estas muestras se proporcionan sin soporte técnico.
 
 ## <a name="develop-script-action-scripts"></a>Desarrollo de scripts de acción de script
 Consulte [Desarrollo de scripts de acciones de script con HDInsight][hdinsight-write-script].
 
-## <a name="see-also"></a>Otras referencias
-* [Crear clústeres de Hadoop en HDInsight] [ hdinsight-provision-cluster] proporciona instrucciones sobre cómo toocreate una HDInsight de clúster mediante el uso de otras opciones personalizadas.
+## <a name="see-also"></a>Consulte también
+* En [Creación de clústeres de Hadoop en HDInsight][hdinsight-provision-cluster] se proporcionan instrucciones sobre cómo crear un clúster de HDInsight con otras opciones personalizadas.
 * [Desarrollo de acciones de script con HDInsight][hdinsight-write-script]
 * [Instalación y uso de Spark en clústeres de HDInsight][hdinsight-install-spark]
 * [Instalación y uso de R en clústeres de Hadoop de HDInsight][hdinsight-install-r]

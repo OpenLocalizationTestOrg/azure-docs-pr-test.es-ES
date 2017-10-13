@@ -1,6 +1,6 @@
 ---
-title: "aaaGuide toocreating una plantilla de solución para hello Marketplace | Documentos de Microsoft"
-description: "Instrucciones detalladas de cómo toocreate, certificar e implementar una plantilla de solución de imagen de varias VM a la venta en hello Azure Marketplace."
+title: "Guía para crear una plantilla de solución en Marketplace | Microsoft Docs"
+description: "Se ofrecen instrucciones detalladas sobre cómo crear, certificar e implementar una plantilla de solución de imagen de varias máquinas virtuales para la venta en Azure Marketplace."
 services: marketplace-publishing
 documentationcenter: 
 author: HannibalSII
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2016
 ms.author: hascipio; v-divte
-ms.openlocfilehash: b0e7067176337dd0d3f6f6ec04c963f80f706ab0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b753bfb4bd69bd9aacf4eebd8999397394c28bc4
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="guide-toocreate-a-solution-template-for-azure-marketplace"></a>Guía de toocreate una plantilla de solución de Azure Marketplace
-Después de completar el paso 1, [creación de cuentas y registro][link-acct-creation], se le han guiado durante la creación de hello de una plantilla de solución de Azure compatible en [técnicos requisitos previos para crear un plantilla de solución](marketplace-publishing-solution-template-creation-prerequisites.md). Ahora se le guiará por los pasos de Hola para crear una plantilla de solución para varias máquinas virtuales en hello [Portal de publicación] [ link-pubportal] para hello Azure Marketplace.
+# <a name="guide-to-create-a-solution-template-for-azure-marketplace"></a>Guía para crear una plantilla de solución en Azure Marketplace
+Después de completar el paso 1, [Creación y registro de cuentas][link-acct-creation], le guiamos en la creación de una plantilla de solución compatible con Azure en [Requisitos previos técnicos para crear una plantilla de solución](marketplace-publishing-solution-template-creation-prerequisites.md). Ahora le guiaremos a través de los pasos para crear una plantilla de solución de varias máquinas virtuales en el [Portal de publicación][link-pubportal] de Azure Marketplace.
 
-## <a name="create-your-solution-template-offer-in-hello-publishing-portal"></a>Crear su oferta de la plantilla de solución en hello Portal de publicación
-Vaya demasiado [https://publish.windowsazure.com](http://publish.windowsazure.com). Al iniciar sesión por hello primera hora toohello [Portal de publicación](https://publish.windowsazure.com/), Hola uso misma cuenta con la que se registró el perfil de vendedor de su empresa. Más adelante, puede agregar a cualquier empleado de la empresa como Coadministrador en hello Portal de publicación.
+## <a name="create-your-solution-template-offer-in-the-publishing-portal"></a>Creación de la oferta de plantilla de solución en el Portal de publicación
+Vaya a [https://publish.windowsazure.com](http://publish.windowsazure.com). Cuando inicie sesión por primera vez en el [Portal de publicación](https://publish.windowsazure.com/), use la misma cuenta con la que se registró el perfil de vendedor de la compañía. Posteriormente, puede agregar a cualquier empleado de la empresa como coadministrador en el Portal de publicación.
 
 ### <a name="1-select-solution-templates"></a>1. Selección de "Plantillas de solución"
   ![dibujo][img-pubportal-menu-sol-templ]
@@ -33,9 +33,9 @@ Vaya demasiado [https://publish.windowsazure.com](http://publish.windowsazure.co
   ![dibujo][img-pubportal-sol-templ-new]
 
 ### <a name="3-start-with-topologies"></a>3. Comienzo con topologías
-Una plantilla de solución es un tooall "primario" de sus topologías. Puede definir varias topologías en una oferta o plantilla de solución. Cuando una oferta se inserta toostaging, se inserta con todos sus topologías. Siga estos pasos hello toodefine su oferta:     
+Una plantilla de solución es una "matriz" para todas sus topologías. Puede definir varias topologías en una oferta o plantilla de solución. Cuando se inserta una oferta en un entorno de ensayo, se inserta con todas sus topologías. Siga estos pasos para definir la oferta:     
 
-* Crear una topología: "Identificador de topología" suele ser nombre Hola de topología de hello para la plantilla de solución de Hola. identificador de topología de Hola se usa en la dirección URL de hello tal y como se muestra a continuación:
+* Creación de una topología: el "identificador de la topología" suele ser el nombre de la topología en la plantilla de solución. El identificador de la topología se usará en la dirección URL, tal como se muestra a continuación:
 
   Azure Marketplace: http://azure.microsoft.com/marketplace/partners/{PublisherNamespace}/{OfferIdentifier}{TopologyIdentifier}
 
@@ -43,25 +43,25 @@ Una plantilla de solución es un tooall "primario" de sus topologías. Puede def
 * Adición de una nueva versión
 
 ### <a name="4-get-your-topology-versions-certified"></a>4. Certificación de las versiones de topología
-Cargar un archivo zip que contiene una versión concreta del topología Hola de tooprovision de todos los archivos necesarios. Este archivo zip debe contener la siguiente hello:
+Cargue un archivo zip que contiene todos los archivos necesarios para realizar el aprovisionamiento de esa versión específica de la topología. Este archivo zip debe contener lo siguiente:
 
 * Los archivos *mainTemplate.json* y *createUiDefinition.json* en su directorio raíz.
 * Las plantillas vinculadas y todos los scripts requeridos.
 
   > [!TIP]
-  > Mientras los desarrolladores trabajan sobre cómo crear soluciones de hello topologías de plantilla y obtenerlas certificada, negocio hello, departamentos de marketing o legales de la empresa pueden trabajar en el contenido de marketing y legal de Hola.
+  > Mientras los desarrolladores trabajan en la creación de las topologías de la plantilla de solución y en conseguir que se certifiquen, el departamento comercial, de marketing o legal de su empresa puede trabajar en el contenido de marketing y legal.
   >
   >
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora que ha creado la plantilla de solución y cargado el archivo zip de hello, siga las instrucciones de Hola Hola [Guía de contenido de marketing de Marketplace](marketplace-publishing-push-to-staging.md) antes de insertar Hola oferta toostaging. conjunto completo de hello toosee de marketplace publicar artículos, visite [Introducción: cómo toopublish una toohello de oferta de Azure Marketplace](marketplace-publishing-getting-started.md).
+Ahora que ha creado la plantilla de solución y cargado el archivo .zip, siga las instrucciones de la [Guía de contenido de marketing de Marketplace](marketplace-publishing-push-to-staging.md) antes de enviar la oferta al entorno de ensayo. Para ver el conjunto completo de artículos de la publicación de Marketplace, consulte [Introducción: Publicación de una oferta en Azure Marketplace](marketplace-publishing-getting-started.md).
 
 Es posible que también le interesen los siguientes artículos relacionados:
 
 * Imágenes de máquinas virtuales: [Acerca de las imágenes de máquina virtual en Azure](https://msdn.microsoft.com/library/azure/dn790290.aspx)
 * Extensiones de VM: [Información general del agente de máquina virtual y las extensiones de VM](https://msdn.microsoft.com/library/azure/dn832621.aspx) y [Características y extensiones de máquina virtual de Azure](https://msdn.microsoft.com/library/azure/dn606311.aspx)
 * Azure Resource Manager: [Creación de plantillas de Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) y [Ejemplos sencillos de plantillas](https://github.com/rjmax/ArmExamples)
-* Limita la cuenta de almacenamiento: [cómo tooMonitor para la limitación de la cuenta de almacenamiento](http://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx) y [almacenamiento Premium](../storage/common/storage-premium-storage.md#scalability-and-performance-targets)
+* Limitaciones de cuentas de almacenamiento: [Supervisión de limitaciones de cuentas de almacenamiento](http://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx) y [Premium Storage](../storage/common/storage-premium-storage.md#scalability-and-performance-targets)
 
 [img-pubportal-menu-sol-templ]:media/marketplace-publishing-solution-template-creation/pubportal-menu-solution-templates.png
 [img-pubportal-sol-templ-new]:media/marketplace-publishing-solution-template-creation/pubportal-solution-template-new.png

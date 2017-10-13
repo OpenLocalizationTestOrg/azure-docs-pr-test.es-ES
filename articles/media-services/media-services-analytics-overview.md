@@ -1,5 +1,5 @@
 ---
-title: "aaaMedia análisis en la plataforma de servicios multimedia de hello | Documentos de Microsoft"
+title: "Análisis multimedia en la plataforma Media Services | Microsoft Docs"
 description: "Información general sobre la versión preliminar pública de Análisis multimedia, una colección de servicios de voz y visión informática a escala empresarial, cumplimiento, seguridad y alcance global"
 services: media-services
 documentationcenter: 
@@ -14,52 +14,52 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: milanga;juliako;johndeu
-ms.openlocfilehash: 7545f0532d7618164ebe65e2f4232c5f63453cfd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: c0bbe6f80370515fa783b12757434897fe2221b6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="media-analytics-on-hello-media-services-platform"></a>Análisis de multimedia en la plataforma de servicios multimedia de Hola
+# <a name="media-analytics-on-the-media-services-platform"></a>Análisis multimedia en la plataforma Media Services
 ## <a name="overview"></a>Información general
-Las organizaciones más están utilizando vídeo como Hola preferido tootrain intermedio sus empleados, captar sus clientes y las funciones de negocio de documento. Proporciona una manera toostore, la informática en nube transmitir por secuencias y tener acceso a estos archivos multimedia de gran tamaño. Pero a medida que crece la biblioteca de la compañía de contenido de vídeo, necesita un medio igualmente eficaz de extraer información de contenido de Hola. 
+Cada vez más organizaciones adoptan el vídeo como medio preferido para formar a sus empleados, atraer a sus clientes y documentar las funciones empresariales. La informática en la nube proporciona una manera de almacenar estos archivos multimedia de gran tamaño, transmitirlos y acceder a ellos. Pero a medida que la biblioteca de contenido de vídeo de una empresa crece, necesita un medio igualmente eficaz de extraer información de ese contenido. 
 
-tooaddress esta necesidad creciente, servicios multimedia de Azure ofrece análisis de multimedia de Azure. Análisis multimedia es una colección de componentes de voz y visión que resulta más fácil para las organizaciones y empresas información procesable tooderive de sus archivos de vídeo. Creado mediante el uso de componentes de la plataforma de servicios multimedia de hello core, análisis multimedia puede controlar a escala en el primer día de procesamiento de medios.
+Para satisfacer esta necesidad creciente, Azure Media Services ofrece Análisis multimedia de Azure. Análisis multimedia es una colección de componentes de voz y visión que facilita a las empresas y organizaciones obtener conocimiento útil de sus archivos de vídeo. Generado con los componentes principales de la plataforma Media Services, Análisis multimedia puede ocuparse del procesamiento multimedia a escala desde el primer día.
 
-Con Análisis multimedia, los desarrolladores pueden integrar funcionalidad de vídeo avanzada en las aplicaciones rápidamente. Proporciona entornos empresariales con escala completa hello, cumplimiento, seguridad y alcance global requerido las grandes organizaciones.
+Con Análisis multimedia, los desarrolladores pueden integrar funcionalidad de vídeo avanzada en las aplicaciones rápidamente. Proporciona entornos empresariales con la escala total, el cumplimiento, la seguridad y el alcance global que necesitan las grandes organizaciones.
 
-Hello siguiente diagrama muestra análisis multimedia y otros componentes principales de la plataforma de servicios multimedia de Hola. 
+El siguiente diagrama muestra Análisis multimedia y otras partes principales de la plataforma Media Services. 
 
 ![Flujo de trabajo de VoD](./media/media-services-analytics-overview/media-services-analytics-overview01.png)
 
-Los procesadores multimedia de Análisis multimedia generan archivos MP4 o JSON. Si un procesador multimedia genera un archivo MP4, puede descargar progresivamente archivo hello. Si un procesador multimedia genera un archivo JSON, puede descargar el archivo hello desde el almacenamiento de blobs de Azure. 
+Los procesadores multimedia de Análisis multimedia generan archivos MP4 o JSON. Si un procesador multimedia genera un archivo MP4, puede descargar progresivamente el archivo. Si un procesador multimedia genera un archivo JSON, puede descargar el archivo desde Azure Blob Storage. 
 
 ## <a name="media-analytics-services"></a>Servicios de Análisis multimedia
 
 ### <a name="indexer"></a>Indexer
-Con Azure Media Indexer puede realizar búsquedas en el contenido, así como generar pistas de subtítulos. La versión anterior de toohello comparados, vista previa de Azure Media Indexer 2 es indización rápida y más amplia de lenguaje compatible con. Los idiomas compatibles son alemán, árabe, chino, español, francés, inglés, italiano y portugués. Para obtener información detallada y ejemplos, vea [Process videos with Azure Media Indexer 2 (Procesar vídeos con Azure Media Indexer 2)](media-services-process-content-with-indexer2.md).
+Con Azure Media Indexer puede realizar búsquedas en el contenido, así como generar pistas de subtítulos. En comparación con la versión anterior, Azure Media Indexer 2 Preview realiza la indexación de forma más rápida y ofrece compatibilidad con más idiomas. Los idiomas compatibles son alemán, árabe, chino, español, francés, inglés, italiano y portugués. Para obtener información detallada y ejemplos, vea [Process videos with Azure Media Indexer 2 (Procesar vídeos con Azure Media Indexer 2)](media-services-process-content-with-indexer2.md).
 ### <a name="hyperlapse"></a>Hyperlapse
-Microsoft Hyperlapse combina estabilización del vídeo y capacidad lapso de tiempo toocreate rápido, puede usar vídeos desde el contenido de formato largo. Además de la creación de vídeo de lapso de tiempo, puede usar Hyperlapse toocreate estables vídeos de vídeos cambiante de captura a través de teléfonos y cámaras de vídeo. Para obtener información detallada y ejemplos, vea [Archivos multimedia de Hyperlapse con Azure Media Hyperlapse](media-services-hyperlapse-content.md).
+Microsoft Hyperlapse combina estabilización de vídeo y capacidad time-lapse para crear vídeos rápidos consumibles a partir del contenido de formato largo. Además de crear vídeo time-lapse, puede usar Hyperlapse para crear vídeos estables a partir de vídeos temblorosos capturados con teléfonos móviles y cámaras de vídeo. Para obtener información detallada y ejemplos, vea [Archivos multimedia de Hyperlapse con Azure Media Hyperlapse](media-services-hyperlapse-content.md).
 ### <a name="motion-detector"></a>Detector de movimientos
-Puede usar el movimiento de toodetect Detector de movimiento en un vídeo con fondos estacionarios. Esto hace posible toocheck de falsos positivos en eventos de movimiento detectados por las cámaras de vigilancia. Para obtener información detallada y ejemplos, vea [Motion Detection for Azure Media Analytics (Detección de movimiento para Análisis multimedia de Azure)](media-services-motion-detection.md).
+Puede usar Motion Detector para detectar movimiento en un vídeo con fondos quietos. Esto permite buscar falsos positivos en eventos de movimiento detectados por cámaras de vigilancia. Para obtener información detallada y ejemplos, vea [Motion Detection for Azure Media Analytics (Detección de movimiento para Análisis multimedia de Azure)](media-services-motion-detection.md).
 ### <a name="face-detector"></a>Detector de caras
 Con Face Detector puede detectar las caras y las emociones de las personas, lo que incluye felicidad, tristeza y sorpresa. Esto tiene varias aplicaciones útiles para el sector, que se describen más adelante, como la adición y el análisis de reacciones de personas que asisten a un evento. Para obtener información detallada y ejemplos, vea [Face and Emotion Detection for Azure Media Analytics (Detección de caras y emociones para Análisis multimedia de Azure)](media-services-face-and-emotion-detection.md).
 ### <a name="video-summarization"></a>Resumen de vídeo
-Resumen de vídeo puede ayudar a crear resúmenes de los vídeos largos seleccionando automáticamente interesantes fragmentos de vídeo de origen de Hola. Esta capacidad es útil cuando se desea una introducción rápida de qué tooexpect en un vídeo largo tooprovide. Para obtener información detallada y ejemplos, vea [resumen vídeo de miniaturas de vídeo de multimedia de Azure de uso toocreate](media-services-video-summarization.md).
+El resumen de vídeo puede ayudarle a crear resúmenes de vídeos largos al seleccionar automáticamente fragmentos interesantes del vídeo original. Esta capacidad es útil si quiere proporcionar una rápida descripción de lo que se va a encontrar en un vídeo largo. Para obtener información detallada y ejemplos, vea [Usar Azure Media Video Thumbnails para crear un resumen de vídeo](media-services-video-summarization.md).
 ### <a name="optical-character-recognition"></a>Reconocimiento óptico de caracteres
-Con Azure Media OCR (reconocimiento óptico de caracteres), puede convertir el contenido de texto de archivos de vídeo en texto digital modificable y utilizable en búsquedas. A continuación, puede automatizar extracción Hola de metadatos significativo de señal de vídeo de Hola de los medios.
+Con Azure Media OCR (reconocimiento óptico de caracteres), puede convertir el contenido de texto de archivos de vídeo en texto digital modificable y utilizable en búsquedas. Luego puede automatizar la extracción de metadatos significativos de la señal de vídeo de los elementos multimedia.
 ### <a name="scalable-face-redaction"></a>Censura de rostros escalable
-Redactor de multimedia de Azure es un procesador de multimedia de análisis multimedia que ofrece la redacción de cara escalable en la nube de Hola. Mediante el uso de redacción de cara, puede modificar sus caras tooblur vídeo de los usuarios seleccionados. Puede ser conveniente servicio de redacción de cara de toouse hello en los medios de noticias o cuando está implicada seguridad pública. Unos pocos minutos después de material de archivo que contiene varios tipos pueden tardar horas tooredact manualmente, pero con este servicio, redacción de cara tarda unos pocos pasos sencillos. Para obtener más información, vea hello [censurar caras con análisis de multimedia de Azure](media-services-face-redaction.md) artículo.
+Azure Media Redactor es un procesador multimedia de Análisis multimedia de Azure que ofrece censura de rostros escalable en la nube. Con la censura de rostros, puede modificar un vídeo para difuminar las caras de personas seleccionadas. Es posible que quiera usar el servicio de censura de rostros en noticias en los medios de comunicación o cuando se trate de la seguridad pública. Unos minutos de material de archivo que contenga varias caras puede tardar horas en censurarse manualmente, pero con este servicio, la censura de caras solo conlleva unos cuantos pasos sencillos. Para más información, vea el artículo [Censura de rostros con Azure Media Analytics](media-services-face-redaction.md).
 
 ## <a name="common-scenarios"></a>Escenarios comunes
 Análisis multimedia puede ayudar a las organizaciones y empresas a recopilar nuevos datos relevantes a partir del vídeo y a administrar más eficazmente grandes volúmenes de contenido de vídeo. Estos son algunos escenarios:
 
-* **Centros de atención al cliente**. Incluso con la llegada de Hola de redes sociales, centros de llamadas de cliente todavía facilitan un porcentaje elevado de transacciones de servicio al cliente. Codificados en estos datos de audio es una gran cantidad de información del cliente que se pueden analiza tooachieve mayor satisfacción del cliente. Con Media Indexer, las organizaciones pueden extraer texto y crear índices y paneles de búsqueda. Luego pueden extraer inteligencia de las quejas habituales, los orígenes de las quejas y otros datos relevantes.
-* **Moderación de contenido generado por el usuario**. De departamentos de toopolice de distribuidores de medios de noticias, muchas organizaciones tienen portales de acceso público que aceptan multimedia generado por el usuario, como imágenes y vídeos. volumen de Hola de contenido puede tener picos debido toounexpected eventos. En estos casos, resulta difícil tooconduct las revisiones del manual efectiva del contenido de idoneidad. Los clientes pueden basarse en hello toofocus de servicio de moderación de contenido en el contenido que es adecuado.
-* **Vigilancia**. Hola crecimiento del uso de cámaras IP conlleva un inventario creciente de vídeo de vigilancia. Revisar manualmente vídeo vigilancia es toohuman intensivo y propensa a errores en tiempo de. Análisis multimedia proporciona servicios como la detección de movimiento y detección de cara, proceso de Hyperlapse toomake Hola de revisar, administrar y crear los derivados más fácil.
+* **Centros de atención al cliente**. Incluso con la aparición de las redes sociales, los centros de atención al cliente todavía gestionan un gran porcentaje de transacciones de servicios de clientes. En estos datos de audio hay una gran cantidad de información del cliente codificada que se puede analizar para lograr una mayor satisfacción de este. Con Media Indexer, las organizaciones pueden extraer texto y crear índices y paneles de búsqueda. Luego pueden extraer inteligencia de las quejas habituales, los orígenes de las quejas y otros datos relevantes.
+* **Moderación de contenido generado por el usuario**. Desde medios de comunicación a departamentos de policía, muchas organizaciones cuentan con portales orientados al público que aceptan elementos multimedia generados por el usuario, como imágenes y vídeos. El volumen de contenido puede tener picos debido a sucesos inesperados. En estos casos, es difícil llevar a cabo revisiones manuales eficaces del contenido para garantizar su idoneidad. Los clientes pueden basarse en el servicio de moderación de contenido para centrarse en el contenido adecuado.
+* **Vigilancia**. El aumento del uso de cámaras IP supone un inventario creciente de vídeos de vigilancia. La revisión manual de vídeos de vigilancia exige mucho tiempo y es propensa a errores humanos. Análisis multimedia proporciona servicios como la detección de movimiento, la detección de caras e Hyperlapse para facilitar el proceso de revisión, administración y creación de derivados.
 
 ## <a name="media-analytics-media-processors"></a>Procesadores de multimedia de Análisis multimedia
-Esta sección procesadores de multimedia de listas Hola análisis multimedia y muestra cómo toouse .NET o REST tooget un objeto de procesador (MP) de medios.
+En esta sección se enumeran los procesadores de multimedia de Análisis multimedia y se muestra cómo usar .NET o REST para obtener un objeto de procesador de multimedia (MP).
 
 ### <a name="mp-names"></a>Nombres de MP
 * Azure Media Indexer 2 Preview
@@ -71,7 +71,7 @@ Esta sección procesadores de multimedia de listas Hola análisis multimedia y m
 * Azure Media OCR
 
 ### <a name="net"></a>.NET
-Hola después de la función toma uno del programa Hola a especifica nombres de módulo de administración y devuelve un objeto de módulo de administración.
+La siguiente función toma uno de los nombres de MP especificados y devuelve un objeto MP.
 
     static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
     {

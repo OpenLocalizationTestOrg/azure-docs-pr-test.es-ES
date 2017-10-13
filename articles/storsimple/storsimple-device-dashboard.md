@@ -1,6 +1,6 @@
 ---
-title: panel de dispositivos de StorSimple Manager aaaUse Hola | Documentos de Microsoft
-description: "Describe el panel del dispositivo del servicio StorSimple Manager hello y cómo toouse se tooview las métricas de almacenamiento y los iniciadores y buscar Hola número de serie y IQN."
+title: Uso del panel del dispositivo StorSimple Manager | Microsoft Docs
+description: "Describe el panel de dispositivos del servicio StorSimple Manager y cómo usarlo para ver las métricas de almacenamiento y los iniciadores conectados y buscar el número de serie y el IQN."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,72 +15,72 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e213fc0a081c21b9d6b408a3dd845cc93a31e250
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0d8035b9608ca3bac3d4822c7c755b81c96d481e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="use-hello-device-dashboard-in-storsimple-manager-service"></a>Usar el panel de dispositivo de hello en el servicio StorSimple Manager  
+# <a name="use-the-device-dashboard-in-storsimple-manager-service"></a>Uso del panel de dispositivos del servicio StorSimple Manager  
 
 ## <a name="overview"></a>Información general
-panel de dispositivo de StorSimple Manager Hola proporciona una información general de un dispositivo de StorSimple específico, en cambio toohello service panel, que proporciona información acerca de todos los dispositivos de hello incluidos en la solución de StorSimple de Microsoft Azure.
+El panel del dispositivo StorSimple Manager ofrece una visión general de la información de un dispositivo StorSimple específico, a diferencia del panel de servicio, que ofrece información sobre todos los dispositivos incluidos en la solución de Microsoft Azure StorSimple.
 
 ![Página de Panel del dispositivo](./media/storsimple-device-dashboard/StorSimple_DeviceDashbaord1M.png)
 
-panel de Hello contiene Hola siguiente información:
+El panel contiene la información siguiente:
 
-* **Área del gráfico** : puede ver las métricas de almacenamiento relevantes de hello en hello gráfico área Hola parte superior del panel de Hola. En este gráfico, puede ver las métricas de almacenamiento principal total (cantidad de Hola de los datos escritos por dispositivo de tooyour de hosts) de Hola y Hola total consumido por el dispositivo durante un período de tiempo de almacenamiento en nube.
+* **Área de gráfico** : puede ver las métricas de almacenamiento relevantes en el área del gráfico de la parte superior del panel. En este gráfico, puede ver las métricas del almacenamiento principal total (la cantidad de datos escritos por hosts en su dispositivo) y el almacenamiento en nube total consumido por su dispositivo durante un período de tiempo.
   
-     En este contexto, *almacenamiento principal* hace referencia toohello cantidad total de los datos escritos por el host de Hola y puede dividirse por tipo de volumen: *principal en niveles de almacenamiento* incluye tanto almacenadas localmente los datos y los datos en la nube toohello en niveles; *principal anclado localmente almacenamiento* incluye solo los datos almacenados localmente. *Almacenamiento en nube*, en Hola otra parte, es una medida de la cantidad total de Hola de los datos almacenados en la nube de Hola. Esto incluye las copias de seguridad y los datos en niveles. Tenga en cuenta que los datos almacenados en la nube de hello están desduplicados y comprimidos, mientras que el almacenamiento principal indica la cantidad de Hola de almacenamiento usado antes de hello datos desduplicados y comprimidos. (Puede comparar estos tooget de dos números una idea del tipo de compresión de hello). Ambos principal y almacenamiento, Hola importes se basará en hello seguimiento frecuencia que configures en la nube. Por ejemplo, si elige una frecuencia de una semana, gráfico de hello mostrará datos para cada día en hello semana anterior.
+     En este contexto, *almacenamiento principal* hace referencia a la cantidad total de los datos escritos por el host y se puede desglosar por tipo de volumen: el *almacenamiento principal en capas* incluye los datos almacenados localmente y en capas en la nube; el *almacenamiento principal anclado localmente* incluye solo los datos almacenados localmente. Por otro lado, *almacenamiento en la nube* es una medición de la cantidad total de datos almacenados en la nube. Esto incluye las copias de seguridad y los datos en niveles. Tenga en cuenta que los datos almacenados en la nube está desduplicados y comprimidos, mientras que el almacenamiento principal indica la cantidad de almacenamiento usado antes de que los datos estén desduplicados y comprimidos. (Puede comparar estos dos números para hacerse una idea de la tasa de compresión). Para el almacenamiento principal y en la nube, las cantidades mostradas se basarán en la frecuencia de seguimiento que configure. Por ejemplo, si elige una frecuencia de una semana, el gráfico mostrará datos para cada día de la semana anterior.
   
-     Puede configurar el gráfico de hello como sigue:
+     Puede configurar el gráfico de la manera siguiente:
   
-  * cantidad de hello toosee de almacenamiento en nube consumida durante el tiempo, seleccione hello **almacenamiento de nube usa** opción. toosee Hola total de almacenamiento que se ha escrito por host hello, seleccione hello **principal en niveles de almacenamiento usa** y **LOCALMENTE ANCLADO almacenamiento principal CONSUMIDO** opciones. En la ilustración hello, ambas opciones están seleccionadas; por lo tanto, el gráfico de hello muestra las cantidades de almacenamiento principal y en la nube. Tenga en cuenta que cualquier almacenamiento principal utiliza anterior tooinstalling Update 2 se representa mediante hello **principal en niveles de almacenamiento usa** línea.
-  * Utilice Hola menú desplegable situado en la esquina superior derecha de Hola de hello gráfico toospecify un período de tiempo de 1 semana, 1 mes, 3 meses o 1 año. Tenga en cuenta que Hola gráfico de nivel superior se actualiza solo una vez al día y, por tanto, reflejará Hola totales del día anterior.
+  * Para ver la cantidad de almacenamiento en la nube consumido en el tiempo, seleccione la opción **ALMACENAMIENTO EN LA NUBE USADO** . Para ver el almacenamiento total escrito por el host, seleccione las opciones **PRIMARY TIERED STORAGE USED** (Almacenamiento en capas principal usado) y **PRIMARY LOCALLY PINNED STORAGE USED** (Almacenamiento principal anclado localmente usado). En la ilustración, ambas opciones están seleccionadas; por lo tanto, el gráfico muestra las cantidades de almacenamiento en la nube y principal. Tenga en cuenta que cualquier almacenamiento principal usado antes de instalar la actualización 2 está representado por la línea **PRIMARY TIERED STORAGE USED** (Almacenamiento en capas principal usado).
+  * Use el menú desplegable de la esquina superior derecha del gráfico para especificar un período de tiempo de 1 semana, 1 mes, 3 meses o 1 año. Tenga en cuenta que el gráfico de nivel superior solo se actualiza una vez al día y, por lo tanto, reflejarán los totales del día anterior.
     
-    Para obtener más información, consulte [uso Hola toomonitor de servicio de StorSimple Manager el dispositivo StorSimple](storsimple-monitor-device.md).
-* **Información general del uso** : Hola **información general del uso** área, puede ver el importe de Hola de almacenamiento aprovisionado y la capacidad de almacenamiento máximo de hello para el dispositivo utilizado por cantidad de Hola de almacenamiento principal. Al comparar estos cantidad máxima de uso números toohello de almacenamiento que está disponible, puede ver de un vistazo si necesita almacenamiento adicional de tooobtain. Tenga en cuenta que esta información general se actualiza cada 15 minutos y, debido a la diferencia de hello en la frecuencia de actualización, puede mostrar un número diferente a los que se muestran en hello área del gráfico anterior, que se actualiza diariamente. Para obtener más información, consulte [uso Hola toomonitor de servicio de StorSimple Manager el dispositivo StorSimple](storsimple-monitor-device.md).
-* **Alertas** : hello **alertas** área contiene un resumen de alertas de hello para el dispositivo. Las alertas se agrupan por gravedad y se proporciona un recuento del número de Hola de alertas en cada nivel de gravedad. Al hacer clic en la alerta de hello gravedad abre una vista concreta de hello alertas pestaña tooshow que solo Hola alertas de ese nivel de gravedad para este dispositivo.
-* **Trabajos** : hello **trabajos** muestra área Hola resultado de la actividad de trabajo reciente. Puede garantizar que Hola sistema funciona según lo esperado, o puede notificarle que necesita acción correctiva tootake. toosee más información acerca de los trabajos completados recientemente, haga clic en **trabajos correctos en hello últimas 24 horas**.
-* Hola **vista rápida** área Hola derecha del panel de hello proporciona información útil, como el modelo del dispositivo, número de serie, estado, descripción y número de volúmenes.
+    Para obtener más información, consulte [Uso del servicio StorSimple Manager para supervisar su dispositivo StorSimple](storsimple-monitor-device.md).
+* **Información general del uso**: en el área de **información general de uso**, puede ver la cantidad de almacenamiento principal usado, la cantidad de almacenamiento aprovisionado y la capacidad máxima de almacenamiento del dispositivo. Al comparar estos números de uso con la cantidad máxima de almacenamiento disponible, podrá ver a simple vista si necesita obtener almacenamiento adicional. Tenga en cuenta que esta información general se actualiza cada 15 minutos y, debido a la diferencia en la frecuencia de actualización, es posible que muestre números diferentes a los que se muestran en el área de gráfico anterior, que se actualiza diariamente. Para obtener más información, consulte [Uso del servicio StorSimple Manager para supervisar su dispositivo StorSimple](storsimple-monitor-device.md).
+* **Alertas**: el área de **alertas** contiene información general sobre las alertas del dispositivo. Estas se agrupan por nivel de gravedad, y se proporciona un recuento del número de alertas de cada nivel de gravedad. Al hacer clic en la gravedad de la alerta se abre una vista concreta de la pestaña Alertas para mostrar solo las alertas de ese nivel de gravedad para este dispositivo.
+* **Trabajos**: el área de **trabajos** muestra el resultado de la actividad reciente de los trabajos. Esto puede garantizarle que el sistema funciona según lo esperado, o puede informarle de que debe tomar medidas correctivas. Para obtener más información acerca de los trabajos completados recientemente, haga clic en **Trabajos correctos en las últimas 24 horas**.
+* El área de **vista rápida** situada a la derecha del panel proporciona información útil, como el modelo del dispositivo, el número de serie, el estado, la descripción y el número de volúmenes.
 
-También puede configurar la conmutación por error y ver los iniciadores en el panel del dispositivo Hola.
+También puede configurar la conmutación por error y ver iniciadores conectados desde el panel de dispositivos.
 
-Hola tareas comunes que se pueden realizar en esta página son:
+Las tareas comunes que se pueden realizar en esta página son:
 
 * Ver iniciadores conectados
-* Buscar el número de serie del dispositivo de Hola
-* Buscar el IQN de destino del dispositivo Hola
+* Buscar el número de serie del dispositivo
+* Encontrar el IQN de destino del dispositivo
 
 ## <a name="view-connected-initiators"></a>Ver iniciadores conectados
-Puede ver los iniciadores de iSCSI de Hola que están conectados tooyour dispositivo haciendo clic en hello **ver iniciadores conectados** vínculo proporcionado en hello **vista rápida** área del panel del dispositivo. Esta página proporciona una lista tabular de los iniciadores de Hola que se han conectado correctamente el dispositivo de tooyour. Para cada iniciador, podrá ver:
+Puede ver los iniciadores iSCSI que están conectados al dispositivo haciendo clic en el vínculo **Ver iniciadores conectados** en el área de **vista rápida** del panel del dispositivo. Esta página proporciona una lista tabular de los iniciadores que se han conectado correctamente al dispositivo. Para cada iniciador, podrá ver:
 
-* Hola iSCSI nombre completo (IQN) de hello conectado el iniciador.
-* nombre de Hello del registro de control de acceso de hello (ACR) que permite este iniciador conectado.
-* dirección IP de Hola de hello conectado iniciador.
-* Hello interfaces de red que iniciador hello es tooon conectado el dispositivo de almacenamiento. Estas pueden variar de DATA 0 tooDATA 5.
-* Todos los volúmenes de Hola Hola iniciador conectado se permite tooaccess según la configuración actual de ACR toohello.
+* El nombre completo de iSCSI (IQN) del iniciador conectado.
+* El nombre del registro de control de acceso (ACR) que permite este iniciador conectado.
+* La dirección IP del iniciador conectado.
+* Las interfaces de red a las que está conectado el iniciador en el dispositivo de almacenamiento. Estas pueden ir desde DATA 0 hasta DATA 5.
+* Todos los volúmenes a los que puede tener acceso el iniciador conectado según la configuración actual de ACR.
 
-Si ve iniciadores inesperados en esta lista o no se ve Hola que espera, revise la configuración de ACR. Un máximo de 512 iniciadores puede conectar el dispositivo de tooyour.
+Si ve iniciadores inesperados en esta lista o no ve los esperados, revise la configuración de ACR. El máximo de iniciadores que pueden conectarse a su dispositivo es de 512.
 
-## <a name="find-hello-device-serial-number"></a>Buscar el número de serie del dispositivo de Hola
-Puede que tenga el número de serie del dispositivo de hello al configurar E/S de múltiples rutas (MPIO) de Microsoft en el dispositivo de Hola. Realizar Hola siguiendo el número de serie del dispositivo de pasos toofind Hola.
+## <a name="find-the-device-serial-number"></a>Buscar el número de serie del dispositivo
+Es posible que necesite el número de serie del dispositivo para configurar E/S de múltiples rutas de Microsoft (MPIO) en el dispositivo. Realice los pasos siguientes para buscar el número de serie del dispositivo.
 
-#### <a name="toofind-hello-device-serial-number"></a>número de serie del dispositivo de toofind Hola
-1. Navegue demasiado**dispositivos** > **panel**.
-2. En panel derecho de Hola de panel de hello, busque hello **vista rápida** área.
-3. Desplácese hacia abajo y busque el número de serie de Hola.
+#### <a name="to-find-the-device-serial-number"></a>Para buscar el número de serie del dispositivo
+1. Vaya a **Dispositivos** > **Panel**.
+2. En el panel derecho del panel, busque el área **Vista rápida** .
+3. Desplácese hacia abajo y busque el número de serie.
 
-## <a name="find-hello-device-target-iqn"></a>Buscar el IQN de destino del dispositivo Hola
-Puede que necesite IQN de destino del dispositivo hello cuando configure Hola protocolo de autenticación por desafío mutuo (CHAP) en el dispositivo StorSimple. Realizar Hola siguiendo los pasos IQN de destino de dispositivo de hello toofind.
+## <a name="find-the-device-target-iqn"></a>Encontrar el IQN de destino del dispositivo
+Es posible que necesite el IQN de destino del dispositivo para configurar el Protocolo de autenticación por desafío mutuo (CHAP) en el dispositivo StorSimple. Realice los pasos siguientes para encontrar el IQN de destino del dispositivo.
 
-### <a name="toofind-hello-device-target-iqn"></a>IQN de destino del dispositivo toofind Hola
-1. Navegue demasiado**dispositivos** > **panel**.
-2. En panel derecho de Hola de panel de hello, busque hello **vista rápida** área.
-3. Desplácese hacia abajo y busque el IQN de destino de Hola.
+### <a name="to-find-the-device-target-iqn"></a>Para encontrar el IQN de destino del dispositivo
+1. Vaya a **Dispositivos** > **Panel**.
+2. En el panel derecho del panel, busque el área **Vista rápida** .
+3. Desplácese hacia abajo y busque el IQN de destino.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Obtener más información sobre hello [panel de servicio de StorSimple Manager](storsimple-service-dashboard.md).
-* Obtenga más información sobre [utilizando Hola tooadminister de servicio de StorSimple Manager el dispositivo StorSimple](storsimple-manager-service-administration.md).
+* [Obtenga más información sobre el panel del servicio StorSimple Manager](storsimple-service-dashboard.md).
+* Obtenga más información sobre el [uso del servicio StorSimple Manager para administrar su dispositivo StorSimple](storsimple-manager-service-administration.md).
 

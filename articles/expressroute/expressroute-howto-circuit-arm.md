@@ -1,6 +1,6 @@
 ---
 title: "Creación y modificación de un circuito ExpressRoute mediante Powershell y Azure Resource Manager | Microsoft Docs"
-description: "Este artículo describe cómo toocreate, aprovisionar, compruebe, actualizar, eliminar y cancelar el aprovisionamiento de un circuito de ExpressRoute."
+description: "Este artículo describe cómo crear, aprovisionar, comprobar, actualizar, eliminar y desaprovisionar un circuito ExpressRoute."
 documentationcenter: na
 services: expressroute
 author: ganesr
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: 8d76c577a9cffdd393abac1b76cccc27d92e9e62
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8bfae39d84aaac3b9527084df9dcfbd51f591dfe
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>Creación y modificación de un circuito ExpressRoute mediante PowerShell
 > [!div class="op_single_selector"]
@@ -30,75 +30,75 @@ ms.lasthandoff: 10/06/2017
 > * [PowerShell (clásico)](expressroute-howto-circuit-classic.md)
 >
 
-Este artículo describe cómo el circuito toocreate una ExpressRoute de Azure utilizando el modelo de implementación de Azure Resource Manager de hello y cmdlets de PowerShell. Este artículo también muestra cómo actualizarlo, estado de hello toocheck del circuito de hello, o eliminar y Cancelar.
+En este artículo se describe cómo crear un circuito Azure ExpressRoute mediante los cmdlets de PowerShell y el modelo de implementación de Azure Resource Manager. En este artículo, también se muestra cómo comprobar el estado del circuito, así como el modo de actualizarlo o eliminarlo y desaprovisionarlo.
 
 ## <a name="before-you-begin"></a>Antes de empezar
-* Instalar versión más reciente de Hola de hello cmdlets de PowerShell del Administrador de recursos de Azure. Para obtener más información, consulte la [Overview of Azure PowerShell](/powershell/azure/overview) (Introducción a Azure PowerShell).
-* Hola de revisión [requisitos previos](expressroute-prerequisites.md) y [flujos de trabajo](expressroute-workflows.md) antes de comenzar la configuración.
+* Instale la versión más reciente de los cmdlets de PowerShell de Azure Resource Manager. Para obtener más información, consulte la [Overview of Azure PowerShell](/powershell/azure/overview) (Introducción a Azure PowerShell).
+* Revise los [Requisitos previos y lista de comprobación de ExpressRoute](expressroute-prerequisites.md) y los [Flujos de trabajo de ExpressRoute para aprovisionamiento de circuitos y estados de circuitos de ExpressRoute](expressroute-workflows.md) antes de comenzar la configuración.
 
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a>Creación y aprovisionamiento de un circuito ExpressRoute
-### <a name="1-sign-in-tooyour-azure-account-and-select-your-subscription"></a>1. Inicie sesión en tooyour cuenta de Azure y seleccione su suscripción
-toobegin la configuración, el inicio de sesión tooyour cuenta de Azure. Usar hello después toohelp ejemplos que conectarse:
+### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1. Iniciar sesión en la cuenta de Azure y seleccione la suscripción
+Para empezar la configuración, inicie sesión en la cuenta de Azure. Use los siguientes ejemplos para conectarse:
 
 ```powershell
 Login-AzureRmAccount
 ```
 
-Compruebe las suscripciones de hello para la cuenta de hello:
+Compruebe las suscripciones para la cuenta:
 
 ```powershell
 Get-AzureRmSubscription
 ```
 
-Seleccione la suscripción de Hola que desea toocreate una ExpressRoute de circuito para:
+Seleccione la suscripción para la que desea crear un circuito ExpressRoute:
 
 ```powershell
 Select-AzureRmSubscription -SubscriptionId "<subscription ID>"
 ```
 
-### <a name="2-get-hello-list-of-supported-providers-locations-and-bandwidths"></a>2. Obtener lista de Hola de proveedores compatibles, las ubicaciones y anchos de banda
-Antes de crear un circuito ExpressRoute, necesita Hola lista de proveedores admitidos conectividad, ubicaciones y opciones de ancho de banda.
+### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. Obtención de la lista de proveedores, ubicaciones y anchos de banda admitidos
+Para crear un circuito ExpressRoute, necesita la lista de proveedores de conectividad, ubicaciones y opciones de ancho de banda admitidas.
 
-Hola cmdlet de PowerShell **AzureRmExpressRouteServiceProvider Get** devuelve esta información, que usará en pasos posteriores:
+El cmdlet de PowerShell **Get-AzureRmExpressRouteServiceProvider** devuelve esta información, que se usará en pasos posteriores:
 
 ```powershell
 Get-AzureRmExpressRouteServiceProvider
 ```
 
-Compruebe toosee si aparece el proveedor de conectividad. Tome nota de hello siguiente información. La necesitará más adelante cuando cree un circuito.
+Compruebe si aparece su proveedor de conectividad. Tome nota de la siguiente información. La necesitará más adelante cuando cree un circuito.
 
 * Nombre
 * PeeringLocations
 * BandwidthsOffered
 
-Ahora está listo toocreate un circuito ExpressRoute.   
+Ahora está listo para crear un circuito ExpressRoute.   
 
 ### <a name="3-create-an-expressroute-circuit"></a>3. Creación de un circuito ExpressRoute
-Si todavía no tiene un grupo de recursos, debe crear uno antes de crear ExpressRoute. Puede hacerlo ejecutando el siguiente comando de hello:
+Si todavía no tiene un grupo de recursos, debe crear uno antes de crear ExpressRoute. Para ello, ejecute el siguiente comando:
 
 ```powershell
 New-AzureRmResourceGroup -Name "ExpressRouteResourceGroup" -Location "West US"
 ```
 
 
-Hola de ejemplo siguiente muestra cómo el circuito toocreate una ExpressRoute de 200 Mbps a través de Equinix en Silicon Valley. Si usa otro proveedor y otra configuración, sustituya esa información al realizar la solicitud. Hola te mostramos una solicitud de ejemplo para una nueva clave de servicio:
+En el ejemplo siguiente se muestra cómo crear un circuito ExpressRoute de 200 Mbps a través de Equinix en Silicon Valley. Si usa otro proveedor y otra configuración, sustituya esa información al realizar la solicitud. A continuación se muestra un ejemplo de solicitud para una nueva clave de servicio:
 
 ```powershell
 New-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup" -Location "West US" -SkuTier Standard -SkuFamily MeteredData -ServiceProviderName "Equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 200
 ```
 
-Asegúrese de que se especifique nivel correcto de la SKU de Hola y familia de SKU:
+Asegúrese de que especifica el nivel y la familia correctos de SKU.
 
-* El nivel de SKU determina si está habilitado un complemento estándar o premium de ExpressRoute. Puede especificar *estándar* tooget Hola SKU estándar o *Premium* para el complemento de hello premium.
-* Familia de SKU determina el tipo de facturación de Hola. Puede seleccionar *Metereddata* para el plan de datos limitado y *Unlimiteddata* para el plan de datos ilimitado. Se puede cambiar el tipo de facturación de Hola de *Metereddata* demasiado*Unlimiteddata*, pero no se puede cambiar tipo hello de *Unlimiteddata* demasiado*Metereddata* .
+* El nivel de SKU determina si está habilitado un complemento estándar o premium de ExpressRoute. Puede especificar *Estándar* para obtener la SKU estándar o *Premium* si quiere el complemento Premium.
+* La familia de SKU determina el tipo de facturación. Puede seleccionar *Metereddata* para el plan de datos limitado y *Unlimiteddata* para el plan de datos ilimitado. Puede cambiar el tipo de facturación de *Metereddata* a *Unlimiteddata*, pero no se puede cambiar el tipo de *Unlimiteddata* a *Metereddata*.
 
 > [!IMPORTANT]
-> El circuito de ExpressRoute se cobrará desde el momento de Hola que se emite una clave de servicio. Asegúrese de que lleva a cabo esta operación cuando proveedor de conectividad de hello circuito de hello tooprovision listo.
+> El circuito ExpressRoute se facturará a partir del momento en que se emita una clave de servicio. Asegúrese de realizar esta operación cuando el proveedor de conectividad esté listo para aprovisionar el circuito.
 > 
 > 
 
-respuesta de Hello contiene la clave de servicio de Hola. Puede obtener una descripción detallada de todos los parámetros de hello ejecutando Hola siguiente comando:
+La respuesta contiene la clave del servicio. Puede obtener una descripción detallada de todos los parámetros ejecutando el siguiente comando:
 
 ```powershell
 get-help New-AzureRmExpressRouteCircuit -detailed
@@ -106,13 +106,13 @@ get-help New-AzureRmExpressRouteCircuit -detailed
 
 
 ### <a name="4-list-all-expressroute-circuits"></a>4. Lista de todos los circuitos ExpressRoute
-tooget Hola de una lista de todos los circuitos ExpressRoute que ha creado, ejecute hello **Get AzureRmExpressRouteCircuit** comando:
+Para obtener una lista de todos los circuitos ExpressRoute que haya creado, ejecute el comando **Get-AzureRmExpressRouteCircuit**:
 
 ```powershell
 Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 ```
 
-respuesta de Hello tendrá un aspecto similar toohello siguiente ejemplo:
+La respuesta será similar al ejemplo siguiente:
 
     Name                             : ExpressRouteARMCircuit
     ResourceGroupName                : ExpressRouteResourceGroup
@@ -136,14 +136,14 @@ respuesta de Hello tendrá un aspecto similar toohello siguiente ejemplo:
     ServiceKey                        : **************************************
     Peerings                          : []
 
-Puede recuperar esta información en cualquier momento mediante hello `Get-AzureRmExpressRouteCircuit` cmdlet. Realizar Hola llamada sin parámetros, enumera todos los circuitos de Hola. La clave del servicio se enumerarán en hello *ServiceKey* campo:
+Esta información se puede recuperar en cualquier momento con el cmdlet `Get-AzureRmExpressRouteCircuit` . Si se realiza la llamada sin parámetros, se obtendrá una lista de todos los circuitos. La clave de servicio se mostrará en el campo *ServiceKey* :
 
 ```powershell
 Get-AzureRmExpressRouteCircuit
 ```
 
 
-respuesta de Hello tendrá un aspecto similar toohello siguiente ejemplo:
+La respuesta será similar al ejemplo siguiente:
 
     Name                             : ExpressRouteARMCircuit
     ResourceGroupName                : ExpressRouteResourceGroup
@@ -168,41 +168,41 @@ respuesta de Hello tendrá un aspecto similar toohello siguiente ejemplo:
     Peerings                         : []
 
 
-Puede obtener una descripción detallada de todos los parámetros de hello ejecutando Hola siguiente comando:
+Puede obtener una descripción detallada de todos los parámetros ejecutando el siguiente comando:
 
 ```powershell
 get-help Get-AzureRmExpressRouteCircuit -detailed
 ```
 
-### <a name="5-send-hello-service-key-tooyour-connectivity-provider-for-provisioning"></a>5. Enviar el proveedor de conectividad de tooyour clave de servicio de hello para el aprovisionamiento
-*ServiceProviderProvisioningState* proporciona información sobre el estado actual de Hola de aprovisionamiento en el lado del proveedor de servicios de Hola. Estado proporciona el estado de Hola en hello side de Microsoft. Para obtener más información acerca de los Estados de aprovisionamiento del circuito, vea hello [flujos de trabajo](expressroute-workflows.md#expressroute-circuit-provisioning-states) artículo.
+### <a name="5-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>5. Envío de la clave de servicio al proveedor de conectividad para el aprovisionamiento
+*ServiceProviderProvisioningState* da información sobre el estado actual del aprovisionamiento en el lado del proveedor de servicios. "Status" proporciona el estado relativo al lado de Microsoft. Para más información sobre los estados de aprovisionamiento del circuito, consulte el artículo [Flujos de trabajo de ExpressRoute para aprovisionamiento de circuitos y estados de circuitos de ExpressRoute](expressroute-workflows.md#expressroute-circuit-provisioning-states) .
 
-Cuando se crea un nuevo circuito de ExpressRoute, circuito Hola estará en hello siguiente estado:
+Cuando se crea un nuevo circuito ExpressRoute, dicho circuito estará en el siguiente estado:
 
     ServiceProviderProvisioningState : NotProvisioned
     CircuitProvisioningState         : Enabled
 
 
 
-circuito Hola cambiará toohello siguiente estado cuando el proveedor de conectividad de hello está en proceso de Hola de habilitarla para:
+El circuito cambiará al estado siguiente cuando el proveedor de conectividad se encuentre en el proceso de habilitarlo:
 
     ServiceProviderProvisioningState : Provisioning
     Status                           : Enabled
 
-Para toobe pueda toouse un circuito ExpressRoute, debe estar en hello siguiente estado:
+Para poder usar un circuito ExpressRoute, dicho circuito tiene que estar en el siguiente estado.
 
     ServiceProviderProvisioningState : Provisioned
     CircuitProvisioningState         : Enabled
 
-### <a name="6-periodically-check-hello-status-and-hello-state-of-hello-circuit-key"></a>6. Comprobar periódicamente el estado de Hola y el estado de Hola de clave de circuito de Hola
-Comprobación de estado de Hola y el estado de Hola de clave de circuito de hello le permite saber si el proveedor ha habilitado el circuito. Una vez configurado el circuito de hello, *ServiceProviderProvisioningState* aparece como *aprovisionado*, tal y como se muestra en el siguiente ejemplo de Hola:
+### <a name="6-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>6. Comprobación periódica del estado y la condición de la clave del circuito
+La comprobación del estado y la condición de la clave de circuito le informa cuando el proveedor ha habilitado el circuito. Después de configurar el circuito, *ServiceProviderProvisioningState* aparece como *Provisioned*, tal como se muestra en el ejemplo siguiente:
 
 ```powershell
 Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 ```
 
 
-respuesta de Hello tendrá un aspecto similar toohello siguiente ejemplo:
+La respuesta será similar al ejemplo siguiente:
 
     Name                             : ExpressRouteARMCircuit
     ResourceGroupName                : ExpressRouteResourceGroup
@@ -227,25 +227,25 @@ respuesta de Hello tendrá un aspecto similar toohello siguiente ejemplo:
     Peerings                         : []
 
 ### <a name="7-create-your-routing-configuration"></a>7. Creación de la configuración de enrutamiento
-Para obtener instrucciones detalladas, consulte hello [circuito de ExpressRoute de configuración de enrutamiento](expressroute-howto-routing-arm.md) artículo toocreate y modificar los emparejamientos de circuito.
+Consulte [Creación y modificación del enrutamiento de un circuito ExpressRoute mediante PowerShell](expressroute-howto-routing-arm.md) para ver las instrucciones paso a paso.
 
 > [!IMPORTANT]
-> Estas instrucciones aplican solo toocircuits que se crean con proveedores de servicios que ofrecen servicios de conectividad de 2 niveles. Si usa un proveedor de servicios que ofrece servicios administrados de nivel 3 (normalmente VPN IP, como MPLS), el mismo proveedor de conectividad configurará y administrará el enrutamiento.
+> Estas instrucciones se aplican solo a los circuitos creados con proveedores de servicios que ofrecen servicios de conectividad de nivel 2. Si usa un proveedor de servicios que ofrece servicios administrados de nivel 3 (normalmente VPN IP, como MPLS), el mismo proveedor de conectividad configurará y administrará el enrutamiento.
 > 
 > 
 
-### <a name="8-link-a-virtual-network-tooan-expressroute-circuit"></a>8. Vincular un circuito de ExpressRoute de tooan de red virtual
-A continuación, vincular un circuito de ExpressRoute de tooyour de red virtual. Hola de uso [vinculación virtual redes tooExpressRoute circuitos](expressroute-howto-linkvnet-arm.md) artículo cuando se trabaja con el modelo de implementación del Administrador de recursos de Hola.
+### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8. Vinculación de una red virtual a un circuito ExpressRoute
+A continuación, vincule una red virtual a su circuito ExpressRoute. Consulte el artículo [Vinculación de redes virtuales a circuitos ExpressRoute](expressroute-howto-linkvnet-arm.md) al trabajar con el modelo de implementación de Resource Manager.
 
-## <a name="getting-hello-status-of-an-expressroute-circuit"></a>Obtener el estado de saludo de un circuito ExpressRoute
-Puede recuperar esta información en cualquier momento mediante hello **AzureRmExpressRouteCircuit Get** cmdlet. Realizar Hola llamada sin parámetros, enumera todos los circuitos de Hola.
+## <a name="getting-the-status-of-an-expressroute-circuit"></a>Obtención del estado de un circuito ExpressRoute
+Esta información se puede recuperar en cualquier momento con el cmdlet **Get-AzureRmExpressRouteCircuit**. Si se realiza la llamada sin parámetros, se obtendrá una lista de todos los circuitos.
 
 ```powershell
 Get-AzureRmExpressRouteCircuit
 ```
 
 
-respuesta de Hello será similar toohello siguiente ejemplo:
+La respuesta será similar al siguiente ejemplo:
 
     Name                             : ExpressRouteARMCircuit
     ResourceGroupName                : ExpressRouteResourceGroup
@@ -270,14 +270,14 @@ respuesta de Hello será similar toohello siguiente ejemplo:
     Peerings                         : []
 
 
-Puede obtener información sobre un circuito de ExpressRoute concreto pasando el nombre del grupo de recursos de Hola y el nombre de circuito como una llamada a toohello de parámetro:
+Se puede obtener información sobre un circuito ExpressRoute específico si se pasa el nombre del grupo de recursos y el nombre del circuito como parámetro a la llamada:
 
 ```powershell
 Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 ```
 
 
-respuesta de Hello tendrá un aspecto similar toohello siguiente ejemplo:
+La respuesta será similar al ejemplo siguiente:
 
     Name                             : ExpressRouteARMCircuit
     ResourceGroupName                : ExpressRouteResourceGroup
@@ -302,7 +302,7 @@ respuesta de Hello tendrá un aspecto similar toohello siguiente ejemplo:
     Peerings                         : []
 
 
-Puede obtener una descripción detallada de todos los parámetros de hello ejecutando Hola siguiente comando:
+Puede obtener una descripción detallada de todos los parámetros ejecutando el siguiente comando:
 
 ```powershell
 get-help get-azurededicatedcircuit -detailed
@@ -311,17 +311,17 @@ get-help get-azurededicatedcircuit -detailed
 ## <a name="modify"></a>Modificación de un circuito ExpressRoute
 Puede modificar determinadas propiedades de un circuito ExpressRoute sin afectar a la conectividad.
 
-Puede hacer Hola sigue sin tiempo de inactividad:
+Puede hacer lo siguiente sin experimentar tiempo de inactividad:
 
 * Habilitar o deshabilitar el complemento ExpressRoute Premium en su circuito ExpressRoute.
-* Ancho de banda de Hola de aumento de su circuito de ExpressRoute proporciona hay capacidad disponible en el puerto de Hola. No se admite la degradación de ancho de banda de Hola de un circuito. 
-* Cambiar Hola plan desde tooUnlimited datos limitados de datos de disponibilidad. Cambiar Hola plan desde tooMetered ilimitados datos que no se admiten datos de disponibilidad.
+* Aumente el ancho de banda del circuito ExpressRoute, siempre que haya capacidad disponible en el puerto. No se admite la degradación del ancho de banda de un circuito. 
+* Cambio del plan de medición de datos limitados a datos ilimitados. No se admite cambiar el plan de medición de datos ilimitados a datos limitados.
 * Puede habilitar y deshabilitar *Allow Classic Operations*(Permitir operaciones clásicas).
 
-Para obtener más información sobre los límites y limitaciones, consulte toohello [preguntas más frecuentes de ExpressRoute](expressroute-faqs.md).
+Consulte la página [P+F de ExpressRoute](expressroute-faqs.md)para más información sobre los límites y las limitaciones.
 
-### <a name="tooenable-hello-expressroute-premium-add-on"></a>complemento de tooenable hello ExpressRoute premium
-Puede habilitar complemento de hello ExpressRoute premium para el circuito existente mediante Hola siguiente fragmento de código de PowerShell:
+### <a name="to-enable-the-expressroute-premium-add-on"></a>Para habilitar el complemento ExpressRoute Premium
+Puede habilitar el complemento ExpressRoute Premium para el circuito existente mediante el siguiente fragmento de PowerShell:
 
 ```powershell
 $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -332,21 +332,21 @@ $ckt.sku.Name = "Premium_MeteredData"
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-circuito Hola tendrán ahora hello ExpressRoute complemento las características premium habilitadas. Comenzaremos facturación para la capacidad de complemento de hello premium tan pronto como comando de Hola se ha ejecutado correctamente.
+El circuito tendrá ahora las características del complemento ExpressRoute Premium habilitadas. La facturación de la capacidad del complemento Premium comienza en cuanto el comando se ejecuta correctamente.
 
-### <a name="toodisable-hello-expressroute-premium-add-on"></a>complemento de toodisable hello ExpressRoute premium
+### <a name="to-disable-the-expressroute-premium-add-on"></a>Para deshabilitar el complemento ExpressRoute Premium
 > [!IMPORTANT]
-> Esta operación puede producir un error si usa recursos que son mayores que lo que está permitido para el circuito de hello estándar.
+> Esta operación puede producir un error si usa recursos que son más grandes de lo que está permitido para el circuito estándar.
 > 
 > 
 
-Tenga en cuenta los siguiente hello:
+Tenga en cuenta lo siguiente:
 
-* Antes de degradar de toostandard premium, debe asegurarse de ese número de Hola de redes virtuales que están vinculadas toohello circuito es menor que 10. Si no lo hace, se producirá un error en la solicitud de actualización y se le facturará con las tarifas de nivel Premium.
+* Debe asegurarse de que el número de redes virtuales vinculadas al circuito es inferior a 10 antes de realizar la degradación de Premium a Estándar. Si no lo hace, se producirá un error en la solicitud de actualización y se le facturará con las tarifas de nivel Premium.
 * Tiene que desvincular todas las redes virtuales en otras regiones geopolíticas. Si no lo hace, se producirá un error en la solicitud de actualización y se le facturará con las tarifas de nivel Premium.
-* La tabla de enrutamiento tiene que tener menos de 4.000 rutas para el emparejamiento entre pares privados. Si el tamaño de la tabla de ruta es mayor que 4000 rutas, sesión BGP de hello quita y no volver a habilitar hasta que el número de Hola de los prefijos anunciados esté por debajo de 4.000.
+* La tabla de enrutamiento tiene que tener menos de 4.000 rutas para el emparejamiento entre pares privados. Si el tamaño de la tabla de ruta sobrepasa las 4.000 rutas, la sesión BGP se anulará y no se volverá a habilitar hasta que el número de prefijos anunciados esté por debajo de 4.000.
 
-Puede deshabilitar el complemento de hello ExpressRoute premium para el circuito existente hello mediante Hola siguiente cmdlet de PowerShell:
+Puede deshabilitar el complemento ExpressRoute Premium en el circuito existente mediante el siguiente cmdlet de PowerShell:
 
 ```powershell
 $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -357,16 +357,16 @@ $ckt.sku.Name = "Standard_MeteredData"
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="tooupdate-hello-expressroute-circuit-bandwidth"></a>ancho de banda de circuito de ExpressRoute de tooupdate Hola
-Para ver opciones de ancho de banda admitido para el proveedor, compruebe hello [preguntas más frecuentes de ExpressRoute](expressroute-faqs.md). Puede elegir cualquier tamaño mayor que el tamaño de Hola de su circuito existente.
+### <a name="to-update-the-expressroute-circuit-bandwidth"></a>Para actualizar el ancho de banda del circuito ExpressRoute
+Consulte la página [P+F de ExpressRoute](expressroute-faqs.md)para conocer las opciones de ancho de banda compatibles con su proveedor. Puede elegir cualquier tamaño mayor que el tamaño de su circuito existente.
 
 > [!IMPORTANT]
-> Puede tener circuito de ExpressRoute de hello toorecreate si hay capacidad inadecuada en el puerto existente Hola. No puede actualizar el circuito de hello si no hay ninguna capacidad adicional disponible en esa ubicación.
+> Si el puerto existente no tiene la capacidad adecuada, tendrá que volver a crear el circuito ExpressRoute. El circuito no se puede actualizar si no hay más capacidad disponible en la ubicación.
 >
-> No se puede reducir el ancho de banda de Hola de un circuito de ExpressRoute sin interrupciones. Degradar de ancho de banda requiere circuito de ExpressRoute de toodeprovision hello y, a continuación, vuelva a aprovisionar un nuevo circuito de ExpressRoute.
+> No podrá reducir el ancho de banda de un circuito ExpressRoute sin interrupciones. Para degradar un ancho de banda, es necesario desaprovisionar el circuito ExpressRoute y luego volver a aprovisionar un nuevo circuito ExpressRoute.
 > 
 
-Después de decidir qué tamaño que sea necesario, utilice Hola después comando tooresize el circuito:
+Cuando haya decidido el tamaño que necesita, use el comando siguiente para cambiar el tamaño del circuito:
 
 ```powershell
 $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -377,10 +377,10 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 
-El circuito se dimensionarán en lado de Microsoft de Hola. A continuación, debe ponerse en contacto con las configuraciones de tooupdate de proveedor de conectividad en su lado toomatch este cambio. Después de realizar esta notificación, empezaremos a facturación para la opción de ancho de banda de hello actualizado.
+El circuito se cambiará de tamaño en el lado de Microsoft. Así pues, debe ponerse en contacto con su proveedor de conectividad para actualizar las configuraciones de su parte para que coincidan con este cambio. Después de realizar esta notificación, se le empezará a facturar por la opción de ancho de banda actualizada.
 
-### <a name="toomove-hello-sku-from-metered-toounlimited"></a>Hola toomove SKU de uso medido toounlimited
-Puede cambiar Hola SKU de un circuito ExpressRoute mediante Hola siguiente fragmento de código de PowerShell:
+### <a name="to-move-the-sku-from-metered-to-unlimited"></a>Para pasar la SKU de limitada a ilimitada
+Puede cambiar la SKU de un circuito ExpressRoute mediante el siguiente fragmento de código de PowerShell:
 
 ```powershell
 $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -391,17 +391,17 @@ $ckt.sku.Name = "Premium_UnlimitedData"
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-### <a name="toocontrol-access-toohello-classic-and-resource-manager-environments"></a>clásico de toocontrol acceso toohello y entornos de administrador de recursos
-Revisar las instrucciones de Hola de [circuitos ExpressRoute mover de modelo de implementación de administrador de recursos de hello toohello clásico](expressroute-howto-move-arm.md).  
+### <a name="to-control-access-to-the-classic-and-resource-manager-environments"></a>Para controlar el acceso a los entornos de implementación clásica y del Resource Manager
+Revise las instrucciones que se ofrecen en [Transición de los circuitos ExpressRoute desde el modelo de implementación clásica al modelo de implementación de Resource Manager](expressroute-howto-move-arm.md).  
 
 ## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a>Desaprovisionamiento y eliminación de un circuito ExpressRoute
-Tenga en cuenta los siguiente hello:
+Tenga en cuenta lo siguiente:
 
-* Debe desvincular todas las redes virtuales de hello circuito de ExpressRoute. Si se produce un error en esta operación, compruebe toosee si las redes virtuales están vinculados toohello circuito.
-* Si es el proveedor de servicios del circuito de ExpressRoute de hello estado de aprovisionamiento **Provisioning** o **aprovisionado** debe trabajar con el circuito de Hola de toodeprovision de proveedor de servicio en uno de su lados. Se continuará tooreserve recursos y facturar hasta que el proveedor de servicios de hello finaliza desaprovisionamiento circuito de Hola y notifica a nosotros.
-* Si el proveedor de servicios de Hola se canceló el aprovisionamiento de circuito de hello (proveedor de servicios de hello estado de aprovisionamiento se establece demasiado**no aprovisionado**), a continuación, puede eliminar el circuito de Hola. Se detendrá la facturación para el circuito de Hola
+* Tiene que desvincular todas las redes virtuales del circuito ExpressRoute. Si se produce un error en esta operación, compruebe si hay alguna red virtual vinculada al circuito.
+* Si el estado de aprovisionamiento del proveedor de servicios del circuito ExpressRoute es **Aprovisionando** o **Aprovisionado**, debe colaborar con su proveedor de servicios para que desaprovisionen el circuito. Se le continuará reservando recursos y facturándole por ello hasta que el proveedor de servicios complete el desaprovisionamiento del circuito y nos lo notifique.
+* Si el proveedor de servicios ha desaprovisionado el circuito (el estado de aprovisionamiento del proveedor de servicios está establecido en **No aprovisionado**), puede eliminar el circuito. Esto detendrá la facturación del circuito.
 
-Puede eliminar el circuito de ExpressRoute ejecutando Hola siguiente comando:
+Puede eliminar el circuito ExpressRout con la ejecución del siguiente comando:
 
 ```powershell
 Remove-AzureRmExpressRouteCircuit -ResourceGroupName "ExpressRouteResourceGroup" -Name "ExpressRouteARMCircuit"
@@ -409,7 +409,7 @@ Remove-AzureRmExpressRouteCircuit -ResourceGroupName "ExpressRouteResourceGroup"
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Después de crear el circuito, asegúrese de que Hola siguientes:
+Después de crear el circuito, asegúrese de hacer lo siguiente:
 
 * [Crear y modificar el enrutamiento para el circuito ExpressRoute](expressroute-howto-routing-arm.md)
-* [Vincular el circuito de ExpressRoute de tooyour de red virtual](expressroute-howto-linkvnet-arm.md)
+* [Vincular la red virtual a su circuito ExpressRoute](expressroute-howto-linkvnet-arm.md)

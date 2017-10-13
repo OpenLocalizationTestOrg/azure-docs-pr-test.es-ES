@@ -14,65 +14,65 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-ms.openlocfilehash: ce7539e5d5c7c1bf9505ef229f2d31d84c00da05
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 017a8cabe81743af4c0cbb694098df799a904468
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-an-organizational-unit-ou-on-an-azure-ad-domain-services-managed-domain"></a>Creación de una unidad organizativa en un dominio administrado de Servicios de dominio de Azure AD
-Los dominios administrados de Servicios de dominio de Azure AD incluyen dos contenedores integrados denominados "AADDC Computers" y "AADDC Users", respectivamente. Hello 'AADDC equipos' contenedor tiene objetos de equipo para todos los equipos que están unidos a un dominio administrado toohello. contenedor de 'AADDC usuarios' Hello incluye usuarios y grupos en el inquilino de Azure AD de Hola. En ocasiones, es posible que las cuentas de servicio de toocreate necesarios en las cargas de trabajo de hello administrado dominio toodeploy. Para ello, puede crear una unidad organizativa (UO) personalizado en el dominio administrado hello y crear cuentas de servicio dentro de esa unidad organizativa. Este artículo muestra cómo toocreate una unidad organizativa en el dominio administrado.
+Los dominios administrados de Servicios de dominio de Azure AD incluyen dos contenedores integrados denominados "AADDC Computers" y "AADDC Users", respectivamente. El contenedor "AADDC Computers" tiene objetos de equipo para todos los equipos que están unidos al dominio administrado. El contenedor "AADDC Users" incluye los usuarios y grupos del inquilino de Azure AD. En ocasiones, puede ser necesario crear cuentas de servicio en el dominio administrado para implementar las cargas de trabajo. Para ello, puede crear una unidad organizativa personalizada en el dominio administrado y crear cuentas de servicio dentro de esa unidad organizativa. En este artículo se muestra cómo crear una unidad organizativa en el dominio administrado.
 
 ## <a name="before-you-begin"></a>Antes de empezar
-tareas de hello tooperform enumeradas en este artículo, necesita:
+Para realizar las tareas enumeradas en este artículo, necesita lo siguiente:
 
 1. Una **suscripción de Azure**válida.
 2. Un **directorio de Azure AD** : sincronizado con un directorio local o solo en la nube.
-3. **Servicios de dominio de Azure AD** debe estar habilitada para directorio de hello Azure AD. Si lo ha hecho, siga todas las tareas de hello descritas en hello [Guía de introducción](active-directory-ds-getting-started.md).
-4. Una máquina virtual de Unidos a un dominio desde el que administra los servicios de dominio de hello Azure AD administra el dominio. Si no tiene una máquina virtual de este tipo, siga todas las tareas de hello, que se describen en el artículo de hello titulado [unirse a un dominio administrado de Windows máquina virtual tooa](active-directory-ds-admin-guide-join-windows-vm.md).
-5. Necesita credenciales de Hola de un **grupo 'Administradores de controlador de dominio de AAD' toohello que pertenecen de cuentas de usuario** en el directorio, toocreate una OU personalizada en el dominio administrado.
+3. **Servicios de dominio de Azure AD** deben estar habilitado en el directorio de Azure AD. Si no lo ha hecho, siga todas las tareas descritas en [Servicios de dominio de Azure AD (vista previa): introducción](active-directory-ds-getting-started.md).
+4. Una máquina virtual unida a un dominio, desde la que administrará el dominio administrado de los Servicios de dominio de Azure AD. Si no tiene una máquina virtual, siga todas las tareas descritas en el artículo [Unión de una máquina virtual de Windows Server a un dominio administrado](active-directory-ds-admin-guide-join-windows-vm.md).
+5. Necesitará las credenciales de una **cuenta de usuario que pertenezca al grupo "Administradores del controlador de dominio de AAD"** en el directorio con el fin de crear una unidad organizativa personalizada en el dominio administrado.
 
 ## <a name="install-ad-administration-tools-on-a-domain-joined-virtual-machine-for-remote-administration"></a>Instalación de herramientas de administración de AD en una máquina virtual unida a dominio para la administración remota
-Azure dominios administrados de servicios de dominio de Active Directory pueden administrarse de forma remota mediante las conocidas herramientas administrativas de Active Directory como Hola Active Directory centro de administración (ADAC) o AD PowerShell. Los administradores de inquilinos no tiene controladores de privilegios tooconnect toodomain en hello dominio administrado a través de escritorio remoto. tooadminister Hola dominio administrado, instalar la característica de herramientas de administración de hello AD en un dominio administrado toohello combinadas de máquina virtual. Consulte el artículo toohello titulado [administrar un dominio administrado de los servicios de dominio de AD de Azure](active-directory-ds-admin-guide-administer-domain.md) para obtener instrucciones.
+Los dominios administrados con Servicios de dominio de Azure AD se pueden controlar de forma remota mediante las conocidas herramientas administrativas de Active Directory, como el Centro de administración de Active Directory (ADAC) o AD PowerShell. Los administradores de inquilinos no tienen privilegios para conectarse a controladores de dominio en el dominio administrado a través del Escritorio remoto. Para administrar el dominio administrado, instale la característica de herramientas de administración de AD en una máquina virtual unida al dominio administrado. Consulte las instrucciones en el artículo [Administración de un dominio administrado con Servicios de dominio de Azure AD](active-directory-ds-admin-guide-administer-domain.md) .
 
-## <a name="create-an-organizational-unit-on-hello-managed-domain"></a>Crear a una unidad organizativa en el dominio administrado Hola
-Ahora que se instalan herramientas administrativas Hola AD en hello Unidos a un dominio máquina virtual, podemos usar estas herramientas toocreate una unidad organizativa en el dominio de hello administrado. Lleve a cabo Hola pasos:
+## <a name="create-an-organizational-unit-on-the-managed-domain"></a>Creación de una unidad organizativa en un dominio administrado
+Ahora que se han instalado las herramientas administrativas de AD en la máquina virtual unida a dominio, podemos usarlas para crear una unidad organizativa en el dominio administrado. Lleve a cabo los siguiente pasos:
 
 > [!NOTE]
-> Solo los miembros del grupo de 'Administradores de controlador de dominio de AAD' hello ha Hola toocreate de privilegios necesarios en una OU personalizada. Asegúrese de que lleva a cabo Hola siguiendo los pasos como un usuario que pertenece el grupo de toothis.
+> Los miembros del grupo AAD DC Administrators son los únicos que tienen los privilegios necesarios para crear una unidad organizativa personalizada. Asegúrese de seguir estos pasos como usuario que pertenece a este grupo.
 >
 >
 
-1. En la pantalla de inicio de bienvenida, haga clic en **herramientas administrativas**. Debería ver herramientas administrativas Hola AD instaladas en la máquina virtual de Hola.
+1. En la pantalla Inicio, haga clic en **Herramientas administrativas**. Debería ver las herramientas administrativas de AD instaladas en la máquina virtual.
 
     ![Herramientas administrativas instaladas en el servidor](./media/active-directory-domain-services-admin-guide/install-rsat-admin-tools-installed.png)
 2. Haga clic en **Centro de administración de Active Directory**.
 
     ![Centro de administración de Active Directory](./media/active-directory-domain-services-admin-guide/adac-overview.png)
-3. dominio de hello tooview, haga clic en el nombre de dominio de hello en el panel izquierdo de hello (por ejemplo, ' contoso100.com').
+3. Para ver el dominio, haga clic en el nombre de dominio en el panel izquierdo (por ejemplo, contoso100.com).
 
     ![ADAC: ver dominio](./media/active-directory-domain-services-admin-guide/create-ou-adac-overview.png)
-4. En el lado derecho de hello **tareas** panel, haga clic en **New** en el nodo de nombre de dominio de Hola. En este ejemplo, hacemos clic en **New** en el nodo de 'contoso100(local)' hello en el lado derecho de hello **tareas** panel.
+4. En el panel **Tareas** de la derecha, haga clic en la opción **Nuevo** del nodo del nombre de dominio. En este ejemplo, vamos a hacer clic en la opción **Nuevo** del nodo contoso100(local) del panel **Tareas** de la derecha.
 
     ![ADAC: nueva unidad organizativa](./media/active-directory-domain-services-admin-guide/create-ou-adac-new-ou.png)
-5. Debería ver Hola opción toocreate una unidad organizativa. Haga clic en **unidad organizativa** toolaunch hello **crear unidad organizativa** cuadro de diálogo.
-6. Hola **crear unidad organizativa** cuadro de diálogo, especifique un **nombre** para Hola nueva unidad organizativa. Proporcione una descripción breve de hello OU. También es posible establecer hello **administrado por** field para hello OU. toocreate Hola OU personalizada, haga clic en **Aceptar**.
+5. Debería ver la opción para crear una unidad organizativa. Haga clic en **Unidad organizativa** para abrir el cuadro de diálogo **Create Organizational Unit** (Crear unidad organizativa).
+6. En el cuadro de diálogo **Create Organizational Unit** (Crear unidad organizativa), especifique un **Nombre** para la nueva unidad organizativa. Proporcione una breve descripción de la unidad organizativa. También puede establecer el campo **Administrado por** para la unidad organizativa. Haga clic en **Aceptar**para crear la unidad organizativa personalizada.
 
     ![ADAC: cuadro de diálogo de creación de unidad organizativa](./media/active-directory-domain-services-admin-guide/create-ou-dialog.png)
-7. Hola que acaba de crear unidad organizativa debe aparecer ahora en hello centro de administración de AD (ADAC).
+7. La unidad organizativa recién creada debe aparecer ahora en el Centro de administración de AD.
 
     ![ADAC: unidad organizativa creada](./media/active-directory-domain-services-admin-guide/create-ou-done.png)
 
 ## <a name="permissionssecurity-for-newly-created-ous"></a>Permisos/seguridad para unidades organizativas recién creadas
-De forma predeterminada, usuario de hello (miembro del grupo de hello 'AAD DC administradores') que creó OU personalizada es contar con privilegios administrativos (control total) a través de Hola Hola OU. usuario de Hello, a continuación, puede seguir adelante y conceder a los usuarios de privilegios tooother o un grupo de 'Administradores de controlador de dominio de AAD' toohello según sea necesario. Tal como se muestra en la siguiente captura de pantalla de hello, Hola usuario 'bob@domainservicespreview.onmicrosoft.com' que creado hello 'MyCustomOU' unidades organizativas se le concede control total sobre él.
+De forma predeterminada, al usuario (miembro del grupo AAD DC Administrators) que ha creado la unidad organizativa personalizada, se le conceden privilegios administrativos (control total) sobre dicha unidad. El usuario puede así seguir adelante y conceder privilegios a otros usuarios o al grupo "AAD DC Administrators" como desee. Tal como se muestra en la siguiente captura de pantalla, el usuario 'bob@domainservicespreview.onmicrosoft.com' quién creó la nueva unidad organizativa de 'MyCustomOU' se concede control total sobre él.
 
  ![ADAC: seguridad de nueva unidad organizativa](./media/active-directory-domain-services-admin-guide/create-ou-permissions.png)
 
 ## <a name="notes-on-administering-custom-ous"></a>Notas acerca de cómo administrar unidades organizativas personalizadas
-Ahora que ha generado una unidad organizativa personalizada, puede seguir y crear en ella usuarios, grupos, equipos y cuentas de servicio. No se puede mover a los usuarios o grupos de hello 'AADDC usuarios' OU toocustom las unidades organizativas.
+Ahora que ha generado una unidad organizativa personalizada, puede seguir y crear en ella usuarios, grupos, equipos y cuentas de servicio. No podrá mover usuarios o grupos desde la unidad organizativa "AADDC Users" a unidades organizativas personalizadas.
 
 > [!WARNING]
-> Las cuentas de usuario, los grupos, las cuentas de servicio y los objetos de equipo que se creen en unidades organizativas personalizadas no estarán disponibles en el inquilino de Azure AD. En otras palabras, estos objetos no se muestran utilizando la API de Azure AD Graph Hola u Hola UI de Azure AD. Solo estarán disponibles en el dominio administrado de Azure AD Domain Services.
+> Las cuentas de usuario, los grupos, las cuentas de servicio y los objetos de equipo que se creen en unidades organizativas personalizadas no estarán disponibles en el inquilino de Azure AD. En otras palabras: estos objetos no se mostrarán con la API Graph de Azure AD ni en la interfaz de usuario de Azure AD. Solo estarán disponibles en el dominio administrado de Azure AD Domain Services.
 >
 >
 

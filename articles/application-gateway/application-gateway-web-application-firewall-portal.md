@@ -1,9 +1,9 @@
 ---
-title: "aaaCreate o actualizar una puerta de enlace de la aplicación de Azure con firewall de aplicación web | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toocreate una puerta de enlace de la aplicación con el servidor de aplicaciones web mediante el uso de Hola portal"
+title: "Creación o actualización de una puerta de enlace de aplicaciones con un firewall de aplicaciones web | Microsoft Docs"
+description: Aprenda a crear una puerta de enlace de aplicaciones con un firewall de aplicaciones web en el portal.
 services: application-gateway
 documentationcenter: na
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
@@ -14,150 +14,147 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
-ms.author: gwallace
-ms.openlocfilehash: 68d140fef14499da654ea251d1208e6a800f55a9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.author: davidmu
+ms.openlocfilehash: bfc06c1b44974fd17a3794654503d21d6407a917
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-an-application-gateway-with-web-application-firewall-by-using-hello-portal"></a>Crear una puerta de enlace de la aplicación con el servidor de aplicaciones web mediante el portal de Hola
+# <a name="create-an-application-gateway-with-a-web-application-firewall-by-using-the-portal"></a>Creación de una puerta de enlace de aplicaciones con un firewall de aplicaciones web en el portal
 
 > [!div class="op_single_selector"]
 > * [Portal de Azure](application-gateway-web-application-firewall-portal.md)
 > * [PowerShell](application-gateway-web-application-firewall-powershell.md)
 > * [CLI de Azure](application-gateway-web-application-firewall-cli.md)
 
-Obtenga información acerca de cómo toocreate un servidor de seguridad de la aplicación web habilita la puerta de enlace de aplicaciones.
+Aprenda a crear una puerta de enlace de aplicaciones web habilitada para un firewall de aplicaciones web (WAF).
 
-servidor de aplicaciones web Hello (WAFS) en la puerta de enlace de aplicaciones de Azure protege las aplicaciones web de ataques basados en web comunes como la inyección de código SQL, ataques XSS y apropiaciones de sesión. Aplicación Web protege contra muchos de hello OWASP top 10 web las vulnerabilidades más comunes.
+El WAF de Azure Application Gateway protege las aplicaciones web de ataques web comunes, como inyección de código SQL, ataques de scripts entre sitios y secuestros de sesiones. El WAF sirve de protección frente a muchas de las vulnerabilidades web de OWASP Top 10.
 
 ## <a name="scenarios"></a>Escenarios
 
-En este artículo, hay dos escenarios:
-
-En el primer escenario hello, aprenderá demasiado[crear una puerta de enlace de la aplicación con el servidor de aplicaciones web](#create-an-application-gateway-with-web-application-firewall)
-
-En el segundo escenario hello, aprenderá demasiado[Agregar aplicación firewall tooan existente aplicación puerta de enlace web](#add-web-application-firewall-to-an-existing-application-gateway).
+En este artículo se presentan dos escenarios. En el primer escenario, aprenderá a [crear una puerta de enlace de aplicaciones con un WAF](#create-an-application-gateway-with-web-application-firewall). En el segundo escenario, aprenderá a [agregar un WAF a una puerta de enlace de aplicaciones existente](#add-web-application-firewall-to-an-existing-application-gateway).
 
 ![Escenario de ejemplo][scenario]
 
 > [!NOTE]
-> Las comprobaciones de la configuración adicional de puerta de enlace de aplicaciones de hello, incluido el estado personalizado, se configuran las direcciones de grupo back-end y reglas adicionales después de configura la puerta de enlace de aplicaciones de hello y no durante la implementación inicial.
+> Puede agregar sondeos de estado personalizados, direcciones del grupo de back-end y otras reglas a la puerta de enlace de aplicaciones. Estas aplicaciones se configuran después de la puerta de enlace de aplicaciones y no durante la implementación inicial.
 
 ## <a name="before-you-begin"></a>Antes de empezar
 
-Azure Application Gateway requiere su propia subred. Al crear una red virtual, asegúrese de dejar suficiente toohave de espacio de direcciones en varias subredes. Una vez que se implementa una subred tooa de puerta de enlace de aplicaciones, las puertas de enlace de aplicaciones únicas opciones adicionales son toobe puede agregar subred toohello.
+ Las puertas de enlace de aplicaciones necesitan su propia subred. Cuando cree una red virtual, asegúrese de dejar suficiente espacio de direcciones para tener varias subredes. Una vez que se implementa una puerta de enlace de aplicaciones en una subred, solo se puedan agregar otras puertas de enlace de aplicaciones a dicha subred.
 
-##<a name="add-web-application-firewall-to-an-existing-application-gateway"></a>Agregar aplicación firewall tooan existente aplicación puerta de enlace web
+## <a name="add-web-application-firewall-to-an-existing-application-gateway"></a>Incorporación de un firewall de aplicaciones web a una puerta de enlace de aplicaciones existente
 
-En este ejemplo se actualiza una aplicación puerta de enlace toosupport web aplicación firewall existente en el modo de prevención.
+En este ejemplo, se actualiza una puerta de enlace de aplicaciones existente para que admita un WAF en el modo **Prevención**.
 
-1. En el portal de Azure hello **favoritos** panel, haga clic en **todos los recursos**. Haga clic en Hola puerta de enlace de aplicación existente en hello **todos los recursos** hoja. Si la suscripción de Hola que ha seleccionado ya tiene varios recursos en ella, puede escribir nombre de Hola Hola **filtrar por nombre...** zona DNS de cuadro tooeasily acceso Hola.
+1. En el panel **Favoritos** de Azure Portal, seleccione **Todos los recursos**. En la hoja **Todos los recursos**, seleccione la puerta de enlace de aplicaciones existente. Si la suscripción seleccionada ya contiene varios recursos, puede escribir el nombre en **Filtrar por nombre** para acceder fácilmente a la zona DNS.
 
-   ![Creación de una puerta de enlace de aplicaciones][1]
+   ![Selección de una puerta de enlace de aplicaciones existente][1]
 
-1. Haga clic en **firewall de aplicación Web** y actualizar la configuración de puerta de enlace de aplicación Hola. Cuando haya terminado, haga clic en **Guardar**
+2. Seleccione **Firewall de aplicaciones web** y actualice la configuración de la puerta de enlace de aplicaciones. Cuando la actualización finalice, seleccione **Guardar**. 
 
-    Hola configuración tooupdate un servidor de aplicaciones web existentes del toosupport de puerta de enlace aplicación son:
+3. Utilice la siguiente configuración para actualizar una puerta de enlace de aplicaciones existente de forma que admita el uso de un WAF:
 
    | **Configuración** | **Valor** | **Detalles**
    |---|---|---|
-   |**Actualizar tooWAF capa**| Activado | Esto establece el nivel de Hola Hola puerta de enlace toohello WAFS del nivel de aplicación.|
-   |**Estado de Firewall**| habilitado | Esta configuración habilita el firewall de hello en hello WAFS.|
-   |**Modo de firewall** | Prevención | Esta configuración hace referencia a cómo el firewall de aplicaciones web se ocupa del tráfico malintencionado. **Detección de** modo sólo registra los eventos de hello, donde **prevención** modo registra eventos de Hola y se detiene Hola tráfico malintencionado.|
-   |**Conjunto de reglas**|3.0|Esta configuración determina hello [principales del conjunto de reglas](application-gateway-web-application-firewall-overview.md#core-rule-sets) que es usado tooprotect Hola back-end los miembros del grupo.|
-   |**Configurar reglas deshabilitadas**|Varía|tooprevent posibles falsos positivos, esta configuración le permite toodisable determinados [y grupos de reglas](application-gateway-crs-rulegroups-rules.md).|
+   |**Actualizar al nivel WAF**| Activado | Esta opción establece el nivel de la puerta de enlace de aplicaciones en el nivel WAF.|
+   |**Estado de Firewall**| habilitado | Esta configuración habilita el firewall en el WAF.|
+   |**Modo de firewall** | Prevención | Esta opción determina cómo va a administrar el WAF el tráfico malintencionado. El modo **Detección** solo registra los eventos. El modo **Prevención** registra los eventos y detiene el tráfico malintencionado.|
+   |**Conjunto de reglas**|3.0|Esta opción determina el [conjunto de reglas básico](application-gateway-web-application-firewall-overview.md#core-rule-sets) que se usa para proteger a los miembros del grupo de back-end.|
+   |**Configurar reglas deshabilitadas**|Varía|Para evitar posibles falsos positivos, puede utilizar esta opción para deshabilitar algunas [reglas y grupos de reglas](application-gateway-crs-rulegroups-rules.md).|
 
     >[!NOTE]
-    > Cuando se actualiza una existente toohello de puerta de enlace de aplicaciones WAFS SKU, Hola SKU tamaño cambios demasiado**medio**. Este cambio se puede reconfigurar una vez finalizada la configuración.
+    > Cuando se actualiza una puerta de enlace de aplicaciones existente a la SKU de WAF, el tamaño de la SKU cambia a **medio**. Una vez que finalice la configuración, podrá configurar de nuevo esta opción.
 
-    ![hoja que muestra configuración básica][2-1]
+    ![Configuración básica][2-1]
 
     > [!NOTE]
-    > registros de firewall en la aplicación web de tooview, diagnósticos deben estar habilitados y ApplicationGatewayFirewallLog seleccionado. Para las pruebas se puede elegir 1 en Número de instancias. Es importante tooknow que cualquier instancia de recuento de instancias en dos no está cubierto por hello SLA y, por tanto, se recomienda que no. Las puertas de enlace pequeñas no están disponibles cuando se usa el firewall de aplicaciones web.
+    > Para consultar los logs de WAF, habilite el diagnóstico y seleccione **ApplicationGatewayFirewallLog**. Solo debe elegir **1** como número de instancias para realizar pruebas. No es recomendable utilizar un número de instancias inferior a **2**, ya que no está cubierto por el SLA. Las puertas de enlace pequeñas no están disponibles cuando se usa un WAF.
 
-## <a name="create-an-application-gateway-with-web-application-firewall"></a>crear una puerta de enlace de aplicaciones con el firewall de aplicaciones web
+## <a name="create-an-application-gateway-with-a-web-application-firewall"></a>Creación de una puerta de enlace de aplicaciones con un firewall de aplicaciones web
 
 En este escenario:
 
-* Creará una puerta de enlace de aplicaciones de firewall de aplicaciones web con dos instancias.
+* Creará una puerta de enlace de aplicaciones de WAF de tamaño medio con dos instancias.
 * Creará una red virtual denominada AdatumAppGatewayVNET con un bloque CIDR reservado de 10.0.0.0/16.
 * Creará una subred denominada Appgatewaysubnet que usa 10.0.0.0/28 como bloque CIDR.
 * Configurará un certificado para la descarga SSL.
 
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com). Si aún no tiene cuenta, puede registrarse para obtener [una evaluación gratuita durante un mes](https://azure.microsoft.com/free).
-1. En panel de favoritos de Hola de portal de hello, haga clic en **nuevo**
-1. Hola **New** hoja, haga clic en **red**. Hola **red** hoja, haga clic en **Application Gateway**, tal y como se muestra en hello después de imagen:
-1. Navegue toohello portal de Azure, haga clic en **New** > **red** > **puerta de enlace de aplicaciones**
+1. Inicie sesión en el [Portal de Azure](https://portal.azure.com). Si aún no tiene una cuenta, puede registrarse para disfrutar de [una evaluación gratuita de un mes](https://azure.microsoft.com/free).
 
-    ![Creación de una puerta de enlace de aplicaciones][1]
+2. En el panel **Favoritos** del portal, seleccione **Nuevo**.
 
-1. Hola **Fundamentos** hoja que aparece, escriba Hola después de valores, a continuación, haga clic en **Aceptar**:
+3. En la hoja **Nuevo**, seleccione **Redes**. En la hoja **Redes**, seleccione **Puerta de enlace de aplicaciones**, tal y como se muestra en la siguiente imagen:
+
+    ![Creación de puertas de enlace de aplicaciones][1]
+
+4. En la hoja **Datos básicos** que aparece, escriba los valores siguientes y seleccione **Aceptar**:
 
    | **Configuración** | **Valor** | **Detalles**
    |---|---|---|
-   |**Name**|AdatumAppGateway|nombre de Hola de puerta de enlace de aplicación Hola|
-   |**Nivel**|WAF|Los valores disponibles son Estándar y WAF. Visite [firewall de aplicación web](application-gateway-web-application-firewall-overview.md) toolearn más información sobre WAFS.|
-   |**Tamaño de la SKU**|Mediano|Las opciones al elegir el nivel Estándar son pequeño, mediano y grande. Al elegir el nivel de WAF, las opciones solo son mediano y grande.|
-   |**Recuento de instancias**|2|Número de instancias de puerta de enlace de aplicaciones de Hola para lograr alta disponibilidad. Los recuentos de instancias de 1 solo deben usarse para fines de pruebas.|
-   |**Suscripción**|[Su suscripción]|Seleccione una puerta de enlace de suscripción toocreate Hola aplicación en.|
-   |**Grupos de recursos**|**Crear nuevo:** AdatumAppGatewayRG|Cree un grupo de recursos. nombre de grupo de recursos de Hello debe ser único dentro de la suscripción de Hola que ha seleccionado. más información acerca de los grupos de recursos, leer hello toolearn [el Administrador de recursos](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#resource-groups) artículo de información general.|
+   |**Name**|AdatumAppGateway|Nombre de la puerta de enlace de aplicaciones.|
+   |**Nivel**|WAF|Los valores disponibles son Estándar y WAF. Para más información sobre los WAF, consulte [Firewall de aplicaciones web](application-gateway-web-application-firewall-overview.md).|
+   |**Tamaño de la SKU**|Mediano|Las opciones del nivel estándar son **Pequeño**, **Medio** y **Grande**. Las opciones del nivel WAF son exclusivamente **Medio** y **Grande**.|
+   |**Recuento de instancias**|2|Número de instancias de la puerta de enlace de aplicaciones para alta disponibilidad. Solo debe elegir 1 como número de instancias para realizar pruebas.|
+   |**Suscripción**|[Su suscripción]|Seleccione la suscripción que va a utilizar para crear la puerta de enlace de aplicaciones.|
+   |**Grupos de recursos**|**Crear nuevo:** AdatumAppGatewayRG|Cree un grupo de recursos. El nombre del grupo de recursos debe ser único dentro de la suscripción seleccionada. Para más información sobre los grupos de recursos, lea el artículo [Información general de Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#resource-groups).|
    |**Ubicación**|Oeste de EE. UU.||
 
-   ![hoja que muestra configuración básica][2-2]
+   ![Opciones de configuración básicas][2-2]
 
-1. Hola **configuración** hoja que aparece bajo **red Virtual**, haga clic en **elegir una red virtual**. Este paso abre escriba hello **red virtual de elegir** hoja.  Haga clic en **crear nuevo** tooopen hello **crear red virtual** hoja.
+5. En la hoja **Configuración** que aparece en **Red virtual**, seleccione **Elegir una red virtual**. En la hoja **Elegir red virtual**, haga clic en **Crear nuevo**.
 
-   ![Elegir una red virtual][2]
+   ![Opción de red virtual][2]
 
-1. En hello **Crear hoja de red virtual** escriba Hola después de valores, a continuación, haga clic en **Aceptar**. Este paso cierra hello **crear red virtual** y **red virtual de elegir** hojas. Este modo rellenará hello **subred** campo hello **configuración** hoja con subred Hola elegido.
-
-   |**Configuración** | **Valor** | **Detalles** |
-   |---|---|---|
-   |**Name**|AdatumAppGatewayVNET|Nombre de puerta de enlace de aplicación Hola|
-   |**Espacio de direcciones**|10.0.0.0/16| Este valor es el espacio de direcciones de hello para la red virtual de Hola|
-   |**Nombre de subred**|AppGatewaySubnet|Nombre de subred de Hola para puerta de enlace de aplicación Hola|
-   |**Intervalo de direcciones de subred**|10.0.0.0/28 | Esta subred permite más subredes adicionales en la red virtual de Hola para los miembros del grupo back-end|
-
-1. En hello **configuración** hoja bajo **configuración Frontend IP**, elija **público** como hello **tipo de dirección IP**
-
-1. En hello **configuración** hoja bajo **dirección IP pública**, haga clic en **elegir una dirección IP pública**, este paso abre hello **Elegir dirección IP pública**hoja, haga clic en **crear nuevo**.
-
-   ![Elegir una dirección IP pública][3]
-
-1. En hello **Crear dirección IP pública** hoja, acepte el valor predeterminado de Hola y haga clic en **Aceptar**. Este paso cierra hello **Elegir dirección IP pública** hoja, hello **Crear dirección IP pública** hoja y rellenar **dirección IP pública** con la dirección IP pública Hola elegida.
-
-1. En hello **configuración** hoja bajo **configuración de agente de escucha**, haga clic en **HTTP** en **protocolo**. toouse **https**, se requiere un certificado. clave privada de Hello del certificado de hello es necesaria para que una exportación .pfx del certificado de hello necesita toobe proporcionado y Hola contraseña para el archivo hello.
-
-1. Configurar hello **WAFS** unos valores específicos.
+6. En la hoja **Crear red virtual**, escriba los valores siguientes y seleccione **Aceptar**. El campo **Subred** de la hoja **Configuración** se rellena con la subred elegida.
 
    |**Configuración** | **Valor** | **Detalles** |
    |---|---|---|
-   |**Estado de Firewall**| habilitado| Esta opción activa o desactiva WAF.|
-   |**Modo de firewall** | Prevención| Esta configuración determina las acciones de hello que WAFS toma en tráfico malintencionado. Si se elige **Detección** , solo se registra el tráfico.  Si se elige **Prevención** , el tráfico se registra y se detiene con una respuesta de error 403 no autorizado.|
+   |**Name**|AdatumAppGatewayVNET|Nombre de la puerta de enlace de aplicaciones.|
+   |**Espacio de direcciones**|10.0.0.0/16| Este valor es el espacio de direcciones de la red virtual.|
+   |**Nombre de subred**|AppGatewaySubnet|Nombre de la subred de la puerta de enlace de aplicaciones.|
+   |**Intervalo de direcciones de subred**|10.0.0.0/28 | Esta subred permite más subredes en la red virtual para los miembros del grupo de back-end.|
+
+7. En la hoja **Configuración**, en **Configuración de IP de front-end**, seleccione **Pública** como **Tipo de dirección IP**.
+
+8. En la hoja **Configuración**, en **Dirección IP pública**, seleccione **Elegir una dirección IP pública**. En la hoja **Elegir dirección IP pública**, seleccione **Crear nuevo**.
+
+   ![Opción de dirección IP pública][3]
+
+9. En la hoja **Crear dirección IP pública**, acepte el valor predeterminado y seleccione **Aceptar**. El campo **Dirección IP pública** se rellena con la dirección IP pública elegida.
+
+10. En la hoja **Configuración**, en **Configuración de agente de escucha**, haga clic en la opción **HTTP** de **Protocolo**. Para usar **HTTPS**, se requiere un certificado. Se necesita la clave privada del certificado. Proporcione una exportación .pfx del certificado y escriba la contraseña del archivo.
+
+11. Configure los valores específicos de **WAF**.
+
+   |**Configuración** | **Valor** | **Detalles** |
+   |---|---|---|
+   |**Estado de Firewall**| habilitado| Esta opción activa o desactiva el WAF.|
+   |**Modo de firewall** | Prevención| Esta configuración determina las acciones que realiza el WAF sobre el tráfico malintencionado. El modo **Detección** solamente registra el tráfico. El modo **Prevención** registra y detiene el tráfico con una respuesta de tipo 403-No autorizado.|
 
 
-1. Revise la página Resumen de Hola y haga clic en **Aceptar**.  Ahora puerta de enlace de aplicaciones de hello está puesto en la cola y creado.
+12. Consulte la página **Resumen** y seleccione **Aceptar**. La puerta de enlace de aplicaciones se pone en cola y se crea.
 
-1. Una vez creada la puerta de enlace de aplicaciones de hello, navegue tooit en la configuración de portal toocontinue Hola de puerta de enlace de aplicación Hola.
+13. Una vez creada la puerta de enlace de aplicaciones, navegue hasta ella en el portal para continuar con la configuración de la puerta de enlace de aplicaciones.
 
-    ![Vista de recursos de Application Gateway][10]
+    ![Vista de los recursos de la puerta de enlace de aplicaciones][10]
 
-Estos pasos crea una puerta de enlace de aplicaciones básica con la configuración predeterminada para el agente de escucha de hello, grupo back-end, configuración de http de back-end y reglas. Se puede modificar estos toosuit configuración la implementación cuando se realiza correctamente el aprovisionamiento de Hola
+Este procedimiento permite crear una puerta de enlace de aplicaciones básica con la configuración predeterminada para el agente de escucha, el grupo de back-end, la configuración HTTP de back-end y las reglas. Una vez que la operación de aprovisionamiento finalice correctamente, podrá modificar esta configuración para adaptarla a su implementación.
 
 > [!NOTE]
-> Las puertas de enlace de aplicaciones creadas con la configuración del firewall de aplicación de hello web básico se configuran con CRS 3.0 para protección.
+> Las puertas de enlace de aplicaciones creadas con la configuración básica de WAF se configuran con CRS 3.0 como medida de protección.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-A continuación, aprenderá cómo tooconfigure un alias de dominio personalizado para hello [dirección IP pública](../dns/dns-custom-domain.md#public-ip-address) con DNS de Azure u otro proveedor DNS.
+Si desea configurar un alias de dominio personalizado para la [dirección IP pública](../dns/dns-custom-domain.md#public-ip-address), puede utilizar Azure DNS u otro proveedor de DNS.
 
-Obtenga información acerca de cómo tooconfigure el registro de diagnóstico, eventos de hello toolog si se detecta o prevenir con servidor de aplicaciones web visitando [diagnóstico de puerta de enlace de aplicaciones](application-gateway-diagnostics.md)
+Si desea configurar un registro de diagnóstico para incluir todos los eventos que se detecten o se impidan con un WAF, consulte este artículo sobre [diagnósticos de Application Gateway](application-gateway-diagnostics.md).
 
-Obtenga información acerca de cómo sondeos de estado personalizado de toocreate visitando [crear un sondeo de estado personalizados](application-gateway-create-probe-portal.md)
+Si desea crear sondeos de estado personalizados, consulte este artículo sobre la [creación de un sondeo de estado personalizado](application-gateway-create-probe-portal.md).
 
-Obtenga información acerca de cómo tooconfigure la descarga de SSL y descifrado de SSL costoso de toman Hola desactivado los servidores web visitando [configurar la descarga de SSL](application-gateway-ssl-portal.md)
+Si desea configurar la descarga SSL y eliminar la costosa suscripción a SSL de los servidores web, consulte este artículo sobre la [configuración de la descarga SSL](application-gateway-ssl-portal.md).
 
 <!--Image references-->
 [1]: ./media/application-gateway-web-application-firewall-portal/figure1.png

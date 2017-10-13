@@ -1,5 +1,5 @@
 ---
-title: aaaGet a trabajar con colas de Bus de servicio de Azure | Documentos de Microsoft
+title: "Introducción a las colas de Azure Service Bus | Microsoft Docs"
 description: "Escriba una aplicación de consola en C# que use las colas de mensajería de Service Bus."
 services: service-bus-messaging
 documentationcenter: .net
@@ -14,59 +14,59 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 06/26/2017
 ms.author: sethm
-ms.openlocfilehash: eaa362ab0eabd2427977398c1deab5dc00105ae9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 99a377db6341d90d263b98e14227db61dd9beabd
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="get-started-with-service-bus-queues"></a>Introducción a las colas de Service Bus
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
 ## <a name="what-will-be-accomplished"></a>Lo que se logrará
-Este tutorial trata Hola pasos:
+En este tutorial se describen los pasos siguientes:
 
-1. Crear un espacio de nombres de Bus de servicio, mediante Hola portal de Azure.
-2. Crear una cola de Bus de servicio, utilizando Hola portal de Azure.
-3. Escribir un mensaje de un toosend de aplicación de consola.
-4. Escribir un hello tooreceive de aplicación de consola mensajes enviados en el paso anterior de Hola.
+1. Creación de un espacio de nombres de Service Bus mediante Azure Portal
+2. Creación de una cola de Service Bus mediante Azure Portal.
+3. Escritura de una aplicación de consola para enviar un mensaje
+4. Escritura de una aplicación de consola para recibir los mensajes enviados en el paso anterior.
 
 ## <a name="prerequisites"></a>Requisitos previos
-1. [Visual Studio 2015 o posterior](http://www.visualstudio.com). ejemplos de Hello en este tutorial utiliza Visual Studio de 2017.
+1. [Visual Studio 2015 o posterior](http://www.visualstudio.com). En los ejemplos de este tutorial se usa Visual Studio 2017.
 2. Una suscripción de Azure.
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="1-create-a-namespace-using-hello-azure-portal"></a>1. Crear un espacio de nombres mediante Hola portal de Azure
-Si ya ha creado un espacio de nombres de mensajería de Bus de servicio, consulte el toohello [crear una cola mediante el portal de Azure de hello](#2-create-a-queue-using-the-azure-portal) sección.
+## <a name="1-create-a-namespace-using-the-azure-portal"></a>1. Creación de un espacio de nombres mediante Azure Portal
+Si ya ha creado un espacio de nombres de mensajería de Service Bus, vaya a la sección [Creación de una cola mediante Azure Portal](#2-create-a-queue-using-the-azure-portal).
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="2-create-a-queue-using-hello-azure-portal"></a>2. Crear una cola con hello portal de Azure
-Si ya ha creado una cola de Bus de servicio, consulte el toohello [toohello cola de mensajes de envío](#3-send-messages-to-the-queue) sección.
+## <a name="2-create-a-queue-using-the-azure-portal"></a>2. Creación de una cola mediante Azure Portal
+Si ya ha creado una cola de Service Bus, vaya a la sección [Envío de mensajes a la cola](#3-send-messages-to-the-queue).
 
 [!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
 
-## <a name="3-send-messages-toohello-queue"></a>3. Cola de mensajes toohello de envío
-cola de toohello de toosend mensajes, se escribe una aplicación de consola de C# con Visual Studio.
+## <a name="3-send-messages-to-the-queue"></a>3. Envío de mensajes a la cola
+Para enviar mensajes a la cola, se escribe una aplicación de consola en C# mediante Visual Studio.
 
 ### <a name="create-a-console-application"></a>Creación de una aplicación de consola
 
 Inicie Visual Studio y cree un nuevo proyecto **Console app (.NET Framework)**.
 
-### <a name="add-hello-service-bus-nuget-package"></a>Agregar paquete de NuGet de Bus de servicio de Hola
-1. Haga clic en proyecto de hello recién creado y seleccione **administrar paquetes de NuGet**.
-2. Haga clic en hello **examinar** ficha, busque **Microsoft Azure Service Bus**y, a continuación, seleccione hello **WindowsAzure.ServiceBus** elemento. Haga clic en **instalar** toocomplete Hola instalación, a continuación, cierre este cuadro de diálogo.
+### <a name="add-the-service-bus-nuget-package"></a>Agregar el paquete NuGet de Service Bus
+1. Haga clic con el botón derecho en el proyecto recién creado y seleccione **Administrar paquetes NuGet**.
+2. Haga clic en la pestaña **Examinar**, busque **Microsoft Azure Service Bus** y seleccione el elemento **WindowsAzure.ServiceBus**. Haga clic en **Instalar** para completar la instalación y, a continuación, cierre este cuadro de diálogo.
    
     ![Seleccionar un paquete NuGet][nuget-pkg]
 
-### <a name="write-some-code-toosend-a-message-toohello-queue"></a>Escribir algunas toosend de código en una cola de mensajes toohello
-1. Agregue los siguiente hello `using` parte superior de toohello de instrucción del archivo Program.cs de Hola.
+### <a name="write-some-code-to-send-a-message-to-the-queue"></a>Escritura de código para enviar un mensaje a la cola
+1. Agregue la siguiente instrucción `using` al principio del archivo Program.cs.
    
     ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
-2. Agregar Hola después código toohello `Main` método. Conjunto hello `connectionString` cadena de conexión de la variable toohello que se obtuvo al crear el espacio de nombres de Hola y establecer `queueName` nombre de la cola de toohello que utilizó al crear la cola de Hola.
+2. Agregue el siguiente código al método `Main`. Establezca la variable `connectionString` en la cadena de conexión que obtuvo al crear el espacio de nombres y establezca `queueName` en el nombre de cola que usó cuando creó la cola.
    
     ```csharp
     var connectionString = "<your connection string>";
@@ -79,7 +79,7 @@ Inicie Visual Studio y cree un nuevo proyecto **Console app (.NET Framework)**.
 
     client.Send(message);
 
-    Console.WriteLine("Message successfully sent! Press ENTER tooexit program");
+    Console.WriteLine("Message successfully sent! Press ENTER to exit program");
     Console.ReadLine();
     ```
    
@@ -109,25 +109,25 @@ Inicie Visual Studio y cree un nuevo proyecto **Console app (.NET Framework)**.
 
                 client.Send(message);
 
-                Console.WriteLine("Message successfully sent! Press ENTER tooexit program");
+                Console.WriteLine("Message successfully sent! Press ENTER to exit program");
                 Console.ReadLine();
             }
         }
     }
     ```
-3. Ejecutar programa hello y comprobar Hola portal de Azure: haga clic en nombre de saludo de la cola en el espacio de nombres de hello **Introducción** hoja. cola de Hello **Essentials** hoja se muestra. Tenga en cuenta que hello **Active mensaje Count** valor ahora debe ser 1. Cada vez que ejecute la aplicación del remitente Hola sin tener que recuperar mensajes de Hola, este valor aumenta en 1. También tenga en cuenta que el tamaño actual de Hola de cola de hello incrementa cada aplicación hello de tiempo agrega una cola de toohello de mensajes.
+3. Ejecute el programa y compruebe Azure Portal: haga clic en el nombre de la cola en la hoja **Introducción** del espacio de nombres. Se muestra la hoja **Essentials** de la cola. Tenga en cuenta que el valor de **Recuento de mensajes activos** debe ser ahora 1. Cada vez que se ejecuta la aplicación de remitente sin recuperar los mensajes, este valor aumenta en 1. Tenga también en cuenta que el tamaño actual de la cola aumenta cada vez que la aplicación agrega un mensaje a la misma.
    
       ![Tamaño del mensaje][queue-message]
 
-## <a name="4-receive-messages-from-hello-queue"></a>4. Recibir mensajes de Hola cola
+## <a name="4-receive-messages-from-the-queue"></a>4. Recepción de mensajes de la cola
 
-1. mensajes de saludo tooreceive acabamos de enviar, cree una nueva aplicación de consola y agregar un paquete de NuGet de Bus de servicio de referencia toohello, aplicación remitente similar de toohello anterior.
-2. Agregue los siguiente hello `using` parte superior de toohello de instrucción del archivo Program.cs de Hola.
+1. Para recibir los mensajes que acaba de enviar, cree una nueva aplicación de consola y agregue una referencia al paquete NuGet de Service Bus, similar a la aplicación de remitente anterior.
+2. Agregue la siguiente instrucción `using` al principio del archivo Program.cs.
    
     ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
-3. Agregar Hola después código toohello `Main` método. Conjunto hello `connectionString` toohello variable cadena de conexión que se obtuvo al crear el espacio de nombres de Hola y establezca `queueName` nombre de la cola de toohello que utilizó al crear la cola de Hola.
+3. Agregue el siguiente código al método `Main`. Establezca la variable `connectionString` en la cadena de conexión que se obtuvo al crear el espacio de nombres y establezca `queueName` en el nombre de cola que usó cuando creó la cola.
    
     ```csharp
     var connectionString = "<your connection string>";
@@ -141,7 +141,7 @@ Inicie Visual Studio y cree un nuevo proyecto **Console app (.NET Framework)**.
       Console.WriteLine(String.Format("Message id: {0}", message.MessageId));
     });
    
-    Console.WriteLine("Press ENTER tooexit program");
+    Console.WriteLine("Press ENTER to exit program");
     Console.ReadLine();
     ```
    
@@ -168,13 +168,13 @@ Inicie Visual Studio y cree un nuevo proyecto **Console app (.NET Framework)**.
             Console.WriteLine(String.Format("Message id: {0}", message.MessageId));
           });
 
-          Console.WriteLine("Press ENTER tooexit program");   
+          Console.WriteLine("Press ENTER to exit program");   
           Console.ReadLine();
         }
       }
     }
     ```
-4. Ejecutar programa hello y visite el portal de Hola de nuevo. Tenga en cuenta que hello **Active mensaje Count** y **actual** valores ahora son 0.
+4. Ejecute el programa y vuelva a comprobar el portal. Tenga en cuenta que los valores de **Recuento de mensajes activos** y **Actual** deben ser ahora 0.
    
     ![Longitud de la cola][queue-message-receive]
 
@@ -182,7 +182,7 @@ Inicie Visual Studio y cree un nuevo proyecto **Console app (.NET Framework)**.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Visite nuestro [repositorio de GitHub con ejemplos](https://github.com/Azure/azure-service-bus/tree/master/samples) que muestran algunas de las características de mensajería de Bus de servicio más avanzadas de Hola.
+Consulte nuestro [repositorio de GitHub con ejemplos](https://github.com/Azure/azure-service-bus/tree/master/samples), donde se muestran algunas de las características más avanzadas de la mensajería de Service Bus.
 
 <!--Image references-->
 

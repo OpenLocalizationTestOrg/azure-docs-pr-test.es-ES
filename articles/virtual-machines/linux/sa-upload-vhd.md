@@ -1,6 +1,6 @@
 ---
-title: un disco de Linux personalizado con Azure CLI 2.0 aaaUpload | Documentos de Microsoft
-description: "Crear y cargar un tooAzure de disco duro virtual (VHD) mediante el modelo de implementación del Administrador de recursos de Hola y Hola 2.0 de CLI de Azure"
+title: Carga de un disco de Linux personalizado con la CLI de Azure 2.0 | Microsoft Docs
+description: "Creación y carga en Azure de un disco duro virtual (VHD) mediante el modelo de implementación de Resource Manager y la CLI de Azure 2.0"
 services: virtual-machines-linux
 documentationcenter: 
 author: cynthn
@@ -15,51 +15,51 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: cf8556ab4dfe6c4e5eff4e99fe1ddc44393f774c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9159960af396e89f373da711e0cc46fdd996ab83
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="upload-and-create-a-linux-vm-from-custom-disk-with-hello-azure-cli-20"></a>Cargar y crear una VM Linux desde disco personalizado con hello 2.0 de CLI de Azure
-Este artículo muestra cómo tooupload una tooan de disco duro virtual (VHD) el almacenamiento de Azure cuenta con hello 2.0 de CLI de Azure y crear máquinas virtuales de Linux desde este disco personalizado. También puede realizar estos pasos con hello [Azure CLI 1.0](upload-vhd-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Esta funcionalidad le permite tooinstall y configurar una distribución de Linux tooyour requisitos y, a continuación, usar ese archivo VHD tooquickly crear máquinas virtuales de Azure (VM).
+# <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>Carga y creación de una máquina virtual Linux a partir de un disco personalizado mediante la CLI de Azure 2.0
+En este artículo se muestra cómo cargar un disco duro virtual en una cuenta de almacenamiento de Azure mediante la CLI de Azure 2.0 y cómo crear máquinas virtuales Linux desde este disco personalizado. También puede llevar a cabo estos pasos con la [CLI de Azure 1.0](upload-vhd-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Esta funcionalidad le permite instalar y configurar una distribución de Linux según sus requisitos y después utilizar ese disco duro virtual para crear rápidamente máquinas virtuales de Azure.
 
-En este tema usa las cuentas de almacenamiento para hello finales discos duros virtuales, pero también puede realizar estos pasos con [discos administrados por](upload-vhd.md). 
+En este tema se usan las cuentas de almacenamiento de los discos duros virtuales finales, pero también puede seguir estos pasos con [discos administrados](upload-vhd.md). 
 
 ## <a name="quick-commands"></a>Comandos rápidos
-Si necesita tooquickly realizar la tarea hello, Hola después Hola de detalles de la sección base tooupload comandos tooAzure de un disco duro virtual. Obtener más información y el contexto de cada paso se encuentran rest Hola de documento de hello, [a partir de aquí](#requirements).
+Si necesita realizar rápidamente la tarea, en la siguiente sección se detallan los comandos base para cargar un disco duro virtual en Azure. Se puede encontrar información más detallada y contexto para cada paso en el resto del documento, [comenzando aquí](#requirements).
 
-Asegúrese de que tiene más reciente hello [CLI de Azure 2.0](/cli/azure/install-az-cli2) instalado y registrado en tooan cuenta de Azure mediante [inicio de sesión de az](/cli/azure/#login).
+Asegúrese de que ha instalado la última versión de la [CLI de Azure 2.0](/cli/azure/install-az-cli2) y de que ha iniciado sesión en una cuenta de Azure con [az login](/cli/azure/#login).
 
-En hello en los ejemplos siguientes, reemplace los nombres de parámetros de ejemplo con sus propios valores. Nombres de parámetros de ejemplo incluidos `myResourceGroup`, `mystorageaccount` y `mydisks`.
+En los ejemplos siguientes, reemplace los nombres de parámetros de ejemplo por los suyos propios. Nombres de parámetros de ejemplo incluidos `myResourceGroup`, `mystorageaccount` y `mydisks`.
 
-En primer lugar, cree un grupo de recursos con [az group create](/cli/azure/group#create). Hello en el ejemplo siguiente se crea un grupo de recursos denominado `myResourceGroup` en hello `WestUs` ubicación:
+En primer lugar, cree un grupo de recursos con [az group create](/cli/azure/group#create). En el ejemplo siguiente se crea un grupo de recursos denominado `myResourceGroup` en la ubicación `WestUs`:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
 ```
 
-Crear un toohold de cuenta de almacenamiento de los discos virtuales con [crear cuenta de almacenamiento az](/cli/azure/storage/account#create). Hello en el ejemplo siguiente se crea una cuenta de almacenamiento denominada `mystorageaccount`:
+Cree una cuenta de almacenamiento que contenga los discos virtuales con [az storage account create](/cli/azure/storage/account#create). En el ejemplo siguiente se crea una cuenta de almacenamiento denominada `mystorageaccount`:
 
 ```azurecli
 az storage account create --resource-group myResourceGroup --location westus \
   --name mystorageaccount --kind Storage --sku Standard_LRS
 ```
 
-Lista de claves de acceso de Hola para su cuenta de almacenamiento con [lista de claves de cuenta de almacenamiento az](/cli/azure/storage/account/keys#list). Tome nota de `key1`:
+Cree una lista de las claves de acceso de la cuenta de almacenamiento con [az storage account keys list](/cli/azure/storage/account/keys#list). Tome nota de `key1`:
 
 ```azurecli
 az storage account keys list --resource-group myResourceGroup --account-name mystorageaccount
 ```
 
-Crear un contenedor dentro de su cuenta de almacenamiento con la clave de almacenamiento de hello obtenido con [crear contenedor de almacenamiento az](/cli/azure/storage/container#create). Hello en el ejemplo siguiente se crea un contenedor denominado `mydisks` mediante el valor de clave de almacenamiento de Hola de `key1`:
+Cree un contenedor en su cuenta de almacenamiento mediante la clave de almacenamiento que obtuvo con [az storage container create](/cli/azure/storage/container#create). En el ejemplo siguiente se crea un contenedor denominado `mydisks` con el valor de clave de almacenamiento de `key1`:
 
 ```azurecli
 az storage container create --account-name mystorageaccount \
     --account-key key1 --name mydisks
 ```
 
-Por último, cargar el contenedor de toohello de disco duro virtual que creó con [carga de blobs de almacenamiento az](/cli/azure/storage/blob#upload). Especificar la ruta de acceso local de hello tooyour VHD en `/path/to/disk/mydisk.vhd`:
+Por último, cargue el disco duro virtual en el contenedor que creó con [az storage blob upload](/cli/azure/storage/blob#upload). Especifique la ruta de acceso local para el disco duro virtual en `/path/to/disk/mydisk.vhd`:
 
 ```azurecli
 az storage blob upload --account-name mystorageaccount \
@@ -67,7 +67,7 @@ az storage blob upload --account-name mystorageaccount \
     --file /path/to/disk/mydisk.vhd --name myDisk.vhd
 ```
 
-Especifique Hola URI tooyour disco (`--image`) con [crear vm az](/cli/azure/vm#create). Hello en el ejemplo siguiente se crea una máquina virtual denominada `myVM` con disco virtual Hola cargado previamente:
+Especifique el URI del disco (`--image`) con [az vm create](/cli/azure/vm#create). En el ejemplo siguiente se crea una máquina virtual denominada `myVM` con el disco virtual cargado anteriormente:
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location westus \
@@ -77,32 +77,32 @@ az vm create --resource-group myResourceGroup --location westus \
     --use-unmanaged-disk
 ```
 
-cuenta de almacenamiento de destino de Hello tiene toobe Hola igual como donde cargar el disco virtual para. También necesita toospecify o responder a peticiones de, todos los parámetros adicionales requeridos por Hola de Hola **crear vm az** comando como la red virtual, la dirección IP pública, nombre de usuario y las claves de SSH. Puede leer más sobre hello [disponibles parámetros del Administrador de recursos de CLI](../azure-cli-arm-commands.md#azure-vm-commands-to-manage-your-azure-virtual-machines).
+La cuenta de almacenamiento de destino debe ser la misma cuenta donde cargó su disco virtual. También debe especificar todos los parámetros adicionales requeridos, o responder a sus avisos, por el comando **az vm create**, como la red virtual, la dirección IP pública, el nombre de usuario y las claves SSH. Puede leer más sobre los [parámetros disponibles de Resource Manager de la CLI](../azure-cli-arm-commands.md#azure-vm-commands-to-manage-your-azure-virtual-machines).
 
 ## <a name="requirements"></a>Requisitos
-Hola toocomplete siguiendo los pasos, debe:
+Para completar los pasos siguientes, necesita:
 
-* **Sistema operativo Linux instalado en un archivo .vhd** -instalar un [distribución de Linux están aprobados Azure](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (o consulte [información para las distribuciones no aprobadas](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) tooa disco virtual en hello VHD formato. Varias herramientas existen toocreate una máquina virtual y el disco duro virtual:
-  * Instalar y configurar [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) o [KVM](http://www.linux-kvm.org/page/RunningKVM), teniendo cuidado de toouse del disco duro virtual como el formato de imagen. Si es necesario, puede [convertir una imagen](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) con `qemu-img convert`.
+* **Sistema operativo Linux instalado en un archivo .vhd**: instale una [distribución de Linux aprobada por Azure](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (o consulte la [información para distribuciones no aprobadas](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) en un disco virtual en el formato VHD. Existen varias herramientas para crear una máquina virtual y archivos VHD:
+  * Instale y configure [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) o [KVM](http://www.linux-kvm.org/page/RunningKVM), teniendo cuidado de usar VHD como formato de imagen. Si es necesario, puede [convertir una imagen](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) con `qemu-img convert`.
   * También puede usar Hyper-V [en Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) o [en Windows Server 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx).
 
 > [!NOTE]
-> no se admite el formato VHDX más reciente de Hello en Azure. Cuando se crea una máquina virtual, especifique VHD como formato de Hola. Si es necesario, se puede convertir VHDX discos tooVHD con [ `qemu-img convert` ](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) o hello [ `Convert-VHD` ](https://technet.microsoft.com/library/hh848454.aspx) cmdlet de PowerShell. Además, Azure no permite cargar discos duros virtuales dinámicos, por lo que necesita tooconvert tal toostatic discos VHD antes de cargar. Puede usar herramientas como [utilidades de disco duro virtual de Azure para ir](https://github.com/Microsoft/azure-vhd-utils-for-go) tooconvert discos dinámicos durante el proceso de Hola de carga tooAzure.
+> el reciente formato VHDX no se admite en Azure. Al crear una máquina virtual, especifique un VHD como formato. Si es necesario, puede convertir discos VHDX a VHD mediante [`qemu-img convert`](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) o el cmdlet de PowerShell [`Convert-VHD`](https://technet.microsoft.com/library/hh848454.aspx). Además, Azure no permite cargar VHD dinámicos, por lo que tendrá que convertir estos discos a VHD estáticos antes de cargarlos. Puede usar herramientas como, por ejemplo, [Azure VHD Utilities for GO](https://github.com/Microsoft/azure-vhd-utils-for-go) para convertir discos dinámicos durante el proceso de carga en Azure.
 > 
 > 
 
-* Máquinas virtuales creadas a partir del disco personalizado deben residir en hello misma cuenta de almacenamiento como el propio disco Hola
-  * Crear un toohold de cuenta y el contenedor de almacenamiento del disco personalizado y creado las máquinas virtuales
+* Las máquinas virtuales creadas desde el disco personalizado deben residir en la misma cuenta de almacenamiento que el propio disco.
+  * Cree una cuenta de almacenamiento y un contenedor para almacenar el disco personalizado y las máquinas virtuales creadas.
   * Una vez que haya creado todas las máquinas virtuales, puede eliminar el disco de forma segura.
 
-Asegúrese de que tiene más reciente hello [CLI de Azure 2.0](/cli/azure/install-az-cli2) instalado y registrado en tooan cuenta de Azure mediante [inicio de sesión de az](/cli/azure/#login).
+Asegúrese de que ha instalado la última versión de la [CLI de Azure 2.0](/cli/azure/install-az-cli2) y de que ha iniciado sesión en una cuenta de Azure con [az login](/cli/azure/#login).
 
-En hello en los ejemplos siguientes, reemplace los nombres de parámetros de ejemplo con sus propios valores. Nombres de parámetros de ejemplo incluidos `myResourceGroup`, `mystorageaccount` y `mydisks`.
+En los ejemplos siguientes, reemplace los nombres de parámetros de ejemplo por los suyos propios. Nombres de parámetros de ejemplo incluidos `myResourceGroup`, `mystorageaccount` y `mydisks`.
 
-<a id="prepimage"></a>
+<a id="prepimage"> </a>
 
-## <a name="prepare-hello-disk-toobe-uploaded"></a>Preparar Hola disco toobe cargado
-Azure admite varias distribuciones Linux (consulte [Distribuciones aprobadas](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). Hola siguientes artículos guiarle por cómo tooprepare Hola diversas distribuciones de Linux que se admiten en Azure:
+## <a name="prepare-the-disk-to-be-uploaded"></a>Preparación del disco que se va a cargar
+Azure admite varias distribuciones Linux (consulte [Distribuciones aprobadas](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). Los artículos siguientes le guiarán en el proceso de preparación de las distintas distribuciones de Linux admitidas en Azure:
 
 * **[Distribuciones basadas en CentOS](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
@@ -112,17 +112,17 @@ Azure admite varias distribuciones Linux (consulte [Distribuciones aprobadas](en
 * **[Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 * **[Otras distribuciones no aprobadas](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**
 
-Consulte también hello  **[notas sobre la instalación de Linux](create-upload-generic.md#general-linux-installation-notes)**  para obtener más sugerencias sobre cómo preparar imágenes de Linux de Azure.
+Consulte también las **[notas de instalación de Linux](create-upload-generic.md#general-linux-installation-notes)** para más sugerencias generales sobre la preparación de imágenes de Linux para Azure.
 
 > [!NOTE]
-> Hola [plataforma Windows Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) aplica tooVMs ejecutando Linux sólo cuando uno de hello están aprobados distribuciones se utilizan con los detalles de configuración de hello tal como se especifica en 'Admite versiones' en [Linux en Azure aprobadas Distribuciones](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> El [Acuerdo de Nivel de Servicio de la plataforma Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/) se aplica a las máquinas virtuales que ejecutan Linux solo cuando una de las distribuciones aprobadas se use con los detalles de la configuración según se indica en la sección "Versiones admitidas" en [Linux en distribuciones aprobadas por Azure](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 > 
 > 
 
 ## <a name="create-a-resource-group"></a>Crear un grupo de recursos
-Grupos de recursos lógicamente reunir todos los toosupport de recursos de Azure de hello las máquinas virtuales, como una red virtual Hola y el almacenamiento. Para más información acerca de los grupos de recursos, consulte [Información general de Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). Antes de cargar el disco personalizado y crear máquinas virtuales, primero debe toocreate un grupo de recursos con [crear grupo az](/cli/azure/group#create).
+Los grupos de recursos reúnen de forma lógica todos los recursos de Azure que admiten sus máquinas virtuales, como el almacenamiento y las redes virtuales. Para más información acerca de los grupos de recursos, consulte [Información general de Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). Antes de cargar el disco personalizado y crear máquinas virtuales, es preciso crear un grupo de recursos con [az group create](/cli/azure/group#create).
 
-Hello en el ejemplo siguiente se crea un grupo de recursos denominado `myResourceGroup` en hello `westus` ubicación:
+En el ejemplo siguiente se crea un grupo de recursos denominado `myResourceGroup` en la ubicación `westus`:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -130,9 +130,9 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-a-storage-account"></a>Crear una cuenta de almacenamiento
 
-Cree una cuenta de almacenamiento para el disco personalizado y las máquinas virtuales con [az storage account create](/cli/azure/storage/account#create). Todas las máquinas virtuales con discos no administrados que se crean desde su toobe de necesidad de disco personalizado en hello misma cuenta de almacenamiento que dicho disco. 
+Cree una cuenta de almacenamiento para el disco personalizado y las máquinas virtuales con [az storage account create](/cli/azure/storage/account#create). Todas las máquinas virtuales que cree con discos no administrados deben estar en la misma cuenta de almacenamiento que ese disco. 
 
-Hello en el ejemplo siguiente se crea una cuenta de almacenamiento denominada `mystorageaccount` en grupo de recursos de hello creado anteriormente:
+En el ejemplo siguiente se crea una cuenta de almacenamiento denominada `mystorageaccount` en el grupo de recursos que creó anteriormente:
 
 ```azurecli
 az storage account create --resource-group myResourceGroup --location westus \
@@ -140,15 +140,15 @@ az storage account create --resource-group myResourceGroup --location westus \
 ```
 
 ## <a name="list-storage-account-keys"></a>Enumerar claves de cuentas de almacenamiento
-Azure genera dos claves de acceso de 512 bits para cada cuenta de almacenamiento. Estas teclas de acceso se utilizan para autenticar la cuenta de almacenamiento de toohello, como toocarry operaciones de escritura de salida. Obtenga más información sobre [administrar acceso toostorage aquí](../../storage/common/storage-create-storage-account.md#manage-your-storage-account). Ver las teclas de acceso de hello con [lista de claves de cuenta de almacenamiento az](/cli/azure/storage/account/keys#list).
+Azure genera dos claves de acceso de 512 bits para cada cuenta de almacenamiento. Estas claves de acceso se usan al autenticar en la cuenta de almacenamiento, como la realización de operaciones de escritura. Lea más sobre [administración del acceso al almacenamiento aquí](../../storage/common/storage-create-storage-account.md#manage-your-storage-account). Vea las teclas de acceso con [az storage account keys list](/cli/azure/storage/account/keys#list).
 
-Ver las teclas de acceso de Hola Hola cuenta de almacenamiento que creó:
+Consulte las claves de acceso de la cuenta de almacenamiento que ha creado:
 
 ```azurecli
 az storage account keys list --resource-group myResourceGroup --account-name mystorageaccount
 ```
 
-es similar a la salida de Hello:
+La salida es parecida a esta:
 
 ```azurecli
 info:    Executing command storage account keys list
@@ -159,12 +159,12 @@ data:    key1  d4XAvZzlGAgWdvhlWfkZ9q4k9bYZkXkuPCJ15NTsQOeDeowCDAdB80r9zA/tUINAp
 data:    key2  Ww0T7g4UyYLaBnLYcxIOTVziGAAHvU+wpwuPvK4ZG0CDFwu/mAxS/YYvAQGHocq1w7/3HcalbnfxtFdqoXOw8g==  Full
 info:    storage account keys list command OK
 ```
-Tome nota del `key1` tal y como se va a utilizar se toointeract con su cuenta de almacenamiento en los pasos siguientes de Hola.
+Tome nota de `key1` , pues el objetivo de su uso será interactuar con su cuenta de almacenamiento en los siguientes pasos.
 
 ## <a name="create-a-storage-container"></a>Creación de un contenedor de almacenamiento
-Hola igual que crear directorios distintos toologically organizar el sistema de archivos local, crear contenedores dentro de un tooorganize de cuenta de almacenamiento de los discos. Una cuenta de almacenamiento puede contener un número cualquiera de contenedores. Cree un contenedor con [az storage container create](/cli/azure/storage/container#create).
+De la misma manera que crea directorios distintos para organizar de forma lógica el sistema de archivos local, crea contenedores dentro de una cuenta de almacenamiento para organizar los discos. Una cuenta de almacenamiento puede contener un número cualquiera de contenedores. Cree un contenedor con [az storage container create](/cli/azure/storage/container#create).
 
-Hello en el ejemplo siguiente se crea un contenedor denominado `mydisks`:
+En el ejemplo siguiente se crea un contenedor llamado `mydisks`:
 
 ```azurecli
 az storage container create \
@@ -175,7 +175,7 @@ az storage container create \
 ## <a name="upload-vhd"></a>Carga de VHD
 Ahora puede cargar su disco personalizado con [az storage blob upload](/cli/azure/storage/blob#upload). Cargue y almacene el disco personalizado como un blob en páginas.
 
-Especifique la clave de acceso, el contenedor de Hola que creó en el paso anterior de hello y, a continuación, Hola disco personalizado de toohello de ruta de acceso en el equipo local:
+Especifique la clave de acceso, el contenedor que creó en el paso anterior y, a continuación, la ruta de acceso al disco personalizado del equipo local:
 
 ```azurecli
 az storage blob upload --account-name mystorageaccount \
@@ -183,12 +183,12 @@ az storage blob upload --account-name mystorageaccount \
     --file /path/to/disk/mydisk.vhd --name myDisk.vhd
 ```
 
-## <a name="create-hello-vm"></a>Crear hello VM
-toocreate una máquina virtual con discos no administrados, especifique el disco de tooyour URI de hello (`--image`) con [crear vm az](/cli/azure/vm#create). Hello en el ejemplo siguiente se crea una máquina virtual denominada `myVM` con disco virtual Hola cargado previamente:
+## <a name="create-the-vm"></a>Creación de la máquina virtual
+Para crear una máquina virtual con discos no administrados, especifique el URI en el disco (`--image`) con [az vm create](/cli/azure/vm#create). En el ejemplo siguiente se crea una máquina virtual denominada `myVM` con el disco virtual cargado anteriormente:
 
-Especificar hello `--image` parámetro con [crear vm az](/cli/azure/vm#create) toopoint tooyour personalizado disco. Asegúrese de que `--storage-account` coincidencias Hola cuenta de almacenamiento donde se almacena el disco personalizado. No es necesario toouse Hola mismo contenedor como Hola disco personalizada toostore las máquinas virtuales. Realizar toocreate seguro de los contenedores adicionales en hello misma manera que Hola pasos anteriores antes de cargar el disco personalizado.
+Especifique el parámetro `--image` con [az vm create](/cli/azure/vm#create) para apuntar al disco personalizado. Asegúrese de que `--storage-account` coincide con la cuenta de almacenamiento donde se almacena el disco personalizado. No es necesario utilizar el mismo contenedor que disco personalizado para almacenar las máquinas virtuales. Asegúrese de crear contenedores adicionales siguiendo los pasos anteriores antes de cargar el disco personalizado.
 
-Hello en el ejemplo siguiente se crea una máquina virtual denominada `myVM` desde el disco personalizado:
+En el ejemplo siguiente se crea una máquina virtual denominada `myVM` a partir del disco personalizado:
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location westus \
@@ -198,13 +198,13 @@ az vm create --resource-group myResourceGroup --location westus \
     --use-unmanaged-disk
 ```
 
-Todavía necesita toospecify o responder a peticiones de, todos los parámetros adicionales requeridos por Hola de Hola **crear vm az** comando como nombre de usuario y las claves SSH.
+También debe especificar todos los parámetros adicionales que requiere el comando **az vm create**, como el nombre de usuario y las claves SSH, así como responder a sus indicaciones.
 
 
 ## <a name="resource-manager-template"></a>Plantilla de Resource Manager
-Plantillas de administrador de recursos de Azure son archivos de JavaScript Object Notation (JSON) que definen el entorno de hello desea toobuild. plantillas de Hola se desglosan en proveedores de recursos de toodifferent como compute o red. Puede usar las plantillas existentes o escribir las suyas propias. Lea más sobre el [uso de Resource Manager y las plantillas](../../azure-resource-manager/resource-group-overview.md).
+Las plantillas de Azure Resource Manager son archivos de Notación de objetos JavaScript (JSON) que definen el entorno que desea crear. Las plantillas se desglosan en distintos proveedores de recursos, tales como proceso o red. Puede usar las plantillas existentes o escribir las suyas propias. Lea más sobre el [uso de Resource Manager y las plantillas](../../azure-resource-manager/resource-group-overview.md).
 
-Dentro de hello `Microsoft.Compute/virtualMachines` proveedor de la plantilla, tendrá un `storageProfile` nodo que contiene los detalles de configuración de hello para la máquina virtual. Hola dos parámetros principales tooedit son hello `image` y `vhd` URI que apuntan al disco personalizada tooyour y disco virtual de la máquina virtual nueva. siguiente Hello muestra un ejemplo de Hola JSON para usar un disco personalizado:
+Dentro del proveedor `Microsoft.Compute/virtualMachines` de la plantilla, tendrá un nodo `storageProfile` que contiene los detalles de configuración de la máquina virtual. Los dos parámetros principales para modificar son los URI `image` y `vhd` que apuntan al disco personalizado y el disco virtual de la nueva máquina virtual. A continuación se muestra un ejemplo de JSON para el uso de un disco personalizado:
 
 ```json
 "storageProfile": {
@@ -222,16 +222,16 @@ Dentro de hello `Microsoft.Compute/virtualMachines` proveedor de la plantilla, t
           }
 ```
 
-Puede usar [esta toocreate de plantilla existente una máquina virtual desde una imagen personalizada](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image) o leer acerca de [crear sus propias plantillas de Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md). 
+Puede usar [esta plantilla existente para crear una máquina virtual desde una imagen personalizada](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image) o leer más sobre la [creación de sus propias plantillas de Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md). 
 
-Una vez que tenga una plantilla configurada, utilice [Crear implementación de grupo az](/cli/azure/group/deployment#create) toocreate las máquinas virtuales. Especificar Hola URI de la plantilla JSON con hello `--template-uri` parámetro:
+Una vez que tenga una plantilla configurada, utilice [az group deployment create](/cli/azure/group/deployment#create) para crear las máquinas virtuales. Especifique el URI de la plantilla JSON con el parámetro `--template-uri` :
 
 ```azurecli
 az group deployment create --resource-group myNewResourceGroup \
   --template-uri https://uri.to.template/mytemplate.json
 ```
 
-Si tiene un archivo JSON que se almacena localmente en el equipo, puede usar hello `--template-file` parámetro en su lugar:
+Si tiene un archivo JSON almacenado localmente en el equipo, puede usar el parámetro `--template-file` en su lugar:
 
 ```azurecli
 az group deployment create --resource-group myNewResourceGroup \
@@ -240,5 +240,5 @@ az group deployment create --resource-group myNewResourceGroup \
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-Después de haber preparado y cargado el disco virtual personalizado, puede leer más sobre el [uso de Resource Manager y las plantillas](../../azure-resource-manager/resource-group-overview.md). Puede que también desee demasiado[agregar un disco de datos](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) tooyour nuevas máquinas virtuales. Si tiene aplicaciones que se ejecutan en las máquinas virtuales que necesite tooaccess, asegúrese de demasiado[puertos abiertos y los puntos de conexión](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Después de haber preparado y cargado el disco virtual personalizado, puede leer más sobre el [uso de Resource Manager y las plantillas](../../azure-resource-manager/resource-group-overview.md). También es posible que quiera [agregar un disco de datos](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a las nuevas máquinas virtuales. Si tiene aplicaciones que se ejecutan en las máquinas virtuales a las que necesite tener acceso, asegúrese de [abrir puertos y puntos de conexión](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

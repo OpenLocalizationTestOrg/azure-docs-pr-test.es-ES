@@ -1,6 +1,6 @@
 ---
-title: "aaaWeb valoración para Operations Management Suite seguridad y auditoría solución previsto | Documentos de Microsoft"
-description: "Este documento explica cómo toouse web valoración para auditoría y seguridad de OMS solución tooperform una evaluación de la línea de base de todos los servidores web supervisados para el propósito de seguridad y cumplimiento."
+title: "Evaluación de base de referencia web en la solución Security and Audit de Operations Management Suite | Microsoft Docs"
+description: "En este documento se explica cómo utilizar la evaluación de base de referencia web de la solución Security and Audit de OMS para realizar una evaluación de la base de referencia web de todos los servidores web supervisados para fines de cumplimiento y seguridad."
 services: operations-management-suite
 documentationcenter: na
 author: YuriDio
@@ -15,67 +15,67 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: yurid
-ms.openlocfilehash: dafa9d3d93fae31748306b60ee40b285dd59c802
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 40b0c6ca933ea02ac9f5fe3bfaaf87a310542a8d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="web-baseline-assessment-in-operations-management-suite-security-and-audit-solution"></a>Evaluación de línea de base web en la solución Security and Audit de Operations Management Suite
-Este documento le permitirá usar OMS seguridad y auditoría web previsto evaluación capacidades tooaccess Hola estado seguro de los recursos supervisados.
+Este documento le ayuda a usar las funcionalidades de evaluación de base de referencia web de Security and Audit de OMS para acceder al estado de seguridad de los recursos supervisados.
 
 ## <a name="what-is-web-baseline-assessment"></a>¿Qué es la evaluación de base de referencia web?
-Actualmente, Seguridad de OMS proporciona una evaluación de línea de base de seguridad para sistemas operativos. Analiza configuraciones del sistema operativo Hola de los servidores de cada 24 horas y proporciona una vista a la configuración de potencialmente vulnerable. Consulte [Evaluación de línea base en la solución Security and Audit de Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/oms-security-baseline) para más información sobre esto.
+Actualmente, Seguridad de OMS proporciona una evaluación de línea de base de seguridad para sistemas operativos. Examina la configuración del sistema operativo de los servidores cada 24 horas y proporciona una vista de las configuraciones potencialmente vulnerables. Consulte [Evaluación de línea base en la solución Security and Audit de Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/oms-security-baseline) para más información sobre esto.
 
-objetivo de Hola de hello evaluación de la línea de base de Web es la configuración del servidor de web potencialmente vulnerable toofind. Hola tres fuentes principales para las configuraciones de línea de base de hello web: configuración. NET, ASP.NET e IIS.  Simplemente como hello evaluación de línea de base del sistema operativo, seguridad de OMS se va tooscan sus servidores web cada 24 horas y proporcionan una vista de estado de seguridad de ellos.  En los servicios de Internet Information Server (IIS), las configuraciones son personalizables, que permite varias toobe de niveles de sitio y la aplicación se reemplaza. Analizador de Hello comprueba la configuración de hello en cada nivel de aplicación o el sitio de nivel de raíz de suma toohello predeterminado. Esto ayuda a configuración potencialmente vulnerable tooidentify y corregir rápidamente, junto con nuestras recomendaciones para dicha configuración.
+El objetivo de la evaluación de base de referencia web es encontrar configuraciones del servidor web potencialmente vulnerables. Los tres orígenes principales de las configuraciones de línea de base web son la configuración de .NET, ASP.NET e IIS.  Al igual que la evaluación de línea de base de sistema operativo, Seguridad de OMS va a examinar cada 24 horas los servidores web y a proporcionar una vista de su estado de seguridad.  En Internet Information Services (IIS), las configuraciones son muy personalizables, lo que permite reemplazar diversos niveles de sitio y aplicación. El examen comprueba la configuración en cada nivel de aplicación o sitio, además del nivel raíz predeterminado. Esto le ayudará a identificar la configuración que pueda sufrir una vulnerabilidad y corregirla con rapidez, junto con nuestras recomendaciones para dicha configuración.
 
 >[!NOTE] 
->Puede descargar los identificadores de configuración comunes de Hola y reglas de línea de base utilizadas por la seguridad de OMS en este [página](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335?redir=0).
+>Puede descargar los identificadores de configuración comunes y las reglas de línea de base utilizadas por la seguridad de OMS en esta [página](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335?redir=0).
 
 
 ## <a name="web-security-baseline-assessment"></a>Evaluación de base de referencia de seguridad web
 
-De esta versión preliminar característica Hola son accesibles a través de hello opción de búsqueda de OMS y Hola seguridad de OMS y panel de auditoría. Siga los pasos de hello debajo de consulta de hello apropian tooperform:
+En esta versión preliminar, se puede acceder a la característica a través de la opción de búsqueda de OMS y del panel Security and Audit de OMS. Siga los pasos a continuación para realizar la consulta adecuada:
 
-1. Hola **Microsoft Operations Management Suite** panel principal, haga clic en **seguridad y auditoría** icono.
-2. Hola **seguridad y auditoría** panel, puede ver la perspectiva de línea de base de hello Web previsto perspectiva siguiente toohello sistema operativo.
+1. En el panel principal de **Microsoft Operations Management Suite**, haga clic en el icono **Security and Audit**.
+2. En el panel **Security and Audit**, puede ver la perspectiva de la base de referencia web junto con la de la base de referencia del sistema operativo.
    
     ![Evaluación de base de referencia de seguridad web de Security and Audit de OMS](./media/oms-security-web-baseline/oms-security-web-baseline-fig5.png)
 
-3. panel izquierdo de Hello muestra hello de línea de base de toohello en comparación con los servidores Web, porcentaje medio de Hola de reglas que se pasan en todos los servidores de hello evalúa y lista de Hola de servidores que se evalúa.
-4. Hola derecho Hola único panel muestran las reglas que generó un error *gravedad*, y *RuleType*. Al hacer clic en cualquiera de las reglas del panel derecho de Hola se mostrarán los detalles de Hola de esa regla. Se muestra un ejemplo de Hola por debajo de la imagen. regla de Hola que se evalúa aparece en *configuración de la regla*. Hola *AzId* campo que es un identificador único para cada regla usada por Microsoft para el seguimiento de las reglas de línea de base de Hola. Además los usuarios de toothat pueden ver hello *resultado esperado* (valor recomendado de Microsoft), y otros detalles relacionados con los riesgos de seguridad de Hola de regla de Hola.
+3. El panel izquierdo muestra el número de servidores web en comparación con la base de referencia, el porcentaje medio de reglas que se pasan en todos los servidores que se evalúan y la lista de servidores evaluados.
+4. El panel derecho muestra las reglas únicas que no tuvieron éxito por *gravedad* y *tipo*. Al hacer clic en cualquiera de las reglas del panel derecho, se mostrarán los detalles de esa regla. Se muestra un ejemplo en la ilustración siguiente. Aparece la regla que se evalúa en *Configuración de regla*. El campo *AzId* es un identificador único para cada regla que usa Microsoft para el seguimiento de las reglas de base de referencia. Además, los usuarios pueden ver el *resultado esperado* (valor recomendado de Microsoft) y otros detalles relacionados con el impacto en la seguridad de la regla.
     
     ![Consultar](./media/oms-security-web-baseline/oms-security-web-baseline-fig6.png)
 
-5. Puede crear sus propias consultas resultados de hello tooreview. 
+5. Puede crear sus propias consultas para revisar los resultados. 
 
-Hola primera consulta, que puede utilizar es hello **Web Resumen de la evaluación de línea de base**. Hola **empieza la búsqueda aquí** , escriba esta consulta: *tipo = SecurityBaselineSummary BaselineType = Web*. Hola te mostramos un ejemplo de salida:
+La primera consulta que puede usar es **Web Baseline Assessment Summary** (Resumen de evaluación de línea de base web). En el campo **Begin search here** (Empezar búsqueda aquí), escriba esta consulta: *Type=SecurityBaselineSummary BaselineType=Web*. A continuación se muestra un ejemplo de salida:
 
 ![Resultado de la consulta](./media/oms-security-web-baseline/oms-security-web-baseline-fig7.png)
 
 >[!NOTE] 
 >En esta consulta, cada registro indica el resumen de evaluación para un solo servidor.
 
-Una vez que esté en hello **Log Search**, puede escribir consultas diferentes tooobtain obtener más información acerca de la evaluación de línea de base de hello web. Además toohello consulta anterior, se puede usar Hola los en esta vista previa siguiendo:
+Una vez que esté en **Búsqueda de registros**, puede escribir diferentes consultas para obtener más información sobre la evaluación de línea de base de web. Además de la consulta anterior, también puede usar las siguientes en esta versión preliminar:
 
-**Web Baseline Rule Assessment** (Evaluación de regla de la línea de base web): cada registro representa una sola evaluación de regla de la línea de base web en un único servidor. Incluye todos los datos de una regla con errores, hello *SitePath* en qué Hola regla se evaluó, hello *resultado esperado*, hello y *resultado real*.
+**Web Baseline Rule Assessment** (Evaluación de regla de la línea de base web): cada registro representa una sola evaluación de regla de la línea de base web en un único servidor. Incluye todos los datos de una regla con errores, la *ruta de acceso al sitio* en que la regla se evaluó, el *resultado esperado* y el *resultado real*.
 
 Consulta: *Type=SecurityBaseline BaselineType=Web AnalyzeResult=Failed*
 
 ![Resultado de la consulta 2](./media/oms-security-web-baseline/oms-security-web-baseline-fig8.png)
 
-**Mostrar todos los resultados de un servidor específico**: esta consulta muestra cómo toosee da como resultado de un servidor específico: consulta: *tipo = SecurityBaseline BaselineType = equipo Web = BaselineTestVM1*
+**Mostrar todos los resultados de un servidor específico**: esta consulta muestra cómo ver los resultados de un servidor específico: Consulta: *Type=SecurityBaseline BaselineType=Web Computer=BaselineTestVM1*
 
 ![Resultado de la consulta 3](./media/oms-security-web-baseline/oms-security-web-baseline-fig3.png)
 
-Puede usar estos registros y consultas toocreate sus propios paneles, informes o alertas. Este es un control de interfaz de usuario de ejemplo que se puede agregar panel tooyour. Puede obtener información sobre cómo toovisualize los datos mediante el Diseñador de vistas de OMS [aquí](https://blogs.technet.microsoft.com/msoms/2016/06/30/oms-view-designer-visualize-your-data-your-way/). pantalla de bienvenida siguiente es un ejemplo de cómo icono Hola será similar a una vez realizada esta personalización.
+También puede usar estos registros y consultas para crear sus propios paneles, informes o alertas. Aquí se muestra un control de interfaz de usuario de ejemplo que se puede agregar al panel. Puede aprender a visualizar los datos mediante el Diseñador de vistas de OMS [aquí](https://blogs.technet.microsoft.com/msoms/2016/06/30/oms-view-designer-visualize-your-data-your-way/). La pantalla siguiente es un ejemplo de cómo se verá el icono una vez realizada esta personalización.
 
 ![dashboard](./media/oms-security-web-baseline/oms-security-web-baseline-fig4.png)
 
 ## <a name="see-also"></a>Otras referencias
-En este documento, ha aprendido acerca de la evaluación de base de referencia web de Security and Audit de OMS. toolearn más información acerca de la seguridad de OMS, consulte Hola siguientes artículos:
+En este documento, ha aprendido acerca de la evaluación de base de referencia web de Security and Audit de OMS. Para obtener más información sobre Seguridad de OMS, consulte los siguientes artículos:
 
 * [Información general de Operations Management Suite (OMS)](operations-management-suite-overview.md)
-* [Supervisión y responde tooSecurity alertas en Operations Management Suite solución de seguridad y auditoría](oms-security-responding-alerts.md)
+* [Supervisión de las alertas de seguridad y su respuesta en la solución Security and Audit de Operations Management Suite](oms-security-responding-alerts.md)
 * [Supervisión de los recursos en la solución Seguridad y auditoría de Operations Management Suite](oms-security-monitoring-resources.md)
 

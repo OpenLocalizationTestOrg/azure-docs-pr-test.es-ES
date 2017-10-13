@@ -1,6 +1,6 @@
 ---
-title: "sincronización de contraseña de aaaTroubleshoot con sincronización de Azure AD Connect | Documentos de Microsoft"
-description: "Este artículo proporciona información acerca de cómo los problemas de sincronización de contraseña tootroubleshoot."
+title: "Solución de problemas de la implementación de la sincronización de contraseña con la sincronización de Azure AD Connect | Microsoft Docs"
+description: "En este artículo se ofrece información sobre cómo solucionar problemas de sincronización de contraseñas."
 services: active-directory
 documentationcenter: 
 author: AndKjell
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 390eafec792cb39251627c14cb754f8bb30035b5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 33fa6a8867764975a57b8727e7705529d1d7506a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-password-synchronization-with-azure-ad-connect-sync"></a>Solución de problemas de la implementación de la sincronización de contraseña con la sincronización de Azure AD Connect
-Este tema proporciona los pasos para cómo tootroubleshoot problemas con la sincronización de contraseña. Si las contraseñas no se sincronizan como se esperaba, puede ser para un subconjunto de usuarios o para todos los usuarios. Para Azure Active Directory (Azure AD) conectar la implementación con la versión 1.1.524.0 o una versión posterior, ahora hay un cmdlet de diagnóstico que puede usar tootroubleshoot problemas de sincronización de contraseña:
+En este tema se proporcionan los pasos para solucionar problemas relacionados con la sincronización de contraseñas. Si las contraseñas no se sincronizan como se esperaba, puede ser para un subconjunto de usuarios o para todos los usuarios. Para la implementación de Azure Active Directory (Azure AD) Connect con la versión 1.1.524.0 o una posterior, ahora hay un cmdlet de diagnóstico que puede usar para solucionar problemas de sincronización de contraseña:
 
-* Si tiene un problema que no se sincroniza ninguna contraseña, consulte toohello [contraseñas no están sincronizadas: solución de problemas mediante el cmdlet de diagnóstico de hello](#no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet) sección.
+* Si tiene un problema con contraseñas que no se sincronizan, consulte la sección [No se sincronizan las contraseñas: solución de problemas mediante el cmdlet de diagnóstico](#no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet).
 
-* Si tiene un problema con los objetos individuales, consulte toohello [un objeto no se han sincronizado las contraseñas: solución de problemas mediante el cmdlet de diagnóstico de hello](#one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet) sección.
+* Si tiene un problema con objetos individuales, consulte la sección [Un objeto no sincroniza contraseñas: solución de problemas mediante el cmdlet de diagnóstico](#one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet).
 
 Para versiones anteriores de la implementación de Azure AD Connect:
 
-* Si tiene un problema que no se sincroniza ninguna contraseña, consulte toohello [contraseñas no están sincronizadas: pasos para solucionar problemas de manual](#no-passwords-are-synchronized-manual-troubleshooting-steps) sección.
+* Si tiene un problema con contraseñas que no se sincronizan, consulte la sección [No se sincronizan las contraseñas: pasos para la solución manual de problemas](#no-passwords-are-synchronized-manual-troubleshooting-steps).
 
-* Si tiene un problema con los objetos individuales, consulte toohello [un objeto no se han sincronizado las contraseñas: pasos para solucionar problemas de manual](#one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps) sección.
+* Si tiene un problema con objetos individuales, consulte la sección [Un objeto no sincroniza contraseñas: pasos para la solución manual de problemas](#one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps).
 
-## <a name="no-passwords-are-synchronized-troubleshoot-by-using-hello-diagnostic-cmdlet"></a>No las contraseñas se sincronizan: solución de problemas mediante el cmdlet de diagnóstico de Hola
-Puede usar hello `Invoke-ADSyncDiagnostics` toofigure cmdlet out ¿por qué no contraseñas están sincronizadas.
+## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet"></a>No se sincronizan las contraseñas: solución de problemas mediante el cmdlet de diagnóstico
+Puede usar el cmdlet `Invoke-ADSyncDiagnostics` para averiguar por qué no se sincronizan las contraseñas.
 
 > [!NOTE]
-> Hola `Invoke-ADSyncDiagnostics` cmdlet está disponible sólo para Azure AD Connect versión 1.1.524.0 o posterior.
+> El cmdlet `Invoke-ADSyncDiagnostics` solo está disponible para Azure AD Connect versión 1.1.524.0 o posterior.
 
-### <a name="run-hello-diagnostics-cmdlet"></a>Ejecute el cmdlet de diagnóstico de Hola
-problemas de tootroubleshoot donde no se sincroniza ninguna contraseña:
+### <a name="run-the-diagnostics-cmdlet"></a>Ejecución del cmdlet de diagnóstico
+Para solucionar problemas cuando no se sincronizan las contraseñas:
 
-1. Abrir una nueva sesión de Windows PowerShell en el servidor de Azure AD Connect con hello **ejecutar como administrador** opción.
+1. Abra una nueva sesión de Windows PowerShell en el servidor de Azure AD Connect mediante la opción **Ejecutar como administrador**.
 
 2. Ejecute `Set-ExecutionPolicy RemoteSigned` o `Set-ExecutionPolicy Unrestricted`.
 
@@ -50,72 +50,72 @@ problemas de tootroubleshoot donde no se sincroniza ninguna contraseña:
 
 4. Ejecute `Invoke-ADSyncDiagnostics -PasswordSync`.
 
-### <a name="understand-hello-results-of-hello-cmdlet"></a>Entender los resultados de hello del cmdlet Hola
-cmdlet de diagnóstico de Hello realiza Hola siguientes comprobaciones:
+### <a name="understand-the-results-of-the-cmdlet"></a>Descripción de los resultados del cmdlet
+El cmdlet de diagnóstico realiza las siguientes comprobaciones:
 
-* Valida que Hola está habilitada la característica de sincronización de contraseña para el inquilino de Azure AD.
+* Valida que la característica de sincronización de contraseña está habilitada para el inquilino de Azure AD.
 
-* Valida que hello Azure Connect AD server no está en modo de almacenamiento provisional.
+* Valida que el servidor de Azure AD Connect no está en modo de almacenamiento provisional.
 
-* Para cada locales existentes conector de Active Directory (que se corresponde el bosque de Active Directory existente tooan):
+* Para cada conector Active Directory local (que corresponde a un bosque existente de Active Directory):
 
-   * Valida que Hola está habilitada la característica de sincronización de contraseña.
+   * Valida que la característica de sincronización de contraseña está habilitada.
    
-   * Registros de eventos de aplicación de Windows busca eventos de latido de sincronización de contraseña en Hola.
+   * Buscas eventos de latido de sincronización de contraseña en los registros de eventos de aplicación Windows.
 
-   * Para cada dominio de Active Directory en Conector de Active Directory de hello local:
+   * Para cada dominio de Active Directory en el conector Active Directory local:
 
-      * Valida que Hola dominio sea accesible desde el servidor de hello Azure AD Connect.
+      * Valida que el dominio sea accesible desde el servidor de Azure AD Connect.
 
-      * Valida que las cuentas de servicios de dominio de Active Directory (AD DS) de hello utilizadas por el conector de Active Directory local de hello tiene Hola correcta nombre de usuario, contraseña y permisos necesarios para la sincronización de contraseña.
+      * Valida que las cuentas de Active Directory Domain Services (AD DS) que usa el conector Active Directory local tienen el nombre de usuario correcto, la contraseña y los permisos necesarios para la sincronización de contraseña.
 
-Hola siguiente diagrama muestra resultados de hello del cmdlet de Hola para una topología de Active Directory local de dominio único:
+El siguiente diagrama muestra los resultados del cmdlet para una topología de Active Directory local de un solo dominio:
 
 ![Salida de diagnóstico de la sincronización de contraseña](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phsglobalgeneral.png)
 
-resto de Hola de esta sección describen los resultados específicos que se devuelven mediante el cmdlet hello y problemas correspondientes.
+En el resto de esta sección se describen los resultados concretos que devuelve el cmdlet y los correspondientes problemas.
 
 #### <a name="password-synchronization-feature-isnt-enabled"></a>La característica de sincronización de contraseña no está habilitada
-Si no ha habilitado la sincronización de contraseña mediante el uso de Asistente de hello Azure AD Connect, se devuelve Hola siguiente error:
+Si no ha habilitado la sincronización de contraseña mediante el asistente de Azure AD Connect, se devuelve el error siguiente:
 
 ![La sincronización de contraseña no está habilitada](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phsglobaldisabled.png)
 
 #### <a name="azure-ad-connect-server-is-in-staging-mode"></a>El servidor de Azure AD Connect está en modo de almacenamiento provisional
-Si el servidor de Azure AD Connect Hola está en modo de almacenamiento provisional, sincronización de contraseñas está deshabilitada temporalmente y hello siguiente se devuelve el error:
+Si el servidor de Azure AD Connect está en modo de almacenamiento provisional, la sincronización de contraseña está deshabilitada temporalmente y se devuelve el error siguiente:
 
 ![El servidor de Azure AD Connect está en modo de almacenamiento provisional](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phsglobalstaging.png)
 
 #### <a name="no-password-synchronization-heartbeat-events"></a>No hay eventos de latido de sincronización de contraseña
-Cada conector Active Directory local tiene su propio canal de sincronización de contraseña. Cuando se establece el canal de sincronización de contraseña de hello y no hay ningún toobe de cambios de contraseña sincronizada, un evento de latido (Id. de evento 654) se genera una vez cada 30 minutos en el registro de eventos de aplicación de Windows hello. Para cada conector de Active Directory local, Hola cmdlet busca eventos de latido correspondientes en hello las últimas tres horas. Si no se encuentra ningún evento de latido, hello siguiente error se devuelve:
+Cada conector Active Directory local tiene su propio canal de sincronización de contraseña. Cuando se establece el canal de sincronización de contraseña y no hay cambios de contraseña que sincronizar, se genera un evento de latido (Id. de evento 654) una vez cada 30 minutos en el registro de eventos de aplicación Windows. Para cada conector Active Directory local, el cmdlet busca los correspondientes eventos de latido de las últimas tres horas. Si no se encuentra ningún evento de latido, se devuelve el error siguiente:
 
 ![No hay ningún evento de latido de sincronización de contraseña](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phsglobalnoheartbeat.png)
 
 #### <a name="ad-ds-account-does-not-have-correct-permissions"></a>La cuenta de AD DS no tiene los permisos correctos
-Si la cuenta de hello AD DS que se usa por hello local hashes de contraseña de toosynchronize de conector de Active Directory no tiene los permisos adecuados de hello, hello siguiente error se devuelve:
+Si la cuenta de AD DS que usa el conector Active Directory local para sincronizar los hash de contraseña no tiene los permisos adecuados, se devuelve el error siguiente:
 
 ![Credencial incorrecta](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phsglobalaccountincorrectpermission.png)
 
 #### <a name="incorrect-ad-ds-account-username-or-password"></a>Nombre de usuario o contraseña incorrectos de la cuenta de AD DS
-Si hello cuenta AD DS usa hello hashes de contraseña de toosynchronize de conector de Active Directory de local tiene una contraseña o nombre de usuario incorrecto, hello siguiente se devuelve el error:
+Si la cuenta de AD DS que usa el conector Active Directory local para sincronizar los hash de contraseña tiene un nombre de usuario o una contraseña incorrectos, se devuelve el error siguiente:
 
 ![Credencial incorrecta](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phsglobalaccountincorrectcredential.png)
 
-## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-hello-diagnostic-cmdlet"></a>Un objeto no se han sincronizado las contraseñas: solución de problemas mediante el cmdlet de diagnóstico de Hola
-Puede usar hello `Invoke-ADSyncDiagnostics` toodetermine cmdlet ¿por qué un objeto no sincroniza las contraseñas.
+## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet"></a>Un objeto no sincroniza contraseñas: solución de problemas mediante el cmdlet de diagnóstico
+Puede usar el cmdlet `Invoke-ADSyncDiagnostics` para determinar por qué un objeto no sincroniza contraseñas.
 
 > [!NOTE]
-> Hola `Invoke-ADSyncDiagnostics` cmdlet está disponible sólo para Azure AD Connect versión 1.1.524.0 o posterior.
+> El cmdlet `Invoke-ADSyncDiagnostics` solo está disponible para Azure AD Connect versión 1.1.524.0 o posterior.
 
-### <a name="run-hello-diagnostics-cmdlet"></a>Ejecute el cmdlet de diagnóstico de Hola
-problemas de tootroubleshoot donde no se sincroniza ninguna contraseña:
+### <a name="run-the-diagnostics-cmdlet"></a>Ejecución del cmdlet de diagnóstico
+Para solucionar problemas cuando no se sincronizan las contraseñas:
 
-1. Abrir una nueva sesión de Windows PowerShell en el servidor de Azure AD Connect con hello **ejecutar como administrador** opción.
+1. Abra una nueva sesión de Windows PowerShell en el servidor de Azure AD Connect mediante la opción **Ejecutar como administrador**.
 
 2. Ejecute `Set-ExecutionPolicy RemoteSigned` o `Set-ExecutionPolicy Unrestricted`.
 
 3. Ejecute `Import-Module ADSyncDiagnostics`.
 
-4. Ejecute hello siguiente cmdlet:
+4. Ejecute el siguiente cmdlet:
    ```
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName <Name-of-AD-Connector> -DistinguishedName <DistinguishedName-of-AD-object>
    ```
@@ -124,158 +124,158 @@ problemas de tootroubleshoot donde no se sincroniza ninguna contraseña:
    Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName "contoso.com" -DistinguishedName "CN=TestUserCN=Users,DC=contoso,DC=com"
    ```
 
-### <a name="understand-hello-results-of-hello-cmdlet"></a>Entender los resultados de hello del cmdlet Hola
-cmdlet de diagnóstico de Hello realiza Hola siguientes comprobaciones:
+### <a name="understand-the-results-of-the-cmdlet"></a>Descripción de los resultados del cmdlet
+El cmdlet de diagnóstico realiza las siguientes comprobaciones:
 
-* Examina el estado de saludo del objeto de Active Directory de hello en el espacio de conector de Active Directory de Hola y metaverso, Azure espacio de conector de AD.
+* Examina el estado del objeto de Active Directory en el espacio conector Active Directory, el metaverso y el espacio conector Azure AD.
 
-* Comprueba que haya reglas de sincronización con la sincronización de contraseña habilitada y aplican toohello objeto de Active Directory.
+* Valida que hay reglas de sincronización con la sincronización de contraseña habilitada y se aplican al objeto de Active Directory.
 
-* Intentos de tooretrieve y mostrar los resultados de Hola Hola último intento toosynchronize hello de la contraseña del objeto de Hola.
+* Intenta recuperar y mostrar los resultados del último intento de sincronización de la contraseña del objeto.
 
-Hola siguiente diagrama muestra resultados de hello del cmdlet de hello cuando solucione problemas de sincronización de contraseña para un único objeto:
+El diagrama siguiente muestra los resultados del cmdlet al solucionar problemas de sincronización de contraseña de un solo objeto:
 
 ![Salida de diagnóstico de la sincronización de contraseña: un solo objeto](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phssingleobjectgeneral.png)
 
-resto Hola de esta sección describe los resultados específicos devueltos por el cmdlet de Hola y problemas correspondientes.
+En el resto de esta sección se describen los resultados concretos que devuelve el cmdlet y los correspondientes problemas.
 
-#### <a name="hello-active-directory-object-isnt-exported-tooazure-ad"></a>objeto de Active Directory de Hello no exportado tooAzure AD
-Se produce un error en la sincronización de contraseña para esta cuenta de Active Directory local porque no hay ningún objeto correspondiente en el inquilino de Azure AD Hola. se devuelve Hola siguiente error:
+#### <a name="the-active-directory-object-isnt-exported-to-azure-ad"></a>El objeto de Active Directory no se ha exportado a Azure AD
+La sincronización de contraseña para esta cuenta de Active Directory local no se realiza porque no hay un objeto correspondiente en el inquilino de Azure AD. Se devuelve el error siguiente:
 
 ![Falta objeto de Azure AD](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phssingleobjectnotexported.png)
 
 #### <a name="user-has-a-temporary-password"></a>El usuario tiene una contraseña incorrecta
-Actualmente, Azure AD Connect no admite la sincronización de contraseñas temporales con Azure AD. Una contraseña se considera toobe temporal si hello **cambiar la contraseña en el siguiente inicio de sesión** opción está establecida en el usuario de Active Directory local de Hola. se devuelve Hola siguiente error:
+Actualmente, Azure AD Connect no admite la sincronización de contraseñas temporales con Azure AD. Una contraseña se considera temporal si la opción **Change password at next logon** (Cambiar la contraseña en el siguiente inicio de sesión) se establece como activada en el usuario de Active Directory local. Se devuelve el error siguiente:
 
 ![La contraseña temporal no se exporta](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phssingleobjecttemporarypassword.png)
 
-#### <a name="results-of-last-attempt-toosynchronize-password-arent-available"></a>Resultados del último intento de toosynchronize contraseña no están disponibles
-De forma predeterminada, Azure AD Connect almacena los resultados de Hola de intentos de sincronización de contraseña durante siete días. Si no hay ningún resultado disponible para el objeto de Active Directory de hello seleccionado, se devuelve Hola siguiente advertencia:
+#### <a name="results-of-last-attempt-to-synchronize-password-arent-available"></a>No hay resultados del último intento de sincronización de contraseña disponibles
+De manera predeterminada, Azure AD Connect almacena los resultados de los intentos de sincronización de contraseña durante siete días. Si no hay ningún resultado disponible para el objeto de Active Directory seleccionado, se devuelve la advertencia siguiente:
 
 ![Salida de diagnóstico de un solo objeto: no hay historial de sincronización de contraseña](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phssingleobjectnohistory.png)
 
 
 ## <a name="no-passwords-are-synchronized-manual-troubleshooting-steps"></a>No se sincronizan las contraseñas: pasos para la solución manual de problemas
-Siga estos toodetermine pasos ¿por qué no se sincroniza ninguna contraseña:
+Siga estos pasos para determinar por qué no se sincronizan las contraseñas:
 
-1. ¿Es servidor de Connect de hello en [modo de almacenamiento provisional](active-directory-aadconnectsync-operations.md#staging-mode)? Un servidor en modo de almacenamiento provisional no sincroniza contraseñas.
+1. ¿Está el servidor de Connect en [modo de almacenamiento provisional](active-directory-aadconnectsync-operations.md#staging-mode)? Un servidor en modo de almacenamiento provisional no sincroniza contraseñas.
 
-2. Ejecutar script de Hola Hola [obtener estado de Hola de configuración de sincronización de contraseña](#get-the-status-of-password-sync-settings) sección. Proporciona información general sobre la configuración de sincronización de contraseña de Hola.  
+2. Ejecute el script de la sección [Obtención del estado de configuración de sincronización de contraseñas](#get-the-status-of-password-sync-settings). Le ofrece una visión general de la configuración de sincronización de contraseñas.  
 
     ![Salida del script de PowerShell de la configuración de sincronización de contraseñas](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/psverifyconfig.png)  
 
-3. Si no está habilitada la característica de hello en Azure AD o si no está habilitado el estado de sincronización del canal hello, ejecutar a Asistente de instalación de Connect de Hola. Seleccione **Personalizar las opciones de sincronización** y anule la selección de sincronización de contraseñas. Este cambio deshabilita temporalmente la característica de Hola. A continuación, vuelva a ejecutar al Asistente de Hola y volver a habilitar la sincronización de contraseñas. Ejecutar script de Hola de nuevo tooverify que Hola configuración es correcta.
+3. Si la característica no está habilitada en Azure AD o si el estado del canal de sincronización no está habilitado, ejecute el Asistente para instalación de Connect. Seleccione **Personalizar las opciones de sincronización** y anule la selección de sincronización de contraseñas. Este cambio deshabilita temporalmente la característica. Después, vuelva a ejecutar al asistente y habilite de nuevo la sincronización de contraseñas. Vuelva a ejecutar el script para comprobar que la configuración es correcta.
 
-4. Busque en registro de eventos de Hola para los errores. Busque Hola después de eventos, lo que podría indicar un problema:
-    * Origen: "Sincronización de directorios" ID: 0, 611, 652, 655. Si ve estos eventos, significa que hay un problema de conectividad. mensaje de registro de eventos de Hello contiene información del bosque donde haya un problema. Para más información, vea [Problemas de conectividad](#connectivity problem).
+4. Busque errores en el registro de eventos. Busque los siguientes eventos, que podrían indicar un problema:
+    * Origen: "Sincronización de directorios" ID: 0, 611, 652, 655. Si ve estos eventos, significa que hay un problema de conectividad. El mensaje de registro de eventos contiene información de bosques en los que hay un problema. Para más información, vea [Problemas de conectividad](#connectivity problem).
 
-5. Si no ve ningún latido o si nada funciona, ejecute [Desencadenamiento de una sincronización completa de todas las contraseñas](#trigger-a-full-sync-of-all-passwords). Ejecutar script de Hola solo una vez.
+5. Si no ve ningún latido o si nada funciona, ejecute [Desencadenamiento de una sincronización completa de todas las contraseñas](#trigger-a-full-sync-of-all-passwords). Ejecute el script una sola vez.
 
-6. Vea hello [solucionar problemas de un objeto que no se está sincronizando las contraseñas](#one-object-is-not-synchronizing-passwords) sección.
+6. Vea la sección [Solución de problemas de un objeto que no sincroniza contraseñas](#one-object-is-not-synchronizing-passwords).
 
 ### <a name="connectivity-problems"></a>Problemas de conectividad
 
 ¿Hay conectividad con Azure AD?
 
-¿Hola se requiere cuenta hashes de contraseña de permisos tooread hello en todos los dominios? Si ha instalado conectar con la configuración rápida, permisos de hello deberían ser correctos. 
+¿La cuenta tiene los permisos necesarios para leer los valores de hash de contraseña en todos los dominios? Si instaló Connect con la configuración rápida, los permisos deben ser los correctos. 
 
-Si realizó una instalación personalizada, establecer permisos de hello manualmente haciendo Hola siguiente:
+Si realizó una instalación personalizada, establezca los permisos manualmente haciendo lo siguiente:
     
-1. cuenta de hello toofind utilizado por el conector de Active Directory de hello, inicio **Synchronization Service Manager**. 
+1. Para buscar la cuenta que usa el conector Active Directory, inicie **Synchronization Service Manager**. 
  
-2. Vaya demasiado**conectores**y, a continuación, busque el bosque de Active Directory local Hola está solucionando. 
+2. Vaya a **Conectores** y busque el bosque de Active Directory local cuyos problemas va a solucionar. 
  
-3. Seleccione el conector de hello y, a continuación, haga clic en **propiedades**. 
+3. Seleccione el conector y haga clic en **Propiedades**. 
  
-4. Vaya demasiado**conectar tooActive Directory bosque**.  
+4. Vaya a **Conexión al bosque de Active Directory**.  
     
     ![Cuenta que usa el conector Active Directory](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/connectoraccount.png)  
-    Tenga en cuenta el nombre de usuario de Hola y el dominio de Hola donde se encuentra la cuenta de hello.
+    Apunte el nombre de usuario y el dominio donde está la cuenta.
     
-5. Iniciar **equipos y usuarios de Active Directory**y, a continuación, compruebe que el que se encuentra antes de la cuenta de hello tiene permisos de seguimiento de hello establecidos en raíz de Hola de todos los dominios del bosque:
+5. Inicie **Usuarios y equipos de Active Directory** y compruebe que la cuenta encontrada anteriormente tiene los permisos siguientes establecidos en la raíz de todos los dominios del bosque:
     * Replicación de cambios de directorio
     * Replicación de todos los cambios de directorio
 
-6. ¿Es Hola controladores de dominio accesible, Azure AD Connect? Si el servidor de Connect de hello no puede conectarse a controladores de dominio de tooall, configurar **usar solo controlador de dominio preferido**.  
+6. ¿Puede Azure AD Connect acceder a los controladores de dominio? Si el servidor de Connect no puede conectarse a todos los controladores de dominio, configure **Only use preferred domain controller** (Usar solo el controlador de dominio preferido).  
     
     ![Controlador de dominio que usa el conector Active Directory](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/preferreddc.png)  
     
-7. Vuelva demasiado**Synchronization Service Manager** y **configurar la partición del directorio**. 
+7. Vuelva a **Synchronization Service Manager** y **Configure Directory Partition** (Configurar partición de directorio). 
  
-8. Seleccione el dominio en **seleccionar particiones de directorio**, seleccione hello **sólo utilizará los controladores de dominio preferidos** casilla de verificación y, a continuación, haga clic en **configurar**. 
+8. Seleccione el dominio en **Seleccionar particiones de directorio**, active la casilla **Only use preferred domain controller** (Usar solo el controlador de dominio preferido) y haga clic en **Configurar**. 
 
-9. En la lista de hello, escriba los controladores de dominio de Hola que conectar debe usar para la sincronización de contraseñas. Hola misma lista se utiliza para importar y exportar también. Siga estos pasos con todos los dominios.
+9. En la lista, escriba los controladores de dominio que Connect debe usar para realizar la sincronización de contraseñas. También se usa la misma lista para los procesos de importación y exportación. Siga estos pasos con todos los dominios.
 
-10. Si el script de Hola muestra que no ha habido latidos, ejecute el script de Hola en [desencadenar una sincronización completa de todas las contraseñas](#trigger-a-full-sync-of-all-passwords).
+10. Si el script muestra que no hay ningún latido, ejecute el script de [Desencadenamiento de una sincronización completa de todas las contraseñas](#trigger-a-full-sync-of-all-passwords).
 
 ## <a name="one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps"></a>Un objeto no sincroniza contraseñas: pasos para la solución manual de problemas
-Fácilmente puede solucionar problemas de sincronización de contraseña, revise el estado de saludo de un objeto.
+Puede solucionar fácilmente los problemas relacionados con la sincronización de contraseñas si revisa el estado actual de un objeto.
 
-1. En **equipos y usuarios de Active Directory**, Buscar usuario hello y, a continuación, compruebe que hello **usuario debe cambiar la contraseña en el siguiente inicio de sesión** casilla de verificación está desactivada.  
+1. En **Usuarios y equipos de Active Directory**, busque el usuario y compruebe que la casilla **El usuario debe cambiar la contraseña en el siguiente inicio de sesión** está desactivada.  
 
     ![Contraseñas productivas de Active Directory](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/adprodpassword.png)  
 
-    Si está activada la casilla de verificación de hello, formule Hola usuario toosign en y cambiar la contraseña de Hola. Las contraseñas temporales no se sincronizan con Azure AD.
+    Si la casilla está activada, pida al usuario que inicie sesión y cambie la contraseña. Las contraseñas temporales no se sincronizan con Azure AD.
 
-2. Si la contraseña de hello parece correcto en Active Directory, siga usuario hello en el motor de sincronización de Hola. Por usuario de hello siguientes desde tooAzure de Active Directory local AD, puede ver si hay un error descriptivo en objeto Hola.
+2. Si la contraseña parece correcta en Active Directory, siga al usuario en el motor de sincronización. Al seguir al usuario desde Active Directory local hasta Azure AD, puede ver si hay un error descriptivo en el objeto.
 
-    a. Iniciar hello [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md).
+    a. Inicie el [Synchronization Service Manager](active-directory-aadconnectsync-service-manager-ui.md).
 
     b. Haga clic en **Conectores**.
 
-    c. Seleccione hello **conector de Active Directory** donde se encuentra el usuario de Hola.
+    c. Seleccione el **conector Active Directory** en el que se encuentra el usuario.
 
     d. Seleccione **Search Connector Space**(Buscar espacio de conector).
 
-    e. Hola **ámbito** cuadro, seleccione **DN o delimitador**y, a continuación, escriba Hola DN completo del usuario de hello está solucionando.
+    e. En el cuadro **Ámbito**, seleccione **DN o delimitador** y escriba el DN completo del usuario cuyos problemas va a solucionar.
 
     ![Búsqueda de usuario en el espacio conector con DN](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/searchcs.png)  
 
-    f. Buscar usuario de Hola que está buscando y, a continuación, haga clic en **propiedades** toosee Hola a todos los atributos. Si no es usuario hello en el resultado de la búsqueda de hello, compruebe su [las reglas de filtrado](active-directory-aadconnectsync-configure-filtering.md) y asegúrese de que ejecuta [aplicar y comprobar los cambios](active-directory-aadconnectsync-configure-filtering.md#apply-and-verify-changes) para tooappear de usuario de hello en conectar.
+    f. Busque el usuario y haga clic en **Propiedades** para ver todos los atributos. Si el usuario no aparece en el resultado de búsqueda, compruebe las [reglas de filtrado](active-directory-aadconnectsync-configure-filtering.md) y asegúrese de ejecutar [Aplicación y comprobación de los cambios](active-directory-aadconnectsync-configure-filtering.md#apply-and-verify-changes) para que el usuario se muestre en Connect.
 
-    g. Haga clic en la semana pasada, detalles de sincronización de contraseña de toosee Hola del objeto de Hola para hello **registro**.  
+    g. Para ver los detalles de la sincronización de contraseñas del objeto de la semana pasada, haga clic en **Registro**.  
 
     ![Detalles del registro de objetos](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/csobjectlog.png)  
 
-    Si el registro de hello objeto está vacío, Azure AD Connect ha sido hash de contraseña de hello no se puede tooread de Active Directory. Continúe solucionando problemas con [Errores de conectividad](#connectivity-errors). Si ve un valor distinto de **correcto**, consulte la tabla de toohello en [registro de sincronización de contraseña](#password-sync-log).
+    Si el registro de objetos está vacío, Azure AD Connect no ha sido capaz de leer el valor de hash de contraseña de Active Directory. Continúe solucionando problemas con [Errores de conectividad](#connectivity-errors). Si ve un valor distinto de **correcto**, consulte la tabla de [Registro de sincronización de contraseñas](#password-sync-log).
 
-    h. Seleccione hello **linaje** pestaña y asegúrese de que esa regla al menos una sincronización en hello **PasswordSync** columna es **True**. En la configuración predeterminada de hello, nombre de hello de la regla de sincronización hello es **en desde AD - User AccountEnabled**.  
+    h. Seleccione la pestaña **Linaje** y asegúrese de que al menos una de las reglas de sincronización de la columna **PasswordSync** está establecida en **True**. En la configuración predeterminada, el nombre de la regla de sincronización es **In from AD - User AccountEnabled**.  
 
     ![Información de linaje de un usuario](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/cspasswordsync.png)  
 
-    i. Haga clic en **propiedades del objeto de metaverso** toodisplay una lista de atributos de usuario.  
+    i. Haga clic en **Metaverse Object Properties** (Propiedades del objeto de metaverso) para mostrar una lista de atributos de usuario.  
 
     ![Información de metaverso](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/mvpasswordsync.png)  
 
-    Compruebe que no hay ningún atributo **cloudFiltered**. Asegúrese de que los atributos de dominio de hello (domainFQDN y domainNetBios) tienen valores de hello esperados.
+    Compruebe que no hay ningún atributo **cloudFiltered**. Asegúrese de que los atributos de dominio (domainFQDN y domainNetBios) tienen los valores esperados.
 
-    j. Haga clic en hello **conectores** ficha. Asegúrese de que ve conectores tooboth Active Directory local y Azure AD.
+    j. Haga clic en la pestaña **Conectores**. Asegúrese de que ve conectores para Active Directory local y Azure AD.
 
     ![Información de metaverso](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/mvconnectors.png)  
 
-    k. Seleccione Hola fila que representa AD de Azure, haga clic en **propiedades**y, a continuación, haga clic en hello **linaje** objeto de espacio de conector de Hola de ficha debe tener una regla de salida en hello **PasswordSync** columna se establece demasiado**True**. En la configuración predeterminada de hello, nombre de hello de la regla de sincronización hello es **Out tooAAD - User Join**.  
+    k. Seleccione la fila que representa Azure AD, haga clic en **Propiedades** y luego, en la pestaña **Linaje**. El objeto del espacio conector debe tener una regla de salida con la columna **PasswordSync** establecida en **True**. En la configuración predeterminada, el nombre de la regla de sincronización es **Out to AAD - User Join**.  
 
     ![Cuadro de diálogo de propiedades de objeto del espacio conector](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/cspasswordsync2.png)  
 
 ### <a name="password-sync-log"></a>Registro de sincronización de contraseñas
-columna de estado de Hello puede tener Hola siguientes valores:
+La columna de estado puede presentar los siguientes valores:
 
 | Estado | Description |
 | --- | --- |
 | Correcto |La contraseña se sincronizó correctamente. |
-| FilteredByTarget |Contraseña se establece demasiado**usuario debe cambiar la contraseña en el siguiente inicio de sesión**. La contraseña no se ha sincronizado. |
-| NoTargetConnection |Ningún objeto de metaverso de Hola o en el espacio del conector de hello Azure AD. |
-| SourceConnectorNotPresent |No se encuentran en el espacio del conector de Active Directory de hello local de objetos. |
-| TargetNotExportedToDirectory |objeto de Hola Hola espacio de conector de Azure AD aún no se ha exportado. |
+| FilteredByTarget |La contraseña se establece en **El usuario debe cambiar la contraseña en el siguiente inicio de sesión**. La contraseña no se ha sincronizado. |
+| NoTargetConnection |No hay ningún objeto en el metaverso o en el espacio del conector de Azure AD. |
+| SourceConnectorNotPresent |No se encontró ningún objeto en el espacio del conector de Active Directory local. |
+| TargetNotExportedToDirectory |Aún no se exportó el objeto del espacio del conector de Azure AD. |
 | MigratedCheckDetailsForMoreInfo |La entrada de registro se creó antes de la versión 1.0.9125.0 y se muestra en su estado heredado. |
 | Error |El servicio devolvió un error desconocido. |
-| Desconocido |Se produjo un error al tratar de tooprocess un lote de hash de contraseña.  |
+| Desconocido |Ha habido un error al intentar procesar un lote de valores hash de contraseña.  |
 | MissingAttribute |Los atributos específicos (por ejemplo, hash de Kerberos) que requiere Azure AD Domain Services no están disponibles. |
-| RetryRequestedByTarget |Los atributos específicos (por ejemplo, hash de Kerberos) que requiere Azure AD Domain Services no estaban disponibles anteriormente. Hash de contraseña de un intento de tooresynchronize Hola usuario se ha realizado. |
+| RetryRequestedByTarget |Los atributos específicos (por ejemplo, hash de Kerberos) que requiere Azure AD Domain Services no estaban disponibles anteriormente. Se intenta volver a sincronizar el valor hash de contraseña del usuario. |
 
-## <a name="scripts-toohelp-troubleshooting"></a>Solución de problemas de las secuencias de comandos toohelp
+## <a name="scripts-to-help-troubleshooting"></a>Scripts para ayudar a solucionar problemas
 
-### <a name="get-hello-status-of-password-sync-settings"></a>Obtener estado de Hola de configuración de sincronización de contraseña
+### <a name="get-the-status-of-password-sync-settings"></a>Obtención del estado de configuración de sincronización de contraseñas
 ```
 Import-Module ADSync
 $connectors = Get-ADSyncConnector
@@ -314,7 +314,7 @@ if ($aadConnectors -ne $null -and $adConnectors -ne $null)
     }
     else
     {
-        Write-Warning "More than one Azure AD Connectors found. Please update hello script toouse hello appropriate Connector."
+        Write-Warning "More than one Azure AD Connectors found. Please update the script to use the appropriate Connector."
     }
 }
 Write-Host
@@ -331,9 +331,9 @@ Write-Host
 
 #### <a name="trigger-a-full-sync-of-all-passwords"></a>Desencadenamiento de una sincronización completa de todas las contraseñas
 > [!NOTE]
-> Ejecute este script una sola vez. Si necesita toorun más de una vez, algo es problema de Hola. problema de hello tootroubleshoot, póngase en contacto con soporte técnico de Microsoft.
+> Ejecute este script una sola vez. Si tiene que ejecutarlo varias veces, el problema se debe a otro motivo. Para solucionar el problema, contacte con Soporte técnico de Microsoft.
 
-Puede desencadenar una sincronización completa de todas las contraseñas mediante Hola siguiente secuencia de comandos:
+Puede desencadenar una sincronización completa de todas las contraseñas mediante el siguiente script:
 
 ```
 $adConnector = "<CASE SENSITIVE AD CONNECTOR NAME>"

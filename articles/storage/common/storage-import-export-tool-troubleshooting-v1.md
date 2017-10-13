@@ -1,6 +1,6 @@
 ---
-title: "Hola aaaTroubleshooting herramienta de importación y exportación de Azure | Documentos de Microsoft"
-description: "Información sobre algunos de los problemas comunes de hello aparece cuando se usa la herramienta de importación y exportación de Azure de Hola y cómo toohandle ellos."
+title: "Solución de problemas de la herramienta Azure Import/Export | Microsoft Docs"
+description: "Obtenga información sobre problemas comunes observados al usar la herramienta Import/Export de Azure y cómo abordarlos."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.openlocfilehash: 254439c15797862dded5d80028b8780ad163b2b1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7bfda602dbc0ea47828a7c9243b8b9b09ec78432
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="troubleshooting-hello-azure-importexport-tool"></a>Solución de problemas de hello herramienta de importación y exportación de Azure
-Hola herramienta de importación y exportación de Microsoft Azure devuelve mensajes de error si encuentra problemas. En este tema se enumeran algunos problemas comunes con los que los usuarios se pueden encontrar.  
+# <a name="troubleshooting-the-azure-importexport-tool"></a>Solución de problemas de la herramienta Azure Import/Export
+La herramienta Microsoft Azure Import/Export devuelve mensajes de error si encuentra problemas. En este tema se enumeran algunos problemas comunes con los que los usuarios se pueden encontrar.  
   
 ## <a name="a-copy-session-fails-what-i-should-do"></a>Se produce un error en una sesión de copia, ¿qué debo hacer?  
  Cuando se produce un error en una sesión de copia, tiene dos opciones:  
   
- Si el error de hello es recuperable, por ejemplo, si el recurso compartido de red de hello estaba sin conexión para una breve período y ahora es nuevo en línea, puede reanudar la sesión de copia de Hola. Si Hola error no es recuperable, por ejemplo, si ha especificado el directorio de archivos de origen incorrecto de hello en parámetros de línea de comandos de hello, deberá sesión de copia de tooabort Hola. Vea [Preparación de unidades de disco duro para un trabajo de importación](../storage-import-export-tool-preparing-hard-drives-import-v1.md) para más información sobre cómo reanudar y anular sesiones de copia.  
+ Si el error es recuperable, por ejemplo, si el recurso compartido de red estuvo sin conexión durante un breve período y ahora vuelve a tener conexión, puede reanudar la sesión de copia. Si el error no es recuperable, por ejemplo, si especificó el directorio de archivos de origen incorrecto en los parámetros de la línea de comandos, debe anular la sesión de copia. Vea [Preparación de unidades de disco duro para un trabajo de importación](../storage-import-export-tool-preparing-hard-drives-import-v1.md) para más información sobre cómo reanudar y anular sesiones de copia.  
   
 ## <a name="i-cant-resume-or-abort-a-copy-session"></a>No puedo reanudar o anular una sesión de copia.  
- Si es de sesión de copia de Hola Hola primera sesión de copia de una unidad, debería indicar el mensaje de error de Hola: "hello primera sesión de copia se no se puede reanudar o anulado." En este caso, puede eliminar el archivo de diario anterior de Hola y vuelva a ejecutar el comando Hola.  
+ Si la sesión de copia es la primera sesión de copia de una unidad, entonces el mensaje de error debe indicar: "La primera sesión de copia se no se puede reanudar o anular". En este caso, puede eliminar el archivo de diario antiguo y volver a ejecutar el comando.  
   
- Si una sesión de copia no es hello primera de ellas para una unidad, siempre puede reanudar o anulado.  
+ Si una sesión de copia no es la primera para una unidad, siempre se puede reanudar o anular.  
   
-## <a name="i-lost-hello-journal-file-can-i-still-create-hello-job"></a>He perdido el archivo de diario de hello, ¿todavía puedo crear trabajo de hello?  
- archivo de diario de Hola para una unidad de disco contiene Hola toda la información de copia de unidad de datos toothis, y es necesario tooadd más unidad de archivos de toohello y será toocreate usa un trabajo de importación. Si el archivo de diario de Hola se pierde, tendrá tooredo todas las sesiones de copia de Hola para unidad de Hola.  
+## <a name="i-lost-the-journal-file-can-i-still-create-the-job"></a>He perdido el archivo de diario, ¿todavía puedo crear el trabajo?  
+ El archivo de diario para una unidad contiene toda la información de copia de datos a esta unidad, y es necesario para agregar más archivos a la unidad y se utilizará para crear un trabajo de importación. Si el archivo de diario se pierde, tendrá que rehacer todas las sesiones de copia de la unidad.  
   
 ## <a name="next-steps"></a>Pasos siguientes
  
-* [Configurar la herramienta de importación y exportación de azure Hola](../storage-import-export-tool-setup-v1.md)   
+* [Configuración de la herramienta Azure Import/Export](../storage-import-export-tool-setup-v1.md)   
 * [Preparación de unidades de disco duro para un trabajo de importación](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
 * [Revisión del estado del trabajo con archivos de registro de copia](../storage-import-export-tool-reviewing-job-status-v1.md)   
 * [Reparación de un trabajo de importación](../storage-import-export-tool-repairing-an-import-job-v1.md)   

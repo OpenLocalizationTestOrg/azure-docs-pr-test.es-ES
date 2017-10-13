@@ -1,6 +1,6 @@
 ---
-title: "Facturación y anulación de Azure la pila aaaCustomer | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo tooretrieve información de uso de recursos de pila de Azure."
+title: "Facturación y contracargo del cliente en Azure Stack | Microsoft Docs"
+description: "Averigüe cómo recuperar la información de la utilización de recursos de Azure Stack."
 services: azure-stack
 documentationcenter: 
 author: AlfredoPizzirani
@@ -12,48 +12,59 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2016
+ms.date: 08/28/2017
 ms.author: alfredop
-ms.openlocfilehash: d92caac2874e5364870b29a38515b579ab059991
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ea7510c239ee07a9a27f3e682e61a6b08eb5694d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="usage-and-billing-in-azure-stack"></a>Utilización y facturación en Azure Stack
 
-Uso representa la cantidad de Hola de los recursos utilizados por el usuario. Pila de Azure recopila información de uso para cada usuario y la usa toobill ellos. Este artículo describe cómo se facturarán a los usuarios de la pila de Azure para uso de recursos y cómo se tiene acceso a información de facturación de hello para el análisis, anulación, etcetera.
+La utilización representa la cantidad de recursos consumidos por un usuario. Azure Stack recopila información de la utilización de cada usuario y la usa para facturársela. Este artículo describe cómo se factura a los usuarios de Azure Stack la utilización de recursos y cómo se obtiene acceso a la información de facturación para el análisis, el contracargo, etc.
 
-Pila de Azure contiene hello toocollect de infraestructura y los datos de uso agregadas para todos los recursos. Puede tener acceso a estos datos y exportar el sistema de facturación tooa mediante el uso de un adaptador de facturación o exportarlo tooa herramienta de inteligencia empresarial como Microsoft Power BI. Una vez exportado, esta información de facturación se utiliza para el análisis o transferidas tooa sistema de cargo al usuario.
+Azure Stack contiene la infraestructura necesaria para recopilar y agregar los datos de utilización de todos los recursos, así como para enviar estos datos a Azure Commerce. Se puede tener acceso a estos datos y exportarlos a un sistema de facturación con un adaptador de facturación, o bien exportarlos a una herramienta de inteligencia empresarial como Microsoft Power BI. Una vez exportada, esta información de facturación se usa para el análisis o se transfiere a un sistema de contracargo.
 
-![Modelo conceptual de un adaptador de facturación conectando Azure pila tooa aplicación de facturación](media/azure-stack-billing-and-chargeback/image1.png)
+![Modelo conceptual de un adaptador de facturación que conecta Azure Stack a una aplicación de facturación](media/azure-stack-billing-and-chargeback/image1.png)
+
+## <a name="usage-pipeline"></a>Canalización de uso
+
+Todos los proveedores de recursos de Azure Stack emiten datos de uso en función de la utilización de los recursos. El servicio de uso agrega periódicamente (cada hora o cada día) estos datos de uso y los almacena en la base de datos de uso. Tanto los operadores de Azure Stack como los usuarios pueden acceder localmente a los datos de uso almacenados mediante el uso de las API de uso. 
+
+Si ha [registrado una instancia de Azure Stack en Azure](azure-stack-register.md), Usage Bridge se configura para enviar los datos de uso a Azure Commerce. Una vez que los datos estén disponibles en Azure, puede acceder a ellos a través del portal de facturación o mediante las API de Azure Usage. En el tema [Usage data reporting](azure-stack-usage-reporting.md) (Informe de datos de uso) obtendrá más información acerca de los datos de uso que se notifican a Azure. 
+
+La siguiente imagen muestra los principales componentes de la canalización de uso:
+
+![Canalización de uso](media/azure-stack-billing-and-chargeback/usagepipeline.png)
 
 ## <a name="what-usage-information-can-i-find-and-how"></a>¿Qué información de utilización se puede encontrar y cómo?
 
-Los proveedores de recursos de Azure Stack como, por ejemplo, Compute, Storage y Network, generan datos de utilización a intervalos de horas para cada suscripción. datos de uso Hello contienen información acerca de recursos de hello usa como nombre del recurso, medidor de la cantidad de nombre, identificador de medidor, usados toolearn etc. acerca de los recursos de Id. de hello metros, consulte toohello [uso de preguntas más frecuentes de API](azure-stack-usage-related-faq.md) artículo. 
+Los proveedores de recursos de Azure Stack como, por ejemplo, Compute, Storage y Network, generan datos de utilización a intervalos de horas para cada suscripción. Los datos de uso contienen información acerca del recurso que se usa, como el nombre del recurso, la suscripción usada, la cantidad usada, etc. Para obtener información sobre los recursos de identificadores de medidores, consulte el artículo de [preguntas más frecuentes de API de utilización](azure-stack-usage-related-faq.md). 
 
-Después de que se han recopilado datos de uso de hello, resulta [notificado tooAzure](azure-stack-usage-reporting.md) toogenerate una factura, que se puede ver a través de hello Azure portal de facturación. Hola portal de facturación de Azure muestra los datos de uso de hello sólo de recursos facturables Hola. Además, toohello facturables recursos, pila de Azure captura datos de uso de un conjunto más amplio de recursos, que se pueden tener acceso a su entorno de pila de Azure a través de la API de REST o PowerShell. Los administradores de la nube de Azure pila pueden recuperar los datos de uso de Hola para todas las suscripciones de usuario, mientras que un usuario puede obtener solamente los detalles de uso.
+Después de que se hayan recopilado los datos de utilización, se [notifican a Azure](azure-stack-usage-reporting.md) para que genere una factura, que se puede ver en el Portal de facturación de Azure. 
+
+> [!NOTE]
+> El informe de datos de uso no es necesario para Azure Stack Development Kit ni para los usuarios del sistema integrado de Azure Stack cuya licencia esté dentro del modelo de capacidad. Para más información acerca de las licencias de Azure Stack, consulte la hoja de datos de [Packaging and pricing](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf) (Empaquetado y precios).
+
+El Portal de facturación de Azure muestra los datos de utilización solo de los recursos facturables. Además de los recursos facturables, Azure Stack captura los datos de utilización de un conjunto más amplio de recursos, a los que se pueden obtener acceso en el entorno de Azure Stack a través de las API de REST o PowerShell. Los operadores de Azure Stack pueden recuperar los datos de uso de las suscripciones de todos los usuarios, mientras que un usuario solo puede obtener sus detalles de uso.
 
 ## <a name="retrieve-usage-information"></a>Recuperar información de utilización
 
-datos de uso de hello toogenerate, debe tener recursos que se ejecuta y se usa activamente sistema Hola. Si no está seguro de si tiene algún recurso que se ejecuta en Azure Marketplace de pila, implementar una máquina virtual (VM) y comprobar Hola VM supervisión hoja toomake seguro de se está ejecutando. Usar hello datos de uso de PowerShell cmdlets tooview Hola siguientes:
+Para generar los datos de uso, es preciso tener recursos en ejecución y que utilicen activamente el sistema, por ejemplo, una máquina virtual activa, una cuenta de almacenamiento que contiene algunos datos, etc. Si no está seguro de si tiene algún recurso que se ejecute en Azure Stack Marketplace, implemente una máquina virtual (VM) y compruebe la hoja de supervisión de la máquina virtual para asegurarse de que se está ejecutando. Use los siguientes cmdlets de PowerShell para ver los datos de utilización:
 
 1. [Instale PowerShell para Azure Stack.](azure-stack-powershell-install.md)
-2. * [Configurar hello Azure pila usuario](azure-stack-powershell-configure-user.md) o hello [del operador de la pila de Azure](azure-stack-powershell-configure-admin.md) entorno de PowerShell 
-3. datos de uso de hello tooretrieve, usar hello [UsageAggregates Get](/powershell/module/azurerm.usageaggregates/get-usageaggregates) cmdlet de PowerShell:
-   ```PowerShell
+2. [Configure el entorno de PowerShell del usuario de Azure Stack](user/azure-stack-powershell-configure-user.md) o del [operador de Azure Stack](azure-stack-powershell-configure-admin.md) 
+
+3. Para recuperar los datos de utilización, use el cmdlet [Get-UsageAggregates](/powershell/module/azurerm.usageaggregates/get-usageaggregates) de PowerShell:
+
+   ```powershell
    Get-UsageAggregates -ReportedStartTime "<Start time for usage reporting>" -ReportedEndTime "<end time for usage reporting>" -AggregationGranularity <Hourly or Daily>
    ```
 
-   Si hay datos de uso, se devuelve en tal y como se muestra en la siguiente captura de pantalla de hello: 
-   
-   ![Agregados de utilización](media/azure-stack-billing-and-chargeback/image2.png)
-   
-   PowerShell devuelve 1000 líneas de utilización por llamada. Puede usar más de 1.000 líneas Hola continuación parámetro tooretrieve
-
 ## <a name="next-steps"></a>Pasos siguientes
 
-[Informe tooAzure de datos de uso de la pila de Azure](azure-stack-usage-reporting.md)
+[Report Azure Stack usage data to Azure](azure-stack-usage-reporting.md) (Notificar los datos de utilización de Azure Stack a Azure)
 
 [Provider Resource Usage API](azure-stack-provider-resource-api.md) (API de utilización de recursos de proveedor)
 

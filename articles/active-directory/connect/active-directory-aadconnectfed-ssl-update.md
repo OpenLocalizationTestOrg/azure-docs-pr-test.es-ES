@@ -1,6 +1,6 @@
 ---
-title: "Azure AD Connect: Certificado actualización Hola SSL para una granja de servidores de servicios de federación de Active Directory (AD FS) | Documentos de Microsoft"
-description: Este documento detalles Hola pasos tooupdate Hola certificado SSL de una granja de AD FS mediante el uso de Azure AD Connect.
+title: "Azure AD Connect: Actualizar el certificado SSL para una granja de Servicios de federación de Active Directory (AD FS) | Microsoft Docs"
+description: En este documento se detallan los pasos para actualizar el certificado SSL de una granja de AD FS mediante Azure AD Connect.
 services: active-directory
 keywords: "azure ad connect, actualizar ssl de adfs, actualizar certificado de adfs, cambiar certificado de adfs, nuevo certificado de adfs, certificado de adfs, actualizar certificado ssl de adfs, actualizar certificado ssl de adfs, configurar certificado ssl de adfs, adfs, ssl, certificado, certificado de comunicación de servicio de adfs, actualizar federación, configurar federación, aad connect"
 authors: anandyadavmsft
@@ -14,93 +14,93 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: anandy
-ms.openlocfilehash: bce7f75aab83b6abacb8472a6895054d137e10e0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 87807a203d71b3abfe3e93132eb7d0b82b14b4ee
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="update-hello-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Actualiza el certificado SSL de Hola para una granja de servidores de servicios de federación de Active Directory (AD FS)
+# <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Actualizar el certificado SSL para una granja de Servicios de federación de Active Directory (AD FS)
 
 ## <a name="overview"></a>Información general
-Este artículo describe cómo se puede usar certificado SSL de Azure AD Connect tooupdate hello en una granja de servidores de servicios de federación de Active Directory (AD FS). Puede usar certificado de hello Azure AD Connect herramienta tooeasily actualización Hola SSL de granja de servidores de hello AD FS aunque Hola inicio de sesión en método de usuario seleccionado no está AD FS.
+En este artículo se describe cómo se puede usar Azure AD Connect para actualizar el certificado SSL para la granja de Servicios de federación de Active Directory (AD FS). Puede usar la herramienta Azure AD Connect para actualizar fácilmente el certificado SSL de la granja de AD FS, aun cuando el método de inicio de sesión del usuario seleccionado no sea AD FS.
 
-Puede realizar toda la operación de actualización de certificado SSL para la granja de servidores de hello AD FS a través de todos los servidores de Proxy de aplicación Web (WAP) en tres pasos sencillos y federación hello:
+Puede realizar toda la operación de actualización del certificado SSL para la granja de AD FS en todos los servidores de federación y de proxy de aplicación web (WAP) en tres sencillos pasos:
 
 ![Tres pasos](./media/active-directory-aadconnectfed-ssl-update/threesteps.png)
 
 
 >[!NOTE]
->toolearn más información acerca de los certificados usados por AD FS, consulte [descripción de los certificados usados por AD FS](https://technet.microsoft.com/library/cc730660.aspx).
+>Para obtener más información sobre los certificados usados por AD FS, consulte el artículo [Descripción de los certificados usados por AD FS](https://technet.microsoft.com/library/cc730660.aspx).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
 * **Granja de AD FS**: asegúrese de que la granja de AD FS se base en Windows Server 2012 R2 o una versión posterior.
-* **Azure AD Connect**: asegúrese de que Hola versión de Azure AD Connect es 1.1.443.0 o posterior. Va a utilizar la tarea hello **actualización AD el certificado SSL FS**.
+* **Azure AD Connect**: asegúrese de que la versión de Azure AD Connect es 1.1.443.0 o posterior. Usará la tarea **Actualización del certificado SSL de AD FS**.
 
 ![Tarea de actualización de SSL](./media/active-directory-aadconnectfed-ssl-update/updatessltask.png)
 
 ## <a name="step-1-provide-ad-fs-farm-information"></a>Paso 1: Proporcionar información de la granja de AD FS
 
-Azure AD Connect intenta automáticamente tooobtain información acerca de la granja de servidores de hello AD FS:
-1. Consultar información de la granja de servidores de Hola de AD FS (Windows Server 2016 o posterior).
-2. Hacer referencia a información de Hola de ejecuciones anteriores, que se almacenan de forma local con Azure AD Connect.
+Azure AD Connect trata de obtener automáticamente la información sobre la granja de AD FS. Para ello, realiza las tareas siguientes:
+1. Consultar la información de la granja de AD FS (Windows Server 2016 o posterior).
+2. Hacer referencia a la información de las ejecuciones anteriores (que se almacena localmente con Azure AD Connect).
 
-Puede modificar la lista de Hola de servidores que se muestran agregando o quitando hello tooreflect Hola actual configuración de servidores de granja de servidores de hello AD FS. Tan pronto como se proporciona la información del servidor hello, Azure AD Connect muestra conectividad de Hola y el estado de certificados SSL actual.
+Puede modificar la lista de servidores que aparecen mediante la adición o eliminación de los servidores a fin de reflejar la configuración actual de la granja de AD FS. Tan pronto como se proporciona la información del servidor, Azure AD Connect muestra la conectividad y el estado actual del certificado SSL.
 
 ![Información del servidor de AD FS](./media/active-directory-aadconnectfed-ssl-update/adfsserverinfo.png)
 
-Si la lista de hello contiene un servidor que ya no forma parte de la granja de servidores de hello AD FS, haga clic en **quitar** toodelete servidor de hello en lista de Hola de servidores en la granja de servidores de AD FS.
+Si la lista contiene un servidor que ya no forma parte de la granja de AD FS, haga clic en **Quitar** para eliminar el servidor de la lista de servidores de la granja de AD FS.
 
 ![Servidor sin conexión en la lista](./media/active-directory-aadconnectfed-ssl-update/offlineserverlist.png)
 
 >[!NOTE]
-> Quitar un servidor de la lista de Hola de servidores de AD FS de granja de servidores en Azure AD Connect es una operación local y las actualizaciones de Hola información de hello granja de AD FS que Azure AD Connect mantiene localmente. Azure AD Connect no modifica la configuración de hello en AD FS tooreflect Hola cambio.    
+> La eliminación de un servidor de la lista de servidores de la granja de AD FS en Azure AD Connect es una operación local y actualiza la información de la granja de AD FS que Azure AD Connect mantiene localmente. Azure AD Connect no modifica la configuración en AD FS para reflejar el cambio.    
 
 ## <a name="step-2-provide-a-new-ssl-certificate"></a>Paso 2: Proporcionar el nuevo certificado SSL
 
-Cuando haya confirmado información Hola acerca de los servidores de la granja de servidores de AD FS, Azure AD Connect solicita nuevo certificado SSL de Hola. Proporcione una protección por contraseña PFX toocontinue Hola instalación del certificado.
+Después de confirmar la información sobre los servidores de la granja de AD FS, Azure AD Connect solicita el nuevo certificado SSL. Proporcione un certificado PFX protegido con contraseña para continuar con la instalación.
 
 ![Certificado SSL](./media/active-directory-aadconnectfed-ssl-update/certificate.png)
 
-Después de proporcionar el certificado de hello, Azure AD Connect pasa por una serie de requisitos previos. Comprobar Hola certificado tooensure que Hola certificado es correcto para la granja de servidores de AD FS hello:
+Después de proporcionar el certificado, Azure AD Connect pasa por una serie de requisitos previos. Compruebe el certificado para asegurarse de que es correcto para la granja de AD FS:
 
--   Hello nombre de asunto de nombre/alternativo de sujeto de certificado de hello es Hola igual como nombre de servicio de federación de hello, o es un certificado comodín.
--   certificado de Hello es válido durante más de 30 días.
--   cadena de confianza del certificado de Hello es válido.
--   certificado de Hello está protegido con contraseña.
+-   El nombre de sujeto o el nombre alternativo de sujeto para el certificado es igual que el nombre del servicio de federación o es un certificado comodín.
+-   El certificado es válido durante más de 30 días.
+-   La cadena de confianza del certificado es válida.
+-   El certificado está protegido con contraseña.
 
-## <a name="step-3-select-servers-for-hello-update"></a>Paso 3: Seleccione los servidores de actualización de Hola
+## <a name="step-3-select-servers-for-the-update"></a>Paso 3: Seleccionar los servidores para la actualización
 
-En el paso siguiente de hello, seleccione servidores de Hola que necesitan toohave Hola SSL certificado actualizado. Actualización de hello no se puede seleccionar los servidores que están sin conexión.
+En el paso siguiente, seleccione los servidores que deben tener el certificado SSL actualizado. Los servidores que están sin conexión no se pueden seleccionar para la actualización.
 
-![Seleccione los servidores tooupdate](./media/active-directory-aadconnectfed-ssl-update/selectservers.png)
+![Seleccionar los servidores para actualizar](./media/active-directory-aadconnectfed-ssl-update/selectservers.png)
 
-Después de completar la configuración de hello, Azure AD Connect muestra mensajes de Hola que indica el estado de saludo de la actualización de Hola y proporciona un inicio de sesión de AD FS hello tooverify de opción.
+Una vez completada la configuración, Azure AD Connect muestra el mensaje que indica el estado de la actualización y proporciona una opción para comprobar el inicio de sesión de AD FS.
 
 ![Configuración completada](./media/active-directory-aadconnectfed-ssl-update/configurecomplete.png)   
 
 ## <a name="faqs"></a>Preguntas más frecuentes
 
-* **¿Qué debe ser el nombre de asunto Hola del certificado de Hola Hola nuevo certificado de SSL de AD FS?**
+* **¿Cuál debe ser el nombre de sujeto del certificado para el nuevo certificado SSL de AD FS?**
 
-    Azure AD Connect comprueba si Hola sujeto alternativo de nombre/nombre del firmante Hola certificado contiene nombre de servicio de federación de Hola. Por ejemplo, si el nombre de servicio de federación es fs.contoso.com, el nombre de sujeto alternativo/nombre de sujeto de hello debe ser fs.contoso.com.  También se aceptan certificados comodín.
+    Azure AD Connect comprueba si el nombre de sujeto o el nombre alternativo de sujeto del certificado contiene el nombre del servicio de federación. Por ejemplo, si el nombre del servicio de federación es fs.contoso.com, el nombre de sujeto o el nombre de sujeto alternativo debe ser fs.contoso.com.  También se aceptan certificados comodín.
 
-* **¿Por qué se me pide las credenciales de nuevo en la página del servidor WAP Hola?**
+* **¿Por qué me piden de nuevo las credenciales en la página del servidor de WAP?**
 
-    Si las credenciales de Hola que proporcione para conectarse a servidores de FS tooAD también no tienen los servidores WAP Hola privilegio toomanage hello, Azure AD Connect pide las credenciales que tienen privilegios administrativos en los servidores WAP Hola.
+    Si las credenciales proporcionadas para conectarse a servidores de AD FS no tienen el privilegio para administrar también los servidores de WAP, Azure AD Connect pide las credenciales que tienen privilegios administrativos en los servidores de WAP.
 
-* **servidor de Hola se muestra como sin conexión. ¿qué debo hacer?**
+* **El servidor se muestra como sin conexión. ¿qué debo hacer?**
 
-    Azure AD Connect no puede realizar cualquier operación si Hola servidor está sin conexión. Si Hola servidor forma parte de hello granja de AD FS, a continuación, compruebe el servidor de toohello de conectividad de Hola. Después de resolver el problema de hello, presione Hola actualizar icono tooupdate Hola estado Asistente Hola. Si el servidor de hello formaba parte de hello granja anteriormente pero ahora ya no existe, haga clic en **quitar** toodelete de lista de Hola de servidores que se conectan de Azure AD mantiene. Quitar servidor hello en lista de hello en Azure AD Connect no altera Hola configuración de AD FS propio. Si usa AD FS en Windows Server 2016 o posterior, sigue siendo de servidor hello en los valores de configuración de Hola y se mostrará nuevo hello vuela hello tarea se ejecuta.
+    Azure AD Connect no puede realizar ninguna operación si el servidor está sin conexión. Si el servidor forma parte de la granja de AD FS, compruebe la conectividad con el servidor. Después de resolver el problema, pulse el icono de actualización para actualizar el estado en el asistente. Si el servidor formó parte de la granja anteriormente pero ahora ya no existe, haga clic en **Quitar** para eliminarlo de la lista de servidores que mantiene Azure AD Connect. El hecho de quitar el servidor de la lista en Azure AD Connect no modifica la propia configuración de AD FS. Si usa AD FS en Windows Server 2016 o posterior, el servidor permanece en las opciones de configuración y se mostrará la próxima vez que se ejecute la tarea.
 
-* **¿Se puede actualizar un subconjunto de Mis servidores de granja de servidores con un certificado SSL nuevo Hola?**
+* **¿Puedo actualizar un subconjunto de los servidores de la granja con el nuevo certificado SSL?**
 
-    Sí. Siempre puede ejecutar la tarea hello **certificado SSL de actualización** nuevo Hola de tooupdate servidores restantes. En hello **actualización de certificados de servidores seleccionados para SSL** página, puede ordenar la lista Hola de servidores en **fecha de expiración de SSL** tooeasily acceder a servidores de Hola que aún no se actualizó.
+    Sí. Siempre puede ejecutar la tarea **Actualizar certificado SSL** de nuevo para actualizar el resto de servidores. En la página **Seleccionar servidores para la actualización del certificado SSL**, puede ordenar la lista de servidores por **Fecha de expiración de SSL** para tener acceso fácilmente a los servidores que todavía no se han actualizado.
 
-* **Quita servidor de Hola Hola anterior que se ejecuta, pero se sigue que se muestra como sin conexión y se muestra en la página de hello AD FS servidores. ¿Por qué es servidor de sin conexión de hello estando disponibles incluso después de que quitó?**
+* **Quité el servidor en la ejecución anterior, pero todavía se muestra como sin conexión y aparece en la página de servidores de AD FS. ¿Por qué sigue estando sin conexión el servidor incluso después de la eliminación?**
 
-    Quitar servidor hello en lista de hello en Azure AD Connect no quitarlo en hello configuración de AD FS. AD FS (Windows Server 2016 o posterior) para toda la información acerca de la granja de servidores de hello hace referencia a Azure AD Connect. Si servidor hello sigue estando presente en hello configuración de AD FS, se enumerarán en la lista de Hola.  
+    Quitar el servidor de la lista en Azure AD Connect no lo quita de la configuración de AD FS. Azure AD Connect hace referencia a AD FS (Windows Server 2016 o posterior) para cualquier información sobre la granja. Si el servidor sigue estando presente en la configuración de AD FS, aparecerá de nuevo en la lista.  
 
 ## <a name="next-steps"></a>Pasos siguientes
 

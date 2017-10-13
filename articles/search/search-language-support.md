@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure multilingüe de búsqueda | Documentos de Microsoft"
+title: Varios lenguajes para Azure Search | Microsoft Docs
 description: "Búsqueda de Azure admite 56 idiomas y aprovecha los analizadores de idiomas Lucene y la tecnología de procesamiento de lenguaje natural de Microsoft."
 services: search
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 01/23/2017
 ms.author: jlembicz
-ms.openlocfilehash: 9a2e567a82ee563521c12ea320f6c484a8e73f04
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: dbbab31bac66ce73dbf9883992713a2c16581e19
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>Creación de un índice para documentos en varios idiomas en Búsqueda de Azure
 > [!div class="op_single_selector"]
@@ -29,50 +29,50 @@ ms.lasthandoff: 10/06/2017
 >
 >
 
-Unleashing power Hola de analizadores de lenguaje es tan fácil como una propiedad de configuración en un campo de búsqueda en la definición del índice Hola. Ahora puede realizar este paso en el portal de Hola.
+Desatar la potencia de los analizadores de lenguajes es tan fácil como establecer una propiedad en un campo de búsqueda en la definición del índice. Ahora puede realizar este paso en el portal.
 
-A continuación se muestran capturas de pantalla de hello hojas de Portal de Azure para la búsqueda de Azure que permiten a los usuarios toodefine un esquema de índice. Desde esta hoja, los usuarios pueden crear todos los campos de Hola y establecer la propiedad de analizador de Hola para cada uno de ellos.
+A continuación, se muestran capturas de pantalla de las hojas del Portal de Azure para Búsqueda de Azure que permiten a los usuarios definir un esquema de índice. En esta hoja, los usuarios pueden crear todos los campos y establecer la propiedad de analizador para cada uno de ellos.
 
 > [!IMPORTANT]
-> Solo puede establecer un analizador de lenguaje durante la definición del campo, como en cuando cree un nuevo índice de hello descárguese de corriente, o cuando se agrega un nuevo índice existente de tooan de campo. Asegúrese de que especificar completamente todos los atributos, como analizador de hello, al crear el campo de Hola. No ser capaz de tooedit atributos de Hola o cambiar el tipo de analizador de hello una vez que guarde los cambios.
+> Solo puede establecer un analizador de lenguaje durante la definición de campo, como en al crear un nuevo índice desde el principio de o al agregar un nuevo campo a un índice existente. Asegúrese de especificar completamente todos los atributos, incluido el analizador, al crear el campo. No podrá editar los atributos ni cambiar el tipo de analizador una vez guardado los cambios.
 >
 >
 
 ## <a name="define-a-new-field-definition"></a>Definición de una nueva definición de campo
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com) y hoja de servicio de hello abierto de su servicio de búsqueda.
-2. Haga clic en **agregar índice** de comando de hello barra princip Hola de hello servicio panel toostart un nuevo índice, o abrir un tooset índice existente en nuevos campos que se va a agregar un analizador de índice existente tooan.
-3. aparece la hoja de campos de Hello, lo que le ofrece opciones para definir el esquema de Hola de índice de hello, incluido tab del analizador de Hola utiliza para elegir un analizador de lenguaje.
-4. En los campos, inicie una definición de campo proporcionar un nombre, Elegir tipo de datos de Hola y establecer campo de atributos toomark Hola como texto completo permite realizar búsquedas, puede recuperar en resultados de búsqueda, puede usar en las estructuras de navegación de faceta, que se puede ordenar y así sucesivamente.
-5. Antes de continuar toohello siguiente campo, abra hello **analizador** ficha.
+1. Inicie sesión en [Azure Portal](https://portal.azure.com) y abra la hoja de servicio del servicio de búsqueda.
+2. Haga clic en **Agregar un índice** en la barra de comandos de la parte superior del panel de servicio para iniciar un nuevo índice, o abra un índice existente para establecer un analizador de nuevos campos que se va a agregar a un índice existente.
+3. Aparece la hoja Campos, que proporciona opciones para definir el esquema del índice, incluida la pestaña Analizador usada para elegir un analizador de lenguaje.
+4. En Campos, inicie una definición de campo y proporcione un nombre, seleccione el tipo de datos y establezca los atributos para marcar el campo como texto completo que se puede buscar, recuperar resultados de búsqueda, que se pueden usar en estructuras de navegación de facetas, se pueden ordenar, etc.
+5. Antes de pasar al siguiente campo, abra la pestaña **Analizador** .
 
 ![][1]
-*tooselect un analizador, haga clic en la ficha de analizador de hello en la hoja de campos de Hola*
+*Para seleccionar un analizador, haga clic en la pestaña Analizador en la hoja Campos*.
 
 ## <a name="choose-an-analyzer"></a>Selección de un analizador
-1. Campo de desplazamiento toofind Hola que se está definiendo.
-2. Si no ha marcado el campo hello como búsqueda, haga clic en hello casilla ahora toomark como **Searchable**.
-3. Haga clic en lista Hola analizador área toodisplay Hola de analizadores disponibles.
-4. Elija el analizador de hello desea toouse.
+1. Desplácese hasta encontrar el campo que va a definir.
+2. Si no ha marcado el campo como de búsqueda, haga clic en la casilla para marcarla como **Permite búsqueda**.
+3. Haga clic en el área Analizador para mostrar la lista de analizadores disponibles.
+4. Elija el analizador que desea usar.
 
 ![][2]
-*Seleccione uno de los analizadores de hello admitido para cada campo*
+*Seleccione uno de los analizadores compatibles para cada campo*.
 
-De forma predeterminada, todos los campos que permiten búsqueda usan hello [analizador estándar Lucene](http://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) que es independiente del idioma. admite la lista completa de hello tooview de analizadores, consulte [compatibilidad con idiomas en búsqueda de Azure](https://msdn.microsoft.com/library/azure/dn879793.aspx).
+De forma predeterminada, todos los campos en los que se puede buscar usan el [analizador Standard Lucene](http://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) , que no depende del idioma. Para ver la lista completa de los analizadores compatibles, consulte [Compatibilidad de idioma (API de REST de servicio de Búsqueda de Azure)](https://msdn.microsoft.com/library/azure/dn879793.aspx).
 
-Una vez seleccionado el analizador de lenguaje de Hola para un campo, se utilizará con cada solicitud de búsqueda e indización para ese campo. Cuando se emite una consulta en varios campos mediante analizadores de diferentes, se procesarán independientemente consulta Hola analizadores de derecho de Hola para cada campo.
+Una vez que el analizador de idioma está activado para un campo, se usará con cada solicitud de búsqueda e indexación para ese campo. Cuando se emite una consulta en varios campos con diferentes analizadores, la consulta se procesará de manera independiente por los analizadores correctos para cada campo.
 
-Muchas aplicaciones web y móviles atienden a usuarios mundo Hola con distintos idiomas. Es posible toodefine un índice para un escenario similar a éste mediante la creación de un campo para cada idioma admitido.
+Muchas aplicaciones web y móviles dan servicio a usuarios de todo el mundo que usan diferentes idiomas. Es posible definir un índice para un escenario similar al siguiente al crear un campo para cada idioma admitido.
 
 ![][3]
 *Definición de índice con un campo de descripción para cada idioma admitido*
 
-Si se conoce el idioma de Hola del agente de hello emitir una consulta, una solicitud de búsqueda puede ser tooa ámbito campo específico mediante hello **searchFields** parámetro de consulta. Hello siguiente consulta se emitirá solo para descripción de hello en polaco:
+Si se conoce el idioma del agente que emite una consulta, una solicitud de búsqueda se puede aplicar a un campo específico con el parámetro de consulta **searchFields** . La siguiente consulta solo se emitirá en relación a la descripción en polaco:
 
 `https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=description_pl&api-version=2016-09-01`
 
-Puede consultar el índice desde el portal de hello, con **buscar en el explorador** toopaste en un toohello similar de consulta se muestra anteriormente. Buscar en el explorador está disponible en la barra de comandos de hello en el módulo de servicio de Hola. Vea [consultar el índice de búsqueda de Azure en el portal de hello](search-explorer.md) para obtener más información.
+Puede consultar el índice desde el portal con el **Explorador de búsqueda** para pegar una consulta similar a la mostrado anteriormente. El Explorador de búsqueda está disponible en la barra de comandos de la hoja del servicio. Para obtener más información, consulte [Consultas en Búsqueda de Azure.](search-explorer.md)
 
-A veces hello idioma del agente de hello emitir una consulta no se conoce en qué caso Hola consulta se puede emitir en todos los campos al mismo tiempo. Si es necesario, se pueden definir una preferencia de resultados en un determinado idioma mediante [perfiles de puntuación](https://msdn.microsoft.com/library/azure/dn798928.aspx). En el ejemplo de Hola siguiente, las coincidencias encontradas en la descripción de saludo en inglés será mayor toomatches relativa en polaco y francés:
+A veces se desconoce el idioma del agente que emite una consulta, en cuyo caso la consulta puede emitir en todos los campos al mismo tiempo. Si es necesario, se pueden definir una preferencia de resultados en un determinado idioma mediante [perfiles de puntuación](https://msdn.microsoft.com/library/azure/dn798928.aspx). En el ejemplo siguiente, las coincidencias encontradas en la descripción en inglés tendrán una puntuación mayor que las coincidencias en polaco y francés:
 
     "scoringProfiles": [
       {
@@ -85,7 +85,7 @@ A veces hello idioma del agente de hello emitir una consulta no se conoce en qu�
 
 `https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2016-09-01`
 
-Si es un desarrollador de .NET, tenga en cuenta que puede configurar los analizadores de lenguaje con hello [SDK de .NET de búsqueda de Azure](http://www.nuget.org/packages/Microsoft.Azure.Search). versión más reciente de Hello incluye compatibilidad para analizadores de lenguaje de Microsoft de hello así.
+Si es desarrollador de. NET, tenga en cuenta que puede configurar los analizadores de idioma mediante el [SDK de Azure Search para .NET](http://www.nuget.org/packages/Microsoft.Azure.Search). La última versión incluye compatibilidad con los analizadores de idioma de Microsoft.
 
 <!-- Image References -->
 [1]: ./media/search-language-support/AnalyzerTab.png

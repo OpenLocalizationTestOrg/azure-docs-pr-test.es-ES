@@ -1,5 +1,5 @@
 ---
-title: "Conector de base de datos de SQL Azure de hello aaaAdd en las aplicaciones lógicas | Documentos de Microsoft"
+title: "Adición del conector de Azure SQL Database en Logic Apps | Microsoft Docs"
 description: "Información general sobre el conector de Base de datos SQL de Azure con los parámetros de la API de REST"
 services: 
 documentationcenter: 
@@ -15,61 +15,61 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: a9ca0f446d05dc00f310a908eee8d50e41fcd82b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a3d5cb909dbfcb00f3fbfa0165bb6cd58eb18688
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="get-started-with-hello-azure-sql-database-connector"></a>Empezar a trabajar con el conector de base de datos de SQL Azure Hola
-Mediante el conector de base de datos de SQL Azure de hello, crear flujos de trabajo para su organización que administran datos de las tablas. 
+# <a name="get-started-with-the-azure-sql-database-connector"></a>Introducción al conector de Base de datos SQL de Azure
+Mediante el conector de Base de datos SQL Azure, cree flujos de trabajo para su organización que administren datos de las tablas. 
 
 Con Base de datos SQL:
 
-* Compilar el flujo de trabajo mediante la adición de una base de datos de los clientes de tooa cliente nuevo o actualizar un pedido en una base de datos de pedidos.
-* Usar acciones tooget una fila de datos, insertar una fila nueva e incluso eliminar. Por ejemplo, al crear un registro en Dynamics CRM Online (desencadenador), inserte una fila en una base de datos SQL de Azure (acción). 
+* Agregue un nuevo cliente a una base de datos de clientes o actualice un pedido en una base de datos de pedidos para crear el flujo de trabajo.
+* Use acciones para obtener una fila de datos, insertar una fila nueva e incluso eliminarla. Por ejemplo, al crear un registro en Dynamics CRM Online (desencadenador), inserte una fila en una base de datos SQL de Azure (acción). 
 
-Este tema muestra cómo toouse Hola conector de base de datos SQL en una aplicación de lógica, y también listas Hola acciones.
+En este tema se muestra cómo usar el conector de SQL Database en una aplicación lógica, y se enumeran las acciones.
 
-toolearn más información acerca de las aplicaciones lógicas, consulte [¿cuáles son las aplicaciones lógicas](../logic-apps/logic-apps-what-are-logic-apps.md) y [crear una aplicación de lógica](../logic-apps/logic-apps-create-a-logic-app.md).
+Para más información sobre Logic Apps, consulte [¿Qué son las aplicaciones lógicas?](../logic-apps/logic-apps-what-are-logic-apps.md) y [Creación de una aplicación lógica](../logic-apps/logic-apps-create-a-logic-app.md).
 
-## <a name="connect-tooazure-sql-database"></a>Conectar tooAzure base de datos SQL
-Antes de que la aplicación lógica puede tener acceso a cualquier servicio, primero cree un *conexión* toohello servicio. Una conexión proporciona conectividad entre una aplicación lógica y otro servicio. Por ejemplo, tooconnect tooSQL base de datos, en primer lugar crear una base de datos de SQL *conexión*. toocreate una conexión, escriba las credenciales de Hola que suele usar el servicio de hello tooaccess a que se conecta. Por lo tanto, en la base de datos de SQL, escriba la conexión de base de datos SQL credenciales toocreate Hola. 
+## <a name="connect-to-azure-sql-database"></a>Conexión a una Base de datos SQL de Azure
+Antes de que la aplicación lógica pueda acceder a cualquier servicio, cree primero una *conexión* a este. Una conexión proporciona conectividad entre una aplicación lógica y otro servicio. Por ejemplo, para conectarse a SQL Database, primero cree una *conexión* de SQL Database. Para crear una conexión, escriba las credenciales que utiliza normalmente para acceder al servicio al que se está conectando. Por lo tanto, en la base de datos de SQL, escriba sus credenciales de la base de datos SQL para crear la conexión. 
 
-#### <a name="create-hello-connection"></a>Crear conexiones de Hola
-> [!INCLUDE [Create hello connection tooSQL Azure](../../includes/connectors-create-api-sqlazure.md)]
+#### <a name="create-the-connection"></a>Creación de la conexión
+> [!INCLUDE [Create the connection to SQL Azure](../../includes/connectors-create-api-sqlazure.md)]
 > 
 > 
 
 ## <a name="use-a-trigger"></a>Uso de un desencadenador
-Este conector no tiene ningún desencadenador. Utilice otra aplicación de lógica de desencadenadores toostart hello, como un desencadenador de periodicidad, un desencadenador de HTTP Webhook, desencadenadores disponibles con otros conectores y mucho más. En [Creación de una nueva aplicación lógica](../logic-apps/logic-apps-create-a-logic-app.md) se puede ver un ejemplo.
+Este conector no tiene ningún desencadenador. Utilice otros desencadenadores para iniciar la aplicación lógica; por ejemplo, un desencadenador de periodicidad, un desencadenador HTTP webhook, los desencadenadores disponibles con otros conectores, etc. En [Creación de una nueva aplicación lógica](../logic-apps/logic-apps-create-a-logic-app.md) se puede ver un ejemplo.
 
 ## <a name="use-an-action"></a>Uso de una acción
-Una acción es una operación que se llevan a cabo definidos en una aplicación de la lógica de flujo de trabajo de Hola. [Más información acerca de las acciones](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
+Una acción es una operación que se lleva a cabo mediante el flujo de trabajo definido en una aplicación lógica. [Más información acerca de las acciones](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
 
-1. Seleccione el signo más Hola. Vea elegir entre varias opciones: **agregar una acción**, **agregar una condición**, o uno de hello **más** opciones.
+1. Seleccione el signo más. Aparecen varias opciones: **Agregar una acción**, **Agregar una condición** o una de las opciones de **Más**.
    
     ![](./media/connectors-create-api-sqlazure/add-action.png)
 2. Elija **Add an action**(Agregar una acción).
-3. En el cuadro de texto hello, escriba "sql" tooget una lista de todas las acciones disponibles Hola.
+3. En el cuadro de texto, escriba "sql" para obtener una lista de todas las acciones disponibles.
    
     ![](./media/connectors-create-api-sqlazure/sql-1.png) 
-4. En nuestro ejemplo, elija **SQL Server - Obtener fila**. Si ya existe una conexión, a continuación, seleccione hello **nombre de la tabla** en Hola de lista desplegable lista y escriba hello **identificador de fila** desea tooreturn.
+4. En nuestro ejemplo, elija **SQL Server - Obtener fila**. Si ya existe una conexión, seleccione el **Nombre de la tabla** en la lista desplegable y escriba el **Identificador de fila** que desee devolver.
    
     ![](./media/connectors-create-api-sqlazure/sample-table.png)
    
-    Si se le solicitará información de conexión de hello, a continuación, escriba la conexión de hello detalles toocreate Hola. [Crear conexiones de hello](connectors-create-api-sqlazure.md#create-the-connection) en este tema se describen estas propiedades. 
+    Si se le solicita la información de conexión, escriba los detalles para crear la conexión. Estas propiedades se describen en la sección [Creación de la conexión](connectors-create-api-sqlazure.md#create-the-connection) de este tema. 
    
    > [!NOTE]
-   > En este ejemplo, devolvemos una fila de una tabla. datos de hello toosee en esta fila, agregue otra acción que crea un archivo mediante los campos de Hola de tabla de Hola. Por ejemplo, agregar una acción de OneDrive que usa hello, FirstName y LastName campos toocreate un archivo nuevo en la cuenta de almacenamiento de hello en la nube. 
+   > En este ejemplo, devolvemos una fila de una tabla. Para ver los datos de esta fila, agregue otra acción que cree un archivo con los campos de la tabla. Por ejemplo, agregue una acción de OneDrive que use los campos FirstName y LastName para crear un nuevo archivo en la cuenta de almacenamiento de la nube. 
    > 
    > 
-5. **Guardar** los cambios (esquina superior izquierda de la barra de herramientas de hello). La aplicación lógica se guarda y se puede habilitar automáticamente.
+5. **Guarde** los cambios (esquina superior izquierda de la barra de herramientas). La aplicación lógica se guarda y se puede habilitar automáticamente.
 
 ## <a name="connector-specific-details"></a>Detalles específicos del conector
 
-Ver los desencadenadores y las acciones definidas en swagger hello y también los límites de hello [detalles del conector](/connectors/sql/). 
+Vea los desencadenadores y las acciones definidos en Swagger y vea también todos los límites en los [detalles del conector](/connectors/sql/). 
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Creación de una aplicación lógica](../logic-apps/logic-apps-create-a-logic-app.md). Explorar Hola otros conectores disponibles en las aplicaciones lógicas en nuestro [lista de las API](apis-list.md).
+[Creación de una aplicación lógica](../logic-apps/logic-apps-create-a-logic-app.md). Explore los demás conectores disponibles en Logic Apps en nuestra [lista de API](apis-list.md).
 

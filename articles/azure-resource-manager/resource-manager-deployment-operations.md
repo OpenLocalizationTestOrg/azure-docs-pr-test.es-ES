@@ -1,6 +1,6 @@
 ---
-title: operaciones de aaaDeployment con el Administrador de recursos de Azure | Documentos de Microsoft
-description: "Describe cómo las operaciones de implementación de Azure Resource Manager tooview con Hola portal, PowerShell, CLI de Azure y API de REST."
+title: "Operaciones de implementación con Azure Resource Manager | Microsoft Docs"
+description: "Se describe cómo ver las operaciones de implementación de Azure Resource Manager con el portal, PowerShell, CLI de Azure y API de REST."
 services: azure-resource-manager,virtual-machines
 documentationcenter: 
 tags: top-support-issue
@@ -15,65 +15,65 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
 ms.date: 01/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: ba4823ca73caca83dfc07c99d736344ef8b7b54d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: fb6b3b357fd1f66184e480115a9c863ba31ac193
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>Visualización de operaciones de implementación con Azure Resource Manager
 
 
-Puede ver las operaciones de Hola para una implementación a través de hello portal de Azure. Es posible que más interesado en Ver operaciones de hello cuando haya recibido un error durante la implementación para que este artículo se centra en la visualización de las operaciones que se han producido un error. portal de Hello proporciona una interfaz que permite errores de tooeasily buscar hello y determinar posibles correcciones.
+Puede ver las operaciones de una implementación mediante el Portal de Azure. Es posible que le resulte más interesante ver las operaciones si ha recibido un error durante la implementación; por ello, este artículo se centrará en la visualización de las operaciones en las que se han producido errores. El portal proporciona una interfaz que permite buscar los errores y determinar posibles correcciones con facilidad.
 
 [!INCLUDE [resource-manager-troubleshoot-introduction](../../includes/resource-manager-troubleshoot-introduction.md)]
 
 ## <a name="portal"></a>Portal
-operaciones de implementación de hello toosee, usar hello pasos:
+Para ver las operaciones de implementación, siga estos pasos:
 
-1. Para el grupo de recursos de hello implicado en la implementación de hello, observe el estado de Hola de última implementación de Hola. Puede seleccionar este estado tooget más detalles.
+1. En el grupo de recursos implicado en la implementación, examine el estado de la última implementación. Puede seleccionar este estado para obtener más detalles.
    
     ![Estado de la implementación](./media/resource-manager-deployment-operations/deployment-status.png)
-2. Ver historial de implementación reciente Hola. Seleccione la implementación de Hola que dieron error.
+2. Ve el historial de implementación reciente. Seleccione la implementación en la que se produjo un error.
    
     ![Estado de la implementación](./media/resource-manager-deployment-operations/select-deployment.png)
-3. Seleccione toosee de vínculo de Hola Hola de una descripción de por qué no se pudo implementar. En la imagen de hello siguiente, registro DNS de hello no es único.  
+3. Seleccione el vínculo para ver una descripción del motivo del error de la implementación. En la imagen siguiente, el registro de DNS no es único.  
    
     ![ver la implementación con errores](./media/resource-manager-deployment-operations/view-error.png)
    
-    Este mensaje de error debe ser suficiente para la solución de problemas de toobegin. Sin embargo, si necesita más detalles sobre los que se hayan completado las tareas, puede ver las operaciones de hello tal y como se muestra en hello siguiendo los pasos.
-4. Puede ver todas las operaciones de implementación de Hola Hola **implementación** hoja. Seleccione cualquier operación toosee más detalles.
+    Este mensaje de error debería ser suficiente para que comience la solución de problemas. Sin embargo, si necesita más detalles acerca de las tareas que se han completado, puede ver las operaciones como se muestra en los pasos siguientes.
+4. Puede ver todas las operaciones de implementación en la hoja **Implementación** . Seleccione la operación que desea ver con mayor detalle.
    
     ![ver operaciones](./media/resource-manager-deployment-operations/view-operations.png)
    
-    En este caso, verá que la cuenta de almacenamiento de hello, red virtual y conjunto de disponibilidad se crearon correctamente. Error de dirección IP pública de Hello y no se han intentado otros recursos.
-5. Puede ver los eventos para la implementación de hello seleccionando **eventos**.
+    En este caso, puede ver que la cuenta de almacenamiento, la red virtual y el conjunto de disponibilidad se crearon correctamente. Se produjo un error en la dirección IP pública y no se han intentado otros recursos.
+5. Puede ver los eventos de la implementación seleccionando **Eventos**.
    
     ![ver eventos](./media/resource-manager-deployment-operations/view-events.png)
-6. Ver todos los eventos de hello para la implementación de Hola y seleccionar uno para obtener más detalles. Tenga en cuenta demasiado Hola identificador de correlación. Este valor puede ser útil cuando se trabaja con el soporte técnico tootroubleshoot una implementación.
+6. Puede ver todos los eventos de la implementación y seleccionar cualquiera de ellos para más información. Observe también los identificadores de correlación. Este valor puede resultar útil al trabajar con el soporte técnico para solucionar un problema de implementación.
    
     ![consultar eventos](./media/resource-manager-deployment-operations/see-all-events.png)
 
 ## <a name="powershell"></a>PowerShell
-1. tooget Hola estado general de una implementación, use hello **Get AzureRmResourceGroupDeployment** comando. 
+1. Para obtener el estado general de una implementación, use el comando **Get-AzureRmResourceGroupDeployment** . 
 
   ```powershell
   Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup
   ```
 
-   O bien, puede filtrar los resultados de Hola para solo las implementaciones que se han producido un error.
+   O bien, puede filtrar los resultados para obtener únicamente las implementaciones en las que se han producido errores.
 
   ```powershell
   Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
   ```
    
-2. Cada implementación incluye varias operaciones. Cada operación representa un paso en el proceso de implementación de Hola. toodiscover lo que ha producido un error con una implementación, suele ser preciso toosee detalles acerca de las operaciones de implementación de Hola. Puede ver el estado de Hola de operaciones de hello con **AzureRmResourceGroupDeploymentOperation Get**.
+2. Cada implementación incluye varias operaciones. Cada operación representa un paso del proceso de implementación. Para detectar qué salió mal con una implementación, normalmente es necesario ver los detalles de las operaciones de implementación. Puede ver el estado de las operaciones con **Get-AzureRmResourceGroupDeploymentOperation**.
 
   ```powershell 
   Get-AzureRmResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName vmDeployment
   ```
 
-    Que devuelve varias operaciones con cada uno de ellos en hello siguiendo el formato:
+    Que devuelve varias operaciones con cada una de ellas en el formato siguiente:
 
   ```powershell
   Id             : /subscriptions/{guid}/resourceGroups/ExampleGroup/providers/Microsoft.Resources/deployments/Microsoft.Template/operations/A3EB2DA598E0A780
@@ -85,13 +85,13 @@ operaciones de implementación de hello toosee, usar hello pasos:
                    serviceRequestId:0196828d-8559-4bf6-b6b8-8b9057cb0e23...}
   ```
 
-3. tooget más detalles sobre las operaciones con errores, recuperar las propiedades de Hola para operaciones con **error** estado.
+3. Para más información acerca de las operaciones con errores, recupere las propiedades de aquellas operaciones con el estado **Error** .
 
   ```powershell
   (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
   ```
    
-    Que devuelve que todos Hola operaciones con errores con cada una de ellas en hello siguiendo el formato:
+    Que devuelve todas las operaciones con error con cada una de ellas en el formato siguiente:
 
   ```powershell
   provisioningOperation : Create
@@ -107,8 +107,8 @@ operaciones de implementación de hello toosee, usar hello pasos:
                           resourceType=Microsoft.Network/publicIPAddresses; resourceName=myPublicIP}
   ```
 
-    Tenga en cuenta serviceRequestId Hola y Hola ID para la operación de Hola. Hola serviceRequestId puede resultar útil cuando se trabaja con el soporte técnico tootroubleshoot una implementación. Usará ID de hello en hello siguiente paso toofocus en una operación determinada.
-4. mensaje de estado de hello tooget de una determinada operación con errores, Hola de uso siguiente comando:
+    Tenga en cuenta los valores serviceRequestId y trackingId de la operación. serviceRequestId puede resultar útil cuando se trabaja con el soporte técnico para solucionar un problema de implementación. Utilizará trackingId en el paso siguiente para centrarse en una operación determinada.
+4. Para obtener el mensaje de estado de una operación con error determinada, use el siguiente comando:
 
   ```powershell
   ((Get-AzureRmResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object trackingId -eq f4ed72f8-4203-43dc-958a-15d041e8c233).StatusMessage.error
@@ -121,9 +121,9 @@ operaciones de implementación de hello toosee, usar hello pasos:
   ----           -------                                                                        -------
   DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP. {}
   ```
-4. Cada operación de implementación en Azure incluye el contenido de la solicitud y de la respuesta. contenido de la solicitud de Hello es lo que se envían tooAzure durante la implementación (por ejemplo, crear una máquina virtual, disco del sistema operativo y otros recursos). contenido de la respuesta de Hello es lo que Azure envía desde la solicitud de implementación. Durante la implementación, puede usar **DeploymentDebugLogLevel** toospecify de parámetro que Hola solicitud o respuesta se conservan en el registro de hello. 
+4. Cada operación de implementación en Azure incluye el contenido de la solicitud y de la respuesta. El contenido de la solicitud es lo que se envía a Azure durante la implementación (por ejemplo, crear una máquina virtual, un disco del sistema operativo y otros recursos). El contenido de la respuesta es lo que Azure devolvió de la solicitud de implementación. Durante la implementación, se puede usar el parámetro **DeploymentDebugLogLevel** para especificar que la solicitud o la respuesta se conserven en el registro. 
 
-  Obtener esa información de registro de hello y guardar localmente mediante Hola siga los comandos de PowerShell:
+  Esa información se obtiene del registro y se guarda localmente mediante los siguientes comandos de PowerShell:
 
   ```powershell
   (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.request | ConvertTo-Json |  Out-File -FilePath <PathToFile>
@@ -131,15 +131,15 @@ operaciones de implementación de hello toosee, usar hello pasos:
   (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.response | ConvertTo-Json |  Out-File -FilePath <PathToFile>
   ```
 
-## <a name="azure-cli"></a>CLI de Azure
+## <a name="azure-cli"></a>Azure CLI
 
-1. Obtener Hola estado general de una implementación con hello **mostrar de la implementación de grupo de azure** comando.
+1. Obtenga el estado general de una implementación con el comando **azure group deployment show** .
 
   ```azurecli
   azure group deployment show --resource-group ExampleGroup --name ExampleDeployment --json
   ```
   
-  Uno de los valores devuelto de hello es hello **correlationId**. Este valor se utiliza tootrack relacionados con eventos, y puede ser útil al trabajar con tootroubleshoot de soporte técnico de una implementación.
+  Uno de los valores devueltos es **correlationId**. Este valor se usa para realizar un seguimiento de eventos relacionados, y puede ser útil al colaborar con el soporte técnico para solucionar un problema de implementación.
 
   ```azurecli
   "properties": {
@@ -147,7 +147,7 @@ operaciones de implementación de hello toosee, usar hello pasos:
     "correlationId": "4002062a-a506-4b5e-aaba-4147036b771a",
   ```
 
-2. operaciones de hello toosee para una implementación, use:
+2. Para ver las operaciones para una implementación, use:
 
   ```azurecli
   azure group deployment operation list --resource-group ExampleGroup --name ExampleDeployment --json
@@ -155,13 +155,13 @@ operaciones de implementación de hello toosee, usar hello pasos:
 
 ## <a name="rest"></a>REST
 
-1. Obtener información acerca de una implementación con hello [obtener información acerca de una implementación de plantilla](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_Get) operación.
+1. Obtenga información sobre la implementación con la operación [Obtener información sobre una implementación de plantilla](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_Get) .
 
   ```http
   GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}?api-version={api-version}
   ```
 
-    En la respuesta de hello, tenga en cuenta en particular hello **provisioningState**, **correlationId**, y **error** elementos. Hola **correlationId** se utiliza tootrack relacionados con eventos, y puede ser útil al trabajar con tootroubleshoot de soporte técnico de una implementación.
+    En la respuesta, observe en particular los elementos **provisioningState**, **correlationId** y **error**. **correlationId** se usa para realizar un seguimiento de eventos relacionados y puede ser útil al colaborar con el soporte técnico para solucionar un problema de implementación.
 
   ```json
   { 
@@ -178,13 +178,13 @@ operaciones de implementación de hello toosee, usar hello pasos:
   }
   ```
 
-2. Obtener información sobre las operaciones de implementación con hello [enumerar todas las operaciones de implementación de plantilla](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_List) operación. 
+2. Obtenga información sobre las operaciones de implementación con la operación [Enumerar todas las operaciones de implementación de plantilla](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_List) . 
 
   ```http
   GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}/operations?$skiptoken={skiptoken}&api-version={api-version}
   ```
    
-    respuesta de Hello incluye información de solicitud o respuesta según lo especificado en hello **debugSetting** propiedad durante la implementación.
+    La respuesta incluye información de la solicitud o la respuesta según lo especificado en la propiedad **debugSetting** durante la implementación.
 
   ```json
   {
@@ -213,7 +213,7 @@ operaciones de implementación de hello toosee, usar hello pasos:
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para obtener ayuda con la resolución de errores de implementación específicos, consulte [resolver errores comunes al implementar tooAzure de recursos con el Administrador de recursos de Azure](resource-manager-common-deployment-errors.md).
-* toolearn sobre el uso de actividad hello registra toomonitor otros tipos de acciones, vea [toomanage Azure de registros de actividad de la vista recursos](resource-group-audit.md).
-* toovalidate la implementación antes de ejecutarlo, consulte [implementar un grupo de recursos con la plantilla de Azure Resource Manager](resource-group-template-deploy.md).
+* Para obtener ayuda con la resolución de errores de implementación concretos, consulte [Solución de problemas comunes al implementar recursos en Azure con Azure Resource Manager](resource-manager-common-deployment-errors.md).
+* Para obtener información sobre cómo usar los registros de actividad para supervisar otros tipos de acciones, vea [View activity logs to manage Azure resources](resource-group-audit.md) (Ver registros de actividad para administrar recursos de Azure).
+* Para validar la implementación antes de ejecutarla, consulte [Implementación de recursos con las plantillas de Resource Manager y Azure PowerShell](resource-group-template-deploy.md).
 

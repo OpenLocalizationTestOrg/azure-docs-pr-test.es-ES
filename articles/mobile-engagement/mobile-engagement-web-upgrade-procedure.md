@@ -1,6 +1,6 @@
 ---
-title: "los procedimientos de actualización de SDK de Mobile Engagement Web aaaAzure | Documentos de Microsoft"
-description: "Hola actualizaciones más recientes y procedimientos para hello Web SDK de Azure Mobile Engagement"
+title: "Procedimientos de actualización del SDK web de Azure Mobile Engagement | Microsoft Docs"
+description: "Actualizaciones y procedimientos más recientes para el SDK web para Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,40 +14,40 @@ ms.devlang: js
 ms.topic: article
 ms.date: 06/07/2016
 ms.author: piyushjo
-ms.openlocfilehash: a2df65904c6b56584ce6588ed26a9b79f3aa27ea
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: afa8037dcb7a53042fa606e2c4014b442d4be326
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-mobile-engagement-web-sdk-upgrade-procedures"></a>Procedimientos de actualización del SDK web de Azure Mobile Engagement
-Si ya ha integrado una versión anterior de hello Web SDK de Azure Mobile Engagement en la aplicación web, deberá hello tooconsider siguientes puntos cuando actualice Hola SDK.
+Si ya ha integrado una versión anterior del SDK web de Azure Mobile Engagement en su aplicación web, debe considerar los siguientes puntos al actualizar el SDK.
 
-Si omite varias versiones del SDK de Mobile Engagement Web hello, tendrá que toocomplete varios procedimientos durante el proceso de actualización de Hola. Por ejemplo, si migra desde 1.4.0 too1.6.0, primer seguimiento Hola procedimientos tooupgrade de 1.4.0 too1.5.0. A continuación, siga Hola procedimientos tooupgrade de 1.5.0 too1.6.0.
+Si omite varias versiones del SDK web de Mobile Engagement, quizá deba completar varios procedimientos durante el proceso de actualización. Por ejemplo, si migra de la versión 1.4.0 a la versión 1.6.0, primero siga los procedimientos para actualizar de la versión 1.4.0 a la versión 1.5.0. A continuación, siga los procedimientos para actualizar de la versión 1.5.0 a la versión 1.6.0.
 
-Cualquier versión de actualizar, reemplazar cualquier versión anterior del archivo de hello azure-engagement.js con la versión más reciente de Hola de archivo hello.
+Independientemente de la versión desde la que actualice, sustituya cualquier versión anterior del archivo azure-engagement.js por la versión más reciente del archivo.
 
-## <a name="upgrade-from-121-too200"></a>Actualización desde 1.2.1 too2.0.0
-Esta sección describe cómo toomigrate una integración del SDK de Mobile Engagement Web del servicio de Capptain hello, que ofrece Capptain SAS, aplicación de Azure Mobile Engagement tooan. Si va a migrar desde una versión anterior, por favor, consulte hello toofirst del sitio Web de Capptain migrar too1.2.1 y, a continuación, aplicar Hola procedimientos siguientes.
+## <a name="upgrade-from-121-to-200"></a>Actualizar desde 1.2.1 a 2.0.0
+En esta sección se describe cómo migrar una integración de SDK web de Mobile Engagement desde el servicio de Capptain, ofrecido por Capptain SAS, a una aplicación de Azure Mobile Engagement. Si va a migrar desde una versión anterior, consulte el sitio web de Capptain para migrar a 1.2.1 en primer lugar y luego aplique el siguiente procedimiento.
 
-No es compatible con esta versión de hello Web SDK de Mobile Engagement TV inteligente de Samsung, Opera TV, webOS o característica de cobertura de Hola.
+Esta versión del SDK web de Mobile Engagement no es compatible con Samsung Smart TV, Opera TV, webOS o la característica Reach.
 
 > [!IMPORTANT]
-> Capptain y Azure Mobile Engagement no son Hola mismo servicio. Hola procedimiento resalta solo cómo toomigrate Hola aplicación cliente. Migrar hello Web SDK de Mobile Engagement en la aplicación hello no migrará los datos de un servidor de Mobile Engagement Capptain server tooa.
+> Capptain y Azure Mobile Engagement no son el mismo servicio. El procedimiento siguiente destaca únicamente cómo migrar la aplicación cliente. La migración del SDK web de Mobile Engagement en la aplicación no migrará los datos desde un servidor Capptain a un servidor Mobile Engagement.
 > 
 > 
 
 ### <a name="javascript-files"></a>Archivos de JavaScript
-Reemplace Hola de archivo capptain sdk.js por archivo de hello azure-engagement.js y actualice el script se importa en consecuencia.
+Reemplace el archivo capptain-sdk.js por el archivo azure-engagement.js y luego actualice las importaciones del script en consecuencia.
 
 ### <a name="remove-capptain-reach"></a>Eliminación de la cobertura de Capptain
-Esta versión de hello SDK de Mobile Engagement Web no admite la característica de cobertura de Hola. Si integra Capptain alcance en la aplicación, necesita tooremove lo.
+Esta versión del SDK web de Mobile Engagement no admite la característica Reach. Si integró Capptain Reach en su aplicación, debe quitarlo.
 
-Quitar Hola CSS llegar a importar desde la página y eliminar archivo .css relacionados de hello (capptain-reach.css, de forma predeterminada).
+Quite la importación de CSS de Reach de su página y elimine el archivo .css relacionado (de forma predeterminada, capptain-reach.css).
 
-Eliminar Hola alcance recursos siguientes: Hola Cerrar imagen (capptain-close.png, de forma predeterminada) y el icono de marca de hello (capptain--icono de notificación, de forma predeterminada).
+Elimine los siguientes recursos de Reach: la imagen de cierre (de forma predeterminada, capptain-close.png) y el icono de marca (de forma predeterminada, capptain-notification-icon).
 
-Quitar Hola llegar a la interfaz de usuario para las notificaciones de la aplicación. diseño de Hello predeterminado tiene el siguiente aspecto:
+Quite la interfaz de usuario de Reach para las notificaciones de la aplicación. El diseño predeterminado tiene el siguiente aspecto:
 
     <!-- capptain notification -->
     <div id="capptain_notification_area" class="capptain_category_default">
@@ -64,7 +64,7 @@ Quitar Hola llegar a la interfaz de usuario para las notificaciones de la aplica
       </div>
     </div>
 
-Quitar Hola llegar a la interfaz de usuario para sondeos y anuncios de texto y web. diseño de Hello predeterminado tiene el siguiente aspecto:
+Quite el texto, los anuncios web y los sondeos de la interfaz de usuario de Reach. El diseño predeterminado tiene el siguiente aspecto:
 
     <div id="capptain_overlay" class="capptain_category_default">
       <button id="capptain_overlay_close">x</button>
@@ -77,7 +77,7 @@ Quitar Hola llegar a la interfaz de usuario para sondeos y anuncios de texto y w
       </div>
     </div>
 
-Quitar hello `reach` del objeto de la configuración, si existe. Su aspecto es similar a este:
+Quite el objeto `reach` de la configuración, si existe. Su aspecto es similar a este:
 
     window.capptain = {
       [...]
@@ -89,16 +89,16 @@ Quitar hello `reach` del objeto de la configuración, si existe. Su aspecto es s
 Quite cualquier otra personalización de Reach, como las categorías.
 
 ### <a name="remove-deprecated-apis"></a>Eliminación de las API en desuso
-Algunas API de Capptain está desusada en hello Web SDK de Mobile Engagement.
+Algunas API de Capptain están en desuso en el SDK web de Mobile Engagement.
 
-Quite cualquier toohello de llamadas después de API: `agent.connect`, `agent.disconnect`, `agent.pause`, y `agent.sendMessageToDevice`.
+Quite cualquier llamada a las API siguientes: `agent.connect`, `agent.disconnect`, `agent.pause` y `agent.sendMessageToDevice`.
 
-Quite todas las instancias de hello siguiendo las devoluciones de llamada de la configuración de Capptain: `onConnected`, `onDisconnected`, `onDeviceMessageReceived`, y `onPushMessageReceived`.
+Quite las instancias de las siguientes devoluciones de llamada de la configuración de Capptain: `onConnected`, `onDisconnected`, `onDeviceMessageReceived` y `onPushMessageReceived`.
 
 ### <a name="configuration"></a>Configuración
-Mobile Engagement usa una cadena tooconfigure SDK identificadores de conexión de, por ejemplo, el identificador de la aplicación hello.
+Mobile Engagement usa una cadena de conexión para configurar los identificadores del SDK, como el identificador de aplicación.
 
-Reemplace el identificador de la aplicación hello con la cadena de conexión. Tenga en cuenta ese objeto global Hola de hello configuración SDK cambia de `capptain` demasiado`azureEngagement`.
+Reemplace el identificador de la aplicación por la cadena de conexión. Tenga en cuenta que el objeto global para la configuración del SDK cambia de `capptain` a `azureEngagement`.
 
 Antes de la migración:
 
@@ -114,10 +114,10 @@ Después de la migración:
       [...]
     };
 
-cadena de conexión de Hello para la aplicación se muestra en hello Portal de Azure.
+La cadena de conexión de la aplicación se muestra en el Portal de Azure.
 
 ### <a name="javascript-apis"></a>API de JavaScript
-objeto global de JavaScript de Hello `window.capptain` ha cambiado `window.azureEngagement` , pero puede usar hello `window.engagement` alias para las llamadas API. No puede usar la configuración de SDK de hello alias toodefine Hola.
+El objeto global de JavaScript `window.capptain` ha cambiado de nombre a `window.azureEngagement`, pero puede usar el alias `window.engagement` para las llamadas de API. No se puede utilizar el alias para definir la configuración del SDK.
 
 Por ejemplo: `capptain.deviceId` se convierte en `engagement.deviceId`, `capptain.agent.startActivity` se convierte en `engagement.agent.startActivity`, etc.
 

@@ -1,6 +1,6 @@
 ---
 title: "Azure AD Connect: actualización desde DirSync | Microsoft Docs"
-description: "Obtenga información acerca de cómo tooupgrade desde DirSync tooAzure AD Connect. En este artículo se describen los pasos de Hola de actualización de DirSync tooAzure AD Connect."
+description: "Aprenda a actualizar desde DirSync a Azure AD Connect. En este artículo, se describen los pasos para actualizar desde DirSync a Azure AD Connect."
 services: active-directory
 documentationcenter: 
 author: andkjell
@@ -14,28 +14,28 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 05572af410698deaa1392c8837bfcb749efc69e4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7049af4567947d3d799a38c5a3940ba25a2c0f18
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect: Actualización desde DirSync
-Azure AD Connect es Hola sucesor tooDirSync. Buscar formas de hello que actualizar desde DirSync en este tema. Estos pasos no funcionan para la actualización desde otra versión de Azure AD Connect ni desde Sincronización de Azure AD.
+Azure AD Connect es el sucesor de DirSync. En este tema, se explican distintas formas de realizar actualizaciones desde DirSync. Estos pasos no funcionan para la actualización desde otra versión de Azure AD Connect ni desde Sincronización de Azure AD.
 
-Antes de empezar a instalar Azure AD Connect, asegúrese de que demasiado[descargar Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771) y los pasos de requisitos previos de hello completa de [Azure AD Connect: Hardware y los requisitos previos](active-directory-aadconnect-prerequisites.md). En concreto, desea tooread sobre siguientes hello, ya que estas áreas son diferentes de sincronización de directorios:
+Antes de empezar a instalarlo, debe [descargar Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771) y completar los pasos de los requisitos previos que se señalan en [Requisitos previos de Azure AD Connect](active-directory-aadconnect-prerequisites.md). En concreto, lea la información acerca de las siguientes áreas, ya que son diferentes de DirSync:
 
-* versión requerida de Hola de .net y PowerShell. Las versiones más recientes son toobe necesario en el servidor de Hola que lo que necesita sincronización de directorios.
-* configuración del servidor proxy Hola. Si utiliza un tooreach de servidor proxy Hola internet, este valor debe configurarse antes de actualizar. DirSync siempre utiliza el servidor de proxy de hello configurada para el usuario de hello instalarla, pero Azure AD Connect usa la configuración del equipo en su lugar.
-* Hola las direcciones URL necesaria toobe abrir en el servidor de proxy de Hola. Para los escenarios básicos, esos escenarios también compatibles con la sincronización de directorios, los requisitos de hello son Hola igual. Si desea toouse de hello características nuevas incluidas con Azure AD Connect, debe abrirse algunas nuevas direcciones URL.
+* La versión necesaria de .Net y PowerShell. Se requiere que en el servidor se encuentren versiones más recientes de las que necesitaba DirSync.
+* La configuración del servidor proxy. Si se usa un servidor proxy para conectarse a Internet, este valor debe configurarse antes de realizar la actualización. DirSync siempre utiliza el servidor proxy configurado para el usuario que lo instala, pero Azure AD Connect usa la configuración de la máquina en su lugar.
+* Las direcciones URL que deben estar abiertas en el servidor proxy. Para los escenarios básicos, los que también son compatibles con DirSync, los requisitos son los mismos. Si desea utilizar cualquiera de las nuevas características que se incluyen con Azure AD Connect, es preciso abrir nuevas direcciones URL.
 
 > [!NOTE]
-> Una vez que se ha habilitado el nuevo Azure AD Connect server toostart sincronizar cambios tooAzure AD, debe volver a la versión toousing DirSync o sincronización de Azure AD. Degradar de Azure AD Connect toolegacy clientes como DirSync y Azure AD Sync no se admite y puede provocar tooissues, como la pérdida de datos en Azure AD.
+> Una vez que haya habilitado el nuevo servidor de Azure AD Connect para que empiece a sincronizar los cambios en Azure AD, no debe volver a usar DirSync o Sincronización de Azure AD. No de admite el cambio a una versión anterior de Azure AD Connect a los clientes heredados, como DirSync y Sincronización de Azure AD, y puede causar problemas, como la pérdida de datos en Azure AD.
 
 Si no va a realizar la actualización desde DirSync, consulte la [documentación relacionada](#related-documentation) sobre otros escenarios.
 
 ## <a name="upgrade-from-dirsync"></a>Actualización desde DirSync
-Dependiendo de su implementación actual de la sincronización de directorios, hay diferentes opciones para la actualización de Hola. Si Hola espera el tiempo de actualización es inferior a tres horas, recomendación de hello es toodo una actualización en contexto. Si Hola espera el tiempo de actualización es de más de tres horas, recomendación de hello es toodo una implementación paralela en otro servidor. Se estima que si tiene más de 50.000 objetos tarda más de tres horas toodo Hola actualización.
+Dependiendo de su implementación actual de DirSync, existen diferentes opciones para la actualización. Si el tiempo de actualización esperado es inferior a tres horas, se recomienda realizar una actualización local. Sin embargo, si es superior, se recomienda realizar una implementación paralela en otro servidor. Se calcula que si tiene más de 50.000 objetos, la actualización tarda más de 3 horas en realizarse.
 
 | Escenario |
 | --- | --- |
@@ -43,18 +43,18 @@ Dependiendo de su implementación actual de la sincronización de directorios, h
 | [Implementación paralela](#parallel-deployment) |
 
 > [!NOTE]
-> Si prevé tooupgrade desde DirSync tooAzure AD Connect, no desinstale DirSync usted mismo antes de la actualización de Hola. Azure AD Connect leer y migrar la configuración de Hola desde DirSync y desinstalar después de inspeccionar servidor hello.
+> Cuando planee la actualización de DirSync a Azure AD Connect, no desinstale DirSync antes de la actualización. Azure AD Connect leerá y migrará la configuración de DirSync y lo desinstalará después de inspeccionar el servidor.
 
 **Actualización local**  
-Hola espera actualización de hello toocomplete de tiempo se muestra al Asistente de Hola. Esta estimación se basa en la suposición de Hola que toma tres horas toocomplete una actualización para una base de datos con 50.000 objetos (usuarios, contactos y grupos). Si el número de Hola de objetos de la base de datos es menor que 50.000, Azure AD Connect recomienda una actualización en contexto. Si decide toocontinue, su configuración actual se aplica automáticamente durante la actualización y el servidor reanuda automáticamente la sincronización de active.
+El asistente muestra el tiempo previsto para completar la actualización. Este cálculo se basa en la suposición de que se tardan tres horas en completar una actualización de una base de datos con 50 000 objetos (usuarios, contactos y grupos). Si el número de objetos que hay en la base de datos es inferior a 50 000, Azure AD Connect recomienda una actualización local. Si decide continuar, la configuración actual se aplica automáticamente en la actualización y el servidor reanuda automáticamente la sincronización activa.
 
-Si desea toodo una migración de la configuración y realizar una implementación paralela, puede invalidar recomendación de actualización en contexto de Hola. Por ejemplo, podría tardar Hola oportunidad toorefresh Hola hardware y sistema operativo. Para obtener más información, vea hello [implementación en paralelo](#parallel-deployment) sección.
+Si desea realizar una migración de la configuración y una implementación paralela, puede anular la recomendación de actualización local. Por ejemplo, podría aprovechar para actualizar el hardware y el sistema operativo. Para más información, consulte la sección [Implementación paralela](#parallel-deployment).
 
 **Implementación paralela**  
-Si tiene más de 50.000 objetos se recomienda usar una implementación paralela. Esta implementación evita que los usuarios sufran retrasos operativos. Hola instalación de Azure AD Connect intenta tiempo de inactividad de tooestimate hello para la actualización de hello, pero si ha actualizado DirSync en hello anterior, su propia experiencia es guía recomendados de toobe probable Hola.
+Si tiene más de 50.000 objetos se recomienda usar una implementación paralela. Esta implementación evita que los usuarios sufran retrasos operativos. La instalación de Azure AD Connect intenta calcular el tiempo de inactividad previsto para la actualización pero, si ya ha actualizado antes DirSync, probablemente su propia experiencia sea la mejor referencia.
 
-### <a name="supported-dirsync-configurations-toobe-upgraded"></a>Compatible toobe de las configuraciones de sincronización de directorios actualizado
-Hola después de los cambios de configuración es compatibles con DirSync actualizado:
+### <a name="supported-dirsync-configurations-to-be-upgraded"></a>Configuraciones de DirSync que se pueden actualizar
+La actualización de DirSync admite los siguientes cambios de configuración:
 
 * Filtrado por dominio y unidad organizativa
 * Identificador alternativo (UPN)
@@ -62,21 +62,21 @@ Hola después de los cambios de configuración es compatibles con DirSync actual
 * Configuración de bosque/dominio y Azure AD
 * Filtrado basado en atributos de usuario
 
-Hola siguiente cambio no se puede actualizar. Si tiene esta configuración, se bloquea la actualización hello:
+El siguiente cambio no se puede actualizar. Si tiene esta configuración, la actualización se bloquea:
 
 * Cambios de DirSync no admitidos, como por ejemplo, los atributos eliminados y el uso de un archivo DLL de extensión personalizado
 
 ![Actualización bloqueada](./media/active-directory-aadconnect-dirsync-upgrade-get-started/analysisblocked.png)
 
-En esos casos, recomendación de hello es tooinstall un nuevo servidor de Azure AD Connect en [modo de almacenamiento provisional](active-directory-aadconnectsync-operations.md#staging-mode) y compruebe Hola DirSync antigua y nueva configuración de Azure AD Connect. Vuelva a aplicar los cambios usando la configuración personalizada, como se describe en el artículo sobre la [configuración personalizada de la sincronización de Azure AD Connect](active-directory-aadconnectsync-whatis.md).
+En esos casos, se recomienda instalar un servidor de Azure AD Connect nuevo en [modo provisional](active-directory-aadconnectsync-operations.md#staging-mode) y comprobar la configuración antigua de DirSync y la nueva de Azure AD Connect. Vuelva a aplicar los cambios usando la configuración personalizada, como se describe en el artículo sobre la [configuración personalizada de la sincronización de Azure AD Connect](active-directory-aadconnectsync-whatis.md).
 
-las contraseñas de Hello utilizadas DirSync hello las cuentas de servicio no se puede recuperar y no se migran. Estas contraseñas se restablecen durante la actualización de Hola.
+Las contraseñas que usa DirSync para las cuentas de servicio no se pueden recuperar y no se migran. Estas contraseñas se restablecen durante la actualización.
 
-### <a name="high-level-steps-for-upgrading-from-dirsync-tooazure-ad-connect"></a>Pasos generales para actualizar desde DirSync tooAzure AD Connect
-1. Página principal tooAzure AD Connect
+### <a name="high-level-steps-for-upgrading-from-dirsync-to-azure-ad-connect"></a>Pasos generales de la actualización de DirSync a Connect de Azure AD
+1. Bienvenida a Azure AD Connect
 2. Análisis de la configuración actual de DirSync
 3. Recopilación de la contraseña de administrador global de Azure AD
-4. Recopilar las credenciales para una cuenta de administrador de empresa (sólo se utiliza durante la instalación de Hola de Azure AD Connect)
+4. Recopilación de credenciales para una cuenta de administrador de empresa (solo se usa durante la instalación de Azure AD Connect)
 5. Instalación de Azure AD Connect
    * Desinstalar DirSync (o deshabilitarlo temporalmente)
    * Instalación de Azure AD Connect
@@ -88,131 +88,131 @@ Se requieren pasos adicionales cuando:
 * Tiene más de 50.000 objetos en el ámbito para sincronización
 
 ## <a name="in-place-upgrade"></a>Actualización local
-1. Inicie a hello Azure AD Connect instalador (MSI).
-2. Revise y acepte los términos de toolicense y aviso de privacidad.  
-   ![Página principal tooAzure AD](./media/active-directory-aadconnect-dirsync-upgrade-get-started/Welcome.png)
-3. Haga clic en el siguiente análisis toobegin de la instalación existente de DirSync.  
+1. Inicie el instalador de Azure AD Connect (MSI).
+2. Revise y acepte los términos de licencia y el aviso de privacidad.  
+   ![Azure AD](./media/active-directory-aadconnect-dirsync-upgrade-get-started/Welcome.png)
+3. Haga clic en Siguiente para realizar el análisis de la instalación existente de DirSync.  
    ![Análisis de la instalación de Directory Sync existente](./media/active-directory-aadconnect-dirsync-upgrade-get-started/Analyze.png)
-4. Cuando se completa el análisis de hello, vea las recomendaciones de hello sobre cómo tooproceed.  
-   * Si utiliza SQL Server Express y tiene menos de 50.000 objetos, se muestra hello después de pantalla:  
-     ![El análisis completó tooupgrade listo de sincronización de directorios](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisReady.png)
+4. Cuando el análisis se complete, verá recomendaciones de cómo proceder.  
+   * Si usa SQL Server Express y tiene menos de 50.000 objetos, se muestra la siguiente pantalla:   
+     ![Análisis completado listo para actualizar desde DirSync](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisReady.png)
    * Si usa una instancia completa de SQL Server para DirSync, verá esta página en su lugar:  
-     ![El análisis completó tooupgrade listo de sincronización de directorios](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisReadyFullSQL.png)  
-     se muestra información de Hello sobre Hola existente la servidor de base de datos SQL Server que se va a usar DirSync. Si es necesario, realice los ajustes adecuados. Haga clic en **siguiente** instalación de hello toocontinue.
+     ![Análisis completado listo para actualizar desde DirSync](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisReadyFullSQL.png)  
+     , que muestra la información del servidor de base de datos existente de SQL Server que usa DirSync. Si es necesario, realice los ajustes adecuados. Haga clic en **Siguiente** para continuar con la instalación.
    * Si tiene más de 50 000 objetos, verá esta pantalla en su lugar:  
-     ![El análisis completó tooupgrade listo de sincronización de directorios](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisRecommendParallel.png)  
-     tooproceed con una actualización en contexto, haga clic en la casilla de verificación siguiente toothis mensaje de Hola: **continuar actualizando DirSync en este equipo.**
-     toodo una [implementación en paralelo](#parallel-deployment) en su lugar, exportar la configuración de sincronización de directorios de Hola y mover Hola configuración toohello nuevo servidor.
-5. Proporcione la contraseña de Hola para cuenta de hello que usa actualmente tooconnect tooAzure AD. Debe tratarse de cuenta de hello utilizado actualmente por la sincronización de directorios.  
+     ![Análisis completado listo para actualizar desde DirSync](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisRecommendParallel.png)  
+     Para continuar con una actualización local, haga clic en la casilla situada junto a este mensaje: **Continuar actualizando DirSync en este equipo.**
+     Sin embargo, para realizar una [parallel deployment](#parallel-deployment) , exporte la configuración de DirSync a un nuevo servidor.
+5. Proporcione la contraseña para la cuenta que utiliza actualmente para conectarse a Azure AD. Debe ser la cuenta que DirSync está usando actualmente.  
    ![Escriba sus credenciales de Azure AD](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ConnectToAzureAD.png)  
    Si aparece un error y tiene problemas de conectividad, consulte [Solución de problemas de conectividad](active-directory-aadconnect-troubleshoot-connectivity.md).
 6. Proporcione una cuenta de administrador de empresa para Active Directory.  
    ![Escriba sus credenciales de ADDS](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ConnectToADDS.png)
-7. Ahora está listo tooconfigure. Al hacer clic en **Actualizar**, se desinstala DirSync, se configura Azure AD Connect y comienza la sincronización.  
-   ![Tooconfigure listo](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ReadyToConfigure.png)
-8. Una vez finalizada la instalación de hello, la sesión e iníciela de nuevo tooWindows antes de usarlos Synchronization Service Manager, Editor de reglas de sincronización, o intente toomake cualquier otro cambio de configuración.
+7. Ahora está preparado para realizar la configuración. Al hacer clic en **Actualizar**, se desinstala DirSync, se configura Azure AD Connect y comienza la sincronización.  
+   ![Listo para configurar](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ReadyToConfigure.png)
+8. Una vez completada la instalación, cierre la sesión e iníciela de nuevo en Windows antes de usar Synchronization Service Manager o el Editor de reglas de sincronización. También puede tratar de realizar cualquier otro cambio en la configuración.
 
 ## <a name="parallel-deployment"></a>Implementación paralela
-### <a name="export-hello-dirsync-configuration"></a>Exportar la configuración de sincronización de directorios de Hola
+### <a name="export-the-dirsync-configuration"></a>Exportación de la configuración de DirSync
 **Implementación paralela con más de 50.000 objetos**
 
-Si tiene más de 50.000 objetos, Hola instalación de Azure AD Connect recomienda una implementación paralela.
+Si tiene más de 50 000 objetos, la instalación de Azure AD Connect recomienda una implementación paralela.
 
-Se muestra a continuación toohello similar de pantalla:  
+Se muestra una pantalla similar a la siguiente:  
 ![Análisis completo](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AnalysisRecommendParallel.png)
 
-Si desea que tooproceed con la implementación paralela, necesita hello tooperform pasos:
+Si desea realizar una implementación paralela, debe seguir estos pasos:
 
-* Haga clic en hello **exportar la configuración** botón. Al instalar Azure AD Connect en un servidor independiente, esta configuración se migra desde la actual tooyour de DirSync nueva instalación de Azure AD Connect.
+* Haga clic en el botón **Exportar configuración** . Al instalar Azure AD Connect en un servidor independiente, esta configuración se migra desde su DirSync actual a la nueva instalación de Azure AD Connect.
 
-Una vez que la configuración se ha exportado correctamente, puede salir del Asistente de Azure AD Connect de hello en el servidor de sincronización de directorios de Hola. Continúe con el paso siguiente de hello demasiado[instalar Azure AD Connect en un servidor independiente](#installation-of-azure-ad-connect-on-separate-server)
+Una vez exportada la configuración correctamente, puede salir del asistente de Azure AD Connect en el servidor DirSync. Continúe con el paso siguiente para [instalar Azure AD Connect en un servidor independiente](#installation-of-azure-ad-connect-on-separate-server)
 
 **Implementación paralela con menos de 50.000 objetos**
 
-Si tiene menos de 50.000 objetos pero sigue deseando toodo una implementación en paralelo, a continuación, Hola siguientes:
+Si tiene menos de 50.000 objetos pero aún así desea realizar una implementación paralela, haga lo siguiente:
 
-1. Ejecute a hello Azure AD Connect installer (MSI).
-2. Cuando vea hello **tooAzure bienvenida AD Connect** pantalla Asistente para la instalación de Hola de salida, haga clic en "X" hello en hello superior derecho de la ventana hello.
+1. Ejecute el instalador de Azure AD Connect (MSI).
+2. Cuando aparezca la pantalla **Bienvenido a Azure AD Connect** , salga del asistente para instalación haciendo clic en la "X", en la esquina superior derecha de la ventana.
 3. Abra el símbolo del sistema.
-4. Ubicación de Azure AD Connect de instalación de hello (predeterminado: C:\Program Files\Microsoft Azure Active Directory Connect) ejecute el siguiente comando de hello: `AzureADConnect.exe /ForceExport`.
-5. Haga clic en hello **exportar la configuración** botón. Al instalar Azure AD Connect en un servidor independiente, esta configuración se migra desde la actual tooyour de DirSync nueva instalación de Azure AD Connect.
+4. En la ubicación de instalación de Azure AD Connect (predeterminada: C:\Archivos de programa\Microsoft Azure Active Directory Connect), ejecute el siguiente comando: `AzureADConnect.exe /ForceExport`.
+5. Haga clic en el botón **Exportar configuración** . Al instalar Azure AD Connect en un servidor independiente, esta configuración se migra desde su DirSync actual a la nueva instalación de Azure AD Connect.
 
 ![Análisis completo](./media/active-directory-aadconnect-dirsync-upgrade-get-started/forceexport.png)
 
-Una vez que la configuración se ha exportado correctamente, puede salir del Asistente de Azure AD Connect de hello en el servidor de sincronización de directorios de Hola. Continúe con el paso siguiente de hello demasiado[instalar Azure AD Connect en un servidor independiente](#installation-of-azure-ad-connect-on-separate-server).
+Una vez exportada la configuración correctamente, puede salir del asistente de Azure AD Connect en el servidor DirSync. Continúe con el paso siguiente para [instalar Azure AD Connect en un servidor independiente](#installation-of-azure-ad-connect-on-separate-server).
 
 ### <a name="install-azure-ad-connect-on-separate-server"></a>Instalación de Azure AD Connect en un servidor independiente
-Al instalar Azure AD Connect en un servidor nuevo, Hola supone que desea tooperform una instalación limpia de Azure AD Connect. Dado que desee que la configuración de sincronización de directorios de hello toouse, hay algunos pasos adicionales tootake:
+Al instalar Azure AD Connect en un nuevo servidor, se presupone que se desea realizar una instalación limpia de Azure AD Connect. Puesto que va a usar la configuración de DirSync, hay que realizar varios pasos adicionales:
 
-1. Ejecute a hello Azure AD Connect installer (MSI).
-2. Cuando vea hello **tooAzure bienvenida AD Connect** pantalla Asistente para la instalación de Hola de salida, haga clic en "X" hello en hello superior derecho de la ventana hello.
+1. Ejecute el instalador de Azure AD Connect (MSI).
+2. Cuando aparezca la pantalla **Bienvenido a Azure AD Connect** , salga del asistente para instalación haciendo clic en la "X", en la esquina superior derecha de la ventana.
 3. Abra el símbolo del sistema.
-4. Ubicación de Azure AD Connect de instalación de hello (predeterminado: C:\Program Files\Microsoft Azure Active Directory Connect) ejecute el siguiente comando de hello: `AzureADConnect.exe /migrate`.
-   Asistente para la instalación de Hello Azure AD Connect se inicia y presenta con hello después de pantalla:  
+4. En la ubicación de instalación de Azure AD Connect (predeterminada: C:\Archivos de programa\Microsoft Azure Active Directory Connect), ejecute el siguiente comando: `AzureADConnect.exe /migrate`.
+   Se inicia el Asistente para instalación de Azure AD Connect y muestra la siguiente pantalla:  
    ![Escriba sus credenciales de Azure AD](./media/active-directory-aadconnect-dirsync-upgrade-get-started/ImportSettings.png)
-5. Seleccione el archivo de configuración de hello que exporta de la instalación de sincronización de directorios.
+5. Seleccione el archivo de configuración exportado desde la instalación de DirSync.
 6. Configure las opciones avanzadas, que se incluyen:
    * Una ubicación de instalación personalizada para Azure AD Connect.
-   * Una instancia existente de SQL Server (de forma predeterminada, Azure AD Connect instala SQL Server 2012 Express) No utilice Hola misma instancia de base de datos que el servidor de sincronización de directorios.
-   * Una cuenta de servicio usa tooconnect tooSQL Server (si la base de datos de SQL Server es remoto, a continuación, esta cuenta debe ser una cuenta de servicio de dominio).
+   * Una instancia existente de SQL Server (de forma predeterminada, Azure AD Connect instala SQL Server 2012 Express) No use la misma instancia de base de datos como servidor de DirSync.
+   * Una cuenta de servicio usada para conectarse a SQL Server (si la base de datos de SQL Server es remota, esta cuenta debe ser una cuenta de servicio de dominio).
      Estas opciones se pueden ver en esta pantalla:   
      ![Escriba sus credenciales de Azure AD](./media/active-directory-aadconnect-dirsync-upgrade-get-started/advancedsettings.png)
 7. Haga clic en **Siguiente**.
-8. En hello **tooconfigure listo** página, deje hello **iniciar el proceso de sincronización de hello tan pronto como finalice la configuración de hello** activada. servidor de Hello está ahora en [modo de almacenamiento provisional](active-directory-aadconnectsync-operations.md#staging-mode) por lo que los cambios no son exportado tooAzure AD.
+8. En la página **Listo para configurar**, deje seleccionada la opción **Inicie el proceso de sincronización en cuanto se complete la configuración**. El servidor está ya en [modo provisional](active-directory-aadconnectsync-operations.md#staging-mode), por lo que los cambios no se exportan a Azure AD.
 9. Haga clic en **Instalar**.
-10. Una vez finalizada la instalación de hello, la sesión e iníciela de nuevo tooWindows antes de usarlos Synchronization Service Manager, Editor de reglas de sincronización, o intente toomake cualquier otro cambio de configuración.
+10. Una vez completada la instalación, cierre la sesión e iníciela de nuevo en Windows antes de usar Synchronization Service Manager o el Editor de reglas de sincronización. También puede tratar de realizar cualquier otro cambio en la configuración.
 
 > [!NOTE]
-> Comienza la sincronización entre Active Directory de Windows Server y Active Directory de Azure, pero ningún cambio es exportado tooAzure AD. Solo una herramienta de sincronización puede a exportar activamente los cambios de una vez. Este estado se denomina [modo provisional](active-directory-aadconnectsync-operations.md#staging-mode).
+> Se inicia la sincronización entre Windows Server Active Directory y Azure Active Directory, pero los cambios que se realizan no se exportan a Azure AD. Solo una herramienta de sincronización puede a exportar activamente los cambios de una vez. Este estado se denomina [modo provisional](active-directory-aadconnectsync-operations.md#staging-mode).
 
-### <a name="verify-that-azure-ad-connect-is-ready-toobegin-synchronization"></a>Compruebe que Azure AD Connect es sincronización toobegin listo
-tooverify que Azure AD Connect está listo tootake a través de DirSync, necesita tooopen **Synchronization Service Manager** en grupo de hello **Azure AD Connect** desde el menú de inicio de Hola.
+### <a name="verify-that-azure-ad-connect-is-ready-to-begin-synchronization"></a>Comprobación de que Azure AD Connect está listo para comenzar la sincronización
+Para comprobar si Azure AD Connect está listo para asumir el control de DirSync, es preciso abrir **Synchronization Service Manager** en el grupo **Azure AD Connect**, desde el menú Inicio.
 
-En la aplicación hello, vaya toohello **Operations** ficha. En esta pestaña, confirme completado ese hello las siguientes operaciones:
+En la aplicación, vaya a la pestaña **Operations** (Operaciones). Confirme en ella que se han completado las siguientes operaciones:
 
-* Importar en hello conector de AD
-* Importar en hello conector de Azure AD
-* Sincronización completa en hello conector de AD
-* Sincronización completa en hello conector de Azure AD
+* Importación en AD Connector
+* Importación en Azure AD Connector
+* Sincronización completa en AD Connector
+* Sincronización completa en Azure AD Connector
 
 ![Importación y sincronización completadas](./media/active-directory-aadconnect-dirsync-upgrade-get-started/importsynccompleted.png)
 
-Revise el resultado de hello de esas operaciones y asegúrese de que no hay errores.
+Revise el resultado de estas operaciones y asegúrese de que no hay errores.
 
-Si desea toosee e inspeccionar cambios Hola sobre toobe exportar tooAzure AD, a continuación, lea cómo tooverify Hola configuración bajo [modo de almacenamiento provisional](active-directory-aadconnectsync-operations.md#staging-mode). Realice los cambios de configuración necesarios hasta que no vea nada inesperado.
+Si desea ver y comprobar los cambios que están a punto de exportarse a Azure AD, lea cómo comprobar la configuración en el [modo provisional](active-directory-aadconnectsync-operations.md#staging-mode). Realice los cambios de configuración necesarios hasta que no vea nada inesperado.
 
-Está listo tooswitch desde DirSync tooAzure AD cuando haya completado estos pasos y esté satisfecho con el resultado de hello.
+Cuando haya completado estos pasos y el resultado le parezca satisfactorio estará listo para cambiar de DirSync a Azure AD.
 
 ### <a name="uninstall-dirsync-old-server"></a>Desinstalación de DirSync (servidor antiguo)
 * En **Programas y características**, busque **Herramienta de sincronización de Microsoft Azure Active Directory**
 * Desinstale la **Herramienta de sincronización de Microsoft Azure Active Directory**
-* desinstalación de Hello podría tardar hasta too15 minutos toocomplete.
+* La desinstalación puede tardar hasta 15 minutos en completarse.
 
-Si prefiere toouninstall DirSync más adelante, puede apagar el servidor de Hola temporalmente o deshabilitar el servicio de Hola. Si algo va mal, este método le permite habilitar toore lo. Sin embargo, no se espera que ese paso Hola se producirá un error por lo que esto no debería ser necesario.
+Si prefiere desinstalar DirSync más adelante, puede apagar el servidor temporalmente o deshabilitar el servicio. Si se produce algún problema, este método le permite volver a habilitarlo. Sin embargo, no es habitual que el paso siguiente produzca algún error, por lo que no debería ser necesario.
 
-Con DirSync ha desinstalado o deshabilitado, no hay ningún servidor de active exportar tooAzure AD. Hola siguiente paso tooenable Azure AD Connect se debe completar antes de que los cambios en su Active Directory local continuará toobe sincronizado tooAzure AD.
+Si DirSync se ha desinstalado o deshabilitado, no hay servidores activos que exporten a Azure AD. El siguiente paso para habilitar Azure AD Connect se debe completar antes de los cambios que se realicen de su instalación local de Active Directory se sincronicen con Azure AD.
 
 ### <a name="enable-azure-ad-connect-new-server"></a>Apertura de Azure AD Connect (nuevo servidor)
-Después de la instalación, volver a abrir Azure AD connect estará permitir cambios de configuración adicionales de toomake. Iniciar **Azure AD Connect** desde el menú de inicio de Hola o acceso directo de hello en el escritorio de Hola. Asegúrese de que no intente toorun Hola instalación MSI nuevo.
+Después de la instalación, si vuelve a abrir Azure AD Connect, podrá realizar cambios adicionales en la configuración. Inicie **Azure AD Connect** desde el menú Inicio o desde el acceso directo del escritorio. Asegúrese de no intentar ejecutar de nuevo el MSI de instalación.
 
-Debería ver Hola siguiente:  
+Verá lo siguiente:  
 ![Tareas adicionales](./media/active-directory-aadconnect-dirsync-upgrade-get-started/AdditionalTasks.png)
 
 * Seleccione **Configurar modo de almacenamiento provisional**.
-* Desactivar el almacenamiento provisional, Hola desactivando **modo de almacenamiento provisional habilitado** casilla de verificación.
+* Desactive la casilla **Modo provisional habilitado** para deshabilitar el modo provisional.
 
 ![Escriba sus credenciales de Azure AD](./media/active-directory-aadconnect-dirsync-upgrade-get-started/configurestaging.png)
 
-* Haga clic en hello **siguiente** botón
-* En la página de confirmación de hello, haga clic en hello **instalar** botón.
+* Haga clic en el botón **Siguiente** .
+* En la página de confirmación, haga clic en **Instalar** .
 
-Azure AD Connect es ahora el servidor activo y no debe cambiar toousing espera del servidor de sincronización de directorios existente.
+Azure AD Connect es el servidor activo y no debe volver a usar el servidor de sincronización de directorios existente.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora que tiene instalado de Azure AD Connect puede [comprobar la instalación de Hola y asignar licencias](active-directory-aadconnect-whats-next.md).
+Ahora que ha instalado Azure AD Connect, puede [comprobar la instalación y asignar licencias](active-directory-aadconnect-whats-next.md).
 
-Obtener más información sobre estas nuevas características, que estaban habilitadas con la instalación de hello: [la actualización automática](active-directory-aadconnect-feature-automatic-upgrade.md), [evitar eliminaciones accidentales](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md), y [Azure AD Connect Health](../connect-health/active-directory-aadconnect-health-sync.md).
+Para aprender más acerca de estas características nuevas que se habilitaron con la instalación, consulte la información sobre: [actualización automática](active-directory-aadconnect-feature-automatic-upgrade.md), [cómo evitar eliminaciones accidentales](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) y [Azure AD Connect Health](../connect-health/active-directory-aadconnect-health-sync.md).
 
-Más información acerca de estos temas comunes: [programador y cómo sincronizar tootrigger](active-directory-aadconnectsync-feature-scheduler.md).
+Obtenga información acerca de estos temas habituales: [el programador y cómo desencadenar la sincronización](active-directory-aadconnectsync-feature-scheduler.md).
 
 Obtenga más información sobre la [Integración de las identidades locales con Azure Active Directory](active-directory-aadconnect.md).

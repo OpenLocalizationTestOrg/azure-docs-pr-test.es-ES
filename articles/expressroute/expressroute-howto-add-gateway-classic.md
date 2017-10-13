@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2017
 ms.author: charwen
-ms.openlocfilehash: 6f37d4d9cba546b5416ab99040f5ef6dae273380
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 195a38fa45f1c514a93980e777fb0d8238aa3f3f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell-classic"></a>Configuración de una puerta de enlace de red virtual para ExpressRoute mediante PowerShell (clásica)
 > [!div class="op_single_selector"]
@@ -29,19 +29,19 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-En este artículo le guiará a través de hello pasos tooadd, cambiar el tamaño y quitar una puerta de enlace de red virtual (VNet) para una red virtual existente. Hello pasos para esta configuración son específicos para redes virtuales que se crearon con hello **modelo de implementación clásica** y que se puede utilizar en una configuración de ExpressRoute. 
+Este artículo le guiará por los pasos para agregar, cambiar el tamaño y quitar una puerta de enlace de red virtual (VNet) para una red virtual existente. Los pasos de esta configuración son específicos para las redes virtuales que se crearon con el **modelo de implementación clásica** y que se utilizarán en una configuración ExpressRoute. 
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
-**Información sobre los modelos de implementación de Azure**
+**Información acerca de los modelos de implementación de Azure**
 
 [!INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 ## <a name="before-beginning"></a>Antes de comenzar
-Compruebe que ha instalado los cmdlets de PowerShell de Azure de hello necesarios para esta configuración (versión 1.0.2 o posterior). Si no tiene instalado Hola cmdlets, necesitará toodo así antes de comenzar los pasos de configuración de Hola. Para obtener más información acerca de cómo instalar Azure PowerShell, consulte [cómo tooinstall y configurar Azure PowerShell](/powershell/azure/overview).
+Compruebe que ha instalado los cmdlets de Azure PowerShell necesarios para esta configuración (1.0.2 o posterior). Si no, deberá hacerlo antes de comenzar con los pasos de configuración. Para más información sobre cómo instalar Azure PowerShell, consulte [Instalación y configuración de Azure PowerShell](/powershell/azure/overview).
 
 [!INCLUDE [expressroute-gateway-classic-ps](../../includes/expressroute-gateway-classic-ps-include.md)]
 
 ## <a name="next-steps"></a>Pasos siguientes
-Después de haber creado la puerta de enlace de red virtual de hello, puede vincular el circuito de ExpressRoute de tooan de red virtual. Vea [vincular un circuito de ExpressRoute de red Virtual tooan](expressroute-howto-linkvnet-classic.md).
+Después de crear la puerta de enlace de red virtual, puede vincular la red virtual a un circuito ExpressRoute. Consulte el artículo [Vinculación de la red virtual a circuitos ExpressRoute](expressroute-howto-linkvnet-classic.md).
 

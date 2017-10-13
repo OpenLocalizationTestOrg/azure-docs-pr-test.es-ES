@@ -1,6 +1,6 @@
 ---
-title: "Guía de aaaTroubleshooting de transmisión por secuencias en directo | Documentos de Microsoft"
-description: "Este tema ofrece sugerencias sobre cómo tootroubleshoot live problemas de transmisión por secuencias."
+title: "Guía de solución de problemas para el streaming en vivo | Microsoft Docs"
+description: "En este tema se ofrecen sugerencias sobre cómo solucionar problemas del streaming en vivo."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,56 +14,56 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 8549bae947ff3b225ce624220d1e48b63f90208c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: fa91baf7c494941fccf0e6ca38b930f3c2a521ce
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-guide-for-live-streaming"></a>Guía de solución de problemas para el streaming en vivo
-Este tema ofrece sugerencias acerca de cómo tootroubleshoot algunas live streaming problemas.
+En este tema se ofrecen sugerencias sobre cómo solucionar algunos problemas del streaming en vivo.
 
-## <a name="issues-related-tooon-premises-encoders"></a>Problemas relacionados con codificadores tooon locales
-Esta sección proporciona sugerencias sobre cómo codificadores locales tooon relacionados de tootroubleshoot problemas que están configuración toosend canales de secuencia tooAMS una velocidad de bits única que están habilitadas para la codificación en directo.
+## <a name="issues-related-to-on-premises-encoders"></a>Problemas relacionados con los codificadores locales
+Esta sección se ofrecen sugerencias sobre cómo solucionar problemas relacionados con codificadores locales que están configurados para enviar una secuencia de velocidad de bits única a los canales de AMS que están habilitados para la codificación en directo.
 
-### <a name="problem-would-like-toosee-logs"></a>Problema: Desearía toosee registros
+### <a name="problem-would-like-to-see-logs"></a>Problema: le gustaría ver registros
 * **Posible problema**: no puede encontrar los registros del codificador que podrían ayudar en los problemas de depuración.
   
   * **Telestream Wirecast**: normalmente encontrará los registros en C:\Users\{username}\AppData\Roaming\Wirecast\ 
-  * **Live elemental**: puede encontrar tiene toologs de vínculos en el portal de administración de Hola. Haga clic en **Estadísticas** y luego en **Registros**. En hello **archivos de registro** página, verá una lista de registros para todos los Hola AcontecimientoEnDirecto elementos; seleccione Hola una coincidencia de la sesión actual. 
-  * **Flash el Codificador multimedia de Live**: puede encontrar Hola **directorio de registro...**  desplazándose toohello **registro codificación** ficha.
+  * **Elemental Live**: puede encontrar vínculos a los registros en el Portal de administración. Haga clic en **Estadísticas** y luego en **Registros**. En la página **Log Files** (Archivos de registro), verá una lista de registros para todos los elementos de LiveEvent; seleccione el que coincida con su sesión actual. 
+  * **Flash Media Live Encoder**: puede encontrar el **directorio de registro...** desplazándose hasta la pestaña **Encoding Log** (Registro de codificación).
 
 ### <a name="problem-there-is-no-option-for-outputting-a-progressive-stream"></a>Problema: no hay ninguna opción para generar una secuencia progresiva
-* **Problema potencial**: automáticamente no deshacer el entrelazado de codificador de Hola que se va a usar. 
+* **Posible problema**: el codificador que se usa no deshace el entrelazado automáticamente. 
   
-    **Pasos para solucionar problemas**: buscar una opción entrelazada dentro de la interfaz del codificador Hola. Cuando se habilite la opción de eliminación de entrelazado, compruebe de nuevo la configuración de la salida progresiva. 
+    **Pasos para solucionar problemas**: busque una opción de eliminación de entrelazado dentro de la interfaz del codificador. Cuando se habilite la opción de eliminación de entrelazado, compruebe de nuevo la configuración de la salida progresiva. 
 
-### <a name="problem-tried-several-encoder-output-settings-and-still-unable-tooconnect"></a>Problema: Se intentó varias configuraciones de salida de codificador y tooconnect todavía no se puede.
+### <a name="problem-tried-several-encoder-output-settings-and-still-unable-to-connect"></a>Problema: se intentaron varias configuraciones de salida del codificador y todavía no es posible conectarse.
 * **Posible problema**: el canal de codificación Azure no se restableció correctamente. 
   
-    **Pasos para solucionar problemas**: asegúrese de codificador de hello seguro ya no inserta tooAMS, detener y restablecer el canal de Hola. Una vez que se ejecuta de nuevo, intente conectarse su codificador con una nueva configuración de Hola. Si todavía no se soluciona el problema de hello, intente crear un nuevo canal completamente, en ocasiones, pueden dañarse los canales tras varios intentos fallidos.  
-* **Problema potencial**: Hola GOP configuración de tamaño o fotograma clave no es óptimas. 
+    **Pasos para solucionar problemas**: asegúrese de que el codificador ya no está insertando en AMS, detenga y restablezca el canal. Cuando se vuelva a ejecutar, intente conectar su codificador con la nueva configuración. Si esto sigue sin solucionar el problema, intente crear un nuevo canal por completo; a veces, los canales se pueden dañar tras varios intentos con error.  
+* **Posible problema**: la configuración del fotograma clave o el tamaño de GOP no son óptimos. 
   
-    **Pasos para solucionar problemas**: el intervalo de fotogramas clave o el tamaño de GOP recomendado es de 2 segundos. Algunos codificadores calculan esta configuración en el número de fotogramas, mientras que otros usan segundos. Por ejemplo: cuando se realizan envíos a 30fps, Hola tamaño GOP sería 60 marcos, que es equivalente too2 segundos.  
-* **Problema potencial**: puertos estén cerrados están bloqueando el flujo de Hola. 
+    **Pasos para solucionar problemas**: el intervalo de fotogramas clave o el tamaño de GOP recomendado es de 2 segundos. Algunos codificadores calculan esta configuración en el número de fotogramas, mientras que otros usan segundos. Por ejemplo: cuando se envían 30 fps, el tamaño de GOP sería de 60 fotogramas, lo que equivale a 2 segundos.  
+* **Posible problema**: los puertos cerrados están bloqueando la secuencia. 
   
-    **Pasos para solucionar problemas**: transmisión por secuencias a través de RTMP, compruebe el firewall o tooconfirm de configuración de proxy que estén abiertos los puertos de salida 1935 y 1936. Cuando se use el streaming de RTP, confirme que el puerto saliente 2010 está abierto. 
+    **Pasos para solucionar problemas**: al hacer el streaming mediante RTMP, compruebe la configuración del firewall o del proxy para confirmar que los puertos salientes 1935 y 1936 están abiertos. Cuando se use el streaming de RTP, confirme que el puerto saliente 2010 está abierto. 
 
-### <a name="problem-when-configuring-hello-encoder-toostream-with-hello-rtp-protocol-there-is-no-place-tooenter-a-host-name"></a>Problema: Al configurar Hola codificador toostream con hello protocolo RTP, hay ningún lugar tooenter un nombre de host.
-* **Problema potencial**: codificadores RTP muchas no permiten nombres de host y una dirección IP deberá toobe adquirido.  
+### <a name="problem-when-configuring-the-encoder-to-stream-with-the-rtp-protocol-there-is-no-place-to-enter-a-host-name"></a>Problema: al configurar el codificador para que haga streaming con el protocolo RTP, no hay ningún lugar para escribir un nombre de host.
+* **Posible problema**: muchos codificadores de RTP no permiten nombres de host y se necesitará adquirir una dirección IP.  
   
-    **Pasos para solucionar problemas**: toofind Hola dirección IP, abra un símbolo del sistema en cualquier equipo. toodo esto en Windows, abra Hola selector de ejecución (WIN + R) y escriba "cmd" tooopen.  
+    **Pasos para solucionar problemas**: para buscar la dirección IP, abra un símbolo del sistema en cualquier equipo. Para hacer esto en Windows, abra el selector de ejecución (WIN + R) y escriba "cmd" para abrir.  
   
-    Una vez abierto Hola símbolo del sistema, escriba "Ping [nombre de Host de AMS]". 
+    Cuando se abra el símbolo del sistema, escriba "Ping [nombre de host de AMS]". 
   
-    nombre de host de Hello puede obtenerse mediante la omisión de número de puerto de Hola de hello URL de introducción de Azure, como se resalta en el siguiente ejemplo de Hola: 
+    El nombre de host se puede derivar omitiendo el número de puerto de la URL de introducción de Azure, como se resalta en el siguiente ejemplo: 
   
     rtp://test2-amstest009.rtp.channel.mediaservices.windows.net:2010/ 
   
     ![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle10.png)
 
 > [!NOTE]
-> Si, después de seguir los pasos de solución de problemas de Hola que todavía no se puede transmitir correctamente, envíe una incidencia de soporte técnico mediante Hola portal de Azure.
+> Si después de seguir los pasos de solución de problemas, todavía no puede realizar correctamente la transmisión, envíe una incidencia de soporte técnico mediante Azure Portal.
 > 
 > 
 

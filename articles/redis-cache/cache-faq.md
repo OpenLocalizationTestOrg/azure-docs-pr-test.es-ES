@@ -1,6 +1,6 @@
 ---
-title: "preguntas frecuentes de caché de Redis aaaAzure | Documentos de Microsoft"
-description: "Obtenga información acerca de hello respuestas toocommon preguntas, los patrones y prácticas recomendadas para caché en Redis de Azure"
+title: "Preguntas más frecuentes sobre Azure Redis Cache | Microsoft Docs"
+description: "Conozca las respuestas a preguntas comunes, patrones y prácticas recomendadas para Azure Redis Cache"
 services: redis-cache
 documentationcenter: 
 author: steved0x
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: sdanie
-ms.openlocfilehash: 2c6ed2f65f755bd08f04857b7af31f520cf4f158
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: dcabdb789489af1996276d8838afde410473738d
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-redis-cache-faq"></a>P+F de Azure Redis Cache
-Obtenga información acerca de hello respuestas toocommon preguntas, los patrones y prácticas recomendadas para caché en Redis de Azure.
+Conozca las respuestas a preguntas comunes, patrones y prácticas recomendadas para Azure Redis Cache.
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Mi pregunta no está respondida aquí. ¿Qué debo hacer?
 Si su pregunta no aparece aquí, háganoslo saber y lo ayudaremos a encontrar una respuesta.
 
-* Puede publicar una pregunta en los comentarios de Hola final Hola de estas preguntas más frecuentes y ponerse en contacto con el equipo de la memoria caché de Azure de Hola y otros miembros de la Comunidad sobre este artículo.
-* tooreach un público más amplio, puede publicar una pregunta en hello [foro de MSDN de caché de Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=azurecache) y ponerse en contacto con el equipo de la memoria caché de Azure de Hola y otros miembros de la Comunidad de Hola.
-* Si desea toomake una solicitud de característica, puede enviar sus solicitudes e ideas demasiado[voz de usuario de caché de Redis de Azure](https://feedback.azure.com/forums/169382-cache).
-* También puede enviar un correo electrónico toous en [Azure caché externo comentarios](mailto:azurecache@microsoft.com).
+* Puede publicar una pregunta en los comentarios al final de estas preguntas más frecuentes y ponerse en contacto con el equipo de Azure Cache y otros miembros de la comunidad con cualquier tema que tenga relación con este artículo.
+* Para llegar a más público, puede publicar una pregunta en el [foro de MSDN de Caché de Microsoft Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=azurecache) y ponerse en contacto con el equipo Caché de Microsoft Azure y otros miembros de la Comunidad.
+* Si desea presentar una solicitud para una característica, puede enviar sus solicitudes e ideas al [foro de voz del usuario de Azure Redis Cache](https://feedback.azure.com/forums/169382-cache).
+* También puede enviarnos un mensaje de correo electrónico a [Comentarios externos de Caché de Microsoft Azure](mailto:azurecache@microsoft.com).
 
 ## <a name="azure-redis-cache-basics"></a>Conceptos básicos de Azure Redis Cache
-Hola preguntas más frecuentes en esta sección se abordan algunos de los conceptos básicos de Hola de caché en Redis de Azure.
+Las preguntas más frecuentes de esta sección tratan algunos de los aspectos básicos de Azure Redis Cache.
 
-* [¿Qué es Caché en Redis de Azure?](#what-is-azure-redis-cache)
+* [¿Qué es Azure Redis Cache?](#what-is-azure-redis-cache)
 * [Introducción a Azure Redis Cache](#how-can-i-get-started-with-azure-redis-cache)
 
-Hola siguientes preguntas y respuestas cubren los conceptos básicos y preguntas acerca de la caché en Redis de Azure y se responden en uno de Hola otras secciones de preguntas más frecuentes.
+Las siguientes preguntas y respuestas abordan los conceptos básicos y las cuestiones sobre Azure Redis Cache; en una de las otras secciones de preguntas más frecuentes encontrará las respuestas.
 
 * [¿Qué oferta y tamaño de Caché en Redis debo utilizar?](#what-redis-cache-offering-and-size-should-i-use)
 * [¿Qué clientes de Caché en Redis puedo usar?](#what-redis-cache-clients-can-i-use)
 * [¿Hay un emulador local para Azure Redis Cache?](#is-there-a-local-emulator-for-azure-redis-cache)
-* [¿Cómo se supervisa el estado de Hola y el rendimiento de la memoria caché?](#how-do-i-monitor-the-health-and-performance-of-my-cache)
+* [¿Cómo se puede supervisar el estado y el rendimiento de la memoria caché?](#how-do-i-monitor-the-health-and-performance-of-my-cache)
 
 ## <a name="planning-faqs"></a>Preguntas más frecuentes de planeación
 * [¿Qué oferta y tamaño de Caché en Redis debo utilizar?](#what-redis-cache-offering-and-size-should-i-use)
@@ -52,48 +52,48 @@ Hola siguientes preguntas y respuestas cubren los conceptos básicos y preguntas
 * [¿Puedo utilizar Azure Redis Cache con la nube de Azure Government, la nube de China de Azure o Microsoft Azure Alemania?](#can-i-use-azure-redis-cache-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany)
 
 ## <a name="development-faqs"></a>Preguntas más frecuentes de desarrollo
-* [¿Qué opciones de configuración de StackExchange.Redis Hola se hacer?](#what-do-the-stackexchangeredis-configuration-options-do)
+* [¿Qué hacen las opciones de configuración de StackExchange.Redis?](#what-do-the-stackexchangeredis-configuration-options-do)
 * [¿Qué clientes de Caché en Redis puedo usar?](#what-redis-cache-clients-can-i-use)
 * [¿Hay un emulador local para Azure Redis Cache?](#is-there-a-local-emulator-for-azure-redis-cache)
 * [¿Cómo puedo ejecutar comandos de Redis?](#how-can-i-run-redis-commands)
-* [¿Por qué no caché en Redis de Azure tiene una referencia de biblioteca de clases MSDN como parte de Hola otros servicios de Azure?](#why-doesnt-azure-redis-cache-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services)
+* [¿Por qué Azure Redis Cache no tiene una referencia de biblioteca de clases MSDN como otros servicios de Azure?](#why-doesnt-azure-redis-cache-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services)
 * [¿Puedo usar Azure Redis Cache como caché de la sesión PHP?](#can-i-use-azure-redis-cache-as-a-php-session-cache)
 * [¿Cuáles son las bases de datos de Redis?](#what-are-redis-databases)
 
 ## <a name="security-faqs"></a>Preguntas más frecuentes de seguridad
-* [¿Cuándo se puede habilitar el puerto de sin SSL de Hola para conectar tooRedis?](#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis)
+* [¿Cuándo se debe habilitar el puerto que no es SSL para la conexión a Redis?](#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis)
 
 ## <a name="production-faqs"></a>Preguntas más frecuentes de producción
 * [¿Cuáles son algunas prácticas recomendadas de producción?](#what-are-some-production-best-practices)
-* [¿Cuáles son algunas de las consideraciones de hello cuando utilice comandos de Redis comunes?](#what-are-some-of-the-considerations-when-using-common-redis-commands)
-* [¿Cómo puedo realicen pruebas comparativas y pruebas Hola de rendimiento de la memoria caché?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+* [¿Cuáles son las consideraciones que deben tenerse en cuenta al usar los comandos de Redis comunes?](#what-are-some-of-the-considerations-when-using-common-redis-commands)
+* [¿Cómo se pueden realizar bancos de pruebas y probar el rendimiento del caché?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 * [Detalles importantes sobre el crecimiento del grupo de subprocesos](#important-details-about-threadpool-growth)
-* [Habilitar tooget de servidor de catálogo global más rendimiento del cliente de hello al usar StackExchange.Redis](#enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis)
+* [Habilitación de GC del servidor para mejorar el rendimiento del cliente cuando se usa StackExchange.Redis](#enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis)
 * [Consideraciones sobre rendimiento de las conexiones](#performance-considerations-around-connections)
 
 ## <a name="monitoring-and-troubleshooting-faqs"></a>Preguntas más frecuentes de supervisión y solución de problemas
-Hola preguntas más frecuentes en esta sección cubren habituales de supervisión y solución de problemas de preguntas. Para obtener más información sobre la supervisión y solución de problemas de las instancias de caché en Redis de Azure, consulte [cómo toomonitor Redis de Azure almacenan en caché](cache-how-to-monitor.md) y [cómo tootroubleshoot Redis de Azure almacenan en caché](cache-how-to-troubleshoot.md).
+Las preguntas más frecuentes de esta sección abarcan las cuestiones comunes sobre supervisión y solución de problemas. Para más información sobre la supervisión y la solución de problemas de las instancias de Azure Redis Cache, consulte [Supervisión de Azure Redis Cache](cache-how-to-monitor.md) y [Solución de problemas de Azure Redis Cache](cache-how-to-troubleshoot.md).
 
-* [¿Cómo se supervisa el estado de Hola y el rendimiento de la memoria caché?](#how-do-i-monitor-the-health-and-performance-of-my-cache)
+* [¿Cómo se puede supervisar el estado y el rendimiento de la memoria caché?](#how-do-i-monitor-the-health-and-performance-of-my-cache)
 * [¿Por qué estoy viendo los tiempos de expiración?](#why-am-i-seeing-timeouts)
-* [¿Por qué se desconecta mi cliente de caché de hello?](#why-was-my-client-disconnected-from-the-cache)
+* [¿Por qué se desconectó el cliente desde la memoria caché?](#why-was-my-client-disconnected-from-the-cache)
 
 ## <a name="prior-cache-offering-faqs"></a>Preguntas más frecuentes de la oferta de caché anterior
 * [¿Qué oferta de caché de Azure es adecuada para mí?](#which-azure-cache-offering-is-right-for-me)
 
 ### <a name="what-is-azure-redis-cache"></a>¿Qué es Azure Redis Cache?
-Caché en Redis de Azure se basa en código de abierto populares hello [caché en Redis](http://redis.io). Proporciona acceso a tooa dedicado Redis caché segura, administrada por Microsoft y es accesible desde cualquier aplicación en Azure. Para obtener información más detallada, vea hello [Azure Redis Cache](https://azure.microsoft.com/services/cache/) página del producto en Azure.com.
+Azure Redis Cache se basa en la popular [caché en Redis](http://redis.io) de código abierto. Ofrece acceso a una instancia de Redis Cache segura y dedicada, administrada por Microsoft y accesible desde cualquier aplicación de Azure. Para obtener más información, consulte la página del producto [Azure Redis Cache](https://azure.microsoft.com/services/cache/) en Azure.com.
 
 ### <a name="how-can-i-get-started-with-azure-redis-cache"></a>Introducción a Azure Redis Cache
 Hay varias maneras de empezar a utilizar Azure Redis Cache.
 
 * Puede consultar uno de los tutoriales disponibles para [.NET](cache-dotnet-how-to-use-azure-redis-cache.md), [ASP.NET](cache-web-app-howto.md), [Java](cache-java-get-started.md), [Node.js](cache-nodejs-get-started.md) y [Python](cache-python-get-started.md).
-* Puede ver [cómo tooBuild alto rendimiento aplicaciones utilizando Microsoft Azure Redis Cache](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/).
-* Puede consultar documentación del cliente de Hola para los clientes de Hola que coincide con el lenguaje de desarrollo de Hola de su toosee proyecto cómo toouse Redis. Hay muchos clientes de Redis que pueden utilizarse con Azure Redis Cache. Para ver una lista de clientes de Redis, consulte [http://redis.io/clients](http://redis.io/clients).
+* Puede ver el vídeo [How to Build High Performance Apps Using Microsoft Azure Redis Cache](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/)(Procedimiento para compilar aplicaciones de alto rendimiento con Microsoft Azure Redis Cache).
+* Puede consultar la documentación de los clientes que coincidan con el lenguaje de desarrollo de su proyecto para ver cómo usar Redis. Hay muchos clientes de Redis que pueden utilizarse con Azure Redis Cache. Para ver una lista de clientes de Redis, consulte [http://redis.io/clients](http://redis.io/clients).
 
 Si no tiene una cuenta de Azure, siga estos pasos:
 
-* [Abrir una cuenta de Azure gratis](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero). Obtenga créditos que pueden ser utilizado tootry out servicios de Azure de pago. Incluso después de que se agoten los créditos hello, puede mantener la cuenta de hello y usar características y servicios de Azure gratuitos.
+* [Abrir una cuenta de Azure gratis](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero). Obtenga créditos que puede usar para probar los servicios de Azure de pago. Incluso después de que se agoten los créditos, puede mantener la cuenta y usar los servicios y características gratuitos de Azure.
 * [Activar los beneficios de suscripción a Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=redis_cache_hero). Su suscripción a MSDN le proporciona créditos todos los meses que puede usar para servicios de Azure de pago.
 
 <a name="cache-size"></a>
@@ -101,38 +101,38 @@ Si no tiene una cuenta de Azure, siga estos pasos:
 ### <a name="what-redis-cache-offering-and-size-should-i-use"></a>¿Qué oferta y tamaño de Caché en Redis debo utilizar?
 Cada oferta de Azure Redis Cache proporciona diferentes niveles de **tamaño**, **ancho de banda**, **alta disponibilidad** y opciones del **Acuerdo de Nivel de Servicio**.
 
-Consideraciones para elegir una oferta de caché son las siguientes de Hola.
+Las siguientes son consideraciones para elegir una oferta de caché.
 
-* **Memoria**: niveles de básico y estándar de hello ofrecen 250 MB: 53 GB. nivel de Hello Premium ofrece hasta too530 GB. Para obtener más información, consulte [Precios de Azure Redis Cache](https://azure.microsoft.com/pricing/details/cache/).
-* **Rendimiento de red**: si tiene una carga de trabajo que requiere un alto rendimiento, nivel de hello Premium ofrece más ancho de banda en comparación con tooStandard o Basic. También dentro de cada nivel, las memorias caché de mayor tamaño tienen más ancho de banda debido a Hola subyacente de la máquina virtual que hospeda la caché de Hola. Vea hello [a partir de tabla](#cache-performance) para obtener más información.
-* **Rendimiento**: nivel Premium de hello ofrece un rendimiento máximo disponible de Hola. Si el cliente o servidor de caché de hello alcanza el límite de ancho de banda de hello, puede recibir los tiempos de espera en el lado del cliente de Hola. Para obtener más información, vea hello en la tabla siguiente.
-* **Alta disponibilidad/SLA**: caché en Redis de Azure garantiza que una memoria caché estándar o Premium está disponible al menos un 99,9% de tiempo de Hola. toolearn más información sobre nuestro SLA, consulte [precios de caché de Redis de Azure](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). Hola SLA solo cubre los puntos de conexión de conectividad toohello memoria caché. Hola SLA no cubre la protección contra la pérdida de datos. Se recomienda usar la característica de persistencia de datos de Redis hello en resistencia de hello Premium capa tooincrease contra la pérdida de datos.
-* **Persistencia de los datos de Redis**: nivel Premium de hello permite toopersist datos de la caché de hello en una cuenta de almacenamiento de Azure. En una caché básico o estándar, todos los datos de Hola se almacena en memoria. Si existen problemas con la infraestructura subyacente, podría producirse una pérdida de los datos. Se recomienda usar la característica de persistencia de datos de Redis hello en resistencia de hello Premium capa tooincrease contra la pérdida de datos. Azure Redis Cache ofrece opciones de RDB y AOF (próximamente) en la persistencia de Redis. Para obtener más información, consulte [cómo persistencia tooconfigure para una caché de Redis de Azure Premium](cache-how-to-premium-persistence.md).
-* **Redis clúster**: toocreate almacena en caché mayor de 53 GB o tooshard datos en varios nodos de Redis, puede utilizar clústeres de Redis, que está disponible en el nivel de hello Premium. Cada nodo consta de un par de caché principal/réplica para alta disponibilidad. Para obtener más información, consulte [cómo tooconfigure agrupación en clústeres para una caché en Redis de Azure Premium](cache-how-to-premium-clustering.md).
-* **Mejorado aislamiento de red y seguridad**: implementación de la red Virtual de Azure (VNET) proporciona seguridad mejorada y aislamiento para la caché en Redis de Azure, así como las subredes, las directivas de control de acceso, y otra características toofurther restringir el acceso. Para obtener más información, consulte [cómo son compatibles con tooconfigure red Virtual para una caché de Redis de Azure Premium](cache-how-to-premium-vnet.md).
-* **Configurar Redis**: Hola estándar y los niveles de Premium, puede configurar Redis para las notificaciones de Keyspace.
-* **Número máximo de conexiones de cliente**: nivel de hello Premium ofrece número máximo de Hola de clientes que se pueden conectar tooRedis, con un número mayor de conexiones para memorias caché con tamaño mayor. Para obtener más información, consulte [Precios de Azure Redis Cache](https://azure.microsoft.com/pricing/details/cache/).
-* **Dedicado Core para servidor Redis**: en el nivel Premium de hello, todos los tamaños de caché tienen un núcleo dedicado para Redis. En los niveles básico o estándar de hello, Hola tamaño C1 y superior tenga un núcleo dedicado para el servidor de Redis.
-* **Redis es de subproceso único** , por tanto tener dos o más núcleos no proporciona una ventaja adicional sobre tener solo dos núcleos, pero las máquinas virtuales de mayor tamaño suelen tener más ancho de banda que las de menor tamaño. Si el cliente o servidor de caché de hello alcanza el límite de ancho de banda de hello, recibirá los tiempos de espera en el lado del cliente de Hola.
-* **Mejoras de rendimiento**: memorias caché en el nivel Premium de Hola se implementan en hardware con procesadores rápidos disponibles actualmente, lo que proporciona una mejor toohello comparados básico o estándar nivel de rendimiento. Las cachés de nivel Premium tienen un mayor rendimiento y latencias más bajas.
+* **Memoria**: los niveles Básico y Estándar ofrecen 250 MB – 53 GB. El nivel Premium ofrece hasta 530 GB. Para obtener más información, consulte [Precios de Azure Redis Cache](https://azure.microsoft.com/pricing/details/cache/).
+* **Rendimiento de la red**: si tiene una carga de trabajo que requiere un rendimiento alto, el nivel Premium ofrece más ancho de banda en comparación con los niveles Estándar o Básico. También dentro de cada nivel, las cachés de mayor tamaño tienen más ancho de banda debido a la máquina virtual subyacente que hospeda la memoria caché. Para más información, consulte la [tabla siguiente](#cache-performance).
+* **Rendimiento**: el nivel Premium ofrece el máximo rendimiento disponible. Si el servidor o el cliente de caché alcanzan los límites del ancho de banda, recibirá los tiempos de espera del cliente. Para más información, vea la tabla siguiente.
+* **Alta disponibilidad/SLA**: Azure Redis Cache garantiza que la caché de los niveles Estándar y Premium estará disponible como mínimo un 99,9 % del tiempo. Para más información sobre nuestro SLA, vea [Precios de Azure Redis Cache](https://azure.microsoft.com/support/legal/sla/cache/v1_0/). El SLA solo cubre la conectividad para los extremos de la memoria caché. El SLA no cubre la protección frente a la pérdida de datos. Se recomienda usar la característica de persistencia de datos de Redis en el nivel Premium para aumentar la resistencia contra la pérdida de datos.
+* **Persistencia de datos de Redis**: el nivel Premium le permite conservar los datos de la memoria caché en una cuenta de Azure Storage. En una caché Básico/Estándar todos los datos se almacenan solo en la memoria. Si existen problemas con la infraestructura subyacente, podría producirse una pérdida de los datos. Se recomienda usar la característica de persistencia de datos de Redis en el nivel Premium para aumentar la resistencia contra la pérdida de datos. Azure Redis Cache ofrece opciones de RDB y AOF (próximamente) en la persistencia de Redis. Para más información, vea [Cómo configurar la persistencia para una instancia Premium de Azure Redis Cache](cache-how-to-premium-persistence.md).
+* **Clúster en Redis**: para crear memorias caché de más de 53 GB o particionar los datos entre varios nodos de Redis, puede usar la agrupación en clústeres Redis, disponible en el nivel Premium. Cada nodo consta de un par de caché principal/réplica para alta disponibilidad. Para más información, vea [Cómo configurar la agrupación en clústeres para una instancia Premium de Azure Redis Cache](cache-how-to-premium-clustering.md).
+* **Aislamiento de red y seguridad mejorado**: la implementación de Azure Virtual Network ofrece seguridad mejorada y aislamiento para su instancia de Azure Redis Cache, así como subredes, directivas de control de acceso y otras características para restringir aún más el acceso. Para más información, vea [Cómo configurar la compatibilidad de Virtual Network para una instancia Premium de Azure Redis Cache](cache-how-to-premium-vnet.md).
+* **Configurar Redis**: tanto en los niveles Estándar como Premium, puede configurar Redis para las notificaciones de Keyspace.
+* **Número máximo de conexiones de cliente**: el nivel Premium la ofrece el número máximo de clientes que se pueden conectar a Redis, con un número mayor de conexiones para memorias caché de mayor tamaño. Para obtener más información, consulte [Precios de Azure Redis Cache](https://azure.microsoft.com/pricing/details/cache/).
+* **Núcleo dedicado para el servidor Redis**: en el nivel Premium todos los tamaños de caché tienen un núcleo dedicado para Redis. En los niveles Básico/Estándar, el tamaño C1 y superiores tienen un núcleo dedicado para el servidor Redis.
+* **Redis es de subproceso único**, por tanto tener dos o más núcleos no proporciona una ventaja adicional sobre tener solo dos núcleos, pero las máquinas virtuales de mayor tamaño suelen tener más ancho de banda que las de menor tamaño. Si el servidor o el cliente de caché alcanza los límites del ancho de banda, recibirá los tiempos de espera del cliente.
+* **Mejoras de rendimiento**: las memorias caché en el nivel Premium se implementan en el hardware que tiene procesadores más rápidos y ofrecen un mejor rendimiento en comparación con el nivel Básico o Estándar. Las cachés de nivel Premium tienen un mayor rendimiento y latencias más bajas.
 
 <a name="cache-performance"></a>
 
 ### <a name="azure-redis-cache-performance"></a>Rendimiento de Azure Redis Cache
-Hello siguiente tabla muestran valores de ancho de banda máximo de hello observados durante la comprobación de diversos tamaños de Standard y Premium se almacena en caché mediante `redis-benchmark.exe` desde una VM de Iaas con el punto de conexión de hello Azure Redis Cache. 
+En la tabla siguiente se muestran los valores máximos del ancho de banda observados durante la comprobación de los diversos tamaños de memorias caché Estándar y Premium mediante `redis-benchmark.exe` desde una máquina virtual de Iaas en el punto de conexión de Azure Redis Cache. 
 
 >[!NOTE] 
->Estos valores no se garantizan y no hay ningún SLA para estos números, sino que deben ser los habituales. Se puede cargar su propio tamaño de caché correcto de aplicación toodetermine hello para la aplicación de prueba.
+>Estos valores no se garantizan y no hay ningún SLA para estos números, sino que deben ser los habituales. Debe realizar la prueba de carga de su propia aplicación para determinar el tamaño adecuado de caché para la aplicación.
 >
 >
 
-En esta tabla, podemos sacar Hola siguientes conclusiones:
+A partir de esta tabla, podemos extraer las conclusiones siguientes:
 
-* Rendimiento de cachés de Hola Hola mismo tamaño es más alto en Hola nivel Premium como nivel estándar toohello comparados. Por ejemplo, con un 6 GB de memoria caché, rendimiento de P1 es 180.000 RPS como too49 comparados, 000 para C3.
-* Con Redis agrupación en clústeres, el rendimiento aumenta linealmente a medida que aumente el número de Hola de particiones (nodos) en clúster de Hola. Por ejemplo, si crea un clúster P4 de 10 particiones, rendimiento disponible hello es 400.000 * 10 = 4 millones RPS.
-* El rendimiento para los tamaños de clave más grandes es más alto en el nivel Premium de hello como toohello comparado nivel estándar.
+* El rendimiento de las memorias caché que tienen el mismo tamaño es mayor en el nivel Premium que en el nivel Estándar. Por ejemplo, en el caso de una memoria caché de 6 GB, el rendimiento de P1 es de 180 000 solicitudes por segundo frente a las 49 000 de C3.
+* Con la agrupación en clústeres de Redis, el rendimiento aumenta de manera lineal a medida que aumenta el número de particiones (nodos) del clúster. Por ejemplo, si se crea un clúster P4 de 10 particiones, el rendimiento disponible es de 400 000 * 10 = 4 millones de solicitudes por segundo.
+* El rendimiento para los tamaños de clave más grandes es mayor en el nivel Premium que en el nivel Estándar.
 
-| Plan de tarifa  | Tamaño | Núcleos de CPU | Ancho de banda disponible | Tamaño del valor de 1 kB |
+| Nivel de precios | Tamaño | Núcleos de CPU | Ancho de banda disponible | Tamaño del valor de 1 kB |
 | --- | --- | --- | --- | --- |
 | **Tamaños de caché estándar** | | |**Megabits por segundo (Mb/s) o Megabytes por segundo (MB/s)** |**Solicitudes por segundo (RPS)** |
 | C0 |250 MB |Compartido |5 / 0.625 |600 |
@@ -148,20 +148,20 @@ En esta tabla, podemos sacar Hola siguientes conclusiones:
 | P3 |26 GB |4 |3,000 / 375 |360,000 |
 | P4 |53 GB |8 |6,000 / 750 |400.000 |
 
-Para obtener instrucciones acerca de cómo descargar Hola Redis herramientas como `redis-benchmark.exe`, vea hello [¿cómo se puede ejecutar comandos de Redis?](#cache-commands) sección.
+Para obtener instrucciones acerca de cómo descargar las herramientas de Redis como `redis-benchmark.exe`, consulte la sección [¿Cómo puedo ejecutar los comandos de Redis?](#cache-commands) .
 
 <a name="cache-region"></a>
 
 ### <a name="in-what-region-should-i-locate-my-cache"></a>¿En qué región debo buscar mi caché?
-Para obtener el mejor rendimiento y latencia más baja, busque el servicio Azure Redis Cache Hola misma región que la aplicación de cliente de caché.
+Para obtener el mejor rendimiento y la latencia más baja, sitúe su instancia de Azure Redis Cache en la misma región que la aplicación cliente de la caché.
 
 <a name="cache-billing"></a>
 
 ### <a name="how-am-i-billed-for-azure-redis-cache"></a>¿Cómo me facturan por Azure Redis Cache?
-Los precios de Azure Redis Cache están [aquí](https://azure.microsoft.com/pricing/details/cache/). página de precios de Hello muestra precio como una tarifa por hora. Las memorias caché se facturan según una por minuto de tiempo de Hola Hola caché se crea hasta el tiempo de Hola que se elimina una memoria caché. No hay ninguna opción para detener o pausar facturación Hola de una memoria caché.
+Los precios de Azure Redis Cache están [aquí](https://azure.microsoft.com/pricing/details/cache/). La página de precios muestra los precios por hora. Las memorias caché se facturan por minuto desde el momento en que se crea la memoria caché hasta el momento en que se elimina una memoria caché. No hay ninguna opción de detener o pausar la facturación de una memoria caché.
 
 ### <a name="can-i-use-azure-redis-cache-with-azure-government-cloud-azure-china-cloud-or-microsoft-azure-germany"></a>¿Puedo utilizar Azure Redis Cache con la nube de Azure Government, la nube de China de Azure o Microsoft Azure Alemania?
-Sí, Azure Redis Cache está disponible en la nube de Azure Government, la nube de China de Azure y Microsoft Azure Alemania. direcciones URL de Hola para acceder y administrar caché en Redis de Azure son diferentes en esas nubes en comparación con la nube pública de Azure. 
+Sí, Azure Redis Cache está disponible en la nube de Azure Government, la nube de China de Azure y Microsoft Azure Alemania. Las direcciones URL para acceder a Azure Redis Cache y administrar esta solución son diferentes en estas nubes en comparación con la nube pública de Azure. 
 
 | Nube   | Sufijo DNS para Redis            |
 |---------|---------------------------------|
@@ -170,59 +170,59 @@ Sí, Azure Redis Cache está disponible en la nube de Azure Government, la nube 
 | Alemania | *.redis.cache.cloudapi.de       |
 | China   | *.redis.cache.chinacloudapi.cn  |
 
-Para obtener más información sobre las consideraciones al usar caché en Redis de Azure con otras nubes, vea Hola siguientes vínculos.
+Para más información sobre el uso de Azure Redis Cache con otras nubes, consulte los vínculos siguientes.
 
 - [Bases de datos de Azure Government - Azure Redis Cache](../azure-government/documentation-government-services-database.md#azure-redis-cache)
 - [Nube de China de Azure - Azure Redis Cache](https://www.azure.cn/documentation/services/redis-cache/)
 - [Microsoft Azure Alemania](https://azure.microsoft.com/overview/clouds/germany/)
 
-Para obtener información sobre el uso de caché en Redis de Azure con PowerShell en la nube de la administración pública de Azure y Azure China en la nube, Microsoft Azure en Alemania, consulte [cómo tooconnect tooother nubes - PowerShell caché Redis de Azure](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds).
+Para más información sobre el uso de Azure Redis Cache con PowerShell en la nube de Azure Government, la nube de China de Azure y Microsoft Azure Alemania, consulte [cómo conectar con otras nubes con Azure Redis Cache PowerShell](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds).
 
 <a name="cache-configuration"></a>
 
-### <a name="what-do-hello-stackexchangeredis-configuration-options-do"></a>¿Qué opciones de configuración de StackExchange.Redis Hola se hacer?
-StackExchange.Redis tiene muchas opciones. Esta sección trata sobre algunos de los parámetros comunes de Hola. Para obtener más información acerca de las opciones de StackExchange.Redis, consulte [Configuración de StackExchange.Redis](https://stackexchange.github.io/StackExchange.Redis/Configuration).
+### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>¿Qué hacen las opciones de configuración de StackExchange.Redis?
+StackExchange.Redis tiene muchas opciones. En esta sección se describen algunas de las configuraciones comunes. Para obtener más información acerca de las opciones de StackExchange.Redis, consulte [Configuración de StackExchange.Redis](https://stackexchange.github.io/StackExchange.Redis/Configuration).
 
 | ConfigurationOptions | Descripción | Recomendación |
 | --- | --- | --- |
-| AbortOnConnectFail |Cuando se establece tootrue, conexión hello no volverá a conectarse después de un error de red. |Establecer toofalse y deje que StackExchange.Redis volver a conectar automáticamente. |
-| ConnectRetry |conectarse Hola número de veces que los intentos de conexión de toorepeat durante inicial. |Vea Hola después de notas para obtener instrucciones. |
-| ConnectTimeout |Tiempo de espera en milisegundos para operaciones de conexión. |Vea Hola después de notas para obtener instrucciones. |
+| AbortOnConnectFail |Cuando se establece en true, la conexión no se volverá a conectar después de un error de red. |Establézcalo en false y deje que StackExchange.Redis se vuelva a conectar automáticamente. |
+| ConnectRetry |El número de veces que se repiten los intentos de conexión durante la conexión inicial. |Consulte la siguiente imagen para obtener instrucciones. |
+| ConnectTimeout |Tiempo de espera en milisegundos para operaciones de conexión. |Consulte la siguiente imagen para obtener instrucciones. |
 
-Valores predeterminados de Hola de cliente hello suelen ser suficientes. Puede ajustar opciones de hello en función de la carga de trabajo.
+Habitualmente, los valores predeterminados del cliente son suficientes. Ajuste las opciones en función de su carga de trabajo.
 
 * **Reintentos**
-  * Para ConnectRetry y ConnectTimeout, instrucciones generales de hello es toofail rápido y vuelva a intentarlo. Esta guía se basa en la carga de trabajo y la cantidad de tiempo en el promedio de toma de su tooissue cliente un comando de Redis y recibir una respuesta.
-  * Permita que StackExchange.Redis se vuelva a conectar automáticamente en lugar de comprobar el estado de conexión y volver a conectarse. **Procure no utilizar hello ConnectionMultiplexer.IsConnected propiedad**.
-  * Snowballing - a veces puede encontrarse con un problema donde están reintentando y Hola reintenta la bola de nieve y nunca se recupera. Si se produce snowballing, considere la posibilidad de usar un algoritmo de reintento de retroceso exponencial tal y como se describe en [vuelva a intentar instrucciones generales](../best-practices-retry-general.md) publicados por el grupo de Microsoft Patterns & Practices Hola.
+  * Para ConnectRetry y ConnectTimeout, la regla general es error rápido e intentarlo de nuevo. Esta regla se basa en la carga de trabajo y en cuánto tiempo como media tarda el cliente en enviar un comando de Redis y en recibir una respuesta.
+  * Permita que StackExchange.Redis se vuelva a conectar automáticamente en lugar de comprobar el estado de conexión y volver a conectarse. **Evite el uso de la propiedad ConnectionMultiplexer.IsConnected**.
+  * Efecto bola de nieve: a veces puede encontrarse con un problema cuando lo está intentando y este error aumenta y nunca se recupera. En este caso, debe considerar el uso de un algoritmo de reintento de retroceso exponencial, tal y como se describe en el artículo [Orientación general sobre reintentos](../best-practices-retry-general.md) publicado por el grupo de Microsoft Patterns & Practices.
 * **Valores de tiempo de expiración**
-  * Tenga en cuenta la carga de trabajo y establecer valores de hello en consecuencia. Si va a almacenar los valores grandes, establecer el valor más alto de tooa de tiempo de espera de Hola.
-  * Establecer `AbortOnConnectFail` toofalse y deje que StackExchange.Redis volver a conectar automáticamente.
-  * Usar una única instancia de ConnectionMultiplexer para la aplicación hello. Puede usar un toocreate LazyConnection una sola instancia devuelto por una propiedad de conexión, como se muestra en [conectarse mediante la clase ConnectionMultiplexer de hello de caché de toohello](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
-  * Conjunto hello `ConnectionMultiplexer.ClientName` propiedad tooan instancia único nombre de la aplicación con fines de diagnóstico.
+  * Tenga en cuenta la carga de trabajo y establezca los valores según corresponda. Si almacena valores grandes, establezca el tiempo de expiración en un valor superior.
+  * Establezca `AbortOnConnectFail` en False y deje que StackExchange.Redis se vuelva a conectar automáticamente.
+  * Utilice una única instancia de ConnectionMultiplexer para la aplicación. Puede usar LazyConnection para crear una instancia única que se devuelva por una propiedad de conexión, tal como se muestra en [Conexión a la caché mediante la clase ConnectionMultiplexer](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
+  * Establezca la propiedad `ConnectionMultiplexer.ClientName` a un nombre único de la instancia de aplicación con fines de diagnóstico.
   * Use varias instancias `ConnectionMultiplexer` para cargas de trabajo personalizadas.
       * Puede seguir este modelo si tiene una carga variable en la aplicación. Por ejemplo:
       * Puede tener un multiplexor para tratar con claves grandes.
       * Puede tener un multiplexor para tratar con claves pequeñas.
       * Puede establecer distintos valores para los tiempos de expiración de la conexión así como lógica de reintento para cada ConnectionMultiplexer que use.
-      * Conjunto hello `ClientName` propiedad en cada toohelp multiplexor con diagnósticos.
-      * Esta guía puede provocar la latencia de toomore simplificado por `ConnectionMultiplexer`.
+      * Establezca la propiedad `ClientName` en cada multiplexor para ayudar con el diagnóstico.
+      * Esta guía puede conducir a una latencia más simplificada por `ConnectionMultiplexer`.
 
 ### <a name="what-redis-cache-clients-can-i-use"></a>¿Qué clientes de Caché en Redis puedo usar?
-Una de las grandes virtudes de Hola de Redis es que hay muchos clientes admiten muchos lenguajes de desarrollo diferentes. Para obtener una lista de clientes, consulte [Redis clients](http://redis.io/clients)(Clientes de Redis). Para ver los tutoriales que abarcan varios idiomas diferentes y los clientes, consulte [cómo toouse Redis de Azure almacenan en caché](cache-dotnet-how-to-use-azure-redis-cache.md) y haga clic en el idioma de hello deseado del selector de idioma de hello en parte superior de hello del artículo de Hola.
+Una de las grandes virtudes de Redis es que hay muchos clientes que admiten muchos lenguajes de desarrollo diferentes. Para obtener una lista de clientes, consulte [Redis clients](http://redis.io/clients)(Clientes de Redis). Para ver tutoriales que abarcan varios lenguajes y clientes diferentes, consulte [Uso de Azure Redis Cache](cache-dotnet-how-to-use-azure-redis-cache.md) y haga clic en el idioma deseado en el selector de idioma en la parte superior del artículo.
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
 
 <a name="cache-emulator"></a>
 
 ### <a name="is-there-a-local-emulator-for-azure-redis-cache"></a>¿Hay un emulador local para Azure Redis Cache?
-No hay ningún emulador local para caché en Redis de Azure, pero puede ejecutar versión MSOpenTech de Hola de redis server.exe de hello [Redis herramientas de línea de comandos](https://github.com/MSOpenTech/redis/releases/) en local del equipo y conectar tooit tooget una caché local del tooa experiencia similar emulador de Windows, como se muestra en el siguiente ejemplo de Hola:
+No hay ningún emulador local para Azure Redis Cache, pero puede ejecutar la versión MSOpenTech de redis-server.exe desde las [herramientas de la línea de comandos de Redis](https://github.com/MSOpenTech/redis/releases/) en su máquina local y conectarse a ella para obtener una experiencia similar a un emulador de memoria caché local, tal y como se muestra en el ejemplo siguiente.
 
     private static Lazy<ConnectionMultiplexer>
           lazyConnection = new Lazy<ConnectionMultiplexer>
         (() =>
         {
-            // Connect tooa locally running instance of Redis toosimulate a local cache emulator experience.
+            // Connect to a locally running instance of Redis to simulate a local cache emulator experience.
             return ConnectionMultiplexer.Connect("127.0.0.1:6379");
         });
 
@@ -235,70 +235,70 @@ No hay ningún emulador local para caché en Redis de Azure, pero puede ejecutar
         }
 
 
-Opcionalmente, puede configurar un [redis.conf](http://redis.io/topics/config) toomore archivo coinciden estrechamente con hello [configuración de caché predeterminada](cache-configure.md#default-redis-server-configuration) de su caché de Redis en línea de Azure si lo desea.
+Si lo desea, también puede configurar un archivo [redis.conf](http://redis.io/topics/config) para ajustarse con más precisión a la [configuración de caché predeterminada](cache-configure.md#default-redis-server-configuration) del servicio en línea Azure Redis Cache.
 
 <a name="cache-commands"></a>
 
 ### <a name="how-can-i-run-redis-commands"></a>¿Cómo puedo ejecutar comandos de Redis?
-Puede usar cualquiera de los comandos de hello enumerados en [comandos de Redis](http://redis.io/commands#) excepto los comandos de hello enumerados en [Redis comandos no admitidos en caché en Redis de Azure](cache-configure.md#redis-commands-not-supported-in-azure-redis-cache). Tiene varios comandos de Redis toorun de opciones.
+Puede usar cualquiera de los comandos enumerados en [Redis commands](http://redis.io/commands#) (Comandos de Redis), salvo los comandos indicados en [Comandos de Redis no admitidos en Azure Redis Cache](cache-configure.md#redis-commands-not-supported-in-azure-redis-cache). Para ejecutar comandos de Redis, tiene varias opciones.
 
-* Si tiene una caché Standard o Premium, puede ejecutar comandos de Redis mediante hello [Redis consola](cache-configure.md#redis-console). consola de Redis Hola proporciona un toorun de forma segura comandos de Redis en hello portal de Azure.
-* También puede utilizar herramientas de línea de comandos de Redis Hola. toouse, realizar Hola lo siguiente:
-* Descargar hello [Redis herramientas de línea de comandos](https://github.com/MSOpenTech/redis/releases/).
-* Conectar toohello caché mediante `redis-cli.exe`. Pase el extremo de la caché de hello con conmutador -h de Hola y la clave de Hola se mediante - a como se muestra en el siguiente ejemplo de Hola:
+* Si tiene una caché Estándar o Premium, puede ejecutar comandos de Redis mediante la [Consola de Redis](cache-configure.md#redis-console). La consola de Redis ofrece una manera segura de ejecutar comandos de Redis en Azure Portal.
+* También puede usar las herramientas de línea de comandos de Redis. Para ello, realice los siguientes pasos:
+* Descargue las [herramientas de línea de comandos de Redis](https://github.com/MSOpenTech/redis/releases/).
+* Conexión a la memoria caché mediante `redis-cli.exe`. Pase el punto de conexión de caché con el modificador -h y la clave con - a, tal como se muestra en el ejemplo siguiente:
 * `redis-cli -h <your cache="" name="">
   .redis.cache.windows.net -a <key>
   `
 
 > [!NOTE]
-> Hello herramientas de línea de comandos de Redis no funcionan con hello puerto SSL, pero puede utilizar una herramienta como `stunnel` toosecurely conectar puerto SSL de hello herramientas toohello según las instrucciones de hello en hello [anuncio de proveedor de estado de sesión de ASP.NET para Versión preliminar de Redis](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) entrada de blog.
+> Las herramientas de línea de comandos de Redis no funcionan con el puerto SSL, pero puede usar una utilidad como `stunnel` para conectar de forma segura las herramientas al puerto SSL siguiendo las instrucciones de la publicación del blog [Announcing ASP.NET Session State Provider for Redis Preview Release](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) (Comunicación del proveedor de estado de la sesión de ASP.NET para la versión preliminar de Redis).
 >
 >
 
 <a name="cache-reference"></a>
 
-### <a name="why-doesnt-azure-redis-cache-have-an-msdn-class-library-reference-like-some-of-hello-other-azure-services"></a>¿Por qué no caché en Redis de Azure tiene una referencia de biblioteca de clases MSDN como parte de Hola otros servicios de Azure?
-Caché en Redis de Microsoft Azure se basa en código abierto populares de hello caché en Redis y pueden tener acceso a una amplia variedad de [clientes de Redis](http://redis.io/clients) para muchos lenguajes de programación. Cada cliente tiene su propia API que hace llama toohello Redis caché instancia mediante [comandos de Redis](http://redis.io/commands).
+### <a name="why-doesnt-azure-redis-cache-have-an-msdn-class-library-reference-like-some-of-the-other-azure-services"></a>¿Por qué Azure Redis Cache no tiene una referencia de biblioteca de clases MSDN como otros servicios de Azure?
+Microsoft Azure Redis Cache se basa en la popular caché en Redis de código abierto, y son varios los [clientes de Redis](http://redis.io/clients) disponibles para muchos lenguajes de programación los que pueden tener acceso a ella. Cada cliente tiene su propia API que realiza llamadas a la instancia de Caché de Redis mediante los [comandos de Redis](http://redis.io/commands).
 
-Dado que cada cliente es diferente, no hay no una referencia de clase centralizada en MSDN; cada cliente mantiene su propia documentación de referencia. Documentación de referencia de toohello de Además, hay varios tutoriales que muestra cómo se inicia tooget con caché en Redis de Azure con distintos idiomas y los clientes de caché. tooaccess estos tutoriales, vea [cómo toouse Redis de Azure almacenan en caché](cache-dotnet-how-to-use-azure-redis-cache.md) y haga clic en el idioma de hello deseado del selector de idioma de hello en parte superior de hello del artículo de Hola.
+Dado que cada cliente es diferente, no hay no una referencia de clase centralizada en MSDN; cada cliente mantiene su propia documentación de referencia. Además de la documentación de referencia, hay varios tutoriales que muestran cómo empezar a trabajar con Azure Redis Cache con distintos idiomas y clientes de la caché. Para obtener acceso a estos tutoriales, consulte [Uso de Azure Redis Cache](cache-dotnet-how-to-use-azure-redis-cache.md) y haga clic en el idioma deseado en el selector de idioma en la parte superior del artículo.
 
 ### <a name="can-i-use-azure-redis-cache-as-a-php-session-cache"></a>¿Puedo usar Azure Redis Cache como caché de la sesión PHP?
-Sí, toouse caché en Redis de Azure como una memoria caché la sesión PHP, especifique la instancia Azure Redis Cache tooyour de cadena de conexión de hello en `session.save_path`.
+Sí, para usar Azure Redis Cache como una memoria caché de sesión PHP, especifique la cadena de conexión a la instancia de Azure Redis Cache en `session.save_path`.
 
 > [!IMPORTANT]
-> Al usar caché en Redis de Azure como una memoria caché de sesión PHP, debe URL codificar caché toohello de hello seguridad clave tooconnect usado, como se muestra en el siguiente ejemplo de Hola:
+> Al usar Azure Redis Cache como una caché de sesión PHP, debe codificar como dirección URL la clave de seguridad que se usa para conectarse a la memoria caché, tal como se muestra en el ejemplo siguiente.
 >
 > `session.save_path = "tcp://mycache.redis.cache.windows.net:6379?auth=<url encoded primary or secondary key here>";`
 >
-> Si Hola clave no está codificada de dirección URL, recibirá una excepción con un mensaje como:`Failed tooparse session.save_path`
+> Si la clave no está codificada como dirección URL, puede recibir una excepción con un mensaje similar al siguiente: `Failed to parse session.save_path`
 >
 >
 
-Para obtener más información sobre el uso de caché en Redis como una memoria caché de sesión PHP con cliente de PhpRedis hello, consulte [controlador de sesión de PHP](https://github.com/phpredis/phpredis#php-session-handler).
+Para más información sobre el uso de Redis Cache como caché de la sesión PHP con el cliente de PhpRedis, consulte [PHP Session handler](https://github.com/phpredis/phpredis#php-session-handler)(Controlador de sesión de PHP).
 
 ### <a name="what-are-redis-databases"></a>¿Cuáles son las bases de datos de Redis?
 
-Bases de datos de Redis son simplemente una separación lógica de datos dentro de hello misma instancia de Redis. memoria caché de Hola se comparte entre todas las bases de datos de Hola y el consumo de memoria real de una base de datos depende de hello claves/valores almacenados en esa base de datos. Por ejemplo, una caché C6 tiene 53 GB de memoria. Puede elegir tooput todos los 53 GB en una base de datos o puede dividirlo entre varias bases de datos. 
+Las bases de datos de Redis son simplemente una separación lógica de los datos en la misma instancia de Redis. La memoria caché se comparte entre todas las bases de datos y el consumo real de una base de datos depende de los pares clave-valor almacenados en esa base de datos. Por ejemplo, una caché C6 tiene 53 GB de memoria. Puede elegir colocar todos los 53 GB en una base de datos o dividirlo entre varias bases de datos. 
 
 > [!NOTE]
-> Cuando se utiliza una instancia Premium de Azure Redis Cache con clústeres habilitados, solo está disponible la base de datos 0. Esta limitación es una limitación de Redis intrínseca y no es específico tooAzure caché en Redis. Para obtener más información, vea [¿necesito toomake cualquier toouse de aplicación de cliente de cambios toomy de agrupación en clústeres?](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
+> Cuando se utiliza una instancia Premium de Azure Redis Cache con clústeres habilitados, solo está disponible la base de datos 0. Se trata de una limitación de Redis intrínseca y no es específica de Azure Redis Cache. Para más información, consulte [Configuración de Caché en Redis de Azure](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
 > 
 > 
 
 
 <a name="cache-ssl"></a>
 
-### <a name="when-should-i-enable-hello-non-ssl-port-for-connecting-tooredis"></a>¿Cuándo se puede habilitar el puerto de sin SSL de Hola para conectar tooRedis?
-El servidor Redis no admite SSL de forma nativa, pero sí Azure Redis Cache. Si se va a conectar tooAzure caché en Redis y el cliente admite SSL, como StackExchange.Redis, a continuación, debe usar SSL.
+### <a name="when-should-i-enable-the-non-ssl-port-for-connecting-to-redis"></a>¿Cuándo se debe habilitar el puerto que no es SSL para la conexión a Redis?
+El servidor Redis no admite SSL de forma nativa, pero sí Azure Redis Cache. Si se conecta a Azure Redis Cache y el cliente admite SSL, como StackExchange.Redis, deberá utilizar SSL.
 
 >[!NOTE]
->puerto no SSL de Hello está deshabilitado de forma predeterminada para las nuevas instancias de caché en Redis de Azure. Si el cliente no es compatible con SSL, debe habilitar puerto no SSL de hello siguiendo las instrucciones de Hola Hola [acceso a puertos](cache-configure.md#access-ports) sección de hello [configurar una memoria caché en Redis de Azure](cache-configure.md) artículo.
+>El puerto no SSL está deshabilitado de forma predeterminada para instancias nuevas de Azure Redis Cache. Si el cliente no admite SSL, debe habilitar el puerto no SSL siguiendo las instrucciones que se indican en la sección [Puertos de acceso](cache-configure.md#access-ports) del artículo [Configuración de una memoria caché en Azure Redis Cache](cache-configure.md).
 >
 >
 
-Redis herramientas como `redis-cli` no funcionan con hello puerto SSL, pero puede utilizar una herramienta como `stunnel` toosecurely conectar puerto SSL de hello herramientas toohello según las instrucciones de hello en hello [anunciar un proveedor de estado de sesión de ASP.NET para la versión de vista previa de Redis](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) entrada de blog.
+Las herramientas de Redis, como `redis-cli`, no funcionan con el puerto SSL. Sin embargo, puede usar una utilidad (por ejemplo, `stunnel`) para conectar de forma segura las herramientas con el puerto SSL. Para ello, siga las instrucciones que se describen en la publicación del blog [Announcing ASP.NET Session State Provider for Redis Preview Release](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) (Comunicación del proveedor de estado de la sesión de ASP.NET en la versión preliminar de Redis).
 
-Para obtener instrucciones acerca de cómo descargar Hola Redis herramientas, vea hello [¿cómo se puede ejecutar comandos de Redis?](#cache-commands) sección.
+Para obtener instrucciones acerca de cómo descargar las herramientas de Redis, consulte la sección [¿Cómo puedo ejecutar comandos de Redis?](#cache-commands) .
 
 ### <a name="what-are-some-production-best-practices"></a>¿Cuáles son algunas prácticas recomendadas de producción?
 * [Prácticas recomendadas de StackExchange.Redis](#stackexchangeredis-best-practices)
@@ -306,70 +306,70 @@ Para obtener instrucciones acerca de cómo descargar Hola Redis herramientas, ve
 * [Pruebas de rendimiento](#performance-testing)
 
 #### <a name="stackexchangeredis-best-practices"></a>Prácticas recomendadas de StackExchange.Redis
-* Establecer `AbortConnect` toofalse, a continuación, dejar hello ConnectionMultiplexer volver a conectar automáticamente. [Haga clic aquí para obtener información detallada](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md).
-* Reutilizar Hola ConnectionMultiplexer: no cree uno nuevo para cada solicitud. Hola `Lazy<ConnectionMultiplexer>` patrón [se muestra aquí](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache) se recomienda.
+* Establecer `AbortConnect` en false y deje que el ConnectionMultiplexer se vuelva a conectar automáticamente. [Haga clic aquí para obtener información detallada](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md).
+* Reutilice el ConnectionMultiplexer; no cree uno nuevo para cada solicitud. Se recomienda el patrón `Lazy<ConnectionMultiplexer>`[mostrado aquí](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
 * Redis funciona mejor con valores más pequeños, por lo que puede cortar los datos más grandes en varias claves. En [esta discusión de Redis](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ), 100 kB se considera "grande". Lea [este artículo](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size) para ver un problema de ejemplo que puede deberse a valores grandes.
-* Configurar la [configuración de grupo de subprocesos](#important-details-about-threadpool-growth) tooavoid tiempos de espera.
-* Utilice al menos Hola connectTimeout predeterminado de 5 segundos. Este intervalo daría StackExchange.Redis suficiente tiempo toore-establecer conexión hello, en el caso de una señalización visual de la red.
-* Tenga en cuenta los costos de rendimiento Hola asociados con diferentes operaciones que se está ejecutando. Por ejemplo, hello `KEYS` comando es una operación o (n) y debe evitarse. Hola [redis.io sitio](http://redis.io/commands/) tiene detalles de la complejidad del tiempo de Hola para cada operación que admite. Haga clic en cada complejidad de hello toosee de comando para cada operación.
+* Configure [ThreadPool](#important-details-about-threadpool-growth) para evitar que se agoten los tiempos de espera.
+* Utilice al menos el valor de connectTimeout predeterminado de 5 segundos. Este intervalo daría a StackExchange.Redis tiempo suficiente para volver a establecer la conexión, en caso de una interrupción momentánea de la red.
+* Tenga en cuenta los costos de rendimiento de las diferentes operaciones que se estén ejecutando. Por ejemplo, el comando `KEYS` es una operación O(n) y debe evitarse. El [sitio redis.io](http://redis.io/commands/) tiene información sobre la complejidad de tiempo de cada operación admitida. Haga clic en cada comando para ver la complejidad de cada operación.
 
 #### <a name="configuration-and-concepts"></a>Configuración y conceptos
-* Use el nivel Estándar o Premium en sistemas de producción. Hola nivel básico es un sistema de nodo único con ninguna replicación de datos y ningún SLA. Además, utilice al menos una caché de C1. Las cachés C0 se usan normalmente en escenarios de desarrollo o pruebas sencillos.
+* Use el nivel Estándar o Premium en sistemas de producción. El nivel básico es un sistema de nodo único sin replicación de datos ni Acuerdo de Nivel de Servicio. Además, utilice al menos una caché de C1. Las cachés C0 se usan normalmente en escenarios de desarrollo o pruebas sencillos.
 * Recuerde que Redis es un almacén de datos **en memoria** . Lea [este artículo](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md) para ser consciente de los escenarios donde puede producirse la pérdida de datos.
-* Desarrollar el sistema, que puede controlar señales de conexión [toopatching y conmutación por error de vencimiento](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md).
+* Desarrolle el sistema para que pueda controlar interrupciones momentáneas de conexión [debido a la aplicación de revisiones y la conmutación por error](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md).
 
 #### <a name="performance-testing"></a>Pruebas de rendimiento
-* Iniciar mediante `redis-benchmark.exe` tooget una idea de rendimiento posibles antes de escribir sus propias pruebas de rendimiento. Dado que `redis-benchmark` no admite SSL, debe [habilitar el puerto de hello no SSL a través del portal de Azure de hello](cache-configure.md#access-ports) antes de ejecutar pruebas de Hola. ¿Para obtener ejemplos, vea [cómo puedo realicen pruebas comparativas y pruebas Hola de rendimiento de la memoria caché?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
-* Hola client VM utilizado para realizar pruebas debe ser Hola misma región que la instancia de caché de Redis.
-* Se recomienda usar Dv2 Series de máquinas virtuales para su cliente ya que tienen hardware mejor y deben proporcionar los mejores resultados Hola.
-* Asegúrese de que el cliente de VM que elija tiene al menos tanta capacidad informática y el ancho de banda como memoria caché de Hola que se va a probar.
-* Habilitar VRSS en el equipo de cliente hello si se encuentra en Windows. [Haga clic aquí para obtener información detallada](https://technet.microsoft.com/library/dn383582.aspx).
+* Empiece utilizando `redis-benchmark.exe` para hacerse una idea del rendimiento posible antes de escribir sus propias pruebas de rendimiento. Como `redis-benchmark` no admite SSL, debe [habilitar el puerto no SSL mediante Azure Portal](cache-configure.md#access-ports) antes de ejecutar la prueba. Para ver ejemplos, consulte [¿Cómo se pueden realizar bancos de pruebas y probar el rendimiento del caché?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+* El cliente para pruebas de máquina virtual debe estar en la misma región que la instancia de caché de Redis.
+* Se recomienda usar la serie de máquina virtual Dv2 para su cliente, ya que tiene mejor hardware y logrará los mejores resultados.
+* Asegúrese de que la VM cliente que elija tenga al menos tantas características de computación y de ancho de banda como la memoria caché que se esté probando.
+* Habilite VRSS en el equipo cliente si se encuentra en Windows. [Haga clic aquí para obtener información detallada](https://technet.microsoft.com/library/dn383582.aspx).
 * Las instancias de Redis de nivel Premium tienen mejor latencia de red y rendimiento porque se ejecutan en un hardware mejor de CPU y red.
 
 <a name="cache-redis-commands"></a>
 
-### <a name="what-are-some-of-hello-considerations-when-using-common-redis-commands"></a>¿Cuáles son algunas de las consideraciones de hello cuando utilice comandos de Redis comunes?
-* No se deben ejecutar determinados comandos de Redis que toman un toocomplete mucho tiempo, no se conoce el impacto de Hola de estos comandos.
-  * Por ejemplo, no ejecute hello [claves](http://redis.io/commands/keys) comando en producción mientras los cambios pueden tardar un tooreturn mucho tiempo según el número de Hola de claves. Redis es un servidor de un único subproceso y procesa los comandos uno a la vez. Si tiene otros comandos que se ejecutaron después de las claves, estos no se procesan hasta que Redis procesa los comandos de las claves de Hola. Hola [redis.io sitio](http://redis.io/commands/) tiene detalles de la complejidad del tiempo de Hola para cada operación que admite. Haga clic en cada complejidad de hello toosee de comando para cada operación.
-* Tamaños de clave: ¿debo usar claves/valores pequeños o claves/valores grandes? En general, depende del escenario de Hola. Si su escenario requiere que las claves más largas, puede ajustar Hola ConnectionTimeout y vuelva a intentar valores y ajustar la lógica de reintento. Desde una perspectiva del servidor Redis, los valores menores se observan toohave un mejor rendimiento.
-* Estas consideraciones no significan que no se puede almacenar valores mayores en Redis; debe ser consciente de hello siguientes consideraciones. Las latencias serán mayores. Si tiene un conjunto de datos mayor y otro que es más pequeño, puede usar varias instancias de ConnectionMultiplexer, cada una configurada con un conjunto diferente de valores de tiempo de espera e inténtelo de nuevo, como se describe en hello anterior [qué Hola Opciones de configuración de StackExchange.Redis es](#cache-configuration) sección.
+### <a name="what-are-some-of-the-considerations-when-using-common-redis-commands"></a>¿Cuáles son algunas de las consideraciones al usar los comandos de Redis comunes?
+* No se deben ejecutar determinados comandos de Redis que tardan mucho tiempo en completarse sin comprender el impacto de estos comandos.
+  * Por ejemplo, no ejecute el comando [KEYS](http://redis.io/commands/keys) en producción ya que puede tardar mucho tiempo en devolver según el número de claves. Redis es un servidor de un único subproceso y procesa los comandos uno a la vez. Si tiene otros comandos emitidos después de KEYS, no se procesarán hasta que Redis procese el comando KEYS. El [sitio redis.io](http://redis.io/commands/) tiene información sobre la complejidad de tiempo de cada operación admitida. Haga clic en cada comando para ver la complejidad de cada operación.
+* Tamaños de clave: ¿debo usar claves/valores pequeños o claves/valores grandes? En términos generales, depende del escenario. Si su escenario requiere claves de mayor tamaño, puede ajustar el valor de ConnectionTimeout y los valores de reintento y ajustar la lógica de reintento. Desde una perspectiva del servidor Redis, se observan valores menores que tiene un mejor rendimiento.
+* Estas consideraciones no significan que no pueda almacenar valores mayores en Redis, simplemente debe tenerlas en cuenta. Las latencias serán mayores. Si tiene un conjunto de datos mayor y otro más pequeño, puede usar varias instancias de ConnectionMultiplexer, cada una configurado con un conjunto diferente de valores de tiempo de expiración y reintentos, tal como se describe en la sección anterior [¿Qué hacen las opciones de configuración de StackExchange.Redis?](#cache-configuration) .
 
 <a name="cache-benchmarking"></a>
 
-### <a name="how-can-i-benchmark-and-test-hello-performance-of-my-cache"></a>¿Cómo puedo realicen pruebas comparativas y pruebas Hola de rendimiento de la memoria caché?
-* [Habilitar los diagnósticos de caché](cache-how-to-monitor.md#enable-cache-diagnostics) para que pueda [monitor](cache-how-to-monitor.md) Hola estado de la memoria caché. Puede ver hello las métricas de hello portal de Azure y también pueden [descargar y revisar](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring) mediante herramientas de Hola de su elección.
-* Puede usar pruebas de redis benchmark.exe tooload el servidor de Redis.
-* Asegúrese de cliente de prueba de carga de Hola y de caché en Redis Hola Hola misma región.
-* Usar redis cli.exe y supervisar caché hello mediante comandos de información de Hola.
-* Si la carga está causando la fragmentación de memoria alta, se debe escalar tooa mayor tamaño de la caché.
-* Para obtener instrucciones acerca de cómo descargar Hola Redis herramientas, vea hello [¿cómo se puede ejecutar comandos de Redis?](#cache-commands) sección.
+### <a name="how-can-i-benchmark-and-test-the-performance-of-my-cache"></a>¿Cómo se pueden realizar bancos de pruebas y probar el rendimiento del caché?
+* [Habilite los diagnósticos de la memoria caché](cache-how-to-monitor.md#enable-cache-diagnostics) para que pueda [supervisar](cache-how-to-monitor.md) su estado. Puede ver las métricas en Azure Portal y también [descargarlas y revisarlas](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring) mediante las herramientas que prefiera.
+* Puede utilizar redis-benchmark.exe para la prueba de carga del servidor Redis.
+* Asegúrese de que la prueba de carga del cliente y de la caché de Redis se encuentran la misma región.
+* Use redis cli.exe y supervise la memoria caché mediante el comando INFO.
+* Si la carga provoca una elevada fragmentación de memoria, debe escalar verticalmente a un tamaño mayor de caché.
+* Para obtener instrucciones acerca de cómo descargar las herramientas de Redis, consulte la sección [¿Cómo puedo ejecutar comandos de Redis?](#cache-commands) .
 
-Hello comandos siguientes proporcionan un ejemplo del uso de redis benchmark.exe. Para obtener resultados precisos, ejecutar estos comandos desde una máquina virtual en hello misma región que la memoria caché.
+Los siguientes comandos proporcionan un ejemplo de uso de redis benchmark.exe. Para obtener resultados precisos, ejecute estos comandos desde una máquina virtual de la misma región que la caché.
 
 * Pruebe solicitudes SET con canalización con una carga útil de 1000
 
   `redis-benchmark.exe -h **yourcache**.redis.cache.windows.net -a **yourAccesskey** -t SET -n 1000000 -d 1024 -P 50`
 * Pruebe solicitudes GET con canalización con una carga útil de 1000.
-  Nota: Ejecutar prueba de conjunto de hello mostrado anteriormente primera caché toopopulate
+  Nota: Ejecute antes la prueba SET mostrada anteriormente para rellenar la caché
 
   `redis-benchmark.exe -h **yourcache**.redis.cache.windows.net -a **yourAccesskey** -t GET -n 1000000 -d 1024 -P 50`
 
 <a name="threadpool"></a>
 
 ### <a name="important-details-about-threadpool-growth"></a>Detalles importantes sobre el crecimiento del grupo de subprocesos
-Hola ThreadPool CLR tiene dos tipos de subprocesos: "Trabajo" y "Puerto de terminación de E/S" (también conocido como IOCP) subprocesos.
+El grupo de subprocesos de CLR tiene dos tipos de subprocesos: subprocesos de "trabajo" y subprocesos de "puertos de terminación de E/S" (lo que se conoce como IOCP).
 
-* Los subprocesos de trabajo se utilizan para aspectos como el procesamiento de métodos `Task.Run(…)` o `ThreadPool.QueueUserWorkItem(…)`. Estos subprocesos también se usan distintos componentes en hello CLR cuando trabajo necesita toohappen en un subproceso en segundo plano.
-* IOCP subprocesos se utilizan cuando se produce de E/S asincrónica (por ejemplo, leyendo desde la red de hello).
+* Los subprocesos de trabajo se utilizan para aspectos como el procesamiento de métodos `Task.Run(…)` o `ThreadPool.QueueUserWorkItem(…)`. Estos subprocesos también se utilizan en varios componentes del CLR cuando el trabajo se debe ejecutar en un subproceso en segundo plano.
+* Los subprocesos IOCP se usan cuando se produce E/S asincrónica (por ejemplo, leer de la red).
 
-grupo de subprocesos de Hello ofrece nuevos subprocesos de trabajo o subprocesos de finalización de E/S a petición (sin límite) hasta que se alcanza el valor de "Mínimo" hello para cada tipo de subproceso. De forma predeterminada, el número mínimo de Hola de subprocesos se establece toohello número de procesadores en un sistema.
+El grupo de subprocesos proporciona nuevos subprocesos de trabajo o de terminación de E/S a petición (sin limitación) hasta que se llega a la configuración "mínima" de cada tipo de subproceso. De forma predeterminada, el número mínimo de subprocesos se establece en el número de procesadores en un sistema.
 
-Una vez número de Hola de existente (ocupado) subprocesos aciertos Hola "" número mínimo de subprocesos, Hola ThreadPool limitar tasa de hello en el que inserta el nuevo subproceso tooone de subprocesos por 500 milisegundos. Normalmente, si su sistema obtiene una ráfaga de trabajo que necesita un subproceso IOCP, ese trabajo se procesará muy rápidamente. Sin embargo, si ráfaga de Hola de trabajo es superior a Hola configurada la opción "Mínima", habrá cierto retraso en el procesamiento de algunas de las tareas de hello cuando hello ThreadPool espera por una de estas dos cosas toohappen.
+Cuando el número de subprocesos existentes (ocupado) alcanza el número "mínimo" de subprocesos, el grupo de subprocesos limitará la velocidad a la que inserta nuevos subprocesos a un subproceso por 500 milisegundos. Normalmente, si su sistema obtiene una ráfaga de trabajo que necesita un subproceso IOCP, ese trabajo se procesará muy rápidamente. Sin embargo, si la ráfaga de trabajo es mayor que la configuración "mínima", habrá cierto retraso en el procesamiento de parte del trabajo ya que el grupo de subprocesos espera a que pasen dos cosas:
 
-1. Un subproceso existente se convierte en disponible tooprocess Hola trabajo.
+1. Un subproceso existente queda libre para procesar el trabajo.
 2. Ningún subproceso existente queda libra durante 500 ms, por lo que se crea un nuevo subproceso.
 
-Básicamente, significa que cuando Hola número de subprocesos ocupados es mayor que los subprocesos de Min, va a pagar es probable que un retraso de 500 ms antes de procesa el tráfico de red por la aplicación hello. Además, es importante toonote que, cuando una existente subproceso permanece inactivo durante más de 15 segundos (según lo que recuerdo), se limpian y puede repetir este ciclo de crecimiento y contracción.
+Básicamente, esto significa que cuando el número de subprocesos ocupados es mayor que los subprocesos mínimos, es probable que pague un retraso de 500 ms antes de que la aplicación procese el tráfico de red. Además, es importante tener en cuenta que, cuando un subproceso existente permanece inactivo durante más de 15 segundos (según lo que yo recuerdo), se elimina, y este ciclo de crecimiento y merma se puede repetir.
 
 Si examinamos un mensaje de error de ejemplo de StackExchange.Redis (compilación 1.0.450 o posterior), verá que ahora se imprimen estadísticas del grupo de subprocesos (consulte a continuación los detalles de trabajo e IOCP).
 
@@ -378,100 +378,100 @@ Si examinamos un mensaje de error de ejemplo de StackExchange.Redis (compilació
     IOCP: (Busy=6,Free=994,Min=4,Max=1000),
     WORKER: (Busy=3,Free=997,Min=4,Max=1000)
 
-En el ejemplo anterior de hello, puede ver que para el subproceso IOCP hay 6 subprocesos ocupados y sistema de hello es configurado tooallow 4 mínimo de subprocesos. En este caso, el cliente de hello habría visto probablemente dos retrasos de 500 ms. porque 6 > 4.
+En el ejemplo anterior, puede ver que para el subproceso de IOCP hay seis subprocesos ocupados y el sistema está configurado para permitir cuatro subprocesos mínimos. En este caso, el cliente probablemente habría visto dos retrasos de 500 ms porque 6 > 4.
 
 Tenga en cuenta que StackExchange.Redis puede alcanzar los tiempos de espera si se limita el crecimiento de los subprocesos de trabajo o de IOCP.
 
 ### <a name="recommendation"></a>Recomendación
-Dada esta información, recomendamos encarecidamente que los clientes establecen valor de configuración mínima de Hola para toosomething de subprocesos de trabajo y IOCP mayor que el valor predeterminado de Hola. No podemos dar instrucciones única en lo que este valor debe ser porque Hola valor derecho para una aplicación es demasiado alta o baja para otra aplicación. Esta configuración también puede afectar el rendimiento de Hola de otras partes de aplicaciones complicadas, por lo que cada cliente necesita ajustar toofine que necesita este tootheir de configuración específico. Un buen punto de partida es 200 o 300, y luego probar y ajustar según sea necesario.
+Dada esta información, se recomienda encarecidamente que los clientes establezcan el valor de configuración mínimo para los subprocesos IOPC y de trabajo en un valor algo mayor que el predeterminado. No podemos dar una orientación exacta sobre cuál debe ser este valor porque el que sea correcto para una aplicación puede ser demasiado alto o bajo para otra. Esta configuración también puede afectar al rendimiento de otras partes de aplicaciones complicadas, por lo que cada cliente debe ajustar este valor de acuerdo con sus necesidades específicas. Un buen punto de partida es 200 o 300, y luego probar y ajustar según sea necesario.
 
-¿Cómo tooconfigure esta configuración:
+Cómo configurar este valor:
 
-* En ASP.NET, use hello ["minIoThreads" configuración] [ "minIoThreads" configuration setting] en hello `<processModel>` elemento de configuración en el archivo web.config. Si se ejecutan dentro de sitios Web de Azure, esta configuración no se expone a través de opciones de configuración de Hola. Sin embargo, aún debe ser capaz de tooconfigure esta configuración mediante programación (ver abajo) desde el método Application_Start en global.asax.cs.
+* En ASP.NET, utilice la [opción de configuración "minIoThreads"]["minIoThreads" configuration setting] que se encuentra en el elemento de configuración `<processModel>` de web.config. Si está trabajando dentro de Azure WebSites, esta configuración no se expone a través de las opciones de configuración. Sin embargo, todavía podrá configurar este valor mediante programación (consulte a continuación) con el método Application_Start de global.asax.cs.
 
   > [!NOTE] 
-  > Hello valor especificado en este elemento de configuración es un *por núcleo* configuración. Por ejemplo, si tiene una máquina de 4 núcleos y desea que su toobe de configuración de minIOThreads 200 en tiempo de ejecución, usaría `<processModel minIoThreads="50"/>`.
+  > El valor especificado en este elemento de configuración es *por núcleo*. Por ejemplo, si tiene una máquina de 4 núcleos y quiere que su configuración de minIOThreads sea 200 en tiempo de ejecución, use `<processModel minIoThreads="50"/>`.
   >
 
-* Fuera de ASP.NET, use hello [ThreadPool.SetMinThreads(...) ](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) API.
+* Fuera de ASP.NET, use la API [ThreadPool.SetMinThreads(...)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) .
 
 <a name="server-gc"></a>
 
-### <a name="enable-server-gc-tooget-more-throughput-on-hello-client-when-using-stackexchangeredis"></a>Habilitar tooget de servidor de catálogo global más rendimiento del cliente de hello al usar StackExchange.Redis
-Habilitar el Recolector de servidor puede optimizar el cliente de Hola y proporcionar un mejor rendimiento y la capacidad de StackExchange.Redis. Para obtener más información sobre el servidor de catálogo global y cómo tooenable, vea Hola siguientes artículos:
+### <a name="enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis"></a>Habilitación de GC del servidor para obtener más rendimiento en el cliente cuando se usa StackExchange.Redis
+La habilitación de GC del servidor puede optimizar el cliente y mejorar el rendimiento y la capacidad cuando se usa StackExchange.Redis. Para más información sobre GC del servidor y cómo habilitarlo, consulte los siguientes artículos.
 
-* [tooenable servidor GC](https://msdn.microsoft.com/library/ms229357.aspx)
+* [Para habilitar GC del servidor](https://msdn.microsoft.com/library/ms229357.aspx)
 * [Fundamentos de la recolección de elementos no utilizados](https://msdn.microsoft.com/library/ee787088.aspx)
 * [Recolección de elementos no utilizados y rendimiento](https://msdn.microsoft.com/library/ee851764.aspx)
 
 
 ### <a name="performance-considerations-around-connections"></a>Consideraciones sobre rendimiento de las conexiones
 
-Cada plan de tarifa tiene distintos límites para las conexiones de cliente, memoria y ancho de banda. Aunque cada tamaño de caché permite *hasta* un cierto número de conexiones, cada tooRedis de conexión tiene sobrecarga asociado. Un ejemplo de dicha sobrecarga podría ser el uso de memoria y CPU como resultado del cifrado TLS/SSL. límite máximo de conexiones de Hola para un tamaño de caché especificado supone una caché con poca carga. Si carga de sobrecarga de conexión *más* carga de las operaciones de cliente supera la capacidad para el sistema de Hola, caché Hola puede experimentar problemas de capacidad, incluso si no ha superado el límite de conexiones de hello para el tamaño actual de la caché de Hola.
+Cada plan de tarifa tiene distintos límites para las conexiones de cliente, memoria y ancho de banda. Si bien cada tamaño de caché permite *hasta* cierta cantidad de conexiones, cada conexión a Redis tiene asociada una sobrecarga. Un ejemplo de dicha sobrecarga podría ser el uso de memoria y CPU como resultado del cifrado TLS/SSL. El límite máximo de conexiones para un tamaño de caché determinado supone una caché con poca carga. Si la carga proveniente de la sobrecarga de conexiones *más* la carga proveniente de las operaciones de clientes supera la capacidad del sistema, la caché puede tener problemas de capacidad incluso si no ha excedido el límite de conexiones para el tamaño de la caché actual.
 
-Para obtener más información acerca de los límites de diferentes conexiones de Hola para cada nivel, consulte [precios de Azure Redis Cache](https://azure.microsoft.com/pricing/details/cache/). Para más información sobre las conexiones y otras configuraciones predeterminadas, consulte [Configuración predeterminada del servidor Redis](cache-configure.md#default-redis-server-configuration).
+Para más información acerca de los diferentes límites de conexiones para cada nivel, consulte los [precios de Azure Redis Cache](https://azure.microsoft.com/pricing/details/cache/). Para más información sobre las conexiones y otras configuraciones predeterminadas, consulte [Configuración predeterminada del servidor Redis](cache-configure.md#default-redis-server-configuration).
 
 <a name="cache-monitor"></a>
 
-### <a name="how-do-i-monitor-hello-health-and-performance-of-my-cache"></a>¿Cómo se supervisa el estado de Hola y el rendimiento de la memoria caché?
-Se pueden supervisar instancias de Microsoft Azure Redis Cache en hello [portal de Azure](https://portal.azure.com). Puede ver las métricas, anclar gráficos de métricas toohello panel de inicio, personalizar el intervalo de fecha y hora de Hola de gráficos de supervisión, agregar y quitar métricas de los gráficos de Hola y establecer alertas cuando se cumplen determinadas condiciones. Para obtener más información, consulte [Supervisión de Azure Redis Cache](cache-how-to-monitor.md).
+### <a name="how-do-i-monitor-the-health-and-performance-of-my-cache"></a>¿Cómo se puede supervisar el estado y el rendimiento de la memoria caché?
+Se pueden supervisar instancias de Microsoft Azure Redis Cache en [Azure Portal](https://portal.azure.com). Puede ver las métricas, anclar los gráficos de métricas al panel de inicio, personalizar el intervalo de fecha y hora de los gráficos de supervisión, agregar y quitar métricas de los gráficos y establecer alertas cuando se cumplen determinadas condiciones. Para obtener más información, consulte [Supervisión de Azure Redis Cache](cache-how-to-monitor.md).
 
-Hola caché en Redis **menú recursos** también contiene varias herramientas para supervisar y solucionar sus cachés.
+El **menú de recursos** de Redis Cache también contiene varias herramientas para supervisar las cachés y solucionar sus problemas.
 
 * En **Diagnosticar y solucionar problemas** se proporciona información sobre los problemas comunes y las estrategias para resolverlos.
-* **estado de los recursos** supervisa el recurso e indica si se ejecuta del modo previsto. Para obtener más información acerca de hello servicio de mantenimiento de recursos de Azure, consulte [información general de mantenimiento de recursos de Azure](../resource-health/resource-health-overview.md).
-* **Nueva solicitud de soporte técnico** proporciona opciones tooopen una solicitud de soporte técnico de la memoria caché.
+* **estado de los recursos** supervisa el recurso e indica si se ejecuta del modo previsto. Para obtener más información sobre el servicio Estado de los recursos de Azure, consulte [Información general sobre Estado de los recursos de Azure](../resource-health/resource-health-overview.md).
+* **Nueva solicitud de soporte** para abrir una solicitud de soporte técnico para su memoria caché.
 
-Estas herramientas permiten toomonitor Hola estado de las instancias de caché en Redis de Azure y ayudan a administrar las aplicaciones de almacenamiento en caché. Para obtener más información, vea la sección "Compatibilidad y configuración de solución de problemas" de Hola de [cómo tooconfigure Redis de Azure almacenan en caché](cache-configure.md).
+Estas herramientas permiten supervisar el estado de las instancias de Azure Redis Cache y ayudarle a administrar sus aplicaciones de almacenamiento en caché. Para más información, vea la sección "Configuración de soporte técnico y solución de problemas" de [Configuración de Azure Redis Cache](cache-configure.md).
 
 <a name="cache-timeouts"></a>
 
 ### <a name="why-am-i-seeing-timeouts"></a>¿Por qué estoy viendo los tiempos de expiración?
-Los tiempos de espera se producen en cliente hello que usar tootalk tooRedis. Cuando se envía un comando toohello Redis server, comando hello está puesto en la cola y servidor Redis finalmente recoge comando hello y lo ejecuta. Sin embargo cliente hello puede tiempo de espera durante este proceso y si lo hace una excepción se produce en hello llamando a lado. Para más información sobre la solución de problemas de tiempo de espera, consulte [Solución de problemas del lado cliente](cache-how-to-troubleshoot.md#client-side-troubleshooting) y [Excepciones de tiempo de espera de StackExchange.Redis](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions).
+Los tiempos de expiración se producen en el cliente que usa para comunicarse con Redis. Cuando se envía un comando al servidor de Redis, el comando se pone en cola y el servidor de Redis finalmente recoge el comando y lo ejecuta. Sin embargo el cliente puede agotar el tiempo de espera durante este proceso y, si lo hace, se produce una excepción en el lado de la llamada. Para más información sobre la solución de problemas de tiempo de espera, consulte [Solución de problemas del lado cliente](cache-how-to-troubleshoot.md#client-side-troubleshooting) y [Excepciones de tiempo de espera de StackExchange.Redis](cache-how-to-troubleshoot.md#stackexchangeredis-timeout-exceptions).
 
 <a name="cache-disconnect"></a>
 
-### <a name="why-was-my-client-disconnected-from-hello-cache"></a>¿Por qué se desconecta mi cliente de caché de hello?
-los siguientes Hola son alguna razón común para una desconexión de la memoria caché.
+### <a name="why-was-my-client-disconnected-from-the-cache"></a>¿Por qué se desconectó el cliente desde la memoria caché?
+A continuación se indican algunas razones habituales por las que se desconecta la memoria caché.
 
 * Causas de cliente
-  * se volvió a implementar la aplicación de cliente de Hola.
-  * aplicación de cliente de Hello realiza una operación de escalado.
-    * En caso de hello de servicios en la nube o aplicaciones Web, esto puede deberse tooauto la escala.
-  * nivel de red de Hello en hello cliente cambia.
-  * Se produjeron errores transitorios en cliente de Hola o en nodos de la red entre el cliente de Hola y el servidor de Hola Hola.
-  * se alcanzó el límite del umbral de ancho de banda de Hola.
-  * Las operaciones de la CPU tardó demasiado toocomplete.
+  * Se volvió a implementar la aplicación cliente.
+  * La aplicación cliente realiza una operación de escalado.
+    * En el caso de Cloud Services o Web Apps, puede deberse a la escala automática.
+  * Cambia el nivel de red del cliente.
+  * Se produjeron errores transitorios en el cliente o en los nodos de red entre el cliente y el servidor.
+  * Se han alcanzado los límites de umbral de ancho de banda.
+  * Las operaciones de la CPU tardaron demasiado tiempo en completarse.
 * Causas de servidor
-  * En hello oferta de caché standard, Hola servicio de caché de Redis de Azure inicia una conmutación por error de nodo secundario de hello nodo principal toohello.
-  * Azure revisión instancia Hola donde se implementó la memoria caché de Hola
+  * En la oferta de caché estándar, el servicio Azure Redis Cache inicia una conmutación por error desde el nodo principal al nodo secundario.
+  * Azure revisó la instancia donde se implementó la memoria caché
     * Esto puede servir para actualizaciones del servidor de Redis o para el mantenimiento general de máquinas virtuales.
 
 ### <a name="which-azure-cache-offering-is-right-for-me"></a>¿Qué oferta de caché de Azure es adecuada para mí?
 > [!IMPORTANT]
-> Según el [anuncio](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/) del año pasado, Azure Managed Cache Service y el servicio Azure In-Role Cache **se retiraron** el 30 de noviembre de 2016. Nuestra recomendación es toouse [Azure Redis Cache](https://azure.microsoft.com/services/cache/). Para obtener información sobre la migración, consulte [migrar desde el servicio de caché administrado tooAzure caché en Redis](cache-migrate-to-redis.md).
+> Según el [anuncio](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/) del año pasado, Azure Managed Cache Service y el servicio Azure In-Role Cache **se retiraron** el 30 de noviembre de 2016. Le recomendamos usar [Azure Redis Cache](https://azure.microsoft.com/services/cache/). Para más información sobre la migración, consulte [Migración desde Managed Cache Service a Azure Redis Cache](cache-migrate-to-redis.md).
 >
 >
 
 ### <a name="azure-redis-cache"></a>Azure Redis Cache
-Caché en Redis de Azure está generalmente disponible en tamaños de too53 GB y tiene un SLA del 99,9% de disponibilidad. Hola nueva [nivel premium](cache-premium-tier-intro.md) ofrece tamaños too530 GB y compatibilidad con los clústeres, la red virtual y persistencia, con un SLA del 99,9%.
+Azure Redis Cache está disponible con carácter general en tamaños de hasta 53 GB y tiene un contrato de nivel de servicio de disponibilidad del 99,9 %. El nuevo [nivel Premium](cache-premium-tier-intro.md) ofrece tamaños de hasta 530 GB, además de compatibilidad con clústeres, redes virtuales y persistencia, con un contrato de nivel de servicio del 99,9 %.
 
-Azure Redis caché proporciona clientes Hola capacidad toouse una caché de Redis segura y dedicada, administrada por Microsoft. Con esta oferta, dispone de conjunto de características enriquecidas de tooleverage Hola y el ecosistema de Redis y confiable de hospedaje y supervisión de Microsoft.
+Azure Redis Cache ofrece a los clientes la posibilidad de usar una instancia de Redis Cache segura y dedicada administrada por Microsoft. Con esta oferta, puede aprovechar el variado conjunto de características y ecosistema proporcionados por Redis, junto con el hospedaje y la supervisión confiables que Microsoft pone a su disposición.
 
-A diferencia de las memorias caché tradicionales que solo tratan con pares clave-valor, Redis es popular por sus tipos de datos de gran rendimiento. Redis también admite la ejecución de operaciones atómicas en estos tipos, como anexar la cadena de tooa; incrementar el valor de hello en un hash; Insertar lista tooa; calcular la intersección de conjuntos, unión y diferencia; o un miembro de hello obtener con la mayor puntuación en un conjunto ordenado. Otras características incluyen compatibilidad con transacciones, pub/sub, scripting Lua, claves con un número limitado período de vida y configuración configuración toomake Redis comportarse más como una caché tradicional.
+A diferencia de las memorias caché tradicionales que solo tratan con pares clave-valor, Redis es popular por sus tipos de datos de gran rendimiento. Además, Redis también admite la ejecución de operaciones individuales en estos tipos, por ejemplo: asociar a una cadena; incrementar el valor en un objeto hash; insertar en una lista; calcular la intersección, la unión y la diferencia de conjuntos; u obtener el miembro con la clasificación más alta de un conjunto ordenado. Otras características son la compatibilidad con las transacciones, pub/sub, scripting Lua, claves con un período de vida limitado y opciones de configuración que hacen que Redis se comporte como una memoria caché tradicional.
 
-Éxito de tooRedis de otro aspecto clave es su ecosistema de código abierto vibrante y Hola alrededor de ella. Esto se refleja en conjunto diverso de Hola de clientes de Redis disponibles a través de varios idiomas. Este ecosistema y la amplia gama de clientes permiten toobe de caché en Redis de Azure usa casi cualquier carga de trabajo que cree en Azure.
+Otro aspecto clave para el éxito de Redis es su ecosistema de código abierto vibrante y en buen estado. Esto se refleja en el variado conjunto de clientes de Redis disponibles en varios lenguajes, Este ecosistema y la amplia variedad de clientes permiten que prácticamente cualquier carga de trabajo que compilaría dentro de Azure use Azure Redis Cache.
 
-Para obtener más información acerca de cómo empezar a usar caché en Redis de Azure, consulte [cómo tooUse Redis de Azure almacenan en caché](cache-dotnet-how-to-use-azure-redis-cache.md) y [documentación de Azure Redis Cache](index.md).
+Para más información sobre los primeros pasos con Azure Redis Cache, consulte [Uso de Azure Redis Cache](cache-dotnet-how-to-use-azure-redis-cache.md) y [Documentación de Azure Redis Cache](index.md).
 
 ### <a name="managed-cache-service"></a>Managed Cache service
 [Managed Cache Service se retiró el 30 de noviembre de 2016.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
-tooview archivado documentación, vea [archivados documentación del servicio de caché administrado](https://msdn.microsoft.com/library/azure/dn386094.aspx).
+Para ver la documentación archivada, consulte la [documentación archivada de Managed Cache Service](https://msdn.microsoft.com/library/azure/dn386094.aspx).
 
 ### <a name="in-role-cache"></a>Caché en rol
 [In-Role Cache se retiró el 30 de noviembre de 2016.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
-tooview archivado documentación, vea [archivados documentación de caché en rol](https://msdn.microsoft.com/library/azure/dn386103.aspx).
+Para ver la documentación archivada, consulte la [documentación de archivada de In-Role Cache](https://msdn.microsoft.com/library/azure/dn386103.aspx).
 
 ["minIoThreads" configuration setting]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx

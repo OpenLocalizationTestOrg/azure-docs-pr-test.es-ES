@@ -1,76 +1,76 @@
 <!--author=alkohli last changed: 12/01/15-->
 
 
-#### <a name="tooconfigure-and-register-hello-device"></a>dispositivo de hello tooconfigure y registro
-1. Obtener acceso a la interfaz de Windows PowerShell de hello en la consola serie del dispositivo de StorSimple. Vea [consola serie del dispositivo Use PuTTY tooconnect toohello](#use-putty-to-connect-to-the-device-serial-console) para obtener instrucciones. **Ser exactamente procedimiento de hello toofollow seguro o no será capaz de tooaccess consola de Hola.**
-2. En la sesión de Hola que se abre, presione Intro una vez tooget un símbolo del sistema. 
-3. Es posible que toochoose solicitadas Hola idioma que le gustaría tener tooset en el dispositivo. Especifique el idioma de hello y, a continuación, presione ENTRAR. 
+#### <a name="to-configure-and-register-the-device"></a>Para configurar y registrar el dispositivo
+1. Acceder a la interfaz de Windows PowerShell en la consola serie del dispositivo StorSimple. Consulte [Uso de PuTTY para conectarse a la consola serie del dispositivo](#use-putty-to-connect-to-the-device-serial-console) para obtener instrucciones. **Siga el procedimiento exactamente como se indica o no podrá acceder a la consola.**
+2. En la sesión que se abre, presione ENTRAR una vez para obtener un símbolo del sistema. 
+3. Se le pedirá que elija el idioma que desee establecer para el dispositivo. Especifique el idioma y, a continuación, presione ENTRAR. 
    
     ![Configurar y registrar el dispositivo 1 de StorSimple](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice1-include.png)
-4. En el menú de consola serie de Hola que aparece, elija toolog opción 1 en con acceso completo. 
+4. En el menú de la consola serie que se muestra, seleccione la opción 1 para iniciar sesión con acceso completo. 
    
     ![Registrar el dispositivo 2 de StorSimple](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice2-include.png)
    
-     Complete los pasos 5-12 de valores de configuración de red mínimos requeridos de hello tooconfigure para el dispositivo. **Estos pasos de configuración deben toobe realizada en el controlador activo de hello de dispositivo de Hola.** menú de la consola serie de Hello indica el estado de controlador de hello en el mensaje de pancarta Hola. Si no está conectado toohello controlador activo, desconéctese y, a continuación, conéctese toohello de controlador activo.
-5. En el símbolo de hello, escriba su contraseña. es la contraseña predeterminada del dispositivo de Hello **Password1**.
-6. Escriba el siguiente comando de hello:
+     Complete los pasos 5-12 para configurar las opciones de red necesarias mínimas para el dispositivo. **Estos pasos de configuración deben realizarse en el controlador activo del dispositivo.** El menú de la consola serie indica el estado del controlador en el mensaje del banner. Si no está conectado al controlador activo, desconéctese y, a continuación, conéctese al controlador activo.
+5. En el símbolo del sistema, escriba su contraseña. La contraseña predeterminada del dispositivo es **Password1**.
+6. Escriba el siguiente comando:
    
      `Invoke-HcsSetupWizard` 
-7. Un Asistente para la instalación aparecerán toohelp configurar configuración de red de hello de dispositivo de Hola. Fuente de alimentación Hola Hola siguiente información: 
+7. Aparecerá un Asistente para instalación que le ayudará a configurar las opciones de red para el dispositivo. Proporcione la siguiente información: 
    
-   * Dirección IP de interfaz de red 0 datos Hola
+   * Dirección IP para la interfaz de red DATA 0
    * Máscara de subred
    * Puerta de enlace
    * Dirección IP para el servidor DNS principal
    * Dirección IP para el servidor NTP principal
      
      > [!NOTE]
-     > Puede que tenga toowait durante unos minutos para la máscara de subred de Hola y Hola DNS configuración toobe aplicado. Si se produce un "hello dispositivo no está listo." mensaje de error, comprobación de conexión de red física de hello en hello datos interfaz de red 0 de su controlador activo.
+     > Tendrá que esperar unos minutos para que se apliquen la máscara de subred y la configuración de DNS. Si recibe el mensaje de error "El dispositivo no está listo", compruebe la conexión de red física en la interfaz de red DATA 0 de su controlador activo.
      > 
      > 
-8. (Opcional) Configure el servidor proxy web. Aunque la configuración del proxy web es opcional, **tenga en cuenta que, si usa un proxy web, solo puede configurarlo aquí**. Para obtener más información, consulte demasiado[configurar el proxy web para el dispositivo](../articles/storsimple/storsimple-configure-web-proxy.md). Si experimenta problemas durante este paso, consulte instrucciones de tootroubleshooting para [errores durante la configuración del proxy web](../articles/storsimple/storsimple-troubleshoot-deployment.md#errors-during-the-optional-web-proxy-settings).
+8. (Opcional) Configure el servidor proxy web. Aunque la configuración del proxy web es opcional, **tenga en cuenta que, si usa un proxy web, solo puede configurarlo aquí**. Para obtener más información, vaya a [Configurar el proxy web para el dispositivo](../articles/storsimple/storsimple-configure-web-proxy.md). Si surge algún problema durante este paso, vea la guía de solución de problemas de [Errores durante la configuración del proxy web](../articles/storsimple/storsimple-troubleshoot-deployment.md#errors-during-the-optional-web-proxy-settings).
 
      > [!NOTE]
-     > Puede presionar Ctrl + C en cualquier asistente para la instalación de tiempo tooexit Hola. Se conservarán todos los valores de configuración que aplicó antes de emitir este comando.
+     > También puede presionar Ctrl+C en cualquier momento para salir del Asistente para instalación. Se conservarán todos los valores de configuración que aplicó antes de emitir este comando.
 
-1. Por motivos de seguridad, contraseña de administrador de dispositivos de hello expira después de la primera sesión de Hola y deberá toochange para las sesiones posteriores. Cuando se le solicite, proporcione una contraseña de administrador del dispositivo. Una contraseña de administrador del dispositivo válida debe tener entre 8 y 15 caracteres. contraseña de Hello debe contener una combinación de caracteres en minúsculas, caracteres en mayúsculas, números y caracteres especiales.
-2. También se establece la contraseña de administrador de instantáneas StorSimple Hola aquí. Use esta contraseña para autenticar un dispositivo con el host de Windows que ejecuta StorSimple Snapshot Manager. Cuando se le solicite, proporcione una contraseña de carácter 14 too15. Hello contraseña debe contener una combinación de tres de hello siguientes: caracteres en minúsculas, mayúsculas, numéricos y especiales. 
+1. Por motivos de seguridad, la contraseña del administrador del dispositivo expira después de la primera sesión y deberá cambiarla para sesiones posteriores. Cuando se le solicite, proporcione una contraseña de administrador del dispositivo. Una contraseña de administrador del dispositivo válida debe tener entre 8 y 15 caracteres. La contraseña debe contener una combinación de caracteres en minúsculas, caracteres en mayúsculas, números y caracteres especiales.
+2. La contraseña de StorSimple Snapshot Manager también se establece aquí. Use esta contraseña para autenticar un dispositivo con el host de Windows que ejecuta StorSimple Snapshot Manager. Cuando se le solicite, proporcione una contraseña de entre 14 y 15 caracteres. La contraseña debe contener una combinación de tres de los siguientes elementos: caracteres en minúsculas, caracteres en mayúsculas, números y caracteres especiales. 
    
    ![Registrar el dispositivo 4 de StorSimple](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice4-include.png)
    
-   Puede restablecer la contraseña de administrador de instantáneas StorSimple Hola de interfaz de servicio de administrador de StorSimple de Hola. Para obtener instrucciones detalladas, vaya demasiado[cambiar contraseñas de StorSimple de hello mediante Hola servicio StorSimple Manager](../articles/storsimple/storsimple-change-passwords.md).
+   Puede restablecer la contraseña de StorSimple Snapshot Manager desde la interfaz de servicio de Administrador de StorSimple. Para conocer pasos detallados, ve al tema [Cambiar las contraseñas de StorSimple utilizando el servicio de administrador de StorSimple](../articles/storsimple/storsimple-change-passwords.md).
    
-   tootroubleshoot problemas durante este paso, consulte instrucciones de tootroubleshooting para [errores relacionados con toopasswords](../articles/storsimple/storsimple-troubleshoot-deployment.md#errors-related-to-device-administrator-and-storsimple-snapshot-manager-passwords).
-3. paso final de Hello en el Asistente para la instalación de hello registra el dispositivo con hello el servicio StorSimple Manager. Para ello, necesitará la clave de registro del servicio Hola que obtuvo en el paso 2. Una vez proporcionada la clave de registro de hello, deberá toowait de 2 a 3 minutos antes de registrar el dispositivo de Hola.
+   Para solucionar los problemas durante este paso, vea la guía para solucionar problemas de [Errores relacionados con las contraseñas](../articles/storsimple/storsimple-troubleshoot-deployment.md#errors-related-to-device-administrator-and-storsimple-snapshot-manager-passwords).
+3. El último paso del Asistente para instalación registra el dispositivo con el servicio de Administrador de StorSimple. Para ello, necesitará la clave de registro del servicio que obtuvo en el paso 2. Después de proporcionar la clave de registro, puede que tenga que esperar entre 2 y 3 minutos hasta que el dispositivo se registre.
    
-   tootroubleshoot cualquier error de registro de los dispositivos posibles, consulte demasiado[errores durante el registro de dispositivo](../articles/storsimple/storsimple-troubleshoot-deployment.md#errors-during-device-registration). Para obtener la solución de problemas, también puede hacer referencia demasiado[ejemplo paso a paso de solución de problemas](../articles/storsimple/storsimple-troubleshoot-deployment.md#step-by-step-storsimple-troubleshooting-example).
-4. Una vez registrado el dispositivo de hello, aparecerá una clave de cifrado de datos de servicio. Copie esta clave y guárdela en un lugar seguro,
+   Para solucionar los posibles errores de registro del dispositivo, vea el tema [Errores durante el registro de dispositivos](../articles/storsimple/storsimple-troubleshoot-deployment.md#errors-during-device-registration). Para conocer la solución de problemas con detalle, también puede consultar el [Ejemplo paso a paso de solución de problemas](../articles/storsimple/storsimple-troubleshoot-deployment.md#step-by-step-storsimple-troubleshooting-example).
+4. Una vez registrado el dispositivo, aparecerá una clave de cifrado de datos de servicio. Copie esta clave y guárdela en un lugar seguro.
    
    > [!WARNING]
-   > Esta clave será necesaria con hello servicio Registro tooregister clave dispositivos adicionales con hello el servicio StorSimple Manager. Consulte demasiado[seguridad de StorSimple](../articles/storsimple/storsimple-security.md) para obtener más información acerca de esta clave.
+   > Esta clave se solicitará junto con la clave de registro de servicio para registrar dispositivos adicionales con el servicio de Administrador de StorSimple. Consulte [Seguridad de StorSimple](../articles/storsimple/storsimple-security.md) para obtener más información sobre esta clave.
    > 
    > 
    
     ![Registrar el dispositivo 6 de StorSimple](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice6-include.png)
    
-    texto de hello toocopy desde la ventana de consola serie de hello, simplemente seleccione texto hello. A continuación, debe ser capaz de toopaste en el Portapapeles de Hola o cualquier editor de texto. No use Ctrl + clave de cifrado de datos de servicio de C toocopy Hola. Con Ctrl + C hará que a se tooexit Hola Asistente para la instalación. Como resultado, no se cambiarán contraseña de administrador de dispositivos de Hola y la contraseña de administrador de instantáneas StorSimple hello y dispositivo Hola volverá toohello contraseñas de forma predeterminada.
-5. Consola serie de Hola de salida.
-6. Devolver toohello portal de Azure clásico y complete Hola pasos:
+    Para copiar el texto de la ventana de la consola serie, simplemente seleccione el texto. A continuación, podrá pegarlo en el Portapapeles o en cualquier editor de texto. No use Ctrl+C para copiar la clave de cifrado de datos de servicio. Si usa Ctrl+C, saldrá del Asistente para instalación. Como resultado, no se cambiarán la contraseña del administrador del dispositivo ni la contraseña de StorSimple Snapshot Manager, y el dispositivo volverá a usar las contraseñas predeterminadas.
+5. Salga de la consola serie.
+6. Vuelva al Portal de Azure clásico y siga estos pasos:
    
-   1. Haga doble clic en su hello tooaccess de servicio de administrador de StorSimple **inicio rápido** página.
+   1. Haga doble clic en el servicio de Administrador de StorSimple para acceder a la página **Inicio rápido** .
    2. Haga clic en **Ver los dispositivos conectados**.
-   3. En hello **dispositivos** página, compruebe que dicho dispositivo Hola se ha conectado correctamente toohello servicio consultando el estado de saludo. estado de dispositivo de Hello debe ser **Online**. Si el estado del dispositivo de hello es **sin conexión**, espere unos minutos para hello toocome de dispositivo en línea.
+   3. En la página **Dispositivos** , compruebe que el dispositivo se conectó correctamente al servicio consultando el estado. El estado del dispositivo debe ser **Conectado**. Si el estado del dispositivo es **Desconectado**, espere unos minutos para que el dispositivo se conecte.
    
    ![Página de dispositivos de StorSimple](./media/storsimple-configure-and-register-device/HCS_DevicesPageM-include.png) 
    
    > [!IMPORTANT]
-   > Después de hello dispositivo está en línea, conecte los cables de red de Hola que tenía desconectado en principio Hola de este paso.
+   > Después de que el dispositivo esté en línea, conecta los cables de red que desconectaste al principio de este paso.
    > 
    > 
 
-Después de dispositivo de Hola se ha registrado correctamente y no esté en línea, puede ejecutar hello `Test-HcsmConnection -Verbose` tooensure que Hola conectividad de red es correcto. Para hello detallados de uso de este cmdlet, vaya demasiado[referencia de cmdlet de Test-HcsmConnection](https://technet.microsoft.com/library/dn715782.aspx).
+Después de que el dispositivo se haya registrado correctamente y no esté en línea, puede ejecutar el `Test-HcsmConnection -Verbose` para asegurarse de que la conectividad de red es correcta. Para conocer el uso detallado de este cmdlet, vaya a [Referencia del cmdlet para Test-HcsmConnection](https://technet.microsoft.com/library/dn715782.aspx).
 
-![Vídeo disponible](./media/storsimple-configure-and-register-device/Video_icon.png)**Vídeo disponible**
+![Vídeo disponible](./media/storsimple-configure-and-register-device/Video_icon.png) **Vídeo disponible**
 
-toowatch un vídeo que muestra cómo tooconfigure y registrar el dispositivo a través de Windows PowerShell para StorSimple, haga clic en [aquí](https://azure.microsoft.com/documentation/videos/initialize-the-storsimple-appliance/).
+Para ver un vídeo que muestra cómo configurar y registrar el dispositivo a través de Windows PowerShell para StorSimple, haga clic [aquí](https://azure.microsoft.com/documentation/videos/initialize-the-storsimple-appliance/).
 

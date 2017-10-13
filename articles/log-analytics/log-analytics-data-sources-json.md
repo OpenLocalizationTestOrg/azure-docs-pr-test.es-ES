@@ -1,6 +1,6 @@
 ---
-title: "aaaCollecting datos personalizados de JSON en análisis de registros de OMS | Documentos de Microsoft"
-description: "Orígenes de datos JSON se pueden recopilar en análisis de registros mediante Hola agente de OMS para Linux.  Estos orígenes de datos personalizados pueden ser scripts simples que devuelven JSON, como curl o uno de los más de 300 complementos de FluentD. Este artículo describe configuración de hello necesaria para esta recopilación de datos."
+title: "Recopilación de datos JSON personalizados en Log Analytics de OMS | Microsoft Docs"
+description: "Los orígenes de datos JSON personalizados se pueden recopilar en Log Analytics mediante el agente de OMS para Linux.  Estos orígenes de datos personalizados pueden ser scripts simples que devuelven JSON, como curl o uno de los más de 300 complementos de FluentD. En este artículo se describe la configuración necesaria para esta recopilación de datos."
 services: log-analytics
 documentationcenter: 
 author: mgoedtel
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: 97d401408a8c206d4a9ef2ec9b13ba1ca6b5e92b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 800ee1269556e7c2d56fbbf2b497c10509b5c78c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="collecting-custom-json-data-sources-with-hello-oms-agent-for-linux-in-log-analytics"></a>Recopilar orígenes de datos JSON con hello agente de OMS para Linux en análisis de registros
-Orígenes de datos JSON se pueden recopilar en análisis de registros mediante Hola agente de OMS para Linux.  Estos orígenes de datos personalizados pueden ser scripts simples que devuelven JSON, como [curl](https://curl.haxx.se/) o uno de los más de [300 complementos de FluentD](http://www.fluentd.org/plugins/all). Este artículo describe configuración de hello necesaria para esta recopilación de datos.
+# <a name="collecting-custom-json-data-sources-with-the-oms-agent-for-linux-in-log-analytics"></a>Recopilación de orígenes de datos JSON personalizados con el agente de OMS para Linux en Log Analytics
+Los orígenes de datos JSON personalizados se pueden recopilar en Log Analytics mediante el agente de OMS para Linux.  Estos orígenes de datos personalizados pueden ser scripts simples que devuelven JSON, como [curl](https://curl.haxx.se/) o uno de los más de [300 complementos de FluentD](http://www.fluentd.org/plugins/all). En este artículo se describe la configuración necesaria para esta recopilación de datos.
 
 > [!NOTE]
 > El agente de OMS para Linux v1.1.0-217+ es necesario para los datos JSON personalizados.
@@ -30,9 +30,9 @@ Orígenes de datos JSON se pueden recopilar en análisis de registros mediante H
 
 ### <a name="configure-input-plugin"></a>Configuración del complemento de entrada
 
-agregar datos JSON de toocollect en análisis de registros, `oms.api.` toohello inicio de una etiqueta de FluentD en un complemento de entrada.
+Para recopilar datos JSON en Log Analytics, agregue `oms.api.` al principio de una etiqueta de FluentD en un complemento de entrada.
 
-Por ejemplo, el siguiente es un archivo de configuración independiente `exec-json.conf` en `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`.  Esto utiliza hello FluentD complemento `exec` toorun un comando curl cada 30 segundos.  complemento de salida JSON de hello recopila la salida de Hello de este comando.
+Por ejemplo, el siguiente es un archivo de configuración independiente `exec-json.conf` en `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`.  Este archivo usa el complemento `exec` de FuentD para ejecutar un comando de curl cada 30 segundos.  La salida de este comando se recopila mediante el complemento de salida JSON.
 
 ```
 <source>
@@ -56,12 +56,12 @@ Por ejemplo, el siguiente es un archivo de configuración independiente `exec-js
   retry_wait 30s
 </match>
 ```
-agregado en el archivo de configuración de Hello `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` requerirá toohave cambiar su propiedad con el siguiente comando de Hola.
+Será necesario cambiar la propiedad del archivo de configuración agregado bajo `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` con el siguiente comando.
 
 `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/exec-json.conf`
 
 ### <a name="configure-output-plugin"></a>Configuración del complemento de salida 
-Agregar Hola siguiente salida complemento Configuración toohello principal configuración en `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` o según lo coloca en un archivo de configuración independiente`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`
+Agregue la siguiente configuración de complemento de salida a la configuración principal en `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` o como un archivo de configuración independiente colocado en `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`.
 
 ```
 <match oms.api.**>
@@ -79,18 +79,18 @@ Agregar Hola siguiente salida complemento Configuración toohello principal conf
 ```
 
 ### <a name="restart-oms-agent-for-linux"></a>Reinicio del agente de OMS para Linux
-Reinicie Hola agente de OMS para Linux servicio con el siguiente comando de Hola.
+Reinicie el servicio de agente de OMS para Linux con el siguiente comando.
 
     sudo /opt/microsoft/omsagent/bin/service_control restart 
 
 ## <a name="output"></a>Salida
-se recopilarán datos de Hello en análisis de registros con un tipo de registro de `<FLUENTD_TAG>_CL`.
+Los datos se recopilarán en Log Analytics con un tipo de registro de `<FLUENTD_TAG>_CL`.
 
-Por ejemplo, Hola etiqueta personalizada `tag oms.api.tomcat` en análisis de registros con un tipo de registro de `tomcat_CL`.  Puede recuperar todos los registros de este tipo con hello después de la búsqueda de registros.
+Por ejemplo, la etiqueta personalizada `tag oms.api.tomcat` en Log Analytics con un tipo de registro de `tomcat_CL`.  Podría recuperar todos los registros de este tipo con la siguiente búsqueda de registros.
 
     Type=tomcat_CL
 
-Se admiten datos JSON anidados, pero se indexan en función del campo principal. Por ejemplo, se devuelve Hola después datos JSON en una búsqueda de análisis de registros como `tag_s : "[{ "a":"1", "b":"2" }]`.
+Se admiten datos JSON anidados, pero se indexan en función del campo principal. Por ejemplo, se devuelven los siguientes datos JSON desde Log Analytics como `tag_s : "[{ "a":"1", "b":"2" }]`.
 
 ```
 {
@@ -103,5 +103,5 @@ Se admiten datos JSON anidados, pero se indexan en función del campo principal.
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Obtenga información acerca de [búsquedas de registro](log-analytics-log-searches.md) recopilan los datos de Hola de tooanalyze desde orígenes de datos y soluciones. 
+* Obtenga información sobre las [búsquedas de registros](log-analytics-log-searches.md) para analizar los datos recopilados desde soluciones y orígenes de datos. 
  

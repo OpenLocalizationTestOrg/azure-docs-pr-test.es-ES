@@ -1,5 +1,5 @@
 ---
-title: aaa "evento completa de la tarea de lote de Azure | Documentos de Microsoft"
+title: Evento completo de tarea de Azure Batch | Microsoft Docs
 description: Referencia del evento completo de tarea de Batch.
 services: batch
 author: tamram
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: tamram
-ms.openlocfilehash: c126bf897071c008be3d24190cf77bba5878b807
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 015adf7dbc47c29a78df4e4889b2ee1ddcccdd8e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="task-complete-event"></a>Evento de tarea completada
 
- Este evento se genera cuando se haya completado una tarea, independientemente del código de salida de hello. Este evento puede ser usado toodetermine Hola duración de una tarea, donde se ejecutó la tarea hello, y si se vuelve a intentar.
+ Este evento se emite una vez que se completa una tarea, independientemente del código de salida. Este evento se puede usar para determinar la duración de una tarea, dónde se ejecutó y si se reintentó.
 
 
- Hello en el ejemplo siguiente se muestra hello cuerpo de un evento complete la tarea.
+ En el ejemplo siguiente se muestra el cuerpo de un evento de finalización de tarea completada.
 
 ```
 {
@@ -53,40 +53,40 @@ ms.lasthandoff: 10/06/2017
 
 |Nombre del elemento|Tipo|Notas|
 |------------------|----------|-----------|
-|jobId|String|Hola Id. de trabajo de Hola que contiene la tarea hello.|
-|id|String|Hola Id. de tarea hello.|
-|taskType|String|tipo de Hola de tarea hello. Puede ser "JobManager", que indica que es una tarea del administrador de trabajos, o "User", que indica que no lo es. Este evento no se emite para tareas de preparación de trabajos, tareas de liberación de trabajo ni tareas de inicio.|
-|systemTaskVersion|Int32|Se trata de un contador de reintentos interno de hello en una tarea. Internamente el servicio por lotes Hola puede volver a intentar una tooaccount de tarea para problemas transitorios. Estos problemas pueden incluir toorecover interno de intentos de contraseña o errores de programación de nodos de ejecución en un estado incorrecto.|
-|[nodeInfo](#nodeInfo)|Tipo complejo|Contiene información sobre el nodo de proceso de hello en qué Hola se ejecutó la tarea.|
-|[multiInstanceSettings](#multiInstanceSettings)|Tipo complejo|Especifica que la tarea hello es una tarea de varias instancias que requieren varios nodos de ejecución.  Consulte [multiInstanceSettings](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) para detalles.|
-|[constraints](#constraints)|Tipo complejo|restricciones de ejecución de Hola que se aplican toothis tarea.|
-|[executionInfo](#executionInfo)|Tipo complejo|Contiene información sobre la ejecución de Hola de tarea hello.|
+|jobId|String|Identificador del trabajo que contiene la tarea.|
+|id|String|Identificador de la tarea.|
+|taskType|String|Tipo de la tarea. Puede ser "JobManager", que indica que es una tarea del administrador de trabajos, o "User", que indica que no lo es. Este evento no se emite para tareas de preparación de trabajos, tareas de liberación de trabajo ni tareas de inicio.|
+|systemTaskVersion|Int32|Se trata del contador interno de reintentos de una tarea. De manera interna, el servicio de Batch puede reintentar una tarea para tener en cuenta los problemas transitorios. Estos problemas pueden incluir errores internos de programación o intentos de recuperación a partir de nodos de proceso en estado no válido.|
+|[nodeInfo](#nodeInfo)|Tipo complejo|Contiene información sobre el nodo de ejecución en que se ejecutó la tarea.|
+|[multiInstanceSettings](#multiInstanceSettings)|Tipo complejo|Especifica que la tarea es una tarea de instancias múltiples que requiere varios nodos de proceso.  Consulte [multiInstanceSettings](https://docs.microsoft.com/rest/api/batchservice/get-information-about-a-task) para detalles.|
+|[constraints](#constraints)|Tipo complejo|Restricciones de ejecución que se aplican a esta tarea.|
+|[executionInfo](#executionInfo)|Tipo complejo|Contiene información sobre la ejecución de la tarea.|
 
 ###  <a name="nodeInfo"></a> nodeInfo
 
 |Nombre del elemento|Tipo|Notas|
 |------------------|----------|-----------|
-|poolId|String|Hola Id. del grupo de hello en qué Hola se ejecutó la tarea.|
-|nodeId|String|Hola el identificador del nodo de hello en qué Hola se ejecutó la tarea.|
+|poolId|String|Identificador del grupo en que se ejecutó la tarea.|
+|nodeId|String|Identificador del nodo en que se ejecutó la tarea.|
 
 ###  <a name="multiInstanceSettings"></a> multiInstanceSettings
 
 |Nombre del elemento|Tipo|Notas|
 |------------------|----------|-----------|
-|numberOfInstances|Int32|número de Hola de nodos de proceso requeridos por la tarea hello.|
+|numberOfInstances|Int32|Número de nodos de proceso que requiere la tarea.|
 
 ###  <a name="constraints"></a> constraints
 
 |Nombre del elemento|Tipo|Notas|
 |------------------|----------|-----------|
-|maxTaskRetryCount|Int32|Hola número máximo de veces que se puede reintentar la tarea hello. Hola servicio por lotes vuelve a intentar una tarea si su código de salida es distinto de cero.<br /><br /> Tenga en cuenta que este valor controla específicamente número Hola de reintentos. servicio de lote de Hello intentará tarea hello una vez y, a continuación, puede volver a intentar la toothis límite. Por ejemplo, si el número máximo de reintentos de hello es 3, lote intenta una tarea too4 horas (un intento de inicial y 3 reintentos).<br /><br /> Si el número máximo de reintentos de hello es 0, Hola servicio por lotes no vuelva a intentar tareas.<br /><br /> Si el número máximo de reintentos de hello es -1, el servicio de lote de hello reintenta tareas sin límite.<br /><br /> valor predeterminado de Hello es 0 (no hay ningún reintento).|
+|maxTaskRetryCount|Int32|Número máximo de veces que se puede reintentar la tarea. El servicio de Batch reintenta una tarea su el código de salida es distinto de cero.<br /><br /> Tenga en cuenta que este valor controla específicamente el número de reintentos. El servicio de Batch intentará una vez la tarea y podría reintentarla hasta alcanzar este límite. Por ejemplo, si el conteo de reintentos máximo es 3, Batch intenta una tarea hasta 4 veces (un intento inicial y 3 reintentos).<br /><br /> Si el conteo de intentos máximo es 0, el servicio de Batch no reintenta las tareas.<br /><br /> Si el conteo de intentos máximo es -1, el servicio de Batch reintenta las tareas sin ningún límite.<br /><br /> El valor predeterminado es 0 (sin ningún reintento).|
 
 ###  <a name="executionInfo"></a> executionInfo
 
 |Nombre del elemento|Tipo|Notas|
 |------------------|----------|-----------|
-|startTime|DateTime|hora de Hello en qué tarea hello empezado a ejecutarse. "Running" corresponde toohello **ejecutando** estado, por lo que si la tarea hello Especifica archivos de recursos o paquetes de aplicación, hora de inicio de hello refleja tiempo hello en qué tarea hello iniciado descarga o implementarlas.  Si se ha reinicia o vuelve a intentar la tarea hello, esto es hello hora más reciente en qué tarea hello empezó a ejecutarse.|
-|endTime|DateTime|hora de Hello en qué tarea hello completado.|
-|exitCode|Int32|código de salida de Hello de tarea hello.|
-|retryCount|Int32|Hola número de veces que se ha reintentado la tarea hello Hola servicio por lotes. tarea Hello se vuelve a intentar si finaliza con un código de salida distinto de cero, los toohello especifica MaxTaskRetryCount.|
-|requeueCount|Int32|Hola número de veces tarea hello ha sido poner en cola Hola servicio por lotes como resultado de hello de una solicitud de usuario.<br /><br /> Cuando se quita del usuario de hello nodos de un grupo (cambiar el tamaño o reducción de la agrupación de hello) o cuando se está deshabilitando el trabajo de hello, usuario Hola pueden especificar que las tareas de ejecución en los nodos de Hola pueden poner en cola para su ejecución. Este recuento realiza un seguimiento de cuántas veces ha sido poner en cola tarea hello por estos motivos.|
+|startTime|DateTime|Hora a la que empezó a ejecutarse la tarea. "En ejecución" se refiere al estado **running**, por lo que si la tarea especifica archivos de recursos o paquetes de aplicación, la hora inicial refleja la hora a la que la tarea empezó a descargarlos o implementarlos.  Si se reinició o reintentó la tarea, es la hora más reciente a la que comenzó a ejecutarse.|
+|endTime|DateTime|Hora a la que finalizó la tarea.|
+|exitCode|Int32|Código de salida de la tarea.|
+|retryCount|Int32|Cantidad de veces que el servicio de Batch reintentó la tarea. La tarea se reintenta si el código de salida es distinto de cero, hasta el valor MaxTaskRetryCount especificado.|
+|requeueCount|Int32|Cantidad de veces que el servicio de Batch volvió a poner en cola la tarea como resultado de una solicitud de usuario.<br /><br /> Cuando el usuario quita nodos de un grupo (ya sea debido a que cambia o disminuye el tamaño del grupo), o bien cuando se deshabilita el trabajo, el usuario puede especificar que las tareas en ejecución en los nodos se vuelvan a poner en cola para su ejecución. Este conteo hace un seguimiento de las veces en que la tarea se volvió a poner en cola por estos motivos.|

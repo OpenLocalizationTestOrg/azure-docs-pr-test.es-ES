@@ -1,6 +1,6 @@
 ---
-title: vigencia de los tokens aaaConfigurable en Azure Active Directory | Documentos de Microsoft
-description: "Obtenga información acerca de cómo tooset duraciones para tokens emiten por Azure AD."
+title: Vigencia de tokens configurable en Azure Active Directory | Microsoft Docs
+description: Aprenda a establecer la vigencia de los tokens emitidos por Azure AD.
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -16,23 +16,23 @@ ms.date: 07/20/2017
 ms.author: billmath
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: 0d4c8545981c5463cc7c95f669167bbc38230123
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d23721eba308096a05211eb6e26e1338a69cae0c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Vigencia de tokens configurables de Azure Active Directory (versión preliminar pública)
-Puede especificar la duración de Hola de un token emitido por Azure Active Directory (Azure AD). La vigencia de los tokens se puede configurar para todas las aplicaciones de una organización, para una aplicación multiinquilino (multiorganización) o para una entidad de servicio específica de una organización.
+Puede especificar la vigencia de un token emitido por Azure Active Directory (Azure AD). La vigencia de los tokens se puede configurar para todas las aplicaciones de una organización, para una aplicación multiinquilino (multiorganización) o para una entidad de servicio específica de una organización.
 
 > [!NOTE]
-> Esta funcionalidad se encuentra actualmente en versión preliminar pública. Prepararán toorevert o quitar los cambios. Hola característica está disponible en ninguna suscripción de Azure Active Directory durante la vista previa pública. Sin embargo, cuando la característica de hello deja de estar disponible con carácter general, algunos aspectos de la característica de hello pueden requerir un [Azure Active Directory Premium](active-directory-get-started-premium.md) suscripción.
+> Esta funcionalidad se encuentra actualmente en versión preliminar pública. Debe estar preparado para deshacer o eliminar los cambios. La característica estará disponible en cualquier suscripción de Azure Active Directory durante el período de versión preliminar pública. Sin embargo, cuando ya esté disponible con carácter general, algunos aspectos de ella podrían requerir una suscripción de [Azure Active Directory Premium](active-directory-get-started-premium.md).
 >
 >
 
-En Azure AD, un objeto de directiva representa un conjunto de reglas que se exigen en algunas o todas las aplicaciones de una organización. Cada tipo de directiva tiene una estructura única, con un conjunto de propiedades que son toowhich tooobjects aplicados que están asignados.
+En Azure AD, un objeto de directiva representa un conjunto de reglas que se exigen en algunas o todas las aplicaciones de una organización. Cada tipo de directiva tiene una estructura única con un conjunto de propiedades que luego se aplican a los objetos a los que están asignadas.
 
-Puede designar una directiva como la directiva predeterminada de Hola para su organización. Directiva de Hello es aplicación tooany aplicados en la organización de hello, siempre y cuando no se ha reemplazado por una directiva con una prioridad más alta. También puede asignar una directiva toospecific las aplicaciones. orden de Hola de prioridad varía según el tipo de directiva.
+Puede designar una directiva como la directiva predeterminada para su organización. La directiva se aplicará a cualquier aplicación que resida dentro de esa organización, siempre y cuando no se haya reemplazado por una directiva con una prioridad más alta. También puede asignar una directiva a aplicaciones específicas. El orden de prioridad varía según el tipo de directiva.
 
 
 ## <a name="token-types"></a>Tipos de token
@@ -40,34 +40,34 @@ Puede designar una directiva como la directiva predeterminada de Hola para su or
 Las directivas de vigencia del token se pueden establecer para tokens de actualización, tokens de acceso, tokens de sesión y tokens de identificador.
 
 ### <a name="access-tokens"></a>Tokens de acceso
-Los tokens de acceso de uso de los clientes tooaccess un recurso protegido. Solo se puede utilizar un token de acceso para una combinación específica de usuario, cliente y recurso. Los tokens de acceso no se pueden revocar y son válidos hasta que caducan. Un individuo maltintencionado que haya obtenido un token de acceso puede usarlo durante toda su vigencia. Ajustar la duración de Hola de un acceso token es un equilibrio entre la mejora de rendimiento del sistema y creciente Hola cantidad de tiempo que Hola cliente mantiene el acceso cuando se deshabilita la cuenta de usuario de Hola. Se consigue un rendimiento mejorado del sistema mediante la reducción Hola número de veces que un cliente necesita tooacquire un token de acceso actualizada.
+Los clientes utilizan tokens de acceso para acceder a un recurso protegido. Solo se puede utilizar un token de acceso para una combinación específica de usuario, cliente y recurso. Los tokens de acceso no se pueden revocar y son válidos hasta que caducan. Un individuo maltintencionado que haya obtenido un token de acceso puede usarlo durante toda su vigencia. El ajuste de la vigencia de un token de acceso es un balance entre la mejora del rendimiento del sistema y el aumento de la cantidad de tiempo que el cliente conserva el acceso después de que la cuenta de usuario está deshabilitada. Se consigue un rendimiento mejorado del sistema al reducir el número de veces que un cliente necesita adquirir un token de acceso nuevo.
 
 ### <a name="refresh-tokens"></a>Tokens de actualización
-Cuando un cliente adquiere un tooaccess de token de acceso a un recurso protegido, el cliente de hello recibe un token de actualización y un token de acceso. token de actualización de Hello es tooobtain usado nuevos pares token acceso/actualización cuando expira el token de acceso actual de Hola. Un token de actualización es la combinación de tooa enlazado de usuario y el cliente. Se pueden revocar un token de actualización y se comprueba la validez del token de hello cada vez que se usa el token de Hola.
+Cuando un cliente adquiere un token de acceso para acceder a un recurso protegido, recibe un token de actualización y un token de acceso. El token de actualización se usa para obtener nuevos pares de tokens de acceso/actualización cuando el token de acceso actual expira. Un token de actualización se enlaza a una combinación de usuario y cliente. Se puede revocar un token de actualización y se comprobará la validez de este cada vez que se use.
 
-Es importante toomake a distinguir entre los clientes de confidenciales y pública. Para más información sobre los diferentes tipos de clientes, consulte [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1).
+Es importante diferenciar entre clientes públicos y confidenciales. Para más información sobre los diferentes tipos de clientes, consulte [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1).
 
 #### <a name="token-lifetimes-with-confidential-client-refresh-tokens"></a>Vigencia de los tokens de actualización de cliente confidencial
-Los clientes confidenciales son aplicaciones que pueden almacenar de forma segura una contraseña (secreto) de un cliente. Puede demostrar que las solicitudes proceden de la aplicación de cliente de hello y no desde un actor malintencionado. Por ejemplo, una aplicación web es un cliente confidencial porque puede almacenar un secreto de cliente en el servidor web de Hola. Y, por tanto, este secreto no se expone. Dado que estos flujos son más seguros, Hola duraciones predeterminadas de tokens de actualización es emitido toothese flujos `until-revoked`, no se puede cambiar mediante la directiva y no se revocará en los restablecimientos de contraseña voluntaria.
+Los clientes confidenciales son aplicaciones que pueden almacenar de forma segura una contraseña (secreto) de un cliente. Pueden comprobar que las solicitudes proceden de la aplicación cliente y no de un individuo malintencionado. Por ejemplo, una aplicación web es un cliente confidencial ya que puede almacenar un secreto de cliente en el servidor web. Y, por tanto, este secreto no se expone. Dado que estos flujos resultan más seguros, las duraciones predeterminadas de tokens de actualización emitidos para estos flujos será `until-revoked`, no se podrán cambiar mediante la directiva y no se revocarán en los restablecimientos de contraseña voluntarios.
 
 #### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>Vigencia de los tokens de actualización de cliente público
 
-Los clientes públicos no pueden almacenar de forma segura una contraseña (secreto) de cliente. Por ejemplo, una aplicación de iOS y Android no puede ofuscar un secreto de propietario del recurso de hello, por lo que se considera a un cliente público. Puede establecer directivas en recursos tooprevent tokens de actualización de los clientes públicos anteriores a un período especificado obtengan un nuevo par de tokens de acceso/actualización. (toodo, Hola use propiedad actualizar Token máximo tiempo inactivo..) También puede usar tooset directivas ya no se aceptan un período más allá de los tokens de actualización de Hola. (toodo, Hola use propiedad actualizar Token Max Age.) Puede ajustar la duración de Hola de un toocontrol de token de actualización cuándo y con qué frecuencia hello usuario es tooreenter requiere credenciales, en lugar de que en modo silencioso volver a autenticarse, cuando se usa una aplicación de cliente público.
+Los clientes públicos no pueden almacenar de forma segura una contraseña (secreto) de cliente. Por ejemplo, una aplicación de iOS o Android no puede ofuscar un secreto del propietario del recurso y, por ello, se considera a la aplicación un cliente público. Se pueden establecer directivas sobre los recursos para evitar que los tokens de actualización de clientes públicos anteriores a un período especificado obtengan un nuevo par de tokens de acceso/actualización. (Para ello, utilice la propiedad de tiempo máximo de inactividad del token de actualización). También puede utilizar directivas para establecer un período más allá del cual ya no se aceptan los tokens de actualización. (Para ello, utilice la propiedad de antigüedad máxima del token de actualización). Puede ajustar la vigencia del token de actualización para controlar cuándo y con qué frecuencia es necesario que el usuario vuelva a escribir las credenciales en lugar de volver a autenticarse de forma silenciosa al usar una aplicación cliente pública.
 
 ### <a name="id-tokens"></a>Tokens de identificador
-Tokens de identificador se pasan toowebsites y clientes nativos. Los tokens de identificador contienen información de perfil de un usuario. Un identificador de token es dependiente tooa combinación específica de usuario y el cliente. Los tokens de identificador se consideran válidos hasta que expiran. Normalmente, una aplicación web coincide con un usuario de la duración de la sesión Hola duración de aplicación toohello del token de Id. de hello emitido para usuario Hola. Puede ajustar la duración de Hola de un identificador token toocontrol con qué frecuencia aplicación web de hello expira la sesión de la aplicación hello y con qué frecuencia requiere Hola usuario toobe volver a autenticarse con Azure AD (en modo silencioso o interactiva).
+Los tokens de identificador se pasan a los clientes nativos y de sitios web. Los tokens de identificador contienen información de perfil de un usuario. Un token de identificador se enlaza a una combinación específica de usuario y cliente. Los tokens de identificador se consideran válidos hasta que expiran. Normalmente, una aplicación web relaciona la vigencia de la sesión de un usuario en la aplicación con la vigencia del token de identificador emitido para el usuario. Puede ajustar la vigencia del token de identificador para controlar la frecuencia con la que la aplicación web expirará la sesión de la aplicación y requerirá que el usuario se vuelva a autenticar en Azure AD (de forma silenciosa o interactiva).
 
 ### <a name="single-sign-on-session-tokens"></a>Tokens de sesión de inicio de sesión único
-Cuando un usuario se autentica con Azure AD y selecciona hello **mantener la sesión iniciada** casilla de verificación, se establece una sesión de inicio de sesión única (SSO) con el explorador del usuario de Hola y Azure AD. token SSO de Hello, en forma de Hola de una cookie, representa esta sesión. Tenga en cuenta que ese token de sesión SSO hello no es aplicación de cliente y el recurso específico tooa enlazado. Los tokens de sesión SSO se pueden revocar y su validez se comprueba cada vez que se utilizan.
+Cuando un usuario se autentica en Azure AD y activa la casilla **Mantener la sesión iniciada**, se establece una sesión de inicio de sesión único (SSO) con Azure AD y el explorador del usuario. El token de SSO, en forma de cookie, representa esta sesión. Tenga en cuenta que el token de sesión SSO no está enlazado a una aplicación específica cliente o de recursos. Los tokens de sesión SSO se pueden revocar y su validez se comprueba cada vez que se utilizan.
 
-Azure AD usa dos tipos de tokens de sesión SSO: persistente y no persistente. Símbolos de sesión persistentes se almacenan como cookies persistentes explorador Hola. Los tokens de sesión no persistentes se almacenan como cookies de sesión. (Las cookies de sesión se destruyen cuando se cierra el Explorador de hello).
+Azure AD usa dos tipos de tokens de sesión SSO: persistente y no persistente. El explorador almacena los tokens de sesión persistentes como cookies. Los tokens de sesión no persistentes se almacenan como cookies de sesión. (Las cookies de sesión se destruyen cuando se cierra el explorador).
 
-Los tokens de sesión no persistentes tienen una vigencia de 24 horas. Los tokens persistentes tienen una vigencia de 180 días. Siempre que se usa un token de sesión SSO dentro del período de validez, período de validez de Hola se extiende otro 24 horas o 180 días, según el tipo de token Hola. Si un token de sesión SSO no se usa dentro de su período de validez, se considerará caducado y ya no se aceptará.
+Los tokens de sesión no persistentes tienen una vigencia de 24 horas. Los tokens persistentes tienen una vigencia de 180 días. Cada vez que se utilice el token de sesión SSO dentro de su período de validez, este se amplía otras 24 horas o 180 días, dependiendo del tipo de token. Si un token de sesión SSO no se usa dentro de su período de validez, se considerará caducado y ya no se aceptará.
 
-Puede usar una directiva tooset Hola vez primer token de sesión Hola emitió más allá de qué Hola ya no se acepta el token de sesión. (toodo, Hola use propiedad Age de máximo de Token de sesión.) Puede ajustar la duración de Hola de un toocontrol de token de sesión cuándo y con qué frecuencia un usuario es tooreenter requiere credenciales, en lugar de que se autentica de forma automática, cuando se usa una aplicación web.
+Puede utilizar una directiva para establecer el período de tiempo después de la emisión del primer token de sesión, más allá del cual ya no se aceptará este token. (Para ello, utilice la propiedad de antigüedad máxima del token de sesión). Puede ajustar la vigencia de un token de sesión para controlar cuándo y con qué frecuencia el usuario debe volver a escribir las credenciales en lugar de autenticarse de forma silenciosa cuando se usa una aplicación web.
 
 ### <a name="token-lifetime-policy-properties"></a>Propiedades de la directiva de vigencia del token
-Una directiva de vigencia del token es un tipo de objeto de directiva que contiene reglas de vigencia del token. Utilizar propiedades de Hola de hello directiva toocontrol especifican vigencia de los tokens. Si no se establece ninguna directiva, sistema de Hola exige valor de duración de hello predeterminado.
+Una directiva de vigencia del token es un tipo de objeto de directiva que contiene reglas de vigencia del token. Use las propiedades de la directiva para controlar las vigencias de tokens especificados. Si no se establece ninguna directiva, el sistema aplica el valor de vigencia predeterminado.
 
 ### <a name="configurable-token-lifetime-properties"></a>Propiedades de vigencia de tokens configurables
 | Propiedad | Cadena de propiedad de directiva | Afecta a | Valor predeterminado | Mínima | Máxima |
@@ -79,9 +79,9 @@ Una directiva de vigencia del token es un tipo de objeto de directiva que contie
 | Antigüedad máxima del token de sesión (un solo factor) |MaxAgeSessionSingleFactor<sup>2</sup> |Tokens de sesión (persistentes y no persistentes) |Hasta que se revoca |10 minutos |Hasta que se revoca<sup>1</sup> |
 | Antigüedad máxima del token de sesión (varios factores) |MaxAgeSessionMultiFactor<sup>3</sup> |Tokens de sesión (persistentes y no persistentes) |Hasta que se revoca |10 minutos |Hasta que se revoca<sup>1</sup> |
 
-* <sup>1</sup>365 días es Hola explícita la longitud máxima que se pueden establecer para estos atributos.
-* <sup>2</sup>si **MaxAgeSessionSingleFactor** no se establece, este valor tiene hello **MaxAgeSingleFactor** valor. Si se establece ninguno de estos parámetros, propiedad Hola toma el valor de predeterminado de hello (hasta revocados).
-* <sup>3</sup>si **MaxAgeSessionMultiFactor** no se establece, este valor tiene hello **MaxAgeMultiFactor** valor. Si se establece ninguno de estos parámetros, propiedad Hola toma el valor de predeterminado de hello (hasta revocados).
+* <sup>1</sup>365 días es la vigencia explícita máxima que se puede establecer para estos atributos.
+* <sup>2</sup>Si no se establece **MaxAgeSessionSingleFactor**, este valor adquiere el valor de **MaxAgeSingleFactor**. Si no se establece ningún parámetro, la propiedad adquiere el valor predeterminado (hasta que se revoca).
+* <sup>3</sup>Si **MaxAgeSessionMultiFactor** no se establece, este valor adquiere entonces el valor de **MaxAgeMultiFactor**. Si no se establece ningún parámetro, la propiedad adquiere el valor predeterminado (hasta que se revoca).
 
 ### <a name="exceptions"></a>Excepciones
 | Propiedad | Afecta a | Valor predeterminado |
@@ -90,38 +90,38 @@ Una directiva de vigencia del token es un tipo de objeto de directiva que contie
 | Tiempo máximo de inactividad del token de actualización (emitido para clientes confidenciales) |Tokens de actualización (emitidos para clientes confidenciales) |90 días |
 | Antigüedad máxima del token de actualización (emitido para clientes confidenciales) |Tokens de actualización (emitidos para clientes confidenciales) |Hasta que se revoca |
 
-* <sup>1</sup>federado los usuarios con la información de revocación suficientes incluyen los usuarios que no tienen Hola sincronizado de atributo de "LastPasswordChangeTimestamp". Estos usuarios tienen este breve Max Age como AAD es no se puede tooverify cuando toorevoke tokens que están vinculadas tooan antigua de credenciales (por ejemplo, una contraseña que se ha cambiado) y debe vuelva a comprobarlo en tooensure con más frecuencia que el usuario hello y símbolos (tokens) asociados seguirán de buena reputación. tooimprove esta experiencia, deben asegurarse de que están sincronizando administradores de inquilinos Hola atributo "LastPasswordChangeTimestamp" (Esto puede establecerse en el objeto de usuario de hello mediante Powershell o a través de AADSync).
+* <sup>1</sup>Entre los usuarios federados que tienen información de revocación insuficiente se incluyen todos los usuarios que no tienen el atributo "LastPasswordChangeTimestamp" sincronizado. A estos usuarios se les da esta antigüedad máxima tan corta porque AAD no puede comprobar cuándo se deben revocar los tokens asociados a una credencial antigua (como una contraseña que se ha modificado) y deben realizar comprobaciones más frecuentes para asegurarse de que el usuario y los tokens asociados están aún activos. Para mejorar esta experiencia, los administradores de los inquilinos deben asegurarse de que están sincronizando el atributo "LastPasswordChangeTimestamp" (esto se puede establecer en el objeto de usuario con PowerShell o a través de AADSync).
 
 ### <a name="policy-evaluation-and-prioritization"></a>Evaluación y prioridades de directivas
-Puede crear y, a continuación, asigne una aplicación específica de duración del token directiva tooa, tooyour organización y las entidades de seguridad tooservice. Varias directivas podrían aplicar tooa de aplicación específica. Directiva de duración del token de Hola que surte efecto sigue estas reglas:
+Puede crear y, a continuación, asignar una directiva de vigencia del token a una aplicación específica, a su organización y a las entidades de servicio. Se pueden aplicar varias directivas a una aplicación específica. La directiva de vigencia del token que entra en vigor sigue estas reglas:
 
-* Si una directiva se asigna explícitamente la entidad de servicio de toohello, se aplica.
-* Si no hay ninguna directiva es entidad de servicio toohello asignado explícitamente, se aplica una directiva que se asigna explícitamente la organización principal de toohello de entidad de servicio de Hola.
-* Si no se asigna explícitamente ninguna directiva de entidad de servicio de toohello o toohello organización, debe aplicar directiva de hello toohello aplicación asignada.
-* Se aplica si no se ha asignado ninguna directiva toohello entidad de seguridad, organización Hola u objeto de aplicación Hola, Hola valores predeterminados del servicio. (Vea la tabla de hello en [propiedades de la duración del token Configurable](#configurable-token-lifetime-properties).)
+* Si una directiva se asigna explícitamente a la entidad de servicio, se aplicará.
+* Si no hay ninguna directiva que se asigne explícitamente a la entidad de servicio, se aplicará una directiva asignada explícitamente a la organización primaria de la entidad de servicio.
+* Si no hay ninguna directiva que se asigne explícitamente a la entidad de servicio o a la organización, se aplicará la directiva asignada a la aplicación.
+* Si no se ha asignado ninguna directiva a la entidad de servicio, la organización o el objeto de aplicación, se aplicarán los valores predeterminados. (Consulte la tabla que aparece en [Propiedades de vigencia de tokens configurables](#configurable-token-lifetime-properties)).
 
-Para obtener más información acerca de la relación de hello entre objetos de entidad de seguridad de servicio y aplicación, consulte [aplicación y objetos de entidad de servicio en Azure Active Directory](active-directory-application-objects.md).
+Para más información sobre la relación entre objetos de aplicación y objetos de entidad de servicio, consulte [Objetos de aplicación y de entidad de servicio de Azure Active Directory](active-directory-application-objects.md).
 
-Validez del token se evalúa en tiempo de Hola Hola token se utiliza. Directiva de Hello con prioridad más alta de hello en la aplicación hello que se tiene acceso surte efecto.
+La validez de un token se evalúa en el momento en el que se usa. La directiva con la prioridad más alta en la aplicación a la que se accede es la que se aplica.
 
 > [!NOTE]
 > Este es un escenario de ejemplo.
 >
-> Un usuario desea que las aplicaciones web de tooaccess dos: aplicación Web A y B. de aplicación Web
+> Un usuario desea tener acceso a dos aplicaciones web: aplicación web A y aplicación web B.
 > 
 > Factores:
-> * Ambas aplicaciones web están en hello mismo primario organización.
-> * Símbolo (token) de duración Policy 1 con una sesión de símbolo (token) Max Age de ocho horas se establece como valor predeterminado de la organización de hello primario.
-> * Aplicación Web es una aplicación web de uso normal y no está vinculado tooany directivas.
-> * La aplicación web B se usa para procesos altamente confidenciales. Su entidad de servicio está vinculado tooToken 2 de la directiva de duración, que tiene una sesión de símbolo (token) Max Age de 30 minutos.
+> * Ambas aplicaciones web están en la misma organización primaria.
+> * La directiva 1 de vigencia del token con una antigüedad máxima del token de sesión de ocho horas se establece como valor predeterminado de la organización primaria.
+> * La aplicación web A es una aplicación web de uso habitual que no está vinculada a ninguna directiva.
+> * La aplicación web B se usa para procesos altamente confidenciales. Su entidad de servicio está vinculada a la directiva 2 de vigencia del token, que tiene una antigüedad máxima de token de sesión de 30 minutos.
 >
-> A las 12:00 P.M., usuario Hola inicia una nueva sesión del explorador y usuario Hola de intentos tooaccess A. de aplicación Web es redirigido tooAzure AD y se le pide toosign en. Esto crea una cookie que tiene un token de sesión en el Explorador de Hola. usuario de Hello es tooWeb redirigida espera una aplicación con un identificador de token que permita Hola usuario tooaccess aplicación hello.
+> A las 12:00 p.m. el usuario inicia una nueva sesión en el explorador e intenta acceder a la aplicación web A. El usuario es redirigido a Azure AD y se le pide que inicie sesión. Esta acción crea una cookie con un token de sesión en el explorador. El usuario es redirigido de nuevo a la aplicación web A con un token de identificador que le permite acceder a la aplicación.
 >
-> A las 12:15 P.M., usuario Hola intenta tooaccess Web aplicación B. Hola explorador redirecciones tooAzure AD, que detecta la cookie de sesión de Hola. Entidad de servicio del Web de aplicación B está vinculado tooToken 2 de la directiva de duración, pero también es parte de la organización principal de hello, no tiene valor predeterminado 1 símbolo (token) de directiva de duración. Símbolo (token) de duración Policy 2 surte efecto porque las entidades de seguridad de las directivas tooservice vinculado tienen una prioridad más alta que las directivas predeterminadas de organización. el token de sesión Hola se emitió originalmente en hello últimos 30 minutos, por lo que se considera válido. usuario de Hello es tooWeb redirigida atrás aplicación B con un identificador de token que se les concede acceso.
+> A las 12:15 p.m., el usuario intenta acceder a la aplicación web B. El explorador redirige a Azure AD, que detecta la cookie de sesión. La entidad de servicio de la aplicación web B está vinculada a la directiva 2 de vigencia del token, pero también forma parte de la organización primaria con la directiva 1 de vigencia del token predeterminada. La directiva 2 de vigencia del token se aplica porque las directivas vinculadas a entidades de servicio tienen una prioridad más alta que las directivas predeterminadas de la organización. El token de sesión se emitió originalmente en los últimos 30 minutos, por lo que se considera válido. El usuario es redirigido de nuevo a la aplicación web B con un token de identificador que le concede acceso.
 >
-> A la 1:00 P.M., Hola intentos tooaccess A. de aplicación Web Hola usuario es redirigido tooAzure AD. Una aplicación Web no está vinculado tooany directivas, pero porque está en una organización con el valor predeterminado 1 símbolo (token) de directiva de duración, esa directiva surte efecto. se detectó la cookie de sesión de Hola que se emitió originalmente en hello últimas ocho horas. usuario de Hello es tooWeb redirigida en modo silencioso atrás una aplicación con un nuevo token de identificador. Hola usuario no es necesario tooauthenticate.
+> A la 1 p.m., el usuario intenta acceder a la aplicación web A y se le redirige a Azure AD. La aplicación web A no está vinculada a ninguna directiva, pero como está en una organización con la directiva predeterminada 1 de vigencia del token, se aplica esta directiva. Se detectó la cookie de sesión que se emitió originalmente en las últimas ocho horas. En modo silencioso, se redirige al usuario a la aplicación web A con un nuevo token de identificador. No es necesario que el usuario se autentique.
 >
-> Inmediatamente después de ello, Hola usuario trata de usuario Hola de tooaccess B. de aplicación Web es redirigido tooAzure AD. Como antes, se aplica la directiva 2 de vigencia del token. Dado que el token de Hola se ha emitido hace más de 30 minutos, usuario hello es tooreenter solicitada sus credenciales de inicio de sesión. Se emite un nuevo token de sesión y de identificador. usuario de Hello, a continuación, puede tener acceso a Web aplicación B.
+> Inmediatamente después, el usuario intenta acceder a la aplicación web B y se le redirige a Azure AD. Como antes, se aplica la directiva 2 de vigencia del token. Dado que el token se emitió hace más de 30 minutos, se le solicita al usuario que vuelva a escribir sus credenciales de inicio de sesión. Se emite un nuevo token de sesión y de identificador. El usuario puede acceder entonces a la aplicación web B.
 >
 >
 
@@ -131,54 +131,54 @@ Validez del token se evalúa en tiempo de Hola Hola token se utiliza. Directiva 
 
 **Afecta a:** tokens de acceso, tokens de identificador
 
-**Resumen:** esta directiva controla cuánto tiempo se consideran válidos los token de acceso y de identificador para este recurso. Reducir la propiedad de la duración del Token de acceso de hello reduce el riesgo de Hola de un token de acceso o el identificador de token que se usa un actor malintencionado durante un largo período de tiempo. (No se puede revocar estos tokens). ventajas y desventajas de Hello son que rendimiento se vea afectado negativamente, porque los tokens de hello tienen toobe reemplazado con más frecuencia.
+**Resumen:** esta directiva controla cuánto tiempo se consideran válidos los token de acceso y de identificador para este recurso. Reducir la vigencia de los tokens de acceso disminuye el riesgo de que un individuo malintencionado use un token de acceso o de identificador durante un período de tiempo prolongado. (Estos tokens no se pueden revocar). El inconveniente es que afecta negativamente al rendimiento, ya que los tokens tendrán que reemplazarse con más frecuencia.
 
 ### <a name="refresh-token-max-inactive-time"></a>Tiempo máximo de inactividad del token de actualización
 **Cadena:** MaxInactiveTime
 
 **Afecta a:** tokens de actualización
 
-**Resumen:** esta directiva controla la antigüedad máxima que puede ser un token de actualización antes de que un cliente puede no seguir usándolo tooretrieve un nuevo par de tokens de acceso/actualización cuando se intente tooaccess este recurso. Dado que normalmente se devuelve un nuevo token de actualización cuando se usa un token de actualización, esta directiva impide el acceso si trata de cliente hello tooaccess cualquier recurso con el token de actualización actual de Hola durante Hola período de tiempo especificado.
+**Resumen:** esta directiva controla la antigüedad máxima que puede tener un token de actualización antes de que un cliente ya no pueda usarlo para recuperar un nuevo par de tokens de acceso/actualización al intentar acceder a este recurso. Dado que un nuevo token de actualización normalmente se devuelve cuando se usa un token de actualización, esta directiva impedirá el acceso si el cliente intenta acceder a algún recurso con el token de actualización actual durante el período de tiempo especificado.
 
-Esta directiva obliga a los usuarios que no han estado activos en su tooretrieve de tooreauthenticate un nuevo token de actualización de cliente.
+Esta directiva obligará a los usuarios que no hayan estado activos en su cliente a volver a autenticarse para recuperar un nuevo token de actualización.
 
-Hola propiedad actualizar Token máximo tiempo inactivo se debe establecer valor inferior tooa Hola Factor único Token Max Age y las propiedades de multifactor actualizar Token Max Age Hola.
+El tiempo máximo de inactividad del token de actualización debe establecerse en un valor inferior a la antigüedad máxima del token de un solo factor y la antigüedad máxima del token de actualización de varios factores.
 
 ### <a name="single-factor-refresh-token-max-age"></a>Antigüedad máxima del token de actualización (un solo factor)
 **Cadena:** MaxAgeSingleFactor
 
 **Afecta a:** tokens de actualización
 
-**Resumen:** esta directiva controla cómo el tiempo que un usuario puede usar un tooget de símbolo (token) de la actualización de una nueva actualización de acceso/par de tokens después última autenticado correctamente utilizando solo un único factor. Después de que un usuario se autentica y recibe un nuevo token de actualización, puede utilizar usuario de hello flujo de tokens de actualización de Hola para hello especificada periodo de tiempo. (Esto ocurre siempre que no se ha revocado el token de actualización actual de hello y no se queda inactivo durante más tiempo inactivo Hola.) En ese momento, usuario de hello es forzada tooreauthenticate tooreceive un nuevo token de actualización.
+**Resumen:** esta directiva controla cuánto tiempo un usuario puede seguir usando tokens de actualización para obtener nuevos pares de tokens de acceso/actualización desde la última vez que se autenticara correctamente con un solo factor. Después de que un usuario se autentica y recibe un nuevo token de actualización, este puede utilizar el flujo del token de actualización durante el período de tiempo especificado. (Esto ocurre siempre que el token de actualización actual no esté revocado y no se quede sin usar más tiempo que el período de inactividad). En ese momento, el usuario se verá obligado a volver a autenticarse para recibir un nuevo token de actualización.
 
-Reducir la antigüedad máxima de hello fuerza tooauthenticate de los usuarios con más frecuencia. Dado que la autenticación de factor único se considera menos segura que la autenticación multifactor, se recomienda que establezca este valor de propiedad tooa que es igual tooor anterior a Hola propiedad multifactor actualizar Token Max Age.
+Reducir la antigüedad máxima obliga a los usuarios a autenticarse con más frecuencia. Puesto que la autenticación de un solo factor se considera menos segura que la autenticación multifactor, se recomienda establecer esta propiedad en un valor igual o inferior al de la propiedad de antigüedad máxima del token de actualización de varios factores.
 
 ### <a name="multi-factor-refresh-token-max-age"></a>Antigüedad máxima del token de actualización (varios factores)
 **Cadena:** MaxAgeMultiFactor
 
 **Afecta a:** tokens de actualización
 
-**Resumen:** esta directiva controla cómo el tiempo que un usuario puede usar un tooget de símbolo (token) de la actualización de una nueva actualización de acceso/par de tokens después última autenticado correctamente mediante el uso de varios factores. Después de que un usuario se autentica y recibe un nuevo token de actualización, puede utilizar usuario de hello flujo de tokens de actualización de Hola para hello especificada periodo de tiempo. (Esto ocurre siempre que no se ha revocado el token de actualización actual de hello y no se utiliza durante más de tiempo inactivo Hola.) En ese momento, los usuarios se convierten obligatoriamente tooreauthenticate tooreceive un nuevo token de actualización.
+**Resumen:** esta directiva controla cuánto tiempo un usuario puede seguir usando tokens de actualización para obtener nuevos pares de tokens de acceso/actualización desde la última vez que se autenticara correctamente con varios factores. Después de que un usuario se autentica y recibe un nuevo token de actualización, este puede utilizar el flujo del token de actualización durante el período de tiempo especificado. (Esto ocurre siempre que el token de actualización actual no esté revocado y no se quede sin usar más tiempo que el período de inactividad). En ese momento, los usuarios se verán obligados a volver a autenticarse para recibir un nuevo token de actualización.
 
-Reducir la antigüedad máxima de hello fuerza tooauthenticate de los usuarios con más frecuencia. Dado que la autenticación de factor único se considera menos segura que la autenticación multifactor, se recomienda establecer este valor de propiedad tooa que es mayor que la propiedad de Factor único actualizar Token Max Age Hola de tooor igual.
+Reducir la antigüedad máxima obliga a los usuarios a autenticarse con más frecuencia. Puesto que la autenticación de un solo factor se considera menos segura que la autenticación multifactor, se recomienda establecer esta propiedad en un valor igual o superior al de la propiedad de antigüedad máxima del token de actualización de un solo factor.
 
 ### <a name="single-factor-session-token-max-age"></a>Antigüedad máxima del token de sesión (un solo factor)
 **Cadena:** MaxAgeSessionSingleFactor
 
 **Afecta a:** tokens de sesión (persistentes y no persistentes)
 
-**Resumen:** esta directiva controla cuánto tiempo los usuarios pueden usar un tooget de token de sesión una vez última autenticado correctamente utilizando solo un único factor de token un identificador y una sesión de nuevo. Después de que un usuario se autentica y recibe un token de nueva sesión, usuario Hola puede utilizar el flujo de token de sesión de Hola para hello especificado período de tiempo. (Esto ocurre siempre que el token de sesión actual de hello no está revocado y no ha expirado.) Después de hello especifica el período de tiempo, usuario de hello es forzada tooreauthenticate tooreceive un token de nueva sesión.
+**Resumen:** esta directiva controla cuánto tiempo un usuario puede seguir usando tokens de actualización para obtener un nuevo token de identificador y de sesión desde la última vez que se autenticara correctamente con un solo factor. Después de que un usuario se autentica y recibe un nuevo token de sesión, este puede utilizar el flujo del token de sesión durante el período de tiempo especificado. (Esto ocurre siempre que el token de sesión actual no esté revocado y no haya expirado). Tras el período de tiempo especificado, el usuario se ve obligado a autenticarse para recibir un nuevo token de sesión.
 
-Reducir la antigüedad máxima de hello fuerza tooauthenticate de los usuarios con más frecuencia. Como autenticación de factor único se considera menos segura que la autenticación multifactor, se recomienda establecer este valor de propiedad tooa que es propiedad de multifactor sesión Token Max Age tooor inferior Hola igual.
+Reducir la antigüedad máxima obliga a los usuarios a autenticarse con más frecuencia. Puesto que la autenticación de un solo factor se considera menos segura que la autenticación multifactor, se recomienda establecer esta propiedad en un valor igual o inferior al de la propiedad de antigüedad máxima del token de sesión de varios factores.
 
 ### <a name="multi-factor-session-token-max-age"></a>Antigüedad máxima del token de sesión (varios factores)
 **Cadena:** MaxAgeSessionMultiFactor
 
 **Afecta a:** tokens de sesión (persistentes y no persistentes)
 
-**Resumen:** Hola de esta directiva controla cuánto tiempo los usuarios pueden usar un tooget de token de sesión un identificador y una sesión de nuevo símbolo (token) después de la última vez que autenticó correctamente mediante el uso de varios factores. Después de que un usuario se autentica y recibe un token de nueva sesión, usuario Hola puede utilizar el flujo de token de sesión de Hola para hello especificado período de tiempo. (Esto ocurre siempre que el token de sesión actual de hello no está revocado y no ha expirado.) Después de hello especifica el período de tiempo, usuario de hello es forzada tooreauthenticate tooreceive un token de nueva sesión.
+**Resumen:** esta directiva controla cuánto tiempo un usuario puede seguir usando tokens de actualización para obtener un nuevo token de identificador y de sesión desde la última vez que se autenticara correctamente con varios factores. Después de que un usuario se autentica y recibe un nuevo token de sesión, este puede utilizar el flujo del token de sesión durante el período de tiempo especificado. (Esto ocurre siempre que el token de sesión actual no esté revocado y no haya expirado). Tras el período de tiempo especificado, el usuario se ve obligado a autenticarse para recibir un nuevo token de sesión.
 
-Reducir la antigüedad máxima de hello fuerza tooauthenticate de los usuarios con más frecuencia. Dado que la autenticación de factor único se considera menos segura que la autenticación multifactor, se recomienda establecer este valor de propiedad tooa que es mayor que la propiedad de Factor único sesión Token Max Age Hola de tooor igual.
+Reducir la antigüedad máxima obliga a los usuarios a autenticarse con más frecuencia. Puesto que la autenticación de un solo factor se considera menos segura que la autenticación multifactor, se recomienda establecer esta propiedad en un valor igual o superior al de la propiedad de antigüedad máxima del token de sesión de un solo factor.
 
 ## <a name="example-token-lifetime-policies"></a>Ejemplo de directivas de vigencia del token
 En Azure AD, hay muchos escenarios posibles a la hora de crear y administrar la vigencia de los tokens para aplicaciones, entidades de servicio y la organización en general. En esta sección, se explican algunos escenarios de directiva comunes que le ayudarán a imponer nuevas reglas para:
@@ -187,7 +187,7 @@ En Azure AD, hay muchos escenarios posibles a la hora de crear y administrar la 
 * Tiempos máximos de inactividad del token
 * Antigüedad máxima del token
 
-En los ejemplos de hello, aprenderá cómo:
+En los ejemplos, puede aprender a:
 
 * Administrar una directiva predeterminada de una organización
 * Crear una directiva para inicio de sesión web
@@ -195,29 +195,29 @@ En los ejemplos de hello, aprenderá cómo:
 * Administrar una directiva avanzada
 
 ### <a name="prerequisites"></a>Requisitos previos
-Hola en los ejemplos siguientes, crear, actualizar, vincular y eliminar directivas de aplicaciones y entidades de servicio y su organización general. Si es nuevo tooAzure AD, se recomienda que conozcas [cómo inquilino tooget un Azure AD](active-directory-howto-tenant.md) antes de continuar con estos ejemplos.  
+En los ejemplos siguientes, va a crear, actualizar, vincular y eliminar directivas de aplicaciones, entidades de servicio y de la organización en general. Si no está familiarizado con Azure AD, se recomienda que aprenda [cómo obtener un inquilino de Azure AD](active-directory-howto-tenant.md) antes de continuar con estos ejemplos.  
 
-Hola tooget iniciado, siga los pasos:
+Para comenzar, realice uno de los pasos siguientes:
 
-1. Descargar más reciente hello [Azure AD PowerShell módulo versión de vista previa](https://www.powershellgallery.com/packages/AzureADPreview).
-2. Ejecute hello `Connect` comando toosign en tooyour cuenta de administrador de Azure AD. Ejecute este comando cada vez que inicie una nueva sesión.
+1. Descargue la [versión preliminar pública más reciente del módulo de PowerShell de Azure AD](https://www.powershellgallery.com/packages/AzureADPreview).
+2. Ejecute el comando `Connect` para iniciar sesión en la cuenta de administrador de Azure AD. Ejecute este comando cada vez que inicie una nueva sesión.
 
     ```PowerShell
     Connect-AzureAD -Confirm
     ```
 
-3. toosee todas las directivas que se han creado en su organización, ejecución Hola siguiendo este comando. Ejecute este comando después de la mayoría de las operaciones en los escenarios siguientes de Hola. Ejecuta el comando de hello también le ayuda a conseguir Hola ** ** de las directivas.
+3. Ejecute el siguiente comando para ver todas las directivas que se han creado en la organización. Este comando debe ejecutarse después de la mayoría de las operaciones en los escenarios siguientes. La ejecución del comando también lo ayudará a obtener el valor de ** ** de sus directivas.
 
     ```PowerShell
     Get-AzureADPolicy
     ```
 
 ### <a name="example-manage-an-organizations-default-policy"></a>Ejemplo: Administración de una directiva predeterminada de una organización
-En este ejemplo, crearemos una directiva que permita a sus usuarios iniciar sesión con menos frecuencia en toda su organización. toodo, crear una directiva de duración del token para Tokens de actualización de Factor único, que se aplica en toda la organización. Directiva de Hello es aplicación tooevery aplicada en su organización y la entidad de servicio tooeach que ya no tiene una directiva establecida.
+En este ejemplo, crearemos una directiva que permita a sus usuarios iniciar sesión con menos frecuencia en toda su organización. Para ello, creamos una directiva de vigencia del token para tokens de actualización de un solo factor que se aplica en toda la organización. Esta directiva se aplicará a todas las aplicaciones de su organización y a todas las entidades de servicio que aún no tengan una directiva establecida en ella.
 
 1. Cree una directiva de vigencia del token.
 
-    1.  Hola de conjunto de Factor único Token de actualización demasiado "hasta revocados." símbolo (token) de Hello no expire hasta que se revoca el acceso. Crear Hola después de la definición de directiva:
+    1.  Establezca el token de actualización de un solo factor en "hasta que se revoca". El token no expira hasta que se revoca el acceso. Cree la siguiente definición de directiva:
 
         ```PowerShell
         @('{
@@ -229,21 +229,21 @@ En este ejemplo, crearemos una directiva que permita a sus usuarios iniciar sesi
         }')
         ```
 
-    2.  Directiva de hello toocreate, ejecute el siguiente comando de hello:
+    2.  Ejecute el siguiente comando para crear la directiva:
 
         ```PowerShell
         New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1, "MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "OrganizationDefaultPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
         ```
 
-    3.  toosee la nueva directiva y la directiva de hello tooget **ObjectId**, ejecute hello comando siguiente:
+    3.  Para ver su nueva directiva y obtener el **ObjectID** de esta, ejecute el siguiente comando:
 
         ```PowerShell
         Get-AzureADPolicy
         ```
 
-2. Actualizar la directiva de Hola.
+2. Actualice la directiva.
 
-    Podría decidir que no es tan estricta como exige su servicio en la primera directiva de hello establecidas en este ejemplo. tooset su Token de actualización de Factor único tooexpire en dos días, ejecute Hola comando siguiente:
+    Puede decidir que la primera directiva que se establece en este ejemplo no sea tan estricta como exige el servicio. Para establecer que el token de actualización de un solo factor expire en dos días, ejecute el siguiente comando:
 
     ```PowerShell
     Set-AzureADPolicy -Id <ObjectId FROM GET COMMAND> -DisplayName "OrganizationDefaultPolicyUpdatedScenario" -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"2.00:00:00"}}')
@@ -251,91 +251,91 @@ En este ejemplo, crearemos una directiva que permita a sus usuarios iniciar sesi
 
 ### <a name="example-create-a-policy-for-web-sign-in"></a>Ejemplo: Creación de una directiva para inicio de sesión web
 
-En este ejemplo, cree una directiva que requiere que los usuarios tooauthenticate con más frecuencia en la aplicación web. Esta directiva establece la duración de Hola de tokens de acceso/Id. de Hola y antigüedad máxima de Hola de una entidad de servicio de sesión de multifactor toohello símbolo (token) de la aplicación web.
+En este ejemplo, va a crear una directiva que requerirá que los usuarios se autentiquen con más frecuencia en la aplicación web. Esta directiva establecerá la vigencia de los tokens de acceso y de identificador y la antigüedad máxima de un token de sesión de varios factores en la entidad de servicio de su aplicación web.
 
 1. Cree una directiva de vigencia del token.
 
-    Esta directiva, para inicio de sesión en web, Establece duración del token Hola/Id. de acceso y las horas de tootwo de hello máximo de sesiones de factor único símbolo (token) de edad.
+    Para el inicio de sesión web esta directiva establecerá la vigencia del token de acceso y de identificador y la antigüedad máxima del token de sesión de un solo factor en 2 horas.
 
-    1.  Directiva de hello toocreate, ejecute este comando:
+    1.  Ejecute este comando para crear la directiva:
 
         ```PowerShell
         New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    2.  toosee la nueva directiva y directiva de hello tooget **ObjectId**, ejecute hello comando siguiente:
+    2.  Para ver su nueva directiva y obtener el **ObjectID** de esta, ejecute el siguiente comando:
 
         ```PowerShell
         Get-AzureADPolicy
         ```
 
-2.  Asignar la entidad de servicio de hello directiva tooyour. También necesita hello tooget **ObjectId** de la entidad de servicio. 
+2.  Asigne la directiva a su entidad de servicio. También necesitará obtener el valor de **ObjectId** de su entidad de servicio. 
 
-    1.  toosee entidades de servicio de todos los de su organización, puede consultar [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). O bien, en [Azure AD Graph Explorer](https://graphexplorer.cloudapp.net/), inicie sesión en tooyour cuenta de Azure AD.
+    1.  Para ver todas las entidades de servicio de su organización, puede consultar [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). O bien, en [Azure AD Graph Explorer](https://graphexplorer.cloudapp.net/), inicie sesión en su cuenta de Azure AD.
 
-    2.  Cuando haya hello **ObjectId** de la entidad de servicio, ejecute hello siguiente comando:
+    2.  Cuando tenga el valor de **ObjectId** de la entidad de servicio, ejecute el siguiente comando:
 
         ```PowerShell
-        Add-AzureADServicePrincipalPolicy -Id <ObjectId of hello ServicePrincipal> -RefObjectId <ObjectId of hello Policy>
+        Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
         ```
 
 
 ### <a name="example-create-a-policy-for-a-native-app-that-calls-a-web-api"></a>Ejemplo: Creación de una directiva para una aplicación nativa que llama a una API web
-En este ejemplo, cree una directiva que requiere menos tooauthenticate de los usuarios con frecuencia. Directiva de Hello también alarga cantidad Hola de tiempo que un usuario puede estar inactivo antes de que debe volver a autenticar usuario Hola. Directiva de Hello es toohello aplicado web API. Cuando aplicación nativa de hello solicita hello web API como un recurso, se aplica esta directiva.
+En este ejemplo, va a crear una directiva que requerirá que los usuarios se autentiquen con menos frecuencia. La directiva también aumenta la cantidad de tiempo que un usuario puede estar inactivo antes de que este deba volver a autenticarse. La directiva se aplica a la API web. Cuando la aplicación nativa solicita la API web como recurso, se aplica esta directiva.
 
 1. Cree una directiva de vigencia del token.
 
-    1.  una directiva estricta para una API web, ejecute el siguiente comando de Hola toocreate:
+    1.  Para crear una directiva estricta para una API web, ejecute el siguiente comando:
 
         ```PowerShell
         New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"30.00:00:00","MaxAgeMultiFactor":"until-revoked","MaxAgeSingleFactor":"180.00:00:00"}}') -DisplayName "WebApiDefaultPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
         ```
 
-    2.  toosee la nueva directiva y directiva de hello tooget **ObjectId**, ejecute hello comando siguiente:
+    2.  Para ver su nueva directiva y obtener el **ObjectID** de esta, ejecute el siguiente comando:
 
         ```PowerShell
         Get-AzureADPolicy
         ```
 
-2. Asignar Hola directiva tooyour web API. También necesita hello tooget **ObjectId** de la aplicación. Hola toofind de mejor manera su aplicación **ObjectId** es hello toouse [portal de Azure](https://portal.azure.com/).
+2. Asigne la directiva a la API web. También necesitará obtener el valor de **ObjectId** de la aplicación. La mejor manera de encontrar el valor de **ObjectId** de la aplicación es usar [Azure Portal](https://portal.azure.com/).
 
-   Cuando haya hello **ObjectId** de la aplicación, ejecute el siguiente comando de hello:
+   Cuando tenga el valor de **ObjectId** de la aplicación, ejecute el siguiente comando:
 
         ```PowerShell
-        Add-AzureADApplicationPolicy -Id <ObjectId of hello Application> -RefObjectId <ObjectId of hello Policy>
+        Add-AzureADApplicationPolicy -Id <ObjectId of the Application> -RefObjectId <ObjectId of the Policy>
         ```
 
 
 ### <a name="example-manage-an-advanced-policy"></a>Ejemplo: Administración de una directiva avanzada
-En este ejemplo, puede crear directivas unas, toolearn cómo funciona el sistema de prioridad de Hola. También puede obtener información sobre cómo toomanage varias directivas que son objetos tooseveral aplicada.
+En este ejemplo, va a crear algunas directivas para obtener información sobre cómo funciona el sistema de prioridad. También puede aprender a administrar varias directivas que se aplican a varios objetos.
 
 1. Cree una directiva de vigencia del token.
 
-    1.  una directiva de valores predeterminados de organización que establece los días de hello too30 de duración de Token de actualización de Factor único, ejecute el siguiente comando de Hola toocreate:
+    1.  Para crear una directiva predeterminada de organización que establece la vigencia del token de actualización de un solo factor en 30 días, ejecute el siguiente comando:
 
         ```PowerShell
         New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"30.00:00:00"}}') -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
         ```
 
-    2.  toosee la nueva directiva y la directiva de hello tooget **ObjectId**, ejecute hello comando siguiente:
+    2.  Para ver su nueva directiva y obtener el **ObjectID** de esta, ejecute el siguiente comando:
 
         ```PowerShell
         Get-AzureADPolicy
         ```
 
-2. Asignar la entidad de servicio de hello directiva tooa.
+2. Asigne la directiva a una entidad de servicio.
 
-    Ahora, tiene una directiva que se aplica toohello toda la organización. Quizás desee toopreserve esta directiva de 30 días para una entidad de seguridad de servicio específico, pero cambie Hola organización predeterminada directiva toohello límite superior de "hasta revocados."
+    Ahora tiene una directiva que se aplica a toda la organización. Es posible que quiera conservar esta directiva 30 días para una entidad de servicio específica, pero cambiar la directiva predeterminada de organización para que sea el límite superior de "hasta que se revoque".
 
-    1.  toosee entidades de servicio de todos los de su organización, puede consultar [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). O bien, en [Azure AD Graph Explorer](https://graphexplorer.cloudapp.net/), inicie sesión mediante su cuenta de Azure AD.
+    1.  Para ver todas las entidades de servicio de su organización, puede consultar [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). O bien, en [Azure AD Graph Explorer](https://graphexplorer.cloudapp.net/), inicie sesión mediante su cuenta de Azure AD.
 
-    2.  Cuando haya hello **ObjectId** de la entidad de servicio, ejecute hello siguiente comando:
+    2.  Cuando tenga el valor de **ObjectId** de la entidad de servicio, ejecute el siguiente comando:
 
             ```PowerShell
-            Add-AzureADServicePrincipalPolicy -Id <ObjectId of hello ServicePrincipal> -RefObjectId <ObjectId of hello Policy>
+            Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
             ```
         
-3. Conjunto hello `IsOrganizationDefault` marca toofalse:
+3. Establezca la marca `IsOrganizationDefault` en false:
 
     ```PowerShell
     Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName "ComplexPolicyScenario" -IsOrganizationDefault $false
@@ -347,13 +347,13 @@ En este ejemplo, puede crear directivas unas, toolearn cómo funciona el sistema
     New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"until-revoked"}}') -DisplayName "ComplexPolicyScenarioTwo" -IsOrganizationDefault $true -Type "TokenLifetimePolicy"
     ```
 
-    Ahora tiene la entidad de servicio de directiva original de hello tooyour vinculado y nueva directiva de Hola se establece como la directiva predeterminada de organización. Es importante tooremember que las entidades de seguridad de las directivas aplicadas tooservice tienen prioridad sobre las directivas predeterminadas de organización.
+    Ahora tiene la directiva original vinculada a la entidad de servicio y la nueva directiva establecida como su directiva predeterminada de organización. Es importante recordar que las directivas aplicadas a las entidades de servicio tienen prioridad sobre las directivas predeterminadas de organización.
 
 ## <a name="cmdlet-reference"></a>Referencia de cmdlets
 
 ### <a name="manage-policies"></a>Administración de directivas
 
-Puede usar hello las siguientes directivas de toomanage de cmdlets.
+Los cmdlets siguientes se pueden usar para administrar directivas.
 
 #### <a name="new-azureadpolicy"></a>New-AzureADPolicy
 
@@ -365,11 +365,11 @@ New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -Is
 
 | parameters | Descripción | Ejemplo |
 | --- | --- | --- |
-| <code>&#8209;Definition</code> |Matriz de han convertido en cadenas JSON que contiene reglas la directiva Hola todas las. | `-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
-| <code>&#8209;DisplayName</code> |Cadena de nombre de la directiva de Hola. |`-DisplayName "MyTokenPolicy"` |
-| <code>&#8209;IsOrganizationDefault</code> |Si es true, Establece la directiva de hello como directiva predeterminada de la organización de Hola. Si es false, no hace nada. |`-IsOrganizationDefault $true` |
+| <code>&#8209;Definition</code> |La matriz de cadenas JSON que contiene todas las reglas de la directiva. | `-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
+| <code>&#8209;DisplayName</code> |Cadena del nombre de la directiva. |`-DisplayName "MyTokenPolicy"` |
+| <code>&#8209;IsOrganizationDefault</code> |Si es true establece la directiva como directiva predeterminada de la organización. Si es false, no hace nada. |`-IsOrganizationDefault $true` |
 | <code>&#8209;Type</code> |Tipo de directiva. Para la vigencia de los tokens, use siempre "TokenLifetimePolicy". | `-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code> [Opcional] |Establece un identificador alternativo para la directiva de Hola. |`-AlternativeIdentifier "myAltId"` |
+| <code>&#8209;AlternativeIdentifier</code> [Opcional] |Establece un id alternativo para la directiva. |`-AlternativeIdentifier "myAltId"` |
 
 </br></br>
 
@@ -382,20 +382,20 @@ Get-AzureADPolicy
 
 | Parámetros | Descripción | Ejemplo |
 | --- | --- | --- |
-| <code>&#8209;Id</code> [Opcional] |**ObjectId (Id)** de directiva de Hola que desee. |`-Id <ObjectId of Policy>` |
+| <code>&#8209;Id</code> [Opcional] |El valor de **ObjectId (Id)** de la directiva que desea. |`-Id <ObjectId of Policy>` |
 
 </br></br>
 
 #### <a name="get-azureadpolicyappliedobject"></a>Get-AzureADPolicyAppliedObject
-Obtiene todas las aplicaciones y entidades de servicio que están vinculadas tooa directiva.
+Obtiene todas las aplicaciones y entidades de servicio vinculadas a una directiva.
 
 ```PowerShell
 Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
 ```
 
-| parameters | Descripción | Ejemplo |
+| Parámetros | Descripción | Ejemplo |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectId (Id)** de directiva de Hola que desee. |`-Id <ObjectId of Policy>` |
+| <code>&#8209;Id</code> |El valor de **ObjectId (Id)** de la directiva que desea. |`-Id <ObjectId of Policy>` |
 
 </br></br>
 
@@ -408,55 +408,55 @@ Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 
 | Parámetros | Descripción | Ejemplo |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectId (Id)** de directiva de Hola que desee. |`-Id <ObjectId of Policy>` |
-| <code>&#8209;DisplayName</code> |Cadena de nombre de la directiva de Hola. |`-DisplayName "MyTokenPolicy"` |
-| <code>&#8209;Definition</code> [Opcional] |Matriz de han convertido en cadenas JSON que contiene reglas la directiva Hola todas las. |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
-| <code>&#8209;IsOrganizationDefault</code> [Opcional] |Si es true, Establece la directiva de hello como directiva predeterminada de la organización de Hola. Si es false, no hace nada. |`-IsOrganizationDefault $true` |
+| <code>&#8209;Id</code> |El valor de **ObjectId (Id)** de la directiva que desea. |`-Id <ObjectId of Policy>` |
+| <code>&#8209;DisplayName</code> |Cadena del nombre de la directiva. |`-DisplayName "MyTokenPolicy"` |
+| <code>&#8209;Definition</code> [Opcional] |La matriz de cadenas JSON que contiene todas las reglas de la directiva. |`-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
+| <code>&#8209;IsOrganizationDefault</code> [Opcional] |Si es true establece la directiva como directiva predeterminada de la organización. Si es false, no hace nada. |`-IsOrganizationDefault $true` |
 | <code>&#8209;Type</code> [Opcional] |Tipo de directiva. Para la vigencia de los tokens, use siempre "TokenLifetimePolicy". |`-Type "TokenLifetimePolicy"` |
-| <code>&#8209;AlternativeIdentifier</code> [Opcional] |Establece un identificador alternativo para la directiva de Hola. |`-AlternativeIdentifier "myAltId"` |
+| <code>&#8209;AlternativeIdentifier</code> [Opcional] |Establece un id alternativo para la directiva. |`-AlternativeIdentifier "myAltId"` |
 
 </br></br>
 
 #### <a name="remove-azureadpolicy"></a>Remove-AzureADPolicy
-Hola de eliminaciones especifica la directiva.
+Elimina la directiva especificada.
 
 ```PowerShell
  Remove-AzureADPolicy -Id <ObjectId of Policy>
 ```
 
-| parameters | Descripción | Ejemplo |
+| Parámetros | Descripción | Ejemplo |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectId (Id)** de directiva de Hola que desee. | `-Id <ObjectId of Policy>` |
+| <code>&#8209;Id</code> |El valor de **ObjectId (Id)** de la directiva que desea. | `-Id <ObjectId of Policy>` |
 
 </br></br>
 
 ### <a name="application-policies"></a>Directivas de aplicación
-Puede usar Hola siguientes cmdlets para las directivas de aplicación.</br></br>
+Los cmdlets siguientes se pueden usar para directivas de aplicación.</br></br>
 
 #### <a name="add-azureadapplicationpolicy"></a>Add-AzureADApplicationPolicy
-Hola de vínculos especificada tooan la aplicación de directiva.
+Vincula la directiva especificada a una aplicación.
 
 ```PowerShell
 Add-AzureADApplicationPolicy -Id <ObjectId of Application> -RefObjectId <ObjectId of Policy>
 ```
 
-| parameters | Descripción | Ejemplo |
+| Parámetros | Descripción | Ejemplo |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectId (Id)** de aplicación hello. | `-Id <ObjectId of Application>` |
-| <code>&#8209;RefObjectId</code> |**ObjectId** de directiva de Hola. | `-RefObjectId <ObjectId of Policy>` |
+| <code>&#8209;Id</code> |El valor de **ObjectId (Id)** de la aplicación. | `-Id <ObjectId of Application>` |
+| <code>&#8209;RefObjectId</code> |El valor de **ObjectId** de la directiva. | `-RefObjectId <ObjectId of Policy>` |
 
 </br></br>
 
 #### <a name="get-azureadapplicationpolicy"></a>Get-AzureADApplicationPolicy
-Obtiene la directiva de Hola que se asigna la aplicación tooan.
+Obtiene la directiva asignada a una aplicación.
 
 ```PowerShell
 Get-AzureADApplicationPolicy -Id <ObjectId of Application>
 ```
 
-| parameters | Descripción | Ejemplo |
+| Parámetros | Descripción | Ejemplo |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectId (Id)** de aplicación hello. | `-Id <ObjectId of Application>` |
+| <code>&#8209;Id</code> |El valor de **ObjectId (Id)** de la aplicación. | `-Id <ObjectId of Application>` |
 
 </br></br>
 
@@ -469,49 +469,49 @@ Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectI
 
 | Parámetros | Descripción | Ejemplo |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectId (Id)** de aplicación hello. | `-Id <ObjectId of Application>` |
-| <code>&#8209;PolicyId</code> |**ObjectId** de directiva de Hola. | `-PolicyId <ObjectId of Policy>` |
+| <code>&#8209;Id</code> |El valor de **ObjectId (Id)** de la aplicación. | `-Id <ObjectId of Application>` |
+| <code>&#8209;PolicyId</code> |El valor de **ObjectId** de la directiva. | `-PolicyId <ObjectId of Policy>` |
 
 </br></br>
 
 ### <a name="service-principal-policies"></a>Directivas de la entidad de servicio
-Puede usar Hola siguientes cmdlets para las directivas de entidad de seguridad de servicio.
+Los cmdlets siguientes se pueden usar para las directivas de entidad de servicio.
 
 #### <a name="add-azureadserviceprincipalpolicy"></a>Add-AzureADServicePrincipalPolicy
-Vínculos Hola a entidad de servicio de tooa de directiva especificada.
+Vincula la directiva especificada a una entidad de servicio.
 
 ```PowerShell
 Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectId <ObjectId of Policy>
 ```
 
-| parameters | Descripción | Ejemplo |
+| Parámetros | Descripción | Ejemplo |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectId (Id)** de aplicación hello. | `-Id <ObjectId of Application>` |
-| <code>&#8209;RefObjectId</code> |**ObjectId** de directiva de Hola. | `-RefObjectId <ObjectId of Policy>` |
+| <code>&#8209;Id</code> |El valor de **ObjectId (Id)** de la aplicación. | `-Id <ObjectId of Application>` |
+| <code>&#8209;RefObjectId</code> |El valor de **ObjectId** de la directiva. | `-RefObjectId <ObjectId of Policy>` |
 
 </br></br>
 
 #### <a name="get-azureadserviceprincipalpolicy"></a>Get-AzureADServicePrincipalPolicy
-Obtiene cualquier entidad de seguridad de servicio especificado de directiva toohello vinculado.
+Obtiene cualquier directiva vinculada a la entidad de servicio especificada.
 
 ```PowerShell
 Get-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>
 ```
 
-| parameters | Descripción | Ejemplo |
+| Parámetros | Descripción | Ejemplo |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectId (Id)** de aplicación hello. | `-Id <ObjectId of Application>` |
+| <code>&#8209;Id</code> |El valor de **ObjectId (Id)** de la aplicación. | `-Id <ObjectId of Application>` |
 
 </br></br>
 
 #### <a name="remove-azureadserviceprincipalpolicy"></a>Remove-AzureADServicePrincipalPolicy
-Quita la directiva de Hola de entidad de servicio especificado de Hola.
+Quita la directiva de la entidad de servicio especificada.
 
 ```PowerShell
 Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -PolicyId <ObjectId of Policy>
 ```
 
-| parameters | Descripción | Ejemplo |
+| Parámetros | Descripción | Ejemplo |
 | --- | --- | --- |
-| <code>&#8209;Id</code> |**ObjectId (Id)** de aplicación hello. | `-Id <ObjectId of Application>` |
-| <code>&#8209;PolicyId</code> |**ObjectId** de directiva de Hola. | `-PolicyId <ObjectId of Policy>` |
+| <code>&#8209;Id</code> |El valor de **ObjectId (Id)** de la aplicación. | `-Id <ObjectId of Application>` |
+| <code>&#8209;PolicyId</code> |El valor de **ObjectId** de la directiva. | `-PolicyId <ObjectId of Policy>` |

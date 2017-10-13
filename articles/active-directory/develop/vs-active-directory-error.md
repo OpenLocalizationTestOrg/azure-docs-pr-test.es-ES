@@ -1,6 +1,6 @@
 ---
-title: "errores de toodiagnose aaaHow con hello Asistente de conexión de Azure Active Directory"
-description: "Asistente para la conexión de active directory de Hello detectó un tipo de autenticación incompatible"
+title: "Diagnóstico de errores con el Asistente para conexión de Azure Active Directory"
+description: "El asistente para conexión de Active Directory detectó un tipo de autenticación no compatible"
 services: active-directory
 documentationcenter: 
 author: kraigb
@@ -15,45 +15,45 @@ ms.topic: article
 ms.date: 03/05/2017
 ms.author: kraigb
 ms.custom: aaddev
-ms.openlocfilehash: f71c5b41457c0c8db05042e8d5f723e58ad11844
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4f29f62b2996cae98b02c1ed5fcb59eca09301ef
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="diagnosing-errors-with-hello-azure-active-directory-connection-wizard"></a>Diagnóstico de errores con hello Asistente de conexión de Azure Active Directory
-Al detectar el anterior código de autenticación, el Asistente de hello detectó un tipo de autenticación incompatible.   
+# <a name="diagnosing-errors-with-the-azure-active-directory-connection-wizard"></a>Diagnóstico de errores con el Asistente para conexión de Azure Active Directory
+Al detectar el código de autenticación anterior, el asistente detectó un tipo de autenticación incompatible.   
 
 ## <a name="what-is-being-checked"></a>¿Qué se está comprobando?
-**Nota:** toocorrectly detecta el anterior código de autenticación en un proyecto, se debe compilar el proyecto de Hola.  Si se produjo este error y no tiene un código de autenticación anterior en el proyecto, vuelva a compilarlo e inténtelo de nuevo.
+**Nota:** para detectar correctamente el código de autenticación anterior de un proyecto, este debe estar creado.  Si se produjo este error y no tiene un código de autenticación anterior en el proyecto, vuelva a compilarlo e inténtelo de nuevo.
 
 ### <a name="project-types"></a>Tipos de proyecto
-Asistente de Hello comprueba el tipo de Hola de proyecto que se va a desarrollar por lo que puede insertar lógica de autenticación adecuado de hello en el proyecto de Hola.  Si no hay ningún controlador que se deriva de `ApiController` en el proyecto de hello, proyecto de Hola se considera un proyecto de WebAPI.  Si hay solo los controladores que se derivan de `MVC.Controller` en el proyecto de hello, proyecto de Hola se considera un proyecto de MVC.  Todo lo demás no es compatible con asistente Hola.
+El asistente comprueba el tipo de proyecto que esté desarrollando, por lo que puede insertar la lógica de autenticación correcta en el proyecto.  Si no hay ningún controlador que derive de `ApiController` en el proyecto, el proyecto se considerará como un proyecto WebAPI.  Si solo hay controladores que derivan de `MVC.Controller` en el proyecto, el proyecto se considerará como proyecto MVC.  El asistente considera todo lo demás como no compatible.
 
 ### <a name="compatible-authentication-code"></a>Código de autenticación compatible
-Asistente Hello también comprueba si la configuración de autenticación que se haya configurado anteriormente con el Asistente de Hola o es compatibles con el Asistente de Hola.  Si todos los valores están presentes, se considera un caso reentrante y abrirá el Asistente Hola Mostrar configuración Hola.  Si solo algunos de los valores de hello están presentes, se considera un caso de error.
+El asistente también comprueba la configuración de autenticación que se ha configurado previamente con el asistente o que es compatible con el asistente.  Si todos los valores de configuración están presentes, se considera un caso reentrante y el asistente abrirá y mostrará la configuración.  Si solo algunos valores de configuración están presentes, se considera un caso de error.
 
-En un proyecto MVC, Hola asistente comprueba cualquiera de hello después de la configuración, que genera frente al uso anterior del Asistente para hello:
+En un proyecto MVC, el asistente comprueba cualquiera de los siguientes valores de configuración, que se originan a partir de un uso anterior del asistente:
 
     <add key="ida:ClientId" value="" />
     <add key="ida:Tenant" value="" />
     <add key="ida:AADInstance" value="" />
     <add key="ida:PostLogoutRedirectUri" value="" />
 
-Además, Hola asistente comprueba cualquiera de hello después de la configuración en un proyecto de API Web, que genera frente al uso anterior del Asistente para hello:
+Además, el asistente comprueba los siguientes valores de configuración en el proyecto Web API, que se originan a partir del uso anterior del asistente:
 
     <add key="ida:ClientId" value="" />
     <add key="ida:Tenant" value="" />
     <add key="ida:Audience" value="" />
 
 ### <a name="incompatible-authentication-code"></a>Código de autenticación incompatible
-Por último, el Asistente de Hola intenta toodetect versiones de código de autenticación que se han configurado con versiones anteriores de Visual Studio. Si recibió este error, significa el proyecto contiene un tipo de autenticación incompatible. Asistente de Hello detecta Hola siguientes tipos de autenticación de las versiones anteriores de Visual Studio:
+Finalmente, el asistente trata de detectar versiones de código de autenticación que se hayan configurado con versiones anteriores de Visual Studio. Si recibió este error, significa el proyecto contiene un tipo de autenticación incompatible. El asistente detecta los siguientes tipos de autenticación de las versiones anteriores de Visual Studio:
 
 * Autenticación de Windows 
 * Cuentas de usuario individuales 
 * Cuentas organizativas 
 
-toodetect autenticación de Windows en un proyecto MVC, el Asistente de hello busca hello `authentication` elemento desde el **web.config** archivo.
+Para detectar la autenticación de Windows en un proyecto MVC, el asistente busca el elemento `authentication` en el archivo **web.config** .
 
 <pre>
     &lt;configuration&gt;
@@ -63,7 +63,7 @@ toodetect autenticación de Windows en un proyecto MVC, el Asistente de hello bu
     &lt;/configuration&gt;
 </pre>
 
-toodetect autenticación de Windows en un proyecto de API Web, el Asistente de hello busca hello `IISExpressWindowsAuthentication` elemento desde el proyecto **.csproj** archivo:
+Para detectar la autenticación de Windows en un proyecto Web API, el asistente busca el elemento `IISExpressWindowsAuthentication` en el archivo **.csproj** del proyecto:
 
 <pre>
     &lt;Project&gt;
@@ -73,7 +73,7 @@ toodetect autenticación de Windows en un proyecto de API Web, el Asistente de h
     &lt;/Project&gt;
 </pre>
 
-autenticación de cuentas de usuario individuales toodetect, Hola examina para elemento de paquete de Hola desde su **Packages.config** archivo.
+Para detectar la autenticación de cuentas de usuario individuales, el asistente busca el elemento de paquete en el archivo **Packages.config** .
 
 <pre>
     &lt;packages&gt;
@@ -81,7 +81,7 @@ autenticación de cuentas de usuario individuales toodetect, Hola examina para e
     &lt;/packages&gt;
 </pre>
 
-toodetect un formato antiguo de autenticación de cuenta profesional, Asistente Hola busca Hola siguiente elemento de **web.config**:
+Para detectar una forma anterior de autenticación con la cuenta de una organización, el asistente busca el siguiente elemento en **web.config**:
 
 <pre>
     &lt;configuration&gt;
@@ -91,7 +91,7 @@ toodetect un formato antiguo de autenticación de cuenta profesional, Asistente 
     &lt;/configuration&gt;
 </pre>
 
-tipo de autenticación de toochange hello, quitar el tipo de autenticación incompatible de Hola y vuelva a ejecutar el Asistente de Hola.
+Para cambiar el tipo de autenticación, quite el tipo de autenticación incompatible y ejecute de nuevo el asistente.
 
 Para obtener más información, consulte [Escenarios de autenticación en Azure AD](active-directory-authentication-scenarios.md).
 

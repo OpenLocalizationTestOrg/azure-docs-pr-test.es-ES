@@ -1,10 +1,10 @@
-Puede conectarse tooa máquina virtual que está implementado tooyour red virtual mediante la creación de una máquina virtual tooyour de conexión a Escritorio remoto. Hello tooinitially de mejor manera comprueba que puedes conectarte tooyour VM es tooconnect por utilizar IP privadas de su dirección, en lugar del nombre del equipo. De este modo, se prueban por toosee si puede conectarse, no si la resolución de nombres está configurada correctamente.
+Puede conectarse a una máquina virtual que se ha implementado en la red virtual mediante la creación de una conexión a Escritorio remoto a la máquina virtual. La mejor manera de comprobar inicialmente que puede conectarse a la máquina virtual es hacerlo mediante su dirección IP privada, en lugar del nombre de equipo. Con este método prueba si puede conectarse, no si la resolución de nombres está configurada correctamente.
 
-1. Busque la dirección IP privada de Hola. Puede encontrar la dirección IP privada de Hola de una máquina virtual examinando propiedades Hola Hola VM Hola portal de Azure, o mediante PowerShell.
+1. Busque la dirección IP privada. Para buscar la dirección IP privada de una máquina virtual, examine sus propiedades en Azure Portal o use PowerShell.
 
-  - Portal de Azure: ubicar la máquina virtual en hello portal de Azure. Ver las propiedades de Hola de hello máquina virtual. se muestra la dirección IP privada de Hola.
+  - Azure Portal: busque la máquina virtual en Azure Portal. Vea las propiedades de la máquina virtual. Se enumera la dirección IP privada.
 
-  - PowerShell - tooview de ejemplo de Hola utilice una lista de las máquinas virtuales y las direcciones IP privadas de los grupos de recursos. No es necesario toomodify en este ejemplo antes de usarlo.
+  - PowerShell: utilice el ejemplo para ver una lista de las máquinas virtuales y las direcciones IP privadas de los grupos de recursos. No es preciso modificar el ejemplo para usarlo.
 
     ```powershell
     $VMs = Get-AzureRmVM
@@ -19,17 +19,17 @@ Puede conectarse tooa máquina virtual que está implementado tooyour red virtua
     }
     ```
 
-2. Compruebe que está conectado tooyour red virtual con hello Point-to-Site VPN conexión.
-3. Abra **conexión a Escritorio remoto** escribiendo "RDP" o "Conexión a Escritorio remoto" en el cuadro de búsqueda de hello en la barra de tareas de hello, a continuación, seleccione conexión a Escritorio remoto. También puede abrir conexión a Escritorio remoto mediante el comando de 'mstsc' hello en PowerShell. 
-4. En conexión a Escritorio remoto, escriba la dirección IP privada de Hola de hello VM. Puede haga clic en "Mostrar opciones" tooadjust adicionales configuración y luego conectarse.
+2. Compruebe que está conectado a su red virtual mediante la conexión VPN de punto a sitio.
+3. Abra **Conexión a Escritorio remoto**, para lo que debe escribir "RDP" o "Conexión a Escritorio remoto" en el cuadro de búsqueda de la barra de tareas y, después, seleccione Conexión a Escritorio remoto. Conexión a Escritorio remoto también se puede abrir con el comando "mstsc" de PowerShell. 
+4. En Conexión a Escritorio remoto, escriba la dirección IP privada de la máquina virtual. Puede hacer clic en "Mostrar opciones" para ajustar más parámetros adicionales y, después, conéctese.
 
-### <a name="tootroubleshoot-an-rdp-connection-tooa-vm"></a>tootroubleshoot una tooa de conexión RDP VM
+### <a name="to-troubleshoot-an-rdp-connection-to-a-vm"></a>Solución de problemas de una conexión de RDP a una máquina virtual
 
-Si tiene problemas para conectarse a máquina virtual de tooa a través de la conexión VPN, compruebe Hola siguiente:
+Si tiene problemas para conectarse a una máquina virtual a través de su conexión VPN, compruebe los siguientes factores:
 
 - Compruebe que la conexión VPN se ha establecido correctamente.
-- Compruebe que se está conectando toohello dirección IP privada Hola máquina virtual.
-- Use 'ipconfig' toocheck Hola dirección IPv4 asignada a toohello adaptador de Ethernet en el equipo Hola desde el que se va a conectar. Si dirección IP de hello es dentro del intervalo de direcciones de Hola de hello red virtual que se está conectando a o dentro del intervalo de direcciones de Hola de su VPNClientAddressPool, esto es tooas que se hace referencia un espacio de direcciones superpuestos. Cuando se solapa con el espacio de direcciones de esta manera, el tráfico de red hello no llegar a Azure, se mantiene en la red local de Hola.
-- Si se puede conectar toohello VM con IP privada Hola de direcciones, pero no Hola nombre de equipo, compruebe que ha configurado DNS correctamente. Para más información acerca de cómo funciona la resolución de nombres para las máquinas virtuales, consulte [Resolución de nombres para las máquinas virtuales e instancias de rol](../articles/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
-- Compruebe que se generó ese paquete de configuración de cliente VPN de hello después de que se especificaron direcciones IP del servidor DNS de Hola para hello red virtual. Si ha actualizado de direcciones IP del servidor DNS de hello, generar e instalar un nuevo paquete de configuración de cliente VPN.
-- Para obtener más información acerca de las conexiones RDP, consulte [tooa de conexiones de escritorio remoto solucionar VM](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md).
+- Compruebe que se conecta a la dirección IP privada de la máquina virtual.
+- Use "ipconfig" para comprobar la dirección IPv4 asignada al adaptador de Ethernet en el equipo desde el que está intentando conectarse. Si la dirección IP está dentro del intervalo de direcciones de la red virtual a la que se va a conectar o dentro del intervalo de direcciones de su VPNClientAddressPool, esto se conoce como un espacio de direcciones superpuesto. Cuando el espacio de direcciones se superpone de esta manera, el tráfico de red no llega a Azure, sino que se mantiene en la red local.
+- Si puede conectarse a la máquina virtual mediante la dirección IP privada, pero no el nombre del equipo, compruebe que ha configurado el DNS correctamente. Para más información acerca de cómo funciona la resolución de nombres para las máquinas virtuales, consulte [Resolución de nombres para las máquinas virtuales e instancias de rol](../articles/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
+- Compruebe que el paquete de configuración de cliente de VPN se generó después de que se especificaran las direcciones IP del servidor DNS para la red virtual. Si actualizó las direcciones IP de servidor DNS, genere un nuevo paquete de configuración de cliente de VPN e instálelo.
+- Para más información acerca de las conexiones RDP, consulte [Solución de problemas de conexiones del Escritorio remoto a una máquina virtual de Azure](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md).

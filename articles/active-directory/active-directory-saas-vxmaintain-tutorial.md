@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con vxMaintain | Microsoft Docs"
-description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y vxMaintain."
+description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y vxMaintain."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,35 +13,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 937ea276d898986fc5a953c96fddabdc8940309f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ad87534af448356b8cc80d8ddd278bfb8a9165e7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-integrate-azure-active-directory-with-vxmaintain"></a>Tutorial: Integración de Azure Active Directory con vxMaintain
 
-En este tutorial, aprenderá cómo toointegrate vxMaintain con Azure Active Directory (Azure AD).
+En este tutorial, obtendrá información sobre cómo integrar vxMaintain con Azure Active Directory (Azure AD).
 
 Esta integración proporciona varias ventajas importantes. Puede:
 
-- Control de Azure AD que tenga acceso a toovxMaintain.
-- Habilitar el inicio de sesión de los usuarios tooautomatically en toovxMaintain con inicio de sesión único (SSO) con sus cuentas de Azure AD.
-- Administrar las cuentas en una ubicación central: Hola portal de Azure.
+- Controlar en Azure AD quién tiene acceso a vxMaintain.
+- Permitir que los usuarios inicien sesión automáticamente en vxMaintain mediante inicio de sesión único (SSO) con sus cuentas de Azure AD.
+- Administrar sus cuentas en una ubicación central, Azure Portal.
 
-toolearn más información acerca de la integración de aplicaciones de SaaS con Azure AD, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Para más información sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-integración de Azure AD con vxMaintain tooconfigure, necesita Hola siguientes elementos:
+Para configurar la integración de Azure AD con vxMaintain, se necesitan los siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción de inicio de sesión único de vxMaintain habilitada
 
 > [!NOTE]
-> Cuando se prueba pasos hello en este tutorial, se recomienda que no use un entorno de producción.
+> No se recomienda usar un entorno de producción para probar los pasos de este tutorial.
 
-pasos de hello tootest en este tutorial, siga estas recomendaciones:
+Para probar los pasos de este tutorial, siga estas recomendaciones:
 
 - No use el entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede [obtener una versión de prueba durante un mes](https://azure.microsoft.com/pricing/free-trial/).
@@ -49,151 +49,151 @@ pasos de hello tootest en este tutorial, siga estas recomendaciones:
 ## <a name="scenario-description"></a>Descripción del escenario
 En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. 
 
-escenario de Hola que se describe en este tutorial consta de dos bloques principales:
+La situación descrita en este tutorial consta de dos bloques de creación principales:
 
-* Agregar vxMaintain desde la Galería de Hola
+* Agregar vxMaintain desde la galería
 * Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="add-vxmaintain-from-hello-gallery"></a>Agregar vxMaintain de galería de Hola
-integración de hello tooconfigure de vxMaintain con Azure AD, deberá tooadd vxMaintain de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
+## <a name="add-vxmaintain-from-the-gallery"></a>Adición de vxMaintain desde la galería
+Para configurar la integración de vxMaintain con Azure AD, deberá agregar vxMaintain desde la galería a la lista de aplicaciones SaaS administradas.
 
-tooadd vxMaintain de galería de hello, Hola siguientes:
+Para agregar vxMaintain desde la galería, haga lo siguiente:
 
-1. Hola [portal de Azure](https://portal.azure.com), en Hola panel izquierdo, seleccione hello **Azure Active Directory** botón. 
+1. En el panel izquierdo de [Azure Portal](https://portal.azure.com), seleccione el botón **Azure Active Directory**. 
 
-    ![botón de Hello Azure Active Directory][1]
+    ![Botón Azure Active Directory][1]
 
 2. Seleccione **Aplicaciones empresariales** > **Todas las aplicaciones**.
 
-    ![panel de "Aplicaciones empresariales" Hello][2]
+    ![Panel "Aplicaciones empresariales"][2]
     
-3. una aplicación Hola tooadd **todas las aplicaciones** cuadro de diálogo, seleccione **nueva aplicación**.
+3. Para agregar una aplicación, en el cuadro de diálogo **Todas las aplicaciones**, seleccione **Nueva aplicación**.
 
-    ![Hola "Nueva aplicación" botón][3]
+    ![Botón Nueva aplicación][3]
 
-4. En el cuadro de búsqueda de hello, escriba **vxMaintain**.
+4. En el cuadro de búsqueda, escriba **vxMaintain**.
 
-    ![lista de desplegable de "Inicio de sesión en modo simple" Hola](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_search.png)
+    ![Lista desplegable de "Modo de inicio de sesión único"](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_search.png)
 
-5. En la lista de resultados de hello, seleccione **vxMaintain**y, a continuación, seleccione **agregar**.
+5. En la lista de resultados, seleccione **vxMaintain**y, a continuación, seleccione **Agregar**.
 
-    ![vínculo de Hello vxMaintain](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_addfromgallery.png)
+    ![El vínculo a vxMaintain](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_addfromgallery.png)
 
 ##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Configuración y prueba del inicio de sesión único en Azure AD
 En esta sección, podrá configurar y probar el inicio de sesión único de Azure AD con vxMaintain con un usuario de prueba llamado "Britta Simon".
 
-Para toowork SSO, Azure AD necesita usuario de Azure AD tooknow hello vxMaintain homólogo toohello. Es decir, debe establecer una relación de vínculo entre el usuario vxMaintain correspondiente de Hola y Hola Azure AD.
+Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo en vxMaintain para el usuario de Azure AD. Es decir, debe establecer una relación de vínculo entre el usuario de Azure AD y el usuario correspondiente de vxMaintain.
 
-relación de vínculo de tooestablish hello, asignar Hola vxMaintain **nombre de usuario** valor como hello Azure AD **nombre de usuario** valor.
+Para establecer la relación de vínculo, asigne el valor **nombre de usuario** de vxMaintain como valor de **nombre de usuario** de Azure AD.
 
-tooconfigure y SSO de Azure AD mediante el uso de vxMaintain, Hola completa después de bloques de creación de la prueba.
+Para configurar y probar el inicio de sesión único de Azure AD con vxMaintain, complete los siguientes bloques de creación.
 
 ### <a name="configure-azure-ad-sso"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, puede habilitar el SSO de AD de Azure en hello portal de Azure y configurar SSO en la aplicación vxMaintain haciendo Hola siguiente:
+En esta sección, puede habilitar el inicio de sesión único de Azure AD en Azure Portal y configurar el inicio de sesión único en la aplicación vxMaintain de la siguiente manera:
 
-1. En el portal de Azure, en Hola Hola **vxMaintain** página de integración de aplicaciones, seleccione **inicio de sesión único**.
+1. En Azure Portal, en la página de integración de la aplicación **vxMaintain**, seleccione **Inicio de sesión único**.
 
-    ![Hola "Inicio de sesión único" comando][4]
+    ![Comando "Inicio de sesión único"][4]
 
-2. tooenable SSO, Hola **modo de inicio de sesión único** lista desplegable, seleccione **sesión basado en SAML**.
+2. Para habilitar el inicio de sesión único, en la lista desplegable **Modo de inicio de sesión único**, seleccione **Inicio de sesión basado en SAML**.
  
-    ![Hola "basado en SAML Sign-on" comando](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_samlbase.png)
+    ![Comando "Inicio de sesión basado en SAML"](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_samlbase.png)
 
-3. En **vxMaintain dominio y las direcciones URL**, Hola siguientes:
+3. En **Dominio y direcciones URL de vxMaintain**, haga lo siguiente:
 
-    ![Hola vxMaintain sección de dominio y las direcciones URL](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_url.png)
+    ![Sección Dominio y direcciones URL de vxMaintain](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_url.png)
 
-    a. Hola **identificador** cuadro, escriba una dirección URL que ha Hola según la sintaxis:`https://<company name>.verisae.com`
+    a. En el cuadro de texto **Identificador**, escriba una dirección URL que tenga la siguiente sintaxis: `https://<company name>.verisae.com`.
 
-    b. Hola **dirección URL de respuesta** cuadro, escriba una dirección URL que ha Hola según la sintaxis:`https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
+    b. En el cuadro **URL de respuesta**, escriba una dirección URL que tenga la siguiente sintaxis: `https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
 
     > [!NOTE] 
-    > Hello valores anteriores no son reales. Actualizarlas con el identificador real de Hola o dirección URL de respuesta. valores de hello tooobtain, Hola contacto [equipo de soporte técnico de vxMaintain](http://www.verisae.com/contact-us).
+    > Los valores anteriores no son reales. Actualícelos con el identificador y la URL de respuesta reales. Para obtener los valores, póngase en contacto con el [equipo de soporte técnico de vxMaintain](http://www.verisae.com/contact-us).
  
-4. En **el certificado de firma de SAML**, seleccione **Metadata XML**y, a continuación, guarde el equipo de tooyour de archivo de metadatos de Hola.
+4. En la sección **Certificado de firma de SAML**, seleccione **XML de metadatos** y luego guarde el archivo de metadatos en el equipo.
 
-    ![Hola sección "Certificado de firma de SAML"](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_certificate.png) 
+    ![Sección "Certificado de firma SAML"](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_certificate.png) 
 
 5. Seleccione **Guardar**.
 
-    ![botón Guardar de Hola](./media/active-directory-saas-vxmaintain-tutorial/tutorial_general_400.png)
+    ![Botón Guardar](./media/active-directory-saas-vxmaintain-tutorial/tutorial_general_400.png)
 
-6. tooconfigure **vxMaintain** SSO, Hola envío descargado **Metadata XML** archivo toohello [equipo de soporte técnico de vxMaintain](http://www.verisae.com/contact-us).
+6. Para configurar el inicio de sesión único de **vxMaintain**, envíe el archivo **XML de metadatos** al [equipo de soporte técnico de vxMaintain](http://www.verisae.com/contact-us).
 
 > [!TIP]
-> Como configurar la aplicación hello, puede leer una versión concisa de hello precede a instrucciones de hello [portal de Azure](https://portal.azure.com). Después de Agregar aplicación hello de hello **Active Directory** > **aplicaciones empresariales** sección, seleccione hello **Single Sign-On** ficha y, a continuación, Hola de acceso incrusta la documentación de hello **configuración** sección. 
+> Cuando configure la aplicación, puede leer una versión concisa de las instrucciones anteriores en [Azure Portal](https://portal.azure.com). Después de agregar la aplicación desde la sección **Active Directory** > **Aplicaciones empresariales**, seleccione la pestaña **Inicio de sesión único** y, a continuación, acceda a la documentación incrustada en la sección **Configuración**. 
 >
->toolearn más información acerca de la característica de documentación de embedded hello, consulte [administración de inicio de sesión único para aplicaciones empresariales](https://go.microsoft.com/fwlink/?linkid=845985).
+>Para más información sobre la característica de documentación incrustada, consulte [Administración de inicio de sesión único para aplicaciones empresariales](https://go.microsoft.com/fwlink/?linkid=845985).
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-En esta sección, para crear el usuario de prueba Britta Simon Hola portal de Azure, llevando a cabo Hola siguiente:
+En esta sección, creará el usuario de prueba Britta Simon en Azure Portal siguiendo estos pasos:
 
-![usuario de prueba de Hello Azure AD][100]
+![Usuario de prueba de Azure AD][100]
 
-1. Hola **portal de Azure**, en Hola panel izquierdo, seleccione hello **Azure Active Directory** botón.
+1. En el panel izquierdo de **Azure Portal**, seleccione el botón **Azure Active Directory**.
 
-    ![botón de "Azure Active Directory" Hello](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_01.png) 
+    ![Botón "Azure Active Directory"](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_01.png) 
 
-2. toodisplay una lista de usuarios, vaya demasiado**usuarios y grupos** > **todos los usuarios**.
+2. Para mostrar una lista de usuarios, vaya a **Usuarios y grupos** > **Todos los usuarios**.
     
-    ![vínculo de Hello "Todos los usuarios"](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_02.png)  
-    Hola **todos los usuarios** abre el cuadro de diálogo. 
+    ![Vínculo "Todos los usuarios"](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_02.png)  
+    Se abre el cuadro de diálogo **Todos los usuarios**. 
 
-3. Hola tooopen **usuario** cuadro de diálogo, seleccione **agregar**.
+3. Para abrir el cuadro de diálogo **Usuario**, seleccione **Agregar**.
  
-    ![botón de agregar Hola](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_03.png) 
+    ![Botón Agregar](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_03.png) 
 
-4. Hola **usuario** diálogo cuadro, Hola siguientes:
+4. En el cuadro de diálogo **Usuario**, haga lo siguiente:
  
-    ![cuadro de diálogo de usuario de Hola](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_04.png) 
+    ![Cuadro de diálogo Usuario](./media/active-directory-saas-vxmaintain-tutorial/create_aaduser_04.png) 
 
-    a. Hola **nombre** , escriba **BrittaSimon**.
+    a. En el cuadro **Nombre**, escriba **BrittaSimon**.
 
-    b. Hola **nombre de usuario** cuadro de dirección de correo electrónico de Hola de tipo de usuario de prueba Britta Simon.
+    b. En el cuadro de texto **Nombre de usuario**, escriba la dirección de correo electrónico del usuario de prueba Britta Simon.
 
-    c. Seleccione hello **Mostrar contraseña** casilla de verificación y, a continuación, valor de hello tenga en cuenta que se generó en hello **contraseña** cuadro.
+    c. Seleccione la casilla **Mostrar contraseña** y, después , anote el valor que se generó en el cuadro **Contraseña**.
 
     d. Seleccione **Crear**.
  
 ### <a name="create-a-vxmaintain-test-user"></a>Creación de un usuario de prueba de vxMaintain
 
-En esta sección, creará una usuaria de prueba llamada Britta Simon en vxMaintain. los usuarios de tooadd en la plataforma de vxMaintain hello, trabajar con el [equipo de soporte técnico de vxMaintain](http://www.verisae.com/contact-us). Antes de usar SSO, crear y activar los usuarios de Hola.
+En esta sección, creará una usuaria de prueba llamada Britta Simon en vxMaintain. Trabaje con el [equipo de soporte técnico de vxMaintain](http://www.verisae.com/contact-us) para agregar usuarios a la plataforma de vxMaintain. Antes de usar el inicio de sesión único, cree y active los usuarios.
 
-### <a name="assign-hello-azure-ad-test-user"></a>Asignar el usuario de prueba de hello Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
 
-En esta sección, se habilita el usuario de prueba Britta Simon toouse Azure SSO concediendo acceso toovxMaintain. por lo tanto, toodo Hola siguientes:
+En esta sección, permitirá que la usuaria de prueba Britta Simon use el inicio de sesión único (SSO) de Azure, para lo cual le concederá acceso a vxMaintain. Para ello, haga lo siguiente:
 
-![Usuario de prueba en la lista de nombre para mostrar de Hola][200] 
+![Usuario de prueba en la lista Nombre para mostrar][200] 
 
-1. En el portal de Azure hello **aplicaciones** ver, vaya demasiado**directorio** Vista > **aplicaciones empresariales** > **detodaslasaplicaciones**.
+1. En la vista **Aplicaciones** de Azure Portal, vaya a la vista **Directorio** > **Aplicaciones empresariales** > **Todas las aplicaciones**.
 
-    ![vínculo de Hello "Todas las aplicaciones"][201] 
+    ![Vínculo "Todas las aplicaciones"][201] 
 
-2. Hola **aplicaciones** lista, seleccione **vxMaintain**.
+2. En la lista **Aplicaciones**, seleccione **vxMaintain**.
 
-    ![vínculo de Hello vxMaintain](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_app.png) 
+    ![El vínculo a vxMaintain](./media/active-directory-saas-vxmaintain-tutorial/tutorial_vxmaintain_app.png) 
 
-3. En el panel izquierdo de hello, seleccione **usuarios y grupos**.
+3. En el panel izquierdo, seleccione **Usuarios y grupos**.
 
-    ![vínculo de "Usuarios y grupos" Hello][202] 
+    ![Vínculo "Usuarios y grupos"][202] 
 
-4. Seleccione **agregar** y, a continuación, en hello **Agregar asignación** panel, seleccione **usuarios y grupos**.
+4. Seleccione **Agregar** y, después, en el panel **Agregar asignación**, seleccione **Usuarios y grupos**.
 
-    ![vínculo de "Usuarios y grupos" Hello][203]
+    ![Vínculo "Usuarios y grupos"][203]
 
-5. Hola **usuarios y grupos** cuadro de diálogo hello **usuarios** lista, seleccione **Britta Simon**y, a continuación, seleccione hello **seleccione** botón.
+5. En el cuadro de diálogo **Usuarios y grupos**, en la lista **Usuarios** seleccione **Britta Simon** y, después, el botón **Seleccionar**.
 
-7. Hola **Agregar asignación** cuadro de diálogo, seleccione **asignar**.
+7. En el cuadro de diálogo **Agregar asignación**, seleccione **Asignar**.
     
 ### <a name="test-your-azure-ad-single-sign-on"></a>Prueba del inicio de sesión único de Azure AD
 
-En esta sección, probará la configuración de SSO de Azure AD mediante el uso de hello Panel de acceso.
+En esta sección, probará la configuración de inicio de sesión único de Azure AD mediante el panel de acceso.
 
-Seleccionar hello **vxMaintain** icono en el Panel de acceso de hello debe iniciar sesión en tooyour vxMaintain aplicación automáticamente.
+Al seleccionar el icono de **vxMaintain** en el panel de acceso, debería iniciar sesión automáticamente en su aplicación vxMaintain.
 
-Para obtener más información sobre el Panel de acceso, consulte [Introducción toohello Panel de acceso](active-directory-saas-access-panel-introduction.md).
+Para más información sobre el Panel de acceso, consulte [Introducción al Panel de acceso](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
 

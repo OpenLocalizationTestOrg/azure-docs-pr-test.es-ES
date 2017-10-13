@@ -1,5 +1,5 @@
 ---
-title: "aaaException control & escenario de registro de error: las aplicaciones lógicas de Azure | Documentos de Microsoft"
+title: 'Escenario de control de excepciones y registro de errores: Azure Logic Apps | Microsoft Docs'
 description: Describe un caso de uso real sobre control de excepciones y registro de errores avanzados para Azure Logic Apps
 keywords: 
 services: logic-apps
@@ -16,51 +16,51 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/29/2016
 ms.author: LADocs; b-hoedid
-ms.openlocfilehash: e893a7b652254dca7b8a82398e8afd571f6ccd25
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 044de27c75da93c95609110d2b73336c42f746fe
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Escenario: control de excepciones y registro de errores para aplicaciones lógicas
 
-Este escenario describe cómo puede ampliar un control de excepciones de lógica aplicación toobetter soporte técnico. Hemos usado una pregunta de hello tooanswer casos de uso real: "¿las aplicaciones lógicas de Azure admite excepciones y control de errores?"
+En este escenario se describe cómo extender una aplicación lógica para controlar mejor las excepciones. Hemos usado un caso de uso real para responder a la pregunta: ¿Admite Azure Logic Apps control de excepciones y errores?
 
 > [!NOTE]
-> esquema de Azure Logic Apps actual Hola proporciona una plantilla estándar para las respuestas de acción. Esta incluye la validación interna y las respuestas de error devueltas desde una aplicación de API.
+> El esquema actual de Azure Logic Apps proporciona una plantilla estándar para las respuestas de acción. Esta incluye la validación interna y las respuestas de error devueltas desde una aplicación de API.
 
 ## <a name="scenario-and-use-case-overview"></a>Información general de escenarios y casos de uso
 
-Aquí es el caso de hello como caso de uso de Hola para este escenario: 
+Esta es la historia del caso de uso de este escenario: 
 
-Las organizaciones sanitarias conocida nos ocupa toodevelop una solución de Azure que crearía un paciente portal mediante el uso de Microsoft Dynamics CRM Online. Necesitan registros de cita toosend entre portal paciente de Dynamics CRM Online de Hola y Salesforce. Se nos pidió hello toouse [FHIR HL7](http://www.hl7.org/implement/standards/fhir/) estándar para los registros de todos los pacientes.
+Una conocida organización sanitaria nos contrató para que desarrolláramos una solución de Azure que crearía un portal para pacientes mediante Microsoft Dynamics CRM Online. Necesitaban enviar registros de citas entre el portal para pacientes de Dynamics CRM Online y Salesforce. Se nos pidió que usáramos la norma [FHIR HL7](http://www.hl7.org/implement/standards/fhir/) para todos los registros de paciente.
 
-proyecto de Hello tenía dos requisitos principales:  
+El proyecto tenía dos requisitos principales:  
 
-* Un método toolog registros enviarán desde Hola portal de Dynamics CRM Online
-* Una manera tooview los errores que se produjeron dentro del flujo de trabajo de Hola
+* Un método para registrar las entradas enviadas desde el portal de Dynamics CRM Online
+* Una manera de ver todos los errores que se producían dentro del flujo de trabajo.
 
 > [!TIP]
-> Para ver un vídeo de alto nivel acerca de este proyecto, [grupo de usuarios de la integración de](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "grupo de usuarios de la integración de").
+> Para ver un vídeo de alto nivel sobre este proyecto, vea [Integration User Group](http://www.integrationusergroup.com/logic-apps-support-error-handling/ "Integration User Group").
 
-## <a name="how-we-solved-hello-problem"></a>Cómo se ha resuelto el problema de Hola
+## <a name="how-we-solved-the-problem"></a>¿Cómo resolvimos el problema?
 
-Elegimos [base de datos de Azure Cosmos](https://azure.microsoft.com/services/documentdb/ "base de datos de Azure Cosmos") como repositorio para los registros de error y registro de hello (Cosmos DB hace referencia toorecords como documentos). Dado que las aplicaciones lógicas de Azure tiene una plantilla estándar para todas las respuestas, no tendríamos toocreate un esquema personalizado. Podríamos crear una aplicación de API demasiado**insertar** y **consulta** para los registros de error y de registro. También podemos definir un esquema para cada una en la aplicación de API de hello.  
+Elegimos [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/ "Azure Cosmos DB") como repositorio para los registros y entradas de error (Cosmos DB hace referencia a los registros como documentos). Puesto que Azure Logic Apps tiene una plantilla estándar para todas las respuestas, no sería necesario crear un esquema personalizado. Podíamos crear una aplicación de API para **insertar** y **consultar** registros de errores y registros. También podíamos definir un esquema para cada uno de ellos dentro de la aplicación de API.  
 
-Otro requisito estaba toopurge registros después de una fecha determinada. COSMOS DB tiene una propiedad denominada [tiempo tooLive](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "tiempo tooLive") (TTL), que permitía tooset una **tiempo tooLive** valor de cada registro o la colección. Esta función elimina Hola necesidad toomanually elimine los registros en la base de datos de Cosmos.
+Otro requisito era que se purgaran los registros después de una determinada fecha. Cosmos DB presenta una propiedad llamada [período de vida](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "período de vida") (TTL), que nos permitió establecer un valor de **período de vida** para cada registro o colección. Esta capacidad suprimía la necesidad de eliminar manualmente los registros en Cosmos DB.
 
 > [!IMPORTANT]
-> toocomplete este tutorial, necesita una base de datos de la base de datos de Cosmos toocreate y dos colecciones (registro y errores).
+> Para completar este tutorial, debe crear una base de datos de Cosmos DB y dos colecciones (Registro y Errores).
 
-## <a name="create-hello-logic-app"></a>Crear aplicación de lógica de hello
+## <a name="create-the-logic-app"></a>Creación de la aplicación lógica
 
-Hola primer paso es aplicación de lógica de hello toocreate y aplicación Hola abierto en el Diseñador de la lógica de aplicación. En este ejemplo, vamos a usar aplicaciones lógicas primarias y secundarias. Supongamos que ya se ha creado el elemento primario de Hola y va toocreate una aplicación de lógica de secundarios.
+El primer paso es crear una aplicación lógica y cargarla en Diseñador de aplicación lógica. En este ejemplo, vamos a usar aplicaciones lógicas primarias y secundarias. Supongamos que ya ha creado la primaria y va a crear una aplicación lógica secundaria.
 
-Dado que vamos a registro de hello toolog que salen de Dynamics CRM Online, puede empezar en la parte superior de Hola. Debemos usar un **solicitar** desencadenador porque la aplicación lógica de hello primario desencadena este elemento secundario.
+Puesto que vamos a registrar los registros procedentes de Dynamics CRM Online, vamos a comenzar por lo más importante. Debemos usar un desencadenador de **solicitud**, ya que la aplicación lógica primaria desencadenará la secundaria.
 
 ### <a name="logic-app-trigger"></a>Desencadenador de aplicación lógica
 
-Estamos usando un **solicitar** desencadenar tal y como se muestra en el siguiente ejemplo de Hola:
+Vamos a usar un desencadenador de **solicitud** tal como se muestra en el ejemplo siguiente:
 
 ```` json
 "triggers": {
@@ -100,14 +100,14 @@ Estamos usando un **solicitar** desencadenar tal y como se muestra en el siguien
 
 ## <a name="steps"></a>Pasos
 
-Debemos registramos origen hello (solicitud) del registro de hello paciente de portal de Dynamics CRM Online Hola.
+Es necesario registrar el origen (solicitud) del registro del paciente desde el portal de Dynamics CRM Online.
 
 1. Debemos obtener un registro de nueva cita de Dynamics CRM Online.
 
-   desencadenador Hola procedentes de CRM nos ofrece hello **CRM PatentId**, **tipo de registro**, **nuevo o actualizado registro** (nueva o actualizar el valor booleano), y  **SalesforceId**. Hola **SalesforceId** puede ser null porque solo se usa para una actualización.
-   Obtenemos registro de hello CRM mediante el uso de hello CRM **PatientID** hello y **tipo de registro**.
+   El desencadenador procedente de CRM nos proporciona los valores de **CRM PatentId**, **record type**, **New or Updated Record** (valor booleano nuevo o actualizado) y **SalesforceId**. El valor de **SalesforceId** puede ser null porque solo se utiliza para obtener una actualización.
+   Obtenemos el registro de CRM mediante los valores de **PatientID** y **Tipo de registro** de CRM.
 
-2. A continuación, necesitamos tooadd nuestra aplicación de API de DocumentDB **InsertLogEntry** operación tal y como se muestra en el Diseñador de la lógica de aplicación.
+2. A continuación, es necesario agregar a nuestra aplicación de API de DocumentDB la operación **InsertLogEntry**, tal y como se muestra aquí en el Diseñador de aplicaciones lógicas.
 
    **Inserción de entrada de registro**
 
@@ -124,15 +124,15 @@ Debemos registramos origen hello (solicitud) del registro de hello paciente de p
 ## <a name="logic-app-source-code"></a>Código fuente de la aplicación lógica
 
 > [!NOTE]
-> Hello en los ejemplos siguientes es solamente ejemplos. Dado que este tutorial se basa en una implementación en producción, Hola valor de un **nodo de origen** no puede mostrar las propiedades que están relacionada tooscheduling una cita. > 
+> Los siguientes ejemplos son solo muestras. Como este tutorial se basa en una implementación actualmente en producción, es posible que el valor de un **nodo de origen** no muestre las propiedades que están relacionadas con la programación de una cita.> 
 
 ### <a name="logging"></a>Registro
 
-Hola después del código de aplicación lógica de ejemplo se muestra cómo toohandle el registro.
+El siguiente ejemplo de código de aplicación lógica muestra cómo controlar el registro.
 
 #### <a name="log-entry"></a>Entrada de registro
 
-Este es el código fuente de la aplicación de la lógica Hola para insertar una entrada de registro.
+Este es el código fuente de la aplicación lógica para insertar una entrada de registro.
 
 ``` json
 "InsertLogEntry": {
@@ -160,7 +160,7 @@ Este es el código fuente de la aplicación de la lógica Hola para insertar una
 
 #### <a name="log-request"></a>Solicitud de registro
 
-Este es el mensaje de solicitud de registro de hello registrado la aplicación de API de toohello.
+Este es el mensaje de solicitud de registro publicado en la aplicación de API.
 
 ``` json
     {
@@ -180,7 +180,7 @@ Este es el mensaje de solicitud de registro de hello registrado la aplicación d
 
 #### <a name="log-response"></a>Respuesta de registro
 
-Este es el mensaje de respuesta de registro de hello de aplicación de API de hello.
+Este es el mensaje de respuesta de registro desde la aplicación de API.
 
 ``` json
 {
@@ -214,15 +214,15 @@ Este es el mensaje de respuesta de registro de hello de aplicación de API de he
 
 ```
 
-Ahora Echemos un vistazo a los pasos de control de errores de Hola.
+Ahora veamos los pasos de control de errores:
 
 ### <a name="error-handling"></a>Control de errores
 
-Hello siguiente ejemplo de código de aplicación lógica muestra cómo puede implementar el control de errores.
+El siguiente ejemplo de código de aplicación lógica muestra cómo puede implementar el control de errores.
 
 #### <a name="create-error-record"></a>Creación de un registro de errores
 
-Este es el código fuente de la aplicación de la lógica Hola para crear un registro de error.
+Este es el código fuente de la aplicación lógica para crear un registro de errores.
 
 ``` json
 "actions": {
@@ -269,7 +269,7 @@ Este es el código fuente de la aplicación de la lógica Hola para crear un reg
         "isError": true,
         "crmId": "6b115f6d-a7ee-e511-80f5-3863bb2eb2d0",
         "patientId": "6b115f6d-a7ee-e511-80f5-3863bb2eb2d0",
-        "message": "Salesforce failed toocomplete task: Message: duplicate value found: Account_ID_MED__c duplicates value on record with id: 001U000001c83gK",
+        "message": "Salesforce failed to complete task: Message: duplicate value found: Account_ID_MED__c duplicates value on record with id: 001U000001c83gK",
         "providerId": "",
         "severity": 4,
         "salesforceId": "",
@@ -307,7 +307,7 @@ Este es el código fuente de la aplicación de la lógica Hola para crear un reg
         "action": "New_Patient",
         "salesforceId": "",
         "update": false,
-        "body": "CRM failed toocomplete task: Message: duplicate value found: CRM_HUB_ID__c duplicates value on record with id: 001U000001c83gK",
+        "body": "CRM failed to complete task: Message: duplicate value found: CRM_HUB_ID__c duplicates value on record with id: 001U000001c83gK",
         "source": "{/"Account_Class_vod__c/":/"PRAC/",/"Account_Status_MED__c/":/"I/",/"CRM_HUB_ID__c/":/"6b115f6d-a7ee-e511-80f5-3863bb2eb2d0/",/"Credentials_vod__c/":/"DO - Degree level is DO/",/"DTC_ID_MED__c/":/"/",/"Fax/":/"/",/"FirstName/":/"A/",/"Gender_vod__c/":/"/",/"IMS_ID__c/":/"/",/"LastName/":/"BAILEY/",/"MterID_mp__c/":/"/",/"Medicis_ID_MED__c/":/"851588/",/"Middle_vod__c/":/"/",/"NPI_vod__c/":/"/",/"PDRP_MED__c/":false,/"PersonDoNotCall/":false,/"PersonEmail/":/"/",/"PersonHasOptedOutOfEmail/":false,/"PersonHasOptedOutOfFax/":false,/"PersonMobilePhone/":/"/",/"Phone/":/"/",/"Practicing_Specialty__c/":/"FM - FAMILY MEDICINE/",/"Primary_City__c/":/"/",/"Primary_State__c/":/"/",/"Primary_Street_Line2__c/":/"/",/"Primary_Street__c/":/"/",/"Primary_Zip__c/":/"/",/"RecordTypeId/":/"012U0000000JaPWIA0/",/"Request_Date__c/":/"2016-06-10T22:31:55.9647467Z/",/"XXXXXXX/":/"/",/"Specialty_1_vod__c/":/"/",/"Suffix_vod__c/":/"/",/"Website/":/"/"}",
         "code": 400,
         "errors": null,
@@ -340,7 +340,7 @@ Este es el código fuente de la aplicación de la lógica Hola para crear un reg
     },
     "body": {
         "status": 400,
-        "message": "Salesforce failed toocomplete task: Message: duplicate value found: Account_ID_MED__c duplicates value on record with id: 001U000001c83gK",
+        "message": "Salesforce failed to complete task: Message: duplicate value found: Account_ID_MED__c duplicates value on record with id: 001U000001c83gK",
         "source": "Salesforce.Common",
         "errors": []
     }
@@ -348,11 +348,11 @@ Este es el código fuente de la aplicación de la lógica Hola para crear un reg
 
 ```
 
-### <a name="return-hello-response-back-tooparent-logic-app"></a>Devolver la aplicación de lógica de hello respuesta tooparent atrás
+### <a name="return-the-response-back-to-parent-logic-app"></a>Devolución de la respuesta a la aplicación lógica primaria
 
-Después de obtener respuesta de hello, puede pasar la respuesta de hello aplicación lógica de retroceso toohello primario.
+Una vez que obtiene la respuesta, puede pasarla a la aplicación lógica primaria.
 
-#### <a name="return-success-response-tooparent-logic-app"></a>Aplicación de lógica de tooparent de respuesta de éxito de valor devuelto
+#### <a name="return-success-response-to-parent-logic-app"></a>Devolución de respuesta satisfactoria a la aplicación lógica primaria
 
 ``` json
 "SuccessResponse": {
@@ -374,7 +374,7 @@ Después de obtener respuesta de hello, puede pasar la respuesta de hello aplica
 }
 ```
 
-#### <a name="return-error-response-tooparent-logic-app"></a>Aplicación de lógica de tooparent de respuesta de error de retorno
+#### <a name="return-error-response-to-parent-logic-app"></a>Devolución de respuesta de error a la aplicación lógica primaria
 
 ``` json
 "ErrorResponse": {
@@ -404,12 +404,12 @@ Nuestra solución agregó funcionalidades con [Cosmos DB](https://azure.microsof
 
 ### <a name="error-management-portal"></a>Portal de administración de errores
 
-errores de hello tooview, puede crear un registros de error MVC web app toodisplay Hola de base de datos de Cosmos. Hola **lista**, **detalles**, **editar**, y **eliminar** operaciones se incluyen en la versión actual de Hola.
+Para ver los errores, puede crear una aplicación web de MVC que muestre los registros de error de Cosmos DB. En la versión actual, se incluyen las operaciones de **lista**, **detalles**, **edición** y **eliminación**.
 
 > [!NOTE]
-> Operación de edición: Cosmos DB reemplaza todo el documento Hola. Hola registros mostrados en hello **lista** y **detalle** vistas son solamente ejemplos. No son registros reales de citas de pacientes.
+> Operación de edición: Cosmos DB reemplaza todo el documento. Los registros que se muestran en las vistas de **lista** y **detalles** son solo ejemplos. No son registros reales de citas de pacientes.
 
-Estos son ejemplos de nuestra aplicación MVC detalles creados previamente con hello describen enfoque.
+Aquí puede ver ejemplos de nuestros detalles de la aplicación de MVC creados con el enfoque descrito anteriormente.
 
 #### <a name="error-management-list"></a>Lista de administración de errores
 ![Lista de errores](media/logic-apps-scenario-error-and-exception-handling/errorlist.png)
@@ -419,7 +419,7 @@ Estos son ejemplos de nuestra aplicación MVC detalles creados previamente con h
 
 ### <a name="log-management-portal"></a>Portal de administración de registros
 
-registros de hello tooview, también creamos una aplicación web MVC. Estos son ejemplos de nuestra aplicación MVC detalles creados previamente con hello describen enfoque.
+Para ver los registros, también creamos una aplicación web de MVC. Aquí puede ver ejemplos de nuestros detalles de la aplicación de MVC creados con el enfoque descrito anteriormente.
 
 #### <a name="sample-log-detail-view"></a>Vista de detalles del registro de ejemplo
 ![Vista de detalles del registro](media/logic-apps-scenario-error-and-exception-handling/samplelogdetail.png)
@@ -434,14 +434,14 @@ Nuestra aplicación de API de administración de excepciones de Azure Logic Apps
 * **LogController** inserta una entrada de registro (documento) en una colección de DocumentDB.
 
 > [!TIP]
-> Usan ambos controladores `async Task<dynamic>` Hola de operaciones, lo que permite operaciones tooresolve en tiempo de ejecución, por lo que podemos crear documentos de esquema en el cuerpo de Hola de operación de Hola. 
+> Ambos controladores usan operaciones `async Task<dynamic>`, que permiten que las operaciones se resuelvan en tiempo de ejecución, por lo que podemos crear el esquema de DocumentDB en el cuerpo de la operación. 
 > 
 
-Todos los documentos de DocumentDB deben tener un identificador único. Estamos usando `PatientId` y agregar una marca de tiempo que sea convertir el valor de marca de tiempo de Unix tooa (double). Se trunca hello tooremove Hola fracciones valor.
+Todos los documentos de DocumentDB deben tener un identificador único. Vamos a utilizar `PatientId` y a agregar una marca de tiempo que se convertirá en un valor de marca de tiempo de Unix (doble). Se trunca el valor para quitar el valor fraccionario.
 
-Puede ver código fuente de Hola de nuestro controlador de error API [desde GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/Logic App Exception Management API/Controllers/ErrorController.cs).
+El código fuente de la API de nuestro controlador de error se puede ver [desde GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/Logic App Exception Management API/Controllers/ErrorController.cs).
 
-Llamamos a Hola API desde una aplicación de lógica mediante el uso de hello según la sintaxis:
+Llamamos a la API desde una aplicación lógica mediante la sintaxis siguiente:
 
 ``` json
  "actions": {
@@ -474,17 +474,17 @@ Llamamos a Hola API desde una aplicación de lógica mediante el uso de hello se
  }
 ```
 
-Hola expresión Hola anteriores comprobaciones de ejemplo de código de hello *Create_NewPatientRecord* estado de **error**.
+La expresión del ejemplo de código anterior buscará el estado **Error** para *Create_NewPatientRecord*.
 
 ## <a name="summary"></a>Resumen
 
 * Puede implementar fácilmente el registro y control de errores en una aplicación lógica.
-* Puede usar documentos como repositorio de Hola para los registros de error y registro (documentos).
-* Puede usar MVC toocreate un registro toodisplay portal y registros de error.
+* Puede usar DocumentDB como repositorio para entradas de registro y registros de error (documentos).
+* Puede usar MVC para crear un portal que muestre las entradas de registro y los registros de error.
 
 ### <a name="source-code"></a>Código fuente
 
-código de origen de Hola de hello aplicación API de administración de excepción de aplicaciones de lógica está disponible en este [repositorio de GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "API de administración de excepciones de aplicación lógica").
+El código fuente de la aplicación de API de administración de excepciones de Logic Apps está disponible en este [repositorio de GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "API de administración de excepciones de Logic Apps").
 
 ## <a name="next-steps"></a>Pasos siguientes
 

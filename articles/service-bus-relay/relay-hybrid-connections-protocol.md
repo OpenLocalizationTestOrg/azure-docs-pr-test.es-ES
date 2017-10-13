@@ -1,5 +1,5 @@
 ---
-title: "las conexiones híbridas de retransmisión aaaAzure protocolo guía | Documentos de Microsoft"
+title: "Guía del protocolo de conexiones híbridas de Retransmisión de Azure | Microsoft Docs"
 description: "Guía del protocolo de conexiones híbridas de Azure Relay."
 services: service-bus-relay
 documentationcenter: na
@@ -12,111 +12,111 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/03/2017
-ms.author: sethm;clemensv
-ms.openlocfilehash: 2d145d919d606ae4722b063e1baf39fb845a600a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.date: 10/05/2017
+ms.author: sethm
+ms.openlocfilehash: 9d015678dbd99b8d978c2c8200b36bf51cac8893
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # Protocolo de conexiones híbridas de Azure Relay
-Retransmisión de Azure es uno de los pilares de capacidad clave Hola de plataforma de Azure Service Bus Hola. Hola nueva *conexiones híbridas* capacidad de retransmisión es una evolución segura, protocolo abierto basada en HTTP y WebSockets. Sustituye primero hello, igualmente denominado *servicios de BizTalk* característica que se basa en un protocolo propietario. integración de Hola de conexiones híbridas en servicios de aplicaciones de Azure continuará toofunction como-es.
+Relay de Azure es uno de los pilares básicos de las funcionalidades de la plataforma Azure Service Bus. La nueva funcionalidad *Conexiones híbridas* de Relay es una evolución segura y de protocolo abierto basada en HTTP y WebSockets. Sustituye a la antigua característica de *BizTalk Services* con el mismo nombre que se basaba en un protocolo propietario. La integración de Conexiones híbridas en Azure App Service seguirá funcionando de la misma forma.
 
-Conexiones híbridas permite establecer una comunicación de secuencias binaria y bidireccional entre dos aplicaciones en red durante la que una de las partes, o ambas, pueden residir detrás de firewalls o mecanismos NAT. Este artículo describen las interacciones de cliente de hello con retransmisión de conexiones híbridas de Hola para conectar los clientes en el agente de escucha y funciones de remitente, y cómo los agentes de escucha aceptan nuevas conexiones.
+Conexiones híbridas permite establecer una comunicación de secuencias binaria y bidireccional entre dos aplicaciones en red durante la que una de las partes, o ambas, pueden residir detrás de firewalls o mecanismos NAT. En este artículo se describen las interacciones del lado cliente con la característica de retransmisión de Conexiones híbridas para conectar clientes con los roles de agente de escucha y remitente. Además, se explica cómo los agentes de escucha aceptan nuevas conexiones.
 
 ## Modelo de interacción
-retransmisión de conexiones híbridas de Hello conecta dos partes proporcionando un punto de rendezvous Hola nube de Azure que ambas partes pueden detectar y conectarse toofrom perspectiva de su propia red. Ese punto de rendezvous se denomina "Conexión híbrida" en ésta y otra documentación en hello API y también en hello portal de Azure. Hello las conexiones híbridas de extremo de servicio conoce tooas Hola "servicio" para el resto de Hola de este artículo. modelo de interacción de Hola se basa en la nomenclatura de hello establecida por muchas otras API de red.
+El servicio de retransmisión de Conexiones híbridas conecta dos partes mediante la creación de un punto de encuentro en la nube de Azure que ambas partes pueden detectar y a la que pueden conectarse desde su propia red. Ese punto de encuentro se denomina "Conexión híbrida" en esta documentación y en otros artículos, en las API y también en Azure Portal. Al punto de conexión del servicio Conexiones híbridas nos referiremos como el "servicio" en el resto de este artículo. El modelo de interacción se basa en la nomenclatura que han establecido muchas otras API de red.
 
-No hay un agente de escucha que primero indica las conexiones entrantes de preparación toohandle y acepta posteriormente cuanto llegan. En Hola otro lado, una conexión de cliente que se conecta hacia el agente de escucha de hello, se espera que toobe conexión aceptada para establecer una ruta de acceso de comunicación bidireccional.
-"Conectar", "Escuchar" y "Aceptar" se Hola mismo términos que encontrará en la mayoría de API de socket.
+Hay un agente de escucha que, primero, indica que está preparado para controlar las conexiones entrantes y, después, las acepta a medida que llegan. Por otro lado, hay un cliente de conexión que se conecta con el agente de escucha, de modo que se espera que se acepte dicha conexión para establecer una ruta de comunicación bidireccional.
+"Conectar", "escuchar" y "aceptar" son los mismos términos que encontrará en la mayoría de las API de socket.
 
-Cualquier modelo de comunicación retransmitida tiene cualquiera de las partes que realiza las conexiones salientes a un extremo de servicio que realiza a escucha"hello" también un "cliente" en uso coloquiales y también puede provocar otras sobrecargas de terminología. terminología precisa Hello, por tanto, usamos para las conexiones híbridas es como sigue:
+En cualquier modelo de comunicación retransmitida, las partes establecen las conexiones salientes hacia un punto de conexión de servicio, lo que provoca que al "agente de escucha" también se le conozca como "cliente" en el uso coloquial, y también puede causar otras sobrecargas terminológicas. Por consiguiente, esta es la terminología precisa que usamos en Conexiones híbridas:
 
-programas de Hello en ambos lados de una conexión se denominan a "clientes", ya que son servicio toohello de los clientes. cliente que espera y acepta conexiones es la "escucha", o es Hello dice toobe Hola "agente de escucha rol." cliente de Hola que inicia una nueva conexión a un agente de escucha a través del servicio de Hola se denomina "sender" hello, o está en la "función de remitente".
+Los programas de ambos extremos de la conexión se denominan "clientes", ya que son clientes del servicio. El cliente que espera y acepta conexiones es el "agente de escucha" o que asume el "rol de escucha". El cliente que inicia una nueva conexión hacia un agente de escucha a través del servicio se denominará "remitente" o que asume el "rol de remitente".
 
 ### Interacciones del agente de escucha
-agente de escucha de Hello tiene cuatro interacciones con el servicio de hello; todos los detalles de conexión se describen más adelante en este artículo en la sección de referencia de Hola.
+El agente de escucha tiene cuatro interacciones con el servicio. Más adelante, en la sección de referencia de este artículo, explicaremos todos los detalles de conexión.
 
 #### Escuchar
-servicio de toohello de preparación de tooindicate que un agente de escucha está listo tooaccept conexiones, crea una conexión de WebSocket de salida. Protocolo de enlace de conexión de Hello lleva nombre Hola de una conexión híbrida configurado en el espacio de nombres de retransmisión de Hola y un token de seguridad que confiere Hola "Escucha" secundario en ese nombre.
-Cuando se acepta hello WebSocket servicio hello, registro de hello está completado y Hola establecido web que websocket se mantiene activo como Hola "canal de control" para habilitar todas las interacciones subsiguientes. servicio de Hello permite too25 agentes de escucha simultáneos en una conexión híbrida. Si hay dos, o más, agentes de escucha activos, las conexiones entrantes se reparten entre ellos en orden aleatorio, por lo que no se garantiza que la distribución sea equitativa.
+Para indicar al servicio que un agente de escucha está listo para aceptar conexiones, crea una conexión WebSocket de salida. El protocolo de enlace de la conexión incluye el nombre de una conexión híbrida configurada en el espacio de nombres de Relay y un token de seguridad que concede el derecho de "escucha" a dicho nombre.
+Cuando el servicio acepta WebSocket, se completa el registro y el WebSocket web establecido se mantiene activo como "canal de control" para habilitar todas las interacciones posteriores. El servicio admite hasta 25 agentes de escucha simultáneos en una conexión híbrida. Si hay dos, o más, agentes de escucha activos, las conexiones entrantes se reparten entre ellos en orden aleatorio, por lo que no se garantiza que la distribución sea equitativa.
 
 #### Accept
-Cuando un remitente abre una nueva conexión de servicio de hello, servicio de hello elige y notifica a uno de los agentes de escucha activos de hello en hello conexión híbrida. Esta notificación se envía el agente de escucha de toohello a través del canal de control abierto de Hola como un mensaje JSON que contienen direcciones URL de Hola de punto de conexión de WebSocket de Hola Hola agente de escucha debe conectarse toofor acepte Hola conexión.
+Cuando un remitente abre una nueva conexión en el servicio, este elige a uno de los agentes de escucha activos de la conexión híbrida y le envía una notificación. Esta se envía al agente de escucha a través del canal de control abierto en forma de mensaje JSON que contiene la dirección URL del punto de conexión de WebSocket al que debe conectarse el agente de escucha para aceptar la conexión.
 
-dirección URL de Hello puede y debe usarse directamente por el agente de escucha de hello sin ningún trabajo adicional.
-información de Hello codificado es es sólo es válido durante un breve período de tiempo, básicamente para siempre como remitente de hello toowait dispuesto para hello conexión toobe establecido-to-end, pero la tooa máximo de 30 segundos. dirección URL de Hello sólo puede utilizarse para tratar de una conexión correcta. Tan pronto como hello WebSocket retransmite conexión con rendezvous de Hola que se establece la dirección URL, toda la actividad más este WebSocket y remitente toohello, sin intervención ni interpretación por servicio Hola.
+La dirección URL puede, y debe, usarla directamente el agente de escucha sin tener que realizar ningún proceso adicional.
+La información codificada solo es válida durante un breve período, básicamente, el tiempo que el remitente esté dispuesto a esperar a que se establezca la conexión de un extremo a otro, pero con un máximo de 30 segundos. La dirección URL solo puede utilizarse para realizar un intento de conexión correcta. En cuanto se establece la conexión de WebSocket con la dirección URL de encuentro, toda la actividad posterior de dicho WebSocket se retransmite desde y hacia el remitente, sin que el servicio realice ninguna intervención ni interpretación.
 
 #### Renovación
-token de seguridad de Hola que debe ser el agente de escucha de tooregister usado hello y mantener que puede expirar el canal de control mientras el agente de escucha de hello está activo. caducidad del token Hello no afecta a las conexiones salientes, pero que se produzca toobe de canal de control de hello colocando el servicio de hello en o poco después de este momento Hola de expiración. operación de "renovar" Hello es un mensaje JSON que Hola agente de escucha puede enviar token de hello tooreplace asociado con el canal de control de hello, por lo que hello canal de control se puede mantener durante períodos prolongados.
+El token de seguridad que se debe utilizar para registrar el agente de escucha y mantener el canal de control puede expirar mientras que el agente de escucha está activo. La expiración del token no afecta a las conexiones en curso, pero hace que el servicio anule el canal de control en cuanto expire, o poco después. La operación de "renovación" es un mensaje JSON que puede enviar el agente de escucha para reemplazar el token asociado al canal de control. De este modo, el canal de control se puede mantener durante períodos prolongados.
 
 #### Ping
-Si el canal de control de hello permanece inactivo durante mucho tiempo, intermediarios en forma de hello, como cargar equilibradores o NAT pueden quitar conexión de TCP de Hola. operación de "ping" Hello evita tener que mediante el envío de una pequeña cantidad de datos en el canal de Hola que recuerda a todos los usuarios de la ruta de red de hello esa conexión Hola está pensado toobe activo, y también sirve como una prueba de "activa" para el agente de escucha de Hola. Si se produce un error de ping de hello, canal de control de hello debe considerarse inutilizable y debe volver a conectar el agente de escucha de Hola.
+Si el canal de control permanece inactivo durante mucho tiempo, los intermediarios del proceso, como los equilibradores de carga o los NAT, pueden anular la conexión TCP. La operación "ping" evita que esto suceda mediante el envío de una pequeña cantidad de datos en el canal que recuerda a todos los usuarios de la ruta de red que la conexión está pensada para que se mantenga activa. Además, sirve al agente de escucha como prueba de que está "activo". Si el ping falla, el canal de control debe considerarse inutilizable y debe volver a conectar el agente de escucha.
 
 ### Interacción del remitente
-remitente de Hello solo tiene una sola interacción con el servicio de hello: se conecta.
+El remitente tiene una única interacción con el servicio: la conexión.
 
 #### Conectar
-operación de "conectar" Hello abre un WebSocket en servicio de hello, proporcionar nombre de Hola de hello conexión híbrida y (si lo desea, pero es necesario de forma predeterminada) un token de seguridad conceder el permiso "Send" en la cadena de consulta de Hola. servicio Hello, a continuación, interactúa con el agente de escucha de Hola Hola forma descrita anteriormente, y el agente de escucha de hello crea una conexión de rendezvous que se une con este WebSocket. Una vez haya sido aceptado hello WebSocket, son todas las interacciones en ese WebSocket con un agente de escucha conectado.
+La operación de "conexión" abre un WebSocket en el servicio que proporciona el nombre de la conexión híbrida y un token de seguridad (opcional, pero obligatorio de manera predeterminada) que concede el permiso de "envío" a la cadena de consulta. Después, el servicio interactúa con el agente de escucha como se ha descrito anteriormente y este crea una conexión de encuentro que se combina con este WebSocket. Cuando el WebSocket se haya aceptado, las restantes interacciones de dicho WebSocket se realizarán con un agente de escucha conectado.
 
 ### Resumen de interacción
-resultado de Hello de este modelo de interacción es que el cliente remitente Hola haya salido el protocolo de enlace con un WebSocket "limpio", que es el agente de escucha de tooa conectado y que no es necesario más preámbulos o preparación. Este modelo permite prácticamente cualquier existente WebSocket cliente implementación tooreadily aprovechar las ventajas del programa Hola a servicio de conexiones híbridas proporcionando una dirección URL creada correctamente en su nivel de cliente de WebSocket.
+El resultado de este modelo de interacción es que el cliente remitente sale del protocolo de enlace con un WebSocket "limpio", que está conectado a un agente de escucha y que no necesita más preámbulos ni preparativos. Este modelo que casi todas las implementaciones existentes del cliente de WebSocket saquen provecho con facilidad del servicio Conexiones híbridas especificando una dirección URL con una estructura correcta en el nivel de cliente de su WebSocket.
 
-conexión de encuentro de Hello WebSocket que Hola agente de escucha que se obtiene a través de la interacción de aceptación también está limpia y puede entregarse tooany implementación de servidor de WebSocket existente con una abstracción adicional mínima que distingue entre "Aceptar" operaciones en los agentes de escucha de red local y remoto de conexiones híbridas de su marco de trabajo "operaciones de aceptación".
+El WebSocket de la conexión de encuentro que el agente de escucha obtiene a través de la interacción de aceptación también está "limpio". Además, se puede entregar a cualquier implementación de servidor de WebSocket existente con una abstracción adicional mínima que distinga entre las operaciones de "aceptación" de los agentes de escucha de red local de su marco y las de "aceptación" remotas de conexiones híbridas.
 
 ## Referencia de protocolos
 
-En esta sección se describe los detalles de Hola de interacciones de protocolo de Hola que se ha descrito anteriormente.
+En esta sección se describen los detalles de las interacciones de protocolo que se han descrito anteriormente.
 
 Todas las conexiones WebSocket se realizan en el puerto 443 como una actualización de la versión 1.1 de HTTPS, que normalmente la abstrae alguna API o marco de WebSocket. La descripción que ofrecemos en este documento sirve para cualquier tipo de implementación; no sugerimos ningún marco concreto.
 
 ### Protocolo del agente de escucha
-Protocolo de agente de escucha de Hello consta de dos movimientos de conexión y tres operaciones de mensajes.
+El protocolo del agente de escucha está formado por dos movimientos de conexión y tres operaciones de mensaje.
 
 #### Conexión de canal de control del agente de escucha
-canal de control de Hola se abre con la creación de una conexión de WebSocket para:
+El canal de control se abre al crearse una conexión de WebSocket en:
 
 ```
 wss://{namespace-address}/$hc/{path}?sb-hc-action=...[&sb-hc-id=...]&sb-hc-token=...
 ```
 
-Hola `namespace-address` es Hola de nombre de dominio completo del espacio de nombres de retransmisión de Azure de Hola que hosts Hola conexión híbrida, normalmente de forma hello `{myname}.servicebus.windows.net`.
+`namespace-address` es el nombre de dominio completo del espacio de nombres de Azure Relay que hospeda la conexión híbrida, normalmente del formulario `{myname}.servicebus.windows.net`.
 
-Opciones de parámetros de cadena de consulta de Hello son los siguientes.
+Las opciones de los parámetros de cadena de consulta son las siguientes:
 
 | Parámetro | Obligatorio | Descripción |
 | --- | --- | --- |
-| `sb-hc-action` |Sí |Para Hola Hola de rol de agente de escucha parámetro debe ser **sb-hc-action = escucha** |
-| `{path}` |Sí |ruta de acceso de espacio de nombres codificados de dirección URL de Hola de hello había preconfigurado conexión híbrida tooregister este agente de escucha en. Esta expresión es anexado toohello fijada `$hc/` parte de la ruta de acceso. |
-| `sb-hc-token` |Sí\* |Hello agente de escucha debe proporcionar un válido, con codificación URL Service Bus compartido Token de acceso para el espacio de nombres de Hola o conexión híbrida que confiere hello **escuchar** derecho. |
+| `sb-hc-action` |Sí |Para el rol de agente de escucha, el parámetro debe ser **sb-hc-action=listen**. |
+| `{path}` |Sí |La ruta de acceso del espacio de nombres codificado para URL de la conexión híbrida preconfigurada en la que se registrará este agente de escucha. Esta expresión se anexa a la parte de la ruta de acceso `$hc/` fija. |
+| `sb-hc-token` |Sí\* |El agente de escucha debe proporcionar un token de acceso compartido de Service Bus válido y codificado para URL al espacio de nombres o a la conexión híbrida que concede el derecho de **escucha**. |
 | `sb-hc-id` |No |Este id. opcional especificado por el cliente permite realizar un seguimiento de diagnósticos completo. |
 
-Si se produce un error en conexión de WebSocket de hello debido toohello ruta de acceso de conexión híbrida no está registrado, o un símbolo (token) no válido o ausente o algún otro error, se proporcionan comentarios de errores de Hola con modelo de comentarios de Hola regular HTTP 1.1 estado. La descripción del estado contiene un identificador de seguimiento de errores que se pueda comunicar al equipo de soporte técnico de Azure:
+Si se produce un error en la conexión de WebSocket porque la ruta de acceso de la conexión híbrida no está registrada, porque que falta un token, o no es válido, o por cualquier otro error, se utilizará el modelo de comentarios de estado normal de HTTP 1.1. La descripción del estado contiene un identificador de seguimiento de errores que se pueda comunicar al equipo de soporte técnico de Azure:
 
 | Código | Error | Descripción |
 | --- | --- | --- |
-| 404 |No encontrado |ruta de acceso de conexión híbrida de Hello no es válido o dirección URL base de hello tiene un formato incorrecto. |
-| 401 |No autorizado |token de seguridad de Hello es falta o tiene un formato incorrecto o no es válido. |
-| 403 |Prohibido |token de seguridad de Hello no es válido para esta ruta de acceso para esta acción. |
-| 500 |Error interno |Se produjo un error en el servicio de Hola. |
+| 404 |No encontrado |La ruta de acceso de la conexión híbrida no es válida o el formato de la URL base no es correcto. |
+| 401 |No autorizado |Falta el token de seguridad, tiene una estructura incorrecta o no es válido. |
+| 403 |Prohibido |El token de seguridad no es válido para esta ruta de acceso en esta acción. |
+| 500 |Error interno |Se ha producido un error en el servicio. |
 
-Si Hola conexión de WebSocket intencionadamente se cierra por servicio Hola después de haberse establecido inicialmente la razón de Hola para hacerlo, por lo que se comunica con un código de error de protocolo WebSocket adecuado junto con un mensaje de error descriptivo que también incluye un seguimiento ID. servicio de Hello no se apagará el canal de control sin que se produzca una condición de error. Todos los cierres "limpios" los controla el cliente.
+Si el servicio cierra intencionadamente la conexión de WebSocket después de haberse configurado inicialmente, el motivo se comunica mediante un código de error adecuado de protocolo WebSocket, junto con un mensaje de error descriptivo, que también incluye un identificador de seguimiento. El servicio no cerrará el canal de control si no se produce una condición de error. Todos los cierres "limpios" los controla el cliente.
 
 | Estado de WS | Descripción |
 | --- | --- |
-| 1001 |ruta de acceso de conexión híbrida de Hola se ha eliminado o deshabilitado. |
-| 1008 |expiró el token de seguridad de Hello, por lo tanto, se infringe la directiva de autorización de Hola. |
-| 1011 |Se produjo un error en el servicio de Hola. |
+| 1001 |La ruta de acceso de Conexión híbrida se ha eliminado o deshabilitado. |
+| 1008 |El token de seguridad ha expirado, por lo que se ha infringido la directiva de autorización. |
+| 1011 |Se ha producido un error en el servicio. |
 
 ### Protocolo de enlace de aceptación
-Hola "Aceptar" notificación se envía por el agente de escucha de hello servicio toohello a través del canal de control establecida previamente como un mensaje JSON en un marco de texto de WebSocket. No hay ningún mensaje de respuesta de toothis.
+La notificación de aceptación la envía el servicio al agente de escucha a través del canal de control establecido previamente en forma de mensaje JSON en un marco de texto de WebSocket. No hay ninguna respuesta a este mensaje.
 
-mensaje de bienvenida contiene un objeto JSON con el nombre "Aceptar", que define Hola propiedades siguientes en este momento:
+El mensaje contiene un objeto JSON denominado "accept", que define las siguientes propiedades:
 
-* **dirección** : Hola toobe de cadena de dirección URL utilizada para establecer hello WebSocket toothe servicio tooaccept una conexión entrante.
-* **Id. de** : Hola identificador único para esta conexión. Si se proporcionó ningún identificador hello cliente remitente de hello, es el valor de remitente proporcionado de hello, en caso contrario, es un valor generado por el sistema.
-* **connectHeaders** : todos los encabezados HTTP que se han proporcionado el extremo de retransmisión toohello remitente hello, que también incluye Hola protocolo de WebSocket de segundo y los encabezados de extensiones de WebSocket de segundo.
+* **address**: la cadena de dirección URL que se usará para establecer que el WebSocket del servicio acepte una conexión entrante.
+* **id**: el identificador único para esta conexión. Si ha sido el cliente remitente quien ha suministrado el id., será el valor que ha especificado este; de lo contrario, será uno generado por el sistema.
+* **connectHeaders**: todos los encabezados HTTP que ha suministrado el remitente al punto de conexión de Relay, que también incluyen los encabezados Sec-WebSocket-Protocol y Sec-WebSocket-Extensions.
 
 #### Mensaje accept
 
@@ -134,70 +134,70 @@ mensaje de bienvenida contiene un objeto JSON con el nombre "Aceptar", que defin
 }
 ```
 
-Hola dirección URL proporcionada en hello mensaje JSON se usa por el agente de escucha de Hola para establecer Hola WebSocket para aceptar o rechazar el socket de remitente de Hola.
+El agente de escucha usa la dirección URL especificada en el mensaje JSON para establecer el WebSocket con el objetivo de aceptar o rechazar el socket remitente.
 
-#### Aceptar Hola socket
-tooaccept, el agente de escucha de hello establece una dirección de toohello proporcionado de conexión de WebSocket.
+#### Aceptación del socket
+Para aceptarlo, el agente de escucha establece una conexión de WebSocket a la dirección proporcionada.
 
-Si hello "Aceptar" mensaje realiza una `Sec-WebSocket-Protocol` encabezado, se espera ese agente de escucha de hello solo acepta hello WebSocket si admite dicho protocolo. Además, Establece el encabezado de hello como hello que websocket se ha establecido.
+Si el mensaje "accept" contiene un encabezado `Sec-WebSocket-Protocol`, cabe esperar que el agente de escucha solo acepte el WebSocket si admite dicho protocolo. Además, establece el encabezado tal como se establece el WebSocket.
 
-Hello Esto mismo aplica toohello `Sec-WebSocket-Extensions` encabezado. Si el marco de trabajo de hello es compatible con una extensión, se debe establecer respuesta de servidor de hello encabezado toohello de hello necesario `Sec-WebSocket-Extensions` protocolo de enlace para la extensión de Hola.
+Lo mismo sucede con el encabezado `Sec-WebSocket-Extensions`. Si el marco admite una extensión, es necesario establecer el encabezado en la respuesta del lado servidor del protocolo de enlace `Sec-WebSocket-Extensions` que se necesita para la extensión.
 
-dirección URL de Hello debe usarse como-es para establecer Hola aceptan socket, pero contiene los parámetros siguientes:
+La URL debe utilizarse tal cual para establecer el socket de aceptación, pero debe contener los parámetros siguientes:
 
 | Parámetro | Obligatorio | Descripción |
 | --- | --- | --- |
-| `sb-hc-action` |Sí |Para aceptar un socket, debe ser el parámetro hello`sb-hc-action=accept` |
-| `{path}` |Sí |(vea Hola después de párrafo) |
+| `sb-hc-action` |Sí |Para aceptar un socket, el parámetro tiene que ser `sb-hc-action=accept` |
+| `{path}` |Sí |(vea el párrafo siguiente) |
 | `sb-hc-id` |No |Consulte la descripción anterior del **identificador**. |
 
-`{path}`es la ruta de acceso de espacio de nombres codificados de dirección URL de Hola de hello preconfigurado conexión híbrida en qué tooregister este agente de escucha. Esta expresión es anexado toothe fijada `$hc/` parte de la ruta de acceso. 
+`{path}` es la ruta de acceso del espacio de nombres con codificación URL de la conexión híbrida preconfigurada en la que se registra este agente de escucha. Esta expresión se anexa a la parte de la ruta de acceso `$hc/` fija. 
 
-Hola `path` expresión puede ampliarse con un sufijo y una expresión de cadena de consulta que sigue el nombre registrado Hola después de una barra diagonal separar. Esto permite a Hola remitente toopass envío argumentos toohello aceptación escucha de cliente cuando no es posible tooinclude HTTP encabezados. es ese agente de escucha de hello framework redistribuye parte de la ruta de acceso fija de Hola y Hola nombre registrado de la ruta de acceso Hello expectativa y hace que el resto de hello, posiblemente sin ningún argumento de cadena de consulta precedida por `sb-`, aplicación toohello disponible para decidir si tooaccept Hola conexión.
+La expresión `path` se puede ampliar con un sufijo y una expresión de cadena de consulta que vaya después del nombre registrado después de una barra diagonal de separación. Esto permite que el cliente remitente pase los argumentos de envío al agente de escucha receptor cuando no sea posible incluir encabezados HTTP. La expectativa es que el marco del agente de escucha analice la parte fija y el nombre registrado de la ruta de acceso, y cree el resto, posiblemente sin ningún argumento de cadena de consulta con el prefijo `sb-`, disponible para la aplicación para decidir si acepta la conexión.
 
-Para obtener más información, vea Hola pasos de la sección "Protocolo de remitente".
+Para más información, consulte la sección "Protocolo del remitente", que encontrará a continuación.
 
-Si hay un error, el servicio de hello puede responder como sigue:
+Si hay un error, el servicio puede responder como se indica a continuación:
 
 | Código | Error | Descripción |
 | --- | --- | --- |
-| 403 |Prohibido |Hola URL no es válida. |
-| 500 |Error interno |Se produjo un error en el servicio de Hola |
+| 403 |Prohibido |La URL no es válida. |
+| 500 |Error interno |Se produjo un error en el servicio. |
 
-Una vez establecida la conexión de hello, servidor de hello apaga hello WebSocket cuando remitente hello WebSocket apaga, o con hello siguiente estado:
+Una vez que se establece la conexión, el servidor apaga el WebSocket cuando se apaga el WebSocket remitente, o cuando el estado es el siguiente:
 
 | Estado de WS | Descripción |
 | --- | --- |
-| 1001 |cliente de remitente de Hello apaga conexión Hola. |
-| 1001 |ruta de acceso de conexión híbrida de Hola se ha eliminado o deshabilitado. |
-| 1008 |expiró el token de seguridad de Hello, por lo tanto, se infringe la directiva de autorización de Hola. |
-| 1011 |Se produjo un error en el servicio de Hola. |
+| 1001 |El cliente remitente cierra la conexión. |
+| 1001 |La ruta de acceso de Conexión híbrida se ha eliminado o deshabilitado. |
+| 1008 |El token de seguridad ha expirado, por lo que se ha infringido la directiva de autorización. |
+| 1011 |Se ha producido un error en el servicio. |
 
-#### Rechazar el socket de Hola
-Rechazar socket Hola después de Inspeccionar mensaje de Hola "Aceptar" requiere un protocolo de enlace similar hello código de estado y descripción del estado de comunicación que puede fluir la razón del rechazo de Hola de nuevo toohello remitente.
+#### Rechazo del socket
+Para rechazar el socket después de inspeccionar el mensaje "accept", se necesita un protocolo de enlace similar para que el código y la descripción del estado que comunican el motivo del rechazo pueden enviarse al remitente.
 
-opción de diseño de protocolo de Hello aquí es toouse un protocolo de enlace de WebSocket (es decir, tooend diseñada en un estado de error definida) para que las implementaciones de cliente de agente de escucha pueden continuar toorely en un cliente de WebSocket y no es necesario emplear adicional, el cliente HTTP.
+La opción de diseño de protocolo que presentamos en este documento es un protocolo de enlace WebSocket (que está pensado para que termine en un estado de error definido). De esta forma, las implementaciones del cliente del agente de escucha pueden seguir dependiendo de un cliente WebSocket y no hace falta utilizar otro cliente HTTP básico.
 
-socket de tooreject Hola, cliente hello toma Hola dirección URI del mensaje de "Aceptar" hello y anexa dos tooit de parámetros de cadena de consulta, como se indica a continuación:
+Para rechazar el socket, el cliente toma el URI de dirección del mensaje "accept" y le anexa dos parámetros de cadena de consulta como se muestra a continuación:
 
 | Parámetro | Obligatorio | Descripción |
 | --- | --- | --- |
 | statusCode |yes |Código de estado HTTP numérico. |
-| statusDescription |Sí |Motivo legible humano de rechazo de Hola. |
+| statusDescription |Sí |Motivo del rechazo en lenguaje natural. |
 
-Hola que URI resultante es, a continuación, utiliza una conexión de WebSocket tooestablish.
+El URI resultante se utiliza luego para establecer una conexión WebSocket.
 
-Cuando se completa correctamente, este protocolo de enlace genera un error de forma intencionada con el código HTTP 410, ya que no se ha establecido ningún WebSocket. Si algo va mal, describe los Hola siguientes códigos de error hello:
+Cuando se completa correctamente, este protocolo de enlace genera un error de forma intencionada con el código HTTP 410, ya que no se ha establecido ningún WebSocket. Si algo falla, los siguientes códigos describen el error:
 
 | Código | Error | Descripción |
 | --- | --- | --- |
-| 403 |Prohibido |Hola URL no es válida. |
-| 500 |Error interno |Se produjo un error en el servicio de Hola. |
+| 403 |Prohibido |La URL no es válida. |
+| 500 |Error interno |Se ha producido un error en el servicio. |
 
 ### Renovación del token del agente de escucha
-Cuando está en el token de agente de escucha de hello sobre tooexpire, puede reemplazar mediante el envío de un servicio de toohello de mensaje de texto marco a través del canal de control de hello establecida. El mensaje contiene un objeto JSON denominado `renewToken`, que define Hola después de propiedad en este momento:
+Cuando el token del agente de escucha está a punto de expirar, puede reemplazarse con el envío de un mensaje en un marco de texto al servicio a través del canal de control establecido. El mensaje contiene un objeto JSON llamado `renewToken`, que define las siguientes propiedades:
 
-* **símbolo (token)** : un token de acceso compartido de Bus de servicio válido, codificados de dirección URL para el espacio de nombres o la conexión híbrida que confiere hello **escuchar** derecho.
+* **token**: un token válido de acceso compartido de Service Bus y con codificación URL para el espacio de nombres o la conexión híbrida que concede el derecho de **escucha**.
 
 #### Mensaje renewToken
 
@@ -209,58 +209,58 @@ Cuando está en el token de agente de escucha de hello sobre tooexpire, puede re
 }
 ```
 
-Si se produce un error en la validación del token hello, se deniega el acceso y servicio de nube de hello cierra el canal de control de hello WebSocket con un error. En caso contrario, no se produce ninguna respuesta.
+Si se produce un error en la validación del token, se deniega el acceso y el servicio en la nube cierra el WebSocket del canal de control con un error. En caso contrario, no se produce ninguna respuesta.
 
 | Estado de WS | Descripción |
 | --- | --- |
-| 1008 |expiró el token de seguridad de Hello, por lo tanto, se infringe la directiva de autorización de Hola. |
+| 1008 |El token de seguridad ha expirado, por lo que se ha infringido la directiva de autorización. |
 
 ## Protocolo del remitente
-Protocolo del remitente de Hello es un agente de escucha se establece de forma de toohello idéntico.
-objetivo de Hello es la máxima transparencia para to-end hello WebSocket. dirección de Hello conectar hello toois que mismas que para el agente de escucha de hello, pero la acción"hello" es diferente y el token tiene un permiso diferente:
+El protocolo del remitente es idéntico a la forma en que se establece un agente de escucha.
+El objetivo es dotar de la máxima transparencia al WebSocket de un extremo a otro. La dirección a la que conectarse es la misma que la del agente de escucha, pero el objeto "action" es diferente y el token necesita otro permiso:
 
 ```
 wss://{namespace-address}/$hc/{path}?sb-hc-action=...&sb-hc-id=...&sbc-hc-token=...
 ```
 
-Hola *dirección de espacio de nombres* es Hola de nombre de dominio completo del espacio de nombres de retransmisión de Azure de Hola que hosts Hola conexión híbrida, normalmente de forma hello `{myname}.servicebus.windows.net`.
+*namespace-address* es el nombre de dominio completo del espacio de nombres de Azure Relay que hospeda la conexión híbrida, normalmente del formulario `{myname}.servicebus.windows.net`.
 
-solicitud de Hello puede contener arbitrarios encabezados HTTP adicionales, incluso los definidos por la aplicación. Todos los proporciona el agente de escucha de encabezados flujo toohello y pueden encontrarse en hello `connectHeader` objeto de hello **Aceptar** mensaje de control.
+La solicitud puede contener más encabezados HTTP arbitrarios, incluidos los definidos por la aplicación. Todos los encabezados especificados se transmiten al agente de escucha y pueden encontrarse en el objeto `connectHeader` del mensaje de control **accept**.
 
-Opciones de parámetros de cadena de consulta de Hello son los siguientes:
+Estas son las opciones de los parámetros de cadena de consulta:
 
 | Parámetro | ¿Necesario? | Descripción |
 | --- | --- | --- |
-| `sb-hc-action` |Sí |Para la función de remitente de hello, debe ser el parámetro hello `action=connect`. |
-| `{path}` |Sí |(vea Hola después de párrafo) |
-| `sb-hc-token` |Sí\* |Hello agente de escucha debe proporcionar un válido, con codificación URL Service Bus compartido Token de acceso para el espacio de nombres de Hola o conexión híbrida que confiere hello **enviar** derecho. |
-| `sb-hc-id` |No |Un identificador opcional que permite el seguimiento de diagnóstico-to-end y se realiza el agente de escucha de toohello disponible durante Hola acepta el protocolo de enlace. |
+| `sb-hc-action` |Sí |En el caso del rol de remitente, el parámetro debe ser `action=connect`. |
+| `{path}` |Sí |(vea el párrafo siguiente) |
+| `sb-hc-token` |Sí\* |El agente de escucha necesita proporcionar un token de acceso compartido de Service Bus válido y codificado para URL al espacio de nombres o a la conexión híbrida que concede el derecho de **envío**. |
+| `sb-hc-id` |No |Un id. opcional que permite realizar el seguimiento de diagnóstico completo y que puede usarlo el agente de escucha durante el protocolo de enlace de aceptación. |
 
-Hola `{path}` es la ruta de acceso de espacio de nombres codificados de dirección URL de Hola de hello preconfigurado conexión híbrida en qué tooregister este agente de escucha. Hola `path` expresión puede ampliarse con un sufijo y aún más una toocommunicate de expresión de cadena de consulta. Si se ha registrado en la ruta de acceso de Hola Hola conexión híbrida `hyco`, hello `path` expresión puede ser `hyco/suffix?param=value&...` seguido por parámetros de cadena de consulta de hello definidas aquí. Una expresión completa puede ser como la siguiente:
+`{path}` es la ruta de acceso del espacio de nombres codificado para la dirección URL de la conexión híbrida preconfigurada en la que se registrará este agente de escucha. La expresión `path` se puede ampliar con un sufijo y una expresión de cadena de consulta para comunicarse de nuevo. Si la conexión híbrida se registra en la ruta de acceso `hyco`, la expresión `path` puede ser `hyco/suffix?param=value&...`, seguida de los parámetros de cadena de consulta que se definen aquí. Una expresión completa puede ser como la siguiente:
 
 ```
 wss://{namespace-address}/$hc/hyco/suffix?param=value&sb-hc-action=...[&sb-hc-id=...&]sbc-hc-token=...
 ```
 
-Hola `path` expresión se pasa a través de agente de escucha de toohello en dirección Hola URI incluido en el mensaje de control de Hola "Aceptar".
+La expresión `path` se pasa al agente de escucha del identificador URI de dirección que se incluye en el mensaje de control "accept".
 
-Si se produce un error en hello conexión de WebSocket de vencimiento toohello ruta de acceso de conexión híbrida no está registrado, un símbolo (token) no válido o ausente o algún otro error, se proporcionan comentarios de errores de hello con modelo de comentarios de Hola regular HTTP 1.1 estado. La descripción del estado contiene un identificador de seguimiento de errores que se pueda comunicar al equipo de soporte técnico de Azure:
+Si se produce un error en la conexión de WebSocket porque la ruta de acceso de la conexión híbrida no está registrada, porque que falta un token, o no es válido, o por cualquier otro error, se utilizará el modelo de comentarios de estado normal de HTTP 1.1. La descripción del estado contiene un identificador de seguimiento de errores que se pueda comunicar al equipo de soporte técnico de Azure:
 
 | Código | Error | Descripción |
 | --- | --- | --- |
-| 404 |No encontrado |ruta de acceso de conexión híbrida de Hello no es válido o dirección URL base de hello tiene un formato incorrecto. |
-| 401 |No autorizado |token de seguridad de Hello es falta o tiene un formato incorrecto o no es válido. |
-| 403 |Prohibido |token de seguridad de Hello no es válido para esta ruta de acceso y de esta acción. |
-| 500 |Error interno |Se produjo un error en el servicio de Hola. |
+| 404 |No encontrado |La ruta de acceso de la conexión híbrida no es válida o el formato de la URL base no es correcto. |
+| 401 |No autorizado |Falta el token de seguridad, tiene una estructura incorrecta o no es válido. |
+| 403 |Prohibido |El token de seguridad no es válido para esta ruta de acceso y para esta acción. |
+| 500 |Error interno |Se ha producido un error en el servicio. |
 
-Si Hola conexión de WebSocket se cierra intencionadamente por servicio de hello después de que se ha establecido inicialmente, razón de Hola para hacerlo por lo que se comunica con un código de error de protocolo WebSocket adecuado junto con un mensaje de error descriptivo que también incluye un Id. de seguimiento.
+Si el servicio cierra intencionadamente la conexión de WebSocket después de haberse configurado inicialmente, el motivo se comunica mediante un código de error adecuado de protocolo WebSocket, junto con un mensaje de error descriptivo, que también incluye un identificador de seguimiento.
 
 | Estado de WS | Descripción |
 | --- | --- |
-| 1000 |agente de escucha de Hello apaga socket Hola. |
-| 1001 |ruta de acceso de conexión híbrida de Hola se ha eliminado o deshabilitado. |
-| 1008 |expiró el token de seguridad de Hello, por lo tanto, se infringe la directiva de autorización de Hola. |
-| 1011 |Se produjo un error en el servicio de Hola. |
+| 1000 |El agente de escucha cierra el socket. |
+| 1001 |La ruta de acceso de Conexión híbrida se ha eliminado o deshabilitado. |
+| 1008 |El token de seguridad ha expirado, por lo que se ha infringido la directiva de autorización. |
+| 1011 |Se ha producido un error en el servicio. |
 
 ## Pasos siguientes
 * [Preguntas más frecuentes acerca de Relay](relay-faq.md)

@@ -1,6 +1,6 @@
 ---
-title: "Consideraciones de diseño de identidad de aaaAzure Active Directory híbrida - determinar los requisitos de la autenticación multifactor"
-description: "Con control de acceso condicional, Azure Active Directory comprueba las condiciones específicas de Hola que elegir al autenticar usuario hello y antes de permitir el acceso toohello aplicación. Una vez que se cumplen estas condiciones, usuario de hello es autenticado y acceso toohello aplicación permitida."
+title: "Consideraciones sobre el diseño de identidad híbrida de Azure Active Directory: determinación de los requisitos de autenticación multifactor| Microsoft Azure"
+description: "Con el control de acceso condicional, Azure Active Directory comprueba las condiciones específicas que se eligen al autenticar al usuario y antes de permitirle acceso a la aplicación. Si se cumplen las condiciones, el usuario queda autenticado y se le permite el acceso a la aplicación."
 documentationcenter: 
 services: active-directory
 author: femila
@@ -14,47 +14,47 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 49fa7b43772fb3a2d6664747477c60a34cddde2b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5b3a8ce6e4203dfb3700f324e32687dd910118af
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>Determinación de los requisitos de autenticación multifactor para la solución de identidad híbrida
-En este mundo de la movilidad, con usuarios que acceden a datos y aplicaciones en la nube de Hola y desde cualquier dispositivo, proteger esta información se ha convertido en gran importancia.  Todos los días hay un nuevo titular sobre una infracción de la seguridad.  Sin embargo, no hay ninguna garantía en brechas de seguridad, la autenticación multifactor, proporciona una capa adicional de seguridad toohelp evitar estas infracciones.
-Iniciar mediante la evaluación de los requisitos de las organizaciones de hello para la autenticación multifactor. Es decir, ¿qué es Hola organización tratar toosecure.  Esta evaluación es requisitos técnicos de hello toodefine importante para configurar y permitir que los usuarios de organizaciones de hello para la autenticación multifactor.
+En este mundo de la movilidad en el que los usuarios acceden a datos y aplicaciones en la nube desde cualquier dispositivo, la seguridad de la información se ha convertido en algo primordial.  Todos los días hay un nuevo titular sobre una infracción de la seguridad.  Aunque no existe ninguna garantía contra tales infracciones, la autenticación multifactor ofrece una capa de seguridad adicional para ayudar a evitarlas.
+Para comenzar, evalúe los requisitos de las organizaciones de autenticación multifactor. Es decir, que intenta proteger la organización.  Esta evaluación es importante para definir los requisitos técnicos para configurar y habilitar a los usuarios de las organizaciones para la autenticación multifactor.
 
 > [!NOTE]
-> Si no está familiarizado con MFA y lo que hace, se recomienda encarecidamente que lea el artículo hello [¿qué es la autenticación multifactor Azure?](../multi-factor-authentication/multi-factor-authentication.md) toocontinue anterior leer esta sección.
+> Si no está familiarizado con MFA y cómo funciona, se recomienda encarecidamente que lea el artículo [¿Qué es Azure Multi-Factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md) antes de continuar leyendo esta sección.
 > 
 > 
 
-Realice el siguiente de hello tooanswer seguro:
+Asegúrese de responder a las siguientes preguntas:
 
-* ¿Su empresa está tratando de aplicaciones de Microsoft toosecure? 
+* ¿Intenta su empresa proteger aplicaciones de Microsoft? 
 * ¿Cómo se publican estas aplicaciones?
-* ¿La compañía proporcionará acceso remoto tooallow empleados tooaccess local aplicaciones?
+* ¿Proporciona su empresa acceso remoto para permitir a los empleados el acceso a aplicaciones locales?
 
-¿En caso afirmativo, qué tipo de acceso remoto? También debe tooevaluate donde se ubicarán los usuarios de Hola que obtiene acceso a estas aplicaciones. Esta evaluación es otra estrategia de autenticación multifactor correcta de Hola de toodefine paso importante. Asegúrese de seguro hello tooanswer siguientes preguntas:
+En caso afirmativo, ¿qué tipo de acceso remoto? También debe evaluar dónde se ubicarán los usuarios que están teniendo acceso a estas aplicaciones. Esta evaluación es otro paso importante para definir la estrategia adecuada de autenticación multifactor. Asegúrese de responder a las siguientes preguntas:
 
-* ¿Dónde se encuentran los usuarios de hello va toobe?
+* ¿Dónde se van a encontrar los usuarios?
 * ¿Pueden estar en cualquier parte?
-* ¿Su compañía quiere restricciones tooestablish según la ubicación del usuario toohello?
+* ¿Desea su empresa establecer restricciones de acuerdo con la ubicación del usuario?
 
-Una vez que comprenda estos requisitos, es importante tooalso evaluar los requisitos del usuario de hello para la autenticación multifactor. Esta evaluación es importante porque definirá los requisitos de Hola para implementar la autenticación multifactor. Asegúrese de seguro hello tooanswer siguientes preguntas:
+Una vez que comprenda estos requisitos, es importante evaluar también los requisitos del usuario de autenticación multifactor. Esta evaluación es importante porque definirá los requisitos para implementar la autenticación multifactor. Asegúrese de responder a las siguientes preguntas:
 
-* ¿Está familiarizado con la autenticación multifactor a los usuarios de hello?
-* ¿Algunos usos puede tooprovide requiere la autenticación adicional?  
-  * ¿En caso afirmativo, todos Hola tiempo, al proceder de redes externas o acceso a aplicaciones específicas, o en otras condiciones?
-* Hola ¿necesitarán los usuarios entrenamiento acerca de cómo toosetup e implementar la autenticación multifactor?
-* ¿Cuáles son los escenarios clave de Hola que su compañía desea tooenable la autenticación multifactor para sus usuarios?
+* ¿Están los usuarios familiarizados con la autenticación multifactor?
+* ¿Algunos usuarios deben proporcionar autenticación adicional?  
+  * En caso afirmativo, ¿siempre, cuando proceden de redes externas o cuando acceden a aplicaciones específicas, o en otras condiciones?
+* ¿Necesitarán los usuarios entrenamiento sobre cómo configurar e implementar la autenticación multifactor?
+* ¿Cuáles son los principales escenarios en los que su empresa quiere habilitar la autenticación multifactor para sus usuarios?
 
-Después de responder a preguntas anteriores de hello, podrán capaz de toounderstand si no hay ya ha implementado la autenticación multifactor local. Esta evaluación es requisitos técnicos de hello toodefine importante para configurar y permitir que los usuarios de organizaciones de hello para la autenticación multifactor. Asegúrese de seguro hello tooanswer siguientes preguntas:
+Después de responder a las preguntas anteriores, podrá comprender si la autenticación multifactor ya está implementada de forma local. Esta evaluación es importante para definir los requisitos técnicos para configurar y habilitar a los usuarios de las organizaciones para la autenticación multifactor. Asegúrese de responder a las siguientes preguntas:
 
-* ¿La compañía necesita cuentas con privilegios de tooprotect con MFA?
-* ¿La compañía necesita tooenable MFA para ciertas aplicaciones por motivos de cumplimiento?
-* ¿La compañía necesita tooenable MFA para todos los usuarios válidos de estas aplicaciones o solo los administradores?
-* ¿Necesita tener MFA siempre habilitado o solo cuando inician sesión los usuarios de hello fuera de la red corporativa?
+* ¿Necesita su empresa proteger las cuentas con privilegios con MFA?
+* ¿Necesita su empresa habilitar MFA en ciertas aplicaciones por motivos de cumplimiento?
+* ¿Necesita habilitar su empresa MFA para todos los usuarios elegidos de estas aplicaciones o solo para los administradores?
+* ¿Necesita tiene MFA siempre habilitado o solo cuando los usuarios se registran fuera de la red corporativa?
 
 ## <a name="next-steps"></a>Pasos siguientes
 [Definición de una estrategia de adopción de identidad híbrida](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md)

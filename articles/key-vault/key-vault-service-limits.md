@@ -1,6 +1,6 @@
 ---
-title: "Límites de servicio de almacén de claves aaaAzure | Documentos de Microsoft"
-description: "Obtenga información acerca de los límites de servicio de hello para el almacén de claves de Azure."
+title: "Límites de servicio de Azure Key Vault | Microsoft Docs"
+description: "Obtenga información sobre los límites de servicio del Almacén de claves de Azure."
 documentationcenter: dev-center-name
 services: key-vault
 author: cabailey
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/05/2017
 ms.author: ambapat
-ms.openlocfilehash: ebd78281f2428790486c928e5a6415cf479a6439
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b34c67ecc1bd50157ded790948ac7b88a5807ddb
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-key-vault-service-limits"></a>Límites de servicio Azure Key Vault
-Estos son los límites de servicio de hello para el almacén de claves de Azure.
+Estos son los límites de servicio para Azure Key Vault.
 
 [!INCLUDE [key-vault-limits](../../includes/key-vault-limits.md)]
 

@@ -1,6 +1,6 @@
 ---
-title: un servicio en la nube con herramientas de Azure de hello aaaPublishing | Documentos de Microsoft
-description: "Obtenga información acerca de cómo toopublish Azure cloud proyectos de servicio mediante Visual Studio."
+title: Publicar un servicio en la nube mediante Azure Tools | Microsoft Docs
+description: "Obtenga información sobre cómo publicar proyectos de servicios en la nube de Azure mediante Visual Studio."
 services: visual-studio-online
 documentationcenter: na
 author: kraigb
@@ -14,137 +14,137 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 8/14/2017
 ms.author: kraigb
-ms.openlocfilehash: 31ede8308146de2bb128b768f23f64eb85bc7548
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e617d600dbc8287eea737fc4969833e873365288
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="publishing-a-cloud-service-using-hello-azure-tools"></a>Publicar un servicio de nube mediante hello Azure Tools
-Mediante el uso de hello Azure Tools para Microsoft Visual Studio, puede publicar su aplicación de Azure directamente desde Visual Studio. Visual Studio admite integrado publicar tooeither Hola almacenamiento provisional u Hola entorno de producción de un servicio de nube.
+# <a name="publishing-a-cloud-service-using-the-azure-tools"></a>Publicar un servicio en la nube mediante Azure Tools
+Con Azure Tools para Microsoft Visual Studio, puede publicar su aplicación de Azure directamente desde Visual Studio. Visual Studio admite la publicación integrada en los entornos de ensayo o de producción de un servicio en la nube.
 
-Para poder publicar una aplicación de Azure, debe tener una suscripción de Azure. También debe configurar un toobe nube almacenamiento y servicio de cuenta utilizado por la aplicación. Puede configurar estos en hello [portal de Azure clásico](http://go.microsoft.com/fwlink/?LinkID=213885).
+Para poder publicar una aplicación de Azure, debe tener una suscripción de Azure. También debe configurar un servicio en la nube y una cuenta de almacenamiento para que la use la aplicación. Puede establecerlos en el [Portal de Azure clásico](http://go.microsoft.com/fwlink/?LinkID=213885).
 
 > [!IMPORTANT]
-> Al publicar, puede seleccionar el entorno de implementación de hello para el servicio de nube. También debe seleccionar una cuenta de almacenamiento que sea el paquete de aplicación Hola toostore usado para la implementación. Después de la implementación, paquete de aplicación Hola se quita de la cuenta de almacenamiento de Hola.
+> Al publicar, puede seleccionar el entorno de implementación de su servicio en la nube. También debe seleccionar una cuenta de almacenamiento que se usará para almacenar el paquete de aplicación para la implementación. Después de la implementación, el paquete de aplicación se quita de la cuenta de almacenamiento.
 > 
 > 
 
-Cuando se desarrolla y prueba una aplicación de Azure, puede usar Web Deploy toopublish cambios incrementalmente para sus roles web. Después de publicar el entorno de implementación de aplicación tooa, Web Deploy le permite implementar cambios directamente toohello está ejecutando máquina virtual rol web de Hola. No tiene toopackage y publicar la aplicación de Azure completa cada vez que desee tooupdate su tootest de rol web los cambios de Hola. Con este enfoque puede tener los cambios del rol web disponibles en la nube de Hola para realizar pruebas, sin toohave de espera, el entorno de implementación de aplicación tooa publicado.
+Cuando desarrolla y prueba una aplicación de Azure, puede usar Web Deploy para publicar los cambios de sus roles web incrementalmente. Después de publicar su aplicación en un entorno de implementación, Web Deploy le permite implementar los cambios directamente en la máquina virtual que está ejecutando el rol web. No tiene que empaquetar y publicar toda la aplicación de Azure cada vez que desee actualizar su rol web para probar los cambios. Con este enfoque puede tener los cambios del rol web disponibles en la nube para pruebas sin tener que esperar a publicar la aplicación en un entorno de implementación.
 
-Usar hello siguiendo los procedimientos toopublish su aplicación de Azure y tooupdate un rol web mediante Web Deploy:
+Use los siguientes procedimientos para publicar su aplicación de Azure y para actualizar un rol web mediante el uso Web Deploy:
 
 * Publicar o empaquetar una aplicación de Azure desde Visual Studio
-* Actualizar un rol web como parte de hello ciclo de desarrollo y prueba
+* Actualizar un rol web como parte del ciclo de desarrollo y pruebas
 
 ## <a name="publish-or-package-an-azure-application-from-visual-studio"></a>Publicar o empaquetar una aplicación de Azure desde Visual Studio
-Al publicar su aplicación de Azure, puede elegir entre Hola siguientes tareas:
+Cuando publica su aplicación de Azure, puede realizar una de las siguientes tareas:
 
-* Crear un paquete de servicio: puede usar esta toopublish de archivo de configuración de servicio hello y paquete de su entorno de implementación de aplicación tooa de hello [Portal clásico de Azure](http://go.microsoft.com/fwlink/?LinkID=213885).
-* Publicar su proyecto de Azure desde Visual Studio: toopublish directamente tooAzure, use la aplicación Hola a Asistente para publicación. Para obtener información, consulte [Asistente Publicar aplicación de Azure](vs-azure-tools-publish-azure-application-wizard.md)
+* Crear un paquete de servicio: puede usar este paquete y el archivo de configuración del servicio para publicar su aplicación en un entorno de implementación desde el [Portal de Azure clásico](http://go.microsoft.com/fwlink/?LinkID=213885).
+* Publicar el proyecto de Azure de Visual Studio: para publicar la aplicación directamente en Azure, use el Asistente para publicación. Para obtener información, consulte [Asistente Publicar aplicación de Azure](vs-azure-tools-publish-azure-application-wizard.md)
 
-### <a name="toocreate-a-service-package-from-visual-studio"></a>toocreate un paquete de servicio desde Visual Studio
-1. Cuando esté listo toopublish la aplicación, abra el Explorador de soluciones, menú contextual abierto Hola Hola proyecto de Azure que contiene sus roles, y elija Publicar.
-2. toocreate un paquete de servicios, siga estos pasos:  
+### <a name="to-create-a-service-package-from-visual-studio"></a>Para crear un paquete de servicios de Visual Studio
+1. Cuando esté preparado para publicar su aplicación, abra el Explorador de soluciones, abra menú contextual del proyecto de Azure que contiene sus roles y elija Publicar.
+2. Para crear solo un paquete de servicios, siga estos pasos:  
    
-   1. En el menú contextual Hola Hola Azure proyecto de equipo y elija **paquete**.
-   2. Hola **empaquetar aplicación de Azure** cuadro de diálogo, elija la configuración del servicio de hello para el que desea toocreate un paquete y, a continuación, elija Configuración de compilación de Hola.
-   3. tooturn (opcional) en el escritorio remoto para servicio de nube Hola después de publicarlo, seleccione hello **habilitar Escritorio remoto para todos los Roles** casilla de verificación y, a continuación, seleccione **configuración** tooconfigure escritorio remoto. Si desea que toodebug su servicio en la nube después de publicarlo, activar la depuración remota mediante la selección **habilitar depurador remoto para todos los Roles**.
+   1. En el menú contextual del proyecto de Azure, elija **Empaquetar**.
+   2. En el cuadro de diálogo **Empaquetar aplicación de Azure** , elija la configuración del servicio para el que desea crear un paquete y, después, elija la configuración de compilación.
+   3. (opcional) Para activar el Escritorio remoto para el servicio en la nube después de haberlo publicado, active la casilla **Habilitar Escritorio remoto para todos los roles** y luego haga clic en **Configuración** para configurar el Escritorio remoto. Si quiere depurar el servicio en la nube después de publicarlo, seleccione **Habilitar Depurador remoto para todos los roles**para activar la depuración remota.
       
       Para más información, consulte [Usar Escritorio remoto con los roles de Azure](vs-azure-tools-remote-desktop-roles.md).
-   4. Hola toocreate del paquete, elija hello **paquete** vínculo.
+   4. Para crear el paquete, elija el vínculo **Paquete** .
       
-      Explorador de archivos muestra la ubicación de archivo de Hola de hello recién creado el paquete. Puede copiar esta ubicación para que pueda usarlo de hello [portal de Azure clásico](http://go.microsoft.com/fwlink/?LinkID=213885).
-   5. toopublish este entorno de implementación de paquete tooa, debe usar esta ubicación como Hola ubicación del paquete al crear un servicio de nube e implementar este entorno de tooan de paquete con hello [portal de Azure clásico](http://go.microsoft.com/fwlink/?LinkID=213885).
-3. Elija el proceso de implementación de hello toocancel (opcional), en directo de Hola de artículo de línea de hello en el registro de actividad de hello, **Cancelar y quitar**. Esto detiene el proceso de implementación de Hola y elimina el entorno de implementación de Hola de Azure.
+      El Explorador de archivos muestra la ubicación del archivo del paquete recién creado. Copie esta ubicación para que se pueda usar desde el [Portal de Azure clásico](http://go.microsoft.com/fwlink/?LinkID=213885).
+   5. Para publicar este paquete en un entorno de implementación, tiene que usar esta ubicación como la ubicación del paquete cuando cree un servicio en la nube e implementar este paquete en un entorno con el [Portal de Azure clásico](http://go.microsoft.com/fwlink/?LinkID=213885).
+3. (Opcional) Para cancelar el proceso de implementación, en el menú contextual del elemento de línea del registro de actividad seleccione **Cancelar y quitar**. Esto detiene el proceso de implementación y elimina el entorno de implementación de Azure.
    
    > [!NOTE]
-   > tooremove este entorno de implementación después de ha sido implementado, debe usar hello [portal de Azure clásico](http://go.microsoft.com/fwlink/?LinkID=213885).
+   > Para quitar este entorno de implementación una vez implementado, debe usar el [Portal de Azure clásico](http://go.microsoft.com/fwlink/?LinkID=213885).
    > 
    > 
-4. (Opcional) Una vez se hayan iniciado las instancias de rol, Visual Studio muestra automáticamente el entorno de implementación de Hola Hola **servicios en la nube** nodo en el Explorador de servidores. Desde aquí, puede ver estado de Hola Hola individuales de instancias de rol. Vea [recursos de administración de Azure con el Explorador de nube](vs-azure-tools-resources-managing-with-cloud-explorer.md).hello siguiente ilustración muestra las instancias de rol Hola mientras están todavía en estado Initializing hello:
+4. (Opcional) Después de iniciarse las instancias del rol, Visual Studio muestra automáticamente el entorno de implementación en el nodo **Cloud Services** en el Explorador de servidores. Desde aquí puede ver el estado de las instancias de rol individuales. Consulte [Administración de recursos de Azure con Cloud Explorer](vs-azure-tools-resources-managing-with-cloud-explorer.md). La siguiente ilustración muestra las instancias del rol mientras todavía están en el estado Inicializando:
    
     ![VST_DeployComputeNode](./media/vs-azure-tools-publishing-a-cloud-service/IC744134.png)
 
-## <a name="update-a-web-role-as-part-of-hello-development-and-testing-cycle"></a>Actualizar un rol Web como parte del desarrollo de Hola y ciclo de pruebas
-Si la infraestructura de back-end de la aplicación es estable, pero las funciones hello web necesitan actualizaciones más frecuentes, puede usar Web Deploy tooupdate solo un rol web en el proyecto. Esto es útil cuando no desee toorebuild y volver a implementar roles de trabajo de back-end de hello, o si tiene varios roles web y desea tooupdate solo uno de los roles de web Hola.
+## <a name="update-a-web-role-as-part-of-the-development-and-testing-cycle"></a>Actualizar un rol web como parte del ciclo de desarrollo y pruebas
+Si la infraestructura back-end de su aplicación es estable, pero los roles web necesitan actualizaciones más frecuentes, puede usar Web Deploy para actualizar solo un rol web en su proyecto. Esto resulta práctico cuando no quiere volver a generar y a implementar los roles de trabajo del back-end, o si tiene varios roles web y quiere actualizar solo uno de ellos.
 
 ### <a name="requirements"></a>Requisitos
-Estos es Hola requisitos toouse Web Deploy tooupdate su rol web:
+Estos son los requisitos para usar Web Deploy para actualizar su rol web:
 
-* **Solo con fines de desarrollo y pruebas:** Hola se realizan cambios directamente toohello máquina donde se ejecuta el rol web de Hola. Si esta máquina virtual tiene toobe reciclando, cambios de Hola se pierden porque Hola del paquete original que publicó máquina de virtual hello toorecreate usado para el rol de Hola. Debe volver a publicar los cambios más recientes de aplicación tooget hello para el rol web de Hola.
-* **Solo se pueden actualizar los roles web** : los roles de trabajo no se pueden actualizar. Además, no se puede actualizar hello RoleEntryPoint en web role.cs.
+* **Solo con fines de desarrollo y prueba** : los cambios se realizan directamente en la máquina virtual en la que el rol web se está ejecutando. Si esta máquina virtual tiene que ser reciclada, se pierden los cambios porque el paquete original que publicó se usa para volver a crear la máquina virtual del rol. Debe volver a publicar la aplicación para obtener los últimos cambios del rol web.
+* **Solo se pueden actualizar los roles web** : los roles de trabajo no se pueden actualizar. Además, no puede actualizar RoleEntryPoint en web role.cs.
 * **Solo puede admitir una instancia de un rol web** : no puede tener varias instancias de ningún rol web en su entorno de implementación. Sin embargo, se admiten varios roles web cada uno con solo una instancia.
-* **Debe habilitar las conexiones a escritorio remotas:** esto es necesario para que Web Deploy pueda utilizar Hola usuario y contraseña tooconnect toohello máquina virtual toodeploy Hola cambios toohello servidor que ejecuta Internet Information Services (IIS). Además, tendrá que tooconnect toohello máquina virtual tooadd un tooIIS de certificados de confianza en esta máquina virtual. (Esto garantiza que la conexión remota de Hola de IIS que utiliza Web Deploy es segura).
+* **Debe habilitar conexiones de escritorio remoto** : esto es necesario para que Web Deploy pueda utilizar el usuario y la contraseña para conectar con la máquina virtual e implementar los cambios en el servidor que ejecuta Internet Information Services (IIS). Además, podría necesitar conectar a la máquina virtual para agregar un certificado de confianza a IIS en esta máquina virtual. (Esto asegura que la conexión remota de IIS que usa Web Deploy sea segura).
 
-Hello siguiente procedimiento se supone que está usando hello **publicar aplicación de Azure** asistente.
+En el siguiente procedimiento se supone que usa el asistente **Publicar aplicación de Azure** .
 
-### <a name="tooenable-web-deploy-when-you-publish-your-application"></a>tooEnable implementar cuando se publique la aplicación Web
-1. Hola tooenable **habilitar Web Deploy** para todas las web casilla de verificación de roles, primero debe configurar conexiones a Escritorio remoto. Seleccione **habilitar Escritorio remoto** para todas las funciones y, a continuación, especifique las credenciales de Hola que serán usado tooconnect remotamente en hello **configuración de escritorio remoto** cuadro que aparece. Consulte [Usar Escritorio remoto con los roles de Azure](vs-azure-tools-remote-desktop-roles.md) para obtener más información.
-2. tooenable Web Deploy para todos Hola roles web en su aplicación, seleccione **habilitar Web Deploy para todos los roles web**.
+### <a name="to-enable-web-deploy-when-you-publish-your-application"></a>Para habilitar Web Deploy al publicar su aplicación
+1. Para habilitar la casilla **Habilitar Web Deploy** para todos los roles web, primero debe configurar las conexiones de escritorio remoto. Seleccione **Habilitar Escritorio remoto** para todos los roles y luego escriba en el cuadro **Configuración del Escritorio remoto** que aparece las credenciales que se usarán para conectarse de forma remota. Consulte [Usar Escritorio remoto con los roles de Azure](vs-azure-tools-remote-desktop-roles.md) para obtener más información.
+2. Para habilitar Web Deploy para todos los roles web de su aplicación, seleccione **Habilitar Web Deploy para todos los roles web**.
    
-    Se muestra un triángulo de advertencia amarillo. Web Deploy usa de forma predeterminada un certificado autofirmado no de confianza, que no se recomienda para cargar datos confidenciales. Si necesita toosecure este proceso para datos confidenciales, puede agregar un toobe de certificado SSL usado para las conexiones Web Deploy. Este certificado debe toobe un certificado de confianza. Para obtener información acerca de cómo toodo esto, consulte la sección de hello **tooMake implementar Secure Web** más adelante en este tema.
-3. Elija **siguiente** tooshow hello **resumen** pantalla y, a continuación, elija **publicar** servicio en la nube toodeploy Hola.
+    Se muestra un triángulo de advertencia amarillo. Web Deploy usa de forma predeterminada un certificado autofirmado no de confianza, que no se recomienda para cargar datos confidenciales. Si necesita proteger este proceso por que hay datos confidenciales, puede agregar un certificado SSL para que sea usa para las conexiones de Web Deploy. Este certificado debe ser un certificado de confianza. Para más información sobre cómo hacerlo, consulte la sección **Para proteger Web Deploy** más adelante en este tema.
+3. Elija **Siguiente** para ver la pantalla **Resumen** y luego seleccione **Publicar** para implementar el servicio en la nube.
    
-    se publica el servicio en la nube Hola. máquina virtual de Hola que se crea tiene conexiones remotas habilitadas para IIS para que Web Deploy pueda tooupdate usado sus roles web sin volver a publicarlos.
+    El servicio en la nube se publicará. La máquina virtual que se crea tiene conexiones remotas habilitadas para IIS para que Web Deploy se pueda usar a fin de actualizar sus roles web sin volver a publicarlos.
    
    > [!NOTE]
-   > Si tiene más de una instancia configurada para un rol web, aparece un mensaje de advertencia que indica que cada rol web será la instancia de tooone limitado sólo en paquete de Hola que ha creado toopublish su aplicación. Seleccione **Aceptar** toocontinue. Como se mencionó en la sección de requisitos de hello, puede tener más de un rol web, pero solo una instancia de cada rol.
+   > Si tiene configurada más de una instancia para un rol web, aparece un mensaje de advertencia que indica que cada rol web solo se limitará a una instancia en el paquete que se crea para publicar su aplicación. Seleccione **Aceptar** para continuar. Como se indica en la sección Requisitos, puede tener más de un rol web, pero solo una instancia de cada rol.
    > 
    > 
 
-### <a name="tooupdate-your-web-role-by-using-web-deploy"></a>tooUpdate su rol Web utilizando Web Deploy
-1. toouse Web Deploy, asegúrese de proyecto de toohello de cambios de código para cualquiera de sus roles web en Visual Studio que desee toopublish y, a continuación, haga clic en este nodo de proyecto en la solución y elija demasiado**publicar**. Hola **Publicar Web** aparece el cuadro de diálogo.
-2. (Opcional) Si ha agregado una confianza toouse de certificado SSL para las conexiones remotas para IIS, puede desactivar hello **certificado sin confianza permitir** casilla de verificación. Para obtener información sobre cómo tooadd una toomake certificado Web Deploy proteger, vea la sección hello **tooMake Web implementar segura** más adelante en este tema.
-3. toouse Web Deploy, Hola publicar mecanismo necesita el nombre de usuario de Hola y la contraseña que configuró para la conexión a Escritorio remoto cuando publicó por primera vez el paquete de saludo.
+### <a name="to-update-your-web-role-by-using-web-deploy"></a>Para actualizar su rol web usando Web Deploy
+1. Para usar Web Deploy, debe realizar cambios en el código del proyecto para cualquiera de sus roles web en Visual Studio que quiera publicar, y luego haga clic con el botón derecho en el nodo de este proyecto en su solución y apunte a **Publicar**. Aparece el cuadro de diálogo **Publicación web** .
+2. (Opcional) Si agregó un certificado SSL de confianza para usarlo para las conexiones remotas de IIS, puede desactivar la casilla **Permitir certificado que no es de confianza** . Para más información sobre cómo agregar un certificado para proteger Web Deploy, consulte la sección **Para proteger Web Deploy** más adelante en este tema.
+3. Para usar Web Deploy, el mecanismo de publicación necesita el nombre de usuario y la contraseña que configuró para su conexión de escritorio remoto cuando publicó el paquete por primera vez.
    
-   1. En **nombre de usuario**, escriba el nombre de usuario de Hola.
-   2. En **contraseña**, escriba la contraseña de Hola.
-   3. (Opcional) Elija si desea toosave esta contraseña en este perfil, **Guardar contraseña**.
-4. rol de toopublish Hola cambios tooyour web, elija **publicar**.
+   1. En **Nombre de usuario**escriba el nombre de usuario.
+   2. En **Contraseña**escriba la contraseña.
+   3. (Opcional) Si desea guardar esta contraseña en este perfil, seleccione **Guardar contraseña**.
+4. Para publicar los cambios de su rol web, elija **Publicar**.
    
-    Muestra la línea de estado de Hello **publicar iniciado**. Cuando haya finalizado la publicación de hello, **publicar se realizó correctamente** aparece. cambios de Hello ahora han sido rol web de toohello implementado en la máquina virtual. Ahora puede iniciar la aplicación de Azure en hello entorno Azure tootest los cambios.
+    La línea de estado muestra **Publicación iniciada**. Cuando la publicación finaliza, se muestra **Publicación correcta** . Ahora los cambios se implementaron en el rol web en su máquina virtual. Ahora puede iniciar su aplicación de Azure para probar sus cambios en el entorno de Azure.
 
-### <a name="toomake-web-deploy-secure"></a>tooMake implementar Secure Web
-1. Web Deploy usa de forma predeterminada un certificado autofirmado no de confianza, que no se recomienda para cargar datos confidenciales. Si necesita toosecure este proceso para datos confidenciales, puede agregar un toobe de certificado SSL usado para las conexiones Web Deploy. Este certificado debe toobe un certificado de confianza, que se obtiene de una entidad de certificación (CA).
+### <a name="to-make-web-deploy-secure"></a>Para proteger Web Deploy
+1. Web Deploy usa de forma predeterminada un certificado autofirmado no de confianza, que no se recomienda para cargar datos confidenciales. Si necesita proteger este proceso por que hay datos confidenciales, puede agregar un certificado SSL para que sea usa para las conexiones de Web Deploy. Este certificado debe ser un certificado de confianza, que haya obtenido de una entidad de certificación (CA).
    
-    toomake Web Deploy seguro para cada máquina virtual para cada uno de sus roles web, debe cargar el certificado de confianza de Hola que desee toouse por WebDeploy toohello [portal de Azure clásico](http://go.microsoft.com/fwlink/?LinkID=213885). Esto asegura que ese certificado Hola se agrega la máquina virtual de toohello que se crea para el rol web de hello al publicar la aplicación.
-2. tooadd una confianza toouse de tooIIS de certificado SSL para las conexiones remotas, siga estos pasos:
+    Para proteger Web Deploy para cada máquina virtual de cada uno de sus roles web, debe cargar el certificado de confianza que desea usar para la implementación web en el [Portal de Azure clásico](http://go.microsoft.com/fwlink/?LinkID=213885). Esto garantiza que el certificado se agrega a la máquina virtual que se crea para el rol web al publicar su aplicación.
+2. Para agregar un certificado SSL de confianza a IIS para usarlo para las conexiones remotas, siga estos pasos:
    
-   1. máquina virtual de tooconnect toohello que se ejecuta el rol web de hello, instancia de select Hola de rol web de hello en **nube explorador** o **Explorador de servidores**y, a continuación, elija hello **conectar usando Escritorio remoto** comando. Para obtener pasos detallados acerca de cómo tooconnect toohello virtual machine, vea [usar Escritorio remoto con Roles de Azure](vs-azure-tools-remote-desktop-roles.md).
+   1. Para conectarse a la máquina virtual que está ejecutando el rol web, seleccione la instancia del rol web en **Cloud Explorer** o en el **Explorador de servidores** y después elija **Conectar utilizando Escritorio remoto**. Para obtener pasos detallados sobre cómo conectar a la máquina virtual, consulte [Usar Escritorio remoto con los roles de Azure](vs-azure-tools-remote-desktop-roles.md).
       
-      El explorador le solicitará que toodownload una. Archivo RDP.
-   2. tooadd un certificado SSL, servicio de administración de hello abierto en el Administrador de IIS. En el Administrador de IIS, habilite SSL por abrir hello **enlaces** vínculo Hola **acción** panel. Hola **Agregar enlace de sitio** aparece el cuadro de diálogo. Elija **agregar**y, a continuación, elija HTTPS en hello **tipo** lista desplegable. Hola **certificado SSL** lista, elija el certificado SSL de Hola que obtuvo firmado por una entidad de certificación y que cargó toohello [portal de Azure clásico](http://go.microsoft.com/fwlink/?LinkID=213885). Para obtener más información, consulte [configurar opciones de conexión para el servicio de administración de hello](http://go.microsoft.com/fwlink/?LinkId=215824).
+      El explorador le solicitará que descargue un archivo .RDP.
+   2. Para agregar un certificado SSL, abra el servicio de administración en el Administrador de IIS. En el Administrador de IIS, habilite SSL abriendo el vínculo **Enlaces** en el panel **Acción**. Aparecerá el cuadro de diálogo **Agregar enlace de sitio** . Elija **Agregar** y, después, seleccione HTTPS en la lista desplegable **Tipo**. En la lista de **certificados SSL** , elija el certificado SSL que obtuvo, firmado por una entidad de certificación y que cargó en el [Portal de Azure clásico](http://go.microsoft.com/fwlink/?LinkID=213885). Para obtener más información, consulte [Configurar los valores de conexión para el servicio de administración](http://go.microsoft.com/fwlink/?LinkId=215824).
       
       > [!NOTE]
-      > Si agrega un certificado SSL de confianza, triángulo de advertencia amarillo Hola ya no aparece en hello **Asistente para publicación**.
+      > Si agrega un certificado SSL de confianza, el triángulo de advertencia amarillo ya no aparece en el **Asistente para publicación**.
       > 
       > 
 
-## <a name="include-files-in-hello-service-package"></a>Incluir archivos en hello paquete de servicio
-Puede que tenga tooinclude determinados archivos en el paquete de servicio para que estén disponibles en la máquina virtual de Hola que se crea para un rol. Por ejemplo, conviene tooadd .exe o un archivo .msi que se usa un paquete de servicio de tooyour de script de inicio. O bien, podría necesitar tooadd un ensamblado que necesita un proyecto de rol web, rol o de trabajo. archivos de tooinclude deben ser agregan toohello solución para la aplicación de Azure.
+## <a name="include-files-in-the-service-package"></a>Incluir archivos en el paquete de servicio
+Puede que deba incluir archivos específicos en su paquete de servicio para que estén disponibles en la máquina virtual que se crea para un rol. Por ejemplo, puede querer agregar un archivo .exe o .msi que sea usado por un script de inicio en su paquete del servicio. O es posible que quiera agregar un ensamblado que requiera un proyecto de rol web o de rol de trabajo. Para incluir archivos, debe agregarlos a la solución de su aplicación de Azure.
 
-### <a name="tooinclude-files-in-hello-service-package"></a>tooinclude archivos en el paquete del servicio de Hola
-1. tooadd un paquete de servicio de tooa ensamblado, utilice Hola pasos:
+### <a name="to-include-files-in-the-service-package"></a>Para incluir archivos en el paquete del servicio
+1. Para agregar un ensamblado a un paquete del servicio, siga estos pasos:
    
-   1. En **el Explorador de soluciones** nodo Hola Abrir proyecto de Hola que le falta el ensamblado hello al que hace referencia.
-   2. proyecto de toohello ensamblado tooadd hello, menú contextual abierto Hola Hola **referencias** carpeta y, a continuación, elija **Agregar referencia**. aparece el cuadro de diálogo de agregar referencia de Hola.
-   3. Elija Hola referencia que desee tooadd y, a continuación, elija hello **Aceptar** botón.
+   1. En el **Explorador de soluciones** abra el nodo del proyecto al que le falta el ensamblado de referencia.
+   2. Para agregar el ensamblado al proyecto, abra el menú contextual de la carpeta **Referencias** y elija **Agregar referencia**. Aparece el cuadro de diálogo Agregar referencia.
+   3. Elija la referencia que quiere agregar y, después, elija el botón **Aceptar** .
       
-      referencia de Hola se agrega la lista toohello en hello **referencias** carpeta.
-   4. Abra el menú contextual de hello para el ensamblado hello que agregó y elija **propiedades**. Hola **propiedades** aparecerá la ventana.
+      La referencia se agrega a la lista en la carpeta **Referencias** .
+   4. Abra el menú contextual del ensamblado que agregó y elija **Propiedades**. Se muestra la ventana **Propiedades** .
       
-      tooinclude este ensamblado en el servicio de hello del paquete, en hello **lista Copy Local** elegir **True**.
-2. En **el Explorador de soluciones** nodo Hola Abrir proyecto de Hola que le falta el ensamblado hello al que hace referencia.
-3. proyecto de toohello ensamblado tooadd hello, menú contextual abierto Hola Hola **referencias** carpeta y, a continuación, elija **Agregar referencia**. Hola **Agregar referencia** aparece el cuadro de diálogo.
-4. Elija Hola referencia que desee tooadd y, a continuación, elija hello **Aceptar** botón.
+      Para incluir este ensamblado en el Service Pack en la lista **Copia local**, elija **True**.
+2. En el **Explorador de soluciones** abra el nodo del proyecto al que le falta el ensamblado de referencia.
+3. Para agregar el ensamblado al proyecto, abra el menú contextual de la carpeta **Referencias** y elija **Agregar referencia**. Aparece el cuadro de diálogo **Agregar referencia** .
+4. Elija la referencia que quiere agregar y, después, elija el botón **Aceptar** .
    
-    referencia de Hola se agrega la lista toohello en hello **referencias** carpeta.
-5. Abra el menú contextual de hello para el ensamblado hello que agregó y elija **propiedades**. aparece la ventana de propiedades de Hola.
-6. tooinclude este ensamblado en el servicio de hello del paquete, en hello **Copy Local** elija **True**.
-7. archivos de tooinclude en el paquete del servicio de Hola que se han agregado tooyour proyecto de rol web, abra el acceso directo de hello para el archivo hello y, a continuación, elija **propiedades**. De hello **propiedades** ventana, elija **contenido** de hello **acción de compilación** cuadro de lista.
-8. archivos de tooinclude en el paquete del servicio de Hola que se han agregado tooyour proyecto de rol de trabajo, abra el acceso directo de hello para el archivo hello y, a continuación, elija **propiedades**. De hello **propiedades** ventana, elija **copiar si es posterior** de hello **toooutput directorio** cuadro de lista.
+    La referencia se agrega a la lista en la carpeta **Referencias** .
+5. Abra el menú contextual del ensamblado que agregó y elija **Propiedades**. Se muestra la ventana Propiedades.
+6. Para incluir este ensamblado en el paquete del servicio en la lista **Copia local**, elija **True**.
+7. Para incluir archivos en el paquete del servicio que se agregaron al proyecto de rol web, abra el menú contextual del archivo y elija **Propiedades**. En la ventana **Propiedades**, elija **Contenido** de la lista **Acción de generación**.
+8. Para incluir archivos en el paquete del servicio que se agregaron al proyecto de rol de trabajo, abra el menú contextual del archivo y elija **Propiedades**. En la ventana **Propiedades**, elija **Copiar si es posterior** en la lista **Copiar en el directorio de resultados**.
 
 ## <a name="next-steps"></a>Pasos siguientes
-toolearn más información acerca de la publicación tooAzure desde Visual Studio, vea [Asistente para publicar aplicaciones de Azure](vs-azure-tools-publish-azure-application-wizard.md).
+Para obtener más información sobre la publicación en Azure desde Visual Studio, consulte [Asistente Publicar aplicaciones de Azure](vs-azure-tools-publish-azure-application-wizard.md).
 

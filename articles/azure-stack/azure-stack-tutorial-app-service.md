@@ -1,6 +1,6 @@
 ---
-title: "aaaMake web, móviles y los usuarios de API aplicaciones disponibles tooyour pila de Azure | Documentos de Microsoft"
-description: "Tutorial tooinstall Hola proveedor de recursos de servicio de aplicaciones y crear ofertas que proporcionan la pila de Azure a los usuarios Hola capacidad toocreate web, móviles y aplicaciones de API."
+title: "Aplicaciones web, móviles y de API disponibles para los usuarios de Azure Stack | Microsoft Docs"
+description: "Tutorial para instalar el proveedor de recursos de App Service y crear ofertas que permitan a los usuarios de Azure Stack crear aplicaciones web, móviles y de API."
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -11,65 +11,65 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 7/03/2017
 ms.author: erikje
 ms.custom: mvc
-ms.openlocfilehash: 62b86cf6288b8f629bc92dade003c712fe523187
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 2d011e933cb063eef88a372fccc49d2b9de19717
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="make-web-mobile-and-api-apps-available-tooyour-azure-stack-users"></a>Asegúrese de web, móviles y los usuarios de API aplicaciones disponibles tooyour pila de Azure
+# <a name="make-web-mobile-and-api-apps-available-to-your-azure-stack-users"></a>Aplicaciones web, móviles y de API disponibles para los usuarios de Azure Stack
 
-Como administrador de la nube de Azure Stack, puede crear ofertas que permitan a los usuarios (inquilinos) crear aplicaciones web, móviles y de API, así como de Azure Functions. Si proporciona acceso a los usuarios de toothese a petición, en la nube aplicaciones tooyour, puede guardarlos tiempo y recursos. tooset este servicio, tendrá que:
+Como administrador de la nube de Azure Stack, puede crear ofertas que permitan a los usuarios (inquilinos) crear aplicaciones web, móviles y de API, así como de Azure Functions. Si proporciona a los usuarios acceso a estas aplicaciones en la nube y a petición, puede ahorrarles tiempo y recursos. Para configurar esta opción, tendrá que:
 
 > [!div class="checklist"]
-> * Implementar Hola proveedor de recursos de servicio de aplicaciones
+> * Implementar el proveedor de recursos de App Service
 > * Creación de una oferta
-> * Oferta de prueba Hola
+> * Probar la oferta
 
-## <a name="deploy-hello-app-service-resource-provider"></a>Implementar Hola proveedor de recursos de servicio de aplicaciones
+## <a name="deploy-the-app-service-resource-provider"></a>Implementar el proveedor de recursos de App Service
 
-1. [Preparar el host del Kit de desarrollo de Azure pila hello](azure-stack-app-service-before-you-get-started.md). Esto incluye la implementación de proveedor de recursos de SQL Server de hello, que es necesario para crear aplicaciones.
-2. [Descargar los scripts de instalador y la aplicación auxiliar de hello](azure-stack-app-service-deploy.md#download-the-required-components).
-3. [Ejecutar script de aplicación auxiliar de hello toocreate requerido certificados](azure-stack-app-service-deploy.md#create-certificates-required-by-app-service-on-azure-stack).
-4. [Instalar el proveedor de recursos de servicio de aplicaciones de hello](azure-stack-app-service-deploy.md#use-the-installer-to-download-and-install-app-service-on-azure-stack) (tardará tooinstall un par de horas y para todos los Hola tooappear de roles de trabajo).
-5. [Validar la instalación de hello](azure-stack-app-service-deploy.md#validate-the-app-service-on-azure-stack-installation).
+1. [Prepare el host de Azure Stack Development Kit](azure-stack-app-service-before-you-get-started.md). Esto incluye implementar el proveedor de recursos de SQL Server, que se requiere para crear algunas aplicaciones.
+2. [Descargue los scripts de aplicación auxiliar y del instalador](azure-stack-app-service-deploy.md).
+3. [Ejecute el script de aplicación auxiliar para crear los certificados necesarios](azure-stack-app-service-deploy.md).
+4. [Instale el proveedor de recursos de App Service](azure-stack-app-service-deploy.md) (tardará un par de horas en instalarse y que todos los roles de trabajo aparezcan).
+5. [Valide la instalación](azure-stack-app-service-deploy.md#validate-the-app-service-on-azure-stack-installation).
 
 ## <a name="create-an-offer"></a>Creación de una oferta
 
-Por ejemplo, puede crear una oferta que permita a los usuarios crear sistemas de administración de contenido web DNN. Requiere el servicio de SQL Server de Hola que ya ha habilitado mediante la instalación de proveedor de recursos de SQL Server de Hola.
+Por ejemplo, puede crear una oferta que permita a los usuarios crear sistemas de administración de contenido web DNN. Requiere el servicio de SQL Server que ya habilitó al instalar al proveedor de recursos de SQL Server.
 
-1.  [Establezca una cuota](azure-stack-setting-quotas.md) y asígnele el nombre *CuotaDeAppService*. Seleccione **Microsoft.Web** para hello **Namespace** campo.
-2.  [Cree un plan](azure-stack-create-plan.md). Asígnele el nombre *TestAppServicePlan*, seleccione Hola Hola **Microsoft.SQL** servicio, y **cuota de servicio de aplicaciones** cuota.
+1.  [Establezca una cuota](azure-stack-setting-quotas.md) y asígnele el nombre *CuotaDeAppService*. Seleccione **Microsoft.Web** para el campo **Espacio de nombres**.
+2.  [Cree un plan](azure-stack-create-plan.md). Asígnele el nombre *PlanDePruebaDeAppService*, seleccione el servicio **Microsoft.SQL** y la cuota **AppService Quota** (Cuota de AppService).
 
     > [!NOTE]
-    > los usuarios de toolet crear otras aplicaciones, otros servicios pueden ser necesaria en el plan de Hola. Por ejemplo, las funciones de Azure requiere ese plan Hola incluyen hello **almacenamiento de Microsoft** de servicio, mientras que requiere de Wordpress **Microsoft.MySQL**.
+    > Para permitir que los usuarios creen otras aplicaciones, podrían ser necesarios otros servicios en el plan. Por ejemplo, Azure Functions requiere que el plan incluya el servicio **Microsoft.Storage**, mientras que Wordpress requiere **Microsoft.MySQL**.
     > 
     >
 
-3.  [Crear una oferta](azure-stack-create-offer.md), asígnele el nombre **TestAppServiceOffer** y seleccione hello **TestAppServicePlan** plan.
+3.  [Cree una oferta](azure-stack-create-offer.md), asígnele el nombre **OfertaDePruebaDeAppService** y seleccione el plan **PlanDePruebaDeAppService**.
 
-## <a name="test-hello-offer"></a>Oferta de prueba Hola
+## <a name="test-the-offer"></a>Probar la oferta
 
-Ahora que ha implementado Hola proveedor de recursos de servicio de aplicaciones y crear una oferta, puede iniciar sesión como un usuario, suscribirse toohello oferta y crear una aplicación. En este ejemplo, vamos a crear un sistema de administración de contenido de la plataforma DNN. Primero debe crear una base de datos SQL y, a continuación, aplicación web de hello DNN.
+Ahora que ha implementado el proveedor de recursos de App Service y ha creado una oferta, puede iniciar sesión como un usuario, suscribirse a la oferta y crear una aplicación. En este ejemplo, vamos a crear un sistema de administración de contenido de la plataforma DNN. Primero debe crear una base de datos SQL y, a continuación, la aplicación web DNN.
 
-### <a name="subscribe-toohello-offer"></a>Suscribirse toohello oferta
-1. Inicie sesión en toohello portal de Azure pila (https://portal.local.azurestack.external) como un inquilino.
+### <a name="subscribe-to-the-offer"></a>Suscripción a la oferta
+1. Inicie sesión Azure Stack Portal (https://portal.local.azurestack.external/) como inquilino.
 2. Haga clic en **Obtener una suscripción** > escriba **SuscripciónDePruebaDeAppService** en **Nombre para mostrar** > **Seleccionar una oferta**  >  **OfertaDePruebaDeAppService** > **Crear**.
 
 ### <a name="create-a-sql-database"></a>Creación de una base de datos SQL
 
 1. Haga clic en **+** > **Datos y almacenamiento** > **SQL Database**.
-2. Deje Hola los valores predeterminados para los campos de hello, excepto como se indica a continuación:
+2. Deje los valores predeterminados para los campos, excepto los siguientes:
     - **Nombre de la base de datos**: DNNdb
     - **Tamaño máximo en MB**: 100
     - **Suscripción**: OfertaDePruebaDeAppService
     - **Grupo de recursos**: DNN-RG
-3. Haga clic en **configuración de inicio de sesión**, escriba las credenciales de base de datos de hello y, a continuación, haga clic en **Aceptar**. Usará estas credenciales más adelante en estos pasos.
-4. Haga clic en **SKU** > seleccione Hola SQL SKU que ha creado para Hola de hospedaje de SQL Server > **Aceptar**.
+3. Haga clic en **Configuración de inicio de sesión**, escriba las credenciales de la base de datos y, a continuación, haga clic en **Aceptar**. Usará estas credenciales más adelante en estos pasos.
+4. Haga clic en **SKU** > seleccione la SKU de SQL que ha creado para el servidor de hospedaje SQL > **Aceptar**.
 5. Haga clic en **Crear**.
 
 ### <a name="create-a-dnn-app"></a>Creación de una aplicación DNN    
@@ -78,17 +78,17 @@ Ahora que ha implementado Hola proveedor de recursos de servicio de aplicaciones
 2. Escriba *AppDNN* en **Nombre de la aplicación** y seleccione **OfertaDePruebaDeAppService** en **Suscripción**.
 3. Haga clic en **Configurar los valores obligatorios** > **Crear nuevo** > escriba un nombre de **Plan de App Service**.
 4. Haga clic en **Nivel de precios** > **F1 gratuito** > **Seleccionar** > **Aceptar**.
-5. Haga clic en **base de datos** y especificar información de hello para la base de datos SQL de Hola que creó anteriormente.
+5. Haga clic en **Base de datos** y escriba la información de la base de datos SQL que creó anteriormente.
 6. Haga clic en **Crear**.
 
 En este tutorial, ha aprendido cómo:
 
 > [!div class="checklist"]
-> * Implementar Hola proveedor de recursos de servicio de aplicaciones
+> * Implementar el proveedor de recursos de App Service
 > * Creación de una oferta
-> * Oferta de prueba Hola
+> * Probar la oferta
 
-Avanzar toohello siguiente tutorial toolearn cómo para:
+Prosiga con el siguiente tutorial para aprender a:
 
 > [!div class="nextstepaction"]
-> [Implementar aplicaciones tooAzure y la pila de Azure](azure-stack-solution-pipeline.md)
+> [Implementar aplicaciones en Azure y Azure Stack](user/azure-stack-solution-pipeline.md)

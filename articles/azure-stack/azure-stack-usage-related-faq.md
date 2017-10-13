@@ -1,6 +1,6 @@
 ---
-title: "Preguntas más frecuentes relacionadas con el aaaUsage API | Documentos de Microsoft"
-description: "Lista de medidores de la pila de Azure, API de uso de comparación tooAzure, tiempo de uso y notificado, códigos de error."
+title: "Preguntas más frecuentes relacionadas con el uso de API | Microsoft Docs"
+description: "Lista de medidores de Azure Stack, en comparación con los códigos de error, el tiempo notificado y el tiempo de uso y la API de uso de Azure."
 services: azure-stack
 documentationcenter: 
 author: AlfredoPizzirani
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: alfredop
-ms.openlocfilehash: 6881fc46f69b6e61a3754c44360ccfb9643a2270
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 166147c8cb4949be1b23e0a06868e66c8a5844f4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-stack-usage-api-faqs"></a>Preguntas más frecuentes sobre la API de uso de Azure Stack
-Este artículo ofrece respuestas a algunas preguntas frecuentes acerca de hello API de uso de pila de Azure.
+# <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Preguntas frecuentes sobre la API de uso de Azure Stack 
+En este artículo se responde a algunas preguntas frecuentes sobre la API de uso de Azure Stack.
 
 ## <a name="what-meter-ids-can-i-see"></a>¿Qué identificadores de medidor veo?
-Actualmente, se informa del uso de proveedores de recursos de proceso, almacenamiento y red de Hola.
+Actualmente, se informa del uso de red, almacenamiento y proveedores de recursos de proceso.
 
 | **Proveedor de recursos** | **Id. de medidor** | **Nombre de medidor** | **Unidad** | **Información adicional** |
 | --- | --- | --- | --- | --- | 
@@ -43,36 +43,36 @@ Actualmente, se informa del uso de proveedores de recursos de proceso, almacenam
 | | EB43DD12-1AA6-4C4B-872C-FAF15A6785EA |QueueTransactions |Número de solicitudes en 10 000 s |Solicitudes de Queue service (por 10 000 s) |
 | | E518E809-E369-4A45-9274-2017B29FFF25 |QueueDataTransIn |Datos de entrada en GB |Entrada de datos de Queue service en GB | 
 | | DD0A10BA-A5D6-4CB6-88C0-7D585CEF9FC2 |QueueDataTransOut |Salida en GB |Salida de datos de Queue service en GB |
-| **Proceso** |FAB6EB84-500B-4A09-A8CA-7358F8BBAEA5 |Horas de tamaño de la máquina virtual base |Minutos de núcleo virtual | Número de veces que vcores minutos Hola que se ejecutó la máquina virtual |
-| |9CD92D4C-BAFD-4492-B278-BEDC2DE8232A |Horas de tamaño de la máquina virtual Windows |Minutos de núcleo virtual | Número de veces que vcores minutos Hola que se ejecutó la máquina virtual |
+| **Proceso** |FAB6EB84-500B-4A09-A8CA-7358F8BBAEA5 |Horas de tamaño de la máquina virtual base |Minutos de núcleo virtual | Número de núcleos virtuales multiplicado por los minutos durante los cuales se ejecutó la máquina virtual |
+| |9CD92D4C-BAFD-4492-B278-BEDC2DE8232A |Horas de tamaño de la máquina virtual Windows |Minutos de núcleo virtual | Número de núcleos virtuales multiplicado por los minutos durante los cuales se ejecutó la máquina virtual |
 | |6DAB500F-A4FD-49C4-956D-229BB9C8C793 |Horas de tamaño de la máquina virtual |Horas de la máquina virtual |Captura de la máquina virtual base y Windows. No se ajusta para los núcleos virtuales |
 | **Almacén de claves** | EBF13B9F-B3EA-46FE-BF54-396E93D48AB4 |Transacciones de Key Vault | Número de solicitudes en 10 000 s| Número de solicitudes de API de REST recibidas por plan de datos de Key Vault |
 
-## <a name="how-do-hello-azure-stack-usage-apis-compare-toohello-azure-usage-apihttpsmsdnmicrosoftcomlibraryazure1ea5b323-54bb-423d-916f-190de96c6a3c-currently-in-public-preview"></a>¿Cómo hello las API de uso de pila de Azure se comparan toohello [API de uso de Azure](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) (actualmente en versión preliminar pública)?
-* Hola API de uso de inquilinos es coherente con hello API de Azure, con una excepción: Hola *showDetails* marca actualmente no se admite en la pila de Azure.
-* Hola API de uso del proveedor aplica solo tooAzure pila.
-* Actualmente, Hola [API RateCard](https://msdn.microsoft.com/en-us/library/azure/mt219004.aspx) decir disponibles en Azure no está disponible en la pila de Azure.
+## <a name="how-do-the-azure-stack-usage-apis-compare-to-the-azure-usage-apihttpsmsdnmicrosoftcomlibraryazure1ea5b323-54bb-423d-916f-190de96c6a3c-currently-in-public-preview"></a>¿Cómo se comparan las API de uso de Azure Stack con la [API de uso de Azure](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) (actualmente en versión preliminar pública)?
+* La API de uso de inquilinos es coherente con la API de Azure, con una excepción: actualmente, la marca *showDetails* no se admite en Azure Stack.
+* La API de uso de proveedor solo se aplica a Azure Stack.
+* Actualmente, la [API RateCard](https://msdn.microsoft.com/en-us/library/azure/mt219004.aspx) disponible en Azure no se encuentra disponible en Azure Stack.
 
-## <a name="what-is-hello-difference-between-usage-time-and-reported-time"></a>¿Cuál es la diferencia de hello entre el tiempo de uso y notificado?
+## <a name="what-is-the-difference-between-usage-time-and-reported-time"></a>¿Cuál es la diferencia entre el tiempo notificado y el tiempo de uso?
 Los informes de datos de uso tienen dos valores de tiempo principales:
 
-* **Hora de notificación**. tiempo de Hello cuando el evento de uso de hello escrito sistema de uso de Hola
-* **Tiempo de uso**. tiempo de Hello cuando consumido Hola recursos de la pila de Azure
+* **Hora de notificación**. La hora cuando el evento de uso entró en el sistema de uso
+* **Tiempo de uso**. El tiempo durante el que se ha usado el recurso de Azure Stack
 
-Puede que vea una discrepancia en los valores de tiempo de uso y tiempo notificado para un evento de uso específico. Hola retraso puede ser hasta varias horas en cualquier entorno.
+Puede que vea una discrepancia en los valores de tiempo de uso y tiempo notificado para un evento de uso específico. El retraso puede ser de hasta varias horas en cualquier entorno.
 
 Actualmente, *solo se puede consultar mediante el tiempo notificado*.
 
 ## <a name="what-do-these-usage-api-error-codes-mean"></a>¿Qué significan estos códigos de error de la API de uso?
 | **Código de estado HTTP** | **Código de error** | **Descripción** |
 | --- | --- | --- |
-| 400/Solicitud incorrecta |*NoApiVersion* |Hola *api-version* parámetro de consulta no está. |
-| 400/Solicitud incorrecta |*InvalidProperty* |Falta una propiedad o hay un valor no válido. mensaje de saludo en el código de error de hello en el cuerpo de la respuesta de hello identifica Hola falta la propiedad. |
-| 400/Solicitud incorrecta |*RequestEndTimeIsInFuture* |Hola valor para *ReportedEndTime* en hello futuras. No se permiten valores de hello futura para este argumento. |
-| 400/Solicitud incorrecta |*SubscriberIdIsNotDirectTenant* |Una llamada de API del proveedor usa un identificador de suscripción que no es un inquilino válido del autor de llamada de Hola. |
-| 400/Solicitud incorrecta |*SubscriptionIdMissingInRequest* |Hola Id. de suscripción del autor de llamada de hello es que faltan. |
+| 400/Solicitud incorrecta |*NoApiVersion* |No se proporcionó el parámetro de consulta de la *api-version*. |
+| 400/Solicitud incorrecta |*InvalidProperty* |Falta una propiedad o hay un valor no válido. El mensaje en el código de error en el cuerpo de respuesta identifica la propiedad que falta. |
+| 400/Solicitud incorrecta |*RequestEndTimeIsInFuture* |El valor de *ReportedEndTime* no puede ser un tiempo futuro. En el futuro no se permiten valores para este argumento. |
+| 400/Solicitud incorrecta |*SubscriberIdIsNotDirectTenant* |Una llamada de API del proveedor usa un identificador de suscripción que no es un inquilino válido del autor de la llamada. |
+| 400/Solicitud incorrecta |*SubscriptionIdMissingInRequest* |Falta el identificador de suscripción del autor de la llamada. |
 | 400/Solicitud incorrecta |*InvalidAggregationGranularity* |Se solicitó una granularidad de agregación no válida. Los valores válidos son daily y hourly. |
-| 503 |*ServiceUnavailable* |Se produjo un error recuperable porque Hola servicio está ocupado o se está limitando la llamada de Hola. |
+| 503 |*ServiceUnavailable* |Se produjo un error recuperable porque el servicio está ocupado o la llamada se está limitando. |
 
 ## <a name="next-steps"></a>Pasos siguientes
 [Facturación y contracargo del cliente en Azure Stack](azure-stack-billing-and-chargeback.md)

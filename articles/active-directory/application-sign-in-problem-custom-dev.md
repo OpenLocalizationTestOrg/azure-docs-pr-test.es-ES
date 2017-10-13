@@ -1,6 +1,6 @@
 ---
-title: "aaaProblems iniciar sesión en aplicaciones personalizadas de tooan | Documentos de Microsoft"
-description: "Errores comunes que pudieron estar causando toonot ser capaz de toosign en una aplicación que haya desarrollado con Azure AD"
+title: "Problemas de inicio de sesión en una aplicación desarrollada personalizada | Microsoft Docs"
+description: "Errores comunes que pueden causar la imposibilidad de iniciar sesión en una aplicación desarrollada con Azure AD"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: cc302e68ae6c129b74387c6fc5ba4fb45ccb8fb3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b0df23e040a73d18968f547eef7347f14cc577c6
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="problems-signing-in-tooan-custom-developed-application"></a>Problemas para iniciar sesión en aplicaciones personalizadas de tooan
+# <a name="problems-signing-in-to-an-custom-developed-application"></a>Problemas de inicio de sesión en una aplicación desarrollada personalizada
 
-Existen varios errores que podrían provocar toonot ser capaz de toosign en una aplicación. motivo mayor Hola personas produce este problema es mala configuración de aplicaciones.
+Hay varios errores que pueden provocar que no pueda iniciar sesión en una aplicación. El principal motivo por el que los usuarios encuentran este problema son las aplicaciones mal configuradas.
 
-## <a name="errors-related-too-misconfigured-apps"></a>Errores relacionados con aplicaciones demasiado mal configuradas
+## <a name="errors-related-to--misconfigured-apps"></a>Errores relacionados con aplicaciones mal configuradas
 
-* Compruebe las configuraciones de hello en el portal de hello coincide con lo que tiene en su aplicación. En concreto, compare el identificador del cliente o aplicación, las direcciones URL de respuesta, las claves y secretos de cliente, y el URI del identificador de la aplicación.
+* Compruebe que las configuraciones en el portal coinciden con lo que tiene en la aplicación. En concreto, compare el identificador del cliente o aplicación, las direcciones URL de respuesta, las claves y secretos de cliente, y el URI del identificador de la aplicación.
 
-* Comparar recursos Hola están solicitando acceso tooin código con permisos de hello configurado en hello **recursos necesarios** toomake ficha seguro solo solicitar recursos que haya configurado.
+* Compare el recurso del que está solicitando acceso mediante código con los permisos configurados en la pestaña **Recursos necesarios** para asegurarse de que solo se solicitan los recursos que ha configurado.
 
 * Busque en [Azure AD en StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory) errores o problemas similares.
 
@@ -35,7 +35,7 @@ Existen varios errores que podrían provocar toonot ser capaz de toosign en una 
 
 [Guía del desarrollador de Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)<br>
 
-[Integración de aplicaciones y consentimiento tooAzure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications>)<br>
+[Consentimiento e integración de aplicaciones en Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications>)<br>
 
 [Consentimiento y permisos para las aplicaciones convergentes v2.0 de Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
 

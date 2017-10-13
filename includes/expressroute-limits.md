@@ -1,5 +1,5 @@
 #### <a name="expressroute-limits"></a>Límites de ExpressRoute
-Hola siguiendo los límites aplica tooExpressRoute recursos por suscripción.
+Los límites siguientes se aplican a los recursos de ExpressRoute por suscripción.
 
 | Recurso | Límite predeterminado |
 | --- | --- |

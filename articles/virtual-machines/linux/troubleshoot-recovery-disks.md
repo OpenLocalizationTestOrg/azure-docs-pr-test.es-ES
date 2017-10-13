@@ -1,6 +1,6 @@
 ---
-title: "aaaUse una solución de problemas de VM con hello Azure CLI 2.0 de Linux | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo tootroubleshoot VM de Linux que se emite por conexión Hola SO disco tooa recuperación VM mediante Hola 2.0 de CLI de Azure"
+title: "Uso de una máquina virtual Linux de solución de problemas con la CLI de Azure 2.0 | Microsoft Docs"
+description: "Aprenda a solucionar problemas de la máquina virtual Linux mediante la conexión del disco del sistema operativo a una máquina virtual de recuperación mediante la CLI de Azure 2.0"
 services: virtual-machines-linux
 documentationCenter: 
 authors: iainfoulds
@@ -13,72 +13,72 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: iainfou
-ms.openlocfilehash: 776d61b61280f46e3699157addcdb1e7dfb6818e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7a28accce1bd328b2b486b588c44d91b03e42122
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="troubleshoot-a-linux-vm-by-attaching-hello-os-disk-tooa-recovery-vm-with-hello-azure-cli-20"></a>Solucionar problemas de una VM Linux adjuntando Hola SO disco tooa máquina virtual de recuperación con hello 2.0 de CLI de Azure
-Si la máquina virtual (VM) de Linux se encuentra un error de disco o de arranque, debe tooperform pasos en el disco duro virtual Hola propio para solucionar problemas. Un ejemplo común sería una entrada no válida en `/etc/fstab` que impide Hola VM pueda tooboot correctamente. Este artículo se detallan cómo toouse Hola CLI de Azure 2.0 tooconnect su virtual rígida tooanother toofix de VM de Linux en disco los errores, a continuación, volver a crea la máquina virtual original. También puede realizar estos pasos con hello [Azure CLI 1.0](troubleshoot-recovery-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+# <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli-20"></a>Solución de problemas de una máquina virtual Linux mediante la conexión del disco del sistema operativo a una máquina virtual de recuperación mediante la CLI de Azure 2.0
+Si la máquina virtual Linux se encuentra un error de disco o de arranque, deberá realizar los pasos para solucionar problemas en el propio disco duro virtual. Un ejemplo habitual sería una entrada no válida en `/etc/fstab` que impide que la máquina virtual se pueda arrancar correctamente. En este artículo se detalla cómo utilizar la CLI de Azure 2.0 para conectar el disco duro virtual a otra máquina virtual Linux para solucionar los errores y, posteriormente, volver a crear la máquina virtual original. También puede llevar a cabo estos pasos con la [CLI de Azure 1.0](troubleshoot-recovery-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 
 ## <a name="recovery-process-overview"></a>Introducción al proceso de recuperación
-proceso de solución de problemas de Hello es como sigue:
+El proceso de solución de problemas es el siguiente:
 
-1. Eliminar Hola VM encontrar problemas, mantener los discos duros virtuales Hola.
-2. Adjuntar y montar tooanother de disco duro virtual de hello VM de Linux para solucionar problemas.
-3. Conectar toohello solución de problemas de máquina virtual. Editar archivos o ejecute cualquier herramienta toofix problemas en hello: disco duro virtual original.
-4. Desmonte y desconecte Hola de disco duro virtual de hello VM de solución de problemas.
-5. Crear una máquina virtual mediante hello: disco duro virtual original.
+1. Elimine la máquina virtual que tiene problemas, conservando los discos duros virtuales.
+2. Conecte y monte el disco duro virtual en otra máquina virtual Linux con el fin de solucionar problemas.
+3. Conéctese a la máquina virtual de solución de problemas. Edite los archivos o ejecute cualquier herramienta necesaria para solucionar los problemas del disco duro virtual original.
+4. Desmonte y desconecte el disco duro virtual de la máquina virtual de solución de problemas.
+5. Cree una máquina virtual mediante el disco duro virtual original.
 
-tooperform estos pasos, necesita hello más reciente [CLI de Azure 2.0](/cli/azure/install-az-cli2) instalado y registrado en tooan cuenta de Azure mediante [inicio de sesión de az](/cli/azure/#login).
+Para realizar estos pasos para la solución de problemas, es preciso tener instalada la [CLI de Azure 2.0](/cli/azure/install-az-cli2) más reciente y haber iniciado sesión en una cuenta de Azure mediante [az login](/cli/azure/#login).
 
-En hello en los ejemplos siguientes, reemplace los nombres de parámetros con sus propios valores. Los nombres de parámetros de ejemplo incluyen `myResourceGroup`, `mystorageaccount` y `myVM`.
+En los ejemplos siguientes, reemplace los nombres de parámetros por los suyos propios. Los nombres de parámetros de ejemplo incluyen `myResourceGroup`, `mystorageaccount` y `myVM`.
 
 
 ## <a name="determine-boot-issues"></a>Determinación de los problemas de arranque
-Examine Hola salida serie toodetermine ¿por qué la máquina virtual no es capaz de tooboot correctamente. Un ejemplo común es una entrada válida en `/etc/fstab`, u Hola subyacente de disco duro virtual que se va a eliminar o mover.
+Examine la salida de serie para determinar por qué la máquina virtual no es capaz de arrancar correctamente. Un ejemplo habitual es una entrada no válida en `/etc/fstab` o el disco duro virtual subyacente que se va a eliminar o mover.
 
-Obtener registros de arranque de hello con [diagnóstico de arranque de vm az get-arranque-log](/cli/azure/vm/boot-diagnostics#get-boot-log). Hello en el ejemplo siguiente se obtiene Hola serie resultado Hola máquina virtual denominada `myVM` en grupo de recursos de hello llamado `myResourceGroup`:
+Obtenga los registros de arranque con [az vm boot-diagnostics get-boot-log](/cli/azure/vm/boot-diagnostics#get-boot-log). En el ejemplo siguiente se obtiene la salida de serie de la máquina virtual llamada `myVM` en el grupo de recursos `myResourceGroup`:
 
 ```azurecli
 az vm boot-diagnostics get-boot-log --resource-group myResourceGroup --name myVM
 ```
 
-Revise Hola salida serie toodetermine ¿por qué hello VM está fallando tooboot. Si salida serie hello no proporciona ninguna indicación, puede que tenga archivos de registro de tooreview en `/var/log` una vez que tenga Hola virtual disco duro conectado tooa solución de problemas de máquina virtual.
+Revise la salida de serie para determinar por qué la máquina virtual no arranca correctamente. Si la salida de serie no proporciona ninguna indicación, debe revisar los archivos de registro en `/var/log` una vez que tenga el disco duro virtual conectado a una máquina virtual de solución de problemas.
 
 
 ## <a name="view-existing-virtual-hard-disk-details"></a>Visualización de los detalles del disco duro virtual existente
-Antes de que puede asociar la máquina virtual de tooanother de disco duro virtual (VHD), debe tooidentify Hola URI de disco del sistema operativo Hola. 
+Para poder conectar el disco duro virtual (VHD) a otra máquina virtual, es preciso que identifique el identificador URI del disco del sistema operativo. 
 
-Vea información acerca de la máquina virtual con [az vm show](/cli/azure/vm#show). Hola de uso `--query` el disco toohello OS URI de marca tooextract Hola. Hello en el ejemplo siguiente se obtiene información de disco para la máquina virtual denominada hello `myVM` en grupo de recursos de hello llamado `myResourceGroup`:
+Vea información acerca de la máquina virtual con [az vm show](/cli/azure/vm#show). Use la marca `--query` para extraer el identificador URI al disco del sistema operativo. En el ejemplo siguiente se obtiene información de los discos de la máquina virtual denominada `myVM` en el grupo de recursos denominado `myResourceGroup`:
 
 ```azurecli
 az vm show --resource-group myResourceGroup --name myVM \
     --query [storageProfile.osDisk.vhd.uri] --output tsv
 ```
 
-Hola URI es similar demasiado**https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd**.
+El identificador URI es similar a **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd**.
 
 ## <a name="delete-existing-vm"></a>Eliminación de la VM existente
-Los discos duros virtuales y las máquinas virtuales son dos recursos diferentes de Azure. Un disco duro virtual es donde se almacenan el propio sistema de operativo hello, aplicaciones y configuraciones. Hola propia máquina virtual es solo de los metadatos que define el tamaño de Hola o la ubicación y hace referencia a recursos, como un disco duro virtual o una tarjeta de interfaz de red virtual (NIC). Cada disco duro virtual tiene una concesión que se asigna cuando adjunta tooa máquina virtual. Aunque los discos de datos se pueden conectados y desconectados incluso mientras se está ejecutando Hola VM, no se puede desasociar el disco del sistema operativo Hola a menos que se elimine Hola recurso de máquina virtual. concesión de Hello continúa disco de SO hello tooassociate con una máquina virtual incluso cuando esa máquina virtual está en un estado detenido o desasignado.
+Los discos duros virtuales y las máquinas virtuales son dos recursos diferentes de Azure. Un disco duro virtual es el recurso donde se almacenan el propio sistema operativo, las aplicaciones y las configuraciones. La propia máquina virtual consiste solo en metadatos que definen el tamaño o la ubicación y hace referencia a recursos como un disco duro virtual o una tarjeta de interfaz de red virtual (NIC). Cada disco duro virtual tiene una concesión que se asigna cuando se conecta a una máquina virtual. Aunque los discos de datos se pueden conectar y desconectar incluso mientras se está ejecutando la máquina virtual, no se puede desasociar el disco del sistema operativo, a menos que se elimine el recurso de máquina virtual. La concesión continúa para asociar el disco del sistema operativo a una máquina virtual incluso cuando esa máquina virtual está en un estado detenido o desasignado.
 
-Hola primera toorecover paso la máquina virtual es el recurso de máquina virtual de hello toodelete propio. Eliminando Hola VM deja Hola los discos duros virtuales en su cuenta de almacenamiento. Después de Hola que se elimina la máquina virtual, adjuntar Hola disco duro virtual tooanother VM tootroubleshoot y resolver errores de Hola.
+El primer paso para recuperar la máquina virtual es eliminar el propio recurso de máquina virtual. Al eliminar la máquina virtual, los discos duros virtuales se dejan en su cuenta de almacenamiento. Después de eliminar la máquina virtual, conecte el disco duro virtual a otra máquina virtual para localizar y solucionar los errores.
 
-Eliminar Hola VM con [eliminar vm az](/cli/azure/vm#delete). Después de eliminaciones de ejemplo de Hola Hola máquina virtual denominada `myVM` del grupo de recursos de hello denominado `myResourceGroup`:
+Elimine la máquina virtual con [az vm delete](/cli/azure/vm#delete). En el ejemplo siguiente se elimina la máquina virtual llamada `myVM` del grupo de recursos `myResourceGroup`:
 
 ```azurecli
 az vm delete --resource-group myResourceGroup --name myVM 
 ```
 
-Espere a que termine Hola VM eliminar antes de adjuntar hello tooanother de disco duro virtual. concesión de Hello en disco duro virtual Hola que asocia a Hola VM debe toobe publicado para poderla adjuntar hello tooanother de disco duro virtual.
+Espere hasta que la máquina virtual haya terminado la eliminación antes de conectar el disco duro virtual a otra máquina virtual. La concesión en el disco duro virtual que lo asocia a la máquina virtual debe liberarse antes de poder conectar el disco duro virtual a otra máquina virtual.
 
 
-## <a name="attach-existing-virtual-hard-disk-tooanother-vm"></a>Adjuntar tooanother de disco duro virtual existente
-Para a continuación Hola pocos pasos, usar otra máquina virtual para solucionar problemas. Adjuntar toothis Hola de disco duro virtual existente toobrowse VM de solución de problemas y editar el contenido del disco de Hola. Este proceso le permite toocorrect los errores de configuración o revisión adicional para la aplicación o sistema de archivos de registro, por ejemplo. Elija o cree otro toouse de máquina virtual para solucionar problemas.
+## <a name="attach-existing-virtual-hard-disk-to-another-vm"></a>Conexión del disco duro virtual existente a otra máquina virtual
+Para los pasos siguientes, se usa otra máquina virtual con el fin de solucionar problemas. Conecte el disco duro virtual existente a esta máquina virtual de solución de problemas para examinar y modificar el contenido del disco. Por ejemplo, este proceso le permite corregir todos los errores de configuración o revisar archivos de registro adicionales de la aplicación o sistema. Elija o cree otra máquina virtual que se usará con fines de solución de problemas.
 
-Conectar disco duro virtual existente del Hola con [adjuntar az vm no administrada de disco](/cli/azure/vm/unmanaged-disk#attach). Cuando conecte un disco de duro virtual existente hello, especifique disco toohello Hola URI que obtuvo en hello anterior `az vm show` comando. Hello en el ejemplo siguiente se asocia un toohello de disco duro virtual existente solución de problemas de máquina virtual denominada `myVMRecovery` en grupo de recursos de hello llamado `myResourceGroup`:
+Conecte el disco duro virtual existente con [az vm unmanaged-disk attach](/cli/azure/vm/unmanaged-disk#attach). Cuando conecte el disco duro virtual existente, especifique el identificador URI en el disco obtenido en el comando `az vm show` anterior. En el ejemplo siguiente se conecta un disco duro virtual existente a la máquina virtual de solución de problemas con el nombre `myVMRecovery` en el grupo de recursos denominado `myResourceGroup`:
 
 ```azurecli
 az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecovery \
@@ -86,18 +86,18 @@ az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecov
 ```
 
 
-## <a name="mount-hello-attached-data-disk"></a>Montar el disco de datos adjuntos de Hola
+## <a name="mount-the-attached-data-disk"></a>Montaje del disco de datos conectado
 
 > [!NOTE]
-> Hello en los ejemplos siguientes detallan los pasos de hello necesarios en una VM Ubuntu. Si usas una distribución de Linux diferentes, por ejemplo, Red Hat Enterprise Linux o SUSE, ubicaciones de archivos de registro de hello y `mount` comandos pueden ser ligeramente diferentes. Consulte la documentación de toohello para su distribución específica para los cambios adecuados de hello en comandos.
+> Los siguientes ejemplos detallan los pasos necesarios en una máquina virtual Ubuntu. Si usas una distribución de Linux diferente como Red Hat Enterprise Linux o SUSE, el registro de ubicaciones del archivo de registro y los comandos `mount` pueden ser ligeramente diferentes. Consulte la documentación para su distribución específica para los cambios apropiados en los comandos.
 
-1. SSH tooyour de solución de problemas de máquina virtual con las credenciales adecuadas de Hola. Si este disco es Hola primera datos disco conectado tooyour solución de problemas de máquina virtual, es probable que está conectado a disco Hola demasiado`/dev/sdc`. Use `dmseg` tooview discos conectados:
+1. SSH en la máquina virtual de solución de problemas con las credenciales apropiadas. Si este disco es el primer disco de datos conectado a la máquina virtual de solución de problemas, es probable que el disco se conecte a `/dev/sdc`. Use `dmseg` para ver los discos conectados:
 
     ```bash
     dmesg | grep SCSI
     ```
 
-    Hola de salida es similar toohello siguiente ejemplo:
+    La salida es similar a la del ejemplo siguiente:
 
     ```bash
     [    0.294784] SCSI subsystem initialized
@@ -107,53 +107,53 @@ az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecov
     [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
     ```
 
-    En el anterior ejemplo de Hola, disco de hello SO está en `/dev/sda` y proporcionadas para cada máquina virtual está en el disco temporal hello `/dev/sdb`. Si hubiera varios discos de datos, deben estar en `/dev/sdd`, `/dev/sde`, y así sucesivamente.
+    En el ejemplo anterior, el disco del sistema operativo está en `/dev/sda` y el disco temporal que se proporciona para cada máquina virtual está en `/dev/sdb`. Si hubiera varios discos de datos, deben estar en `/dev/sdd`, `/dev/sde`, y así sucesivamente.
 
-2. Cree un directorio toomount el disco duro virtual existente. Hello en el ejemplo siguiente se crea un directorio denominado `troubleshootingdisk`:
+2. Cree un directorio para montar el disco duro virtual existente. El ejemplo siguiente permite crear un directorio llamado `troubleshootingdisk`:
 
     ```bash
     sudo mkdir /mnt/troubleshootingdisk
     ```
 
-3. Si tiene varias particiones en el disco duro virtual existente, monte partición Hola necesario. Hello en el ejemplo siguiente se monta primera partición primaria hello en `/dev/sdc1`:
+3. Si tiene varias particiones en el disco duro virtual existente, monte la partición requerida. En el ejemplo siguiente, se monta la primera partición principal en `/dev/sdc1`:
 
     ```bash
     sudo mount /dev/sdc1 /mnt/troubleshootingdisk
     ```
 
     > [!NOTE]
-    > Procedimiento recomendado es toomount discos de datos en máquinas virtuales en Azure mediante Hola identificador único universal (UUID) de disco duro virtual de Hola. En este escenario de solución de problemas corto, el montaje Hola disco duro con hello UUID no es necesario. Sin embargo, en condiciones normales, edición `/etc/fstab` discos duros virtuales toomount mediante el nombre de dispositivo en lugar de UUID puede provocar Hola VM toofail tooboot.
+    > El procedimiento recomendado consiste en montar los discos de datos en máquinas virtuales en Azure con el identificador único universal (UUID) del disco duro virtual. En este breve escenario de solución de problemas, no es necesario montar el disco duro virtual con el UUID. Sin embargo, en circunstancias normales, editar `/etc/fstab` para montar los discos duros virtuales mediante el nombre de dispositivo en lugar del UUID puede provocar que la máquina virtual no se pueda arrancar.
 
 
 ## <a name="fix-issues-on-original-virtual-hard-disk"></a>Solución de problemas en el disco duro virtual original
-Con hello disco duro virtual existente montado, ahora puede realizar cualquier tarea de mantenimiento y solución de problemas de pasos según sea necesario. Una vez que se ha solucionado problemas hello, continúe con hello pasos.
+Con el disco duro virtual existente montado, ahora puede realizar todos los pasos de mantenimiento y solución de problemas según sea necesario. Una vez que se han resuelto los problemas, continúe con los pasos siguientes.
 
 
 ## <a name="unmount-and-detach-original-virtual-hard-disk"></a>Desmontaje y desconexión del disco duro virtual original
-Una vez que se resuelven los errores, desmonta y separar hello: disco duro virtual existente de la máquina virtual para solucionar problemas. No se puede usar el disco duro virtual con cualquier otra máquina virtual hasta que se libera la concesión de hello adjuntar toohello de disco duro virtual de hello VM de solución de problemas.
+Una vez resueltos los errores, desmonte y desconecte el disco duro virtual existente de la máquina virtual de solución de problemas. No se podrá usar el disco duro virtual en ninguna otra máquina virtual hasta que se libere la concesión que conecta el disco duro virtual a la máquina virtual de solución de problemas.
 
-1. De tooyour de sesión SSH de hello VM de solución de problemas, desmonte hello: disco duro virtual existente. Cambie primero fuera del directorio principal de hello para el punto de montaje:
+1. Desde la sesión SSH a la máquina virtual de solución de problemas, desmonte el disco duro virtual existente. Cambie primero el directorio primario del punto de montaje:
 
     ```bash
     cd /
     ```
 
-    Desmonte ahora hello: disco duro virtual existente. Hello en el ejemplo siguiente se desmonta dispositivo hello en `/dev/sdc1`:
+    Ahora, desmonte el disco duro virtual existente. El siguiente ejemplo desmonta el dispositivo en `/dev/sdc1`:
 
     ```bash
     sudo umount /dev/sdc1
     ```
 
-2. Ahora separar Hola de disco duro virtual de VM de Hola. Salga de hello SSH sesión tooyour solución de problemas de máquina virtual. Hola lista adjunta datos discos tooyour solución de problemas de máquina virtual con [lista de discos no administrada de vm de az](/cli/azure/vm/unmanaged-disk#list). el ejemplo siguiente se enumeran Hola discos de datos Hello adjunta toohello máquina virtual denominada `myVMRecovery` en grupo de recursos de hello llamado `myResourceGroup`:
+2. Ahora, desconecte el disco duro virtual de la máquina virtual. Salga de la sesión SSH a la máquina virtual de solución de problemas. Enumere los discos de datos conectados a la máquina virtual de solución de problemas con [az vm unmanaged-disk list](/cli/azure/vm/unmanaged-disk#list). En el ejemplo siguiente se muestran los discos de datos conectados a la máquina virtual denominada `myVMRecovery` en el grupo de recursos denominado `myResourceGroup`:
 
     ```azurecli
     azure vm unmanaged-disk list --resource-group myResourceGroup --vm-name myVMRecovery \
         --query '[].{Disk:vhd.uri}' --output table
     ```
 
-    Anote el nombre de hello para el disco duro virtual existente. Por ejemplo, nombre de Hola de un disco con Hola URI de **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd** es **myVHD**. 
+    Anote el nombre del disco duro virtual existente. Por ejemplo, el nombre de un disco con el identificador URI de **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd** es **myVHD**. 
 
-    Desconectar el disco de datos de hello de la máquina virtual [separar az vm no administrada de disco](/cli/azure/vm/unmanaged-disk#detach). Hello en el ejemplo siguiente se separa con el nombre de disco de hello `myVHD` de máquina virtual denominada hello `myVMRecovery` en hello `myResourceGroup` grupo de recursos:
+    Desconecte el disco de datos de la máquina virtual [az vm unmanaged-disk detach](/cli/azure/vm/unmanaged-disk#detach). En el ejemplo siguiente se desconecta el disco llamado `myVHD` de la máquina virtual llamada `myVMRecovery` del grupo de recursos `myResourceGroup`:
 
     ```azurecli
     az vm unmanaged-disk detach --resource-group myResourceGroup --vm-name myVMRecovery \
@@ -162,11 +162,11 @@ Una vez que se resuelven los errores, desmonta y separar hello: disco duro virtu
 
 
 ## <a name="create-vm-from-original-hard-disk"></a>Creación de máquina virtual a partir del disco duro original
-usar una máquina virtual desde el disco duro virtual original de toocreate [esta plantilla de Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd). plantilla JSON real de Hello está en hello siguiente vínculo:
+Para crear una máquina virtual a partir del disco duro virtual original, utilice [esta plantilla de Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd). La plantilla JSON real está en el siguiente vínculo:
 
 - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-specialized-vhd/azuredeploy.json
 
-plantilla Hello implementa una máquina virtual mediante Hola URI de VHD de hello comando anteriormente. Implementar la plantilla de hello con [Crear implementación de grupo az](/cli/azure/group/deployment#create). Proporcionar Hola URI tooyour VHD original y, a continuación, especifique Hola SO tipo, tamaño de máquina virtual y nombre de máquina virtual como se indica a continuación:
+La plantilla implementa una máquina virtual mediante el identificador URI del VHD del comando anterior. Implemente la plantilla con [az group deployment create](/cli/azure/group/deployment#create). Especifique el identificador URI en el VHD original y, después, especifique tanto el tipo de sistema operativo, como el tamaño y nombre de la máquina virtual como se indica a continuación:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup --name myDeployment \
@@ -178,11 +178,11 @@ az group deployment create --resource-group myResourceGroup --name myDeployment 
 ```
 
 ## <a name="re-enable-boot-diagnostics"></a>Rehabilitación de los diagnósticos de arranque
-Cuando se crea la máquina virtual de hello: disco duro virtual existente, el diagnóstico de arranque puede no se habilita automáticamente. Habilite el diagnóstico de arranque con [az vm boot-diagnostics enable](/cli/azure/vm/boot-diagnostics#enable). Hello en el ejemplo siguiente se habilita extensión de diagnóstico de hello en hello máquina virtual denominada `myDeployedVM` en grupo de recursos de hello llamado `myResourceGroup`:
+Cuando se crea la máquina virtual desde el disco duro virtual existente, puede que no se habilite automáticamente el diagnóstico de arranque. Habilite el diagnóstico de arranque con [az vm boot-diagnostics enable](/cli/azure/vm/boot-diagnostics#enable). En el ejemplo siguiente se habilita la extensión de diagnóstico en la máquina virtual denominada `myDeployedVM` en el grupo de recursos `myResourceGroup`:
 
 ```azurecli
 az vm boot-diagnostics enable --resource-group myResourceGroup --name myDeployedVM
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-Si tiene problemas para conectarse tooyour VM, consulte [solucionar problemas de SSH conexiones tooan Azure VM](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Para problemas con el acceso a aplicaciones que se ejecutan en su máquina virtual, consulte [Solucionar problemas de conectividad de aplicaciones en una máquina virtual de Linux en Azure](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Si tiene problemas para conectarse a la máquina virtual, consulte [Solución de problemas de conexiones SSH a una máquina virtual Linux de Azure](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Para problemas con el acceso a aplicaciones que se ejecutan en su máquina virtual, consulte [Solucionar problemas de conectividad de aplicaciones en una máquina virtual de Linux en Azure](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

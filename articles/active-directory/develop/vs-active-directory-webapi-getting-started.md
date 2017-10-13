@@ -1,6 +1,6 @@
 ---
-title: aaaGet iniciado con Azure AD en los proyectos de WebApi de Visual Studio | Documentos de Microsoft
-description: "Cómo tooget iniciado con Azure Active Directory en los proyectos de WebApi después de conectarse tooor creación de un anuncio de Azure con Visual Studio servicios conectados"
+title: "Introducción a Azure AD en proyectos de WebApi de Visual Studio | Microsoft Docs"
+description: "Cómo empezar a usar Azure Active Directory en los proyectos de WebApi después de crear un Azure AD usando los servicios conectados de Visual Studio o de conectarse a él"
 services: active-directory
 documentationcenter: 
 author: kraigb
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/19/2017
 ms.author: kraigb
 ms.custom: aaddev
-ms.openlocfilehash: 21413a71a2fd61f31268bf6d5e4d86b8be5bd16a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a756316054dd3bb63f3b0a9f59621bb1345bc693
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="get-started-with-azure-active-directory-and-visual-studio-connected-services-webapi-projects"></a>Introducción a Azure Active Directory y servicios conectados de Visual Studio (proyectos de WebApi)
 > [!div class="op_single_selector"]
@@ -28,8 +28,8 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-## <a name="requiring-authentication-tooaccess-controllers"></a>Controladores de tooaccess de autenticación necesaria
-Todos los controladores en el proyecto se complementadas con hello **Authorize** atributo. Este atributo requiere hello toobe de usuario autenticado antes de obtener acceso a las API de hello definido por estos controladores. tooallow Hola controlador toobe acceso anónimo, a quitar este atributo de controlador de Hola. Si desea tooset Hola permisos en un nivel más granular, aplicar el método de tooeach de atributo de Hola que requiera una autorización en lugar de aplicar la clase de controlador de toohello.
+## <a name="requiring-authentication-to-access-controllers"></a>Requerimiento de autenticación para obtener acceso a los controladores
+Todos los controladores de su proyecto cuentan ahora con el atributo **Authorize** . Este atributo requiere que el usuario se autentique antes de tener acceso a las API definidas por estos controladores. Para permitir el acceso anónimo al controlador, quite este atributo del controlador. Si desea establecer los permisos a un nivel más detallado, aplique el atributo a cada método que requiere autorización en vez de aplicarlo a la clase del controlador.
 
 ## <a name="next-steps"></a>Pasos siguientes
 [Más información acerca de Azure Active Directory](https://azure.microsoft.com/services/active-directory/)

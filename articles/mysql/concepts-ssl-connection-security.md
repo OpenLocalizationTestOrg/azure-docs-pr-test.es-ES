@@ -1,6 +1,6 @@
 ---
-title: aaaSSL conectividad de base de datos de Azure para MySQL | Documentos de Microsoft
-description: "Información para configurar la base de datos MySQL y tooproperly de aplicaciones asociadas de usar conexiones SSL"
+title: Conectividad SSL de Azure Database for MySQL | Microsoft Docs
+description: "Información para configurar Azure Database for MySQL y las aplicaciones asociadas, a fin de usar correctamente las conexiones SSL"
 services: mysql
 author: JasonMAnderson
 ms.author: janders
@@ -9,23 +9,23 @@ manager: jhubbard
 ms.service: mysql-database
 ms.topic: article
 ms.date: 05/10/2017
-ms.openlocfilehash: 6fca7c88fc0f1fd6058d68fcff90fd409abd97a7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4b03b3a2dbfad92cc0cfa84777b38ddff90452cf
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="ssl-connectivity-in-azure-database-for-mysql"></a>Conectividad SSL de Azure Database for MySQL
-Base de datos de Azure para MySQL permite conectar las aplicaciones de tooclient de servidor de base de datos mediante capa de Sockets seguros (SSL). Aplicar las conexiones SSL entre el servidor de base de datos y las aplicaciones cliente ayuda a protege contra los ataques de "tipo man in intermedio Hola" mediante el cifrado de flujo de datos de hello entre servidor hello y la aplicación.
+Azure Database for MySQL permite conectar el servidor de bases de datos a las aplicaciones cliente con la Capa de sockets seguros (SSL). El establecimiento de conexiones SSL entre el servidor de bases de datos y las aplicaciones cliente ofrece protección frente a ataques de tipo "Man in the middle" mediante el cifrado del flujo de datos entre el servidor y la aplicación.
 
 ## <a name="default-settings"></a>Configuración predeterminada
-De forma predeterminada, servicio de base de datos de hello debe estar configurado toorequire SSL conexiones al conectar tooMySQL.  Se recomienda evitar la desactivación de la opción de SSL de hello siempre que sea posible. 
+De forma predeterminada, el servicio de base de datos debe configurarse para requerir conexiones SSL al conectar con MySQL.  Se recomienda evitar que se deshabilite la opción SSL siempre que sea posible. 
 
-Al aprovisionar una nueva base de datos de Azure de MySQL server a través de hello portal de Azure y la CLI, el cumplimiento de las conexiones SSL está habilitado de forma predeterminada. 
+Al aprovisionar un nuevo servidor de Azure Database for MySQL en Azure Portal o con la CLI de Azure, el establecimiento de conexiones SSL está habilitado de forma predeterminada. 
 
-Del mismo modo, las cadenas de conexión que están predefinidas en la configuración de "Cadenas de conexión" hello en el servidor en hello portal de Azure incluyen parámetros de hello necesario para idiomas tooconnect tooyour base de datos servidor común mediante SSL. Hello parámetro SSL varía en función de conector de hello, por ejemplo "ssl = true" o "sslmode = requieren" o "sslmode = necesaria" y otras variaciones.
+Del mismo modo, las cadenas de conexión que están predefinidas en la configuración de "Cadenas de conexión" del servidor en Azure Portal incluyen los parámetros necesarios para que los lenguajes comunes se conecten al servidor de base de datos mediante SSL. El parámetro SSL varía según el conector; por ejemplo "ssl=true", "sslmode=require", "sslmode=required" y otras variaciones.
 
-toolearn cómo tooenable o deshabilitar conexión de SSL al desarrollar la aplicación, consulte demasiado[cómo tooconfigure SSL](howto-configure-ssl.md).
+Para obtener información sobre cómo habilitar o deshabilitar la conexión SSL al desarrollar la aplicación, vea [Configuración de SSL](howto-configure-ssl.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
 [Bibliotecas de conexiones de Azure Database for MySQL](concepts-connection-libraries.md)

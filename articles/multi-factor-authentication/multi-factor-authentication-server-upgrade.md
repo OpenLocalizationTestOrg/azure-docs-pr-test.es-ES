@@ -1,6 +1,6 @@
 ---
-title: "actualización del servidor de MFA de aaaAzure | Documentos de Microsoft"
-description: "Los pasos y orientación tooupgrade Hola versión más reciente de tooa de servidor de autenticación multifactor de Azure."
+title: "Actualización de Servidores Azure MFA | Microsoft Docs"
+description: "Pasos e instrucciones para actualizar el Servidor Microsoft Azure Multi-Factor Authentication a una versión más reciente."
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -15,96 +15,96 @@ ms.date: 06/16/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
-ms.openlocfilehash: aaa8d400e0e5f1c6be3a6d22cde6dd893ef4d546
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 6e4e09f8539aad56f92ad9137f4a6b9eb0d82370
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="upgrade-toohello-latest-azure-multi-factor-authentication-server"></a>Actualizar toohello más reciente servidor de autenticación multifactor de Azure
+# <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Actualización a la versión más reciente del Servidor Microsoft Azure Multi-Factor Authentication
 
-Este artículo le guiará a través de hello proceso de actualización de la versión 6.0 de servidor Azure Multi-factor Authentication (MFA) o superior. Si necesita una versión anterior de PhoneFactor Agent hello tooupgrade, consulte demasiado[actualización hello PhoneFactor Agent tooAzure servidor Multi-factor Authentication](multi-factor-authentication-get-started-server-upgrade.md).
+Este artículo lo guiará a través del proceso de actualización de la versión 6.0 o superior del Servidor Microsoft Azure Multi-Factor Authentication (MFA). Si necesita actualizar una versión anterior de PhoneFactor Agent, consulte [Actualización de PhoneFactor Agent al Servidor Azure Multi-Factor Authentication](multi-factor-authentication-get-started-server-upgrade.md).
 
-Si está actualizando desde v6.x o toov7.x anterior o posterior, cambien todos los componentes de too.NET 2.0 de .NET 4.5. Todos los componentes también requieren Microsoft Visual C++ 2015 Redistributable Update 1 o una versión superior. instalador de servidor MFA de Hello instala ambas versiones de hello x86 y x64 de estos componentes si no están ya instalados. Si Hola Portal de usuarios y servicio de la aplicación Web móvil que se ejecutan en servidores diferentes, deberá tooinstall esos paquetes antes de actualizar los componentes. Puede buscar actualización más reciente de Microsoft Visual C++ 2015 Redistributable hello en hello [Microsoft Download Center](https://www.microsoft.com/en-us/download/). 
+Si va a actualizar desde la versión 6.x o anterior a la 7.x o una más reciente, todos los componentes de .NET 2.0 a .NET 4.5. Todos los componentes también requieren Microsoft Visual C++ 2015 Redistributable Update 1 o una versión superior. El programa de instalación del Servidor MFA instalará las versiones x86 y x64 de estos componentes si no están ya instalados. Si el Portal de usuarios y el servicio web de aplicación móvil se ejecutan en servidores diferentes, debe instalar los paquetes antes de actualizar los componentes. También puede buscar la última actualización de Microsoft Visual C++ 2015 Redistributable en el [Centro de descarga de Microsoft](https://www.microsoft.com/en-us/download/). 
 
-## <a name="install-hello-latest-version-of-azure-mfa-server"></a>Instale Hola la versión más reciente del servidor Azure MFA
+## <a name="install-the-latest-version-of-azure-mfa-server"></a>Instalación de la versión más reciente del Servidor Azure MFA
 
-1. Siga las instrucciones de hello en [descarga Hola servidor Azure Multi-factor Authentication](multi-factor-authentication-get-started-server.md#download-the-azure-multi-factor-authentication-server) versión más reciente de hello tooget de hello servidor Azure MFA.
-2. Realizar una copia de seguridad del archivo de datos del servidor MFA Hola ubicado en C:\Program programa\multi-Factor Authentication Server\Data\PhoneFactor.pfdata (ubicación de instalación de suponiendo un saludo predeterminado) en el servidor principal de MFA.
-3. Si ejecuta varios servidores para alta disponibilidad, cambiar los sistemas de Hola que autentican toohello servidor MFA para que detengan enviar tráfico toohello servidores que van a actualizar. Si usa un equilibrador de carga, quitar un servidor de MFA de equilibrador de carga de hello, Hola actualización y, a continuación, vuelva a agregar servidor hello a granja de servidores de Hola.
-4. Ejecute el instalador nuevo de hello en cada servidor de MFA. Actualizar los servidores subordinados en primer lugar porque pueden leer Hola antiguo archivo de datos está replicando maestro Hola. 
+1. Siga las instrucciones [Descarga de Servidor Azure Multi-Factor Authentication](multi-factor-authentication-get-started-server.md#download-the-azure-multi-factor-authentication-server) para obtener la versión más reciente del Servidor Azure MFA.
+2. Realice una copia de seguridad del archivo de datos de Servidor MFA ubicado en C:\Archivos de programa\Multi-Factor Authentication Server\Data\PhoneFactor.pfdata (se da por hecho que es la ubicación de instalación predeterminada) en la instancia principal de Servidor MFA.
+3. Si ejecuta varios servidores para lograr alta disponibilidad, cambie los sistemas cliente que se autentican en el Servidor MFA para que se deje de enviar tráfico a los servidores que va a actualizar. Si usa un equilibrador de carga, quite un Servidor MFA del equilibrador de carga, realice la actualización y vuelva a agregarlo a la granja de servidores.
+4. Ejecute el programa de instalación nuevo en cada Servidor MFA. Actualice primero los servidores subordinados porque pueden leer el archivo de datos antiguo que está replicando la instancia principal. 
 
-  No es necesario toouninstall el servidor de MFA actual antes de ejecutar instalador Hola. instalador de Hello lleva a cabo una actualización en contexto. Hello ruta de instalación recoge desde el registro de hello de instalación anterior de hello, por lo que instala en hello misma ubicación (por ejemplo, C:\Program programa\multi-Factor Authentication Server). 
+  No hay que desinstalar el Servidor MFA actual antes de ejecutar el programa de instalación, ya que este realiza una actualización local. La ruta de instalación se selecciona del Registro de la instalación anterior, por lo que se instalará en la misma ubicación (por ejemplo, C:\Archivos de programa\Multi-Factor Authentication Server). 
   
-5. Si le tooinstall solicitadas Microsoft Visual C++ 2015 Redistributable actualización paquete, Aceptar Hola aviso. Se instalan las versiones de x86 y x64 de Hola de paquetes de saludo.
-5. Si usas Hola SDK del servicio Web, se le solicitará tooinstall Hola nuevo SDK del servicio Web. Cuando se instala Hola nuevo SDK del servicio Web, asegúrese de que ese nombre de directorio virtual Hola coincide con directorio virtual Hola instalado anteriormente (por ejemplo, MultiFactorAuthWebServiceSdk).
-6. Repita los pasos de hello en todos los servidores subordinados. Promover uno de hello subordinados toobe Hola nuevo maestro y, a continuación, Hola actualización antiguo servidor maestro. 
+5. Si se le solicita que instale un paquete de actualización de Microsoft Visual C++ 2015 Redistributable, acepte. Se instalan las versiones x86 y x64 del paquete.
+5. Si utiliza el SDK del servicio web, deberá instalar el SDK del servicio web nuevo. Cuando se instala el nuevo SDK del servicio web, asegúrese de que el nombre del directorio virtual coincide con el que se instaló (por ejemplo, MultiFactorAuthWebServiceSdk).
+6. Repita los pasos en todos los servidores subordinados. Elija uno de los subordinados como el nuevo servidor principal; después, actualice el servidor principal antiguo. 
 
-## <a name="upgrade-hello-user-portal"></a>Actualizar Hola Portal de usuarios
+## <a name="upgrade-the-user-portal"></a>Actualización del Portal de usuarios
 
-1. Realizar una copia de seguridad del archivo web.config de Hola que se encuentra en el directorio virtual de Hola de hello ubicación de instalación del Portal de usuarios (por ejemplo, C:\inetpub\wwwroot\MultiFactorAuth). Si se realizan cambios en el tema predeterminado toohello, realizar una copia de seguridad de carpeta también de hello App_Themes\Default. Es mejor toocreate una copia de la carpeta predeterminada de Hola y crear un nuevo tema de tema de toochange Hola predeterminado.
-2. Si Hola Portal de usuarios se ejecuta en Hola Hola mismo servidor como Hola otros componentes de servidor MFA, instalación de servidor MFA le pide que tooupdate Hola Portal de usuarios. Aceptar el aviso de hello e instale la actualización del Portal de usuarios de Hola. Comprobar ese nombre de directorio virtual Hola coincide con un directorio virtual de hello instalado anteriormente (por ejemplo, MultiFactorAuth).
-3. Si Hola Portal de usuarios está en su propio servidor, copiar el archivo de MultiFactorAuthenticationUserPortalSetup64.msi de Hola de hello instale ubicación de uno de los servidores de MFA de Hola y colocarla en el servidor web de Portal de usuarios de Hola. Ejecute al instalador de Hola. 
+1. Realice una copia de seguridad del archivo web.config que se encuentra en el directorio virtual de la ubicación de instalación del Portal de usuarios (por ejemplo, C:\inetpub\wwwroot\MultiFactorAuth). Si se realizaron cambios realizados en el tema predeterminado, realice también una copia de seguridad de la carpeta App_Themes\Default. Se recomienda crear una copia en la carpeta predeterminada y un nuevo tema en lugar de cambiar el tema predeterminado.
+2. Si el Portal de usuarios se ejecuta en el mismo servidor que los demás componentes del Servidor MFA, durante la instalación se le pedirá que actualice el Portal de usuarios. Acepte el mensaje e instale la actualización del Portal de usuarios. Asegúrese de que el nombre del directorio virtual coincide con el que se instaló (por ejemplo, MultiFactorAuth).
+3. Si el Portal de usuarios se encuentra en su propio servidor, copie el archivo MultiFactorAuthenticationUserPortalSetup64.msi de la ubicación de instalación de uno de los Servidores MFA y colóquelo en el servidor web del Portal de usuarios. Ejecute al programa de instalación. 
 
-  Si se produce un error que indica, "Microsoft Visual C++ 2015 Redistributable Update 1 o posterior es necesario," descargar e instalar paquete de actualización más reciente de Hola de hello [Microsoft Download Center](https://www.microsoft.com/download/). Instalar las versiones de x86 y x64 de Hola.
+  Si se produce un error que indica que se requiere Microsoft Visual C++ 2015 Redistributable Update 1 o posterior, descargue e instale el paquete de actualización más reciente del [Centro de descarga de Microsoft](https://www.microsoft.com/download/). Instale las versiones x86 y x64.
 
-4. Una vez Hola actualizado el software está instalado el Portal de usuarios, comparar copia de seguridad de web.config de hello realizada en el paso 1 con el archivo web.config de la nueva hello. Si no existe ningún atributo nuevo en el archivo web.config nuevo de hello, copie su copia de seguridad web.config en Hola Hola de toooverwrite de directorio virtual nuevo. Otra opción es hello SDK del servicio Web desde el archivo de copia de seguridad de hello en web.config nuevo hello y valores de toocopy y pegar Hola appSettings.
+4. Después de instala el software del Portal de usuarios actualizado, compare la copia de seguridad de web.config que realizó en el paso 1 con el nuevo archivo web.config. Si no hay ningún atributo nuevo en el archivo web.config nuevo, copie el archivo web.config de copia de seguridad en el directorio virtual para sobrescribir el nuevo. Otra opción consiste en copiar y pegar los valores de appSettings y la URL del SDK del servicio web desde el archivo de copia de seguridad al archivo web.config nuevo.
 
-Si tienes Hola Portal de usuarios en varios servidores, repita instalación hello en todos ellos. 
+Si tiene el Portal de usuarios en varios servidores, repita la instalación en todos ellos. 
 
 
-## <a name="upgrade-hello-mobile-app-web-service"></a>Hola actualización de servicio de la aplicación Web móvil
+## <a name="upgrade-the-mobile-app-web-service"></a>Actualización del servicio web de aplicación móvil
 
-1. Realizar una copia de seguridad del archivo web.config de Hola que está en el directorio virtual de Hola de hello ubicación de instalación del servicio de la aplicación Web móvil (por ejemplo, C:\inetpub\wwwroot\app o C:\inetpub\wwwroot\MultiFactorAuthMobileAppWebService).
-2. Archivo de copia hello MultiFactorAuthenticationMobileAppWebServiceSetup64.msi de hello ubicación del programa Hola a servidores de MFA de instalación y colóquelo en el servidor de web de registro de aplicación móvil de Hola.
-3. Ejecute al instalador de Hola. 
+1. Realice una copia de seguridad del archivo web.config que se encuentra en el directorio virtual de la ubicación de instalación del servicio web de aplicación móvil (por ejemplo, C:\inetpub\wwwroot\app o C:\inetpub\wwwroot\MultiFactorAuthMobileAppWebService).
+2. Copie el archivo MultiFactorAuthenticationMobileAppWebServiceSetup64.msi de la ubicación de instalación de los Servidores MFA y colóquelo en el servidor web de registro de aplicación móvil.
+3. Ejecute al programa de instalación. 
 
-  Si se produce un error que indica que Microsoft Visual C++ 2015 Redistributable Update 1 o posterior es necesario, descargue e instale el paquete de actualización más reciente de Hola desde hello [Microsoft Download Center](https://www.microsoft.com/download/). Instalar las versiones de x86 y x64 de Hola.
+  Si se produce un error que indica que se requiere Microsoft Visual C++ 2015 Redistributable Update 1 o posterior, descargue e instale el paquete de actualización más reciente del [Centro de descarga de Microsoft](https://www.microsoft.com/download/). Instale las versiones x86 y x64.
 
-4. Una vez instalado el software de servicio de la aplicación Web móvil Hola actualizado, comparar archivo web.config de Hola que se copió en el paso 1 con el nuevo archivo de web.config Hola. Si no existe ningún atributo nuevo en el archivo web.config nuevo de hello, puede copiar al archivo web.config guardados en el directorio virtual de Hola y sobrescribir Hola uno nuevo. Otra opción es hello SDK del servicio Web desde el archivo de copia de seguridad de hello en web.config nuevo hello y valores de toocopy y pegar Hola appSettings.
+4. Cuando se haya instalado el software del servicio web de aplicación móvil actualizado, compare el archivo web.config que se copió en el paso 1 con el archivo web.config nuevo. Si no hay ningún atributo nuevo en el archivo web.config nuevo, puede copiar el archivo web.config guardado en el directorio virtual y sobrescribir el nuevo. Otra opción consiste en copiar y pegar los valores de appSettings y la URL del SDK del servicio web desde el archivo de copia de seguridad al archivo web.config nuevo.
 
-Si tienes Hola servicio Web de aplicación móvil en varios servidores, repita instalación hello en todos ellos. 
+Si tiene el servicio web de aplicación móvil en varios servidores, repita la instalación en todos ellos. 
 
-## <a name="upgrade-hello-ad-fs-adapters"></a>Actualizar Hola adaptadores de AD FS
+## <a name="upgrade-the-ad-fs-adapters"></a>Actualización de los adaptadores de AD FS
 
 
 ### <a name="if-mfa-runs-on-different-servers-than-ad-fs"></a>Si MFA se ejecuta en distintos servidores de AD FS
 
-Estas instrucciones solo se aplican si ejecuta el Servidor Multi-Factor Authentication por separado de los servidores de AD FS. Si ambos servicios se ejecutan Hola los mismos servidores, omita esta sección y vaya toohello pasos de instalación. 
+Estas instrucciones solo se aplican si ejecuta el Servidor Multi-Factor Authentication por separado de los servidores de AD FS. Si los dos servicios se ejecutan en los mismos servidores, pase por alto esta sección y avance a los pasos de instalación. 
 
-1. Guardar una copia del archivo MultiFactorAuthenticationAdfsAdapter.config hello que se registró en AD FS o exportar la configuración de hello mediante el siguiente comando de PowerShell de hello: `Export-AdfsAuthenticationProviderConfigurationData -Name [adapter name] -FilePath [path tooconfig file]`. nombre del adaptador Hello es "WindowsAzureMultiFactorAuthentication" o "AzureMfaServerAuthentication" según versión Hola previamente instalada.
-2. Copie Hola siguientes archivos de servidores de hello servidor MFA instalación ubicación toohello AD FS:
+1. Guarde una copia del archivo MultiFactorAuthenticationAdfsAdapter.config que se registró en AD FS o exporte la configuración con el siguiente comando de PowerShell: `Export-AdfsAuthenticationProviderConfigurationData -Name [adapter name] -FilePath [path to config file]`. El nombre del adaptador es "WindowsAzureMultiFactorAuthentication" o "AzureMfaServerAuthentication", dependiendo de la versión instalada previamente.
+2. Copie los siguientes archivos desde la ubicación de instalación del Servidor MFA a los servidores de AD FS:
 
   - MultiFactorAuthenticationAdfsAdapterSetup64.msi
   - Register-MultiFactorAuthenticationAdfsAdapter.ps1
   - Unregister-MultiFactorAuthenticationAdfsAdapter.ps1
   - MultiFactorAuthenticationAdfsAdapter.config
 
-3. Editar script de Hola Register-MultiFactorAuthenticationAdfsAdapter.ps1 agregando `-ConfigurationFilePath [path]` toohello final de hello `Register-AdfsAuthenticationProvider` comando. Reemplace *[path]* con toohello de ruta de acceso completa de hello MultiFactorAuthenticationAdfsAdapter.config archivo o archivo de configuración de Hola se exportó en el paso anterior de Hola. 
+3. Edite el script Register-MultiFactorAuthenticationAdfsAdapter.ps1; para ello, agregue `-ConfigurationFilePath [path]` al final del comando `Register-AdfsAuthenticationProvider`. Reemplace *[path]* por la ruta de acceso completa al archivo MultiFactorAuthenticationAdfsAdapter.config o por el archivo de configuración exportado en el paso anterior. 
 
-  Compruebe los atributos de hello en hello nueva MultiFactorAuthenticationAdfsAdapter.config toosee si coinciden con el archivo de configuración antiguo de Hola. Si los atributos se agregaron o quitaron en la nueva versión de hello, copiar valores de atributo de Hola de toohello de archivo de configuración anterior de hello uno nuevo o modificar hello toomatch de archivo de configuración anterior.
+  Compruebe los atributos del nuevo archivo MultiFactorAuthenticationAdfsAdapter.config para ver si coinciden con el archivo de configuración anterior. Si se han agregado o quitado atributos en la nueva versión, copie los valores de atributo del archivo de configuración antiguo en el nuevo o modifique el archivo de configuración antiguo para que coincida.
 
 ### <a name="install-new-ad-fs-adapters"></a>Instalación de nuevos adaptadores de AD FS
 
 > [!IMPORTANT] 
-> Los usuarios no estarán verificacion tooperform necesaria durante los pasos del 3 al 8 de esta sección. Si tiene AD FS configurado en varios clústeres, puede quitar, actualizar y restaurar la granja de servidores de cada clúster Hola independientemente de Hola otro clústeres tooavoid el tiempo de inactividad.
+> Los usuarios no tendrá que realizar verificación en dos pasos durante los pasos 3-8 de esta sección. Si ha configurado AD FS en varios clústeres, puede quitar, actualizar y restaurar cada clúster de la granja de servidores, independientemente de los otros, para evitar tiempos de inactividad.
 
-1. Quite algunos servidores de AD FS de granja de servidores de Hola. Actualización de estos servidores al Hola que otras siguen en ejecución.
-2. Instale el nuevo adaptador de AD FS hello en cada servidor quitado de la granja de servidores de hello AD FS. Si Hola servidor MFA está instalado en cada servidor de AD FS, puede actualizar a través del administrador del servidor de MFA de hello UX. En caso contrario, actualice ejecutando MultiFactorAuthenticationAdfsAdapterSetup64.msi. 
+1. Quite algunos servidores de AD FS de la granja de servidores. Actualice estos servidores mientras los otros sigan ejecutándose.
+2. Instale al nuevo adaptador de AD FS en cada servidor quitado de la granja de servidores de AD FS. Si el Servidor MFA está instalado en cada servidor de AD FS, puede actualizar con la experiencia de usuario de administrador del Servidor MFS. En caso contrario, actualice ejecutando MultiFactorAuthenticationAdfsAdapterSetup64.msi. 
 
-  Si se produce un error que indica, "Microsoft Visual C++ 2015 Redistributable Update 1 o posterior es necesario," descargar e instalar paquete de actualización más reciente de Hola de hello [Microsoft Download Center](https://www.microsoft.com/download/). Instalar las versiones de x86 y x64 de Hola.
+  Si se produce un error que indica que se requiere Microsoft Visual C++ 2015 Redistributable Update 1 o posterior, descargue e instale el paquete de actualización más reciente del [Centro de descarga de Microsoft](https://www.microsoft.com/download/). Instale las versiones x86 y x64.
 
-3. Vaya demasiado**AD FS** > **las directivas de autenticación** > **Editar directiva de autenticación MultiFactor Global**. Desactive la opción **WindowsAzureMultiFactorAuthentication** o **AzureMFAServerAuthentication** (dependiendo de la versión actual de hello instalada). 
+3. Vaya a **AD FS** > **Directivas de autenticación** > **Editar directiva de autenticación multifactor global**. Desactive **WindowsAzureMultiFactorAuthentication** o **AzureMFAServerAuthentication** (en función de la versión actual instalada). 
 
   Una vez completado este paso, la verificación en dos pasos a través del Servidor MFA no estará disponible en este clúster de AD FS hasta que finalice el paso 8.
 
-4. Versión más antigua de Hola de anular el registro del adaptador de hello AD FS mediante la ejecución de secuencias de comandos de PowerShell Unregister-MultiFactorAuthenticationAdfsAdapter.ps1 Hola. Asegúrese de que hello *-nombre* parámetro ("WindowsAzureMultiFactorAuthentication" o "AzureMFAServerAuthentication") coincide con nombre de Hola que se muestra en el paso 3. Esto aplica tooall servidores en clúster de hello misma instancia de AD FS porque no hay una configuración central.
-5. Registrar nuevo adaptador de AD FS hello mediante la ejecución de secuencias de comandos de PowerShell de Register-MultiFactorAuthenticationAdfsAdapter.ps1 Hola. Esto aplica tooall servidores en clúster de hello misma instancia de AD FS porque no hay una configuración central.
-6. Hola de reinicio del servicio de AD FS en cada servidor quitará Hola granja de AD FS.
-7. Agregar servidores de Hola actualizar de nuevo el conjunto de servidores de toohello AD FS y quitar Hola otros servidores de granja de servidores de Hola.
-8. Vaya demasiado**AD FS** > **las directivas de autenticación** > **Editar directiva de autenticación MultiFactor Global**. Active **AzureMfaServerAuthentication**.
-9. Repita el paso 2: servidores de hello tooupdate ahora se quita de la granja de servidores de hello AD FS y reinicie el servicio de hello AD FS en esos servidores.
-10. Agregue esos servidores en la granja de servidores de AD FS Hola.
+4. Anule el registro de la versión anterior del adaptador de AD FS ejecutando el script de PowerShell Unregister-MultiFactorAuthenticationAdfsAdapter.ps1. Asegúrese de que el parámetro *-Name* ("WindowsAzureMultiFactorAuthentication" o "AzureMFAServerAuthentication") coincide con el nombre que aparecía en el paso 3. Esto se aplica a todos los servidores del mismo clúster de AD FS porque no hay una configuración central.
+5. Registre el nuevo adaptador de AD FS ejecutando el script de PowerShell Register-MultiFactorAuthenticationAdfsAdapter.ps1 para registrar el nuevo adaptador de AD FS. Esto se aplica a todos los servidores del mismo clúster de AD FS porque no hay una configuración central.
+6. Reinicie el servicio de AD FS en cada servidor que se quitó de la granja de servidores de AD FS.
+7. Vuelva a agregar los servidores actualizados a la granja de servidores de AD FS y quite los otros.
+8. Vaya a **AD FS** > **Directivas de autenticación** > **Editar directiva de autenticación multifactor global**. Active **AzureMfaServerAuthentication**.
+9. Repita el paso 2 para actualizar los servidores ya quitados de la granja de servidores de AD FS y reinicie el servicio de AD FS en esos servidores.
+10. Vuelva a agregar los servidores a la granja de servidores de AD FS.
 
 ## <a name="next-steps"></a>Pasos siguientes
 

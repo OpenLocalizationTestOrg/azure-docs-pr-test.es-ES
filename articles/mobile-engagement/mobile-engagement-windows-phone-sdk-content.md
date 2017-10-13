@@ -1,6 +1,6 @@
 ---
-title: "aaaWindows contenido de SDK de Silverlight de teléfono"
-description: "Obtenga información sobre el contenido de Hola de hello SDK de Windows Phone Silverlight para Azure Mobile Engagement"
+title: Contenido del SDK de Windows Phone Silverlight
+description: "Obtenga información sobre el contenido del SDK de Windows Phone Silverlight para Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
@@ -14,22 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: c39247383d65200493d028a80d444a6e96a697cd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ce323880100706accf0c08c9929d20908c6198cb
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="windows-phone-silverlight-sdk-content"></a>Contenido del SDK de Windows Phone Silverlight
-Este documento enumera y describe el contenido de hello implementada por hello SDK en la aplicación.
+En este documento se enumera y describe el contenido implementado por el SDK de la aplicación.
 
-## <a name="hello-resources-folder"></a>Hola `/Resources` carpeta
-Esta carpeta contiene todos los recursos de Hola que necesita de Mobile Engagement. También puede personalizar toofit la aplicación.
+## <a name="the-resources-folder"></a>La carpeta `/Resources`
+En esta carpeta se incluyen todos los recursos que necesita Mobile Engagement. Además, puede personalizarlas para adaptarlas a su aplicación.
 
-* `EngagementIconNotification.png`: icono de marca de hello mostrado en hello a la izquierda de una notificación, remplazar éste mediante el icono de marca.
-* `EngagementIconOk.png`: icono de "Aceptar" hello de hello obtener acceso a páginas ApplicationBar.
-* `EngagementIconCancel.png`: Hola "Cancelar" icono de hello alcanzar páginas ApplicationBar.
-* `EngagementIconCloseLight.png`: el icono "Cerrar" hello de hello Mobile Engagement alcanzar notificación para el tema claro Hola de Windows Phone.
-* `EngagementIconCloseDark.png`: el icono "Cerrar" hello de hello Mobile Engagement alcanzar notificación para el tema oscuro Hola de Windows Phone.
-* `EngagementConfiguration.xml`: Hola archivo de configuración de Mobile Engagement, que es donde puede personalizar la configuración de la interacción (cadena de conexión de contratación, informe bloqueos etcetera).
+* `EngagementIconNotification.png` : el icono de marca que se muestra a la izquierda de una notificación, sustituya este por el icono de la marca.
+* `EngagementIconOk.png` : el icono "Aceptar" del objeto ApplicationBar de las páginas de Cobertura.
+* `EngagementIconCancel.png` : el icono "Cancelar" del objeto ApplicationBar de las páginas de Cobertura.
+* `EngagementIconCloseLight.png` : el icono "Cerrar" de la notificación de Cobertura de Engagement para el tema claro de Windows Phone.
+* `EngagementIconCloseDark.png` : el icono "Cerrar" de la notificación de Cobertura de Engagement para el tema oscuro de Windows Phone.
+* `EngagementConfiguration.xml` : el archivo de configuración de Mobile Engagement, donde puede personalizar la configuración de Engagement (cadena de conexión, bloqueo de informes, etc.).
 

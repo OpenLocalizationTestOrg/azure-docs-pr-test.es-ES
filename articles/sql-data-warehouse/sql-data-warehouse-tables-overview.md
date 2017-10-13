@@ -1,5 +1,5 @@
 ---
-title: "aaaOverview de tablas en el almacén de datos de SQL | Documentos de Microsoft"
+title: "Información general acerca de las tablas en SQL Data Warehouse | Microsoft Docs"
 description: "Introducción a las tablas de Azure SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 06/29/2016
 ms.author: shigu;jrj
-ms.openlocfilehash: 4edabcb4b0754bf6c99c2b6b3f0c077749051d9e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c16fef2f302dbc56f257eaf2f0d2b68b6a3c1852
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="overview-of-tables-in-sql-data-warehouse"></a>Información general de tablas en SQL Data Warehouse
 > [!div class="op_single_selector"]
@@ -33,37 +33,37 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Es sencillo empezar a crear tablas en SQL Data Warehouse.  Hola básica [CREATE TABLE] [ CREATE TABLE] sintaxis sigue la sintaxis común de hello es más probable que ya están familiarizados con la hora de trabajar con otras bases de datos.  toocreate una tabla, basta tooname la tabla, el nombre de las columnas y definir tipos de datos para cada columna.  Si ha creado tablas en otras bases de datos, esto debería ser tooyou muy familiar.
+Es sencillo empezar a crear tablas en SQL Data Warehouse.  La sintaxis básica de [CREATE TABLE][CREATE TABLE] sigue la sintaxis común que probablemente ya conozca si ha trabajado con otras bases de datos.  Para crear una tabla, solo es preciso asignarle un nombre, asignar un nombre a las columnas de la misma y definir los tipos de datos de cada columna.  Si ha creado las tablas en otras bases de datos, esto le resultará muy familiar.
 
 ```sql  
 CREATE TABLE Customers (FirstName VARCHAR(25), LastName VARCHAR(25))
  ``` 
 
-Hola anteriormente en el ejemplo crea una tabla denominada a Customers con dos columnas: FirstName y LastName.  Cada columna se define con un tipo de datos de VARCHAR(25), lo que limita los caracteres de hello datos too25.  Estos atributos fundamentales de una tabla, así como otros usuarios, son principalmente Hola igual que otras bases de datos.  Tipos de datos se definen para cada columna y garantizan la integridad de Hola de los datos.  Los índices se pueden agregar tooimprove rendimiento mediante la reducción de E/S.  Creación de particiones se puede agregar tooimprove rendimiento cuando necesita datos toomodify.
+El ejemplo anterior crea una tabla denominada Customers con dos columnas, FirstName y LastName.  Cada columna se define con el tipo de datos VARCHAR(25), que limita los datos a 25 caracteres.  Estos atributos fundamentales de una tabla, así como otros, son prácticamente los mismos que los de otras bases de datos.  Los tipos de datos se definen para cada columna y garantizan la integridad de los datos.  Los índices se pueden agregar para mejorar el rendimiento, ya que reducen la E/S.  La creación de particiones se puede agregar para mejorar el rendimiento cuando necesite modificar los datos.
 
 Así es el [cambio de nombre][RENAME] de una tabla de SQL Data Warehouse:
 
 ```sql  
-RENAME OBJECT Customer tooCustomerOrig; 
+RENAME OBJECT Customer TO CustomerOrig; 
  ```
 
 ## <a name="distributed-tables"></a>Tablas distribuidas
-Un nuevo atributo fundamental introducido por sistemas distribuidos como almacén de datos SQL es hello **columna de distribución**.  columna de distribución de Hello es mucho lo que puede que parezca.  Es la columna de Hola que determina cómo toodistribute, o de división, los datos entre bastidores de Hola.  Cuando se crea una tabla sin especificar la columna de distribución de hello, tabla de Hola se distribuye automáticamente mediante **round-robin**.  Aunque las tablas Round Robin pueden ser suficientes en algunos escenarios, la definición de columnas de distribución puede reducir considerablemente el movimiento de datos durante las consultas, lo que optimiza el rendimiento.  En situaciones donde hay una pequeña cantidad de datos de una tabla, elegir tabla de hello toocreate con hello **replicar** tipo de distribución copia el nodo de proceso de datos tooeach y guarda el movimiento de datos en tiempo de ejecución de consulta. Vea [distribuir una tabla] [ Distribute] toolearn más información acerca de cómo tooselect una columna de distribución.
+Un nuevo atributo fundamental introducido por sistemas distribuidos como SQL Data Warehouse es la **columna de distribución**.  La columna de distribución es mucho lo que parece.  Es la columna que determina cómo distribuir, o dividir, los datos en segundo plano.  Si se crea una tabla sin especificar la columna de distribución, la tabla se distribuye automáticamente mediante el método **Round Robin**.  Aunque las tablas Round Robin pueden ser suficientes en algunos escenarios, la definición de columnas de distribución puede reducir considerablemente el movimiento de datos durante las consultas, lo que optimiza el rendimiento.  En situaciones en las que hay una pequeña cantidad de datos en una tabla, la elección de crear la tabla con el tipo de distribución **replica** copia los datos a cada nodo de ejecución y ahorra movimiento de datos en tiempo de ejecución de consulta. Para más información acerca de cómo seleccionar una columna de distribución, consulte [Distribución de tablas en SQL Data Warehouse][Distribute].
 
 ## <a name="indexing-and-partitioning-tables"></a>Indexación y creación de particiones de tablas
-Tal y como se convierten en más avanzadas de uso de almacenamiento de datos SQL y desea toooptimize rendimiento, le interesará toolearn más información sobre el diseño de la tabla.  toolearn más información, vea los artículos de hello en [tipos de datos de tabla][Data Types], [distribuir una tabla][Distribute], [indiza una tabla] [ Index] y [creación de particiones de una tabla][Partition].
+A medida que el uso de SQL Data Warehouse es más avanzado y con el fin de optimizar el rendimiento, deseará más información acerca del diseño de tablas.  Para más información, consulte los artículos [Tipos de datos de las tablas en SQL Data Warehouse][Data Types], [Distribución de tablas en SQL Data Warehouse][Distribute], [Indexación de tablas en SQL Data Warehouse][Index] y [Creación de particiones de tablas en SQL Data Warehouse][Partition].
 
 ## <a name="table-statistics"></a>Estadísticas de tabla
-Las estadísticas tienen un rendimiento óptimo de hello toogetting importantísimo fuera de su almacenamiento de datos de SQL.  Como almacenamiento de datos de SQL no se haya automáticamente crear y actualizar estadísticas automáticamente, como se puede proceder tooexpect en la base de datos de SQL Azure, lea nuestro artículo en [estadísticas] [ Statistics] podría ser uno de Hola artículos más importantes que lea tooensure que obtendrá un rendimiento mejor Hola de las consultas.
+Las estadísticas son muy importantes para obtener el máximo rendimiento de SQL Data Warehouse.  Dado que SQL Data Warehouse aún no crea ni actualiza automáticamente las estadísticas, como se pueda esperar de Azure SQL Database, la lectura del artículo sobre [estadísticas][Statistics] puede ser muy importante para asegurarse de que obtiene el máximo rendimiento de las consultas.
 
 ## <a name="temporary-tables"></a>Tablas temporales
-Las tablas temporales son tablas que solo existen durante el inicio de sesión que dure hello y no pueden ver otros usuarios.  Tablas temporales pueden ser una buena forma tooprevent otras personas vean resultados temporales y también reduce la necesidad de hello para la limpieza.  Dado que las tablas temporales también utilizan el almacenamiento local, pueden ofrecer un rendimiento más rápido para algunas operaciones.  Vea hello [tabla temporal] [ Temporary] artículos para obtener más información acerca de las tablas temporales.
+Las tablas temporales son tablas que solo existen durante el inicio de sesión y no pueden verlas los restantes usuarios.  Las tablas temporales no solo pueden ser una buena forma de evitar que otros vean los resultados temporales, sino que también reducen la necesidad de limpieza.  Dado que las tablas temporales también utilizan el almacenamiento local, pueden ofrecer un rendimiento más rápido para algunas operaciones.  Consulte el artículo [Tablas temporales en SQL Data Warehouse][Temporary] para más información acerca de las tablas temporales.
 
 ## <a name="external-tables"></a>Tablas externas
-Tablas externas, también conocido como tablas de Polybase, son tablas que se pueden consultar desde el almacenamiento de datos SQL, pero toodata punto externos de almacenamiento de datos SQL.  Por ejemplo, puede crear una tabla externa que toofiles puntos en el almacenamiento de blobs de Azure.  Para obtener más detalles sobre cómo ver la consulta una tabla externa y toocreate [carga los datos con Polybase][Load data with Polybase].  
+Las tablas externas, que también se conocen como tablas de Polybase, son tablas que pueden consultarse desde SQL Data Warehouse, pero que apuntan a datos externos de SQL Data Warehouse.  Por ejemplo, puede crear una tabla externa que apunte a archivos de Azure Blob Storage.  Para más información acerca de cómo crear y consultar una tabla externa, consulte [Load data from Azure blob storage into SQL Data Warehouse (PolyBase)][Load data with Polybase] [Carga de datos de Azure Blob Storage en SQL Data Warehouse (PolyBase)].  
 
 ## <a name="unsupported-table-features"></a>Características no compatibles de las tablas
-Mientras que el almacenamiento de datos SQL contiene muchas de las mismas características de tabla que ofrece otras bases de datos de hello, hay algunas características que aún no se admiten.  A continuación se muestra una lista de algunas de hello características para tablas que aún no se admiten.
+Mientras que SQL Data Warehouse contiene muchas de las características de tabla que ofrecen otras bases de datos, hay algunas características que aún no son compatibles.  A continuación se muestra una lista de algunas de las características de tabla que no son compatibles.
 
 | Características no admitidas |
 | --- |
@@ -78,13 +78,13 @@ Mientras que el almacenamiento de datos SQL contiene muchas de las mismas caract
 | [Sinónimos][Synonyms] |
 
 ## <a name="table-size-queries"></a>Consultas de tamaño de tabla
-Un espacio de tooidentify de manera sencilla y utilizados por una tabla en cada una de las distribuciones de hello 60, de filas es toouse [DBCC PDW_SHOWSPACEUSED][DBCC PDW_SHOWSPACEUSED].
+Una forma sencilla de identificar el espacio y las filas que consume una tabla en cada una de las 60 distribuciones es usar [DBCC PDW_SHOWSPACEUSED][DBCC PDW_SHOWSPACEUSED].
 
 ```sql
 DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 ```
 
-Sin embargo, el uso de los comandos DBCC puede resultar muy limitador.  Vistas de administración dinámica (DMV) le permitirá toosee mucho más detalle, así como ofrecen un mayor control sobre resultados de la consulta de Hola.  Empiece por crear esta vista, que será la que se hace referencia tooby muchos de los ejemplos en este y otros artículos.
+Sin embargo, el uso de los comandos DBCC puede resultar muy limitador.  Las vistas de administración dinámica (DMV) le permitirán ver mucho más detalle, además de proporcionar un control mucho mayor sobre los resultados de la consulta.  Empiece por crear esta vista, a la que se hará referencia en muchos de los ejemplos de este y otros artículos.
 
 ```sql
 CREATE VIEW dbo.vTableSizes
@@ -199,7 +199,7 @@ FROM size
 ```
 
 ### <a name="table-space-summary"></a>Resumen de espacio de tabla
-Esta consulta devuelve filas de Hola y el espacio por tabla.  Es un toosee de consulta excelente qué tablas son las tablas más grandes y que sean round robin, replican o hash distribuidas.  Para las tablas hash que se distribuyen también se muestra la columna de distribución de Hola.  En la mayoría de los casos, las tablas más grandes deben distribuirse por hash con un índice de almacén de columnas agrupados.
+Esta consulta devuelve las filas y el espacio por tabla.  Es una consulta excelente para ver qué tablas son las más grandes y si se han distribuido por hash, round robin o réplica.  Para las tablas distribuidas por hash, también se muestra la columna de distribución.  En la mayoría de los casos, las tablas más grandes deben distribuirse por hash con un índice de almacén de columnas agrupados.
 
 ```sql
 SELECT 
@@ -273,7 +273,7 @@ ORDER BY    distribution_id
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-toolearn más información, vea los artículos de hello en [tipos de datos de tabla][Data Types], [distribuir una tabla][Distribute], [indiza una tabla] [ Index], [Creación de particiones de una tabla][Partition], [mantener las estadísticas de tabla] [ Statistics] y [ Tablas temporales][Temporary].  Para obtener más información sobre los procedimientos recomendados, consulte [Procedimientos recomendados para SQL Data Warehouse de Azure][SQL Data Warehouse Best Practices].
+Para más información, consulte los artículos sobre [Tipos de datos de las tablas en SQL Data Warehouse][Data Types], [Distribución de tablas en SQL Data Warehouse][Distribute], [Indexación de tablas en SQL Data Warehouse][Index], [Creación de particiones de tablas en SQL Data Warehouse][Partition], [Administración de estadísticas en tablas en SQL Data Warehouse][Statistics] y [Tablas temporales en SQL Data Warehouse][Temporary].  Para obtener más información sobre los procedimientos recomendados, consulte [Procedimientos recomendados para SQL Data Warehouse de Azure][SQL Data Warehouse Best Practices].
 
 <!--Image references-->
 

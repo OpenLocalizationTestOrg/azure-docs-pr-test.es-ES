@@ -14,21 +14,21 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
 ms.author: parakhj
-ms.openlocfilehash: 9b0c32086cebc171d91da2e7bfb48136723ccd4d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6c073d70debfdc3560405955d65fa9ccaa7d8b1f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-active-directory-b2c-sign-in-by-using-azure-ad-accounts"></a>Azure Active Directory B2C: inicio de sesión con cuentas de Azure AD
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Este artículo muestra cómo tooenable sesión para los usuarios de una organización específica de Azure Active Directory (Azure AD) mediante el uso de Hola de [directivas personalizadas de](active-directory-b2c-overview-custom.md).
+En este artículo se muestra cómo habilitar el inicio de sesión de los usuarios de una organización de Azure Active Directory (Azure AD) concreta mediante el uso de [directivas personalizadas](active-directory-b2c-overview-custom.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Hola completa los pasos de hello [Introducción a las directivas personalizadas](active-directory-b2c-get-started-custom.md) artículo.
+Complete los pasos del artículo [Introducción a las directivas personalizadas](active-directory-b2c-get-started-custom.md).
 
 Estos pasos incluyen:
 
@@ -36,54 +36,54 @@ Estos pasos incluyen:
 2. Creación de una aplicación de Azure AD B2C.
 3. Registro de dos aplicaciones de motor de directivas.
 4. Configuración de claves.
-5. Configurar el módulo de inicio de Hola.
+5. Configurar el paquete de inicio.
 
 ## <a name="create-an-azure-ad-app"></a>Creación de una aplicación de Azure AD
 
-inicio de sesión en tooenable para los usuarios de una determinada organización de Azure AD, necesita tooregister una aplicación en el inquilino de hello organizativa AD de Azure.
+Para habilitar el inicio de sesión para los usuarios de una organización específica de Azure AD, es preciso registrar una aplicación en el inquilino de Azure AD de la organización.
 
 >[!NOTE]
-> Utilizamos "contoso.com" para el inquilino Hola organizativa AD de Azure y "fabrikamb2c.onmicrosoft.com" como inquilino de Azure AD B2C Hola Hola siguiendo las instrucciones.
+> En las instrucciones siguientes, usamos "contoso.com" para el inquilino de Azure AD de la organización y "fabrikamb2c.onmicrosoft.com" como inquilino de Azure AD B2C.
 
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com).
-1. En la barra superior de hello, seleccione su cuenta. De hello **Directory** elija inquilino Hola organizativa AD de Azure donde desee tooregister la aplicación (contoso.com).
-1. Seleccione **más servicios** en el panel izquierdo de Hola y busque "Registros de aplicación".
+1. Inicie sesión en el [Portal de Azure](https://portal.azure.com).
+1. En la barra superior, seleccione su cuenta. En la lista **Directorio**, elija el inquilino de Azure AD de la organización donde quiere registrar la aplicación (contoso.com).
+1. Seleccione **Más servicios** en el panel izquierdo y busque "Registros de aplicaciones".
 1. Seleccione **Nuevo registro de aplicaciones**.
 1. Escriba el nombre de la aplicación (por ejemplo, `Azure AD B2C App`).
-1. Seleccione **aplicación Web / API** para el tipo de aplicación Hola.
-1. Para **dirección URL de inicio de sesión**, escriba Hola después de la dirección URL, donde `yourtenant` se sustituye por el nombre de Hola de su inquilino de Azure AD B2C (`fabrikamb2c.onmicrosoft.com`):
+1. En Tipo de aplicación, seleccione **Aplicación web o API**.
+1. En **Dirección URL de inicio de sesión**, escriba la dirección URL siguiente, donde `yourtenant` se sustituye por el nombre del inquilino de Azure AD B2C (`fabrikamb2c.onmicrosoft.com`):
 
     ```
     https://login.microsoftonline.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
     ```
 
-1. Guardar el identificador de la aplicación hello.
-1. Seleccione la aplicación hello recién creado.
-1. En hello **configuración** hoja, seleccione **claves**.
-1. Cree una clave y guárdela. Se utilizará en los pasos de hello en la sección siguiente Hola.
+1. Guarde el identificador de la aplicación.
+1. Seleccione la aplicación recién creada.
+1. En la hoja **Configuración**, seleccione **Claves**.
+1. Cree una clave y guárdela. La usará en los pasos de la sección siguiente.
 
-## <a name="add-hello-azure-ad-key-tooazure-ad-b2c"></a>Agregar tooAzure clave de hello AD de Azure AD B2C
+## <a name="add-the-azure-ad-key-to-azure-ad-b2c"></a>Adición de la clave de Azure AD a Azure AD B2C
 
-Necesita clave de la aplicación hello toostore contoso.com en su inquilino de Azure AD B2C. toodo esto:
-1. Vaya el inquilino de Azure AD B2C tooyour y seleccione **B2C configuración** > **identidad experiencia Framework** > **claves de directiva**.
+Debe almacenar la clave de aplicación contoso.com en su inquilino de Azure AD B2C. Para ello, siga estos pasos:
+1. Vaya a su inquilino de Azure AD B2C y abra **B2C Settings (Configuración de B2C)** > **Marco de experiencia de identidad** > **Claves de directiva**.
 1. Seleccione **+Agregar**.
 1. Seleccione o especifique estas opciones:
    * Seleccione **Manual**.
-   * En **Nombre**, elija un nombre que coincida con el nombre del inquilino de Azure AD (por ejemplo, `ContosoAppSecret`).  prefijo de Hello `B2C_1A_` se agrega automáticamente toohello nombre de la clave.
-   * Pegue la clave de aplicación Hola **secreto** cuadro.
+   * En **Nombre**, elija un nombre que coincida con el nombre del inquilino de Azure AD (por ejemplo, `ContosoAppSecret`).  Se agregará el prefijo `B2C_1A_` automáticamente al nombre de la clave.
+   * Pegue la clave de la aplicación en el cuadro **Secreto**.
    * Seleccione **Firma**.
 1. Seleccione **Crear**.
-1. Confirme que ha creado la clave de hello `B2C_1A_ContosoAppSecret`.
+1. Confirme que ha creado la clave `B2C_1A_ContosoAppSecret`.
 
 
 ## <a name="add-a-claims-provider-in-your-base-policy"></a>Adición de un proveedor de notificaciones a una directiva de base
 
-Si desea que los usuarios toosign de mediante Azure AD, deberá toodefine Azure AD como un proveedor de notificaciones. En otras palabras, necesita un punto de conexión que se puede comunicar con Azure AD B2C toospecify. punto de conexión de Hello proporcionará un conjunto de notificaciones que usan Azure AD B2C tooverify que ha autenticado un usuario específico. 
+Si quiere que los usuarios inicien sesión con Azure AD, es preciso definir Azure AD como proveedor de notificaciones. En otras palabras, se debe especificar el punto de conexión con el que Azure AD B2C se va a comunicar. El punto de conexión proporcionará un conjunto de notificaciones que Azure AD B2C usa para comprobar que un usuario concreto se ha autenticado. 
 
-Puede definir Azure AD como un proveedor de notificaciones mediante la adición de Azure AD toohello `<ClaimsProvider>` nodo en el archivo de extensión de hello de la directiva:
+Puede definir Azure AD como proveedor de notificaciones. Para ello, agregue Azure AD al nodo `<ClaimsProvider>` en el archivo de extensión de la directiva:
 
-1. Abra el archivo de extensión de hello (TrustFrameworkExtensions.xml) desde el directorio de trabajo.
-1. Buscar hello `<ClaimsProviders>` sección. Si no existe, debe agregarlo en el nodo raíz de Hola.
+1. Abra el archivo de extensión (TrustFrameworkExtensions.xml) desde el directorio de trabajo.
+1. Busque la sección `<ClaimsProviders>`. Si no existe, agréguela debajo del nodo raíz.
 1. Agregue un nuevo nodo `<ClaimsProvider>` como se indica a continuación:
 
     ```XML
@@ -128,94 +128,94 @@ Puede definir Azure AD como un proveedor de notificaciones mediante la adición 
     </ClaimsProvider>
     ```
 
-1. En hello `<ClaimsProvider>` nodo, el valor de Hola de actualización para `<Domain>` tooa valor único que puede ser usado toodistinguish desde otros proveedores de identidad.
-1. En hello `<ClaimsProvider>` nodo, el valor de Hola de actualización para `<DisplayName>` tooa nombre descriptivo para hello proveedor de notificaciones. Este valor no se utiliza actualmente.
+1. En el nodo `<ClaimsProvider>`, actualice el valor de `<Domain>` a un valor único que pueda usarse para distinguirlo de otros proveedores de identidades.
+1. En el nodo `<ClaimsProvider>`, actualice el valor de `<DisplayName>` a un nombre descriptivo del proveedor de notificaciones. Este valor no se utiliza actualmente.
 
-### <a name="update-hello-technical-profile"></a>Actualizar perfil técnica Hola
+### <a name="update-the-technical-profile"></a>Actualización del perfil técnico
 
-tooget un token de hello extremo de Azure AD, necesita protocolos de hello toodefine que Azure AD B2C debe usar toocommunicate con Azure AD. Esto se realiza dentro de hello `<TechnicalProfile>` elemento de `<ClaimsProvider>`.
-1. Actualizar el Id. de Hola de hello `<TechnicalProfile>` nodo. Este identificador es toothis toorefer usado perfil técnica de otras partes de la directiva de Hola.
-1. Actualizar el valor de Hola para `<DisplayName>`. Este valor se mostrará en el botón de inicio de sesión de hello en la pantalla de inicio de sesión.
-1. Actualizar el valor de Hola para `<Description>`.
-1. Azure AD usa el protocolo de OpenID Connect de hello, por lo que asegúrese de que el valor de hello `<Protocol>` es `"OpenIdConnect"`.
+Para obtener un token del punto de conexión de Azure AD es preciso definir los protocolos que Azure AD B2C debe usar para comunicarse con Azure AD. Esto se hace dentro del elemento `<TechnicalProfile>` de `<ClaimsProvider>`.
+1. Actualice el identificador del nodo `<TechnicalProfile>`. Este identificador se usa para hacer referencia a este perfil técnico desde otras partes de la directiva.
+1. Actualice el valor de `<DisplayName>`. Este valor se mostrará en el botón de inicio de sesión de la pantalla de inicio de sesión.
+1. Actualice el valor de `<Description>`.
+1. Azure AD usa el protocolo OpenID Connect, por lo que debe asegurarse de que el valor de `<Protocol>` es `"OpenIdConnect"`.
 
-Necesita tooupdate hello `<Metadata>` sección en el archivo XML de hello, que hace referencia valores de configuración de tooearlier tooreflect Hola para específica de su inquilino de Azure AD. En el archivo XML de hello, actualice los valores de metadatos de saludo de la manera siguiente:
+Debe actualizar la sección `<Metadata>` del archivo XML al que se ha hecho referencia anteriormente para reflejar la configuración de su inquilino de Azure AD específico. En el archivo XML, actualice los valores de los metadatos como se indica a continuación:
 
-1. Establecer `<Item Key="METADATA">` demasiado`https://login.windows.net/yourAzureADtenant/.well-known/openid-configuration`, donde `yourAzureADtenant` es el nombre del inquilino de Azure AD (contoso.com).
-1. Abra el explorador y vaya toohello `METADATA` dirección URL que acaba de actualizar.
-1. En el Explorador de hello, busque el objeto de "emisor" hello y copie su valor. Debería ser similar a Hola siguiente: `https://sts.windows.net/{tenantId}/`.
-1. Pegue el valor de Hola para `<Item Key="ProviderName">` en el archivo XML de hello.
-1. Establecer `<Item Key="client_id">` toohello Id. de aplicación de registro de una aplicación Hola.
-1. Establecer `<Item Key="IdTokenAudience">` toohello Id. de aplicación de registro de una aplicación Hola.
-1. Asegúrese de que `<Item Key="response_types">` se establece demasiado`id_token`.
-1. Asegúrese de que `<Item Key="UsePolicyInRedirectUri">` se establece demasiado`false`.
+1. Establezca `<Item Key="METADATA">` en `https://login.windows.net/yourAzureADtenant/.well-known/openid-configuration`, donde `yourAzureADtenant` es el nombre del inquilino de Azure AD (contoso.com).
+1. Abra el explorador y vaya a la dirección URL `METADATA` que acaba de actualizar.
+1. En el explorador, busque el objeto "issuer" y copie su valor. Debería ser similar a lo siguiente: `https://sts.windows.net/{tenantId}/`.
+1. Pegue el valor de `<Item Key="ProviderName">` en el archivo XML.
+1. Establezca `<Item Key="client_id">` en el identificador de aplicación desde el registro de aplicaciones.
+1. Establezca `<Item Key="IdTokenAudience">` en el identificador de aplicación desde el registro de aplicaciones.
+1. Asegúrese de que `<Item Key="response_types">` está establecido en `id_token`.
+1. Asegúrese de que `<Item Key="UsePolicyInRedirectUri">` está establecido en `false`.
 
-También necesita toolink secreto de hello Azure AD que ha registrado en su toohello de inquilino de Azure AD B2C Azure AD `<ClaimsProvider>` información:
+También es preciso que vincule el secreto de Azure AD que ha registrado en el inquilino de Azure AD B2C a la información de `<ClaimsProvider>` de Azure AD:
 
-* Hola `<CryptographicKeys>` sección Hola anterior archivo XML, actualice el valor de hello para `StorageReferenceId` toohello el identificador de referencia de secreto de Hola que definiera (por ejemplo, `ContosoAppSecret`).
+* En la sección `<CryptographicKeys>` del archivo XML anterior, actualice el valor de `StorageReferenceId` al identificador de referencia del secreto que ha definido (por ejemplo, `ContosoAppSecret`).
 
-### <a name="upload-hello-extension-file-for-verification"></a>Cargar archivo de extensión de hello para la comprobación
+### <a name="upload-the-extension-file-for-verification"></a>Carga del archivo de extensión para su comprobación
 
-Hasta ahora, ha configurado la directiva para que Azure AD B2C sepa cómo toocommunicate con su directorio Azure AD. Intente cargar el archivo de extensión de hello de su tooconfirm simplemente de directiva que no tenga problemas hasta ahora. toodo para:
+Por el momento, ha configurado la directiva para que Azure AD B2C sepa cómo comunicarse con su directorio de Azure AD. Pruebe a cargar el archivo de extensión de la directiva para confirmar que no tiene problemas. Para ello:
 
-1. Abra hello **todas las directivas** hoja en el inquilino de Azure AD B2C.
-1. Comprobar hello **sobrescribir directiva Hola si existe** cuadro.
-1. Cargar archivo de extensión de hello (TrustFrameworkExtensions.xml) y asegúrese de que no considerará no válido de Hola.
+1. Vaya a la hoja **Todas las directivas** en el inquilino de Azure AD B2C.
+1. Active la casilla **Sobrescribir la directiva si existe**.
+1. Cargue el archivo de extensión (TrustFrameworkExtensions.xml) y asegúrese de que no se produce ningún error en la validación.
 
-## <a name="register-hello-azure-ad-claims-provider-tooa-user-journey"></a>Registrar viaje usuario de tooa de proveedor de notificaciones de hello Azure AD
+## <a name="register-the-azure-ad-claims-provider-to-a-user-journey"></a>Registrar el proveedor de notificaciones de Azure AD en un recorrido del usuario
 
-Ahora debe tooadd hello Azure AD identidad proveedor tooone de los viajes de usuario. En este momento, se ha configurado el proveedor de identidades de hello, pero no está disponible en cualquiera de las pantallas de sesión-up/inicio de sesión de Hola. toomake está disponible, se creará un duplicado de un viaje de usuario de plantilla existente y, a continuación, modificarlo para que también dispone de proveedor de identidades de hello Azure AD:
+Ahora es preciso agregar el proveedor de identidades de Azure AD a uno de los recorridos del usuario. El proveedor de identidades ya se ha configurado, pero no está disponible en ninguna de las pantallas de registro/inicio de sesión. Para que esté disponible, crearemos un duplicado de un recorrido del usuario de plantilla existente y, después, lo modificaremos para que también tenga el proveedor de identidades de Azure AD:
 
-1. Abra el archivo de base de hello de la directiva (por ejemplo, TrustFrameworkBase.xml).
-1. Buscar hello `<UserJourneys>` Hola de elemento y copia todo `<UserJourney>` nodo que incluya `Id="SignUpOrSignIn"`.
-1. Abra el archivo de extensión de hello (por ejemplo, TrustFrameworkExtensions.xml) y busque hello `<UserJourneys>` elemento. Si no existe el elemento hello, agregue uno.
-1. Hola Pegar todo `<UserJourney>` nodo que ha copiado como elemento secundario de hello `<UserJourneys>` elemento.
-1. Cambiar el nombre de Id. de Hola de viaje de hello nuevo usuario (por ejemplo, cambiar el nombre como `SignUpOrSignUsingContoso`).
+1. Abra el archivo base de la directiva (por ejemplo, TrustFrameworkBase.xml).
+1. Busque el elemento `<UserJourneys>` y copie todo el nodo `<UserJourney>` que incluye `Id="SignUpOrSignIn"`.
+1. Abra el archivo de extensión (por ejemplo, TrustFrameworkExtensions.xml) y busque el elemento `<UserJourneys>`. Si el elemento no existe, agréguelo.
+1. Pegue todo el nodo `<UserJourney>` que ha copiado como elemento secundario de `<UserJourneys>`.
+1. Cambie el nombre del identificador del nuevo recorrido del usuario (por ejemplo, cambie el nombre a `SignUpOrSignUsingContoso`).
 
-### <a name="display-hello-button"></a>Hola de presentación "button"
+### <a name="display-the-button"></a>Incorporación del "botón"
 
-Hola `<ClaimsProviderSelection>` elemento es análogo tooan el botón del proveedor de identidad en una pantalla de inicio de sesión-up/inicio de sesión de. Si agrega un `<ClaimsProviderSelection>` elemento para Azure AD, un nuevo botón aparezca cuando llega a un usuario en la página de Hola. tooadd este elemento:
+El elemento `<ClaimsProviderSelection>` es análogo a un botón del proveedor de identidades en una pantalla de registro o inicio de sesión. Si agrega un elemento `<ClaimsProviderSelection>` para Azure AD, se mostrará un botón nuevo cuando un usuario llega a la página. Para agregar este elemento:
 
-1. Buscar hello `<OrchestrationStep>` nodo que incluya `Order="1"` en viaje de usuario de Hola que acaba de crear.
-1. Agregue Hola siguiente:
+1. Busque el nodo `<OrchestrationStep>` que incluye `Order="1"` en el recorrido del usuario que acaba de crear.
+1. Agregue la siguiente línea de código:
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="ContosoExchange" />
     ```
 
-1. Establecer `TargetClaimsExchangeId` tooan de valor adecuado. Se recomienda siguiente Hola misma convención de otras personas:  *\[ClaimProviderName\]Exchange*.
+1. Establezca `TargetClaimsExchangeId` en valor apropiado. Se recomienda seguir la misma convención que otros:  *\[ClaimProviderName\]Exchange*.
 
-### <a name="link-hello-button-tooan-action"></a>Acción del botón de vínculo hello tooan
+### <a name="link-the-button-to-an-action"></a>Vincular el botón a una acción
 
-Ahora que tiene un botón en su lugar, debe toolink tooan acción. acción de Hello, en este caso, es para Azure AD B2C toocommunicate con Azure AD tooreceive un token. Acción de vínculo Hola botón tooan vinculando perfil técnico hello para el proveedor de notificaciones de Azure AD:
+Ahora que hay un botón colocado, es preciso vincularlo a una acción. En este caso, la acción es para que Azure AD B2C se comunique con Azure AD para recibir un token. Para vincular un botón a una acción, vincule el perfil técnico del proveedor de notificaciones de Azure AD:
 
-1. Buscar hello `<OrchestrationStep>` que incluye `Order="2"` en hello `<UserJourney>` nodo.
-1. Agregue Hola siguiente:
+1. Busque el nodo `<OrchestrationStep>` que incluye `Order="2"` en el nodo `<UserJourney>`.
+1. Agregue la siguiente línea de código:
 
     ```XML
     <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="ContosoProfile" />
     ```
 
-1. Actualización `Id` toohello mismo valor que el de `TargetClaimsExchangeId` Hola sección anterior.
-1. Actualización `TechnicalProfileReferenceId` toohello ID de hello técnica de perfil que creó anteriormente (ContosoProfile).
+1. Actualice `Id` con el mismo valor que el de `TargetClaimsExchangeId` en la sección anterior.
+1. Actualice `TechnicalProfileReferenceId` con el identificador del perfil técnico que ha creado anteriormente (ContosoProfile).
 
-### <a name="upload-hello-updated-extension-file"></a>Cargar archivo de extensión actualizada de hello
+### <a name="upload-the-updated-extension-file"></a>Cargar el archivo de extensión actualizado
 
-Ha terminado de modificar el archivo de extensión Hola. Guarde y A continuación, cargar archivo hello y asegúrese de que todas las validaciones se realizan correctamente.
+Ya ha terminado la modificación del archivo de extensión. Guarde y cargue el archivo y asegúrese de que el resultado de todas las validaciones es satisfactorio.
 
-### <a name="update-hello-rp-file"></a>Archivo de actualización Hola RP
+### <a name="update-the-rp-file"></a>Actualización del archivo de RP
 
-Ahora necesita tooupdate Hola archivo entidad (RP) confianza que se iniciará el proceso de usuario de Hola que acaba de crear:
+Ahora es preciso actualizar el archivo del usuario de confianza (RP) que iniciará el recorrido del usuario que acaba de crear:
 
-1. Realizar una copia de SignUpOrSignIn.xml en el directorio de trabajo y cambie su nombre (por ejemplo, cámbiele el nombre tooSignUpOrSignInWithAAD.xml).
-1. Abra Hola Hola nuevo para archivo y actualización de `PolicyId` atributo `<TrustFrameworkPolicy>` con un valor único (por ejemplo, SignUpOrSignInWithAAD). <br> Será Hola nombre de la directiva (por ejemplo, B2C\_1A\_SignUpOrSignInWithAAD).
-1. Modificar hello `ReferenceId` atributo `<DefaultUserJourney>` toomatch Hola ID de viaje Hola de usuario nueva que ha creado (SignUpOrSignUsingContoso).
-1. Guardar los cambios y cargar el archivo hello.
+1. Realice una copia de SignUpOrSignIn.xml en el directorio de trabajo y cambie su nombre (por ejemplo, SignUpOrSignInWithAAD.xml).
+1. Abra el archivo nuevo y actualice el atributo `PolicyId` de `<TrustFrameworkPolicy>` con un valor único (por ejemplo, SignUpOrSignInWithAAD). <br> Este será el nombre de la directiva (por ejemplo, B2C\_1A\_SignUpOrSignInWithAAD).
+1. Modifique el atributo `ReferenceId` de `<DefaultUserJourney>` para que coincida con el identificador del nuevo recorrido del usuario que ha creado (SignUpOrSignUsingContoso).
+1. Guarde los cambios y cargue el archivo.
 
 ## <a name="troubleshooting"></a>Solución de problemas
 
-Probar directiva personalizada de Hola que acaba de cargar abriendo la hoja y haciendo clic **ejecutar ahora**. Conozca los problemas de toodiagnose, [solución de problemas de](active-directory-b2c-troubleshoot-custom.md).
+Pruebe la directiva personalizada que acaba de cargar. Para ello, abra su hoja y haga clic en **Ejecutar ahora**. Para diagnosticar problemas, obtenga información sobre la [solución de problemas](active-directory-b2c-troubleshoot-custom.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Proporcionar comentarios demasiado[AADB2CPreview@microsoft.com](mailto:AADB2CPreview@microsoft.com).
+Envíe sus comentarios a [AADB2CPreview@microsoft.com](mailto:AADB2CPreview@microsoft.com).

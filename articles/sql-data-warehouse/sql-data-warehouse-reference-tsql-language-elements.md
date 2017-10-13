@@ -1,6 +1,6 @@
 ---
-title: elementos del lenguaje Transact-SQL de almacenamiento de datos aaaSQL | Documentos de Microsoft
-description: "Lista de contenido de tooreference de vínculos de elementos de lenguaje Transact-SQL Hola utilizado para almacén de datos de SQL."
+title: Elementos del lenguaje Transact-SQL de SQL Data Warehouse | Microsoft Docs
+description: "Lista de vínculos a contenido de referencia para los elementos del lenguaje Transact-SQL utilizados para Almacenamiento de datos SQL."
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: reference
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
-ms.openlocfilehash: db7500b2a1f69a9e3dccddafd27a9cd0d95f9baf
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7a20cd8f3c2f304d12a49755dbe6e04f9b1d36df
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="language-elements"></a>Elementos de lenguaje
 ## <a name="core-elements"></a>Elementos principales
@@ -57,7 +57,7 @@ ms.lasthandoff: 10/06/2017
 * [/ (Dividir)](https://msdn.microsoft.com/library/ms175009.aspx)
 * [Módulo](https://msdn.microsoft.com/library/ms190279.aspx)
 
-## <a name="wildcard-characters-toomatch"></a>Toomatch de caracteres comodín
+## <a name="wildcard-characters-to-match"></a>Caracteres comodín que deben coincidir
 * [= (Igual a)](https://msdn.microsoft.com/library/ms175118.aspx)
 * [&gt; (Mayor que)](https://msdn.microsoft.com/library/ms178590.aspx)
 * [&lt; (Menor que)](https://msdn.microsoft.com/library/ms179873.aspx)

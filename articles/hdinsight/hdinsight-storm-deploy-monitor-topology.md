@@ -1,6 +1,6 @@
 ---
-title: "aaaDeploy y administrar topologías de Apache Storm en HDInsight | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toodeploy, supervisar y administrar topologías de Apache Storm con hello aluvión de panel en HDInsight. Utilice herramientas de Hadoop para Visual Studio"
+title: "Implementación y administración de topologías de Apache Storm en HDInsight | Microsoft Docs"
+description: "Aprenda a implementar, supervisar y administrar topologías de Apache Storm mediante el panel de Storm en HDInsight. Utilice herramientas de Hadoop para Visual Studio"
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,20 +16,20 @@ ms.workload: big-data
 ms.date: 03/01/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: 05f05fe8dd519fe99fb771d36bfc3d28168ca85f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 34072574f83b51280e60e2f8766c6c5d5a33c307
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-windows-based-hdinsight"></a>Implementación y administración de topologías de Apache Storm en HDInsight basado en Windows
 
-Hola aluvión de panel permite tooeasily implementar y ejecutar el clúster de HDInsight de Apache Storm topologías tooyour utilizando el explorador web. También puede utilizar Hola panel toomonitor y administrar topologías de ejecución. Si utiliza Visual Studio, hello HDInsight Tools para Visual Studio proporciona características similares en Visual Studio.
+El panel de Storm permite implementar y ejecutar fácilmente topologías de Apache Storm en el clúster de HDInsight mediante el explorador web. También puede utilizar el panel para supervisar y administrar topologías de ejecución. Si utiliza Visual Studio, las herramientas de HDInsight para Visual Studio proporcionan características similares en Visual Studio.
 
-Hola aluvión de panel y las características de Storm Hola Hola HDInsight Tools dependen de hello API de REST de Storm, que puede ser usado toocreate sus propias soluciones de supervisión y administración.
+El panel de Storm y las características de Storm de las herramientas de HDInsight dependen de la API de REST de Storm, que se puede usar para crear sus propias soluciones de supervisión y administración.
 
 > [!IMPORTANT]
-> pasos de Hello en este documento, es necesario un aluvión de clúster de HDInsight que usa Windows como sistema operativo de Hola. Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Para los pasos de este documento se necesita un clúster de Storm en HDInsight que usa Windows como sistema operativo. Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 >
 > Para más información sobre la implementación y la administración de topologías de Storm con un clúster de HDInsight que usa Linux, consulte [Implementación y administración de topologías de Apache Storm en HDInsight basado en Linux](hdinsight-storm-deploy-monitor-topology-linux.md).
 
@@ -37,11 +37,11 @@ Hola aluvión de panel y las características de Storm Hola Hola HDInsight Tools
 
 * **Apache Storm en HDInsight**: consulte [Introducción a Apache Storm en HDInsight](hdinsight-apache-storm-tutorial-get-started.md) para conocer los pasos para la creación de un clúster.
 
-* Para hello **aluvión de panel**: un explorador web moderna que es compatible con HTML5.
+* Para el **panel de Storm**: un explorador web moderno que admite HTML5.
 
-* Para **Visual Studio** -Azure SDK 2.5.1 o versiones más recientes y Hola HDInsight Tools para Visual Studio. Vea [Introducción al uso de herramientas de HDInsight para Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md) tooinstall y configurar las herramientas de HDInsight de Hola para Visual Studio.
+* Para **Visual Studio** : Azure SDK 2.5.1 o versiones más recientes y las herramientas de HDInsight para Visual Studio. Consulte [Introducción a las herramientas de HDInsight](hdinsight-hadoop-visual-studio-tools-get-started.md) para Visual Studio para instalar y configurar las herramientas de HDInsight para Visual Studio.
 
-    Uno de hello después de versiones de Visual Studio:
+    Una de las siguientes versiones de Visual Studio:
 
   * Visual Studio 2012 con la actualización 4
 
@@ -53,140 +53,140 @@ Hola aluvión de panel y las características de Storm Hola Hola HDInsight Tools
 
 ## <a name="storm-dashboard"></a>panel de Storm
 
-Hola aluvión de panel es una página web disponibles en el clúster de Storm. dirección URL de Hello es **https://&lt;clustername >.azurehdinsight.net/**, donde **clustername** es Hola nombre de su Storm en clúster de HDInsight.
+El panel de Storm es una página web disponible en el clúster de Storm. La dirección URL es **https://&lt;clustername>.azurehdinsight.net/**, donde **clustername** es el nombre del clúster de Storm en HDInsight.
 
-De arriba Hola de hello aluvión de panel, seleccione **topología enviar**. Siga las instrucciones de hello en hello página toorun una topología de ejemplo o tooupload y ejecute una topología que ha creado.
+En la parte superior del panel de Storm, seleccione **Enviar topología**. Siga las instrucciones de la página para ejecutar una topología de muestra o cargar y ejecutar una topología que haya creado.
 
-![Hola Enviar página topología][storm-dashboard-submit]
+![la página de envío de topología][storm-dashboard-submit]
 
 ### <a name="storm-ui"></a>UI de Storm
 
-En hello aluvión de panel, seleccione hello **aluvión de interfaz de usuario** vínculo. Esto muestra información sobre el clúster hello, en tooany adición ejecutando topologías.
+En el panel de Storm, seleccione el vínculo **IU de Storm** . Se muestra información sobre el clúster, así como las topologías que estén en ejecución.
 
-![interfaz de usuario de Hello storm][storm-dashboard-ui]
+![la interfaz de usuario de storm][storm-dashboard-ui]
 
 > [!NOTE]
-> Con algunas versiones de Internet Explorer, es posible que descubra que Hola que aluvión de interfaz de usuario no se actualiza después de que ha visitado en primer lugar. Por ejemplo, no puede mostrar nuevas topologías de Hola que ha enviado o puede mostrar una topología como activo cuando se desactivado anteriormente. Microsoft conoce este problema y está trabajando para conseguir una solución.
+> Con algunas versiones de Internet Explorer, es posible que descubra que la interfaz de usuario de Strom no se actualiza después de visitarla por primera vez. Por ejemplo, puede que no se muestren las topologías nuevas que haya enviado o puede que se muestre una topología como activa, aunque anteriormente la desactivase. Microsoft conoce este problema y está trabajando para conseguir una solución.
 
 #### <a name="main-page"></a>Página principal
 
-página principal de Hola de hello aluvión de interfaz de usuario proporciona Hola siguiente información:
+La página principal de la interfaz de usuario de Storm ofrece la siguiente información:
 
-* **Resumen de clúster**: información básica sobre el clúster de Storm Hola.
+* **Resumen del clúster**: información básica sobre el clúster de Storm.
 
-* **Resumen de las topologías**: una lista de las topologías en ejecución. Usar vínculos de hello en esta sección tooview obtener más información acerca de las topologías específicas.
+* **Resumen de las topologías**: una lista de las topologías en ejecución. Use los vínculos de esta sección para obtener más información sobre las topologías específicas.
 
-* **Resumen de supervisor**: obtener información sobre el supervisor de Storm Hola.
+* **Resumen de supervisor**: información acerca del supervisor de Storm.
 
-* **Configuración de Nimbus**: configuración de Nimbus para clúster Hola.
+* **Configuración de Nimbus**: configuración de Nimbus del clúster.
 
 #### <a name="topology-summary"></a>Resumen de las topologías
 
-Si selecciona un vínculo de hello **resumen de la topología** sección muestra hello después de obtener información acerca de la topología de hello:
+Si selecciona un vínculo desde la sección **Resumen de la topología** , se mostrará la siguiente información sobre la topología.
 
-* **Resumen de la topología**: información básica acerca de la topología de Hola.
+* **Resumen de la topología**: información básica sobre la topología.
 
-* **Acciones de topología**: acciones de administración que puede realizar para la topología de Hola.
+* **Acciones de topología**: acciones de administración que puede realizar para la topología.
 
   * **Activar**: reanuda el procesamiento de una topología desactivada.
 
   * **Desactivar**: pausa una topología en ejecución.
 
-  * **Reequilibrar**: ajusta el paralelismo de Hola de topología de Hola. Debe volver a equilibrar las topologías de ejecución después de que haya cambiado Hola número de nodos de clúster de Hola. Esto permite Hola topología tooadjust paralelismo toocompensate para hello aumenta o reduce el número de nodos de clúster de Hola.
+  * **Reequilibrar**: ajusta el paralelismo de la topología. Debe volver a equilibrar las topologías en ejecución después de haber cambiado el número de nodos del clúster. Esto permite que la topología ajuste el paralelismo para compensar el mayor o menor número de nodos del clúster.
 
-      Para obtener más información, consulte [descripción paralelismo Hola de una topología de Storm (http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
+      Para obtener más información, consulte [Understanding the parallelism of a Storm topology (Descripción del paralelismo de una topología de Storm) (http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
 
-  * **Kill**: termine una topología de Storm después Hola especifica el tiempo de espera.
+  * **Eliminar**: finaliza una topología de Storm tras el tiempo de espera especificado.
 
-* **Estadísticas de topología**: estadísticas acerca de la topología de Hola. Use los vínculos de Hola Hola **ventana** período de tiempo de columna tooset Hola para hello restantes entradas en la página de Hola.
+* **Estadísticas de topología**: estadísticas sobre la topología. Use los vínculos de la columna **Ventana** para establecer el plazo de tiempo para las entradas restantes en la página.
 
-* **Spouts**: Hola spouts utilizados por la topología de Hola. Usar vínculos de hello en esta sección tooview obtener más información sobre spouts específicos.
+* **Spouts**: los spouts que usa la topología. Use los vínculos de esta sección para obtener más información acerca de spouts específicos.
 
-* **Tornillos**: Hola tornillos utilizados por la topología de Hola. Usar vínculos de hello en esta sección tooview obtener más información acerca de los tornillos específicos.
+* **Bolts**: los bolts que usa la topología. Use los vínculos de esta sección para obtener más información acerca de bolts específicos.
 
-* **Configuración de la topología**: configuración de Hola de topología de hello seleccionado.
+* **Configuración de la topología**: la configuración de la topología seleccionada.
 
 #### <a name="spout-and-bolt-summary"></a>Resumen de spouts y bolts
 
-Seleccionar un pitorro de hello **Spouts** o **tornillos** secciones muestra hello después de obtener información sobre el elemento Hola seleccionado:
+Si se selecciona un spout en la sección **Spouts** o **Bolts**, se muestra la siguiente información sobre el elemento seleccionado:
 
-* **Resumen de componentes**: información básica sobre pitorro Hola o rayo.
+* **Resumen de componentes**: información básica acerca del spout o bolt.
 
-* **Estadísticas de pitorro/rayo**: estadísticas sobre Hola apetezca charlar o el tornillo. Use los vínculos de Hola Hola **ventana** período de tiempo de columna tooset Hola para hello restantes entradas en la página de Hola.
+* **Estadísticas de spouts/bolts**: estadísticas sobre el spout o bolt. Use los vínculos de la columna **Ventana** para establecer el plazo de tiempo para las entradas restantes en la página.
 
-* **Estadísticas de entrada** (solo tornillo): utilizados por el rayo Hola de flujos de entrada de información acerca de Hola.
+* **Estadísticas de entrada** (solo bolt): información sobre las secuencias de entrada consumidas por el bolt.
 
-* **Estadísticas de salida**: información sobre los flujos de hello emitidos por esta apetezca charlar o el tornillo.
+* **Estadísticas de salida**: información sobre las secuencias emitidas por este spout o bolt
 
-* **Ejecutor**: información sobre instancias de Hola de pitorro Hola o rayo. Seleccione hello **puerto** entrada para un tooview ejecutor específico un registro de información de diagnóstico generados para esta instancia.
+* **Ejecutores**: información sobre las instancias del spout o bolt. Seleccione la entrada **Puerto** de un ejecutor específico para ver un registro de información de diagnóstico generado por esta instancia.
 
 * **Errores**: cualquier información de error de este spout o bolt.
 
 ## <a name="hdinsight-tools-for-visual-studio"></a>Herramientas de HDInsight para Visual Studio
 
-Herramientas de HDInsight de Hello puede ser toosubmit usa C# o híbrida topologías tooyour clúster de Storm. Hola pasos usa una aplicación de ejemplo. Para obtener información acerca de cómo crear sus propios topologías mediante las herramientas de HDInsight de hello, consulte [C# desarrollar topologías con hello HDInsight Tools para Visual Studio](hdinsight-storm-develop-csharp-visual-studio-topology.md).
+Las herramientas de HDInsight puede utilizarse para enviar las topologías de C# o híbridas al clúster de Storm. Los pasos siguientes usan una aplicación de muestra. Para obtener información sobre cómo crear sus propias topologías con las herramientas de HDInsight, consulte [Desarrollo de las topologías de C# mediante las herramientas de HDInsight para Visual Studio](hdinsight-storm-develop-csharp-visual-studio-topology.md).
 
-Usar hello siguiendo los pasos toodeploy una tormenta de ejemplo tooyour en clúster de HDInsight, a continuación, ver y administrar la topología de Hola.
+Utilice los siguientes pasos para implementar una muestra en el clúster de Storm en HDInsight y, a continuación, ver y administrar la topología.
 
-1. Si no ha instalado ya Hola versión más reciente de hello HDInsight Tools para Visual Studio, consulte [Introducción al uso de herramientas de HDInsight para Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md).
+1. Si todavía no tiene instalada la versión más reciente de las herramientas de HDInsight para Visual Studio, consulte [Introducción al uso de las herramientas de HDInsight para Visual Studio](hdinsight-hadoop-visual-studio-tools-get-started.md).
 
 2. Abra Visual Studio, seleccione **Archivo** > **Nuevo** > **Proyecto**.
 
-3. Hola **nuevo proyecto** cuadro de diálogo, expanda **instalado** > **plantillas**y, a continuación, seleccione **HDInsight**. En la lista Hola de plantillas, seleccione **aluvión de ejemplo**. En parte inferior de Hola Hola del cuadro de diálogo, escriba un nombre para la aplicación hello.
+3. En el cuadro de diálogo **Nuevo proyecto**, expanda **Instalado** > **Plantillas** y seleccione **HDInsight**. En la lista de plantillas, seleccione **Muestra de Storm**. En la parte inferior del cuadro de diálogo, escriba un nombre para la aplicación.
 
     ![imagen](./media/hdinsight-storm-deploy-monitor-topology/sample.png)
 
-4. En **el Explorador de soluciones**, haga clic en proyecto de Hola y seleccione **enviar tooStorm en HDInsight**.
+4. En el **Explorador de soluciones**, haga clic con el botón derecho en el proyecto y seleccione **Submit to Storm on HDInsight** (Enviar a Storm en HDInsight).
 
    > [!NOTE]
-   > Si se le solicite, escriba las credenciales de inicio de sesión de hello para la suscripción de Azure. Si tiene más de una suscripción, inicie sesión en toohello uno que contiene el aluvión en clúster de HDInsight.
+   > Si se le solicita, introduzca las credenciales de inicio de sesión de su suscripción de Azure. Si tiene más de una suscripción, inicie sesión en la que contenga el clúster de Storm en HDInsight.
 
-5. Seleccione el aluvión en clúster de HDInsight de hello **clúster de Storm** lista desplegable y, a continuación, seleccione **enviar**. Puede supervisar si el envío de hello es correcto mediante hello **salida** ventana.
+5. Seleccione el clúster de Storm en HDInsight desde el menú desplegable **Storm Cluster** (Clúster de Storm y seleccione **Submit** (Enviar). Puede supervisar si el envío es correcto mediante la ventana **Salida** .
 
-6. Cuando se ha enviado correctamente la topología de hello, Hola **aluvión de topologías** para clúster Hola debería aparecer. Seleccione topología Hola de hello mostrar tooview información acerca de hello ejecutando topología.
+6. Cuando la topología se envíe correctamente, deben aparecer las **topologías de Storm** del clúster. Seleccione la topología de la lista para ver información acerca de la topología de ejecución.
 
     ![supervisión de visual studio](./media/hdinsight-storm-deploy-monitor-topology/vsmonitor.png)
 
    > [!NOTE]
    > También puede ver las **topologías de Storm** en el **Explorador de servidores** expandiendo **Azure** > **HDInsight** y, después, haciendo clic con el botón derecho en un clúster de Storm en HDInsight y seleccionando **View Storm Topologies** (Ver topologías de Storm).
 
-    Seleccione la forma de Hola Hola spouts o tornillos tooview información acerca de estos componentes. Se abrirá una ventana nueva para cada elemento seleccionado.
+    Seleccione la forma de los spouts o bolts para ver información sobre estos componentes. Se abrirá una ventana nueva para cada elemento seleccionado.
 
    > [!NOTE]
-   > nombre de Hola de topología de hello es el nombre de clase de Hola de topología de hello (en este caso, `HelloWord`,) con una marca de tiempo que se anexa.
+   > El nombre de la topología es el nombre de clase de la topología (en este caso, `HelloWord`) con una marca de tiempo adjunta.
 
-7. De hello **resumen de la topología** visualizarla, seleccione **Kill** topología de hello toostop.
+7. Desde la vista **Topology Summary** (Resumen de la topología), seleccione **Kill** (Terminar) para detener la topología.
 
    > [!NOTE]
-   > Topologías de Storm continúan ejecutándose hasta que se hayan detenido o se elimina el clúster de Hola.
+   > Las topologías de Storm continúan ejecutándose hasta que se detengan o se elimine el clúster.
 
 
 ## <a name="rest-api"></a>API de REST
 
-Hola aluvión de interfaz de usuario se basa en hello API de REST, para que pueda realizar la administración y funcionalidad de supervisión mediante el uso de API de REST de hello similares. Puede usar herramientas personalizadas de toocreate de API de REST de Hola para administrar y supervisar las topologías de Storm.
+La interfaz de usuario de Storm se basa en la API de REST, lo que permite realizar una funcionalidad similar de administración y supervisión mediante la API de REST. Puede usar la API de REST para crear herramientas personalizadas para administrar y supervisar las topologías de Storm.
 
-Para más información, vea la [API de REST de la IU de Storm](https://github.com/apache/storm/blob/0.9.3-branch/STORM-UI-REST-API.md). Hello siguiente información es específica toousing hello API de REST con Apache Storm en HDInsight.
+Para más información, vea la [API de REST de la IU de Storm](https://github.com/apache/storm/blob/0.9.3-branch/STORM-UI-REST-API.md). La siguiente información es específica para usar la API de REST con Apache Storm en HDInsight.
 
 ### <a name="base-uri"></a>URI base
 
-Hola URI base para la API de REST de hello en clústeres de HDInsight es **https://&lt;clustername >.azurehdinsight.net/stormui/api/v1/**, donde **clustername** es el nombre de Hola de su Storm en Clúster de HDInsight.
+El URI de base para la API de REST en los clústeres de HDInsight es **https://&lt;clustername>.azurehdinsight.net/stormui/api/v1/**, donde **clustername** es el nombre del clúster de Storm en HDInsight.
 
 ### <a name="authentication"></a>Autenticación
 
-Toohello de las solicitudes que se debe usar la API de REST **la autenticación básica**, por lo que usar el nombre del Administrador de clúster de HDInsight de hello y una contraseña.
+Las solicitudes a la API de REST deben usar la **autenticación básica**; use el nombre y la contraseña de administrador del clúster de HDInsight.
 
 > [!NOTE]
-> Dado que la autenticación básica se envía mediante el uso de texto no cifrado, debe **siempre** utilizar comunicaciones HTTPS a toosecure con clúster de Hola.
+> Dado que la autenticación básica se envía mediante texto no cifrado, **siempre** debe usar HTTPS para proteger las comunicaciones con el clúster.
 
 ### <a name="return-values"></a>Valores devueltos
 
-Información que se devuelve de hello API de REST solo pueden ser utilizable desde dentro de clúster de Hola o máquinas virtuales en Hola misma red Virtual de Azure como clúster de Hola. Por ejemplo, nombre de dominio completo de hello (FQDN) devuelto para los servidores de Zookeeper no se pueden accesible desde Internet Hola.
+La información que se devuelve de la API de REST solo se puede utilizar desde dentro del clúster o de máquinas virtuales en la misma red virtual de Azure que el clúster. Por ejemplo, no se puede obtener el acceso desde Internet al nombre de dominio completo (FQDN) devuelto para servidores de Zookeeper.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Ahora que ha aprendido cómo topologías toodeploy y monitor mediante el uso de Hola aluvión de panel, obtenga información acerca de cómo:
+Ahora que ha aprendido cómo implementar y supervisar las topologías mediante el panel Storm, aprenda cómo:
 
-* [Desarrollar las topologías de C# con hello HDInsight Tools para Visual Studio](hdinsight-storm-develop-csharp-visual-studio-topology.md)
+* [Ejecutar topologías de C# mediante las herramientas de HDInsight para Visual Studio](hdinsight-storm-develop-csharp-visual-studio-topology.md)
 
 * [Desarrollar topologías basadas en Java con Maven](hdinsight-storm-develop-java-topology.md)
 

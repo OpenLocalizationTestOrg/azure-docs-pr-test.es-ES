@@ -1,6 +1,6 @@
 ---
-title: "aaaHow tooenable SSO de aplicación cruzado en Android mediante AAL | Documentos de Microsoft"
-description: "¿Cómo toouse características de Hola de Hola SDK AAL tooenable inicio de sesión único a través de las aplicaciones. "
+title: "Habilitación del inicio de sesión único entre aplicaciones en Android mediante ADAL | Microsoft Docs"
+description: "Cómo utilizar las características del SDK de ADAL para habilitar el inicio de sesión único entre las aplicaciones. "
 services: active-directory
 documentationcenter: 
 author: danieldobalian
@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 04/07/2017
 ms.author: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 3867e15030e5516464e4dbd92ba35894430daf00
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9c7e959530a836fe5ddf74708363a636c39b3cc6
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-tooenable-cross-app-sso-on-android-using-adal"></a>¿Cómo tooenable SSO de aplicación cruzado en Android mediante AAL
-Ahora se espera que proporciona el inicio de sesión único (SSO) para que los usuarios solo necesitan tooenter sus credenciales una vez y tienen esas credenciales profesional automáticamente en todas las aplicaciones por los clientes. dificultad Hola escribir su nombre de usuario y contraseña en una pantalla pequeña, a menudo veces se combinan con un factor adicional (2FA) como una llamada de teléfono o un código de mensajes de texto, resultados de insatisfacción rápido si un usuario tiene toodo esto más de una vez para el producto.
+# <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Habilitación de SSO entre aplicaciones en Android mediante ADAL
+Los clientes esperan que se proporcione un inicio de sesión único (SSO) para que los usuarios solo tengan que escribir sus credenciales una sola vez y esas credenciales automáticamente funcionen en otras aplicaciones. La dificultad de escribir el nombre de usuario y contraseña en una pantalla pequeña, a menudo combinado con un factor adicional (2FA) como una llamada de teléfono o un código de mensaje de texto, provoca una rápida insatisfacción si el usuario tiene que hacer esto más de una vez para su producto.
 
-Además, si aplica una plataforma de identidad que pueden utilizar otras aplicaciones como Microsoft Accounts o una cuenta profesional de Office 365, los clientes esperan que dichos toouse disponible toobe de credenciales en todas sus aplicaciones ya no importa proveedor Hola.
+Además, si aplica una plataforma de identidad que puedan usar otras aplicaciones, como cuentas Microsoft o una cuenta de trabajo de Office 365, los clientes esperan que las credenciales estén disponibles para todas sus aplicaciones, independientemente del proveedor.
 
-Hello plataforma de Microsoft Identity, junto con nuestro SDK de identidad de Microsoft funciona todo esto disco duro para usted y proporciona Hola capacidad toodelight con SSO, ya sea dentro de su propio conjunto de aplicaciones o, como los clientes con nuestro agente capacidad y el autenticador aplicaciones, a través de dispositivo completo Hola.
+La plataforma de Microsoft Identity, junto con los SDK correspondientes, se ocupa de este trabajo ingrato y le ofrece la posibilidad de satisfacer a sus clientes con el inicio de sesión único, ya sea dentro de su propio conjunto de aplicaciones o, como sucede con nuestra funcionalidad de agente y las aplicaciones de Authenticator, en todo el dispositivo.
 
-Este tutorial le indicará cómo tooconfigure nuestro SDK dentro de su aplicación tooprovide esta tooyour beneficio que los clientes.
+Este tutorial le indicará cómo configurar nuestro SDK dentro de la aplicación para proporcionar esta ventaja a sus clientes.
 
 Este tutorial se aplica a:
 
@@ -37,36 +37,36 @@ Este tutorial se aplica a:
 * Azure Active Directory B2B
 * Acceso condicional de Azure Active Directory
 
-documento de Hello anterior se supone que sabe cómo demasiado[aprovisionar aplicaciones en portal heredado de Hola para Azure Active Directory](active-directory-how-to-integrate.md) y la aplicación integrada con hello [SDK de Android de identidad de Microsoft](https://github.com/AzureAD/azure-activedirectory-library-for-android) .
+En el documento anterior se considera que tiene conocimientos acerca de cómo [aprovisionar aplicaciones en el portal heredado para Azure Active Directory](active-directory-how-to-integrate.md) y que ha integrado su aplicación con el [SDK de Android de Microsoft Identity](https://github.com/AzureAD/azure-activedirectory-library-for-android).
 
-## <a name="sso-concepts-in-hello-microsoft-identity-platform"></a>Conceptos de SSO en hello plataforma de identidad de Microsoft
+## <a name="sso-concepts-in-the-microsoft-identity-platform"></a>Conceptos de inicio de sesión único en la plataforma de Microsoft Identity
 ### <a name="microsoft-identity-brokers"></a>Agentes de Microsoft Identity
-Microsoft proporciona a las aplicaciones para todas las plataformas móviles que permiten Hola puentes de credenciales en todas las aplicaciones de diferentes proveedores y admite características mejoradas especiales que requieren un único lugar seguro desde donde toovalidate credenciales. A estas aplicaciones las llamamos **agentes**. En iOS y Android estos se proporcionan a través de aplicaciones que se pueden descargar que los clientes instalación de forma independiente o se pueden insertar toohello dispositivo por una compañía que administra algunos o todos los dispositivos de Hola para sus empleados. Estos agentes admiten la administración de seguridad solo para algunas aplicaciones o dispositivo completo hello en función de lo que los administradores de TI desea. En Windows, esta funcionalidad se proporciona mediante un selector de la cuenta integrada en el sistema de operativo toohello, técnicamente conocido como Hola Broker de autenticación Web.
+Microsoft proporciona aplicaciones para todas las plataformas móviles que permiten el traspaso de credenciales entre aplicaciones de distintos proveedores, y habilita características mejoradas especiales que requieren un único lugar seguro desde el que validar las credenciales. A estas aplicaciones las llamamos **agentes**. En iOS y Android, estos agentes se consiguen a través de aplicaciones descargables que los clientes instalan de forma independiente o bien se insertan en el dispositivo gracias a una empresa que administra el dispositivo de manera total o parcial para sus empleados. Gracias a estos agentes, es posible administrar la seguridad de solo unas aplicaciones o bien del dispositivo en su totalidad, en función de lo que decidan los administradores de TI. En Windows, esta funcionalidad se proporciona mediante un selector de cuentas integrado en el sistema operativo, que se conoce técnicamente como agente de autenticación web.
 
-Para obtener más información acerca de cómo se utilizan estos agentes y cómo los clientes pueden verlas en su flujo de inicio de sesión para la plataforma de Microsoft Identity Hola de lectura en.
+Para más información sobre el uso que hacemos de estos agentes y la percepción que tendrán de ellos sus clientes durante el proceso de inicio de sesión para la plataforma Microsoft Identity, siga leyendo.
 
 ### <a name="patterns-for-logging-in-on-mobile-devices"></a>Patrones para iniciar sesión en dispositivos móviles
-Toocredentials de acceso en los dispositivos siga dos patrones básicos para la plataforma de Microsoft Identity hello:
+El acceso a credenciales en los dispositivos sigue dos patrones básicos para la plataforma Microsoft Identity:
 
 * Inicios de sesión no asistidos por agente
 * Inicios de sesión asistidos por agente
 
 #### <a name="non-broker-assisted-logins"></a>Inicios de sesión no asistidos por agente
-Los inicios de sesión del agente no asistidas son experiencias de inicio de sesión que se realizan en línea con la aplicación hello y usar el almacenamiento local de hello en dispositivo Hola para esa aplicación. Este almacenamiento puede compartirse en todas las aplicaciones pero credenciales Hola están estrechamente toohello aplicación o conjunto de aplicaciones con esa credencial. Probablemente ha experimentado esto en muchas aplicaciones móviles al escribir un nombre de usuario y contraseña en la propia aplicación Hola.
+Los inicios de sesión no asistidos por agente son experiencias de inicio de sesión que ocurren en línea con la aplicación y usan el almacenamiento local en el dispositivo para esa aplicación. Este almacenamiento puede compartirse entre las aplicaciones, pero las credenciales están estrechamente vinculadas a la aplicación o al conjunto de aplicaciones que usan esa credencial. Probablemente haya experimentado esto en muchas aplicaciones móviles en las que escribe un nombre de usuario y una contraseña en la propia aplicación.
 
-Estos inicios de sesión tienen Hola siguientes ventajas:
+Estos inicios de sesión tienen las siguientes ventajas:
 
-* Experiencia del usuario existe completamente dentro de la aplicación hello.
-* Las credenciales se pueden compartir entre las aplicaciones que están firmadas por hello mismo certificado, lo que proporciona un conjunto de tooyour de la experiencia de inicio de sesión único de aplicaciones.
-* Control alrededor de la experiencia de hello del inicio de sesión se proporciona toohello aplicación antes y después del inicio de sesión.
+* La experiencia de usuario se desarrolla por completo dentro de la aplicación.
+* Las credenciales se pueden compartir entre aplicaciones que estén firmadas por el mismo certificado, proporcionando una experiencia de inicio de sesión único para el conjunto de aplicaciones.
+* Se proporciona el control de la experiencia de inicio de sesión a la aplicación antes y después del inicio de sesión.
 
-Estos inicios de sesión tienen Hola siguientes desventajas:
+Estos inicios de sesión tienen las siguientes desventajas:
 
 * El usuario no puede experimentar el inicio de sesión único entre todas las aplicaciones que usan una identidad de Microsoft Identity, solo en aquellas identidades de Microsoft Identity que su aplicación ha configurado.
-* La aplicación no se puede usar con las características más avanzadas de negocios como acceso condicional o use Hola InTune conjunto de productos.
+* La aplicación no se puede usar con las características empresariales más avanzadas, como el acceso condicional, ni utilizar el conjunto de aplicaciones de InTune.
 * La aplicación no admite la autenticación basada en certificados para usuarios empresariales.
 
-Aquí es una representación de cómo funcionan los SDK de identidad de Microsoft hello con almacenamiento de hello compartido de su tooenable aplicaciones SSO:
+A continuación se representa el funcionamiento de los SDK de Microsoft Identity con el almacenamiento compartido de sus aplicaciones para habilitar el inicio de sesión único:
 
 ```
 +------------+ +------------+  +-------------+
@@ -83,35 +83,35 @@ Aquí es una representación de cómo funcionan los SDK de identidad de Microsof
 ```
 
 #### <a name="broker-assisted-logins"></a>Inicios de sesión asistidos por agente
-Asistido por el agente de inicios de sesión son experiencias de inicio de sesión que se producen dentro de la aplicación de broker de hello y utilizar almacenamiento de Hola y seguridad de credenciales de hello broker tooshare en todas las aplicaciones en dispositivos de Hola que se aplican de la plataforma de Microsoft Identity Hola. Esto significa que las aplicaciones dependen de los usuarios de hello broker toosign en. En iOS y Android estos agentes se proporcionan a través de aplicaciones que se pueden descargar que los clientes instalación de forma independiente o se pueden insertar toohello dispositivo por una compañía que administra el dispositivo de hello para el usuario. Un ejemplo de este tipo de aplicación es la aplicación de Microsoft Authenticator hello en iOS. En Windows, esta funcionalidad se proporciona mediante un selector de la cuenta integrada en el sistema de operativo toohello, técnicamente conocido como Hola Broker de autenticación Web.
-experiencia de Hello varía según la plataforma y a veces puede ser perjudiciales toousers si no administra correctamente. Es probablemente más familiarizado con este patrón si tiene instalada la aplicación de Facebook de Hola y usar Facebook Connect desde otra aplicación. Hello usa de la plataforma de Microsoft Identity Hola mismo patrón.
+Los inicios de sesión asistidos por agente son experiencias de inicio de sesión que se producen dentro de la aplicación del agente y usan el almacenamiento y la seguridad del agente para compartir las credenciales entre todas las aplicaciones del dispositivo que se aplican a la plataforma Microsoft Identity. Esto significa que las aplicaciones dependen del agente para que los usuarios inicien sesión. En iOS y Android, estos agentes se consiguen a través de aplicaciones descargables que los clientes instalan de forma independiente o bien se insertan en el dispositivo gracias a una empresa que administra el dispositivo para sus usuarios. Un ejemplo de este tipo de aplicación es la aplicación Microsoft Authenticator en iOS. En Windows, esta funcionalidad se proporciona mediante un selector de cuentas integrado en el sistema operativo, que se conoce técnicamente como agente de autenticación web.
+La experiencia varía según la plataforma y a veces puede ser problemática para los usuarios si no se administra correctamente. Quizá este modelo le resulte más familiar si tiene instalada la aplicación Facebook y usa Facebook Connect desde otra aplicación. La plataforma Microsoft Identity utiliza este mismo modelo.
 
-Para iOS Esto conduce animación de "transición" tooa donde la aplicación se envía a toohello fondo mientras las aplicaciones de Microsoft Authenticator Hola procede de primer plano de toohello para hello usuario tooselect qué cuenta preferirían toosign con.  
+En el caso de iOS, esto da lugar a una animación de "transición" en la que la aplicación se envía a un segundo plano y las aplicaciones de Microsoft Authenticator vienen al primer plano para que el usuario seleccione la cuenta en la que quiere iniciar sesión.  
 
-Android y Windows cuenta Hola selector se muestra encima de la aplicación que es menos problemática toohello al usuario.
+En el caso de Android y Windows, el selector de cuentas se muestra sobre la aplicación, lo cual interrumpe menos la experiencia del usuario.
 
-#### <a name="how-hello-broker-gets-invoked"></a>¿Cómo se invoca broker Hola
-Si está instalado un agente compatible en dispositivos de hello, que configurará automáticamente y Hola aplicación Microsoft Authenticator, Hola SDK de identidad de Microsoft Hola trabajo de invocar broker Hola automáticamente cuando un usuario indica que hubieran querido toolog con cualquier cuenta de plataforma de Microsoft Identity Hola. Esta cuenta podría tratarse de una cuenta personal de Microsoft, una cuenta profesional o educativa o una cuenta que especifique y hospede en Azure mediante nuestros productos B2C y B2B. 
+#### <a name="how-the-broker-gets-invoked"></a>¿Cómo se invoca el agente?
+Si se instala un agente compatible en el dispositivo, como la aplicación Microsoft Authenticator, los SDK de Microsoft Identity se ocuparán automáticamente de la tarea de invocar al agente cuando un usuario indique que quiere iniciar sesión con alguna de las cuentas de la plataforma Microsoft Identity. Esta cuenta podría tratarse de una cuenta personal de Microsoft, una cuenta profesional o educativa o una cuenta que especifique y hospede en Azure mediante nuestros productos B2C y B2B. 
  
- #### <a name="how-we-ensure-hello-application-is-valid"></a>Cómo garantizamos que la aplicación hello es válido
+ #### <a name="how-we-ensure-the-application-is-valid"></a>Cómo se garantiza que la aplicación es válida
  
- identidad de Hello necesidad tooensure Hola de un agente de Hola de llamada de aplicación es toohello fundamental para la seguridad por que se proporcionan en los inicios de sesión de agente asistida. IOS ni Android exige identificadores únicos que solo son válidos para una aplicación determinada, por lo que pueden "Suplantar" identificador de la aplicación legítimo y reciben los testigos de hello destinados a la aplicación legítima Hola aplicaciones malintencionadas. tooensure que siempre se comunica con la aplicación correcta de hello en tiempo de ejecución, le pedimos Hola developer tooprovide un redirectURI personalizado al registrar su aplicación con Microsoft. **A continuación se describe cómo los desarrolladores deben diseñar este URI de redirección.** Este redirectURI personalizada contiene la huella digital del certificado de la aplicación hello hello y está garantizada toobe toohello única aplicación por hello Google Play Store. Cuando una aplicación llama broker hello, broker Hola pide tooprovide de sistema operativo Android Hola con hello huella digital del certificado que broker Hola llamado. broker de Hello proporciona esta tooMicrosoft de huella digital de certificado en el sistema de identidades de hello llamada tooour. Si certificado Hola huella digital de la aplicación hello no coincide con la huella digital del certificado Hola proporcionado toous desarrollador Hola durante el registro, se denegará el acceso toohello tokens para hello recursos Hola aplicación está solicitando. Esta comprobación garantiza que sólo las aplicación hello registrada por el desarrollador de hello recibe los tokens.
+ La necesidad de asegurar la identidad de una llamada de la aplicación al agente es fundamental para la seguridad que proporcionamos en los inicios de sesión asistidos por agente. Ni IOS ni Android exigen identificadores únicos que solo son válidos para una aplicación determinada, por lo que aplicaciones malintencionadas pueden "suplantar" un identificador de la aplicación legítima y recibir los tokens destinados a la aplicación legítima. Para asegurarse de que siempre se comunica con la aplicación correcta en tiempo de ejecución, le pedimos al desarrollador que proporcione un redirectURI personalizado al registrar su aplicación con Microsoft. **A continuación se describe cómo deben diseñar los desarrolladores este URI de redirección.** Este URI de redirección personalizado contiene la huella digital del certificado de la aplicación y se asegura de que es único para la aplicación por Google Play Store. Cuando una aplicación llama el agente, este solicita al sistema de operativo Android que le proporcione la huella digital del certificado que llama el agente. El agente proporciona esta huella digital del certificado a Microsoft en la llamada a nuestro sistema de identidad. Si la huella digital del certificado de la aplicación no coincide con la huella digital del certificado proporcionada por el desarrollador durante el registro, se denegará el acceso a los tokens para el recurso que está solicitando la aplicación. Esta comprobación asegura que solo la aplicación registrada por el desarrollador recibe los tokens.
 
-**desarrollador de Hello tiene elección Hola de si Hola SDK de Microsoft Identity llama a broker Hola o usa flujo asistida de hello no es del agente.** Sin embargo si el desarrollador de hello elige no flujo asistidas por el agente de Hola de toouse pierden ventaja de hello del uso de credenciales de SSO que el usuario Hola puedas haber agregado ya en el dispositivo de Hola e impide que su aplicación que se va a usar con las características de business Microsoft proporciona a los clientes, como el acceso condicional y capacidades de administración de Intune, autenticación basada en certificados.
+**El desarrollador tiene la opción de elegir si el SDK de Microsoft Identity llama al agente o usa el flujo sin asistencia del agente.** Sin embargo, si el desarrollador decide no usar el flujo asistido por agente, no podrá beneficiarse del uso de las credenciales de SSO que el usuario puede ya haber agregado en el dispositivo; además, impide que la aplicación se use con las características empresariales que Microsoft proporciona a sus clientes, como el acceso condicional, las funcionalidades de administración de Intune y la autenticación basada en certificados.
 
-Estos inicios de sesión tienen Hola siguientes ventajas:
+Estos inicios de sesión tienen las siguientes ventajas:
 
-* Usuario experimenta SSO a través de todas sus aplicaciones, independientemente del proveedor de Hola.
-* La aplicación puede utilizar las características más avanzadas de negocio, como el acceso condicional o conjunto de productos de hello InTune.
+* El usuario experimenta el inicio de sesión único en todas sus aplicaciones, con independencia del proveedor.
+* La aplicación puede usar las características empresariales más avanzadas, como el acceso condicional, o usar el conjunto de productos de InTune.
 * La aplicación puede admitir la autenticación basada en certificados para los usuarios empresariales.
-* Inicio de sesión mucho más segura de experimentar como identidad de Hola de aplicación hello y usuario Hola se comprobó por aplicación de broker de hello con algoritmos de seguridad adicional y el cifrado.
+* La experiencia de inicio de sesión es mucho más segura, ya que tanto la identidad de la aplicación como el usuario se verifican por parte de la aplicación de agente con algoritmos de seguridad y sistemas de cifrado adicionales.
 
-Estos inicios de sesión tienen Hola siguientes desventajas:
+Estos inicios de sesión tienen las siguientes desventajas:
 
-* En iOS usuario Hola pasa fuera de la experiencia de su aplicación mientras se eligen las credenciales.
-* Pérdida de inicio de sesión de hello capacidad toomanage Hola experiencia para sus clientes dentro de la aplicación.
+* En iOS, el usuario pasa por un proceso externo a la experiencia de la aplicación mientras se eligen las credenciales.
+* Se pierde la capacidad de administrar la experiencia de inicio de sesión para los clientes dentro de la aplicación.
 
-Aquí es una representación de cómo de trabajo del SDK de identidad de Microsoft de hello con hello broker tooenable aplicaciones SSO:
+A continuación se representa el funcionamiento de los SDK de Microsoft Identity con las aplicaciones de agente para habilitar el inicio de sesión único:
 
 ```
 +------------+ +------------+   +-------------+
@@ -138,27 +138,27 @@ Aquí es una representación de cómo de trabajo del SDK de identidad de Microso
 
 ```
 
-Gracias a esta información debe ser capaz de toobetter comprender e implementar SSO dentro de la aplicación con la plataforma de Microsoft Identity hello y SDK.
+Una vez que disponga de toda esta información, probablemente pueda entender e implementar mejor el inicio de sesión único en la aplicación mediante los SDK y la plataforma Microsoft Identity.
 
 ## <a name="enabling-cross-app-sso-using-adal"></a>Habilitación del SSO entre aplicaciones mediante ADAL
-Aquí usamos Hola AAL Android SDK para:
+Ahora vamos a usar el SDK de Android de ADAL para:
 
 * Activar el SSO no asistido por agente para su conjunto de aplicaciones
 * Activar la compatibilidad para el SSO asistido por agente
 
 ### <a name="turning-on-sso-for-non-broker-assisted-sso"></a>Activación del SSO para el SSO no asistido por agente
-Para no es del agente asistida SSO en todas las aplicaciones Hola SDK de identidad de Microsoft administra gran parte de la complejidad de Hola de SSO por usted. Esto incluye Buscar usuario hello en memoria caché de Hola y mantiene una lista de usuarios tooquery ha iniciado sesión.
+En el caso del SSO entre aplicaciones no asistido por agente, los SDK de Microsoft Identity administran automáticamente gran parte de la complejidad que entraña este proceso. Esto incluye la búsqueda del usuario adecuado en la memoria caché y el mantenimiento de una lista de usuarios que han iniciado sesión en la que se pueden realizar consultas.
 
-tooenable SSO en todas las aplicaciones que usted es el propietario que debe hello toodo después de:
+Para habilitar el SSO entre aplicaciones de las que es el propietario debe hacer lo siguiente:
 
-1. Asegúrese de todos los el saludo del usuario aplicaciones mismo Id. de cliente o el identificador de aplicación
-2. Asegúrese de que todas las aplicaciones tienen hello que shareduserid mismo conjunto.
-3. Asegúrese de que todos los Hola de recurso compartido de aplicaciones mismo certificado de firma de hello Google Play almacenar para que puedan compartir almacenamiento.
+1. Garantizar que todas las aplicaciones utilizan el mismo identificador de cliente o aplicación
+2. Garantizar que todas las aplicaciones tienen el mismo conjunto de SharedUserID.
+3. Garantizar que todas las aplicaciones comparten el mismo certificado de firma de Google Play Store para que puedan compartir el almacenamiento.
 
-#### <a name="step-1-using-hello-same-client-id--application-id-for-all-hello-applications-in-your-suite-of-apps"></a>Paso 1: Usar Hola mismo Id. de cliente / Id. de aplicación para todas las aplicaciones en el conjunto de aplicaciones de Hola
-Para tooknow de plataforma de Microsoft Identity Hola que se permite tooshare símbolos (tokens) a través de las aplicaciones, cada una de las aplicaciones necesitará tooshare Hola mismo Id. de cliente o el identificador de aplicación. Se trata de un identificador único de Hola que se proporcionó tooyou cuando registra su primera aplicación de portal de Hola.
+#### <a name="step-1-using-the-same-client-id--application-id-for-all-the-applications-in-your-suite-of-apps"></a>Paso 1: Uso del mismo identificador de cliente o aplicación para todas las aplicaciones de su conjunto
+A fin de que la plataforma Microsoft Identity sepa que puede compartir tokens entre las aplicaciones, es necesario que todas ellas compartan el mismo identificador de cliente o aplicación. Se trata del identificador único que se le suministró al registrar su primera aplicación en el portal.
 
-Quizás se pregunte cómo identificará las diferentes aplicaciones toohello servicio de Microsoft Identity si utiliza Hola el mismo identificador de aplicación. es la respuesta a Hola con hello **URI de redireccionamiento**. Cada aplicación puede tener varios URI de redireccionamiento registrado en el portal de incorporación de Hola. Cada una de las aplicaciones de su conjunto tendrá diferentes URI de redirección. A continuación se muestra un ejemplo típico de su aspecto:
+Quizás se pregunte cómo se puede identificar a las diferentes aplicaciones en el servicio Microsoft Identity si todas utilizan el mismo identificador. Pues bien, esto es posible gracias a los **URI de redirección**. Cada aplicación puede tener varios URI de redirección registrados en el portal de incorporación. Cada una de las aplicaciones de su conjunto tendrá diferentes URI de redirección. A continuación se muestra un ejemplo típico de su aspecto:
 
 URI de redirección de la aplicación 1: `msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D`
 
@@ -168,7 +168,7 @@ URI de redirección de la aplicación 3: `msauth://com.example.userapp2/Pt85PxIy
 
 ....
 
-Estos se anidan debajo de Hola el mismo Id. de cliente / volver toous en la configuración del SDK de URI de redireccionamiento de Id. de aplicación y buscada Hola según.
+Estos están anidados en el mismo identificador de cliente o aplicación y se consultan en función del URI de redirección que nos devuelve en su configuración del SDK.
 
 ```
 +-------------------+
@@ -194,31 +194,31 @@ Estos se anidan debajo de Hola el mismo Id. de cliente / volver toous en la conf
 ```
 
 
-*Tenga en cuenta que el formato de estos URI de redireccionamiento de Hola se explican a continuación. Puede usar cualquier URI de redireccionamiento a menos que se desea que el agente de hello toosupport, en cuyo caso debe ser similar a Hola anterior*
+*Tenga en cuenta que el formato de estos URI de redirección se explica a continuación. Puede usar cualquier URI de redirección, a menos que desee utilizar el agente, en cuyo caso debe tener un aspecto como el anterior*
 
 #### <a name="step-2-configuring-shared-storage-in-android"></a>Paso 2: Configuración del almacenamiento compartido en Android
-Hola configuración `SharedUserID` cubre Hola de este documento, pero puede aprender, lea la documentación de Google Android en Hola Hola [manifiesto](http://developer.android.com/guide/topics/manifest/manifest-element.html). Lo importante es que decida cómo desea llamar a su sharedUserID y usar ese nombre en todas sus aplicaciones.
+La definición de `SharedUserID` está fuera del ámbito de este documento, pero se puede aprender en la documentación de Google Android, en el [Manifiesto](http://developer.android.com/guide/topics/manifest/manifest-element.html). Lo importante es que decida cómo desea llamar a su sharedUserID y usar ese nombre en todas sus aplicaciones.
 
-Una vez que tenga hello `SharedUserID` en todas las aplicaciones están listo toouse SSO.
+Una vez que tiene `SharedUserID` en todas las aplicaciones, estará listo para utilizar SSO.
 
 > [!WARNING]
-> Cuando se comparte el almacenamiento a través de las aplicaciones de cualquier aplicación puede eliminar usuarios o peor eliminar todos los tokens de Hola a través de la aplicación. Esto es especialmente desastroso si tiene aplicaciones que se basan en el trabajo en segundo plano toodo Hola símbolos (tokens). Uso compartido de almacenamiento significa que debe ser muy cuidadoso en las operaciones de quitar todos a través de hello SDK de identidad de Microsoft.
+> Cuando se comparte un almacenamiento entre aplicaciones, cualquiera de ellas puede eliminar usuarios o, peor aún, eliminar todos los tokens de la aplicación. Esto puede resultar especialmente problemático si tiene aplicaciones que dependen de los tokens para hacer el trabajo en segundo plano. Compartir un almacenamiento implica ser muy cuidadoso en todas y cada una de las operaciones de eliminación realizadas a través de los SDK de Microsoft Identity.
 > 
 > 
 
-Eso es todo. Hola SDK de Microsoft Identity ahora compartirán las credenciales en todas sus aplicaciones. lista de usuarios de Hello también se compartirán entre instancias de la aplicación.
+Eso es todo. El SDK de Microsoft Identity ahora compartirá las credenciales entre todas sus aplicaciones. La lista de usuarios también se compartirá entre las instancias de la aplicación.
 
 ### <a name="turning-on-sso-for-broker-assisted-sso"></a>Activación del SSO para el SSO asistido por agente
-Hola la posibilidad de que un toouse de aplicación es cualquier agente que está instalada en el dispositivo de hello **está desactivada de forma predeterminada**. En Ordenar toouse su aplicación con el agente de hello debe hacer alguna configuración adicional y agregar alguna aplicación tooyour de código.
+La capacidad de una aplicación de usar cualquier agente que esté instalado en el dispositivo está **desactivada de forma predeterminada**. Para poder utilizar la aplicación con el agente debe realizar algunos pasos de configuración adicionales y agregar código a la aplicación.
 
-Hola pasos toofollow son:
+Los pasos que debe seguir son los siguientes:
 
-1. Habilitar el modo de broker en toohello de llamada del código de la aplicación MS SDK
-2. Establecer un nuevo URI de redireccionamiento y proporcionar esa aplicación de hello tooboth y el registro de aplicaciones
-3. Establecer los permisos correctos de hello en el manifiesto de Android Hola
+1. Habilitar el modo de agente en la llamada al código de la aplicación para el SDK de Microsoft
+2. Establecer un nuevo URI de redirección e indicarlo tanto en la aplicación como en el registro de la aplicación
+3. Configurar los permisos correctos en el manifiesto de Android
 
 #### <a name="step-1-enable-broker-mode-in-your-application"></a>Paso 1: Habilitar el modo de agente en la aplicación
-capacidad de Hello para el agente de hello toouse de aplicación está activado cuando se crea la configuración"Hola" o la instalación inicial de la instancia de la autenticación. Para ello, configure el tipo de ApplicationSettings en el código:
+La capacidad de la aplicación de utilizar el agente se activa al crear la configuración inicial de la instancia de autenticación. Para ello, configure el tipo de ApplicationSettings en el código:
 
 ```
 AuthenticationSettings.Instance.setUseBroker(true);
@@ -226,18 +226,18 @@ AuthenticationSettings.Instance.setUseBroker(true);
 
 
 #### <a name="step-2-establish-a-new-redirect-uri-with-your-url-scheme"></a>Paso 2: Establecer un nuevo URI de redirección con el esquema de dirección URL
-En orden tooensure que devolvemos siempre credenciales Hola tokens toohello de aplicación correcto, necesitamos toomake seguro que se devuelva la llamada puede comprobar la aplicación tooyour de forma que Hola sistema operativo Android. sistema operativo Android de Hello usa hash Hola certificado Hola Hola Google Play store. Este sistema no se puede suplantar por ninguna aplicación malintencionada. Por lo tanto, hemos aprovechado esto junto con el URI de nuestro tooensure de aplicación de agente que los tokens de Hola se devuelvan toohello correcta aplicación Hola. Es necesario tooestablish este tanto en la aplicación y se establece el URI de redireccionamiento único como un URI de redireccionamiento en nuestro portal para desarrolladores.
+Para garantizar que siempre se devuelvan los tokens de credencial a la aplicación correcta, es necesario asegurarse de que se llama a la aplicación de tal manera que el sistema operativo Android pueda verificarla. El sistema operativo Android utiliza el hash del certificado en Google Play Store. Este sistema no se puede suplantar por ninguna aplicación malintencionada. Por lo tanto, se aprovecha este elemento junto con el URI de la aplicación de agente para garantizar que los tokens se devuelven a la aplicación correcta. Es necesario establecer este URI de redirección único en la aplicación y configurarlo como URI de redirección en nuestro portal para desarrolladores.
 
-El URI de redireccionamiento debe ser en forma adecuada de Hola de:
+Para ser correcto, el URI de redirección debe presentar el formato siguiente:
 
 `msauth://packagename/Base64UrlencodedSignature`
 
 Por ejemplo: *msauth://com.example.userapp/IcB5PxIyvbLkbFVtBI%2FitkW%2Fejk%3D*
 
-Este URI de redireccionamiento debe toobe especificado en el registro de aplicación con hello [portal de Azure](https://portal.azure.com/). Para más información sobre el registro de aplicaciones de Azure AD, consulte [Integración con Azure Active Directory](active-directory-how-to-integrate.md).
+Este URI de redirección debe especificarse en el registro de la aplicación mediante [Azure Portal](https://portal.azure.com/). Para más información sobre el registro de aplicaciones de Azure AD, consulte [Integración con Azure Active Directory](active-directory-how-to-integrate.md).
 
-#### <a name="step-3-set-up-hello-correct-permissions-in-your-application"></a>Paso 3: Configurar los permisos correctos de hello en la aplicación
-Nuestra aplicación de broker en Android usa la característica de administrador de cuentas de Hola de credenciales de hello Android OS toomanage en todas las aplicaciones. En el agente de pedido toouse hello en Android el manifiesto de aplicación debe tener cuentas de administrador de cuentas de toouse de permisos. Esto se explica en detalle en hello [Google documentación para el Administrador de cuentas](http://developer.android.com/reference/android/accounts/AccountManager.html)
+#### <a name="step-3-set-up-the-correct-permissions-in-your-application"></a>Paso 3: Configurar los permisos correctos en la aplicación
+Nuestra aplicación de agente en Android utiliza la característica de administrador de cuentas del SO Android para administrar las credenciales entre aplicaciones. Para utilizar el agente en Android el manifiesto de la aplicación debe tener permisos para usar cuentas del administrador de cuentas. Esto se explica en detalle en la [documentación de Google para el administrador de cuentas que puede encontrar aquí](http://developer.android.com/reference/android/accounts/AccountManager.html)
 
 En concreto, estos permisos son:
 
@@ -248,5 +248,5 @@ MANAGE_ACCOUNTS
 ```
 
 ### <a name="youve-configured-sso"></a>Ya ha configurado el SSO.
-Ahora Hola SDK de Microsoft Identity usarán automáticamente tanto comparte las credenciales a través de sus aplicaciones e invocarán a broker Hola si está presente en su dispositivo.
+Ahora, el SDK de Microsoft Identity compartirá automáticamente las credenciales entre las aplicaciones e invocará al agente si está presente en su dispositivo.
 

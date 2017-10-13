@@ -1,6 +1,6 @@
 ---
-title: "aaaSet una directiva de replicación para tooAzure de replicación de máquina virtual de Hyper-V (con VMM) con Azure Site Recovery | Documentos de Microsoft"
-description: "Describe cómo tooset una directiva de replicación para tooAzure de replicación de máquina virtual de Hyper-V (con VMM) con Azure Site Recovery"
+title: "Configuración de una directiva de replicación para replicar máquinas virtuales de Hyper-V (con VMM) en Azure con Azure Site Recovery | Microsoft Docs"
+description: "Describe cómo configurar una directiva de replicación para replicar máquinas virtuales de Hyper-V (con VMM) en Azure con Azure Site Recovery"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,39 +14,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2017
 ms.author: raynew
-ms.openlocfilehash: e1579fde559ca34eca19a01e740fec28a0df2f9e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 592e1c3f647e5b1f1d9aa776657e8f89b60349e1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="step-10-set-up-a-replication-policy-for-hyper-v-vm-replication-with-vmm-tooazure"></a>Paso 10: Configurar una directiva de replicación de máquina virtual de Hyper-V tooAzure de replicación (con VMM)
+# <a name="step-10-set-up-a-replication-policy-for-hyper-v-vm-replication-with-vmm-to-azure"></a>Paso 10: Configuración de una directiva de replicación para replicar máquinas virtuales de Hyper-V (con VMM) en Azure
 
 
-Después de configurar [asignación de red](vmm-to-azure-walkthrough-network-mapping.md), use este tooconfigure artículo una directiva de replicación T\tooreplicate máquinas virtuales de Hyper-V administrados en tooAzure de nubes de System Center Virtual Machine Manager (VMM) local, utilizando Hola [ Azure Site Recovery](site-recovery-overview.md) servicio Hola portal de Azure.
+Tras configurar la [asignación de red](vmm-to-azure-walkthrough-network-mapping.md), use este artículo para configurar una directiva de replicación T\para replicar máquinas virtuales locales de Hyper-V administradas en nubes de System Center Virtual Machine Manager (VMM) en Azure mediante el servicio [Azure Site Recovery](site-recovery-overview.md) en Azure Portal.
 
-Después de leer este artículo, registrar cualquier comentario final hello, o en hello [foro de servicios de recuperación de Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Publique cualquier comentario que tenga en la parte inferior de este artículo, o bien en el [foro de Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 
 
 ## <a name="create-a-policy"></a>Para crear una directiva
 
-1. toocreate una nueva directiva de replicación, haga clic en **preparar infraestructura** > **configuración de replicación** > **+ crear y asociar**.
+1. Para crear una nueva directiva de replicación, haga clic en **Preparar infraestructura** > **Configuración de la replicación** > **+Crear y asociar**.
 
     ![Red](./media/vmm-to-azure-walkthrough-replication/gs-replication.png)
 2. En **Crear y asociar directiva**, especifique un nombre de directiva.
-3. En **copiar frecuencia**, especifique la frecuencia con desea tooreplicate diferencias de datos después de la replicación inicial de hello (cada 30 segundos, 5 o 15 minutos).
+3. En **Frecuencia de copia**, especifique la frecuencia con la que desea replicar diferencias de datos después de la replicación inicial (cada 30 segundos, 5 o 15 minutos).
 
     > [!NOTE]
-    >  No se admite una frecuencia de segundo 30 al replicar toopremium almacenamiento. limitación de Hello viene determinado por el número de Hola de instantáneas por blob (100) compatible con almacenamiento premium. [Más información](../storage/common/storage-premium-storage.md#snapshots-and-copy-blob)
+    >  Cuando la replicación se realiza en Premium Storage, no se admite una frecuencia de 30 segundos. La limitación viene determinada por el número de instantáneas por blob (100) que admite Premium Storage. [Más información](../storage/common/storage-premium-storage.md#snapshots-and-copy-blob)
 
-4. En **retención de punto de recuperación**, especifique en horas cuánto va un período de retención Hola para cada punto de recuperación. Equipos protegidos pueden ser recuperado tooany punto dentro de una ventana.
-5. En **Frecuencia de instantánea coherente con la aplicación**especifique la frecuencia (entre 1 y 12 horas) con la que se crearán los puntos de recuperación que contengan las instantáneas coherentes con la aplicación. Hyper-V usa dos tipos de instantáneas, una instantánea estándar que proporciona una instantánea incremental de la máquina virtual completa de hello y una instantánea coherente con la aplicación que toma una instantánea de tiempo de punto de datos de la aplicación hello dentro de la máquina virtual de Hola. Las instantáneas coherentes con la aplicación usan tooensure de servicio de instantáneas de volumen (VSS) que las aplicaciones están en un estado coherente cuando se tomó la instantánea de Hola. Tenga en cuenta que si habilita las instantáneas coherentes con la aplicación, afectará Hola rendimiento de aplicaciones que se ejecutan en máquinas virtuales de origen. Asegúrese de que el valor de hello especificado es menor que el número de Hola de puntos de recuperación adicionales que configure.
-6. En **hora de inicio de la replicación inicial**, indicar al toostart Hola la replicación inicial. se produce la replicación de Hello sobre el ancho de banda de internet por lo que conviene tooschedule que fuera de su horario ocupado.
-7. En **cifrar los datos almacenados en Azure**, especifique si tooencrypt datos de rest de almacenamiento de Azure. y, a continuación, haga clic en **Aceptar**.
+4. En **Retención de punto de recuperación**, especifique, en horas, el tiempo que estará disponible el período de retención para cada punto de recuperación. Los equipos protegidos se pueden recuperar en cualquier punto dentro de un período.
+5. En **Frecuencia de instantánea coherente con la aplicación**especifique la frecuencia (entre 1 y 12 horas) con la que se crearán los puntos de recuperación que contengan las instantáneas coherentes con la aplicación. Hyper-V usa dos tipos de instantáneas, una instantánea estándar que proporciona una instantánea incremental de toda la máquina virtual y una instantánea coherente con la aplicación que toma una instantánea en un momento concreto de los datos de la aplicación dentro de la máquina virtual. Las instantáneas coherentes con la aplicación utilizan el Servicio de instantáneas de volumen (VSS) para asegurarse de que las aplicaciones se encuentren en un estado coherente cuando se captura la instantánea. Tenga en cuenta que si habilita las instantáneas coherentes con la aplicación, se verá afectado el rendimiento de aplicaciones que se ejecutan en las máquinas virtuales de origen. Asegúrese de que el valor establecido es menor que el número de puntos de recuperación adicionales configurados.
+6. En **Hora de inicio de la replicación inicial**, indique cuándo debe comenzar la replicación inicial. La replicación se produce utilizando el ancho de banda de Internet, así que puede que deba programarla fuera del horario de trabajo.
+7. En **Cifrar datos almacenados en Azure**especifique si desea cifrar los datos en reposo en Azure Storage. A continuación, haga clic en **Aceptar**.
 
     ![Directiva de replicación](./media/vmm-to-azure-walkthrough-replication/gs-replication2.png)
-8. Cuando se crea una nueva directiva automáticamente tiene asociadas con hello nube de VMM. Haga clic en **Aceptar**. Puede asociar más nubes de VMM (hello y máquinas virtuales en ellos) con esta directiva de replicación en **replicación** > nombre de directiva > **asociar la nube de VMM**.
+8. Cuando se crea una nueva directiva se asocia automáticamente con la nube de VMM. Haga clic en **Aceptar**. Puede asociar más nubes VMM (y las máquinas virtuales que contienen) a esta directiva de replicación en **Replicación** > nombre de directiva > **Associate VMM Cloud** (Asociar nube VMM).
 
     ![Directiva de replicación](./media/vmm-to-azure-walkthrough-replication/policy-associate.png)
 
@@ -54,4 +54,4 @@ Después de leer este artículo, registrar cualquier comentario final hello, o e
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Vaya demasiado[paso 11: habilitar la replicación](vmm-to-azure-walkthrough-enable-replication.md)
+Ir a [Paso 11: Habilitación de la replicación](vmm-to-azure-walkthrough-enable-replication.md)

@@ -1,6 +1,6 @@
 ---
-title: "aaaGet iniciado con análisis de Data Lake de Azure mediante el portal de Azure | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo crear un trabajo de análisis de Data Lake mediante SQL U toouse hello toocreate portal Azure una cuenta de análisis de Data Lake y enviar el trabajo de Hola. "
+title: "Introducción a Azure Data Lake Analytics mediante Azure Portal | Microsoft Docs"
+description: 'Aprenda a usar Azure Portal para crear una cuenta de Data Lake Analytics, crear un trabajo de Data Lake Analytics mediante U-SQL y enviar el trabajo. '
 services: data-lake-analytics
 documentationcenter: 
 author: edmacauley
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: edmaca
-ms.openlocfilehash: 6bb54404fa42cfed25b18bc2bfb7c72e6c361149
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 2722a2d72ed90ea0005362563ecaee30750c040a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-portal"></a>Introducción al uso de Azure Portal por parte de Azure Data Lake Analytics
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Obtenga información acerca de cómo toouse Hola cuentas de análisis de Azure Data Lake de Azure toocreate portal, definir trabajos en [U-SQL](data-lake-analytics-u-sql-get-started.md)y enviar el servicio de análisis de Data Lake toohello de trabajos. Para obtener más información acerca de Análisis de Data Lake, consulte [Información general sobre Análisis de Azure Data Lake](data-lake-analytics-overview.md).
+Aprenda a usar Azure Portal para crear cuentas de Azure Data Lake Analytics, definir trabajos en [U-SQL](data-lake-analytics-u-sql-get-started.md) y enviar trabajos al servicio Data Lake Analytics. Para obtener más información acerca de Análisis de Data Lake, consulte [Información general sobre Análisis de Azure Data Lake](data-lake-analytics-overview.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
@@ -31,23 +31,23 @@ Para comenzar este tutorial, es preciso tener una **suscripción a Azure**. Vea 
 
 ## <a name="create-a-data-lake-analytics-account"></a>Creación de una cuenta de Análisis de Data Lake
 
-Ahora, se creará un análisis de Data Lake y un almacén de Data Lake cuenta Hola mismo tiempo.  Este paso es sencillo y sólo tarda aproximadamente toofinish de 60 segundos.
+Ahora, las cuentas de Data Lake Analytics y Data Lake Store se crean al mismo tiempo.  Este paso es muy simple y en 60 segundos se ha realizado.
 
-1. Inicio de sesión toohello [portal de Azure](https://portal.azure.com).
+1. Inicie sesión en [Azure Portal](https://portal.azure.com).
 2. Haga clic en **Nuevo** >  **Datos y análisis** > **Data Lake Analytics**.
-3. Seleccione los valores de hello siguientes elementos:
+3. Seleccione los valores de los siguientes elementos:
    * **Nombre**: nombre de la cuenta de Data Lake Analytics (solo se permiten letras minúsculas y números).
-   * **Suscripción**: elija la suscripción de Azure usada para la cuenta de análisis de Hola Hola.
+   * **Suscripción**: seleccione la suscripción de Azure usada para la cuenta de Analytics.
    * **Grupo de recursos**. seleccione un grupo de recursos de Azure existente o cree uno nuevo.
-   * **Ubicación**. Seleccione un centro de datos de Azure para la cuenta de análisis de Data Lake Hola.
-   * **Almacén de Data Lake**: siga Hola instrucción toocreate una nueva cuenta de almacén de Data Lake o seleccione uno existente. 
+   * **Ubicación**. seleccione un centro de datos de Azure para la cuenta de Análisis de Data Lake.
+   * **Data Lake Store**: siga las instrucciones para crear una nueva cuenta de Data Lake Store o seleccione una existente. 
 4. Si lo desea, seleccione un plan de tarifa para la cuenta de Data Lake Analytics.
 5. Haga clic en **Crear**. 
 
 
 ## <a name="your-first-u-sql-script"></a>El primer script U-SQL
 
-Hola después de texto es un script U-SQL muy simple. Todo lo que hace es definir un conjunto de datos pequeño script de Hola y, a continuación, escriba ese conjunto de datos a almacén de Data Lake de toohello de forma predeterminada como un archivo denominado `/data.csv`.
+El siguiente texto es un script U-SQL muy simple. Todo lo que hace es definir un pequeño conjunto de datos del script y, después, escribirlo en la instancia predeterminada de Data Lake Store en forma de archivo denominado `/data.csv`.
 
 ```
 @a  = 
@@ -58,21 +58,21 @@ Hola después de texto es un script U-SQL muy simple. Todo lo que hace es defini
         ) AS 
               D( customer, amount );
 OUTPUT @a
-    too"/data.csv"
+    TO "/data.csv"
     USING Outputters.Csv();
 ```
 
 ## <a name="submit-a-u-sql-job"></a>Envío de un trabajo de U-SQL
 
-1. En la cuenta de análisis de Data Lake hello, haga clic en **nuevo trabajo**.
-2. Pegue en texto hello de hello script U-SQL mostrado anteriormente. 
+1. Desde la cuenta de Data Lake Analytics, haga clic en **Nuevo trabajo**.
+2. Pegue el texto del script U-SQL mostrado anteriormente. 
 3. Haga clic en **Enviar trabajo**.   
-4. Espere hasta que cambie de estado de trabajo de hello demasiado**correcto**.
-5. Si se produce un error en el trabajo de hello, consulte [supervisar y solucionar problemas de trabajos de análisis de Data Lake](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md).
-6. Haga clic en hello **salida** ficha y, a continuación, haga clic en `data.csv`. 
+4. Espere a que el estado del trabajo cambie a **Correcto**.
+5. Si se produce algún error en el trabajo, consulte el artículo [Solución de problemas de trabajos de Data Lake Analytics mediante Azure Portal](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md).
+6. Haga clic en la pestaña **Salida** y luego en `data.csv`. 
 
-## <a name="see-also"></a>Otras referencias
+## <a name="see-also"></a>Consulte también
 
-* tooget a desarrollar aplicaciones SQL U, consulte [scripts U T-SQL desarrollar con Data Lake Tools para Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
-* toolearn T-SQL, vea [empezar a trabajar con el lenguaje de Azure Data Lake Analytics U-SQL](data-lake-analytics-u-sql-get-started.md).
+* Para empezar a desarrollar aplicaciones con U-SQL, consulte [Desarrollo de scripts U-SQL mediante Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
+* Para obtener más información sobre U-SQL, consulte [Introducción al lenguaje U-SQL de Análisis de Azure Data Lake](data-lake-analytics-u-sql-get-started.md).
 * Para conocer las tareas de administración, consulte [Administración de Azure Data Lake Analytics mediante el Azure Portal](data-lake-analytics-manage-use-portal.md).

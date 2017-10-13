@@ -1,9 +1,9 @@
 ---
-title: "aaaUse automático de toodo de la captura de paquetes de red con funciones de Azure y las alertas de supervisión | Documentos de Microsoft"
-description: "Este artículo describe cómo toocreate una alerta activa captura de paquetes con Monitor de red de Azure"
+title: "Uso de capturas de paquetes para realizar la supervisión proactiva de la red con alertas y Azure Functions"
+description: "En este artículo se describe cómo crear una captura de paquetes desencadenada mediante alertas con Azure Network Watcher."
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: 75e6e7c4-b3ba-4173-8815-b00d7d824e11
@@ -13,101 +13,101 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
-ms.openlocfilehash: 4722a831f3a9d5537c0e6f53daba4dfc35d0cf24
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.author: jdial
+ms.openlocfilehash: 1b3da4d6e4593f3c71995ef9331fcea2d5b6ec19
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Uso de capturas de paquetes para realizar la supervisión proactiva de la red con alertas y Azure Functions
 
-Captura de paquetes de Monitor de red crea sesiones de captura tráfico tootrack dentro y fuera de las máquinas virtuales. Hello archivo de captura puede tener un filtro que se define tootrack Hola solo el tráfico que desea toomonitor. Estos datos, a continuación, se almacenan en un blob de almacenamiento o localmente en la máquina de invitado de Hola.
+La captura de paquetes de Network Watcher crea sesiones de captura para realizar el seguimiento del tráfico dentro y fuera de máquinas virtuales. El archivo de captura puede tener un filtro que se define para realizar el seguimiento solo del tráfico que se quiere supervisar. Estos datos se almacenan luego en un blob de almacenamiento o de forma local en la máquina invitada.
 
-Esta funcionalidad se puede iniciar de forma remota desde otros escenarios de automatización, como Azure Functions. Proporciona de captura de paquetes que Hola capturas automático toorun de capacidad, según define anomalías de la red. Otros usos son la recopilación de estadísticas de red, la obtención de información sobre las intrusiones de red y la depuración de las comunicaciones cliente-servidor, entre otros.
+Esta funcionalidad se puede iniciar de forma remota desde otros escenarios de automatización, como Azure Functions. La captura de paquetes ofrece la funcionalidad de ejecutar capturas proactivas en función de las anomalías de red definidas. Otros usos son la recopilación de estadísticas de red, la obtención de información sobre las intrusiones de red y la depuración de las comunicaciones cliente-servidor, entre otros.
 
-Los recursos implementados en Azure se ejecutan las 24 horas, los 7 días de la semana. Usted y su personal no se puede supervisar activamente estado Hola de todos los recursos 24/7. ¿Qué ocurre si un problema se produce a las 2 a. m.?
+Los recursos implementados en Azure se ejecutan las 24 horas, los 7 días de la semana. Ni usted ni su personal pueden supervisar activamente el estado de todos los recursos de manera ininterrumpida. ¿Qué ocurre si un problema se produce a las 2 a. m.?
 
-Al usar Monitor de red, las alertas y funciones desde dentro de hello ecosistema de Azure, puede responder proactivamente con problemas de toosolve de datos y las herramientas de hello en la red.
+Con Network Watcher, la característica de alertas y las funciones del ecosistema de Azure, puede responder de manera proactiva con los datos y las herramientas para resolver los problemas de su red.
 
 ![Escenario][scenario]
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-* versión más reciente de Hola de [Azure PowerShell](/powershell/azure/install-azurerm-ps).
+* La versión más reciente de [Azure PowerShell](/powershell/azure/install-azurerm-ps).
 * Una instancia existente de Network Watcher. [Cree una instancia de Network Watcher](network-watcher-create.md) si aún no tiene una.
-* Una máquina virtual existente en hello misma región que el Monitor de red con hello [extensión Windows](../virtual-machines/windows/extensions-nwa.md) o [extensión de máquina virtual Linux](../virtual-machines/linux/extensions-nwa.md).
+* Una máquina virtual en la misma región que la instancia de Network Watcher con la [extensión Windows](../virtual-machines/windows/extensions-nwa.md) o la [extensión de máquina virtual Linux](../virtual-machines/linux/extensions-nwa.md).
 
 ## <a name="scenario"></a>Escenario
 
-En este ejemplo, la máquina virtual está enviando los segmentos TCP más de lo habitual y desea toobe una alerta. Los segmentos TCP se usan aquí como ejemplo, pero podría usar cualquier condición de alerta.
+En este ejemplo, la máquina virtual está enviando más segmentos TCP de lo habitual, y usted desea recibir alertas al respecto. Los segmentos TCP se usan aquí como ejemplo, pero podría usar cualquier condición de alerta.
 
-Cuando se le indique, desea toounderstand de datos de nivel de paquete tooreceive ¿por qué ha aumentado la comunicación. A continuación, puede tomar medidas comunicación tooregular de tooreturn Hola máquina virtual.
+Cuando recibe una alerta, quiere obtener datos de nivel de paquete para comprender por qué ha aumentado la comunicación. De este modo, puede realizar los pasos necesarios para devolver la máquina virtual al estado de comunicación normal.
 
 En este escenario se supone que tiene una instancia existente de Network Watcher y un grupo de recursos con una máquina virtual válida.
 
-Hola lista siguiente es una visión general de flujo de trabajo de Hola que tiene lugar:
+En la lista siguiente se muestra información general sobre el flujo de trabajo que tiene lugar:
 
 1. Se desencadena una alerta en la máquina virtual.
-1. alerta de Hello llama a la función de Azure a través de un webhook.
-1. La función de Azure procesa la alerta de Hola e inicia una sesión de captura de paquetes de Monitor de red.
-1. captura de paquetes de saludo se ejecuta en hello VM y recopila tráfico.
-1. Hello archivo de captura de paquete se carga tooa cuenta de almacenamiento para su revisión y un diagnóstico más detallado.
+1. La alerta llama a la función de Azure a través de un webhook.
+1. La función de Azure procesa la alerta y se inicia una sesión de captura de paquetes de Network Watcher.
+1. La captura de paquetes se ejecuta en la máquina virtual y recopila el tráfico.
+1. El archivo de captura de paquetes se carga en una cuenta de almacenamiento para su revisión y diagnóstico.
 
-tooautomate este proceso, que creamos y conectar una alerta en nuestro tootrigger de máquina virtual cuando se produce el incidente de Hola. También creamos un toocall de función en el Monitor de red.
+Para automatizar este proceso, crearemos y conectaremos una alerta en nuestra máquina virtual para que se active cuando se produzca el incidente. También crearemos una función para llamar en Network Watcher.
 
-Este escenario Hola siguientes:
+En este escenario hará lo siguiente:
 
 * Creará una función de Azure que inicie una captura de paquetes.
-* Crea una regla de alerta en una máquina virtual y configura hello toocall de regla de alerta hello Azure función.
+* Creará una regla de alerta en una máquina virtual y configurará la regla de alerta para llamar a la función de Azure.
 
 ## <a name="create-an-azure-function"></a>Creación de una función de Azure
 
-primer paso de Hello es toocreate una alerta de hello tooprocess función Azure y crear una captura de paquetes.
+El primer paso es crear una función de Azure para procesar la alerta y crear una captura de paquetes.
 
-1. Hola [portal de Azure](https://portal.azure.com), seleccione **New** > **proceso** > **aplicación de la función**.
+1. En [Azure Portal](https://portal.azure.com), seleccione **Nuevo** > **Compute** > **Function App**.
 
     ![Creación de una aplicación de función][1-1]
 
-2. En hello **aplicación de la función** hoja, escriba Hola después de valores y, a continuación, seleccione **Aceptar** toocreate Hola aplicación:
+2. En la hoja **Function App**, escriba los siguientes valores y seleccione **Aceptar** para crear la aplicación:
 
     |**Configuración** | **Valor** | **Detalles** |
     |---|---|---|
-    |**Nombre de la aplicación**|PacketCaptureExample|nombre de Hola de aplicación de la función de hello.|
-    |**Suscripción**|[La suscripción] Hola suscripción para qué aplicación de función de hello toocreate.||
-    |**Grupo de recursos**|PacketCaptureRG|Hola recursos grupo toocontain Hola función aplicación.|
-    |**Plan de hospedaje**|Plan de consumo| tipo de Hola de plan usa su aplicación de función. Las opciones son Consumo o plan de Azure App Service. |
-    |**Ubicación**|Central EE. UU.:| región de Hola de qué aplicación de función de hello toocreate.|
-    |**Storage Account**|{autogenerated}| cuenta de almacenamiento de Hola que necesita las funciones de Azure para almacenamiento general.|
+    |**Nombre de la aplicación**|PacketCaptureExample|Nombre de la aplicación de función.|
+    |**Suscripción**|[Su suscripción]La suscripción para la que se crea la aplicación de función.||
+    |**Grupo de recursos**|PacketCaptureRG|Grupo de recursos que contendrá la aplicación de función.|
+    |**Plan de hospedaje**|Plan de consumo| Tipo de plan que usa la aplicación de función. Las opciones son Consumo o plan de Azure App Service. |
+    |**Ubicación**|Central EE. UU.:| Región en la que se creará la aplicación de función.|
+    |**Storage Account**|{autogenerated}| Cuenta de almacenamiento que necesita Azure Functions para el almacenamiento de carácter general.|
 
-3. En hello **PacketCaptureExample función aplicaciones** hoja, seleccione **funciones** > **función personalizada**  >  **+**.
+3. En la hoja **Function Apps de PacketCaptureExample**, seleccione **Funciones** > **Función personalizada** >**+**.
 
-4. Seleccione **HttpTrigger Powershell**y, a continuación, escriba Hola restante información. Por último, toocreate función hello, seleccione **crear**.
+4. Seleccione **HttpTrigger-Powershell** y, a continuación, especifique la información restante. Por último, para crear la función, seleccione **Crear**.
 
     |**Configuración** | **Valor** | **Detalles** |
     |---|---|---|
     |**Escenario**|Experimental|Tipo de escenario|
-    |**Asigne un nombre a la función**|AlertPacketCapturePowerShell|Nombre de función hello|
-    |**Nivel de autorización**|Función|Nivel de autorización para la función hello|
+    |**Asigne un nombre a la función**|AlertPacketCapturePowerShell|Nombre de la función.|
+    |**Nivel de autorización**|Función|Nivel de autorización de la función|
 
 ![Ejemplo de funciones][functions1]
 
 > [!NOTE]
-> plantilla de PowerShell de Hello en fase experimental y no tiene compatibilidad completa.
+> La plantilla de PowerShell es experimental y no es totalmente compatible.
 
-Las personalizaciones son necesarias para este ejemplo y se explican en pasos de Hola.
+Para este ejemplo se requieren personalizaciones, que se explican en los siguientes pasos.
 
 ### <a name="add-modules"></a>Adición de módulos
 
-toouse cmdlets de PowerShell de Monitor de red, cargue la aplicación de hello más reciente PowerShell módulo toohello función.
+Para usar cmdlets de PowerShell de Network Watcher, cargue el módulo más reciente de PowerShell en la aplicación de función.
 
-1. En el equipo local con los módulos de PowerShell de Azure más recientes Hola instalado, ejecute hello siguiente comando de PowerShell:
+1. Una vez instalados los últimos módulos de Azure PowerShell en su equipo local, ejecute el siguiente comando de PowerShell:
 
     ```powershell
     (Get-Module AzureRM.Network).Path
     ```
 
-    Esto deja de ejemplo Hola ruta de acceso local de los módulos de PowerShell de Azure. Estas carpetas se usan en un paso posterior. los módulos de Hola que se usan en este escenario son:
+    Este ejemplo le proporciona la ruta de acceso local de los módulos de Azure PowerShell. Estas carpetas se usan en un paso posterior. A continuación, se muestran los módulos usados:
 
     * AzureRM.Network
 
@@ -117,11 +117,11 @@ toouse cmdlets de PowerShell de Monitor de red, cargue la aplicación de hello m
 
     ![Carpetas de PowerShell][functions5]
 
-1. Seleccione **función de la configuración de la aplicación** > **vaya tooApp Editor servicio**.
+1. Seleccione **Configuración de Function App** > **Ir al Editor de App Service**.
 
     ![Configuración de Function App][functions2]
 
-1. Menú contextual hello **AlertPacketCapturePowershell** carpeta y, a continuación, cree una carpeta denominada **azuremodules**. 
+1. Haga clic con el botón derecho en la carpeta **AlertPacketCapturePowershell** y cree una carpeta llamada **azuremodules**. 
 
 4. Cree una subcarpeta para cada módulo que necesite.
 
@@ -133,28 +133,28 @@ toouse cmdlets de PowerShell de Monitor de red, cargue la aplicación de hello m
 
     * AzureRM.Resources
 
-1. Menú contextual hello **AzureRM.Network** subcarpeta y, a continuación, seleccione **cargar archivos**. 
+1. Haga clic con el botón derecho en la subcarpeta **AzureRM.Network** y seleccione **Cargar archivos**. 
 
-6. Vaya tooyour Azure módulos. Hola local **AzureRM.Network** carpeta, seleccione todos los archivos de hello en carpeta de Hola. Después seleccione **Aceptar**. 
+6. Vaya a los módulos de Azure. En la carpeta **AzureRM.Network** local, seleccione todos los archivos de la carpeta. Después seleccione **Aceptar**. 
 
 7. Repita estos pasos para **AzureRM.Profile** y **AzureRM.Resources**.
 
     ![Carga de archivos][functions6]
 
-1. Una vez finalizado, cada carpeta debe tener archivos de módulo de PowerShell de Hola desde el equipo local.
+1. Cuando haya finalizado, cada carpeta debe tener los archivos del módulo de PowerShell del equipo local.
 
     ![Archivos de PowerShell][functions7]
 
 ### <a name="authentication"></a>Autenticación
 
-cmdlets de PowerShell de hello toouse, debe autenticarse. Configurar la autenticación en la aplicación de la función de hello. autenticación de tooconfigure, debe configurar las variables de entorno y cargar una aplicación de función de toohello de archivo de clave de cifrado.
+Para usar los cmdlets de PowerShell es preciso autenticarse. En la aplicación de función, se configura la autenticación. Para ello, debe configurar las variables de entorno y cargar un archivo de clave cifrada en la aplicación de función.
 
 > [!NOTE]
-> Este escenario proporciona solo un ejemplo de cómo tooimplement la autenticación con las funciones de Azure. Hay otra maneras toodo esto.
+> Este escenario proporciona solo un ejemplo de cómo implementar la autenticación con Azure Functions. Existen otras formas de hacerlo.
 
 #### <a name="encrypted-credentials"></a>Credenciales cifradas
 
-Hola siguiente script de PowerShell crea un archivo de claves denominado **PassEncryptKey.key**. También proporciona una versión cifrada de la contraseña de hello proporcionado. Esta contraseña es hello misma contraseña que se define para la aplicación de Azure Active Directory de Hola que se usa para la autenticación.
+El siguiente script de PowerShell crea un archivo de claves denominado **PassEncryptKey.key**. También proporciona una versión cifrada de la contraseña que se proporciona. Esta contraseña es la misma que la definida para la aplicación de Azure Active Directory que se usa para la autenticación.
 
 ```powershell
 #Variables
@@ -173,13 +173,13 @@ $Encryptedpassword = $secPw | ConvertFrom-SecureString -Key $AESKey
 $Encryptedpassword
 ```
 
-En el Editor de aplicación de servicio de aplicación de la función de hello hello, cree una carpeta denominada **claves** en **AlertPacketCapturePowerShell**. A continuación, cargar hello **PassEncryptKey.key** archivo que creó en el ejemplo anterior de PowerShell de Hola.
+En el Editor de App Service de la aplicación de función, cree una carpeta denominada **keys** en **AlertPacketCapturePowerShell**. A continuación, cargue el archivo **PassEncryptKey.key** que creó en el ejemplo anterior de PowerShell.
 
 ![Clave de funciones][functions8]
 
 ### <a name="retrieve-values-for-environment-variables"></a>Recuperación de valores para variables de entorno
 
-requisito final de Hello es tooset las variables de entorno de Hola que son valores de hello tooaccess necesarios para la autenticación. Hello lista siguiente muestra las variables de entorno de Hola que se crean:
+El último requisito es configurar las variables de entorno necesarias para tener acceso a los valores para la autenticación. En la siguiente lista, se muestran las variables de entorno que se crean:
 
 * AzureClientID
 
@@ -190,9 +190,9 @@ requisito final de Hello es tooset las variables de entorno de Hola que son valo
 
 #### <a name="azureclientid"></a>AzureClientID
 
-Id. de cliente Hello es hello Id. de aplicación de una aplicación en Azure Active Directory.
+El id. de cliente es el id. de aplicación de una aplicación de Azure Active Directory.
 
-1. Si aún no tiene un toouse de aplicación, ejecutar Hola después toocreate de ejemplo de una aplicación.
+1. Si aún no cuenta con una aplicación que pueda usar, ejecute el siguiente ejemplo para crear una.
 
     ```powershell
     $app = New-AzureRmADApplication -DisplayName "ExampleAutomationAccount_MF" -HomePage "https://exampleapp.com" -IdentifierUris "https://exampleapp1.com/ExampleFunctionsAccount" -Password "<same password as defined earlier>"
@@ -202,19 +202,19 @@ Id. de cliente Hello es hello Id. de aplicación de una aplicación en Azure Act
     ```
 
    > [!NOTE]
-   > contraseña de Hola que usar al crear aplicación hello debe ser Hola misma contraseña que creó anteriormente cuando se guarda el archivo de clave de Hola.
+   > La contraseña utilizada al crearse la aplicación debe ser la misma que se creó anteriormente al guardarse el archivo de clave.
 
-1. Hola portal de Azure, seleccione **suscripciones**. Seleccione toouse de suscripción de hello y, a continuación, seleccione **(de índices IAM) de control de acceso**.
+1. En Azure Portal, seleccione **Suscripciones**. Seleccione la suscripción que desee usar y, a continuación, seleccione **Control de acceso (IAM)**.
 
     ![IAM de Functions][functions9]
 
-1. Elija toouse de cuenta de hello y, a continuación, seleccione **propiedades**. Copiar Hola identificador de aplicación.
+1. Elija la cuenta que usará y seleccione **Propiedades**. Copie el id. de aplicación.
 
     ![Id. de aplicación de Functions][functions10]
 
 #### <a name="azuretenant"></a>AzureTenant
 
-Obtener Id. de inquilino de hello ejecutando Hola siguiendo el ejemplo de PowerShell:
+Obtenga el id. de inquilino ejecutando el ejemplo siguiente de PowerShell:
 
 ```powershell
 (Get-AzureRmSubscription -SubscriptionName "<subscriptionName>").TenantId
@@ -222,7 +222,7 @@ Obtener Id. de inquilino de hello ejecutando Hola siguiendo el ejemplo de PowerS
 
 #### <a name="azurecredpassword"></a>AzureCredPassword
 
-valor de Hola de variable de entorno AzureCredPassword hello es valor de Hola que obtendrá ejecutaran Hola siguiendo el ejemplo de PowerShell. En este ejemplo se Hola misma que se muestra en hello anterior **credenciales cifradas** sección. Hola valor requerido es una salida de hello de hello `$Encryptedpassword` variable.  Se trata de hello servicio contraseña de la entidad que se ha cifrado mediante script de PowerShell de Hola.
+El valor de la variable de entorno AzureCredPassword es el valor resultante de la ejecución del ejemplo siguiente de PowerShell. Se trata del mismo ejemplo mostrado en la sección **Credenciales cifradas** anterior. El valor necesario es el resultado de la variable `$Encryptedpassword`.  Esta es la contraseña de entidad de servicio que cifró mediante el script de PowerShell.
 
 ```powershell
 #Variables
@@ -241,30 +241,30 @@ $Encryptedpassword = $secPw | ConvertFrom-SecureString -Key $AESKey
 $Encryptedpassword
 ```
 
-### <a name="store-hello-environment-variables"></a>Almacenar las variables de entorno de Hola
+### <a name="store-the-environment-variables"></a>Almacenamiento de las variables de entorno
 
-1. Aplicación de la función de toohello vaya. A continuación, seleccione **Configuración de Function App** > **Configurar las opciones de la aplicación**.
+1. Vaya a la aplicación de función. A continuación, seleccione **Configuración de Function App** > **Configurar las opciones de la aplicación**.
 
     ![Configuración de aplicaciones][functions11]
 
-1. Agregar variables de entorno de Hola y configuración de la aplicación toohello de sus valores y, a continuación, seleccione **guardar**.
+1. Agregue las variables de entorno y sus valores a la configuración de la aplicación y seleccione **Guardar**.
 
     ![Configuración de la aplicación][functions12]
 
-### <a name="add-powershell-toohello-function"></a>Add toohello de PowerShell (función)
+### <a name="add-powershell-to-the-function"></a>Adición de PowerShell a la función
 
-Es ahora toomake tiempo llama al Monitor de red desde dentro de hello Azure función. Dependiendo de los requisitos de hello, implementación de Hola de esta función puede variar. Sin embargo, el flujo general de Hola de código de hello es como sigue:
+Ahora es el momento de realizar llamadas en Network Watcher dentro de la función de Azure. La implementación de esta función puede variar según los requisitos. Sin embargo, el flujo general del código es el siguiente:
 
 1. Procesar los parámetros de entrada.
-2. Paquete existente de la consulta de captura tooverify límites y resolver conflictos de nombre.
+2. Consultar las capturas de paquetes existentes para comprobar los límites y resolver los conflictos de nombres.
 3. Crear una captura de paquetes con los parámetros adecuados.
 4. Sondear la captura de paquetes periódicamente hasta que finalice.
-5. Notificar a usuario Hola que sesión de captura de paquetes de saludo ha finalizado.
+5. Notificar al usuario que la sesión de captura de paquetes ha finalizado.
 
-Hello en el ejemplo siguiente se es código de PowerShell que puede usarse en función de Hola. Hay valores que necesitan toobe reemplazado para **subscriptionId**, **resourceGroupName**, y **storageAccountName**.
+El ejemplo siguiente es un código de PowerShell que se puede usar en la función. Hay valores que deben reemplazarse por **subscriptionId**, **resourceGroupName** y **storageAccountName**.
 
 ```powershell
-            #Import Azure PowerShell modules required toomake calls tooNetwork Watcher
+            #Import Azure PowerShell modules required to make calls to Network Watcher
             Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\AzureRM.Profile\AzureRM.Profile.psd1" -Global
             Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\AzureRM.Network\AzureRM.Network.psd1" -Global
             Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\AzureRM.Resources\AzureRM.Resources.psd1" -Global
@@ -272,7 +272,7 @@ Hello en el ejemplo siguiente se es código de PowerShell que puede usarse en fu
             #Process alert request body
             $requestBody = Get-Content $req -Raw | ConvertFrom-Json
 
-            #Storage account ID toosave captures in
+            #Storage account ID to save captures in
             $storageaccountid = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}"
 
             #Packet capture vars
@@ -292,7 +292,7 @@ Hello en el ejemplo siguiente se es código de PowerShell que puede usarse en fu
             Add-AzureRMAccount -ServicePrincipal -Tenant $tenant -Credential $credential #-WarningAction SilentlyContinue | out-null
 
 
-            #Get hello VM that fired hello alert
+            #Get the VM that fired the alert
             if($requestBody.context.resourceType -eq "Microsoft.Compute/virtualMachines")
             {
                 Write-Output ("Subscription ID: {0}" -f $requestBody.context.subscriptionId)
@@ -300,20 +300,20 @@ Hello en el ejemplo siguiente se es código de PowerShell que puede usarse en fu
                 Write-Output ("Resource Name:  {0}" -f $requestBody.context.resourceName)
                 Write-Output ("Resource Type:  {0}" -f $requestBody.context.resourceType)
 
-                #Get hello Network Watcher in hello VM's region
+                #Get the Network Watcher in the VM's region
                 $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $requestBody.context.resourceRegion}
                 $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
 
                 #Get existing packetCaptures
                 $packetCaptures = Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher
 
-                #Remove existing packet capture created by hello function (if it exists)
+                #Remove existing packet capture created by the function (if it exists)
                 $packetCaptures | %{if($_.Name -eq $packetCaptureName)
                 { 
                     Remove-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName $packetCaptureName
                 }}
 
-                #Initiate packet capture on hello VM that fired hello alert
+                #Initiate packet capture on the VM that fired the alert
                 if ((Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher).Count -lt $packetCaptureLimit){
                     echo "Initiating Packet Capture"
                     New-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $requestBody.context.resourceId -PacketCaptureName $packetCaptureName -StorageAccountId $storageaccountid -TimeLimitInSeconds $packetCaptureDuration
@@ -321,56 +321,56 @@ Hello en el ejemplo siguiente se es código de PowerShell que puede usarse en fu
                 }
             } 
  ``` 
-#### <a name="retrieve-hello-function-url"></a>Recuperar la dirección URL de hello (función) 
-1. Después de crear la función, configure la dirección URL de Hola de toocall alerta que esté asociada con la función hello. tooget este valor, la función de copiar Hola dirección URL desde la aplicación de la función.
+#### <a name="retrieve-the-function-url"></a>Recuperación de la dirección URL de la función 
+1. Cuando haya creado la función, configure la alerta para que llame a la dirección URL asociada a la función. Para obtener este valor, copie la dirección URL de función de la aplicación de función.
 
-    ![Buscar la dirección URL de hello (función)][functions13]
+    ![Búsqueda de la dirección URL de la función][functions13]
 
-2. Copiar dirección URL de la función de hello para la aplicación de la función.
+2. Copie la dirección URL de la función de su aplicación de función.
 
-    ![Copiar dirección URL de hello (función)][2]
+    ![Copia de la dirección URL de la función][2]
 
-Si necesitas propiedades personalizadas en la carga de Hola de solicitud POST de webhook de hello, consulte demasiado[configurar un webhook en una alerta de métrica Azure](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
+Si necesita propiedades personalizadas en la carga útil de la solicitud POST del webhook, consulte [Configuración de un webhook en una alerta de métrica de Azure](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
 
 ## <a name="configure-an-alert-on-a-vm"></a>Configuración de una alerta en una máquina virtual
 
-Las alertas pueden estar configurado toonotify personas cuando una métrica específica supera un umbral que se asigna tooit. En este ejemplo, alerta de hello es en hello segmentos TCP que se envían, pero se puede activar la alerta de Hola para muchas otras métricas. En este ejemplo, una alerta es toocall configurado una función de webhook toocall Hola.
+Se pueden configurar alertas para que avisen a los usuarios cuando una métrica determinada supere un umbral que se le ha asignado. En este ejemplo, la alerta se encuentra en los segmentos TCP enviados, pero se puede activar para muchas otras métricas. En este ejemplo, se configura una alerta para llamar a un webhook que llama a la función.
 
-### <a name="create-hello-alert-rule"></a>Crear regla de alerta de Hola
+### <a name="create-the-alert-rule"></a>Creación de la regla de alerta
 
-Vaya a máquina virtual existente de tooan y, a continuación, agregar una regla de alerta. Se puede encontrar documentación más detallada sobre la configuración de alertas en [Creación de alertas en Azure Monitor para servicios de Azure (Azure Portal)](../monitoring-and-diagnostics/insights-alerts-portal.md). Escriba Hola después de valores de hello **regla de alerta** hoja y, a continuación, seleccione **Aceptar**.
+Vaya a una máquina virtual existente y agregue una regla de alerta. Se puede encontrar documentación más detallada sobre la configuración de alertas en [Creación de alertas en Azure Monitor para servicios de Azure (Azure Portal)](../monitoring-and-diagnostics/insights-alerts-portal.md). Escriba los siguientes valores en la hoja **Regla de alertas** y, a continuación, seleccione **Aceptar**.
 
   |**Configuración** | **Valor** | **Detalles** |
   |---|---|---|
-  |**Name**|TCP_Segments_Sent_Exceeded|Nombre de regla de alerta de Hola.|
-  |**Descripción**|Los segmentos TCP enviados superaron el umbral|Descripción de Hello para la regla de alerta de Hola.||
-  |**Métrica**|Segmentos TCP enviados| alerta de Hello toouse métrica tootrigger Hola. |
-  |**Condition**|Mayor que| Hola condición toouse al evaluar la métrica de Hola.|
-  |**Umbral**|100| valor de Hola de métrica de Hola que desencadena la alerta de Hola. Este valor debe establecerse tooa valor válido para su entorno.|
-  |**Período**|A través de hello últimos cinco minutos| Determina el período de hello en qué toolook para el umbral de hello en métrica Hola.|
-  |**Webhook**|[Dirección URL del webhook de la aplicación de función]| URL del webhook Hola de aplicación de función hello que creó en los pasos anteriores de Hola.|
+  |**Name**|TCP_Segments_Sent_Exceeded|Nombre de la regla de alerta.|
+  |**Descripción**|Los segmentos TCP enviados superaron el umbral|La descripción de la regla de alerta.||
+  |**Métrica**|Segmentos TCP enviados| La métrica que se usará para desencadenar la alerta. |
+  |**Condition**|Mayor que| La condición que se va a usar al evaluar la métrica.|
+  |**Umbral**|100| El valor de la métrica que desencadena la alerta. Este valor debe establecerse en un valor válido para su entorno.|
+  |**Período**|En los últimos cinco minutos| Determina el período en el que se va a buscar el umbral de la métrica.|
+  |**Webhook**|[Dirección URL del webhook de la aplicación de función]| La dirección URL del webhook de la aplicación de función que se creó en los pasos anteriores.|
 
 > [!NOTE]
-> métrica de segmentos de Hello TCP no está habilitado de forma predeterminada. Más información acerca de cómo tooenable otras métricas visitando [habilitar la supervisión y diagnóstico](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md).
+> De manera predeterminada, la métrica de los segmentos TCP no está habilitada. Para más información acerca de cómo habilitar métricas adicionales, visite [Habilitación de supervisión y diagnóstico](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md).
 
-## <a name="review-hello-results"></a>Revisar los resultados de Hola
+## <a name="review-the-results"></a>Revisión del resultado
 
-Después de criterios de Hola para desencadenadores de alerta de hello, se crea una captura de paquetes. Vaya tooNetwork monitor y, a continuación, seleccione **captura de paquetes**. En esta página, puede seleccionar Hola paquete captura archivo vínculo toodownload Hola captura de paquetes.
+Después de que se cumplan los criterios que desencadenen la alerta, se creará una captura de paquetes. Vaya a Network Watcher y, a continuación, seleccione **Captura de paquetes**. En esta página, puede seleccionar el vínculo del archivo de captura de paquetes para descargar la captura de paquetes.
 
 ![Visualización de captura de paquetes][functions14]
 
-Si el archivo de captura de Hola se almacena localmente, puede recuperarlo mediante la firma en la máquina virtual de toohello.
+Si el archivo de captura se almacena localmente, puede iniciar sesión en la máquina virtual para recuperarlo.
 
 Para obtener instrucciones sobre cómo descargar archivos desde cuentas de Azure Storage, consulte [Introducción a Azure Blob Storage mediante .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Otra herramienta que puede usar es el [Explorador de almacenamiento](http://storageexplorer.com/).
 
-Después de que se ha descargado la captura, puede verla con cualquier herramienta que pueda leer un archivo **.cap**. Estos son vínculos tootwo de estas herramientas:
+Después de que se ha descargado la captura, puede verla con cualquier herramienta que pueda leer un archivo **.cap**. A continuación se muestran vínculos a dos de estas herramientas:
 
 - [Analizador de mensajes de Microsoft](https://technet.microsoft.com/library/jj649776.aspx).
 - [WireShark](https://www.wireshark.org/)
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Obtenga información acerca de cómo tooview su paquete captura visitando [análisis de captura de paquetes con Wireshark](network-watcher-deep-packet-inspection.md).
+Para saber cómo ver las capturas de paquetes, visite [Análisis de capturas de paquetes con Wireshark](network-watcher-deep-packet-inspection.md).
 
 
 [1]: ./media/network-watcher-alert-triggered-packet-capture/figure1.png

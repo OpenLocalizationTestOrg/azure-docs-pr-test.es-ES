@@ -1,6 +1,6 @@
 ---
-title: rutas de aaaTroubleshoot - Portal | Documentos de Microsoft
-description: "Obtenga información acerca de cómo tootroubleshoot rutas en el modelo de implementación de Azure Resource Manager de hello utilizando Hola Portal de Azure."
+title: "Solución de problemas de rutas mediante Azure Portal | Microsoft Docs"
+description: "Obtenga información acerca de cómo solucionar problemas de las rutas en el modelo de implementación de Azure Resource Manager utilizando Azure Portal."
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
@@ -15,138 +15,138 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: 579bae91ef3200852032b3953d3cc5d26deada86
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: dad415936280b4af916b8c46df46f6c51ac0bca4
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="troubleshoot-routes-using-hello-azure-portal"></a>Solucionar problemas de rutas con hello Portal de Azure
+# <a name="troubleshoot-routes-using-the-azure-portal"></a>Solución de problemas de rutas mediante Azure Portal
 > [!div class="op_single_selector"]
-> * [Azure Portal](virtual-network-routes-troubleshoot-portal.md)
+> * [Portal de Azure](virtual-network-routes-troubleshoot-portal.md)
 > * [PowerShell](virtual-network-routes-troubleshoot-powershell.md)
 >
 >
 
-Si se producen tooor de problemas de conectividad de red de la máquina Virtual (VM) de Azure, las rutas que pueden influir en los flujos de tráfico de máquina virtual. Este artículo proporciona información general sobre las capacidades de diagnóstico para rutas toohelp seguir solucionando el problema.
+Si experimenta problemas de conectividad de red tanto de entrada como de salida en Azure Virtual Machine (VM), es posible que las rutas estén afectando el flujo de tráfico de la máquina virtual. Este artículo proporciona información general sobre las funcionalidades de diagnóstico para las rutas para ayudarle en la solución del problema.
 
-Las tablas de rutas están asociadas con subredes y son eficaces en todas las interfaces de red (NIC) en cada subred específica. Hola siguientes tipos de rutas puede ser aplicados tooeach interfaz de red:
+Las tablas de rutas están asociadas con subredes y son eficaces en todas las interfaces de red (NIC) en cada subred específica. Los siguientes tipos de rutas pueden aplicarse a cada interfaz de red:
 
 * **Rutas del sistema:** de forma predeterminada, cada subred creada en Azure Virtual Network (VNet) tiene tablas de rutas del sistema que permiten el tráfico de red virtual local, el tráfico local a través de las puertas de enlace VPN y el tráfico de Internet. Las rutas del sistema existen también para las redes virtuales emparejadas.
-* **Las rutas BGP:** propaga toonetwork interfaces a través de ExpressRoute o las conexiones VPN de sitio a sitio. Obtener más información sobre el enrutamiento de BGP leyendo hello [BGP con puertas de enlace VPN](../vpn-gateway/vpn-gateway-bgp-overview.md) y [ExpressRoute Introducción](../expressroute/expressroute-introduction.md) artículos.
-* **Rutas definidas por el usuario (UDR):** si se utilizan los dispositivos de red virtual o se fuerza el túnel tráfico tooan de red local a través de una VPN de sitio a sitio, puede tener rutas definidas por el usuario (UDRs) asociadas a la tabla de rutas de subred. Si no está familiarizado con UDRs, leer hello [rutas definidas por el usuario](virtual-networks-udr-overview.md#user-defined-routes) artículo.
+* **Rutas BGP:** propagadas a las interfaces de red a través de ExpressRoute o de conexiones VPN de sitio a sitio. Para más información acerca del enrutamiento BGP consulte los artículos sobre [BGP con VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md) e [Introducción técnica de ExpressRoute](../expressroute/expressroute-introduction.md).
+* **Rutas definidas por el usuario (UDR):** si usa dispositivos de red virtual o si hay tráfico de tunelización forzada a una red local a través de una VPN de sitio a sitio, es posible que tenga rutas definidas por el usuario (UDR) asociadas a la tabla de rutas de subred. Si no está familiarizado con las UDR, consulte el artículo sobre [rutas definidas por el usuario](virtual-networks-udr-overview.md#user-defined-routes) .
 
-Con hello varias rutas que pueden ser aplicados tooa interfaz de red, puede ser difícil toodetermine rutas que agregado entrarán en vigor. toohelp solucionar problemas de conectividad de red de máquina virtual, puede ver todas las rutas efectivas de Hola para una interfaz de red en el modelo de implementación de hello Azure Resource Manager.
+Con las diversas rutas que se pueden aplicar a una interfaz de red, puede resultar difícil determinar qué rutas agregadas son eficaces. Para ayudarle a solucionar problemas de conectividad de red de máquina virtual, puede ver todas las rutas eficaces para una interfaz de red en el modelo de implementación de Azure Resource Manager.
 
-## <a name="using-effective-routes-tootroubleshoot-vm-traffic-flow"></a>Uso de flujo de tráfico VM de rutas efectivas tootroubleshoot
-Este artículo usa Hola siguiendo el escenario como un tooillustrate de ejemplo cómo enruta tootroubleshoot Hola efectivo para una interfaz de red:
+## <a name="using-effective-routes-to-troubleshoot-vm-traffic-flow"></a>Uso de rutas eficaces para solucionar problemas de flujo de tráfico de máquinas virtuales
+Este artículo usa el siguiente escenario como ejemplo para ilustrar cómo solucionar problemas de las rutas eficaces para una interfaz de red:
 
-Una máquina virtual (*VM1*) conectado toohello red virtual (*VNet1*, prefijo: 10.9.0.0/16) se produce un error tooconnect tooa VM(VM3) en una red virtual recién peered (*VNet3*, prefijo 10.10.0.0/16). No hay ningún UDRs o BGP enruta aplicada tooVM1-NIC1 red interfaz conectada toohello VM, se aplican sólo las rutas del sistema.
+Una máquina virtual (*VM1*) conectada a la red virtual (*VNet1*, prefijo: 10.9.0.0/16) no se puede conectar a una máquina virtual (VM3) en una red virtual recién emparejada (*VNet3*, prefijo 10.10.0.0/16). No hay ninguna ruta UDR o BGP aplicada a la interfaz de red VM1-NIC1 conectada a la máquina virtual, se aplican solo rutas del sistema.
 
-Este artículo explica cómo toodetermine Hola causa de errores de conexión de hello, con capacidad de rutas efectivas en el modelo de implementación de administración de recursos de Azure.
-Aunque ejemplo de Hola utiliza sólo las rutas del sistema, Hola mismos pasos puede ser usado toodetermine errores de conexión entrantes y salientes a través de cualquier tipo de ruta.
+En este artículo se explica cómo determinar la causa del error de conexión, utilizando la funcionalidad de rutas eficaces en el modelo de implementación de Azure Resource Management.
+Aunque este ejemplo utiliza solo rutas de sistema, los pasos siguientes pueden utilizarse para determinar errores de conexión entrante y saliente a través de cualquier tipo de puerto.
 
 > [!NOTE]
-> Si la máquina virtual tiene más de una NIC conectada, compruebe rutas efectivas para cada uno de hello tooand problemas conectividad de red de toodiagnose de NIC de una máquina virtual.
+> Si la máquina virtual tiene más de una NIC conectada, compruebe las rutas eficaces para cada una de las NIC con el fin de diagnosticar problemas de conectividad de red, tanto de entrada como de salida, de una máquina virtual.
 >
 >
 
 ### <a name="view-effective-routes-for-a-virtual-machine"></a>Visualización de las rutas eficaces para una máquina virtual
-toosee Hola agregado rutas que se aplica tooa VM, Hola completa siguiendo los pasos:
+Para ver las rutas agregadas que se aplican a una máquina virtual, complete los pasos siguientes:
 
-1. Portal de Azure en https://portal.azure.com de toohello de inicio de sesión.
-2. Haga clic en **más servicios**, a continuación, haga clic en **máquinas virtuales** en lista de Hola que aparece.
-3. Seleccione una máquina virtual tootroubleshoot de lista de Hola que aparece y aparece una hoja de máquina virtual con opciones.
-4. Haga clic en **Diagnosticar y solucionar problemas** y, a continuación, seleccione un problema común. En este ejemplo, **toomy VM de Windows no se puede conectar** está seleccionada.
+1. Inicie sesión en Azure Portal en https://portal.azure.com.
+2. Haga clic en **Más servicios** y, luego, haga clic en **Máquinas virtuales** en la lista que aparece.
+3. En la lista seleccione una máquina virtual para solucionar problemas, después de hacerlo se abrirá una hoja de máquina virtual con opciones.
+4. Haga clic en **Diagnosticar y solucionar problemas** y, a continuación, seleccione un problema común. En este ejemplo está seleccionado **No puedo conectar con mi VM Windows** .
 
     ![](./media/virtual-network-routes-troubleshoot-portal/image1.png)
-5. Pasos aparecen bajo el problema de hello, como se muestra en hello después de imagen:
+5. Bajo el problema aparecen una serie de pasos, tal como se muestra en la siguiente imagen:
 
     ![](./media/virtual-network-routes-troubleshoot-portal/image2.png)
 
-    Haga clic en *rutas efectivas* en lista de Hola de pasos recomendados.
-6. Hola **rutas efectivas** aparece hoja, como se muestra en hello después de imagen:
+    Haga clic en *effective routes* (rutas eficaces) en la lista de pasos recomendados.
+6. Aparece la hoja **Effective routes** (Rutas eficaces), como se muestra en la siguiente imagen:
 
     ![](./media/virtual-network-routes-troubleshoot-portal/image3.png)
 
-    Si la máquina virtual tiene solo una NIC, está seleccionada de forma predeterminada. Si tiene más de una NIC, seleccione NIC hello para el que desea rutas efectivas de tooview Hola.
+    Si la máquina virtual tiene solo una NIC, está seleccionada de forma predeterminada. Si tiene más de una NIC, seleccione la NIC para la que desea ver las rutas eficaces.
 
    > [!NOTE]
-   > Si hello VM asociados hello NIC no está en un estado de ejecución, no se mostrarán las rutas efectivas. Solo hello 200 primeras rutas efectivas se muestran en el portal de Hola. En la lista completa de hello, haga clic en **descargar**. Puede filtrar aún más en los resultados de Hola de archivo .csv descargado de hello.
+   > Si la máquina virtual asociada con la NIC no está en estado de ejecución, no se mostrará ninguna ruta eficaz. Solo las primeras 200 rutas eficaces se muestran en el portal. Para obtener la lista completa, haga clic en **Descargar**. Puede filtrar aún más los resultados en el archivo .csv descargado.
    >
    >
 
-    Tenga en cuenta siguiente de hello en la salida de hello:
+    Tenga en cuenta lo siguiente en el resultado:
 
-   * **Origen**: indica el tipo de saludo de la ruta. Las rutas del sistema se muestran como *Predeterminado*, los UDR se muestran como *Usuario* y las rutas de puerta de enlace (estáticas o BGP) se muestran como *VPNGateway*.
-   * **Estado**: indica el estado de ruta efectiva Hola. Los valores posibles son *Activo* o *No válido*.
-   * **AddressPrefixes**: especifica el prefijo de dirección de Hola de ruta efectiva de hello en la notación CIDR.
-   * **nextHopType**: indica el próximo salto de Hola para hello dada la ruta. Los valores posibles son *VirtualAppliance*, *Internet*, *VNetLocal*, *VNetPeering* o *Null*. Un valor de *Null* para **nextHopType** en un UDR puede indicar una ruta no válida. Por ejemplo, si **nextHopType** es *VirtualAppliance* y Hola network appliance virtual VM no está en un estado de aprovisionamiento/ejecución. Si **nextHopType** es *VPNGateway* y no hay ninguna puerta de enlace aprovisionado/ejecución Hola red virtual especificada, ruta de hello puede no ser válida.
-7. No hay ningún toohello ruta aparece *oesteee. UU.-VNET3* (prefijo 10.10.0.0/16) de red virtual de hello *VNet1 oesteee. UU.* (prefijo 10.9.0.0/16) en la imagen de hello en el paso anterior de Hola. Hola después de la imagen, el vínculo emparejamiento hello es hello *Disconnected* estado:
+   * **Origen**: indica el tipo de ruta. Las rutas del sistema se muestran como *Predeterminado*, los UDR se muestran como *Usuario* y las rutas de puerta de enlace (estáticas o BGP) se muestran como *VPNGateway*.
+   * **Estado**: indica el estado de la ruta eficaz. Los valores posibles son *Activo* o *No válido*.
+   * **AddressPrefixes**: especifica el prefijo de dirección de la ruta eficaz en la notación CIDR.
+   * **nextHopType**: indica el próximo salto de la ruta dada. Los valores posibles son *VirtualAppliance*, *Internet*, *VNetLocal*, *VNetPeering* o *Null*. Un valor de *Null* para **nextHopType** en un UDR puede indicar una ruta no válida. Por ejemplo, si **nextHopType** es *VirtualAppliance* y la máquina virtual de dispositivo de red virtual no está en estado aprovisionado/en ejecución. Si **nextHopType** es *VPNGateway* y no hay ninguna puerta de enlace aprovisionada/en ejecución en la red virtual específica, la ruta puede no ser válida.
+7. No hay ninguna ruta para la red virtual *WestUS-VNET3* (prefijo 10.10.0.0/16) desde *WestUS-VNet1* (prefijo 10.9.0.0/16) en la imagen del paso anterior. En la siguiente imagen, el vínculo de emparejamiento está en estado *Desconectado* :
 
     ![](./media/virtual-network-routes-troubleshoot-portal/image4.png)
 
-    vínculo de Hello bidireccional de emparejamiento de Hola se interrumpe, que explica por qué VM1 no se pudo conectar tooVM3 Hola *oesteee. UU.-VNet3* red virtual.
-8. Hello imagen siguiente muestran las rutas de hello después de establecer el vínculo de interconexión de hello bidireccional:
+    El vínculo bidireccional para el emparejamiento se interrumpe, lo que explica por qué VM1 no pudo conectarse a VM3 en la red virtual *WestUS-VNet3* .
+8. En la siguiente imagen se muestran las rutas después de establecer el vínculo de emparejamiento bidireccional:
 
     ![](./media/virtual-network-routes-troubleshoot-portal/image5.png)
 
-Para escenarios de solución de problemas más de tunelización forzada y ruta de la evaluación, leer hello [consideraciones](virtual-network-routes-troubleshoot-portal.md#considerations) sección de este artículo.
+Para informarse sobre más escenarios de solución de problemas para la evaluación de ruta y de tunelización forzada consulte la sección [Consideraciones](virtual-network-routes-troubleshoot-portal.md#considerations) de este artículo.
 
 ### <a name="view-effective-routes-for-a-network-interface"></a>Visualización de las rutas eficaces para una interfaz de red
-Si el flujo de tráfico de red se ve afectado para una interfaz de red (NIC) determinada, puede ver una lista completa de rutas eficaces directamente en una NIC. toosee Hola agregado rutas que se aplica tooa NIC, Hola completa siguiendo los pasos:
+Si el flujo de tráfico de red se ve afectado para una interfaz de red (NIC) determinada, puede ver una lista completa de rutas eficaces directamente en una NIC. Para ver las rutas agregadas que se aplican a una NIC, complete los pasos siguientes:
 
-1. Portal de Azure en https://portal.azure.com de toohello de inicio de sesión.
+1. Inicie sesión en Azure Portal en https://portal.azure.com.
 2. Haga clic en **Más servicios** y, a continuación, haga clic en **Interfaces de red**.
-3. Buscar lista Hola nombre Hola de una NIC o selecciónelo en la lista de Hola que aparece. En este ejemplo está seleccionada **VM1 NIC1** .
-4. Seleccione **rutas efectivas** en hello **interfaz de red** hoja, como se muestra en hello después de imagen:
+3. En la lista busque el nombre de una NIC o selecciónelo en la lista que aparece. En este ejemplo está seleccionada **VM1 NIC1** .
+4. Seleccione **Rutas eficaces** en la hoja **Interfaz de red**, como se muestra en la siguiente imagen:
 
        ![](./media/virtual-network-routes-troubleshoot-portal/image6.png)
 
-    Hola **ámbito** interfaz de red de toohello valores predeterminados seleccionado.
+    Observe que el **Ámbito** se establece de forma predeterminada en la interfaz de red seleccionada.
 
       ![](./media/virtual-network-routes-troubleshoot-portal/image7.png)
 
 ### <a name="view-effective-routes-for-a-route-table"></a>Visualización de las rutas eficaces para una tabla de rutas
-Cuando se modifica rutas definidas por el usuario (UDRs) en una tabla de ruta, puede que desee impacto de hello tooreview de rutas de Hola que se agrega en una máquina virtual concreta. Una tabla de rutas se puede asociar con cualquier número de subredes. Ahora puede ver todas las rutas efectivas de Hola para todos Hola NIC que se aplica una tabla de ruta especificado, sin necesidad de contexto tooswitch de hello dada la hoja de la tabla de ruta.
+Para modificar rutas definidas por el usuario (UDR) en una tabla de rutas, puede revisar el impacto de las rutas que se han agregado en una máquina virtual específica. Una tabla de rutas se puede asociar con cualquier número de subredes. Puede ver una lista completa de las rutas eficaces para todas las NIC a las que se aplica una tabla de rutas determinada, sin tener que cambiar el contexto de la hoja de tabla de rutas determinada.
 
-En este ejemplo, se ha especificado una UDR (*UDRoute*) en una tabla de rutas (*UDRouteTable*). Esta ruta envía todo el tráfico de Internet de *subred1* en hello *oesteee. UU.-VNet1* red virtual, a través de un dispositivo de red virtual (NVA) en *subred2* de Hola misma red virtual. ruta de Hola se muestra en hello después de imagen:
+En este ejemplo, se ha especificado una UDR (*UDRoute*) en una tabla de rutas (*UDRouteTable*). Esta ruta envía todo el tráfico de Internet de *Subnet1* en la red virtual *WestUS-VNet1* a través de un dispositivo de red virtual (NVA), en *Subnet2* de la misma red virtual. La ruta se muestra en la imagen siguiente:
 
 ![](./media/virtual-network-routes-troubleshoot-portal/image8.png)
 
-toosee Hola agregado las rutas para una tabla de ruta completa Hola pasos:
+Para ver las rutas agregadas que se aplican a una tabla de rutas, complete los pasos siguientes:
 
-1. Portal de Azure en https://portal.azure.com de toohello de inicio de sesión.
+1. Inicie sesión en Azure Portal en https://portal.azure.com.
 2. Haga clic en **Más servicios** y, a continuación, haga clic en **Tablas de rutas**.
-3. Lista de Hola de búsqueda para la tabla de rutas de hello desea toosee agregado rutas para y selecciónelo. En este ejemplo, **UDRouteTable** está seleccionada. Aparece una hoja de una tabla de rutas Hola seleccionado, como se muestra en hello después de imagen:
+3. Busque en la lista la tabla de rutas para la que desea ver las rutas agregadas y selecciónela. En este ejemplo, **UDRouteTable** está seleccionada. Aparece una hoja de la tabla de rutas seleccionada, tal como se muestra en la siguiente imagen:
 
     ![](./media/virtual-network-routes-troubleshoot-portal/image9.png)
-4. Seleccione **rutas efectivas** en hello **una tabla de rutas** hoja. Hola **ámbito** se establece toohello ha seleccionado una tabla de rutas.
-5. Una tabla de rutas puede ser subredes toomultiple aplicada. Seleccione hello **subred** desea tooreview de lista de Hola. En este ejemplo está seleccionada **Subnet1** .
-6. Seleccione una **Interfaz de red**. Se muestran todas las NIC conectado toohello seleccionado subred. En este ejemplo está seleccionada **VM1 NIC1** .
+4. Seleccione **Rutas eficaces** en la hoja **Tabla de rutas**. El **Ámbito** se establece en la tabla de rutas seleccionada.
+5. Una tabla de rutas se puede aplicar a varias subredes. Seleccione en la lista la **Subred** que desea revisar. En este ejemplo está seleccionada **Subnet1** .
+6. Seleccione una **Interfaz de red**. Se muestran todas las NIC conectadas a la subred seleccionada. En este ejemplo está seleccionada **VM1 NIC1** .
 
     ![](./media/virtual-network-routes-troubleshoot-portal/image10.png)
 
    > [!NOTE]
-   > Si Hola NIC no está asociado a una máquina virtual en ejecución, no se muestran rutas efectivas.
+   > Si la NIC no está asociada a una máquina virtual en ejecución, no se muestra ninguna ruta eficaz.
    >
    >
 
 ## <a name="considerations"></a>Consideraciones
-Unos tookeep cosas en cuenta al revisar la lista de Hola de rutas devuelve:
+Algunos aspectos que tener en cuenta al revisar la lista de rutas devuelven:
 
-* El enrutamiento se basa en coincidencia de prefijo más larga (LPM) entre las rutas UDR, BGP y del sistema. Si hay más de una ruta con hello mismo LPM coinciden, entonces se seleccionará una ruta en función de su origen en hello siguiendo el orden:
+* El enrutamiento se basa en coincidencia de prefijo más larga (LPM) entre las rutas UDR, BGP y del sistema. Si hay más de una ruta con la misma coincidencia LPM, se selecciona una en función de su origen en el orden siguiente:
 
   * Ruta definida por el usuario
   * Ruta BGP
   * Ruta del sistema (predeterminado)
 
-    Con rutas efectivas, sólo puede ver las rutas efectivas que sean iguales LPM basado en todas las rutas de hello disponible. Mostrando cómo rutas Hola se evalúan realmente de una NIC determinada, resulta mucho más fácil tootroubleshoot específico las rutas que pueden afectar a la conectividad de la máquina virtual.
-* Si tiene UDRs y envían tráfico tooa virtual otros dispositivos de red (NVA), con *VirtualAppliance* como **nextHopType**, compruebe que el reenvío IP está habilitado en el tráfico de hello NVA receptora Hola o se quitan los paquetes.
-* Si está habilitado el protocolo de túnel forzado, todo el tráfico saliente de Internet será local tooon enrutado. RDP/SSH de tooyour Internet que VM no funcionen con esta configuración, dependiendo de cómo Hola local controla este tráfico.
+    En el caso de las rutas eficaces, solo puede ver aquellas que tienen una coincidencia LPM basada en todas las rutas disponibles. Al mostrar cómo las rutas se evalúan realmente para una NIC determinada, resulta mucho más fácil solucionar problemas en rutas específicas que pueden afectar a la conectividad (tanto de entrada como de salida) de la máquina virtual.
+* Si tiene UDR que están enviando tráfico a un dispositivo de red virtual (NVA), con *VirtualAppliance* como **nextHopType**, asegúrese de que el reenvío IP está habilitado en el NVA que recibe el tráfico o se perderán los paquetes.
+* Si está habilitada la tunelización forzada, todo el tráfico saliente de Internet se enrutará a la red local. Una conexión RDP o SSH desde Internet a su máquina virtual puede no funcionar con esta configuración, dependiendo de cómo la red local controle este tráfico.
   Puede habilitar la tunelización forzada:
   * Si utiliza VPN de sitio a sitio, estableciendo una ruta definida por el usuario (UDR) con nextHopType como VPN Gateway
   * Si se anuncia una ruta predeterminada a través de BGP
-* Para la red virtual emparejamiento tráfico toowork correctamente, una ruta de sistema con **nextHopType** *VNetPeering* debe existir para hello emparejar el intervalo de prefijo de la red virtual. Si una ruta de este tipo no existe y Hola de intercambio de tráfico de red virtual vínculo parece correcta:
-  * Espere unos segundos y vuelva a intentar si es un vínculo de emparejamiento recién establecido. En ocasiones, toma más rutas toopropagate tooall interfaces de red de hello en una subred.
-  * Las reglas del grupo de seguridad de red (NSG) que pueden influir en los flujos de tráfico de Hola. Para obtener más información, vea hello [solucionar problemas de grupos de seguridad de red](virtual-network-nsg-troubleshoot-portal.md) artículo.
+* Para que el tráfico de emparejamiento de red virtual funcione correctamente, es necesario que exista una ruta de sistema con **nextHopType** *VNetPeering* para el intervalo de prefijos de red virtual. Si dicha una ruta no existe y el vínculo de emparejamiento de red virtual parece correcto:
+  * Espere unos segundos y vuelva a intentar si es un vínculo de emparejamiento recién establecido. En ocasiones la propagación de las rutas a todas las interfaces de red en una subred lleva algo más de tiempo.
+  * Las reglas del grupo de seguridad de red (NSG) pueden estar afectando a los flujos de tráfico. Para más información, consulte el artículo sobre [Solución de problemas de los grupos de seguridad de red](virtual-network-nsg-troubleshoot-portal.md) .

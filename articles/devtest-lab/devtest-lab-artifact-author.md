@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate artefactos personalizados para la máquina virtual de laboratorios de desarrollo y pruebas | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo tooauthor sus propios artefactos para usar con laboratorios de desarrollo y pruebas"
+title: "Creación de artefactos personalizados para la máquina virtual de DevTest Labs | Microsoft Docs"
+description: Aprenda a crear sus propios artefactos para usarlos con Azure DevTest Labs.
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: tomarcher
@@ -14,22 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2017
 ms.author: tarcher
-ms.openlocfilehash: 2bd603bc1241ca6b669a3a276a677729514f0df2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 679819618452d65847c6163569e04945ba8a414d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-custom-artifacts-for-your-devtest-labs-vm"></a>Creación de artefactos personalizados para la máquina virtual de DevTest Labs
+# <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Creación de artefactos personalizados para la máquina virtual de DevTest Labs
+
+Vea el siguiente vídeo para obtener información general de los pasos descritos en este artículo:
+
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/how-to-author-custom-artifacts/player]
 > 
 > 
 
 ## <a name="overview"></a>Información general
-**Artefactos** son toodeploy usado y configurar la aplicación después de aprovisiona una máquina virtual. Un artefacto consta de un archivo de definición de artefacto y otros archivos de script que se almacenan en un repositorio de Git. Archivos de definición de artefacto consisten en JSON y expresiones que se puede usar toospecify qué desea tooinstall en una máquina virtual. Por ejemplo, puede definir nombre Hola de un artefacto, toorun de comandos y parámetros que están disponibles cuando se ejecuta el comando Hola. Puede hacer referencia tooother archivos de script en archivo de definición de artefacto de Hola por su nombre.
+Puede usar *artefactos* para implementar y configurar la aplicación después de aprovisionar una máquina virtual. Un artefacto consta de un archivo de definición de artefacto y de otros archivos de script que se almacenan en una carpeta de un repositorio de Git. Los archivos de definición de artefacto constan de JSON y expresiones que puede utilizar para especificar lo que desea instalar en una máquina virtual. Por ejemplo, puede definir el nombre de un artefacto, un comando que se va a ejecutar y los parámetros que están disponibles cuando se ejecuta el comando. Puede hacer referencia a otros archivos de script en el archivo de definición de artefacto por nombre.
 
 ## <a name="artifact-definition-file-format"></a>Formato del archivo de definición de artefacto
-Hello en el ejemplo siguiente se muestra las secciones de Hola que conforman la estructura básica de Hola de un archivo de definición:
+En el ejemplo siguiente se muestran las secciones que componen la estructura básica de un archivo de definición:
 
     {
       "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2016-11-28/dtlArtifacts.json",
@@ -51,18 +54,18 @@ Hello en el ejemplo siguiente se muestra las secciones de Hola que conforman la 
 
 | Nombre del elemento | ¿Necesario? | Description |
 | --- | --- | --- |
-| $schema |No |Ubicación del archivo de esquema JSON de Hola que le ayuda a comprobar la validez de Hola Hola del archivo de definición. |
-| título |Sí |Nombre del artefacto de Hola que se muestra en el laboratorio de Hola. |
-| description |Sí |Descripción del artefacto de Hola que se muestra en el laboratorio de Hola. |
-| iconUri |No |URI del icono de hello en laboratorio Hola. |
-| targetOsType |Sí |Sistema operativo de hello VM donde está instalado el artefacto. Las opciones admitidas son Windows y Linux. |
-| parameters |No |Los valores que se proporcionan cuando el comando de instalación del artefacto se ejecuta en un equipo. Esto ayuda a personalizar el artefacto. |
+| $schema |No |Ubicación del archivo de esquema JSON. El archivo de esquema JSON puede ayudarle a probar la validez del archivo de definición. |
+| título |Sí |Nombre del artefacto que se muestra en el laboratorio. |
+| Description |Sí |Descripción del artefacto que se muestra en el laboratorio. |
+| iconUri |No |Identificador URI del icono que se muestra en el laboratorio. |
+| targetOsType |Sí |Sistema operativo de la máquina virtual en que se instala el artefacto. Las opciones admitidas son Windows y Linux. |
+| parameters |No |Los valores que se proporcionan cuando el comando de instalación del artefacto se ejecuta en un equipo. Esto le ayuda a personalizar el artefacto. |
 | runCommand |Sí |Comando de instalación de artefacto que se ejecuta en una máquina virtual. |
 
 ### <a name="artifact-parameters"></a>Parámetros de artefacto
-En la sección de parámetros de Hola Hola del archivo de definición, especifique los valores que un usuario puede escribir al instalar un artefacto. Puede hacer referencia a valores de toothese de comando de instalación de artefacto de Hola.
+En la sección de parámetros del archivo de definición, especifique los valores que un usuario puede indicar al instalar un artefacto. Puede hacer referencia a estos valores en el comando de instalación del artefacto.
 
-Definir parámetros con hello siguiente estructura:
+Para definir los parámetros, use la estructura siguiente:
 
     "parameters": {
         "<parameterName>": {
@@ -74,28 +77,28 @@ Definir parámetros con hello siguiente estructura:
 
 | Nombre del elemento | ¿Necesario? | Description |
 | --- | --- | --- |
-| type |Sí |Tipo del valor de parámetro. Vea Hola lista de tipos permitido de hello siguiente: |
-| DisplayName |Sí |Nombre del parámetro de Hola que sea usuario de tooa mostrado en el laboratorio de Hola. | |
-| description |Sí |Descripción del parámetro de Hola que se muestra en el laboratorio de Hola. |
+| type |Sí |Tipo del valor de parámetro. Consulte la lista siguiente de los tipos permitidos. |
+| DisplayName |Sí |Nombre del parámetro que se muestra a un usuario en el laboratorio. | |
+| Description |Sí |Descripción del parámetro que se muestra en el laboratorio. |
 
-Hola tipos permitidos son:
+Los tipos permitidos son:
 
-* string: cualquier cadena JSON válida
-* int: cualquier entero JSON válido
-* bool: cualquier booleano JSON válido
-* array: cualquier matriz JSON válida
+* string (cualquier cadena JSON válida)
+* int (cualquier entero JSON válido)
+* bool (cualquier booleano JSON válido)
+* array (cualquier matriz JSON válida)
 
 ## <a name="artifact-expressions-and-functions"></a>Expresiones y funciones de artefacto
-Puede utilizar la expresión y artefactos de funciones tooconstruct Hola el comando de instalación.
-Las expresiones se incluyen entre corchetes ([y]) y se evalúan cuando se instala el artefacto de Hola. Pueden aparecer expresiones en cualquier lugar de un valor de cadena JSON y devolver siempre otro valor JSON. Si necesita una cadena literal que se inicia con un corchete de cierre de toouse [, debe usar dos corchetes [[.
-Por lo general, se usan expresiones con funciones tooconstruct un valor. Al igual que en JavaScript, las llamadas de función tienen el formato functionName(arg1,arg2,arg3).
+Puede utilizar expresiones y funciones para construir el comando de instalación del artefacto.
+Las expresiones se incluyen entre corchetes ([ y ]) y se evalúan cuando se instala el artefacto. Las expresiones pueden aparecer en cualquier lugar en un valor de cadena JSON. Las expresiones siempre devuelven otro valor JSON. Si necesita usar una cadena literal que comienza por un corchete ([), debe usar dos corchetes ([[).
+Normalmente, se utilizan expresiones con funciones para construir un valor. Al igual que en JavaScript, las llamadas de función tienen el formato **functionName(arg1,arg2,arg3)**.
 
-Hello siguiente lista muestra funciones comunes:
+En la lista siguiente se muestran las funciones comunes:
 
-* Parameters(ParameterName) - devuelve un valor de parámetro que se proporciona cuando se ejecuta el comando de artefacto de Hola.
-* concat(arg1,arg2,arg3,…): combina varios valores de cadena. Esta función puede tomar cualquier número de argumentos.
+* **parameters(parameterName)**: devuelve un valor de parámetro que se proporciona cuando se ejecuta el comando de artefacto.
+* **concat(arg1,arg2,arg3,…)**: combina varios valores de cadena. Esta función puede tomar diversos argumentos.
 
-Hola siguiente ejemplo se muestra cómo tooconstruct toouse un valor de expresión y funciones:
+En el ejemplo siguiente se muestra cómo utilizar expresiones y funciones para construir un valor:
 
     runCommand": {
          "commandToExecute": "[concat('powershell.exe -ExecutionPolicy bypass \"& ./startChocolatey.ps1'
@@ -105,28 +108,27 @@ Hola siguiente ejemplo se muestra cómo tooconstruct toouse un valor de expresi�
     }
 
 ## <a name="create-a-custom-artifact"></a>Creación de un artefacto personalizado
-Cree su artefacto personalizado siguiendo estos pasos:
 
-1. Instalación de un editor de JSON - necesita un toowork de editor de JSON con archivos de definición de artefacto. Se recomienda usar el [código de Visual Studio](https://code.visualstudio.com/), que está disponible para Windows, Linux y OS X.
-2. Get un artifactfile.json de ejemplo - desprotección artefactos Hola creado por equipo de laboratorios de desarrollo y pruebas de Azure en nuestro [repositorio de GitHub](https://github.com/Azure/azure-devtestlab), donde hemos creado una biblioteca enriquecida de artefactos que le ayudarán a crearán sus propios artefactos. Descargar un archivo de definición de artefacto y realice cambios tooit toocreate sus propios artefactos.
-3. Asegúrese de usar de IntelliSense: aproveche IntelliSense toosee elementos válidos que pueden ser tooconstruct usa un archivo de definición de artefacto. También puede ver Hola distintas opciones para los valores de un elemento. Por ejemplo, la presentación del IntelliSense Hola dos opciones de Windows o Linux al editar hello **targetOsType** elemento.
-4. Artefacto de Hola de tienda en un [repositorio de git](devtest-lab-add-artifact-repo.md).
+1. Instalación de un editor de JSON. Necesita un editor de JSON para trabajar con los archivos de definición del artefacto. Se recomienda usar [Visual Studio Code](https://code.visualstudio.com/), que está disponible para Windows, Linux y OS X.
+2. Obtenga un archivo de definición artifactfile.json de ejemplo. Desproteja los artefactos creados por el equipo de DevTest Labs en nuestro [repositorio de GitHub](https://github.com/Azure/azure-devtestlab). Hemos creado una biblioteca enriquecida de artefactos que pueden ayudarle a crear sus propios artefactos. Descargue un archivo de definición de artefacto y haga cambios sobre él para crear sus propios artefactos.
+3. Use IntelliSense. Use IntelliSense para ver los elementos válidos que se pueden utilizar para construir un archivo de definición de artefacto. También puede ver las distintas opciones para los valores de un elemento. Por ejemplo, al editar el elemento **targetOsType**, IntelliSense le muestra las dos opciones, para Windows o Linux.
+4. Almacene el artefacto en un [repositorio de Git](devtest-lab-add-artifact-repo.md).
    
-   1. Cree un directorio independiente para cada artefacto donde el nombre del directorio de hello es Hola igual como nombre del artefacto Hola.
-   2. Almacenar archivo de definición de artefacto de hello (artifactfile.json) en el directorio de hello creado.
-   3. Comando de instalación de las secuencias de comandos de Hola de almacén que se hace referencia de artefacto de Hola.
+   1. Cree un directorio independiente para cada artefacto. El nombre del directorio debe ser el mismo que el del artefacto.
+   2. Almacene el archivo de definición de artefacto (artifactfile.json) en el directorio que ha creado.
+   3. Almacene los scripts a los que hace referencia el comando de instalación del artefacto.
       
       Este es un ejemplo del aspecto que tendrá una carpeta de artefacto:
       
-      ![Ejemplo de repositorio de Git de artefacto](./media/devtest-lab-artifact-author/git-repo.png)
-5. Agregar el laboratorio de toohello de repositorio de artefactos de hello: consulte el artículo toohello, [agregar un repositorio Git de artefactos y plantillas de](devtest-lab-add-artifact-repo.md).
+      ![Ejemplo de la carpeta de artefacto](./media/devtest-lab-artifact-author/git-repo.png)
+5. Agregue el repositorio de artefactos al laboratorio. Consulte [Adición de un repositorio de Git de artefactos y plantillas](devtest-lab-add-artifact-repo.md).
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="related-articles"></a>Artículos relacionados
-* [¿Cómo toodiagnose errores de artefactos en los laboratorios de desarrollo y pruebas](devtest-lab-troubleshoot-artifact-failure.md)
-* [Unirse a un dominio de Active Directory mediante una plantilla de administrador de recursos en los laboratorios de desarrollo y pruebas de Azure tooexisting VM](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
+* [How to diagnose artifact failures in DevTest Labs](devtest-lab-troubleshoot-artifact-failure.md) (Diagnóstico de errores de artefactos en DevTest Labs)
+* [Join a VM to existing AD Domain using a resource manager template in DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs) (Unión de una máquina virtual al dominio de AD existente mediante la plantilla de Resource Manager en DevTest Labs)
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Obtenga información acerca de cómo demasiado[agregar un laboratorio de tooa repositorio de Git artefacto](devtest-lab-add-artifact-repo.md).
+* Aprenda cómo [agregar un repositorio de artefactos Git a un laboratorio](devtest-lab-add-artifact-repo.md).
 

@@ -1,6 +1,6 @@
 ---
-title: registros de control de acceso de aaaManage en StorSimple | Documentos de Microsoft
-description: "Describe cómo el control de acceso toouse registros toodetermine (ACR) qué hosts pueden conectarse tooa volumen en el dispositivo StorSimple Hola."
+title: "Administración de los registros de control de acceso en StorSimple | Microsoft Docs"
+description: "Describe cómo utilizar los registros de control de acceso (ACR) para determinar qué hosts pueden conectarse a un volumen en el dispositivo StorSimple."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,76 +14,76 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: alkohli
-ms.openlocfilehash: a1e718c2679301b34221a233557a1eaae869a94f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a87624b5706c1d9b8c2b9926e5580996a89ce984
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="use-hello-storsimple-manager-service-toomanage-access-control-records"></a>Usar registros de control de acceso de hello StorSimple Manager servicio toomanage
+# <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>Usar el servicio de Administrador de StorSimple para administrar registros de control de acceso
 ## <a name="overview"></a>Información general
-Registros de control de acceso (ACR) le permiten toospecify qué hosts pueden conectarse tooa volumen en el dispositivo StorSimple Hola. Acr se establecen volumen específico tooa y contener Hola iSCSI (iqn) de nombres completos de los hosts de Hola. Cuando un host intenta tooconnect tooa volumen, la comprobación de dispositivo de Hola Hola que ACR asociado a ese volumen para el nombre IQN de Hola y si se encuentra una coincidencia, hello se establezca la conexión. registros de control de acceso de Hello sección en hello **configurar** página muestra todos los registros de control de acceso de hello con hello correspondiente IQN de los hosts de Hola.
+Los registros de control de acceso (ACR) le permiten especificar qué hosts pueden conectarse a un volumen del dispositivo StorSimple. Los ACR se establecen en un volumen específico y contienen los nombres calificados iSCSI (IQNs) de los hosts. Cuando un host intenta conectarse a un volumen, el dispositivo comprueba el ACR asociado a ese volumen para el nombre IQN y, a continuación, si hay una coincidencia, se establece la conexión. La sección de registros de control de acceso de la página **Configurar** muestra todos los registros de control de acceso con los IQN correspondientes de los hosts.
 
-Este tutorial le explica Hola siguientes tareas comunes relacionadas con el ACR:
+Este tutorial explica las siguientes tareas comunes relacionadas con los ACR comunes:
 
 * Agregar un registro de control de acceso 
 * Editar un registro de control de acceso 
 * Eliminar un registro de control de acceso 
 
 > [!IMPORTANT]
-> * Al asignar un volumen de tooa ACR, tenga cuidado que volumen hello no es simultáneamente tenga acceso más de un host no agrupado porque esto podría dañar el volumen de Hola. 
-> * Al eliminar un ACR de un volumen, asegúrese de que ese host correspondiente hello no se tiene acceso a volumen Hola porque Hola eliminación podría dar lugar a una interrupción de lectura y escritura.
+> * Al asignar un ACR a un volumen, tenga cuidado de que no accedan al mismo tiempo al volumen más de un host no agrupado porque esto podría dañar el volumen. 
+> * Al eliminar un ACR de un volumen, asegúrese de que el host correspondiente no tiene acceso al volumen porque la eliminación podría dar lugar a una interrupción de lectura y escritura.
 > 
 > 
 
 ## <a name="add-an-access-control-record"></a>Agregar un registro de control de acceso
-Usar el servicio StorSimple Manager hello **configurar** página tooadd ACR. Normalmente, se asociará un ACR a un volumen.
+Use la página **Configurar** del servicio Administrador de StorSimple para agregar ACR. Normalmente, se asociará un ACR a un volumen.
 
-Realizar Hola siguiendo los pasos tooadd un ACR.
+Realice los pasos siguientes para agregar un ACR.
 
-#### <a name="tooadd-an-access-control-record"></a>tooadd un registro de control de acceso
-1. En la página de inicio del servicio de hello, seleccione su servicio, haga doble clic en el nombre del servicio de hello y, a continuación, haga clic en hello **configurar** ficha.
-2. Hola tabular listado en **registros de control de acceso**, proporcione un **nombre** para el ACR.
-3. Proporcione el nombre IQN de Hola de su host de Windows en **nombre del iniciador iSCSI**. Hola tooget IQN del host Windows Server, Hola siguientes:
+#### <a name="to-add-an-access-control-record"></a>Para agregar un registro de control de acceso
+1. En la página de aterrizaje del servicio, seleccione el servicio, haga doble clic en el nombre del servicio y, a continuación, haga clic en la pestaña **Configurar** .
+2. En la lista tabular de **Registros de control de acceso**, escriba un **Nombre** para el ACR.
+3. Proporcione el nombre IQN del host de Windows en **Nombre del iniciador iSCSI**. Para obtener el IQN del host de Windows Server, haga lo siguiente:
    
-   * Inicie el iniciador iSCSI de Microsoft de hello en el host de Windows.
-   * Hola **propiedades del iniciador iSCSI** ventana hello **configuración** ficha, seleccione y copie cadena Hola de hello **nombre del iniciador** campo.
-   * Pegue esta cadena en hello **nombre del iniciador iSCSI** campo en la tabla de ACR Hola Hola portal de Azure clásico.
-4. Haga clic en **guardar** hello toosave recién creado ACR. Hola tabular enumerar will ser tooreflect actualizado esta adición.
+   * Inicie el iniciador iSCSI de Microsoft en el host de Windows.
+   * En la ventana **Propiedades del iniciador iSCSI**, en la pestaña **Configuración**, seleccione y copie la cadena desde el campo **Nombre de iniciador**.
+   * Pegue esta cadena en el campo **Nombre del iniciador iSCSI** de la tabla de ACR en el Portal de Azure clásico.
+4. Haga clic en **Guardar** para guardar el ACR recién creado. La lista tabular se actualizará para reflejar esta adición.
 
 ## <a name="edit-an-access-control-record"></a>Editar un registro de control de acceso
-Usar hello **configurar** página Hola ACR Azure tooedit portal clásico. 
+Use la página **Configurar** del Portal de Azure clásico para editar ACR. 
 
 > [!NOTE]
-> Puede modificar solo esos ACR que no están actualmente en uso. tooedit que un ACR asociado a un volumen que está actualmente en uso, primero debe realizar volumen Hola sin conexión.
+> Puede modificar solo esos ACR que no están actualmente en uso. Para editar un ACR asociado a un volumen que está actualmente en uso, primero debe establecer el volumen como sin conexión.
 > 
 > 
 
-Realizar Hola siguiendo los pasos tooedit un ACR.
+Realice los pasos siguientes para editar un ACR.
 
-#### <a name="tooedit-an-access-control-record"></a>tooedit un registro de control de acceso
-1. En la página de inicio del servicio de hello, seleccione su servicio, haga doble clic en el nombre del servicio de hello y, a continuación, haga clic en hello **configurar** ficha.
-2. En la lista tabular de Hola de registros de control de acceso de hello, mantenga el mouse sobre Hola ACR que desea toomodify.
-3. Proporcione un nombre nuevo o el IQN de hello ACR.
-4. Haga clic en **guardar** toosave Hola modificado el ACR. Hola tabular enumerar will ser tooreflect actualizado este cambio.
+#### <a name="to-edit-an-access-control-record"></a>Para editar un registro de control de acceso
+1. En la página de aterrizaje del servicio, seleccione el servicio, haga doble clic en el nombre del servicio y, a continuación, haga clic en la pestaña **Configurar** .
+2. En la lista tabular de los registros de control de acceso, pase el ratón sobre el ACR que desea modificar.
+3. Proporcione un nombre nuevo y/o el IQN del ACR.
+4. Haga clic en **Guardar** para guardar el ACR modificado. La lista tabular se actualizará para reflejar este cambio.
 
 ## <a name="delete-an-access-control-record"></a>Eliminar un registro de control de acceso
-Usar hello **configurar** página Hola ACR Azure toodelete portal clásico. 
+Use la página **Configurar** del Portal de Azure clásico para eliminar ACR. 
 
 > [!NOTE]
-> Solo puede eliminar esos ACR que no están actualmente en uso. toodelete que un ACR asociado a un volumen que está actualmente en uso, primero debe realizar volumen Hola sin conexión.
+> Solo puede eliminar esos ACR que no están actualmente en uso. Para eliminar un ACR asociado a un volumen que está actualmente en uso, primero debe establecer el volumen como sin conexión.
 > 
 > 
 
-Realizar Hola siguiendo los pasos toodelete un registro de control de acceso.
+Realice los pasos siguientes para eliminar un registro de control de acceso.
 
-#### <a name="toodelete-an-access-control-record"></a>toodelete un registro de control de acceso
-1. En la página de inicio del servicio de hello, seleccione su servicio, haga doble clic en el nombre del servicio de hello y, a continuación, haga clic en hello **configurar** ficha.
-2. En la lista tabular de Hola de registros de control de acceso (ACR) de hello, mantenga el mouse sobre Hola ACR que desea toodelete.
-3. Un icono de eliminación (**x**) aparecerá en hello la columna extrema derecha para hello ACR que seleccione. Haga clic en hello **x** Hola de icono toodelete ACR.
-4. Cuando se le solicite confirmación, haga clic en **Sí** toocontinue con eliminación de Hola. lista tabular de Hello estará actualizada tooreflect Hola eliminación.
+#### <a name="to-delete-an-access-control-record"></a>Para eliminar un registro de control de acceso
+1. En la página de aterrizaje del servicio, seleccione el servicio, haga doble clic en el nombre del servicio y, a continuación, haga clic en la pestaña **Configurar** .
+2. En la lista tabular de los registros de control de acceso (ACR), pase el ratón sobre el ACR que desea eliminar.
+3. Aparecerá un icono de eliminación (**x**) en la columna en el extremo derecho para el ACR que seleccione. Haga clic en el icono **x** para eliminar el ACR.
+4. Cuando se le pida confirmación, haga clic en **SÍ** para continuar con la eliminación. La lista tabular se actualizará para reflejar la eliminación.
 
 ## <a name="next-steps"></a>Pasos siguientes
 * Obtenga más información sobre la [administración de volúmenes de StorSimple](storsimple-manage-volumes.md).
-* Obtenga más información sobre [utilizando Hola tooadminister de servicio de StorSimple Manager el dispositivo StorSimple](storsimple-manager-service-administration.md).
+* Obtenga más información sobre el [uso del servicio StorSimple Manager para administrar su dispositivo StorSimple](storsimple-manager-service-administration.md).
 

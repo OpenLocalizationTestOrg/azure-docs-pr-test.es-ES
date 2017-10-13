@@ -1,6 +1,6 @@
 ---
-title: "en el ejemplo aaaCLI se escala una base de datos SQL de Azure de grupo elástico de SQL | Documentos de Microsoft"
-description: "Azure CLI ejemplo script tooscale un grupo elástico de SQL en la base de datos de SQL Azure"
+title: "El ejemplo de la CLI escala un grupo elástico de SQL en Azure SQL Database | Microsoft Docs"
+description: "Script de ejemplo de la CLI de Azure para escalar un grupo elástico de SQL en Azure SQL Database"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -16,13 +16,13 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 06/23/2017
 ms.author: janeng
-ms.openlocfilehash: 436128b8183213f78b9abc2ec46efe2a3ed3c37c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5efdabf7258fc678811a0d0f19bc1d5e797ed807
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="use-cli-tooscale-a-sql-elastic-pool-in-azure-sql-database"></a>Utilice CLI tooscale un grupo elástico de SQL en la base de datos de SQL Azure
+# <a name="use-cli-to-scale-a-sql-elastic-pool-in-azure-sql-database"></a>Uso de la CLI para escalar un grupo elástico de SQL en Azure SQL Database
 
 Este script de ejemplo de la CLI de Azure crea grupos elásticos de SQL, traslada bases de datos agrupadas y cambia los niveles de rendimiento de los grupos elásticos. 
 
@@ -30,7 +30,7 @@ Este script de ejemplo de la CLI de Azure crea grupos elásticos de SQL, traslad
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Si elige tooinstall y usar hello CLI localmente, en este tema requiere que se ejecuten hello Azure CLI versión 2.0 o posterior. Ejecutar `az --version` toofind versión de Hola. Si necesita tooinstall o una actualización, consulte [instalar Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Si decide instalar y usar la CLI localmente, para este tema es preciso que ejecute la CLI de Azure versión 2.0 o posterior. Ejecute `az --version` para encontrar la versión. Si necesita instalarla o actualizarla, consulte [Instalación de la CLI de Azure 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Script de ejemplo
 
@@ -38,7 +38,7 @@ Si elige tooinstall y usar hello CLI localmente, en este tema requiere que se ej
 
 ## <a name="clean-up-deployment"></a>Limpieza de la implementación
 
-Después de ejecutar el ejemplo de script de Hola, Hola siguiente comando puede ser usado tooremove grupo de recursos de Hola y todos los recursos asociados con él.
+Después de ejecutar el script de ejemplo, se puede usar el comando siguiente para quitar el grupo de recursos y todos los recursos asociados.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
@@ -46,19 +46,19 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Este script utiliza Hola después comandos toocreate un grupo de recursos, servidor lógico, base de datos SQL y las reglas de firewall. Cada comando de documentación específica de hello tabla vínculos toocommand.
+Este script usa los siguientes comandos para crear un grupo de recursos, un servidor lógico, una base de datos SQL y reglas de firewall. Cada comando de la tabla crea un vínculo a documentación específica del comando.
 
 | Comando | Notas |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | Crea un grupo de recursos en el que se almacenan todos los recursos. |
-| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#create) | Crea un servidor lógico que hospeda Hola base de datos SQL. |
-| [az sql elastic-pools create](https://docs.microsoft.com/cli/azure/sql/elastic-pool#create) | Crea un grupo elástico de base de datos en el servidor lógico Hola. |
-| [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#create) | Crea Hola base de datos SQL en el servidor lógico Hola. |
-| [az sql elastic-pools update](https://docs.microsoft.com/cli/azure/sql/elastic-pool#update) | Actualiza un grupo elástico de base de datos, en este Hola de cambios en el ejemplo se asignan eDTU. |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#set) | Elimina un grupo de recursos, incluidos todos los recursos anidados. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Crea un grupo de recursos en el que se almacenan todos los recursos. |
+| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az_sql_server_create) | Crea un servidor lógico que hospeda la base de datos SQL. |
+| [az sql elastic-pools create](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az_sql_elastic_pool_create) | Crea un grupo elástico de bases de datos en el servidor lógico. |
+| [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az_sql_db_create) | Crea una base de datos SQL en el servidor lógico. |
+| [az sql elastic-pools update](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az_sql_elastic_pool_update) | Actualiza un grupo elástico de bases de datos; en este ejemplo, cambia la eDTU asignada. |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Elimina un grupo de recursos, incluidos todos los recursos anidados. |
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener más información sobre Hola CLI de Azure, consulte [documentación de Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Para más información sobre la CLI de Azure, consulte la [documentación de la CLI de Azure](https://docs.microsoft.com/cli/azure/overview).
 
-Encontrará más ejemplos de secuencias de comandos de CLI de base de datos de SQL en hello [documentación de la base de datos de SQL Azure](../sql-database-cli-samples.md).
+Encontrará más ejemplos de scripts de la CLI de SQL Database en la [documentación de Azure SQL Database](../sql-database-cli-samples.md).

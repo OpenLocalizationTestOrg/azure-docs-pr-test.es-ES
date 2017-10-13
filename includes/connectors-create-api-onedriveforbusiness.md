@@ -1,16 +1,16 @@
 ### <a name="prerequisites"></a>Requisitos previos
 * Una cuenta de [OneDrive](http://OneDrive.com). 
 
-Para poder usar OneDrive para la cuenta de una aplicación de la lógica empresarial, debe autorizar Hola lógica aplicación tooconnect tooyour OneDrive para la cuenta de empresa. Afortunadamente, puede hacer esto fácilmente desde dentro de la aplicación lógica en hello Portal de Azure. 
+Para poder usar su cuenta de OneDrive para la Empresa en una aplicación lógica, debe autorizar a la aplicación lógica para que pueda conectarse a dicha cuenta. Por suerte, esto es muy fácil de hacer desde la aplicación lógica en el Portal de Azure. 
 
-Estos es Hola pasos tooauthorize su lógica aplicación tooconnect tooyour OneDrive para la cuenta de empresa:
+Aquí se explica cómo autorizar a la aplicación lógica para conectarse a su cuenta de OneDrive para la Empresa:
 
-1. toocreate una tooOneDrive de conexión para la empresa, en el Diseñador de aplicaciones de la lógica de hello, seleccione **API administradas de Microsoft mostrar** en hello, lista desplegable, a continuación, escriba *OneDrive para la empresa* en el cuadro de búsqueda de Hola. Seleccione el desencadenador de Hola o acción que le gusten toouse:  
+1. Para crear una conexión a OneDrive para la Empresa, en el diseñador de Logic Apps, seleccione **Mostrar las API administradas por Microsoft** en la lista desplegable y, luego, escriba *OneDrive para la Empresa* en el cuadro de búsqueda. Seleccione el desencadenador o la acción que quiera usar:   
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-1.png)
-2. Si no ha creado ningún tooOneDrive de conexiones para la empresa antes de, obtendrá tooprovide solicitada OneDrive para las credenciales de negocios. Estas credenciales se tooauthorize usa su tooconnect de aplicación lógica para y tener acceso a OneDrive para datos de la cuenta de negocio:  
+2. Si no ha creado ninguna conexión a OneDrive para la Empresa antes, se le pedirá que indique sus credenciales de OneDrive para la Empresa. Estas credenciales se usarán para autorizar a la aplicación lógica para conectarse y tener acceso a los datos de su cuenta de OneDrive para la Empresa:  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-2.png)
-3. Proporcionar su OneDrive para tooauthorize de nombre y la contraseña de usuario de negocio a su aplicación lógica:  
+3. Indique su nombre de usuario y contraseña de OneDrive para la Empresa para autorizar a la aplicación lógica:  
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-3.png)   
-4. Tenga en cuenta se ha creado la conexión de Hola y está ahora disponible tooproceed con hello otro pasos en la aplicación lógica:  
+4. Observe que la conexión se ha creado y que puede continuar sin problemas con el resto de pasos en la aplicación lógica:   
    ![](./media/connectors-create-api-onedriveforbusiness/onedriveforbusiness-4.png)   
 

@@ -1,6 +1,6 @@
 ---
-title: "Empezar a conectar dispositivos físicos tooAzure centro de IoT | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo tooconnect tooAzure de dispositivos y los paneles físico centro de IoT. Los dispositivos pueden enviar telemetría tooIoT concentrador y centro de IoT pueden supervisar y administrar los dispositivos."
+title: "Introducción a la conexión de dispositivos físicos a Azure IoT Hub | Microsoft Docs"
+description: "Aprenda a conectar dispositivos físicos y paneles a Azure IoT Hub. Los dispositivos pueden enviar datos de telemetría a IoT Hub y este servicio supervisa y administra los dispositivos."
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2017
 ms.author: dobett
-ms.openlocfilehash: 47ce289c438b2f495d499d724c38ddc4b3307425
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f4128b6b049aa876e170c56dcf2e40720644dc3d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-iot-hub-get-started-with-physical-devices-tutorials"></a>Tutoriales de introducción a Azure IoT Hub con dispositivos físicos
 
-Estos tutoriales presentan tooAzure centro de IoT y el dispositivo de hello SDK. tutoriales de Hola cubren IoT escenarios toodemonstrate hello las funciones comunes de centro de IoT. Hello tutoriales también muestran cómo toocombine centro de IoT con otro Azure servicios y toobuild de las herramientas más eficaces soluciones de IoT. Hello tutoriales que se enumeran en Hola siguiente tabla se muestran también cómo toocreate dispositivos de IoT físicos.
+Estos tutoriales le presentan Azure IoT Hub y los SDK de dispositivo. Los tutoriales cubren escenarios comunes de IoT para demostrar las funcionalidades de IoT Hub. Los tutoriales también muestran cómo combinar IoT Hub con otras herramientas y servicios de Azure para crear soluciones de IoT más eficaces. Los tutoriales de la tabla siguiente muestran cómo crear dispositivos de IoT físicos.
 
 | Dispositivo IoT                       | Lenguaje de programación |
 |---------------------------------|----------------------|
@@ -33,7 +33,7 @@ Estos tutoriales presentan tooAzure centro de IoT y el dispositivo de hello SDK.
 | Sparkfun ESP8266 Thing Dev      | [Arduino][Th_Ard]              |
 | Adafruit Feather M0             | [Arduino][M0_Ard]              |
 
-Además, puede usar un centro de IoT IoT borde puerta de enlace tooenable dispositivos tooconnect tooyour.
+Además, puede usar una puerta de enlace de IoT Edge para habilitar dispositivos para conectarse a su IoT Hub.
 
 | Dispositivo de puerta de enlace               | Lenguaje de programación | Plataforma         |
 |------------------------------|----------------------|------------------|

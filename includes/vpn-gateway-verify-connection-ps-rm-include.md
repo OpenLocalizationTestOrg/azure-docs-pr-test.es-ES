@@ -1,11 +1,11 @@
-Puede comprobar que la conexión se realizó correctamente utilizando el cmdlet de hello 'Get-AzureRmVirtualNetworkGatewayConnection', con o sin '-Debug'. 
+Puede comprobar que la conexión se realizó correctamente mediante el uso del cmdlet "Get-AzureRmVirtualNetworkGatewayConnection", con o sin "-Debug". 
 
-1. Hola de uso siguiente cmdlet de ejemplo, la configuración de hello valores toomatch sus propios. Si se le solicita, seleccione 'A' en orden toorun 'All'. En el ejemplo de Hola, '-Name' hace referencia toohello nombre de conexión de Hola que desea tootest.
+1. Puede usar el siguiente ejemplo de cmdlet, configurando los valores para que coincidan con los tuyos. Cuando se le pida, seleccione "A" para ejecutar "todo". En el ejemplo, " -Name" hace referencia al nombre de la conexión que desea probar.
 
   ```powershell
   Get-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnection -ResourceGroupName MyRG
   ```
-2. Cuando haya finalizado el cmdlet de hello, ver los valores de hello. En el siguiente ejemplo de Hola, estado de la conexión de hello muestra como "Conectado" y se pueden ver los bytes de entrada y salida.
+2. Cuando el cmdlet haya finalizado, consulte los valores. En el ejemplo siguiente, el estado de conexión aparece como "Conectado" y pueden verse los bytes de entrada y salida.
    
   ```
   "connectionStatus": "Connected",

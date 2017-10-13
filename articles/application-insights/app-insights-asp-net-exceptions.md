@@ -1,5 +1,5 @@
 ---
-title: aaaDiagnose errores y excepciones en aplicaciones con Azure Application Insights de web | Documentos de Microsoft
+title: "Diagnóstico de errores y excepciones en aplicaciones web con Azure Application Insights | Microsoft Docs"
 description: "Capture las excepciones de las aplicaciones ASP.NET junto con la telemetría de solicitudes."
 services: application-insights
 documentationcenter: .net
@@ -11,103 +11,107 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2017
+ms.date: 09/19/2017
 ms.author: bwren
-ms.openlocfilehash: 8930e6d2b29f83ea635c4ecb7afd11fc1d97d085
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d7603f47d985e1abbab96e931e46e37a8ecb4bc5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnóstico de excepciones en aplicaciones web con Application Insights
-Las excepciones en la aplicación web en directo se notifican mediante [Application Insights](app-insights-overview.md). Puede correlacionar las solicitudes erróneas con excepciones y otros eventos en el cliente de Hola y el servidor, por lo que puede diagnosticar rápidamente Hola causas.
+Las excepciones en la aplicación web en directo se notifican mediante [Application Insights](app-insights-overview.md). Puede correlacionar las solicitudes con error con excepciones y otros eventos en el cliente y en el servidor, de modo que pueda diagnosticar rápidamente las causas.
 
 ## <a name="set-up-exception-reporting"></a>Configuración de informes de excepciones
-* excepciones de toohave desde la aplicación de servidor:
+* Para que se notifiquen excepciones desde su aplicación de servidor:
   * Instale el [SDK de Application Insights](app-insights-asp-net.md) en su código de aplicación.
   * Servidores web de IIS: ejecute el [agente de Application Insights](app-insights-monitor-performance-live-website-now.md).
-  * Aplicaciones web de Azure: agregar hello [extensión de visión de la aplicación](app-insights-azure-web-apps.md)
-  * Aplicaciones web de Java: Hola Install [agente Java](app-insights-java-agent.md)
-* Instalar hello [fragmento de código de JavaScript](app-insights-javascript.md) en sus excepciones de explorador toocatch de páginas web.
-* En algunos marcos de aplicaciones o con algunas opciones de configuración, deberá tootake algunos pasos adicionales toocatch más excepciones:
+  * Aplicaciones web de Azure: agregue la [extensión de Application Insights](app-insights-azure-web-apps.md).
+  * Aplicaciones web de Java: instale el [agente de Java](app-insights-java-agent.md).
+* Instale el [fragmento de código de JavaScript](app-insights-javascript.md) en las páginas web para capturar las excepciones del explorador.
+* En algunos marcos de aplicaciones o con algunas opciones de configuración, debe realizar algunos pasos adicionales para capturar más excepciones:
   * [Formularios web](#web-forms)
   * [MVC](#mvc)
-  * [API web 1.*](#web-api-1)
-  * [API web 2.*](#web-api-2)
+  * [API web 1.*](#web-api-1x)
+  * [API web 2.*](#web-api-2x)
   * [WCF](#wcf)
 
 ## <a name="diagnosing-exceptions-using-visual-studio"></a>Diagnóstico de excepciones mediante Visual Studio
-Abra la solución de aplicación de hello en toohelp de Visual Studio con la depuración.
+Abra la solución de aplicación en Visual Studio para ayudar con la depuración.
 
-Ejecute la aplicación hello, ya sea en el servidor o en el equipo de desarrollo utilizando F5.
+Ejecute la aplicación, bien en el servidor o en el equipo de desarrollo mediante F5.
 
-Abra la ventana de búsqueda de visión de la aplicación hello en Visual Studio y establézcalo toodisplay eventos de la aplicación. Durante la depuración, puede hacerlo haciendo clic en el botón de Application Insights Hola.
+Abra la ventana Búsqueda de Application Insights en Visual Studio y configúrela para mostrar los eventos de la aplicación. Durante la depuración, puede hacer esto haciendo clic simplemente en el botón de Application Insights.
 
-![Haga clic en proyecto de Hola y elija Application Insights, abrir.](./media/app-insights-asp-net-exceptions/34.png)
+![Haga clic con el botón derecho en el proyecto y seleccione Application Insights, Abrir.](./media/app-insights-asp-net-exceptions/34.png)
 
-Tenga en cuenta que se pueden filtrar solo las excepciones Hola informe tooshow.
+Observe que puede filtrar el informe para mostrar solo excepciones.
 
 *¿No se muestra ninguna excepción? Consulte [Captura de excepciones](#exceptions).*
 
-Haga clic en un tooshow de informes de excepción su seguimiento de la pila.
-Haga clic en una referencia de la línea de seguimiento de la pila de hello, archivo de código relevante de hello tooopen.  
+Haga clic en un informe de excepciones para mostrar su seguimiento de la pila.
+Haga clic en una referencia de línea en el seguimiento de la pila para abrir el archivo de código pertinente.  
 
-En el código de hello, tenga en cuenta que CodeLens muestra datos sobre las excepciones de hello:
+En el código, tenga en cuenta que CodeLens muestra datos de las excepciones:
 
 ![Notificación de CodeLens de excepciones.](./media/app-insights-asp-net-exceptions/35.png)
 
-## <a name="diagnosing-failures-using-hello-azure-portal"></a>Diagnosticar errores mediante Hola portal de Azure
-De información general de Application Insights hello de la aplicación, iconos de errores de hello muestran los gráficos de excepciones y errores de solicitud HTTP, junto con una lista de hello solicitar direcciones URL que dar lugar a errores más frecuentes de Hola.
+## <a name="diagnosing-failures-using-the-azure-portal"></a>Diagnóstico de errores mediante el Portal de Azure
+Application Insights incluye una experiencia APM seleccionada para ayudar a diagnosticar errores en las aplicaciones supervisadas. Para empezar, haga clic en la opción Errores del menú de recursos de Application Insights situado en la sección de investigación. Debería ver una vista de pantalla completa que muestra las tendencias de índice de errores de sus solicitudes: cuántas de ellas generan errores y cuántos usuarios se ven afectados. A la derecha, verá algunas de las distribuciones más útiles específicas de la operación con error seleccionada, incluidos los 3 códigos de respuesta principales, los 3 tipos principales de excepción y los 3 tipos principales de dependencia con error. 
 
-![Selección de Configuración, Errores](./media/app-insights-asp-net-exceptions/012-start.png)
+![Vista de evaluación de prioridades de errores (pestaña Operaciones)](./media/app-insights-asp-net-exceptions/FailuresTriageView.png)
 
-Haga clic en a través de uno de hello no se pudo tipos de excepciones en las repeticiones de hello lista tooget tooindividual de excepción de hello, donde puede ver los detalles de Hola y seguimiento de pila:
+En un solo clic, a continuación, puede revisar ejemplos representativos de cada uno de estos subconjuntos de operaciones. En concreto, para diagnosticar excepciones, puede hacer clic en el recuento de una excepción determinada para que se muestre una hoja de detalles de excepciones como esta:
 
-![Seleccione una instancia de una solicitud con error y en detalles de la excepción, obtener tooinstances de excepción de Hola.](./media/app-insights-asp-net-exceptions/030-req-drill.png)
+![Hoja de detalles de excepciones](./media/app-insights-asp-net-exceptions/ExceptionDetailsBlade.png)
 
-**O bien,** puede iniciar desde la lista de Hola de solicitudes y buscar excepciones relacionadas tooit.
+**Como alternativa,** en lugar de observar las excepciones de una operación específica con errores, puede empezar desde la vista general de excepciones y cambiar a la pestaña Excepciones:
+
+![Vista de evaluación de prioridades de errores (pestaña Excepciones)](./media/app-insights-asp-net-exceptions/FailuresTriageView_Exceptions.png)
+
+Aquí puede ver todas las excepciones que se recopilan para la aplicación supervisada.
 
 *¿No se muestra ninguna excepción? Consulte [Captura de excepciones](#exceptions).*
 
 
 ## <a name="custom-tracing-and-log-data"></a>Personalización del seguimiento y del registro de datos
-aplicación de tooyour específico de datos de diagnóstico de tooget, puede insertar código toosend sus propios datos de telemetría. Esto se muestra en la búsqueda de diagnóstico junto con la solicitud de hello, vista de página y otros datos recopilados automáticamente.
+Para obtener datos de diagnóstico específicos de su aplicación, puede insertar código para enviar sus propios datos de telemetría. Esto aparece en la búsqueda de diagnóstico junto con la solicitud, vista de página y otros datos que se recopilan automáticamente.
 
 Tiene varias opciones:
 
-* [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent) normalmente se usa para supervisar patrones de uso, pero Hola datos envía también aparecen en eventos personalizados en la búsqueda de diagnóstico. Los eventos tienen nombre y pueden llevar propiedades de cadena y métricas numéricas en las que puede [filtrar las búsquedas de diagnósticos](app-insights-diagnostic-search.md).
+* [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent) normalmente se usa para supervisar patrones de uso, pero los datos que envía también aparecen en Eventos personalizados en la búsqueda de diagnósticos. Los eventos tienen nombre y pueden llevar propiedades de cadena y métricas numéricas en las que puede [filtrar las búsquedas de diagnósticos](app-insights-diagnostic-search.md).
 * [TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) le permite enviar datos más grandes, como la información de POST.
 * [TrackException()](#exceptions) envía seguimientos de la pila. [Más información sobre excepciones](#exceptions).
 * Si ya usa un marco de registro como Log4Net o NLog, puede [capturar aquellos registros](app-insights-asp-net-trace-logs.md) y verlos en la búsqueda de diagnósticos junto con datos de solicitud y excepción.
 
-estos eventos, abra a toosee [búsqueda](app-insights-diagnostic-search.md), Abrir filtro y, a continuación, elija Custom Event, seguimiento o excepción.
+Para ver estos eventos, abra [Buscar](app-insights-diagnostic-search.md), abra Filtrar y luego elija Evento personalizado, Seguimiento o Excepción.
 
 ![Obtener detalles](./media/app-insights-asp-net-exceptions/viewCustomEvents.png)
 
 > [!NOTE]
-> Si la aplicación genera una gran cantidad de telemetría, módulo de muestreo adaptativo de Hola reducirá automáticamente volumen Hola que se envía toohello portal enviando sólo una fracción representativa de eventos. Eventos que forman parte de hello misma operación se selecciona o anula la selección como un grupo, por lo que puede desplazarse entre los eventos relacionados. [Más información sobre el muestreo.](app-insights-sampling.md)
+> Si la aplicación genera mucha telemetría, el módulo de muestreo adaptable reducirá automáticamente el volumen que se envía al portal mediante el envío de únicamente una fracción representativa de eventos. Los eventos que forman parte de la misma operación se seleccionarán o se anulará su selección como grupo, por lo que puede navegar entre los eventos relacionados. [Más información sobre el muestreo.](app-insights-sampling.md)
 >
 >
 
-### <a name="how-toosee-request-post-data"></a>¿Cómo toosee solicitar datos POST
-Detalles de la solicitud no incluyen datos de hello enviados tooyour aplicación en una llamada a POST. toohave notifican estos datos:
+### <a name="how-to-see-request-post-data"></a>Visualización de los datos de solicitud POST
+Los detalles de la solicitud no incluyen los datos enviados a la aplicación en una llamada a POST. Para que se notifiquen estos datos:
 
-* [Instalar SDK de hello](app-insights-asp-net.md) en el proyecto de aplicación.
-* Inserte código en su aplicación toocall [Microsoft.ApplicationInsights.TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace). Enviar datos POST de hello en el parámetro de mensaje de Hola. Hay un toohello permitida limitar el tamaño, por lo que debe intentar datos esenciales de toosend simplemente Hola.
-* Cuando se investiga un solicitudes con error, encuentre ningún rastro de hello asociado.  
+* [Instale el SDK](app-insights-asp-net.md) en su proyecto de aplicación.
+* Inserte código en la aplicación para llamar a [Microsoft.ApplicationInsights.TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace). Envíe los datos de POST en el parámetro de mensaje. Hay un límite en cuanto al tamaño permitido, así que debe intentar enviar únicamente los datos fundamentales.
+* Cuando investigue una solicitud con error, busque los seguimientos asociados.  
 
 ![Obtener detalles](./media/app-insights-asp-net-exceptions/060-req-related.png)
 
 ## <a name="exceptions"></a> Captura de excepciones y datos de diagnóstico relacionados
-En primer lugar, no se mostrará en el portal de hello todas las excepciones de Hola que dar lugar a errores en la aplicación. Podrá ver las excepciones de explorador (si usa hello [SDK de JavaScript](app-insights-javascript.md) en las páginas web). Pero la mayoría de las excepciones de servidor capturada por IIS y tiene un poco de código toosee toowrite ellos.
+En primer lugar, no verá en el portal todas las excepciones que provocan errores en su aplicación. Verá las excepciones del explorador (si usa el [SDK de JavaScript](app-insights-javascript.md) en sus páginas web). Pero la mayoría de las excepciones de servidor las detecta IIS y debe escribir algo de código para verlas.
 
 Puede:
 
-* **Registrar excepciones explícitamente** mediante la inserción de código en las excepciones Hola de tooreport de controladores de excepción.
-* **Capturar excepciones automáticamente** configurando su marco de ASP.NET. adiciones necesarias Hola son diferentes para distintos tipos de framework.
+* **Registrar excepciones explícitamente** insertando código en los controladores de excepciones para notificar las excepciones.
+* **Capturar excepciones automáticamente** configurando su marco de ASP.NET. Las adiciones necesarias son diferentes para los distintos tipos de marco.
 
 ## <a name="reporting-exceptions-explicitly"></a>Notificación de excepciones explícitamente
-Hello forma más sencilla es tooinsert un tooTrackException() de llamada en un controlador de excepciones.
+La manera más sencilla consiste en insertar una llamada a TrackException() en un controlador de excepciones.
 
 JavaScript
 
@@ -137,7 +141,7 @@ C#
        var measurements = new Dictionary <string, double>
          {{"Users", currentGame.Users.Count}};
 
-       // Send hello exception telemetry:
+       // Send the exception telemetry:
        telemetry.TrackException(ex, properties, measurements);
     }
 
@@ -155,21 +159,21 @@ VB
       Dim measurements = New Dictionary (Of String, Double)
       measurements.Add("Users", currentGame.Users.Count)
 
-      ' Send hello exception telemetry:
+      ' Send the exception telemetry:
       telemetry.TrackException(ex, properties, measurements)
     End Try
 
-Hello las medidas y las propiedades de parámetros son opcionales, pero son útiles para [filtrar y agregar](app-insights-diagnostic-search.md) información adicional. Por ejemplo, si tiene una aplicación que se puede ejecutar varios juegos, encontró todos los Hola excepción informes relacionados tooa juego determinado. Puede agregar tantos elementos como como diccionario tooeach.
+Los parámetros de las propiedades y las medidas son opcionales, pero son útiles para [filtrar y agregar información](app-insights-diagnostic-search.md) adicional. Por ejemplo, si tiene una aplicación que se puede ejecutar varios juegos, podría buscar todos los informes de excepción relacionados con un juego en particular. Puede agregar tantos elementos como desee para cada diccionario.
 
 ## <a name="browser-exceptions"></a>Excepciones de explorador
 Se notifican la mayoría de las excepciones de explorador.
 
-Si la página web incluye archivos de script de otros dominios o redes de entrega de contenido, asegúrese de que la etiqueta de script tiene el atributo de hello ```crossorigin="anonymous"```, y envía ese servidor hello [encabezados CORS](http://enable-cors.org/). Esto le permitirá tooget un seguimiento de pila y los detalles de las excepciones no controladas de JavaScript de estos recursos.
+Si la página web incluye archivos de script de redes de entrega de contenido o de otros dominios, asegúrese de que la etiqueta de script tenga el atributo ```crossorigin="anonymous"```, y que el servidor envíe [encabezados CORS](http://enable-cors.org/). Esto le permitirá obtener un seguimiento de pila y los detalles de las excepciones no controladas de JavaScript de estos recursos.
 
 ## <a name="web-forms"></a>Formularios web
-Para formularios web forms, Hola módulo HTTP será toocollect capaz de excepciones de hello cuando no hay ningún redirecciones configuradas con CustomErrors.
+Para los formularios web, el módulo HTTP podrá recopilar las excepciones cuando no haya ningún redireccionamiento configurado con CustomErrors.
 
-Pero si tiene activas redirecciones, agregar Hola siguen líneas toohello Application_Error función en Global.asax.cs. (Agregue un archivo Global.asax si aún no tiene uno.)
+Pero si tiene redireccionamientos activos, agregue las siguientes líneas a la función Application_Error en Global.asax.cs. (Agregue un archivo Global.asax si aún no tiene uno.)
 
 *C#*
 
@@ -185,7 +189,7 @@ Pero si tiene activas redirecciones, agregar Hola siguen líneas toohello Applic
 
 
 ## <a name="mvc"></a>MVC
-Si hello [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) configuración es `Off`, a continuación, las excepciones estarán disponibles para hello [módulo HTTP](https://msdn.microsoft.com/library/ms178468.aspx) toocollect. Sin embargo, si es `RemoteOnly` (valor predeterminado), o `On`, a continuación, se borrará la excepción de hello y no está disponible para Application Insights tooautomatically recopilar. Puede solucionar esto mediante la invalidación hello [System.Web.Mvc.HandleErrorAttribute clase](http://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)y aplicar clase hello se reemplaza, tal como se muestra de Hola diferentes MVC las versiones siguientes ([github origen](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
+Si la configuración de [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) es `Off`, entonces habrá excepciones disponibles para que las recopile el [módulo HTTP](https://msdn.microsoft.com/library/ms178468.aspx). Sin embargo, si es `RemoteOnly` (valor predeterminado), o `On`, la excepción se desactivará y no estará disponible para que Application Insights la recopile automáticamente. Para corregir este problema, invalide la [clase System.Web.Mvc.HandleErrorAttribute](http://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx) y aplique la clase invalidada como se muestra a continuación para las diferentes versiones de MVC ([origen de github](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
 
     using System;
     using System.Web.Mvc;
@@ -200,7 +204,7 @@ Si hello [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) config
         {
             if (filterContext != null && filterContext.HttpContext != null && filterContext.Exception != null)
             {
-                //If customError is Off, then AI HTTPModule will report hello exception
+                //If customError is Off, then AI HTTPModule will report the exception
                 if (filterContext.HttpContext.IsCustomErrorEnabled)
                 {   //or reuse instance (recommended!). see note above  
                     var ai = new TelemetryClient();
@@ -213,7 +217,7 @@ Si hello [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) config
     }
 
 #### <a name="mvc-2"></a>MVC 2
-Reemplace el atributo de HandleError de hello con el nuevo atributo en los controladores.
+Sustituya el atributo HandleError por el nuevo atributo en los controladores.
 
     namespace MVC2App.Controllers
     {
@@ -244,7 +248,7 @@ Registrar AiHandleErrorAttribute como filtro global en FilterConfig.cs:
     {
       public static void RegisterGlobalFilters(GlobalFilterCollection filters)
       {
-        // Default replaced with hello override tootrack unhandled exceptions
+        // Default replaced with the override to track unhandled exceptions
         filters.Add(new AiHandleErrorAttribute());
       }
     }
@@ -273,7 +277,7 @@ Invalidar System.Web.Http.Filters.ExceptionFilterAttribute:
       }
     }
 
-Puede agregar este atributo reemplazado los controladores de toospecific o agregar configuración de filtros globales toohello en la clase WebApiConfig de hello:
+Podría agregar este atributo invalidado a controladores específicos o agregarlo a la configuración de filtros globales en la clase WebApiConfig:
 
     using System.Web.Http;
     using WebApi1.x.App_Start;
@@ -297,7 +301,7 @@ Puede agregar este atributo reemplazado los controladores de toospecific o agreg
 
 [Ejemplo](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
 
-Hay una serie de casos que no pueden controlar los filtros de excepción Hola. Por ejemplo:
+Hay un número de casos que los filtros de excepciones no pueden procesar. Por ejemplo:
 
 * Excepciones iniciadas por constructores del controlador.
 * Excepciones iniciadas por controladores de mensajes.
@@ -326,7 +330,7 @@ Agregue una implementación de IExceptionLogger:
       }
     }
 
-Agregue este servicios toohello en WebApiConfig:
+Agregue lo siguiente a los servicios en WebApiConfig:
 
     using System.Web.Http;
     using System.Web.Http.ExceptionHandling;
@@ -357,8 +361,8 @@ Agregue este servicios toohello en WebApiConfig:
 
 Como alternativa, puede:
 
-1. Reemplace Hola solo ExceptionHandler con una implementación personalizada de IExceptionHandler. Esto solo se llama cuando el marco de trabajo de hello es todavía puede toochoose qué respuesta mensaje toosend (no cuando Hola conexión anulada por ejemplo)
-2. Filtros de excepción (como se describe en la sección de hello en los controladores de API Web 1.x anteriores) - no se llama en todos los casos.
+1. Sustituir el único ExceptionHandler por una implementación personalizada de IExceptionHandler. Solo se llama a este controlador de excepciones cuando el marco es aún capaz de seleccionar el mensaje de respuesta que se enviará (no cuando se anula la conexión, por ejemplo)
+2. Los filtros de excepciones (como se describe en la sección sobre controladores de Web API 1.x anteriores) no se llaman en todos los casos.
 
 ## <a name="wcf"></a>WCF
 Agregue una clase que extienda el atributo y que implemente IErrorHandler y IServiceBehavior.
@@ -412,7 +416,7 @@ Agregue una clase que extienda el atributo y que implemente IErrorHandler y ISer
       }
     }
 
-Agregue las implementaciones del servicio Hola atributo toohello:
+Agregue el atributo a las implementaciones de servicio:
 
     namespace WcfService4
     {
@@ -424,19 +428,19 @@ Agregue las implementaciones del servicio Hola atributo toohello:
 [Ejemplo](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
 
 ## <a name="exception-performance-counters"></a>Contadores de rendimiento de excepciones
-Si tiene [instalado el agente de visión de la aplicación hello](app-insights-monitor-performance-live-website-now.md) en el servidor, puede obtener un gráfico de velocidad de excepciones de hello, medido por. NET. Esto incluye las excepciones de .NET, tanto controladas como no controladas.
+Si tiene [instalado el agente de Application Insights](app-insights-monitor-performance-live-website-now.md) en el servidor, puede obtener un gráfico de la tasa de excepciones, medida por .NET. Esto incluye las excepciones de .NET, tanto controladas como no controladas.
 
 Abra una hoja del Explorador de métricas, agregue un nuevo gráfico y seleccione **Tasa de excepciones**, que aparece debajo de Contadores de rendimiento.
 
-.NET framework de Hello calcula la tasa de Hola Hola recuento de excepciones en un intervalo y dividiendo por longitud Hola de intervalo de saludo.
+.NET framework calcula la tasa contando el número de excepciones producidas en un intervalo y dividiéndolo por la duración del intervalo de tiempo.
 
-Tenga en cuenta que debe ser diferente del número de excepciones' hello' calculado por el portal de Application Insights Hola contando TrackException informes. intervalos de muestreo de Hello son diferentes y Hola SDK no enviar informes de TrackException para todas las excepciones controladas y sin controlar.
+Esto es diferente del recuento de "Excepciones" calculado por el portal de Application Insights contando los informes de TrackException. Los intervalos de muestreo son diferentes y el SDK no envía informes de TrackException para todas las excepciones, controladas y no controladas.
 
 ## <a name="video"></a>Vídeo
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player] 
 
 ## <a name="next-steps"></a>Pasos siguientes
-* [Supervisar REST, SQL y otros toodependencies de llamadas](app-insights-asp-net-dependencies.md)
+* [Supervisar REST, SQL y otras llamadas a las dependencias](app-insights-asp-net-dependencies.md)
 * [Supervisar los tiempos de carga de página, las excepciones del explorador y las llamadas AJAX](app-insights-javascript.md)
 * [Supervisar los contadores de rendimiento](app-insights-performance-counters.md)

@@ -1,6 +1,6 @@
 ---
-title: marketplace de aaaAdd Hola predeterminado VM imagen toohello pila de Azure | Documentos de Microsoft
-description: "Agregue el catálogo de soluciones de hello VM de Windows Server 2016 predeterminada imagen toohello pila de Azure."
+title: "Agregación de la imagen de máquina virtual predeterminada en Marketplace de Azure Stack | Microsoft Docs"
+description: "Agregue la imagen predeterminada de máquina virtual Windows Server 2016 en Marketplace de Azure Stack."
 services: azure-stack
 documentationcenter: 
 author: SnehaGunda
@@ -14,70 +14,76 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/10/2017
 ms.author: sngun
-ms.openlocfilehash: 9b5a6f4e4c73c706b059e3c3622a968b5eef9a27
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 43781cb025865df1d228376f57412f3d482d3ad0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="add-hello-windows-server-2016-vm-image-toohello-azure-stack-marketplace"></a>Agregue el catálogo de soluciones de hello VM de Windows Server 2016 imagen toohello pila de Azure
+# <a name="add-the-windows-server-2016-vm-image-to-the-azure-stack-marketplace"></a>Agregación de la imagen de máquina virtual Windows Server 2016 en Marketplace de Azure Stack
 
-De forma predeterminada, no hay ninguna imagen de máquina virtual disponible en marketplace de hello pila de Azure. Administrador de la nube de Hello Azure pila debe agregar un marketplace de toohello imagen antes de que los usuarios puedan usarlos. Puede agregar el catálogo de soluciones de Windows Server 2016 Hola imagen toohello pila de Azure mediante uno de hello siguiendo dos métodos:
+De forma predeterminada, no hay ninguna imagen de máquina virtual disponible en Marketplace de Azure Stack. El operador de Azure Stack debe agregar una imagen en Marketplace antes de que los usuarios puedan usarla. Puede agregar la imagen de Windows Server 2016 en Marketplace de Azure Stack mediante uno de los dos métodos siguientes:
 
-* [Agregar imagen de hello descargándolo desde hello Azure Marketplace](#add-the-image-by-downloading-it-from-the-Azure-marketplace) -Utilice esta opción si está trabajando en un escenario conectado y si se ha registrado la instancia de la pila de Azure con Azure.
+* [Agregar la imagen mediante la descarga desde Azure Marketplace](#add-the-image-by-downloading-it-from-the-Azure-marketplace): utilice esta opción si está trabajando en un escenario conectado y ha registrado la instancia de Azure Stack en Azure.
 
-* [Agregar imagen de hello mediante PowerShell](#add-the-image-by-using-powershell) -Utilice esta opción si ha implementado en una situación sin conexión o en escenarios de pila de Azure con conectividad limitada.
+* [Agregar la imagen mediante el uso de PowerShell](#add-the-image-by-using-powershell): utilice esta opción si ha implementado Azure Stack en un escenario sin conexión o en escenarios con conectividad limitada.
 
-## <a name="add-hello-image-by-downloading-it-from-hello-azure-marketplace"></a>Agregar imagen de hello descargándolo desde hello Azure Marketplace
+## <a name="add-the-image-by-downloading-it-from-the-azure-marketplace"></a>Agregación de la imagen mediante la descarga de Azure Marketplace
 
-1. Después de implementar la pila de Azure, inicie sesión en tooyour Kit de desarrollo de pila de Azure.
+1. Después de implementar Azure Stack, inicie sesión en Azure Stack Development Kit.
 
 2. Haga clic en **Más servicios** > **Marketplace Management** (Administración de Marketplace)  > **Add from Azure** (Agregar desde Azure). 
 
-3. Buscar o buscar hello **centro de datos de Windows Server 2016: Eval** imagen > haga clic en **descargar**
+3. Busque la imagen **Windows Server 2016 Datacenter – Eval** > haga clic en **Descargar**
 
    ![Descarga de la imagen desde Azure](media/azure-stack-add-default-image/download-image.png)
 
-Una vez finalizada la descarga de hello, imagen Hola se agrega toohello **Marketplace administración** hoja y se pone a disposición de hello **máquinas virtuales** hoja.
+Una vez finalizada la descarga, la imagen se agrega a la hoja **Marketplace Management** y se pone a disposición desde la hoja **Máquinas virtuales**.
 
-## <a name="add-hello-image-by-using-powershell"></a>Agregar imagen de hello mediante PowerShell
+## <a name="add-the-image-by-using-powershell"></a>Agregación de la imagen mediante el uso de PowerShell
 
 ### <a name="prerequisites"></a>Requisitos previos 
 
-Ejecute hello siguiendo los requisitos previos de hello [kit de desarrollo de](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), o desde un cliente externo basado en Windows si está [conectado a través de VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
+Implemente los siguientes requisitos previos desde el [kit de desarrollo](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop) o desde un cliente externo basado en Windows, si está [conectado a través de VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
 
 * Instale los [módulos de Azure PowerShell compatibles con Azure Stack](azure-stack-powershell-install.md).  
 
-* Descargar hello [toowork necesarios de herramientas con la pila de Azure](azure-stack-powershell-download.md).  
+* Descargue las [herramientas necesarias para trabajar con Azure Stack](azure-stack-powershell-download.md).  
 
-* Vaya toohttps://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2016 y descargar la evaluación de Windows Server 2016 Hola. Cuando se le pida, seleccione hello **ISO** versión de descarga de Hola. Toohello de ruta de acceso de registro Hola descargar ubicación, que se utiliza más adelante en estos pasos. Este paso requiere conectividad a Internet.  
+* Vaya a https://www.microsoft.com/en-us/evalcenter/evaluate-windows-server-2016 y descargue la evaluación de Windows Server 2016. Cuando se le solicite, seleccione la versión **ISO** de la descarga. Tome nota de la ruta de acceso a la ubicación de la descarga, que se utilizará más adelante en estos pasos. Este paso requiere conectividad a Internet.  
 
-Ahora ejecute hello después de marketplace de pasos tooadd Hola imagen toohello pila de Azure:
+Ahora, ejecute los pasos siguientes para agregar la imagen en Marketplace de Azure Stack:
    
-1. Importar módulos de Azure Connect de pila y ComputeAdmin de hello mediante el uso de hello siguientes comandos:
+1. Importe los módulos Connect y ComputeAdmin de Azure Stack mediante los comandos siguientes:
 
    ```powershell
    Set-ExecutionPolicy RemoteSigned
 
-   # import hello Connect and ComputeAdmin modules   
+   # import the Connect and ComputeAdmin modules   
    Import-Module .\Connect\AzureStack.Connect.psm1
    Import-Module .\ComputeAdmin\AzureStack.ComputeAdmin.psm1
 
    ```
 
-2. Inicie sesión en tooyour entorno de pila de Azure. Siguiente ejecución Hola secuencias de comandos en función de si su entorno de pila de Azure se implementa mediante el uso de AAD o AD FS (nombre de inquilino AAD de marca tooreplace seguro hello):  
+2. Inicie sesión en el entorno de Azure Stack. Ejecute el siguiente script en función de si su entorno de Azure Stack se implementó mediante el uso de AAD o AD FS (asegúrese de reemplazar los valores de tenantName, GraphAudience endpoint y ArmEndpoint de AAD según la configuración de su entorno):  
 
-   a. **Azure Active Directory**, usar hello siguiente cmdlet:
+   a. **Azure Active Directory**, use el siguiente cmdlet:
 
    ```PowerShell
-   # Create hello Azure Stack cloud administrator's AzureRM environment by using hello following cmdlet:
+   # For Azure Stack development kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
+   $ArmEndpoint = "<Resource Manager endpoint for your environment>"
+
+   # For Azure Stack development kit, this value is set to https://graph.windows.net/. To get this value for Azure Stack integrated systems, contact your service provider.
+   $GraphAudience = "<GraphAuidence endpoint for your environment>"
+   
+   # Create the Azure Stack operator's AzureRM environment by using the following cmdlet:
    Add-AzureRMEnvironment `
      -Name "AzureStackAdmin" `
-     -ArmEndpoint "https://adminmanagement.local.azurestack.external" 
+     -ArmEndpoint $ArmEndpoint
 
    Set-AzureRmEnvironment `
     -Name "AzureStackAdmin" `
-    -GraphAudience "https://graph.windows.net/"
+    -GraphAudience $GraphAudience
 
    $TenantID = Get-AzsDirectoryTenantId `
      -AADTenantName "<myDirectoryTenantName>.onmicrosoft.com" `
@@ -88,17 +94,23 @@ Ahora ejecute hello después de marketplace de pasos tooadd Hola imagen toohello
      -TenantId $TenantID 
    ```
 
-   b. **Los servicios de federación de Active Directory**, usar hello siguiente cmdlet:
+   b. **Servicios de federación de Active Directory**, use el siguiente cmdlet:
     
    ```PowerShell
-   # Create hello Azure Stack cloud administrator's AzureRM environment by using hello following cmdlet:
+   # For Azure Stack development kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
+   $ArmEndpoint = "<Resource Manager endpoint for your environment>"
+
+   # For Azure Stack development kit, this value is set to https://graph.local.azurestack.external/. To get this value for Azure Stack integrated systems, contact your service provider.
+   $GraphAudience = "<GraphAuidence endpoint for your environment>"
+
+   # Create the Azure Stack operator's AzureRM environment by using the following cmdlet:
    Add-AzureRMEnvironment `
      -Name "AzureStackAdmin" `
-     -ArmEndpoint "https://adminmanagement.local.azurestack.external"
+     -ArmEndpoint $ArmEndpoint
 
    Set-AzureRmEnvironment `
      -Name "AzureStackAdmin" `
-     -GraphAudience "https://graph.local.azurestack.external/" `
+     -GraphAudience $GraphAudience `
      -EnableAdfsAuthentication:$true
 
    $TenantID = Get-AzsDirectoryTenantId `
@@ -110,7 +122,7 @@ Ahora ejecute hello después de marketplace de pasos tooadd Hola imagen toohello
      -TenantId $TenantID 
    ```
    
-3. Agregar el catálogo de soluciones de Windows Server 2016 Hola imagen toohello pila de Azure (asegúrese de que tooreplace hello *Path_to_ISO* con toohello de ruta de acceso de hello ISO WS2016 descargó):
+3. Agregar la imagen de Windows Server 2016 en Marketplace de Azure Stack (asegúrese de reemplazar la *Ruta_de_acceso_a_ISO* por la ruta de acceso al archivo ISO WS2016 que descargó):
 
    ```PowerShell
    $ISOPath = "<Fully_Qualified_Path_to_ISO>"
@@ -121,21 +133,21 @@ Ahora ejecute hello después de marketplace de pasos tooadd Hola imagen toohello
 
    ```
 
-tooensure que Hola imagen de máquina virtual de Windows Server 2016 tiene Hola actualización acumulativa más reciente, incluyen hello `IncludeLatestCU` parámetro al ejecutar hello `New-AzsServer2016VMImage` cmdlet. Vea hello [parámetros](#parameters) sección para obtener información acerca de los parámetros permitidos para hello `New-AzsServer2016VMImage` cmdlet. Se tarda aproximadamente un mercado hora toopublish Hola imagen toohello pila de Azure. 
+Para asegurarse de que la imagen de máquina virtual Windows Server 2016 tiene la actualización acumulativa más reciente, incluya el parámetro `IncludeLatestCU` al ejecutar el cmdlet `New-AzsServer2016VMImage`. Consulte la sección [Parámetros](#parameters) para obtener información acerca de los parámetros permitidos para el cmdlet `New-AzsServer2016VMImage`. Se tarda aproximadamente una hora en publicar la imagen en Marketplace de Azure Stack. 
 
 ## <a name="parameters"></a>parameters
 
 |Parámetros de New-AzsServer2016VMImage|¿Necesario?|Descripción|
 |-----|-----|------|
-|ISOPath|Sí|Hello toohello de ruta de acceso completa descarga Windows Server 2016 ISO.|
-|Net35|No|Este parámetro permite tooinstall Hola .NET 3.5 runtime en la imagen de Windows Server 2016 Hola. De forma predeterminada, este valor se establece tootrue. Es obligatorio que esa imagen hello contiene Hola 3.5 de .NET en tiempo de ejecución tooinstall Hola SQL y MYSQL proveedores de recursos. |
-|Versión|No|Este parámetro permite toochoose si tooadd una **Core** o **completa** o **ambos** imágenes de Windows Server 2016. De forma predeterminada, este valor se establece demasiado "Full".|
-|VHDSizeInMB|No|Establece el tamaño de hello (en MB) de toobe de imagen de disco duro virtual de hello agrega entorno de Azure pila tooyour. De forma predeterminada, este valor se establece too40960 MB.|
-|CreateGalleryItem|No|Especifica si se debe crear un elemento de Marketplace de imagen de Windows Server 2016 Hola. De forma predeterminada, este valor se establece tootrue.|
-|location |No |Especifica la imagen de Windows Server 2016 de hello ubicación toowhich Hola debe publicarse.|
-|IncludeLatestCU|No|Establecer este modificador tooapply hello más reciente Windows Server 2016 actualización acumulativa toohello nuevo disco duro virtual.|
-|CUUri |No |Establecer esta actualización acumulativa de valor toochoose Hola Windows Server 2016 desde un URI concreto. |
-|CUPath |No |Establecer esta actualización acumulativa de valor toochoose Hola Windows Server 2016 desde una ruta de acceso local. Esta opción es útil si ha implementado la instancia de la pila de Azure de hello en un entorno desconectado.|
+|ISOPath|Sí|La ruta de acceso completa a la imagen ISO de Windows Server 2016 descargada.|
+|Net35|No|Este parámetro permite instalar el runtime de .NET 3.5 en la imagen de Windows Server 2016. De forma predeterminada, este valor se establece en true.|
+|Versión|No|Este parámetro le permite elegir si desea agregar una imagen de Windows Server 2016 **Básica** o **Completa** o **Ambas**. De forma predeterminada, este valor se establece en "Full".|
+|VHDSizeInMB|No|Establece el tamaño (en MB) de la imagen de disco duro virtual que se va a agregar a su entorno de Azure Stack. De forma predeterminada, este valor se establece en 40.960 MB.|
+|CreateGalleryItem|No|Especifica si se debe crear un elemento de Marketplace para la imagen de Windows Server 2016. De forma predeterminada, este valor se establece en true.|
+|location |No |Especifica la ubicación en la que se debe publicar la imagen de Windows Server 2016.|
+|IncludeLatestCU|No|Establezca este modificador para aplicar la actualización acumulativa más reciente de Windows Server 2016 en el nuevo disco duro virtual.|
+|CUUri |No |Establezca este valor para elegir la actualización acumulativa de Windows Server 2016 desde un identificador URI concreto. |
+|CUPath |No |Establezca este valor para elegir la actualización acumulativa de Windows Server 2016 desde una ruta de acceso local. Esta opción es útil si ha implementado la instancia de Azure Stack en un entorno desconectado.|
 
 ## <a name="next-steps"></a>Pasos siguientes
 

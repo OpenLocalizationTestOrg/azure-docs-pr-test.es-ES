@@ -1,6 +1,6 @@
 ---
-title: tipos de aaaData instrucciones - almacenamiento de datos de SQL Azure | Documentos de Microsoft
-description: Recomendaciones de tipos de datos de toodefine que son compatibles con el almacenamiento de datos de SQL.
+title: "Guía de tipos de datos - Azure SQL Data Warehouse | Microsoft Docs"
+description: Recomendaciones para definir tipos de datos compatibles con SQL Data Warehouse.
 services: sql-data-warehouse
 documentationcenter: NA
 author: shivaniguptamsft
@@ -15,29 +15,29 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 06/02/2017
 ms.author: shigu;barbkess
-ms.openlocfilehash: a2f7a394feb73d273b25101735b00eb12db2b292
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5c24c71af16bd9851d9caf15fecfa4bb76f5f77e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="guidance-for-defining-data-types-for-tables-in-sql-data-warehouse"></a>Guía para definir los tipos de datos para las tablas en SQL Data Warehouse
-Use estos tipos de datos de tabla de toodefine de recomendaciones que son compatibles con el almacenamiento de datos de SQL. Además toocompatibility, minimizar tamaño Hola de tipos de datos mejora el rendimiento de las consultas.
+Siga estas recomendaciones para definir los tipos de datos para tablas compatibles con SQL Data Warehouse. Además de compatibilidad, minimizar el tamaño de los tipos de datos mejora el rendimiento de las consultas.
 
-Almacenamiento de datos SQL admite los tipos de datos de hello más frecuente. Para obtener una lista de tipos de datos de hello admite, consulte [tipos de datos](/sql/docs/t-sql/statements/create-table-azure-sql-data-warehouse.md#datatypes) Hola instrucción CREATE TABLE. 
+Almacenamiento de datos SQL admite los tipos de datos usados más frecuentemente. Para obtener una lista de los tipos de datos admitidos, consulte [tipos de datos](/sql/docs/t-sql/statements/create-table-azure-sql-data-warehouse.md#datatypes) en la instrucción CREATE TABLE. 
 
 
 ## <a name="minimize-row-length"></a>Minimizar la longitud de fila
-Minimizar tamaño Hola de tipos de datos acorta la longitud de la fila de hello, lo que conduce toobetter rendimiento de las consultas. Use Hola tipo datos más pequeño que funciona para los datos. 
+Minimizar el tamaño de los tipos de datos acorta la longitud de fila, lo que conduce a un mejor rendimiento de las consultas. Utilice el tipo de datos más pequeño que sirva para los datos. 
 
-- Evite definir las columnas de caracteres con una longitud predeterminada de gran tamaño. Por ejemplo, si el valor más largo de hello tiene 25 caracteres, a continuación, definir la columna como VARCHAR(25). 
+- Evite definir las columnas de caracteres con una longitud predeterminada de gran tamaño. Por ejemplo, si el valor más largo es de 25 caracteres, defina la columna como VARCHAR(25). 
 - Evite el uso de [NVARCHAR][NVARCHAR] cuando solo necesite VARCHAR.
 - Utilice NVARCHAR(4000) o VARCHAR(8000) cuando sea posible en lugar de NVARCHAR(MAX) o VARCHAR(MAX).
 
-Si usas Polybase tooload las tablas, longitud de hello definido de fila de la tabla de hello no puede superar 1 MB. Cuando una fila con datos de longitud variable supera 1 MB, puede cargar la fila de hello BCP, pero no con PolyBase.
+Si usa Polybase para cargar las tablas, la longitud definida para la fila de la tabla no puede superar 1 MB. Cuando una fila con datos de longitud variable supera 1 MB, puede cargar la fila con BCP, pero no con PolyBase.
 
 ## <a name="identify-unsupported-data-types"></a>Identificar los tipos de datos no admitidos
-Si va a migrar la base de datos desde otra base de datos SQL, puede encontrar tipos de datos no admitidos en SQL Data Warehouse. Utilice este tipos de datos de consulta toodiscover no admitido en el esquema existente de SQL.
+Si va a migrar la base de datos desde otra base de datos SQL, puede encontrar tipos de datos no admitidos en SQL Data Warehouse. Utilice esta consulta para detectar tipos de datos no admitidos en el esquema de SQL existente.
 
 ```sql
 SELECT  t.[name], c.[name], c.[system_type_id], c.[user_type_id], y.[is_user_defined], y.[name]
@@ -51,7 +51,7 @@ WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','
 
 ## <a name="unsupported-data-types"></a>Usar soluciones alternativas para los tipos de datos no admitidos
 
-Hello siguiente lista muestra hello tipos de datos que no admite el almacenamiento de datos SQL y proporciona alternativas que puede usar en lugar de hello no admite tipos de datos.
+La lista siguiente muestra los tipos de datos que SQL Data Warehouse no admite y proporciona alternativas que puede usar en lugar de los tipos de datos no admitidos.
 
 | Tipo de datos no admitido | Solución alternativa |
 | --- | --- |
@@ -62,15 +62,15 @@ Hello siguiente lista muestra hello tipos de datos que no admite el almacenamien
 | [text][ntext,text,image] |[varchar][varchar] |
 | [ntext][ntext,text,image] |[nvarchar][nvarchar] |
 | [sql_variant][sql_variant] |Divida la columna en varias columnas fuertemente tipadas. |
-| [table][table] |Convertir tablas tootemporary. |
-| [timestamp][timestamp] |Rehacer código toouse [datetime2] [ datetime2] y `CURRENT_TIMESTAMP` (función).  Solo se admiten las constantes como valores predeterminados, por lo tanto, current_timestamp no se puede definir como una restricción predeterminada. Si necesita valores toomigrate de la versión de fila de una columna con tipo de marca de tiempo, a continuación, utilice [binario][BINARY](8) o [VARBINARY][BINARY](8) para NOT NULL o Valores de la versión de fila nula. |
+| [table][table] |Convierta en tablas temporales. |
+| [timestamp][timestamp] |Vuelva a procesar el código para que use [datetime2][datetime2] y la función `CURRENT_TIMESTAMP`.  Solo se admiten las constantes como valores predeterminados, por lo tanto, current_timestamp no se puede definir como una restricción predeterminada. Si tiene que migrar valores de la versión de fila de una columna de tipo timestamp, use [BINARY][BINARY](8) o [VARBINARY][BINARY](8) para valores de versión de fila NOT NULL o NULL. |
 | [xml][xml] |[varchar][varchar] |
-| [tipo definido por el usuario][user defined types] |Convertir el tipo de datos nativos de toohello atrás cuando sea posible. |
+| [tipo definido por el usuario][user defined types] |Volver a convertir el tipo de datos nativo cuando sea posible. |
 | valores predeterminados | Los valores predeterminados solo admiten literales y constantes.  No se admiten funciones ni expresiones no deterministas, tales como `GETDATE()` o `CURRENT_TIMESTAMP`. |
 
 
 ## <a name="next-steps"></a>Pasos siguientes
-toolearn más información, vea:
+Para obtener más información, consulte:
 
 - [Procedimientos recomendados para SQL Data Warehouse][SQL Data Warehouse Best Practices]
 - [Información general sobre las tablas][Overview]

@@ -1,6 +1,6 @@
 ---
-title: "aaaHue con Hadoop en clústeres basados en HDInsight Linux - Azure | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo tooinstall matiz en HDInsight de clústeres y utilice túnel tooroute Hola solicitudes tooHue. Usar el almacenamiento de toobrowse de matiz y ejecutar Pig o Hive."
+title: "Hue con Hadoop en clústeres de HDInsight basados en Linux : Azure | Microsoft Docs"
+description: "Aprenda a instalar Hue en clústeres de HDInsight Linux y a usar tunelización para enrutar las solicitudes a Hue. Use Hue para examinar el almacenamiento y ejecutar Pig o Hive."
 keywords: matiz hadoop
 services: hdinsight
 documentationcenter: 
@@ -14,142 +14,142 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-ms.openlocfilehash: f086cbad2a90cc6903fbfccbf4a6be44f8999d07
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: bf68e9af7592d5abe5a4c9aba8c5061819cbc97a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Instalación y uso de Hue en clústeres de Hadoop para HDInsight
 
-Obtenga información acerca de cómo tooinstall matiz en HDInsight de clústeres y utilice túnel tooroute Hola solicitudes tooHue.
+Aprenda a instalar Hue en clústeres de HDInsight Linux y a usar tunelización para enrutar las solicitudes a Hue.
 
 > [!IMPORTANT]
-> pasos de Hello en este documento requieren un clúster de HDInsight que usa Linux. Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Los pasos descritos en este documento requieren un clúster de HDInsight que use Linux. Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="what-is-hue"></a>¿Qué es Hue?
-El matiz es que un conjunto de aplicaciones Web utiliza toointeract con un clúster de Hadoop. Puede usar el matiz toobrowse Hola almacenamiento asociado a un clúster de Hadoop (WASB, en caso de hello de clústeres de HDInsight), ejecutar trabajos de Hive y scripts de Pig y así sucesivamente. Hello componentes siguientes están disponibles con las instalaciones de matiz en un clúster de Hadoop de HDInsight.
+Hue es un conjunto de aplicaciones web que se usan para interactuar con un clúster de Hadoop. Puede usar Hue para examinar el almacenamiento asociado a un clúster de Hadoop (WASB, en el caso de clústeres de HDInsight), ejecutar trabajos de Hive y scripts de Pig, etc. Los siguientes componentes son compatibles con la instalación de Hue en un clúster de Hadoop para HDInsight.
 
 * Editor Beeswax de Hive
 * Pig
 * Administrador de la tienda de metadatos
 * Oozie
-* FileBrowser (que se comunica el contenedor predeterminado de tooWASB)
+* FileBrowser (que se comunica con el contenedor predeterminado WASB)
 * Explorador web
 
 > [!WARNING]
-> Componentes suministrados con clúster de HDInsight de hello son totalmente compatibles y Microsoft Support le ayudarán tooisolate y resolver los problemas relacionados toothese componentes.
+> Los componentes proporcionados con HDInsight son totalmente compatibles. Además, el soporte técnico de Microsoft le ayudará a aislar y resolver problemas relacionados con estos componentes.
 >
-> Componentes personalizados reciben soporte comercialmente razonable toohelp toofurther solucionar el problema de Hola. Esto podría producir en resolver el problema de hello ni pedir que tooengage canales disponibles para hello abrir tecnologías de origen donde se encuentra la amplia experiencia para que la tecnología. Por ejemplo, hay diversos sitios de la comunidad que se pueden usar, como el [foro de MSDN para HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Los proyectos de Apache también tienen sitios de proyecto en [http://apache.org](http://apache.org) (por ejemplo, [Hadoop](http://hadoop.apache.org/)).
+> Los componentes personalizados reciben soporte técnico comercialmente razonable para ayudarle a solucionar el problema. Esto podría resolver el problema o pedirle que forme parte de los canales disponibles para las tecnologías de código abierto donde se encuentra la más amplia experiencia para esa tecnología. Por ejemplo, hay diversos sitios de la comunidad que se pueden usar, como el [foro de MSDN para HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Los proyectos de Apache también tienen sitios de proyecto en [http://apache.org](http://apache.org) (por ejemplo, [Hadoop](http://hadoop.apache.org/)).
 >
 >
 
 ## <a name="install-hue-using-script-actions"></a>Instalación de Hue mediante acciones de script
 
-Hola script tooinstall matiz en un clúster de HDInsight basados en Linux está disponible en https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh. Puede usar este tooinstall script matiz en clústeres con Blobs de almacenamiento de Azure (WASB) o almacén de Azure Data Lake como almacenamiento predeterminado.
+El script para instalar Hue en un clúster de HDInsight basado en Linux se encuentra disponible en https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh. Puede usar este script para instalar Hue en clústeres con Azure Storage Blob (WASB) o Azure Data Lake Store como almacenamiento predeterminado.
 
-Esta sección proporciona instrucciones sobre cómo toouse Hola script al aprovisionar el clúster de hello mediante Hola portal de Azure.
+En esta sección se proporcionan instrucciones sobre cómo usar el script durante el aprovisionamiento del clúster mediante Azure Portal.
 
 > [!NOTE]
-> Azure PowerShell, Hola CLI de Azure, hello HDInsight .NET SDK o plantillas del Administrador de recursos de Azure también pueden ser utilizados tooapply acciones de script. También puede aplicar tooalready de acciones de script clústeres en ejecución. Para obtener más información, consulte [Personalización de clústeres de HDInsight mediante la acción de scripts](hdinsight-hadoop-customize-cluster-linux.md).
+> También se puede utilizar Azure PowerShell, la CLI de Azure, el SDK de .NET de HDInsight o las plantillas de Azure Resource Manager para aplicar las acciones de script. También puede aplicar acciones de script a clústeres que ya se estén ejecutando. Para obtener más información, consulte [Personalización de clústeres de HDInsight mediante la acción de scripts](hdinsight-hadoop-customize-cluster-linux.md).
 >
 >
 
-1. Iniciar el aprovisionamiento de un clúster mediante el uso de pasos de hello en [clústeres de HDInsight de aprovisionar en Linux](hdinsight-hadoop-provision-linux-clusters.md), pero no complete el aprovisionamiento.
+1. Inicie el aprovisionamiento de un clúster siguiendo los pasos que se describen en [Aprovisionamiento de clústeres de HDInsight en Linux](hdinsight-hadoop-provision-linux-clusters.md), pero no complete la operación.
 
    > [!NOTE]
-   > clústeres de matiz tooinstall en HDInsight, hello tamaño recomendado de nodo principal es al menos A4 (8 núcleos, 14 GB de memoria).
+   > Para instalar Hue en clústeres de HDInsight, el tamaño recomendado de nodo principal es como mínimo A4 (8 núcleos, 14 gigabytes de memoria).
    >
    >
-2. En hello **configuración opcional** hoja, seleccione **acciones de Script**y proporcionar información de hello tal y como se muestra a continuación:
+2. En la hoja **Configuración opcional**, seleccione **Acciones de script** y proporcione la información tal y como se muestra a continuación:
 
     ![Proporcionar parámetros de acción de script para Hue](./media/hdinsight-hadoop-hue-linux/hue-script-action.png "Proporcionar parámetros de acción de script para Hue")
 
-   * **NOMBRE**: escriba un nombre descriptivo para la acción de secuencia de comandos de Hola.
+   * **NOMBRE**: escriba un nombre descriptivo para la acción de script.
    * **URI DE SCRIPT**: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
    * **PRINCIPAL**: active esta opción.
    * **TRABAJO**: déjelo en blanco.
    * **ZOOKEEPER**: déjelo en blanco.
    * **PARÁMETROS**: déjelo en blanco.
-3. Final de Hola de hello **acciones de Script**, usar hello **seleccione** configuración del botón toosave Hola. Por último, utilice hello **seleccione** situado en la parte inferior de Hola de hello **configuración opcional** información de configuración opcional de hoja toosave Hola.
-4. Continuar aprovisionamiento clúster Hola tal y como se describe en [clústeres de HDInsight de aprovisionar en Linux](hdinsight-hadoop-provision-linux-clusters.md).
+3. En la parte inferior de **Acciones de scripts**, use el botón **Seleccionar** para guardar la configuración. Por último, use el botón **Seleccionar** situado en la parte inferior de la hoja **Configuración opcional** para guardar la información de configuración opcional.
+4. Continúe aprovisionando el clúster tal como se describe en [Aprovisionamiento de clústeres de HDInsight en Linux](hdinsight-hadoop-provision-linux-clusters.md).
 
 ## <a name="use-hue-with-hdinsight-clusters"></a>Use Hue con clústeres de HDInsight
 
-Túnel SSH es Hola única manera tooaccess matiz en clúster de Hola una vez que se está ejecutando. Protocolo de túnel a través de SSH permite Hola tráfico toogo directamente el nodo principal de toohello de hello clúster donde se está ejecutando el matiz. Después de que el clúster de hello haya terminado el aprovisionamiento, utilice Hola siguiendo los pasos toouse matiz en un clúster de HDInsight Linux.
+La tunelización de SSH es la única forma de obtener acceso a Hue en el clúster cuando se está ejecutando. La tunelización a través de SSH permite al tráfico ir directamente al nodo principal del clúster en el que se ejecuta Hue. Cuando termine de aprovisionar el clúster, siga estos pasos para usar Hue en un clúster de HDInsight Linux.
 
 > [!NOTE]
-> Se recomienda usar Firefox web explorador toofollow Hola estas instrucciones.
+> Se recomienda utilizar el explorador web de Firefox para seguir las instrucciones siguientes.
 >
 >
 
-1. Usar información de hello en [tooaccess uso de SSH túnel Ambari web de interfaz de usuario, ResourceManager, JobHistory, NameNode, Oozie y otra interfaz de usuario web](hdinsight-linux-ambari-ssh-tunnel.md) toocreate un SSH de túnel desde el clúster de HDInsight de toohello de sistema de cliente y, a continuación, configurar el Web Explorador toouse Hola túnel SSH como un proxy.
+1. Consulte la información de [Uso de la tunelización SSH para acceder a la interfaz de usuario web de Ambari, ResourceManager, JobHistory, NameNode, Oozie y otras interfaces de usuario web](hdinsight-linux-ambari-ssh-tunnel.md) para crear un túnel SSH desde el sistema cliente al clúster de HDInsight y luego configurar el explorador web para usar el túnel SSH como proxy.
 
-2. Una vez que haya creado un túnel SSH y configurado el tráfico de tooproxy de explorador a través de él, debe buscar el nombre de host de hello del nodo principal de hello principal. Puede hacerlo mediante la conexión de clúster toohello mediante SSH en el puerto 22. Por ejemplo, `ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net` donde **nombre de usuario** es el nombre de usuario SSH y **CLUSTERNAME** es Hola nombre del clúster.
+2. Después de crear un túnel SSH y configurar el explorador para redirigir el tráfico mediante proxy a través de él, debe encontrar el nombre de host del nodo principal primario. Para ello, puede conectarse al clúster mediante SSH en el puerto 22. Por ejemplo, `ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`, donde **USERNAME** es el nombre de usuario SSH y **CLUSTERNAME** es el nombre del clúster.
 
     Para más información, consulte [Uso SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-3. Una vez conectado, use Hola después de nombre de dominio completo de comando tooobtain Hola de nodo principal de hello principal:
+3. Una vez conectado, use el comando siguiente para obtener el nombre de dominio completo del nodo principal primario:
 
         hostname -f
 
-    Esto devolverá un nombre similar toohello detrás:
+    Devolverá un nombre similar al siguiente:
 
         hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
 
-    Esto es nombre de host de hello del nodo principal primario de Hola donde el sitio Web de matiz Hola se encuentra.
-4. Usar el portal de matiz de Hola de hello explorador tooopen en http://HOSTNAME:8888. Reemplace el nombre de host por nombre de hello obtenido en el paso anterior de Hola.
+    Este es el nombre de host del nodo principal primario donde se encuentra el sitio web Hue.
+4. Use el explorador para abrir el portal de Hue en http://HOSTNAME:8888. Reemplace HOSTNAME por el nombre obtenido en el paso anterior.
 
    > [!NOTE]
-   > Al iniciar sesión para hello primera vez, se iniciará solicitada toocreate un toolog de cuenta en el portal de matiz toohello. credenciales de Hola que especifique aquí serán portal toohello limitado y no están relacionadas toohello administrador o credenciales de usuario SSH que especificó al clúster de hello aprovisionar.
+   > Al iniciar sesión por primera vez, se le pedirá que cree una cuenta para iniciar sesión en el portal de Hue. Las credenciales que especifique aquí se limitarán al portal y no están relacionadas con las credenciales de administrador o de usuario SSH que especificó al aprovisionar el clúster.
    >
    >
 
-    ![Portal de matiz de inicio de sesión toohello](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png "especificar credenciales para el portal de matiz")
+    ![Inicio de sesión en el portal de Hue](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png "Especificación de credenciales para el portal de Hue")
 
 ### <a name="run-a-hive-query"></a>Ejecución de una consulta de Hive
-1. En el portal de matiz de hello, haga clic en **editores de consultas**y, a continuación, haga clic en **Hive** editor de subárboles tooopen Hola.
+1. En el portal de Hue, haga clic en **Query Editors** (Editores de consultas), y, a continuación, haga clic en **Hive** para abrir el editor de Hive.
 
     ![Uso de Hive](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png "Uso de Hive")
-2. En hello **Assist** ficha **base de datos**, debería ver **hivesampletable**. Se trata de una tabla de ejemplo que se incluye con todos los clústeres de Hadoop en HDInsight. Escriba una consulta de ejemplo en el panel derecho de Hola y ver el resultado de hello en hello **resultados** ficha Panel de Hola a continuación, como se muestra en la captura de pantalla de Hola.
+2. En la pestaña **Assist** (Asistencia), en **Database** (Base de datos), debería de ver **hivesampletable**. Se trata de una tabla de ejemplo que se incluye con todos los clústeres de Hadoop en HDInsight. Escriba una consulta de ejemplo en el panel derecho y vea el resultado en la pestaña **Results** (resultados) en el panel debajo, como se muestra en la captura de pantalla.
 
     ![Ejecución de consultas de Hive](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png "Ejecución de consultas de Hive")
 
-    También puede usar hello **gráfico** ficha toosee una representación visual del resultado de hello.
+    También puede usar la pestaña **Chart** para ver una representación visual del resultado.
 
-### <a name="browse-hello-cluster-storage"></a>Buscar en almacenamiento de clúster de Hola
-1. En el portal de matiz de hello, haga clic en **Explorador de archivos** en la esquina superior derecha de Hola de barra de menús de Hola.
-2. De forma predeterminada se abre el Explorador de archivos de hello en hello **/usuario/myuser** directory. Haga clic en la barra diagonal justo antes de directorio de usuario de hello en toogo toohello raíz de hello ruta de acceso del contenedor de almacenamiento de Azure Hola asociado con el clúster de Hola Hola.
+### <a name="browse-the-cluster-storage"></a>Examinar el almacenamiento del clúster
+1. En el portal de Hue, haga clic en **File Browser** (explorador de archivos) en la esquina superior derecha de la barra de menús.
+2. De forma predeterminada se abre el explorador de archivos en el directorio **/user/myuser** . Haga clic en la barra oblicua que se encuentra antes del directorio del usuario en la ruta de acceso para ir a la raíz del contenedor de Almacenamiento de Azure asociado con el clúster.
 
     ![Uso del explorador de archivos](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-file-browser.png "Uso del explorador de archivos")
-3. Haga doble clic en un archivo o carpeta toosee hello las operaciones disponibles. Hola de uso **cargar** botón en el directorio actual de hello esquina derecha tooupload archivos toohello. Hola de uso **New** botón toocreate nuevos archivos o directorios.
+3. Haga clic con el botón derecho en un archivo o carpeta para ver las operaciones disponibles. Use el botón **Cargar** situado en la esquina derecha para cargar archivos en el directorio actual. Use el botón **Nuevo** para crear nuevos archivos o directorios.
 
 > [!NOTE]
-> Explorador de archivos de matiz Hola solo puede mostrar contenido de Hola Hola predeterminado del contenedor de asociado con clúster de HDInsight de Hola. Cualquier adicionales cuentas/contenedores de almacenamiento que ha asociado con el clúster de hello no será accesibles mediante el Explorador de archivos de Hola. Sin embargo, contenedores adicionales Hola asociados Hola clúster siempre serán accesibles para los trabajos de Hive de Hola. Por ejemplo, si escribe el comando de hello `dfs -ls wasb://newcontainer@mystore.blob.core.windows.net` en el editor de Hive hello, puede ver contenido de Hola de contenedores adicionales también. En este comando, **newcontainer** no es contenedor de hello predeterminado asociado a un clúster.
+> El explorador de archivos de Hue solo puede mostrar el contenido del contenedor predeterminado asociado con el clúster de HDInsight. Cualquier cuenta o contenedor de almacenamiento adicional asociados con el clúster no serán accesibles mediante el explorador de archivos. Sin embargo, los contenedores adicionales asociados con el clúster siempre serán accesibles para los trabajos de Hive. Por ejemplo, si escribe el comando `dfs -ls wasb://newcontainer@mystore.blob.core.windows.net` en el editor de Hive, también podrá ver el contenido de los contenedores adicionales. En este comando, **newcontainer** no es el contenedor predeterminado asociado a un clúster.
 >
 >
 
 ## <a name="important-considerations"></a>Consideraciones importantes
-1. Hola script utilizado tooinstall matiz lo instala únicamente en el nodo principal en principal del clúster de Hola Hola.
+1. El script que se usó para instalar Hue lo instala solo en el nodo principal primario del clúster.
 
-2. Durante la instalación, se reinician varios servicios de Hadoop (HDFS, YARN, MR2, Oozie) para actualizar la configuración de Hola. Cuando finalice el script de Hola, instalar el matiz, puede tardar algún tiempo para otro toostart de servicios de Hadoop. Esto podría afectar inicialmente al rendimiento de Hue. Una vez que todos los servicios se inician, la funcionalidad de Hue será total.
-3. Matiz no entiende Tez trabajos, que es el valor predeterminado actual de Hola de Hive. Si desea toouse MapReduce como Hola motor de ejecución de Hive, actualice Hola Hola de toouse de secuencia de comandos siguiente comando en el script:
+2. Durante la instalación, se reinician varios servicios de Hadoop (HDFS, YARN, MR2, Oozie) para actualizar la configuración. Cuando el script finaliza la instalación de Hue, puede tardar algún tiempo hasta que otros servicios de Hadoop se inicien. Esto podría afectar inicialmente al rendimiento de Hue. Una vez que todos los servicios se inician, la funcionalidad de Hue será total.
+3. Hue no entiende los trabajos Tez, que es el valor predeterminado actual de Hive. Si desea usar MapReduce como el motor de ejecución de Hive, actualice el script para usar el comando siguiente en el script:
 
         set hive.execution.engine=mr;
 
-4. Con los clústeres de Linux, puede tener un escenario donde los servicios están ejecutándose en nodo principal primario de hello mientras Hola, Administrador de recursos podría ejecutarse en hello secundaria. Este escenario podría provocar errores (se muestra a continuación) cuando se utiliza detalles de tooview de matiz de trabajos de ejecución en clúster de Hola. Sin embargo, puede ver detalles del trabajo hello cuando se haya completado el trabajo de Hola.
+4. Con los clústeres de Linux, se puede dar el caso de que los servicios se ejecutan en el nodo principal primario mientras Resource Manager se ejecuta en el secundario. Este escenario podría producir errores (que se muestra a continuación) cuando se usa Hue para ver detalles de trabajos de ejecución en el clúster. De todas formas, puede ver los detalles del trabajo una vez que el trabajo se complete.
 
    ![Error en el portal de Hue](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png "Error en el portal de Hue")
 
-   Se trata de vencimiento tooa un problema conocido. Como alternativa, modificar Ambari para que hello active el Administrador de recursos también se ejecuta en el nodo principal de hello principal.
-5. Hue entiende WebHDFS, mientras que los clústeres de HDInsight usan Almacenamiento de Azure mediante `wasb://`. Por lo tanto, se utiliza con la acción de secuencia de comandos de script personalizado de hello instala WebWasb, que es un servicio compatible con WebHDFS para hablar tooWASB. Por lo tanto, aunque el portal de matiz Hola dice HDFS en lugares (al igual que cuando mueve el mouse sobre hello **Explorador de archivos**), se debe interpretar como WASB.
+   Este es un problema conocido. Como alternativa, modifique Ambari para que la instancia de Resource Manager que está activa también se ejecute en el nodo principal primario.
+5. Hue entiende WebHDFS, mientras que los clústeres de HDInsight usan Almacenamiento de Azure mediante `wasb://`. Por lo tanto, el script personalizado que se usa con la acción de script instala WebWasb, que es un servicio compatible con WebHDFS para hablar con WASB. Así que aunque el portal de Hue dice HDFS en lugares (como cuando se mueve el mouse sobre el **Explorador de archivos**), se debe interpretar como WASB.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* [Instalación de Giraph en clústeres de HDInsight](hdinsight-hadoop-giraph-install-linux.md). Utilice tooinstall de personalización de clúster de clústeres de Giraph en Hadoop de HDInsight. Giraph permite gráfico tooperform Hadoop de procesamiento y se puede utilizar con HDInsight de Azure.
-* [Instalación de Solr en clústeres de HDInsight](hdinsight-hadoop-solr-install-linux.md). Utilice tooinstall de personalización de clúster de clústeres de Solr en Hadoop de HDInsight. Solr permite operaciones de búsqueda eficaces tooperform en los datos almacenados.
-* [Instalación de R en clústeres de HDInsight](hdinsight-hadoop-r-scripts-linux.md). Usar clúster personalización tooinstall R en clústeres de Hadoop de HDInsight. R es un entorno y lenguaje de código abierto para computación estadística. Proporciona cientos de de funciones estadísticas integradas y su propio lenguaje de programación que combina aspectos de la programación funcional y orientada a objetos. También proporciona amplias capacidades gráficas.
+* [Instalación de Giraph en clústeres de HDInsight](hdinsight-hadoop-giraph-install-linux.md). Use la personalización del clúster para instalar Giraph en clústeres de Hadoop para HDInsight. Giraph permite realizar un procesamiento gráfico con Hadoop y se puede usar con HDInsight de Azure.
+* [Instalación de Solr en clústeres de HDInsight](hdinsight-hadoop-solr-install-linux.md). Use la personalización del clúster para instalar Solr en clústeres de Hadoop para HDInsight. Solr le permite realizar potentes operaciones de búsqueda en los datos almacenados.
+* [Instalación de R en clústeres de HDInsight](hdinsight-hadoop-r-scripts-linux.md). Use la personalización del clúster para instalar R en clústeres de Hadoop para HDInsight. R es un entorno y lenguaje de código abierto para computación estadística. Proporciona cientos de de funciones estadísticas integradas y su propio lenguaje de programación que combina aspectos de la programación funcional y orientada a objetos. También proporciona amplias capacidades gráficas.
 
 [powershell-install-configure]: install-configure-powershell-linux.md
 [hdinsight-provision]: hdinsight-provision-clusters-linux.md

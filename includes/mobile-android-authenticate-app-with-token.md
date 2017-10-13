@@ -1,22 +1,22 @@
 
-Hola ejemplo anterior, mostramos un estándar inicio de sesión de, lo que requiere Hola cliente toocontact ambos Hola identidad hello y proveedor de servicio back-end Azure cada vez que inicia la aplicación hello. Este método es ineficiente y puede tener problemas relacionados con el uso si muchos clientes intentan la aplicación con toostart de forma simultánea. Un enfoque más adecuado es toocache Hola autorización token devuelto por hello servicio de Azure y try toouse esto antes de utilizar un inicio de sesión de basada en el proveedor.
+En el ejemplo anterior se mostró un inicio de sesión estándar, que requiere que el cliente se ponga en contacto con el proveedor de identidades y con el servicio de Azure de back-end cada vez que se inicia la aplicación. Este método no es eficaz y puede tener problemas relacionados con el uso si muchos clientes intentan iniciar la aplicación al mismo tiempo. Un método mejor es almacenar en caché el token de autorización devuelto por el servicio de Azure e intentar usarlo primero antes de emplear un inicio de sesión basado en proveedores.
 
 > [!NOTE]
-> Puede almacenar en caché el token de hello emitido Hola back-end servicio de Azure, independientemente de si está usando autenticación administrada por el cliente o servicio. Este tutorial utiliza la autenticación administrada por el servicio.
+> Puede almacenar en caché el token emitido por el servicio de Azure de back-end con independencia de si es una autenticación administrada por el cliente o por el servicio. Este tutorial utiliza la autenticación administrada por el servicio.
 >
 >
 
-1. Abra el archivo de ToDoActivity.java hello y agregue Hola siguiendo las instrucciones de importación:
+1. Abra el archivo ToDoActivity.java y agregue las siguientes instrucciones de importación:
 
         import android.content.Context;
         import android.content.SharedPreferences;
         import android.content.SharedPreferences.Editor;
-2. Agregar Hola después miembros toohello `ToDoActivity` clase.
+2. Agregue los siguientes métodos a la clase `ToDoActivity` .
 
         public static final String SHAREDPREFFILE = "temp";    
         public static final String USERIDPREF = "uid";    
         public static final String TOKENPREF = "tkn";    
-3. En archivo de ToDoActivity.java de hello, agregue Hola después de la definición de hello `cacheUserToken` método.
+3. En el archivo ToDoActivity.java, agregue la siguiente definición para el método `cacheUserToken`.
 
         private void cacheUserToken(MobileServiceUser user)
         {
@@ -27,13 +27,13 @@ Hola ejemplo anterior, mostramos un estándar inicio de sesión de, lo que requi
             editor.commit();
         }    
 
-    Este método almacena el Id. de usuario de Hola y símbolo (token) en un archivo de preferencias que se marca como privado. Esto debe proteger acceso toohello caché para que otras aplicaciones en dispositivos de hello no tiene el token de acceso toohello. preferencia de Hello es en recintos de seguridad para la aplicación hello. Sin embargo, si alguien logra dispositivo toohello de acceso, es posible que puede obtener caché de tokens de acceso toohello a través de otros medios.
+    Este método almacena el identificador de usuario y el token en un archivo de preferencias que está marcado como privado. Esto debería proteger el acceso a la memoria caché para que otras aplicaciones del dispositivo no tengan acceso al token. La preferencia es un espacio aislado de la aplicación. Sin embargo, si alguien obtiene acceso al dispositivo, es posible que pueda tener acceso a la caché del token mediante otros medios.
 
    > [!NOTE]
-   > Puede proteger aún más el token de hello con cifrado, si se consideran confidenciales datos tooyour de token de acceso y un usuario puede obtener dispositivo toohello de acceso. Sin embargo, una solución completamente segura está más allá del ámbito de Hola de este tutorial y depende de los requisitos de seguridad.
+   > Puede proteger adicionalmente el token con cifrado si el acceso del token a los datos se considera sumamente sensible y alguien puede obtener acceso al dispositivo. Sin embargo, una solución completamente segura está fuera del alcance de este tutorial y depende de los requisitos de seguridad.
    >
    >
-4. En archivo de ToDoActivity.java de hello, agregue Hola después de la definición de hello `loadUserTokenCache` método.
+4. En el archivo ToDoActivity.java, agregue la siguiente definición para el método `loadUserTokenCache`.
 
         private boolean loadUserTokenCache(MobileServiceClient client)
         {
@@ -51,18 +51,18 @@ Hola ejemplo anterior, mostramos un estándar inicio de sesión de, lo que requi
 
             return true;
         }
-5. Hola *ToDoActivity.java* archivo, reemplace hello `authenticate` método con hello siguiendo el método, que utiliza una caché de tokens. Cambiar el proveedor de inicio de sesión de hello si desea toouse una cuenta distinta de Google.
+5. En el archivo *ToDoActivity.java*, reemplace el método `authenticate` por el método siguiente que usa una caché del token. Cambie el proveedor de inicio de sesión si desea usar otra cuenta que no sea la de Google.
 
         private void authenticate() {
-            // We first try tooload a token cache if one exists.
+            // We first try to load a token cache if one exists.
             if (loadUserTokenCache(mClient))
             {
                 createTable();
             }
-            // If we failed tooload a token cache, login and create a token cache
+            // If we failed to load a token cache, login and create a token cache
             else
             {
-                // Login using hello Google provider.    
+                // Login using the Google provider.    
                 ListenableFuture<MobileServiceUser> mLogin = mClient.login(MobileServiceAuthenticationProvider.Google);
 
                 Futures.addCallback(mLogin, new FutureCallback<MobileServiceUser>() {
@@ -81,4 +81,4 @@ Hola ejemplo anterior, mostramos un estándar inicio de sesión de, lo que requi
                 });
             }
         }
-6. Compile la autenticación de aplicación y prueba de hello con una cuenta válida. Ejecútela al menos dos veces. Durante el saludo ejecuta por primera vez, debe recibir un símbolo del sistema toosign en y crear caché de tokens de Hola. Después de eso, cada serie de intentos de caché de tokens de hello tooload para la autenticación. No debe ser necesario toosign en.
+6. Cree la aplicación y pruebe la autenticación mediante una cuenta válida. Ejecútela al menos dos veces. Durante la primera ejecución, debe recibir un mensaje para iniciar sesión y crear la memoria caché del token. Después de eso, cada ejecución intenta cargar la caché de tokens para la autenticación. No es necesario para iniciar sesión.

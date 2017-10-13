@@ -1,6 +1,6 @@
 ---
-title: recomendaciones de aaaGenerate con Mahout HDInsight desde PowerShell - Azure | Documentos de Microsoft
-description: "Obtenga información acerca de cómo toouse Hola máquina Apache Mahout aprendizaje recomendaciones de película toogenerate de biblioteca con HDInsight (Hadoop) desde un script de PowerShell que se ejecuta en el cliente."
+title: "Generación de recomendaciones mediante Mahout HDInsight desde PowerShell (Azure) | Microsoft Docs"
+description: "Aprenda a usar la biblioteca de aprendizaje automático de Apache Mahout para generar recomendaciones de películas con HDInsight (Hadoop) desde un script de PowerShell que se ejecuta en el cliente."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -16,51 +16,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: larryfr
-ms.openlocfilehash: 675a2cd8ecaf7fc797d6cd094e4e58f9aca7ed92
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 934de9ca2df48b29ef7a56d5729d59d77875ea7b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-hadoop-in-hdinsight-powershell"></a>Generación de recomendaciones de películas mediante Apache Mahout con Hadoop en HDInsight (PowerShell)
 
 [!INCLUDE [mahout-selector](../../includes/hdinsight-selector-mahout.md)]
 
-Obtenga información acerca de cómo hello toouse [Mahout Apache](http://mahout.apache.org) biblioteca de aprendizaje de máquina con recomendaciones de película toogenerate de HDInsight de Azure. ejemplo de Hola en este documento utiliza Azure PowerShell toorun Mahout trabajos.
+Aprenda a usar la biblioteca de aprendizaje automático de [Apache Mahout](http://mahout.apache.org) con HDInsight de Azure para generar recomendaciones de películas con HDInsight. El ejemplo de este documento usa Azure PowerShell para ejecutar trabajos de Mahout.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
 * Un clúster de HDInsight basado en Linux Para obtener información sobre cómo crear uno, consulte [Introducción al uso de Hadoop en HDInsight basado en Linux][getstarted].
 
 > [!IMPORTANT]
-> Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * [Azure PowerShell](/powershell/azure/overview)
 
 ## <a name="recommendations"></a>Generación de recomendaciones mediante Azure PowerShell
 
 > [!WARNING]
-> trabajo de Hello en esta sección funciona mediante el uso de PowerShell de Azure. Muchas de las clases de hello proporcionadas con Mahout actualmente no trabaja con Azure PowerShell. Para obtener una lista de clases que no funcionan con Azure PowerShell, vea hello [solución de problemas](#troubleshooting) sección.
+> El trabajo en esta sección funciona mediante Azure PowerShell. Muchas de las clases proporcionadas con Mahout actualmente no funcionan con Azure PowerShell. Para ver una lista de las clases que no funcionan con Azure PowerShell, consulte la sección [Solución de problemas](#troubleshooting).
 >
-> Para obtener un ejemplo del uso de SSH tooconnect tooHDInsight y ejemplos de ejecución Mahout directamente en el clúster de hello, consulte [generar recomendaciones de película mediante Mahout y HDInsight (SSH)](hdinsight-hadoop-mahout-linux-mac.md).
+> Para ver un ejemplo del uso de SSH para conectarse a HDInsight y ejecutar ejemplos de Mahout directamente en el clúster, consulte [Generación de recomendaciones de películas mediante Mahout y HDInsight (SSH)](hdinsight-hadoop-mahout-linux-mac.md).
 
-Una de las funciones hello proporcionada por Mahout es un motor de recomendación. Este motor acepta datos en formato de Hola de `userID`, `itemId`, y `prefValue` (Hola preferencias de los usuarios para el elemento de hello). Mahout usa Hola datos toodetermine los usuarios con las preferencias de elemento de tipo, que pueden ser usado toomake recomendaciones.
+Una de las funciones que proporciona Mahout es un motor de recomendaciones. Este motor acepta datos en formato de `userID`, `itemId` y `prefValue` (la preferencia de los usuarios por el elemento). Mahout usa los datos para determinar los usuarios con preferencias de elementos similares, lo que se puede usar para realizar recomendaciones.
 
-Hello en el ejemplo siguiente se es un tutorial simplificado de cómo funciona el proceso de recomendación de hello:
+El ejemplo siguiente es un tutorial simplificado de cómo funciona el proceso de recomendación:
 
-* **aparición coadministradores**: Joe, Alice y Bob querido todos los *estrella guerras*, *Hola Empire plenos volver*, y *devolución de hello Jedi*. Mahout determina que los usuarios que como cualquiera de estas películas también como Hola otros dos.
+* **Ocurrencia conjunta**: a José, Alicia y Roberto les gusta *La Guerra de las galaxias*, *El imperio contraataca* y *El retorno del Jedi*. Mahout determina que a los usuarios que les gusta alguna de estas películas también les gustan las otras dos.
 
-* **aparición coadministradores**: Roberto y Alicia también gustó *Hola fantasma amenaza*, *ataque de Clones de hello*, y *Revenge de hello Sith*. Mahout determina que los usuarios que gustó películas de tres anterior hello también como estas películas.
+* **Ocurrencia conjunta**: a Roberto y Alicia también les gusta *La amenaza fantasma*, *El ataque de los clones* y *La venganza de los Sith*. Mahout determina que a los usuarios que les gustan las tres películas anteriores también les gustan estas tres otras.
 
-* **Recomendación de similitud**: Joe porque gustó Hola tres primeros de películas, Mahout examina películas que otros usuarios que tengan preferencias similares gustó, pero no observarán Joe (gustó/clasificación). En este caso, se recomienda Mahout *Hola fantasma amenaza*, *ataque de Clones de hello*, y *Revenge de hello Sith*.
+* **Recomendación basada en similitud**: como a José le gustan las tres primeras películas, Mahout examina películas que a otros usuarios con preferencias similares les han gustado, pero que José no ha visto (gustado/valorado). En este caso, Mahout recomendaría *La amenaza fantasma*, *El ataque de los clones* y *La venganza de los Sith*.
 
-### <a name="understanding-hello-data"></a>Descripción de los datos de Hola
+### <a name="understanding-the-data"></a>Descripción de los datos
 
-[GroupLens Research][movielens] proporciona calificaciones de películas en un formato compatible con Mahout. Estos datos están disponibles en el almacenamiento predeterminado de hello para el clúster en `/HdiSamples//HdiSamples/MahoutMovieData`.
+[GroupLens Research][movielens] proporciona calificaciones de películas en un formato compatible con Mahout. Estos datos están disponibles en el almacenamiento predeterminado del clúster en `/HdiSamples//HdiSamples/MahoutMovieData`.
 
-Hay dos archivos, `moviedb.txt` (información sobre películas de hello) y `user-ratings.txt`. Hola `user-ratings.txt` archivo se utiliza durante el análisis. Hola `moviedb.txt` archivo es texto descriptivo tooprovide usado al mostrar los resultados de Hola de análisis de Hola.
+Existen dos archivos, `moviedb.txt` (información sobre las películas) y `user-ratings.txt`. El archivo `user-ratings.txt` se utiliza durante el análisis. El archivo `moviedb.txt` se usa para proporcionar texto descriptivo que muestre los resultados del análisis.
 
-datos de usuario ratings.txt Hello tienen una estructura de `userID`, `movieID`, `userRating`, y `timestamp`, que nos dice cómo alta cada usuario calificado una película. Este es un ejemplo de Hola datos:
+Los datos del archivo user-ratings.txt tienen una estructura de `userID`, `movieID`, `userRating` y `timestamp`, que nos indica qué valoración le dio cada usuario a una película. A continuación se muestra un ejemplo de los datos:
 
     196    242    3    881250949
     186    302    3    891717742
@@ -68,44 +68,44 @@ datos de usuario ratings.txt Hello tienen una estructura de `userID`, `movieID`,
     244    51    2    880606923
     166    346    1    886397596
 
-### <a name="run-hello-job"></a>Ejecutar trabajo de Hola
+### <a name="run-the-job"></a>Ejecución del trabajo
 
-Usar hello después toorun de secuencia de comandos de Windows PowerShell un trabajo que utiliza el motor de recomendaciones de hello Mahout con datos de la película de hello:
+Use el siguiente script de Windows PowerShell para ejecutar un trabajo que use el motor de recomendaciones de Mahout con los datos de las películas:
 
 > [!NOTE]
-> Este archivo le pide información de clúster de HDInsight de tooyour tooconnect utilizado y los trabajos de ejecución. Puede tardar varios minutos para toocomplete de trabajos de Hola y descargar el archivo de hello output.txt.
+> Este archivo le pide información que se usa para conectarse a su clúster de HDInsight y ejecutar trabajos. Los trabajos pueden tardar varios minutos en finalizar y descargar el archivo output.txt.
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/mahout/use-mahout.ps1?range=5-98)]
 
 > [!NOTE]
-> Trabajos de Mahout no quite los datos temporales que se crean al procesar el trabajo de Hola. Hola `--tempDir` parámetro se especifica en archivos temporales de hello ejemplo trabajo tooisolate hello en un directorio específico.
+> Los trabajos de Mahout no eliminan los datos temporales creados durante el procesamiento del trabajo. El parámetro `--tempDir` se especifica en el trabajo de ejemplo para aislar los archivos temporales en un directorio específico.
 
-Hola Mahout job no devuelve hello tooSTDOUT de salida. En su lugar, almacena en el directorio de salida especificado hello como **parte-r-00000**. script de Hola descarga este archivo demasiado**output.txt** en el directorio actual de hello en la estación de trabajo.
+El trabajo de Mahout no devuelve la salida a STDOUT. En su lugar, lo almacena en el directorio de salida especificado como **part-r-00000**. El script descarga este archivo en **output.txt** en el directorio actual de la estación de trabajo.
 
-Hello texto siguiente es un ejemplo de Hola contenido de este archivo:
+El texto siguiente es un ejemplo del contenido de este archivo:
 
     1    [234:5.0,347:5.0,237:5.0,47:5.0,282:5.0,275:5.0,88:5.0,515:5.0,514:5.0,121:5.0]
     2    [282:5.0,210:5.0,237:5.0,234:5.0,347:5.0,121:5.0,258:5.0,515:5.0,462:5.0,79:5.0]
     3    [284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
     4    [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
 
-Hola primera columna es hello `userID`. Hola valores contenidos en ' [' y ']' son `movieId`:`recommendationScore`.
+La primera columna es `userID`. Los valores contenidos en '[' y ']' son `movieId`:`recommendationScore`.
 
-script de Hola también descarga hello `moviedb.txt` y `user-ratings.txt` archivos, que son necesarios tooformat Hola salida toobe sea más legible.
+El script también descarga los archivos `moviedb.txt` y `user-ratings.txt`, que son necesarios para formatear la salida a fin de que sea más legible.
 
-### <a name="view-hello-output"></a>Ver la salida de hello
+### <a name="view-the-output"></a>Visualización de la salida
 
-Aunque hello resultado generado puede Aceptar para su uso en una aplicación, no es fácil de usar. Hola `moviedb.txt` de hello servidor puede ser usado tooresolve hello `movieId` tooa nombre de película. Usar hello siguiendo las recomendaciones de toodisplay del script de PowerShell con nombres de película:
+Aunque puede que el resultado generado esté bien para usarse en una aplicación, no es muy descriptivo. El archivo `moviedb.txt` del servidor se puede usar para resolver el objeto `movieId` en el nombre de una película. Use el siguiente script de PowerShell para mostrar recomendaciones con nombres de película:
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/mahout/use-mahout.ps1?range=106-180)]
 
-Usar hello sigue comando toodisplay Hola recomendaciones en un formato fácil de usar: 
+Use el comando siguiente para mostrar las recomendaciones en un formato descriptivo: 
 
 ```powershell
 .\show-recommendation.ps1 -userId 4 -userDataFile .\user-ratings.txt -movieFile .\moviedb.txt -recommendationFile .\output.txt
 ```
 
-Hola de salida es toohello similar siguiente texto:
+La salida será similar al siguiente texto:
 
     Reading movies descriptions
     Reading rated movies
@@ -114,7 +114,7 @@ Hola de salida es toohello similar siguiente texto:
     ---------------------------
     Movie                                    Rating
     -----                                    ------
-    Devil's Own, hello (1997)                  1
+    Devil's Own, The (1997)                  1
     Alien: Resurrection (1997)               3
     187 (1997)                               2
     (lines ommitted)
@@ -127,8 +127,8 @@ Hola de salida es toohello similar siguiente texto:
     -----                                    -----
     Good Will Hunting (1997)                 4.6504064
     Swingers (1996)                          4.6862745
-    Wings of hello Dove, hello (1997)            4.6666665
-    People vs. Larry Flynt, hello (1996)       4.834559
+    Wings of the Dove, The (1997)            4.6666665
+    People vs. Larry Flynt, The (1996)       4.834559
     Everyone Says I Love You (1996)          4.707071
     Secrets & Lies (1996)                    4.818182
     That Thing You Do! (1996)                4.75
@@ -140,12 +140,12 @@ Hola de salida es toohello similar siguiente texto:
 
 ### <a name="cannot-overwrite-files"></a>No se pueden sobrescribir los archivos
 
-Los trabajos de Mahout no limpian los archivos temporales creados durante el procesamiento. Además, trabajos de hello no sobrescriben el archivo de salida existente.
+Los trabajos de Mahout no limpian los archivos temporales creados durante el procesamiento. Además, los trabajos no sobrescriben el archivo de salida existente.
 
-tooavoid errores al ejecutar los trabajos de Mahout, eliminar archivos temporales y salida entre ejecuciones. archivos de hello tooremove creados por hello scripts anteriores en este documento, use Hola siguiente script de PowerShell:
+Para evitar errores al ejecutar trabajos de Mahout, elimine los archivos temporales y de salida entre una ejecución y otra. Para quitar los archivos creados por los scripts anteriores en este documento, use el siguiente script de PowerShell:
 
 ```powershell
-# Login tooyour Azure subscription
+# Login to your Azure subscription
 # Is there an active Azure subscription?
 $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
 if(-not($sub))
@@ -154,10 +154,10 @@ if(-not($sub))
 }
 
 # Get cluster info
-$clusterName = Read-Host -Prompt "Enter hello HDInsight cluster name"
-$creds=Get-Credential -Message "Enter hello login for hello cluster"
+$clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
+$creds=Get-Credential -Message "Enter the login for the cluster"
 
-#Get hello cluster info so we can get hello resource group, storage, etc.
+#Get the cluster info so we can get the resource group, storage, etc.
 $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
 $resourceGroup = $clusterInfo.ResourceGroup
 $storageAccountName = $clusterInfo.DefaultStorageAccount.split('.')[0]
@@ -166,20 +166,20 @@ $storageAccountKey = (Get-AzureRmStorageAccountKey `
     -Name $storageAccountName `
 -ResourceGroupName $resourceGroup)[0].Value
 
-#Create a storage context and upload hello file
+#Create a storage context and upload the file
 $context = New-AzureStorageContext `
     -StorageAccountName $storageAccountName `
     -StorageAccountKey $storageAccountKey
 
 #Azure PowerShell can't delete blobs using wildcard,
-#so have tooget a list and delete one at a time
-# Start with hello output
+#so have to get a list and delete one at a time
+# Start with the output
 $blobs = Get-AzureStorageBlob -Container $container -Context $context -Prefix "example/out"
 foreach($blob in $blobs)
 {
     Remove-AzureStorageBlob -Blob $blob.Name -Container $container -context $context
 }
-# Next hello temp files
+# Next the temp files
 $blobs = Get-AzureStorageBlob -Container $container -Context $context -Prefix "example/temp"
 foreach($blob in $blobs)
 {
@@ -189,7 +189,7 @@ foreach($blob in $blobs)
 
 ### <a name="nopowershell"></a>Clases que no funcionan con Azure PowerShell
 
-Trabajos de Mahout que usan Hola siguientes clases devuelven varios mensajes de error cuando se usa en Windows PowerShell:
+Los trabajos de Mahout que usan las siguientes clases devuelven diversos mensajes de error cuando se usan desde Windows PowerShell:
 
 * org.apache.mahout.utils.clustering.ClusterDumper
 * org.apache.mahout.utils.SequenceFileDumper
@@ -208,11 +208,11 @@ Trabajos de Mahout que usan Hola siguientes clases devuelven varios mensajes de 
 * org.apache.mahout.classifier.sequencelearning.hmm.RandomSequenceGenerator
 * org.apache.mahout.classifier.df.tools.Describe
 
-trabajos de toorun que utilizan estas clases, conectan el clúster de HDInsight de toohello mediante SSH y ejecutan trabajos de Hola desde la línea de comandos de Hola. Para obtener un ejemplo del uso de SSH toorun Mahout trabajos, consulte [generar recomendaciones de película mediante Mahout y HDInsight (SSH)](hdinsight-hadoop-mahout-linux-mac.md).
+Para ejecutar trabajos que usan estas clases, conéctese al clúster de HDInsight mediante SSH y ejecute los trabajos desde la línea de comandos. Para ver un ejemplo del uso de SSH para ejecutar trabajos de Mahout, consulte [Generación de recomendaciones de películas mediante Mahout y HDInsight (SSH)](hdinsight-hadoop-mahout-linux-mac.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Ahora que ha aprendido cómo toouse Mahout, descubra otras formas de trabajar con datos en HDInsight:
+Ahora que ha aprendido a usar a Mahout, descubra otras formas de trabajar con datos en HDInsight:
 
 * [Hive con HDInsight](hdinsight-use-hive.md)
 * [Pig con HDInsight](hdinsight-use-pig.md)

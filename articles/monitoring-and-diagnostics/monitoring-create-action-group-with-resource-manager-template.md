@@ -1,6 +1,6 @@
 ---
-title: grupos de acciones de aaaCreate con plantillas de administrador de recursos | Documentos de Microsoft
-description: "Obtenga información acerca de cómo agrupar toocreate una acción mediante una plantilla de Azure Resource Manager."
+title: "Creación de grupos de acciones con plantillas de Resource Manager | Microsoft Docs"
+description: Aprenda a crear un grupo de acciones mediante una plantilla de Azure Resource Manager.
 author: anirudhcavale
 manager: orenr
 editor: 
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
-ms.openlocfilehash: 9902b33cad99bd99b3deda0cf6f4ff12278c89c3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 76bf353cac13f1c2169380f8dd3c1e163d4f3f41
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>Creación de un grupo de acciones con una plantilla de Resource Manager
-Este artículo muestra cómo toouse una [plantilla de Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) tooconfigure grupos de acciones. Mediante el uso de plantillas, puede configurar automáticamente grupos de acciones que se pueden reutilizar en determinados tipos de alertas. Estos grupos de acciones de aseguran de que todos los Hola correcto partes reciben notificaciones cuando se desencadene una alerta.
+En este artículo se muestra cómo utilizar una [plantilla de Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) para configurar grupos de acciones. Mediante el uso de plantillas, puede configurar automáticamente grupos de acciones que se pueden reutilizar en determinados tipos de alertas. Estos grupos de acciones garantizan que se notifique a todas las entidades correctas cuando se desencadene una alerta.
 
-pasos básicos de Hello son:
+Los pasos básicos son:
 
-1. Crear una plantilla como un archivo JSON que describe cómo toocreate Hola grupo de acciones.
+1. Crear una plantilla en forma de archivo JSON que describa cómo crear la alerta del grupo de acciones.
 
-2. Implementar la plantilla de hello mediante [cualquier método de implementación](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).
+2. Implemente la plantilla mediante [cualquier método de implementación](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy).
 
-En primer lugar, se describe cómo toocreate una plantilla de administrador de recursos para una acción grupo donde las definiciones de acción de hello están codificados en la plantilla de Hola. En segundo lugar, se describe cómo toocreate una plantilla que toma la información de configuración de webhook de hello como parámetros de entrada cuando se implementa Hola plantilla.
+En primer lugar, se describe cómo crear una plantilla de Resource Manager para un grupo de acciones donde las definiciones de acción están codificadas en la plantilla. En segundo lugar, se describe cómo crear una plantilla que toma la información de configuración de webhook como parámetros de entrada cuando se implementa la plantilla.
 
 ## <a name="resource-manager-templates-for-an-action-group"></a>Plantillas de Resource Manager para un grupo de acciones
 
-toocreate un grupo de acciones mediante una plantilla de administrador de recursos, se crea un recurso de tipo hello `Microsoft.Insights/actionGroups`. A continuación, rellene todas las propiedades relacionadas. Aquí hay dos plantillas de ejemplo que crean un grupo de acciones.
+Para crear un grupo de acciones mediante una plantilla de Resource Manager, cree un recurso del tipo `Microsoft.Insights/actionGroups`. A continuación, rellene todas las propiedades relacionadas. Aquí hay dos plantillas de ejemplo que crean un grupo de acciones.
 
 ```json
 {
@@ -43,13 +43,13 @@ toocreate un grupo de acciones mediante una plantilla de administrador de recurs
     "actionGroupName": {
       "type": "string",
       "metadata": {
-        "description": "Unique name (within hello Resource Group) for hello Action group."
+        "description": "Unique name (within the Resource Group) for the Action group."
       }
     },
     "actionGroupShortName": {
       "type": "string",
       "metadata": {
-        "description": "Short name (maximum 12 characters) for hello Action group."
+        "description": "Short name (maximum 12 characters) for the Action group."
       }
     }
   },
@@ -114,13 +114,13 @@ toocreate un grupo de acciones mediante una plantilla de administrador de recurs
     "actionGroupName": {
       "type": "string",
       "metadata": {
-        "description": "Unique name (within hello Resource Group) for hello Action group."
+        "description": "Unique name (within the Resource Group) for the Action group."
       }
     },
     "actionGroupShortName": {
       "type": "string",
       "metadata": {
-        "description": "Short name (maximum 12 characters) for hello Action group."
+        "description": "Short name (maximum 12 characters) for the Action group."
       }
     },
     "webhookReceiverName": {
@@ -171,4 +171,4 @@ toocreate un grupo de acciones mediante una plantilla de administrador de recurs
 ## <a name="next-steps"></a>Pasos siguientes
 * Más información sobre los [grupos de acciones](monitoring-action-groups.md).
 * Obtenga más información sobre [alertas](monitoring-overview-alerts.md).
-* Obtenga información acerca de cómo tooadd [alertas mediante una plantilla de administrador de recursos](monitoring-create-activity-log-alerts-with-resource-manager-template.md).
+* Aprenda a agregar [alertas mediante una plantilla de Resource Manager](monitoring-create-activity-log-alerts-with-resource-manager-template.md).

@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure documentación de facturación - tutoriales, referencia de API | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toounderstand la facturación de Azure, así como administrar y supervisar el uso y los costos. Tutoriales, preguntas más frecuentes, referencias de API y otra documentación."
+title: "Documentación sobre la facturación de Azure: tutoriales y referencia de API | Microsoft Docs"
+description: "Obtenga información acerca de la facturación de Azure, así como a administrar y supervisar el uso y los costes. Tutoriales, preguntas más frecuentes, referencias de API y otra documentación."
 services: billing
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 663ea1a4526ed897e963d3daa9ed41a7bdbabef0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 70aac3b0544e652ca92219fba9e6bfb405c2eadc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-billing-documentation"></a>Documentación de Facturación de Azure
 
-Obtenga información acerca de cómo toounderstand su facturación y supervisar el uso y los costos de Azure. Tutoriales, preguntas más frecuentes, referencias de API, y otra documentación mostrarle cómo toomanage tu cuenta.
+Obtenga información acerca de la facturación de Azure, así como a administrar y supervisar el uso y los costes. Los tutoriales, las preguntas más frecuentes, las referencias de API y otra documentación muestran cómo administrar su cuenta.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -125,7 +125,7 @@ Obtenga información acerca de cómo toounderstand su facturación y supervisar 
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Obtenga información acerca de hello toouse API</h3>
+                        <h3>Uso de las API</h3>
                         <p><a href="/azure/billing-usage-rate-card-overview">Información general acerca de la API</a></p>
                         <p><a href="/azure/billing-usage-rate-card-partner-solution-cloudcruiser">Solución de asociado: Cloud Cruiser</a></p>
                         <p><a href="/azure/billing-usage-rate-card-partner-solution-cloudyn">Solución de asociado: Cloudyn</a></p>

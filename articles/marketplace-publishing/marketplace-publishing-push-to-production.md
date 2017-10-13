@@ -1,6 +1,6 @@
 ---
-title: aaaDeploy su toohello oferta Azure Marketplace | Documentos de Microsoft
-description: "Obtenga información acerca de y recorra Hola instrucciones toodeploy su oferta: imagen de máquina virtual, el servicio de programador, servicio de datos, etc.--toohello Azure Marketplace."
+title: "Implementación de nuestra oferta en Azure Marketplace | Microsoft Docs"
+description: "Conozca y recorra paso a paso las instrucciones para implementar su oferta (una imagen de máquina virtual, un servicio para desarrolladores, un servicio de datos, etc.) en Azure Marketplace."
 services: marketplace-publishing
 documentationcenter: 
 author: HannibalSII
@@ -14,43 +14,43 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/02/2016
 ms.author: hascipio
-ms.openlocfilehash: ab0bb7c78020187505c2d5f09c4de246987ecd97
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 12dc81642905cd9449a1032c7ab57298e6b69ba8
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="deploy-your-offer-toohello-azure-marketplace"></a>Implementar la toohello oferta Azure Marketplace
-Cuando esté satisfecho con la oferta (es decir, que haya probado los escenarios de clientes, marketing de contenido, etc.) y está listo toolaunch, solicitud **Push tooproduction** en hello **publicar** ficha.  
+# <a name="deploy-your-offer-to-the-azure-marketplace"></a>Implementación de su oferta en Azure Marketplace
+Cuando quede satisfecho con su oferta (es decir, haya probado escenarios de clientes, contenido de marketing, etc.) y esté listo para el lanzamiento, solicite **Enviar a producción** en la pestaña **Publicar**.  
 
-1. Hola cuatro pasos en la página del tutorial Hola Hola portal de publicación debe ser completado y verde. Para las ofertas de la máquina Virtual, asegúrese de que se siguen ese Hola siguiendo las instrucciones.
+1. Los cuatro pasos de la página WALKTHROUGH (TUTORIAL) del Portal de publicación deben completarse y mostrarse en verde. Para las ofertas de máquinas virtuales, asegúrese seguir estas instrucciones.
    
     ![dibujo][img-pubportal-walkthru-checked]
-2. Seleccione hello **publicar** pestaña en la lista de Hola Hola lado izquierdo.
+2. Seleccione la pestaña **Publicar** en la lista del lado izquierdo.
    
     ![dibujo][img-pubportal-menu-publish]
-3. Haga clic en el botón de hello **solicitar aprobación toopush tooproduction**. Una vez que se realiza la solicitud de Hola, equipo de aprobación de hello ejecuta una revisión final y, a continuación, su oferta, estará disponible en hello Azure Marketplace.
+3. Haga clic en el botón **Request approval to push to production**(Solicitar aprobación para enviar a producción). Cuando se realice la solicitud, el equipo de aprobación ejecuta una revisión final y luego su oferta estará disponible en Azure Marketplace.
    
     ![dibujo][img-pubportal-publish-pushproduction]
 
 > [!IMPORTANT]
-> En el caso de máquinas virtuales, al hacer clic en hello tooproduction de toopush de aprobación de solicitud de botón, Hola pasos se realiza detrás de escena Hola. Será capaz de tooview progreso de Hola de cada paso en la ficha de la publicación de Hola Hola portal de publicación. Debe comprobar esta página en intervalos regulares (hasta que el estado de hello muestra "Listada") para cualquier información de error que necesita corrección desde el final.
+> En el caso de las máquinas virtuales, al hacer clic en el botón Request approval (Solicitar aprobación) para enviar la oferta a producción, los siguientes pasos se realizan automáticamente. Podrá ver el progreso de cada paso en la pestaña Publicar en el Portal de publicación. Debe comprobar esta página de forma periódica (hasta que el estado muestre que está activa) para consultar cualquier información de error que tenga que solucionar.
 > 
-> * En primer lugar la solicitud de producción va toohello equipo de certificación que validar Hola vhd. Sin embargo, si está actualizando su oferta ya enumerado y solicitud de hello tiene solo cambio de marketing, Hola certificación paso se omitirá.
-> * En el paso siguiente de hello, solicitud de hello proceder toohello equipo de validación del contenido que compruebe Hola contenido de la oferta de Hola de marketing.
-> * Si Hola por encima de los pasos se realizan correctamente, se aprueba oferta hello en producción. En este momento, el estado de Hola se convierten en "muestra" en el portal de publicación de Hola. Sin embargo, este estado de "Listada" no implica que el proceso de hello está completado. Hola siguiendo los pasos necesidad toobe finalice antes de la oferta de hello está disponible en hello Azure Marketplace.
-> * Una vez aprobada la oferta de hello en producción en el paso de hello anterior, la replicación de inicio de la oferta de hello en todas las Hola centros de datos de Azure. Por lo general toma 24-48hours para toocomplete de replicación de Hola pero puede tardar una semana tooa según tamaño Hola de hello disco duro virtual. Sin embargo, si está actualizando su oferta ya enumerado y tiene una capacidad solo cambio de marketing, replicación de hello es más rápida.
-> * Una vez completada la replicación hello, oferta Hola estará disponible en hello Azure Marketplace.
+> * En primer lugar, la solicitud de producción pasa al equipo de certificación que valida el VHD. Sin embargo, si va a actualizar la oferta ya activa y la solicitud tiene solo incluye un cambio de marketing, se omite el paso de certificación.
+> * En el paso siguiente, la solicitud pasa al equipo de validación del contenido que comprueba el contenido de marketing de la oferta.
+> * Si los pasos anteriores se realizan correctamente, se aprueba que la oferta pase a producción. En este momento, el estado muestra que la oferta está activa en el Portal de publicación. Sin embargo, este estado no implica que el proceso se haya completado. Los pasos siguientes deben finalizarse antes de que la oferta esté disponible en Azure Marketplace.
+> * Cuando la oferta se haya aprobado para enviarse a producción en el paso anterior, se inicia la replicación de la oferta en los centros de datos de Azure. Normalmente, el proceso de replicación de la oferta tarda en completarse entre 24 y 48 horas, aunque puede extenderse hasta una semana en función del tamaño del VHD. Sin embargo, si va a actualizar la oferta ya activa y la solicitud tiene solo incluye un cambio de marketing, la replicación se realiza más rápidamente.
+> * Cuando se complete la replicación, la oferta se mostrará en Azure Marketplace.
 > 
-> Oferta de hello siempre se puede eliminar mientras se encuentra en un **borrador** estado (es decir, nunca **Push toostaging** o **Push tooproduction**). En hello **historial** , haga clic en hello **Descartar borrador** situado en la parte inferior de Hola de hello página toodelete un borrador.
+> Siempre se puede eliminar la oferta mientras está en estado de **borrador** (es decir, nunca **Enviar a ensayo** ni **Enviar a producción**). En la pestaña **Historial**, haga clic en el botón **Descartar borrador** que se encuentra en la parte inferior de la página para eliminar un borrador.
 > 
 > 
 
 ## <a name="production-checklist-for-all-virtual-machine-offers"></a>Lista de comprobación de producción para todas las ofertas de máquinas virtuales
 * Asegúrese de ser asociado Microsoft Azure Certified.
-* En la ficha de SKU de hello, opción de Hola "ocultar esta SKU de hello Marketplace porque siempre debe ser comprado a través de una plantilla de solución" se debe marcar como sí solo si Hola SKU es una parte de una plantilla de solución. En todos los Hola otros casos, esta opción siempre debe estar marcada como NO.
-* Recuerde: No debería cambiar configuración de visibilidad SKU de hello una vez que se muestra hello SKU. No se admite esta funcionalidad.
-* Asegúrese de que los logotipos de Hola cumplan las directrices de logotipo de Azure Marketplace toohello indicadas a continuación.
+* En la pestaña SKU, la opción Hide this SKU from the Marketplace because it should always be bought via a solution template (Ocultar esta SKU en Marketplace porque siempre se debe comprar mediante una plantilla de solución) se debe marcar como SÍ solo si la SKU forma parte de una plantilla de solución. En el resto de los casos, esta opción siempre se debe marcar como NO.
+* Recuerde: No debe cambiar la configuración de visibilidad de la SKU una vez que esté activa. No se admite esta funcionalidad.
+* Asegúrese de que los logotipos sigan las instrucciones del logotipo de Azure Marketplace que se mencionan a continuación.
 * La descripción de la oferta y la SKU no debe ser la misma.
 * El título de la SKU y el resumen largo de la oferta no deben ser los mismos.
 * El título de la SKU y el resumen de la oferta no deben ser los mismos.
@@ -58,29 +58,29 @@ Cuando esté satisfecho con la oferta (es decir, que haya probado los escenarios
 
 **Instrucciones del logotipo de Azure Marketplace**
 
-* Hola diseño de Azure tiene una paleta de colores simple. Mantener número Hola de principal y los colores de la base de datos secundaria en el logotipo baja.
-* colores del tema Hola de hello portal de Azure son blancos y negros. Por lo tanto, evite usar estos colores como color de fondo de Hola de los logotipos. Usar algunos colores que podría hacer que sus logotipos destacan en hello portal de Azure. Nosotros recomendamos usar colores primarios simples. Si utilizas un fondo transparente, asegúrese de que ese logotipo/texto hello no es blanco o negro.
-* No utilice un fondo degradado en logotipo Hola.
-* Evite colocar texto, incluso la empresa o el nombre de marca, en el logotipo de Hola.
-* Hola apariencia y funcionamiento de su logotipo debe ser "plano" y debe evitar degradados.
-* logotipo de Hello no debe ajustarse.
+* El diseño de Azure tiene una paleta de colores simple. Utilice pocos colores primarios y secundarios en el logotipo.
+* Los colores del tema del Portal de Azure son el blanco y el negro. Por lo tanto, evite emplear estos colores como fondo de los logotipos. Utilice algún color que haga destacar a los logotipos en el Portal de Azure. Nosotros recomendamos usar colores primarios simples. Si utiliza un fondo transparente, asegúrese de que el texto y los logotipos no sean de color blanco o negro.
+* No utilice un fondo degradado en el logotipo.
+* Evite colocar texto, incluso la empresa o el nombre de marca, en el logotipo.
+* El aspecto del logotipo debe ser "plano" y debe evitar degradados.
+* El logotipo no se debe extender.
 
-**Instrucciones adicionales para el logotipo de héroe de hello:**
+**Instrucciones adicionales para el logotipo de imagen prominente:**
 
-* logotipo de héroe de Hello es opcional. publicador de Hello puede elegir no tooupload un logotipo héroe. **Sin embargo cuando se han cargado Hola héroe icono no se puede eliminar de hello portal de publicación. En ese momento, socio Hola debe seguir instrucciones de Azure Marketplace de Hola por iconos héroe else oferta hello no será posible tooproduction aprobada.**
-* Mostrar nombre del publicador, Hola y el título de la SKU de Hello ofrecen resumen largo se muestran en color de fuente blanca. Por lo tanto, debe evitar mantener cualquier color claro en fondo Hola Hola héroe icono. Los fondos transparentes y de color negro y blanco no pueden utilizarse en las imágenes prominentes.
-* Hello DisplayName del publicador, título SKU, resumidas largas de oferta de Hola y Hola botón crean se incrustan mediante programación dentro de logotipo héroe de hello una vez que la oferta de hello queda enumerada. Por lo que no debe escribir cualquier texto mientras se diseñan logotipo héroe de Hola. Deje espacio vacío en derecha Hola puesto texto de hello (es decir, nombre de presentación del publicador, título SKU, oferta Hola resumida largas) se incluirán mediante programación con nosotros a través de allí. espacio vacío de Hola para texto hello debe ser 415 x 100 en hello derecho (y se desplaza por 370px de hello izquierda).
+* El logotipo de imagen prominente es opcional. El publicador puede decidir no cargar un logotipo de imagen prominente. **Sin embargo, una vez que cargue la imagen prominente, no podrá eliminarla del Portal de publicación. A partir de ese momento, el asociado debe seguir las instrucciones de Azure Marketplace para imágenes prominentes; en caso contrario, la oferta no contará con la aprobación para pasar a producción.**
+* El nombre para mostrar del publicador, el título de la SKU y el resumen largo de la oferta se muestran en color blanco. Por lo tanto, debe evitar usar colores claros en el fondo de la imagen prominente. Los fondos transparentes y de color negro y blanco no pueden utilizarse en las imágenes prominentes.
+* El nombre para mostrar del publicador, el título de la SKU, el resumen largo de la oferta y el botón Crear se incrustan mediante programación dentro del logotipo de imagen prominente cuando se publica la oferta. Por lo tanto, no hace falta especificarlos cuando diseñe el logotipo de imagen prominente. Deje un espacio vacío a la derecha, ya que será ahí donde el texto (es decir, el nombre para mostrar del publicador, el título de la SKU y el resumen largo de la oferta) se incluirá automáticamente mediante programación. El espacio vacío para el texto debe tener un tamaño de 415 x 100 a la derecha (con un desplazamiento de 370 píxeles a la izquierda).
 
 ## <a name="additional-production-checklist-for-already-listed-virtual-machine-offers"></a>Lista de comprobación de producción adicional para ofertas de máquinas virtuales ya activas
-* Compruebe que si ya hay una oferta con hello mismo ofrecen el nombre de su empresa. Si es así, debe agregar una nueva versión de hello SKU de la oferta existente de hello en lugar de crear una nueva oferta duplicada.
-* Disco de datos no debe cambiar entre las dos versiones de hello misma SKU.
-* Hello Azure Marketplace no es compatible con precios de cambio de hello aparecen SKU puesto que afecta a la facturación de los clientes existentes de Hola Hola. Asegúrese de que no cambian Hola precios de SKU de hello enumerado en regiones de Hola donde hello SKU no está disponible. Sin embargo, puede agregar SKU nueva o agregar nuevas tooan regiones existentes SKU.
+* Compruebe si ya hay una oferta con el mismo nombre de la oferta de su compañía. En caso afirmativo, debe agregar una nueva versión de la SKU en la oferta existente en lugar de crear una nueva oferta duplicada.
+* El disco de datos no debe cambiar entre dos versiones de la misma SKU.
+* Azure Marketplace no admite el cambio de precios de las SKU activas puesto que afecta a la facturación de los clientes existentes. Asegúrese de no cambiar el precio de las SKU activas en las regiones donde estén disponibles. Sin embargo, puede agregar nuevas SKU o regiones a una SKU existente.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Una vez oferta Hola esté activa, probar toovalidate de escenarios de cliente hello que todos los contratos de Hola y funcionalidad funcionan correctamente en el entorno de producción de hello como entorno de ensayo de hello probados y validados.
+Cuando se ponga en marcha la oferta, realice pruebas de los escenarios de cliente para comprobar que todos los contratos y la funcionalidad funcionen correctamente en el entorno de producción, tal como se comprobó y validó en el entorno de ensayo.
 
-## <a name="see-also"></a>Otras referencias
-* [Introducción: cómo toopublish una toohello de oferta de Azure Marketplace](marketplace-publishing-getting-started.md)
+## <a name="see-also"></a>Consulte también
+* [Introducción: Publicación de una oferta en Azure Marketplace](marketplace-publishing-getting-started.md)
 
 [img-pubportal-walkthru-checked]:media/marketplace-publishing-push-to-production/pubportal-walkthru-checked.png
 [img-pubportal-menu-publish]:media/marketplace-publishing-push-to-production/pubportal-menu-publish.png

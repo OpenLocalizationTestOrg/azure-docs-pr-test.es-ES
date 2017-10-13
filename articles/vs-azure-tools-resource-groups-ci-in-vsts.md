@@ -1,6 +1,6 @@
 ---
-title: "integración de aaaContinuous en VS Team Services mediante proyectos de grupo de recursos de Azure | Documentos de Microsoft"
-description: "Describe cómo se proyecta tooset la integración continua en Visual Studio Team Services mediante la implementación de grupo de recursos de Azure en Visual Studio."
+title: "Integración continua en VS Team Services mediante proyectos del Grupo de recursos de Azure | Microsoft Docs"
+description: "Describe cómo configurar la integración continua en Visual Studio Team Services mediante proyectos de implementación del Grupo de recursos de Azure en Visual Studio."
 services: visual-studio-online
 documentationcenter: na
 author: mlearned
@@ -14,73 +14,73 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: 0fe4a4b8989ee323e8ef2206fa4ebed503025670
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e7d98ca3fa281a136595c37ed9b7e71de0cf7bff
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="continuous-integration-in-visual-studio-team-services-using-azure-resource-group-deployment-projects"></a>Integración continua en Visual Studio Team Services mediante proyectos de implementación del Grupo de recursos de Azure
-toodeploy una plantilla de Azure, realizar tareas en varias fases: compilación, prueba, tooAzure copia (también denominada "Staging") o una plantilla de implementación. Hay dos maneras diferentes toodeploy plantillas tooVisual Studio Team Services (VS Team Services). Ambos métodos proporcionan Hola mismos resultados, elija Hola que mejor se adapte a su flujo de trabajo.
+Para implementar una plantilla de Azure, se realizan tareas en diversas fases: compilación, prueba, copia en Azure (también denominada "almacenamiento provisional") y plantilla de implementación. Hay dos maneras distintas de implementar plantillas en Visual Studio Team Services (VS Team Services). Ambos métodos proporcionan los mismos resultados, así que puede elegir el que mejor se adapte a su flujo de trabajo.
 
-1. Agregar una definición de compilación de tooyour paso a paso que se ejecuta el script de PowerShell de Hola que se incluye en el proyecto de implementación de grupo de recursos de Azure de hello (Deploy-AzureResourceGroup.ps1). script de Hola copia artefactos y, a continuación, implementa la plantilla de Hola.
+1. Agregue un paso único a la definición de compilación que ejecuta el script de PowerShell incluido en el proyecto de implementación del Grupo de recursos de Azure (Deploy-AzureResourceGroup.ps1). El script copia los artefactos y, a continuación, implementa la plantilla.
 2. Agregue varios pasos de compilación de VS Team Services, cada uno de los cuales realiza una tarea de fase.
 
-En este artículo se muestran ambas opciones. primera opción de Hello tiene la ventaja de Hola de con hello usa la misma secuencia de comandos por los desarrolladores de Visual Studio y se proporciona coherencia a lo largo del ciclo de vida de Hola. segunda opción de Hello ofrece una secuencia de comandos integrada toohello alternativa adecuada. Ambos procedimientos suponen que ya tiene un proyecto de implementación de Visual Studio activado en VS Team Services.
+En este artículo se muestran ambas opciones. La primera opción tiene la ventaja de usar el mismo script que usan los desarrolladores en Visual Studio y proporcionar coherencia en todo el ciclo de vida. La segunda opción ofrece una alternativa conveniente al script integrado. Ambos procedimientos suponen que ya tiene un proyecto de implementación de Visual Studio activado en VS Team Services.
 
-## <a name="copy-artifacts-tooazure"></a>Copie los artefactos tooAzure
-Cualquiera que sea el escenario de hello, si dispone de los artefactos que son necesarios para la implementación de plantilla, debe dar toothem de acceso de administrador de recursos de Azure. Estos artefactos pueden incluir archivos como:
+## <a name="copy-artifacts-to-azure"></a>Copia de artefactos en Azure
+Independientemente del escenario, si dispone de los artefactos necesarios para la implementación de plantillas, debe dar a Azure Resource Manager acceso a ellos. Estos artefactos pueden incluir archivos como:
 
 * Plantillas anidadas
 * Scripts de configuración y de DSC
 * Archivos binarios de aplicación
 
 ### <a name="nested-templates-and-configuration-scripts"></a>Plantillas anidadas y scripts de configuración
-Cuando usa plantillas de hello proporcionadas por Visual Studio (o se crea con fragmentos de código de Visual Studio), Hola script de PowerShell no solo crea etapas en artefactos de hello, también parametriza Hola URI de los recursos de Hola para las distintas implementaciones. script de Hola copia tooa un contenedor seguro Hola artefactos de Azure, crea un token de SaS para ese contenedor y, a continuación, pasa esa información en la implementación de la plantilla de toohello. Vea [crear una implementación de plantilla](https://msdn.microsoft.com/library/azure/dn790564.aspx) toolearn más información sobre plantillas anidadas.  Al utilizar las tareas en VS Team Services, debe seleccionar tareas apropiadas de hello para la implementación de plantilla y si es necesario, pasar valores de parámetro de hello paso toohello plantilla implementación de ensayo.
+Al utilizar las plantillas proporcionadas por Visual Studio (o compilar con fragmentos de código de Visual Studio), el script de PowerShell no solo almacena provisionalmente los artefactos, sino que parametriza también el URI de los recursos de las distintas implementaciones. El script copia los artefactos en un contenedor seguro de Azure, crea un token de SaS para dicho contenedor y, a continuación, pasa esta información a la implementación de plantilla. Consulte [Crear una implementación de plantilla](https://msdn.microsoft.com/library/azure/dn790564.aspx) para obtener más información acerca de las plantillas anidadas.  Cuando se usan tareas en VS Team Services, debe seleccionar las tareas adecuadas para la implementación de plantilla y, si es necesario, pasar valores de parámetro desde el paso de almacenamiento provisional a la implementación de plantilla.
 
 ## <a name="set-up-continuous-deployment-in-vs-team-services"></a>Configuración de la implementación continua en VS Team Services
-script de PowerShell de hello toocall en VS Team Services, necesita tooupdate la definición de compilación. En resumen, pasos de hello son: 
+Para llamar al script de PowerShell en VS Team Services, debe actualizar la definición de compilación. En resumen, los pasos son: 
 
-1. Editar definición de compilación de Hola.
+1. Edición de la definición de compilación.
 2. Configuración de la autorización de Azure en VS Team Services.
-3. Agregue un paso de compilación de PowerShell de Azure que hace referencia el script de PowerShell de hello en el proyecto de implementación de grupo de recursos de Azure Hola.
-4. Establecer valor de Hola de hello *- ArtifactsStagingDirectory* toowork de parámetro con un proyecto compilado en VS Team Services.
+3. Incorporación de un paso de compilación de Azure PowerShell que hace referencia al script de PowerShell en el proyecto de implementación del Grupo de recursos de Azure.
+4. Establecimiento del valor del parámetro *-ArtifactsStagingDirectory* para trabajar con un proyecto compilado en VS Team Services.
 
 ### <a name="detailed-walkthrough-for-option-1"></a>Tutorial detallado para la opción 1
-Hello procedimientos siguientes le guiarán por hello pasos necesarios tooconfigure la implementación continua de VS Team Services mediante una única tarea que se ejecuta el script de PowerShell de hello en el proyecto. 
+Los procedimientos siguientes le guiarán a través de los pasos necesarios para configurar la implementación continua en VS Team Services con una sola tarea que ejecuta el script de PowerShell en el proyecto. 
 
-1. Edite la definición de compilación de VS Team Services y agregue un paso de compilación de Azure PowerShell. Elija la definición de compilación de hello en hello **las definiciones de compilación** categoría y, a continuación, elija hello **editar** vínculo.
+1. Edite la definición de compilación de VS Team Services y agregue un paso de compilación de Azure PowerShell. Elija la definición de compilación en la categoría **Definiciones de compilación** y, a continuación, elija el vínculo **Editar**.
    
    ![Edición de la definición de compilación][0]
-2. Agregue un nuevo **Azure PowerShell** definición de compilación de toohello de paso de compilación y, a continuación, elija hello **agregar el paso de compilación...** .
+2. Agregue un nuevo paso de compilación de **Azure PowerShell** a la definición de compilación y elija el botón **Agregar paso de compilación...** .
    
    ![Incorporación de un paso "Compilar"][1]
-3. Elija hello **implementar tarea** categoría, seleccione hello **Azure PowerShell** de tareas y, a continuación, elija su **agregar** botón.
+3. Elija la categoría de **tarea Implementar**, seleccione la tarea **Azure PowerShell** y, a continuación, elija el botón **Agregar** correspondiente.
    
    ![Adición de tareas][2]
-4. Elija hello **Azure PowerShell** paso de compilación y, a continuación, rellene sus valores.
+4. Elija el paso de compilación **Azure PowerShell** y rellene sus valores.
    
-   1. Si ya tiene un punto de conexión de servicio de Azure agrega tooVS Team Services, elija la suscripción de Hola Hola **suscripción de Azure** cuadro de lista desplegable y, a continuación, omitir toohello próxima sección. 
+   1. Si ya tiene un punto de conexión de servicio de Azure agregado a VS Team Services, elija la suscripción en el cuadro de lista desplegable **Suscripción de Azure** y vaya a la sección siguiente. 
       
-      Si no tiene un punto de conexión de servicio de Azure en VS Team Services, deberá tooadd uno. En esta subsección le guiará por el proceso de Hola. Si su cuenta de Azure usa una cuenta de Microsoft (por ejemplo, Hotmail), debe tomar Hola siguiendo los pasos tooget una autenticación de entidad de servicio.
-   2. Elija hello **administrar** vínculo siguiente toohello **suscripción de Azure** cuadro de lista desplegable.
+      Si no tiene ningún punto de conexión de servicio de Azure en VS Team Services, debe agregar uno. Este subapartado le guiará por el proceso. Si su cuenta de Azure usa una cuenta de Microsoft (como Hotmail), debe seguir estos pasos para obtener una autenticación de entidad de servicio.
+   2. Elija el vínculo **Administrar** situado junto al cuadro de lista desplegable **Suscripción de Azure**.
       
       ![Administración de suscripciones de Azure][3]
-   3. Elija **Azure** en hello **nuevo extremo de servicio** cuadro de lista desplegable.
+   3. Elija **Azure** en el cuadro de lista desplegable **Nuevo punto de conexión de servicio**.
       
       ![Nuevo punto de conexión de servicio][4]
-   4. Hola **Agregar suscripción de Azure** cuadro de diálogo, seleccione hello **entidad de servicio** opción.
+   4. En el cuadro de diálogo **Agregar suscripción de Azure**, seleccione la opción **Entidad de servicio**.
       
       ![Opción de entidad de servicio][5]
-   5. Agregue su toohello de información de suscripción de Azure **Agregar suscripción de Azure** cuadro de diálogo. Necesita hello tooprovide siguientes elementos:
+   5. Agregue la información de suscripción de Azure en el cuadro de diálogo **Agregar suscripción de Azure** . Debe proporcionar los siguientes elementos:
       
       * Id. de suscripción
       * Subscription Name
       * Id. de entidad del servicio
       * Clave de entidad del servicio 
       * Identificador de inquilino
-   6. Agregar un nombre de su elección toohello **suscripción** cuadro Nombre. Este valor aparece más adelante en hello **suscripción de Azure** la lista desplegable de VS Team Services. 
-   7. Si no conoce el identificador de la suscripción de Azure, puede usar uno de hello después tooretrieve de comandos.
+   6. Agregue un nombre de su elección en el cuadro de nombre **Suscripción** . Este valor aparecerá más adelante en la lista desplegable **Suscripción de Azure** en VS Team Services. 
+   7. Si no conoce el identificador de la suscripción de Azure, puede usar uno de los siguientes comandos para recuperarlo.
       
       Para scripts de PowerShell, use:
       
@@ -89,31 +89,31 @@ Hello procedimientos siguientes le guiarán por hello pasos necesarios tooconfig
       Para la CLI de Azure, utilice:
       
       `azure account show`
-   8. tooget un identificador de entidad de servicio, clave de entidad de servicio y el Id. de inquilino, siga el procedimiento de hello en [aplicación crear Active Directory y la entidad de seguridad de servicio mediante el portal de](resource-group-create-service-principal-portal.md) o [con una entidad de servicio de autenticación El Administrador de recursos Azure](resource-group-authenticate-service-principal.md).
-   9. Agregar hello toohello de valores de Id. de entidad de servicio y clave de entidad de servicio, Id. de inquilino **Agregar suscripción de Azure** diálogo cuadro y, a continuación, elija hello **Aceptar** botón.
+   8. Para obtener un id. de entidad de servicio, una clave de entidad de servicio y un id. de inquilino, siga el procedimiento de [Creación de aplicación de Active Directory y entidad de servicio mediante el portal](resource-group-create-service-principal-portal.md) o [Autenticación de una entidad de servicio con Azure Resource Manager](resource-group-authenticate-service-principal.md).
+   9. Agregue los valores del identificador de entidad de servicio, de la clave de entidad de servicio y del identificador de inquilino en el cuadro de diálogo **Agregar suscripción de Azure** y, después, elija el botón **Aceptar**.
       
-      Ahora tiene un Hola de toorun toouse de entidad de servicio válido script de PowerShell de Azure.
-5. Editar definición de compilación de Hola y elija hello **Azure PowerShell** paso de compilación. Seleccione la suscripción de Hola Hola **suscripción de Azure** cuadro de lista desplegable. (Si no aparece la suscripción de hello, elija hello **actualizar** Hola siguiente botón **administrar** vínculo.) 
+      Ahora dispone de una entidad de servicio válida que puede utilizar para ejecutar el script de Azure PowerShell.
+5. Edite la definición de compilación y elija el paso de compilación **Azure PowerShell** . Seleccione la suscripción en el cuadro de lista desplegable **Suscripción de Azure**. (Si la suscripción no aparece, elija el botón **Actualizar** junto al vínculo **Administrar**). 
    
    ![Configure la tarea de compilación de Azure PowerShell][8]
-6. Proporcione un script de PowerShell Deploy-AzureResourceGroup.ps1 toohello de ruta de acceso. toodo, elija el botón de puntos suspensivos (...) hello toohello siguiente **ruta de acceso de secuencia de comandos** , navegue toohello script de PowerShell Deploy-AzureResourceGroup.ps1 en hello **Scripts** carpeta del proyecto, seleccione, y, a continuación, elija hello **Aceptar** botón.    
+6. Proporcione una ruta de acceso al script de PowerShell Deploy-AzureResourceGroup.ps1. Para ello, elija el botón de puntos suspensivos (...) junto al cuadro **Ruta de acceso del script**, vaya al script de PowerShell Deploy-AzureResourceGroup.ps1 en la carpeta **Scripts** del proyecto, selecciónelo y elija el botón **Aceptar**.    
    
-   ![Seleccione la ruta de acceso tooscript][9]
-7. Después de seleccionar el script de Hola, actualiza la secuencia de comandos de toohello de ruta de acceso de Hola para que se ejecuta desde hello Build.StagingDirectory (Hola el mismo directorio que *ArtifactsLocation* se establece en). Puede hacerlo mediante la adición de "$(Build.StagingDirectory)/" toohello a partir de la ruta de acceso de script de Hola.
+   ![Selección de ruta de acceso a script][9]
+7. Después de seleccionar el script, actualice la ruta de acceso al script para que se ejecute desde Build.StagingDirectory (el mismo directorio en el que está establecido *ArtifactsLocation* ). Puede hacerlo agregando “$(Build.StagingDirectory)/” al principio de la ruta de acceso del script.
    
-    ![Editar tooscript de ruta de acceso][10]
-8. Hola **argumentos de secuencia de comandos** cuadro, escriba Hola parámetros (en una sola línea) siguientes. Al ejecutar el script de Hola en Visual Studio, puede ver cómo usa VS Hola parámetros Hola **salida** ventana. Puede usar como punto de partida para establecer valores de parámetro de hello en el paso de compilación.
+    ![Edición de ruta de acceso a script][10]
+8. En el cuadro **Argumentos del script** escriba los parámetros siguientes (en una sola línea). Al ejecutar el script en Visual Studio, puede ver cómo usa VS los parámetros en la ventana **Resultados** . Se puede utilizar como punto de partida para configurar los valores de parámetro en el paso de compilación.
    
    | Parámetro | Descripción |
    | --- | --- |
-   | -ResourceGroupLocation |Hola valor de ubicación geográfica donde se encuentra, como grupo de recursos de hello **eastus** o **'UU'**. (Agregar comillas simples si hay un espacio de nombre de hello). Para más información, consulte [Regiones de Azure](https://azure.microsoft.com/en-us/regions/). |
-   | -ResourceGroupName |nombre de Hola Hola del grupo de recursos utilizado en esta implementación. |
-   | -UploadArtifacts |Este parámetro, cuando está presente, especifica que los artefactos que deben toobe tooAzure de sistema local de Hola. Solo necesita tooset este modificador si la implementación de plantilla requiere artefactos adicionales que desea que toostage mediante script de PowerShell de hello (por ejemplo, los scripts de configuración o las plantillas anidadas). |
-   | -StorageAccountName |nombre de Hola de cuenta de almacenamiento de hello usa toostage artefactos para esta implementación. Este parámetro solo se usa si almacena provisionalmente los artefactos para la implementación. Si se proporciona este parámetro, se crea una nueva cuenta de almacenamiento si no ha creado el script de Hola durante una implementación anterior. Si se especifica el parámetro hello, debe existir la cuenta de almacenamiento de Hola. |
-   | -StorageAccountResourceGroupName |nombre de Hola Hola del grupo de recursos asociado a la cuenta de almacenamiento de Hola. Este parámetro es necesario únicamente si proporciona un valor para el parámetro de StorageAccountName Hola. |
-   | -TemplateFile |archivo de plantilla de Hello ruta de acceso toohello en el proyecto de implementación de grupo de recursos de Azure de Hola. flexibilidad de tooenhance, use una ruta de acceso para este parámetro que es la ubicación relativa toohello de hello secuencia de comandos de PowerShell en lugar de una ruta de acceso absoluta. |
-   | -TemplateParametersFile |archivo de parámetros de Hello ruta de acceso toohello en el proyecto de implementación de grupo de recursos de Azure Hola. flexibilidad de tooenhance, use una ruta de acceso para este parámetro que es la ubicación relativa toohello de hello secuencia de comandos de PowerShell en lugar de una ruta de acceso absoluta. |
-   | -ArtifactStagingDirectory |Este parámetro permite script de PowerShell de hello saber carpeta Hola desde donde deben copiarse los archivos binarios del proyecto Hola. Este valor invalida el valor predeterminado de hello usado por hello script de PowerShell. Para usar VS Team Services, establezca el valor de hello en: $(Build.StagingDirectory) - ArtifactStagingDirectory |
+   | -ResourceGroupLocation |El valor de la ubicación geográfica donde se encuentra el grupo de recursos, como **eastus** o **'Este de EE. UU.'**. (Agregue comillas simples si hay un espacio en el nombre). Para más información, consulte [Regiones de Azure](https://azure.microsoft.com/en-us/regions/). |
+   | -ResourceGroupName |El nombre del grupo de recursos que se usa para esta implementación. |
+   | -UploadArtifacts |Este parámetro, cuando está presente, especifica que los artefactos tienen que cargarse en Azure desde el sistema local. Solo debe establecer este modificador si su implementación de plantilla requiere artefactos adicionales que desea almacenar provisionalmente mediante el script de PowerShell (como scripts de configuración o plantillas anidadas). |
+   | -StorageAccountName |El nombre de la cuenta de almacenamiento utilizada para almacenar provisionalmente los artefactos en esta implementación. Este parámetro solo se usa si almacena provisionalmente los artefactos para la implementación. Si se suministra este parámetro se crea una cuenta de almacenamiento nueva si el script no creó ninguna durante una implementación anterior. Si se especifica el parámetro, ya debe existir la cuenta de almacenamiento. |
+   | -StorageAccountResourceGroupName |El nombre del grupo de recursos asociado a la cuenta de almacenamiento. Este parámetro solo se requiere si se proporciona un valor para el parámetro StorageAccountName. |
+   | -TemplateFile |La ruta de acceso al archivo de plantilla en el proyecto de implementación del Grupo de recursos de Azure. Para mejorar la flexibilidad, utilice una ruta de acceso para este parámetro que sea relativa a la ubicación del script de PowerShell en lugar de una ruta de acceso absoluta. |
+   | -TemplateParametersFile |La ruta de acceso al archivo de parámetros en el proyecto de implementación del Grupo de recursos de Azure. Para mejorar la flexibilidad, utilice una ruta de acceso para este parámetro que sea relativa a la ubicación del script de PowerShell en lugar de una ruta de acceso absoluta. |
+   | -ArtifactStagingDirectory |Este parámetro permite que el script de PowerShell conozca la carpeta desde la que se deben copiar los archivos binarios del proyecto. Este valor invalida el valor predeterminado usado por el script de PowerShell. Para el uso de VS Team Services, establezca el valor en: ArtifactStagingDirectory $(Build.StagingDirectory) |
    
    A continuación se muestra un ejemplo de argumentos de script (línea dividida para mejorar la legibilidad):
    
@@ -123,62 +123,62 @@ Hello procedimientos siguientes le guiarán por hello pasos necesarios tooconfig
    –StorageAccountResourceGroupName 'Default-Storage-EastUS' -ArtifactStagingDirectory '$(Build.StagingDirectory)'    
    ```
    
-   Cuando haya terminado, Hola **argumentos de secuencia de comandos** cuadro debe ser similar a Hola lista siguiente:
+   Cuando haya terminado, el cuadro **Argumentos del script** debe ser similar a la lista siguiente:
    
    ![Argumentos de script][11]
-9. Después de agregar todos Hola toohello elementos necesarios paso de compilación de PowerShell de Azure, elija hello **cola** compilar el proyecto de botón toobuild Hola. Hola **generar** pantalla muestra la salida Hola Hola script de PowerShell.
+9. Después de agregar todos los elementos necesarios para el paso de compilación de Azure PowerShell, elija el botón de compilación **Cola** para generar el proyecto de compilación. La pantalla **Compilación** muestra el resultado del script de PowerShell.
 
 ### <a name="detailed-walkthrough-for-option-2"></a>Tutorial detallado para la opción 2
-Hello procedimientos siguientes le guiarán por hello pasos necesarios tooconfigure la implementación continua de VS Team Services mediante tareas integradas Hola.
+Los procedimientos siguientes le guiarán por los pasos necesarios para configurar la implementación continua en VS Team Services con las tareas integradas.
 
-1. Edite sus VS Team Services compilación definición tooadd dos nuevos pasos de compilación. Elija la definición de compilación de hello en hello **las definiciones de compilación** categoría y, a continuación, elija hello **editar** vínculo.
+1. Edite la definición de compilación de VS Team Services para agregar dos pasos de compilación nuevos. Elija la definición de compilación en la categoría **Definiciones de compilación** y, a continuación, elija el vínculo **Editar**.
    
    ![Edición de la definición de compilación][12]
-2. Agregar Hola de nuevo los toohello definición de compilación mediante Hola de pasos de compilación **agregar el paso de compilación...** .
+2. Agregue los pasos de compilación nuevos a la definición de compilación con el botón **Incorporación de un paso "Compilar"...** .
    
    ![Incorporación de un paso "Compilar"][13]
-3. Elija hello **implementar** categoría de tarea, seleccione hello **Azure File Copy** de tareas y, a continuación, elija su **agregar** botón.
+3. Elija la categoría de tarea **Implementar**, seleccione la tarea **Copia de archivos de Azure** y, luego, haga clic en el botón **Agregar**.
    
    ![Incorporación de la tarea Copia de archivos de Azure][14]
-4. Elija hello **implementación de grupo de recursos de Azure** de tareas, a continuación, elija su **agregar** botón y, a continuación, **cerrar** hello **tarea catálogo**.
+4. Elija la tarea **Implementación de un grupo de recursos de Azure** y, luego, haga clic en el botón **Agregar** y, luego, elija **Cerrar** el **Catálogo de tareas**.
    
    ![Incorporación de la tarea Implementación de un grupo de recursos de Azure][15]
-5. Elija hello **Azure File Copy** rellenar sus valores y de la tarea.
+5. Elija la tarea **Copia de archivos de Azure** y rellene sus valores.
    
-   Si ya tiene un punto de conexión de servicio de Azure agrega tooVS Team Services, elija la suscripción de Hola Hola **suscripción de Azure** cuadro de lista desplegable. Si no tiene suscripción, vea la [opción 1](#detailed-walkthrough-for-option-1) para obtener las instrucciones sobre cómo configurar una en VS Team Services.
+   Si ya tiene un punto de conexión de servicio de Azure agregado a VS Team Services, elija la suscripción en el cuadro de lista desplegable **Suscripción de Azure**. Si no tiene suscripción, vea la [opción 1](#detailed-walkthrough-for-option-1) para obtener las instrucciones sobre cómo configurar una en VS Team Services.
    
    * Origen: escriba **$(Build.StagingDirectory)**
    * Tipo de conexión de Azure: seleccione **Azure Resource Manager**
-   * Suscripción de Azure RM - suscripción seleccione Hola Hola cuenta de almacenamiento que desee toouse Hola **suscripción de Azure** cuadro de lista desplegable. Si no aparece la suscripción de hello, elija hello **actualizar** Hola siguiente botón **administrar** vínculo.
+   * Suscripción de Azure RM: seleccione la suscripción correspondiente a la cuenta de almacenamiento que desea usar en el cuadro de lista desplegable **Suscripción de Azure**. Si la suscripción no aparece, elija el botón **Actualizar** junto al vínculo **Administrar**.
    * Tipo de destino: seleccione **Blob de Azure**
-   * RM cuenta de almacenamiento - Seleccionar cuenta de almacenamiento de Hola desearía toouse de artefactos de almacenamiento provisional
-   * Nombre de contenedor - escriba Hola nombre del contenedor de hello le gustaría toouse para el almacenamiento provisional; puede ser cualquier nombre de contenedor válido, pero usar una definición de compilación toothis dedicado
+   * Cuenta de almacenamiento de RM: seleccione la cuenta de almacenamiento que desea usar para almacenar artefactos provisionalmente
+   * Nombre de contenedor: escriba el nombre del contenedor que desea usar para el almacenamiento provisional; puede ser cualquier nombre de controlador válido, pero use uno dedicado a esta definición de compilación
    
-   Para los valores de salida de hello:
+   Para los valores de salida:
    
    * URI de contenedor de almacenamiento: escriba **artifactsLocation**
    * Token SAS de contenedor de almacenamiento: escriba **artifactsLocationSasToken**
    
    ![Configuración de la tarea Copia de archivos de Azure][16]
-6. Elija hello **implementación de grupo de recursos de Azure** paso de compilación y, a continuación, rellene sus valores.
+6. Elija el paso de compilación **Implementación de un grupo de recursos de Azure** y rellene sus valores.
    
    * Tipo de conexión de Azure: seleccione **Azure Resource Manager**
-   * Suscripción de Azure RM - suscripción Hola select para la implementación en hello **suscripción de Azure** cuadro de lista desplegable. Esto suele ser hello usa la misma suscripción en el paso anterior de Hola
+   * Suscripción de Azure RM: seleccione la suscripción correspondiente a la implementación en el cuadro de lista desplegable **Suscripción de Azure**. Habitualmente, será la misma suscripción que se usó en el paso anterior.
    * Acción: seleccione **Creación o actualización del grupo de recursos**
-   * Grupo de recursos: seleccione un grupo de recursos o escribir nombre de Hola de un nuevo grupo de recursos para la implementación de Hola
-   * Ubicación - seleccione Hola Hola para grupo de recursos
-   * Plantilla - escriba Hola ruta y nombre de hello plantilla toobe implementado anteponiendo **$(Build.StagingDirectory)**, por ejemplo: **$(Build.StagingDirectory/DSC-CI/azuredeploy.json)**
-   * Parámetros de plantilla: escriba la ruta de acceso de Hola y nombre de hello parámetros toobe utiliza, anteponiéndole **$(Build.StagingDirectory)**, por ejemplo: **$(Build.StagingDirectory/DSC-CI/azuredeploy.parameters.json)**
-   * Reemplazar parámetros de plantilla: escriba o copie y pegue el siguiente código de hello:
+   * Grupo de recursos: seleccione un grupo de recursos o escriba el nombre de un grupo de recursos nuevo para la implementación
+   * Ubicación: seleccione la ubicación del grupo de recursos
+   * Plantilla: escriba la ruta de acceso y el nombre de la plantilla que se implementarán; para ello, anteponga **$(Build.StagingDirectory)**, por ejemplo: **$(Build.StagingDirectory/DSC-CI/azuredeploy.json)**
+   * Parámetros de plantilla: escriba la ruta de acceso y el nombre de los parámetros que se usarán; para ello, anteponga **$(Build.StagingDirectory)**, por ejemplo: **$(Build.StagingDirectory/DSC-CI/azuredeploy.parameters.json)**
+   * Reemplazar parámetros de plantilla: escriba o copie y pegue el siguiente código:
      
      ```    
      -_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken (ConvertTo-SecureString -String "$(artifactsLocationSasToken)" -AsPlainText -Force)
      ```
      ![Configuración de la tarea Implementación de un grupo de recursos de Azure][17]
-7. Una vez que haya agregado todos los elementos de hello necesario, guarde la definición de compilación de Hola y elija **poner nueva compilación en cola** en la parte superior de Hola.
+7. Una vez que agregue todos los elementos requeridos, guarde la definición de compilación y elija **Poner nueva compilación en cola** en la parte superior.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Lectura [Introducción al administrador de recursos de Azure](azure-resource-manager/resource-group-overview.md) toolearn más información acerca de los grupos de recursos de Azure y Azure Resource Manager.
+Consulte [Información general sobre Azure Resource Manager](azure-resource-manager/resource-group-overview.md) para más información sobre Azure Resource Manager y los grupos de recursos de Azure.
 
 [0]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough1.png
 [1]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough2.png

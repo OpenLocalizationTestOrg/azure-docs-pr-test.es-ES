@@ -1,6 +1,6 @@
 ---
 title: 'Azure Active Directory B2C: Disponibilidad en regiones y residencia de datos | Microsoft Docs'
-description: Un tema en tipos de Hola de inquilinos de Azure Active Directory B2C
+description: Un tema sobre los tipos de inquilinos de Azure Active Directory B2C
 services: active-directory-b2c
 documentationcenter: 
 author: gsacavdm
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: gsacavdm
-ms.openlocfilehash: d382921fe9d62183b6d52c47d62f952dabd116c4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: facd66f0324e382ea7609a035de8129ba433846f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: Disponibilidad en regiones y residencia de datos
-Disponibilidad de la región y residencia de datos son dos conceptos muy diferentes que aplican tooAzure AD B2C de manera diferente del resto de Hola de Azure. En este artículo se explican las diferencias de hello entre estos dos conceptos y comparar cómo se aplica tooAzure frente a Azure AD B2C.
+La disponibilidad en regiones y residencia de datos son dos conceptos muy diferentes que se aplican de forma diferente a Azure AD B2C del resto de Azure. En este artículo se explican las diferencias entre estos dos conceptos y se compara cómo se aplican a Azure frente a Azure AD B2C.
 
 ## <a name="summary"></a>Resumen
-B2C de Azure AD es **suelen estar disponibles en todo el mundo** con la opción de Hola para **residencia de datos en Estados Unidos o en Europa**.
+Azure AD B2C suele estar **disponible en todo el mundo** con la opción de **residencia de datos en Estados Unidos o en Europa**.
 
 ## <a name="concepts"></a>Conceptos
-* **Disponibilidad de la región** hace referencia toowhere un servicio está disponible para su uso.
-* **Residencia datos** hace referencia se almacenan los datos de usuario de toowhere.
+* **Disponibilidad en regiones**  se refiere a que un servicio esté disponible para su uso.
+* **Residencia de datos** hace referencia a dónde se almacenan los datos de usuario.
 
 ## <a name="region-availability"></a>Disponibilidad en regiones
-B2C de Azure AD está disponible en todo el mundo a través de hello nube pública de Azure. 
+Azure AD B2C está disponible en todo el mundo a través de la nube pública de Azure. 
 
-Esto difiere del modelo de hello mayoría de los demás seguimiento de los servicios de Azure que acoplar disponibilidad con residencia de datos. Puede ver ejemplos de esto en ambos Azure [productos disponibles por región](https://azure.microsoft.com/regions/services/) hello y página [Calculadora de precios B2C de Active Directory](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
+Esto difiere del modelo de la mayoría de los demás servicios de Azure que aúnan la disponibilidad con la residencia de datos. Puede ver ejemplos de esto en la página [Productos disponibles por región](https://azure.microsoft.com/regions/services/) de Azure y en la [calculadora de precios de Active Directory B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
 
 ## <a name="data-residency"></a>Residencia de datos
 Azure AD B2C almacena los datos de usuarios en Estados Unidos o Europa.
@@ -42,23 +42,23 @@ La residencia de datos se determina en función del país o región seleccionado
 
 ![Captura de pantalla de un inquilino de versión preliminar](./media/active-directory-b2c-reference-tenant-type/data-residency-b2c-tenant.png)
 
-Datos que se encuentran en Estados Unidos de Hola para hello después de países o regiones:
+Los datos residen en Estados Unidos para los países o regiones siguientes:
 
 > Estados Unidos, Canadá, Costa Rica, República Dominicana, El Salvador, Guatemala, México, Panamá, Puerto Rico y Trinidad y Tobago
 
-Los datos residen en Europa para hello después de países o regiones:
+Los datos residen en Europa para los países o regiones siguientes:
 
 > Alemania, Arabia Saudí, Argelia, Austria, Azerbaiyán, Bahréin, Bélgica, Bielorrusia, Bulgaria, Croacia, Chipre, Dinamarca, Egipto, Emiratos Árabes Unidos Eslovaquia, Eslovenia, España, Estonia, Finlandia, Francia, Grecia, Hungría, Irlanda, Islandia, Israel, Italia, Jordania, Kazajistán, Kenia, Kuwait, Letonia, Líbano, Liechtenstein, Lituania, Luxemburgo, Macedonia, Malta, Marruecos, Montenegro, Nigeria, Noruega, Omán, Países Bajos, Pakistán, Polonia, Portugal, Qatar, Reino Unido, República Checa, Rumanía, Rusia, Serbia, Sudáfrica, Suecia, Suiza, Túnez, Turquía y Ucrania.
 
-Hola restantes países o regiones están en curso de Hola de añadidos toohello lista.  Por ahora, todavía puede usar Azure AD B2C escogiendo Hola países o regiones anteriores.
+Los países o regiones restantes están a punto de agregarse a la lista.  De momento, todavía puede usar Azure AD B2C escogiendo cualquiera de los países o regiones anteriores.
 
 > Afganistán, Argentina, Australia, Brasil, Chile, Colombia, Corea, Ecuador, Filipinas, India, Indonesia, Iraq, Japón, Malasia, Nueva Zelanda, Paraguay, Perú, RAE de Hong Kong, Singapur, Sri Lanka, Taiwán, Tailandia, Uruguay y Venezuela.
 
 ## <a name="preview-tenant"></a>Inquilino de versión preliminar
-Si había creado un inquilino de B2C durante el período de versión preliminar de Azure AD B2C, es probable que en **Tipo de inquilino** aparezca **Inquilino de vista previa**. Si éste es el caso de hello, debe usar al inquilino solo para fines de pruebas y desarrollo y no para las aplicaciones de producción.
+Si había creado un inquilino de B2C durante el período de versión preliminar de Azure AD B2C, es probable que en **Tipo de inquilino** aparezca **Inquilino de vista previa**. En ese caso, al inquilino se DEBE usar solo para fines de prueba y desarrollo, NO para aplicaciones de producción.
 
 > [!IMPORTANT]
-> No hay ninguna ruta de acceso de migración desde una versión preliminar del inquilino de B2C inquilino tooa producción escala B2C. Tenga en cuenta que existen problemas conocidos cuando se elimina un inquilino de vista previa B2C y volver a crear una escala de producción B2C inquilino tenga Hola el mismo nombre de dominio. Deberá toocreate un inquilino de B2C producción escala con un nombre de dominio diferente.
+> No hay ninguna ruta de migración de un inquilino de B2C de versión preliminar a un inquilino de B2C de escala de producción. Tenga en cuenta que existen problemas conocidos al eliminar un inquilino de B2C preliminar y volver a crear un inquilino B2C a escala de producción con el mismo nombre de dominio. Es necesario crear un inquilino de B2C a escala de producción con otro nombre de dominio.
 
 
 ![Captura de pantalla de un inquilino de versión preliminar](./media/active-directory-b2c-reference-tenant-type/preview-b2c-tenant.png)

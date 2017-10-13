@@ -1,5 +1,5 @@
 ---
-title: Ejemplos de secuencias de comandos de servicio de contenedor aaaAzure | Documentos de Microsoft
+title: Ejemplos de scripts de Azure Container Service | Microsoft Docs
 description: Ejemplos de scripts de Azure Container Service
 services: container-service
 documentationcenter: 
@@ -17,15 +17,15 @@ ms.workload: na
 ms.date: 05/30/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 8c655a1c2a13c5636211ba8333c0e7a338b1e79a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: b56c45fc711cc2831adde80617b14a82601b49e7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cli-samples-for-azure-container-service"></a>Ejemplos de la CLI de Azure para Azure Container Service
 
-Hello tabla siguiente incluye vínculos toobash scripts creados con hello CLI de Azure.
+En la tabla siguiente se incluyen vínculos a scripts de Bash creados con la CLI de Azure.
 
 | | |
 |---|---|

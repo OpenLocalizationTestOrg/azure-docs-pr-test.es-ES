@@ -1,5 +1,5 @@
 ---
-title: "tablas de aaaTemporary en el almacén de datos de SQL | Documentos de Microsoft"
+title: Tablas temporales en SQL Data Warehouse | Microsoft Docs
 description: "Introducción a las tablas temporales en Almacenamiento de datos SQL de Azure."
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 10/31/2016
 ms.author: shigu;barbkess
-ms.openlocfilehash: 2e8b122eb6d71d5bc0a99ce8a2ecab5dbe2d1b49
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: fd8c31a727dae3b011aa8294a81f005bad72a278
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>Tablas temporales en el Almacenamiento de datos SQL
 > [!div class="op_single_selector"]
@@ -33,9 +33,9 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Tablas temporales son muy útiles al procesar datos, especialmente durante la transformación donde los resultados intermedios de hello son transitorios. En el almacén de datos de SQL tablas temporales existen en el nivel de sesión de Hola.  Son solo visibles toohello sesión en el que se crearon y se quitan automáticamente cuando se cierra la sesión de esa sesión.  Tablas temporales ofrecen una ventaja de rendimiento ya se escriben sus resultados toolocal en lugar de almacenamiento remoto.  Las tablas temporales son ligeramente diferentes en el almacén de datos de SQL Azure de la base de datos de SQL Azure, tal y como puede tener acceso desde cualquier lugar dentro de la sesión de hello, incluidos tanto dentro como fuera de un procedimiento almacenado.
+Las tablas temporales son muy útiles al procesar datos, especialmente durante la transformación donde los resultados intermedios son transitorios. Las tablas temporales de Almacenamiento de datos SQL existen en el nivel de sesión.  Solo son visibles para la sesión en la que se crearon y se eliminan automáticamente cuando esa sesión se cierra.  Las tablas temporales ofrecen ventajas para el rendimiento porque sus resultados se escriben en el almacenamiento local en lugar de en el remoto.  No son iguales en Almacenamiento de datos SQL que en Base de datos SQL de Azure en el sentido de que se puede acceder a ellas desde cualquier parte de la sesión, incluso dentro y fuera de un procedimiento almacenado.
 
-Este artículo contiene instrucciones esenciales para el uso de tablas temporales y resalta los principios de Hola de tablas temporales de nivel de sesión. Uso de información de Hola en este artículo puede ayudarle a modularizar el código, mejorar la reusabilidad y la facilidad de mantenimiento del código.
+Este artículo contiene directrices esenciales para el uso de tablas temporales y resalta los principios de las tablas temporales de nivel de sesión. La información de este artículo puede ayudarle a dividir en secciones el código y así mejorar su reusabilidad y facilidad de mantenimiento.
 
 ## <a name="create-a-temporary-table"></a>Creación de una tabla temporal
 Las tablas temporales se crean colocando simplemente `#`delante del nombre de la tabla.  Por ejemplo:
@@ -58,7 +58,7 @@ WITH
 )
 ```
 
-También se pueden crear tablas temporales con un `CTAS` exactamente utilizando Hola mismo enfoque:
+También se pueden crear tablas temporales mediante `CTAS` siguiendo exactamente el mismo método:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -112,12 +112,12 @@ FROM    t1
 ``` 
 
 > [!NOTE]
-> `CTAS`es un comando muy eficaces y añadió hello ventaja de estar muy eficaz en el uso de espacio de registro de transacciones. 
+> `CTAS` es un comando muy eficaz, con la ventaja adicional de que ofrece un uso muy eficiente del espacio de registro de transacciones. 
 > 
 > 
 
 ## <a name="dropping-temporary-tables"></a>Eliminación de tablas temporales
-Cuando se crea una nueva sesión, no debe existir ninguna tabla temporal.  Sin embargo, si se está llamando a Hola mismo procedimiento almacenado, que crea un archivo temporal con hello homónimas, tooensure que su `CREATE TABLE` instrucciones son correctas una comprobación de existencia previa simple con un `DROP` puede utilizarse como en hello ejemplo siguiente:
+Cuando se crea una nueva sesión, no debe existir ninguna tabla temporal.  Sin embargo, si llama al mismo procedimiento almacenado, lo que crea un archivo temporal con el mismo nombre, para tener la seguridad de que las instrucciones `CREATE TABLE` se ejecutan correctamente, se puede usar una sencilla comprobación de existencia previa con `DROP`, como en el ejemplo siguiente:
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -126,14 +126,14 @@ BEGIN
 END
 ```
 
-Para la codificación de coherencia, es una buena práctica toouse este patrón para las tablas y las tablas temporales.  También es una buena idea toouse `DROP TABLE` tooremove tablas temporales cuando haya terminado con ellos en el código.  En el desarrollo del procedimiento almacenado es bastante común toosee Hola comandos drop agrupados final Hola de un procedimiento tooensure que estos objetos se limpian.
+Por coherencia con la codificación, se recomienda usar este patrón tanto para tablas como para tablas temporales.  También es buena idea usar `DROP TABLE` para quitar las tablas temporales cuando ya no las necesite en el código.  En el desarrollo de procedimientos almacenados es bastante habitual que los comandos de eliminación se empaqueten juntos al final de un procedimiento para garantizar que estos objetos se limpian.
 
 ```sql
 DROP TABLE #stats_ddl
 ```
 
 ## <a name="modularizing-code"></a>Modularización de código
-Puesto que las tablas temporales se pueden ver en cualquier parte en una sesión de usuario, puede ser aprovechada toohelp modularizar el código de aplicación.  Por ejemplo, hello procedimiento almacenado siguiente reúne Hola procedimientos desde encima toogenerate DDL que se actualizará todas las estadísticas de la base de datos de hello recomendado por el nombre de estadística.
+Como las tablas temporales se pueden ver en cualquier parte de una sesión de usuario, se puede aprovechar este hecho para ayudarle a dividir en secciones el código de aplicación.  Por ejemplo, el siguiente procedimiento almacenado reúne los procedimientos recomendados anteriormente para generar DDL, que actualizará todas las estadísticas de la base de datos por el nombre de la estadística.
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_update_stats]
@@ -207,7 +207,7 @@ FROM    t1
 GO
 ```
 
-En esta fase Hola única acción que se ha producido es creación de hello de un procedimiento almacenado, lo que simplemente genera una tabla temporal, stats_ddl #, con instrucciones de DDL.  Este procedimiento almacenado colocará #stats_ddl si ya existe tooensure que no producirá un error si ejecuta más de una vez dentro de una sesión.  Sin embargo, dado que no hay ningún `DROP TABLE` al final de Hola de procedimiento almacenado de hello, cuando hello procedimiento almacenado se completa, dejará tabla Hola creado para que sólo pueda leerlo fuera de procedimiento almacenado de Hola.  En el almacén de datos de SQL, a diferencia de otras bases de datos de SQL Server, es tabla temporal de hello toouse posibles fuera de procedimiento de Hola que lo creó.  Tablas temporales de almacenamiento de datos de SQL se pueden usar **en cualquier lugar** dentro de la sesión de Hola. Esto puede provocar toomore código modular y fácil de administrar en hello ejemplo siguiente:
+En este punto, la única acción que se ha producido es la creación de un procedimiento almacenado que simplemente generará una tabla temporal, #stats_ddl, con instrucciones DDL.  Este procedimiento almacenado quitará #stats_ddl si ya existe para tener la seguridad de que no dará error si se ejecuta más de una vez dentro de una sesión.  Sin embargo, puesto que no hay ningún elemento `DROP TABLE` al final del procedimiento almacenado, cuando se complete este, saldrá de la tabla creada para que se pueda leer fuera del procedimiento almacenado.  En Almacenamiento de datos SQL, a diferencia de otras bases de datos SQL Server, es posible usar la tabla temporal fuera del procedimiento almacenado que la ha creado.  Las tablas temporales de Almacenamiento de datos SQL se pueden usar **en cualquier parte** dentro de la sesión. Esto puede dar lugar a código más modular y administrable como en el ejemplo siguiente:
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -232,7 +232,7 @@ DROP TABLE #stats_ddl;
 El Almacenamiento de datos SQL impone algunas limitaciones al implementar las tablas temporales.  Actualmente, solo se admiten tablas temporales con ámbito de sesión.  No se admiten tablas temporales globales.  Además, no se pueden crear vistas en las tablas temporales.
 
 ## <a name="next-steps"></a>Pasos siguientes
-toolearn más información, vea los artículos de hello en [información general de la tabla][Overview], [tipos de datos de tabla][Data Types], [distribuir una tabla] [ Distribute], [Indiza una tabla][Index], [creación de particiones de una tabla] [ Partition] y [ Mantener las estadísticas de tabla][Statistics].  Para obtener más información sobre los procedimientos recomendados, consulte [Procedimientos recomendados para SQL Data Warehouse de Azure][SQL Data Warehouse Best Practices].
+Para obtener más información, consulte los artículos sobre [información general de tablas][Overview], [tipos de datos de tabla][Data Types], [distribución de una tabla][Distribute], [indexación de una tabla][Index], [creación de particiones de una tabla][Partition] y [mantenimiento de estadísticas de tabla][Statistics].  Para obtener más información sobre los procedimientos recomendados, consulte [Procedimientos recomendados para SQL Data Warehouse de Azure][SQL Data Warehouse Best Practices].
 
 <!--Image references-->
 

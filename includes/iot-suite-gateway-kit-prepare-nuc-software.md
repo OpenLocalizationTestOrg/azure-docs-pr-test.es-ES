@@ -1,43 +1,43 @@
 ## <a name="build-iot-edge"></a>Compilación de IoT Edge
 
-Este tutorial usa toocommunicate de módulos personalizado de borde IoT con hello solución preconfigurada de supervisión remoto. Por lo tanto, debe módulos de toobuild hello borde IoT desde el código de origen personalizado. Hola las secciones siguientes describe cómo tooinstall IoT borde y compilación Hola módulo IoT borde personalizado.
+Este tutorial usa módulos personalizados de IoT Edge para comunicarse con la solución preconfigurada de supervisión remota. Por tanto, es necesario compilar los módulos de IoT Edge desde el código fuente personalizado. Las secciones siguientes describen cómo instalar IoT Edge y compilar el módulo personalizado de IoT Edge.
 
 ### <a name="install-iot-edge"></a>Instalación de IoT Edge
 
-Hello siguientes pasos describen cómo tooinstall Hola había compilado previamente software IoT borde en hello NUC de Intel:
+Los pasos siguientes describen cómo instalar el software precompilado de IoT Edge en un Intel NUC:
 
-1. Configurar repositorios de paquete inteligente Hola necesario mediante la ejecución Hola siguiente comandos de hello NUC de Intel:
+1. Configure los repositorios necesarios de Smart Package mediante la ejecución de los comandos siguientes en el Intel NUC:
 
     ```bash
     smart channel --add IoT_Cloud type=rpm-md name="IoT_Cloud" baseurl=http://iotdk.intel.com/repos/iot-cloud/wrlinux7/rcpl13/ -y
     smart channel --add WR_Repo type=rpm-md baseurl=https://distro.windriver.com/release/idp-3-xt/public_feeds/WR-IDP-3-XT-Intel-Baytrail-public-repo/RCPL13/corei7_64/
     ```
 
-    Escriba `y` cuando Hola comando le pide que demasiado**incluir este canal?**.
+    Escriba `y` cuando el comando le pregunte **Include this channel?** (¿Incluir este canal?).
 
-1. Actualizar el Administrador de paquetes inteligentes Hola ejecutando Hola siguiente comando:
+1. Actualice Smart Package Manager ejecutando el comando siguiente:
 
     ```bash
     smart update
     ```
 
-1. Instalar paquete de hello borde de IoT de Azure ejecutando el siguiente comando de hello:
+1. Instale el paquete de Azure IoT Edge ejecutando el comando siguiente:
 
     ```bash
     smart config --set rpm-check-signatures=false
     smart install packagegroup-cloud-azure -y
     ```
 
-1. Comprobar la instalación de hello ejecución ejemplo de Hola a "¡Hello world". En este ejemplo se escribe un archivo hello world mensaje toohello log.txT cada cinco segundos. Hello siguientes comandos ejecutan muestra de Hola a "¡Hello world":
+1. Compruebe la instalación ejecutando el ejemplo "Hola mundo". Este ejemplo escribe el mensaje Hola mundo en el archivo log.txt cada cinco segundos. Los comandos siguientes ejecutan el ejemplo "Hola mundo":
 
     ```bash
     cd /usr/share/azureiotgatewaysdk/samples/hello_world/
     ./hello_world hello_world.json
     ```
 
-    Omitir cualquier cambio **argumento no válido** mensajes cuando se detiene la muestra de Hola.
+    Ignore cualquier mensaje de **argumento no válido** que se produzca al detener el ejemplo.
 
-    Usar hello después el contenido de comando tooview Hola Hola del archivo de registro:
+    Use el comando siguiente para ver el contenido del archivo de registro:
 
     ```bash
     cat log.txt | more
@@ -45,4 +45,4 @@ Hello siguientes pasos describen cómo tooinstall Hola había compilado previame
 
 ### <a name="troubleshooting"></a>Solución de problemas
 
-Si recibe el error Hola "ningún paquete proporciona util-linux-dev", pruebe a reiniciar hello NUC de Intel.
+Reinicie el dispositivo Intel NUC si ve el siguiente error: "no package provides util-linux-dev" (ningún paquete proporciona util-linux-dev).

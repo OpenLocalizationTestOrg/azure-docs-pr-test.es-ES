@@ -1,6 +1,6 @@
 ---
-title: los informes de actividad de aaaFind de hello portal de Azure | Documentos de Microsoft
-description: "Obtenga información acerca de cómo se notifica toofind actividad de Azure Active Directory en hello portal de Azure."
+title: "Búsqueda de informes de actividad en Azure Portal | Microsoft Docs"
+description: "Obtenga información sobre cómo buscar informes de actividad de Azure Active Directory en Azure Portal."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,19 +15,19 @@ ms.workload: identity
 ms.date: 07/19/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f8d7a968403e10ccc5319f27fedad38b1553ded0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f1875582476c3817b9eb0082b6548cc15043cb98
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="find-activity-reports-in-hello-azure-portal"></a>Buscar informes de actividad en hello portal de Azure
+# <a name="find-activity-reports-in-the-azure-portal"></a>Búsqueda de informes de actividad en Azure Portal
 
-Si va a mover de hello Azure toohello portal clásico de portal de Azure, obtendrá un nuevo aspecto en registros de actividad de Azure Active Directory (Azure AD). En una encuesta reciente [entrada de blog](https://blogs.technet.microsoft.com/enterprisemobility/2016/11/08/azuread-weve-just-turned-on-detailed-auditing-and-sign-in-logs-in-the-new-azure-portal/), explicamos cómo puede ver registros de actividad en el contexto de hello del recurso de saludo está trabajando en hello portal de Azure. En este artículo se describe cómo toofind informa que usó en el portal de Azure clásico en el portal de Azure Hola Hola.
+Si migra del Portal de Azure clásico a Azure Portal, los registros de actividad de Azure Active Directory (Azure AD) tendrán un nuevo aspecto. En una [entrada de blog](https://blogs.technet.microsoft.com/enterprisemobility/2016/11/08/azuread-weve-just-turned-on-detailed-auditing-and-sign-in-logs-in-the-new-azure-portal/) reciente, explicamos cómo puede ver los registros de actividad en el contexto del recurso en que trabaja en Azure Portal. En este artículo se describe cómo puede buscar los informes que usaba en el Portal de Azure clásico en Azure Portal.
 
 ## <a name="whats-new"></a>Novedades
 
-Informes en el portal de Azure clásico Hola se dividen en categorías:
+Los informes del Portal de Azure clásico están separados por categorías:
 
 1.  Informes de seguridad
 2.  Informes de actividad
@@ -35,13 +35,13 @@ Informes en el portal de Azure clásico Hola se dividen en categorías:
 
 ### <a name="activity-and-integrated-app-reports"></a>Informes de actividad y de aplicaciones integradas
 
-Para generación de informes basada en contexto en hello portal de Azure, los informes existentes se combinan en una sola vista. Una única API subyacente proporciona Hola datos toohello vista.
+En el caso de los informes basados en contexto en Azure Portal, los informes existentes se combinan en una sola vista. Una API subyacente única proporciona los datos a la vista.
 
-toosee esta vista, en hello **Azure Active Directory** hoja, en **actividad**, seleccione **registros de auditoría**.
+Para ver esta vista, vaya a la hoja **Azure Active Directory** y, en **ACTIVIDAD**, seleccione **Registros de auditoría**.
 
 ![Registros de auditoría](./media/active-directory-reporting-migration/482.png "Registros de auditoría")
 
-Hola siguientes informes está consolidado en esta vista:
+Los informes siguientes están consolidados en esta vista:
 
 -   Informe de auditoría
 -   Actividad de restablecimiento de contraseña
@@ -53,25 +53,25 @@ Hola siguientes informes está consolidado en esta vista:
 -   Errores de aprovisionamiento de cuentas
 
 
-Hola informes de uso de la aplicación se ha mejorado y se incluye en hello **inicios de sesión** vista. toosee esta vista, en hello **Azure Active Directory** hoja, en **actividad**, seleccione **inicios de sesión**.
+El informe Uso de la aplicación se mejoró y se incluyó en la vista **Inicios de sesión**. Para ver esta vista, vaya a la hoja **Azure Active Directory** y, en **ACTIVIDAD**, seleccione **Inicios de sesión**.
 
 ![Vista de inicios de sesión](./media/active-directory-reporting-migration/483.png "Vista de inicios de sesión")
 
-Hola **inicios de sesión** vista incluye todos los inicios de sesión. Puede utilizar esta información de uso de aplicaciones de tooget de información. También puede ver información de uso de la aplicación Hola **aplicaciones empresariales** información general, en hello **administrar** sección.
+La vista **Inicios de sesión** incluye todos los inicios de sesión del usuario. Puede usar esta información para obtener información sobre el uso de las aplicaciones. También puede consultar la información sobre el uso de las aplicaciones en la información general sobre **Aplicaciones empresariales** en la sección **ADMINISTRAR**.
 
 ![Aplicaciones empresariales](./media/active-directory-reporting-migration/484.png "Aplicaciones empresariales")
 
 ## <a name="access-a-specific-report"></a>Acceso a un informe específico
 
-Aunque Hola portal de Azure ofrece una vista única, también puede buscar en informes específicos.
+Si bien Azure Portal ofrece una vista única, también se pueden consultar informes específicos.
 
 ### <a name="audit-logs"></a>Registros de auditoría
 
-Comentarios de respuesta toocustomer, Hola portal de Azure, puede usar avanzadas filtrado tooaccess Hola de datos que desee. Es un filtro que se puede usar un *categoría de actividad*, que enumeran Hola diferentes tipos de actividad registra en Azure AD. toonarrow toowhat de resultados que está buscando, puede seleccionar una categoría.
+En respuesta a los comentarios de los clientes, en Azure Portal puede usar el filtrado avanzado para tener acceso a los datos que desea. Un filtro que puede usar es una *categoría de actividad*, que muestra los distintos tipos de registros de actividad en Azure AD. Para restringir los resultados a lo que busca, puede seleccionar una categoría.
 
-Por ejemplo, si está interesado en los restablecimientos de contraseña de tooself servicio relacionado de actividades, puede elegir hello **administración de contraseñas de autoservicio** categoría. categorías de Hello que verá se basan en recursos de hello en que si está trabajando.  
+Por ejemplo, si solo le interesan las actividades relacionadas con los restablecimientos de contraseña de autoservicio, puede elegir la categoría **Administración de contraseñas de autoservicio**. Las categorías que ve se basan en el recurso en el que trabaja.  
 
-![Opciones de la categoría en la página de registros de auditoría de filtro de hello](./media/active-directory-reporting-migration/06.png "opciones de la categoría en la página de registros de auditoría de filtro de Hola")
+![Opciones de categoría en la página Filtrar registros de auditoría](./media/active-directory-reporting-migration/06.png "Opciones de categoría en la página Filtrar registros de auditoría")
 
 Las categorías de actividad incluyen:
 
@@ -82,7 +82,7 @@ Las categorías de actividad incluyen:
 
 ### <a name="application-usage"></a>Uso de la aplicación
 
-tooview los detalles sobre el uso de la aplicación para todas las aplicaciones o para una sola aplicación en **actividad**, seleccione **inicios de sesión**. resultados de hello toonarrow, puede filtrar por nombre de usuario o nombre de la aplicación.
+Para detalles sobre el uso de todas las aplicaciones o de una sola aplicación, en **ACTIVIDAD**, seleccione **Inicios de sesión**. Para restringir los resultados, puede filtrar según el nombre del usuario o el nombre de la aplicación.
 
 ![Página Filtrar eventos de inicio de sesión](./media/active-directory-reporting-migration/07.png "Página Filtrar eventos de inicio de sesión")
 
@@ -90,32 +90,32 @@ tooview los detalles sobre el uso de la aplicación para todas las aplicaciones 
 
 #### <a name="azure-ad-anomalous-activity-reports"></a>Informes de actividades anómalas de Azure AD
 
-Seguridad de Azure AD actividad anómala informes desde el portal de Azure clásico Hola han sido tooprovide consolidado a una, vista central. Esta vista muestra todos los eventos de riesgo relacionados con la seguridad que Azure AD puede detectar e informar.
+Los informes de seguridad de actividad anómala en Azure AD del Portal de Azure clásico se consolidaron para brindarle una vista una y centralizada. Esta vista muestra todos los eventos de riesgo relacionados con la seguridad que Azure AD puede detectar e informar.
 
-Hello en la tabla siguiente enumera los tipos de eventos de riesgo correspondientes en hello portal de Azure e informes de seguridad de actividad anómala de hello Azure AD.
+En la tabla siguiente aparecen los informes de seguridad de actividad anómala de Azure AD y los tipos de eventos de riesgo correspondientes en Azure Portal.
 
 | Informe de actividad anómala de Azure AD |  Tipo de evento de riesgo de Identity Protection|
 | :--- | :--- |
 | Usuarios con credenciales perdidas | Credenciales con fugas |
-| Actividad de inicio de sesión irregular | Viaje imposible tooatypical ubicaciones |
+| Actividad de inicio de sesión irregular | Viaje imposible a ubicaciones inusuales |
 | Inicios de sesión desde dispositivos posiblemente infectados | Inicios de sesión desde dispositivos infectados|
 | Inicios de sesión desde orígenes desconocidos | Inicios de sesión desde direcciones IP anónimas |
 | Inicios de sesión desde direcciones IP con actividad sospechosa | Inicios de sesión desde direcciones IP con actividad sospechosa |
 | - | Inicios de sesión desde ubicaciones desconocidas |
 
-Hola después de seguridad de la actividad anómala de Azure AD informa que no se incluyen como eventos de riesgo en hello portal de Azure:
+Los informes de seguridad de actividad anómala de Azure AD siguientes no se incluyen como eventos de riesgo en Azure Portal:
 
 * Inicios de sesión tras varios errores
 * Inicios de sesión desde varias ubicaciones geográficas
 
-Estos informes siguen estando disponibles en el portal de Azure clásico hello, pero dejará de utilizarse en algún momento futuro Hola.
+Estos informes siguen disponibles en el Portal de Azure clásico, pero quedarán en desuso en el futuro.
 
 Para más información, consulte [Eventos de riesgo de Azure Active Directory](active-directory-identity-protection-risk-events.md).  
 
 
 #### <a name="detected-risk-events"></a>Eventos de riesgo detectados
 
-Hola portal de Azure, puede tener acceso a informes acerca de los eventos de riesgo detectados en hello **Azure Active Directory** hoja, en **seguridad**. Se realiza el seguimiento de eventos de riesgo detectados en hello después de informes:   
+En Azure Portal, puede tener acceso a los informes sobre eventos de riesgo detectados en la hoja **Azure Active Directory**, en **SEGURIDAD**. En los informes siguientes se hace un seguimiento de los eventos de riesgo detectados:   
 
 - Usuarios en riesgo
 - Inicios de sesión no seguros
@@ -124,19 +124,19 @@ Hola portal de Azure, puede tener acceso a informes acerca de los eventos de rie
 
 Para más información sobre los informes de seguridad, consulte:
 
-- [Usuarios de informes de seguridad de riesgo en el portal de Azure Active Directory Hola](active-directory-reporting-security-user-at-risk.md)
-- [Riesgo informe de inicios de sesión en el portal de Azure Active Directory Hola](active-directory-reporting-security-risky-sign-ins.md)
+- [Informe de seguridad de usuarios en riesgo en el portal de Azure Active Directory](active-directory-reporting-security-user-at-risk.md)
+- [Informe de inicios de sesión poco seguros del portal de Azure Active Directory](active-directory-reporting-security-risky-sign-ins.md)
 
 
-## <a name="activity-reports-in-hello-azure-classic-portal-vs-hello-azure-portal"></a>Informes de actividad en hello portal de Azure clásico frente a Hola portal de Azure
+## <a name="activity-reports-in-the-azure-classic-portal-vs-the-azure-portal"></a>Informes de actividad en el Portal de Azure clásico frente a Azure Portal
 
-tabla de Hello en esta sección enumeran los informes existentes en hello portal de Azure clásico. También se describe cómo puede obtener Hola la misma información en hello portal de Azure.
+La tabla de esta sección muestra los informes existentes en el Portal de Azure clásico. También describe cómo puede obtener la misma información en Azure Portal.
 
-tooview todos los datos, en Hola de auditoría **Azure Active Directory** hoja, en **actividad**, vaya demasiado**registros de auditoría**.
+Para ver todos los datos de auditoría, vaya a la hoja **Azure Active Directory** y, en **ACTIVIDAD**, vaya a **Registros de auditoría**.
 
 ![Registros de auditoría](./media/active-directory-reporting-migration/61.png "Registros de auditoría")
 
-| Portal de Azure clásico                 | toofind Hola portal de Azure                                                         |
+| Portal de Azure clásico                 | Para encontrar en Azure Portal                                                         |
 | ---                                  | ---                                                                        |
 | Registros de auditoría                           | Para **Categoría de actividad**, seleccione **Directorio principal**.                       |
 | Actividad de restablecimiento de contraseña              | Para **Categoría de actividad**, seleccione **Administración de contraseñas de autoservicio**. |
@@ -147,11 +147,11 @@ tooview todos los datos, en Hola de auditoría **Azure Active Directory** hoja, 
 | Errores de aprovisionamiento de cuentas          | Para **Categoría de actividad**, seleccione **Aprovisionamiento de usuarios de la cuenta**.        |
 | Cambios de nombre de grupo de Office365         | Para **Categoría de actividad**, seleccione **Administración de contraseñas de autoservicio**. Para **Tipo de recurso de actividad**, seleccione **Grupo**. Para **Origen de la actividad**, seleccione **Grupos de O365**.|
 
-Hola tooview **uso de la aplicación** informes en hello **Azure Active Directory** hoja, en **administrar**, seleccione **aplicaciones empresariales**y, a continuación, seleccione **inicios de sesión**.
+Para ver el informe **Uso de la aplicación**, vaya a la hoja **Azure Active Directory** y, en **ADMINISTRAR**, seleccione **Aplicaciones empresariales** y, luego, seleccione **Inicios de sesión**.
 
 
 ![Informe Inicios de sesión de aplicaciones empresariales](./media/active-directory-reporting-migration/199.png "Informe Inicios de sesión de aplicaciones empresariales")
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener información general de informes, vea hello [reporting de Azure Active Directory](active-directory-reporting-azure-portal.md).
+Para obtener información general sobre los informes, consulte [Informes de Azure Active Directory](active-directory-reporting-azure-portal.md).

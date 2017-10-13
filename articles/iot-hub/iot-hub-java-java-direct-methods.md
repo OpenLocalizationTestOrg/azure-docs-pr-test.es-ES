@@ -1,6 +1,6 @@
 ---
-title: "Centro de IoT de Azure aaaUse dirigir métodos (Java) | Documentos de Microsoft"
-description: "¿Cómo toouse centro de IoT de Azure dirigir métodos. Usar dispositivos de IoT de Azure de hello SDK para Java tooimplement una aplicación de dispositivo simulado que incluye un método directo y el servicio IoT de Azure SDK para Java tooimplement una aplicación de servicio que invoca el método directo Hola Hola."
+title: "Uso de métodos directos de Azure IoT Hub (Java) | Microsoft Docs"
+description: "Describe cómo usar los métodos directos de IoT Hub de Azure. Usará el SDK de dispositivo IoT de Azure para Java con el fin de implementar una aplicación de dispositivo simulado que incluye un método directo, además del SDK de servicio IoT de Azure para Java con el objetivo de implementar una aplicación de servicio que invoque el método directo."
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: b6f2f4a64535ab649a3965cd9c5a19bebaf88eef
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 4fb759ecd7767c126bc22165494652039ba1caa4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-direct-methods-java"></a>Uso de métodos directos (Java)
 
@@ -26,16 +26,16 @@ ms.lasthandoff: 10/06/2017
 
 En este tutorial, creará dos aplicaciones de consola de Java:
 
-* **método Invoke direct**, una aplicación de back-end de Java que llama a un método de aplicación de dispositivo simulado de hello y muestra la respuesta de Hola.
-* **dispositivo simulado**, una aplicación Java que simula un dispositivo que se conecta centro de IoT tooyour con la identidad de dispositivo de Hola que cree. Esta aplicación responde toohello invocado directa de back-end de Hola.
+* **invoke-direct-method**, una aplicación de back-end de Java que llama a un método de la aplicación de dispositivo simulado y muestra la respuesta.
+* **simulated-device**, una aplicación de Java que simula un dispositivo que se conecta a la instancia de IoT Hub con la identidad de dispositivo que crea. Esta aplicación responde a la invocación directa desde el back-end.
 
 > [!NOTE]
-> Para obtener información acerca de hello SDK que puede usar toobuild toorun de aplicaciones en dispositivos y el back-end de soluciones, consulte [SDK de Azure IoT][lnk-hub-sdks].
+> Para más información acerca de los diversos SDK que puede usar para crear aplicaciones para que se ejecuten en dispositivos y en el back-end de la solución, consulte [SDK de IoT de Azure][lnk-hub-sdks].
 
-toocomplete este tutorial, necesita:
+Para completar este tutorial, necesita:
 
-* Java SE 8. <br/> [Preparar el entorno de desarrollo] [ lnk-dev-setup] describe cómo tooinstall Java para este tutorial en Windows o Linux.
-* Maven 3.  <br/> [Preparar el entorno de desarrollo] [ lnk-dev-setup] describe cómo tooinstall [Maven] [ lnk-maven] para este tutorial en Windows o Linux.
+* Java SE 8. <br/> [Prepare your development environment][lnk-dev-setup] (Preparación del entorno de desarrollo) describe cómo instalar Java para este tutorial en Windows o Linux.
+* Maven 3.  <br/> [Prepare your development environment][lnk-dev-setup] (Preparación del entorno de desarrollo) describe cómo instalar [Maven][lnk-maven] para este tutorial en Windows o Linux.
 * [Versión de Node.js 0.10.0 o posterior](http://nodejs.org).
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
@@ -44,17 +44,17 @@ toocomplete este tutorial, necesita:
 
 ## <a name="create-a-simulated-device-app"></a>Creación de una aplicación de dispositivo simulado
 
-En esta sección, creará una aplicación de consola de Java que responde el método tooa llamado a soluciones de hello volver final.
+En esta sección, creará una aplicación de consola de Java que responda a un método llamado por el back-end de solución.
 
 1. Cree una carpeta vacía llamada iot-java-direct-method.
 
-1. En carpeta de iot java direct método hello, cree un proyecto de Maven denominado **dispositivo simulado** mediante el siguiente comando en el símbolo del sistema de Hola. Hola siguiente comando es un comando único, long:
+1. En la carpeta iot-java-direct-method, cree un proyecto de Maven denominado **simulated-device** mediante el comando siguiente en el símbolo del sistema. El siguiente es un comando único y largo:
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
-1. En el símbolo del sistema, desplazarse por las carpetas de toohello dispositivo simulado.
+1. En el símbolo del sistema, vaya a la nueva carpeta simulated-device.
 
-1. Con un editor de texto, abra archivo pom.xml de hello en la carpeta del dispositivo simulado de Hola y agregue Hola siguiendo las dependencias toohello **dependencias** nodo. Esta dependencia permite toouse Hola iot de cliente de dispositivo empaquete en su toocommunicate de aplicación con el centro de IoT:
+1. Con un editor de texto, abra el archivo pom.xml de la carpeta simulated-device y agregue las siguientes dependencias al nodo **dependencies** . Esta dependencia le permite usar el paquete iot-device-client en la aplicación para comunicarse con la instancia de IoT Hub:
 
     ```xml
     <dependency>
@@ -65,9 +65,9 @@ En esta sección, creará una aplicación de consola de Java que responde el mé
     ```
 
     > [!NOTE]
-    > Puede comprobar la versión más reciente de Hola de **cliente de dispositivo iot** con [búsqueda Maven][lnk-maven-device-search].
+    > Puede comprobar la versión más reciente de **iot-device-client** mediante la [funcionalidad de búsqueda de Maven][lnk-maven-device-search].
 
-1. Agregue los siguiente hello **generar** nodo después de hello **dependencias** nodo. Esta configuración indica a la aplicación de Maven toouse Java toobuild 1,8 hello:
+1. Agregue el nodo **build** después del nodo **dependencies**. Esta configuración indica a Maven que use Java 1.8 para compilar la aplicación:
 
     ```xml
     <build>
@@ -85,11 +85,11 @@ En esta sección, creará una aplicación de consola de Java que responde el mé
     </build>
     ```
 
-1. Guarde y cierre el archivo de hello pom.xml.
+1. Guarde y cierre el archivo pom.xml.
 
-1. Con un editor de texto, abra el archivo simulated-device\src\main\java\com\mycompany\app\App.java de hello.
+1. Con un editor de texto, abra el archivo simulated-device\src\main\java\com\mycompany\app\App.java.
 
-1. Agregue los siguiente hello **importar** archivo toohello de instrucciones:
+1. Agregue las siguientes instrucciones **import** al archivo:
 
     ```java
     import com.microsoft.azure.sdk.iot.device.*;
@@ -100,7 +100,7 @@ En esta sección, creará una aplicación de consola de Java que responde el mé
     import java.util.Scanner;
     ```
 
-1. Agregar Hola después de las variables de nivel de clase toohello **aplicación** clase. Reemplazar `{youriothubname}` por el nombre del centro de IoT, y `{yourdevicekey}` con hello dispositivo clave-valor que generó en hello *crear una identidad de dispositivo* sección:
+1. Agregue las siguientes variables de nivel de clase a la clase **App** . Reemplace `{youriothubname}` por el nombre de la instancia de IoT Hub y `{yourdevicekey}` por el valor de la clave de dispositivo que generó en la sección *Creación de una identidad de dispositivo*:
 
     ```java
     private static String connString = "HostName={youriothubname}.azure-devices.net;DeviceId=myDeviceID;SharedAccessKey={yourdevicekey}";
@@ -110,21 +110,21 @@ En esta sección, creará una aplicación de consola de Java que responde el mé
     private static final int METHOD_NOT_DEFINED = 404;
     ```
 
-    Esta aplicación de ejemplo usa hello **protocolo** variable cuando se crea una instancia de un **DeviceClient** objeto. Actualmente, toouse dirigir métodos que se debe usar protocolo MQTT Hola.
+    Esta aplicación de ejemplo usa la variable **protocol** al crear una instancia de un objeto **DeviceClient**. 
 
-1. tooreturn un centro de IoT tooyour del código de estado, agregue el siguiente de hello anidados clase toohello **aplicación** clase:
+1. Agregue la clase anidada siguiente a la clase **App** para devolver un código de estado a la instancia de IoT Hub:
 
     ```java
     protected static class DirectMethodStatusCallback implements IotHubEventCallback
     {
       public void execute(IotHubStatusCode status, Object context)
       {
-        System.out.println("IoT Hub responded toodevice method operation with status " + status.name());
+        System.out.println("IoT Hub responded to device method operation with status " + status.name());
       }
     }
     ```
 
-1. invocaciones de método directo toohandle Hola de hello solución back-end, agregue el siguiente de hello anidados clase toohello **aplicación** clase:
+1. Agregue la clase anidada siguiente a la clase **App** para controlar las invocaciones de método directo desde el back-end de la solución:
 
     ```java
     protected static class DirectMethodCallback implements com.microsoft.azure.sdk.iot.device.DeviceTwin.DeviceMethodCallback
@@ -153,7 +153,7 @@ En esta sección, creará una aplicación de consola de Java que responde el mé
     }
     ```
 
-1. toocreate una **DeviceClient** y escuchar las invocaciones de método directo, agregue un **principal** método toohello **aplicación** clase:
+1. Agregue un método **main** a la clase **App** para crear un **DeviceClient** y escuchar las invocaciones de método directo:
 
     ```java
     public static void main(String[] args)
@@ -167,7 +167,7 @@ En esta sección, creará una aplicación de consola de Java que responde el mé
       {
         client.open();
         client.subscribeToDeviceMethod(new DirectMethodCallback(), null, new DirectMethodStatusCallback(), null);
-        System.out.println("Subscribed toodirect methods. Waiting...");
+        System.out.println("Subscribed to direct methods. Waiting...");
       }
       catch (Exception e)
       {
@@ -176,7 +176,7 @@ En esta sección, creará una aplicación de consola de Java que responde el mé
         System.out.println("Shutting down...");
       }
 
-      System.out.println("Press any key tooexit...");
+      System.out.println("Press any key to exit...");
       Scanner scanner = new Scanner(System.in);
       scanner.nextLine();
       scanner.close();
@@ -185,23 +185,23 @@ En esta sección, creará una aplicación de consola de Java que responde el mé
     }
     ```
 
-1. Guarde y cierre el archivo de hello simulated-device\src\main\java\com\mycompany\app\App.java
+1. Guarde y cierre el archivo simulated-device\src\main\java\com\mycompany\app\App.java
 
-1. Compilar hello **dispositivo simulado** aplicación y corrija los errores. En el símbolo del sistema, desplácese carpeta del dispositivo simulado toohello y ejecución Hola siguiente comando:
+1. Compile la aplicación **simulated-device** y corrija los errores. En el símbolo del sistema, vaya a la carpeta simulated-device y ejecute el comando siguiente:
 
     `mvn clean package -DskipTests`
 
 ## <a name="call-a-direct-method-on-a-device"></a>Llamada a un método directo en un dispositivo
 
-En esta sección, creará una aplicación de consola de Java que invoca un método directo y, a continuación, muestra la respuesta de Hola. Esta aplicación de consola conecta tooyour método directo de centro de IoT tooinvoke Hola.
+En esta sección, creará una aplicación de consola de Java que invoca a un método directo y luego muestra la respuesta. Esta aplicación de consola se conecta a la instancia de IoT Hub para invocar al método directo.
 
-1. En carpeta de iot java direct método hello, cree un proyecto de Maven denominado **método invoke direct** mediante el siguiente comando en el símbolo del sistema de Hola. Hola siguiente comando es un comando único, long:
+1. En la carpeta iot-java-direct-method, cree un proyecto de Maven denominado **invoke-direct-method** mediante el comando siguiente en el símbolo del sistema. El siguiente es un comando único y largo:
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=invoke-direct-method -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
-1. En el símbolo del sistema, desplazarse por las carpetas de toohello método invoke direct.
+1. En el símbolo del sistema, vaya a la carpeta invoke-direct-method.
 
-1. Con un editor de texto, abra el archivo de pom.xml de hello en carpeta de método de invocación directa de Hola y agregue Hola después toohello de dependencia **dependencias** nodo. Esta dependencia permite toouse Hola iot-service-paquete de cliente de su toocommunicate de aplicación con el centro de IoT:
+1. Con un editor de texto, abra el archivo pom.xml en la carpeta invoke-direct-method y agregue la dependencia siguiente al nodo **dependencies**. Esta dependencia le permite usar el paquete iot-service-client en la aplicación para comunicarse con la instancia de IoT Hub:
 
     ```xml
     <dependency>
@@ -213,9 +213,9 @@ En esta sección, creará una aplicación de consola de Java que invoca un méto
     ```
 
     > [!NOTE]
-    > Puede comprobar la versión más reciente de Hola de **cliente del servicio de iot** con [búsqueda Maven][lnk-maven-service-search].
+    > Puede comprobar la versión más reciente de **iot-service-client** mediante la [funcionalidad de búsqueda de Maven][lnk-maven-service-search].
 
-1. Agregue los siguiente hello **generar** nodo después de hello **dependencias** nodo. Esta configuración indica a la aplicación de Maven toouse Java toobuild 1,8 hello:
+1. Agregue el nodo **build** después del nodo **dependencies**. Esta configuración indica a Maven que use Java 1.8 para compilar la aplicación:
 
     ```xml
     <build>
@@ -233,11 +233,11 @@ En esta sección, creará una aplicación de consola de Java que invoca un méto
     </build>
     ```
 
-1. Guarde y cierre el archivo de hello pom.xml.
+1. Guarde y cierre el archivo pom.xml.
 
-1. Con un editor de texto, abra el archivo invoke-direct-method\src\main\java\com\mycompany\app\App.java de hello.
+1. Con un editor de texto, abra el archivo invoke-direct-method\src\main\java\com\mycompany\app\App.java.
 
-1. Agregue los siguiente hello **importar** archivo toohello de instrucciones:
+1. Agregue las siguientes instrucciones **import** al archivo:
 
     ```java
     import com.microsoft.azure.sdk.iot.service.devicetwin.DeviceMethod;
@@ -248,7 +248,7 @@ En esta sección, creará una aplicación de consola de Java que invoca un méto
     import java.util.concurrent.TimeUnit;
     ```
 
-1. Agregar Hola después de las variables de nivel de clase toohello **aplicación** clase. Reemplace `{youriothubconnectionstring}` con la cadena de conexión de base de datos central de IoT que anotó en hello *crear un centro de IoT* sección:
+1. Agregue las siguientes variables de nivel de clase a la clase **App** . Reemplace `{youriothubconnectionstring}` por la cadena de conexión de IoT Hub que anotó en la sección *Creación de un IoT Hub*:
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -257,10 +257,10 @@ En esta sección, creará una aplicación de consola de Java que invoca un méto
     public static final String methodName = "writeLine";
     public static final Long responseTimeout = TimeUnit.SECONDS.toSeconds(30);
     public static final Long connectTimeout = TimeUnit.SECONDS.toSeconds(5);
-    public static final String payload = "a line toobe written";
+    public static final String payload = "a line to be written";
     ```
 
-1. método de tooinvoke hello en dispositivo simulado de hello, agregar Hola después código toohello **principal** método:
+1. Agregue el código siguiente al método **main** para invocar el método en el dispositivo simulado:
 
     ```java
     System.out.println("Starting sample...");
@@ -286,39 +286,39 @@ En esta sección, creará una aplicación de consola de Java que invoca un méto
     System.out.println("Shutting down sample...");
     ```
 
-1. Guarde y cierre el archivo de hello invoke-direct-method\src\main\java\com\mycompany\app\App.java
+1. Guarde y cierre el archivo invoke-direct-method\src\main\java\com\mycompany\app\App.java.
 
-1. Compilar hello **método invoke direct** aplicación y corrija los errores. En el símbolo del sistema, desplácese toohello carpeta de método de invocación directa y ejecución Hola siguiente comando:
+1. Compile la aplicación **invoke-direct-method** y corrija los errores. En el símbolo del sistema, vaya a la carpeta invoke-direct-method y ejecute el comando siguiente:
 
     `mvn clean package -DskipTests`
 
-## <a name="run-hello-apps"></a>Ejecutar aplicaciones de Hola
+## <a name="run-the-apps"></a>Ejecución de las aplicaciones
 
-Ya estás listo toorun hello las aplicaciones de consola.
+Ya está preparado para ejecutar las aplicaciones de consola.
 
-1. En un símbolo del sistema en la carpeta del dispositivo simulado de hello, ejecute hello después de realizar escuchas para las llamadas de método desde el centro de IoT de toobegin de comando:
-
-    `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
-
-    ![Centro de IoT de Java simulados toolisten de aplicación de dispositivo para las llamadas a métodos directas][8]
-
-1. En un símbolo del sistema en carpeta de método de invocación directa de hello, ejecute hello después comando toocall un método en el dispositivo simulado desde el centro de IoT:
+1. En un símbolo del sistema, en la carpeta simulated-device, ejecute el comando siguiente para empezar a escuchar las llamadas de método desde la instancia de IoT Hub:
 
     `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
 
-    ![Toocall de aplicación de servicio de centro de IoT de Java un método directo][7]
+    ![Aplicación de dispositivo simulado IoT Hub de Java para escuchar las llamadas al método directo][8]
 
-1. dispositivo simulado de Hola responde la llamada a un método directo toohello:
+1. En un símbolo del sistema en la carpeta invoke-direct-method, ejecute el comando siguiente para llamar a un método en el dispositivo simulado desde la instancia de IoT Hub:
 
-    ![Aplicación de dispositivo simulado de centro de IoT de Java responde la llamada a un método directo toohello][9]
+    `mvn exec:java -Dexec.mainClass="com.mycompany.app.App"`
+
+    ![Aplicación de servicio IoT Hub de Java para llamar a un método directo][7]
+
+1. El dispositivo simulado responde a la llamada al método directo:
+
+    ![La aplicación de dispositivo simulado IoT Hub de Java responde a la llamada al método directo][9]
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-En este tutorial, configura un nuevo centro de IoT Hola portal de Azure y, a continuación, crea una identidad de dispositivo en el registro de identidad del centro de IoT Hola. Utiliza este toomethods dispositivo identidad tooenable Hola simulada dispositivos aplicación tooreact invocado por la nube de Hola. También crea una aplicación que invoca los métodos en el dispositivo de Hola y muestra la respuesta de hello de dispositivo de Hola.
+En este tutorial, configuró un centro de IoT nuevo en Azure Portal y, después, creó una identidad de dispositivo en el registro de identidades del centro de IoT. Usó esta identidad de dispositivo para que la aplicación del dispositivo simulado reaccionara a los métodos que se invoquen desde la nube. También creó una aplicación que invoca métodos en el dispositivo y muestra la respuesta del dispositivo.
 
-tooexplore otros escenarios de IoT, consulte [programar trabajos en varios dispositivos][lnk-devguide-jobs].
+Para explorar otros escenarios de IoT, consulte [Programación de trabajos en varios dispositivos][lnk-devguide-jobs].
 
-toolearn cómo tooextend llama a su método de programación y de solución de IoT en varios dispositivos, vea hello [programación y los trabajos de difusión] [ lnk-tutorial-jobs] tutorial.
+Para información sobre cómo ampliar la solución de IoT y programar llamadas de método en varios dispositivos, consulte el tutorial [Programación de trabajos en varios dispositivos][lnk-tutorial-jobs].
 
 <!-- Images. -->
 [7]: ./media/iot-hub-java-java-direct-methods/invoke-method.png

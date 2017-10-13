@@ -1,6 +1,6 @@
 ---
-title: "Temas de actualización de aplicación aaaAdvanced | Documentos de Microsoft"
-description: "En este artículo se trata algunos temas avanzados pertenecen tooupgrading una aplicación de Service Fabric."
+title: "Temas avanzados de actualización de aplicación | Microsoft Docs"
+description: "En este artículo se tratan algunos temas avanzados relacionados con la actualización de una aplicación de Service Fabric."
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,50 +14,50 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar;chackdan
-ms.openlocfilehash: bdaf3db6209c574d39f57e0bf9951fad5ad1cbec
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8d3b922f3d50b645ac9db2cc879a319df1262e0a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Actualización de la aplicación de Service Fabric: temas avanzados
 ## <a name="adding-or-removing-services-during-an-application-upgrade"></a>Adición o eliminación de servicios durante la actualización de una aplicación
-Si un nuevo servicio se agrega tooan aplicación que ya está implementado y publicado como una actualización, nuevo servicio de hello es aplicación de agregado toohello implementado.  Esta actualización no afecta a ninguno de los servicios de Hola que ya formaban parte de la aplicación hello. Sin embargo, se debe iniciar una instancia de servicio de Hola que se agregó para toobe de servicio nuevo de hello active (con hello `New-ServiceFabricService` cmdlet).
+Si se agrega un nuevo servicio a una aplicación que ya está implementada y publicada como una actualización, el nuevo servicio se agrega a la aplicación implementada.  Dicha actualización no afecta a ninguno de los servicios que ya formaban parte de la aplicación. Sin embargo, tendrá que iniciarse una instancia del servicio que se agregó para que el nuevo servicio esté activo (mediante el cmdlet `New-ServiceFabricService` ).
 
-También se pueden quitar servicios de una aplicación como parte de una actualización. Sin embargo, se deben detener todas las instancias actuales del servicio de Hola se van a eliminar antes de continuar con la actualización de hello (con hello `Remove-ServiceFabricService` cmdlet).
+También se pueden quitar servicios de una aplicación como parte de una actualización. Sin embargo, se deben detener todas las instancias actuales del servicio se va a eliminar antes de continuar con la actualización (mediante el cmdlet `Remove-ServiceFabricService` ).
 
 ## <a name="manual-upgrade-mode"></a>Modo de actualización manual
 > [!NOTE]
-> modo manual no supervisada de Hello debe considerarse solo para una actualización de errores o suspendida. modo supervisado de Hello es Hola recomienda el modo de actualización para las aplicaciones de Service Fabric.
+> El modo manual no supervisado debe considerarse solo si la actualización presenta errores o si se suspende. El modo supervisado es el modo de actualización recomendado para las aplicaciones de Service Fabric.
 >
 >
 
-Azure Service Fabric proporciona varios modos de actualización de clústeres de desarrollo y producción de toosupport. Las opciones de implementación elegidas pueden ser diferentes para distintos entornos.
+Azure Service Fabric ofrece varios modos de actualización para admitir clústeres de desarrollo y producción. Las opciones de implementación elegidas pueden ser diferentes para distintos entornos.
 
-Hola supervisado de actualización gradual de la aplicación es toouse de actualización más habitual de hello en el entorno de producción de hello. Cuando actualiza Hola se especifica la directiva, Service Fabric garantiza que la aplicación hello es correcto para poder continuar con la actualización Hola.
+La actualización gradual de la aplicación en modo supervisado es la actualización más típica que se usa en el entorno de producción. Cuando se especifica la directiva de actualización, Service Fabric garantiza que la aplicación sea correcta antes de que la actualización continúe.
 
- Administrador de la aplicación Hello sirve manual Hola gradual a modo de actualización de aplicación toohave control total sobre el progreso de la actualización Hola a través de hello distintos dominios de actualización. Este modo es útil cuando se requiere una directiva de evaluación de estado personalizado o compleja, o qué está ocurriendo una actualización no convencional (por ejemplo, aplicación hello ya está en pérdida de datos).
+ El Administrador de aplicaciones puede utilizar el modo de actualización de aplicación gradual manual para tener control total sobre el progreso de la actualización a través de los distintos dominios de actualización. Este modo es útil cuando se necesita una directiva de evaluación de estado personalizada o compleja, o tiene lugar una actualización poco convencional (por ejemplo, la aplicación ya tiene pérdida de datos).
 
-Por último, hello automatizadas actualización gradual de la aplicación es útil para el desarrollo o pruebas de entornos tooprovide ciclo de una iteración rápida durante el desarrollo del servicio.
+Por último, la actualización de la aplicación gradual automatizada es útil para que los entornos de desarrollo o prueba proporcionen un ciclo de iteración rápido durante el desarrollo de servicios.
 
-## <a name="change-toomanual-upgrade-mode"></a>Cambiar el modo de actualización toomanual
-**Manual**--Detener actualización de la aplicación hello en Hola Hola UD y cambio actual Actualizar tooUnmonitored de modo Manual. Hello administrador necesita llamada toomanually **MoveNextApplicationUpgradeDomainAsync** tooproceed con hello, actualizar o activar una reversión si se inicia una nueva actualización. Una vez que la actualización de hello entra en el modo Manual hello, permanece en modo Manual de hello hasta que se inicia una nueva actualización. Hola **GetApplicationUpgradeProgressAsync** comando devuelve tejido\_aplicación\_actualizar\_estado\_GRADUALES\_al día\_pendiente.
+## <a name="change-to-manual-upgrade-mode"></a>Cambio al modo de actualización manual
+**Manual**: detenga la actualización de la aplicación en el dominio de actualización actual y cambie el modo de actualización a manual no supervisado. El administrador debe llamar manualmente a **MoveNextApplicationUpgradeDomainAsync** para continuar con la actualización o desencadenar una reversión iniciando una nueva actualización. Una vez que la actualización adopte el modo manual, permanecerá en dicho modo hasta que se inicie una nueva actualización. El comando **GetApplicationUpgradeProgressAsync** devuelve FABRIC\_APPLICATION\_UPGRADE\_STATE\_ROLLING\_FORWARD\_PENDING.
 
 ## <a name="upgrade-with-a-diff-package"></a>Actualización con un paquete de diferencias
-Puede actualizarse una aplicación de Service Fabric mediante el aprovisionamiento de un paquete de aplicación completo y autocontenido. Una aplicación también puede actualizarse mediante un paquete de diferencias que contiene solo de los archivos de aplicación de hello actualizado, Hola actualiza el manifiesto de aplicación y los archivos de manifiesto de servicio de Hola.
+Puede actualizarse una aplicación de Service Fabric mediante el aprovisionamiento de un paquete de aplicación completo y autocontenido. También se puede actualizar una aplicación mediante un paquete de diferencias que contenga solo los archivos de la aplicación actualizados y los archivos de los manifiestos de aplicación y servicio actualizados.
 
-Un paquete completo de la aplicación contiene todos los Hola archivos necesarios toostart y ejecuta una aplicación de Service Fabric. Un paquete de diferencias contiene sólo los archivos de hello cambiado entre aprovisionar última Hola y de actualización actual de hello, además de manifiesto de aplicación completa de Hola y el servicio de hello los archivos de manifiesto. Cualquier referencia en el manifiesto de aplicación de Hola o manifiesto de servicio que no se encuentra en el diseño de la compilación de Hola se busca en el almacén de imágenes de Hola.
+Un paquete de aplicación completo contiene todos los archivos necesarios para iniciar y ejecutar una aplicación de Service Fabric. Un paquete de diferencias contiene solo los archivos que cambiaron entre el último aprovisionamiento y la actualización actual, además de los archivos de los manifiestos de aplicación y servicio completos. Cualquier referencia en el manifiesto de aplicación o de servicio que no se encuentra en el diseño de compilación se busca en el almacén de imágenes.
 
-Paquetes de aplicación completo son necesarios para la primera instalación de un clúster de toohello de aplicación de Hola. Las actualizaciones posteriores pueden ser un paquete de aplicación completo o un paquete de diferencias.
+Los paquetes de aplicación completos se requieren para la instalación inicial de una aplicación en el clúster. Las actualizaciones posteriores pueden ser un paquete de aplicación completo o un paquete de diferencias.
 
 Casos en los que usar un paquete de diferencias sería una buena opción:
 
 * Se prefiere un paquete de diferencias cuando tiene un paquete de aplicación grande que hace referencia a varios archivos del manifiesto de servicio o varios paquetes de código, configuración o datos.
-* Un paquete de diferencias es preferible cuando tenga un sistema de implementación que se genera el diseño de la compilación de hello directamente desde el proceso de compilación de la aplicación. En este caso, incluso si no ha cambiado el código de hello, ensamblados recién creados obtienen una suma de comprobación diferentes. Uso de un paquete completo de la aplicación requeriría tooupdate Hola versión en todos los paquetes de código. Con un paquete de diferencias, sólo proporcionar archivos Hola que ha cambiado y archivos de manifiesto de Hola que ha cambiado la versión de Hola.
+* Asimismo, se prefiere un paquete de diferencias cuando dispone de un sistema de implementación que genera el diseño de compilación directamente desde el proceso de compilación de su aplicación. En este caso, aunque el código no ha cambiado, los ensamblados recién creados obtienen una suma de comprobación diferente. Para usar un paquete de aplicación completo, sería necesario que actualizara la versión de todos los paquetes de código. Con un paquete de diferencias, solo proporciona los archivos que cambiaron y los archivos de manifiesto cuya versión ha cambiado.
 
-Cuando se actualiza una aplicación mediante Visual Studio, el paquete de diferencias de Hola se publica automáticamente. toocreate un paquete de diferencias Hola manualmente, el manifiesto de aplicación y deben actualizarse los manifiestos de servicio de hello, pero solamente los paquetes de saludo cambiado deben incluirse en el paquete de aplicación final de Hola.
+Cuando se actualiza una aplicación mediante Visual Studio, el paquete de diferencias se publica automáticamente. Para crear manualmente un paquete de diferencias, se deben actualizar el manifiesto de aplicación y los manifiestos de servicio, pero solo los paquetes modificados deben incluirse en el paquete de aplicación final.
 
-Por ejemplo, puede empezar con hello tras la aplicación (números de versión proporcionados para facilitar la comprensión):
+Por ejemplo, comencemos con la siguiente aplicación (se proporcionan los números de versión para facilitar la comprensión):
 
 ```text
 app1           1.0.0
@@ -69,7 +69,7 @@ app1           1.0.0
     config     1.0.0
 ```
 
-Ahora, supongamos que desea tooupdate solo Hola paquete de código de service1 mediante un paquete de diferencias mediante PowerShell. Ahora, la aplicación actualizada tiene Hola siguiendo la estructura de carpetas:
+Ahora, supongamos que desea actualizar solo el paquete de código de service1 mediante un paquete de diferencias con PowerShell. Ahora, la aplicación actualizada tiene la siguiente estructura de carpetas:
 
 ```text
 app1           2.0.0      <-- new version
@@ -81,7 +81,7 @@ app1           2.0.0      <-- new version
     config     1.0.0
 ```
 
-En este caso, actualiza too2.0.0 de manifiesto de aplicación de Hola y el manifiesto de servicio de hello actualización del paquete de código de service1 tooreflect Hola. carpeta de Hello para el paquete de aplicación tendría Hola siguiente estructura:
+En este caso, actualice el manifiesto de aplicación 2.0.0 y el manifiesto de servicio de service1 para reflejar la actualización del paquete de código. La estructura de carpetas para el paquete de aplicación sería similar a la siguiente:
 
 ```text
 app1/
@@ -96,6 +96,6 @@ app1/
 
 Puede controlar cómo se actualiza una aplicación usando [parámetros de actualización](service-fabric-application-upgrade-parameters.md).
 
-Hacer que las actualizaciones de la aplicación sea compatible por el aprendizaje cómo toouse [serialización de datos](service-fabric-application-upgrade-data-serialization.md).
+Consiga que sus actualizaciones de aplicaciones sean compatibles aprendiendo a usar la [serialización de datos](service-fabric-application-upgrade-data-serialization.md).
 
-Solucione problemas habituales en las actualizaciones de aplicaciones, se hace referencia a pasos toohello en [solución de problemas de las actualizaciones de aplicaciones](service-fabric-application-upgrade-troubleshooting.md).
+Solucione problemas habituales en las actualizaciones de aplicaciones consultando los pasos que figuran en [Solución de problemas de las actualizaciones de aplicaciones](service-fabric-application-upgrade-troubleshooting.md).

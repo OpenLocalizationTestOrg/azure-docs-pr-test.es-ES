@@ -1,5 +1,5 @@
 ---
-title: "aaaLearn cómo toouse Hola conector de Twitter en las aplicaciones lógicas | Documentos de Microsoft"
+title: Aprenda a usar el conector de Twitter en Logic Apps | Microsoft Docs
 description: "Información general del conector de Twitter con parámetros de la API de REST"
 services: 
 documentationcenter: 
@@ -15,93 +15,93 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: mandia; ladocs
-ms.openlocfilehash: ead4e4dc95bf894fd72b908c5375b407ba27642d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: be8163043535833ce45b3d50939a537406cf8152
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="get-started-with-hello-twitter-connector"></a>Empezar a trabajar con el conector de Twitter de Hola
-Con el conector de Twitter de hello hacer lo siguiente:
+# <a name="get-started-with-the-twitter-connector"></a>Introducción al conector de Twitter
+Con el conector de Twitter puede:
 
 * Publicar y obtener tweets
 * Acceder a escalas de tiempo, amigos y seguidores
-* Realice cualquiera de hello otras acciones y desencadenadores que se describe a continuación  
+* Ejecutar cualquiera de las demás acciones y desencadenadores que se describen a continuación  
 
-toouse [cualquier conector](apis-list.md), primero debe toocreate una aplicación lógica. Por tanto, puede comenzar [creando una aplicación lógica](../logic-apps/logic-apps-create-a-logic-app.md).  
+Para poder usar [un conector](apis-list.md), primero debe crear una aplicación lógica. Por tanto, puede comenzar [creando una aplicación lógica](../logic-apps/logic-apps-create-a-logic-app.md).  
 
-## <a name="connect-tootwitter"></a>Conectar tooTwitter
-Antes de que la aplicación lógica puede tener acceso a cualquier servicio, primero debe toocreate una *conexión* toohello servicio. Una [conexión](connectors-overview.md) proporciona conectividad entre una aplicación lógica y otro servicio.  
+## <a name="connect-to-twitter"></a>Conexión a Twitter
+Para que la aplicación lógica pueda acceder a un servicio, primero debe crear una *conexión* con dicho servicio. Una [conexión](connectors-overview.md) proporciona conectividad entre una aplicación lógica y otro servicio.  
 
-### <a name="create-a-connection-tootwitter"></a>Crear una conexión tooTwitter
-> [!INCLUDE [Steps toocreate a connection tooTwitter](../../includes/connectors-create-api-twitter.md)]
+### <a name="create-a-connection-to-twitter"></a>Creación de una conexión a Twitter
+> [!INCLUDE [Steps to create a connection to Twitter](../../includes/connectors-create-api-twitter.md)]
 > 
 > 
 
 ## <a name="use-a-twitter-trigger"></a>Uso de un desencadenador de Twitter
-Un desencadenador es un evento que puede ser utilizados toostart de flujo de trabajo Hola definido en una aplicación de la lógica. [Más información sobre los desencadenadores](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
+Un desencadenador es un evento que se puede utilizar para iniciar el flujo de trabajo definido en una aplicación lógica. [Más información sobre los desencadenadores](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).
 
-En este ejemplo, le mostrará cómo hello toouse **cuando se registra un nuevo tweet** desencadena toosearch para #Seattle y, si se encuentra #Seattle, actualizar un archivo en Dropbox con texto hello tweet Hola. En un ejemplo de la empresa, podría buscar Hola nombre de su empresa y actualizar una base de datos SQL con texto hello tweet Hola.
+En este ejemplo, le mostraré cómo usar el desencadenador **When a new tweet is posted (Cuando se publica un nuevo tweet)** para buscar #Seattle y, si se encuentra #Seattle, actualizar un archivo en Dropbox con el texto del tweet. En un ejemplo de la empresa, puede buscar el nombre de su compañía y actualizar una base de datos SQL con el texto del tweet.
 
-1. Escriba *twitter* en el cuadro de búsqueda de hello en el Diseñador de aplicaciones de lógica de hello, a continuación, seleccione hello **Twitter - cuando se registra un nuevo tweet** desencadenador   
+1. Escriba *twitter* en el cuadro de búsqueda del Diseñador de Logic Apps y seleccione el desencadenador **Twitter - When a new tweet is posted (Twitter - Cuando se publica un nuevo tweet)**.   
    ![Imagen de desencadenador de Twitter 1](./media/connectors-create-api-twitter/trigger-1.png)  
-2. Escriba *#Seattle* en hello **texto de búsqueda** control  
+2. Escriba *#Seattle* en el control **Buscar texto**.  
    ![Imagen de desencadenador de Twitter 2](./media/connectors-create-api-twitter/trigger-2.png) 
 
-En este punto, la aplicación lógica se ha configurado con un desencadenador que se iniciará una ejecución del programa Hola a otros desencadenadores y acciones de flujo de trabajo de Hola. 
+En este punto, la aplicación lógica se ha configurado con un desencadenador que iniciará una ejecución de los otros desencadenadores y acciones en el flujo de trabajo. 
 
 > [!NOTE]
-> Para que una toobe de aplicación lógica funcional, debe contener al menos un desencadenador y una acción. Siga los pasos de Hola Hola siguiente sección tooadd una acción.  
+> Para que una aplicación lógica sea funcional, debe contener al menos un desencadenador y una acción. Siga los pasos que se describen en la sección siguiente para agregar una acción.  
 > 
 > 
 
 ## <a name="add-a-condition"></a>Agregar una condición
-Puesto que sólo estamos interesados en tweets de los usuarios con más de 50 usuarios, una condición que se confirma el número de Hola de seguidores se debe agregar primero toohello aplicación de lógica.  
+Puesto que solo estamos interesados en tweets de usuarios con más de 50 seguidores, primero se debe agregar a la aplicación lógica una condición que confirme el número de seguidores.  
 
-1. Seleccione **+ nuevo paso** acción de hello tooadd le gustaría tootake cuando #Seattle se encuentra en un tweet nueva  
+1. Seleccione **+ Nuevo paso** para agregar la acción que quiere que se ejecute cuando se encuentre #Seattle en un nuevo tweet.  
    ![Imagen de acción de Twitter 1](../../includes/media/connectors-create-api-twitter/action-1.png)  
-2. Seleccione hello **agregar una condición** vínculo.  
+2. Seleccione el vínculo **Agregar una condición**.  
    ![Imagen de condición de Twitter 1](../../includes/media/connectors-create-api-twitter/condition-1.png)   
-   Se abrirá hello **condición** control donde puede comprobar las condiciones como *es igual a*, *es menor que*, *es mayor que*, *contiene*, etcetera.  
+   Se abrirá el control **Condición** donde puede comprobar las condiciones como *es igual a*, *es menor que*, *es mayor que*, *contiene*, etc.  
    ![Imagen de condición de Twitter 2](../../includes/media/connectors-create-api-twitter/condition-2.png)   
-3. Seleccione hello **elegir un valor** control.  
-   En este control, puede seleccionar una o varias de las propiedades de Hola de las acciones anteriores o los desencadenadores como valor de hello cuya condición será evaluada tootrue o false.
+3. Seleccione el control **Elegir un valor**.  
+   En este control, puede seleccionar una o varias de las propiedades de cualquier acción o desencadenador anterior como el valor cuya condición se evaluará como True o False.
    ![Imagen de condición de Twitter 3](../../includes/media/connectors-create-api-twitter/condition-3.png)   
-4. Seleccione hello **...**  tooexpand lista de Hola de propiedades para que pueda ver todas las propiedades de Hola que están disponibles.        
+4. Seleccione **…** para expandir la lista de propiedades y ver todas las propiedades que están disponibles.        
    ![Imagen de condición de Twitter 4](../../includes/media/connectors-create-api-twitter/condition-4.png)   
-5. Seleccione hello **recuento seguidores** propiedad.    
+5. Seleccione la propiedad **Número de seguidores**.    
    ![Imagen de condición de Twitter 5](../../includes/media/connectors-create-api-twitter/condition-5.png)   
-6. Tenga en cuenta seguidores de hello propiedad count es ahora en el control de valores de hello.    
+6. Observe que la propiedad de número de seguidores ahora está en el control de valor.    
    ![Imagen de condición de Twitter 6](../../includes/media/connectors-create-api-twitter/condition-6.png)   
-7. Seleccione **es mayor que** desde la lista de operadores de Hola.    
+7. Seleccione **es mayor que** de la lista de operadores.    
    ![Imagen de condición de Twitter 7](../../includes/media/connectors-create-api-twitter/condition-7.png)   
-8. Escriba 50 como Hola operando para hello *es mayor que* operador.  
-   Ahora se agrega la condición de Hola. Guardar su trabajo con hello **guardar** vínculo en el menú de hello anterior.    
+8. Escriba 50 como el operando para el operador *es mayor que*.  
+   Se agrega la condición. Guarde su trabajo mediante el vínculo **Guardar** en el menú superior.    
    ![Imagen de condición de Twitter 8](../../includes/media/connectors-create-api-twitter/condition-8.png)   
 
 ## <a name="use-a-twitter-action"></a>Uso de una acción de Twitter
-Una acción es una operación que se llevan a cabo definidos en una aplicación de la lógica de flujo de trabajo de Hola. [Más información acerca de las acciones](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).  
+Una acción es una operación que se lleva a cabo mediante el flujo de trabajo definido en una aplicación lógica. [Más información acerca de las acciones](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts).  
 
-Ahora que ha agregado un desencadenador, siga estas tooadd pasos una acción que se va a registrar un nuevo tweet con contenido de Hola de tweets de hello encontrados por el desencadenador de Hola. Para los fines de Hola de este tutorial se expondrá solo tweets de los usuarios con más de 50 seguidores.  
+Ahora que ha agregado un desencadenador, siga estos pasos para incorporar una acción que publicará un nuevo tweet con el contenido de los tweets detectados por el desencadenador. Para los fines de este tutorial, solo se publicarán tweets de los usuarios con más de 50 seguidores.  
 
-En el paso siguiente de hello, agregará una acción de Twitter que registrará un tweet usar algunas de las propiedades de Hola de cada tweet que se ha publicado por un usuario que tenga más de 50 seguidores.  
+En el paso siguiente, agregará una acción de Twitter que publicará un tweet utilizando algunas de las propiedades de cada tweet publicado por un usuario que tenga más de 50 seguidores.  
 
-1. Seleccione **Add an action**(Agregar una acción). Esto abre el control de búsqueda de Hola donde puede buscar otras acciones y desencadenadores.  
+1. Seleccione **Add an action**(Agregar una acción). Esto abre el control de búsqueda, donde puede buscar otras acciones y desencadenadores.  
    ![Imagen de condición de Twitter 9](../../includes/media/connectors-create-api-twitter/condition-9.png)   
-2. Escriba *twitter* en el cuadro de búsqueda de hello, a continuación, seleccione hello **de Twitter: registrar un tweet** acción. Se abrirá hello **registrar un tweet** control donde se incluirá todos los detalles de tweet Hola expuesta.      
+2. Escriba *twitter* en el cuadro de búsqueda, después, seleccione la acción **Twitter - Post a tweet (Twitter - Publicar un tweet)**. Se abrirá el control **Post a tweet (Publicar un tweet)** donde especificará todos los detalles para el tweet publicado.      
    ![Imagen de acción de Twitter 1-5](../../includes/media/connectors-create-api-twitter/action-1-5.png)   
-3. Seleccione hello **Tweet texto** control. Todos los resultados de las acciones anteriores y los desencadenadores de aplicación lógica de hello están visibles. Puede seleccionar cualquiera de ellos y usarlas como parte del texto de tweet Hola de nuevo tweet de Hola.     
+3. Seleccione el control **Tweet text (Texto del tweet)**. Todos los resultados de las acciones y desencadenadores anteriores de la aplicación lógica ya están visibles. Puede seleccionar cualquiera de ellos y usarlos como parte del texto del tweet del nuevo tweet.     
    ![Imagen de acción de Twitter 2](../../includes/media/connectors-create-api-twitter/action-2.png)   
 4. Seleccione **Nombre de usuario**.   
-5. Escriba *dice:* Hola tweet control de texto. Hágalo justo después del nombre de usuario.  
+5. Escriba *dice:* en el control del texto del tweet. Hágalo justo después del nombre de usuario.  
 6. Seleccione *Tweet text (Texto del tweet)*.       
    ![Imagen de acción de Twitter 3](../../includes/media/connectors-create-api-twitter/action-3.png)   
-7. Guarde el trabajo y enviar un tweet con hello #Seattle hashtag tooactivate el flujo de trabajo.  
+7. Guarde el trabajo y envíe un tweet con el hashtag #Seattle para activar el flujo de trabajo.  
 
 
 ## <a name="connector-specific-details"></a>Detalles específicos del conector
 
-Ver los desencadenadores y las acciones definidas en swagger hello y también los límites de hello [detalles del conector](/connectors/twitterconnector/). 
+Vea los desencadenadores y las acciones definidos en Swagger y vea también todos los límites en los [detalles del conector](/connectors/twitterconnector/). 
 
 ## <a name="next-steps"></a>Pasos siguientes
 [Creación de una aplicación lógica](../logic-apps/logic-apps-create-a-logic-app.md)

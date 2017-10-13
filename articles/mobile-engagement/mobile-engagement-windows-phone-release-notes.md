@@ -1,5 +1,5 @@
 ---
-title: "Notas de la versión Mobile Engagement Windows Phone Silverlight SDK aaaAzure | Documentos de Microsoft"
+title: "Notas de la versión del SDK de Windows Phone Silverlight para Azure Mobile Engagement | Microsoft Docs"
 description: "Azure Mobile Engagement - Notas de la versión del SDK de Windows Phone Silverlight"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,33 +14,33 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/03/2016
 ms.author: piyushjo
-ms.openlocfilehash: f9af6ca91295dbecfa4c51fe4b3bad6626fa5999
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: df754a3002750e6ba0b71b664c1df84d506808a4
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="windows-phone-silverlight-sdk-release-notes"></a>Notas de la versión del SDK de Windows Phone Silverlight
 ##<a name="331-11032016"></a>3.3.1 (03/11/2016)
-Parte del programa Hola a *MicrosoftAzure.MobileEngagement* paquete Nuget **v3.4.1**
+Parte del paquete NuGet *MicrosoftAzure.MobileEngagement***v3.4.1**
 
 * Mejoras de estabilidad.
 
 ## <a name="330-04192016"></a>3.3.0 (04/19/2016)
-Parte del programa Hola a *MicrosoftAzure.MobileEngagement* paquete Nuget **v3.4.0**
+Parte del paquete NuGet *MicrosoftAzure.MobileEngagement***v3.4.0**
 
-* Ha agregado "TestLogLevel" API tooenable/deshabilitar/filtro registros de la consola emitidos por hello SDK.
+* API "TestLogLevel" agregada para habilitar, deshabilitar y filtrar registros de consola emitidos por el SDK.
 
 ## <a name="320-01222016"></a>3.2.0 (01/22/2016)
-Parte del programa Hola a *MicrosoftAzure.MobileEngagement* paquete Nuget **v3.3.0**
+Parte del paquete NuGet *MicrosoftAzure.MobileEngagement***v3.3.0**
 
 * Esquemas personalizados, ms appx y ms-appdata disponibles en direcciones URL de acción.
 * Mejoras de estabilidad.
 
 ## <a name="310-11202015"></a>3.1.0 (20/11/2015)
-Parte del programa Hola a *MicrosoftAzure.MobileEngagement* paquete Nuget **v3.2.0**
+Parte del paquete NuGet *MicrosoftAzure.MobileEngagement***v3.2.0**
 
-* Bloqueo fijo al solicitar Id. de dispositivo de hello justo después de la inicialización de Hola.
+* Bloqueo fijo al solicitar el identificador del dispositivo justo después de la inicialización.
 * Mejoras de los registros de consola.
 
 ## <a name="300-04032015"></a>3.0.0 (03/04/2015)

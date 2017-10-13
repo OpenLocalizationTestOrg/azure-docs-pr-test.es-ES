@@ -1,6 +1,6 @@
 ---
-title: "información general sobre la seguridad de base de datos aaaAzure | Documentos de Microsoft"
-description: "Este artículo proporciona información general sobre las características de seguridad de base de datos Azure Hola."
+title: "Introducción a la seguridad de base de datos de Azure | Microsoft Docs"
+description: "En este artículo se proporciona información general sobre las características de seguridad de base de datos de Azure."
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -14,31 +14,31 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/19/2017
 ms.author: TomSh
-ms.openlocfilehash: 13f14b99d15800e85e9906a9d167eb0adf2135de
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 036ce3dce28e7951bb39754c4351661fae85f06c
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="azure-database-security-overview"></a>Introducción a la seguridad de base de datos de Azure
 
 La seguridad es un aspecto importante a la hora de administrar bases de datos y siempre ha sido una prioridad para Azure SQL Database. Azure SQL Database admite la seguridad de conexión con las reglas de firewall y el cifrado de conexión. Es compatible con la autenticación mediante nombre de usuario y contraseña y con la autenticación de Azure Active Directory, que usa las identidades administradas por Azure Active Directory. La autorización usa el control de acceso basado en roles.
 
-La base de datos de SQL Azure admite el cifrado mediante la realización de cifrado en tiempo real y el descifrado de las bases de datos, copias de seguridad asociadas y archivos de registro de transacciones en reposo sin necesidad de cambios toohello aplicación.
+Azure SQL Database admite el cifrado mediante el cifrado y descifrado de la base de datos en tiempo real, copias de seguridad asociadas y archivos de registro de transacciones en reposo sin necesidad de efectuar cambios en la aplicación.
 
-Microsoft proporciona otras formas de datos de empresa de tooencrypt:
+Microsoft proporciona otros métodos para cifrar los datos de la empresa:
 
--   Nivel de celda columnas específicas de cifrado tooencrypt o incluso las celdas de datos con distintas claves de cifrado.
+-   Cifrado de nivel de celda para cifrar columnas concretas, o incluso celdas de datos, con distintas claves de cifrado.
 -   Si necesita un módulo de seguridad de hardware o la administración central de la jerarquía de claves de cifrado, considere la posibilidad de usar Azure Key Vault con SQL Server en una máquina virtual de Azure.
--   Always Encrypted (actualmente en versión preliminar) realiza cifrado transparente tooapplications y permite a los clientes tooencrypt datos confidenciales en aplicaciones de cliente sin compartir claves de cifrado de hello con base de datos de SQL.
+-   Always Encripted (actualmente en versión preliminar) hace que el cifrado sea transparente para las aplicaciones y permite que los clientes cifren información confidencial dentro de aplicaciones cliente sin compartir las claves de cifrado con SQL Database.
 
-Auditoría de base de datos de SQL Azure permite que las empresas toorecord eventos tooan auditoría de inicio de sesión de almacenamiento de Azure. Auditoría de base de datos de SQL Server también se integra con análisis e informes de obtención de detalles de toofacilitate de Microsoft Power BI.
+Gracias a la auditoría de Azure SQL Database, las empresas pueden registrar eventos en un almacenamiento de Azure Storage de registros de auditoría. La auditoría de SQL Database también se integra con Microsoft Power BI, con el fin de facilitar la generación de análisis e informes detallados.
 
- Las bases de datos de SQL Azure pueden ser toosatisfy estrechamente protegida más legales o requisitos de seguridad, como HIPAA, ISO 27001/27002 y PCI DSS nivel 1, entre otros. Una lista actualizada de certificaciones de cumplimiento de normas de seguridad está disponible en hello [sitio de Microsoft Azure Trust Center](http://azure.microsoft.com/support/trust-center/services/).
+ Las bases de datos SQL de Azure pueden estar firmemente protegidas para satisfacer la mayoría de los requisitos de seguridad o legales, como HIPAA, ISO 27001/27002 y PCI DSS nivel 1, entre otros. En el [sitio del Centro de confianza de Microsoft Azure](http://azure.microsoft.com/support/trust-center/services/) hay disponible una lista actualizada de certificaciones de cumplimiento de seguridad.
 
-Este artículo le guía a través de conceptos básicos de Hola de proteger las bases de datos SQL de Microsoft Azure para estructurado, Tabular y los datos relacionales. En concreto, este artículo le ayudará a empezar a trabajar con los recursos necesarios para proteger los datos, controlar el acceso y realizar una supervisión proactiva.
+En este artículo se describen los conceptos básicos de la protección de las bases de datos de Microsoft Azure SQL Database para los datos estructurados, tabulares y relacionales. En concreto, este artículo le ayudará a empezar a trabajar con los recursos necesarios para proteger los datos, controlar el acceso y realizar una supervisión proactiva.
 
-En este artículo de información general de seguridad de base de datos de Azure se centra en hello siguientes áreas:
+Este artículo de información general sobre la seguridad de base de datos de Azure se centra en las siguientes áreas:
 
 -   Protección de datos
 -   Control de acceso
@@ -56,52 +56,52 @@ En esta sección hablaremos de:
 -   Cifrado en reposo
 -   Cifrado en uso (cliente)
 
-Para otro tooencrypt formas los datos, tenga en cuenta:
+Si desea conocer otras formas de cifrar datos, considere:
 
--   [Cifrado de nivel de celda](https://msdn.microsoft.com/library/ms179331.aspx) tooencrypt columnas específicas o incluso las celdas de datos con distintas claves de cifrado.
+-   [Cifrado de nivel de celda](https://msdn.microsoft.com/library/ms179331.aspx) para cifrar columnas concretas, o incluso celdas de datos, con distintas claves de cifrado.
 -   Si necesita un módulo de seguridad de hardware o la administración central de la jerarquía de claves de cifrado, considere la posibilidad de usar [Azure Key Vault con SQL Server en una máquina virtual de Azure](http://blogs.technet.com/b/kv/archive/2015/01/12/using-the-key-vault-for-sql-server-encryption.aspx).
 
 ### <a name="encryption-in-motion"></a>Cifrado en movimiento
 
-Un problema común para todas las aplicaciones cliente/servidor es la necesidad de Hola para proteger la privacidad cuando mueve los datos a través de redes públicas y privadas. Si no se cifran los datos que se transfieren a través de una red, no hay posibilidad de Hola que se pueden capturar y robo por los usuarios no autorizados. Cuando se trabaja con los servicios de base de datos, deberá toomake seguro de que los datos se cifran entre Hola base de datos cliente y servidor, así como entre servidores de base de datos que se comunican entre sí y con las aplicaciones de nivel intermedio.
+Un problema habitual de todas las aplicaciones cliente/servidor es la necesidad de privacidad cuando los datos se desplazan a través de redes públicas y privadas. Si los datos que se transfieren a través de una red no están cifrados, existe la posibilidad de que usuarios no autorizados los capturen y roben. Cuando trabaja con los servicios de base de datos, debe asegurarse de que se cifren los datos entre el cliente y el servidor de la base de datos, así como entre los servidores de base de datos que se comunican entre sí y las aplicaciones de nivel intermedio.
 
-Uno de los problemas existentes a la hora de administrar una red es el de proteger los datos que se envían entre las aplicaciones a través de una red que no es de confianza. Puede usar [TLS/SSL](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol) tooauthenticate servidores y clientes y, a continuación, usarla tooencrypt mensajes entre las partes de hello autenticado.
+Uno de los problemas existentes a la hora de administrar una red es el de proteger los datos que se envían entre las aplicaciones a través de una red que no es de confianza. Puede usar [TLS/SSL](https://docs.microsoft.com/windows-server/security/tls/transport-layer-security-protocol) para autenticar servidores y clientes y usarlo para cifrar mensajes entre las partes autenticadas.
 
-En el proceso de autenticación de hello, un cliente TLS/SSL envía un servidor TLS/SSL de tooa de mensaje y servidor hello responde con información de hello ese servidor hello necesita tooauthenticate propio. Hola cliente y servidor realizan un intercambio adicional de claves de sesión y Hola extremos del cuadro de diálogo de autenticación. Cuando se completa la autenticación, puede empezar comunicación segura SSL entre el servidor de Hola y cliente de hello mediante claves de cifrado simétrico de Hola que se establecen durante el proceso de autenticación de Hola.
+En el proceso de autenticación, un cliente TLS/SSL envía un mensaje a un servidor TLS/SSL y el servidor responde con la información que necesita para autenticarse a sí mismo. El cliente y el servidor efectúan un intercambio adicional de claves de sesión y se cierra el cuadro de diálogo de autenticación. Una vez concluida la autenticación, se puede iniciar la comunicación protegida por SSL entre el servidor y el cliente mediante las claves de cifrado simétrico que se establecen durante el proceso de autenticación.
 
-Todas las conexiones tooAzure base de datos SQL requiere el cifrado (SSL/TLS) en todo momento mientras los datos están "en tránsito" tooand de base de datos de Hola. SQL Azure usa clientes y servidores de tooauthenticate TLS/SSL y, a continuación, utilizarlo tooencrypt mensajes entre las partes de hello autenticado. En la cadena de conexión de la aplicación, debe especificar parámetros tooencrypt Hola conexión y no tootrust Hola servidor certificado (Esto se realiza automáticamente si copia la cadena de conexión de hello Portal clásico de Azure), en caso contrario Hola will de conexión No comprobar la identidad de saludo del servidor de Hola y serán susceptibles de sufrir ataques de demasiado "man-in-the-middle". Para el controlador ADO.NET, por ejemplo, estos parámetros de cadena de conexión hello son Encrypt = True y TrustServerCertificate = False.
+Todas las conexiones a Azure SQL database requieren cifrado (SSL/TLS) siempre que haya datos "en tránsito" hacia y desde la base de datos. SQL Azure usa TLS/SSL para autenticar servidores y clientes y después lo usa para cifrar mensajes entre las partes autenticadas. En la cadena de conexión de su aplicación, debe especificar los parámetros para cifrar la conexión y no confiar en el certificado de servidor (esto se hace automáticamente si copia la cadena de conexión en el Portal de Azure clásico). De lo contrario, la conexión no comprobará la identidad del servidor y será vulnerable a los ataques de tipo "Man in the middle". Por ejemplo, en el caso del controlador de ADO.NET, los parámetros de la cadena de conexión son Encrypt=True y TrustServerCertificate=False.
 
 ### <a name="encryption-at-rest"></a>Cifrado en reposo
-Puede tomar varias bases de datos de hello segura de toohelp de precauciones, como diseñar un sistema seguro, cifrar los activos confidenciales e instalar un firewall alrededor de los servidores de base de datos de Hola. Sin embargo, en un escenario donde se diera el caso de medios físicos de hello (por ejemplo, unidades de disco o cintas de copia de seguridad), un tercero malintencionado puede simplemente restaurar o adjuntar la base de datos de Hola y examinar los datos de Hola.
+Puede tomar varias precauciones para ayudar a proteger la base de datos, como diseñar un sistema seguro, cifrar los recursos confidenciales e instalar un firewall alrededor de los servidores de base de datos. Pero en un escenario en que se roban medios físicos (como unidades o cintas de copias de seguridad), un tercero malintencionado puede restaurar o asociar la base de datos y examinar los datos.
 
-Una solución tooencrypt Hola datos confidenciales en la base de datos de Hola y protege las claves de hello tooencrypt usado Hola datos con un certificado. Esto evita que cualquiera que carezca de las claves de hello del uso de datos de hello, pero este tipo de protección debe planearse.
+Una solución consiste en cifrar los datos confidenciales de la base de datos y proteger las claves que se usan para cifrar los datos con un certificado. Con ello se impide que cualquiera que no disponga de las claves use los datos, pero este tipo de protección debe planificarse.
 
-toosolve este problema, SQL Server y SQL Azure admite [cifrado de datos transparente (TDE)](https://docs.microsoft.com/sql/relational-databases/securityrecryption/transparent-data-encryption-tde). El TDE cifra los archivos de datos de SQL Server y Azure SQL Database, conocidos como datos de cifrado en reposo.
+Para solucionar este problema, SQL Server y SQL Azure admiten el [cifrado de datos transparente (TDE)](https://docs.microsoft.com/sql/relational-databases/securityrecryption/transparent-data-encryption-tde). El TDE cifra los archivos de datos de SQL Server y Azure SQL Database, conocidos como datos de cifrado en reposo.
 
-Cifrado de datos transparente de bases de datos de SQL Azure le ayuda a protegerse contra amenazas de Hola de actividad malintencionada mediante la realización de cifrado en tiempo real y el descifrado de la base de datos de hello, copias de seguridad asociadas y archivos de registro de transacciones en reposo sin necesidad de realizar cambios aplicación de toohello.  
+El cifrado de datos transparente de Azure SQL Database facilita la protección contra la amenaza de actividades malintencionadas, ya que la base de datos se cifra y descifra en tiempo real, se realizan copias de seguridad asociadas y archivos de registro de transacciones en reposo sin necesitar cambios en la aplicación.  
 
-TDE cifra almacenamiento Hola de toda una base de datos mediante el uso de una clave de cifrado de base de datos de hello llamado de clave simétrica. En la base de datos de SQL, clave de cifrado de base de datos de hello está protegido por un certificado de servidor integrado. certificado de servidor integrado de Hello es único para cada servidor de base de datos SQL.
+TDE cifra el almacenamiento de una base de datos completa mediante el uso de una clave simétrica denominada clave de cifrado de base de datos. En SQL Database, la clave de cifrado de base de datos está protegida por un certificado de servidor integrado. El certificado de servidor integrado es único para cada servidor de SQL Database.
 
-Si una base de datos está en una relación de GeoDR, está protegida por una clave diferente en cada servidor. Si hay dos bases de datos conectado toohello mismo servidor, comparten Hola mismo certificado integrado. Microsoft alterna automáticamente estos certificados al menos cada 90 días. Para obtener una descripción general de TDE, vea [Cifrado de datos transparente (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde).
+Si una base de datos está en una relación de GeoDR, está protegida por una clave diferente en cada servidor. Si hay dos bases de datos conectadas al mismo servidor, comparten el mismo certificado integrado. Microsoft alterna automáticamente estos certificados al menos cada 90 días. Para obtener una descripción general de TDE, vea [Cifrado de datos transparente (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde).
 
 ### <a name="encryption-in-use-client"></a>Cifrado en uso (cliente)
 
-La mayoría de las infracciones de datos implican robo de Hola de datos críticos, como números de tarjeta de crédito o información de identificación personal. Las bases de datos pueden representar tesoros repletos de información confidencial. Pueden contener datos personales de los clientes, información confidencial sobre la competencia y propiedad intelectual. Los datos perdidos o robados (sobre todo los datos de los clientes) pueden comportar daños de marca, desventajas competitivas e importantes sanciones, incluso demandas.
+La mayoría de las infracciones de datos implican el robo de datos críticos, como los números de tarjeta de crédito o información de identificación personal. Las bases de datos pueden representar tesoros repletos de información confidencial. Pueden contener datos personales de los clientes, información confidencial sobre la competencia y propiedad intelectual. Los datos perdidos o robados (sobre todo los datos de los clientes) pueden comportar daños de marca, desventajas competitivas e importantes sanciones, incluso demandas.
 
 ![Always Encrypted](./media/azure-databse-security-overview/azure-database-fig1.png)
 
-[Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) es un característica diseñada tooprotect datos confidenciales, como números de tarjeta de crédito o números de identificación nacional (por ejemplo, Estados Unidos números de seguridad social), almacenados en las bases de datos de la base de datos de SQL Azure o SQL Server. Always Encrypted permite a los clientes tooencrypt datos confidenciales en aplicaciones de cliente y nunca revela toohello de claves de cifrado de hello motor de base de datos (base de datos SQL o SQL Server).
+[Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) es una característica creada para proteger la información confidencial, como números de tarjetas de crédito o números de identificación nacionales (por ejemplo, números de la seguridad social de EE. UU.), almacenados en bases de datos de Azure SQL Database o SQL Server. Always Encrypted permite a los clientes cifrar información confidencial dentro de aplicaciones cliente y no revelar las claves de cifrado al motor de base de datos (SQL Database o SQL Server).
 
-Always Encrypted proporciona una separación entre aquellos que poseen los datos de hello (y pueden verlos) y aquellos usuarios que administran datos de hello (pero no deberían tener acceso). Al asegurar que los administradores de base de datos local, los operadores de base de datos de nube y otros con privilegios elevados, pero los usuarios no autorizados, no pueden tener acceso a datos de hello cifrado,
+Always Encrypted proporciona una separación entre quienes poseen los datos (y pueden verlos) y quienes administran los datos (pero no deben tener acceso a estos), garantizando que los administradores de bases de datos locales, los operadores de bases de datos en la nube y otros usuarios con privilegios elevados (pero no autorizados) no puedan obtener acceso a los datos cifrados.
 
-Además, Always Encrypted realiza cifrado transparente tooapplications. Un controlador habilitado para Always Encrypted instalado en el equipo cliente de Hola para que puede cifrar y descifrar datos confidenciales de la aplicación de cliente de hello automáticamente. Hola controlador cifra los datos de hello en columnas confidenciales antes de pasar datos de hello toohello motor de base de datos y vuelve a escribir las consultas automáticamente para que se conserve la aplicación de hello semántica toohello. De forma similar, driver Hola descifra de forma transparente datos almacenados en columnas de la base de datos cifrada, contenidas en los resultados de consulta.
+Además, Always Encrypted hace que el cifrado resulte transparente para las aplicaciones. En el equipo cliente se instala un controlador habilitado para Always Encrypted para que pueda cifrar y descifrar los datos confidenciales en la aplicación cliente de forma automática. El controlador cifra los datos en columnas confidenciales antes de pasarlos al motor de base de datos y vuelve a escribir las consultas automáticamente para que se conserve la semántica de la aplicación. De forma similar, el controlador descifra los datos de forma transparente, almacenados en columnas de bases de datos cifradas, incluidas en los resultados de la consulta.
 
 ## <a name="access-control"></a>Control de acceso
-seguridad tooprovide, base de datos SQL controla el acceso con reglas de firewall limitar conectividad por dirección IP, los mecanismos de autenticación que requieren los usuarios tooprove su identidad, mecanismos de autorización y limitar las acciones de toospecific de los usuarios y los datos.
+Para proporcionar seguridad, SQL Database controla el acceso con reglas de firewall que limitan la conectividad por dirección IP, con mecanismos de autenticación que requieren a los usuarios que demuestren su identidad y con mecanismos de autorización que limitan a los usuarios el acceso a datos y acciones específicos.
 
 ### <a name="database-access"></a>Acceso a la base de datos
 
-Protección de datos comienza con el control de acceso a los datos tooyour. Centro de datos de Hello hospedar sus datos administra el acceso físico, aunque puede configurar un seguridad toomanage del firewall en la capa de red Hola. También puede controlar el acceso configurando inicios de sesión para la autenticación y definiendo permisos para los roles de servidor y de base de datos.
+La protección de datos comienza con el control de acceso a los datos. El centro de datos que hospeda sus datos administra el acceso físico, aunque puede configurar un firewall para administrar la seguridad en el nivel de red. También puede controlar el acceso configurando inicios de sesión para la autenticación y definiendo permisos para los roles de servidor y de base de datos.
 
 En esta sección hablaremos de:
 
@@ -111,27 +111,27 @@ En esta sección hablaremos de:
 
 #### <a name="firewall-and-firewall-rules"></a>Firewall y reglas de firewall
 
-Microsoft Azure SQL Database ofrece un servicio de base de datos relacional para Azure y otras aplicaciones basadas en Internet. toohelp proteger los datos, firewalls impedir que todos los servidores de base de datos de access tooyour hasta que especifique qué equipos tienen permiso. firewall de Hello otorga toodatabases de acceso basado en hello procedentes de la dirección IP de cada solicitud. Para más información, consulte [Introducción a las reglas de firewall de Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure).
+Microsoft Azure SQL Database ofrece un servicio de base de datos relacional para Azure y otras aplicaciones basadas en Internet. Para ayudar a proteger los datos, los firewalls impiden todo acceso al servidor de bases de datos, excepto a aquellos equipos a los que haya concedido permiso. Asimismo, otorgan acceso a las bases de datos según la dirección IP de origen de cada solicitud. Para más información, consulte [Introducción a las reglas de firewall de Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure).
 
-Hola [base de datos de SQL Azure](https://azure.microsoft.com/services/sql-database/) servicio solamente está disponible a través del puerto TCP 1433. tooaccess una base de datos de SQL desde el equipo, asegúrese de que el firewall del equipo cliente permite la comunicación de TCP de salida en el puerto TCP 1433. Si no es necesario para otras aplicaciones, bloquee las conexiones entrantes en el puerto TCP 1433.
+El servicio [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) solo está disponible a través del puerto TCP 1433. Para tener acceso a una base de datos SQL desde el equipo, asegúrese de que el firewall de equipos cliente permite la comunicación TCP saliente en el puerto TCP 1433. Si no es necesario para otras aplicaciones, bloquee las conexiones entrantes en el puerto TCP 1433.
 
 #### <a name="authentication"></a>Autenticación
 
-Autenticación de base de datos SQL refiere toohow demostrar su identidad cuando se conecta la base de datos de toohello. SQL Database admite dos tipos de autenticación:
+La autenticación de SQL Database indica cómo probar su identidad al conectarse a la base de datos. SQL Database admite dos tipos de autenticación:
 
--   **Autenticación de SQL:** se crea una cuenta de inicio de sesión único cuando se crea una instancia SQL lógica, llamado hello cuenta del suscriptor de base de datos de SQL. Esta cuenta se conecta mediante la [autenticación de SQL Server](https://docs.microsoft.com/azure/sql-database/sql-database-security-overview) (nombre de usuario y contraseña). Esta cuenta es que un administrador en la instancia de servidor lógico de Hola y en todas las bases de datos de usuario adjunta toothat instancia. permisos de Hola de hello cuenta del suscriptor no pueden estar restringidos. Solo puede existir una de estas cuentas.
--   **Autenticación de Active Directory Azure:** [autenticación de Azure Active Directory](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) es un mecanismo de conexión tooMicrosoft base de datos de SQL Azure y almacenamiento de datos de SQL mediante el uso de identidades en Azure Active Directory ( Azure AD). Esto permite toocentrally administrar identidades de los usuarios de base de datos.
+-   **Autenticación SQL:** cuando se crea una instancia lógica de SQL, se crea también una cuenta de inicio de sesión único, que se denomina Cuenta de suscriptor de SQL Database. Esta cuenta se conecta mediante la [autenticación de SQL Server](https://docs.microsoft.com/azure/sql-database/sql-database-security-overview) (nombre de usuario y contraseña). Esta cuenta es un administrador en la instancia del servidor lógico y en todas las bases de datos de usuario asociadas a dicha instancia. Los permisos de la cuenta del suscriptor no se pueden restringir. Solo puede existir una de estas cuentas.
+-   **Autenticación de Azure Active Directory:** [La autenticación de Azure Active Directory](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) es un mecanismo de conexión a Microsoft Azure SQL Database y a SQL Data Warehouse mediante identidades en Azure Active Directory (Azure AD). Esto le permite administrar de forma centralizada las identidades de los usuarios de base de datos.
 
 ![Autenticación](./media/azure-databse-security-overview/azure-database-fig2.png)
 
  Ventajas de la autenticación de Azure Active Directory:
-  - Proporciona una autenticación de servidor alternativo tooSQL.
-  - También ayuda a detener la proliferación de Hola de identidades de usuario entre los servidores de base de datos y permite la rotación de contraseña en un único lugar.
+  - Ofrece una alternativa a la autenticación de SQL Server.
+  - También permite detener la proliferación de identidades de usuario en los servidores de base de datos y posibilita la rotación de contraseñas en un solo lugar.
   - Puede administrar los permisos de la base de datos usando grupos externos (Azure Active Directory).
   - Puede eliminar el almacenamiento de contraseñas mediante la habilitación de la autenticación integrada de Windows y otras formas de autenticación compatibles con Azure Active Directory.
 
 #### <a name="authorization"></a>Autorización
-[Autorización](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins) hace referencia toowhat puede hacer un usuario dentro de una base de datos de SQL Azure, y esto se controla mediante la base de datos de su cuenta de usuario [las pertenencias a roles](https://msdn.microsoft.com/library/ms189121) y [permisos de nivel de objeto](https://msdn.microsoft.com/library/ms191291.aspx). La autorización es el proceso Hola para determinar qué recursos susceptibles de protegerse puede tener acceso una entidad de seguridad y qué operaciones se permiten a esos recursos.
+La [autorización](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins) indica las acciones que pueden llevar a cabo los usuarios en Azure SQL Database, algo que controlan los [permisos de nivel de objeto](https://msdn.microsoft.com/library/ms189121) y las [pertenencias a roles](https://msdn.microsoft.com/library/ms191291.aspx) de bases de datos de la cuenta de usuario. La autorización es el proceso en el que se determinan los recursos protegibles a los que puede obtener acceso una entidad de seguridad y las operaciones permitidas para dichos recursos.
 
 ### <a name="application-access"></a>Acceso a las aplicaciones
 
@@ -141,79 +141,79 @@ En esta sección hablaremos de:
 -   Seguridad de nivel de fila
 
 #### <a name="dynamic-data-masking"></a>Enmascaramiento de datos dinámicos
-Un representante del servicio en un centro de llamadas puede identificar a los llamadores mediante varios dígitos de su número del seguro social o un número de tarjeta de crédito, pero esos elementos no deben estar completamente los datos expuestos a toohello representante del servicio.
+Un representante de servicio de un centro de llamadas podría identificar a los autores de las llamadas a partir de varios dígitos de su número de seguridad social o el número de tarjeta de crédito, pero esa es una información que no debería exponerse por completo al representante del servicio.
 
-Puede definir una regla de enmascaramiento que enmascare todos excepto Hola los últimos cuatro dígitos de cualquier número del seguro social o un número de tarjeta de crédito en el conjunto de resultados de Hola de cualquier consulta.
+Se puede definir una regla de enmascaramiento que enmascare todo excepto los cuatro últimos dígitos de un número de seguridad social o un número de tarjeta de crédito en el conjunto de resultados de cualquier consulta.
 
 ![Enmascaramiento de datos dinámicos](./media/azure-databse-security-overview/azure-database-fig3.png)
 
-Como otro ejemplo, una máscara de datos apropiados puede ser datos de información personal identificable (PII) de tooprotect definido, por lo que un desarrollador puede realizar consultas en entornos de producción para resolver problemas sin infringir las normativas de cumplimiento.
+Otro ejemplo, una máscara de datos apropiada se puede definir para proteger los datos de información de identificación personal, para que un desarrollador pueda consultar los entornos de producción para solucionar problemas sin infringir las reglamentaciones de cumplimiento.
 
-[Base de datos de enmascaramiento dinámico SQL](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) limita la exposición de información confidencial ocultándolos toonon privilegios a los usuarios. Enmascaramiento dinámico de datos es compatible con la versión de Hola V12 de base de datos de SQL Azure.
+El [enmascaramiento dinámico de datos de SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started) limita la exposición de información confidencial mediante su enmascaramiento a los usuarios sin privilegios. El enmascaramiento de datos dinámicos se admite con la versión V12 de Azure SQL Database.
 
-[Enmascaramiento dinámico de datos](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking) ayuda a evitar que los datos de toosensitive de acceso no autorizado, permitiéndole toodesignate cuánto Hola confidencial tooreveal con un impacto mínimo en el nivel de aplicación Hola. Es una característica de seguridad basada en directivas que oculta los datos confidenciales Hola Hola conjunto de resultados de una consulta de campos de la base de datos designada, Hola datos en la base de datos de hello no cambian.
+El [enmascaramiento dinámico de datos](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking) ayuda a impedir el acceso no autorizado a datos confidenciales permitiéndole designar la cantidad de los datos confidenciales que se revelarán con un impacto mínimo en el nivel de aplicación. Es una característica de seguridad basada en directivas que oculta los datos confidenciales en el conjunto de resultados de una consulta sobre los campos designados de la base de datos, aunque que los datos de la base de datos no cambian.
 
 
 > [!Note]
-> Enmascaramiento dinámico de datos puede configurarse Hola, Administrador de base de datos de Azure, el Administrador de servidor o roles de seguridad responsable de seguridad.
+> El enmascaramiento de datos dinámicos puede configurarse mediante el administrador de Base de datos de Azure, el administrador del servidor o los roles de autoridad de seguridad.
 
 #### <a name="row-level-security"></a>Seguridad de nivel de fila
-Otro requisito de seguridad habitual de las bases de datos multiinquilino es la [seguridad de nivel de fila](https://msdn.microsoft.com/library/dn765131.aspx). Esta característica permite toocontrol toorows de acceso en una tabla de base de datos basada en características de Hola de usuario de Hola que se ejecuta una consulta (por ejemplo, grupo pertenencia o contexto de ejecución).
+Otro requisito de seguridad habitual de las bases de datos multiinquilino es la [seguridad de nivel de fila](https://msdn.microsoft.com/library/dn765131.aspx). Esta característica le permite controlar el acceso a las filas de una tabla de base de datos en función de las características del usuario que ejecuta una consulta (por ejemplo, la pertenencia a un grupo o el contexto de ejecución).
 
 ![Seguridad de nivel de fila](./media/azure-databse-security-overview/azure-database-fig4.png)
 
-lógica de la restricción de Hello acceso está ubicada en el nivel de base de datos de hello en lugar de estar alejado de los datos de hello en otro nivel de aplicación. sistema de bases de datos de Hello aplica restricciones de acceso de hello cada vez que se intenta que acceder a los datos desde cualquier nivel. Esto hace el sistema de seguridad más sólido y confiable que reduce la superficie Hola de su sistema de seguridad.
+La lógica de restricción de acceso está en el nivel de la base de datos, en lugar de encontrarse en otro nivel de la aplicación lejos de los datos. El sistema de base de datos aplica las restricciones de acceso cada vez que se intenta acceder a los datos desde cualquier nivel. Esto hace que el sistema de seguridad resulte más sólido y confiable al reducir el área expuesta del sistema de seguridad.
 
-La seguridad de nivel de fila introduce el control de acceso basado en predicados. Ofrece una evaluación flexible, centralizada y basada en predicados que puede tener en cuenta metadatos o cualquier otro criterio Hola administrador determine como apropiada. predicado de Hola se usa como un criterio toodetermine si el usuario de hello tiene datos de toohello de saludo acceso adecuado en función de atributos de usuario o no. El control de acceso basado en etiquetas se puede implementar mediante el control de acceso basado en predicados.
+La seguridad de nivel de fila introduce el control de acceso basado en predicados. Ofrece una evaluación flexible, centralizada y basada en predicados que puede tener en cuenta los metadatos o cualquier otro criterio que el administrador determine como adecuado. El predicado se usa como criterio para determinar si el usuario tiene el acceso adecuado a los datos en función de los atributos de usuario. El control de acceso basado en etiquetas se puede implementar mediante el control de acceso basado en predicados.
 
 ## <a name="proactive-monitoring"></a>Supervisión proactiva
 SQL Database protege los datos proporcionando capacidades de **auditoría** y **detección de amenazas**.
 
 ### <a name="auditing"></a>Auditoría
-Auditoría de base de datos de SQL Server aumenta la capacidad toogain una visión general eventos y los cambios que se producen dentro de la base de datos de hello, incluidas las actualizaciones y las consultas en datos Hola.
+La auditoría de SQL Database aumenta la capacidad de obtener información sobre los eventos y los cambios que se producen en la base de datos, incluidas las actualizaciones y las consultas efectuadas en los datos.
 
-[Auditoría de base de datos de SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started) realiza un seguimiento de eventos de base de datos y escribe el registro de auditoría tooan en su cuenta de almacenamiento de Azure. La auditoría puede ayudarle a mantener el cumplimiento de normativas, comprender la actividad de las bases de datos y conocer las discrepancias y anomalías que pueden indicar problemas en el negocio o infracciones de seguridad sospechosas. Auditoría permite y facilita estándares de cumplimiento toocompliance pero no garantiza el cumplimiento de normas.
+La [auditoría de Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started) realiza un seguimiento de eventos de bases de datos y los registra en un registro de auditoría de la cuenta de Azure Storage. La auditoría puede ayudarle a mantener el cumplimiento de normativas, comprender la actividad de las bases de datos y conocer las discrepancias y anomalías que pueden indicar problemas en el negocio o infracciones de seguridad sospechosas. La auditoría posibilita y facilita la observancia de estándares reguladores pero no garantiza el cumplimiento.
 
 La auditoría de SQL Database le permite:
 
--   **Conservar** una traza de auditoría de eventos seleccionados. Puede definir categorías de base de datos acciones toobe auditado.
--   **Informar** sobre la actividad de la base de datos. Puede usar los informes preconfigurados y un tooget de panel a trabajar rápidamente con actividad y los informes de eventos.
+-   **Conservar** una traza de auditoría de eventos seleccionados. Puede definir categorías de acciones de base de datos para auditar.
+-   **Informar** sobre la actividad de la base de datos. Puede usar informes preconfigurados y un panel para empezar rápidamente con el informe de actividades y eventos.
 -   **Analizar** informes. Puede buscar eventos sospechosos, actividades inusuales y tendencias.
 
 Existen dos métodos de auditoría:
 
--   **Auditoría de blobs** -se escriben los registros tooAzure almacenamiento de blobs. Es el método de auditoría más reciente, que proporciona mayor rendimiento, admite auditoría de nivel de objeto de mayor granularidad y es más rentable.
--   **Auditoría de tabla** -tooAzure el almacenamiento de tablas se escriben los registros.
+-   **Auditoría de blobs**: los registros se escriben en Azure Blob Storage. Es el método de auditoría más reciente, que proporciona mayor rendimiento, admite auditoría de nivel de objeto de mayor granularidad y es más rentable.
+-   **Auditoría de tablas**: los registros se escriben en Azure Table Storage.
 
 ### <a name="threat-detection"></a>Detección de amenazas
-La [detección de amenazas de Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) detecta actividades sospechosas que indican posibles amenazas de seguridad. La detección de amenazas permite toorespond toosuspicious eventos de base de datos de hello, como las inserciones de SQL, cuando se producen. Proporciona alertas y permite el uso de Hola de auditoría de base de datos de SQL Azure tooexplore eventos sospechosos Hola.
+La [detección de amenazas de Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) detecta actividades sospechosas que indican posibles amenazas de seguridad. La detección de amenazas le permite responder a eventos sospechosos en la base de datos (como las inserciones de SQL) en el momento en que se producen. Proporciona alertas y permite usar la auditoría de Azure SQL Database para explorar los eventos sospechosos.
 
 ![Detección de amenazas](./media/azure-databse-security-overview/azure-database-fig5.jpg)
 
-Por ejemplo, inyección de código SQL es uno de hello Web aplicación problemas de seguridad comunes en hello Internet, aplicaciones usadas tooattack controladas por datos. Los atacantes aprovechar aplicación vulnerabilidades tooinject instrucciones SQL malintencionadas en campos de entrada de la aplicación, infracción o modificar datos en la base de datos de Hola.
+Por ejemplo, la inyección de código SQL es uno de los problemas de seguridad habituales entre las aplicaciones web en Internet y se usa para atacar aplicaciones controladas por datos. Los atacantes aprovechan las vulnerabilidades de la aplicación para inyectar instrucciones SQL malintencionadas en los campos de entrada de la aplicación, con el fin de infringir la seguridad o modificar datos en la base de datos.
 
-Los responsables de seguridad u otros administradores designados pueden recibir una notificación inmediata sobre las actividades sospechosas en las bases de datos cuando se producen. Cada notificación proporciona detalles de actividad sospechosa de Hola y recomienda cómo toofurther investigar y mitigar la amenaza de Hola.        
+Los responsables de seguridad u otros administradores designados pueden recibir una notificación inmediata sobre las actividades sospechosas en las bases de datos cuando se producen. Cada notificación proporciona detalles de la actividad sospechosa y recomienda cómo investigar más y mitigar la amenaza.        
 
 ## <a name="centralized-security-management"></a>Administración de seguridad centralizada
 
-[Centro de seguridad de Azure](https://azure.microsoft.com/documentation/services/security-center/) le ayuda a evitar, detectar y responder toothreats. Proporciona administración de directivas y supervisión de la seguridad integrada en las suscripciones de Azure, ayuda a detectar las amenazas que podrían pasar desapercibidas y funciona con un amplio ecosistema de soluciones de seguridad.
+[Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/) ayuda a evita y a detectar las amenazas, además de a responder a ellas. Proporciona administración de directivas y supervisión de la seguridad integrada en las suscripciones de Azure, ayuda a detectar las amenazas que podrían pasar desapercibidas y funciona con un amplio ecosistema de soluciones de seguridad.
 
-[Centro de seguridad](https://docs.microsoft.com/azure/security-center/security-center-sql-database) ayuda a proteger los datos en la base de datos SQL proporcionando visibilidad sobre seguridad Hola de todos los servidores y bases de datos. Con Security Center puede realizar estas tareas:
+[Security Center](https://docs.microsoft.com/azure/security-center/security-center-sql-database) ayuda a proteger los datos de SQL Database ofreciendo visibilidad sobre la seguridad en todos los servidores y bases de datos. Con Security Center puede realizar estas tareas:
 
 -   Definir las directivas de auditoría y cifrado de SQL Database
--   Supervisión de seguridad de Hola de recursos de base de datos SQL en todas sus suscripciones.
+-   Supervisar la seguridad de los recursos de SQL Database de todas sus suscripciones
 -   Identificar y corregir problemas de seguridad rápidamente
 -   Integrar las alertas de [detección de amenazas de Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)
 -   El Centro de seguridad admite el acceso basado en rol.
 
 ## <a name="azure-marketplace"></a>Azure Marketplace
 
-Hello Azure Marketplace es un marketplace de aplicaciones y servicios en línea que permite a las nuevas empresas y software independiente (ISV) toooffer sus clientes de tooAzure soluciones alrededor de Hola a todos.
-Hello Azure Marketplace combina ecosistemas de partner de Microsoft Azure en una sola plataforma unificada toobetter servir nuestros clientes y socios. Haga clic en [aquí](https://azuremarketplace.microsoft.com/marketplace/apps?search=Database%20Security&page=1) tooglance productos de seguridad de base de datos disponibles en lugar de mercado de Azure.
+Azure Marketplace es una tienda de aplicaciones y servicios en línea que permite a las nuevas empresas y a los fabricantes de software independientes (ISV) ofrecer sus soluciones a clientes de Azure de todo el mundo.
+Azure Marketplace combina los ecosistemas de asociados de Microsoft Azure en una sola plataforma unificada para atender mejor a nuestros clientes y asociados. Haga clic [aquí](https://azuremarketplace.microsoft.com/marketplace/apps?search=Database%20Security&page=1) para echar un vistazo a los productos de seguridad de base de datos disponibles en Azure Marketplace.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
 - Obtenga más información sobre la [protección de Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial).
 - Obtenga más información sobre [los servicios Azure Security Center y Azure SQL Database](https://docs.microsoft.com/azure/security-center/security-center-sql-database).
-- toolearn más información acerca de la detección de amenazas, consulte [detección de amenazas de base de datos de SQL](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection).
-- más información, consulte toolearn [rendimiento de base de datos de SQL mejorar](https://docs.microsoft.com/azure/sql-database/sql-database-performance-tutorial). 
+- Para obtener más información sobre la detección de amenazas, consulte [Detección de amenazas de SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection).
+- Para obtener más información, consulte [Mejora del rendimiento de la base de datos de SQL](https://docs.microsoft.com/azure/sql-database/sql-database-performance-tutorial). 

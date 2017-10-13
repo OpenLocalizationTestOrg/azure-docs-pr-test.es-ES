@@ -1,6 +1,6 @@
 ---
-title: "aaaSet seguridad PowerShell toocreate una máquina virtual para hello Marketplace | Documentos de Microsoft"
-description: "Instrucciones para configurar Azure PowerShell y lo usa como un proceso opcional de flujo de toocreate toodeploy de imágenes de máquina virtual y venden en, hello Azure Marketplace"
+title: "Configuración de PowerShell para crear una máquina virtual para Marketplace | Microsoft Docs"
+description: "Instrucciones para configurar Azure PowerShell y usarlo como un flujo de proceso opcional para crear imágenes de máquina virtual en las que implementar y vender en Azure Marketplace"
 services: marketplace-publishing
 documentationcenter: 
 author: HannibalSII
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/04/2016
 ms.author: hascipio
-ms.openlocfilehash: cd2ebad7472248b8f921706e1a8c82d41f33b9cc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: bbcce5093d2bbd5326523063db7d0e565fe4de6d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="set-up-azure-powershell-toocreate-an-offer-for-hello-azure-marketplace"></a>Configurar Azure PowerShell toocreate una oferta de hello Azure Marketplace
-Para obtener información detallada acerca de cómo tooset PowerShell de Azure, consulte [cómo tooinstall y configurar Azure PowerShell](/powershell/azure/overview). Un enfoque sencillo es toouse Hola certificado (método), que descarga e importa un certificado necesario para la autenticación. Hola tooobtain necesita certificados, usar hello **Get-AzurePublishSettingsFile** cmdlet. Guarde el archivo hello cuando se le pida. certificado de hello tooimport en una sesión de PowerShell, use hello **importación-AzurePublishSettingsFile** cmdlet.
+# <a name="set-up-azure-powershell-to-create-an-offer-for-the-azure-marketplace"></a>Configurar Azure PowerShell para crear una oferta para Azure Marketplace
+Para obtener información detallada sobre cómo configurar PowerShell en Azure, vea [Cómo instalar y configurar Azure PowerShell](/powershell/azure/overview). Un enfoque sencillo es usar el método de certificado, que descarga e importa un certificado necesario para la autenticación. Para obtener el certificado necesario, use el cmdlet **Get-AzurePublishSettingsFile** . Guarde el archivo cuando se le pida. Para importar el certificado en una sesión de PowerShell, use el cmdlet **Import-AzurePublishSettingsFile** .
 
-tooconfigure y almacén Hola comunes Microsoft Azure suscripción de sesión de PowerShell de hello, utilice hello **Set-AzureSubscription** y **Select-AzureSubscription** cmdlets:
+Para configurar y almacenar la configuración común de suscripción de Microsoft Azure para la sesión de PowerShell, use los cmdlets **Set-AzureSubscription** y **Select-AzureSubscription**:
 
         Set-AzureSubscription -SubscriptionName “mySubName” -CurrentStorageAccountName “mystorageaccount”
         Select-AzureSubscription -SubscriptionName "mySubName" –Current
 
-primer comando de Hello asocia una cuenta de almacenamiento predeterminada con suscripción de hello (necesario para algunas operaciones de aprovisionamiento de VM).  en segundo lugar, Hola hace suscripción Hola Hola uno actual (reconocido por otros cmdlets).
+El primer comando asocia una cuenta de almacenamiento predeterminada con la suscripción (necesaria para algunas operaciones de aprovisionamiento de máquinas virtuales).  El segundo convierte la suscripción en la actual (reconocida por otros cmdlets).
 
-## <a name="see-also"></a>Otras referencias
-* [Introducción: cómo toopublish una toohello de oferta de Azure Marketplace](marketplace-publishing-getting-started.md)
-* [Crear una imagen de máquina virtual para hello Marketplace](marketplace-publishing-vm-image-creation.md)
+## <a name="see-also"></a>Consulte también
+* [Introducción: cómo publicar una oferta en Azure Marketplace](marketplace-publishing-getting-started.md)
+* [Creación de una imagen de máquina virtual para Marketplace](marketplace-publishing-vm-image-creation.md)
 

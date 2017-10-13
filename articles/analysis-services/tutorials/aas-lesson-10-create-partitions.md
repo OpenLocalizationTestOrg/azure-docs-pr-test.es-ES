@@ -1,57 +1,75 @@
 ---
-título: aaa "lección tutorial de Analysis Services de Azure 10: crear particiones | Descripción de Microsoft Docs": describe cómo toocreate particiones en el proyecto tutorial de hello Azure Analysis Services. servicios: documentationcenter de analysis services: '' autor: minewiskan manager: erikre editor: '' etiquetas: ''
-
-MS.AssetId: ms.service: ms.devlang de analysis services: NA ms.topic: get-started-article ms.tgt_pltfrm: NA ms.workload: na ms.date: 26/05/2017 ms.author: owend
+title: "Lección 10 del tutorial de Azure Analysis Services: Creación de particiones | Microsoft Docs"
+description: "Describe cómo crear particiones en el proyecto del tutorial de Azure Analysis Services."
+services: analysis-services
+documentationcenter: 
+author: Minewiskan
+manager: erikre
+editor: 
+tags: 
+ms.assetid: 
+ms.service: analysis-services
+ms.devlang: NA
+ms.topic: get-started-article
+ms.tgt_pltfrm: NA
+ms.workload: na
+ms.date: 09/20/2017
+ms.author: owend
+ms.openlocfilehash: b6b5bcd1d766376bd0af71e1fa91f8f2f96b9605
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: es-ES
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="lesson-10-create-partitions"></a>Lección 10: Creación de particiones
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-En esta lección, creará la tabla de particiones toodivide hello FactInternetSales en piezas lógicas más pequeñas que pueden ser procesado independiente (actualizar) de las demás particiones. De forma predeterminada, cada tabla que se incluye en el modelo tiene una partición, lo que incluye la tabla Hola todas las columnas y filas. Para la tabla FactInternetSales de hello, queremos que los datos de hello toodivide por año; una partición para cada uno de los cinco años de la tabla de Hola. Así, cada partición se podrá procesar de manera independiente. más información, consulte toolearn [particiones](https://docs.microsoft.com/sql/analysis-services/tabular-models/partitions-ssas-tabular). 
+En esta lección creará particiones para dividir la tabla FactInternetSales en partes lógicas más pequeñas que se puedan procesar (actualizar) de manera independiente de otras particiones. De forma predeterminada, todas las tablas que incluya en el modelo tienen una partición, que incluye todas las columnas y las filas de la tabla. En el caso de la tabla FactInternetSales, queremos dividir los datos por año: una partición para cada uno de los cinco años de la tabla. Así, cada partición se podrá procesar de manera independiente. Para obtener más información, consulte [Partitions](https://docs.microsoft.com/sql/analysis-services/tabular-models/partitions-ssas-tabular) (Particiones). 
   
-Estimado toocomplete de tiempo en esta lección: **15 minutos**  
+Tiempo estimado para completar esta lección: **15 minutos**  
   
 ## <a name="prerequisites"></a>Requisitos previos  
-Este tema forma parte de un tutorial de modelado tabular, que se debe completar en orden. Antes de realizar tareas de hello en esta lección, debe haber completado la lección anterior hello: [lección 9: crear jerarquías](../tutorials/aas-lesson-9-create-hierarchies.md).  
+Este tema forma parte de un tutorial de modelado tabular, que se debe completar en orden. Antes de llevar a cabo las tareas de esta lección, debe haber finalizado la lección anterior: [Lección 9: Creación de jerarquías](../tutorials/aas-lesson-9-create-hierarchies.md).  
   
 ## <a name="create-partitions"></a>Creación de particiones  
   
-#### <a name="toocreate-partitions-in-hello-factinternetsales-table"></a>toocreate particiones de tabla de hello FactInternetSales  
+#### <a name="to-create-partitions-in-the-factinternetsales-table"></a>Para crear particiones en la tabla FactInternetSales  
   
 1.  En el Explorador de modelos tabulares, expanda **Tablas** y haga clic con el botón derecho en **FactInternetSales** > **Particiones**.  
   
-2.  En el Administrador de particiones, haga clic en **copia**y, a continuación, cambiar nombre de hello demasiado**FactInternetSales2010**.
+2.  En el Administrador de particiones, haga clic en **Copiar** y cambie el nombre por **FactInternetSales2010**.
   
-    Porque desea Hola partición tooinclude sólo aquellas filas en un período determinado, para el año 2010, de hello debe modificar la expresión de consulta de Hola.
+    Como quiere que la partición incluya solo las filas de un período determinado (para el año 2010), debe modificar la expresión de consulta.
   
-4.  Haga clic en **diseño** tooopen Editor de consultas y, a continuación, haga clic en hello **FactInternetSales2010** consulta.
+4.  Haga clic en **Diseño** para abrir el Editor de consultas y, luego, haga clic en la consulta **FactInternetSales2010**.
 
-5.  En la vista previa, haga clic en hello flecha abajo en hello **OrderDate** encabezado de columna y, a continuación, haga clic en **filtros de fecha y hora** > **entre**.
+5.  En la vista previa, haga clic en la flecha hacia abajo del encabezado de columna **OrderDate** y haga clic en **Filtros de fecha y hora** > **Entre**.
 
     ![aas-lesson10-query-editor](../tutorials/media/aas-lesson10-query-editor.png)
 
-6.  En el cuadro de diálogo Filtrar filas de hello, en **mostrar filas donde: OrderDate**, deje **es posterior o igual a**y, a continuación, en el campo de fecha de hello, escriba **1/1/2010**. Deje hello **y** operador seleccionado, a continuación, seleccione **antes**, a continuación, en el campo de fecha de hello, escriba **/1/1/2011**y, a continuación, haga clic en **Aceptar**.
+6.  En el cuadro de diálogo Filtrar filas, en **Mostrar filas donde: OrderDate**, deje **posterior a o igual que** y, en el campo de fecha, escriba **1/1/2010**. Deje seleccionado el operador **Y**, seleccione **anterior a**; luego, en el campo de fecha, escriba **1/1/2011** y haga clic en **Aceptar**.
 
     ![aas-lesson10-filter-rows](../tutorials/media/aas-lesson10-filter-rows.png)
     
-    Observe que en PASOS APLICADOS del Editor de consultas encontrará otro paso denominado Filas filtradas. Este filtro es tooselect solo las fechas de pedidos de 2010.
+    Observe que en PASOS APLICADOS del Editor de consultas encontrará otro paso denominado Filas filtradas. Este filtro consiste en seleccionar solo las fechas de los pedidos de 2010.
 
 8.  Haga clic en **Import**.
 
-    En el Administrador de particiones, tenga en cuenta consulta Hola expresión ahora tiene una cláusula de filtrado de filas adicional.
+    En el Administrador de particiones, observe que la expresión de consulta ahora tiene una cláusula Filas filtradas adicional.
 
     ![aas-lesson10-query](../tutorials/media/aas-lesson10-query.png)
   
-    Esta instrucción especifica que esta partición debe incluir solo datos de hello en las filas donde hello OrderDate es Hola año 2010 tal como se especifica en la cláusula de filtrado de filas de Hola.  
+    Esta instrucción especifica que esta partición debe incluir solo los datos de esas filas donde el valor OrderDate está en el año 2010, tal como se especifica en la cláusula Filas filtradas.  
   
   
-#### <a name="toocreate-a-partition-for-hello-2011-year"></a>toocreate una partición para hello año 2011  
+#### <a name="to-create-a-partition-for-the-2011-year"></a>Para crear una partición para el año 2011  
   
-1.  En la lista de particiones de hello, haga clic en hello **FactInternetSales2010** de partición que creó y, a continuación, haga clic en **copia**.  Cambiar el nombre de la partición de hello demasiado**FactInternetSales2011**. 
+1.  En la lista de particiones, haga clic en la partición **FactInternetSales2010** que ha creado y, luego, haga clic en **Copiar**.  Cambie el nombre de la partición a **FactInternetSales2011**. 
 
-    No es necesario toouse Editor de consultas toocreate una nueva cláusula de filtrado de filas. Porque se ha creado una copia de la consulta de Hola para 2010, todo lo que necesita toodo es realizar un pequeño cambio en consulta Hola de 2011.
+    No es necesario usar el Editor de consultas para crear otra cláusula Filas filtradas. Como ha creado una copia de la consulta para el 2010, lo único que tiene que hacer es efectuar un pequeño cambio en la consulta del 2011.
   
-2.  En **expresión de consulta**, en orden para esta partición tooinclude sólo aquellas filas para hello año 2011, reemplace los años Hola de cláusula de filtrado de filas de hello tiene **2011** y **2012**, respectivamente, al igual que:  
+2.  En **Expresión de consulta**, para que esta partición incluya solo las filas del año 2011, reemplace los años de la cláusula Filas filtradas por **2011** y **2012**, respectivamente; así:  
   
     ```  
     let
@@ -64,39 +82,39 @@ Este tema forma parte de un tutorial de modelado tabular, que se debe completar 
    
     ```  
   
-#### <a name="toocreate-partitions-for-2012-2013-and-2014"></a>particiones de toocreate de 2012, 2013 y 2014.  
+#### <a name="to-create-partitions-for-2012-2013-and-2014"></a>Para crear particiones para los años 2012, 2013 y 2014  
   
-- Siga los pasos anteriores hello, creación de particiones de 2012, 2013 y 2014, cambiar años de hello en hello filtrar filas cláusula tooinclude solo las filas correspondientes a ese año. 
+- Siga los pasos anteriores (creación de particiones para los años 2012, 2013 y 2014, y cambio de los años en la cláusula Filas filtradas) para incluir solo las filas correspondientes a ese año. 
   
 
-## <a name="delete-hello-factinternetsales-partition"></a>Eliminar hello FactInternetSales partición
-Ahora que tiene particiones para cada año, puede eliminar la partición de hello FactInternetSales; al elegir todos los procesos cuando el procesamiento de particiones, que impiden que se superponen.
+## <a name="delete-the-factinternetsales-partition"></a>Eliminar la partición FactInternetSales
+Ahora que tiene particiones para cada año, puede eliminar la partición FactInternetSales. Procure que no se produzca ninguna superposición al elegir Procesar todo para procesar las particiones.
 
-#### <a name="toodelete-hello-factinternetsales-partition"></a>Hola toodelete FactInternetSales partición
--  Haga clic en hello FactInternetSales partición y, a continuación, haga clic en **eliminar**.
+#### <a name="to-delete-the-factinternetsales-partition"></a>Para eliminar la partición FactInternetSales
+-  Haga clic en la partición FactInternetSales y haga clic en **Eliminar**.
 
 
 
 ## <a name="process-partitions"></a>Procesar las particiones  
-En el Administrador de particiones, tenga en cuenta hello **procesa última** columna para cada una de las nuevas particiones Hola creaste muestra estas particiones nunca se han procesado. Al crear particiones, se deben ejecutar un procesar particiones o datos de tabla de proceso operación toorefresh hello en esas particiones.  
+En el Administrador de particiones, observe que en la columna **Procesado por última vez** de cada una de las nuevas particiones que ha creado se muestra que estas particiones nunca se han procesado. Al crear particiones debe ejecutar la operación Procesar particiones o Procesar tabla para actualizar los datos de esas particiones.  
   
-#### <a name="tooprocess-hello-factinternetsales-partitions"></a>tooprocess Hola FactInternetSales particiones  
+#### <a name="to-process-the-factinternetsales-partitions"></a>Para procesar las particiones FactInternetSales  
   
-1.  Haga clic en **Aceptar** tooclose Administrador de particiones.  
+1.  Haga clic en **Aceptar** para cerrar el Administrador de particiones.  
   
-2.  Haga clic en hello **FactInternetSales** de tabla, a continuación, haga clic en hello **modelo** menú > **proceso** > **procesar particiones**.  
+2.  Haga clic en la tabla **FactInternetSales** y, luego, haga clic en el menú **Modelo** > **Proceso** > **Procesar particiones**.  
   
-3.  En el cuadro de diálogo procesar particiones de hello, compruebe **modo** se establece demasiado**proceso predeterminado**.  
+3.  En el cuadro de diálogo Procesar particiones, compruebe que **Modo** está establecido en **Proceso predeterminado**.  
   
-4.  Active la casilla de verificación de Hola Hola **proceso** columna para cada uno de hello cinco particiones que ha creado y, a continuación, haga clic en **Aceptar**.  
+4.  Seleccione la casilla de la columna **Proceso** de cada una de las cinco particiones que ha creado y haga clic en **Aceptar**.  
 
     ![aas-lesson10-process-partitions](../tutorials/media/aas-lesson10-process-partitions.png)
   
-    Si se le pide las credenciales de suplantación, escriba el nombre de usuario de Windows hello y la contraseña que especificó en la lección 2.  
+    Si se le piden las credenciales de suplantación, escriba el nombre de usuario y la contraseña de Windows que ha especificado en la lección 2.  
   
-    Hola **procesamiento de datos** cuadro de diálogo aparece y muestra los detalles del proceso para cada partición. Tenga en cuenta que se transfiere un número de filas diferente para cada partición. Cada partición incluye solamente las filas para el año de hello especificado en la cláusula WHERE de la instrucción SQL Hola Hola. Cuando finalice el procesamiento, continúe y cerrar el cuadro de diálogo de procesamiento de datos de Hola.  
+    Aparece el cuadro de diálogo **Procesamiento de datos**, en el que se muestran los detalles del proceso de cada partición. Tenga en cuenta que se transfiere un número de filas diferente para cada partición. Cada partición incluye solamente las filas del año especificado en la cláusula WHERE de la instrucción SQL. Cuando el procesamiento haya finalizado, continúe y cierre el cuadro de diálogo Procesamiento de datos.  
   
     ![aas-lesson10-process-complete](../tutorials/media/aas-lesson10-process-complete.png)
   
  ## <a name="whats-next"></a>Pasos siguientes
-Vaya toohello siguiente lección: [lección 11: crear Roles](../tutorials/aas-lesson-11-create-roles.md). 
+Vaya a la siguiente lección: [Lección 11: Creación de roles](../tutorials/aas-lesson-11-create-roles.md). 

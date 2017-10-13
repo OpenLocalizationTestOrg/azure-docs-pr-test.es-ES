@@ -1,6 +1,6 @@
 ---
-title: "Análisis de Configuration Manager tooLog aaaConnect | Documentos de Microsoft"
-description: "Este artículo muestra hello pasos tooconnect tooLog del Administrador de configuración de análisis y empezar a analizar los datos."
+title: "Conexión de Configuration Manager con Log Analytics | Microsoft Docs"
+description: "En este artículo se muestran los pasos para conectar Configuration Manager con Log Analytics y empezar a analizar datos."
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -14,44 +14,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: banders
-ms.openlocfilehash: dc50ebc46020a806d99d1a3e3d0e91fd09ad2c32
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 62d31ed486458245156f7fc832294d662c62991e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="connect-configuration-manager-toolog-analytics"></a>Análisis de Configuration Manager tooLog Connect
-Puede conectar System Center Configuration Manager tooLog análisis de datos de colección de dispositivos de toosync OMS. De este modo, los datos de la jerarquía de Configuration Manager estarán disponibles en OMS.
+# <a name="connect-configuration-manager-to-log-analytics"></a>Conexión de Configuration Manager con Log Analytics
+Puede conectar System Center Configuration Manager a Log Analytics de OMS para sincronizar datos de recopilación de dispositivos. De este modo, los datos de la jerarquía de Configuration Manager estarán disponibles en OMS.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
 Log Analytics es compatible con la rama actual de System Center Configuration Manager, versión 1606 y posteriores.  
 
 ## <a name="configuration-overview"></a>Información general sobre la configuración
-Hola pasos resume Hola proceso tooconnect análisis tooLog de Configuration Manager.  
+Los pasos siguientes resumen el proceso para conectar Configuration Manager a Log Analytics.  
 
-1. Hola Portal de administración de Azure, registrar Configuration Manager como una aplicación de la aplicación Web o API Web y asegúrese de que tiene Hola cliente y el Id. de clave secreta de cliente en el registro de hello de Azure Active Directory. Vea [usar la aplicación de portal toocreate Active Directory y la entidad de servicio que puede tener acceso a recursos](../azure-resource-manager/resource-group-create-service-principal-portal.md) para obtener información detallada acerca de cómo realizar este paso.
-2. En el Portal de administración de Azure, hello [proporcionar Configuration Manager (aplicación web registrado de hello) con permiso tooaccess OMS](#provide-configuration-manager-with-permissions-to-oms).
-3. En el Administrador de configuración, [agregar una conexión mediante Hola Asistente para la conexión de OMS de agregar](#add-an-oms-connection-to-configuration-manager).
-4. En el Administrador de configuración, [actualizar las propiedades de conexión de hello](#update-oms-connection-properties) clave secreta de hello cliente o la contraseña nunca expira o se pierde.
-5. Con información del portal de OMS de hello, [descargar e instalar Microsoft Monitoring Agent hello](#download-and-install-the-agent) en equipo Hola ejecuta conexión de servicio de Configuration Manager Hola punto de rol de sistema de sitio. agente de Hello envía tooOMS de datos de Configuration Manager.
+1. En el Portal de administración de Azure, registre Configuration Manager como una aplicación web o una aplicación de API web y asegúrese de que tiene el identificador de cliente y la clave secreta de cliente en el registro de Azure Active Directory. Consulte [Uso del portal para crear una aplicación de Active Directory y una entidad de servicio con acceso a los recursos](../azure-resource-manager/resource-group-create-service-principal-portal.md) para obtener información detallada sobre cómo realizar este paso.
+2. En el Portal de administración de Azure, [proporcione a Configuration Manager (la aplicación web registrada) permiso para acceder a OMS](#provide-configuration-manager-with-permissions-to-oms).
+3. En Configuration Manager, [agregue una conexión mediante el Asistente para agregar una conexión de OMS](#add-an-oms-connection-to-configuration-manager).
+4. En Configuration Manager, [actualice las propiedades de conexión](#update-oms-connection-properties) si la clave secreta de cliente o la contraseña expiran o se pierden.
+5. Con la información del portal de OMS, [descargue e instale el agente de supervisión de Microsoft](#download-and-install-the-agent) en el equipo que ejecuta el rol de sistema de sitio de punto de conexión del servicio de Configuration Manager. El agente envía datos de Configuration Manager a OMS.
 6. En Log Analytics, [importe recopilaciones de Configuration Manager](#import-collections) como grupos de equipos.
 7. En Log Analytics, consulte datos de Configuration Manager como [grupos de equipos](log-analytics-computer-groups.md).
 
-Puede leer más acerca de cómo conectar tooOMS de Configuration Manager en [sincronizar los datos de Configuration Manager toohello Microsoft Operations Management Suite](https://technet.microsoft.com/library/mt757374.aspx).
+Puede leer más información sobre cómo conectar Configuration Manager a OMS en [Sync data from Configuration Manager to the Microsoft Operations Management Suite](https://technet.microsoft.com/library/mt757374.aspx) (Sincronización de datos de Configuration Manager con Microsoft Operations Management Suite).
 
-## <a name="provide-configuration-manager-with-permissions-toooms"></a>Proporcione de Configuration Manager con permisos tooOMS
-Hello siguiente procedimiento proporciona Hola Portal de administración de Azure con permisos tooaccess OMS. En concreto, debe conceder hello *rol Colaborador* toousers en grupo de recursos de hello en orden tooallow Hola Portal de administración de Azure tooconnect tooOMS de Configuration Manager.
+## <a name="provide-configuration-manager-with-permissions-to-oms"></a>Concesión de permisos a Configuration Manager para acceder a OMS
+El procedimiento siguiente proporciona al Portal de administración de Azure permisos para acceder a OMS. En concreto, debe conceder el *rol Colaborador* a los usuarios del grupo de recursos con el fin de permitir que el Portal de administración de Azure conecte Configuration Manager con OMS.
 
 > [!NOTE]
-> Debe especificar permisos en OMS para Configuration Manager. En caso contrario, recibirá un mensaje de error cuando se usa el Asistente para configuración de hello en Configuration Manager.
+> Debe especificar permisos en OMS para Configuration Manager. De lo contrario, recibirá un mensaje de error cuando utilice el Asistente para configuración de Configuration Manager.
 >
 >
 
-1. Abra hello [portal de Azure](https://portal.azure.com/) y haga clic en **examinar** > **Log Analytics (OMS)** hoja de tooopen Hola Log Analytics (OMS).  
-2. En hello **Log Analytics (OMS)** hoja, haga clic en **agregar** tooopen hello **área de trabajo de OMS** hoja.  
+1. Abra [Azure Portal](https://portal.azure.com/) y haga clic en **Examinar** > **Log Analytics (OMS)** para abrir la hoja Log Analytics (OMS).  
+2. En la hoja **Log Analytics (OMS)**, haga clic en **Agregar** para abrir la hoja **OMS Workspace** (Área de trabajo de OMS).  
    ![Hoja OMS](./media/log-analytics-sccm/sccm-azure01.png)
-3. En hello **área de trabajo de OMS** hoja, proporcionar Hola siguiente información y, a continuación, haga clic en **Aceptar**.
+3. En la hoja **OMS Workspace** (Área de trabajo de OMS), proporcione la información siguiente y, después, haga clic en **Aceptar**.
 
    * **Área de trabajo de OMS**
    * **Suscripción**
@@ -61,76 +61,76 @@ Hello siguiente procedimiento proporciona Hola Portal de administración de Azur
      ![Hoja OMS](./media/log-analytics-sccm/sccm-azure02.png)  
 
      > [!NOTE]
-     > ejemplo de Hola anterior crea un nuevo grupo de recursos. grupo de recursos de Hello es solo usa tooprovide Configuration Manager con el área de trabajo OMS de permisos toohello en este ejemplo.
+     > En el ejemplo siguiente se crea un grupo de recursos nuevo. El grupo de recursos solo se utiliza para proporcionar a Configuration Manager permisos para el área de trabajo de OMS en este ejemplo.
      >
      >
-4. Haga clic en **examinar** > **grupos de recursos** tooopen hello **grupos de recursos** hoja.
-5. Hola **grupos de recursos** hoja, haga clic en el grupo de recursos de Hola que haya creado anteriormente hello tooopen &lt;nombre del grupo de recursos&gt; hoja de configuración.  
+4. Haga clic en **Examinar** > **Grupos de recursos** para abrir la hoja **Grupos de recursos**.
+5. En la hoja **Grupos de recursos**, haga clic en el grupo de recursos que creó anteriormente para abrir la hoja de configuración &lt;Nombre del grupo de recursos&gt;.  
    ![Hoja de configuración del grupo de recursos](./media/log-analytics-sccm/sccm-azure03.png)
-6. Hola &lt;nombre del grupo de recursos&gt; hoja de configuración, haga clic en Hola de Access control (IAM) tooopen &lt;nombre del grupo de recursos&gt; hoja usuarios.  
+6. En la hoja de configuración &lt;Nombre del grupo de recursos&gt;, haga clic en Control de acceso (IAM) para abrir la hoja Usuarios de &lt;Nombre del grupo de recursos&gt;.  
    ![Hoja de usuarios del grupo de recursos](./media/log-analytics-sccm/sccm-azure04.png)  
-7. Hola &lt;nombre del grupo de recursos&gt; hoja de usuarios, haga clic en **agregar** tooopen hello **agregar acceso** hoja.
-8. Hola **agregar acceso** hoja, haga clic en **seleccione un rol**y, a continuación, seleccione hello **colaborador** rol.  
+7. En la hoja Usuarios de &lt;Nombre del grupo de recursos&gt;, haga clic en **Agregar** para abrir la hoja **Agregar acceso**.
+8. En la hoja **Agregar acceso**, haga clic en **Seleccionar un rol** y, después, seleccione, el rol **Colaborador**.  
    ![Seleccionar un rol](./media/log-analytics-sccm/sccm-azure05.png)  
-9. Haga clic en **agregar usuarios**, seleccione el usuario de Configuration Manager de hello, haga clic en **seleccione**y, a continuación, haga clic en **Aceptar**.  
+9. Haga clic en **Agregar usuarios**, seleccione el usuario de Configuration Manager, haga clic en **Seleccionar**, y, después, en **Aceptar**.  
    ![Agregar usuarios](./media/log-analytics-sccm/sccm-azure06.png)  
 
-## <a name="add-an-oms-connection-tooconfiguration-manager"></a>Agregar un tooConfiguration de connection Manager de OMS
-En orden tooadd una conexión de OMS, su entorno de Configuration Manager debe tener un [punto de conexión de servicio](https://technet.microsoft.com/library/mt627781.aspx) configurado para el modo en línea.
+## <a name="add-an-oms-connection-to-configuration-manager"></a>Adición de una conexión de OMS a Configuration Manager
+Para agregar una conexión de OMS, su entorno de Configuration Manager debe tener un [punto de conexión de servicio](https://technet.microsoft.com/library/mt627781.aspx) configurado para el modo en línea.
 
-1. Hola **administración** área de trabajo de Configuration Manager, seleccione **conector de OMS**. Se abrirá hello **agregar Asistente para la conexión a OMS**. Seleccione **Siguiente**.
-2. En hello **General** , confirme que ha hecho Hola siguientes acciones y que tiene detalles de cada artículo, a continuación, seleccione **siguiente**.
+1. En el área de trabajo **Administración** de Configuration Manager, seleccione **OMS Connector** (Conector de OMS). Se abrirá el **Asistente para agregar conexiones de OMS**. Seleccione **Siguiente**.
+2. En la pantalla **General**, confirme que ha realizado las siguientes acciones y que tiene los detalles de cada elemento; después, seleccione **Siguiente**.
 
-   1. En Hola Portal de administración de Azure, Configuration Manager se ha registrado como una aplicación de la aplicación Web o API Web y que ha Hola [Id. de cliente en el registro de hello](../active-directory/active-directory-integrating-applications.md).
-   2. En el Portal de administración de Azure hello, ha creado una clave secreta de la aplicación para la aplicación registrada hello en Azure Active Directory.  
-   3. Hola Portal de administración de Azure, que ha proporcionado la aplicación web registrado de hello con permiso tooaccess OMS.  
-      ![Página de conexión tooOMS generales del Asistente](./media/log-analytics-sccm/sccm-console-general01.png)
-3. En hello **Azure Active Directory** pantalla, configurar su tooOMS de configuración de conexión, debe proporcionar su **inquilino** , **Id. de cliente** , y **clave secreta de cliente**  , a continuación, seleccione **siguiente**.  
-   ![Página de conexión tooOMS Asistente para Azure Active Directory](./media/log-analytics-sccm/sccm-wizard-tenant-filled03.png)
-4. Si esto se logra Hola todos los otros procedimientos correctamente, Hola, a continuación, obtener información acerca de hello **la configuración de conexión de OMS** pantalla aparecerán automáticamente en esta página. Debe aparecer la información de configuración de conexión de Hola para su **suscripción de Azure** , **grupo de recursos de Azure** , y **el área de trabajo de Operations Management Suite**.  
-   ![Página de Asistente para la conexión a OMS de conexión tooOMS](./media/log-analytics-sccm/sccm-wizard-configure04.png)
-5. Asistente de Hello conecta toohello servicio OMS con información de hello que ha especificado. Seleccione las recopilaciones de dispositivos de Hola que desee toosync con OMS y, a continuación, haga clic en **agregar**.  
+   1. En el Portal de administración de Azure, ha registrado Configuration Manager como una aplicación web o una aplicación de API web y asegúrese de que tiene el [identificador de cliente en el registro](../active-directory/active-directory-integrating-applications.md).
+   2. En el Portal de administración de Azure, ha creado una clave secreta de la aplicación para la aplicación registrada en Azure Active Directory.  
+   3. En el Portal de administración de Azure, ha proporcionado a la aplicación web registrada permiso para acceder a OMS.  
+      ![Conexión a la página general del Asistente para OMS](./media/log-analytics-sccm/sccm-console-general01.png)
+3. En la pantalla **Azure Active Directory**, establezca la configuración de conexión a OMS proporcionando su **inquilino** , el **identificador de cliente** y la **clave secreta de cliente**; después, seleccione **Siguiente**.  
+   ![Conexión a la página de Azure Active Directory del Asistente para OMS](./media/log-analytics-sccm/sccm-wizard-tenant-filled03.png)
+4. Si ha realizado todos los procedimientos correctamente, la información de la pantalla **OMS Connection Configuration** (Configuración de conexión de OMS) aparecerá automáticamente en esta página. Debe aparecer la información de la configuración de conexión para su **suscripción de Azure** , **grupo de recursos de Azure** y **área de trabajo de Operations Management Suite**.  
+   ![Conexión a la página de conexión de OMS del Asistente para OMS](./media/log-analytics-sccm/sccm-wizard-configure04.png)
+5. El asistente se conecta al servicio de OMS usando la información que ha introducido. Seleccione las recopilaciones de dispositivos que desea sincronizar con OMS y, después, haga clic en **Agregar**.  
    ![Selección de recopilaciones](./media/log-analytics-sccm/sccm-wizard-add-collections05.png)
-6. Compruebe la configuración de conexión en hello **resumen** pantalla, a continuación, seleccione **siguiente**. Hola **progreso** pantalla muestra el estado de la conexión de hello, a continuación, debe **completar**.
+6. Compruebe la configuración de conexión de la pantalla **Resumen** y, después, seleccione **Siguiente**. La pantalla **Progreso** muestra el estado de conexión, que debería ser **Completado**.
 
 > [!NOTE]
-> Debe conectarse el sitio de nivel superior de toohello OMS en la jerarquía. Si se conecta un sitio primario OMS tooa independiente y, a continuación, agregar un entorno de tooyour de sitio de administración central, podrá tener toodelete y volver a crear la conexión a OMS Hola dentro de la nueva jerarquía de Hola.
+> Debe conectar OMS al sitio de nivel superior de la jerarquía. Si conecta OMS a un sitio primario independiente y, después, agrega un sitio de administración central a su entorno, tendrá que eliminar y volver a crear la conexión de OMS dentro de la nueva jerarquía.
 >
 >
 
-Después de haber vinculado tooOMS de Configuration Manager, puede agregar o quitar colecciones y ver las propiedades de Hola de hello conexión a OMS.
+Después de haber vinculado Configuration Manager a OMS, puede agregar o quitar recopilaciones y ver las propiedades de la conexión de OMS.
 
 ## <a name="update-oms-connection-properties"></a>Actualización de las propiedades de conexión de OMS
-Si una clave secreta de cliente o la contraseña nunca expira o se pierde, deberá propiedades de conexión de OMS de toomanually actualización Hola.
+Si la clave secreta de cliente o la contraseña nunca expira o se pierde, tendrá que actualizar manualmente las propiedades de conexión de OMS.
 
-1. En el Administrador de configuración, navegue demasiado**servicios en la nube** , a continuación, seleccione **conector de OMS** tooopen hello **propiedades de conexión de OMS** página.
-2. En esta página, haga clic en hello **Azure Active Directory** ficha tooview su **inquilino**, **Id. de cliente**, **caducidad de clave secreta de cliente**. **Compruebe** si ha expirado la **clave secreta de cliente**.
+1. En Configuration Manager, acceda a **Cloud Services** , después, seleccione **OMS Connector** (Conector de OMS) para abrir la página **OMS Connection Properties** (Propiedades de conexión de OMS).
+2. En esta página, haga clic en la pestaña **Azure Active Directory** para ver su **inquilino**, **identificador de cliente** y **expiración de clave secreta de cliente**. **Compruebe** si ha expirado la **clave secreta de cliente**.
 
-## <a name="download-and-install-hello-agent"></a>Descargue e instale el agente de Hola
-1. Portal de OMS de hello, [archivo de instalación de agente de Hola de descarga de OMS](log-analytics-windows-agents.md#download-the-agent-setup-file-from-oms).
-2. Utilice uno de hello siguiendo métodos tooinstall y configurar el agente de hello en equipo de Hola que se ejecuta el rol de sistema del sitio de punto de conexión de hello Configuration Manager service:
-   * [Instalación de agentes de hello mediante el programa de instalación](log-analytics-windows-agents.md#install-the-agent-using-setup)
-   * [Instalar a agente de hello mediante la línea de comandos de Hola](log-analytics-windows-agents.md#install-the-agent-using-the-command-line)
-   * [Instalar a agente de hello con DSC en automatización de Azure](log-analytics-windows-agents.md#install-the-agent-using-dsc-in-azure-automation)
+## <a name="download-and-install-the-agent"></a>Descarga e instalación del agente
+1. En el portal de OMS, [descargue el archivo de instalación del agente desde OMS](log-analytics-windows-agents.md#download-the-agent-setup-file-from-oms).
+2. Utilice uno de los métodos siguientes para instalar y configurar al agente en el equipo que ejecuta el rol de sistema de sitio de punto del servicio de Configuration Manager:
+   * [Instalación del agente con el programa de instalación](log-analytics-windows-agents.md#install-the-agent-using-setup)
+   * [Instalación del agente a través de la línea de comandos](log-analytics-windows-agents.md#install-the-agent-using-the-command-line)
+   * [Instalación del agente utilizando DSC en Azure Automation](log-analytics-windows-agents.md#install-the-agent-using-dsc-in-azure-automation)
 
 ## <a name="import-collections"></a>Importación de recopilaciones
-Después de que has agregado una tooConfiguration de connection Manager de OMS e instalado el agente de hello en equipo de hello con conexión de servicio de Configuration Manager de hello punto rol de sistema de sitio, Hola siguiente paso es tooimport colecciones de Configuration Manager en OMS como los grupos de equipos.
+Después de agregar una conexión de OMS en Configuration Manager y de instalar el agente en el equipo que ejecuta la conexión al servicio de Configuration Manager, seleccione el rol de sistema de sitio. Después, tiene que importar las recopilaciones de Configuration Manager en OMS como grupos de equipos.
 
-Después de la importación está habilitada, se recupera la información de pertenencia a la colección Hola cada tres horas tookeep Hola pertenencias a la colección actuales. Puede elegir toodisable importación en cualquier momento.
+Cuando se habilite la importación, la información de pertenencia de recopilaciones se recupera cada 3 horas para mantener las pertenencias a las recopilaciones actuales. Puede deshabilitar la importación en cualquier momento.
 
-1. En el portal de OMS de hello, haga clic en **configuración**.
-2. Haga clic en hello **grupos de equipos** ficha y, a continuación, haga clic en hello **SCCM** ficha.
+1. En el portal de OMS, haga clic en **Configuración**.
+2. Haga clic en la pestaña **Grupos de equipos** y, después, en la pestaña **SCCM**.
 3. Seleccione **Importar pertenencias de la recopilación de Configuration Manager** y, después, haga clic en **Guardar**.  
    ![Grupos de equipos: pestaña SCCM](./media/log-analytics-sccm/sccm-computer-groups01.png)
 
 ## <a name="view-data-from-configuration-manager"></a>Visualización de datos de Configuration Manager
-Después de que has agregado una tooConfiguration de connection Manager de OMS e instalar a agente de hello en equipo de hello con rol de sistema del sitio de punto de conexión de hello Configuration Manager service, se envían a los datos desde el agente de hello tooOMS. En OMS, las recopilaciones de Configuration Manager aparecen como [grupos de equipos](log-analytics-computer-groups.md). Puede ver los grupos de Hola de hello **Configuration Manager** página en **grupos de equipos** en **configuración**.
+Después de agregar una conexión de OMS en Configuration Manager y de instalar el agente en el equipo que ejecuta la conexión al servicio de Configuration Manager, seleccione el rol de sistema de sitio. En OMS, las recopilaciones de Configuration Manager aparecen como [grupos de equipos](log-analytics-computer-groups.md). Puede ver los grupos de la página **Configuration Manager** en **Grupos de equipos**, que se encuentra en **Configuración**.
 
-Después de Hola se importan las colecciones, puede ver cuántos equipos con pertenencias a la colección se han detectado. También puede ver el número de Hola de colecciones que se han importado.
+Después de importar las recopilaciones, puede ver cuántos equipos con pertenencias a las recopilaciones se han detectado. También puede ver el número de recopilaciones que se han importado.
 
 ![Grupos de equipos: pestaña SCCM](./media/log-analytics-sccm/sccm-computer-groups02.png)
 
-Al hacer clic en cualquiera de ellos, se abre de búsqueda, mostrar todo de hello importa grupos o todos los equipos que pertenecen tooeach grupo. Mediante [Búsqueda de registros](log-analytics-log-searches.md), puede iniciar un análisis exhaustivo de datos de Configuration Manager.
+Al hacer clic en cualquiera de ellos, se abre Búsqueda, que muestra todos los grupos importados o todos los equipos que pertenecen a cada grupo. Mediante [Búsqueda de registros](log-analytics-log-searches.md), puede iniciar un análisis exhaustivo de datos de Configuration Manager.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Use [Log Search](log-analytics-log-searches.md) tooview información detallada sobre los datos de Configuration Manager.
+* Use [Búsqueda de registros](log-analytics-log-searches.md) para ver información detallada sobre los datos de Configuration Manager.

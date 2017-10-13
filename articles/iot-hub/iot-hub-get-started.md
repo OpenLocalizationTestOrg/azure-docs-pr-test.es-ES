@@ -1,6 +1,6 @@
 ---
-title: 'Centro de IoT de Azure: empezar a conectar en la nube IoT dispositivos toohello | Documentos de Microsoft'
-description: "Obtenga información acerca de cómo tooconnect los paneles de IoT y starter kits tooAzure centro de IoT. Los dispositivos pueden enviar telemetría tooIoT concentrador y centro de IoT pueden supervisar y administrar los dispositivos."
+title: 'Azure IoT Hub: empezar a conectar dispositivos de IoT con la nube | Microsoft Docs'
+description: "Aprenda a conectar paneles y kits de inicio de IoT con Azure IoT Hub. Los dispositivos pueden enviar datos de telemetría a IoT Hub y este servicio supervisa y administra los dispositivos."
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -15,26 +15,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2017
 ms.author: dobett
-ms.openlocfilehash: 6dc956308009091532019ff84aec881f042f0104
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 45016e6383761ffe78f13ccef1112ab3d9753498
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-iot-hub-get-started-tutorials"></a>Tutoriales de introducción de Azure IoT Hub
 
-Puede usar el centro de IoT de Azure y soluciones de hello Azure IoT dispositivos SDK toobuild Internet de las cosas (IoT):
+Puede usar Azure IoT Hub y los SDK de dispositivo IoT de Azure para crear soluciones de Internet de las cosas (IoT):
 
-* Centro de IoT de Azure es un servicio completamente administrado en la nube de Hola que se conecta, supervisa y administra los dispositivos de IoT de forma segura. Utilice Hola SDK de dispositivos de IoT de Azure tooimplement los dispositivos de IoT.
-* Use una puerta de enlace de IoT en escenarios IoT más complejos. Por ejemplo, donde debe tooconsider factores como los dispositivos heredados, los costos de ancho de banda, las directivas de seguridad y privacidad o procesamiento de datos de borde. En estos casos, utilice Azure IoT borde tooimplement una puerta de enlace que se conecta el centro de IoT tooyour de dispositivos.
+* Azure IoT Hub es un servicio completamente administrado en la nube que conecta, supervisa y administra los dispositivos IoT de forma segura. Use los SDK de dispositivo IoT de Azure para implementar los dispositivos de IoT.
+* Use una puerta de enlace de IoT en escenarios IoT más complejos. Por ejemplo, donde sea necesario tener en cuenta factores como dispositivos antiguos, costos de ancho de banda, directivas de seguridad y privacidad o procesamiento de datos perimetrales. En estos escenarios, se usa Azure IoT Edge para implementar una puerta de enlace que conecta dispositivos con IoT Hub.
 
-## <a name="what-hello-tutorials-cover"></a>Aspectos tratan en tutoriales de Hola
+## <a name="what-the-tutorials-cover"></a>¿Qué cubren los tutoriales?
 
-Estos tutoriales presentan tooAzure centro de IoT y el dispositivo de hello SDK. tutoriales de Hola cubren IoT escenarios toodemonstrate hello las funciones comunes de centro de IoT. Hello tutoriales también muestran cómo toocombine centro de IoT con otro Azure servicios y toobuild de las herramientas más eficaces soluciones de IoT. En los tutoriales de hello, puede elegir toouse dispositivos de IoT simulados o reales. Además, puede obtener información sobre cómo toouse un centro de IoT de puerta de enlace tooenable dispositivos tooconnect tooyour.
+Estos tutoriales le presentan Azure IoT Hub y los SDK de dispositivo. Los tutoriales cubren escenarios comunes de IoT para demostrar las funcionalidades de IoT Hub. Los tutoriales también muestran cómo combinar IoT Hub con otras herramientas y servicios de Azure para crear soluciones de IoT más eficaces. En los tutoriales, puede usar dispositivos IoT simulados o reales. Además, puede obtener información sobre cómo usar una puerta de enlace para habilitar dispositivos para conectarse a su IoT Hub.
 
 ## <a name="set-up-your-device"></a>Configuración del dispositivo
 
-Conectar un IoT dispositivo o puerta de enlace tooAzure centro de IoT. Puede elegir un tooget de dispositivo físico o simulada iniciado:
+Conecte un dispositivo IoT o una puerta de enlace a Azure IoT Hub. Puede elegir un dispositivo físico o simulado para empezar a trabajar:
 
 | Dispositivo IoT                       | Lenguaje de programación |
 |----------------------------------|----------------------|
@@ -47,7 +47,7 @@ Conectar un IoT dispositivo o puerta de enlace tooAzure centro de IoT. Puede ele
 | Dispositivo simulado en PC           | [.NET][Sim_NET], [Java][Sim_Jav], [Node.js][Sim_Nd] y [Python][Sim_Pyth] |
 | Simulador de dispositivos en línea         | [Raspberry Pi (Node.js)][Ol_Sim] |
 
-Además, puede usar un centro de IoT IoT borde puerta de enlace tooenable dispositivos tooconnect tooyour:
+Además, puede usar una puerta de enlace de IoT Edge para habilitar dispositivos para conectarse a su instancia de IoT Hub:
 
 | Dispositivo de puerta de enlace               | Lenguaje de programación | Plataforma         |
 |------------------------------|----------------------|------------------|

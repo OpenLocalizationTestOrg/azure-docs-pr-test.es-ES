@@ -1,6 +1,6 @@
 ---
-title: "aaaChange contraseñas a través del Administrador de dispositivos de StorSimple | Documentos de Microsoft"
-description: "Describe cómo toouse Hola toochange de servicio de StorSimple Manager sus contraseñas de administrador de administrador de instantáneas StorSimple y dispositivo."
+title: "Cambio de la contraseña a través de StorSimple Device Manager | Microsoft Docs"
+description: "Describe cómo usar el servicio StorSimple Manager para cambiar sus contraseñas de administrador de dispositivos y de StorSimple Snapshot Manager."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,46 +14,46 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-ms.openlocfilehash: b2836eb4d3a05e1d2a5eeeeefe66c75f63ba38ed
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d890b59595628ca3eeff1df258847c2bb54d29ff
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="use-hello-storsimple-manager-service-toochange-your-storsimple-passwords"></a>Usar toochange de servicio de StorSimple Manager hello las contraseñas de StorSimple
+# <a name="use-the-storsimple-manager-service-to-change-your-storsimple-passwords"></a>Use el servicio de Administrador de StorSimple para cambiar las contraseñas de StorSimple
 ## <a name="overview"></a>Información general
-Hola portal de Azure clásico **configurar** página contiene todos los parámetros de dispositivo de Hola que puede volver a configurar en un dispositivo de StorSimple que se administra mediante un servicio de StorSimple Manager. Este tutorial le explica cómo puede usar hello **configurar** página toochange el Administrador de dispositivos o la contraseña de administrador de instantáneas StorSimple.
+La página **Configurar** del Portal de Azure clásico contiene todos los parámetros de dispositivo que puede volver a configurar en un dispositivo de StorSimple administrado mediante un servicio de Administrador de StorSimple. En este tutorial se explica cómo puede usar la página **Configurar** para cambiar el administrador del dispositivo o la contraseña de StorSimple Snapshot Manager.
 
-## <a name="change-hello-device-administrator-password"></a>Cambiar contraseña de administrador de dispositivo de Hola
-Cuando se usa el dispositivo de StorSimple de Windows PowerShell interfaz tooaccess Hola, son tooenter requiere una contraseña de administrador de dispositivos. Cuando el primer dispositivo de StorSimple Hola está registrado con un servicio, contraseña de hello predeterminada para esta interfaz es *Password1*. Por seguridad Hola de los datos, es necesario toochange esta contraseña en el final de Hola Hola del proceso de registro. No puede salir del proceso de registro de hello sin cambiar esta contraseña. Para obtener más información, consulte [paso 3: Configure y registre el dispositivo de Hola a través de Windows PowerShell para StorSimple](storsimple-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
+## <a name="change-the-device-administrator-password"></a>Cambio de la contraseña del administrador de dispositivos
+Cuando se usa la interfaz de Windows PowerShell para tener acceso al dispositivo StorSimple, se le pedirá que escriba una contraseña de administrador de dispositivos. Cuando el primer dispositivo StorSimple esté registrado con un servicio, la contraseña predeterminada para esta interfaz será *Password1*. Por seguridad de sus datos, deberá cambiar esta contraseña al final del proceso de registro. No se puede salir del proceso de registro sin cambiar esta contraseña. Para más información, consulte [Paso 3: Configurar y registrar el dispositivo a través de Windows PowerShell para StorSimple](storsimple-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
 
-contraseña de Hola que primero se establece a través de la interfaz de Windows PowerShell de Hola durante el registro, a continuación, puede cambiar a través de hello portal de Azure clásico. Realizar Hola siguiendo la contraseña de administrador de pasos toochange Hola.
+La contraseña que se estableció en primer lugar a través de la interfaz de Windows PowerShell durante el registro puede cambiarse a continuación a través del Portal de Azure clásico. Realice los pasos siguientes para cambiar la contraseña del administrador de dispositivos.
 
-#### <a name="toochange-hello-device-administrator-password"></a>contraseña del Administrador de dispositivos de toochange Hola
-1. En el portal clásico de hello, haga clic en **dispositivos** > **configurar** para el dispositivo.
-2. Desplácese hacia abajo toohello **contraseña de administrador de dispositivos** sección. Proporcione una contraseña de administrador que tenga entre 8 caracteres too15. contraseña de Hello debe ser una combinación de 3 o más caracteres en mayúsculas, minúsculas, numéricos y especiales.
-3. Confirmar contraseña Hola.
-4. Haga clic en **guardar** final Hola de página Hola.
+#### <a name="to-change-the-device-administrator-password"></a>Para cambiar la contraseña del administrador de dispositivos
+1. En el Portal clásico, haga clic en **Dispositivos** > **Configurar** para el dispositivo.
+2. Desplácese hacia abajo a la sección **Contraseña de administrador de dispositivos** . Proporcione una contraseña de administrador que tenga entre 8 y 15 caracteres. La contraseña debe ser una combinación de tres o más caracteres en mayúsculas, minúsculas, números y caracteres especiales.
+3. Confirme la contraseña.
+4. Haga clic en **Guardar** en la parte inferior de la página.
 
-Esto se actualizará la contraseña del Administrador de dispositivos de Hola. Puede usar esta interfaz de Windows PowerShell de contraseña modificada tooaccess Hola.
+Ahora debe actualizarse la contraseña del administrador de dispositivos. Puede usar esta contraseña modificada para tener acceso a la interfaz de Windows PowerShell.
 
-## <a name="change-hello-storsimple-snapshot-manager-password"></a>Cambiar la contraseña de administrador de instantáneas StorSimple Hola
-Software de administrador de instantáneas StorSimple reside en el host de Windows y permite a los administradores toomanage copias de seguridad del dispositivo de StorSimple en forma de Hola de local y en la nube.
+## <a name="change-the-storsimple-snapshot-manager-password"></a>Cambio de la contraseña de StorSimple Snapshot Manager
+El software StorSimple Snapshot Manager reside en el host de Windows y permite a los administradores administrar copias de seguridad del dispositivo StorSimple en forma de instantáneas locales y en la nube.
 
-Al configurar un dispositivo en el Administrador de instantáneas de StorSimple, se le pedirá tooprovide Hola tooauthenticate de dirección y la contraseña de la IP de dispositivo, el dispositivo de almacenamiento. Esta contraseña primero se configura a través de la interfaz de Windows PowerShell de Hola. Para obtener más información, consulte [paso 3: Configure y registre el dispositivo de Hola a través de Windows PowerShell para StorSimple](storsimple-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
+Al configurar un dispositivo en StorSimple Snapshot Manager, se le pedirá que proporcione la dirección IP y la contraseña del dispositivo para autenticar el dispositivo de almacenamiento. Esta contraseña primero se configura a través de la interfaz de Windows PowerShell. Para más información, consulte [Paso 3: Configurar y registrar el dispositivo a través de Windows PowerShell para StorSimple](storsimple-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
 
-contraseña de Hola que primero se establece a través de la interfaz de Windows PowerShell de Hola durante el registro, a continuación, se puede cambiar mediante el portal clásico de Hola. Realizar Hola siguiendo la contraseña de administrador de instantáneas StorSimple de pasos toochange Hola.
+La contraseña que se estableció en primer lugar a través de la interfaz de Windows PowerShell durante el registro puede cambiarse a continuación a través del Portal clásico. Realice los pasos siguientes para cambiar la contraseña de StorSimple Snapshot Manager.
 
-#### <a name="toochange-hello-storsimple-snapshot-manager-password"></a>contraseña de administrador de instantáneas StorSimple hello toochange
-1. En el portal clásico de hello, haga clic en **dispositivos** > **configurar** para el dispositivo.
-2. Desplácese hacia abajo toohello **StorSimple Snapshot Manager** sección. Escriba una contraseña que tenga 14 o 15 caracteres. Asegúrese de que esa contraseña hello contiene una combinación de 3 o más caracteres en mayúsculas, minúsculas, numéricos y especiales.
-3. Confirmar contraseña Hola.
-4. Haga clic en **guardar** final Hola de página Hola.
+#### <a name="to-change-the-storsimple-snapshot-manager-password"></a>Para cambiar la contraseña de StorSimple Snapshot Manager
+1. En el Portal clásico, haga clic en **Dispositivos** > **Configurar** para el dispositivo.
+2. Desplácese hacia abajo hasta la sección de **Administrador de instantáneas StorSimple** . Escriba una contraseña que tenga 14 o 15 caracteres. Asegúrese de que la contraseña contiene una combinación de tres o más caracteres en mayúsculas, minúsculas, números y caracteres especiales.
+3. Confirme la contraseña.
+4. Haga clic en **Guardar** en la parte inferior de la página.
 
-Esto se actualizará la contraseña de administrador de instantáneas StorSimple Hola.
+Ahora se debe actualizar la contraseña de StorSimple Snapshot Manager.
 
 ## <a name="next-steps"></a>Pasos siguientes
 * Obtenga más información sobre la [seguridad de StorSimple](storsimple-security.md).
 * Obtenga más información sobre la [modificación de la configuración del dispositivo](storsimple-modify-device-config.md).
-* Obtenga más información sobre [utilizando Hola tooadminister de servicio de StorSimple Manager el dispositivo StorSimple](storsimple-manager-service-administration.md).
+* Obtenga más información sobre el [uso del servicio StorSimple Manager para administrar su dispositivo StorSimple](storsimple-manager-service-administration.md).
 

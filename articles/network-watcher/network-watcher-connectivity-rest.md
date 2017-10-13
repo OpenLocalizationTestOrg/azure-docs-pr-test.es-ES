@@ -1,9 +1,9 @@
 ---
-title: 'conectividad de aaaCheck con Monitor de red de Azure: portal de Azure | Documentos de Microsoft'
-description: "Esta página explica cómo toocheck conectividad con Monitor de red en Hola portal de Azure"
+title: "Comprobación de la conectividad con Azure Network Watcher: Azure Portal | Microsoft Docs"
+description: "En esta página se explica cómo comprobar la conectividad con Network Watcher en Azure Portal"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.service: network-watcher
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
-ms.author: gwallace
-ms.openlocfilehash: 8560011906fcce46d31556fc52cbfa671e8e653a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.author: jdial
+ms.openlocfilehash: 802658b50d8e398451507ad11c76fedd0db697df
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="check-connectivity-with-azure-network-watcher-using-hello-azure-portal"></a>Compruebe la conectividad con el Monitor de red de Azure con hello portal de Azure
+# <a name="check-connectivity-with-azure-network-watcher-using-the-azure-portal"></a>Comprobación de la conectividad con Azure Network Watcher usando Azure Portal
 
 > [!div class="op_single_selector"]
 > - [Portal](network-watcher-connectivity-portal.md)
@@ -27,41 +27,41 @@ ms.lasthandoff: 10/06/2017
 > - [CLI 2.0](network-watcher-connectivity-cli.md)
 > - [API de REST de Azure](network-watcher-connectivity-rest.md)
 
-Obtenga información acerca de cómo se puede establecer toouse conectividad tooverify si una conexión TCP directa de una tooa de máquina virtual tiene el punto de conexión.
+Aprenda a usar la conectividad para comprobar si se puede establecer una conexión TCP directa de una máquina virtual a un punto de conexión determinado.
 
 ## <a name="before-you-begin"></a>Antes de empezar
 
-En este artículo se supone que tiene Hola recursos siguientes:
+En este artículo se da por hecho que tiene los siguientes recursos:
 
-* Una instancia del Monitor de red en la región de Hola que desea toocheck conectividad.
+* Una instancia de Network Watcher en la región cuya conectividad quiere comprobar.
 
-* Conectividad de toocheck de máquinas virtuales con.
+* Máquinas virtuales con las que comprobar la conectividad.
 
-ARMclient es la API de REST de hello toocall utilizados mediante PowerShell. ARMClient se encuentra en Chocolatey en [ARMClient en Chocolatey](https://chocolatey.org/packages/ARMClient).
+ARMclient se usa para llamar a la API de REST con PowerShell. ARMClient se encuentra en Chocolatey en [ARMClient en Chocolatey](https://chocolatey.org/packages/ARMClient).
 
-Este escenario se supone que ya ha seguido los pasos de hello en [crear un monitor de red](network-watcher-create.md) toocreate un monitor de red.
+En este escenario, se da por hecho que ya ha seguido los pasos descritos en [Create an Azure Network Watcher instance](network-watcher-create.md) (Creación de una instancia de Azure Network Watcher) para crear una instancia de Network Watcher.
 
 [!INCLUDE [network-watcher-preview](../../includes/network-watcher-public-preview-notice.md)]
 
 > [!IMPORTANT]
-> La comprobación de conectividad requiere una extensión de máquina virtual `AzureNetworkWatcherExtension`. Para instalar la extensión de hello en una máquina virtual de Windows, visite [extensión de máquina virtual de agente de Monitor de red de Azure para Windows](../virtual-machines/windows/extensions-nwa.md) y para la visita de VM de Linux [extensión de máquina virtual de agente de Monitor de red de Azure para Linux](../virtual-machines/linux/extensions-nwa.md).
+> La comprobación de conectividad requiere una extensión de máquina virtual `AzureNetworkWatcherExtension`. Para instalar la extensión en una máquina virtual Windows, consulte [Extensión de máquina virtual del agente de Azure Network Watcher para Windows](../virtual-machines/windows/extensions-nwa.md), y en una máquina virtual con Linux, consulte [Extensión de máquina virtual del agente de Azure Network Watcher para Linux](../virtual-machines/linux/extensions-nwa.md).
 
-## <a name="register-hello-preview-capability"></a>Registrar capacidades de vista previa de Hola
+## <a name="register-the-preview-capability"></a>Registro de la funcionalidad de versión preliminar
 
-Comprobación de conectividad está actualmente en versión preliminar pública, toouse esta característica necesita toobe registrado. toodo, ejecución Hola siguiendo el ejemplo de PowerShell:
+La comprobación de conectividad está actualmente en versión preliminar pública; para utilizar esta característica tiene que registrarla. Para ello, ejecute el siguiente ejemplo de PowerShell:
 
 ```powershell
 Register-AzureRmProviderFeature -FeatureName AllowNetworkWatcherConnectivityCheck  -ProviderNamespace Microsoft.Network
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
 ```
 
-registro de hello tooverify fue correcto, ejecute hello siguiendo el ejemplo de Powershell:
+Para comprobar que el registro se realizó correctamente, ejecute el siguiente ejemplo de PowerShell:
 
 ```powershell
 Get-AzureRmProviderFeature -FeatureName AllowNetworkWatcherConnectivityCheck  -ProviderNamespace  Microsoft.Network
 ```
 
-Si se ha registrado correctamente la característica de hello, salida de hello debe coincidir con siguiente hello:
+Si la característica se registró correctamente, la salida debería coincidir con lo siguiente:
 
 ```
 FeatureName                             ProviderName      RegistrationState
@@ -71,7 +71,7 @@ AllowNetworkWatcherConnectivityCheck    Microsoft.Network Registered
 
 ## <a name="log-in-with-armclient"></a>Inicio de sesión con ARMClient
 
-Inicie sesión en tooarmclient con sus credenciales de Azure.
+Inicie sesión en armclient con las credenciales de Azure.
 
 ```PowerShell
 armclient login
@@ -79,12 +79,12 @@ armclient login
 
 ## <a name="retrieve-a-virtual-machine"></a>Recuperación de una máquina virtual
 
-Ejecutar Hola después tooreturn de secuencia de comandos en una máquina virtual. Esta información es necesaria para ejecutar la conectividad. 
+Ejecute el siguiente script para devolver una máquina virtual. Esta información es necesaria para ejecutar la conectividad. 
 
-Hola después el código necesita valores para hello siguientes variables:
+El código siguiente necesita valores para las siguientes variables:
 
-- **Id. de suscripción** -Hola toouse de Id. de suscripción.
-- **resourceGroupName** : hello nombre de un grupo de recursos que contiene máquinas virtuales.
+- **subscriptionId**: el identificador de suscripción que se usará.
+- **resourceGroupName**: el nombre de un grupo de recursos que contiene máquinas virtuales.
 
 ```powershell
 $subscriptionId = '<subscription id>'
@@ -93,7 +93,7 @@ $resourceGroupName = '<resource group name>'
 armclient get https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview
 ```
 
-Desde siguiente Hola resultado, Id. de Hola de máquina virtual de Hola se usa en el siguiente ejemplo de Hola:
+En la salida siguiente, se usa el identificador de la máquina virtual en este ejemplo:
 
 ```json
 ...
@@ -108,9 +108,9 @@ Desde siguiente Hola resultado, Id. de Hola de máquina virtual de Hola se usa e
 }
 ```
 
-## <a name="check-connectivity-tooa-virtual-machine"></a>Compruebe la conectividad tooa virtual machine
+## <a name="check-connectivity-to-a-virtual-machine"></a>Comprobación de la conectividad a una máquina virtual
 
-Este ejemplo comprueba la máquina virtual de conectividad tooa destino en el puerto 80.
+En este ejemplo se comprueba la conectividad a una máquina virtual de destino a través del puerto 80.
 
 ### <a name="example"></a>Ejemplo
 
@@ -137,11 +137,11 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Puesto que esta operación es larga ejecutando, Hola URI para el resultado de hello se devuelve en el encabezado de respuesta de hello tal como se muestra en hello después de respuesta:
+Puesto que esta operación es de larga ejecución, el URI para el resultado se devuelve en el encabezado de respuesta tal y como se muestra en la siguiente respuesta:
 
 **Valores importantes**
 
-* **Ubicación** -esta propiedad contiene Hola URI donde hello resultados no están cuando hello operación está completa
+* **Ubicación**: esta propiedad contiene el URI donde se encuentran los resultados una vez completada la operación
 
 ```
 HTTP/1.1 202 Accepted
@@ -162,7 +162,7 @@ null
 
 ### <a name="response"></a>Response
 
-Hola después de la respuesta es del anterior ejemplo de Hola.  En esta respuesta, Hola `ConnectionStatus` es **inaccesible**. Puede ver que Hola a todos los sondeos errores de envío. no se pudo conectividad Hello en dispositivo virtual Hola due tooa configurada por el usuario `NetworkSecurityRule` denominado **UserRule_Port80**, configurado tooblock el tráfico entrante en el puerto 80. Esta información puede ser problemas de conexión de tooresearch usado.
+La siguiente respuesta procede del ejemplo anterior.  En esta respuesta, el `ConnectionStatus` es **Unreachable** (inaccesible). Se puede ver que ninguno de los sondeos enviados se pudo realizar. Error de conectividad en la aplicación virtual debido a una `NetworkSecurityRule` configurada por el usuario denominada **UserRule_Port80**, que se configuró para bloquear el tráfico entrante en el puerto 80. Esta información puede utilizarse para investigar problemas de conexión.
 
 ```json
 {
@@ -226,7 +226,7 @@ Hola después de la respuesta es del anterior ejemplo de Hola.  En esta respuest
 
 ## <a name="validate-routing-issues"></a>Problemas de validación de enrutamiento
 
-ejemplo de Hola comprueba la conectividad entre una máquina virtual y un extremo remoto.
+En el ejemplo se comprueba la conectividad entre una máquina virtual y un punto de conexión remoto.
 
 ### <a name="example"></a>Ejemplo
 
@@ -253,11 +253,11 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Puesto que esta operación es larga ejecutando, Hola URI para el resultado de hello se devuelve en el encabezado de respuesta de hello tal como se muestra en hello después de respuesta:
+Puesto que esta operación es de larga ejecución, el URI para el resultado se devuelve en el encabezado de respuesta tal y como se muestra en la siguiente respuesta:
 
 **Valores importantes**
 
-* **Ubicación** -esta propiedad contiene Hola URI donde hello resultados no están cuando hello operación está completa
+* **Ubicación**: esta propiedad contiene el URI donde se encuentran los resultados una vez completada la operación
 
 ```
 HTTP/1.1 202 Accepted
@@ -278,7 +278,7 @@ null
 
 ### <a name="response"></a>Response
 
-En el siguiente ejemplo de Hola Hola `connectionStatus` se muestra como **inaccesible**. Hola `hops` obtener más información, consulte en `issues` que se bloqueó el tráfico de hello due tooa `UserDefinedRoute`.
+En el ejemplo siguiente, `connectionStatus` se muestra como **Unreachable** (inaccesible). En los detalles de `hops`, puede ver en `issues` que el tráfico se ha bloqueado debido a una `UserDefinedRoute`.
 
 ```json
 {
@@ -322,7 +322,7 @@ En el siguiente ejemplo de Hola Hola `connectionStatus` se muestra como **inacce
 
 ## <a name="check-website-latency"></a>Comprobación de la latencia del sitio web
 
-Hello en el ejemplo siguiente se busca en hello conectividad tooa sitio Web.
+En el siguiente ejemplo se comprueba la conectividad con un sitio web.
 
 ### <a name="example"></a>Ejemplo
 
@@ -349,11 +349,11 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Puesto que esta operación es larga ejecutando, Hola URI para el resultado de hello se devuelve en el encabezado de respuesta de hello tal como se muestra en hello después de respuesta:
+Puesto que esta operación es de larga ejecución, el URI para el resultado se devuelve en el encabezado de respuesta tal y como se muestra en la siguiente respuesta:
 
 **Valores importantes**
 
-* **Ubicación** -esta propiedad contiene Hola URI donde hello resultados no están cuando hello operación está completa
+* **Ubicación**: esta propiedad contiene el URI donde se encuentran los resultados una vez completada la operación
 
 ```
 HTTP/1.1 202 Accepted
@@ -374,7 +374,7 @@ null
 
 ### <a name="response"></a>Response
 
-Hola después de respuesta, puede ver hello `connectionStatus` se muestra como **alcanzable**. Cuando una conexión se establece correctamente, se proporcionan los valores de latencia.
+En la siguiente respuesta, puede ver que `connectionStatus` se muestra como **Reachable** (accesible). Cuando una conexión se establece correctamente, se proporcionan los valores de latencia.
 
 ```json
 {
@@ -407,9 +407,9 @@ Hola después de respuesta, puede ver hello `connectionStatus` se muestra como *
 }
 ```
 
-## <a name="check-connectivity-tooa-storage-endpoint"></a>Compruebe el punto de conexión de almacenamiento de tooa de conectividad
+## <a name="check-connectivity-to-a-storage-endpoint"></a>Comprobación de la conectividad a un punto de conexión de almacenamiento
 
-Hello en el ejemplo siguiente se comprueba la conectividad Hola desde una cuenta de almacenamiento de máquina virtual tooa blog.
+En el ejemplo siguiente se comprueba la conectividad de una máquina virtual con una cuenta de almacenamiento de blog.
 
 ### <a name="example"></a>Ejemplo
 
@@ -436,11 +436,11 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Puesto que esta operación es larga ejecutando, Hola URI para el resultado de hello se devuelve en el encabezado de respuesta de hello tal como se muestra en hello después de respuesta:
+Puesto que esta operación es de larga ejecución, el URI para el resultado se devuelve en el encabezado de respuesta tal y como se muestra en la siguiente respuesta:
 
 **Valores importantes**
 
-* **Ubicación** -esta propiedad contiene Hola URI donde hello resultados no están cuando hello operación está completa
+* **Ubicación**: esta propiedad contiene el URI donde se encuentran los resultados una vez completada la operación
 
 ```
 HTTP/1.1 202 Accepted
@@ -461,7 +461,7 @@ null
 
 ### <a name="response"></a>Response
 
-Hello en el ejemplo siguiente se es respuesta Hola ejecutaran llamada de API de hello anterior. Hola como Hola comprobación es correcta, `connectionStatus` propiedad se muestra como **alcanzable**.  Se proporcionan detalles de hello sobre Hola número de saltos necesarios tooreach Hola almacenamiento de blobs y la latencia.
+El siguiente ejemplo es la respuesta que procede de la ejecución de la llamada API anterior. Como la comprobación es correcta, la propiedad `connectionStatus` se muestra como **Reachable** (accesible).  Se proporcionan los detalles sobre el número de saltos necesarios para llegar a la latencia y al blob de almacenamiento.
 
 ```json
 {
@@ -496,7 +496,7 @@ Hello en el ejemplo siguiente se es respuesta Hola ejecutaran llamada de API de 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Obtenga información acerca de la captura de paquetes de tooautomate con las alertas de la máquina Virtual mediante la visualización [crear una captura de paquetes desencadenadas alerta](network-watcher-alert-triggered-packet-capture.md)
+Aprenda a automatizar capturas de paquetes con las alertas de máquina virtual en el artículo sobre cómo [crear una captura de paquetes desencadenada por alertas](network-watcher-alert-triggered-packet-capture.md)
 
 Para comprobar si se permite cierto tráfico hacia o desde la máquina virtual, vea cómo [consultar la Comprobación del flujo de IP](network-watcher-check-ip-flow-verify-portal.md)
 

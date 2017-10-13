@@ -1,5 +1,5 @@
 ---
-title: tiempo de espera de inactividad de TCP de equilibrador de carga aaaConfigure | Documentos de Microsoft
+title: "Configuración del tiempo de espera de inactividad de TCP de Load Balancer | Microsoft Docs"
 description: "Configuración del tiempo de espera de inactividad de TCP de Load Balancer"
 services: load-balancer
 documentationcenter: na
@@ -11,47 +11,49 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 2bf0704b891f708e0a5bd7aa827441930f51cfaf
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f19ac77f7c7f7d4ab8909d628f9dcce08c07c928
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-tcp-idle-timeout-settings-for-azure-load-balancer"></a>Modificación de la configuración de tiempo de espera de inactividad de TCP para Azure Load Balancer
 
-En su configuración predeterminada, Azure Load Balancer tiene una configuración de tiempo de espera de inactividad de 4 minutos. Si un período de inactividad es mayor que el valor de tiempo de espera de hello, no hay ninguna garantía de que Hola TCP o se mantiene la sesión HTTP entre el cliente de Hola y el servicio en la nube.
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
-Cuando se cierra la conexión de hello, la aplicación cliente puede recibir Hola mensaje de error siguiente: "se cerró la conexión subyacente de hello: una conexión que se esperaba toobe mantiene activo se cerró por servidor hello."
+En su configuración predeterminada, Azure Load Balancer tiene una configuración de tiempo de espera de inactividad de 4 minutos. Si un período de inactividad es mayor que el valor de tiempo de espera, no hay ninguna garantía de que todavía exista la sesión TCP o HTTP entre el cliente y el servicio en la nube.
 
-Una práctica común es toouse un TCP keep-alive. Esta práctica mantiene la conexión de hello activo durante un periodo de tiempo. Para obtener más información, consulte estos [ejemplos de .NET](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). Con keep-alive habilitada, los paquetes se envían durante los períodos de inactividad en conexiones de Hola. Estos paquetes keep-alive Asegúrese de que nunca se alcanza el valor de tiempo de espera inactivo de Hola y Hola conexión se mantiene durante un largo período.
+Cuando se cierra la conexión, la aplicación cliente recibirá un mensaje de error similar a "Se ha terminado la conexión subyacente: una conexión que se esperaba que se mantuviera activa fue cerrada por el servidor".
 
-Esta configuración funciona solo para conexiones entrantes. tooavoid al perder la conexión de hello, debe configurar Hola TCP persistente con un intervalo inferior Hola tiempo de espera inactivo configuración o aumente Hola tiempo de espera inactivo valor. toosupport tales escenarios, hemos agregado compatibilidad para un tiempo de espera de inactividad configurable. Ahora puede establecer para una duración de 4 minutos too30.
+Una práctica común es usar TCP Keep-alive. Esta práctica mantiene la conexión activa durante un periodo más largo. Para obtener más información, consulte estos [ejemplos de .NET](https://msdn.microsoft.com/library/system.net.servicepoint.settcpkeepalive.aspx). Con Keep-alive habilitado, los paquetes se envían durante los periodos de inactividad en la conexión. Estos paquetes de Keep-alive garantizan que nunca se alcance el valor de tiempo de espera de inactividad y la conexión se mantenga durante un largo período.
 
-TCP Keep-alive funciona bien en escenarios donde la batería no supone una restricción. No se recomienda para aplicaciones móviles. Mediante un TCP keep-alive en una aplicación móvil puede agotar la batería del dispositivo de hello con mayor rapidez.
+Esta configuración funciona solo para conexiones entrantes. Para evitar la pérdida de la conexión, debe configurar TCP keep-alive con un intervalo menor que el valor de tiempo de espera de inactividad o aumentar el valor de tiempo de espera de inactividad. Para admitir tales escenarios, hemos agregado compatibilidad con un tiempo de espera de inactividad configurable. Ahora puede establecer una duración de entre 4 y 30 minutos.
+
+TCP Keep-alive funciona bien en escenarios donde la batería no supone una restricción. No se recomienda para aplicaciones móviles. El uso de TCP Keep-alive desde una aplicación móvil puede agotarla batería del dispositivo más rápidamente.
 
 ![Tiempo de espera TCP](./media/load-balancer-tcp-idle-timeout/image1.png)
 
-Hola las secciones siguientes describe cómo toochange inactivo de la configuración de tiempo de espera en las máquinas virtuales y servicios en la nube.
+Las secciones siguientes describen cómo cambiar la configuración de tiempo de espera de inactividad en máquinas virtuales y servicios en la nube.
 
-## <a name="configure-hello-tcp-timeout-for-your-instance-level-public-ip-too15-minutes"></a>Configurar el tiempo de espera de hello TCP para los minutos de too15 IP públicos de nivel de instancia
+## <a name="configure-the-tcp-timeout-for-your-instance-level-public-ip-to-15-minutes"></a>Configuración del tiempo de espera de TCP para la IP pública a nivel de instancia en 15 minutos
 
 ```powershell
 Set-AzurePublicIP -PublicIPName webip -VM MyVM -IdleTimeoutInMinutes 15
 ```
 
-`IdleTimeoutInMinutes` es opcional. Si no se establece, el tiempo de espera de hello predeterminado es 4 minutos. intervalo de tiempo de espera aceptable de Hello es 4 minutos too30.
+`IdleTimeoutInMinutes` es opcional. Si no se establece, el tiempo de espera predeterminado es de 4 minutos. El intervalo de tiempo de espera aceptable está entre 4 y 30 minutos.
 
-## <a name="set-hello-idle-timeout-when-creating-an-azure-endpoint-on-a-virtual-machine"></a>Establecer tiempo de espera de inactividad de hello cuando se crea un extremo de Azure en una máquina virtual
+## <a name="set-the-idle-timeout-when-creating-an-azure-endpoint-on-a-virtual-machine"></a>Establecimiento del tiempo de espera de inactividad al crear un punto de conexión de Azure en una máquina virtual
 
-toochange Hola tiempo de espera para un punto de conexión, utilice Hola siguiente:
+Para cambiar la configuración de tiempo de espera de un punto de conexión, siga estos pasos:
 
 ```powershell
 Get-AzureVM -ServiceName "mySvc" -Name "MyVM1" | Add-AzureEndpoint -Name "HttpIn" -Protocol "tcp" -PublicPort 80 -LocalPort 8080 -IdleTimeoutInMinutes 15| Update-AzureVM
 ```
 
-tooretrieve la configuración del tiempo de espera inactivo, Hola de uso siguiente comando:
+Para recuperar la configuración de tiempo de espera de inactividad, use el siguiente comando:
 
     PS C:\> Get-AzureVM -ServiceName "MyService" -Name "MyVM" | Get-AzureEndpoint
     VERBOSE: 6:43:50 PM - Completed Operation: Get Deployment
@@ -71,9 +73,9 @@ tooretrieve la configuración del tiempo de espera inactivo, Hola de uso siguien
     InternalLoadBalancerName :
     IdleTimeoutInMinutes : 15
 
-## <a name="set-hello-tcp-timeout-on-a-load-balanced-endpoint-set"></a>Establecer tiempo de espera TCP de hello en un conjunto de extremos con equilibrio de carga
+## <a name="set-the-tcp-timeout-on-a-load-balanced-endpoint-set"></a>Establecimiento del tiempo de espera de TCP en un conjunto de puntos de conexión de carga equilibrada
 
-Si los puntos de conexión forman parte de un conjunto de extremos con equilibrio de carga, el tiempo de espera de hello TCP debe establecerse en el conjunto de extremos con equilibrio de carga de Hola. Por ejemplo:
+Si los puntos de conexión forman parte de un conjunto de extremo de carga equilibrada, el tiempo de espera de TCP se debe establecer en el conjunto de punto de conexión de carga equilibrada. Por ejemplo:
 
 ```powershell
 Set-AzureLoadBalancedEndpoint -ServiceName "MyService" -LBSetName "LBSet1" -Protocol tcp -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 -IdleTimeoutInMinutes 15
@@ -81,9 +83,9 @@ Set-AzureLoadBalancedEndpoint -ServiceName "MyService" -LBSetName "LBSet1" -Prot
 
 ## <a name="change-timeout-settings-for-cloud-services"></a>Cambio de la configuración de tiempo de espera de los servicios en la nube
 
-Puede usar hello Azure SDK tooupdate su servicio en la nube. Realizar una configuración de punto de conexión para servicios en la nube en el archivo de .csdef Hola. Actualización del tiempo de espera TCP de hello para la implementación de un servicio de nube, requiere una actualización de la implementación. Una excepción es si se especifica el tiempo de espera de hello TCP solo para una dirección IP pública. Configuración de IP pública que se encuentran en el archivo de .cscfg de Hola y se puede actualizar a través de la actualización y actualización de la implementación.
+Puede aprovechar Azure SDK para actualizar el servicio en la nube. La configuración de punto de conexión para los servicios en la nube se realiza en el archivo .csdef. La actualización del tiempo de espera de TCP para la implementación de un servicio en la nube requiere una actualización de la implementación. Se da una excepción si el tiempo de espera de TCP solo se especifica para una dirección IP pública. La configuración de IP pública se encuentra en el archivo .cscfg y se puede actualizar a través de la actualización de la implementación.
 
-Hola .csdef cambios para la configuración de punto de conexión son:
+Los cambios de .csdef para la configuración de extremo son:
 
 ```xml
 <WorkerRole name="worker-role-name" vmsize="worker-role-size" enableNativeCodeExecution="[true|false]">
@@ -93,7 +95,7 @@ Hola .csdef cambios para la configuración de punto de conexión son:
 </WorkerRole>
 ```
 
-Hola .cscfg cambios de configuración de tiempo de espera de hello en direcciones IP públicas son:
+Los cambios de .cscfg para el valor de tiempo de espera en las direcciones IP públicas son:
 
 ```xml
 <NetworkConfiguration>
@@ -110,7 +112,7 @@ Hola .cscfg cambios de configuración de tiempo de espera de hello en direccione
 
 ## <a name="rest-api-example"></a>Ejemplo de API de REST
 
-Puede configurar el tiempo de espera de inactividad de TCP Hola mediante API de administración de servicios de Hola. Asegúrese de que ese hello `x-ms-version` encabezado se establece tooversion `2014-06-01` o una versión posterior. Actualizar la configuración del programa Hola Hola especifica extremos de entrada con equilibrio de carga en todas las máquinas virtuales en una implementación.
+Puede configurar el tiempo de espera de inactividad de TCP mediante Service Management API. Asegúrese de que el encabezado `x-ms-version` esté establecido en la versión `2014-06-01` o posterior. Actualice la configuración de los puntos de conexión de entrada de carga equilibrada especificados en todas las máquinas virtuales de una implementación.
 
 ### <a name="request"></a>Solicitud
 

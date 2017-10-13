@@ -1,6 +1,6 @@
 ---
-title: "aaaList todos los trabajos de importación y exportación de Azure | MicrosoftDocs"
-description: "Obtenga información acerca de cómo toolist todos de servicio de importación y exportación de Azure de hello trabajos en una suscripción."
+title: Lista de todos los trabajos de Azure Import/Export | Microsoft Docs
+description: "Descubra cómo enumerar todos los trabajos del servicio Azure Import/Export de una suscripción."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 0e12bf3dc3f2084a1987ac362cf8d1041059543c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1977bfc0e516088310f45ecdd960287eeed2c2d8
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="enumerating-jobs-in-hello-azure-importexport-service"></a>Enumerar trabajos Hola servicio de importación y exportación de Azure
-tooenumerate todos los trabajos en una suscripción, llamada hello [enumerar trabajos](/rest/api/storageimportexport/jobs#Jobs_List) operación. `List Jobs`Devuelve una lista de trabajos, así como Hola siguientes atributos:
+# <a name="enumerating-jobs-in-the-azure-importexport-service"></a>Enumeración de los trabajos del servicio Azure Import/Export
+Para enumerar todos los trabajos de una suscripción, llame a la operación [List Jobs](/rest/api/storageimportexport/jobs#Jobs_List) (Enumerar trabajos). `List Jobs` devuelve una lista de trabajos, así como los siguientes atributos:
 
--   tipo de Hola de trabajo (importación o exportación)
+-   El tipo de trabajo (importación o exportación)
 
--   estado actual del trabajo Hola
+-   El estado actual del trabajo
 
--   Hola cuenta de almacenamiento asociada del trabajo
+-   La cuenta de almacenamiento asociada al trabajo
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* [Usar servicio de importación y exportación de hello API de REST](storage-import-export-using-the-rest-api.md)
+* [Uso de la API de REST del servicio Azure Import/Export](storage-import-export-using-the-rest-api.md)

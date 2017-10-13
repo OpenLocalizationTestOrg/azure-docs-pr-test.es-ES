@@ -1,6 +1,6 @@
 ---
 title: "Kit de herramientas de Azure para IntelliJ: depuración de aplicaciones Spark de forma remota mediante SSH | Microsoft Docs"
-description: "Instrucciones paso a paso sobre cómo toouse herramientas de HDInsight en el Kit de herramientas de Azure IntelliJ toodebug para aplicaciones de forma remota en HDInsight clústeres a través de SSH"
+description: "Instrucciones paso a paso para el uso de las herramientas de HDInsight del Kit de herramientas de Azure para IntelliJ para depurar aplicaciones de forma remota en clústeres de HDInsight mediante SSH"
 keywords: "depurar remotamente intellij, depuración remota intellij, ssh, intellij, hdinsight, depurar intellij, depuración"
 services: hdinsight
 documentationcenter: 
@@ -17,30 +17,30 @@ ms.devlang:
 ms.topic: article
 ms.date: 08/24/2017
 ms.author: Jenny Jiang
-ms.openlocfilehash: bf3ab9d04c2ff9fcb6bbbdeefb11f55a12fbd845
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 19053e31d6eb097bc91a04ef9c6af5772aaa16da
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="debug-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Depuración de aplicaciones Spark en un clúster de HDInsight con el Kit de herramientas de Azure para IntelliJ mediante SSH
 
-Este artículo proporciona instrucciones paso a paso acerca de cómo toouse herramientas de HDInsight en el Kit de herramientas de Azure IntelliJ toodebug para aplicaciones de forma remota en un clúster de HDInsight. toodebug el proyecto, también puede ver hello [aplicaciones depurar HDInsight Spark con el Kit de herramientas de Azure para IntelliJ](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ) vídeo.
+En este artículo se ofrecen instrucciones paso a paso para el empleo de las herramientas de HDInsight del Kit de herramientas de Azure para IntelliJ para depurar aplicaciones de forma remota en un clúster de HDInsight. Para depurar el proyecto, también puede ver el vídeo [Debug HDInsight Spark applications with Azure Toolkit for IntelliJ (Depurar aplicaciones HDInsight Spark con el Kit de herramientas de Azure para IntelliJ)](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ).
 
 **Requisitos previos**
 
 * **Herramientas de HDInsight del kit de herramientas de Azure para IntelliJ**. Esta herramienta es parte del Kit de herramientas de Azure para IntelliJ. Para más información, vea [Instalación del kit de herramientas de Azure para IntelliJ](https://docs.microsoft.com/en-us/azure/azure-toolkit-for-intellij-installation).
-* **Kit de herramientas de Azure para IntelliJ**. Use esta aplicación de Spark toocreate Kit de herramientas para un clúster de HDInsight. Para obtener más información, siga las instrucciones de hello en [Use Azure Toolkit IntelliJ toocreate Spark para las aplicaciones de un clúster de HDInsight](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-intellij-tool-plugin).
-* **Servicio SSH de HDInsight con administración de nombre de usuario y contraseña**. Para obtener más información, consulte [conectar tooHDInsight (Hadoop) a través de SSH](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) y [utilizar SSH túneles tooaccess Ambari web UI, JobHistory, NameNode, Oozie y otras interfaces de usuario web](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-linux-ambari-ssh-tunnel). 
+* **Kit de herramientas de Azure para IntelliJ**. Use este kit de herramientas para crear aplicaciones Spark para un clúster de HDInsight. Para más información, siga las instrucciones de [Uso del kit de herramientas de Azure para IntelliJ con el fin de crear aplicaciones Spark para un clúster de HDInsight](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-intellij-tool-plugin).
+* **Servicio SSH de HDInsight con administración de nombre de usuario y contraseña**. Para más información vea [Conexión a través de SSH con HDInsight (Hadoop)](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) y [Uso de la tunelización SSH para tener acceso a la interfaz de usuario Ambari Web, JobHistory, NameNode, Oozie y otras interfaces de usuario web](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-linux-ambari-ssh-tunnel). 
  
 
 ## <a name="create-a-spark-scala-application-and-configure-it-for-remote-debugging"></a>Creación de una aplicación Scala de Spark y configuración para la depuración remota
 
-1. Inicie IntelliJ IDEA y, después, cree un proyecto. Hola **nuevo proyecto** diálogo cuadro, Hola siguientes:
+1. Inicie IntelliJ IDEA y, después, cree un proyecto. En el cuadro de diálogo **Nuevo proyecto** , haga lo siguiente:
 
    a. Seleccione **HDInsight**. 
 
-   b. Seleccione una plantilla de Java o Scala según sus preferencias. Seleccione entre Hola siguientes opciones:
+   b. Seleccione una plantilla de Java o Scala según sus preferencias. Seleccione entre las siguientes opciones:
 
       - **Spark en HDInsight (Scala)**
 
@@ -50,53 +50,53 @@ Este artículo proporciona instrucciones paso a paso acerca de cómo toouse herr
 
       En este ejemplo se usa una plantilla **Spark en el ejemplo de ejecución de clúster de HDInsight (Scala)**.
 
-   c. Hola **herramienta de compilación** , seleccione cualquiera de hello siguientes, según la necesidad de tooyour:
+   c. En la lista de **herramientas de compilación**, seleccione cualquiera de las siguientes, según sus necesidades:
 
       - **Maven**, para la compatibilidad con el asistente para crear un proyecto de Scala
 
-      -  **SBT**, para administrar las dependencias de Hola y compilar para el proyecto de Scala Hola 
+      -  **SBT**, para administrar las dependencias y compilar el proyecto de Scala 
 
       ![Creación de un proyecto de depuración](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-create-projectfor-debug-remotely.png)
 
    d. Seleccione **Siguiente**.     
  
-3. Hola siguiente **nuevo proyecto** ventana, Hola siguientes:
+3. En la siguiente ventana **Nuevo proyecto**, haga lo siguiente:
 
-   ![Seleccione Hola Spark SDK](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-new-project.png)
+   ![Selección del SDK de Spark](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-new-project.png)
 
    a. Escriba un nombre y una ubicación de proyecto.
 
-   b. Hola **proyecto SDK** lista desplegable, seleccione **Java 1.8** para **inspirará 2.x** de clúster o seleccione **Java 1.7** para **Spark 1. x** clúster.
+   b. En la lista desplegable **SDK de proyecto**, seleccione **Java 1.8** para el clúster de **Spark 2.x** o **Java 1.7** para el clúster de **Spark 1.x**.
 
-   c. Hola **versión Spark** lista desplegable, el Asistente para la creación de hello Scala proyecto integra la versión correcta de Hola para Spark SDK y Scala SDK. Si la versión de clúster de spark hello es anterior a la 2.0, seleccione **inspirará 1.x**. De lo contrario, seleccione **Spark 2.x**. Este ejemplo utiliza **Spark 2.0.2 (Scala 2.11.8)**.
+   c. En la lista desplegable **Versión de Spark**, el asistente para la creación de proyectos de Scala integra la versión correcta del SDK de Spark y el SDK de Scala. Si la versión del clúster de Spark es anterior a la 2.0, seleccione **Spark 1.x**. De lo contrario, seleccione **Spark 2.x**. Este ejemplo utiliza **Spark 2.0.2 (Scala 2.11.8)**.
 
    d. Seleccione **Finalizar**.
 
-4. Seleccione **src** > **principal** > **scala** tooopen el código en proyectos de Hola. Este ejemplo utiliza hello **SparkCore_wasbloTest** secuencia de comandos.
+4. Seleccione **src** > **main** > **scala** para abrir el código en el proyecto. En este artículo se usa el script **SparkCore_wasbloTest**.
 
-5. Hola tooaccess **editar configuraciones** menú, el icono de hello select en la esquina superior derecha de Hola. En este menú, puede crear o editar configuraciones de hello para la depuración remota.
+5. Para acceder al menú **Editar configuraciones**, seleccione el icono de la esquina superior derecha. Desde este menú, puede crear o modificar las configuraciones para la depuración remota.
 
    ![Editar configuraciones](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-edit-configurations.png) 
 
-6. Hola **las configuraciones de ejecución y depuración** cuadro de diálogo, seleccione hello además de inicio de sesión (**+**). A continuación, seleccione hello **enviar el trabajo de Spark** opción.
+6. En el cuadro de diálogo **Run/Debug Configurations** (Ejecutar/depurar configuraciones), seleccione el signo más (**+**). Después, seleccione la opción **Submit Spark Job** (Enviar trabajo de Spark).
 
    ![Adición de nueva configuración](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-add-new-Configuration.png)
 7. Escriba la información en los campos **Name** (Nombre), **Spark cluster** (Clúster de Spark) y **Main class name** (Nombre de clase principal). Después seleccione **Advanced configuration** (Configuración avanzada). 
 
    ![Ejecutar configuraciones de depuración](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-run-debug-configurations.png)
 
-8. Hola **Spark envío Advanced Configuration** cuadro de diálogo, seleccione **depuración remota habilitar Spark**. Escriba el nombre de usuario SSH de hello y, a continuación, escriba una contraseña o usar un archivo de clave privada. configuración de toosave hello, seleccione **Aceptar**.
+8. En el cuadro de diálogo **Spark Submission Advanced Configuration** (Configuración avanzada de envío de Spark), seleccione **Enable Spark remote debug** (Habilitar depuración remota de Spark). Escriba el nombre de usuario SSH y luego especifique una contraseña o use un archivo de clave privada. Para guardar la configuración, seleccione **Aceptar**.
 
    ![Habilitar la depuración remota de Spark](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-enable-spark-remote-debug.png)
 
-9. configuración de Hello ahora se guarda con nombre hello especificado. detalles de configuración de hello tooview, nombre de la configuración de hello select. cambios de toomake, seleccione **editar configuraciones**. 
+9. La configuración se guarda ahora con el nombre especificado. Para ver los detalles de configuración, seleccione el nombre de configuración. Para realizar cambios, seleccione **Edit Configurations** (Editar configuraciones). 
 
-10. Después de completar la configuración de las configuraciones de hello, puede ejecutar el proyecto de hello en clúster remoto Hola o realizar una depuración remota.
+10. Después de completar la configuración, puede ejecutar el proyecto en el clúster remoto o realizar la depuración remota.
 
-## <a name="learn-how-tooperform-remote-debugging"></a>Obtenga información acerca de cómo tooperform la depuración remota
+## <a name="learn-how-to-perform-remote-debugging"></a>Más información sobre la depuración remota
 ### <a name="scenario-1-perform-remote-run"></a>Escenario 1: Realizar la ejecución remota
 
-En esta sección, le mostramos cómo toodebug controladores y elementos de ejecución.
+En esta sección, se muestra cómo depurar controladores y ejecutores.
 
     import org.apache.spark.{SparkConf, SparkContext}
 
@@ -123,7 +123,7 @@ En esta sección, le mostramos cómo toodebug controladores y elementos de ejecu
         val apacheLogRegex =
           """^([\d.]+) (\S+) (\S+) \[([\w\d:/]+\s[+\-]\d{4})\] "(.+?)" (\d{3}) ([\d\-]+) "([^"]+)" "([^"]+)".*""".r
         // scalastyle:on
-        /** Tracks hello total query count and number of aggregate bytes for a particular group. */
+        /** Tracks the total query count and number of aggregate bytes for a particular group. */
         class Stats(val count: Int, val numBytes: Int) extends Serializable {
           def merge(other: Stats): Stats = new Stats(count + other.count, numBytes + other.numBytes)
           override def toString: String = "bytes=%s\tn=%s".format(numBytes, count)
@@ -154,16 +154,16 @@ En esta sección, le mostramos cómo toodebug controladores y elementos de ejecu
     }
 
 
-1. Configurar puntos de interrupción y, a continuación, seleccione hello **depurar** icono.
+1. Configure puntos de interrupción y luego seleccione el icono **Depurar**.
 
-   ![Seleccione el icono de depuración de Hola](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-debug-icon.png)
+   ![Selección del icono de depuración](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-debug-icon.png)
 
-2. Cuando la ejecución del programa Hola alcanza el punto de interrupción de hello, verá un **controlador** ficha y dos **ejecutor** pestañas en hello **depurador** panel. Seleccione hello **reanudar programa** toocontinue de icono que se ejecuta el código de hello, que, a continuación, alcanza el punto de interrupción siguiente hello y se centra en hello correspondiente **ejecutor** ficha. Puede revisar los registros de ejecución de hello en hello correspondiente **consola** ficha.
+2. Cuando la ejecución del programa alcanza el punto de interrupción, aparecen una pestaña **Controlador** y dos pestañas **Ejecutor** en el panel **Depurador**. Seleccione el icono **Resume Program** (Continuar programa) para seguir ejecutando el código, que luego alcanza el siguiente punto de interrupción y se centra en la pestaña **Ejecutor** correspondiente. Puede revisar los registros de ejecución en la correspondiente pestaña **Consola**.
 
    ![Pestaña Depuración](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-debugger-tab.png)
 
 ### <a name="scenario-2-perform-remote-debugging-and-bug-fixing"></a>Escenario 2: Realizar la depuración remota y la corrección de errores
-En esta sección, se muestra cómo toodynamically actualización Hola valor de la variable mediante el uso de Hola IntelliJ funcionalidades para una solución sencilla de depuración. En el siguiente ejemplo de código de hello, se produce una excepción porque ya existe el archivo de destino de hello.
+En esta sección, se muestra cómo actualizar dinámicamente el valor de la variable mediante el uso de la funcionalidad de depuración de IntelliJ para una revisión sencilla. En el ejemplo de código siguiente, se produce una excepción porque el archivo de destino ya existe.
   
         import org.apache.spark.SparkConf
         import org.apache.spark.SparkContext
@@ -174,7 +174,7 @@ En esta sección, se muestra cómo toodynamically actualización Hola valor de l
             val sc = new SparkContext(conf)
             val rdd = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
 
-            // Find hello rows that have only one digit in hello sixth column.
+            // Find the rows that have only one digit in the sixth column.
             val rdd1 = rdd.filter(s => s.split(",")(6).length() == 1)
 
             try {
@@ -189,26 +189,26 @@ En esta sección, se muestra cómo toodynamically actualización Hola valor de l
         }
 
 
-#### <a name="tooperform-remote-debugging-and-bug-fixing"></a>depuración remota de tooperform y corrección de errores
-1. Configurar dos puntos de interrupción y, a continuación, seleccione hello **depurar** Hola de toostart icono proceso de depuración remota.
+#### <a name="to-perform-remote-debugging-and-bug-fixing"></a>Para realizar la depuración remota y la corrección de errores
+1. Configure dos puntos de interrupción y luego seleccione el icono **Depurar** para iniciar el proceso de depuración remota.
 
-2. código de Hello se detiene en el primer punto de interrupción de Hola y parámetro hello y la información sobre las variable se muestran en hello **Variables** panel. 
+2. El código se detiene en el primer punto de interrupción y se muestra la información de parámetros y variables en el panel **Variables**. 
 
-3. Seleccione hello **reanudar programa** toocontinue de icono. código de Hello se detiene en el segundo punto de Hola. se detectó la excepción de Hello según lo previsto.
+3. Seleccione el icono **Resume Program** (Continuar programa) para continuar. El código se detiene en el segundo punto. La excepción se detecta según lo previsto.
 
   ![Iniciar error](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-throw-error.png) 
 
-4. Seleccione hello **reanudar programa** nuevo icono. Hola **HDInsight Spark envío** ventana muestra un error de "Error de la ejecución de trabajo".
+4. Vuelva a seleccionar el icono **Resume Program** (Continuar programa). La ventana **HDInsight Spark Subsmission**  (Envío de HDInsight Spark) muestra un error de ejecución de trabajo.
 
   ![Envío de error](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-error-submission.png) 
 
-5. toodynamically actualización Hola valor de la variable mediante el uso de hello IntelliJ las capacidades de depuración, seleccione **depurar** nuevo. Hola **Variables** panel aparece de nuevo. 
+5. Para actualizar de forma dinámica el valor de variable mediante la funcionalidad de depuración de IntelliJ, vuelva a seleccionar **Depurar**. El panel **Variables** aparece de nuevo. 
 
-6. Menú contextual destino de hello en hello **depurar** pestaña y, a continuación, seleccione **establecer valor**. A continuación, escriba un nuevo valor para la variable de saludo. A continuación, seleccione **ENTRAR** valor de hello toosave. 
+6. Haga clic con el botón derecho en el destino en el pestaña **Depurar** y, a continuación, seleccione **Establecer valor**. Luego escriba un nuevo valor para la variable. A continuación, seleccione **Entrar** para guardar el valor. 
 
   ![Establecer valor](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-set-value.png) 
 
-7. Seleccione hello **reanudar programa** programa Hola de icono toocontinue toorun. Esta vez no se detecta ninguna excepción. Puede ver que ese proyecto Hola se ejecuta correctamente sin ninguna excepción.
+7. Seleccione el icono **Resume Program** (Continuar programa) para seguir ejecutando el programa. Esta vez no se detecta ninguna excepción. Puede ver que el proyecto se ejecuta correctamente sin ninguna excepción.
 
   ![Depurar sin excepciones](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-debug-without-exception.png)
 
@@ -217,13 +217,13 @@ En esta sección, se muestra cómo toodynamically actualización Hola valor de l
 
 ### <a name="demo"></a>Demostración
 * Creación del proyecto Scala (vídeo): [Creación de aplicaciones Scala de Spark](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ) (en inglés)
-* Depuración remota (vídeo): [Use Azure Toolkit IntelliJ toodebug Spark para aplicaciones de forma remota en un clúster de HDInsight](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
+* Depuración remota (vídeo): [Use Azure Toolkit for IntelliJ to debug Spark applications remotely on an HDInsight cluster (Uso del Kit de herramientas de Azure para IntelliJ para depurar de forma remota aplicaciones Spark en un clúster de HDInsight)](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 
 ### <a name="scenarios"></a>Escenarios
 * [Spark con BI: realización del análisis de datos interactivos con Spark en HDInsight con las herramientas de BI](hdinsight-apache-spark-use-bi-tools.md)
-* [Spark con aprendizaje automático: Use Spark en tooanalyze HDInsight generar temperatura utilizando los datos HVAC](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
-* [Spark con aprendizaje automático: Use Spark en HDInsight toopredict de resultados de la inspección de alimentos](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
-* [La transmisión por secuencias Spark: Use Spark en HDInsight toobuild aplicaciones de transmisión por secuencias en tiempo real](hdinsight-apache-spark-eventhub-streaming.md)
+* [Spark con Machine Learning: uso de Spark en HDInsight para analizar la temperatura de edificios con los datos del sistema de acondicionamiento de aire](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
+* [Spark con aprendizaje automático: uso de Spark en HDInsight para predecir los resultados de la inspección de alimentos](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+* [Streaming con Spark: uso de Spark en HDInsight para compilar aplicaciones de streaming en tiempo real](hdinsight-apache-spark-eventhub-streaming.md)
 * [Análisis del registro del sitio web con Spark en HDInsight](hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>Creación y ejecución de aplicaciones
@@ -231,15 +231,15 @@ En esta sección, se muestra cómo toodynamically actualización Hola valor de l
 * [Ejecutar trabajos de forma remota en un clúster de Spark mediante Livy](hdinsight-apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>Herramientas y extensiones
-* [Usar el Kit de herramientas de Azure IntelliJ toocreate Spark para las aplicaciones de un clúster de HDInsight](hdinsight-apache-spark-intellij-tool-plugin.md)
-* [Usar el Kit de herramientas de Azure para las aplicaciones de IntelliJ toodebug Spark forma remota a través de VPN](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Uso del kit de herramientas de Azure para IntelliJ con el fin de crear aplicaciones Spark para un clúster de HDInsight](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Uso del kit de herramientas de Azure para IntelliJ para depurar de forma remota aplicaciones Spark mediante VPN](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Uso de las herramientas de HDInsight para IntelliJ con Hortonworks Sandbox](hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
-* [Usar herramientas de HDInsight en el Kit de herramientas de Azure para aplicaciones de Eclipse toocreate Spark](hdinsight-apache-spark-eclipse-tool-plugin.md)
+* [Uso de las herramientas de HDInsight del kit de herramientas de Azure para Eclipse con el fin de crear aplicaciones Spark](hdinsight-apache-spark-eclipse-tool-plugin.md)
 * [Uso de cuadernos de Zeppelin con un clúster Spark en HDInsight](hdinsight-apache-spark-zeppelin-notebook.md)
-* [Clúster de núcleos disponibles para Jupyter notebook Hola Spark para HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md)
+* [Kernels para Jupyter Notebook en clústeres Spark en Azure HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Uso de paquetes externos con cuadernos de Jupyter Notebook](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
-* [Instale Jupyter en el equipo y conecte tooan clúster de HDInsight Spark](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
+* [Instalación de un cuaderno de Jupyter Notebook en el equipo y conexión al clúster de Apache Spark en HDInsight de Azure](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>Administración de recursos
-* [Administrar los recursos de clúster de hello Apache Spark en HDInsight de Azure](hdinsight-apache-spark-resource-manager.md)
+* [Administración de recursos para el clúster Apache Spark en HDInsight de Azure](hdinsight-apache-spark-resource-manager.md)
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight (Seguimiento y depuración de trabajos que se ejecutan en un clúster de Apache Spark en HDInsight)](hdinsight-apache-spark-job-debugging.md)

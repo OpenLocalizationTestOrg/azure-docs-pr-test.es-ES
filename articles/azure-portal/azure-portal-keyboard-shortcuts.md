@@ -1,6 +1,6 @@
 ---
-title: "métodos abreviados de teclado portal aaaAzure | Documentos de Microsoft"
-description: "Obtenga información sobre los métodos abreviados de teclado de Hola que funcionan en hello portal de Azure."
+title: "Métodos abreviados de teclado de Azure Portal | Microsoft Docs"
+description: "Información acerca de los métodos abreviados de teclado que funcionan en Azure Portal."
 services: azure-portal
 documentationcenter: 
 author: flanakin
@@ -15,35 +15,35 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: micflan
 ms.custom: accessibility
-ms.openlocfilehash: 7d0130e1d7175cef07038bef0a4c47a4c1291050
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d5f837d0017ca885144b91d35f489a6fc0e5670e
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="keyboard-shortcuts-in-hello-azure-portal"></a>Métodos abreviados de teclado Hola portal de Azure
-Este artículo contiene métodos abreviados de teclado de Hola que funcionan a lo largo de hello portal de Azure. Los servicios individuales pueden tener sus propios métodos abreviados de teclado.
+# <a name="keyboard-shortcuts-in-the-azure-portal"></a>Métodos abreviados de teclado de Azure Portal
+Este artículo muestra los métodos abreviados de teclado que funcionan en Azure Portal. Los servicios individuales pueden tener sus propios métodos abreviados de teclado.
 
 ## <a name="actions"></a>Acciones
-|toodo esto |Presione |
+|Para hacer esto |Presione |
 | --- | --- |
 |Crear un nuevo recurso|G + N|
-|Hola abrir panel 'Más servicios'|G + B|
+|Abrir el panel "Más servicios"|G + B|
 |Búsqueda de recursos|G + /| 
 |Buscar elementos del menú de recursos|CTRL + / |
-|Subir elemento del panel izquierdo seleccionado Hola |ALT + MAYÚS + Flecha arriba|
-|Bajar elemento del panel izquierdo seleccionado Hola |ALT + MAYÚS + Flecha abajo|
+|Subir el elemento del panel izquierdo seleccionado |ALT + MAYÚS + Flecha arriba|
+|Bajar el elemento del panel izquierdo seleccionado |ALT + MAYÚS + Flecha abajo|
 
 ## <a name="navigation"></a>Navegación
-|toodo esto |Presione |
+|Para hacer esto |Presione |
 | --- | --- |
-|Mover foco toocommand barra |G + , |
+|Mover enfoque a la barra de comandos |G + , |
 |Alternar el foco entre la barra superior y la barra lateral | G + . |
 
 ## <a name="go-to"></a>Ir a
-|toodo esto |Presione |
+|Para hacer esto |Presione |
 | --- | --- |
-|Vaya toodashboard |G + D |
-|Vaya tooall recursos|G + A |
-|Vaya tooresource grupos|G + R |
-|Elemento del panel izquierdo de hello abierto en esta posición |G + número|
+|Ir al panel |G + D |
+|Ir a Todos los recursos|G + A |
+|Ir a grupos de recursos|G + R |
+|Abrir el elemento del panel izquierdo en esta posición |G + número|

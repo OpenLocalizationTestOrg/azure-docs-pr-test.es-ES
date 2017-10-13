@@ -1,5 +1,5 @@
 ---
-title: aaaPowerShell script toocreate un recurso de Application Insights | Documentos de Microsoft
+title: Script de PowerShell para crear un recurso de Application Insights | Microsoft Docs
 description: "Automatice la creación de recursos de Application Insights."
 services: application-insights
 documentationcenter: windows
@@ -13,28 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2016
 ms.author: bwren
-ms.openlocfilehash: 2ac00376d38026d64c2c5deabfaca60588924510
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a828af9c7d207dd84cc626fc70206018fd67e2dd
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="powershell-script-toocreate-an-application-insights-resource"></a>Script de PowerShell toocreate un recurso de Application Insights
+# <a name="powershell-script-to-create-an-application-insights-resource"></a>Script de PowerShell para crear un recurso de Application Insights
 
 
-Cuando desee toomonitor una nueva aplicación - o una nueva versión de una aplicación - con [Azure Application Insights](https://azure.microsoft.com/services/application-insights/), configurar un recurso nuevo en Microsoft Azure. Este recurso es donde se analiza y muestra los datos de telemetría de hello de la aplicación. 
+Cuando desee supervisar una nueva aplicación —o una nueva versión de una aplicación— con [Application Insights para Visual Studio](https://azure.microsoft.com/services/application-insights/), configure un recurso nuevo en Microsoft Azure. Este recurso es donde se analizan y muestran los datos de telemetría procedentes de su aplicación. 
 
-Puede automatizar la creación de hello de un nuevo recurso mediante PowerShell.
+Puede automatizar la creación de un nuevo recurso mediante PowerShell.
 
-Por ejemplo, si está desarrollando una aplicación de dispositivo móvil, es probable que, en cualquier momento, haya varias versiones publicadas de la aplicación en uso por los clientes. No desea tooget Hola telemetría resultantes distintas versiones mezcladas. Para obtener un nuevo recurso de la toocreate del proceso de compilación para cada compilación.
+Por ejemplo, si está desarrollando una aplicación de dispositivo móvil, es probable que, en cualquier momento, haya varias versiones publicadas de la aplicación en uso por los clientes. No querrá obtener los resultados de telemetría mezclados de las diferentes versiones. Por tanto, hará que el proceso de compilación cree un nuevo recurso para cada compilación.
 
 > [!NOTE]
-> Si desea toocreate un conjunto de recursos todos al mismo Hola de tiempo, considere la posibilidad de [crear recursos de hello usando una plantilla de Azure](app-insights-powershell.md).
+> Si desea crear un conjunto de recursos todos al mismo tiempo, considere la posibilidad de [crear los recursos mediante una plantilla de Azure](app-insights-powershell.md).
 > 
 > 
 
-## <a name="script-toocreate-an-application-insights-resource"></a>Secuencia de comandos toocreate un recurso de Application Insights
-Vea las especificaciones de hello cmdlet pertinente:
+## <a name="script-to-create-an-application-insights-resource"></a>Script para crear un recurso en Application Insights
+Consulte las especificaciones de cmdlet pertinentes:
 
 * [New-AzureRmResource](https://msdn.microsoft.com/library/mt652510.aspx)
 * [New-AzureRmRoleAssignment](https://msdn.microsoft.com/library/mt678995.aspx)
@@ -48,31 +48,31 @@ Vea las especificaciones de hello cmdlet pertinente:
 # Set Values
 ###########################################
 
-# If running manually, uncomment before hello first 
-# execution toologin toohello Azure Portal:
+# If running manually, uncomment before the first 
+# execution to login to the Azure Portal:
 
 # Add-AzureRmAccount / Login-AzureRmAccount
 
-# Set hello name of hello Application Insights Resource
+# Set the name of the Application Insights Resource
 
 $appInsightsName = "TestApp"
 
-# Set hello application name used for hello value of hello Tag "AppInsightsApp" 
+# Set the application name used for the value of the Tag "AppInsightsApp" 
 
 $applicationTagName = "MyApp"
 
-# Set hello name of hello Resource Group toouse.  
-# Default is hello application name.
+# Set the name of the Resource Group to use.  
+# Default is the application name.
 $resourceGroupName = "MyAppResourceGroup"
 
 ###################################################
-# Create hello Resource and Output hello name and iKey
+# Create the Resource and Output the name and iKey
 ###################################################
 
-# Select hello azure subscription
+# Select the azure subscription
 Select-AzureSubscription -SubscriptionName "MySubscription"
 
-# Create hello App Insights Resource
+# Create the App Insights Resource
 
 
 $resource = New-AzureRmResource `
@@ -84,7 +84,7 @@ $resource = New-AzureRmResource `
   -PropertyObject @{"Application_Type"="web"} `
   -Force
 
-# Give owner access toohello team
+# Give owner access to the team
 
 New-AzureRmRoleAssignment `
   -SignInName "myteam@fabrikam.com" `
@@ -98,10 +98,10 @@ Write-Host "IKey = " $resource.Properties.InstrumentationKey
 
 ```
 
-## <a name="what-toodo-with-hello-ikey"></a>¿Qué toodo con iKey Hola
-Cada recurso se identifica por su clave de instrumentación (iKey). Hola iKey es una salida de script de creación de recursos de Hola. El script de compilación debe proporcionar Hola iKey toohello que Application Insights SDK incrustada en la aplicación.
+## <a name="what-to-do-with-the-ikey"></a>Qué hacer con el valor iKey
+Cada recurso se identifica por su clave de instrumentación (iKey). El valor iKey es un resultado del script de creación de recursos. El script de compilación debe proporcionar el valor iKey al SDK de Application Insights insertado en la aplicación.
 
-Hay dos maneras toomake Hola iKey disponible toohello SDK:
+Hay dos maneras de hacer que el valor iKey esté disponible para el SDK:
 
 * En [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md): 
   * `<instrumentationkey>`*ikey*`</instrumentationkey>`

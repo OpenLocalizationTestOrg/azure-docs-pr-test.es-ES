@@ -1,6 +1,6 @@
 ---
-title: "aaaPlan de red de Hyper-V replicación tooa VMM sitio secundario con Azure Site Recovery | Documentos de Microsoft"
-description: "Este artículo describe la planeación de una red al replicar las máquinas virtuales de Hyper-V tooa secundaria sitio de System Center VMM con Azure Site Recovery."
+title: "Planeamiento de redes para la replicación de Hyper-V en un sitio secundario de VMM con Azure Site Recovery | Microsoft Docs"
+description: "En este artículo se trata el planeamiento de redes al replicar máquinas virtuales de Hyper-V en un sitio secundario de System Center VMM con Azure Site Recovery."
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,44 +14,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: raynew
-ms.openlocfilehash: 5934db4a661a2c697a1a799c3848852250ddb451
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a1f3f6e6cba074647195e2b0cbcdc7b4f3dec475
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="step-3-plan-networking-for-hyper-v-vm-replication-tooa-secondary-vmm-site"></a>Paso 3: Planear la red para el sitio VMM secundario de tooa de replicación de máquina virtual de Hyper-V
+# <a name="step-3-plan-networking-for-hyper-v-vm-replication-to-a-secondary-vmm-site"></a>Paso 3: Planeamiento de redes para la replicación de máquinas virtuales de Hyper-V en un sitio secundario de VMM
 
-Después de revisar los requisitos previos de implementación, lea este tooplan artículo redes al replicar Hyper-v. las máquinas virtuales (VM) administradas en nubes de System Center Virtual Machine Manager (VMM), uso de sitio secundario de tooa [deAzureSiteRecovery](site-recovery-overview.md) Hola portal de Azure. 
+Después de revisar los requisitos previos de la implementación, lea este artículo para planear redes al replicar máquinas virtuales de Hyper-V administradas en nubes de System Center Virtual Machine Manager (VMM) en un sitio secundario mediante [Azure Site Recovery](site-recovery-overview.md) en Azure Portal. 
 
-Después de leer este artículo, registrar cualquier comentario final hello, o en hello [foro de servicios de recuperación de Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Publique cualquier comentario que tenga en la parte inferior de este artículo, o bien en el [foro de Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 ## <a name="network-mapping-overview"></a>Información general de asignación de red
 
-Asignación de red se utiliza al replicar el centro de datos secundario tooa de máquinas virtuales de Hyper-V (que se administren en VMM). La asignación de red se produce entre redes de máquinas virtuales en un servidor VMM de origen y redes de máquinas virtuales en un servidor VMM de destino. Asignación Hola siguientes:
+La asignación de red se usa cuando se replican máquinas virtuales de Hyper-V (administradas en VMM) en un centro de datos secundario. La asignación de red se produce entre redes de máquinas virtuales en un servidor VMM de origen y redes de máquinas virtuales en un servidor VMM de destino. La asignación hace lo siguiente:
 
-- **Conexión de red**: redes de máquinas virtuales se conecta tooappropriate después de la conmutación por error. VM de réplica de Hello será toohello conectado red de destino que está asignada toohello red de origen.
-- **Una ubicación óptima**: óptimamente lugares Hola máquinas virtuales de réplica en los servidores de host de Hyper-V. Máquinas virtuales de réplica se colocan en hosts que pueden asignar Hola de acceso a redes de máquinas virtuales.
-- **Ninguna asignación de red**: si no configura la asignación de red, las máquinas virtuales de réplica no estará conectado tooany redes de máquinas virtuales después de la conmutación por error.
+- **Conexión de red**: las máquinas virtuales se conectan a las redes adecuadas después de la conmutación por error. La máquina virtual de réplica se conectará a la red de destino que se asigna a la red de origen.
+- **Ubicación óptima**: coloca las máquinas virtuales de réplica en los servidores host de Hyper-V de forma óptima. Las máquinas virtuales de réplica se colocarán en los hosts que pueden tener acceso a las redes de máquinas virtuales asignadas.
+- **Sin asignación de redes**: si no configura la asignación de redes, las máquinas virtuales de réplica no se conectarán a ninguna red de máquinas virtuales después de la conmutación por error.
 
 
 ### <a name="example"></a>Ejemplo
 
-Este es un ejemplo tooillustrate este mecanismo. Vamos a utilizar una organización con dos ubicaciones en Nueva York y Chicago.
+Este es un ejemplo para ilustrar este mecanismo. Vamos a utilizar una organización con dos ubicaciones en Nueva York y Chicago.
 
 **Ubicación** | **Servidor VMM** | **Redes de máquinas virtuales** | **Asignado a**
 ---|---|---|---
-Nueva York | VMM-NewYork| VMNetwork1-NewYork | TooVMNetwork1-Chicago asignada
+Nueva York | VMM-NewYork| VMNetwork1-NewYork | Asignado a VMNetwork1-Chicago
  |  | VMNetwork2-NewYork | No asignado
-Chicago | VMM-Chicago| VMNetwork1-Chicago | TooVMNetwork1-NewYork asignada
+Chicago | VMM-Chicago| VMNetwork1-Chicago | Asignado a VMNetwork1-NewYork
  | | VMNetwork1-Chicago | No asignado
 
 En este ejemplo:
 
-- Cuando se crea una máquina virtual de réplica para cualquier máquina virtual que está conectado tooVMNetwork1-NewYork, estará conectado tooVMNetwork1-Chicago.
-- Cuando se crea una máquina virtual de réplica para VMNetwork2-NewYork o VMNetwork2-Chicago, no estará conectada tooany red.
+- Cuando se crea una máquina virtual de réplica para cualquier máquina virtual que está conectada a VMNetwork1-NewYork, se conectará a VMNetwork1-Chicago.
+- Cuando se crea una máquina virtual de réplica para VMNetwork2-NewYork o VMNetwork2-Chicago, no se conectará a ninguna red.
 
-Aquí es cómo se configuran las nubes de VMM en nuestra organización de ejemplo y redes lógicas Hola asociadas a nubes de Hola.
+Aquí es cómo se configuran las nubes de VMM en nuestra organización de ejemplo y las redes lógicas asociadas a las nubes.
 
 #### <a name="cloud-protection-settings"></a>Configuración de la protección de la nube
 
@@ -72,7 +72,7 @@ Chicago | LogicalNetwork1-Chicago | VMNetwork1-Chicago
 
 #### <a name="target-network-settings"></a>Configuración de red de destino
 
-Según estos valores, al seleccionar red de VM de destino de hello, hello en la tabla siguiente muestra las opciones de Hola que estarán disponibles.
+Según esta configuración, cuando selecciona la red de máquinas virtuales de destino, en la siguiente tabla se muestran las opciones que estarán disponibles.
 
 **Selección** | **Nube protegida** | **Proteger nube** | **Red de destino disponible**
 ---|---|---|---
@@ -82,15 +82,15 @@ VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | No disponible
  | GoldCloud1 | GoldCloud2 | Disponible
 
 
-Si la red de destino de hello tiene varias subredes y una de dichas subredes tiene Hola mismo nombre como Hola subred en qué Hola máquina virtual de origen se encuentra, a continuación, Hola máquina virtual de réplica será toothat conectado subred de destino después de la conmutación por error. Si no hay ninguna subred de destino con un nombre coincidente, máquina virtual de hello estará conectado toohello primera subred de red de Hola.
+Si la red de destino tiene varias subredes y una de estas subredes tiene el mismo nombre que la subred en la que se encuentra la máquina virtual de origen, la máquina virtual de réplica se conectará a esa subred de destino después de la conmutación por error. Si no hay ninguna subred de destino con un nombre coincidente, la máquina virtual se conectará a la primera subred de la red.
 
 
 #### <a name="failback-behavior"></a>Comportamiento de conmutación por recuperación
 
-toosee lo que ocurre en el caso de hello de conmutación por recuperación (replicación inversa), vamos a suponer que VMNetwork1-NewYork está asignada tooVMNetwork1-Chicago, con hello después de la configuración.
+Para ver lo que ocurre en el caso de conmutación por recuperación (replicación inversa), supongamos que VMNetwork1-NewYork se asigna a VMNetwork1-Chicago, con la siguiente configuración.
 
 
-**Máquina virtual** | **Red tooVM conectado**
+**Máquina virtual** | **Conectada a la red de VM**
 ---|---
 VM1 | VMNetwork1-Network
 VM2 (réplica de VM1) | VMNetwork1-Chicago
@@ -99,55 +99,55 @@ Con esta configuración, revisemos lo que ocurre en un par de escenarios posible
 
 **Escenario** | **Resultado**
 ---|---
-Ningún cambio hello en Propiedades de red de VM-2 después de la conmutación por error. | VM-1 permanece conectado toohello red de origen.
+Sin cambios en las propiedades de red de VM-2 después de la conmutación por error. | VM-1 sigue estando conectada a la red de origen
 Las propiedades de red de VM-2 cambian después de la conmutación por error y está desconectada. | VM-1 se desconecta.
-Propiedades de red de VM-2 cambian después de la conmutación por error y está conectado tooVMNetwork2-Chicago. | Si no está asignada VMNetwork2-Chicago, se desconectará VM-1.
-Se cambia la asignación de redes de VMNetwork1-Chicago. | VM-1 será toohello conectado red ahora asignada tooVMNetwork1-Chicago.
+Las propiedades de red de VM-2 cambian después de la conmutación por error y está conectada a VMNetwork2-Chicago. | Si no está asignada VMNetwork2-Chicago, se desconectará VM-1.
+Se cambia la asignación de redes de VMNetwork1-Chicago. | VM-1 se conectará a la red ahora asignada a VMNetwork1-Chicago.
 
 
 
 ## <a name="prepare-for-network-mapping"></a>Preparar la asignación de red
 
-1. En los servidores VMM de origen y destino hello, debe tener una red lógica asociada con nubes de origen y destino de Hola. 
-2. En servidores de origen y destino de hello, debe tener una red lógica de VM red toohello vinculado.
-3. Máquinas virtuales en hosts de Hyper-V en la ubicación de origen de hello deben estar vinculados toohello red de VM de origen. Si solo usa un único servidor VMM, puede configurar la asignación entre redes de VM de hello mismo servidor.
+1. En los servidores VMM de origen y destino, debe tener una red lógica asociada a las nubes de origen y destino. 
+2. En los servidores de origen y destino, debe tener una red de máquina virtual vinculada a la red lógica.
+3. Máquinas virtuales en hosts de Hyper-V en la ubicación de origen deben vincularse a la red de máquina virtual de origen. Si solo usa un servidor VMM sencillo, puede configurar la asignación entre redes de máquina virtual en el mismo servidor.
 
 Esto es lo que sucede al configurar la asignación de red durante la implementación de Site Recovery:
 
-- Al configurar la asignación de red y seleccionar una red de máquina virtual de destino, nubes de origen VMM de Hola que usan la red de VM de origen Hola se mostrarán junto con redes de VM de destino disponibles de hello en nubes de destino de Hola.
-- - Cuando se configura correctamente la asignación y está habilitada la replicación, un origen de máquina virtual estará conectado tooits red de VM de origen y se conectará su réplica en la ubicación de destino de hello tooits asignar red de máquina virtual.
-- Si la red de destino de hello tiene varias subredes y una de dichas subredes tiene Hola mismo nombre como Hola subred en qué Hola máquina virtual de origen se encuentra, a continuación, Hola máquina virtual de réplica será toothat conectado subred de destino después de la conmutación por error. Si no hay ninguna subred de destino con un nombre coincidente, Hola VM estará conectado toohello primera subred de red de Hola.
+- Al configurar la asignación de red y seleccionar una red de máquina virtual de destino, se mostrarán las nubes de origen de VMM que usen la red de máquina virtual de origen, junto con las redes de máquina virtual de destino disponibles de las nubes de destino.
+- - Cuando se configura correctamente la asignación y se habilita la replicación, se conectará una máquina virtual de origen a su red de máquina virtual de origen y su réplica de la ubicación de destino se conectará a la red de máquina virtual asignada.
+- Si la red de destino tiene varias subredes y una de estas subredes tiene el mismo nombre que la subred en la que se encuentra la máquina virtual de origen, la máquina virtual de réplica se conectará a esa subred de destino después de la conmutación por error. Si no hay ninguna subred de destino con un nombre coincidente, la máquina virtual se conectará a la primera subred de la red.
 
-## <a name="connect-toovms-after-failover"></a>Conectarse tooVMs después de la conmutación por error
+## <a name="connect-to-vms-after-failover"></a>Conectarse a las máquinas virtuales después de la conmutación por error
 
-Al planear su estrategia de conmutación por error y replicación, uno de preguntas clave hello es cómo tooconnect toohello réplica después de la conmutación por error. Hay dos opciones: 
+Al planear su estrategia de conmutación por error y replicación, una de las preguntas claves es cómo conectarse a la réplica después de la conmutación por error. Hay dos opciones: 
 
-- **Usar una dirección IP diferente**: se puede seleccionar toouse una dirección IP diferente para hello replica la máquina virtual. En este Hola escenario VM Obtiene una nueva dirección IP después de la conmutación por error y se requiere una actualización DNS.
-- **Conservar Hola la misma dirección IP**: es recomendable toouse Hola la misma dirección IP para VM de réplica de Hola. Mantener Hola simplifica la mismas direcciones IP recuperación Hola al reducir los problemas de red después de la conmutación por error. 
+- **Use different IP address** (Usar una dirección IP distinta): puede seleccionar el uso de otra dirección IP para la máquina virtual replicada. En este escenario, la máquina virtual obtiene una nueva dirección IP después de la conmutación por error y se requiere una actualización DNS.
+- **Conservar la misma dirección IP**: es posible que quiera usar la misma dirección IP para la máquina virtual de réplica. La conservación de las mismas direcciones IP simplifica la recuperación al reducir los problemas relacionados con la red después de la conmutación por error. 
 
 ## <a name="retain-ip-addresses"></a>Conservación de las direcciones IP
 
-Si desea que las direcciones IP de tooretain Hola desde el sitio primario de hello después de sitio secundario de conmutación por error toohello, puede realizar una conmutación por error de subred completa y actualizar rutas tooindicate Hola nueva ubicación de direcciones IP de Hola o alternativa implementar una subred con Stretch entre Hola principal y Hola sitios de recuperación.
+Si desea conservar las direcciones IP del sitio principal después de la conmutación por error al sitio secundario, puede realizar una conmutación por error de subred completa y actualizar las rutas para indicar la nueva ubicación de las direcciones IP, o bien implementar de forma alternativa una subred estirada entre los sitios principales y de recuperación.
 
 ### <a name="stretched-subnet"></a>Subred estirada
 
-En una subred con Stretch, subred Hola está disponible al mismo tiempo en el sitio principal y secundaria de Hola. Si mueve un servidor y su sitio secundario de IP (nivel 3) configuración toohello, red Hola enrutará nueva ubicación de hello tráfico toohello automáticamente. 
+En una subred estirada, la subred está disponible a la vez en el sitio principal y secundario. Si mueve un servidor y su configuración de IP (nivel 3) al sitio secundario, la red enrutará el tráfico a la nueva ubicación automáticamente. 
 
-Desde una perspectiva del nivel 2 (nivel de vínculo de datos), necesita un equipo de redes que pueda administrar una red VLAN estirada. Además, por hello ampliar VLAN, dominio de error posibles Hola extiende sitios tooboth, básicamente se convierta en un único punto de error. Aunque es poco probable, podría ocurrir que se iniciara una tormenta de difusión y no se pudiera aislar. 
+Desde una perspectiva del nivel 2 (nivel de vínculo de datos), necesita un equipo de redes que pueda administrar una red VLAN estirada. Además, mediante la expansión de la VLAN, el dominio de error potencial se extiende a ambos sitios, básicamente convirtiéndose en un único punto de error. Aunque es poco probable, podría ocurrir que se iniciara una tormenta de difusión y no se pudiera aislar. 
 
 
 ### <a name="subnet-failover"></a>Conmutación por error de subred
 
-Puede ejecutar un hello tooobtain de conmutación por error de subred ventajas de subred de hello ajustarse, sin realmente la ampliación. En esta solución, una subred estará disponible en el sitio de origen o destino de hello, pero no en ambos al mismo tiempo. toomaintain Hola espacio de direcciones IP en el caso de hello de una conmutación por error, se pueden organizar mediante programación para subredes Hola enrutador infraestructura toomove Hola de tooanother de un sitio. Una vez cuando se produce conmutación por error, subredes pasaban con hello había asociado las máquinas virtuales. Hola principal inconveniente es que en caso de hello de un error, tienes subred completa de toomove Hola.
+Puede ejecutar una conmutación por error de la subred para disfrutar de las ventajas de la subred estirada, sin estirarla realmente. En esta solución, una subred estará disponible en el sitio de origen o destino, pero no en ambos a la vez. Para mantener el espacio de direcciones IP en el caso de una conmutación por error, puede organizar mediante programación de la infraestructura de enrutador para mover las subredes de un sitio a otro. Tras producirse la conmutación por error, las subredes se moverían con las máquinas virtuales asociadas. El principal inconveniente es que si se produce un error, tiene que mover la subred completa.
 
 ### <a name="example"></a>Ejemplo
 
-Este es un ejemplo de conmutación por error de la subred completa. sitio primario de Hello tiene aplicaciones que se ejecutan en la subred 192.168.1.0/24. En la conmutación por error, Hola todas las máquinas virtuales en esta subred se conmutan por sitio secundario toohello y conservan sus direcciones IP. Rutas necesidad toobe modifica hechos de hello tooreflect que todas las máquinas de virtuales VM de Hola que pertenecen toosubnet 192.168.1.0/24 ahora se han movido toohello de sitio secundario.
+Este es un ejemplo de conmutación por error de la subred completa. El sitio principal tiene aplicaciones que se ejecutan en la subred 192.168.1.0/24. En la conmutación por error, todas las máquinas virtuales de esta subred se conmutan por error al sitio secundario y conservan sus direcciones IP. Las rutas tienen que modificarse para reflejar el hecho de que todas las máquinas virtuales que pertenezcan a la subred 192.168.1.0/24 se han movido al sitio secundario.
 
-Hello gráficos siguientes muestran subredes Hola antes y después de la conmutación por error:
+En los gráficos siguientes se muestran las subredes antes y después de la conmutación por error:
 
-- Antes de la conmutación por error, subred 192.168.0.1/24 está activo en el sitio de origen Hola activarse en el sitio secundario de hello después de la conmutación por error.
-- Hola enruta entre sitio primario y sitio de recuperación, tercer sitio y el sitio primario y sitio terceros y el sitio de recuperación tendrá toobe modificado correctamente.
+- Antes de la conmutación por error, la subred 192.168.0.1/24 está activa en el sitio de origen, volviéndose activa en el sitio secundario después de la conmutación por error.
+- Las rutas entre el sitio principal y el sitio de recuperación, el tercer sitio y el sitio principal, y el tercer sitio y el sitio de recuperación tendrán que modificarse correctamente.
 
 **Antes de la conmutación por error**
 
@@ -159,14 +159,14 @@ Hello gráficos siguientes muestran subredes Hola antes y después de la conmuta
 
 Después de la conmutación por error, esto es lo que sucede:
 
-- Recuperación del sitio asigna una dirección IP para cada interfaz de red en Hola de máquina virtual, del grupo de direcciones IP estática de hello en red relevantes de hello, para cada instancia VMM.
-- Si es el grupo de direcciones IP de hello en el sitio secundario de Hola Hola igual que en el sitio de origen de hello, Site Recovery asigna Hola misma réplica de toohello de dirección (de hello una VM de origen) de IP virtual. dirección IP de Hello está reservada en VMM, pero no está configurada como dirección IP de conmutación por error de hello en el host de Hyper-V de Hola. dirección IP de conmutación por error de Hello en un host de Hyper-v se establece justo antes de la conmutación por error de Hola.
-- Si hello misma dirección IP no está disponible, Site Recovery asigna otra dirección IP disponible de grupo de Hola.
-- Si las máquinas virtuales usan DHCP, Site Recovery no administrar direcciones IP de Hola. Necesita toocheck que Hola DHCP server en el sitio secundario de hello puede asignar la dirección de hello mismo intervalo como sitio de origen de Hola.
+- Site Recovery asigna una dirección IP a cada interfaz de red en la máquina virtual del grupo de direcciones IP estáticas en la red correspondiente para cada instancia de VMM.
+- Si el grupo de direcciones IP del sitio secundario es el mismo que el del sitio de origen, Site Recovery asigna la misma dirección IP (de la máquina virtual de origen) a la máquina virtual de réplica. La dirección IP está reservada en VMM, pero no está establecida como dirección IP de conmutación por error en el host de Hyper-V. La dirección IP de conmutación por error de un host de Hyper-V se establece inmediatamente antes de la conmutación por error.
+- Si no está disponible la misma dirección IP, Site Recovery asigna otra dirección IP disponible del grupo.
+- Si las máquinas virtuales usan DHCP, Site Recovery no administra las direcciones IP. Es necesario que compruebe que el servidor DHCP del sitio secundario puede asignar la dirección desde el mismo intervalo que el sitio de origen.
 
-### <a name="validate-hello-ip-address"></a>Validar la dirección IP de Hola
+### <a name="validate-the-ip-address"></a>Validar la dirección IP
 
-Después de habilitar la protección de una máquina virtual, puede usar los siguientes ejemplo script tooverify hello dirección asignada toohello máquina virtual. Hola la misma dirección IP se establezca como dirección IP de conmutación por error de Hola y se asignó toohello VM en tiempo de Hola de conmutación por error:
+Después de habilitar la protección para una máquina virtual, puede usar el siguiente script de ejemplo para comprobar la dirección asignada a la máquina virtual. La misma dirección IP se establecerá como dirección IP de conmutación por error y se asignará a la máquina virtual en el momento de la conmutación por error:
 
     ```
     $vm = Get-SCVirtualMachine -Name <VM_NAME>
@@ -177,10 +177,10 @@ Después de habilitar la protección de una máquina virtual, puede usar los sig
 
 ## <a name="changing-ip-addresses"></a>Cambio de las direcciones IP
 
-En este escenario, se cambian las direcciones IP Hola de máquinas virtuales que conmutarán por error. desventaja de Hola de esta solución es requerido el mantenimiento de Hola. Normalmente, DNS se actualizará una vez iniciadas las máquinas virtuales de réplica. Las entradas de DNS podrían necesita toobe cambiado o fluster en red y las entradas en caché actualizadas. Esto puede dar lugar a un tiempo de inactividad. El tiempo de inactividad puede mitigarse del siguiente modo:
+En este escenario, se cambian las direcciones IP de las máquinas virtuales que se conmutan por error. El inconveniente de esta solución es el mantenimiento necesario. Normalmente, DNS se actualizará una vez iniciadas las máquinas virtuales de réplica. Es posible que las entradas DNS deban cambiarse o alterarse en la red y que las entradas almacenadas en caché deban actualizarse. Esto puede dar lugar a un tiempo de inactividad. El tiempo de inactividad puede mitigarse del siguiente modo:
 
 - Utilice valores de TTL bajos para las aplicaciones de intranet.
-- Usar hello siguiente secuencia de comandos en un plan de recuperación de Site Recovery, tooupdate Hola DNS server tooensure oportuna actualización. Script de Hola no es necesario si utiliza el registro DNS dinámico.
+- Utilice el siguiente script en un plan de recuperación de Site Recovery para actualizar el servidor DNS y garantizar una actualización puntual. No necesita el script si usa un registro de DNS dinámico.
 
     ```
     param(
@@ -196,12 +196,12 @@ En este escenario, se cambian las direcciones IP Hola de máquinas virtuales que
     
 ### <a name="example"></a>Ejemplo 
 
-Echemos un vistazo a un escenario en el que piensa toouse direcciones IP a través de hello principal y los sitios de recuperación de Hola. En este ejemplo contamos con direcciones IP a través de sitios primarios y secundarios, y existe; se puede tener acceso a sitio s una tercera de las aplicaciones hospedadas en el sitio principal o de recuperación de Hola.
+Eche un vistazo a un escenario en el que tenga previsto usar otras direcciones IP en los sitios principales y de recuperación. En este ejemplo, tenemos otras direcciones IP en los sitios principales y secundarios, y existe un tercer sitio desde el que se puede tener acceso a las aplicaciones hospedadas en el sitio principal o de recuperación.
 
-- Antes de la conmutación por error, aplicaciones son 192.168.1.0/24 subred hospedado en el sitio principal de Hola y están toobe configurado en la subred 172.16.1.0/24 en el sitio secundario de hello después de una conmutación por error.
+- Antes de la conmutación por error, las aplicaciones son la subred hospedada 192.168.1.0/24 del sitio principal y están configuradas para estar en la subred 172.16.1.0/24 del sitio secundario después de una conmutación por error.
 - Las rutas de red/conexiones de VPN se han configurado correctamente de forma que los tres sitios son accesibles entre sí.
-- Después de la conmutación por error, las aplicaciones se restaurará en la subred de la recuperación de Hola. En este escenario no hay ninguna necesidad de toofail por subred todo Hola y rutas de red o VPN tooreconfigure necesarios no es ningún cambio. conmutación por error de Hola y algunas actualizaciones DNS, aseguran de que las aplicaciones sean accesibles.
-- Si DNS no está configurado tooallow de actualizaciones dinámicas, a continuación, hello las máquinas virtuales se registrarán con hello nueva dirección IP, cuando se inician después de la conmutación por error.
+- Después de la conmutación por error, las aplicaciones se restaurarán en la subred de recuperación. En este escenario no es necesario conmutar por error toda la subred y no se requiere ningún cambio para volver a configurar las rutas de red o VPN. La conmutación por error y algunas actualizaciones de DNS garantizan que las aplicaciones sigan siendo accesibles.
+- Si el DNS está configurado para permitir actualizaciones dinámicas, las máquinas virtuales se registrarán a sí mismas con la nueva dirección IP al iniciarse después de la conmutación por error.
 
 **Antes de la conmutación por error**
 
@@ -215,6 +215,6 @@ Echemos un vistazo a un escenario en el que piensa toouse direcciones IP a trav�
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Vaya demasiado[paso 4: preparar VMM y Hyper-V](vmm-to-vmm-walkthrough-vmm-hyper-v.md).
+Vaya a [Paso 4: Preparación de VMM y Hyper-V](vmm-to-vmm-walkthrough-vmm-hyper-v.md).
 
 

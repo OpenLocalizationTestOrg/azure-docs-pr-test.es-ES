@@ -1,6 +1,6 @@
 ---
-title: "discos aaaExclude de protección mediante el uso de Azure Site Recovery | Documentos de Microsoft"
-description: "Describe cómo y por qué tooexclude VM discos de la replicación para escenarios de tooAzure de VMware y Hyper-V tooAzure."
+title: "Exclusión de discos de la protección con Azure Site Recovery | Microsoft Docs"
+description: "Describe por qué y cómo excluir discos de máquina virtual de la replicación en escenarios de VMware a Azure y de Hyper-V a Azure."
 services: site-recovery
 documentationcenter: 
 author: nsoneji
@@ -14,129 +14,129 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/05/2017
 ms.author: nisoneji
-ms.openlocfilehash: f47146bc57aeab3fce90123d0894fa86dde93417
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: fccbe88e3c0c2b2f3e9958f5f2f27adc017e4d03
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="exclude-disks-from-replication"></a>Excluir discos de la replicación
-Este artículo describe cómo tooexclude discos de la replicación. Esta exclusión puede optimizar el ancho de banda de replicación de hello consumido u optimizar los recursos del lado de destino de Hola que utilizan estos discos. característica de Hola se admite para escenarios de tooAzure de VMware y Hyper-V tooAzure.
+En este artículo se describe cómo excluir discos de la replicación. Esta exclusión puede optimizar el ancho de banda consumido con la replicación u optimizar los recursos del lado del destino que utilizan estos discos. La característica es compatible con escenarios de VMware a Azure y de Hyper-V a Azure.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-De manera predeterminada, se replican todos los discos de una máquina. tooexclude un disco de la replicación, debe instalar manualmente Hola servicio de movilidad en la máquina de hello antes de habilitar la replicación si se están replicando desde tooAzure de VMware.
+De manera predeterminada, se replican todos los discos de una máquina. Si se va a replicar de VMware a Azure, para excluir un disco, la instancia de Mobility Service debe instalarse manualmente en la máquina antes de habilitar la replicación.
 
 
 ## <a name="why-exclude-disks-from-replication"></a>¿Por qué excluir discos de la replicación?
 A menudo es necesario excluir discos de replicación porque:
 
-- datos de Hola que creadas en el disco de hello excluido no son importantes o no necesitan toobe replicado.
+- Los datos renovados en el disco excluido no son importantes o no es necesario replicarlos.
 
-- Recursos de red y almacenamiento de toosave que desee por no replicar este renovación.
+- No quiere replicar la renovación para ahorrar recursos de almacenamiento y de red.
 
-## <a name="what-are-hello-typical-scenarios"></a>¿Cuáles son los escenarios típicos de hello?
-Encontrará ejemplos específicos de datos renovados que son estupendos candidatos para la exclusión. Algunos ejemplos son los escribe tooa archivo de paginación (pagefile.sys) y escribe el archivo de tempdb toohello de Microsoft SQL Server. Dependiendo de la carga de trabajo de Hola y el subsistema de almacenamiento de hello, archivo de paginación de hello puede registrar una cantidad significativa de renovación. Sin embargo, replicar estos datos de hello sitio primario tooAzure sería consumen muchos recursos. Por lo tanto, puede usar Hola después de la replicación de toooptimize de pasos de una máquina virtual con un único disco virtual que tiene el sistema operativo de Hola y el archivo de paginación de hello:
+## <a name="what-are-the-typical-scenarios"></a>¿Cuáles son los escenarios típicos?
+Encontrará ejemplos específicos de datos renovados que son estupendos candidatos para la exclusión. Algunos de ellos podrían ser operaciones de escritura en un archivo de paginación (pagefile.sys) y entradas en el archivo de tempdb de Microsoft SQL Server. Según la carga de trabajo y el subsistema de almacenamiento, el archivo de paginación puede registrar una renovación considerable. Sin embargo, esta réplica de datos del sitio principal a Azure consumiría muchos recursos. Por lo tanto, puede usar los siguientes pasos para optimizar la replicación de una máquina virtual con un único disco virtual que contenga tanto el sistema operativo como el archivo de paginación:
 
-1. Dividir el disco virtual única de hello en dos discos virtuales. Un disco virtual con sistema operativo de Hola y Hola otro tiene un archivo de paginación de Hola.
-2. Excluir el disco del archivo de paginación de hello de la replicación.
+1. Divida el disco virtual único en dos. Uno para el sistema operativo y el otro para el archivo de paginación.
+2. Excluya el disco del archivo de paginación de la replicación.
 
-De forma similar, puede utilizar Hola siguiendo los pasos toooptimize un disco con ambos tempdb de Microsoft SQL Server de Hola a memoria y Hola archivo de base de datos del sistema:
+De forma similar, puede usar los siguientes pasos para optimizar un disco que tenga el archivo de la base de datos tempbd de Microsoft SQL Server y el de la base de datos del sistema:
 
-1. Mantener base de datos de sistema de Hola y tempdb en dos discos diferentes.
-2. Excluir el disco de tempdb de hello de la replicación.
+1. Guarde la base de datos del sistema y tempdb en dos discos diferentes.
+2. Excluya el disco de tempdb de la replicación.
 
-## <a name="how-tooexclude-disks-from-replication"></a>¿Cómo tooexclude discos de la replicación?
+## <a name="how-to-exclude-disks-from-replication"></a>¿Cómo se excluyen discos de la replicación?
 
-### <a name="vmware-tooazure"></a>TooAzure de VMware
-Siga hello [habilitar la replicación](site-recovery-vmware-to-azure.md) tooprotect una máquina virtual desde el portal de Azure Site Recovery Hola de flujo de trabajo. En el paso cuarto de Hola de flujo de trabajo de hello, usar hello **tooREPLICATE disco** discos tooexclude de columna de la replicación. De forma predeterminada se seleccionan todos los discos para la replicación. Desactive la casilla de verificación de Hola de discos que desea tooexclude de replicación y, a continuación, completa Hola pasos tooenable.
+### <a name="vmware-to-azure"></a>VMware en Azure
+Siga el flujo de trabajo de [Habilitación de la replicación](site-recovery-vmware-to-azure.md) para proteger una máquina virtual desde el portal de Azure Site Recovery. En el cuarto paso del flujo de trabajo, use la columna **DISCOS PARA REPLICAR** para excluir los discos de la replicación. De forma predeterminada se seleccionan todos los discos para la replicación. Anule la selección de la casilla del disco que desee excluir y complete los pasos para habilitar la replicación.
 
-![Excluir los discos de la replicación y habilitar la replicación de conmutación por recuperación de VMware tooAzure](./media/site-recovery-exclude-disk/v2a-enable-replication-exclude-disk1.png)
+![Exclusión de discos y habilitación de la replicación de VMware en la conmutación por recuperación de Azure](./media/site-recovery-exclude-disk/v2a-enable-replication-exclude-disk1.png)
 
 
 >[!NOTE]
 >
-> * Puede excluir solo los discos que ya tienen instalado el servicio de movilidad de Hola. Necesita servicio de movilidad de toomanually instalación hello, porque Hola servicio de movilidad solo se instala utilizando el mecanismo de inserción de hello después de la replicación está habilitada.
+> * Solo puede excluir discos que tengan instalado Mobility Service. Mobility Service se instala manualmente, ya que la instalación solo se puede hacer con el mecanismo de notificación push una vez habilitada la replicación.
 > * Solo se pueden excluir los discos básicos de la replicación. No se pueden excluir los discos dinámicos ni del sistema operativo.
-> * Una vez habilitada la replicación, no puede agregar ni quitar discos de la replicación. Si desea tooadd o excluir un disco, necesita toodisable protección de máquina de hello y, a continuación, vuelva a habilitarla.
-> * Si excluye un disco que se necesita para una aplicación toooperate, después de la conmutación por error tooAzure, necesitará el disco de Hola de toocreate manualmente en Azure para que pueda ejecutar la aplicación hello replicado. O bien, puede integrar la automatización de Azure en un disco de recuperación plan toocreate Hola durante la conmutación por error de la máquina de Hola.
-> * Máquina virtual Windows: no se producirá una conmutación por recuperación de los discos creados manualmente en Azure. Por ejemplo, si realiza la conmutación por error de tres discos y crea dos directamente en Azure Virtual Machines, solo los tres discos que se conmutaran por error se conmutarán por recuperación. No se incluyen discos que haya creado manualmente en la conmutación por recuperación o en reprotección de tooAzure local.
+> * Una vez habilitada la replicación, no puede agregar ni quitar discos de la replicación. Si desea agregar o excluir un disco, deberá deshabilitar la protección de la máquina y volver a habilitarla.
+> * Si excluye un disco necesario para que una aplicación funcione, después de la conmutación por error a Azure, debe crearlo manualmente en Azure para poder ejecutar la aplicación replicada. También puede integrar Azure Automation en un plan de recuperación para crear el disco durante la conmutación por error de la máquina.
+> * Máquina virtual Windows: no se producirá una conmutación por recuperación de los discos creados manualmente en Azure. Por ejemplo, si realiza la conmutación por error de tres discos y crea dos directamente en Azure Virtual Machines, solo los tres discos que se conmutaran por error se conmutarán por recuperación. No puede incluir los discos creados manualmente en la conmutación por recuperación ni volver a protegerlos de un entorno local a Azure.
 > * Máquina virtual Linux: se producirá una conmutación por recuperación de los discos creados manualmente en Azure. Por ejemplo, si realiza una conmutación por error de tres discos y crea dos directamente en Azure Virtual Machines, los cinco experimentarán conmutación por recuperación. No se pueden excluir discos creados manualmente de la conmutación por recuperación.
 >
 
-### <a name="hyper-v-tooazure"></a>TooAzure de Hyper-V
-Siga hello [habilitar la replicación](site-recovery-hyper-v-site-to-azure.md) tooprotect una máquina virtual desde el portal de Azure Site Recovery Hola de flujo de trabajo. En el paso cuarto de Hola de flujo de trabajo de hello, usar hello **tooREPLICATE disco** discos tooexclude de columna de la replicación. De forma predeterminada se seleccionan todos los discos para la replicación. Desactive la casilla de verificación de Hola de discos que desea tooexclude de replicación y, a continuación, completa Hola pasos tooenable.
+### <a name="hyper-v-to-azure"></a>Hyper-V en Azure
+Siga el flujo de trabajo de [Habilitación de la replicación](site-recovery-hyper-v-site-to-azure.md) para proteger una máquina virtual desde el portal de Azure Site Recovery. En el cuarto paso del flujo de trabajo, use la columna **DISCOS PARA REPLICAR** para excluir los discos de la replicación. De forma predeterminada se seleccionan todos los discos para la replicación. Anule la selección de la casilla del disco que desee excluir y complete los pasos para habilitar la replicación.
 
-![Excluir los discos de la replicación y habilitar la replicación de conmutación por recuperación de Hyper-V tooAzure](./media/site-recovery-vmm-to-azure/enable-replication6-with-exclude-disk.png)
+![Exclusión de discos y habilitación de la replicación de Hyper-V en la conmutación por recuperación de Azure](./media/site-recovery-vmm-to-azure/enable-replication6-with-exclude-disk.png)
 
 >[!NOTE]
 >
-> * De la replicación solo se pueden excluir discos básicos. No se pueden excluir los discos del sistema operativo. Se recomienda no excluir discos dinámicos. Azure Site Recovery no se puede identificar qué disco duro virtual (VHD) es básico o dinámico en máquina virtual de hello invitado.  Si no se excluyen todos los discos de los volúmenes dinámicos dependientes, disco dinámico protegido de Hola se convierte en un disco con errores en una máquina virtual de conmutación por error y hello datos en ese disco no están accesibles.
-> * Una vez habilitada la replicación, no puede agregar ni quitar discos de la replicación. Si desea que tooadd o excluir un disco, se necesita protección toodisable para la máquina virtual de hello y, a continuación, vuelva a habilitarla.
-> * Si excluye un disco que se necesita para una aplicación toooperate, después de la conmutación por error tooAzure necesitará toocreate Hola disco manualmente en Azure para que pueda ejecutar la aplicación hello replicado. O bien, puede integrar la automatización de Azure en un disco de recuperación plan toocreate Hola durante la conmutación por error de la máquina de Hola.
-> * No se producirá una conmutación por recuperación de los discos creados manualmente en Azure. Por ejemplo, si se producirá un error en más de tres discos y crear dos discos directamente en máquinas virtuales de Azure, solo tres discos que se han conmutado por error desde Azure tooHyper-V. No se incluyen discos que se hayan creado manualmente en la conmutación por recuperación o en la replicación inversa de Hyper-V tooAzure.
+> * De la replicación solo se pueden excluir discos básicos. No se pueden excluir los discos del sistema operativo. Se recomienda no excluir discos dinámicos. Azure Site Recovery no puede identificar qué disco duro virtual (VHD) es básico o dinámico en la máquina virtual invitada.  Si no se excluye ningún disco del volumen dinámico dependiente, el disco dinámico protegido aparecerá como erróneo en la máquina virtual de conmutación por error y no se podrá acceder a los datos de ese disco.
+> * Una vez habilitada la replicación, no puede agregar ni quitar discos de la replicación. Si desea agregar o excluir un disco, deberá deshabilitar la protección de la máquina virtual y volver a habilitarla.
+> * Si excluye un disco necesario para que una aplicación funcione, después de la conmutación por error a Azure, debe crearlo manualmente en Azure para poder ejecutar la aplicación replicada. También puede integrar Azure Automation en un plan de recuperación para crear el disco durante la conmutación por error de la máquina.
+> * No se producirá una conmutación por recuperación de los discos creados manualmente en Azure. Por ejemplo, si realiza la conmutación por error de tres discos y crea dos directamente en Azure Virtual Machines, solo los tres discos que se conmutaron por error se conmutarán por recuperación de Azure a Hyper-V. No puede incluir los discos creados manualmente en la conmutación por recuperación ni en la replicación inversa de Hyper-V a Azure.
 
 
 
 ## <a name="end-to-end-scenarios-of-exclude-disks"></a>Escenarios completos de exclusión de discos
-Veamos característica disco toounderstand Hola exclusión de dos escenarios:
+Veamos dos escenarios para comprender la característica de exclusión de discos:
 
 - Disco de la base de datos tempdb de SQL Server
 - Disco del archivo de paginación (pagefile.sys)
 
-### <a name="exclude-hello-sql-server-tempdb-disk"></a>Excluir el disco de tempdb de SQL Server de Hola
+### <a name="exclude-the-sql-server-tempdb-disk"></a>Exclusión del disco de la base de datos tempdb de SQL Server
 Veamos una máquina virtual de SQL Server con una base de datos tempdb que se puede excluir.
 
-nombre de Hola de disco virtual de hello es SalesDB.
+El nombre del disco virtual es SalesDB.
 
-Discos de máquina virtual de origen de hello son los siguientes:
+Los discos de la máquina virtual de origen son los siguientes:
 
 
-**Nombre del disco** | **Sistema operativo invitado** | **Unidad** | **Tipo de datos en el disco de Hola**
+**Nombre del disco** | **Sistema operativo invitado** | **Unidad** | **Tipo de datos en el disco**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | Disco del sistema operativo
 DB-Disk1| Disk1 | D:\ | Base de datos del sistema SQL y Database1 del usuario
-DB-disco 2 (disco de hello excluidos de la protección) | Disk2 | E:\ | Archivos temporales
-DB-disco 3 (disco de hello excluidos de la protección) | Disk3 | F:\ | Base de datos de tempdb SQL (ruta de acceso de carpeta (F:\MSSQL\Data\) < /br/>< /br/> anote la ruta de acceso de carpeta de hello antes de la conmutación por error.
+DB-Disk2 (disco excluido de la protección) | Disk2 | E:\ | Archivos temporales
+DB-Disk3 (disco excluido de la protección) | Disk3 | F:\ | Base de datos tempdb de SQL (ruta de acceso de carpeta) F:\MSSQL\Data\) </br /> </br />Anote la ruta de acceso de la carpeta antes de la conmutación por error.
 DB-Disk4 | Disk4 |G:\ |Database2 del usuario
 
-Dado que la renovación de datos en dos discos de máquina virtual de hello es temporal, al mismo tiempo que protege la máquina virtual de hello SalesDB, excluir el disco 2 y disco3 de la replicación. Azure Site Recovery no replicará esos discos. En la conmutación por error, los discos no estará presentes en la máquina de conmutación por error de hello en Azure.
+Dado que la renovación de datos en dos discos de la máquina virtual es temporal, al mismo tiempo que protege la máquina virtual de SalesDB, excluya Disk2 y Disk3 de la replicación. Azure Site Recovery no replicará esos discos. En la conmutación por error, esos discos no estarán presentes en la máquina virtual de conmutación por error de Azure.
 
-Los discos de máquina virtual de Azure después de la conmutación por error de hello son los siguientes:
+Los discos de la máquina virtual de Azure después de la conmutación por error son los siguientes:
 
-**Sistema operativo invitado** | **Unidad** | **Tipo de datos en el disco de Hola**
+**Sistema operativo invitado** | **Unidad** | **Tipo de datos en el disco**
 --- | --- | ---
 DISK0 | C:\ | Disco del sistema operativo
-Disk1 | E:\ | Almacenamiento temporal < /br / >< /br / > Azure agrega este disco y asigna la primera letra de unidad disponible Hola.
+Disk1 | E:\ | Almacenamiento temporal</br /> </br />Azure agrega este disco y asigna la primera unidad disponible.
 Disk2 | D:\ | Base de datos del sistema SQL y Database1 del usuario
 Disk3 | G:\ | Database2 del usuario
 
-Dado que disco 2 y disco3 se han excluido de la máquina virtual de hello SalesDB, E: es primera letra de unidad hello en lista de hello disponibles. Azure asigna el volumen de almacenamiento temporal de toohello E:. Para todos los discos de saludo replican, permanecen letras de unidad de Hola Hola igual.
+Puesto que Disk2 y Disk3 se excluyeron de la máquina virtual de SalesDB, E: es la primera unidad disponible de la lista. Azure la asigna al volumen de almacenamiento temporal. Para todos los discos replicados, la unidad permanece igual.
 
-Disco 3, que era el disco de tempdb SQL de hello (ruta de acceso de carpeta de tempdb F:\MSSQL\Data\), se ha excluido de la replicación. Hola disco no está disponible en la máquina virtual de conmutación por error de Hola. Como resultado, Hola servicio SQL está en un estado detenido y necesita la ruta de acceso de F:\MSSQL\Data de Hola.
+Disk3, que era el disco de la base de datos tempdb de SQL (ruta de acceso de carpeta de tempdb F:\MSSQL\Data\), se ha excluido de la replicación. El disco no está disponible en la máquina virtual de conmutación por error. Como resultado, el servicio SQL está detenido y necesita la ruta de acceso F:\MSSQL\Data.
 
-Hay dos toocreate de formas de esta ruta de acceso:
+Hay dos maneras de crear esta ruta de acceso:
 
 - Agregar un disco nuevo y asignar la ruta de acceso de carpeta de tempdb.
-- Use un disco de almacenamiento temporal existente para la ruta de acceso de carpeta de hello tempdb.
+- Usar un disco de almacenamiento temporal existente para la ruta de acceso de carpeta de tempdb.
 
 #### <a name="add-a-new-disk"></a>Incorporación de un disco nuevo:
 
-1. Anote las rutas de acceso de Hola de SQL tempdb.mdf y tempdb.ldf antes de la conmutación por error.
-2. De hello portal de Azure, agregar una nueva máquina virtual de disco toohello conmutación por error con hello igual o aumentar el tamaño como del disco de tempdb SQL de origen de hello (disco 3).
-3. Inicie sesión en toohello máquina virtual de Azure. Desde la consola de administración (diskmgmt.msc) de disco de hello, Hola inicializar y formato recién había agregado disco.
-4. Asignar Hola misma letra que se usó por disco de tempdb SQL de hello (F:) de la unidad.
-5. Cree una carpeta de tempdb en hello volumen F: (F:\MSSQL\Data).
-6. Iniciar el servicio SQL de Hola Hola consola del servicio.
+1. Anote las rutas de acceso de tempdb.mdf y tempdb.ldf de SQL antes de la conmutación por error.
+2. Desde Azure Portal, agregue un disco nuevo a la máquina virtual de conmutación por error con el mismo o mayor tamaño que el del disco de la base de datos tempdb de SQL de origen (Disk3).
+3. Inicie sesión en la máquina virtual de Azure. Desde la consola de administración de disco (diskmgmt.msc), inicialice y formatee el disco recién agregado.
+4. Asigne la misma unidad del disco de la base de datos tempdb de SQL (F:).
+5. Cree la carpeta para tempdb en el volumen F: (F:\MSSQL\Data).
+6. Inicie el servicio SQL desde la consola de servicio.
 
-#### <a name="use-an-existing-temporary-storage-disk-for-hello-sql-tempdb-folder-path"></a>Use un disco de almacenamiento temporal existente para la ruta de acceso de carpeta de hello SQL tempdb:
+#### <a name="use-an-existing-temporary-storage-disk-for-the-sql-tempdb-folder-path"></a>Uso de un disco de almacenamiento temporal existente para la ruta de acceso de carpeta de tempdb de SQL:
 
 1. Abra el símbolo del sistema.
-2. Ejecute SQL Server en modo de recuperación Hola desde línea de comandos.
+2. Ejecute SQL Server en modo de recuperación desde el símbolo del sistema.
 
         Net start MSSQLSERVER /f / T3608
 
-3. Ejecute hello después sqlcmd toochange Hola tempdb toohello nueva ruta de acceso.
+3. Ejecute el siguiente sqlcmd para cambiar a la nueva ruta de acceso de tempdb.
 
         sqlcmd -A -S SalesDB        **Use your SQL DBname**
         USE master;     
@@ -149,50 +149,50 @@ Hay dos toocreate de formas de esta ruta de acceso:
         GO
 
 
-4. Detenga el servicio de Microsoft SQL Server de Hola.
+4. Detenga el servicio Microsoft SQL Server.
 
         Net stop MSSQLSERVER
-5. Iniciar servicio de Microsoft SQL Server de Hola.
+5. Inicie el servicio Microsoft SQL Server.
 
         Net start MSSQLSERVER
 
-Consulte toohello siguiendo las directrices de Azure para el disco de almacenamiento temporal:
+Consulte las siguientes directrices de Azure para el disco de almacenamiento temporal:
 
-* [Uso de SSD en máquinas virtuales de Azure toostore TempDB de SQL Server y extensiones de grupo de búferes](https://blogs.technet.microsoft.com/dataplatforminsider/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)
+* [Using SSDs in Azure VMs to store SQL Server TempDB and Buffer Pool Extensions](https://blogs.technet.microsoft.com/dataplatforminsider/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/) (Uso de SSD en máquinas virtuales de Azure para almacenar la base de datos TempDB de SQL Server y las extensiones del grupo de búferes)
 * [Procedimientos recomendados para SQL Server en Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance)
 
-### <a name="failback-from-azure-tooan-on-premises-host"></a>Conmutación por recuperación (de host local de Azure tooan)
-Ahora debemos tener claro discos Hola que se replican Cuando la conmutación por error del host de Hyper-V o VMware locales tooyour de Azure. Los discos creados manualmente en Azure no se replicarán. Por ejemplo, si realiza la conmutación por error de tres discos y crea dos directamente en Azure Virtual Machines, solo los tres discos que se conmutaran por error se conmutarán por recuperación. No se incluyen discos que se hayan creado manualmente en la conmutación por recuperación o en reprotección de tooAzure local. No replica los hosts de tooon local de disco de almacenamiento temporal de Hola.
+### <a name="failback-from-azure-to-an-on-premises-host"></a>Conmutación por recuperación (de Azure a un host local)
+Ahora debemos conocer los discos que se replican al realizar la conmutación por error de Azure al host de Hyper-V o VMware locales. Los discos creados manualmente en Azure no se replicarán. Por ejemplo, si realiza la conmutación por error de tres discos y crea dos directamente en Azure Virtual Machines, solo los tres discos que se conmutaran por error se conmutarán por recuperación. No puede incluir los discos creados manualmente en la conmutación por recuperación ni volver a protegerlos de un entorno local a Azure. Tampoco se replicará el disco de almacenamiento temporal en el host local.
 
-#### <a name="failback-toooriginal-location-recovery"></a>Recuperación de la ubicación de conmutación por recuperación toooriginal
+#### <a name="failback-to-original-location-recovery"></a>Conmutación por recuperación en la ubicación original
 
-En el ejemplo anterior de hello, configuración de disco de máquina virtual de Azure de hello es la siguiente:
+En el ejemplo anterior, la configuración del disco de la máquina virtual de Azure es la siguiente:
 
-**Sistema operativo invitado** | **Unidad** | **Tipo de datos en el disco de Hola**
+**Sistema operativo invitado** | **Unidad** | **Tipo de datos en el disco**
 --- | --- | ---
 DISK0 | C:\ | Disco del sistema operativo
-Disk1 | E:\ | Almacenamiento temporal < /br / >< /br / > Azure agrega este disco y asigna la primera letra de unidad disponible Hola.
+Disk1 | E:\ | Almacenamiento temporal</br /> </br />Azure agrega este disco y asigna la primera unidad disponible.
 Disk2 | D:\ | Base de datos del sistema SQL y Database1 del usuario
 Disk3 | G:\ | Database2 del usuario
 
 
-#### <a name="vmware-tooazure"></a>TooAzure de VMware
-Cuando la conmutación por recuperación se realiza la ubicación original de toohello, configuración de disco de máquina virtual de conmutación por recuperación de hello no tiene discos excluidos. Los discos que se han excluido de VMware tooAzure no estará disponibles en la máquina virtual de conmutación por recuperación de Hola.
+#### <a name="vmware-to-azure"></a>VMware en Azure
+Cuando se realiza la conmutación por recuperación en la ubicación original, la configuración del disco de la máquina virtual de conmutación por recuperación no tiene exclusiones. Los discos que excluyeran de VMware a Azure, no estarán disponibles en la máquina virtual de conmutación por recuperación.
 
-Después de la conmutación por error planeada desde Azure local tooon VMware, discos de máquina virtual de VMWare hello (ubicación original) son los siguientes:
+Discos de la máquina virtual de VMWare (ubicación original) después de la conmutación por error planeada de Azure a VMware local:
 
-**Sistema operativo invitado** | **Unidad** | **Tipo de datos en el disco de Hola**
+**Sistema operativo invitado** | **Unidad** | **Tipo de datos en el disco**
 --- | --- | ---
 DISK0 | C:\ | Disco del sistema operativo
 Disk1 | D:\ | Base de datos del sistema SQL y Database1 del usuario
 Disk2 | G:\ | Database2 del usuario
 
-#### <a name="hyper-v-tooazure"></a>TooAzure de Hyper-V
-Cuando la conmutación por recuperación es la ubicación original de toohello, Hola conmutación por recuperación máquina virtual disco configuración permanece Hola igual que el de la configuración original del disco de máquina virtual de Hyper-V. Los discos que se han excluido de tooAzure de sitio de Hyper-V están disponibles en la máquina virtual de conmutación por recuperación de Hola.
+#### <a name="hyper-v-to-azure"></a>Hyper-V en Azure
+Cuando se realiza la conmutación por recuperación en la ubicación original, la configuración del disco de la máquina virtual de conmutación por recuperación es la misma que la original del disco de la máquina virtual para Hyper-V. Los discos que se excluyeran del sitio de Hyper-V a Azure no estarán disponibles en la máquina virtual de conmutación por recuperación.
 
-Después de la conmutación por error planeada de Hyper-V de Azure tooon-local, discos de máquina virtual de Hyper-V hello (ubicación original) son los siguientes:
+Discos de la máquina virtual de Hyper-V (ubicación original) después de la conmutación por error planeada de Azure a Hyper-V local:
 
-**Nombre del disco** | **Sistema operativo invitado** | **Unidad** | **Tipo de datos en el disco de Hola**
+**Nombre del disco** | **Sistema operativo invitado** | **Unidad** | **Tipo de datos en el disco**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 |   C:\ | Disco del sistema operativo
 DB-Disk1 | Disk1 | D:\ | Base de datos del sistema SQL y Database1 del usuario
@@ -201,69 +201,69 @@ DB-Disk3 (disco excluido) | Disk3 | F:\ | Base de datos tempdb de SQL (ruta de a
 DB-Disk4 | Disk4 | G:\ | Database2 del usuario
 
 
-#### <a name="exclude-hello-paging-file-pagefilesys-disk"></a>Excluir Hola paginación (pagefile.sys) del archivo disco
+#### <a name="exclude-the-paging-file-pagefilesys-disk"></a>Exclusión del disco del archivo de paginación (pagefile.sys)
 
 Veamos una máquina virtual con un disco del archivo de paginación que se puede excluir.
 Hay dos casos.
 
-#### <a name="case-1-hello-paging-file-is-configured-on-hello-d-drive"></a>Caso 1: el archivo de paginación de hello está configurado en hello unidad D:
-Esta es la configuración de disco de hello:
+#### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>Caso 1: el archivo de paginación está configurado en la unidad D:
+Configuración del disco:
 
 
-**Nombre del disco** | **Sistema operativo invitado** | **Unidad** | **Tipo de datos en el disco de Hola**
+**Nombre del disco** | **Sistema operativo invitado** | **Unidad** | **Tipo de datos en el disco**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | Disco del sistema operativo
-DB-Disco1 (disco de hello excluidos de la protección de hello) | Disk1 | D:\ | pagefile.sys
+DB-Disk1 (disco excluido de la protección) | Disk1 | D:\ | pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Datos del usuario 1
 DB-Disk3 | Disk3 | F:\ | Datos del usuario 2
 
-Estos son configuración de archivo de hello paginación en la máquina virtual de origen de hello:
+Esta es la configuración del archivo de paginación en la máquina virtual de origen:
 
 ![Configuración del archivo de paginación en la máquina virtual de origen](./media/site-recovery-exclude-disk/pagefile-on-d-drive-sourceVM.png)
 
 
-Después de la conmutación por error de la máquina virtual de Hola de VMware tooAzure o tooAzure de Hyper-V, los discos de máquina virtual de Azure Hola son los siguientes:
+Después de la conmutación por error de la máquina virtual de VMware o Hyper-V a Azure, los discos de la máquina virtual de Azure son los siguientes:
 
-**Nombre del disco** | **Sistema operativo invitado** | **Unidad** | **Tipo de datos en el disco de Hola**
+**Nombre del disco** | **Sistema operativo invitado** | **Unidad** | **Tipo de datos en el disco**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | Disco del sistema operativo
 DB-Disk1 | Disk1 | D:\ | Almacenamiento temporal</br /> </br />pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Datos del usuario 1
 DB-Disk3 | Disk3 | F:\ | Datos del usuario 2
 
-Ya se ha excluido Disco1 (D:), D: es primera letra de unidad hello en lista de hello disponibles. Azure asigna el volumen de almacenamiento temporal de toohello D:. Como D: está disponible en la máquina virtual de Azure hello, Hola configuración del archivo paginación Hola de hello máquina virtual permanece igual.
+Dado que se ha excluido Disk1 (D:), D: es la primera unidad disponible de la lista. Azure la asigna al volumen de almacenamiento temporal. Dado que D: está disponible en la máquina virtual de Azure, la configuración del archivo de paginación de la máquina virtual sigue siendo el mismo.
 
-Estos son configuración de archivo paginación hello en hello máquina virtual de Azure:
+Esta es la configuración del archivo de paginación en la máquina virtual de Azure:
 
 ![Configuración del archivo de paginación en la máquina virtual de Azure](./media/site-recovery-exclude-disk/pagefile-on-Azure-vm-after-failover.png)
 
-#### <a name="case-2-hello-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>Caso 2: archivo de paginación de hello está configurado en otra unidad (distintos de la unidad D:)
+#### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>Caso 2: el archivo de paginación está configurado en otra unidad (que no sea D:)
 
-Esta es la configuración de disco de máquina virtual de origen de hello:
+Esta es la configuración del disco de la máquina virtual de origen:
 
-**Nombre del disco** | **Sistema operativo invitado** | **Unidad** | **Tipo de datos en el disco de Hola**
+**Nombre del disco** | **Sistema operativo invitado** | **Unidad** | **Tipo de datos en el disco**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | Disco del sistema operativo
-DB-Disco1 (disco de hello excluidos de la protección) | Disk1 | G:\ | pagefile.sys
+DB-Disk1 (disco excluido de la protección) | Disk1 | G:\ | pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Datos del usuario 1
 DB-Disk3 | Disk3 | F:\ | Datos del usuario 2
 
-Estos son configuración de archivo de hello paginación en la máquina virtual de hello local:
+Esta es la configuración del archivo de paginación en la máquina virtual local:
 
-![Configuración de máquina virtual de hello local de archivo de paginación](./media/site-recovery-exclude-disk/pagefile-on-g-drive-sourceVM.png)
+![Configuración del archivo de paginación en la máquina virtual local](./media/site-recovery-exclude-disk/pagefile-on-g-drive-sourceVM.png)
 
-Después de la conmutación por error de la máquina virtual de Hola de tooAzure VMware/Hyper-V, los discos de máquina virtual de Azure Hola son los siguientes:
+Después de la conmutación por error de la máquina virtual de VMware o Hyper-V a Azure, los discos de la máquina virtual de Azure son los siguientes:
 
-**Nombre del disco**| **Sistema operativo invitado**| **Unidad** | **Tipo de datos en el disco de Hola**
+**Nombre del disco**| **Sistema operativo invitado**| **Unidad** | **Tipo de datos en el disco**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0  |C:\ |Disco del sistema operativo
 DB-Disk1 | Disk1 | D:\ | Almacenamiento temporal</br /> </br />pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Datos del usuario 1
 DB-Disk3 | Disk3 | F:\ | Datos del usuario 2
 
-Porque D: es la primera letra de unidad Hola de lista disponibles hello, Azure asigna el volumen de almacenamiento temporal de toohello D:. Para todos los discos de saludo replican, sigue siendo de letra de unidad de Hola Hola igual. Porque Hola G: disco no está disponible, el sistema de hello usará la unidad C: de Hola para hello archivo de paginación.
+Como D: es la primera unidad disponible en la lista, Azure la asigna al volumen de almacenamiento temporal. Para todos los discos replicados, la unidad permanece igual. Dado que el disco de G: no está disponible, el sistema usará la unidad C: para el archivo de paginación.
 
-Estos son configuración de archivo paginación hello en hello máquina virtual de Azure:
+Esta es la configuración del archivo de paginación en la máquina virtual de Azure:
 
 ![Configuración del archivo de paginación en la máquina virtual de Azure](./media/site-recovery-exclude-disk/pagefile-on-Azure-vm-after-failover-2.png)
 

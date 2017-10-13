@@ -1,6 +1,6 @@
 ---
-title: "Automatización de Azure los planes toorecovery aaaAdd runbooks en Azure Site Recovery | Documentos de Microsoft"
-description: "Obtenga información sobre cómo Azure Site Recovery puede ayudarle a ampliar los planes de recuperación mediante Azure Automation. Obtenga información acerca de cómo toocomplete complejo tareas durante la recuperación tooAzure."
+title: "Incorporación de runbooks de Azure Automation a los planes de recuperación en Azure Site Recovery | Microsoft Docs"
+description: "Obtenga información sobre cómo Azure Site Recovery puede ayudarle a ampliar los planes de recuperación mediante Azure Automation. Aprenda a realizar tareas complejas durante la recuperación en Azure."
 services: site-recovery
 documentationcenter: 
 author: ruturaj
@@ -14,23 +14,23 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 06/23/2017
 ms.author: ruturajd@microsoft.com
-ms.openlocfilehash: 90d517200cec5527e98a0d00da466bace587b70b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 064a6782970b950543f93c24800998c1f104c8df
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="add-azure-automation-runbooks-toorecovery-plans"></a>Agregar planes de toorecovery de runbooks de automatización de Azure
-En este artículo se describe cómo se integra Azure Site Recovery con toohelp de automatización de Azure extiende los planes de recuperación. Los planes de recuperación pueden organizar la recuperación de máquinas virtuales protegidas con Site Recovery. Planes de recuperación de trabajo para la nube secundaria tooa de replicación tanto para tooAzure de replicación. Planes de recuperación también ayudan a realizar la recuperación de hello **coherentes y precisos**, **repetible**, y **automatizada**. Si la conmutación por error el tooAzure de las máquinas virtuales, la integración con automatización de Azure amplía los planes de recuperación. Puede usar tooexecute runbooks, que ofrecen las tareas de automatización eficaz.
+# <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Incorporación de runbooks de Azure Automation a los planes de recuperación
+En este artículo se explica cómo se integra Azure Site Recovery con Azure Automation para ayudarle a ampliar los planes de recuperación. Los planes de recuperación pueden organizar la recuperación de máquinas virtuales protegidas con Site Recovery. Los planes de recuperación funcionan para la replicación en una nube secundaria y para la replicación en Azure. Los planes de recuperación además ayudan a que la recuperación sea **coherente y precisa**, **repetible** y **automatizada**. Si conmuta por error las máquinas virtuales en Azure, la integración con Azure Automation amplía los planes de recuperación. Se puede usar para ejecutar runbooks, que ofrecen eficaces tareas de automatización.
 
-Si es nuevo tooAzure automatización, puede [registrarse](https://azure.microsoft.com/services/automation/) y [descargar scripts de muestra](https://azure.microsoft.com/documentation/scripts/). Para obtener más información y toolearn cómo tooorchestrate tooAzure de recuperación mediante el uso de [planes de recuperación](https://azure.microsoft.com/blog/?p=166264), consulte [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/).
+Si no está familiarizado con Azure Automation, puede [registrarse](https://azure.microsoft.com/services/automation/) y [descargar scripts de muestra](https://azure.microsoft.com/documentation/scripts/). Para más información y para aprender a organizar la recuperación en Azure mediante [planes de recuperación](https://azure.microsoft.com/blog/?p=166264), vea [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/).
 
-En este artículo se explica cómo integrar runbooks de Azure Automation en los planes de recuperación. Se usan tareas básicas de ejemplos tooautomate que anteriormente requerían intervención manual. También se describe cómo tooconvert una tooa de recuperación de varios pasos con un solo clic acción de recuperación.
+En este artículo se explica cómo integrar runbooks de Azure Automation en los planes de recuperación. Se usan ejemplos para automatizar tareas básicas que anteriormente requerían intervención manual. También se explica cómo convertir una recuperación de varios pasos en una acción de recuperación de un solo clic.
 
-## <a name="customize-hello-recovery-plan"></a>Personalizar plan de recuperación de Hola
-1. Vaya toohello **Site Recovery** hoja de recursos del plan de recuperación. En este ejemplo, el plan de recuperación de hello tiene tooit agregado dos de las máquinas virtuales, para la recuperación. toobegin adición de un runbook, haga clic en hello **personalizar** ficha.
+## <a name="customize-the-recovery-plan"></a>Personalización de planes de recuperación
+1. Vaya a la hoja de recursos de planes de recuperación de **Site Recovery**. En este ejemplo, el plan de recuperación tiene agregadas dos máquinas virtuales para la recuperación. Para empezar a agregar un runbook, haga clic en la pestaña **Personalizar**.
 
-    ![Haga clic en el botón Personalizar de Hola](media/site-recovery-runbook-automation-new/essentials-rp.png)
+    ![Clic en la pestaña Personalizar](media/site-recovery-runbook-automation-new/essentials-rp.png)
 
 
 2. Haga clic con el botón derecho en **Grupo 1: Iniciar** y luego seleccione **Agregar acción posterior**.
@@ -39,26 +39,26 @@ En este artículo se explica cómo integrar runbooks de Azure Automation en los 
 
 3. Haga clic en **Elegir un script**.
 
-4. En hello **actualizar acción** hoja, la secuencia de comandos de nombre hello **Hello World**.
+4. En la hoja **Actualizar acción**, ponga el nombre **Hello World** al script.
 
-    ![módulo de acción de actualización de Hola](media/site-recovery-runbook-automation-new/update-rp.png)
+    ![Hoja Actualizar acción](media/site-recovery-runbook-automation-new/update-rp.png)
 
 5. Escriba un nombre de cuenta de Automation.
     >[!NOTE]
-    > Hola cuenta de automatización puede estar en cualquier región de Azure. Hola cuenta de automatización debe estar en hello misma suscripción como almacén de Azure Site Recovery Hola.
+    > La cuenta de Automation puede estar en cualquier región de Azure. La cuenta de Automation debe estar en la misma suscripción que el almacén de Azure Site Recovery.
 
-6. En la cuenta de Automation, seleccione un runbook. Este runbook es el script de Hola que se ejecuta durante la ejecución de Hola Hola del plan de recuperación, después de la recuperación de hello del primer grupo de Hola.
+6. En la cuenta de Automation, seleccione un runbook. Este runbook es el script que se ejecuta durante la ejecución del plan de recuperación, después de la recuperación del primer grupo.
 
-7. script de Hola toosave, haga clic en **Aceptar**. script de Hola se agrega demasiado**grupo 1: pasos posteriores a la**.
+7. Para guardar el script, haga clic en **Aceptar**. El script se agrega a **Grupo 1: Pasos posteriores**.
 
     ![Acción posterior Grupo 1: Iniciar](media/site-recovery-runbook-automation-new/addedscript-rp.PNG)
 
 
 ## <a name="considerations-for-adding-a-script"></a>Consideraciones para agregar un script
 
-* Opciones de demasiado**eliminar un paso** o **actualizar script de Hola**, haga clic en el script de Hola.
-* Una secuencia de comandos puede ejecutar en Azure durante la conmutación por error desde un tooAzure de la máquina local. También puede ejecutarse en Azure como una secuencia de comandos del sitio primario antes del cierre, durante la conmutación por recuperación de máquina local de Azure tooan.
-* Cuando se ejecuta un script, inserta un contexto del plan de recuperación. Hola de ejemplo siguiente muestra una variable de contexto:
+* Para obtener opciones para **eliminar un paso** o **actualizar el script**, haga clic con el botón derecho en el script.
+* Un script se puede ejecutar en Azure durante la conmutación por error desde un equipo local en Azure. También puede ejecutarse en Azure como un script de sitio principal antes de apagar, durante la conmutación por recuperación desde Azure en un equipo local.
+* Cuando se ejecuta un script, inserta un contexto del plan de recuperación. El ejemplo siguiente muestra una variable de contexto:
 
     ```
             {"RecoveryPlanName":"hrweb-recovery",
@@ -86,33 +86,33 @@ En este artículo se explica cómo integrar runbooks de Azure Automation en los 
             }
     ```
 
-    Hello en la tabla siguiente enumera Hola nombre y una descripción de cada variable de contexto de Hola.
+    La tabla siguiente indica el nombre y la descripción de cada una de las variables del contexto.
 
     | **Nombre de la variable** | **Descripción** |
     | --- | --- |
-    | RecoveryPlanName |nombre de Hello del plan de Hola que se va a ejecutar. Esta variable le ayuda a realizar diferentes acciones basadas en nombre del plan de recuperación de Hola. También puede volver a usar script de Hola. |
-    | FailoverType |Especifica si la conmutación por error de hello es una prueba, planeada o no planeada. |
-    | FailoverDirection |Especifica si la recuperación es sitio primario o secundario de tooa. |
-    | GroupID |Identifica el número de grupo de hello en el plan de recuperación de hello cuando se ejecuta el plan de Hola. |
-    | VmMap |Una matriz de todas las máquinas virtuales en el grupo de Hola. |
-    | Clave de VMMap |Clave única (GUID) para cada máquina virtual. Su Hola igual Hola Id. de Azure Virtual Machine Manager (VMM) de Hola de máquina virtual, si procede. |
-    | SubscriptionId |Id. de suscripción de Azure de Hola Hola a máquina virtual en el que se creó. |
-    | RoleName |nombre de Hola de hello VM de Azure que se va a recuperar. |
-    | CloudServiceName |nombre de servicio de nube de Azure Hola que Hola a VM en la que se creó. |
-    | ResourceGroupName|nombre del grupo de recursos de Azure Hola que Hola a VM en la que se creó. |
-    | RecoveryPointId|marca de tiempo de Hola para cuando se recupera Hola máquina virtual. |
+    | RecoveryPlanName |Nombre del plan que se va a ejecutar. Esta variable le ayuda a realizar diferentes acciones según el nombre del plan de recuperación. También puede volver a usar el script. |
+    | FailoverType |Especifica si la conmutación por error es una prueba, planeada o no. |
+    | FailoverDirection |Especifica si la recuperación es en un sitio principal o secundario. |
+    | GroupID |Identifica el número de grupo del plan de recuperación cuando este se está ejecutando. |
+    | VmMap |Matriz de todas las máquinas virtuales del grupo. |
+    | Clave de VMMap |Clave única (GUID) para cada máquina virtual. Es igual que el identificador de Azure Virtual Machine Manager (VMM) de la máquina virtual, si procede. |
+    | SubscriptionId |Identificador de la suscripción de Azure en la que se ha creado la máquina virtual. |
+    | RoleName |Nombre de la máquina virtual de Azure que se está recuperando. |
+    | CloudServiceName |Nombre del servicio en la nube de Azure en el que se ha creado la máquina virtual. |
+    | ResourceGroupName|Nombre del grupo de recursos de Azure en el que se ha creado la máquina virtual. |
+    | RecoveryPointId|Marca de tiempo de cuando se recupera la máquina virtual. |
 
-* Asegúrese de que esa cuenta de automatización de hello tiene Hola siguientes módulos:
+* Asegúrese de que la cuenta de Automation tenga los siguientes módulos:
     * AzureRM.profile
     * AzureRM.Resources
     * AzureRM.Automation
     * AzureRM.Network
     * AzureRM.Compute
 
-Todos los módulos deben ser de versiones compatibles. Un tooensure de manera sencilla que todos los módulos sean compatibles es versiones más recientes de hello toouse de todos los módulos de Hola.
+Todos los módulos deben ser de versiones compatibles. Una manera sencilla de garantizar que todos los módulos sean compatibles es usar las versiones más recientes de todos los módulos.
 
-### <a name="access-all-vms-of-hello-vmmap-in-a-loop"></a>Obtener acceso a todas las máquinas virtuales de hello VMMap en un bucle
-Usar hello siguiendo tooloop de código en todas las máquinas virtuales de hello VMMap Microsoft:
+### <a name="access-all-vms-of-the-vmmap-in-a-loop"></a>Acceso a todas las máquinas virtuales de VMMap en un bucle
+Use el siguiente código para crear un bucle con todas las máquinas virtuales de Microsoft VMMap:
 
 ```
 $VMinfo = $RecoveryPlanContext.VmMap | Get-Member | Where-Object MemberType -EQ NoteProperty | select -ExpandProperty Name
@@ -121,7 +121,7 @@ $vmMap = $RecoveryPlanContext.VmMap
  {
      $VM = $vmMap.$VMID                
              if( !(($VM -eq $Null) -Or ($VM.ResourceGroupName -eq $Null) -Or ($VM.RoleName -eq $Null))) {
-         #this check is tooensure that we skip when some data is not available else it will fail
+         #this check is to ensure that we skip when some data is not available else it will fail
  Write-output "Resource group name ", $VM.ResourceGroupName
  Write-output "Rolename " = $VM.RoleName
      }
@@ -130,17 +130,17 @@ $vmMap = $RecoveryPlanContext.VmMap
 ```
 
 > [!NOTE]
-> Hola recursos grupo nombre de rol de valores de nombre y están vacíos al script de Hola es un grupo de arranque de acción previa tooa. valores de Hello se llenan solo si se realiza correctamente Hola máquinas virtuales de ese grupo de conmutación por error. script de Hola es una acción posterior a la del grupo de arranque de Hola.
+> Los valores de nombre de grupo de recursos y nombre de rol están vacíos cuando el script es una acción anterior a un grupo de arranque. Los valores se rellenan solo si se realiza correctamente la conmutación por error de la máquina virtual de ese grupo. El script es una acción posterior del grupo de arranque.
 
-## <a name="use-hello-same-automation-runbook-in-multiple-recovery-plans"></a>Use Hola mismo runbook de automatización en varios planes de recuperación
+## <a name="use-the-same-automation-runbook-in-multiple-recovery-plans"></a>Uso del mismo runbook de Automation en varios planes de recuperación
 
-Puede usar un solo script en varios planes de recuperación gracias a las variables externas. Puede usar [las variables de automatización de Azure](../automation/automation-variables.md) toostore parámetros que se pueden pasar en una recuperación del plan de ejecución. Al agregar el nombre del plan de recuperación de hello como una variable de toohello de prefijo, puede crear variables individuales para cada plan de recuperación. A continuación, utilice las variables de hello como parámetros. Puede cambiar un parámetro sin cambiar el script de Hola, pero todavía cambio Hola Hola forma funciona de la secuencia de comandos.
+Puede usar un solo script en varios planes de recuperación gracias a las variables externas. Las [variables de Azure Automation](../automation/automation-variables.md) se pueden usar para almacenar los parámetros que se pueden pasar para la ejecución de un plan de recuperación. Al agregar el nombre del plan de recuperación como prefijo a la variable, puede crear variables individuales para cada plan de recuperación. Luego, use las variables como parámetros. Puede cambiar un parámetro sin cambiar el script y aun así cambiar la forma en que el script funciona.
 
 ### <a name="use-a-simple-string-variable-in-a-runbook-script"></a>Uso de una variable de cadena simple en un script de runbook
 
-En este ejemplo, una secuencia de comandos toma la entrada de Hola de un grupo de seguridad de red (NSG) y aplica toohello las máquinas virtuales de un plan de recuperación.
+En este ejemplo, un script toma la entrada de un grupo de seguridad de red (NSG) y la aplica a las máquinas virtuales de un plan de recuperación.
 
-Para hello toodetect de script se ejecuta el plan de recuperación, use el contexto del plan de recuperación de hello:
+Para que el script detecte qué plan de recuperación se está ejecutando, use el contexto del plan de recuperación:
 
 ```
 workflow AddPublicIPAndNSG {
@@ -152,18 +152,18 @@ workflow AddPublicIPAndNSG {
     $RPName = $RecoveryPlanContext.RecoveryPlanName
 ```
 
-tooapply un NSG existente, debe conocer el nombre NSG de Hola y nombre del grupo de recursos de hello NSG. Use estas variables como entradas para los scripts del plan de recuperación. toodo esto, cree dos variables Hola activos de automatización de la cuenta. Agregar nombre de Hola Hola del plan de recuperación que va a crear parámetros de Hola para que un nombre de variable de toohello de prefijo.
+Para aplicar un NSG existente, debe conocer el nombre del NSG y el nombre del grupo de recursos del NSG. Use estas variables como entradas para los scripts del plan de recuperación. Para ello, cree dos variables en los activos de la cuenta de Automation. Agregue el nombre del plan de recuperación para el que va a crear los parámetros como prefijo al nombre de la variable.
 
-1. Crear un nombre de variable toostore hello NSG. Agregar un nombre de variable de prefijo toohello mediante nombre de Hola Hola del plan de recuperación.
+1. Cree una variable para almacenar el nombre del NSG. Agregue un prefijo al nombre de la variable mediante el nombre del plan de recuperación.
 
     ![Creación de una variable de nombre de NSG](media/site-recovery-runbook-automation-new/var1.png)
 
-2. Crear nombre de grupo de recursos de un NSG de hello toostore variable. Agregar un nombre de variable de prefijo toohello mediante nombre de Hola Hola del plan de recuperación.
+2. Cree una variable para almacenar el nombre del grupo de recursos del NSG. Agregue un prefijo al nombre de la variable mediante el nombre del plan de recuperación.
 
     ![Creación de un nombre de grupo de recursos de NSG](media/site-recovery-runbook-automation-new/var2.png)
 
 
-3.  En el script de Hola, utilice Hola siguiendo los valores de variable de referencia código tooget hello:
+3.  En el script, use el siguiente código de referencia para obtener los valores de variable:
 
     ```
     $NSGValue = $RecoveryPlanContext.RecoveryPlanName + "-NSG"
@@ -173,14 +173,14 @@ tooapply un NSG existente, debe conocer el nombre NSG de Hola y nombre del grupo
     $RGnameVar = Get-AutomationVariable -Name $NSGRGValue
     ```
 
-4.  Utilice variables de hello en el interfaz de red de hello runbook tooapply hello NSG toohello de Hola conmutó por error máquinas virtuales:
+4.  Use las variables del runbook para aplicar el NSG a la interfaz de red de la máquina virtual conmutada por error:
 
     ```
     InlineScript {
     if (($Using:NSGname -ne $Null) -And ($Using:NSGRGname -ne $Null)) {
             $NSG = Get-AzureRmNetworkSecurityGroup -Name $Using:NSGname -ResourceGroupName $Using:NSGRGname
             Write-output $NSG.Id
-            #Apply hello NSG tooa network interface
+            #Apply the NSG to a network interface
             #$vnet = Get-AzureRmVirtualNetwork -ResourceGroupName TestRG -Name TestVNet
             #Set-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vnet -Name FrontEnd `
             #  -AddressPrefix 192.168.1.0/24 -NetworkSecurityGroup $NSG
@@ -188,16 +188,16 @@ tooapply un NSG existente, debe conocer el nombre NSG de Hola y nombre del grupo
     }
     ```
 
-Para cada plan de recuperación, crear variables independientes para que se puede volver a usar script de Hola. Agregar un prefijo mediante el nombre del plan de recuperación de Hola. Para obtener un script completo, to-end para este escenario, vea [agregar un tooVMs NSG e IP públicas durante la conmutación por error de prueba de un plan de recuperación de Site Recovery](https://gallery.technet.microsoft.com/Add-Public-IP-and-NSG-to-a6bb8fee).
+Para cada plan de recuperación, cree variables independientes para poder volver a usar el script. Agregue un prefijo mediante el nombre del plan de recuperación. Para obtener un script completo de un extremo a otro para este escenario, vea [Add a public IP and NSG to VMs during test failover of a Site Recovery recovery plan (Agregar una dirección IP pública y un NSG a las máquinas virtuales durante la conmutación por error de prueba de un plan de recuperación de Site Recovery)](https://gallery.technet.microsoft.com/Add-Public-IP-and-NSG-to-a6bb8fee).
 
 
-### <a name="use-a-complex-variable-toostore-more-information"></a>Usar una variable complejo toostore más información
+### <a name="use-a-complex-variable-to-store-more-information"></a>Uso de una variable compleja para almacenar más información
 
-Considere un escenario en el que desea que un tooturn script único en una IP pública en máquinas virtuales específicas. En otro escenario, le podría interesar tooapply NSG diferentes en diferentes máquinas virtuales (no en todas las máquinas virtuales). Puede crear un script que se pueda volver a usar para cualquier plan de recuperación. Cada plan de recuperación puede tener un número variable de máquinas virtuales. Por ejemplo, una recuperación de SharePoint tiene dos servidores front-end. Una aplicación básica de línea de negocio (LOB) tiene solo un servidor front-end. No puede crear variables independientes para cada plan de recuperación. 
+Considere un escenario en el que quiera que un único script active una dirección IP pública en máquinas virtuales concretas. En otro escenario, podría querer aplicar diferentes NSG en diferentes máquinas virtuales (no en todas las máquinas virtuales). Puede crear un script que se pueda volver a usar para cualquier plan de recuperación. Cada plan de recuperación puede tener un número variable de máquinas virtuales. Por ejemplo, una recuperación de SharePoint tiene dos servidores front-end. Una aplicación básica de línea de negocio (LOB) tiene solo un servidor front-end. No puede crear variables independientes para cada plan de recuperación. 
 
-En el siguiente ejemplo de Hola, se utiliza una técnica nuevo y cree una [complejo de variable](https://msdn.microsoft.com/library/dn913767.aspx?f=255&MSPPError=-2147217396) en los activos de cuenta de automatización de Azure Hola. Para ello se especifican varios valores. Debe usar Azure PowerShell toocomplete Hola pasos:
+En el siguiente ejemplo se usa una técnica nueva y se crea una [variable compleja](https://msdn.microsoft.com/library/dn913767.aspx?f=255&MSPPError=-2147217396) en los activos de la cuenta de Azure Automation. Para ello se especifican varios valores. Debe usar Azure PowerShell para realizar los siguientes pasos:
 
-1. En PowerShell, inicie sesión en tooyour suscripción de Azure:
+1. En PowerShell, inicie sesión en la suscripción de Azure:
 
     ```
     login-azurermaccount
@@ -205,24 +205,24 @@ En el siguiente ejemplo de Hola, se utiliza una técnica nuevo y cree una [compl
     $sub | Select-AzureRmSubscription
     ```
 
-2. parámetros de hello toostore, crear Hola complejo variable mediante nombre de Hola Hola del plan de recuperación:
+2. Para almacenar los parámetros, cree la variable compleja mediante el plan de recuperación:
 
     ```
     $VMDetails = @{"VMGUID"=@{"ResourceGroupName"="RGNameOfNSG";"NSGName"="NameOfNSG"};"VMGUID2"=@{"ResourceGroupName"="RGNameOfNSG";"NSGName"="NameOfNSG"}}
         New-AzureRmAutomationVariable -ResourceGroupName <RG of Automation Account> -AutomationAccountName <AA Name> -Name <RecoveryPlanName> -Value $VMDetails -Encrypted $false
     ```
 
-3. En esta variable complejo, **VMDetails** es hello Id. de máquina virtual para hello protegido la máquina virtual. Id. de máquina virtual, del tooget Hola Hola portal de Azure, ver las propiedades VM Hola. Hello captura de pantalla siguiente muestra una variable que almacena los detalles de Hola de dos máquinas virtuales:
+3. En esta variable compleja, **VMDetails** es el identificador de la máquina virtual protegida. Para obtener el identificador de la máquina virtual, en Azure Portal, vea las propiedades de la máquina virtual. En la captura de pantalla siguiente se muestra una variable que almacena los detalles de dos máquinas virtuales:
 
-    ![Usar hello Id. de máquina virtual como Hola GUID](media/site-recovery-runbook-automation-new/vmguid.png)
+    ![Empleo del identificador de la máquina virtual como GUID](media/site-recovery-runbook-automation-new/vmguid.png)
 
-4. Use esta variable en el runbook. Si Hola indica el que GUID de la VM se encuentra en el contexto del plan de recuperación de hello, hello NSG se aplican en hello VM:
+4. Use esta variable en el runbook. Si el GUID indicado de la máquina virtual se encuentra en el contexto del plan de recuperación, aplique el NSG en la máquina virtual:
 
     ```
     $VMDetailsObj = Get-AutomationVariable -Name $RecoveryPlanContext.RecoveryPlanName
     ```
 
-4. En su runbook, recorrer las máquinas virtuales de Hola de contexto del plan de recuperación de Hola. Compruebe si existe Hola VM en **$VMDetailsObj**. Si existe, obtener acceso a propiedades de Hola de Hola tooapply variable Hola NSG:
+4. En el runbook, cree un bucle con las máquinas virtuales del contexto del plan de recuperación. Compruebe si la máquina virtual existe en **$VMDetailsObj**. En caso afirmativo, acceda a las propiedades de la variable para aplicar el NSG:
 
     ```
         $VMinfo = $RecoveryPlanContext.VmMap | Get-Member | Where-Object MemberType -EQ NoteProperty | select -ExpandProperty Name
@@ -231,26 +231,26 @@ En el siguiente ejemplo de Hola, se utiliza una técnica nuevo y cree una [compl
         foreach($VMID in $VMinfo) {
             Write-output $VMDetailsObj.value.$VMID
 
-            if ($VMDetailsObj.value.$VMID -ne $Null) { #If hello VM exists in hello context, this will not b Null
+            if ($VMDetailsObj.value.$VMID -ne $Null) { #If the VM exists in the context, this will not b Null
                 $VM = $vmMap.$VMID
-                # Access hello properties of hello variable
+                # Access the properties of the variable
                 $NSGname = $VMDetailsObj.value.$VMID.'NSGName'
                 $NSGRGname = $VMDetailsObj.value.$VMID.'NSGResourceGroupName'
 
-                # Add code tooapply hello NSG properties toohello VM
+                # Add code to apply the NSG properties to the VM
             }
         }
     ```
 
-Puede usar Hola mismo script para los planes de recuperación diferente. Escriba los parámetros diferentes mediante el almacenamiento de valor de Hola que corresponde el plan de recuperación de tooa en distintas variables.
+Puede usar el mismo script para distintos planes de recuperación. Escriba distintos parámetros al almacenar el valor que corresponde a un plan de recuperación en variables diferentes.
 
 ## <a name="sample-scripts"></a>Scripts de ejemplo
 
-tooyour secuencias de comandos de ejemplo toodeploy cuenta de automatización, haga clic en hello **implementar tooAzure** botón.
+Para implementar scripts de ejemplo en la cuenta de Automation, haga clic en el botón **Implementar en Azure**.
 
-[![Implementar tooAzure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+[![Implementación en Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
-Para obtener otro ejemplo, vea Hola después de vídeo. Muestra cómo toorecover una tooAzure de aplicación de WordPress de dos niveles:
+Para obtener otro ejemplo, vea el siguiente vídeo. En él se muestra cómo recuperar una aplicación de WordPress de dos niveles en Azure:
 
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]

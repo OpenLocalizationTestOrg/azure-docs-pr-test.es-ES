@@ -1,6 +1,6 @@
 ---
-title: "datos de tooretrieve de aaaPython secuencia de comandos de análisis de registros de Azure | Documentos de Microsoft"
-description: "Hola API de búsqueda de registros de análisis de registros permite a cualquier cliente de la API de REST tooretrieve datos de un área de trabajo de análisis de registros.  En este artículo se proporciona un script de Python de ejemplo mediante Hola API de búsqueda de registros."
+title: Script de Python para recuperar datos de Azure Log Analytics | Microsoft Docs
+description: "La API de búsqueda de registros de Log Analytics permite que cualquier cliente de API de REST recupere datos de un área de trabajo de Log Analytics.  En este artículo se muestra un script de Python de ejemplo con la API de búsqueda de registros."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/28/2017
 ms.author: bwren
-ms.openlocfilehash: a45693b04cd388301b859e7186ca671786d0229e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 56d7c6dc648a01e7b0efc167cb65c94bac5468ec
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="retrieve-data-from-log-analytics-with-a-python-script"></a>Recuperación de datos desde Log Analytics con un script de Python
-Hola [API de búsqueda de registros de análisis de registro](log-analytics-log-search-api.md) permite a cualquier cliente de la API de REST tooretrieve datos de un área de trabajo de análisis de registros.  Este artículo presenta un script de Python de ejemplo que utiliza la API de búsqueda de registros de análisis de registro de hello.  
+La [API de búsqueda de registros de Log Analytics](log-analytics-log-search-api.md) permite que cualquier cliente de API de REST recupere datos de un área de trabajo de Log Analytics.  En este artículo se presenta un script de Python de ejemplo que usa la API de búsqueda de registros de Log Analytics.  
 
 ## <a name="authentication"></a>Autenticación
-Esta secuencia de comandos usa a una entidad de servicio en el área de trabajo de Azure Active Directory tooauthenticate toohello.  Entidades de servicio permite que un cliente toorequest de aplicación que Hola servicio autenticar una cuenta aun cuando Hola cliente no tiene nombre de la cuenta de hello. Antes de ejecutar este script, debe crear una entidad de servicio mediante el proceso de hello en [usar portal toocreate una aplicación de Azure Active Directory y la entidad de servicio que puede tener acceso a recursos](../azure-resource-manager/resource-group-create-service-principal-portal.md).  Necesitará tooprovide Hola Id. de aplicación, el identificador del inquilino y la clave de autenticación toohello secuencia de comandos. 
+Este script usa una entidad de servicio en Azure Active Directory para autenticarse en el área de trabajo.  Las entidades de servicio permiten que una aplicación cliente solicite que el servicio autentique una cuenta incluso si el cliente no tiene el nombre de la cuenta. Antes de ejecutar este script, debe crear una entidad de servicio mediante el proceso que aparece en [Uso del portal para crear una aplicación de Azure Active Directory y una entidad de servicio con acceso a los recursos](../azure-resource-manager/resource-group-create-service-principal-portal.md).  Deberá proporcionar el identificador de aplicación, el identificador de inquilino y la clave de autenticación en el script. 
 
 > [!NOTE]
-> Cuando se [crear una cuenta de automatización de Azure](../automation/automation-create-standalone-account.md), una entidad de servicio se crea que es adecuado toouse con esta secuencia de comandos.  Si ya tiene una entidad de servicio creada mediante la automatización de Azure, a continuación, debe ser capaz de toouse, en lugar de crear uno nuevo, aunque puede que necesite demasiado[crear una clave de autenticación](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key) si todavía no lo tiene.
+> Cuando [cree una cuenta de Azure Automation](../automation/automation-create-standalone-account.md), se crea una entidad de servicio adecuada para usarla con este script.  Si ya tiene una entidad de servicio creada mediante Azure Automation, debería poder usarla en lugar de crear una nueva, a pesar de que es posible que tenga que [crear una clave de autenticación](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key) si todavía no tiene una.
 
 ## <a name="script"></a>Script
 ``` python
@@ -40,7 +40,7 @@ from pprint import pprint
 resource_group = 'xxxxxxxx'
 workspace = 'xxxxxxxx'
 
-# Details of query.  Modify these tooyour requirements.
+# Details of query.  Modify these to your requirements.
 query = "Type=Event"
 end_time = datetime.datetime.utcnow()
 start_time = end_time - datetime.timedelta(hours=24)
@@ -61,7 +61,7 @@ context = adal.AuthenticationContext('https://login.microsoftonline.com/' + tena
 token_response = context.acquire_token_with_client_credentials('https://management.core.windows.net/', application_id, application_key)
 access_token = token_response.get('accessToken')
 
-# Add token tooheader
+# Add token to header
 headers = {
     "Authorization": 'Bearer ' + access_token,
     "Content-Type":'application/json'
@@ -90,7 +90,7 @@ response = requests.post(uri,json=search_params,headers=headers)
 # Response of 200 if successful
 if response.status_code == 200:
 
-    # Parse hello response tooget hello ID and status
+    # Parse the response to get the ID and status
     data = response.json()
     search_id = data["id"].split("/")
     id = search_id[len(search_id)-1]
@@ -99,12 +99,12 @@ if response.status_code == 200:
     # If status is pending, then keep checking until complete
     while status == "Pending":
 
-        # Build URL tooget search from ID and send request
+        # Build URL to get search from ID and send request
         uri_search = uri_search + '/' + id
         uri = uri_search + '?' + uri_api
         response = requests.get(uri,headers=headers)
 
-        # Parse hello response tooget hello status
+        # Parse the response to get the status
         data = response.json()
         status = data["__metadata"]["Status"]
 
@@ -119,4 +119,4 @@ print ("Returned top:" + str(data["__metadata"]["top"]))
 pprint (data["value"])
 ```
 ## <a name="next-steps"></a>Pasos siguientes
-- Obtener más información sobre hello [API de búsqueda de registros de análisis de registro](log-analytics-log-search-api.md).
+- Más información sobre la [API de búsqueda de registros de Log Analytics](log-analytics-log-search-api.md).

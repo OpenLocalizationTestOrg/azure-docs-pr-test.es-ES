@@ -1,6 +1,6 @@
 ---
-title: "aaaA guía práctica toodesigning seguros mantenimiento soluciones de atención de Azure | Documentos de Microsoft"
-description: " En este artículo le ayudará a comprender cómo tooimprove seguridad para las soluciones de atención sanitaria mediante el uso de hello Azure servicios y características que configure. "
+title: "Guía práctica para el diseño de soluciones seguras de asistencia sanitaria en Azure | Microsoft Docs"
+description: " Este artículo le ayuda a entender cómo mejorar la seguridad para las soluciones de asistencia sanitaria mediante los servicios de Azure y sus características configurables. "
 services: security
 documentationcenter: na
 author: TomShinder
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/07/2017
 ms.author: terrylan
-ms.openlocfilehash: bf8812402c2181f033f5d71e1814fd1b4ee4fb2f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 34ded89eb7fe005be2341f96e5b883ec73d9e0a5
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="a-practical-guide-toodesigning-secure-health-care-solutions-in-azure"></a>Una guía práctica toodesigning sanitaria soluciones seguras en Azure
-El inicio de la industria de mantenimiento, integradores de sistemas (SIs), fabricantes de software independientes (ISV) y las organizaciones de salud teniendo en cuenta un tooAzure mover buscan instrucciones que le ayuda a incorporar sus obligaciones de cumplimiento de normas de toomeet de controles de seguridad.
+# <a name="a-practical-guide-to-designing-secure-health-care-solutions-in-azure"></a>Guía práctica para el diseño de soluciones de asistencia sanitaria en Azure
+Nuevas empresas del sector sanitario, integradores de sistemas (SIs), proveedores de software independientes (ISV) y organizaciones de asistencia sanitaria que estén considerando la posibilidad de cambiar a Azure, buscan una guía para incorporar controles de seguridad que les ayuden a cumplir sus obligaciones de cumplimiento de normas.
 
-[Una guía práctica tooDesigning seguros sanitaria soluciones de Microsoft Azure](https://aka.ms/azureindustrysecurity) le ayudará a comprender cómo puede mejorar la seguridad para las soluciones mediante el uso de los servicios de Azure de Hola y características que se pueden configurar según sus requisitos.
-contenido de Hola se divide en tres secciones principales:
+[A Practical Guide to Designing Secure Health Care Solutions in Microsoft Azure](https://aka.ms/azureindustrysecurity) (Guía práctica para el diseño de soluciones de asistencia sanitaria en Azure) le ayudará a comprender cómo puede mejorar la seguridad de las soluciones mediante el uso de los servicios y características de Azure que se pueden configurar según sus requisitos.
+El contenido se divide en tres secciones principales:
 
 1. Guía de consideraciones para el uso de tecnología en la nube, incluida administración de riesgos, responsabilidad compartida, establecimiento de un sistema de administración de la seguridad de la información, descripción y comprensión de la normativa local y del sector, y establecimiento de procedimientos operativos estándar.
-2. Principios de seguridad de claves que están alinean procesos de desarrollo, como ISO 27001, estándar y en la administración de la seguridad de información estándar tooa, como del ciclo de vida de desarrollo de seguridad de Microsoft (SDL).
-3. Aplicar Hola principios clave toouse diseñar casos mostrando la alineación de una solución de perspectiva, donde los requisitos para soluciones de hello son toohello alineadas estándar de administración de la seguridad de información.
+2. Principios claves de seguridad en línea con un estándar de administración de la seguridad de la información, como ISO 27001, y con procesos de desarrollo estándar, como el Ciclo de vida de desarrollo de seguridad (SDL) de Microsoft.
+3. Aplicación de los principios clave a casos de uso, mostrando la alineación desde la perspectiva de un arquitecto de soluciones, donde los requisitos para las soluciones están alineados con la administración de la seguridad de la información estándar.
 
-Esperamos que le [A Practical Guide tooDesigning proteger las soluciones de atención médica](https://aka.ms/azureindustrysecurity) útil y háganos saber si tiene alguna pregunta o sugerencia, dejando un comentario a continuación.
+Esperamos que el artículo [A Practical Guide to Designing Secure Health Care Solutions in Microsoft Azure](https://aka.ms/azureindustrysecurity) (Guía práctica para el diseño de soluciones de asistencia sanitaria en Azure) le resulte útil y, si tiene alguna pregunta o sugerencia, deje un comentario a continuación.

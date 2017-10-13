@@ -13,7 +13,7 @@
 | Tiempo de espera inactividad |4 horas |
 | Tiempo de espera de desconexión |4 horas |
 
-número de Hola de usuarios viene determinado por el número de Hola de máquinas virtuales que se usa para la colección:
+El número de usuarios viene determinado por el número de máquinas virtuales que se usen para su colección:
 
 * Básico = 16 usuarios por máquina virtual
 * Estándar = 10 usuarios por máquina virtual

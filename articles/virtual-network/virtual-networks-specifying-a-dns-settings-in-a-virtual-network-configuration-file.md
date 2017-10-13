@@ -1,6 +1,6 @@
 ---
-title: "aaaSpecifying configuración DNS en un archivo de configuración de red virtual | Documentos de Microsoft"
-description: "¿Cómo toochange configuración del servidor DNS en una red virtual con una configuración de red virtual de archivos en el modelo de implementación clásica de Hola"
+title: "Especificación de una configuración DNS en un archivo de configuración de red virtual | Microsoft Docs"
+description: "Cómo cambiar la configuración del servidor DNS en una red virtual con un archivo de configuración de red virtual en el modelo de implementación clásico"
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,23 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: jdial
-ms.openlocfilehash: d53a658773e1c930b5a28a701db0be9edd26565e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ec33268915a1888509834ce6a5b2bc782a12ce4a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="specifying-dns-settings-in-a-virtual-network-configuration-file"></a>Especificación de una configuración DNS en un archivo de configuración de red virtual
-Un archivo de configuración de red tiene dos elementos que puede usar la configuración del sistema de nombres de dominio (DNS) de toospecify: **DnsServers** y **DnsServerRef**. Puede agregar una lista de servidores DNS mediante la especificación de sus direcciones IP y hacer referencia a nombres toohello **DnsServers** elemento. A continuación, puede usar un **DnsServerRef** toospecify de elemento se usan las entradas de servidor DNS de elemento DnsServers de Hola para sitios de red diferente de la red virtual.
+Un archivo de configuración de red tiene dos elementos que puede usar para especificar la configuración del sistema de nombres de dominio (DNS): **DnsServers** y **DnsServerRef**. Puede agregar una lista de los servidores DNS especificando sus direcciones IP y nombres de referencia en el elemento **DnsServers** . Asimismo, puede usar un elemento **DnsServerRef** para especificar qué entradas del servidor DNS desde el elemento DnsServers se usan en diferentes sitios de red de la red virtual.
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Este artículo trata el modelo de implementación clásica de Hola.
+Este artículo trata sobre el modelo de implementación clásico.
 
-archivo de configuración de red de Hello puede contener Hola siguientes elementos. título de Hola de cada elemento es la página de tooa vinculado que proporciona información adicional acerca de los elementos de hello configuración de valor.
+El archivo de configuración de red puede contener los siguientes elementos. El título de cada elemento se vincula a una página que proporciona información adicional acerca de la configuración del valor de elemento.
 
 > [!IMPORTANT]
-> Para obtener información acerca de cómo tooconfigure Hola archivo de configuración de red, consulte [configurar una red Virtual con un archivo de configuración de red](virtual-networks-using-network-configuration-file.md). Para obtener información acerca de cada elemento contenido en el archivo de configuración de red de hello, consulte [esquema de configuración de red Virtual de Azure](https://msdn.microsoft.com/library/azure/jj157100.aspx).
+> Para obtener más información sobre cómo configurar el archivo de configuración de red, consulte [Configuración de una red virtual mediante un archivo de configuración de red](virtual-networks-using-network-configuration-file.md). Para obtener más información acerca de cada elemento de un archivo de configuración de red, consulte [Esquema de configuración de redes virtuales de Azure](https://msdn.microsoft.com/library/azure/jj157100.aspx).
 > 
 > 
 
@@ -46,7 +46,7 @@ archivo de configuración de red de Hello puede contener Hola siguientes element
     </Dns>
 
 > [!WARNING]
-> Hola **nombre** atributo Hola **DnsServer** elemento se usa solo como referencia para hello **DnsServerRef** elemento. No representa el nombre de host de hello para el servidor DNS de Hola. Cada **DnsServer** valor de atributo debe ser único en la suscripción de Microsoft Azure todo Hola
+> El atributo **name** en el elemento **DnsServer** solo se usa como referencia del elemento **DnsServerRef**. No representa el nombre de host del servidor DNS. Cada valor del atributo **DnsServer** debe ser único en toda la suscripción de Microsoft Azure
 > 
 > 
 
@@ -59,12 +59,12 @@ archivo de configuración de red de Hello puede contener Hola siguientes element
     </DnsServersRef>
 
 > [!NOTE]
-> En orden toospecify esta configuración para el elemento Virtual Network Sites de hello, deben estar definido previamente en el elemento DNS de Hola. Hola DnsServerRef *nombre* Hola Virtual Network Sites debe hacer referencia tooa nombre valor especificado en el elemento DNS de Hola para DnsServer *nombre*.
+> Para especificar la configuración del elemento Sitios de red virtual, debe definirse previamente en el elemento DNS. El atributo *name* DnsServerRef del elemento Sitios de red virtual tiene que hacer referencia a un valor de nombre especificado en el elemento DNS del atributo *name* DnsServer.
 > 
 > 
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Comprender hello [esquema de configuración de red Virtual de Azure](http://go.microsoft.com/fwlink/?LinkId=248093).
-* Comprender hello [esquema de configuración de servicio de Azure](https://msdn.microsoft.com/library/windowsazure/ee758710).
+* Entienda el [esquema de configuración de la red virtual de Azure](http://go.microsoft.com/fwlink/?LinkId=248093).
+* Entienda el [esquema de configuración del servicio de Azure](https://msdn.microsoft.com/library/windowsazure/ee758710).
 * [Configuración de una red virtual mediante un archivo de configuración de red](virtual-networks-using-network-configuration-file.md).
 

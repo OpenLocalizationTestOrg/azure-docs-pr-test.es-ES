@@ -1,6 +1,6 @@
 ---
-title: "aaaPreview Office 365 agrupa expiración en Azure Active Directory | Documentos de Microsoft"
-description: "Cómo agrupa tooset la expiración para Office 365 en Azure Active Directory (versión preliminar)"
+title: "Versión preliminar de la expiración de grupos de Office 365 en Azure Active Directory | Microsoft Docs"
+description: "Configuración de la expiración de grupos de Office 365 en Azure Active Directory (versión preliminar)"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -16,60 +16,60 @@ ms.date: 08/09/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: a8c99961cff3aad3f4d8b0cc1b2eb8e8a4c9ba95
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8a43df84fd050d7b4bd8d937b8c55e744cb805d3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-office-365-groups-expiration-preview"></a>Configuración de la expiración de grupos de Office 365 (versión preliminar)
 
-Ahora puede administrar el ciclo de vida de Hola de grupos de Office 365 estableciendo la expiración de los grupos de Office 365 que seleccione. Una vez establecida esta expiración, los propietarios de los grupos son más frecuentes toorenew sus grupos si es necesario grupos Hola. Los grupos de Office 365 que no se renueven se eliminarán. Cualquier grupo de Office 365 que se ha eliminado se puede restaurar durante los 30 días propietarios del grupo de Hola o un administrador de Hola.  
+Ahora puede administrar el ciclo de vida de grupos de Office 365 estableciendo la expiración de los grupos de Office 365 que seleccione. Una vez establecida esta expiración, se les pide a los propietarios de esos grupos que renueven los grupos si todavía los necesitan. Los grupos de Office 365 que no se renueven se eliminarán. Los propietarios del grupo o el administrador pueden restaurar en 30 días los grupos de Office 365 que se hayan eliminado.  
 
 
 > [!NOTE]
 > Solo puede establecer la expiración de grupos de Office 365.
 >
 > El establecimiento de la expiración de grupos de O365 requiere que se asigne una licencia de Azure AD Premium a:
->   - Administrador de Hola que configura la configuración de inquilino de Hola Hola expiración
->   - Todos los miembros de grupos de hello seleccionados para esta configuración
+>   - El administrador que configura los valores de expiración del inquilino
+>   - Todos los miembros de los grupos seleccionados para esta configuración
 
 ## <a name="set-office-365-groups-expiration"></a>Establecimiento de la expiración de grupos de Office 365
 
-1. Abra hello [centro de administración de Azure AD](https://aad.portal.azure.com) con una cuenta que sea un administrador global de inquilino de Azure AD.
+1. Abra el [Centro de administración de Azure AD](https://aad.portal.azure.com) con una cuenta que tenga el rol de administrador global del inquilino de Azure AD.
 
 2. Abra Azure AD y seleccione **Usuarios y grupos**.
 
-3. Seleccione **configuración de grupo** y, a continuación, seleccione **caducidad** tooopen configuración de la expiración de Hola.
+3. Seleccione **Configuración de grupo** y luego, **Expiración** para abrir la configuración de expiración.
   
   ![Hoja Expiración](./media/active-directory-groups-lifecycle-azure-portal/expiration-settings.png)
 
-4. En hello **caducidad** hoja, puede:
+4. En la hoja **Expiración**, puede:
 
-  * Establecer la duración del grupo de hello en días. Puede seleccionar uno de hello preestablece valores o un valor personalizado (debe ser 31 días o más). 
-  * Especifique una dirección de correo electrónico donde se deben enviar notificaciones de caducidad y renovación de hello cuando un grupo no tiene propietario. 
-  * Seleccionar los grupos de Office 365 que expiran. Puede habilitar la expiración para **todos los** grupos de Office 365, puede seleccionar de entre los grupos de Office 365 Hola o seleccionar **ninguno** para deshabilitar la expiración de todos los grupos.
+  * Establecer la duración del grupo en días. Puede seleccionar uno de los valores predeterminados o un valor personalizado (debe ser de 31 días o más). 
+  * Especificar una dirección de correo electrónico a la que deben enviarse notificaciones de renovación y expiración cuando el grupo no tiene ningún propietario. 
+  * Seleccionar los grupos de Office 365 que expiran. Puede habilitar la expiración de **Todos** los grupos de Office 365, seleccionar de entre los grupos Office 365 o seleccionar **Ninguno** para deshabilitar la expiración de todos los grupos.
   * Guardar la configuración cuando haya terminado seleccionando **Guardar**.
 
-Para obtener instrucciones sobre cómo toodownload e instalar Hola tooconfigure caducidad de módulo de PowerShell de Microsoft para los grupos de Office 365 a través de PowerShell, consulte [módulo Azure Active Directory V2 PowerShell - versión de vista previa pública 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
+Para obtener instrucciones sobre cómo descargar e instalar el módulo de Microsoft PowerShell para configurar la expiración de grupos de Office 365 a través de PowerShell, vea [Azure Active Directory V2 PowerShell Module - Public Preview Release 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) (Módulo de PowerShell de Azure Active Directory V2: versión preliminar pública 2.0.0.137).
 
-Se envían notificaciones por correo electrónico como éste propietarios del grupo toohello Office 365 30 días, 15 días y tooexpiration anterior del día 1, del grupo de Hola.
+Se envían notificaciones por correo electrónico como esta a los propietarios del grupo de Office 365 con 30 días, 15 días y 1 día de antelación a la expiración del grupo.
 
 ![Notificación por correo electrónico de expiración](./media/active-directory-groups-lifecycle-azure-portal/expiration-notification.png)
 
-propietario del grupo de Hello, a continuación, puede seleccionar **grupo renovar** toorenew Hola grupo de Office 365, o puede seleccionar **vaya toogroup** toosee miembros de Hola y otros detalles acerca de Hola grupo.
+El propietario del grupo puede luego seleccionar **Renew group** (Renovar grupo) para renovar el grupo de Office 365 o seleccionar **Ir al grupo** para ver los miembros del grupo y otros detalles sobre el mismo.
 
-Cuando expira un grupo, el grupo de Hola se elimina un día después de la fecha de expiración de Hola. Se envía una notificación de correo electrónico como éste propietarios del grupo toohello Office 365 que les informa acerca de la expiración de Hola y eliminación posterior de su grupo de Office 365.
+Cuando un grupo expira, el grupo se elimina un día después de la fecha de expiración. Se envía una notificación por correo electrónico como esta a los propietarios del grupo de Office 365 donde se informa sobre la expiración y la posterior eliminación del grupo de Office 365.
 
 ![Notificación por correo electrónico de eliminación del grupo](./media/active-directory-groups-lifecycle-azure-portal/deletion-notification.png)
 
-grupo de Hello puede restaurarse seleccionando **restauración grupo** o mediante cmdlets de PowerShell, tal y como se describe en [grupo de restauración un eliminado Office 365 en Azure Active Directory] (https://docs.microsoft.com/azure/active-directory/ Active-Directory-Groups-restore-Azure-Portal).
+Para restaurar el grupo, seleccione **Restore group** (Restaurar grupo) o use cmdlets de PowerShell, tal y como se describe en [Restauración de un grupo eliminado de Office 365 en Azure Active Directory] (https://docs.microsoft.com/azure/active-directory/active-directory-groups-restore-azure-portal).
     
-Si va a restaurar el grupo de hello contiene documentos, los sitios de SharePoint u otros objetos persistentes, podría tardar hasta too24 horas toofully restauración Hola grupo y su contenido.
+Si el grupo que restaura contiene documentos, sitios de SharePoint u otros objetos persistentes, el proceso completo de restauración del grupo y su contenido podría demorar hasta 24 horas.
 
 > [!NOTE]
-> * Al implementar la configuración de la expiración de hello, podría haber algunos grupos que sean más antiguos que la ventana de expiración de hello. Estos grupos no se eliminarán inmediatamente, pero son establecer too30 días hasta la expiración. correo electrónico de notificación primer de renovación de Hola se envía dentro de un día. Por ejemplo, un grupo se creó hace 400 días, y se establece el intervalo de expiración de hello too180 días. Cuando aplica la configuración de expiración, un grupo tiene 30 días antes de eliminarla, a menos que el propietario de Hola renueva.
-> * Cuando se elimina un grupo dinámico y se restaura, se ve como un nuevo grupo y vuelve a llenar regla toohello correspondiente. Este proceso puede tardar horas too24.
+> * Al implementar la configuración de expiración, puede haber algunos grupos que sean más antiguos que el período de expiración. Estos grupos no se eliminan inmediatamente, sino que se establecen en 30 días hasta que expiren. El primer correo de notificación de renovación se envía en un día. Por ejemplo, el grupo A se creó hace 400 días y el intervalo de expiración se ha establecido en 180 días. Cuando se aplica la configuración de expiración, el grupo A tiene 30 antes de que se elimine, salvo que el propietario lo renueve.
+> * Cuando un grupo dinámico se elimina y restaura, se considera un nuevo grupo y se vuelve a rellenar de acuerdo con la regla. Este proceso puede tardar hasta 24 horas.
 
 ## <a name="next-steps"></a>Pasos siguientes
 En estos artículos se proporciona información adicional sobre los grupos de Azure AD.

@@ -1,9 +1,9 @@
 ---
-title: "aaaCreate Azure automatización de la cuenta de ejecución con PowerShell | Documentos de Microsoft"
-description: "Este artículo describe cómo tooupgrade su cuenta de automatización con PowerShell toocreate hello ejecutar como cuentas si este paso no se llevó a cabo durante la creación inicial desde el portal de Hola."
+title: "Creación de una cuenta de ejecución de Azure Automation con PowerShell | Microsoft Docs"
+description: "En este artículo se describe cómo actualizar la cuenta de Automation con PowerShell para crear cuentas de ejecución si no ha realizado este paso durante la creación inicial desde el portal."
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 
@@ -14,59 +14,59 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/14/2017
 ms.author: magoedte
-ms.openlocfilehash: 1049601321d2bc1e5f9d982f622788f8e4e4d797
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: fb23b3ea41910687fd586f80e5dd327344991e0f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="update-automation-run-as-account-using-powershell"></a>Actualización de una cuenta de ejecución de Automation mediante PowerShell
-Puede usar PowerShell tooupdate su cuenta de automatización existente si:
+Puede usar PowerShell para actualizar su cuenta de Automation existente si:
 
-* Crear una cuenta de automatización, pero rechazar toocreate Hola cuenta de ejecución.
-* Ya utiliza un administrador de recursos toomanage cuenta recursos de automatización y desea tooupdate Hola cuenta tooinclude Hola cuenta de ejecución para la autenticación de runbook.
-* Ya utiliza un recursos clásicos de automatización de la cuenta toomanage y desea tooupdate se toouse Hola clásico cuenta de ejecución en lugar de crear una cuenta nueva y migrar su tooit runbooks y activos.   
-* Toocreate que desee ejecutar como y una cuenta de identificación clásico mediante el uso de un certificado emitido por la entidad de certificación (CA) empresarial.
+* Crea una cuenta de Automation, pero se rechaza la creación de la cuenta de ejecución.
+* Ya usa una cuenta de Automation para administrar recursos de Resource Manager y quiere actualizarla para incluir la cuenta de ejecución para la autenticación de runbooks.
+* Ya usa una cuenta de Automation para administrar recursos del modelo clásico y quiere actualizarla para usar la cuenta de ejecución en lugar de crear una nueva cuenta y migrar los runbooks y recursos a ella.   
+* Quiere crear una cuenta de ejecución y una cuenta de ejecución clásica mediante un certificado emitido por una entidad de certificación (CA) de empresa.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-* script de Hola se puede ejecutar solo en Windows 10 y Windows Server 2016 con módulos de Azure Resource Manager 2.01 y versiones posteriores. No se admite en versiones anteriores de Windows.
-* Azure PowerShell 1.0 y versiones superiores. Para obtener información acerca de la versión de Hola PowerShell 1.0, vea [cómo tooinstall y configurar Azure PowerShell](/powershell/azure/overview).
-* Una cuenta de automatización, que se hace referencia como valor de Hola de hello *: AutomationAccountName* y *- ApplicationDisplayName* parámetros Hola siguiente script de PowerShell.
+* El script solo se puede ejecutar en Windows 10 y Windows Server 2016 con módulos de Azure Resource Manager 2.01 y versiones posteriores. No se admite en versiones anteriores de Windows.
+* Azure PowerShell 1.0 y versiones superiores. Para más información sobre la versión 1.0 de PowerShell, consulte [Instalación y configuración de Azure PowerShell](/powershell/azure/overview).
+* Una cuenta de Automation, a la que se hace referencia como el valor de los parámetros *: -AutomationAccountName* y *- ApplicationDisplayName* en el siguiente script de PowerShell.
 
-Hola tooget los valores de *SubscriptionID*, *ResourceGroup*, y *AutomationAccountName*, que son parámetros necesarios para las secuencias de comandos de hello, Hola siguientes:
-1. En el portal de Azure de Hola, seleccione su cuenta de automatización en hello **cuenta de automatización** hoja y, a continuación, seleccione **toda la configuración de**. 
-2. En hello **toda la configuración de** hoja, en **configuración de la cuenta**, seleccione **propiedades**. 
-3. Tenga en cuenta los valores de hello en hello **propiedades** hoja.
+Para obtener los valores de *SubscriptionID*, *ResourceGroup* y *AutomationAccountName*, que son parámetros necesarios para los scripts, haga lo siguiente:
+1. En el portal de Azure, seleccione su cuenta de Automation en la hoja **Cuenta de Automation** y luego seleccione **All settings** (Toda la configuración). 
+2. En la hoja **All settings** (Toda la configuración), en **Account Settings** (Configuración de la cuenta), seleccione **Propiedades**. 
+3. Tenga en cuenta los valores de la hoja **Propiedades**.
 
-![hoja de "Propiedades" de cuenta de automatización de Hola](media/automation-sec-configure-azure-runas-account/automation-account-properties.png)  
+![Hoja "Propiedades" de la cuenta de Automation](media/automation-sec-configure-azure-runas-account/automation-account-properties.png)  
 
 ## <a name="create-run-as-account-powershell-script"></a>Creación de un script de PowerShell de una cuenta de ejecución
-Este script de PowerShell incluye compatibilidad para hello siguiendo configuraciones:
+Este script de PowerShell incluye compatibilidad con las siguientes configuraciones:
 
 * Creación de una cuenta de ejecución mediante un certificado autofirmado.
 * Creación de una cuenta de ejecución y una cuenta de ejecución clásica mediante un certificado autofirmado.
 * Creación de una cuenta de ejecución y una cuenta de ejecución clásica mediante un certificado de empresa.
-* Crear una cuenta de ejecución y una cuenta de identificación clásico mediante un certificado autofirmado en hello en la nube Azure Government.
+* Creación de una cuenta de ejecución y una cuenta de ejecución clásica mediante un certificado autofirmado en la nube de Azure Government.
 
-Dependiendo de la opción de configuración de Hola que seleccione, el script de Hola crea Hola siguientes elementos.
+Dependiendo de la opción de configuración seleccionada, el script crea los siguientes elementos.
 
 **Para cuentas de ejecución:**
 
-* Crea un Azure AD aplicación toobe exportado con cualquier hello autofirmado o clave pública del certificado de la empresa, crea una cuenta de entidad de servicio para la aplicación hello en Azure AD y asigna Hola rol Colaborador para cuenta de hello en el actual suscripción. Puede cambiar esta configuración tooOwner o cualquier otro rol. Para más información, consulte [Control de acceso basado en rol en Azure Automation](automation-role-based-access-control.md).
-* Crea un activo de certificado de automatización denominado *AzureRunAsCertificate* en hello especifica la cuenta de automatización. activo de certificado de Hello contiene la clave privada de hello certificado utilizado por la aplicación hello Azure AD.
-* Crea un recurso de conexión de automatización denominado *AzureRunAsConnection* en hello especifica la cuenta de automatización. activo de conexión de Hello contiene applicationId hello, tenantId, Id. de suscripción y la huella digital del certificado.
+* Crea una aplicación de Azure AD que se exporta con la clave pública del certificado autofirmado o de empresa, crea una cuenta de entidad de servicio para esta aplicación en Azure AD y asigna el rol Colaborador para esta cuenta en su suscripción actual. Puede cambiar esta configuración a Propietario o cualquier otro rol. Para más información, consulte [Control de acceso basado en rol en Azure Automation](automation-role-based-access-control.md).
+* Crea un recurso de certificado de Automation llamado *AzureRunAsCertificate* en la cuenta de Automation especificada. El recurso de certificado contiene la clave privada del certificado que usa la aplicación de Azure AD.
+* Crea un recurso de conexión de Automation llamado *AzureRunAsConnection* en la cuenta de Automation especificada. El recurso de conexión contiene el id. de aplicación, el id. de inquilino, el id. de suscripción y la huella digital de certificado.
 
 **Para cuentas de ejecución clásicas:**
 
-* Crea un activo de certificado de automatización denominado *AzureClassicRunAsCertificate* en hello especifica la cuenta de automatización. activo de certificado de Hello contiene la clave privada del certificado Hola utilizado por el certificado de administración de Hola.
-* Crea un recurso de conexión de automatización denominado *AzureClassicRunAsConnection* en hello especifica la cuenta de automatización. activo de conexión de Hello contiene el nombre de la suscripción de hello, Id. de suscripción y el nombre del recurso de certificado.
+* Crea un recurso de certificado de Automation llamado *AzureClassicRunAsCertificate* en la cuenta de Automation especificada. El recurso de certificado contiene la clave privada del certificado que usa el certificado de administración.
+* Crea un recurso de conexión de Automation llamado *AzureClassicRunAsConnection* en la cuenta de Automation especificada. El recurso de conexión contiene el nombre de la suscripción, el id. de suscripción y el nombre del recurso de certificado.
 
 >[!NOTE]
-> Si selecciona cualquiera de las opciones para crear una cuenta de identificación clásico, después de ejecuta script de Hola, carga Hola certificado público almacén de administración de toohello (extensión de nombre de archivo .cer) para suscripción Hola esa cuenta de automatización de Hola se creó en.
+> Si selecciona cualquiera de las opciones para crear una cuenta de ejecución clásica, cargue el certificado público (extensión de nombre del archivo .cer) en el almacén de administración para la suscripción en la que se creó la cuenta de Automation.
 > 
 
-1. Guardar Hola siguiente secuencia de comandos en el equipo. En este ejemplo, guárdelo con el nombre de archivo de hello *RunAsAccount.ps1 nuevo*.
+1. Guarde el script siguiente en el equipo. En este ejemplo, guárdelo con el nombre *New-RunAsAccount.ps1*.
 
         #Requires -RunAsAdministrator
          Param (
@@ -136,7 +136,7 @@ Dependiendo de la opción de configuración de Hola que seleccione, el script de
         $ServicePrincipal = New-AzureRMADServicePrincipal -ApplicationId $Application.ApplicationId
         $GetServicePrincipal = Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id
 
-        # Sleep here for a few seconds tooallow hello service principal application toobecome active (ordinarily takes a few seconds)
+        # Sleep here for a few seconds to allow the service principal application to become active (ordinarily takes a few seconds)
         Sleep -s 15
         $NewRole = New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $Application.ApplicationId -ErrorAction SilentlyContinue
         $Retries = 0;
@@ -167,7 +167,7 @@ Dependiendo de la opción de configuración de Hola que seleccione, el script de
         $AzureRMProfileVersion= (Get-Module AzureRM.Profile).Version
         if (!(($AzureRMProfileVersion.Major -ge 2 -and $AzureRMProfileVersion.Minor -ge 1) -or ($AzureRMProfileVersion.Major -gt 2)))
         {
-           Write-Error -Message "Please install hello latest Azure PowerShell and retry. Relevant doc url : https://docs.microsoft.com/powershell/azureps-cmdlets-docs/ "
+           Write-Error -Message "Please install the latest Azure PowerShell and retry. Relevant doc url : https://docs.microsoft.com/powershell/azureps-cmdlets-docs/ "
            return
         }
 
@@ -194,16 +194,16 @@ Dependiendo de la opción de configuración de Hola que seleccione, el script de
         $PfxCert = New-Object -TypeName System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList @($PfxCertPathForRunAsAccount, $PfxCertPlainPasswordForRunAsAccount)
         $ApplicationId=CreateServicePrincipal $PfxCert $ApplicationDisplayName
 
-        # Create hello Automation certificate asset
+        # Create the Automation certificate asset
         CreateAutomationCertificateAsset $ResourceGroup $AutomationAccountName $CertifcateAssetName $PfxCertPathForRunAsAccount $PfxCertPlainPasswordForRunAsAccount $true
 
-        # Populate hello ConnectionFieldValues
+        # Populate the ConnectionFieldValues
         $SubscriptionInfo = Get-AzureRmSubscription -SubscriptionId $SubscriptionId
         $TenantID = $SubscriptionInfo | Select TenantId -First 1
         $Thumbprint = $PfxCert.Thumbprint
         $ConnectionFieldValues = @{"ApplicationId" = $ApplicationId; "TenantId" = $TenantID.TenantId; "CertificateThumbprint" = $Thumbprint; "SubscriptionId" = $SubscriptionId}
 
-        # Create an Automation connection asset named AzureRunAsConnection in hello Automation account. This connection uses hello service principal.
+        # Create an Automation connection asset named AzureRunAsConnection in the Automation account. This connection uses the service principal.
         CreateAutomationConnectionAsset $ResourceGroup $AutomationAccountName $ConnectionAssetName $ConnectionTypeName $ConnectionFieldValues
 
         if ($CreateClassicRunAsAccount) {
@@ -211,9 +211,9 @@ Dependiendo de la opción de configuración de Hola que seleccione, el script de
             $ClassicRunAsAccountCertifcateAssetName = "AzureClassicRunAsCertificate"
             $ClassicRunAsAccountConnectionAssetName = "AzureClassicRunAsConnection"
             $ClassicRunAsAccountConnectionTypeName = "AzureClassicCertificate "
-            $UploadMessage = "Please upload hello .cer format of #CERT# toohello Management store by following hello steps below." + [Environment]::NewLine +
-                    "Log in toohello Microsoft Azure Management portal (https://manage.windowsazure.com) and select Settings -> Management Certificates." + [Environment]::NewLine +
-                    "Then click Upload and upload hello .cer format of #CERT#"
+            $UploadMessage = "Please upload the .cer format of #CERT# to the Management store by following the steps below." + [Environment]::NewLine +
+                    "Log in to the Microsoft Azure Management portal (https://manage.windowsazure.com) and select Settings -> Management Certificates." + [Environment]::NewLine +
+                    "Then click Upload and upload the .cer format of #CERT#"
 
              if ($EnterpriseCertPathForClassicRunAsAccount -and $EnterpriseCertPlainPasswordForClassicRunAsAccount ) {
              $PfxCertPathForClassicRunAsAccount = $EnterpriseCertPathForClassicRunAsAccount
@@ -228,22 +228,22 @@ Dependiendo de la opción de configuración de Hola que seleccione, el script de
              CreateSelfSignedCertificate $KeyVaultName $ClassicRunAsAccountCertificateName $PfxCertPlainPasswordForClassicRunAsAccount $PfxCertPathForClassicRunAsAccount $CerCertPathForClassicRunAsAccount $SelfSignedCertNoOfMonthsUntilExpired
         }
 
-        # Create hello Automation certificate asset
+        # Create the Automation certificate asset
         CreateAutomationCertificateAsset $ResourceGroup $AutomationAccountName $ClassicRunAsAccountCertifcateAssetName $PfxCertPathForClassicRunAsAccount $PfxCertPlainPasswordForClassicRunAsAccount $false
 
-        # Populate hello ConnectionFieldValues
+        # Populate the ConnectionFieldValues
         $SubscriptionName = $subscription.Subscription.SubscriptionName
         $ClassicRunAsAccountConnectionFieldValues = @{"SubscriptionName" = $SubscriptionName; "SubscriptionId" = $SubscriptionId; "CertificateAssetName" = $ClassicRunAsAccountCertifcateAssetName}
 
-        # Create an Automation connection asset named AzureRunAsConnection in hello Automation account. This connection uses hello service principal.
+        # Create an Automation connection asset named AzureRunAsConnection in the Automation account. This connection uses the service principal.
         CreateAutomationConnectionAsset $ResourceGroup $AutomationAccountName $ClassicRunAsAccountConnectionAssetName $ClassicRunAsAccountConnectionTypeName $ClassicRunAsAccountConnectionFieldValues
 
         Write-Host -ForegroundColor red $UploadMessage
         }
 
-2. En el equipo, inicie **Windows PowerShell** de hello **iniciar** pantalla con derechos de usuario elevados.
-3. De hello elevado shell de línea de comandos, vaya toohello carpeta que contiene el script de Hola que creó en el paso 1.  
-4. Ejecutar script de Hola mediante el uso de valores de parámetro de hello para la configuración de Hola que necesite.
+2. En el equipo, inicie **Windows PowerShell** desde la pantalla **Inicio** con permisos de usuario elevados.
+3. Desde el shell de línea de comandos con privilegios elevados, vaya a la carpeta que contiene el script que creó en el paso 1.  
+4. Ejecute el script mediante los valores de parámetro de la configuración que necesita.
 
     **Creación de una cuenta de ejecución mediante un certificado autofirmado**  
     `.\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $false`
@@ -254,19 +254,19 @@ Dependiendo de la opción de configuración de Hola que seleccione, el script de
     **Creación de una cuenta de ejecución y una cuenta de ejecución clásica mediante un certificado de empresa**  
     `.\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication>  -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true -EnterpriseCertPathForRunAsAccount <EnterpriseCertPfxPathForRunAsAccount> -EnterpriseCertPlainPasswordForRunAsAccount <StrongPassword> -EnterpriseCertPathForClassicRunAsAccount <EnterpriseCertPfxPathForClassicRunAsAccount> -EnterpriseCertPlainPasswordForClassicRunAsAccount <StrongPassword>`
 
-    **Crear una cuenta de ejecución y una cuenta de identificación clásico mediante un certificado autofirmado en hello en la nube Azure Government**  
+    **Creación de una cuenta de ejecución y una cuenta de ejecución clásica mediante un certificado autofirmado en la nube de Azure Government**  
     `.\New-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true  -EnvironmentName AzureUSGovernment`
 
     > [!NOTE]
-    > Una vez ejecutado el script de Hola, será tooauthenticate solicitada con Azure. Inicie sesión con una cuenta que sea miembro del rol de administradores de suscripción de Hola y Coadministrador de suscripción de Hola.
+    > Después de ejecutar el script, se le pedirá que se autentique en Azure. Inicie sesión con una cuenta que sea miembro del rol Administradores de suscripciones y coadministrador de la suscripción.
     >
     >
 
-Después de que el script de Hola se ha ejecutado correctamente, observe Hola siguiente:
-* Si ha creado una cuenta de identificación clásico con un certificado autofirmado público (archivo .cer), el script de Hola crea y guarda toohello carpeta de archivos temporales en el equipo en el perfil de usuario de hello *%USERPROFILE%\AppData\Local\Temp*, que ya ha utilizado la sesión de PowerShell de tooexecute Hola.
-* Si creó una cuenta de identificación clásica con un certificado público de empresa (archivo .cer) , use este certificado. Siga las instrucciones de Hola para [cargar una toohello de certificado de la API de administración portal de Azure clásico](../azure-api-management-certs.md)y, a continuación, validar configuración de credencial de hello con recursos de implementación clásica mediante hello [código de ejemplo tooauthenticate con recursos de implementación de Azure clásico](automation-verify-runas-authentication.md#classic-run-as-authentication). 
-* Si lo hizo *no* crear una cuenta de identificación clásico, autenticar con recursos de administrador de recursos y validar la configuración de credencial de hello mediante hello [código de ejemplo para autenticar con la administración de servicios recursos](automation-verify-runas-authentication.md#automation-run-as-authentication).
+Una vez que el script se ejecuta correctamente, observe lo siguiente:
+* Si creó una cuenta de ejecución clásica con un certificado público autofirmado (formato .cer), el script lo crea y lo guarda en la carpeta de archivos temporales del equipo con el perfil de usuario *%USERPROFILE%\AppData\Local\Temp*, que se usa para ejecutar la sesión de PowerShell.
+* Si creó una cuenta de identificación clásica con un certificado público de empresa (archivo .cer) , use este certificado. Siga las instrucciones para [cargar un certificado de API de administración en el Portal de Azure clásico](../azure-api-management-certs.md) y luego valide la configuración de credenciales con recursos de implementación clásicos mediante el [código de ejemplo para realizar la autenticación con recursos del modelo de implementación clásica de Azure](automation-verify-runas-authentication.md#classic-run-as-authentication). 
+* Si *no* creó una cuenta de ejecución clásica, realice la autenticación con recursos de Resource Manager y valide la configuración de credenciales mediante el [código de ejemplo para la autenticación con recursos de Service Management](automation-verify-runas-authentication.md#automation-run-as-authentication).
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para obtener más información acerca de las entidades de servicio, consulte demasiado[objetos de entidad de servicio y aplicación](../active-directory/active-directory-application-objects.md).
-* Para obtener más información sobre los certificados y servicios de Azure, consulte demasiado[Introducción a los certificados para servicios en la nube](../cloud-services/cloud-services-certs-create.md).
+* Para más información acerca de las entidades de servicio, consulte [Objetos Application y objetos ServicePrincipal](../active-directory/active-directory-application-objects.md).
+* Para más información acerca de los certificados y de los servicios de Azure, consulte [Introducción a los certificados para los servicios en la nube de Azure](../cloud-services/cloud-services-certs-create.md).

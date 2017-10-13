@@ -1,5 +1,5 @@
 ---
-title: "perfiles de aaaScoring (búsqueda REST API versión 2015-02-28-vista previa de Azure) | Documentos de Microsoft"
+title: "Perfiles de puntuación (API de REST de Azure Search: 2015-02-28-Preview) | Microsoft Docs"
 description: "Búsqueda de Azure es un servicio de búsqueda hospedado en la nube que admite la optimización de resultados basados en perfiles de puntuación definidos por el usuario."
 services: search
 documentationcenter: 
@@ -14,26 +14,26 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.author: heidist
 ms.date: 10/27/2016
-ms.openlocfilehash: 17f83fdf6818dc6ffcc3e04f5d0185c6f646b63d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a67637d149a84313270c03d21acf8a9c1870be05
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="scoring-profiles-azure-search-rest-api-version-2015-02-28-preview"></a>Perfiles de puntuación (API de REST de Búsqueda de Azure: 2015-02-28-Preview)
 > [!NOTE]
-> Este artículo describen los perfiles de puntuación en hello [vista previa 2015-02-28](search-api-2015-02-28-preview.md). Actualmente no hay ninguna diferencia entre hello `2016-09-01` versión documentados en [MSDN](http://msdn.microsoft.com/library/azure/mt183328.aspx) hello y `2015-02-28-Preview` versión se describe aquí, pero ofrecemos este documento todas formas en la cobertura de documento de pedido tooprovide a través de Hola API completa.
+> En este artículo se describen los perfiles puntuación de la versión [2015-02-28-Preview](search-api-2015-02-28-preview.md). Actualmente, no hay ninguna diferencia entre la versión `2016-09-01` documentada en [MSDN](http://msdn.microsoft.com/library/azure/mt183328.aspx) y la versión `2015-02-28-Preview` que se describe aquí, pero ofrecemos este documento de todos modos para proporcionar cobertura de documentación en toda la API.
 >
 >
 
 ## <a name="overview"></a>Información general
-La puntuación hace referencia toohello cálculo de una puntuación de búsqueda para todos los elementos devueltos en los resultados de búsqueda. puntuación de Hello es un indicador de relevancia de un elemento en el contexto de Hola de operación de búsqueda actual de Hola. Hola mayor puntuación hello, Hola artículo de hello más relevante. En los resultados de búsqueda, los elementos están ordenados de toolow alta, en función de puntuación de búsqueda de hello calcula para cada elemento.
+Puntuación hace referencia al cálculo de una puntuación de búsqueda para todos los elementos devueltos en los resultados de la búsqueda. La puntuación es un indicador de la importancia de un elemento en el contexto de la operación de búsqueda actual. Cuanto mayor sea la puntuación, mayor importancia tendrá el elemento. En los resultados de búsqueda, los elementos están ordenados de alto a bajo, según la puntuación de la búsqueda calculada para cada artículo.
 
-Búsqueda de Azure usa la puntuación toocompute una puntuación inicial predeterminada, pero puede personalizar el cálculo de Hola a través de un perfil de puntuación. Perfiles de puntuación ofrecen mayor control sobre la clasificación de Hola de los elementos en los resultados de búsqueda. Por ejemplo, podría desea elementos tooboost según su potencial de ingresos, promover elementos más recientes o quizás aumentar elementos que han permanecido en inventario demasiado largo.
+Búsqueda de Azure usa la puntuación predeterminada para calcular una puntuación inicial, pero puede personalizar el cálculo a través de un perfil de puntuación. Los perfiles de puntuación proporcionan un mayor control sobre la clasificación de los elementos en los resultados de búsqueda. Por ejemplo, desea aumentar los elementos según su potencial de ingresos, promover elementos más recientes o quizás aumentar los elementos que han permanecido en inventario demasiado largo.
 
-Un perfil de puntuación forma parte de la definición del índice hello, consta de campos, funciones y parámetros.
+Un perfil de puntuación es parte de la definición del índice que se compone de campos, funciones y parámetros.
 
-toogive se haga una idea del aspecto de un perfil de puntuación como hello en el ejemplo siguiente se muestra un perfil simple denominado "geo". Éste aumenta los elementos que tengan el término de búsqueda de Hola Hola `hotelName` campo. También usa hello `distance` función toofavor elementos que están dentro de diez kilómetros de la ubicación actual de Hola. Si alguien busca Hola término "inn" y "inn" ocurre toobe parte del nombre del hotel hello, documentos que incluyan hoteles con "inn" aparecerán mayores en resultados de búsqueda de Hola.
+Para darle una idea del aspecto de un perfil de puntuación, el ejemplo siguiente muestra un perfil simple denominado «geográfico». Este aumenta los elementos que tengan el término de búsqueda en el campo `hotelName` . También usa la función `distance` para dar prioridad a elementos que están a menos de diez kilómetros de la ubicación actual. Si alguien busca el término «inn» y este término forma parte del nombre del hotel, los documentos que incluyan hoteles con «inn» aparecerán primero en los resultados de búsqueda.
 
     "scoringProfiles": [
       {
@@ -56,34 +56,34 @@ toogive se haga una idea del aspecto de un perfil de puntuación como hello en e
       }
     ]
 
-toouse que este perfil de puntuación, la consulta es Formula toospecify perfil de hello en la cadena de consulta de Hola. En la siguiente consulta de hello, observe el parámetro de consulta de hello, `scoringProfile=geo` en solicitud de saludo.
+Para usar este perfil de puntuación, se formula la consulta para especificar el perfil en la cadena de consulta. En la siguiente consulta, observe el parámetro de consulta `scoringProfile=geo` en la solicitud.
 
     GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentLocation--122.123,44.77233&api-version=2015-02-28-Preview
 
-Esta consulta busca Hola término "inn" y se pasa en la ubicación actual de Hola. Tenga en cuenta que esta consulta incluye otros parámetros, como `scoringParameter`. Los parámetros de consulta se describen en [Buscar documentos (API de Búsqueda de Azure)](search-api-2015-02-28-preview.md#SearchDocs).
+Esta consulta busca el término «inn» y pasa la ubicación actual. Tenga en cuenta que esta consulta incluye otros parámetros, como `scoringParameter`. Los parámetros de consulta se describen en [Buscar documentos (API de Búsqueda de Azure)](search-api-2015-02-28-preview.md#SearchDocs).
 
-Haga clic en [ejemplo](#example) tooreview un ejemplo más detallado de un perfil de puntuación.
+Haga clic en [Ejemplo](#example) para revisar un ejemplo más detallado de un perfil de puntuación.
 
 ## <a name="what-is-default-scoring"></a>¿Qué es la puntuación predeterminada?
-La puntuación calcula una puntuación de la búsqueda para cada elemento de un conjunto de resultados ordenado por rango. Todos los elementos de un conjunto de resultados de búsqueda se asigna una puntuación de búsqueda, a continuación, el rango más alto toolowest. Se devuelven los elementos con las puntuaciones más altas hello toohello aplicación. De forma predeterminada, hello 50 mejores se devuelven, pero puede usar hello `$top` parámetro tooreturn un número mayor o menor de elementos (arriba too1000 en una única respuesta).
+La puntuación calcula una puntuación de la búsqueda para cada elemento de un conjunto de resultados ordenado por rango. A cada elemento de un conjunto de resultados de búsqueda se le asigna una puntuación de búsqueda, a continuación, se ordena de mayor a menor. Elementos con las puntuaciones más altas se devuelven a la aplicación. De forma predeterminada, se devuelven los 50 mejores, pero puede usar el parámetro `$top` para devolver un número mayor o menor de elementos (hasta 1000 en una sola respuesta).
 
-De forma predeterminada, una puntuación de búsqueda se calcula en función de propiedades estadísticas de consultas de Hola y los datos de Hola. Búsqueda de Azure busca documentos que contengan los términos de búsqueda de hello en la cadena de consulta de hello (algunas o todas, dependiendo de `searchMode`), dando prioridad a los documentos que contienen muchas instancias del término de búsqueda de Hola. puntuación de búsqueda de Hello aumenta incluso superior si término hello es poco frecuente en los corpus de datos de hello, pero común dentro del documento de Hola. base de Hola para una relevancia de toocomputing de este enfoque se conoce como TF IDF o (frecuencia de término frecuencia inversa de documento).
+De forma predeterminada, una puntuación de búsqueda se calcula en función de las propiedades estadísticas de los datos y la consulta. Búsqueda de Azure busca documentos que contengan los términos de búsqueda de la cadena de consulta (algunas o todas, dependiendo de `searchMode`), lo cual favorece a los documentos que contienen muchas instancias del término de búsqueda. La puntuación de búsqueda aumenta todavía más si el término es poco frecuente en el corpus de datos, pero común dentro del documento. La base de este enfoque de relevancia informática se denomina TF-IDF o (frecuencia de documento inverso de la frecuencia del término).
 
-Suponiendo que no hay ninguna ordenación personalizada, los resultados se clasifican por puntuación de búsqueda antes de que se devuelvan toohello de aplicación que llama. Si `$top` no se especifica, 50 elementos de búsqueda de hello mayor puntuación se devuelve.
+Suponiendo que no haya ninguna ordenación personalizada, los resultados se clasifican por el resultado de la búsqueda antes de que se devuelvan a la aplicación de llamada. Si `$top` no se especifica, se devolverán 50 elementos con la puntuación de búsqueda mayor.
 
-Los valores de puntuación de búsqueda pueden repetirse a lo largo de un conjunto de resultados. Por ejemplo, puede tener 10 elementos con una puntuación de 1,2, 20 elementos con una puntuación de 1,0 y 20 elementos con una puntuación de 0,5. Cuando varios resultados ha hello misma puntuación de búsqueda, Hola orden de los mismos elementos con puntuación no está definido y no es estable. Vuelva a ejecutar la consulta de Hola y es posible que vea posición de desplazamiento de elementos. Si dos elementos disponen de la misma puntuación, no hay ninguna garantía de cuál aparecerá en primer lugar.
+Los valores de puntuación de búsqueda pueden repetirse a lo largo de un conjunto de resultados. Por ejemplo, puede tener 10 elementos con una puntuación de 1,2, 20 elementos con una puntuación de 1,0 y 20 elementos con una puntuación de 0,5. Cuando varios resultados tienen la misma puntuación de búsqueda, el orden de estos elementos puntuados no se define y no es estable. Vuelva a ejecutar la consulta verá cómo los elementos cambian de posición. Si dos elementos disponen de la misma puntuación, no hay ninguna garantía de cuál aparecerá en primer lugar.
 
-## <a name="when-toouse-custom-scoring"></a>Cuando la puntuación personalizada toouse
-Debe crear uno o varios perfiles de puntuación al comportamiento de clasificación predeterminado de hello no vaya cumplir lo suficiente en sus objetivos empresariales. Por ejemplo, podría decidir que la relevancia de la búsqueda debe favorecer a los elementos recién agregados. Asimismo, podría tener un campo que contenga el margen de beneficio, o algún otro campo que indique los ingresos potenciales. Incremento de los resultados que ofrecen beneficios tooyour empresarial puede ser un factor importante en decidir toouse los perfiles de puntuación.
+## <a name="when-to-use-custom-scoring"></a>Cuándo usar la puntuación personalizada
+Debe crear uno o más perfiles de puntuación cuando el comportamiento de clasificación predeterminado no logre cumplir los objetivos de su empresa. Por ejemplo, podría decidir que la relevancia de la búsqueda debe favorecer a los elementos recién agregados. Asimismo, podría tener un campo que contenga el margen de beneficio, o algún otro campo que indique los ingresos potenciales. Aumentar los resultados que ofrecen beneficios a su empresa puede ser un factor importante a la hora de decidir usar perfiles de puntuación.
 
-El orden basado en relevancia también se implementa a través de perfiles de puntuación. Considere la posibilidad de resultados de búsqueda de páginas que usó en hello anterior que permiten ordenación por precio, fecha, clasificación o relevancia. En la búsqueda de Azure, perfiles de puntuación impulsan la opción de "relevancia" Hola. definiciones de Hola de relevancia es controlado por el usuario, se basa en los objetivos de negocio y el tipo de Hola de experiencia de búsqueda que desee toodeliver.
+El orden basado en relevancia también se implementa a través de perfiles de puntuación. Tenga en cuenta los resultados de búsqueda que ha usado en el pasado que le permiten ordenar por relevancia, fecha, clasificación o precio. En la Búsqueda de Azure, los perfiles de puntuación determinan la opción «relevancia». La definición de relevancia está controlada por usted, se afirma en los objetivos empresariales y en el tipo de experiencia de búsqueda que desee ofrecer.
 
 <a name="example"></a>
 
 ## <a name="example"></a>Ejemplo
 Tal y como se ha indicado, la puntuación personalizada se implementa mediante los perfiles de puntuación definidos en un esquema de índice.
 
-En este ejemplo se muestra hello esquema de un índice con dos perfiles de puntuación (`boostGenre`, `newAndHighlyRated`). Las consultas sobre este índice que incluyan cualquier perfil como un parámetro de consulta utilizarán el conjunto de resultados de hello perfil tooscore Hola.
+En este ejemplo se muestra el esquema de un índice con dos perfiles de puntuación (`boostGenre`, `newAndHighlyRated`). Las consultas sobre este índice que incluyen cualquiera de los perfiles como parámetro de consulta usará el perfil para puntuar el conjunto de resultados.
 
     {
       "name": "musicstoreindex",
@@ -150,43 +150,43 @@ En este ejemplo se muestra hello esquema de un índice con dos perfiles de puntu
 
 
 ## <a name="workflow"></a>Flujo de trabajo
-tooimplement personalizado la puntuación del comportamiento, agregue un esquema de toohello perfil de puntuación que define el índice de Hola. Puede tener hasta los perfiles de puntuación too16 dentro de un índice (consulte [límites de servicio](search-limits-quotas-capacity.md)), pero solo se puede especificar un perfil en tiempo en una consulta concreta.
+Para implementar el comportamiento personalizado de puntuación, agregue un perfil de puntuación al esquema que define el índice. Puede tener hasta 16 perfiles de puntuación en un índice, (vea [Límites de servicio en Azure Search](search-limits-quotas-capacity.md)), pero solo puede especificar un perfil de cada vez en una consulta concreta.
 
-Iniciar con hello [plantilla](#bkmk_template) proporcionados en este tema.
+Comience con la [Plantilla](#bkmk_template) incluida en este tema.
 
-Proporcione un nombre. Los perfiles de puntuación son opcionales, pero si agrega uno, se requiere nombre de Hola. Ser seguro toofollow convenciones de nomenclatura de Hola para campos (empiece con una letra, evite caracteres especiales y palabras reservadas). Consulte [Reglas de nomenclatura](http://msdn.microsoft.com/library/azure/dn857353.aspx) para obtener más información.
+Proporcione un nombre. Los perfiles de puntuación son opcionales, pero si agrega uno, se requerirá el nombre. Asegúrese de seguir las convenciones de nomenclatura de los campos (empieza con una letra, evita caracteres especiales y palabras reservadas). Consulte [Reglas de nomenclatura](http://msdn.microsoft.com/library/azure/dn857353.aspx) para obtener más información.
 
-cuerpo de Hola de hello perfil de puntuación se construye desde funciones y campos ponderados.
+El cuerpo del perfil de puntuación se construye a partir de campos ponderados y funciones.
 
 ### <a name="weights"></a>Pesos
-Hola `weights` propiedad de un perfil de puntuación especifica los pares de nombre / valor que asignar un campo de tooa de peso relativo. Hola [ejemplo](#example), campos de álbum, género y nombre de artista Hola son impulsados 1.5, 5 y 2, respectivamente. ¿Por qué género aumenta mucho más alto de Hola a otros usuarios? Si se realiza la búsqueda sobre datos que son un poco homogéneos (como sucede Hola de "género" Hola `musicstoreindex`), es posible que tenga una mayor variación en ponderaciones relativas de Hola. Por ejemplo, en hello `musicstoreindex`, "rock" aparece como género y en las descripciones de género expresadas de forma idéntica. Si desea que la descripción de género toooutweigh género, el campo de género Hola necesitará una ponderación relativa mucho mayor.
+La propiedad `weights` de un perfil de puntuación especifica los pares de nombre-valor que asignan una ponderación relativa a un campo. En el [ejemplo](#example), los campos albumTitle, genre y artistName se aumentan a 1.5, 5 y 2 respectivamente. ¿Por qué se aumenta el género mucho mayor que los demás? Si la búsqueda se realiza en datos que son en cierto modo homogéneos (como es el caso con «género» en el `musicstoreindex`), es posible que necesite una mayor variación en la ponderación relativa. Por ejemplo, en `musicstoreindex`, «rock» aparece como género y en las descripciones de género expresadas de forma idéntica. Si desea que el género supere en ponderación a la descripción del género, el campo del género necesitará una ponderación relativa mucho mayor.
 
-### <a name="functions"></a>Functions
-Funciones usadas cuando se requieren cálculos adicionales para contextos concretos. Los tipos de función válidos son `freshness`, `magnitude`, `distance` y `tag`. Cada función tiene parámetros que son tooit único.
+### <a name="functions"></a>Funciones
+Funciones usadas cuando se requieren cálculos adicionales para contextos concretos. Los tipos de función válidos son `freshness`, `magnitude`, `distance` y `tag`. Cada función tiene parámetros que son exclusivos de ella.
 
-* `freshness`debe utilizarse cuando desea es tooboost por lo novedoso o antiguo de un elemento. Esta función solo puede usarse con campos datetime (`Edm.DataTimeOffset`). Hola Nota `boostingDuration` atributo se utiliza sólo con la función de actualización de Hola.
-* `magnitude`debe utilizarse cuando desea es tooboost en función de cómo alto o bajo un valor numérico. Entre los escenarios que requieren esta función se incluyen aumentar por margen de beneficio, precio máximo, precio mínimo o recuento de descargas. Puede invertir intervalo hello, toolow alta, si desea que el patrón inverso hello (por ejemplo, tooboost artículos de menor precio más de mayor precio). Debido a un intervalo de precios de 100 $ demasiado$ 1, se establecería `boostingRangeStart` en 100 y `boostingRangeEnd` en elementos de menor precio de 1 tooboost Hola. Esta función solo puede usarse con campos doble y de número entero.
-* `distance`debe utilizarse cuando se desea tooboost por proximidad o ubicación geográfica. Esta función solo puede usarse con campos `Edm.GeographyPoint` .
-* `tag`debe utilizarse cuando se desea tooboost por etiquetas en común entre documentos y consultas de búsqueda. Esta función solo puede usarse con campos `Edm.String` y `Collection(Edm.String)`.
+* `freshness` debe usarse cuando desea aumentar según cómo de nuevo o de antiguo es un elemento. Esta función solo puede usarse con campos datetime (`Edm.DataTimeOffset`). Tenga en cuenta que el atributo `boostingDuration` solo se usa con la función de actualización.
+* `magnitude` debe usarse cuando desea aumentar en función de cómo de alto o de bajo es un valor numérico. Entre los escenarios que requieren esta función se incluyen aumentar por margen de beneficio, precio máximo, precio mínimo o recuento de descargas. Puede invertir el rango, de alto a bajo, si desea que el patrón inverso potencie, por ejemplo, los elementos de precio inferior más que los de precio superior. Dado un intervalo de precios de 100 $ a 1 $, establezca `boostingRangeStart` en 100 y `boostingRangeEnd` en 1 para potenciar los elementos de menor precio. Esta función solo puede usarse con campos doble y de número entero.
+* `distance` debe usarse cuando quiera potenciar según proximidad o ubicación geográfica. Esta función solo puede usarse con campos `Edm.GeographyPoint` .
+* `tag` debe usarse cuando quiera potenciar por etiquetas en común entre documentos y consultas de búsqueda. Esta función solo puede usarse con campos `Edm.String` y `Collection(Edm.String)`.
 
 #### <a name="rules-for-using-functions"></a>Reglas de uso de funciones
 * El tipo de función (actualización, magnitud, distancia, etiqueta) debe aparecer en minúsculas.
-* Las funciones no pueden incluir valores nulos ni estar vacías. En concreto, si incluye fieldname, tiene tooset lo toosomething.
-* Las funciones sólo pueden ser campos de toofilterable aplicado. Consulte [Crear índice](search-api-2015-02-28-preview.md#CreateIndex) para más información sobre los campos que se pueden filtrar.
-* Las funciones solo pueden ser aplicados toofields que se definen en la colección de campos de Hola de un índice.
+* Las funciones no pueden incluir valores nulos ni estar vacías. En concreto, si incluye un nombre de campo, deberá establecerlo en un valor.
+* Las funciones solo pueden aplicarse a los campos que se pueden filtrar. Consulte [Crear índice](search-api-2015-02-28-preview.md#CreateIndex) para más información sobre los campos que se pueden filtrar.
+* Las funciones solo pueden aplicarse a los campos que se definen en la colección de campos de un índice.
 
-Una vez definido el índice de hello, generar el índice de hello mediante la carga de esquema de índice de hello, seguido de documentos. Consulte [Crear índice](search-api-2015-02-28-preview.md#CreateIndex) y [Agregar, actualizar o eliminar documentos](search-api-2015-02-28-preview.md#AddOrUpdateDocuments) para obtener instrucciones sobre estas operaciones. Una vez que se genera el índice de hello, debe tener un perfil de puntuación funcional que funciona con los datos de búsqueda.
+Una vez definido el índice, genere el índice mediante la carga del esquema de índice, seguido de documentos. Consulte [Crear índice](search-api-2015-02-28-preview.md#CreateIndex) y [Agregar, actualizar o eliminar documentos](search-api-2015-02-28-preview.md#AddOrUpdateDocuments) para obtener instrucciones sobre estas operaciones. Una vez creado el índice, debe tener un perfil de puntuación funcional que funcione con los datos de búsqueda.
 
 <a name="bkmk_template"></a>
 
 ## <a name="template"></a>Plantilla
-Esta sección muestra la sintaxis de Hola y la plantilla para los perfiles de puntuación. Consulte demasiado[referencia de los atributos de índice](#bkmk_indexref) en la siguiente sección para obtener descripciones de los atributos de Hola de Hola.
+En esta sección se muestra la sintaxis y la plantilla de perfiles de puntuación. Consulte [Referencia del atributo de índice](#bkmk_indexref) en la sección siguiente para obtener descripciones de los atributos.
 
     ...
     "scoringProfiles": [
       {
         "name": "name of scoring profile",
-        "text": (optional, only applies toosearchable fields) {
+        "text": (optional, only applies to searchable fields) {
           "weights": {
             "searchable_field_name": relative_weight_value (positive #'s),
             ...
@@ -214,14 +214,14 @@ Esta sección muestra la sintaxis de Hola y la plantilla para los perfiles de pu
             // (- or -)
 
             "distance": {
-              "referencePointParameter": "...", (parameter toobe passed in queries toouse as reference location)
-              "boostingDistance": # (hello distance in kilometers from hello reference location where hello boosting range ends)
+              "referencePointParameter": "...", (parameter to be passed in queries to use as reference location)
+              "boostingDistance": # (the distance in kilometers from the reference location where the boosting range ends)
             }
 
             // (- or -)
 
             "tag": {
-              "tagsParameter": "..." (parameter toobe passed in queries toospecify list of tags toocompare against target field)
+              "tagsParameter": "..." (parameter to be passed in queries to specify list of tags to compare against target field)
             }
           }
         ],
@@ -236,56 +236,56 @@ Esta sección muestra la sintaxis de Hola y la plantilla para los perfiles de pu
 
 ## <a name="scoring-profile-property-reference"></a>Referencia de propiedad de perfil de puntuación
 > [!NOTE]
-> Una función de puntuación solo puede ser aplicados toofields filtrables.
+> Una función de puntuación solo puede aplicarse a campos filtrables.
 >
 >
 
 | Propiedad | Description |
 | --- | --- |
-| `name` |Necesario. Este es el nombre de Hola de hello perfil de puntuación. Se sigue Hola mismas convenciones de nomenclatura de un campo. Debe empezar por una letra y no puede contener puntos, signos de dos puntos ni símbolos @ y no se puede iniciar con la frase de Hola "azureSearch" (distingue mayúsculas de minúsculas). |
-| `text` |Contiene la propiedad de pesos de Hola. |
-| `weights` |Opcional. Par de nombre-valor que especifica un nombre de campo y un peso relativo. El peso relativo debe ser un número entero positivo o un número de punto flotante. Puede especificar el nombre del campo Hola sin una ponderación correspondiente. Pesos son utilizados tooindicate Hola importancia de tooanother relativa de un campo. |
-| `functions` |Opcional. Tenga en cuenta que una función de puntuación solo puede ser aplicada toofields filtrables. |
-| `type` |Obligatorio para las funciones de puntuación. Indica el tipo de saludo de la función toouse. Entre los valores válidos se incluyen `magnitude`, `freshness`, `distance` y `tag`. Puede incluir más de una función en cada perfil de puntuación. nombre de la función Hello debe estar en minúsculas. |
-| `boost` |Obligatorio para las funciones de puntuación. Número positivo usado como multiplicador para el resultado sin formato. No puede ser too1 igual. |
-| `fieldName` |Obligatorio para las funciones de puntuación. Una función de puntuación solo puede ser aplicados toofields que forman parte de la colección de campos de hello del índice de Hola y que son filtrables. Además, cada tipo de función introduce restricciones adicionales (índice de actualización se usa con campos de fecha y hora, magnitud con número entero o campos dobles, distancia con campos de ubicación y etiqueta con cadena o campos de colección de cadenas). Solo puede especificar un campo único por cada definición de función. De ejemplo, toouse magnitud dos veces en Hola mismo perfil, necesitaría definiciones de tooinclude dos magnitud, uno para cada campo. |
-| `interpolation` |Obligatorio para las funciones de puntuación. Define la pendiente de Hola para qué Hola aumento de puntuación crece desde el inicio de hello del final del intervalo de hello toohello del intervalo de Hola. Entre los valores válidos se incluyen `linear` (predeterminado), `constant`, `quadratic` y `logarithmic`. Consulte [Establecer interpolaciones](#bkmk_interpolation) para más información. |
-| `magnitude` |función de puntuación de magnitud de Hello es clasificaciones tooalter utilizado según Hola intervalo de valores para un campo numérico. Algunos ejemplos de uso más común de Hola de esto son:<ul><li>Las clasificaciones por estrellas: Alter Hola puntuación en función de valor Hola campo "Clasificación por estrellas" de Hola. Cuando dos elementos son relevantes, elemento de hello con clasificación superior Hola se mostrará en primer lugar.</li><li>Margen: Cuando dos documentos son relevantes, un minorista puede tooboost documentos que tienen mayores márgenes en primer lugar.</li><li>Haga clic en recuentos: para las aplicaciones que realizan el seguimiento, haga clic a través de acciones tooproducts o páginas, puede usar elementos de tooboost de magnitud que tienden a tooget Hola mayor cantidad de tráfico.</li><li>Cantidad de descargas: para las aplicaciones que realizan el seguimiento de las descargas, Hola magnitud función permite aumentar elementos que tienen hello más descargados.</li></ul> |
-| `magnitude:boostingRangeStart` |Hola conjuntos valor inicial del intervalo de hello en el cual se puntúa la magnitud. Hola valor debe ser un entero o un número de punto flotante. En cuanto a las clasificaciones por estrellas de 1 a 4, esto equivaldría a 1. Para los márgenes superiores al 50%, esto equivaldría a 50. |
-| `magnitude:boostingRangeEnd` |Establece el valor de final de Hola de intervalo de hello en el cual se puntúa la magnitud. Hola valor debe ser un entero o un número de punto flotante. En cuanto a las clasificaciones por estrellas de 1 a 4, esto equivaldría a 4. |
-| `magnitude:constantBoostBeyondRange` |Los valores válidos son true o false (valor predeterminado). Cuando se establece tootrue, aumento completo Hola continuará toodocuments tooapply que tienen un valor para el campo de destino de hello es mayor que el extremo superior de hello del intervalo de saludo. Si es false, aumento de Hola de esta función no será aplicado toodocuments tener un valor para el campo de destino de Hola que se encuentra fuera del intervalo de saludo. |
-| `freshness` |función de puntuación de actualización de Hello es tooalter usado puntuaciones para los artículos basados en valores de DateTimeOffset campos de categoría. Por ejemplo, un elemento con una fecha más reciente puede clasificarse por encima de los elementos más antiguos. (Tenga en cuenta que también es posible toorank elementos como los eventos de calendario con fechas futuras que toohello más cerca de los elementos presente puede clasificarse por encima de elementos más Hola futuras). En la versión de servicio actual de hello, uno de los extremos del intervalo de Hola se corregirá toohello hora actual. Hello otro extremo es un tiempo en hello último en función de hello `boostingDuration`. tooboost un intervalo de horas en hello futuras usar negativo `boostingDuration`. tasa de Hello en qué Hola impulso cambios de un intervalo máximo y mínimo viene determinado por hello toohello de interpolación aplicar perfil de puntuación (Véase la figura hello). tooreverse Hola factor de aumento aplicado, elija un factor de aumento de menor que 1. |
-| `freshness:boostingDuration` |Establece un período de caducidad después del que se detendrá la potenciación de un documento determinado. Vea [establecer boostingDuration](#bkmk_boostdur) Hola pasos de la sección de sintaxis y ejemplos. |
-| `distance` |función de puntuación de distancia de Hello es hello tooaffect usado puntuación de documentos en función de cómo cerrar o ahora son ubicación geográfica de referencia de tooa relativa. ubicación de la referencia de Hola se proporciona como parte de la consulta de hello en un parámetro (mediante hello `scoringParameter` parámetro de consulta) como un argumento lon, LAT.. |
-| `distance:referencePointParameter` |Un parámetro toobe pasa toouse consultas como ubicación de referencia. scoringParameter es un parámetro de consulta. Consulte [Búsqueda de documentos](search-api-2015-02-28-preview.md#SearchDocs) para obtener descripciones de los parámetros de consulta. |
-| `distance:boostingDistance` |Número que indica la distancia de hello en kilómetros desde la ubicación de la referencia de Hola donde hello impulso intervalo finaliza. |
-| `tag` |Hello etiqueta función de puntuación se utiliza puntuación de hello tooaffect de documentos basados en etiquetas en documentos y consultas de búsqueda. Se aumentar los documentos que tienen etiquetas en común con la consulta de búsqueda de Hola. Hola etiquetas para la consulta de búsqueda de Hola se proporciona como un parámetro de puntuación en cada solicitud de búsqueda (mediante hello `scoringParameter` parámetro de consulta). |
-| `tag:tagsParameter` |Un parámetro toobe pasa en consultas toospecify etiquetas para una solicitud determinada. `scoringParameter` es un parámetro de consulta. Consulte [Búsqueda de documentos](search-api-2015-02-28-preview.md#SearchDocs) para obtener descripciones de los parámetros de consulta. |
-| `functionAggregation` |Opcional. Se aplica solo cuando se especifican las funciones. Entre los valores válidos se incluyen `sum` (predeterminado), `average`, `minimum`, `maximum` y `firstMatching`. Una puntuación de búsqueda es un valor único que se calcula a partir de varias variables, incluidas varias funciones. Estos atributos se indica cómo se combinan los aumentos de Hola de todas las funciones de hello en un aumento agregado único que es aplicado toohello base puntuación del documento. puntuación de Hola se basa en hello tf idf valor calculado a partir de documentos de Hola y consulta de búsqueda de Hola. |
-| `defaultScoringProfile` |Al ejecutar una solicitud de búsqueda, si no se especifica ningún perfil de puntuación, se usará la puntuación predeterminada (tf-idf solamente). Un nombre de perfil de puntuación predeterminado se puede establecer aquí, provocando toouse de búsqueda de Azure ese perfil cuando no se proporciona ningún perfil específico en la solicitud de búsqueda de Hola. |
+| `name` |Obligatorio. Este es el nombre del perfil de puntuación. Sigue las mismas convenciones de nomenclatura de un campo. Debe comenzar por una letra, no puede contener puntos, dos puntos o símbolos @ y no puede comenzar con la frase «Búsquedaazure» (distingue entre mayúsculas y minúsculas). |
+| `text` |Contiene la propiedad Weights. |
+| `weights` |Opcional. Par de nombre-valor que especifica un nombre de campo y un peso relativo. El peso relativo debe ser un número entero positivo o un número de punto flotante. Puede especificar el nombre del campo sin un peso correspondiente. Weights se usa para indicar la importancia de un campo en relación con otro. |
+| `functions` |Opcional. Tenga en cuenta que las funciones de puntuación solo pueden aplicarse a campos filtrables. |
+| `type` |Obligatorio para las funciones de puntuación. Indica el tipo de función que se usará. Entre los valores válidos se incluyen `magnitude`, `freshness`, `distance` y `tag`. Puede incluir más de una función en cada perfil de puntuación. El nombre de la función debe estar en minúsculas. |
+| `boost` |Obligatorio para las funciones de puntuación. Número positivo usado como multiplicador para el resultado sin formato. No puede ser igual a 1. |
+| `fieldName` |Obligatorio para las funciones de puntuación. Una función de puntuación solo puede aplicarse a los campos que forman parte de la colección de campos del índice y que son filtrables. Además, cada tipo de función introduce restricciones adicionales (índice de actualización se usa con campos de fecha y hora, magnitud con número entero o campos dobles, distancia con campos de ubicación y etiqueta con cadena o campos de colección de cadenas). Solo puede especificar un campo único por cada definición de función. Por ejemplo, para usar magnitud dos veces en el mismo perfil, necesitaría incluir dos magnitudes de definiciones, una para cada campo. |
+| `interpolation` |Obligatorio para las funciones de puntuación. Define la pendiente con la que la potenciación de la puntuación aumenta desde el inicio del rango hasta su final. Entre los valores válidos se incluyen `linear` (predeterminado), `constant`, `quadratic` y `logarithmic`. Consulte [Establecer interpolaciones](#bkmk_interpolation) para más información. |
+| `magnitude` |La función de puntuación de la magnitud se usa para modificar las clasificaciones según el intervalo de valores de un campo numérico. Algunos de los ejemplos de uso más habituales sobre esto son:<ul><li>Clasificaciones por estrellas: modifique la puntuación en función del valor del campo "Clasificación por estrellas". Cuando dos elementos son pertinentes, en primer lugar se mostrará el elemento con la clasificación superior.</li><li>Margen: cuando dos documentos son relevantes, es posible que un distribuidor aumente los documentos que tengan mayores márgenes a las primeras posiciones.</li><li>Recuentos de clics: en las aplicaciones que hacen un seguimiento de los clics en productos o páginas, puede usar la magnitud para aumentar elementos que tienden a atraer el máximo de tráfico.</li><li>Recuentos de descargas: para las aplicaciones que hacen el seguimiento de descargas, la función magnitud le permite aumentar los elementos que tienen más descargas.</li></ul> |
+| `magnitude:boostingRangeStart` |Establece el valor inicial del intervalo en el que se puntúa la magnitud. El valor debe ser un número entero o un número de punto flotante. En cuanto a las clasificaciones por estrellas de 1 a 4, esto equivaldría a 1. Para los márgenes superiores al 50%, esto equivaldría a 50. |
+| `magnitude:boostingRangeEnd` |Establece el valor final del intervalo en el que se puntúa la magnitud. El valor debe ser un número entero o un número de punto flotante. En cuanto a las clasificaciones por estrellas de 1 a 4, esto equivaldría a 4. |
+| `magnitude:constantBoostBeyondRange` |Los valores válidos son true o false (valor predeterminado). Cuando se establece en true, la potenciación completa continuará aplicándose a los documentos que tienen un valor para el campo de destino superior al extremo superior del intervalo. Si es false, la potenciación de esta función no se aplicará a los documentos que tengan un valor para el campo de destino que se encuentre fuera del intervalo. |
+| `freshness` |La función de puntuación del índice de actualización se usa para modificar las puntuaciones de clasificación de los elementos basados en valores de campos de DateTimeOffset. Por ejemplo, un elemento con una fecha más reciente puede clasificarse por encima de los elementos más antiguos. (Tenga en cuenta que también es posible clasificar elementos, como eventos del calendario con fechas futuras, de manera que los elementos más cercanos al presente tengan una clasificación más alta que los elementos más alejados en el futuro). En la versión actual del servicio, uno de los extremos del intervalo se corregirá a la hora actual. El otro extremo es un momento en el pasado basado en el elemento `boostingDuration`. Para potenciar un intervalo de horas en el futuro use una `boostingDuration`negativa. La velocidad a la que cambia la potenciación desde un intervalo máximo y mínimo viene determinada por la interpolación aplicada al perfil de puntuación (consulte la figura siguiente). Para invertir el factor de potenciación aplicado, seleccione un factor de potenciación de menos de 1. |
+| `freshness:boostingDuration` |Establece un período de caducidad después del que se detendrá la potenciación de un documento determinado. Consulte [Establecer boostingDuration](#bkmk_boostdur) en la sección siguiente para obtener información sobre la sintaxis y ejemplos. |
+| `distance` |La función de puntuación de la distancia se usa para afectar a la puntuación de documentos en función de la cercanía o distancia respecto a una ubicación geográfica de referencia. La ubicación de referencia se proporciona como parte de la consulta en un parámetro (mediante el parámetro de consulta `scoringParameter` ) como argumento lon, lat. |
+| `distance:referencePointParameter` |Parámetro que se pasarán en las consultas a usar como ubicación de referencia. scoringParameter es un parámetro de consulta. Consulte [Búsqueda de documentos](search-api-2015-02-28-preview.md#SearchDocs) para obtener descripciones de los parámetros de consulta. |
+| `distance:boostingDistance` |Número que indica la distancia en kilómetros desde la ubicación de referencia donde finaliza el intervalo de potenciación. |
+| `tag` |La función de puntuación de etiquetas se usa para afectar a la puntuación de documentos basados en las etiquetas de documentos y las consultas de búsqueda. Los documentos que tienen etiquetas en común con la consulta de búsqueda se potenciarán. Las etiquetas de la consulta de búsqueda se proporcionan como un parámetro de puntuación en cada solicitud de búsqueda (mediante el parámetro de consulta `scoringParameter` ). |
+| `tag:tagsParameter` |Parámetro que se pasará en las consultas para especificar etiquetas para una solicitud en particular. `scoringParameter` es un parámetro de consulta. Consulte [Búsqueda de documentos](search-api-2015-02-28-preview.md#SearchDocs) para obtener descripciones de los parámetros de consulta. |
+| `functionAggregation` |Opcional. Se aplica solo cuando se especifican las funciones. Entre los valores válidos se incluyen `sum` (predeterminado), `average`, `minimum`, `maximum` y `firstMatching`. Una puntuación de búsqueda es un valor único que se calcula a partir de varias variables, incluidas varias funciones. Estos atributos indican cómo se combinan la potenciación de todas las funciones en una única potenciación total que, a continuación, se aplica a la puntuación del documento base. La puntuación base se basa en el valor tf-idf calculado a partir del documento y la consulta de búsqueda. |
+| `defaultScoringProfile` |Al ejecutar una solicitud de búsqueda, si no se especifica ningún perfil de puntuación, se usará la puntuación predeterminada (tf-idf solamente). Aquí puede establecerse un nombre de perfil de puntuación predeterminado, que provocará que la Búsqueda de Azure use ese perfil cuando no se proporcione ningún perfil específico en la solicitud de búsqueda. |
 
 <a name="bkmk_interpolation"></a>
 
 ## <a name="set-interpolations"></a>Establecer interpolaciones
-Las interpolaciones le permiten pendiente de hello toodefine para qué Hola aumento de puntuación crece desde el inicio de hello del final del intervalo de hello toohello del intervalo de Hola. se puede utilizar Hola siguientes interpolaciones:
+Las interpolaciones le permiten definir la pendiente con la que la potenciación de la puntuación aumenta desde el inicio del rango hasta su final. Es posible usar las siguientes interpolaciones:
 
-* `Linear`: Para los elementos que están dentro de hello max y min intervalo, Hola aumento aplicado toohello elemento se realizará en una cantidad constante decreciente. Lineal es interpolación de hello predeterminado para un perfil de puntuación.
-* `Constant`: Para los elementos que están dentro de hello inicio y final del intervalo, un aumento constante será aplicado toohello resultados de rango.
-* `Quadratic`: En la comparación tooa interpolación lineal que tiene un aumento constante decreciente, cuadrático inicialmente se reducirá a ritmo más pequeño y, a medida que se acerque el final del rango hello, se reducirá a intervalos mucho mayor. Esta opción de interpolación no se permite en funciones de puntuación de etiquetas.
-* `Logarithmic`: En la comparación tooa interpolación lineal que tiene un aumento constante decreciente, logarítmica inicialmente se reducirá a ritmo más elevado y, a medida que se acerque el final del rango hello, se reducirá a intervalos mucho más pequeños. Esta opción de interpolación no se permite en funciones de puntuación de etiquetas.
+* `Linear`: Para los elementos que están dentro del intervalo máximo y mínimo, la potenciación aplicada al elemento se realizará en un grado que va decreciendo de manera constante. Lineal es la interpolación predeterminada de un perfil de puntuación.
+* `Constant`: En los elementos que se encuentran dentro del intervalo de inicio y finalización, se aplicará una potenciación constante a los resultados de la clasificación.
+* `Quadratic`: En comparación con una interpolación lineal que tiene una potenciación en reducción constante, Cuadrático provocará inicialmente una reducción a un ritmo inferior y, a continuación, a medida que se aproxima el final del intervalo, se reduce a un intervalo muy superior. Esta opción de interpolación no se permite en funciones de puntuación de etiquetas.
+* `Logarithmic`: En comparación con una interpolación lineal que tiene una potenciación en reducción constante, Logarítmico provocará inicialmente una reducción a un ritmo superior y, a continuación, a medida que se aproxima el final del intervalo, se reduce a un intervalo muy inferior. Esta opción de interpolación no se permite en funciones de puntuación de etiquetas.
 
-<a name="Figure1"></a>![][1]
+<a name="Figure1"></a> ![][1]
 
 <a name="bkmk_boostdur"></a>
 
 ## <a name="set-boostingduration"></a>Establecer boostingDuration
-`boostingDuration`es un atributo de la función de actualización de hello. Se utiliza tooset un período de caducidad después de la cual el aumento se detendrá para un documento determinado. Por ejemplo, tooboost una línea de productos o marca durante un período de promoción de 10 días, especificaría el período de 10 días hello como "P10D" para dichos documentos. O tooboost próximos eventos Hola semana siguiente especifican "-P7D".
+`boostingDuration` es un atributo de la función de índice de actualización. Se usa para establecer un período de caducidad después del que se detendrá la potenciación de un documento determinado. Por ejemplo, para potenciar una línea de productos o marca durante un período de promoción de 10 días, debe especificar el período de 10 días como "P10D" para dichos documentos. O bien, para elevar próximos eventos en la próxima semana, especifique "-P7D".
 
-`boostingDuration` debe tener el formato de un valor "dayTimeDuration" XSD (subconjunto restringido de un valor de duración ISO 8601). patrón de Hola para esto es: `[-]P[nD][T[nH][nM][nS]]`.
+`boostingDuration` debe tener el formato de un valor "dayTimeDuration" XSD (subconjunto restringido de un valor de duración ISO 8601). El patrón de este es: `[-]P[nD][T[nH][nM][nS]]`.
 
-Hello en la tabla siguiente proporciona varios ejemplos.
+La tabla siguiente proporciona varios ejemplos.
 
-| Duration | boostingDuration |
+| Duración | boostingDuration |
 | --- | --- |
 | 1 día |"P1D" |
 | 2 días, 12 horas |"P2DT12H" |
@@ -297,7 +297,7 @@ Para obtener más ejemplos, consulte [Esquema XML: tipos de datos (sitio web de 
 **Consulte también**
 [API de REST del servicio Azure Search](http://msdn.microsoft.com/library/azure/dn798935.aspx) en MSDN <br/>
 [Crear índice (API de Azure Search)](http://msdn.microsoft.com/library/azure/dn798941.aspx) en MSDN<br/>
-[Agregar un índice de búsqueda de puntuación perfil tooa](http://msdn.microsoft.com/library/azure/dn798928.aspx) en MSDN<br/>
+[Agregar un perfil de puntuación a un índice de búsqueda](http://msdn.microsoft.com/library/azure/dn798928.aspx) en MSDN<br/>
 
 <!--Image references-->
 [1]: ./media/search-api-scoring-profiles-2015-02-28-Preview/scoring_interpolations.png

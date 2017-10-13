@@ -1,6 +1,6 @@
 ---
-title: entrega de contenido de Azure para su escenario de aaaOptimize
-description: "¿Cómo toooptimize entrega del contenido para escenarios concretos"
+title: Optimizar la entrega de contenido de Azure para su escenario
+description: "Cómo optimizar la entrega del contenido para escenarios específicos"
 services: cdn
 documentationcenter: 
 author: smcevoy
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
-ms.openlocfilehash: 922a92fdbf7e6e21f2b5ae9a2fb4ac32735fc15a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 98941c49b057380b3ef9164515bcc2a63ccb56ce
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="optimize-azure-content-delivery-for-your-scenario"></a>Optimizar la entrega de contenido de Azure para su escenario
 
-Cuando entregue contenido tooa audiencia global grandes, es entrega de hello optimizado tooensure críticos de su contenido. Hola red de entrega de contenido de Azure puede optimizar la experiencia de entrega de hello en función de tipo de Hola de contenido que tiene. El contenido puede ser un sitio web, una transmisión en directo, un vídeo o un archivo grande para su descarga. Cuando se crea un punto de conexión de entrega de contenido (CDN) de red, especificar un escenario en hello **optimizado para** opción. Su elección determina qué optimización está aplicada toohello contenido vaya a entregar desde el punto de conexión de red CDN Hola.
+Cuando realice la entrega de contenido a una audiencia global de gran tamaño, es fundamental garantizar la entrega optimizada del contenido. Azure Content Delivery Network puede optimizar la experiencia de entrega según el tipo de contenido que tenga. El contenido puede ser un sitio web, una transmisión en directo, un vídeo o un archivo grande para su descarga. Cuando cree un punto de conexión de la red de entrega de contenido (CDN), especifique un escenario en la opción **Optimizado para**. Su elección determina qué optimización se aplica al contenido que se va a entregar desde el punto de conexión de la red CDN.
 
-Opciones de optimización son toouse diseñada comportamientos de prácticas recomendadas tooimprove entrega de contenido rendimiento y la descarga de origen mejor. Las opciones de escenario afectar al rendimiento mediante la modificación de las configuraciones de almacenamiento parcial en caché, objeto de fragmentación y directiva de reintentos de error de origen de Hola. 
+Las opciones de optimización están diseñadas para usar comportamientos de procedimientos recomendados para mejorar el rendimiento de la entrega de contenido y un mejor origen de descarga. Las opciones del escenario afectan el rendimiento mediante la modificación de las configuraciones de almacenamiento parcial en caché, la fragmentación de objetos y la directiva de reintentos de error de origen. 
 
-En este artículo se proporciona una introducción a las diversas características de optimización y cuándo se deben usar. Para obtener más información sobre las características y limitaciones, vea los artículos correspondientes de Hola en cada tipo de optimización individuales.
+En este artículo se proporciona una introducción a las diversas características de optimización y cuándo se deben usar. Para más información sobre las características y limitaciones, vea los artículos respectivos en cada tipo de optimización individual.
 
 > [!NOTE]
-> Su **optimizado para** opciones pueden variar en función de proveedor de Hola que seleccione. Proveedores CDN aplican la mejora de maneras diferentes, según el escenario de Hola. 
+> Las opciones de **Optimizado para** pueden variar según el proveedor seleccionado. Los proveedores de la red CDN aplican la mejora de maneras diferentes, según el escenario. 
 
 ## <a name="provider-options"></a>Opciones de proveedor
 
-Red de entrega de contenido de Azure de Akamai Hello es compatible con:
+Azure Content Delivery Network de Akamai admite:
 
 * Entrega web general 
 
@@ -45,75 +45,75 @@ Red de entrega de contenido de Azure de Akamai Hello es compatible con:
 
 * Aceleración de sitios dinámicos 
 
-Hola red de entrega de contenido de Azure desde Verizon admite la entrega de web general solo. Se puede usar para vídeo bajo demanda y descarga de archivos grandes. Tooselect no tiene un tipo de optimización.
+Azure Content Delivery Network de Verizon solo admite la entrega web general. Se puede usar para vídeo bajo demanda y descarga de archivos grandes. No tiene que seleccionar un tipo de optimización.
 
-Recomendamos encarecidamente que pruebe las variaciones de rendimiento entre proveedor óptimo Hola de diferentes proveedores tooselect para su entrega.
+Se recomienda encarecidamente que pruebe las variaciones en el rendimiento entre diferentes proveedores para seleccionar el proveedor óptimo para su entrega.
 
 ## <a name="select-and-configure-optimization-types"></a>Seleccionar y configurar los tipos de optimización
 
-toocreate un nuevo punto de conexión, seleccione un tipo de optimización que mejor coincida con el escenario de Hola y el tipo de contenido que se desea Hola toodeliver de punto de conexión. **Entrega de web general** es la selección predeterminada de Hola. Puede actualizar la opción de optimización de Hola para cualquier extremo de Akamai existente en cualquier momento. Este cambio no interrumpa la entrega de CDN Hola. 
+Para crear un nuevo punto de conexión, seleccione el tipo de optimización que mejor coincida con el escenario y el tipo de contenido que quiere que el punto de conexión entregue. **Entrega web general** es la selección predeterminada. Puede actualizar la opción de optimización para cualquier extremo de Akamai existente en cualquier momento. Este cambio no interrumpe la entrega desde la red CDN. 
 
 1. Seleccione un punto de conexión del perfil estándar de Akamai.
 
     ![Selección de punto de conexión ](./media/cdn-optimization-overview/01_Akamai.png)
 
-2. En **CONFIGURACIÓN**, seleccione **Optimización**. A continuación, seleccione un tipo de hello **optimizado para** lista desplegable.
+2. En **CONFIGURACIÓN**, seleccione **Optimización**. Después, seleccione un tipo en la lista desplegable **Optimizado para**.
 
     ![Selección de la optimización y el tipo.](./media/cdn-optimization-overview/02_Select.png)
 
 ## <a name="optimization-for-specific-scenarios"></a>Optimización de escenarios específicos
 
-Puede optimizar el extremo de red CDN Hola para uno de los escenarios siguientes de Hola. 
+Puede optimizar el punto de conexión de la red CDN para uno de los siguientes escenarios. 
 
 ### <a name="general-web-delivery"></a>Entrega web general
 
-Entrega de web general es la opción de optimización más comunes de Hola. Está diseñada para la optimización de contenido web general, como páginas web y aplicaciones web. Esta optimización puede usarse también para la descarga de archivos y vídeos.
+Entrega web general es la opción de optimización más común. Está diseñada para la optimización de contenido web general, como páginas web y aplicaciones web. Esta optimización puede usarse también para la descarga de archivos y vídeos.
 
-Un sitio web típico incluye contenido estático y dinámico. Contenido estático incluye imágenes, las bibliotecas de JavaScript y hojas de estilos que se pueden almacenan en caché y entregan toodifferent a los usuarios. Contenido dinámico está personalizado para un usuario individual, como elementos de noticias que adaptan tooa perfil de usuario. Contenido dinámico no está almacenado en memoria caché porque es usuario de tooeach único, como el contenido del carro de la compra. La entrega web general puede optimizar todo el sitio web. 
+Un sitio web típico incluye contenido estático y dinámico. El contenido estático incluye las imágenes, las bibliotecas de JavaScript y las hojas de estilos, que pueden almacenarse en la memoria caché y se entregan a distintos usuarios. El contenido dinámico es personalizado para un usuario específico, como elementos de noticias adaptados a un perfil de usuario. El contenido dinámico no se almacena en la memoria caché porque es único para cada usuario, como el contenido de los carros de la compra. La entrega web general puede optimizar todo el sitio web. 
 
 > [!NOTE]
-> Si usas Hola red de entrega de contenido de Azure de Akamai, conviene toouse esta optimización si el tamaño medio de los archivos es menor que 10 MB. Si el tamaño medio de los archivos es superior a 10 MB, seleccione **descarga de archivos grandes** de hello **optimizado para** lista desplegable.
+> Si usa Azure Content Delivery Network de Akamai, es posible que quiera usar esta optimización cuando el tamaño promedio de los archivos sea inferior a 10 MB. Si el tamaño promedio de los archivos es superior a 10 MB, seleccione **Descarga de archivos grandes** en la lista desplegable **Optimizado para**.
 
 ### <a name="general-media-streaming"></a>Streaming multimedia general
 
-Si necesita el punto de conexión de toouse Hola de transmisión por secuencias de vídeo bajo demanda y transmisión por secuencias en directo, se recomienda la optimización de transmisión por secuencias de multimedia general.
+Si tiene que usar el punto de conexión para streaming en vivo y de vídeo bajo demanda, se recomienda la optimización de streaming multimedia general.
 
-Transmisión por secuencias multimedia es tiempo confidencial, ya que los paquetes que llegan en tiempo de ejecución en el cliente de Hola pueden provocar una experiencia de visualización degradado, como el almacenamiento en búfer frecuentes en contenido de vídeo. Optimización de la transmisión por secuencias reduce la latencia de Hola de entrega de contenido multimedia y ofrece una experiencia de transmisión por secuencias suave para los usuarios. 
+El streaming multimedia depende del tiempo, porque los paquetes que llegan tarde al cliente pueden provocar una experiencia de visualización deteriorada, como el almacenamiento en búfer frecuente del contenido de vídeo. La optimización del streaming multimedia reduce la latencia de entrega de contenido multimedia y proporciona una experiencia de streaming con velocidad de transmisión adaptable para los usuarios. 
 
-Es un escenario común para los clientes de Azure Media Services. Cuando usa Azure Media Services, obtiene un punto de conexión de streaming que puede usarse para streaming en vivo y bajo demanda. Con este escenario, los clientes no necesitan tooswitch tooanother extremo cuando cambian de transmisión por secuencias en directo tooon a petición. La optimización de streaming multimedia general admite este tipo de escenario.
+Es un escenario común para los clientes de Azure Media Services. Cuando usa Azure Media Services, obtiene un punto de conexión de streaming que puede usarse para streaming en vivo y bajo demanda. Con este escenario, los clientes no tienen que cambiar a otro punto de conexión cuando pasan de streaming en vivo a streaming bajo demanda. La optimización de streaming multimedia general admite este tipo de escenario.
 
-Red de entrega de contenido de Azure de Verizon Hello usa hello web general entrega optimización tipo toodeliver transmisión por secuencias contenido multimedia.
+Azure Content Delivery Network de Verizon usa el tipo de optimización de entrega web general para ofrecer streaming multimedia.
 
-vea toolearn más información acerca de la optimización, la transmisión por secuencias [optimización la transmisión por secuencias](cdn-media-streaming-optimization.md).
+Para obtener más información sobre la optimización del streaming multimedia, vea [Optimización del streaming multimedia](cdn-media-streaming-optimization.md).
 
 ### <a name="video-on-demand-media-streaming"></a>Streaming multimedia de vídeo a petición
 
-La optimización del streaming multimedia de vídeo a petición mejora el contenido que se transmite a petición. Si usa un punto de conexión para la transmisión por secuencias de vídeo bajo demanda, conviene toouse esta opción.
+La optimización del streaming multimedia de vídeo a petición mejora el contenido que se transmite a petición. Se recomienda usar esta opción si usa un punto de conexión para el streaming de vídeo bajo demanda.
 
-Red de entrega de contenido de Azure de Verizon Hello usa hello web general entrega optimización tipo toodeliver transmisión por secuencias contenido multimedia.
+Azure Content Delivery Network de Verizon usa el tipo de optimización de entrega web general para ofrecer streaming multimedia.
 
-vea toolearn más información acerca de la optimización, la transmisión por secuencias [optimización la transmisión por secuencias](cdn-media-streaming-optimization.md).
+Para obtener más información sobre la optimización del streaming multimedia, vea [Optimización del streaming multimedia](cdn-media-streaming-optimization.md).
 
 > [!NOTE]
-> Si el punto de conexión de hello sirve principalmente contenido de vídeo bajo demanda, use este tipo de optimización. Hola la diferencia principal entre esta optimización y la optimización de transmisión por secuencias de multimedia general de hello consiste en tiempo de espera de reintento de conexión de Hola. tiempo de espera de Hello es mucho más corta toowork con escenarios de transmisión por secuencias en directo.
+> Si el punto de conexión sirve principalmente contenido de vídeo bajo demanda, use este tipo de optimización. La principal diferencia entre esta optimización y la optimización de streaming multimedia general es el tiempo de expiración del reintento de conexión. El tiempo de expiración es mucho más breve para trabajar con escenarios de streaming en vivo.
 
 ### <a name="large-file-download"></a>Descarga de archivos de gran tamaño
 
-Si usas Hola red de entrega de contenido de Azure de Akamai, debe usar archivos de toodeliver de descarga de archivos grandes mayores de 1,8 GB. Hola red de entrega de contenido de Azure de Verizon no tiene una limitación en el archivo de tamaño en su optimización de entrega de web general de la descarga.
+Si usa Azure Content Delivery Network de Akamai, debe usar la descarga de archivos grandes para entregar archivos de más de 1,8 GB. Azure Content Delivery Network de Verizon no tiene un límite para el tamaño de archivo de descarga en su optimización para entrega web general.
 
-Si usas Hola red de entrega de contenido de Azure de Akamai, descargas de archivos grandes se optimizan para el contenido de más de 10 MB. Si el tamaño medio de los archivos es menor que 10 MB, conviene entrega de toouse web general. Si los tamaños de archivos promedio son constantemente superiores a 10 MB, podría ser más eficaz toocreate un extremo independiente para archivos de gran tamaño. Por ejemplo, las actualizaciones de firmware o software normalmente son archivos grandes.
+Si usa Azure Content Delivery Network de Akamai, las descargas de archivos grandes se optimizan para el contenido de más de 10 MB. Si el tamaño promedio de los archivos es menor que 10 MB, se recomienda usar la entrega web general. Si los tamaños promedios de los archivos son constantemente superiores a 10 MB, es posible que sea más eficaz crear un punto de conexión independiente para los archivos grandes. Por ejemplo, las actualizaciones de firmware o software normalmente son archivos grandes.
 
-Red de entrega de contenido de Azure de Verizon Hello usa hello web general entrega optimización tipo toodeliver transmisión por secuencias contenido multimedia.
+Azure Content Delivery Network de Verizon usa el tipo de optimización de entrega web general para ofrecer streaming multimedia.
 
-toolearn más información acerca de la optimización de archivos de gran tamaño, vea [optimización de archivos grandes](cdn-large-file-optimization.md).
+Para obtener más información sobre la optimización de archivos grandes, vea [Optimización de archivos grandes](cdn-large-file-optimization.md).
 
 ### <a name="dynamic-site-acceleration"></a>Aceleración de sitios dinámicos
 
- La aceleración de sitios dinámicos está disponible en los perfiles de Content Delivery Network de Akamai y Verizon. Esta optimización implica un toouse cuota adicional. Para obtener más información, vea Hola página de precios.
+ La aceleración de sitios dinámicos está disponible en los perfiles de Content Delivery Network de Akamai y Verizon. Para usar esta optimización se aplica una cuota adicional. Para más información, vea la página de precios.
 
-Aceleración de sitio dinámico incluye diversas técnicas que se benefician de latencia de Hola y el rendimiento de contenido dinámico. Las técnicas incluyen la optimización de rutas y redes, la optimización de TCP y mucho más. 
+La aceleración de sitios dinámicos incluye diversas técnicas que se benefician de la latencia y el rendimiento del contenido dinámico. Las técnicas incluyen la optimización de rutas y redes, la optimización de TCP y mucho más. 
 
-Puede usar esta aplicación web que incluye muchas de las respuestas que no estén almacenable en caché de tooaccelerate de optimización. Algunos ejemplos son los resultados de búsquedas, transacciones de finalización de la compra o datos en tiempo real. Puede continuar capacidades de almacenamiento en caché de CDN de principales y toouse para datos estáticos. 
+Esta optimización se puede usar para acelerar una aplicación web que incluye muchas respuestas que no se pueden almacenar en caché. Algunos ejemplos son los resultados de búsquedas, transacciones de finalización de la compra o datos en tiempo real. Puede seguir usando las funciones de almacenamiento en caché principales de CDN para los datos estáticos. 
 
 
 

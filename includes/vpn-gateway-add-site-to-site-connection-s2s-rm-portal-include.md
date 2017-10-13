@@ -1,16 +1,16 @@
-1. Navegue tooand hoja de hello abierto para la puerta de enlace de red virtual. No hay toonavigate de varias maneras. En nuestro ejemplo, se abrirá la puerta de enlace de toohello 'VNet1GW' yendo demasiado**TestVNet1 -> Introducción -> conectado dispositivos -> VNet1GW**.
-2. En la hoja de Hola para VNet1GW, haga clic en **conexiones**. En la parte superior de Hola de hoja de las conexiones de hello, haga clic en **+ agregar** tooopen hello **Agregar conexión** hoja.
+1. Navegue hasta la hoja de la puerta de enlace de la red virtual y ábrala. Hay varias formas de navegar. En nuestro ejemplo, navegamos hasta la puerta de enlace "VNet1GW", para lo que vamos a **TestVNet1 -> Introducción -> Dispositivos conectados -> VNet1GW**.
+2. En la hoja de VNet1GW, haga clic en **Conexiones**. En la parte superior de la hoja Conexiones, haga clic en **+ Agregar** para abrir la hoja **Agregar conexión**.
 
     ![Creación de una conexión de sitio a sitio](./media/vpn-gateway-add-site-to-site-connection-s2s-rm-portal-include/connection1.png)
 
-3. En hello **Agregar conexión** hoja, hello, rellene los valores de toocreate la conexión.
+3. En la hoja **Agregar conexión**, rellene los valores necesarios para crear la conexión.
 
   - **Nombre**: asigne un nombre a la conexión. En nuestro ejemplo usamos **VNet1toSite2**.
   - **Tipo de conexión:** seleccione **Sitio a sitio (IPSec)**.
-  - **Puerta de enlace de red virtual:** Hola valor es fijo porque se conecta desde esta puerta de enlace.
-  - **Puerta de enlace de red local:** haga clic en **elegir una puerta de enlace de red local** y seleccione Hola de puerta de enlace de red local que desea toouse. En el ejemplo, se usa **Site2**.
-  - **Clave compartida:** Hola valor aquí debe coincidir con hello que está usando para el dispositivo VPN de instalaciones locales. En el ejemplo de Hola, hemos usado "abc123", pero puede (y debe) usar algo más complejo. Hola importante que es ese valor de Hola que especifique aquí debe ser Hola que mismo valor que especificó al configurar el dispositivo VPN.
-  - Hola los valores restantes de **suscripción**, **grupo de recursos**, y **ubicación** son fijos.
+  - **Puerta de enlace de red virtual:**  el valor es fijo porque se conecta desde esta puerta de enlace.
+  - **Puerta de enlace de red local:** haga clic en **Elegir una puerta de enlace de red local** y seleccione la puerta de enlace de red local que desea utilizar. En el ejemplo, se usa **Site2**.
+  - **Clave compartida:** este valor debe ser el mismo que el que usa para el dispositivo VPN local. En el ejemplo, hemos usado “abc123” pero puede usar algo más complejo. Lo importante es que el valor que especifique aquí debe ser el mismo que el que se especificó al configurar el dispositivo VPN.
+  - Los restantes valores de **Suscripción**, **Grupo de recursos** y **Ubicación** son fijos.
 
-4. Haga clic en **Aceptar** toocreate la conexión. Verá *crear conexión* flash en pantalla de bienvenida.
-5. Puede ver conexiones de Hola Hola **conexiones** hoja de puerta de enlace de red virtual de Hola. Hello estado pasará de *desconocido* demasiado*conexión*y, a continuación, demasiado*correcto*.
+4. Haga clic en **Aceptar** para crear la conexión. El mensaje *Creando la conexión* aparecerá de forma intermitente en la pantalla.
+5. La conexión se puede ver en la hoja **Conexiones** de la puerta de enlace de red virtual. El valor de Estado pasará de *Desconocido* a *Conectando* y luego a *Correcto*.

@@ -1,6 +1,6 @@
 ---
-title: "aaaHow tooimplement la navegación por facetas en búsqueda de Azure | Documentos de Microsoft"
-description: "Agregar tooapplications de navegación por facetas que se integran con búsqueda de Azure, un servicio de búsqueda en la nube hospedado en Microsoft Azure."
+title: "Procedimiento para implementar la navegación por facetas en Azure Search | Microsoft Docs"
+description: "Agregue navegación con facetas a aplicaciones que se integran con Búsqueda de Azure, un servicio de búsqueda hospedado en la nube en Microsoft Azure."
 services: search
 documentationcenter: 
 author: HeidiSteen
@@ -14,108 +14,108 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 3/10/2017
 ms.author: heidist
-ms.openlocfilehash: c1e6bf9dc55d0044525db79e37d35a50ded5a736
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 413f498eeb0bbc9a971c7a65200ed2fd8caa9aaf
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-tooimplement-faceted-navigation-in-azure-search"></a>¿Cómo tooimplement la navegación por facetas en búsqueda de Azure
-La navegación por facetas es un mecanismo de filtrado que proporciona una navegación en profundidad autodirigida en aplicaciones de búsqueda. término de Hello 'navegación por facetas' puede ser desconocida, pero probablemente ha usado con anterioridad. Como Hola siguiente ejemplo se muestra la navegación por facetas es nada más que Hola categorías utilizadas toofilter resultados.
+# <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Procedimiento para implementar la navegación por facetas en Búsqueda de Azure
+La navegación por facetas es un mecanismo de filtrado que proporciona una navegación en profundidad autodirigida en aplicaciones de búsqueda. El término "navegación por facetas" puede resultarle desconocido, pero probablemente es algo que ya ha usado con anterioridad. Como se muestra en el siguiente ejemplo, la navegación por facetas no es más que las categorías usadas para filtrar los resultados.
 
  ![Azure Search Job Portal Demo (Demostración del portal de búsqueda de trabajo de Azure Search)][1]
 
-Navegación por facetas es un toosearch de punto de entrada alternativo. Ofrece una cómoda tootyping alternativo expresiones de búsqueda compleja a mano. Las facetas pueden ayudarle a encontrar lo que busca y le garantizan que obtendrá al menos un resultado. Como desarrollador, facetas le permiten exponer los criterios de búsqueda más útiles de Hola para navegar por el corpus de búsqueda. En las aplicaciones de tienda en línea, la navegación por facetas suele basarse en marcas, departamentos (zapatos para niños), tamaño, precio, popularidad y clasificación. 
+La navegación por facetas es un punto de entrada alternativo para buscar. Ofrece una alternativa cómoda a escribir expresiones de búsqueda complejas a mano. Las facetas pueden ayudarle a encontrar lo que busca y le garantizan que obtendrá al menos un resultado. Como desarrollador, las facetas permiten exponer los criterios de búsqueda más útiles para navegar por el corpus de búsqueda. En las aplicaciones de tienda en línea, la navegación por facetas suele basarse en marcas, departamentos (zapatos para niños), tamaño, precio, popularidad y clasificación. 
 
 La implementación de la navegación por facetas difiere en las distintas tecnologías de búsqueda. En Azure Search, la navegación por facetas se compila en tiempo de consulta usando campos que haya atribuido anteriormente en el esquema.
 
--   En las consultas de Hola que la aplicación se compila, debe enviar una consulta *parámetros de consulta de faceta* tooget Hola disponible filtro los valores de facetas para ese documento en el conjunto de resultados.
+-   En las consultas que la aplicación crea, una consulta tiene que enviar *parámetros de consulta de faceta* para obtener los valores de filtro de faceta disponibles para ese conjunto de resultados de documento.
 
--   tooactually recortar el conjunto de resultados de documento de hello, también debe aplicar la aplicación hello un `$filter` expresión.
+-   Para recortar realmente el conjunto de resultados de documento, la aplicación tiene que aplicar también una expresión `$filter`.
 
-En el desarrollo de aplicaciones, escribir código que construye consultas constituye masiva Hola de trabajo de Hola. Muchos de los comportamientos de aplicación Hola que se esperaría de navegación por facetas se proporcionan con el servicio de hello, incluida la compatibilidad integrada para definir intervalos y obtener recuentos de resultados de la faceta. servicio de Hello también incluye valores predeterminados razonables que le ayudarán a evitar las estructuras de navegación difícil de manejar. 
+En el desarrollo de aplicaciones, la escritura del código que construye las consultas supone la mayor parte del trabajo. El servicio proporciona muchos de los comportamientos de aplicación que podrían interesarle de la navegación por facetas, incluida la compatibilidad integrada para establecer intervalos y obtener recuentos de los resultados de la faceta. El servicio también incluye valores predeterminados razonables que le ayudarán a evitar estructuras de navegación difíciles de manejar. 
 
 ## <a name="sample-code-and-demo"></a>Demostración y código de ejemplo
-En este artículo se utiliza como ejemplo un portal de búsqueda de trabajo. ejemplo de Hola se implementa como una aplicación ASP.NET MVC.
+En este artículo se utiliza como ejemplo un portal de búsqueda de trabajo. El ejemplo se implementa como una aplicación ASP.NET MVC.
 
--   Ver y probar demostración en línea de hello trabajar en [demostración de Portal de trabajo de búsqueda de Azure](http://azjobsdemo.azurewebsites.net/).
+-   Vea y pruebe la demostración de trabajo en línea en [Azure Search Job Portal Demo](http://azjobsdemo.azurewebsites.net/) (Demostración del portal de búsqueda de trabajo de Azure Search).
 
--   Descargar código de hello de hello [repositorio de ejemplos de Azure en GitHub](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
+-   Descargue el código del [repositorio de ejemplos de Azure en GitHub](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
 ## <a name="get-started"></a>Primeros pasos
-Si es nuevo desarrollo toosearch, hello toothink de manera mejor de navegación por facetas es que muestra las posibilidades de hello para la búsqueda autodirigido. Es un tipo de experiencia de búsqueda en profundidad basada en filtros predefinidos, que se usa para restringir rápidamente los resultados de búsqueda mediante acciones de apuntar y hacer clic. 
+Si no está familiarizado con el desarrollo de búsquedas, la mejor manera de pensar en la navegación por facetas es que muestra las posibilidades de una búsqueda autodirigida. Es un tipo de experiencia de búsqueda en profundidad basada en filtros predefinidos, que se usa para restringir rápidamente los resultados de búsqueda mediante acciones de apuntar y hacer clic. 
 
 ### <a name="interaction-model"></a>Modelo de interacción
 
-experiencia de búsqueda de Hello para la navegación por facetas es iterativa, así que vamos a conocer como una secuencia de las consultas que expandir en las acciones de respuesta toouser.
+La experiencia de búsqueda de la navegación por facetas es iterativa, por lo que comenzaremos por describirla como una secuencia de consultas que se despliega en respuesta a las acciones del usuario.
 
-Hola punto inicial es una página de aplicación que permite la navegación por facetas, que normalmente se colocan en la periferia de Hola. La navegación por facetas suele tener una estructura de árbol con casillas para cada valor o texto en el que se puede hacer clic. 
+El punto de partida es una página de aplicación que proporciona navegación por facetas, normalmente situada en la periferia. La navegación por facetas suele tener una estructura de árbol con casillas para cada valor o texto en el que se puede hacer clic. 
 
-1. Una consulta enviada tooAzure búsqueda especifica la estructura de navegación por facetas de Hola a través de uno o más parámetros de consulta de faceta. Por ejemplo, pueden incluir consultas de hello `facet=Rating`, quizás con una `:values` o `:sort` toofurther opción Refinar la presentación de Hola.
-2. capa de presentación de Hello presenta una página de búsqueda que permite la navegación por facetas, con facetas de hello especificadas en la solicitud de saludo.
-3. Proporciona una estructura de navegación por facetas que incluye clasificación, hacer clic en "4" tooindicate que se deben mostrar solo los productos con una clasificación de 4 o posterior. 
-4. En respuesta, la aplicación hello envía una consulta que incluye`$filter=Rating ge 4` 
-5. Hola presentación capa Hola página actualizaciones, que muestra un conjunto de resultados reducido que contiene únicamente los elementos que satisfacen los criterios de hello nuevo (en este caso, productos clasifican 4 y superiores).
+1. Una consulta enviada a Búsqueda de Azure especifica la estructura de la navegación por facetas mediante uno o más parámetros de consulta de faceta. Por ejemplo, la consulta podría incluir `facet=Rating`, quizá con una opción `:values` o `:sort` para refinar aún más la presentación.
+2. La capa de presentación representa una página de búsqueda que proporciona navegación por facetas, usando las facetas especificadas en la solicitud.
+3. En una estructura de navegación por facetas dada que incluye el campo de valoración Rating, haga clic en "4" para indicar que solo se deben mostrar los productos con una valoración de 4 o superior. 
+4. En respuesta, la aplicación envía una consulta que incluye `$filter=Rating ge 4` 
+5. La capa de presentación actualiza la página para mostrar un conjunto de resultados reducido únicamente con los elementos que cumplen el nuevo criterio (en este caso, los productos con una valoración de 4 y superior).
 
-Una faceta es un parámetro de consulta, pero no lo confunda con una entrada de consulta. Nunca se usa como criterio de selección en una consulta. En su lugar, cree faceta parámetros de consulta como la estructura de navegación de toohello de entradas que se devolverán en respuesta de Hola. Para cada parámetro de consulta de faceta que proporcione, búsqueda de Azure se evalúa como cuántos documentos se encuentran en los resultados parciales Hola para cada valor de faceta.
+Una faceta es un parámetro de consulta, pero no lo confunda con una entrada de consulta. Nunca se usa como criterio de selección en una consulta. En su lugar, piense en los parámetros de consulta de faceta como entradas a la estructura de navegación que se devuelven en la respuesta. Para cada parámetro de consulta de faceta que proporcione, Azure Search evaluará cuántos documentos hay en los resultados parciales de cada valor de faceta.
 
-Hola aviso `$filter` en el paso 4. filtro de Hello es un aspecto importante de la navegación por facetas. Aunque las facetas y los filtros son independientes en hello API, debe ambos experiencia de hello toodeliver piensa. 
+Observe la expresión `$filter` en el paso 4. El filtro es un aspecto importante de la navegación por facetas. Aunque las facetas y los filtros son independientes en la API, ambos son necesarios para proporcionarle la experiencia que desea. 
 
 ### <a name="app-design-pattern"></a>Patrón de diseño de la aplicación
 
-En código de aplicación, el patrón de Hola es el estructura de navegación por facetas de toouse faceta consulta parámetros tooreturn Hola junto con los resultados de faceta, además de una expresión de $filter.  click (evento) en el valor de la faceta de Hola Hola Hola de identificadores de expresión de filtro. Reflexión de hello `$filter` expresión como código de hello detrás de recorte de hello real de los resultados de la búsqueda devolvió toohello capa de presentación. Dada una faceta de colores, haga clic en color rojo de Hola se implementa a través de un `$filter` expresión que selecciona solo aquellos elementos que tienen un color rojo. 
+En el código de aplicación, el patrón es usar parámetros de consulta de faceta para devolver la estructura de navegación por facetas junto con los resultados de las facetas, además de una expresión $filter.  La expresión de filtro controla el evento de clic en el valor de faceta. Piense en la expresión `$filter` como en el código subyacente al recorte real de los resultados de búsqueda que se devuelven a la capa de presentación. En una faceta Colors dada, la posibilidad de hacer clic en el color Red se implementa mediante una expresión `$filter` que selecciona solo los elementos que tienen un color rojo. 
 
 ### <a name="query-basics"></a>Conceptos básicos de las consultas
 
-En Búsqueda de Azure, una solicitud se especifica mediante uno o más parámetros de consulta (consulte [Buscar documentos](http://msdn.microsoft.com/library/azure/dn798927.aspx) para obtener una descripción de cada uno). Ninguno de los parámetros de consulta de hello son necesaria, pero debe tener al menos una en orden para un toobe de consulta válida.
+En Búsqueda de Azure, una solicitud se especifica mediante uno o más parámetros de consulta (consulte [Buscar documentos](http://msdn.microsoft.com/library/azure/dn798927.aspx) para obtener una descripción de cada uno). Ninguno de los parámetros de consulta son obligatorios, pero debe tener al menos uno para que una consulta sea válida.
 
-Precisión, comprendido toofilter capacidad out aciertos irrelevantes, hello se logra una a través de una o ambas de estas expresiones:
+La precisión, entendida como la capacidad de filtrar los resultados irrelevantes, se consigue mediante una o ambas de estas expresiones:
 
 -   **search=**  
-    valor de Hola de este parámetro constituye la expresión de búsqueda de Hola. Podría ser un fragmento de texto o una expresión de búsqueda compleja que incluye varios términos y operadores. En el servidor de hello, una expresión de búsqueda se utiliza para la búsqueda de texto completo, consultar los campos de búsqueda en índice hello para la coincidencia de términos, devolver los resultados en orden de rango. Si establece `search` toonull, ejecución de la consulta es sobre todo índice de hello (es decir, `search=*`). In this Case, consultar otros elementos de hello, como un `$filter` o perfil de puntuación, es Hola principales factores que afectan a los documentos que se devuelven `($filter`) y en qué orden (`scoringProfile` o `$orderby`).
+    El valor de este parámetro constituye la expresión de búsqueda. Podría ser un fragmento de texto o una expresión de búsqueda compleja que incluye varios términos y operadores. En el servidor, las expresiones de búsqueda se usan para realizar búsquedas de texto completo que consultan en los campos de búsqueda del índice si hay términos coincidentes y devuelven los resultados en orden. Si establece `search` en NULL, la ejecución de la consulta se realiza en todo el índice (es decir, `search=*`). En este caso, los demás elementos de la consulta, como un `$filter` o el perfil de puntuación, son los principales factores que afectan a qué documentos se devuelven (`($filter`) y en qué orden (`scoringProfile` o `$orderby`).
 
 -   **$filter=**  
-    Un filtro es un mecanismo eficaz para limitar el tamaño de Hola de resultados de la búsqueda en función de los valores de hello de atributos de documento específico. Un `$filter` se evalúa en primer lugar, seguida de lógica de facetas que genera valores disponibles de Hola y el número correspondiente para cada valor
+    Un filtro es un mecanismo eficaz para limitar el tamaño de los resultados de búsqueda según los valores de atributos de documento específicos. Primero se evalúa una expresión `$filter` y después la lógica de uso de facetas que genera los valores disponibles y los correspondientes recuentos para cada valor.
 
-Expresiones de búsqueda compleja disminuir el rendimiento de Hola de consulta de Hola. Siempre que sea posible, utilice la precisión de tooincrease de expresiones de filtro bien construido y mejorar el rendimiento de las consultas.
+Las expresiones de búsqueda complejas reducen el rendimiento de la consulta. Siempre que sea posible, use expresiones de filtro bien construidas para aumentar la precisión y mejorar el rendimiento de las consultas.
 
-toobetter comprender cómo agrega un filtro con mayor precisión, comparar un tooone de expresión de búsqueda compleja que incluye una expresión de filtro:
+Para entender mejor cómo los filtros agregan más precisión, compare una expresión de búsqueda compleja con una que incluya una expresión de filtro:
 
 -   `GET /indexes/hotel/docs?search=lodging budget +Seattle –motel +parking`
 -   `GET /indexes/hotel/docs?search=lodging&$filter=City eq ‘Seattle’ and Parking and Type ne ‘motel’`
 
-Ambas consultas son válidos, pero hello en segundo lugar es la mejor opción si está buscando no moteles con estacionamiento en Seattle.
--   consulta primera Hola se basa en esas palabras específicas que se menciona o no se menciona en los campos de cadena como nombre, descripción y cualquier otro campo que contiene datos de búsqueda.
--   segunda consulta de Hola busca coincidencias precisas en los datos estructurados y es probable que toobe mucho más precisa.
+Aunque ambas consultas son válidas, la segunda es mejor si está buscando hoteles que no sean moteles con estacionamiento en Seattle.
+-   La primera consulta se basa en las palabras específicas que se mencionan o no en campos de cadena tales como nombre, descripción u otros que contengan datos que se pueden buscar.
+-   La segunda consulta busca coincidencias precisas en datos estructurados y es probable que sea mucho más exacta.
 
-En las aplicaciones que incluyen navegación por facetas, asegúrese de que cada acción del usuario en una estructura de navegación por facetas vaya acompañada de una restricción de los resultados de búsqueda. resultados de toonarrow, utilice una expresión de filtro.
+En las aplicaciones que incluyen navegación por facetas, asegúrese de que cada acción del usuario en una estructura de navegación por facetas vaya acompañada de una restricción de los resultados de búsqueda. Para restringir los resultados, utilice una expresión de filtro.
 
 <a name="howtobuildit"></a>
 
 ## <a name="build-a-faceted-navigation-app"></a>Compilación de una aplicación de navegación por facetas
-Implementar la navegación por facetas con búsqueda de Azure en el código de aplicación que se basa la solicitud de búsqueda de Hola. navegación por facetas Hola se basa en elementos del esquema que definió anteriormente.
+Implemente la navegación por facetas con Azure Search en el código de la aplicación que compila la solicitud de búsqueda. El panel de navegación por facetas se basa en los elementos del esquema que definió anteriormente.
 
-Predefinidas en el índice de búsqueda es hello `Facetable [true|false]` atributo de índice, establecer en los campos seleccionados tooenable o deshabilitar su uso en una estructura de navegación por facetas. Sin `"Facetable" = true`, un campo no se puede usar en la navegación por facetas.
+En el índice de búsqueda está predefinido el atributo de índice `Facetable [true|false]` , que se establece en los campos seleccionados para habilitar o deshabilitar su uso en una estructura de navegación por facetas. Sin `"Facetable" = true`, un campo no se puede usar en la navegación por facetas.
 
-capa de presentación de Hello en el código proporciona la experiencia del usuario Hola. Deben enumerar elementos que componen Hola la navegación por facetas hello, como etiqueta de hello, valores, casillas y recuento de Hola. Hola API de REST de búsqueda de Azure es independiente de la plataforma, así que usa el idioma y la plataforma que desee. Hola importante que es tooinclude elementos de interfaz de usuario que admiten incremental actualización, con el estado actualizado de interfaz de usuario que se ha seleccionado cada faceta adicional. 
+La capa de presentación del código proporciona la experiencia del usuario. Debe enumerar las partes que constituyen la navegación por facetas, como la etiqueta, los valores, las casillas y el recuento. La API de REST de Búsqueda de Azure es independiente de la plataforma, así que puede usar cualquier lenguaje y plataforma que desee. Lo importante es incluir elementos de interfaz de usuario que admitan la actualización incremental, actualizando el estado de la interfaz de usuario cuando se seleccione cada faceta adicional. 
 
-En el momento de la consulta, el código de aplicación crea una solicitud que incluye `facet=[string]`, un parámetro de solicitud que proporciona Hola campo toofacet por. Una consulta puede tener varias facetas, como `&facet=color&facet=category&facet=rating`, separadas por un carácter de y comercial (&).
+En tiempo de consulta, el código de aplicación crea una solicitud que incluye `facet=[string]`, un parámetro de solicitud que proporciona el campo por el que se realizará la consulta por facetas. Una consulta puede tener varias facetas, como `&facet=color&facet=category&facet=rating`, separadas por un carácter de y comercial (&).
 
-Código de la aplicación también debe construir un `$filter` hello toohandle de expresión, haga clic en los eventos de navegación por facetas. Un `$filter` reduce los resultados de búsqueda de hello, utilice el valor de la faceta de Hola como criterios de filtro.
+El código de aplicación también debe construir una expresión `$filter` para controlar los eventos de clic en la navegación por facetas. Una expresión `$filter` reduce los resultados de búsqueda, usando el valor de la faceta como criterio de filtro.
 
-Búsqueda de Azure devuelve los resultados de búsqueda de hello, en función de uno o más términos que escriba, junto con la estructura de navegación por facetas de toohello de actualizaciones. En Búsqueda de Azure, la navegación por facetas es una construcción de un solo nivel, con los valores de las facetas y los recuentos de cuántos resultados se encuentran para cada una.
+Azure Search devuelve los resultados de búsqueda, basados en uno o más de los términos que haya escrito, junto con las actualizaciones de la estructura de navegación por facetas. En Búsqueda de Azure, la navegación por facetas es una construcción de un solo nivel, con los valores de las facetas y los recuentos de cuántos resultados se encuentran para cada una.
 
-En las secciones siguientes de hello, tomamos un vistazo más de cerca a cómo toobuild cada parte.
+En las secciones siguientes veremos con más detalle cómo crear cada parte.
 
 <a name="buildindex"></a>
 
-## <a name="build-hello-index"></a>Generar índice Hola
-Facetas de está habilitada de forma de campo a campo en el índice de hello, a través de este atributo de índice: `"Facetable": true`.  
-Todos los tipos de campo que podrían usarse en la navegación por facetas son `Facetable` de forma predeterminada. Estos tipos de campo incluyen `Edm.String`, `Edm.DateTimeOffset`, y todos los campos de tipo numérico de Hola (básicamente, todos los tipos de campo son facetable excepto `Edm.GeographyPoint`, que no se puede usar en la navegación por facetas). 
+## <a name="build-the-index"></a>Crear el índice
+El uso de facetas se habilita para cada campo en el índice mediante este atributo de índice: `"Facetable": true`.  
+Todos los tipos de campo que podrían usarse en la navegación por facetas son `Facetable` de forma predeterminada. Entre estos tipos de campo se incluyen `Edm.String`, `Edm.DateTimeOffset`, y todos los tipos de campo numéricos (básicamente, todos los tipos de campo se pueden usar con facetas excepto `Edm.GeographyPoint`, que no se puede usar en la navegación por facetas). 
 
-Cuando se crea un índice, una práctica recomendada para la navegación por facetas está tooexplicitly activar facetas desactivada para los campos que nunca deben utilizarse como una faceta.  En concreto, los campos de cadena para los valores de singleton, por ejemplo, un identificador o nombre del producto, deben estar definidos demasiado`"Facetable": false` tooprevent sus accidental (e ineficaces) se utilizan en la navegación por facetas. Facetas desactivar donde no es necesario la activación ayuda a mantener pequeño tamaño Hola de índice de Hola y suele mejora el rendimiento.
+Al crear un índice, el procedimiento recomendado para la navegación por facetas desactivar explícitamente el uso de facetas para los campos que nunca deben usarse como facetas.  En concreto, los campos de cadena de valores singleton, tales como un identificador o un nombre de producto, deben establecerse en `"Facetable": false` para impedir su uso accidental (e ineficaz) en una exploración por facetas. Desactivar el uso de facetas donde no es necesario ayuda a mantener un tamaño de índice pequeño y, por lo general, mejora el rendimiento.
 
-Aquí te mostramos parte del esquema de hello para la aplicación de ejemplo de Hola demostración de Portal de trabajo, quitar de un determinado tamaño atributos tooreduce hello:
+El siguiente es parte del esquema de la aplicación de ejemplo de la demostración del portal de búsqueda de trabajo, al que se le han recortado algunos atributos para reducir su tamaño:
 
 ```json
 {
@@ -143,37 +143,37 @@ Aquí te mostramos parte del esquema de hello para la aplicación de ejemplo de 
 }
 ```
 
-Como puede ver en el esquema de ejemplo Hola `Facetable` se ha desactivado para los campos de cadena que no deben usarse como facetas, como los valores de identificador. Facetas desactivar donde no es necesario la activación ayuda a mantener pequeño tamaño Hola de índice de Hola y suele mejora el rendimiento.
+Como puede observar en el esquema del ejemplo, `Facetable` se ha desactivado para los campos de cadena que no deben usarse como facetas, como los valores de identificador. Desactivar el uso de facetas donde no es necesario ayuda a mantener un tamaño de índice pequeño y, por lo general, mejora el rendimiento.
 
 > [!TIP]
-> Como práctica recomendada, incluyen el conjunto completo de Hola de atributos de índice para cada campo. Aunque `Facetable` está de forma predeterminada para casi todos los campos, establecer deliberadamente cada atributo puede ayudarle a considerar detenidamente las implicaciones de Hola de cada decisión de esquema. 
+> Como procedimiento recomendado, incluya el conjunto completo de atributos de índice para cada campo. Aunque `Facetable` está activado para casi todos los campos de forma predeterminada, establecer deliberadamente cada atributo puede ayudar a considerar detenidamente las implicaciones de cada decisión del esquema. 
 
 <a name="checkdata"></a>
 
-## <a name="check-hello-data"></a>Comprobar los datos de Hola
-calidad de Hola de los datos tiene un efecto directo en si la estructura de navegación por facetas de hello materializa tal y como se espera que. También afecta a la facilidad de Hola de construir el conjunto de resultados de filtros tooreduce Hola.
+## <a name="check-the-data"></a>Comprobación de los datos
+La calidad de los datos tiene un efecto directo en la posibilidad de que la estructura de navegación por facetas se materialice tal y como se espera. También afecta a la facilidad de creación de filtros para reducir el conjunto de resultados.
 
-Si desea toofacet por marca o precio, cada documento debe contener valores de *marca* y *ProductPrice* que son válidos, coherentes y productivos como una opción de filtro.
+Si desea usar la marca o el precio como facetas, cada documento debe contener valores de *BrandName* y *ProductPrice* que sean válidos, coherentes y productivos como opción de filtro.
 
-Estos son algunos avisos de qué tooscrub para:
+A continuación tiene algunos recordatorios de lo que se debe pulir:
 
-* Para cada campo que desee toofacet por, pregúntese si contiene valores que son adecuados como filtros en la búsqueda autodirigido. valores de Hello deben ser suficientemente distintiva, corto y descriptivo toooffer una opción clara entre las opciones de la competencia.
-* Errores ortográficos o valores casi coincidentes. Si faceta en Color y los valores de campo incluyen naranja y Ornage (una palabra mal escrita), una faceta basada en el campo de Color Hola seleccionará ambos.
+* Para cada campo que desee usar como faceta, pregúntese si contiene valores que son adecuados como filtros en búsquedas autodirigidas. Los valores deben ser breves, descriptivos y suficientemente distintivos para ofrecer una opción clara entre las opciones de la competencia.
+* Errores ortográficos o valores casi coincidentes. Si usa Color como faceta y los valores de campo incluyen Naranja y Nraanja (una palabra incorrecta), una faceta basada en el campo Color seleccionará ambas.
 * La mezcla de mayúsculas y minúsculas en el texto también puede causar estragos en la navegación por facetas, porque naranja y Naranja aparecen como dos valores diferentes. 
-* Versiones simples y plurales de Hola mismo valor puede dar lugar a una faceta independiente para cada uno de ellos.
+* Las versiones en singular y plural del mismo valor pueden producir una faceta diferente para cada una.
 
-Como puede imaginar, diligencia en la preparación de datos de hello es un aspecto fundamental de la navegación por facetas efectivo.
+Como puede imaginar, la diligencia en la preparación de los datos es un aspecto esencial de una navegación por facetas eficiente.
 
 <a name="presentationlayer"></a>
 
-## <a name="build-hello-ui"></a>Compilar Hola interfaz de usuario
-Trabajar desde el nivel de presentación de hello puede descubrir los requisitos que podrían faltar en caso contrario y entender qué capacidades están toohello esencial de ayuda experiencia de búsqueda.
+## <a name="build-the-ui"></a>Creación de la interfaz de usuario
+Empezar a trabajar desde la capa de presentación puede ayudarle a descubrir requisitos que de otra forma podrían perderse, y comprender las características que son esenciales para la experiencia de búsqueda.
 
-En cuanto a la navegación por facetas, la página web o una aplicación muestra la estructura de navegación por facetas de hello, detecta proporcionados por el usuario en la página de Hola e inserta elementos Hola cambiado. 
+En términos de la navegación por facetas, la página o aplicación web muestra la estructura de la navegación por facetas, detecta la entrada del usuario en la página e inserta los elementos modificados. 
 
-Para aplicaciones web, AJAX normalmente se utiliza en la capa de presentación de hello porque permite toorefresh los cambios incrementales. También puede usar ASP.NET MVC o cualquier otra plataforma de visualización que se puede conectar tooan servicio Búsqueda de Azure a través de HTTP. aplicación de ejemplo de Hola al que hace referencia a lo largo de este artículo: hello **demostración de Portal de trabajo de búsqueda de Azure** – ocurre toobe una aplicación ASP.NET MVC.
+En el caso de las aplicaciones web, normalmente se usa AJAX en la capa de presentación porque permite actualizar los cambios incrementales. También puede usar ASP.NET MVC o cualquier otra plataforma de visualización que puede conectarse a un servicio Búsqueda de Azure a través de HTTP. La aplicación de ejemplo a la que se hace referencia a lo largo de este artículo ( **Azure Search Job Portal Demo** [Demostración del portal de búsqueda de trabajo de Azure Search]) es una aplicación ASP.NET MVC.
 
-En el ejemplo de Hola, la navegación por facetas se integra en la página de resultados de búsqueda de Hola. Hola siguiente ejemplo, tomado de Hola `index.cshtml` página de resultados del archivo de aplicación de ejemplo de Hola, estructura HTML muestra hello estática para mostrar la navegación por facetas en búsqueda de Hola. lista de Hola de facetas compilarse o vuelven a generar dinámicamente cuando se envíe un término de búsqueda, o activar o desactiva una faceta.
+En el ejemplo, la navegación por facetas se integra en la página de resultados de búsqueda. El ejemplo siguiente, tomado del archivo `index.cshtml` de la aplicación de ejemplo, muestra una estructura HTML estática para mostrar la navegación por facetas en la página de resultados de búsqueda. La lista de facetas se compila o recompila dinámicamente cuando se envía un término de búsqueda, o cuando se selecciona o borra una faceta.
 
 ```html
 <div class="widget sidebar-widget jobs-filter-widget">
@@ -200,7 +200,7 @@ En el ejemplo de Hola, la navegación por facetas se integra en la página de re
 </div>
 ```
 
-Hola siguiente fragmento de código de hello `index.cshtml` página Hola HTML toodisplay Hola primera faceta título empresarial crea de forma dinámica. Funciones similares compilación dinámicamente hello HTML para hello otras facetas. Cada faceta tiene una etiqueta y un recuento, que muestra el número de Hola de elementos encontrados para ese resultado de la faceta.
+El siguiente fragmento de código desde la página `index.cshtml` compila de forma dinámica el HTML para mostrar la primera faceta, Business Title (cargo empresarial). Funciones similares compilan dinámicamente el HTML para las otras facetas. Cada faceta tiene una etiqueta y un recuento, que muestra el número de elementos encontrados para ese resultado de la faceta.
 
 ```js
 function UpdateBusinessTitleFacets(data) {
@@ -214,16 +214,16 @@ function UpdateBusinessTitleFacets(data) {
 ```
 
 > [!TIP]
-> Cuando se diseña la página de resultados de búsqueda de hello, recuerde tooadd un mecanismo para borrar las facetas. Si agrega casillas de verificación, puede ver fácilmente cómo se filtra tooclear Hola. En otros diseños, puede que necesite un patrón de ruta de navegación u otro enfoque creativo. Por ejemplo, en la aplicación de ejemplo de Portal de la búsqueda de trabajo hello, puede hacer clic en hello `[X]` después de una faceta de hello tooclear faceta seleccionada.
+> Al diseñar la página de resultados de búsqueda, no olvide agregar un mecanismo para borrar las facetas. Si agrega casillas de verificación, puede ver fácilmente cómo borrar los filtros. En otros diseños, puede que necesite un patrón de ruta de navegación u otro enfoque creativo. Por ejemplo, en la aplicación de ejemplo del portal de búsqueda de trabajo, puede hacer clic en `[X]` después de una faceta seleccionada para borrar la faceta.
 
 <a name="buildquery"></a>
 
-## <a name="build-hello-query"></a>Crear consulta de Hola
-código de Hello creado por usted para la creación de consultas debe especificar todas las partes de una consulta válida, incluyendo expresiones de búsqueda, las facetas, filtros, puntuación perfiles – nada usan tooformulate una solicitud. En esta sección, exploramos donde facetas caben en una consulta y cómo se utilizan filtros con facetas toodeliver un reducido conjunto de resultados.
+## <a name="build-the-query"></a>Crear la consulta
+El código que se escribe para crear consultas debe especificar todas las partes de una consulta válida, incluidas las expresiones de búsqueda, las facetas o los filtros de puntuación (todo lo que se usa para formular una solicitud). En esta sección, exploraremos cómo encajan las facetas en una consulta y cómo se usan los filtros con facetas para entregar un conjunto de resultados reducido.
 
-Observe que las facetas son una parte integral de esta aplicación de ejemplo. experiencia de búsqueda de Hola Hola demostración de Portal de trabajo está diseñado basándose en filtros y la navegación por facetas. un lugar destacado de navegación por facetas en página Hola Hola muestra su importancia. 
+Observe que las facetas son una parte integral de esta aplicación de ejemplo. La experiencia de búsqueda en la demostración del portal de búsqueda de trabajos está diseñada en torno a los filtros y la navegación por facetas. La colocación destacada de navegación por facetas en la página muestra su importancia. 
 
-Un ejemplo suele ser un buen lugar toobegin. Hola siguiente ejemplo, tomado de Hola `JobsSearch.cs` archivo, compilaciones, en función de una solicitud que crea la navegación de faceta en título empresarial, la ubicación, tipo de registro y salario mínimo. 
+Un ejemplo suele ser una buena manera de comenzar. En el ejemplo siguiente, tomado del archivo `JobsSearch.cs`, se crea una solicitud que crea una navegación por facetas basada en Business Title (cargo empresarial), Location (ubicación), Posting Type (tipo de puesto) y Minimum Salary (salario mínimo). 
 
 ```cs
 SearchParameters sp = new SearchParameters()
@@ -234,11 +234,11 @@ SearchParameters sp = new SearchParameters()
 };
 ```
 
-Un parámetro de consulta de faceta se establece el campo tooa y según el tipo de datos de hello, pueden tener parámetros aún más por lista delimitada por comas que incluye `count:<integer>`, `sort:<>`, `interval:<integer>`, y `values:<list>`. Se admiten listas de valores para datos numéricos cuando se establecen intervalos. Consulte [Buscar documentos (API de Búsqueda de Azure)](http://msdn.microsoft.com/library/azure/dn798927.aspx) para obtener más información sobre su uso.
+Un parámetro de consulta de faceta se establece en un campo y, según el tipo de datos, se puede parametrizar aún más con una lista delimitada por comas que incluya `count:<integer>`, `sort:<>`, `interval:<integer>` y `values:<list>`. Se admiten listas de valores para datos numéricos cuando se establecen intervalos. Consulte [Buscar documentos (API de Búsqueda de Azure)](http://msdn.microsoft.com/library/azure/dn798927.aspx) para obtener más información sobre su uso.
 
-Junto con las facetas, solicitud de hello formulada la aplicación debe compilarse también filtros toonarrow hacia abajo el conjunto de Hola de documentos candidatos basado en una selección de valor de faceta. Para una tienda de bicicletas, la navegación por facetas proporciona pistas tooquestions como *los colores, los fabricantes y tipos de bicicletas están disponibles?*. El filtrado responde a preguntas como *¿qué bicicletas exactas son rojas, bicicletas de montaña, dentro de este precio de intervalo de precios?*. Al hacer clic en "Rojo" tooindicate que se deben mostrar solo los productos de color rojo, aplicación de hello siguiente consulta Hola envía incluye `$filter=Color eq ‘Red’`.
+Además de las facetas, la solicitud que la aplicación formula también debe generar filtros para reducir el conjunto de documentos candidatos en función de una selección de valores de faceta. Para una tienda de bicicletas, la navegación por facetas proporciona pistas a preguntas como *¿qué colores, fabricantes y tipos de bicicletas están disponibles?*. El filtrado responde a preguntas como *¿qué bicicletas exactas son rojas, bicicletas de montaña, dentro de este precio de intervalo de precios?*. Cuando hace clic en "Red" para indicar que solo se deben mostrar productos de color rojo, la consulta siguiente que la aplicación envía incluye`$filter=Color eq ‘Red’`.
 
-Hola siguiente fragmento de código de hello `JobsSearch.cs` página agrega Hola seleccionado título empresarial toohello filtro si selecciona un valor de faceta de hello título empresarial.
+El siguiente fragmento de código de la página `JobsSearch.cs` agrega el cargo empresarial seleccionado al filtro si selecciona un valor de la faceta de Business Title.
 
 ```cs
 if (businessTitleFacet != "")
@@ -252,169 +252,169 @@ if (businessTitleFacet != "")
 ### <a name="indexing-tips"></a>Sugerencias de indexación
 **Mejora de la eficacia del índice si no utiliza un cuadro de búsqueda**
 
-Si la aplicación utiliza la navegación por facetas exclusivamente (es decir, ningún cuadro de búsqueda), puede marcar campo hello como `searchable=false`, `facetable=true` tooproduce un índice más compacto. Además, la indización se produce solo en los valores de facetas todo, con ninguna división de palabras o una indización de componentes de Hola de un valor de múltiples palabra.
+Si la aplicación usa navegación por facetas exclusivamente (es decir, ningún cuadro de búsqueda), puede marcar el campo como `searchable=false`, `facetable=true` para generar un índice más compacto. Además, la indización se produce solo en los valores de faceta completos, sin saltos de palabras ni indización de los componentes de un valor de varias palabras.
 
 **Especificación de qué campos se pueden usar como facetas**
 
-Recuerde que Hola esquema de índice Hola determina qué campos están disponible toouse como una faceta. Suponiendo que un campo facetable, consulta Hola especifica qué toofacet campos por. campo Hello mediante el cual está facetas proporciona valores de hello que aparecen debajo de la etiqueta de Hola. 
+Recuerde que el esquema del índice determina qué campos están disponibles para usar como facetas. Suponiendo que un campo se pueda usar para la búsqueda por facetas, la consulta especifica qué campos se van a usar para la búsqueda por facetas. El campo que se va a usar para la búsqueda por facetas proporciona los valores que aparecerán debajo de la etiqueta. 
 
-los valores de Hello que aparecen debajo de cada etiqueta se recuperan del índice de Hola. Por ejemplo, si hello campo de faceta es *Color*, valores de hello disponibles para realizar un filtrado adicional son valores de hello para ese campo - rojo, negro y así sucesivamente.
+Los valores que aparecen debajo de cada etiqueta se recuperan del índice. Por ejemplo, si el campo de faceta es *Color*, los valores disponibles para un filtrado adicional son los valores de ese campo (Red, Black, etc.).
 
-Para los valores de numéricos y de fecha y hora solo, puede establecer explícitamente los valores en el campo de faceta de hello (por ejemplo, `facet=Rating,values:1|2|3|4|5`). Se permite una lista de valores para estos tipos toosimplify Hola separación de campos de resultados de faceta en intervalos contiguos (ya sea intervalos basados en valores numéricos o períodos de tiempo). 
+Solo para los valores Numeric y DateTime, puede establecer explícitamente valores en el campo de faceta (por ejemplo, `facet=Rating,values:1|2|3|4|5`). Se permite una lista de valores para estos tipos de campo para simplificar la separación de los resultados de faceta en intervalos contiguos (intervalos basados en valores numéricos o en períodos de tiempo). 
 
 **De forma predeterminada solo puede tener un nivel de navegación por facetas** 
 
-Como ya se mencionó, no hay compatibilidad directa para facetas anidadas en una jerarquía. De forma predeterminada, la navegación por facetas en Azure Search solo admite un nivel de filtros. Sin embargo, existen soluciones alternativas. Puede codificar una estructura jerárquica de facetas en una `Collection(Edm.String)` con un punto de entrada por jerarquía. Implementar esta solución alternativa es más allá del ámbito de Hola de este artículo. 
+Como ya se mencionó, no hay compatibilidad directa para facetas anidadas en una jerarquía. De forma predeterminada, la navegación por facetas en Azure Search solo admite un nivel de filtros. Sin embargo, existen soluciones alternativas. Puede codificar una estructura jerárquica de facetas en una `Collection(Edm.String)` con un punto de entrada por jerarquía. La implementación de esta solución queda fuera del ámbito de este artículo. 
 
 ### <a name="querying-tips"></a>Sugerencias de consulta
 **Validar los campos**
 
-Si compila lista Hola de facetas de manera dinámica basándose en la entrada de usuario de confianza, valide que Hola nombres de campos por facetas Hola son válidos. O bien, al generar direcciones URL mediante el uso de escape nombres Hola `Uri.EscapeDataString()` en. NET, o hello equivalente en la plataforma de elección.
+Si compila la lista de facetas de manera dinámica basándose en la entrada de usuarios que no son de confianza, valide que los nombres de los campos con facetas son válidos. O bien, anule los nombres al generar direcciones URL utilizando o bien `Uri.EscapeDataString()` en. NET, o su equivalente en la plataforma que elija.
 
 ### <a name="filtering-tips"></a>Sugerencias de filtrado
 **Aumento de la precisión de la búsqueda con filtros**
 
-Use filtros. Si confía en expresiones de búsqueda solo por sí sola y lematización podría provocar un toobe documento devuelven que no tiene valor de faceta precisa de hello en cualquiera de sus campos.
+Use filtros. Si confía solamente en expresiones de búsqueda, la lematización podría provocar que se devuelva un documento que no tiene un valor de faceta preciso en ninguno de sus campos.
 
 **Aumento del rendimiento de la búsqueda con filtros**
 
-Filtros de restringir el conjunto de Hola de documentos de candidatos para la búsqueda y excluirán de la clasificación. Si tiene un conjunto grande de documentos, usar una profundización por facetas selectiva suele proporcionar un mayor rendimiento.
+Los filtros restringen el conjunto de documentos candidatos para la búsqueda y los excluyen de la clasificación. Si tiene un conjunto grande de documentos, usar una profundización por facetas selectiva suele proporcionar un mayor rendimiento.
   
-**Filtrar solo los campos por facetas Hola**
+**Filtrado solo de campos por facetas**
 
-En por facetas exploración en profundidad, probablemente le interese tooonly incluir documentos que tienen valor de faceta de hello en un campo específico (con facetas), no en cualquier lugar en todos los campos de búsqueda. Agregar un filtro refuerza el campo de destino de hello dirigiendo Hola servicio toosearch sólo en campo con facetas de Hola para un valor coincidente.
+En la profundización por facetas, normalmente solo debe incluir los documentos que tienen el valor de faceta en un campo (con faceta) específico, no en cualquiera de todos los campos en los que se puede buscar. Agregar un filtro refuerza el campo de destino y dirige el servicio para que busque un valor coincidente solo en el campo con faceta.
 
 **Recorte de los resultados de faceta con más filtros**
 
-Resultados de la faceta son documentos que se encuentra en los resultados de búsqueda de Hola que coinciden con un término de la faceta. Hola siguiente ejemplo, en los resultados de búsqueda para *la informática en nube*, 254 elementos también tienen *especificación interno* como un tipo de contenido. Los elementos no son necesariamente excluyentes mutuamente. Si un elemento cumple los criterios de Hola de ambos filtros, se cuenta en cada uno de ellos. Esta duplicación es posible cuando facetas en `Collection(Edm.String)` campos, que son a menudo utilizan tooimplement documento etiquetado.
+Los resultados de faceta son documentos que se encuentran en los resultados de búsqueda y que coinciden con un término de faceta. En el ejemplo siguiente, en los resultados de búsqueda de *cloud computing*, 254 elementos también tienen *internal specification* como tipo de contenido. Los elementos no son necesariamente excluyentes mutuamente. Si un elemento cumple los criterios de ambos filtros, se contabiliza en cada uno de ellos. Esta duplicación es posible cuando se usan facetas en campos `Collection(Edm.String)`, que suelen usarse para implementar el etiquetado de documentos.
 
         Search term: "cloud computing"
         Content type
            Internal specification (254)
            Video (10) 
 
-En general, si encuentra que los resultados de faceta constantemente son demasiado grandes, se recomienda agregar más filtros toogive a los usuarios más opciones para restringir la búsqueda de Hola.
+En general, si encuentra que los resultados de faceta son demasiado grandes de forma persistente, se recomienda agregar más filtros para ofrecer a los usuarios más opciones para delimitar la búsqueda.
 
 ### <a name="tips-about-result-count"></a>Sugerencias sobre el recuento de resultados
 
-**Limitar el número de elementos de navegación de la faceta de Hola Hola**
+**Limitación del número de elementos en la navegación por facetas**
 
-Para cada campo con facetas en el árbol de navegación de hello, hay un límite predeterminado de 10 valores. Este valor predeterminado relacione con estructuras de navegación porque mantiene valores de hello tamaño administrable tooa de lista. Puede invalidar Hola predeterminado asignando un valor toocount.
+Para cada campo de faceta del árbol de navegación, hay un límite predeterminado de 10 valores. Este valor predeterminado tiene sentido en las estructuras de navegación porque mantiene la lista de valores en un tamaño fácil de administrar. Puede invalidar el valor predeterminado y asignar un valor a count.
 
-* `&facet=city,count:5`Especifica que solo Hola cinco primeras ciudades encuentra en la parte superior de hello clasificada los resultados se devuelven como resultado de la faceta. Considere una consulta de ejemplo con un término de búsqueda "aeropuerto" y 32 coincidencias. Si especifica la consulta de hello `&facet=city,count:5`solo cinco primeras ciudades Hola con hello se incluye la mayoría de los documentos en los resultados de búsqueda de hello en Hola resultados de la faceta.
+* `&facet=city,count:5` especifica que solo se devuelven como resultado de la faceta las cinco primeras ciudades encontradas en los principales resultados. Considere una consulta de ejemplo con un término de búsqueda "aeropuerto" y 32 coincidencias. Si la consulta especifica `&facet=city,count:5`, solo se incluyen en los resultados de la faceta las primeras cinco ciudades con más documentos en los resultados de búsqueda.
 
-Aviso Hola distinción entre los resultados de la faceta y resultados de la búsqueda. Resultados de la búsqueda son todos los documentos de Hola que coinciden con la consulta de Hola. Resultados de la faceta son Hola coincidencias para cada valor de faceta. En el ejemplo de Hola, resultados de búsqueda incluyen nombres de ciudades que no están en la lista de clasificaciones de faceta de hello (5 en nuestro ejemplo). Los resultados que se filtran mediante la navegación por facetas son visibles cuando se borran las facetas o se eligen otras facetas además de City. 
+Observe la diferencia entre resultados de búsqueda y resultados de faceta. Los resultados de búsqueda son todos los documentos que coinciden con la consulta. Los resultados de faceta son las coincidencias para cada valor de la faceta. En el ejemplo, los resultados de búsqueda incluyen los nombres de ciudades que no están en la lista de clasificación de faceta (5 en nuestro ejemplo). Los resultados que se filtran mediante la navegación por facetas son visibles cuando se borran las facetas o se eligen otras facetas además de City. 
 
 > [!NOTE]
-> Analizar `count` cuando hay más de un tipo puede ser confuso. Hello tabla siguiente ofrece un breve resumen de cómo se utiliza el término de hello en la API de búsqueda de Azure, código de ejemplo y documentación. 
+> Analizar `count` cuando hay más de un tipo puede ser confuso. En la tabla siguiente se ofrece un breve resumen de cómo se usa el término en la API de Búsqueda de Azure así como código de ejemplo y documentación. 
 
 * `@colorFacet.count`<br/>
-  En el código de presentación, debería ver un parámetro de recuento en faceta de hello, toodisplay usado Hola número de resultados de la faceta. En los resultados de faceta, número indica número de Hola de documentos que coinciden en términos de faceta de Hola o intervalo.
+  En el código de presentación, verá un parámetro count en la faceta, que se usa para mostrar el número de resultados de faceta. En los resultados de faceta, count indica el número de documentos que coinciden con el término de faceta o con el intervalo de facetas.
 * `&facet=City,count:12`<br/>
-  En una consulta de faceta, puede establecer el valor del recuento tooa.  valor predeterminado de Hello es 10, pero puede establecerlo superior o inferior. Establecer `count:12` obtiene Hola primeras 12 coincidencias en los resultados de la faceta por el número de documento.
+  En una consulta de faceta, puede establecer count en un valor.  El valor predeterminado es 10, pero puede establecer uno inferior o superior. Al establecer `count:12` se obtienen las 12 principales coincidencias en los resultados de faceta por recuento de documentos.
 * "`@odata.count`"<br/>
-  En respuesta a la consulta hello, este valor indica el número de Hola de elementos coincidentes en los resultados de búsqueda de Hola. En promedio, es mayor que la suma de Hola de todos los resultados de faceta combinada debido toohello presencia de elementos que coinciden con el término de búsqueda de hello, pero no tener ninguna coincidencia del valor de faceta.
+  En la respuesta de la consulta, este valor indica el número de elementos coincidentes en los resultados de búsqueda. Por término medio, es mayor que la suma de todos los resultados de faceta combinados, debido a la presencia de elementos que coinciden con el término de búsqueda pero con ninguno de los valores de faceta.
 
 **Obtención de recuentos en los resultados de faceta**
 
-Cuando se agrega una consulta por facetas de filtro tooa, conviene instrucción de faceta de hello tooretain (por ejemplo, `facet=Rating&$filter=Rating ge 4`). Técnicamente, faceta = clasificación no se necesita, pero manteniéndolo devuelve recuentos de Hola de los valores de facetas para las clasificaciones de 4 y versiones posteriores. Por ejemplo, si hace clic en "4" y Hola consulta incluye un filtro para mayor o igual demasiado "4", se devuelven recuentos para cada clasificación que es 4 y versiones posteriores.  
+Al agregar un filtro a una consulta por facetas, quizás quiera conservar la instrucción facet (por ejemplo, `facet=Rating&$filter=Rating ge 4`). Técnicamente, facet=Rating no es necesaria, pero conservarla devuelve los recuentos de los valores de faceta para las valoraciones de 4 y superiores. Por ejemplo, si hace clic en "4" y la consulta incluye un filtro para valores mayores o iguales que "4", se devuelven los recuentos de valoraciones de 4 y superiores.  
 
 **Garantía de obtención de recuentos de faceta adecuados**
 
-En determinadas circunstancias, es posible que los recuentos de faceta no coinciden con los conjuntos de resultados de hello (vea [la navegación por facetas en búsqueda de Azure (entrada de foro)](https://social.msdn.microsoft.com/Forums/azure/06461173-ea26-4e6a-9545-fbbd7ee61c8f/faceting-on-azure-search?forum=azuresearch)).
+En determinadas circunstancias, puede que vea que los recuentos de faceta no coinciden con los conjuntos de resultados (consulte [Navegación por facetas en Búsqueda de Azure (publicación del foro)](https://social.msdn.microsoft.com/Forums/azure/06461173-ea26-4e6a-9545-fbbd7ee61c8f/faceting-on-azure-search?forum=azuresearch)).
 
-Recuentos de faceta pueden ser incorrectos debido toohello arquitectura de partición. Cada índice de búsqueda tiene varias particiones, y cada partición notifica facetas de hello N principales por número de documento, que se combina en un único resultado. Si algunas particiones tienen muchos valores coincidentes, mientras que otros usuarios tengan menos, es posible que algunos valores de facetas faltan o bajo con recuento de resultados de Hola.
+Los recuentos de faceta pueden ser incorrectos debido a la arquitectura de particionamiento. Cada índice de búsqueda tiene varias particiones, y cada una notifica las N primeras facetas por recuento de documentos, que después se combina en un único resultado. Si algunas particiones tienen muchos valores coincidentes, mientras que otros tienen menos, verá que algunos valores de faceta faltan o se contabilizan con un número inferior en los resultados.
 
-Aunque este comportamiento podría cambiar en cualquier momento, si se produce este comportamiento hoy en día, también puede trabajar a su alrededor artificialmente que infla recuento hello:<number> número de tooenforce grandes números de tooa completa de generación de informes de cada partición. Si Hola valor de recuento: es igual o mayor que toohello número de valores únicos en el campo de hello, se garantiza resultados precisos. Sin embargo, si el recuento de documentos es alto, esto afecta al rendimiento, por lo que debe usar esta opción con prudencia.
+Aunque este comportamiento podría cambiar en cualquier momento, si se produce en la actualidad puede solucionarlo aumentando artificialmente el valor de count:<number> en un número grande para forzar que se notifique el valor completo de cada partición. Si el valor de count: es mayor o igual que el número de valores únicos en el campo, se garantizan resultados precisos. Sin embargo, si el recuento de documentos es alto, esto afecta al rendimiento, por lo que debe usar esta opción con prudencia.
 
 ### <a name="user-interface-tips"></a>Sugerencias de interfaz de usuario
 **Agregar etiquetas para cada campo en la navegación por facetas**
 
-Las etiquetas se definen normalmente en hello HTML o un formulario (`index.cshtml` en la aplicación de ejemplo de Hola). No hay ninguna API en Azure Search para las etiquetas de navegación por facetas u otros tipos de metadatos.
+Las etiquetas suelen definirse en el HTML o formulario (`index.cshtml` en la aplicación de ejemplo). No hay ninguna API en Azure Search para las etiquetas de navegación por facetas u otros tipos de metadatos.
 
 <a name="rangefacets"></a>
 
 ## <a name="filter-based-on-a-range"></a>Filtro basado en un intervalo
 El uso de facetas en intervalos de valores es un requisito habitual de las aplicaciones de búsqueda. Se admiten intervalos para datos numéricos y valores de fecha y hora. Puede leer más acerca de cada enfoque en [Buscar documentos (API de Búsqueda de Azure)](http://msdn.microsoft.com/library/azure/dn798927.aspx).
 
-Búsqueda de Azure simplifica la construcción de intervalos mediante dos enfoques de cálculo de intervalos. Para ambos enfoques, búsqueda de Azure crea Hola intervalos adecuados dados entradas de Hola que ha proporcionado. Por ejemplo, si especifica valores de intervalo de 10|20|30, creará automáticamente los intervalos 0-10, 10-20, 20-30. La aplicación tiene la opción de quitar los intervalos que estén vacíos. 
+Búsqueda de Azure simplifica la construcción de intervalos mediante dos enfoques de cálculo de intervalos. En ambos enfoques, Búsqueda de Azure crea los intervalos adecuados con las entradas proporcionadas. Por ejemplo, si especifica valores de intervalo de 10|20|30, creará automáticamente los intervalos 0-10, 10-20, 20-30. La aplicación tiene la opción de quitar los intervalos que estén vacíos. 
 
-**Enfoque 1: Usar el parámetro de intervalo de hello**  
-facetas de precio tooset en incrementos de 10 $, especificaría:`&facet=price,interval:10`
+**Enfoque 1: Usar el parámetro de intervalo**  
+Para establecer las facetas de precio en incrementos de 10 USD, especificaría: `&facet=price,interval:10`
 
 **Enfoque 2: Usar una lista de valores**  
-Para datos numéricos, puede usar una lista de valores.  Considere la posibilidad de intervalo de faceta de Hola para un `listPrice` procesar el campo, como se indica a continuación:
+Para datos numéricos, puede usar una lista de valores.  Tenga en cuenta el intervalo de facetas para un campo `listPrice`, que se representa como sigue:
 
   ![Lista de valores de ejemplo][5]
 
-toospecify un intervalo de faceta como Hola uno Hola anterior captura de pantalla, utilice una lista de valores:
+Para especificar un intervalo de faceta semejante al de la captura de pantalla anterior, use una lista de valores:
 
     facet=listPrice,values:10|25|100|500|1000|2500
 
-Cada intervalo se compila utilizando 0 como punto de partida, un valor de lista de Hola como un punto de conexión y, a continuación, se recortan de intervalos discretos de hello anterior rangos toocreate. Azure Search hace esto como parte de la navegación por facetas. No tiene código toowrite para estructurar cada intervalo.
+Cada intervalo se genera usando 0 como punto de partida, un valor de la lista como extremo y, después, se recorta el intervalo anterior para crear diferentes intervalos. Azure Search hace esto como parte de la navegación por facetas. No es necesario escribir código para estructurar cada intervalo.
 
 ### <a name="build-a-filter-for-a-range"></a>Creación de un filtro para un intervalo
-documentos de toofilter basadas en un intervalo que seleccione, puede usar hello `"ge"` y `"lt"` operadores en una expresión de dos partes que define los puntos de conexión de Hola de intervalo de Hola de filtro. Por ejemplo, si elige Hola intervalo 10-25 para un `listPrice` campo, filtro de hello sería `$filter=listPrice ge 10 and listPrice lt 25`. En el código de ejemplo de Hola, usa la expresión de filtro de hello **priceFrom** y **priceTo** puntos de conexión de parámetros tooset Hola. 
+Para filtrar los documentos según un intervalo que seleccione, puede usar los operadores de filtro `"ge"` y `"lt"` en una expresión de dos partes que define los puntos de conexión del intervalo. Por ejemplo, si elige el intervalo de 10 a 25 para un campo `listPrice`, el filtro sería `$filter=listPrice ge 10 and listPrice lt 25`. En el código de ejemplo, la expresión de filtro usa los parámetros **priceFrom** y **priceTo** para establecer los puntos de conexión. 
 
   ![Consulta para un intervalo de valores][6]
 
 <a name="geofacets"></a> 
 
 ## <a name="filter-based-on-distance"></a>Filtro basado en la distancia
-Su toosee comunes filtros que le ayudan a elegir un almacén, restaurante o un destino basándose en su ubicación actual de tooyour de proximidad. Aunque este tipo de filtro puede parecer una navegación por facetas, en realidad es solo un filtro. Lo mencionamos aquí para aquellos que buscan específicamente consejos de implementación para ese problema de diseño concreto.
+Es habitual ver filtros que ayudan a elegir una tienda, un restaurante o un destino en función de su proximidad a la ubicación actual. Aunque este tipo de filtro puede parecer una navegación por facetas, en realidad es solo un filtro. Lo mencionamos aquí para aquellos que buscan específicamente consejos de implementación para ese problema de diseño concreto.
 
 Hay dos funciones geoespaciales en Azure Search, **geo.distance** y **geo.intersects**.
 
-* Hola **geo.distance** función devuelve la distancia de hello en kilómetros entre dos puntos. Un punto es un campo y otra es una constante que se pasa como parte del filtro de Hola. 
-* Hola **geo.intersects** función devuelve true si un punto determinado se encuentra dentro de un polígono determinado. punto de Hello es un campo y Hola polígono se especifica como una lista de constante de coordenadas que se pasa como parte del filtro de Hola.
+* La función **geo.distance** devuelve la distancia en kilómetros entre dos puntos. Un punto es un campo y otra es una constante que se pasa como parte del filtro. 
+* La función **geo.intersects** devuelve true si un punto determinado se encuentra dentro de un polígono determinado. El punto es un campo y el polígono se especifica como una lista constante de coordenadas que se pasa como parte del filtro.
 
 Puede encontrar ejemplos de filtros en [Sintaxis de expresiones de OData (Búsqueda de Azure)](http://msdn.microsoft.com/library/azure/dn798921.aspx).
 
 <a name="tryitout"></a>
 
-## <a name="try-hello-demo"></a>Pruebe Hola demostración
-Hola demostración de Portal de trabajo de búsqueda de Azure contiene ejemplos de hello hace referencia en este artículo.
+## <a name="try-the-demo"></a>Prueba de la demostración
+La demostración de Azure Search Job Portal contiene los ejemplos a los que se hace referencia en este artículo.
 
--   Ver y probar demostración en línea de hello trabajar en [demostración de Portal de trabajo de búsqueda de Azure](http://azjobsdemo.azurewebsites.net/).
+-   Vea y pruebe la demostración de trabajo en línea en [Azure Search Job Portal Demo](http://azjobsdemo.azurewebsites.net/) (Demostración del portal de búsqueda de trabajo de Azure Search).
 
--   Descargar código de hello de hello [repositorio de ejemplos de Azure en GitHub](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
+-   Descargue el código del [repositorio de ejemplos de Azure en GitHub](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs).
 
-Cuando se trabaja con los resultados de búsqueda, vea Hola URL para los cambios en la construcción de consultas. Esta aplicación produce tooappend facetas toohello URI mientras selecciona cada uno de ellos.
+Cuando trabaje con los resultados de búsqueda, vigile los posibles cambios en las direcciones URL en la construcción de la consulta. Esta aplicación anexa facetas al URI a medida que las selecciona.
 
-1. funcionalidad de asignación de hello toouse de aplicación de demostración de hello, obtener una clave de mapas de Bing de hello [centro de desarrollo de mapas de Bing](https://www.bingmapsportal.com/). Péguela sobre clave existente de Hola Hola `index.cshtml` página. Hola `BingApiKey` en hello `Web.config` no se utiliza el archivo. 
+1. Para usar la funcionalidad de asignación de la aplicación de demostración, obtenga una clave de Bing Maps en [Bing Maps Dev Center](https://www.bingmapsportal.com/) (Centro para desarrolladores de Bing Maps). Pegue sobre la clave existente en la página `index.cshtml`. El ajuste `BingApiKey` en el archivo `Web.config` no se utiliza. 
 
-2. Ejecute la aplicación hello. Paseo opcional de Hola o descartar el cuadro de diálogo de Hola.
+2. Ejecute la aplicación. Dese el paseo opcional o descarte el cuadro de diálogo.
    
-3. Escriba un término de búsqueda, como "analista" y haga clic en el icono de búsqueda de Hola. consulta de Hola se ejecuta rápidamente.
+3. Escriba un término de búsqueda, como "analyst" y haga clic en el icono de búsqueda. La consulta se ejecuta rápidamente.
    
-   También se devuelve una estructura de navegación por facetas con resultados de la búsqueda de Hola. En la página de resultados de búsqueda de hello, estructura de navegación por facetas de hello incluye recuentos de cada resultado de la faceta. No hay facetas seleccionadas, por lo que se devuelven todos los resultados de búsqueda que coinciden.
+   Con los resultados de búsqueda se devuelve también una estructura de navegación por facetas. En la página de resultados de búsqueda, la estructura de navegación por facetas incluye los recuentos de cada resultado de faceta. No hay facetas seleccionadas, por lo que se devuelven todos los resultados de búsqueda que coinciden.
    
    ![Resultados de la búsqueda antes de seleccionar las facetas][11]
 
-4. Haga clic en un Business Title (cargo empresarial), Location (ubicación) o Minimum Salary (salario mínimo). Facetas eran nulos en la búsqueda inicial de hello, pero tal y como asumen los valores, los resultados de la búsqueda de Hola se recortan de elementos que ya no coinciden con.
+4. Haga clic en un Business Title (cargo empresarial), Location (ubicación) o Minimum Salary (salario mínimo). Las facetas son NULL en la búsqueda inicial, pero a medida que toman valores, en los resultados de búsqueda se recortan los elementos que ya no coinciden.
    
    ![Resultados de la búsqueda después de seleccionar las facetas][12]
 
-5. consulta por facetas de hello tooclear por lo que puede probar comportamientos de consulta diferente, haga clic en hello `[X]` después de hello seleccionado facetas de facetas tooclear Hola.
+5. Para borrar la consulta por facetas para poder probar comportamientos de consulta diferentes, haga clic en `[X]` después de las facetas seleccionadas para borrar las facetas.
    
 <a name="nextstep"></a>
 
 ## <a name="learn-more"></a>Más información
-Vea el vídeo de [profundización en Azure Search](http://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410). En 45:25, hay una demostración acerca de cómo tooimplement facetas.
+Vea el vídeo de [profundización en Azure Search](http://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410). En el minuto 45:25, hay una demostración sobre cómo implementar las facetas.
 
-Para más información sobre los principios de diseño para la navegación por facetas, se recomienda Hola siguientes vínculos:
+Para obtener más información sobre los principios de diseño de la navegación por facetas, recomendamos los siguientes vínculos:
 
 * [Diseñar para la búsqueda por facetas](http://www.uie.com/articles/faceted_search/)
 * [Patrones de diseño: Navegación por facetas](http://alistapart.com/article/design-patterns-faceted-navigation)
 
 
 <!--Anchors-->
-[How toobuild it]: #howtobuildit
-[Build hello presentation layer]: #presentationlayer
-[Build hello index]: #buildindex
+[How to build it]: #howtobuildit
+[Build the presentation layer]: #presentationlayer
+[Build the index]: #buildindex
 [Check for data quality]: #checkdata
-[Build hello query]: #buildquery
-[Tips on how toocontrol faceted navigation]: #tips
+[Build the query]: #buildquery
+[Tips on how to control faceted navigation]: #tips
 [Faceted navigation based on range values]: #rangefacets
 [Faceted navigation based on GeoPoints]: #geofacets
 [Try it out]: #tryitout

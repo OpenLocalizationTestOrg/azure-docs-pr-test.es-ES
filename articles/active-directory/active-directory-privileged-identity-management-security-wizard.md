@@ -1,6 +1,6 @@
 ---
-title: Asistente para la seguridad de Azure AD aaaThe Privileged Identity Management
-description: "Hello primera vez que utilice la extensión de Azure Active Directory Privileged Identity Management de hello, aparecerá con un Asistente para la seguridad. Este artículo describe los pasos de Hola para utilizar el Asistente de Hola."
+title: Asistente para seguridad de Privileged Identity Management de Azure AD
+description: "La primera vez que use la extensión de Privileged Identity Management de Azure Active Directory, aparecerá un asistente para seguridad. En este artículo se describen los pasos para usar al asistente."
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -15,30 +15,30 @@ ms.workload: identity
 ms.date: 02/27/2017
 ms.author: billmath
 ms.custom: pim ; H1Hack27Feb2017
-ms.openlocfilehash: 0b3019134d3c7cfac33b3acfcf430b4d4f67b119
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 260d178f3d8158411b3ad266e3b0d15edbebc722
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="using-hello-security-wizard-in-azure-ad-privileged-identity-management"></a>Utilizando el Asistente para la seguridad de hello en Azure AD Privileged Identity Management 
-Si le Hola primera persona toorun Azure Privileged Identity Management (PIM) para su organización, aparecerá un asistente. Hola asistente le ayudará a conocer los riesgos de seguridad de Hola de identidades con privilegios y cómo toouse PIM tooreduce esos riesgos. No es necesario toomake las asignaciones de roles de tooexisting cambios en el Asistente de hello, si lo prefiere toodo que más adelante.
+# <a name="using-the-security-wizard-in-azure-ad-privileged-identity-management"></a>Uso del Asistente para seguridad de Azure AD Privileged Identity Management 
+Si es la primera persona que ejecuta Privileged Identity Management (PIM) de Azure en su organización, se le presentará un asistente. El asistente le ayuda a comprender los riesgos de seguridad de las identidades con privilegios y a usar PIM para reducirlos. No tiene que realizar cambios en las asignaciones de roles existentes en el asistente; si lo prefiere, puede hacerlo más adelante.
 
-## <a name="what-tooexpect"></a>¿Qué tooexpect
-Antes de que la organización empiece a usar PIM, todas las asignaciones de roles son permanentes: los usuarios de Hola son siempre con estos roles aunque actualmente no es necesario sus privilegios.  primer paso del Asistente para Hola de Hello muestra una lista de roles con privilegios elevados y cuántos usuarios están actualmente en esos roles. Puede profundizar en tooa rol determinado toolearn más información acerca de los usuarios si uno o varios de ellos están familiarizado.
+## <a name="what-to-expect"></a>Qué esperar
+Antes de que su organización comienza a usar PIM, todas las asignaciones de roles son permanentes: los usuarios siempre tienen estos roles aunque en el momento actual no necesiten sus privilegios.  El primer paso del asistente muestra una lista de roles con privilegios elevados y cuántos usuarios tienen actualmente esos roles. Puede explorar en profundidad un rol determinado para conocer mejor a los usuarios en caso de que alguno de ellos no le resulte familiar.
 
-segundo paso del Asistente para Hola de Hello proporciona las asignaciones de roles de administrador toochange oportunidad.  
+El segundo paso del asistente le ofrece la oportunidad de cambiar las asignaciones de roles del administrador.  
 
 > [!WARNING]
-> Es importante que tenga al menos un administrador global, y más de un administrador de roles con privilegios con una cuenta de organización (no una cuenta Microsoft). Si hay solo un administrador de roles con privilegios, organización hello no será capaz de toomanage PIM si esa cuenta se elimina.
-> Además, mantenga asignaciones de roles permanente si un usuario tiene una cuenta de Microsoft (una cuenta que usan toosign en servicios de tooMicrosoft como Skype y Outlook.com). Si tiene previsto toorequire MFA para la activación para ese rol, ese usuario se bloqueará.
+> Es importante que tenga al menos un administrador global, y más de un administrador de roles con privilegios con una cuenta de organización (no una cuenta Microsoft). Si solo hay un administrador de roles con privilegios, la organización no podrá administrar PIM si esa cuenta se elimina.
+> Además, mantenga las asignaciones de roles permanente si un usuario tiene una cuenta de Microsoft (una cuenta que usan para iniciar sesión en servicios de Microsoft como Skype y Outlook.com). Si tiene pensado exigir MFA para la activación de ese rol, ese usuario se bloqueará.
 > 
 > 
 
-Después de realizar cambios, ya no se mostrará el Asistente de Hola. Hello próxima vez que usted u otro administrador de roles con privilegios usar PIM, verá Hola PIM panel.  
+Una vez realizados los cambios, ya no se mostrará el asistente. La próxima vez que usted u otro administrador de roles con privilegios use PIM, verá el panel de PIM.  
 
-* Si prefiere como tooadd o quitar usuarios de roles o cambiar las asignaciones de tooeligible permanente, más información, lea [cómo tooadd o quitar una función de usuario](active-directory-privileged-identity-management-how-to-add-role-to-user.md).
-* Si desea que toogive más usuarios tener acceso a toomanage PIM, más información, lea [cómo toogive tener acceso a toomanage en PIM](active-directory-privileged-identity-management-how-to-give-access-to-pim.md).
+* Si desea agregar o quitar usuarios a roles, o cambiar las asignaciones de permanentes a aptas, puede obtener más información en [Privileged Identity Management de Azure AD: Incorporación o eliminación de un rol de usuario](active-directory-privileged-identity-management-how-to-add-role-to-user.md).
+* Si desea conceder acceso a más usuarios para administrar PIM, aprenda cómo hacerlo en [Concesión de acceso para administrar Privileged Identity Management de Azure AD](active-directory-privileged-identity-management-how-to-give-access-to-pim.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]

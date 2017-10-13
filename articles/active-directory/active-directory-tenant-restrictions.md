@@ -1,6 +1,6 @@
 ---
-title: "aaaManage acceso toocloud aplicaciones mediante la restricción de los inquilinos - Azure | Documentos de Microsoft"
-description: "Cómo toouse inquilino restricciones toomanage qué usuarios pueden acceder a las aplicaciones se basa en su inquilino de Azure AD."
+title: "Administración del acceso a aplicaciones en la nube mediante la restricción de inquilinos - Azure | Microsoft Docs"
+description: "Uso de Restricciones de inquilino para administrar los usuarios que pueden acceder a las aplicaciones según su inquilino de Azure AD."
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -14,145 +14,145 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: kgremban
-ms.openlocfilehash: 6470fa217738b29104353ae17a2f53216f825c19
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7288f8fa173f8018570cd17aa7274f56a4eead41
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="use-tenant-restrictions-toomanage-access-toosaas-cloud-applications"></a>Usar aplicaciones de nube de restricciones de inquilino toomanage access tooSaaS
+# <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Uso de Restricciones de inquilino para administrar el acceso a aplicaciones en la nube SaaS
 
-Las organizaciones grandes que resaltan la seguridad desean toomove toocloud servicios como Office 365, pero tooknow necesidad de que los usuarios solo pueden tener acceso a los recursos autorizados. Tradicionalmente, las empresas restringen los nombres de dominio o direcciones IP cuando se quieren tener acceso toomanage. Este enfoque no sirve en un mundo donde las aplicaciones SaaS se hospedan en una nube pública, ejecutándose en nombres de dominio compartidos como outlook.office.com y login.microsoftonline.com. Estas direcciones de bloqueo podría mantener a los usuarios tengan acceso a Outlook en web Hola por completo, en lugar de simplemente limitándolos recursos e identidades de tooapproved.
+Las organizaciones grandes que hacen hincapié en la seguridad desean moverse a servicios en la nube como Office 365 pero deben saber que sus usuarios solo podrán acceder a recursos aprobados. Tradicionalmente, las empresas restringen los nombres de dominio o las direcciones IP cuando desean administrar el acceso. Este enfoque no sirve en un mundo donde las aplicaciones SaaS se hospedan en una nube pública, ejecutándose en nombres de dominio compartidos como outlook.office.com y login.microsoftonline.com. El bloqueo de estas direcciones evitaría por completo que los usuarios accedieran a Outlook en la web, en lugar de simplemente limitarlos a identidades y recursos aprobados.
 
-Desafío de toothis de solución de Azure Active Directory es una característica denominada restricciones de inquilino. Inquilino restricciones habilita las organizaciones toocontrol acceso tooSaaS aplicaciones en la nube, según el uso de las aplicaciones de hello Azure AD inquilino hello para el inicio de sesión único. Por ejemplo, puede que desee aplicaciones de Office 365 tooallow acceso tooyour de la organización, evitando que las instancias de las organizaciones de tooother de acceso de estas mismas aplicaciones.  
+La solución de Azure Active Directory para este desafío es una característica denominada Restricciones de inquilino. Restricciones de inquilino permite a las organizaciones controlar el acceso a aplicaciones en la nube SaaS según el inquilino de Azure AD que usan las aplicaciones para el inicio de sesión único. Por ejemplo, puede que le interese permitir el acceso a aplicaciones de Office 365 de su organización y, al mismo tiempo, impedir el acceso a instancias de otras organizaciones de estas mismas aplicaciones.  
 
-Restricciones de inquilinos proporciona las organizaciones Hola capacidad toospecify Hola lista de inquilinos que los usuarios se permiten tooaccess. Azure AD, a continuación, solo concede acceso toothese permitida inquilinos.
+Restricciones de inquilino ofrece a las organizaciones la posibilidad de especificar la lista de inquilinos a los que sus usuarios pueden acceder. Después, Azure AD solo concede el acceso a estos inquilinos con permiso.
 
-En este artículo se centra en las restricciones de inquilinos para Office 365, pero la característica Hola debería funcionar con cualquier aplicación de nube de SaaS que usa los protocolos de autenticación moderna con Azure AD para inicio de sesión único. Si usa aplicaciones con un anuncio de Azure diferente de los inquilinos de inquilino de hello usado por Office 365 de SaaS, asegúrese de que las necesarias se permiten los inquilinos. Para obtener más información acerca de las aplicaciones de nube de SaaS, vea hello [Active Directory Marketplace](https://azure.microsoft.com/en-us/marketplace/active-directory/).
+Este artículo se centra en Restricciones de inquilino para Office 365, pero la característica debe funcionar con cualquier aplicación en la nube SaaS que use protocolos de autenticación moderna con Azure AD para inicio de sesión único. Si usa aplicaciones SaaS con un inquilino de Azure AD diferente al inquilino que usa Office 365, asegúrese de que todos los inquilinos necesarios tienen permiso. Para más información sobre aplicaciones en la nube SaaS, consulte [Active Directory Marketplace](https://azure.microsoft.com/en-us/marketplace/active-directory/).
 
 ## <a name="how-it-works"></a>Cómo funciona
 
-Hello general solución consta de Hola de los componentes siguientes: 
+La solución general consta de los siguientes componentes: 
 
-1. **Azure AD** : si hello `Restrict-Access-To-Tenants: <permitted tenant list>` está presente, Azure AD solo emite tokens de seguridad para hello permiten a los inquilinos. 
+1. **Azure AD**: si `Restrict-Access-To-Tenants: <permitted tenant list>` está presente, Azure AD solo emite tokens de seguridad para los inquilinos permitidos. 
 
-2. **Infraestructura de servidor proxy local** : un dispositivo de proxy capaz de inspección de SSL, encabezado de hello tooinsert configurado que contiene la lista de Hola de permite los inquilinos en el tráfico destinado a Azure AD. 
+2. **Infraestructura de servidor proxy local**: un dispositivo proxy con funcionalidades de inspección SSL, configurado para insertar el encabezado que contiene la lista de inquilinos permitidos en el tráfico destinado a Azure AD. 
 
-3. **Software de cliente** – toosupport inquilino restricciones, software de cliente debe solicitar tokens directamente de Azure AD, por lo que se puede interceptar el tráfico por la infraestructura del proxy de Hola. Actualmente, cuando se utiliza autenticación moderna (como OAuth 2.0), tanto las aplicaciones de Office 365 basadas en explorador como los clientes de Office admiten Restricciones de inquilino. 
+3. **Software de cliente**: para admitir Restricciones de inquilino, el software de cliente debe solicitar tokens directamente de Azure AD, de forma que la infraestructura del proxy pueda interceptar el tráfico. Actualmente, cuando se utiliza autenticación moderna (como OAuth 2.0), tanto las aplicaciones de Office 365 basadas en explorador como los clientes de Office admiten Restricciones de inquilino. 
 
-4. **La autenticación moderna** : servicios en la nube deben usar la autenticación moderna toouse inquilino restricciones y bloquear el acceso a los inquilinos de tooall no permitida. Los servicios de Office 365 en la nube deben ser protocolos de autenticación moderna toouse configurado de forma predeterminada. Para información más reciente de hello en Office 365 la compatibilidad con la autenticación moderna, leer [actualizar Office 365 la autenticación moderna](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/).
+4. **Autenticación moderna**: los servicios en la nube deben usar la autenticación moderna para utilizar Restricciones de inquilino y bloquear el acceso a todos los inquilinos no permitidos. Los servicios en la nube de Office 365 deben configurarse para usar protocolos de autenticación moderna de forma predeterminada. Para ver la información más reciente sobre la compatibilidad con Office 365 para la autenticación moderna, lea [Updated Office 365 modern authentication](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/) (Autenticación moderna actualizada de Office 365).
 
-Hola siguiente diagrama muestra el flujo de tráfico de alto nivel de Hola. Inspección SSL solo se requiere en tráfico tooAzure AD, no toohello servicios de nube de Office 365. Esta distinción es importante porque el volumen de tráfico de Hola para autenticación tooAzure AD está normalmente mucho menor que las aplicaciones de tooSaaS del volumen de tráfico como Exchange Online y SharePoint Online.
+En el siguiente diagrama se ilustra el flujo de tráfico de alto nivel. La inspección SSL solo es necesaria en tráfico hacia Azure AD, no hacia los servicios en la nube de Office 365. Esta distinción es importante porque el volumen de tráfico para autenticación hacia Azure AD es normalmente mucho menor que el volumen de tráfico hacia aplicaciones SaaS como Exchange Online y SharePoint Online.
 
 ![Flujo de tráfico de Restricciones de inquilino: diagrama](./media/active-directory-tenant-restrictions/traffic-flow.png)
 
 ## <a name="set-up-tenant-restrictions"></a>Configuración de Restricciones de inquilino
 
-Hay dos tooget pasos a trabajar con restricciones de inquilino. Hola primer paso es toomake seguro de que los clientes pueden conectarse toohello derecho direcciones. Hola en segundo lugar es tooconfigure la infraestructura del proxy.
+Se deben realizar dos pasos para empezar a trabajar con Restricciones de inquilino. El primer paso es asegurarse de que los clientes pueden conectarse a las direcciones correctas. El segundo consiste en configurar la infraestructura del proxy.
 
 ### <a name="urls-and-ip-addresses"></a>Direcciones URL e IP reservadas
 
-toouse inquilino restricciones, los clientes deberán ser toohello tooconnect pueda siguiendo las direcciones URL de Azure AD tooauthenticate: login.microsoftonline.com, login.microsoft.com y login.windows.net. Además, tooaccess Office 365, los clientes también deben ser capaz de tooconnect toohello FQDN o direcciones URL y direcciones IP definen en [intervalos de direcciones IP y las direcciones URL de Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2). 
+Para usar Restricciones de inquilino, los clientes deben ser capaces de conectarse a las siguientes direcciones URL de Azure AD para autenticarse: login.microsoftonline.com, login.microsoft.com y login.windows.net. Además, para acceder a Office 365, los clientes también deben ser capaces de conectarse a las direcciones URL o FQDN y a las direcciones IP definidas en [URL de Office 365 e intervalos de direcciones IP](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2). 
 
 ### <a name="proxy-configuration-and-requirements"></a>Requisitos y configuración de proxy
 
-Hola siguiente configuración es necesario tooenable restricciones de inquilino a través de la infraestructura del proxy. Esta guía es genérica, debe consultar la documentación del proveedor de tooyour proxy para los pasos de implementación específica.
+Se necesita la configuración siguiente para habilitar Restricciones de inquilino a través de la infraestructura del proxy. Esta guía es genérica, por lo que debe remitirse a la documentación del proveedor del proxy para conocer los pasos de implementación específicos.
 
 #### <a name="prerequisites"></a>Requisitos previos
 
-- proxy de Hello debe ser tooperform capaz de intercepción de SSL, inserción de encabezado HTTP y destinos de filtro mediante FQDN o direcciones URL. 
+- El proxy debe ser capaz de realizar la intercepción de SSL y la inserción de encabezados HTTP, así como filtrar destinos mediante direcciones URL o FQDN. 
 
-- Los clientes deben confiar en la cadena de certificados de hello presentada por el proxy de Hola para las comunicaciones SSL. Por ejemplo, si se usan certificados de una PKI interna, Hola interno emisora raíz certificado de entidad emisora debe ser de confianza.
+- Los clientes deben confiar en la cadena de certificados que presenta el proxy para las comunicaciones SSL. Por ejemplo, si se usan certificados de una PKI interna, el certificado de la entidad de certificación raíz emisora interna debe ser de confianza.
 
-- Esta característica se incluye en las suscripciones de Office 365, pero si desea que las aplicaciones de SaaS toouse inquilino restricciones toocontrol acceso tooother licencias de Azure AD Premium 1 son necesarios.
+- Esta característica se incluye en las suscripciones de Office 365, pero si desea usar Restricciones de inquilino para controlar el acceso a otras aplicaciones SaaS, necesitará licencias de Azure AD Premium 1.
 
 #### <a name="configuration"></a>Configuración
 
-Para cada toologin.microsoftonline.com de solicitud entrante, login.microsoft.com y login.windows.net, inserte dos encabezados HTTP: *restringir acceso para inquilinos* y *contexto de restringir acceso*.
+Para cada solicitud entrante para login.microsoftonline.com, login.microsoft.com y login.windows.net, inserte dos encabezados HTTP: *Restrict-Access-To-Tenants* y *Restrict-Access-Context*.
 
-encabezados de Hello deben incluir Hola siguientes elementos: 
-- Para *restringir acceso para inquilinos*, un valor de \<permiten lista inquilino\>, que es una lista separada por comas de los inquilinos que desea tooallow usuarios tooaccess. Cualquier dominio que está registrado con un inquilino puede ser el inquilino de hello tooidentify usado en esta lista. Por ejemplo, toopermit tener acceso a los inquilinos de Contoso y Fabrikam tooboth, Hola parece de par nombre/valor que:`Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com` 
-- Para *contexto de restringir acceso*, un valor de un identificador único directorio, declarar qué inquilino es establecer restricciones de inquilino de Hola. Por ejemplo, toodeclare Contoso como inquilino de Hola que establecen Hola directiva de restricciones de inquilino, par de nombre/valor de hello el siguiente aspecto:`Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
+Los encabezados deben incluir los siguientes elementos: 
+- Para *Restrict-Access-To-Tenants*, un valor de \<permitted tenant list\>, que es una lista separada por comas de los inquilinos a los que desea que los usuarios puedan acceder. Se puede utilizar cualquier dominio que esté registrado con un inquilino para identificar al inquilino en esta lista. Por ejemplo, para permitir el acceso a los inquilinos Contoso y Fabrikam, el par nombre-valor puede ser algo así como `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com` 
+- Para *Restrict-Access-Context*, un valor de un identificador de directorio único que declare qué inquilino está estableciendo Restricciones de inquilino. Por ejemplo, para declarar Contoso como el inquilino que establece la directiva de Restricciones de inquilino, el par nombre-valor puede ser algo así como `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
 
 > [!TIP]
-> Puede encontrar el identificador de directorio en hello [portal de Azure](https://portal.azure.com). Inicie sesión como administrador, seleccione **Azure Active Directory** y luego seleccione **propiedades**.
+> Puede encontrar el identificador de directorio en [Azure Portal](https://portal.azure.com). Inicie sesión como administrador, seleccione **Azure Active Directory** y luego seleccione **propiedades**.
 
-tooprevent los usuarios insertar su propio encabezado HTTP con los inquilinos no aprobado, Hola necesario proxy encabezado de restringir acceso para inquilinos de hello tooreplace si ya está presente en la solicitud entrante de Hola. 
+Para evitar que los usuarios inserten su propio encabezado HTTP con inquilinos no aprobados, el proxy debe reemplazar el encabezado Restrict-Access-To-Tenants si ya está presente en la solicitud entrante. 
 
-Los clientes deben estar toouse forzada Hola proxy para todas las solicitudes toologin.microsoftonline.com, login.microsoft.com y login.windows.net. Por ejemplo, si los archivos de PAC usado toodirect clientes toouse Hola proxy, los usuarios finales debe ser capaz de tooedit o deshabilitar archivos Hola PAC.
+Se debe exigir a los clientes que usen el proxy para todas las solicitudes para login.microsoftonline.com, login.microsoft.com y login.windows.net. Por ejemplo, si los archivos PAC se emplean para indicar a los clientes que usen el proxy, los usuarios finales no deben poder editar o deshabilitar los archivos PAC.
 
-## <a name="hello-user-experience"></a>experiencia del usuario Hola
+## <a name="the-user-experience"></a>La experiencia del usuario final
 
-Esta sección muestra experiencia de Hola para los usuarios finales y administradores.
+En esta sección se muestra la experiencia de los usuarios finales y los administradores.
 
 ### <a name="end-user-experience"></a>Experiencia del usuario final
 
-Un usuario de ejemplo se encuentra en la red de Contoso hello, pero está tratando de instancia de Fabrikam tooaccess Hola un compartido de aplicaciones de SaaS como Outlook en línea. Si Contoso es un inquilino no permitida para esa instancia, el usuario de hello ve Hola después de página:
+Un usuario de ejemplo se encuentra en la red de Contoso, pero está intentando acceder a la instancia de Fabrikam de una aplicación SaaS compartida como Outlook en línea. Si Contoso es un inquilino no permitido para esa instancia, el usuario ve la página siguiente:
 
 ![Página de acceso denegado para usuarios en inquilinos no permitidos](./media/active-directory-tenant-restrictions/end-user-denied.png)
 
 ### <a name="admin-experience"></a>Experiencia del administrador
 
-Mientras se realice la configuración de restricciones de inquilino en la infraestructura del proxy corporativo hello, Admins. del puede tener acceso a informes de las restricciones del inquilino de Hola Hola portal de Azure directamente. Hola tooview informes, ir a página de introducción a Azure Active Directory toohello, a continuación, busque en "Otras capacidades".
+Mientras la configuración de Restricciones de inquilino se realice en la infraestructura del proxy corporativo, los administradores podrán acceder a los informes de Restricciones de inquilino directamente en Azure Portal. Para ver los informes, vaya a la página de introducción de Azure Active Directory y mire en "Otras funcionalidades".
 
-Hola, Administrador de inquilinos de hello especificado como inquilino de hello contexto de acceso restringido puede usar este toosee informe todos los inicios de sesión bloqueado debido a Hola directiva de restricciones de inquilino, incluida la identidad de hello usa y directorio de destino de Hola por identificador.
+El administrador del inquilino especificado como el inquilino Restricted-Access-Context puede usar este informe para ver todos los inicios de sesión bloqueados debido a la directiva de Restricciones de inquilino, incluida la identidad que se utiliza y el identificador de directorio de destino.
 
-![Usar hello Azure tooview portal restringido que intente iniciar sesión](./media/active-directory-tenant-restrictions/portal-report.png)
+![Uso de Azure Portal para ver los intentos de inicio de sesión restringidos](./media/active-directory-tenant-restrictions/portal-report.png)
 
-Al igual que otros informes en hello portal de Azure, puede usar filtros toospecify Hola ámbito del informe. Puede filtrar por un usuario, una aplicación, un cliente o un intervalo de tiempo específico.
+Al igual que otros informes en Azure Portal, puede usar filtros para especificar el ámbito del informe. Puede filtrar por un usuario, una aplicación, un cliente o un intervalo de tiempo específico.
 
 ## <a name="office-365-support"></a>Compatibilidad con Office 365
 
-Aplicaciones de Office 365 deben cumplir dos criterios toofully soporte inquilino restricciones:
+Las aplicaciones de Office 365 deben cumplir dos criterios para que sean totalmente compatibles con Restricciones de inquilino:
 
-1. cliente Hello utilizado admite la autenticación moderna
-2. La autenticación moderna está habilitada como protocolo de autenticación predeterminado de Hola Hola servicio de nube.
+1. El cliente utilizado admite la autenticación moderna
+2. La autenticación moderna está habilitada como el protocolo de autenticación predeterminado para el servicio en la nube.
 
-Consulte demasiado[actualizar Office 365 la autenticación moderna](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/) para obtener información más reciente de hello en qué Office clientes admiten actualmente la autenticación moderna. Esta página también incluye vínculos tooinstructions para habilitar la autenticación moderna de específico Exchange Online y Skype empresarial Online inquilinos. La autenticación moderna ya está habilitada de forma predeterminada en SharePoint Online.
+Consulte [Updated Office 365 modern authentication](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/) (Autenticación moderna actualizada de Office 365) para ver la información más reciente sobre qué clientes de Office admiten actualmente la autenticación moderna. Esa página también incluye vínculos a instrucciones para habilitar la autenticación moderna en inquilinos específicos de Exchange Online y Skype Empresarial Online. La autenticación moderna ya está habilitada de forma predeterminada en SharePoint Online.
 
-Restricciones de inquilinos es compatible actualmente con las aplicaciones basadas en Explorador de Office 365 (Hola SharePoint de Portal de Office, Yammer, sitios, Outlook en hello Web, etcetera.). Para clientes gruesos (Outlook, Skype Empresarial, Word, Excel, PowerPoint, etc.), Restricciones de inquilinos solo se puede aplicar cuando se usa autenticación moderna.  
+Actualmente, las aplicaciones de Office 365 basadas en explorador (portal de Office, Yammer, sitios de SharePoint, Outlook en la web, etc.) son compatibles con Restricciones de inquilino. Para clientes gruesos (Outlook, Skype Empresarial, Word, Excel, PowerPoint, etc.), Restricciones de inquilinos solo se puede aplicar cuando se usa autenticación moderna.  
 
-Outlook y Skype para los clientes empresariales que admiten la autenticación moderna son todavía puede toouse protocolos heredados en los inquilinos donde no está habilitada la autenticación moderna, omitiendo eficazmente las restricciones del inquilino. Para Outlook en Windows, los clientes pueden elegir restricciones tooimplement impide que los usuarios finales agregar perfiles de tootheir de cuentas de correo electrónico no aprobado. Por ejemplo, vea hello [impedir la adición de cuentas de Exchange no predeterminado](http://gpsearch.azurewebsites.net/default.aspx?ref=1) configuración de directiva de grupo. Para Outlook en plataformas distintas de Windows y para Skype Empresarial en todas las plataformas, actualmente no está disponible la compatibilidad total para restricciones de inquilino.
+Los clientes de Outlook y Skype Empresarial que admiten autenticación moderna pueden seguir usando protocolos heredados en inquilinos donde la autenticación moderna no está habilitada, evitando eficazmente Restricciones de inquilino. Para Outlook en Windows, los clientes pueden optar por implementar restricciones que impidan a los usuarios finales agregar cuentas de correo no aprobadas a sus perfiles. Por ejemplo, vea el establecimiento de directiva de grupo [Prevent adding non-default Exchange accounts](http://gpsearch.azurewebsites.net/default.aspx?ref=1) (Impedir la incorporación de cuentas de Exchange no predeterminadas). Para Outlook en plataformas distintas de Windows y para Skype Empresarial en todas las plataformas, actualmente no está disponible la compatibilidad total para restricciones de inquilino.
 
 ## <a name="testing"></a>Prueba
 
-Si desea tootry inquilino restricciones antes de implementarlo para toda la organización, hay dos opciones: un enfoque basado en host mediante una herramienta como Fiddler o un lanzamiento por fases de configuración de proxy.
+Si desea probar la característica Restricciones de inquilino antes de implementarla para toda la organización, tiene dos opciones: un enfoque basado en host mediante una herramienta como Fiddler o un lanzamiento por fases de configuración de proxy.
 
 ### <a name="fiddler-for-a-host-based-approach"></a>Fiddler para un enfoque basado en host
 
-Fiddler es un proxy que se pueden toocapture usado y modifican el tráfico HTTP/HTTPS, incluida la inserción de encabezados HTTP de depuración de web gratuita. tooconfigure Fiddler tootest restricciones de inquilino, lleve a cabo Hola pasos:
+Fiddler es un proxy de depuración web gratis que puede usarse para capturar y modificar el tráfico HTTP/HTTPS, incluida la inserción de encabezados HTTP. Para configurar Fiddler para probar Restricciones de inquilino, realice los pasos siguientes:
 
 1.  [Descargue e instale Fiddler](http://www.telerik.com/fiddler).
-2.  Configurar el tráfico HTTPS de Fiddler toodecrypt, por [documentación de Ayuda de Fiddler](http://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS).
-3.  Configurar Hola de Fiddler tooinsert *restringir acceso para inquilinos* y *contexto de restringir acceso* encabezados utilizando reglas personalizadas:
-  1. En la herramienta de depurador Web de Fiddler hello, seleccione hello **reglas** menú y seleccione **Personalizar reglas...** archivo de tooopen hello CustomRules.
-  2. Agregar Hola siguientes líneas al principio de Hola de hello *OnBeforeRequest* (función). Reemplace \<tenant domain\> por un dominio registrado con el inquilino, por ejemplo, contoso.onmicrosoft.com. Reemplace \<directory ID\> por el identificador GUID de Azure AD del inquilino.
+2.  Configure Fiddler para descifrar el tráfico HTTPS siguiendo las indicaciones de la [documentación de la ayuda de Fiddler](http://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS).
+3.  Configure Fiddler para insertar los encabezados *Restrict-Access-To-Tenants* y *Restrict-Access-Context* utilizando reglas personalizadas:
+  1. En la herramienta Fiddler Web Debugger, seleccione el menú **Reglas** y luego **Personalizar reglas...** para abrir el archivo CustomRules.
+  2. Agregue las siguientes líneas al principio de la función *OnBeforeRequest*. Reemplace \<tenant domain\> por un dominio registrado con el inquilino, por ejemplo, contoso.onmicrosoft.com. Reemplace \<directory ID\> por el identificador GUID de Azure AD del inquilino.
 
   ```
   if (oSession.HostnameIs("login.microsoftonline.com") || oSession.HostnameIs("login.microsoft.com") || oSession.HostnameIs("login.windows.net")){      oSession.oRequest["Restrict-Access-To-Tenants"] = "<tenant domain>";      oSession.oRequest["Restrict-Access-Context"] = "<directory ID>";}
   ```
 
-  Si necesita tooallow varios inquilinos, use una coma tooseparate Hola inquilino los nombres. Por ejemplo:
+  Si necesita permitir varios inquilinos, use una coma para separar los nombres de los mismos. Por ejemplo:
 
   ```
   oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";
   ```
 
-4. Guarde y cierre el archivo de hello CustomRules.
+4. Guarde y cierre el archivo CustomRules.
 
-Después de configurar Fiddler, podrá capturar el tráfico por van toohello **archivo** menú y seleccionando **capturar tráfico**.
+Después de configurar Fiddler, podrá capturar el tráfico yendo al menú **File** (Archivo) y seleccionando **Capture Traffic** (Capturar tráfico).
 
 ### <a name="staged-rollout-of-proxy-settings"></a>Lanzamiento por fases de configuración de proxy
 
-Dependiendo de las capacidades de hello de la infraestructura del proxy, es posible que pueda toostage Hola puesta en servicio de los usuarios de tooyour de configuración. Aquí tiene un par de opciones de alto nivel a tener en cuenta:
+Dependiendo de las funcionalidades de la infraestructura del proxy, es posible que pueda llevar a cabo el lanzamiento de la configuración a los usuarios. Aquí tiene un par de opciones de alto nivel a tener en cuenta:
 
-1.  Usar PAC archivos toopoint prueba usuarios tooa prueba infraestructura del proxy, mientras que los usuarios normales continúan infraestructura del proxy de producción de hello de toouse.
+1.  Usar archivos PAC para dirigir a los usuarios de prueba a una infraestructura del proxy de prueba, mientras que los usuarios convencionales siguen usando la infraestructura del proxy de producción.
 2.  Algunos servidores proxy pueden admitir distintas configuraciones mediante grupos.
 
-Consulte la documentación del servidor de proxy de tooyour para obtener detalles específicos.
+Consulte la documentación del servidor proxy para obtener detalles específicos.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
 - Lea [Updated Office 365 modern authentication](https://blogs.office.com/2015/11/19/updated-office-365-modern-authentication-public-preview/) (Autenticación moderna actualizada de Office 365)
 
-- Hola de revisión [intervalos de direcciones IP y las direcciones URL de Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)
+- Revise [URL de Office 365 e intervalos de direcciones IP](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)

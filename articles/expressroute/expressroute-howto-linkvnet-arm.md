@@ -1,6 +1,6 @@
 ---
-title: 'Vincular un circuito de ExpressRoute de tooan de red virtual: PowerShell: Azure | Documentos de Microsoft'
-description: "Este documento proporciona información general sobre cómo toolink virtual redes (redes virtuales) tooExpressRoute circuitos utilizando el modelo de implementación del Administrador de recursos de Hola y PowerShell."
+title: "Vinculación de una red virtual a un circuito ExpressRoute mediante PowerShell y Azure | Microsoft Docs"
+description: "Este documento proporciona información general sobre cómo vincular redes virtuales a circuitos ExpressRoute mediante el modelo de implementación de Resource Manager y PowerShell."
 services: expressroute
 documentationcenter: na
 author: ganesr
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/05/2017
 ms.author: ganesr
-ms.openlocfilehash: e75a9f6b42fa8e1a579e4f19882ec99b277b545f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8c2f3036f754a98090ab860f95900416690ebf83
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="connect-a-virtual-network-tooan-expressroute-circuit"></a>Conectarse a un circuito de ExpressRoute de tooan de red virtual
+# <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>Conexión de una red virtual a un circuito ExpressRoute
 > [!div class="op_single_selector"]
 > * [Portal de Azure](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
@@ -30,24 +30,24 @@ ms.lasthandoff: 10/06/2017
 > * [PowerShell (clásico)](expressroute-howto-linkvnet-classic.md)
 >
 
-En este artículo le ayuda a vincular circuitos ExpressRoute de tooAzure de redes virtuales (Vnet) mediante el modelo de implementación del Administrador de recursos de Hola y PowerShell. Redes virtuales pueden ser Hola misma suscripción o parte de otra suscripción. Este artículo también muestra cómo vincular tooupdate una red virtual. 
+Este artículo lo ayudará a vincular redes virtuales a circuitos ExpressRoute de Azure a través del modelo de implementación de Resource Manager y PowerShell. Las redes virtuales pueden estar en la misma suscripción o formar parte de otra suscripción. En este artículo también se muestra cómo actualizar el vínculo de una red virtual. 
 
 ## <a name="before-you-begin"></a>Antes de empezar
-* Instalar versión más reciente de Hola de módulos de PowerShell de Azure de Hola. Para obtener más información, consulte [cómo tooinstall y configurar Azure PowerShell](/powershell/azure/overview).
-* Hola de revisión [requisitos previos](expressroute-prerequisites.md), [requisitos de enrutamiento](expressroute-routing.md), y [flujos de trabajo](expressroute-workflows.md) antes de comenzar la configuración.
+* Instale la versión más reciente de los módulos de Azure PowerShell. Para más información, vea [Instalación y configuración de Azure PowerShell](/powershell/azure/overview).
+* Revise los [requisitos previos](expressroute-prerequisites.md), los [requisitos de enrutamiento](expressroute-routing.md) y los [flujos de trabajo](expressroute-workflows.md) antes de comenzar la configuración.
 * Tiene que tener un circuito ExpressRoute activo. 
-  * Siga las instrucciones de hello demasiado[crear un circuito ExpressRoute](expressroute-howto-circuit-arm.md) y tener habilitada por el proveedor de conectividad de circuito de Hola. 
-  * Asegúrese de que dispone de un emparejamiento privado de Azure configurado para el circuito. Vea hello [configurar el enrutamiento de](expressroute-howto-routing-arm.md) artículo para las instrucciones de enrutamiento. 
-  * Asegúrese de que el emparejamiento privado Azure está configurado y Hola emparejamiento de BGP entre la red y Microsoft está activo para que se puede habilitar la conectividad de extremo a extremo.
-  * Asegúrese de que ha creado y aprovisionado totalmente una red virtual y una puerta de enlace de red virtual. Siga las instrucciones de hello demasiado[crear una puerta de enlace de red virtual para ExpressRoute](expressroute-howto-add-gateway-resource-manager.md). Una puerta de enlace de red virtual para ExpressRoute usa Hola el GatewayType 'ExpressRoute', no VPN.
+  * Siga las instrucciones para [crear un circuito ExpressRoute](expressroute-howto-circuit-arm.md) y habilite el circuito mediante el proveedor de conectividad. 
+  * Asegúrese de que dispone de un emparejamiento privado de Azure configurado para el circuito. Consulte el artículo de [configuración del enrutamiento](expressroute-howto-routing-arm.md) para obtener instrucciones sobre el enrutamiento. 
+  * Asegúrese de que el emparejamiento privado de Azure está configurado y el emparejamiento BGP entre la red y Microsoft está activo para habilitar la conectividad de extremo a extremo.
+  * Asegúrese de que ha creado y aprovisionado totalmente una red virtual y una puerta de enlace de red virtual. Siga las instrucciones para [crear una puerta de enlace de red virtual en ExpressRoute](expressroute-howto-add-gateway-resource-manager.md). Una puerta de enlace de red virtual para ExpressRoute usa el GatewayType "ExpressRoute", no VPN.
 
-* Puede vincular una circuito de ExpressRoute estándar de too10 redes virtuales tooa. Todas las redes virtuales deben estar en hello misma región geopolíticos cuando se usa un circuito de ExpressRoute estándar. 
+* Es posible vincular hasta 10 redes virtuales a un circuito ExpressRoute estándar. Todas las redes virtuales deben pertenecer a la misma región geopolítica al utilizar un circuito de ExpressRoute estándar. 
 
-* Puede vincular una red virtual fuera de la región geopolítica de Hola de hello circuito de ExpressRoute o conectar un mayor número de redes virtuales tooyour circuito ExpressRoute si ha habilitado el complemento de hello ExpressRoute premium. Comprobar hello [preguntas más frecuentes sobre](expressroute-faqs.md) para obtener más detalles sobre el complemento de hello premium.
+* Puede vincular una red virtual fuera de la región geopolítica del circuito de ExpressRoute, o bien conectar un mayor número de redes virtuales a este si habilitó el complemento premium de ExpressRoute. Consulte las [preguntas más frecuentes](expressroute-faqs.md) para obtener más detalles sobre el complemento premium.
 
 
-## <a name="connect-a-virtual-network-in-hello-same-subscription-tooa-circuit"></a>Conectar una red virtual en hello mismo circuito de tooa de suscripción
-Puede conectarse un tooan de puerta de enlace de red virtual circuito ExpressRoute mediante Hola siguiente cmdlet. Asegúrese de que esa puerta de enlace de red virtual de Hola se crea y está listo para crear un vínculo antes de ejecutar el cmdlet de hello:
+## <a name="connect-a-virtual-network-in-the-same-subscription-to-a-circuit"></a>Conexión de una red virtual en la misma suscripción a un circuito
+Puede conectar una puerta de enlace de red virtual a un circuito ExpressRoute mediante el siguiente cmdlet. Asegúrese de que la puerta de enlace de red virtual se crea y está lista para vincular antes de ejecutar el cmdlet:
 
 ```powershell
 $circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
@@ -55,13 +55,13 @@ $gw = Get-AzureRmVirtualNetworkGateway -Name "ExpressRouteGw" -ResourceGroupName
 $connection = New-AzureRmVirtualNetworkGatewayConnection -Name "ERConnection" -ResourceGroupName "MyRG" -Location "East US" -VirtualNetworkGateway1 $gw -PeerId $circuit.Id -ConnectionType ExpressRoute
 ```
 
-## <a name="connect-a-virtual-network-in-a-different-subscription-tooa-circuit"></a>Conectar una red virtual en un circuito de tooa otra suscripción
-Puede compartir un circuito ExpressRoute entre varias suscripciones. Hola figura siguiente muestra un sencillo esquema de cómo compartir funciona para los circuitos ExpressRoute en varias suscripciones.
+## <a name="connect-a-virtual-network-in-a-different-subscription-to-a-circuit"></a>Conexión de una red virtual en una suscripción diferente a un circuito
+Puede compartir un circuito ExpressRoute entre varias suscripciones. En la ilustración siguiente se muestra un sencillo esquema de cómo funciona el uso compartido de circuitos ExpressRoute entre varias suscripciones.
 
-Cada una de las nubes más pequeñas de hello en nube de gran tamaño hello es toorepresent usado suscripciones que pertenecen los departamentos de toodifferent dentro de una organización. Cada uno de los departamentos de Hola de organización de hello puede utilizar su propia suscripción para implementar sus servicios, pero se puede compartir una sola red de ExpressRoute circuito tooconnect tooyour atrás local. Un departamento único (en este ejemplo: TI) puede poseer el circuito de ExpressRoute Hola. Otras suscripciones dentro de la organización de hello pueden utilizar el circuito de ExpressRoute Hola.
+Cada una de las nubes más pequeñas dentro de la nube de gran tamaño se usa para representar las suscripciones que pertenecen a diferentes departamentos dentro de una organización. Cada departamento de la organización puede usar su propia suscripción para implementar sus servicios, pero puede compartir un único circuito ExpressRoute para volver a conectarse a la red local. Un solo departamento (en este ejemplo: TI) puede ser el propietario del circuito ExpressRoute. Otras suscripciones dentro de la organización pueden usar el circuito ExpressRoute.
 
 > [!NOTE]
-> Cargos de conectividad y ancho de banda de circuito de ExpressRoute de Hola será propietario de la suscripción de toohello aplicado. Todas las redes virtuales compartan Hola mismo ancho de banda.
+> Los cargos de conectividad y ancho de banda de un circuito ExpressRoute recaerán en el propietario de la suscripción. Todas las redes virtuales comparten el mismo ancho de banda.
 > 
 > 
 
@@ -70,17 +70,17 @@ Cada una de las nubes más pequeñas de hello en nube de gran tamaño hello es t
 
 ### <a name="administration---circuit-owners-and-circuit-users"></a>Administración: los propietarios de circuito y los usuarios de circuito
 
-Hola 'propietario del circuito' es un usuario autorizado de alimentación de hello recursos de circuito de ExpressRoute. propietario del circuito Hola puede crear autorizaciones que se pueden canjear por 'usuarios del circuito'. Los usuarios de circuito son propietarios de red virtual puertas de enlace que no están en Hola misma suscripción como Hola circuito de ExpressRoute. Los usuarios del circuito pueden canjear autorizaciones (una autorización por red virtual).
+El "propietario del circuito" es un usuario avanzado autorizado del recurso de circuito ExpressRoute. Puede crear autorizaciones que los "propietarios del circuito", a su vez, pueden canjear. Los usuarios del circuito son propietarios de puertas de enlace de red virtual que no se incluyen en la misma suscripción que el circuito ExpressRoute. Los usuarios del circuito pueden canjear autorizaciones (una autorización por red virtual).
 
-propietario del circuito Hello tiene Hola power toomodify y revocar las autorizaciones en cualquier momento. Revocar el resultado de una autorización en todas las conexiones de vínculo que se va a eliminar de suscripción de hello cuyo acceso se ha revocado.
+El propietario del circuito tiene la capacidad de modificar y revocar las autorizaciones en cualquier momento. La revocación de una autorización dará como resultado la eliminación de todas las conexiones de vínculos de la suscripción cuyo acceso se haya revocado.
 
 ### <a name="circuit-owner-operations"></a>Operaciones del propietario del circuito
 
-**toocreate una autorización**
+**Creación de una autorización**
 
-propietario del circuito Hola crea una autorización. Esto resulta en hello creación de una clave de autorización que puede ser utilizados por un tooconnect de usuario de circuito su toohello de puertas de enlace de red virtual circuito de ExpressRoute. Una autorización solo es válida para una conexión.
+El propietario del circuito crea una autorización. Esto da lugar a la creación de una clave de autorización que puede usar un usuario del circuito para conectar sus puertas de enlace de red virtual al circuito ExpressRoute. Una autorización solo es válida para una conexión.
 
-Hola cmdlet fragmento siguiente muestra cómo toocreate una autorización:
+El fragmento de código del cmdlet siguiente muestra cómo crear una autorización:
 
 ```powershell
 $circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
@@ -92,7 +92,7 @@ $auth1 = Get-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circu
 ```
 
 
-Hola toothis de respuesta contendrá el estado y la clave de autorización de hello:
+La respuesta a esta contendrá la clave y el estado de la autorización:
 
     Name                   : MyAuthorization1
     Id                     : /subscriptions/&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&/resourceGroups/ERCrossSubTestRG/providers/Microsoft.Network/expressRouteCircuits/CrossSubTest/authorizations/MyAuthorization1
@@ -103,18 +103,18 @@ Hola toothis de respuesta contendrá el estado y la clave de autorización de he
 
 
 
-**tooreview autorizaciones**
+**Revisión de autorizaciones**
 
-propietario del circuito Hola puede revisar todas las autorizaciones que se ejecutan en un circuito concreto mediante la ejecución de hello siguiente cmdlet:
+El propietario del circuito puede revisar todas las autorizaciones emitidas en un circuito concreto ejecutando el siguiente cmdlet:
 
 ```powershell
 $circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 $authorizations = Get-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit
 ```
 
-**tooadd autorizaciones**
+**Adición de autorizaciones**
 
-propietario del circuito Hola puede agregar autorizaciones mediante Hola siguiente cmdlet:
+El propietario del circuito puede agregar las autorizaciones mediante el siguiente cmdlet:
 
 ```powershell
 $circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
@@ -125,9 +125,9 @@ $circuit = Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "
 $authorizations = Get-AzureRmExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit
 ```
 
-**toodelete autorizaciones**
+**Eliminación de autorizaciones**
 
-propietario del circuito Hola puede revocar o eliminar un autorizaciones toohello usuario ejecutando Hola siguiente cmdlet:
+El propietario del circuito puede revocar o eliminar las autorizaciones al usuario ejecutando el siguiente cmdlet:
 
 ```powershell
 Remove-AzureRmExpressRouteCircuitAuthorization -Name "MyAuthorization2" -ExpressRouteCircuit $circuit
@@ -136,17 +136,17 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
 
 ### <a name="circuit-user-operations"></a>Operaciones del usuario del circuito
 
-usuario de circuito de Hello necesita Id. del mismo nivel de hello y una clave de autorización de propietario del circuito Hola. clave de autorización de Hello es un GUID.
+El usuario del circuito necesita el Id. de mismo nivel y una clave de autorización del propietario del circuito. la clave de autorización es un GUID.
 
-Identificador del mismo nivel se puede comprobar de hello siguiente comando:
+El id. de mismo nivel se puede comprobar con el siguiente comando:
 
 ```powershell
 Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 ```
 
-**tooredeem una autorización de conexión**
+**Canje de una autorización de conexión**
 
-usuario de circuito de Hello puede ejecutar Hola siguiente cmdlet tooredeem una autorización de vínculo:
+El usuario del circuito puede ejecutar el siguiente cmdlet para canjear una autorización de vínculo:
 
 ```powershell
 $id = "/subscriptions/********************************/resourceGroups/ERCrossSubTestRG/providers/Microsoft.Network/expressRouteCircuits/MyCircuit"    
@@ -154,16 +154,16 @@ $gw = Get-AzureRmVirtualNetworkGateway -Name "ExpressRouteGw" -ResourceGroupName
 $connection = New-AzureRmVirtualNetworkGatewayConnection -Name "ERConnection" -ResourceGroupName "RemoteResourceGroup" -Location "East US" -VirtualNetworkGateway1 $gw -PeerId $id -ConnectionType ExpressRoute -AuthorizationKey "^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
 ```
 
-**toorelease una autorización de conexión**
+**Liberación de una autorización de conexión**
 
-Puede liberar una autorización mediante la eliminación de la conexión de Hola que vincula la red virtual del toohello de circuito ExpressRoute Hola.
+Puede liberar una autorización eliminando la conexión que vincula el circuito ExpressRoute a la red virtual.
 
 ## <a name="modify-a-virtual-network-connection"></a>Modificación de una conexión de red virtual
 Puede actualizar ciertas propiedades de una conexión de red virtual. 
 
-**peso de conexión de hello tooupdate**
+**Actualización del peso de la conexión**
 
-La red virtual puede ser circuitos ExpressRoute de toomultiple conectado. Puede recibir Hola mismo prefijo de más de un circuito de ExpressRoute. toochoose qué tráfico de toosend conexión destinados a este prefijo, puede cambiar *RoutingWeight* de una conexión. El tráfico se enviará en conexión Hola con hello mayor *RoutingWeight*.
+La red virtual puede estar conectada a varios circuitos ExpressRoute. Es posible que reciba el mismo prefijo de más de un circuito ExpressRoute. Para elegir la conexión por la que enviar el tráfico destinado a este prefijo, puede cambiar el valor de *RoutingWeight* de una conexión. El tráfico se enviará por la conexión con el valor más alto de *RoutingWeight*.
 
 ```powershell
 $connection = Get-AzureRmVirtualNetworkGatewayConnection -Name "MyVirtualNetworkConnection" -ResourceGroupName "MyRG"
@@ -171,7 +171,7 @@ $connection.RoutingWeight = 100
 Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection
 ```
 
-Hola intervalo de *RoutingWeight* es too32000 0. valor predeterminado de Hello es 0.
+El intervalo de *RoutingWeight* abarca de 0 a 32 000. El valor predeterminado es 0.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para obtener más información sobre ExpressRoute, consulte hello [preguntas más frecuentes de ExpressRoute](expressroute-faqs.md).
+Para obtener más información acerca de ExpressRoute, consulte [P+F de ExpressRoute](expressroute-faqs.md).

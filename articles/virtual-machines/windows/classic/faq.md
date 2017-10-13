@@ -1,6 +1,6 @@
 ---
-title: "aaaFrequently pregunta para máquinas virtuales de Windows clásico | Documentos de Microsoft"
-description: "Proporciona respuestas toosome de preguntas frecuentes de hello sobre máquinas virtuales de Windows Azure creadas con el modelo de implementación clásica de Hola."
+title: "Preguntas más frecuentes sobre máquinas virtuales Windows clásicas | Microsoft Docs"
+description: "Proporciona respuestas a algunas de las preguntas más comunes sobre las máquinas virtuales de Microsoft Azure creadas con el modelo de implementación clásica."
 services: virtual-machines-windows
 documentationcenter: 
 author: cynthn
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2016
 ms.author: cynthn
-ms.openlocfilehash: 224ae7cd2e1ab1d877442b6cdf5131ccb11b22dc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a9565194bc2e4dccfd29ba120ac35e21d43c770a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="frequently-asked-question-about-azure-windows-virtual-machines-created-with-hello-classic-deployment-model"></a>Preguntas más frecuentes sobre las máquinas virtuales de Windows Azure creadas con el modelo de implementación clásica de Hola
+# <a name="frequently-asked-question-about-azure-windows-virtual-machines-created-with-the-classic-deployment-model"></a>Preguntas más frecuentes sobre Máquinas virtuales de Microsoft Azure creadas con el modelo de implementación clásica
 > [!IMPORTANT] 
-> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../../../resource-manager-deployment-model.md). Este artículo tratan con modelo de implementación de hello clásico. Microsoft recomienda que más nuevas implementaciones de usar el modelo del Administrador de recursos de Hola. Para preguntas más frecuentes de hello cuando se usa hello modelo del Administrador de recursos, consulte [aquí](../faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> Azure tiene dos modelos de implementación diferentes para crear recursos y trabajar con ellos: [Resource Manager y el clásico](../../../resource-manager-deployment-model.md). En este artículo se trata el modelo de implementación clásico. Microsoft recomienda que las implementaciones más recientes usen el modelo del Administrador de recursos. Para ver las preguntas más frecuentes al usar el modelo de Resource Manager, consulte [aquí](../faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 [!INCLUDE [virtual-machines-common-classic-faq](../../../../includes/virtual-machines-common-classic-faq.md)]
 

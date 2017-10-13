@@ -1,6 +1,6 @@
 ---
-title: aaaMonitor la carga de trabajo mediante DMV | Documentos de Microsoft
-description: "Obtenga información acerca de cómo toomonitor la carga de trabajo mediante DMV."
+title: "Supervisión de la carga de trabajo mediante DMV | Microsoft Docs"
+description: "Obtenga información sobre cómo supervisar la carga de trabajo mediante DMV."
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
@@ -15,24 +15,24 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 10/31/2016
 ms.author: joeyong;barbkess
-ms.openlocfilehash: acccf952d165ccec3de3b4b1c633b18bbbf78077
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7ce6c2cdf1e28852da536414533ccdcdaeb437e5
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Supervisión de la carga de trabajo mediante DMV
-Este artículo se describe cómo toouse vistas de administración dinámica (DMV) toomonitor la carga de trabajo e investigar la ejecución de la consulta en el almacén de datos de SQL Azure.
+En este artículo se describe cómo usar las vistas de administración dinámica (DMV) para supervisar la carga de trabajo e investigar la ejecución de la consulta en Almacenamiento de datos SQL de Azure.
 
 ## <a name="permissions"></a>Permisos
-Hola tooquery DMV en este artículo, debe tener permiso VIEW DATABASE STATE o CONTROL. Normalmente la concesión VIEW DATABASE STATE es permiso Hola preferida ya que es mucho más restrictiva.
+Para consultar las DMV de este artículo, necesita el permiso VER ESTADO DE BASE DE DATOS o CONTROL. Normalmente la concesión VER ESTADO DE BASE DE DATOS es el permiso preferido ya que es mucho más restrictivo.
 
 ```sql
-GRANT VIEW DATABASE STATE toomyuser;
+GRANT VIEW DATABASE STATE TO myuser;
 ```
 
 ## <a name="monitor-connections"></a>Supervisión de conexiones
-Todos los inicios de sesión tooSQL almacenamiento de datos se registran demasiado[sys.dm_pdw_exec_sessions][sys.dm_pdw_exec_sessions].  Esta DMV contiene Hola última 10.000 inicios de sesión.  Hola session_id es la clave principal de Hola y se asigna de forma secuencial para cada nuevo inicio de sesión.
+Todos los inicios de sesión en SQL Data Warehouse se registran en [sys.dm_pdw_exec_sessions][sys.dm_pdw_exec_sessions].  Esta DMV contiene los 10.000 últimos inicios de sesión.  El campo session_id es la clave principal y se asigna de forma secuencial para cada nuevo inicio de sesión.
 
 ```sql
 -- Other Active Connections
@@ -40,16 +40,16 @@ SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed' and session_id <
 ```
 
 ## <a name="monitor-query-execution"></a>Supervisión de ejecuciones de consultas
-Todas las consultas ejecutadas en almacenamiento de datos de SQL se registran demasiado[sys.dm_pdw_exec_requests][sys.dm_pdw_exec_requests].  Esta DMV contiene Hola última 10.000 consultas ejecutadas.  Hola request_id identifica cada consulta y es la clave principal de Hola para esta DMV.  Hola request_id se asigna de forma secuencial para cada nueva consulta y tiene como prefijo QID, que representa el identificador de consulta.  Al consultar en esta DMV sobre un campo session_id determinado, se muestran todas las consultas de un inicio de sesión concreto.
+Todas las consultas ejecutadas en SQL Data Warehouse se registran en [sys.dm_pdw_exec_requests][sys.dm_pdw_exec_requests].  Esta DMV contiene las últimas 10.000 consultas ejecutadas.  El campo request_id identifica cada consulta de forma única y es la clave principal de esta DMV.  Este campo se asigna de forma secuencial para cada nueva consulta y lleva el prefijo QID, que representa el identificador de consulta.  Al consultar en esta DMV sobre un campo session_id determinado, se muestran todas las consultas de un inicio de sesión concreto.
 
 > [!NOTE]
 > Los procedimientos almacenados utilizan varios identificadores de solicitud.  Los identificadores de solicitud se asignan en orden secuencial. 
 > 
 > 
 
-Estos son los planes de ejecución de pasos toofollow tooinvestigate de consultas y las horas para una consulta determinada.
+Estos son los pasos que deben seguirse para investigar los planes de ejecución de consultas y las horas de una consulta determinada.
 
-### <a name="step-1-identify-hello-query-you-wish-tooinvestigate"></a>PASO 1: Identificar consulta Hola que desea tooinvestigate
+### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>PASO 1: Identificación de la consulta que quiere investigar
 ```sql
 -- Monitor active queries
 SELECT * 
@@ -63,18 +63,18 @@ SELECT TOP 10 *
 FROM sys.dm_pdw_exec_requests 
 ORDER BY total_elapsed_time DESC;
 
--- Find a query with hello Label 'My Query'
--- Use brackets when querying hello label column, as it it a key word
+-- Find a query with the Label 'My Query'
+-- Use brackets when querying the label column, as it it a key word
 SELECT  *
 FROM    sys.dm_pdw_exec_requests
 WHERE   [label] = 'My Query';
 ```
 
-De hello anteriores resultados de la consulta, **Hola Nota Id. de solicitud** de consulta de Hola que desearía tooinvestigate.
+En los resultados de la consulta anterior, **fíjese en el id. de solicitud** de la consulta que quiere investigar.
 
-Las consultas de hello **Suspended** estado se ponen en cola debido a límites de tooconcurrency. Estas consultas también aparecen en la consulta de las esperas de hello sys.dm_pdw_waits con un tipo de UserConcurrencyResourceType. Para más información acerca de los límites de simultaneidad, consulte [Simultaneidad y administración de cargas de trabajo en SQL Data Warehouse][Concurrency and workload management]. Las consultas también pueden esperar por otros motivos, como los bloqueos de objetos.  Si la consulta está esperando un recurso, consulte la sección [Supervisión de consultas en espera][Investigating queries waiting for resources] de este mismo artículo.
+Las consultas con estado **suspendido** se ponen en cola debido a los límites de simultaneidad. Estas consultas también aparecen en la consulta sys.dm_pdw_waits con un tipo de UserConcurrencyResourceType. Para más información acerca de los límites de simultaneidad, consulte [Simultaneidad y administración de cargas de trabajo en SQL Data Warehouse][Concurrency and workload management]. Las consultas también pueden esperar por otros motivos, como los bloqueos de objetos.  Si la consulta está esperando un recurso, consulte la sección [Supervisión de consultas en espera][Investigating queries waiting for resources] de este mismo artículo.
 
-búsqueda de hello toosimplify de una consulta en la tabla de sys.dm_pdw_exec_requests hello, utilice [etiqueta] [ LABEL] tooassign una consulta de tooyour de comentario que se puede buscar en la vista de sys.dm_pdw_exec_requests Hola.
+Para simplificar la búsqueda de una consulta en la tabla sys.dm_pdw_exec_requests, use [LABEL][LABEL] para asignar un comentario a la consulta que se pueda buscar en la vista sys.dm_pdw_exec_requests.
 
 ```sql
 -- Query with Label
@@ -84,11 +84,11 @@ OPTION (LABEL = 'My Query')
 ;
 ```
 
-### <a name="step-2-investigate-hello-query-plan"></a>PASO 2: Investigar el plan de consulta de Hola
-Use plan de hello Id. de solicitud tooretrieve hello de la consulta distribuida SQL (DSQL) desde [sys.dm_pdw_request_steps][sys.dm_pdw_request_steps].
+### <a name="step-2-investigate-the-query-plan"></a>PASO 2: investigación del plan de consulta
+Use el identificador de la solicitud para recuperar el plan de SQL distribuido (DSQL) de la consulta desde [sys.dm_pdw_request_steps][sys.dm_pdw_request_steps].
 
 ```sql
--- Find hello distributed query plan steps for a specific query.
+-- Find the distributed query plan steps for a specific query.
 -- Replace request_id with value from Step 1.
 
 SELECT * FROM sys.dm_pdw_request_steps
@@ -96,51 +96,51 @@ WHERE request_id = 'QID####'
 ORDER BY step_index;
 ```
 
-Cuando un plan DSQL está tardando más de lo esperado, causa de hello puede ser un plan de complejo con muchos pasos DSQL o solamente un paso tarda mucho tiempo.  Si plan de hello muchos pasos con varias operaciones de movimiento, considere la posibilidad de optimizar el movimiento de datos de tabla distribuciones tooreduce. Hola [tabla distribución] [ Table distribution] artículo explica por qué datos deben ser una consulta de toosolve movida y explican algunos movimiento de datos de distribución estrategias toominimize.
+Si un plan DSQL tarda más de lo esperado, es posible que sea un plan complejo con muchos pasos DSQL o con un solo paso que tarda mucho tiempo.  Si el plan tiene muchos pasos con varias operaciones de movimiento, considere la posibilidad de optimizar las distribuciones de la tabla para reducir el movimiento de datos. El artículo [Distribución de tablas en SQL Data Warehouse][Table distribution] explica por qué deben moverse datos para resolver una consulta y explica algunas estrategias de distribución para minimizar el movimiento de datos.
 
-tooinvestigate obtener más información acerca de un solo paso, hello *operation_type* columna de Hola Hola de paso y tenga en cuenta de consulta de ejecución prolongada **índice paso**:
+Para investigar más detalles acerca de un solo paso, compruebe la columna *operation_type* del paso de consulta de larga ejecución y anote el valor de **Índice de pasos**:
 
 * Continúe con el paso 3a sobre **operaciones SQL**: OnOperation, RemoteOperation, ReturnOperation.
 * Continúe con el paso 3b sobre **operaciones de movimiento de datos**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
 
-### <a name="step-3a-investigate-sql-on-hello-distributed-databases"></a>PASO 3a: investigar SQL en bases de datos de hello distribuida
-Usar Hola Id. de solicitud y detalles de tooretrieve del índice de paso de Hola de [sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests], que contiene información de ejecución de paso de consulta de hello en todos los de hello distribuidas bases de datos.
+### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>PASO 3a: investigación de SQL en las bases de datos distribuidas
+Use el identificador de la solicitud y el índice de pasos para recuperar información de [sys.dm_pdw_sql_requests][sys.dm_pdw_sql_requests], que contiene detalles sobre la ejecución del paso de la consulta en todas las instancias distribuidas.
 
 ```sql
--- Find hello distribution run times for a SQL step.
+-- Find the distribution run times for a SQL step.
 -- Replace request_id and step_index with values from Step 1 and 3.
 
 SELECT * FROM sys.dm_pdw_sql_requests
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-Cuando se ejecuta el paso de consulta de hello, [DBCC PDW_SHOWEXECUTIONPLAN] [ DBCC PDW_SHOWEXECUTIONPLAN] puede ser usado tooretrieve Hola estimado plan para SQL Server de hello memoria caché del plan de SQL Server para el paso de hello ejecutando en un determinado distribución.
+Si dicho paso se está ejecutando, se puede utilizar [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] para recuperar el plan estimado de SQL Server de la caché de planes de SQL Server para el paso que se ejecuta en una distribución concreta.
 
 ```sql
--- Find hello SQL Server execution plan for a query running on a specific SQL Data Warehouse Compute or Control node.
+-- Find the SQL Server execution plan for a query running on a specific SQL Data Warehouse Compute or Control node.
 -- Replace distribution_id and spid with values from previous query.
 
 DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
-### <a name="step-3b-investigate-data-movement-on-hello-distributed-databases"></a>PASO 3b: investigar el movimiento de datos en las bases de datos de hello distribuida
-Usar Id. de solicitud de Hola y Hola información de índice de paso tooretrieve acerca de un paso de movimiento de datos con cada distribución de [sys.dm_pdw_dms_workers][sys.dm_pdw_dms_workers].
+### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>PASO 3b: investigación del movimiento de datos en las bases de datos distribuidas
+Use el identificador de la solicitud y el índice de paso para recuperar información acerca del paso de movimiento de datos que se ejecuta en cada distribución desde [sys.dm_pdw_dms_workers][sys.dm_pdw_dms_workers].
 
 ```sql
--- Find hello information about all hello workers completing a Data Movement Step.
+-- Find the information about all the workers completing a Data Movement Step.
 -- Replace request_id and step_index with values from Step 1 and 3.
 
 SELECT * FROM sys.dm_pdw_dms_workers
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-* Comprobar hello *total_elapsed_time* toosee de columna si una distribución particular está tardando mucho más tiempo que otras personas para que el movimiento de datos.
-* Para la distribución de ejecución prolongada de hello, comprobar hello *rows_processed* toosee de columna si el número de Hola de filas que se mueven de distribución es significativamente mayor que otros usuarios. En ese caso, esto puede indicar un sesgo de los datos subyacentes.
+* Compruebe la columna *total_elapsed_time* para ver si una distribución determinada tarda bastante más que otras en el movimiento de datos.
+* Para la distribución de larga ejecución, compruebe la columna *rows_processed* para ver si el número de filas que se mueven desde esa distribución es mucho mayor que para las demás. En ese caso, esto puede indicar un sesgo de los datos subyacentes.
 
-Si está ejecutando la consulta de hello, [DBCC PDW_SHOWEXECUTIONPLAN] [ DBCC PDW_SHOWEXECUTIONPLAN] puede ser usado tooretrieve Hola estimado plan para SQL Server de hello memoria caché del plan de SQL Server para hello actuales paso SQL dentro de un determinado distribución.
+Si la consulta se está ejecutando, [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] se puede utilizar para recuperar el plan estimado de SQL Server de la caché de planes de SQL Server para el paso de SQL que se está ejecutando en una distribución particular.
 
 ```sql
--- Find hello SQL Server estimated plan for a query running on a specific SQL Data Warehouse Compute or Control node.
+-- Find the SQL Server estimated plan for a query running on a specific SQL Data Warehouse Compute or Control node.
 -- Replace distribution_id and spid with values from previous query.
 
 DBCC PDW_SHOWEXECUTIONPLAN(55, 238);
@@ -149,7 +149,7 @@ DBCC PDW_SHOWEXECUTIONPLAN(55, 238);
 <a name="waiting"></a>
 
 ## <a name="monitor-waiting-queries"></a>Supervisión de consultas en espera
-Si descubre que la consulta no está realizando progresos porque está esperando un recurso, esta es una consulta que muestra todos los recursos de hello que está esperando una consulta.
+Si observa que la consulta no avanza porque está esperando un recurso, a continuación puede encontrar una consulta que muestra todos los recursos que está esperando una consulta.
 
 ```sql
 -- Find queries 
@@ -171,15 +171,15 @@ WHERE waits.request_id = 'QID####'
 ORDER BY waits.object_name, waits.object_type, waits.state;
 ```
 
-Si consulta Hola activamente está esperando en recursos de otra consulta, estado de hello será **AcquireResources**.  Si consulta hello tiene todos los recursos necesario de hello, Hola estado será **Granted**.
+Si la consulta espera activamente recursos de otra consulta, el estado será **AcquireResources**.  Si la consulta tiene todos los recursos necesarios, el estado será **Concedido**.
 
 ## <a name="monitor-tempdb"></a>Supervisión de tempdb
-Uso de tempdb alta puede ser Hola causa de un rendimiento lento y problemas de memoria insuficiente. Por favor, compruebe primero si tiene grupos de filas de sesgo o de mala calidad de datos y tome las medidas oportunas Hola. Si observa que tempdb llega a su limite durante la ejecución de consultas, considere la posibilidad de escalar el almacenamiento de datos. Hola a continuación se describe cómo tooidentify al uso de tempdb por cada consulta en cada nodo. 
+El uso elevado de tempdb puede ser la causa principal de problemas de rendimiento lento y falta de memoria. Compruebe primero si tiene asimetría de datos o grupos de filas de calidad baja y emprenda las acciones adecuadas. Si observa que tempdb llega a su limite durante la ejecución de consultas, considere la posibilidad de escalar el almacenamiento de datos. A continuación se describe cómo identificar el uso de tempdb por consulta en cada nodo. 
 
-Crear Hola siguiente Id. de hello nodo apropiado tooassociate de vista para sys.dm_pdw_sql_requests. Esto habilitará tooleverage otras DMV acceso directo y combinar las tablas con sys.dm_pdw_sql_requests.
+Cree la siguiente vista para asociar el identificador de nodo apropiado para sys.dm_pdw_sql_requests. Esto le permitirá aprovechar otras DMV de paso y combinar esas tablas con sys.dm_pdw_sql_requests.
 
 ```sql
--- sys.dm_pdw_sql_requests with hello correct node id
+-- sys.dm_pdw_sql_requests with the correct node id
 CREATE VIEW sql_requests AS
 (SELECT
        sr.request_id,
@@ -200,7 +200,7 @@ CREATE VIEW sql_requests AS
 FROM sys.pdw_distributions AS d
 RIGHT JOIN sys.dm_pdw_sql_requests AS sr ON d.distribution_id = sr.distribution_id)
 ```
-Ejecute hello después consulta toomonitor tempdb:
+Ejecute la consulta siguiente para supervisar tempdb:
 
 ```sql
 -- Monitor tempdb
@@ -233,9 +233,9 @@ ORDER BY sr.request_id;
 ```
 ## <a name="monitor-memory"></a>Supervisión de memoria
 
-Memoria puede ser la causa de Hola para un rendimiento lento y problemas de memoria insuficiente. Por favor, compruebe primero si tiene grupos de filas de sesgo o de mala calidad de datos y tome las medidas oportunas Hola. Si observa que el uso de memoria de SQL Server llega a su limite durante la ejecución de consultas, considere la posibilidad de escalar el almacenamiento de datos.
+La causa principal de los problemas relacionados con el rendimiento lento y la falta de memoria puede ser la memoria. Compruebe primero si tiene asimetría de datos o grupos de filas de calidad baja y emprenda las acciones adecuadas. Si observa que el uso de memoria de SQL Server llega a su limite durante la ejecución de consultas, considere la posibilidad de escalar el almacenamiento de datos.
 
-Hola después de consulta devuelve presión de memoria y uso de memoria de SQL Server por nodo: 
+La consulta siguiente devuelve el uso y la presión de memoria de SQL Server por nodo:   
 ```sql
 -- Memory consumption
 SELECT
@@ -258,7 +258,7 @@ pc1.counter_name = 'Total Server Memory (KB)'
 AND pc2.counter_name = 'Target Server Memory (KB)'
 ```
 ## <a name="monitor-transaction-log-size"></a>Supervisión del tamaño del registro de transacciones
-Hello consulta siguiente devuelve tamaño del registro de transacciones de hello en cada tipo de distribución. Compruebe si tiene grupos de filas de sesgo o de mala calidad de datos y tome las medidas oportunas Hola. Si uno de los archivos de registro de hello está llegando a 160GB, debería considerar el escalado de la instancia o limitar el tamaño de la transacción. 
+La siguiente consulta devuelve el tamaño del registro de transacciones en cada distribución. Compruebe primero si tiene asimetría de datos o grupos de filas de calidad baja y emprenda las acciones adecuadas. Si uno de los archivos de registro está llegando a 160 GB, debería considerar la posibilidad de escalar verticalmente su instancia o limitar el tamaño de transacción. 
 ```sql
 -- Transaction log size
 SELECT
@@ -272,7 +272,7 @@ AND counter_name = 'Log File(s) Used Size (KB)'
 AND counter_name = 'Target Server Memory (KB)'
 ```
 ## <a name="monitor-transaction-log-rollback"></a>Supervisión de la reversión del registro de transacciones
-Si se producen errores en las consultas o llevar a cabo una tooproceed mucho tiempo, puede comprobar y supervisar si dispone de las transacciones de reversión.
+Si las consultas producen errores o tardan mucho tiempo en continuar, puede comprobar y supervisar si tiene alguna reversión en las transacciones.
 ```sql
 -- Monitor rollback
 SELECT 

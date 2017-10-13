@@ -1,6 +1,6 @@
 ---
-title: "aaaDownload facturación factura y diaria uso datos de Azure | Documentos de Microsoft"
-description: "Describe cómo toodownload o ver la facturación de Azure de factura y datos de uso diario."
+title: Descarga de los datos de uso diario y la factura de Azure | Microsoft Docs
+description: "En este artículo se describe cómo descargar o ver los datos de uso diario y la factura de facturación de Azure."
 keywords: "factura, facturación, descarga de factura, factura de Azure, uso de Azure"
 services: 
 documentationcenter: 
@@ -13,92 +13,95 @@ ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 04/25/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2826df10f39914fcaeb9985271dadde550c68dfd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 01057dd7832cab6121a22e3bb7d0dc4cd7e9b35d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Procedimiento para descargar las datos de uso diario y de factura de Azure
-Puede descargar la factura de hello [portal de Azure](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) o hacer que se envíe por correo electrónico. toodownload su uso diario, vaya toohello [centro de cuentas de Azure](https://account.windowsazure.com). Solo determinados roles tienen tooget permiso factura y uso de datos, como Hola Administrador de la cuenta de facturación. vea toolearn más acerca de cómo obtener acceso a información de toobilling, [tooAzure de acceso de administrar roles de facturación](billing-manage-access.md).
+También puede descargar la factura desde [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) o recibirla por correo electrónico. Para descargar su uso diario, vaya a la [Centro de cuentas de Azure](https://account.azure.com/Subscriptions). Solo determinados roles tienen permiso para obtener la información de facturación y uso, como el administrador de la cuenta. Para obtener más información sobre cómo obtener acceso a la información de facturación, vea [Manage access to Azure billing using roles](billing-manage-access.md) (Administrar el acceso a la facturación de Azure mediante roles).
+
+>[!NOTE]
+>Este artículo no es aplicable para clientes del Contrato Enterprise (EA). Si es un cliente EA, las facturas se envían directamente a los administradores de la inscripción.
 
 ## <a name="get-your-invoice-in-email-pdf"></a>Obtención de la factura por correo electrónico (.pdf)
-Puede elegir y configurar tooreceive destinatarios adicionales factura de Azure en un correo electrónico. Esta característica puede no estar disponible para determinadas suscripciones, como ofertas de soporte técnico, contratos Enterprise o Azure bajo licencia Open.
+Puede optar a destinatarios adicionales y configurarlos para recibir la factura de Azure en un correo electrónico. Esta característica puede no estar disponible para determinadas suscripciones, como ofertas de soporte técnico, contratos Enterprise o Azure bajo licencia Open.
 
-1. Seleccione la suscripción de hello [hoja suscripciones](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Tendrá que habilitar la opción en cada suscripción que posea. Haga clic en **Facturas** y luego en **Email my invoice** (Enviar mi factura por correo electrónico). 
+1. Seleccione su suscripción en la [página Suscripciones](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Tendrá que habilitar la opción en cada suscripción que posea. Haga clic en **Facturas** y luego en **Email my invoice** (Enviar mi factura por correo electrónico). 
 
-    ![Captura de pantalla que muestra hello participar en el flujo](./media/billing-download-azure-invoice-daily-usage-date/InvoicesDeepLink.PNG)
+    ![Captura de pantalla que muestra el flujo de participación](./media/billing-download-azure-invoice-daily-usage-date/InvoicesDeepLink.PNG)
     
-2. Haga clic en **participar en** y acepte los términos de Hola.
+2. Haga clic en **Recibir notificaciones** y acepte los términos.
 
-    ![Captura de pantalla que muestra hello participar en el flujo](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep2.PNG)
+    ![Captura de pantalla que muestra el flujo de participación](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep2.PNG)
  
-3. Una vez que ha aceptado el contrato de hello, puede configurar a los destinatarios adicionales.
+3. Una vez que ha aceptado el contrato, puede configurar destinatarios adicionales.
 
-    ![Captura de pantalla que muestra hello participar en el flujo](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep3.PNG)
+    ![Captura de pantalla que muestra el flujo de participación](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep3.PNG)
     
-Si no recibe un correo electrónico después de seguir los pasos de hello, asegúrese de que su dirección de correo electrónico sea correcta en hello [preferencias de comunicación en el perfil de](https://account.windowsazure.com/profile).
+Si no recibe un correo electrónico después de seguir los pasos, asegúrese de que su dirección de correo electrónico es correcta en las [preferencias de comunicación de su perfil](https://account.windowsazure.com/profile).
 
 ## <a name="download-invoice-from-azure-portal-pdf"></a>Descarga de la factura desde Azure Portal (.pdf)
 
-1. Seleccione la suscripción de hello [hoja suscripciones](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) en el portal de Azure como [un usuario con acceso tooinvoices](billing-manage-access.md).
+1. Seleccione su suscripción en la [página Suscripciones](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) de Azure Portal como [un usuario con acceso a las facturas](billing-manage-access.md).
 
 2. Seleccione **Facturas**. 
 
-    ![Captura de pantalla que muestra la opción de facturación y uso de Hola](./media/billing-download-azure-invoice-daily-usage-date/billingandusage.png) 
+    ![Captura de pantalla que muestra la opción Facturación y uso](./media/billing-download-azure-invoice-daily-usage-date/billingandusage.png) 
 
-3. Haga clic en **descargar factura** tooview una copia de la factura PDF. Si dice **no está disponible**, consulte [¿por qué no ve una factura para hello último período de facturación?](#noinvoice)
+3. Haga clic en **Descargar factura** para ver una copia de la factura en PDF. Si muestra **No disponible**, vea [¿Por qué no veo una factura para el último período de facturación?](#noinvoice)
 
-    ![Captura de pantalla que muestra los períodos de facturación, opción de descarga de Hola y cargos totales para cada período de facturación](./media/billing-download-azure-invoice-daily-usage-date/billing4.png)
+    ![Captura de pantalla que muestra los períodos de facturación, la opción de descarga y los cargos totales para cada período de facturación](./media/billing-download-azure-invoice-daily-usage-date/billing4.png)
 
-4. También puede ver el uso diario haciendo clic en el período de facturación de Hola. 
+4. También puede ver el uso diario si hace clic en el período de facturación. 
 
 Para más información sobre la factura, consulte [Comprender la factura de Microsoft Azure](billing-understand-your-bill.md). Para ayudar a administrar los costos, consulte [Prevención de costos inesperados con la administración de costos y facturación de Azure](billing-getting-started.md).
 
-## <a name="download-usage-from-hello-account-center-csv"></a>Descargar el uso de hello centro de cuentas (.csv)
+## <a name="download-usage-from-the-account-center-csv"></a>Descarga del uso desde el centro de cuentas (.csv)
 
-1. Inicio de sesión en hello [centro de cuentas de Azure](https://account.windowsazure.com/subscriptions) como Hola Administrador de la cuenta.
+1. Inicie sesión en el [Centro de cuentas de Azure](https://account.windowsazure.com/subscriptions) como administrador de la cuenta.
 
-2. Seleccione la suscripción de hello para el que desea información de facturación y uso de Hola.
+2. Seleccione la suscripción para la que quiere la información de factura y uso.
 
 3. Seleccione **HISTORIAL DE FACTURACIÓN**. 
 
     ![Captura de pantalla que muestra la opción del historial de facturación](./media/billing-download-azure-invoice-daily-usage-date/Billinghisotry.png)
 
-4. Puede ver las instrucciones para hello últimos seis períodos de facturación y Hola no facturado período actual. 
+4. Puede ver sus extractos de los últimos seis períodos de facturación y el período actual sin facturar. 
 
-    ![Captura de pantalla que muestra los períodos de facturación, opciones toodownload factura y uso diario y total de cargos para cada período de facturación](./media/billing-download-azure-invoice-daily-usage-date/billingSum.png)
+    ![Captura de pantalla que muestra los períodos de facturación, las opciones para descargar la factura y uso diario, y los cargos totales para cada período de facturación](./media/billing-download-azure-invoice-daily-usage-date/billingSum.png)
 
-5. Seleccione **Ver extracto actual** toosee generó una estimación de los cargos de la estimación de hello tiempo Hola. Esta información solo se actualiza diariamente y es posible que no incluya todo el uso. La factura mensual puede ser distinta a esta estimación.
+5. Seleccione **Ver extracto actual** para ver una estimación de los cargos en el momento en que se generó la estimación. Esta información solo se actualiza diariamente y es posible que no incluya todo el uso. La factura mensual puede ser distinta a esta estimación.
 
-    ![Captura de pantalla que muestra la opción de ver extracto actual Hola](./media/billing-download-azure-invoice-daily-usage-date/billingSum2.png)
+    ![Captura de pantalla que muestra la opción Ver extracto actual](./media/billing-download-azure-invoice-daily-usage-date/billingSum2.png)
 
-    ![Captura de pantalla que muestra la estimación de Hola de cargos actuales](./media/billing-download-azure-invoice-daily-usage-date/billingSum3.png)
+    ![Captura de pantalla que muestra la estimación de los cargos actuales](./media/billing-download-azure-invoice-daily-usage-date/billingSum3.png)
 
-6. Seleccione **descargar uso** datos toodownload Hola de uso diario como un archivo CSV. Si ve dos versiones disponibles, descargue la versión 2.
+6. Seleccione **Descargar uso** para descargar los datos de uso diario como un archivo CSV. Si ve dos versiones disponibles, descargue la versión 2.
 
-    ![Captura de pantalla que muestra la opción de descargar uso Hola](./media/billing-download-azure-invoice-daily-usage-date/DLusage.png)
+    ![Captura de pantalla que muestra la opción Descargar uso](./media/billing-download-azure-invoice-daily-usage-date/DLusage.png)
 
-Hola sólo administrador de la cuenta puede tener acceso a hello Azure Account Center. Otros administradores de facturación, por ejemplo, un propietario, pueden obtener información de uso con hello [API facturación](billing-usage-rate-card-overview.md).
+Solo el administrador de la cuenta puede tener acceso al Centro de cuentas de Azure. Otros administradores de facturación, como un propietario, pueden obtener información de uso mediante las [API de facturación](billing-usage-rate-card-overview.md).
 
 Para más información sobre el uso diario, consulte [Comprender la factura de Microsoft Azure](billing-understand-your-bill.md). Para ayudar a administrar los costos, consulte [Prevención de costos inesperados con la administración de costos y facturación de Azure](billing-getting-started.md).
 
-## <a name="noinvoice"></a>¿Por qué no ve una factura para hello último período de facturación?
+## <a name="noinvoice"></a> ¿Por qué no veo una factura para el último período de facturación?
 
 Pueden existir varias razones por las que no ve una factura:
 
 - Tiene un importe de crédito mensual con la suscripción que no ha superado o tiene una evaluación gratuita. Solo se genera una factura cuando debe dinero.
 
-- Es menor que 30 días desde el día de hello que suscrito tooAzure.
+- Han transcurrido menos de 30 días desde el día que se suscribió a Azure.
 
-- factura Hola aún no se genera. Espere hasta final de hello del período de facturación de Hola.
+- La factura no se ha generado aún. Espere hasta el final del período de facturación.
 
-- Si no estás Hola Administrador de la cuenta, facturas anteriores pueden no ser tooyou disponible.
+- Si no es el administrador de la cuenta, es posible que las facturas anteriores no estén disponibles para usted.
 
 ## <a name="need-help-contact-support"></a>¿Necesita ayuda? Póngase en contacto con el servicio de soporte técnico.
-Si tienes más preguntas, [póngase en contacto con soporte técnico](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) tooget rápidamente para solucionar el problema.
+Si tiene más preguntas, [póngase en contacto con el soporte técnico](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) para resolver el problema rápidamente.
 

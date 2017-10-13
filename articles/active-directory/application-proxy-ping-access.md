@@ -1,6 +1,6 @@
 ---
-title: "autenticación basada en aaaHeader con PingAccess para el Proxy de aplicación de Azure AD | Documentos de Microsoft"
-description: "Publicar aplicaciones con Proxy de aplicación y PingAccess toosupport encabezado autenticación basada en."
+title: "Autenticación basada en encabezados con PingAccess para el proxy de la aplicación de Azure AD | Microsoft Docs"
+description: "Publique aplicaciones con PingAccess y el proxy de la aplicación que admitan la autenticación basada en encabezados."
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -15,124 +15,124 @@ ms.date: 08/23/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 38fe3e7a41a71f4ae6c75f014e44c722f773bd22
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 58034ab8830cf655199875b448948ea14dc04a70
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Autenticación basada en el encabezado para el inicio de sesión único con el proxy de aplicación y PingAccess
 
-Azure Proxy de aplicación de Active Directory y PingAccess se han asociado juntos los clientes de Azure Active Directory de tooprovide con acceso tooeven más aplicaciones. PingAccess expande hello [ofertas de Proxy de aplicación existentes](active-directory-application-proxy-get-started.md) tooinclude tooapplications de acceso de inicio de sesión único que utilizan encabezados para la autenticación.
+El proxy de la aplicación Azure Active Directory y PingAccess se han asociado para proporcionar a los clientes de Azure Active Directory acceso a más aplicaciones. PingAccess expande las [ofertas actuales del proxy de aplicación](active-directory-application-proxy-get-started.md) para incluir el acceso de inicio sesión único a las aplicaciones que utilicen encabezados para la autenticación.
 
 ## <a name="what-is-pingaccess-for-azure-ad"></a>¿Qué es PingAccess para Azure AD?
 
-PingAccess para Azure Active Directory es una oferta de PingAccess que permite el acceso a los usuarios toogive y tooapplications de inicio de sesión único que utilizan encabezados para la autenticación. Proxy de aplicación trata estas aplicaciones como cualquier otro, con acceso a tooauthenticate de Azure AD y, a continuación, pasar el tráfico a través del servicio de conector de Hola. PingAccess se coloca delante de aplicaciones de Hola y token de acceso de Hola de Azure AD se traduce en un encabezado para que aplicación hello recibe autenticación hello en formato de hello puede leer.
+PingAccess para Azure Active Directory es una oferta de PingAccess que permite conceder acceso a los usuarios y el inicio de sesión único a las aplicaciones que utilizan encabezados para la autenticación. El proxy de la aplicación trata estas aplicaciones como a las demás, usa Azure AD para autenticar el acceso y, después, pasa el tráfico a través del servicio de conector. PingAccess se coloca delante de las aplicaciones y convierte el token de acceso de Azure AD en un encabezado, con el fin de que la aplicación reciba la autenticación en un formato que pueda leer.
 
-Los usuarios no notarás algo diferente cuando inician sesión en toouse las aplicaciones corporativas. Podrán seguir trabajando desde cualquier lugar y en cualquier dispositivo. 
+Los usuarios no notarán ninguna diferencia al iniciar sesión para usar las aplicaciones corporativas. Podrán seguir trabajando desde cualquier lugar y en cualquier dispositivo. 
 
-Puesto que los conectores de Proxy de aplicación Hola dirigir tráfico remoto tooall aplicaciones independientemente de su tipo de autenticación, continuará saldo tooload automáticamente, así como.
+Dado que los conectores del proxy de la aplicación dirigen el tráfico remoto a todas las aplicaciones, independientemente de su tipo de autenticación, seguirán equilibrando la carga de forma automática.
 
 ## <a name="how-do-i-get-access"></a>¿Cómo puedo obtener acceso?
 
-Dado que este escenario se ofrece a través de una asociación entre Azure Active Directory y PingAccess, se necesitarán licencias de ambos servicios. Sin embargo, las suscripciones de Azure Active Directory Premium incluyen una licencia de PingAccess básica que incluya las aplicaciones de too20. Si necesita más de 20 encabezado las aplicaciones basadas en toopublish, puede adquirir una licencia adicional de PingAccess. 
+Dado que este escenario se ofrece a través de una asociación entre Azure Active Directory y PingAccess, se necesitarán licencias de ambos servicios. Sin embargo, las suscripciones Premium de Azure Active Directory incluyen una licencia básica de PingAccess que abarca hasta 20 aplicaciones. Si tiene que publicar más de 20 aplicaciones basadas en el encabezado, puede adquirir una licencia adicional de PingAccess. 
 
 Para obtener más información, consulte [Ediciones de Azure Active Directory](active-directory-editions.md).
 
 ## <a name="publish-your-application-in-azure"></a>Publicación de una aplicación en Azure
 
-Este artículo está pensado para las personas que va a publicar una aplicación con este escenario para hello primera vez. Recorre cómo tooget a trabajar con aplicaciones y PingAccess, además toohello pasos de publicación. Si ya configuró ambos servicios pero desea un actualizador de hello pasos de publicación, puede omitir la instalación del conector de Hola y mover demasiado[agregar su tooAzure aplicación AD con el Proxy de aplicación](#add-your-app-to-Azure-AD-with-Application-Proxy).
+Este artículo va dirigido a quienes publican por primera vez una aplicación con este escenario. Es una guía a través de cómo empezar a trabajar con Application y PingAccess, además de explicar los pasos de la publicación. Si ya configuró ambos servicios, pero desea revisar los pasos de publicación, puede omitir la instalación del conector y pasar a [agregar la aplicación a Azure AD con el proxy de aplicación](#add-your-app-to-Azure-AD-with-Application-Proxy).
 
 >[!NOTE]
->Puesto que este escenario es una asociación entre Azure AD y PingAccess, algunas de las instrucciones de hello existan en hello sitio identidades de Ping.
+>Dado que este escenario es una asociación entre Azure AD y PingAccess, algunas de las instrucciones se encuentran en el sitio de Ping Identity.
 
 ### <a name="install-an-application-proxy-connector"></a>Instalación de un conector del proxy de la aplicación
 
-Si ya tiene habilitado el Proxy de aplicación y tiene un conector instalado, puede omitir esta sección y pasar demasiado[agregar su tooAzure aplicación AD con el Proxy de aplicación](#add-your-app-to-azure-ad-with-application-proxy).
+Si ya tiene habilitado el proxy de aplicación y tiene instalado un conector, puede omitir esta sección y pasar a [agregar la aplicación a Azure AD con el proxy de aplicación](#add-your-app-to-azure-ad-with-application-proxy).
 
-conector del Proxy de aplicación Hello es un servidor de Windows servicio que dirige el tráfico de Hola de su empleados remotos tooyour las aplicaciones publicadas. Para obtener más instrucciones de instalación, consulte [habilitar Proxy de aplicación en el portal de Azure hello](active-directory-application-proxy-enable.md).
+El conector del proxy de la aplicación es un servicio de Windows Server que dirige el tráfico de los empleados remotos a las aplicaciones publicadas. Para más información acerca de las instrucciones de instalación, consulte [Habilitación del proxy de aplicación en Azure Portal](active-directory-application-proxy-enable.md).
 
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com) como administrador global.
+1. Inicie sesión en [Azure Portal](https://portal.azure.com) como administrador global.
 2. Seleccione **Azure Active Directory** > **Proxy de la aplicación**.
-3. Seleccione **descargar conector** descarga de conector de Proxy de aplicación de toostart Hola. Siga las instrucciones de instalación de Hola.
+3. Seleccione **Download Connector** (Descargar conector) para iniciar la descarga de conector del proxy de la aplicación. Siga las instrucciones de instalación.
 
-   ![Habilitar el Proxy de aplicación y descargar conector Hola](./media/application-proxy-ping-access/install-connector.png)
+   ![Habilitar el proxy de la aplicación y descargar el conector](./media/application-proxy-ping-access/install-connector.png)
 
-4. Descargar conector Hola automáticamente debe habilitar Proxy de aplicación para el directorio, pero si no se puede seleccionar **habilitar Proxy de aplicación**.
+4. La descarga del conector debería habilitar automáticamente el proxy de la aplicación en el directorio, pero si no lo hace, puede seleccionar **Habilitar el proxy de la aplicación**.
 
 
-### <a name="add-your-app-tooazure-ad-with-application-proxy"></a>Agregue su tooAzure aplicación AD con el Proxy de aplicación
+### <a name="add-your-app-to-azure-ad-with-application-proxy"></a>Incorporación de la aplicación a Azure AD con el proxy de la aplicación
 
-Hay dos acciones necesita tootake Hola portal de Azure. En primer lugar, se necesita toopublish su aplicación con el Proxy de aplicación. A continuación, deberá toocollect cierta información acerca de la aplicación hello que puede utilizar durante los pasos de PingAccess Hola.
+Hay dos acciones que se deben tomar en Azure Portal. En primer lugar, debe publicar la aplicación con el proxy de aplicación. Después, debe recopilar información acerca de la aplicación que puede usar en los pasos de PingAccess.
 
-Siga estos pasos toopublish la aplicación. Para obtener un tutorial más detallado de los pasos 1 a 8, consulte [Publicación de aplicaciones mediante el proxy de aplicación de Azure AD](application-proxy-publish-azure-portal.md).
+Siga estos pasos para publicar la aplicación. Para obtener un tutorial más detallado de los pasos 1 a 8, consulte [Publicación de aplicaciones mediante el proxy de aplicación de Azure AD](application-proxy-publish-azure-portal.md).
 
-1. Si no lo ha hecho en la última sección de hello, inicie sesión en toohello [portal de Azure](https://portal.azure.com) como administrador global.
+1. Si no lo hizo en la sección anterior, inicie sesión en [Azure Portal](https://portal.azure.com) como administrador global.
 2. Seleccione **Azure Active Directory** > **Aplicaciones empresariales**.
-3. Seleccione **agregar** princip Hola de hoja de Hola.
+3. Seleccione **Agregar** en la parte superior de la hoja.
 4. Seleccione **Aplicación local**.
-5. Rellene los campos de hello necesario con información sobre la aplicación nuevo. Usar hello instrucciones para la configuración de hello:
-   - **Dirección URL interna**: normalmente proporciona dirección URL de Hola que le guíe el inicio de sesión de la aplicación toohello en la página cuando esté en la red corporativa de Hola. Para este escenario Hola debe conector tootreat hello PingAccess proxy como página de aplicación hello Hola. Use este formato: `https://<host name of your PA server>:<port>`. puerto de Hello es 3000 de forma predeterminada, pero puede configurarlo en PingAccess.
+5. Rellene los campos requeridos con la información de la aplicación nueva. Utilice las siguientes instrucciones para realizar la configuración:
+   - **Dirección URL interna**: normalmente, especifica la dirección URL que lleva a la página de inicio de sesión la aplicación cuando esté en la red corporativa. En este escenario, el conector tiene que tratar el proxy de PingAccess como la página principal de la aplicación. Use este formato: `https://<host name of your PA server>:<port>`. El puerto predeterminado es 3000, pero puedo configurar uno distinto en PingAccess.
    - **Método de autenticación previa**: Azure Active Directory.
    - **Traducir URL en encabezados**: No.
 
    >[!NOTE]
-   >Si se trata de la primera aplicación, utilice el puerto 3000 toostart y vuelven a estar tooupdate esta opción si cambia la configuración de PingAccess. Si se trata de la aplicación de la segunda o posterior, lo que deberá hello toomatch agente de escucha que se ha configurado en PingAccess. Obtenga más información sobre [escucha en PingAccess](https://documentation.pingidentity.com/pingaccess/pa31/index.shtml#Listeners.html).
+   >Si esta es su primera aplicación, utilice el puerto 3000 para empezar y regrese para actualizar este valor si cambia la configuración de PingAccess. Si no es la primera, tendrá que coincidir con la escucha que ha configurado en PingAccess. Obtenga más información sobre [escucha en PingAccess](https://documentation.pingidentity.com/pingaccess/pa31/index.shtml#Listeners.html).
 
-6. Seleccione **agregar** final Hola de hoja de Hola. Se agrega la aplicación, y abre el menú de inicio rápido de Hola.
-7. En el menú de inicio rápido de hello, seleccione **asigna a un usuario para realizar pruebas**y agregue al menos un usuario toohello aplicación. Asegúrese de que esta cuenta de prueba tiene la aplicación de access toohello local.
-8. Seleccione **asignar** asignación de usuario de prueba de toosave Hola.
-9. En la hoja de administración de aplicaciones de hello, seleccione **inicio de sesión único**.
-10. Elija **basado en el encabezado de inicio de sesión** desde el menú desplegable de Hola. Seleccione **Guardar**.
+6. Seleccione **Agregar** en la parte inferior de la hoja. Se agrega la aplicación y se abre el menú de inicio rápido.
+7. En dicho menú, seleccione **Asignar un usuario para las pruebas**  y agregue al menos un usuario a la aplicación. Asegúrese de que esta cuenta de prueba tiene acceso a la aplicación local.
+8. Seleccione **Asignar** para guardar la asignación del usuario de prueba.
+9. En la hoja de administración de la aplicación, seleccione **Inicio de sesión único**.
+10. Elija **Header-based sign-on** (Inicio de sesión basado en encabezado) en el menú desplegable. Seleccione **Guardar**.
 
    >[!TIP]
-   >Si se trata de la primera vez que usa basada en el encabezado de inicio de sesión único, deberá tooinstall PingAccess. toomake seguro de que su suscripción de Azure se asocia automáticamente con la instalación de PingAccess, usar la aplicación vínculo hello en este toodownload PingAccess de página de inicio de sesión único. Puede abrir el sitio de descarga de hello ahora o volver a verle toothis página. 
+   >Si se trata de la primera vez que usa el inicio de sesión único basado en el encabezado, debe instalar PingAccess. Para asegurarse de que su suscripción de Azure se asocia automáticamente con la instalación de PingAccess, utilice el vínculo de esta página de inicio de sesión único para descargar PingAccess. Puede abrir el sitio de descarga ahora o volver a esta página más adelante. 
 
    ![Selección del inicio de sesión basado en encabezados](./media/application-proxy-ping-access/sso-header.PNG)
 
-11. Cierre la hoja de aplicaciones de empresa de Hola o desplácese menú de todos los Hola forma toohello tooreturn izquierdo toohello Azure Active Directory.
+11. Cierre la hoja Aplicaciones empresariales o desplácese completamente hacia la izquierda para volver al menú de Azure Active Directory.
 12. Seleccione **App registrations** (Registros de aplicaciones).
 
    ![Selección de los registros de aplicaciones](./media/application-proxy-ping-access/app-registrations.png)
 
-13. Aplicación de hello seleccione acaba de agregar, a continuación, **direcciones URL de respuesta**.
+13. Seleccione la aplicación que se acaba de agregar y seleccione **Direcciones URL de respuesta**.
 
    ![Selección de las direcciones URL de respuesta](./media/application-proxy-ping-access/reply-urls.png)
 
-14. Compruebe toosee si dirección URL externa de Hola que tooyour asignado aplicación en el paso 5 en la lista de direcciones URL de respuesta de Hola. Si no está, agréguela ahora.
-15. En la hoja de configuración de aplicación Hola, seleccione **los permisos necesarios**.
+14. Compruebe si la dirección URL externa que asignó a la aplicación en el paso 5 se encuentra en la lista de direcciones URL de respuesta. Si no está, agréguela ahora.
+15. En la hoja de configuración de la aplicación, seleccione **Permisos necesarios**.
 
   ![Selección de los permisos necesarios](./media/application-proxy-ping-access/required-permissions.png)
 
-16. Seleccione **Agregar**. Para la API de hello, elija **Windows Azure Active Directory**, a continuación, **seleccione**. Para los permisos de hello, elija **lectura y escribir todas las aplicaciones** y **iniciar sesión y leer el perfil de usuario**, a continuación, **seleccione** y **realiza**.  
+16. Seleccione **Agregar**. Para la API, elija **Microsoft Azure Active Directory** y, después, **Seleccionar**. Para los permisos, elija **Read and write all applications** (Leer y escribir en todas las aplicaciones) y **Sign in and read user profile** (Iniciar sesión y leer perfil de usuario), luego **Seleccionar** y, finalmente, **Listo**.  
 
   ![Selección de permisos](./media/application-proxy-ping-access/select-permissions.png)
 
-### <a name="collect-information-for-hello-pingaccess-steps"></a>Recopilar información de pasos de hello PingAccess
+### <a name="collect-information-for-the-pingaccess-steps"></a>Recopilación de información para los pasos de PingAccess
 
 1. En la hoja de configuración de la aplicación, seleccione **Propiedades**. 
 
   ![Selección de las propiedades](./media/application-proxy-ping-access/properties.png)
 
-2. Guardar hello **Id. de aplicación** valor. Esto se usa para el Id. de cliente de hello cuando configura PingAccess.
-3. En la hoja de configuración de aplicación Hola, seleccione **claves**.
+2. Guarde el valor de **Id. de la aplicación**, ya que se usa para el identificador de cliente cuando se configura PingAccess.
+3. En la misma hoja, seleccione **Claves**.
 
   ![Selección de las claves](./media/application-proxy-ping-access/Keys.png)
 
-4. Cree una clave, escriba una descripción de la clave y elija una fecha de expiración del menú desplegable de Hola.
-5. Seleccione **Guardar**. Un GUID aparece en hello **valor** campo.
+4. Cree una clave, para lo que debe escribir una descripción de la misma y elegir una fecha de expiración en el menú desplegable.
+5. Seleccione **Guardar**. Aparece un GUID en el campo **Valor**.
 
-  Guardar este valor ahora, como no será capaz de toosee lo nuevo después de cerrar esta ventana.
+  Guarde este valor, ya que no lo volverá a ver una vez que cierre esta ventana.
 
   ![Creación de una nueva clave](./media/application-proxy-ping-access/create-keys.png)
 
-6. Cierre la hoja de los registros de aplicación Hola o desplácese menú de todos los Hola forma toohello tooreturn izquierdo toohello Azure Active Directory.
+6. Cierre la hoja Registros de aplicaciones o desplácese completamente hacia la izquierda para volver al menú de Azure Active Directory.
 7. Seleccione **Propiedades**.
-8. Guardar hello **Id. de directorio** GUID.
+8. Guarde el GUID de **Id. de directorio**.
 
-### <a name="optional---update-graphapi-toosend-custom-fields"></a>(Opcional) campos personalizados de actualización GraphAPI toosend
+### <a name="optional---update-graphapi-to-send-custom-fields"></a>Opcional: actualice GraphAPI para enviar los campos personalizados
 
-Para obtener una lista de los tokens de seguridad que Azure AD envía para la autenticación, consulte la [referencia de tokens de Azure AD](./develop/active-directory-token-and-claims.md). Si necesita una demanda personalizada que envía otros tokens, use campos de aplicación Hola de GraphAPI tooset *acceptMappedClaims* demasiado**True**. Puede utilizar el Explorador de Azure AD Graph o MS Graph toomake esta configuración. 
+Para obtener una lista de los tokens de seguridad que Azure AD envía para la autenticación, consulte la [referencia de tokens de Azure AD](./develop/active-directory-token-and-claims.md). Si necesita una notificación personalizada que enviar a otros tokens, use GraphAPI para establecer el campo de la aplicación *acceptMappedClaims* en **True**. Puede utilizar el Explorador de Azure AD Graph o MS Graph para hacer esta configuración. 
 
 En este ejemplo se usa el Explorador de Graph:
 
@@ -146,15 +146,15 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
 
 ## <a name="download-pingaccess-and-configure-your-app"></a>Descarga de PingAccess y configuración de la aplicación
 
-Ahora que ha completado todos los pasos de instalación de Azure Active Directory de hello, puede mover en tooconfiguring PingAccess. 
+Ahora que ha completado todos los pasos de instalación de Azure Active Directory, puede pasar a configurar PingAccess. 
 
-Hello pasos detallados para hello PingAccess parte de este escenario continúan Hola documentación de Ping Identity, [PingAccess configurar para Azure AD](https://docs.pingidentity.com/bundle/paaad_m_ConfigurePAforMSAzureADSolution_paaad43/page/pa_c_PAAzureSolutionOverview.html).
+Los pasos detallados de la parte de PingAccess de este escenario se pueden encontrar en la documentación de Ping Identity, [Configure PingAccess for Azure AD](https://docs.pingidentity.com/bundle/paaad_m_ConfigurePAforMSAzureADSolution_paaad43/page/pa_c_PAAzureSolutionOverview.html) (Configuración de PingAccess para Azure AD).
 
-Estos pasos le guiarán por proceso Hola de obtener una cuenta de PingAccess si aún no tiene uno, instalar hello PingAccess Server y crear una conexión de proveedor de Azure AD OIDC con hello Id. de directorio que copió de hello portal de Azure. A continuación, utilice Hola Id. de aplicación y la clave valores toocreate una sesión Web en PingAccess. Después, puede configurar la asignación de identidades y crear un host virtual, un sitio y una aplicación.
+Dichos pasos le guiarán a través del proceso de obtención de una cuenta de PingAccess, en caso de que aún no la tenga, instalación del servidor de PingAccess y creación de una conexión de proveedor de OIDC de Azure AD con el Id. de directorio que ha copiado de Azure Portal. A continuación, utilice los valores de Id. de la aplicación y Clave para crear una sesión Web en PingAccess. Después, puede configurar la asignación de identidades y crear un host virtual, un sitio y una aplicación.
 
 ### <a name="test-your-app"></a>Prueba de la aplicación
 
-Cuando haya completado todos los pasos, la aplicación debería estar en funcionamiento. tootest, abra un explorador y navegue toohello dirección URL externa que crea cuando publica la aplicación hello en Azure. Inicie sesión con la cuenta de prueba de hello ese toohello asignado aplicación.
+Cuando haya completado todos los pasos, la aplicación debería estar en funcionamiento. Para probarla, abra un explorador y navegue a la dirección URL externa que creó al publicar la aplicación en Azure. Inicie sesión con la cuenta de prueba que asignó a la aplicación.
 
 ## <a name="next-steps"></a>Pasos siguientes
 

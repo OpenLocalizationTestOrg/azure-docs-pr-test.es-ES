@@ -1,6 +1,6 @@
 ---
-title: "aaaLDAP autenticación y el servidor de MFA de Azure | Documentos de Microsoft"
-description: "Se trata de una página de autenticación multifactor de Azure de Hola que te ayudará a implementar la autenticación LDAP y el servidor de autenticación multifactor de Azure."
+title: "Autenticación LDAP y Servidor Azure Multi-Factor Authentication | Microsoft Docs"
+description: "Se trata de la página Azure Multi-Factor Authentication que ayudará a implementar la autenticación LDAP y el servidor Azure Multi-Factor Authentication."
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
@@ -14,64 +14,64 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: kgremban
-ms.openlocfilehash: 17a26b57dbf6afa2fcfdb3d19c5b5ba2987a9f79
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8f4d5f9e84ad7bb4fff501370036e7f0da589bf3
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>Servidor de autenticación LDAP y Azure Multi-Factor Authentication
-De forma predeterminada, Hola servidor Azure Multi-factor Authentication está configurado tooimport o sincronizar usuarios desde Active Directory. Sin embargo, puede ser configurado toobind toodifferent LDAP directorios, como un directorio ADAM o un controlador de dominio de Active Directory específico. Cuando tooa conectado directorio mediante LDAP, Hola servidor Azure Multi-factor Authentication puede actuar como un autenticaciones tooperform de proxy LDAP. También permite Hola uso del enlace LDAP como destino RADIUS para la autenticación previa de usuarios con la autenticación de IIS, o para la autenticación principal en el portal de usuarios de Azure MFA Hola.
+De forma predeterminada, Servidor Azure Multi-Factor Authentication está configurado para importar o sincronizar usuarios desde Active Directory. Sin embargo, se puede configurar para enlazar a directorios LDAP diferentes, por ejemplo, un directorio ADAM o un controlador de dominio de Active Directory específico. Cuando se conecta a un directorio mediante LDAP, el Servidor Azure Multi-Factor Authentication puede actuar como proxy de LDAP para realizar autenticaciones. También permite el uso del enlace LDAP como destino RADIUS para la autenticación previa de usuarios con autenticación de IIS o la autenticación principal en el portal de usuario de Azure MFA.
 
-toouse Azure Multi-factor Authentication como proxy LDAP, inserte Hola servidor Azure Multi-factor Authentication entre Hola de cliente LDAP (por ejemplo, el dispositivo VPN, la aplicación) y el servidor de directorio LDAP de Hola. Hola servidor Azure Multi-factor Authentication debe estar configurado toocommunicate con los servidores de cliente de Hola y directorio LDAP de Hola. En esta configuración, Hola servidor Azure Multi-factor Authentication acepta solicitudes LDAP de servidores de cliente y las aplicaciones y los reenvía toohello destino LDAP directory toovalidate Hola principales credenciales del servidor. Si el directorio LDAP de hello valida las credenciales principales de hello, la autenticación multifactor Azure lleva a cabo una verificación de identidad segundo y envía a un cliente LDAP de toohello de espera de respuesta. autenticación en su totalidad Hola sin errores solo si la autenticación de servidor LDAP de Hola y comprobación del segundo paso de Hola se realizan correctamente.
+Para usar Azure Multi-Factor Authentication como proxy de LDAP, inserte el Servidor Azure Multi-Factor Authentication entre el cliente LDAP (por ejemplo, el dispositivo VPN o la aplicación) y el servidor de directorio LDAP. El Servidor Azure Multi-Factor Authentication se debe configurar para comunicarse con los servidores de cliente y el directorio LDAP. En esta configuración, el servidor de Azure Multi-Factor Authentication acepta las solicitudes LDAP de servidores y aplicaciones cliente y las reenvía al servidor de directorio LDAP de destino para validar las credenciales principales. Si el directorio LDAP valida las credenciales principales, Azure Multi-Factor Authentication realiza una segunda comprobación de identidad y envía una respuesta de vuelta al cliente LDAP. El proceso entero de autenticación se completará correctamente solo si tanto la autenticación del servidor LDAP como el segundo paso de la comprobación se realizan satisfactoriamente.
 
 ## <a name="configure-ldap-authentication"></a>Configuración de la autenticación LDAP
-autenticación de LDAP tooconfigure, Hola instalar servidor de autenticación multifactor de Azure en un servidor de Windows. Usar hello siguiendo el procedimiento:
+Para configurar la autenticación LDAP, instale al servidor Azure Multi-Factor Authentication en un servidor Windows. Utilice el siguiente procedimiento:
 
 ### <a name="add-an-ldap-client"></a>Agregue un cliente LDAP.
 
-1. Hola servidor Azure Multi-factor Authentication, seleccione el icono de autenticación LDAP de hello en el menú de la izquierda Hola.
-2. Comprobar hello **Habilitar autenticación LDAP** casilla de verificación.
+1. En el Servidor Azure Multi-Factor Authentication, seleccione el icono Autenticación LDAP en el menú izquierdo.
+2. Active la casilla **Habilitar autenticación LDAP**.
 
    ![Autenticación LDAP](./media/multi-factor-authentication-get-started-server-ldap/ldap2.png)
 
-3. En la pestaña de clientes de hello, cambia el puerto TCP de Hola y el puerto SSL si Hola servicio LDAP de autenticación multifactor de Azure debe enlazar puertos estándar toonon toolisten para las solicitudes LDAP.
-4. Si tiene previsto toouse LDAPS desde Hola cliente toohello servidor Azure Multi-factor Authentication, debe instalarse un certificado SSL en hello mismo servidor como servidor de MFA. Haga clic en **examinar** toohello siguiente SSL de certificados y seleccione un toouse de certificado de conexión segura de Hola.
+3. En la pestaña Clientes, cambie el puerto TCP y SSL si el servicio LDAP de Azure Multi-Factor Authentication debe enlazarse con puertos no estándar para escuchar solicitudes LDAP.
+4. Si tiene previsto usar LDAPS entre el cliente y el Servidor Azure Multi-Factor Authentication, se debe instalar un certificado SSL en el mismo servidor que el servidor de MFA. Haga clic en **Examinar** junto al cuadro de certificado SSL y seleccione el certificado que se usará para la conexión segura.
 5. Haga clic en **Agregar**.
-6. En el cuadro de diálogo Agregar cliente LDAP de hello, escriba la dirección IP de hello de dispositivo de hello, servidor o aplicación que autentica toohello servidor y un nombre de la aplicación (opcional). nombre de la aplicación Hello aparece en los informes de la autenticación multifactor Azure y puede mostrarse en mensajes de autenticación SMS o aplicación móvil.
-7. Comprobar hello **coincidencia de usuario requieren la autenticación multifactor Azure** cuadro si todos los usuarios se han o se importarán en hello Server y la comprobación de paso tootwo de asunto. Si un número significativo de usuarios no se ha importado en hello servidor y/o está exento de la verificación en dos pasos, deje el cuadro de hello desactivada. Consulte el archivo de Ayuda de servidor MFA de Hola para obtener información adicional acerca de esta característica.
+6. En el cuadro de diálogo Agregar cliente LDAP, escriba la dirección IP del dispositivo, servidor o aplicación que se autenticará en el servidor y un nombre de aplicación (opcional). El nombre de la aplicación aparece en los informes de Azure Multi-Factor Authentication y puede mostrarse en los mensajes de autenticación SMS o de aplicación móvil.
+7. Active la casilla **Requerir coincidencia de usuario de Azure Multi-Factor Authentication** si todos los usuarios se importaron o importarán al servidor y están sujetos a la verificación en dos pasos. Si aún no se importó al servidor un número significativo de usuarios o se van a excluir de la verificación en dos pasos, deje la casilla desactivada. Consulte el archivo de ayuda del servidor de MFA para obtener información adicional sobre de esta característica.
 
-Repita a estos pasos tooadd adicionales LDAP los clientes.
+Repita estos pasos para agregar más clientes LDAP.
 
-### <a name="configure-hello-ldap-directory-connection"></a>Configurar conexión de directorio LDAP de Hola
+### <a name="configure-the-ldap-directory-connection"></a>Configuración de la conexión del directorio LDAP
 
-Una vez hello Azure la autenticación multifactor tooreceive configurado las autenticaciones de LDAP, debe actuar como proxy esos directorio LDAP de toohello de autenticaciones. Por lo tanto, pestaña de destino de Hola solo muestra una única atenuada opción toouse un destino LDAP.
+Cuando se configura la Azure Multi-Factor Authentication para recibir autenticaciones LDAP, debe entregar dichas autenticaciones en el directorio LDAP. Por lo tanto, en la pestaña Destino solo muestra una única opción atenuada para usar un destino LDAP.
 
-1. Hola tooconfigure conexión de directorio LDAP, haga clic en hello **integración de directorios** icono.
-2. En la pestaña de configuración de hello, seleccione hello **utilizar la configuración LDAP específica** botón de radio.
+1. Para configurar la conexión del directorio LDAP, haga clic en el icono de **Integración de directorios**.
+2. En la pestaña Configuración, seleccione el botón de radio **Usar la configuración LDAP específica**.
 3. Seleccione **Editar...**
-4. En el cuadro de diálogo Editar configuración de LDAP de hello, rellenar los campos de hello con el directorio LDAP de hello información necesaria tooconnect toohello. Se incluyen descripciones de campos de hello en el archivo de Ayuda del servidor de autenticación multifactor de Azure de Hola.
+4. En el cuadro de diálogo Editar configuración de LDAP, rellene los campos con la información necesaria para conectarse al directorio LDAP. Las descripciones de los campos se incluyen en el archivo de ayuda del Servidor Azure Multi-Factor Authentication.
 
     ![Integración de directorios](./media/multi-factor-authentication-get-started-server-ldap/ldap.png)
 
-5. Probar conexión de LDAP de hello haciendo clic en hello **prueba** botón.
-6. Si la prueba de conexión de LDAP de hello fue correcta, haga clic en hello **Aceptar** botón.
-7. Haga clic en hello **filtros** Hola ficha servidor está preconfigurado tooload contenedores, grupos de seguridad y usuarios de Active Directory. Si el enlace tooa otro directorio LDAP, es probable que necesite filtros de hello tooedit mostrados. Haga clic en hello **ayuda** vínculo para obtener más información acerca de los filtros.
-8. Haga clic en hello **atributos** Hola ficha servidor está preconfigurado toomap atributos de Active Directory.
-9. Si está enlazando tooa otro directorio o toochange Hola preconfigurado asignaciones de atributos LDAP, haga clic en **editar...**
-10. En el cuadro de diálogo Editar atributos de hello, modificar asignaciones de atributos LDAP de hello para el directorio. Nombres de atributo se pueden escribir o seleccionar haciendo clic en hello **...** botón siguiente tooeach campo. Haga clic en hello **ayuda** vínculo para obtener más información sobre atributos.
-11. Haga clic en hello **Aceptar** botón.
-12. Haga clic en hello **configuración de la empresa** icono y seleccione hello **resolución de nombre de usuario** ficha.
-13. Si se está conectando tooActive directorio desde un servidor unido a un dominio, deje hello **identificadores de seguridad (SID) de usar Windows para la coincidencia de nombres de usuario** botón de radio seleccionado. En caso contrario, seleccione hello **atributo del identificador único usar LDAP para la coincidencia de nombres de usuario** botón de radio. 
+5. Pruebe la conexión LDAP haciendo clic en el botón **Probar**.
+6. Si la prueba de conexión LDAP se realizó correctamente, haga clic en el botón **Aceptar**.
+7. Haga clic en la pestaña **Filtros**. El servidor está preconfigurado para cargar contenedores, grupos de seguridad y usuarios de Active Directory. Si desea enlazar a un directorio LDAP diferente, probablemente necesitará editar los filtros mostrados. Haga clic en el vínculo **Ayuda** para más información acerca de los filtros.
+8. Haga clic en la pestaña **Attributes** (Atributos). El servidor está preconfigurado para asignar atributos de Active Directory.
+9. Si desea enlazar a un directorio LDAP diferente o cambiar las asignaciones de atributos configuradas previamente, haga clic en **Editar...**
+10. En el cuadro de diálogo Editar atributos, modifique las asignaciones de atributos LDAP para el directorio. Los nombres de atributos se pueden escribir o seleccionar haciendo clic en el botón **...** que se encuentra situado junto a cada campo. Haga clic en el vínculo **Ayuda** para más información sobre los atributos.
+11. Haga clic en el botón **Aceptar**.
+12. Haga clic en el icono **Configuración de la empresa** y seleccione la pestaña **Resolución de nombre de usuario**.
+13. Si desea conectarse a Active Directory desde un servidor unido a un dominio, deje el botón de opción **Usar los identificadores de seguridad de Windows (SID) para que coincidan con los nombres de usuario** seleccionado. De lo contrario, seleccione el botón de radio **Usar el atributo del identificador único LDAP para los nombres de usuario coincidentes**. 
 
-Cuando Hola **atributo del identificador único usar LDAP para la coincidencia de nombres de usuario** botón de radio está seleccionado, Hola servidor Azure Multi-factor Authentication intenta tooresolve cada nombre de usuario tooa único identificador hello directorio LDAP. Se realiza una búsqueda LDAP en el nombre de usuario de hello atributos definidos en hello integración de directorios -> pestaña atributos. Cuando un usuario se autentica, el nombre de usuario de hello es toohello resolver el identificador único en el directorio LDAP de Hola. Identificador único de Hello sirve para usuario Hola coincidentes en el archivo de datos de la autenticación multifactor Azure Hola. Esto permite comparaciones que no distinguen mayúsculas de minúsculas, así como formatos largo y corto de nombres de usuario.
+Cuando el botón de opción **Usar el atributo del identificador único LDAP para los nombres de usuario coincidentes** está seleccionado, el Servidor Azure Multi-factor Authentication trata de resolver cada nombre de usuario en un identificador único en el directorio LDAP. Se realiza una búsqueda LDAP en los atributos de Nombre de usuario definidos en la pestaña Integración de directorios -> Atributos. Cuando un usuario se autentica, el nombre de usuario se resuelve en un identificador único en el directorio LDAP. El identificador único se usa para hacer coincidir el usuario en el archivo de datos de Azure Multi-Factor Authentication. Esto permite comparaciones que no distinguen mayúsculas de minúsculas, así como formatos largo y corto de nombres de usuario.
 
-Después de completar estos pasos, Hola servidor MFA escucha en los puertos de hello configurado para las solicitudes de acceso LDAP de hello configura los clientes y actúa como un proxy para las solicitudes de toohello directorio LDAP para la autenticación.
+Después de realizar estos pasos, el servidor de MFA comienza a escuchar en los puertos configurados para las solicitudes de acceso LDAP de los clientes configurados y actúa como proxy para esas solicitudes en el directorio LDAP para la autenticación.
 
 ## <a name="configure-ldap-client"></a>Configuración del cliente LDAP
-Hola tooconfigure cliente LDAP, use instrucciones de hello:
+Para configurar el cliente LDAP, use las siguientes directrices:
 
-* Configurar su dispositivo, el servidor o la aplicación tooauthenticate a través de LDAP toohello servidor Azure Multi-factor Authentication como si fuese el directorio LDAP. Use Hola misma configuración que usaría normalmente tooconnect directamente tooyour directorio LDAP, excepto el nombre del servidor de Hola o la dirección IP que será de hello servidor Azure Multi-factor Authentication.
-* Configurar a tiempo de espera too30 y 60 segundos de hello LDAP por lo que no hay credenciales de usuario de tiempo toovalidate Hola con directorio LDAP de hello, realizar la comprobación del segundo paso de hello, reciba la respuesta y responder toohello solicitud de acceso LDAP.
-* Si usa LDAPS, hello dispositivo o el servidor que realiza consultas LDAP de hello debe confiar Hola certificado SSL instalado en hello servidor Azure Multi-factor Authentication.
+* Configure el dispositivo, el servidor o la aplicación para autenticarse mediante LDAP en el servidor de Azure Multi-Factor Authentication como si fuese el directorio LDAP. Use la misma configuración que usaría normalmente para conectarse directamente a su directorio LDAP, excepto el nombre del servidor o la dirección IP que será la del Servidor Azure Multi-Factor Authentication.
+* Configure el tiempo de espera de LDAP entre 30 y 60 segundos para que haya tiempo para validar las credenciales del usuario con el directorio LDAP, realizar la comprobación en dos pasos, recibir su respuesta y luego responder a la solicitud de acceso LDAP.
+* Si usa LDAPS, el dispositivo o el servidor que realiza las consultas LDAP debe confiar en el certificado SSL instalado en el servidor Azure Multi-Factor Authentication.
 

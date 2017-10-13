@@ -1,5 +1,5 @@
 ---
-title: "aaaCreate un índice de búsqueda de Azure | Microsoft Azure | Servicio de búsqueda de nube hospedada"
+title: "Creación de un índice de Búsqueda de Azure | Microsoft Azure | Servicio de búsqueda hospedado en la nube"
 description: "¿Qué es un índice de Búsqueda de Azure y cómo se usa?"
 services: search
 documentationcenter: 
@@ -12,11 +12,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 12/08/2016
 ms.author: ashmaka
-ms.openlocfilehash: c01cc654ff91427c8f1569b2f5b060a0a0f044c6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 7fc45273c0f71c727b7087949cc63bbb4111f866
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-azure-search-index"></a>Creación de un índice de Búsqueda de Azure
 > [!div class="op_single_selector"]
@@ -28,41 +28,41 @@ ms.lasthandoff: 10/06/2017
 > 
 
 ## <a name="what-is-an-index"></a>¿Qué es un índice?
-Un *índice* es un almacenamiento persistente de *documentos* y otras construcciones usadas por el servicio Azure Search. Un documento es una sola unidad de datos habilitada para búsquedas. Por ejemplo, un minorista de comercio electrónico podría tener un documento para cada objeto que vende, una organización de noticias puede tener un documento para cada artículo, etc. Asignar estos equivalentes de base de datos conocidos de conceptos toomore: una *índice* es conceptualmente similar tooa *tabla*, y *documentos* son bastante equivalentes demasiado*filas* en una tabla.
+Un *índice* es un almacenamiento persistente de *documentos* y otras construcciones usadas por el servicio Azure Search. Un documento es una sola unidad de datos habilitada para búsquedas. Por ejemplo, un minorista de comercio electrónico podría tener un documento para cada objeto que vende, una organización de noticias puede tener un documento para cada artículo, etc. Estos conceptos pueden equipararse a equivalentes de base de datos más conocidos: un *índice* es conceptualmente similar a una *tabla* y los *documentos* son más o menos equivalentes a las *filas* de una tabla.
 
-Cuando se agreguen/cargar documentos y enviar consultas de búsqueda tooAzure búsqueda, se envía el índice específico de tooa de solicitudes en el servicio búsqueda.
+Cuando agregue o cargue documentos y envíe consultas de búsqueda a Búsqueda de Azure, envíe las solicitudes a un índice específico del servicio de búsqueda.
 
 ## <a name="field-types-and-attributes-in-an-azure-search-index"></a>Tipos de campo y atributos en un índice de Búsqueda de Azure
-Tal y como define el esquema, debe especificar el nombre hello, tipo y atributos de cada campo en el índice. tipo de campo de Hello clasifica los datos de Hola que se almacenan en ese campo. Atributos se establecen en campos individuales toospecify cómo se utiliza el campo de Hola. Hello en las tablas siguientes enumerar los tipos de Hola y los atributos que puede especificar.
+Al definir el esquema, debe especificar el nombre, el tipo y los atributos de cada campo del índice. El tipo de campo permite clasificar los datos que se almacenan en ese campo. Los atributos se establecen en campos individuales para especificar cómo se usa el campo. En la tabla siguiente se enumeran los tipos y los atributos que puede especificar.
 
 ### <a name="field-types"></a>Tipos de campo
 | Tipo | Description |
 | --- | --- |
 | *Edm.String* |Texto que opcionalmente se puede acortar para búsquedas de texto completo (separación de palabras, lematización, etc.). |
-| *Collection(Edm.String)* |Una lista de cadenas que opcionalmente se pueden acortar para búsquedas de texto completo. No hay ningún límite superior teórico en número de Hola de elementos de una colección, pero toocollections aplica el límite superior de hello de 16 MB en el tamaño de carga. |
+| *Collection(Edm.String)* |Una lista de cadenas que opcionalmente se pueden acortar para búsquedas de texto completo. En teoría, no hay ningún límite superior para el número de elementos de una colección, pero el límite de 16 MB en el tamaño de la carga se aplica a las colecciones. |
 | *Edm.Boolean* |Contiene valores true/false. |
 | *Edm.Int32* |Valores enteros de 32 bits. |
 | *Edm.Int64* |Valores enteros de 64 bits. |
 | *Edm.Double* |Datos numéricos de precisión doble. |
-| *Edm.DateTimeOffset* |Los valores de hora representados en formato OData V4 Hola de fecha (p. ej. `yyyy-MM-ddTHH:mm:ss.fffZ` o `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`). |
-| *Edm.GeographyPoint* |Un punto que representa una ubicación geográfica en el mundo Hola. |
+| *Edm.DateTimeOffset* |Los valores de hora y fecha se representan con el formato OData V4 (por ejemplo, `yyyy-MM-ddTHH:mm:ss.fffZ` o `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`). |
+| *Edm.GeographyPoint* |Un punto que representa una ubicación geográfica en todo el mundo. |
 
 Puede encontrar información más detallada sobre los [tipos de datos de Azure Search admitidos aquí](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types).
 
 ### <a name="field-attributes"></a>Atributos de campo
 | Atributo | Description |
 | --- | --- |
-| *Clave* |Una cadena que proporciona el identificador único de Hola de cada documento que se utiliza para buscar documentos. Todos los índices deben tener una clave. Sólo un campo puede ser la clave de Hola y su tipo se debe establecer tooEdm.String. |
+| *Clave* |Una cadena que proporciona el identificador único de cada documento, que se usa para buscar los documentos. Todos los índices deben tener una clave. Solo un campo puede ser la clave y se debe establecer su tipo en Edm.String. |
 | *Retrievable* |Establece si el campo se puede devolver en un resultado de búsqueda. |
-| *Filterable* |Permite Hola campo toobe utilizado en las consultas de filtro. |
-| *Sortable* |Permite que una consulta los resultados de búsqueda de toosort mediante este campo. |
-| *Facetable* |Permite un toobe campo utilizado en un [la navegación por facetas](search-faceted-navigation.md) estructura para el usuario autodirigido filtrado. Normalmente campos que contienen valores repetitivos que se puede usar toogroup varios documentos juntos (por ejemplo, varios documentos que se encuentran en una única marca o categoría de servicio) funcionan mejor como facetas. |
-| *Searchable* |Marcas de Hola campo como buscar por texto completo. |
+| *Filterable* |Permite que el campo se use en consultas de filtro. |
+| *Sortable* |Permite que una consulta ordene los resultados de búsqueda mediante este campo. |
+| *Facetable* |Permite que un campo se use en una estructura de [navegación con facetas](search-faceted-navigation.md) para el filtrado autodirigido. Normalmente los campos que contienen valores repetitivos que se pueden usar para agrupar varios documentos (por ejemplo, varios documentos que forman parte de una única categoría de servicio o un único producto) funcionan mejor como facetas. |
+| *Searchable* |Marca el campo como campo de búsqueda de texto completo. |
 
 Puede encontrar información más detallada sobre los [atributos de índice de Azure Search aquí](https://docs.microsoft.com/rest/api/searchservice/Create-Index).
 
 ## <a name="guidance-for-defining-an-index-schema"></a>Guía para definir un esquema de índice
-Al diseñar el índice, tómese su tiempo en hello planeación Fase toothink a través de cada decisión. Es importante mantener sus necesidades de negocio y experiencia de usuario de búsqueda en cuenta al diseñar el índice como cada campo debe estar asignado hello [atributos propios](https://docs.microsoft.com/rest/api/searchservice/Create-Index). Cambiar un índice después de su implementación implica volver a generar y cargar los datos de Hola.
+Al diseñar el índice, tómese su tiempo en la fase de planeación y reflexione cada decisión. Es importante que tenga en cuenta sus necesidades de negocio y experiencia de búsqueda como usuario al diseñar el índice ya que debe asignar a cada campo los [atributos adecuados](https://docs.microsoft.com/rest/api/searchservice/Create-Index). El cambio de un índice después de la implementación implica volver a generar y volver a cargar los datos.
 
 Si los requisitos de almacenamiento de datos cambian con el tiempo, puede aumentar o disminuir la capacidad agregando o quitando particiones. Para más información, consulte [Administración del servicio de búsqueda en Azure](search-manage.md) o [Límites de servicio](search-limits-quotas-capacity.md).
 

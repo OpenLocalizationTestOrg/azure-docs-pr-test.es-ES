@@ -1,6 +1,6 @@
 ---
-title: "Aplicación visión tootroubleshoot personalizado directivas - Azure AD B2C | Documentos de Microsoft"
-description: "¿Cómo toosetup Application Insights tootrace Hola ejecución de directivas personalizadas"
+title: 'Application Insights para resolver problemas de las directivas personalizadas: Azure AD B2C | Microsoft Docs'
+description: "cómo configurar Application Insights para realizar el seguimiento de la ejecución de las directivas personalizadas"
 services: active-directory-b2c
 documentationcenter: 
 author: saeedakhter-msft
@@ -14,54 +14,54 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: saeda
-ms.openlocfilehash: c02d7178512c7f9e022385371c3effd4f8cb7726
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8c79df33cd5f04f490e2cc6372f7e8ac1c4d9bbe
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-active-directory-b2c-collecting-logs"></a>Azure Active Directory B2C: Collecting Logs (Azure Active Directory B2C: recopilación de registros)
 
 En este artículo se proporcionan los pasos para recopilar registros de Azure AD B2C de forma que pueda diagnosticar problemas con sus directivas personalizadas.
 
 >[!NOTE]
->Actualmente, hello registros de actividad detallado aquí descritos están diseñados **sólo** tooaid en el desarrollo de directivas personalizadas. No use el modo de desarrollo en producción.  Registros de recopilación de todas las notificaciones enviadas tooand desde proveedores de identidades de Hola durante el desarrollo.  Si se utiliza en producción, desarrollador Hola asume la responsabilidad de PII (privada información de identificación) recopilado en registro de información de la aplicación hello que les pertenecen.  Estos registros detallados solo se recopilan cuando se coloca la directiva de hello en **modo de desarrollo**.
+>Actualmente, los registros de actividad descritos aquí están diseñados **SOLO** para ayudar en el desarrollo de directivas personalizadas. No use el modo de desarrollo en producción.  Los registros recopilan todas las notificaciones que se envían y se reciben de los proveedores de identidad durante el desarrollo.  Si se utilizan en producción, el programador asume la responsabilidad sobre la PII (información personal de identificación) recopilada en el registro de información de la instancia de App Insights que le pertenece.  Estos registros detallados solo se recopilan cuando la directiva se coloca en **MODO DE DESARROLLO**.
 
 
 ## <a name="use-application-insights"></a>Uso de Application Insights
 
-B2C de Azure AD admite una característica para enviar datos tooApplication visión.  Application Insights proporciona una manera toodiagnose excepciones y visualizar los problemas de rendimiento de la aplicación.
+Azure AD B2C admite una característica para enviar datos a Application Insights.  Application Insights proporciona un modo de diagnosticar excepciones y visualizar problemas de rendimiento de la aplicación.
 
 ### <a name="setup-application-insights"></a>Configuración de Application Insights
 
-1. Vaya toohello [portal de Azure](https://portal.azure.com). Asegúrese de que está en el inquilino de hello con su suscripción de Azure (no el inquilino de Azure AD B2C).
-1. Haga clic en **+ nuevo** en el menú de navegación izquierdo de Hola.
+1. Vaya al [Portal de Azure](https://portal.azure.com). Asegúrese de que se encuentra en el inquilino con su suscripción de Azure (no su inquilino de Azure AD B2C).
+1. Haga clic en **+ Nuevo** en el menú de navegación izquierdo.
 1. Busque y seleccione **Application Insights** y, a continuación, haga clic en **Crear**.
-1. Rellene el formulario de Hola y haga clic en **crear**. Seleccione **General** para hello **tipo de aplicación**.
-1. Una vez que se ha creado el recurso de hello, abra el recurso de Application Insights Hola.
-1. Buscar **propiedades** en Hola menú izquierdo y haga clic en él.
-1. Hola copia **clave de instrumentación** y guardar para la sección siguiente Hola.
+1. Complete el formulario y haga clic en **Crear**. Seleccione **General** para el **Tipo de aplicación**.
+1. Una vez creado el recurso, abra el recurso de Application Insights.
+1. Busque **Propiedades** en el menú izquierdo y haga clic.
+1. Copie la **Clave de instrumentación** y guárdela para la sección siguiente.
 
-### <a name="set-up-hello-custom-policy"></a>Configurar la directiva personalizada de Hola
+### <a name="set-up-the-custom-policy"></a>Configuración de la directiva personalizada
 
-1. Abra el archivo de RP hello (por ejemplo, SignUpOrSignin.xml).
-1. Agregar Hola después atributos toohello `<TrustFrameworkPolicy>` elemento:
+1. Abra el archivo RP (p. ej., SignUpOrSignin.xml).
+1. Agregue los siguientes atributos al elemento `<TrustFrameworkPolicy>`:
 
   ```XML
   DeploymentMode="Development"
   UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights"
   ```
 
-1. Si no existe ya, agregue un nodo secundario `<UserJourneyBehaviors>` toohello `<RelyingParty>` nodo. Debe estar inmediatamente después de hello`<DefaultUserJourney ReferenceId="YourPolicyName" />`
-2. Agregar Hola después de nodo como un elemento secundario de hello `<UserJourneyBehaviors>` elemento. Asegúrese de que tooreplace `{Your Application Insights Key}` con hello **clave de instrumentación** obtenida de Application Insights en la sección anterior de Hola.
+1. Si aún no existe, agregue un nodo secundario `<UserJourneyBehaviors>` al nodo `<RelyingParty>`. Tiene que estar situado inmediatamente después de `<DefaultUserJourney ReferenceId="YourPolicyName" />`
+2. Agregue el siguiente nodo como nodo secundario del elemento `<UserJourneyBehaviors>`. Asegúrese de reemplazar `{Your Application Insights Key}` por la **Clave de instrumentación** que obtuvo de Application Insights en la sección anterior.
 
   ```XML
   <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="{Your Application Insights Key}" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
   ```
 
-  * `DeveloperMode="true"`indica la telemetría de hello ApplicationInsights tooexpedite a través de la canalización de procesamiento de hello, bueno para el desarrollo, pero está restringido en grandes volúmenes.
-  * `ClientEnabled="true"`envía el script del lado cliente hello ApplicationInsights para realizar el seguimiento de errores de cliente y la vista de página (no es necesarios).
-  * `ServerEnabled="true"`envía Hola existente JSON UserJourneyRecorder como una visión tooApplication de evento personalizado.
+  * `DeveloperMode="true"` indica a ApplicationInsights que acelere la telemetría a través de la canalización de procesamiento, buena para el desarrollo, pero limitada en volúmenes elevados.
+  * `ClientEnabled="true"` envía el script del lado cliente ApplicationInsights para realizar un seguimiento de la vista de página y de los errores del lado cliente (no es necesario).
+  * `ServerEnabled="true"` envía el JSON UserJourneyRecorder como evento personalizado a Application Insights.
 Sample:
 
   ```XML
@@ -82,32 +82,32 @@ Sample:
   </TrustFrameworkPolicy>
   ```
 
-3. Cargar directiva Hola.
+3. Cargue la directiva.
 
-### <a name="see-hello-logs-in-application-insights"></a>Ver registros de hello en Application Insights
+### <a name="see-the-logs-in-application-insights"></a>Visualización de registros en Application Insights
 
 >[!NOTE]
 > Hay un breve retraso (inferior a cinco minutos) antes de que pueda ver nuevos registros en Application Insights.
 
-1. Abra el recurso de Application Insights de Hola que creó en hello [portal de Azure](https://portal.azure.com).
-1. Hola **Introducción** menú, haga clic en **análisis**.
+1. Abra el recurso de Application Insights que ha creado en [Azure Portal](https://portal.azure.com).
+1. En el menú **Información general**, haga clic en **Analytics**.
 1. Abra una nueva pestaña en Application Insights.
-1. Esta es una lista de consultas, puede usar registros de hello toosee
+1. A continuación se muestra una lista de consultas que puede usar para ver los registros
 
 | Consultar | Descripción |
 |---------------------|--------------------|
-traces | Ver todos los registros de hello generados por Azure AD B2C |
-traces \| where timestamp > ago(1d) | Ver todos los registros de hello generados por Azure AD B2C para hello último día
+traces | Ver todos los registros generados por Azure AD B2C |
+traces \| where timestamp > ago(1d) | Ver todos los registros generados por Azure AD B2C para el último día
 
-las entradas de Hello pueden ser largos.  Exportar tooCSV para obtener una visión más cercano.
+Las entradas pueden ser largas.  Exporte a un archivo CSV para realizar un examen más detallado.
 
-Puede aprender más acerca de la herramienta de análisis de hello [aquí](https://docs.microsoft.com/azure/application-insights/app-insights-analytics).
-
->[!NOTE]
->Comunidad de Hello ha desarrollado un a los desarrolladores del Visor toohelp identidad de usuario del proceso.  No está admitido por Microsoft y está disponible estrictamente tal cual.  Lee de la instancia de Application Insights y proporciona una vista de estructura bien Hola viaje eventos de usuarios.  Obtener el código fuente de hello e implementarlo en su propia solución.
+Puede obtener más información sobre estas herramientas de Analytics [aquí](https://docs.microsoft.com/azure/application-insights/app-insights-analytics).
 
 >[!NOTE]
->Actualmente, hello registros de actividad detallado aquí descritos están diseñados **sólo** tooaid en el desarrollo de directivas personalizadas. No use el modo de desarrollo en producción.  Registros de recopilación de todas las notificaciones enviadas tooand desde proveedores de identidades de Hola durante el desarrollo.  Si se utiliza en producción, desarrollador Hola asume la responsabilidad de PII (privada información de identificación) recopilado en registro de información de la aplicación hello que les pertenecen.  Estos registros detallados solo se recopilan cuando se coloca la directiva de hello en **modo de desarrollo**.
+>La Comunidad ha desarrollado un visor de recorrido de usuario para ayudar a los desarrolladores de identidad.  No está admitido por Microsoft y está disponible estrictamente tal cual.  Lee de la instancia de Application Insights y proporciona una vista bien estructurada de los eventos de recorrido de usuario.  Proporciona el código fuente para implementarlo en su propia solución.
+
+>[!NOTE]
+>Actualmente, los registros de actividad descritos aquí están diseñados **SOLO** para ayudar en el desarrollo de directivas personalizadas. No use el modo de desarrollo en producción.  Los registros recopilan todas las notificaciones que se envían y se reciben de los proveedores de identidad durante el desarrollo.  Si se utilizan en producción, el programador asume la responsabilidad sobre la PII (información personal de identificación) recopilada en el registro de información de la instancia de App Insights que le pertenece.  Estos registros detallados solo se recopilan cuando la directiva se coloca en **MODO DE DESARROLLO**.
 
 [Github Repository for Unsupported Custom Policy Samples and Related tools](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies) (Repositorio de Github con ejemplos de directivas personalizadas no admitidas y herramientas relacionadas)
 
@@ -115,4 +115,4 @@ Puede aprender más acerca de la herramienta de análisis de hello [aquí](https
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Explorar datos hello en toohelp Application Insights que comprenda cómo Hola identidad experiencia Framework B2C subyacente funciona toodeliver experiencias de su propia identidad.
+Explorar los datos de Application Insights para ayudarle a entender cómo funciona el marco de experiencia de identidad subyacente en B2C y poder entregar sus propias experiencias de identidad.

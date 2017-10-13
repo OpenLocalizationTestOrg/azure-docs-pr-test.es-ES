@@ -1,6 +1,6 @@
 ---
-title: aaaMicrosoft arquitectura del Kit de desarrollo de pila de Azure | Documentos de Microsoft
-description: Hola vista arquitectura del Kit de desarrollo de pila de Microsoft Azure.
+title: Arquitectura de Microsoft Azure Stack Development Kit | Microsoft Docs
+description: Vea la arquitectura de Microsoft Azure Stack Development Kit.
 services: azure-stack
 documentationcenter: 
 author: heathl17
@@ -12,24 +12,27 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2017
+ms.date: 09/25/2017
 ms.author: helaw
-ms.openlocfilehash: 32a19ced7ddd57b97ba796679c116132090402e2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e8ff17e069bd9237bf06cd79b4c222c50a999eda
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoft-azure-stack-development-kit-architecture"></a>Arquitectura de Microsoft Azure Stack Development Kit
-Hola Kit de desarrollo de pila de Azure es una implementación de un único nodo de pila de Azure. Todos los componentes de Hola se instalan en máquinas virtuales se ejecutan en una máquina de host único. 
+
+*Se aplica a: Azure Stack Development Kit*
+
+Azure Stack Development Kit es una implementación de un único nodo de Azure Stack. Todos los componentes se instalan en máquinas virtuales que se ejecutan en un solo equipo host. 
 
 ## <a name="logical-architecture-diagram"></a>Diagrama de arquitectura lógica
-Hello diagrama siguiente ilustra la arquitectura lógica de hello del kit de desarrollo de hello pila de Azure y sus componentes.
+El siguiente diagrama muestra la arquitectura lógica de Azure Stack Development Kit y sus componentes.
 
 ![](media/azure-stack-architecture/image1.png)
 
 ## <a name="virtual-machine-roles"></a>Roles de máquina virtual
-Hola kit de desarrollo de la pila de Azure ofrece servicios mediante Hola siguiendo las máquinas virtuales en el host de hello:
+Azure Stack Development Kit ofrece servicios a través de las siguientes máquinas virtuales en el host:
 
 | Nombre | Descripción |
 | ----- | ----- |
@@ -45,11 +48,11 @@ Hola kit de desarrollo de la pila de Azure ofrece servicios mediante Hola siguie
 | **AzS-SQL01** | Almacén de datos internos para los roles de infraestructura de Azure Stack.  |
 | **AzS-WAS01** | Portal de administración de Azure Stack y servicios de Azure Resource Manager.|
 | **AzS-WASP01**| Portal del usuario (inquilino) de Azure Stack y servicios de Azure Resource Manager.|
-| **AzS-XRP01** | Controlador de administración de infraestructura para la pila de Microsoft Azure, incluidos los proveedores de recursos de proceso, red y almacenamiento de Hola.|
+| **AzS-XRP01** | Controlador de administración de infraestructura para Microsoft Azure Stack, incluidos los proveedores de recursos de Compute, Networks y Storage.|
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 [Implementación de Azure Stack](azure-stack-deploy.md)
 
-[Primera tootry escenarios](azure-stack-first-scenarios.md)
+[Primeros escenarios para probar](azure-stack-first-scenarios.md)
 

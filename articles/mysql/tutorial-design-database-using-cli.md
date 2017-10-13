@@ -1,58 +1,58 @@
 ---
-title: aaaDesign Azure primero la base de datos para la base de datos de MySQL - CLI de Azure | Documentos de Microsoft
-description: "Este tutorial le explica cómo toocreate y administrar la base de datos de MySQL server y base de datos mediante Azure CLI 2.0 de línea de comandos de Hola."
+title: "Diseño de la primera base de datos de Azure Database for MySQL: CLI de Azure | Microsoft Docs"
+description: "En este tutorial se explica cómo crear y administrar la base de datos y el servidor de Azure Database for MySQL con la CLI de Azure 2.0 desde la línea de comandos."
 services: mysql
 author: v-chenyh
 ms.author: v-chenyh
 manager: jhubbard
-ms.service: mysql-database
+ms.service: mysql
 ms.devlang: azure-cli
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/13/2017
 ms.custom: mvc
-ms.openlocfilehash: 6339913c2af58e0e4c4eabb69097a5c9c245781c
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 0e6a92eeb9711b086359ab2cd1aea87a57f1fc36
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="design-your-first-azure-database-for-mysql-database"></a>Diseño de la primera base de datos de Azure Database for MySQL
 
-Base de datos de Azure para MySQL es un servicio de base de datos relacional en la nube de Microsoft que se basa en el motor de base de datos de MySQL Community Edition Hola. En este tutorial, usará Azure CLI (interfaz de línea de comandos) y otra utilidades toolearn cómo para:
+Azure Database for MySQL es un servicio de base de datos relacional de Microsoft Cloud basado en el motor de base de datos de MySQL Community Edition. En este tutorial, usa la CLI (interfaz de la línea de comandos) de Azure y otras utilidades para aprender a hacer lo siguiente:
 
 > [!div class="checklist"]
 > * Creación de una instancia de Azure Database for MySQL
-> * Configurar firewall de servidor hello
-> * Use [herramienta de línea de comandos de mysql](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) toocreate una base de datos
+> * Configuración del firewall del servidor
+> * Uso de la [herramienta de línea de comandos de mysql](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) para crear una base de datos
 > * Carga de datos de ejemplo
 > * Datos de consulta
 > * Actualización de datos
 > * Restauración de datos
 
-Puede usar hello Shell en la nube de Azure en el Explorador de hello, o [instalar Azure CLI 2.0]( /cli/azure/install-azure-cli) en sus propios bloques de código de equipo toorun hello en este tutorial.
+Puede usar Azure Cloud Shell en el explorador, o bien [instalar la CLI de Azure 2.0]( /cli/azure/install-azure-cli) en su propio equipo para ejecutar los bloques de código de este tutorial.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Si elige tooinstall y usar hello CLI localmente, en este tema requiere que se ejecuten hello Azure CLI versión 2.0 o posterior. Ejecutar `az --version` toofind versión de Hola. Si necesita tooinstall o una actualización, consulte [instalar Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Si decide instalar y usar la CLI localmente, para este tema es preciso que ejecute la CLI de Azure versión 2.0 o posterior. Ejecute `az --version` para encontrar la versión. Si necesita instalarla o actualizarla, consulte [Instalación de la CLI de Azure 2.0]( /cli/azure/install-azure-cli). 
 
-Si tiene varias suscripciones, elija Hola de suscripción adecuado en el que recurso de hello existe o se factura para. Seleccione un identificador de suscripción específico en su cuenta mediante el comando [az account set](/cli/azure/account#set).
+Si tiene varias suscripciones, elija la adecuada donde se encuentre el recurso o para la cual se facture. Seleccione un identificador de suscripción específico en su cuenta mediante el comando [az account set](/cli/azure/account#set).
 ```azurecli-interactive
 az account set --subscription 00000000-0000-0000-0000-000000000000
 ```
 
 ## <a name="create-a-resource-group"></a>Crear un grupo de recursos
-Cree un [grupo de recursos](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview) con el comando [az group create](https://docs.microsoft.com/cli/azure/group#create). Un grupo de recursos es un contenedor lógico en el que se implementan y se administran recursos de Azure como un grupo.
+Cree un [grupo de recursos](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview) con el comando [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create). Un grupo de recursos es un contenedor lógico en el que se implementan y se administran recursos de Azure como un grupo.
 
-Hello en el ejemplo siguiente se crea un grupo de recursos denominado `mycliresource` en hello `westus` ubicación.
+En el ejemplo siguiente, se crea un grupo de recursos denominado `mycliresource` en la ubicación `westus`.
 
 ```azurecli-interactive
 az group create --name mycliresource --location westus
 ```
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Creación de un servidor de Azure Database for MySQL
-Cree una base de datos de MySQL server con servidor de mysql de hello az crear comando. Un servidor puede administrar varias bases de datos. Normalmente se usa una base de datos independiente para cada proyecto o para cada usuario.
+Cree un servidor de Azure Database for MySQL con el comando az mysql server create. Un servidor puede administrar varias bases de datos. Normalmente se usa una base de datos independiente para cada proyecto o para cada usuario.
 
-Hello en el ejemplo siguiente se crea una base de datos de Azure para MySQL server que se encuentra en `westus` en grupo de recursos de hello `mycliresource` con nombre `mycliserver`. servidor de Hello tiene un inicio de sesión de administrador en denominado `myadmin` y la contraseña `Password01!`. Hola servidor se crea con **básica** nivel de rendimiento y **50** unidades que se comparten entre todas las bases de datos de hello en el servidor de Hola de proceso. Puede escalar almacenamiento y el proceso hacia arriba o hacia abajo según las necesidades de aplicación Hola.
+En el ejemplo siguiente se crea una Base de datos de Azure para el servidor MySQL situado en `westus` en el grupo de recursos `mycliresource` con el nombre `mycliserver`. El servidor tiene un inicio de sesión de administrador con el nombre `myadmin` y la contraseña `Password01!`. El servidor se crea con un nivel de rendimiento **Básico** y **50** unidades de proceso compartidas entre todas las bases de datos en el servidor. Puede escalar o reducir verticalmente el proceso y el almacenamiento según las necesidades de la aplicación.
 
 ```azurecli-interactive
 az mysql server create --resource-group mycliresource --name mycliserver
@@ -61,22 +61,22 @@ az mysql server create --resource-group mycliresource --name mycliserver
 ```
 
 ## <a name="configure-firewall-rule"></a>Configurar de la regla de firewall
-Crear una base de datos de Azure para comando de creación de la regla de firewall de nivel de servidor de MySQL con hello az mysql server-regla de firewall. Una regla de firewall de nivel de servidor permite que una aplicación externa, como **mysql** herramienta de línea de comandos o servidor de MySQL Workbench tooconnect tooyour a través de firewall de servicio de MySQL de Azure de Hola. 
+Cree una regla de firewall de nivel de servidor de Azure Database for MySQL con el comando az mysql server firewall-rule create. Una regla de firewall de nivel de servidor permite que una aplicación externa, como una herramienta de línea de comandos de **mysql** o MySQL Workbench para conectarse al servidor a través del firewall del servicio Azure MySQL. 
 
-Hello en el ejemplo siguiente se crea una regla de firewall para un intervalo de direcciones predefinidas. Este ejemplo muestra hello todo posible intervalo de direcciones IP.
+En el ejemplo siguiente se crea una regla de firewall para un intervalo predefinido de direcciones. En este ejemplo se muestra todo el posible intervalo de direcciones IP.
 
 ```azurecli-interactive
 az mysql server firewall-rule create --resource-group mycliresource --server mycliserver --name AllowYourIP --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
 ```
 
-## <a name="get-hello-connection-information"></a>Obtener información de conexión de Hola
+## <a name="get-the-connection-information"></a>Obtención de la información de conexión
 
-tooconnect tooyour server, necesita credenciales de acceso y la información de host de tooprovide.
+Para conectarse al servidor, debe proporcionar las credenciales de acceso y la información del host.
 ```azurecli-interactive
 az mysql server show --resource-group mycliresource --name mycliserver
 ```
 
-resultado de Hello es en formato JSON. Tome nota de hello **fullyQualifiedDomainName** y **Iniciodesesióndeadministrador**.
+El resultado está en formato JSON. Tome nota de los valores de **fullyQualifiedDomainName** y **administratorLogin**.
 ```json
 {
   "administratorLogin": "myadmin",
@@ -101,25 +101,25 @@ resultado de Hello es en formato JSON. Tome nota de hello **fullyQualifiedDomain
 }
 ```
 
-## <a name="connect-toohello-server-using-mysql"></a>Conectar con mysql de servidor de toohello
-Use [herramienta de línea de comandos de mysql](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) tooestablish una tooyour de conexión base de datos de MySQL server. En este ejemplo, el comando de hello es:
+## <a name="connect-to-the-server-using-mysql"></a>Conexión al servidor con MySQL
+Use la [herramienta de línea de comandos mysql](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) para establecer una conexión con el servidor de Azure Database for MySQL. En este ejemplo, el comando es:
 ```cmd
 mysql -h mycliserver.database.windows.net -u myadmin@mycliserver -p
 ```
 
 ## <a name="create-a-blank-database"></a>Crear una base de datos en blanco
-Una vez que esté conectado toohello server, cree una base de datos en blanco.
+Una vez conectado al servidor, cree una base de datos vacía.
 ```sql
 mysql> CREATE DATABASE mysampledb;
 ```
 
-En el símbolo del sistema de hello, ejecute hello después de la base de datos de comando tooswitch Hola conexión toothis recién creado:
+En el símbolo del sistema, ejecute el comando siguiente para cambiar la conexión a esta base de datos recién creada:
 ```sql
 mysql> USE mysampledb;
 ```
 
-## <a name="create-tables-in-hello-database"></a>Crear tablas de base de datos de Hola
-Ahora que sabe cómo tooconnect toohello base de datos de Azure para la base de datos MySQL, podemos ver cómo toocomplete algunas tareas básicas.
+## <a name="create-tables-in-the-database"></a>Creación de tablas en la base de datos
+Ahora que sabe cómo conectarse a la base de datos de Azure Database for MySQL, podemos ver cómo completar algunas tareas básicas.
 
 En primer lugar, podemos crear una tabla y cargarla con algunos datos. Vamos a crear una tabla que almacena la información del inventario.
 ```sql
@@ -130,53 +130,53 @@ CREATE TABLE inventory (
 );
 ```
 
-## <a name="load-data-into-hello-tables"></a>Cargar datos en tablas de Hola
-Ahora que tenemos una tabla, podemos insertar algunos datos en ella. En la ventana de símbolo del sistema abierto hello, ejecute hello después consulta tooinsert algunas filas de datos.
+## <a name="load-data-into-the-tables"></a>Carga de datos en las tablas
+Ahora que tenemos una tabla, podemos insertar algunos datos en ella. En la ventana de símbolo del sistema abierta, ejecute la consulta siguiente para insertar algunas filas de datos.
 ```sql
 INSERT INTO inventory (id, name, quantity) VALUES (1, 'banana', 150); 
 INSERT INTO inventory (id, name, quantity) VALUES (2, 'orange', 154);
 ```
 
-Ahora tiene dos filas de datos de ejemplo en la tabla de Hola que creó anteriormente.
+Ahora tiene dos filas de datos de ejemplo en la tabla que creó anteriormente.
 
-## <a name="query-and-update-hello-data-in-hello-tables"></a>Consultar y actualizar los datos de hello en tablas de Hola
-Ejecute hello siguientes tooretrieve información de consulta de tabla de base de datos de Hola.
+## <a name="query-and-update-the-data-in-the-tables"></a>Consulta y actualización de los datos en las tablas
+Ejecute la consulta siguiente para recuperar información de la tabla de base de datos.
 ```sql
 SELECT * FROM inventory;
 ```
 
-También puede actualizar los datos de hello en tablas de Hola.
+También puede actualizar los datos en las tablas.
 ```sql
 UPDATE inventory SET quantity = 200 WHERE name = 'banana';
 ```
 
-fila de Hola se actualiza en consecuencia cuando se recuperan datos.
+La fila se actualiza en consecuencia cuando se recuperan los datos.
 ```sql
 SELECT * FROM inventory;
 ```
 
-## <a name="restore-a-database-tooa-previous-point-in-time"></a>Restaurar un punto anterior de tooa de base de datos en el tiempo
-Imagine que eliminó accidentalmente esta tabla. No se puede recuperar con facilidad. Azure base de datos de MySQL permite toogo tooany atrás punto en el tiempo en hello última los días de too35 y restaurar este punto en el nuevo servidor de tiempo tooa. Puede usar esta nueva toorecover server los datos eliminados. Hola siguiendo los pasos restauración Hola ejemplo servidor tooa punto antes de que se ha agregado Hola tabla.
+## <a name="restore-a-database-to-a-previous-point-in-time"></a>Restauración de una base de datos a un momento anterior en el tiempo
+Imagine que eliminó accidentalmente esta tabla. No se puede recuperar con facilidad. Azure Database for MySQL permite volver a cualquier momento dado en el período de los últimos 35 días y restaurar este momento en un servidor nuevo. Puede usar este servidor nuevo para recuperar los datos eliminados. Los pasos siguientes restauran el servidor de ejemplo a un punto antes de que se agregara la tabla.
 
-Para hello restauración necesita Hola siguiente información:
+Para realizar la restauración, necesita la información siguiente:
 
-- Punto de restauración: seleccione un punto-in-time que se produce antes de hello servidor se ha modificado. Debe ser mayor que o igual a value de copia de seguridad más antigua toohello origen la base de datos.
-- Servidor de destino: especifique un nuevo nombre de servidor que desee toorestore a
-- Servidor de origen: proporcionar nombre Hola Hola del servidor de que desea toorestore desde
-- Ubicación: No se puede seleccionar una región hello, de forma predeterminada es igual que el servidor de origen de Hola
+- Punto de restauración: seleccione el momento antes de que se modificara la base de datos. Debe ser mayor o igual que el valor de la copia de seguridad más antigua de la base de datos de origen.
+- Servidor de destino: especifique el nombre del nuevo servidor donde desea restaurar
+- Servidor de origen: especifique el nombre del servidor desde donde desea restaurar
+- Ubicación: no se puede seleccionar la región; de forma predeterminada, es la misma que la del servidor de origen
 
 ```azurecli-interactive
 az mysql server restore --resource-group mycliresource --name mycliserver-restored --restore-point-in-time "2017-05-4 03:10" --source-server-name mycliserver
 ```
 
-servidor de hello toorestore y [tooa en el momento de restaurar](./howto-restore-server-portal.md) antes de que se eliminó la tabla de Hola. Restauración tooa otro punto de servidor en el tiempo crea un duplicado en el servidor nuevo como servidor original Hola de punto de hello en el tiempo especificado, siempre que esté dentro del período de retención de Hola para su [nivel de servicio](./concepts-service-tiers.md).
+Para restaurar el servidor y [restaurar a un momento dado](./howto-restore-server-portal.md) antes de que se eliminara la tabla. Restaurar un servidor a un momento dado distinto crea un servidor nuevo duplicado como el servidor original a partir del momento dado que especifique, siempre que se encuentren dentro del período de retención para el [nivel de servicio](./concepts-service-tiers.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
 En este tutorial aprendió lo siguiente:
 > [!div class="checklist"]
 > * Creación de una instancia de Azure Database for MySQL
-> * Configurar firewall de servidor hello
-> * Use [herramienta de línea de comandos de mysql](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) toocreate una base de datos
+> * Configuración del firewall del servidor
+> * Uso de la [herramienta de línea de comandos de mysql](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) para crear una base de datos
 > * Carga de datos de ejemplo
 > * Datos de consulta
 > * Actualización de datos

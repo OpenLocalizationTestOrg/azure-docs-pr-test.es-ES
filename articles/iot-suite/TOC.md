@@ -1,11 +1,11 @@
 # Información general
 ## [Azure y IoT](iot-suite-what-is-azure-iot.md)
 ## [¿Qué es el Conjunto de aplicaciones de IoT?](iot-suite-overview.md)
-## [¿Qué soluciones de hello preconfigurado?](iot-suite-what-are-preconfigured-solutions.md)
+## [¿Qué son las soluciones preconfiguradas?](iot-suite-what-are-preconfigured-solutions.md)
 
 
 # Introducción
-## [Empezar a trabajar con soluciones de hello preconfigurado](iot-suite-getstarted-preconfigured-solutions.md)
+## [Introducción a las soluciones preconfiguradas](iot-suite-getstarted-preconfigured-solutions.md)
 ## [Permisos en azureiotsuite.com](iot-suite-permissions.md)
 ## [Introducción a la solución de mantenimiento predictivo](iot-suite-predictive-overview.md)
 ## [Introducción a la solución de fábrica conectada](iot-suite-connected-factory-overview.md)
@@ -30,11 +30,11 @@
 ### [C en Windows](iot-suite-connecting-devices.md)
 ### [C en Linux](iot-suite-connecting-devices-linux.md)
 ### [Node.js](iot-suite-connecting-devices-node.md)
-## [Conectar una solución de supervisión de aplicación lógica toohello remota](iot-suite-logic-apps-tutorial.md)
+## [Conexión de la aplicación lógica a la solución de supervisión remota](iot-suite-logic-apps-tutorial.md)
 ## [Personalización de una solución preconfigurada](iot-suite-guidance-on-customizing-preconfigured-solutions.md)
-## [Use la telemetría dinámica con soluciones de supervisión remota hello](iot-suite-dynamic-telemetry.md)
-## [Crear una regla personalizada en la solución de supervisión remota Hola](iot-suite-custom-rule.md)
-## [Información del dispositivo en hello remoto de solución de supervisión](iot-suite-remote-monitoring-device-info.md)
+## [Uso de telemetría dinámica con la solución de supervisión remota](iot-suite-dynamic-telemetry.md)
+## [Creación de una regla personalizada en la solución de supervisión remota](iot-suite-custom-rule.md)
+## [Información de dispositivos en la solución de supervisión remota](iot-suite-remote-monitoring-device-info.md)
 ## [Implementación de una puerta de enlace para una solución de fábrica conectada](iot-suite-connected-factory-gateway-deployment.md)
 ## [Personalización de fábrica conectada](iot-suite-connected-factory-customize.md)
 
@@ -42,7 +42,7 @@
 ## [Arquitectura de seguridad](iot-security-architecture.md)
 ## [Procedimientos de seguridad recomendados](iot-security-best-practices.md)
 ## [Protección de su implementación de IoT](iot-suite-security-deployment.md)
-## [Seguridad de hello masa](securing-iot-ground-up.md)
+## [Seguridad total](securing-iot-ground-up.md)
 
 # Temas relacionados
 ## [Stream Analytics](/azure/stream-analytics/)
@@ -52,7 +52,7 @@
 
 # Recursos
 ## [Azure Roadmap](https://azure.microsoft.com/roadmap/)
-## [Preguntas más frecuentes](iot-suite-faq.md)
+## [P+F](iot-suite-faq.md)
 ## [Preguntas más frecuentes sobre fábrica conectada](iot-suite-faq-cf.md)
 ## [Ruta de aprendizaje del Conjunto de aplicaciones de IoT](https://azure.microsoft.com/documentation/learning-paths/iot-suite/)
 ## [Calculadora de precios](https://azure.microsoft.com/pricing/calculator/)

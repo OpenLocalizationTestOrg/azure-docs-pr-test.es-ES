@@ -1,6 +1,6 @@
 ---
-title: "Configuraciones de registro de detección de aplicación para los servicios de Proxy aaaCloud | Documentos de Microsoft"
-description: objetivo de Hola de este tema es tooprovide a Hola lo necesita puerto tooperform tooset Hola necesario Hola ejecutan el agente de Cloud App Discovery de Hola.
+title: "Configuración del Registro de Cloud App Discovery para servicios de proxy | Microsoft Docs"
+description: El objetivo de este tema es proporcionarle los pasos que debe llevar a cabo para establecer el puerto requerido en los equipos que ejecutan el agente de Cloud App Discovery.
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -11,27 +11,30 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 09/25/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: bb1fe20016459160b4f67cb0125b1781a0260c4b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: b8584809b76d6be12a6f489f0bb819081d1803d2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="cloud-app-discovery-registry-settings-for-proxy-services"></a>Configuración del registro de Cloud App Discovery para los servicios de proxy
-De forma predeterminada, el agente de Cloud App Discovery de hello es toouse configurado solo Hola puertos 80 o 443. Si piensa instalar Cloud App Discovery en un entorno con un servidor proxy que usa un puerto personalizado (ni 80 ni el 443), necesita tooconfigure su toouse agentes este puerto. configuración de Hola se basa en una clave del registro.
+El objetivo de este tema es indicar los pasos para establecer el puerto necesario en los equipos que ejecutan el agente de Cloud App Discovery. De forma predeterminada, el agente de Cloud App Discovery está configurado para usar solo los puertos 80 o 443. Si piensa instalar Cloud App Discovery en un entorno con un servidor proxy que usa un puerto personalizado (que no sea el 80 ni el 443), deberá configurar los agentes para usar dicho puerto. La configuración se basa en una clave del registro.
 
-objetivo de Hola de este tema es tooprovide a Hola lo necesita puerto tooperform tooset Hola necesario Hola ejecutan el agente de Cloud App Discovery de Hola.
+> [!TIP] 
+> Eche un vistazo a las mejoras de la característica Cloud App Discovery (ahora sin agente) en Azure Active Directory (Azure AD), mejorada con [integración con Microsoft Cloud App Security](https://portal.cloudappsecurity.com).
 
-**puerto de hello toomodify usado por equipo de Hola que se ejecuta el agente de Cloud App Discovery de hello, lleve a cabo Hola pasos:**
+## <a name="modify-the-port-used-by-the-computer-running-the-cloud-app-discovery-agent"></a>Modificar el puerto que usa el equipo que ejecuta el agente de Cloud App Discovery
 
-1. Inicie el editor del registro de hello. <br> ![Ejecute](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy01.png)
-2. Navegue tooor crear Hola después de la clave del registro: <br> **HKLM_LOCAL_MACHINE\Software\Microsoft\Cloud App Discovery\Endpoint** 
-3. Cree un nuevo valor de **cadenas múltiples** denominado **Puertos**. ![Nuevo](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy02.png)
-4. Hola tooopen **modificar cadenas múltiples** cuadro de diálogo, haga doble clic en el valor de puertos de Hola.
-5. En el cuadro de texto de datos de valor de hello, escriba Hola después de valores y agregue todos los puertos personalizados que se usan en su organización: <br><br>
+1. Inicie el editor del Registro.
+  ![Run](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy01.png)
+2. Navegue a la siguiente clave del Registro o créela: **HKLM_LOCAL_MACHINE\Software\Microsoft\Cloud App Discovery\Endpoint**
+3. Cree un nuevo valor de **cadenas múltiples** denominado **Puertos**. 
+  ![Nuevo](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy02.png)
+4. Para abrir el cuadro de diálogo **Modificar cadenas múltiples**, haga doble clic en el valor **Puertos**.
+5. En **Datos de valor**, escriba los siguientes valores y agregue todos los puertos personalizados que se usan en la organización: <br><br>
    **80** <br>
    **8080** <br>
    **8118** <br>
@@ -45,9 +48,9 @@ objetivo de Hola de este tema es tooprovide a Hola lo necesita puerto tooperform
    **443** <br>
    **1110** <br><br>
    ![Modificar cadenas múltiples](./media/active-directory-cloudappdiscovery-registry-settings-for-proxy-services/proxy03.png)
-6. Haga clic en **Aceptar** tooclose hello **modificar cadenas múltiples** cuadro de diálogo.
+6. Haga clic en **Aceptar** para cerrar el cuadro de diálogo **Modificar cadenas múltiples**.
 
-**Recursos adicionales**
+## <a name="next-steps"></a>Pasos siguientes
 
 * [¿Cómo puedo detectar aplicaciones en la nube no sancionadas que se usan dentro de mi organización?](active-directory-cloudappdiscovery-whatis.md) 
 

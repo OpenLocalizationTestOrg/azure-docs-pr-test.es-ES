@@ -1,6 +1,6 @@
 ---
-title: "características de seguridad de aaaAzure utilizadas con máquinas virtuales de Azure | Documentos de Microsoft"
-description: " Información general de características de seguridad de Azure de hello básicas que puede usarse con máquinas virtuales de Azure. Máquinas virtuales de Azure dé Hola flexibilidad de virtualización sin necesidad de toobuy y mantener el hardware físico de Hola que ejecuta Hola VM. "
+title: "Características de seguridad de Azure usadas con máquinas virtuales de Azure | Microsoft Docs"
+description: " Este artículo ofrece una visión general de las principales características de seguridad de Azure que se pueden usar con máquinas virtuales de Azure. Las máquinas virtuales de Azure le ofrecen la flexibilidad de la virtualización sin necesidad de adquirir ni mantener el hardware físico que las ejecutan. "
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2017
 ms.author: terrylan
-ms.openlocfilehash: 1a1b9f02bd82a2655f4e2e5d9f9ce7a6671f63fb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f1fb7f876c7dc010c03f01a4f6698ddc18da1100
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Información general de seguridad de Azure Virtual Machines
 Azure Virtual Machines permite implementar una amplia gama de soluciones informáticas con agilidad. Gracias a la compatibilidad con Microsoft Windows, Linux, Microsoft SQL Server, Oracle, IBM, SAP y Azure BizTalk Services, puede implementar cualquier carga de trabajo y cualquier idioma en casi cualquier sistema operativo.
 
-Un proporciona Hola flexibilidad de virtualización sin necesidad de toobuy y mantener el hardware físico de Hola de máquina virtual de Azure que ejecute máquina virtual de Hola.  Puede compilar e implementar las aplicaciones con garantía de Hola que los datos están protegidos y seguros en nuestros centros de datos muy seguro.
+Una máquina virtual de Azure le ofrece la flexibilidad de la virtualización sin necesidad de adquirir y mantener el hardware físico que ejecuta la máquina virtual.  Puede compilar e implementar aplicaciones con la tranquilidad de saber que sus datos están protegidos en nuestros centros de datos de alta seguridad.
 
 Con Azure, puede crear soluciones compatibles con seguridad mejorada que:
 
@@ -33,9 +33,9 @@ Con Azure, puede crear soluciones compatibles con seguridad mejorada que:
 * Identifican y detectan amenazas.
 * Satisfacen los requisitos de cumplimiento.
 
-objetivo de Hola de este artículo es tooprovide una visión general de las características de seguridad de Azure de hello principales que puede usarse con máquinas virtuales. También se proporcionan los vínculos tooarticles que proporcionan detalles de cada característica, por lo que puede obtener más información.  
+El objetivo de este artículo es proporcionar una visión general de las principales características de seguridad de Azure que se pueden usar con máquinas virtuales. Además, se incluyen vínculos a artículos que ofrecen detalles de cada una de estas características para que pueda tener más información al respecto.  
 
-en este artículo se trata toobe de capacidades de seguridad de Hello core Máquina Virtual de Azure:
+En este artículo se tratan las principales funcionalidades de seguridad de máquinas virtuales de Azure:
 
 * Antimalware
 * Módulo de seguridad de hardware
@@ -47,46 +47,46 @@ en este artículo se trata toobe de capacidades de seguridad de Hello core Máqu
 * Cumplimiento normativo
 
 ## <a name="antimalware"></a>Antimalware
-Con Azure, puede usar el software antimalware de los proveedores de seguridad, como Microsoft, Symantec, Trend Micro y Kaspersky tooprotect las máquinas virtuales desde archivos malintencionados, adware y otras amenazas. Vea Hola aprendizaje sección más debajo toofind artículos en soluciones de socios.
+Con Azure, puede usar software antimalware de proveedores de seguridad como Microsoft, Symantec, Trend Micro y Kaspersky, para proteger las máquinas virtuales de archivos malintencionados, adware y otras amenazas. Consulte más abajo la sección Más información para ver artículos sobre soluciones de asociados.
 
-Microsoft Antimalware para servicios en la nube y máquinas virtuales de Azure es una funcionalidad de protección en tiempo real que permite identificar y eliminar virus, spyware y otro software malintencionado.  Microsoft Antimalware proporciona configurable genera una alerta cuando conoce tooinstall de intentos de software malintencionado o no deseado propio o ejecutarse en los sistemas de Azure.
+Microsoft Antimalware para servicios en la nube y máquinas virtuales de Azure es una funcionalidad de protección en tiempo real que permite identificar y eliminar virus, spyware y otro software malintencionado.  Microsoft Antimalware activa alertas configurables cuando software no deseado o malintencionado intenta instalarse o ejecutarse en los sistemas de Azure.
 
-Microsoft Antimalware es una solución de agente único para aplicaciones y entornos de inquilino, toorun diseñado en segundo plano de hello sin intervención humana. Puede implementar la protección en función de las necesidades de Hola de las cargas de trabajo de aplicación, con cualquier básica proteger de forma predeterminada o avanzadas de configuración personalizada, incluida la supervisión de antimalware.
+Microsoft Antimalware es una solución de un único agente dirigida a entornos de aplicaciones e inquilinos, concebida para ejecutarse en segundo plano sin intervención humana. Puede implementar la protección en función de las necesidades de sus cargas de trabajo de aplicaciones, con configuración de protección básica o personalizada avanzada que incluye supervisión antimalware.
 
-Al implementar y habilitar Microsoft Antimalware, Hola siguiendo las características básicas de está disponible:
+Al implementar y habilitar Microsoft Antimalware, están disponibles las siguientes características principales:
 
-* Protección en tiempo real: supervisa la actividad en los servicios en la nube y en máquinas virtuales toodetect y bloquear la ejecución de malware.
-* Análisis programados - realiza periódicamente destino malware toodetect análisis, incluidos los programas que se ejecutan activamente.
+* Protección en tiempo real: supervisa la actividad en los servicios en la nube y las máquinas virtuales para detectar y bloquear la ejecución de malware.
+* Análisis programado: realiza periódicamente exámenes dirigidos para detectar malware, lo que incluye programas que se ejecutan activamente.
 * Corrección de malware: actúa automáticamente sobre el malware detectado y elimina o pone en cuarentena los archivos malintencionados y limpia las entradas del Registro malintencionadas.
-* Las actualizaciones de firma - automáticamente instala hello más reciente protección firmas (las definiciones de virus) tooensure la protección está actualizada en una frecuencia predeterminada.
-* Las actualizaciones de motor de antimalware: automáticamente actualizaciones Hola motor de Antimalware de Microsoft.
-* Las actualizaciones de la plataforma de antimalware: automáticamente actualizaciones Hola plataforma Microsoft Antimalware.
-* Protección activa - informa tooAzure telemetría metadatos acerca de las amenazas detectadas y recursos sospechosa tooensure rápida respuesta y permite firma sincrónico en tiempo real entrega a través de hello Microsoft Active Protection System (MAPS).
-* Ejemplos de informes: proporciona y ejemplos de informes toohello Microsoft Antimalware service toohelp refinar servicio hello y solución de problemas de habilitar.
-* Exclusiones: permite la aplicación y servicio administradores tooconfigure determinados archivos, procesos y unidades de tooexclude ellos de la protección y análisis de rendimiento y otras razones.
-* Recopilación de eventos de antimalware: registra el estado del servicio antimalware hello, las actividades sospechosas y las acciones correctoras tomadas en el registro de eventos del sistema operativo de Hola y recopila en la cuenta de almacenamiento de Azure del cliente de Hola.
+* Actualizaciones de firmas: instala automáticamente las últimas firmas de protección (definiciones de virus) para garantizar que la protección está actualizada con una frecuencia determinada previamente.
+* Actualizaciones del motor antimalware: actualiza automáticamente el motor de Microsoft Antimalware.
+* Actualizaciones de la plataforma antimalware: actualiza automáticamente la plataforma de Microsoft Antimalware.
+* Protección nativa: envía a Azure metadatos de telemetría sobre las amenazas detectadas y los recursos sospechosos para garantizar una respuesta rápida y permitir la entrega sincrónica de firmas en tiempo real a través de Microsoft Active Protection System (MAPS).
+* Informes de ejemplos: proporciona informes de ejemplos al servicio Microsoft Antimalware que ayudan a mejorar el servicio y permiten la solución de problemas.
+* Exclusiones: permite a los administradores de aplicaciones y servicios configurar determinados archivos, procesos y unidades para que se excluyan de la protección y el examen por motivos de rendimiento o de otro tipo.
+* Recopilación de eventos antimalware: registra el estado del servicio antimalware, las actividades sospechosas y las acciones de corrección adoptadas en el registro de eventos del sistema operativo y los recopila en la cuenta de almacenamiento de Azure del cliente.
 
-Obtener más información: toolearn más información acerca de tooprotect de software antimalware sus máquinas virtuales, vea:
+Más información: para saber más sobre el software antimalware y cómo proteger las máquinas virtuales, consulte:
 
 * [Microsoft Antimalware para Cloud Services y Virtual Machines de Azure](azure-security-antimalware.md)
-* [Implementación de soluciones antimalware en Azure Virtual Machines](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
-* [¿Cómo tooinstall y configurar trendmicro Deep Security como un servicio en una VM de Windows](../virtual-machines/windows/classic/install-trend.md)
-* [¿Cómo tooinstall y configurar Symantec Endpoint Protection en una VM de Windows](../virtual-machines/windows/classic/install-symantec.md)
-* [Soluciones de seguridad en hello Azure Marketplace](https://azure.microsoft.com/marketplace/?term=security)
+* [Implementación de soluciones antimalware en máquinas virtuales de Azure](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
+* [Instalación y configuración de Trend Micro Deep Security como servicio en una máquina virtual de Azure](../virtual-machines/windows/classic/install-trend.md)
+* [Instalación y configuración de Endpoint Protection en una máquina virtual de Azure](../virtual-machines/windows/classic/install-symantec.md)
+* [Soluciones de seguridad en Azure Marketplace](https://azure.microsoft.com/marketplace/?term=security)
 
 ## <a name="hardware-security-module"></a>Módulo de seguridad de hardware
-Las protecciones del cifrado y la autenticación se pueden mejorar si se mejora de la clave de seguridad. Puede simplificar la administración de Hola y seguridad de los secretos críticos y claves almacenándolos en el almacén de claves de Azure. El almacén de claves proporciona Hola opción toostore las claves en los estándares de hardware seguridad tooFIPS certificada de módulos (HSM) 140-2 nivel 2. Sus claves de cifrado de SQL Server para copias de seguridad o [cifrado de datos transparente](https://msdn.microsoft.com/library/bb934049.aspx) se pueden almacenar en el Almacén de claves con otras claves y secretos de sus aplicaciones. Permisos y acceso a los elementos protegido de toothese se administran a través de [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
+Las protecciones del cifrado y la autenticación se pueden mejorar si se mejora de la clave de seguridad. Puede simplificar la administración y la seguridad de claves y secretos críticos guardándolos en Azure Key Vault. El Almacén de claves permite guardar claves en módulos de seguridad de hardware (HSM) que tienen la certificación FIPS 140-2 nivel 2. Sus claves de cifrado de SQL Server para copias de seguridad o [cifrado de datos transparente](https://msdn.microsoft.com/library/bb934049.aspx) se pueden almacenar en el Almacén de claves con otras claves y secretos de sus aplicaciones. Los permisos y el acceso a estos elementos protegidos se administran con [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/).
 
 Más información:
 
-* [¿Qué es el Almacén de claves de Azure?](../key-vault/key-vault-whatis.md)
+* [¿Qué es Azure Key Vault?](../key-vault/key-vault-whatis.md)
 * [Introducción a Azure Key Vault](../key-vault/key-vault-get-started.md)
-* [Blog del Almacén de claves de Azure](https://blogs.technet.microsoft.com/kv/)
+* [Blog de Azure Key Vault](https://blogs.technet.microsoft.com/kv/)
 
 ## <a name="virtual-machine-disk-encryption"></a>Cifrado de discos de máquinas virtuales
-Azure Disk Encryption es una nueva funcionalidad que permite cifrar los discos de máquinas virtuales de Azure de Windows y Linux. Cifrado de disco de Azure utiliza el estándar del sector de hello [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) característica de Windows y hello [dm crypt](https://en.wikipedia.org/wiki/Dm-crypt) característica de cifrado de volumen de Linux tooprovide hello OS y discos de datos de Hola.
+Azure Disk Encryption es una nueva funcionalidad que permite cifrar los discos de máquinas virtuales de Azure de Windows y Linux. Azure Disk Encryption usa la característica [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) estándar del sector de Windows y la característica [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) de Linux para ofrecer cifrado de volumen para el sistema operativo y los discos de datos.
 
-solución de Hola se integra con el almacén de claves de Azure toohelp controlar y administrar claves de cifrado de disco de Hola y secretos en su suscripción de almacén de claves, asegurándose de que todos los datos en discos de máquina virtual de Hola se cifran en reposo en el almacenamiento de Azure.
+La solución se integra con Azure Key Vault para ayudarle a controlar y administrar las claves y secretos de cifrado de disco en su suscripción del almacén de claves, al mismo tiempo que garantiza que todos los datos de los discos de las máquinas virtuales se cifran en reposo en el almacenamiento de Azure.
 
 Más información:
 
@@ -104,15 +104,15 @@ Más información:
 * [P+F del servicio Azure Backup](../backup/backup-azure-backup-faq.md)
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
-Una parte importante de la estrategia BCDR de su organización es pensar en cómo se producen tookeep corporativa cargas de trabajo y aplicaciones de seguridad y ejecución cuando se planean e interrupciones imprevistas. Azure Site Recovery ayuda a coordinar la replicación, la conmutación por error y la recuperación de aplicaciones y cargas de trabajo para que estén disponibles desde una ubicación secundaria si la ubicación principal deja de funcionar.
+Una parte importante de la estrategia de BCDR de su organización es averiguar cómo mantener las aplicaciones y cargas de trabajo corporativas listas para su funcionamiento cuando se producen interrupciones planificadas e imprevistas. Azure Site Recovery ayuda a coordinar la replicación, la conmutación por error y la recuperación de aplicaciones y cargas de trabajo para que estén disponibles desde una ubicación secundaria si la ubicación principal deja de funcionar.
 
 Site Recovery:
 
-* **Simplifica la estrategia BCDR** : Site Recovery resulta fácil toohandle replicación, conmutación por error y recuperación de varias cargas de trabajo de negocio y aplicaciones desde una sola ubicación. Site recovery organiza la replicación y la conmutación por error pero no intercepta los datos de su aplicación ni obtiene información alguna sobre ella.
+* **Simplifica su estrategia de BCDR** : Site Recovery facilita el control de la replicación, la conmutación por error y la recuperación de varias cargas de trabajo y aplicaciones de negocios desde una única ubicación. Site recovery organiza la replicación y la conmutación por error pero no intercepta los datos de su aplicación ni obtiene información alguna sobre ella.
 * **Proporciona replicación flexible** : con Site Recovery puede replicar las cargas de trabajo que se ejecutan en máquinas virtuales de Hyper-V, máquinas virtuales de VMware y servidores físicos de Windows o Linux.
-* **Admite la conmutación por error y recuperación** : recuperación del sitio proporciona las conmutaciones por error de prueba toosupport de recuperación ante desastres sin afectar a entornos de producción. También puede ejecutar conmutaciones por error planeadas sin pérdidas de datos para interrupciones previstas o conmutaciones por error con una pérdida de datos mínima (según la frecuencia de replicación) ante desastres inesperados. Después de la conmutación por error, puede tooyour conmutación por recuperación los sitios primarios. Site Recovery proporciona planes de recuperación que pueden incluir scripts y libros de Azure Automation para que pueda personalizar la conmutación por error y la recuperación de aplicaciones de varios niveles.
-* **Elimina el centro de datos secundario** : puede replicar al sitio secundario en local tooa o tooAzure. Usar Azure como destino de recuperación ante desastres elimina Hola costo y la complejidad de mantenimiento de un sitio secundario. Los datos replicados se almacenan en Azure Storage.
-* **Se integra con tecnologías de BCDR existentes** : Site Recovery se asocia con otras características de BCDR de la aplicación. Por ejemplo, puede utilizar Site Recovery tooprotect Hola SQL Server back-end de cargas de trabajo corporativos. Esto incluye compatibilidad nativa para conmutación por error de SQL Server AlwaysOn toomanage Hola de grupos de disponibilidad.
+* **Admite recuperación y conmutación por error** : Site Recovery proporciona conmutaciones por error de prueba que admiten maniobras de recuperación ante desastres sin que los entornos de producción se vean afectados. También puede ejecutar conmutaciones por error planeadas sin pérdidas de datos para interrupciones previstas o conmutaciones por error con una pérdida de datos mínima (según la frecuencia de replicación) ante desastres inesperados. Después de la conmutación por error puede ejecutar una conmutación por recuperación a los sitios principales. Site Recovery proporciona planes de recuperación que pueden incluir scripts y libros de Azure Automation para que pueda personalizar la conmutación por error y la recuperación de aplicaciones de varios niveles.
+* **Elimina centros de datos secundarios** : puede replicar en un sitio local secundario o en Azure. Usar Azure como destino de la recuperación ante desastres elimina el costo y la complejidad de mantener un sitio secundario. Los datos replicados se almacenan en Azure Storage.
+* **Se integra con tecnologías de BCDR existentes** : Site Recovery se asocia con otras características de BCDR de la aplicación. Por ejemplo, puede usar Site Recovery para proteger el back-end de SQL Server de las cargas de trabajo corporativas. Esto incluye la compatibilidad nativa con SQL Server AlwaysOn para administrar la conmutación por error de los grupos de disponibilidad.
 
 Más información:
 
@@ -121,7 +121,7 @@ Más información:
 * [¿Qué cargas de trabajo se pueden proteger con Azure Site Recovery?](../site-recovery/site-recovery-workload.md)
 
 ## <a name="virtual-networking"></a>Redes virtuales
-Las máquinas virtuales necesita conectividad de red. toosupport ese requisito, Azure requiere toobe de máquinas virtuales conectada tooan red Virtual de Azure. Red Virtual de Azure es una construcción lógica que se basa en el tejido de red físico de Azure Hola. Cada red virtual lógica de Azure está aislada de todas las demás redes virtuales de Azure. Este aislamiento ayuda a garantizar que el tráfico de red en sus implementaciones no es accesible tooother clientes de Microsoft Azure.
+Las máquinas virtuales necesita conectividad de red. Para satisfacer este requisito, es necesario que las máquinas virtuales de Azure estén conectadas a una red virtual de Azure. Una red virtual de Azure es una construcción lógica creada encima del tejido de red físico de Azure. Cada red virtual lógica de Azure está aislada de todas las demás redes virtuales de Azure. Este aislamiento contribuye a garantizar que otros clientes de Microsoft Azure no puedan acceder al tráfico de red de sus implementaciones.
 
 Más información:
 
@@ -130,21 +130,21 @@ Más información:
 * [Networking features and partnerships for Enterprise scenarios (Características de red y asociaciones para escenarios empresariales)](https://azure.microsoft.com/blog/networking-enterprise/)
 
 ## <a name="security-policy-management-and-reporting"></a>Informes y administración de directivas de seguridad
-Centro de seguridad de Azure le ayuda a evitar, detectar y responder toothreats y proporciona que mayor visibilidad en y control sobre, seguridad de Hola de los recursos de Azure. Proporciona administración de directivas y supervisión de la seguridad integrada en las suscripciones de Azure, ayuda a detectar las amenazas que podrían pasar desapercibidas y funciona con un amplio ecosistema de soluciones de seguridad.
+Azure Security Center ayuda a evitar, detectar y responder a amenazas, al tiempo que proporciona más visibilidad y control de la seguridad de los recursos de Azure. Proporciona administración de directivas y supervisión de la seguridad integrada en las suscripciones de Azure, ayuda a detectar las amenazas que podrían pasar desapercibidas y funciona con un amplio ecosistema de soluciones de seguridad.
 
 Azure Security Center le ayuda a optimizar y controlar la seguridad de máquinas virtuales al:
 
 * Proporcionar [recomendaciones de seguridad](../security-center/security-center-recommendations.md) para máquina virtual, como aplicar actualizaciones del sistema, configurar puntos de conexión de listas de control de acceso, habilitar antimalware, habilitar grupos de seguridad de red y aplicar cifrado de discos.
-* Supervisión del estado de Hola de sus máquinas virtuales
+* Supervisar el estado de las máquinas virtuales.
 
 Más información:
 
-* [Introducción tooAzure centro de seguridad](../security-center/security-center-intro.md)
+* [Introducción al Centro de seguridad de Azure](../security-center/security-center-intro.md)
 * [Preguntas más frecuentes sobre el Centro de seguridad de Azure](../security-center/security-center-faq.md)
 * [Guía de planeamiento y operaciones de Azure Security Center](../security-center/security-center-planning-and-operations-guide.md)
 
 ## <a name="compliance"></a>Cumplimiento normativo
-Azure Virtual Machines tiene las certificaciones de FISMA, FedRAMP, HIPAA, PCI DSS nivel 1 y otros programas de cumplimiento fundamentales. Esta certificación resulta más fácil para sus propios requisitos de cumplimiento de las aplicaciones de Azure toomeet y para su negocio tooaddress una amplia gama de requisitos de regulación nacionales e internacionales.
+Azure Virtual Machines tiene las certificaciones de FISMA, FedRAMP, HIPAA, PCI DSS nivel 1 y otros programas de cumplimiento fundamentales. Esta certificación facilita en gran medida que sus propias aplicaciones de Azure cumplan los requisitos de cumplimiento y que su empresa satisfaga una amplia variedad de requisitos normativos nacionales e internacionales.
 
 Más información:
 

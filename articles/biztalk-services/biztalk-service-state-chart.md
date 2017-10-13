@@ -1,6 +1,6 @@
 ---
-title: aaaTasks permitido en diferentes Estados o Estados en servicios de BizTalk | Documentos de Microsoft
-description: "Hola acciones/operaciones permitidas en un estado MABS diferente: detener, iniciar, reiniciar, suspender, reanudar, eliminar, escalar, actualizar configuración y copia de seguridad"
+title: Tareas permitidas en diferentes condiciones o estados de BizTalk Services | Microsoft Docs
+description: "Las acciones o las operaciones admitidas en distintos estados de MABS: detener, iniciar, reiniciar, suspender, reanudar, eliminar, escalar, actualizar configuración y realizar copias de seguridad."
 services: biztalk-services
 documentationcenter: 
 author: MandiOhlinger
@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2016
 ms.author: mandia
-ms.openlocfilehash: 643307ba6fa9b05c82b867912feab249c42b65dd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 918154852cf4ee1b80792eaddb588f5b0237da7c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="what-you-can-and-cant-do-using-hello-biztalk-service-state"></a>¿Qué puede y no se puede hacer con hello estado BizTalk Service
+# <a name="what-you-can-and-cant-do-using-the-biztalk-service-state"></a>Qué puede y no puede hacer con el estado del servicio de BizTalk
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
-Según el estado actual de Hola de hello servicio de BizTalk, existen operaciones que puede o no se puede realizar en hello servicio de BizTalk.
+En función del estado real del servicio de BizTalk, habrá operaciones que pueda realizar o no en el servicio de BizTalk.
 
-Por ejemplo, aprovisiona un nuevo servicio de BizTalk en hello portal de Azure clásico. Cuando se complete correctamente, Hola servicio de BizTalk está en `active` estado. En estado activo de hello, puede detener, suspender y eliminar el servicio de BizTalk de Hola. Si se detiene el servicio de BizTalk de hello y se produce un error de detención, después, Hola servicio de BizTalk continuará tooa `StopFailed` estado. Hola `StopFailed` estado, puede reiniciar el servicio de BizTalk Hola. Si trata de una operación que no está permitida, como la reanudación, se produce Hola siguiente error:
+Por ejemplo, supongamos que aprovisiona un servicio de BizTalk nuevo en el Portal de Azure clásico. Cuando finalice correctamente, el servicio de BizTalk se encuentra en estado `active`. En el estado activo, puede detener, suspender y eliminar el servicio de BizTalk. Si detiene el servicio de BizTalk, y se produce un error en la detención, entonces el servicio de BizTalk se convierte en un estado `StopFailed`. Puede reiniciar el servicio de BizTalk si se encuentra en el estado `StopFailed`. Si intenta realizar una operación no permitida, como la reanudación, se produce el error siguiente:
 
 `Operation not allowed`
 
-## <a name="view-hello-possible-states"></a>Hola posibles estados de vista
+## <a name="view-the-possible-states"></a>Ver los estados posibles
 
-las tablas siguientes de Hola la lista de operaciones de Hola o las acciones que pueden realizarse una vez Hola BizTalk Service en un estado específico. Un ✔ significa que se permite la operación de hello mientras está en ese estado. Una entrada en blanco significa que no se puede realizar la operación de hello mientras está en ese estado.
+Las tablas siguientes incluyen las operaciones o acciones que se pueden realizar cuando el servicio de BizTalk se encuentra en un estado concreto. Una ✔ significa que la operación está permitida en ese estado. y la entrada vacía indica que la operación no se puede realizar en ese estado.
 
 | Estado de servicio | Iniciar | Detención | Reinicio | Suspensión | Reanudación | Eliminar | Escala | Actualizar <br/> Configuración | Copia de seguridad |
 | --- | --- | --- | --- | --- | --- | --- |--- | --- | --- |
@@ -52,11 +52,11 @@ las tablas siguientes de Hola la lista de operaciones de Hola o las acciones que
 
 
 ## <a name="see-also"></a>Otras referencias
-* [Crear un BizTalk Service mediante Hola portal de Azure clásico](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
-* [¿Qué puede hacer en pestañas del panel, monitor y escala de hello en servicios de BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
-* [Lo que se obtiene con las ediciones Developer, Basic, Standard y Premium hello en servicios de BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-* [¿Cómo tooback una copia de seguridad y restaurar un BizTalk Service](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
+* [Crear un servicio de BizTalk mediante el Portal de Azure clásico](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
+* [Revise las pestañas Panel, Monitor, Escala, Configurar y Conexiones híbridas](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
+* [BizTalk Services: gráfico de ediciones](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
+* [BizTalk Services: copias de seguridad y restauración](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
 * [BizTalk Services: limitaciones](http://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
-* [Recuperar Hola Bus de servicio y Control de acceso emisor y el nombre de valores clave del emisor para su BizTalk Service](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
-* [¿Cómo puedo comenzar a utilizar Hola SDK de servicios de BizTalk de Azure](http://go.microsoft.com/fwlink/p/?LinkID=302335)
+* [BizTalk Services: nombre del emisor y clave del emisor](http://go.microsoft.com/fwlink/p/?LinkID=303941)<br/>
+* [¿Cómo puedo comenzar a utilizar el SDK de Servicios de BizTalk de Azure?](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 

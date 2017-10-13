@@ -1,6 +1,6 @@
 ---
-title: "límites de solicitudes del Administrador de recursos aaaAzure | Documentos de Microsoft"
-description: "Describe cómo las solicitudes toouse limitación con el Administrador de recursos de Azure cuando se han alcanzado los límites de suscripción."
+title: "Límites de solicitudes de Azure Resource Manager| Microsoft Docs"
+description: "En este artículo se describe cómo usar la limitación con las solicitudes de Azure Resource Manager cuando se han alcanzado los límites de suscripción."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/11/2017
 ms.author: tomfitz
-ms.openlocfilehash: ea274f3145af36aac753730e1f280d8a8b59c3bf
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6d7eeaf460674c3ab98425a5412ffa465b9ffd1d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="throttling-resource-manager-requests"></a>Limitación de solicitudes de Resource Manager
-Para cada suscripción y el inquilino, límites de administrador de recursos leen las solicitudes too15, 000 por hora y escribir solicitudes too1, 200 por hora. Estos límites aplican tooeach instancia de Azure Resource Manager; Hay varias instancias de cada región de Azure y Azure Resource Manager está implementado tooall Azure regiones.  Por lo tanto, en la práctica, los límites son eficazmente mucho mayores que los mencionados anteriormente, ya que las solicitudes del usuario se ofrecen normalmente mediante muchas instancias diferentes.
+Para cada suscripción e inquilino, los límites de Resource Manager leen 15 000 solicitudes y escriben 1200 cada hora. Estos límites se aplican a cada instancia de Azure Resource Manage. Hay varias instancias en cada región de Azure y Azure Resource Manager se implementa en todas las regiones de Azure.  Por lo tanto, en la práctica, los límites son eficazmente mucho mayores que los mencionados anteriormente, ya que las solicitudes del usuario se ofrecen normalmente mediante muchas instancias diferentes.
 
-Si la aplicación o el script alcanza estos límites, debe toothrottle las solicitudes. Este tema muestra cómo hello toodetermine restante solicita tiene antes de llegar al límite de Hola y cómo toorespond cuando se ha alcanzado el límite de Hola.
+Si la aplicación o el script alcanza estos límites, debe limitar las solicitudes. En este tema se muestra cómo determinar las solicitudes restantes que quedan antes de alcanzar el límite y cómo responder cuando se ha alcanzado dicho límite.
 
-Cuando alcance el límite de hello, recibirá un código de estado HTTP de hello **429 demasiadas solicitudes**.
+Cuando se alcanza este límite, recibirá el código de estado HTTP **429 Demasiadas solicitudes**.
 
-número de solicitudes de Hola es tooeither con ámbito de su suscripción o el inquilino. Si tiene varias, aplicaciones simultáneas realizar solicitudes en su suscripción, las solicitudes de Hola de esas aplicaciones se suman toodetermine número de Hola de las solicitudes restantes.
+El número de solicitudes se limita a su suscripción o inquilino. Si tiene varias aplicaciones simultáneas realizando solicitudes en su suscripción, estas se agregan conjuntamente para determinar el número de solicitudes restantes.
 
-Las solicitudes de suscripción ámbito son los Hola implican pasar el identificador de suscripción, como la recuperación de grupos de recursos de hello en su suscripción. Las solicitudes del ámbito del inquilino no incluyen el identificador de suscripción, por ejemplo, al recuperar ubicaciones válidas de Azure.
+Las solicitudes del ámbito de la suscripción son aquellas en las que se pasan el identificador de suscripción, por ejemplo, al recuperar el recurso de la suscripción. Las solicitudes del ámbito del inquilino no incluyen el identificador de suscripción, por ejemplo, al recuperar ubicaciones válidas de Azure.
 
 ## <a name="remaining-requests"></a>Solicitudes restantes
-Puede determinar el número de Hola de las solicitudes restantes examinando los encabezados de respuesta. Cada solicitud incluye valores de número de Hola de restante solicitudes de lectura y escritura. Hello tabla siguiente describen los encabezados de respuesta de hello que puede examinar para esos valores:
+Puede determinar el número de solicitudes restantes examinando los encabezados de respuesta. Cada solicitud incluye valores para el número de las demás solicitudes de lectura y escritura. En la tabla siguiente se describen los encabezados de respuesta que puede examinar para esos valores:
 
 | Encabezado de respuesta | Descripción |
 | --- | --- |
@@ -40,34 +40,34 @@ Puede determinar el número de Hola de las solicitudes restantes examinando los 
 | x-ms-ratelimit-Remaining-Subscription-Writes |Escrituras restantes del ámbito de la suscripción |
 | x-ms-ratelimit-Remaining-tenant-Reads |Lecturas restantes del ámbito del inquilino |
 | x-ms-ratelimit-Remaining-tenant-Writes |Escrituras restantes del ámbito del inquilino |
-| x-ms-ratelimit-Remaining-Subscription-Resource-Requests |Solicitudes de tipos de recursos restantes del ámbito de la suscripción<br /><br />Este valor de encabezado solo se devuelve si un servicio ha invalidado el límite predeterminado de Hola. El Administrador de recursos se agrega este valor en lugar de hello suscripción lecturas o escrituras. |
-| x-ms-ratelimit-Remaining-Subscription-Resource-Entities-Read |Solicitudes de colección de tipos de recursos restantes del ámbito de la suscripción<br /><br />Este valor de encabezado solo se devuelve si un servicio ha invalidado el límite predeterminado de Hola. Este valor proporciona número Hola de solicitudes de colección restantes (recursos de lista). |
-| x-ms-ratelimit-Remaining-tenant-Resource-Requests |Solicitudes de tipos de recurso restantes del ámbito del inquilino<br /><br />Solo se agrega este encabezado para las solicitudes en el nivel del inquilino, y solo si un servicio ha invalidado el límite predeterminado de Hola. El Administrador de recursos se agrega este valor en lugar de hello inquilino lecturas o escrituras. |
-| x-ms-ratelimit-Remaining-tenant-Resource-Entities-Read |Solicitudes de colección de tipos de recursos restantes del ámbito del inquilino<br /><br />Solo se agrega este encabezado para las solicitudes en el nivel del inquilino, y solo si un servicio ha invalidado el límite predeterminado de Hola. |
+| x-ms-ratelimit-Remaining-Subscription-Resource-Requests |Solicitudes de tipos de recursos restantes del ámbito de la suscripción<br /><br />Este valor de encabezado solo se devuelve si un servicio ha invalidado el límite predeterminado. Resource Manager agrega este valor en lugar de las lecturas o escrituras de la suscripción. |
+| x-ms-ratelimit-Remaining-Subscription-Resource-Entities-Read |Solicitudes de colección de tipos de recursos restantes del ámbito de la suscripción<br /><br />Este valor de encabezado solo se devuelve si un servicio ha invalidado el límite predeterminado. Este valor proporciona el número de solicitudes de colección restantes (recursos de lista). |
+| x-ms-ratelimit-Remaining-tenant-Resource-Requests |Solicitudes de tipos de recurso restantes del ámbito del inquilino<br /><br />Este encabezado solo se agrega para las solicitudes en el nivel del inquilino, y solo si un servicio ha invalidado el límite predeterminado. Resource Manager agrega este valor en lugar de las lecturas o escrituras del inquilino. |
+| x-ms-ratelimit-Remaining-tenant-Resource-Entities-Read |Solicitudes de colección de tipos de recursos restantes del ámbito del inquilino<br /><br />Este encabezado solo se agrega para las solicitudes en el nivel del inquilino, y solo si un servicio ha invalidado el límite predeterminado. |
 
-## <a name="retrieving-hello-header-values"></a>Recuperar valores de encabezado de Hola
+## <a name="retrieving-the-header-values"></a>Recuperación de los valores de encabezado
 El proceso de recuperación de estos valores de encabezado del código o el script es igual que el de cualquier valor de encabezado. 
 
-Por ejemplo, en **C#**, recuperar el valor del encabezado Hola desde una **HttpWebResponse** objeto denominado **respuesta** con hello siguiente código:
+Por ejemplo, en **C#**, recupere el valor del encabezado de un objeto **HttpWebResponse** denominado "**response**"con el código siguiente:
 
 ```cs
 response.Headers.GetValues("x-ms-ratelimit-remaining-subscription-reads").GetValue(0)
 ```
 
-En **PowerShell**, recuperar el valor del encabezado de Hola de una operación de Invoke-WebRequest.
+En **PowerShell**, recupere el valor del encabezado de una operación Invoke-WebRequest.
 
 ```powershell
 $r = Invoke-WebRequest -Uri https://management.azure.com/subscriptions/{guid}/resourcegroups?api-version=2016-09-01 -Method GET -Headers $authHeaders
 $r.Headers["x-ms-ratelimit-remaining-subscription-reads"]
 ```
 
-O bien, si desea toosee Hola restantes solicitudes para la depuración, puede proporcionar hello **-depurar** parámetro en su **PowerShell** cmdlet.
+O bien, si quiere ver las solicitudes restantes de depuración, puede proporcionar el parámetro **-Debug** en el cmdlet **PowerShell**.
 
 ```powershell
 Get-AzureRmResourceGroup -Debug
 ```
 
-Que devuelve varios valores, incluidos Hola siguiente valor de respuesta:
+Que devuelve muchos valores, incluido el siguiente valor de respuesta:
 
 ```powershell
 ...
@@ -82,13 +82,13 @@ x-ms-ratelimit-remaining-subscription-reads: 14999
 ...
 ```
 
-En **Azure CLI**, recuperar el valor del encabezado de hello mediante Hola opción más detallado.
+En la **CLI de Azure**, recupere el valor del encabezado mediante la opción más detallada.
 
 ```azurecli
 azure group list -vv --json
 ```
 
-Que devuelve muchos valores, incluidos Hola después de objeto:
+Que devuelve muchos valores, incluido el siguiente objeto:
 
 ```azurecli
 ...
@@ -105,9 +105,9 @@ silly: returnObject
 ```
 
 ## <a name="waiting-before-sending-next-request"></a>Espera antes de enviar la solicitud siguiente
-Cuando alcance el límite de solicitudes de Hola, Administrador de recursos devuelve hello **429** código de estado HTTP y un **Retry-After** valor de encabezado de Hola. Hola **Retry-After** valor especifica el número de Hola de segundos que debe esperar la aplicación (o suspensión) antes de enviar la solicitud siguiente Hola. Si se envía una solicitud antes de que haya transcurrido el valor de reintento de hello, no se procesa la solicitud y se devuelve un nuevo valor de reintento.
+Cuando alcance el límite de solicitudes, Azure Resource Manager devuelve el código de estado HTTP **429** y un valor **Retry-After** del encabezado. El valor **Retry-After** valor especifica el número de segundos que debe esperar (o estar en estado de suspensión) la aplicación antes de enviar la solicitud siguiente. Si envía una solicitud antes de que haya transcurrido el valor de reintento, no se procesa la solicitud y se devuelve un nuevo valor de reintento.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
 * Para más información acerca de límites y cuotas, consulte [Límites, cuotas y restricciones de suscripción y servicios de Microsoft Azure](../azure-subscription-service-limits.md).
-* toolearn sobre el control de solicitudes asincrónicas de REST, consulte [realizar un seguimiento de las operaciones asincrónicas de Azure](resource-manager-async-operations.md).
+* Para obtener información sobre el control de solicitudes asincrónicas de REST, vea [Seguimiento de las operaciones asincrónicas de Azure](resource-manager-async-operations.md).

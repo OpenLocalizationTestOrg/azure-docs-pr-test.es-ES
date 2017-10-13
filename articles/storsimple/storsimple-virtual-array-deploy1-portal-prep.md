@@ -1,6 +1,6 @@
 ---
-title: aaaPortal prep para StorSimple Virtual Array | Documentos de Microsoft
-description: Toodeploy tutorial primera matriz virtual de StorSimple implica preparar Hola portal de Azure
+title: "Preparación del portal para StorSimple Virtual Array | Microsoft Docs"
+description: "El primer tutorial para implementar la matriz virtual de StorSimple trata sobre la preparación de Azure Portal"
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,50 +15,50 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5332b235e7296a9274f2e7dafcdf72f4b9cdadf6
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3d0801053721f98ce7a2b0fcbe3c65da8dbdd8d3
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="deploy-storsimple-virtual-array---prepare-hello-azure-portal"></a>Implementar StorSimple Virtual Array: preparar Hola portal de Azure
+# <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Implementación de la matriz virtual de StorSimple: preparación de Azure Portal
 
 ![](./media/storsimple-virtual-array-deploy1-portal-prep/getstarted4.png)
 ## <a name="overview"></a>Información general
 
-Se trata de hello primer artículo de hello serie de tutoriales de implementación necesario toocompletely implementar la matriz virtual como un servidor de archivos o un servidor de iSCSI mediante el modelo de administrador de recursos de Hola. Este artículo describe toocreate de preparación necesarios de Hola y configurar el servicio de administrador de dispositivos de StorSimple anteriores tooprovisioning una matriz virtual. En este artículo también incluye vínculos a tooa configuración configuración y lista de comprobación de requisitos previos de implementación.
+Este es el primer artículo de la serie de tutoriales de implementación requeridos para implementar completamente una matriz virtual como un servidor de archivos o un servidor iSCSI mediante el modelo con Resource Manager. En este artículo se describe la preparación necesaria para crear y configurar el servicio de StorSimple Device Manager antes de aprovisionar una matriz virtual. Este artículo también incluye vínculos a una lista de comprobación de la configuración de la implementación, así como a los requisitos previos de configuración.
 
-Necesita privilegios toocomplete Hola el programa de instalación y configuración de proceso del administrador. Se recomienda que revise la lista de comprobación de configuración de implementación de hello antes de empezar. preparación de portal de Hello tarda menos de 10 minutos.
+Para completar el proceso de instalación y configuración se necesitan privilegios de administrador. Se recomienda que revise la lista de comprobación de configuración antes de comenzar. La preparación del portal dura menos de 10 minutos.
 
-información de Hello publicada en este artículo aplica toohello implementación de StorSimple arreglos de discos virtuales en hello portal de Azure y la nube de Microsoft Azure Government.
+La información publicada en este artículo se aplica a la implementación de instancias de StorSimple Virtual Array en Azure Portal, así como en la nube de administración pública de Microsoft Azure.
 
 ### <a name="get-started"></a>Primeros pasos
-flujo de trabajo de implementación de Hello consta de preparar portal hello, el aprovisionamiento de una matriz virtual en su entorno virtualizado y completar la instalación de Hola. tooget a trabajar con la implementación de StorSimple Virtual Array Hola como un servidor de archivos o un servidor de iSCSI, debe toohello toorefer tabulados recursos siguientes.
+El flujo de trabajo de implementación consta de preparar el portal, aprovisionar una matriz virtual en su entorno virtualizado y completar la instalación. Para comenzar con la implementación de StorSimple Virtual Array como servidor de archivos o servidor iSCSI, es preciso que haga referencia a los siguientes recursos tabulados.
 
 #### <a name="deployment-articles"></a>Artículos de implementación
 
-toodeploy la matriz Virtual de StorSimple, consulte toohello siguientes artículos en hello lo prescrito, secuencia.
+Para implementar StorSimple Virtual Array, consulte los artículos siguientes en la secuencia recomendada.
 
 | **#** | **En este paso** | **Se hace lo siguiente…** | **Y use estos documentos.** |
 | --- | --- | --- | --- |
-| 1. |**Configurar Hola portal de Azure** |Crear y configurar el servicio de administrador de dispositivos de StorSimple anteriores tooprovisioning una matriz Virtual de StorSimple. |[Prepare portal Hola](storsimple-virtual-array-deploy1-portal-prep.md) |
-| 2. |**Aprovisionar Hola Virtual Array** |Para Hyper-V, aprovisionar y conectar tooa StorSimple Virtual Array en un sistema de host que ejecuta Hyper-V en Windows Server 2012 R2, Windows Server 2012 o Windows Server 2008 R2. <br></br> <br></br> Para VMware, aprovisionar y conectar tooa StorSimple Virtual Array en un sistema host ejecutando VMware ESXi 5.5 y versiones posteriores.<br></br> |[Deploy StorSimple Virtual Array - Provision a Virtual Array in Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) (Implementación de StorSimple Virtual Array: aprovisionamiento de una matriz virtual en Hyper-V) <br></br> <br></br> [Deploy StorSimple Virtual Array - Provision a Virtual Array in VMware](storsimple-virtual-array-deploy2-provision-vmware.md) (Implementación de StorSimple Virtual Array: aprovisionamiento de una matriz virtual en VMware) |
-| 3. |**Configurar Hola Virtual Array** |Para el servidor de archivos, realizar la instalación inicial, registrar el servidor de archivos de StorSimple y completar el programa de instalación de dispositivo de Hola. A continuación, puede aprovisionar los recursos compartidos de SMB. <br></br> <br></br> Para el servidor de iSCSI, realizar la instalación inicial, registrar el servidor de iSCSI de StorSimple y completar el programa de instalación de dispositivo de Hola. A continuación, puede aprovisionar los volúmenes iSCSI. |[Deploy StorSimple Virtual Array - Set up as file server](storsimple-virtual-array-deploy3-fs-setup.md) (Implementación de StorSimple Virtual Array: configurar como servidor de archivos)<br></br> <br></br>[Implementar una matriz virtual de StorSimple: Configurar el dispositivo virtual como servidor iSCSI (versión preliminar)](storsimple-virtual-array-deploy3-iscsi-setup.md) |
+| 1. |**Configurar Azure Portal** |Crear y configurar el servicio StorSimple Device Manager antes de aprovisionar StorSimple Virtual Array. |[Deploy StorSimple Virtual Array - Prepare the portal](storsimple-virtual-array-deploy1-portal-prep.md) (Implementación de StorSimple Virtual Array: preparar el portal) |
+| 2. |**Aprovisionar la matriz virtual** |En Hyper-V, aprovisionar StorSimple Virtual Array en un sistema host que ejecuta Hyper-V en Windows Server 2012 R2, Windows Server 2012 o Windows Server 2008 R2 y conectarse a él. <br></br> <br></br> En VMware, aprovisionar StorSimple Virtual Array en un sistema host que ejecuta VMware ESXi 5.5, y las versiones posteriores, y conectarse a él.<br></br> |[Deploy StorSimple Virtual Array - Provision a Virtual Array in Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) (Implementación de StorSimple Virtual Array: aprovisionamiento de una matriz virtual en Hyper-V) <br></br> <br></br> [Deploy StorSimple Virtual Array - Provision a Virtual Array in VMware](storsimple-virtual-array-deploy2-provision-vmware.md) (Implementación de StorSimple Virtual Array: aprovisionamiento de una matriz virtual en VMware) |
+| 3. |**Configurar la matriz virtual** |Para el servidor de archivos, realice la instalación inicial, registre el servidor de archivos de StorSimple y complete la instalación del dispositivo. A continuación, puede aprovisionar los recursos compartidos de SMB. <br></br> <br></br> Para el servidor iSCSI, realice la configuración inicial, registre el servidor iSCSI de StorSimple y complete la configuración del dispositivo. A continuación, puede aprovisionar los volúmenes iSCSI. |[Deploy StorSimple Virtual Array - Set up as file server](storsimple-virtual-array-deploy3-fs-setup.md) (Implementación de StorSimple Virtual Array: configurar como servidor de archivos)<br></br> <br></br>[Deploy StorSimple Virtual Array – Set up your virtual device as an iSCSI server](storsimple-virtual-array-deploy3-iscsi-setup.md) (Implementación de StorSimple Virtual Array: configurar un dispositivo virtual como servidor iSCSI) |
 
-Ahora puede empezar a tooset seguridad Hola portal de Azure.
+Ya puede empezar a configurar Azure Portal.
 
 ## <a name="configuration-checklist"></a>Lista de comprobación de la configuración
 
-lista de comprobación de configuración de Hello describe información de hello necesita toocollect antes de configurar el software de hello en la matriz Virtual de StorSimple. Preparar esta información antes de tiempo le ayuda a agilizar Hola proceso de implementación de dispositivo de StorSimple de hello en su entorno. Dependiendo de si la matriz Virtual de StorSimple se implementa como un servidor de archivos o un servidor de iSCSI, se deberán cumplir alguno de hello siguiendo las listas de comprobación.
+La lista de comprobación de la configuración describe la información que se necesita recopilar antes de configurar el software en StorSimple Virtual Array. La preparación de esta información con antelación simplifica el proceso de implementación del dispositivo StorSimple en el entorno. En función de si StorSimple se StorSimple Virtual Array como servidor de archivos o como servidor iSCSI, necesitará una de las siguientes listas de comprobación.
 
-* Descargar hello [StorSimple Virtual Array archivo Server Configuration Checklist](http://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf).
-* Descargar hello [StorSimple Virtual Array iSCSI Server Configuration Checklist](http://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf).
+* Descargue la [lista de comprobación de configuración del servidor de archivos de la matriz virtual de StorSimple](http://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayFileServerConfigurationChecklist.pdf).
+* Descargue la [lista de comprobación de configuración del servidor iSCSI de la matriz virtual de StorSimple](http://download.microsoft.com/download/E/E/6/EE690BB0-B442-4B84-8165-4731EE727ACF/MicrosoftAzureStorSimpleVirtualArrayiSCSIServerConfigurationChecklist.pdf).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Aquí encontrará los requisitos previos de configuración de Hola de su servicio de administrador de dispositivos de StorSimple, StorSimple Virtual Array y red de centro de datos de Hola.
+Aquí encontrará los requisitos previos de configuración del servicio StorSimple Device Manager, StorSimple Virtual Array y la red del centro de datos.
 
-### <a name="for-hello-storsimple-device-manager-service"></a>Para hello servicio Administrador de dispositivos de StorSimple
+### <a name="for-the-storsimple-device-manager-service"></a>Para el servicio StorSimple Device Manager
 
 Antes de comenzar, asegúrese de que:
 
@@ -66,107 +66,107 @@ Antes de comenzar, asegúrese de que:
 * Tiene una cuenta de almacenamiento de Microsoft Azure con credenciales de acceso.
 * Su suscripción a Microsoft Azure debe estar habilitada para el servicio StorSimple Device Manager.
 
-### <a name="for-hello-storsimple-virtual-array"></a>Para hello StorSimple Virtual Array
+### <a name="for-the-storsimple-virtual-array"></a>Para StorSimple Virtual Array
 
 Antes de implementar una matriz virtual, asegúrese de que:
 
-* Tiene acceso tooa host sistema que ejecuta Hyper-V en Windows Server 2008 R2 o posterior o VMware (ESXi 5.5 o posterior) que puede ser utilizado tooa Aprovisione un dispositivo.
-* sistema de host de Hello es capaz de toodedicate Hola siguientes tooprovision de recursos de la matriz virtual:
+* Tenga acceso a un sistema host que ejecuta Hyper-V en Windows Server 2008 R2 o posterior o VMware (ESXi 5.5 o posterior) que puede utilizarse para aprovisionar un dispositivo.
+* El sistema host es capaz de dedicar los recursos siguientes para aprovisionar su dispositivo virtual:
   
   * Un mínimo de 4 núcleos.
-  * Al menos 8 GB de RAM. Si tiene previsto matriz virtual de hello tooconfigure como servidor de archivos, 8 GB admite 2 millones de archivos. Necesita 16 GB de RAM toosupport 2-4 millones de archivos.
+  * Al menos 8 GB de RAM. Si desea configurar la matriz virtual como servidor de archivos, 8 GB admite 2 millones de archivos. Necesita 16 GB de RAM para admitir 2-4 millones de archivos.
   * Una interfaz de red.
   * Un disco virtual de 500 GB para datos del sistema.
 
-### <a name="for-hello-datacenter-network"></a>Para la red de centro de datos de Hola
+### <a name="for-the-datacenter-network"></a>Para la red del centro de datos
 
 Antes de comenzar, asegúrese de que:
 
-* red de Hello en el centro de datos está configurada según los requisitos de red de hello para el dispositivo StorSimple. Para obtener más información, vea hello [StorSimple Virtual Array System Requirements](storsimple-ova-system-requirements.md).
+* La red en su centro de datos esté configurada según los requisitos de red para el dispositivo StorSimple. Para más información, consulte [Requisitos del sistema de la matriz virtual de StorSimple](storsimple-ova-system-requirements.md).
 * StorSimple Virtual Array tiene un ancho de banda de Internet de 5 Mbps (o más) disponible en todo momento. Este ancho de banda no debe compartirse con otras aplicaciones.
 
 ## <a name="step-by-step-preparation"></a>Preparación de paso a paso
 
-Usar el portal de hello siguiendo las instrucciones paso a paso tooprepare para hello servicio Administrador de dispositivos de StorSimple.
+Utilice las siguientes instrucciones detalladas para preparar su portal para el servicio StorSimple Device Manager.
 
 ## <a name="step-1-create-a-new-service"></a>Paso 1: Crear un nuevo servicio
 
-Una sola instancia del servicio de administrador de dispositivos de StorSimple de hello puede administrar varios arreglos de discos virtuales de StorSimple. Realizar Hola siguiendo los pasos toocreate una instancia de servicio de administrador de dispositivos de StorSimple Hola. Si tienes un toomanage de servicio de administrador de dispositivos de StorSimple existente sus arreglos de discos virtuales, omita este paso y vaya demasiado[paso 2: clave de registro del servicio de Get hello](#step-2-get-the-service-registration-key).
+Una instancia individual del servicio StorSimple Device Manager puede administrar varias instancias de StorSimple Virtual Array. Siga estos pasos para crear una instancia del servicio StorSimple Device Manager. Si tiene un servicio StorSimple Device Manager existente para administrar sus matrices virtuales, omita este paso y vaya al [Paso 2: Obtener la clave de registro del servicio](#step-2-get-the-service-registration-key).
 
 [!INCLUDE [storsimple-virtual-array-create-new-service](../../includes/storsimple-virtual-array-create-new-service.md)]
 
 > [!IMPORTANT]
-> Si no ha habilitado la creación automática de Hola de una cuenta de almacenamiento con el servicio, deberá toocreate al menos una cuenta de almacenamiento después de haber creado correctamente un servicio.
+> Si no habilitó la creación automática de una cuenta de almacenamiento con el servicio, debe crear al menos una cuenta de almacenamiento después de crear correctamente un servicio.
 > 
-> * Si no ha creado una cuenta de almacenamiento automáticamente, vaya demasiado[configurar una nueva cuenta de almacenamiento para el servicio de hello](#optional-step-configure-a-new-storage-account-for-the-service) para obtener instrucciones detalladas.
-> * Si ha habilitado la creación automática de Hola de una cuenta de almacenamiento, vaya demasiado[paso 2: clave de registro del servicio de Get hello](#step-2-get-the-service-registration-key).
+> * Si no creó automáticamente una cuenta de almacenamiento, vaya a [Configurar una nueva cuenta de almacenamiento para el servicio](#optional-step-configure-a-new-storage-account-for-the-service) para obtener instrucciones detalladas.
+> * Si habilitó la creación automática de una cuenta de almacenamiento, vaya al [Paso 2: Obtener la clave de registro del servicio](#step-2-get-the-service-registration-key).
 > 
 > 
 
-## <a name="step-2-get-hello-service-registration-key"></a>Paso 2: Obtener la clave de registro del servicio de Hola
+## <a name="step-2-get-the-service-registration-key"></a>Paso 2: Obtener la clave de registro del servicio
 
-Después de hello servicio Administrador de dispositivos de StorSimple está en funcionamiento, deberá clave de registro del servicio de tooget Hola. Esta clave es tooregister usado y conecte el dispositivo StorSimple con el servicio de Hola.
+Una vez que el servicio StorSimple Device Manager esté en funcionamiento, necesitará obtener la clave de registro del servicio. Esta clave se usa para registrar y conectar el dispositivo StorSimple con el servicio.
 
-Realizar Hola siguiendo los pasos de hello [portal de Azure](https://portal.azure.com/).
+Siga estos pasos en [Azure Portal](https://portal.azure.com/).
 
 [!INCLUDE [storsimple-virtual-array-get-service-registration-key](../../includes/storsimple-virtual-array-get-service-registration-key.md)]
 
 > [!NOTE]
-> clave de registro del servicio Hello es tooregister usado todos los dispositivos de StorSimple el Administrador de dispositivos que necesitan tooregister con el servicio de administrador de dispositivos de StorSimple de Hola.
+> La clave de registro del servicio se usa para registrar todos los dispositivos de StorSimple Device Manager que deben registrarse en el servicio StorSimple Device Manager.
 > 
 > 
 
-## <a name="step-3-download-hello-virtual-array-image"></a>Paso 3: Descargar la imagen de la matriz virtual de Hola
+## <a name="step-3-download-the-virtual-array-image"></a>Paso 3: Descargar la imagen de la matriz virtual
 
-Una vez que la clave de registro del servicio de hello, deberá toodownload Hola matriz virtual correspondiente imagen tooprovision una matriz virtual en el sistema host. imágenes de la matriz virtual de Hello son específicas del sistema operativo y pueden descargarse desde la página de inicio rápido de Hola Hola portal de Azure.
+Una vez que tenga la clave de registro del servicio, tendrá que descargar la imagen apropiada de la matriz virtual para aprovisionar una matriz virtual en el sistema host. Las imágenes de matrices virtuales son específicas del sistema operativo y se pueden descargar de la página Inicio rápido de Azure Portal.
 
 > [!IMPORTANT]
-> software de Hola que se ejecuta en hello StorSimple Virtual Array solo puede usarse con hello servicio Administrador de dispositivos de StorSimple.
+> El software que se ejecuta en StorSimple Virtual Array solo puede usarse junto con el servicio StorSimple Device Manager.
 > 
 > 
 
-Realizar Hola siguiendo los pasos de hello [portal de Azure](https://portal.azure.com/).
+Siga estos pasos en [Azure Portal](https://portal.azure.com/).
 
-#### <a name="tooget-hello-virtual-array-image"></a>imagen de la matriz virtual de hello tooget
+#### <a name="to-get-the-virtual-array-image"></a>Para obtener la imagen de matriz virtual
 
-1. Inicio de sesión en hello [portal de Azure](https://portal.azure.com/). 
-2. Hola portal de Azure, haga clic en **examinar > administradores de dispositivos de StorSimple**.
-3. Para un servicio StorSimple Device Manager existente. Hola **el Administrador de dispositivos de StorSimple** hoja, haga clic en **inicio rápido**. 
-4. Haga clic en hello correspondiente toohello imagen del vínculo que desea toodownload de hello Microsoft Download Center. los archivos de imagen de Hello son aproximadamente 4,8 GB.
+1. Inicie sesión en el [Portal de Azure](https://portal.azure.com/). 
+2. En Azure Portal, haga clic en **Examinar > Administradores de dispositivos de StorSimple**.
+3. Para un servicio StorSimple Device Manager existente. En la hoja **Administradores de dispositivos de StorSimple**, haga clic en **Inicio rápido**. 
+4. Haga clic en el vínculo correspondiente a la imagen que quiere descargar del Centro de descarga de Microsoft. Los archivos de imagen tienen un tamaño aproximado de 4,8 GB.
    
    * VHDX para Hyper-V en Windows Server 2012 y versiones posteriores
    * VHD para Hyper-V en Windows Server 2008 R2 y versiones posteriores
    * VMDK para VMWare ESXi 5.5 y versiones posteriores
-5. Descargue y descomprima Hola archivo tooa unidad local, que realiza una nota de donde está ubicado archivo descomprimida Hola.
+5. Descargue y descomprima el archivo en una unidad local y tome nota de dónde se encuentra el archivo sin comprimir.
 
-## <a name="optional-step-configure-a-new-storage-account-for-hello-service"></a>Paso opcional: configurar una nueva cuenta de almacenamiento para el servicio de Hola
+## <a name="optional-step-configure-a-new-storage-account-for-the-service"></a>Paso opcional: Configurar una cuenta de almacenamiento nueva para el servicio
 
-Este paso es opcional y debe realizarse únicamente si no ha habilitado la creación automática de Hola de una cuenta de almacenamiento con su servicio.
+Este paso es opcional y solo se debe llevar a cabo si no habilitó la creación automática de una cuenta de almacenamiento con su servicio.
 
-Si necesita una cuenta de almacenamiento de Azure en una región distinta de toocreate, consulte [cómo toocreate una cuenta de almacenamiento](../storage/common/storage-create-storage-account.md#create-a-storage-account) para obtener instrucciones paso a paso.
+Si necesita crear una cuenta de Azure Storage en una región distinta, consulte [Crear una cuenta de almacenamiento](../storage/common/storage-create-storage-account.md#create-a-storage-account) para instrucciones detalladas.
 
-Realizar Hola siguiendo los pasos de hello [portal de Azure](https://ms.portal.azure.com/) en hello Administrador de dispositivos de StorSimple servicio página tooadd una cuenta de almacenamiento de Microsoft Azure existente.
+Siga estos pasos en [Azure Portal](https://ms.portal.azure.com/) en la página del servicio StorSimple Device Manager para agregar una cuenta de Microsoft Azure Storage existente.
 
-#### <a name="tooadd-a-storage-account-credential-that-has-hello-same-azure-subscription-as-hello-device-manager-service"></a>tooadd una credencial de cuenta de almacenamiento que tenga Hola misma suscripción de Azure como servicio de administrador de dispositivos de Hola
+#### <a name="to-add-a-storage-account-credential-that-has-the-same-azure-subscription-as-the-device-manager-service"></a>Agregar una credencial de cuenta de almacenamiento que tenga la misma suscripción de Azure que el servicio Device Manager
 
-1. Navegue tooyour servicio de administrador de dispositivos, seleccione y haga doble clic en él. Se abrirá hello **Introducción** hoja.
-2. Seleccione **credenciales de la cuenta de almacenamiento** en hello **configuración** sección.
+1. Vaya al servicio Device Manager, selecciónelo y haga doble clic en él. Se abrirá la hoja **Introducción**.
+2. Seleccione **Credenciales de cuenta de almacenamiento** dentro de la sección **Configuración**.
 3. Haga clic en **Agregar**.
-4. Hola **agregar una cuenta de almacenamiento** hoja, Hola siguientes:
+4. En la hoja **Agregar una cuenta de almacenamiento**, haga lo siguiente:
    
     1. En **Suscripción**, seleccione **Actual**.
    
-    2. Proporcione el nombre de saludo de la cuenta de almacenamiento de Azure.
+    2. Proporcione el nombre de la cuenta de almacenamiento de Azure.
    
-    3. Seleccione **habilitar** toocreate un canal seguro para la comunicación de red entre la nube de hello y el dispositivo de StorSimple. Seleccione **Deshabilitar** solo si está trabajando en una nube privada.
+    3. Seleccione **Habilitar** para crear un canal seguro para la comunicación de red entre su dispositivo de StorSimple y la nube. Seleccione **Deshabilitar** solo si está trabajando en una nube privada.
    
-    4. Haga clic en **Agregar**. Se le notifica una vez creada correctamente de la cuenta de almacenamiento de Hola.<br></br>
+    4. Haga clic en **Agregar**. Recibirá una notificación cuando la cuenta de almacenamiento se cree correctamente.<br></br>
    
      ![Incorporación de una credencial de cuenta de almacenamiento existente](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 
 ## <a name="next-step"></a>Paso siguiente
 
-Hola siguiente paso es tooprovision una máquina virtual para la matriz Virtual de StorSimple. Dependiendo del sistema operativo del host, vea Hola detallada instrucciones:
+El siguiente paso es aprovisionar una máquina virtual para StorSimple Virtual Array. Según el sistema operativo host, consulte las instrucciones detalladas en:
 
 * [Aprovisionamiento de la matriz virtual de StorSimple en Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md)
 * [Aprovisionamiento de la matriz virtual de StorSimple en VMware](storsimple-virtual-array-deploy2-provision-vmware.md)

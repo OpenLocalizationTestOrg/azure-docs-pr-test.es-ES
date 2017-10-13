@@ -1,6 +1,6 @@
 ---
-title: aaaAnalyze Application Insight registra con Spark - HDInsight de Azure | Documentos de Microsoft
-description: "Obtenga información acerca de cómo tooexport Application Insight registros de almacenamiento de tooblob y, a continuación, analizar registros de hello con Spark en HDInsight."
+title: "Análisis de registros de Application Insights con Spark - Azure HDInsight | Microsoft Docs"
+description: "Obtenga información sobre cómo exportar registros de Application Insight para almacenamiento de blobs y analizar los registros con Spark en HDInsight."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -15,85 +15,85 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/15/2017
 ms.author: larryfr
-ms.openlocfilehash: 11ed8cf68dba8d5f9d6e4a65eba0d2b5a950cd00
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d98e403683618ef6115372f99e4949af87af4490
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-spark-on-hdinsight"></a>Análisis de registros de telemetría de Application Insights con Spark en HDInsight
 
-Obtenga información acerca de cómo toouse inspirará en HDInsight tooanalyze los datos de telemetría de Application Insight.
+Aprenda a usar Spark en HDInsight para analizar datos de telemetría de Application Insights.
 
-[Application Insights de Visual Studio](../application-insights/app-insights-overview.md) es un servicio de análisis que supervisa sus aplicaciones web. Datos de telemetría generados por Application Insights pueden ser exportado tooAzure almacenamiento. Una vez que los datos de hello están en el almacenamiento de Azure, HDInsight puede ser usado tooanalyze lo.
+[Application Insights de Visual Studio](../application-insights/app-insights-overview.md) es un servicio de análisis que supervisa sus aplicaciones web. Los datos de telemetría que Application Insights genera se pueden exportar a Azure Storage. Una vez que los datos se encuentren en Azure Storage, se puede usar HDInsight para analizarlos.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-* Una aplicación que está había configurado toouse Application Insights.
+* Una aplicación configurada para usar Application Insights.
 
 * Experiencia en la creación de un clúster de HDInsight basado en Linux. Para obtener más información, consulte el artículo sobre [creación de un clúster de Apache Spark en HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
 
   > [!IMPORTANT]
-  > pasos de Hello en este documento requieren un clúster de HDInsight que usa Linux. Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+  > Los pasos descritos en este documento requieren un clúster de HDInsight que use Linux. Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * Un navegador web.
 
-Hello siguientes se utilizan los recursos en desarrollar y probar este documento:
+Se han utilizado los siguientes recursos para el desarrollo y pruebas de este documento:
 
-* Los datos de telemetría de visión de aplicación se ha generado mediante una [aplicación web de Node.js configurado toouse Application Insights](../application-insights/app-insights-nodejs.md).
+* Los datos de telemetría de Application Insights se han generado mediante una [aplicación web Node.js configurada para usar Application Insights](../application-insights/app-insights-nodejs.md).
 
-* Un Spark basados en Linux en la versión de clúster de HDInsight 3.5 era tooanalyze usado Hola datos.
+* Se usó un clúster de Spark en HDInsight versión 3.5 basado en Linux para analizar los datos.
 
 ## <a name="architecture-and-planning"></a>Arquitectura y planeación
 
-Hola siguiente diagrama ilustra la arquitectura de servicio de Hola de este ejemplo:
+El siguiente diagrama muestra la arquitectura de servicio de este ejemplo:
 
-![diagrama que muestra los datos que fluyen desde el almacenamiento de tooblob de Application Insights, a continuación, que son procesadas por Spark en HDInsight](./media/hdinsight-spark-analyze-application-insight-logs/appinsightshdinsight.png)
+![diagrama que muestra los datos que fluyen desde Application Insights al almacenamiento de blobs y que a continuación son procesados por Spark en HDInsight](./media/hdinsight-spark-analyze-application-insight-logs/appinsightshdinsight.png)
 
 ### <a name="azure-storage"></a>Almacenamiento de Azure
 
-Visión de la aplicación puede ser tooblobs de información de telemetría de exportación toocontinuously configurado. HDInsight, a continuación, puede leer los datos almacenados en blobs de Hola. Sin embargo, hay algunos requisitos que se deben seguir:
+Application Insights pueden configurarse para exportar información de telemetría a blobs continuamente. Tras esto, HDInsight puede leer los datos almacenados en los blobs. Sin embargo, hay algunos requisitos que se deben seguir:
 
-* **Ubicación**: si hello cuenta de almacenamiento y HDInsight se encuentran en distintas ubicaciones, puede aumentar la latencia. También incrementa el costo y cargos de salida sea aplicada toodata mover entre regiones.
+* **Ubicación**: si la cuenta de almacenamiento y HDInsight se encuentran en distintas ubicaciones, puede aumentar la latencia. También se incrementa el costo, ya que los cargos de salida se aplican a datos que se transfieren entre regiones.
 
     > [!WARNING]
     > No se puede usar una cuenta de almacenamiento en una ubicación diferente a la de HDInsight.
 
-* **Tipo de blob**: HDInsight solo es compatible con blobs en bloques. Visión de la aplicación tiene como valor predeterminado de blobs en bloques toousing, por lo que debería funcionar de forma predeterminada con HDInsight.
+* **Tipo de blob**: HDInsight solo es compatible con blobs en bloques. Application Insights usa blobs en bloques de forma predeterminada, por lo que debería funcionar con HDInsight sin ninguna configuración adicional.
 
-Para obtener información sobre cómo agregar existente de clúster de HDInsight de tooan de almacenamiento adicional, vea hello [agregar cuentas de almacenamiento adicionales](hdinsight-hadoop-add-storage.md) documento.
+Para más información sobre cómo agregar más almacenamiento a un clúster existente de HDInsight, vea el documento [Adición de más cuentas de almacenamiento a HDInsight](hdinsight-hadoop-add-storage.md).
 
 ### <a name="data-schema"></a>Esquema de datos
 
-Proporciona información de la aplicación [Exportar modelo de datos](../application-insights/app-insights-export-data-model.md) información de formato de datos de telemetría de hello exportado tooblobs. pasos de Hello en este documento usan toowork Spark SQL con datos de Hola. Spark SQL puede generar automáticamente un esquema para la estructura de datos JSON Hola registrado por Application Insights.
+Application Insights proporciona información del [modelo de datos de exportación](../application-insights/app-insights-export-data-model.md) para el formato de datos de telemetría exportados a blobs. Los pasos descritos en este documento usan Spark SQL para interactuar con los datos. Spark SQL puede generar automáticamente un esquema para la estructura de datos JSON registrado por Application Insights.
 
 ## <a name="export-telemetry-data"></a>Exportación de datos de telemetría
 
-Siga los pasos de hello en [configurar exportar continua](../application-insights/app-insights-export-telemetry.md) tooconfigure su tooan de información de telemetría de Application Insights tooexport almacenamiento de Azure blob.
+Siga los pasos de [Configuración de exportación continua](../application-insights/app-insights-export-telemetry.md) para configurar Application Insights de modo que la información de telemetría se exporte a un blob de Almacenamiento de Azure.
 
-## <a name="configure-hdinsight-tooaccess-hello-data"></a>Configurar datos de saludo de tooaccess de HDInsight
+## <a name="configure-hdinsight-to-access-the-data"></a>Configuración de HDInsight para tener acceso a los datos
 
-Si va a crear un clúster de HDInsight, agregar la cuenta de almacenamiento de Hola durante la creación del clúster.
+Si va a crear un clúster de HDInsight, agregue la cuenta de almacenamiento durante la creación del clúster.
 
-Hola tooadd clúster existente de tooan de cuenta de almacenamiento de Azure, use la información de Hola Hola [agregar cuentas de almacenamiento adicionales](hdinsight-hadoop-add-storage.md) documento.
+Para agregar la cuenta de Azure Storage a un clúster existente, use la información del documento [Adición de más cuentas de almacenamiento a HDInsight](hdinsight-hadoop-add-storage.md).
 
-## <a name="analyze-hello-data-pyspark"></a>Analizar datos de hello: PySpark
+## <a name="analyze-the-data-pyspark"></a>Análisis de datos: PySpark
 
-1. De hello [portal de Azure](https://portal.azure.com), seleccione su Spark en clúster de HDInsight. De hello **vínculos rápidos** sección, seleccione **paneles de clúster**y, a continuación, seleccione **Jupyter Notebook** de hoja de hello Dashboard__ de clúster.
+1. Desde el [Portal de Azure](https://portal.azure.com), seleccione el clúster de Spark en HDInsight. En la sección **Vínculos rápidos**, seleccione **Paneles de clúster** y, a continuación, seleccione **Jupyter Notebook** en la hoja de Panel de clúster__.
 
-    ![paneles de clúster de Hola](./media/hdinsight-spark-analyze-application-insight-logs/clusterdashboards.png)
+    ![Los paneles de clúster](./media/hdinsight-spark-analyze-application-insight-logs/clusterdashboards.png)
 
-2. En hello esquina superior derecha de la página de Jupyter hello, seleccione **New**y, a continuación, **PySpark**. Se abre una nueva pestaña en el explorador con un cuaderno de Jupyter Notebook basado en Python.
+2. En la esquina superior derecha de la página de Jupyter, seleccione **Nuevo** y, a continuación, **PySpark**. Se abre una nueva pestaña en el explorador con un cuaderno de Jupyter Notebook basado en Python.
 
-3. En el primer campo de hello (denominado un **celda**) en la página de hello, escriba Hola después de texto:
+3. En el primer campo (llamado **celda**) de la página, escriba el texto siguiente:
 
    ```python
    sc._jsc.hadoopConfiguration().set('mapreduce.input.fileinputformat.input.dir.recursive', 'true')
    ```
 
-    Este código configura la estructura de directorios de hello Spark toorecursively acceso de datos de entrada de Hola. La telemetría de visión de aplicación es registrado tooa directory estructura similar toohello `/{telemetry type}/YYYY-MM-DD/{##}/`.
+    Este código configura Spark para que pueda acceder de forma recursiva a la estructura de directorios de los datos de entrada. La telemetría de Application Insights se registra en una estructura de directorios similar a `/{telemetry type}/YYYY-MM-DD/{##}/`.
 
-4. Use **MAYÚS+ENTRAR** código de hello toorun. En hello parte izquierda de la celda de hello, una '\*' aparece entre Hola corchetes tooindicate que se está ejecutando código de hello en esta celda. Una vez que se complete, hello '\*' cambia número tooa y toohello similar después de texto se muestra por debajo de la celda de Hola de salida:
+4. Use **MAYÚS + INTRO** para ejecutar el código. En el lado izquierdo de la celda, aparece un "\*" entre corchetes para indicar que se está ejecutando el código en esta celda. Una vez finalizado, el "\*" cambiará a un número y se mostrará un resultado similar al siguiente texto debajo de la celda:
 
         Creating SparkContext as 'sc'
 
@@ -102,38 +102,38 @@ Hola tooadd clúster existente de tooan de cuenta de almacenamiento de Azure, us
 
         Creating HiveContext as 'sqlContext'
         SparkContext and HiveContext created. Executing user code ...
-5. Se crea una nueva celda por debajo de hello primero. Escriba Hola después de texto en la nueva celda de Hola. Reemplace `CONTAINER` y `STORAGEACCOUNT` con nombre de cuenta de almacenamiento de Azure de Hola y el nombre de contenedor de blob que contiene los datos de Application Insights.
+5. Se crea una nueva celda debajo de la primera. Escriba el texto siguiente en la nueva celda. Reemplace `CONTAINER` y `STORAGEACCOUNT` por el nombre de la cuenta de Azure Storage y el nombre del contenedor de blobs que contiene datos de Application Insights.
 
    ```python
    %%bash
    hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
    ```
 
-    Use **MAYÚS+ENTRAR** tooexecute esta celda. Vea un toohello similar de resultados siguiente texto:
+    Use **MAYÚS + INTRO** para ejecutar esta celda. Verá un resultado similar al texto siguiente:
 
         Found 1 items
         drwxrwxrwx   -          0 1970-01-01 00:00 wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
 
-    ruta de acceso de Hello wasb devuelta es la ubicación de Hola de hello datos de telemetría de Application Insights. Hola de cambio `hdfs dfs -ls` en hello celda toouse hello wasb ruta devuelta de línea y, a continuación, usar **MAYÚS+ENTRAR** celda de hello toorun nuevo. Este tiempo, resultados de hello deberían mostrar directorios de Hola que contienen los datos de telemetría.
+    La ruta de acceso de WASB devuelta es la ubicación de los datos de telemetría de Application Insights. Cambie la línea `hdfs dfs -ls` en la celda para usar la ruta wasb devuelta y luego use **MAYÚS + INTRO** para volver a ejecutar la celda. Esta vez, los resultados deberían mostrar los directorios que contienen datos de telemetría.
 
    > [!NOTE]
-   > Para los pasos restantes de Hola de hello en esta sección, Hola `wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` se usó el directorio. La estructura de sus directorios puede ser diferente.
+   > Para el resto de los pasos descritos en esta sección, se ha usado el directorio `wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests`. La estructura de sus directorios puede ser diferente.
 
-6. En la siguiente celda hello, escriba Hola siguiente código: reemplazar `WASB_PATH` con ruta de acceso de saludo del paso anterior Hola.
+6. En la siguiente celda, escriba este código (reemplazando `WASB_PATH` por la ruta de acceso especificada en el paso anterior):
 
    ```python
    jsonFiles = sc.textFile('WASB_PATH')
    jsonData = sqlContext.read.json(jsonFiles)
    ```
 
-    Este código crea una trama de datos de archivos JSON de hello exportados por el proceso de exportación continua de Hola. Use **MAYÚS+ENTRAR** toorun esta celda.
-7. En la siguiente celda hello, escriba y ejecute hello después de esquema de hello tooview que Spark creado para los archivos JSON hello:
+    Este código crea una trama de datos de los archivos JSON exportados por el proceso de exportación continua. Use **MAYÚS + INTRO** para ejecutar esta celda.
+7. En la celda siguiente, escriba y ejecute lo siguiente para ver el esquema creado por Spark para los archivos JSON:
 
    ```python
    jsonData.printSchema()
    ```
 
-    esquema de Hola para cada tipo de telemetría es diferente. el ejemplo siguiente se Hello es esquema Hola que se genera para las solicitudes web (datos almacenados en hello `Requests` subdirectorio):
+    El esquema de cada tipo de telemetría es diferente. El siguiente ejemplo es el esquema que se genera para las solicitudes web (datos almacenados en el subdirectorio `Requests`):
 
         root
         |-- context: struct (nullable = true)
@@ -195,7 +195,7 @@ Hola tooadd clúster existente de tooan de cuenta de almacenamiento de Azure, us
         |    |    |    |-- hashTag: string (nullable = true)
         |    |    |    |-- host: string (nullable = true)
         |    |    |    |-- protocol: string (nullable = true)
-8. Usar hello después tooregister Hola trama de datos como una tabla temporal y ejecutar una consulta con los datos de hello:
+8. Para registrar la trama de datos como una tabla temporal y ejecutar una consulta de los datos, utilice lo siguiente:
 
    ```python
    jsonData.registerTempTable("requests")
@@ -203,12 +203,12 @@ Hola tooadd clúster existente de tooan de cuenta de almacenamiento de Azure, us
    df.show()
    ```
 
-    Esta consulta devuelve información de la ciudad de Hola para superior 20 registros de Hola donde context.location.city no es null.
+    Esta consulta devuelve la información de la ciudad de los 20 registros principales donde context.location.city no sea nulo.
 
    > [!NOTE]
-   > estructura de contexto de Hello está presente en todos los telemetría registrado por Application Insights. elemento de la ciudad de Hello no puede llenarse en los registros. Utilice Hola esquema tooidentify otros elementos que puede consultar y que pueden contener datos para sus registros.
+   > La estructura de contexto está presente en toda la telemetría registrada por Application Insights. Es posible que el elemento city no se rellene en los registros. Utilice el esquema para identificar otros elementos que se puedan consultar y que puedan contener datos de los registros.
 
-    Esta consulta devuelve información toohello similar siguiente texto:
+    Esta consulta devuelve información similar al texto siguiente:
 
         +---------+
         |     city|
@@ -220,21 +220,21 @@ Hola tooadd clúster existente de tooan de cuenta de almacenamiento de Azure, us
         ...
         +---------+
 
-## <a name="analyze-hello-data-scala"></a>Analizar datos de hello: Scala
+## <a name="analyze-the-data-scala"></a>Análisis de datos: Scala
 
-1. De hello [portal de Azure](https://portal.azure.com), seleccione su Spark en clúster de HDInsight. De hello **vínculos rápidos** sección, seleccione **paneles de clúster**y, a continuación, seleccione **Jupyter Notebook** de hoja de hello Dashboard__ de clúster.
+1. Desde el [Portal de Azure](https://portal.azure.com), seleccione el clúster de Spark en HDInsight. En la sección **Vínculos rápidos**, seleccione **Paneles de clúster** y, a continuación, seleccione **Jupyter Notebook** en la hoja de Panel de clúster__.
 
-    ![paneles de clúster de Hola](./media/hdinsight-spark-analyze-application-insight-logs/clusterdashboards.png)
-2. En hello esquina superior derecha de la página de Jupyter hello, seleccione **New**y, a continuación, **Scala**. Se abre una nueva pestaña en el explorador con un cuaderno de Jupyter Notebook basado en Scala.
-3. En el primer campo de hello (denominado un **celda**) en la página de hello, escriba Hola después de texto:
+    ![Los paneles de clúster](./media/hdinsight-spark-analyze-application-insight-logs/clusterdashboards.png)
+2. En la esquina superior derecha de la página de Jupyter, seleccione **Nuevo** y, después, **Scala**. Se abre una nueva pestaña en el explorador con un cuaderno de Jupyter Notebook basado en Scala.
+3. En el primer campo (llamado **celda**) de la página, escriba el texto siguiente:
 
    ```scala
    sc.hadoopConfiguration.set("mapreduce.input.fileinputformat.input.dir.recursive", "true")
    ```
 
-    Este código configura la estructura de directorios de hello Spark toorecursively acceso de datos de entrada de Hola. Application Insights la telemetría es iniciado tooa estructura de directorios similar demasiado`/{telemetry type}/YYYY-MM-DD/{##}/`.
+    Este código configura Spark para que pueda acceder de forma recursiva a la estructura de directorios de los datos de entrada. La telemetría de Application Insights se registra en una estructura de directorios similar a `/{telemetry type}/YYYY-MM-DD/{##}/`.
 
-4. Use **MAYÚS+ENTRAR** código de hello toorun. En hello parte izquierda de la celda de hello, una '\*' aparece entre Hola corchetes tooindicate que se está ejecutando código de hello en esta celda. Una vez que se complete, hello '\*' cambia número tooa y toohello similar después de texto se muestra por debajo de la celda de Hola de salida:
+4. Use **MAYÚS + INTRO** para ejecutar el código. En el lado izquierdo de la celda, aparece un "\*" entre corchetes para indicar que se está ejecutando el código en esta celda. Una vez finalizado, el "\*" cambiará a un número y se mostrará un resultado similar al siguiente texto debajo de la celda:
 
         Creating SparkContext as 'sc'
 
@@ -243,24 +243,24 @@ Hola tooadd clúster existente de tooan de cuenta de almacenamiento de Azure, us
 
         Creating HiveContext as 'sqlContext'
         SparkContext and HiveContext created. Executing user code ...
-5. Se crea una nueva celda por debajo de hello primero. Escriba Hola después de texto en la nueva celda de Hola. Reemplace `CONTAINER` y `STORAGEACCOUNT` con el nombre de cuenta de almacenamiento de Azure de Hola y el nombre del contenedor de blob que contiene información de la aplicación inicia sesión.
+5. Se crea una nueva celda debajo de la primera. Escriba el texto siguiente en la nueva celda. Reemplace `CONTAINER` y `STORAGEACCOUNT` por el nombre de la cuenta de Azure Storage y el nombre del contenedor de blobs que contiene registros de Application Insights.
 
    ```scala
    %%bash
    hdfs dfs -ls wasb://CONTAINER@STORAGEACCOUNT.blob.core.windows.net/
    ```
 
-    Use **MAYÚS+ENTRAR** tooexecute esta celda. Vea un toohello similar de resultados siguiente texto:
+    Use **MAYÚS + INTRO** para ejecutar esta celda. Verá un resultado similar al texto siguiente:
 
         Found 1 items
         drwxrwxrwx   -          0 1970-01-01 00:00 wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_2bededa61bc741fbdee6b556571a4831
 
-    ruta de acceso de Hello wasb devuelta es la ubicación de Hola de hello datos de telemetría de Application Insights. Hola de cambio `hdfs dfs -ls` en hello celda toouse hello wasb ruta devuelta de línea y, a continuación, usar **MAYÚS+ENTRAR** celda de hello toorun nuevo. Este tiempo, resultados de hello deberían mostrar directorios de Hola que contienen los datos de telemetría.
+    La ruta de acceso de WASB devuelta es la ubicación de los datos de telemetría de Application Insights. Cambie la línea `hdfs dfs -ls` en la celda para usar la ruta wasb devuelta y luego use **MAYÚS + INTRO** para volver a ejecutar la celda. Esta vez, los resultados deberían mostrar los directorios que contienen datos de telemetría.
 
    > [!NOTE]
-   > Para los pasos restantes de Hola de hello en esta sección, Hola `wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests` se usó el directorio. Este directorio podría no existir, a menos que los datos de telemetría sean de una aplicación web.
+   > Para el resto de los pasos descritos en esta sección, se ha usado el directorio `wasb://appinsights@contosostore.blob.core.windows.net/contosoappinsights_{ID}/Requests`. Este directorio podría no existir, a menos que los datos de telemetría sean de una aplicación web.
 
-6. En la siguiente celda hello, escriba Hola siguiente código: reemplazar `WASB\_PATH` con ruta de acceso de saludo del paso anterior Hola.
+6. En la siguiente celda, escriba este código (reemplazando `WASB\_PATH` por la ruta de acceso especificada en el paso anterior):
 
    ```scala
    var jsonFiles = sc.textFile('WASB_PATH')
@@ -268,15 +268,15 @@ Hola tooadd clúster existente de tooan de cuenta de almacenamiento de Azure, us
    var jsonData = sqlContext.read.json(jsonFiles)
    ```
 
-    Este código crea una trama de datos de archivos JSON de hello exportados por el proceso de exportación continua de Hola. Use **MAYÚS+ENTRAR** toorun esta celda.
+    Este código crea una trama de datos de los archivos JSON exportados por el proceso de exportación continua. Use **MAYÚS + INTRO** para ejecutar esta celda.
 
-7. En la siguiente celda hello, escriba y ejecute hello después de esquema de hello tooview que Spark creado para los archivos JSON hello:
+7. En la celda siguiente, escriba y ejecute lo siguiente para ver el esquema creado por Spark para los archivos JSON:
 
    ```scala
    jsonData.printSchema
    ```
 
-    esquema de Hola para cada tipo de telemetría es diferente. el ejemplo siguiente se Hello es esquema Hola que se genera para las solicitudes web (datos almacenados en hello `Requests` subdirectorio):
+    El esquema de cada tipo de telemetría es diferente. El siguiente ejemplo es el esquema que se genera para las solicitudes web (datos almacenados en el subdirectorio `Requests`):
 
         root
         |-- context: struct (nullable = true)
@@ -339,21 +339,21 @@ Hola tooadd clúster existente de tooan de cuenta de almacenamiento de Azure, us
         |    |    |    |-- host: string (nullable = true)
         |    |    |    |-- protocol: string (nullable = true)
 
-8. Usar hello después tooregister Hola trama de datos como una tabla temporal y ejecutar una consulta con los datos de hello:
+8. Para registrar la trama de datos como una tabla temporal y ejecutar una consulta de los datos, utilice lo siguiente:
 
    ```scala
    jsonData.registerTempTable("requests")
    var city = sqlContext.sql("select context.location.city from requests where context.location.city is not null limit 10").show()
    ```
 
-    Esta consulta devuelve información de la ciudad de Hola para superior 20 registros de Hola donde context.location.city no es null.
+    Esta consulta devuelve la información de la ciudad de los 20 registros principales donde context.location.city no sea nulo.
 
    > [!NOTE]
-   > estructura de contexto de Hello está presente en todos los telemetría registrado por Application Insights. elemento de la ciudad de Hello no puede llenarse en los registros. Utilice Hola esquema tooidentify otros elementos que puede consultar y que pueden contener datos para sus registros.
+   > La estructura de contexto está presente en toda la telemetría registrada por Application Insights. Es posible que el elemento city no se rellene en los registros. Utilice el esquema para identificar otros elementos que se puedan consultar y que puedan contener datos de los registros.
    >
    >
 
-    Esta consulta devuelve información toohello similar siguiente texto:
+    Esta consulta devuelve información similar al texto siguiente:
 
         +---------+
         |     city|
@@ -367,15 +367,15 @@ Hola tooadd clúster existente de tooan de cuenta de almacenamiento de Azure, us
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener más ejemplos del uso de Spark toowork con los datos y los servicios de Azure, vea Hola siguientes documentos:
+Para obtener más ejemplos de uso de Spark para trabajar con datos y servicios de Azure, consulte los siguientes documentos:
 
 * [Spark with BI: Realizar el análisis de datos interactivos con Spark en HDInsight con las herramientas de BI](hdinsight-apache-spark-use-bi-tools.md)
 * [Creación de aplicaciones de Aprendizaje automático con Apache Spark en HDInsight de Azure](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
-* [Spark con aprendizaje automático: Use Spark en HDInsight toopredict de resultados de la inspección de alimentos](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+* [Spark con aprendizaje automático: uso de Spark en HDInsight para predecir los resultados de la inspección de alimentos](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 * [Streaming con Spark: uso de Spark en HDInsight para compilar aplicaciones de streaming](hdinsight-apache-spark-eventhub-streaming.md)
 * [Análisis del registro del sitio web con Spark en HDInsight](hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
-Para obtener información sobre cómo crear y ejecutar aplicaciones de Spark, vea Hola siguientes documentos:
+Para obtener información sobre cómo crear y ejecutar aplicaciones de Spark, consulte los siguientes documentos:
 
 * [Crear una aplicación independiente con Scala](hdinsight-apache-spark-create-standalone-application.md)
 * [Ejecutar trabajos de forma remota en un clúster de Spark mediante Livy](hdinsight-apache-spark-livy-rest-interface.md)

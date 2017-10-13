@@ -1,6 +1,6 @@
 ---
-title: aaaLoad equilibrio en varias configuraciones de IP mediante la CLI de Azure | Documentos de Microsoft
-description: "Obtenga información acerca de cómo tooassign varias direcciones IP de máquina virtual de tooa mediante la CLI de Azure | Administrador de recursos."
+title: Equilibrio de carga en varias configuraciones de IP mediante la CLI de Azure | Microsoft Docs
+description: "Aprenda a asignar varias direcciones IP a una máquina virtual con la CLI de Azure | Resource Manager."
 services: virtual-network
 documentationcenter: na
 author: anavinahar
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/10/2017
+ms.date: 09/25/2017
 ms.author: annahar
-ms.openlocfilehash: df81e1b8193f274bad435d6b506c7be824117416
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 1d88c53784cec302f5e67b9d50f84780bbec37db
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="load-balancing-on-multiple-ip-configurations"></a>Equilibrio de carga en varias configuraciones de IP
 
@@ -28,22 +28,24 @@ ms.lasthandoff: 10/06/2017
 > * [CLI](load-balancer-multiple-ip-cli.md)
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 
-Este artículo describe cómo aborda toouse equilibrador de carga de Azure con varias IP en una interfaz de red secundaria (NIC). En este escenario, tenemos dos máquinas virtuales que ejecutan Windows. Cada una de ellas cuenta con una NIC principal y otra secundaria. Cada uno de hello secundaria NIC tienen dos configuraciones de IP. Cada máquina virtual hospeda dos sitios web: contoso.com y fabrikam.com. Cada sitio Web está enlazado tooone Hola de configuraciones de IP en la NIC de hello secundaria. Utilizamos el equilibrador de carga Azure tooexpose dos front-end direcciones IP, una para cada sitio Web, toodistribute tráfico toohello respectivo configuración IP para el sitio Web de Hola. Este escenario utiliza Hola el mismo número de puerto a través de front-ends, así como las direcciones IP de back-end del grupo.
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+
+En este artículo, se explica cómo se utiliza Azure Load Balancer con varias direcciones IP en una interfaz de red secundaria (NIC). En este escenario, tenemos dos máquinas virtuales que ejecutan Windows. Cada una de ellas cuenta con una NIC principal y otra secundaria. Cada NIC secundario tiene dos configuraciones IP. Cada máquina virtual hospeda dos sitios web: contoso.com y fabrikam.com. Cada uno de los sitios web está enlazado a una de las configuraciones de IP de la NIC secundaria. Usamos Azure Load Balancer para exponer dos direcciones IP front-end, una por cada sitio web, que van a distribuir el tráfico a la configuración de IP correspondiente del sitio web. En este escenario, se utiliza el mismo número de puerto en los dos front-end, así como en las dos direcciones IP del grupo de back-end.
 
 ![Imagen del escenario de equilibrio de carga](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
 
-## <a name="steps-tooload-balance-on-multiple-ip-configurations"></a>Saldo de tooload de pasos en varias configuraciones de IP
+## <a name="steps-to-load-balance-on-multiple-ip-configurations"></a>Pasos para equilibrar la carga en varias configuraciones de IP
 
-Siga los pasos de hello debajo de escenario de hello tooachieve descrito en este artículo:
+Para reproducir el escenario que se describe en este artículo, siga los pasos que se describen a continuación:
 
-1. [Instalar y configurar hello Azure CLI](../cli-install-nodejs.md) Hola CLI de Azure siguiendo los pasos de hello en el artículo vinculado de Hola y registro en su cuenta de Azure.
-2. [Cree un grupo de recursos](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-group) llamado *contosofabrikam*, tal y como se describe en el artículo vinculado.
+1. [Instale y configure la CLI de Azure ](../cli-install-nodejs.md) siguiendo los pasos que se describen en el artículo vinculado e inicie sesión en la cuenta de Azure.
+2. [Cree un grupo de recursos](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-group) llamado *contosofabrikam*, tal y como se describe a continuación:
 
     ```azurecli
     azure group create contosofabrikam westcentralus
     ```
 
-3. [Crear un conjunto de disponibilidad](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-an-availability-set) toofor Hola dos máquinas virtuales. En este escenario, utilice Hola siguiente comando:
+3. [Cree un conjunto de disponibilidad](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-an-availability-set) para las dos máquinas virtuales. En este caso, utilice el siguiente comando:
 
     ```azurecli
     azure availset create --resource-group contosofabrikam --location westcentralus --name myAvailabilitySet
@@ -57,13 +59,13 @@ Siga los pasos de hello debajo de escenario de hello tooachieve descrito en este
     azure network vnet subnet create --resource-group contosofabrikam --vnet-name myVnet --name mySubnet --address-prefix 10.0.0.0/24
     ```
 
-5. [Crear el equilibrador de carga de hello](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) llama *mylb*:
+5. [Cree un equilibrador de carga](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) llamado *mylb*:
 
     ```azurecli
     azure network lb create --resource-group contosofabrikam --location westcentralus --name mylb
     ```
 
-6. Cree dos direcciones IP públicas dinámicas para configuraciones de IP de front-end de Hola de un equilibrador de carga:
+6. Cree dos direcciones IP públicas dinámicas para las configuraciones de IP de front-end del equilibrador de carga:
 
     ```azurecli
     azure network public-ip create --resource-group contosofabrikam --location westcentralus --name PublicIp1 --domain-name-label contoso --allocation-method Dynamic
@@ -71,7 +73,7 @@ Siga los pasos de hello debajo de escenario de hello tooachieve descrito en este
     azure network public-ip create --resource-group contosofabrikam --location westcentralus --name PublicIp2 --domain-name-label fabrikam --allocation-method Dynamic
     ```
 
-7. Crear configuraciones de IP, de hello dos front-end *contosofe* y *fabrikamfe* respectivamente:
+7. Cree las dos configuraciones de IP de front-tend: *contosofe* y *fabrikamfe*, respectivamente:
 
     ```azurecli
     azure network lb frontend-ip create --resource-group contosofabrikam --lb-name mylb --public-ip-name PublicIp1 --name contosofe
@@ -90,7 +92,7 @@ Siga los pasos de hello debajo de escenario de hello tooachieve descrito en este
     azure network lb rule create --resource-group contosofabrikam --lb-name mylb --name HTTPf --protocol tcp --probe-name http --frontend-port 5000 --backend-port 5000 --frontend-ip-name fabrkamfe --backend-address-pool-name fabrikampool
     ```
 
-9. Siguiente ejecución Hola comando a continuación y, a continuación, compruebe el resultado de hello demasiado[comprobar el equilibrador de carga](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) se creó correctamente:
+9. Ejecute el comando siguiente para [comprobar que el equilibrador de carga](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) se creó correctamente:
 
     ```azurecli
     azure network lb show --resource-group contosofabrikam --name mylb
@@ -104,7 +106,7 @@ Siga los pasos de hello debajo de escenario de hello tooachieve descrito en este
     azure storage account create --location westcentralus --resource-group contosofabrikam --kind Storage --sku-name GRS mystorageaccount1
     ```
 
-11. [Crear interfaces de red de hello](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-nic) para VM1 y agregue una segunda configuración IP, *VM1 ipconfig2*, y [crear hello VM](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-the-linux-vms) tal y como se muestra a continuación:
+11. [Cree las interfaces de red](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-nic) para VM1 y agregue una segunda configuración de IP, *VM1-ipconfig2*, y [cree la VM](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-the-linux-vms) tal como se describe a continuación:
 
     ```azurecli
     azure network nic create --resource-group contosofabrikam --location westcentralus --subnet-vnet-name myVnet --subnet-name mySubnet --name VM1Nic1 --ip-config-name NIC1-ipconfig1
@@ -124,8 +126,8 @@ Siga los pasos de hello debajo de escenario de hello tooachieve descrito en este
     azure vm create --resource-group contosofabrikam --name VM2 --location westcentralus --os-type linux --nic-names VM2Nic1,VM2Nic2 --vnet-name VNet1 --vnet-subnet-name Subnet1 --availset-name myAvailabilitySet --vm-size Standard_DS3_v2 --storage-account-name mystorageaccount2 --image-urn canonical:UbuntuServer:16.04.0-LTS:latest --admin-username <your username>  --admin-password <your password>
     ```
 
-13. Por último, debe configurar el dirección IP de DNS recursos registros toopoint toohello respectivos front-end de hello equilibrador de carga. Puede hospedar los dominios en Azure DNS. Para más información sobre el uso de Azure DNS con Load Balancer, consulte [Uso de Azure DNS con otros servicios de Azure](../dns/dns-for-azure-services.md).
+13. Por último, debe configurar los registros de recursos DNS para que apunten a la dirección IP de front-end correspondiente del equilibrador de carga. Puede hospedar los dominios en Azure DNS. Para más información sobre el uso de Azure DNS con Load Balancer, consulte [Uso de Azure DNS con otros servicios de Azure](../dns/dns-for-azure-services.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
-- Obtener más información acerca de cómo Equilibrio de carga de toocombine services en Azure en [con servicios de equilibrio de carga en Azure](../traffic-manager/traffic-manager-load-balancing-azure.md).
-- Obtenga información acerca de cómo puede usar varios tipos de registros de Azure toomanage y solucionar problemas de equilibrador de carga en [análisis de registros para el equilibrador de carga de Azure](../load-balancer/load-balancer-monitor-log.md).
+- Aprenda más sobre cómo combinar servicios de equilibrio de carga en Azure en [Uso de servicios de equilibrio de carga de Azure](../traffic-manager/traffic-manager-load-balancing-azure.md).
+- Aprenda a usar diferentes tipos de registros en Azure para administra el equilibrador de carga y solucionar sus problemas en [Análisis de registros para Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md).

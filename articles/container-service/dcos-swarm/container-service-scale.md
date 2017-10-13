@@ -1,6 +1,6 @@
 ---
-title: "clúster de servicio de contenedor de Azure aaaScale | Documentos de Microsoft"
-description: "¿Cómo tooscale nodos del agente en un clúster de DC/OS, Docker Swarm o Kubernetes en servicio de contenedor de Azure mediante Hola CLI de Azure o el portal de Azure."
+title: "Escalado del clúster de Azure Container Service | Microsoft Docs"
+description: "Escalado de los nodos de agente en un clúster DC/OS, Docker Swarm o Kubernetes en Azure Container Service mediante la CLI de Azure o Azure Portal."
 services: container-service
 documentationcenter: 
 author: sauryadas
@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 03/01/2017
 ms.author: saudas
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 21e644bceee3c418e565323ab5f2484e3c565316
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: cf04cc45bde16af54afdbb3fa01b7a8ad6ab141f
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 [!INCLUDE [container-service-scale.md](../../../includes/container-service-scale.md)]

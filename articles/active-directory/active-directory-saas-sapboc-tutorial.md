@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con SAP Business Object Cloud | Microsoft Docs"
-description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y la nube de objeto de negocios de SAP."
+description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y SAP Business Object Cloud."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.openlocfilehash: a3e9bd93897271531f91bcbc50cd361e8a20551e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 6d517c5e302ac36e5bba2053998c75f8f4d42683
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>Tutorial: Integración de Azure Active Directory con SAP Business Object Cloud
 
-En este tutorial, aprenderá cómo toointegrate SAP Business objeto en la nube con Azure Active Directory (Azure AD).
+En este tutorial, aprenderá a integrar SAP Business Object Cloud con Azure Active Directory (Azure AD).
 
-Obtener hello las siguientes ventajas cuando se integre SAP Business objeto en la nube con Azure AD:
+La integración de SAP Business Object Cloud con Azure AD le proporciona las siguientes ventajas:
 
-- En Azure AD, puede controlar quién tiene acceso tooSAP nube del objeto de negocios.
-- Puede firmar automáticamente en su tooSAP de los usuarios empresariales objeto nube mediante el inicio de sesión único y una cuenta de usuario Azure AD.
-- Puede administrar las cuentas en una ubicación central, Hola portal de Azure.
+- En Azure AD puede controlar quién tiene acceso a SAP Business Object Cloud.
+- Puede iniciar sesión automáticamente con los usuarios en SAP Business Object Cloud mediante un inicio de sesión único y una cuenta de Azure AD del usuario.
+- Puede administrar sus cuentas en una única ubicación central: Azure Portal.
 
-toolearn más información acerca del software como una integración de aplicaciones de servicio (SaaS) con Azure AD, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Para más información sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-tooset la integración de Azure AD con la nube de objeto de negocios de SAP, necesita Hola siguientes elementos:
+Para configurar la integración de Azure AD con SAP Business Object Cloud, se necesitan los siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una instancia de SAP Business Object Cloud con el inicio de sesión único habilitado
 
 > [!NOTE]
-> Si prueba a pasos de hello en este tutorial, se recomienda que no probarlas en un entorno de producción.
+> Si va a probar los pasos de este tutorial, no se recomienda hacerlo en un entorno de producción.
 
-Recomendaciones para probar los pasos de hello en este tutorial:
+Recomendaciones para probar los pasos de este tutorial:
 
 - No use el entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede [obtener una versión de prueba gratuita durante un mes](https://azure.microsoft.com/pricing/free-trial/).
@@ -50,75 +50,75 @@ Recomendaciones para probar los pasos de hello en este tutorial:
 ## <a name="scenario-description"></a>Descripción del escenario
 En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. 
 
-escenario de Hello descrito en este tutorial consta de dos bloques principales:
+La situación descrita en este tutorial consta de dos bloques de creación principales:
 
-1. Agregar objeto nube de SAP Business de hello Galería.
+1. Incorporación de SAP Business Object Cloud desde la galería.
 2. Configuración y prueba del inicio de sesión único en Azure AD.
 
-## <a name="add-sap-business-object-cloud-from-hello-gallery"></a>Agregar objeto nube de SAP Business de galería de Hola
-tooset la integración de Hola de SAP Business objeto en la nube con Azure AD, en la Galería de hello, agregue la lista de tooyour de SAP Business objeto nube de las aplicaciones administradas de SaaS.
+## <a name="add-sap-business-object-cloud-from-the-gallery"></a>Incorporación de SAP Business Object Cloud desde la galería
+Para configurar la integración de SAP Business Object Cloud en Azure AD, en la galería, agregue SAP Business Object Cloud a la lista de aplicaciones SaaS administradas.
 
-en la nube SAP Business objeto desde la Galería de Hola tooadd:
+Para agregar SAP Business Object Cloud desde la galería:
 
-1. Hola [portal de Azure](https://portal.azure.com), en el menú de la izquierda de Hola, seleccione **Azure Active Directory**. 
+1. En el menú izquierdo de [Azure Portal](https://portal.azure.com), seleccione **Azure Active Directory**. 
 
-    ![botón de Hello Azure Active Directory][1]
+    ![Botón Azure Active Directory][1]
 
 2. Vaya a **Aplicaciones empresariales** y seleccione **Todas las aplicaciones**.
 
-    ![página de aplicaciones de empresa de Hola][2]
+    ![Página Aplicaciones empresariales][2]
     
-3. tooadd una nueva aplicación, seleccione **nueva aplicación**.
+3. Para agregar una nueva aplicación, seleccione **Nueva aplicación**.
 
-    ![botón de nueva aplicación Hola][3]
+    ![Botón Nueva aplicación][3]
 
-4. En el cuadro de búsqueda de hello, escriba **SAP Business objeto nube**.
+4. En el cuadro de búsqueda, escriba **SAP Business Object Cloud**.
 
-    ![cuadro de búsqueda de Hola](./media/active-directory-saas-sapboc-tutorial/tutorial_sapboc_search.png)
+    ![El cuadro de búsqueda](./media/active-directory-saas-sapboc-tutorial/tutorial_sapboc_search.png)
 
-5. En el panel de resultados de hello, seleccione **SAP Business objeto nube**y, a continuación, seleccione **agregar**.
+5. En el panel de resultados, seleccione **SAP Business Object Cloud** y seleccione **Agregar**.
 
-    ![Lista de resultados de la nube de objeto de negocios SAP en hello](./media/active-directory-saas-sapboc-tutorial/tutorial_sapboc_addfromgallery.png)
+    ![SAP Business Object Cloud en la lista de resultados](./media/active-directory-saas-sapboc-tutorial/tutorial_sapboc_addfromgallery.png)
 
 ##  <a name="set-up-and-test-azure-ad-single-sign-on"></a>Configuración y prueba del inicio de sesión único en Azure AD
 
 En esta sección, configurará y probará el inicio de sesión único de Azure AD con SAP Business Object Cloud mediante un usuario de prueba llamado *Britta Simon*.
 
-Para toowork de inicio de sesión único, Azure AD necesita usuario de equivalente de Azure AD tooknow hello en la nube de objeto de negocios de SAP. Se debe establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en la nube de objeto de negocios de SAP.
+Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de Azure AD en SAP Business Object Cloud. Se debe establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de SAP Business Object Cloud.
 
-Hola tooestablish vincular relación, en la nube de objeto de negocios de SAP, para **nombre de usuario**, asignar un valor de Hola de hello **nombre de usuario** en Azure AD.
+Para establecer la relación de vínculo, en SAP Business Object Cloud, asigne el valor de **nombre de usuario** como valor de **nombre de usuario** de Azure AD.
 
-tooconfigure y prueba de inicio de sesión único en Azure AD con SAP Business objeto nube, Hola completa después de tareas:
+Para configurar y probar el inicio de sesión único de Azure AD con SAP Business Object Cloud, complete los siguientes bloques de creación:
 
-1. [Configuración del inicio de sesión único de Azure AD](#set-up-azure-ad-single-sign-on). Configura un toouse de usuario de esta característica.
-2. [Creación de un usuario de prueba de Azure AD](#create-an-azure-ad-test-user). Pruebas AD Azure inicio de sesión único con usuario hello Britta Simon.
-3. [Creación de un usuario de prueba de SAP Business Object Cloud](#create-an-sap-business-object-cloud-test-user). Crea a un equivalente de Britta Simon en nube de objeto de negocios de SAP que está vinculado toohello representación de Azure AD del usuario de Hola.
-4. [Asignar el usuario de prueba de hello Azure AD](#assign-the-azure-ad-test-user). Configura Britta Simon toouse inicio de sesión único en Azure AD.
-5. [Prueba de inicio de sesión único](#test-single-sign-on). Comprueba que la configuración de hello funciona.
+1. [Configuración del inicio de sesión único de Azure AD](#set-up-azure-ad-single-sign-on). Configura un usuario para usar esta característica.
+2. [Creación de un usuario de prueba de Azure AD](#create-an-azure-ad-test-user). Prueba un inicio de sesión único de Azure AD con el usuario Britta Simon.
+3. [Creación de un usuario de prueba de SAP Business Object Cloud](#create-an-sap-business-object-cloud-test-user). Crea un homólogo de Britta Simon en SAP Business Object Cloud que está vinculado a la representación del usuario en Azure AD.
+4. [Asignación del usuario de prueba de Azure AD](#assign-the-azure-ad-test-user). Configura Britta Simon para usar un inicio de sesión único de Azure AD.
+5. [Prueba de inicio de sesión único](#test-single-sign-on). Comprueba que la configuración funciona.
 
 ### <a name="set-up-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, activar Azure AD único inicio de sesión en hello portal de Azure. A continuación, configura el inicio de sesión único en la aplicación SAP Business Object Cloud.
+En esta sección, activa el inicio de sesión único de Azure AD en Azure Portal. A continuación, configura el inicio de sesión único en la aplicación SAP Business Object Cloud.
 
-tooset de inicio de sesión único en Azure AD con SAP Business objeto nube:
+Para configurar el inicio de sesión único en Azure AD con SAP Business Object Cloud:
 
-1. En el portal de Azure, en Hola Hola **SAP Business objeto nube** página de integración de aplicaciones, seleccione **inicio de sesión único**.
+1. En la página de integración de la aplicación **SAP Business Object Cloud** de Azure Portal, seleccione **Inicio de sesión único**.
 
     ![Seleccionar Inicio de sesión único][4]
 
-2. En hello **inicio de sesión único** página, para **modo**, seleccione **sesión basado en SAML**.
+2. En la página **Inicio de sesión único**, en **Modo**, seleccione **Inicio de sesión basado en SAML**.
  
     ![Seleccionar Inicio de sesión basado en SAML](./media/active-directory-saas-sapboc-tutorial/tutorial_sapboc_samlbase.png)
 
-3. En **dominio de nube de objeto de negocio de SAP y las direcciones URL**completa Hola lo siguiente:
+3. En **Dominio y direcciones URL de SAP Business Object Cloud**, complete los pasos siguientes:
 
-    1. Hola **dirección URL de inicio de sesión** cuadro, escriba una dirección URL con hello siguiente patrón: 
+    1. En el cuadro **URL de inicio de sesión**, escriba una dirección URL con el siguiente formato: 
     | |
     |-|-|
     | `https://<sub-domain>.sapanalytics.cloud/` |
     | `https://<sub-domain>.sapbusinessobjects.cloud/` |
 
-    2. Hola **identificador** cuadro, escriba una dirección URL con hello siguiente patrón:
+    2. En el cuadro **Identificador**, escriba una dirección URL con el siguiente formato:
     | |
     |-|-|
     | `<sub-domain>.sapbusinessobjects.cloud` |
@@ -127,9 +127,9 @@ tooset de inicio de sesión único en Azure AD con SAP Business objeto nube:
     ![Direcciones URL de la página Dominio y direcciones URL de SAP Business Object Cloud](./media/active-directory-saas-sapboc-tutorial/tutorial_sapboc_url.png)
  
     > [!NOTE] 
-    > los valores de Hello en estas direcciones URL son únicamente como demostración. Actualizar valores de hello con hello real sesión dirección URL y el identificador de dirección URL. tooget Hola inicio de sesión dirección URL, póngase en contacto con hello [equipo de soporte técnico de SAP Business objeto nube Client](https://www.sap.com/product/analytics/cloud-analytics.support.html). Puede obtener la dirección URL de identificación de hello mediante la descarga de metadatos de la nube de objeto de negocios de SAP Hola desde la consola de administración de Hola. Esto se explica más adelante en el tutorial Hola. 
+    > Los valores de estas direcciones URL se muestran solo con fines demostrativos. Debe actualizarlos con las direcciones URL reales de inicio de sesión único y de identificador. Para obtener la dirección URL de inicio de sesión, póngase en contacto con el [equipo de soporte técnico de SAP Business Object Cloud](https://www.sap.com/product/analytics/cloud-analytics.support.html). Para obtener la dirección URL de identificador, descargue los metadatos de SAP Business Object Cloud desde la consola de administración. Esto se explica posteriormente en este tutorial. 
 
-4. En **Certificado de firma de SAML**, seleccione **XML de metadatos**. A continuación, guarde el archivo de metadatos de hello en el equipo.
+4. En **Certificado de firma de SAML**, seleccione **XML de metadatos**. Luego, guarde el archivo de metadatos en el equipo.
 
     ![Seleccionar XML de metadatos](./media/active-directory-saas-sapboc-tutorial/tutorial_sapboc_certificate.png) 
 
@@ -137,150 +137,150 @@ tooset de inicio de sesión único en Azure AD con SAP Business objeto nube:
 
     ![Seleccionar Guardar](./media/active-directory-saas-sapboc-tutorial/tutorial_general_400.png)
 
-6. En una ventana del explorador web diferente, inicie sesión en el sitio de empresa de SAP Business objeto nube tooyour como administrador.
+6. En otra ventana del explorador web, inicie sesión en su sitio de la compañía de SAP Business Object Cloud como administrador.
 
 7. Seleccione **Menu** > **System** > **Administration** (Menú > Sistema > Administración).
     
     ![Seleccionar Menu (Menú), System (Sistema) y, luego, Administration (Administración)](./media/active-directory-saas-sapboc-tutorial/config1.png)
 
-8. En hello **seguridad** ficha, seleccione hello **editar** el icono de (lápiz PC).
+8. En la pestaña **Security** (Seguridad), seleccione el icono **Edit** (Editar) (lápiz).
     
-    ![En la pestaña de seguridad de hello, seleccione el icono de edición de Hola](./media/active-directory-saas-sapboc-tutorial/config2.png)  
+    ![En la pestaña Security (Seguridad), seleccionar el icono Edit (Editar)](./media/active-directory-saas-sapboc-tutorial/config2.png)  
 
 9. Como **Authentication Method** (Método de autenticación), seleccione **SAML Single Sign-On (SSO)** (Inicio de sesión único [SSO] de SAML).
 
-    ![Seleccione SAML Single Sign-On para el método de autenticación de Hola](./media/active-directory-saas-sapboc-tutorial/config3.png)  
+    ![Seleccionar SAML Single Sign-On (SSO) (Inicio de sesión único [SSO] de SAML) como método de autenticación](./media/active-directory-saas-sapboc-tutorial/config3.png)  
 
-10. toodownload Hola proveedor metadatos del servicio (paso 1), seleccione **descargar**. En el archivo de metadatos de hello, busque y copie hello **entityID** valor. Hola Azure portal, en **dominio de nube de objeto de negocio de SAP y las direcciones URL**, pegue el valor de Hola Hola **identificador** cuadro.
+10. Para descargar los metadatos del proveedor de servicios (Paso 1), haga clic en **Download** (Descargar). En el archivo de metadatos, busque y copie el valor **entityID**. En Azure Portal, en **Dominio y direcciones URL de SAP Business Object Cloud**, pegue el valor en el cuadro **Identificador**.
 
-    ![Copie y pegue el valor entityID de Hola](./media/active-directory-saas-sapboc-tutorial/config4.png)  
+    ![Copiar y pegar el valor entityID](./media/active-directory-saas-sapboc-tutorial/config4.png)  
 
-11. tooupload Hola proveedor metadatos del servicio (paso 2) en el archivo hello que descargó desde Hola portal de Azure, en **metadatos cargar el proveedor de identidades**, seleccione **cargar**.  
+11. Para cargar los metadatos del proveedor de servicios (Paso 2) en el archivo que descargó desde Azure Portal en **Upload Identity Provider metadata** (Cargar metadatos del proveedor de identidades), seleccione **Upload** (Cargar).  
 
     ![En Upload Identity Provider metadata (Cargar metadatos del proveedor de identidades), seleccionar Upload (Cargar)](./media/active-directory-saas-sapboc-tutorial/config5.png)
 
-12. Hola **usuario atributo** lista, los atributos de usuario de hello seleccione (paso 3) que desea toouse para su implementación. Este atributo de usuario asigna toohello proveedor de identidades. un atributo personalizado en la página del usuario de hello, use hello tooenter **personalizado SAML asignación** opción. O bien, puede seleccionar **correo electrónico** o **Id. de usuario** como atributo de usuario de Hola. En nuestro ejemplo, hemos seleccionado **correo electrónico** porque asignamos Hola notificación de identificador de usuario con hello **userprincipalname** atributo Hola **atributos de usuario** sección Hola Portal de Azure. Esto proporciona un correo electrónico de usuario único, que se envía toohello aplicación en la nube de objeto de negocios de SAP en cada respuesta SAML correcta.
+12. En la lista **User Attribute** (Atributo de usuario), seleccione el atributo de usuario (Paso 3) que quiere usar en su implementación. Este atributo de usuario se asigna al proveedor de identidades. Para escribir un atributo personalizado en la página del usuario, use la opción **Custom SAML Mapping** (Personalizar asignación de SAML). O bien, puede seleccionar **Email** (Correo electrónico) o **USER ID** (Id. de usuario) como atributo de usuario. En nuestro ejemplo, hemos seleccionado **Email** (Correo electrónico) porque hemos asignado la notificación de identificador de usuario con el atributo **userprincipalname** en la sección **Atributos de usuario** de Azure Portal. Esto proporciona un correo electrónico de usuario único, que se envía a la aplicación SAP Business Object Cloud en cada respuesta SAML correcta.
 
     ![Seleccionar Atributos de usuario](./media/active-directory-saas-sapboc-tutorial/config6.png)
 
-13. cuenta de hello tooverify con el proveedor de identidades de hello (paso 4), en hello **credenciales de inicio de sesión (correo electrónico)** cuadro, escriba la dirección de correo electrónico del usuario de Hola. A continuación, seleccione **Verify Account** (Comprobar cuenta). sistema de Hello agrega la cuenta de usuario de las credenciales de inicio de sesión toohello.
+13. Para comprobar la cuenta con el proveedor de identidades (Paso 4), en el cuadro **Login Credential (Email)** [Credenciales de inicio de sesión (correo electrónico)], escriba la dirección de correo electrónico del usuario. A continuación, seleccione **Verify Account** (Comprobar cuenta). El sistema agrega credenciales de inicio de sesión a la cuenta de usuario.
 
     ![Escribir Email (Correo electrónico) y seleccionar Verify Account (Comprobar cuenta)](./media/active-directory-saas-sapboc-tutorial/config7.png)
 
-14. Seleccione hello **guardar** icono.
+14. Seleccione el icono **Save** (Guardar).
 
     ![Icono Save (Guardar)](./media/active-directory-saas-sapboc-tutorial/save.png)
 
 > [!TIP]
-> Puede leer una versión concisa de estas instrucciones en hello [portal de Azure](https://portal.azure.com), mientras que va a configurar la aplicación. Después de agregar la aplicación hello seleccionando **Active Directory** > **aplicaciones empresariales**, seleccione hello **Single Sign-On** ficha. Puede tener acceso a la documentación de hello incrustado en hello **configuración** sección final Hola de página Hola. Para más información, consulte la [documentación insertada de Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
+> Puede leer una versión concisa de estas instrucciones en [Azure Portal](https://portal.azure.com) mientras configura la aplicación. Después de agregar la aplicación seleccionando **Active Directory** > **Aplicaciones empresariales**, elija la pestaña **Inicio de sesión único**. Puede acceder a la documentación insertada en la sección **Configuración** en la parte inferior de la página. Para más información, consulte la [documentación insertada de Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985).
 
 ### <a name="create-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-En esta sección, creará un usuario de prueba denominado a Britta Simon Hola portal de Azure.
+En esta sección, creará un usuario de prueba llamado Britta Simon en Azure Portal.
 
-toocreate un usuario de prueba en Azure AD:
+Para crear un usuario de prueba en Azure AD:
 
-1. En el portal de Azure, en el menú de la izquierda, Hola Hola seleccione **Azure Active Directory**.
+1. En el menú izquierdo de Azure Portal, seleccione **Azure Active Directory**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-sapboc-tutorial/create_aaduser_01.png) 
 
-2. lista de hello toodisplay de usuarios, seleccionados **usuarios y grupos**y, a continuación, seleccione **todos los usuarios**.
+2. Para mostrar la lista de usuarios, seleccione **Usuarios y grupos** y, luego, **Todos los usuarios**.
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-sapboc-tutorial/create_aaduser_02.png) 
 
-3. Hola tooopen **usuario** cuadro de diálogo, seleccione **agregar**.
+3. Para abrir el cuadro de diálogo **Usuario**, seleccione **Agregar**.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-sapboc-tutorial/create_aaduser_03.png) 
 
-4. Hola **usuario** cuadro de diálogo, Hola completa pasos:
+4. En el cuadro de diálogo **Usuario**, complete los pasos siguientes:
  
-    1. Hola **nombre** cuadro, escriba **BrittaSimon**.
+    1. En el cuadro **Nombre**, escriba **BrittaSimon**.
 
-    2. Hola **nombre de usuario** cuadro, escriba la dirección de correo electrónico de saludo del usuario de hello Britta Simon.
+    2. En el cuadro **Nombre de usuario**, escriba la dirección de correo electrónico del usuario Britta Simon.
 
-    3. Seleccione hello **Mostrar contraseña** casilla de verificación y, a continuación, anote el valor de Hola que se muestra en hello **contraseña** cuadro.
+    3. Active la casilla **Mostrar contraseña** y, después, anote el valor que se muestra en el cuadro **Contraseña**.
 
     4. Seleccione **Crear**.
 
-        ![cuadro de diálogo de usuario de Hola](./media/active-directory-saas-sapboc-tutorial/create_aaduser_04.png) 
+        ![Cuadro de diálogo Usuario](./media/active-directory-saas-sapboc-tutorial/create_aaduser_04.png) 
 
     ![Creación de un usuario de Azure AD][100]
 
 ### <a name="create-an-sap-business-object-cloud-test-user"></a>Creación de un usuario de prueba de SAP Business Object Cloud
 
-Usuarios de Azure AD deben estar aprovisionados en la nube de objeto de negocios de SAP antes de poder iniciar sesión tooSAP nube del objeto de negocios. En SAP Business Object Cloud, el aprovisionamiento es una tarea manual.
+Se debe aprovisionar a los usuarios de Azure AD en SAP Business Object Cloud antes de que puedan iniciar sesión en SAP Business Object Cloud. En SAP Business Object Cloud, el aprovisionamiento es una tarea manual.
 
-tooprovision una cuenta de usuario:
+Para aprovisionar una cuenta de usuario:
 
-1. Inicie sesión en tooyour sitio SAP Business objeto nube de su compañía como administrador.
+1. Inicie sesión como administrador en su sitio de la compañía de SAP Business Object Cloud.
 
 2. Seleccione **Menu** > **Security** > **Users** (Menú > Seguridad > Usuarios).
 
     ![Agregar empleado](./media/active-directory-saas-sapboc-tutorial/user1.png)
 
-3. En hello **usuarios** , tooadd nuevos detalles del usuario, seleccione  **+** . 
+3. En la página **Users** (Usuarios), para agregar nuevos detalles de usuario, seleccione **+**. 
 
     ![Página Add Users (Agregar usuarios)](./media/active-directory-saas-sapboc-tutorial/user4.png)
 
-    A continuación, complete Hola pasos:
+    Después, complete los siguientes pasos:
 
-    1. Hola **Id. de usuario** cuadro, escriba Hola identificador de usuario de hello, como **Bárbara**.
+    1. En el cuadro **USER ID** (Id. de usuario), escriba el identificador del usuario, en este caso **Britta**.
 
-    2. Hola **nombre** cuadro, escriba Hola nombre de usuario de hello, como **Bárbara**.
+    2. En el cuadro **FIRST NAME** (Nombre), escriba el nombre del usuario, en este caso **Britta**.
 
-    3. Hola **LAST NAME** cuadro, escriba el apellido del nombre de usuario de hello, hello como **Simon**.
+    3. En el cuadro **LAST NAME** (Apellido), escriba el apellido del usuario, en este caso **Simon**.
 
-    4. Hola **nombre para mostrar** cuadro, escriba el nombre completo de saludo del usuario de hello, como **Britta Simon**.
+    4. En el cuadro **DISPLAY NAME** (Nombre para mostrar), escriba el nombre completo del usuario, en este caso **Britta Simon**.
 
-    5. Hola **correo electrónico** cuadro, escriba la dirección de correo electrónico de saludo del usuario de hello, como  **brittasimon@contoso.com** .
+    5. En el cuadro **E-MAIL** (Correo electrónico), escriba la dirección de correo electrónico del usuario, en este caso **brittasimon@contoso.com**.
 
-    6. En hello **seleccionar Roles de** , seleccione el rol adecuado de hello para el usuario de hello y, a continuación, seleccione **Aceptar**.
+    6. En la página **Select Roles** (Seleccionar roles), seleccione el rol adecuado para el usuario y, luego, **OK** (Aceptar).
 
       ![Seleccionar rol](./media/active-directory-saas-sapboc-tutorial/user3.png)
 
-    7. Seleccione hello **guardar** icono.  
+    7. Seleccione el icono **Save** (Guardar).    
 
 
-### <a name="assign-hello-azure-ad-test-user"></a>Asignar el usuario de prueba de hello Azure AD
+### <a name="assign-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
 
-En esta sección, que permita que a Hola usuario Britta Simon toouse Azure AD inicio de sesión único mediante la concesión de hello usuario cuenta acceso tooSAP nube del objeto de negocios.
+En esta sección, habilitará al usuario Britta Simon para que use el inicio de sesión único de Azure AD concediéndole acceso de cuenta de usuario a SAP Business Object Cloud.
 
-tooassign Britta Simon tooSAP nube del objeto de negocios:
+Para asignar a Britta Simon a SAP Business Object Cloud:
 
-1. Hola portal de Azure, abrir vista de aplicaciones de hello y, haga clic en la vista de directorio toohello. Vaya a **Aplicaciones empresariales** y seleccione **Todas las aplicaciones**.
+1. En Azure Portal, abra la vista de aplicaciones y vaya a la vista de directorio. Vaya a **Aplicaciones empresariales** y seleccione **Todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones de hello, seleccione **SAP Business objeto nube**.
+2. En la lista de aplicaciones, seleccione **SAP Business Object Cloud**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-sapboc-tutorial/tutorial_sapboc_app.png) 
 
-3. En el menú de la izquierda hello, seleccione **usuarios y grupos**.
+3. En el menú de la izquierda, seleccione **Usuarios y grupos**.
 
     ![Seleccionar Usuarios y grupos][202] 
 
-4. Seleccione **Agregar**. A continuación, en hello **Agregar asignación** página, seleccione **usuarios y grupos**.
+4. Seleccione **Agregar**. Después, en la página **Agregar asignación**, seleccione **Usuarios y grupos**.
 
-    ![página Agregar asignación de Hola][203]
+    ![Página Agregar asignación][203]
 
-5. En hello **usuarios y grupos** página, en la lista de Hola de usuarios, seleccionados **Britta Simon**.
+5. En la página **Usuarios y grupos**, en la lista de usuarios, seleccione **Britta Simon**.
 
-6. En hello **usuarios y grupos** página, seleccione **seleccione**.
+6. En la página **Usuarios y grupos**, seleccione **Seleccionar**.
 
-7. En hello **Agregar asignación** página, seleccione **asignar**.
+7. En la página **Agregar asignación**, seleccione **Asignar**.
 
-![Asigne el rol de usuario de Hola][200] 
+![Asignación del rol de usuario][200] 
     
 ### <a name="test-single-sign-on"></a>Prueba de inicio de sesión único
 
-En esta sección, probará la configuración de inicio de sesión única de Azure AD mediante el panel de acceso de Hola.
+En esta sección, probará la configuración de inicio de sesión único de Azure AD mediante el panel de acceso.
 
-Cuando se selecciona mosaico de nube de objeto de negocios de SAP de hello en el panel de acceso hello, se debe sesión automáticamente en tooyour aplicación en la nube de objeto de negocios de SAP.
+Al seleccionar el icono de SAP Business Object Cloud en el panel de acceso, debería iniciar sesión automáticamente en su aplicación SAP Business Object Cloud.
 
-Para obtener más información acerca del panel de acceso de hello, consulte [panel de acceso de introducción toohello](active-directory-saas-access-panel-introduction.md).
+Para más información sobre el panel de acceso, consulte [Introducción al panel de acceso](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo toointegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

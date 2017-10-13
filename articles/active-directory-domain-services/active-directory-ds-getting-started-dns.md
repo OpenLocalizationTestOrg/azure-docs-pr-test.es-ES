@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory Domain Services: Actualizar configuración de DNS para hello red virtual de Azure | Documentos de Microsoft"
+title: "Azure Active Directory Domain Services: actualización de la configuración DNS para Azure Virtual Network | Microsoft Docs"
 description: "Introducción a los Servicios de dominio de Azure Active Directory"
 services: active-directory-ds
 documentationcenter: 
@@ -12,39 +12,39 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/27/2017
+ms.date: 09/26/2017
 ms.author: maheshu
-ms.openlocfilehash: e6eaff555cb9b7bb89ab7581d8de0b8cfc844529
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ab8e3215e8e73d3943af06cffafa730cf1b7744b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="enable-azure-active-directory-domain-services-preview"></a>Habilitación de Azure Active Directory Domain Services (versión preliminar)
+# <a name="enable-azure-active-directory-domain-services"></a>Habilitación de Azure Active Directory Domain Services
 
-## <a name="task-4-update-dns-settings-for-hello-azure-virtual-network"></a>Tarea 4: actualizar la configuración de DNS para hello red virtual de Azure
-Hola anterior tareas de configuración, ha habilitado correctamente Azure Servicios de dominio de Active Directory para su directorio. Hola siguiente tarea es tooensure que los equipos de red virtual de hello pueden conectarse y usar estos servicios. En este artículo, se actualiza la configuración de servidor DNS de Hola para sus red virtual toopoint toohello dos direcciones IP en servicios de dominio de Active Directory de Azure está disponible en la red virtual de Hola.
+## <a name="task-4-update-dns-settings-for-the-azure-virtual-network"></a>Tarea 4: Actualización de la configuración DNS para la red virtual de Azure
+En las tareas de configuración anteriores, ha habilitado correctamente Azure Active Directory Domain Services para el directorio. La tarea siguiente consiste en asegurarse de que los equipos dentro de la red virtual pueden conectarse y consumir estos servicios. En este artículo, se actualiza la configuración del servidor DNS de la red virtual para que apunte a las direcciones IP en las que Azure Active Directory Domain Services está disponible en la red virtual.
 
-configuración de servidor de tooupdate Hola DNS para la red virtual de hello en el que ha habilitado Azure Active Directory Domain Services, completa Hola pasos:
+Para actualizar la configuración del servidor DNS en la red virtual en la que ha habilitado Azure Active Directory Domain Services, realice los siguientes pasos:
 
-1. Hola **Introducción** ficha enumera un conjunto de **requiere pasos de configuración** toobe realiza después de que el dominio administrado está aprovisionado por completo. es el primer paso de configuración Hello **configuración del servidor DNS de la actualización de la red virtual**.
+1. En la pestaña **Información general** se muestra un conjunto de **pasos de configuración obligatorios** que se deben realizar después de que el dominio administrado está completamente aprovisionado. El primer paso de configuración es **Actualizar la configuración de servidores DNS de su red virtual**.
 
     ![Domain Services: pestaña Información general después del aprovisionamiento completo](./media/getting-started/domain-services-provisioned-overview.png)
 
 2. Cuando el dominio está completamente aprovisionado, se muestran dos direcciones IP en este icono. Cada una de estas direcciones IP representa un controlador de dominio en el dominio administrado.
 
-3. toocopy Hola primera dirección IP tooclipboard de direcciones, haga clic en botón de copia hello tooit siguiente. A continuación, haga clic en hello **servidores DNS configurar** botón.
+3. Para copiar la primera dirección IP en el Portapapeles, haga clic en el botón Copiar que aparece junto a ella. A continuación, haga clic en el botón **Configurar servidores DNS**.
 
-4. Pegue la dirección IP de la primera hello en hello **servidor DNS agregar** cuadro de texto en hello **servidores DNS** hoja. Desplazarse horizontalmente toohello dejado la segunda dirección IP de toocopy hello y pegarlos en hello **servidor DNS agregar** cuadro de texto.
+4. Pegue la primera dirección IP en el cuadro de texto **Agregar servidor DNS** de la hoja **Servidores DNS**. Desplácese horizontalmente a la izquierda para copiar la segunda dirección IP y péguela en el cuadro de texto **Agregar servidor DNS**.
 
     ![Domain Services: actualización de DNS](./media/getting-started/domain-services-update-dns.png)
 
-5. Haga clic en **guardar** cuando haya terminado los servidores DNS de tooupdate hello para la red virtual de Hola.
+5. Cuando haya terminado de actualizar los servidores DNS de la red virtual, haga clic en **Guardar**.
 
 > [!NOTE]
-> Máquinas virtuales de red de hello solo obtiene la configuración de DNS nueva de hello después del reinicio. Si necesita configuración DNS de tooget Hola actualiza inmediatamente, desencadenar un reinicio del portal de hello, PowerShell u Hola CLI.
+> Las máquinas virtuales de la red solo obtendrán la nueva configuración DNS después de reiniciarse. Si necesita tener la configuración de DNS actualizada inmediatamente, desencadene un reinicio mediante el portal, PowerShell o la CLI.
 >
 >
 
 ## <a name="next-step"></a>Paso siguiente
-[Tarea 5: habilitar la sincronización de contraseña tooAzure los servicios de dominio de Active Directory](active-directory-ds-getting-started-password-sync.md)
+[Tarea 5: Habilitación de la sincronización de contraseñas con Azure Active Directory Domain Services](active-directory-ds-getting-started-password-sync.md)

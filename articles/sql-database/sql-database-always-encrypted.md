@@ -1,6 +1,6 @@
 ---
 title: "Always Encrypted: Azure SQL Database: almacén de certificados de Windows | Microsoft Docs"
-description: "Este artículo muestra cómo toosecure datos confidenciales en una base de datos SQL con cifrado de base de datos mediante el uso de Hola a Asistente para Always Encrypted en SQL Server Management Studio (SSMS). También muestra cómo toostore las claves de cifrado en los certificados de Windows hello almacenan."
+description: "En este artículo se muestra cómo proteger los datos confidenciales de una base de datos SQL con cifrado de base de datos mediante el asistente de Always Encrypted en SQL Server Management Studio (SSMS). También muestra cómo almacenar las claves de cifrado en el almacén de certificados de Windows."
 keywords: cifrar datos, cifrado sql, cifrado de base de datos, datos confidenciales, Always Encrypted
 services: sql-database
 documentationcenter: 
@@ -16,66 +16,66 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/02/2017
 ms.author: sstein
-ms.openlocfilehash: 483f9a2120cc42b732142fc07807d3d8830a0c33
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d1fdfc4f739e65ff532b159eefaffe1622ad0963
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-hello-windows-certificate-store"></a>Always Encrypted: Proteger los datos confidenciales en la base de datos SQL y almacenar las claves de cifrado en el almacén de certificados de Windows hello
+# <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted: protección de los datos confidenciales en Base de datos SQL y almacenamiento de las claves de cifrado en el almacén de certificados de Windows
 
-Este artículo muestra cómo toosecure datos confidenciales en una instancia de SQL de base de datos con el cifrado de base de datos mediante el uso de hello [Asistente para Always Encrypted](https://msdn.microsoft.com/library/mt459280.aspx) en [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx). También muestra cómo toostore las claves de cifrado en los certificados de Windows hello almacenan.
+En este artículo se muestra cómo proteger los datos confidenciales de una base de datos SQL con cifrado de base de datos mediante el [asistente de Always Encrypted](https://msdn.microsoft.com/library/mt459280.aspx) en [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx). También muestra cómo almacenar las claves de cifrado en el almacén de certificados de Windows.
 
-Always Encrypted es una nueva tecnología de cifrado de datos en la base de datos de SQL Azure y SQL Server que ayuda a proteger los datos confidenciales almacenados en el servidor de hello, durante el movimiento entre cliente y servidor y garantizar que los datos confidenciales nunca aparece mientras Hola están en uso, como texto no cifrado en el sistema de bases de datos de Hola. Después de cifrar datos, solo las aplicaciones cliente o servidores de aplicaciones que tienen teclas de acceso toohello pueden tener acceso a datos de texto simple. Para más información, consulte [Always Encrypted (motor de base de datos)](https://msdn.microsoft.com/library/mt163865.aspx).
+Always Encrypted es una nueva tecnología de cifrado de datos de Base de datos SQL de Azure y SQL Server que ayuda a proteger los datos confidenciales en reposo en el servidor durante el movimiento entre cliente y servidor, y cuando los datos están en uso, lo que garantiza que los datos confidenciales nunca van a aparecer como texto no cifrado dentro del sistema de base de datos. Después de cifrar los datos, solo las aplicaciones cliente o los servidores de aplicaciones que tienen acceso a las claves pueden acceder a los datos de texto no cifrado. Para más información, consulte [Always Encrypted (motor de base de datos)](https://msdn.microsoft.com/library/mt163865.aspx).
 
-Después de configurar toouse de base de datos de hello Always Encrypted, creará una aplicación de cliente en C# con toowork de Visual Studio con datos cifrado de saludo.
+Después de configurar la base de datos para usar Always Encrypted, creará una aplicación cliente en C# con Visual Studio para trabajar con los datos cifrados.
 
-Siga los pasos de hello en este artículo toolearn cómo tooset seguridad Always Encrypted para una base de datos de SQL Azure. En este artículo, aprenderá cómo hello tooperform siguientes tareas:
+Siga los pasos de este artículo y aprenda a configurar Always Encrypted para una base de datos SQL de Azure. En este artículo, aprenderá a realizar las siguientes tareas:
 
-* Asistente de Always Encrypted Hola de uso en SSMS toocreate [Always Encrypted Keys](https://msdn.microsoft.com/library/mt163865.aspx#Anchor_3).
+* Usar el asistente de Always Encrypted en SSMS para crear [claves de Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx#Anchor_3).
   * Crear una [clave maestra de columna (CMK)](https://msdn.microsoft.com/library/mt146393.aspx).
   * Crear una [clave de cifrado de columna (CEK)](https://msdn.microsoft.com/library/mt146372.aspx).
 * Crear una tabla de base de datos y cifrar columnas.
-* Crear una aplicación que inserta, se selecciona y muestra los datos de columnas de hello cifrado.
+* Crear una aplicación que inserta, selecciona y muestra los datos de las columnas cifradas.
 
 ## <a name="prerequisites"></a>Requisitos previos
 Para este tutorial, necesitará:
 
 * Una cuenta y una suscripción de Azure. Si no tiene una, suscríbase para [una prueba gratuita](https://azure.microsoft.com/pricing/free-trial/).
 * [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) versión 13.0.700.242 o posterior.
-* [.NET framework 4.6](https://msdn.microsoft.com/library/w0x726c2.aspx) o posterior (en el equipo de cliente hello).
+* [.NET Framework 4.6](https://msdn.microsoft.com/library/w0x726c2.aspx) o posterior (en el equipo cliente).
 * [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
 
-## <a name="create-a-blank-sql-database"></a>Crear una instancia en blanco en SQL Database
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com/).
+## <a name="create-a-blank-sql-database"></a>Crear una base de datos SQL en blanco
+1. Inicie sesión en el [Portal de Azure](https://portal.azure.com/).
 2. Haga clic en **Nuevo** > **Datos y almacenamiento** > **SQL Database**.
-3. Cree una base de datos **en blanco** denominada **Clinic** en un servidor nuevo o existente. Para obtener instrucciones detalladas sobre cómo crear una base de datos en hello portal de Azure, consulte [la primera base de datos de SQL Azure](sql-database-get-started-portal.md).
+3. Cree una base de datos **en blanco** denominada **Clinic** en un servidor nuevo o existente. Si desea obtener instrucciones detalladas para crear una base de datos en Azure Portal, consulte [Su primera base de datos de Azure SQL Database](sql-database-get-started-portal.md).
    
     ![Crear una base de datos en blanco](./media/sql-database-always-encrypted/create-database.png)
 
-Necesitará la cadena de conexión de hello más adelante en el tutorial Hola. Después de crea la base de datos de hello, vaya toohello nueva Clinic base de datos y copia Hola cadena de conexión. Puede obtener la cadena de conexión de Hola en cualquier momento, pero resulta fácil toocopy cuando se encuentra en hello portal de Azure.
+Necesitará el nombre de la cadena de conexión más adelante en el tutorial. Después de crear la base de datos, vaya a la nueva base de datos Clinic y copie la cadena de conexión. Puede obtener la cadena de conexión en cualquier momento, pero es fácil copiarla si está en el Portal de Azure.
 
 1. Haga clic en **Bases de datos SQL** > **Clinic** > **Mostrar las cadenas de conexión de la base de datos**.
-2. Copie la cadena de conexión de Hola para **ADO.NET**.
+2. Copie la cadena de conexión para **ADO.NET**.
    
-    ![Copie la cadena de conexión de Hola](./media/sql-database-always-encrypted/connection-strings.png)
+    ![Copiar la cadena de conexión](./media/sql-database-always-encrypted/connection-strings.png)
 
-## <a name="connect-toohello-database-with-ssms"></a>Conectar la base de datos de toohello con SSMS
-Abra SSMS y conecte el servidor de toohello con base de datos de hello Clinic.
+## <a name="connect-to-the-database-with-ssms"></a>Conéctese a la base de datos con SSMS
+Abra SSMS y conéctese al servidor con la base de datos Clinic.
 
-1. Abra SSMS. (Haga clic en **conectar** > **motor de base de datos** tooopen hello **conectar tooServer** ventana si no está abierto).
-2. Escriba su nombre del servidor y las credenciales. nombre del servidor Hello puede encontrarse en la hoja de base de datos SQL de Hola y de cadena de conexión de Hola copió anteriormente. Tipo hello servidor completo nombre incluidos *database.windows.net*.
+1. Abra SSMS. (Haga clic en **Conectar** > **Motor de base de datos** para abrir la ventana **Conectar con el servidor** si no está abierta).
+2. Escriba su nombre del servidor y las credenciales. El nombre del servidor puede encontrarse en la hoja de la base de datos SQL y en la cadena de conexión que copió anteriormente. Escriba el nombre de servidor completo (incluido *database.windows.net*).
    
-    ![Copie la cadena de conexión de Hola](./media/sql-database-always-encrypted/ssms-connect.png)
+    ![Copiar la cadena de conexión](./media/sql-database-always-encrypted/ssms-connect.png)
 
-Si hello **nueva regla de Firewall** ventana se abre, inicie sesión en tooAzure y SSMS permiten crear una nueva regla de firewall para usted.
+Si se abre la ventana **Nueva regla de firewall** , inicie sesión en Azure y permita que SSMS cree una nueva regla de firewall.
 
 ## <a name="create-a-table"></a>Creación de una tabla
-En esta sección, creará un paciente de datos de toohold tabla. Se trata de una tabla normal inicialmente--que va a configurar el cifrado en la sección siguiente Hola.
+En esta sección, creará una tabla para almacenar datos de pacientes. Inicialmente será una tabla normal; configurará el cifrado en la sección siguiente.
 
 1. Expanda **Bases de datos**.
-2. Menú contextual hello **Clinic** la base de datos y haga clic en **nueva consulta**.
-3. Hola pegar después de Transact-SQL (T-SQL) en la nueva ventana de consulta de Hola y **Execute** lo.
+2. Haga clic con el botón derecho en la base de datos **Clinic** y haga clic en **Nueva consulta**.
+3. Pegue el siguiente código Transact-SQL (T-SQL) en la nueva ventana de consulta y haga clic en **Ejecutar** .
 
         CREATE TABLE [dbo].[Patients](
          [PatientId] [int] IDENTITY(1,1),
@@ -93,81 +93,81 @@ En esta sección, creará un paciente de datos de toohold tabla. Se trata de una
 
 
 ## <a name="encrypt-columns-configure-always-encrypted"></a>Cifrado de columnas (configurar Always Encrypted)
-SSMS proporciona un asistente tooeasily configurar Always Encrypted mediante la configuración de hello CMK, CEK y las columnas cifradas para usted.
+SSMS proporciona un asistente para configurar Always Encrypted de forma fácil mediante la configuración automática de CMK, CEK y columnas cifradas.
 
 1. Expandaa **Bases de datos** > **Clinic** > **Tablas**.
-2. Menú contextual hello **pacientes** de tabla y seleccione **cifrar columnas** Asistente para Always Encrypted de tooopen Hola:
+2. Haga clic con el botón derecho en la tabla **Patients** y seleccione **Cifrar columnas** para abrir el asistente de Always Encrypted:
    
     ![Cifrar columnas](./media/sql-database-always-encrypted/encrypt-columns.png)
 
-Asistente para Always Encrypted Hello incluye hello las secciones siguientes: **selección de columna**, **Master Key Configuration** (CMK), **validación**, y  **Resumen de**.
+El asistente de Always Encrypted incluye las siguientes secciones: **Selección de columnas**, **Configuración de la clave maestra** (CMK), **Validación** y **Resumen**.
 
 ### <a name="column-selection"></a>Selección de columnas
-Haga clic en **siguiente** en hello **Introducción** Hola de página tooopen **selección de columna** página. En esta página, seleccionará las columnas que desee tooencrypt, [Hola tipo de cifrado y qué clave de cifrado de columna (CEK)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2) toouse.
+En la página **Introducción**, haga clic en **Siguiente** para abrir la página **Selección de columnas**. En esta página, seleccione las columnas que desea cifrar, [el tipo de cifrado y qué clave de cifrado de columna (CEK)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2) desea usar.
 
-Cifre la información **SSN** y **BirthDate** de cada paciente. Hola **SSN** columna usará el cifrado determinista, que admite búsquedas de igualdad, combinaciones y group by. Hola **BirthDate** va a usar el cifrado aleatorio, que no admite operaciones de columna.
+Cifre la información **SSN** y **BirthDate** de cada paciente. La columna **SSN** usará cifrado determinista, que admite búsquedas de igualdad, combinaciones y agrupaciones. La columna **BirthDate** usará cifrado aleatorio, que no admite operaciones.
 
-Conjunto hello **tipo de cifrado** para hello **SSN** columna demasiado**Deterministic** hello y **BirthDate** columna demasiado **Aleatorio**. Haga clic en **Siguiente**.
+Establezca el **Tipo de cifrado** de la columna **SSN** en **Determinista** y la columna **BirthDate** en **Aleatoria**. Haga clic en **Siguiente**.
 
 ![Cifrar columnas](./media/sql-database-always-encrypted/column-selection.png)
 
 ### <a name="master-key-configuration"></a>Configuración de la clave maestra
-Hola **Master Key Configuration** página es donde se configura la las CMK y el proveedor de almacén de claves de hello seleccione hello CMK se almacenarán. Actualmente, puede almacenar una CMK de almacén de certificados de Windows hello, almacén de claves de Azure o un módulo de seguridad de hardware (HSM). Este tutorial muestra cómo toostore las claves de certificado de Windows hello almacenan.
+En la página **Configuración de la clave maestra** se configura la clave maestra de columna (CMK) y se selecciona el proveedor del almacén de claves donde se almacenará la CMK. Actualmente, puede almacenar una CMK en el almacén de certificados de Windows, en Almacén de claves de Azure o en un módulo de seguridad de hardware (HSM). En este tutorial se muestra cómo almacenar las claves en el almacén de certificados de Windows.
 
 Compruebe que el **almacén de certificados de Windows** esté seleccionado y haga clic en **Siguiente**.
 
 ![Configuración de la clave maestra](./media/sql-database-always-encrypted/master-key-configuration.png)
 
 ### <a name="validation"></a>Validación
-Puede cifrar columnas Hola ahora o guardar una toorun de secuencia de comandos de PowerShell más adelante. Para este tutorial, seleccione **continuar ahora toofinish** y haga clic en **siguiente**.
+Puede cifrar las columnas ahora o guardar un script de PowerShell para ejecutarlo más tarde. Para este tutorial, seleccione **Continuar para finalizar ahora** y haga clic en **Siguiente**.
 
 ### <a name="summary"></a>Resumen
-Compruebe que configuración de hello es correctos y haga clic en **finalizar** el programa de instalación hello toocomplete para Always Encrypted.
+Compruebe que la configuración sea correcta y haga clic en **Finalizar** para completar la configuración de Always Encrypted.
 
 ![Resumen](./media/sql-database-always-encrypted/summary.png)
 
-### <a name="verify-hello-wizards-actions"></a>Comprobar acciones del Asistente de Hola
-Una vez finalizado el Asistente de hello, la base de datos se configura para Always Encrypted. Asistente para realizar de Hola Hola siguientes acciones:
+### <a name="verify-the-wizards-actions"></a>Comprobación de las acciones del asistente
+Una vez finalizado el asistente, la base de datos estará configurada para Always Encrypted. El asistente habrá realizado las siguientes acciones:
 
 * Crea un CMK.
 * Crea un CMK.
-* Hola configurado seleccionado columnas para el cifrado. Su **pacientes** tabla actualmente no tiene datos, pero ahora se cifran los datos existentes en las columnas de hello seleccionado.
+* Configuración de las columnas seleccionadas para el cifrado. La tabla **Patients** aún no tiene datos, pero los datos existentes en las columnas seleccionadas ahora están cifrados.
 
-Puede comprobar la creación de hello de claves de hello en SSMS yendo demasiado**Clinic** > **seguridad** > **Always Encrypted Keys**. Ahora puede ver claves nuevas Hola que Hola genera automáticamente con un asistente.
+Para comprobar la creación de las claves en SSMS, vaya a **Clinic** > **Seguridad** > **Claves de Always Encrypted**. Ahora puede ver las nuevas claves que el asistente generó para usted.
 
-## <a name="create-a-client-application-that-works-with-hello-encrypted-data"></a>Crear una aplicación cliente que funciona con datos cifrado de saludo
-Ahora que Always Encrypted está configurado, puede compilar una aplicación que realiza *inserta* y *selecciona* en hello las columnas cifradas. toosuccessfully al ejecutar la aplicación de ejemplo de Hola, debe ejecutarla en hello mismo equipo donde se ejecutó el Asistente de Always Encrypted Hola. aplicación de hello toorun en otro equipo, debe implementar el equipo que toohello certificados Always Encrypted ejecuta la aplicación de cliente de hello.  
+## <a name="create-a-client-application-that-works-with-the-encrypted-data"></a>Crear una aplicación cliente que funcione con los datos cifrados
+Ahora que Always Encrypted está configurado, vamos a crear una aplicación que realice operaciones de *inserción* y *selección* en las columnas cifradas. Para ejecutar correctamente la aplicación de ejemplo, debe ejecutarla en el mismo equipo en el que ejecutó el asistente de Always Encrypted. Para ejecutar la aplicación en otro equipo, debe implementar los certificados de Always Encrypted en el equipo que ejecuta la aplicación cliente.  
 
 > [!IMPORTANT]
-> La aplicación debe utilizar [SqlParameter](https://msdn.microsoft.com/library/system.data.sqlclient.sqlparameter.aspx) objetos al pasar el servidor de toohello de datos de texto simple con columnas siempre cifradas. Se generará una excepción al pasar valores literales sin usar objetos SqlParameter.
+> La aplicación debe usar objetos [SqlParameter](https://msdn.microsoft.com/library/system.data.sqlclient.sqlparameter.aspx) al pasar datos de texto no cifrado al servidor con columnas de Always Encrypted. Se generará una excepción al pasar valores literales sin usar objetos SqlParameter.
 > 
 > 
 
-1. Abra Visual Studio y cree una nueva aplicación de consola C#. Asegúrese de que el proyecto se establece demasiado**.NET Framework 4.6** o una versión posterior.
-2. Proyecto de hello Name **AlwaysEncryptedConsoleApp** y haga clic en **Aceptar**.
+1. Abra Visual Studio y cree una nueva aplicación de consola C#. Asegúrese de que el proyecto esté establecido en **.NET Framework 4.6** o versiones posteriores.
+2. Asigne al proyecto el nombre **AlwaysEncryptedConsoleApp** y haga clic en **Aceptar**.
 
 ![Nueva aplicación de consola](./media/sql-database-always-encrypted/console-app.png)
 
-## <a name="modify-your-connection-string-tooenable-always-encrypted"></a>Modificar su tooenable de cadena de conexión Always Encrypted
-Esta sección se explica cómo tooenable siempre cifrado en la cadena de conexión de base de datos. Se modificará la aplicación de consola de hello que acaba de crear en la siguiente sección hello, "Aplicación de consola de ejemplo de cifrado siempre".
+## <a name="modify-your-connection-string-to-enable-always-encrypted"></a>Modificar la cadena de conexión para habilitar Always Encrypted
+En esta sección se explica cómo habilitar Always Encrypted en la cadena de conexión de su base de datos. La aplicación de consola que acaba de crear se modifica en la siguiente sección, “Aplicación de consola de ejemplo de Always Encrypted”.
 
-tooenable Always Encrypted, necesita hello tooadd **Column Encryption Setting** conexión tooyour de palabra clave de cadena y establézcalo demasiado**habilitado**.
+Para habilitar Always Encrypted, debe agregar la palabra clave **Column Encryption Setting** a la cadena de conexión y establecerla en **Enabled**.
 
-Puede establecer directamente en la cadena de conexión de hello, o se puede establecer mediante una [SqlConnectionStringBuilder](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx). aplicación de ejemplo de Hola Hola siguiente sección se muestra cómo toouse **SqlConnectionStringBuilder**.
+Puede establecerla directamente en la cadena de conexión o mediante [SqlConnectionStringBuilder](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx). La aplicación de ejemplo de la siguiente sección muestra cómo usar **SqlConnectionStringBuilder**.
 
 > [!NOTE]
-> Se trata de hello cambio solo necesario en una aplicación de cliente específico tooAlways cifrada. Si tiene una aplicación existente que almacena la cadena de conexión externamente (es decir, en un archivo de configuración), es posible que pueda tooenable Always Encrypted sin cambiar ningún código.
+> Este es el único cambio necesario en una aplicación cliente específica de Always Encrypted. Si tiene una aplicación existente que almacena su cadena de conexión de forma externa (es decir, en un archivo de configuración) puede habilitar Always Encrypted sin cambiar ningún código.
 > 
 > 
 
-### <a name="enable-always-encrypted-in-hello-connection-string"></a>Habilitar Always Encrypted en la cadena de conexión de Hola
-Agregue Hola después de la cadena de conexión de palabra clave tooyour:
+### <a name="enable-always-encrypted-in-the-connection-string"></a>Modificar Always Encrypted en la cadena de conexión
+Agregue la siguiente palabra clave en la cadena de conexión:
 
     Column Encryption Setting=Enabled
 
 
 ### <a name="enable-always-encrypted-with-a-sqlconnectionstringbuilder"></a>Habilitar Always Encrypted con un SqlConnectionStringBuilder
-Hello código siguiente muestra cómo Hola tooenable Always Encrypted estableciendo [SqlConnectionStringBuilder.ColumnEncryptionSetting](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.columnencryptionsetting.aspx) demasiado[habilitado](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectioncolumnencryptionsetting.aspx).
+El siguiente código muestra cómo habilitar Always Encrypted estableciendo [SqlConnectionStringBuilder.ColumnEncryptionSetting](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.columnencryptionsetting.aspx) en [Enabled](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectioncolumnencryptionsetting.aspx).
 
     // Instantiate a SqlConnectionStringBuilder.
     SqlConnectionStringBuilder connStringBuilder =
@@ -182,13 +182,13 @@ Hello código siguiente muestra cómo Hola tooenable Always Encrypted establecie
 ## <a name="always-encrypted-sample-console-application"></a>Aplicación de consola de ejemplo de Always Encrypted
 En este ejemplo se muestra cómo:
 
-* Modifique su tooenable de cadena de conexión siempre se cifran.
-* Insertar datos en columnas de hello cifrado.
+* Modificar la cadena de conexión para habilitar Always Encrypted.
+* Insertar datos en las columnas cifradas.
 * Seleccionar un registro mediante el filtrado de un valor específico de una columna cifrada.
 
-Reemplace el contenido de Hola de **Program.cs** con el siguiente código de hello. Reemplace la cadena de conexión de hello para la variable de connectionString global de hello en línea hello directamente encima de hello método Main con la cadena de conexión válida de hello portal de Azure. Se trata de hello cambio solo se necesita toomake toothis código.
+Reemplace el contenido de **Program.cs** por el código siguiente. Reemplace la cadena de conexión para la variable global connectionString en la línea directamente anterior al método Main por una cadena de conexión válida desde el Portal de Azure. Este es el único cambio que necesita realizar en este código.
 
-Ejecutar toosee de aplicación Hola Always Encrypted en acción.
+Ejecute la aplicación para ver Always Encrypted en acción.
 
     using System;
     using System.Collections.Generic;
@@ -202,40 +202,40 @@ Ejecutar toosee de aplicación Hola Always Encrypted en acción.
     {
     class Program
     {
-        // Update this line with your Clinic database connection string from hello Azure portal.
+        // Update this line with your Clinic database connection string from the Azure portal.
         static string connectionString = @"Replace with your connection string";
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Original connection string copied from hello Azure portal:");
+            Console.WriteLine("Original connection string copied from the Azure portal:");
             Console.WriteLine(connectionString);
 
             // Create a SqlConnectionStringBuilder.
             SqlConnectionStringBuilder connStringBuilder =
                 new SqlConnectionStringBuilder(connectionString);
 
-            // Enable Always Encrypted for hello connection.
-            // This is hello only change specific tooAlways Encrypted
+            // Enable Always Encrypted for the connection.
+            // This is the only change specific to Always Encrypted
             connStringBuilder.ColumnEncryptionSetting =
                 SqlConnectionColumnEncryptionSetting.Enabled;
 
             Console.WriteLine(Environment.NewLine + "Updated connection string with Always Encrypted enabled:");
             Console.WriteLine(connStringBuilder.ConnectionString);
 
-            // Update hello connection string with a password supplied at runtime.
+            // Update the connection string with a password supplied at runtime.
             Console.WriteLine(Environment.NewLine + "Enter server password:");
             connStringBuilder.Password = Console.ReadLine();
 
 
-            // Assign hello updated connection string tooour global variable.
+            // Assign the updated connection string to our global variable.
             connectionString = connStringBuilder.ConnectionString;
 
 
-            // Delete all records toorestart this demo app.
+            // Delete all records to restart this demo app.
             ResetPatientsTable();
 
-            // Add sample data toohello Patients table.
-            Console.Write(Environment.NewLine + "Adding sample patient data toohello database...");
+            // Add sample data to the Patients table.
+            Console.Write(Environment.NewLine + "Adding sample patient data to the database...");
 
             InsertPatient(new Patient() {
                 SSN = "999-99-0001", FirstName = "Orlando", LastName = "Gee", BirthDate = DateTime.Parse("01/04/1964") });
@@ -250,7 +250,7 @@ Ejecutar toosee de aplicación Hola Always Encrypted en acción.
 
 
             // Fetch and display all patients.
-            Console.WriteLine(Environment.NewLine + "All hello records currently in hello Patients table:");
+            Console.WriteLine(Environment.NewLine + "All the records currently in the Patients table:");
 
             foreach (Patient patient in SelectAllPatients())
             {
@@ -258,20 +258,20 @@ Ejecutar toosee de aplicación Hola Always Encrypted en acción.
             }
 
             // Get patients by SSN.
-            Console.WriteLine(Environment.NewLine + "Now let's locate records by searching hello encrypted SSN column.");
+            Console.WriteLine(Environment.NewLine + "Now let's locate records by searching the encrypted SSN column.");
 
             string ssn;
 
-            // This very simple validation only checks that hello user entered 11 characters.
-            // In production be sure toocheck all user input and use hello best validation for your specific application.
+            // This very simple validation only checks that the user entered 11 characters.
+            // In production be sure to check all user input and use the best validation for your specific application.
             do
             {
                 Console.WriteLine("Please enter a valid SSN (ex. 123-45-6789):");
                 ssn = Console.ReadLine();
             } while (ssn.Length != 11);
 
-            // hello example allows duplicate SSN entries so we will return all records
-            // that match hello provided value and store hello results in selectedPatients.
+            // The example allows duplicate SSN entries so we will return all records
+            // that match the provided value and store the results in selectedPatients.
             Patient selectedPatient = SelectPatientBySSN(ssn);
 
             // Check if any records were returned and display our query results.
@@ -286,7 +286,7 @@ Ejecutar toosee de aplicación Hola Always Encrypted en acción.
                 Console.WriteLine("No patients found with SSN = " + ssn);
             }
 
-            Console.WriteLine("Press Enter tooexit...");
+            Console.WriteLine("Press Enter to exit...");
             Console.ReadLine();
         }
 
@@ -333,9 +333,9 @@ Ejecutar toosee de aplicación Hola Always Encrypted en acción.
                 catch (Exception ex)
                 {
                     returnValue = 1;
-                    Console.WriteLine("hello following error was encountered: ");
+                    Console.WriteLine("The following error was encountered: ");
                     Console.WriteLine(ex.Message);
-                    Console.WriteLine(Environment.NewLine + "Press Enter key tooexit");
+                    Console.WriteLine(Environment.NewLine + "Press Enter key to exit");
                     Console.ReadLine();
                     Environment.Exit(0);
                 }
@@ -437,7 +437,7 @@ Ejecutar toosee de aplicación Hola Always Encrypted en acción.
         }
 
 
-        // This method simply deletes all records in hello Patients table tooreset our demo.
+        // This method simply deletes all records in the Patients table to reset our demo.
         static int ResetPatientsTable()
         {
             int returnValue = 0;
@@ -470,46 +470,46 @@ Ejecutar toosee de aplicación Hola Always Encrypted en acción.
     }
 
 
-## <a name="verify-that-hello-data-is-encrypted"></a>Compruebe que se cifren los datos de Hola
-Puede comprobar fácilmente que se cifran datos reales de hello en servidor hello consultando hello **pacientes** datos con SSMS. (Use donde todavía no está habilitado el valor de cifrado de columnas de hello de la conexión actual).
+## <a name="verify-that-the-data-is-encrypted"></a>Comprobación del cifrado de los datos
+Para comprobar rápidamente si los datos reales en el servidor se están cifrando, consulte los datos de **Patients** con SSMS. (Use su conexión actual si la configuración de cifrado de columnas no está habilitado aún).
 
-Ejecute hello después de consulta en la base de datos de hello Clinic.
+Ejecute la siguiente consulta en la base de datos Clinic.
 
     SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 
-Puede ver que columnas Hola cifra no contienen los datos de texto simple.
+Puede ver que las columnas cifradas no contienen datos de texto no cifrado.
 
    ![Nueva aplicación de consola](./media/sql-database-always-encrypted/ssms-encrypted.png)
 
-toouse SSMS tooaccess Hola datos de texto simple, puede agregar hello **Column Encryption Setting = habilitado** conexión toohello de parámetro.
+Par usar SSMS para obtener acceso a los datos de texto no cifrado, puede agregar el parámetro **Column Encryption Setting=enabled** a la conexión.
 
 1. En SSMS, haga clic con el botón derecho en el servidor en el **Explorador de objetos** y haga clic en **Desconectar**.
-2. Haga clic en **conectar** > **motor de base de datos** tooopen hello **conectar tooServer** ventana y, a continuación, haga clic en **opciones**.
+2. Haga clic en **Conectar** > **Motor de base de datos** para abrir la ventana **Conectar con el servidor** y haga clic en **Opciones**.
 3. Haga clic en **Parámetros de conexión adicionales** y escriba **Column Encryption Setting=enabled**.
    
     ![Nueva aplicación de consola](./media/sql-database-always-encrypted/ssms-connection-parameter.png)
-4. Ejecución hello consulta en hello siguiente **Clinic** base de datos.
+4. Ejecute la siguiente consulta en la base de datos **Clinic** .
    
         SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
    
-     Ahora puede ver datos de texto simple de hello en columnas de hello cifrado.
+     Ahora puede ver los datos de texto no cifrado en las columnas cifradas.
 
     ![Nueva aplicación de consola](./media/sql-database-always-encrypted/ssms-plaintext.png)
 
 
 
 > [!NOTE]
-> Si se conecta con SSMS (o cualquier cliente) en un equipo diferente, no tendrá acceso a claves de cifrado de toohello y no será capaz de toodecrypt datos de Hola.
+> Si se conecta con SSMS (o cualquier cliente) desde un equipo diferente, no tendrá acceso a las claves de cifrado y no podrá descifrar los datos.
 > 
 > 
 
 ## <a name="next-steps"></a>Pasos siguientes
-Después de crear una base de datos que usa Always Encrypted, puede que desee siguiente de Hola toodo:
+Después de crear una base de datos que usa Always Encrypted, es posible que quiera hacer lo siguiente:
 
-* Ejecutar este ejemplo desde un equipo diferente. No tendrá acceso a claves de cifrado de toohello, por lo que no tendrá acceso a datos de texto simple de toohello y no se ejecutará correctamente.
+* Ejecutar este ejemplo desde un equipo diferente. No tendrá acceso a las claves de cifrado, por lo que no tendrá acceso a los datos de texto no cifrado y no se ejecutará correctamente.
 * [Rotar y limpiar las claves](https://msdn.microsoft.com/library/mt607048.aspx).
 * [Migrar los datos que ya están cifrados con Always Encrypted](https://msdn.microsoft.com/library/mt621539.aspx).
-* [Implementar máquinas del cliente de Always Encrypted certificados tooother](https://msdn.microsoft.com/library/mt723359.aspx#Anchor_1) (consulte la sección "Hacer que los certificados disponibles tooApplications y los usuarios" de hello).
+* [Implementar certificados de Always Encrypted en otros equipos cliente](https://msdn.microsoft.com/library/mt723359.aspx#Anchor_1) (consulte la sección “Disponibilidad de los certificados para las aplicaciones y los usuarios”).
 
 ## <a name="related-information"></a>Información relacionada
 * [Always Encrypted (desarrollo de clientes)](https://msdn.microsoft.com/library/mt147923.aspx)

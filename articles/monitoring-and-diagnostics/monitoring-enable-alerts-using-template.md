@@ -1,6 +1,6 @@
 ---
-title: "una alerta de métricas con una plantilla de administrador de recursos aaaCreate | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toouse un toocreate de plantilla de administrador de recursos una métrica tooreceive notificaciones por correo electrónico o webhook de alerta."
+title: "Creación de una alerta de métrica con una plantilla de Resource Manager | Microsoft Docs"
+description: "Obtenga información sobre cómo utilizar una plantilla de Resource Manager para crear una alerta de métrica con el fin de recibir notificaciones por correo electrónico o webhook."
 author: johnkemnetz
 manager: orenr
 editor: 
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/21/2017
 ms.author: johnkem
-ms.openlocfilehash: dcf92b189f56a8389fff007c82197527239b96b8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ac12605636d21fd0b5c89512c454ef2d899ef6dc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Creación de una alerta de métrica con una plantilla de Resource Manager
-Este artículo muestra cómo se puede utilizar un [plantilla de Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) tooconfigure Azure métricas alertas. Esto le permite tooautomatically configurar alertas sobre los recursos cuando se crean tooensure que todos los recursos se supervisan correctamente.
+En este artículo se describe cómo se puede utilizar una [plantilla de Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) para configurar alertas de métrica de Azure. Esto permite configurar automáticamente las alertas en los recursos cuando se crean para asegurarse de que todos los recursos se supervisan correctamente.
 
-pasos básicos de Hello son los siguientes:
+Los pasos básicos son los siguientes:
 
-1. Crear una plantilla como un archivo JSON que describe cómo toocreate Hola alerta.
-2. [Implementar la plantilla de hello mediante cualquier método de implementación](../azure-resource-manager/resource-group-template-deploy.md).
+1. Cree una plantilla como archivo JSON que describa cómo crear la alerta.
+2. [Implemente la plantilla mediante cualquier método de implementación](../azure-resource-manager/resource-group-template-deploy.md).
 
-A continuación se describe cómo toocreate una plantilla de administrador de recursos en primer lugar de una alerta por sí sola y, a continuación, para una alerta durante la creación de hello de otro recurso.
+A continuación se describe cómo crear una plantilla de Resource Manager primero para una alerta solamente y, después, para una alerta durante la creación de otro recurso.
 
 ## <a name="resource-manager-template-for-a-metric-alert"></a>Plantilla de Resource Manager para una alerta de métrica
-toocreate una alerta con una plantilla de administrador de recursos, se crea un recurso de tipo `Microsoft.Insights/alertRules` y rellene todos ellos relacionados con propiedades. A continuación se muestra una plantilla que crea una regla de alertas.
+Para crear una alerta mediante una plantilla de Resource Manager, cree un recurso de tipo `Microsoft.Insights/alertRules` y rellene todas las propiedades relacionadas. A continuación se muestra una plantilla que crea una regla de alertas.
 
 ```json
 {
@@ -62,14 +62,14 @@ toocreate una alerta con una plantilla de administrador de recursos, se crea un 
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "Resource ID of hello resource emitting hello metric that will be used for hello comparison."
+                "description": "Resource ID of the resource emitting the metric that will be used for the comparison."
             }
         },
         "metricName": {
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "Name of hello metric used in hello comparison tooactivate hello alert."
+                "description": "Name of the metric used in the comparison to activate the alert."
             }
         },
         "operator": {
@@ -82,14 +82,14 @@ toocreate una alerta con una plantilla de administrador de recursos, se crea un 
                 "LessThanOrEqual"
             ],
             "metadata": {
-                "description": "Operator comparing hello current value with hello threshold value."
+                "description": "Operator comparing the current value with the threshold value."
             }
         },
         "threshold": {
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "hello threshold value at which hello alert is activated."
+                "description": "The threshold value at which the alert is activated."
             }
         },
         "aggregation": {
@@ -103,35 +103,35 @@ toocreate una alerta con una plantilla de administrador de recursos, se crea un 
                 "Total"
             ],
             "metadata": {
-                "description": "How hello data that is collected should be combined over time."
+                "description": "How the data that is collected should be combined over time."
             }
         },
         "windowSize": {
             "type": "string",
             "defaultValue": "PT5M",
             "metadata": {
-                "description": "Period of time used toomonitor alert activity based on hello threshold. Must be between five minutes and one day. ISO 8601 duration format."
+                "description": "Period of time used to monitor alert activity based on the threshold. Must be between five minutes and one day. ISO 8601 duration format."
             }
         },
         "sendToServiceOwners": {
             "type": "bool",
             "defaultValue": true,
             "metadata": {
-                "description": "Specifies whether alerts are sent tooservice owners"
+                "description": "Specifies whether alerts are sent to service owners"
             }
         },
         "customEmailAddresses": {
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "Comma-delimited email addresses where hello alerts are also sent"
+                "description": "Comma-delimited email addresses where the alerts are also sent"
             }
         },
         "webhookUrl": {
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "URL of a webhook that will receive an HTTP POST when hello alert activates."
+                "description": "URL of a webhook that will receive an HTTP POST when the alert activates."
             }
         }
     },
@@ -178,10 +178,10 @@ toocreate una alerta con una plantilla de administrador de recursos, se crea un 
 }
 ```
 
-Obtener una explicación del esquema de Hola y propiedades para una regla de alerta [está disponible aquí](https://msdn.microsoft.com/library/azure/dn933805.aspx).
+La explicación del esquemas y las propiedades de una regla de alertas [está disponible aquí](https://msdn.microsoft.com/library/azure/dn933805.aspx).
 
 ## <a name="resource-manager-template-for-a-resource-with-an-alert"></a>Plantilla de Resource Manager para un recurso con una alerta
-Una alerta en una plantilla de Resource Manager suele ser más útil al crear una alerta mientras se crea un recurso. Por ejemplo, puede que desee tooensure que una "CPU % > 80" regla se configura cada vez que implementa una máquina Virtual. toodo, Agregar regla de alerta de Hola como un recurso en la matriz de recursos de hello para la plantilla de máquina virtual y agregue una dependencia con hello `dependsOn` identificador de recurso de propiedad toohello máquina virtual. Este es un ejemplo completo que crea una máquina virtual de Windows y agrega una alerta que notifica a los administradores de suscripciones cuando Hola el uso de CPU supera el 80%.
+Una alerta en una plantilla de Resource Manager suele ser más útil al crear una alerta mientras se crea un recurso. Por ejemplo, desea asegurarse de que se configura una regla "CPU % > 80" cada vez que implementa una máquina virtual. Para ello, agregue la regla de alerta como un recurso en la matriz de recursos para la plantilla de máquina virtual y agregue también una dependencia utilizando la propiedad `dependsOn` para el identificador de recurso de máquina virtual. A continuación se presenta un ejemplo completo que crea una máquina virtual Windows y agrega una alerta que notifica a los administradores de la suscripción cuando el uso de CPU supera el 80 %.
 
 ```json
 {
@@ -191,25 +191,25 @@ Una alerta en una plantilla de Resource Manager suele ser más útil al crear un
         "newStorageAccountName": {
             "type": "string",
             "metadata": {
-                "Description": "hello name of hello storage account where hello VM disk is stored."
+                "Description": "The name of the storage account where the VM disk is stored."
             }
         },
         "adminUsername": {
             "type": "string",
             "metadata": {
-                "Description": "hello name of hello administrator account on hello VM."
+                "Description": "The name of the administrator account on the VM."
             }
         },
         "adminPassword": {
             "type": "securestring",
             "metadata": {
-                "Description": "hello administrator account password on hello VM."
+                "Description": "The administrator account password on the VM."
             }
         },
         "dnsNameForPublicIP": {
             "type": "string",
             "metadata": {
-                "Description": "hello name of hello public IP address used tooaccess hello VM."
+                "Description": "The name of the public IP address used to access the VM."
             }
         }
     },
@@ -402,5 +402,5 @@ Una alerta en una plantilla de Resource Manager suele ser más útil al crear un
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Más información sobre alertas](insights-receive-alert-notifications.md)
-* [Agregar configuración de diagnóstico](monitoring-enable-diagnostic-logs-using-template.md) tooyour plantilla de administrador de recursos
+* [Agregue la Configuración de diagnóstico](monitoring-enable-diagnostic-logs-using-template.md) a la plantilla de Resource Manager
 

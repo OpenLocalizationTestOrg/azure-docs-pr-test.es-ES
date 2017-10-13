@@ -1,6 +1,6 @@
 ---
-title: "aaaPowerShell de amenaza auditoría ejemplo detección Azure base de datos SQL | Documentos de Microsoft"
-description: "Azure PowerShell ejemplo script tooconfigure auditoría y amenaza para la detección en una base de datos de SQL Azure"
+title: "Ejemplo de PowerShell para auditoría y detección de amenazas en Azure SQL Database | Microsoft Docs"
+description: "Ejemplo de script de Azure PowerShell para configurar la auditoría y la detección de amenazas en Azure SQL Database"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -14,15 +14,15 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 06/23/2017
+ms.date: 09/08/2017
 ms.author: janeng
-ms.openlocfilehash: 97e057ac6efe5e730404ae796bc01e7e5c70df35
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: da4c5cd2c18e62ae40fe1c3f0a7fa014163b351c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="use-powershell-tooconfigure-sql-database-auditing-and-threat-detection"></a>Utilice la detección de amenazas y auditoría de la base de datos SQL del tooconfigure PowerShell
+# <a name="use-powershell-to-configure-sql-database-auditing-and-threat-detection"></a>Uso de PowerShell para configurar la auditoría y detección de amenazas en SQL Database
 
 Este script de ejemplo de PowerShell permite configurar la auditoría y detección de amenazas en SQL Database. 
 
@@ -34,15 +34,15 @@ Este script de ejemplo de PowerShell permite configurar la auditoría y detecci�
 
 ## <a name="clean-up-deployment"></a>Limpieza de la implementación
 
-Después de ejecutar el ejemplo de script de Hola, Hola siguiente comando puede ser usado tooremove grupo de recursos de Hola y todos los recursos asociados con él.
+Después de ejecutar el script de ejemplo, se puede usar el comando siguiente para quitar el grupo de recursos y todos los recursos asociados.
 
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
+Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Este script utiliza Hola siga los comandos. Cada comando de documentación específica de hello tabla vínculos toocommand.
+Este script usa los siguientes comandos. Cada comando de la tabla crea un vínculo a documentación específica del comando.
 
 | Comando | Notas |
 |---|---|
@@ -50,13 +50,13 @@ Este script utiliza Hola siga los comandos. Cada comando de documentación espec
 | [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | Crea un servidor lógico que hospeda una base de datos o un grupo elástico. |
 | [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) | Crea una base de datos en un servidor lógico como una base de datos única o agrupada. |
 | [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) | Crea una cuenta de Storage. |
-| [Set-AzureRmSqlDatabaseAuditingPolicy](/powershell/module/azurerm.sql/set-azurermsqldatabaseauditingpolicy) | Establece la directiva de auditoría de Hola para una base de datos. |
+| [Set-AzureRmSqlDatabaseAuditingPolicy](/powershell/module/azurerm.sql/set-azurermsqldatabaseauditingpolicy) | Establece la directiva de auditoría para una base de datos. |
 | [Set-AzureRmSqlDatabaseThreatDetectionPolicy](/powershell/module/azurerm.sql/set-azurermsqldatabasethreatdetectionpolicy) | Establece una directiva de detección de amenazas en una base de datos. |
 | [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Elimina un grupo de recursos, incluidos todos los recursos anidados. |
 |||
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener más información sobre hello Azure PowerShell, consulte [documentación de Azure PowerShell](/powershell/azure/overview).
+Para más información sobre Azure PowerShell, consulte la [documentación de Azure PowerShell](/powershell/azure/overview).
 
-Encontrará más ejemplos de secuencias de comandos de PowerShell de la base de datos de SQL en hello [scripts de PowerShell de base de datos de SQL Azure](../sql-database-powershell-samples.md).
+Encontrará más ejemplos de scripts de PowerShell de SQL Database en los [scripts de PowerShell de Azure SQL Database](../sql-database-powershell-samples.md).

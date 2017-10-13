@@ -1,6 +1,6 @@
 ---
-title: "telemetría aaaSeparating desde el desarrollo, prueba y suelte en Azure Application Insights | Documentos de Microsoft"
-description: "Recursos de toodifferent de telemetría directa para que las marcas de desarrollo, prueba y producción."
+title: "Separación de la telemetría de desarrollo, prueba y publicación en Azure Application Insights | Microsoft Docs"
+description: "Este artículo trata sobre el envío directo de la telemetría a los diferentes recursos para los sellos de desarrollo, prueba y producción."
 services: application-insights
 documentationcenter: 
 author: CFreemanwa
@@ -13,35 +13,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: bwren
-ms.openlocfilehash: a294c8c70f46d7c29b460461c3494c83e13a0cbe
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f51fa4639aaa60686cc349683713c6e5f9732bb9
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Separación de la telemetría de desarrollo, prueba y producción
 
-Cuando está desarrollando la próxima versión de Hola de una aplicación web, no desea toomix seguridad hello [Application Insights](app-insights-overview.md) telemetría de la nueva versión de hello y la versión de Hola ya publicado. tooavoid confusión, envío Hola telemetría de desarrollo diferentes fases tooseparate recursos de Application Insights, con claves de instrumentación independiente (ikeys). toomake sea más fácil toochange Hola Instrumental clave como una versión se mueve de una fase tooanother, puede ser útil tooset Hola ikey en el código en lugar de en el archivo de configuración de Hola. 
+Cuando esté desarrollando la próxima versión de una aplicación web, no querrá mezclar la telemetría de [Application Insights](app-insights-overview.md) de la nueva versión con la que ya se ha publicado. Para evitar confusiones, envíe la telemetría de las distintas fases de desarrollo para separar los recursos de Application Insights con claves de instrumentación independientes (iKey). Para que sea más fácil cambiar la clave de instrumentación cuando pase una versión de una fase a otro, puede ser útil establecer la clave iKey en el código en lugar de en el archivo de configuración. 
 
 (Si el sistema es un servicio en la nube de Azure, hay [otra forma de configurar claves separadas](app-insights-cloudservices.md)).
 
 ## <a name="about-resources-and-instrumentation-keys"></a>Acerca de los recursos y las claves de instrumentación
 
-Al configurar la supervisión de Application Insights para su aplicación web, se crea un *recurso* de Application Insights en Microsoft Azure. Abrir este recurso en el portal de Azure en orden toosee hello y analizar la telemetría de hello recopilada desde la aplicación. recursos de Hola se identifican mediante un *clave de instrumentación* (ikey). Cuando se instala Hola Application Insights empaquetarla toomonitor, configurarlo con clave de instrumentación de hello, para que sepa dónde toosend Hola telemetría.
+Al configurar la supervisión de Application Insights para su aplicación web, se crea un *recurso* de Application Insights en Microsoft Azure. Abra este recurso en Azure Portal con el fin de ver y analizar la telemetría recopilada de la aplicación. Cada recurso se identifica con una *clave de instrumentación* (iKey). Cuando se instala el paquete de Application Insights para supervisar la aplicación, configúrelo con la clave de instrumentación para que sepa dónde enviar la telemetría.
 
-Normalmente elija recursos independientes toouse o un único recurso compartido en escenarios diferentes:
+Normalmente, decidirá usar recursos independientes o un recurso compartido único en escenarios diferentes:
 
 * Aplicaciones independientes y diferentes: use un recurso y una clave iKey independientes para cada aplicación.
-* Usar varios componentes o funciones de una sola aplicación comercial - un [único recurso compartido](app-insights-monitor-multi-role-apps.md) para todas las aplicaciones de componente de Hola. Puede filtrar o segmentada por propiedad de hello cloud_RoleName telemetría.
-* Desarrollo y prueba, versión, usan un recurso independiente y ikey de versiones del sistema de hello en 'marca' o una fase de producción.
-* Pruebas A/B: use un único recurso. Cree una tooadd TelemetryInitializer una telemetría de toohello de propiedad que identifica las variantes de Hola.
+* Varios componentes o roles de una sola aplicación empresarial: use un [único recurso compartido](app-insights-monitor-multi-role-apps.md) para todas las aplicaciones de componentes. La telemetría puede filtrarse o segmentarse por la propiedad cloud_RoleName.
+* Desarrollo, prueba y publicación: use un recurso y una clave iKey independientes para las versiones del sistema en "sellos" o fase de producción.
+* Pruebas A/B: use un único recurso. Cree un elemento TelemetryInitializer para agregar una propiedad a la telemetría que identifica las variantes.
 
 
 ## <a name="dynamic-ikey"></a> Copia de la clave de instrumentación
 
-toomake, facilitando la toochange Hola ikey como código de hello se mueve entre fases de producción, establézcala en el código en lugar de en el archivo de configuración de Hola.
+Para que sea más fácil cambiar la clave iKey cuando el código se mueva entre las fases de producción, establézcala en el código en lugar de en el archivo de configuración.
 
-Establezca la clave de hello en un método de inicialización, como global.aspx.cs en un servicio ASP.NET:
+Establezca la clave en un método de inicialización, como global.aspx.cs en un servicio de ASP.NET:
 
 *C#*
 
@@ -53,10 +53,10 @@ Establezca la clave de hello en un método de inicialización, como global.aspx.
           WebConfigurationManager.AppSettings["ikey"];
       ...
 
-En este ejemplo, hello ikeys para los distintos recursos de Hola se colocan en las diferentes versiones del archivo de configuración web de Hola. Archivo de configuración de web de hello intercambiando - lo que puede hacer como parte del script de la versión de Hola - intercambiará recurso de destino de Hola.
+En este ejemplo, las ikeys para los distintos recursos se colocan en diferentes versiones del archivo de configuración web. Si cambia el archivo de configuración web (algo que se puede hacer como parte del script de lanzamiento), se intercambiará el recurso de destino.
 
 ### <a name="web-pages"></a>Páginas web
-Hola iKey también se utiliza en páginas web de la aplicación, en hello [secuencia de comandos que obtuvo en la hoja de inicio rápido de hello](app-insights-javascript.md). En lugar de codificar, literalmente en el script de Hola, generar desde el estado del servidor de Hola. Por ejemplo, en una aplicación ASP.NET:
+La iKey también se usa en las páginas web de su aplicación, en el [script que obtuvo desde la hoja Inicio rápido](app-insights-javascript.md). En vez de codificarla literalmente en el script, genérela desde el estado del servidor. Por ejemplo, en una aplicación ASP.NET:
 
 *JavaScript en Razor*
 
@@ -72,43 +72,43 @@ Hola iKey también se utiliza en páginas web de la aplicación, en hello [secue
 
 
 ## <a name="create-additional-application-insights-resources"></a>Creación de recurso de Application Insights adicionales
-tooseparate telemetría para los componentes de aplicación diferente o para marcas de tiempo diferentes (desarrollo/prueba/producción) de hello mismo componente, entonces tendrá toocreate un nuevo recurso de Application Insights.
+Con el fin de separar la telemetría para los diferentes componentes de la aplicación, o para diferentes sellos (desarrollo, prueba y producción) del mismo componente, tendrá que crear un recurso de Application Insights.
 
-Hola [portal.azure.com](https://portal.azure.com), agregar un recurso de información de la aplicación:
+En el [portal.azure.com](https://portal.azure.com), agregue un recurso de Application Insights:
 
 ![Haga clic en Nuevo, Application Insights.](./media/app-insights-separate-resources/01-new.png)
 
-* **Tipo de aplicación** afecta a lo que ve en la hoja de información general de Hola y Hola propiedades [explorer métrica](app-insights-metrics-explorer.md). Si no ve el tipo de aplicación, elija uno de los tipos de hello web para las páginas web.
+* **tipo de aplicación** afecta a lo que ve en la hoja de información general y las propiedades disponibles en el [explorador de métricas](app-insights-metrics-explorer.md)de Azure. Si no ve el tipo de aplicación, elija uno de los tipos web para páginas web.
 * **grupo de recursos** resulta práctico para administrar propiedades como el  como el [control de acceso](app-insights-resources-roles-access-control.md)de Azure. Puede usar grupos de recursos independientes para desarrollo, prueba y producción.
 * **suscripción** es su cuenta de pago de Azure.
 * **ubicación** es donde se guardan los datos. Actualmente no se puede cambiar. 
-* **Agregar toodashboard** coloca un icono de acceso rápido para el recurso en la página principal de Azure. 
+* **Agregar al panel** coloca un icono de acceso rápido al recurso en la página principal de Azure. 
 
-Crear recursos de hello tarda unos segundos. Verá una alerta cuando esté listo.
+El recurso tarda unos segundos en crearse. Verá una alerta cuando esté listo.
 
-(Puede escribir una [script de PowerShell](app-insights-powershell-script-create-resource.md) toocreate un recurso automáticamente.)
+(Puede escribir un [script de PowerShell](app-insights-powershell-script-create-resource.md) para crear un recurso  automáticamente.)
 
-### <a name="getting-hello-instrumentation-key"></a>Obtener clave de instrumentación de Hola
-clave de instrumentación de Hello identifica recursos de Hola que ha creado. 
+### <a name="getting-the-instrumentation-key"></a>Obtención de la clave de instrumentación
+La clave de instrumentación identifica al recurso que ha creado. 
 
-![Haga clic en Essentials, haga clic en hello clave de instrumentación, CTRL + c.](./media/app-insights-separate-resources/02-props.png)
+![Haga clic en Essentials y elija la clave de instrumentación, CTRL + C](./media/app-insights-separate-resources/02-props.png)
 
-Se necesitan las claves de instrumentación de Hola de todos los toowhich de recursos de Hola la aplicación enviará los datos.
+Necesita las claves de instrumentación de todos los recursos a los que la aplicación enviará datos.
 
 ## <a name="filter-on-build-number"></a>Filtrado por número de compilación
-Cuando se publica una nueva versión de la aplicación, le interesará telemetría de hello tooseparate capaz de toobe desde diferentes compilaciones.
+Cuando se publica una nueva versión de la aplicación, querrá poder separar la telemetría en las diferentes versiones.
 
-Puede establecer la propiedad de versión de la aplicación hello para que pueda filtrar [búsqueda](app-insights-diagnostic-search.md) y [explorer métrica](app-insights-metrics-explorer.md) resultados.
+Puede establecer la propiedad de versión de la aplicación para filtrar los resultados de la [búsqueda](app-insights-diagnostic-search.md) y del [explorador de métricas](app-insights-metrics-explorer.md).
 
 ![Filtrado según una propiedad](./media/app-insights-separate-resources/050-filter.png)
 
-Existen varios métodos diferentes de establecer la propiedad de versión de la aplicación hello.
+Hay diferentes métodos de establecer la propiedad de versión de la aplicación.
 
 * Establezca directamente:
 
     `telemetryClient.Context.Component.Version = typeof(MyProject.MyClass).Assembly.GetName().Version;`
-* Ajustar esa línea en un [inicializador de telemetría](app-insights-api-custom-events-metrics.md#defaults) tooensure que todas las instancias de TelemetryClient se establecen de forma coherente.
-* [ASP.NET] Establecer versión de hello en `BuildInfo.config`. módulo de Hello web recogerá versión Hola de nodo de BuildLabel Hola. Incluir este archivo en el proyecto y recordar tooset Hola copiar siempre propiedad el Explorador de soluciones.
+* Ajuste esa línea en un [inicializador de telemetría](app-insights-api-custom-events-metrics.md#defaults) para asegurarse de que todas las instancias de TelemetryClient se establecen de forma coherente.
+* [ASP.NET] Establezca la versión en `BuildInfo.config`. El módulo web recogerá la versión del nodo BuildLabel. Incluya este archivo en el proyecto y recuerde que establecer la propiedad Copiar siempre en el Explorador de soluciones.
 
     ```XML
 
@@ -123,7 +123,7 @@ Existen varios métodos diferentes de establecer la propiedad de versión de la 
     </DeploymentEvent>
 
     ```
-* [ASP.NET] Genere BuildInfo.config automáticamente en MSBuild. toodo, agregar algunas de las líneas de tooyour `.csproj` archivo:
+* [ASP.NET] Genere BuildInfo.config automáticamente en MSBuild. Para ello, agregue unas líneas a su archivo `.csproj`:
 
     ```XML
 
@@ -132,14 +132,14 @@ Existen varios métodos diferentes de establecer la propiedad de versión de la 
     </PropertyGroup>
     ```
 
-    Esto genera un archivo denominado *NombreDelProyecto*. Hola BuildInfo.config. proceso de publicación cambia su nombre tooBuildInfo.config.
+    Esto genera un archivo denominado *suNombreProyecto*.BuildInfo.config. El proceso de publicación cambia su nombre a BuildInfo.config.
 
-    etiqueta de compilación de Hello contiene un marcador de posición (AutoGen_...) al compilar con Visual Studio. Pero cuando se compila con MSBuild, se rellena con el número de versión correcto de Hola.
+    La etiqueta de compilación contiene un marcador de posición (AutoGen_...) al compilar con Visual Studio. Pero cuando se crea con MSBuild, se rellena con el número de versión correcto.
 
-    números de versión de MSBuild toogenerate tooallow, versión del juego de hello como `1.0.*` en AssemblyReference.cs
+    Para permitir que MSBuild genere números de versión, establezca la versión como `1.0.*` en AssemblyReference.cs.
 
 ## <a name="version-and-release-tracking"></a>Versión y seguimiento de versiones
-versión de la aplicación hello tootrack, asegúrese de que `buildinfo.config` generado por el proceso de Microsoft Build Engine. En su archivo .csproj, agregue:  
+Para realizar el seguimiento de la versión de la aplicación, asegúrese de que `buildinfo.config` lo genera el proceso de Microsoft Build Engine. En su archivo .csproj, agregue:  
 
 ```XML
 
@@ -148,15 +148,15 @@ versión de la aplicación hello tootrack, asegúrese de que `buildinfo.config` 
     </PropertyGroup>
 ```
 
-Cuando tiene información de compilación de hello, agrega automáticamente el módulo de web Application Insights hello **versión de la aplicación** como un elemento de propiedad tooevery de telemetría. Que permite toofilter versión al realizar [búsquedas diagnóstico](app-insights-diagnostic-search.md), o cuando se [explorar métricas](app-insights-metrics-explorer.md).
+Cuando tenga la información de la compilación, el módulo web de Application Insights agregará automáticamente la **versión de la aplicación** como una propiedad a cada elemento de telemetría. Esto le permite filtrar por versión al realizar [búsquedas de diagnósticos](app-insights-diagnostic-search.md) o al [explorar métricas](app-insights-metrics-explorer.md).
 
-Sin embargo, observe que el número de versión de compilación de Hola se genera solo por hello Microsoft Build Engine, no por el desarrollador de Hola se crean en Visual Studio.
+Sin embargo, tenga en cuenta que el número de versión de la compilación solo lo genera Microsoft Build Engine, no la compilación de desarrollador de Visual Studio.
 
 ### <a name="release-annotations"></a>Anotaciones de la versión
-Si usa Visual Studio Team Services, puede [obtener un marcador de anotación](app-insights-annotations.md) agregan gráficos tooyour cada vez que publica una versión nueva. Hola siguiente imagen muestra la apariencia de este marcador.
+Si usa Visual Studio Team Services, puede [obtener un marcador de anotación](app-insights-annotations.md) agregado a los gráficos, siempre que publique una nueva versión. La siguiente imagen muestra cómo aparece este marcador.
 
 ![Captura de pantalla de la anotación de la versión de ejemplo en un gráfico](./media/app-insights-asp-net/release-annotation.png)
 ## <a name="next-steps"></a>Pasos siguientes
 
 * [Recursos compartidos para varios roles](app-insights-monitor-multi-role-apps.md)
-* [Crear un toodistinguish de inicializador de telemetría A | Variantes de B](app-insights-api-filtering-sampling.md#add-properties)
+* [Creación de un inicializador de telemetría para distinguir variantes A/B](app-insights-api-filtering-sampling.md#add-properties)

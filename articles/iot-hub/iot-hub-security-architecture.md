@@ -1,5 +1,5 @@
 ---
-title: arquitectura de seguridad de IoT aaaAzure | Documentos de Microsoft
+title: Arquitectura de seguridad de IoT de Azure | Microsoft Docs
 description: Consideraciones e instrucciones de arquitectura de seguridad de IoT, incluido el modelado de amenazas.
 services: iot-hub
 documentationcenter: 
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: yurid
-ms.openlocfilehash: 377226aa88d8700929d553d9862eef780db5356e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4f9a99fa41406d496db14e8a4f71cfb96dd9b70c
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 [!INCLUDE [iot-security-architecture](../../includes/iot-security-architecture.md)]
 
 ## <a name="see-also"></a>Otras referencias
-toolearn más acerca de cómo proteger la solución de IoT, vea, [proteger la implementación de IoT][lnk-security-deployment]
+Para obtener más información sobre cómo proteger la solución de IoT, consulte [Proteger su implementación de IoT][lnk-security-deployment].
 
-toofurther explorar las capacidades de Hola de centro de IoT, vea:
+Para explorar aún más las funcionalidades de IoT Hub, consulte:
 
 * [Simular un dispositivo con Azure IoT Edge][lnk-iotedge]
 

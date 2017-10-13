@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure documentación del programador: tutoriales, referencia de API | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toouse programador tooschedule e invocar los trabajos como mantenimiento periódicas de las acciones y la rutina de aplicación. Tutoriales, referencias de API y mucho más."
+title: "Documentación sobre Azure Scheduler: tutoriales y referencia de API | Microsoft Docs"
+description: "Aprenda a usar Scheduler para programar e invocar trabajos como acciones periódicas de aplicación y mantenimiento rutinario. Tutoriales, referencias de API y mucho más."
 services: scheduler
 author: carolz
 manager: carolz
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: c9e67fc813939c31bb3cd38215293c98babe3838
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 4883e5689a639259ec1c0bcd31e1016f85af5d66
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scheduler-documentation"></a>Documentación de Scheduler
 
-Obtenga información acerca de cómo toouse programador tooschedule e invocar automáticamente los trabajos recurrentes en la nube de Hola. Tutoriales, referencias de API y otra documentación mostrarán cómo tooschedule y monitor de trabajos, como el mantenimiento de rutina y acciones de aplicación periódico.
+Aprenda a usar Scheduler para programar e invocar automáticamente trabajos periódicos en la nube. En los tutoriales, las referencias de API y otra documentación, se muestra cómo programar y supervisar trabajos como acciones periódicas de aplicación y mantenimiento rutinario.
 
 <ul class="panelContent cardsFTitle">
     <li>

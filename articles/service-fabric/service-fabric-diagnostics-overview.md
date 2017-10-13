@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure información general sobre diagnóstico y supervisión del servicio de Fabric | Documentos de Microsoft"
+title: "Información general sobre supervisión y diagnóstico de Azure Service Fabric | Microsoft Docs"
 description: "Obtenga información sobre la supervisión y el diagnóstico para los clústeres, las aplicaciones y los servicios de Azure Service Fabric."
 services: service-fabric
 documentationcenter: .net
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/17/2017
 ms.author: dekapur
-ms.openlocfilehash: 1ef6419863b056b76d81e915ab78df4facae88bb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 88f4a23f89a1c8fd88db1df3a7ff03ae5df64c0f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Supervisión y diagnóstico para Azure Service Fabric
 
-Supervisión y diagnóstico está toodeveloping crítico, probar e implementar aplicaciones y servicios en cualquier entorno. Las soluciones de Service Fabric funcionan mejor cuando diseña e implementa la supervisión y el diagnóstico que ayudan a asegurarse de que las aplicaciones y los servicios funcionen según lo previsto en un entorno de desarrollo local o en producción.
+La supervisión y el diagnóstico son fundamentales para la realización correcta de desarrollos, pruebas e implementaciones de aplicaciones y servicios en cualquier entorno. Las soluciones de Service Fabric funcionan mejor cuando diseña e implementa la supervisión y el diagnóstico que ayudan a asegurarse de que las aplicaciones y los servicios funcionen según lo previsto en un entorno de desarrollo local o en producción.
 
-Hola objetivos principales de supervisión y diagnóstico es para:
+Los objetivos principales de la supervisión y diagnóstico son:
 * Detectar y diagnosticar problemas de hardware y de infraestructura
 * Detectar problemas de software y aplicaciones, y reducir el tiempo de inactividad del servicio
 * Conocer el consumo de recursos y facilitar la toma de decisiones de operaciones
@@ -32,62 +32,62 @@ Hola objetivos principales de supervisión y diagnóstico es para:
 * Generar información de la empresa e identificar áreas de mejora
 
 
-Hola de flujo de trabajo general de supervisión y diagnóstico consta de tres pasos:
+El flujo de trabajo general de la supervisión y el diagnóstico consta de tres pasos:
 
-1. **Generación de eventos**: Esto incluye los eventos (registros, seguimientos de eventos personalizados) en la infraestructura de hello (clúster), la plataforma y el nivel de aplicación / servicio
-2. **Agregación de eventos**: eventos generados necesitan toobe recopilan y se agregan antes de que se pueden mostrar
-3. **Análisis**: eventos necesitan toobe visualizado y esté accesible en algún formato, tooallow para su análisis y visualización según sea necesario
+1. **Generación de eventos**: incluye eventos (registros, seguimientos y eventos personalizados) en los niveles de infraestructura (clúster), plataforma y aplicación o servicio.
+2. **Agregación de eventos**: es preciso recopilar y agregar los eventos generados antes de que se puedan mostrar.
+3. **Análisis**: los eventos se deben visualizar y acceder en algún formato, para permitir su análisis y visualización cuando sea necesario.
 
-Varios productos están disponibles que abarcan estas tres áreas y son toochoose libre tecnologías diferentes para cada uno. Es importante toomake seguro de que Hola toodeliver conjunto de trabajo una solución de supervisión de extremo a extremo para el clúster distintos de piezas.
+Hay varios productos que abarcan las tres áreas, y puede elegir tecnologías diferentes para cada uno. Es importante asegurarse de que las diferentes piezas trabajen conjuntamente para ofrecer una solución de supervisión de un extremo a otro para el clúster.
 
 ## <a name="event-generation"></a>Generación de eventos
 
-Hola primer paso en el flujo de trabajo de supervisión y diagnósticos de hello es Hola creación y generación de eventos y registros. Estos eventos, los registros y los seguimientos se generan en dos niveles: Hola a nivel de plataforma (incluidas clúster hello, máquinas de Hola o acciones de Service Fabric) u Hola a nivel de aplicación (ningún Instrumental agregado toohello clúster se implementó servicios y tooapps). Los eventos de cada uno de estos niveles son personalizables, aunque Service Fabric proporciona instrumentación de forma predeterminada.
+El primer paso del flujo de trabajo de supervisión y diagnóstico es la creación y generación de eventos y registros. Estos eventos, registros y seguimientos se generan en dos niveles: la capa de la plataforma (que incluye el clúster, los equipos o acciones de Service Fabric) o la capa de la aplicación (la instrumentación que se agrega a las aplicaciones y servicios que se implementan en el clúster). Los eventos de cada uno de estos niveles son personalizables, aunque Service Fabric proporciona instrumentación de forma predeterminada.
 
-Obtenga más información sobre [eventos de nivel de plataforma](service-fabric-diagnostics-event-generation-infra.md) y [eventos de nivel de aplicación](service-fabric-diagnostics-event-generation-app.md) toounderstand lo que se proporciona y cómo tooadd más Instrumental.
+Obtenga más información sobre los [eventos de nivel de plataforma](service-fabric-diagnostics-event-generation-infra.md) y los [eventos de nivel de aplicación](service-fabric-diagnostics-event-generation-app.md) para comprender lo que se proporciona y cómo agregar otras instrumentaciones.
 
-Después de tomar una decisión sobre Hola le gustaría toouse de proveedor de registro, debe toomake seguro de los registros se están agregan y almacenan correctamente.
+Después de tomar una decisión sobre el proveedor de registro que le gustaría utilizar, debe asegurarse de que los registros se agregan y almacenan correctamente.
 
 ## <a name="event-aggregation"></a>Agregación de datos
 
-Para recopilar registros de Hola y eventos que va a generar sus aplicaciones y el clúster, se recomienda normalmente utilizar [diagnósticos de Azure](service-fabric-diagnostics-event-aggregation-wad.md) (colección de registro basado en tooagent más similar) o [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md)(en-proceso de recopilación de registros).
+Para recopilar los registros y eventos que van a generar sus aplicaciones y el clúster, se suele recomendar utilizar [Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md) (más similar a la recopilación de registros basada en agentes) o [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) (recopilación de registros In-Process).
 
-Recopilar registros de aplicación con la extensión de diagnósticos de Azure es una buena opción para los servicios de Service Fabric si Hola conjunto de orígenes de registro y destinos no cambian con frecuencia y hay una asignación directa entre orígenes de Hola y sus destinos. motivo de Hola para esto es la configuración de diagnósticos de Azure se produce en el nivel de administrador de recursos de hello, por lo que la configuración de toohello para realizar cambios significativos requiere actualizar o volver a implementar el clúster de Hola. Además, se utiliza de forma óptima al asegurarse de que los registros se almacenan en algún lugar un poco más permanente, donde puede obtenerse acceso a ellos mediante distintas plataformas de análisis. Esto significa que, en último término, es una opción menos eficiente para la canalización que utilizar una opción como EventFlow.
+La recopilación de registros de aplicación mediante la extensión Azure Diagnostics es una buena opción para los servicios de Service Fabric si el conjunto de orígenes y destinos de los registros no cambia con frecuencia y hay una asignación directa entre los orígenes y sus destinos. La razón para esto es que la configuración de Azure Diagnostics se produce en el nivel de Resource Manager, por lo que realizar cambios significativos en la configuración requiere actualizar o volver a implementar el clúster. Además, se utiliza de forma óptima al asegurarse de que los registros se almacenan en algún lugar un poco más permanente, donde puede obtenerse acceso a ellos mediante distintas plataformas de análisis. Esto significa que, en último término, es una opción menos eficiente para la canalización que utilizar una opción como EventFlow.
 
-Usar [EventFlow](https://github.com/Azure/diagnostics-eventflow) permite toohave services envía sus registros directamente tooan análisis y plataforma de visualización o toostorage. Otras bibliotecas (ILogger, Serilog, etc.) podrían usarse para hello mismo propósito, pero EventFlow tiene las ventajas de Hola de ya han sido diseñadas específicamente para los servicios de Service Fabric de recopilación y toosupport del registro en curso. Esto tiende a toohave varias ventajas potenciales:
+Usar [EventFlow](https://github.com/Azure/diagnostics-eventflow) le permite que los servicios envíen los registros directamente a una plataforma de análisis y visualización, o al almacenamiento. Podrían utilizarse otras bibliotecas (ILogger, Serilog, etc.) para el mismo propósito, pero EventFlow tiene la ventaja de que ha sido diseñada específicamente para la recopilación de registros In-Process y para admitir los servicios de Service Fabric. Esto suele tener varias ventajas potenciales:
 
 * Fácil configuración e implementación
-    * configuración de Hola de recopilación de datos de diagnóstico es parte de la configuración del servicio Hola. Es mantener tooalways fácil que "sincronizados" con hello resto de la aplicación hello
+    * La configuración de la recopilación de datos de diagnóstico es parte de la configuración del servicio. Es fácil mantenerla siempre "sincronizada" con el resto de la aplicación.
     * Se puede realizar fácilmente la configuración por aplicación o por servicio.
-    * Configurar los destinos de datos a través de EventFlow es cuestión de agregar paquete de NuGet adecuado de Hola y cambiar hello *eventFlowConfig.json* archivo
+    * La configuración de los destinos de datos a través de EventFlow es tan solo cuestión de agregar el paquete de NuGet adecuado y cambiar el archivo *eventFlowConfig.json*.
 * Flexibilidad
-    * aplicación Hello puede enviar datos de hello dondequiera que necesita toogo, siempre que hay una biblioteca de cliente que admite el sistema de almacenamiento de datos de Hola de destino. Se pueden agregar tantos destinos nuevos como se desee.
+    * La aplicación puede enviar los datos dondequiera que deban ir siempre que haya una biblioteca de cliente que admita el sistema de almacenamiento de datos de destino. Se pueden agregar tantos destinos nuevos como se desee.
     * Se pueden implementar reglas complejas de captura, filtrado y agregación de datos.
-* Contexto y obtener acceso a datos de aplicación de toointernal
-    * subsistema de diagnóstico de Hello ejecuta en proceso de aplicación o un servicio de hello puede ampliar fácilmente la seguimientos de hello junto con información contextual
+* Acceso a los datos y el contexto internos de la aplicación
+    * El subsistema de diagnóstico que se ejecuta dentro del proceso de la aplicación o servicio puede ampliar fácilmente los seguimientos con información contextual.
 
-Una toonote lo es que estas dos opciones no son mutuamente excluyentes y mientras se tooget posible un trabajo similar con el uso de uno u Hola Sí, que podría también tiene sentido para usted tooset tanto. En la mayoría de los casos, la combinación de un agente con la colección en curso puede provocar tooa más fiable de supervisión de flujo de trabajo. Hola extensión de diagnósticos de Azure (agente) podría ser la ruta de acceso elegida para los registros de nivel de plataforma aunque podría utilizar EventFlow (en proceso colección) para sus registros de nivel de aplicación. Una vez que han descubierto qué funciona mejor para usted, es hora toothink acerca de cómo desea que su toobe de datos, mostrar y analizar.
+Hay que destacar es que estas dos opciones no son mutuamente excluyentes y, si bien es posible conseguir resultados similares con el uso de uno u otro, también podría serle útil configurar ambos. En la mayoría de los casos, la combinación de un agente con la recopilación In-Process puede ofrecer un flujo de trabajo de supervisión más confiable. La extensión de Azure Diagnostics (agente) podría ser la ruta de acceso elegida para registros de nivel de plataforma, aunque podría utilizar EventFlow (colección In-Process) para sus registros de nivel de aplicación. Una vez que haya descubierto qué funciona mejor para usted, es el momento de pensar en cómo desea que se muestren y se analicen los datos.
 
 ## <a name="event-analysis"></a>Análisis de eventos
 
-Hay varias plataformas excelentes que existen en el mercado de hello cuando se trata de toohello análisis y la visualización de datos de supervisión y diagnóstico. Hello dos que recomendamos son [OMS](service-fabric-diagnostics-event-analysis-oms.md) y [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) debido tootheir una mejor integración con Service Fabric, pero se debe buscar en hello [pila elástico](https://www.elastic.co/products) (especialmente si se va a ejecutar un clúster en un entorno sin conexión), [Splunk](https://www.splunk.com/), o cualquier otra plataforma de su preferencia.
+Hay varias plataformas excelentes en el mercado para los análisis y la visualización de datos de supervisión y diagnóstico. Los dos que recomendamos son [OMS](service-fabric-diagnostics-event-analysis-oms.md) y [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) debido a su mejor integración con Service Fabric, pero también debe tomar en consideración [Elastic Stack](https://www.elastic.co/products) (especialmente si se va a ejecutar un clúster en un entorno sin conexión), [Splunk](https://www.splunk.com/) o cualquier otra plataforma que prefiera.
 
-Hello puntos clave para cualquier plataforma que seleccione debe incluir el grado de comodidad son con interfaz de usuario de Hola y opciones, una consulta Hola datos toovisualize de capacidad y crean paneles fácilmente legibles y hello herramientas adicionales proporcionan tooenhance su supervisión, por ejemplo, alertar automatizadas.
+Los puntos clave para cualquier plataforma que elija deben incluir su grado de comodidad con la interfaz de usuario y las opciones de consultas, la capacidad de visualizar datos y crear paneles fácilmente legibles, y las herramientas adicionales que proporcionen para mejorar la supervisión, como las alertas automatizadas.
 
-Además toohello plataforma que elige, al configurar un clúster de Service Fabric como un recurso de Azure, también obtendrá acceso tooAzure de cuadro supervisión para las máquinas, que pueden ser útiles para obtener un rendimiento específico y métricas de supervisión.
+Además de la plataforma que seleccione, al configurar un clúster de Service Fabric como un recurso de Azure, también obtendrá acceso la supervisión integrada en Azure para las máquinas, que puede ser útil para tareas de supervisión específicas de métricas y rendimiento.
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
-Puede usar [Monitor Azure](../monitoring-and-diagnostics/monitoring-overview.md) toomonitor muchas de Hola recursos de Azure en el que se crea un clúster de Service Fabric. Un conjunto de métricas para hello [conjunto de escalas de máquina virtual](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets) individuales y [máquinas virtuales](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesetsvirtualmachines) automáticamente se recopilan y se muestran en hello portal de Azure. Hola tooview información recopilada, en hello portal de Azure, grupo de recursos de hello select que contiene el clúster de Service Fabric Hola. A continuación, escalas de máquina virtual de hello seleccione establezca que desea tooview. Hola **supervisión** sección, seleccione **métricas** tooview un gráfico de valores de hello.
+Puede usar [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) para supervisar muchos de los recursos de Azure que incorporan un clúster de Service Fabric. En Azure Portal, se recopila y se muestra automáticamente un conjunto de métricas para el [conjunto de escalado de máquinas virtuales](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets) y las [máquinas virtuales](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesetsvirtualmachines) individuales. Para ver la información recopilada, en Azure Portal, seleccione el grupo de recursos que contenga el clúster de Service Fabric y seleccione el conjunto de escalado de máquinas virtuales que desee ver. En la sección **Supervisión**, seleccione **Métricas** para ver un gráfico con los valores.
 
 ![Vista de Azure Portal con la información de métrica recopilada](media/service-fabric-diagnostics-overview/azure-monitoring-metrics.png)
 
-gráficos de hello toocustomize, siga las instrucciones de hello en [métricas en Microsoft Azure](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md). También puede crear alertas basadas en estas métricas, como se describe en [Creación de alertas en Azure Monitor para servicios de Azure - Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md). Puede enviar alertas de servicio de notificación de tooa mediante enlaces web, tal y como se describe en [configurar un enlace web en una alerta de métrica Azure](../monitoring-and-diagnostics/insights-webhooks-alerts.md). Azure Monitor es compatible con una sola suscripción. Si necesita toomonitor varias suscripciones, o si necesita características adicionales, [análisis de registros](https://azure.microsoft.com/documentation/services/log-analytics/), parte de Microsoft Operations Management Suite, proporciona una solución integral de administración de TI local y en la nube infraestructura. Puede enrutar datos desde el Monitor de Azure directamente tooLog análisis, de modo que pueda ver registros y las métricas para todo el entorno en un único lugar.
+Para personalizar los gráficos, siga las instrucciones del artículo de [introducción a las métricas en Microsoft Azure](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md). También puede crear alertas basadas en estas métricas, como se describe en [Creación de alertas en Azure Monitor para servicios de Azure - Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md). Puede enviar alertas a un servicio de notificación mediante webhooks, tal y como se describe en [Configuración de un webhook en una alerta de métrica de Azure](../monitoring-and-diagnostics/insights-webhooks-alerts.md). Azure Monitor es compatible con una sola suscripción. Si tiene que supervisar varias suscripciones o necesita características adicionales, [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/), parte de Microsoft Operations Management Suite, ofrece una solución integral de administración de TI para la infraestructura local y basada en la nube. Los datos de Azure Monitor se pueden enrutar directamente a Log Analytics para ver los registros y las métricas de todo el entorno desde un único lugar.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
 ### <a name="watchdogs"></a>Guardianes
 
-A continuación se proporciona es un servicio independiente que se puede ver el estado y la carga entre los servicios y el estado del informe para cualquier elemento de jerarquía del modelo de mantenimiento de Hola. Esto puede ayudar a evitar errores que no se detectan basados en la vista de Hola de un único servicio. Watchdogs también son un buena colocar el código toohost que lleva a cabo acciones correctoras sin interacción del usuario (por ejemplo, limpiar los archivos de registro de almacenamiento a determinados intervalos de tiempo). [Aquí](https://github.com/Azure-Samples/service-fabric-watchdog-service) puede encontrar la implementación de un servicio guardián de ejemplo.
+Un guardián es un servicio independiente que vigila el estado y la carga en los servicios e informa sobre el estado de cualquier componente en la jerarquía del modelo de mantenimiento. Esto puede ayudar a evitar errores que se pasan por alto con la vista de un solo servicio. Los guardianas también son un buen lugar donde hospedar el código que realiza acciones de subsanación sin interacción del usuario (por ejemplo, limpiar los archivos de registro de almacenamiento a determinados intervalos de tiempo). [Aquí](https://github.com/Azure-Samples/service-fabric-watchdog-service) puede encontrar la implementación de un servicio guardián de ejemplo.
 
-Introducción a comprender cómo se generan los eventos y registros en hello [nivel de la plataforma](service-fabric-diagnostics-event-generation-infra.md) hello y [nivel de aplicación](service-fabric-diagnostics-event-generation-app.md).
+Empiece por comprender cómo se generan los eventos y registros en el [nivel de plataforma](service-fabric-diagnostics-event-generation-infra.md) y en el [nivel de aplicación](service-fabric-diagnostics-event-generation-app.md).

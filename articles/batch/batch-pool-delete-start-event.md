@@ -1,5 +1,5 @@
 ---
-title: "aaa \"evento de inicio de eliminación de grupo de lote de Azure | Documentos de Microsoft\""
+title: "Evento de inicio de eliminación de grupo de Azure Batch | Microsoft Docs"
 description: "Referencia del evento de inicio de eliminación de grupo de Batch."
 services: batch
 author: tamram
@@ -12,17 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: tamram
-ms.openlocfilehash: 79bb28bffc760a49cc0a95062f5086dc96c6a795
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f8a5241dce422e5c826ab428da6d7bc93284a1cf
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="pool-delete-start-event"></a>Evento de inicio de eliminación del grupo
 
- Este evento se genera cuando se inicia una operación de eliminación del grupo. Puesto que la eliminación de grupo de hello es un evento asíncrono, puede esperar un toobe de evento complete de eliminación de grupo genera una vez que la operación de eliminación de hello completa.
+ Este evento se genera cuando se inicia una operación de eliminación del grupo. Puesto que la eliminación de grupo es un evento asincrónico, puede esperar que se genere un evento completo de eliminación del grupo cuando se haya completado la operación de eliminación.
 
- Hello en el ejemplo siguiente se muestra hello cuerpo de un evento de inicio de eliminación de grupo.
+ En el siguiente ejemplo, se muestra el cuerpo de un evento de inicio de eliminación del grupo.
 
 ```
 {
@@ -32,4 +32,4 @@ ms.lasthandoff: 10/06/2017
 
 |Elemento|Tipo|Notas|
 |-------------|----------|-----------|
-|id|String|Hola Id. de grupo de Hola.|
+|id|String|El identificador del grupo.|

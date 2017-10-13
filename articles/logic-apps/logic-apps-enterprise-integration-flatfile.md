@@ -1,6 +1,6 @@
 ---
-title: "aaaEncode o descodificar archivos planos de las aplicaciones lógicas de Azure | Documentos de Microsoft"
-description: "¿Cómo toouse Hola codificador de archivo del archivo o el descodificador Hola paquete de integración empresarial en las aplicaciones lógicas"
+title: "Codificación o descodificación de archivos sin formato en Azure Logic Apps | Microsoft Docs"
+description: Uso del codificador o el descodificador de archivos sin formato de Enterprise Integration Pack en Logic Apps
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: MandiOhlinger
@@ -14,74 +14,74 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; mandia
-ms.openlocfilehash: 2c295586625fd84366ec7cbafdcebf0489ba234d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: bc3430624844cdeb92958433fba295f67a8ae0ff
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="overview-of-enterprise-integration-with-flat-files"></a>Información general sobre Enterprise Integration Pack con archivos sin formato
 
-Puede que desee tooencode XML contenido antes de enviarlo a socio comercial de tooa en un escenario de negocio a negocio (B2B). En una aplicación de lógica, puede usar archivos planos Hola codificación conector toodo esto. Hello aplicación lógica que cree puede obtener su XML contenido desde una variedad de orígenes, incluyendo desde un desencadenador de la solicitud HTTP, desde otra aplicación o incluso desde uno de Hola muchas [conectores](../connectors/apis-list.md). Para obtener más información acerca de las aplicaciones lógicas, consulte hello [documentación de aplicaciones de la lógica](logic-apps-what-are-logic-apps.md "obtener más información sobre las aplicaciones lógicas").  
+Es posible que quiera codificar el contenido XML antes de enviarlo a un socio comercial en un escenario de negocio a negocio (B2B). Para ello, en las aplicaciones lógicas, puede utilizar el conector de codificación de archivos planos. La aplicación lógica que cree puede obtener el contenido XML desde distintos orígenes; entre ellos, un desencadenador de solicitud HTTP u otra aplicación, o incluso uno de los numerosos [conectores](../connectors/apis-list.md). Para más información sobre Logic Apps, consulte la [documentación de Logic Apps](logic-apps-what-are-logic-apps.md "Más información sobre Logic Apps").  
 
-## <a name="create-hello-flat-file-encoding-connector"></a>Crear el conector de codificación de archivo sin formato de Hola
-Siga estos pasos tooadd una codificación de aplicación lógica de conector tooyour de archivos sin formato.
+## <a name="create-the-flat-file-encoding-connector"></a>Creación del conector de codificación de archivos sin formato
+Siga estos pasos para agregar un conector de codificación de archivos planos a la aplicación lógica.
 
-1. Crear una aplicación de la lógica y [vincular cuentas de integración de tooyour](logic-apps-enterprise-integration-accounts.md "Obtenga información acerca de una aplicación de la lógica de la cuenta tooa integración toolink"). Esta cuenta contiene esquema Hola utilizará tooencode Hola datos XML.  
-2. Agregar un **solicitar - se recibe la solicitud HTTP de un cuando** aplicación lógica de desencadenador tooyour.  
-   ![Captura de pantalla de tooselect de desencadenador](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)    
-3. Agregue archivos planos Hola codificación acción, como se indica a continuación:
+1. Cree una aplicación lógica y [vincúlela a su cuenta de integración](logic-apps-enterprise-integration-accounts.md "Aprenda a vincular una cuenta de integración a una Aplicación lógica"). Esta cuenta contiene el esquema que se va a utilizar para codificar los datos XML.  
+2. Agregue un desencadenador **Request - When an HTTP request is received** (Solicitar: cuando se reciba una solicitud HTTP) a la aplicación lógica.  
+   ![Captura de pantalla del desencadenador que va a seleccionar](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)    
+3. Agregue la acción de codificación de archivos planos de la siguiente manera:
    
-    a. Seleccione hello **más** inicio de sesión.
+    a. Seleccione el signo **más** .
    
-    b. Seleccione hello **agregar una acción** vínculo (aparece después de haber seleccionado hello además de inicio de sesión).
+    b. Haga clic en el vínculo **Agregar una acción** (que aparece después de haber seleccionado el signo más).
    
-    c. En el cuadro de búsqueda de hello, escriba ** toofilter todos Hola toohello acciones uno que desea toouse.
+    c. Escriba *Flat* en el cuadro de búsqueda para filtrar todas las acciones que quiera usar.
    
-    d. Seleccione hello **la codificación de archivo sin formato** opción de lista de Hola.   
+    d. Seleccione la acción **Codificación de archivo plano** de la lista.   
    ![Captura de pantalla de la opción Codificación de archivo plano](media/logic-apps-enterprise-integration-flatfile/flatfile-2.png)   
-4. En hello **la codificación de archivo sin formato** cuadro de diálogo, seleccione hello **contenido** cuadro de texto.  
+4. En el cuadro de diálogo **Codificación de archivo plano**, seleccione el cuadro de texto **Contenido**.  
    ![Captura de pantalla del cuadro de texto Contenido](media/logic-apps-enterprise-integration-flatfile/flatfile-3.png)  
-5. Seleccionar etiqueta body de hello como contenido que desea tooencode Hola. etiquetas de cuerpo de Hello rellenará el campo contenido Hola.     
+5. Elija la etiqueta Cuerpo como el contenido que quiere codificar. Esta etiqueta rellenará el campo de contenido.     
    ![Captura de pantalla de la etiqueta Cuerpo](media/logic-apps-enterprise-integration-flatfile/flatfile-4.png)  
-6. Seleccione hello **nombre de esquema** cuadro de lista y elija el contenido de la entrada de esquema de hello desea toouse tooencode Hola.    
+6. Seleccione el cuadro de lista **Nombre de esquema** y elija el esquema que quiera utilizar para codificar el contenido de entrada.    
    ![Captura de pantalla del cuadro de lista Nombre de esquema](media/logic-apps-enterprise-integration-flatfile/flatfile-5.png)  
 7. Guarde el trabajo.   
    ![Captura de pantalla del icono Guardar](media/logic-apps-enterprise-integration-flatfile/flatfile-6.png)  
 
-En este momento, ya ha terminado de configurar su conector de codificación de archivos sin formato. En una aplicación real, puede que desee toostore datos de hello codificado en una aplicación de línea de negocio, como Salesforce. O bien, puede enviar esa tooa datos codificados socio comercial. Puede agregar fácilmente una salida de hello toosend de acción de hello codificación acción tooSalesforce o tooyour socio comercial, usando cualquiera de hello otros conectores proporcionados.
+En este momento, ya ha terminado de configurar su conector de codificación de archivos sin formato. En una aplicación real, puede almacenar los datos codificados en una aplicación de línea de negocios como SalesForce. O bien puede enviar los datos codificados a un socio comercial. Puede agregar fácilmente una acción para enviar el resultado de la acción de codificación a Salesforce o a su socio comercial utilizando uno de los demás conectores que se proporcionan.
 
-Ahora puede probar el conector, un punto de conexión HTTP de solicitud toohello y, incluido el contenido XML de hello en el cuerpo de saludo de solicitud de Hola.  
+Ahora puede probar el conector realizando una solicitud al punto de conexión HTTP e incluyendo el contenido XML en el cuerpo de la solicitud.  
 
-## <a name="create-hello-flat-file-decoding-connector"></a>Crear archivos planos Hola descodificación de conector
+## <a name="create-the-flat-file-decoding-connector"></a>Creación del conector de descodificación de archivos sin formato
 
 > [!NOTE]
-> toocomplete estos pasos, debe toohave un archivo de esquema ya cargado en la cuenta de integración.
+> Para completar estos pasos, debe tener un archivo de esquema ya cargado en la cuenta de integración.
 
-1. Agregar un **solicitar - se recibe la solicitud HTTP de un cuando** aplicación lógica de desencadenador tooyour.  
-   ![Captura de pantalla de tooselect de desencadenador](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)    
-2. Agregue archivos planos Hola descodificación acción, como se indica a continuación:
+1. Agregue un desencadenador **Request - When an HTTP request is received** (Solicitar: cuando se reciba una solicitud HTTP) a la aplicación lógica.  
+   ![Captura de pantalla del desencadenador que va a seleccionar](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)    
+2. Agregue la acción de descodificación de archivos planos de la siguiente manera:
    
-    a. Seleccione hello **más** inicio de sesión.
+    a. Seleccione el signo **más** .
    
-    b. Seleccione hello **agregar una acción** vínculo (aparece después de haber seleccionado hello además de inicio de sesión).
+    b. Haga clic en el vínculo **Agregar una acción** (que aparece después de haber seleccionado el signo más).
    
-    c. En el cuadro de búsqueda de hello, escriba ** toofilter todos Hola toohello acciones uno que desea toouse.
+    c. Escriba *Flat* en el cuadro de búsqueda para filtrar todas las acciones que quiera usar.
    
-    d. Seleccione hello **descodificación de archivo sin formato** opción de lista de Hola.   
+    d. Seleccione la acción **Descodificación de archivo plano** de la lista.   
    ![Captura de pantalla de la opción Descodificación de archivo plano](media/logic-apps-enterprise-integration-flatfile/flatfile-2.png)   
-3. Seleccione hello **contenido** control. Esto genera una lista de contenido de Hola de los anteriores pasos que puede usar como toodecode contenido Hola. Tenga en cuenta que hello *cuerpo* de hello solicitud HTTP de entrada está disponible toobe usa como Hola toodecode contenido. También puede escribir toodecode contenido Hola directamente en hello **contenido** control.     
-4. Seleccione hello *cuerpo* etiqueta. Aviso Hola cuerpo se encuentra ahora en hello **contenido** control.
-5. Seleccione el nombre de hello del esquema de Hola que desea que el contenido de toouse toodecode Hola. Hello captura de pantalla siguiente muestra que *OrderFile* es el nombre de esquema seleccionado Hola. Este nombre de esquema tenía se ha cargado previamente en la cuenta de hello de integración.
+3. Seleccione el control **Contenido** . Tras esto, se creará una lista del contenido de los pasos anteriores que puede utilizar como contenido para descodificar. Observe que la etiqueta *Cuerpo* de la solicitud HTTP entrante está disponible para usarse como el contenido que se descodificará. También puede especificar el contenido que descodificar directamente en el control **Contenido** .     
+4. Seleccione la etiqueta *Cuerpo* . Observe que la etiqueta Cuerpo ahora se encuentra en el control **Contenido** .
+5. Seleccione el nombre del esquema que quiera utilizar para descodificar el contenido. La captura de pantalla siguiente muestra que *OrderFile* es el nombre del esquema seleccionado. Este nombre de esquema se había cargado previamente en la cuenta de integración.
    
    ![Captura de pantalla del cuadro de diálogo Descodificación de archivo plano](media/logic-apps-enterprise-integration-flatfile/flatfile-decode-1.png)    
 6. Guarde el trabajo.  
    ![Captura de pantalla del icono Guardar](media/logic-apps-enterprise-integration-flatfile/flatfile-6.png)    
 
-En este momento, ya ha terminado de configurar su conector de descodificación de archivos sin formato. En una aplicación real, puede que desee toostore datos de hello descodificado en una aplicación de línea de negocio, como Salesforce. Puede agregar fácilmente una salida de hello toosend de acción de hello descodificación tooSalesforce de acción.
+En este momento, ya ha terminado de configurar su conector de descodificación de archivos sin formato. En una aplicación real, puede almacenar los datos descodificados en una aplicación de línea de negocios como SalesForce. Puede agregar fácilmente una acción para enviar el resultado de la acción de descodificación a Salesforce.
 
-Ahora puede probar su conector mediante la realización de un punto de conexión HTTP de solicitud toohello e incluido el contenido XML de hello desea toodecode en el cuerpo de saludo de solicitud de Hola.  
+Ahora puede probar el conector realizando una solicitud al punto de conexión HTTP e incluyendo el contenido XML que quiera descodificar en el cuerpo de la solicitud.  
 
 ## <a name="next-steps"></a>Pasos siguientes
-* [Obtener más información sobre Hola paquete de integración empresarial](logic-apps-enterprise-integration-overview.md "Obtenga más información sobre el paquete de integración empresarial").  
+* [Más información sobre Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Información sobre Enterprise Integration Pack").  
 

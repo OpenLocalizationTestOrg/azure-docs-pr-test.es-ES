@@ -1,6 +1,6 @@
 ---
-title: aaaConnect y comunicarse con los servicios de Azure Service Fabric | Documentos de Microsoft
-description: "Obtenga información acerca de cómo tooresolve, conectarse y comunicarse con servicios de Service Fabric."
+title: "Conexión y comunicación con los servicios de Azure Service Fabric | Microsoft Docs"
+description: Aprenda a resolver, conectar y comunicar mediante servicios de Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,72 +14,72 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 5/9/2017
 ms.author: vturecek
-ms.openlocfilehash: b8b374a71d4c5d21f48a560a3a8c81b357fe418d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 3e61ad19df34c6a57da43e26bd2ab9d7ecdbf98e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Conexión y comunicación con servicios en Service Fabric
-En Service Fabric, un servicio se ejecuta en algún lugar en un clúster de Service Fabric que normalmente se distribuye entre varias máquinas virtuales. Se puede mover desde un solo lugar tooanother, ya sea por el propietario del servicio hello, o automáticamente por Service Fabric. Servicios no están vinculados estáticamente tooa una máquina determinada o la dirección.
+En Service Fabric, un servicio se ejecuta en algún lugar en un clúster de Service Fabric que normalmente se distribuye entre varias máquinas virtuales. Se puede mover de un lugar a otro, ya sea por indicación del propietario del servicio o automáticamente mediante Service Fabric. Los servicios no están enlazados estáticamente a un equipo o una dirección determinados.
 
-Una aplicación de Service Fabric se compone, por lo general, de muchos servicios diferentes, donde cada uno de ellos realiza una tarea especializada. Estos servicios pueden comunicarse entre sí tooform una función completa, por ejemplo, de diferentes partes de la representación de una aplicación web. También hay aplicaciones que se conectan tooand comunican con los servicios de cliente. Este documento se describen cómo tooset la comunicación con y entre los servicios de Service Fabric.
+Una aplicación de Service Fabric se compone, por lo general, de muchos servicios diferentes, donde cada uno de ellos realiza una tarea especializada. Estos servicios pueden comunicarse entre sí para formar una función completa, como representar diferentes partes de una aplicación web. También hay aplicaciones cliente que se conectan a los servicios y se comunican con ellos. Este documento describe cómo establecer la comunicación con los servicios de Service Fabric y entre ellos.
 
 Este vídeo de Microsoft Virtual Academy también explica la comunicación del servicio: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=iYFCk76yC_6706218965">  
 <img src="./media/service-fabric-connect-and-communicate-with-services/CommunicationVid.png" WIDTH="360" HEIGHT="244">  
 </a></center>
 
 ## <a name="bring-your-own-protocol"></a>Traiga su propio protocolo
-Service Fabric ayuda a administrar Hola del ciclo de vida de los servicios pero no efectúa ninguna decisión sobre lo que los servicios. Esto incluye la comunicación. Cuando se abre el servicio de Service Fabric, es decir, tooset de oportunidad de su servicio en un extremo para las solicitudes entrantes, mediante cualquier pila de comunicación o protocolo que desee. El servicio escuchará en una dirección **IP:port** normal mediante cualquier esquema de direccionamiento, como un URI. Varias instancias de servicio o réplicas pueden compartir un proceso de host, en cuyo caso que se necesita toouse distintos puertos o usar un mecanismo de uso compartido de puertos, como controlador de núcleo de http.sys hello en Windows. En ambos casos, cada instancia de servicio o réplica de un proceso de host debe ser direccionable de forma exclusiva.
+Service Fabric le ayuda a administrar el ciclo de vida de los servicios, pero no toma ninguna decisión sobre qué hacen sus servicios. Esto incluye la comunicación. Cuando Service Fabric abre un servicio, este tiene la oportunidad de configurar un punto de conexión para las solicitudes entrantes mediante cualquier protocolo o pila de comunicación que desee. El servicio escuchará en una dirección **IP:port** normal mediante cualquier esquema de direccionamiento, como un URI. Varias instancias de servicio o réplicas pueden compartir un proceso de host, en cuyo caso deberán usar puertos diferentes o utilizar un mecanismo de uso compartido de puertos, como el controlador del kernel http.sys en Windows. En ambos casos, cada instancia de servicio o réplica de un proceso de host debe ser direccionable de forma exclusiva.
 
 ![puntos de conexión de servicio][1]
 
 ## <a name="service-discovery-and-resolution"></a>Detección y resolución de servicios
-En un sistema distribuido, pueden mover los servicios de tooanother de una máquina con el tiempo. Esto puede ocurrir por diversos motivos, incluidos el equilibrio, las actualizaciones, las conmutaciones por error o el escalado de recursos. Esto significa cambian de direcciones de extremo de servicio como servicio Hola mueve toonodes con direcciones IP diferentes y puede abrir en puertos diferentes si el servicio de hello usa un puerto seleccionado dinámicamente.
+En un sistema distribuido, los servicios se pueden mover de una máquina a otra con el tiempo. Esto puede ocurrir por diversos motivos, incluidos el equilibrio, las actualizaciones, las conmutaciones por error o el escalado de recursos. Esto significa que el punto de conexión del servicio experimenta cambios a medida que el servicio se mueve a nodos con direcciones IP diferentes y se puede abrir en puertos diferentes si el servicio utiliza un puerto seleccionado de forma dinámica.
 
 ![Distribución de servicios][7]
 
-Tejido de servicio proporciona una detección y la resolución que se llamó al servicio Hola Naming Service. Hello Naming Service mantiene una tabla que asigna los toohello direcciones de extremo que escuchan en instancias de servicio con nombre. Todas las instancias de servicio con nombre en Service Fabric tienen nombres únicos como URI como, por ejemplo, `"fabric:/MyApplication/MyService"`. nombre de Hello del servicio de hello no cambia con vida Hola Hola, es solo direcciones de extremo de Hola que pueden cambiar cuando mueve servicios. Esto es análogo toowebsites con direcciones URL constantes pero donde puede cambiar la dirección IP de Hola. Y tooDNS similar en web de hello, que se resuelve direcciones de tooIP de direcciones URL de sitios Web, Service Fabric tiene un registrador que se asigna la dirección del extremo de tootheir de nombres de servicio.
+Service Fabric proporciona un servicio de detección y resolución denominado servicio de nomenclatura. El servicio de nomenclatura mantiene una tabla que asigna instancias de servicio con nombre a las direcciones del punto de conexión a las que escuchan. Todas las instancias de servicio con nombre en Service Fabric tienen nombres únicos como URI como, por ejemplo, `"fabric:/MyApplication/MyService"`. El nombre del servicio no cambia durante el ciclo de vida del mismo, solo las direcciones de punto de conexión pueden cambiar cuando se mueve el servicio. Esto es análogo a los sitios web que tienen direcciones URL constantes, pero donde la dirección IP puede cambiar. Y de forma similar a un DNS en la web, que resuelve direcciones URL del sitio web en direcciones IP, Service Fabric tiene un registrador que asigna nombres de servicio a la dirección del punto de conexión.
 
 ![puntos de conexión de servicio][2]
 
-Resolver y conectar tooservices implica Hola siguiendo los pasos que se ejecute en un bucle:
+La resolución y conexión a servicios implica que los pasos siguientes se ejecuten en un bucle:
 
-* **Resolver**: punto de conexión Hola Get que ha publicado un servicio de Hola Naming Service.
-* **Conectar**: conectar toohello servicio sobre cualquier protocolo que se usa en ese punto de conexión.
-* **Vuelva a intentar**: un intento de conexión puede producir un error de una serie de motivos, por ejemplo, si el servicio de Hola se mueve desde la dirección de extremo de hello última hora Hola se resolvió. En ese caso, Hola anterior resolución y conectar pasos deben toobe vuelve a intentar y este ciclo se repite hasta que la conexión de Hola se realiza correctamente.
+* **Resolver**: Obtenga el punto de conexión que ha publicado un servicio mediante el servicio de nomenclatura.
+* **Conectar**: Conéctese al servicio a través de cualquier protocolo que se utilice en ese punto de conexión.
+* **Reintentar**: Un intento de conexión puede producir un error por diversos motivos como, por ejemplo, cuando el servicio se ha movido desde la última vez que se resolvió la dirección del punto de conexión. En ese caso, se deben probar de nuevo los pasos de conexión y resolución anteriores, y este ciclo se repetirá hasta que la conexión sea correcta.
 
-## <a name="connecting-tooother-services"></a>Conectar servicios tooother
-Servicios que se conectan tooeach sí dentro de un clúster por lo general puede acceder directamente a los puntos de conexión de Hola de otros servicios porque los nodos de hello en un clúster están en hello misma red local. toomake es más fácil tooconnect entre servicios, Service Fabric proporciona servicios adicionales que usan Hola Naming Service. Un servicio DNS y un servicio de proxy inverso.
+## <a name="connecting-to-other-services"></a>Conexión a otros servicios
+Los servicios que se conectan entre sí dentro de un clúster pueden acceder, por lo general, directamente a los puntos de conexión de otros servicios ya que los nodos de un clúster se encuentran en la misma red local. A fin de facilitar la conexión entre servicios, Service Fabric ofrece servicios adicionales que usan el Servicio de nombres. Un servicio DNS y un servicio de proxy inverso.
 
 
 ### <a name="dns-service"></a>Servicio DNS
-Dado que muchos servicios, especialmente en los servicios en contenedores, pueden tener un nombre de dirección URL existente, tooresolve capaz de estos mediante Hola protocolo DNS estándar (en lugar de protocolo del servicio de nomenclatura de hello) es muy prácticos, especialmente en aplicaciones "Levantar y mover" escenarios. Esto es exactamente qué servicio DNS Hola. Permite toomap DNS nombres tooa nombre del servicio y, por tanto, resolver direcciones IP del extremo. 
+Debido a que muchos servicios, sobre todo los servicios en contenedores, pueden tener un nombre de dirección URL existente, tener la capacidad de resolverlo mediante el protocolo DNS estándar (en lugar del protocolo de servicio de nombres) es muy conveniente, en particular en escenarios "lift-and-shift" de la aplicación. Esto es exactamente lo que hace el servicio DNS. Permite asignar nombres DNS a un nombre de servicio y, por tanto, resolver direcciones IP del punto de conexión. 
 
-Como se muestra en hello siguiente diagrama, Hola servicio DNS, en ejecución en el clúster de Service Fabric hello, asigna nombres de tooservice de nombres DNS que, a continuación, se resuelven utilizando Hola Naming Service tooreturn Hola extremo direcciones tooconnect a. nombre DNS de Hello para el servicio de Hola se proporciona en tiempo de Hola de creación. 
+Como se muestra en el diagrama siguiente, el servicio DNS, que se ejecuta en el clúster de Service Fabric, asigna los nombres DNS a los nombres de servicio que, a continuación, se resuelven utilizando el Servicio de nombres para devolver las direcciones del punto de conexión a las que conectarse. El nombre DNS para el servicio se proporciona en el momento de la creación. 
 
 ![puntos de conexión de servicio][9]
 
-Para obtener más detalles sobre cómo ver hello toouse servicio DNS [servicio DNS en Azure Service Fabric](service-fabric-dnsservice.md) artículo.
+Para más información sobre cómo usar el servicio DNS, vea el artículo [Servicio DNS en Azure Service Fabric](service-fabric-dnsservice.md).
 
 ### <a name="reverse-proxy-service"></a>Servicio de proxy inverso
-servicios en clúster de Hola que expone extremos HTTP incluidos HTTPS de direcciones de proxy inverso de Hola. proxy inverso Hola simplifica considerablemente la llamada a otros servicios y sus métodos debido a un determinado formato de URI e identificadores resolver hello, conectar, Hola a pasos de reintento necesarios para toocommunicate de un servicio con el uso de otro servicio de nomenclatura. En otras palabras, se oculta Hola servicio de escribir el nombre del usuario al llamar a otros servicios haciendo esto tan sencillo como llamar a una dirección URL.
+Los servicios de direcciones de proxy inverso del clúster que expone puntos de conexión HTTP, incluidos HTTPS. El proxy inverso simplifica en gran medida la llamada a otros servicios y a sus métodos, mediante la disponibilidad de un formato de identificador URI específico y, además, controla los pasos de resolución, conexión y reintento necesarios para que un servicio se comunique con otro mediante el Servicio de nombres. En otras palabras, oculta el Servicio de nombres al usuario al realizar llamadas a otros servicios, por lo que resulta tan fácil como realizar una llamada a una dirección URL.
 
 ![puntos de conexión de servicio][10]
 
-Para obtener más detalles sobre cómo toouse Hola invertir el servicio de proxy, consulte [proxy en Azure Service Fabric inverso](service-fabric-reverseproxy.md) artículo.
+Para más información sobre cómo usar el servicio de proxy inverso, vea el artículo [Proxy inverso en Azure Service Fabric](service-fabric-reverseproxy.md).
 
 ## <a name="connections-from-external-clients"></a>Conexiones desde clientes externos
-Servicios que se conectan tooeach sí dentro de un clúster por lo general puede acceder directamente a los puntos de conexión de Hola de otros servicios porque los nodos de hello en un clúster están en hello misma red local. Sin embargo, en algunos entornos, un clúster puede estar detrás de un equilibrador de carga que enruta el tráfico de entrada externo a través de un conjunto limitado de puertos. En estos casos, los servicios todavía pueden comunicarse entre sí y resolver direcciones mediante Hola Naming Service, pero realizar pasos adicionales deben ser tomada tooallow los clientes externos tooconnect tooservices.
+Los servicios que se conectan entre sí dentro de un clúster pueden acceder, por lo general, directamente a los puntos de conexión de otros servicios ya que los nodos de un clúster se encuentran en la misma red local. Sin embargo, en algunos entornos, un clúster puede estar detrás de un equilibrador de carga que enruta el tráfico de entrada externo a través de un conjunto limitado de puertos. En estos casos, los servicios todavía pueden comunicarse entre sí y resolver direcciones mediante el servicio de nomenclatura, pero se deben realizar pasos adicionales para permitir que los clientes externos se conecten a los servicios.
 
 ## <a name="service-fabric-in-azure"></a>Service Fabric en Azure
-Un clúster de Service Fabric en Azure se coloca detrás de un equilibrador de carga de Azure. Todos los clústeres de toohello de tráfico externo deben pasar a través del equilibrador de carga de Hola. Hello equilibrador de carga automáticamente reenviará el tráfico entrante en un tooa determinado puerto aleatorio *nodo* cuya Hola abrir el mismo puerto. Hello equilibrador de carga de Azure solo conoce puertos abiertos en hello *nodos*, no conozca puertos abiertos individuo *services*.
+Un clúster de Service Fabric en Azure se coloca detrás de un equilibrador de carga de Azure. Todo el tráfico externo al clúster debe pasar a través del equilibrador de carga. El equilibrador de carga reenviará automáticamente el tráfico entrante de un puerto determinado a un *nodo* aleatorio que tenga el mismo puerto abierto. Azure Load Balancer solo detecta los puertos abiertos en los *nodos*, no detecta puertos abiertos por *servicios* individuales.
 
 ![Topología de equilibrador de carga de Azure y Service Fabric][3]
 
-Por ejemplo, en orden tooaccept externo el tráfico en el puerto **80**, debe configurarse Hola siguientes cosas:
+Por ejemplo, para poder aceptar tráfico externo en el puerto **80**, se deben configurar las siguientes condiciones:
 
-1. Escriba un servicio que escuche en el puerto 80. Configurar el puerto 80 en ServiceManifest.xml del servicio de Hola y abrir un agente de escucha en el servicio de hello, por ejemplo, un servidor web hospedado por sí mismo.
+1. Escriba un servicio que escuche en el puerto 80. Configure el puerto 80 en el archivo ServiceManifest.xml del servicio y abra un agente de escucha en el mismo, por ejemplo, un servidor web autohospedado.
 
     ```xml
     <Resources>
@@ -159,30 +159,30 @@ Por ejemplo, en orden tooaccept externo el tráfico en el puerto **80**, debe co
             ...
         }
     ```
-2. Crear un clúster de Service Fabric en Azure y especifique el puerto **80** como un puerto de extremo personalizado para el tipo de nodo de Hola que va a hospedar el servicio de Hola. Si tiene más de un tipo de nodo, puede configurar un *restricción de emplazamiento* en hello tooensure de servicio sólo se ejecuta en el tipo de nodo de Hola que tiene abierto el puerto de extremo personalizado de Hola.
+2. Crear un clúster de Service Fabric en Azure y especificar el puerto **80** como un puerto de punto de conexión personalizado para el tipo de nodo que va a hospedar el servicio. Si tiene más de un tipo de nodo, puede configurar una *restricción de colocación* en el servicio para asegurarse de que solo se puede ejecutar en el tipo de nodo que tiene el puerto de punto de conexión personalizado abierto.
 
     ![Apertura de un puerto en un tipo de nodo][4]
-3. Una vez que se haya creado el clúster de hello, configure Hola equilibrador de carga de Azure en el tráfico de tooforward de grupo de recursos del clúster de hello en el puerto 80. Al crear un clúster a través de hello portal de Azure, esto se configura automáticamente para cada puerto de extremo personalizado que se configuró.
+3. Una vez creado el clúster, configure el equilibrador de carga de Azure en el grupo de recursos del clúster para reenviar el tráfico hacia el puerto 80. Al crear un clúster mediante Azure Portal, este se configura automáticamente para cada puerto de punto de conexión personalizado que se ha configurado.
 
-    ![Reenviar el tráfico en hello equilibrador de carga de Azure][5]
-4. Hola utiliza el equilibrador de carga Azure un toodetermine sondeo si o no toosend tráfico tooa de nodo concreto. Hola sondeo comprueba periódicamente un punto de conexión en cada toodetermine de nodo o no está respondiendo nodo Hola. Si el sondeo de hello no tooreceive una respuesta después de un número determinado de veces, equilibrador de carga de hello deja de enviar nodo toothat de tráfico. Al crear un clúster a través de hello portal de Azure, un sondeo se configura automáticamente para cada puerto de extremo personalizado que se configuró.
+    ![Reenvío del tráfico en el equilibrador de carga de Azure][5]
+4. El equilibrador de carga de Azure utiliza un sondeo para determinar si envía o no tráfico a un nodo concreto. El sondeo comprueba periódicamente un punto de conexión de cada nodo para determinar si este está respondiendo o no. Si el sondeo no recibe una respuesta después de un número determinado de veces, el equilibrador de carga deja de enviar tráfico a dicho nodo. Al crear un clúster mediante Azure Portal, se configura automáticamente un sondeo para cada puerto de punto de conexión personalizado que se ha configurado.
 
-    ![Reenviar el tráfico en hello equilibrador de carga de Azure][8]
+    ![Reenvío del tráfico en el equilibrador de carga de Azure][8]
 
-Es importante tooremember que hello equilibrador de carga de Azure y sondeo Hola solo conocen hello *nodos*, no Hola *servicios* ejecutan en nodos de Hola. Hola equilibrador de carga de Azure siempre enviará tráfico toonodes que respondan toohello sondeo, por lo que debe tener cuidado tooensure servicios están disponibles en los nodos de Hola que se pueda toorespond toohello sondeo.
+Es importante recordar que Azure Load Balancer y el sondeo solo detectan los *nodos* y no los *servicios* que se ejecutan en dichos nodos. El equilibrador de carga de Azure siempre enviará tráfico a los nodos que respondan al sondeo, por lo que se debe garantizar que haya servicios disponibles en los nodos que puedan responder al sondeo.
 
 ## <a name="reliable-services-built-in-communication-api-options"></a>Reliable Services: opciones de API de comunicación integradas
-Hola servicios confiables framework incluye varias opciones de comunicación pregenerado. Decisión de Hello sobre los cuales uno adaptará mejor a los depende de elección de Hola de hello programación modelo, marco de comunicación de Hola y Hola lenguaje de programación que los servicios se escriben en.
+El marco de Reliable Services incluye varias opciones de comunicación pregeneradas. La decisión de cuál funcionará mejor para usted depende de la elección del modelo de programación, el marco de comunicación y el lenguaje de programación en que se crean los servicios.
 
-* **Ningún protocolo específico:** si no tiene una opción determinada del marco de comunicación, pero desea tooget algo activos y en funcionamiento rápidamente, Hola opción ideal para usted es [comunicación remota de servicio](service-fabric-reliable-services-communication-remoting.md), lo que permite llamadas a procedimiento remoto fuertemente tipado para servicios de confianza y actores confiable. Esto es más fácil de hello y tooget de forma más rápida a trabajar con comunicación del servicio. La comunicación remota de servicio controla la resolución de direcciones, la conexión, los reintentos y el control de errores del servicio. Esto está disponible para aplicaciones de C# y Java.
-* **HTTP**: para una comunicación independiente del lenguaje, HTTP proporciona una opción estándar con las herramientas y los servidores HTTP disponibles en muchos lenguajes diferentes, compatibles todos ellos con Service Fabric. Los servicios pueden usar cualquier pila HTTP disponible, incluida la [ASP.NET Web API](service-fabric-reliable-services-communication-webapi.md) para aplicaciones de C#. Los clientes escritos en C# pueden aprovechar hello `ICommunicationClient` y `ServicePartitionClient` clases, mientras que para Java, usar hello `CommunicationClient` y `FabricServicePartitionClient` clases, [para la resolución de servicio, las conexiones HTTP y bucles de reintento](service-fabric-reliable-services-communication.md).
-* **WCF**: Si tienes código existente que usa WCF como el marco de comunicación, puede usar hello `WcfCommunicationListener` para el lado del servidor de Hola y `WcfCommunicationClient` y `ServicePartitionClient` clases para cliente de Hola. Pero esto solo está disponible para las aplicaciones de C# en clústeres basados en Windows. Para obtener más información, consulte el artículo [implementación basada en WCF de pila de comunicación de hello](service-fabric-reliable-services-communication-wcf.md).
+* **No hay ningún protocolo específico:** Si no tiene una opción concreta de marco de comunicación, pero desea crear algo que se pueda ejecutar rápidamente, entonces la opción idónea para usted es la [comunicación remota de servicio](service-fabric-reliable-services-communication-remoting.md), que permite llamadas a procedimientos remotos fuertemente tipados para Reliable Services y Reliable Actors. Esta es la manera más sencilla y rápida de empezar con la comunicación del servicio. La comunicación remota de servicio controla la resolución de direcciones, la conexión, los reintentos y el control de errores del servicio. Esto está disponible para aplicaciones de C# y Java.
+* **HTTP**: para una comunicación independiente del lenguaje, HTTP proporciona una opción estándar con las herramientas y los servidores HTTP disponibles en muchos lenguajes diferentes, compatibles todos ellos con Service Fabric. Los servicios pueden usar cualquier pila HTTP disponible, incluida la [ASP.NET Web API](service-fabric-reliable-services-communication-webapi.md) para aplicaciones de C#. Los clientes escritos en C# pueden aprovechar las clases `ICommunicationClient` y `ServicePartitionClient`, mientras que para Java son las clases `CommunicationClient` y `FabricServicePartitionClient`, [para la resolución del servicio, las conexiones HTTP y los bucles de reintento](service-fabric-reliable-services-communication.md).
+* **WCF**: Si tiene código existente que usa WCF como su marco de comunicación, puede usar `WcfCommunicationListener` para el lado servidor y las clases `WcfCommunicationClient` y `ServicePartitionClient` para el cliente. Pero esto solo está disponible para las aplicaciones de C# en clústeres basados en Windows. Para obtener más información, consulte este artículo sobre la [implementación basada en WCF de la pila de comunicación](service-fabric-reliable-services-communication-wcf.md).
 
 ## <a name="using-custom-protocols-and-other-communication-frameworks"></a>Uso de protocolos personalizados y otros marcos de comunicación
-Los servicios pueden usar cualquier protocolo o marco de comunicación, ya sea un protocolo binario personalizado sobre sockets de TCP o eventos de streaming a través de [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) o [IoT Hub de Azure](https://azure.microsoft.com/services/iot-hub/). Service Fabric proporciona comunicación las API que se puede conectar la pila de comunicación en, mientras todos los Hola trabajar toodiscover y conectar se abstrae del usuario. Consulte este artículo sobre hello [modelo de comunicación de servicio confiable](service-fabric-reliable-services-communication.md) para obtener más detalles.
+Los servicios pueden usar cualquier protocolo o marco de comunicación, ya sea un protocolo binario personalizado sobre sockets de TCP o eventos de streaming a través de [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) o [IoT Hub de Azure](https://azure.microsoft.com/services/iot-hub/). Service Fabric proporciona las API de comunicación a las que puede conectar su pila de comunicación, al tiempo que se le quita todo el trabajo de detección y conexión. Consulte el artículo sobre el [Modelo de comunicación de Reliable Services](service-fabric-reliable-services-communication.md) para obtener más detalles.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Aprender más acerca de conceptos de Hola y de API disponibles en hello [modelo de comunicación de servicios de confianza](service-fabric-reliable-services-communication.md), a continuación, empezar a trabajar rápidamente con [comunicación remota de servicio](service-fabric-reliable-services-communication-remoting.md) o visite toolearn detallada de cómo toowrite un agente de escucha de comunicación con [API Web con OWIN autohospedaje](service-fabric-reliable-services-communication-webapi.md).
+Obtenga más información sobre los conceptos y las API disponibles en el [modelo de comunicación de Reliable Services](service-fabric-reliable-services-communication.md) y, después, empiece a trabajar rápidamente con [comunicación remota de servicio](service-fabric-reliable-services-communication-remoting.md) o profundice para más información sobre cómo escribir un agente de escucha de comunicación mediante la [API web con autohospedaje OWIN](service-fabric-reliable-services-communication-webapi.md).
 
 [1]: ./media/service-fabric-connect-and-communicate-with-services/serviceendpoints.png
 [2]: ./media/service-fabric-connect-and-communicate-with-services/namingservice.png

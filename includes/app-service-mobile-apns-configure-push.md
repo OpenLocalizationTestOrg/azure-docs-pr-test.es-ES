@@ -1,8 +1,8 @@
 
 
-1. En el equipo Mac, inicie **Acceso a llaves**. En hello izquierda barra de navegación, en **categoría**, abra **mis certificados**. Encontrar el certificado SSL de Hola que descargó en la sección anterior de Hola y revelar su contenido. Seleccione solo Hola certificado (no seleccione clave privada de hello), y [exportarlo](https://support.apple.com/kb/PH20122?locale=en_US).
-2. Hola [portal de Azure](https://portal.azure.com/), haga clic en **examinar todos los** > **servicios de aplicaciones**y haga clic en el back-end de aplicaciones móviles. En **Configuración**, haga clic en **App Service Push** y, después, en el nombre del centro de notificaciones. Vaya demasiado**servicios de notificación de inserción de Apple** > **cargar certificado**. Cargar archivo de Hola. p12, seleccionar Hola correcto **modo** (dependiendo de si un certificado de su cliente SSL desde versiones anteriores es de producción o de espacio aislado). Guarde los cambios.
+1. En el equipo Mac, inicie **Acceso a llaves**. En la barra de navegación izquierda, en **Categoría**, abra **Mis certificados**. Busque el certificado SSL que descargó en la sección anterior y muestre su contenido. Seleccione solo el certificado, sin seleccionar la clave privada, y [expórtelo](https://support.apple.com/kb/PH20122?locale=en_US).
+2. En [Azure Portal](https://portal.azure.com/), haga clic en **Examinar todo** > **App Services** y finalmente en el back-end de Mobile Apps. En **Configuración**, haga clic en **App Service Push** y, después, en el nombre del centro de notificaciones. Vaya a **Apple Push Notification Service** > **Cargar certificado**. Cargue el archivo .p12 y seleccione el **Modo** correcto (según si el certificado SSL de cliente es para un espacio aislado o para producción). Guarde los cambios.
 
-El servicio ahora está configurado toowork con las notificaciones de inserción en iOS.
+El servicio ahora está configurado para trabajar con las notificaciones push en iOS.
 
 [1]: ./media/app-service-mobile-apns-configure-push/mobile-push-notification-hub.png

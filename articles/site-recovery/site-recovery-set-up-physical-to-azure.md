@@ -1,6 +1,6 @@
 ---
-title: "Configurar el entorno de origen hello (tooAzure servidores físicos) | Documentos de Microsoft"
-description: "Este artículo se describe cómo tooset seguridad su toostart del entorno local replicar servidores físicos que ejecutan Windows o Linux en Azure."
+title: "Configuración del entorno de origen (servidores físicos a Azure) | Microsoft Docs"
+description: "En este artículo se describe cómo configurar el entorno local para comenzar a replicar servidores físicos que ejecutan Windows o Linux en Azure."
 services: site-recovery
 documentationcenter: 
 author: AnoopVasudavan
@@ -14,63 +14,63 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.openlocfilehash: d4702265bf36910015685d2bba99d6e577531bd0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 49b9d2e21dbcb612828a25f21ed4382327d6f64c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="set-up-hello-source-environment-physical-server-tooazure"></a>Configurar el entorno de origen hello (servidor físico tooAzure)
+# <a name="set-up-the-source-environment-physical-server-to-azure"></a>Configuración del entorno de origen (servidores físicos a Azure)
 > [!div class="op_single_selector"]
-> * [TooAzure de VMware](./site-recovery-set-up-vmware-to-azure.md)
-> * [TooAzure físico](./site-recovery-set-up-physical-to-azure.md)
+> * [VMware a Azure](./site-recovery-set-up-vmware-to-azure.md)
+> * [Físico a Azure](./site-recovery-set-up-physical-to-azure.md)
 
-Este artículo se describe cómo tooset seguridad su toostart del entorno local replicar servidores físicos que ejecutan Windows o Linux en Azure.
+En este artículo se describe cómo configurar el entorno local para comenzar a replicar servidores físicos que ejecutan Windows o Linux en Azure.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-artículo de Hola se supone que ya tiene:
-1. Un almacén de servicios de recuperación de hello [portal de Azure](http://portal.azure.com "portal de Azure").
-3. Un equipo físico en el servidor de configuración de tooinstall Hola.
+En este artículo se supone que ya cuenta con lo siguiente:
+1. Un almacén de Recovery Services en [Azure Portal](http://portal.azure.com "Azure Portal").
+3. Un equipo físico para instalar el servidor de configuración.
 
 ### <a name="configuration-server-minimum-requirements"></a>Requisitos mínimos del servidor de configuración
-Hello en la tabla siguiente enumera Hola mínimos de hardware, software y requisitos de red para un servidor de configuración.
+En la siguiente tabla se muestran los requisitos mínimos de hardware, software y red para un servidor de configuración.
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
 > [!NOTE]
-> No se admiten servidores proxy basada en HTTPS al servidor de configuración de Hola.
+> El servidor de configuración no admite los servidores proxy basados en HTTPS.
 
 ## <a name="choose-your-protection-goals"></a>Selección de los objetivos de protección
 
-1. Hola portal de Azure, vaya toohello **servicios de recuperación** hoja los almacenes de credenciales y seleccione el almacén.
-2. Hola **recursos** menú de almacén de hello, haga clic en **Introducción** > **Site Recovery** > **paso 1: preparar Infraestructura** > **objetivo de protección**.
+1. En Azure Portal, vaya a la hoja de los almacenes de **Recovery Services** y seleccione su almacén.
+2. En el menú de **Recurso** del almacén, haga clic en **Introducción** > **Site Recovery** > **Paso 1: Preparar la infraestructura** > **Objetivo de protección**.
 
     ![Elegir objetivos](./media/site-recovery-set-up-physical-to-azure/choose-goals.png)
-3. En **objetivo de protección**, seleccione **tooAzure** y **no virtualizados/otros**y, a continuación, haga clic en **Aceptar**.
+3. En **Objetivo de protección**, seleccione **To Azure** (En Azure) y, luego, **No virtualizado/otro**; después haga clic en **Aceptar**.
 
     ![Elegir objetivos](./media/site-recovery-set-up-physical-to-azure/physical-protection-goal.PNG)
 
-## <a name="set-up-hello-source-environment"></a>Configurar el entorno de origen Hola
+## <a name="set-up-the-source-environment"></a>Configuración del entorno de origen
 
-1. En **preparar origen**, si no tiene un servidor de configuración, haga clic en **+ servidor de configuración** tooadd uno.
+1. En **Preparar origen**, si no tiene un servidor de configuración, haga clic en **+Servidor de configuración** para agregar uno.
 
   ![Configurar origen](./media/site-recovery-set-up-physical-to-azure/plus-config-srv.png)
-2. Hola **Agregar servidor** hoja, compruebe que **servidor de configuración** aparece en **tipo de servidor**.
-4. Descargue el archivo de instalación de configuración de Site Recovery unificado de Hola.
-5. Descargue la clave de registro del almacén de Hola. Se necesita la clave de registro de hello al ejecutar el programa de instalación unificada. clave de Hello es válida durante cinco días después de generarlo.
+2. En la hoja **Agregar servidor**, compruebe que **Servidor de configuración** aparezca en **Tipo de servidor**.
+4. Descargue el archivo de instalación unificada de Site Recovery.
+5. Descargue la clave de registro del almacén. Necesita la clave de registro cuando ejecuta la instalación unificada. La clave será válida durante cinco días a partir del momento en que se genera.
 
     ![Configurar origen](./media/site-recovery-set-up-physical-to-azure/set-source2.png)
-6. En el equipo de Hola que utilice como servidor de configuración de hello, ejecute **instalación unificada de Azure Site Recovery** servidor de configuración de tooinstall Hola, servidor de procesos de Hola y Hola maestro servidor de destino.
+6. En la máquina que usa como el servidor de configuración, ejecute la **instalación unificada de Azure Site Recovery** para instalar el servidor de configuración, el servidor de procesos y el servidor de destino maestro.
 
 #### <a name="run-azure-site-recovery-unified-setup"></a>Ejecución de la instalación unificada de Azure Site Recovery
 
 > [!TIP]
-> Se produce un error en el registro del servidor de configuración si el tiempo de hello en el reloj del sistema del equipo es más de cinco minutos en hora local. Sincronizar el reloj del sistema con un [servidor horario](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service) antes de iniciar la instalación de Hola.
+> El registro del servidor de configuración presenta errores si la hora del reloj del sistema de su equipo tiene más de cinco minutos de diferencia con respecto a la hora local. Sincronice el reloj del sistema con un [servidor horario](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service) antes de comenzar la instalación.
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> servidor de configuración de Hello puede instalarse a través de una línea de comandos. Para obtener más información, consulte [Instalación del servidor de configuración con herramientas de línea de comandos](http://aka.ms/installconfigsrv).
+> El servidor de configuración se puede instalar a través de una línea de comandos. Para obtener más información, consulte [Instalación del servidor de configuración con herramientas de línea de comandos](http://aka.ms/installconfigsrv).
 
 
 ## <a name="common-issues"></a>Problemas comunes

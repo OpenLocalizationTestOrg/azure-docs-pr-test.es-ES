@@ -1,6 +1,6 @@
 ---
-title: aaaAzure interfaz de usuario de Mobile Engagement - alcanzar contenido
-description: "Obtenga información acerca de cómo campañas contenido exclusivo de hello toomanage de diferentes tipos de notificación de inserción de hello en Azure Mobile Engagement"
+title: Interfaz de usuario de Azure Mobile Engagement - Contenido de cobertura
+description: "Aprenda a administrar el contenido exclusivo de los diferentes tipos de campañas de notificaciones de inserción en Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
 author: piyushjo
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: de389eb4368d986ef00135036c26e26a2464663e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 3741a43b74af5846e95e42d8a7b533621e780f2d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-toomanage-hello-unique-content-of-hello-different-types-of-push-notification-campaigns"></a>¿Cómo toomanage Hola contenido exclusivo de tipos diferentes de hello de campañas de notificación de inserción
-Puede usar la sección de contenido de Hola de alcance de la campaña toomodify Hola contenido nuevo de los anuncios, sondeos, inserta datos e iconos (solo Windows Phone). configuración de contenido de Hola de las campañas de inserción es toohello específicos de tipo de campaña. 
+# <a name="how-to-manage-the-unique-content-of-the-different-types-of-push-notification-campaigns"></a>Cómo administrar el contenido exclusivo de los diferentes tipos de campañas de notificaciones de inserción
+Puede utilizar la sección de contenido de una nueva campaña de cobertura para modificar el contenido de los anuncios, sondeos, inserción de datos y mosaicos (solo en Windows Phone). La configuración del contenido de las campañas de inserción es específica del tipo de campaña. 
 
 ### <a name="content-types"></a>Tipos de contenido:
 * Anuncios
@@ -32,26 +32,26 @@ Puede usar la sección de contenido de Hola de alcance de la campaña toomodify 
 ## <a name="content-of-announcements"></a>Contenido de anuncios
  ![Reach-Content1][30] 
 
-### <a name="choose-hello-type-of-your-announcement"></a>Elija el tipo de saludo del anuncio:
-* Solo notificación: es una notificación estándar simple. Lo que significa que, si un usuario hace clic en él, no aparecerá vista adicional, pero solo Hola acción asociada, se producirá tooit.
-* Anuncio de texto: es una notificación que involucre a Hola usuario toohave un vistazo a una vista de texto.
-* Anuncio de Web: es una notificación que involucre a Hola usuario toohave un vistazo a una vista web.
+### <a name="choose-the-type-of-your-announcement"></a>Elija el tipo de anuncio:
+* Solo notificación: es una notificación estándar simple. Lo que significa que si un usuario hace clic en él, no aparecerá ninguna vista adicional, pero se producirá solo la acción asociada a él.
+* Anuncio de texto: es una notificación que compromete al usuario a echar un vistazo a una vista de texto.
+* Anuncio web: es una notificación que compromete al usuario a echar un vistazo a una vista de texto.
 
-### <a name="see-also"></a>Otras referencias
+### <a name="see-also"></a>Consulte también
 * [Cobertura - Guía práctica - Anuncios][Link 3] 
 
 ### <a name="about-web-view-announcements"></a>Acerca de los anuncios de visualización web:
-Apariciones del patrón de Hola "{deviceid}" en el código de hello HTML o código JavaScript que proporciona aquí se reemplazará automáticamente por identificador de hello de dispositivo de Hola que muestra el anuncio de Hola. Se trata de un identificadores de dispositivos de Azure Mobile Engagement de manera sencilla tooretrieve en externo hospedado en el área de operaciones de servicio web.
-Si desea que toocreate una completa Pantalla vista web (sin Hola botones predeterminados acción y salir proporcionamos) puede usar Hola siguientes funciones de código JavaScript de anuncio de vista web: 
+Las apariciones del patrón "{deviceid}" en el código HTML o JavaScript que proporcione aquí se reemplazarán automáticamente por el identificador del dispositivo que muestra el anuncio. Se trata de una manera fácil de recuperar identificadores de dispositivo de Azure Mobile Engagement en un servicio web externo hospedado en su oficina.
+Si desea crear una vista web de pantalla completa (sin los botones predeterminados de Acción y Salir proporcionados) puede utilizar las siguientes funciones desde código de JavaScript del anuncio de la vista web: 
 
-* realizar acción de anuncio Hola: ReachContent.actionContent()
-* salir del anuncio de Hola: ReachContent.exitContent()
+* realizar la acción del anuncio: ReachContent.actionContent()
+* salir del anuncio: ReachContent.exitContent()
 
 ### <a name="choose-your-action"></a>Elija la acción:
 ### <a name="about-action-urls"></a>Acerca de las direcciones URL de la acción:
 Cualquier dirección URL que puede ser interpretada por el sistema operativo de destino de un dispositivo puede utilizarse como una dirección URL de la acción.
-Cualquier dirección URL dedicada que su aplicación podría compatibilidad (por ejemplo, los usuarios de toomake saltar tooa de pantalla determinada) también se puede utilizar como una dirección URL de acción.
-Cada repetición del patrón de Hola {deviceid} se sustituye automáticamente por identificador de hello de dispositivo de hello realizar acción Hola. Esto puede resultar tooeasily usa identificadores de dispositivo de Azure Mobile Engagement de recuperar a través de un servicio web externo hospedado en el área de operaciones.
+Cualquier dirección URL específica que pueda admitir su aplicación (por ejemplo, para hacer saltar a los usuarios a una pantalla concreta) también puede utilizarse como una dirección URL de acción.
+Cada repetición del patrón {deviceid} se reemplaza automáticamente por el identificador del dispositivo que realiza la acción. Esto puede utilizarse para recuperar fácilmente los identificadores de dispositivo Azure Mobile Engagement a través de un servicio web externo hospedado en su área de operaciones.
 
 * **Acciones de Android + iOS**
   * Abrir una página web
@@ -67,14 +67,14 @@ Cada repetición del patrón de Hola {deviceid} se sustituye automáticamente po
   * tel:\[número-teléfono\] 
   * Ejemplo:tel:2125551212
 * **Acciones solo para Android**
-  * Descargar una aplicación de hello Play Store
+  * Descargar una aplicación de Play Store
   * market://details?id=\[paquete de la aplicación\] 
   * Ejemplo:market://details?id=com.microsoft.office.word
   * Iniciar una búsqueda localizada geográficamente
   * geo:0,0?q=\[consulta de búsqueda\] 
   * Ejemplo:geo:0,0?q=starbucks,paris
 * **Acciones solo para iOS**
-  * Descargar una aplicación de hello tienda de aplicaciones
+  * Descargar una aplicación de la App Store
   * http://itunes.apple.com/[country]/app/[app name]/id[app id]?mt=8 
   * Ejemplo: http://itunes.apple.com/fr/app/briquet-virtuel/id430154748?mt=8
   * Acciones de Windows
@@ -90,7 +90,7 @@ Cada repetición del patrón de Hola {deviceid} se sustituye automáticamente po
   * Marcar un número de teléfono (requiere la aplicación Skype)
   * tel:\[número-teléfono\] 
   * Ejemplo:tel:2125551212
-  * Descargar una aplicación de hello Play Store
+  * Descargar una aplicación de Play Store
   * ms-windows-store:PDP?PFN=\[id. del paquete de la aplicación\] 
   * Ejemplo:ms-windows-store:PDP?PFN=4d91298a-07cb-40fb-aecc-4cb5615d53c1
   * Iniciar una búsqueda en Mapas de Bing
@@ -104,35 +104,35 @@ Cada repetición del patrón de Hola {deviceid} se sustituye automáticamente po
   * Ejemplo:myfolderdata.txt
 
 ### <a name="build-a-tracking-url"></a>Crear una dirección URL de seguimiento:
-* Vea Hola sección "Configuración" de hello <UI Documentation> para obtener instrucciones sobre la creación de una dirección URL de seguimiento que le permitirá toodownload a los usuarios una de las otras aplicaciones.
+* Consulte la sección "Configuración" de <UI Documentation> para obtener instrucciones sobre la creación de una dirección URL de seguimiento que permita a los usuarios descargar una de las otras aplicaciones.
 
-### <a name="define-hello-texts-of-your-announcement"></a>Definir Hola textos del anuncio
-Rellene Hola título, contenido y textos de botón del anuncio. Puede tener como destino una audiencia de una campaña futura basada en los comentarios de Hola alcance de la forma en que los usuarios han respondido toothis campaña. La audiencia de destino puede basarse en los comentarios de Hola de si solo se ha insertado esta campaña, respondidos, accionado o cerrado.
+### <a name="define-the-texts-of-your-announcement"></a>Definir los textos del anuncio
+Rellene el título, el contenido y los textos del anuncio. Puede dirigirse a una audiencia de una campaña futura basándose en los comentarios de la cobertura sobre cómo respondieron los usuarios a esta campaña. La orientación a la audiencia puede basarse en los comentarios de si solo se ha insertado esta campaña, respondido, ejecutada o terminado.
 
-### <a name="see-also"></a>Otras referencias
+### <a name="see-also"></a>Consulte también
 * [Documentación de la interfaz de usuario - Cobertura - Nuevo criterio de inserción][Link 28]
 
 ## <a name="content-of-polls"></a>Contenido de sondeos
 ![Reach-Content2][31] 
 
-Rellene Hola título, descripción y textos de botón del anuncio. A continuación, agregue preguntas y opciones para hello respuestas tooyour preguntas.
-Puede tener como destino una audiencia de una campaña futura basada en los comentarios de Hola alcance de la forma en que los usuarios han respondido toothis campaña. La orientación a la audiencia puede basarse en si solo se ha insertado, respondido, ejecutado o terminado esta campaña. La audiencia de destino también puede basarse en los comentarios de respuesta de sondeo, donde elección de pregunta y respuesta de Hola se utilizan como criterios.
+Rellene el título, la descripción y los textos de los botones del anuncio. A continuación, agregue preguntas y opciones para las respuestas a sus preguntas.
+Puede dirigirse a una audiencia de una campaña futura basándose en los comentarios de la cobertura sobre cómo respondieron los usuarios a esta campaña. La orientación a la audiencia puede basarse en si solo se ha insertado, respondido, ejecutado o terminado esta campaña. La orientación de la audiencia también puede basarse en los comentarios de respuesta de sondeos, donde la pregunta y respuesta se utilizan como criterios.
 
-### <a name="see-also"></a>Otras referencias
+### <a name="see-also"></a>Consulte también
 * [Documentación de la interfaz de usuario - Cobertura - Nuevo criterio de inserción][Link 28]
 
 ## <a name="content-of-data-pushes"></a>Contenido de las inserciones de datos
 ![Reach-Content3][32] 
 
-### <a name="choose-hello-type-of-your-data"></a>Elija el tipo de saludo de los datos:
+### <a name="choose-the-type-of-your-data"></a>Elija el tipo de datos:
 * Texto
 * Datos binarios
 * Datos de Base64
 
-### <a name="define-hello-content-of-your-data"></a>Definir el contenido de Hola de los datos
-* Si seleccionó toopush datos de texto, copie y pegue el texto hello en cuadro "contenido" Hola.
-* Si seleccionó toopush datos binarios o base64, utilice tooupload de botón de "cargar el archivo" hello el archivo.
-* Puede tener como destino una audiencia de una campaña futura basada en los comentarios de Hola alcance de la forma en que los usuarios han respondido toothis campaña. La orientación a la audiencia puede basarse en si solo se ha insertado, respondido, ejecutado o terminado esta campaña.
+### <a name="define-the-content-of-your-data"></a>Defina el contenido de los datos
+* Si ha seleccionado insertar datos de texto, copie y pegue el texto en el cuadro "content".
+* Si ha seleccionado insertar datos binarios o base64, use el botón "cargar el archivo" para cargar el archivo.
+* Puede dirigirse a una audiencia de una campaña futura basándose en los comentarios de la cobertura sobre cómo respondieron los usuarios a esta campaña. La orientación a la audiencia puede basarse en si solo se ha insertado, respondido, ejecutado o terminado esta campaña.
 
 ### <a name="see-also"></a>Consulte también
 * [Documentación de la interfaz de usuario - Cobertura - Nuevo criterio de inserción][Link 28]
@@ -140,11 +140,11 @@ Puede tener como destino una audiencia de una campaña futura basada en los come
 ## <a name="content-of-tiles-windows-phone-only"></a>Contenido de los mosaicos (solo en Windows Phone)
 ![Reach-Content4][33]
 
-### <a name="define-hello-content-of-your-tile"></a>Definir el contenido de hello del título
-carga de mosaico de Hello es hello toobe de texto mostrado en el icono de saludo de la aplicación en dispositivos Windows Phone.
-Una inserción de mosaico es la versión de servicio de notificaciones de inserción de Microsoft (MPNS) de Hola de una inserción nativa para Windows Phone. tipo de inserción de mosaico de Hello es el único tipo de inserción de Hola que no tiene una respuesta y por lo que no se puede compilar audiencia Hola de campañas futuras en resultados de Hola de una campaña de inserción de mosaico. 
+### <a name="define-the-content-of-your-tile"></a>Defina el contenido de su mosaico
+La carga de mosaicos es el texto que se mostrará en el mosaico de la aplicación en los dispositivos Windows Phone.
+La inserción de un mosaico es la versión del servicio de notificaciones de inserción de Microsoft (MPNS) de una inserción nativa para Windows Phone. El tipo de inserción de mosaico es el único tipo de inserción que no tiene una respuesta y, por tanto, la audiencia de las campañas futuras no se puede integrar en los resultados de una campaña de inserción de mosaico. 
 
-### <a name="see-also"></a>Otras referencias
+### <a name="see-also"></a>Consulte también
 * [Documentación de la API - API de cobertura - Inserción nativa][Link 4]
 
 <!--Image references-->

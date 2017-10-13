@@ -1,6 +1,6 @@
 ---
-title: acceso de aaaRestrict mediante firmas de acceso compartido - HDInsight de Azure | Documentos de Microsoft
-description: "Obtenga información acerca de cómo toouse firmas de acceso compartido toorestrict HDInsight acceso toodata almacenado en blobs de almacenamiento de Azure."
+title: "Restricción del acceso mediante firmas de acceso compartido - Azure HDInsight | Microsoft Docs"
+description: "Obtener información acerca de cómo usar firmas de acceso compartido para restringir el acceso de HDInsight a datos almacenados en blobs de Almacenamiento de Azure."
 services: hdinsight
 documentationcenter: 
 author: Blackmist
@@ -15,21 +15,21 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/11/2017
 ms.author: larryfr
-ms.openlocfilehash: a34a2f8e52e47a15b09f09bc1fc67fc6159ec75f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2e4b1a307fae06c0639d93b9804c6f0f703d5900
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="use-azure-storage-shared-access-signatures-toorestrict-access-toodata-in-hdinsight"></a>Usar firmas de acceso compartido de almacenamiento de Azure toorestrict acceso toodata en HDInsight
+# <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Uso de firmas de acceso compartido de Azure Storage para restringir el acceso a datos en HDInsight
 
-HDInsight tiene acceso completo toodata en cuentas de almacenamiento de Azure de hello asociadas Hola clúster. Puede usar firmas de acceso compartido en los datos de hello blob contenedor toorestrict acceso toohello. Por ejemplo, tooprovide acceso de solo lectura toohello los datos. Las firmas de acceso compartido (SAS) son una característica de cuentas de almacenamiento de Azure que le permite toolimit acceso toodata. Por ejemplo, proporcionar toodata de acceso de solo lectura.
+HDInsight tiene acceso total a los datos de las cuentas de Azure Storage asociadas con el clúster. Puede usar firmas de acceso compartido en el contenedor de blobs para restringir el acceso a los datos. Por ejemplo, para proporcionar acceso de solo lectura a los datos. Las firmas de acceso compartido (SAS) son una característica de las cuentas de Almacenamiento de Azure que permite limitar el acceso a los datos. Por ejemplo, al proporcionar acceso de solo lectura a los datos.
 
 > [!IMPORTANT]
-> Para una solución con Apache Ranger, considere la posibilidad de usar HDInsight unido a un dominio. Para obtener más información, vea hello [configurar Unidos al dominio HDInsight](hdinsight-domain-joined-configure.md) documento.
+> Para una solución con Apache Ranger, considere la posibilidad de usar HDInsight unido a un dominio. Para más información, consulte el documento [Configuración de clústeres de HDInsight unidos a un dominio](hdinsight-domain-joined-configure.md).
 
 > [!WARNING]
-> HDInsight debe tener el almacenamiento de acceso completo toohello predeterminado para el clúster de Hola.
+> HDInsight debe tener acceso total al almacenamiento predeterminado para el clúster.
 
 ## <a name="requirements"></a>Requisitos
 
@@ -39,250 +39,250 @@ HDInsight tiene acceso completo toodata en cuentas de almacenamiento de Azure de
   * Se debe usar la versión de Visual Studio 2013, 2015 o 2017
   * Se debe usar la versión de Python 2.7 o superior.
 
-* Un clúster de HDInsight basados en Linux o [Azure PowerShell] [ powershell] -si tiene un clúster existente basada en Linux, puede usar Ambari tooadd un clúster de toohello de firma de acceso compartido. Si no es así, puede usar Azure PowerShell toocreate un clúster y agregar una firma de acceso compartido durante la creación del clúster.
+* Un clúster de HDInsight basado en Linux o [Azure PowerShell][powershell]: si ya tiene un clúster basado en Linux, puede usar Ambari para agregar una firma de acceso compartido al clúster. Si no es así, puede usar Azure PowerShell para crear un clúster y agregar una firma de acceso compartido durante la creación del clúster.
 
     > [!IMPORTANT]
-    > Linux es Hola único sistema operativo usado en HDInsight versión 3.4 o superior. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+    > Linux es el único sistema operativo que se usa en la versión 3.4 de HDInsight, o en las superiores. Consulte la información sobre la [retirada de HDInsight en Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
-* Hola archivos de ejemplo de [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature). Este repositorio incluye Hola siguientes elementos:
+* Los archivos de ejemplo de [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature). Este repositorio contiene los siguientes elementos:
 
   * Un proyecto de Visual Studio que puede crear un contenedor de almacenamiento, una directiva almacenada y una SAS para su uso con HDInsight.
   * Un script de Python que puede crear un contenedor de almacenamiento, una directiva almacenada y una SAS para su uso con HDInsight.
-  * Un script de PowerShell que puede crear un HDInsight de clúster y configurar toouse Hola SAS.
+  * Un script de PowerShell que puede crear un clúster de HDInsight y configurarlo para que use la SAS.
 
 ## <a name="shared-access-signatures"></a>Las firmas de acceso compartido
 
 Hay dos formas de firmas de acceso compartido:
 
-* Ad hoc: Hola hora de inicio, la hora de expiración y permisos para hello SAS se especifican en hello URI de SAS.
+* Ad hoc: la hora de inicio, la hora de expiración y los permisos para la firma de acceso compartido se especifican en el URI de esta.
 
-* Directiva de acceso almacenada: se define una directiva de acceso almacenada en un contenedor de recursos, como un contenedor de blobs. Una directiva puede tener restricciones toomanage usado para una o varias firmas de acceso compartido. Al asociar una SAS con una directiva de acceso almacenada, Hola SAS hereda las restricciones de hello: Hola hora de inicio, la hora de expiración y permisos - definidos para la directiva de acceso de hello almacenado.
+* Directiva de acceso almacenada: se define una directiva de acceso almacenada en un contenedor de recursos, como un contenedor de blobs. Una directiva puede usarse para administrar las restricciones de una o varias firmas de acceso compartido. Cuando asocia una SAS a una directiva de acceso almacenada, la SAS hereda las restricciones (hora de inicio, hora de expiración y permisos) definidas para la directiva de acceso almacenada.
 
-Hello diferencia entre Hola dos formatos es importante para un escenario clave: revocación. Una SAS es una dirección URL, por lo que cualquier persona que obtiene Hola SAS puede utilizar, independientemente de quién lo ha solicitado toobegin con. Si una SAS se publica públicamente, se puede utilizar cualquier usuario de Hola a todos. Una SAS distribuida es válida hasta que se produzca una de las cuatro situaciones:
+La diferencia entre las dos formas es importante para un escenario principal: revocación. Una SAS es una dirección URL, por lo que cualquier persona que obtenga la SAS puede usarla, independientemente de quién la solicitó para comenzar. Si una SAS se encuentra disponible públicamente, cualquier persona del mundo puede usarla. Una SAS distribuida es válida hasta que se produzca una de las cuatro situaciones:
 
-1. hora de expiración de Hello especificado en hello que SAS se alcanza.
+1. Se alcanza el tiempo de expiración especificado en la SAS.
 
-2. hora de expiración de Hello especificado en la directiva de acceso de hello almacenado al que hace referencia Hola que SAS se alcanza. los escenarios siguientes Hello causa un tiempo de expiración hello toobe alcanzado:
+2. Se alcanza la hora de expiración especificada en la directiva de acceso almacenada a la que hace referencia la SAS. Los escenarios siguientes hacen que se alcance la hora de expiración:
 
-    * ha transcurrido el intervalo de tiempo de saludo.
-    * Directiva de acceso de Hello almacenado es toohave modificado una hora de expiración en hello anterior. Al cambiar la hora de expiración de hello es una manera de toorevoke Hola SAS.
+    * Ha transcurrido el intervalo de tiempo.
+    * La directiva de acceso almacenada se ha modificado para que la hora de expiración haya pasado. Cambiar la hora de expiración es una manera de revocar la firma de acceso compartido.
 
-3. Hola almacenado al que hace referencia Hola que SAS se elimina, que es hello de toorevoke de otra manera SAS de directiva de acceso. Si vuelve a crear la directiva de acceso Hola almacenado con hello mismo nombre, todos los tokens SAS de directiva anterior Hola son válidos (si no ha superado la hora de expiración de hello en hello SAS). Si piensa toorevoke Hola SAS, ser seguro toouse un nombre diferente si vuelve a crear la directiva de acceso Hola con una hora de expiración en hello futuras.
+3. Se elimina la directiva de acceso almacenada a la que hace referencia la SAS, que es otra forma de revocar la SAS. Si se vuelve a crear la directiva de acceso almacenada con el mismo nombre, todos los tokens de SAS de la directiva anterior son válidos (si la SAS no ha caducado). Si prevé revocar la SAS, asegúrese de usar un nombre distinto si vuelve a crear la directiva de acceso con una hora de expiración futura.
 
-4. clave de la cuenta de Hello que estaba toocreate usado Hola SAS se vuelve a generar. Regenerando la clave de hello hace que todas las aplicaciones que usan la autenticación de clave toofail anterior Hola. Actualizar todos los componentes toohello nueva clave.
+4. Se vuelve a generar la clave de cuenta que se usó para crear la SAS. Regenerar la clave hace que todas las aplicaciones que usan la clave anterior no se puedan autenticar. Actualice todos los componentes con la nueva clave.
 
 > [!IMPORTANT]
-> Un URI de firma de acceso compartido está asociado a la firma de hello cuenta clave toocreate usado Hola y Hola asociados directiva de acceso almacenada (si existe). Si no se especifica ninguna directiva de acceso almacenada, hello toorevoke de manera sólo firma de acceso compartido es toochange Hola cuenta clave.
+> Los URI de firma de acceso compartido están asociados a la clave de la cuenta que se utiliza para crear la firma y a la directiva de acceso almacenada correspondiente (en su caso). Si no se especifica una directiva de acceso almacenada, la única forma de revocar una firma de acceso compartido es cambiar la clave de la cuenta.
 
-Se recomienda usar siempre las directivas de acceso almacenadas. Al utilizar las directivas almacenadas, puede revocar las firmas o ampliar la fecha de expiración de hello según sea necesario. pasos de Hello en este documento utiliza toogenerate de directivas de acceso almacenada SAS.
+Se recomienda usar siempre las directivas de acceso almacenadas. Al utilizar las directivas almacenadas, puede revocar las firmas o ampliar la fecha de expiración según sea necesario. Los pasos descritos en este documento utilizan directivas de acceso almacenadas para generar las SAS.
 
-Para obtener más información sobre firmas de acceso compartido, consulte [modelo SAS de descripción hello](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Para más información sobre firmas de acceso compartido, consulte [Firmas de acceso compartido, Parte 1: Descripción del modelo de firmas de acceso compartido](../storage/common/storage-dotnet-shared-access-signature-part-1.md)
 
 ### <a name="create-a-stored-policy-and-sas-using-c"></a>Creación de una directiva almacenada y una SAS mediante C\#
 
-1. Abra la solución de hello en Visual Studio.
+1. Abra la solución en Visual Studio.
 
-2. En el Explorador de soluciones, haga doble clic en hello **SASToken** de proyecto y seleccione **propiedades**.
+2. En el Explorador de soluciones, haga clic con el botón derecho en el proyecto **SASToke**n y seleccione **Propiedades**.
 
-3. Seleccione **configuración** y agregue los valores de hello siguientes entradas:
+3. Seleccione **Configuración** y agregue valores para las siguientes entradas:
 
-   * StorageConnectionString: Hola cadena de conexión de cuenta de almacenamiento de Hola que desea que toocreate una directiva almacenada y la SAS para. Hola formato debe ser `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` donde `myaccount` es Hola nombre de la cuenta de almacenamiento y `mykey` es clave Hola Hola cuenta de almacenamiento.
+   * StorageConnectionString: la cadena de conexión de la cuenta de almacenamiento para la que desea crear una directiva almacenada y una SAS. El formato debe ser `DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey` donde `myaccount` es el nombre de la cuenta de almacenamiento y `mykey` es la clave para la cuenta de almacenamiento.
 
-   * ContainerName: contenedor de hello de cuenta de almacenamiento de Hola que desee tener acceso toorestrict a.
+   * ContainerName: el contenedor de la cuenta de almacenamiento a la que desea restringir el acceso.
 
-   * SASPolicyName: Hola nombre toouse para hello almacena toocreate de directiva.
+   * SASPolicyName: el nombre que se usará para la directiva almacenada que se va a crear.
 
-   * FileToUpload: ruta de acceso tooa archivo hello que es cargado toohello contenedor.
+   * FileToUpload: la ruta de acceso a un archivo que se carga en el contenedor.
 
-4. Ejecute el proyecto de Hola. Información toohello similar después de texto se muestra una vez que se ha generado Hola SAS:
+4. Ejecute el proyecto. Una vez generada la firma de acceso compartido, se mostrará información similar al texto siguiente:
 
         Container SAS token using stored access policy: sr=c&si=policyname&sig=dOAi8CXuz5Fm15EjRUu5dHlOzYNtcK3Afp1xqxniEps%3D&sv=2014-02-14
 
-    Guarde el token de directiva SAS de hello, el nombre de la cuenta de almacenamiento y el nombre del contenedor. Estos valores se utilizan al asociar la cuenta de almacenamiento de Hola a su clúster de HDInsight.
+    Guarde el token de directiva de SAS, el nombre de la cuenta de almacenamiento y el nombre del contenedor. Estos valores se usan al asociar la cuenta de almacenamiento con el clúster de HDInsight.
 
 ### <a name="create-a-stored-policy-and-sas-using-python"></a>Creación de una directiva almacenada y una SAS mediante Python
 
-1. Abrir archivo SASToken.py de hello y cambiar Hola siguientes valores:
+1. Abra el archivo SASToken.py y cambie los valores siguientes:
 
-   * directiva\_nombre: Hola nombre toouse para hello almacenado toocreate de directiva.
+   * policy\_name: el nombre que se usará para la directiva almacenada que se va a crear.
 
-   * almacenamiento\_cuenta\_nombre: nombre de hello de la cuenta de almacenamiento.
+   * storage\_account\_name: el nombre de su cuenta de almacenamiento.
 
-   * almacenamiento\_cuenta\_clave: Hola clave Hola cuenta de almacenamiento.
+   * storage\_account\_key: la clave de su cuenta de almacenamiento.
 
-   * almacenamiento\_contenedor\_nombre: contenedor Hola de cuenta de almacenamiento de Hola que desee tener acceso toorestrict a.
+   * storage\_container\_name: el contenedor de la cuenta de almacenamiento al que desea restringir el acceso.
 
-   * en el ejemplo se\_archivo\_ruta de acceso: Hola ruta tooa archivo que es cargado toohello contenedor.
+   * example\_file\_path: la ruta de acceso a un archivo que se carga en el contenedor.
 
-2. Ejecutar script de Hola. Muestra hello SAS token similar toohello después de texto cuando se completa el script de Hola:
+2. Ejecute el script. Cuando finalice el script, muestra un token de SAS similar al texto siguiente:
 
         sr=c&si=policyname&sig=dOAi8CXuz5Fm15EjRUu5dHlOzYNtcK3Afp1xqxniEps%3D&sv=2014-02-14
 
-    Guarde el token de directiva SAS de hello, el nombre de la cuenta de almacenamiento y el nombre del contenedor. Estos valores se utilizan al asociar la cuenta de almacenamiento de Hola a su clúster de HDInsight.
+    Guarde el token de directiva de SAS, el nombre de la cuenta de almacenamiento y el nombre del contenedor. Estos valores se usan al asociar la cuenta de almacenamiento con el clúster de HDInsight.
 
-## <a name="use-hello-sas-with-hdinsight"></a>Usar SAS Hola con HDInsight
+## <a name="use-the-sas-with-hdinsight"></a>Uso de las SAS con HDInsight
 
-Al crear un clúster de HDInsight, debe especificar una cuenta de almacenamiento principal y puede especificar, opcionalmente, cuentas de almacenamiento adicionales. Ambos métodos de adición de almacenamiento requieren cuentas de almacenamiento de toohello de acceso completo y contenedores que se utilizan.
+Al crear un clúster de HDInsight, debe especificar una cuenta de almacenamiento principal y puede especificar, opcionalmente, cuentas de almacenamiento adicionales. Estos dos métodos para agregar almacenamiento requieren tener un acceso total a las cuentas de almacenamiento y los contenedores que se utilizan.
 
-toouse un contenedor tooa de acceso de toolimit de firma de acceso compartido, agregar una entrada personalizada toohello **core sitio** configuración de clúster de Hola.
+Para usar una firma de acceso compartido a fin de limitar el acceso a un contenedor, agregue una entrada personalizada a la configuración **core-site** para el clúster.
 
-* Para **basados en Windows** o **basados en Linux** clústeres de HDInsight, puede agregar la entrada de Hola durante su creación mediante PowerShell.
-* Para **basados en Linux** clústeres de HDInsight, cambiar la configuración de hello después de la creación de clúster con Ambari.
+* Para clústeres de HDInsight **basados en Windows** o **basados en Linux**, puede agregar la entrada durante la creación del clúster mediante PowerShell.
+* Para clústeres de HDInsight **basados en Linux**, cambie la configuración después de crear el clúster con Ambari.
 
-### <a name="create-a-cluster-that-uses-hello-sas"></a>Crear un clúster que usa Hola SAS
+### <a name="create-a-cluster-that-uses-the-sas"></a>Crear un clúster que usa la SAS
 
-Un ejemplo de creación de un clúster de HDInsight que hello usa SAS se incluye en hello `CreateCluster` directorio del repositorio de Hola. toouse, Hola de uso después avanza:
+Se incluye un ejemplo de creación de un clúster de HDInsight que usa la SAS en el directorio `CreateCluster` del repositorio. Para ello, siga estos pasos:
 
-1. Abra hello `CreateCluster\HDInsightSAS.ps1` archivo en un editor de texto y modifique Hola siguiente valores al principio de saludo del documento de Hola.
+1. Abra el archivo `CreateCluster\HDInsightSAS.ps1` en un editor de texto y modifique los valores siguientes al principio del documento.
 
     ```powershell
-    # Replace 'mycluster' with hello name of hello cluster toobe created
+    # Replace 'mycluster' with the name of the cluster to be created
     $clusterName = 'mycluster'
     # Valid values are 'Linux' and 'Windows'
     $osType = 'Linux'
-    # Replace 'myresourcegroup' with hello name of hello group toobe created
+    # Replace 'myresourcegroup' with the name of the group to be created
     $resourceGroupName = 'myresourcegroup'
-    # Replace with hello Azure data center you want toohello cluster toolive in
+    # Replace with the Azure data center you want to the cluster to live in
     $location = 'North Europe'
-    # Replace with hello name of hello default storage account toobe created
+    # Replace with the name of the default storage account to be created
     $defaultStorageAccountName = 'mystorageaccount'
-    # Replace with hello name of hello SAS container created earlier
+    # Replace with the name of the SAS container created earlier
     $SASContainerName = 'sascontainer'
-    # Replace with hello name of hello SAS storage account created earlier
+    # Replace with the name of the SAS storage account created earlier
     $SASStorageAccountName = 'sasaccount'
-    # Replace with hello SAS token generated earlier
+    # Replace with the SAS token generated earlier
     $SASToken = 'sastoken'
-    # Set hello number of worker nodes in hello cluster
+    # Set the number of worker nodes in the cluster
     $clusterSizeInNodes = 3
     ```
 
-    Por ejemplo, cambiar `'mycluster'` toohello nombre del clúster de Hola que desea toocreate. valores de Hello SAS deben coincidir con valores de hello de los pasos anteriores de hello al crear una cuenta de almacenamiento y el token de SAS.
+    Por ejemplo, cambie `'mycluster'` por el nombre del clúster que desea crear. Los valores de SAS deben coincidir con los valores de los pasos anteriores al crear una cuenta de almacenamiento y el token de SAS.
 
-    Una vez que han cambiado los valores de hello, guarde el archivo de Hola.
+    Una vez que haya cambiado los valores, guarde el archivo.
 
 2. Abra un nuevo símbolo del sistema de Azure PowerShell. Si no está familiarizado con Azure PowerShell, o si no lo ha instalado, consulte [Cómo instalar y configurar Azure PowerShell][powershell].
 
-1. Desde el símbolo del sistema de hello, utilice Hola después comando tooauthenticate tooyour suscripción de Azure:
+1. En el símbolo del sistema, use el siguiente comando para autenticarse en la suscripción de Azure:
 
     ```powershell
     Login-AzureRmAccount
     ```
 
-    Cuando se le solicite, inicie sesión con la cuenta de hello para la suscripción de Azure.
+    Cuando se le solicite, inicie sesión con la cuenta de la suscripción de Azure.
 
-    Si su cuenta está asociada a varias suscripciones de Azure, puede que necesite toouse `Select-AzureRmSubscription` suscripción de hello tooselect desea toouse.
+    Si la cuenta está asociada a varias suscripciones de Azure, puede que tenga que usar `Select-AzureRmSubscription` para seleccionar la suscripción que quiere usar.
 
-4. Desde el símbolo del sistema de hello, cambiar directorios toohello `CreateCluster` directorio que contiene el archivo de hello HDInsightSAS.ps1. A continuación, usar hello sigue la secuencia de comandos de hello toorun
+4. En el símbolo del sistema, cambie los directorios al directorio `CreateCluster` que contiene el archivo HDInsightSAS.ps1. Después, use el siguiente comando para ejecutar el script
 
     ```powershell
     .\HDInsightSAS.ps1
     ```
 
-    Durante la ejecución de secuencias de comandos hello, registra el símbolo del sistema de salida toohello PowerShell mientras crea recursos Hola cuentas de grupo y de almacenamiento. Eres usuario de hello HTTP tooenter solicitadas para hello clúster de HDInsight. Esta cuenta es el clúster de toohello de acceso HTTP/s toosecure usado.
+    Mientras se ejecuta el script, registra la salida en el símbolo del sistema de PowerShell mientras crea las cuentas de grupo de recursos y de almacenamiento. Se le pedirá que escriba el usuario HTTP para el clúster de HDInsight. Esta cuenta se usa para proteger el acceso HTTP/s al clúster.
 
-    Si está creando un clúster basado en Linux, se le solicitará un nombre de cuenta de usuario SSH y una contraseña. Esta cuenta es registro tooremotely usado en clúster toohello.
+    Si está creando un clúster basado en Linux, se le solicitará un nombre de cuenta de usuario SSH y una contraseña. Esta cuenta se usa para el inicio de sesión remoto al clúster.
 
    > [!IMPORTANT]
-   > Cuando se le solicite Hola HTTP/s o SSH nombre de usuario y contraseña, debe proporcionar una contraseña que cumpla Hola siguiendo criterios:
+   > Cuando se le pida el nombre de usuario SSH o HTTP/s y la contraseña, debe proporcionar una contraseña que cumpla los criterios siguientes:
    >
    > * Debe tener como mínimo 10 caracteres.
    > * Debe contener al menos un dígito.
    > * Debe incluir al menos un carácter no alfanumérico.
    > * Debe contener al menos una mayúscula o una minúscula.
 
-Se tarda un tiempo para este toocomplete de secuencia de comandos, normalmente unos 15 minutos. Cuando se completa en el script de Hola sin errores, se ha creado el clúster de Hola.
+Este script tarda un tiempo en completarse, normalmente unos 15 minutos. Una vez finalizado el script sin errores, se creará el clúster.
 
-### <a name="use-hello-sas-with-an-existing-cluster"></a>Usar SAS Hola con un clúster existente
+### <a name="use-the-sas-with-an-existing-cluster"></a>Usar la SAS con un clúster existente
 
-Si tiene un clúster existente basada en Linux, puede agregar Hola SAS toohello **core sitio** configuración mediante el uso de hello pasos:
+Si tiene un clúster existente basado en Linux, puede agregar las SAS para la configuración **core-site** mediante los pasos siguientes:
 
-1. Abra hello Ambari web interfaz de usuario para el clúster. Hola una dirección de esta página es https://YOURCLUSTERNAME.azurehdinsight.net. Cuando se le solicite, autenticar clúster toohello con nombre de administrador de hello (admin) y contraseña que ha utilizado al crear el clúster de Hola.
+1. Abra la interfaz de usuario web Ambari del clúster. La dirección de esta página es https://NOMBREDESUCLÚSTER.azurehdinsight.net. Cuando se le solicite, autentíquese en el clúster con el nombre de administrador (admin) y la contraseña que usó al crear el clúster.
 
-2. En hello parte izquierda de la interfaz de usuario de web de Ambari hello, seleccione **HDFS** y, a continuación, seleccione hello **configuraciones** ficha en medio de Hola de página Hola.
+2. En el lado izquierdo de la interfaz de usuario web Ambari, seleccione **HDFS** y, a continuación, seleccione la pestaña **Configs** (Configuraciones) en el centro de la página.
 
-3. Seleccione hello **avanzadas** ficha y, a continuación, desplácese hasta que encuentre hello **personalizado core-sitio** sección.
+3. Seleccione la pestaña **Advanced** (Avanzadas) y, a continuación, desplácese hasta encontrar la sección **Custom core-site** (Sitio principal personalizado).
 
-4. Expanda hello **personalizado core-sitio** sección, a continuación, final de desplazamiento toohello y seleccione hello **Agregar propiedad... ** vínculo. Los valores siguientes de Hola de uso para hello **clave** y **valor** campos:
+4. Expanda la sección **Custom core-site** (Sitio principal personalizado), desplácese hasta el final y seleccione el vínculo **Add property...** (Agregar propiedad...). Utilice los siguientes valores para los campos **Key** (Clave) y **Value** (Valor):
 
    * **Key**: fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net
-   * **Valor**: Hola SAS devolviendo Hola aplicación de C# o Python haya ejecutado anteriormente
+   * **Value**: la SAS devuelta por la aplicación de C# o Python ejecutada anteriormente.
 
-     Reemplace **CONTAINERNAME** con el nombre del contenedor de Hola usó con la aplicación de C# o SAS de hello. Reemplace **STORAGEACCOUNTNAME** con nombre de la cuenta de almacenamiento Hola ha usado.
+     Reemplace **CONTAINERNAME** por el nombre del contenedor utilizado con la aplicación de C# o de SAS. Reemplace **STORAGEACCOUNTNAME** por el nombre de la cuenta de almacenamiento utilizada.
 
-5. Haga clic en hello **agregar** toosave esta clave y valor, a continuación, haga clic en hello **guardar** botón cambios de configuración de toosave Hola. Cuando se le pida, agregue una descripción de cambio de hello ("Agregar acceso de almacenamiento SAS" por ejemplo) y, a continuación, haga clic en **guardar**.
+5. Haga clic en el botón **Add** (Agregar) para guardar esta clave y este valor y, a continuación, haga clic en el botón **Save** (Guardar) para guardar los cambios de configuración. Cuando se le solicite, agregue una descripción del cambio ("Agregar acceso de almacenamiento de SAS", por ejemplo) y haga clic en **Save** (Guardar).
 
-    Haga clic en **Aceptar** cuando se hayan completado los cambios de Hola.
+    Haga clic en **OK** (Aceptar) cuando se hayan completado los cambios.
 
    > [!IMPORTANT]
-   > Debe reiniciar varios servicios para que hello cambio surta efecto.
+   > Debe reiniciar varios servicios para que el cambio surta efecto.
 
-6. En la interfaz de usuario del web Ambari hello, seleccione **HDFS** en lista de Hola Hola izquierda y, a continuación, seleccione **reiniciar todos los** de hello **acciones de servicio** lista desplegable lista de hello derecho. Cuando se le solicite, seleccione **Turn on maintenance mode** (Activar modo de mantenimiento) y, a continuación, "Confirm Restart All" ("Confirmar reiniciar todo").
+6. En la interfaz de usuario web Ambari, seleccione **HDFS** en la lista de la izquierda y, a continuación, seleccione **Restart All** (Reiniciar todos) en la lista desplegable **Service Actions** (Acciones del servicio) de la derecha. Cuando se le solicite, seleccione **Turn on maintenance mode** (Activar modo de mantenimiento) y, a continuación, "Confirm Restart All" ("Confirmar reiniciar todo").
 
     Repita este proceso para MapReduce2 y YARN.
 
-7. Una vez que se hayan reiniciado los servicios de hello, seleccione cada uno de ellos y deshabilitar el modo de mantenimiento de hello **acciones de servicio** de lista desplegable.
+7. Una vez reiniciados los servicios, seleccione cada uno de ellos y deshabilite el modo de mantenimiento en la lista desplegable **Service Actions** (Acciones del servicio).
 
 ## <a name="test-restricted-access"></a>Prueba de acceso restringido
 
-tooverify que ha restringido el acceso, Hola de uso siguientes métodos:
+Para comprobar que tiene el acceso restringido, utilice los métodos siguientes:
 
-* Para **basados en Windows** clústeres de HDInsight, use el clúster de toohello tooconnect de escritorio remoto. Para obtener más información, consulte [conectar tooHDInsight mediante RDP](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).
+* Para clústeres de HDInsight **basados en Windows** , use el Escritorio remoto para conectarse al clúster. Para más información, vea [Connect to HDInsight using RDP](hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp) (Conectarse a HDInsight mediante RDP).
 
-    Una vez conectado, usar hello **Hadoop de línea de comandos** icono en hello escritorio tooopen un símbolo del sistema.
+    Una vez conectado, use el icono de **línea de comandos de Hadoop** en el escritorio para abrir un símbolo del sistema.
 
-* Para **basados en Linux** clústeres de HDInsight, utilizar SSH tooconnect toohello clúster. Para más información, consulte [Uso SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+* Para clústeres de HDInsight **basados en Linux** , use SSH para conectarse al clúster. Para más información, consulte [Uso SSH con HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-Una vez conectado toohello clúster, use Hola después tooverify pasos que sólo se pueden leer y mostrar elementos en la cuenta de almacenamiento SAS hello:
+Una vez conectado al clúster, siga estos pasos para comprobar que solo puede leer y listar elementos en la cuenta de almacenamiento de SAS:
 
-1. contenido de hello toolist del contenedor de hello, utilice Hola siguiente comando desde el símbolo del sistema de hello: 
+1. Para mostrar el contenido del contenedor, utilice el siguiente comando desde el símbolo del sistema: 
 
     ```bash
     hdfs dfs -ls wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/
     ```
 
-    Reemplace **SASCONTAINER** con nombre hello del contenedor de hello creado para la cuenta de almacenamiento SAS Hola. Reemplace **SASACCOUNTNAME** con el nombre de Hola de cuenta de almacenamiento de hello usada para hello SAS.
+    Reemplace **SASCONTAINER** por el nombre del contenedor creado para la cuenta de almacenamiento de SAS. Reemplace **SASACCOUNTNAME** por el nombre de la cuenta de almacenamiento utilizada para la firma de acceso compartido.
 
-    lista de Hello incluye archivo hello cargado cuando se creó el contenedor de Hola y SAS.
+    La lista incluye el archivo que se cargó al crear el contenedor y la firma de acceso compartido.
 
-2. Usar hello después tooverify de comando que se puede leer el contenido de hello del archivo hello. Reemplace hello **SASCONTAINER** y **SASACCOUNTNAME** como en el paso anterior de Hola. Reemplace **FILENAME** con nombre de hello del archivo de hello muestra en el comando anterior hello:
+2. Use el siguiente comando para comprobar que puede leer el contenido del archivo. Reemplace **SASCONTAINER** y **SASACCOUNTNAME** tal como lo ha hecho en el paso anterior. Reemplace **FILENAME** por el nombre de archivo que aparece en el comando anterior:
 
     ```bash
     hdfs dfs -text wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/FILENAME
     ```
 
-    Este comando muestra el contenido de Hola de archivo hello.
+    Este comando muestra el contenido del archivo.
 
-3. Usar hello después de sistema de archivos local de comando toodownload Hola archivo toohello:
+3. Use el siguiente comando para descargar el archivo en el sistema de archivos local:
 
     ```bash
     hdfs dfs -get wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/FILENAME testfile.txt
     ```
 
-    Este comando descargas Hola tooa archivo local denominado **testfile.txt**.
+    Este comando descarga el archivo en un archivo local denominado **testfile.txt**.
 
-4. Siguiente Hola de uso del comando tooupload Hola archivo local tooa nuevo archivo denominado **testupload.txt** en hello almacenamiento SAS:
+4. Use el siguiente comando para cargar el archivo local en un nuevo archivo denominado **testupload.txt** en el almacenamiento de SAS:
 
     ```bash
     hdfs dfs -put testfile.txt wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/testupload.txt
     ```
 
-    Recibirá un toohello similar de mensaje siguiente texto:
+    Recibirá un mensaje similar al texto siguiente:
 
         put: java.io.IOException
 
-    Este error se produce debido a la ubicación de almacenamiento de hello lectura + lista solo. Usar hello siguiente datos de hello tooput de comando de almacenamiento predeterminado de hello para el clúster hello, que se puede escribir:
+    Este error se produce porque la ubicación de almacenamiento es solo de lectura y lista. Use el siguiente comando para colocar los datos en el almacenamiento predeterminado para el clúster, que tiene permiso de escritura:
 
     ```bash
     hdfs dfs -put testfile.txt wasb:///testupload.txt
     ```
 
-    En esta ocasión, operación Hola debe completarse correctamente.
+    Esta vez, la operación debe completarse correctamente.
 
 ## <a name="troubleshooting"></a>Solución de problemas
 
 ### <a name="a-task-was-canceled"></a>Se ha cancelado una tarea
 
-**Síntomas**: al crear un clúster con la secuencia de comandos de PowerShell de hello, es posible que reciba Hola mensaje de error siguiente:
+**Síntomas**: al crear un clúster mediante el script de PowerShell, puede recibir el mensaje de error siguiente:
 
     New-AzureRmHDInsightCluster : A task was canceled.
     At C:\Users\larryfr\Documents\GitHub\hdinsight-azure-storage-sas\CreateCluster\HDInsightSAS.ps1:62 char:5
@@ -291,9 +291,9 @@ Una vez conectado toohello clúster, use Hola después tooverify pasos que sólo
         + CategoryInfo          : NotSpecified: (:) [New-AzureRmHDInsightCluster], CloudException
         + FullyQualifiedErrorId : Hyak.Common.CloudException,Microsoft.Azure.Commands.HDInsight.NewAzureHDInsightClusterCommand
 
-**Causa**: este error puede producirse si usa una contraseña de usuario de administrador/HTTP hello para el clúster de Hola o (para los clústeres basados en Linux) usuario SSH Hola.
+**Causa**: este error se puede producir si usa una contraseña para el usuario administrador/HTTP del clúster o, en clústeres basados en Linux, el usuario SSH.
 
-**Resolución**: usar una contraseña que cumpla Hola siguiendo criterios:
+**Solución**: utilice una contraseña que cumpla los criterios siguientes:
 
 * Debe tener como mínimo 10 caracteres.
 * Debe contener al menos un dígito.
@@ -302,7 +302,7 @@ Una vez conectado toohello clúster, use Hola después tooverify pasos que sólo
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Ahora que ha aprendido cómo tooadd almacenamiento limitado con acceso tooyour clúster de HDInsight, obtenga información acerca de otro toowork formas con datos en el clúster:
+Ahora que ha aprendido a agregar almacenamiento de acceso limitado al clúster de HDInsight, obtenga información acerca de otras maneras de trabajar con datos en el clúster:
 
 * [Uso de Hive con HDInsight](hdinsight-use-hive.md)
 * [Uso de Pig con HDInsight](hdinsight-use-pig.md)

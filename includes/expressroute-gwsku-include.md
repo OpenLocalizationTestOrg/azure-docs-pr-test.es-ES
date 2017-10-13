@@ -1,6 +1,6 @@
-Cuando se crea una puerta de enlace de red virtual, deberá toospecify puerta de enlace de hello SKU que desea toouse. Cuando se selecciona una SKU de puerta de enlace superior, más CPU y ancho de banda de red se asignan toohello puerta de enlace y, como resultado, puerta de enlace de hello permite mayor rendimiento toohello virtual red. 
+Al crear una puerta de enlace de red virtual, debe especificar la SKU de la puerta de enlace que desea usar. Cuando se selecciona una SKU de puerta de enlace superior, se asignan más CPU y mayor ancho de banda de red a la puerta de enlace y. como resultado, esta admite un mayor rendimiento de red a la red virtual. 
 
-Las puertas de enlace de red virtual de ExpressRoute pueden usar Hola después SKU: 
+Las puertas de enlace de red virtual de ExpressRoute pueden utilizar las SKU siguientes: 
 
 * Estándar
 * HighPerformance

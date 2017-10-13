@@ -1,6 +1,6 @@
 ---
-title: "versiones de aaaAPI de búsqueda de Azure | Documentos de Microsoft"
-description: "Directiva de versiones para la biblioteca de cliente de API de REST de búsqueda de Azure y Hola Hola .NET SDK."
+title: Versiones de API de Azure Search | Microsoft Docs
+description: "Directiva de versión para las API de REST de Búsqueda de Azure y la biblioteca de cliente en el SDK de .NET."
 services: search
 documentationcenter: 
 author: brjohnstmsft
@@ -14,24 +14,24 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 01/11/2017
 ms.author: brjohnst
-ms.openlocfilehash: 4fa722fad5577c6b254be7fa673eb240fff316a2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a14131455ad94cbc4b729077568b12043401c08e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="api-versions-in-azure-search"></a>Versiones de API en Búsqueda de Azure
-Azure Search implementa las actualizaciones de características de forma regular. A veces, pero no siempre, estas actualizaciones requieren nos toopublish una nueva versión de la compatibilidad con versiones anteriores de API toopreserve. Publicar una nueva versión permite toocontrol y cuándo y cómo integrar las actualizaciones del servicio de búsqueda en el código.
+Azure Search implementa las actualizaciones de características de forma regular. A veces, aunque no siempre, estas actualizaciones nos obligan a publicar una nueva versión de la API para mantener la compatibilidad con versiones anteriores. La publicación de una nueva versión le permite controlar cuándo y cómo integrar en su código las actualizaciones del servicio de búsqueda.
 
-Como norma, intentamos toopublish nuevas versiones solo cuando sea necesario, ya que puede implicar algún tooupgrade esfuerzo su versión de toouse una nueva API de código. Solo se publicará una versión nueva si necesitamos toochange algunos aspectos de la API de hello en ningún modo que perjudique la compatibilidad con versiones anteriores. Esto puede suceder debido a las características de tooexisting correcciones o debido a nuevas características que cambiar el área de superficie de API existente.
+Por lo general, intentamos publicar versiones nuevas solo cuando sea necesario, ya que el proceso de actualizar el código para que use una nueva versión de API puede suponer cierto esfuerzo. Solo publicaremos una versión nueva si es necesario cambiar algún aspecto de la API de tal manera que se interrumpe la compatibilidad con versiones anteriores. Esto puede deberse a correcciones en las características existentes o a características nuevas que cambian el área expuesta de la API.
 
-Seguimos Hola misma regla para actualizaciones del SDK. Hola SDK de búsqueda de Azure sigue hello [control de versiones semántico](http://semver.org/) reglas, lo que significa que su versión consta de tres partes: principal, secundaria y (por ejemplo, 1.1.0) del número de compilación. Se liberará una nueva versión principal de hello SDK solo en caso de cambios que interrumpen la compatibilidad con versiones anteriores. Para actualizaciones de características de no separación, aumentaremos versión secundaria de Hola y de correcciones de errores se aumentará solo versión de compilación de Hola.
+La misma regla se aplica a las actualizaciones del SDK. El SDK de Búsqueda de Azure sigue las reglas de [Versionamiento semántico](http://semver.org/) , lo que significa que la versión tiene tres partes: principal, secundaria y número de compilación (por ejemplo, 1.1.0). Solo se lanzará una versión principal nueva del SDK en caso de que haya cambios que impidan la compatibilidad con versiones anteriores. En caso de actualizaciones de características que no producen interrupciones, incrementaremos la versión secundaria y, en caso de correcciones de errores, solo aumentaremos la versión de compilación.
 
 > [!NOTE]
-> La instancia de servicio de búsqueda de Azure es compatible con varias versiones de API de REST, incluidas hello más reciente. Puede continuar toouse una versión cuando ya no es Hola más reciente, pero se recomienda que migre la versión más reciente de código toouse Hola. Cuando se utiliza la API de REST de Hola, debe especificar versión de API de hello en cada solicitud realizada a través del parámetro de versión de la api de Hola. Cuando se usa Hola .NET SDK, versión de Hola de hello SDK usa determina versión correspondiente de Hola de hello API de REST. Si usas un SDK anterior, puede continuar toorun ese código sin cambios aunque servicio hello es la versión de toosupport actualizada una API más recientes.
+> La instancia del servicio Azure Search es compatible con varias versiones de API de REST, incluida la más reciente. Puede seguir usando una versión aunque no sea la más reciente, pero es recomendable que migre el código para usar la versión más actualizada. Cuando se usa la API de REST, debe especificar la versión de API en cada solicitud realizada a través del parámetro api-version. Al usar el SDK. NET, la versión del SDK que usa determina la versión correspondiente de la API de REST. Si usa un SDK anterior, puede seguir ejecutando ese código sin realizar ningún cambio, incluso si el servicio se ha actualizado para admitir una versión más reciente de la API.
 
 ## <a name="snapshot-of-current-versions"></a>Instantánea de las versiones actuales
-A continuación se muestra una instantánea de hello las versiones actuales de tooAzure de interfaces de programación todos búsqueda.
+A continuación se incluye una instantánea de las versiones actuales de todas las interfaces de programación para Búsqueda de Azure.
 
 | Interfaces | Versión principal más reciente | Estado |
 | --- | --- | --- |
@@ -42,24 +42,24 @@ A continuación se muestra una instantánea de hello las versiones actuales de t
 | [SDK de administración de .NET](https://aka.ms/search-mgmt-sdk) |2015-08-19 |Disponibilidad general |
 | [API de REST de administración](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |Disponibilidad general |
 
-Para las API de REST, incluidos Hola hello `api-version` en cada llamada, es necesario. Esto hace fácil tootarget una versión específica, como una API de vista previa. Hello ejemplo siguiente se muestra cómo Hola `api-version` se especifica el parámetro:
+Para las API de REST, es necesario incluir `api-version` en cada llamada. Esto permite establecer fácilmente una versión específica de destino, como una versión preliminar de API. En el ejemplo siguiente se muestra cómo se especifica el parámetro `api-version` :
 
     GET https://adventure-works.search.windows.net/indexes/bikes?api-version=2016-09-01
 
 > [!NOTE]
-> Aunque cada solicitud tiene un `api-version`, le recomendamos que use Hola misma versión para todas las solicitudes de API. Esto ocurre especialmente cuando las nuevas versiones de API incorporan atributos u operaciones que las versiones anteriores no reconocen. Debe evitarse la mezcla de versiones de API, ya que puede tener consecuencias no deseadas.
+> Aunque cada solicitud tiene una `api-version`, se recomienda usar la misma versión para todas las solicitudes de API. Esto ocurre especialmente cuando las nuevas versiones de API incorporan atributos u operaciones que las versiones anteriores no reconocen. Debe evitarse la mezcla de versiones de API, ya que puede tener consecuencias no deseadas.
 >
-> Hola API de REST de servicios y API de REST de administración son versionar de forma independiente entre sí. Cualquier semejanza entre los números de versión es mera coincidencia.
+> Las versiones de la API de REST de servicio y de la API de REST de administración son independientes entre sí. Cualquier semejanza entre los números de versión es mera coincidencia.
 
-Disponible con carácter general (o GA) API puede usarse en producción y está sujeto tooAzure contratos de nivel de servicio. Versiones de vista previa tienen características experimentales que no son siempre tooa migrados GA versión. **Se recomienda encarecidamente no usar una versión preliminar de API en aplicaciones de producción.**
+Las API de disponibilidad general (o GA) puede usarse en entornos de producción y están sujetas a contratos de nivel de servicio de Azure. Las versiones preliminares tienen características experimentales que no siempre se migran a una versión de disponibilidad general. **Se recomienda encarecidamente no usar una versión preliminar de API en aplicaciones de producción.**
 
 ## <a name="about-preview-and-generally-available-versions"></a>Acerca de las versiones preliminar y de disponibilidad general
-Búsqueda de Azure siempre previamente libera características experimentales a través de la API de REST de hello en primer lugar, a continuación, a través de las versiones preliminares de hello .NET SDK.
+Búsqueda de Azure siempre publica previamente características experimentales primero a través de la API de REST y, después, a través de las versiones preliminares del SDK de .NET.
 
-Características de vista previa no se garantiza que toobe migrado tooa GA versión. Mientras que las características en una versión de GA se consideran estable y es poco probable toochange con excepción de Hola de mejoras y correcciones de compatibilidad pequeños, características de vista previa están disponibles para pruebas y la experimentación con el fin de Hola de recabar comentarios en Diseño e implementación.
+No se garantiza la migración de las características en versión preliminar a una versión de disponibilidad general. Mientras que las características de una versión de disponibilidad general se consideran estables y es poco probable que cambien, a excepción de pequeñas mejoras y correcciones compatibles con versiones anteriores, las características en versión preliminar están disponibles para la experimentación y la realización de pruebas, con el fin de recabar comentarios sobre el diseño y la implementación de la característica.
 
-Sin embargo, dado que las características de vista previa son toochange de asunto, se recomienda no escribir código de producción que tome una dependencia en las versiones preliminares. Si está utilizando una versión anterior de la vista previa, se recomienda migrar versión de toohello disponible con carácter general (GA).
+Sin embargo, dado que las características en versión preliminar están sujetas a cambios, no se recomienda escribir código de producción que dependa de versiones preliminares. Si usa una versión preliminar antigua, se recomienda que migre a la versión de disponibilidad general (GA).
 
-Para hello .NET SDK: Guía de migración de código puede encontrarse en [actualización Hola .NET SDK](search-dotnet-sdk-migration.md).
+Para el SDK de .NET: encontrará indicaciones para la migración de código en [Actualización a la versión 1.1 del SDK de .NET para Búsqueda de Azure](search-dotnet-sdk-migration.md).
 
-Disponibilidad general significa que búsqueda de Azure está ahora en el contrato de nivel de servicio (SLA) de Hola. Hello SLA puede encontrarse en [contratos de nivel de servicio de búsqueda de Azure](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+La disponibilidad general significa que Búsqueda de Azure está ahora sujeta al contrato de nivel de servicio. Encontrará dicho contrato en el [Acuerdo de Nivel de Servicio de Búsqueda de Azure](https://azure.microsoft.com/support/legal/sla/search/v1_0/).

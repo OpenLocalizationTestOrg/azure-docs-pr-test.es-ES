@@ -1,5 +1,5 @@
 ---
-title: "servidor de web de ASP.NET aaaAzure AD v2 Introducción | Documentos de Microsoft"
+title: "Introducción al servidor web ASP.NET de Azure AD v2 | Microsoft Docs"
 description: "Implementación de inicio de sesión de Microsoft en una solución ASP.NET con una aplicación basada en un explorador web tradicional mediante el estándar OpenID Connect"
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/05/2017
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: aae729b4e086d6770648af4708a58f840d2dbb9d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 7a97cc9d1f13034de41f55399442061fbb4873c2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 [!INCLUDE [1. Introduction](active-directory-serversidewebapp-aspnetwebappowin-introduction.md)]
 [!INCLUDE [2. Setup](active-directory-serversidewebapp-aspnetwebappowin-setup.md)]

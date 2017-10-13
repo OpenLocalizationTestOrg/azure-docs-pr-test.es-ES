@@ -1,6 +1,6 @@
 ---
-title: panel de servicio del Administrador de aaaStorSimple | Documentos de Microsoft
-description: "Describe el panel de servicio del Administrador de StorSimple de Hola y explica cómo toouse, estado de hello toomonitor de la solución StorSimple."
+title: Panel del servicio StorSimple Manager | Microsoft Docs
+description: "Describe el panel del servicio del Administrador de StorSimple y explica cómo se usa para supervisar el estado de la solución de StorSimple."
 services: storsimple
 documentationcenter: 
 author: SharS
@@ -14,58 +14,58 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2016
 ms.author: v-sharos
-ms.openlocfilehash: dc1197eb5deac337215b260845631a4f04be1011
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 596431b7279b753ca4da838eb028cdde2022ce02
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="use-hello-storsimple-manager-service-dashboard"></a>Usar el panel de servicio del Administrador de StorSimple de Hola
+# <a name="use-the-storsimple-manager-service-dashboard"></a>Uso del panel del servicio StorSimple Manager
 ## <a name="overview"></a>Información general
-página del panel de servicio de administrador de StorSimple de Hello proporciona un resumen de todos los dispositivos de Hola que están conectado toohello servicio de StorSimple Manager y resalta los que necesitan la atención del administrador del sistema. Este tutorial presenta la página de panel de hello, explica la función y el contenido del panel de Hola y describe las tareas de Hola que puede realizar desde esta página.
+La página del panel del servicio StorSimple Manager proporciona una vista resumida de todos los dispositivos que están conectados al servicio StorSimple Manager, y resalta aquellas que requieren la atención del administrador del sistema. Este tutorial presenta la página del panel, explica el contenido y la función del panel, y describe las tareas que puede realizar desde esta página.
 
 ![Panel del servicio](./media/storsimple-service-dashboard/HCS_ServiceDashboard.png)
 
-panel de servicio de StorSimple Manager Hello muestra hello siguiente información:
+El panel del servicio StorSimple Manager muestra la siguiente información:
 
-* Hola **gráfico** área, puede ver gráfico de métricas pertinente de Hola para sus dispositivos. Puede ver el almacenamiento principal de hello (localmente anclado y niveles) utilizado en todos los dispositivos de hello, así como el almacenamiento en nube Hola utilizado por dispositivos durante un período de tiempo. Usar controles de hello en la esquina superior derecha de Hola de hello gráfico toospecify una escala de tiempo de 1 semana, 1 mes, 3 meses o 1 año.
-* Hola **información general del uso** muestra Hola almacenamiento principal aprovisionado y utilizado por todos los dispositivos toohello relativa almacenamiento total disponible en todos los dispositivos. **Aprovisionar** hace referencia toohello cantidad de almacenamiento que está preparado y asignado para su uso, mientras **usado** hace referencia toousage de volúmenes tal como lo ven los iniciadores de Hola que son dispositivos toohello conectado.
-* Hola **alertas** área proporciona una instantánea de todas las alertas activas de hello en todos los dispositivos de hello, agrupadas por gravedad de alerta. Al hacer clic en el nivel de gravedad de hello abre hello **alertas** page, tooshow ámbito esas alertas. En hello **alertas** página, puede hacer clic en un detalles adicionales de tooview alertas individuales sobre esa alerta, incluido cualquier acción recomendada. También puede desactivar alerta Hola si se ha resuelto el problema de Hola.
-* Hola **trabajos** área proporciona una instantánea de los trabajos recientes en todos los dispositivos que están conectados tooyour servicio. Hay vínculos que pueden usar toolook trabajos que están actualmente en curso, que han dado error en hello últimas 24 horas, o aquellos que están programados toorun Hola próximas 24 horas.
-* Hola **vista rápida** área proporciona información útil, como el estado del servicio, el número de dispositivos conectados toohello servicio, la ubicación del servicio de Hola y detalles de suscripción de Hola que está asociado con el servicio de Hola. También hay un registro de operaciones de toohello de vínculo. Haga clic en hello vínculo toosee una lista de todas las operaciones de servicio de StorSimple Manager completadas.
+* En el área **gráfica** , puede ver el gráfico de las métricas pertinentes para sus dispositivos. Puede ver el almacenamiento principal (organizado en capas y anclado localmente) usado en todos los dispositivos, así como el almacenamiento en la nube consumido por los dispositivos durante un período. Use los controles de la esquina superior derecha del gráfico para especificar una escala de tiempo de 1 semana, 1 mes, 3 meses o 1 año.
+* La **información general del uso** muestra el almacenamiento principal aprovisionado y usado por todos los dispositivos en relación con el almacenamiento total disponible en todos los dispositivos. **Aprovisionado** se refiere a la cantidad de almacenamiento que está preparada y asignada para su uso, mientras que **Usado** se refiere al uso de los volúmenes, tal como lo ven los iniciadores que están conectados a los dispositivos.
+* El área **alertas** proporciona una instantánea de todas las alertas activas en todos los dispositivos, agrupados por gravedad. Al hacer clic en el nivel de gravedad se abre la página **alertas** , dedicada a mostrar dichas alertas. En la página **alertas** , puede hacer clic en una alerta individual para ver detalles adicionales acerca de ella, incluidas las acciones recomendadas. También puede desactivar la alerta si el problema se ha resuelto.
+* El área **trabajos** proporciona una instantánea de los trabajos recientes en todos los dispositivos que están conectados a su servicio. Hay vínculos que puede usar para consultar los trabajos que están actualmente en curso, los que produjeron errores en las últimas 24 horas o los que están programados para ejecutarse en las próximas 24 horas.
+* El área de **vista rápida** proporciona información útil, como el estado del servicio, el número de dispositivos conectados al servicio, la ubicación del servicio y los detalles de la suscripción asociada con el servicio. También hay un vínculo al registro de operaciones. Haga clic en el vínculo para ver una lista de todas las operaciones completadas del servicio StorSimple Manager.
 
-Puede usar hello StorSimple Manager servicio panel página tooinitiate Hola siguientes tareas:
+Puede usar la página del panel del servicio StorSimple Manager para iniciar las siguientes tareas:
 
-* Ver o volver a generar clave de registro del servicio de Hola.
-* Cambiar la clave de cifrado de datos del servicio de Hola.
-* Ver registros de operaciones de Hola.
+* Ver o volver a generar la clave de registro del servicio.
+* Cambiar la clave de cifrado de datos del servicio.
+* Ver los registros de operaciones.
 
-## <a name="view-or-regenerate-hello-service-registration-key"></a>Ver o volver a generar clave de registro del servicio de Hola
-clave de registro del servicio de Hello es tooregister usa un dispositivo de StorSimple de Microsoft Azure con el servicio StorSimple Manager hello, por lo que hello dispositivo aparece en hello portal de Azure clásico para otras acciones de administración. clave de Hola se creó en el primer dispositivo de Hola y comparte con el resto de Hola de los dispositivos.
+## <a name="view-or-regenerate-the-service-registration-key"></a>Ver o volver a generar la clave de registro de servicio
+La clave de registro del servicio se usa para registrar un dispositivo de Microsoft Azure StorSimple con el servicio StorSimple Manager, para que el dispositivo aparezca en el Portal de Azure clásico para otras tareas administrativas. La clave se crea en el primer dispositivo y se comparte con el resto de los dispositivos.
 
-Haga clic en **clave de registro** (final Hola de página Hola) se abre hello **clave de registro del servicio** cuadro de diálogo, siempre que sea posible cualquier copia Hola servicio Registro toohello clave Portapapeles actual o regenerar la clave de registro del servicio de Hola.
+Al hacer clic en **Clave de registro** (en la parte inferior de la página), se abre el cuadro de diálogo **Clave de registro del servicio**, donde puede copiar la clave de registro del servicio actual en el Portapapeles o volver a generar la clave de registro del servicio.
 
-Regenerando la clave de hello no afecta a los dispositivos registrados anteriormente: afecta a solo los dispositivos de Hola que están registrados con el servicio de hello después Hola clave se regenera.
+Volver a generar la clave no afecta a los dispositivos registrados anteriormente: solo afecta a los dispositivos que se registran en el servicio después de volver a generar la clave.
 
-Para obtener más información sobre cómo ver y generar go clave, del registro de servicio Hola demasiado[clave de registro del servicio de Get hello](storsimple-manage-service.md#get-the-service-registration-key).
+Para obtener más información sobre cómo ver y generar la clave de registro del servicio, vaya a [Obtener la clave de registro del servicio](storsimple-manage-service.md#get-the-service-registration-key)
 
-## <a name="change-hello-service-data-encryption-key"></a>Cambiar la clave de cifrado de datos del servicio de Hola
-Claves de cifrado de datos de servicio son tooencrypt usado cliente confidencial datos, como las credenciales de cuenta de almacenamiento, que se envían desde el dispositivo de StorSimple de toohello de servicio de StorSimple Manager. Necesitará toochange estas claves periódicamente si su organización de TI tiene una directiva de rotación de claves en dispositivos de almacenamiento de Hola. Hello proceso de cambio de clave puede ser ligeramente diferente dependiendo de si hay un único dispositivo o varios dispositivos administrados por el servicio StorSimple Manager Hola.
+## <a name="change-the-service-data-encryption-key"></a>Cambiar la clave de cifrado de datos de servicio
+Las claves de cifrado de datos del servicio se usan para cifrar datos confidenciales de los clientes, como las credenciales de la cuenta de almacenamiento, que se envían desde el servicio StorSimple Manager al dispositivo de StorSimple. Necesitará cambiar estas claves periódicamente si su organización de TI tiene una directiva de rotación de claves en los dispositivos de almacenamiento. El proceso de cambio de clave puede ser ligeramente diferente dependiendo de si el servicio StorSimple Manager administra uno o varios dispositivos.
 
-Cambiar clave de cifrado de datos de servicio de hello es un proceso de 3 pasos:
+El cambio de la clave de cifrado de datos del servicio se realiza en 3 pasos:
 
-1. Con hello portal de Azure clásico, autorizar a una clave de cifrado de datos de servicio de dispositivo toochange Hola.
-2. Uso de Windows PowerShell para StorSimple, iniciar el cambio de clave de cifrado de datos de servicio de Hola.
-3. Si tiene más de un dispositivo de StorSimple, actualizar clave de cifrado de datos de servicio de hello en hello otros dispositivos.
+1. En el Portal de Azure clásico, autorice que un dispositivo cambie la clave de cifrado de datos del servicio.
+2. En Windows PowerShell para StorSimple, inicie el cambio de claves de cifrado de datos del servicio.
+3. Si tiene más de un dispositivo de StorSimple, actualice la clave de cifrado de datos del servicio en los demás dispositivos.
 
-Hello pasos siguientes describen proceso de sustitución de hello para la clave de cifrado de datos del servicio de Hola.
+Los pasos siguientes describen el proceso de sustitución de la clave de cifrado de datos del servicio.
 
 [!INCLUDE [storsimple-change-data-encryption-key](../../includes/storsimple-change-data-encryption-key.md)]
 
-## <a name="view-hello-operations-logs"></a>Ver registros de operaciones de Hola
-Puede ver registros de operaciones de hello haciendo clic en vínculo de registros de operación Hola disponibles en hello **vista rápida** panel del panel de Hola de. Esto le llevará toohello administración página Servicios, donde puede filtrar y ver Hola registra el servicio StorSimple Manager tooyour específico.
+## <a name="view-the-operations-logs"></a>Consulta de los registros de operaciones
+Para ver los registros de operaciones, haga clic en el vínculo de registros de operaciones disponible en la sección **vista rápida** del panel. Esto le llevará a la página de servicios de administración, donde puede filtrar y ver los registros específicos de su servicio StorSimple Manager.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Obtenga información acerca de cómo demasiado[solucionar problemas de un dispositivo de StorSimple](storsimple-troubleshoot-operational-device.md).
-* Más información acerca de cómo demasiado[uso Hola tooadminister de servicio de StorSimple Manager el dispositivo StorSimple](storsimple-manager-service-administration.md).
+* Aprenda cómo [solucionar problemas de un dispositivo de StorSimple](storsimple-troubleshoot-operational-device.md).
+* Obtenga más información sobre cómo [usar el servicio StorSimple Manager para administrar su dispositivo StorSimple](storsimple-manager-service-administration.md).
 

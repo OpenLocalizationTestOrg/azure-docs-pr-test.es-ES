@@ -1,5 +1,5 @@
 ---
-title: "Preguntas más frecuentes de IoT Suite aaaAzure | Documentos de Microsoft"
+title: "Preguntas más frecuentes sobre el conjunto de aplicaciones de IoT de Azure | Microsoft Docs"
 description: "Preguntas más frecuentes sobre el Conjunto de aplicaciones de IoT"
 services: 
 suite: iot-suite
@@ -13,74 +13,74 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/15/2017
+ms.date: 09/15/2017
 ms.author: corywink
-ms.openlocfilehash: cb39e24af6d1ce2afea554285512d05b2d7c721e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5039dd30f85278b4e3bbba938ef40077af2c5c75
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="frequently-asked-questions-for-iot-suite"></a>Preguntas más frecuentes sobre el Conjunto de aplicaciones de IoT
 
-Vea también, Hola generador conectados específicos [preguntas más frecuentes sobre](iot-suite-faq-cf.md).
+Consulte también, la sección [preguntas más frecuentes](iot-suite-faq-cf.md) de la fábrica conectada específica.
 
-### <a name="where-can-i-find-hello-source-code-for-hello-preconfigured-solutions"></a>¿Dónde puedo encontrar el código fuente de Hola para soluciones de hello preconfigurado?
+### <a name="where-can-i-find-the-source-code-for-the-preconfigured-solutions"></a>¿Dónde se puede encontrar el código fuente de la solución preconfigurada?
 
-código fuente de Hola se almacena en hello después de repositorios de GitHub:
+El código fuente se almacena en los siguientes repositorios de GitHub:
 * [Solución preconfigurada de supervisión remota][lnk-remote-monitoring-github]
 * [Solución preconfigurada de mantenimiento predictivo][lnk-predictive-maintenance-github]
 * [Solución preconfigurada de fábrica conectada](https://github.com/Azure/azure-iot-connected-factory)
 
-### <a name="how-do-i-update-toohello-latest-version-of-hello-remote-monitoring-preconfigured-solution-that-uses-hello-iot-hub-device-management-features"></a>¿Cómo puedo actualizar toohello versión más reciente de la solución preconfigurada supervisión remota Hola que usa Hola características de administración de dispositivos de centro de IoT?
+### <a name="how-do-i-update-to-the-latest-version-of-the-remote-monitoring-preconfigured-solution-that-uses-the-iot-hub-device-management-features"></a>¿Cómo puedo actualizar a la versión más reciente de la solución preconfigurada de supervisión remota que usa las características de administración de dispositivos de IoT Hub?
 
-* Si implementa una solución preconfigurada de sitio de https://www.azureiotsuite.com/ hello, siempre se implementa una nueva instancia de la versión más reciente de Hola de solución de Hola.
-* Si implementa una solución preconfigurada con línea de comandos de hello, puede actualizar una implementación existente con el nuevo código. Vea [implementación de nube] [ lnk-cloud-deployment] en hello GitHub [repositorio][lnk-remote-monitoring-github].
+* Si implementa una solución preconfigurada desde el sitio https://www.azureiotsuite.com/, siempre se implementa una nueva instancia de la versión más reciente de la solución.
+* Si implementa una solución preconfigurada mediante la línea de comandos, puede actualizar una implementación existente con nuevo código. Consulte [Implementación de nube][lnk-cloud-deployment] en el [repositorio][lnk-remote-monitoring-github] de GitHub.
 
-### <a name="how-can-i-add-support-for-a-new-device-method-toohello-remote-monitoring-preconfigured-solution"></a>¿Cómo se puede agregar compatibilidad para un nuevo dispositivo método toohello solución preconfigurada de supervisión remota?
+### <a name="how-can-i-add-support-for-a-new-device-method-to-the-remote-monitoring-preconfigured-solution"></a>¿Cómo se puede agregar compatibilidad con un nuevo método de dispositivo a la solución preconfigurada de supervisión remota?
 
-Consulte la sección de hello [agregar compatibilidad con un simulador de toohello método nuevo] [ lnk-add-method] en hello [personalizar una solución preconfigurada] [ lnk-customize] artículo.
+Consulte la sección [Add support for a new method to the simulator][lnk-add-method] (Adición de compatibilidad con un nuevo método al simulador) en el artículo [Personalizar una solución preconfigurada][lnk-customize].
 
-### <a name="hello-simulated-device-is-ignoring-my-desired-property-changes-why"></a>dispositivo simulado Hola está omitiendo los cambios de la propiedad deseada, ¿por qué?
-Hola supervisión remota preconfigurado soluciones, código de hello simulada del dispositivo solo usa hello **Desired.Config.TemperatureMeanValue** y **Desired.Config.TelemetryInterval** las propiedades adecuadas Hola tooupdate informó de propiedades. Todos los demás cambios de propiedades deseadas se omiten.
+### <a name="the-simulated-device-is-ignoring-my-desired-property-changes-why"></a>El dispositivo simulado está omitiendo los cambios de propiedades deseadas, ¿por qué?
+En la solución preconfigurada de supervisión remota, el código de dispositivo simulado solo usa las propiedades deseadas **Desired.Config.TemperatureMeanValue** y **Desired.Config.TelemetryInterval** para actualizar las propiedades notificadas. Todos los demás cambios de propiedades deseadas se omiten.
 
-### <a name="my-device-does-not-appear-in-hello-list-of-devices-in-hello-solution-dashboard-why"></a>El dispositivo no aparece en la lista de Hola de dispositivos en el panel de la solución de hello, ¿por qué?
+### <a name="my-device-does-not-appear-in-the-list-of-devices-in-the-solution-dashboard-why"></a>El dispositivo no aparece en la lista de dispositivos en el panel de la solución, ¿por qué?
 
-lista de Hola de dispositivos en el panel de la solución de hello utiliza una lista de Hola de tooreturn de consulta de dispositivos. Actualmente, una consulta no puede devolver más de 10 000 dispositivos. Intente realizar los criterios de búsqueda de hello para la consulta más restrictiva.
+La lista de dispositivos en el panel de la solución usa una consulta para devolver la lista de dispositivos. Actualmente, una consulta no puede devolver más de 10 000 dispositivos. Intente que los criterios de búsqueda de su consulta sean más restrictivos.
 
-### <a name="whats-hello-difference-between-deleting-a-resource-group-in-hello-azure-portal-and-clicking-delete-on-a-preconfigured-solution-in-azureiotsuitecom"></a>¿Cuál es la diferencia de hello entre eliminar un grupo de recursos en hello Azure portal y haga clic en Eliminar en una solución preconfigurada en azureiotsuite.com?
+### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-preconfigured-solution-in-azureiotsuitecom"></a>¿Cuál es la diferencia entre eliminar un grupo de recursos en el Portal de Azure y hacer clic en Eliminar en una solución preconfigurada en azureiotsuite.com?
 
-* Si elimina la solución de hello preconfigurado en [azureiotsuite.com][lnk-azureiotsuite], eliminar todos los recursos de hello aprovisionados al crear soluciones de hello preconfigurado. Si ha agregado el grupo de recursos de toohello de recursos adicionales, también se eliminan estos recursos. 
-* Si elimina el grupo de recursos de Hola Hola [portal de Azure][lnk-azure-portal], sólo se eliminar recursos de hello en ese grupo de recursos. También necesita toodelete aplicación de Azure Active Directory hello asociado a soluciones de hello preconfigurado en hello [portal de Azure clásico][lnk-classic-portal].
+* Si elimina la solución preconfigurada en [azureiotsuite.com][lnk-azureiotsuite], eliminará todos los recursos aprovisionados cuando se creó la solución preconfigurada. Si agrega recursos adicionales al grupo de recursos, dichos recursos también se eliminan. 
+* Si elimina el grupo de recursos en [Azure Portal][lnk-azure-portal], solo se eliminan los recursos de ese grupo de recursos. También debe eliminar la aplicación de Azure Active Directory asociada a la solución preconfigurada en el [Portal de Azure clásico][lnk-classic-portal].
 
 ### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>¿Cuántas instancias del Centro de IoT se pueden aprovisionar en una suscripción?
 
-De forma predeterminada, puede aprovisionar [10 centros de IoT Hub por suscripción][link-azuresublimits]. Puede crear un [incidencia de soporte técnico de Azure] [ link-azuresupportticket] tooraise este límite. Como resultado, desde cada disposiciones de solución preconfigurada un nuevo centro de IoT, solo puede aprovisionar una too10 había preconfigurado soluciones en una suscripción determinada. 
+De forma predeterminada, puede aprovisionar [10 centros de IoT Hub por suscripción][link-azuresublimits]. Puede crear un [vale de soporte de Azure][link-azuresupportticket] para aumentar este límite. Como consecuencia, dado que todas las soluciones preconfiguradas aprovisionan una nueva instancia de IoT Hub, solo se pueden aprovisionar hasta 10 soluciones preconfiguradas en una suscripción determinada. 
 
 ### <a name="how-many-azure-cosmos-db-instances-can-i-provision-in-a-subscription"></a>¿Cuántas instancias de Azure Cosmos DB se pueden aprovisionar en una suscripción?
 
-Cincuenta. Puede crear un [incidencia de soporte técnico de Azure] [ link-azuresupportticket] tooraise Esto limitará, pero de forma predeterminada, solo puede aprovisionar 50 instancias de base de datos de Cosmos por suscripción. 
+Cincuenta. Para aumentar este límite se puede crear una [incidencia de soporte técnico de Azure][link-azuresupportticket], pero de forma predeterminada solo se pueden aprovisionar 50 instancias de Cosmos DB por suscripción. 
 
 ### <a name="how-many-free-bing-maps-apis-can-i-provision-in-a-subscription"></a>¿Cuántas API de Mapas de Bing gratis se pueden aprovisionar en una suscripción?
 
-Dos. Solo puede crear dos planes de Mapas de Bing para empresa de nivel 1 de transacciones internas en una suscripción de Azure. solución de supervisión remota Hola se aprovisiona con plan Hola interno las transacciones de nivel 1 de forma predeterminada. Como resultado, solo puede aprovisionar tootwo remoto de supervisión de soluciones en una suscripción sin modificaciones.
+Dos. Solo puede crear dos planes de Mapas de Bing para empresa de nivel 1 de transacciones internas en una suscripción de Azure. La solución de supervisión se aprovisiona de forma predeterminada con el plan de nivel 1 de transacciones internas. Como consecuencia, solo se pueden aprovisionar un máximo de dos soluciones de supervisión remota en una suscripción sin modificaciones.
 
 ### <a name="i-have-a-remote-monitoring-solution-deployment-with-a-static-map-how-do-i-add-an-interactive-bing-map"></a>Tengo una implementación de soluciones de supervisión remota con un mapa estático, ¿cómo se puede agregar un mapa Bing interactivo?
 
 1. Obtenga la QueryKey de Bing Maps API for Enterprise en [Azure Portal][lnk-azure-portal]: 
    
-   1. Navegue toohello grupo de recursos donde es la API de Bing Maps para Enterprise en hello [portal de Azure][lnk-azure-portal].
+   1. Navegue al grupo de recursos donde está Bing Maps API for Enterprise en [Azure Portal][lnk-azure-portal].
    2. Haga clic en **Toda la configuración** y después en **Administración de claves**. 
-   3. Verá dos claves: **MasterKey** y **QueryKey**. Copiar valor de Hola para **QueryKey**.
+   3. Verá dos claves: **MasterKey** y **QueryKey**. Copie el valor de **QueryKey**.
       
       > [!NOTE]
-      > ¿No tiene una cuenta de la API de Mapas de Bing para empresa? Crear uno en hello [portal de Azure] [ lnk-azure-portal] haciendo clic en + nuevo, buscando la API de Bing Maps para Enterprise y seguir solicita toocreate.
+      > ¿No tiene una cuenta de la API de Mapas de Bing para empresa? Para crear una cuenta en el [Azure Portal][lnk-azure-portal] haga clic en + Nuevo, busque Bing Maps API for Enterprise y siga las indicaciones para crearla.
       > 
       > 
-2. Deslice hacia abajo de código más reciente de Hola de hello [-IoT-remoto-supervisión de Azure][lnk-remote-monitoring-github].
-3. Ejecutar a una variable local o implementación Hola instrucciones de implementación de línea de comandos en carpeta de /docs/ de hello en el repositorio de hello en la nube. 
-4. Una vez se haya ejecutado una variable local o en la nube implementación, busque en la carpeta raíz para Hola *. archivo user.config creado durante la implementación. Abra este archivo en un editor de texto. 
-5. Valor de hello tooinclude copió desde de la línea de siguiente Hola de cambio su **QueryKey**: 
+2. Descargue el código más reciente de [Azure-IoT-Remote-Monitoring][lnk-remote-monitoring-github].
+3. Ejecute una implementación local o en la nube siguiendo las instrucciones de implementación de línea de comandos en la carpeta /docs/ del repositorio. 
+4. Cuando haya ejecutado la implementación local o en la nube, busque en la carpeta raíz el archivo *.user.config creado durante la implementación. Abra este archivo en un editor de texto. 
+5. Cambie la línea siguiente para incluir el valor copiado desde la clave **QueryKey**: 
    
    `<setting name="MapApiQueryKey" value="" />`
 
@@ -98,11 +98,11 @@ Consulte la entrada del blog de Eric Golpe [Walkthrough of Deleting an Azure AD 
 
 ### <a name="next-steps"></a>Pasos siguientes
 
-También puede explorar algunas de hello otras características y capacidades de hello IoT preconfigurado soluciones:
+También puede explorar algunas de las demás características y funcionalidades de las soluciones preconfiguradas del conjunto de aplicaciones de IoT:
 
 * [Información general de la solución preconfigurada de mantenimiento predictivo][lnk-predictive-overview]
 * [Introducción a la solución preconfigurada de fábrica conectada](iot-suite-connected-factory-overview.md)
-* [Seguridad de IoT de hello masa][lnk-security-groundup]
+* [Seguridad de Internet de las cosas desde el principio][lnk-security-groundup]
 
 [lnk-predictive-overview]: iot-suite-predictive-overview.md
 [lnk-security-groundup]: securing-iot-ground-up.md

@@ -1,6 +1,6 @@
 ---
-title: "aaaSet el almacén de claves de Azure con la rotación de clave-to-end y auditoría | Documentos de Microsoft"
-description: "Utilice este tootoohelp de cómo que obtener configurar con la rotación de claves y supervisión de los registros de almacén de claves."
+title: "Configuración de Azure Key Vault con la auditoría y la rotación de claves de un extremo a otro | Microsoft Docs"
+description: "Utilice este tutorial para establecer la configuración con rotación de claves y supervisar los registros del almacén de claves."
 services: key-vault
 documentationcenter: 
 author: swgriffith
@@ -14,39 +14,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: jodehavi;stgriffi
-ms.openlocfilehash: e0c393873077e3b91adc9fa7f39128bc1b6abe26
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f98ba1e2da6924476392948a4d18c807d68e39e3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-azure-key-vault-with-end-to-end-key-rotation-and-auditing"></a>Configuración de Azure Key Vault con la auditoría y la rotación de claves de un extremo a otro
 ## <a name="introduction"></a>Introducción
-Después de crear el almacén de claves, será capaz de toostart con ese almacén toostore sus claves y secretos. Las aplicaciones ya no necesitan toopersist los secretos o claves, pero en su lugar solicitan desde el almacén de claves de hello según sea necesario. Esto le permite tooupdate claves y secretos sin afectar al comportamiento de saludo de la aplicación, lo que abre una amplia gama de posibilidades alrededor de la clave y la administración de secretos.
+Una vez que haya creado el almacén de claves, podrá utilizarlo para guardar las claves y los secretos. Ya no será necesario que las claves y secretos se guarden en las aplicaciones, sino que las aplicaciones solicitarán las claves al almacén cuando lo necesiten. De este modo, puede actualizar las claves y los secretos sin que esto afecte al rendimiento de la aplicación, lo que brinda un amplio abanico de posibilidades en lo que respecta a la administración de las claves y los secretos.
 
-Este artículo le guía a través de un ejemplo del uso de almacén de claves de Azure toostore un secreto, en este caso, una clave de cuenta de almacenamiento de Azure que se tiene acceso a una aplicación. El artículo también incluye una demostración de la implementación de una rotación programada de dicha clave. Por último, le guía a través de una demostración de cómo toomonitor Hola registros de auditoría de almacén de claves y generar alertas cuando se realizan las solicitudes inesperadas.
+En este artículo, se explica paso a paso un ejemplo sobre el uso de Azure Key Vault para guardar un secreto. En este caso, se trata de una clave de la cuenta de Azure Storage a la que accede una aplicación. El artículo también incluye una demostración de la implementación de una rotación programada de dicha clave. Por último, se explica paso a paso cómo supervisar los registros de auditoría del almacén de claves y cómo generar alertas cuando se realizan solicitudes inesperadas.
 
 > [!NOTE]
-> Este tutorial no está previsto tooexplain en detalle Hola inicial el programa de instalación de su almacén de claves. Para obtener información, consulte [Introducción al Almacén de claves de Azure](key-vault-get-started.md). Para obtener instrucciones acerca de la interfaz de la línea de comandos para todas las plataformas, consulte [Administración del almacén de claves mediante CLI](key-vault-manage-with-cli2.md).
+> En este tutorial no se explica en detalle la configuración inicial del almacén de claves. Para obtener información, consulte [Introducción al Almacén de claves de Azure](key-vault-get-started.md). Para obtener instrucciones acerca de la interfaz de la línea de comandos para todas las plataformas, consulte [Administración del almacén de claves mediante CLI](key-vault-manage-with-cli2.md).
 >
 >
 
 ## <a name="set-up-key-vault"></a>Configuración del Almacén de claves
-tooenable un tooretrieve un secreto de aplicación desde el almacén de claves, primero debe crear Hola secreto y cargarlo en el almacén de tooyour. Esto puede realizarse a partir de una sesión de PowerShell de Azure y firma en tooyour cuenta de Azure con hello siguiente comando:
+Para que una aplicación pueda recuperar un secreto de Key Vault, primero debe crear el secreto y guardarlo en el almacén. Para ello, abra una sesión de Azure PowerShell e inicie sesión en su cuenta de Azure con el siguiente comando:
 
 ```powershell
 Login-AzureRmAccount
 ```
 
-En la ventana emergente del explorador de hello, escriba el nombre de usuario de cuenta de Azure y la contraseña. PowerShell obtendrá todas las suscripciones de Hola que están asociadas a esta cuenta. PowerShell utiliza Hola primera de ellas de forma predeterminada.
+En la ventana emergente del explorador, escriba el nombre de usuario y la contraseña de su cuenta de Azure. PowerShell obtendrá todas las suscripciones asociadas a esta cuenta. PowerShell utiliza la primera de forma predeterminada.
 
-Si tiene varias suscripciones, podría tener que toospecify Hola uno que estaba toocreate usa el almacén de claves. Escriba Hola siguiendo las suscripciones de hello toosee para su cuenta:
+Si tiene varias suscripciones, es posible que deba especificar la que se usó para crear el almacén de claves. Escriba lo siguiente para ver las suscripciones de su cuenta:
 
 ```powershell
 Get-AzureRmSubscription
 ```
 
-suscripción de hello toospecify que esté asociada con el almacén de claves de hello iniciará la sesión, escriba:
+Para especificar la suscripción asociada al almacén de claves que registrará, escriba:
 
 ```powershell
 Set-AzureRmContext -SubscriptionId <subscriptionID>
@@ -58,56 +58,56 @@ Dado que en este artículo se explica cómo se guarda una clave de cuenta de alm
 Get-AzureRmStorageAccountKey -ResourceGroupName <resourceGroupName> -Name <storageAccountName>
 ```
 
-Después de recuperar el secreto (en este caso, la clave de cuenta de almacenamiento), debe convertir esa cadena segura tooa y, a continuación, crear un secreto con ese valor en el almacén de claves.
+Una vez recuperado el secreto (en este caso, la clave de la cuenta de almacenamiento), debe convertir la clave en una cadena segura y crear un secreto con ese valor en el almacén de claves.
 
 ```powershell
 $secretvalue = ConvertTo-SecureString <storageAccountKey> -AsPlainText -Force
 
 Set-AzureKeyVaultSecret -VaultName <vaultName> -Name <secretName> -SecretValue $secretvalue
 ```
-A continuación, obtener Hola URI secreto Hola que creó. Cuando se llama a tooretrieve de almacén de claves de Hola la clave secreta se utiliza en un paso posterior. Ejecute el siguiente comando de PowerShell de Hola y tome nota del valor de identificador hello, que es el secreto de hello URI:
+A continuación, obtenga el identificador URI para el secreto que creó. Este se utilizará en un paso posterior, cuando llame al almacén de claves para recuperar el secreto. Ejecute el siguiente comando de PowerShell y anote el valor de identificación, que es el URI del secreto:
 
 ```powershell
 Get-AzureKeyVaultSecret –VaultName <vaultName>
 ```
 
-## <a name="set-up-hello-application"></a>Configurar la aplicación hello
-Ahora que tiene un secreto almacenado, puede usar código tooretrieve y usarlo. Hay unos pocos pasos a necesario tooachieve esto. Hello paso primero y el más importante es registrando su aplicación con Azure Active Directory y, a continuación, que el almacén de claves se indica en la información de la aplicación para que pueden permitir que las solicitudes de la aplicación.
+## <a name="set-up-the-application"></a>Configuración de la aplicación
+Ahora que tiene un secreto almacenado, puede utilizar el código para recuperarlo y utilizarlo. Existen varios pasos obligatorios para conseguirlo. El primero y más importante consiste en registrar la aplicación con Azure Active Directory y proporcionar a Key Vault la información de la aplicación para que pueda permitir que se realicen solicitudes desde dicha aplicación.
 
 > [!NOTE]
-> La aplicación debe crearse en hello mismo inquilino de Azure Active Directory como su almacén de claves.
+> La aplicación debe crearse en el mismo inquilino de Azure Active Directory que el del almacén de claves.
 >
 >
 
-Abra la ficha de hello aplicaciones de Azure Active Directory.
+Abra la pestaña Aplicaciones de Azure Active Directory.
 
 ![Abra las aplicaciones de Azure Active Directory](./media/keyvault-keyrotation/AzureAD_Header.png)
 
-Elija **agregar** tooadd una tooyour de aplicación Azure Active Directory.
+Elija **AGREGAR** para agregar una aplicación a Azure Active Directory.
 
 ![Elija AGREGAR](./media/keyvault-keyrotation/Azure_AD_AddApp.png)
 
-Deje el tipo de aplicación Hola como **aplicación WEB Y/O API de WEB** y asigne un nombre a la aplicación.
+Deje el tipo de aplicación como **APLICACIÓN WEB Y/O API WEB** y asigne un nombre a la aplicación.
 
-![Aplicación hello nombre](./media/keyvault-keyrotation/AzureAD_NewApp1.png)
+![Asigne un nombre a la aplicación](./media/keyvault-keyrotation/AzureAD_NewApp1.png)
 
 Especifique un valor en **URL DE INICIO DE SESIÓN** y en **URI DE ID DE APLICACIÓN**. En esta demostración, puede especificar los valores que desee y cambiarlos más adelante si es necesario.
 
 ![Especifique los identificadores URI necesarios](./media/keyvault-keyrotation/AzureAD_NewApp2.png)
 
-Después de agrega tooAzure Active Directory de la aplicación hello, aparecerá en la página de aplicación Hola. Haga clic en hello **configurar** ficha y, a continuación, busque y copie hello **Id. de cliente** valor. Tome nota del identificador de cliente de hello en pasos posteriores.
+Una vez que la aplicación se ha agregado a Azure Active Directory, accederá automáticamente a la página de la aplicación. Una vez aquí, deberá hacer clic en la pestaña **Configurar** para buscar y copiar el valor de **ID de cliente**. Anote este valor, ya que lo necesitará posteriormente.
 
-A continuación, genere una clave para su aplicación para que pueda interactuar con Azure Active Directory. Puede crear en hello **claves** sección Hola **configuración** ficha. Tome nota de la clave de hello recién generado desde su aplicación de Azure Active Directory para su uso en un paso posterior.
+A continuación, genere una clave para su aplicación para que pueda interactuar con Azure Active Directory. Puede crear esta clave en la sección **Claves** de la pestaña **Configuración**. No olvide anotar esta nueva clave de la aplicación de Azure Active Directory, ya que la necesitará más adelante.
 
 ![Claves de aplicaciones de Azure Active Directory](./media/keyvault-keyrotation/Azure_AD_AppKeys.png)
 
-Antes de establecer las llamadas desde la aplicación en el almacén de claves de hello, debe indicar el almacén de claves de hello acerca de la aplicación y sus permisos. Hello comando siguiente toma el nombre del almacén de Hola y Hola Id. de cliente de la aplicación de Azure Active Directory y concede **obtener** almacén de claves de tooyour de acceso para la aplicación hello.
+Antes de definir en el almacén de claves las llamadas que se realizarán desde la aplicación, debe proporcionar al almacén de claves los datos de la aplicación y sus permisos. El comando siguiente toma el nombre del almacén y el identificador de cliente de la aplicación de Azure Active Directory y concede a la aplicación acceso **Get** al almacén de claves.
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get
 ```
 
-En este punto, está listo toostart compilar su aplicación llama. En su aplicación, debe instalar paquetes de NuGet hello toointeract necesario con el almacén de claves de Azure y Azure Active Directory. Desde la consola de administrador de paquetes de Visual Studio de hello, escriba Hola siga los comandos. En la escritura de Hola de este artículo, versión actual de hello del paquete de Azure Active Directory hello es 3.10.305231913, por lo que podría desea la versión más reciente de tooconfirm hello y actualizar en consecuencia.
+Llegados a este punto, ya tiene todo listo para empezar a crear las llamadas a la aplicación. En primer lugar, deberá instalar en la aplicación los paquetes NuGet necesarios para poder interactuar con Azure Key Vault y Azure Active Directory. En la Consola del Administrador de paquetes de Visual Studio, escriba los siguientes comandos. Cuando se redactó este artículo, la versión más reciente del paquete de Azure Active Directory era la 3.10.305231913; por tanto, debe confirmar que se trata de la última versión y actualizar en caso necesario.
 
 ```powershell
 Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 3.10.305231913
@@ -115,13 +115,13 @@ Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 3.10.30
 Install-Package Microsoft.Azure.KeyVault
 ```
 
-En el código de aplicación, cree un método de clase toohold hello para la autenticación de Azure Active Directory. En este ejemplo, la clase se llama **Utils**. Agregue Hola siguiente instrucción using:
+En el código de la aplicación, cree una clase que contenga el método de autenticación de Azure Active Directory. En este ejemplo, la clase se llama **Utils**. Agregue la siguiente instrucción using:
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
-A continuación, agregue Hola siguiendo el token de JWT de método tooretrieve Hola de Azure Active Directory. Para el mantenimiento, puede que desee valores de cadena codificados de forma rígida de hello toomove en su configuración de aplicación o web.
+A continuación, agregue el método siguiente para recuperar el token JWT de Azure Active Directory. Es posible que, para facilitar el mantenimiento, quiera trasladar los valores de cadena codificados de forma rígida a la configuración del sitio web o la aplicación.
 
 ```csharp
 public async static Task<string> GetToken(string authority, string resource, string scope)
@@ -134,19 +134,19 @@ public async static Task<string> GetToken(string authority, string resource, str
 
     if (result == null)
 
-    throw new InvalidOperationException("Failed tooobtain hello JWT token");
+    throw new InvalidOperationException("Failed to obtain the JWT token");
 
     return result.AccessToken;
 }
 ```
 
-Agregar Hola código necesario toocall el almacén de claves y recuperar su valor secreto. En primer lugar debe agregar la siguiente Hola instrucción using:
+Agregue el código necesario para llamar a Key Vault y recuperar el valor del secreto. Lo primero que debe hacer es agregar la siguiente instrucción using:
 
 ```csharp
 using Microsoft.Azure.KeyVault;
 ```
 
-Agregar tooinvoke de llamadas de método hello el almacén de claves y recuperar la clave secreta. En este método, se proporcione el secreto de hello URI que guardó en el paso anterior. Tenga en cuenta use Hola de hello **GetToken** método de hello **Utils** clase creada previamente.
+Agregue las llamadas de método para invocar a Key Vault y recuperar el secreto. En este método, proporcione el URI del secreto que guardó en un paso anterior. Observe el uso del método **GetToken** en la clase **Utils** que creó anteriormente.
 
 ```csharp
 var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetToken));
@@ -154,16 +154,16 @@ var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetT
 var sec = kv.GetSecretAsync(<SecretID>).Result.Value;
 ```
 
-Al ejecutar la aplicación, ahora se deben autenticar tooAzure Active Directory y, a continuación, recuperar el valor secreto desde el almacén de claves de Azure.
+Cuando ejecute la aplicación, debería estar autenticado en Azure Active Directory y recuperar el valor del secreto de Azure Key Vault.
 
 ## <a name="key-rotation-using-azure-automation"></a>Rotación de claves mediante Azure Automation
-Existen varias opciones para implementar una estrategia de rotación de los valores que se guardan como secretos del Almacén de claves de Azure. Los secretos pueden rotarse mediante un proceso manual, mediante programación a través de llamadas a API o mediante un script de automatización. Para fines de Hola de este artículo, estará usando Azure PowerShell combinado con automatización de Azure toochange una tecla de acceso de la cuenta de almacenamiento de Azure. A continuación, podrá actualizar un secreto del almacén de claves con esa nueva clave.
+Existen varias opciones para implementar una estrategia de rotación de los valores que se guardan como secretos del Almacén de claves de Azure. Los secretos pueden rotarse mediante un proceso manual, mediante programación a través de llamadas a API o mediante un script de automatización. En este artículo, utilizaremos Azure PowerShell y Azure Automation para cambiar una clave de acceso de la cuenta de Azure Storage. A continuación, podrá actualizar un secreto del almacén de claves con esa nueva clave.
 
-tooallow automatización de Azure tooset secretos valores en el almacén de claves, debe obtener Id. de cliente de Hola para conexión de hello denominada AzureRunAsConnection, que se creó cuando se establece la instancia de automatización de Azure. Para encontrar este identificador, seleccione **Recursos** en la instancia de Azure Automation. Desde allí, elija **conexiones** y, a continuación, seleccione hello **AzureRunAsConnection** principal de servicio. Tome nota de hello **identificador de la aplicación**.
+Para que Azure Automation pueda establecer los valores del secreto en el almacén de claves, deberá obtener el identificador de cliente de la conexión AzureRunAsConnection que se creó al establecer la instancia de Azure Automation. Para encontrar este identificador, seleccione **Recursos** en la instancia de Azure Automation. A continuación, seleccione **Conexiones** y el nombre principal de servicio **AzureRunAsConnection**. Anote el **Identificador de la aplicación**.
 
 ![Identificador de cliente de Azure Automation](./media/keyvault-keyrotation/Azure_Automation_ClientID.png)
 
-En **Recursos**, elija **Módulos**. De **módulos**, seleccione **galería**y, a continuación, busque y **importación** versiones actualizadas de cada uno de hello siguientes módulos:
+En **Recursos**, elija **Módulos**. En **Módulos**, seleccione **Galería** y, a continuación, busque e **importe** las versiones actualizadas de cada uno de los siguientes módulos:
 
     Azure
     Azure.Storage
@@ -174,30 +174,30 @@ En **Recursos**, elija **Módulos**. De **módulos**, seleccione **galería**y, 
 
 
 > [!NOTE]
-> En la escritura de Hola de este artículo, solo hello toobe módulos se indicó anteriormente que necesita se actualiza para hello siguiente secuencia de comandos. Si se produce algún error en el trabajo de automatización, confirme que ha importado todos los módulos necesarios y sus dependencias.
+> Cuando se redactó este artículo, los módulos que aparecen arriba eran los únicos que debían actualizarse para el script que se muestra a continuación. Si se produce algún error en el trabajo de automatización, confirme que ha importado todos los módulos necesarios y sus dependencias.
 >
 >
 
-Después de recuperar los Id. de aplicación de hello para la conexión de automatización de Azure, debe indicar que el almacén de claves que esta aplicación tiene acceso tooupdate secretos en el almacén. Esto puede realizarse con hello siguiente comando de PowerShell:
+Una vez que haya recuperado el identificador de aplicación de la conexión de Azure Automation, debe notificar al almacén de claves que la aplicación tiene acceso para actualizar los secretos del almacén. Para ello, puede utilizar el siguiente comando de PowerShell:
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <applicationIDfromAzureAutomation> -PermissionsToSecrets Set
 ```
 
-A continuación, seleccione **Runbooks** en la instancia de Azure Automation y, después, seleccione **Agregar un runbook**. Seleccione **Creación rápida**. Nombre del runbook y seleccione **PowerShell** como tipo de runbook de Hola. Tener Hola opción tooadd una descripción. Por último, haga clic en **Crear**.
+A continuación, seleccione **Runbooks** en la instancia de Azure Automation y, después, seleccione **Agregar un runbook**. Seleccione **Creación rápida**. Asigne un nombre al runbook y seleccione **PowerShell** como tipo del runbook. Tiene la opción de agregar una descripción. Por último, haga clic en **Crear**.
 
 ![Creación de runbook](./media/keyvault-keyrotation/Create_Runbook.png)
 
-Pegue el siguiente script de PowerShell en el panel del editor de hello para el nuevo runbook de hello:
+En el panel del editor del nuevo runbook, pegue el siguiente script de PowerShell:
 
 ```powershell
 $connectionName = "AzureRunAsConnection"
 try
 {
-    # Get hello connection "AzureRunAsConnection "
+    # Get the connection "AzureRunAsConnection "
     $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
 
-    "Logging in tooAzure..."
+    "Logging in to Azure..."
     Add-AzureRmAccount `
         -ServicePrincipal `
         -TenantId $servicePrincipalConnection.TenantId `
@@ -216,13 +216,13 @@ catch {
     }
 }
 
-#Optionally you may set hello following as parameters
+#Optionally you may set the following as parameters
 $StorageAccountName = <storageAccountName>
 $RGName = <storageAccountResourceGroupName>
 $VaultName = <keyVaultName>
 $SecretName = <keyVaultSecretName>
 
-#Key name. For example key1 or key2 for hello storage account
+#Key name. For example key1 or key2 for the storage account
 New-AzureRmStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName -KeyName "key2" -Verbose
 $SAKeys = Get-AzureRmStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName
 
@@ -231,12 +231,12 @@ $secretvalue = ConvertTo-SecureString $SAKeys[1].Value -AsPlainText -Force
 $secret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
 ```
 
-En el panel del editor de hello, elija **panel prueba** tootest la secuencia de comandos. Una vez que se ejecuta el script de Hola sin errores, puede seleccionar **publicar**, y, a continuación, puede aplicar una programación de runbook de hello en el panel de configuración de runbook de Hola.
+Si desea probar el script, seleccione **Panel de prueba**. Una vez que el script se ejecuta sin errores, puede seleccionar **Publicar** y aplicar después una programación para el runbook desde el panel de configuración.
 
 ## <a name="key-vault-auditing-pipeline"></a>Canalización de auditorías de Key Vault
-Al configurar un almacén de claves, puede activar la auditoría de registros toocollect en las solicitudes de acceso realizadas toohello el almacén de claves. Estos registros se guardan en una cuenta de Azure Storage designada y pueden extraerse, supervisarse y analizarse. Hello siguiente escenario utiliza las funciones de Azure, las aplicaciones de Azure lógica y toocreate de registros de auditoría de almacén de claves un toosend canalización un correo electrónico cuando una aplicación que coinciden con el identificador de la aplicación hello de aplicación web de hello recupera los secretos del almacén de Hola.
+Cuando configure un almacén de claves, puede habilitar la auditoría para que se recopilen registros de las solicitudes de acceso a dicho almacén. Estos registros se guardan en una cuenta de Azure Storage designada y pueden extraerse, supervisarse y analizarse. El siguiente escenario usa instancias de Azure Functions, Azure Logic Apps y Key Vault para crear una canalización que envía un correo electrónico cuando una aplicación cuyo identificador coincide con el de la aplicación web recupera los secretos del almacén.
 
-En primer lugar, debe habilitar los registros en el almacén de claves. Esto puede hacerse a través de hello siga los comandos de PowerShell (se pueden ver detalles completos en [clave de registro de almacén](key-vault-logging.md)):
+En primer lugar, debe habilitar los registros en el almacén de claves. Para ello, puede utilizar los siguientes comandos de PowerShell (consulte una explicación detallada en [key-vault-logging](key-vault-logging.md)):
 
 ```powershell
 $sa = New-AzureRmStorageAccount -ResourceGroupName <resourceGroupName> -Name <storageAccountName> -Type Standard\_LRS -Location 'East US'
@@ -244,29 +244,29 @@ $kv = Get-AzureRmKeyVault -VaultName '<vaultName>'
 Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
 ```
 
-Después de que esta opción está habilitada, los registros de auditoría comenzar a recopilar en hello designado de la cuenta de almacenamiento. Estos registros incluirán eventos acerca de qué usuario, cómo y cuándo ha obtenido acceso a los almacenes de claves.
+Una vez habilitado, comenzarán a recopilarse registros de auditoría en la cuenta de almacenamiento designada. Estos registros incluirán eventos acerca de qué usuario, cómo y cuándo ha obtenido acceso a los almacenes de claves.
 
 > [!NOTE]
-> Puede tener acceso a la información de registro de 10 minutos tras la operación de almacén de claves de Hola. Normalmente, tardará menos.
+> Puede acceder a la información de registro 10 minutos después de la operación del almacén de claves. Normalmente, tardará menos.
 >
 >
 
-paso siguiente Hello es demasiado[crear una cola de Service Bus de Azure](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md). En ella se insertan los registros de auditoría del almacén de claves. Una vez mensajes de registro de auditoría de hello en cola hello, aplicación de lógica de hello ellos recoge y actúa sobre ellos. Cree un bus de servicio con hello pasos:
+El siguiente paso consiste en la [creación de una cola de Azure Service Bus](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md). En ella se insertan los registros de auditoría del almacén de claves. Cuando los mensajes de registro de auditoría se encuentran en la cola, la aplicación lógica los recopila y actúa sobre ellos. Realice los siguientes pasos para crear una instancia de Service Bus:
 
-1. Crear un espacio de nombres de Bus de servicio (si ya tiene una que desee toouse para ello, omitir tooStep 2).
-2. Examinar bus de servicio toohello Hola portal de Azure y espacio de nombres de hello seleccione en que desea toocreate cola de hello.
-3. Seleccione **New** y elija **Bus de servicio > cola** y escriba los detalles de hello necesario.
-4. Seleccione la información de conexión de Bus de servicio de hello eligiendo el espacio de nombres de Hola y haga clic en **información de conexión**. Necesitará esta información para la sección siguiente Hola.
+1. Cree un espacio de nombres de Service Bus. Si ya tiene uno que quiera usar, puede saltar al paso 2.
+2. Busque la instancia de Service Bus en Azure Portal y seleccione el espacio de nombres en el que quiere crear la cola.
+3. Seleccione **Nuevo**, **Service Bus -> Cola** y especifique los datos necesarios.
+4. Seleccione la información de la conexión de Service Bus. Para ello, elija el espacio de nombres y haga clic en **Información de conexión**. Va a necesitar esta información en la sección siguiente.
 
-Después, [crea una función Azure](../azure-functions/functions-create-first-azure-function.md) toopoll registros de almacén de claves en Hola cuenta de almacenamiento y recogida de los nuevos eventos. Esta función se desencadenará en función de una programación.
+A continuación, debe [crear una función de Azure](../azure-functions/functions-create-first-azure-function.md) para sondear los registros del almacén de claves incluidos en la cuenta de almacenamiento y recopilar nuevos eventos. Esta función se desencadenará en función de una programación.
 
-toocreate una función de Azure, elija **nuevo > aplicación de la función** Hola portal de Azure. Durante el proceso de creación, puede usar un plan de hospedaje existente o crear uno nuevo. También puede utilizar un plan de hospedaje dinámico. Se pueden encontrar más detalles en función de opciones de hospedaje en [cómo tooscale funciones de Azure](../azure-functions/functions-scale.md).
+Cree una función de Azure. Para ello, elija **Nuevo -> Function App** en Azure Portal. Durante el proceso de creación, puede usar un plan de hospedaje existente o crear uno nuevo. También puede utilizar un plan de hospedaje dinámico. Encontrará más información sobre las opciones de hospedaje de funciones en [Escalado de Azure Functions](../azure-functions/functions-scale.md).
 
-Cuando se crea la función Azure hello, navegar tooit y elegir un temporizador de función y C\#. A continuación, haga clic en **Crear esta función**.
+Una vez creada la función de Azure, acceda a ella y elija una función de temporizador y C\#. A continuación, haga clic en **Crear esta función**.
 
 ![Hoja de inicio de Azure Functions](./media/keyvault-keyrotation/Azure_Functions_Start.png)
 
-En hello **desarrollar** ficha, reemplace el código de hello run.csx por siguiente hello:
+En la pestaña **Desarrollar**, sustituya el código de run.csx por el siguiente:
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -304,7 +304,7 @@ public static void Run(TimerInfo myTimer, TextReader inputBlob, TextWriter outpu
         else
         {
             dtPrev = DateTime.UtcNow;
-            log.Verbose($"Sync point file didnt have a date. Setting toonow.");
+            log.Verbose($"Sync point file didnt have a date. Setting to now.");
         }
     }
 
@@ -339,7 +339,7 @@ public static void Run(TimerInfo myTimer, TextReader inputBlob, TextWriter outpu
 
             dynamic dynJson = JsonConvert.DeserializeObject(text);
 
-            //required tooorder by time as they may not be in hello file
+            //required to order by time as they may not be in the file
             var results = ((IEnumerable<dynamic>) dynJson.records).OrderBy(p => p.time);
 
             foreach (var jsonItem in results)
@@ -350,7 +350,7 @@ public static void Run(TimerInfo myTimer, TextReader inputBlob, TextWriter outpu
                     log.Info($"{jsonItem.ToString()}");
 
                     var payloadStream = new MemoryStream(Encoding.UTF8.GetBytes(jsonItem.ToString()));
-                    //When sending tooServiceBus, use hello payloadStream and set keeporiginal tootrue
+                    //When sending to ServiceBus, use the payloadStream and set keeporiginal to true
                     var message = new BrokeredMessage(payloadStream, true);
                     sbClient.Send(message);
                     dtPrev = dt;
@@ -369,23 +369,23 @@ static string GetContainerSasUri(CloudBlockBlob blob)
     sasConstraints.SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24);
     sasConstraints.Permissions = SharedAccessBlobPermissions.Read;
 
-    //Generate hello shared access signature on hello container, setting hello constraints directly on hello signature.
+    //Generate the shared access signature on the container, setting the constraints directly on the signature.
     string sasBlobToken = blob.GetSharedAccessSignature(sasConstraints);
 
-    //Return hello URI string for hello container, including hello SAS token.
+    //Return the URI string for the container, including the SAS token.
     return blob.Uri + sasBlobToken;
 }
 ```
 
 
 > [!NOTE]
-> Asegúrese de variables de hello tooreplace seguro en hello anterior cuenta de almacenamiento de código toopoint tooyour donde se escriben los registros de almacén de claves de hello, bus de servicio de Hola que creó anteriormente, y Hola registros de almacenamiento de almacén de claves de toohello de ruta de acceso específica.
+> No olvide reemplazar las variables del código anterior para que apunten a la cuenta de almacenamiento en la que se escriben los registros de Key Vault, al Service Bus que creó anteriormente y a la ruta de acceso específica de los registros de almacenamiento del almacén de claves.
 >
 >
 
-función Hello recoge Hola último archivo de registro de cuenta de almacenamiento de Hola donde se escriben los registros de almacén de claves de hello, grabs Hola los eventos más recientes de ese archivo, y los envía tooa cola de Bus de servicio. Dado que un único archivo puede tener varios eventos, debe crear un archivo de sync.txt que función hello también busca en marca de tiempo de hello toodetermine de evento último Hola que ha recogido. Esto garantiza que no insertará Hola mismo evento varias veces. Este archivo sync.txt contiene una marca de tiempo para el último suceso de encontró Hola. registros, cuando carga, Hello tienen toobe ordenado según hello tooensure de marca de tiempo que están ordenados correctamente.
+La función selecciona el archivo de registro más reciente de la cuenta de almacenamiento en la que se escriben los registros del almacén de claves, recopila los últimos eventos de ese archivo y los inserta en una cola de Service Bus. Como un único archivo puede tener varios eventos, debe crear un archivo sync.txt. La función también consultará este archivo para determinar la marca de tiempo del último evento seleccionado. De este modo, se asegura de que no se inserta el mismo evento varias veces. Este archivo sync.txt contiene la marca de tiempo del último evento encontrado. Cuando los registros se han cargado, deben ordenarse con arreglo a la marca de tiempo para garantizar que el orden es el correcto.
 
-Para esta función, se hacen referencia a un par de bibliotecas adicionales que no están disponibles fuera del cuadro de hello en funciones de Azure. tooinclude estos, necesitamos toopull de funciones de Azure mediante NuGet. Elija hello **ver archivos** opción.
+En esta función, vamos a hacer referencia a un par de bibliotecas adicionales que no están disponibles de forma predeterminada en Funciones de Azure. Para incluir estas bibliotecas, necesitamos que Azure Functions las extraiga mediante NuGet. Elija la opción **Ver archivos**.
 
 ![Opción Ver archivos](./media/keyvault-keyrotation/Azure_Functions_ViewFiles.png)
 
@@ -403,37 +403,37 @@ Y agregue un archivo denominado project.json con el contenido siguiente:
        }
     }
 ```
-Tras **guardar**, funciones de Azure descargará los archivos binarios de hello necesario.
+Cuando haga clic en **Guardar**, Azure Functions descargará los binarios necesarios.
 
-Cambiar toohello **integrar** pestaña y asigne un toouse nombre descriptivo en función de Hola de parámetro de temporizador de Hola. En el anterior código de hello, espera Hola temporizador toobe llama *myTimer*. Especifique un [expresión CRON](../app-service-web/web-sites-create-web-jobs.md#CreateScheduledCRON) como sigue: 0 \* \* \* \* \* temporizador Hola que causará Hola función toorun una vez por minuto.
+Cambie a la pestaña **Integrar** y asigne al parámetro del temporizador un nombre descriptivo para usarlo en la función. En el código anterior, el nombre esperado para el temporizador es *myTimer*. Especifique una [expresión CRON](../app-service/web-sites-create-web-jobs.md#CreateScheduledCRON) del modo siguiente: 0 \* \* \* \* \* para el temporizador que hará que la función se ejecute una vez por minuto.
 
-Hola en mismo **integrar** ficha, agregue una entrada de tipo hello **almacenamiento de blobs de Azure**. Esto señala toohello sync.txt archivo que contiene la marca de tiempo de hello del último evento de hello examinado por función hello. Esta opción estará disponible en función de Hola por nombre de parámetro de Hola. En el anterior código de hello, proporcionados por el almacenamiento de blobs de Azure Hola espera toobe de nombre de parámetro de Hola *inputBlob*. Elegir cuenta de almacenamiento de Hola dónde se ubicará el archivo de hello sync.txt (podría ser Hola misma o a una cuenta de almacenamiento diferente). En el campo de ruta de acceso de hello, proporcione la ruta de acceso de Hola donde reside el archivo hello en formato de Hola {container-name}/path/to/sync.txt.
+En la misma pestaña **Integrar**, agregue una entrada que sea del tipo **Azure Blob Storage**. Esta entrada apuntará al archivo sync.txt , que contiene la marca de tiempo del último evento que consultó la función. El parámetro name se encargará de que esté disponible en la función. En el código anterior, la entrada de Azure Blob Storage espera que el parámetro name sea *inputBlob*. Elija la cuenta de almacenamiento donde residirá el archivo sync.txt (puede ser la misma o una diferente). En el campo ruta de acceso, proporcione la ruta donde se encuentra el archivo en el formato {nombre-contenedor}/path/to/sync.txt.
 
-Agregar una salida de tipo hello *almacenamiento de blobs de Azure* salida. Esto señala toohello sync.txt archivo definido en la entrada de Hola. Se utiliza por hello función toowrite Hola marca de tiempo del último evento de hello examinado. código anterior Hello espera este toobe parámetro denominado *outputBlob*.
+Agregue una salida que sea de tipo *Azure Blob Storage*. Esta salida también apuntará al archivo sync.txt que definió en la entrada. La función utilizará esta salida para escribir la marca de tiempo del último evento que consultó. En el código anterior, el nombre esperado para esta parámetro es *outputBlob*.
 
-En este momento, la función hello está listo. Realizar tooswitch seguro atrás toohello **desarrollar** pestaña y guarde el código de hello. Consulte la ventana de salida de hello para los errores de compilación y corríjalos según corresponda. Si se compila el código de hello, código de hello debe ahora puede comprobar los registros de almacén de claves de hello cada minuto y e inserta los nuevos eventos en hello define la cola de Service Bus. Debería ver la información del registro escribir toohello la ventana de registro cada vez que se desencadene la función hello.
+Llegados a este punto, la función ya está lista. No olvide volver a la pestaña **Desarrollar** y guardar el código. Compruebe en la ventana de salida si hay algún error de compilación y, de ser así, corrija los errores como corresponda. Si el código se compila correctamente, debería ya comprobar cada minuto los registros del almacén de claves e insertar los nuevos eventos en la cola de Service Bus definida. Cada vez que la función se desencadena, debería aparecer la información de los registros en la ventana del registro.
 
 ### <a name="azure-logic-app"></a>Aplicación lógica de Azure
-A continuación debe crear una aplicación de Azure lógica que recoge los eventos de Hola que función hello insertando toohello cola de Bus de servicio, analiza el contenido de Hola y envía un correo electrónico basado en una condición que se buscan coincidencias.
+Ahora, debe crear una aplicación lógica de Azure que seleccione los eventos que la función inserta en la cola de Service Bus, analice el contenido y envíe un correo electrónico si se cumple una determinada condición.
 
-[Crear una aplicación de lógica](../logic-apps/logic-apps-create-a-logic-app.md) yendo demasiado**nuevo > aplicación lógica**.
+[Cree una aplicación lógica](../logic-apps/logic-apps-create-a-logic-app.md) en **Nuevo -&gt; Aplicación lógica**.
 
-Una vez que se crea la aplicación de la lógica de hello, navegar tooit y elegir **editar**. Editor de aplicación lógica de hello, elija **cola de Service Bus** y escriba su tooconnect de credenciales de Bus de servicio se toohello cola.
+Una vez creada, acceda a ella y elija **editar**. En el editor de la aplicación lógica, elija la **cola de Service Bus** y especifique las credenciales de Service Bus para conectarla a la cola.
 
 ![Bus de servicio de la aplicación lógica de Azure](./media/keyvault-keyrotation/Azure_LogicApp_ServiceBus.png)
 
-A continuación, elija **Agregar una condición**. En la condición de hello, cambie toohello advanced editor y escriba Hola siguiente código, reemplazando id_aplicación con hello id_aplicación real de la aplicación web:
+A continuación, elija **Agregar una condición**. En la condición, cambie al editor avanzado y escriba el código siguiente (no olvide cambiar APP_ID por el valor real de APP_ID de la aplicación web):
 
 ```
 @equals('<APP_ID>', json(decodeBase64(triggerBody()['ContentData']))['identity']['claim']['appid'])
 ```
 
-Esta expresión devuelve básicamente **false** si hello *appid* de hello evento de entrada (que es el cuerpo de Hola de mensajes de bienvenida del Bus de servicio) no es Hola *appid* de hello aplicación.
+En esencia, esta expresión devolverá **false** si la propiedad *appid* del evento entrante (que es el cuerpo del mensaje de Service Bus) no es el *appid* de la aplicación.
 
 Ahora, cree una acción en la opción **If no, do nothing** (Si no, no hacer nada).
 
 ![Elegir una acción en la aplicación lógica de Azure](./media/keyvault-keyrotation/Azure_LogicApp_Condition.png)
 
-Para la acción de hello, elija **Office 365: enviar correo electrónico**. Rellene Hola campos toocreate un toosend de correo electrónico cuando Hola define la condición devuelve **false**. Si no tiene Office 365, puede mirar alternativas tooachieve Hola los mismos resultados.
+En la acción, elija **Office 365 - send email**(Office 365 - enviar correo electrónico). Rellene los campos para crear el correo electrónico que se enviará cuando la condición definida devuelva **false**. Si no tiene Office 365, puede buscar otras alternativas para conseguir los mismos resultados.
 
-En este punto, tiene una canalización de tooend final que comprueba si hay nuevos registros de auditoría de almacén de claves una vez por minuto. Inserta nuevos registros encuentra tooa cola de bus de servicio. aplicación de la lógica de Hola se desencadena cuando se llega a un nuevo mensaje de cola de Hola. Si hello *appid* dentro de hello eventos no coincide con Id. de aplicación Hola de hello llamar a la aplicación, envía un correo electrónico.
+En este momento, tiene una canalización integral que, una vez por minuto, busca nuevos registros de auditoría del almacén de claves. Inserta los nuevos registros que encuentra en una cola de Service Bus. La aplicación lógica se activa cuando un nuevo mensaje llega a la cola. Si el *appid* dentro del evento no coincide con el identificador de la aplicación de la aplicación que llama, envía un correo electrónico.

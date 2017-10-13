@@ -1,6 +1,6 @@
 ---
-title: aaaHow toocreate e implementar un servicio de nube | Documentos de Microsoft
-description: "Obtenga información acerca de cómo toocreate e implementar un servicio de nube mediante Hola portal de Azure."
+title: "Creación e implementación de un servicio en la nube | Microsoft Docs"
+description: Aprenda a crear e implementar un servicio en la nube mediante el Portal de Azure.
 services: cloud-services
 documentationcenter: 
 author: Thraka
@@ -14,84 +14,84 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: adegeo
-ms.openlocfilehash: dc8b81a594f3514e662c49c9a46a33da8a551f4f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e5ce666f1d826c7901c9fd5e7fafe6171139c3ad
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-toocreate-and-deploy-a-cloud-service"></a>¿Cómo toocreate e implementar un servicio de nube
+# <a name="how-to-create-and-deploy-a-cloud-service"></a>Creación e implementación de un servicio en la nube
 > [!div class="op_single_selector"]
 > * [Portal de Azure](cloud-services-how-to-create-deploy-portal.md)
 > * [Portal de Azure clásico](cloud-services-how-to-create-deploy.md)
 >
 >
 
-proporciona dos maneras de toocreate Hello portal de Azure e implementar un servicio de nube: *creación rápida* y *creación personalizada*.
+Azure Portal le ofrece dos formas de crear e implementar un servicio en la nube: *Creación rápida* y *Creación personalizada*.
 
-Este artículo explica cómo toouse Hola toocreate de método de creación rápida un nuevo servicio de nube y, a continuación, usar **cargar** tooupload e implementar un paquete de servicios de nube en Azure. Cuando utiliza este método, Hola portal de Azure hace disponible vínculos adecuados para completar todos los requisitos a medida que avanza. Si está listo toodeploy la nube de servicio al crearlo, puede realizar tanto operaciones en hello simultánea mediante Creación personalizada.
+En este artículo se explica cómo usar el método Creación rápida para crear un nuevo servicio en la nube y, a continuación, cómo usar **Cargar** para cargar e implementar un paquete de servicios en la nube en Azure. Cuando usa este método, el Portal de Azure pone a su disposición los vínculos pertinentes para completar todos los requisitos que vaya necesitando sobre la marcha. Si está listo para implementar su servicio en la nube una vez creado, puede hacer las dos cosas a la vez usando Creación personalizada.
 
 > [!NOTE]
-> Si tiene previsto toopublish su servicio de nube desde Visual Studio Team Services (VSTS), use creación rápida y, a continuación, configure la publicación de VSTS desde panel de inicio rápido de Azure u Hola Hola. Para obtener más información, consulte [tooAzure la entrega continua mediante el uso de Visual Studio Team Services][TFSTutorialForCloudService], o consulte la ayuda para hello **inicio rápido** página.
+> Si tiene pensado publicar su servicio en la nube desde Visual Studio Team Services (VSTS), use Creación rápida y, a continuación, configure la publicación VSTS desde Creación rápida de Azure o el panel. Para más información, consulte [Entrega continua en Azure con Visual Studio Team Services][TFSTutorialForCloudService] o la ayuda de la página **Inicio rápido**.
 >
 >
 
 ## <a name="concepts"></a>Conceptos
-Tres componentes son necesario toodeploy una aplicación como un servicio de nube en Azure:
+Necesita tres componentes para implementar una aplicación como servicio en la nube en Azure:
 
 * **Definición de servicio**  
-  archivo de definición de servicio de nube de Hello (.csdef) define el modelo de servicio de hello, incluido el número de Hola de roles.
+  El archivo de definición de servicio en la nube (.csdef) define el modelo de servicio, incluyendo el número de roles.
 * **Configuración de servicio**  
-  archivo de configuración de servicio (.cscfg) de Hello en la nube proporciona opciones de configuración de servicio en la nube hello y roles individuales, incluido el número de Hola de instancias de rol.
+  El archivo de configuración de servicio en la nube (.cscfg) proporciona opciones de configuración para los roles de servicio en la nube e individuales, incluyendo el número de instancias de rol.
 * **Paquete de servicio**  
-  paquete de servicio de Hello (.cspkg) contiene el código de la aplicación hello y las configuraciones y archivo de definición de servicio de Hola.
+  El paquete de servicio (.cspkg) contiene el código y las configuraciones de la aplicación y el archivo de definición de servicio.
 
-Encontrará más información acerca de éstas y cómo toocreate un paquete [aquí](cloud-services-model-and-package.md).
+Puede obtener más información acerca de estas y cómo crear un paquete [aquí](cloud-services-model-and-package.md).
 
 ## <a name="prepare-your-app"></a>Preparación de la aplicación
-Antes de poder implementar un servicio de nube, debe crear el paquete de servicio de nube de hello (.cspkg) desde el código de aplicación y un archivo de configuración de servicio de nube (.cscfg). Hello Azure SDK proporciona herramientas para preparar estos archivos de implementación necesarios. Puede instalar Hola SDK de hello [descargas de Azure](https://azure.microsoft.com/downloads/) página en lenguaje de hello en el que prefiera toodevelop el código de aplicación.
+Antes de implementar un servicio en la nube, debe crear el paquete de servicio en la nube (.cspkg) desde su código de aplicación y un archivo de configuración de servicio en la nube (.cscfg). El SDK de Azure proporciona herramientas para preparar estos archivos de implementación necesarios. Puede instalar el SDK desde la página [Descargas de Azure](https://azure.microsoft.com/downloads/) , en el idioma en que prefiera implementar su código de aplicación.
 
 Hay tres características del servicio en la nube que requieren configuraciones especiales antes de exportar un paquete de servicio:
 
-* Si desea que un servicio de nube que utiliza Secure Sockets Layer (SSL) para el cifrado de datos, toodeploy [configurar la aplicación](cloud-services-configure-ssl-certificate-portal.md#modify) para SSL.
-* Si desea que las instancias de toorole de conexiones de escritorio remoto tooconfigure, [configurar roles de hello](cloud-services-role-enable-remote-desktop-new-portal.md) para escritorio remoto.
-* Si desea tooconfigure detallado de supervisión para el servicio de nube, habilitar los diagnósticos de Azure para servicio de nube de Hola. *La supervisión mínima* (nivel de supervisión de predeterminado hello) usa contadores de rendimiento recopilados de los sistemas de operativos de host de Hola para instancias de rol (máquinas virtuales). *Supervisión detallada* recopila métricas adicionales basadas en datos de rendimiento de hello rol instancias tooenable un análisis más preciso de los problemas que se producen durante el procesamiento de la aplicación. toofind más información sobre cómo tooenable diagnósticos de Azure, consulte [habilitar diagnósticos en Azure](cloud-services-dotnet-diagnostics.md).
+* Si desea implementar un servicio en la nube que utilice Capa de sockets seguros (SSL) para el cifrado de datos, [configure la aplicación](cloud-services-configure-ssl-certificate-portal.md#modify) para SSL.
+* Si desea configurar una conexión de Escritorio remoto a instancias de rol, [configure los roles](cloud-services-role-enable-remote-desktop-new-portal.md) para Escritorio remoto.
+* Si desea configurar una supervisión exhaustiva para su servicio en la nube, habilite Diagnósticos de Azure para el servicio en la nube. *Supervisión mínima* (nivel predeterminado de supervisión) usa contadores de rendimiento recopilados de los sistemas operativos host para las instancias de rol (máquinas virtuales). *supervisión detallada* recopila métricas adicionales basadas en los datos del rendimiento dentro de las instancias de rol para permitir un análisis más profundo de los problemas que se producen durante el procesamiento de la aplicación. Para obtener información acerca de cómo habilitar Diagnósticos de Azure, consulte [Habilitación de Diagnósticos en Azure](cloud-services-dotnet-diagnostics.md).
 
-toocreate un servicio en la nube con implementaciones de roles web o roles de trabajo, debe [crear paquete de servicios de hello](cloud-services-model-and-package.md#servicepackagecspkg).
+Para crear un servicio en la nube con implementaciones de roles web o de trabajo, debe [crear el paquete de servicio](cloud-services-model-and-package.md#servicepackagecspkg).
 
 ## <a name="before-you-begin"></a>Antes de empezar
-* Si no tiene instalado hello Azure SDK, haga clic en **instalar Azure SDK** tooopen hello [página de descargas de Azure](https://azure.microsoft.com/downloads/)y, a continuación, descargar Hola SDK para el idioma de hello en el que prefiera toodevelop el código. (Tendrá una oportunidad toodo esto más adelante.)
-* Si las instancias de rol requieren un certificado, crear certificados de Hola. Los servicios en la nube requieren un archivo .pfx con una clave privada. Puede cargar Hola certificados tooAzure como crear e implementar el servicio en la nube Hola.
+* Si no ha instalado el SDK de Azure, haga clic en **Instalación de SDK de Azure** para abrir la [página Descargas de Azure](https://azure.microsoft.com/downloads/)y, a continuación, descargue el SDK en el idioma en que prefiera desarrollar el código. (Tendrá la oportunidad de hacer esto más tarde).
+* Si hay instancias de rol que necesitan certificados, créelos. Los servicios en la nube requieren un archivo .pfx con una clave privada. Puede cargar los certificados en Azure al crear e implementar el servicio en la nube.
 
 ## <a name="create-and-deploy"></a>Creación e implementación
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com/).
-2. Haga clic en **nuevo > proceso**y, a continuación, desplácese hacia abajo de tooand haga clic en **servicio de nube**.
+1. Inicie sesión en el [Portal de Azure](https://portal.azure.com/).
+2. Haga clic en **Nuevo > Compute**, luego desplácese hacia abajo y haga clic en **Servicio en la nube**.
 
     ![Publicación del servicio en la nube](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
-3. Hola nueva **servicio de nube** hoja, escriba un valor para hello **nombre DNS**.
+3. En la nueva hoja **Servicio en la nube**, escriba un valor para **Nombre DNS**.
 4. Cree un nuevo **Grupo de recursos** o seleccione uno existente.
 5. Seleccione una **ubicación**.
-6. Haga clic en **Paquete**. Se abrirá hello **cargar un paquete** hoja. Rellene los campos de hello necesario. Si cualquiera de los roles contiene una sola instancia, asegúrese de que la casilla **Implementar aunque uno o varios roles contengan una sola instancia** esté seleccionada.
+6. Haga clic en **Paquete**. Se abrirá la hoja **Upload a package** (Cargar un paquete). Rellene todos los campos obligatorios. Si cualquiera de los roles contiene una sola instancia, asegúrese de que la casilla **Implementar aunque uno o varios roles contengan una sola instancia** esté seleccionada.
 7. Asegúrese de que la opción **Iniciar implementación** esté seleccionada.
-8. Haga clic en **Aceptar** que va a cerrar hello **cargar un paquete** hoja.
-9. Si no tiene ningún tooadd de certificados, haga clic en **crear**.
+8. Haga clic en **Aceptar** para cerrar la hoja **Cargar un paquete**.
+9. Si no tiene ningún certificado para agregar, haga clic en **Crear**.
 
     ![Publicación del servicio en la nube](media/cloud-services-how-to-create-deploy-portal/select-package.png)
 
 ## <a name="upload-a-certificate"></a>Carga de un certificado
-Si el paquete de implementación se ha [configurado toouse certificados](cloud-services-configure-ssl-certificate-portal.md#modify), puede cargar el certificado de hello ahora.
+Si el paquete de implementación se [configuró para usar certificados](cloud-services-configure-ssl-certificate-portal.md#modify), puede cargar el certificado ahora.
 
-1. Seleccione **certificados**y en hello **agregar certificados** hoja, seleccione archivo de PFX de certificado SSL de hello y, a continuación, proporcionar hello **contraseña** certificado hello,
-2. Haga clic en **adjuntar certificado**y, a continuación, haga clic en **Aceptar** en hello **agregar certificados** hoja.
-3. Haga clic en **crear** en hello **servicio de nube** hoja. Cuando alcanza implementación Hola Hola **listo** estado, puede continuar toohello pasos.
+1. Seleccione **Certificados** y, en la hoja **Agregar certificados**, seleccione el archivo .pfx del certificado SSL y proporcione la **contraseña** del certificado,
+2. Haga clic en **Adjuntar certificado** y luego en **Aceptar** en la hoja **Agregar certificados**.
+3. Haga clic en **Crear** en la hoja **Servicio en la nube**. Cuando la implementación haya llegado al estado **Listo** , puede continuar con los pasos siguientes.
 
     ![Publicación del servicio en la nube](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
 
 ## <a name="verify-your-deployment-completed-successfully"></a>Compruebe que la implementación se haya completado correctamente.
-1. Haga clic en la instancia de servicio de nube de Hola.
+1. Haga clic en la instancia de servicio en la nube.
 
-    Hello estado debe mostrar que el servicio de hello es **ejecutando**.
-2. En **Essentials**, haga clic en hello **dirección URL del sitio** tooopen la nube de servicio en un explorador web.
+    El estado debería mostrar que el servicio está **En ejecución**.
+2. En **Essentials**, haga clic en la **URL del sitio** para abrir el servicio en la nube en un explorador web.
 
     ![CloudServices_QuickGlance](./media/cloud-services-how-to-create-deploy-portal/running.png)
 

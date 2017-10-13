@@ -1,6 +1,6 @@
 ---
-title: "máquinas virtuales de Hyper-V en el sitio secundario de VMM tooa con PowerShell (Administrador de recursos de Azure) aaaReplicate | Documentos de Microsoft"
-description: "Describe cómo la replicación de tooorchestrate de Azure Site Recovery toodeploy, la conmutación por error y la recuperación de máquinas virtuales de Hyper-V en VMM nubes sitio VMM secundario tooa con PowerShell (Administrador de recursos)"
+title: "Replicación de máquinas virtuales de Hyper-V en VMM en un sitio secundario con PowerShell (Azure Resource Manager) | Microsoft Docs"
+description: "En este artículo se describe cómo implementar Azure Site Recovery para organizar la replicación, la conmutación por error y la recuperación de máquinas virtuales Hyper-V de nubes VMM en un sitio VMM secundario mediante PowerShell (Resource Manager)."
 services: site-recovery
 documentationcenter: 
 author: sujaytalasila
@@ -14,85 +14,85 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: sutalasi
-ms.openlocfilehash: a769dcc68d66c18b9dc47539071f4d0e0f1db70f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5a6e00877b0a2b139d5322f610c1901ad76a710f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-tooa-secondary-vmm-site-using-powershell-resource-manager"></a>Replicar máquinas virtuales de Hyper-V en VMM nubes tooa sitio VMM secundario con PowerShell (Administrador de recursos)
+# <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-a-secondary-vmm-site-using-powershell-resource-manager"></a>Replicación de máquinas virtuales Hyper-V de nubes VMM en un sitio VMM secundario mediante PowerShell (Resource Manager)
 > [!div class="op_single_selector"]
-> * [Azure Portal](site-recovery-vmm-to-vmm.md)
+> * [Portal de Azure](site-recovery-vmm-to-vmm.md)
 > * [Portal clásico](site-recovery-vmm-to-vmm-classic.md)
 > * [PowerShell: administrador de recursos](site-recovery-vmm-to-vmm-powershell-resource-manager.md)
 >
 >
 
-Bienvenido tooAzure Site Recovery. Use este artículo si desea tooreplicate máquinas virtuales de Hyper-V administrados en el sitio secundario de tooa de nubes de System Center Virtual Machine Manager (VMM) local.
+Bienvenido a Azure Site Recovery. Utilice este artículo si quiere replicar máquinas virtuales locales de Hyper-V administradas en nubes de System Center Virtual Machine Manager (VMM) en un sitio secundario.
 
-Este artículo muestra cómo las tareas comunes de toouse PowerShell tooautomate necesita tooperform al configurar máquinas virtuales de Azure Site Recovery tooreplicate Hyper-V en nubes VMM de System Center VMM nubes tooSystem Center en el sitio secundario.
+En este artículo se muestra cómo usar PowerShell para automatizar las tareas comunes que debe realizar al configurar Azure Site Recovery para replicar máquinas virtuales Hyper-V de nubes VMM de System Center en nubes del mismo tipo del sitio secundario.
 
-Hola artículo incluye requisitos previos de escenario de Hola y muestra
+El artículo incluye los requisitos previos para el escenario y muestra
 
-* ¿Cómo tooset un almacén de servicios de recuperación
-* Instalar hello Azure Site Recovery Provider en el servidor VMM de origen de Hola y servidor VMM de destino de Hola
-* Registrar servidores VMM de hello en el almacén de Hola
-* Configurar la directiva de replicación de hello nube de VMM. configuración de replicación de Hello en la directiva de hello será aplicado tooall protegido las máquinas virtuales
-* Habilitar la protección de máquinas virtuales de Hola.
-* Conmutación por error de prueba Hola de máquinas virtuales individualmente o como parte de una recuperación del plan toomake seguro de que todo funciona según lo previsto.
-* Realizar planeada o una conmutación por error no planeada de máquinas virtuales individualmente o como parte de una toomake del plan de recuperación que todo funciona según lo previsto.
+* Configuración del almacén de Servicios de recuperación
+* Instalar el proveedor de Azure Site Recovery en los servidores VMM de origen y de destino.
+* Registrar los servidores VMM en el almacén.
+* Configurar la directiva de replicación para la nube VMM. La configuración de replicación de la directiva se aplicará a todas las máquinas virtuales protegidas.
+* Habilitar la protección en las máquinas virtuales.
+* Probar la conmutación por error de máquinas virtuales de manera individual o como parte de un plan de recuperación para garantizar que todo funciona según lo previsto.
+* Realizar una conmutación por error (planeada o no planeada) de máquinas virtuales de manera individual o como parte de un plan de recuperación para garantizar todo funciona según lo previsto.
 
-Si experimenta problemas al configurar este escenario, publicar sus preguntas en hello [foro de servicios de recuperación de Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Si tiene problemas al configurar este escenario, publique sus preguntas en el [Foro de servicios de recuperación de Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 > [!NOTE]
-> Azure tiene dos [modelos de implementación](../azure-resource-manager/resource-manager-deployment-model.md) diferentes para crear y utilizar recursos: Azure Resource Manager y el clásico. Azure también tiene dos portales: Hola portal de Azure clásico que admite el modelo de implementación clásica de Hola y Hola portal de Azure con compatibilidad para dos modelos de implementación. Este artículo trata el modelo de implementación del Administrador de recursos de Hola.
+> Azure tiene dos [modelos de implementación](../azure-resource-manager/resource-manager-deployment-model.md) diferentes para crear y utilizar recursos: Azure Resource Manager y el clásico. Azure también tiene dos portales: el Portal de Azure clásico que admite el modelo de implementación clásico y el Portal de Azure que es compatible con ambos modelos de implementación. Este artículo trata sobre el modelo de implementación del Administrador de recursos.
 >
 >
 
 ## <a name="on-premises-prerequisites"></a>Requisitos previos locales
-Aquí es lo que necesitará en hello principal y secundaria local sitios toodeploy este escenario:
+Esto es lo que necesita tener en los sitios locales principal y secundario para implementar este escenario:
 
 | **Requisitos previos** | **Detalles** |
 | --- | --- |
-| **VMM** |Se recomienda que implementar un servidor VMM en el sitio primario de Hola y un servidor VMM en el sitio secundario de Hola.<br/><br/> También puede [llevar a cabo una replicación entre nubes en un solo servidor VMM](site-recovery-vmm-to-vmm.md#prepare-for-single-server-deployment). toodo Esto necesitará al menos dos nubes configuradas en el servidor VMM Hola.<br/><br/> Servidores VMM se deben ejecutar al menos System Center 2012 SP1 con las últimas actualizaciones de Hola.<br/><br/> Cada servidor VMM debe tener uno o más nubes configuradas y todas las nubes deben tener perfil de capacidad de Hyper-V de hello establecido. <br/><br/>Las nubes deben incluir uno o más grupos de hosts de VMM.<br/><br/>Más información sobre la configuración de nubes VMM en [Hola configurar VMM en la nube tejido](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric), y [Tutorial: crear nubes privadas con System Center 2012 SP1 VMM](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx).<br/><br/> Los servidores VMM deben tener acceso a Internet. |
-| **Hyper-V** |Servidores de Hyper-V deben ejecutar al menos Windows Server 2012 con el rol de Hyper-V de Hola y Hola a las últimas actualizaciones instaladas.<br/><br/> Un servidor de Hyper-V debe contener una o varias máquinas virtuales.<br/><br/>  Servidores de host de Hyper-V deben estar en grupos host en nubes VMM principales y secundarias de Hola.<br/><br/> Si está ejecutando Hyper-V en un clúster en Windows Server 2012 R2, debe instalar la [actualización 2961977](https://support.microsoft.com/kb/2961977).<br/><br/> Si va a ejecutar Hyper-V en un clúster de Windows Server 2012, tenga en cuenta que el agente de clúster no se crea automáticamente si tiene un clúster basado en una dirección IP estática. Necesitará a un agente de clúster hello tooconfigure manualmente. [Más información](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx). |
-| **Proveedor** |Durante la implementación de Site Recovery se instale hello Azure Site Recovery Provider en servidores VMM. Hola proveedor se comunica con Site Recovery a través de HTTPS 443 tooorchestrate replicación. Se produce la replicación de datos entre Hola principales y secundarios Hyper-V servidores a través de hello LAN o una conexión VPN.<br/><br/> Hello proveedor se ejecuta en el servidor VMM Hola necesita tener acceso a direcciones URL toothese: *. hypervrecoverymanager.windowsazure.com; *. accesscontrol.windows.net; *. backup.windowsazure.com; *. blob.core.windows.net; *. store.core.windows.net.<br/><br/> Además permite la comunicación de firewall de hello VMM servidores toohello [intervalos IP del centro de datos Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653) y permitir que el protocolo de hello HTTPS (443). |
+| **VMM** |Se recomienda implementar un servidor VMM en el sitio principal y otro del mismo tipo en el secundario.<br/><br/> También puede [llevar a cabo una replicación entre nubes en un solo servidor VMM](site-recovery-vmm-to-vmm.md#prepare-for-single-server-deployment). Para ello, necesitará, al menos, dos nubes configuradas en el servidor VMM.<br/><br/> Los servidores VMM deben estar ejecutando, como mínimo, System Center 2012 SP1 con las actualizaciones más recientes.<br/><br/> Cada servidor VMM debe tener una o más nubes configuradas y todas las nubes deben tener definido el perfil de capacidad de Hyper-V. <br/><br/>Las nubes deben incluir uno o más grupos de hosts de VMM.<br/><br/>Aprenda a configurar nubes de VMM en [Configuración del tejido de nube de VMM](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric) y [Walkthrough: Creating private clouds with System Center 2012 SP1 VMM](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx) (Tutorial: Creación de nubes privadas con System Center 2012 SP1 VMM).<br/><br/> Los servidores VMM deben tener acceso a Internet. |
+| **Hyper-V** |Los servidores Hyper-V deben estar ejecutando, como mínimo, Windows Server 2012 con el rol Hyper-V y tener instaladas las actualizaciones más recientes.<br/><br/> Un servidor de Hyper-V debe contener una o varias máquinas virtuales.<br/><br/>  Los servidores host de Hyper-V deben estar ubicados en grupos host de las nubes de VMM principal y secundaria.<br/><br/> Si está ejecutando Hyper-V en un clúster en Windows Server 2012 R2, debe instalar la [actualización 2961977](https://support.microsoft.com/kb/2961977).<br/><br/> Si va a ejecutar Hyper-V en un clúster de Windows Server 2012, tenga en cuenta que el agente de clúster no se crea automáticamente si tiene un clúster basado en una dirección IP estática. Tendrá que configurar manualmente el agente de clúster. [Más información](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx). |
+| **Proveedor** |Durante la implementación de Site Recovery, se instala el proveedor de Azure Site Recovery en los servidores VMM. El proveedor se comunica con Site Recovery mediante HTTPS 443 para organizar la replicación. La replicación de datos se produce entre los servidores Hyper-V principal y secundario mediante la conexión LAN o VPN.<br/><br/> El proveedor que se ejecuta en el servidor VMM necesita acceso a estas direcciones URL: *.hypervrecoverymanager.windowsazure.com; *.accesscontrol.windows.net; *.backup.windowsazure.com; *.blob.core.windows.net; *.store.core.windows.net.<br/><br/> Además, hay que permitir tanto la comunicación del firewall entre los servidores VMM y los [intervalos IP del centro de datos de Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653) como el protocolo HTTPS (443). |
 
 ### <a name="network-mapping-prerequisites"></a>Requisitos previos de asignación de redes
-Mapas de asignación de red entre redes de VM de VMM en servidores VMM de hello principales y secundarias para:
+La asignación de red se realiza entre las redes de VM de VMM en los servidores VMM principal y secundario con el fin de:
 
 * Colocar óptimamente las máquinas virtuales de réplica en los hosts de Hyper-V secundarios tras la conmutación por error.
-* Conectar redes de VM de tooappropriate de las máquinas virtuales de réplica.
-* Si no configura la red asignación réplica máquinas virtuales no estarán conectada tooany red después de la conmutación por error.
-* Si desea que tooset de red asignar durante la recuperación del sitio aquí la implementación es qué se necesita:
+* Conectar las máquinas virtuales de réplica a las redes VM adecuadas.
+* Si no configura la asignación de red, las máquinas virtuales de réplica no se conectarán a ninguna red tras la conmutación por error.
+* Si quiere configurar la asignación de red durante la implementación de Site Recovery, esto es lo que debe hacer:
 
-  * Asegúrese de que las máquinas virtuales en el origen de hello servidor host Hyper-V están conectado tooa red de VM de VMM. Esta red debe ser tooa vinculado red lógica que está asociado a la nube de Hola.
-  * Compruebe que Hola secundaria en la nube que va a utilizar para la recuperación tiene configurada una red VM correspondiente. Dicha red de máquina virtual debe ser tooa vinculado red lógica que esté asociada con la nube secundaria Hola.
+  * Asegúrese de que las máquinas virtuales del servidor host de Hyper-V de origen estén conectadas a una red de máquinas virtuales de VMM. Esa red debe estar vinculada a una red lógica asociada con la nube.
+  * Compruebe que la nube secundaria que se va a utilizar para la recuperación tenga configurada una red de VM correspondiente. Dicha red de máquina virtual debe estar vinculada a una red lógica asociada con la nube secundaria.
 
-Más información acerca de cómo configurar redes de VMM en hello debajo de artículos
+Puede encontrar información sobre cómo configurar redes VMM en los siguientes artículos:
 
-* [¿Cómo tooconfigure redes lógicas en VMM](http://go.microsoft.com/fwlink/p/?LinkId=386307)
-* [¿Cómo tooconfigure VM redes y puertas de enlace en VMM](http://go.microsoft.com/fwlink/p/?LinkId=386308)
+* [Configuración de redes lógicas en VMM](http://go.microsoft.com/fwlink/p/?LinkId=386307)
+* [Configuración de redes de máquina virtual y puertas de enlace en VMM](http://go.microsoft.com/fwlink/p/?LinkId=386308)
 
-[Más información](site-recovery-vmm-to-vmm.md#prepare-for-network-mapping) sobre cómo funciona la asignación de redes.
+[más información](site-recovery-vmm-to-vmm.md#prepare-for-network-mapping) sobre cómo funciona la asignación de red.
 
 ### <a name="powershell-prerequisites"></a>Requisitos previos de PowerShell
-Asegúrese de que tiene listo toogo de PowerShell de Azure. Si ya usa PowerShell, deberá tooupgrade tooversion 0.8.10 o una versión posterior. Para obtener información acerca de cómo configurar PowerShell, vea hello [guía tooinstall y configurar Azure PowerShell](/powershell/azureps-cmdlets-docs). Una vez que se instala y configura PowerShell, puede ver todos los cmdlets disponibles de hello para el servicio de Hola de [aquí](/powershell/azure/overview).
+Asegúrese de que tiene Azure PowerShell listo para usar. Si ya usa PowerShell, necesitará actualizar a la versión 0.8.10 o posterior. Para obtener más información sobre cómo configurar PowerShell, lea la [guía para instalar y configurar Azure PowerShell](/powershell/azureps-cmdlets-docs). Una vez que haya configurado PowerShell, puede ver todos los cmdlets disponibles para el servicio [aquí](/powershell/azure/overview).
 
-toolearn acerca de las sugerencias que pueden ayudarle a usar los cmdlets de hello, como cómo normalmente se controlan los valores de parámetro, las entradas y salidas en Azure PowerShell, vea hello [guía tooget iniciado con Cmdlets de Azure](/powershell/azure/get-started-azureps).
+Para ver sugerencias que puedan ayudarlo a usar los cmdlets —por ejemplo, cómo se controlan normalmente los valores de parámetro, las entradas y las salidas en Azure PowerShell—, lea la [guía de introducción a los cmdlets de Azure](/powershell/azure/get-started-azureps).
 
-## <a name="step-1-set-hello-subscription"></a>Paso 1: Configurar la suscripción de Hola
-1. De Azure powershell, inicio de sesión tooyour cuenta de Azure: mediante Hola después cmdlets
+## <a name="step-1-set-the-subscription"></a>Paso 1: Establecimiento de la suscripción
+1. Desde Azure PowerShell, inicie sesión en la cuenta de Azure mediante los siguientes cmdlets
 
         $UserName = "<user@live.com>"
         $Password = "<password>"
         $SecurePassword = ConvertTo-SecureString -AsPlainText $Password -Force
         $Cred = New-Object System.Management.Automation.PSCredential -ArgumentList $UserName, $SecurePassword
         Login-AzureRmAccount #-Credential $Cred
-2. Obtenga una lista de las suscripciones. Esto mostrará también Hola identificadores de suscripción para cada una de las suscripciones de Hola. Anote subscriptionID Hola de suscripción de hello en el que desea que el almacén de servicios de recuperación de hello toocreate    
+2. Obtenga una lista de las suscripciones. También mostrará los identificadores de suscripción de cada una de las suscripciones. Anotación del identificador de suscripción de la suscripción en la que desea crear el almacén de Servicios de recuperación    
 
         Get-AzureRmSubscription
-3. Establecer suscripción hello en qué Hola almacén de servicios de recuperación es toobe creado por mencionar Hola Id. de suscripción
+3. Establecimiento de la suscripción en la que se va a crear el almacén de Servicios de recuperación mediante la mención del identificador de suscripción
 
         Set-AzureRmContext –SubscriptionID <subscriptionId>
 
@@ -100,27 +100,27 @@ toolearn acerca de las sugerencias que pueden ayudarle a usar los cmdlets de hel
 1. Cree un grupo de recursos de Azure Resource Manager si todavía no lo ha hecho.
 
         New-AzureRmResourceGroup -Name #ResourceGroupName -Location #location
-2. Crear un nuevo almacén de servicios de recuperación y guardar Hola creado el objeto de almacén de ASR en una variable (se usará más adelante). También puede recuperar Hola ASR almacén post creación del objeto mediante el cmdlet Get-AzureRMRecoveryServicesVault Hola:-
+2. Cree un almacén de Servicios de recuperación y guarde el objeto de almacén de ASR creado en una variable (se utilizará más adelante). También puede recuperar el objeto de almacén de ASR tras la creación con el cmdlet Get-AzureRMRecoveryServicesVault:-
 
         $vault = New-AzureRmRecoveryServicesVault -Name #vaultname -ResouceGroupName #ResourceGroupName -Location #location
 
-## <a name="step-3-set-hello-recovery-services-vault-context"></a>Paso 3: Establecer contexto de almacén de servicios de recuperación de Hola
-1. Si tiene un almacén ya creado, ejecute hello debajo de almacén de comando tooget Hola.
+## <a name="step-3-set-the-recovery-services-vault-context"></a>Paso 3: Configuración del contexto de almacén de Servicios de recuperación
+1. Si ya ha creado un almacén, ejecute el siguiente comando para obtenerlo.
 
        $vault = Get-AzureRmRecoveryServicesVault -Name #vaultname
-2. Establecer contexto de almacén de hello ejecutando Hola comando siguiente.
+2. Establezca el contexto de almacén mediante la ejecución del comando siguiente.
 
        Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
 
-## <a name="step-4-install-hello-azure-site-recovery-provider"></a>Paso 4: Instalar hello Azure Site Recovery Provider
-1. En la máquina VMM hello, cree un directorio ejecutando el siguiente comando de hello:
+## <a name="step-4-install-the-azure-site-recovery-provider"></a>Paso 4: Instalación del proveedor de Azure Site Recovery
+1. En el equipo VMM, cree un directorio ejecutando el comando siguiente:
 
        New-Item c:\ASR -type directory
-2. Extraiga los archivos de hello mediante el proveedor de hello descargado ejecutando el siguiente comando de Hola
+2. Extraiga los archivos mediante el proveedor descargado ejecutando comando siguiente
 
        pushd C:\ASR\
        .\AzureSiteRecoveryProvider.exe /x:. /q
-3. Instalar a proveedor de hello mediante Hola siguientes comandos:
+3. Instale el proveedor mediante los siguientes comandos:
 
        .\SetupDr.exe /i
        $installationRegPath = "hklm:\software\Microsoft\Microsoft System Center Virtual Machine Manager Server\DRAdapter"
@@ -133,44 +133,44 @@ toolearn acerca de las sugerencias que pueden ayudarle a usar los cmdlets de hel
          }
        }While($isNotInstalled)
 
-   Espere Hola instalación toofinish.
-4. Registrar servidor de hello en almacén de hello con hello siguiente comando:
+   Espere hasta que la instalación se complete.
+4. Registre el servidor en el almacén con el siguiente comando:
 
        $BinPath = $env:SystemDrive+"\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin"
        pushd $BinPath
        $encryptionFilePath = "C:\temp\".\DRConfigurator.exe /r /Credentials $VaultSettingFilePath /vmmfriendlyname $env:COMPUTERNAME /dataencryptionenabled $encryptionFilePath /startvmmservice
 
 ## <a name="step-5-create-and-associate-a-replication-policy"></a>Paso 5: Creación y asociación de una directiva de replicación
-1. Crear una directiva de replicación de Hyper-V 2012 R2 ejecutando Hola siguiente comando:
+1. Cree una directiva de replicación en Hyper-V 2012 R2 ejecutando el comando siguiente:
 
         $ReplicationFrequencyInSeconds = "300";        #options are 30,300,900
         $PolicyName = “replicapolicy”
         $RepProvider = HyperVReplica2012R2
-        $Recoverypoints = 24                    #specify hello number of hours tooretain recovery pints
-        $AppConsistentSnapshotFrequency = 4 #specify hello frequency (in hours) at which app consistent snapshots are taken
+        $Recoverypoints = 24                    #specify the number of hours to retain recovery pints
+        $AppConsistentSnapshotFrequency = 4 #specify the frequency (in hours) at which app consistent snapshots are taken
         $AuthMode = "Kerberos"  #options are "Kerberos" or "Certificate"
-        $AuthPort = "8083"  #specify hello port number that will be used for replication traffic on Hyper-V hosts
+        $AuthPort = "8083"  #specify the port number that will be used for replication traffic on Hyper-V hosts
         $InitialRepMethod = "Online" #options are "Online" or "Offline"
 
         $policyresult = New-AzureRmSiteRecoveryPolicy -Name $policyname -ReplicationProvider $RepProvider -ReplicationFrequencyInSeconds $Replicationfrequencyinseconds -RecoveryPoints $recoverypoints -ApplicationConsistentSnapshotFrequencyInHours $AppConsistentSnapshotFrequency -Authentication $AuthMode -ReplicationPort $AuthPort -ReplicationMethod $InitialRepMethod
 
     > [!NOTE]
-    > Hola nube de VMM puede contener hosts de Hyper-V que ejecutan versiones distintas de Windows Server (como se menciona en los requisitos previos de hello Hyper-V), pero la directiva de replicación de hello es específicos de la versión de sistema operativo. Si tiene diferentes hosts que ejecutan diferentes versiones del sistema operativo, cree directivas de replicación independientes para cada tipo de versión del sistema operativo. Por ejemplo, si tiene 5 hosts que se ejecutan en Windows Servers 2012 y 3 en Windows Server 2012 R2, cree 2 directivas de replicación: una para cada tipo de versión del sistema operativo.
+    > La nube VMM puede contener hosts Hyper-V que ejecuten versiones distintas de Windows Server (tal y como se mencionó en los requisitos previos de Hyper-V), pero la directiva de replicación es específica de la versión del sistema operativo. Si tiene diferentes hosts que ejecutan diferentes versiones del sistema operativo, cree directivas de replicación independientes para cada tipo de versión del sistema operativo. Por ejemplo, si tiene 5 hosts que se ejecutan en Windows Servers 2012 y 3 en Windows Server 2012 R2, cree 2 directivas de replicación: una para cada tipo de versión del sistema operativo.
 
-1. Obtengan contenedor de protección primaria de hello (nube de VMM principal) y el contenedor de protección de recuperación (recuperación de nube de VMM) mediante la ejecución de hello siguientes comandos:
+1. Obtenga el contenedor de protección principal (nube VMM principal) y el de recuperación (nube VMM de recuperación) ejecutando los siguientes comandos:
 
        $PrimaryCloud = "testprimarycloud"
        $primaryprotectionContainer = Get-AzureRmSiteRecoveryProtectionContainer -friendlyName $PrimaryCloud;  
 
        $RecoveryCloud = "testrecoverycloud"
        $recoveryprotectionContainer = Get-AzureRmSiteRecoveryProtectionContainer -friendlyName $RecoveryCloud;  
-2. Recuperar la directiva de Hola que creó en el paso 1 mediante nombre descriptivo de Hola de directiva de Hola
+2. Recupere la directiva que creó en el paso 1 usando su nombre descriptivo.
 
        $policy = Get-AzureRmSiteRecoveryPolicy -FriendlyName $policyname
-3. Comience asociación Hola del contenedor de protección de hello (nube de VMM) con la directiva de replicación de hello:
+3. Inicie la asociación del contenedor de protección (nube VMM) con la directiva de replicación:
 
        $associationJob  = Start-AzureRmSiteRecoveryPolicyAssociationJob -Policy     $Policy -PrimaryProtectionContainer $primaryprotectionContainer -RecoveryProtectionContainer $recoveryprotectionContainer
-4. Espere a que toocomplete de trabajo de asociación de directiva de Hola. Puede comprobar si el trabajo de Hola se ha completado utilizando el siguiente fragmento de código de PowerShell de Hola.
+4. Espere a que finalice el trabajo de asociación de directivas. Puede comprobar si se ha completado el trabajo ejecutando el siguiente fragmento de PowerShell.
 
        $job = Get-AzureRmSiteRecoveryJob -Job $associationJob
 
@@ -179,7 +179,7 @@ toolearn acerca de las sugerencias que pueden ayudarle a usar los cmdlets de hel
          $isJobLeftForProcessing = $true;
        }
 
-   Después de que el trabajo de hello ha finalizado el procesamiento, ejecute hello siguiente comando:
+   Cuando haya finalizado el procesamiento, ejecute el siguiente comando:
 
        if($isJobLeftForProcessing)
        {
@@ -187,80 +187,80 @@ toolearn acerca de las sugerencias que pueden ayudarle a usar los cmdlets de hel
        }
        }While($isJobLeftForProcessing)
 
-finalización de hello toocheck de operación de hello, siga los pasos de hello en [supervisar la actividad](#monitor).
+Para comprobar la finalización de la operación, siga los pasos en [Supervisión de la actividad](#monitor).
 
 ## <a name="step-6-configure-network-mapping"></a>Paso 6: Configuración de la asignación de red
-1. Hola primer comando obtiene servidores de almacén de Azure Site Recovery de hello actual. comando Hello almacena servidores de Microsoft Azure Site Recovery de hello en la variable de matriz de hello $Servers.
+1. El primer comando obtiene los servidores para el almacén actual de Azure Site Recovery. El comando almacena los servidores de Microsoft Azure Site Recovery en la variable de matriz $Servers.
 
         $Servers = Get-AzureRmSiteRecoveryServer
-2. Hola por debajo de los comandos obtener red de recuperación de sitio de hello para el servidor VMM de origen de Hola y servidor VMM de destino de Hola.
+2. Con los siguientes comandos se obtiene la red de recuperación del sitio para los servidores VMM de origen y de destino.
 
         $PrimaryNetworks = Get-AzureRmSiteRecoveryNetwork -Server $Servers[0]        
 
         $RecoveryNetworks = Get-AzureRmSiteRecoveryNetwork -Server $Servers[1]
 
     > [!NOTE]
-    > servidor VMM de origen de Hello puede ser Hola primera o segunda matriz de servidores de un saludo en hello. Comprobar los nombres de Hola Hola de servidores de VMM y obtener redes Hola correctamente
+    > El servidor VMM de origen puede ser el primero o el segundo en la matriz de servidores. Compruebe los nombres de los servidores VMM y obtenga las redes de forma apropiada.
 
 
-1. Hola final cmdlet crea una asignación entre la red principal de Hola y red de recuperación de Hola. Hola cmdlet especifica red principal de hello como primer elemento de Hola de red de recuperación $PrimaryNetworks y hello como primer elemento de Hola de $RecoveryNetworks.
+1. El cmdlet final crea una asignación entre la red principal y la de recuperación. El cmdlet especifica la red principal como primer elemento de $PrimaryNetworks y la de recuperación como primer elemento de $RecoveryNetworks.
 
         New-AzureRmSiteRecoveryNetworkMapping -PrimaryNetwork $PrimaryNetworks[0] -RecoveryNetwork $RecoveryNetworks[0]
 
 ## <a name="step-7-configure-storage-mapping"></a>Paso 7: Configuración de la asignación de almacenamiento
-1. Hola comando siguiente obtiene la lista de Hola de clasificaciones de almacenamiento en la variable $storageclassifications.
+1. El comando siguiente introduce la lista de clasificaciones de almacenamiento en la variable $storageclassifications.
 
         $storageclassifications = Get-AzureRmSiteRecoveryStorageClassification
-2. Hola por debajo de los comandos obtener la clasificación de origen de hello en $SourceClassificaion variable y la clasificación de destino en la variable $TargetClassification.
+2. Los siguientes comandos introducen la clasificación de origen en la variable $SourceClassification y la de destino en $TargetClassification.
 
         $SourceClassificaion = $storageclassifications[0]
 
         $TargetClassification = $storageclassifications[1]
 
     > [!NOTE]
-    > clasificaciones de origen y destino de Hello pueden ser cualquier elemento de matriz de Hola. Consulte toohello salida de hello debajo de índice del comando toofigure Hola de clasificaciones de origen y destino de matriz $storageclassifications.
+    > Las clasificaciones de origen y de destino pueden ser cualquier elemento de la matriz. Consulte el resultado del siguiente comando para calcular el índice de clasificaciones de origen y destino de la matriz $storageclassifications.
 
     > Get-AzureRmSiteRecoveryStorageClassification | Select-Object -Property FriendlyName, Id | Format-Table
 
 
-1. Hola siguiente cmdlet crea una asignación entre la clasificación de origen de Hola y clasificación de destino de Hola.
+1. El siguiente cmdlet crea una asignación entre la clasificación de origen y la de destino.
 
         New-AzureRmSiteRecoveryStorageClassificationMapping -PrimaryStorageClassification $SourceClassificaion -RecoveryStorageClassification $TargetClassification
 
 ## <a name="step-8-enable-protection-for-virtual-machines"></a>Paso 8: Habilitación de la protección para las máquinas virtuales
-Después de redes, las nubes y servidores de hello están configuradas correctamente, puede habilitar la protección de máquinas virtuales en la nube de Hola.
+Una vez configurados correctamente los servidores, las nubes y las redes, puede habilitar la protección para las máquinas virtuales en la nube.
 
-1. protección de tooenable, ejecute hello después de contenedor de protección de hello tooget de comando:
+1. Para habilitar la protección, ejecute el siguiente comando para obtener el contenedor de protección:
 
           $PrimaryProtectionContainer = Get-AzureRmSiteRecoveryProtectionContainer -friendlyName $PrimaryCloudName
-2. Obtener la entidad de protección de hello (VM) mediante la ejecución de hello siguiente comando:
+2. Obtenga una entidad de protección (VM) ejecutando los comandos siguientes:
 
            $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -friendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer
-3. Habilitar la replicación de hello VM mediante la ejecución de hello siguiente comando:
+3. Habilite la replicación de la máquina virtual ejecutando el comando siguiente:
 
           $jobResult = Set-AzureRmSiteRecoveryProtectionEntity -ProtectionEntity $protectionentity -Protection Enable -Policy $policy
 
 ## <a name="test-your-deployment"></a>Prueba de la implementación
-plan de la implementación, puede ejecutar una prueba de conmutación por error para una sola máquina virtual, o crear un plan de recuperación que consta de varias máquinas virtuales y ejecutar una prueba de conmutación por error para hello tootest. La conmutación por error de prueba simula su mecanismo de conmutación por error y recuperación en una red aislada.
+Para probar la implementación puede realizar una prueba de conmutación por error para una máquina virtual individual o crear un plan de recuperación que incluya numerosas máquinas virtuales y realizar una conmutación por error de prueba para el plan. La conmutación por error de prueba simula su mecanismo de conmutación por error y recuperación en una red aislada.
 
 > [!NOTE]
 > Puede crear un plan de recuperación para su aplicación en el Portal de Azure.
 >
 >
 
-finalización de hello toocheck de operación de hello, siga los pasos de hello en [supervisar la actividad](#monitor).
+Para comprobar la finalización de la operación, siga los pasos en [Supervisión de la actividad](#monitor).
 
 ### <a name="run-a-test-failover"></a>Ejecución de una conmutación por error de prueba
-1. Ejecute hello debajo toowhich de red VM de cmdlets tooget Hola desea tootest conmutación por error las máquinas virtuales se.
+1. Ejecute los siguientes cmdlets para obtener la red de máquina virtual en la que quiere probar la conmutación por error a sus máquinas virtuales.
 
        $Servers = Get-AzureRmSiteRecoveryServer
        $RecoveryNetworks = Get-AzureRmSiteRecoveryNetwork -Server $Servers[1]
-2. Realizar una conmutación por error de prueba de una máquina virtual haciendo Hola siguiente:
+2. Realice una conmutación por error de prueba de una máquina virtual ejecutando lo siguiente:
 
        $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -FriendlyName $VMName -ProtectionContainer $PrimaryprotectionContainer
 
        $jobIDResult =  Start-AzureRmSiteRecoveryTestFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity -VMNetwork $RecoveryNetworks[1]
-3. Realizar una conmutación por error de prueba de un plan de recuperación haciendo Hola siguiente:
+3. Realice una conmutación por error de prueba de un plan de recuperación ejecutando lo siguiente:
 
        $recoveryplanname = "test-recovery-plan"
 
@@ -269,12 +269,12 @@ finalización de hello toocheck de operación de hello, siga los pasos de hello 
        $jobIDResult =  Start-AzureRmSiteRecoveryTestFailoverJob -Direction PrimaryToRecovery -Recoveryplan $recoveryplan -VMNetwork $RecoveryNetworks[1]
 
 ### <a name="run-a-planned-failover"></a>Ejecución de una conmutación por error planeada
-1. Realizar una conmutación por error planeada de una máquina virtual haciendo Hola siguiente:
+1. Realice una conmutación por error planeada de una máquina virtual ejecutando lo siguiente:
 
         $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -Name $VMName -ProtectionContainer $PrimaryprotectionContainer
 
         $jobIDResult =  Start-AzureRmSiteRecoveryPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity
-2. Realizar una conmutación por error planeada de un plan de recuperación haciendo Hola siguiente:
+2. Realice una conmutación por error planeada de un plan de recuperación ejecutando lo siguiente:
 
         $recoveryplanname = "test-recovery-plan"
 
@@ -283,13 +283,13 @@ finalización de hello toocheck de operación de hello, siga los pasos de hello 
         $jobIDResult =  Start-AzureRmSiteRecoveryPlannedFailoverJob -Direction PrimaryToRecovery -Recoveryplan $recoveryplan
 
 ### <a name="run-an-unplanned-failover"></a>Ejecución de una conmutación por error no planeada
-1. Realizar una conmutación por error no planeada de una máquina virtual haciendo Hola siguiente:
+1. Realice una conmutación por error no planeada de una máquina virtual ejecutando lo siguiente:
 
         $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -Name $VMName -ProtectionContainer $PrimaryprotectionContainer
 
         $jobIDResult =  Start-AzureRmSiteRecoveryUnPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity
 
-2. realizar una conmutación por error no planeada de un plan de recuperación haciendo Hola siguiente:
+2. Realice una conmutación por error no planeada de un plan de recuperación ejecutando lo siguiente:
 
         $recoveryplanname = "test-recovery-plan"
 
@@ -298,7 +298,7 @@ finalización de hello toocheck de operación de hello, siga los pasos de hello 
         $jobIDResult =  Start-AzureRmSiteRecoveryUnPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity
 
 ## <a name=monitor></a> Supervisión de la actividad
-Usar hello después de la actividad de hello toomonitor de comandos. Tenga en cuenta que tiene toowait entre los trabajos de hello toofinish de procesamiento.
+Utilice los comandos siguientes para supervisar la actividad. Tenga en cuenta que debe esperar entre los trabajos para que el procesamiento finalice.
 
     Do
     {

@@ -1,9 +1,9 @@
 En este artículo se supone que
 
-1. A **tooSite VPN de sitio** o un **Express Route** ya se ha establecido la conexión entre su red local y Hola red Virtual de Azure.
-2. Su cuenta de usuario tiene permisos toocreate una nueva máquina virtual en hello suscripción de Azure que se han conmutado hello las máquinas virtuales en.
-3. La suscripción tiene un mínimo de 4 núcleos de toospin disponible una nueva máquina virtual de servidor de procesos.
-4. Tienes hello **frase de contraseña de servidor de configuración** disponible.
+1. Ya se ha establecido una **VPN de sitio a sitio** o una conexión de **Express Route** entre su red local y Azure Virtual Network.
+2. Su cuenta de usuario tiene permisos para crear una nueva máquina virtual en la suscripción de Azure en la que las máquinas virtuales se han conmutado por error.
+3. La suscripción tiene un mínimo de 4 núcleos disponibles para poner en marcha una nueva máquina virtual de servidor de procesos.
+4. Dispone de la **frase de contraseña del servidor de configuración**.
 
 > [!TIP]
-> Asegúrese de que pueda tooconnect puerto 443 de hello (ejecutando de forma local) el servidor de configuración de hello red Virtual de Azure que se han conmutado hello las máquinas virtuales en.
+> Asegúrese de que se puede conectar al puerto 443 del servidor de configuración (que se ejecuta de forma local) desde la instancia de Azure Virtual Network en la que las máquinas virtuales se han conmutado por error.

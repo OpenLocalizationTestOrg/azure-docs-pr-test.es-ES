@@ -1,5 +1,5 @@
 ---
-title: uso de aaaAdvanced de servicios de confianza | Documentos de Microsoft
+title: Uso avanzado de Reliable Services | Microsoft Docs
 description: "Obtenga información sobre el uso avanzado de Reliable Services de Service Fabric para obtener una mayor flexibilidad en los servicios."
 services: Service-Fabric
 documentationcenter: .net
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.openlocfilehash: e6d6310a4deae9edcfcd76551e1337f0e39e9e5d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a87924faaf5c6c43716b06b6d70ab5100c61f097
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="advanced-usage-of-hello-reliable-services-programming-model"></a>Uso del modelo de programación de servicios confiables Hola avanzado
-Azure Service Fabric simplifica la escritura y administración de los servicios con y sin estado confiables. Esta guía habla de usos avanzados de servicios de confianza toogain mayor control y flexibilidad sobre los servicios. Tooreading anterior esta guía, familiarícese con [modelo de programación de servicios de confianza de hello](service-fabric-reliable-services-introduction.md).
+# <a name="advanced-usage-of-the-reliable-services-programming-model"></a>Uso avanzado del modelo de programación de servicios fiables
+Azure Service Fabric simplifica la escritura y administración de los servicios con y sin estado confiables. En esta guía se explican los usos avanzados de Reliable Services para obtener más control y flexibilidad respecto a sus servicios. Antes de leer esta guía, familiarícese con [el modelo de programación de servicios fiables](service-fabric-reliable-services-introduction.md).
 
 Los servicios con y sin estado tienen dos puntos de entrada principal para el código de usuario:
 
@@ -33,11 +33,11 @@ En la mayoría de los servicios, estos puntos de dos entradas son suficientes. E
 ## <a name="stateless-service-instance-lifecycle"></a>Ciclo de vida de instancias de servicios sin estado
 El ciclo de vida de un servicio sin estado es muy sencillo. Los servicios sin estado solo se pueden abrir, cerrar o anular. El elemento `RunAsync` incluido en un servicio sin estado se ejecuta cuando se abre una instancia de este y se cancela cuando se cierra o anula una instancia de dicho servicio.
 
-Aunque `RunAsync` debería ser suficiente en casi todos los casos, Hola abrir, cerrar y eventos de anulación en un servicio sin estado también están disponibles:
+Aunque `RunAsync` debe ser suficiente en casi todos los casos, también se encuentran disponibles eventos de apertura, cierre o anulación en los servicios sin estado:
 
-* `Task OnOpenAsync(IStatelessServicePartition, CancellationToken) - C# / CompletableFuture<String> onOpenAsync(CancellationToken) - Java`OnOpenAsync se llama una vez instancia de servicio sin estado Hola sobre toobe usa. En este momento, se pueden iniciar las tareas de inicialización del servicio ampliado.
-* `Task OnCloseAsync(CancellationToken) - C# / CompletableFuture onCloseAsync(CancellationToken) - Java`OnCloseAsync se llama cuando la instancia de servicio sin estado Hola va toobe cerrado correctamente. Esto puede ocurrir cuando se está actualizando el código de servicio de hello, instancia de servicio de Hola se traslada debido tooload equilibrio o se detecta un error transitorio. OnCloseAsync puede ser usado toosafely cerrar todos los recursos, detener cualquier procesamiento en segundo plano, terminar de guardar estado externo o cerrar conexiones existentes.
-* `void OnAbort() - C# / void onAbort() - Java`OnAbort se llama cuando la instancia de servicio sin estado de saludo se está cerrando forzosamente. Por lo general, esto se denomina cuando se detecta un error permanente en el nodo de hello, o cuando Service Fabric no se puede administrar de manera fiable del ciclo de vida de la instancia de servicio de hello debido a errores de toointernal.
+* `Task OnOpenAsync(IStatelessServicePartition, CancellationToken) - C# / CompletableFuture<String> onOpenAsync(CancellationToken) - Java` Se llama a OnOpenAsync cuando está a punto de usarse la instancia de servicio sin estado. En este momento, se pueden iniciar las tareas de inicialización del servicio ampliado.
+* `Task OnCloseAsync(CancellationToken) - C# / CompletableFuture onCloseAsync(CancellationToken) - Java` Se llama a OnCloseAsync cuando la instancia de servicio sin estado se va a apagar correctamente. Esto puede ocurrir cuando se está actualizando el código de servicio, cuando se está moviendo la instancia de servicio debido al equilibrio de carga o se detecta un error transitorio. OnCloseAsync puede utilizarse para cerrar de manera segura todos los recursos, detener cualquier procesamiento en segundo plano, terminar de guardar el estado externo o cerrar conexiones existentes.
+* `void OnAbort() - C# / void onAbort() - Java` Se llama a OnAbort cuando la instancia de servicio sin estado se apaga a la fuerza. Normalmente se llama cuando se detecta un error permanente en el nodo o cuando Service Fabric no puede administrar el ciclo de vida de la instancia de servicio debido a errores internos.
 
 ## <a name="stateful-service-replica-lifecycle"></a>Ciclo de vida de réplicas de servicio con estado
 
@@ -46,15 +46,15 @@ Aunque `RunAsync` debería ser suficiente en casi todos los casos, Hola abrir, c
 >
 >
 
-El ciclo de vida de una réplica de servicio con estado es mucho más complejo que una instancia de servicio sin estado. Además tooopen, cierre y anular los eventos, cambios de rol se somete a una réplica de servicio con estado durante su duración. Cuando una réplica de servicio con estado cambia de rol, Hola `OnChangeRoleAsync` se desencadena el evento:
+El ciclo de vida de una réplica de servicio con estado es mucho más complejo que una instancia de servicio sin estado. Además de los eventos de apertura, cierre y anulación, las réplicas de servicio con estado sufren cambios de rol durante su ciclo de vida. Cuando una réplica de servicio con estado cambia de rol, se desencadena el evento `OnChangeRoleAsync` :
 
-* `Task OnChangeRoleAsync(ReplicaRole, CancellationToken)`OnChangeRoleAsync se llama cuando la réplica de servicio con estado de hello es cambiar el rol, por ejemplo tooprimary o base de datos secundaria. Las réplicas principales tienen estado de escritura (se permiten toocreate y escribir tooReliable colecciones). Las réplicas secundarias reciben el estado de lectura (solo pueden leer desde Reliable Collections existentes). Se realiza la mayor parte del trabajo en un servicio con estado en la réplica principal de Hola. Las réplicas secundarias pueden realizar validación de solo lectura, generación de informes, minería de datos u otros trabajos de solo lectura.
+* `Task OnChangeRoleAsync(ReplicaRole, CancellationToken)` cuando la réplica del servicio con estado cambia de rol, por ejemplo, a principal o secundario. Las réplicas principales reciben el estado de escritura (se les permite crear y escribir en Reliable Collections). Las réplicas secundarias reciben el estado de lectura (solo pueden leer desde Reliable Collections existentes). La mayoría del trabajo en un servicio con estado se lleva a cabo en la réplica principal. Las réplicas secundarias pueden realizar validación de solo lectura, generación de informes, minería de datos u otros trabajos de solo lectura.
 
-En un servicio con estado, sólo réplica principal de hello tiene toostate de acceso de escritura y, por tanto, generalmente es cuando el servicio de hello está realizando trabajo real. Hola `RunAsync` método en un servicio con estado se ejecuta solo cuando la réplica de servicio con estado de hello es principal. Hola `RunAsync` método se cancela cuando los cambios de rol de la réplica principal fuera principal, así como durante Hola cierre y anulación los eventos.
+En un servicio con estado, solo la réplica principal tiene acceso de escritura al estado y, por tanto, normalmente cuando el servicio está realizando tareas reales. El método `RunAsync` de un servicio con estado se ejecuta solo cuando la réplica de servicio con estado es principal. El método `RunAsync` se cancela cuando el rol de una réplica principal cambia a otro distinto del principal, así como durante los eventos de cierre y anulación.
 
-Con hello `OnChangeRoleAsync` evento le permite tooperform trabajo según el rol de réplica, así como en el cambio de toorole de respuesta.
+Mediante el evento `OnChangeRoleAsync` se pueden realizar las tareas según el rol de réplica, así como en respuesta al cambio de rol.
 
-Un servicio con estado también proporciona eventos de ciclo de vida de hello cuatro misma como un servicio sin estado, con Hola la misma semántica y casos de uso:
+Un servicio con estado también proporciona los mismos cuatro eventos de ciclo de vida que uno sin estado, con la misma semántica y casos de uso:
 
 ```csharp
 * Task OnOpenAsync(IStatefulServicePartition, CancellationToken)
@@ -63,9 +63,9 @@ Un servicio con estado también proporciona eventos de ciclo de vida de hello cu
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para más avanzados temas de tejido de tooService relacionados, vea Hola siguientes artículos:
+Para consultar temas más avanzados relacionados con Service Fabric, consulte los siguientes artículos:
 
 * [Configuración de Reliable Services con estado](service-fabric-reliable-services-configuration.md)
 * [Introducción al estado de Service Fabric](service-fabric-health-introduction.md)
 * [Uso de informes de mantenimiento del sistema para solucionar problemas](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
-* [Configuración de servicios con hello servicio Administrador de recursos del clúster de tejido](service-fabric-cluster-resource-manager-configure-services.md)
+* [Configuring cluster resource manager settings for service fabric services (Configuración del Administrador de recursos de clúster para servicios de Service Fabric)](service-fabric-cluster-resource-manager-configure-services.md)

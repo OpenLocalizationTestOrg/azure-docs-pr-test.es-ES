@@ -1,6 +1,6 @@
 ---
-title: "aaaHow tooconfigure usuario aprovisionar la aplicación de la Galería de Azure AD tooan | Documentos de Microsoft"
-description: "Cómo configurar rápidamente cuenta de usuario enriquecida de aprovisionamiento y desaprovisionamiento rápidos tooapplications ya aparece en la Galería de aplicaciones de Azure AD Hola"
+title: "Configuración del aprovisionamiento de usuarios en una aplicación de la galería de Azure AD | Microsoft Docs"
+description: "Cómo configurar rápidamente el aprovisionamiento y desaprovisionamiento completos de cuentas de usuario para aplicaciones que ya aparecen en la galería de aplicaciones de Azure AD"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,42 +13,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 2c28e59a3ac8f221ed93b2f6b0b1221f7604af23
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 2e38fcb30ea7632339a3ba8815a536872cfcc69e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-tooconfigure-user-provisioning-tooan-azure-ad-gallery-application"></a>Cómo aprovisionar la aplicación de la Galería de Azure AD tooan de usuario de tooconfigure
+# <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>Configuración del aprovisionamiento de usuarios en una aplicación de la galería de Azure AD
 
-*Aprovisionamiento de cuentas de usuario* Hola consisten en crear, actualizar o deshabilitar registros de cuenta de usuario en el almacén de perfiles de usuario local de la aplicación. La mayoría en la nube y aplicaciones SaaS almacenan Hola roles de los usuarios y los permisos en su propio almacén de perfiles de usuario local, y es la presencia de un registro de usuario en su almacén local *necesario* para toowork único de inicio de sesión y el acceso.
+El *aprovisionamiento de cuentas de usuario* es el acto de crear, actualizar o deshabilitar registros de cuenta de usuario en el almacén de perfiles de usuario local de una aplicación. La mayoría de las aplicaciones SaaS y en la nube almacenan el rol y los permisos de los usuarios en su propio almacén local de perfiles de usuario, y la presencia de tal registro de usuario en su almacén local es *necesaria* para que funcionen el inicio de sesión único y el acceso.
 
-Hola portal de Azure, Hola **Provisioning** ficha Panel de navegación izquierdo de Hola para una aplicación empresarial, se muestran los modos de aprovisionamiento se admiten para esa aplicación. Puede ser uno de dos valores:
+En Azure Portal, en la pestaña **Aprovisionamiento** del panel de navegación izquierdo para una aplicación empresarial, se muestran los modos de aprovisionamiento admitidos para esa aplicación. Puede ser uno de dos valores:
 
 ## <a name="configuring-an-application-for-manual-provisioning"></a>Configuración de una aplicación para el aprovisionamiento manual
 
-*Manual* aprovisionamiento significa que las cuentas de usuario se deben crear manualmente utilizando los métodos de hello proporcionados por esa aplicación. Esto podría suponer iniciar sesión en un portal administrativo para esa aplicación y agregar usuarios mediante una interfaz de usuario basada en Web. O bien, podría tener que cargar una hoja de cálculo con los detalles de las cuentas de usuario, mediante un mecanismo proporcionado por esa aplicación. Consulte la documentación de hello proporcionados por aplicación hello, o una aplicación Hola póngase en contacto con mecanismos de desarrollador toodetermine wat están disponibles.
+El aprovisionamiento *manual* quiere decir que las cuentas de usuario se deben crear manualmente mediante los métodos proporcionados por esa aplicación. Esto podría suponer iniciar sesión en un portal administrativo para esa aplicación y agregar usuarios mediante una interfaz de usuario basada en Web. O bien, podría tener que cargar una hoja de cálculo con los detalles de las cuentas de usuario, mediante un mecanismo proporcionado por esa aplicación. Consulte la documentación suministrada por la aplicación o póngase en contacto con su desarrollador para determinar qué mecanismos hay disponibles.
 
-Si Manual es el modo solo Hola se muestra para una aplicación determinada, significa que ningún conector de aprovisionamiento de Azure AD automática aún se ha creado para la aplicación hello. O bien, significa aplicación hello no soporte Hola usuario son un requisito previo API de administración de en qué toobuild un conector de aprovisionamiento automatizado.
+Si Manual es el único modo que se muestra para una aplicación determinada, significa que aún no se ha creado ningún conector de aprovisionamiento de Azure AD automático para la aplicación. O bien, significa que la aplicación no es compatible con la API de administración de usuarios obligatoria sobre la que se crea un conector de aprovisionamiento automatizado.
 
-Si desea recibir soporte técnico de toorequest para el aprovisionamiento automático para una aplicación determinada, puede rellenar una solicitud en <http://aka.ms/aadapprequest>.
+Si desea solicitar soporte técnico para el aprovisionamiento automático con una aplicación determinada, puede rellenar una solicitud en <http://aka.ms/aadapprequest>.
 
 ## <a name="configuring-an-application-for-automatic-provisioning"></a>Configuración de una aplicación para el aprovisionamiento automático
 
-*Automático* significa que se ha desarrollado un conector de aprovisionamiento de Azure AD para esta aplicación. Para obtener más información sobre hello Azure AD de aprovisionamiento de servicio y cómo funciona, consulte [tooSaaS automatizar el aprovisionamiento de usuarios y desaprovisionamiento aplicaciones con Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning).
+*Automático* significa que se ha desarrollado un conector de aprovisionamiento de Azure AD para esta aplicación. Para más información sobre el servicio de aprovisionamiento de Azure AD y cómo funciona, consulte [Automatización del aprovisionamiento y desaprovisionamiento de usuarios para aplicaciones SaaS con Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning).
 
-Para obtener más información sobre cómo ver usuarios específicos de tooprovision y la aplicación de tooan grupos [administración de aprovisionamiento de cuentas de usuario para aplicaciones empresariales](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning).
+Para más información sobre cómo aprovisionar usuarios y grupos específicos en una aplicación, consulte [Administración del aprovisionamiento de cuentas de usuario para aplicaciones empresariales](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning).
 
-Hola tooenable necesarios pasos real y configurar el aprovisionamiento automático varían dependiendo de la aplicación hello.
+Los pasos que son necesarios para habilitar y configurar el aprovisionamiento automático varían según la aplicación.
 
 >[!NOTE]
->Debe empezar por buscar Hola toosetting específico tutorial de instalación de aprovisionamiento para la aplicación y después esos pasos tooconfigure aplicación hello y Azure AD toocreate Hola conexión aprovisionamiento. 
+>Para empezar, debería buscar el tutorial de configuración específico para configurar el aprovisionamiento para su aplicación y seguir esos pasos para configurar la aplicación y Azure AD para crear la conexión de aprovisionamiento. 
 >
 >
 
-Tutoriales de aplicación pueden encontrarse en [lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
+Puede encontrar tutoriales sobre aplicaciones en [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list).
 
-Una tooconsider importante al configurar el aprovisionamiento puede tooreview y configurar asignaciones de atributos de Hola y flujos de trabajo que definen qué flujo de propiedades de usuario (o grupo) de la aplicación de Azure AD toohello. Esto incluye el establecimiento de Hola "hacer coincidir la propiedad" que ser usado toouniquely identificar y asociar los usuarios/grupos entre sistemas de hello dos. Para más información acerca de este proceso importante.
+Una cuestión importante que tener en cuenta al configurar el aprovisionamiento es revisar y configurar las asignaciones de atributos y los flujos de trabajo que definen qué propiedades de usuario (o de grupo) fluyen de Azure AD a la aplicación. Esto incluye la configuración de la "propiedad de coincidencia" que se usa para identificar de forma exclusiva y emparejar a usuarios y grupos entre ambos sistemas. Para más información acerca de este proceso importante.
 
 ## <a name="next-steps"></a>Pasos siguientes
 [Personalización de asignaciones de atributos de aprovisionamiento de usuarios para aplicaciones SaaS en Azure Active Directory de usuarios](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)

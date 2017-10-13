@@ -1,6 +1,6 @@
 ---
-title: aaaPen pruebas | Documentos de Microsoft
-description: "artículo de Hello proporciona información general del proceso (pentest) de prueba de penetración de Hola y el rendimiento de pentest frente a las aplicaciones que se ejecutan en la infraestructura de Azure."
+title: "Pruebas de penetración | Microsoft Docs"
+description: "El artículo proporciona información general sobre el proceso de pruebas de penetración y cómo realizar dichas pruebas en sus aplicaciones que se ejecutan en la infraestructura de Azure."
 services: security
 documentationcenter: na
 author: YuriDio
@@ -14,32 +14,32 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: yurid
-ms.openlocfilehash: 202c239f46d8693ab7aa85e237235372e743e108
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 070e848f753452953b9e5dfe94799e7c0a314530
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="pen-testing"></a>Pruebas de penetración
-Una de las grandes virtudes de hello acerca del uso de Microsoft Azure para pruebas de aplicación y la implementación es que no es necesario tooput juntos un toodevelop de infraestructura local, probar e implementar las aplicaciones. Toda la infraestructura de Hola se encarga del servicios de la plataforma Microsoft Azure Hola. No tienes tooworry sobre requisa de entidades, adquirir y "instalación en rack y apilado" su propio hardware local.
+Una de las grandes ventajas de usar Microsoft Azure para la prueba e implementación de aplicaciones es que no es necesario crear una infraestructura local para desarrollar, probar e implementar sus aplicaciones. Sos servicios de plataforma Microsoft Azure se ocupan de toda la infraestructura. No tiene que preocuparse del pedido, la adquisición, la "instalación en bastidor y apilamiento" de su propio hardware local.
 
-Esto es genial, pero seguirá necesitando toomake seguro realizar su seguridad normal diligencia. Uno de cosas Hola que debe toodo es penetración probar hello las aplicaciones se implementan en Azure.
+Esto es genial, pero debe asegurarse de realizar sus diligencias de seguridad normales. Una de las cosas que debe hacer es realizar pruebas de penetración de las aplicaciones que implemente en Azure.
 
 Es posible que ya sepa que realiza Microsoft realiza [pruebas de penetración de nuestro entorno de Azure](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e). Esto nos ayuda a mejorar nuestra plataforma y guía nuestras acciones para mejorar los controles de seguridad, introducir nuevos controles de seguridad y mejorar nuestros procesos de seguridad.
 
-No es de la pluma probar su aplicación, pero sabemos que se desea y necesita tooperform lápiz pruebas en sus propias aplicaciones. Que es bueno, porque cuando se mejorar la seguridad de Hola de las aplicaciones, para ayudar a proteger ecosistema de Azure completo Hola.
+No realizamos pruebas de penetración de su aplicación, pero sabemos que se desea y necesita realizar dichas pruebas en sus propias aplicaciones. Eso es bueno, ya que al mejorar la seguridad de sus aplicaciones, ayuda a hacer que todo el ecosistema de Azure sea más seguro.
 
-Cuando el lápiz probar las aplicaciones, podría parecer un ataque toous. Nosotros [supervisamos continuamente](http://blogs.msdn.com/b/azuresecurity/archive/2015/07/05/best-practices-to-protect-your-azure-deployment-against-cloud-drive-by-attacks.aspx) para detectar patrones de ataque e iniciamos un proceso de respuesta a incidentes si es necesario. No ayudarle y no ayuda a nosotros si se activa una respuesta a incidentes due tooyour propio debido diligencia lápiz pruebas.
+Al realizar pruebas de penetración de sus aplicaciones, podría parecer que nos ataca. Nosotros [supervisamos continuamente](http://blogs.msdn.com/b/azuresecurity/archive/2015/07/05/best-practices-to-protect-your-azure-deployment-against-cloud-drive-by-attacks.aspx) para detectar patrones de ataque e iniciamos un proceso de respuesta a incidentes si es necesario. No ayuda a nadie si se desencadena una respuesta a incidentes debido a sus propias pruebas de penetración.
 
-¿Qué toodo?
+¿Qué debe hacer?
 
-Cuando esté listo toopen probar las aplicaciones hospedadas en Azure, tendrá una opción demasiado[háganoslo saber](https://portal.msrc.microsoft.com/en-us/engage/pentest). Una vez que se sabe que va a realizar pruebas específicas de toobe, sin darse cuenta se no se cerró (por ejemplo, la dirección IP de Hola que se está probando de bloqueo), siempre y cuando las pruebas ajustan toohello Azure pluma pruebas términos y condiciones descritos en [En la nube Microsoft Unified penetración probar reglas de compromiso](https://technet.microsoft.com/en-us/mt784683).
+Cuando esté listo para realizar pruebas de penetración de sus aplicaciones hospedadas en Azure, tiene la opción de [hacérnoslo saber](https://portal.msrc.microsoft.com/en-us/engage/pentest). Una vez que sepamos que va a realizar pruebas específicas, no le des conectaremos accidentalmente (por ejemplo, al bloquear la dirección IP desde la que está realizando la prueba), siempre y cuando las pruebas se ajusten a los términos y condiciones de las pruebas de penetración de Azure que se describen en [Reglas de interacción de prueba de penetración de Microsoft Cloud Unified](https://technet.microsoft.com/en-us/mt784683).
 Entre las pruebas estándar que puede realizar se incluyen:
 
-* Pruebas en su Hola de toouncover extremos [Abrir proyecto de seguridad aplicación de Web (OWASP) top 10 vulnerabilidades](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)
+* Pruebas en los puntos de conexión para descubrir las [10 principales vulnerabilidades del Proyecto de seguridad de aplicación web abierta (OWASP)](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)
 * [Pruebas de vulnerabilidad ante datos aleatorios o inesperados](https://blogs.microsoft.com/cybertrust/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/) de los puntos de conexión
 * [Exploración de puertos](https://en.wikipedia.org/wiki/Port_scanner) de los puntos de conexión
 
 Un tipo de prueba que no puede realizar es ningún tipo de ataque [de denegación de servicio (DoS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) . Esto incluye iniciar un ataque de denegación de servicio o la realización de pruebas relacionadas que puedan determinar, demostrar o simular cualquier tipo de ataque de denegación de servicio.
 
-¿Son que listo tooget partió lápiz probar sus aplicaciones hospedadas en Microsoft Azure? Si es así, principal en sobre toohello [información general de prueba de penetración](https://technet.microsoft.com/library/mt784683.aspx) página (y haga clic en crear un botón Probar solicitud final Hola de página Hola Hola. También encontrará más información sobre el lápiz de hello pruebas términos y condiciones y vínculos útiles en cómo puede crear informes de seguridad si hay errores relacionados tooAzure o cualquier otro servicio de Microsoft.
+¿Está listo para empezar a realizar pruebas de penetración de sus aplicaciones hospedadas en Microsoft Azure? Si es así, diríjase a la página [Penetration Test Overview](https://technet.microsoft.com/library/mt784683.aspx) (Información general de pruebas de penetración) y haga clic en el botón Create a Testing Request (Crear una solicitud de prueba) en la parte inferior de la página. También encontrará más información sobre los términos y condiciones de las pruebas de penetración, así como vínculos útiles sobre cómo informar de problemas de seguridad relacionados con Azure o cualquier otro servicio de Microsoft.

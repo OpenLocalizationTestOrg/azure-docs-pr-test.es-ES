@@ -1,5 +1,5 @@
 ---
-title: registros DNS de aaaManage en DNS de Azure mediante Hola 2.0 de CLI de Azure | Documentos de Microsoft
+title: "Administración de registros de DNS en Azure DNS mediante la CLI de Azure 2.0 | Microsoft Docs"
 description: "Administración de conjuntos de registros y registros DNS en DNS de Azure al hospedar dominios en DNS de Azure. Todos los comandos de la CLI 2.0 para operaciones en conjuntos de registros y registros."
 services: dns
 documentationcenter: na
@@ -14,34 +14,34 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: jonatul
-ms.openlocfilehash: 9d6f8e74ebad55ccd2381fd84a830d2c7bbb1f30
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 9543759d7ba88c7c5068021cebbeec6b8d63633e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="manage-dns-records-and-recordsets-in-azure-dns-using-hello-azure-cli-20"></a>Administrar registros DNS y los conjuntos de registros en DNS de Azure con hello 2.0 de CLI de Azure
+# <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli-20"></a>Administración de conjuntos de registros y registros de DNS en Azure DNS mediante la CLI de Azure 2.0
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](dns-operations-recordsets-portal.md)
+> * [Portal de Azure](dns-operations-recordsets-portal.md)
 > * [CLI de Azure 1.0](dns-operations-recordsets-cli-nodejs.md)
 > * [CLI de Azure 2.0](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
-Este artículo muestra cómo toomanage registros DNS para la zona DNS mediante el uso de Hola multiplataforma Azure interfaz de línea de comandos (CLI) 2.0, que está disponible para Windows, Mac y Linux. También puede administrar los registros DNS mediante [Azure PowerShell](dns-operations-recordsets.md) o hello [portal de Azure](dns-operations-recordsets-portal.md).
+En este artículo se muestra cómo administrar los registros de DNS para su zona DNS mediante la versión 2.0 de la interfaz de la línea de comandos (CLI) multiplataforma de Azure, disponible para Windows, Mac y Linux. También puede administrar sus registros de DNS mediante [Azure PowerShell](dns-operations-recordsets.md) o [Azure Portal](dns-operations-recordsets-portal.md).
 
-## <a name="cli-versions-toocomplete-hello-task"></a>Tarea CLI versiones toocomplete hello
+## <a name="cli-versions-to-complete-the-task"></a>Versiones de la CLI para completar la tarea
 
-Puede completar la tarea hello mediante uno de hello después de las versiones CLI:
+Puede completar la tarea mediante una de las siguientes versiones de la CLI:
 
-* [Azure 1.0 de CLI](dns-operations-recordsets-cli-nodejs.md) -nuestro CLI para modelos de implementación de administración de recursos y clásico Hola.
-* [Azure 2.0 CLI](dns-operations-recordsets-cli.md) -nuestro CLI de próxima generación para el modelo de implementación de administración de recursos de Hola.
+* [CLI de Azure 1.0](dns-operations-recordsets-cli-nodejs.md): la CLI para los modelos de implementación clásica y de administración de recursos.
+* [CLI de Azure 2.0](dns-operations-recordsets-cli.md): la CLI de última generación para el modelo de implementación de administración de recursos.
 
-ejemplos de Hello en este artículo se supone que ya está [instalado Hola 2.0 de CLI de Azure, firmado y ha creado una zona DNS](dns-operations-dnszones-cli.md).
+En los ejemplos de este artículo se supone que ya ha [instalado la CLI de Azure 2.0, iniciado sesión y creado una zona DNS](dns-operations-dnszones-cli.md).
 
 ## <a name="introduction"></a>Introducción
 
-Antes de crear los registros DNS en DNS de Azure, primero debe toounderstand cómo Azure DNS organiza los registros DNS en conjuntos de registros de DNS.
+Antes de crear registros DNS en Azure DNS, es necesario que comprenda cómo Azure DNS los organiza en conjuntos de registros DNS.
 
 [!INCLUDE [dns-about-records-include](../../includes/dns-about-records-include.md)]
 
@@ -49,21 +49,21 @@ Para más información sobre los registros DNS en Azure DNS, consulte [DNS zones
 
 ## <a name="create-a-dns-record"></a>Creación de un registro de DNS
 
-toocreate un registro DNS, usar hello `az network dns record-set <record-type> set-record` comando (donde `<record-type>` es de tipo hello de registro, es decir a, srv, txt, etc.) Para obtener ayuda, consulte `az network dns record-set --help`.
+Para crear un registro DNS, use el comando `az network dns record-set <record-type> set-record` (donde `<record-type>` es el tipo de registro, es decir, a, srv, txt, etc.) Para obtener ayuda, consulte `az network dns record-set --help`.
 
-Al crear un registro, necesita el nombre de grupo de recursos de hello toospecify, nombre de la zona, conjunto de registros, nombre, tipo de registro de hello y detalles de Hola de registro de hello va a crear. Hello dado el nombre de conjunto de registros debe ser un *relativa* nombre, lo que significa que debe excluir el nombre de la zona de Hola.
+Al crear un registro, debe especificar los nombres del grupo de recursos, de la zona y del conjunto de registros, el tipo de registro y los detalles del registro que se están creando. El nombre del conjunto de registros especificado debe ser un nombre *relativo*; es decir, debe excluir el nombre de zona.
 
-Si aún no existe el conjunto de registros de hello, este comando lo crea automáticamente. Si no existe registro de hello ya establecido, este comando agrega el registro de hello especificar toohello conjunto de registros existente.
+Si el conjunto de registros aún no existe, este comando lo crea automáticamente. Si el conjunto de registros ya existe, este comando agrega el registro que especifique al conjunto de registros existente.
 
-Si se crea un conjunto de registros, se utiliza el valor predeterminado del período de vida (3600). Para obtener instrucciones sobre cómo toouse TTLs diferentes, consulte [crear un conjunto de registros de DNS](#create-a-dns-record-set).
+Si se crea un conjunto de registros, se utiliza el valor predeterminado del período de vida (3600). Para obtener instrucciones sobre cómo usar diferentes TTL, consulte [Creación de un conjunto de registros de DNS](#create-a-dns-record-set).
 
-Hello en el ejemplo siguiente se crea un registro denominado *www* en zona de hello *contoso.com* en grupo de recursos de hello *MyResourceGroup*. Hola dirección IP de un registro es de hello *1.2.3.4*.
+En el ejemplo siguiente se crea un registro A denominado *www* en la zona *contoso.com* del grupo de recursos *MyResourceGroup*. La dirección IP del registro A es *1.2.3.4*.
 
 ```azurecli
 az network dns record-set a set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 1.2.3.4
 ```
 
-toocreate un registro se establece en vértice Hola de zona de hello (en este caso, "contoso.com"), use el nombre de registro de hello "@", incluidas las comillas de hello:
+Para crear un conjunto de registros en el vértice de la zona (en este caso, "contoso.com"), utilice el nombre de registro "@", incluidas las comillas:
 
 ```azurecli
 az network dns record-set a set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --ipv4-address 1.2.3.4
@@ -71,19 +71,19 @@ az network dns record-set a set-record --resource-group myresourcegroup --zone-n
 
 ## <a name="create-a-dns-record-set"></a>Creación de un conjunto de registros de DNS
 
-Hola por encima de los ejemplos, registro DNS de Hola se cualquier agregado tooan existente de conjunto de registros, o se creó el conjunto de registros de hello *implícitamente*. También puede crear el conjunto de registros de hello *explícitamente* antes de que se agregan registros tooit. DNS de Azure es compatible con conjuntos de registros 'empty', que pueden actuar como un marcador de posición tooreserve un nombre DNS antes de crear los registros DNS. Conjuntos de registros vacíos son visibles en hello Azure DNS control plano, pero no aparecen en los servidores de nombres DNS de Azure Hola.
+En los ejemplos anteriores, bien se agregó el registro de DNS en un conjunto de registros existente, bien se creó el conjunto de registros *implícitamente*. También puede crear el conjunto de registros *explícitamente* antes de agregarle registros. La DNS de Azure admite conjuntos de registros "vacíos" que pueden funcionar como marcador de posición para reservar un nombre DNS antes de crear registros de DNS. Los conjuntos de registros vacíos se pueden ver en el panel de control de DNS de Azure, pero no aparecen en los servidores de nombres de DNS de Azure.
 
-Conjuntos de registros se crean mediante hello `az network dns record-set <record-type> create` comando. Para obtener ayuda, consulte `az network dns record-set <record-type> create --help`.
+Los conjuntos de registros se crean con el comando `az network dns record-set <record-type> create`. Para obtener ayuda, consulte `az network dns record-set <record-type> create --help`.
 
-Crear registro de hello establecen explícitamente permite toospecify propiedades de conjunto de registros como hello [Time-To-Live (TTL)](dns-zones-records.md#time-to-live) y metadatos. [Metadatos del conjunto de registros](dns-zones-records.md#tags-and-metadata) pueden ser datos específicos de la aplicación de tooassociate usado con cada conjunto de registros, como pares de clave-valor.
+Al crear el conjunto de registros explícitamente, podrá especificar las propiedades de este, como el [período de vida (TTL)](dns-zones-records.md#time-to-live) y los metadatos. Se pueden usar [metadatos del conjunto de registros](dns-zones-records.md#tags-and-metadata) para asociar datos específicos de la aplicación con cada conjunto de registros como pares clave-valor.
 
-Hello en el ejemplo siguiente se crea un conjunto de registros vacío de tipo 'A' con un TTL de 60 segundos, mediante el uso de hello `--ttl` parámetro (forma abreviada `-l`):
+En el ejemplo siguiente se crea un conjunto de registros vacío de tipo "A" con un TTL de 60 segundos mediante el parámetro `--ttl` (forma abreviada `-l`):
 
 ```azurecli
 az network dns record-set a create --resource-group myresourcegroup --zone-name contoso.com --name www --ttl 60
 ```
 
-Hello en el ejemplo siguiente se crea un conjunto de registros con dos entradas de metadatos, "departamento = Finanzas" y "entorno = producción", mediante el uso de hello `--metadata` parámetro:
+En el siguiente ejemplo, se crea un conjunto de registros con dos entradas de metadatos, "dept=finance" y "environment=production", mediante el parámetro `--metadata`:
 
 ```azurecli
 az network dns record-set a create --resource-group myresourcegroup --zone-name contoso.com --name www --metadata "dept=finance" "environment=production"
@@ -93,13 +93,13 @@ Tras haber creado un conjunto de registros vacío, se podrán añadir el registr
 
 ## <a name="create-records-of-other-types"></a>Creación de registros de otros tipos
 
-Después de ver en detalle cómo registros toocreate 'A', Hola siguientes ejemplos se muestra cómo se admite toocreate registro de otros tipos de registros DNS de Azure.
+Después de haber visto de forma detallada cómo crear registros "A", en los siguientes ejemplos se muestra cómo crear registros de otros tipos compatibles con DNS de Azure.
 
-parámetros de Hello usar registro de hello toospecify datos varían según el tipo de saludo del registro de hello. Por ejemplo, para un registro de tipo "A", especificar dirección Hola IPv4 con el parámetro hello `--ipv4-address <IPv4 address>`. Hola parámetros para cada tipo de registro puede aparecer con `az network dns record-set <record-type> set-record --help`.
+Los parámetros utilizados para especificar los datos del registro varían según el tipo del registro. Por ejemplo, para un registro de tipo "A", especifique la dirección IPv4 con el parámetro `--ipv4-address <IPv4 address>`. Es posible obtener una lista de los parámetros de cada tipo de registro con `az network dns record-set <record-type> set-record --help`.
 
-En cada caso, le mostramos cómo toocreate un único registro. registro de Hello es agregado toohello existente de conjunto de registros o un conjunto de registros se crea de forma implícita. Para obtener más información sobre cómo crear conjuntos de registros y definir explícitamente los parámetros de un conjunto de registros, consulte [Creación de un conjunto de registros de DNS](#create-a-dns-record-set).
+En cada caso, se muestra cómo crear un único registro. Se agrega el registro al conjunto de registros existente o a uno creado de forma implícita. Para obtener más información sobre cómo crear conjuntos de registros y definir explícitamente los parámetros de un conjunto de registros, consulte [Creación de un conjunto de registros de DNS](#create-a-dns-record-set).
 
-No damos un toocreate ejemplo un conjunto de registros SOA, ya que se crea SOA y eliminar con cada zona DNS y no puede crearse o eliminarse por separado. Sin embargo, [Hola SOA se puede modificar, como se muestra en un ejemplo posterior](#to-modify-an-SOA-record).
+No se proporciona un ejemplo para crear un conjunto de registros SOA, dado que los registros SOA se crean y eliminan con cada zona de DNS y no lo pueden hacer por separado. Sin embargo, [el registro SOA se puede modificar, como se muestra en un ejemplo más adelante](#to-modify-an-SOA-record).
 
 ### <a name="create-an-aaaa-record"></a>Creación de un registro AAAA
 
@@ -110,7 +110,7 @@ az network dns record-set aaaa set-record --resource-group myresourcegroup --zon
 ### <a name="create-a-cname-record"></a>Creación de un registro CNAME
 
 > [!NOTE]
-> los estándares de DNS Hello no permiten registros CNAME en vértice Hola de una zona (`--Name "@"`), ni permiten a los conjuntos de registros que contiene más de un registro.
+> Los estándares DNS no permiten registros CNAME en el vértice de una zona (`--Name "@"`), ni permiten conjuntos de registros que contengan más de un registro.
 > 
 > Para más información, consulte [Registros CNAME](dns-zones-records.md#cname-records).
 
@@ -120,7 +120,7 @@ az network dns record-set cname set-record --resource-group myresourcegroup --zo
 
 ### <a name="create-an-mx-record"></a>Creación de un registro MX
 
-En este ejemplo, se utiliza el nombre de conjunto de registros de Hola "@" hello toocreate registro MX en vértice de la zona de hello (en este caso, "contoso.com").
+En este ejemplo, se utiliza el nombre de conjunto de registros "@" para crear el registro MX en el vértice de la zona (en este caso, "contoso.com").
 
 ```azurecli
 az network dns record-set mx set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --exchange mail.contoso.com --preference 5
@@ -134,7 +134,7 @@ az network dns record-set ns set-record --resource-group myresourcegroup --zone-
 
 ### <a name="create-a-ptr-record"></a>Creación de un registro PTR
 
-En este caso, ' Mi-arpa-zone.com' representa Hola zona ARPA que representa el intervalo de IP. Cada registro PTR establecida en esta zona corresponde tooan dirección IP dentro de este intervalo IP.  Hola último octeto de la dirección IP de hello dentro de este intervalo IP representado por este registro es el nombre de registro de Hello '10'.
+En este caso "my-arpa-zone.com" representa la zona ARPA que representa el intervalo IP. Cada registro PTR establecido en esta zona se corresponde con una dirección IP dentro de este intervalo IP.  El nombre de registro "10" es el último octeto de la dirección IP dentro del intervalo IP que representa dicho registro.
 
 ```azurecli
 az network dns record-set ptr set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name my-arpa.zone.com --ptrdname myservice.contoso.com
@@ -142,7 +142,7 @@ az network dns record-set ptr set-record --resource-group myresourcegroup --zone
 
 ### <a name="create-an-srv-record"></a>Creación de un registro SRV
 
-Al crear un [conjunto de registros SRV](dns-zones-records.md#srv-records), especifique hello  *\_servicio* y  *\_protocolo* Hola nombre de conjunto de registros. No hay ninguna necesidad de tooinclude "@" Hola registro establece el nombre al crear un registro SRV en vértice de la zona de Hola.
+Al crear un [conjunto de registros SRV](dns-zones-records.md#srv-records), especifique el *\_servicio* y el *\_protocolo* en el nombre del conjunto de registros. No es necesario incluir "@" en el nombre del conjunto de registros al crear un conjunto de registros SRV en el vértice de la zona.
 
 ```azurecli
 az network dns record-set srv set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name _sip._tls --priority 10 --weight 5 --port 8080 --target sip.contoso.com
@@ -150,7 +150,7 @@ az network dns record-set srv set-record --resource-group myresourcegroup --zone
 
 ### <a name="create-a-txt-record"></a>Creación de un registro TXT
 
-Hello en el ejemplo siguiente se muestra cómo registrar toocreate TXT. Para obtener más información acerca de la longitud de cadena máxima Hola admitida en registros TXT, consulte [registros TXT](dns-zones-records.md#txt-records).
+En el ejemplo siguiente se muestra cómo crear un registro TXT. Para más información sobre la longitud de cadena máxima admitida en registros TXT, consulte [Registros TXT](dns-zones-records.md#txt-records).
 
 ```azurecli
 az network dns record-set txt set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-txt --value "This is a TXT record"
@@ -158,11 +158,11 @@ az network dns record-set txt set-record --resource-group myresourcegroup --zone
 
 ## <a name="get-a-record-set"></a>Recuperación de un conjunto de registros
 
-tooretrieve un conjunto de registros existente, utilice `az network dns record-set <record-type> show`. Para obtener ayuda, consulte `az network dns record-set <record-type> show --help`.
+Para recuperar un conjunto de registros existente, use `az network dns record-set <record-type> show`. Para obtener ayuda, consulte `az network dns record-set <record-type> show --help`.
 
-Al crear un registro o un conjunto de registros, registro de hello establecer nombre dado debe ser un *relativa* nombre, lo que significa que debe excluir el nombre de la zona de Hola. También necesita toospecify tipo de registro de hello, zona Hola que contiene el registro de hello establecido y Hola grupo de recursos que contiene la zona de Hola.
+Al igual que sucede con la creación de un registro o conjunto de registros, el nombre del conjunto de registros especificado debe ser un nombre *relativo*, lo que significa que debe excluir el nombre de zona. También debe especificar el tipo de registro, la zona que contiene el conjunto de registros y el grupo de recursos que contiene la zona.
 
-Hello en el ejemplo siguiente se recupera el registro de hello *www* de un tipo de zona *contoso.com* en grupo de recursos *MyResourceGroup*:
+En el ejemplo siguiente se recupera el registro *www* de tipo A de la zona *contoso.com*, que se encuentra en el grupo de recursos *MyResourceGroup*:
 
 ```azurecli
 az network dns record-set a show --resource-group myresourcegroup --zone-name contoso.com --name www
@@ -170,35 +170,35 @@ az network dns record-set a show --resource-group myresourcegroup --zone-name co
 
 ## <a name="list-record-sets"></a>Enumeración de conjuntos de registros
 
-Puede enumerar todos los registros de una zona DNS mediante hello `az network dns record-set list` comando. Para obtener ayuda, consulte `az network dns record-set list --help`.
+Puede mostrar todos los registros de una zona DNS con el comando `az network dns record-set list` . Para obtener ayuda, consulte `az network dns record-set list --help`.
 
-Este ejemplo devuelve todos los registros se establece en la zona de hello *contoso.com*, en el grupo de recursos *MyResourceGroup*independientemente del nombre o tipo de registro:
+En este ejemplo, se devuelve todos los conjuntos de registros de la zona *contoso.com*, que se encuentra en el grupo de recursos *MyResourceGroup*, con independencia del nombre o del tipo de registro:
 
 ```azurecli
 az network dns record-set list --resource-group myresourcegroup --zone-name contoso.com
 ```
 
-Este ejemplo devuelve todos los conjuntos de registros que coinciden con hello tiene el tipo de registro (en este caso, 'A' registros):
+En este ejemplo, se devuelven todos los conjuntos de registros que coinciden con el tipo de registro especificado (en este caso, los registros "A"):
 
 ```azurecli
 az network dns record-set a list --resource-group myresourcegroup --zone-name contoso.com 
 ```
 
-## <a name="add-a-record-tooan-existing-record-set"></a>Agregar un registro tooan existente de conjunto de registros
+## <a name="add-a-record-to-an-existing-record-set"></a>Adición de un registro a un conjunto de registros existente
 
-Puede usar `az network dns record-set <record-type> set-record` ambas toocreate un registro en un nuevo registro configurado o tooadd un registro existente tooan registros.
+Puede usar `az network dns record-set <record-type> set-record` tanto para crear un registro en un nuevo conjunto de registros como para agregar un registro a un conjunto de registros existente.
 
 Para obtener más información, consulte las secciones [Creación de un registro de DNS](#create-a-dns-record) y [Creación de registros de otros tipos](#create-records-of-other-types).
 
 ## <a name="remove-a-record-from-an-existing-record-set"></a>Quite un registro de un conjunto de registros existente.
 
-grabar tooremove un DNS de un conjunto de registros existente, use `az network dns record-set <record-type> remove-record`. Para obtener ayuda, consulte `az network dns record-set <record-type> remove-record -h`.
+Para quitar un registro de DNS de un conjunto de registros existente, use `az network dns record-set <record-type> remove-record`. Para obtener ayuda, consulte `az network dns record-set <record-type> remove-record -h`.
 
-Este comando elimina un registro de DNS de un conjunto de registros. Si se elimina el último registro de hello en un conjunto de registros, también se elimina el registro de hello configurarse automáticamente. conjunto de registros tookeep Hola vacía en su lugar, use hello `--keep-empty-record-set` opción.
+Este comando elimina un registro de DNS de un conjunto de registros. Si se elimina el último registro de un conjunto de registros, el conjunto de registros propiamente dicho también se elimina. Si, por el contrario, desea mantener el registro vacío, use la opción `--keep-empty-record-set`.
 
-Necesita toospecify hello toobe registro eliminado y la zona de Hola debe eliminarse, con Hola mismos parámetros que al crear un registro mediante `az network dns record-set <record-type> set-record`. Estos parámetros se describen en las secciones [Creación de un registro de DNS](#create-a-dns-record) y [Creación de registros de otros tipos](#create-records-of-other-types).
+Debe especificar el registro que desee eliminar y la zona de la que se debe eliminar; para ello, use los mismos parámetros empleados al crear el registro con `az network dns record-set <record-type> set-record`. Estos parámetros se describen en las secciones [Creación de un registro de DNS](#create-a-dns-record) y [Creación de registros de otros tipos](#create-records-of-other-types).
 
-Después de eliminaciones de ejemplo de Hola Hola un registro con valor '1.2.3.4' del registro de hello conjunto con nombre *www* en zona de hello *contoso.com*, en el grupo de recursos de hello *MyResourceGroup*.
+En el ejemplo siguiente se elimina el registro A con el valor "1.2.3.4" del conjunto de registros con el nombre *www* de la zona *contoso.com*, que se encuentra en el grupo de recursos *MyResourceGroup*.
 
 ```azurecli
 az network dns record-set a remove-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "www" --ipv4-address 1.2.3.4
@@ -206,74 +206,74 @@ az network dns record-set a remove-record --resource-group myresourcegroup --zon
 
 ## <a name="modify-an-existing-record-set"></a>Modificación de un conjunto de registros existente
 
-Cada conjunto de registros contiene un [time-to-live (TTL)](dns-zones-records.md#time-to-live), [metadatos](dns-zones-records.md#tags-and-metadata)y los registros de DNS. Hello siguientes secciones se explica cómo toomodify de estas propiedades.
+Cada conjunto de registros contiene un [time-to-live (TTL)](dns-zones-records.md#time-to-live), [metadatos](dns-zones-records.md#tags-and-metadata)y los registros de DNS. En las siguientes secciones se explican cómo modificar cada una de estas propiedades.
 
-### <a name="toomodify-an-a-aaaa-mx-ns-ptr-srv-or-txt-record"></a>toomodify un registro A, AAAA, MX, NS, PTR, SRV o TXT
+### <a name="to-modify-an-a-aaaa-mx-ns-ptr-srv-or-txt-record"></a>Para modificar un registro A, AAAA, MX, NS, PTR, SRV o TXT
 
-toomodify un registro existente de tipo A, AAAA, MX, NS, PTR, SRV o TXT, primero debe agregar un nuevo registro y, a continuación, un registro existente de Hola de eliminación. Para obtener instrucciones detalladas sobre cómo toodelete y agregar registros, vea hello las secciones anteriores de este artículo.
+Para modificar un registro existente de tipo A, AAAA, MX, NS, PTR, SRV o TXT, debe agregar primero un nuevo registro y, después, eliminar el existente. Para obtener instrucciones detalladas sobre cómo eliminar y agregar registros, consulte las secciones anteriores de este artículo.
 
-Hola de ejemplo siguiente muestra cómo toomodify un registro de 'A', de IP dirección 1.2.3.4 tooIP direccionan 5.6.7.8:
+En el ejemplo siguiente se muestra cómo modificar un registro "A", de la dirección IP 1.2.3.4 a la 5.6.7.8:
 
 ```azurecli
 az network dns record-set a set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 5.6.7.8
 az network dns record-set a remove-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name www --ipv4-address 1.2.3.4
 ```
 
-No se puede agregar, quitar o modificar los registros de Hola Hola creado automáticamente el registro NS establecido en vértice de la zona de hello (`--Name "@"`, incluidas las comillas). Para este conjunto de registros, cambios solo Hola permitidos son registro de hello toomodify establece TTL y metadatos.
+No puede agregar, quitar ni modificar los registros del conjunto de registros NS creado automáticamente en el vértice de zona (`--Name "@"`, comillas incluidas). En el caso de este conjunto de registros, los únicos cambios permitidos son modificar el TTL del conjunto de registros y los metadatos.
 
-### <a name="toomodify-a-cname-record"></a>toomodify un registro CNAME
+### <a name="to-modify-a-cname-record"></a>Para modificar un registro CNAME
 
-A diferencia de la mayoría de otros tipos de registros, un conjunto de registros CNAME solo puede contener un único registro.  Por lo tanto, no se puede reemplazar el valor actual de hello agregando un nuevo registro y quitar el registro existente de hello, que para otros tipos de registros.
+A diferencia de la mayoría de otros tipos de registros, un conjunto de registros CNAME solo puede contener un único registro.  Por lo tanto, para reemplazar el valor actual no se puede agregar un nuevo registro y quitar el existente, como en otros tipos de registros.
 
-En su lugar, use un registro CNAME, toomodify `az network dns record-set cname set-record`. Para obtener ayuda, consulte `az network dns record-set cname set-record --help`.
+En su lugar, para modificar un registro CNAME, use `az network dns record-set cname set-record`. Para obtener ayuda, consulte `az network dns record-set cname set-record --help`.
 
-ejemplo Hello modifica conjunto de registros CNAME de hello *www* en zona de hello *contoso.com*, en el grupo de recursos *MyResourceGroup*, toopoint demasiado 'www.fabrikam.net' en lugar de su valor existente:
+En el ejemplo se modifica el conjunto de registros CNAME *www* de la zona *contoso.com*, que se encuentra en el grupo de recursos *MyResourceGroup*, para que apunte a "www.fabrikam.net" en lugar de a su valor existente:
 
 ```azurecli
 az network dns record-set cname set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-cname --cname www.fabrikam.net
 ``` 
 
-### <a name="toomodify-an-soa-record"></a>toomodify un registro SOA
+### <a name="to-modify-an-soa-record"></a>Para modificar un registro SOA
 
-A diferencia de la mayoría de otros tipos de registros, un conjunto de registros CNAME solo puede contener un único registro.  Por lo tanto, no se puede reemplazar el valor actual de hello agregando un nuevo registro y quitar el registro existente de hello, que para otros tipos de registros.
+A diferencia de la mayoría de otros tipos de registros, un conjunto de registros CNAME solo puede contener un único registro.  Por lo tanto, para reemplazar el valor actual no se puede agregar un nuevo registro y quitar el existente, como en otros tipos de registros.
 
-En su lugar, use toomodify Hola registro SOA, `az network dns record-set soa update`. Para obtener ayuda, consulte `az network dns record-set soa update --help`.
+En su lugar, para modificar el registro SOA, use `az network dns record-set soa update`. Para obtener ayuda, consulte `az network dns record-set soa update --help`.
 
-Hello en el ejemplo siguiente se muestra cómo registrar propiedad tooset Hola "email" Hola SOA de zona de hello *contoso.com* en grupo de recursos de hello *MyResourceGroup*:
+En el ejemplo siguiente se muestra cómo establecer la propiedad "email" del registro SOA de la zona *contoso.com* del grupo de recursos *MyResourceGroup*:
 
 ```azurecli
 az network dns record-set soa update --resource-group myresourcegroup --zone-name contoso.com --email admin.contoso.com
 ```
 
-### <a name="toomodify-ns-records-at-hello-zone-apex"></a>registros de toomodify NS en vértice de la zona de Hola
+### <a name="to-modify-ns-records-at-the-zone-apex"></a>Para modificar los registros NS en el vértice de zona
 
-registro de NS de Hello establecido en vértice de la zona de Hola se crea automáticamente con cada zona DNS. Contiene los nombres de Hola de zona de hello Azure DNS nombre servidores toohello asignado.
+El conjunto de registros NS en el vértice de zona se crea automáticamente con cada zona DNS. Este conjunto de registros contiene los nombres de los servidores de nombres de Azure DNS asignados a la zona.
 
-Puede agregar nombre adicionales servidores toothis NS conjunto de registros, toosupport alojar conjuntamente dominios con más de un proveedor DNS. También puede modificar Hola TTL y los metadatos para este conjunto de registros. Sin embargo, no se puede quitar o modificar servidores de nombres DNS de Azure previamente rellenados Hola.
+Puede agregar más servidores de nombres a este conjunto de registros NS, para admitir dominios de hospedaje conjunto con más de un proveedor DNS. También puede modificar el TTL y los metadatos de este conjunto de registros. Sin embargo, no puede quitar ni modificar los servidores de nombres de Azure DNS rellenados previamente.
 
-Tenga en cuenta que esto se aplica solo toohello NS conjunto de registros en vértice de la zona de Hola. Otros conjuntos de registros NS en su zona (como las zonas secundarias de toodelegate usado) pueden modificarse sin restricción.
+Tenga en cuenta que esto solo se aplica al conjunto de registros NS en el vértice de zona. Otros conjuntos de registros NS de su zona (como los que se usan para delegar zonas secundarias) se pueden modificar sin restricciones.
 
-Hola de ejemplo siguiente muestra cómo tooadd establece de un registro de NS de toohello de servidor de nombres adicionales en vértice de la zona de hello:
+En el ejemplo siguiente se muestra cómo agregar un servidor de nombres adicional al conjunto de registros NS en el vértice de zona:
 
 ```azurecli
 az network dns record-set ns set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name "@" --nsdname ns1.myotherdnsprovider.com 
 ```
 
-### <a name="toomodify-hello-ttl-of-an-existing-record-set"></a>establece toomodify Hola TTL de un registro existente
+### <a name="to-modify-the-ttl-of-an-existing-record-set"></a>Para modificar el TTL de un conjunto de registros existente
 
-establece toomodify Hola TTL de un registro existente, use `azure network dns record-set <record-type> update`. Para obtener ayuda, consulte `azure network dns record-set <record-type> update --help`.
+Para modificar el TTL de un conjunto de registros existente, utilice `azure network dns record-set <record-type> update`. Para obtener ayuda, consulte `azure network dns record-set <record-type> update --help`.
 
-Hola de ejemplo siguiente muestra cómo toomodify un conjunto de registros TTL, en este caso a too60 segundos:
+En el ejemplo siguiente se muestra cómo modificar el TTL de un conjunto de registros, en este caso a 60 segundos:
 
 ```azurecli
 az network dns record-set a update --resource-group myresourcegroup --zone-name contoso.com --name www --set ttl=60
 ```
 
-### <a name="toomodify-hello-metadata-of-an-existing-record-set"></a>toomodify Hola metadatos de un conjunto de registros existente
+### <a name="to-modify-the-metadata-of-an-existing-record-set"></a>Para modificar los metadatos de un conjunto de registros existente
 
-[Metadatos del conjunto de registros](dns-zones-records.md#tags-and-metadata) pueden ser datos específicos de la aplicación de tooassociate usado con cada conjunto de registros, como pares de clave-valor. establecen toomodify Hola metadatos de un registro existente, use `az network dns record-set <record-type> update`. Para obtener ayuda, consulte `az network dns record-set <record-type> update --help`.
+Se pueden usar [metadatos del conjunto de registros](dns-zones-records.md#tags-and-metadata) para asociar datos específicos de la aplicación con cada conjunto de registros como pares clave-valor. Para modificar los metadatos de un conjunto de registros existente, utilice `az network dns record-set <record-type> update`. Para obtener ayuda, consulte `az network dns record-set <record-type> update --help`.
 
-Hello en el ejemplo siguiente se muestra cómo toomodify un conjunto de registros con dos entradas de metadatos, "departamento = Finanzas" y "entorno = producción". Tenga en cuenta que los metadatos existentes *reemplaza* por valores de hello dados.
+En el ejemplo siguiente se muestra cómo crear un conjunto de registros con dos entradas de metadatos: "dept=finance" y "environment=production". Tenga en cuenta que los metadatos existentes se *sustituyen* por los valores especificados.
 
 ```azurecli
 az network dns record-set a update --resource-group myresourcegroup --zone-name contoso.com --name www --set metadata.dept=finance metadata.environment=production
@@ -281,21 +281,21 @@ az network dns record-set a update --resource-group myresourcegroup --zone-name 
 
 ## <a name="delete-a-record-set"></a>Eliminación de un conjunto de registros
 
-Conjuntos de registros pueden eliminarse mediante el uso de hello `az network dns record-set <record-type> delete` comando. Para obtener ayuda, consulte `azure network dns record-set <record-type> delete --help`. Eliminación de un conjunto de registros, también elimina todas las entradas de conjunto de registros de Hola.
+Los conjuntos de registros pueden eliminarse mediante el comando `az network dns record-set <record-type> delete`. Para obtener ayuda, consulte `azure network dns record-set <record-type> delete --help`. Al eliminar un conjunto de registros también se eliminan todos los registros que contiene.
 
 > [!NOTE]
-> No se puede eliminar Hola SOA y NS conjuntos de registros en vértice de la zona de hello (`--name "@"`).  Se crean automáticamente cuando se creó zona hello y se eliminan automáticamente cuando se elimina la zona de Hola.
+> No se pueden eliminar los conjuntos de registros SOA y NS en el vértice de zona (`--name "@"`).  Se crean automáticamente cuando se crea la zona y se eliminan automáticamente cuando se elimina.
 
-Hello en el ejemplo siguiente se elimina conjunto con nombre de registros de hello *www* de un tipo de zona de hello *contoso.com* en grupo de recursos *MyResourceGroup*:
+En el ejemplo siguiente se elimina el conjunto de registros con el nombre *www* de tipo A de la zona *contoso.com*, la cual se encuentra en el grupo de recursos *MyResourceGroup*:
 
 ```azurecli
 az network dns record-set a delete --resource-group myresourcegroup --zone-name contoso.com --name www
 ```
 
-Son la operación de eliminación de hello tooconfirm solicitadas. toosuppress este símbolo del sistema, use hello `--yes` cambiar.
+Se le pide que confirme la operación de eliminación. Para suprimir este mensaje, use el modificador `--yes`.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
 Más información sobre [zonas y registros en Azure DNS](dns-zones-records.md).
 <br>
-Obtenga información acerca de cómo demasiado[proteger sus zonas y registros](dns-protect-zones-recordsets.md) cuando se usa DNS de Azure.
+Aprenda a [proteger las zonas y los registros](dns-protect-zones-recordsets.md) cuando se usa Azure DNS.

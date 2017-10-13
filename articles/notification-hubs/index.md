@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure documentación de los centros de notificaciones - tutoriales, referencia de API | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toosend notificaciones de inserción desde cualquier dispositivo móvil de back-end tooany con centros de notificaciones. Tutoriales, referencias de API y otra documentación."
+title: "Documentación sobre Azure Notification Hubs: tutoriales y referencia de API | Microsoft Docs"
+description: "Aprenda a enviar notificaciones push desde cualquier servidor back-end a cualquier dispositivo móvil con Notification Hubs. Tutoriales, referencias de API y otra documentación."
 services: notification-hubs
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 050c70c32f50eb495cd53a6bfa5549d6ae189d89
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f7b8560d4ce7374e36d5f7e8a5d2056396e4f089
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="notification-hubs-documentation"></a>Documentación de Notification Hubs
 
-Obtenga información acerca de cómo toouse centros de notificaciones, motor de una notificación push multiplataforma y escalable para enviar rápidamente millones de mensajes. Tutoriales, referencias de API y otra documentación mostrarán cómo tooset seguridad y enviar notificaciones de inserción desde cualquier dispositivo móvil de back-end tooany. 
+Aprenda a usar Notification Hubs, un motor de notificaciones push multiplataforma y escalable, para enviar rápidamente millones de mensajes. Los tutoriales, las referencias de API y otra documentación muestran cómo configurar y enviar notificaciones push desde servidores back-end a cualquier dispositivo móvil. 
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -70,7 +70,7 @@ Obtenga información acerca de cómo toouse centros de notificaciones, motor de 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Empezar a enviar tooAndroid de notificaciones de inserción (FCM) con centros de notificaciones de Azure</h3>
+                        <h3>Introducción al envío de notificaciones push a Android (FCM) con Azure Notification Hubs</h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@ Obtenga información acerca de cómo toouse centros de notificaciones, motor de 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Empezar a enviar notificaciones tooChrome aplicaciones con Azure centros de notificaciones de inserción</h3>
+                        <h3>Introducción al envío de notificaciones push a aplicaciones de Chrome con Azure Notification Hubs</h3>
                     </div>
                 </div>
             </div>
@@ -124,7 +124,7 @@ Obtenga información acerca de cómo toouse centros de notificaciones, motor de 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Empezar a enviar tooiOS de notificaciones de inserción con centros de notificaciones de Azure</h3>
+                        <h3>Introducción al envío de notificaciones push a iOS con Azure Notification Hubs</h3>
                     </div>
                 </div>
             </div>

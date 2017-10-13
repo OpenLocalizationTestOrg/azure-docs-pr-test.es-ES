@@ -1,6 +1,6 @@
 
-### <a name="update-manifest-file-tooenable-notifications"></a>Archivo de manifiesto tooenable notificaciones de actualización
-Copiar recursos de mensajería en la aplicación Hola a continuación en su Manifest.xml entre hello `<application>` y `</application>` etiquetas.
+### <a name="update-manifest-file-to-enable-notifications"></a>Actualización del archivo de manifiesto para habilitar las notificaciones
+Copie los siguientes recursos de mensajería en aplicación en Manifest.xml, entre las etiquetas `<application>` y `</application>`.
 
         <activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementTextAnnouncementActivity" android:theme="@android:style/Theme.Light" android:exported="false">
               <intent-filter>
@@ -45,32 +45,32 @@ Copiar recursos de mensajería en la aplicación Hola a continuación en su Mani
         </receiver>
 
 ### <a name="specify-an-icon-for-notifications"></a>Especificación de un icono para las notificaciones
-Hola pegar siguiente fragmento XML en su Manifest.xml entre hello `<application>` y `</application>` etiquetas.
+Pegue el siguiente fragmento XML en su Manifest.xml entre las etiquetas `<application>` y `</application>`.
 
         <meta-data android:name="engagement:reach:notification:icon" android:value="engagement_close"/>
 
-Esto define icono Hola que aparece tanto en el sistema y las notificaciones de la aplicación. Es opcional para las notificaciones en aplicación y obligatorio para las notificaciones del sistema. Android rechazará las notificaciones del sistema con iconos no válidos.
+Esto define el icono que se muestra tanto en el sistema como en las notificaciones en aplicación. Es opcional para las notificaciones en aplicación y obligatorio para las notificaciones del sistema. Android rechazará las notificaciones del sistema con iconos no válidos.
 
-Asegúrese de que se usa un icono que existe en uno de hello **pueden dibujar** carpetas (como ``engagement_close.png``). **mipmap** no se admite.
+Asegúrese de que está usando un icono que se encuentra en una de las carpetas de recursos **dibujables** (como ``engagement_close.png``). **mipmap** no se admite.
 
 > [!NOTE]
-> No debe usar hello **selector** icono. Tiene una resolución distinta y suele ser en carpetas de asignación MIP hello, que no es compatible.
+> No debería usar el icono del **iniciador** . Tiene una resolución diferente y normalmente está en las carpetas mipmap, que no se admiten.
 > 
 > 
 
 Para las aplicaciones reales, puede usar un icono adecuado para notificaciones según las [directrices de diseño de Android](http://developer.android.com/design/patterns/notifications.html).
 
 > [!TIP]
-> toobe toouse seguro correcta resoluciones de icono, puede mirar [estos ejemplos](https://www.google.com/design/icons).
-> Desplácese hacia abajo toohello **notificación** sección, haga clic en un icono y, a continuación, haga clic en `PNGS` conjunto puede dibujar del icono de hello toodownload. Puede ver las carpetas que puede dibujar con qué toouse de resolución para cada versión del icono de Hola.
+> Para asegurarse de usar las resoluciones de icono correctas, consulte [estos ejemplos](https://www.google.com/design/icons).
+> Desplácese hasta la sección **Notificación**, haga clic en un icono y luego haga clic en `PNGS` para descargar el conjunto de iconos dibujables. Puede ver qué carpetas de recursos dibujables usar con qué resolución para cada versión del icono.
 > 
 > 
 
-### <a name="enable-your-app-tooreceive-gcm-push-notifications"></a>Habilitar las notificaciones de inserción de aplicación tooreceive GCM
-1. Pegue el siguiente de hello en su Manifest.xml entre hello `<application>` y `</application>` etiquetas después de reemplazar hello **Id. de remitente** obtenido de la consola de proyecto Firebase. Hola \n es deliberado por lo tanto, asegúrese de que terminar proyecto Hola número con él.
+### <a name="enable-your-app-to-receive-gcm-push-notifications"></a>Habilitar la aplicación para recibir notificaciones de inserción de GCM
+1. Pegue lo siguiente entre las etiquetas `<application>` y `</application>` del archivo Manifest.xml después de reemplazar el **identificador de remitente** obtenido en la consola del proyecto Firebase. \n se introduce de manera intencionada para asegurarse de finalizar el número de proyecto con él.
    
         <meta-data android:name="engagement:gcm:sender" android:value="************\n" />
-2. Pegue el código de hello siguiente en su Manifest.xml entre hello `<application>` y `</application>` etiquetas. Reemplace el nombre del paquete de hello <Your package name>.
+2. Pegue el código siguiente en su Manifest.xml entre las etiquetas `<application>` y `</application>`. Reemplace el nombre del paquete <Your package name>.
    
         <receiver android:name="com.microsoft.azure.engagement.gcm.EngagementGCMEnabler"
         android:exported="false">
@@ -86,7 +86,7 @@ Para las aplicaciones reales, puede usar un icono adecuado para notificaciones s
                 <category android:name="<Your package name>" />
             </intent-filter>
         </receiver>
-3. Agregar Hola último conjunto de permisos que están resaltados antes de hello `<application>` etiqueta. Reemplace `<Your package name>` por su nombre de paquete real de saludo de la aplicación.
+3. Agregue el último conjunto de permisos resaltados antes de la etiqueta `<application>` . Reemplace `<Your package name>` por el nombre real del paquete de la aplicación.
    
         <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
         <uses-permission android:name="<Your package name>.permission.C2D_MESSAGE" />

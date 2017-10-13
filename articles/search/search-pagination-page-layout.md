@@ -1,5 +1,5 @@
 ---
-title: "resultados de búsqueda de toopage de aaaHow en búsqueda de Azure | Documentos de Microsoft"
+title: "Paginación de los resultados de Azure Search | Microsoft Docs"
 description: "Paginación de Búsqueda de Azure, un servicio de búsqueda hospedado en la nube en Microsoft Azure."
 services: search
 documentationcenter: 
@@ -14,36 +14,36 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 08/29/2016
 ms.author: heidist
-ms.openlocfilehash: e3abc1ca4d5994b0a77955379081a4fcfa5a7fa7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 1054e15a2751c53aad5dbc8054c4cec41102dee9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-toopage-search-results-in-azure-search"></a>Cómo resultados de búsqueda de toopage en búsqueda de Azure
-Este artículo proporciona instrucciones sobre cómo toouse Hola API de REST de servicio de búsqueda de Azure tooimplement elementos estándar de una búsqueda de página de resultados, como los recuentos totales, la recuperación de documentos, criterios de ordenación y la navegación.
+# <a name="how-to-page-search-results-in-azure-search"></a>Cómo paginar los resultados de la búsqueda en Búsqueda de Azure
+Este artículo proporciona orientación sobre la forma de usar la API de REST del servicio Búsqueda de Azure para implementar los elementos habituales de una página de resultados de búsqueda, como recuentos totales, recuperación de documentos, criterios de ordenación y navegación.
 
-En cada caso mencionado a continuación, se especifican opciones relacionadas con la página que contribuyen a datos o información de la página de resultados de búsqueda tooyour a través de hello [Buscar documento](http://msdn.microsoft.com/library/azure/dn798927.aspx) las solicitudes enviadas tooyour servicio de búsqueda de Azure. Las solicitudes incluyen un comando GET, ruta de acceso y parámetros de consulta que informan sobre lo que se solicita el servicio de Hola y cómo tooformulate Hola respuesta.
+En todos los casos que se mencionan a continuación, las opciones relacionadas con la página que aportan datos o información a la página de resultados de búsqueda se especifican a través de solicitudes [Buscar documento](http://msdn.microsoft.com/library/azure/dn798927.aspx) que se envían a su servicio Búsqueda de Azure. Las solicitudes incluyen un comando GET, ruta de acceso y parámetros de consulta que informan el servicio de lo que se solicita y de cómo formular la respuesta.
 
 > [!NOTE]
-> Una solicitud válida incluye una serie de elementos, como una dirección URL del servicio y la ruta de acceso, el verbo HTTP, `api-version`, etc. Para mayor brevedad, se recortan Hola ejemplos toohighlight Hola simplemente sintaxis toopagination relevante. Vea hello [API de REST de servicio de búsqueda de Azure](http://msdn.microsoft.com/library/azure/dn798935.aspx) documentación para obtener más información acerca de la sintaxis de la solicitud.
+> Una solicitud válida incluye una serie de elementos, como una dirección URL del servicio y la ruta de acceso, el verbo HTTP, `api-version`, etc. Para mayor brevedad, hemos acortado los ejemplos para resaltar solo la sintaxis que resulta relevante para la paginación. Consulte la documentación de [API de REST del Servicio de Búsqueda de Azure](http://msdn.microsoft.com/library/azure/dn798935.aspx) para obtener más información acerca de la sintaxis de solicitud.
 > 
 > 
 
 ## <a name="total-hits-and-page-counts"></a>Total de resultados y recuentos de página
-Mostrar hello total número de resultados devueltos por una consulta y, a continuación, devolverlos resultados en fragmentos más pequeños, es fundamental toovirtually todas las páginas de búsqueda.
+Muestra el número total de resultados devueltos por una consulta y, a continuación, devolver los resultados en bloques más pequeños, es fundamental para casi todas las páginas de búsqueda.
 
 ![][1]
 
-En la búsqueda de Azure, use hello `$count`, `$top`, y `$skip` parámetros tooreturn estos valores. Hello en el ejemplo siguiente se muestra una solicitud de ejemplo para el total de aciertos, formando `@OData.count`:
+En Búsqueda de Azure se utilizan los parámetros `$count`, `$top` y `$skip` para devolver esos valores. En el ejemplo siguiente se muestra un ejemplo de solicitud del total de resultados, que se devuelve como `@OData.count`:
 
         GET /indexes/onlineCatalog/docs?$count=true
 
-Recuperar los documentos en los grupos de 15 y también muestran Hola total de aciertos, empezando por la primera página de hello:
+Recuperar documentos en grupos de 15 y mostrar también el total de resultados, comenzando por la primera página:
 
         GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=0&$count=true
 
-Paginar resultados requiere `$top` y `$skip`, donde `$top` especifica el número de elementos de tooreturn en un lote, y `$skip` especifica el número de elementos de tooskip. Hola siguiente ejemplo, cada página muestra hello 15 a continuación de los elementos, indicado por saltos incremental de Hola Hola `$skip` parámetro.
+Paginar resultados requiere `$top` y `$skip`, donde `$top` especifica cuántos elementos se devuelven en un lote y `$skip` especifica cuántos elementos se omiten. En el ejemplo siguiente, cada página muestra los siguientes 15 elementos, indicado por los saltos incrementales en el parámetro `$skip` .
 
         GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=0&$count=true
 
@@ -52,51 +52,51 @@ Paginar resultados requiere `$top` y `$skip`, donde `$top` especifica el número
         GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=30&$count=true
 
 ## <a name="layout"></a>Diseño
-En una página de resultados de búsqueda, puede que desee tooshow una imagen en miniatura, un subconjunto de campos y una página de vínculo tooa producto completo.
+En una página de resultados de búsqueda, puede ser deseable mostrar una imagen en miniatura, un subconjunto de campos y un vínculo a una página de producto completa.
 
  ![][2]
 
-En búsqueda de Azure, usaría `$select` y una búsqueda de comandos tooimplement esta experiencia.
+En Búsqueda de Azure se utiliza `$select` y un comando de búsqueda para implementar esta experiencia.
 
-tooreturn un subconjunto de campos para un diseño en mosaico:
+Para devolver un subconjunto de campos con un diseño en mosaico:
 
         GET /indexes/ onlineCatalog/docs?search=*&$select=productName,imageFile,description,price,rating 
 
-Imágenes y archivos multimedia no se puede buscar directamente y deberían almacenarse en otra plataforma de almacenamiento, como almacenamiento de blobs de Azure, los costos de tooreduce. En el índice de Hola y documentos, defina un campo que almacena la dirección URL de Hola de contenido externo de Hola. A continuación, puede usar el campo de hello como referencia de una imagen. imagen de toohello de Hello dirección URL debe estar en el documento de Hola.
+Las imágenes y los archivos multimedia no se pueden buscar directamente y se deben almacenar en otra plataforma de almacenamiento, como Almacenamiento de blobs de Azure, para reducir los costes. En el índice y los documentos, defina un campo que almacene la dirección URL del contenido externo. Después puede utilizar el campo como referencia de imagen. La dirección URL de la imagen debe estar en el documento.
 
-tooretrieve página de descripción de un producto para un **onClick** evento, use [búsqueda de documento](http://msdn.microsoft.com/library/azure/dn798929.aspx) toopass en clave de Hola de hello documento tooretrieve. Hola de tipo de datos de clave de hello es `Edm.String`. En este ejemplo, es *246810*. 
+Para recuperar una página de descripción de producto para un evento **onClick** , use [Buscar documento](http://msdn.microsoft.com/library/azure/dn798929.aspx) para pasar la clave del documento que se va a recuperar. El tipo de datos de la clave es `Edm.String`. En este ejemplo, es *246810*. 
 
         GET /indexes/onlineCatalog/docs/246810
 
 ## <a name="sort-by-relevance-rating-or-price"></a>Ordenar por relevancia, clasificación o precio
-Criterios de ordenación a menudo predeterminado toorelevance, pero es común toomake alternativos de ordenación estén disponibles para que los clientes pueden reorganizar rápidamente los resultados existentes en un orden diferente del rango.
+A menudo, el orden predeterminado se basa en la relevancia, pero es habitual poner a disposición de los clientes otros criterios de ordenación para que puedan reorganizar rápidamente los resultados existentes en un orden diferente.
 
  ![][3]
 
-En búsqueda de Azure, la ordenación se basa en hello `$orderby` expresión para todos los campos que se indizan como`"Sortable": true.`
+En Búsqueda de Azure, la ordenación se basa en la expresión `$orderby` para todos los campos que se indizan como `"Sortable": true.`
 
-La relevancia está estrechamente asociada con perfiles de puntuación. Puede usar Hola de puntuación predeterminado, que basa en el orden de toorank de análisis y las estadísticas de texto todos los resultados, con las puntuaciones más altas sucediendo toodocuments más fuertes o más coincidencias con un término de búsqueda.
+La relevancia está estrechamente asociada con perfiles de puntuación. Puede utilizar la puntuación predeterminada, que se basa en el análisis de texto y las estadísticas para ordenar todos los resultados, con las puntuaciones más altas destinadas a documentos con más coincidencias de un término de búsqueda o con coincidencias más importantes.
 
-Criterios de ordenación alternativos se suelen estar asociados a **onClick** eventos que devuelva la llamada tooa método que genera el criterio de ordenación de Hola. Por ejemplo, con este elemento de página:
+Los criterios de ordenación alternativos se suelen asociar a eventos **onClick** que llaman a un método que compila el criterio de ordenación. Por ejemplo, con este elemento de página:
 
  ![][4]
 
-Deberá crear un método que acepta la opción de ordenación de hello seleccionado como entrada y devuelve una lista ordenada de los criterios de hello asociados a esa opción.
+Deberá crear un método que acepte la opción de ordenación seleccionada como entrada y devuelva una lista ordenada de los criterios asociados a esa opción.
 
  ![][5]
 
 > [!NOTE]
-> Mientras la puntuación de hello predeterminada es suficiente para muchos escenarios, se recomienda basar relevancia en un perfil de puntuación personalizado en su lugar. Un perfil de puntuación personalizado ofrece un elementos de tooboost de manera que son más beneficioso para el negocio tooyour. Consulte [Incorporación de un perfil de puntuación](http://msdn.microsoft.com/library/azure/dn798928.aspx) para obtener más información. 
+> Aunque la puntuación predeterminada es suficiente para muchos escenarios, se recomienda basar la relevancia en un perfil de puntuación personalizado. Un perfil personalizado de puntuación le ofrece una forma de aumentar los elementos que son más útiles para su negocio. Consulte [Incorporación de un perfil de puntuación](http://msdn.microsoft.com/library/azure/dn798928.aspx) para obtener más información. 
 > 
 > 
 
 ## <a name="faceted-navigation"></a>Navegación por facetas
-Navegación de búsqueda es común en una página de resultados, normalmente situada al lado de Hola o la parte superior de una página. En Búsqueda de Azure, la navegación por facetas proporciona una búsqueda autodirigida basándose en filtros predefinidos. Consulte [Navegación por facetas en Búsqueda de Azure](search-faceted-navigation.md) para obtener más detalles
+La navegación de búsqueda es habitual en una página de resultados; a menudo se encuentra en un lado o en la parte superior de una página. En Búsqueda de Azure, la navegación por facetas proporciona una búsqueda autodirigida basándose en filtros predefinidos. Consulte [Navegación por facetas en Búsqueda de Azure](search-faceted-navigation.md) para obtener más detalles
 
-## <a name="filters-at-hello-page-level"></a>Filtros de nivel de página Hola
-Si el diseño de la solución incluye páginas de búsqueda dedicado para determinados tipos de contenido (por ejemplo, una aplicación comercial en línea que tiene departamentos aparece al principio de Hola de página de hello), puede insertar una expresión de filtro junto con un **onClick** tooopen una página en un estado prefiltrada de eventos. 
+## <a name="filters-at-the-page-level"></a>Filtros en el nivel de página
+Si el diseño de la solución incluye páginas de búsqueda dedicadas para determinados tipos de contenido (por ejemplo, una aplicación comercial en línea que enumera los departamentos en la parte superior de la página), puede insertar una expresión de filtro junto con un evento **onClick** para abrir una página en un estado prefiltrado. 
 
-Puede enviar un filtro con o sin expresión de búsqueda. Por ejemplo, hello solicitud siguiente se filtrará en nombre de la marca, devolver únicamente los documentos que coinciden con él.
+Puede enviar un filtro con o sin expresión de búsqueda. Por ejemplo, la siguiente solicitud filtrará por el nombre de la marca y devolverá solamente los documentos que coincidan con él.
 
         GET /indexes/onlineCatalog/docs?$filter=brandname eq ‘Microsoft’ and category eq ‘Games’
 

@@ -1,6 +1,6 @@
 ---
-title: aaaReplace una unidad de disco en un dispositivo StorSimple | Documentos de Microsoft
-description: "Explica cómo unidad tooreplace un disco en un alojamiento principal de StorSimple o un alojamiento de EBOD."
+title: Reemplazo de un disco duro en un dispositivo StorSimple | Microsoft Docs
+description: "Explica cómo reemplazar una unidad de disco en un receptáculo principal de StorSimple o un receptáculo EBOD."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,33 +14,33 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-ms.openlocfilehash: d2c78a6d951b0f00ac42e74a34cf1bc83952a3c8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0659ab9d304dbfcce72e8c3c79edad68e70b9630
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="replace-a-disk-drive-on-your-storsimple-device"></a>Reemplazar un disco duro en el dispositivo StorSimple
 ## <a name="overview"></a>Información general
-Este tutorial explica cómo quitar y reemplazar una unidad de disco duro que no funciona correctamente o defectuosa en un dispositivo StorSimple de Microsoft Azure. tooreplace una unidad de disco, debe:
+Este tutorial explica cómo quitar y reemplazar una unidad de disco duro que no funciona correctamente o defectuosa en un dispositivo StorSimple de Microsoft Azure. Para reemplazar una unidad de disco, necesitará:
 
-* Desactivar el bloqueo contra manipulaciones Hola
-* Quitar unidad de disco de Hola
-* Instalar la unidad de disco de reemplazo de Hola
+* Desactivar el bloqueo antisabotaje
+* Quitar la unidad de disco
+* Instalar la unidad de disco de reemplazo
 
 > [!IMPORTANT]
-> Antes de quitar y reemplazar una unidad de disco, revise la información de seguridad de hello en [sustitución de componentes de hardware de StorSimple](storsimple-hardware-component-replacement.md).
+> Antes de quitar y reemplazar una unidad de disco, revise la información de seguridad en [Reemplazo de componentes de hardware de StorSimple](storsimple-hardware-component-replacement.md).
 > 
 > 
 
-## <a name="disengage-hello-antitamper-lock"></a>Desactivar el bloqueo contra manipulaciones Hola
-Este procedimiento explica cómo se pueden acoplar o desacoplar al reemplazar unidades de disco de hello bloqueos contra manipulaciones de hello en el dispositivo StorSimple. los bloqueos contra manipulaciones Hola se ajustan en identificadores de portadora de unidad de Hola y se tiene acceso a través de una pequeña abertura en la sección del identificador hello enganche de Hola. Las unidades se suministran con hello bloqueos conjunto toohello bloqueado posición.
+## <a name="disengage-the-antitamper-lock"></a>Desactivar el bloqueo antisabotaje
+Este procedimiento explica cómo pueden activarse o desactivarse los bloqueos antisabotaje del dispositivo StorSimple al reemplazar las unidades de disco. Los bloqueos antisabotaje se instalan en las asas transportadoras de la unidad, y se accede a ellos a través de un pequeño orificio en la sección del pestillo del asa. Las unidades se suministran con los bloqueos establecidos en la posición bloqueada.
 
-#### <a name="toounlock-hello-antitamper-lock"></a>bloqueo contra manipulaciones de hello toounlock
-1. Inserte con cuidado la llave de bloqueo de hello (un destornillador T10 "impide las alteraciones" que Microsoft proporciona) en hello abertura identificador hello y en su zócalo. 
+#### <a name="to-unlock-the-antitamper-lock"></a>Para desbloquear el bloqueo antisabotaje
+1. Inserte cuidadosamente la clave de bloqueo (un destornillador T10 "inviolable" proporcionado por Microsoft) en el orificio del asa y en la toma. 
    
    > [!NOTE]
-   > Si está activado el bloqueo contra manipulaciones de hello, indicador de hello rojo esté visible en la abertura Hola.
+   > Si el bloqueo antisabotaje está activado, el indicador rojo está visible en el orificio.
    > 
    > 
    
@@ -52,63 +52,63 @@ Este procedimiento explica cómo se pueden acoplar o desacoplar al reemplazar un
    |:--- |:--- |
    | 1 |Orificio indicador |
    | 2 |Bloqueo antisabotaje |
-2. Gire la llave de hello en una dirección en sentido contrario hasta que no esté visible en la abertura Hola por encima de la clave de Hola indicador rojo Hola.
-3. Quitar clave Hola.
+2. Gire la clave hacia la derecha hasta que el indicador rojo no esté visible en el orificio por encima de la clave.
+3. Quite la llave.
    
     ![Unidad de disco desbloqueada](./media/storsimple-disk-drive-replacement/IC741057.png)
    
     **Figura 2** Unidad de disco desbloqueada
-4. Ahora se puede quitar la unidad de disco de Hola.
+4. Ahora se puede quitar la unidad de disco.
 
-Siga los pasos de Hola de bloqueo de hello tooengage inversa.
+Siga los pasos en orden inverso para activar el bloqueo.
 
-## <a name="remove-hello-disk-drive"></a>Quitar unidad de disco de Hola
+## <a name="remove-the-disk-drive"></a>Quitar la unidad de disco
 El dispositivo StorSimple es compatible con una configuración de espacios de almacenamiento similares a RAID 10. Esto implica que puede funcionar normalmente con un disco, unidad de estado sólido (SSD), o unidad de disco duro (HDD) defectuoso. 
 
 > [!IMPORTANT]
-> * Si el sistema tiene más de un disco erróneo, no quite más de un SSD o HDD del sistema de Hola en cualquier momento en el tiempo. Esto puede provocar la pérdida de datos.
+> * Si el sistema tiene más de un disco defectuoso, no quite más de un SSD o unidad de disco duro del sistema en un determinado momento. Esto puede provocar la pérdida de datos.
 > * Asegúrese de colocar un SSD de reemplazo en una ranura que previamente contenía un SSD. Asegúrese de colocar un HDD de reemplazo en una ranura que previamente contenía un HDD.
-> * Hola portal de Azure clásico, las ranuras se numeran del 0 al 11. Por lo tanto, si el portal de hello muestra que un disco en la ranura 2 ha dado error, el dispositivo de hello, busque Hola disco erróneo en la tercera ranura a contar Hola desde parte superior de hello izquierda.
+> * En el Portal de Azure clásico, las ranuras se numeran de 0 a 11. Por lo tanto, si el portal muestra que ha fallado un disco en la ranura 2, en el dispositivo, busque el disco defectuoso en la tercera ranura de la parte superior izquierda.
 > 
 > 
 
-Unidades de disco pueden quitar y reemplazar mientras el sistema de hello está funcionando.
+Las unidades de disco se pueden quitar y reemplazar mientras el sistema está en funcionamiento.
 
-#### <a name="tooremove-a-drive"></a>tooremove una unidad
-1. tooidentify Hola disco erróneo, en Hola portal de Azure clásico, vaya demasiado**dispositivos** > **mantenimiento** > **estado del Hardware**. Dado que puede producir un error en un disco en el alojamiento principal de Hola o en un alojamiento de EBOD (si está utilizando un modelo de 8600), mire estado de Hola de discos de hello en **componentes compartidos** y en **componentes compartidos de alojamiento EBOD**. Un disco defectuoso en cualquier gabinete se mostrará con un estado rojo.
-2. Busque las unidades de hello en la parte delantera de Hola de alojamiento principal de Hola o alojamiento de EBOD Hola. 
-3. Si el disco de hello no está bloqueado, continúe toohello siguiente paso. Si está bloqueado el disco de hello, desbloquéelo siguiendo el procedimiento de hello en [desactivar el bloqueo contra manipulaciones de hello](#disengage-the-antitamper-lock).
-4. Presione Hola negro bloqueos temporales en el módulo portador de unidades de Hola y de extracción asa Hola hacia afuera desde la parte frontal de Hola de chasis de Hola. 
+#### <a name="to-remove-a-drive"></a>Para quitar una unidad
+1. Para identificar el disco con errores, en el Portal de Azure clásico, vaya a **Dispositivos** > **Mantenimiento** > **Estado de hardware**. Dado que se puede producir un error en un disco en el gabinete principal o en el gabinete EBOD (si utiliza un modelo 8600), examine el estado de los discos en **Componentes compartidos** y en **Componentes compartidos del receptáculo EBOD**. Un disco defectuoso en cualquier gabinete se mostrará con un estado rojo.
+2. Busque las unidades en la parte frontal del gabinete principal o del gabinete EBOD. 
+3. Si el disco está desbloqueado, continúe con el paso siguiente. Si el disco está bloqueado, desbloquéelo siguiendo el procedimiento descrito en [Desactivar el bloqueo antisabotaje](#disengage-the-antitamper-lock).
+4. Presione el pestillo negro en el módulo transportador de unidades y tire del asa transportadora de la unidad hacia afuera y lejos de la parte frontal del chasis. 
    
     ![Liberar el asa de la unidad de disco](./media/storsimple-disk-drive-replacement/IC741051.png)
    
-    **Figura 3** asa de si se liberan Hola
-5. Cuando el asa Hola esté completamente extendida, deslice el portador de unidades de hello fuera del chasis de Hola. 
+    **Figura 3** Liberar el asa de la unidad
+5. Cuando el asa transportadora de la unidad está totalmente extendida, deslice el transportador de la unidad fuera del chasis. 
    
     ![Deslizamiento del disco fuera de la unidad de disco](./media/storsimple-disk-drive-replacement/IC741052.png)
    
-    **Figura 4** deslizante Hola de unidad de disco fuera de transportista Hola
+    **Figura 4** Deslizamiento de la unidad de disco fuera del transportador
 
-## <a name="install-hello-replacement-disk-drive"></a>Instalar la unidad de disco de reemplazo de Hola
-Después de una unidad de error en el dispositivo StorSimple y haya extraído, siga este procedimiento tooreplace con una nueva unidad.
+## <a name="install-the-replacement-disk-drive"></a>Instalar la unidad de disco de reemplazo
+Después de que se ha producido un error en la unidad de su dispositivo StorSimple y de que la haya quitado, siga este procedimiento para reemplazarla por una nueva unidad.
 
-#### <a name="tooinsert-a-drive"></a>tooinsert una unidad
-1. Asegúrese de asa Hola esté completamente extendida, tal como se muestra en hello después de la imagen.
+#### <a name="to-insert-a-drive"></a>Para insertar una unidad
+1. Asegúrese de que el asa transportadora de la unidad esté totalmente extendida, como se muestra en la siguiente imagen.
    
     ![Unidad de disco con asa extendida](./media/storsimple-disk-drive-replacement/IC741044.png)
    
     **Figura 5** Unidad con asa extendida
-2. Deslice portador de unidades de hello todos forma hello en el chasis de Hola. 
+2. Deslice el transportador de la unidad por completo hacia el chasis. 
    
     ![Deslizamiento del disco hacia el transportador de la unidad de disco](./media/storsimple-disk-drive-replacement/IC741045.png)
    
-    **Figura 6** deslizante portador de unidades de hello en el chasis de Hola
-3. Con Hola Hola insertado, cierre unidad portadora asa mientras continúa portador de unidades de hello toopush en el chasis de hello, hasta que su Hola asa se cierre en una posición bloqueada.
-4. Usar clave de bloqueo de Hola que ha proporcionado asa del portador de Microsoft (destornillador de Torx a prueba) toosecure hello en su lugar activando Hola tornillo de bloqueo un cuarto de vuelta a la derecha.
-5. Compruebe que el reemplazo de hello finalizó correctamente y Hola unidad está operativa accediendo Hola portal de Azure clásico y navegar por demasiado**mantenimiento** > **estado del Hardware**. En **componentes compartidos** o **componentes compartidos de alojamiento EBOD**, estado de la unidad de hello debe ser verde, que indica que es correcto.
+    **Figura 6** Deslizamiento del transportador de la unidad hacia el chasis
+3. Con el transportador de la unidad insertado, cierre el asa transportadora de la unidad mientras continúa empujando el transportador de la unidad hacia el chasis, hasta que el asa transportadora de la unidad encaje en una posición de bloqueo.
+4. Utilice la llave de bloqueo proporcionada por Microsoft (destornillador Torx inviolable) para fijar el asa transportadora en su lugar girando el destornillador de bloqueo un cuarto de vuelta hacia la derecha.
+5. Compruebe que el reemplazo se realizó correctamente y que la unidad funcione. Para ello, acceda al Portal de Azure clásico y vaya a **Mantenimiento** > **Estado de hardware**. En **Componentes compartidos** o **Componentes compartidos del receptáculo EBOD**, el estado de la unidad debe ser verde, lo que indica que está en buenas condiciones.
    
    > [!NOTE]
-   > Puede tardar varias horas tooturn de estado de disco de hello verde tras la sustitución de Hola.
+   > Puede tardar varias horas para que el estado del disco cambie a verde, después de la sustitución.
    > 
    > 
 

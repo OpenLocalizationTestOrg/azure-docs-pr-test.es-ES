@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure modelos de datos de telemetría de aplicación visión, evento de telemetría | Documentos de Microsoft"
+title: "Modelo de datos de telemetría de Azure Application Insights: telemetría de eventos | Microsoft Docs"
 description: "Modelo de datos de Application Insights para la telemetría de eventos"
 services: application-insights
 documentationcenter: .net
@@ -12,21 +12,21 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: bwren
-ms.openlocfilehash: cd7dc3c5f4f3df22b7a52ee79fcad566a27a9f4e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 422e193ae10938954602a6ef8c49fd47f473bc01
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="event-telemetry-application-insights-data-model"></a>Telemetría de eventos: modelo de datos de Application Insights
 
-Puede crear eventos de elementos de telemetría (en [Application Insights](app-insights-overview.md)) toorepresent un evento producido en la aplicación. Normalmente es una interacción del usuario como un clic de botón o la desprotección de un pedido. También puede ser un evento de ciclo de vida de la aplicación como la actualización de la inicialización o la configuración. 
+Puede crear elementos de telemetría de eventos (en [Application Insights](app-insights-overview.md)) para representar un evento producido en la aplicación. Normalmente es una interacción del usuario como un clic de botón o la desprotección de un pedido. También puede ser un evento de ciclo de vida de la aplicación como la actualización de la inicialización o la configuración. 
 
-Semánticamente, eventos pueden o no ser toorequests correlacionados. Pero si se usa correctamente, la telemetría de eventos es más importante que las solicitudes o los seguimientos. Eventos representan la telemetría de negocio y debe ser un tooseparate asunto, menos agresiva [muestreo](app-insights-api-filtering-sampling.md).
+Semánticamente, los eventos pueden estar correlacionados o no con las solicitudes. Pero si se usa correctamente, la telemetría de eventos es más importante que las solicitudes o los seguimientos. Los eventos representan la telemetría de negocio y deberían estar sujetos a un [muestreo](app-insights-api-filtering-sampling.md) independiente, menos agresivo.
 
 ## <a name="name"></a>Nombre
 
-Nombre del evento. agrupación adecuada tooallow y métricas útiles, restringir la aplicación para que genere un pequeño número de nombres de evento independiente. Por ejemplo, no utilice un nombre diferente para cada instancia generada de un evento.
+Nombre del evento. Para permitir la agrupación adecuada y métricas útiles, restrinja la aplicación para que genere un pequeño número de nombres de evento independientes. Por ejemplo, no utilice un nombre diferente para cada instancia generada de un evento.
 
 Longitud máxima: 512 caracteres
 

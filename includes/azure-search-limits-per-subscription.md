@@ -1,6 +1,6 @@
-Puede crear varios servicios en una suscripción, cada uno de ellos proporciona en un nivel concreto, limitado solo por el número de hello de servicios permitidos en cada nivel. Por ejemplo, puede crear los servicios de too12 en el nivel básico de Hola y servicios de otro 12 en nivel de hello S1 dentro de hello mismo suscripción. Para más información acerca de los niveles, consulte [Selección de SKU o plan de tarifa de Azure Search](../articles/search/search-sku-tier.md).
+Puede crear varios servicios en una suscripción, cada uno de ellos aprovisionado en un nivel concreto, el único límite lo establece el número de servicios que se permiten en cada nivel. Por ejemplo, puede crear hasta doce servicios en el nivel básico y otros doce en el nivel de S1 dentro de la misma suscripción. Para más información acerca de los niveles, consulte [Selección de SKU o plan de tarifa de Azure Search](../articles/search/search-sku-tier.md).
 
-El límite máximo de servicios se puede elevar a petición. Póngase en contacto con soporte técnico de Azure si necesita más servicios dentro de hello misma suscripción.
+El límite máximo de servicios se puede elevar a petición. Si necesita tener más servicios en la misma suscripción, póngase en contacto con el soporte técnico de Azure.
 
 | Recurso | Gratuito | Básica | S1 | S2 | S3 | S3 HD <sup>1</sup> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -9,7 +9,7 @@ El límite máximo de servicios se puede elevar a petición. Póngase en contact
 
 <sup>1</sup> HD S3 no admite [indexadores](../articles/search/search-indexer-overview.md) en este momento. 
 
-<sup>2</sup> Las unidades de búsqueda (SU) son unidades facturables, asignadas como *réplica* o como *partición*. Ambos recursos se necesitan para las operaciones de almacenamiento, indexación y consulta. más información acerca de cómo se calculan las unidades de búsqueda, además de un gráfico de combinaciones válidas que permanecen en los límites máximos de hello, consulte toolearn [escalar los niveles de recursos para las cargas de trabajo de consulta e índice](../articles/search/search-capacity-planning.md). 
+<sup>2</sup> Las unidades de búsqueda (SU) son unidades facturables, asignadas como *réplica* o como *partición*. Ambos recursos se necesitan para las operaciones de almacenamiento, indexación y consulta. Para más información sobre cómo se procesan las unidades de búsqueda, junto con un gráfico de combinaciones válidas que permanecen dentro de los límites máximos, consulte [Escalado de niveles de recursos para cargas de trabajo de indexación y consulta en Azure Search](../articles/search/search-capacity-planning.md). 
 
 <sup>3</sup> Gratis se basa en los recursos compartidos que usan varios suscriptores. En este nivel, no hay ningún recurso dedicado para un suscriptor individual. Por este motivo, la escala máxima se marca como no aplicable.
 

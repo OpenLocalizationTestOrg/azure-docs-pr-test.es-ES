@@ -1,5 +1,5 @@
 ---
-title: "aaaSet alertas de visión de la aplicación de Azure | Documentos de Microsoft"
+title: Establecimiento de alertas en Azure Application Insights | Microsoft Docs
 description: "Reciba notificaciones acerca de tiempos de respuesta lentos, excepciones y otros cambios de rendimiento o uso de la aplicación web."
 services: application-insights
 documentationcenter: 
@@ -13,86 +13,86 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: bwren
-ms.openlocfilehash: e160cb173e68fda2e6d97f29da342c46b7ac4f19
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: c8386ffc5d68260eeb75edf7efb77db1163dcef8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-alerts-in-application-insights"></a>Definición de alertas en Application Insights
-[Azure Application Insights] [ start] puede avisarle toochanges en las métricas de rendimiento o el uso de la aplicación web. 
+[Azure Application Insights][start] puede avisarle sobre los cambios en las métricas de rendimiento o de uso de la aplicación web. 
 
-Visión de la aplicación supervisa la aplicación activa en un [amplia variedad de plataformas] [ platforms] toohelp diagnosticar problemas de rendimiento y conocer los patrones de uso.
+Application Insights supervisa la aplicación activa en una [amplia variedad de plataformas][platforms] para ayudarlo a diagnosticar problemas de rendimiento y entender los patrones de uso.
 
 Hay tres tipos de alertas:
 
 * **Alertas de métricas** le avisan cuando una métrica cruza un valor de umbral durante un período determinado: por ejemplo, tiempos de respuesta, recuentos de excepciones, uso de la CPU o vistas de página. 
-* [**Pruebas Web** ] [ availability] saber si el sitio no está disponible en hello internet o responde lentamente. [Más información][availability].
-* [**Diagnósticos proactivos** ](app-insights-proactive-diagnostics.md) se configuran automáticamente toonotify acerca de los patrones de rendimiento inusual.
+* [**Pruebas web**][availability] le informan de que el sitio no está disponible en Internet o responde lentamente. [Más información][availability].
+* [**Diagnósticos proactivos**](app-insights-proactive-diagnostics.md) se configuran automáticamente para que le notifiquen acerca de patrones de rendimiento no habituales.
 
 Nos centraremos en las alertas de métricas en este artículo.
 
 ## <a name="set-a-metric-alert"></a>Establecimiento de una alerta de métrica
-Hoja de reglas de alerta de hello abierto y, a continuación, use Hola agregan botón. 
+Abra la hoja Reglas de alerta y, a continuación, utilice el botón Agregar. 
 
-![En la hoja de reglas de alerta de hello, elija Agregar alerta. Establecer la aplicación como Hola toomeasure de recursos, proporcione un nombre de alerta de Hola y elija una métrica.](./media/app-insights-alerts/01-set-metric.png)
+![En la hoja Reglas de alerta, elija Agregar alerta. Establezca la aplicación como el recurso que se va a medir, proporcione un nombre para la alerta y elija una métrica.](./media/app-insights-alerts/01-set-metric.png)
 
-* Configurar otras propiedades de recursos de hello antes de Hola. **Elija recurso hello "(componentes)"** si desea que las alertas de tooset las métricas de rendimiento o el uso.
-* nombre de Hola que se asigne toohello alerta debe ser único en el grupo de recursos de hello (no solo la aplicación).
-* Ser unidades de hello toonote cuidado en el que se le pide el valor del umbral de tooenter Hola.
-* Si se activa la casilla de Hola "Propietarios de correo electrónico...", las alertas se envían por tooeveryone de correo electrónico que tenga el grupo de recursos de toothis de acceso. tooexpand este conjunto de usuarios, agréguelos toohello [grupo de recursos o suscripción](app-insights-resources-roles-access-control.md) (no Hola recursos).
-* Si especifica "Correos electrónicos adicionales", las alertas se envían toothose individuos o grupos (si no ha activado el cuadro de "email propietarios..." hello). 
-* Establecer un [webhook dirección](../monitoring-and-diagnostics/insights-webhooks-alerts.md) si ha configurado una aplicación web que responde tooalerts. Se llama cuando se activa la alerta de Hola y cuando se ha resuelto. (Pero tenga en cuenta que, en la actualidad, los parámetros de consulta no se pasan como propiedades de webhook).
-* Puede deshabilitar o habilitar Hola alerta: consulte botones de hello en parte superior de Hola de hoja de Hola.
+* Establezca el recurso antes de las demás propiedades. **Elija el recurso "(components)"** si desea establecer alertas sobre métricas de rendimiento o de uso.
+* El nombre que asigne a la alerta debe ser único dentro del grupo de recursos (no solo en la aplicación).
+* Asegúrese de tener en cuenta las unidades en las que se le pide que escriba el valor de umbral.
+* Si activa la casilla "Enviar correo electrónico a propietarios, colaboradores y lectores", las alertas se envían por correo electrónico a todos los usuarios con acceso a este grupo de recursos. Para expandir dicho conjunto de usuarios, agréguelos al [grupo de recursos o suscripción](app-insights-resources-roles-access-control.md) (no al recurso).
+* Si especifica "Correos electrónicos adicionales", las alertas se envían a esos usuarios o grupos (independientemente de que haya activado la casilla anterior). 
+* Establezca una [dirección de webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) si ha configurado una aplicación web para responder a las alertas. Se llamará a esta dirección cuando la alerta se active y cuando se haya resuelto. (Pero tenga en cuenta que, en la actualidad, los parámetros de consulta no se pasan como propiedades de webhook).
+* Puede habilitar o deshabilitar la alerta: consulte los botones de la parte superior de la hoja.
 
-*No se ve botón alerta de hello agregar.* 
+*No puedo ver el botón Agregar alerta* 
 
-* ¿Está usando una cuenta de organización? Puede establecer alertas si tiene propietario o colaborador acceso toothis recurso de la aplicación. Eche un vistazo en la hoja de Control de acceso de Hola. [Más información sobre el control de acceso][roles].
+* ¿Está usando una cuenta de organización? Puede establecer alertas si tiene acceso de propietario o colaborador a este recurso de aplicación. Eche un vistazo a la hoja Access Control. [Más información sobre el control de acceso][roles].
 
 > [!NOTE]
-> En la hoja de alertas de hello, verá que ya hay un conjunto de alerta de: [diagnósticos proactivos](app-insights-proactive-failure-diagnostics.md). alerta automática de Hello supervisa un determinado porcentaje de errores de solicitud métrica. A menos que decida alerta automático de toodisable hello, no es necesario tooset su propio alerta de tasa de error de solicitud. 
+> En la hoja de alertas, verá que ya hay una alerta configurada: [Proactive Diagnostics](app-insights-proactive-failure-diagnostics.md). La alerta automática supervisa una métrica determinada: el índice de errores de las solicitudes. A menos que decida deshabilitar esta opción, no es necesario establecer su propio índice de errores de las solicitudes. 
 > 
 > 
 
 ## <a name="see-your-alerts"></a>Visualización de alertas
 Recibirá un correo electrónico cuando un alerta cambia el estado entre inactivo y activo. 
 
-estado actual de Hola de cada alerta se muestra en la hoja de hello las reglas de alerta.
+En la hoja de reglas Alerta se muestra el estado actual de cada alerta.
 
-Hay un resumen de la actividad reciente de las alertas de hello desplegable:
+Hay un resumen de la actividad reciente en la lista desplegable de alertas:
 
 ![Lista desplegable de alertas](./media/app-insights-alerts/010-alert-drop.png)
 
-Hola el historial de cambios de estado es Hola registro de actividad:
+El historial de cambios de estado está en el registro de actividad:
 
-![En la hoja de información general de hello, haga clic en configuración, los registros de auditoría](./media/app-insights-alerts/09-alerts.png)
+![En la hoja de información general, haga clic en Configuración, Registros de auditoría](./media/app-insights-alerts/09-alerts.png)
 
 ## <a name="how-alerts-work"></a>Funcionamiento de las alertas
-* Una alerta tiene tres estados: "Nunca activada", "Activada" y "Resuelta". Activado significa Hola condición especificada sea true, cuando estaba se evaluó por última vez.
-* Se genera una notificación cuando una alerta cambia de estado. (Si la condición de alerta de hello ya era true cuando se creó la alerta de hello, podría no obtener una notificación hasta que sale false condición Hola.)
-* Cada notificación genera un correo electrónico si se activa el cuadro de mensajes de correo electrónico de Hola o proporcionan direcciones de correo electrónico. También puede buscar en la lista desplegable de hello las notificaciones.
+* Una alerta tiene tres estados: "Nunca activada", "Activada" y "Resuelta". "Activada" significa que la condición especificada tenía el valor true cuando se evaluó por última vez.
+* Se genera una notificación cuando una alerta cambia de estado. (Si la condición de alerta ya tenía el valor true cuando creó la alerta, es posible que no reciba una notificación hasta que la condición cambie al valor false).
+* Si ha activado la casilla de correos electrónicos o si ha proporcionado direcciones de correo electrónico, cada notificación generará un correo. También puede consultar la lista desplegable de notificaciones.
 * Una alerta se evalúa cada vez que llega una métrica, pero no en caso contrario.
-* evaluación de Hello agrega métrica Hola sobre Hola anterior período y a continuación, compara el estado nuevo de toohello umbral toodetermine Hola.
-* período de Hola que elija especifica sobre el que se agregan las métricas de intervalo de saludo. No se ve afectada la frecuencia con hello alerta se evalúa: que depende de la frecuencia de Hola de llegada de métricas.
-* Si no llega ningún dato para una métrica concreta durante algún tiempo, intervalo de hello tiene distintos efectos en la evaluación de alertas y en los gráficos de hello en el Explorador de métrica. En el Explorador de métrica, si no se ve ningún dato durante más tiempo que el intervalo de muestreo del gráfico de hello, gráfico de hello muestra un valor de 0. Pero una alerta basada en hello misma métrica no se vuelven a evaluar y Hola sigue siendo de estado de la alerta sin cambios. 
+* La evaluación agrega la métrica durante el período anterior y, luego, la compara con el umbral para determinar el nuevo estado.
+* El período que elija especifica el intervalo en el que se agregan métricas. No afecta a la frecuencia con la que se evalúa la alerta: depende de la frecuencia de llegada de métricas.
+* Si no llega ningún dato para una métrica concreta durante un tiempo, este intervalo tiene efectos diferentes en la evaluación de la alerta y en los gráficos del Explorador de métricas. En el Explorador de métricas, si no se ve ningún dato durante más tiempo que el intervalo de muestreo del gráfico, el gráfico mostrará un valor de 0. Pero una alerta basada en la misma métrica no se volverá a evaluar, y el estado de la alerta permanecerá sin cambios. 
   
-    Cuando los datos llegan finalmente, gráfico de hello salta valor distinto de cero de tooa atrás. alerta de Hello evalúa basados en datos de hello disponibles para el período de hello especificado. Si Hola nuevo punto de datos es Hola solo uno disponible en el período de hello, Hola agregado se basa solo en punto de datos.
-* Una alerta puede parpadear con frecuencia entre los estados de alerta y correcto, incluso si se establece un período largo. Esto puede ocurrir si el valor de métrica de hello sitúa cerca umbral Hola. No hay ninguna inclinación de umbral de hello: Hola tooalert de transición se produce en hello mismo valor que toohealthy de transición de Hola.
+    Cuando finalmente llegan datos, el gráfico se desplazará a un valor distinto de cero. La alerta se evaluará en función de los datos disponibles para el período especificado. Si el nuevo punto de datos es el único disponible en el período, el agregado se basará en ese punto.
+* Una alerta puede parpadear con frecuencia entre los estados de alerta y correcto, incluso si se establece un período largo. Esto puede suceder si el valor de métrica se sitúa alrededor del umbral. No hay ninguna histéresis en el umbral: la transición a alerta se produce en el mismo valor que la transición a correcto.
 
-## <a name="what-are-good-alerts-tooset"></a>¿Qué alertas buena tooset?
-Depende de la aplicación. toostart con, es preferible no tooset demasiados métricas. Dedique algún tiempo examinando los gráficos de métricas mientras se ejecuta la aplicación, tooget una idea de cómo se comportará normalmente. Esta práctica ayuda a encontrar maneras tooimprove su rendimiento. A continuación, configurar tootell de alertas se cuando salen de las métricas de hello fuera de zona normal de Hola. 
+## <a name="what-are-good-alerts-to-set"></a>¿Qué alertas es conveniente establecer?
+Depende de la aplicación. Para empezar, es mejor no establecer demasiadas métricas. Observe durante un tiempo sus gráficos de métrica mientras se ejecuta la aplicación para hacerse una idea de cómo se comporta normalmente. Este procedimiento le ayudará a encontrar maneras de mejorar su rendimiento. A continuación, configure alertas para que le avisen cuando las métricas salgan de la zona normal. 
 
 Las alertas más populares son:
 
-* Las [métricas del explorador][client], especialmente los **tiempos de carga de página del explorador**, son buenas para aplicaciones web. Si la página tiene muchos scripts, debe buscar **excepciones del explorador**. En orden tooget estas métricas y alertas, tiene tooset [supervisión de la página web][client].
-* **Tiempo de respuesta de servidor** para servidor hello de aplicaciones web. Así como configurar las alertas, esté atento en esta métrica toosee si desproporcionadamente varía con velocidad de solicitudes alta: variación podría indicar que la aplicación se está quedando sin recursos. 
-* **Excepciones de servidor** -toosee usarlas, tiene algunas toodo [el programa de instalación adicional](app-insights-asp-net-exceptions.md).
+* Las [métricas del explorador][client], especialmente los **tiempos de carga de página del explorador**, son buenas para aplicaciones web. Si la página tiene muchos scripts, debe buscar **excepciones del explorador**. Para obtener estas métricas y alertas, tiene que configurar [la supervisión de páginas web][client].
+* **Tiempo de respuesta del servidor** para las aplicaciones web del lado servidor. Además de configurar alertas, eche un vistazo a esta métrica para ver si varía desproporcionadamente con tasas de solicitud altas: la variación puede indicar que la aplicación se está quedando sin recursos. 
+* **Excepciones de servidor** : para verlas, deberá realizar alguna [configuración adicional](app-insights-asp-net-exceptions.md).
 
-No olvide que [los diagnósticos de tasa de errores proactiva](app-insights-proactive-failure-diagnostics.md) automáticamente Hola frecuencia del monitor en el que la aplicación responde toorequests con códigos de error. 
+No olvide que los [diagnósticos proactivos de frecuencia de errores](app-insights-proactive-failure-diagnostics.md) permiten supervisar automáticamente la velocidad a la que la aplicación responde a solicitudes con códigos de error. 
 
-## <a name="automation"></a>Automation
-* [Usar PowerShell tooautomate configurar alertas](app-insights-powershell-alerts.md)
-* [Use webhooks tooautomate responde tooalerts](../monitoring-and-diagnostics/insights-webhooks-alerts.md)
+## <a name="automation"></a>Automatización
+* [Uso de PowerShell para automatizar la configuración de alertas](app-insights-powershell-alerts.md)
+* [Uso de Webhook para automatizar la respuesta a alertas](../monitoring-and-diagnostics/insights-webhooks-alerts.md)
 
 ## <a name="video"></a>Vídeo
 

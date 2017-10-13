@@ -1,6 +1,6 @@
 ---
-title: las aplicaciones aaaHow aparecen en el panel de acceso de hello | Documentos de Microsoft
-description: "Solucionar problemas de por qué aparece una aplicación Hola Panel de acceso"
+title: "Cómo aparecen las aplicaciones en el panel de acceso | Microsoft Docs"
+description: "Solucionar por qué una aplicación no aparece en el panel de acceso"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -14,129 +14,129 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.reviewr: japere
-ms.openlocfilehash: 14ee732c4ed5260cba878e949cf9d90877aee67e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f8ccf2cf66b49940bc7f2b9f4764020efc04838e
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="how-applications-appear-on-hello-access-panel"></a>Cómo aparecen las aplicaciones en el panel de acceso de Hola
+# <a name="how-applications-appear-on-the-access-panel"></a>Cómo aparecen las aplicaciones en el panel de acceso
 
-Hola Panel de acceso es un portal basado en web que permite a los usuarios con un trabajo o cuenta educativa en aplicaciones de Azure Active Directory (Azure AD) tooview y de inicio en la nube que Hola Administrador de Azure AD le haya concedido acceso a. Estas aplicaciones se configuran en nombre de usuario de hello en el portal de Azure AD Hola. Hola, administrador puede aprovisionar directamente usuario de toohello la aplicación Hola o un grupo de tooa que un usuario forma parte de lo que en la aplicación hello que aparecen en el Panel de acceso del usuario de Hola.
+El panel de acceso es un portal basado en web que permite que un usuario con una cuenta profesional o educativa de Azure Active Directory (Azure AD) vea e inicie las aplicaciones basadas en la nube a las que el administrador de Azure AD le ha concedido acceso. Estas aplicaciones se configuran en nombre del usuario en el portal de Azure AD. El administrador puede aprovisionar la aplicación para el usuario directamente o para un grupo del que el usuario forma parte con lo cual la aplicación aparecerá en el panel de acceso del usuario.
 
-## <a name="general-issues-toocheck-first"></a>General emite toocheck primero
+## <a name="general-issues-to-check-first"></a>Problemas generales para comprobar primero
 
--   Si se acaba de quitar una aplicación de un usuario o grupo Hola usuario es miembro de, toosign de entrada y salida vuelva a intentarlo en el Panel de acceso del usuario de hello después de unos toosee minutos si se quita la aplicación hello.
+-   Si se acaba de quitar una aplicación a un usuario o a un grupo al que este pertenece, intente volver a iniciar y cerrar sesión en el panel de acceso del usuario después de unos minutos para ver si la aplicación se ha quitado.
 
--   Si se acaba de quitar una licencia a un usuario o grupo de usuario de hello es que un miembro de este puede tardar mucho tiempo, según el tamaño de Hola y la complejidad del grupo de Hola para toobe cambios realizado. Permitir un tiempo adicional antes de iniciar sesión en el Panel de acceso de Hola.
+-   Si se acaba de quitar una licencia de un usuario o grupo del que el usuario es miembro, los cambios pueden tardar tiempo, en función del tamaño y la complejidad del grupo. Espere un poco más de tiempo antes de iniciar sesión en el panel de acceso.
 
-## <a name="problems-related-tooassigning-applications-toousers"></a>Problemas relacionados tooassigning aplicaciones toousers
+## <a name="problems-related-to-assigning-applications-to-users"></a>Problemas relacionados con la asignación de aplicaciones a los usuarios
 
-Un usuario puede estar viendo una aplicación en su Panel de acceso porque le asignase previamente tooit. A continuación se muestran algunas maneras toocheck:
+Un usuario puede ver una aplicación en su panel de acceso si ya se le había asignado previamente a él. A continuación se muestran algunas maneras de comprobarlo:
 
--   [Comprobar si un usuario se ha asignado toohello aplicación](#check-if-a-user-is-assigned-to-the-application)
+-   [Comprobar si un usuario está asignado a la aplicación](#check-if-a-user-is-assigned-to-the-application)
 
--   [Comprobar si un usuario está sometido a una licencia relacionados con la aplicación toohello](#check-if-a-user-is-under-a-license-related-to-the-application)
+-   [Comprobar si un usuario posee una licencia relacionada con la aplicación](#check-if-a-user-is-under-a-license-related-to-the-application)
 
 
-### <a name="check-if-a-user-is-assigned-toohello-application"></a>Comprobar si un usuario se ha asignado toohello aplicación
+### <a name="check-if-a-user-is-assigned-to-the-application"></a>Comprobar si un usuario está asignado a la aplicación
 
-toocheck si se asigna a un usuario toohello aplicación, siga Hola pasos siguientes:
+Para comprobar si un usuario está asignado a la aplicación, siga estos pasos:
 
-1.  Abra hello [ **Portal de Azure** ](https://portal.azure.com/) e inicie sesión como un **administrador Global.**
+1.  Abra [**Azure Portal**](https://portal.azure.com/) e inicie sesión como **administrador global**.
 
-2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
+2.  Abra la **extensión de Azure Active Directory** haciendo clic en **Más servicios** en la parte inferior del menú de navegación izquierdo principal.
 
-3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
+3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
 
-4.  Haga clic en **aplicaciones empresariales** desde el menú de navegación izquierdo de hello Azure Active Directory.
+4.  Haga clic en **Aplicaciones empresariales** en el menú de navegación izquierdo de Azure Active Directory.
 
-5.  Haga clic en **todas las aplicaciones** tooview una lista de todas las aplicaciones.
+5.  Haga clic en **Todas las aplicaciones** para ver una lista de todas las aplicaciones.
 
-6.  **Búsqueda** como nombre de Hola de aplicación hello en cuestión.
+6.  **Busque** el nombre de la aplicación en cuestión.
 
 7.  Haga clic en **Usuarios y grupos**.
 
-8.  Compruebe toosee si el usuario se le asigna la aplicación toohello.
+8.  Compruebe si el usuario está asignado a la aplicación.
 
-  * Si desea que tooremove Hola usuario de la aplicación hello, **haga clic en la fila de hello** del usuario de Hola y seleccione **eliminar**.
+  * Si desea quitar el usuario de la aplicación, **haga clic en la fila** del usuario y seleccione **eliminar**.
 
-### <a name="check-if-a-user-is-under-a-license-related-toohello-application"></a>Comprobar si un usuario está sometido a una licencia relacionados con la aplicación toohello
+### <a name="check-if-a-user-is-under-a-license-related-to-the-application"></a>Comprobar si un usuario posee una licencia relacionada con la aplicación
 
-toocheck un usuario había asignado licencias, siga los pasos de Hola a continuación:
+Para comprobar las licencias asignadas de un usuario, siga estos pasos:
 
-1.  Abra hello [ **Portal de Azure** ](https://portal.azure.com/) e inicie sesión como un **administrador Global.**
+1.  Abra [**Azure Portal**](https://portal.azure.com/) e inicie sesión como **administrador global**.
 
-2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
+2.  Abra la **extensión de Azure Active Directory** haciendo clic en **Más servicios** en la parte inferior del menú de navegación izquierdo principal.
 
-3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
+3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
 
-4.  Haga clic en **usuarios y grupos** en el menú de navegación de Hola.
+4.  Haga clic en **Usuarios y grupos** en el menú de navegación.
 
 5.  Haga clic en **Todos los usuarios**.
 
-6.  **Búsqueda** para el usuario de Hola que le interesen y **haga clic en la fila de hello** tooselect.
+6.  **Busque** el usuario en el que está interesado y **haga clic en la fila** para seleccionarlo.
 
-7.  Haga clic en **licencias** toosee qué usuario de hello licencias actualmente tiene asignada.
+7.  Haga clic en **Licencias** para ver qué licencias tiene asignadas actualmente el usuario.
 
-   * Si se asigna la licencia de Office tooan Esto activar tooappear de las aplicaciones de Office de primera entidad de usuario de Hola Hola Panel de acceso del usuario.
+   * Si el usuario está asignado a una licencia de Office, esto permitirá que las aplicaciones de Office aparezcan en el panel de acceso del usuario.
 
-## <a name="problems-related-tooassigning-applications-toogroups"></a>Problemas relacionados tooassigning aplicaciones toogroups
+## <a name="problems-related-to-assigning-applications-to-groups"></a>Problemas relacionados con la asignación de aplicaciones a grupos
 
-Un usuario puede estar viendo una aplicación en su Panel de acceso ya que forman parte de un grupo que se ha asignado la aplicación hello. A continuación se muestran algunas maneras toocheck:
+Puede que un usuario vea una aplicación en su Panel de acceso porque forme parte de un grupo al que se ha asignado esa aplicación. A continuación se muestran algunas maneras de comprobarlo:
 
 -   [Comprobar la pertenencia a grupos de un usuario](#check-a-users-group-memberships)
 
--   [Comprobar si un usuario es miembro de un grupo asignado tooa licencia](#check-if-a-user-is-a-member-of-a-group-assigned-to-a-license)
+-   [Comprobar si un usuario es miembro de un grupo asignado a una licencia](#check-if-a-user-is-a-member-of-a-group-assigned-to-a-license)
 
 ### <a name="check-a-users-group-memberships"></a>Comprobar la pertenencia a grupos de un usuario
 
-toocheck pertenencia de un grupo, siga los pasos de Hola a continuación:
+Para comprobar la pertenencia de un grupo, siga estos pasos:
 
-1.  Abra hello [ **Portal de Azure** ](https://portal.azure.com/) e inicie sesión como un **administrador Global.**
+1.  Abra [**Azure Portal**](https://portal.azure.com/) e inicie sesión como **administrador global**.
 
-2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
+2.  Abra la **extensión de Azure Active Directory** haciendo clic en **Más servicios** en la parte inferior del menú de navegación izquierdo principal.
 
-3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
+3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
 
-4.  Haga clic en **usuarios y grupos** en el menú de navegación de Hola.
-
-5.  Haga clic en **Todos los usuarios**.
-
-6.  **Búsqueda** para el usuario de Hola que le interesen y **haga clic en la fila de hello** tooselect.
-
-7.  Haga clic en **Grupos**.
-
-8.  Compruebe toosee si el usuario es parte de una aplicación de toohello de grupo asignado.
-
-   * Si desea que tooremove Hola usuario del grupo de hello, **haga clic en la fila de hello** del grupo de Hola y seleccione Eliminar.
-
-### <a name="check-if-a-user-is-a-member-of-a-group-assigned-tooa-license"></a>Comprobar si un usuario es miembro de un grupo asignado tooa licencia
-
-1.  Abra hello [ **Portal de Azure** ](https://portal.azure.com/) e inicie sesión como un **administrador Global.**
-
-2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
-
-3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
-
-4.  Haga clic en **usuarios y grupos** en el menú de navegación de Hola.
+4.  Haga clic en **Usuarios y grupos** en el menú de navegación.
 
 5.  Haga clic en **Todos los usuarios**.
 
-6.  **Búsqueda** para el usuario de Hola que le interesen y **haga clic en la fila de hello** tooselect.
+6.  **Busque** el usuario en el que está interesado y **haga clic en la fila** para seleccionarlo.
 
 7.  Haga clic en **Grupos**.
 
-8.  Haga clic en la fila de Hola de un grupo específico.
+8.  Compruebe si el usuario forma parte de un grupo al que se ha asignado la aplicación.
 
-9.  Haga clic en **licencias** toosee qué grupo de licencias Hola asignó tooit.
+   * Si desea quitar el usuario del grupo, **haga clic en la fila** del grupo y seleccione Eliminar.
 
-  * Si se asigna el grupo de hello licencia de Office tooan en que esto, puede habilitar determinada tooappear de las aplicaciones de Office de primera entidad Hola Panel de acceso del usuario.
+### <a name="check-if-a-user-is-a-member-of-a-group-assigned-to-a-license"></a>Comprobar si un usuario es miembro de un grupo asignado a una licencia
+
+1.  Abra [**Azure Portal**](https://portal.azure.com/) e inicie sesión como **administrador global**.
+
+2.  Abra la **extensión de Azure Active Directory** haciendo clic en **Más servicios** en la parte inferior del menú de navegación izquierdo principal.
+
+3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
+
+4.  Haga clic en **Usuarios y grupos** en el menú de navegación.
+
+5.  Haga clic en **Todos los usuarios**.
+
+6.  **Busque** el usuario en el que está interesado y **haga clic en la fila** para seleccionarlo.
+
+7.  Haga clic en **Grupos**.
+
+8.  Haga clic en la fila de un grupo específico.
+
+9.  Haga clic en **Licencias** para ver qué licencias tiene asignadas el grupo.
+
+  * Si el grupo está asignado a una licencia de Office, esto permitirá que determinadas aplicaciones de Office aparezcan en el panel de acceso del usuario.
 
 
-## <a name="if-these-troubleshooting-steps-do-not-hello-resolve-hello-issue"></a>Si estos pasos no Hola resolver el problema de Hola
+## <a name="if-these-troubleshooting-steps-do-not-the-resolve-the-issue"></a>Si después de seguir estos pasos, el problema no se ha resuelto,
 
-Abra una incidencia de soporte técnico con hello siguiente información si está disponible:
+abra una incidencia de soporte técnico con la información siguiente si está disponible:
 
 -   Id. de error de correlación
 

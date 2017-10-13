@@ -1,6 +1,6 @@
 ---
-title: "aaaInstall actualización 4 en el dispositivo de la serie StorSimple 8000 | Documentos de Microsoft"
-description: "Explica cómo tooinstall StorSimple 8000 Series Update 4 en el dispositivo de la serie StorSimple 8000."
+title: "Instalación de Update 4 en un dispositivo de la serie StorSimple 8000 | Microsoft Docs"
+description: "Explica cómo instalar Update 4 de la serie StorSimple 8000 en un dispositivo de la serie StorSimple 8000."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,48 +14,48 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 3507edbde5e6e43b6c450bfea19494d47b5a5ae7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 57d6d63c55f8ad4da5d1905a1e209da454b0491c
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>Instalación de Update 4 en el dispositivo StorSimple
 
 ## <a name="overview"></a>Información general
 
-Este tutorial le explica cómo tooinstall actualización 4 en un dispositivo de StorSimple con una versión anterior del software a través de Hola portal de Azure y usar el método de revisión de hello. método de revisión de Hola se usa cuando se configura una puerta de enlace en una interfaz de red diferentes a DATA 0 del dispositivo de StorSimple de Hola y que está tratando de tooupdate desde una versión de software anterior a Update 1.
+En este tutorial se explica cómo instalar Update 4 en un dispositivo StorSimple que ejecute una versión anterior del software a través de Azure Portal y mediante el método de revisión. El método de revisión se utiliza cuando se configura una puerta de enlace en una interfaz de red que no sea DATA 0 del dispositivo StorSimple y está intentando actualizar desde una versión del software anterior a Update 1.
 
-Update 4 incluye actualizaciones de software de dispositivo, firmware de USM, firmware y controlador LSI, Storport y Spaceport, seguridad de SO y varias otras actualizaciones de SO.  software de dispositivo de Hello, firmware USM, Spaceport, Storport y otras actualizaciones de sistema operativo son actualizaciones sin interrupciones. Hola no provocan interrupciones o regular actualizaciones pueden aplicarse a través del portal de Azure de Hola o método de revisión de hello. las actualizaciones de firmware de disco Hola son actualizaciones potencialmente perjudiciales y solo pueden aplicarse a través del método de revisión de hello mediante la interfaz de Windows PowerShell de hello de dispositivo de Hola.
+Update 4 incluye actualizaciones de software de dispositivo, firmware de USM, firmware y controlador LSI, Storport y Spaceport, seguridad de SO y varias otras actualizaciones de SO.  Las actualizaciones de software de dispositivo, firmware de USM, Spaceport, Storport y otras actualizaciones de SO no provocan interrupciones. Las actualizaciones normales o que no provocan interrupciones se pueden aplicar a través de Azure Portal o mediante el método de revisión. Las actualizaciones del firmware del disco son actualizaciones que provocan interrupciones y solo pueden aplicarse mediante el método de revisión a través de la interfaz de Windows PowerShell del dispositivo.
 
 > [!IMPORTANT]
-> * Un conjunto de comprobaciones previas manuales y automáticas se realiza el estado del dispositivo anterior toohello instalación toodetermine hello en cuanto a conectividad de red y el estado de hardware. Estas comprobaciones previas se realizan solo si aplicar actualizaciones de Hola de hello portal de Azure.
-> * Se recomienda que instale software de Hola y otras actualizaciones periódicas a través de hello portal de Azure. Solo debería ir toohello de interfaz de Windows PowerShell del dispositivo de hello (tooinstall actualizaciones) si se produce un error en la comprobación de la puerta de enlace anterior a la actualización de hello en el portal de Hola. Según la versión de Hola que va a actualizar desde, Hola actualizaciones pueden tardar cuatro horas (o posterior) tooinstall. actualizaciones del modo de mantenimiento de Hello también deben instalarse a través de la interfaz de Windows PowerShell de hello de dispositivo de Hola. Como las actualizaciones en modo de mantenimiento son perturbadoras, generarán un tiempo de inactividad para el dispositivo.
-> * Si ejecuta hello opcional Administrador de instantáneas de StorSimple, asegúrese de que ha actualizado el dispositivo de administrador de instantáneas versión tooUpdate 4 anteriores tooupdating Hola.
+> * En esta actualización se incluye un conjunto de comprobaciones previas que se hace antes de la instalación para determinar el estado del dispositivo en cuanto a la conectividad de red y el estado del hardware. Estas comprobaciones previas solo se realizan si aplica las actualizaciones desde Azure Portal.
+> * Se recomienda instalar las actualizaciones de software y otras actualizaciones normales a través de Azure portal. Solo debe ir a la interfaz de Windows PowerShell del dispositivo (para instalar actualizaciones) si, en el Portal, se produce un error en las comprobaciones de la puerta de enlace anteriores a la actualización. En función de la versión de origen, las actualizaciones pueden demorar 4 horas (o más) en instalarse. Las actualizaciones en modo de mantenimiento también deben instalarse mediante la interfaz de Windows PowerShell del dispositivo. Como las actualizaciones en modo de mantenimiento son perturbadoras, generarán un tiempo de inactividad para el dispositivo.
+> * Si ejecuta la opción de StorSimple Snapshot Manager, antes de actualizar el dispositivo, asegúrese de haber actualizado la versión de Snapshot Manager a Update 4.
 
 
 [!INCLUDE [storsimple-preparing-for-update](../../includes/storsimple-preparing-for-updates.md)]
 
-## <a name="install-update-4-via-hello-azure-portal"></a>Instalar la actualización 4 a través de hello portal de Azure
-Realizar el dispositivo Hola siguiendo los pasos tooupdate demasiado[actualización 4](storsimple-update4-release-notes.md).
+## <a name="install-update-4-via-the-azure-portal"></a>Instalación de Update 4 a través de Azure Portal
+Realice los pasos siguientes para actualizar el dispositivo a [Update 4](storsimple-update4-release-notes.md).
 
 > [!NOTE]
-> Microsoft extrae información de diagnóstico adicional desde dispositivo Hola. Como resultado, cuando el equipo de operaciones identifica los dispositivos que están experimentando problemas, estamos mejor equipada toocollect información de hello dispositivo y diagnosticar problemas. 
+> Microsoft extrae información de diagnóstico adicional del dispositivo. Como consecuencia, cuando nuestro equipo de operaciones identifica dispositivos que están teniendo problemas, estamos mejor equipados para recopilar información del dispositivo y diagnosticar problemas. 
 
 [!INCLUDE [storsimple-8000-install-update4-via-portal](../../includes/storsimple-8000-install-update4-via-portal.md)]
 
-Compruebe que el dispositivo está ejecutando **StorSimple 8000 Series Update 4 (6.3.9600.17820)**. Hola **actualizó por última vez fecha** también se debe modificar.
+Compruebe que el dispositivo está ejecutando **StorSimple 8000 Series Update 4 (6.3.9600.17820)**. También se debe modificar **Fecha de última actualización:** .
 
-* Ahora verá que hay disponibles actualizaciones de modo de mantenimiento de hello (este mensaje podría continuar toobe mostrado por la too24 horas después de instalar Hola actualizaciones). Actualizaciones del modo de mantenimiento son actualizaciones potencialmente perjudiciales que provocar tiempos de inactividad del dispositivo y solo pueden aplicarse a través de la interfaz de Windows PowerShell de hello del dispositivo.
+* Ahora también verá que hay disponibles actualizaciones en modo de mantenimiento (este mensaje podría seguir apareciendo hasta 24 horas después de instalar las actualizaciones). Las actualizaciones del modo de mantenimiento provocan interrupciones con tiempos de inactividad del dispositivo y solo pueden aplicarse a través de la interfaz de Windows PowerShell del dispositivo.
 
-* Descargar actualizaciones de modo de mantenimiento de hello mediante pasos de hello enumerados en [toodownload revisiones](#to-download-hotfixes) toosearch para y descargar KB4011837, que instala las actualizaciones de firmware de disco (hello otras actualizaciones deben ya estén instalados por ahora). Siga los pasos de hello enumerados en [instalar y comprobar las revisiones de modo de mantenimiento](#to-install-and-verify-maintenance-mode-hotfixes) actualizaciones del modo de mantenimiento de tooinstall Hola.
+* Descargue las actualizaciones en modo de mantenimiento mediante los pasos enumerados en [Descargar revisiones](#to-download-hotfixes) para buscar y descargar KB4011837, que instala las actualizaciones de firmware del disco (el resto de actualizaciones ya deben estar instaladas). Siga los pasos enumerados en [Instalar y comprobar las revisiones del modo de mantenimiento](#to-install-and-verify-maintenance-mode-hotfixes) para instalar las actualizaciones del modo de mantenimiento.
 
 ## <a name="install-update-4-as-a-hotfix"></a>Instalación de Update 4 como una revisión
-Hola recomienda tooinstall método que actualización 4 es a través de hello portal de Azure.
+El método recomendado para instalar Update 4 es a través de Azure Portal.
 
-Utilice este procedimiento si se producirá un error de comprobación de la puerta de enlace de hello al tratar de actualizaciones de hello tooinstall a través de hello portal de Azure. se produce un error en la comprobación de Hello como tiene una puerta de enlace asignada tooa no son de datos interfaz de red 0 y el dispositivo está ejecutando una versión de software anterior tooUpdate 1.
+Use este procedimiento si la comprobación de la puerta de enlace produce un error al intentar instalar las actualizaciones a través de Azure Portal. Se produce un error en la comprobación porque tiene una puerta de enlace asignada a una interfaz de red que no es DATA 0 y el dispositivo está ejecutando una versión de software antes de la actualización 1.
 
-versiones de software de Hola que se pueden actualizar utilizando el método de revisión de hello son:
+Las versiones de software que se pueden actualizar mediante el método de revisión son las siguientes:
 
 * Update 0.1, 0.2, 0.3
 * Update 1, 1.1, 1.2
@@ -63,15 +63,15 @@ versiones de software de Hola que se pueden actualizar utilizando el método de 
 * Update 3, 3.1
 
 
-método de revisión de Hello implica Hola siga tres pasos:
+El método de revisión implica los tres pasos siguientes:
 
-1. Descargan las revisiones de Hola de hello catálogo de Microsoft Update.
-2. Instalar y comprobar las revisiones de modo normal de Hola.
-3. Instalar y comprobar las revisiones de modo de mantenimiento de Hola.
+1. Descargar las revisiones desde el catálogo de Microsoft Update.
+2. Instalar y comprobar las revisiones de modo normal.
+3. Instalar y comprobar la revisión del modo de mantenimiento.
 
 #### <a name="download-updates-for-your-device"></a>Descargar las actualizaciones para el dispositivo
 
-Debe descargar e instalar los siguientes Hola revisiones en hello lo prescrito, ordenar y Hola carpetas sugeridas:
+Debe descargar e instalar las revisiones siguientes en el orden indicado y las carpetas sugeridas:
 
 | Orden | KB | Descripción | Tipo de actualización | Hora de instalación |Carpeta de instalación|
 | --- | --- | --- | --- | --- | --- |
@@ -80,7 +80,7 @@ Debe descargar e instalar los siguientes Hola revisiones en hello lo prescrito, 
 | 2B. |KB3139398, KB3108381 <br> KB3205400, KB3142030 <br> KB3197873, KB3197873 <br> KB3192392, KB3153704 <br> KB3174644, KB3139914  |Paquete de actualizaciones de seguridad de SO <br> Descargar Windows Server 2012 R2 |Regular  <br></br>Sin interrupciones |- |SecondOrderUpdate|
 | 2C. |KB3210083, KB3103616 <br> KB3146621, KB3121261 <br> KB3123538 |Paquete de actualizaciones de SO <br> Descargar Windows Server 2012 R2 |Regular  <br></br>Sin interrupciones |- |SecondOrderUpdate|
 
-También puede que tenga las actualizaciones de firmware de disco tooinstall encima de todas las actualizaciones de Hola que se muestra en hello anterior tablas. Puede comprobar si necesita hello las actualizaciones de firmware de disco mediante la ejecución de hello `Get-HcsFirmwareVersion` cmdlet. Si se ejecutan estas versiones de firmware: `XMGJ`, `XGEG`, `KZ50`, `F6C2`, `VR08`, `N002`, `0106`, a continuación, no es necesario tooinstall estas actualizaciones.
+Es posible que también necesite instalar actualizaciones de firmware de disco en la parte superior de todas las actualizaciones que se muestran en las tablas anteriores. Puede comprobar si las necesita actualizaciones de firmware de disco ejecutando el cmdlet `Get-HcsFirmwareVersion` . Si ejecuta estas versiones de firmware: `XMGJ`, `XGEG`, `KZ50`, `F6C2`, `VR08`, `N002`, `0106`, no necesita instalar estas actualizaciones.
 
 | Orden | KB | Descripción | Tipo de actualización | Hora de instalación | Carpeta de instalación|
 | --- | --- | --- | --- | --- | --- |
@@ -89,16 +89,16 @@ También puede que tenga las actualizaciones de firmware de disco tooinstall enc
 <br></br>
 
 > [!IMPORTANT]
-> * Esta toobe de necesidades de procedimiento realiza solo una vez tooapply actualización 4. Puede usar las actualizaciones posteriores de hello tooapply de portal de Azure.
-> * Si actualiza desde la actualización 3 ó 3.1, la hora de instalación total hello es cerrar too4 horas.
-> * Antes de usar este Hola de tooapply procedimiento actualizar, asegúrese de que ambos controladores de dispositivo de hello están en línea y todos los componentes de hardware de hello están en buen Estados.
+> * Este procedimiento debe realizarse una sola vez para aplicar Update 4. Puede usar Azure Portal para aplicar las actualizaciones posteriores.
+> * Si actualiza desde Update 3 o 3.1, el tiempo total de instalación es de 4 horas aproximadamente.
+> * Antes de usar este procedimiento para aplicar la actualización, asegúrese de que ambos controladores de dispositivo estén en línea y todos los componentes de hardware estén en buen estado.
 
-Realizar Hola después toodownload pasos e instalar las revisiones de Hola.
+Realice los siguientes pasos para descargar e instalar las revisiones.
 
 [!INCLUDE [storsimple-install-update4-hotfix](../../includes/storsimple-install-update4-hotfix.md)]
 
 [!INCLUDE [storsimple-install-troubleshooting](../../includes/storsimple-install-troubleshooting.md)]
 
 ## <a name="next-steps"></a>Pasos siguientes
-Obtener más información sobre hello [versión Update 4](storsimple-update4-release-notes.md).
+Obtenga más información sobre el [lanzamiento de Update 4](storsimple-update4-release-notes.md).
 

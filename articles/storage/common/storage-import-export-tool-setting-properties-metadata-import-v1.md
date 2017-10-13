@@ -1,6 +1,6 @@
 ---
-title: "aaaSetting propiedades y metadatos mediante la importación y exportación de Azure - v1 | Documentos de Microsoft"
-description: "Ver cómo toospecify propiedades y metadatos toobe han establecido en blobs de destino de hello cuando se ejecuta tooprepare de la herramienta de importación y exportación de Azure de hello las unidades de disco. Esto refiere toov1 de hello herramienta de importación/exportación."
+title: "Configuración de propiedades y metadatos mediante Azure Import/Export (versión 1) | Microsoft Docs"
+description: "Obtenga información sobre cómo especificar las propiedades y los metadatos que se van a establecer en los blobs de destino cuando se ejecuta la herramienta Azure Import/Export para preparar las unidades. Se refiere a la versión 1 de la herramienta Import/Export."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 5b7b1c346ecde8a26d985bd5de7efcf7d86eb9e3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 77bdaa5559de86cd1de9f30e70656e47fd5719e2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="setting-properties-and-metadata-during-hello-import-process"></a>Proceso de importación de establecer las propiedades y metadatos durante Hola
-Al ejecutar tooprepare de herramienta de importación y exportación de Microsoft Azure hello las unidades de disco, puede especificar propiedades y toobe de metadatos que se establezca en blobs de destino de Hola. Siga estos pasos:  
+# <a name="setting-properties-and-metadata-during-the-import-process"></a>Establecimiento de las propiedades y los metadatos durante el proceso de importación
+Al ejecutar la herramienta Microsoft Azure Import/Export para preparar las unidades, puede especificar propiedades y metadatos que se establecerán en los blobs de destino. Siga estos pasos:  
   
-1.  propiedades del blob tooset, cree un archivo de texto en el equipo local que especifica los valores y nombres de propiedad.  
+1.  Para establecer propiedades de blob, cree un archivo de texto en el equipo local que especifique los valores y nombres de propiedad.  
   
-2.  tooset metadatos del blob, crear un archivo de texto en el equipo local que especifica los valores y nombres de los metadatos.  
+2.  Para establecer metadatos de blob, cree un archivo de texto en el equipo local que especifique los valores y nombres de metadatos.  
   
-3.  Pasar tooone de ruta de acceso completa de Hola o ambos de estos toohello archivos herramienta de importación y exportación de Azure como parte del programa Hola `PrepImport` operación.  
+3.  Pase la ruta de acceso completa a uno de estos archivos o a ambos a la herramienta Azure Import/Export como parte de la operación `PrepImport`.  
   
 > [!NOTE]
->  Cuando se especifica un archivo de propiedades o metadatos como parte de una sesión de copia, esas propiedades o metadatos se establecen para cada blob que se importa como parte de esa sesión de copia. Si desea toospecify un conjunto diferente de propiedades o metadatos para algunos de los blobs Hola va a importar, necesitará toocreate otro copiar sesión con diferentes propiedades o los archivos de metadatos.  
+>  Cuando se especifica un archivo de propiedades o metadatos como parte de una sesión de copia, esas propiedades o metadatos se establecen para cada blob que se importa como parte de esa sesión de copia. Si desea especificar otro conjunto de propiedades o metadatos para algunos de los blobs que se importan, tendrá que crear una sesión de copia independiente con archivos de propiedades o metadatos diferentes.  
   
 ## <a name="specify-blob-properties-in-a-text-file"></a>Especificación de propiedades de blob en un archivo de texto  
-propiedades del blob toospecify, cree un archivo de texto local e incluya código XML que especifica los nombres de propiedad como elementos y valores de propiedad como valores. Este es un ejemplo que especifica algunos valores de propiedad:  
+Para especificar propiedades de blob, cree un archivo de texto local e incluya código XML que especifique los nombres de propiedad como elementos y los valores de propiedad como valores. Este es un ejemplo que especifica algunos valores de propiedad:  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -44,10 +44,10 @@ propiedades del blob toospecify, cree un archivo de texto local e incluya códig
 </Properties>  
 ```
   
-Guardar archivo de hello tooa ubicación local como `C:\WAImportExport\ImportProperties.txt`.  
+Guarde el archivo en una ubicación local como `C:\WAImportExport\ImportProperties.txt`.  
   
 ## <a name="specify-blob-metadata-in-a-text-file"></a>Especificación de metadatos de blob en un archivo de texto  
-De forma similar, toospecify metadatos del blob, cree un archivo de texto local que especifica los nombres de metadatos como elementos y los valores de metadatos como valores. Este es un ejemplo que especifica algunos valores de metadatos:  
+De forma similar, para especificar los metadatos de blob, cree un archivo de texto local que especifique los nombres de metadatos como elementos y los valores de metadatos como valores. Este es un ejemplo que especifica algunos valores de metadatos:  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -58,10 +58,10 @@ De forma similar, toospecify metadatos del blob, cree un archivo de texto local 
 </Metadata>  
 ```
   
-Guardar archivo de hello tooa ubicación local como `C:\WAImportExport\ImportMetadata.txt`.  
+Guarde el archivo en una ubicación local como `C:\WAImportExport\ImportMetadata.txt`.  
   
-## <a name="create-a-copy-session-including-hello-properties-or-metadata-files"></a>Crear un hello incluidos de sesión de copia archivos de propiedades o metadatos  
-Cuando se ejecuta el trabajo de importación de hello herramienta de importación y exportación de Azure tooprepare hello, especificar el archivo de propiedades de hello en línea de comandos de hello mediante hello `PropertyFile` parámetro. Especificar archivo de metadatos de hello en línea de comandos de hello mediante hello `/MetadataFile` parámetro. Este es un ejemplo que especifica ambos archivos:  
+## <a name="create-a-copy-session-including-the-properties-or-metadata-files"></a>Creación de una sesión de copia que incluya los archivos de propiedades o metadatos  
+Al ejecutar la herramienta Azure Import/Export para preparar el trabajo de importación, especifique el archivo de propiedades en la línea de comandos mediante el parámetro `PropertyFile`. Especifique el archivo de metadatos en la línea de comandos mediante el parámetro `/MetadataFile`. Este es un ejemplo que especifica ambos archivos:  
   
 ```
 WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:BlueRayIso /srcfile:K:\Temp\BlueRay.ISO /dstblob:favorite/BlueRay.ISO /MetadataFile:c:\WAImportExport\SampleMetadata.txt /PropertyFile:c:\WAImportExport\SampleProperties.txt  

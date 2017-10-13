@@ -1,6 +1,6 @@
 ---
-title: "aaaHow tooinstall un servidor de destino maestro de Linux para conmutación por error desde Azure tooon-local | Documentos de Microsoft"
-description: "Antes de volver a proteger una máquina virtual Linux, necesita un servidor de destino maestro Linux. Obtenga información acerca de cómo tooinstall uno."
+title: "Instalación de un servidor de destino maestro de Linux para realizar una conmutación por error de Azure a un entorno local | Microsoft Docs"
+description: "Antes de volver a proteger una máquina virtual Linux, necesita un servidor de destino maestro Linux. Aquí le mostraremos cómo instalar uno."
 services: site-recovery
 documentationcenter: 
 author: ruturaj
@@ -14,61 +14,61 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 08/11/2017
 ms.author: ruturajd
-ms.openlocfilehash: d7c55d115712b9862414979f89efb1f177c5f0dd
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 5341e3e56e0c366079958dd9a885f6ee3e8436cb
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="install-a-linux-master-target-server"></a>Instalación de un servidor de destino maestro Linux
-Después de conmutar las máquinas virtuales, puede producir un error al sitio local toohello Hola atrás máquinas virtuales. toofail nuevo, deberá tooreprotect Hola virtual máquina desde el sitio de Azure toohello local. En este proceso, es necesario un tráfico de hello local tooreceive de servidor de destino maestro. 
+Después de conmutar por error las máquinas virtuales, puede conmutarlas por recuperación en el sitio local. Para ello, debe volver a proteger la máquina virtual de Azure en el sitio local. Para realizar este proceso, necesitará un servidor de destino maestro local que reciba el tráfico. 
 
-Si la máquina virtual protegida es una máquina virtual Windows, necesitará un destino maestro de Windows. Para una máquina virtual Linux, se necesita un destino maestro de Linux. Lectura Hola siguientes pasos le indican toolearn cómo maestro toocreate e instale un Linux de destino.
+Si la máquina virtual protegida es una máquina virtual Windows, necesitará un destino maestro de Windows. Para una máquina virtual Linux, se necesita un destino maestro de Linux. Lea los pasos siguientes para aprender a crear e instalar un destino maestro de Linux.
 
 > [!IMPORTANT]
-> A partir de la versión del servidor de destino maestro hello 9.10.0, servidor de destino maestro más reciente de hello puede solo instalarse en un servidor de Ubuntu 16.04. Las nuevas instalaciones no están permitidas en servidores CentOS6.6. Sin embargo, puede seguir tooupgrade los servidores de destino maestra antigua mediante hello 9.10.0 versión.
+> A partir de la versión 9.10.0 del servidor de destino maestro, el servidor de destino maestro más reciente solo puede instalarse en un servidor Ubuntu 16.04. Las nuevas instalaciones no están permitidas en servidores CentOS6.6. Pero puede seguir actualizando los servidores de destino maestros anteriores con la versión 9.10.0.
 
 ## <a name="overview"></a>Información general
-Este artículo proporciona instrucciones para cómo maestro tooinstall una Linux de destino.
+En este artículo se proporcionan instrucciones para instalar un destino maestro Linux.
 
-Enviar comentarios o preguntas al final de Hola de este artículo o en hello [foro de servicios de recuperación de Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Publique cualquier comentario o pregunta que tenga al final del artículo, o bien en el [foro de Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-* host de hello toochoose en qué destino maestro de hello toodeploy, determinar si Hola conmutación por recuperación se va toobe tooan locales existentes máquina virtual o una máquina virtual nueva de tooa. 
-    * Para una máquina virtual existente, host de hello del destino maestro Hola debe tener acceso a almacenes de datos toohello de máquina virtual de Hola.
-    * Si no existe la máquina virtual de hello en local, máquina virtual de conmutación por recuperación de Hola se crea en Hola mismo host como destino maestro Hola. Puede elegir cualquier host ESXi destino maestro de tooinstall Hola.
-* destino maestro Hola debe estar en una red que puede comunicarse con el servidor de procesos de Hola y el servidor de configuración de Hola.
-* versión de Hola de destino maestro de Hola debe ser igual tooor anteriores a las versiones de servidor de procesos de Hola y el servidor de configuración de Hola Hola. Por ejemplo, si versión Hola Hola del servidor de configuración se 9.4, versión de Hola de destino maestro Hola pueda 9.4 o 9.3 pero no 9,5.
-* destino maestro Hola solo puede tener una máquina virtual VMware y no un servidor físico.
+* Para elegir el host en el que se va a implementar el destino maestro, determine si la conmutación por recuperación va a ser en una máquina virtual local existente o en una nueva máquina virtual. 
+    * En el caso de una máquina virtual existente, el host del destino maestro debe tener acceso a los almacenes de datos de la máquina virtual.
+    * Si la máquina virtual local no existe, se crea la máquina virtual de conmutación por recuperación en el mismo host que el destino maestro. Puede elegir cualquier host ESXi para instalar el destino maestro.
+* El destino maestro debe estar en una red que pueda comunicarse con el servidor de procesos y el servidor de configuración.
+* La versión del destino maestro debe ser igual o anterior a las versiones del servidor de procesos y el servidor de configuración. Por ejemplo, si la versión del servidor de configuración es 9.4, la versión del destino maestro puede ser 9.4 o 9.3, pero no 9.5.
+* El destino maestro solo puede ser una máquina virtual de VMware y no un servidor físico.
 
-## <a name="create-hello-master-target-according-toohello-sizing-guidelines"></a>Crear el destino maestro Hola según toohello directrices de ajuste de tamaño
+## <a name="create-the-master-target-according-to-the-sizing-guidelines"></a>Creación del destino maestro según las directrices de ajuste de tamaño
 
-Crear el destino maestro de hello según Hola siguiendo las directrices de ajuste de tamaño:
+Cree el destino maestro conforme a las siguientes directrices de ajuste de tamaño:
 - **RAM**: 6 GB o más
-- **Tamaño de disco de SO**: 100 GB o más (tooinstall CentOS6.6)
+- **Tamaño del disco del sistema operativo**: 100 GB o más (para instalar CentOS6.6)
 - **Tamaño adicional de disco para la unidad de retención**: 1 TB
 - **Núcleos de CPU**: 4 núcleos o más
 
-siguiente Hola admite Ubuntu kernels son compatibles.
+Se admiten los siguientes kernels de Ubuntu.
 
 
-|Serie de kernel  |Admitir hasta demasiado |
+|Serie de kernel  |Admite hasta la versión  |
 |---------|---------|
 |4.4.      |4.4.0-81-generic         |
 |4.8      |4.8.0-56-generic         |
 |4.10     |4.10.0-24-generic        |
 
 
-## <a name="deploy-hello-master-target-server"></a>Implementar el servidor de destino maestro Hola
+## <a name="deploy-the-master-target-server"></a>Implementación del servidor de destino maestro
 
 ### <a name="install-ubuntu-16042-minimal"></a>Instalación de Ubuntu 16.04.2 mínima
 
-Tomar Hola después de sistema operativo de 64 bits Ubuntu 16.04.2 de hello pasos tooinstall Hola.
+Siga los siguientes pasos para instalar el sistema operativo Ubuntu 16.04.2 de 64 bits.
 
-**Paso 1:** vaya toohello [vínculo de descarga](https://www.ubuntu.com/download/server/thank-you?version=16.04.2&architecture=amd64) y elija reflejado más cercano de Hola desde que descargar una imagen de ISO de 64 bits mínima de Ubuntu 16.04.2.
+**Paso 1:** vaya al [vínculo de descarga](https://www.ubuntu.com/download/server/thank-you?version=16.04.2&architecture=amd64) y elija el reflejo más cercano para descargar una imagen ISO de 64 bits mínima de Ubuntu 16.04.2.
 
-Mantener una imagen de ISO de 64 bits mínima de Ubuntu 16.04.2 en la unidad de DVD de hello e inicie el sistema de Hola.
+Coloque una imagen ISO de 64 bits mínima de Ubuntu 16.04.2 en la unidad de DVD e inicie el sistema.
 
 **Paso 2:** seleccione **English** (Inglés) como idioma preferido y luego **Entrar**.
 
@@ -82,237 +82,237 @@ Mantener una imagen de ISO de 64 bits mínima de Ubuntu 16.04.2 en la unidad de 
 
 ![Selección de inglés como idioma preferido](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image3.png)
 
-**Paso 5:** seleccione Hola opción adecuada de hello **zona horaria** lista de opciones y, a continuación, seleccione **ENTRAR**.
+**Paso 5:** seleccione la opción adecuada de la lista de opciones **Time Zone** (Zona horaria) y luego **Entrar**.
 
-![Seleccione la zona horaria correcta de Hola](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image4.png)
+![Selección de la zona horaria correcta](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image4.png)
 
-**Paso 6:** seleccione **No** (hello la opción predeterminada) y, a continuación, seleccione **ENTRAR**.
+**Paso 6:** seleccione **No** (opción predeterminada) y luego **Entrar**.
 
 
-![Configurar el teclado de Hola](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image5.png)
+![Configuración del teclado](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image5.png)
 
-**Paso 7:** seleccione **inglés (Estados Unidos)** como Hola país de origen para el teclado de hello y, a continuación, seleccione **ENTRAR**.
+**Paso 7:** seleccione **English (US)** [Inglés (EE. UU.)] como país de origen para el teclado y luego **Entrar**.
 
-![Seleccionar Estados Unidos como país Hola de origen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image6.png)
+![Selección de EE. UU. como país de origen](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image6.png)
 
-**Paso 8:** seleccione **inglés (Estados Unidos)** como distribución del teclado hello y, a continuación, seleccione **ENTRAR**.
+**Paso 8:** seleccione **English (US)** [Inglés (EE. UU.)] como distribución del teclado y luego **Entrar**.
 
-![Seleccione el inglés de Estados Unidos como la distribución del teclado Hola](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image7.png)
+![Selección de inglés de EE. UU. como distribución del teclado](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image7.png)
 
-**Paso 9:** escriba el nombre de host de hello para el servidor en hello **Hostname** cuadro y, a continuación, seleccione **continuar**.
+**Paso 9:** escriba el nombre de host del servidor en el cuadro **Hostname** (Nombre de host) y luego seleccione **Continue** (Continuar).
 
-![Escriba el nombre de host de hello para el servidor](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image8.png)
+![Especificación del nombre de host del servidor](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image8.png)
 
-**Paso 10:** toocreate una cuenta de usuario, escriba el nombre de usuario de hello y, a continuación, seleccione **continuar**.
+**Paso 10:** para crear una cuenta de usuario, escriba el nombre de usuario y luego seleccione **Continue** (Continuar).
 
 ![Crea una cuenta de usuario](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image9.png)
 
-**Paso 11:** escribir contraseña de hello para la nueva cuenta de usuario de hello y, a continuación, seleccione **continuar**.
+**Paso 11:** escriba la contraseña de la nueva cuenta de usuario y luego seleccione **Continue** (Continuar).
 
-![Escriba la contraseña de Hola](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image10.png)
+![Especificación de la contraseña](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image10.png)
 
-**Paso 12:** Confirmar contraseña Hola Hola nuevo usuario y, a continuación, seleccione **continuar**.
+**Paso 12:** confirme la contraseña del nuevo usuario y luego seleccione **Continue** (Continuar).
 
-![Confirmar las contraseñas de Hola](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image11.png)
+![Confirmación de las contraseñas](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image11.png)
 
-**Paso 13:** seleccione **No** (hello la opción predeterminada) y, a continuación, seleccione **ENTRAR**.
+**Paso 13:** seleccione **No** (opción predeterminada) y luego **Entrar**.
 
 ![Configuración de usuarios y contraseñas](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image12.png)
 
-**Paso 14:** si la zona horaria de Hola que se muestra es correcto, seleccione **Sí** (hello la opción predeterminada) y, a continuación, seleccione **ENTRAR**.
+**Paso 14:** si la zona horaria que se muestra es correcta, seleccione **Sí** (opción predeterminada) y luego **Entrar**.
 
-tooreconfigure su zona horaria, seleccione **No**.
+Para volver a configurar la zona horaria, seleccione **No**.
 
-![Configurar el reloj de Hola](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image13.png)
+![Configuración del reloj](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image13.png)
 
-**Paso 15:** en hello opciones del método de creación de particiones, seleccione **interactiva - usar todo el disco**y, a continuación, seleccione **ENTRAR**.
+**Paso 15:** en las opciones de método de partición, seleccione **Guided - use entire disk** (Guiado: usar todo el disco) y luego **Entrar**.
 
-![Seleccione la opción método de creación de particiones de Hola](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image14.png)
+![Selección de la opción de método de partición](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image14.png)
 
-**Paso 16:** seleccione Hola disco adecuado de hello **Seleccionar disco toopartition** opciones y, a continuación, seleccione **ENTRAR**.
+**Paso 16:** seleccione el disco adecuado en las opciones de **Select disk to partition** (Seleccionar disco para la partición) y luego **Entrar**.
 
 
-![Seleccione el disco de Hola](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image15.png)
+![Selección del disco](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image15.png)
 
-**Paso 17:** seleccione **Sí** toowrite Hola toodisk de cambios y, a continuación, seleccione **ENTRAR**.
+**Paso 17:** seleccione **Sí** para escribir los cambios en el disco y luego **Entrar**.
 
-![Escribir Hola cambios toodisk](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image16.png)
+![Escritura de los cambios en el disco](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image16.png)
 
-**Paso 18:** seleccione la opción predeterminada de hello, seleccione **continuar**y, a continuación, seleccione **ENTRAR**.
+**Paso 18:** seleccione la opción predeterminada, seleccione **Continue** (Continuar) y luego **Entrar**.
 
-![Seleccione la opción predeterminada de Hola](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image17.png)
+![Selección de la opción predeterminada](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image17.png)
 
-**Paso 19:** seleccione Hola la opción adecuada para administrar las actualizaciones en el sistema y, a continuación, seleccione **ENTRAR**.
+**Paso 19:** seleccione la opción adecuada para administrar las actualizaciones en el sistema y luego **Entrar**.
 
-![Seleccione cómo se actualiza toomanage](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image18.png)
+![Selección de forma de administrar las actualizaciones](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image18.png)
 
 > [!WARNING]
-> Porque el servidor de destino maestro de Azure Site Recovery Hola requiere una versión muy específica de hello Ubuntu, deberá tooensure ese kernel Hola se deshabilitan las actualizaciones para la máquina virtual de Hola. Si están habilitadas, las actualizaciones normales provocar toomalfunction de servidor de destino maestro Hola. Asegúrese de seleccionar hello **ninguna actualización automática** opción.
+> Dado que el servidor de destino maestro de Azure Site Recovery exige una versión muy concreta de Ubuntu, tiene que asegurarse de que las actualizaciones del kernel se deshabiliten para la máquina virtual. Si están habilitadas, las actualizaciones normales hacen que el servidor de destino maestro no funcione correctamente. Asegúrese de seleccionar la opción **No automatic updates** (Sin actualizaciones automáticas).
 
 
-**Paso 20:** seleccione las opciones predeterminadas. Si desea que openSSH para la conexión de SSH, seleccione hello **server OpenSSH** opción y, a continuación, seleccione **continuar**.
+**Paso 20:** seleccione las opciones predeterminadas. Si quiere usar OpenSSH para la conexión SSH, seleccione la opción **OpenSSH server** (Servidor de OpenSSH) y luego **Continue** (Continuar).
 
 ![Selección de software](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image19.png)
 
 **Paso 21:** seleccione **Sí** y luego **Entrar**.
 
-![Cargador de arranque GRUB Hola de instalación](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image20.png)
+![Instalación del cargador de arranque GRUB](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image20.png)
 
-**Paso 22:** seleccione Hola dispositivo adecuado para la instalación de cargador de arranque de hello (preferiblemente **/dev/sda**) y, a continuación, seleccione **ENTRAR**.
+**Paso 22:** seleccione el dispositivo adecuado para la instalación del cargador de arranque (preferiblemente **/dev/sda**) y luego **Entrar**.
 
 ![Selección de un dispositivo para la instalación del cargador de arranque](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image21.png)
 
-**Paso 23:** seleccione **continuar**y, a continuación, seleccione **ENTRAR** instalación de hello toofinish.
+**Paso 23:** seleccione **Continue** (Continuar) y luego **Entrar** para finalizar la instalación.
 
-![Finalizar la instalación de Hola](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image22.png)
+![Fin de la instalación](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image22.png)
 
-Cuando haya finalizado la instalación de hello, inicie sesión en toohello VM con las nuevas credenciales de usuario Hola. (Consulte demasiado**paso 10** para obtener más información.)
+Una vez finalizada la instalación, inicie sesión en la máquina virtual con las credenciales del nuevo usuario. (Vea el **paso 10** para más información).
 
-Realice los pasos de Hola que se describen en la siguiente captura de pantalla tooset Hola raíz de hello contraseña de usuario. Luego inicie sesión como usuario raíz.
+Siga los pasos que se indican en la siguiente captura de pantalla para establecer la contraseña del usuario raíz. Luego inicie sesión como usuario raíz.
 
-![Contraseña de usuario de conjunto Hola raíz](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image23.png)
+![Establecimiento de la contraseña del usuario raíz](./media/site-recovery-how-to-install-linux-master-target/ubuntu/image23.png)
 
 
-### <a name="prepare-hello-machine-for-configuration-as-a-master-target-server"></a>Preparar la máquina de hello para la configuración como un servidor de destino maestro
-A continuación, prepare máquina de hello para la configuración como un servidor de destino maestro.
+### <a name="prepare-the-machine-for-configuration-as-a-master-target-server"></a>Preparación del equipo para configurarlo como servidor de destino maestro
+Ahora prepare el equipo para configurarlo como servidor de destino maestro.
 
-Id. de hello tooget para cada disco duro de SCSI en una máquina virtual de Linux, habilitar hello **disco. EnableUUID = TRUE** parámetro.
+Para obtener el identificador de cada disco duro SCSI de una máquina virtual Linux, habilite el parámetro **disk.EnableUUID = TRUE**.
 
-tooenable este parámetro, Hola toman siguiendo los pasos:
+Para habilitar este parámetro, siga estos pasos:
 
 1. Apague la máquina virtual.
 
-2. Haga clic en la entrada de hello para la máquina virtual de hello en el panel izquierdo de Hola y, a continuación, seleccione **modificar configuración**.
+2. Haga clic con el botón derecho en la entrada de la máquina virtual del panel izquierdo y luego seleccione **Editar configuración**.
 
-3. Seleccione hello **opciones** ficha.
+3. Seleccione la pestaña **Opciones**.
 
-4. En el panel izquierdo de hello, seleccione **avanzadas** > **General**y, a continuación, seleccione hello **parámetros de configuración** botón en la parte inferior derecha de Hola de pantalla de bienvenida.
+4. En el panel izquierdo, seleccione **Opciones avanzadas** > **General** y luego el botón **Parámetros de configuración** de la parte inferior derecha de la pantalla.
 
     ![Pestaña de opciones](./media/site-recovery-how-to-install-linux-master-target/media/image20.png)
 
-    Hola **parámetros de configuración** opción no está disponible cuando se está ejecutando la máquina de Hola. toomake esta ficha activa, apagar la máquina virtual de Hola.
+    La opción **Configuration Parameters** (Parámetros de configuración) no está disponible cuando la máquina está en ejecución. Para activar esta pestaña, apague la máquina virtual.
 
 5. Vea si ya existe una fila con **disk.EnableUUID**.
 
-    - Si el valor de hello existe y está establecido demasiado**False**, cambie el valor de hello demasiado**True**. (los valores de hello no distinguen mayúsculas de minúsculas).
+    - Si el valor existe y está establecido en **False**, cámbielo a **True**. (Los valores no distinguen mayúsculas de minúsculas).
 
-    - Si el valor de hello existe y está establecido demasiado**True**, seleccione **cancelar**.
+    - Si el valor existe y está establecido en **True**, seleccione **Cancelar**.
 
-    - Si no existe el valor de hello, seleccione **Agregar fila**.
+    - Si el valor no existe, seleccione **Agregar fila**.
 
-    - En la columna de nombre de hello, agregue **disco. EnableUUID**y, a continuación, establezca el valor de hello demasiado**TRUE**.
+    - En la columna de nombre, agregue **disk.EnableUUID** y luego establezca el valor en **TRUE**.
 
     ![Comprobación de si el disk.EnableUUID existe](./media/site-recovery-how-to-install-linux-master-target/media/image21.png)
 
 #### <a name="disable-kernel-upgrades"></a>Deshabilitación de actualizaciones de kernel
 
-Servidor de destino maestro de Azure Site Recovery requiere una versión muy específica de hello Ubuntu, asegúrese de que las actualizaciones de kernel Hola están deshabilitadas para la máquina virtual de Hola.
+El servidor de destino maestro de Azure Site Recovery exige una versión muy concreta de Ubuntu, así que asegúrese de que las actualizaciones del kernel se deshabiliten para la máquina virtual.
 
-Si están habilitadas las actualizaciones de kernel, las actualizaciones normales provocar toomalfunction de servidor de destino maestro Hola.
+Si están habilitadas, las actualizaciones normales hacen que el servidor de destino maestro no funcione correctamente.
 
 #### <a name="download-and-install-additional-packages"></a>Descarga e instalación de paquetes adicionales
 
 > [!NOTE]
-> Asegúrese de que tiene toodownload de conectividad de Internet e instale paquetes adicionales. Si no tiene conectividad a Internet, necesita toomanually encontrar estos paquetes RPM e instalarlas.
+> Asegúrese de que tiene conectividad a Internet para descargar e instalar paquetes adicionales. Si no tiene conectividad a Internet, tiene que encontrar manualmente estos paquetes RPM e instalarlos.
 
 ```
 apt-get install -y multipath-tools lsscsi python-pyasn1 lvm2 kpartx
 ```
 
-### <a name="get-hello-installer-for-setup"></a>Obtener el instalador de hello para el programa de instalación
+### <a name="get-the-installer-for-setup"></a>Obtención del instalador para la configuración
 
-Si el destino maestro tiene conectividad a Internet, puede usar Hola después de instalador de pasos toodownload Hola. En caso contrario, puede copiar a instalador Hola Hola servidor de procesos y, a continuación, vuelva a instalarlo.
+Si el destino maestro tiene conectividad a Internet, puede usar los pasos siguientes para descargar el instalador. De lo contrario, puede copiar el instalador del servidor de procesos y luego instalarlo.
 
-#### <a name="download-hello-master-target-installation-packages"></a>Descargar los paquetes de instalación de destino maestro Hola
+#### <a name="download-the-master-target-installation-packages"></a>Descarga de los paquetes de instalación del destino maestro
 
-[Descargar los bits de instalación de Linux más recientes de hello destino maestro](https://aka.ms/latestlinuxmobsvc).
+[Descargue los bits más recientes de instalación del destino maestro de Linux](https://aka.ms/latestlinuxmobsvc).
 
-toodownload mediante Linux, tipo:
+Para descargarlos mediante Linux, escriba:
 
 ```
 wget https://aka.ms/latestlinuxmobsvc -O latestlinuxmobsvc.tar.gz
 ```
 
-Asegúrese de que se descargue y descomprima al instalador de hello en su directorio particular. Si se descomprimen demasiado**/usr/Local**, a continuación, se produce un error en la instalación de Hola.
+Asegúrese de que descarga y descomprime el instalador en el directorio principal. Si lo descomprime en **/usr/Local**, se produce un error en la instalación.
 
 
-#### <a name="access-hello-installer-from-hello-process-server"></a>Instalador de Access Hola Hola del servidor de procesos
+#### <a name="access-the-installer-from-the-process-server"></a>Acceso al instalador desde el servidor de procesos
 
-1. En el servidor de procesos de Hola y vaya demasiado**C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository**.
+1. En el servidor de procesos, vaya a **C:\Archivos de programa (x86)\Microsoft Azure Site Recovery\home\svsystems\pushinstallsvc\repository**.
 
-2. Copie el archivo de instalador necesarios de Hola Hola servidor de procesos y guárdelo como **latestlinuxmobsvc.tar.gz** en su directorio particular.
+2. Copie el archivo necesario del instalador del servidor de procesos y guárdelo como **latestlinuxmobsvc.tar.gz** en el directorio principal.
 
 
 ### <a name="apply-custom-configuration-changes"></a>Aplicación de cambios en la configuración personalizada
 
-cambios de configuración personalizada de tooapply, usar hello pasos:
+Para aplicar cambios de configuración personalizados, siga estos pasos:
 
 
-1. Ejecute hello después binario de comando toountar Hola.
+1. Ejecute el siguiente comando para descomprimir el archivo binario.
     ```
     tar -zxvf latestlinuxmobsvc.tar.gz
     ```
-    ![Captura de pantalla de hello comando toorun](./media/site-recovery-how-to-install-linux-master-target/image16.png)
+    ![Captura de pantalla del comando que se va a ejecutar](./media/site-recovery-how-to-install-linux-master-target/image16.png)
 
-2. Siguiente ejecución Hola comando toogive permiso.
+2. Ejecute el comando siguiente para conceder permiso.
     ```
     chmod 755 ./ApplyCustomChanges.sh
     ```
 
-3. Ejecute hello sigue la secuencia de comandos toorun Hola.
+3. Ejecute el siguiente comando para ejecutar el script.
     ```
     ./ApplyCustomChanges.sh
     ```
 > [!NOTE]
-> Ejecutar script de Hola solo una vez en el servidor de Hola. Apague el servidor de Hola. A continuación, reinicie servidor hello después de agregar un disco, como se describe en la sección siguiente Hola.
+> Ejecute el script sólo una vez en el servidor. Cierre el servidor. Después de agregar un disco, reinicie el servidor como se explica en la siguiente sección.
 
-### <a name="add-a-retention-disk-toohello-linux-master-target-virtual-machine"></a>Agregar una máquina virtual del destino maestro de Linux de retención disco toohello
+### <a name="add-a-retention-disk-to-the-linux-master-target-virtual-machine"></a>Adición de un disco de retención a la máquina virtual de destino maestro de Linux
 
-Usar hello siguiendo los pasos toocreate un disco de retención:
+Use los pasos siguientes para crear un disco de retención:
 
-1. Adjuntar una nueva máquina de virtual de disco de 1 TB toohello Linux destino maestro y, a continuación, inicie el equipo de Hola.
+1. Conecte un nuevo disco de 1 TB a la máquina virtual de destino maestro Linux y luego iníciela.
 
-2. Hola de uso **comando multipath -ll** identificador de comando toolearn Hola múltiples rutas de acceso del disco de retención de Hola.
+2. Use el comando **multipath -ll** para conocer el identificador de múltiples rutas del disco de retención.
 
     ```
     multipath -ll
     ```
-    ![Id. de múltiples rutas de Hello del disco de retención de Hola](./media/site-recovery-how-to-install-linux-master-target/media/image22.png)
+    ![El identificador de múltiples rutas del disco de retención](./media/site-recovery-how-to-install-linux-master-target/media/image22.png)
 
-3. Formatear la unidad de hello y, a continuación, cree un sistema de archivos en la nueva unidad de Hola.
+3. Aplique formato a la unidad y luego cree un sistema de archivos en ella.
 
     ```
     mkfs.ext4 /dev/mapper/<Retention disk's multipath id>
     ```
-    ![Crear un sistema de archivos en la unidad de Hola](./media/site-recovery-how-to-install-linux-master-target/media/image23.png)
+    ![Creación de un sistema de archivos en la unidad](./media/site-recovery-how-to-install-linux-master-target/media/image23.png)
 
-4. Después de crear el sistema de archivos de hello, montar el disco de retención de Hola.
+4. Después de crear el sistema de archivos, monte el disco de retención.
     ```
     mkdir /mnt/retention
     mount /dev/mapper/<Retention disk's multipath id> /mnt/retention
     ```
-    ![Disco de retención de Hola de montaje](./media/site-recovery-how-to-install-linux-master-target/media/image24.png)
+    ![Montaje del disco de retención](./media/site-recovery-how-to-install-linux-master-target/media/image24.png)
 
-5. Crear hello **fstab** unidad de retención de Hola de entrada toomount cada vez que inicia el sistema de Hola.
+5. Cree la entrada **fstab** para montar la unidad de retención cada vez que se inicie el sistema.
     ```
     vi /etc/fstab
     ```
-    Seleccione **insertar** toobegin Editar archivo hello. Crear una nueva línea y, a continuación, insertar Hola después de texto. Editar Hola disco identificador múltiples rutas de acceso basado en Id. de múltiples rutas de hello resaltado del comando anterior Hola.
+    Seleccione **Insertar** para comenzar a editar el archivo. Cree una nueva línea y luego inserte el siguiente texto. Edite el identificador de múltiples rutas del disco basándose en el identificador de múltiples rutas resaltado del comando anterior.
 
     **/dev/mapper/<Retention disks multipath id> /mnt/retention ext4 rw 0 0**
 
-    Seleccione **Esc**y, a continuación, escriba **: wq** (escribir y salir) ventana del editor tooclose Hola.
+    Seleccione **Esc** y luego escriba **:wq** (escribir y salir) para cerrar la ventana del editor.
 
-### <a name="install-hello-master-target"></a>Instalar el destino maestro Hola
+### <a name="install-the-master-target"></a>Instalación del destino maestro
 
 > [!IMPORTANT]
-> versión de Hola Hola maestra del servidor de destino debe ser anterior a las versiones de servidor de procesos de Hola y el servidor de configuración de Hola Hola tooor igual. Si no se cumple esta condición, la reprotección se realiza correctamente, pero se produce un error en la replicación.
+> La versión del servidor de destino maestro debe ser igual o anterior a las versiones del servidor de procesos y el servidor de configuración. Si no se cumple esta condición, la reprotección se realiza correctamente, pero se produce un error en la replicación.
 
 
 > [!NOTE]
-> Antes de instalar el servidor de destino maestro de hello, compruebe que hello **/etcetera/hosts** archivo en la máquina virtual de hello contiene entradas que se asignan direcciones IP de toohello de nombre de host local de Hola que están asociadas con todos los adaptadores de red.
+> Antes de instalar el servidor de destino maestro, compruebe que el archivo **/etc/hosts** de la máquina virtual contiene entradas que asignan el nombre de host local a las direcciones IP asociadas a todos los adaptadores de red.
 
-1. Copie la frase de contraseña de Hola de **C:\ProgramData\Microsoft Azure sitio Recovery\private\connection.passphrase** en el servidor de configuración de Hola. A continuación, guárdelo como **passphrase.txt** Hola mismo directorio local mediante la ejecución de Hola el siguiente comando:
+1. Copie la frase de contraseña de **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.passphrase** en el servidor de configuración. Luego guarde como **passphrase.txt** en el mismo directorio local al ejecutar el comando siguiente:
 
     ```
     echo <passphrase> >passphrase.txt
@@ -323,9 +323,9 @@ Usar hello siguiendo los pasos toocreate un disco de retención:
     echo itUx70I47uxDuUVY >passphrase.txt
     ```
 
-2. Anote la dirección IP del servidor de configuración de Hola. Se necesitará en el paso siguiente de Hola.
+2. Anote la dirección IP del servidor de configuración. La necesitará en el paso siguiente.
 
-3. Ejecute hello siguiente servidor de destino maestro de comando tooinstall hello y registre el servidor de hello con servidor de configuración de Hola.
+3. Ejecute el siguiente comando para instalar el servidor de destino maestro y registre el servidor con el servidor de configuración.
 
     ```
     ./install -q -d /usr/local/ASR -r MT -v VmWare
@@ -338,26 +338,26 @@ Usar hello siguiendo los pasos toocreate un disco de retención:
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
     ```
 
-    Espere a que finalice el script de Hola. Si el destino maestro Hola registra correctamente, destino maestro Hola aparece en hello **infraestructura del sitio de recuperación** página del portal de Hola.
+    Espere a que finalice el script. Si el destino maestro se registra correctamente, aparece en la página **Infraestructura de Site Recovery** del portal.
 
 
-#### <a name="install-hello-master-target-by-using-interactive-installation"></a>Instalar el destino maestro hello mediante la instalación interactiva
+#### <a name="install-the-master-target-by-using-interactive-installation"></a>Instalación del destino maestro mediante la instalación interactiva
 
-1. Ejecute hello siguiendo el destino maestros del comando tooinstall Hola. Para el rol de agente de hello, elija **destino maestro**.
+1. Ejecute el siguiente comando para instalar el destino maestro. Para el rol de agente, elija **Destino maestro**.
 
     ```
     ./install
     ```
 
-2. Elegir ubicación predeterminada de hello para la instalación y, a continuación, seleccione **ENTRAR** toocontinue.
+2. Elija la ubicación predeterminada para la instalación y luego seleccione **Entrar** para continuar.
 
     ![Elección de una ubicación predeterminada para la instalación del destino maestro](./media/site-recovery-how-to-install-linux-master-target/image17.png)
 
-Cuando haya finalizado la instalación de hello, registrar el servidor de configuración de hello mediante el uso de la línea de comandos de Hola.
+Una vez finalizada la instalación, registre el servidor de configuración mediante la línea de comandos.
 
-1. Anote la dirección IP de Hola Hola del servidor de configuración. Se necesitará en el paso siguiente de Hola.
+1. Anote la dirección IP del servidor de configuración. La necesitará en el paso siguiente.
 
-2. Ejecute hello siguiente servidor de destino maestro de comando tooinstall hello y registre el servidor de hello con servidor de configuración de Hola.
+2. Ejecute el siguiente comando para instalar el servidor de destino maestro y registre el servidor con el servidor de configuración.
 
     ```
     ./install -q -d /usr/local/ASR -r MT -v VmWare
@@ -369,34 +369,34 @@ Cuando haya finalizado la instalación de hello, registrar el servidor de config
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
     ```
 
-   Espere a que finalice el script de Hola. Si el destino maestro de hello está registrado correctamente, destino maestro Hola aparece en hello **infraestructura del sitio de recuperación** página del portal de Hola.
+   Espere a que finalice el script. Si el destino maestro se ha registrado correctamente, aparece en la página **Infraestructura de Site Recovery** del portal.
 
 
-### <a name="upgrade-hello-master-target"></a>Actualizar el destino maestro Hola
+### <a name="upgrade-the-master-target"></a>Actualización del destino maestro
 
-Ejecute al instalador de Hola. Detecta automáticamente que ese agente Hola está instalado en el destino maestro Hola. tooupgrade, seleccione **Y**.  Una vez completado el programa de instalación de hello, comprobar la versión de Hola de destino maestro Hola instalado mediante el siguiente comando de Hola.
+Ejecute al programa de instalación. Detecta automáticamente que el agente está instalado en el destino maestro. Para actualizar, seleccione **Y**.  Una vez finalizada la instalación, compruebe la versión del destino maestro instalado mediante el siguiente comando.
 
     ```
     cat /usr/local/.vx_version
     ```
 
-Puede ver que hello **versión** campo proporciona el número de versión de Hola de destino maestro Hola.
+Puede ver que el campo **Versión** indica el número de versión del destino maestro.
 
-### <a name="install-vmware-tools-on-hello-master-target-server"></a>Instalar las herramientas de VMware en el servidor de destino maestro Hola
+### <a name="install-vmware-tools-on-the-master-target-server"></a>Instale las herramientas de VMware en el servidor de destino principal.
 
-Debe tooinstall las herramientas de VMware en el destino maestro de Hola para que puedan detectar Hola almacenes de datos. Si no se instalan herramientas de hello, pantalla de bienvenida reprotección no aparece en los almacenes de datos de Hola. Tras la instalación de las herramientas de VMware hello, deberá toorestart.
+Debe instalar las herramientas de VMware en el destino maestro para poder detectar los almacenes de datos. Si las herramientas no están instaladas, la pantalla de reprotección no aparece en los almacenes de datos. Después de la instalación de las herramientas de VMware, tiene que reiniciar.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Después de instalación de Hola y el registro de destino maestro hello tiene finsihed, puede ver destino maestro Hola aparecen en hello **destino maestro** sección **infraestructura del sitio de recuperación**, bajo Hola información general del servidor de configuración.
+Una vez que han terminado la instalación y el registro del destino maestro, puede ver este en la sección **Destino maestro** de **Infraestructura de Site Recovery**, en la información general del servidor de configuración.
 
 Ahora ya puede continuar con la [reprotección](site-recovery-how-to-reprotect.md), seguido de la conmutación por recuperación.
 
 ## <a name="common-issues"></a>Problemas comunes
 
-* Asegúrese de no activar Storage vMotion en ningún componente de administración como, por ejemplo, un destino maestro. Si se mueve destino maestro Hola después un reprotección correcta, no se puede desasociar discos de máquina virtual de hello (VMDK). En este caso se produce un error en la conmutación por recuperación.
+* Asegúrese de no activar Storage vMotion en ningún componente de administración como, por ejemplo, un destino maestro. Si el destino maestro se mueve después de un reprotección correcta, no se pueden desasociar los discos de máquina virtual (VMDK). En este caso se produce un error en la conmutación por recuperación.
 
-* destino maestro Hello no debería tener todas las instantáneas de máquina virtual de Hola. Si hay instantáneas, se produce un error en la conmutación por recuperación.
+* La máquina de destino maestro no debe contener ninguna instantánea en la máquina virtual. Si hay instantáneas, se produce un error en la conmutación por recuperación.
 
-* Debido a la configuración de la NIC de personalizada de toosome en algunos clientes, está deshabilitada de interfaz de red de Hola durante el inicio y no se puede inicializar el agente de destino maestro Hola. Asegúrese de que ese Hola propiedades siguientes se han definido correctamente. Comprobar /etc/sysconfig/network-scripts/ifcfg del archivo de tarjeta de estas propiedades en hello Ethernet-eth *.
+* Debido a ciertas configuraciones de NIC personalizadas en algunos clientes, la interfaz de red está deshabilitada durante el inicio, por lo que el agente del destino maestro no se puede inicializar. Asegúrese de que se han definido correctamente las siguientes propiedades. Compruebe estas propiedades en /etc/sysconfig/network-scripts/ifcfg-eth* del archivo de la tarjeta Ethernet.
     * BOOTPROTO=dhcp
     * ONBOOT=yes

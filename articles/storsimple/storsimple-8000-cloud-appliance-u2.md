@@ -1,6 +1,6 @@
 ---
-title: "aaaStorSimple 3 de actualización de dispositivo en la nube | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toocreate, implementar y administrar un dispositivo StorSimple de nube en una red virtual de Microsoft Azure. (Se aplica tooStorSimple Update 3 y posterior)."
+title: StorSimple Cloud Appliance Update 3 | Microsoft Docs
+description: Aprenda a crear, implementar y administrar una instancia de StorSimple Cloud Appliance en una red virtual de Microsoft Azure. (Se aplica a StorSimple Update 3 y versiones posteriores).
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,253 +14,253 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/10/2017
 ms.author: alkohli
-ms.openlocfilehash: ba60a629f1f4b8f0d4566eeb45bae8696f50d0af
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e7f58c8c1414f41d1d43e98b2faa327165f6eb75
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Implementación y administración de una instancia de StorSimple Cloud Appliance en Azure (Update 3 y versiones posteriores)
 
 ## <a name="overview"></a>Información general
 
-Hola dispositivo de StorSimple 8000 Series en la nube es una capacidad adicional que se incluye con la solución de StorSimple de Microsoft Azure. Hola dispositivo de StorSimple en la nube se ejecuta en una máquina virtual en una red virtual de Microsoft Azure, y puede usarlo tooback seguridad y clonar datos desde los hosts.
+El dispositivo de nube de StorSimple de la serie 8000 es una funcionalidad adicional que se incluye con la solución de Microsoft Azure StorSimple. StorSimple Cloud Appliance se ejecuta en una máquina virtual de una red virtual de Microsoft Azure y puede usarlo para realizar una copia de seguridad de los datos y clonarlos desde sus hosts.
 
-Este artículo describe Hola proceso paso a paso toodeploy y administrar un dispositivo StorSimple de nube en Azure. Después de leer este artículo, habrá aprendido lo siguiente:
+En este artículo se describe el proceso paso a paso de implementación y administración de una instancia de StorSimple Cloud Appliance en Azure. Después de leer este artículo, habrá aprendido lo siguiente:
 
-* Comprender cómo difiere el aparato de nube de hello de dispositivo físico de Hola.
-* Ser capaz de toocreate y configurar el dispositivo de nube de Hola.
-* Conecte el dispositivo de nube de toohello.
-* Obtenga información acerca de cómo toowork con hello en la nube de dispositivo.
+* Las diferencias entre el dispositivo de nube y el dispositivo físico.
+* La creación y configuración del dispositivo de nube.
+* La conexión al dispositivo de nube.
+* El uso del dispositivo de nube.
 
-Este tutorial aplica tooall Hola aparatos de nube de StorSimple ejecuta Update 3 y versiones posteriores.
+Este tutorial se aplica a todas las instancias de StorSimple Cloud Appliance que ejecutan Update 3 y posterior.
 
 #### <a name="cloud-appliance-model-comparison"></a>Comparación de los modelos de dispositivo de nube
 
-Hola dispositivo StorSimple de nube está disponible en dos modelos, una 8010 estándar (anteriormente conocido como Hola 1100) y una prima 8020 (introducida en Update 2). Hello en la tabla siguiente presenta una comparación de dos modelos de Hola.
+StorSimple Cloud Appliance está disponible en dos modelos, el 8010 estándar (antes conocido como 1100) y el premium 8020 (introducido en Update 2). En la tabla siguiente se presenta una comparación de los dos modelos.
 
 | Modelo de dispositivo | 8010<sup>1</sup> | 8020 |
 | --- | --- | --- |
 | **Capacidad máxima** |30 TB |64 TB |
 | **MV de Azure** |Standard_A3 (4 núcleos, 7 GB de memoria)| Standard_DS3 (4 núcleos, 14 GB de memoria)|
-| **Disponibilidad en regiones** |Todas las regiones de Azure |Regiones de Azure que admiten Premium Storage y máquinas virtuales de Azure DS3<br></br>Use [esta lista](https://azure.microsoft.com/regions/services/) toosee si **máquinas virtuales > DS-series** y **almacenamiento > el almacenamiento en disco** están disponibles en su región. |
-| **Tipo de almacenamiento** |Usa el almacenamiento estándar de Azure para discos locales <br></br> Obtenga información acerca de cómo demasiado[crear una cuenta de almacenamiento estándar](../storage/common/storage-create-storage-account.md) |Usa el almacenamiento premium de Azure para discos locales<sup>2</sup> <br></br>Obtenga información acerca de cómo demasiado[crear una cuenta de almacenamiento Premium](../storage/common/storage-premium-storage.md) |
+| **Disponibilidad en regiones** |Todas las regiones de Azure |Regiones de Azure que admiten Premium Storage y máquinas virtuales de Azure DS3<br></br>Use [esta lista](https://azure.microsoft.com/regions/services/) para ver si las dos opciones **Virtual Machines > Serie DS** y **Storage > Almacenamiento en disco** están disponibles en su región. |
+| **Tipo de almacenamiento** |Usa el almacenamiento estándar de Azure para discos locales <br></br> Infórmese de cómo [crear una cuenta de almacenamiento estándar](../storage/common/storage-create-storage-account.md) |Usa el almacenamiento premium de Azure para discos locales<sup>2</sup> <br></br>Infórmese de cómo [crear una cuenta de Premium Storage ](../storage/common/storage-premium-storage.md) |
 | **Guía de la carga de trabajo** |Recuperación a nivel de elemento de archivos de copias de seguridad |Escenarios de desarrollo y pruebas de la nube <br></br>Baja latencia y cargas de trabajo de rendimiento más elevado<br></br>Dispositivo secundario para recuperación ante desastres |
 
-<sup>1</sup> *anteriormente conocido como Hola 1100*.
+<sup>1</sup> *Anteriormente conocido como 1100*.
 
-<sup>2</sup> *ambos Hola 8010 y 8020 usar almacenamiento de Azure estándar para diferencia Hola Hola en la nube de nivel. solo se encuentra en la capa local de hello en dispositivo hello*.
+<sup>2</sup> *8010 y 8020 usan el almacenamiento estándar de Azure para el nivel de nube. La diferencia solo existe en el nivel local del dispositivo*.
 
-## <a name="how-hello-cloud-appliance-differs-from-hello-physical-device"></a>Diferencias de dispositivo de nube de hello de dispositivo físico de Hola
+## <a name="how-the-cloud-appliance-differs-from-the-physical-device"></a>Diferencias entre el dispositivo de nube y el dispositivo físico
 
-Hola aparato de nube de StorSimple es una versión exclusivamente en software de StorSimple que se ejecuta en un único nodo en una máquina Virtual de Microsoft Azure. dispositivo de nube de Hello es compatible con escenarios de recuperación ante desastres en el que el dispositivo físico no está disponible. aplicación de nube de Hello es adecuado para su uso en la recuperación de nivel de elemento de las copias de seguridad, recuperación ante desastres de local y los escenarios de desarrollo y pruebas de la nube.
+StorSimple Cloud Appliance es una versión solo de software de StorSimple que se ejecuta en un único nodo en una máquina virtual de Microsoft Azure. El dispositivo en la nube es compatible con escenarios de recuperación ante desastres en el que el dispositivo físico no está disponible. El dispositivo en la nube es adecuado para su uso en la recuperación de elementos de copias de seguridad, en la recuperación ante desastres local y en escenarios de desarrollo y pruebas en la nube.
 
-#### <a name="differences-from-hello-physical-device"></a>Diferencias de dispositivo físico de Hola
+#### <a name="differences-from-the-physical-device"></a>Diferencias del dispositivo físico
 
-Hello tabla siguiente muestran algunas diferencias clave entre hello de dispositivo de StorSimple en la nube y el dispositivo físico StorSimple Hola.
+En la tabla siguiente se muestran algunas diferencias clave entre StorSimple Cloud Appliance y el dispositivo físico StorSimple:
 
 |  | Dispositivo físico | Dispositivo de nube |
 | --- | --- | --- |
-| **Ubicación** |Se encuentra en el centro de datos de Hola. |Se ejecuta en Azure. |
+| **Ubicación** |Se encuentra en el centro de datos. |Se ejecuta en Azure. |
 | **Interfaces de red** |Tiene seis interfaces de red: de DATA 0 a DATA 5. |Solo tiene una interfaz de red: DATA 0. |
-| **Registro** |Registrado durante el paso de configuración inicial de Hola. |Registrado a través de una tarea independiente. |
-| **Clave de cifrado de datos de servicio** |Volver a generar en el dispositivo físico de hello y, a continuación, actualizar dispositivo de hello en la nube con una clave nueva de Hola. |No se puede volver a generar de dispositivo de hello en la nube. |
+| **Registro** |Se registra durante el paso de configuración inicial. |Registrado a través de una tarea independiente. |
+| **Clave de cifrado de datos de servicio** |Se regenera en el dispositivo físico y luego actualiza el dispositivo de nube con la nueva clave. |No se puede regenerar desde el dispositivo de nube. |
 | **Tipos de volúmenes admitidos** |Admite volúmenes conectados localmente y por niveles. |Admite solo volúmenes por niveles. |
 
-## <a name="prerequisites-for-hello-cloud-appliance"></a>Requisitos previos para la aplicación de nube de Hola
+## <a name="prerequisites-for-the-cloud-appliance"></a>Requisitos previos del dispositivo de nube
 
-Hello las secciones siguientes explica los requisitos previos de configuración de hello para el dispositivo de StorSimple en la nube. Antes de implementar una aplicación en la nube, revise las consideraciones de seguridad de hello para el uso de un dispositivo de nube.
+En las siguientes secciones se explican los requisitos previos de configuración de StorSimple Cloud Appliance. Antes de implementar un dispositivo de nube, revise las consideraciones de seguridad relacionadas sobre su uso.
 
 [!INCLUDE [StorSimple Cloud Appliance security](../../includes/storsimple-8000-cloud-appliance-security.md)]
 
 #### <a name="azure-requirements"></a>Requisitos de Azure
 
-Antes de que aprovisione el dispositivo de nube de hello, necesita hello toomake siguientes preparativos en el entorno de Azure:
+Antes de aprovisionar el dispositivo de nube, debe realizar los siguientes preparativos en el entorno de Azure:
 
-* Asegúrese de que tiene un dispositivo físico StorSimple 8000 series (modelo 8100 o 8600) implementado y en ejecución en el centro de datos. Registrar este dispositivo con Hola mismo servicio de administrador de dispositivos de StorSimple que piensa toocreate un dispositivo de StorSimple en la nube para.
-* Para el dispositivo de la nube de hello, [configurar una red virtual en Azure](../virtual-network/virtual-networks-create-vnet-arm-pportal.md). Si usa Almacenamiento premium, tiene que crear una red virtual en una región de Azure que admita dicho almacenamiento. regiones de almacenamiento Premium de Hello son regiones que corresponden fila toohello para almacenamiento en disco en hello [lista de servicios de Azure por región](https://azure.microsoft.com/regions/services/).
-* Se recomienda que realice Hola servidor DNS proporcionada por Azure en lugar de especificar su propio nombre del servidor DNS. Si el nombre del servidor DNS no es válido o si el servidor DNS de hello no tooresolve capaz de las direcciones IP correctamente, se produce un error en la creación de hello de dispositivo de hello en la nube.
+* Asegúrese de que tiene un dispositivo físico StorSimple 8000 series (modelo 8100 o 8600) implementado y en ejecución en el centro de datos. Registre este dispositivo con el mismo servicio de StorSimple Device Manager para el que va a crear un StorSimple Cloud Appliance.
+* Para el dispositivo de nube, [configure una red virtual en Azure](../virtual-network/virtual-networks-create-vnet-arm-pportal.md). Si usa Almacenamiento premium, tiene que crear una red virtual en una región de Azure que admita dicho almacenamiento. Las regiones Premium Storage son las que corresponden a la fila de almacenamiento en disco de la [lista de servicios de Azure por región](https://azure.microsoft.com/regions/services/).
+* Se recomienda usar el servidor DNS predeterminado proporcionado por Azure en lugar de especificar su propio nombre de servidor DNS. Si el nombre del servidor DNS no es válido o si el servidor DNS no es capaz de resolver direcciones IP correctamente, la creación del dispositivo de nube dará error.
 * Punto a sitio y sitio a sitio son opcionales, pero no obligatorios. Si lo desea, puede configurar estas opciones para escenarios más avanzados.
-* Puede crear [máquinas virtuales de Azure](../virtual-machines/virtual-machines-windows-quick-create-portal.md) (servidores de host) en red virtual de Hola que puede usar los volúmenes de hello expuestos por dispositivo de hello en la nube. Estos servidores deben cumplir Hola según los requisitos:
+* Puede crear [máquinas virtuales de Azure](../virtual-machines/virtual-machines-windows-quick-create-portal.md) (servidores host) en la red virtual que pueden usar los volúmenes expuestos por el dispositivo de nube. Estos servidores deben cumplir los siguientes requisitos:
 
   * Estar en máquinas virtuales de Windows o Linux con el software iSCSI Initiator instalado.
-  * Se ejecuta en hello misma red virtual como dispositivo de hello en la nube.
-  * Ser capaz de tooconnect toohello iSCSI destino del dispositivo de nube Hola a través de la dirección IP interna de hello de dispositivo de la nube de Hola.
-  * Asegúrese de que haya habilitado la compatibilidad para iSCSI y nube tráfico en hello misma red virtual.
+  * Estar ejecutándose en la misma red virtual que el dispositivo de nube.
+  * Ser capaces de conectarse al destino iSCSI del dispositivo de nube a través de su dirección IP interna.
+  * Asegúrese de que haya habilitado la compatibilidad para el tráfico iSCSI y en la nube en la misma red virtual.
 
 #### <a name="storsimple-requirements"></a>Requisitos de StorSimple
 
-Asegúrese de hello después el servicio de administrador de dispositivos de StorSimple de tooyour de actualizaciones antes de crear un dispositivo de nube:
+Realice las siguientes actualizaciones de su servicio StorSimple Device Manager antes de crear un dispositivo de nube:
 
-* Agregar [accedan a los registros de control](storsimple-8000-manage-acrs.md) para máquinas virtuales de Hola que son servidores de host de curso toobe hello para el dispositivo en la nube.
-* Use un [cuenta de almacenamiento](storsimple-8000-manage-storage-accounts.md#add-a-storage-account) Hola misma región que el dispositivo de hello en la nube. Las cuentas de almacenamiento en regiones diferentes pueden causar un bajo rendimiento. Puede usar una cuenta estándar o Premium almacenamiento con dispositivo de hello en la nube. Para obtener más información acerca de cómo toocreate una [cuenta de almacenamiento estándar](../storage/common/storage-create-storage-account.md) o un [cuenta de almacenamiento Premium](../storage/common/storage-premium-storage.md)
-* Usar una cuenta de almacenamiento diferentes para la creación de dispositivo de nube de hello uno utilizado para los datos. Utilizando la misma cuenta de almacenamiento puede causar un bajo rendimiento de Hola.
+* Agregue [registros de control de acceso](storsimple-8000-manage-acrs.md) para las máquinas virtuales que vayan a ser servidores host para el dispositivo de nube.
+* Use una [cuenta de almacenamiento](storsimple-8000-manage-storage-accounts.md#add-a-storage-account) de la misma región que el dispositivo de nube. Las cuentas de almacenamiento en regiones diferentes pueden causar un bajo rendimiento. Puede usar una cuenta de almacenamiento Estándar o Premium con el dispositivo de nube. Obtenga más información sobre cómo crear una [cuenta de Standard Storage](../storage/common/storage-create-storage-account.md) o una [cuenta de Premium Storage](../storage/common/storage-premium-storage.md).
+* Use una cuenta de almacenamiento diferente para la creación del dispositivo de nube a partir de la que ha usado para sus datos. Utilizar la misma cuenta de almacenamiento puede causar un bajo rendimiento.
 
-Asegúrese de que haya Hola siguiente información antes de comenzar:
+Asegúrese de que tiene la siguiente información antes de empezar:
 
 * Su cuenta del portal de Azure con credenciales de acceso.
-* Una copia de la clave de cifrado de datos de servicio de hello de dispositivo físico registrado toohello servicio de administrador de dispositivos de StorSimple.
+* Una copia de la clave de cifrado de datos del servicio del dispositivo físico registrado en el servicio StorSimple Device Manager.
 
-## <a name="create-and-configure-hello-cloud-appliance"></a>Crear y configurar el dispositivo de hello en la nube
+## <a name="create-and-configure-the-cloud-appliance"></a>Creación y configuración del dispositivo de nube
 
-Antes de realizar estos procedimientos, asegúrese de que se ha cumplido hello [requisitos previos para la aplicación de nube de hello](#prerequisites-for-the-cloud-appliance).
+Antes de realizar estos procedimientos, asegúrese de que cumple los [requisitos previos del dispositivo de nube](#prerequisites-for-the-cloud-appliance).
 
-Realizar Hola siguiendo los pasos toocreate un dispositivo de StorSimple en la nube.
+Para crear una instancia de StorSimple Cloud Appliance, siga estos pasos:
 
 ### <a name="step-1-create-a-cloud-appliance"></a>Paso 1: Creación de un dispositivo de nube
 
-Realizar Hola siguiendo los pasos toocreate Hola dispositivo de StorSimple en la nube.
+Para crear la instancia de StorSimple Cloud Appliance, realice los siguientes pasos:
 
 [!INCLUDE [Create a cloud appliance](../../includes/storsimple-8000-create-cloud-appliance-u2.md)]
 
-Si se produce un error en la creación de hello de dispositivo de la nube de hello en este paso, puede que no tenga conectividad toohello Internet. Para obtener más información, consulte demasiado[para solucionar problemas de conectividad de Internet](#troubleshoot-internet-connectivity-errors) al crear una aplicación de nube.
+Si se produce un error en este paso durante la creación del dispositivo de nube, quizás no tenga conexión a Internet. Para más información, vaya a la [solución de problemas de conexión a Internet](#troubleshoot-internet-connectivity-errors) al crear un dispositivo de nube.
 
-### <a name="step-2-configure-and-register-hello-cloud-appliance"></a>Paso 2: Configurar y registrar el dispositivo de hello en la nube
+### <a name="step-2-configure-and-register-the-cloud-appliance"></a>Paso 2: Configuración y registro del dispositivo de nube
 
-Antes de iniciar este procedimiento, asegúrese de que tiene una copia de la clave de cifrado de datos del servicio de Hola. la clave de cifrado de datos del servicio de Hola se crea cuando se registra el primer dispositivo físico de StorSimple con hello servicio Administrador de dispositivos de StorSimple. Estaban toosave siguiendo las instrucciones en una ubicación segura. Si no tiene una copia de la clave de cifrado de datos del servicio de hello, debe ponerse en contacto con Microsoft Support para obtener ayuda.
+Antes de comenzar este procedimiento, asegúrese de que tiene una copia de la clave de cifrado de datos del servicio. Esta clave se crea cuando se registra el primer dispositivo físico de StorSimple con el servicio StorSimple Device Manager. Se le pidió que la guardara en una ubicación segura. Si no tiene una copia de la clave de cifrado de datos del servicio, debe ponerse en contacto con Microsoft Support para obtener ayuda.
 
-Realizar Hola siguiendo los pasos tooconfigure y registrar su dispositivo de StorSimple en la nube.
+Realice los pasos siguientes para configurar y registrar su instancia de StorSimple Cloud Appliance.
 
 [!INCLUDE [Configure and register a cloud appliance](../../includes/storsimple-8000-configure-register-cloud-appliance.md)]
 
-### <a name="step-3-optional-modify-hello-device-configuration-settings"></a>Paso 3: Opciones de configuración de dispositivo (opcional) modificar Hola
+### <a name="step-3-optional-modify-the-device-configuration-settings"></a>Paso 3: (Opcional) Modificación de la configuración del dispositivo
 
-Hello siguiente sección describen opciones de configuración de dispositivo de hello necesarios para hello de dispositivo de StorSimple en la nube si desea toouse CHAP, Administrador de instantáneas StorSimple o cambiar la contraseña de administrador de dispositivos de Hola.
+En la siguiente sección se describen las opciones de configuración de dispositivo necesarias para StorSimple Cloud Appliance si desea usar CHAP, StorSimple Snapshot Manager o cambiar la contraseña del administrador de dispositivos.
 
-#### <a name="configure-hello-chap-initiator"></a>Configurar el iniciador CHAP Hola
+#### <a name="configure-the-chap-initiator"></a>Configuración del iniciador CHAP
 
-Este parámetro contiene las credenciales de Hola que su dispositivo en la nube (destino) espera de iniciadores de hello (servidores) que están tratando de volúmenes de hello tooaccess. iniciadores de Hello proporcionan un nombre de usuario y una tooidentify de contraseña CHAP por sí mismos tooyour dispositivo durante la autenticación. Para obtener instrucciones detalladas, vaya demasiado[configurar CHAP para el dispositivo](storsimple-8000-configure-chap.md#unidirectional-or-one-way-authentication).
+Este parámetro contiene las credenciales que espera el dispositivo de nube (destino) de los iniciadores (servidores) que intentan obtener acceso a los volúmenes. Los iniciadores proporcionarán un nombre de usuario y una contraseña CHAP para identificarse en el dispositivo durante esta autenticación. Para obtener los pasos detallados necesarios, vaya a [Configurar CHAP para el dispositivo StorSimple](storsimple-8000-configure-chap.md#unidirectional-or-one-way-authentication).
 
-#### <a name="configure-hello-chap-target"></a>Configurar el destino CHAP Hola
+#### <a name="configure-the-chap-target"></a>Configuración del destino CHAP
 
-Este parámetro contiene las credenciales de Hola que su dispositivo en la nube que se usa cuando un iniciador habilitado para CHAP solicita la autenticación mutua o bidireccional. El dispositivo en la nube usa un nombre de usuario de CHAP inverso y tooidentify contraseña CHAP inverso propio toohello iniciador durante este proceso de autenticación.
-
-> [!NOTE]
-> Los valores de configuración de destino de CHAP son valores globales. Cuando se aplica esta configuración, todos los volúmenes de hello conectan autenticación de toohello en la nube dispositivo use CHAP.
-
-Para obtener instrucciones detalladas, vaya demasiado[configurar CHAP para el dispositivo](storsimple-8000-configure-chap.md#bidirectional-or-mutual-authentication).
-
-#### <a name="configure-hello-storsimple-snapshot-manager-password"></a>Configurar la contraseña de administrador de instantáneas StorSimple Hola
-
-Software de administrador de instantáneas StorSimple reside en el host de Windows y permite a los administradores toomanage copias de seguridad del dispositivo de StorSimple en forma de Hola de local y en la nube.
+Este parámetro contiene las credenciales que el dispositivo de nube usa cuando un iniciador habilitado para CHAP solicita autenticación mutua o bidireccional. El dispositivo de nube usa un nombre de usuario de CHAP inverso y una contraseña de CHAP inversa para identificarse en el iniciador durante este proceso de autenticación.
 
 > [!NOTE]
-> Para el dispositivo de la nube de hello, el host de Windows es una máquina virtual de Azure.
+> Los valores de configuración de destino de CHAP son valores globales. Cuando se aplica esta configuración, todos los volúmenes conectados al dispositivo de nube usan la autenticación CHAP.
 
-Al configurar un dispositivo en el Administrador de instantáneas StorSimple Hola, le preguntarán tooprovide Hola tooauthenticate de dirección y la contraseña de la IP del dispositivo StorSimple el dispositivo de almacenamiento. Para obtener instrucciones detalladas, vaya demasiado[contraseña de administrador de instantáneas de StorSimple configurar](storsimple-8000-change-passwords.md#set-the-storsimple-snapshot-manager-password).
+Para obtener los pasos detallados necesarios, vaya a [Configurar CHAP para el dispositivo StorSimple](storsimple-8000-configure-chap.md#bidirectional-or-mutual-authentication).
 
-#### <a name="change-hello-device-administrator-password"></a>Cambiar contraseña de administrador de dispositivo de Hola
+#### <a name="configure-the-storsimple-snapshot-manager-password"></a>Configuración de la contraseña de StorSimple Snapshot Manager
 
-Cuando usas tooaccess de interfaz de Windows PowerShell de Hola Hola aparato de nube, estás tooenter requiere una contraseña de administrador de dispositivos. Para la seguridad de Hola de los datos, debe cambiar esta contraseña para poder usar el dispositivo de hello en la nube. Para obtener instrucciones detalladas, vaya demasiado[Configurar contraseña de administrador](../storsimple/storsimple-8000-change-passwords.md#change-the-device-administrator-password).
+El software StorSimple Snapshot Manager reside en el host de Windows y permite a los administradores administrar copias de seguridad del dispositivo StorSimple en forma de instantáneas locales y en la nube.
 
-## <a name="connect-remotely-toohello-cloud-appliance"></a>Conectarse de forma remota toohello dispositivo de nube
+> [!NOTE]
+> Para el dispositivo de nube, el host de Windows es una máquina virtual de Azure.
 
-Dispositivo de nube tooyour de acceso remoto a través de la interfaz de Windows PowerShell de hello no está habilitado de forma predeterminada. Debe habilitar la administración remota en el dispositivo en la nube de hello en primer lugar, y en hello cliente usa aparato de nube tooaccess Hola.
+Al configurar un dispositivo en StorSimple Snapshot Manager, se le pide que proporcione la dirección IP del dispositivo StorSimple y la contraseña para autenticar el dispositivo de almacenamiento. Para obtener los pasos detallados necesarios, vaya a [Cambio de la contraseña de StorSimple Snapshot Manager](storsimple-8000-change-passwords.md#set-the-storsimple-snapshot-manager-password)
 
-Hola siguiendo el procedimiento de dos pasos describe cómo tooconnect remotamente tooyour en la nube dispositivo.
+#### <a name="change-the-device-administrator-password"></a>Cambio de la contraseña del administrador de dispositivos
+
+Cuando se usa la interfaz de Windows PowerShell para acceder al dispositivo de nube, se le pide que escriba una contraseña de administrador de dispositivos. Por la seguridad de los datos, debe cambiar esta contraseña para poder usar el dispositivo de nube. Para obtener los pasos detallados necesarios, vaya a [Cambio de la contraseña del administrador de dispositivos](../storsimple/storsimple-8000-change-passwords.md#change-the-device-administrator-password).
+
+## <a name="connect-remotely-to-the-cloud-appliance"></a>Conexión remota al dispositivo de nube
+
+El acceso remoto al dispositivo de nube mediante la interfaz de Windows PowerShell no está habilitado de forma predeterminada. Primero debe habilitar la administración remota en el dispositivo de nube y luego en el cliente usado para acceder a él.
+
+El siguiente procedimiento de dos pasos describe cómo conectarse de forma remota a su dispositivo de nube.
 
 ### <a name="step-1-configure-remote-management"></a>Paso 1: Configuración de la administración remota
 
-Realizar Hola siguiendo los pasos tooconfigure de administración remota para su dispositivo de StorSimple en la nube.
+Para configurar la administración remota para su instancia de StorSimple Cloud Appliance, realice los pasos siguientes:
 
 [!INCLUDE [Configure remote management via HTTP for cloud appliance](../../includes/storsimple-8000-configure-remote-management-http-device.md)]
 
-### <a name="step-2-remotely-access-hello-cloud-appliance"></a>Paso 2: Obtener acceso remoto a dispositivo de hello en la nube
+### <a name="step-2-remotely-access-the-cloud-appliance"></a>Paso 2: Acceso remoto al dispositivo de nube
 
-Después de habilitar la administración remota en el dispositivo de hello en la nube, use tooconnect toohello dispositivo de Windows PowerShell remoting desde otra máquina virtual dentro de hello misma red virtual. Por ejemplo, puede conectarse desde la máquina virtual que ha configurado y usado tooconnect iSCSI de host de Hola. En la mayoría de las implementaciones, se abrirá un punto de conexión público tooaccess su host de máquina virtual que puede utilizar para tener acceso a dispositivo de hello en la nube.
+Después de habilitar la administración remota en el dispositivo de nube, use la comunicación remota de Windows PowerShell para conectarse al dispositivo desde otra máquina virtual dentro de la misma red virtual. Por ejemplo, puede conectarse desde la máquina virtual host que configuró y usó para la conexión iSCSI. En la mayoría de las implementaciones, abrirá un punto de conexión público para acceder a su máquina virtual host que se puede usar para acceder al dispositivo de nube.
 
 > [!WARNING]
-> **Para mayor seguridad, recomendamos encarecidamente que use HTTPS al conectarse a los puntos de conexión de toohello y, a continuación, eliminar los puntos de conexión de hello después de haber completado la sesión remota de PowerShell.**
+> **Para mayor seguridad, se recomienda utilizar HTTPS al conectarse a los extremos y, a continuación, eliminar los extremos después de haber completado la sesión remota de PowerShell.**
 
-Debe seguir los procedimientos de hello en [conecta de forma remota el dispositivo de StorSimple tooyour](storsimple-8000-remote-connect.md) tooset el acceso remoto para su dispositivo en la nube.
+Para configurar la comunicación remota de su dispositivo de nube, debe seguir los procedimientos que se describen en [Conexión de forma remota al dispositivo StorSimple serie 8000](storsimple-8000-remote-connect.md).
 
-## <a name="connect-directly-toohello-cloud-appliance"></a>Conéctese directamente toohello dispositivo de nube
+## <a name="connect-directly-to-the-cloud-appliance"></a>Conexión directa al dispositivo de nube
 
-También puede conectar directamente toohello dispositivo de nube. tooconnect directamente el dispositivo desde otro equipo fuera de la nube toohello Hola red virtual o el entorno de Microsoft Azure Hola exterior, debe crear extremos adicionales.
+También puede conectarse directamente al dispositivo de nube. Para conectarse directamente al dispositivo de nube desde otro equipo fuera de la red virtual o del entorno de Microsoft Azure, debe crear puntos de conexión adicionales.
 
-Realizar Hola siguiendo los pasos toocreate un extremo público en el dispositivo de hello en la nube.
+Realice los pasos siguientes para crear un punto de conexión público en el dispositivo de nube.
 
 [!INCLUDE [Create public endpoints on a cloud appliance](../../includes/storsimple-8000-create-public-endpoints-cloud-appliance.md)]
 
-Se recomienda que se conecte desde otra máquina virtual dentro de hello mismo virtual porque esta práctica minimiza el número de Hola de extremos públicos de la red virtual de la red. En este caso, conectar la máquina virtual de toohello a través de una sesión de escritorio remoto y, a continuación, configure esa máquina virtual para su uso como lo haría con cualquier otro cliente de Windows en una red local. No es necesario el número de puerto público de hello tooappend porque ya se conoce el puerto de Hola.
+Se recomienda conectarse desde otra máquina virtual dentro de la misma red virtual, ya que esta práctica minimiza el número de puntos de conexión públicos de la red virtual. En este caso, conéctese a la máquina virtual mediante una sesión de escritorio remoto y, a continuación, configure esa máquina virtual para su uso como haría con cualquier otro cliente de Windows en una red local. No es necesario anexar el número de puerto público porque ya se conoce el puerto.
 
-## <a name="work-with-hello-storsimple-cloud-appliance"></a>Trabajar con hello de dispositivo de StorSimple en la nube
+## <a name="work-with-the-storsimple-cloud-appliance"></a>Uso de StorSimple Cloud Appliance
 
-Ahora que ha creado y configurado hello de dispositivo de StorSimple en la nube, está listo toostart trabajar con él. Puede trabajar con contenedores de volúmenes, volúmenes y directivas de copia de seguridad en un dispositivo de nube tal y como haría en un dispositivo físico de StorSimple. Hola única diferencia es que debe asegurarse de que selecciona el dispositivo de nube de hello de la lista de dispositivos de toomake. Consulte demasiado[usar toomanage de servicio de administrador de dispositivos de StorSimple Hola un dispositivo de nube](storsimple-8000-manager-service-administration.md) para conocer los procedimientos paso a paso de hello las tareas de administración distintos para aplicación de nube de Hola.
+Ahora que ha creado y configurado StorSimple Cloud Appliance, está listo para comenzar a trabajar con este servicio. Puede trabajar con contenedores de volúmenes, volúmenes y directivas de copia de seguridad en un dispositivo de nube tal y como haría en un dispositivo físico de StorSimple. La única diferencia es que debe asegurarse de seleccionar el dispositivo de nube de la lista de dispositivos. Consulte el artículo sobre [cómo usar el servicio StorSimple Device Manager para administrar un dispositivo de nube](storsimple-8000-manager-service-administration.md). En él encontrará procedimientos paso a paso de las diversas tareas de administración del dispositivo de nube.
 
-Hello siguientes secciones describen algunas de las diferencias de hello que encuentre al trabajar con el dispositivo de hello en la nube.
+En las siguientes secciones se describen algunas de las diferencias encontradas al trabajar con el dispositivo de nube.
 
 ### <a name="maintain-a-storsimple-cloud-appliance"></a>Mantenimiento de StorSimple Cloud Appliance
 
-Dado que es un dispositivo solo de software, mantenimiento de dispositivo de la nube de hello es mínimo cuando compara toomaintenance dispositivo físico de Hola.
+Dado que es un dispositivo solo de software, el mantenimiento del dispositivo de nube es mínimo en comparación con el mantenimiento del dispositivo físico.
 
-No se puede actualizar un dispositivo en la nube. Usar versión más reciente de Hola de software toocreate un nuevo dispositivo en la nube.
+No se puede actualizar un dispositivo en la nube. Use la versión más reciente del software para crear un nuevo dispositivo de nube.
 
 
 ### <a name="storage-accounts-for-a-cloud-appliance"></a>Cuentas de almacenamiento para un dispositivo de nube
 
-Las cuentas de almacenamiento se crean para su uso por hello servicio Administrador de dispositivos de StorSimple, por dispositivo de nube de Hola y por dispositivo físico de Hola. Al crear las cuentas de almacenamiento, se recomienda usar un identificador regional nombre descriptivo de Hola. Esto ayuda a asegurarse de que esa región Hola sea coherente a lo largo de todos los componentes de sistema de Hola de. Para un dispositivo en la nube, es importante que todos los componentes de hello están en hello mismos problemas de rendimiento de tooprevent de región.
+Las cuentas de almacenamiento que se usan las crean el servicio StorSimple Device Manager, el dispositivo de nube y el dispositivo físico. Al crear las cuentas de almacenamiento, se recomienda usar un identificador regional en el nombre descriptivo. Esto ayuda a garantizar que la región es coherente en todos los componentes del sistema. En el caso de un dispositivo de nube, es importante que todos los componentes estén en la misma región para evitar problemas de rendimiento.
 
-Para un procedimiento paso a paso, vaya demasiado[agregar una cuenta de almacenamiento](storsimple-8000-manage-storage-accounts.md#add-a-storage-account).
+Para conocer el procedimiento paso a paso, vaya a [Agregar una cuenta de almacenamiento](storsimple-8000-manage-storage-accounts.md#add-a-storage-account).
 
 ### <a name="deactivate-a-storsimple-cloud-appliance"></a>Desactivación de StorSimple Cloud Appliance
 
-Al desactivar un dispositivo de nube, Hola eliminan Hola VM y los recursos de hello creados en el aprovisionamiento. Después de dispositivo de la nube de hello está desactivada, no se puede restaurar el estado anterior de tooits. Antes de desactivar el dispositivo de nube de hello, realizar toostop seguro o eliminar los clientes y hosts que dependen de él.
+Al desactivar un dispositivo de nube, la acción elimina la máquina virtual y los recursos creados cuando se aprovisionó. Después de desactivar el dispositivo de nube, no se puede restaurar a su estado anterior. Antes de desactivarlo, asegúrese de detener o eliminar clientes y hosts que dependen de él.
 
-La desactivación de un dispositivo de nube genera Hola siguientes acciones:
+La desactivación de un dispositivo de nube da lugar a las siguientes acciones:
 
-* se quita el dispositivo de Hello en la nube.
-* disco de SO de Hola y discos de datos creados para el dispositivo de nube de Hola se quitan.
-* servicio hospedado de Hola y red virtual creados durante el aprovisionamiento se conservan. Si no los utiliza, debe eliminarlos manualmente.
-* Instantáneas en la nube creadas para el dispositivo de nube de Hola se conservan.
+* Se quita el dispositivo de nube.
+* Se quitan los discos de datos y del sistema operativo creados para el dispositivo de nube.
+* Se mantienen el servicio hospedado y la red virtual creados durante el aprovisionamiento. Si no los utiliza, debe eliminarlos manualmente.
+* Se conservan las instantáneas de nube creadas para el dispositivo de nube.
 
-Para un procedimiento paso a paso, vaya demasiado[desactivar y eliminar el dispositivo de StorSimple](storsimple-8000-deactivate-and-delete-device.md).
+Para obtener un procedimiento paso a paso, consulte [Desactivación y eliminación de un dispositivo de StorSimple](storsimple-8000-deactivate-and-delete-device.md).
 
-Tan pronto como dispositivo de hello en la nube se muestra como desactivado en el módulo de servicio del Administrador de dispositivos de StorSimple de hello, puede eliminar dispositivo de nube de Hola de lista de dispositivos en hello **dispositivos** hoja.
+Tan pronto como se muestre el dispositivo en la nube como desactivado en la hoja del servicio StorSimple Device Manager, puede eliminarlo de la lista de la hoja **Dispositivos**.
 
 ### <a name="start-stop-and-restart-a-cloud-appliance"></a>Inicio, detención y reinicio de un dispositivo de nube
-A diferencia de dispositivo físico de StorSimple de hello, no hay ningún energía o apagado toopush de botón en una aplicación de nube de StorSimple. Sin embargo, puede haber ocasiones donde necesita toostop y reinicie el dispositivo de hello en la nube.
+A diferencia del dispositivo físico de StorSimple, en un dispositivo de nube de StorSimple no hay ningún botón de encendido o apagado que presionar. Sin embargo, puede haber ocasiones en que deba detener y reiniciar el dispositivo de nube.
 
-Hola la manera más fácil para toostart, detenga y reinicie que está en un dispositivo de nube a través de la hoja de servicio de máquinas virtuales de Hola. Servicio de máquina Virtual de hello go. En la lista Hola de máquinas virtuales, identificar dispositivo Hola VM de nube de tooyour correspondiente (mismo nombre) y haga clic en nombre de la máquina virtual de Hola. Cuando se examina en la hoja de la máquina virtual, estado de dispositivo de hello en la nube es **ejecutando** ya que se inicia de forma predeterminada después de crearlo. Puede iniciar, detener y reiniciar una máquina virtual en cualquier momento.
+La manera más fácil de iniciar, detener y reiniciar un dispositivo en la nube es a través de la hoja del servicio Virtual Machines. Vaya el servicio Virtual Machines. En la lista de máquinas virtuales, identifique la máquina virtual correspondiente a su dispositivo de nube (mismo nombre) y haga clic en su nombre. Si examina la hoja de la máquina virtual, verá que el estado del dispositivo es **En ejecución** porque de forma predeterminada se inicia una vez que se crea. Puede iniciar, detener y reiniciar una máquina virtual en cualquier momento.
 
 [!INCLUDE [Stop and restart cloud appliance](../../includes/storsimple-8000-stop-restart-cloud-appliance.md)]
 
-### <a name="reset-toofactory-defaults"></a>Restablecer valores predeterminados de toofactory
-Si decide que desea toostart sobre con su dispositivo en la nube, desactivar y eliminar y, a continuación, cree uno nuevo.
+### <a name="reset-to-factory-defaults"></a>Restablecimiento de los valores predeterminados de fábrica
+Si decide que desea empezar de nuevo con su dispositivo de nube, desactívelo y elimínelo y, a continuación, cree uno nuevo.
 
-## <a name="fail-over-toohello-cloud-appliance"></a>Conmutar por error toohello dispositivo de nube
-Recuperación ante desastres (DR) es uno de hello escenarios clave que hello de dispositivo de StorSimple en la nube se diseñó para. En este escenario, Hola dispositivo StorSimple físico o todo centro de datos no estén disponible. Afortunadamente, puede usar una operación de toorestore de dispositivo de nube en una ubicación alternativa. Durante la recuperación ante desastres, contenedores de volúmenes de hello de dispositivo de origen Hola cambiar la propiedad y son toohello transfieren aparato de nube.
+## <a name="fail-over-to-the-cloud-appliance"></a>Conmutación por error al dispositivo de nube
+La recuperación ante desastres (DR) es uno de los escenarios clave para los que se diseñó StorSimple Cloud Appliance. En este escenario, es posible que el dispositivo físico de StorSimple o todo el centro de datos no estén disponible. Afortunadamente, puede usar un dispositivo de nube para las operaciones de restauración en una ubicación alternativa. Durante la recuperación ante desastres, los contenedores de volúmenes del dispositivo de origen cambian la propiedad y se transfieren al dispositivo de nube.
 
-requisitos previos de Hola para recuperación ante desastres son:
+Los requisitos previos de la recuperación ante desastres son:
 
-* dispositivo de nube de Hello creada y configurada.
-* Todos los volúmenes de Hola Hola contenedor de volumen están sin conexión.
-* contenedor de volúmenes de Hola que conmutar por error, tiene asociada una instantánea en la nube.
+* El dispositivo de nube se ha creado y configurado.
+* Todos los volúmenes del contenedor de volúmenes están sin conexión.
+* El contenedor de volúmenes que conmuta por error tiene asociada una instantánea de nube.
 
 > [!NOTE]
-> * Cuando se usa un dispositivo de nube como dispositivo secundaria Hola para recuperación ante desastres, tenga en cuenta que Hola 8010 tiene 30 TB de almacenamiento estándar y 8020 tiene 64 TB de almacenamiento Premium. Hola mayor capacidad 8020 nube dispositivo puede ser más adecuada para un escenario de recuperación ante desastres.
+> * Al usar un dispositivo de nube como dispositivo secundario para la recuperación ante desastres, tenga en cuenta que el 8010 tiene 30 TB de almacenamiento estándar y 8020 tiene 64 TB de Premium Storage. El dispositivo de nube de capacidad más alta, 8020, puede ser más adecuado para un escenario de conmutación por error.
 
-Para un procedimiento paso a paso, vaya demasiado[conmutar por dispositivo de nube tooa](storsimple-8000-device-failover-cloud-appliance.md).
+Para obtener un procedimiento paso a paso, consulte [Conmutación por error al dispositivo de nube](storsimple-8000-device-failover-cloud-appliance.md).
 
-## <a name="delete-hello-cloud-appliance"></a>Eliminar dispositivo de hello en la nube
-Si ha configurado y usado un dispositivo de StorSimple en la nube pero ahora desea toostop acumular cargas para su uso, debe detener la aplicación de nube de Hola. Dispositivo de nube Hola deteniendo desasigna Hola VM. De esta forma dejan de acumularse cargos en su suscripción. discos de datos y cargas de almacenamiento Hola Hola OS sin embargo continuará.
+## <a name="delete-the-cloud-appliance"></a>Eliminación del dispositivo de nube
+Si anteriormente configuró y usó StorSimple Cloud Appliance pero ahora desea dejar de acumular cargos por su uso, debe detener el dispositivo de nube. Al detener el dispositivo de nube se desasigna la máquina virtual. De esta forma dejan de acumularse cargos en su suscripción. Sin embargo, los gastos de almacenamiento por los discos de datos y del sistema operativo continuarán.
 
-se cobra toostop Hola a todos, debe eliminar dispositivo de hello en la nube. toodelete Hola copias de seguridad creadas por dispositivo de hello en la nube, puede desactivar o eliminar dispositivos de Hola. Para más información, consulte [Desactivación y eliminación de un dispositivo de StorSimple](storsimple-8000-deactivate-and-delete-device.md).
+Para detener todos los cargos, debe eliminar el dispositivo de nube. Para eliminar las copias de seguridad creadas por el dispositivo de nube, puede desactivar o eliminar el dispositivo. Para más información, consulte [Desactivación y eliminación de un dispositivo de StorSimple](storsimple-8000-deactivate-and-delete-device.md).
 
 [!INCLUDE [Delete a cloud appliance](../../includes/storsimple-8000-delete-cloud-appliance.md)]
 
 ## <a name="troubleshoot-internet-connectivity-errors"></a>Solucionar errores de conexión a Internet
-Durante la creación de hello de un dispositivo de nube, si no hay ningún toohello de conectividad de Internet, el paso de creación de hello produce un error. errores de conectividad de Internet tootroubleshoot, lleve a cabo Hola pasos de hello portal de Azure:
+Durante la creación del dispositivo de nube, si no hay conexión a Internet, el paso de creación dará error. Para solucionar problemas debidos a la conexión a Internet, realice los pasos siguientes en Azure Portal:
 
-1. [Creación de una máquina virtual con Windows Server 2012 en Azure](/articles/virtual-machines/windows/quick-create-portal.md). Debe usar esta máquina virtual Hola la misma cuenta de almacenamiento, red virtual y subred porque usada por el dispositivo en la nube. Si hay una existente host de Windows Server en Azure mediante Hola la misma cuenta de almacenamiento y red virtual, subred, también se puede utilizar conectividad a Internet tootroubleshoot Hola.
-2. Registro remoto en máquina virtual de hello creado en hello anterior paso.
-3. Abra una ventana de comandos dentro de la máquina virtual de hello (Win + R y, después, escriba `cmd`).
-4. Ejecute hello después cmd en el símbolo del sistema de Hola.
+1. [Creación de una máquina virtual con Windows Server 2012 en Azure](/articles/virtual-machines/windows/quick-create-portal.md). Esta máquina virtual debe usar la misma cuenta de almacenamiento, red virtual y subred que usa el dispositivo de nube. Si ya tiene un host de Windows Server en Azure con la misma cuenta de almacenamiento, red virtual y subred, también puede usarlo para solucionar los problemas de conexión a Internet.
+2. Inicie sesión de forma remota en la máquina virtual creada en el paso anterior.
+3. Abra una ventana de comandos en la máquina virtual (Win + R y, después, escriba `cmd`).
+4. En el símbolo del sistema, ejecute el siguiente comando.
 
     `nslookup windows.net`
-5. Si `nslookup` se produce un error, a continuación, error de conectividad de Internet está impidiendo que el dispositivo de nube de hello al registrar el servicio de administrador de dispositivos de StorSimple toohello.
-6. Realizar cambios de hello necesario tooyour tooensure de red virtual que Hola aparato de nube es capaz de tooaccess sitios de Azure como _windows.net_.
+5. Si `nslookup` produce un error, quiere decir que un error de conexión a Internet impide que el dispositivo de nube se registre en el servicio StorSimple Device Manager.
+6. Realice los cambios necesarios en la red virtual para garantizar que el dispositivo de nube pueda acceder a sitios de Azure como _windows.net_.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Obtenga información acerca de cómo demasiado[usar toomanage de servicio de administrador de dispositivos de StorSimple Hola un dispositivo de nube](storsimple-8000-manager-service-administration.md).
-* Comprender cómo demasiado[restaurar un volumen de StorSimple a partir de un conjunto de copia de seguridad](storsimple-8000-restore-from-backup-set-u2.md).
+* Aprenda a [usar el servicio StorSimple Device Manager para administrar un dispositivo de nube](storsimple-8000-manager-service-administration.md).
+* Sepa cómo [restaurar un volumen de StorSimple de un conjunto de copias de seguridad](storsimple-8000-restore-from-backup-set-u2.md).

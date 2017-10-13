@@ -1,6 +1,6 @@
 ---
-title: aaa "base de datos de Azure de la escala de la secuencia de comandos CLI de Azure para PostgreSQL | Documentos de Microsoft"
-description: "Ejemplo de secuencia de comandos para Azure CLI - base de datos de Azure de escala de nivel de rendimiento diferentes de PostgreSQL servidor tooa después de consultar las métricas de Hola."
+title: 'Script de la CLI de Azure: escalado de Azure Database for PostgreSQL (Base de datos de Azure para PostgreSQL) | Microsoft Docs'
+description: "Ejemplo de script de la CLI de Azure: escalado del servidor de Azure Database for PostgreSQL (Base de datos de Azure para PostgreSQL) a un nivel de rendimiento diferente después de consultar las métricas."
 services: postgresql
 author: salonisonpal
 ms.author: salonis
@@ -11,37 +11,37 @@ ms.devlang: azure-cli
 ms.custom: mvc
 ms.topic: sample
 ms.date: 05/31/2017
-ms.openlocfilehash: 678b28941dbb4334cb374d4888991a00b44966b9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b847abb336cce5dd5516469dca58002d3ba265f0
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="monitor-and-scale-a-single-postgresql-server-using-azure-cli"></a>Supervisión y escalado de un solo servidor PostgreSQL mediante la CLI de Azure
-Esta secuencia de comandos CLI de ejemplo, amplía una sola base de datos de Azure para el nivel de rendimiento diferentes de PostgreSQL servidor tooa después de consultar las métricas de Hola. 
+Este script de la CLI de ejemplo escala un solo servidor de Azure Database for PostgreSQL (Base de datos de Azure para PostgreSQL) a un nivel de rendimiento diferente después de consultar las métricas. 
 
 [!INCLUDE [cloud-shell-try-it](../../../includes/cloud-shell-try-it.md)]
 
-Si elige tooinstall y usar hello CLI localmente, en este tema requiere que se ejecuten hello Azure CLI versión 2.0 o posterior. Ejecutar `az --version` toofind versión de Hola. Si necesita tooinstall o una actualización, consulte [instalar Azure CLI 2.0]( /cli/azure/install-azure-cli). 
+Si decide instalar y usar la CLI localmente, para este tema es preciso que ejecute la CLI de Azure versión 2.0 o posterior. Ejecute `az --version` para encontrar la versión. Si necesita instalarla o actualizarla, consulte [Instalación de la CLI de Azure 2.0]( /cli/azure/install-azure-cli). 
 
 ## <a name="sample-script"></a>Script de ejemplo
-En este script de ejemplo, cambie Hola resaltada las líneas toocustomize Hola administrador username y password. Reemplace el Id. de suscripción de hello utilizado en comandos de monitor de hello az con su propio identificador de suscripción.[!code-azurecli-interactive[main](../../../cli_scripts/postgresql/scale-postgresql-server/scale-postgresql-server.sh?highlight=15-16 "Create and scale Azure Database for PostgreSQL.")]
+En este script de ejemplo, cambie las líneas resaltadas para personalizar el nombre de usuario de administrador y la contraseña. Reemplace el identificador de suscripción usado en los comandos de monitor az por su propio identificador de suscripción. [!code-azurecli-interactive[main](../../../cli_scripts/postgresql/scale-postgresql-server/scale-postgresql-server.sh?highlight=15-16 "Cree y escale una instancia de Azure Database for PostgreSQL (Base de datos de Azure para PostgreSQL).")]
 
 ## <a name="clean-up-deployment"></a>Limpieza de la implementación
-Después de ejecutar el ejemplo de script de Hola, Hola siguiente comando puede ser usado tooremove grupo de recursos de Hola y todos los recursos asociados con él.
-[!code-azurecli-interactive[main](../../../cli_scripts/postgresql/scale-postgresql-server/delete-postgresql.sh "Delete hello resource group.")]
+Después de ejecutar el script de ejemplo, se puede usar el comando siguiente para quitar el grupo de recursos y todos los recursos asociados.
+[!code-azurecli-interactive[main](../../../cli_scripts/postgresql/scale-postgresql-server/delete-postgresql.sh "Elimine el grupo de recursos.")]
 
 ## <a name="script-explanation"></a>Explicación del script
-Este script utiliza Hola siga los comandos. Cada comando de documentación específica de hello tabla vínculos toocommand.
+Este script usa los siguientes comandos. Cada comando de la tabla crea un vínculo a documentación específica del comando.
 
 | **Comando** | **Notas** |
 |---|---|
 | [az group create](/cli/azure/group#create) | Crea un grupo de recursos en el que se almacenan todos los recursos. |
-| [az postgres server create](/cli/azure/postgres/server#create) | Crea un servidor de PostgreSQL que hospeda las bases de datos de Hola. |
-| [az monitor metrics list](/cli/azure/monitor/metrics#list) | Valor de métrica de Hola de lista de recursos de Hola. |
+| [az postgres server create](/cli/azure/postgres/server#create) | Crea un servidor PostgreSQL que hospeda las bases de datos. |
+| [az monitor metrics list](/cli/azure/monitor/metrics#list) | Especifica el valor de métrica de los recursos. |
 | [az group delete](/cli/azure/group#delete) | Elimina un grupo de recursos, incluidos todos los recursos anidados. |
 
 ## <a name="next-steps"></a>Pasos siguientes
-- Obtener información detallada sobre Hola CLI de Azure: [documentación de CLI de Azure](/cli/azure/overview)
+- Para más información sobre la CLI de Azure, vea la [documentación de la CLI de Azure](/cli/azure/overview).
 - Pruebe otros scripts adicionales: [Ejemplos de la CLI de Azure para Azure Database for PostgreSQL](../sample-scripts-azure-cli.md).
 - Para más información sobre el escalado, vea [Niveles de servicio](../concepts-service-tiers.md) y [Unidades de proceso y almacenamiento](../concepts-compute-unit-and-storage.md).

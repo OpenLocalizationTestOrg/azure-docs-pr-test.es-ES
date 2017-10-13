@@ -1,6 +1,6 @@
 ---
-title: aaaMove a las aplicaciones de servicios de BizTalk tooAzure Logic Apps | Documentos de Microsoft
-description: Mover o migrar Azure BizTalk Services MABS tooLogic aplicaciones
+title: "Migración de aplicaciones desde BizTalk Services a Azure Logic Apps | Microsoft Docs"
+description: "Migración de Azure BizTalk Services (MABS) a Logic Apps"
 services: logic-apps
 documentationcenter: 
 author: jonfancey
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: ladocs; jonfan; mandia
-ms.openlocfilehash: b3b065b90a37002f72305b0fc866c24231fb5f9f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e58c6950d1d9420f32fc98ca917216dc5fae4fc3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="move-from-biztalk-services-toologic-apps"></a>Mover de tooLogic aplicaciones de servicios de BizTalk
+# <a name="move-from-biztalk-services-to-logic-apps"></a>Migración desde BizTalk Services a Logic Apps
 
-Microsoft Azure BizTalk Services (MABS) está en retirada. Utilice este tema toomove su tooAzure de soluciones de integración de MABS Logic Apps. 
+Microsoft Azure BizTalk Services (MABS) está en retirada. Use este tema para migrar las soluciones de integración de MABS a Azure Logic Apps. 
 
 ## <a name="overview"></a>Información general
 
@@ -31,11 +31,11 @@ BizTalk Services consta de dos subservicios:
 1.  Conexiones híbridas de Microsoft BizTalk Services
 2.  Integración basada en puente de EAI y EDI
 
-Si busca las conexiones híbridas de toomove, a continuación, [las conexiones híbridas de servicio de aplicación de Azure](../app-service/app-service-hybrid-connections.md) describe los cambios de Hola y las características de este servicio. Conexiones híbridas de Azure reemplaza a Conexiones híbridas de BizTalk Services. Las conexiones híbridas de Azure está disponible con el servicio de aplicación de Azure y se ofrece en hello portal de Azure. Las conexiones híbridas de Azure también proporciona un nuevo toomanage de administrador de conexiones híbridas conexiones híbridas de servicios de BizTalk existentes y nuevas conexiones híbridas en que crear Hola portal. Conexiones híbridas de Azure App Service está disponible con carácter general (GA).
+Si lo que busca es migrar conexiones híbridas, [Conexiones híbridas de Azure App Service](../app-service/app-service-hybrid-connections.md) describe los cambios y las características de este servicio. Conexiones híbridas de Azure reemplaza a Conexiones híbridas de BizTalk Services. Conexiones híbridas de Azure está disponible en Azure App Service y se ofrece en Azure Portal. Conexiones híbridas de Azure también proporciona un nuevo administrador de conexiones híbridas para administrar las conexiones híbridas existentes de BizTalk Services y las conexiones híbridas nuevas que cree en el portal. Conexiones híbridas de Azure App Service está disponible con carácter general (GA).
 
-Para la integración basada en el puente EAI y EDI, Logic Apps es sustituto de Hola. Lógica de aplicaciones proporciona que todos Hola mismas capacidades que los servicios de BizTalk y mucho más. Lógica de aplicaciones proporciona a escala de nube consumo características basadas en orquestaciones y flujo de trabajo que le permiten tooquickly y crear fácilmente soluciones de integración complejas mediante un explorador o con herramientas de Visual Studio.
+En el caso de la integración basada en puente de EAI y EDI, el reemplazo es Logic Apps. Logic Apps proporciona las mismas funcionalidades que BizTalk Services, e incluso más. Logic Apps proporciona características de orquestación y flujo de trabajo basado en consumo a escala de nube que permiten compilar rápida y fácilmente soluciones complejas de integración con un explorador o a través de herramientas dentro de Visual Studio.
 
-Hello en la tabla siguiente proporciona una asignación de funciones de servicios de BizTalk tooLogic aplicaciones.
+La tabla siguiente muestra una asignación de las funcionalidades de BizTalk Services a Logic Apps.
 
 | Servicios de BizTalk   | Aplicaciones lógicas            | Propósito                  |
 | ------------------ | --------------------- | ---------------------------- |
@@ -43,25 +43,25 @@ Hello en la tabla siguiente proporciona una asignación de funciones de servicio
 | Puente             | Aplicación lógica             | Procesador de canalización           |
 | Fase de validación     | Acción de validación XML      | Validación de un documento XML con respecto a un esquema             |
 | Fase de enriquecimiento       | Tokens de datos      | Promoción de propiedades en mensajes o para enrutar decisiones             |
-| Fase de transformación    | Acción de transformación      | Convertir los mensajes XML de un formato tooanother             |
-| Fase de descodificación       | Acción de descodificación de archivo plano      | Convertir de tooXML de archivo sin formato             |
-| Fase de codificación       |  Acción de codificación de archivo plano      | Convertir archivo de tooflat XML             |
+| Fase de transformación    | Acción de transformación      | Conversión de mensajes XML de un formato a otro             |
+| Fase de descodificación       | Acción de descodificación de archivo plano      | Conversión de archivo plano a XML             |
+| Fase de codificación       |  Acción de codificación de archivo plano      | Conversión de XML a archivo plano             |
 | Inspector de mensajes       |  Azure Functions o API Apps      | Ejecución de código personalizado en las integraciones             |
-| Acción de enrutamiento      |  Condición o modificador      | Ruta tooone de mensajes de Hola especificado conectores             |
+| Acción de enrutamiento      |  Condición o modificador      | Enrutamiento de mensajes a uno de los conectores especificados             |
 
 Existe una gran cantidad de tipos de artefactos distintos en BizTalk Services.
 
 ## <a name="connectors"></a>Conectores
-Conectores en servicios de BizTalk permiten toosend de puentes y reciban datos, incluidos los puentes bidireccionales que habilita las interacciones de solicitud/respuesta basada en HTTP. En la lógica de aplicaciones, Hola se utiliza la misma terminología. Conectores de aplicaciones lógicas servir Hola misma finalidad y también incluyen más de 140 que se pueden conectar tooa amplia gama de tecnologías y servicios, tanto de manera local mediante Hola local Data Gateway (reemplazando Hola servicio de adaptador de BizTalk utilizan los servicios de BizTalk) y a los servicios de SaaS y PaaS, como OneDrive, Office 365, Dynamics CRM y mucho más.
+Los conectores de BizTalk Services permiten que los puentes envíen y reciban datos, incluidos los puentes bidireccionales que habilitaron interacciones de solicitud/respuesta basadas en HTTP. La misma terminología se usa en Logic Apps. Los conectores de Logic Apps tienen el mismo propósito y también incluyen más de 140 que se pueden conectar a una amplia variedad de tecnologías y servicios, tanto locales con la puerta de enlace de datos local (que reemplaza el servicio de adaptador de BizTalk usado por BizTalk Services), como servicios de PaaS y SaaS de nube, como OneDrive, Office365, Dynamics CRM y muchos otros.
 
-Orígenes de servicios de BizTalk son tooFTP limitado, SFTP y cola de Bus de servicio o suscripción de tema.
+Los orígenes de BizTalk Services están limitados a FTP, SFTP y suscripción a Tema o Cola de Service Bus.
 
 ![](media/logic-apps-move-from-mabs/sources.png)
 
-Cada puente tiene un extremo HTTP de forma predeterminada, que está configurado con hello dirección en tiempo de ejecución y las propiedades de la dirección relativa de Hola de puente Hola. Hola tooachieve igual a las aplicaciones lógicas, use hello [solicitud y respuesta](../connectors/connectors-native-reqres.md) acciones.
+Cada puente tiene un punto de conexión HTTP predeterminado, el que se configura con las propiedades Dirección en tiempo de ejecución y Dirección relativa del puente. Para lograr el mismo resultado con Logic Apps, use las acciones [Solicitud y respuesta](../connectors/connectors-native-reqres.md).
 
 ## <a name="xml-processing-and-bridges"></a>Puentes y procesamiento de XML
-Un puente en servicios de BizTalk es la canalización de procesamiento de tooa análoga. Un puente puede tomar los datos recibidos de un conector y realizar algunas operaciones con datos de hello y, a continuación, enviarla tooanother sistema. Lógica de aplicaciones Hola mismo admitiendo Hola misma interacción basada en la canalización de patrones como servicios de BizTalk y también proporciona una serie de otros patrones de integración. Hola [puente de solicitud y respuesta XML](https://msdn.microsoft.com/library/azure/hh689781.aspx) en servicios de BizTalk se conoce como una canalización VETER formada por fases por las que pueden:
+Un puente en BizTalk Services es análogo a una canalización de procesamiento. Un puente puede tomar los datos recibidos desde un conector y trabajar con esos datos, para luego enviarlos a otro sistema. Logic Apps hace exactamente lo mismo ya que es compatible con los mismos patrones de interacción basada en canalización que BizTalk Services y, además, proporciona una variedad de otros patrones de integración. El [puente de solicitud-respuesta XML](https://msdn.microsoft.com/library/azure/hh689781.aspx) e BizTalk Services es conocido como una canalización VETER, que consta de fases en que se realiza:
 
 * (V) Validación
 * (E) Enriquecimiento
@@ -69,44 +69,44 @@ Un puente en servicios de BizTalk es la canalización de procesamiento de tooa a
 * (E) Enriquecimiento
 * (R) EnRutamiento
 
-Tal como se muestra en hello después de la imagen, procesamiento de Hola se divide entre la solicitud y respuesta y permite controlar la solicitud de Hola y Hola rutas de acceso de respuesta por separado (por ejemplo, con diferentes asignaciones para cada uno):
+Tal como se muestra en la imagen siguiente, el procesamiento se divide entre solicitud y respuesta, y permite controlar las rutas de solicitud y respuesta de forma separada, por ejemplo, con distintas asignaciones para cada una:
 
 ![](media/logic-apps-move-from-mabs/xml-request-reply.png)
 
-Además, un puente unidireccional XML agrega las fases de descodificación y codificación al principio de Hola y al final del procesamiento y puente de paso a través de hello contiene una sola fase de enriquecimiento.
+Además, un puente unidireccional XML agrega las fases de Descodificación y Codificación al comienzo y al final del procesamiento, y el puente de paso a través consta de una sola fase de Enriquecimiento.
 
 ### <a name="message-processing-and-decodingencoding"></a>Procesamiento y descodificación/codificación de mensajes
-En servicios de BizTalk, recibirá mensajes XML de diferentes tipos y determinar esquema coincidente de hello para el mensaje de Hola recibido. Esto se realiza en hello **tipos de mensaje** fase del programa Hola a la canalización de procesamiento de recepción. A continuación, Hola fase de descodificación usa toodecode de tipo de mensaje de Hola detectado mediante el esquema de hello proporcionado. Si el esquema de hello es flatfile, convierte Hola entrantes flatfile tooXML. 
+En BizTalk Services, se reciben mensajes XML de distintos tipos y se determina el esquema coincidente para el mensaje recibido. Esta acción se realiza en la fase **Tipos de mensaje** de la canalización de procesamiento de recepción. Luego, la fase de descodificación usa el tipo de mensaje detectado para descodificarlo con el esquema proporcionado. Si el esquema es un esquema de archivo plano, convierte el archivo plano entrante en XML. 
 
-Logic Apps proporciona funcionalidades similares. Se recibe un flatfile en una gran variedad de distintos protocolos mediante desencadenadores de conector diferentes hello (sistema de archivos, FTP, HTTP etc.) y usar hello [descodificar de archivo sin formato](../logic-apps/logic-apps-enterprise-integration-flatfile.md) tooXML de datos entrantes de acción tooconvert Hola. Puede mover los esquemas de archivo sin formato existente directamente toologic aplicaciones sin necesidad de realizar cualquier cambia y, a continuación, cargue esquemas tooyour cuenta de integración.
+Logic Apps proporciona funcionalidades similares. Recibe un archivo plano a través de varios protocolos distintos con los distintos desencadenadores de conector (sistema de archivos, FTP, HTTP, etc.) y usa la acción [Descodificación de archivo plano](../logic-apps/logic-apps-enterprise-integration-flatfile.md) para convertir los datos entrantes en XML. Puede mover los esquemas de archivo plano existentes directamente a Logic Apps sin que sea necesario hacer ningún cambio y, luego, cargar los esquemas en la cuenta de integración.
 
 ### <a name="validation"></a>Validación
-Una vez hello los datos entrantes tooXML convertido (o si XML tenía el formato de mensaje de Hola recibido), la validación ejecuta toodetermine si tooyour un esquema XSD ajusta el mensaje de bienvenida. toodo en lógica de aplicaciones, use hello [validación XML](../logic-apps/logic-apps-enterprise-integration-xml-validation.md) acción. Una vez más, puede usar Hola mismos esquemas de servicios de BizTalk sin realizar ningún cambio.
+Una vez que los datos entrantes se convierten en XML (o si el formato de mensaje que se recibió era XML), la validación se ejecuta para determinar si el mensaje cumple con el esquema XSD. Para hacer esto mismo en Logic Apps, use la acción [Validación XML](../logic-apps/logic-apps-enterprise-integration-xml-validation.md). Como ya indicamos, puede usar los mismos esquemas de BizTalk Services sin hacer ningún cambio.
 
 ### <a name="transform-messages"></a>Transformación de mensajes
-En servicios de BizTalk, fase de transformación de hello convierte una tooanother de formato de mensajes basado en XML. Esto se realiza aplicando un mapa, mediante el asignador de TRFM-based Hola. En la lógica de aplicaciones, el proceso de hello es similar. Hola acción transformación ejecuta un mapa de la cuenta de integración. Hola principal diferencia es que están en formato XSLT mapas en aplicaciones de la lógica. XSLT incluye Hola capacidad tooreuse existente ya tiene, incluidos los mapas creados para el servidor BizTalk Server que contienen functoids XSLT. 
+En BizTalk Services, la fase de transformación convierte un formato de mensaje XML en otro. Para hacerlo aplicando un mapa, use el mapeador basado en TRFM. El proceso es similar en Logic Apps. La acción de transformación ejecuta un mapa desde la cuenta de integración. La principal diferencia es que los mapas de Logic Apps están en el formato XSLT. XSLT incluye la capacidad de volver a usar el XSLT existente que ya tiene, incluidos los mapas creados para BizTalk Server que contienen functioids. 
 
 ### <a name="routing-rules"></a>Reglas de enrutamiento
-Servicios de BizTalk se toma una decisión de enrutamiento en qué punto de conexión/conector toosend mensajes/datos de entrada. Hola capacidad tooselect uno de una serie de puntos de conexión configuradas previamente es posible mediante la opción de filtro de enrutamiento de hello:
+BizTalk Services toma una decisión de enrutamiento sobre qué punto de conexión/conector envía los mensajes/datos entrantes. La capacidad de seleccionar uno de los puntos de conexión preconfigurados es posible con la opción de filtro de enrutamiento:
 
 ![](media/logic-apps-move-from-mabs/route-filter.png)
 
 Logic Apps ofrece funcionalidades lógicas más sofisticadas con [Condition](../logic-apps/logic-apps-use-logic-app-features.md) (Condición) y [Switch](../logic-apps/logic-apps-switch-case.md) (Modificador), lo que permite un flujo de control y enrutamiento avanzados. Convertir los filtros de enrutamiento en BizTalk Services se logra mejor con una **condición** *si* solo hay dos opciones. Si hay más de dos, use un **modificador**.
 
 ### <a name="enrich"></a>Enriquecimiento
-Hola fase de enriquecimiento en servicios de BizTalk procesamiento aporta el contexto de mensaje toohello de propiedades asociada con los datos de hello recibidos. Por ejemplo, promover una toouse de propiedad para el enrutamiento (descrito a continuación) de una búsqueda de la base de datos o extrayendo un valor utilizando una expresión XPath. Lógica de aplicaciones proporciona acceso tooall datos contextuales salidas desde delante acciones, lo que tooreplicate sencillo Hola mismo comportamiento. Por ejemplo, si se usa hello `Get Row` acción de conexión de SQL, devuelve datos de una base de datos de SQL Server y usar los datos de hello en una acción de decisión para el enrutamiento. Del mismo modo, las propiedades en el Bus de servicio entrantes mensajes en cola un desencadenador son direccionable, así como XPath usando la expresión de lenguaje de definición de flujo de trabajo de hello xpath.
+La fase de enriquecimiento del procesamiento de BizTalk Services agrega propiedades al contexto de mensaje asociado con los datos recibidos. Por ejemplo, promover una propiedad para usarla para el enrutamiento (descrito a continuación) desde una búsqueda en base de datos o mediante la extracción de un valor con una expresión XPath. Logic Apps proporciona acceso a todas las salidas de datos contextuales de acciones precedentes, lo que simplifica replicar el mismo comportamiento. Por ejemplo, mediante la acción de conexión SQL `Get Row`, devuelve datos desde una base de datos de SQL Server y usa esos datos en una acción de decisión para enrutamiento. Del mismo modo, las propiedades en mensajes en cola entrantes de Service Bus por un desencadenador son direccionables, al igual que XPath con la expresión de lenguaje de definición de flujo de trabajo XPath.
 
 ### <a name="use-custom-code"></a>Uso de código personalizado
-Servicios de BizTalk proporciona capacidad de hello demasiado[ejecutar código personalizado](https://msdn.microsoft.com/library/azure/dn232389.aspx) cargado en sus propios ensamblados. Esto se implementa mediante hello [IMessageInspector](https://msdn.microsoft.com/library/microsoft.biztalk.services.imessageinspector.aspx) interfaz. Cada fase de puente Hola incluye dos propiedades (On Enter Inspector y On Exit Inspector) proporcionado por el tipo de .net Hola creaste que implementa esta interfaz. Código personalizado permite tooperform más complejas de procesamiento de datos de hello, así como reutilizar el código existente en ensamblados que realizan la lógica empresarial común. 
+BizTalk Services proporciona la capacidad de [ejecutar código personalizado](https://msdn.microsoft.com/library/azure/dn232389.aspx) cargado en sus propios ensamblados. Esto se implementa mediante la interfaz [IMessageInspector](https://msdn.microsoft.com/library/microsoft.biztalk.services.imessageinspector.aspx). Cada fase del puente incluye dos propiedades (On Enter Inspector y On Exit Inspector) que proporciona el tipo de .NET que se creó que implementa esta interfaz. El código personalizado le permite realizar procesamientos más complejos en los datos, así como volver a usar código existente en ensamblados que realizan una lógica de negocios común. 
 
-Lógica de aplicaciones proporciona dos métodos principales para código personalizado tooexecute: funciones de Azure y aplicaciones de API. Es posible crear y llamar a Azure Functions desde aplicaciones lógicas. Consulte [Adición y ejecución de código personalizado para aplicaciones lógicas con Azure Functions](../logic-apps/logic-apps-azure-functions.md). Usar aplicaciones de API, parte del servicio de aplicaciones de Azure, toocreate sus propios desencadenadores y acciones. Obtenga más información sobre [crear una personalizada toouse de API a las aplicaciones lógicas](../logic-apps/logic-apps-create-api-app.md). 
+Logic Apps proporciona dos maneras principales para ejecutar el código personalizado: Azure Functions y API Apps. Es posible crear y llamar a Azure Functions desde aplicaciones lógicas. Consulte [Adición y ejecución de código personalizado para aplicaciones lógicas con Azure Functions](../logic-apps/logic-apps-azure-functions.md). Use API Apps, parte de Azure App Service, para crear sus propios desencadenadores y acciones. Obtenga más información sobre cómo [crear una API personalizada para usarla con Logic Apps](../logic-apps/logic-apps-create-api-app.md). 
 
-Si tienes código personalizado en assmeblies que se llame desde servicios de BizTalk, se puede mover este código tooAzure funciones o crear API personalizadas con aplicaciones de API; Dependiendo de lo que se está implementando. Por ejemplo, si tiene código que ajusta otro servicio que lógica de aplicaciones no tiene un conector, a continuación, crear una API App y usar la aplicación de API se proporciona dentro de la aplicación lógica de acciones de Hola. Si tiene funciones auxiliares o bibliotecas, funciones de Azure es probable Hola mejor ajuste.
+Si tiene código personalizado en ensamblados a los que llama desde BizTalk Services, puede mover este código a Azure Functions o crear API personalizadas con API Apps, en función de lo que está implementando. Por ejemplo, si tiene código que encapsula otro servicio para el que Logic Apps no tiene conector, cree una instancia de API Apps y use las acciones que esta instancia proporciona dentro de la aplicación lógica. Si tiene funciones o bibliotecas auxiliares, Azure Functions es probablemente la mejor opción.
 
 ### <a name="edi-processing-and-trading-partner-management"></a>Administración de entidades y procesamiento de EDI
-BizTalk Services incluye procesamiento de EDI y B2B con compatibilidad con AS2 (Applicability Statement 2), X12 y EDIFACT. Logic Apps también lo hace. En servicios de BizTalk, el crear puentes EDI y crear y administrar socios comerciales y acuerdos en el portal de administración y seguimiento de dedicado Hola.
+BizTalk Services incluye procesamiento de EDI y B2B con compatibilidad con AS2 (Applicability Statement 2), X12 y EDIFACT. Logic Apps también lo hace. En BizTalk Services, crea puentes de EDI y crea y administra entidades y contratos en el portal de seguimiento y administración dedicado.
 
-En la lógica de aplicaciones, esta funcionalidad se incluye con hello [paquete de integración empresarial](../logic-apps/logic-apps-enterprise-integration-overview.md). Se compone de las acciones de cuenta de integración y B2B de hello para el procesamiento EDI y B2B. Hola [cuenta integración](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) es toocreate usado y administrar [los socios comerciales](../logic-apps/logic-apps-enterprise-integration-partners.md) y [contratos](../logic-apps/logic-apps-enterprise-integration-agreements.md). Una vez que cree una cuenta de integración, puede asociar uno o más cuentas de toohello de aplicaciones de la lógica. Una vez asociado, puede usar Hola B2B acciones tooaccess comerciales información de socio en la aplicación lógica. se proporciona Hola siguientes acciones:
+En Logic Apps, esta funcionalidad se incluye en [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md). Consta de la cuenta de integración y acciones de B2B para procesamiento de EDI y B2B. La [cuenta de integración](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) se usa para crear y administrar [entidades](../logic-apps/logic-apps-enterprise-integration-partners.md) y [contratos](../logic-apps/logic-apps-enterprise-integration-agreements.md). Una vez que crea una cuenta de integración, puede asociar una o más aplicaciones lógicas a la cuenta. Una vez que las asocie, puede usar las acciones de B2B para obtener acceso a la información de entidades dentro de la aplicación lógica. Se proporcionan las siguientes acciones:
 
 * Codificación AS2
 * Descodificación AS2
@@ -115,17 +115,17 @@ En la lógica de aplicaciones, esta funcionalidad se incluye con hello [paquete 
 * Codificación EDIFACT
 * Descodificación EDIFACT
 
-A diferencia de los servicios de BizTalk, estas acciones se desacoplan de protocolos de transporte de Hola. Por lo tanto, al crear las aplicaciones lógicas, tiene más flexibilidad en los conectores que utilice toosend y recibe datos. Por ejemplo, es posible tooreceive X12 archivos como datos adjuntos de correo electrónico y, a continuación, procesar estos archivos en una aplicación de lógica. 
+A diferencia de BizTalk Services, estas acciones se separan de los protocolos de transporte. Por lo tanto, cuando crea las aplicaciones lógicas, tiene más flexibilidad sobre qué conectores usar para enviar y recibir datos. Por ejemplo, es posible recibir archivos X12 como archivos adjuntos de correo electrónico y luego procesar esos archivos en una aplicación lógica. 
 
 ## <a name="manage-and-monitor"></a>Administración y supervisión
-Así como la administración de socios comerciales, Hola dedicado portal de servicios de BizTalk siempre toomonitor capacidades de seguimiento y solucionar problemas. 
+Del mismo modo que con la administración de entidades, el portal dedicado para BizTalk Services proporcionó funcionalidades de seguimiento para supervisar y solucionar problemas. 
 
-Lógica de aplicaciones proporciona más enriquecida de seguimiento y supervisión capacidades en hello [portal de Azure](../logic-apps/logic-apps-monitor-your-logic-apps.md)y con hello [solución B2B Operations Management Suite](../logic-apps/logic-apps-monitor-b2b-message.md), incluida una aplicación móvil para mantener un ojo de cosas Cuando esté en hello mover.
+Logic Apps ofrece funcionalidades más avanzadas de seguimiento y supervisión en [Azure Portal](../logic-apps/logic-apps-monitor-your-logic-apps.md) y con la [solución B2B de Operations Management Suite](../logic-apps/logic-apps-monitor-b2b-message.md), incluida una aplicación móvil para supervisión cuando esté en movimiento.
 
 ## <a name="high-availability"></a>Alta disponibilidad
-tooachieve alta disponibilidad (HA) en servicios de BizTalk, use más de una instancia de un saludo de tooshare región determinada carga de procesamiento. Con las aplicaciones lógicas, la alta disponibilidad en la región está integrada y no supone ningún costo adicional. En el caso de la recuperación ante desastres fuera de la región para el procesamiento B2B en BizTalk Services, se requiere un proceso de copia de seguridad y restauración. En la lógica de aplicaciones, un entre regiones activo/pasivo [capacidad de recuperación ante desastres](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md) se proporciona; lo que permite la sincronización de Hola de B2B datos a través de las cuentas de integración en regiones diferentes para la continuidad empresarial.
+Para alcanzar alta disponibilidad (HA) en BizTalk Services, usa más de una instancia de una región predeterminada para compartir la carga de procesamiento. Con las aplicaciones lógicas, la alta disponibilidad en la región está integrada y no supone ningún costo adicional. En el caso de la recuperación ante desastres fuera de la región para el procesamiento B2B en BizTalk Services, se requiere un proceso de copia de seguridad y restauración. En Logic Apps, se proporciona una [funcionalidad de DR](../logic-apps/logic-apps-enterprise-integration-b2b-business-continuity.md) activa/pasiva entre regiones, lo que permite realizar la sincronización de datos B2B entre cuentas de integración en distintas regiones para la continuidad empresarial.
 
 ## <a name="next"></a>Pasos siguientes
 * [¿Qué es Logic Apps?](logic-apps-what-are-logic-apps.md)
 * [Cree la primera aplicación lógica](logic-apps-create-a-logic-app.md) o empiece a trabajar rápidamente mediante una [plantilla precompilada](logic-apps-use-logic-app-templates.md)  
-* [Vista de Hola a todos los conectores disponibles](../connectors/apis-list.md) puede utilizar en una aplicación de lógica
+* [Vea todos los conectores disponibles](../connectors/apis-list.md) que se pueden utilizar en una aplicación lógica

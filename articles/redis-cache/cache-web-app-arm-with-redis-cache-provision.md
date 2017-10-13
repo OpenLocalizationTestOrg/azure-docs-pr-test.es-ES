@@ -1,6 +1,6 @@
 ---
-title: "aaaProvision aplicación Web con caché en Redis"
-description: "Use la aplicación web de Azure Resource Manager plantilla toodeploy con caché en Redis."
+title: "Aprovisionamiento de aplicación web con Caché de Redis"
+description: "Use una plantilla de Administrador de recursos de Azure para implementar una aplicación web con Caché en Redis."
 services: app-service
 documentationcenter: 
 author: steved0x
@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: sdanie
-ms.openlocfilehash: b95b5e230dc40c1157940c2017cba836975b6930
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 810c1cedd4fe0bd6ecdf9bd32dfb241f5f345300
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-web-app-plus-redis-cache-using-a-template"></a>Creación de una aplicación web y Caché en Redis mediante una plantilla
-En este tema, aprenderá cómo toocreate una plantilla de Azure Resource Manager que se puede implementar una aplicación Web de Azure con caché en Redis. Obtendrá información sobre cómo toodefine qué recursos se implementan y cómo toodefine parámetros que especifican cuando se ejecuta la implementación de Hola. Puede usar esta plantilla para sus propias implementaciones o personalizarlo toomeet sus requisitos.
+En este tema, aprenderá a crear una plantilla de Administrador de recursos de Azure que implementa una aplicación web de Azure con Caché en Redis. Aprenderá a definir los recursos que se implementan y los parámetros que se especifican cuando se ejecuta la implementación. Puede usar esta plantilla para sus propias implementaciones o personalizarla para satisfacer sus necesidades.
 
 Para obtener más información sobre la creación de plantillas, consulte [Creación de plantillas de Administrador de recursos de Azure](../azure-resource-manager/resource-group-authoring-templates.md).
 
-Para la plantilla de hello completa, consulte [aplicación Web con la plantilla de caché en Redis](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json).
+Para ver la plantilla completa, consulte [Plantilla Aplicación web con Caché en Redis](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json).
 
 ## <a name="what-you-will-deploy"></a>Lo que implementará
 En esta plantilla, implementará lo siguiente:
@@ -33,17 +33,17 @@ En esta plantilla, implementará lo siguiente:
 * Aplicación web de Azure
 * Caché en Redis de Azure.
 
-toorun Hola implementación automáticamente, haga clic en hello después de botón:
+Para ejecutar automáticamente la implementación, haga clic en el botón siguiente:
 
-[![Implementar tooAzure](./media/cache-web-app-arm-with-redis-cache-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-with-redis-cache%2Fazuredeploy.json)
+[![Implementación en Azure](./media/cache-web-app-arm-with-redis-cache-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-with-redis-cache%2Fazuredeploy.json)
 
-## <a name="parameters-toospecify"></a>Parámetros toospecify
+## <a name="parameters-to-specify"></a>Parámetros para especificar
 [!INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
 
 [!INCLUDE [cache-deploy-parameters](../../includes/cache-deploy-parameters.md)]
 
 ## <a name="variables-for-names"></a>Variables de nombres
-Esta plantilla utiliza nombres de tooconstruct de variables para los recursos de Hola. Usa hello [uniqueString](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring) función tooconstruct un valor basado en el identificador de grupo de recursos.
+Esta plantilla usa variables para construir los nombres de los recursos. Usa la función [uniqueString](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring) para construir un valor basado en el identificador del grupo de recursos.
 
     "variables": {
       "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
@@ -52,13 +52,13 @@ Esta plantilla utiliza nombres de tooconstruct de variables para los recursos de
     },
 
 
-## <a name="resources-toodeploy"></a>Toodeploy de recursos
+## <a name="resources-to-deploy"></a>Recursos para implementar
 [!INCLUDE [app-service-web-deploy-web-host](../../includes/app-service-web-deploy-web-host.md)]
 
-### <a name="redis-cache"></a>Redis Cache
-Crea Hola caché Redis de Azure que se usa con la aplicación web de hello. se especifica el nombre de Hola de caché de Hola Hola **cacheName** variable.
+### <a name="redis-cache"></a>Caché en Redis
+Crea Caché en Redis de Azure que se usa con la aplicación web. El nombre de la memoria caché se especifica en la variable **cacheName** .
 
-plantilla de Hello crea caché Hola Hola misma ubicación que el grupo de recursos de Hola.
+La plantilla crea la memoria caché en la misma ubicación que el grupo de recursos.
 
     {
       "name": "[variables('cacheName')]",
@@ -80,9 +80,9 @@ plantilla de Hello crea caché Hola Hola misma ubicación que el grupo de recurs
 
 
 ### <a name="web-app"></a>Aplicación web
-Crea la aplicación web de hello con nombre especificado en hello **webSiteName** variable.
+Crea la aplicación web con el nombre especificado en la variable **webSiteName** .
 
-Tenga en cuenta que dicha aplicación Hola se configura con aplicación establecer las propiedades que permiten su toowork con hello caché en Redis. Esta configuración de la aplicación se crea dinámicamente de acuerdo con los valores proporcionados durante la implementación.
+Observe que la aplicación web está configurada con las propiedades de configuración de la aplicación que permiten trabajar con Caché en Redis. Esta configuración de la aplicación se crea dinámicamente de acuerdo con los valores proporcionados durante la implementación.
 
     {
       "apiVersion": "2015-08-01",
@@ -117,7 +117,7 @@ Tenga en cuenta que dicha aplicación Hola se configura con aplicación establec
       ]
     }
 
-## <a name="commands-toorun-deployment"></a>Implementación de toorun de comandos
+## <a name="commands-to-run-deployment"></a>Comandos para ejecutar la implementación
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell

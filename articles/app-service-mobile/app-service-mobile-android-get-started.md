@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate una aplicación Android en aplicaciones de Mobile de servicio de aplicación de Azure | Documentos de Microsoft"
-description: "Siga este tutorial tooget Introducción al uso de back-ends de aplicaciones móviles Azure para desarrollo de Android"
+title: "Creación de una aplicación de Android en Azure App Service Mobile Apps | Microsoft Docs"
+description: "Siga este tutorial para aprender a usar back-ends de aplicación móvil de Azure para el desarrollo de Android"
 services: app-service\mobile
 documentationcenter: android
 author: ggailey777
@@ -14,34 +14,34 @@ ms.devlang: java
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.openlocfilehash: 0af85a3a4de9fc265976bbe3f34d73effc3807df
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 418a5229a084d570bc6cab5925dbd8d30945a3c5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-android-app"></a>Creación de una aplicación de Android
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 ## <a name="overview"></a>Información general
-Este tutorial muestra cómo tooadd un back-end basado en la nube service tooan de aplicación móvil Android mediante el uso de un aplicación móvil Azure de back-end.  Creará tanto un back-end de aplicación móvil nuevo como una aplicación de Android simple de la *lista de tareas pendientes* que almacene los datos de la aplicación en Azure.
+En este tutorial se muestra cómo agregar un servicio back-end basado en la nube a una aplicación móvil de Android con un back-end de la aplicación móvil de Azure.  Creará tanto un back-end de aplicación móvil nuevo como una aplicación de Android simple de la *lista de tareas pendientes* que almacene los datos de la aplicación en Azure.
 
-Completar este tutorial es un requisito previo para todos los otros tutoriales de Android acerca del uso de características de aplicaciones móviles de hello en el servicio de aplicación de Azure.
+Completar este tutorial es un requisito previo para todos los demás tutoriales de Android sobre cómo usar la característica Aplicaciones móviles en el Servicio de aplicaciones de Azure.
 
 ## <a name="prerequisites"></a>Requisitos previos
-toocomplete este tutorial, necesita Hola siguientes:
+Para completar este tutorial, necesitará lo siguiente:
 
-* [Las herramientas de desarrollador Android](https://developer.android.com/sdk/index.html), que incluye el entorno de desarrollo integrado de Android Studio hello y plataforma de Android más reciente de Hola.
-* Azure Mobile Android SDK, que se hace referencia como parte del proyecto de inicio rápido de Hola que descargue automáticamente.
+* [Herramientas para desarrolladores de Android](https://developer.android.com/sdk/index.html), que incluyen el entorno de desarrollo integrado de Android Studio y la plataforma de Android más reciente.
+* El SDK de Android móvil de Azure, al que se hace automáticamente referencia como parte del proyecto de inicio rápido que puede descargar.
 * Una [cuenta de Azure activa](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="create-a-new-azure-mobile-app-backend"></a>Creación de un nuevo back-end de Aplicaciones móviles de Azure
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="configure-hello-server-project"></a>Configurar el proyecto de servidor hello
+## <a name="configure-the-server-project"></a>Configuración del proyecto de servidor
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="download-and-run-hello-android-app"></a>Descargue y ejecute la aplicación de Android hello
+## <a name="download-and-run-the-android-app"></a>Descarga y ejecución de la aplicación de Android
 [!INCLUDE [app-service-mobile-android-run-app](../../includes/app-service-mobile-android-run-app.md)]
 
 <!-- URLs -->

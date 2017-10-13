@@ -1,6 +1,6 @@
 ---
-title: aaaCreate su primera microservicio Azure basado en actores en C# | Documentos de Microsoft
-description: "Este tutorial le guiará por los pasos de Hola de crear, depurar e implementar un servicio simple basado en actores mediante servicio de Fabric Reliable Actors."
+title: "Creación del primer microservicio de Azure basado en actores en C# | Microsoft Docs"
+description: "En este tutorial se explica paso a paso cómo crear, depurar e implementar un servicio de actor sencillo con Reliable Actors de Service Fabric."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.openlocfilehash: ab4f75bef0adb6e70f0ead587475b3fb51e6e6a5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3f447e049ccd33c77f422e8aa703ad6646f9ffa2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="getting-started-with-reliable-actors"></a>Introducción a Reliable Actors
 > [!div class="op_single_selector"]
@@ -27,24 +27,24 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-En este artículo se explica conceptos básicos de Hola de Azure Service Fabric Reliable Actors y le guía a través de crear, depurar e implementar una aplicación sencilla de Actor confiable en Visual Studio.
+En este artículo se explican los conceptos básicos de Reliable Actors de Azure Service Fabric, además de ofrecer orientación sobre cómo completar los pasos para crear, depurar e implementar una aplicación de Reliable Actors sencilla en Visual Studio.
 
 ## <a name="installation-and-setup"></a>Instalación y configuración
-Antes de empezar, asegúrese de que tiene el entorno de desarrollo de Service Fabric Hola configurado en su equipo.
-Si necesita tooset, configúrelo, vea instrucciones detalladas en [cómo tooset el entorno de desarrollo de hello](service-fabric-get-started.md).
+Antes de comenzar, asegúrese de que el entorno de desarrollo de Service Fabric está configurado en el equipo.
+Para ello, vea instrucciones detalladas sobre [cómo configurar el entorno de desarrollo](service-fabric-get-started.md).
 
 ## <a name="basic-concepts"></a>Conceptos básicos
-tooget partió Reliable Actors, sólo necesita toounderstand algunos conceptos básicos:
+Para empezar a trabajar con Reliable Actors, solo es necesario comprender cuatro conceptos básicos:
 
-* **Servicio de actor**. Actores confiables se empaquetan en servicios de confianza que se pueden implementar en la infraestructura de Service Fabric Hola. Las instancias de actor se activan en una instancia de servicio con nombre.
-* **Registro de actor**. Como con los servicios de confianza, un servicio de Actor confiable debe toobe registrado con el tiempo de ejecución de hello Service Fabric. Además, el tipo de actor de hello necesita toobe registrado con el tiempo de ejecución de hello Actor.
-* **Interfaz de actor**. interfaz de actor Hello es toodefine usa una interfaz pública fuertemente tipada de un actor. Hola terminología del modelo confiable Actor, interfaz de actor de hello define Hola pueden entender y procesar tipos de mensajes que Hola actor. Hola actor interfaz la utilizan otros actores y las aplicaciones cliente demasiado "envían" (de forma asincrónica) actor toohello de mensajes. Reliable Actors pueden implementar varias interfaces.
-* **Clase ActorProxy**. tooinvoke de las aplicaciones cliente utilizan Hello ActorProxy clase Hola métodos expuestos a través de la interfaz de actor Hola. Hola ActorProxy clase proporciona dos funciones importantes:
+* **Servicio de actor**. Reliable Actors se incluye en Reliable Services, que puede implementarse en la infraestructura de Service Fabric. Las instancias de actor se activan en una instancia de servicio con nombre.
+* **Registro de actor**. Como con Reliable Services, un servicio de Reliable Actors debe estar registrado en el runtime de Service Fabric. Además, el tipo de actor debe registrarse con el tiempo de ejecución de Actor.
+* **Interfaz de actor**. La interfaz de actor se usa para definir una interfaz pública fuertemente tipada de un actor. En la terminología del modelo de Reliable Actors, la interfaz de actor define los tipos de mensajes que el actor puede entender y procesar. Otros actores y aplicaciones de cliente usan la interfaz de actor para "enviar" (asincrónicamente) mensajes al actor. Reliable Actors pueden implementar varias interfaces.
+* **Clase ActorProxy**. La clase ActorProxy la usan las aplicaciones cliente para invocar los métodos expuestos a través de una interfaz de actor. La clase ActorProxy ofrece dos funciones importantes:
   
-  * La resolución de nombres: es capaz de toolocate actor de hello en clúster de hello (Buscar Hola nodo de clúster Hola donde estén hospedados).
-  * Control de error: se puede reintentar las invocaciones de método y volver a resolver la ubicación de actor de hello después, por ejemplo, un error que requiere Hola actor toobe reubicado tooanother nodo de clúster de Hola.
+  * Resolución de nombre: Es capaz de ubicar el actor en el clúster (encontrar el nodo del cluster en el que se hospeda).
+  * Control de errores: Puede reintentar las invocaciones de métodos y volver a resolver la ubicación del actor, por ejemplo, tras un error que requiere que el actor se reubique en otro nodo del clúster.
 
-Hola siguiendo las reglas que pertenecen tooactor interfaces merece la pena comentar:
+Conviene destacar las siguientes reglas que pertenecen a las interfaces de actor:
 
 * No se pueden sobrecargar los métodos de interfaz de actor.
 * Los métodos de interfaz de actor no deben tener parámetros out, ref u opcionales.
@@ -55,21 +55,21 @@ Inicie Visual Studio 2015 o Visual Studio 2017 como administrador y cree un nuev
 
 ![Herramientas de Service Fabric para Visual Studio: nuevo proyecto][1]
 
-En el siguiente cuadro de diálogo hello, puede elegir a tipo hello de proyecto que desea toocreate.
+En el siguiente cuadro de diálogo puede elegir el tipo de proyecto que desea crear.
 
 ![Plantillas de proyecto de Service Fabric][5]
 
-Proyecto HelloWorld de hello, vamos a usar servicio de Service Fabric Reliable Actors Hola.
+Para el proyecto HelloWorld, se usará el servicio Reliable Actors de Service Fabric.
 
-Después de haber creado la solución de hello, debería ver Hola siguiente estructura:
+Después de haber creado la solución, debe ver la estructura siguiente:
 
 ![Estructura de proyecto de Service Fabric][2]
 
 ## <a name="reliable-actors-basic-building-blocks"></a>Bloques de creación básicos de Reliable Actors
 Una solución típica de Reliable Actors se compone de tres proyectos:
 
-* **proyecto de aplicación Hola (MyActorApplication)**. Se trata de un proyecto de Hola que todos los servicios de hello juntos para la implementación de los paquetes. Contiene hello *ApplicationManifest.xml* y scripts de PowerShell para administrar la aplicación hello.
-* **proyecto de interfaz de Hello (MyActor.Interfaces)**. Este es el proyecto de Hola que contiene la definición de interfaz Hola actor Hola. En el proyecto de MyActor.Interfaces hello, se pueden definir las interfaces de Hola que se usará en actores de hello en soluciones de Hola. Las interfaces de actor pueden definirse en cualquier proyecto con cualquier nombre, pero la interfaz de hello define el contrato de actor de hello compartida por la implementación de actor de Hola y clientes de Hola que llaman actor hello, por lo que normalmente tiene sentido toodefine en un ensamblado separar de la implementación de actor hello y puede compartirse entre varios otros proyectos.
+* **El proyecto de aplicación (MyActorApplication)**. Este es el proyecto que empaqueta todos los servicios juntos para la implementación. Contiene los scripts de PowerShell y *ApplicationManifest.xml* para administrar la aplicación.
+* **El proyecto de interfaz (MyActor.Interfaces)**. Este es el proyecto que contiene la definición de la interfaz del actor. En el proyecto MyActor.Interfaces puede definir las interfaces que usarán los actores de la solución. Las interfaces de actor pueden definirse en cualquier proyecto con el nombre que desee, pero la interfaz define el contrato de actor que comparten la implementación del actor y los clientes que llaman al actor. Por tanto, suele tener sentido definirlas en un ensamblado independiente de la implementación del actor y que se pueda compartir entre varios otros proyectos.
 
 ```csharp
 public interface IMyActor : IActor
@@ -78,7 +78,7 @@ public interface IMyActor : IActor
 }
 ```
 
-* **proyecto de servicio de actor Hello (MyActor)**. Esto es Hola proyecto utilizado toodefine Hola Service Fabric servicio que es continuo toohost Hola actor. Contiene implementación Hola de actor Hola. Una implementación de actor es una clase que deriva de un tipo base hello `Actor` e implementa Hola interfaces que se definen en hello MyActor.Interfaces proyecto. Una clase de actor también debe implementar un constructor que acepta un `ActorService` instancia y un `ActorId` y los pasa toohello base `Actor` clase. Esto permite la inyección de dependencia de constructor de dependencias de plataforma.
+* **El proyecto de servicio de actor (MyActor)**. Este es el proyecto que se usa para definir el servicio de Service Fabric que hospedará al actor. Contiene la implementación del actor. La implementación del actor es una clase que deriva de un tipo base `Actor` e implementa las interfaces definidas en el proyecto MyActor.Interfaces. Una clase de actor también debe implementar un constructor que acepta una instancia `ActorService` y `ActorId` y los pasa a la clase `Actor` base. Esto permite la inyección de dependencia de constructor de dependencias de plataforma.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -96,7 +96,7 @@ class MyActor : Actor, IMyActor
 }
 ```
 
-servicio de actor Hola debe estar registrado con un tipo de servicio en tiempo de ejecución de hello Service Fabric. En orden para hello toorun de servicio de Actor las instancias del actor, el tipo de actor también deben registrarse con el servicio de Actor hello. Hola `ActorRuntime` método de registro realizará esta tarea para actores.
+El servicio de actor debe registrarse con un tipo de servicio en el runtime de Service Fabric. Para que el servicio de actor ejecute las instancias de actor, el tipo de actor debe estar registrado también con el servicio de actor. El método de registro `ActorRuntime` realiza este trabajo para los actores.
 
 ```csharp
 internal static class Program
@@ -120,7 +120,7 @@ internal static class Program
 
 ```
 
-Si se inicia desde un proyecto nuevo en Visual Studio y tiene una sola definición de actor, registro de hello se incluye de forma predeterminada en el código de hello que genera Visual Studio. Si define otros actores en servicio de hello, necesita registro de actor hello tooadd mediante:
+Si comienza a partir de un proyecto nuevo en Visual Studio y tiene una única definición de actor, el registro se incluye de forma predeterminada en el código que genera Visual Studio. Si define otros actores en el servicio, deberá agregar el registro de actor mediante:
 
 ```csharp
  ActorRuntime.RegisterActorAsync<MyOtherActor>();
@@ -128,19 +128,19 @@ Si se inicia desde un proyecto nuevo en Visual Studio y tiene una sola definici�
 ```
 
 > [!TIP]
-> Hello en tiempo de ejecución de servicio Fabric actores emite algunos [eventos y contadores de rendimiento relacionados con los métodos de tooactor](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters). Son útiles para la supervisión del rendimiento y los diagnósticos.
+> El sistema en tiempo de ejecución de Service Fabric Actors emite algunos [eventos y contadores de rendimiento relacionados con los métodos de actor](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters). Son útiles para la supervisión del rendimiento y los diagnósticos.
 > 
 > 
 
 ## <a name="debugging"></a>Depuración
-herramientas de Service Fabric Hola para Visual Studio admiten la depuración en el equipo local. Puede iniciar una sesión de depuración mediante la tecla F5 de posicionamiento Hola. Visual Studio compila (si es necesario) paquetes. También implementa la aplicación hello en clúster de Service Fabric local hello y asocia el depurador de Hola.
+Las herramientas de Service Fabric para Visual Studio admiten la depuración en el equipo local. Puede iniciar una sesión de depuración presionando la tecla F5. Visual Studio compila (si es necesario) paquetes. También implementa la aplicación en el clúster de Service Fabric local y asocia el depurador.
 
-Durante el proceso de implementación de hello, puede ver el progreso de Hola Hola **salida** ventana.
+Durante el proceso de implementación, puede ver el progreso en la ventana **Resultados** .
 
 ![Ventana de resultados de depuración de Service Fabric][3]
 
 ## <a name="next-steps"></a>Pasos siguientes
-Obtenga más información sobre [cómo Reliable Actors usar plataforma Service Fabric de hello](service-fabric-reliable-actors-platform.md).
+Aprenda más sobre [el uso de la plataforma de Service Fabric por Reliable Actor](service-fabric-reliable-actors-platform.md).
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-get-started/reliable-actors-newproject.PNG

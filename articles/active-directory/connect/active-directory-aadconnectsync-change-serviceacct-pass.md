@@ -1,6 +1,6 @@
 ---
-title: "Azure AD Connect sync: cambiar cuenta de servicio de sincronización conectarse hello Azure AD | Documentos de Microsoft"
-description: "Este documento de tema describe la clave de cifrado de Hola y cómo tooabandon después de la contraseña de hello es cambiado."
+title: "Sincronización de Azure AD Connect: cambio de la cuenta del servicio de sincronización de Azure AD Connect | Microsoft Docs"
+description: "En este documento del tema se describe la clave de cifrado y cómo abandonarla una vez cambiada la contraseña."
 services: active-directory
 keywords: "Cuenta del servicio Sincronización de Azure AD, contraseña"
 documentationcenter: 
@@ -15,96 +15,96 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 11948ac4662f722e4f684ef6c9b9ccdc6387e60f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: bf6234d0810f870909957ee1c1e33c225a4922b9
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="changing-hello-azure-ad-connect-sync-service-account-password"></a>Cambiar la contraseña de la cuenta de servicio de sincronización de hello Azure AD Connect
-Si cambia la contraseña de la cuenta de servicio de sincronización de hello Azure AD Connect, Hola servicio de sincronización no será capaz de inicio correctamente hasta que haya abandonado la clave de cifrado de Hola y reinicializar la contraseña de la cuenta de servicio de sincronización de hello Azure AD Connect. 
+# <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>Cambio de la contraseña de la cuenta del servicio de sincronización de Azure AD Connect
+Si cambia la contraseña de la cuenta del servicio de sincronización de Azure AD Connect, el servicio de sincronización no podrá iniciarse correctamente hasta que haya abandonado la clave de cifrado y reinicializado la contraseña de la cuenta del servicio de sincronización de Azure AD Connect. 
 
-Azure AD Connect, como parte de servicios de sincronización de hello usa un contraseñas de hello toostore clave de cifrado de hello AD DS y las cuentas de servicio de Azure AD.  Estas cuentas se cifran antes de que se almacenen en la base de datos de Hola. 
+Azure AD Connect, como parte de los servicios de sincronización usa una clave de cifrado para almacenar las contraseñas de las cuentas de los servicios AD DS y Azure AD.  Estas cuentas se cifran antes de almacenarse en la base de datos. 
 
-Hello clave de cifrado utilizada se protege utilizando [protección de datos (DPAPI) de Windows](https://msdn.microsoft.com/library/ms995355.aspx). DPAPI protege la clave de cifrado de hello con hello **contraseña de cuenta de servicio de sincronización de hello Azure AD Connect**. 
+La clave de cifrado usada se protege mediante la [API de protección de datos de Windows (DPAPI)](https://msdn.microsoft.com/library/ms995355.aspx). Para proteger la clave de cifrado, DPAPI usa la **contraseña de la cuenta del servicio de sincronización de Azure AD Connect**. 
 
-Si necesita la contraseña de la cuenta de servicio de toochange Hola puede usar los procedimientos de hello en [clave de cifrado de Abandoning hello Azure AD Sync conectarse](#abandoning-the-azure-ad-connect-sync-encryption-key) tooaccomplish esto.  Estos procedimientos también deben utilizarse si necesita clave de cifrado de hello tooabandon por cualquier motivo.
+Si tiene que cambiar la contraseña de la cuenta del servicio, puede seguir para ello los procedimientos descritos en [Abandonar la clave de cifrado de sincronización de Azure AD Connect](#abandoning-the-azure-ad-connect-sync-encryption-key).  También debe seguir estos procedimientos si por algún motivo tiene que abandonar la clave de cifrado.
 
-##<a name="issues-that-arise-from-changing-hello-password"></a>Problemas que surgen al cambiar contraseña de Hola
-Hay dos aspectos que deben toobe realiza cuando se cambia la contraseña de cuenta de servicio de Hola.
+##<a name="issues-that-arise-from-changing-the-password"></a>Problemas que surgen al cambiar la contraseña
+Es preciso hacer dos cosas al cambiar la contraseña de la cuenta del servicio.
 
-En primer lugar, necesita toochange Hola contraseña en el Administrador de Control de servicios de Windows hello.  Hasta que se solucione el problema, verá los siguientes errores:
+En primer lugar, tiene que cambiar la contraseña en el Administrador de control de servicios de Windows.  Hasta que se solucione el problema, verá los siguientes errores:
 
 
-- Si intentas hello toostart servicio de sincronización en el Administrador de Control de servicios de Windows, recibe el error de Hola "**Windows no pudo iniciar servicio de sincronización de Microsoft Azure AD de hello en el equipo Local**". **Error 1069: el servicio de hello no se inició debido a error de inicio de sesión de tooa.** "
-- En el Visor de eventos de Windows, el registro de eventos del sistema de hello contiene un error con **7038 de Id. de evento** y el mensaje "**Hola servicio ADSync estaba toolog no se puede como con contraseña Hola configurada actualmente debido toohello siguiente error: nombre de usuario de Hola o la contraseña es incorrecta.** "
+- Si intenta iniciar el servicio de sincronización en el Administrador de control de servicios de Windows, recibirá el error "**Windows no pudo iniciar el servicio Sincronización de Microsoft Azure AD en el equipo local**". **Error 1069: No se puede iniciar el servicio debido a un error en el inicio de sesión.**"
+- En el Visor de eventos de Windows, el registro de eventos del sistema contiene un error con **Id. de evento 7038** y el mensaje "**The ADSync service was unable to log on as with the currently configured password due to the following error (El servicio ADSync no puede iniciar sesión con la contraseña configurada actualmente debido al siguiente error): El nombre de usuario o la contraseña es incorrecto.**"
 
-En segundo lugar, en condiciones específicas, si se actualiza la contraseña de hello, Hola servicio de sincronización puede ya no recuperar clave de cifrado de hello mediante DPAPI. Sin la clave de cifrado de Hola Hola que servicio de sincronización no se puede descifrar hello las contraseñas necesarias toosynchronize a/desde local de AD y Azure AD.
+En segundo lugar, en determinadas condiciones, si la contraseña se actualiza, el servicio de sincronización ya no podrá recuperar la clave de cifrado a través de DPAPI. Sin la clave de cifrado, el servicio de sincronización no puede descifrar la contraseña necesaria para sincronizar con o desde AD y Azure AD locales.
 Verá errores como los siguientes:
 
-- En el Administrador de Control de servicios de Windows, si intenta toostart Hola servicio de sincronización y no puede recuperar la clave de cifrado de hello, se produce un error error "** Windows no pudo iniciar Hola sincronización de Microsoft Azure AD en el equipo Local. Para obtener más información, revise el registro de sucesos del sistema de Hola. Si se trata de un servicio de terceros, póngase en contacto con el proveedor de servicios de Hola y consulte el código de error específico tooservice **-21451857952 ***. "
-- En el Visor de eventos de Windows, el registro de eventos de aplicación Hola contiene un error con **6028 de Id. de evento** y mensaje de error *"**no se puede tener acceso a clave de cifrado del servidor de Hola.* *"*
+- En el Administrador de control de servicios de Windows, si intenta iniciar el servicio de sincronización y este no puede recuperar la clave de cifrado, se produce el error “**Windows no pudo iniciar el servicio Sincronización de Microsoft Azure AD en el equipo local. Para más información, revise el registro de eventos del sistema. Si este no es un servicio de Microsoft, póngase en contacto con el proveedor del servicio y haga referencia al código de error específico del servicio **-21451857952****.”
+- En el Visor de eventos de Windows, el registro de eventos de la aplicación contiene un error con **Id. de evento 6028** y el mensaje de error *“**The server encryption key cannot be accessed.* *(No se puede acceder a la clave de cifrado del servidor.)”*
 
-tooensure que no reciben estos errores, siga los procedimientos de hello en [clave de cifrado de Abandoning hello Azure AD Sync conectarse](#abandoning-the-azure-ad-connect-sync-encryption-key) al cambiar contraseña de Hola.
+Para asegurarse de que no recibe estos errores, siga los procedimientos descritos en [Abandonar la clave de cifrado de sincronización de Azure AD Connect](#abandoning-the-azure-ad-connect-sync-encryption-key) al cambiar la contraseña.
  
-## <a name="abandoning-hello-azure-ad-connect-sync-encryption-key"></a>Abandonar la clave de cifrado de hello sincronización conectarse de Azure AD
+## <a name="abandoning-the-azure-ad-connect-sync-encryption-key"></a>Abandonar la clave de cifrado de sincronización de Azure AD Connect
 >[!IMPORTANT]
->Hello procedimientos siguientes solo aplican tooAzure AD Connect compilación 1.1.443.0 o anterior.
+>Los procedimientos siguientes solo se aplican a Azure AD Connect compilación 1.1.443.0 o anterior.
 
-Usar hello después de la clave de cifrado de procedimientos tooabandon Hola.
+Use los procedimientos siguientes para abandonar la clave de cifrado.
 
-### <a name="what-toodo-if-you-need-tooabandon-hello-encryption-key"></a>¿Qué toodo si necesita la clave de cifrado de hello tooabandon
+### <a name="what-to-do-if-you-need-to-abandon-the-encryption-key"></a>Qué hacer si tiene que abandonar la clave de cifrado
 
-Si necesita la clave de cifrado de hello tooabandon, utilícelo Hola siguiendo los procedimientos tooaccomplish.
+Si tiene que abandonar la clave de cifrado, use para ello los procedimientos siguientes.
 
-1. [Abandonar la clave de cifrado existente Hola](#abandon-the-existing-encryption-key)
+1. [Abandonar la clave de cifrado existente](#abandon-the-existing-encryption-key)
 
-2. [Proporcionar contraseña Hola de hello cuenta AD DS](#provide-the-password-of-the-ad-ds-account)
+2. [Especificar la contraseña de la cuenta de AD DS](#provide-the-password-of-the-ad-ds-account)
 
-3. [Reinicializar contraseña Hola de hello cuenta de sincronización de Azure AD](#reinitialize-the-password-of-the-azure-ad-sync-account)
+3. [Reinicializar la contraseña de la cuenta de Sincronización de Azure AD](#reinitialize-the-password-of-the-azure-ad-sync-account)
 
-4. [Iniciar servicio de sincronización de Hola](#start-the-synchronization-service)
+4. [Iniciar el servicio de sincronización](#start-the-synchronization-service)
 
-#### <a name="abandon-hello-existing-encryption-key"></a>Abandonar la clave de cifrado existente Hola
-Abandonar la clave de cifrado existente de hello, por lo que puede crearse esa nueva clave de cifrado:
+#### <a name="abandon-the-existing-encryption-key"></a>Abandonar la clave de cifrado existente
+Abandone la clave de cifrado existente para poder crear otra clave de cifrado:
 
-1. Inicie sesión en tooyour servidor Connect de Azure AD como administrador.
+1. Inicie sesión como administrador en el servidor de Azure AD Connect.
 
 2. Inicie una nueva sesión de PowerShell.
 
-3. Desplácese toofolder:`$env:Program Files\Microsoft Azure AD Sync\bin\`
+3. Acceda a la carpeta: `$env:Program Files\Microsoft Azure AD Sync\bin\`
 
-4. Ejecute el comando de hello:`./miiskmu.exe /a`
+4. Ejecute el comando: `./miiskmu.exe /a`
 
 ![Utilidad de clave de cifrado de sincronización de Azure AD Connect](media/active-directory-aadconnectsync-encryption-key/key5.png)
 
-#### <a name="provide-hello-password-of-hello-ad-ds-account"></a>Proporcionar contraseña Hola de hello cuenta AD DS
-Como ya no se pueden descifrar las contraseñas existentes de hello almacenadas dentro de la base de datos de hello, debes tooprovide Hola servicio de sincronización con la contraseña de Hola de cuenta de hello AD DS. Hola servicio de sincronización cifra las contraseñas de hello con hello nueva clave de cifrado:
+#### <a name="provide-the-password-of-the-ad-ds-account"></a>Especificar la contraseña de la cuenta de AD DS
+Cuando las contraseñas existentes almacenadas en la base de datos ya no se pueden descifrar, tiene que proporcionar el servicio de sincronización con la contraseña de la cuenta de AD DS. El servicio de sincronización cifra las contraseñas con la nueva clave de cifrado:
 
-1. Iniciar Hola Synchronization Service Manager (servicio de sincronización de inicio →).
+1. Inicie el Synchronization Service Manager (INICIO → Servicio de sincronización).
 </br>![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/startmenu.png)  
-2. Vaya toohello **conectores** ficha.
-3. Seleccione hello **conector AD** correspondiente tooyour AD local. Si tiene más de un conector de AD, repita Hola siguiendo los pasos para cada uno de ellos.
+2. Vaya a la pestaña **Conectores**.
+3. Seleccione el **AD Connector** (conector de AD) que corresponda a su AD local. Si tiene más de un conector de AD, repita los pasos siguientes para cada uno de ellos.
 4. En **Acciones**, seleccione **Propiedades**.
-5. En el cuadro de diálogo emergente de hello, seleccione **conectar tooActive Directory bosque**:
-6. Escriba la contraseña de Hola de cuenta de AD DS Hola Hola **contraseña** cuadro de texto. Si no conoce su contraseña, debe establecer tooa valor conocido antes de realizar este paso.
-7. Haga clic en **Aceptar** toosave Hola nueva contraseña y el cuadro de diálogo emergente de hello cerrar.
+5. En el cuadro de diálogo emergente, seleccione **Connect to Active Directory Forest** (Conectarse al bosque de Active Directory):
+6. Escriba la contraseña de la cuenta de AD DS en el cuadro de texto **Contraseña**. Si no conoce la contraseña, debe establecerla en un valor conocido antes de realizar este paso.
+7. Haga en **Aceptar** para guardar la nueva contraseña y cerrar el cuadro de diálogo emergente.
 ![Utilidad de clave de cifrado de sincronización de Azure AD Connect](media/active-directory-aadconnectsync-encryption-key/key6.png)
 
-#### <a name="reinitialize-hello-password-of-hello-azure-ad-sync-account"></a>Reinicializar contraseña Hola de hello cuenta de sincronización de Azure AD
-No se proporciona directamente contraseña Hola de toohello de cuenta de servicio servicio de sincronización de hello Azure AD. En su lugar, debe toouse Hola cmdlet **ADSyncAADServiceAccount agregar** tooreinitialize Hola cuenta de servicio de Azure AD. Hola cmdlet restablece la contraseña de la cuenta de hello y facilita toohello disponible el servicio de sincronización:
+#### <a name="reinitialize-the-password-of-the-azure-ad-sync-account"></a>Reinicializar la contraseña de la cuenta de Sincronización de Azure AD
+No se puede especificar directamente la contraseña de la cuenta del servicio Azure AD en el servicio de sincronización. En su lugar, tendrá que usar el cmdlet **Add-ADSyncAADServiceAccount** para reinicializar la cuenta del servicio Azure AD. El cmdlet restablece la contraseña de la cuenta y la pone a disposición de servicio de sincronización:
 
-1. Iniciar una nueva sesión de PowerShell en el servidor de Azure AD Connect Hola.
+1. Inicie una nueva sesión de PowerShell en el servidor de Azure AD Connect.
 2. Ejecute el cmdlet `Add-ADSyncAADServiceAccount`.
-3. En el cuadro de diálogo emergente de hello, proporcione las credenciales de administrador Global de hello Azure AD para el inquilino de Azure AD.
+3. En el cuadro de diálogo emergente, especifique las credenciales de administrador global de Azure AD para el inquilino de Azure AD.
 ![Utilidad de clave de cifrado de sincronización de Azure AD Connect](media/active-directory-aadconnectsync-encryption-key/key7.png)
-4. Si se realiza correctamente, verá el símbolo del sistema de PowerShell de Hola.
+4. Si se realiza correctamente, verá el símbolo del sistema de PowerShell.
 
-#### <a name="start-hello-synchronization-service"></a>Iniciar servicio de sincronización de Hola
-Ahora que Hola servicio de sincronización tiene la clave de cifrado de toohello de acceso y todas las contraseñas de Hola que necesita, puede reiniciar el servicio de Hola Hola Administrador de Control de servicios de Windows:
+#### <a name="start-the-synchronization-service"></a>Iniciar el servicio de sincronización
+Ahora que el servicio de sincronización tiene acceso a la clave de cifrado y a todas las contraseñas que necesita, puede reiniciar el servicio en el Administrador de control de servicios de Windows:
 
 
-1. Vaya tooWindows Administrador de Control de servicios (servicios de inicio →).
+1. Vaya a Administrador de control de servicios de Windows (INICIO → Servicios).
 2. Seleccione **Sincronización de Microsoft Azure AD** y haga clic en Reiniciar.
 
 ## <a name="next-steps"></a>Pasos siguientes

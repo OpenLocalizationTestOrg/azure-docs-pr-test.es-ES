@@ -1,6 +1,6 @@
 ---
-title: "entidades de mensajería de Service Bus de Azure de reenvío de aaaAuto | Documentos de Microsoft"
-description: "¿Cómo toochain un Bus de servicio cola o una suscripción tooanother cola o un tema."
+title: "Entidades de mensajería de Azure Service Bus con reenvío automático | Microsoft Docs"
+description: "Encadenamiento de una cola o suscripción de Service Bus a otra cola u otro tema."
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/07/2017
 ms.author: sethm
-ms.openlocfilehash: af18273e4e2f81c5363eb830c7decf313afd8307
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 2656b3a276c542ca836b3949e4e493d7c7f48f16
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="chaining-service-bus-entities-with-auto-forwarding"></a>Encadenamiento de entidades de Service Bus con reenvío automático
 
-Hola Service Bus *reenvío automático* característica permite toochain una cola o cola de suscripción tooanother o tema que forme parte del programa Hola mismo espacio de nombres. Cuando está habilitado el reenvío automático, Bus de servicio quita los mensajes que se colocan en la primera cola de Hola o suscripción (origen) automáticamente y se pone en cola de segundo de Hola o un tema (destino). Tenga en cuenta que es posible toosend una entidad de destino de mensaje toohello directamente. Además, no es posible toochain una subcola, como una cola de mensajes fallidos, tooanother cola o tema.
+La característica de *reenvío automático* de Service Bus permite encadenar una cola o suscripción a otra cola u otro tema que forman parte del mismo espacio de nombres. Cuando el reenvío automático está habilitado, Service Bus elimina automáticamente los mensajes que se colocan en la primera cola o suscripción (origen) y los coloca en la segunda cola o en el segundo tema (destino). Tenga en cuenta que todavía se puede enviar un mensaje a la entidad de destino directamente. Además, no es posible encadenar una subcola (como una cola de mensajes fallidos) a otra cola o tema.
 
 ## <a name="using-auto-forwarding"></a>Uso del reenvío automático
-Puede habilitar el reenvío automático por establecer hello [QueueDescription.ForwardTo] [ QueueDescription.ForwardTo] o [SubscriptionDescription.ForwardTo] [ SubscriptionDescription.ForwardTo] propiedades de hello [QueueDescription] [ QueueDescription] o [Queuedescription] [ SubscriptionDescription] objetos para el origen de hello, como en hello ejemplo siguiente.
+Para habilitar el reenvío automático, establezca las propiedades [QueueDescription.ForwardTo][QueueDescription.ForwardTo] o [SubscriptionDescription.ForwardTo][SubscriptionDescription.ForwardTo] de los objetos [QueueDescription][QueueDescription] o [SubscriptionDescription][SubscriptionDescription] para el origen, como en el siguiente ejemplo.
 
 ```csharp
 SubscriptionDescription srcSubscription = new SubscriptionDescription (srcTopic, srcSubscriptionName);
@@ -33,37 +33,37 @@ srcSubscription.ForwardTo = destTopic;
 namespaceManager.CreateSubscription(srcSubscription));
 ```
 
-entidad de destino de Hello debe existir en tiempo de Hola se crea la entidad de origen de Hola. Si no existe la entidad de destino de hello, Bus de servicio devuelve una excepción cuando toocreate frecuentes Hola entidad de origen.
+La entidad de destino debe existir en el momento en que se creó la entidad de origen. Si la entidad de destino no existe, Service Bus devuelve una excepción cuando se le pide que cree la entidad de origen.
 
-Puede utilizar el reenvío automático tooscale horizontalmente un tema individual. Bus de servicio límites hello [número de suscripciones en un tema determinado](service-bus-quotas.md) too2, 000. Para alojar suscripciones adicionales, cree temas de segundo nivel. Tenga en cuenta que, incluso si no se encuentra restringido por hello puede mejorar el límite de número de Hola de suscripciones, al agregar un segundo nivel de temas de Bus de servicio Hola el rendimiento global de su tema.
+El reenvío automático se puede utilizar para escalar horizontalmente un tema individual. Service Bus limita el [número de suscripciones de un tema dado](service-bus-quotas.md) a 2000. Para alojar suscripciones adicionales, cree temas de segundo nivel. Tenga en cuenta que aunque no tenga la limitación de Service Bus sobre el número de suscripciones, el hecho de agregar un segundo nivel de temas puede mejorar el rendimiento general del tema.
 
 ![Escenario de reenvío automático][0]
 
-También puede utilizar el reenvío automático toodecouple remitentes de mensajes a destinatarios. Por ejemplo, suponga que un sistema ERP consta de tres módulos: procesamiento de pedidos, administración de inventario y administración de relaciones con clientes. Cada uno de estos módulos genera mensajes que se ponen en cola en el tema correspondiente. Alice y Bob es representantes de ventas que están interesados en todos los mensajes relacionados con los clientes de tootheir. tooreceive los mensajes, Alice y Bob crea una cola personal y una suscripción en cada uno de los temas ERP de Hola que reenvían automáticamente la cola de tootheir para todos los mensajes.
+También puede utilizar el reenvío automático para desacoplar los remitentes de los destinatarios. Por ejemplo, suponga que un sistema ERP consta de tres módulos: procesamiento de pedidos, administración de inventario y administración de relaciones con clientes. Cada uno de estos módulos genera mensajes que se ponen en cola en el tema correspondiente. Alice y Bob son representantes de ventas que están interesados en todos los mensajes relacionados con sus clientes. Para recibir dichos mensajes, Alice y Bob crean una cola personal y una suscripción en cada uno de los temas de ERP que reenvían automáticamente todos los mensajes a su cola.
 
 ![Escenario de reenvío automático][1]
 
-Si Alice se va de vacaciones, su cola personal, en lugar de tema de hello ERP, se llena. En este escenario, dado que un representante de ventas no ha recibido ningún mensaje, ninguno de los temas de hello ERP alcanza la cuota.
+Si Alice se va de vacaciones, se llena su cola personal, en lugar del tema de ERP. En este escenario, como un representante de ventas no ha recibido ningún mensaje, ninguno de los temas de ERP alcanza la cuota.
 
 ## <a name="auto-forwarding-considerations"></a>Consideraciones sobre el reenvío automático
 
-Si entidad de destino de hello acumula demasiados mensajes y excede la cuota de Hola o entidad de destino de hello está deshabilitado, entidad de origen de Hola agrega mensajes de Hola tooits [cola de mensajes no enviados](service-bus-dead-letter-queues.md) hasta que haya espacio en el destino de Hola (o se vuelve a habilitar la entidad de hello). Los mensajes seguirán toolive en cola de mensajes no enviados de hello, por lo que debe recibir y procesarlos de cola de mensajes no enviados de hello explícitamente.
+Si la entidad de destino acumula muchos mensajes y supera la cuota (o la entidad de destino está deshabilitada), la entidad de origen agrega los mensajes a su [cola de mensajes fallidos](service-bus-dead-letter-queues.md) hasta que haya espacio en el destino (o hasta que se vuelva a habilitar la entidad). Esos mensajes seguirán estando en la cola de correo devuelto, por lo que debe recibirlos y procesarlos explícitamente desde de la cola de correo devuelto.
 
-Al encadenar juntos temas individuales tooobtain un tema compuesto con muchas suscripciones, se recomienda que tienen un número moderado de suscripciones en el tema de primer nivel de Hola y muchas suscripciones en los temas de segundo nivel Hola. Por ejemplo, un tema de primer nivel con 20 suscripciones, cada una de ellas encadenada tooa tema de segundo nivel con 200 suscripciones, permite un mayor rendimiento que un tema de primer nivel con 200 suscripciones, cada uno de ellos encadenadas tooa tema de segundo nivel con 20 suscripciones .
+Al encadenar temas individuales para obtener un tema compuesto con muchas suscripciones, se recomienda tener un número moderado de suscripciones en el tema de primer nivel y muchas suscripciones en los temas de segundo nivel. Por ejemplo, un tema de primer nivel con 20 suscripciones, cada una de ellas encadenada a un tema de segundo nivel con 200 suscripciones, ofrece un mayor rendimiento que un tema de primer nivel con 200 suscripciones, cada una de ellas encadenada a un tema de segundo nivel con 20 suscripciones.
 
-Service Bus factura una operación por cada mensaje reenviado. Por ejemplo, enviar un tema de mensaje tooa con 20 suscripciones, cada uno de ellos configurado mensajes de avance tooauto tooanother cola o tema, se factura como 21 operaciones si todas las suscripciones de primer nivel reciben una copia del mensaje de bienvenida.
+Service Bus factura una operación por cada mensaje reenviado. Por ejemplo, el envío de un mensaje a un tema con 20 suscripciones, cada una de ellas configurada para reenviar automáticamente mensajes a otra cola, o a otro tema, se factura como 21 operaciones si todas las suscripciones del primer nivel reciben una copia del mensaje.
 
-toocreate una suscripción que está encadenada tooanother cola o tema, debe tener creador de Hola de suscripción de hello **administrar** permisos en el origen de Hola y de entidad de destino de Hola. Enviar sólo requiere el tema de origen de mensajes toohello **enviar** permisos en el tema de origen Hola.
+Para crear una suscripción encadenada a otra cola o a otro tema, el creador debe tener permisos de **administración** tanto en la entidad de origen como en la de destino. Para enviar mensajes al tema de origen, solo se requieren permisos de **envío** en el tema de origen.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener información detallada sobre el reenvío automático, vea Hola temas de referencia siguientes:
+Para más información sobre el reenvío automático, consulte los siguientes temas de referencia:
 
 * [ForwardTo][QueueDescription.ForwardTo]
 * [QueueDescription][QueueDescription]
 * [SubscriptionDescription][SubscriptionDescription]
 
-toolearn más información acerca de las mejoras de rendimiento de Bus de servicio, vea 
+Para más información sobre las mejoras de rendimiento de Service Bus, vea: 
 
 * [Procedimientos recomendados para mejorar el rendimiento mediante la mensajería de Service Bus](service-bus-performance-improvements.md)
 * [Entidades de mensajería con particiones][Partitioned messaging entities]

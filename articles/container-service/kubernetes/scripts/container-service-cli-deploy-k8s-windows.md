@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure ejemplo de secuencia de comandos de CLI - crear clúster de ACS Windows Kubernetes | Documentos de Microsoft"
+title: "Ejemplo de script de la CLI de Azure: creación de un clúster de ACS con Kubernetes para Windows | Microsoft Docs"
 description: "Ejemplo de script de la CLI de Azure: creación de un clúster de ACS con Kubernetes para Windows"
 services: container-service
 documentationcenter: 
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: nepeters
-ms.openlocfilehash: afbaf17fb1d5310b50a2f181061339cb2ab87fd9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 3711363dea77a2671a8d35a92895bee91a803bc0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-azure-container-service-kubernetes-windows-cluster"></a>Creación de un clúster de Azure Container Service con Kubernetes para Windows
 
@@ -47,7 +47,7 @@ az acs create \
 
 ## <a name="clean-up-deployment"></a>Limpieza de la implementación 
 
-Ejecute hello después el grupo de recursos de comando tooremove hello, la VM y todos ellos relacionados con recursos.
+Ejecute el siguiente comando para quitar el grupo de recursos, la máquina virtual y todos los recursos relacionados.
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -55,15 +55,15 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Este script utiliza Hola después de la implementación de comandos toocreate Hola. Cada elemento de la documentación específica de hello tabla vínculos toocommand.
+Este script usa los siguientes comandos para crear la implementación. Cada elemento de la tabla incluye vínculos a la documentación específica del comando.
 
 | Comando | Notas |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | Crea un grupo de recursos en el que se almacenan todos los recursos. |
-| [az acs create](https://docs.microsoft.com/cli/azure/acs#create) | Crea un clúster de ACS. |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Crea un grupo de recursos en el que se almacenan todos los recursos. |
+| [az acs create](https://docs.microsoft.com/cli/azure/acs#az_acs_create) | Crea un clúster de ACS. |
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener más información sobre Hola CLI de Azure, consulte [documentación de Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Para más información sobre la CLI de Azure, consulte la [documentación de la CLI de Azure](https://docs.microsoft.com/cli/azure/overview).
 
-Encontrará más ejemplos de secuencias de comandos de CLI de servicio de contenedor de Azure en hello [documentación del servicio de contenedor de Azure](../cli-samples.md).
+Puede encontrar ejemplos de script adicionales de la CLI de Azure Container Service en la [documentación de Azure Container Service](../cli-samples.md).

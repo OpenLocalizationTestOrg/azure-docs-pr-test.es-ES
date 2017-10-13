@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: integración de Azure Active Directory con Intacct | Microsoft Docs"
-description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y Intacct."
+description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory e Intacct."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,113 +13,113 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 3500039615166c2f61fb408d85bb82dfaefba134
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: c203b192b9da0d280cbd7f6c123219242ee4a3d1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intacct"></a>Tutorial: integración de Azure Active Directory con Intacct
 
-En este tutorial, aprenderá cómo toointegrate Intacct con Azure Active Directory (Azure AD).
+En este tutorial, obtendrá información sobre cómo integrar Intacct con Azure Active Directory (Azure AD).
 
-Integración Intacct con Azure AD proporciona Hola siguientes ventajas:
+Integrar Intacct con Azure AD le proporciona las siguientes ventajas:
 
-- Puede controlar en Azure AD que tenga acceso tooIntacct
-- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooIntacct (Single Sign-On) con sus cuentas de Azure AD
-- Puede administrar las cuentas en una ubicación central: Hola portal de Azure
+- Puede controlar en Azure AD quién tiene acceso a Intacct.
+- Puede permitir que los usuarios inicien sesión automáticamente en Intacct (inicio de sesión único) con sus cuentas de Azure AD.
+- Puede administrar sus cuentas en una ubicación central: el nuevo Azure Portal.
 
-Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Si desea saber más sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-integración de Azure AD con Intacct tooconfigure, necesita Hola siguientes elementos:
+Para configurar la integración de Azure AD con Intacct, necesita los siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción habilitada para el inicio de sesión único en Intacct
 
 > [!NOTE]
-> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
+> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
 
-pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
+Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
 
 - No use el entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
 
-1. Agregar Intacct desde la Galería de Hola
+1. Incorporación de Intacct desde la Galería
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-intacct-from-hello-gallery"></a>Agregar Intacct desde la Galería de Hola
-integración de hello tooconfigure de Intacct en Azure AD, deberá tooadd Intacct de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
+## <a name="adding-intacct-from-the-gallery"></a>Incorporación de Intacct desde la Galería
+Para configurar la integración de Intacct en Azure AD, será preciso agregar Intacct desde la Galería a la lista de aplicaciones SaaS administradas.
 
-**tooadd Intacct de galería de hello, lleve a cabo Hola pasos:**
+**Para agregar Intacct desde la Galería, siga estos pasos:**
 
-1. Hola ** [portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
+1. En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
+2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
 
     ![Aplicaciones][2]
     
-3. tooadd nueva aplicación, haga clic en **nueva aplicación** botón en la parte superior de saludo del cuadro de diálogo.
+3. Para agregar una nueva aplicación, haga clic en el botón **Nueva aplicación** de la parte superior del cuadro de diálogo.
 
     ![Aplicaciones][3]
 
-4. En el cuadro de búsqueda de hello, escriba **Intacct**.
+4. En el cuadro de búsqueda, escriba **Intacct**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-intacct-tutorial/tutorial_intacct_search.png)
 
-5. En el panel de resultados de hello, seleccione **Intacct**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.
+5. En el panel de resultados, seleccione **Intacct** y luego haga clic en el botón **Agregar** para agregar la aplicación.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-intacct-tutorial/tutorial_intacct_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuración y comprobación del inicio de sesión único de Azure AD
 En esta sección, podrá configurar y probar el inicio de sesión único de Azure AD con Intacct con un usuario de prueba llamado "Britta Simon".
 
-Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en Intacct es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en Intacct debe toobe establecido.
+Para que el inicio de sesión único funcione, Azure AD necesita saber cuál es el usuario homólogo de Intacct para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de Intacct.
 
-En Intacct, asigne el valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** tooestablish la relación de vínculo de Hola.
+Para establecer la relación de vínculo, en Intacct, asigne el valor de **nombre de usuario** de Azure AD como valor de **Nombre de usuario**.
 
-tooconfigure y prueba de inicio de sesión único en Azure AD con Intacct, deberá hello toocomplete después de bloques de creación:
+Para configurar y probar el inicio de sesión único de Azure AD con Intacct, es preciso completar los siguientes bloques de creación:
 
-1. **[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on) ** -tooenable la toouse usuarios esta característica.
-2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user) ** -inicio de sesión único en Azure AD tootest con Britta Simon.
-3. **[Creación de un usuario de prueba de Intacct](#creating-an-intacct-test-user) ** -toohave un equivalente de Britta Simon en Intacct que es la representación toohello vinculado Azure AD del usuario.
-4. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user) ** -tooenable Britta Simon toouse Azure AD inicio de sesión único.
-5. **[Pruebas de Single Sign-On](#testing-single-sign-on) ** -tooverify Hola si funciona la configuración.
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.
+2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.
+3. **[Creación de un usuario de prueba de Intacct](#creating-an-intacct-test-user)**: para tener un homólogo de Britta Simon en Intacct que esté vinculado a la representación del usuario en Azure AD.
+4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación de Intacct.
+En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y configurará el inicio de sesión único en la aplicación Intacct.
 
-**inicio de sesión único en Azure AD tooconfigure con Intacct, realice Hola pasos:**
+**Para configurar el inicio de sesión único de Azure AD con Intacct, siga estos pasos:**
 
-1. En el portal de Azure, en Hola Hola **Intacct** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
+1. En Azure Portal, en la página de integración de la aplicación **Intacct**, haga clic en **Inicio de sesión único**.
 
     ![Configurar inicio de sesión único][4]
 
-2. En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.
+2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-intacct-tutorial/tutorial_intacct_samlbase.png)
 
-3. En hello **Intacct dominio y las direcciones URL** sección, lleve a cabo Hola pasos:
+3. En la sección **Dominio y direcciones URL de Intacct**, lleve a cabo los pasos siguientes:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-intacct-tutorial/tutorial_intacct_url.png)
 
-    Hola **dirección URL de respuesta** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:
+    En el cuadro de texto **URL de respuesta** , escriba una dirección URL con el siguiente patrón:
     | |
     |--|
     | `https://<companyname>.intacct.com/ia/acct/sso_response.phtml`|
     | `https://www.intacct.com/ia/acct/sso_response.phtml` |
 
     > [!NOTE] 
-    > Este valor no es real. Actualizar este valor con la dirección URL de respuesta real Hola. Póngase en contacto con [equipo de soporte técnico de Intacct](https://us.intacct.com/support) tooget este valor.
+    > Este valor no es real. Actualice este valor con la dirección URL de respuesta real. Póngase en contacto con el [equipo de soporte técnico de Intacct](https://us.intacct.com/support) para obtener este valor.
 
-4. En hello **el certificado de firma de SAML** sección, haga clic en **Certificate(Base64)** y, a continuación, guarde el archivo de certificado de hello en el equipo.
+4. En la sección **Certificado de firma de SAML**, haga clic en **Certificado (Base64)** y, luego, guarde el archivo de certificado en el equipo.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-intacct-tutorial/tutorial_intacct_certificate.png) 
 
@@ -127,21 +127,21 @@ En esta sección, habilitar inicio de sesión único en Azure AD en hello portal
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-intacct-tutorial/tutorial_general_400.png)
 
-6. En hello **configuración de Intacct** sección, haga clic en **configurar Intacct** tooopen **configurar inicio de sesión** ventana. Hola copia **Id. de entidad de SAML y SAML Single Sign-On dirección URL del servicio** de hello **sección de referencia rápida.**
+6. En la sección **Configuración de Intacct**, haga clic en **Configurar Intacct** para abrir la ventana **Configurar inicio de sesión**. Copie **SAML Entity ID and SAML Single Sign-On Service URL** (URL del servicio de inicio de sesión único de SAML e Identificador de entidad de SAML) de la sección **Referencia rápida**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-intacct-tutorial/tutorial_intacct_configure.png) 
 
-7. En una ventana del explorador web diferente, inicie sesión en el sitio de la compañía Intacct tooyour como administrador.
+7. En otra ventana del explorador web, inicie sesión en el sitio de la compañía de Intacct como administrador.
 
-8. Haga clic en hello **empresa** ficha y, a continuación, haga clic en **información de la empresa**.
+8. Haga clic en la pestaña **Compañía** y luego haga clic en**Información de la compañía**.
 
     ![Compañía](./media/active-directory-saas-intacct-tutorial/ic790037.png "Compañía")
 
-9. Haga clic en hello **seguridad** ficha y, a continuación, haga clic en **editar**.
+9. Haga clic en la pestaña **Seguridad** y luego haga clic en **Editar**.
 
     ![Seguridad](./media/active-directory-saas-intacct-tutorial/ic790038.png "Seguridad")
 
-10. Hola **único (SSO) de inicio de sesión** sección, lleve a cabo Hola pasos:
+10. En la sección **Inicio de sesión único (SSO)** , siga estos pasos:
 
     ![Inicio de sesión único](./media/active-directory-saas-intacct-tutorial/ic790039.png "inicio de sesión único")
 
@@ -149,93 +149,93 @@ En esta sección, habilitar inicio de sesión único en Azure AD en hello portal
 
     b. En **Tipo de proveedor de identidades**, seleccione **SAML 2.0**.
 
-    c. En **dirección URL del emisor** cuadro de texto, pegue Hola valo **Id. de entidad SAML** que haya copiado desde el portal de Azure.
+    c. En el cuadro de texto **Dirección URL del emisor**, pegue el valor de **SAML Entity ID** (Identificador de entidad de SAML) que ha copiado de Azure Portal.
    
-    d. En **dirección URL de inicio de sesión** cuadro de texto, pegue Hola valo **SAML Single Sign-On dirección URL del servicio** que haya copiado desde el portal de Azure.
+    d. En el cuadro de texto **Dirección URL de inicio de sesión**, pegue el valor de la **dirección URL del servicio de inicio de sesión único de SAML** que ha copiado de Azure Portal.
 
-    e. Abra su **base-64** codificado certificado en el Bloc de notas, Hola copia contenido del mismo en el Portapapeles y, a continuación, péguelo toohello **certificado** cuadro.
+    e. Abra el certificado codificado en **base-64** en el Bloc de notas, copie el contenido del mismo en el Portapapeles y luego péguelo en el cuadro de texto **Certificado**.
    
     f. Haga clic en **Guardar**.
 
 > [!TIP]
-> Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!  Después de agregar esta aplicación de hello **Active Directory > aplicaciones empresariales** sección, simplemente haga clic en hello **Single Sign-On** Hola de pestaña y acceso incrustado documentación a través de hello ** Configuración** sección final Hola. Puede leer más acerca de características de documentación de embedded Hola aquí: [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ahora puede leer una versión resumida de estas instrucciones dentro de [Azure Portal](https://portal.azure.com) mientras configura la aplicación.  Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada a través de la sección **Configuración** de la parte inferior. Puede leer más sobre la característica de documentación insertada aquí: [Vista previa: Administración de inicio de sesión único para aplicaciones empresariales en el nuevo Azure Portal]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.
+El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".
 
 ![Creación de un usuario de Azure AD][100]
 
-**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
+**Siga estos pasos para crear un usuario de prueba en Azure AD:**
 
-1. Hola **portal de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.
+1. En el panel de navegación izquierdo de **Azure Portal**, haga clic en el icono de **Azure Active Directory**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-intacct-tutorial/create_aaduser_01.png) 
 
-2. lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios**.
+2. Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios**.
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-intacct-tutorial/create_aaduser_02.png) 
 
-3. Hola tooopen **usuario** cuadro de diálogo, haga clic en **agregar** en la parte superior de saludo del cuadro de diálogo de Hola.
+3. Para abrir el cuadro de diálogo **Usuario**, haga clic en **Agregar** en la parte superior del cuadro de diálogo.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-intacct-tutorial/create_aaduser_03.png) 
 
-4. En hello **usuario** cuadro de diálogo, siga los pasos de hello:
+4. En la página de diálogo **Usuario**, realice los siguientes pasos:
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-intacct-tutorial/create_aaduser_04.png) 
 
-    a. Hola **nombre** cuadro de texto, tipo **BrittaSimon**.
+    a. En el cuadro de texto **Nombre**, escriba **BrittaSimon**.
 
-    b. Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.
+    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
 
-    c. Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.
+    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
 
     d. Haga clic en **Crear**.
  
 ### <a name="creating-an-intacct-test-user"></a>Creación de un usuario de prueba de Intacct
 
-tooset configurar usuarios de Azure AD para que puedan iniciar sesión en tooIntacct, se les deben aprovisionar en Intacct. Para Intacct, el aprovisionamiento es una tarea manual.
+Para configurar los usuarios de Azure AD para que puedan iniciar sesión en Intacct, tienen que aprovisionarse en Intacct. Para Intacct, el aprovisionamiento es una tarea manual.
 
-**cuentas de usuario de tooprovision, lleve a cabo Hola pasos:**
+**Para aprovisionar cuentas de usuario, realice estos pasos:**
 
-1. Inicie sesión en tooyour **Intacct** inquilino.
+1. Inicie sesión en su inquilino de **Intacct** .
 
-2. Haga clic en hello **empresa** ficha y, a continuación, haga clic en **usuarios**.
+2. Haga clic en la pestaña **Compañía** y luego haga clic en **Usuarios**.
 
     ![Usuarios](./media/active-directory-saas-intacct-tutorial/ic790041.png "Usuarios")
-3. Haga clic en hello **agregar** ficha.
+3. Haga clic en la pestaña **Agregar**.
 
     ![Agregar](./media/active-directory-saas-intacct-tutorial/ic790042.png "Agregar")
-4. Hola **información del usuario** sección, lleve a cabo Hola pasos:
+4. En la sección **Información del usuario** , lleve a cabo estos pasos:
 
     ![Información del usuario](./media/active-directory-saas-intacct-tutorial/ic790043.png "Información del usuario")
 
-    a. Escriba hello **Id. de usuario**, hello **apellidos**, **nombre**, hello **dirección de correo electrónico**, hello **título**, hello y **teléfono** de una cuenta de Azure AD que quiera tooprovision en hello **información del usuario** sección.
+    a. Escriba el **Id. de usuario**, **Apellidos**, **Nombre**, **Dirección de correo electrónico**, **Puesto** y **Teléfono** de una cuenta de Azure AD que quiera aprovisionar en la sección **Información del usuario**.
 
-    b. Seleccione hello **privilegios de administrador** de una cuenta de Azure AD que desea tooprovision.
+    b. Seleccione **Privilegios administrativos** de una cuenta de Azure AD que quiera aprovisionar.
    
-    c. Haga clic en **Guardar**. titular de la cuenta de Hello Azure AD recibe un correo electrónico y sigue un vínculo tooconfirm su cuenta antes de activarla.
+    c. Haga clic en **Guardar**. El titular de la cuenta de Azure AD recibe un mensaje de correo y sigue un vínculo para confirmar su cuenta antes de que se active.
 
 >[!NOTE]
->cuentas de usuario de Azure AD tooprovision, puede usar otra herramienta de creación de cuentas de usuario de Intacct o las API proporcionadas por Intacct.
+>Para aprovisionar cuentas de usuario de Azure AD, puede usar cualquier otra API o herramienta de creación de cuentas de usuario de Intacct ofrecida por Intacct.
         
-### <a name="assigning-hello-azure-ad-test-user"></a>Asignación de usuario de prueba de hello Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
 
-En esta sección, se habilita Britta Simon toouse un inicio de sesión único Azure concediendo acceso tooIntacct.
+En esta sección, concederá acceso a Britta Simon a Intacct para que use el inicio de sesión único de Azure.
 
 ![Asignar usuario][200] 
 
-**tooassign Britta Simon tooIntacct, lleve a cabo Hola pasos:**
+**Para asignar la usuaria Britta Simon a Intacct., siga estos pasos:**
 
-1. Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
+1. En Azure Portal, abra la vista de aplicaciones, vaya a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego, haga clic en **Todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones de hello, seleccione **Intacct**.
+2. En la lista de aplicaciones, seleccione **Intacct**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-intacct-tutorial/tutorial_intacct_app.png) 
 
-3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
+3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
 
     ![Asignar usuario][202] 
 
@@ -243,7 +243,7 @@ En esta sección, se habilita Britta Simon toouse un inicio de sesión único Az
 
     ![Asignar usuario][203]
 
-5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
+5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -251,13 +251,13 @@ En esta sección, se habilita Britta Simon toouse un inicio de sesión único Az
     
 ### <a name="testing-single-sign-on"></a>Prueba del inicio de sesión único 
 
-En esta sección, probará la configuración de inicio de sesión única de Azure AD mediante el uso de hello Panel de acceso.
+En esta sección, probará la configuración de inicio de sesión único de Azure AD mediante el Panel de acceso.
 
-Al hacer clic en icono de Intacct Hola Hola Panel de acceso, debería firmar automáticamente en tooyour Intacct aplicación.
+Al hacer clic en el icono de Intacct. en el panel de acceso, debería iniciar sesión automáticamente en su aplicación de Intacct.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

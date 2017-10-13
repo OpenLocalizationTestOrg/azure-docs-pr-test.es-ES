@@ -1,6 +1,6 @@
 ---
-title: "aaaIntroduction tooAzure el catálogo de datos | Documentos de Microsoft"
-description: "Este artículo proporciona información general sobre el catálogo de datos de Microsoft Azure, incluidas sus características y problemas de Hola que apunta. El catálogo de datos permite que cualquier usuario tooregister, detectar, comprender y consumir orígenes de datos."
+title: "Introducción a Azure Data Catalog | Microsoft Docs"
+description: "En este artículo se proporciona información general de Microsoft Azure Data Catalog, incluidas sus características y los problemas que soluciona. Data Catalog permite a cualquier usuario registrar, detectar, comprender y consumir orígenes de datos."
 services: data-catalog
 documentationcenter: 
 author: steelanddata
@@ -15,63 +15,63 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
-ms.openlocfilehash: 82144c440b5692d3608af08208f36ee8e6dfdc93
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a28a7679831201fcf3a9d1c15497ff706c2752a1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-azure-data-catalog"></a>¿Qué es Azure Data Catalog?
-Catálogo de datos de Azure es un servicio de nube totalmente administrado cuyos los usuarios pueden detectar los orígenes de datos de hello necesitan y comprender los orígenes de datos de Hola que buscar. En hello mismo tiempo, get de catálogo de datos ayuda a las organizaciones más valor de sus inversiones existentes. 
+Azure Data Catalog es un servicio en la nube totalmente administrado cuyos usuarios pueden detectar los orígenes de datos que necesitan y comprender los orígenes de datos que encuentran. Al mismo tiempo, Data Catalog ayuda a las organizaciones a obtener más valor de sus inversiones existentes. 
 
-Con Data Catalog, cualquier usuario (analista, científico de datos o desarrollador) puede detectar, comprender y consumir orígenes de datos. Data Catalog incluye un modelo de colaboración abierta distribuida de metadatos y anotaciones. Es un lugar central y único de toocontribute de los usuarios de la organización todos sus conocimientos y generar una Comunidad y la referencia cultural de los datos.
+Con Data Catalog, cualquier usuario (analista, científico de datos o desarrollador) puede detectar, comprender y consumir orígenes de datos. Data Catalog incluye un modelo de colaboración abierta distribuida de metadatos y anotaciones. Es un único lugar centralizado para que todos los usuarios de una organización aporten sus conocimientos y generen una comunidad y la referencia cultural de los datos.
 
 ## <a name="discovery-challenges-for-data-consumers"></a>Desafíos de detección para los consumidores de datos
-Tradicionalmente, la detección de orígenes de datos empresariales ha sido un proceso orgánico basado en conocimiento tribal. Para las empresas que quieran tooget Hola mayor valor de sus activos de información, este enfoque presenta varios desafíos:
+Tradicionalmente, la detección de orígenes de datos empresariales ha sido un proceso orgánico basado en conocimiento tribal. Este enfoque presenta varios desafíos a las empresas que desean sacar el máximo partido de sus recursos de información:
 
 * Es posible que los usuarios no sepan que un origen de datos existe, a menos que se lo encuentren como parte de otro proceso. No hay ninguna ubicación central en la que estén registrados los orígenes de datos.
-* A menos que los usuarios sepan ubicación Hola de un origen de datos, no pueden conectarse toohello datos mediante una aplicación de cliente. Experiencias de consumo de datos requieren la cadena de conexión de los usuarios tooknow Hola o ruta de acceso.
-* A menos que los usuarios sepan ubicación Hola de documentación de un origen de datos, no se entienden Hola diseñada usa de datos de Hola. Tanto los orígenes de datos como la documentación pueden encontrarse en varios lugares y consumirse a través de varias experiencias.
-* Si los usuarios tienen preguntas sobre un recurso de información, debe localizar experto de Hola o el equipo que se encarga de datos de Hola y captar ellos sin conexión. No hay ninguna conexión explícita entre los datos y las perspectivas de expertas sobre su uso.
-* A menos que los usuarios sepan proceso Hola para solicitar el origen de datos de access toohello, detección de origen de datos de Hola y su documentación todavía no ayudarles a tener acceso a datos de Hola.
+* Salvo que los usuarios conozcan la ubicación de un origen de datos, no se podrán conectar a los datos mediante una aplicación cliente. Las experiencias de consumo de datos requieren que los usuarios conozcan la cadena de conexión o la ruta de acceso.
+* Salvo que los usuarios conozcan la ubicación de la documentación de un origen de datos, no podrán conocer los usos previstos de los datos. Tanto los orígenes de datos como la documentación pueden encontrarse en varios lugares y consumirse a través de varias experiencias.
+* Si los usuarios tienen dudas acerca de un recurso de información, deben buscar al experto o equipos responsables de los datos e interactuar con ellos sin conexión. No hay ninguna conexión explícita entre los datos y las perspectivas de expertas sobre su uso.
+* A menos que los usuarios conozcan el proceso de solicitud de acceso al origen de datos, la detección del origen de datos y su documentación no les ayudan a acceder a los datos.
 
 ## <a name="discovery-challenges-for-data-producers"></a>Desafíos de detección para los productores de datos
-Aunque Hola de cara a los consumidores de datos había mencionado anteriormente desafíos, los usuarios que son responsables de generar y mantener los activos de información enfrentan a desafíos de sus propios:
+Aunque los consumidores de datos se enfrentan a los desafíos mencionados, los usuarios responsables de producir y mantener recursos de información se enfrentan a los suyos propios:
 
-* A menudo, la anotación de orígenes de datos con metadatos descriptivos es un esfuerzo baldío. Las aplicaciones cliente suelen pasar por alto las descripciones que se almacenan en el origen de datos de Hola.
+* A menudo, la anotación de orígenes de datos con metadatos descriptivos es un esfuerzo baldío. Las aplicaciones cliente suelen ignorar las descripciones que se almacenan en el origen de datos.
 * La creación de documentación para los orígenes de datos suele ser un esfuerzo baldío. El mantenimiento de la sincronización entre la documentación y los orígenes de datos es una responsabilidad continua, ya que se puede dar el caso de que los usuarios no confíen en documentación que se percibe como obsoleta.
-* La creación y el mantenimiento de la documentación de los orígenes de datos son tareas complejas y lentas. Hacer que tooeveryone estén disponibles de documentación que utiliza el origen de datos de hello puede ser incluso más.
-* Restringir el acceso a los orígenes de toodata y asegurarse de que los consumidores de datos saben cómo toorequest acceso es un desafío constante.
+* La creación y el mantenimiento de la documentación de los orígenes de datos son tareas complejas y lentas. Que dicha documentación esté disponible para todos los que usen el origen de datos también puede serlo.
+* La restricción del acceso a los orígenes de datos y la garantía de que los consumidores de datos saben cómo solicitar el acceso suponen un desafío continuo.
 
-Cuando se combinan estos retos, presentan una barrera importante respecto de las empresas que desean tooencourage y promoción el uso de Hola y el conocimiento de los datos empresariales.
+Cuando dichos retos de se combinan, suponen una barrera importante para las empresas que desean estimular y promover el uso y conocimiento de los datos empresariales.
 
 ## <a name="azure-data-catalog-can-help"></a>Azure Data Catalog puede ser de gran ayuda
-El catálogo de datos está diseñada tooaddress estos problemas y toohelp las empresas get hello más valor de sus activos de información existentes. Catálogo de datos hace que los orígenes de datos fácilmente reconocible y de fácil comprensión por los usuarios de Hola que administran datos de Hola.
+Data Catalog está diseñado para abordar estos problemas y ayudar a las empresas a sacar el máximo partido a los recursos de información existentes. Data Catalog facilita que los usuarios que administran los datos puedan detectar y comprender los orígenes de datos.
 
-Data Catalog proporciona un servicio basado en la nube en el que es posible registrar un origen de datos. Hola datos permanecen en su ubicación existente, pero una copia de sus metadatos se agrega tooData catálogo, junto con una ubicación de origen de datos de referencia toohello. Hola metadatos también está indizada toomake cada origen de datos que se puedan detectar fácilmente a través de búsqueda y comprensible toohello quienes detección.
+Data Catalog proporciona un servicio basado en la nube en el que es posible registrar un origen de datos. Los datos permanecen en la ubicación existente, pero se agrega una copia de sus metadatos a Data Catalog, junto con una referencia a la ubicación del origen de datos. Los metadatos también se indexan no solo para que todos los orígenes de datos se puedan detectar fácilmente a través de la búsqueda, sino también para que los usuarios que los detecten puedan comprenderlos.
 
-Una vez registrado un origen de datos, sus metadatos, a continuación, se pueden mejorar, por usuario de Hola que se registraron, o por otros usuarios de empresa de Hola. Cualquier usuario puede anotar un origen de datos proporcionando descripciones, etiquetas u otros metadatos, como la documentación y procesos para solicitar acceso al origen de datos. Estos metadatos descriptivos complementa Hola metadatos estructurales (por ejemplo, tipos de datos y los nombres de columna) que se registren desde el origen de datos de Hola.
+Una vez que se ha registrado un origen de datos, a continuación sus metadatos los puede enriquecer el usuario que realizó el registro u otros usuarios de la empresa. Cualquier usuario puede anotar un origen de datos proporcionando descripciones, etiquetas u otros metadatos, como la documentación y procesos para solicitar acceso al origen de datos. Estos metadatos descriptivos complementan a los metadatos estructurales (como los nombres de columna y los tipos de datos) registrados desde el origen de datos.
 
-Detectar y descripción de los orígenes de datos y su uso son el propósito principal de Hola de registrar orígenes de Hola. Los usuarios de la empresa podrían necesita los datos de business intelligence, desarrollo de aplicaciones, ciencia de datos o cualquier otra tarea donde se requiere datos correctos de Hola. Puede usar la detección de catálogo de datos de hello experiencia tooquickly encontrar datos que se adapte a sus necesidades, comprender Hola datos tooevaluate su idoneidad para la finalidad de Hola y consumir datos hello, abra el origen de datos de hello en su herramienta preferida de. 
+El descubrimiento y comprensión de los orígenes de datos y su uso es el propósito principal de registrar los orígenes. Los usuarios empresariales pueden necesitar los datos para la inteligencia empresarial, el desarrollo de aplicaciones, la ciencia de datos o cualquier otra tarea en la que se requieran los datos correctos. Pueden usar la detección de Data Catalog para encontrar rápidamente datos que se ajusten a sus necesidades, conocer los datos para evaluar su idoneidad para un fin concreto y consumir los datos abriendo el origen de datos en su herramienta preferida. 
 
-Hola al mismo tiempo, los usuarios pueden contribuir toohello catálogo etiquetado, documentar y anotar los orígenes de datos que ya se ha registrado. También pueden registrar nuevos orígenes de datos, que, a continuación, se pueden detectar, entender y utilizados por la Comunidad de Hola de usuarios del catálogo.
+Al mismo tiempo, los usuarios pueden contribuir al catálogo mediante el etiquetado, la documentación y la anotación de los orígenes de datos que ya han registrado. También pueden registrar nuevos orígenes de datos que la comunidad de usuarios del catálogo, posteriormente, puede detectar, entender y consumir.
 
 ![Funcionalidades de Data Catalog](./media/data-catalog-what-is-data-catalog/data-catalog-capabilities.png)
 
 ## <a name="learn-more-about-data-catalog"></a>Más información acerca de Data Catalog
-toolearn más información acerca de las capacidades de hello del catálogo de datos, vea:
+Para más información acerca de las funcionalidades de Data Catalog, consulte:
 
-* [¿Cómo tooregister los orígenes de datos](data-catalog-how-to-register.md)
-* [¿Cómo toodiscover los orígenes de datos](data-catalog-how-to-discover.md)
-* [¿Cómo tooannotate los orígenes de datos](data-catalog-how-to-annotate.md)
-* [¿Cómo toodocument los orígenes de datos](data-catalog-how-to-documentation.md)
-* [Cómo tooconnect toodata orígenes](data-catalog-how-to-connect.md)
-* [¿Cómo toowork con grandes cantidades de datos](data-catalog-how-to-big-data.md)
-* [¿Cómo toomanage activos de datos](data-catalog-how-to-manage.md)
-* [¿Cómo tooset seguridad Hola glosarios empresariales](data-catalog-how-to-business-glossary.md)
+* [Registro de orígenes de datos](data-catalog-how-to-register.md)
+* [Detección de orígenes de datos](data-catalog-how-to-discover.md)
+* [Anotación de orígenes de datos](data-catalog-how-to-annotate.md)
+* [Documentación de los orígenes de datos](data-catalog-how-to-documentation.md)
+* [Conexión a orígenes de datos](data-catalog-how-to-connect.md)
+* [Trabajo con macrodatos](data-catalog-how-to-big-data.md)
+* [Cómo administrar recursos de datos](data-catalog-how-to-manage.md)
+* [Configuración del glosario empresarial](data-catalog-how-to-business-glossary.md)
 * [Preguntas más frecuentes](data-catalog-frequently-asked-questions.md)
 
 ## <a name="next-steps"></a>Pasos siguientes
-tooget iniciado con el catálogo de datos, consulte:
+Para empezar a usar Data Catalog, vaya a:
 * [Microsoft Azure Data Catalog](https://www.azuredatacatalog.com)
 * [Introducción al Catálogo de datos de Azure](data-catalog-get-started.md)

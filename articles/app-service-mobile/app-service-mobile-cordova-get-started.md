@@ -1,6 +1,6 @@
 ---
-title: "aaaCreate una aplicación de Cordova en aplicaciones de Mobile de servicio de aplicación de Azure | Documentos de Microsoft"
-description: "Siga este tutorial tooget Introducción al uso de back-ends de aplicaciones móviles Azure para el desarrollo de Apache Cordova"
+title: "Creación de una aplicación de Cordova en Azure App Service Mobile Apps | Microsoft Docs"
+description: "Siga este tutorial para aprender a usar back-ends de aplicación móvil de Azure para el desarrollo de Apache Cordova."
 services: app-service\mobile
 documentationcenter: javascript
 author: ggailey777
@@ -16,46 +16,46 @@ ms.devlang: javascript
 ms.topic: hero-article
 ms.date: 07/07/2017
 ms.author: glenga
-ms.openlocfilehash: 4981cbc0686c15230019ac9f30495f30cbf2c791
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b620465cdc3cfa04933dc6e70163fc32aa9a839b
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="create-an-apache-cordova-app"></a>Creación de una aplicación de Apache Cordova
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 ## <a name="overview"></a>Información general
-Este tutorial muestra cómo tooadd un back-end basado en la nube service aplicación móvil de tooan Apache Cordova mediante el uso de un aplicación móvil Azure de back-end.  Creará un back-end de aplicación móvil nuevo y una aplicación simple de *lista de tareas pendientes* de Apache Cordova que almacena los datos de la aplicación en Azure.
+En este tutorial se muestra cómo agregar un servicio back-end basado en la nube a una aplicación móvil de Apache Cordova usando un back-end de la aplicación móvil de Azure.  Creará un back-end de aplicación móvil nuevo y una aplicación simple de *lista de tareas pendientes* de Apache Cordova que almacena los datos de la aplicación en Azure.
 
-Completar este tutorial es un requisito previo para todos los otros tutoriales de Apache Cordova sobre cómo usar la característica de aplicaciones móviles de hello en el servicio de aplicación de Azure.
+Completar este tutorial es un requisito previo para todos los demás tutoriales de Apache Cordova acerca de cómo usar la característica Aplicaciones móviles en el Servicio de aplicaciones de Azure.
 
 ## <a name="prerequisites"></a>Requisitos previos
-toocomplete este tutorial, necesita Hola siguiendo los requisitos previos:
+Para completar este tutorial, debe cumplir los siguientes requisitos previos:
 
 * Un equipo con [Visual Studio Community 2017], o cualquier versión posterior.
 * [Visual Studio Tools para Apache Cordova].
 * Una [cuenta de Azure activa](https://azure.microsoft.com/pricing/free-trial/).
 
-También puede omitir Visual Studio y usar línea de comandos de Apache Cordova Hola directamente.  Utilizando la línea de comandos de hello es útil al completar el tutorial de hello en un equipo Mac.  Compilar aplicaciones de cliente de Apache Cordova mediante la línea de comandos de hello no está cubierto por este tutorial.
+También puede omitir Visual Studio y utilizar la línea de comandos de Apache Cordova directamente.  El uso de la línea de comandos es útil si realiza el tutorial en un equipo Mac.  Este tutorial no aborda la compilación de aplicaciones de cliente de Apache Cordova con la línea de comandos.
 
 ## <a name="create-an-azure-mobile-app-backend"></a>Creación de un nuevo back-end de Aplicaciones móviles de Azure
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
 [Visualización de un vídeo donde se muestren pasos similares](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-1-Create-an-Azure-Mobile-App)
 
-## <a name="configure-hello-server-project"></a>Configurar el proyecto de servidor hello
+## <a name="configure-the-server-project"></a>Configuración del proyecto de servidor
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="download-and-run-hello-apache-cordova-app"></a>Descargue y ejecute la aplicación de Apache Cordova de hello
+## <a name="download-and-run-the-apache-cordova-app"></a>Descarga y ejecución de la aplicación Apache Cordova
 [!INCLUDE [app-service-mobile-cordova-run-app](../../includes/app-service-mobile-cordova-run-app.md)]
 
 ## <a name="next-steps"></a>Pasos siguientes
-Completado este tutorial de inicio rápido, mueva en tooone de hello tutoriales:
+Ahora que ha completado este tutorial de inicio rápido, continúe con uno de los siguientes tutoriales:
 
-* [Agregar datos sin conexión](app-service-mobile-cordova-get-started-offline-data.md) tooyour aplicaciones de Apache Cordova.
-* [Agregar autenticación](app-service-mobile-cordova-get-started-users.md) tooyour aplicaciones de Apache Cordova.
-* [Agregar las notificaciones de inserción](app-service-mobile-cordova-get-started-push.md) tooyour aplicaciones de Apache Cordova.
+* [Agregar datos sin conexión](app-service-mobile-cordova-get-started-offline-data.md) a su aplicación de Apache Cordova.
+* [Agregar autenticación](app-service-mobile-cordova-get-started-users.md) a su aplicación de Apache Cordova.
+* [Agregar notificaciones push](app-service-mobile-cordova-get-started-push.md) a su aplicación de Apache Cordova.
 
 Obtenga más información acerca de los conceptos principales con el servicio de aplicaciones de Azure.
 
@@ -63,7 +63,7 @@ Obtenga más información acerca de los conceptos principales con el servicio de
 * [Autenticación]
 * [Notificaciones de inserción]
 
-Obtenga información acerca de cómo toouse Hola SDK.
+Obtenga información sobre cómo usar los SDK.
 
 * [SDK de Apache Cordova]
 * [SDK de servidor ASP.NET]

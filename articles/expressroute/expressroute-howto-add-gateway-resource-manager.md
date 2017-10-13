@@ -1,6 +1,6 @@
 ---
-title: 'Agregar un tooa de puerta de enlace de red virtual red virtual para ExpressRoute: PowerShell: Azure | Documentos de Microsoft'
-description: "En este artículo se explica cómo agregar un tooan de puerta de enlace de red virtual ya creado el Administrador de recursos VNet para ExpressRoute."
+title: "Adición de una puerta de enlace de red virtual a una red virtual para ExpressRoute: PowerShell (Azure) | Microsoft Docs"
+description: "En este artículo, se indican los pasos para agregar una puerta de enlace de red virtual a una red virtual de Resource Manager ya creada para ExpressRoute."
 documentationcenter: na
 services: expressroute
 author: charwen
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2017
 ms.author: charwen
-ms.openlocfilehash: 8983430b426ad7c4af766294fa16427c5e9df5c3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 3aeddd03e0be548933775164ae790ba208fc13ae
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>Configuración de una puerta de enlace de red virtual para ExpressRoute con PowerShell
 > [!div class="op_single_selector"]
@@ -30,14 +30,14 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Este artículo le guiará a través de hello pasos tooadd, cambiar el tamaño y quitar una puerta de enlace de red virtual (VNet) para una red virtual existente. pasos de Hola para esta configuración son específicos para redes virtuales que se crearon con el modelo de implementación de administrador de recursos de Hola que se usará en una configuración de ExpressRoute. Para obtener más información acerca de las puertas de enlace de red virtual y la configuración de puerta de enlace para ExpressRoute, consulte [Acerca de las puertas de enlace de red virtual para ExpressRoute](expressroute-about-virtual-network-gateways.md). 
+Este artículo lo guía por los pasos para agregar, cambiar el tamaño y quitar una puerta de enlace de red virtual (VNet) para una red virtual existente. Los pasos de esta configuración son específicos para las redes virtuales que se crearon con el modelo de implementación de Resource Manager que se utilizarán en una configuración ExpressRoute. Para obtener más información acerca de las puertas de enlace de red virtual y la configuración de puerta de enlace para ExpressRoute, consulte [Acerca de las puertas de enlace de red virtual para ExpressRoute](expressroute-about-virtual-network-gateways.md). 
 
 
 ## <a name="before-beginning"></a>Antes de comenzar
-Compruebe que ha instalado los cmdlets de PowerShell de Azure más recientes de Hola. Si no ha instalado los cmdlets más recientes de hello, necesita toodo así antes de comenzar los pasos de configuración de Hola. Para obtener más información, vea [Install and Configure Azure PowerShell](/powershell/azure/overview) (Instalación y configuración de Azure PowerShell).
+Compruebe que haya instalado los cmdlets más recientes de Azure PowerShell. Si no, deberá hacerlo antes de comenzar con los pasos de configuración. Para obtener más información, vea [Install and Configure Azure PowerShell](/powershell/azure/overview) (Instalación y configuración de Azure PowerShell).
 
 [!INCLUDE [expressroute-gateway-rm-ps](../../includes/expressroute-gateway-rm-ps-include.md)]
 
 ## <a name="next-steps"></a>Pasos siguientes
-Después de haber creado la puerta de enlace de red virtual de hello, puede vincular el circuito de ExpressRoute de tooan de red virtual. Vea [vincular un circuito de ExpressRoute de red Virtual tooan](expressroute-howto-linkvnet-arm.md).
+Después de crear la puerta de enlace de red virtual, puede vincular la red virtual a un circuito ExpressRoute. Consulte el artículo [Vinculación de la red virtual a circuitos ExpressRoute](expressroute-howto-linkvnet-arm.md).
 

@@ -1,6 +1,6 @@
 ---
-title: "los extremos REST de aaaCall con HTTP + Swagger conector para las aplicaciones lógicas de Azure | Documentos de Microsoft"
-description: "Conectar los extremos de tooREST de lógica de aplicaciones a través de Swagger con Hola HTTP + conector de Swagger"
+title: "Llamada a los puntos de conexión REST con el conector HTTP + Swagger para Azure Logic Apps | Microsoft Docs"
+description: "Conexión a los puntos de conexión REST desde las aplicaciones lógicas a través de Swagger con el conector HTTP + Swagger"
 services: logic-apps
 author: jeffhollan
 manager: anneta
@@ -15,81 +15,81 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan; LADocs
-ms.openlocfilehash: baaa57689ff41fcd052f9d86086e36619ddec46e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3e9229d94e96aad7b769d0e55d208d856e3b80bc
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="get-started-with-hello-http--swagger-action"></a>Empezar a trabajar con Hola HTTP + acción de Swagger
+# <a name="get-started-with-the-http--swagger-action"></a>Introducción a la acción HTTP + Swagger
 
-Puede crear un extremo REST de primera clase conector tooany a través de un [Swagger documento](https://swagger.io) cuando usas Hola HTTP + Swagger acción en el flujo de trabajo de aplicación lógica. También puede extender lógica aplicaciones toocall cualquier extremo REST con una experiencia de diseñador de la aplicación lógica de primera clase.
+Puede crear un conector de primera categoría para cualquier punto de conexión REST a través de un [documento Swagger](https://swagger.io) al usar la acción HTTP + Swagger en el flujo de trabajo de la aplicación lógica. También puede ampliar las aplicaciones lógicas para llamar a cualquier punto de conexión REST con una experiencia de Diseñador de aplicación lógica de primer nivel.
 
-toolearn cómo toocreate las aplicaciones lógicas con conectores, consulte [crear una nueva aplicación de lógica](../logic-apps/logic-apps-create-a-logic-app.md).
+Para aprender a crear aplicaciones lógicas con conectores, consulte [Creación de una aplicación lógica](../logic-apps/logic-apps-create-a-logic-app.md).
 
 ## <a name="use-http--swagger-as-a-trigger-or-an-action"></a>Uso de HTTP + Swagger como desencadenador o acción
 
-Hola HTTP + Swagger desencadenador y la acción del trabajo mismo Hola como hello [acción HTTP](connectors-native-http.md) pero ofrecer una mejor experiencia de diseñador de la aplicación lógica mediante la exposición de la estructura de la API de Hola y salidas de hello [Swagger metadatos](https://swagger.io) . También puede utilizar Hola HTTP + Swagger conector como un desencadenador. Si desea que un desencadenador de sondeo tooimplement, siguen el patrón de sondeo de Hola que se describe en [crear personalizado toocall API otras API, servicios y sistemas de aplicaciones de lógica de](../logic-apps/logic-apps-create-api-app.md#polling-triggers).
+El desencadenador y la acción HTTP + Swagger funcionan igual que la [acción HTTP](connectors-native-http.md), pero ofrecen una experiencia en el Diseñador de aplicación lógica mejor al exponer la estructura de la API y los resultados desde los [metadatos de Swagger](https://swagger.io). También puede usar el conector HTTP + Swagger como desencadenador. Si desea implementar un desencadenador de sondeo, siga el modelo de sondeo que se describe en [Creación de API personalizadas para llamar a otras API, servicio y sistemas de aplicaciones lógicas](../logic-apps/logic-apps-create-api-app.md#polling-triggers).
 
 Más información sobre [las acciones y los desencadenadores de aplicaciones lógicas](connectors-overview.md).
 
-Este es un ejemplo de cómo toouse Hola HTTP + Swagger operación como una acción en un flujo de trabajo en una aplicación de lógica.
+A continuación se muestra un ejemplo de cómo utilizar la operación HTTP + Swagger como una acción en un flujo de trabajo de una aplicación lógica.
 
-1. Seleccione hello **nuevo paso** botón.
+1. Seleccione el botón **Nuevo paso** .
 2. Seleccione **Add an action**(Agregar una acción).
-3. En el cuadro de búsqueda de la acción de hello, escriba **swagger** toolist Hola HTTP + Swagger acción.
+3. En el cuadro de búsqueda de acciones, escriba **swagger** para mostrar la acción HTTP + Swagger.
    
     ![Acción de selección de HTTP + Swagger](./media/connectors-native-http-swagger/using-action-1.png)
-4. Escriba la dirección URL de Hola para un documento de Swagger:
+4. Escriba la dirección URL de un documento Swagger:
    
-   * toowork de hello Diseñador de la lógica de aplicaciones, Hola URL debe ser un extremo HTTPS y ha habilitado CORS.
-   * Si el documento de Swagger de hello no cumple este requisito, puede usar [con CORS habilita el almacenamiento de Azure](#hosting-swagger-from-storage) documento de hello toostore.
-5. Haga clic en **siguiente** tooread y presentación de Hola Swagger documento.
-6. Agregue todos los parámetros que son necesarios para la llamada de hello HTTP.
+   * Para poder utilizarse en el diseñador de aplicaciones lógicas, la dirección URL debe ser un punto de conexión HTTPS y debe tener habilitado CORS.
+   * Si el documento Swagger no cumple este requisito, puede usar el [Azure Storage con CORS habilitado](#hosting-swagger-from-storage) para almacenar el documento.
+5. Haga clic en **Siguiente** para realizar operaciones de lectura y procesamiento en el documento Swagger.
+6. Agregue cualquier parámetro necesario para la llamada HTTP.
    
     ![Completar acción HTTP](./media/connectors-native-http-swagger/using-action-2.png)
-7. toosave y publicar la aplicación lógica, haga clic en **guardar** en la barra de herramientas del diseñador.
+7. Para guardar y publicar la aplicación lógica, haga clic en **Guardar** en la barra de herramientas del diseñador.
 
 ### <a name="host-swagger-from-azure-storage"></a>Hospedar Swagger desde Azure Storage
-Puede ser conveniente tooreference un documento de Swagger que no se hospeda o que no cumple los requisitos de seguridad y entre orígenes de hello para el Diseñador de Hola. tooresolve este problema, puede almacenar documentos de Swagger de hello en el almacenamiento de Azure y habilitar CORS tooreference Hola documentos.  
+Puede hacer referencia a un documento de Swagger que no está hospedado, o que no cumple los requisitos de seguridad y de origen cruzado para el diseñador. Para resolver este problema, puede almacenar el documento Swagger en Azure Storage y habilitar CORS para hacer referencia al documento.  
 
-Presentamos Hola pasos toocreate, configurar y almacenar documentos de Swagger en el almacenamiento de Azure:
+Estos son los pasos necesarios para crear, configurar y almacenar documentos Swagger en Azure Storage:
 
-1. [Crear una cuenta de Azure Storage con Azure Blob Storage](../storage/common/storage-create-storage-account.md). tooperform este paso, establecer permisos demasiado**acceso público**.
+1. [Crear una cuenta de Azure Storage con Azure Blob Storage](../storage/common/storage-create-storage-account.md). Para este paso, establezca los permisos en **Acceso público**.
 
-2. Habilitar CORS en blob Hola. 
+2. Habilite CORS en el blob. 
 
-   tooautomatically esta configuración, puede usar [esta secuencia de comandos de PowerShell](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1).
+   Puede usar [este script de PowerShell](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1) para configurar automáticamente esta opción.
 
-3. Cargar blob de hello Swagger archivos toohello. 
+3. Cargue el archivo de Swagger en el blob. 
 
-   Puede realizar este paso de hello [portal de Azure](https://portal.azure.com) o desde una herramienta como [Azure Storage Explorer](http://storageexplorer.com/).
+   Puede realizar este paso desde [Azure Portal](https://portal.azure.com) o con una herramienta como el [Explorador de Azure Storage](http://storageexplorer.com/).
 
-4. Hacer referencia a un documento de toohello vínculo HTTPS en almacenamiento de blobs de Azure. 
+4. Haga referencia a un vínculo HTTPS en el documento de Azure Blob Storage. 
 
-   vínculo de Hello utiliza este formato:
+   El vínculo utiliza este formato:
 
    `https://*storageAccountName*.blob.core.windows.net/*container*/*filename*`
 
 ## <a name="technical-details"></a>Detalles técnicos
-Siguientes son los detalles de Hola de hello desencadenadores y acciones que este HTTP + Swagger conector es compatible con.
+A continuación se muestran los detalles de los desencadenadores y las acciones que admite el conector HTTP + Swagger.
 
 ## <a name="http--swagger-triggers"></a>Desencadenadores HTTP + Swagger
-Un desencadenador es un evento que puede ser el flujo de trabajo hello toostart utilizado que se define en una aplicación de lógica. [Más información sobre los desencadenadores.](connectors-overview.md) Hola HTTP + Swagger conector tiene un desencadenador.
+Un desencadenador es un evento que se puede utilizar para iniciar el flujo de trabajo definido en una aplicación lógica. [Más información sobre los desencadenadores.](connectors-overview.md) El conector HTTP + Swagger tiene un desencadenador.
 
 | Desencadenador | Description |
 | --- | --- |
-| HTTP + Swagger |Realizar una llamada HTTP y devolver el contenido de la respuesta de Hola |
+| HTTP + Swagger |Realizar una llamada HTTP y devolver el contenido de la respuesta. |
 
 ## <a name="http--swagger-actions"></a>Acciones HTTP + Swagger
-Una acción es una operación que se lleva a cabo por flujo de trabajo de Hola que se define en una aplicación de lógica. [Más información acerca de las acciones.](connectors-overview.md) Hola HTTP + Swagger conector tiene una acción posible.
+Una acción es una operación que se lleva a cabo mediante el flujo de trabajo definido en una aplicación lógica. [Más información acerca de las acciones.](connectors-overview.md) El conector HTTP + Swagger tiene una acción posible.
 
 | Acción | Description |
 | --- | --- |
-| HTTP + Swagger |Realizar una llamada HTTP y devolver el contenido de la respuesta de Hola |
+| HTTP + Swagger |Realizar una llamada HTTP y devolver el contenido de la respuesta. |
 
 ### <a name="action-details"></a>Detalles de la acción
-Hola HTTP + Swagger conector viene con una acción posible. A continuación encontrará información sobre cada una de las acciones de Hola, hello correspondiente detalles de salida que están asociados a su uso y sus campos de entrada obligatorios y opcionales.
+El conector HTTP + Swagger incluye una acción posible. A continuación, se incluye información acerca de cada una de las acciones, los campos de entrada obligatorios y opcionales, y los detalles de salida correspondientes asociados a su uso.
 
 #### <a name="http--swagger"></a>HTTP + Swagger
 Realice una solicitud HTTP saliente con ayuda de los metadatos de Swagger.
@@ -97,11 +97,11 @@ Un asterisco (*) significa un campo obligatorio.
 
 | Nombre para mostrar | Nombre de propiedad | Description |
 | --- | --- | --- |
-| Método* |estático |Toouse de verbo HTTP. |
-| URI* |uri |URI de solicitud de hello HTTP. |
-| Encabezados |encabezados |Un objeto JSON de tooinclude de encabezados HTTP. |
-| Cuerpo |body |Hola cuerpo de solicitud HTTP. |
-| Autenticación |Autenticación |Toouse de autenticación para la solicitud. Para obtener más información, vea hello [conector HTTP](connectors-native-http.md#authentication). |
+| Método* |estático |Verbo HTTP que se va a usar |
+| URI* |uri |Identificador URI de la solicitud HTTP |
+| Encabezados |Encabezados |Objeto JSON de los encabezados HTTP que se va a incluir |
+| Cuerpo |Cuerpo |Cuerpo de la solicitud HTTP |
+| Autenticación |Autenticación |Autenticación que se utiliza para la solicitud. Para más información, consulte el artículo [Conector HTTP](connectors-native-http.md#authentication). |
 
 **Detalles de salida**
 
@@ -114,7 +114,7 @@ Respuesta HTTP
 | Código de estado |int |Código de estado HTTP |
 
 ### <a name="http-responses"></a>Respuestas HTTP
-Al realizar llamadas toovarious acciones, podría obtener determinadas respuestas. A continuación se incluye una tabla que describe las respuestas y descripciones correspondientes.
+Al realizar llamadas a diversas acciones, es posible que obtenga determinadas respuestas. A continuación se incluye una tabla que describe las respuestas y descripciones correspondientes.
 
 | Nombre | Descripción |
 | --- | --- |

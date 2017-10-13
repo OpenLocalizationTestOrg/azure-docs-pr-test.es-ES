@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure documentación de Bus de servicio - tutoriales, referencia de API | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo tooset la mensajería conecta las aplicaciones y servicios entre locales y entornos en la nube.  Tutoriales, vídeos, referencias de API y mucho más."
+title: "Documentación sobre Azure Service Bus: tutoriales y referencia de API | Microsoft Docs"
+description: "Aprenda a configurar la mensajería para conectar aplicaciones y servicios en entornos locales y en la nube.  Tutoriales, vídeos, referencias de API y mucho más."
 services: service-bus
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 03/14/2017
 ms.author: carolz
-ms.openlocfilehash: 68df38c39d6f5da112b44025aaf393df542ce01a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 9651d93f4d29121e561108845ed48558e46e42f5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="service-bus-documentation"></a>Documentación de Service Bus
 
-Obtenga información acerca de cómo toouse tooconnect de Bus de servicio y de retransmisión entre locales y entornos en la nube. Tutoriales, vídeos, referencias de API y otro Mostrar documentación cómo tooset la mensajería entre aplicaciones y servicios en la nube.
+Aprenda a usar Service Bus y Relay para establecer conexiones en entornos locales y en la nube. En los tutoriales, los vídeos, las referencias de API y otra documentación, se muestra cómo configurar la mensajería en la nube entre aplicaciones y servicios.
 
 <ul class="panelContent cardsFTitle">
     <li>

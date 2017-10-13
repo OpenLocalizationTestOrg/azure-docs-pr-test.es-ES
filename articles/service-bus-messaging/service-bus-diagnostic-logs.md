@@ -1,6 +1,6 @@
 ---
-title: "registros de diagnóstico de Bus de servicio de aaaAzure | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo tooset los registros de diagnóstico de Service Bus en Azure."
+title: "Registros de diagnóstico de Azure Service Bus | Microsoft Docs"
+description: "Aprenda cómo configurar registros de diagnóstico para Service Bus en Azure."
 keywords: 
 documentationcenter: .net
 services: service-bus-messaging
@@ -15,27 +15,27 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/27/2017
 ms.author: babanisa;sethm
-ms.openlocfilehash: e48d6eaba6e865ae39f5b07ed6cd53d74c92e2ff
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 72e18444c83b84c5191a0aab3dc6983517167dd1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-bus-diagnostic-logs"></a>Registros de diagnóstico de Service Bus
 
 Puede ver dos tipos de registros para Azure Service Bus:
-* **[Registros de actividad](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**. Estos registros contienen información relativa a las operaciones realizadas en un trabajo. registros de Hello siempre están habilitados.
-* **[Registros de diagnóstico](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**. Puede configurar registros de diagnóstico para obtener información más completa sobre todo lo que ocurre en un trabajo. Las actividades de la portada de registros de diagnóstico de tiempo de hello trabajo Hola se crea hasta que se elimina el trabajo de hello, incluidas las actualizaciones y las actividades que se producen mientras se ejecuta el trabajo de Hola.
+* **[Registros de actividad](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**. Estos registros contienen información relativa a las operaciones realizadas en un trabajo. Los registros están siempre habilitados.
+* **[Registros de diagnóstico](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**. Puede configurar registros de diagnóstico para obtener información más completa sobre todo lo que ocurre en un trabajo. Los registros de diagnóstico incluyen la actividad desde el momento en que se crea el trabajo hasta que este se elimina, incluidas las actualizaciones y actividades que se realizan durante la ejecución del trabajo.
 
 ## <a name="turn-on-diagnostic-logs"></a>Activación de los registros de diagnóstico
 
-Los registros de diagnóstico están inhabilitados de forma predeterminada. registros de diagnóstico de tooenable, lleve a cabo Hola pasos:
+Los registros de diagnóstico están inhabilitados de forma predeterminada. Para habilitarlos, siga estos pasos:
 
-1.  Hola [portal de Azure](https://portal.azure.com), en **supervisión + administración**, haga clic en **registros de diagnóstico**.
+1.  En [Azure Portal](https://portal.azure.com), en **Supervisión y administración**, haga clic en **Registros de diagnóstico**.
 
-    ![Registros de toodiagnostic de navegación de hoja](./media/service-bus-diagnostic-logs/image1.png)
+    ![navegación por la hoja a los registros de diagnósticos](./media/service-bus-diagnostic-logs/image1.png)
 
-2. Haga clic en recurso de Hola que desee toomonitor.  
+2. Haga clic en el recurso que quiere supervisar.  
 
 3.  Haga clic en **Activar diagnóstico**.
 
@@ -45,23 +45,23 @@ Los registros de diagnóstico están inhabilitados de forma predeterminada. regi
 
     ![cambiar el estado de los registros de diagnósticos](./media/service-bus-diagnostic-logs/image3.png)
 
-5.  Destino de archivo de Hola de conjunto que desea; Por ejemplo, una cuenta de almacenamiento, un concentrador de eventos o análisis de registros de Azure.
+5.  Establezca el destino de archivo que quiera; por ejemplo, una cuenta de almacenamiento, un centro de eventos o Azure Log Analytics.
 
-6.  Guardar la configuración de diagnósticos de hello nueva.
+6.  Guarde la nueva configuración de diagnóstico.
 
-La nueva configuración surte efecto en unos 10 minutos. Después de eso, los registros aparecen en el destino de archivo hello configurado, en hello **registros de diagnóstico** hoja.
+La nueva configuración surte efecto en unos 10 minutos. Después, los registros aparecen en el destino de archivo configurado, en la hoja **Registros de diagnóstico**.
 
-Para obtener más información acerca de cómo configurar diagnósticos, vea hello [información general de los registros de diagnóstico de Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+Para obtener más información sobre el diagnóstico de configuraciones, consulte la [información general sobre los registros de diagnóstico de Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
 
 ## <a name="diagnostic-logs-schema"></a>Esquema de registros de diagnósticos
 
-Todos los registros se almacenan en el formato de notación de objetos JavaScript (JSON). Cada entrada tiene campos de cadena que utilizan el formato de hello descrito en hello pasos de la sección.
+Todos los registros se almacenan en el formato de notación de objetos JavaScript (JSON). Cada entrada tiene campos de cadena que usan el formato descrito en la siguiente sección.
 
 ## <a name="operational-logs-schema"></a>Esquema de registros operativos
 
-Inicia sesión en hello **OperationalLogs** categoría capturar lo que sucede durante las operaciones de Bus de servicio. En concreto, estos registros capturar el tipo de operación de hello, incluida la creación de cola, los recursos que usa y Hola estado de operación de Hola.
+Los registros de la categoría **OperationalLogs** capturan lo que sucede durante las operaciones de Service Bus. En concreto, estos registros capturan el tipo de operación, incluida la creación de colas, los recursos usados y el estado de la operación.
 
-Las cadenas JSON de registro operativo incluyen elementos enumerados en hello en la tabla siguiente:
+Las cadenas JSON de registros operativos incluyen elementos enumerados en la tabla siguiente:
 
 Nombre | Descripción
 ------- | -------
@@ -93,7 +93,7 @@ Este es un ejemplo de una cadena JSON de registro operativo:
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Visite Hola siguiendo vínculos toolearn más acerca de Bus de servicio:
+Visite los siguientes vínculos para más información acerca de Service Bus:
 
-* [Introducción tooService Bus](service-bus-messaging-overview.md)
+* [Introducción a Service Bus](service-bus-messaging-overview.md)
 * [Introducción a Service Bus](service-bus-dotnet-get-started-with-queues.md)

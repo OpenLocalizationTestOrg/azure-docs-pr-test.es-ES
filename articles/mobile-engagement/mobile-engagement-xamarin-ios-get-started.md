@@ -1,6 +1,6 @@
 ---
-title: aaaGet Started with Azure Mobile Engagement para Xamarin.iOS
-description: "Obtenga información acerca de cómo toouse Azure Mobile Engagement con las notificaciones de inserción para las aplicaciones de Xamarin.iOS y análisis."
+title: "Introducción a Azure Mobile Engagement para Xamarin.iOS"
+description: "Aprenda a usar Azure Mobile Engagement con los análisis y las notificaciones push para aplicaciones Xamarin.iOS."
 services: mobile-engagement
 documentationcenter: xamarin
 author: piyushjo
@@ -14,71 +14,71 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 02340a744753dcc5cd1b6888a5fa87628be47b68
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 9938c3e994acf31244825b1afb347f8c9f90ebe3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-xamarinios-apps"></a>Introducción a Azure Mobile Engagement para aplicaciones Xamarin.iOS
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
-Este tema muestra cómo toouse Azure Mobile Engagement toounderstand el uso de aplicaciones y el envío de inserción a los usuarios de las notificaciones toosegmented en una aplicación de Xamarin.iOS.
+En este tema se muestra cómo utilizar Azure Mobile Engagement para conocer el uso de las aplicaciones y enviar notificaciones push a usuarios segmentados en una aplicación Xamarin.iOS.
 En este tutorial, puede crear una aplicación Xamarin.iOS vacía que recopile datos básicos y reciba notificaciones push mediante el Sistema de notificaciones push de Apple (APNS).
 
 > [!NOTE]
-> servicio de Azure Mobile Engagement Hola se retirará de 2018 de marzo y actualmente solo los clientes de tooexisting disponible. Para más información, consulte [Mobile Engagement](https://azure.microsoft.com/en-us/services/mobile-engagement/).
+> El servicio Azure Mobile Engagement se retirará en marzo de 2018 y actualmente solo está disponible para los clientes existentes. Para más información, consulte [Mobile Engagement](https://azure.microsoft.com/en-us/services/mobile-engagement/).
 
-Este tutorial requiere siguiente de hello:
+Este tutorial requiere lo siguiente:
 
 * [Xamarin Studio](http://xamarin.com/studio). También puede utilizar Visual Studio con Xamarin, pero en este tutorial se usa Xamarin Studio. Consulte [Configuración e instalación](https://msdn.microsoft.com/library/mt613162.aspx)para obtener instrucciones. 
 * [SDK de Mobile Engagement Xamarin](https://www.nuget.org/packages/Microsoft.Azure.Engagement.Xamarin/)
 
 > [!NOTE]
-> toocomplete este tutorial, debe tener una cuenta activa de Azure. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Para obtener más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-xamarin-ios-get-started).
+> Para completar este tutorial, deberá tener una cuenta de Azure activa. En caso de no tener ninguna, puede crear una cuenta de evaluación gratuita en tan solo unos minutos. Para obtener más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-xamarin-ios-get-started).
 > 
 > 
 
 ## <a id="setup-azme"></a>Configuración de Mobile Engagement para una aplicación iOS
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a id="connecting-app"></a>Conectar el back-end de aplicación toohello Mobile Engagement
-Este tutorial presenta una "integración básica de" hello mínimo establecido toocollect requiere datos y enviar una notificación de inserción.
+## <a id="connecting-app"></a>Conectar la aplicación al backend de Mobile Engagement
+En este tutorial se presenta una "integración básica», que es el conjunto mínimo necesario para recopilar los datos y enviar una notificación de inserción.
 
-Se creará una aplicación básica con la integración de hello toodemonstrate de Xamarin:
+Crearemos una aplicación básica con Xamarin para demostrar la integración:
 
 ### <a name="create-a-new-xamarinios-project"></a>Creación de un nuevo proyecto de Xamarin.iOS
-1. Inicie Xamarin Studio. Vaya demasiado**archivo** -> **New** -> **solución** 
+1. Inicie Xamarin Studio. Vaya a **File** (Archivo) -> **New** (Nuevo) -> **Solution** (Solución). 
    
     ![][1]
-2. Seleccione **ver solo la aplicación**, asegúrese de que el idioma Hola seleccionado es **C#** y, a continuación, haga clic en **siguiente**.
+2. Seleccione **Single View App** (Aplicación de una sola vista), asegúrese de que el lenguaje seleccionado sea **C#** y luego haga clic en **Next** (Siguiente).
    
     ![][2]
-3. Rellene hello **nombre de la aplicación** hello y **identificador de la organización** y, a continuación, haga clic en **siguiente**. 
+3. Rellene los valores de **App Name** (Nombre de la aplicación) y **Organization Identifier** (Identificador de organización) y haga clic en **Next** (Siguiente). 
    
     ![][3]
    
    > [!IMPORTANT]
-   > Asegúrese de que ese Hola finalmente use toodeploy que su aplicación iOS está usando un identificador de aplicación que coincida con exactamente con hello aquí tiene el identificador de paquete de perfil de publicación. 
+   > Asegúrese de que el perfil de publicación que usará finalmente para implementar su aplicación iOS emplea un id. de aplicación que coincide exactamente con el identificador de paquete que tiene aquí. 
    > 
    > 
-4. Hola de actualización **nombre del proyecto**, **nombre de la solución** y **ubicación** si es necesario y haga clic en **crear**.
+4. Actualice los valores de **Project Name** (Nombre de proyecto), **Solution Name** (Nombre de solución) y **Location** (Ubicación) si es necesario y haga clic en **Create** (Crear).
    
     ![][4]
 
-Xamarin Studio creará la aplicación de demostración de hello en el que se integrará Mobile Engagement. 
+Xamarin Studio crea la aplicación de demostración en la que se integrará Mobile Engagement. 
 
-### <a name="connect-your-app-toomobile-engagement-backend"></a>Conectar el backend de interacción de tooMobile de aplicación
-1. Haga clic en hello **paquetes** carpeta de windows de la solución de Hola y seleccione **agregar paquetes...**
+### <a name="connect-your-app-to-mobile-engagement-backend"></a>Conectar la aplicación al back-end de Mobile Engagement
+1. Haga clic con el botón derecho en la carpeta **Packages** de las ventanas de la solución y seleccione **Add Packages...** (Agregar paquetes).
    
     ![][5]
-2. Busque hello **Xamarin SDK de Microsoft Azure Mobile Engagement** y agregar soluciones tooyour.  
+2. Busque el **SDK de Xamarin para Microsoft Azure Mobile Engagement** y agréguelo a la solución.  
    
     ![][6]
-3. Abra **AppDelegate.cs** y agregue Hola siguiente instrucción using:
+3. Abra **AppDelegate.cs** y agregue la siguiente instrucción using:
    
         using Microsoft.Azure.Engagement.Xamarin;
-4. Hola **FinishedLaunching** método, agregue Hola después de la conexión de hello tooinitialize con Mobile Engagement back-end. Asegúrese de que tooadd su **ConnectionString**. Este código también usa un ficticia **NotificationIcon** que se agrega de forma Hola SDK de Mobile Engagement que puede que desee tooreplace. 
+4. En el método **FinishedLaunching** , agregue el siguiente código para inicializar la conexión con el back-end de Mobile Engagement. Asegúrese de agregar su elemento **ConnectionString**. Este código también utiliza un elemento **NotificationIcon** ficticio que se agrega con el SDK de Mobile Engagement, que puede que quiera reemplazar. 
    
         EngagementConfiguration config = new EngagementConfiguration {
                         ConnectionString = "YourConnectionStringFromAzurePortal",
@@ -87,25 +87,25 @@ Xamarin Studio creará la aplicación de demostración de hello en el que se int
         EngagementAgent.Init (config);
 
 ## <a id="monitor"></a>Habilitar supervisión en tiempo real
-En orden toostart enviando los datos y asegurarse de que los usuarios de hello están activos, debe enviar al menos una pantalla toohello Mobile Engagement back-end.
+Para comenzar a enviar datos y asegurarse de que los usuarios estén activos, debe enviar al menos una pantalla al back-end de Mobile Engagement.
 
-1. Abra **ViewController.cs** y agregue Hola siguiente instrucción using:
+1. Abra **ViewController.cs** y agregue la siguiente instrucción using:
    
         using Microsoft.Azure.Engagement.Xamarin;
-2. Reemplace la clase hello desde el que `ViewController` hereda de `UIViewController` demasiado`EngagementViewController`. 
+2. Reemplace la clase de la que `ViewController` hereda de `UIViewController` por `EngagementViewController`. 
 
 ## <a id="monitor"></a>Conexión de la aplicación con la supervisión en tiempo real
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a id="integrate-push"></a>Habilitación de notificaciones push y mensajería en la aplicación
-Mobile Engagement le permite toointeract con los usuarios y alcance con notificaciones de inserción y en mensajería desde la aplicación en el contexto de Hola de campañas. Este módulo se denomina alcance en el portal de interacción móvil Hola.
-Hello las secciones siguientes configure su aplicación tooreceive ellos.
+## <a id="integrate-push"></a>Habilitación de las notificaciones push y la mensajería en aplicación
+Mobile Engagement permite interactuar y llegar mediante notificaciones push y mensajería en la aplicación en el contexto de las campañas. Este módulo se denomina REACH en el portal de Mobile Engagement.
+En las secciones siguientes se instala la aplicación para recibirlos.
 
 ### <a name="modify-your-application-delegate"></a>Modifique su delegado de la aplicación
-1. Hola abierto **AppDelegate.cs** y agregue Hola siguiente instrucción using:
+1. Abra **AppDelegate.cs** y agregue la siguiente instrucción using:
    
         using System; 
-2. Ahora dentro de hello `FinishedLaunching` método hello después tooregister para los mensajes de inserción después de agregar`EngagementAgent.init(...)`
+2. Ahora, dentro del método `FinishedLaunching`, agregue el siguiente código para registrarse para los mensajes de inserción después de `EngagementAgent.init(...)`
    
         if (UIDevice.CurrentDevice.CheckSystemVersion(8,0))
         {
@@ -124,7 +124,7 @@ Hello las secciones siguientes configure su aplicación tooreceive ellos.
                 UIRemoteNotificationType.Sound |
                 UIRemoteNotificationType.Alert);
         }
-3. Por último - actualizar o agregar Hola siguientes métodos:
+3. Finalmente, actualice o agregue los siguientes métodos:
    
         public override void DidReceiveRemoteNotification (UIApplication application, NSDictionary userInfo, 
             Action<UIBackgroundFetchResult> completionHandler)
@@ -140,15 +140,15 @@ Hello las secciones siguientes configure su aplicación tooreceive ellos.
    
         public override void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)
         {
-            Console.WriteLine("Failed tooregister for remote notifications: Error '{0}'", error);
+            Console.WriteLine("Failed to register for remote notifications: Error '{0}'", error);
         }
-4. En su **Info.plist** de archivos de solución de hello, confirme que hello **identificador de paquete** coincide con hello **Id. de aplicación** tiene en su perfil de aprovisionamiento en hello Dev de Apple Centro. 
+4. En el archivo **Info.plist** de la solución, confirme que el **identificador de agrupación** coincide con el **identificador de la aplicación** que tiene en el perfil de aprovisionamiento del Centro para desarrolladores de Apple. 
    
     ![][7]
-5. En Hola mismo **Info.plist** de archivos, asegúrese de que ha activado hello **habilitar modos en segundo plano** y **notificaciones remoto**. 
+5. En el mismo archivo **Info.plist**, asegúrese de que ha activado la casillas **Enable Background Modes** (Habilitar modos en segundo plano) y **Remote Notifications** (Notificaciones remotas). 
    
      ![][8]
-6. Ejecutar la aplicación hello en dispositivo Hola que se ha asociado con este perfil de publicación. 
+6. Ejecute la aplicación en el dispositivo asociado a este perfil de publicación. 
 
 [!INCLUDE [mobile-engagement-ios-send-push-push](../../includes/mobile-engagement-ios-send-push.md)]
 

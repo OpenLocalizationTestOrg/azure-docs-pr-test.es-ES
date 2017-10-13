@@ -1,14 +1,14 @@
-Pueden tener acceso a las memorias caché en hello [portal de Azure](https://portal.azure.com) con hello **examinar** hoja.
+Se puede tener acceso a las memorias caché en el [Portal de Azure](https://portal.azure.com) mediante la hoja **Examinar** .
 
 ![Caché en Redis de Azure - Hoja Examinar](media/redis-cache-browse/redis-cache-browse.png)
 
-tooview sus cachés, haga clic en ejecutar **más servicios > cachés en Redis**. Si tooa caché en Redis que haya visitado recientemente, puede hacer clic en **memorias caché Redis** directamente desde la lista de hello sin hacer clic en **más servicios**.
+Para ver las memorias caché, haga clic en **More services (Más servicios) > Cachés en Redis**. Si recientemente buscó una memoria caché en Redis, puede hacer clic directamente en **Cachés en Redis** desde la lista; no hace falta que haga clic en **More Services** (Más servicios).
 
-Seleccione tooview de caché de hello deseado y configure las opciones de Hola de esa caché.
+Seleccione la memoria caché deseada para ver y configurar las opciones de esa caché.
 
 ![Caché en Redis de Azure - Examinar lista en caché](media/redis-cache-browse/redis-caches.png)
 
-Puede ver y configurar la caché de hello **caché en Redis** hoja.
+Puede ver y configurar la caché desde la hoja **Redis Caché**.
 
 ![Caché en Redis - Todas las configuraciones](media/redis-cache-browse/redis-cache-blade.png)
 

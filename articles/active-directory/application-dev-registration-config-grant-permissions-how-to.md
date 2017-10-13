@@ -1,6 +1,6 @@
 ---
-title: aaaHow toogrant permisos tooa desarrollados de forma personalizada de aplicaciones | Documentos de Microsoft
-description: "¿Cómo toogrant permisos tooyour aplicaciones personalizadas mediante Hola portal de Azure AD o un parámetro de dirección URL"
+title: "Concesión de permisos a una aplicación personalizada | Microsoft Docs"
+description: "Aprenda a conceder permisos a una aplicación personalizada mediante el portal de Azure AD o un parámetro de dirección URL."
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,33 +13,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: e43a105fff60fbf912bdf4f60260f86ee289328d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 336b945929f80e1a566f7cf71b40fd799a98c12d
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="how-toogrant-permissions-tooa-custom-developed-application"></a>¿Cómo toogrant permisos tooa desarrollados de forma personalizada aplicación
+# <a name="how-to-grant-permissions-to-a-custom-developed-application"></a>Concesión de permisos a una aplicación personalizada
 
-Si desea toogrant consentimiento de forma preferente en la aplicación o se ejecuta en un error que no ha dado su consentimiento tooan aplicación, pruebe lo siguiente.
+Si desea otorgar consentimiento de forma preferente en la aplicación o se produce un error por no otorgar consentimiento a una aplicación, pruebe lo siguiente.
 
-## <a name="how-tooperform-admin-consent-for-your-application"></a>¿Cómo tooperform consentimiento del Administrador de la aplicación
+## <a name="how-to-perform-admin-consent-for-your-application"></a>Concesión del consentimiento del administrador en la aplicación
 
-Esto tiene el efecto de hello de la concesión de consentimiento toohello aplicación para todos los usuarios de su organización.
+Con este procedimiento, se otorga consentimiento a la aplicación para todos los usuarios de la organización.
 
-1. Navegue toohello **registros de aplicaciones** hoja como una **administrador global**, a continuación, seleccione aplicación hello.
+1. Acceda a la hoja **Registros de aplicaciones** como **administrador global** y seleccione la aplicación.
 
-2. Seleccione **permisos necesarios**y por último, pulse hello **conceder permisos** situado en la parte superior de Hola de hoja de Hola.
+2. Seleccione **Permisos necesarios** y, en la parte superior de la hoja, haga clic en el botón **Conceder permisos**.
 
-Como alternativa, puede construir una solicitud demasiado*login.microsoftonline.com* con sus configuraciones de aplicación y anexar en *& prompt = admin\_consentimiento*. Después de iniciar sesión con credenciales de administrador, aplicación hello ha concedido consentimiento para todos los usuarios.
+Si lo desea, también puede generar una solicitud para *login.microsoftonline.com* con sus propias configuraciones de aplicación y anexarla a *&prompt=admin\_consent*. Una vez que la sesión se haya iniciado con las credenciales del administrador, la aplicación tendrá consentimiento para todos los usuarios.
 
-## <a name="how-tooforce-user-consent-for-your-application"></a>¿Cómo tooforce usuario dar su consentimiento para la aplicación
+## <a name="how-to-force-user-consent-for-your-application"></a>Concesión forzosa del consentimiento del usuario en la aplicación
 
-* Anexar a las solicitudes de autenticación *& prompt = consentimiento* que requiere que los usuarios finales tooconsent cada vez que se autentiquen.
+* Anexe *&prompt=consent* a las solicitudes de autorización que requieran el consentimiento del usuario final con cada autenticación.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-[Integración de aplicaciones y consentimiento tooAzureAD](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications)
+[Consentimiento e integración de aplicaciones en Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-integrating-applications)
 
 [Consentimiento y permisos para las aplicaciones convergentes v2.0 de Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-scopes)<br>
 

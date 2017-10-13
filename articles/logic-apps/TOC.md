@@ -7,7 +7,7 @@
 ## [Creación de una nueva aplicación lógica mediante la conexión de servicios de SaaS](logic-apps-create-a-logic-app.md)
 ## [Plantillas de aplicaciones lógicas](logic-apps-use-logic-app-templates.md)
 ## [Creación de aplicaciones lógicas a partir de plantillas](logic-apps-arm-provision.md)
-## [Mover MABS aplicaciones toologic aplicaciones](logic-apps-move-from-mabs.md)
+## [Traslado de aplicaciones MABS a las aplicaciones lógicas](logic-apps-move-from-mabs.md)
 
 # Procedimientos
 ## Compilación
@@ -19,8 +19,19 @@
 ### [Mensajes de proceso de Batch](logic-apps-batch-process-send-receive-messages.md)
 ### [Creación de definiciones de aplicación lógica](logic-apps-author-definitions.md)
 ### [Llamada, desencadenamiento o anidación de aplicaciones lógicas](logic-apps-http-endpoint.md)
-### [Creación de API personalizadas para las aplicaciones lógicas](logic-apps-create-api-app.md)
-### [Llamada de API personalizadas para las aplicaciones lógicas](logic-apps-custom-hosted-api.md)
+### Desarrollo de conectores personalizados
+#### [Introducción a los conectores personalizados](custom-connector-overview.md)
+#### [Creación de conectores desde API web](custom-connector-build-web-api-app-tutorial.md)
+#### [Protección de conectores con Azure AD](custom-connector-azure-active-directory-authentication.md)
+#### [Descripción de API con Postman](custom-connector-api-postman-collection.md)
+#### [Extensión de OpenAPI para conectores personalizados](custom-connector-openapi-extensions.md)
+#### [Registro del conector](logic-apps-custom-connector-register.md)
+#### [Certificación del conector](custom-connector-submit-certification.md)
+#### [Preguntas más frecuentes sobre los conectores personalizada](custom-connector-faq.md)
+### Desarrollo de API personalizadas
+#### [Creación de API personalizadas para las aplicaciones lógicas](logic-apps-create-api-app.md)
+#### [Llamadas seguras a API personalizadas](logic-apps-custom-api-authentication.md)
+#### [Implementación y llamada a API personalizadas](logic-apps-custom-api-host-deploy-call.md)
 ### [Control de errores y excepciones](logic-apps-exception-handling.md)
 ### [Control de los tipos de contenido](logic-apps-content-type.md)
 ### [Protección de las aplicaciones lógicas](logic-apps-securing-a-logic-app.md)
@@ -32,6 +43,7 @@
 ### [Asociados](logic-apps-enterprise-integration-partners.md)
 ### [Contratos](logic-apps-enterprise-integration-agreements.md)
 ### [Procesamiento B2B](logic-apps-enterprise-integration-b2b.md)
+### [Envío de mensajes EDI como lote](logic-apps-scenario-edi-send-batch-messages.md)
 ### [Procesamiento XML](logic-apps-enterprise-integration-xml.md)
 ### [Procesamiento de archivos planos](logic-apps-enterprise-integration-flatfile.md)
 ### [Validación de XML](logic-apps-enterprise-integration-xml-validation.md)
@@ -46,7 +58,7 @@
 ### [Integración empresarial de EDIFACT](logic-apps-enterprise-integration-edifact.md)
 ### [Codificación de EDIFACT](logic-apps-enterprise-integration-edifact-encode.md)
 ### [Descodificación de EDIFACT](logic-apps-enterprise-integration-edifact-decode.md)
-### [¿Cómo documenta tener un segmento UNH2.5 toohandle EDIFACT](logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md)
+### [Administración de documentos EDIFACT que tengan un segmento UNH2.5](logic-apps-enterprise-integration-edifact_inputfile_unh2.5.md)
 ### [Integración empresarial de X12](logic-apps-enterprise-integration-x12.md)
 ### [Codificación de X12](logic-apps-enterprise-integration-x12-encode.md)
 ### [Descodificación de X12](logic-apps-enterprise-integration-x12-decode.md)
@@ -54,7 +66,7 @@
 ### [Errores y soluciones](logic-apps-enterprise-integration-b2b-list-errors-solutions.md)
 
 ## Acceso a datos locales
-### [Conectar datos tooon locales](logic-apps-gateway-connection.md)
+### [Conexión a datos locales](logic-apps-gateway-connection.md)
 ### [Instalación de la puerta de enlace de datos](logic-apps-gateway-install.md)
 
 ## Automatización e implementación
@@ -73,12 +85,11 @@
 #### [Esquemas de seguimiento de X12](logic-apps-track-integration-account-x12-tracking-schema.md)
 #### [Esquema de seguimiento personalizado](logic-apps-track-integration-account-custom-tracking-schema.md)
 
-## Ejemplos, escenarios y tutoriales
-### [Información general](logic-apps-examples-and-scenarios.md)
+## [Ejemplos, escenarios y tutoriales](logic-apps-examples-and-scenarios.md)
 ### [Creación de un panel social sin servidor](logic-apps-scenario-social-serverless.md)
 ### [Llamada a aplicaciones lógicas con Azure Functions](logic-apps-scenario-function-sb-trigger.md)
 ### [Adición de control de errores y excepciones](logic-apps-scenario-error-and-exception-handling.md)
-### [Procesamiento B2B](logic-apps-enterprise-integration-b2b.md)
+### [Procesamiento B2B](logic-apps-enterprise-integration-b2b.md) 
 
 ## Precios y facturación
 ### [Precios](https://azure.microsoft.com/pricing/details/logic-apps/)
@@ -97,8 +108,8 @@
 # Referencia
 ## [Lenguaje de definición de flujo de trabajo](logic-apps-workflow-definition-language.md)
 ## [Acciones y desencadenadores de flujo de trabajo](logic-apps-workflow-actions-triggers.md)
-## [API de REST](/rest/api/logic/)
-## [PowerShell](/powershell/module/azurerm.logicapp)
+## [API DE REST](/rest/api/logic/)
+## [Azure PowerShell](/powershell/module/azurerm.logicapp)
 ## Conectores: Temas detallados
 ### [AS2](logic-apps-enterprise-integration-as2.md)
 ### [Azure Blob Storage](../connectors/connectors-create-api-azureblobstorage.md)

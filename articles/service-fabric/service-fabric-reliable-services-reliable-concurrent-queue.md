@@ -1,5 +1,5 @@
 ---
-title: aaaReliableConcurrentQueue en Azure Service Fabric
+title: ReliableConcurrentQueue en Azure Service Fabric
 description: ReliableConcurrentQueue es una cola de alto rendimiento que permite puestas en cola y eliminaciones de la cola paralelas.
 services: service-fabric
 documentationcenter: .net
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
 ms.author: sangarg
-ms.openlocfilehash: 78a9905996b9ab265c1288d2b49753638d7bc445
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 122cb48149477f295a65b8ee623c647b6db10a86
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="introduction-tooreliableconcurrentqueue-in-azure-service-fabric"></a>Introducción tooReliableConcurrentQueue en Azure Service Fabric
-La cola simultánea confiable es una cola asincrónica, transaccional y replicada que presenta una alta simultaneidad para las operaciones de puesta en cola y eliminación de la cola. Está diseñado toodeliver alto rendimiento y baja latencia por relaja Hola FIFO ordenación estricta proporcionada por [cola confiable](https://msdn.microsoft.com/library/azure/dn971527.aspx) y en su lugar, proporciona una ordenación de mejor esfuerzo.
+# <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Introducción a ReliableConcurrentQueue en Azure Service Fabric
+La cola simultánea confiable es una cola asincrónica, transaccional y replicada que presenta una alta simultaneidad para las operaciones de puesta en cola y eliminación de la cola. Está diseñada para ofrecer un alto rendimiento y una baja latencia al relajar la ordenación FIFO estricta que proporciona la [cola confiable](https://msdn.microsoft.com/library/azure/dn971527.aspx) y, en su lugar, proporciona la ordenación de mejor esfuerzo.
 
 ## <a name="apis"></a>API existentes
 
@@ -33,20 +33,20 @@ La cola simultánea confiable es una cola asincrónica, transaccional y replicad
 
 ## <a name="comparison-with-reliable-queuehttpsmsdnmicrosoftcomlibraryazuredn971527aspx"></a>Comparación con la [cola confiable](https://msdn.microsoft.com/library/azure/dn971527.aspx)
 
-Confiable cola simultánea se ofrece como alternativa demasiado[cola confiable](https://msdn.microsoft.com/library/azure/dn971527.aspx). Debe usarse en aquellos casos en que no se requiere la ordenación FIFO estricta, ya que para garantizar FIFO se requiere un compromiso con la simultaneidad.  [Cola confiable](https://msdn.microsoft.com/library/azure/dn971527.aspx) utiliza bloqueos tooenforce FIFO ordenación, con permiten tooenqueue como máximo una transacción y en la mayoría de una transacción permite toodequeue a la vez. En comparación, cola simultánea confiable relaja Hola restricción de ordenación y permite cualquier número toointerleave de las transacciones simultáneas su poner en cola y las operaciones de eliminación de cola. El orden de mejor esfuerzo es siempre, sin embargo Hola el orden relativo de dos valores en una cola simultánea confiable puede nunca puede garantizar.
+La cola simultánea confiable se ofrece como una alternativa a la [cola confiable](https://msdn.microsoft.com/library/azure/dn971527.aspx). Debe usarse en aquellos casos en que no se requiere la ordenación FIFO estricta, ya que para garantizar FIFO se requiere un compromiso con la simultaneidad.  [La cola confiable](https://msdn.microsoft.com/library/azure/dn971527.aspx) usa bloqueos para aplicar la ordenación FIFO, y como máximo permite poner en cola una transacción y quitar de cola una transacción a la vez. En comparación, la cola simultánea confiable relaja la restricción de ordenación y permite que cualquier número de transacciones simultáneas intercalen las operaciones de puesta en cola y eliminación de la cola. Aunque se ofrece la ordenación de mejor esfuerzo, la ordenación relativa de dos valores nunca se puede garantizar en una cola simultánea confiable.
 
 La cola simultánea confiable proporciona un rendimiento mayor y menor latencia que la [cola confiable](https://msdn.microsoft.com/library/azure/dn971527.aspx) siempre que existen varias transacciones simultáneas que realizan puestas en cola y/o eliminaciones de la cola.
 
-Un ejemplo de uso de hello ReliableConcurrentQueue es hello [cola de mensajes](https://en.wikipedia.org/wiki/Message_queue) escenario. En este escenario, crean y agregar elementos toohello cola productores de mensajes de uno o más, y uno o varios de los consumidores del mensaje extracción mensajes de cola de Hola y procesan. Varios productores y consumidores pueden trabajar independientemente, con las transacciones simultáneas en cola la orden tooprocess Hola.
+Un ejemplo de caso de uso de ReliableConcurrentQueue es el escenario de la [cola de mensajes](https://en.wikipedia.org/wiki/Message_queue). En este escenario, uno o más productores de mensajes crean elementos y los agregan a la cola, y uno o más consumidores de mensajes extraen mensajes de la cola y los procesan. Varios productores y consumidores pueden trabajar de manera independiente usando transacciones simultáneas para procesar la cola.
 
 ## <a name="usage-guidelines"></a>Directrices de uso
-* cola de Hello espera que los elementos de hello en cola Hola tienen un período de retención baja. Es decir, los elementos de hello no quedaría en cola de Hola durante mucho tiempo.
-* cola de Hello no garantiza la ordenación de FIFO estricta.
-* cola de Hello no lee su propia escritura. Si un elemento está en cola dentro de una transacción, no estará visible tooa dequeuer dentro de Hola misma transacción.
-* Las eliminaciones de la cola no están aisladas entre sí. Si el elemento *A* se quitan de la cola de transacciones *txnA*, aunque *txnA* no se confirma, elemento *A* no sería tooa visible simultáneas transacción *txnB*.  Si *txnA* anula, *A* dejarán de estar visible demasiado*txnB* inmediatamente.
-* *TryPeekAsync* comportamiento puede implementarse mediante un *TryDequeueAsync* y, a continuación, anular la transacción de Hola. Un ejemplo de esto puede encontrarse en la sección de patrones de programación de Hola.
-* El recuento es no transaccional. Puede ser tooget usa una idea del número de Hola de elementos en cola de hello, pero representa un punto en el tiempo y no se puede confiar en ellos.
-* Un procesamiento costoso en hello elementos quitados de la cola no deben realizarse mientras está activa, la transacción hello tooavoid transacciones de larga ejecución que pueden tener un impacto en el rendimiento en el sistema de Hola.
+* La cola espera que los elementos de la cola tengan un período de retención baja. Es decir, los elementos no permanecen en la cola durante mucho tiempo.
+* La cola no garantiza la ordenación FIFO estricta.
+* La cola no lee sus propias escrituras. Si un elemento se pone en cola dentro de una transacción, no será visible para un operador de eliminación de la cola dentro de la misma transacción.
+* Las eliminaciones de la cola no están aisladas entre sí. Si el elemento *A* se quita de la cola en la transacción *txnA*, aunque la transacción *txnA* no esté confirmada, el elemento *A* no será visible en una transacción simultánea *txnB*.  Si *txnA* se anula, *A* pasará a ser visible para *txnB* inmediatamente.
+* Para implementar el comportamiento de *TryPeekAsync*, se puede usar un método *TryDequeueAsync* y, a continuación, anular la transacción. Un ejemplo de esto se puede encontrar en la sección Modelos de programación.
+* El recuento es no transaccional. Se puede usar para hacerse una idea del número de elementos en la cola, pero representa un punto en el tiempo y no es confiable.
+* No puede debe realizar un procesamiento costoso en los elementos quitados de la cola mientras la transacción esté activa, a fin de evitar transacciones de ejecución larga que podrían afectar al rendimiento del sistema.
 
 ## <a name="code-snippets"></a>Fragmentos de código
 Echemos un vistazo a algunos fragmentos de código y a sus resultados esperados. El control de excepciones se omite en esta sección.
@@ -66,7 +66,7 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Suponga esa tarea Hola se completó correctamente y que no hubo ninguna transacción simultánea modificar cola Hola. usuario de Hello, puede esperar Hola cola toocontain Hola los elementos en cualquiera de hello después de pedidos:
+Supongamos que la tarea se completó correctamente y que no hubo ninguna transacción simultánea que modificara la cola. El usuario puede esperar que la cola contenga los elementos en cualquiera de los órdenes siguientes:
 
 > 10, 20
 
@@ -95,11 +95,11 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Suponga que tareas Hola completan correctamente, que se ha ejecutado tareas hello en paralelo y que no había ninguna otra transacción simultánea modificar cola Hola. La inferencia no se puede realizar sobre orden Hola de elementos en cola de Hola. Este fragmento de código, elementos Hola pueden aparecer en cualquiera de los 4 hello! órdenes posibles.  cola de Hello tratará de elementos de hello tookeep en orden de hello original (en cola), pero puede ser tooreorder forzada ellas debido a operaciones de tooconcurrent o errores.
+Supongamos que las tareas se completaron correctamente, que se ejecutaron en paralelo y que no hubo ninguna otra transacción simultánea que modificara la cola. No se puede realizar ninguna inferencia sobre el orden de los elementos de la cola. Para este fragmento de código, los elementos pueden aparecer en cualquiera de los 4 órdenes posibles.  La cola intentará mantener los elementos en el orden original (en cola), pero es posible que deba reordenarlos debido a las operaciones simultáneas o errores.
 
 
 ### <a name="dequeueasync"></a>DequeueAsync
-Estos son algunos fragmentos de código para usar TryDequeueAsync seguido de salidas de hello esperado. Suponga que esa cola Hola ya se rellena con hello siguientes elementos en cola de hello:
+A continuación, se muestran algunos fragmentos de código para usar TryDequeueAsync, seguido de los resultados previstos. Supongamos que la cola ya se rellenó con los siguientes elementos:
 > 10, 20, 30, 40, 50, 60
 
 - *Caso 1: Tarea de quitar de la cola única*
@@ -115,7 +115,7 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Suponga esa tarea Hola se completó correctamente y que no hubo ninguna transacción simultánea modificar cola Hola. Puesto que no puede realizarse inferencia sobre orden Hola de elementos de hello en cola de hello, los tres elementos de hello pueden se quita de la cola, en cualquier orden. cola de Hello tratará de elementos de hello tookeep en orden de hello original (en cola), pero puede ser tooreorder forzada ellas debido a operaciones de tooconcurrent o errores.  
+Supongamos que la tarea se completó correctamente y que no hubo ninguna transacción simultánea que modificara la cola. Puesto que no puede realizarse ninguna inferencia acerca del orden de los elementos de la cola, cualquiera de los tres elementos se puede quitar de la cola, en cualquier orden. La cola intentará mantener los elementos en el orden original (en cola), pero es posible que deba reordenarlos debido a las operaciones simultáneas o errores.  
 
 - *Caso 2: Tarea de eliminación de la cola paralela*
 
@@ -141,13 +141,13 @@ using (var txn = this.StateManager.CreateTransaction())
 }
 ```
 
-Suponga que tareas Hola completan correctamente, que se ha ejecutado tareas hello en paralelo y que no había ninguna otra transacción simultánea modificar cola Hola. Puesto que no puede realizarse inferencia sobre orden Hola de elementos de hello en cola de hello, Hola listas *dequeue1* y *dequeue2* contendrá entre los dos elementos, en cualquier orden.
+Supongamos que las tareas se completaron correctamente, que se ejecutaron en paralelo y que no hubo ninguna otra transacción simultánea que modificara la cola. Dado que no se puede realizar ninguna inferencia sobre el orden de los elementos de la cola, las listas *dequeue1* y *dequeue2* contendrán cada una dos elementos cualesquiera, en cualquier orden.
 
-Hola le mismo elemento *no* aparecen en ambas listas. Por lo tanto, si dequeue1 tiene *10*, *30*, dequeue2 tendrá *20*, *40*.
+El mismo elemento *no* aparecerá en ambas listas. Por lo tanto, si dequeue1 tiene *10*, *30*, dequeue2 tendrá *20*, *40*.
 
 - *Caso 3: Ordenación de eliminación de la cola con anulación de transacción*
 
-Anular una transacción con sobre la marcha quita vuelve a colocar elementos de hello en el encabezado de Hola de cola de Hola. no se garantiza el orden de Hello en el que los elementos de Hola se vuelven a poner en el encabezado de Hola de cola de Hola. Echemos un vistazo al siguiente código de hello:
+Al anular una transacción con eliminaciones de la cola en marcha, se vuelven a colocar los elementos al principio de la cola. No se garantiza el orden en el que los elementos se vuelven a colocar al principio de la cola. Veamos el código siguiente:
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -155,25 +155,25 @@ using (var txn = this.StateManager.CreateTransaction())
     await this.Queue.TryDequeueAsync(txn, cancellationToken);
     await this.Queue.TryDequeueAsync(txn, cancellationToken);
 
-    // Abort hello transaction
+    // Abort the transaction
     await txn.AbortAsync();
 }
 ```
-Suponga que elementos de Hola se han quitado de la cola en hello siguiendo el orden:
+Supongamos que los elementos se quitaron de la cola en el orden siguiente:
 > 10, 20
 
-Cuando se anule la transacción de hello, elementos de Hola se agregaría toohello back-head de cola de hello en cualquiera de hello después de pedidos:
+Al anular la transacción, los elementos deberían volver a agregarse al principio de la cola en cualquiera de los órdenes siguientes:
 > 10, 20
 
 > 20, 10
 
-Hello mismo sirve para todos los casos donde hello no estaba correctamente *confirmado*.
+Lo mismo puede decirse en todos los casos en que la transacción no se *confirmó* correctamente.
 
 ## <a name="programming-patterns"></a>Modelos de programación
 En esta sección, vamos a echar un vistazo a algunos modelos de programación que podrían resultar útiles para usar ReliableConcurrentQueue.
 
 ### <a name="batch-dequeues"></a>Eliminaciones de la cola por lotes
-Recomienda modelo de programación es para hello consumidor tarea toobatch su quita de la cola en lugar de realizar una eliminación de cola a la vez. usuario de Hello puede toothrottle retrasos entre cada tamaño de lote de proceso por lotes o hello. Hello fragmento de código siguiente muestra este modelo de programación.  Tenga en cuenta que en este ejemplo, el procesamiento de Hola se realiza después de hello transacción se confirma, por lo que si un error fuera toooccur durante el procesamiento, hello elementos sin procesar se perderán sin haber sido transformado.  O bien, se puede realizar el procesamiento de hello en el ámbito de la transacción de hello, sin embargo esto puede tener un impacto negativo en el rendimiento y requiere un tratamiento de los elementos de hello ya procesan.
+Un modelo de programación recomendado para la tarea de consumidor es realizar eliminaciones de la cola por lotes en lugar de realizarlas de una en una. El usuario puede elegir limitar los retrasos entre los lotes o el tamaño del lote. El siguiente fragmento de código muestra este modelo de programación.  Tenga en cuenta que, en este ejemplo, el procesamiento se realiza tras confirmarse la transacción. Por tanto, si se produce un error durante el procesamiento, los elementos no procesados se perderán sin procesarse.  Como alternativa, el procesamiento puede realizarse en el ámbito de la transacción, aunque esto puede tener un impacto negativo en el rendimiento y requiere que la administración de los elementos ya se haya procesado.
 
 ```
 int batchSize = 5;
@@ -194,12 +194,12 @@ while(!cancellationToken.IsCancellationRequested)
 
             if (ret.HasValue)
             {
-                // If an item was dequeued, add toohello buffer for processing
+                // If an item was dequeued, add to the buffer for processing
                 processItems.Add(ret.Value);
             }
             else
             {
-                // else break hello for loop
+                // else break the for loop
                 break;
             }
         }
@@ -207,7 +207,7 @@ while(!cancellationToken.IsCancellationRequested)
         await txn.CommitAsync();
     }
 
-    // Process hello dequeues
+    // Process the dequeues
     for (int i = 0; i < processItems.Count; ++i)
     {
         Console.WriteLine("Value : " + processItems[i]);
@@ -219,7 +219,7 @@ while(!cancellationToken.IsCancellationRequested)
 ```
 
 ### <a name="best-effort-notification-based-processing"></a>Procesamiento basado en notificaciones de mejor esfuerzo
-Otro patrón de programación interesante usa Hola API de recuento. En este caso, podemos implementar procesamiento basado en notificaciones de mejor esfuerzo para cola de Hola. Hola cola número puede ser usado toothrottle un poner en cola o una tarea de eliminación de cola.  Tenga en cuenta que como en el ejemplo anterior de hello, puesto que se produce el procesamiento de hello fuera de la transacción de hello, sin procesar elementos pueden perderse si se produce un error durante el procesamiento.
+Otro modelo de programación interesante usa Count API. En este caso, podemos implementar el procesamiento basado en notificaciones de mejor esfuerzo para la cola. El recuento de cola puede usarse para limitar una tarea de puesta en cola y eliminación de la cola.  Tenga en cuenta que, como se muestra en el ejemplo anterior, puesto que el procesamiento se produce fuera de la transacción, los elementos no procesados pueden perderse si se produce un error durante el procesamiento.
 
 ```
 int threshold = 5;
@@ -231,11 +231,11 @@ while(!cancellationToken.IsCancellationRequested)
     {
         cancellationToken.ThrowIfCancellationRequested();
 
-        // If hello queue does not have hello threshold number of items, delay hello task and check again
+        // If the queue does not have the threshold number of items, delay the task and check again
         await Task.Delay(TimeSpan.FromMilliseconds(delayMs), cancellationToken);
     }
 
-    // If there are approximately threshold number of items, try and process hello queue
+    // If there are approximately threshold number of items, try and process the queue
 
     // Buffer for dequeued items
     List<int> processItems = new List<int>();
@@ -250,7 +250,7 @@ while(!cancellationToken.IsCancellationRequested)
 
             if (ret.HasValue)
             {
-                // If an item was dequeued, add toohello buffer for processing
+                // If an item was dequeued, add to the buffer for processing
                 processItems.Add(ret.Value);
             }
         } while (processItems.Count < threshold && ret.HasValue);
@@ -258,7 +258,7 @@ while(!cancellationToken.IsCancellationRequested)
         await txn.CommitAsync();
     }
 
-    // Process hello dequeues
+    // Process the dequeues
     for (int i = 0; i < processItems.Count; ++i)
     {
         Console.WriteLine("Value : " + processItems[i]);
@@ -267,9 +267,9 @@ while(!cancellationToken.IsCancellationRequested)
 ```
 
 ### <a name="best-effort-drain"></a>Descarga de mejor esfuerzo
-No se puede garantizar una descarga de la cola de hello debido toohello naturaleza simultáneas de estructura de datos de Hola.  Es posible que, incluso si no hay operaciones de usuario de cola de hello en curso, una determinada llamada tooTryDequeueAsync no puede devolver un elemento que antes era en cola y confirmada.  elemento de Hello en cola se garantiza demasiado*finalmente* se convierten en toodequeue visible, sin embargo, sin un mecanismo de comunicación fuera de banda, un consumidor independiente no puede saber a esa cola Hola ha alcanzado un estado estable incluso si todos los se han detenido los productores y no se permite ninguna operación nueva de puesta en cola. Por lo tanto, operación de vaciado de hello es mejor esfuerzo tal y como se implementan bajo.
+No se puede garantizar una descarga de la cola debido a la naturaleza simultánea de la estructura de datos.  Es posible que, aún sin haber operaciones de usuario en marcha en la cola, una llamada concreta a TryDequeueAsync no pueda devolver un elemento que se puso en cola y confirmó anteriormente.  Se garantiza que el elemento en cola *finalmente* será visible para quitar de la cola. Sin embargo, sin un mecanismo de comunicación fuera de banda, un consumidor independiente no puede saber que la cola alcanzó un estado estable aunque todos los productores estén detenidos y no se permita ninguna nueva operación de puesta en cola. Por lo tanto, la operación de descarga es de mejor esfuerzo, como se muestra en la siguiente implementación.
 
-usuario de Hello debe detener toda la demás productor y las tareas del consumidor y espere anulación, antes de intentar la cola de hello toodrain ni toocommit de transacciones en curso.  Si usuario Hola conoce número Hola esperado de elementos en cola de hello, puede configurar una notificación que indica que todos los elementos se han quitado de la cola.
+El usuario debe detener toda la demás tareas de productor y consumidor, y esperar a que las transacciones en curso se confirmen o anulen, antes de intentar descargar la cola.  Si el usuario conoce el número previsto de elementos en la cola, puede configurar una notificación que indique que todos los elementos se quitaron de la cola.
 
 ```
 int numItemsDequeued;
@@ -289,7 +289,7 @@ do
 
             if(ret.HasValue)
             {
-                // Buffer hello dequeues
+                // Buffer the dequeues
                 processItems.Add(ret.Value);
             }
         } while (ret.HasValue && processItems.Count < batchSize);
@@ -297,7 +297,7 @@ do
         await txn.CommitAsync();
     }
 
-    // Process hello dequeues
+    // Process the dequeues
     for (int i = 0; i < processItems.Count; ++i)
     {
         Console.WriteLine("Value : " + processItems[i]);
@@ -306,7 +306,7 @@ do
 ```
 
 ### <a name="peek"></a>Peek
-ReliableConcurrentQueue no proporciona hello *TryPeekAsync* api. Los usuarios pueden obtener peek Hola a semántica mediante el uso de un *TryDequeueAsync* y, a continuación, anular la transacción de Hola. En este ejemplo, quita de la cola se procesan sólo si el valor del elemento de hello es mayor que *10*.
+ReliableConcurrentQueue no proporciona la API de *TryPeekAsync*. Los usuarios pueden obtener la semántica de peek con un método *TryDequeueAsync* y, a continuación, anular la transacción. En este ejemplo, las eliminaciones de la cola solo se procesan si el valor del elemento es mayor que *10*.
 
 ```
 using (var txn = this.StateManager.CreateTransaction())
@@ -318,7 +318,7 @@ using (var txn = this.StateManager.CreateTransaction())
     {
         if (ret.Value > 10)
         {
-            // Process hello item
+            // Process the item
             Console.WriteLine("Value : " + ret.Value);
             valueProcessed = true;
         }
@@ -342,5 +342,5 @@ using (var txn = this.StateManager.CreateTransaction())
 * [Copia de seguridad y restauración de Reliable Services (recuperación ante desastres)](service-fabric-reliable-services-backup-restore.md)
 * [Configuración del administrador de estado confiable](service-fabric-reliable-services-configuration.md)
 * [Introducción a los servicios de la API web de Microsoft Azure Service Fabric](service-fabric-reliable-services-communication-webapi.md)
-* [Uso avanzado de hello modelo de programación de servicios de confianza](service-fabric-reliable-services-advanced-usage.md)
+* [Uso avanzado del modelo de programación de Reliable Services](service-fabric-reliable-services-advanced-usage.md)
 * [Referencia para desarrolladores de colecciones confiables](https://msdn.microsoft.com/library/azure/microsoft.servicefabric.data.collections.aspx)

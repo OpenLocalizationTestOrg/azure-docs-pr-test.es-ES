@@ -1,5 +1,5 @@
 ---
-title: "Ejemplo de secuencia de comandos de CLI: obtener detalles de una caché en Redis de Azure aaaAzure | Documentos de Microsoft"
+title: 'Ejemplo de script de CLI de Azure: detalles sobre Azure Redis Cache | Microsoft Docs'
 description: 'Ejemplo de script de CLI de Azure: detalles sobre Azure Redis Cache'
 services: redis-cache
 documentationcenter: 
@@ -13,17 +13,17 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 04/14/2017
+ms.date: 08/30/2017
 ms.author: sdanie
-ms.openlocfilehash: a3ad1fdf000bbab52e84dbf9f002a5e9fa6d347a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 0927508117bda67b62a188f89a2d2e151fe02a5a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-details-of-an-azure-redis-cache"></a>Obtenga detalles sobre una instancia de Azure Redis Cache
 
-En este escenario, aprenderá cómo instancia detalles de hello tooretrieve de una caché en Redis de Azure, incluido su estado de aprovisionamiento.
+En este escenario, obtendrá información sobre cómo recuperar los detalles de una instancia de Azure Redis Cache, incluido su estado de aprovisionamiento.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -33,15 +33,15 @@ En este escenario, aprenderá cómo instancia detalles de hello tooretrieve de u
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Este script utiliza Hola comandos tooretrieve Hola detalles de una instancia de caché en Redis de Azure siguientes. Cada comando de documentación específica de hello tabla vínculos toocommand.
+Este script usa los comandos siguientes para recuperar los detalles de una instancia de Azure Redis Cache. Cada comando de la tabla crea un vínculo a documentación específica del comando.
 
 | Comando | Notas |
 |---|---|
-| [az redis show](https://docs.microsoft.com/cli/azure/redis#show) | Recupera detalles de una instancia de Azure Redis Cache. |
+| [az redis show](https://docs.microsoft.com/cli/azure/redis#az_redis_show) | Recupera detalles de una instancia de Azure Redis Cache. |
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener más información sobre Hola CLI de Azure, consulte [documentación de Azure CLI](https://docs.microsoft.com/cli/azure/overview).
+Para más información sobre la CLI de Azure, consulte la [documentación de la CLI de Azure](https://docs.microsoft.com/cli/azure/overview).
 
-Encontrará más ejemplos de secuencias de comandos de CLI de caché de Redis de Azure en hello [documentación de Azure Redis Cache](../cli-samples.md).
+Encontrará más ejemplos de scripts de CLI de Azure Redis Cache en la [documentación de Azure Redis Cache](../cli-samples.md).

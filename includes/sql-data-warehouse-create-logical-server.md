@@ -1,4 +1,4 @@
-### <a name="create-a-new-logical-sql-server-in-hello-azure-portal"></a>Crear un nuevo servidor SQL lógico Hola portal de Azure
+### <a name="create-a-new-logical-sql-server-in-the-azure-portal"></a>Creación un nuevo servidor SQL lógico en Azure Portal
 
 1. Haga clic en **Nuevo**, busque **servidor lógico**y, a continuación, pulse **ENTRAR**.
 
@@ -7,37 +7,37 @@
 
     ![seleccionar servidor lógico](./media/sql-data-warehouse-create-logical-server/select-logical-server.png)
   
-3. Haga clic en **crear** hoja tooopen Hola de nuevo SQL Server (servidor lógico).
+3. Haga clic en **Crear** para abrir la nueva hoja SQL Server (servidor lógico).
 
    <kbd>![abrir la hoja de servidor lógico](./media/sql-data-warehouse-create-logical-server/open-logical-server-blade.png) </kbd> <kbd> ![hoja de servidor lógico](./media/sql-data-warehouse-create-logical-server/logical-server-blade.png)</kbd>
   
-3. En el cuadro de texto de nombre de servidor del módulo de SQL Server (servidor lógico) de hello, proporcione un nombre válido para el servidor lógico nuevo de Hola. Una marca de verificación verde indica que ha proporcionado un nombre válido.
+3. En la hoja SQL Server (servidor lógico), en el cuadro de texto Nombre de servidor, proporcione un nombre válido para el nuevo servidor lógico. Una marca de verificación verde indica que ha proporcionado un nombre válido.
     
     ![nuevo nombre de servidor](./media/sql-data-warehouse-create-logical-server/new-name-logical-server.png)
 
     > [!IMPORTANT]
-    > Hello nombre completo para el nuevo servidor será < nombreDeSuServidor >. database.windows.net.
+    > El nombre completo del nuevo servidor será <nombreDeSuServidor >.database.windows.net.
     >
     
-4. En el cuadro de texto del inicio de sesión Hola de administración de servidor, proporcione un nombre de usuario de inicio de sesión de autenticación de SQL de Hola para este servidor. Este inicio de sesión se conoce como inicio de sesión principal del servidor de Hola. Una marca de verificación verde indica que ha proporcionado un nombre válido.
+4. En el cuadro de texto de inicio de sesión del administrador del servidor, proporcione un nombre de usuario para el inicio de sesión de autenticación de SQL para este servidor. Este inicio de sesión se conoce como el inicio de sesión de la entidad de seguridad del servidor. Una marca de verificación verde indica que ha proporcionado un nombre válido.
     
     ![inicio de sesión de administrador de SQL](./media/sql-data-warehouse-create-logical-server/sql-admin-login.png)
-5. Hola **contraseña** y **Confirmar contraseña** cuadros de texto, proporcione una contraseña para la cuenta de inicio de sesión principal del servidor de Hola. Una marca de verificación verde indica que ha proporcionado una contraseña válida.
+5. En los cuadros de texto **Contraseña** y **Confirmar contraseña**, escriba una contraseña para la cuenta de inicio de sesión de la entidad de seguridad del servidor. Una marca de verificación verde indica que ha proporcionado una contraseña válida.
     
     ![contraseña del administrador de SQL](./media/sql-data-warehouse-create-logical-server/sql-admin-password.png)
-6. Seleccione una suscripción en el que tiene permiso toocreate objetos.
+6. Seleccione una suscripción en la que tenga permiso para crear objetos.
 
     ![suscripción](./media/sql-data-warehouse-create-logical-server/subscription.png)
-7. En el cuadro de texto de grupo de recursos de hello seleccione **crear nuevo** y, a continuación, en el cuadro de texto de grupo de recursos de hello, proporcione un nombre válido para el nuevo grupo de recursos hello (también puede usar un grupo de recursos existente si ya ha creado uno para sí mismo). Una marca de verificación verde indica que ha proporcionado un nombre válido.
+7. En el cuadro de texto Grupo de recursos, seleccione **Crear nuevo** y, en el cuadro de texto del grupo de recursos, proporcione un nombre válido para el nuevo grupo de recursos (también puede usar un grupo de recursos existente si ya ha creado uno para sí mismo). Una marca de verificación verde indica que ha proporcionado un nombre válido.
 
     ![nuevo grupo de recursos](./media/sql-data-warehouse-create-logical-server/new-resource-group.png)
 
-8. Hola **ubicación** ubicación tooyour adecuado: por ejemplo, "Australia Oriental" del centro de cuadro de texto, seleccione una de datos.
+8. En el cuadro de texto **Ubicación**, seleccione un centro de datos adecuado para su ubicación; por ejemplo, "Este de Australia".
     
     ![ubicación del servidor](./media/sql-data-warehouse-create-logical-server/server-location.png)
     
     > [!TIP]
-    > Hola casilla **server tooaccess de permitir que los servicios de azure** no se puede cambiar en esta hoja. Puede cambiar esta configuración en la hoja de firewall del servidor de Hola. Para más información, consulte [Get started with security](../articles/sql-database/sql-database-manage-servers-portal.md) (Introducción a la seguridad).
+    > La casilla de verificación **Permitir que los servicios de Azure accedan al servidor** no se puede cambiar en esta hoja. Puede cambiar esta configuración en la hoja del firewall del servidor. Para más información, consulte [Get started with security](../articles/sql-database/sql-database-manage-servers-portal.md) (Introducción a la seguridad).
     >
     
 9. Haga clic en **Crear**.

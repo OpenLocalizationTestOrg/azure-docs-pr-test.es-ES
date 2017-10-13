@@ -1,6 +1,6 @@
 ---
-title: "aaaReactivate deshabilitado la suscripción de Azure | Documentos de Microsoft"
-description: "Describe cómo y cuándo es posible que tenga una suscripción a Azure deshabilitada tooreactivate lo."
+title: "Reactivación de la suscripción a Azure deshabilitada | Microsoft Docs"
+description: "Describe cuándo podría tener una suscripción a Azure deshabilitada y cómo volver a activarla."
 keywords: "suscripción a azure deshabilitada"
 services: 
 documentationcenter: 
@@ -14,53 +14,47 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 08/30/2017
 ms.author: genli
-ms.openlocfilehash: 2c9712304dd25431a7b66a33a2c5816f1547cfee
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f0fb408557f58ddf434cbebb8978dc81342c87c9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="why-is-my-azure-subscription-disabled-and-how-do-i-reactivate-it"></a>¿Por qué está deshabilitada mi suscripción a Azure y cómo reactivarla?
-Puede que su suscripción de Azure ha deshabilitado porque se alcanzó el límite de gasto, tiene una lista ha vencido, alcanzó su límite de tarjeta de crédito, o porque se canceló la suscripción de Hola por el Administrador de la cuenta de hello. Vea Qué problema aplica tooyou y siga los pasos de hello en este tooget artículo reactiva la suscripción.
+
+Podría tener su suscripción de Azure deshabilitada porque alcanzó el límite de gasto, tiene una factura vencida, alcanzó su límite de tarjeta de crédito o porque el administrador de la cuenta canceló la suscripción. Vea qué problema le afecta y siga los pasos de este artículo para reactivar su suscripción.
 
 ## <a name="you-reached-your-spending-limit"></a>Alcanzó el límite de gasto
-Cuando se agota importes mensuales Hola incluidos con su suscripción, se deshabilita el servicio para el resto de Hola de ese mes de facturación. El servicio está deshabilitado tooprotect le impedirían accidentalmente incurrir en cargos de uso más allá de Hola cantidad incluida con su suscripción. Puede quitar el límite de gasto de Hola y [configurar alertas para las suscripciones de Microsoft Azure de facturación](billing-set-up-alerts.md) toohelp para supervisar y administrar la actividad de facturación para las cuentas de Azure.
 
-los gastos limitar tooremove,
+Cuando el uso supere el importe mensual incluido en su suscripción, deshabilitaremos el servicio durante el resto del periodo de facturación. El servicio se deshabilita para protegerle contra cargos accidentales de uso que superen la cantidad incluida con su suscripción. Para quitar el límite de gasto, consulte [Eliminación del límite de gasto en el Centro de cuentas](billing-spending-limit.md#remove).
 
-1. Inicie sesión en toohello [centro de cuentas de Azure](https://account.windowsazure.com/Home/Index).
-2. Haga clic en **Suscripciones**.
-3. Seleccione una suscripción.
-4. Haga clic en **suscripción alcanzado Hola el límite de gastos y se ha deshabilitado tooprevent gastos**.
+> [!NOTE] 
+> Si tiene una suscripción de evaluación gratuita y quita los límites de gasto, la suscripción se convierte en pago por uso al final de dicha evaluación.
 
-    Si no ve esta opción, haga clic en **quitar límite de gasto** en la suscripción de hello **estado** área.
-5. Seleccione una de las siguientes opciones de hello:
-
-| Opción | Efecto |
-| --- | --- |
-| Quitar el límite de gasto indefinidamente |Quita Hola límite de gasto hasta que se active en. |
-| Quitar límite de gasto para hello período de facturación actual |Quita el límite de gasto de hello sino Hola reinicios de límite de gasto para hello siguiente período de facturación. |
-
-Si tiene una suscripción de evaluación gratuita y quita los límites de gastos de hello, su suscripción convierte tooPay-como-le-Go al final de Hola de prueba gratuita de Hola.
+Para supervisar y administrar la actividad de facturación de Azure, consulte [Prevención de costos inesperados con la administración de costos y facturación de Azure](billing-getting-started.md) y [Configuración de alertas de facturación para las suscripciones de Microsoft Azure](billing-set-up-alerts.md).
 
 ## <a name="your-bill-is-past-due"></a>Su factura está vencida
-Pagar el saldo pendiente en su totalidad. Vea el artículo de hello [¿por qué se ha recibido una notificación de que su suscripción de Azure tiene un pasado saldo vencido?](billing-azure-subscription-past-due-balance.md#how-to-resolve-the-issue)
 
-## <a name="hello-bill-exceeds-your-credit-card-limit"></a>factura Hola supera el límite de la tarjeta de crédito
-tooresolve este problema, [tarjeta de crédito diferente de conmutador tooa](billing-how-to-change-credit-card.md). O si está que representa un negocio, puede [cambiar toopay por factura](https://azure.microsoft.com/pricing/invoicing/).
+Para resolver el saldo de la suscripción vencido, consulte [Resolución del saldo de la suscripción de Azure vencido tras recibir un correo electrónico de Azure](billing-azure-subscription-past-due-balance.md).
 
-## <a name="hello-subscription-was-canceled-by-hello-account-administrator"></a>Hola, Administrador de la cuenta canceló la suscripción de Hola
-Si es administrador de cuenta de hello, reactivar la suscripción de pago por uso mediante Hola pasos:
+## <a name="the-bill-exceeds-your-credit-card-limit"></a>La factura supera el límite de la tarjeta de crédito
 
-1. Inicie sesión en toohello [centro de cuentas de Azure](https://account.windowsazure.com/Home/Index).
-2. Hola seleccione cancela suscripción.
-3. Haga clic en **Reactivar**.
+Para resolver este problema, [cambie a otra tarjeta de crédito](billing-how-to-change-credit-card.md). O bien, si representa a una empresa, puede [cambiar a pago mediante factura](billing-how-to-pay-by-invoice.md).
 
-![Captura de pantalla que muestra reactivar vínculos en el panel derecho de Hola.](./media/billing-how-to-cancel-azure-subscription/reactivate-sub.png)
+## <a name="the-subscription-was-accidentally-canceled-and-you-want-to-reactivate"></a>La suscripción se ha cancelado por accidente y desea reactivarla
 
-Para otros tipos de suscripción, [póngase en contacto con soporte técnico](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) toohave reactiva la suscripción.
+Si es el administrador de la cuenta y accidentalmente cancela una suscripción de pago por uso, puede reactivarla en el Centro de cuentas.
+
+1. Inicie sesión en el [Centro de cuentas](https://account.windowsazure.com/Subscriptions).
+1. Seleccione la suscripción cancelada.
+1. Haga clic en **Reactivar**.
+
+    ![Captura de pantalla que muestra los vínculos de reactivación en el panel derecho](./media/billing-how-to-cancel-azure-subscription/reactivate-sub.png)
+
+Para otros tipos de suscripción, [póngase en contacto con soporte técnico](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) para que reactive su suscripción.
 
 ## <a name="need-help-contact-support"></a>¿Necesita ayuda? Póngase en contacto con el servicio de soporte técnico.
-Si aún necesita ayuda, [póngase en contacto con soporte técnico](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) tooget rápidamente para solucionar el problema.
+
+Si sigue necesitando ayuda, [póngase en contacto con el servicio de soporte técnico](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) para resolver el problema rápidamente.

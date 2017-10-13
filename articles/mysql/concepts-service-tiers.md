@@ -1,5 +1,5 @@
 ---
-title: aaa "niveles de precios de base de datos de Azure para MySQL | Documentos de Microsoft"
+title: Planes de tarifa de Azure Database for MySQL | Microsoft Docs
 description: Planes de tarifa de Azure Database for MySQL
 services: mysql
 author: jasonwhowell
@@ -9,37 +9,37 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
 ms.date: 05/23/2017
-ms.openlocfilehash: 2a05f00aff4f7166f04e035eb2a47e7662888ebc
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d9ec4556d57ff1975a93d806237ad0c7416b9988
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-database-for-mysql-options-and-performance-understand-whats-available-in-each-pricing-tier"></a>Opciones y rendimiento de Azure Database for MySQL: información sobre el contenido disponible en cada plan de tarifa
-Cuando se crea una base de datos de MySQL server, elija tres opciones principales recursos de hello tooconfigure asignados a dicho servidor. Estas opciones afectan al rendimiento de Hola y escala de servidor hello.
-- Plan de tarifa 
+Al crear un servidor de Azure Database for MySQL, tiene que elegir entre tres opciones principales para configurar los recursos asignados a dicho servidor. Estas opciones afectan al rendimiento y la escala del servidor.
+- Nivel de precios
 - Unidades de proceso
 - Almacenamiento (GB)
 
-Cada nivel de precios tiene una duración de rendimiento toochoose de niveles (unidades de proceso), dependiendo de los requisitos de las cargas de trabajo. Niveles de rendimiento superiores proporcionan recursos adicionales para su servidor toodeliver diseñado un rendimiento mayor. Puede cambiar el nivel de rendimiento del servidor de hello dentro de un plan de tarifa prácticamente sin tiempo de inactividad de aplicación.
+Cada plan de tarifa permite elegir entre diferentes niveles de rendimiento (unidades de proceso), en función de los requisitos de su carga de trabajo. Unos niveles de rendimiento más altos ofrecen recursos adicionales para el servidor que se han diseñado para proporcionar un mayor rendimiento. Puede cambiar el nivel de rendimiento del servidor dentro de un mismo plan de tarifa sin prácticamente ningún tiempo de inactividad para las aplicaciones.
 
 > [!IMPORTANT]
-> Mientras está en vista previa pública del servicio de hello, no es un contrato de nivel de servicio (SLA) garantizada.
+> Mientras el servicio se encuentre en versión preliminar pública, no se garantiza ningún Acuerdo de Nivel de Servicio (SLA).
 
-En un servidor de Azure Database for MySQL, puede tener una o varias bases de datos. Puede participar una base de datos por servidor tooutilize toocreate todos los recursos de Hola o crear tooshare de bases de datos de varios recursos de Hola. 
+En un servidor de Azure Database for MySQL, puede tener una o varias bases de datos. Puede optar por crear una sola base de datos por servidor para que use todos los recursos, o bien crear varias para que los compartan. 
 
 ## <a name="choose-a-pricing-tier"></a>Elija un plan de tarifa.
 Mientras se encuentre en versión preliminar, el servicio Azure Database for MySQL ofrece dos planes de tarifa: Básico y Estándar. El plan Premium no está disponible todavía, pero lo estará pronto. 
 
-Hello tabla siguiente proporciona ejemplos de hello precios niveles recomendados adecuados para las cargas de trabajo de aplicación diferente.
+En la tabla siguiente se proporcionan ejemplos de los planes de tarifa más adecuados para diferentes cargas de trabajo de aplicaciones.
 
-| Plan de tarifa  | Carga de trabajo objetivo |
+| Nivel de precios | Carga de trabajo objetivo |
 | :----------- | :----------------|
 | Básica | Opción más conveniente para pequeñas cargas de trabajo que requieren almacenamiento y proceso escalables sin garantía de IOPS. Algunos ejemplos son los servidores utilizados para desarrollo o prueba, o las aplicaciones a pequeña escala que se emplean con poca frecuencia. |
-| Estándar | Hola go-toooption para la nube garantizan las aplicaciones que necesitan e/s por segundo con un alto rendimiento. Como ejemplos destacan las aplicaciones web y analíticas. |
-| Premium | La opción idónea para cargas de trabajo que necesiten de una baja latencia para transacciones y E/S. Proporciona mejor compatibilidad de Hola para muchos usuarios simultáneos. Toodatabases aplicable que admiten aplicaciones de misión crítica.<br />Hola Premium tarifa no está disponible en vista previa. |
+| Estándar | La opción ideal para aplicaciones en la nube que necesiten de un valor de E/S por segundo garantizado con un alto rendimiento. Como ejemplos destacan las aplicaciones web y analíticas. |
+| Premium | La opción idónea para cargas de trabajo que necesiten de una baja latencia para transacciones y E/S. Proporciona la mejor compatibilidad para muchos usuarios simultáneos. Se aplica a las bases de datos que admitan aplicaciones críticas para la actividad de la empresa.<br />El plan de tarifa Premium no está disponible en la versión preliminar. |
 
-toodecide sobre los precios de una capa, primer inicio mediante la determinación de si la carga de trabajo necesita una garantía de e/s por segundo. Si es así, seleccione el plan de tarifa Estándar.
+Para decidirse por un plan de tarifa, empiece por determinar si la carga de trabajo necesita un valor garantizado de E/S por segundo. Si es así, seleccione el plan de tarifa Estándar.
 
 | **Características del plan de tarifa** | **Básico** | **Standard** |
 | :------------------------ | :-------- | :----------- |
@@ -49,15 +49,15 @@ toodecide sobre los precios de una capa, primer inicio mediante la determinació
 | IOPS de almacenamiento máximas | N/D | 3000 | 
 | Período de retención de copias de seguridad de base de datos | 7 días | 35 días | 
 
-Durante el período de vista previa de hello, no se puede cambiar el nivel de precios una vez creado el servidor de Hola. Hola futuras, se tooupgrade posibles o degradar un servidor de una capa tooanother plan de tarifa.
+Durante el período de versión preliminar, no es posible cambiar el plan de tarifa una vez que se haya creado el servidor. En el futuro, será posible actualizar el servidor de un plan de tarifa a otro o cambiarlo a un plan anterior.
 
-## <a name="understand-hello-price"></a>Comprender el precio de Hola
-Cuando se crea una nueva base de datos de Azure para MySQL dentro de hello [Portal de Azure](https://portal.azure.com/#create/Microsoft.MySQLServer), haga clic en hello **tarifa** hello costo mensual y hoja se mostrará según en Opciones de Hola que ha seleccionado. Si no tiene una suscripción de Azure, use hello tooget de calculadora de precios Azure un precio estimado. Visite hello [Calculadora de precios de Azure](https://azure.microsoft.com/pricing/calculator/) de sitio Web, a continuación, haga clic en **agregar elementos**, expanda hello **bases de datos** categoría y elija **base de datos de Azure para MySQL**  opciones de hello toocustomize.
+## <a name="understand-the-price"></a>Descripción del precio
+Cuando cree una nueva Azure Database for MySQL dentro de [Azure Portal](https://portal.azure.com/#create/Microsoft.MySQLServer), haga clic en la hoja **Plan de tarifa** y el costo mensual se mostrará en función de las opciones que haya seleccionado. Si no tiene una suscripción de Azure, use la calculadora de precios de Azure para obtener un precio estimado. Visite el sitio web [Calculadora de precios de Azure](https://azure.microsoft.com/pricing/calculator/), haga clic en **Agregar elementos**, expanda la categoría **Bases de datos** y elija **Azure Database for MySQL** para personalizar las opciones.
 
 ## <a name="choose-a-performance-level-compute-units"></a>Selección de un nivel de rendimiento (unidades de proceso)
-Una vez que haya determinado Hola tarifa para la base de datos de Azure para servidor MySQL, son nivel de rendimiento de hello toodetermine listo seleccionando Hola número de unidades de proceso sea necesario. Un buen punto de partida son 200 o 400 unidades de proceso para aplicaciones que necesiten más simultaneidad de usuarios para las cargas de trabajo web o analíticas. Esta cantidad se puede incrementar en función de las necesidades correspondientes. 
+Cuando haya determinado el plan de tarifa para su servidor de Azure Database for MySQL, ya podrá calcular el nivel de rendimiento. Para ello, seleccione el número de unidades de proceso necesarias. Un buen punto de partida son 200 o 400 unidades de proceso para aplicaciones que necesiten más simultaneidad de usuarios para cargas de trabajo web o analíticas. Esta cantidad se puede incrementar en función de las necesidades correspondientes. 
 
-Proceso de unidades son una medida de rendimiento de procesamiento de CPU que se garantiza toobe disponible tooa única base de datos de MySQL server. Una unidad de proceso es una medida combinada de recursos de CPU y memoria.  Para más información, consulte [Explicación de las unidades de proceso](concepts-compute-unit-and-storage.md).
+Las unidades de proceso son una medida del rendimiento de procesamiento de la CPU cuya disponibilidad está garantizada para un único servidor de Azure Database for MySQL. Una unidad de proceso es una medida combinada de recursos de CPU y memoria.  Para más información, consulte [Explicación de las unidades de proceso](concepts-compute-unit-and-storage.md).
 
 ### <a name="basic-pricing-tier-performance-levels"></a>Niveles de rendimiento del plan de tarifa Básico:
 
@@ -77,29 +77,29 @@ Proceso de unidades son una medida de rendimiento de procesamiento de CPU que se
 | IOPS máximas aprovisionadas en servidor | 3000 IOPS | 3000 IOPS | 3000 IOPS | 3000 IOPS |
 | IOPS máximas aprovisionadas en servidor por GB | 3 IOPS fijas por GB | 3 IOPS fijas por GB | 3 IOPS fijas por GB | 3 IOPS fijas por GB |
 
-\*Tamaño máximo de almacenamiento de servidor hace referencia toohello tamaño de almacenamiento aprovisionado máximo para el servidor.
+\* El tamaño máximo de almacenamiento en servidor se refiere al tamaño máximo de almacenamiento aprovisionado para el servidor.
 
 ## <a name="storage"></a>Storage 
-configuración de almacenamiento de Hello define la cantidad de Hola de almacenamiento capacidad disponible tooan base de datos de MySQL server. almacenamiento de Hello utilizado por el servicio de hello incluye archivos de base de datos de hello, registros de transacciones y registros de hello MySQL server. Considere la posibilidad de tamaño de Hola de almacenamiento necesario toohost las bases de datos y Hola requisitos de rendimiento (IOPS) al seleccionar la configuración de almacenamiento de Hola.
+La configuración de almacenamiento define la cantidad de capacidad de almacenamiento disponible para un servidor de Azure Database for MySQL. El almacenamiento usado por el servicio incluye los archivos de base de datos, los registros de transacciones y los registros de servidor de MySQL. Tenga en cuenta el tamaño de almacenamiento necesario para hospedar las bases de datos y los requisitos de rendimiento (E/S por segundo) al seleccionar la configuración de almacenamiento.
 
-Cierta capacidad de almacenamiento se incluye como mínimo en cada nivel de precios, que se indica en hello anterior de la tabla como "Tamaño de almacenamiento incluidos". Capacidad de almacenamiento adicionales puede agregarse cuando se crea el servidor de hello, en incrementos de 125 GB, el almacenamiento máximo permitido de toohello. capacidad de almacenamiento adicional de Hello puede configurarse independientemente de la configuración de unidades de proceso de Hola. cambios de precio de Hello en función de la cantidad de Hola de almacenamiento seleccionada.
+Se incluye cierta capacidad de almacenamiento mínima con cada plan de tarifa, denominada en la tabla anterior "Tamaño de almacenamiento incluido". Es posible agregar capacidad de almacenamiento adicional al crear el servidor en incrementos de 125 GB y hasta el valor máximo permitido. La capacidad de almacenamiento adicional puede configurarse con independencia de la configuración de las unidades de proceso. Los precios varían en función de la cantidad de almacenamiento seleccionada.
 
-configuración de IOPS de Hello en cada nivel de rendimiento está relacionado con toohello plan de tarifa y tamaño de almacenamiento de hello elegido. El plan Básico no garantiza ningún valor de E/S por segundo. En el nivel de precios estándar de hello, Hola IOPS proporcionalmente toomaximum el tamaño de almacenamiento en una proporción de 3:1 fija. almacenamiento Hola incluido de garantías de 125 GB para 375 aprovisiona IOPS, cada uno con un tamaño de E/S de too256 KB. Puede elegir un almacenamiento de información adicional hasta too1 TB como máximo, tooguarantee 3.000 aprovisionado e/s por segundo.
+La configuración de E/S por segundo de cada nivel de rendimiento está relacionada con el plan de tarifa y el tamaño de almacenamiento que se seleccionen. El plan Básico no garantiza ningún valor de E/S por segundo. En el plan de tarifa Estándar, las E/S por segundo escalan de forma proporcional al tamaño de almacenamiento máximo en una proporción fija de 3:1. El almacenamiento incluido de 125 GB garantiza 375 IOPS aprovisionadas, cada una de ellas con un tamaño de IOPS de hasta 256 KB. Puede seleccionar almacenamiento adicional hasta un valor máximo de 1 TB para garantizar una provisión de 3000 E/S por segundo.
 
-Gráfico de métricas de monitor Hola Hola Azure portal o escritura CLI de Azure comandos toomeasure Hola consumo de almacenamiento e IOPS. Toomonitor de métricas pertinente son el límite de almacenamiento, el porcentaje de almacenamiento, almacenamiento utilizado y porcentaje de E/S.
+Supervise el grafo de métricas de Azure Portal o escriba comandos de CLI de Azure para medir el consumo de almacenamiento y E/S por segundo. Las métricas pertinentes que se deben supervisar son el límite de almacenamiento, el porcentaje de almacenamiento, el almacenamiento usado y el porcentaje de E/S por segundo.
 
 >[!IMPORTANT]
-> Mientras esté en la vista previa, elija cantidad Hola de almacenamiento en el momento de hello cuando se crea el servidor de Hola. Cambiar el tamaño de almacenamiento de hello en un servidor existente no se admite todavía. 
+> Mientras use la versión preliminar, seleccione la cantidad de almacenamiento en el momento de crear el servidor. Todavía no es posible cambiar el tamaño del almacenamiento en un servidor existente. 
 
 ## <a name="scaling-a-server-up-or-down"></a>Escalado o reducción verticales de un servidor
-Inicialmente, elegir Hola precios nivel y el rendimiento cuando se crea la base de datos de Azure para MySQL. Más adelante, puede escalar Hola unidades calcular una copia de seguridad o dinámicamente, abajo dentro del alcance de Hola de Hola mismo nivel de precios. Hola portal de Azure, deslice Hola proceso unidades en la hoja de nivel de precios del servidor de Hola o escribirlo siguiendo este ejemplo: [Monitor y escala de una base de datos de Azure para servidor de MySQL con CLI de Azure](scripts/sample-scale-server.md)
+Primeramente, se eligen el plan de tarifa y el nivel de rendimiento al crear la instancia de Azure Database for MySQL. Más adelante, puede escalar las unidades de proceso o reducirlas verticalmente de forma dinámica, dentro del rango del mismo plan de tarifa. En Azure Portal, deslice las unidades de proceso por la hoja de plan de tarifa del servidor, o bien cree un script conforme al siguiente ejemplo: [Supervisión y escalado de un servidor de Azure Database for MySQL (Base de datos de Azure para MySQL) mediante la CLI de Azure](scripts/sample-scale-server.md).
 
-Ajuste de escala en unidades de Hola de proceso se realiza independientemente de tamaño de almacenamiento máximo de hello que ha elegido.
+El escalado de las unidades de proceso se realiza con independencia del tamaño de almacenamiento máximo seleccionado.
 
-Entre bastidores de hello, cambiar el nivel de rendimiento de Hola de una base de datos crea una réplica de base de datos original de hello en el nuevo nivel de rendimiento de hello y, a continuación, cambia las conexiones toohello réplica. Durante este proceso no se pierde ningún dato. Durante Hola breve momento cuando se cambie a través de la réplica de toohello, base de datos de las conexiones toohello están deshabilitados, por lo que se pueden revertir algunas transacciones en tránsito. Este intervalo varía, pero de media dura menos de 4 segundos, y en más del 99 % de los casos es inferior a 30 segundos. Si hay grandes números de transacciones en tránsito en conexiones de momento Hola están deshabilitados, esta ventana puede ser superior.
+En segundo plano, al cambiar el nivel de rendimiento de una base de datos, se crea una réplica de la base de datos original en el nuevo nivel de rendimiento y, a continuación, se cambian las conexiones a la réplica. Durante este proceso no se pierde ningún dato. Sin embargo, durante el breve momento en el que se produzca el cambio a la réplica, las conexiones a la base de datos estarán deshabilitadas. Por ello, es posible que se reviertan algunas transacciones en curso. Este intervalo varía, pero de media dura menos de 4 segundos, y en más del 99 % de los casos es inferior a 30 segundos. Si el número de transacciones en curso es elevado mientras las conexiones están deshabilitadas, este intervalo puede ser superior.
 
-duración de Hello del proceso de escala todo Hola depende de tamaño de Hola y nivel de precios de servidor hello antes y después de cambiar Hola. Por ejemplo, un servidor que está cambiando unidades de proceso en el nivel de precios estándar de hello, debe completar en pocos minutos. Hola nuevas propiedades de servidor hello no se aplican hasta que se completen los cambios de Hola.
+La duración de todo el proceso de escalado depende tanto del tamaño como del plan de tarifa del servidor antes y después del cambio. Por ejemplo, el cambio de unidades de proceso de un servidor dentro del plan de tarifa Estándar debería tardar unos pocos minutos en completarse. Las nuevas propiedades del servidor no se aplican hasta que se completan los cambios.
 
 ## <a name="next-steps"></a>Pasos siguientes
-- Para más información sobre las unidades de proceso, consulte [Explicación de las unidades de proceso](concepts-compute-unit-and-storage.md).
-- Obtenga información acerca de cómo demasiado[Monitor y escala de una base de datos de Azure para servidor de MySQL con CLI de Azure](scripts/sample-scale-server.md)
+- Para obtener más información sobre unidades de proceso, consulte [Explicación de las unidades de proceso](concepts-compute-unit-and-storage.md).
+- Obtenga información sobre cómo realizar las tareas de [Supervisión y escalado de un servidor de Azure Database for MySQL (Base de datos de Azure para MySQL) mediante la CLI de Azure](scripts/sample-scale-server.md).

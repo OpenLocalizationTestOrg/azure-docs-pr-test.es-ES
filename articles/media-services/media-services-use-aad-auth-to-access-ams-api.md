@@ -1,6 +1,6 @@
 ---
-title: "aaaAccess API de servicios multimedia de Azure con la autenticación de Active Directory de Azure | Documentos de Microsoft"
-description: "Obtenga información acerca de conceptos y los pasos tootake toouse Azure Active Directory (Azure AD) tooauthenticate acceso toohello API de servicios multimedia de Azure."
+title: "Acceso a Azure Media Services API con la autenticación de Azure Active Directory | Microsoft Docs"
+description: "Información acerca de los conceptos y los pasos que se deben seguir para usar Azure Active Directory (Azure AD) a fin de autenticar el acceso a Azure Media Services API."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -13,28 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
-ms.openlocfilehash: bb8f75f39100dc37098260c24ab4a199ef689d46
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0e1217afb0a37353793c64ae927b741d9fee4954
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="access-hello-azure-media-services-api-with-azure-ad-authentication"></a>Hola de acceso a API de servicios multimedia de Azure con autenticación de Azure AD
+# <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Acceso a Azure Media Services API con la autenticación de Azure AD
  
-Hola API de servicios multimedia de Azure es una API de REST. Puede utilizar lo tooperform operaciones en recursos multimedia a través de una API de REST o mediante el SDK de cliente disponibles. Azure Media Services ofrece un SDK del cliente de Media Services para Microsoft .NET. toobe había autorizado hello API de servicios multimedia y recursos de servicios multimedia de tooaccess, primero se debe autenticar. 
+Azure Media Services API es una API RESTful. Puede usarla para realizar operaciones en recursos multimedia a través de una API de REST o mediante los SDK del cliente disponibles. Azure Media Services ofrece un SDK del cliente de Media Services para Microsoft .NET. Para ser autorizado a acceder a recursos de Media Services y a Media Services API, se debe autenticar primero. 
 
-Media Services admite la [autenticación basada en Azure Active Directory (Azure AD)](../active-directory/active-directory-whatis.md). Hola servicio REST de multimedia de Azure requiere que el usuario de Hola o una aplicación que realiza las solicitudes de API de REST de hello tengan cualquier hello **colaborador** o **propietario** rol tooaccess Hola recursos. Para obtener más información, consulte [empezar a trabajar con Control de acceso basado en roles en el portal de Azure hello](../active-directory/role-based-access-control-what-is.md).  
+Media Services admite la [autenticación basada en Azure Active Directory (Azure AD)](../active-directory/active-directory-whatis.md). El servicio Azure Media REST requiere que el usuario o la aplicación que hace las solicitudes a la API de REST tenga el rol de **colaborador** o **propietario** para acceder a los recursos. Para más información, consulte [Introducción al control de acceso basado en roles en Azure Portal](../active-directory/role-based-access-control-what-is.md).  
 
 > [!IMPORTANT]
-> Actualmente, servicios multimedia admite el modelo de autenticación de servicio de Control de acceso de Azure Hola. Sin embargo, la autorización de Access Control dejará de usarse el 1 de junio de 2018. Se recomienda que migre modelo de autenticación de Azure AD toohello tan pronto como sea posible.
+> Actualmente, Media Services es compatible con el modelo de autenticación de Azure Access Control Service. Sin embargo, la autorización de Access Control dejará de usarse el 1 de junio de 2018. Se recomienda migrar tan pronto como sea posible al modelo de autenticación de Azure AD.
 
-Este documento proporciona información general sobre cómo tooaccess Hola API de servicios multimedia mediante API de .NET o REST.
+Este documento proporciona información general sobre cómo obtener acceso a Media Services API mediante las API de .NET o REST.
 
 ## <a name="access-control"></a>Control de acceso
 
-Para toosucceed de solicitud de REST de multimedia de Azure de hello, usuario que realiza la llamada de hello debe tener un rol de propietario o colaborador para la cuenta de servicios multimedia está intentando tooaccess Hola.  
-Puede permitir que sólo un usuario con rol de propietario de hello medios recursos (cuenta) de acceso toonew los usuarios o aplicaciones. rol de colaborador de Hello puede tener acceso a recurso multimedia de hello solo.
-Las solicitudes no autorizadas producirán un error, con el código de estado 401. Si ve este código de error, compruebe si el usuario tiene Hola colaborador o rol de propietario asignado para la cuenta de usuario de hello de servicios multimedia. Puede comprobarlo en hello portal de Azure. Busque la cuenta de multimedia y, a continuación, haga clic en hello **el control de acceso** ficha. 
+Para que la solicitud de REST de Azure Media Services tenga éxito, el usuario que realiza la llamada debe tener el rol de colaborador o propietario de la cuenta de Media Services a la que está intentando obtener acceso.  
+Solo un usuario con el rol de propietario puede dar acceso a los recursos multimedia (cuenta) a nuevos usuarios o aplicaciones. El rol de colaborador solo puede tener acceso al recurso multimedia.
+Las solicitudes no autorizadas producirán un error, con el código de estado 401. Si ve este código de error, compruebe si el usuario tiene el rol de colaborador o propietario asignado para la cuenta de usuario de Media Services. Puede comprobarlo en Azure Portal. Busque la cuenta de Media Services y, a continuación, haga clic en la pestaña **Control de acceso**. 
 
 ![Pestaña Control de acceso](./media/media-services-use-aad-auth-to-access-ams-api/media-services-access-control.png)
 
@@ -42,108 +42,108 @@ Las solicitudes no autorizadas producirán un error, con el código de estado 40
  
 Al utilizar la autenticación de Azure AD con Azure Media Services, tiene dos opciones de autenticación:
 
-- **Autenticación de usuario**. Autenticar a una persona que usa Hola aplicación toointeract con recursos de servicios multimedia. aplicación interactiva de Hello en primer lugar debe pedir a Hola usuario las credenciales de usuario de Hola. Un ejemplo es una aplicación de consola de administración que usan los trabajos de codificación de los usuarios autorizados toomonitor o streaming en directo. 
+- **Autenticación de usuario**. Autenticar a alguien que usa la aplicación para interactuar con los recursos de Media Services. La aplicación interactiva, en primer lugar, debe solicitar al usuario las credenciales. Un ejemplo es una aplicación de consola de administración que usan los usuarios autorizados para supervisar trabajos de codificación o streaming en vivo. 
 - **Autenticación de entidad de servicio**. Autenticar un servicio. Las aplicaciones que normalmente utilizan este método de autenticación son las que ejecutan servicios de demonio, servicios de nivel intermedio o trabajos programados. Algunos ejemplos son las Web Apps, las Function Apps, las Logic Apps, las API y los microservicios.
 
 ### <a name="user-authentication"></a>Autenticación de usuarios 
 
-Las aplicaciones que se deben usar el método de autenticación de usuario de hello son la administración o supervisión de aplicaciones nativas: aplicaciones móviles, las aplicaciones de Windows y aplicaciones de consola. Este tipo de solución es útil cuando desee que la interacción humana con el servicio de hello en uno de hello los escenarios siguientes:
+Las aplicaciones que deben usar el método de autenticación de usuario son las aplicaciones nativas de administración o supervisión: de dispositivos móviles, de Windows y de consola. Este tipo de solución es útil cuando desee la interacción humana con el servicio en uno de los siguientes escenarios:
 
 - Panel de supervisión para los trabajos de codificación.
 - Panel de supervisión para Live Stream.
-- Aplicación de administración de recursos de tooadminister de los usuarios de escritorio o portátil en una cuenta de servicios multimedia.
+- Aplicación de administración para los usuarios de escritorio o dispositivos móviles para administrar los recursos en una cuenta de Media Services.
 
 > [!NOTE]
 > Este método de autenticación no debe usarse para las aplicaciones orientadas al consumidor. 
 
-Una aplicación nativa debe adquirir primero un token de acceso de Azure AD y, a continuación, usarla al realizar la API de REST de servicios de multimedia toohello de las solicitudes HTTP. Agregar encabezado de solicitud de token toohello Hola acceso. 
+Una aplicación nativa debe adquirir primero un token de acceso de Azure AD y, a continuación, usarlo al realizar solicitudes HTTP en la API de REST de Media Services. Agregue el token de acceso para el encabezado de solicitud. 
 
-Hola siguiente diagrama muestra un flujo de autenticación de aplicación interactiva típica: 
+El siguiente diagrama muestra un flujo de autenticación de una aplicación interactiva típica: 
 
 ![Diagrama de aplicaciones nativas](./media/media-services-use-aad-auth-to-access-ams-api/media-services-native-aad-app1.png)
 
-Hola anterior diagrama, Hola números representan flujo Hola de solicitudes de hello en orden cronológico.
+En el diagrama anterior, los números representan el flujo de las solicitudes en orden cronológico.
 
 > [!NOTE]
-> Cuando se usa el método de autenticación de usuario de hello, todas las aplicaciones comparten Hola mismo Id. de cliente de aplicación nativa (valor predeterminado) y la aplicación nativa de URI de redireccionamiento. 
+> Cuando se usa el método de autenticación de usuario, todas las aplicaciones comparten el mismo identificador de cliente de aplicación nativa (valor predeterminado) y el URI de redireccionamiento de aplicación nativa. 
 
 1. Pida al usuario las credenciales.
-2. Solicitar un token de acceso de Azure AD con hello parámetros siguientes:  
+2. Solicite un token de acceso de Azure AD con los siguientes parámetros:  
 
     * Punto de conexión de inquilino de Azure AD.
 
-        puede recuperar la información de inquilino de Hola de hello portal de Azure. Coloque el cursor sobre el nombre de usuario que inició sesión Hola Hola en la esquina superior derecha de Hola.
+        La información del inquilino se puede recuperar desde Azure Portal. Coloque el cursor sobre el nombre del usuario con sesión iniciada en la esquina superior derecha.
     * URI del recurso de Media Services. 
 
-        Este URI se Hola igual para las cuentas de servicios multimedia que se encuentran en hello mismo entorno de Azure (por ejemplo, https://rest.media.azure.net).
+        Este URI es el mismo para las cuentas de Media Services que se encuentran en el mismo entorno de Azure (por ejemplo, https://rest.media.azure.net).
 
     * Id. de cliente de aplicación de Media Services (nativo).
     * URI de redireccionamiento de aplicación de Media Services (nativo).
     * URI del recurso de Media Services de REST.
         
-        Hola URI representa el extremo de la API de REST de hello (por ejemplo, https://test03.restv2.westus.media.azure.net/api/).
+        El URI representa el extremo de API de REST (por ejemplo, https://test03.restv2.westus.media.azure.net/api/).
 
-    tooget valores para estos parámetros, consulte [usar la configuración de autenticación de Azure tooaccess portal Azure AD hello](media-services-portal-get-started-with-aad.md) mediante la opción de autenticación de usuario de Hola.
+    Para obtener los valores de estos parámetros, vea [Uso de Azure Portal para acceder a la configuración de autenticación de Azure AD](media-services-portal-get-started-with-aad.md) con la opción de autenticación de usuario.
 
-3. token de acceso de Azure AD Hola se envía a toohello cliente.
-4. cliente de Hola envía una solicitud toohello API de REST de multimedia de Azure con el token de acceso de hello Azure AD.
-5. cliente de Hello vuelve datos hello de servicios multimedia.
+3. El token de acceso de Azure AD se envía al cliente.
+4. El cliente envía una solicitud a la API de REST de Azure Media Services con el token de acceso de Azure AD.
+5. El cliente recibe los datos de Media Services.
 
-Para obtener información acerca de cómo toocommunicate de autenticación toouse Azure AD con REST se solicita mediante el uso de SDK de cliente de .NET de los servicios multimedia de hello, consulte [tooaccess de autenticación de uso de Azure AD Hola API de servicios multimedia con .NET](media-services-dotnet-get-started-with-aad.md). 
+Para más información sobre cómo usar la autenticación de Azure AD para comunicarse con las solicitudes de REST mediante el SDK del cliente para Media Services .NET, vea [Uso de la autenticación de Azure AD para tener acceso a Media Services API con .NET](media-services-dotnet-get-started-with-aad.md). 
 
-Si no utiliza el SDK de cliente de .NET de los servicios multimedia de hello, debe crear manualmente una solicitud de token de acceso de Azure AD mediante el uso de parámetros de hello descritos en el paso 2. Para obtener más información, consulte [cómo toouse hello Azure AD biblioteca de autenticación tooget Hola token de Azure AD](../active-directory/develop/active-directory-authentication-libraries.md).
+Si no usa el SDK del cliente para Media Services .NET, debe crear manualmente una solicitud de token de acceso de Azure AD con los parámetros descritos en el paso 2. Para más información, vea [Procedimiento para usar la Biblioteca de autenticación de Azure AD para obtener el token de Azure AD](../active-directory/develop/active-directory-authentication-libraries.md).
 
 ### <a name="service-principal-authentication"></a>Autenticación de entidad de servicio
 
-Las aplicaciones que normalmente utilizan este método de autenticación son las que ejecutan servicios de nivel intermedio o trabajos programados: Web Apps, Function Apps, Logic Apps, API o microservicios. Este método de autenticación también es adecuado para las aplicaciones interactivas en los que podría querer toouse una cuenta de servicio toomanage recursos.
+Las aplicaciones que normalmente utilizan este método de autenticación son las que ejecutan servicios de nivel intermedio o trabajos programados: Web Apps, Function Apps, Logic Apps, API o microservicios. Este método de autenticación también es adecuado para las aplicaciones interactivas en las que puede preferir usar una cuenta de servicio para administrar los recursos.
 
-Cuando usas escenarios de consumidor de hello servicio autenticación principal método toobuild, autenticación normalmente se controla en el nivel intermedio de hello (a través de algunas API) y no directamente en una aplicación de escritorio o móvil. 
+Al utilizar el método de autenticación de entidad de servicio para crear escenarios para el consumidor, la autenticación normalmente se controla en el nivel intermedio (a través de alguna API) y no directamente en una aplicación de escritorio o dispositivo móvil. 
 
-toouse este método, cree una aplicación de Azure AD y entidad de seguridad en su propio inquilino de servicio. Después de crear la aplicación hello, proporcionan Hola aplicación propietario o colaborador de rol acceso toohello cuenta de servicios multimedia. Puede hacerlo en hello portal de Azure, mediante la CLI de Azure, o con un script de PowerShell. También puede usar una aplicación de Azure AD existente. Se pueden registrar y administrar la aplicación de Azure AD y el servicio principal [Hola portal de Azure](media-services-portal-get-started-with-aad.md). También puede usar la [CLI de Azure 2.0](media-services-use-aad-auth-to-access-ams-api.md) o [PowerShell](media-services-powershell-create-and-configure-aad-app.md). 
+Para usar este método, cree una aplicación de Azure AD y la entidad de seguridad en su propio inquilino. Después de crear la aplicación, asigne al rol colaborador o propietario de la aplicación acceso a la cuenta de Media Services. Puede hacerlo en Azure Portal mediante la CLI de Azure o con un script de PowerShell. También puede usar una aplicación de Azure AD existente. Puede registrar y administrar la aplicación de Azure AD y la entidad de servicio [en Azure Portal](media-services-portal-get-started-with-aad.md). También puede usar la [CLI de Azure 2.0](media-services-use-aad-auth-to-access-ams-api.md) o [PowerShell](media-services-powershell-create-and-configure-aad-app.md). 
 
 ![Aplicaciones de nivel intermedio](./media/media-services-use-aad-auth-to-access-ams-api/media-services-principal-service-aad-app1.png)
 
-Después de crear la aplicación de Azure AD, se obtienen valores de hello después de la configuración. Necesitará estos valores para la autenticación:
+Después de crear la aplicación de Azure AD, se obtienen valores de las siguientes opciones. Necesitará estos valores para la autenticación:
 
 - id. de cliente 
 - Secreto del cliente 
 
-Hola anterior figura, Hola números representan flujo Hola de solicitudes de hello en orden cronológico:
+En la ilustración anterior, los números representan el flujo de las solicitudes en orden cronológico:
     
-1. Una aplicación de nivel intermedio (API de web o aplicación web) solicita un token de acceso de Azure AD que tenga Hola parámetros siguientes:  
+1. Una aplicación de nivel intermedio (API de web o aplicación web) solicita un token de acceso de Azure AD que tiene los siguientes parámetros:  
 
     * Punto de conexión de inquilino de Azure AD.
 
-        puede recuperar la información de inquilino de Hola de hello portal de Azure. Coloque el cursor sobre el nombre de usuario que inició sesión Hola Hola en la esquina superior derecha de Hola.
+        La información del inquilino se puede recuperar desde Azure Portal. Coloque el cursor sobre el nombre del usuario con sesión iniciada en la esquina superior derecha.
     * URI del recurso de Media Services. 
 
-        Este URI se Hola igual para las cuentas de servicios multimedia que se encuentran en hello mismo entorno de Azure (por ejemplo, https://rest.media.azure.net).
+        Este URI es el mismo para las cuentas de Media Services que se encuentran en el mismo entorno de Azure (por ejemplo, https://rest.media.azure.net).
 
     * URI del recurso de Media Services de REST.
 
-        Hola URI representa el extremo de la API de REST de hello (por ejemplo, https://test03.restv2.westus.media.azure.net/api/).
+        El URI representa el extremo de API de REST (por ejemplo, https://test03.restv2.westus.media.azure.net/api/).
 
-    * Los valores de aplicación de Azure AD: Hola Id. de cliente y el secreto del cliente.
+    * Valores de aplicación de Azure AD: el Id. de cliente y el secreto de cliente.
     
-    tooget valores para estos parámetros, consulte [usar la configuración de autenticación de Azure tooaccess portal Azure AD hello](media-services-portal-get-started-with-aad.md) utilizando la opción de autenticación principal de servicio de Hola.
+    Para obtener los valores de estos parámetros, vea [Uso de Azure Portal para acceder a la configuración de autenticación de Azure AD](media-services-portal-get-started-with-aad.md) con la opción de autenticación de entidad de servicio.
 
-2. token de acceso de Azure AD Hola se envía toohello de nivel intermedio.
-4. nivel intermedio de Hello envía solicitud toohello API de REST de multimedia de Azure con el token de hello Azure AD.
-5. nivel intermedio de Hello vuelve datos hello de servicios multimedia.
+2. El token de acceso de Azure AD se envía al nivel intermedio.
+4. El nivel intermedio envía una solicitud a la API de REST de Azure Media Services con el token de Azure AD.
+5. El nivel intermedio recibe los datos de Media Services.
 
-Para obtener más información acerca de cómo toocommunicate de autenticación toouse Azure AD con REST se solicita mediante el uso de SDK de cliente de .NET de los servicios multimedia de hello, consulte [tooaccess de autenticación de uso de Azure AD API de servicios multimedia de Azure con .NET](media-services-dotnet-get-started-with-aad.md). 
+Para más información sobre cómo usar la autenticación de Azure AD para comunicarse con las solicitudes de REST mediante el SDK del cliente para Media Services .NET, vea [Uso de la autenticación de Azure AD para tener acceso a Media Services API con .NET](media-services-dotnet-get-started-with-aad.md). 
 
-Si no utiliza el SDK de cliente de .NET de los servicios multimedia de hello, debe crear manualmente una solicitud de token de Azure AD mediante el uso de parámetros que se describen en el paso 1. Para obtener más información, consulte [cómo toouse hello Azure AD biblioteca de autenticación tooget Hola token de Azure AD](../active-directory/develop/active-directory-authentication-libraries.md).
+Si no usa el SDK del cliente para Media Services .NET, debe crear manualmente una solicitud de token de acceso de Azure AD con los parámetros descritos en el paso 1. Para más información, vea [Procedimiento para usar la Biblioteca de autenticación de Azure AD para obtener el token de Azure AD](../active-directory/develop/active-directory-authentication-libraries.md).
 
 ## <a name="troubleshooting"></a>Solución de problemas
 
-Excepción: "servidor remoto hello devolvió un error: no autorizado (401)."
+Excepción: "El servidor remoto devolvió un error: (401) No autorizado".
 
-Solución: Para toosucceed de solicitud de REST de servicios multimedia de hello, usuario que realiza la llamada de hello debe ser un rol de colaborador o propietario en hello cuenta de servicios multimedia está tratando de tooaccess. Para obtener más información, vea hello [el control de acceso](media-services-use-aad-auth-to-access-ams-api.md#access-control) sección.
+Solución: para que la solicitud de REST de Media Services tenga éxito, el usuario que realiza la llamada debe tener el rol de colaborador o propietario en la cuenta de Media Services a la que está intentando obtener acceso. Para más información, consulte [Control de acceso](media-services-use-aad-auth-to-access-ams-api.md#access-control).
 
 ## <a name="resources"></a>Recursos
 
-Hola siguientes artículos es información general de conceptos de autenticación de Azure AD: 
+Los artículos siguientes son información general de conceptos de autenticación de Azure AD: 
 
 - [Escenarios de autenticación abordados por Azure AD](../active-directory/develop/active-directory-authentication-scenarios.md#basics-of-authentication-in-azure-ad)
 - [Incorporación, actualización o eliminación de una aplicación en Azure AD](../active-directory/develop/active-directory-integrating-applications.md)
@@ -151,6 +151,6 @@ Hola siguientes artículos es información general de conceptos de autenticació
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* Usar hello portal de Azure demasiado[acceso tooconsume de autenticación de Azure AD API de servicios multimedia de Azure](media-services-portal-get-started-with-aad.md).
-* Utilizar autenticación de Azure AD demasiado[acceso a API de servicios multimedia de Azure con .NET](media-services-dotnet-get-started-with-aad.md).
+* Uso de Azure Portal para [acceder a la autenticación de Azure para usar Azure Media Services API](media-services-portal-get-started-with-aad.md).
+* Uso de la autenticación de Azure AD para [acceder a Azure Media Services API con .NET](media-services-dotnet-get-started-with-aad.md).
 

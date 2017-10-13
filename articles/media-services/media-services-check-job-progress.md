@@ -1,6 +1,6 @@
 ---
-title: aaaMonitor progreso del trabajo con .NET
-description: "Obtenga información acerca de cómo tootrack de código de controlador de eventos de toouse progreso del trabajo y enviar las actualizaciones de estado. ejemplo de código de Hello está escrito en C# y usa Hola SDK de servicios multimedia para. NET."
+title: "Supervisión del progreso de los trabajos mediante .NET"
+description: "Aprenda a usar el código del controlador de eventos para realizar el seguimiento del progreso del trabajo y enviar actualizaciones de estado. El ejemplo de código está escrito en C# y utiliza el SDK de Servicios multimedia para .NET."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 530aa1d78437cd7c41b4d9a895f9a0e9de0ad49d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 851981b291115ba31dc40535f8bcc71cdb475717
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-job-progress-using-net"></a>Supervisión del progreso de los trabajos mediante .NET
 > [!div class="op_single_selector"]
@@ -28,10 +28,10 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Cuando se ejecutan trabajos, a menudo requieren un progreso del trabajo de manera tootrack. Puede comprobar el progreso de hello mediante la definición de un controlador de eventos StateChanged (como se describe en este tema) o con toomonitor de almacenamiento de cola de Azure notificaciones de trabajo de servicios multimedia (como se describe en [esto](media-services-dotnet-check-job-progress-with-queues.md) tema).
+Al ejecutar trabajos, muchas veces se requiere una forma de hacer un seguimiento al progreso del trabajo. Puede consultar el progreso si define un controlador de eventos StateChanged (como se describe en este tema) o usa el almacenamiento en cola de Azure para supervisar las notificaciones sobre trabajos de Servicios multimedia (como se explica en [este](media-services-dotnet-check-job-progress-with-queues.md) tema).
 
-## <a name="define-statechanged-event-handler-toomonitor-job-progress"></a>Definir el progreso del trabajo de StateChanged eventos controlador toomonitor
-Hola, ejemplo de código siguiente define el controlador de eventos de StateChanged de Hola. Este controlador de eventos realiza un seguimiento del progreso del trabajo y muestra el estado actualizado, según el estado de saludo. código de Hello también define el método de hello LogJobStop. Este método auxiliar registra los detalles del error.
+## <a name="define-statechanged-event-handler-to-monitor-job-progress"></a>Definición de controlador de eventos de StateChanged para supervisar el progreso del trabajo
+El siguiente ejemplo de código define el controlador de eventos StateChanged. Este controlador de eventos hace un seguimiento del progreso del trabajo y proporciona un estado actualizado, según el estado. El código define también el método LogJobStop. Este método auxiliar registra los detalles del error.
 
     private static void StateChanged(object sender, JobStateChangedEventArgs e)
     {
@@ -73,7 +73,7 @@ Hola, ejemplo de código siguiente define el controlador de eventos de StateChan
         StringBuilder builder = new StringBuilder();
         IJob job = GetJob(jobId);
 
-        builder.AppendLine("\nThe job stopped due toocancellation or an error.");
+        builder.AppendLine("\nThe job stopped due to cancellation or an error.");
         builder.AppendLine("***************************");
         builder.AppendLine("Job ID: " + job.Id);
         builder.AppendLine("Job Name: " + job.Name);
@@ -96,7 +96,7 @@ Hola, ejemplo de código siguiente define el controlador de eventos de StateChan
             }
         }
         builder.AppendLine("***************************\n");
-        // Write hello output tooa local file and toohello console. hello template 
+        // Write the output to a local file and to the console. The template 
         // for an error output file is:  JobStop-{JobId}.txt
         string outputFile = _outputFilesFolder + @"\JobStop-" + JobIdAsFileName(job.Id) + ".txt";
         WriteToFile(outputFile, builder.ToString());

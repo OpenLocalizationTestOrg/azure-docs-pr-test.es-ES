@@ -1,14 +1,14 @@
 ## <a name="incremental-and-complete-deployments"></a>Implementaciones de incrementales y completadas
-Al implementar los recursos, especifica que la implementación de hello es una actualización incremental o una actualización completa. Hola principal diferencia entre estos dos modos es cómo el Administrador de recursos controla los recursos existentes en el grupo de recursos de Hola que no están en la plantilla de hello:
+Al implementar los recursos, debe especificar si la implementación es una actualización incremental o una actualización completa. La diferencia principal entre estos dos modos es la forma en que Resource Manager controla los recursos existentes en el grupo de recursos que no están en la plantilla:
 
-* En el modo completo, el Administrador de recursos **elimina** recursos que existen en el grupo de recursos de hello, pero no se especifican en la plantilla de Hola. 
-* En el modo incremental, el Administrador de recursos **deja sin modificar** recursos que existen en el grupo de recursos de hello, pero no se especifican en la plantilla de Hola.
+* En el modo completo, Resource Manager **elimina** recursos que existen en el grupo de recursos pero que no se especifican en la plantilla. 
+* En el modo incremental, Resource Manager **deja sin modificar** los recursos que existen en el grupo de recursos pero que no se especifican en la plantilla.
 
-Para ambos modos, el Administrador de recursos intenta tooprovision todos los recursos especificados en la plantilla de Hola. Si el recurso de hello ya existe en el grupo de recursos de Hola y sus valores son iguales, Hola operación da como resultado ningún cambio. Si cambia la configuración de Hola para un recurso, se aprovisionan recursos Hola con esos valores nuevo. Si intentas ubicación de hello tooupdate o el tipo de un recurso existente, se produce un error en la implementación de hello con un error. En su lugar, implemente un nuevo recurso con la ubicación de Hola o escriba que necesita.
+En ambos modos, Resource Manager intenta aprovisionar todos los recursos especificados en la plantilla. Si el recurso ya existe en el grupo de recursos y su configuración es igual, los resultados de la operación no cambian. Si cambia la configuración de un recurso, el recurso se aprovisiona con esos nuevos valores. Si intenta actualizar la ubicación o el tipo de un recurso existente, la implementación produce un error. En su lugar, implemente un nuevo recurso con la ubicación o escriba la que necesite.
 
-De forma predeterminada, el Administrador de recursos usa el modo incremental de Hola.
+De forma predeterminada, Resource Manager usa el modo incremental.
 
-diferencia de hello tooillustrate entre los modos de incrementales y completados, considere la posibilidad de hello siguiendo el escenario.
+Para ilustrar la diferencia entre el modo incremental y el completo, considere el escenario siguiente.
 
 **Grupo de recursos existente** contiene:
 
@@ -22,14 +22,14 @@ diferencia de hello tooillustrate entre los modos de incrementales y completados
 * Recurso B
 * Recurso D
 
-Cuando se implementa en **incremental** modo, grupo de recursos de hello contiene:
+Cuando se implementa en modo **incremental**, el grupo de recursos contiene:
 
 * Recurso A
 * Recurso B
 * Recurso C
 * Recurso D
 
-Cuando se implementa en modo **completo**, se elimina el recurso C. grupo de recursos de Hello contiene:
+Cuando se implementa en modo **completo**, se elimina el recurso C. El grupo de recursos contiene:
 
 * Recurso A
 * Recurso B

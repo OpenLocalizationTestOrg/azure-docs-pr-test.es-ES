@@ -1,6 +1,6 @@
 ---
-title: aaaAutomate Azure Application Insights procesa con Microsoft Flow
-description: "Obtenga información acerca de cómo puede utilizar Microsoft Flow tooquickly automatizar procesos repetibles mediante el conector de Application Insights Hola."
+title: "Automatización de procesos de Azure Application Insights con Microsoft Flow"
+description: "Obtenga información acerca de cómo puede utilizar Microsoft Flow para automatizar rápidamente los procesos repetibles mediante el conector de Application Insights."
 services: application-insights
 documentationcenter: 
 author: CFreemanwa
@@ -12,33 +12,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2017
 ms.author: bwren
-ms.openlocfilehash: b34488a6b8b8b0a6add960a67f1426cbbbc13552
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 510f4f284bbd0dbe4171896899f7ade7dee19e39
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="automate-azure-application-insights-processes-with-hello-connector-for-microsoft-flow"></a>Automatizar los procesos de visión de la aplicación de Azure con el conector de Hola para Microsoft Flow
+# <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Automatización de procesos de Azure Application Insights con el conector para Microsoft Flow
 
-¿Verá que su ejecución repetida Hola mismas consultas en su toocheck de datos de telemetría que el servicio está funcionando correctamente? ¿Es estas consultas para buscar tendencias y las anomalías de tooautomate de aspecto y, a continuación, crear sus propios flujos de trabajo a su alrededor? Conector de Hello Azure Application Insights (vista previa) para Microsoft Flow es la herramienta adecuada de Hola para estos fines.
+¿Se encuentra a menudo ejecutando las mismas consultas en los datos de telemetría para comprobar que el servicio está funcionando correctamente? ¿Desea automatizar estas consultas para encontrar tendencias y anomalías, y crear sus propios flujos de trabajo en función de ellas? El conector de Azure Application Insights (versión preliminar) para Microsoft Flow es la herramienta adecuada para estos fines.
 
-Con esta integración, ahora se pueden automatizar numerosos procesos sin tener que escribir una sola línea de código. Después de crear un flujo mediante el uso de una acción de Application Insights, flujo de hello ejecuta automáticamente la consulta de análisis de visión de aplicaciones. 
+Con esta integración, ahora se pueden automatizar numerosos procesos sin tener que escribir una sola línea de código. Después de crear un flujo mediante una acción de Application Insights, el flujo ejecuta automáticamente la consulta de Application Insights Analytics. 
 
-También puede agregar acciones adicionales. Microsoft Flow pone a su disposición cientos de acciones. Por ejemplo, puede utilizar Microsoft Flow tooautomatically enviar una notificación por correo electrónico o crear un error en Visual Studio Team Services. También puede usar uno de hello muchas [plantillas](https://ms.flow.microsoft.com/en-us/connectors/shared_applicationinsights/?slug=azure-application-insights) que están disponibles para el conector de Hola para Microsoft Flow. Estas plantillas acelerar el proceso de Hola de creación de un flujo. 
+También puede agregar acciones adicionales. Microsoft Flow pone a su disposición cientos de acciones. Por ejemplo, puede utilizar Microsoft Flow para enviar automáticamente una notificación por correo electrónico o para crear un error en Visual Studio Team Services. También puede utilizar una de las numerosas [plantillas](https://ms.flow.microsoft.com/en-us/connectors/shared_applicationinsights/?slug=azure-application-insights) disponibles para el conector para Microsoft Flow. Estas plantillas aceleran el proceso de creación de un flujo. 
 
-<!--hello Application Insights connector also works with [Azure Power Apps](https://powerapps.microsoft.com/en-us/) and [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/?v=17.23h). --> 
+<!--The Application Insights connector also works with [Azure Power Apps](https://powerapps.microsoft.com/en-us/) and [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/?v=17.23h). --> 
 
 ## <a name="create-a-flow-for-application-insights"></a>Creación de un flujo para Application Insights
 
-En este tutorial, aprenderá cómo toocreate un flujo que usa Hola análisis automático clúster algoritmo toogroup atributos en datos de Hola para una aplicación web. flujo Hola envía automáticamente los resultados de Hola por correo electrónico, solo un ejemplo de cómo puede usar conjuntamente Microsoft Flow y análisis de visión de aplicaciones. 
+En este tutorial, obtendrá información sobre cómo crear un flujo que usa el algoritmo de clústeres automáticos de Analytics para agrupar los atributos en los datos para una aplicación web. El flujo envía automáticamente los resultados por correo electrónico, y esto es solo un ejemplo de cómo puede usar Microsoft Flow y Application Insights Analytics conjuntamente. 
 
 ### <a name="step-1-create-a-flow"></a>Paso 1: Creación de un almacén
-1. Inicie sesión en demasiado[Microsoft Flow](http://flow.microsoft.com)y, a continuación, seleccione **fluye mi**.
+1. Inicie sesión en [Microsoft Flow](http://flow.microsoft.com) y, a continuación, seleccione **Mis flujos**.
 2. Haga clic en **Crear un flujo a partir de un documento en blanco**.
 
 ### <a name="step-2-create-a-trigger-for-your-flow"></a>Paso 2: Creación de un desencadenador para el flujo
 1. Elija **Programación** y, a continuación, **Programación: Periodicidad**.
-2. Hola **frecuencia** cuadro, seleccione **día**y en hello **intervalo** cuadro, escriba **1**.
+2. En el cuadro **Frecuencia**, seleccione **Día** y, en el cuadro **Intervalo**, escriba **1**.
 
     ![Cuadro de diálogo del desencadenador de Microsoft Flow](./media/app-insights-automate-with-flow/flow1.png)
 
@@ -50,22 +50,22 @@ En este tutorial, aprenderá cómo toocreate un flujo que usa Hola análisis aut
 
     ![Ventana Ejecutar consulta de Analytics](./media/app-insights-automate-with-flow/flow2.png)
 
-### <a name="step-4-connect-tooan-application-insights-resource"></a>Paso 4: Conectarse a recursos de Application Insights tooan
+### <a name="step-4-connect-to-an-application-insights-resource"></a>Paso 4: Conexión a un recurso de Application Insights
 
-toocomplete este paso, necesita un identificador de la aplicación y una clave de API para el recurso. Puede recuperarlos de hello portal de Azure, como se muestra en hello siguiente diagrama:
+Para completar este paso, necesita un identificador de aplicación y una clave de API para el recurso. Puede recuperarlos desde Azure Portal, como se muestra en el diagrama siguiente:
 
-![Identificador de la aplicación Hola portal de Azure](./media/app-insights-automate-with-flow/appid.png) 
+![Identificador de aplicación en Azure Portal](./media/app-insights-automate-with-flow/appid.png) 
 
-- Proporcione un nombre para la conexión, junto con la clave de API e Id. de aplicación de Hola.
+- Proporcione un nombre para la conexión, junto con el identificador de aplicación y la clave de API.
 
     ![Ventana de conexión de Microsoft Flow](./media/app-insights-automate-with-flow/flow3.png)
 
-### <a name="step-5-specify-hello-analytics-query-and-chart-type"></a>Paso 5: Especificar Hola consulta de análisis y el tipo de gráfico
-Esta consulta de ejemplo selecciona solicitudes hello no se pudo Hola último día y pone en correlación con las excepciones que se ha producido como parte de la operación de Hola. Correlacionan análisis basado en el identificador de operation_Id Hola. consulta de Hello segmentos, a continuación, resultados de hello mediante hello autocluster algoritmo. 
+### <a name="step-5-specify-the-analytics-query-and-chart-type"></a>Paso 5: Especificación del tipo de gráfico y consulta de análisis
+Esta consulta de ejemplo selecciona las solicitudes con error del último día y las pone en correlación con las excepciones que se han producido como parte de la operación. Analytics las correlaciona en función del identificador operation_Id. La consulta, a continuación, segmenta los resultados mediante el algoritmo de clúster automático. 
 
-Cuando cree sus propias consultas, compruebe que estén funcionando correctamente en el análisis antes de agregar tooyour flujo.
+Al crear sus propias consultas, asegúrese de comprobar que funcionan correctamente en Analytics antes de agregarlas al flujo.
 
-- Agregar Hola después de consulta de análisis y, a continuación, seleccione el tipo de gráfico de tabla HTML de Hola. 
+- Agregue la siguiente consulta de Analytics y seleccione el tipo de gráfico de tabla HTML. 
 
     ```
     requests
@@ -80,7 +80,7 @@ Cuando cree sus propias consultas, compruebe que estén funcionando correctament
     
     ![Pantalla de configuración de consulta de Analytics](./media/app-insights-automate-with-flow/flow4.png)
 
-### <a name="step-6-configure-hello-flow-toosend-email"></a>Paso 6: Configurar el correo electrónico de toosend de flujo de Hola
+### <a name="step-6-configure-the-flow-to-send-email"></a>Paso 6: Configuración del flujo para enviar correo electrónico
 
 1. Haga clic en **Nuevo paso** y, a continuación, en **Agregar una acción**.
 2. Busque **Office 365 Outlook**.
@@ -88,36 +88,36 @@ Cuando cree sus propias consultas, compruebe que estén funcionando correctament
 
     ![Ventana de selección de Office 365 Outlook](./media/app-insights-automate-with-flow/flow2b.png)
 
-4. Hola **enviar un correo electrónico** ventana, Hola siguientes:
+4. En la ventana **Enviar un correo electrónico**, haga lo siguiente:
 
-   a. Escriba la dirección de correo electrónico de saludo del destinatario de Hola.
+   a. Escriba la dirección de correo electrónico del destinatario.
 
-   b. Escriba a un asunto de correo electrónico de Hola.
+   b. Escriba un asunto para el correo electrónico.
 
-   c. Haga clic en cualquier lugar en hello **cuerpo** cuadro y, a continuación, en hello contenido menú dinámico que se abre en hello derecho, seleccione **cuerpo**.
+   c. Haga clic en cualquier parte del cuadro **Cuerpo** y, en el menú de contenido dinámico que se abre a la derecha, seleccione **Cuerpo**.
 
    d. Haga clic en **Mostrar opciones avanzadas**.
 
     ![Configuración de Office 365 Outlook](./media/app-insights-automate-with-flow/flow5.png)
 
-5. En el menú de contenido dinámico de hello, Hola siguientes:
+5. En el menú de contenido dinámico, haga lo siguiente:
 
     a. Seleccione **Nombre de datos adjuntos**.
 
     b. Seleccione **Contenido de datos adjuntos**.
     
-    c. Hola **es HTML** cuadro, seleccione **Sí**.
+    c. En el campo **Es HTML**, seleccione **Sí**.
 
     ![Pantalla de configuración de correo electrónico de Office 365](./media/app-insights-automate-with-flow/flow7.png)
 
 ### <a name="step-7-save-and-test-your-flow"></a>Paso 7: Guardado y prueba del flujo
-- Hola **nombre de flujo de** cuadro, agregue un nombre para el flujo y, a continuación, haga clic en **Crear flujo**.
+- En el cuadro **Nombre de flujo**, agregue un nombre para el flujo y, a continuación, haga clic en **Crear flujo**.
 
     ![Ventana de creación de flujo](./media/app-insights-automate-with-flow/flow8.png)
 
-Se puede esperar Hola desencadenador toorun esta acción, o puede ejecutar el flujo de hello inmediatamente por [ejecución desencadenador Hola a petición](https://flow.microsoft.com/blog/run-now-and-six-more-services/).
+Puede esperar a que el desencadenador lleve a cabo esta acción o ejecutar el flujo inmediatamente [ejecutando el desencadenador a petición](https://flow.microsoft.com/blog/run-now-and-six-more-services/).
 
-Cuando se ejecuta el flujo de hello, los destinatarios de Hola que ha especificado en la lista de correo electrónico de Hola reciban un mensaje de correo electrónico similar Hola siguiente:
+Cuando se ejecuta el flujo, los destinatarios que haya especificado en la lista de correo electrónico recibirán un mensaje de correo electrónico similar al siguiente:
 
 ![Correo electrónico de ejemplo](./media/app-insights-automate-with-flow/flow9.png)
 

@@ -1,6 +1,6 @@
 ---
-title: aaaConnect un dispositivo con Node.js | Documentos de Microsoft
-description: "Describe cómo tooconnect una toohello dispositivo Azure IoT conjunto preconfigurado solución de supervisión remota con una aplicación escrita en Node.js."
+title: "Conexión de un dispositivo mediante Node.js | Microsoft Docs"
+description: "Se describe cómo conectar un dispositivo a la solución de supervisión remota preconfigurada del Conjunto de IoT de Azure mediante una aplicación creada en Node.js."
 services: 
 suite: iot-suite
 documentationcenter: na
@@ -15,31 +15,31 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
-ms.openlocfilehash: 80bf2b70f15f539bfce4f135d533c46dd2b3f5a7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 6459b6196eb7f4a083b67e5a421bcc0d51d39e5c
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="connect-your-device-toohello-remote-monitoring-preconfigured-solution-nodejs"></a>Conectar su toohello de dispositivo remoto de supervisión de solución preconfigurada (Node.js)
+# <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-nodejs"></a>Conectar el dispositivo a la solución preconfigurada de supervisión remota (Node.js)
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
 ## <a name="create-a-nodejs-sample-solution"></a>Creación de una solución de ejemplo de node.js
 
-Asegúrese de que tiene instalada la versión 0.11.5 o posterior de Node.js en la máquina de desarrollo. Puede ejecutar `node --version` en la versión de Hola de toocheck de línea de comandos de Hola.
+Asegúrese de que tiene instalada la versión 0.11.5 o posterior de Node.js en la máquina de desarrollo. Para comprobar la versión, puede ejecutar `node --version` en la línea de comandos.
 
-1. Cree una carpeta denominada **RemoteMonitoring** en la máquina de desarrollo. Desplazarse por las carpetas de toothis en su entorno de línea de comandos.
+1. Cree una carpeta denominada **RemoteMonitoring** en la máquina de desarrollo. Vaya a esta carpeta en el entorno de línea de comandos.
 
-1. Hola ejecución sigue comandos toodownload e instalar paquetes de hello necesita la aplicación de ejemplo de Hola toocomplete:
+1. Ejecute los comandos siguientes para descargar e instalar los paquetes que necesita para realizar la aplicación de ejemplo:
 
     ```
     npm init
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. Hola **RemoteMonitoring** carpeta, cree un archivo denominado **remote_monitoring.js**. Abra este archivo en un editor de texto.
+1. En la carpeta **RemoteMonitoring**, cree un archivo llamado **remote_monitoring.js**. Abra este archivo en un editor de texto.
 
-1. Hola **remote_monitoring.js** , agregue la siguiente hello `require` instrucciones:
+1. En el archivo **remote_monitoring.js**, agregue las siguientes instrucciones `require`:
 
     ```nodejs
     'use strict';
@@ -50,14 +50,14 @@ Asegúrese de que tiene instalada la versión 0.11.5 o posterior de Node.js en l
     var Message = require('azure-iot-device').Message;
     ```
 
-1. Agregar Hola siguiendo las declaraciones de variable después de hello `require` instrucciones. Reemplace los valores de marcador de posición de hello [Id. de dispositivo] y [clave de dispositivo] con los valores indicados para el dispositivo en el panel de solución de supervisión remota de Hola. Usar hello Hostname del centro de IoT de hello solución panel tooreplace [el centro de IOT Name]. Por ejemplo, si el nombre de host de IoT Hub es **contoso.azure-devices.net**, sustituya [IoTHub Name] por **contoso**:
+1. Agregue las siguientes declaraciones de variable después de las instrucciones `require` . Sustituya los valores de marcador de posición [Device Id] y [Device Key] por los valores que anotó para el dispositivo en el panel de la solución de supervisión remota. Use el nombre de host de IoT Hub en el panel de la solución para sustituir [IoTHub Name]. Por ejemplo, si el nombre de host de IoT Hub es **contoso.azure-devices.net**, sustituya [IoTHub Name] por **contoso**:
 
     ```nodejs
     var connectionString = 'HostName=[IoTHub Name].azure-devices.net;DeviceId=[Device Id];SharedAccessKey=[Device Key]';
     var deviceId = ConnectionString.parse(connectionString).DeviceId;
     ```
 
-1. Agregue Hola siguientes variables toodefine algunos datos de telemetría de base:
+1. Agregue las siguientes variables para definir algunos datos de telemetría de base:
 
     ```nodejs
     var temperature = 50;
@@ -65,7 +65,7 @@ Asegúrese de que tiene instalada la versión 0.11.5 o posterior de Node.js en l
     var externalTemperature = 55;
     ```
 
-1. Agregue Hola siguiendo los resultados de la operación de la función auxiliar tooprint:
+1. Agregue la función auxiliar siguiente para imprimir los resultados de la operación:
 
     ```nodejs
     function printErrorFor(op) {
@@ -75,7 +75,7 @@ Asegúrese de que tiene instalada la versión 0.11.5 o posterior de Node.js en l
     }
     ```
 
-1. Agregue Hola después de valores de telemetría de aplicación auxiliar para la función toouse toorandomize hello:
+1. Agregue la siguiente función auxiliar para aleatorizar los valores de telemetría:
 
     ```nodejs
     function generateRandomIncrement() {
@@ -83,7 +83,7 @@ Asegúrese de que tiene instalada la versión 0.11.5 o posterior de Node.js en l
     }
     ```
 
-1. Agregar Hola después de la definición de hello **DeviceInfo** dispositivo Hola de objeto se envía en el inicio:
+1. Agregue la siguiente definición para el objeto **DeviceInfo** que envía el dispositivo al inicio:
 
     ```nodejs
     var deviceMetaData = {
@@ -97,7 +97,7 @@ Asegúrese de que tiene instalada la versión 0.11.5 o posterior de Node.js en l
     };
     ```
 
-1. Agregue los siguiente Hola definición doble de dispositivo de hello notificado valores. Esta definición incluye descripciones de los métodos directos Hola Hola dispositivo admite:
+1. Agregue la siguiente definición para los valores notificados por el dispositivo gemelo. Esta definición incluye descripciones de los métodos directos que admite el dispositivo:
 
     ```nodejs
     var reportedProperties = {
@@ -126,62 +126,62 @@ Asegúrese de que tiene instalada la versión 0.11.5 o posterior de Node.js en l
             "Longitude": -122.125497
         },
         "SupportedMethods": {
-            "Reboot": "Reboot hello device",
-            "InitiateFirmwareUpdate--FwPackageURI-string": "Updates device Firmware. Use parameter FwPackageURI toospecifiy hello URI of hello firmware file"
+            "Reboot": "Reboot the device",
+            "InitiateFirmwareUpdate--FwPackageURI-string": "Updates device Firmware. Use parameter FwPackageURI to specifiy the URI of the firmware file"
         },
     }
     ```
 
-1. Agregar Hola después Hola de función toohandle **reiniciar** dirigir la llamada al método:
+1. Agregue la siguiente función para controlar la llamada al método directo **Reboot**:
 
     ```nodejs
     function onReboot(request, response) {
         // Implement actual logic here.
         console.log('Simulated reboot...');
 
-        // Complete hello response
+        // Complete the response
         response.send(200, "Rebooting device", function(err) {
             if(!!err) {
                 console.error('An error occurred when sending a method response:\n' + err.toString());
             } else {
-                console.log('Response toomethod \'' + request.methodName + '\' sent successfully.' );
+                console.log('Response to method \'' + request.methodName + '\' sent successfully.' );
             }
         });
     }
     ```
 
-1. Agregar Hola después Hola de función toohandle **InitiateFirmwareUpdate** dirigir la llamada al método. Este método directo utiliza una ubicación de Hola de parámetro toospecify de toodownload de imagen de firmware de Hola e inicia Hola actualización de firmware en el dispositivo de Hola de forma asincrónica:
+1. Agregue la siguiente función para controlar la llamada al método directo **InitiateFirmwareUpdate**. Este método directo usa un parámetro para especificar la ubicación de la imagen de firmware que se va a descargar e inicia la actualización de firmware en el dispositivo de forma asincrónica:
 
     ```nodejs
     function onInitiateFirmwareUpdate(request, response) {
         console.log('Simulated firmware update initiated, using: ' + request.payload.FwPackageURI);
 
-        // Complete hello response
+        // Complete the response
         response.send(200, "Firmware update initiated", function(err) {
             if(!!err) {
                 console.error('An error occurred when sending a method response:\n' + err.toString());
             } else {
-                console.log('Response toomethod \'' + request.methodName + '\' sent successfully.' );
+                console.log('Response to method \'' + request.methodName + '\' sent successfully.' );
             }
         });
 
-        // Add logic here tooperform hello firmware update asynchronously
+        // Add logic here to perform the firmware update asynchronously
     }
     ```
 
-1. Agregue Hola después código toocreate una instancia de cliente:
+1. Agregue el código siguiente para crear una instancia de cliente:
 
     ```nodejs
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
-1. Agregue Hola siguiente de código:
+1. Agregue el siguiente código para:
 
-    * Abrir conexión Hola.
-    * Enviar hello **DeviceInfo** objeto.
+    * Abrir la conexión.
+    * Enviar el objeto **DeviceInfo**.
     * Configurar un controlador para propiedades deseadas.
     * Enviar propiedades notificadas.
-    * Registrar los controladores para los métodos de hello directa.
+    * Registrar controladores para métodos directos.
     * Empezar a enviar telemetría.
 
     ```nodejs
@@ -242,9 +242,9 @@ Asegúrese de que tiene instalada la versión 0.11.5 o posterior de Node.js en l
     });
     ```
 
-1. Guardar Hola cambios toohello **remote_monitoring.js** archivo.
+1. Guarde los cambios al archivo **remote_monitoring.js**.
 
-1. Ejecute hello siguiente comando en una aplicación de ejemplo de Hola de toolaunch de símbolo del sistema:
+1. Ejecute el siguiente comando en un símbolo del sistema para iniciar la aplicación de ejemplo:
    
     ```
     node remote_monitoring.js

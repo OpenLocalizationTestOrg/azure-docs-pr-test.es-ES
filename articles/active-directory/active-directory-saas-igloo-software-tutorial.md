@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: integración de Azure Active Directory con Igloo Software | Microsoft Docs"
-description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y Igloo Software."
+description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory e Igloo Software."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,113 +13,113 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 406405d4faa6e56f1005a61e69a29ef2ef2eb34b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ab3891e11eb33b4d233e4fc967a40c7df06e4f4e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>Tutorial: Integración de Azure Active Directory con Igloo Software
 
-En este tutorial, aprenderá cómo toointegrate Igloo Software con Azure Active Directory (Azure AD).
+En este tutorial, obtendrá información sobre cómo integrar Igloo Software con Azure Active Directory (Azure AD).
 
-Integración Igloo Software con Azure AD proporciona Hola siguientes ventajas:
+La integración de Igloo Software con Azure AD proporciona las siguientes ventajas:
 
-- Puede controlar en Azure AD que tenga acceso tooIgloo Software
-- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooIgloo Software (Single Sign-On) con sus cuentas de Azure AD
-- Puede administrar las cuentas en una ubicación central: Hola portal de Azure
+- Puede controlar en Azure AD quién tiene acceso a Igloo Software.
+- Puede permitir que los usuarios inicien sesión automáticamente en Igloo Software (inicio de sesión único) con sus cuentas de Azure AD.
+- Puede administrar las cuentas en una sola ubicación central: Azure Portal.
 
-Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Si desea saber más sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-integración de Azure AD con Igloo Software tooconfigure, necesita Hola siguientes elementos:
+Para configurar la integración de Azure AD con Igloo Software, necesita los siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción habilitada para el inicio de sesión único en Igloo Software
 
 > [!NOTE]
-> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
+> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
 
-pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
+Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
 
 - No use el entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
 
-1. Agregar Igloo Software desde la Galería de Hola
+1. Agregar Igloo Software desde la galería
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-igloo-software-from-hello-gallery"></a>Agregar Igloo Software desde la Galería de Hola
-integración de hello tooconfigure de Igloo Software en Azure AD, deberá tooadd Igloo Software de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
+## <a name="adding-igloo-software-from-the-gallery"></a>Agregar Igloo Software desde la galería
+Para configurar la integración de Igloo Software en Azure AD, deberá agregar Igloo Software desde la galería a la lista de aplicaciones SaaS administradas.
 
-**tooadd Igloo Software desde la Galería de hello, lleve a cabo Hola pasos:**
+**Para agregar Igloo Software desde la galería, realice los pasos siguientes:**
 
-1. Hola  **[portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
+1. En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
+2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
 
     ![Aplicaciones][2]
     
-3. tooadd nueva aplicación, haga clic en **nueva aplicación** botón en la parte superior de saludo del cuadro de diálogo.
+3. Para agregar una nueva aplicación, haga clic en el botón **Nueva aplicación** de la parte superior del cuadro de diálogo.
 
     ![Aplicaciones][3]
 
-4. En el cuadro de búsqueda de hello, escriba **Igloo Software**.
+4. En el cuadro de búsqueda, escriba **Igloo Software**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-igloo-software-tutorial/tutorial_igloosoftware_search.png)
 
-5. En el panel de resultados de hello, seleccione **Igloo Software**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.
+5. En el panel de resultados, seleccione **Igloo Software** y haga clic en **Agregar** para agregar la aplicación.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-igloo-software-tutorial/tutorial_igloosoftware_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuración y comprobación del inicio de sesión único de Azure AD
 En esta sección, configurará y probará el inicio de sesión único de Azure AD con Igloo Software con un usuario de prueba llamado "Britta Simon".
 
-Para toowork de inicio de sesión único, Azure AD necesita tooknow qué usuario equivalente de hello en Igloo Software es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en Igloo Software necesita toobe establecido.
+Para que el inicio de sesión único funcione, es preciso que Azure AD sepa cuál es el usuario homólogo en Igloo Software de un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de Igloo Software.
 
-En Igloo Software, asignar el valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** tooestablish la relación de vínculo de Hola.
+En Igloo Software, asigne el valor del **nombre de usuario** en Azure AD como valor de **nombre de usuario** para establecer la relación de vínculo.
 
-tooconfigure y prueba de inicio de sesión único en Azure AD con Igloo Software, deberá hello toocomplete después de bloques de creación:
+Para configurar y probar el inicio de sesión único de Azure AD con Igloo Software, debe completar los siguientes bloques de creación:
 
-1. **[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.
-2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.
-3. **[Creación de un usuario de prueba Igloo Software](#creating-an-igloo-software-test-user)**  -toohave un equivalente de Britta Simon en Igloo Software que está vinculado toohello Azure AD representación del usuario.
-4. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.
-5. **[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.
+1. **[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.
+2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.
+3. **[Creación de un usuario de prueba de Igloo Software](#creating-an-igloo-software-test-user)**: para tener un homólogo de Britta Simon en Igloo Software que esté vinculado a la representación del usuario en Azure AD.
+4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en la aplicación de Igloo Software.
+En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y configurará el inicio de sesión único en la aplicación de software Igloo HR.
 
-**inicio de sesión único en Azure AD tooconfigure con Igloo Software, realizar Hola pasos:**
+**Para configurar el inicio de sesión único de Azure AD con Igloo Software, realice los pasos siguientes:**
 
-1. En el portal de Azure, en Hola Hola **Igloo Software** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
+1. En Azure Portal, en la página de integración de la aplicación **Igloo Software**, haga clic en **Inicio de sesión único**.
 
     ![Configurar inicio de sesión único][4]
 
-2. En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.
+2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-igloo-software-tutorial/tutorial_igloosoftware_samlbase.png)
 
-3. En hello **Igloo Software dominio y las direcciones URL** sección, lleve a cabo Hola pasos:
+3. En la sección **Dominio y direcciones URL de Igloo Software**, lleve a cabo los pasos siguientes:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-igloo-software-tutorial/tutorial_igloosoftware_url.png)
     
-    a. Hola **dirección URL de inicio de sesión** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<company name>.igloocommmunities.com`
+    a. En el cuadro de texto **URL de inicio de sesión**, escriba una dirección URL con el siguiente patrón: `https://<company name>.igloocommmunities.com`.
 
-    b. Hola **identificador** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<company name>.igloocommmunities.com/saml.digest`
+    b. En el cuadro de texto **Identificador**, escriba una dirección URL con el siguiente patrón: `https://<company name>.igloocommmunities.com/saml.digest`
 
-    c. Hola **dirección URL de respuesta** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:`https://<company name>.igloocommmunities.com/saml.digest`
+    c. En el cuadro de texto **URL de respuesta**, escriba una dirección URL con el siguiente patrón: `https://<company name>.igloocommmunities.com/saml.digest`.
 
     > [!NOTE] 
-    > Estos valores no son reales. Actualizar estos valores con hello real identificador, dirección URL de respuesta y dirección URL de inicio de sesión. Póngase en contacto con [equipo de soporte técnico de Igloo Software cliente](https://www.igloosoftware.com/services/support) tooget estos valores. 
+    > Estos valores no son reales. Actualice estos valores con los valores reales de Identificador, URL de respuesta y URL de inicio de sesión. Póngase en contacto con el [equipo de soporte de cliente de Igloo Software](https://www.igloosoftware.com/services/support) para obtener estos valores. 
 
-4. En hello **el certificado de firma de SAML** sección, haga clic en **Certificate(Base64)** y, a continuación, guarde el archivo de certificado de hello en el equipo.
+4. En la sección **Certificado de firma de SAML**, haga clic en **Certificado (Base64)** y, luego, guarde el archivo de certificado en el equipo.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-igloo-software-tutorial/tutorial_igloosoftware_certificate.png) 
 
@@ -127,39 +127,39 @@ En esta sección, habilitar inicio de sesión único en Azure AD en hello portal
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-igloo-software-tutorial/tutorial_general_400.png)
     
-6. En hello **Igloo Software configuración** sección, haga clic en **configurar Igloo Software** tooopen **configurar inicio de sesión** ventana. Hola copia **dirección URL de cierre de sesión y SAML Single Sign-On dirección URL del servicio** de hello **sección de referencia rápida.**
+6. En la sección **Configuración de Igloo Software**, haga clic en **Configurar Igloo Software** para abrir la ventana **Configurar inicio de sesión**. Copie las **direcciones URL del servicio de inicio de sesión único de SAML y de cierre de sesión** de la sección **Referencia rápida**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-igloo-software-tutorial/tutorial_igloosoftware_configure.png) 
 
-7. En una ventana del explorador web diferente, inicie sesión en el sitio de la compañía Igloo Software tooyour como administrador.
+7. En otra ventana del explorador web, inicie sesión como administrador en el sitio de Igloo Software de la compañía.
 
-8. Vaya toohello **el Panel de Control**.
+8. Vaya a **Control Panel**(Panel de control).
    
      ![Panel de control](./media/active-directory-saas-igloo-software-tutorial/ic799949.png "Panel de control")
 
-9. Hola **pertenencia** , haga clic en **configuración de inicio de sesión**.
+9. En la pestaña **Membership** (Pertenencia), haga clic en **Sign In Settings** (Configuración de inicio de sesión).
    
     ![Configuración de inicio de sesión](./media/active-directory-saas-igloo-software-tutorial/ic783968.png "Configuración de inicio de sesión")
 
-10. En la sección de configuración de SAML de hello, haga clic en **configurar autenticación SAML**.
+10. En la sección SAML Configuration (Configuración de SAML), haga clic en **Configure SAML Authentication**(Configurar la autenticación de SAML).
    
     ![Configuración de SAML](./media/active-directory-saas-igloo-software-tutorial/ic783969.png "Configuración de SAML")
    
-11. Hola **configuración General** sección, lleve a cabo Hola pasos:
+11. En la sección de **General Configuration** (Configuración general), realice los pasos siguientes:
    
     ![Configuración general](./media/active-directory-saas-igloo-software-tutorial/ic783970.png "Configuración general")
 
-    a. Hola **nombre de la conexión** cuadro de texto, escriba un nombre personalizado para la configuración.
+    a. En el cuadro de texto **Connection Name** (Nombre de conexión), escriba el nombre personalizado de la configuración.
    
-    b. Hola **dirección URL de inicio de sesión IdP** cuadro de texto, pegue Hola valo **SAML Single Sign-On dirección URL del servicio** que haya copiado desde el portal de Azure.
+    b. En el cuadro de texto **IdP Login URL** (Dirección URL de inicio de sesión de IdP), pegue el valor de la **dirección URL de inicio de sesión único de SAML** que ha copiado de Azure Portal.
    
-    c. Hola **IdP Logout URL** cuadro de texto, pegue Hola valo **dirección URL de cierre de sesión** que haya copiado desde el portal de Azure.
+    c. En el cuadro de texto **IdP Logout URL** (Dirección URL de cierre de sesión de IdP), pegue el valor de la **dirección URL de cierre de sesión** que copió de Azure Portal.
     
     d. Seleccione **Logout Response and Request HTTP Type** (Respuesta de cierre de sesión y tipo de solicitud HTTP) como **POST**.
    
-    e. Abra su **base-64** codificado certificado en el Bloc de notas que se descarga desde el portal de Azure, Hola copia contenido del mismo en el Portapapeles y, a continuación, péguelo toohello **certificado público** cuadro de texto.
+    e. Abra el certificado codificado en **base 64** descargado de Azure Portal en el Bloc de notas, copie su contenido en el Portapapeles y luego péguelo en el cuadro de texto **Certificado público**.
     
-12. Hola **respuesta y la configuración de autenticación**, realizar Hola pasos:
+12. En **Response and Authentication Configuration**(Configuración de autenticación y respuesta), realice los pasos siguientes:
     
     ![Configuración de autenticación y respuesta](./media/active-directory-saas-igloo-software-tutorial/IC783971.png "Configuración de autenticación y respuesta")
   
@@ -167,13 +167,13 @@ En esta sección, habilitar inicio de sesión único en Azure AD en hello portal
       
       b. En **Identifier Type** (Tipo de identificador), seleccione **Email Address** (Dirección de correo electrónico). 
 
-      c. Hola **atributo de correo electrónico** cuadro de texto, tipo **emailaddress**.
+      c. En el cuadro de texto **Atributo de correo electrónico**, escriba **emailaddress**.
 
-      d. Hola **atributo de nombre** cuadro de texto, tipo **givenname**.
+      d. En el cuadro de texto **First Name Attribute** (Atributo de nombre), escriba **givenname**.
 
-      e. Hola **último atributo de nombre** cuadro de texto, tipo **apellido**.
+      e. En el cuadro de texto **Last Name Attribute** (Atributo de apellido), escriba **surname**.
 
-13. Lleve a cabo Hola siguiente pasos toocomplete Hola configuración:
+13. Realice los pasos siguientes para completar la configuración:
     
     ![Creación de usuario de inicio de sesión](./media/active-directory-saas-igloo-software-tutorial/IC783972.png "Creación de usuario de inicio de sesión") 
 
@@ -184,62 +184,62 @@ En esta sección, habilitar inicio de sesión único en Azure AD en hello portal
      c. Haga clic en **Guardar**.
 
 > [!TIP]
-> Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!  Después de agregar esta aplicación de hello **Active Directory > aplicaciones empresariales** sección, simplemente haga clic en hello **Single Sign-On** Hola de pestaña y acceso incrustado documentación a través de hello  **Configuración** sección final Hola. Puede leer más acerca de características de documentación de embedded Hola aquí: [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ahora puede leer una versión resumida de estas instrucciones dentro de [Azure Portal](https://portal.azure.com) mientras configura la aplicación.  Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada a través de la sección **Configuración** de la parte inferior. Puede leer más sobre la característica de documentación insertada aquí: [Vista previa: Administración de inicio de sesión único para aplicaciones empresariales en el nuevo Azure Portal]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.
+El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".
 
 ![Creación de un usuario de Azure AD][100]
 
-**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
+**Siga estos pasos para crear un usuario de prueba en Azure AD:**
 
-1. Hola **portal de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.
+1. En el panel de navegación izquierdo de **Azure Portal**, haga clic en el icono de **Azure Active Directory**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-igloo-software-tutorial/create_aaduser_01.png) 
 
-2. lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios**.
+2. Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios**.
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-igloo-software-tutorial/create_aaduser_02.png) 
 
-3. Hola tooopen **usuario** cuadro de diálogo, haga clic en **agregar** en la parte superior de saludo del cuadro de diálogo de Hola.
+3. Para abrir el cuadro de diálogo **Usuario**, haga clic en **Agregar** en la parte superior del cuadro de diálogo.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-igloo-software-tutorial/create_aaduser_03.png) 
 
-4. En hello **usuario** cuadro de diálogo, siga los pasos de hello:
+4. En la página de diálogo **Usuario**, realice los siguientes pasos:
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-igloo-software-tutorial/create_aaduser_04.png) 
 
-    a. Hola **nombre** cuadro de texto, tipo **BrittaSimon**.
+    a. En el cuadro de texto **Nombre**, escriba **BrittaSimon**.
 
-    b. Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.
+    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
 
-    c. Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.
+    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
 
     d. Haga clic en **Crear**.
  
 ### <a name="creating-an-igloo-software-test-user"></a>Creación de un usuario de prueba de Igloo Software
 
-No hay ningún elemento de acción tooconfigure de aprovisionamiento de usuarios tooIgloo Software.  
+No hay ningún elemento de acción para que configure el aprovisionamiento de usuarios para Igloo Software.  
 
-Cuando un usuario asignado intenta toolog en tooIgloo Software mediante el panel de acceso de hello, Igloo Software comprueba si existe el usuario de Hola.  Si no hay cuentas de usuario disponibles, Igloo Software crea una automáticamente.
+Cuando un usuario asignado intenta iniciar sesión en Igloo Software desde el panel de acceso, Igloo Software comprueba si el usuario existe.  Si no hay cuentas de usuario disponibles, Igloo Software crea una automáticamente.
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Asignación de usuario de prueba de hello Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
 
-En esta sección, se habilita Britta Simon toouse un inicio de sesión único Azure concediendo acceso tooIgloo Software.
+En esta sección, habilitará a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a Igloo Software.
 
 ![Asignar usuario][200] 
 
-**tooassign Britta Simon tooIgloo Software, lleve a cabo Hola pasos:**
+**Para asignar un usuario llamado Britta Simon a Igloo Software, realice los pasos siguientes:**
 
-1. Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
+1. En Azure Portal, abra la vista de aplicaciones, navegue a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego haga clic en **Todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones de hello, seleccione **Igloo Software**.
+2. En la lista de aplicaciones, seleccione **Igloo Software**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-igloo-software-tutorial/tutorial_igloosoftware_app.png) 
 
-3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
+3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
 
     ![Asignar usuario][202] 
 
@@ -247,7 +247,7 @@ En esta sección, se habilita Britta Simon toouse un inicio de sesión único Az
 
     ![Asignar usuario][203]
 
-5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
+5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -255,14 +255,14 @@ En esta sección, se habilita Britta Simon toouse un inicio de sesión único Az
     
 ### <a name="testing-single-sign-on"></a>Prueba del inicio de sesión único 
 
-En esta sección, comprobará su único inicio de sesión en configuración de Azure AD con hello Panel de acceso.
+En esta sección, probará la configuración de inicio de sesión único de Azure AD mediante el Panel de acceso.
 
-Al hacer clic en icono de Igloo Software Hola Hola Panel de acceso, deberá obtener la aplicación de Igloo Software tooyour automáticamente ha iniciado sesión.
-Para obtener más información sobre el Panel de acceso, consulte [Introducción toohello Panel de acceso](active-directory-saas-access-panel-introduction.md). 
+Al hacer clic en el icono de Igloo Software en el panel de acceso, debería iniciar sesión automáticamente en su aplicación de Igloo Software.
+Para más información sobre el Panel de acceso, consulte [Introducción al Panel de acceso](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 

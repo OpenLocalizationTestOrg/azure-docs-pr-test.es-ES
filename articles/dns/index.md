@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure documentación de DNS - tutoriales, referencia de API | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toomanage los registros DNS con el sistema de nombres de dominio de Azure. Documentación se muestra cómo tooset una copia de seguridad y administrar zonas y registros de nombres de dominio DNS."
+title: "Documentación sobre Azure DNS: tutoriales y referencia de API | Microsoft Docs"
+description: "Aprenda a administrar sus registros DNS con el Sistema de nombres de dominio de Azure. En la documentación, se muestra cómo configurar y administrar zonas y registros DNS para los nombres de dominio."
 services: dns
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 64804b1d6cbfefdeab3f9a79bca26848e37e64f3
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a138c9ea62ffa599529081cf792bc81663069bf1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="dns-documentation"></a>Documentación de DNS
 
-Obtenga información acerca de cómo toomanage los registros DNS con el sistema de nombres de dominio de Azure, un host de servicio. Tutoriales, referencias de API y otra documentación mostrarle cómo tooset una copia de seguridad y administrar zonas y registros de nombres de dominio DNS.
+Aprenda a administrar sus registros DNS con el Sistema de nombres de dominio de Azure, un servicio de hospedaje. En los tutoriales, las referencias de API y otra documentación, se muestra cómo configurar y administrar zonas y registros DNS para los nombres de dominio.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -52,7 +52,7 @@ Obtenga información acerca de cómo toomanage los registros DNS con el sistema 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Introducción a DNS de Azure con hello Portal de Azure</h3>
+                        <h3>Introducción a DNS de Azure con Azure Portal</h3>
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@ Obtenga información acerca de cómo toomanage los registros DNS con el sistema 
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Introducción a DNS de Azure con hello CLI de Azure</h3>
+                        <h3>Introducción a DNS de Azure con mediante la CLI de Azure</h3>
                     </div>
                 </div>
             </div>

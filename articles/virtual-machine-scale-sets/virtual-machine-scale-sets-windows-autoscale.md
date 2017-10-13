@@ -1,5 +1,5 @@
 ---
-title: "aaaAutoscale conjuntos de escalas de máquina Virtual de Windows | Documentos de Microsoft"
+title: "Escalado automático de conjuntos de escalado de máquinas virtuales Windows | Microsoft Docs"
 description: "Configuración del escalado automático para un conjunto de escalado de máquinas virtuales Windows mediante Azure PowerShell"
 services: virtual-machine-scale-sets
 documentationcenter: 
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: adegeo
-ms.openlocfilehash: 67cf1c5063ceba4fc076dc270090defdbddbcfe0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 91f731bec46c005221f4e66e95822994070d4c26
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="automatically-scale-machines-in-a-virtual-machine-scale-set"></a>Escalado automático de máquinas en un conjunto de escalado de máquinas virtuales
-Conjuntos de escalas de máquina virtual hacen más sencillo para usted toodeploy y administran máquinas virtuales idénticas como un conjunto. Los conjuntos de escala proporcionan una capa de proceso altamente escalable y personalizable para aplicaciones de gran escala y admiten imágenes de la plataforma Windows, imágenes de la plataforma Linux, imágenes personalizadas y extensiones. Para más información acerca de los conjuntos de escala, consulte [Conjuntos de escala de máquinas virtuales](virtual-machine-scale-sets-overview.md).
+Los conjuntos de escalado de máquinas virtuales facilitan la implementación y administración de máquinas virtuales idénticas como conjunto. Los conjuntos de escala proporcionan una capa de proceso altamente escalable y personalizable para aplicaciones de gran escala y admiten imágenes de la plataforma Windows, imágenes de la plataforma Linux, imágenes personalizadas y extensiones. Para más información acerca de los conjuntos de escala, consulte [Conjuntos de escala de máquinas virtuales](virtual-machine-scale-sets-overview.md).
 
-Este tutorial muestra cómo establece un conjunto de escala de máquinas virtuales de Windows y, automáticamente, escala de máquinas de Hola Hola toocreate. Crear escala de hello establecer y configurar el escalado mediante la creación de una plantilla de Azure Resource Manager e implementación mediante PowerShell de Azure. Para más información sobre las plantillas, consulte [Creación de plantillas del Administrador de recursos de Azure](../azure-resource-manager/resource-group-authoring-templates.md). toolearn más información acerca de escalado automático de conjuntos de escalado, consulte [el escalado automático y establece de la escala en la máquina Virtual](virtual-machine-scale-sets-autoscale-overview.md).
+Este tutorial muestra cómo crear un conjunto de escalado de máquinas virtuales Windows y cómo escalarlas automáticamente. El conjunto de escalado se crea y la configuración de escalado se configura mediante la creación de una plantilla de Azure Resource Manager que se implementa con Azure PowerShell. Para más información sobre las plantillas, consulte [Creación de plantillas del Administrador de recursos de Azure](../azure-resource-manager/resource-group-authoring-templates.md). Para obtener más información sobre el escalado automático de conjuntos de escalado, consulte [Automatic scaling and Virtual Machine Scale Sets (Escalado automático y conjuntos de escalado de máquinas virtuales)](virtual-machine-scale-sets-autoscale-overview.md).
 
-En este artículo, implementar siguiente Hola recursos y extensiones:
+En este artículo, se implementan los recursos y las extensiones siguientes:
 
 * Microsoft.Storage/storageAccounts
 * Microsoft.Network/virtualNetworks
@@ -41,16 +41,16 @@ En este artículo, implementar siguiente Hola recursos y extensiones:
 Para más información sobre los recursos de Resource Manager, consulte [Implementación mediante Azure Resource Manager frente al modelo clásico](../azure-resource-manager/resource-manager-deployment-model.md).
 
 ## <a name="step-1-install-azure-powershell"></a>Paso 1: Instalación de Azure PowerShell
-Vea [cómo tooinstall y configurar Azure PowerShell](/powershell/azure/overview) para obtener información acerca de cómo instalar la versión más reciente de Hola de PowerShell de Azure, seleccione su suscripción y firma en tooAzure.
+Consulte [Cómo instalar y configurar Azure PowerShell](/powershell/azure/overview) para más información sobre cómo instalar la versión más reciente de Azure PowerShell, seleccionar la suscripción que desea usar e iniciar sesión en Azure.
 
 ## <a name="step-2-create-a-resource-group-and-a-storage-account"></a>Paso 2: Creación de un grupo de recursos y una cuenta de almacenamiento
-1. **Crear un grupo de recursos** : todos los recursos deben ser el grupo de recursos de tooa implementado. Use [New-AzureRmResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx) toocreate un grupo de recursos denominado **vmsstestrg1**.
-2. **Crear una cuenta de almacenamiento** : esta cuenta de almacenamiento es donde se almacena la plantilla de Hola. Use [New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) toocreate una cuenta de almacenamiento denominada **vmsstestsa**.
+1. **Cree un grupo de recursos** : todos los recursos deben implementarse en un grupo de recursos. Para crear un grupo de recursos denominado [vmsstestrg1](https://msdn.microsoft.com/library/mt603739.aspx) , use **New-AzureRmResourceGroup**.
+2. **Implemente una cuenta de almacenamiento** : en esta cuenta de almacenamiento se guarda la plantilla. Use [New-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607148.aspx) para crear una cuenta de almacenamiento denominada " **vmsstestsa**".
 
-## <a name="step-3-create-hello-template"></a>Paso 3: Crear plantilla de Hola
-Una plantilla de Azure Resource Manager hace posible toodeploy y administrar recursos de Azure de forma conjunta mediante una descripción de JSON de recursos de Hola y parámetros de implementación asociados.
+## <a name="step-3-create-the-template"></a>Paso 3: Creación de la plantilla
+Las plantillas del Administrador de recursos de Azure le permiten implementar y administrar los distintos recursos de Azure en conjunto mediante una descripción de JSON de los recursos y los parámetros de implementación asociados.
 
-1. En su editor favorito, cree el archivo hello C:\VMSSTemplate.json y agregue Hola inicial JSON toosupport Hola plantilla de la estructura.
+1. En el editor que prefiera, cree el archivo C:\VMSSTemplate.json y agregue la estructura inicial de JSON para admitir la plantilla.
 
     ```json
     {
@@ -65,7 +65,7 @@ Una plantilla de Azure Resource Manager hace posible toodeploy y administrar rec
     }
     ```
 
-2. Parámetros no son siempre obligatorios, pero proporcionan una manera tooinput valores cuando se implementa la plantilla de Hola. Agregue estos parámetros en el elemento primario Hola parámetros que agregó toohello plantilla.
+2. No siempre se necesitan parámetros, pero proporcionan una manera de introducir valores al implementar la plantilla. Agregue estos parámetros en el elemento primario de los parámetros que agregó a la plantilla.
 
     ```json   
     "vmName": { "type": "string" },
@@ -76,13 +76,13 @@ Una plantilla de Azure Resource Manager hace posible toodeploy y administrar rec
     "resourcePrefix": { "type": "string" }
     ```
    
-    * Un nombre para la máquina virtual independiente hello tooaccess usado Hola máquinas en conjunto de escalas de Hola.
-    * nombre de Hola de cuenta de almacenamiento de Hola donde se almacena la plantilla de Hola.
-    * número de Hola de máquinas virtuales tooinitially crear en el conjunto de escalas de Hola.
-    * nombre de Hola y la contraseña de cuenta de administrador de hello en máquinas virtuales de Hola.
-    * Establece un prefijo de nombre de los recursos de Hola que se crean la escala de hello toosupport.
+    * Un nombre para la máquina virtual independiente que se utiliza para tener acceso a las máquinas del conjunto de escalado.
+    * Un nombre para la cuenta de almacenamiento donde se guarda la plantilla.
+    * El número de máquinas virtuales para crear inicialmente en el conjunto de escalado.
+    * El nombre y la contraseña de la cuenta de administrador en las máquinas virtuales.
+    * Establece un prefijo de nombre de los recursos que se crean para admitir el conjunto de escalado.
 
-3. Las variables pueden usarse en un valores toospecify de plantilla que se pueden cambiar con frecuencia o valores que necesitan toobe crean a partir de una combinación de valores de parámetro. Agregue estas variables en el elemento primario Hola variables que agregó toohello plantilla.
+3. Pueden usarse variables en una plantilla para especificar los valores que pueden cambiar con frecuencia o los valores que se deben crear a partir de una combinación de valores de parámetro. Agregue estas variables en el elemento primario de las variables que agregó a la plantilla.
 
     ```json
     "dnsName1": "[concat(parameters('resourcePrefix'),'dn1')]",
@@ -104,14 +104,14 @@ Una plantilla de Azure Resource Manager hace posible toodeploy y administrar rec
     "wadcfgxend": "[concat('\"><MetricAggregation scheduledTransferPeriod=\"PT1H\"/><MetricAggregation scheduledTransferPeriod=\"PT1M\"/></Metrics></DiagnosticMonitorConfiguration></WadCfg>')]"
     ```
    
-    * Los nombres DNS que se usan por hello interfaces de red.
+    * Nombres DNS que usan las interfaces de red.
 
-        * Hola nombres de las direcciones IP y los prefijos de red virtual de Hola y las subredes.
-        * Hello nombres e identificadores de red virtual de hello, equilibrador de carga y las interfaces de red.
-        * Nombres de cuenta de almacenamiento para las cuentas de hello asociados a las máquinas de hello en el conjunto de escalas de Hola.
-        * Configuración de extensión de diagnóstico que se instala en máquinas virtuales de Hola Hola. Para obtener más información acerca de la extensión de diagnósticos de hello, consulte [crear una máquina Virtual de Windows con la supervisión y diagnósticos mediante la plantilla de administrador de recursos de Azure](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+        * Los nombres de direcciones IP y los prefijos para la red virtual y las subredes.
+        * Los nombres y los identificadores de la red virtual, el equilibrador de carga y las interfaces de red.
+        * Los nombres de cuentas de almacenamiento para las cuentas asociadas a las máquinas en el conjunto de escala.
+        * Configuración de la extensión de diagnósticos que se instala en las máquinas virtuales. Para más información sobre la extensión de diagnósticos, consulte [Crear una máquina virtual de Windows con supervisión y diagnóstico mediante la plantilla de Azure Resource Manager](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-4. Agregar recurso de cuenta de almacenamiento de hello bajo el elemento primario Hola recursos que agregó toohello plantilla. Esta plantilla utiliza un hello toocreate de bucle recomendada cinco cuentas de almacenamiento donde se almacenan los discos del sistema operativo hello y datos de diagnóstico. Puede admitir este conjunto de cuentas de seguridad de máquinas virtuales de too100 en un conjunto de escala, que es el máximo actual de Hola. Cada cuenta de almacenamiento se denomina con un designador de letra que se definió en variables de hello combinadas con prefijo de Hola que se proporciona en los parámetros de hello para la plantilla de Hola.
+4. Agregue el recurso de la cuenta de almacenamiento en el elemento primario de recursos que agregó a la plantilla. Esta plantilla utiliza un bucle para crear las cinco cuentas de almacenamiento recomendadas donde se guardan los discos del sistema operativo y los datos de diagnóstico. Este conjunto de cuentas puede admitir hasta 100 máquinas virtuales en un conjunto de escala, lo cual es el máximo actual. Cada cuenta de almacenamiento se denomina con un indicador de letra, que se definió en las variables, y se combina con el prefijo que proporcionó en los parámetros de la plantilla.
 
     ```json
     {
@@ -127,7 +127,7 @@ Una plantilla de Azure Resource Manager hace posible toodeploy y administrar rec
     },
     ```
 
-5. Agregar recursos de red virtual de Hola. Consulte [Proveedor de recursos de red](../virtual-network/resource-groups-networking.md)para más información.
+5. Agregue el recurso de red virtual. Consulte [Proveedor de recursos de red](../virtual-network/resource-groups-networking.md)para más información.
 
     ```json
     {
@@ -147,7 +147,7 @@ Una plantilla de Azure Resource Manager hace posible toodeploy y administrar rec
     },
     ```
 
-6. Agregar Hola públicos recursos de dirección IP que se usan por hello equilibrador de carga y la interfaz de red.
+6. Agregue los recursos de dirección IP públicos que usan la interfaz de red y el equilibrador de carga.
 
     ```json
     {
@@ -176,7 +176,7 @@ Una plantilla de Azure Resource Manager hace posible toodeploy y administrar rec
     },
     ```
 
-7. Agregar recurso de equilibrador de carga de hello utilizado por el conjunto de escalas de Hola. Para más información, consulte [Compatibilidad del Administrador de recursos de Azure con el equilibrador de carga](../load-balancer/load-balancer-arm.md)
+7. Agregue el recurso de equilibrador de carga que usa el conjunto de escala. Para más información, consulte [Compatibilidad del Administrador de recursos de Azure con el equilibrador de carga](../load-balancer/load-balancer-arm.md)
 
     ```json   
     {
@@ -217,7 +217,7 @@ Una plantilla de Azure Resource Manager hace posible toodeploy y administrar rec
     },
     ```
 
-8. Agregar recurso de interfaz de red de Hola que usa la máquina virtual independiente de Hola. Dado que las máquinas en un conjunto de escala no están accesibles a través de una dirección IP pública, una máquina virtual independiente se crea en Hola mismo virtual máquinas Hola de tooremotely acceso de red.
+8. Agregue el recurso de interfaz de red que utiliza la máquina virtual independiente. Dado que las máquinas de un conjunto de escalado no son accesibles mediante una dirección IP pública, se crea una máquina virtual independiente en la misma red virtual para tener acceso remoto a las máquinas.
 
     ```json  
     {
@@ -248,7 +248,7 @@ Una plantilla de Azure Resource Manager hace posible toodeploy y administrar rec
     },
     ```
 
-9. Agregar máquina virtual independiente que Hola Hola misma red que el conjunto de escalas de Hola.
+9. Agregue la máquina virtual en la misma red que el conjunto de escalado.
 
     ```json
     {
@@ -294,7 +294,7 @@ Una plantilla de Azure Resource Manager hace posible toodeploy y administrar rec
     },
     ```
 
-10. Agregar el recurso de conjunto de escalas de máquina virtual de Hola y especifique la extensión de diagnósticos de Hola que está instalado en todas las máquinas virtuales en el conjunto de escalas de Hola. Muchos de los valores de hello para este recurso son similares con el recurso de máquina virtual de Hola. Hola principales diferencias son elementos de capacidad de Hola que especifica el número de Hola de máquinas virtuales en el conjunto de escalas de Hola y upgradePolicy que especifica cómo se realizan las actualizaciones toovirtual máquinas. Hello conjunto de escala no se crea hasta que se crean todas las cuentas de almacenamiento de hello según se haya especificado con el elemento dependsOn de Hola.
+10. Agregue el recurso de conjunto de escalado de máquinas virtuales y especifique la extensión de diagnóstico instalada en todas las máquinas virtuales del conjunto. Muchos de los valores para este recurso son similares al recurso de máquina virtual. Las principales diferencias son el elemento de capacidad, que especifica el número de máquinas virtuales del conjunto de escalado, y upgradePolicy, que especifica cómo se realizan las actualizaciones en las máquinas virtuales. El conjunto de escalado no se crea hasta que se crean todas las cuentas de almacenamiento como se especifica en el elemento dependsOn.
 
     ```json
     {
@@ -399,7 +399,7 @@ Una plantilla de Azure Resource Manager hace posible toodeploy y administrar rec
     },
     ```
 
-11. Agregue hello autoscaleSettings recurso que define cómo se ajusta según el uso de procesador de hello en máquinas de hello en el conjunto de escalas de Hola Hola conjunto de escala.
+11. Agregue el recurso autoscaleSettings que define cómo el conjunto de escalado se ajusta según el uso del procesador en las máquinas del conjunto.
 
     ```json
     {
@@ -452,73 +452,73 @@ Una plantilla de Azure Resource Manager hace posible toodeploy y administrar rec
     Para este tutorial, destacan estos valores:
     
     * **metricName**  
-    Este valor es Hola igual que el contador de rendimiento de Hola que hemos definido en la variable de wadperfcounter Hola. Con esa variable, extensión de diagnósticos de hello recopila hello **procesador (_Total)\% tiempo de procesador** contador.
+    Este valor es el mismo que el contador de rendimiento que definimos en la variable wadperfcounter. Con esta variable, la extensión Diagnósticos recopila los datos del contador **Processor(_Total)\% Processor Time**.
     
     * **metricResourceUri**  
-    Este valor es el identificador de recurso de hello del conjunto de escalas de máquina virtual de Hola.
+    Este valor es el identificador de recursos del conjunto de escalado de máquinas virtuales.
     
     * **timeGrain**  
-    Este valor es la granularidad de Hola de métricas de Hola que se recopilan. En esta plantilla, se establece tooone minuto.
+    Este valor es la granularidad de las métricas que se recopilan. En esta plantilla, se establece en un minuto.
     
     * **statistic**  
-    Este valor determina la forma métricas Hola Hola combinado tooaccommodate acción de escala automática. Hola los valores posibles son: Average, Min, Max. En esta plantilla, se recopila Hola promedio uso total de CPU de las máquinas virtuales de Hola.
+    Este valor determina cómo se combinan las métricas para dar cabida a la acción de escalado automático. Los valores posibles son: Average, Min y Max. En esta plantilla, se recopila el uso promedio total de CPU de las máquinas virtuales.
     
     * **timeWindow**  
-    Este valor es Hola intervalo de tiempo en el que se recopilan datos de instancia. Debe estar comprendido entre 5 minutos y 12 horas.
+    Este valor es el intervalo de tiempo durante el cual se recopilan los datos de instancia. Debe estar comprendido entre 5 minutos y 12 horas.
     
     * **timeAggregation**  
-    su valor determina cómo se deben combinar los datos de Hola que se recopilan con el tiempo. valor predeterminado de Hello es Media. Hola los valores posibles son: promedio, mínimo, máximo, último, Total, recuento.
+    Este valor determina la manera en que se deberían combinar los datos recopilados en el tiempo. El valor predeterminado es Average. Los valores posibles son: Average, Minimum, Maximum, Last, Total, Count.
     
     * **operator**  
-    Este valor es el operador de Hola que es usado toocompare Hola hello y datos de umbral de métrica. Hola los valores posibles son: es igual a, valores, GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual.
+    Este valor es el operador que se utiliza para comparar los datos de métrica y el umbral. Los valores posibles son: Equals, NotEquals, GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual.
     
     * **threshold**  
-    Este valor es el valor de Hola que desencadena la acción de escalado de Hola. En esta plantilla, las máquinas se agregan escala toohello establecer una vez Hola uso de la CPU entre máquinas en conjunto hello más de 50%.
+    Este es el valor que desencadena la acción de escalado. En esta plantilla, los equipos se agregan al conjunto de escala que se establece cuando el uso promedio de CPU entre máquinas del conjunto es más de un 50%.
     
     * **dirección**  
-    Este valor determina la acción de Hola que se realiza cuando se obtiene el valor de umbral de Hola. valores posibles de Hello son aumentan o disminuyen. En esta plantilla, hello número de máquinas virtuales en el conjunto de escalas de hello aumenta si el umbral de hello es más de 50% en el período de tiempo de hello definido.
+    Este valor determina la acción que se realiza cuando se alcanza el valor de umbral. Los valores posibles son Increase o Decrease. En esta plantilla, se aumenta el número de máquinas virtuales en el conjunto de escala si el umbral es más de un 50% en la ventana de tiempo definido.
     
     * **type**  
-    Este valor es el tipo de Hola de acción que se realizarán y se debe establecer tooChangeCount.
+    Este valor es el tipo de acción que debe realizarse y que se debe establecer en ChangeCount.
     
     * **value**  
-    Este valor es el número de Hola de máquinas virtuales que se agregan o quitan del conjunto de escalas de Hola. Este valor debe ser 1 o un valor superior. valor predeterminado de Hello es 1. En esta plantilla, Hola establece número de máquinas en escala de hello aumenta 1 cuando se alcanza el umbral de Hola.
+    Este valor es el número de máquinas virtuales que se agregan o se quitan del conjunto de escalado. Este valor debe ser 1 o un valor superior. El valor predeterminado es 1. En esta plantilla, el número de máquinas en el conjunto de escala aumenta en 1 cuando se alcanza el umbral.
     
     * **cooldown**  
-    Este valor es cantidad de Hola de toowait de tiempo desde la última acción de escalado de hello antes de que se produce la acción siguiente Hola. Debe estar comprendido entre un minuto y una semana.
+    Este valor es la cantidad de tiempo de espera desde la última acción de escalado hasta antes de que se produzca la siguiente acción. Debe estar comprendido entre un minuto y una semana.
 
-12. Guarde el archivo de plantilla de hello.    
+12. Guarde el archivo de plantilla.    
 
-## <a name="step-4-upload-hello-template-toostorage"></a>Paso 4: Cargar Hola plantilla toostorage
-plantilla de Hola se puede cargar como sabe hello y clave principal de la cuenta de almacenamiento de Hola que creó en el paso 1.
+## <a name="step-4-upload-the-template-to-storage"></a>Paso 4: Carga de la plantilla en el almacenamiento
+La plantilla se puede cargar siempre y cuando conozca el nombre de cuenta y la clave principal de la cuenta de almacenamiento que creó en el paso 1.
 
-1. En la ventana de Microsoft Azure PowerShell hello, establecer una variable que especifica el nombre de Hola de cuenta de almacenamiento de Hola que creó en el paso 1.
+1. En la ventana de Microsoft Azure PowerShell, establezca una variable que especifique el nombre de la cuenta de almacenamiento que creó en el paso 1.
    
     ```powershell
     $storageAccountName = "vmstestsa"
     ```
 
-2. Establecer una variable que especifica la clave principal de Hola de cuenta de almacenamiento de Hola.
+2. Establezca una variable que especifique la clave principal de la cuenta de almacenamiento.
    
     ```powershell
     $storageAccountKey = "<primary-account-key>"
     ```
    
-   Puede obtener esta clave, haga clic en un icono de llave Hola al ver los recursos de cuenta de almacenamiento de Hola Hola portal de Azure.
-3. Crear objeto de contexto de cuenta de almacenamiento de hello es decir, las operaciones de toovalidate utilizado con la cuenta de almacenamiento de Hola.
+   Puede obtener esta clave haciendo clic en el icono de llave al ver el recurso de la cuenta de almacenamiento en el portal de Azure.
+3. Cree el objeto de contexto de la cuenta de almacenamiento que se usa para validar las operaciones con la cuenta de almacenamiento.
    
     ```powershell
     $ctx = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
     ```
 
-4. Crear contenedor de Hola para almacenar la plantilla de Hola.
+4. Cree el contenedor para almacenar la plantilla.
 
     ```powershell
     $containerName = "templates"
     New-AzureStorageContainer -Name $containerName -Context $ctx  -Permission Blob
     ```
 
-5. Cargar nuevo contenedor toohello del archivo de plantilla de Hola.
+5. Cargue el archivo de plantillas en el nuevo contenedor.
 
     ```powershell   
     $blobName = "VMSSTemplate.json"
@@ -526,14 +526,14 @@ plantilla de Hola se puede cargar como sabe hello y clave principal de la cuenta
     Set-AzureStorageBlobContent -File $fileName -Container $containerName -Blob  $blobName -Context $ctx
     ```
 
-## <a name="step-5-deploy-hello-template"></a>Paso 5: Implementar la plantilla de Hola
-Ahora que ha creado la plantilla de hello, puede empezar a implementar los recursos de Hola. Utilice este proceso de hello toostart de comando:
+## <a name="step-5-deploy-the-template"></a>Paso 5: Implementación de la plantilla
+Ahora que ha creado la plantilla, puede empezar a implementar los recursos. Use este comando para iniciar el proceso:
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name "vmsstestdp1" -ResourceGroupName "vmsstestrg1" -TemplateUri "https://vmsstestsa.blob.core.windows.net/templates/VMSSTemplate.json"
 ```
 
-Cuando se presiona escriba, son valores tooprovide solicitadas para las variables de Hola que asignó. Proporcione estos valores:
+Cuando presione Entrar, se le pedirá que proporcione valores para las variables que asignó. Proporcione estos valores:
 
 ```powershell
 vmName: vmsstestvm1
@@ -544,22 +544,22 @@ vmName: vmsstestvm1
   resourcePrefix: vmsstest
 ```
 
-Para implementar todos los toosuccessfully de recursos de hello tardará aproximadamente 15 minutos.
+Para que todos los recursos se implementen correctamente se tardará unos 15 minutos.
 
 > [!NOTE]
-> También puede usar recursos del portal de hello capacidad toodeploy Hola. Utilice este vínculo: "https://portal.azure.com/#create/Microsoft.Template/uri/<link tooVM Scale Set JSON template>"
+> También puede usar la capacidad del portal para implementar los recursos. Utilice este vínculo: "https://portal.azure.com/#create/Microsoft.Template/uri/<link to VM Scale Set JSON template>"
 > 
 > 
 
 ## <a name="step-6-monitor-resources"></a>Paso 6: Supervisión de recursos
 Puede obtener información acerca de los conjuntos de escala de máquinas virtuales mediante estos métodos:
 
-* Hola portal de Azure: actualmente, puede obtener una cantidad limitada de información mediante el portal de Hola.
-* Hola [Explorador de recursos de Azure](https://resources.azure.com/) -esta herramienta es más adecuado para explorar el estado actual de Hola de su conjunto de escalas de hello. Siga esta ruta de acceso y debería ver la vista de instancia de Hola de escala de hello establecido que creó:
+* El portal de Azure: actualmente puede obtener una cantidad limitada de información mediante el portal.
+* [Explorador de recursos de Azure](https://resources.azure.com/) : es la mejor herramienta para explorar el estado actual del conjunto de escalado. Siga esta ruta de acceso y debería ver la vista de instancia del conjunto de escala que creó:
   
     Suscripciones > {su suscripción} > resourceGroups > vmsstestrg1 > proveedores > Microsoft.Compute > virtualMachineScaleSets > vmsstest1 > virtualMachines
 
-* Azure PowerShell, Use este comando tooget cierta información:
+* Azure PowerShell: use este comando para más información:
 
   ```powershell
   Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name"
@@ -571,28 +571,28 @@ Puede obtener información acerca de los conjuntos de escala de máquinas virtua
   Get-AzureRmVmss -ResourceGroupName "resource group name" -VMScaleSetName "scale set name" -InstanceView
   ```
 
-* Conectar máquina virtual independiente que toohello tal como lo haría con cualquier otro equipo y, a continuación, se pueden obtener acceso remoto a máquinas virtuales de hello en procesos individuales de hello escala conjunto toomonitor.
+* Conéctese a la máquina virtual independiente igual que lo haría con cualquier otra máquina y podrá obtener acceso remoto a las máquinas virtuales del conjunto de escalado para supervisar los procesos individuales.
 
 > [!NOTE]
 > Una API de REST completa para más información acerca de los conjuntos de escala se puede encontrar en [Conjuntos de escala de máquinas virtuales](https://msdn.microsoft.com/library/mt589023.aspx)
 
-## <a name="step-7-remove-hello-resources"></a>Paso 7: Quitar recursos de Hola
-Dado que se le cobra por recursos que usa en Azure, siempre es un recursos toodelete recomendable que ya no son necesarios. No es necesario toodelete cada recurso por separado de un grupo de recursos. Puede eliminar el grupo de recursos de Hola y todos sus recursos se eliminan automáticamente.
+## <a name="step-7-remove-the-resources"></a>Paso 7: Eliminación de recursos
+Dado que se le cobrará por los recursos utilizados en Azure, siempre es conveniente eliminar los recursos que ya no sean necesarios. No es necesario eliminar por separado cada recurso de un grupo de recursos. Puede eliminar el grupo de recursos para que se eliminen automáticamente todos sus recursos.
 
   ```powershell
   Remove-AzureRmResourceGroup -Name vmsstestrg1
   ```
 
-Si desea tookeep el grupo de recursos, puede eliminar sólo al conjunto de escala de Hola.
+Si desea mantener el grupo de recursos, puede eliminar solo el conjunto de escala.
 
   ```powershell
   Remove-AzureRmVmss -ResourceGroupName "resource group name" –VMScaleSetName "scale set name"
   ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Administrar conjunto de escalas de hello recién creado con información de hello en [administrar máquinas virtuales en un conjunto de escala de máquinas virtuales](virtual-machine-scale-sets-windows-manage.md).
+* Administre el conjunto de escalado que acaba de crear con la información de [Administración de máquinas de un conjunto de escalado de máquinas virtuales](virtual-machine-scale-sets-windows-manage.md).
 * Más información sobre el escalado vertical si consulta [Escalado automático vertical con conjuntos de escalado de máquinas virtuales](virtual-machine-scale-sets-vertical-scale-reprovision.md)
 * Encuentre ejemplos de características de supervisión de Azure Monitor en [Ejemplos de inicio rápido de PowerShell de Azure Monitor](../monitoring-and-diagnostics/insights-powershell-samples.md).
-* Obtenga información sobre las características de notificación de [usar escalado automático acciones toosend correo electrónico y webhook notificaciones de alerta en el Monitor de Azure](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)
-* Obtenga información acerca de cómo demasiado[toosend webhook y correo electrónico notificaciones de alerta de registros de auditoría de uso en el Monitor de Azure](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)
+* Aprenda sobre las características de notificación en [Uso de acciones de escalado automático para enviar notificaciones de alerta por correo electrónico y Webhook en Azure Monitor](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md).
+* Aprenda cómo [usar registros de auditoría para enviar notificaciones de alerta por correo electrónico y webhook en Azure Monitor](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md).
 

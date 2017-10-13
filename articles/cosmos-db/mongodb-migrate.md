@@ -1,6 +1,6 @@
 ---
-title: aaaUse mongoimport y mongorestore con hello API de base de datos de Azure Cosmos para MongoDB | Documentos de Microsoft
-description: "Obtenga información acerca de cómo toouse mongoimport y mongorestore tooimport datos tooan API para la cuenta de MongoDB"
+title: Usar mongoimport y mongorestore con la API de Azure Cosmos DB para MongoDB | Microsoft Docs
+description: "Obtenga información sobre cómo usar mongoimport y mongorestore para importar datos a una API para la cuenta de MongoDB"
 keywords: mongoimport, mongorestore
 services: cosmos-db
 author: AndrewHoh
@@ -16,22 +16,22 @@ ms.topic: article
 ms.date: 06/12/2017
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: 921354bc7b09a076a73e0cbf5e4aabcc9e83d5a8
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1555f13c3ea88b61be0ea240b51218b83f6f9724
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-cosmos-db-import-mongodb-data"></a>Azure Cosmos DB: importar datos de MongoDB 
 
-toomigrate datos de MongoDB tooan cuenta de base de datos de Azure Cosmos para su uso con hello API para MongoDB, debe:
+Para migrar datos de MongoDB a una cuenta de Azure Cosmos DB para su uso con la API de MongoDB, debe hacer lo siguiente:
 
-* Descargar cualquiera *mongoimport.exe* o *mongorestore.exe* de hello [centro de descarga de MongoDB](https://www.mongodb.com/download-center).
+* Descargar *mongoimport.exe* o *mongorestore.exe* desde el [centro de descarga de MongoDB](https://www.mongodb.com/download-center).
 * Obtenga su [cadena de conexión de la API de MongoDB](connect-mongodb-account.md).
 
-Si va a importar datos de MongoDB y plan toouse con hello Azure Cosmos DB, debe usar hello [herramienta de migración de datos](import-data.md) datos tooimport.
+Si está importando datos de MongoDB y planea usarlos con Azure Cosmos DB, debe usar la [Herramienta de migración de datos](import-data.md) para importarlos.
 
-Este tutorial trata Hola siguientes tareas:
+En este tutorial se describen las tareas siguientes:
 
 > [!div class="checklist"]
 > * Recuperación de la cadena de conexión
@@ -40,22 +40,22 @@ Este tutorial trata Hola siguientes tareas:
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-* Aumentar el rendimiento: duración de Hola de migración de los datos depende de la cantidad de Hola de rendimiento configurado para las colecciones. Estar seguro de rendimiento de hello tooincrease para las migraciones de datos más grandes. Después de haber completado la migración de hello, reducir los costos de toosave de rendimiento de Hola. Para obtener más información sobre cómo aumentar el rendimiento en hello [portal de Azure](https://portal.azure.com), consulte [niveles de rendimiento y los niveles de precios de base de datos de Azure Cosmos](performance-levels.md).
+* Aumente el rendimiento: la duración de la migración de datos depende de la cantidad de rendimiento configurado para las colecciones. Asegúrese de aumentar el rendimiento para migraciones de datos más grandes. Después de haber completado la migración, reduzca el rendimiento para ahorrar costos. Para más información sobre cómo aumentar el rendimiento en [Azure Portal](https://portal.azure.com), consulte [Niveles de rendimiento y planes de tarifa de Azure Cosmos DB](performance-levels.md).
 
-* Habilite SSL: Azure Cosmos DB tiene estrictos estándares y requisitos de seguridad. Ser tooenable seguro SSL cuando se interactúa con su cuenta. procedimientos de Hola de rest de Hola de artículo Hola incluyen cómo tooenable SSL para mongoimport y mongorestore.
+* Habilite SSL: Azure Cosmos DB tiene estrictos estándares y requisitos de seguridad. No olvide habilitar SSL al interactuar con la cuenta. Los procedimientos del resto del artículo incluyen cómo habilitar SSL para mongoimport y mongorestore.
 
 ## <a name="find-your-connection-string-information-host-port-username-and-password"></a>Búsqueda de la información de la cadena de conexión (host, puerto, nombre de usuario y contraseña)
 
-1. Hola [portal de Azure](https://portal.azure.com), en Hola panel izquierdo, haga clic en hello **base de datos de Azure Cosmos** entrada.
-2. Hola **suscripciones** panel, seleccione el nombre de cuenta.
-3. Hola **cadena de conexión** hoja, haga clic en **cadena de conexión**.  
-Hola derecho panel contiene toda la información de Hola que necesita toosuccessfully conectar tooyour cuenta.
+1. En [Azure Portal](https://portal.azure.com), en el panel izquierdo, haga clic en la entrada **Azure Cosmos DB**.
+2. En el panel **Suscripciones**, seleccione el nombre de cuenta.
+3. En la hoja **Cadena de conexión**, haga clic en **Cadena de conexión**.  
+El panel derecho contiene toda la información que necesita para conectarse correctamente a la cuenta.
 
     ![Hoja Cadena de conexión](./media/mongodb-migrate/ConnectionStringBlade.png)
 
-## <a name="import-data-toohello-api-for-mongodb-by-using-mongoimport"></a>Importar datos toohello API para MongoDB mediante mongoimport
+## <a name="import-data-to-the-api-for-mongodb-by-using-mongoimport"></a>Importar datos a la API para MongoDB mediante mongoimport
 
-tooimport datos tooyour cuenta de base de datos de Azure Cosmos, utilice Hola después de la plantilla. Rellene *host*, *nombre de usuario*, y *contraseña* con valores de hello cuenta tooyour específico.  
+Para importar datos a la cuenta de Azure Cosmos DB, use la plantilla siguiente. Rellene *host*, *nombre de usuario* y *contraseña* con los valores específicos de la cuenta.  
 
 Plantilla:
 
@@ -65,9 +65,9 @@ Ejemplo:
 
     mongoimport.exe --host anhoh-host.documents.azure.com:10255 -u anhoh-host -p tkvaVkp4Nnaoirnouenrgisuner2435qwefBH0z256Na24frio34LNQasfaefarfernoimczciqisAXw== --ssl --sslAllowInvalidCertificates --db sampleDB --collection sampleColl --type json --file C:\Users\anhoh\Desktop\*.json
 
-## <a name="import-data-toohello-api-for-mongodb-by-using-mongorestore"></a>Importar datos toohello API para MongoDB mediante mongorestore
+## <a name="import-data-to-the-api-for-mongodb-by-using-mongorestore"></a>Importar datos a la API para MongoDB mediante mongorestore
 
-toorestore datos tooyour API para la cuenta de MongoDB, utilice Hola después de importar la plantilla tooexecute Hola. Rellene *host*, *nombre de usuario*, y *contraseña* con valores de hello cuenta tooyour específico.
+Para restaurar datos en la cuenta de la API para MongoDB, utilice la siguiente plantilla para ejecutar la importación. Rellene *host*, *nombre de usuario* y *contraseña* con los valores específicos de la cuenta.
 
 Plantilla:
 
@@ -81,15 +81,15 @@ Ejemplo:
 
 1. Cree previamente las colecciones y escálelas:
         
-    * De forma predeterminada, Azure Cosmos DB aprovisiona una nueva colección de MongoDB con 1000 unidades de solicitud (RU). Antes de empezar la migración de hello mediante mongoimport, mongorestore o mongomirror, crear previamente todas las colecciones de hello [portal de Azure](https://portal.azure.com) o procedentes de controladores de MongoDB y herramientas. Si la colección es mayor que 10 GB, asegúrese de que toocreate una [colección particionada/particiones](partition-data.md) con una clave de partición adecuado.
+    * De forma predeterminada, Azure Cosmos DB aprovisiona una nueva colección de MongoDB con 1000 unidades de solicitud (RU). Antes de empezar la migración mediante mongoimport, mongorestore o mongomirror, cree todas las colecciones mediante [Azure Portal](https://portal.azure.com) o mediante los controladores y herramientas de MongoDB. Si la colección supera los 10 GB, asegúrese de crear una [colección con particiones](partition-data.md) con una clave de partición adecuada.
 
-    * De hello [portal de Azure](https://portal.azure.com), aumentar el rendimiento de las colecciones de 1.000 RUs para una colección de una sola partición y 2.500 RUs para una colección particionada solo para la migración de Hola. Con un rendimiento mayor hello, puede evitar la limitación y migrar en menos tiempo. Con cada hora facturación en base de datos de Azure Cosmos, puede reducir el rendimiento de hello inmediatamente después de los costos de toosave de migración de Hola.
+    * En [Azure Portal](https://portal.azure.com), aumente el valor de rendimiento de las colecciones de 1000 RU para una colección con una sola partición y 2500 RU para una colección con particiones simplemente para la migración. Gracias al mayor rendimiento, puede evitar la limitación y realizar la migración en menos tiempo. Con la facturación por horas en Azure Cosmos DB, puede reducir el rendimiento inmediatamente después de la migración para ahorrar costes.
 
-2. Calcular la carga RU aproximado de Hola para una operación de escritura único documento:
+2. Calcule la carga de RU aproximada para una sola operación de escritura de documento:
 
-    a. Conectar la base de datos de Azure Cosmos DB MongoDB de tooyour de hello MongoDB Shell. Encontrará instrucciones en [conectarse un tooAzure de aplicación de MongoDB Cosmos DB](connect-mongodb-account.md).
+    a. Conéctese a la base de datos MongoDB de Azure Cosmos DB desde el shell de MongoDB. Encontrará instrucciones en [Connect a MongoDB application to Azure Cosmos DB](connect-mongodb-account.md) (Conectar una aplicación de MongoDB a Azure Cosmos DB).
     
-    b. Ejecutar un comando de inserción de ejemplo mediante uno de los documentos de ejemplo de Hola MongoDB Shell:
+    b. Ejecute un comando de inserción de ejemplo en uno de los documentos de ejemplo desde el shell de MongoDB:
     
         ```db.coll.insert({ "playerId": "a067ff", "hashedid": "bb0091", "countryCode": "hk" })```
         
@@ -106,27 +106,27 @@ Ejemplo:
         }
         ```
         
-    d. Tome nota de forma gratuita de solicitud de saludo.
+    d. Tome nota de la carga de solicitudes.
     
-3. Determinar la latencia de Hola desde su servicio en la base de datos de Azure Cosmos nube de máquina toohello:
+3. Determine la latencia del equipo en el servicio en la nube de Azure Cosmos DB:
     
-    a. Habilitar el registro detallado de hello MongoDB Shell mediante el uso de este comando:```setVerboseShell(true)```
+    a. Habilite el registro detallado desde el shell de MongoDB mediante este comando: ```setVerboseShell(true)```.
     
-    b. Ejecutar una consulta simple en la base de datos de hello: ```db.coll.find().limit(1)```. Recibirá una respuesta como la siguiente:
+    b. Ejecute una consulta simple en la base de datos: ```db.coll.find().limit(1)```. Recibirá una respuesta como la siguiente:
 
         ```
         Fetched 1 record(s) in 100(ms)
         ```
         
-4. Quitar documento Hola insertado antes de hello tooensure de migración que no hay ningún documento duplicado. Puede quitar los documentos con este comando: ```db.coll.remove({})```.
+4. Quite el documento insertado antes de la migración para asegurarse de que no hay ningún documento duplicado. Puede quitar los documentos con este comando: ```db.coll.remove({})```.
 
-5. Calcular Hola aproximado *batchSize* y *numInsertionWorkers* valores:
+5. Calcular los valores aproximados de *batchSize* y *numInsertionWorkers*:
 
-    * Para *batchSize*, división Hola total aprovisionado RUs por RUs Hola consumidos de único documento escribe en el paso 3.
+    * En el caso de *batchSize*, divida el total de RU aprovisionadas entre las RU consumidas en la operación de escritura de documento del paso 3.
     
-    * Si se calcula hello *batchSize* < = 24, utilice ese número como su *batchSize* valor.
+    * Si el valor de *batchSize* calculado es <= 24, use ese número como valor de *batchSize*.
     
-    * Si se calcula hello *batchSize* > 24, conjunto hello *batchSize* too24 de valor.
+    * Si el valor de *batchSize* calculado es > 24, establezca *batchSize* en 24.
     
     * En el caso de *numInsertionWorkers*, use esta ecuación: *numInsertionWorkers = (rendimiento aprovisionado * latencia en segundos) / (tamaño del lote * RU usadas en una sola operación de escritura)*.
         
@@ -140,7 +140,7 @@ Ejemplo:
     
     *numInsertionWorkers = (10 000 RU x 0,1 s) / (24 x 10 RU) = 4,1666*
 
-6. Ejecute comandos de migración final hello:
+6. Ejecute el comando de migración final:
 
    ```
    mongoimport.exe --host anhoh-mongodb.documents.azure.com:10255 -u anhoh-mongodb -p wzRJCyjtLPNuhm53yTwaefawuiefhbauwebhfuabweifbiauweb2YVdl2ZFNZNv8IU89LqFVm5U0bw== --ssl --sslAllowInvalidCertificates --jsonArray --db dabasename --collection collectionName --file "C:\sample.json" --numInsertionWorkers 4 --batchSize 24
@@ -148,7 +148,7 @@ Ejemplo:
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Puede continuar el tutorial siguiente toohello y obtenga información acerca de cómo tooquery datos MongoDB mediante el uso de la base de datos de Azure Cosmos. 
+Puede pasar al tutorial siguiente y obtener más información sobre cómo consultar datos de MongoDB con Azure Cosmos DB. 
 
 > [!div class="nextstepaction"]
->[¿Cómo tooquery datos MongoDB?](../cosmos-db/tutorial-query-mongodb.md)
+>[¿Cómo consultar datos de MongoDB?](../cosmos-db/tutorial-query-mongodb.md)

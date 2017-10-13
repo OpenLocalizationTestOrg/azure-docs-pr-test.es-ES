@@ -1,5 +1,5 @@
 ---
-title: "la detección en Azure Application Insights aaaSmart | Documentos de Microsoft"
+title: "Detección inteligente en Azure Application Insights | Microsoft Docs"
 description: "Application Insights realiza un análisis profundo automático de la telemetría de la aplicación y le advierte de los posibles problemas."
 services: application-insights
 documentationcenter: windows
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2016
 ms.author: bwren
-ms.openlocfilehash: f794476088fc69154eda2077b7a5cdc769fab3a1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f203b2a532ea721d9797c67a4750896e3ab2b9f7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="smart-detection-in-application-insights"></a>Detección inteligente en Application Insights
- La detección inteligente avisa automáticamente de posibles problemas de rendimiento en su aplicación web. Realiza un análisis proactivo de telemetría de Hola que la aplicación envía demasiado[Application Insights](app-insights-overview.md). Si hay un aumento repentino de las tasas de error o patrones de rendimiento anormales en el cliente o el servidor, recibirá una alerta. Esta característica no necesita ninguna configuración. Funciona si la aplicación envía suficiente telemetría.
+ La detección inteligente avisa automáticamente de posibles problemas de rendimiento en su aplicación web. Realiza un análisis proactivo de la telemetría que su aplicación envía a [Application Insights](app-insights-overview.md). Si hay un aumento repentino de las tasas de error o patrones de rendimiento anormales en el cliente o el servidor, recibirá una alerta. Esta característica no necesita ninguna configuración. Funciona si la aplicación envía suficiente telemetría.
 
-Puede tener acceso a las alertas de detección inteligente de los mensajes de saludo recibidos y de hoja de detección inteligente de Hola.
+Puede acceder a las alertas de detección inteligente desde los correos electrónicos que recibe y desde la hoja de detección inteligente.
 
 ## <a name="review-your-smart-detections"></a>Revisión de las detecciones inteligentes
 Puede detectar las detecciones de dos maneras:
@@ -31,34 +31,34 @@ Puede detectar las detecciones de dos maneras:
   
     ![Alerta de correo electrónico](./media/app-insights-proactive-diagnostics/03.png)
   
-    Haga clic en hello botón grande tooopen más detalle en el portal de Hola.
-* **icono de detección inteligente de Hello** en información general de la aplicación hoja muestra un recuento de las alertas recientes. Haga clic en el icono de hello toosee una lista de las alertas recientes.
+    Haga clic en el botón grande para abrir más detalles en el portal.
+* **El icono de detección inteligente** en la hoja de información general de la aplicación muestra un recuento de las alertas recientes. Haga clic en el icono para ver una lista de las alertas recientes.
 
 ![Visualización de detecciones recientes](./media/app-insights-proactive-diagnostics/04.png)
 
-Seleccione una alerta toosee sus detalles.
+Seleccione una alerta para ver sus detalles.
 
 ## <a name="what-problems-are-detected"></a>¿Qué problemas se detectan?
 Hay tres tipos de detección:
 
-* [Detección inteligente: anomalías de errores](app-insights-proactive-failure-diagnostics.md). Se utiliza aprendizaje automático de velocidad de tooset Hola esperada de solicitudes con error para la aplicación, correlacionar con carga y otros factores. Si deja de tasa de error de hello fuera Hola esperado sobres, se enviará una alerta.
-* [Detección inteligente: anomalías de rendimiento](app-insights-proactive-performance-diagnostics.md). Recibir notificaciones si el tiempo de respuesta de una duración de la operación o dependencia se ralentice previsto toohistorical comparados o si se identifica un patrón anómalo en tiempo de respuesta o en tiempo de carga de página.   
+* [Detección inteligente: anomalías de errores](app-insights-proactive-failure-diagnostics.md). Usamos el aprendizaje automático para establecer la tasa esperada de solicitudes con error para su aplicación, correlacionando la carga y otros factores. Si la tasa de error queda fuera del rango esperado, se enviará una alerta.
+* [Detección inteligente: anomalías de rendimiento](app-insights-proactive-performance-diagnostics.md). Recibe notificaciones si la duración del tiempo de respuesta de operación o dependencia se ralentiza en comparación con la línea de base histórica, o si se identifica un patrón anómalo en el tiempo de respuesta o en el tiempo de carga de página.   
 * [Detección inteligente: problemas del servicio en la nube de Azure](https://azure.microsoft.com/blog/proactive-notifications-on-cloud-service-issues-with-azure-diagnostics-and-application-insights/). Recibe alertas si la aplicación se hospeda en Servicios en la nube de Azure y una instancia de rol tiene errores de inicio, repetición de ciclos frecuentes o bloqueos en tiempo de ejecución.
 
-(vínculos de Ayuda de hello en cada notificación permitirán artículos relevantes toohello.)
+(Los vínculos a la Ayuda de cada notificación llevan a los artículos pertinentes).
 
 ## <a name="video"></a>Vídeo
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>Pasos siguientes
-Estas herramientas de diagnóstico le ayudarán a inspeccionar telemetría Hola desde su aplicación:
+Estas herramientas de diagnóstico lo ayudarán a inspeccionar los datos de telemetría de su aplicación:
 
 * [Explorador de métricas](app-insights-metrics-explorer.md)
 * [Explorador de búsqueda](app-insights-diagnostic-search.md)
 * [Analytics: Lenguaje de consulta eficaz](app-insights-analytics-tour.md)
 
-La detección inteligente es completamente automática. ¿Pero quizás le gustaría tooset algunas alertas más?
+La detección inteligente es completamente automática. Pero ¿quizás le gustaría configurar algunas alertas más?
 
 * [Alertas de métricas configuradas manualmente](app-insights-alerts.md)
 * [Pruebas web de disponibilidad](app-insights-monitor-web-app-availability.md) 

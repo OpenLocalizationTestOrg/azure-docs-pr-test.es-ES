@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure interfaz de usuario de Mobile Engagement - alcanzar cómo de a"
+title: "Interfaz de usuario de Azure Mobile Engagement - Guía práctica de Cobertura"
 description: "Introducción de la interfaz de usuario de Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: 
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 4b6dafd09d894214d4c386f5c6f157a77671606f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 33a0a9d0c399cb7f0a791c4c16dde2e2d62364ca
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="how-tooget-started-using-and-managing-pushes-tooreach-out-tooyour-end-users"></a>Cómo tooget a usar y administrar inserta tooreach a los usuarios finales de tooyour
-Una vez hello SDK está totalmente integrado en la aplicación, puede empezar a usar sección de alcance de Hola Hola Hola UI tooPush notificaciones toohello usuarios de la aplicación.  
+# <a name="how-to-get-started-using-and-managing-pushes-to-reach-out-to-your-end-users"></a>Cómo empezar a usar y administrar inserciones para llegar a los usuarios finales
+Una vez que el SDK está totalmente integrado en la aplicación, puede empezar a usar la sección Cobertura de la interfaz de usuario para enviar notificaciones a los usuarios de la aplicación.  
 
 ## <a name="do-your-first-push-notification-campaign"></a>Creación de la primera campaña de notificación de inserción
-* Confirme que su alcance se integra en la aplicación con hello SDK. 
+* Confirme que tiene integrado Reach en la aplicación con el SDK. 
 * Seleccione la aplicación.
 
 ![First1][1]
 
-* Vaya toohello sección "Alcance" y haga clic en "nuevo anuncio"
+* Vaya a la sección "Reach" y haga clic en "Nuevo anuncio".
 
 ![First2][2]
 
@@ -37,19 +37,19 @@ Una vez hello SDK está totalmente integrado en la aplicación, puede empezar a 
   
 ![First3][3]
 
-* Seleccione cómo se deben entregar notificaciones de hello, como en la aplicación solo
+* Seleccione cómo se debe entregar la notificación, por ejemplo, si es solo en la aplicación.
 
 ![First4][4]
 
-* Crear mensajes de bienvenida que desee toopush
+* Cree el mensaje que desea insertar.
 
 ![First5][5]
 
-* Puede escribir un título en la notificación de hello (opcional).
+* Puede escribir un título en la notificación (opcional).
 * Escriba el contenido del mensaje de inserción.
-* Puede cargar una imagen. Tenga en cuenta que el tamaño de Hola de archivo hello no puede superar 32.768 bytes.
-* También tienen Hola capacidad tooselect más opciones, pero para se centran Hola de este tutorial, veremos más adelante.
-* Seleccionar tipo de contenido de hello como notificación solo
+* Puede cargar una imagen. Tenga en cuenta que el tamaño del archivo no puede superar 32.768 bytes.
+* También tiene la posibilidad de seleccionar más opciones, pero para el objetivo de este tutorial, las veremos más adelante.
+* Seleccionar tipo de contenido como Solo notificación
 
 ![First6][6]
 
@@ -61,134 +61,134 @@ Una vez hello SDK está totalmente integrado en la aplicación, puede empezar a 
 ![Test1][8]
 
 * Registre el dispositivo.
-* Haga clic en la casilla de verificación de hello de dispositivo de hello desea toopush.
-* Haga clic en hello "Test" botón toosend Hola inserción toohello dispositivo.
+* Haga clic en la casilla del dispositivo donde desea realizar la inserción.
+* Haga clic en el botón "Probar" para enviar la inserción al dispositivo.
 
 ![Test2][9]
 
-* Activar la campaña Hola
+* Activar la campaña
 
 ![Test3][10]
 
-* Ahora que ha creado la campaña debe tooactivate para toobe de notificación de hello inserta tooyour a los usuarios.
+* Ahora que ha creado la campaña, basta con activarla para insertar la notificación para los usuarios.
 
 ## <a name="send-personalized-pushes"></a>Envío de inserciones personalizadas
-* Este ejemplo crea una inserción donde se escribe un código de descuento personalizado en la notificación de inserción de Hola.
+* En este ejemplo se crea una inserción donde se introduce un código de descuento personalizado en la notificación de inserción.
 
 ![Personalize1][11]
 
-Personalización funciona reemplazando un marcador de la forma de una etiqueta de información de la aplicación por lo tanto, tendrá que usuario Hola tenga Hola apropiado app-info primero define toomake. En este Hola ejemplo los usuarios de destino tendrá una etiqueta de información de aplicación denominada rebate_code definido.
-Como se ve anteriormente contenido de notificación de inserción de Hola incluye hello marcador ${rebate_code} que indicará que está toobe reemplazado por el contenido real de Hola de etiqueta de información de aplicación Hola.
+La personalización funciona mediante la sustitución del marcador de una etiqueta de información de la aplicación, por lo que antes tendrá que asegúrese de que el usuario tiene definida la información de la aplicación adecuada. En este ejemplo, los usuarios de destino tienen una etiqueta definida de información de la aplicación que se denomina rebate_code.
+Como puede ver, el contenido de la notificación de inserción incluye el marcador ${rebate_code}, que indica que se tiene que reemplazar por el contenido real de la etiqueta de información de la aplicación.
 
 > [!WARNING]
-> Si no se define la etiqueta de información de aplicación hello para el usuario de hello, usuario de hello no recibirá la inserción de Hola.
+> Si el usuario no define la etiqueta de información de la aplicación, no recibirá la inserción.
 
 * Resultado
 
 ![Personalize2][12]
 
-### <a name="you-can-further-personalize-hello-text-your-notification"></a>Se puede personalizar aún más texto hello la notificación
+### <a name="you-can-further-personalize-the-text-your-notification"></a>Puede personalizar aún más el texto de la notificación,
 ![Personalize3][13]
 
-* Incluido el título de Hola de notificación de hello,
-* Y el contenido de Hola de mensaje de bienvenida.
-* Elegir tipo de Hola de anuncio (vista de texto o Web)
+* incluido el título dela notificación
+* y el contenido del mensaje.
+* Elija el tipo de anuncio (vista de texto o vista web).
 
 ![Personalize4][14]
 
-### <a name="hello-body-of-an-announcement-may-also-be-personalized-with"></a>cuerpo de Hola de un anuncio también puede personalizarse con:
-* dirección URL de acción de Hello, si quiere que hello toocustomize página de aterrizaje
-* título de Hello,
-* cuerpo de Hello del mensaje de bienvenida.
+### <a name="the-body-of-an-announcement-may-also-be-personalized-with"></a>También se puede personalizar el cuerpo de un anuncio con:
+* la URL de acción, en caso de que quiera personalizar la página de inicio;
+* el título y
+* el cuerpo del mensaje.
 
 ## <a name="differentiate-your-push-notification-in-or-out-of-app"></a>Diferenciación de la notificación de inserción (en la aplicación o fuera de ella)
-* Elija el tipo de saludo de notificación se push, seleccione la aplicación, vaya toohello "Alcance" sección, seleccione o cree una campaña de inserción y vaya toohello "sección"notificación.
-* Haga clic en "modo de entrega" hello que desee.
-* Haga clic en hello "Restringir actividades" casilla de verificación si desea que la notificación de Hola se produce en actividades específicas (pantallas).
+* Elija el tipo de notificación que insertará, seleccione la aplicación, vaya a la sección "Reach", seleccione o cree una campaña de inserción y vaya a la sección "Notificación".
+* Haga clic en el "modo de entrega" que desee.
+* Haga clic en la casilla "Restringir actividades" cuando quiera que la notificación se produzca en actividades concretas (pantallas).
 
 ![Differentiate1][15]
 
 ### <a name="out-of-app-only-delivery-mode"></a>Modo de entrega "Solo fuera de la aplicación"
 ![Differentiate2][16]
 
-"Fuera de la aplicación solo" modo de entrega proporciona una notificación de inserción cuando se cierra la aplicación hello. Se trata de una notificación de inserción estándar de Hola.
-Cuando se selecciona "fuera de la aplicación solo", deben haber proporcionado certificados Hola de plataforma de Hola que se está ejecutando la aplicación en (APN o GCM).
+El modo de entrega "Solo fuera de la aplicación sólo" proporciona una notificación de inserción cuando se cierra la aplicación. Se trata de la notificación de inserción estándar.
+Al seleccionar "Solo fuera de la aplicación", debe haber proporcionado antes los certificados de la plataforma en la que se basa la aplicación (APN o GCM).
 
-### <a name="see-also"></a>Otras referencias
+### <a name="see-also"></a>Consulte también
 * [Apple Push Notification Service: certificados](http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW9), [Google Cloud Messaging: certificado](http://developer.android.com/google/gcm/index.html) 
 
 ### <a name="in-app-only-delivery-mode"></a>Modo de entrega "Solo en la aplicación"
 ![Differentiate3][17]
 
-El modo de entrega "En la aplicación solo" proporciona una notificación de inserción cuando se ejecuta la aplicación hello.
-Para esta notificación, no es necesario toogo a través de hello APN y sistema GCM.
-Puede usar tooreach de sistema de entrega de la aplicación hello en los usuarios finales.
-Totalmente puede personalizar la notificación de Hola y decidir en qué actividad (pantalla) aparecerá la notificación de Hola.
+El modo de entrega "Solo en la aplicación" proporciona notificaciones de inserción cuando la aplicación se está ejecutando.
+En el caso de esta notificación, es necesario pasar por el sistema de APNS y GCM.
+Puede usar el sistema de entrega en la aplicación para llegar a los usuarios finales.
+Puede personalizar totalmente la notificación y decidir en que actividad (pantalla) aparecerá la notificación.
 
 ### <a name="anytime-delivery-mode"></a>Modo de entrega "En cualquier momento"
-Puede elegir un modo de entrega "En cualquier momento", asegura tooreach Hola a los usuarios finales si está ejecutando la aplicación o no.
-Cuando se selecciona "En cualquier momento", deben haber proporcionado certificados Hola de plataforma de Hola que se está ejecutando la aplicación (APN o GCM). 
+Si elige el modo de entrega "En cualquier momento", se asegurará de llegar a los usuarios finales tanto si la aplicación se está ejecutando como si no.
+Al seleccionar "En cualquier momento", deben haber proporcionado antes los certificados de la plataforma en la que se basa la aplicación (APN o GCM). 
 
 ## <a name="schedule-a-push-campaign"></a>Programación una campaña de inserción
-### <a name="plan-toostart-a-campaign"></a>Planear una campaña tooStart
+### <a name="plan-to-start-a-campaign"></a>Planeación del inicio de una campaña
 ![Shedule1][18]
 
-Es Hola 21 de marzo y tiene un toomake de anuncio y cepillada 22 de marzo de Hola a medianoche. No tiene toostay delante Hola interfaz toodo una inserción. Puede planear de antemano Hola exacta minuto se enviarán las notificaciones.
+Es 21 de marzo y tiene un anuncio que hacer, planeado para el 22 de marzo a medianoche. No es necesario que esté delante de la interfaz para realizar una inserción. Puede planear de antemano el minuto exacto en que se enviarán las notificaciones.
 
-* Desactive Hola "None" casilla de verificación y seleccione una hora de inicio 
-* Elija Hola fecha y hora en hello que desea campaña de inserción de toostart Hola.
+* Desactive la casilla "Ninguna" y seleccione una hora de inicio. 
+* Elija la fecha y la hora en que desea iniciar la campaña de inserción.
 
-### <a name="plan-tooend-a-campaign"></a>Planear una campaña tooend
+### <a name="plan-to-end-a-campaign"></a>Planeación del fin de una campaña
 ![Shedule2][19]
 
-Desea el toostop campaña en hello a 3:00 p.m. el 25 de marzo pero sabe no estando ahí toodo lo.
-¡No tienes toostay delante Hola interfaz toopush! Puede planear de antemano Hola exacta minuto que la campaña se detendrá.
+Desea que la campaña finalice el 25 de marzo a las 15:00 h pero sabe que no estará presente para hacerlo.
+No es necesario que esté delante de la interfaz para realizar la inserción. Puede planear de antemano el minuto exacto en que se detendrá la campaña.
 
-* Haga clic en hello "None" casilla o seleccione una hora de finalización
-* Elija Hola fecha y hora en hello que desea campaña de inserción de toofinish Hola.
+* Haga clic en la casilla "Ninguna" o seleccione una hora de finalización.
+* Elija la fecha y la hora en que desea finalizar la campaña de inserción.
 
 ### <a name="end-a-campaign-manually"></a>Finalización de una campaña manualmente
 ![Shedule3][20]
 
-De forma predeterminada, Hola "None" casillas de verificación están activadas.
-Esto significa que campaña Hola se iniciará en cuanto activarlo en hello llegar a la sección y alcanzará final al que detendrá en hello sección.
+De forma predeterminada, las casillas "Ninguna" están seleccionadas.
+Esto significa que la campaña comenzará en cuanto la active en la sección "Reach" y finalizará cuando la detenga en dicha sección.
 
 > [!NOTE]
-> Las campañas que se creó sin una fecha de finalización almacenan localmente inserción hello en dispositivo de Hola y mostrarlo Hola próxima vez que se abre la aplicación hello aunque manualmente se finalizó la campaña Hola.
+> Las campañas creadas sin una fecha de finalización almacenan la inserción de forma local en el dispositivo y la muestran la próxima vez que se abre la aplicación incluso si la campaña ha finalizado manualmente.
 
 ## <a name="enhance-a-push-notification-with-a-text-view"></a>Mejora de una notificación de inserción con una vista de texto
 ### <a name="what-is-a-text-view"></a>¿Qué es una vista de texto?
 ![TextView1][21]
 
-Una vista de texto es un elemento emergente con contenido de texto. Este elemento emergente aparece después de que haya hecho clic en para el usuario final de hello en la notificación de inserción de Hola.
-Una vista de texto permite toopresent más contenido por el usuario final tooyour. También es Hola oportunidad toopresent un tooaction de llamada como saltar página tooa de la aplicación, redirigiendo tooa almacén, abrir una página web, enviar un correo electrónico, a partir de una búsqueda geolocalizados, etcetera...
+Una vista de texto es un elemento emergente con contenido de texto. Este elemento emergente aparece cuando el usuario final hace clic en la notificación de inserción.
+Una vista de texto permite presentar más contenido al usuario final. Esto también es una oportunidad de presentar una llamada a la acción, como saltar a una página de la aplicación, redirigir a una Tienda, abrir una página web, enviar un correo electrónico, iniciar una búsqueda localizada geográficamente, etc.
 
 ### <a name="example-text-view"></a>Ejemplo: vista de texto
-* Crear la campaña de notificación de inserción en la sección "Alcance" de Hola y asigne un nombre a la campaña
+* Cree la campaña de notificación de inserción en la sección "Reach" y asígnele un nombre.
 
 ![TextView2][22]
 
-* Escribir el mensaje de Hola que va a aparecer en la notificación de Hola.
-* Seleccione el tipo de contenido de anuncio de "texto" Hola
+* Escriba el mensaje que aparecerá en la notificación.
+* Seleccione el tipo de contenido del anuncio de "texto".
 
 ![TextView3][23]
 
 > [!NOTE]
 > Cuando inserta una vista de texto, siempre va acompañada de una notificación en primer lugar. 
 
-* Definir el texto hello (tras haber seleccionado el contenido de la presentación de texto hello, aparecerá la subsección de hello, permitiéndole texto de hello toodefine que desea toobe muestra.)
+* Defina el texto (después de seleccionar el contenido del anuncio de texto, aparecerá la subsección, que le permite definir el texto que desea que se muestre).
 
 ![TextView4][24]
 
-* Escribir el título de Hola que aparecerá en la parte superior de Hola de mensaje de bienvenida.
-* Escribir contenido principal de Hola de vista de texto hello.
-* Escribir contenido de Hola que va a aparecer en el botón de acción de hello (un botón de acción permite Hola aplicación toomake una acción específica como la apertura de una página de aplicación hello, redirigiendo tooan App store o cualquier tipo de orígenes que pueden proporcionar).
-* Contenido de Hola de escritura que va a aparecer en el botón Salir de hello (haciendo clic en botón Salir de hello, vista de texto hello desaparecerá.)
-* Crear la campaña de notificación de inserción y aparecerá en la lista de la campaña de Hola.
+* Escriba el título que aparecerá en la parte superior del mensaje.
+* Escriba el contenido principal de la vista de texto.
+* Escriba el contenido que aparecerá en el botón de acción (un botón de acción permite a la aplicación realizar una acción concreta, como abrir una página de la aplicación, redirigir a una tienda de aplicaciones o cualquier tipo de orígenes que proporcione).
+* Escriba el contenido que aparecerá en el botón Salir (haciendo clic en el botón Salir, la vista de texto desaparecerá).
+* Cree la campaña de notificación de inserción, que aparecerá en la lista de campañas.
 
 ![TextView5][25]
 
-* Activar la inserción notificación campaña toosend Hola texto vista tooyour a los usuarios.
+* Active la campaña de notificación de inserción para enviar la vista de texto a los usuarios.
 
 ![TextView6][26]
 
@@ -196,51 +196,51 @@ Una vista de texto permite toopresent más contenido por el usuario final tooyou
 
 ![TextView7][27]
 
-* Hola usuario recibe la notificación de Hola y haga clic en él.
-* vista de texto Hello aparece como un toointeract de usuario Hola permitiendo emergente con él.
+* El usuario recibe la notificación y hace clic en ella.
+* La vista de texto aparece como un elemento emergente que permite al usuario interactuar con él.
 
 ## <a name="enhance-a-push-notification-with-a-web-view"></a>Mejora de una notificación de inserción con una vista web
 ### <a name="what-is-a-web-view"></a>¿Qué es una vista web?
 ![WebView1][28]
 
-Una vista web es un elemento emergente con contenido web. Este elemento emergente aparece cuando se hace clic en para el usuario final de hello en la notificación de inserción de Hola.
-Una vista web le permite toohave más interacción con el usuario final de Hola.
-También es Hola oportunidad toopresent un tooaction de llamada como almacén de tooApp de redirección, abrir una página web, enviar un correo electrónico, a partir de una búsqueda geolocalizados, etcetera...
+Una vista web es un elemento emergente con contenido web. Este elemento emergente aparece cuando el usuario final hace clic en la notificación de inserción.
+Una vista web le permite interactuar más con el usuario final.
+Esto también es una oportunidad de presentar una llamada a la acción, como redirigir a una tienda de aplicaciones, abrir una página web, enviar un correo electrónico, iniciar una búsqueda localizada geográficamente, etc.
 
 ### <a name="example-web-view"></a>Ejemplo: vista web
-* Crear la campaña de inserción en la sección "Alcance" de Hola y asigne un nombre a la campaña.
+* Cree la campaña de inserción en la sección "Reach" y asígnele un nombre.
 
 ![WebView2][29]
 
-* Escribir el mensaje de Hola que va a aparecer en la notificación de Hola.
-* Seleccione el tipo de contenido del anuncio de Hola como "web"
+* Escriba el mensaje que aparecerá en la notificación.
+* Seleccione el tipo de contenido del anuncio como "web".
 
 ![WebView3][30]
 
 ### <a name="about-announcement-types"></a>Acerca de los tipos de anuncio:
-* Solo notificación: es una notificación estándar simple. Lo que significa que, si un usuario hace clic en él, no aparecerá vista adicional, pero solo Hola acción asociada, se producirá tooit.
-* Anuncio de texto: es una notificación que involucre a Hola usuario toohave un vistazo a una vista de texto.
-* Anuncio de Web: es una notificación que involucre a Hola usuario toohave un vistazo a una vista web.
-  Seleccione Hola contenido "Anuncio de Web".
+* Solo notificación: es una notificación estándar simple. Lo que significa que si un usuario hace clic en él, no aparecerá ninguna vista adicional, pero se producirá solo la acción asociada a él.
+* Anuncio de texto: es una notificación que compromete al usuario a echar un vistazo a una vista de texto.
+* Anuncio web: es una notificación que compromete al usuario a echar un vistazo a una vista de texto.
+  Seleccione el contenido de "Anuncio web".
 
 > [!NOTE]
 > cuando inserta una vista de web, siempre va acompañada de una notificación en primer lugar.
 
-* Definir el contenido de web de hello (tras haber seleccionado el contenido de la presentación de web hello, aparecerá la subsección de hello, permitiéndole toodefine hello web ver el contenido que desee toobe muestra.)
+* Defina el contenido web (después de seleccionar el contenido del anuncio de web, aparecerá la subsección, que le permite definir el contenido de la vista web que desea que se muestre).
 
 ![WebView4][31]
 
-* Escribir el título de Hola que aparecerá en la parte superior de Hola de mensajes de bienvenida (opcional).
+* Escribir el título que aparecerá en la parte superior del mensaje (opcional).
 * Escriba el código HTML aquí.
-* Haga clic en la edición de tooswitch de botón de modo de edición de origen de Hola y vea cómo funciona.
-* Escribir contenido de Hola que va a aparecer en el botón de acción de hello (un botón de acción permite Hola aplicación toomake una acción específica como la apertura de una página de aplicación hello, redirigiendo tooa almacén o en cualquier tipo de orígenes que pueden proporcionar).
-* Contenido de Hola de escritura que va a aparecer en el botón Salir de hello (haciendo clic en botón Salir de hello, vista de hello web desaparecerá).
+* Haga clic en el botón de modo de edición de origen para cambiar la edición y ver su aspecto.
+* Escriba el contenido que aparecerá en el botón de acción (un botón de acción permite a la aplicación realizar una acción concreta, como abrir una página de la aplicación, redirigir a una tienda o cualquier tipo de orígenes que proporcione).
+* Escriba el contenido que aparecerá en el botón Salir (haciendo clic en el botón Salir, la vista de web desaparecerá).
 * Resultado
 
 ![WebView5][32]
 
-* usuario de Hola recibir una notificación de Hola y haga clic en él.
-* vista de texto Hello aparece como un toointeract de usuario Hola permitiendo emergente con él.
+* El usuario recibe la notificación y hace clic en ella.
+* La vista de texto aparece como un elemento emergente que permite al usuario interactuar con él.
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-how-tos/First1.png

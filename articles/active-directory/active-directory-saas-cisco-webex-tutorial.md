@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con Cisco Webex | Microsoft Azure"
-description: "¡Obtenga información acerca de cómo toouse Cisco Webex con Azure Active Directory tooenable único inicio de sesión, aprovisionamiento automático y mucho más!"
+description: "Aprenda a usar Cisco Webex con Azure Active Directory para habilitar el inicio de sesión único, el aprovisionamiento automatizado, etc."
 services: active-directory
 author: jeevansd
 documentationcenter: na
@@ -13,139 +13,139 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 9fc11e58a7acaa6fbfb32eeccbfbf85984950e67
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: b44b1a5b3e988a51db3325ec8a181651fa84e768
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>Tutorial: integración de Azure Active Directory con Cisco Webex
-objetivo de Hola de este tutorial es la integración de hello tooshow de Azure y Cisco Webex.  
-escenario de Hello descrito en este tutorial se da por supuesto que ya tiene Hola siguientes elementos:
+El objetivo de este tutorial es mostrar la integración de Azure y Cisco Webex.  
+En la situación descrita en este tutorial se supone que ya cuenta con los elementos siguientes:
 
 * Una suscripción de Azure válida
 * Un inquilino de Cisco Webex
 
-Después de completar este tutorial, Hola usuarios de Azure AD que haya asignado tooCisco Webex será capaz de toosingle inicio de sesión en la aplicación hello en el sitio de la compañía de Cisco Webex (servicio iniciado por el proveedor inicio de sesión), o mediante hello [toohello de introducción Obtener acceso al Panel](active-directory-saas-access-panel-introduction.md).
+Después de completar este tutorial, los usuarios de Azure AD que ha asignado a Cisco Webex podrán realizar un inicio de sesión único en la aplicación en el sitio de la compañía de Cisco Webex (inicio de sesión iniciado por el proveedor de servicios) o con la [Introducción al Panel de acceso](active-directory-saas-access-panel-introduction.md).
 
-escenario de Hello descrito en este tutorial consta de hello después de bloques de creación:
+La situación descrita en este tutorial consta de los siguientes bloques de creación:
 
-* Habilitar la integración de aplicación Hola para Cisco Webex
+* Habilitación de la integración de aplicaciones para Cisco Webex
 * Configuración del inicio de sesión único (SSO)
 * Configuración del aprovisionamiento de usuario
 * Asignación de usuarios
 
 ![Escenario](./media/active-directory-saas-cisco-webex-tutorial/IC777614.png "Escenario")
 
-## <a name="enable-hello-application-integration-for-cisco-webex"></a>Habilitar la integración de aplicación Hola para Cisco Webex
-objetivo de Hola de esta sección es toooutline la integración de aplicaciones de hello tooenable para Cisco Webex.
+## <a name="enable-the-application-integration-for-cisco-webex"></a>Habilitación de la integración de aplicaciones para Cisco Webex
+El objetivo de esta sección es describir cómo se habilita la integración de aplicaciones para Cisco Webex.
 
-**integración de aplicaciones de hello tooenable para Cisco Webex, lleve a cabo Hola pasos:**
+**Siga estos pasos para habilitar la integración de aplicaciones para Cisco Webex:**
 
-1. Hola portal de Azure clásico, en el panel de navegación izquierdo de hello, haga clic en **Active Directory**.
+1. En el panel de navegación izquierdo del Portal de Azure clásico, haga clic en **Active Directory**.
    
    ![Active Directory](./media/active-directory-saas-cisco-webex-tutorial/IC700993.png "Active Directory")
-2. De hello **Directory** lista, directorio de Hola select para la que desee tooenable integración de directorios.
-3. Haga clic en vista de aplicaciones de hello tooopen, en la vista de directorio de hello, **aplicaciones** en el menú superior Hola.
+2. En la lista **Directory**, seleccione el directorio cuya integración desee habilitar.
+3. Para abrir la vista de aplicaciones, haga clic en **Applications**, en el menú superior de la vista de directorios.
    
    ![Aplicaciones](./media/active-directory-saas-cisco-webex-tutorial/IC700994.png "Aplicaciones")
-4. Haga clic en **agregar** final Hola de página Hola.
+4. Haga clic en **Agregar** en la parte inferior de la página.
    
    ![Agregar aplicaciones](./media/active-directory-saas-cisco-webex-tutorial/IC749321.png "Agregar aplicaciones")
-5. En hello **especifique qué desea toodo** cuadro de diálogo, haga clic en **agregar una aplicación de la Galería de hello**.
+5. En el cuadro de diálogo **¿Qué desea hacer?**, haga clic en **Agregar una aplicación de la galería**.
    
    ![Agregar una aplicación de la galería](./media/active-directory-saas-cisco-webex-tutorial/IC749322.png "Agregar una aplicación de la galería")
-6. Hola **cuadro de búsqueda**, tipo **Cisco Webex**.
+6. En el **cuadro de búsqueda**, escriba **Cisco Webex**.
    
    ![Galería de aplicaciones](./media/active-directory-saas-cisco-webex-tutorial/IC777615.png "Galería de aplicaciones")
-7. En el panel de resultados de hello, seleccione **Cisco Webex**y, a continuación, haga clic en **completar** aplicación de hello tooadd.
+7. En el panel de resultados, seleccione **Cisco Webex** y, a continuación, haga clic en **Completar** para agregar la aplicación.
    
    ![Cisco Webex](./media/active-directory-saas-cisco-webex-tutorial/IC777616.png "Cisco Webex")
    
 ## <a name="configure-single-sign-on"></a>Configurar inicio de sesión único
 
-objetivo de Hola de esta sección es toooutline cómo tooenable usuarios tooauthenticate tooCisco Webex con su cuenta de Azure AD utilizando federación basada en protocolo SAML de Hola.  
+El objetivo de esta sección es describir cómo habilitar usuarios para que se autentiquen en Cisco Webex con su cuenta de Azure AD mediante federación basada en el protocolo SAML.  
 
-Como parte de este procedimiento, se le toocreate requiere un certificado codificado en base 64. Si no está familiarizado con este procedimiento, vea [cómo tooconvert certificado de un archivo binario en un archivo de texto](http://youtu.be/PlgrzUZ-Y1o)
+Como parte de este procedimiento, es necesario crear un certificado codificado en base 64. Si no está familiarizado con este procedimiento, consulte [Conversión de un certificado binario en un archivo de texto](http://youtu.be/PlgrzUZ-Y1o)
 
-**tooconfigure inicio de sesión único, lleve a cabo Hola pasos:**
+**Siga estos pasos para configurar el inicio de sesión único:**
 
-1. En el portal de Azure clásico en Hola Hola **Cisco Webex** página de integración de aplicaciones, haga clic en **configurar inicio de sesión único** tooopen hello **configurar inicio de sesión único** cuadro de diálogo.
+1. En el Portal de Azure clásico, en la página de integración de aplicaciones de **Cisco Webex**, haga clic en **Configurar inicio de sesión único** para abrir el cuadro de diálogo **Configurar inicio de sesión único**.
    
    ![Configurar inicio de sesión único](./media/active-directory-saas-cisco-webex-tutorial/IC777617.png "Configurar inicio de sesión único")
-2. En hello **¿cómo desea que los usuarios toosign en tooCisco Webex** página, seleccione **Microsoft Azure AD Single Sign-On**y, a continuación, haga clic en **siguiente**.
+2. En la página **How would you like users to sign on to Cisco Webex** (¿Cómo desea que los usuarios inicien sesión en Cisco Webex?), seleccione **Inicio de sesión único de Microsoft Azure AD** y, a continuación, haga clic en **Siguiente**.
    
    ![Configurar inicio de sesión único](./media/active-directory-saas-cisco-webex-tutorial/IC777618.png "Configurar inicio de sesión único")
-3. En hello **configurar URL de aplicación** página realizar pasos de Hola y, a continuación, haga clic en **siguiente**.
+3. En la página **Configurar dirección URL de la aplicación**, realice los pasos siguientes y luego haga clic en **Siguiente**.
    
    ![Configurar dirección URL de la aplicación](./media/active-directory-saas-cisco-webex-tutorial/IC777619.png "Configurar dirección URL de la aplicación")   
-   1. Hola **cantar URL** cuadro de texto, escriba la dirección URL de inquilino de Cisco Webex (p. ej.: *http://contoso.webex.com*).
-   2. Hola **dirección URL de respuesta de Cisco Webex** cuadro de texto, tipo de su **dirección URL de AssertionConsumerService de Cisco Webex** (p. ej.: *https://company.webex.com/dispatcher/SAML2AuthService?siteurl=company* ).
-4. En hello **configurar inicio de sesión único en Cisco Webex** page, toodownload su certificado, haga clic en **Descargar certificado**y, a continuación, guarde el archivo de certificado de hello en el equipo.
+   1. En el cuadro de texto **URL de inicio de sesión**, escriba la dirección URL de inquilino de Cisco Webex (p. ej.: *http://contoso.webex.com*).
+   2. En el cuadro de texto **URL de respuesta de Cisco Webex**, escriba su **dirección URL de Cisco Webex AssertionConsumerService** (por ejemplo: *https://company.webex.com/dispatcher/SAML2AuthService?siteurl=company*).
+4. En la página **Configurar inicio de sesión único en Cisco Webex**, para descargar el certificado, haga clic en **Descargar certificado** y luego guarde el archivo de certificado en el equipo.
    
    ![Configurar inicio de sesión único](./media/active-directory-saas-cisco-webex-tutorial/IC777620.png "Configurar inicio de sesión único")
 5. En otra ventana del explorador web, inicie sesión como administrador en el sitio de la compañía de Cisco Webex.
-6. En el menú de hello en la parte superior de hello, haga clic en **administración de sitios**.
+6. En el menú de la parte superior, haga clic en **Site Administration**(Administración de sitio).
    
    ![Administración de sitios](./media/active-directory-saas-cisco-webex-tutorial/IC777621.png "Administración de sitios")
-7. Hola **Administrar sitio** sección, haga clic en **configuración de SSO**.
+7. En la sección **Manage Site** (Administrar sitio), haga clic en **SSO Configuration** (Configuración de SSO).
    
    ![Configuración de SSO](./media/active-directory-saas-cisco-webex-tutorial/IC777622.png "Configuración de SSO")
-8. En la sección de configuración de SSO Web federado hello, realizar Hola pasos:
+8. En la sección Federated Web SSO Configuration (configuración de SSO web federado), realice los pasos siguientes:
    
    ![Configuración de SSO federado](./media/active-directory-saas-cisco-webex-tutorial/IC777623.png "Configuración de SSO federado")  
-   1. De hello **protocolo Federation** lista, seleccione **SAML 2.0**.
+   1. En la lista de **protocolos de federación**, seleccione **SAML 2.0**.
    2. Cree un archivo **codificado en base 64** a partir del certificado descargado.  
     >[!TIP]
-    >Para obtener más información, vea [cómo tooconvert certificado de un archivo binario en un archivo de texto](http://youtu.be/PlgrzUZ-Y1o)
+    >Para obtener más información, consulte [Conversión de un certificado binario en un archivo de texto](http://youtu.be/PlgrzUZ-Y1o)
     >  
-   3. Abra el certificado codificado en base 64 en el Bloc de notas y, a continuación, Hola copia contenido del mismo.
+   3. Abra el certificado codificado en base 64 en el Bloc de notas y luego copie el contenido del mismo.
    4. Haga clic en **Import SAML Metadata**(Importar metadatos de SAML) y, a continuación, pegue el certificado codificado base 64.
-   5. En el portal de Azure clásico en Hola Hola **configurar inicio de sesión único en Cisco Webex** página de diálogo, Hola copia **dirección URL del emisor** valor y, a continuación, péguelo en hello **emisor de SAML (Id. de IdP)** cuadro de texto.
-   6. En el portal de Azure clásico en Hola Hola **configurar inicio de sesión único en Cisco Webex** página de diálogo, Hola copia **dirección URL de inicio de sesión remoto** valor y, a continuación, péguelo en hello **inicio de sesión del servicio de SSO de cliente Dirección URL** cuadro de texto.
-   7. De hello **NameID Format** lista, seleccione **dirección de correo electrónico**.
-   8. Hola **AuthnContextClassRef** cuadro de texto, tipo **urn: oasis: nombres: tc: SAML:2.0:ac:classes:Password**.
-   9. En el portal de Azure clásico en Hola Hola **configurar inicio de sesión único en Cisco Webex** página de diálogo, Hola copia **dirección URL de cierre de sesión remoto** valor y, a continuación, péguelo en hello **cierre de sesión del servicio de SSO de cliente Dirección URL** cuadro de texto.
+   5. En el Portal de Azure clásico, en la página del cuadro de diálogo **Configurar inicio de sesión único en Cisco Webex**, copie el valor de **URL del emisor** y péguelo en el cuadro de texto **Issuer for SAML (IdP ID)** (Emisor para SAML [Id. de IdP]).
+   6. En el Portal de Azure clásico, en la página del cuadro de diálogo **Configurar inicio de sesión único en Cisco Webex**, copie el valor de **Dirección URL de inicio de sesión remoto** y péguelo en el cuadro de texto **Customer SSO Service Login URL** (URL de inicio de sesión de servicio SSO del cliente).
+   7. En la lista **NameID Format** (Formato de NameID), seleccione **Email address** (Dirección de correo electrónico).
+   8. En el cuadro de texto **AuthnContextClassRef**, escriba **urn: oasis: nombres: tc: SAML:2.0:ac:classes:Password**.
+   9. En el Portal de Azure clásico, en la página del cuadro de diálogo **Configurar inicio de sesión único en Cisco Webex**, copie el valor de **Dirección URL de cierre de sesión remoto** y péguelo en el cuadro de texto **Customer SSO Service Logout URL** (URL de cierre de sesión de servicio SSO del cliente).
    10. Haga clic en **Update**(Actualizar).
-9. En el portal de Azure clásico en Hola Hola **configurar inicio de sesión único en Cisco Webex** página del cuadro de diálogo, seleccione la confirmación de configuración de inicio de sesión único de hello y, a continuación, haga clic en **completar**.
+9. En el Portal de Azure clásico, en la página del cuadro de diálogo **Configurar inicio de sesión único en Cisco Webex**, seleccione la confirmación de configuración de inicio de sesión único y luego haga clic en **Completa**.
    
    ![Configurar inicio de sesión único](./media/active-directory-saas-cisco-webex-tutorial/IC777624.png "Configurar inicio de sesión único")
    
 ## <a name="configure-user-provisioning"></a>Configurar aprovisionamiento de usuarios
 
-En orden tooenable toolog de los usuarios de Azure AD en Cisco Webex, se les deben aprovisionar en Cisco Webex.  
+Para permitir que los usuarios de Azure AD inicien sesión en Cisco Webex, tienen que aprovisionarse en Cisco Webex.  
 
-* En caso de hello de Cisco Webex, el aprovisionamiento es una tarea manual.
+* En el caso de Cisco Webex, el aprovisionamiento es una tarea manual.
 
-**tooprovision una cuenta de usuario, realizar Hola lo siguiente:**
+**Para aprovisionar cuentas de usuario, realice estos pasos:**
 
-1. Inicie sesión en tooyour **Cisco Webex** inquilino.
-2. Vaya demasiado**administrar usuarios \> Agregar usuario**.
+1. Inicie sesión en su inquilino de **Cisco Webex** .
+2. Vaya a **Manage Users (Administrar usuarios) \> Add User** (Agregar usuario).
    
    ![Agregar usuarios](./media/active-directory-saas-cisco-webex-tutorial/IC777625.png "Agregar usuarios")
-3. En la sección Agregar usuario hello, realizar Hola pasos:
+3. En la sección Add User (agregar usuario), realice estos pasos:
    
    ![Agregar usuario](./media/active-directory-saas-cisco-webex-tutorial/IC777626.png "Agregar usuario")   
    1. En **Account Type** (Tipo de cuenta) seleccione **Host**.
-   2. Escribir información de Hola de un usuario de Azure AD existente en hello siguientes cuadros de texto: **nombre, apellido**, **nombre de usuario**, **correo electrónico**, **contraseña**, **Confirmar contraseña**.
+   2. Escriba la información de un usuario existente de Azure AD en los cuadros de texto siguientes: **First name, Last name** (Nombre, Apellido), **User name** (Nombre de usuario), **Email** (Correo electrónico), **Password** (Contraseña), **Confirm Password** (Confirmar contraseña).
    3. Haga clic en **Agregar**.
 
 >[!NOTE]
->Puede usar cualquier otra Cisco Webex usuario cuenta herramienta de creación o las API proporcionadas por Cisco Webex tooprovision cuentas de usuario AAD. 
+>Puede usar cualquier otra API o herramienta de creación de cuentas de usuario de Cisco Webex ofrecida por Cisco Webex para aprovisionar cuentas de usuario de AAD. 
 > 
 
 ## <a name="assign-users"></a>Asignar usuarios
-tootest la configuración, debe toogrant los usuarios de hello Azure AD que desee tooallow con su tooit de acceso de la aplicación mediante la asignación de ellos.
+Para probar la configuración, debe conceder acceso a los usuarios de Azure AD a los que quiere permitir el uso de su aplicación.
 
-**tooassign usuarios tooCisco Webex, lleve a cabo Hola pasos:**
+**Para asignar usuarios a Cisco Webex, realice los siguientes pasos:**
 
-1. Hola portal de Azure clásico, cree una cuenta de prueba.
-2. En hello **Cisco Webex** página de integración de aplicaciones, haga clic en **asignar usuarios**.
+1. En el Portal de Azure clásico, cree una cuenta de prueba.
+2. En la página de integración de la aplicación **Cisco Webex**, haga clic en **Asignar usuarios**.
    
    ![Asignar usuarios](./media/active-directory-saas-cisco-webex-tutorial/IC777627.png "Asignar usuarios")
-3. Seleccione el usuario de prueba, haga clic en **asignar**y, a continuación, haga clic en **Sí** tooconfirm su asignación.
+3. Seleccione su usuario de prueba, haga clic en **Asignar** y en **Sí** para confirmar la asignación.
    
    ![Sí](./media/active-directory-saas-cisco-webex-tutorial/IC767830.png "Sí")
 
-Si desea tootest las opciones de inicio de sesión único, abra Hola Panel de acceso. Para obtener más información acerca de hello Panel de acceso, consulte [Introducción toohello Panel de acceso](active-directory-saas-access-panel-introduction.md).
+Si desea probar la configuración de inicio de sesión único, abra el Panel de acceso. Para obtener más información sobre el Panel de acceso, vea [Introducción al Panel de acceso](active-directory-saas-access-panel-introduction.md).
 

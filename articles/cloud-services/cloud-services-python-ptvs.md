@@ -1,6 +1,6 @@
 ---
-title: aaaGet a trabajar con Python y los servicios de nube de Azure | Documentos de Microsoft
-description: "Información general del uso de Python Tools para los servicios de nube de Azure de Visual Studio toocreate incluidos los roles web y roles de trabajo."
+title: "Introducción a Python y a Azure Cloud Services | Microsoft Docs"
+description: "Información general sobre el uso de Python Tools para Visual Studio para crear servicios en la nube de Azure, incluidos roles web y roles de trabajo."
 services: cloud-services
 documentationcenter: python
 author: thraka
@@ -14,15 +14,15 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: f5fd85e754839f146abe912351c59dc4a148c990
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 030a09c05ac4b480c9326b8a9ebc585339f312b5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Roles web y de trabajo de Python con herramientas de Python para Visual Studio
 
-En este artículo se ofrece información general sobre el uso de roles web y de trabajo de Python con [herramientas de Python para Visual Studio][Python Tools for Visual Studio]. Obtenga información acerca de cómo toouse Visual Studio toocreate e implementar un servicio de nube básico que usa Python.
+En este artículo se ofrece información general sobre el uso de roles web y de trabajo de Python con [herramientas de Python para Visual Studio][Python Tools for Visual Studio]. Obtenga información acerca de cómo usar Visual Studio para crear e implementar un servicio en la nube básico que usa Python.
 
 ## <a name="prerequisites"></a>Requisitos previos
 * [Visual Studio 2013, 2015 o 2017](https://www.visualstudio.com/)
@@ -35,45 +35,45 @@ En este artículo se ofrece información general sobre el uso de roles web y de 
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-are-python-web-and-worker-roles"></a>¿Qué son los roles web y de trabajo de Python?
-Azure ofrece tres modelos de proceso para la ejecución de aplicaciones: [característica Web Apps de Azure App Service][execution model-web sites], [Azure Virtual Machines][execution model-vms], and [Azure Cloud Services][execution model-cloud services]. Los tres modelos admiten Python. Cloud Services, que incluye roles web y de trabajo, proporciona una *Plataforma como servicio (PaaS)*. Dentro de un servicio de nube, un rol web proporciona a un web de front-end de Internet Information Services (IIS) web server toohost dedicado de las aplicaciones, mientras que un rol de trabajo puede ejecutar tareas asincrónicas, ejecución prolongada o perpetuas independientes de interacción del usuario o una entrada de.
+Azure ofrece tres modelos de proceso para la ejecución de aplicaciones: [característica Web Apps de Azure App Service][execution model-web sites], [Azure Virtual Machines][execution model-vms], and [Azure Cloud Services][execution model-cloud services]. Los tres modelos admiten Python. Cloud Services, que incluye roles web y de trabajo, proporciona una *Plataforma como servicio (PaaS)*. En un servicio en la nube, un rol web ofrece un servidor web dedicado de Internet Information Services (IIS) para hospedar aplicaciones web front-end, mientras que un rol de trabajo puede ejecutar tareas asincrónicas, de ejecución prolongada o tareas perpetuas independientes de la entrada o la interacción del usuario.
 
 Para más información, consulte [¿Qué es un servicio en la nube?]
 
 > [!NOTE]
-> *¿Busca un sitio Web sencillo toobuild?*
-> Si su escenario implica sólo un sitio Web simple front-end, considere el uso de características de las aplicaciones Web ligeras hello en el servicio de aplicación de Azure. Puede actualizar fácilmente tooa servicio en la nube que aumenta su sitio Web y cambian los requisitos. Vea hello <a href="/develop/python/">Centro para desarrolladores de Python</a> para los artículos que tratan el desarrollo de característica de aplicaciones Web de hello en el servicio de aplicación de Azure.
+> *¿Desea compilar un sitio web sencillo?*
+> Si el escenario solo requiere un sitio web de front-end sencillo, considere la posibilidad de usar la característica Web Apps ligera en Azure App Service. Puede actualizar a un Servicio en la nube más adelante, cuando su sitio web sea más grande y sus requisitos cambien. Consulte el <a href="/develop/python/">Centro para desarrolladores de Python</a> para obtener artículos sobre el desarrollo de la característica Web Apps en Azure App Service.
 > <br />
 > 
 > 
 
 ## <a name="project-creation"></a>Creación de un proyecto
-En Visual Studio, puede seleccionar **servicio de nube de Azure** en hello **nuevo proyecto** cuadro de diálogo **Python**.
+En Visual Studio, puede seleccionar **Servicio en la nube de Azure** en el cuadro de diálogo **Nuevo proyecto**, en **Python**.
 
 ![Cuadro de diálogo Nuevo proyecto](./media/cloud-services-python-ptvs/new-project-cloud-service.png)
 
-En el Asistente de servicio de nube de Azure de hello, puede crear nuevo sitio web y roles de trabajo.
+En el asistente Servicio en la nube de Azure, puede crear roles web y de trabajo nuevos.
 
 ![Cuadro de diálogo Servicio en la nube de Azure](./media/cloud-services-python-ptvs/new-service-wizard.png)
 
-plantilla de rol de trabajo de Hello incluye reutilizable código tooconnect tooan cuenta de almacenamiento de Azure o Service Bus de Azure.
+La plantilla de rol de trabajo incluye código reutilizable que conecta a una cuenta de Azure Storage o Azure Service Bus.
 
 ![Solución de servicio en la nube](./media/cloud-services-python-ptvs/worker.png)
 
-Puede agregar el servicio web o trabajo roles tooan existente en la nube en cualquier momento.  Puede elegir tooadd los proyectos existentes de la solución o crear otras nuevas.
+Puede agregar roles web o de trabajo a un servicio en la nube que ya existe en cualquier momento.  Puede optar por agregar proyectos existentes a su solución o por crear otros nuevos.
 
 ![Comando Agregar rol](./media/cloud-services-python-ptvs/add-new-or-existing-role.png)
 
 Su servicio en la nube puede contener roles implementados en diferentes lenguajes.  Por ejemplo, puede tener un rol web de Python implementado con Django, con Python o con roles de trabajo de C#.  Puede comunicarse fácilmente entre sus roles usando colas del Bus de servicio o colas de almacenamiento.
 
-## <a name="install-python-on-hello-cloud-service"></a>Instalar Python Hola servicio en nube
+## <a name="install-python-on-the-cloud-service"></a>Instalación de Python en el servicio en la nube
 > [!WARNING]
-> scripts de instalación de Hola que se instalan con Visual Studio (en este artículo se actualizó por última vez el tiempo de hello) no funcionan. En esta sección se describe una solución alternativa.
+> No funcionan los scripts de configuración que se instalaron con Visual Studio (en el momento en que se actualizó por última vez este artículo). En esta sección se describe una solución alternativa.
 > 
 > 
 
-Hola principal problema con las secuencias de comandos del programa de instalación de hello es no instalar python. En primer lugar, defina dos [las tareas de inicio](cloud-services-startup-tasks.md) en hello [ServiceDefinition.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) archivo. primera tarea de Hello (**PrepPython.ps1**) descarga e instala en tiempo de ejecución de Python de Hola. segunda tarea de Hello (**PipInstaller.ps1**) se ejecuta pip tooinstall las dependencias puede tener.
+El problema principal con los scripts de configuración consiste en que instalan Python. En primer lugar, defina dos [tareas de inicio](cloud-services-startup-tasks.md) en el archivo [ServiceDefinition.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef). La primera tarea (**PrepPython.ps1**) descarga e instala el entorno de tiempo de ejecución de Python. La segunda tarea (**PipInstaller.ps1**) ejecuta pip para instalar todas las dependencias que pueda tener.
 
-Hola siguientes secuencias de comandos se escribieron destino Python es 3.5. Si desea toouse Hola versión 2.x de python, conjunto hello **PYTHON2** variable archivo demasiado**en** para las tareas de inicio de hello dos y tarea de hello en tiempo de ejecución: `<Variable name="PYTHON2" value="<mark>on</mark>" />`.
+Los siguientes scripts se escribieron para Python 3.5. Si desea usar la versión 2.x de Python, establezca el archivo de variables **PYTHON2** en **activado** para las dos tareas de inicio y la tarea en tiempo de ejecución: `<Variable name="PYTHON2" value="<mark>on</mark>" />`.
 
 ```xml
 <Startup>
@@ -100,7 +100,7 @@ Hola siguientes secuencias de comandos se escribieron destino Python es 3.5. Si 
 </Startup>
 ```
 
-Hola **PYTHON2** y **PYPATH** variables se deben agregar tarea de inicio del trabajo de toohello. Hola **PYPATH** variable solo se usa si hello **PYTHON2** variable se establece demasiado**en**.
+Se deben agregar las variables **PYTHON2** y **PYPATH** a la tarea de inicio del trabajo. La variable **PYPATH** solo se usa si la variable **PYTHON2** se establece en **activado**.
 
 ```xml
 <Runtime>
@@ -166,10 +166,10 @@ Hola **PYTHON2** y **PYPATH** variables se deben agregar tarea de inicio del tra
 
 
 
-A continuación, cree hello **PrepPython.ps1** y **PipInstaller.ps1** archivos Hola **. / bin** carpeta de su rol.
+A continuación, cree los archivos **PrepPython.ps1** y **PipInstaller.ps1** en la carpeta **./bin** del rol.
 
 #### <a name="preppythonps1"></a>PrepPython.ps1
-Este script instala Python. Si hello **PYTHON2** variable de entorno se establece demasiado**en**, a continuación, instalar Python 2.7, en caso contrario, se instala 3.5 de Python.
+Este script instala Python. Si la variable de entorno **PYTHON2** se establece en **on,** (activado) se instala Python 2.7 o, en caso contrario, se instala Python 3.5.
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -195,7 +195,7 @@ if (-not $is_emulated){
             $outFile = "${env:TEMP}\python-2.7.12.amd64.msi"
         }
 
-        Write-Output "Not found, downloading $url too$outFile$nl"
+        Write-Output "Not found, downloading $url to $outFile$nl"
         Invoke-WebRequest $url -OutFile $outFile
         Write-Output "Installing$nl"
 
@@ -215,7 +215,7 @@ if (-not $is_emulated){
 ```
 
 #### <a name="pipinstallerps1"></a>PipInstaller.ps1
-Esta secuencia de comandos llama a una pip e instala todas las dependencias de Hola de Hola **requirements.txt** archivo. Si hello **PYTHON2** variable de entorno se establece demasiado**en**, a continuación, se usa Python 2.7, en caso contrario, se usa Python 3.5.
+Este script se llama pip e instala todas las dependencias en el archivo **requirements.txt**. Si la variable de entorno **PYTHON2** se establece en **on,** (activado) se usa Python 2.7 o, en caso contrario, se usa Python 3.5.
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -244,13 +244,13 @@ if (-not $is_emulated){
 
 #### <a name="modify-launchworkerps1"></a>Modificación del archivo LaunchWorker.ps1
 > [!NOTE]
-> En caso de hello de un **rol de trabajo** proyecto **LauncherWorker.ps1** archivo es necesario tooexecute Hola inicio. En un **rol web** proyecto de equipo y hello archivo de inicio se define en Propiedades del proyecto Hola.
+> En caso de un proyecto de **rol de trabajo**, se necesita el archivo **LauncherWorker.ps1** para ejecutar el archivo de inicio. En un proyecto de **rol web**, el archivo de inicio se define por el contrario en las propiedades del proyecto.
 > 
 > 
 
-Hola **bin\LaunchWorker.ps1** creó originalmente toodo una gran cantidad de trabajo de preparación, pero realmente no funciona. Reemplace el contenido de hello en ese archivo por hello siguiente secuencia de comandos.
+El archivo **bin\LaunchWorker.ps1** se creó originalmente para hacer una gran cantidad de trabajo de preparación pero realmente no funciona. Reemplace el contenido del archivo por el script siguiente.
 
-Esta secuencia de comandos llama hello **worker.py** archivo desde el proyecto de python. Si hello **PYTHON2** variable de entorno se establece demasiado**en**, a continuación, se usa Python 2.7, en caso contrario, se usa Python 3.5.
+Este script llama al archivo **worker.py** desde el proyecto de Python. Si la variable de entorno **PYTHON2** se establece en **on,** (activado) se usa Python 2.7 o, en caso contrario, se usa Python 3.5.
 
 ```powershell
 $is_emulated = $env:EMULATED -eq "true"
@@ -274,7 +274,7 @@ else
 {
     Write-Output "Running (EMULATED) worker.py$nl"
 
-    # Customize tooyour local dev environment
+    # Customize to your local dev environment
 
     if ($is_python2) {
         cd..
@@ -288,7 +288,7 @@ else
 ```
 
 #### <a name="pscmd"></a>ps.cmd
-plantillas de Visual Studio Hola deberían haber creado un **ps.cmd** archivo Hola **. / bin** carpeta. Esta secuencia de comandos de shell llama Hola PowerShell scripts de contenedor anteriores y proporciona un registro basándose en nombre Hola Hola PowerShell contenedor llama. Si no se ha creado este archivo, esto es lo que debería haber en él. 
+Las plantillas de Visual Studio deben haber creado un archivo **ps.cmd** en la carpeta **./bin**. Este script de shell llama a los scripts anteriores del contenedor de PowerShell y proporciona un registro basado en el nombre del contenedor de PowerShell que se ha llamado. Si no se ha creado este archivo, esto es lo que debería haber en él. 
 
 ```bat
 @echo off
@@ -302,38 +302,38 @@ if not exist "%DiagnosticStore%\LogFiles" mkdir "%DiagnosticStore%\LogFiles"
 
 
 ## <a name="run-locally"></a>Ejecución en modo local
-Si establece el proyecto de servicio de nube como proyecto de inicio de hello y presione F5, servicio de nube de Hola se ejecuta en el emulador de Azure local Hola.
+Si establece su proyecto de servicio en la nube como proyecto de inicio y presiona F5, el servicio en la nube se ejecuta en el emulador de Azure local.
 
-Aunque PTVS admite iniciar en el emulador de hello, depuración (por ejemplo, los puntos de interrupción) no funciona.
+Aunque PTVS admite el inicio en el emulador, la depuración (por ejemplo, puntos de interrupción) no funciona.
 
-toodebug sus roles web y de trabajo, puede establecer el proyecto de rol de hello como proyecto de inicio de Hola y que, en lugar de depuración.  También puede establecer varios proyectos de inicio.  Haga clic en soluciones de hello y, a continuación, seleccione **Establecer proyectos de inicio**.
+Para depurar roles web y de trabajo, puede establecer el proyecto de rol como proyecto de inicio y depurarlo.  También puede establecer varios proyectos de inicio.  Haga clic con el botón derecho en la solución y luego seleccione **Establecer proyectos de inicio**.
 
 ![Propiedades del proyecto de inicio de la solución](./media/cloud-services-python-ptvs/startup.png)
 
-## <a name="publish-tooazure"></a>Publicar tooAzure
-toopublish, haga clic en proyecto de servicio de nube de hello en soluciones de hello y, a continuación, seleccione **publicar**.
+## <a name="publish-to-azure"></a>Publicación en Azure
+Para publicar, haga clic con el botón derecho en el proyecto del servicio en la nube de la solución y luego seleccione **Publicar**.
 
 ![Inicio de sesión para publicación de Microsoft Azure](./media/cloud-services-python-ptvs/publish-sign-in.png)
 
-Siga al Asistente de Hola. Si es necesario, habilite el Escritorio remoto. Escritorio remoto es útil cuando necesita toodebug algo.
+Siga las instrucciones del asistente. Si es necesario, habilite el Escritorio remoto. El Escritorio remoto es útil cuando necesita depurar algo.
 
 Cuando haya terminado la configuración, haga clic en **Publicar**.
 
-Algunos progreso aparece en la ventana de salida de hello, a continuación, verá la ventana de registro de actividad de Microsoft Azure hello.
+En la ventana de salida se ve cierto progreso y después se verá la ventana Registro de actividad de Microsoft Azure.
 
 ![Ventana Registro de actividad de Microsoft Azure](./media/cloud-services-python-ptvs/publish-activity-log.png)
 
-Implementación tarda varios minutos toocomplete, a continuación, en la web o roles de trabajo se ejecutan en Azure.
+La implementación tarda varios minutos y después sus roles web y/o de trabajo estarán ejecutándose en Azure.
 
 ### <a name="investigate-logs"></a>Investigación de registros
-Después de hello en la nube servicio virtual machine se inicia y se instala Python, puede mirar Hola registros toofind mensajes de error. Estos registros se encuentran en hello **C:\Resources\Directory\\\LogFiles {rol}** carpeta. **PrepPython.err.txt** tiene al menos un error en ella desde al script de Hola intenta toodetect si está instalado Python y **PipInstaller.err.txt** puede informar de una versión no actualizada de pip.
+Después de que la máquina virtual del servicio en la nube se inicie e instale Python, puede mirar los registros para buscar mensajes de error. Estos registros se encuentran en la carpeta **C:\Resources\Directory\\{role}\LogFiles**. **PrepPython.err.txt** tiene al menos un error cuando el script intente detectar si está instalado Python y **PipInstaller.err.txt** puede informar acerca de una versión obsoleta de pip.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para obtener más información sobre cómo trabajar con roles de web y de trabajo en Python Tools para Visual Studio, consulte la documentación de PTVS de hello:
+Para obtener información detallada sobre el trabajo con roles web y de trabajo en Python Tools para Visual Studio, consulte la documentación de PTVS:
 
 * [Proyectos de servicio en la nube][Cloud Service Projects]
 
-Para obtener más detalles sobre el uso de servicios de Azure desde los roles web y de trabajo, como el uso de almacenamiento de Azure o Bus de servicio, vea Hola siguientes artículos:
+Para más información sobre el uso de servicios de Azure desde roles web y de trabajo, como el uso de Azure Storage o Service Bus, consulte los siguientes artículos:
 
 * [Blob Service][Blob Service]
 * [Table Service][Table Service]
@@ -344,7 +344,7 @@ Para obtener más detalles sobre el uso de servicios de Azure desde los roles we
 <!--Link references-->
 
 [¿Qué es un servicio en la nube?]: cloud-services-choose-me.md
-[execution model-web sites]: ../app-service-web/app-service-web-overview.md
+[execution model-web sites]: ../app-service/app-service-web-overview.md
 [execution model-vms]:../virtual-machines/windows/overview.md
 [execution model-cloud services]: cloud-services-choose-me.md
 [Python Developer Center]: /develop/python/

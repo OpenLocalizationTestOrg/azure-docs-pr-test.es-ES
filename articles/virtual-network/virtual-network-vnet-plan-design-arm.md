@@ -1,6 +1,6 @@
 ---
-title: "Red Virtual (VNet) aaaAzure Guía de diseño y Plan | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo tooplan y diseño de redes virtuales en Azure según sus requisitos de aislamiento, la conectividad y la ubicación."
+title: "Guía de planeamiento y diseño de Azure Virtual Network (red virtual) | Microsoft Docs"
+description: "Obtenga información sobre cómo planear y diseñar redes virtuales en Azure según los requisitos de aislamiento, conectividad y ubicación."
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,39 +14,39 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/08/2016
 ms.author: jdial
-ms.openlocfilehash: f3ffadf8cf254f64b1f86b44f90315d2bc679f63
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9a0126235c9ff3fec05d7709bdee95ab4832a33b
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="plan-and-design-azure-virtual-networks"></a>Planeación y diseño de redes virtuales de Azure
-Crear un tooexperiment de red virtual con es bastante fácil, pero lo más probable es que se va a implementar varias redes virtuales a través de necesidades de producción de hello tiempo toosupport de su organización. Con cierta planificación y diseño, debe ser capaz de toodeploy redes virtuales y conectarse a recursos de hello que necesita más eficazmente. Si no está familiarizado con las redes virtuales, se recomienda que se [obtener información sobre redes virtuales](virtual-networks-overview.md) y [cómo toodeploy](virtual-networks-create-vnet-arm-pportal.md) uno antes de continuar.
+Crear una red virtual con la cual experimentar es bastante sencillo, pero es probable que, con el tiempo, implemente varias redes virtuales para satisfacer las necesidades de producción que tiene su organización. Si aplica cierta planeación y diseño, podrá implementar redes virtuales y conectar los recursos que necesita de manera más eficaz. Si no conoce las redes virtuales, le recomendamos que [obtenga información sobre ellas](virtual-networks-overview.md) y aprenda [a implementar](virtual-networks-create-vnet-arm-pportal.md) una antes de continuar.
 
 ## <a name="plan"></a>Plan
-Un conocimiento detallado de las suscripciones, las regiones y los recursos de red de Azure resulta fundamental para obtener éxito. Puede usar la lista Hola consideraciones a continuación como punto de partida. Una vez que comprenda las consideraciones, puede definir requisitos de hello para el diseño de red.
+Un conocimiento detallado de las suscripciones, las regiones y los recursos de red de Azure resulta fundamental para obtener éxito. Como punto de partida, puede usar la lista de consideraciones que aparece a continuación. Una vez que compra esas consideraciones, podrá definir los requisitos para el diseño de la red.
 
 ### <a name="considerations"></a>Consideraciones
-Antes de contestar Hola siguientes preguntas de planificación, tenga en cuenta Hola siguiente:
+Antes de responder las preguntas relacionadas con la planeación que aparecen más adelante, considere lo siguiente:
 
-* Todo lo que se crea en Azure consta de uno o más recursos. Una máquina virtual (VM) es un recurso, Hola adaptador interfaz de red (NIC) utilizada por una máquina virtual es un recurso, dirección IP pública Hola utilizado por una NIC es un recurso, red virtual de Hola Hola NIC es toois conectado un recurso.
-* Puede crear recursos dentro de una suscripción y una [región de Azure](https://azure.microsoft.com/regions/#services) . Recursos solo pueden ser tooa conectado red virtual que existe en hello mismo recurso de Hola de región y la suscripción se encuentra en.
-* Puede conectar redes virtuales tooeach otros mediante:
-    * **[Intercambio de tráfico de red virtual](virtual-network-peering-overview.md)**: redes virtuales Hola deben existir en hello misma región de Azure. Ancho de banda entre los recursos en redes virtuales emparejar es Hola mismo como si fueron de los recursos de hello toohello conectado misma red virtual.
-    * **Un Azure [puerta de enlace VPN](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)**: redes virtuales Hola pueden existir en hello iguales, o en diferentes regiones de Azure. Ancho de banda entre los recursos en redes virtuales conectadas a través de una puerta de enlace de VPN está limitado por el ancho de banda de Hola de hello puerta de enlace VPN.
-* Puede conectar red local de redes virtuales tooyour mediante uno de hello [opciones de conectividad](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti) disponibles en Azure.
-* Varios recursos pueden agruparse en [grupos de recursos](../azure-resource-manager/resource-group-overview.md#resource-groups), lo que sea más fácil recursos de hello toomanage como una unidad. Un grupo de recursos puede contener recursos de varias regiones, siempre que pertenecen los recursos de hello toohello misma suscripción.
+* Todo lo que se crea en Azure consta de uno o más recursos. Una máquina virtual (VM) es un recurso, la interfaz de adaptador de red (NIC) que una máquina virtual usa es un recurso, la dirección IP pública que una NIC usa es un recurso, la red virtual a la que se conecta la NIC también lo es.
+* Puede crear recursos dentro de una suscripción y una [región de Azure](https://azure.microsoft.com/regions/#services) . Los recursos solo se pueden conectar a una red virtual que existe en la misma región y suscripción en que se encuentran.
+* Puede conectar redes virtuales entre sí mediante:
+    * **[Emparejamiento de red virtual](virtual-network-peering-overview.md)**: las redes virtuales deben existir en la misma región de Azure. El ancho de banda entre los recursos de redes virtuales emparejadas es el mismo que si los recursos estuvieran conectados a la misma red virtual.
+    * **Azure [VPN Gateway](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)**: las redes virtuales pueden estar en la misma región de Azure o en regiones distintas. El ancho de banda entre los recursos en redes virtuales conectadas a través de VPN Gateway está limitado por el ancho de banda de VPN Gateway.
+* Puede conectar redes virtuales a la red local mediante una de las [opciones de conectividad](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti) disponibles en Azure.
+* Es posible agrupar distintos recursos en los [grupos de recursos](../azure-resource-manager/resource-group-overview.md#resource-groups), lo que permite facilitar la administración del recurso como una unidad. Un grupo de recursos puede contener recursos provenientes de varias regiones, siempre que estos pertenezcan a la misma suscripción.
 
 ### <a name="define-requirements"></a>Definición de los requisitos
-Usar preguntas de Hola a continuación como un punto de partida para el diseño de red de Azure.    
+Use las siguientes preguntas como punto de partida para diseñar la red de Azure.    
 
-1. ¿Qué ubicaciones de Azure en el que podrá usar toohost redes virtuales?
-2. ¿Necesita tooprovide comunicación entre estas ubicaciones de Azure?
-3. ¿Necesita tooprovide comunicación entre el VNet(s) de Azure y su datacenter(s) local?
+1. ¿Qué ubicaciones de Azure usará para hospedar las redes virtuales?
+2. ¿Necesita proporcionar comunicación entre estas ubicaciones de Azure?
+3. ¿Necesita proporcionar comunicación entre las redes virtuales de Azure y los centros de datos locales?
 4. ¿Cuántas máquinas virtuales de infraestructura como servicio (IaaS), roles de servicios en la nube y aplicaciones web necesita para su solución?
-5. ¿Necesita tráfico tooisolate basado en grupos de máquinas virtuales (es decir, front-end web servidores y servidores de base de datos de back-end)?
-6. ¿Necesita que el flujo de tráfico de toocontrol con dispositivos virtuales?
-7. ¿Hacer los usuarios necesidad de distintos conjuntos de permisos toodifferent recursos de Azure?
+5. ¿Necesita aislar el tráfico según los grupos de máquinas virtuales (es decir, servidores front-end web y servidores de base de datos back-end)?
+6. ¿Necesita controlar el flujo de tráfico mediante aplicaciones virtuales?
+7. ¿Los usuarios necesitan distintos conjuntos de permisos para los diferentes recursos de Azure?
 
 ### <a name="understand-vnet-and-subnet-properties"></a>Descripción de las propiedades de las redes virtuales y las subredes
 Los recursos de las redes virtuales y las subredes ayudan a definir un límite de seguridad para las cargas de trabajo que se ejecutan en Azure. Una red virtual se caracteriza por una colección de espacios de direcciones, también denominados bloques CIDR.
@@ -56,155 +56,155 @@ Los recursos de las redes virtuales y las subredes ayudan a definir un límite d
 >
 >
 
-Redes virtuales contienen Hola propiedades siguientes.
+Las Redes virtuales contienen las siguientes propiedades:
 
 | Propiedad | Description | Restricciones |
 | --- | --- | --- |
-| **name** |Nombre de red virtual |Cadena de caracteres too80. Puede incluir letras, números, caracteres de subrayado, puntos o guiones. Debe empezar por una letra o un número. Debe finalizar en una letra, un número o un carácter de subrayado. Puede incluir letras mayúsculas o minúsculas. |
-| **ubicación** |Ubicación de Azure (también denominado tooas región). |Debe ser uno de hello ubicaciones válidas de Azure. |
-| **addressSpace** |Colección de prefijos de direcciones que constituyen Hola red virtual en la notación CIDR. |Debe ser una matriz de bloques de direcciones CIDR válidos, incluidos intervalos de direcciones IP públicas. |
-| **subredes** |Colección de subredes que componen Hola red virtual |vea la tabla de propiedades de subred de hello siguiente. |
+| **name** |Nombre de red virtual |Cadena de hasta 80 caracteres. Puede incluir letras, números, caracteres de subrayado, puntos o guiones. Debe empezar por una letra o un número. Debe finalizar en una letra, un número o un carácter de subrayado. Puede incluir letras mayúsculas o minúsculas. |
+| **ubicación** |La ubicación de Azure (también conocida como región). |Debe ser una de las ubicaciones válidas de Azure. |
+| **addressSpace** |Es la colección de prefijos de direcciones que conforman la red virtual en la notación CIDR. |Debe ser una matriz de bloques de direcciones CIDR válidos, incluidos intervalos de direcciones IP públicas. |
+| **subredes** |Es la colección de subredes que constituyen la red virtual |Consulte la tabla de propiedades de subred que aparece a continuación. |
 | **dhcpOptions** |El objeto que contiene una propiedad requerida única llamada **dnsServers**. | |
-| **dnsServers** |Matriz de servidores DNS usados por hello red virtual. Si no se especifica ningún servidor, se usa la resolución interna de nombres de Azure. |Debe ser una matriz de los servidores DNS too10, mediante una dirección IP. |
+| **dnsServers** |La matriz de servidores DNS que la red virtual usa. Si no se especifica ningún servidor, se usa la resolución interna de nombres de Azure. |Debe ser una matriz de hasta 10 servidores DNS por dirección IP. |
 
-Una subred es un recurso secundario de una red virtual que le ayudará a definir segmentos de espacios de direcciones dentro de un bloque CIDR mediante prefijos de direcciones IP. Pueden agregarse NIC toosubnets y tooVMs conectados, proporcionar conectividad para diversas cargas de trabajo.
+Una subred es un recurso secundario de una red virtual que le ayudará a definir segmentos de espacios de direcciones dentro de un bloque CIDR mediante prefijos de direcciones IP. Las NIC pueden agregarse a subredes y conectarse a máquinas virtuales, lo cual le proporciona conectividad a varias cargas de trabajo.
 
-Subredes contienen Hola propiedades siguientes.
+Las subredes contienen las siguientes propiedades:
 
 | Propiedad | Description | Restricciones |
 | --- | --- | --- |
-| **name** |Nombre de subred |Cadena de caracteres too80. Puede incluir letras, números, caracteres de subrayado, puntos o guiones. Debe empezar por una letra o un número. Debe finalizar en una letra, un número o un carácter de subrayado. Puede incluir letras mayúsculas o minúsculas. |
-| **ubicación** |Ubicación de Azure (también denominado tooas región). |Debe ser uno de hello ubicaciones válidas de Azure. |
-| **addressPrefix** |Prefijo de dirección única que componen la subred de hello en la notación CIDR |Debe ser un único bloque CIDR que forma parte de uno de los espacios de direcciones de la red virtual de Hola. |
-| **networkSecurityGroup** |NSG aplica toohello subred | |
-| **routeTable** |Tabla de ruta aplicado toohello subred | |
-| **ipConfigurations** |Colección de objetos de configuración de IP usa NIC conectado toohello subred | |
+| **name** |Nombre de subred |Cadena de hasta 80 caracteres. Puede incluir letras, números, caracteres de subrayado, puntos o guiones. Debe empezar por una letra o un número. Debe finalizar en una letra, un número o un carácter de subrayado. Puede incluir letras mayúsculas o minúsculas. |
+| **ubicación** |La ubicación de Azure (también conocida como región). |Debe ser una de las ubicaciones válidas de Azure. |
+| **addressPrefix** |Es el prefijo de dirección única que constituye la subred en la notación de CIDR |Debe ser un bloque CIDR único que forme parte de uno de los espacios de direcciones de la red virtual. |
+| **networkSecurityGroup** |Es el grupo de seguridad de red aplicado a la subred | |
+| **routeTable** |Es la tabla de ruta que se aplica a la subred | |
+| **ipConfigurations** |Es la colección de objetos de configuración IP que usan las NIC conectadas a la subred. | |
 
 ### <a name="name-resolution"></a>Resolución de nombres
-De forma predeterminada, se utiliza la red virtual [resolución de nombres que viene con Azure](virtual-networks-name-resolution-for-vms-and-role-instances.md) tooresolve nombres Hola red virtual y en Hola Internet pública. Sin embargo, si se conectan a los centros de datos de redes virtuales tooyour local, deberá tooprovide [su propio servidor DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md) tooresolve nombres entre las redes.  
+De manera predeterminada, la red virtual usa la [resolución de nombres proporcionada por Azure](virtual-networks-name-resolution-for-vms-and-role-instances.md) para resolver los nombres dentro de la red virtual y en la red pública de Internet. Sin embargo, si conecta las redes virtuales a los centros de datos locales, necesita proporcionar [su propio servidor DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md) para resolver los nombres entre sus redes.  
 
 ### <a name="limits"></a>límites
-Revise los límites de red de hello en hello [Azure tiene una limitación](../azure-subscription-service-limits.md#networking-limits) tooensure de artículo que su diseño no entra en conflicto con alguno de los límites de Hola. Algunos límites se pueden aumentar con la apertura de una incidencia de soporte técnico.
+Revise los límites de red en el artículo sobre [límites de Azure](../azure-subscription-service-limits.md#networking-limits) para asegurarse de que su diseño no entra en conflicto con cualquiera de los límites. Algunos límites se pueden aumentar con la apertura de una incidencia de soporte técnico.
 
 ### <a name="role-based-access-control-rbac"></a>Control de acceso basado en rol (RBAC)
-Puede usar [RBAC de Azure](../active-directory/role-based-access-built-in-roles.md) nivel de hello toocontrol de usuarios diferentes de acceso puede tener toodifferent recursos en Azure. De este modo puede dividir el trabajo de hello realizado por el equipo según sus necesidades.
+Puede usar el [RBAC de Azure](../active-directory/role-based-access-built-in-roles.md) para controlar el nivel de acceso que distintos usuarios pueden tener a los diferentes recursos de Azure. De esta forma, puede separar el trabajo que realiza su equipo según sus necesidades.
 
-En lo que las redes virtuales están en cuestión, los usuarios de hello **red colaborador** rol tiene control total sobre los recursos de red virtual de Azure Resource Manager. De igual forma, los usuarios de hello **clásico colaborador de red** rol tiene control total sobre los recursos de red virtual clásica.
+En lo que respecta a las redes virtuales, los usuarios que cuentan con el rol **Colaborador de la red** tienen el control total sobre los recursos de la red virtual del Administrador de recursos de Azure. De manera similar, los usuarios que cuentan con el rol **Colaborador de la red clásica** tienen el control total sobre los recursos de la red virtual clásica.
 
 > [!NOTE]
-> También puede [crear sus propios roles](../active-directory/role-based-access-control-configure.md) tooseparate sus necesidades administrativas.
+> También puede [crear sus propios roles](../active-directory/role-based-access-control-configure.md) para separar sus necesidades de administración.
 >
 >
 
 ## <a name="design"></a>Diseño
-Una vez que sepa respuestas hello toohello preguntas en hello [planear](#Plan) sección, revise los siguientes Hola antes de definir las Vnet.
+Una vez que sepa las respuestas a las preguntas de la sección [Planeación](#Plan) , revise los siguientes puntos antes de definir las redes virtuales.
 
 ### <a name="number-of-subscriptions-and-vnets"></a>Cantidad de suscripciones y redes virtuales
-Considere la posibilidad de crear varias redes virtuales en hello los escenarios siguientes:
+Debe considerar la posibilidad de crear varias redes virtuales en los siguientes escenarios:
 
-* **Máquinas virtuales que necesitan toobe situada en ubicaciones diferentes de Azure**. Las redes virtuales de Azure son regionales. No pueden abarcar ubicaciones. Por lo tanto, necesitará al menos una red virtual para cada ubicación de Azure que desee toohost las máquinas virtuales en.
-* **Las cargas de trabajo que necesitan toobe completamente aislada entre sí**. Puede crear redes virtuales independientes, ese Hola de uso incluso mismo espacios de direcciones IP, tooisolate distintas cargas de trabajo entre sí.
+* **Las máquinas virtuales que deben existir en las distintas ubicaciones de Azure**. Las redes virtuales de Azure son regionales. No pueden abarcar ubicaciones. Por lo tanto, se necesita, como mínimo, una red virtual para cada ubicación de Azure en la que desea hospedar las máquinas virtuales.
+* **Las cargas de trabajo que deben estar completamente aisladas entre sí**. Puede crear redes virtuales independientes, que incluso usen los mismos espacios de direcciones IP, para aislar las distintas cargas de trabajo entre sí.
 
-Tenga en cuenta que los límites de Hola que se ven arriba son por cada región por suscripción. Esto significa que puede utilizar varias suscripciones tooincrease Hola límite de recursos, puede mantener en Azure. Puede usar una VPN de sitio a sitio o un circuito de ExpressRoute, tooconnect redes virtuales en distintas suscripciones.
+Tenga en cuenta que los límites ya indicados son por región, por suscripción. Esto significa que puede usar varias suscripciones para aumentar el límite de los recursos que puede mantener en Azure. Puede usar una VPN sitio a sitio o un circuito de ExpressRoute para conectar redes virtuales en distintas suscripciones.
 
 ### <a name="subscription-and-vnet-design-patterns"></a>Patrones de diseño de redes virtuales y suscripciones
-Hola tabla siguiente muestran algunos patrones de diseño común para el uso de suscripciones y redes virtuales.
+La siguiente tabla muestra algunos patrones de diseño comunes para usar las suscripciones y las redes virtuales.
 
 | Escenario | Diagrama | Ventajas | Desventajas |
 | --- | --- | --- | --- |
-| Suscripción única, dos redes virtuales por aplicación. |![Suscripción única](./media/virtual-network-vnet-plan-design-arm/figure1.png) |Una sola suscripción toomanage. |Número máximo de redes virtuales por región de Azure. Necesita más suscripciones después de ese límite. Hola de revisión [Azure tiene una limitación](../azure-subscription-service-limits.md#networking-limits) artículo para obtener más información. |
-| Una suscripción por aplicación, dos redes virtuales por aplicación. |![Suscripción única](./media/virtual-network-vnet-plan-design-arm/figure2.png) |Usa solo dos redes virtuales por suscripción. |Toomanage más difícil cuando hay demasiadas aplicaciones. |
-| Una suscripción por unidad de negocio, dos redes virtuales por aplicación. |![Suscripción única](./media/virtual-network-vnet-plan-design-arm/figure3.png) |Equilibrio entre la cantidad de suscripciones y las redes virtuales. |Número máximo de redes virtuales por unidad de negocio (suscripción). Hola de revisión [Azure tiene una limitación](../azure-subscription-service-limits.md#networking-limits) artículo para obtener más información. |
+| Suscripción única, dos redes virtuales por aplicación. |![Suscripción única](./media/virtual-network-vnet-plan-design-arm/figure1.png) |Solo una suscripción que administrar. |Número máximo de redes virtuales por región de Azure. Necesita más suscripciones después de ese límite. Revise el artículo sobre los [límites de Azure](../azure-subscription-service-limits.md#networking-limits) para obtener más información. |
+| Una suscripción por aplicación, dos redes virtuales por aplicación. |![Suscripción única](./media/virtual-network-vnet-plan-design-arm/figure2.png) |Usa solo dos redes virtuales por suscripción. |Es más difícil de administrar cuando hay demasiadas aplicaciones. |
+| Una suscripción por unidad de negocio, dos redes virtuales por aplicación. |![Suscripción única](./media/virtual-network-vnet-plan-design-arm/figure3.png) |Equilibrio entre la cantidad de suscripciones y las redes virtuales. |Número máximo de redes virtuales por unidad de negocio (suscripción). Revise el artículo sobre los [límites de Azure](../azure-subscription-service-limits.md#networking-limits) para obtener más información. |
 | Una suscripción por unidad de negocio, dos redes virtuales por grupo de aplicaciones. |![Suscripción única](./media/virtual-network-vnet-plan-design-arm/figure4.png) |Equilibrio entre la cantidad de suscripciones y las redes virtuales. |Las aplicaciones se deben aislar mediante subredes y NSG. |
 
 ### <a name="number-of-subnets"></a>Cantidad de subredes
-Debe considerar varias subredes en una red virtual en hello los escenarios siguientes:
+Debe considerar la posibilidad de tener varias subredes en una red virtual en los siguientes escenarios:
 
-* **No hay direcciones IP privadas suficientes para todas las NIC de una subred**. Si el espacio de direcciones de subred no contiene suficientes direcciones IP para número de Hola de NIC en la subred de hello, deberá toocreate varias subredes. Tenga en cuenta que Azure reserva 5 direcciones IP privadas de cada subred que no se puede usar: Hola primero y último direcciones de espacio de direcciones de hello (para la dirección de subred de Hola y multidifusión) y toobe 3 direcciones utilizado internamente (para fines de DHCP y DNS).
-* **Seguridad**. Puede utilizar grupos de tooseparate de subredes de máquinas virtuales entre sí para las cargas de trabajo que tienen una capa de la estructura y aplicar diferentes [grupos de seguridad (NSG) de red](virtual-networks-nsg.md#subnets) para esas subredes.
-* **Conectividad híbrida**. Puede utilizar puertas de enlace VPN y circuitos ExpressRoute demasiado[conectar](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti) su tooone de redes virtuales otro, y tooyour centros de datos local. Las puertas de enlace VPN y circuitos ExpressRoute requieren una subred de su propios toobe creado.
-* **Aplicaciones virtuales**. Puede utilizar una aplicación virtual, como un firewall, un acelerador de WAN o una puerta de enlace de VPN en una red virtual de Azure. Al hacerlo, necesita demasiado[enrutar el tráfico](virtual-networks-udr-overview.md) aparatos de toothose y aislarlos en su propia subred.
+* **No hay direcciones IP privadas suficientes para todas las NIC de una subred**. Si el espacio de direcciones de subred no contiene direcciones IP suficientes para la cantidad de NIC de la subred, deberá crear varias subredes. Tenga en cuenta que Azure reserva 5 direcciones IP privadas desde cada subred que no se pueden usar: la primera y la última dirección del espacio de direcciones (para la dirección de subred y multidifusión) y 3 direcciones que se usarán internamente (para DHCP y DNS).
+* **Seguridad**. Puede usar subredes para separar los grupos de máquinas virtuales entre sí para las cargas de trabajo que tengan una estructura de varios niveles y aplicar distintos [grupos de seguridad de red (NSG)](virtual-networks-nsg.md#subnets) para esa subredes.
+* **Conectividad híbrida**. Puede utilizar puertas de enlace de VPN y circuitos de ExpressRoute para [conectar](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti) las redes virtuales entre sí y con sus centros de datos locales. Las puertas de enlace de VPN y los circuitos de ExpressRoute requieren la creación de una subred propia.
+* **Aplicaciones virtuales**. Puede utilizar una aplicación virtual, como un firewall, un acelerador de WAN o una puerta de enlace de VPN en una red virtual de Azure. Cuando lo haga, deberá [enrutar el tráfico](virtual-networks-udr-overview.md) a esas aplicaciones y aislarlas en su propia subred.
 
 ### <a name="subnet-and-nsg-design-patterns"></a>Patrones de diseño de subredes y NSG
-Hola tabla siguiente muestran algunos modelos de diseño comunes de uso de subredes.
+La siguiente tabla muestra algunos patrones de diseño comunes para usar las subredes.
 
 | Escenario | Diagrama | Ventajas | Desventajas |
 | --- | --- | --- | --- |
-| Una sola subred, NSG por nivel de aplicación, por aplicación. |![Subred única](./media/virtual-network-vnet-plan-design-arm/figure5.png) |Solo un toomanage de subred. |Varios tooisolate necesario de NSG cada aplicación. |
-| Una subred por aplicación, NSG por nivel de aplicación. |![Subred por aplicación](./media/virtual-network-vnet-plan-design-arm/figure6.png) |Menos toomanage de NSG. |Toomanage de varias subredes. |
-| Una sola subred por nivel de aplicación, NSG por aplicación. |![Subred por nivel](./media/virtual-network-vnet-plan-design-arm/figure7.png) |Equilibrio entre la cantidad de subredes y los NSG. |Número máximo de NSG por suscripción. Hola de revisión [Azure tiene una limitación](../azure-subscription-service-limits.md#networking-limits) artículo para obtener más información. |
-| Una subred por nivel de aplicación, por aplicación, NSG por subred. |![Subred por nivel por aplicación](./media/virtual-network-vnet-plan-design-arm/figure8.png) |Posiblemente, una cantidad menor de NSG. |Toomanage de varias subredes. |
+| Una sola subred, NSG por nivel de aplicación, por aplicación. |![Subred única](./media/virtual-network-vnet-plan-design-arm/figure5.png) |Solo una subred que administrar. |Varios NSG necesarios para aislar cada aplicación. |
+| Una subred por aplicación, NSG por nivel de aplicación. |![Subred por aplicación](./media/virtual-network-vnet-plan-design-arm/figure6.png) |Menos NSG que administrar. |Varias subredes que administrar. |
+| Una sola subred por nivel de aplicación, NSG por aplicación. |![Subred por nivel](./media/virtual-network-vnet-plan-design-arm/figure7.png) |Equilibrio entre la cantidad de subredes y los NSG. |Número máximo de NSG por suscripción. Revise el artículo sobre los [límites de Azure](../azure-subscription-service-limits.md#networking-limits) para obtener más información. |
+| Una subred por nivel de aplicación, por aplicación, NSG por subred. |![Subred por nivel por aplicación](./media/virtual-network-vnet-plan-design-arm/figure8.png) |Posiblemente, una cantidad menor de NSG. |Varias subredes que administrar. |
 
 ## <a name="sample-design"></a>Ejemplo de diseño
-aplicación de hello tooillustrate de información de hello en este artículo, considere la posibilidad de hello siguiendo el escenario.
+Para mostrar cómo aplicar la información que aparece en este artículo, considere el escenario siguiente.
 
-Trabaja para una empresa que tiene 2 centros de datos en Norteamérica y dos centros de datos en Europa. Ha identificado 6 a aplicaciones de nuestros clientes diferentes mantenida por 2 diferentes unidades de negocio que desea toomigrate tooAzure como una prueba piloto. arquitectura básica de Hola para aplicaciones de hello son los siguientes:
+Trabaja para una empresa que tiene 2 centros de datos en Norteamérica y dos centros de datos en Europa. Identificó 6 aplicaciones distintas para el cliente que son mantenidas por 2 unidades de negocio diferentes que desea migrar a Azure como plan piloto. La arquitectura básica de las aplicaciones es la siguiente:
 
-* App1, App2, App3 y App4 son aplicaciones web hospedadas en servidores Linux que ejecutan Ubuntu. Cada aplicación conecta a servidor de aplicaciones independientes de tooa que hospeda los servicios RESTful en servidores Linux. servicios RESTful Hola conectan la base de datos de MySQL tooa back-end.
-* App5 y App6 son aplicaciones web hospedadas en servidores Windows que ejecutan Windows Server 2012 R2. Cada aplicación conecta a base de datos de SQL Server de back-end de tooa.
-* Todas las aplicaciones están hospedadas actualmente en uno de los centros de datos de la compañía de hello en América del Norte.
-* centros de datos locales de Hello usar espacio de direcciones de hello 10.0.0.0/8.
+* App1, App2, App3 y App4 son aplicaciones web hospedadas en servidores Linux que ejecutan Ubuntu. Cada aplicación se conecta a un servidor de aplicaciones independiente que hospeda servicios RESTful en servidores Linux. Los servicios RESTful se conectan a una base de datos MySQL back-end.
+* App5 y App6 son aplicaciones web hospedadas en servidores Windows que ejecutan Windows Server 2012 R2. Cada aplicación se conecta a una base de datos SQL Server back-end.
+* Actualmente, todas las aplicaciones está hospedadas en uno de los centros de datos de la empresa en Norteamérica.
+* Los centros de datos locales usan el espacio de direcciones 10.0.0.0/8.
 
-Necesita una solución de red virtual que cumpla Hola según los requisitos de toodesign:
+Debe diseñar una solución de red virtual que cumple los siguientes requisitos:
 
 * El consumo de recursos de las unidades de negocio no debería afectar a ninguna otra unidad de negocio.
-* Debería minimizar la cantidad de Hola de redes virtuales y subredes toomake la administración sea más fácil.
+* Deberá minimizar la cantidad de redes virtuales y subredes para facilitar la administración.
 * Cada unidad de negocio debe tener una sola red virtual de prueba/desarrollo para usar para todas las aplicaciones.
 * Cada aplicación se hospeda en 2 centros de datos de Azure distintos por continente (Norteamérica y Europa).
 * Las aplicaciones están completamente aisladas entre sí.
-* Cada aplicación puede tener acceso los clientes a través de hello Internet mediante HTTP.
-* Puede tener acceso a cada aplicación por centros de datos de los usuarios conectados toohello local mediante el uso de un túnel cifrado.
-* Centros de datos de conexión local tooon deben usar los dispositivos VPN existentes.
-* Hello grupo de red de la compañía debe tener un control total sobre la configuración de redes virtuales de Hola.
-* Los desarrolladores en cada unidad de negocio solo deben ser capaz de toodeploy máquinas virtuales tooexisting subredes.
-* Todas las aplicaciones se migrarán tal como están tooAzure (elevación y MAYÚS).
-* las bases de datos de Hello en cada ubicación deben replicar tooother Azure ubicaciones una vez al día.
+* Los clientes pueden tener acceso a cada aplicación a través de Internet, mediante el protocolo HTTP.
+* Los usuarios conectados a los centros de datos locales pueden tener acceso a cada aplicación mediante un túnel cifrado.
+* La conexión a los centros de datos locales debe usar dispositivos VPN existentes.
+* El grupo de redes de la empresa debe tener el control total de la configuración de la red virtual.
+* Los desarrolladores de cada unidad de negocio solo deberían poder implementar máquinas virtuales en las subredes existentes.
+* Todas las aplicaciones se migrarán tal como están a Azure ("levantar y mover").
+* Las bases de datos de cada ubicación se deberán replicar en otras ubicaciones de Azure una vez al día.
 * Cada aplicación deberá usar 5 servidores front-end web, 2 servidores de aplicaciones (cuando corresponda) y 2 servidores de bases de datos.
 
 ### <a name="plan"></a>Plan
-Debe iniciar el diseño de la planificación contestar la pregunta de hello en hello [definir requisitos](#Define-requirements) sección tal y como se muestra a continuación.
+Para comenzar a planear el diseño, deberá responder la pregunta que aparece en la sección [Definición de los requisitos](#Define-requirements) , tal como se muestra a continuación.
 
-1. ¿Qué ubicaciones de Azure en el que podrá usar toohost redes virtuales?
+1. ¿Qué ubicaciones de Azure usará para hospedar las redes virtuales?
 
-    2 ubicaciones en Norteamérica y 2 ubicaciones en Europa. Debe elegirlos basados en la ubicación física de Hola de los centros de datos local existente. De este modo la conexión de su tooAzure ubicaciones físicas tendrá una mejor latencia.
-2. ¿Necesita tooprovide comunicación entre estas ubicaciones de Azure?
+    2 ubicaciones en Norteamérica y 2 ubicaciones en Europa. Debe elegirla según la ubicación física de los centros de datos locales existentes. De ese modo, la conexión desde las ubicaciones físicas a Azure tendrá una mejor latencia.
+2. ¿Necesita proporcionar comunicación entre estas ubicaciones de Azure?
 
-    Sí. Puesto que las bases de datos de hello deben ser replicados tooall ubicaciones.
-3. ¿Necesita tooprovide comunicación entre el VNet(s) de Azure y los centros de datos local?
+    Sí. Debido a que las bases de datos se deben replicar a todas las ubicaciones.
+3. ¿Necesita proporcionar comunicación entre las redes virtuales de Azure y los centros de datos locales?
 
-    Sí. Puesto que los usuarios conectados centros de datos locales de toohello deben ser tooaccess capaz de aplicaciones de Hola a través de un túnel cifrado.
+    Sí. Debido a que los usuarios conectados con los centros de datos locales deberían poder tener acceso a las aplicaciones a través de un túnel cifrado.
 4. ¿Cuántas máquinas virtuales IaaS necesita para su solución?
 
-    200 máquinas virtuales IaaS. App1, App2, App3 y App4 requieren, cada una, 5 servidores web, 2 servidores de aplicaciones y 2 servidores de bases de datos. Hablamos de un total de 9 máquinas virtuales IaaS por aplicación, es decir, 36 máquinas virtuales IaaS. App5 y App6 requieren, cada una, 5 servidores web y 2 servidores de bases de datos. Hablamos de un total de 7 máquinas virtuales IaaS por aplicación, es decir, 14 máquinas virtuales IaaS. Por lo tanto, necesita 50 máquinas virtuales IaaS para todas las aplicaciones en cada una de las regiones de Azure. Puesto que necesitamos toouse 4 regiones, habrá 200 máquinas virtuales de IaaS.
+    200 máquinas virtuales IaaS. App1, App2, App3 y App4 requieren, cada una, 5 servidores web, 2 servidores de aplicaciones y 2 servidores de bases de datos. Hablamos de un total de 9 máquinas virtuales IaaS por aplicación, es decir, 36 máquinas virtuales IaaS. App5 y App6 requieren, cada una, 5 servidores web y 2 servidores de bases de datos. Hablamos de un total de 7 máquinas virtuales IaaS por aplicación, es decir, 14 máquinas virtuales IaaS. Por lo tanto, necesita 50 máquinas virtuales IaaS para todas las aplicaciones en cada una de las regiones de Azure. Debido a que necesitamos usar 4 regiones, serán 200 máquinas virtuales IaaS.
 
-    También necesitará tooprovide los servidores DNS en cada red virtual o en el nombre de tooresolve de centros de datos local entre las máquinas virtuales de IaaS de Azure y la red local.
-5. ¿Necesita tráfico tooisolate basado en grupos de máquinas virtuales (es decir, front-end web servidores y servidores de base de datos de back-end)?
+    También deberá proporcionar servidores DNS en cada red virtual o en los centros de datos locales para resolver los nombres entre las máquinas virtuales IaaS de Azure y la red local.
+5. ¿Necesita aislar el tráfico según los grupos de máquinas virtuales (es decir, servidores front-end web y servidores de base de datos back-end)?
 
     Sí. Todas las aplicaciones deberán estar completamente aisladas entre sí y cada nivel de aplicación también deberá estar aislado.
-6. ¿Necesita que el flujo de tráfico de toocontrol con dispositivos virtuales?
+6. ¿Necesita controlar el flujo de tráfico mediante aplicaciones virtuales?
 
-    No. Aparatos virtuales pueden ser utilizado tooprovide más control sobre el flujo de tráfico, incluido el registro más detallado del plano de datos.
-7. ¿Hacer los usuarios necesidad de distintos conjuntos de permisos toodifferent recursos de Azure?
+    No. Se pueden usar aplicaciones virtuales para brindar más control sobre el flujo de tráfico, incluido el registro del plano de datos.
+7. ¿Los usuarios necesitan distintos conjuntos de permisos para los diferentes recursos de Azure?
 
-    Sí. Hola red equipo necesita control total sobre la configuración de red virtual de hello, mientras que los desarrolladores solo deben ser capaz de toodeploy sus subredes toopre existente de las máquinas virtuales.
+    Sí. El equipo de red necesita tener el control completo de la configuración de las redes virtuales, mientras que los desarrolladores solo debería poder implementar sus máquinas virtuales en las subredes existentes previamente.
 
 ### <a name="design"></a>Diseño
-Debe seguir especificando las suscripciones, las redes virtuales, subredes y los NSG de diseño de Hola. Si bien aquí los analizaremos, deberá obtener más información sobre los [NSG](virtual-networks-nsg.md) antes de finalizar el diseño.
+Deberá cumplir con las suscripciones, redes virtuales, subredes y NSG especificados en el diseño. Si bien aquí los analizaremos, deberá obtener más información sobre los [NSG](virtual-networks-nsg.md) antes de finalizar el diseño.
 
 **Cantidad de suscripciones y redes virtuales**
 
-Hola según los requisitos es toosubscriptions relacionados y redes virtuales:
+Los siguientes requisitos están relacionados con las suscripciones y las redes virtuales:
 
 * El consumo de recursos de las unidades de negocio no debería afectar a ninguna otra unidad de negocio.
-* Debería minimizar la cantidad de Hola de redes virtuales y subredes.
+* Deberá minimizar la cantidad de redes virtuales y las subredes.
 * Cada unidad de negocio debe tener una sola red virtual de prueba/desarrollo para usar para todas las aplicaciones.
 * Cada aplicación se hospeda en 2 centros de datos de Azure distintos por continente (Norteamérica y Europa).
 
-Según esos requisitos, necesitará una suscripción para cada unidad de negocio. De ese modo, el consumo de recursos de una unidad de negocio no se contará de cara a los límites de otras unidades de negocio. Y puesto que desea que el número de hello toominimize de redes virtuales, debe considerar el uso de hello **una suscripción por unidad de negocio, dos redes virtuales por grupo de aplicaciones** modelo tal como se muestra a continuación.
+Según esos requisitos, necesitará una suscripción para cada unidad de negocio. De ese modo, el consumo de recursos de una unidad de negocio no se contará de cara a los límites de otras unidades de negocio. Además, dado que desea minimizar la cantidad de redes virtuales, deberá considerar la posibilidad de usar el patrón **una suscripción por unidad de negocio, dos redes virtuales por grupo de aplicaciones** , tal como aparece a continuación.
 
 ![Suscripción única](./media/virtual-network-vnet-plan-design-arm/figure9.png)
 
-También se necesita espacio de direcciones de hello toospecify para cada red virtual. Puesto que necesita conectividad entre Hola centros de datos locales y hello regiones de Azure, espacio de direcciones de hello usado para las redes virtuales de Azure no puede entrar en conflicto con la red local de Hola y espacio de direcciones de hello usado por cada red virtual no debe entrar en conflicto con otras redes virtuales existentes. Puede usar espacios de direcciones de hello en tabla de hello siguiente toosatisfy estos requisitos.  
+También deberá especificar el espacio de direcciones para cada red virtual. Dado que necesita tener conectividad entre los centros de datos locales y las regiones de Azure, el espacio de direcciones que las redes virtuales de Azure usan no puede tener un conflicto con la red local y el espacio de direcciones que usa cada red virtual no debería tener conflictos con ninguna otra red virtual existente. Puede usar los espacios de direcciones de la tabla siguiente para cumplir estos requisitos.  
 
 | **Suscripción** | **Red virtual** | **Región de Azure** | **Espacio de direcciones** |
 | --- | --- | --- | --- |
@@ -221,34 +221,34 @@ También se necesita espacio de direcciones de hello toospecify para cada red vi
 
 **Cantidad de subredes y NSG**
 
-Hola según los requisitos es toosubnets relacionados y los NSG:
+Los siguientes requisitos están relacionados con las subredes y los NSG:
 
-* Debería minimizar la cantidad de Hola de redes virtuales y subredes.
+* Deberá minimizar la cantidad de redes virtuales y las subredes.
 * Las aplicaciones están completamente aisladas entre sí.
-* Cada aplicación puede tener acceso los clientes a través de hello Internet mediante HTTP.
-* Puede tener acceso a cada aplicación por centros de datos de los usuarios conectados toohello local mediante el uso de un túnel cifrado.
-* Centros de datos de conexión local tooon deben usar los dispositivos VPN existentes.
-* las bases de datos de Hello en cada ubicación deben replicar tooother Azure ubicaciones una vez al día.
+* Los clientes pueden tener acceso a cada aplicación a través de Internet, mediante el protocolo HTTP.
+* Los usuarios conectados a los centros de datos locales pueden tener acceso a cada aplicación mediante un túnel cifrado.
+* La conexión a los centros de datos locales debe usar dispositivos VPN existentes.
+* Las bases de datos de cada ubicación se deberán replicar en otras ubicaciones de Azure una vez al día.
 
-En función de los requisitos, podría usar una subred por nivel de aplicación y utilizar los NSG toofilter tráfico por aplicación. De ese modo, solo tiene 3 subredes en cada red virtual (front-end, nivel de aplicación y nivel de datos) y un NSG por aplicación por subred. En este caso, puede utilizar hello **una subred por nivel de aplicación, los NSG por aplicación** modelo de diseño. Hola siguiente ilustración muestra el uso de hello del patrón de diseño de Hola que representa hello **ProdBU1US1** red virtual.
+Según esos requisitos, podría usar una subred por nivel de aplicación y usar NSG para filtrar el tráfico por aplicación. De ese modo, solo tiene 3 subredes en cada red virtual (front-end, nivel de aplicación y nivel de datos) y un NSG por aplicación por subred. En este caso, deberá considerar la posibilidad de usar el patrón de diseño **una subred por nivel de aplicación, NSG por aplicación** . La siguiente ilustración muestra cómo se usa el patrón de diseño que representa la red virtual **ProdBU1US1** .
 
 ![Una subred por nivel, un NSG por aplicación por nivel](./media/virtual-network-vnet-plan-design-arm/figure11.png)
 
-Sin embargo, también debe toocreate una subred adicional para la conectividad VPN de hello entre Hola redes virtuales y los centros de datos local. Y debe tener un espacio de direcciones de hello toospecify para cada subred. Hola siguiente ilustración muestra una solución de ejemplo para **ProdBU1US1** red virtual. Este escenario se podría replicar para cada red virtual. Cada color representa una aplicación distinta.
+Sin embargo, también necesita crear una subred adicional para la conectividad de VPN entre las redes virtuales y los centros de datos locales. También deberá especificar el espacio de direcciones para cada subred. La siguiente ilustración muestra una solución de ejemplo para la red virtual **ProdBU1US1** . Este escenario se podría replicar para cada red virtual. Cada color representa una aplicación distinta.
 
 ![Red virtual de ejemplo](./media/virtual-network-vnet-plan-design-arm/figure10.png)
 
 **Control de acceso**
 
-Hello requisitos siguientes son tooaccess relacionados control:
+Los siguientes requisitos están relacionados con el control de acceso:
 
-* Hello grupo de red de la compañía debe tener un control total sobre la configuración de redes virtuales de Hola.
-* Los desarrolladores en cada unidad de negocio solo deben ser capaz de toodeploy máquinas virtuales tooexisting subredes.
+* El grupo de redes de la empresa debe tener el control total de la configuración de la red virtual.
+* Los desarrolladores de cada unidad de negocio solo deberían poder implementar máquinas virtuales en las subredes existentes.
 
-En función de los requisitos, puede agregar usuarios de hello toohello de equipo integrada a redes **red colaborador** rol en cada suscripción; y crear un rol personalizado para hello los desarrolladores de aplicaciones en cada suscripción que proporciona subredes tooexisting de estos derechos tooadd máquinas virtuales.
+Según esos requisitos, podría agregar usuarios desde el equipo de red al rol **Colaborador de la red** integrado en cada suscripción y, además, crear un rol personalizado para los desarrolladores de aplicaciones en cada suscripción y otorgarles derechos para agregar máquinas virtuales a las subredes existentes.
 
 ## <a name="next-steps"></a>Pasos siguientes
 * [Implementar una red virtual](virtual-networks-create-vnet-arm-template-click.md) en función de un escenario.
-* Comprender cómo demasiado[equilibrar la carga](../load-balancer/load-balancer-overview.md) las máquinas virtuales IaaS y [administrar el enrutamiento a través de varias regiones de Azure](../traffic-manager/traffic-manager-overview.md).
-* Obtenga más información sobre [NSG y cómo tooplan y diseño](virtual-networks-nsg.md) una solución NSG.
+* Comprender cómo [equilibrar la carga](../load-balancer/load-balancer-overview.md) de las máquinas virtuales IaaS y [administrar el enrutamiento en varias regiones de Azure](../traffic-manager/traffic-manager-overview.md).
+* Obtener más información sobre los [NSG y cómo planear y diseñar](virtual-networks-nsg.md) una solución de NSG.
 * Obtener más información sobre las [opciones de conectividad local y redes virtuales](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti).

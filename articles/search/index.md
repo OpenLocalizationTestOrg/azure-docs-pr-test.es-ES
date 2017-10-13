@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure documentación de búsqueda - tutoriales, referencia de API | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo tooadd sólida buscar capacidades, que incluyen la supervisión de la actividad, toocustom web o aplicaciones móviles. Referencias de API y otra documentación."
+title: "Documentación sobre Azure Search: tutoriales y referencia de API | Microsoft Docs"
+description: "Aprenda cómo agregar funcionalidades de búsqueda eficaces, incluidas la supervisión de actividades o las aplicaciones web personalizadas o móviles. Referencias de API y otra documentación."
 services: search
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 2ef61d7bf68e94c4429ba1b13709ee9b31093b71
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 9debfb5c55332836ff721aae08c7d45c811444f9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-search-documentation"></a>Documentación de Azure Search
 
-Obtenga información acerca de cómo buscar en tooadd web personalizado de capacidades tooyour o aplicaciones móviles mediante la búsqueda de Azure, un servicio de búsqueda en la nube administrado. Tutoriales, referencias de API y otra documentación muestran también cómo tooadd de búsqueda de texto completo escalable a través de varios idiomas, búsqueda geoespaciales, filtrada y navegación por facetas, consultas anticipada, resaltado y analizadores personalizados.
+Aprenda a agregar funcionalidades de búsqueda a las aplicaciones web o móviles personalizadas mediante Azure Search, un servicio administrado de búsqueda en la nube. Tutoriales, referencias de API y otra documentación le explican cómo agregar la búsqueda de texto completo escalable en varios idiomas, la búsqueda geoespacial, la navegación con filtros y por facetas, las consultas de escritura automática, el resaltado de aciertos y los analizadores personalizados.
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -70,7 +70,7 @@ Obtenga información acerca de cómo buscar en tooadd web personalizado de capac
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Empezar a trabajar con búsqueda de Azure con hello portal de Azure</h3>
+                        <h3>Empezar a trabajar con Azure Search desde Azure Portal</h3>
                     </div>
                 </div>
             </div>

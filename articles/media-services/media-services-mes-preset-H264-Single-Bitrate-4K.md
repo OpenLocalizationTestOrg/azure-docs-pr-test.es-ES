@@ -1,6 +1,6 @@
 ---
-title: "valor preestablecido de velocidad de bits única 4K Media Encoder estándar de aaaH264 - Azure | Documentos de Microsoft"
-description: "Hola tema encontrará un resumen de Hola ** velocidad de bits única H264 valor predefinido de tarea 4 K **."
+title: Valores predeterminados de Media Encoder Standard para H264 Single Bitrate 4K - Azure | Microsoft Docs
+description: "El tema proporciona información general sobre el valor predeterminado de tarea **H264 Single Bitrate 4K**."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: 3a88207ba89baaefddfea631aa5d4c1c74194c68
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 64c68363d4ba89e9ebbcaca8ff45d12f771e3a8c
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="h264-single-bitrate-4k"></a>H264 Single Bitrate 4K
-`Media Encoder Standard` define un conjunto de valores predeterminados de Encoding que puede usar al crear trabajos de Encoding. Puede utilizar un `preset name` toospecify en qué formato desea tooencode su archivo multimedia. O bien, puede crear sus propios valores predeterminados basados en XML o JSON (mediante la codificación UTF-8 o UTF-16). A continuación, pasaría codificador de hello toohello valores preestablecidos personalizados. Para obtener lista de hello del programa Hola a todos los preestablecido nombres admitidos por este `Media Encoder Standard` codificador, vea [valores preestablecidos de tarea para Media Encoder estándar](media-services-mes-presets-overview.md).  
+`Media Encoder Standard` define un conjunto de valores predeterminados de Encoding que puede usar al crear trabajos de Encoding. Puede usar `preset name` para especificar en qué formato desea codificar el archivo multimedia. O bien, puede crear sus propios valores predeterminados basados en XML o JSON (mediante la codificación UTF-8 o UTF-16). Después pasaría el valor predeterminado personalizado al codificador. Para obtener la lista de todos los nombres predeterminados admitidos por este codificador `Media Encoder Standard`, vea [Task Presets for Media Encoder Standard](media-services-mes-presets-overview.md) (Valores predeterminados de tarea para Media Encoder Standard).  
   
- Este tema muestra hello `H264 Single Bitrate 4K` preestablecido en formato XML y JSON.  
+ En este tema se muestra el valor predeterminado `H264 Single Bitrate 4K` en formato XML y JSON.  
   
- Este valor predeterminado genera un único archivo MP4 con una velocidad de bits de 18 000 kbps y audio AAC estéreo. Para obtener información detallada sobre el perfil, velocidad de bits, frecuencia de muestreo, etc. de este valor preestablecido, examine Hola XML o JSON definido más adelante. Para obtener una explicación de cada elemento de qué en estos medios de valores predefinidos y los valores válidos de Hola para cada elemento, vea hello [Media Encoder estándar esquema](media-services-mes-schema.md) tema.  
+ Este valor predeterminado genera un único archivo MP4 con una velocidad de bits de 18 000 kbps y audio AAC estéreo. Para información detallada sobre el perfil, la velocidad de bits, la frecuencia de muestreo, etc., de este valor predeterminado, examine el código XML o JSON definido más adelante. Para obtener explicaciones de lo que cada elemento significa en estos nombres predeterminados y los valores válidos para cada elemento, vea el tema sobre el [esquema de Media Encoder Standard](media-services-mes-schema.md).  
   
 > [!NOTE]
->  Debe obtener Hola Premium reservado codifica el tipo de unidad con 4K. Para obtener más información, consulte [cómo tooScale codificación](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units).  
+>  Debe obtener el tipo de unidad reservada premium con codificación 4K. Para obtener más información, consulte [Escalación de codificación](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units).  
   
  XML  
   

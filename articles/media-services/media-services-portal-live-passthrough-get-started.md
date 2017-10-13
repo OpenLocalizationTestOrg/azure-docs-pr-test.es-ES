@@ -1,6 +1,6 @@
 ---
-title: secuencia de aaaLive con codificadores locales mediante Hola portal de Azure | Documentos de Microsoft
-description: "Este tutorial le guiará por los pasos de Hola de creación de un canal que está configurado para la entrega de una acceso directo."
+title: Streaming en vivo con codificadores locales mediante Azure Portal | Microsoft Docs
+description: "Este tutorial le guiará por los pasos para crear un canal que esté configurado para una entrega de paso a través."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.openlocfilehash: 1fb341e022f66f33903e13e07d3e84c0216cad77
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 6939e3b31c3c1b514df4c559c2d9408fce122a4e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-tooperform-live-streaming-with-on-premises-encoders-using-hello-azure-portal"></a>¿Cómo tooperform streaming en vivo con local codificadores mediante Hola portal de Azure
+# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-the-azure-portal"></a>Realización de streaming en vivo con codificadores locales mediante Azure Portal
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -28,123 +28,123 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Este tutorial le guiará por los pasos de hello del uso de hello Azure toocreate portal un **canal** que está configurado para la entrega de una acceso directo. 
+Este tutorial le guiará por los pasos para usar el Portal de Azure para crear un **Canal** que esté configurado para una entrega de paso a través. 
 
 ## <a name="prerequisites"></a>Requisitos previos
-tutorial de hello toocomplete necesarios son las siguientes de Hello:
+Estos son los requisitos previos para completar el tutorial.
 
 * Una cuenta de Azure. Para obtener más información, consulte [Evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/). 
-* Una cuenta de Media Services. toocreate una cuenta de servicios multimedia, consulte [cómo tooCreate una cuenta de servicios multimedia](media-services-portal-create-account.md).
+* Una cuenta de Media Services. Para crear una cuenta de Media Services, consulte el tema [Creación de una cuenta de Media Services](media-services-portal-create-account.md).
 * Una cámara web. Por ejemplo, el [codificador Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm).
 
-Se recomienda encarecidamente hello tooreview siguientes artículos:
+Es importante que revise los artículos siguientes:
 
 * [Compatibilidad con RTMP de Servicios multimedia de Azure y codificadores en directo.](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)
 * [Información general de streaming en vivo con Servicios multimedia de Azure](media-services-manage-channels-overview.md)
 * [Streaming en vivo con codificadores locales que crean transmisiones de velocidad de bits múltiple](media-services-live-streaming-with-onprem-encoders.md)
 
 ## <a id="scenario"></a>Escenario común de streaming en vivo
-Hello pasos siguientes describen las tareas implicadas en la creación de aplicaciones transmisión por secuencias en directo comunes que usan los canales que se configuran para la entrega de paso a través. Este tutorial se muestra cómo toocreate y administrar un canal de acceso directo y eventos en directo.
+Los pasos siguientes describen las tareas que conlleva la creación de aplicaciones comunes de streaming en vivo que usan canales configurados para entregas de paso a través. Este tutorial muestra cómo crear y administrar un canal de paso a través y eventos en directo.
 
 >[!NOTE]
->Asegúrese de que esté Hola origen desde el que desea que el contenido de toostream Hola **ejecutando** estado. 
+>Asegúrese de que el punto de conexión de streaming desde el que va a transmitir el contenido esté en estado **Running** (En ejecución). 
     
-1. Conectar un equipo de tooa de cámara de vídeo. Inicie y configure un codificador en directo local que genere una transmisión de RTMP o MP4 fragmentado con velocidad de bits múltiple. Para obtener más información, consulte [Compatibilidad con RTMP de Servicios multimedia de Azure y codificadores en directo](http://go.microsoft.com/fwlink/?LinkId=532824).
+1. Conecte una cámara de vídeo a un equipo. Inicie y configure un codificador en directo local que genere una transmisión de RTMP o MP4 fragmentado con velocidad de bits múltiple. Para obtener más información, consulte [Compatibilidad con RTMP de Servicios multimedia de Azure y codificadores en directo](http://go.microsoft.com/fwlink/?LinkId=532824).
    
     Este paso también puede realizarse después de crear el canal.
 2. Cree e inicie un canal de paso a través.
-3. URL de introducción de hello recuperar canales. 
+3. Recupere la URL de ingesta de canales. 
    
-    URL de introducción de Hola Hola codificador en directo toosend hello secuencia toohello canal utiliza.
-4. Recuperar la dirección URL de vista previa de canal de Hola. 
+    El codificador en directo usa la URL de ingesta para enviar la secuencia al canal.
+4. Recupere la URL de vista previa de canal. 
    
-    Utilice este tooverify de dirección URL que el canal está recibiendo correctamente la secuencia en directo de Hola.
+    Use esta dirección URL para comprobar que el canal recibe correctamente la secuencia en vivo.
 5. Cree un evento o programa en directo. 
    
-    Al usar hello portal de Azure, también crea un evento en directo crea un activo. 
+    Con el Portal de Azure, al crear un evento en directo también se crea un recurso. 
 
-6. Inicie Hola eventos/programa cuando esté listo toostart streaming y archivado.
-7. Si lo desea, codificador en directo de hello puede ser señalado toostart un anuncio. anuncio de Hola se inserta en el flujo de salida de hello.
-8. Detener Hola eventos/programa siempre que lo desee toostop transmisión por secuencias y archivar eventos Hola.
-9. Eliminar eventos de Hola y programa (y opcionalmente eliminar recurso de hello).     
+6. Inicie el evento o programa cuando esté listo para iniciar el streaming y el archivo.
+7. Si lo desea, puede señalar el codificador en directo para iniciar un anuncio. El anuncio se inserta en el flujo de salida.
+8. Detenga el evento o programa cuando quiera detener el streaming y el archivo del evento.
+9. Elimine el evento o programa (y, opcionalmente, elimine el recurso).     
 
 > [!IMPORTANT]
-> Revise [de transmisión por secuencias en directo con codificadores locales que crean secuencias de velocidades de bits](media-services-live-streaming-with-onprem-encoders.md) toolearn sobre los conceptos y consideraciones relacionadas con streaming toolive con codificadores locales y los canales de acceso directo.
+> Consulte [Streaming en vivo con codificadores locales que crean transmisiones de velocidad de bits múltiple](media-services-live-streaming-with-onprem-encoders.md) para obtener información acerca de los conceptos y las consideraciones relacionadas con el streaming en vivo con codificadores locales y canales de paso a través.
 > 
 > 
 
-## <a name="tooview-notifications-and-errors"></a>errores y las notificaciones de tooview
-Si desea que las notificaciones de tooview y los errores generados por hello portal de Azure, haga clic en el icono de notificación de Hola.
+## <a name="to-view-notifications-and-errors"></a>Visualización de notificaciones y errores
+Si desea ver las notificaciones y los errores generados por el Portal de Azure, haga clic en el icono de notificación.
 
 ![Notificaciones](./media/media-services-portal-passthrough-get-started/media-services-notifications.png)
 
 ## <a name="create-and-start-pass-through-channels-and-events"></a>Creación e inicio de canales de paso a través y eventos
-Un canal está asociado con programas y eventos que permiten la publicación de hello toocontrol y el almacenamiento de segmentos en una secuencia en directo. Los canales administran los eventos. 
+Un canal está asociado a eventos y programas que le permiten controlar la publicación y el almacenamiento de segmentos en una transmisión en vivo. Los canales administran los eventos. 
 
-Puede especificar Hola número de horas que quiere tooretain Hola registran contenido de programa Hola, establecer hello **ventana de archivo** longitud. Este valor puede establecerse entre un mínimo de máximo de tooa de 5 minutos de 25 horas. Duración de la ventana de archivo también establece la cantidad máxima de Hola de tiempo que los clientes pueden buscar hacia atrás desde la posición actual en vivo de Hola. Se pueden ejecutar eventos sobre la cantidad de tiempo especificada de hello, pero continuamente se descarta el contenido que se encuentra detrás de la longitud de la ventana de Hola. El valor de esta propiedad también determina cuánto tiempo cliente hello pueden alcanzar los manifiestos.
+Puede especificar la cantidad de horas que desea conservar el contenido grabado del programa en la configuración de la duración de **Ventana de archivo** . Este valor se puede establecer desde un mínimo de cinco minutos a un máximo de 25 horas. La duración de la ventana de archivo también indica el tiempo máximo que los clientes pueden buscar hacia atrás a partir de la posición en vivo actual. Los eventos pueden transmitirse durante la cantidad de tiempo especificada, pero el contenido que escape de esa longitud de ventana se descartará continuamente. El valor de esta propiedad también determina durante cuánto tiempo los manifiestos de cliente pueden crecer.
 
-Cada evento está asociado a un recurso. evento de hello toopublish, debe crear un localizador OnDemand para activo Hola asociado. Este localizador permite toobuild una URL de streaming puede proporcionar a los clientes de tooyour.
+Cada evento está asociado a un recurso. Para publicar el evento, debe crear un localizador a petición para el recurso asociado. Contar con este localizador le permite crear una dirección URL de streaming que puede proporcionar a sus clientes.
 
-Un canal admite hasta toothree eventos en ejecución simultánea por lo que puede crear varios archivos de hello mismo flujo entrante. Esto le permite toopublish y archivar diferentes partes de un evento según sea necesario. Por ejemplo, sus necesidades de negocio es tooarchive 6 horas de un programa, pero toobroadcast solo últimos 10 minutos. tooaccomplish, necesita toocreate dos programas en ejecución simultáneos. Un programa se establece tooarchive 6 horas de evento de hello pero no se publica el programa Hola. Hello otro programa es conjunto tooarchive durante 10 minutos y se publica este programa.
+Un canal es compatible con hasta tres eventos en ejecución simultánea, por lo que puede crear varios archivos de la misma transmisión entrante. Esto le permite publicar y archivar distintas partes de un evento, según sea necesario. Por ejemplo, el requisito de su empresa es solo archivar seis horas de un programa, pero difundir solo los últimos diez minutos. Para lograrlo, necesita crear dos programas en ejecución simultánea. Un programa está definido para archivar seis horas del evento, pero no está publicado. El otro programa está definido para archivar durante diez minutos y este programa sí se publica.
 
 No debería reutilizar eventos en directo ya existentes. En su lugar, cree e inicie un evento nuevo para cada evento.
 
-Evento de hello cuando esté listo toostart streaming y archivado de inicio. Detener el programa de hello siempre que lo desee toostop transmisión por secuencias y archivar eventos Hola. 
+Inicie el evento cuando esté listo para iniciar el streaming y el archivo. Detenga el programa cuando quiera detener el streaming y el archivo del evento. 
 
-contenido toodelete archivado, detener y eliminar eventos de Hola y, a continuación, eliminar recurso asociado Hola. No se puede eliminar un recurso si se utiliza un evento; evento de Hello debe eliminarse en primer lugar. 
+Para eliminar contenido archivado, detenga y elimine el evento y, a continuación, elimine el recurso asociado. No se puede eliminar un recurso si lo está usando un evento; primero se debe eliminar el evento. 
 
-Incluso después de detener y eliminar un evento de hello, Hola usuarios sería capaz de toostream el contenido archivado como un vídeo bajo demanda, siempre y cuando no se elimine de recurso de Hola.
+Incluso después de detener y eliminar el evento, los usuarios podrán transmitir el contenido archivado como un vídeo a petición siempre que no elimine el recurso.
 
-Si desea hello tooretain archivado de contenido, pero no la tiene disponible para la transmisión por secuencias, eliminar Hola localizador de streaming.
+Si desea conservar el contenido archivado, pero no hacerlo disponible para la transmisión, elimine el localizador de streaming.
 
-### <a name="toouse-hello-portal-toocreate-a-channel"></a>toouse Hola portal toocreate un canal
-Esta sección se muestra cómo hello toouse **creación rápida** opción toocreate un canal de acceso directo.
+### <a name="to-use-the-portal-to-create-a-channel"></a>Uso del portal para crear un canal
+Esta sección muestra cómo utilizar la opción **Creación rápida** para crear un canal de paso a través.
 
 Para más información sobre este tipo de canales, consulte [Streaming en vivo con codificadores locales que crean transmisiones de velocidad de bits múltiple](media-services-live-streaming-with-onprem-encoders.md).
 
-1. Hola [portal de Azure](https://portal.azure.com/), seleccione su cuenta de servicios multimedia de Azure.
-2. Hola **configuración** ventana, haga clic en **streaming en vivo**. 
+1. En [Azure Portal](https://portal.azure.com/), seleccione la cuenta de Azure Media Services.
+2. En la ventana **Configuración**, haga clic en **Streaming en vivo**. 
    
     ![Introducción](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
    
-    Hola **streaming en vivo** aparecerá la ventana.
-3. Haga clic en **creación rápida** protocolo de introducción de toocreate un canal de acceso directo con hello RTMP.
+    Aparece la ventana **Streaming en vivo** .
+3. Haga clic en **Creación rápida** para crear un canal de paso a través con el protocolo de introducción RTMP.
    
-    Hola **crear un nuevo canal** aparecerá la ventana.
-4. Asigne un nombre de canal nuevo de Hola y haga clic en **crear**. 
+    Aparece la ventana **CREAR UN NUEVO CANAL** .
+4. Asigne un nombre al nuevo canal y haga clic en **Crear**. 
    
-    Esto crea un canal de acceso directo con hello protocolo de introducción RTMP.
+    Con ello, se crea un canal de paso a través con el protocolo de introducción RTMP.
 
 ## <a name="create-events"></a>Creación de eventos
-1. Seleccione un toowhich de canal que desee tooadd un evento.
+1. Seleccione el canal al que desea agregar un evento.
 2. Pulse el botón **Evento en directo** .
 
 ![Evento](./media/media-services-portal-passthrough-get-started/media-services-create-events.png)
 
 ## <a name="get-ingest-urls"></a>Obtención de direcciones URL de introducción
-Una vez creado el canal de hello, puede obtener direcciones URL que proporcionará toohello de codificador en directo de entrada. Codificador de Hello usa estos tooinput de direcciones URL de una secuencia en directo.
+Una vez creado el canal, obtendrá direcciones URL de introducción que se proporcionarán al codificador en directo. El codificador usa estas direcciones URL para introducir una secuencia en vivo.
 
 ![Creado](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
 
-## <a name="watch-hello-event"></a>Evento de Hola de inspección
-evento de hello toowatch, haga clic en **inspección** en hello Azure Hola portal o copiar dirección URL de streaming y utilizar un Reproductor de su elección. 
+## <a name="watch-the-event"></a>Visualización del evento
+Para ver el evento, haga clic en **Inspección** en el Portal de Azure o copie la dirección URL de streaming y use el reproductor que prefiera. 
 
 ![Creado](./media/media-services-portal-passthrough-get-started/media-services-default-event.png)
 
-Evento en directo obtienen automáticamente contenido de tooon convertido a petición cuando se detuvo.
+El evento en directo se convierte automáticamente en contenido a petición cuando se detiene.
 
 ## <a name="clean-up"></a>Limpieza
 Para más información sobre este tipo de canales, consulte [Streaming en vivo con codificadores locales que crean transmisiones de velocidad de bits múltiple](media-services-live-streaming-with-onprem-encoders.md).
 
-* Un canal se puede detener cuando se hayan detenido todos los programas y eventos en el canal de Hola.  Una vez que se detiene el canal de hello, no incurrirás en gastos. Cuando necesite toostart nuevo, lo tendrá hello misma URL de introducción por lo que no necesita tooreconfigure su codificador.
-* Un canal puede eliminarse solo si se han eliminado todos los eventos en directo en el canal de Hola.
+* Un canal se puede detener solo cuando se hayan detenido todos los eventos o programas del canal.  Cuando se detiene el canal, no se incurre en ningún cargo. Cuando necesite iniciarlo de nuevo, tendrá la misma URL de introducción, por lo que no necesitará volver a configurar su codificador.
+* Un canal se puede eliminar solo cuando se hayan eliminado todos los eventos en directo del canal.
 
 ## <a name="view-archived-content"></a>Visualización del contenido archivado
-Incluso después de detener y eliminar un evento de hello, Hola usuarios sería capaz de toostream el contenido archivado como un vídeo bajo demanda, siempre y cuando no se elimine de recurso de Hola. No se puede eliminar un recurso si se utiliza un evento; evento de Hello debe eliminarse en primer lugar. 
+Incluso después de detener y eliminar el evento, los usuarios podrán transmitir el contenido archivado como un vídeo a petición siempre que no elimine el recurso. No se puede eliminar un recurso si lo está usando un evento; primero se debe eliminar el evento. 
 
-Seleccionar de los activos de toomanage **configuración** y haga clic en **activos**.
+Para administrar los recursos seleccione **Configuración** y haga clic en **Recursos**.
 
-![Recursos](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
+![recursos](./media/media-services-portal-passthrough-get-started/media-services-assets.png)
 
 ## <a name="next-step"></a>Paso siguiente
 Consulte las rutas de aprendizaje de Servicios multimedia.

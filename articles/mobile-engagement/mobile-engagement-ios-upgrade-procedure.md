@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure el procedimiento de actualización de SDK de Mobile Engagement iOS | Documentos de Microsoft"
+title: "Procedimiento de actualización del SDK de iOS de Azure Mobile Engagement | Microsoft Docs"
 description: "Actualizaciones y procedimientos más recientes para el SDK de iOS para Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,23 +14,23 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 12/13/2016
 ms.author: piyushjo
-ms.openlocfilehash: 5a81bcaaec72aec665b3334e6400d520454d56a7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 37c7f133d079186f828d58cabce0d2a259efd085
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="upgrade-procedures"></a>Procedimientos de actualización
-Si ya ha integrado una versión anterior de interacción en la aplicación, tener hello tooconsider siguientes puntos al actualizar Hola SDK.
+Si ya integró una versión anterior de Engagement en la aplicación, debería tener en cuenta los siguientes puntos a la hora de actualizar el SDK.
 
-Para cada nueva versión de hello SDK debe reemplazar primero (quitar y volver a importar en xcode) Hola carpetas EngagementSDK y EngagementReach.
+Para cada nueva versión del SDK debe reemplazar primero (quitar y volver a importar en xcode) las carpetas EngagementSDK y EngagementReach.
 
-## <a name="from-300-too400"></a>Desde 3.0.0 too4.0.0
+## <a name="from-300-to-400"></a>De 3.0.0 a 4.0.0
 ### <a name="xcode-8"></a>XCode 8
-XCode 8 es obligatorio a partir de la versión 4.0.0 de hello SDK.
+XCode 8 es obligatorio a partir de la versión 4.0.0 del SDK.
 
 > [!NOTE]
-> Si realmente dependen XCode 7, a continuación, puede usar hello [iOS Engagement SDK v3.2.4](https://aka.ms/r6oouh). Hay un problema conocido en el módulo de reach Hola de esta versión anterior mientras se ejecuta en dispositivos iOS 10: las notificaciones del sistema no están activadas. toofix esto tendrá tooimplement hello en desuso API `application:didReceiveRemoteNotification:` en la aplicación el delegado como sigue:
+> Si realmente depende de XCode 7, puede usar el [SDK v3.2.4 de Engagement para iOS](https://aka.ms/r6oouh). Existe un problema conocido en el módulo de cobertura de esta versión anterior cuando se ejecuta en dispositivos iOS 10: las notificaciones del sistema no se ejecutan. Para solucionarlo, tendrá que implementar la API `application:didReceiveRemoteNotification:` en desuso en su delegado de aplicación de la manera siguiente:
 > 
 > 
 
@@ -41,22 +41,22 @@ XCode 8 es obligatorio a partir de la versión 4.0.0 de hello SDK.
     }
 
 > [!IMPORTANT]
-> **No se recomienda esta solución** ya que este comportamiento puede cambiar en la próxima actualización de la versión de iOS (por menor que sea) porque esta API de iOS está en desuso. Debería pasar tooXCode 8 tan pronto como sea posible.
+> **No se recomienda esta solución** ya que este comportamiento puede cambiar en la próxima actualización de la versión de iOS (por menor que sea) porque esta API de iOS está en desuso. Debe cambiar a XCode 8 tan pronto como sea posible.
 > 
 > 
 
 ### <a name="usernotifications-framework"></a>Marco de UserNotifications
-Necesita tooadd hello `UserNotifications` framework en fases de compilación.
+Debe agregar el marco `UserNotifications` en sus fases de compilación.
 
-en el Explorador de proyectos hello, abra el panel de proyecto y seleccione destino correcto Hola. A continuación, abra hello **"Fases de compilación"** ficha y Hola **"Binario con bibliotecas de vínculos"** menú, agregue framework `UserNotifications.framework` -establecer Hola vínculo como`Optional`
+En el Explorador de proyectos, abra su panel de proyectos y seleccione el destino adecuado. A continuación, abra la pestaña **"Build phases"** (Fases de compilación) y en el menú **"Link Binary With Libraries"** (Vincular binarios con bibliotecas), agregue el marco `UserNotifications.framework` y establezca el vínculo como `Optional`.
 
 ### <a name="application-push-capability"></a>Funcionalidad de inserción de la aplicación
-XCode 8 puede restablecer la aplicación capacidad de inserción, compruébela en hello `capability` ficha de su destino seleccionado.
+XCode 8 puede restablecer la funcionalidad de inserción de su aplicación, solo tiene que marcarla dos veces en la pestaña `capability` del destino seleccionado.
 
-### <a name="add-hello-new-ios-10-notification-registration-code"></a>Agregar código de registro de hello nueva iOS notificación 10
-Hola anteriores código fragmento tooregister aplicación hello toonotifications todavía funciona, pero está usando en desuso API mientras se ejecuta en iOS 10.
+### <a name="add-the-new-ios-10-notification-registration-code"></a>Adición del nuevo código de registro de notificaciones de iOS 10
+El fragmento de código anterior para registrar la aplicación para las notificaciones aún funciona, pero está utilizando API obsoletas mientras se ejecuta en iOS 10.
 
-Hola de importación `User Notification` framework:
+Importe la plataforma `User Notification` :
 
         #import <UserNotifications/UserNotifications.h> 
 
@@ -93,11 +93,11 @@ por:
 
 *Si ni la aplicación ni una de las bibliotecas de terceros implementa `UNUserNotificationCenterDelegate`, puede pasar por alto esta parte.*
 
-Un `UNUserNotificationCenter` delegado es utilizado por el ciclo de vida de hello SDK toomonitor Hola de notificaciones de interacción en dispositivos que ejecutan en iOS 10 o superior. Hola SDK tiene su propia implementación de hello `UNUserNotificationCenterDelegate` de protocolo, pero puede haber solo un `UNUserNotificationCenter` delegar por aplicación. Cualquier otro delegado agrega toohello `UNUserNotificationCenter` objeto entrarán en conflicto con hello interacción uno. Si Hola SDK detecta a delegado su o cualquier otro de terceros no usará su propio toogive de implementación, una posibilidad tooresolve Hola conflictos. Tendrá tooadd Hola interacción lógica tooyour posee conflictos de hello tooresolve de delegado en orden.
+El SDK usa un delegado de `UNUserNotificationCenter` para supervisar el ciclo de vida de las notificaciones de Engagement en dispositivos que se ejecutan en iOS 10 o superior. El SDK tiene su propia implementación del protocolo `UNUserNotificationCenterDelegate`, pero solo puede haber un delegado de `UNUserNotificationCenter` por aplicación. Cualquier otro delegado que se agrega al objeto `UNUserNotificationCenter` entrará en conflicto con Engagement. Si el SDK detecta su delegado o cualquier otro de terceros, no usará su propia implementación para ofrecerle una oportunidad de resolver los conflictos. Tendrá que agregar la lógica de Engagement a su propio delegado con el fin de resolver los conflictos.
 
-Hay dos tooachieve formas esto.
+Hay dos formas de hacerlo:
 
-Propuesta 1, enviando el delegado llama toohello SDK:
+Propuesta 1: reenviar las llamadas del delegado al SDK:
 
     #import <UIKit/UIKit.h>
     #import "EngagementAgent.h"
@@ -124,7 +124,7 @@ Propuesta 1, enviando el delegado llama toohello SDK:
     }
     @end
 
-O propuesta 2, heredando de hello `AEUserNotificationHandler` (clase)
+O propuesta 2: heredándola de la clase `AEUserNotificationHandler`.
 
     #import "AEUserNotificationHandler.h"
     #import "EngagementAgent.h"
@@ -151,10 +151,10 @@ O propuesta 2, heredando de hello `AEUserNotificationHandler` (clase)
     @end
 
 > [!NOTE]
-> Puede determinar si una notificación pueden proceder de contratación o no pasando su `userInfo` diccionario toohello agente `isEngagementPushPayload:` método de la clase.
+> Puede determinar si una notificación proviene de Engagement o no pasando su diccionario `userInfo` al método de clase `isEngagementPushPayload:` del agente.
 
-Asegúrese de que ese hello `UNUserNotificationCenter` delegado del objeto se establece el delegado tooyour dentro de cualquier hello `application:willFinishLaunchingWithOptions:` o hello `application:didFinishLaunchingWithOptions:` método de delegado de la aplicación.
-Por ejemplo, si implementa Hola anteriormente propuesta 1:
+Asegúrese de que el delegado del objeto `UNUserNotificationCenter` se establece en su delegado en los métodos `application:willFinishLaunchingWithOptions:` o `application:didFinishLaunchingWithOptions:` del delegado de aplicación.
+Por ejemplo, si implementa la propuesta anterior 1:
 
       - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         // Any other code
@@ -163,30 +163,30 @@ Por ejemplo, si implementa Hola anteriormente propuesta 1:
         return YES;
       }
 
-## <a name="from-200-too300"></a>Desde 2.0.0 too3.0.0
-Soporte de iOS 4.X eliminado. A partir de este destino de implementación de Hola de versión de la aplicación debe tener como mínimo iOS 6.
+## <a name="from-200-to-300"></a>De 2.0.0 a 3.0.0
+Soporte de iOS 4.X eliminado. A partir de esta versión, el destino de implementación de la aplicación debe ser como mínimo iOS 6.
 
-Si está utilizando el alcance de la aplicación, debe agregar `remote-notification` toohello valor `UIBackgroundModes` matriz en el archivo Info.plist en las notificaciones de orden tooreceive remoto.
+Si usa Reach en la aplicación, debe agregar el valor `remote-notification` a la matriz `UIBackgroundModes` en el archivo Info.plist para recibir notificaciones remotas.
 
-Hola método `application:didReceiveRemoteNotification:` necesita toobe reemplazado por `application:didReceiveRemoteNotification:fetchCompletionHandler:` en el delegado de la aplicación.
+El método `application:didReceiveRemoteNotification:` debe reemplazarse por `application:didReceiveRemoteNotification:fetchCompletionHandler:` en el delegado de aplicación.
 
-"AEPushDelegate.h" está en desuso interfaz y necesita tooremove todas las referencias. Esto incluye la eliminación `[[EngagementAgent shared] setPushDelegate:self]` y Hola delegar métodos desde el delegado de la aplicación:
+"AEPushDelegate.h" es una interfaz desusada y debe quitar todas las referencias. Esto incluye eliminar `[[EngagementAgent shared] setPushDelegate:self]` y los métodos delegados del delegado de la aplicación:
 
     -(void)willRetrieveLaunchMessage;
     -(void)didFailToRetrieveLaunchMessage;
     -(void)didReceiveLaunchMessage:(AEPushMessage*)launchMessage;
 
-## <a name="from-1160-too200"></a>De 1.16.0 too2.0.0
-Hello siguiente describe cómo toomigrate una integración con el SDK de hello Capptain servicio ofrecido por Capptain SAS en una aplicación con la tecnología de Azure Mobile Engagement.
-Si va a migrar desde una versión anterior, por favor, consulte hello Capptain sitio web toomigrate too1.16 en primer lugar, aplique Hola siguiendo el procedimiento.
+## <a name="from-1160-to-200"></a>De 1.16.0 a 2.0.0
+A continuación se describe cómo migrar una integración del SDK desde el servicio Capptain que ofrece Capptain SAS en una aplicación con la tecnología de Azure Mobile Engagement.
+Si va a migrar desde una versión anterior, consulte el sitio web de Capptain para migrar a 1.16 en primer lugar luego aplique el siguiente procedimiento.
 
 > [!IMPORTANT]
-> Capptain e interacción móvil no se Hola los mismos servicios y procedimiento Hola indicado a continuación sólo resalta cómo toomigrate Hola aplicación cliente. Migrar Hola SDK en la aplicación hello no migrará los datos de hello Capptain toohello Mobile Engagement servidores
+> Capptain y Mobile Engagement no son los mismos servicios, y el procedimiento que se indica a continuación destaca únicamente cómo migrar la aplicación cliente. La migración del SDK en la aplicación NO migrará los datos desde los servidores Capptain a los servidores Mobile Engagement.
 > 
 > 
 
 ### <a name="agent"></a>Agente
-Hola método `registerApp:` se ha reemplazado por el nuevo método de hello `init:`. El delegado de la aplicación deben actualizarse como corresponda y usar una cadena de conexión:
+El método `registerApp:` se ha reemplazado por el nuevo método `init:`. El delegado de la aplicación deben actualizarse como corresponda y usar una cadena de conexión:
 
             - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
             {
@@ -195,23 +195,23 @@ Hola método `registerApp:` se ha reemplazado por el nuevo método de hello `ini
               [...]
             }
 
-Seguimiento de SmartAd se ha quitado del SDK sólo tiene tooremove todas las instancias de `AETrackModule` (clase)
+Seguimiento de SmartAd se ha quitado del SDK y solo tiene que quitar todas las instancias de la clase `AETrackModule`
 
 ### <a name="class-name-changes"></a>Cambios del nombre de la clase
-Como parte de la reconfiguración de marca de hello, hay par clase/de nombres de archivo que necesitan toobe cambiado.
+Como parte de la reconfiguración de marca, hay algunos nombres de clase/archivo que deben cambiarse.
 
 Todas las clases precedidas de "CP" cambian su nombre introduciendo el prefijo "AE".
 
 Ejemplo:
 
-* `CPModule.h`se cambia el nombre demasiado`AEModule.h`.
+* `CPModule.h` cambia su nombre a `AEModule.h`.
 
 Todas las clases con el prefijo "Capptain" cambian su nombre para introducir el prefijo "Engagement".
 
 Ejemplos:
 
-* Hola clase `CapptainAgent` se cambia el nombre demasiado`EngagementAgent`.
-* Hola clase `CapptainTableViewController` se cambia el nombre demasiado`EngagementTableViewController`.
-* Hola clase `CapptainUtils` se cambia el nombre demasiado`EngagementUtils`.
-* Hola clase `CapptainViewController` se cambia el nombre demasiado`EngagementViewController`.
+* La clase `CapptainAgent` cambia su nombre a `EngagementAgent`.
+* La clase `CapptainTableViewController` cambia su nombre a `EngagementTableViewController`.
+* La clase `CapptainUtils` cambia su nombre a `EngagementUtils`.
+* La clase `CapptainViewController` cambia su nombre a `EngagementViewController`.
 

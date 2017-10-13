@@ -1,5 +1,5 @@
 ---
-title: "mensajes de aaaTrack B2B en Operations Management Suite: las aplicaciones lógicas de Azure | Documentos de Microsoft"
+title: Seguimiento de mensajes B2B en Operations Management Suite - Azure Logic Apps | Microsoft Docs
 description: "Realice un seguimiento de la comunicación B2B de la cuenta de integración y las aplicaciones lógicas en Operations Management Suite (OMS) con Azure Log Analytics"
 author: padmavc
 manager: anneta
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: f385a72008b19408bb45d61c440df0505b688175
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3ef7a4054be80547b0d91ad1f13777d915005f8b
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="track-b2b-communication-in-hello-microsoft-operations-management-suite-oms"></a>Realizar un seguimiento de la comunicación B2B en hello Microsoft Operations Management Suite (OMS)
+# <a name="track-b2b-communication-in-the-microsoft-operations-management-suite-oms"></a>Seguimiento de la comunicación B2B en Microsoft Operations Management Suite (OMS)
 
-Después de configurar la comunicación B2B entre dos procesos o aplicaciones empresariales mediante la cuenta de integración, esas entidades pueden intercambiar mensajes entre sí. toocheck si estos mensajes se procesan correctamente, puede realizar un seguimiento de AS2, X12, y los mensajes EDIFACT con [Azure Log Analytics](../log-analytics/log-analytics-overview.md) en hello [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md). Por ejemplo, puede usar estas capacidades de seguimiento basado en web para el seguimiento de mensajes:
+Después de configurar la comunicación B2B entre dos procesos o aplicaciones empresariales mediante la cuenta de integración, esas entidades pueden intercambiar mensajes entre sí. Para comprobar si estos mensajes se procesan correctamente, puede realizar un seguimiento de los mensajes AS2, X12 y EDIFACT con [Azure Log Analytics](../log-analytics/log-analytics-overview.md) en [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md). Por ejemplo, puede usar estas capacidades de seguimiento basado en web para el seguimiento de mensajes:
 
 * Número y estado de los mensajes
 * Del estado de las confirmaciones
@@ -32,22 +32,22 @@ Después de configurar la comunicación B2B entre dos procesos o aplicaciones em
 
 ## <a name="requirements"></a>Requisitos
 
-* Una aplicación lógica configurada con registro de diagnósticos. Obtenga información acerca de [cómo una aplicación de la lógica de toocreate](logic-apps-create-a-logic-app.md) y [cómo tooset el registro para esa aplicación lógica](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
+* Una aplicación lógica configurada con registro de diagnósticos. Obtenga información sobre [cómo crear una aplicación lógica](logic-apps-create-a-logic-app.md) y [cómo configurar el registro de esa aplicación lógica](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
-* Una cuenta de integración configurada con supervisión y registro. Obtenga información acerca de [cómo toocreate una cuenta de integración](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) y [cómo tooset supervisión y registro para esa cuenta](../logic-apps/logic-apps-monitor-b2b-message.md).
+* Una cuenta de integración configurada con supervisión y registro. Aprenda [cómo crear una cuenta de integración](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) y [cómo configurar la supervisión y el registro para esa cuenta](../logic-apps/logic-apps-monitor-b2b-message.md).
 
-* Si no lo ha hecho ya, [publicar datos de diagnóstico tooLog análisis](../logic-apps/logic-apps-track-b2b-messages-omsportal.md) de OMS.
+* Si aún no lo ha hecho, [publique datos de diagnóstico para Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md) en OMS.
 
 > [!NOTE]
-> Después de que cumple los requisitos anteriores de hello, debe tener un área de trabajo en hello [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md). Debe usar Hola la misma área de trabajo OMS para realizar el seguimiento de la comunicación B2B de OMS. 
+> Después de haber satisfecho los requisitos anteriores, debería tener un área de trabajo en [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md). Debería usar la misma área de trabajo de OMS para realizar el seguimiento de la comunicación B2B en OMS. 
 >  
-> Si no tiene un área de trabajo OMS, descubra [cómo toocreate un área de trabajo OMS](../log-analytics/log-analytics-get-started.md).
+> Si no tiene un área de trabajo de OMS, aprenda [cómo crear un área de trabajo de OMS](../log-analytics/log-analytics-get-started.md).
 
-## <a name="add-hello-logic-apps-b2b-solution-toohello-operations-management-suite-oms"></a>Agregar Hola B2B de lógica de aplicaciones de la solución toohello Operations Management Suite (OMS)
+## <a name="add-the-logic-apps-b2b-solution-to-the-operations-management-suite-oms"></a>Incorporación de la solución B2B de Logic Apps a Operations Management Suite (OMS)
 
-toohave OMS controlar mensajes B2B para la aplicación lógica, debe agregar hello **lógica de aplicaciones B2B** portal de OMS de solución toohello. Obtenga más información sobre [agregar soluciones tooOMS](../log-analytics/log-analytics-get-started.md).
+Para que OMS realice el seguimiento de los mensajes B2B de la aplicación lógica, debe agregar la solución **Logic Apps B2B** al portal de OMS. Más información sobre la [incorporación de soluciones a OMS](../log-analytics/log-analytics-get-started.md).
 
-1. Hola [portal de Azure](https://portal.azure.com), elija **más servicios**. Busque "log analytics" y luego elija **Log Analytics** como se muestra aquí:
+1. En [Azure Portal](https://portal.azure.com), elija **Más servicios**. Busque "log analytics" y luego elija **Log Analytics** como se muestra aquí:
 
    ![Búsqueda de Log Analytics](media/logic-apps-track-b2b-messages-omsportal/browseloganalytics.png)
 
@@ -59,7 +59,7 @@ toohave OMS controlar mensajes B2B para la aplicación lógica, debe agregar hel
 
    ![Selección de Portal de OMS](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
 
-4. Cuando se abre la página principal OMS de hello, elija **Galería de soluciones**.    
+4. Cuando se abra la página principal de OMS, elija **Galería de soluciones**.    
 
    ![Selección de Galería de soluciones](media/logic-apps-track-b2b-messages-omsportal/omshomepage1.png)
 
@@ -71,31 +71,31 @@ toohave OMS controlar mensajes B2B para la aplicación lógica, debe agregar hel
 
    ![Elección de Agregar](media/logic-apps-track-b2b-messages-omsportal/omshomepage3.png)
 
-   En la página principal de OMS de hello, Hola mosaico para **lógica de aplicaciones B2B mensajes** aparece ahora. 
-   Este icono actualiza el número de mensajes de Hola cuando se procesan los mensajes B2B.
+   En la página principal de OMS aparece el icono de **Mensajes B2B de Logic Apps**. 
+   Este icono actualiza el recuento de mensajes al procesar los mensajes B2B.
 
    ![Página principal de OMS, icono de Mensajes B2B de Logic Apps](media/logic-apps-track-b2b-messages-omsportal/omshomepage4.png)
 
 <a name="message-status-details"></a>
 
-## <a name="track-message-status-and-details-in-hello-operations-management-suite"></a>Realizar un seguimiento del estado del mensaje y los detalles en hello Operations Management Suite
+## <a name="track-message-status-and-details-in-the-operations-management-suite"></a>Seguimiento del estado y los detalles de los mensajes en Operations Management Suite
 
-1. Una vez procesados los mensajes B2B, puede ver estado de Hola y los detalles de esos mensajes. En la página principal de OMS de hello, elija hello **lógica de aplicaciones B2B mensajes** icono.
+1. Una vez procesados los mensajes B2B, puede ver el estado y los detalles de esos mensajes. En la página principal de OMS, elija el icono de **Mensajes B2B de Logic Apps**.
 
    ![Recuento de mensajes actualizado](media/logic-apps-track-b2b-messages-omsportal/omshomepage6.png)
 
    > [!NOTE]
-   > De forma predeterminada, Hola **lógica de aplicaciones B2B mensajes** icono muestra datos basados en un solo día. definir el ámbito de datos de hello toochange tooa intervalo diferente, elija Hola ámbito control hello parte superior de la página OMS hello:
+   > De forma predeterminada, el icono de **Mensajes B2B de Logic Apps** muestra datos basados en un solo día. Para cambiar el ámbito de datos a otro intervalo, elija el control de ámbito de la parte superior de la página de OMS:
    > 
    > ![Cambio del ámbito de datos](media/logic-apps-track-b2b-messages-omsportal/change-interval.png)
    >
 
-2. Después de estado del mensaje Hola aparecerá el panel, puede ver más detalles sobre un tipo de mensaje específico que muestre los datos basados en un solo día. Elija el icono de Hola para **AS2**, **X12**, o **EDIFACT**.
+2. Después de que aparezca el panel de estado de los mensajes, puede ver más detalles sobre un tipo de mensaje concreto, lo que muestra los datos basados en un solo día. Seleccione el icono de **AS2**, **X12** o **EDIFACT**.
 
    ![Visualización del estado de los mensajes](media/logic-apps-track-b2b-messages-omsportal/omshomepage5.png)
 
    Aparece una lista de mensajes para el icono seleccionado. 
-   toolearn más información sobre propiedades de Hola para cada tipo de mensaje, se ven estas descripciones de propiedad de mensaje:
+   Para más información sobre las propiedades de cada tipo de mensaje, vea estas descripciones de las propiedades de los mensajes:
 
    * [Propiedades de mensajes AS2](#as2-message-properties)
    * [Propiedades de mensajes X12](#x12-message-properties)
@@ -105,16 +105,16 @@ toohave OMS controlar mensajes B2B para la aplicación lógica, debe agregar hel
 
    ![Visualización de mensajes AS2](media/logic-apps-track-b2b-messages-omsportal/as2messagelist.png)
 
-3. entradas de hello tooview o exportación salidas para mensajes específicos, seleccione los mensajes y elija **descargar**. Cuando se le pida, guarde el equipo local del tooyour de archivo .zip hello y, a continuación, extraer ese archivo. 
+3. Para ver o exportar las entradas y salidas de mensajes concretos, seleccione esos mensajes y elija **Descargar**. Cuando se le pida, guarde el archivo .zip en el equipo local y luego extraiga ese archivo. 
 
-   carpeta extraída de Hello incluye una carpeta para cada mensaje seleccionado. 
-   Si configuras confirmaciones, carpeta de mensajes de Hola también incluye archivos con detalles de confirmación. 
+   La carpeta extraída incluye una carpeta para cada mensaje seleccionado. 
+   Si configura confirmaciones, la carpeta de mensajes incluye además archivos con detalles de confirmación. 
    Cada carpeta de mensaje tiene como mínimo estos archivos: 
    
-   * Archivos de lenguaje natural con hello entrada carga y salida de los detalles de carga
-   * Archivos codificados con hello entradas y salidas
+   * Archivos de lenguaje natural con los detalles de carga de entrada y carga de salida
+   * Archivos codificados con las entradas y salidas
 
-   Para cada tipo de mensaje, puede encontrar la carpeta de Hola y formatos de nombre de archivo aquí:
+   Aquí encontrará los formatos de nombre de carpeta y archivo de cada tipo de mensaje:
 
    * [Formatos de nombre de carpeta y archivo AS2](#as2-folder-file-names)
    * [Formatos de nombre de carpeta y archivo X12](#x12-folder-file-names)
@@ -122,49 +122,49 @@ toohave OMS controlar mensajes B2B para la aplicación lógica, debe agregar hel
 
    ![Descarga de archivos de mensajes](media/logic-apps-track-b2b-messages-omsportal/download-messages.png)
 
-4. tooview todas las acciones que haya Hola mismo ID de ejecución, en hello **Log Search** página, elija un mensaje desde la lista de mensajes de Hola.
+4. Para ver todas las acciones que tienen el mismo identificador de ejecución, en la página **Búsqueda de registros**, elija un mensaje de la lista de mensajes.
 
    Puede ordenar estas acciones por columna o buscar resultados concretos.
 
-   ![Las acciones con hello mismo ejecutar Id.](media/logic-apps-track-b2b-messages-omsportal/logsearch.png)
+   ![Acciones con el mismo identificador de ejecución](media/logic-apps-track-b2b-messages-omsportal/logsearch.png)
 
-   * resultados de toosearch con consultas predeterminadas, elija **favoritos**.
+   * Para buscar resultados con consultas predeterminadas, elija **Favoritos**.
 
-   * Obtenga información acerca de [cómo toobuild las consultas agregando filtros](logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md). 
-   U obtenga más información acerca de [cómo busca datos toofind con registro de análisis de registros](../log-analytics/log-analytics-log-searches.md).
+   * Aprenda [cómo generar consultas mediante la adición de filtros](logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md). 
+   O bien aprenda [cómo buscar datos con búsquedas de registros en Log Analytics](../log-analytics/log-analytics-log-searches.md).
 
-   * consulta de toochange en el cuadro de búsqueda de hello, consulta de Hola de actualización con columnas de Hola y valores que desee toouse como filtros.
+   * Para cambiar la consulta del cuadro de búsqueda, actualícela con las columnas y los valores que quiera usar como filtros.
 
 <a name="message-list-property-descriptions"></a>
 
 ## <a name="property-descriptions-and-name-formats-for-as2-x12-and-edifact-messages"></a>Descripciones de propiedades y formatos de nombre de los mensajes AS2, X12 y EDIFACT
 
-Para cada tipo de mensaje, estas son las descripciones de propiedad de Hola y formatos de nombre de archivos de mensajes descargados.
+Estas son las descripciones de propiedades y los formatos de nombre de los archivos de mensajes descargados por tipo de mensaje.
 
 <a name="as2-message-properties"></a>
 
 ### <a name="as2-message-property-descriptions"></a>Descripciones de propiedades de los mensajes AS2
 
-Estas son las descripciones de propiedad de Hola para cada mensaje de AS2.
+Estas son las descripciones de propiedades de cada mensaje AS2.
 
 | Propiedad | Descripción |
 | --- | --- |
-| Remitente | socio de invitado de Hello especificado en **configuración de recepción**, o socio del host Hola especificadas en **configuración de envío** para un acuerdo de AS2 |
-| Receptor | socio del host Hola especificado en **configuración de recepción**, o socio invitado de hello especificadas en **configuración de envío** para un acuerdo de AS2 |
-| Aplicación lógica | aplicación de la lógica de Hello donde se configuran las acciones de hello AS2 |
-| Estado | Hola estado del mensaje AS2 <br>Correcto = recibido o enviado un mensaje AS2 válido. No se configura ninguna MDN. <br>Correcto = recibido o enviado un mensaje AS2 válido. Se configura y se recibe una MDN, o se envía. <br>Error = recibido un mensaje AS2 no válido. No se configura ninguna MDN. <br>Pendiente = recibido o enviado un mensaje AS2 válido. Se configura una MDN y se espera una MDN. |
-| Ack | Hola estado del mensaje MDN <br>Aceptado = recibida o enviada una MDN positiva. <br>Pending = espera tooreceive o enviar un MDN. <br>Rechazado = recibida o enviada una MDN negativa. <br>No es necesario = MDN no está configurado en el acuerdo de Hola. |
-| Dirección | Hola dirección del mensaje AS2 |
-| Id. de correlación | Id. de Hola que pone en correlación todos los desencadenadores de Hola y acciones en una aplicación de lógica |
-| Id. de mensaje | Id. de mensaje de Hola AS2 de encabezados del mensaje Hola AS2 |
-| Timestamp | hora de Hola Hola AS2 acción procesó mensajes de bienvenida |
+| Remitente | Asociado invitado especificado en **Configuración de recepción** o asociado del host especificado en **Configuración de envío** para un acuerdo de AS2 |
+| Receptor | Asociado del host especificado en **Configuración de recepción** o asociado invitado especificado en **Configuración de envío** para un acuerdo de AS2 |
+| Aplicación lógica | Aplicación lógica donde se configuran las acciones AS2 |
+| Estado | Estado del mensaje AS2 <br>Correcto = recibido o enviado un mensaje AS2 válido. No se configura ninguna MDN. <br>Correcto = recibido o enviado un mensaje AS2 válido. Se configura y se recibe una MDN, o se envía. <br>Error = recibido un mensaje AS2 no válido. No se configura ninguna MDN. <br>Pendiente = recibido o enviado un mensaje AS2 válido. Se configura una MDN y se espera una MDN. |
+| Ack | Estado del mensaje MDN <br>Aceptado = recibida o enviada una MDN positiva. <br>Pendiente = esperando a recibir o enviar una MDN. <br>Rechazado = recibida o enviada una MDN negativa. <br>No necesario = no configurada ninguna MDN en el acuerdo. |
+| Dirección | Dirección del mensaje AS2 |
+| Id. de correlación | Identificador que correlaciona todos los desencadenadores y las acciones de una aplicación lógica |
+| Id. de mensaje | Identificador del mensaje AS2 a partir de los encabezados de mensajes AS2 |
+| Timestamp | Hora a la que la acción AS2 procesó el mensaje |
 |          |             |
 
 <a name="as2-folder-file-names"></a>
 
 ### <a name="as2-name-formats-for-downloaded-message-files"></a>Formatos de nombre AS2 para archivos de mensajes descargados
 
-Estos son formatos de nombre de Hola para cada carpeta descargada de mensaje AS2 y archivos.
+Estos son los formatos de nombre de cada carpeta y archivo de mensajes AS2 descargados.
 
 | Archivo o carpeta | Formato de nombre |
 | :------------- | :---------- |
@@ -176,28 +176,28 @@ Estos son formatos de nombre de Hola para cada carpeta descargada de mensaje AS2
 
 ### <a name="x12-message-property-descriptions"></a>Descripciones de propiedades de los mensajes X12
 
-Estas son las descripciones de propiedad de Hola para cada X12 mensaje.
+Estas son las descripciones de propiedades de cada mensaje X12.
 
 | Propiedad | Descripción |
 | --- | --- |
-| Remitente | socio de invitado de Hello especificado en **configuración de recepción**, o socio del host Hola especificadas en **configuración de envío** para un X12 acuerdo |
-| Receptor | socio del host Hola especificado en **configuración de recepción**, o su partner de invitado de hello especificado en **configuración de envío** para un X12 acuerdo |
-| Aplicación lógica | aplicación de la lógica de Hello donde se configuran las acciones de hello X12 |
-| Estado | estado del mensaje Hola X12 <br>Correcto = recibido o enviado un mensaje X12 válido. No se configura ninguna confirmación funcional. <br>Correcto = recibido o enviado un mensaje X12 válido. Se configura y se recibe una confirmación funcional, o se envía una confirmación funcional. <br>Error = recibido o enviado un mensaje X12 no válido. <br>Pendiente = recibido o enviado un mensaje X12 válido. Se configura una confirmación funcional y se espera una confirmación funcional. |
-| Ack | Estado de confirmación funcional (997) <br>Aceptado = recibida o enviada una confirmación funcional positiva. <br>Rechazado = recibida o enviada una confirmación funcional negativa. <br>Pendiente = se espera una confirmación funcional, pero no se ha recibido. <br>Pendiente = genera una confirmación funcional, pero no se puede enviar toopartner. <br>No necesario = confirmación funcional no configurada. |
-| Dirección | dirección del mensaje Hola X12 |
-| Id. de correlación | Id. de Hola que pone en correlación todos los desencadenadores de Hola y acciones en una aplicación de lógica |
-| Tipo de mensaje | tipo de EDI X 12 mensaje Hola |
-| ICN | Hola número de Control de intercambio de mensajes de bienvenida X12 |
-| TSCN | Hola número de Control de conjunto de transacciones para mensajes de bienvenida X12 |
-| Timestamp | tiempo de Hello al procesar la acción de hello X12 mensajes de bienvenida |
+| Remitente | Asociado invitado especificado en **Configuración de recepción** o asociado del host especificado en **Configuración de envío** para un acuerdo de X12 |
+| Receptor | Asociado del host especificado en **Configuración de recepción** o asociado invitado especificado en **Configuración de envío** para un acuerdo de X12 |
+| Aplicación lógica | Aplicación lógica donde se configuran las acciones X12 |
+| Estado | Estado del mensaje X12 <br>Correcto = recibido o enviado un mensaje X12 válido. No se configura ninguna confirmación funcional. <br>Correcto = recibido o enviado un mensaje X12 válido. Se configura y se recibe una confirmación funcional, o se envía una confirmación funcional. <br>Error = recibido o enviado un mensaje X12 no válido. <br>Pendiente = recibido o enviado un mensaje X12 válido. Se configura una confirmación funcional y se espera una confirmación funcional. |
+| Ack | Estado de confirmación funcional (997) <br>Aceptado = recibida o enviada una confirmación funcional positiva. <br>Rechazado = recibida o enviada una confirmación funcional negativa. <br>Pendiente = se espera una confirmación funcional, pero no se ha recibido. <br>Pendiente = generada una confirmación funcional, pero no se puede enviar al asociado. <br>No necesario = confirmación funcional no configurada. |
+| Dirección | Dirección del mensaje X12 |
+| Id. de correlación | Identificador que correlaciona todos los desencadenadores y las acciones de una aplicación lógica |
+| Tipo de mensaje | Tipo de mensaje X12 de EDI |
+| ICN | Número de control de intercambio del mensaje X12 |
+| TSCN | Número de control de conjuntos de transacciones del mensaje X12 |
+| Timestamp | Hora a la que la acción X12 procesó el mensaje |
 |          |             |
 
 <a name="x12-folder-file-names"></a>
 
 ### <a name="x12-name-formats-for-downloaded-message-files"></a>Formatos de nombre X12 para archivos de mensajes descargados
 
-Estos son los formatos de nombres Hola para cada uno de ellos descargadas X12 carpetas y archivos de mensajes.
+Estos son los formatos de nombre de cada carpeta y archivo de mensajes X12 descargados.
 
 | Archivo o carpeta | Formato de nombre |
 | :------------- | :---------- |
@@ -209,28 +209,28 @@ Estos son los formatos de nombres Hola para cada uno de ellos descargadas X12 ca
 
 ### <a name="edifact-message-property-descriptions"></a>Descripciones de propiedades de los mensajes EDIFACT
 
-Estas son las descripciones de propiedad de Hola para cada mensaje EDIFACT.
+Estas son las descripciones de propiedades de cada mensaje EDIFACT.
 
 | Propiedad | Descripción |
 | --- | --- |
-| Remitente | socio de invitado de Hello especificado en **configuración de recepción**, o socio del host Hola especificadas en **configuración de envío** para un acuerdo de EDIFACT |
-| Receptor | socio del host Hola especificado en **configuración de recepción**, o socio invitado de hello especificadas en **configuración de envío** para un acuerdo de EDIFACT |
-| Aplicación lógica | aplicación de la lógica de Hello donde se configuran las acciones de saludo EDIFACT |
-| Estado | Hola estado del mensaje EDIFACT <br>Correcto = recibido o enviado un mensaje EDIFACT válido. No se configura ninguna confirmación funcional. <br>Correcto = recibido o enviado un mensaje EDIFACT válido. Se configura y se recibe una confirmación funcional, o se envía una confirmación funcional. <br>Error = recibido o enviado un mensaje EDIFACT no válido <br>Pendiente = recibido o enviado un mensaje EDIFACT válido. Se configura una confirmación funcional y se espera una confirmación funcional. |
-| Ack | Estado de confirmación funcional (997) <br>Aceptado = recibida o enviada una confirmación funcional positiva. <br>Rechazado = recibida o enviada una confirmación funcional negativa. <br>Pendiente = se espera una confirmación funcional, pero no se ha recibido. <br>Pendiente = genera una confirmación funcional, pero no se puede enviar toopartner. <br>No necesario = confirmación funcional no configurada. |
-| Dirección | Hola dirección del mensaje EDIFACT |
-| Id. de correlación | Id. de Hola que pone en correlación todos los desencadenadores de Hola y acciones en una aplicación de lógica |
-| Tipo de mensaje | tipo de mensaje EDIFACT Hola |
-| ICN | Hola número de Control de intercambio de mensaje de saludo EDIFACT |
-| TSCN | Hola número de Control de conjunto de transacciones para el mensaje de saludo EDIFACT |
-| Timestamp | hora de Hola Hola acción EDIFACT procesó mensajes de bienvenida |
+| Remitente | Asociado invitado especificado en **Configuración de recepción** o asociado del host especificado en **Configuración de envío** para un acuerdo de EDIFACT |
+| Receptor | Asociado del host especificado en **Configuración de recepción** o asociado invitado especificado en **Configuración de envío** para un acuerdo de EDIFACT |
+| Aplicación lógica | Aplicación lógica donde se configuran las acciones EDIFACT |
+| Estado | Estado del mensaje EDIFACT <br>Correcto = recibido o enviado un mensaje EDIFACT válido. No se configura ninguna confirmación funcional. <br>Correcto = recibido o enviado un mensaje EDIFACT válido. Se configura y se recibe una confirmación funcional, o se envía una confirmación funcional. <br>Error = recibido o enviado un mensaje EDIFACT no válido <br>Pendiente = recibido o enviado un mensaje EDIFACT válido. Se configura una confirmación funcional y se espera una confirmación funcional. |
+| Ack | Estado de confirmación funcional (997) <br>Aceptado = recibida o enviada una confirmación funcional positiva. <br>Rechazado = recibida o enviada una confirmación funcional negativa. <br>Pendiente = se espera una confirmación funcional, pero no se ha recibido. <br>Pendiente = generada una confirmación funcional, pero no se puede enviar al asociado. <br>No necesario = confirmación funcional no configurada. |
+| Dirección | Dirección del mensaje EDIFACT |
+| Id. de correlación | Identificador que correlaciona todos los desencadenadores y las acciones de una aplicación lógica |
+| Tipo de mensaje | Tipo del mensaje EDIFACT |
+| ICN | Número de control de intercambio del mensaje EDIFACT |
+| TSCN | Número de control de conjuntos de transacciones del mensaje EDIFACT |
+| Timestamp | Hora a la que la acción EDIFACT procesó el mensaje |
 |          |               |
 
 <a name="edifact-folder-file-names"></a>
 
 ### <a name="edifact-name-formats-for-downloaded-message-files"></a>Formatos de nombre EDIFACT para archivos de mensajes descargados
 
-Estos son formatos de nombre de Hola para cada carpeta de mensaje EDIFACT descargada y archivos.
+Estos son los formatos de nombre de cada carpeta y archivo de mensajes EDIFACT descargados.
 
 | Archivo o carpeta | Formato de nombre |
 | :------------- | :---------- |

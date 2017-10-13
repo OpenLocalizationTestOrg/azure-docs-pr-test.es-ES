@@ -1,9 +1,9 @@
 <!--author=SharS last changed: 03/17/2016-->
 
-#### <a name="tooinstall-update-12-from-hello-azure-classic-portal"></a>tooinstall 1.2 de actualización de hello portal de Azure clásico
-1. En el portal de Azure clásico hello, vaya toohello **dispositivos** página y seleccione su dispositivo.
-2. Navegue demasiado**dispositivos** > **configurar**.
-3. En **Interfaces de red**, compruebe primero que tiene al menos una interfaz de red que está habilitada para iSCSI. A continuación, busque la interfaz de red de hello (diferentes a DATA 0) que tiene una puerta de enlace asignada.
-4. Deshabilitar la interfaz de red de Hola que tiene asignada una puerta de enlace y guardar la configuración modificada de Hola. Tenga en cuenta se conserva la configuración de interfaz de red de Hola y por lo que al volver a habilitar esta interfaz de red más adelante, el portal de hello volverá toohello de configuración original.
-5. Ahora puede [usar hello Azure tooinstall portal clásico actualización 1.2](#install-update-12-via-the-azure-classic-portal). Siga las instrucciones de Hola a partir del paso 3 de este procedimiento. Después de haber instalado todas las actualizaciones de hello, puede volver a habilitar interfaz de red de Hola que ha deshabilitado.
+#### <a name="to-install-update-12-from-the-azure-classic-portal"></a>Para instalar la actualización 1.2 desde el Portal de Azure clásico
+1. En el Portal de Azure clásico, vaya a la página **Dispositivos** y seleccione un dispositivo.
+2. Vaya a **Dispositivos** > **Configurar**.
+3. En **Interfaces de red**, compruebe primero que tiene al menos una interfaz de red que está habilitada para iSCSI. A continuación busque la interfaz de red (que no sea DATA 0) que tiene asignada una puerta de enlace.
+4. Deshabilite la interfaz de red que tenga asignada una puerta de enlace y guarde la configuración modificada. Observe que se conserva la configuración de la interfaz de red, por lo que, cuando se vuelva a habilitar esta interfaz más adelante, el portal se revertirá a la configuración original.
+5. Ya puede [usar el Portal de Azure clásico para instalar la Actualización 1.2](#install-update-12-via-the-azure-classic-portal). Siga las instrucciones a partir del paso 3 de este procedimiento. Después de haber instalado todas las actualizaciones, puede volver a habilitar la interfaz de red que deshabilitó.
 

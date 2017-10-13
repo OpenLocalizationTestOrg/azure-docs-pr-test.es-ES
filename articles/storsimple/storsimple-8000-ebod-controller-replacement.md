@@ -1,6 +1,6 @@
 ---
-title: un controlador de StorSimple 8600 EBOD aaaReplace | Documentos de Microsoft
-description: "Explica cómo tooremove y reemplazar uno o ambos controladores EBOD en un dispositivo de StorSimple 8600."
+title: Reemplazar un controlador EBOD de StorSimple 8600 | Microsoft Docs
+description: "Explica cómo quitar y reemplazar uno o ambos controladores EBOD en un dispositivo de StorSimple 8600."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,40 +14,40 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 8343ed6f48ae97fc9204452f85e1936bfb1d6919
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 45699c267d1009c4884dd164fd3f2950d6d5f555
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>Reemplazar un controlador EBOD en el dispositivo StorSimple
 
 ## <a name="overview"></a>Información general
-Este tutorial le explica cómo tooreplace un módulo de controlador EBOD defectuoso en el dispositivo de StorSimple de Microsoft Azure. tooreplace un módulo de controlador EBOD, necesitará:
+Este tutorial explica cómo reemplazar un módulo de controladores EBOD defectuoso en el dispositivo StorSimple de Microsoft Azure. Para reemplazar un módulo de controladores EBOD, necesitará:
 
-* Quitar el controlador EBOD dañado Hola
+* Quitar el controlador EBOD defectuoso
 * Instalar un nuevo controlador EBOD
 
-Considere la posibilidad de hello siguiente información antes de empezar:
+Antes de comenzar, tenga en cuenta la siguiente información:
 
-* Los módulos EBOD vacíos deben insertarse en todas las ranuras sin usar. Hola alojamiento no se refrigerará correctamente si una ranura queda abierta.
-* controlador de EBOD Hello es intercambiable en caliente y se puede quitar o reemplazar. No quite un módulo defectuoso hasta que tenga un reemplazo. Cuando se inicia el proceso de reemplazo de hello, debe completarlo en el plazo de 10 minutos.
+* Los módulos EBOD vacíos deben insertarse en todas las ranuras sin usar. El alojamiento no se refrigerará correctamente si una ranura queda abierta.
+* El controlador EBOD es intercambiable en caliente y puede quitarse o reemplazarse. No quite un módulo defectuoso hasta que tenga un reemplazo. Cuando se inicia el proceso de reemplazo, debe finalizarlo en 10 minutos.
 
 > [!IMPORTANT]
-> Antes de intentar tooremove o reemplace cualquier componente de StorSimple, asegúrese de que revisa hello [convenciones de iconos de seguridad](storsimple-safety.md#safety-icon-conventions) y otros [precauciones de seguridad](storsimple-safety.md).
+> Antes de intentar quitar o reemplazar cualquier componente de StorSimple, asegúrese de revisar las [convenciones de iconos de seguridad](storsimple-safety.md#safety-icon-conventions) y otras [precauciones de seguridad](storsimple-safety.md).
 
 ## <a name="remove-an-ebod-controller"></a>Quitar un controlador EBOD
-Antes de reemplazar Hola error módulo del controlador EBOD en el dispositivo StorSimple, asegúrese de que ese Hola otro módulo de controlador EBOD esté activo y en funcionamiento. Hello procedimiento y la tabla siguientes explican cómo tooremove Hola módulo del controlador EBOD.
+Antes de reemplazar el módulo de controladores EBOD defectuoso en el dispositivo StorSimple, asegúrese de que el módulo de controladores EBOD esté activo y en funcionamiento. El procedimiento y la tabla siguientes explican cómo quitar el módulo de controladores EBOD.
 
-#### <a name="tooremove-an-ebod-module"></a>tooremove un módulo de EBOD
-1. Hola abrir portal de Azure.
-2. Vaya tooyour dispositivos del sistema y desplácese demasiado**configuración** > **estado del Hardware**y compruebe el estado Hola de hello LED de hello módulo del controlador es verde y hello LED para hello no se pudo Módulo de controlador EBOD está en rojo.
-3. Busque el módulo del controlador EBOD de hello no se pudo en hello parte posterior del dispositivo de Hola.
-4. Quite los cables de Hola que conectan el controlador toohello módulo de hello EBOD controlador antes de realizar el módulo de EBOD de hello del sistema de Hola.
-5. Tome nota del puerto SAS exacto de Hola de módulo del controlador EBOD Hola que estaba conectado toohello controlador. Será necesario toorestore configuración de toothis del sistema de hello después de reemplazar el módulo EBOD Hola.
+#### <a name="to-remove-an-ebod-module"></a>Para quitar un módulo EBOD
+1. Abra Azure Portal.
+2. Navegue hasta el dispositivo y vaya a **Configuración** > **Estado de hardware** y compruebe que el estado del LED para el módulo de controladores EBOD es verde y el LED del módulo de controladores EBOD defectuoso es rojo.
+3. Busque el módulo de controladores EBOD defectuoso en la parte posterior del dispositivo.
+4. Quite los cables que conectan el módulo de controladores EBOD al controlador antes de extraer el módulo EBOD del sistema.
+5. Tome nota del puerto SAS exacto del módulo de controladores EBOD que estaba conectado al controlador. Deberá restaurar el sistema a esta configuración después de reemplazar el módulo EBOD.
    
    > [!NOTE]
-   > Normalmente, se trata de puerto A, que se etiqueta como **hospedar en** Hola siguiente diagrama.
+   > Normalmente, se tratará del Puerto A, que está etiquetado como **Hospedar en** en el diagrama siguiente.
    
     ![Plano anterior del controlador EBOD](./media/storsimple-ebod-controller-replacement/IC741049.png)
    
@@ -65,21 +65,21 @@ Antes de reemplazar Hola error módulo del controlador EBOD en el dispositivo St
    | 8 |Puerto C (solo para uso de fábrica) |
 
 ## <a name="install-a-new-ebod-controller"></a>Instalar un nuevo controlador EBOD
-Hello procedimiento y la tabla siguientes explican cómo tooinstall un módulo de controlador EBOD en el dispositivo StorSimple.
+El procedimiento y la tabla siguientes explican cómo instalar el módulo de controladores EBOD en el dispositivo StorSimple.
 
-#### <a name="tooinstall-an-ebod-controller"></a>tooinstall un controlador de EBOD
-1. Compruebe hello EBOD del dispositivo si hay daños, especialmente el conector de interfaz toohello. No instale el nuevo controlador de EBOD Hola si algún pasador está doblado.
-2. Con bloqueos temporales de Hola Hola abra posición, módulo de diapositiva hello en el alojamiento de hello hasta Hola bloqueos se acoplen.
+#### <a name="to-install-an-ebod-controller"></a>Para instalar un controlador EBOD
+1. Compruebe el dispositivo EBOD para ver si hay daños, especialmente en el conector de la interfaz. No instale el nuevo controlador EBOD si alguna de las clavijas está doblada.
+2. Con los pestillos en la posición abierta, deslice el módulo hacia el gabinete hasta que los pestillos encajen.
    
     ![Instalación del controlador EBOD](./media/storsimple-ebod-controller-replacement/IC741050.png)
    
-    **Figura 2** instalar Hola controlador de ebod
-3. Bloqueo de cierre Hola. Debe oír un clic cuando se acople el bloqueo temporal de Hola.
+    **Figura 2** Instalación del módulo de controladores EBOD
+3. Cierre el pestillo. Oirá un clic cuando el pestillo encaje.
    
     ![Liberación del pestillo EBOD](./media/storsimple-ebod-controller-replacement/IC741047.png)
    
-    **Figura 3** cerrando bloqueo de módulo EBOD Hola
-4. Vuelva a conectar los cables de Hola. Usar configuración exacta de Hola que ya estaba presente antes de sustitución de Hola. Vea Hola después de diagrama y de la tabla para obtener más información acerca de cómo los cables de hello tooconnect.
+    **Figura 3** Cierre del pestillo del módulo EBOD
+4. Vuelva a conectar los cables. Utilice la configuración exacta que estaba presente antes del reemplazo. Vea la tabla y el diagrama siguientes para obtener detalles acerca de cómo conectar los cables.
    
     ![Cableado del dispositivo 4U para alimentación](./media/storsimple-ebod-controller-replacement/IC770723.png)
    

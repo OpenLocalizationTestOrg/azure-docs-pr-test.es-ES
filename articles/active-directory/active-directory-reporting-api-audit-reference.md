@@ -1,6 +1,6 @@
 ---
-title: "auditoría de Active Directory aaaAzure referencia de API | Documentos de Microsoft"
-description: "¿Cómo tooget partió Hola API de auditoría de Azure Active Directory"
+title: "Referencia de la API de auditoría de Azure Active Directory | Microsoft Docs"
+description: "Introducción a la API de auditoría de Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,22 +15,22 @@ ms.workload: identity
 ms.date: 07/05/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5f33b62ede9be445f35704739e328580dc454368
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 573e940c5390e7b990d889681eb37b73c5b253d9
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-active-directory-audit-api-reference"></a>Referencia de la API de auditoría de Azure Active Directory
-Este tema forma parte de una colección de temas sobre hello Azure Active Directory API de informes.  
-Reporting de Azure AD proporciona una API que permite los datos de auditoría tooaccess mediante código o herramientas relacionadas.
-ámbito de Hola de este tema es tooprovide, con información de referencia sobre hello **API de auditoría**.
+Este tema forma parte de una serie de temas sobre la API de informes de Azure Active Directory.  
+La característica de generación de informes de Azure AD proporciona una API que permite acceder a los datos de auditoría mediante el uso de código o herramientas relacionadas.
+El objetivo de este tema es ofrecer información de referencia sobre la **API de auditoría**.
 
 Consulte:
 
 * [Registros de auditoría](active-directory-reporting-azure-portal.md#activity-reports) para más información conceptual
 
-* [Introducción a Azure Active Directory Reporting API hello](active-directory-reporting-api-getting-started.md) para obtener más información acerca de la API de informes de Hola.
+* [Introducción a la API de generación de informes de Azure Active Directory](active-directory-reporting-api-getting-started.md) para obtener más información sobre esta API
 
 
 Si desea:
@@ -40,32 +40,32 @@ Si desea:
 - En caso de problemas, [abra una incidencia de soporte técnico](active-directory-troubleshooting-support-howto.md) 
 
 
-## <a name="who-can-access-hello-data"></a>¿Quién puede tener acceso a datos de hello?
-* Usuarios de rol de administrador de seguridad o seguridad lector Hola
+## <a name="who-can-access-the-data"></a>¿Quién puede acceder a los datos?
+* Usuarios de los roles de administrador o lector de seguridad
 * Administradores globales
-* Cualquier aplicación que tenga autorización tooaccess Hola API (autorización de la aplicación puede ser el programa de instalación solamente basándose en el permiso del administrador Global)
+* Cualquier aplicación que tenga autorización para acceder a la API (la autorización de aplicaciones solo puede configurarse según los permisos del administrador global).
 
 ## <a name="prerequisites"></a>Requisitos previos
-En este informe a través de tooaccess de orden Hola API de informes, debe tener:
+Para acceder a este informe a través de la API de generación de informes, debe cumplir los siguientes requisitos:
 
 * Una [edición de Azure Active Directory gratis o superior](active-directory-editions.md)
-* Hola completado [API de generación de informes de requisitos previos tooaccess hello Azure AD](active-directory-reporting-api-prerequisites.md). 
+* Completar los [requisitos previos para acceder a la API de generación de informes de Azure AD](active-directory-reporting-api-prerequisites.md) 
 
-## <a name="accessing-hello-api"></a>Obtener acceso a las API de Hola
-Se puede tener acceso a esta API a través de hello [Explorador de gráficos](https://graphexplorer2.cloudapp.net) o mediante programación con, por ejemplo, PowerShell. En orden para PowerShell toocorrectly interpretar la sintaxis de filtros de OData Hola utilizada en las llamadas de REST de AAD Graph, debe usar acento grave hello (también conocido como: acento grave) carácter demasiado "carácter de escape" hello $. carácter de acento grave Hola actúa como [carácter de escape de PowerShell](https://technet.microsoft.com/library/hh847755.aspx), lo que PowerShell toodo una interpretación literal de carácter de hello $ y evitar confundir como un nombre de variable de PowerShell (es decir: $filter).
+## <a name="accessing-the-api"></a>Acceso a la API
+Puede acceder a esta API a través del [Probador de Graph](https://graphexplorer2.cloudapp.net) o mediante programación con, por ejemplo, PowerShell. Para que PowerShell pueda interpretar correctamente la sintaxis de filtro de OData empleada en las llamadas a la API REST Graph de AAD, debe usar el carácter de acento grave para escapar $. El carácter de acento grave actúa como [carácter de escape de PowerShell](https://technet.microsoft.com/library/hh847755.aspx), de modo que PowerShell puede hacer una interpretación literal del carácter $ y evitar que lo confunda con un nombre de variable de PowerShell (por ejemplo, $filter).
 
-Hola de este tema es Hola Explorador de gráficos. Para ver un ejemplo de PowerShell, consulte este [script de PowerShell](active-directory-reporting-api-audit-samples.md#powershell-script).
+Este tema se centra en el Probador de Graph. Para ver un ejemplo de PowerShell, consulte este [script de PowerShell](active-directory-reporting-api-audit-samples.md#powershell-script).
 
 ## <a name="api-endpoint"></a>Punto de conexión de API
-Puede tener acceso a esta API con hello siguiente URI:  
+Puede acceder a esta API con el siguiente URI:  
 
     https://graph.windows.net/contoso.com/activities/audit?api-version=beta
 
-No hay ningún límite en hello número de registros devueltos por la API de auditoría de hello Azure AD (uso de la paginación de OData).
+No hay ningún límite en el número de registros devueltos por la API de generación de informes de Azure AD (mediante la paginación de OData).
 Para ver los límites de retención de los datos de informes, consulte [Directivas de retención de informes](active-directory-reporting-retention.md).
 
-Esta llamada devuelve datos de hello en lotes. Cada lote tiene un máximo de 1000 registros.  
-tooget Hola siguiente lote de registros, use Hola siguiente vínculo. Obtener información de skiptoken de hello del primer conjunto de registros devueltos de Hola. token de omisión de Hello será final Hola Hola de conjunto de resultados.  
+Esta llamada devuelve los datos en lotes. Cada lote tiene un máximo de 1000 registros.  
+Para obtener el siguiente lote de registros, haga clic en el vínculo Siguiente. Obtenga la información de skiptoken desde el primer conjunto de registros devueltos. El token de omisión estará al final del conjunto de resultados.  
 
     https://graph.windows.net/contoso.com/activities/audit?api-version=beta&%24skiptoken=-1339686058
 
@@ -73,26 +73,26 @@ tooget Hola siguiente lote de registros, use Hola siguiente vínculo. Obtener in
 
 
 ## <a name="supported-filters"></a>Filtros admitidos
-Puede limitar número de Hola de registros devueltos por una API de llamar a en forma de un filtro.  
-Para inicio de sesión de la API se admiten datos relacionados, Hola después de filtros:
+Puede limitar el número de registros que se devuelven mediante una llamada de API usando un filtro.  
+En lo que respecta a los datos relacionados con las API de inicio de sesión, se admiten los siguientes filtros:
 
-* **$top =\<devolvió un número de registros toobe\>**  -número de hello toolimit de registros devueltos. Se trata de una operación costosa. No se debe usar este filtro si desea tooreturn miles de objetos.     
-* **$filter =\<la instrucción de filtro\>**  -toospecify, en función de Hola de campos de filtro admitido, tipo de Hola de registros que le interesa
+* **$top=\<número de registros que se devolverán\>**: limita el número de registros devueltos. Se trata de una operación costosa. No debe utilizar este filtro si quiere devolver miles de objetos.     
+* **$filter=\<instrucción de filtro\>**: para especificar, en función de los campos de filtro compatibles, el tipo de registros que le interesan
 
 ## <a name="supported-filter-fields-and-operators"></a>Operadores y campos de filtro compatibles
-tipo de hello toospecify de registros que le interesa, puede crear una instrucción de filtro que puede contener uno o una combinación de hello después de los campos de filtro:
+Para especificar el tipo de registros que le interesa, puede crear una instrucción de filtro que puede contener uno o una combinación de los campos de filtro siguientes:
 
 * [activityDate](#activitydate): define una fecha o un intervalo de fechas
-* [categoría](#category) -define la categoría de hello en la que desee toofilter.
-* [activityStatus](#activitystatus) -define el estado de saludo de una actividad
-* [activityType](#activitytype) -define el tipo de saludo de una actividad
-* [actividad](#activity) -define actividad hello como cadena  
-* [nombre delactor/](#actorname) -define actor hello en formato de nombre del actor Hola
-* [actor/objectid](#actorobjectid) -define actores de Hola en formato de Id. de actor Hola   
-* [actor/upn](#actorupn) -define actores hello en formato de nombre principal de usuario del actor hello (UPN) 
-* [nombre dedestino/](#targetname) -define el destino de hello en forma de nombre del actor Hola
-* [destino/objectid](#targetobjectid) -define el destino de hello en forma de identificador del destino de Hola  
-* [destino/upn](#targetupn) -define actores hello en formato de nombre principal de usuario del actor hello (UPN)   
+* [category](#category): define la categoría por la que desea filtrar.
+* [activityStatus](#activitystatus): define el estado de una actividad.
+* [activityType](#activitytype): define el tipo de una actividad
+* [activity](#activity): define la actividad como cadena  
+* [actor/name](#actorname): define el actor en el formato de nombre del actor
+* [actor/objectid](#actorobjectid) : define el actor en el formato del identificador del actor   
+* [actor/upn](#actorupn): define el actor en el formato de nombre principal de usuario (UPN) del actor 
+* [target/name](#targetname): define el destino en el formato de nombre del actor
+* [target/objectid](#targetobjectid) : define el destino en el formato de identificador del destino  
+* [target/upn](#targetupn) : define el actor en el formato de nombre principal de usuario del actor (UPN)   
 
 - - -
 ### <a name="activitydate"></a>activityDate
@@ -212,8 +212,8 @@ No distingue mayúsculas de minúsculas.
 
 **Notas**:
 
-* No distingue mayúsculas de minúsculas.
-* Se necesita espacio de nombres completo de tooadd Hola consultar Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.TargetResourceUserEntity
+* No distingue mayúsculas de minúsculas
+* Al consultar Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.TargetResourceUserEntity es preciso agregar el espacio de nombres completo
 
 - - -
 ### <a name="targetobjectid"></a>target/objectid
@@ -234,10 +234,10 @@ No distingue mayúsculas de minúsculas.
 **Notas**:
 
 * No distingue mayúsculas de minúsculas. 
-* Se necesita espacio de nombres completo de tooadd Hola consultar Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.ActorUserEntity
+* Debe agregar el espacio de nombres completo al consultar Microsoft.ActiveDirectory.DataService.PublicApi.Model.Reporting.AuditLog.ActorUserEntity
 
 - - -
 ## <a name="next-steps"></a>Pasos siguientes
-* ¿Desea toosee ejemplos para las actividades de filtrado de sistema? Extraer del repositorio hello [ejemplos de API de auditoría de Azure Active Directory](active-directory-reporting-api-audit-samples.md).
-* ¿Desea más información acerca de la API de generación de informes de hello Azure AD tooknow? Vea [Introducción a Azure Active Directory Reporting API hello](active-directory-reporting-api-getting-started.md).
+* ¿Quiere ver ejemplos de actividades del sistema filtradas? Consulte los [ejemplos de la API de auditoría de Azure Active Directory](active-directory-reporting-api-audit-samples.md).
+* ¿Quiere obtener más información sobre la API de generación de informes de Azure AD? Consulte [Introducción a la API de informes de Azure Active Directory](active-directory-reporting-api-getting-started.md).
 

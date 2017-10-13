@@ -1,6 +1,6 @@
 ---
-title: aaaSafety para el dispositivo StorSimple | Documentos de Microsoft
-description: "Describe consideraciones, directrices y convenciones de seguridad y explica cómo toosafely instalar y trabajar con el dispositivo StorSimple."
+title: Seguridad del dispositivo StorSimple | Microsoft Docs
+description: "Describe las consideraciones, directrices y convenciones de seguridad y explica cómo instalar y operar el dispositivo StorSimple de forma segura."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,117 +14,117 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2016
 ms.author: alkohli
-ms.openlocfilehash: cb5e24582c0391d7b68cb5c74586815af4b58a8b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a178e8880bcbcada9d66eaacf5ccbdb7c55957cb
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="safely-install-and-operate-your-storsimple-device"></a>Instalar y operar el dispositivo StorSimple de forma segura
 ![Icono Advertencia](./media/storsimple-safety/IC740879.png)
-![Icono Leer el aviso de seguridad](./media/storsimple-safety/IC740885.png)**LEER LA INFORMACIÓN DE SEGURIDAD Y SALUD**
+![Icono Leer el aviso de seguridad](./media/storsimple-safety/IC740885.png) **LEER LA INFORMACIÓN DE SEGURIDAD Y SALUD**
 
-Leer toda la información de estado en este artículo que se aplica a dispositivos de Microsoft Azure StorSimple tooyour y seguridad Hola. Mantener que todas Hola guías impresas incluidas con el dispositivo de StorSimple para futuras referencias. Instrucciones de error toofollow y correctamente configurado, usa y cuida adecuadamente este producto puede aumentar el riesgo de Hola de lesiones graves o muerte, o daños toohello dispositivo o los dispositivos. También hay disponible una [versión descargable de esta guía](http://www.microsoft.com/download/details.aspx?id=44233).
+Lea toda la información de seguridad y salud de esta guía que sea aplicable a su dispositivo de Microsoft Azure StorSimple Conserve todas las guías impresas entregadas con su dispositivo de StorSimple para futuras referencias. Si no se siguen las instrucciones y se configura, usa y cuida adecuadamente este producto, puede aumentar el riesgo de lesiones graves o muerte, o bien de daños en el dispositivo o dispositivos. También hay disponible una [versión descargable de esta guía](http://www.microsoft.com/download/details.aspx?id=44233).
 
 ## <a name="safety-icon-conventions"></a>Convenciones de iconos de seguridad
-Estos son los iconos de Hola que encontrará cuando revise toobe de precauciones de seguridad Hola tenerse en cuenta al configurar y ejecutar el dispositivo StorSimple de Microsoft Azure.
+Estos son los iconos que encontrará cuando revise las precauciones de seguridad que se deben observar al configurar y ejecutar el dispositivo de Microsoft Azure StorSimple.
 
 | Icono | Description |
 |:--- |:--- |
-| ![Icono Peligro](./media/storsimple-safety/IC740879.png)**PELIGRO** |Indica una situación peligrosa que, si no se evita, causará la muerte o lesiones graves. Esta palabra de aviso es toobe limitado situaciones más extremas toohello. |
-| ![Icono Advertencia](./media/storsimple-safety/IC740879.png)**ADVERTENCIA** |Indica una situación peligrosa que, si no se evita, podría causar la muerte o lesiones graves. |
-| ![Icono Advertencia](./media/storsimple-safety/IC740879.png)**PRECAUCIÓN** |Indica una situación peligrosa que, si no se evita, podría causar lesiones leves o graves. |
-| ![Icono Aviso](./media/storsimple-safety/IC740881.png)**AVISO:** |Indica información considerada importante, pero no relacionada con la peligrosidad. |
-| ![Icono Descarga eléctrica](./media/storsimple-safety/IC740882.png)**Peligro de descarga eléctrica** |Alta tensión |
-| ![Icono Peso pesado](./media/storsimple-safety/IC740883.png)**Peso pesado** | |
-| ![Icono No contiene piezas reparables por el usuario](./media/storsimple-safety/IC740879.png)**No contiene piezas reparables por el usuario** |No acceder sin la formación adecuada. |
+| ![Icono Peligro](./media/storsimple-safety/IC740879.png) **PELIGRO** |Indica una situación peligrosa que, si no se evita, causará la muerte o lesiones graves. Esta palabra de aviso se debe limitar a las situaciones más extremas. |
+| ![Icono Advertencia](./media/storsimple-safety/IC740879.png) **ADVERTENCIA** |Indica una situación peligrosa que, si no se evita, podría causar la muerte o lesiones graves. |
+| ![Icono Advertencia](./media/storsimple-safety/IC740879.png) **PRECAUCIÓN** |Indica una situación peligrosa que, si no se evita, podría causar lesiones leves o graves. |
+| ![Icono Aviso](./media/storsimple-safety/IC740881.png) **AVISO:** |Indica información considerada importante, pero no relacionada con la peligrosidad. |
+| ![Icono Descarga eléctrica](./media/storsimple-safety/IC740882.png) **Peligro de descarga eléctrica** |Alta tensión |
+| ![Icono Peso pesado](./media/storsimple-safety/IC740883.png) **Peso pesado** | |
+| ![Icono No contiene piezas reparables por el usuario](./media/storsimple-safety/IC740879.png) **No contiene piezas reparables por el usuario** |No acceder sin la formación adecuada. |
 | ![Icono Leer el aviso de seguridad](./media/storsimple-safety/IC740885.png)**Lea todas las instrucciones primero** | |
-| ![Icono Sugerencia peligrosa](./media/storsimple-safety/IC740886.png)**Sugerencia peligrosa** | |
+| ![Icono Sugerencia peligrosa](./media/storsimple-safety/IC740886.png) **Sugerencia peligrosa** | |
 
 ## <a name="handling-precautions"></a>Precauciones en la manipulación
-![Icono Advertencia](./media/storsimple-safety/IC740879.png)![Icono Peso pesado](./media/storsimple-safety/IC740883.png)**ADVERTENCIA** 
+![Icono Advertencia](./media/storsimple-safety/IC740879.png) ![Icono Peso pesado](./media/storsimple-safety/IC740883.png) **ADVERTENCIA** 
 
-riesgo de hello tooreduce de lesiones:
+Para reducir el riesgo de lesiones:
 
-* Un alojamiento totalmente configurado puede pesar seguridad too32 kg (70 lbs); No intente toolift por usted mismo.
-* Antes de alojamiento de hello móvil, asegúrese siempre de que dos personas son peso de hello toohandle disponible. Tenga en cuenta que si una persona intentar toolift peso, podría lesionarse.
-* No levante el alojamiento de la hello mediante identificadores de Hola Hola Power módulos y refrigeración (PCM) por la que se encuentra en la parte posterior de Hola de unidad de Hola. No están diseñadas de peso de hello tootake.
+* Un alojamiento completamente configurado puede pesar hasta 32 kg (70 lbs); no intente levantarlo sin ayuda de otra persona.
+* Antes de mover el alojamiento, asegúrese siempre de que sean dos personas las que levanten su peso. Tenga en cuenta que si una persona sola intenta levantar su peso, podría lesionarse.
+* No levante el alojamiento por las asas de los módulos de alimentación y refrigeración (PCM) ubicadas en la parte posterior de la unidad. No están diseñadas para soportar el peso.
 
 ## <a name="connection-precautions"></a>Precauciones en la conexión
-![Icono Advertencia](./media/storsimple-safety/IC740879.png)![Icono Descarga eléctrica](./media/storsimple-safety/IC740882.png)**ADVERTENCIA**
+![Icono Advertencia](./media/storsimple-safety/IC740879.png) ![Icono Descarga eléctrica](./media/storsimple-safety/IC740882.png) **ADVERTENCIA**
 
-probabilidad de hello tooreduce de lesiones, descargas eléctricas o muerte:
+Para reducir la probabilidad de lesiones, descargas eléctricas o muerte:
 
 * Cuando se usen varias fuentes de CA, desconéctelas todas para conseguir un aislamiento completo.
-* Desenchufe unidad Hola de forma definitiva antes de moverla o si piensa que se ha dañado de ninguna manera.
-* Proporcionar que una fuente de alimentación eléctrica a tierra segura toohello de conexión de los cables. Compruebe que con conexión a tierra del alojamiento de Hola Hola cumple los requisitos nacionales y locales de Hola antes de encenderlo.
-* Asegúrese de que conexión de alimentación de hello siempre está desconectado toohello antes de extraer un PCM del alojamiento de Hola.
-* Dado que plug en fuente de alimentación de hello hello es hello principal desconectar el dispositivo, asegúrese de que los enchufes Hola se encuentran cerca de los equipos de Hola y son fácilmente accesibles.
+* Desenchufe de forma definitiva la unidad antes de moverla o si piensa que se ha dañado de algún modo.
+* Proporcione una conexión eléctrica a tierra segura para los cables de la fuente de alimentación. Compruebe que la toma de tierra del alojamiento cumple con los requisitos nacionales y locales antes encenderlo.
+* Asegúrese siempre de que la conexión de alimentación está desconectada antes de extraer un PCM del alojamiento.
+* Dado que el enchufe del cable de la fuente de alimentación es el dispositivo de desconexión principal, asegúrese de que los enchufes están ubicados cerca del equipo y que se pueden acceder con facilidad.
 
-![Icono Advertencia](./media/storsimple-safety/IC740879.png)![Icono Descarga eléctrica](./media/storsimple-safety/IC740882.png)**ADVERTENCIA**
+![Icono Advertencia](./media/storsimple-safety/IC740879.png) ![Icono Descarga eléctrica](./media/storsimple-safety/IC740882.png) **ADVERTENCIA**
 
-probabilidad de hello tooreduce de sobrecalentamiento o de incendio de conexiones eléctricas hello:
+Para reducir la probabilidad de sobrecalentamiento o de incendio de las conexiones eléctricas:
 
-* Proporcione una fuente de alimentación adecuada con toomeet de protección frente a sobrecargas eléctricas requisitos Hola detallados en especificaciones técnicas de Hola.
+* Proporcione una fuente de alimentación adecuada con protección frente a sobrecargas eléctricas para cumplir con los requisitos detallados en las especificaciones técnicas.
 * No use cables de alimentación ramificados (cables en “Y”).
-* se debe quitar toocomply con seguridad aplicable, de emisiones y térmicos requisitos, sin portadas y todas las bahías deben rellenarse con módulos de complemento o una unidad de espacios en blanco.
-* Asegúrese de que el equipo de Hola se usa de manera especificada por el fabricante de Hola. Si este equipo se usa de manera no especificada por el fabricante de hello, protección de hello proporcionada por los equipos de hello puede verse afectada.
+* Para cumplir con los requisitos de seguridad, de emisiones y térmicos aplicables, no se debe retirar ninguna cubierta y todas las bahías deben estar llenas con módulos de complemento o unidad de relleno.
+* Asegúrese de que el equipo se usa de la manera especificada por el fabricante. Si el equipo se usa de manera diferente a la especificada por el fabricante, la protección proporcionada por el equipo puede verse afectada.
 
-![Icono Aviso](./media/storsimple-safety/IC740881.png)**AVISO:**
+![Icono Aviso](./media/storsimple-safety/IC740881.png) **AVISO:**
 
-Para el correcto funcionamiento de Hola de su equipo y tooprevent daños en el producto:
+Para una operación apropiada del equipo y evitar daños en el producto:
 
-* puertos RJ45 de Hello en hello parte posterior del dispositivo de hello son sólo con una conexión Ethernet. No debe red de telecomunicaciones tooa conectado.
-* Ser seguro tooinstall Hola dispositivo en un bastidor que pueda acomodar un diseño de refrigeración frontal hacia atrás.
-* Módulos de todos los complementos y las placas forman parte del alojamiento de sistema de Hola. Solo deben extraerse cuando pueda agregarse inmediatamente su reemplazo. no se debe ejecutar el sistema de Hello sin todos los módulos o rellenos en su lugar.
+* Los puertos RJ45 en la parte posterior del dispositivo solo son para conexión Ethernet. No se deben conectar a una red de telecomunicaciones.
+* Asegúrese de instalar el dispositivo en un bastidor que pueda acomodar un diseño de refrigeración que vaya desde la parte frontal a la trasera.
+* Todos los módulos de complemento y las placas de relleno forman parte del alojamiento del sistema. Solo deben extraerse cuando pueda agregarse inmediatamente su reemplazo. El sistema no debe ejecutarse sin todos los módulos o rellenos en su lugar.
 
 ## <a name="rack-system-precautions"></a>Precauciones del sistema en bastidor
-Hello requisitos de seguridad siguientes deben tener en cuenta al montar el dispositivo de hello en un gabinete de bastidor.
+Se deben tener en cuenta los requisitos de seguridad siguientes al montar el dispositivo en un gabinete de bastidor.
 
-![Icono Advertencia](./media/storsimple-safety/IC740879.png)![Icono Sugerencia peligrosa](./media/storsimple-safety/IC740886.png)**ADVERTENCIA**
+![Icono Advertencia](./media/storsimple-safety/IC740879.png) ![Icono Sugerencia peligrosa](./media/storsimple-safety/IC740886.png) **ADVERTENCIA**
 
-probabilidad de hello tooreduce de lesiones debido a una sugerencia sobre:
+Para reducir la probabilidad de lesiones debido a un vuelco:
 
-* diseño del bastidor Hola debe admitir el peso total de Hola de alojamientos de hello instalado y debe incorporar estabilización bastidor de hello tooprevent adecuado de características incline o se tumbe durante la instalación o el uso normal.
-* Al cargar un bastidor, rellenar bastidor Hola desde la parte inferior de hello copias de seguridad y vacía de arriba a abajo Hola.
-* Deslice más de un alojamiento fuera del bastidor de hello en peligro tiempo tooavoid Hola de bastidor de hello caiga.
+* El diseño en bastidor debe admitir el peso total de los alojamientos instalados y debe incorporar las características de estabilización adecuadas para prevenir que el bastidor se incline o se tumbe durante la instalación o uso normal.
+* Al cargar un bastidor, llénelo de abajo hacia arriba y vacíelo de arriba hacia abajo.
+* No deslice más de un alojamiento fuera del bastidor a la vez para evitar el peligro de que se caiga.
 
-![Icono Advertencia](./media/storsimple-safety/IC740879.png)![Icono Descarga eléctrica](./media/storsimple-safety/IC740882.png)**ADVERTENCIA**
+![Icono Advertencia](./media/storsimple-safety/IC740879.png) ![Icono Descarga eléctrica](./media/storsimple-safety/IC740882.png) **ADVERTENCIA**
 
-probabilidad de hello tooreduce de lesiones, descargas eléctricas o muerte:
+Para reducir la probabilidad de lesiones, descargas eléctricas o muerte:
 
-* bastidor de Hello debe tener un sistema de distribución eléctrica seguro. Debe proporcionar una mayor protección contra la de alojamiento de hello y no debe sobrecargarse por el número total de alojamientos instalados Hola. nominal de consumo de energía eléctrica Hola que se muestra en la placa de nombre de hello debería tenerse en cuenta.
-* sistema de distribución eléctrica Hola debe proporcionar un terreno confiable para cada alojamiento en bastidor Hola.
-* diseño Hola del sistema de distribución eléctrica de hello debe tener en fuga a tierra total Hola cuenta actual de todas las fuentes de alimentación de todos los contenedores. Tenga en cuenta que cada fuente de alimentación de cada alojamiento tiene una corriente de fuga a tierra de 1,0 mA como máximo a 60 Hz, 264 voltios. bastidor de Hello puede requerir el etiquetado de "corriente de FUGA alta. Es fundamental que haya una conexión a tierra antes de realizar la conexión a una fuente”.
-* bastidor de Hello, cuando se configura con contenedores de hello, debe cumplir los requisitos de seguridad de Hola de UL 60950-1 y IEC 60950-1/EN 60950-1.
+* El bastidor debe tener un sistema de distribución eléctrica seguro. Debe proporcionar protección frente a las sobrecargas de corriente para el alojamiento y no debe sobrecargarse por el número total de alojamientos instalados. Debe observarse la potencia nominal de consumo eléctrico que aparece en la placa de nombre.
+* El sistema de distribución eléctrica debe proporcionar una toma de tierra de confianza para cada alojamiento del bastidor.
+* El diseño del sistema de distribución eléctrica debe tomar en consideración la fuga a tierra total de todas las fuentes de alimentación de todos los alojamientos. Tenga en cuenta que cada fuente de alimentación de cada alojamiento tiene una corriente de fuga a tierra de 1,0 mA como máximo a 60 Hz, 264 voltios. El bastidor puede requerir el etiquetado de “CORRIENTE DE FUGA ALTA. Es fundamental que haya una conexión a tierra antes de realizar la conexión a una fuente”.
+* El bastidor, cuando se configura con los alojamientos, debe cumplir los requisitos de seguridad de UL 60950-1 e IEC 60950-1/EN 60950-1.
 
-![Icono Aviso](./media/storsimple-safety/IC740881.png)**AVISO:**
+![Icono Aviso](./media/storsimple-safety/IC740881.png) **AVISO:**
 
-Para saludo apropiado refrigeración del sistema en bastidor:
+Para la refrigeración adecuada del sistema en bastidor:
 
-* Asegúrese de que el diseño del bastidor de hello toma en consideración Hola máximo del alojamiento temperatura ambiente de 35 grados Celsius (95 grados Fahrenheit) en funcionamiento.
-* Hola sistema se opera con la instalación de salida de aire posterior, de baja presión (contrapresión creado por las puertas del bastidor y obstáculos no tooexceed 5 pascales [0,5 mm del indicador de agua]).
+* Asegúrese de que el diseño del bastidor toma en consideración la temperatura ambiente máxima en operación del alojamiento de 35 grados Celsius (95 grados Fahrenheit).
+* El sistema se opera con una instalación de salida de aire posterior, de baja presión (la presión posterior creada por las puertas del bastidor y obstáculos no debe exceder de 5 pascales [0,5 mm del indicador de nivel de agua]).
 
 ## <a name="power-cooling-module-pcm-precautions"></a>Precauciones en el módulo de alimentación y refrigeración (PCM)
-dispositivo de Hello es toooperate diseñada con dos PCM. Cada uno de los PCM hello tiene una fuente de alimentación y un ventilador de dos ejes. Durante una condición crítica, sistema de hello permite que un error de una fuente de alimentación mientras continúa las operaciones normales. Dos PCM (y por consiguiente dos fuentes de alimentación) deben estar siempre instalados. Un solo PCM no proporciona alimentación redundante. Por lo tanto, pueden dar lugar a errores de Hola de incluso un PCM en tiempo de inactividad o posible pérdida de datos.
+El dispositivo está diseñado para operar con dos PCM. Cada uno de los PCM tiene una fuente de alimentación y un ventilador de dos ejes. Durante una condición crítica, el sistema permite que se produzca un error en una fuente de alimentación mientras continúa con las operaciones normales. Dos PCM (y por consiguiente dos fuentes de alimentación) deben estar siempre instalados. Un solo PCM no proporciona alimentación redundante. Por lo tanto, un error en uno de los PCM puede ocasionar inactividad o una posible pérdida de datos.
 
-![Icono Advertencia](./media/storsimple-safety/IC740879.png)![Icono Descarga eléctrica](./media/storsimple-safety/IC740882.png)**ADVERTENCIA**
+![Icono Advertencia](./media/storsimple-safety/IC740879.png) ![Icono Descarga eléctrica](./media/storsimple-safety/IC740882.png) **ADVERTENCIA**
 
-probabilidad de hello tooreduce de lesiones, descargas eléctricas o muerte:
+Para reducir la probabilidad de lesiones, descargas eléctricas o muerte:
 
-* No retire portadas Hola Hola PCM. Existe peligro de descargas eléctricas en su interior. tooreturn Hola PCM y obtener un reemplazo, [póngase en contacto con Microsoft Support](storsimple-contact-microsoft-support.md).
+* No quite las cubiertas del PCM. Existe peligro de descargas eléctricas en su interior. Para devolver el PCM y obtener un reemplazo, [póngase en contacto con el servicio de soporte técnico de Microsoft](storsimple-contact-microsoft-support.md).
 
-![Icono Aviso](./media/storsimple-safety/IC740881.png)**AVISO:**
+![Icono Aviso](./media/storsimple-safety/IC740881.png) **AVISO:**
 
-Para el correcto funcionamiento de Hola de su equipo y tooprevent daños en el producto:
+Para una operación apropiada del equipo y evitar daños en el producto:
 
-* Debe reemplazar Hola errores PCM dentro de 24 horas. Después de quita un PCM de reemplazo, Hola debe completarse dentro de 10 minutos después de la eliminación.
-* No quite un PCM a menos que pueda instalar su reemplazo inmediatamente. alojamiento de Hello no puede operarse sin todos los módulos en su lugar.
+* Debe reemplazar el PCM erróneo dentro de un período de 24 horas. Después de extraer un PCM para su reemplazo, este debe completarse dentro de los 10 minutos posteriores a la extracción.
+* No quite un PCM a menos que pueda instalar su reemplazo inmediatamente. El alojamiento no puede operarse sin todos los módulos en su lugar.
 
 ## <a name="electrostatic-discharge-esd-precautions"></a>Precauciones en cuanto a las descargas electrostáticas (ESD)
-![Icono Aviso](./media/storsimple-safety/IC740881.png)**AVISO:**
+![Icono Aviso](./media/storsimple-safety/IC740881.png) **AVISO:**
 
-Observe Hola siguientes precauciones relacionadas con la ESD.
+Respete las siguientes precauciones relacionadas con ESD.
 
 * Asegúrese de que ha instalado y comprobado una muñequera o tobillera antiestática adecuada.
 * Observe todas las precauciones de ESD convencionales al manipular los módulos y los componentes.
@@ -132,23 +132,23 @@ Observe Hola siguientes precauciones relacionadas con la ESD.
 * Los daños por ESD no están cubiertos por la garantía.
 
 ## <a name="battery-disposal-precautions"></a>Precauciones al desechar la batería
-fuente de alimentación de Hello usa un contenido de hello tooprotect batería especial de la memoria durante interrupciones del suministro eléctrico temporal, a corto plazo. Hola batería está asentada en hello PCM. Mantener Hola siguiente información en cuenta acerca de la batería de Hola.
+La fuente de alimentación usa una batería especial para proteger el contenido de la memoria durante interrupciones de alimentación temporales de corta duración. La batería está asentada en el PCM. Recuerde la siguiente información sobre la batería.
 
-![Icono Advertencia](./media/storsimple-safety/IC740879.png)**ADVERTENCIA**
+![Icono Advertencia](./media/storsimple-safety/IC740879.png) **ADVERTENCIA**
 
-riesgo de hello tooreduce de enteros cortos, incendio, explosión, lesiones o muerte:
+Para reducir el riesgo de cortocircuito, incendio, explosión, lesiones o muerte:
 
 * Deseche las baterías usadas según las regulaciones nacionales/regionales.
-* No la desensamble, rompa, caliente por encima de los 60 grados Celsius (140 grados Fahrenheit) ni incinere. Reemplazar batería del PCM Hola con solo una batería suministrada. Si se usa otra batería, se puede presentar riesgo de incendio o explosión.
-* Use topes finales protectores en las baterías de hello si se han quitado de la fuente de alimentación de Hola.
+* No la desensamble, rompa, caliente por encima de los 60 grados Celsius (140 grados Fahrenheit) ni incinere. Reemplace la batería del PCM solo por una batería suministrada. Si se usa otra batería, se puede presentar riesgo de incendio o explosión.
+* Use topes finales protectores en las baterías si se han quitado de la fuente de alimentación.
 
-![Icono Aviso](./media/storsimple-safety/IC740881.png)**AVISO:**
+![Icono Aviso](./media/storsimple-safety/IC740881.png) **AVISO:**
 
-Cuando o transportan las baterías Hola por aire, siga el documento de hello IATA Lithium Battery Guidance disponible en [http://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](http://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
+Cuando se envían o transportan las baterías por aire, siga el documento IATA Lithium Battery Guidance disponible en [http://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](http://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
 
-Después de revisar estos avisos de seguridad, los pasos siguientes de hello son toounpack, bastidor y cable del dispositivo.
+Después de revisar estos avisos de seguridad, el siguiente paso es desempaquetar, montar en bastidor y cablear su dispositivo.
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para un dispositivo 8100, vaya demasiado[instalar el dispositivo StorSimple 8100](storsimple-8100-hardware-installation.md).
-* Para un dispositivo 8600, vaya demasiado[instalar su dispositivo 8600 StorSimple](storsimple-8600-hardware-installation.md).
+* Para un dispositivo 8100, vaya a [Instalación del dispositivo StorSimple 8100](storsimple-8100-hardware-installation.md).
+* Para un dispositivo 8600, vaya a [Instalación del dispositivo StorSimple 8600](storsimple-8600-hardware-installation.md).
 

@@ -1,4 +1,4 @@
-emulador de almacenamiento de Hello es compatible con una cuenta única fija y una clave de autenticación conocido para la autenticación de clave compartida. Esta cuenta y clave son Hola solo Shared Key las credenciales de admiten para su uso con el emulador de almacenamiento de Hola. Son las siguientes:
+El emulador de almacenamiento es compatible con una sola cuenta fija y una clave de autenticación ya conocida para autenticación de clave compartida. Esta cuenta y clave son las únicas credenciales de clave compartida que se admiten para su uso con el emulador de almacenamiento. Son las siguientes:
 
 ```
 Account name: devstoreaccount1
@@ -6,13 +6,13 @@ Account key: Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZ
 ```
 
 > [!NOTE]
-> clave de autenticación de Hello compatible con el emulador de almacenamiento de hello está pensado únicamente para la funcionalidad de Hola la prueba de su código de autenticación de cliente. No responde a ningún propósito de seguridad. No puede usar su cuenta de almacenamiento de producción y la clave con el emulador de almacenamiento de Hola. No se debe usar cuenta de hello de desarrollo con datos de producción.
+> La clave de autenticación admitida por el emulador de almacenamiento está pensada para comprobar únicamente la funcionalidad de su código de autenticación de cliente. No responde a ningún propósito de seguridad. A parte, no puede utilizar la cuenta de almacenamiento y la clave de producción con el emulador. Se debe tener en cuenta que no se puede utilizar la cuenta de desarrollo con datos de producción.
 > 
-> emulador de almacenamiento de Hello admite solo la conexión a través de HTTP. Sin embargo, HTTPS es hello recomendada protocolo para tener acceso a recursos en una cuenta de almacenamiento de Azure de producción.
+> El emulador de almacenamiento admite solo la conexión a través de HTTP. Sin embargo, HTTPS es el protocolo recomendado para obtener acceso a recursos en una cuenta de producción de Azure Storage.
 > 
 
-#### <a name="connect-toohello-emulator-account-using-a-shortcut"></a>Conectar toohello cuenta del emulador mediante un acceso directo
-Hola más fácil manera tooconnect toohello emulador de almacenamiento de la aplicación es tooconfigure una cadena de conexión en el archivo de configuración de la aplicación que hace referencia el acceso directo de hello `UseDevelopmentStorage=true`. Este es un ejemplo de un emulador de almacenamiento de toohello de cadena de conexión en un *app.config* archivo: 
+#### <a name="connect-to-the-emulator-account-using-a-shortcut"></a>Conexión a la cuenta del emulador mediante un acceso directo
+La manera más fácil de conectarse al emulador de almacenamiento desde su aplicación consiste en configurar, dentro del archivo de configuración de la aplicación, una cadena de conexión que haga referencia al método abreviado `UseDevelopmentStorage=true`. Este es un ejemplo de una cadena de conexión al emulador de almacenamiento en un archivo *app.config*: 
 
 ```xml
 <appSettings>
@@ -20,8 +20,8 @@ Hola más fácil manera tooconnect toohello emulador de almacenamiento de la apl
 </appSettings>
 ```
 
-#### <a name="connect-toohello-emulator-account-using-hello-well-known-account-name-and-key"></a>Conectar toohello cuenta del emulador mediante la clave y el nombre de cuenta conocida de Hola
-toocreate una cadena de conexión que referencias Hola nombre de la cuenta de emulador y clave, debe especificar los puntos de conexión de Hola para cada uno de hello de servicios le interese toouse desde el emulador de hello en la cadena de conexión de Hola. Esto es necesario para que la cadena de conexión de hello hará referencia a los extremos de emulador de hello, que son diferentes de las de una cuenta de almacenamiento de producción. Por ejemplo, valor de saludo de la cadena de conexión tendrá un aspecto similar al siguiente:
+#### <a name="connect-to-the-emulator-account-using-the-well-known-account-name-and-key"></a>Conexión a la cuenta del emulador con el nombre de cuenta y la clave conocidos
+Para crear una cadena de conexión que hace referencia al nombre de la cuenta del emulador y la clave, debe especificar los puntos de conexión para cada uno de los servicios que desea usar desde el emulador en la cadena de conexión. Esto es necesario para que la cadena de conexión haga referencia a los extremos del emulador, que son diferentes de los de una cuenta de almacenamiento de producción. Por ejemplo, el valor de la cadena de conexión será similar al siguiente:
 
 ```
 DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;
@@ -31,10 +31,10 @@ TableEndpoint=http://127.0.0.1:10002/devstoreaccount1;
 QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;
 ```
 
-Este valor es contextual toohello idénticos mostrado anteriormente, `UseDevelopmentStorage=true`.
+Este valor es idéntico al acceso directo mostrado anteriormente, `UseDevelopmentStorage=true`.
 
 #### <a name="specify-an-http-proxy"></a>Especificación de un servidor proxy HTTP
-También puede especificar un toouse de proxy HTTP cuando se está probando su servicio con el emulador de almacenamiento de Hola. Esto puede ser útil para observar solicitudes y respuestas HTTP mientras está depurando operaciones con los servicios de almacenamiento de Hola. toospecify un proxy, agregar hello `DevelopmentStorageProxyUri` opción toohello cadena de conexión y establecer su URI del servidor de proxy toohello del valor. Por ejemplo, aquí es una cadena de conexión que señala el emulador de almacenamiento de toohello y configura a un servidor proxy HTTP:
+También puede especificar que se use un proxy HTTP cuando se está probando el servicio con el emulador de almacenamiento. Esto puede ser útil para observar solicitudes y respuestas HTTP mientras está depurando operaciones con los servicios de almacenamiento. Para especificar un proxy, agregue la opción `DevelopmentStorageProxyUri` a la cadena de conexión y establezca su valor en el URI del proxy. Por ejemplo, esta es una cadena de conexión que apunta al emulador de almacenamiento y configura un proxy HTTP:
 
 ```
 UseDevelopmentStorage=true;DevelopmentStorageProxyUri=http://myProxyUri

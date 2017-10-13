@@ -1,6 +1,6 @@
 ---
-title: Recursos de servicios multimedia entre varias cuentas de almacenamiento aaaManaging | Documentos de Microsoft
-description: "En este artículo se proporcionan instrucciones sobre cómo toomanage media services activos entre varias cuentas de almacenamiento."
+title: "Administración de recursos de Media Services entre varias cuentas de almacenamiento | Microsoft Docs"
+description: "En este artículo se dan instrucciones sobre cómo administrar recursos de servicios de multimedia en varias cuentas de almacenamiento."
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -14,35 +14,35 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: juliako
-ms.openlocfilehash: 812f290d91f8d739be1c88db2b612767fda96220
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 0b407c3b092fd2c706775154cee3164a9869315a
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Administración de recursos de Servicios multimedia entre varias cuentas de almacenamiento
-A partir de Microsoft Azure Media Services 2.2, puede asociar varias cuentas tooa único servicios multimedia cuentas de almacenamiento. Tooattach capacidad que tooa varias de las cuentas de almacenamiento cuenta de servicios multimedia proporciona Hola siguientes ventajas:
+A partir de Servicios multimedia de Microsoft Azure  2.2, puede asociar varias cuentas de almacenamiento a una sola cuenta de Servicios multimedia. La capacidad de asociar varias cuentas de almacenamiento a una cuenta de Servicios multimedia ofrece las siguientes ventajas:
 
 * Equilibrio de carga de sus activos entre varias cuentas de almacenamiento.
 * Escalado de Servicios multimedia para grandes cantidades de procesamiento de contenido (ya que actualmente una única cuenta de almacenamiento tiene un límite máximo de 500 TB). 
 
-Este tema muestra cómo tooattach varias cuentas de almacenamiento tooa cuenta de servicios multimedia mediante [API del Administrador de recursos de Azure](https://docs.microsoft.com/rest/api/media/mediaservice) y [Powershell](/powershell/module/azurerm.media). También muestra cómo las cuentas de almacenamiento diferentes toospecify al crear activos mediante Hola SDK de servicios multimedia. 
+En este tema se muestra cómo asociar varias cuentas de almacenamiento a una cuenta de Media Services mediante [API de Azure Resource Manager](https://docs.microsoft.com/rest/api/media/mediaservice) y [PowerShell](/powershell/module/azurerm.media). También muestra cómo especificar diferentes cuentas de almacenamiento al crear activos mediante el SDK de Servicios multimedia. 
 
 ## <a name="considerations"></a>Consideraciones
-Al asociar varias tooyour de cuentas de almacenamiento cuenta de servicios multimedia, hello siguientes consideraciones:
+Al asociar varias cuentas de almacenamiento a su cuenta de Servicios multimedia, se aplican las siguientes consideraciones:
 
-* Todas las cuentas de almacenamiento debe estar conectado tooa cuenta de servicios multimedia en Hola mismo centro de datos como cuenta de servicios multimedia de Hola.
-* Actualmente, una vez que se adjunta a una cuenta de almacenamiento toohello especifica la cuenta de servicios multimedia, no se puede desasociar.
-* Cuenta de almacenamiento principal es hello uno indicado durante el tiempo de creación de cuenta de servicios multimedia. Actualmente, no se puede cambiar la cuenta de almacenamiento predeterminada de Hola. 
-* Actualmente, si desea que una cuenta de almacenamiento frío cuenta toohello AMS tooadd, cuenta de almacenamiento de hello debe ser un tipo de Blob y establecer toonon principal.
+* Todas las cuentas de almacenamiento asociadas a una cuenta de Servicios multimedia deben estar en el mismo centro de datos que la cuenta de Servicios multimedia.
+* Actualmente, cuando se asocia una cuenta de almacenamiento a la cuenta especificada de Servicios multimedia, no se puede desasociar.
+* La cuenta de almacenamiento principal es la indicada durante el tiempo de creación de cuenta de Servicios multimedia. Actualmente, no puede cambiar la cuenta de almacenamiento predeterminada. 
+* Actualmente, si desea agregar una cuenta de almacenamiento de acceso esporádico a la cuenta de AMS, la cuenta de almacenamiento debe ser de tipo Blob y no estar establecida como principal.
 
 Otras consideraciones:
 
-Servicios multimedia usa el valor de Hola de hello **IAssetFile.Name** propiedad al generar direcciones URL para hello transmisión por secuencias contenido (por ejemplo, http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/ streamingParameters.) Por esta razón, no se permite la codificación porcentual. Hello valor de propiedad de nombre de hello no puede tener cualquiera de los siguientes hello [por ciento reservados a la codificación de caracteres](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Además, solo puede haber un "." para la extensión de nombre de archivo de Hola.
+Los Media Services usan el valor de la propiedad **IAssetFile.Name** al generar direcciones URL para el contenido de streaming (por ejemplo, http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) Por esta razón, no se permite la codificación porcentual. El valor de la propiedad Name no puede tener ninguno de los siguientes [caracteres reservados para la codificación porcentual](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters): !*'();:@&=+$,/?%#[]". Además, solo puede haber un "." Además, solo puede haber un '.' para la extensión del nombre de archivo.
 
-## <a name="tooattach-storage-accounts"></a>cuentas de almacenamiento de tooattach  
+## <a name="to-attach-storage-accounts"></a>Para asociar cuentas de almacenamiento  
 
-cuenta de tooyour AMS, uso de cuentas de almacenamiento de tooattach [API del Administrador de recursos de Azure](https://docs.microsoft.com/rest/api/media/mediaservice) y [Powershell](/powershell/module/azurerm.media), tal y como se muestra en el siguiente ejemplo de Hola.
+Para asociar cuentas de almacenamiento a su cuenta de AMS, use [API de Azure Resource Manager](https://docs.microsoft.com/rest/api/media/mediaservice) y [PowerShell](/powershell/module/azurerm.media), como se muestra en el ejemplo siguiente.
 
     $regionName = "West US"
     $subscriptionId = " xxxxxxxx-xxxx-xxxx-xxxx- xxxxxxxxxxxx "
@@ -60,15 +60,15 @@ cuenta de tooyour AMS, uso de cuentas de almacenamiento de tooattach [API del Ad
 
 ### <a name="support-for-cool-storage"></a>Compatibilidad con el almacenamiento de acceso esporádico
 
-Actualmente, si desea que una cuenta de almacenamiento frío cuenta toohello AMS tooadd, cuenta de almacenamiento de hello debe ser un tipo de Blob y establecer toonon principal.
+Actualmente, si desea agregar una cuenta de almacenamiento de acceso esporádico a la cuenta de AMS, la cuenta de almacenamiento debe ser de tipo Blob y no estar establecida como principal.
 
-## <a name="toomanage-media-services-assets-across-multiple-storage-accounts"></a>recursos de servicios multimedia de toomanage entre varias cuentas de almacenamiento
-Hola siguiente código utiliza Hola más reciente SDK de servicios multimedia tooperform Hola siguientes tareas:
+## <a name="to-manage-media-services-assets-across-multiple-storage-accounts"></a>Para administrar los recursos de Servicios multimedia entre varias cuentas de almacenamiento
+El código siguiente usa el último SDK de Servicios multimedia para realizar las siguientes tareas:
 
-1. Mostrar todas las cuentas de almacenamiento de hello asociadas Hola especifica cuenta de servicios multimedia.
-2. Recuperar el nombre de Hola de cuenta de almacenamiento predeterminada de Hola.
-3. Crear un recurso nuevo en la cuenta de almacenamiento predeterminada de Hola.
-4. Crear un recurso de salida de hello codificación trabajo Hola especifica la cuenta de almacenamiento.
+1. Muestre todas las cuentas de almacenamiento asociadas a la cuenta de Servicios multimedia especificada.
+2. Recupere el nombre de la cuenta de almacenamiento predeterminada.
+3. Cree un nuevo recurso en la cuenta de almacenamiento predeterminada.
+4. Cree un recurso de salida del trabajo de codificación en la cuenta de almacenamiento especificada.
    
 ```
 using Microsoft.WindowsAzure.MediaServices.Client;
@@ -85,11 +85,11 @@ namespace MultipleStorageAccounts
 {
     class Program
     {
-        // Location of hello media file that you want tooencode. 
+        // Location of the media file that you want to encode. 
         private static readonly string _singleInputFilePath =
             Path.GetFullPath(@"../..\supportFiles\multifile\interview2.wmv");
 
-        // Read values from hello App.config file.
+        // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
         ConfigurationManager.AppSettings["AADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
@@ -104,30 +104,30 @@ namespace MultipleStorageAccounts
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
-            // Display hello storage accounts associated with 
-            // hello specified Media Services account:
+            // Display the storage accounts associated with 
+            // the specified Media Services account:
             foreach (var sa in _context.StorageAccounts)
                 Console.WriteLine(sa.Name);
 
-            // Retrieve hello name of hello default storage account.
+            // Retrieve the name of the default storage account.
             var defaultStorageName = _context.StorageAccounts.Where(s => s.IsDefault == true).FirstOrDefault();
             Console.WriteLine("Name: {0}", defaultStorageName.Name);
             Console.WriteLine("IsDefault: {0}", defaultStorageName.IsDefault);
 
-            // Retrieve hello name of a storage account that is not hello default one.
+            // Retrieve the name of a storage account that is not the default one.
             var notDefaultStroageName = _context.StorageAccounts.Where(s => s.IsDefault == false).FirstOrDefault();
             Console.WriteLine("Name: {0}", notDefaultStroageName.Name);
             Console.WriteLine("IsDefault: {0}", notDefaultStroageName.IsDefault);
 
-            // Create hello original asset in hello default storage account.
+            // Create the original asset in the default storage account.
             IAsset asset = CreateAssetAndUploadSingleFile(AssetCreationOptions.None,
                 defaultStorageName.Name, _singleInputFilePath);
-            Console.WriteLine("Created hello asset in hello {0} storage account", asset.StorageAccountName);
+            Console.WriteLine("Created the asset in the {0} storage account", asset.StorageAccountName);
 
-            // Create an output asset of hello encoding job in hello other storage account.
+            // Create an output asset of the encoding job in the other storage account.
             IAsset outputAsset = CreateEncodingJob(asset, notDefaultStroageName.Name, _singleInputFilePath);
             if (outputAsset != null)
-                Console.WriteLine("Created hello output asset in hello {0} storage account", outputAsset.StorageAccountName);
+                Console.WriteLine("Created the output asset in the {0} storage account", outputAsset.StorageAccountName);
 
         }
 
@@ -135,7 +135,7 @@ namespace MultipleStorageAccounts
         {
             var assetName = "UploadSingleFile_" + DateTime.UtcNow.ToString();
 
-            // If you are creating an asset in hello default storage account, you can omit hello StorageName parameter.
+            // If you are creating an asset in the default storage account, you can omit the StorageName parameter.
             var asset = _context.Assets.Create(assetName, storageName, assetCreationOptions);
 
             var fileName = Path.GetFileName(singleFilePath);
@@ -155,48 +155,48 @@ namespace MultipleStorageAccounts
         {
             // Declare a new job.
             IJob job = _context.Jobs.Create("My encoding job");
-            // Get a media processor reference, and pass tooit hello name of hello 
-            // processor toouse for hello specific task.
+            // Get a media processor reference, and pass to it the name of the 
+            // processor to use for the specific task.
             IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standard");
 
-            // Create a task with hello encoding details, using a string preset.
+            // Create a task with the encoding details, using a string preset.
             ITask task = job.Tasks.AddNew("My encoding task",
                 processor,
                 "Adaptive Streaming",
                 Microsoft.WindowsAzure.MediaServices.Client.TaskOptions.ProtectedConfiguration);
 
-            // Specify hello input asset toobe encoded.
+            // Specify the input asset to be encoded.
             task.InputAssets.Add(asset);
-            // Add an output asset toocontain hello results of hello job. 
+            // Add an output asset to contain the results of the job. 
             // This output is specified as AssetCreationOptions.None, which 
-            // means hello output asset is not encrypted. 
+            // means the output asset is not encrypted. 
             task.OutputAssets.AddNew("Output asset", storageName,
                 AssetCreationOptions.None);
 
-            // Use hello following event handler toocheck job progress.  
+            // Use the following event handler to check job progress.  
             job.StateChanged += new
                     EventHandler<JobStateChangedEventArgs>(StateChanged);
 
-            // Launch hello job.
+            // Launch the job.
             job.Submit();
 
-            // Check job execution and wait for job toofinish. 
+            // Check job execution and wait for job to finish. 
             Task progressJobTask = job.GetExecutionProgressTask(CancellationToken.None);
             progressJobTask.Wait();
 
             // Get an updated job reference.
             job = GetJob(job.Id);
 
-            // If job state is Error hello event handling 
+            // If job state is Error the event handling 
             // method for job progress should log errors.  Here we check 
             // for error state and exit if needed.
             if (job.State == JobState.Error)
             {
-                Console.WriteLine("\nExiting method due toojob error.");
+                Console.WriteLine("\nExiting method due to job error.");
                 return null;
             }
 
-            // Get a reference toohello output asset from hello job.
+            // Get a reference to the output asset from the job.
             IAsset outputAsset = job.OutputMediaAssets[0];
 
             return outputAsset;
@@ -250,13 +250,13 @@ namespace MultipleStorageAccounts
 
         static IJob GetJob(string jobId)
         {
-            // Use a Linq select query tooget an updated 
+            // Use a Linq select query to get an updated 
             // reference by Id. 
             var jobInstance =
                 from j in _context.Jobs
                 where j.Id == jobId
                 select j;
-            // Return hello job reference as an Ijob. 
+            // Return the job reference as an Ijob. 
             IJob job = jobInstance.FirstOrDefault();
 
             return job;

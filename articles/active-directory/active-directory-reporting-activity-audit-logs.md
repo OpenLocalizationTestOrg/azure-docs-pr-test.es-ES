@@ -1,6 +1,6 @@
 ---
-title: los informes de actividad aaaAudit de portal de Azure Active Directory Hola | Documentos de Microsoft
-description: "Informes de actividad en el portal de Azure Active Directory de Hola de auditoría de toohello de introducción"
+title: "Informes de actividad de auditoría en el portal de Azure Active Directory | Microsoft Docs"
+description: "Introducción a los informes de actividad de auditoría en el portal de Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,66 +15,66 @@ ms.workload: identity
 ms.date: 07/19/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 1567673f5030fc707b017c069f2ba7587962e5cb
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f2d0332d815c82d7d47625e020de2e9c5099deeb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="audit-activity-reports-in-hello-azure-active-directory-portal"></a>Informes de actividad en el portal de Azure Active Directory Hola de auditoría 
+# <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Informes de actividad de auditoría en el portal de Azure Active Directory 
 
-Con los informes en Azure Active Directory (Azure AD), puede obtener información de hello necesita toodetermine cómo está haciendo su entorno.
+Con los informes de Azure Active Directory (Azure AD), puede obtener toda la información que necesita para determinar cómo marcha el entorno.
 
-arquitectura de los informes en Azure AD de Hello consta de Hola de los componentes siguientes:
+La arquitectura de los informes de Azure AD consta de los siguientes componentes:
 
 - **Actividad** 
-    - **Las actividades de inicio de sesión** : información sobre el uso de Hola de las aplicaciones administradas y las actividades de inicio de sesión de usuario
+    - **Actividades de inicio de sesión** : información sobre el uso de las aplicaciones administradas y las actividades de inicio de sesión de usuario
     - **Registros de auditoría**: información de la actividad del sistema sobre los usuarios y la administración de grupos, sus aplicaciones administradas y actividades de directorio.
 - **Seguridad** 
-    - **Inicios de sesión arriesgados** -un inicio de sesión de riesgo es un indicador de un intento de inicio de sesión que es posible que se han realizado por alguien que no es propietario legítimo de Hola de una cuenta de usuario. Para más información, consulte Inicios de no seguros.
+    - **Inicios de sesión peligrosos**: un inicio de sesión peligroso es un indicador de un intento de inicio de sesión que puede haber realizado alguien que no es el propietario legítimo de una cuenta de usuario. Para más información, consulte Inicios de no seguros.
     - **Usuarios marcados en riesgo**: un usuario en peligro es un indicador de una cuenta de usuario que puede haber estado en peligro. Para más información, consulte la sección Usuarios marcados en riesgo.
 
-Este tema ofrece una visión general de las actividades de auditoría de Hola.
+Este tema ofrece una visión general de las actividades de auditoría.
  
-## <a name="who-can-access-hello-data"></a>¿Quién puede tener acceso a datos de hello?
-* Usuarios de rol de administrador de seguridad o seguridad lector Hola
+## <a name="who-can-access-the-data"></a>¿Quién puede acceder a los datos?
+* Usuarios de los roles de administrador o lector de seguridad
 * Administradores globales
 * Los usuarios individuales (no administradores) pueden ver sus propias actividades
 
 
 ## <a name="audit-logs"></a>Registros de auditoría
 
-registros de auditoría de Hello en Azure Active Directory proporcionan registros de las actividades del sistema para el cumplimiento.  
-Es el primer tooall de punto de entrada datos de auditoría **registros de auditoría** en hello **actividad** sección de **Azure Active Directory**.
+Los registros de auditoría de Azure Active Directory proporcionan registros de las actividades del sistema de cara al cumplimiento.  
+El primer punto de entrada a todos los datos de auditoría es **Registros de auditoría** en la sección **Actividad** de **Azure Active Directory**.
 
 ![Registros de auditoría](./media/active-directory-reporting-activity-audit-logs/61.png "Registros de auditoría")
 
 Un registro de auditoría tiene una vista de lista predeterminada que muestra:
 
-- Hola fecha y hora de aparición de Hola
-- Hola iniciador / actor (*que*) de una actividad 
-- Hola actividad (*qué*) 
-- destino de Hola
+- la fecha y hora de la repetición
+- el iniciador/actor (*quién*) de una actividad 
+- la actividad (*qué*) 
+- el destino
 
 ![Registros de auditoría](./media/active-directory-reporting-activity-audit-logs/18.png "Registros de auditoría")
 
-Puede personalizar la vista de lista Hola haciendo clic en **columnas** en la barra de herramientas de Hola.
+Puede personalizar la vista de lista, haga clic en **Columnas** en la barra de herramientas.
 
 ![Registros de auditoría](./media/active-directory-reporting-activity-audit-logs/19.png "Registros de auditoría")
 
-Esto permite los campos adicionales de toodisplay o quitar los campos que ya se muestran.
+Esto le permite mostrar los campos adicionales o quitar los campos que ya se están mostrando.
 
 ![Registros de auditoría](./media/active-directory-reporting-activity-audit-logs/21.png "Registros de auditoría")
 
 
-Si hace clic en un elemento en la vista de lista de hello, obtener todos los detalles disponibles sobre él.
+Si hace clic en un elemento de la vista de lista, puede obtener todos los detalles disponibles sobre él.
 
 ![Registros de auditoría](./media/active-directory-reporting-activity-audit-logs/22.png "Registros de auditoría")
 
 
 ## <a name="filtering-audit-logs"></a>Filtrado de registros de auditoría
 
-toonarrow hacia abajo Hola informó de un nivel de tooa de datos que funciona para usted, puede filtrar datos de auditoría de hello mediante Hola siguientes campos:
+Para restringir los datos del informe a un nivel que se adapte a sus necesidades, puede filtrar los datos de auditoría con los siguientes campos:
 
 - Intervalo de fechas
 - Iniciado por (actor)
@@ -85,7 +85,7 @@ toonarrow hacia abajo Hola informó de un nivel de tooa de datos que funciona pa
 ![Registros de auditoría](./media/active-directory-reporting-activity-audit-logs/23.png "Registros de auditoría")
 
 
-Hola **intervalo de fechas** filtro permite tooyou toodefine un período de tiempo para hello devolvió datos.  
+El filtro **Intervalo de fechas** permite definir un período de tiempo para los datos devueltos.  
 Los valores posibles son:
 
 - 1 mes
@@ -95,9 +95,9 @@ Los valores posibles son:
 
 Cuando se selecciona un intervalo de tiempo personalizado, puede configurar una hora de inicio y una hora de finalización.
 
-Hola **iniciadas por** filtro permite toodefine nombre de un actor o su nombre principal universal (UPN).
+El filtro **Iniciado por** le permite definir el nombre de un actor o su nombre principal universal (UPN).
 
-Hola **categoría** filtro le permite tooselect de hello siguiente filtro:
+El filtro **Categoría** le permite seleccionar uno de los filtros siguientes:
 
 - Todo
 - Core category (Categoría principal)
@@ -110,7 +110,7 @@ Hola **categoría** filtro le permite tooselect de hello siguiente filtro:
 - Identity Protection
 - B2C
 
-Hola **tipo de recurso de la actividad** filtro le permite tooselect uno de los siguientes Hola filtros:
+El filtro **Tipo de recurso de actividad** le permite seleccionar uno de los filtros siguientes:
 
 - Todo 
 - Grupo
@@ -121,29 +121,29 @@ Hola **tipo de recurso de la actividad** filtro le permite tooselect uno de los 
 - Dispositivo
 - Otros
 
-Cuando se selecciona **grupo** como **tipo de recurso de la actividad**, obtendrá una categoría de filtro adicional que le permite tooalso proporcionan un **origen**:
+Cuando se selecciona **Grupo** como **Tipo de recurso de actividad**, obtendrá una categoría de filtro adicional que le permite proporcionar también un **Origen**:
 
 - Azure AD
 - O365
 
 
-Hola **actividad** filtro se basa en la categoría de Hola y selección de tipo de recurso de actividad que realice. Puede seleccionar una actividad específica que desee toosee o elegir todos. 
+El filtro **Actividad** se basa en la selección de categoría y de tipo de recurso de actividad que realice. Puede seleccionar la actividad específica que desea ver o elegir todas. 
 
-Puede obtener lista de Hola de todas las actividades de auditoría mediante Hola API Graph https://graph.windows.net/$ tenantdomain/actividades/auditActivityTypes? api-version = beta, donde $tenantdomain = el nombre de dominio o consulte el artículo toohello [informe de auditoría eventos](active-directory-reporting-audit-events.md).
+Para obtener la lista de todas las actividades de auditoría, use API Graph https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta, donde $tenantdomain = el nombre de dominio, o bien consulte el artículo sobre [eventos del informe de auditoría](active-directory-reporting-audit-events.md).
 
 
 ## <a name="audit-logs-shortcuts"></a>Métodos abreviados de los registros de auditoría
 
-Además demasiado**Azure Active Directory**, hello portal de Azure proporciona dos puntos de entrada adicionales tooaudit datos:
+Además de **Azure Active Directory**, Azure Portal proporciona dos puntos de entrada adicionales para auditar datos:
 
 - Usuarios y grupos
 - Aplicaciones empresariales
 
 ### <a name="users-and-groups-audit-logs"></a>Registros de auditoría de los usuarios y grupos
 
-Con informes de auditoría basadas en el grupo y usuario, puede obtener respuestas tooquestions como:
+Con los informes de auditoría basadas en grupos y usuarios, puede obtener respuestas a preguntas como:
 
-- ¿Qué tipos de actualizaciones han sido usuarios Hola aplicado?
+- ¿Qué tipos de actualizaciones se han aplicado a los usuarios?
 
 - ¿Cuántos usuarios han cambiado?
 
@@ -151,38 +151,38 @@ Con informes de auditoría basadas en el grupo y usuario, puede obtener respuest
 
 - ¿Qué ha hecho un administrador en un directorio?
 
-- ¿Cuáles son los grupos de Hola que se han agregado?
+- ¿Cuáles son los grupos que se han agregado?
 
 - ¿Hay grupos con cambios de pertenencia?
 
-- ¿Se cambiaron los propietarios de Hola de grupo?
+- ¿Se han cambiado los propietarios del grupo?
 
-- ¿Qué licencias se han asignado un usuario o grupo de tooa?
+- ¿Qué licencias se han asignado a un grupo o un usuario?
 
-Si su intención es tooreview datos toousers relacionados y grupos de la auditoría, puede encontrar una vista filtrada en **registros de auditoría** en hello **actividad** sección de hello **usuarios y grupos**. Este punto de entrada tiene **Usuarios y grupos** como **Tipo de recurso de actividad** preseleccionado.
+Si desea revisar los datos de auditoría relacionados con usuarios y grupos, puede buscar una vista filtrada en **Registros de auditoría** en la sección **Actividad** de **Usuarios y grupos**. Este punto de entrada tiene **Usuarios y grupos** como **Tipo de recurso de actividad** preseleccionado.
 
 ![Registros de auditoría](./media/active-directory-reporting-activity-audit-logs/93.png "Registros de auditoría")
 
 ### <a name="enterprise-applications-audit-logs"></a>Registros de auditoría de aplicaciones empresariales
 
-Informes de auditoría basado en la aplicación, puede obtener respuestas tooquestions como:
+Con los informes de auditoría basadas en aplicaciones, puede obtener respuestas a preguntas tales como:
 
-* ¿Cuáles son las aplicaciones de Hola que se han agregado o actualizado?
-* ¿Cuáles son las aplicaciones de Hola que se han quitado?
+* ¿Cuáles son las aplicaciones que se han agregado o actualizado?
+* ¿Cuáles son las aplicaciones que se han quitado?
 * ¿Ha cambiado el principal de servicio para una aplicación?
-* ¿Se cambiaron los nombres de Hola de las aplicaciones?
-* ¿Que dio consentimiento tooan aplicación?
+* ¿Se han cambiado los nombres de las aplicaciones?
+* ¿Quién dio el consentimiento a una aplicación?
 
-Si su intención es tooreview datos que está relacionado tooyour aplicaciones de la auditoría, puede encontrar una vista filtrada en **registros de auditoría** en hello **actividad** sección de hello **aplicaciones empresariales**  hoja. Este punto de entrada tiene **Aplicaciones empresariales** como **Tipo de recurso de actividad** preseleccionado.
+Si desea revisar los datos de auditoría relacionados con las aplicaciones, puede buscar una vista filtrada en **Registros de auditoría** en la sección **Actividad** de la hoja **Aplicaciones empresariales**. Este punto de entrada tiene **Aplicaciones empresariales** como **Tipo de recurso de actividad** preseleccionado.
 
 ![Registros de auditoría](./media/active-directory-reporting-activity-audit-logs/134.png "Registros de auditoría")
 
-Puede filtrar aún más esta vista hacia abajo toojust **grupos** o simplemente **usuarios**.
+Puede filtrar aún más esta vista hasta simplemente **grupos** o simplemente **usuarios**.
 
 ![Registros de auditoría](./media/active-directory-reporting-activity-audit-logs/25.png "Registros de auditoría")
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener información general de informes, vea hello [reporting de Azure Active Directory](active-directory-reporting-azure-portal.md).
+Para obtener información general sobre los informes, consulte [Informes de Azure Active Directory](active-directory-reporting-azure-portal.md).
 

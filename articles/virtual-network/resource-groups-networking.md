@@ -1,6 +1,6 @@
 ---
-title: "información general de proveedor de recursos aaaNetwork | Documentos de Microsoft"
-description: "Obtenga información acerca de hello nuevo proveedor de recursos de red en el Administrador de recursos de Azure"
+title: "Información general del Proveedor de recursos de red | Microsoft Docs"
+description: "Más información sobre el nuevo Proveedor de recursos de red del Administrador de recursos de Azure"
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
-ms.openlocfilehash: 81b8f51fe8ee180d8f7885c6e04eb953904d7be5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2428c707ddeed281fddd1e57bc5574603f0b9b1c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="network-resource-provider"></a>Proveedor de recursos de red
-Una necesidad de respaldo de éxito del negocio de hoy en día, es Hola toobuild de capacidad y administrar aplicaciones de red de gran escala de una manera ágil, flexible, segura y repetible. Administrador de recursos de Azure permite toocreate aplicaciones, como una sola colección de recursos de grupos de recursos. Estos recursos se administran a través de diversos proveedores de recursos en Resource Manager.
+Una necesidad que sustenta el éxito de un negocio hoy en día es la capacidad de crear y administrar aplicaciones compatibles con redes de gran escala de una forma ágil, flexible, segura y repetible. Azure Resource Manager permite crear tales aplicaciones, como una única colección de recursos en grupos de recursos. Estos recursos se administran a través de diversos proveedores de recursos en Resource Manager.
 
-Administrador de recursos de Azure se basa en distintos proveedores tooprovide acceso tooyour de recursos. Hay tres proveedores de recursos principales: redes, almacenamiento y proceso. Este documento describen las características de Hola y las ventajas de hello proveedor de recursos de red, incluidos:
+El Administrador de recursos de Azure utiliza distintos proveedores de recursos para proporcionar acceso a los recursos. Hay tres proveedores de recursos principales: redes, almacenamiento y proceso. En este documento, se describen las características y ventajas del proveedor de recursos de red, entre otros:
 
-* **Metadatos** : puede agregar tooresources información mediante etiquetas. Estas etiquetas pueden tener usado tootrack utilización de recursos entre suscripciones y grupos de recursos.
-* **Mayor control de la red** : los recursos de red están acoplados holgadamente y los puede controlar de forma más detallada. Esto significa que tiene más flexibilidad para administrar recursos de red de Hola.
+* **Metadatos** : puede agregar información a los recursos mediante etiquetas. Estas etiquetas pueden utilizarse para realizar el seguimiento de la utilización de recursos en todas las suscripciones y los grupos de recursos.
+* **Mayor control de la red** : los recursos de red están acoplados holgadamente y los puede controlar de forma más detallada. Esto significa que tendrá una mayor flexibilidad en la administración de los recursos de red.
 * **Configuración más rápida** : dado que los recursos de red están acoplados holgadamente, puede crear y organizar los recursos de red en paralelo. Esto ha reducido drásticamente el tiempo de configuración.
-* **Control de acceso basado en roles** -RBAC proporciona roles de forma predeterminada, con ámbito de seguridad específicos, en la creación de hello tooallowing de adición de roles personalizados para una administración segura.
-* **La implementación y administración más fácil** -es más fácil toodeploy y administrar las aplicaciones, ya que puede crear una pila de toda la aplicación como una sola colección de recursos en un grupo de recursos. Y toodeploy más rápido, ya que puede implementar simplemente proporcionando una carga JSON de la plantilla.
-* **Personalización rápida** -puede usar plantillas de estilo declarativo tooenable repetible y rápida personalización de las implementaciones.
-* **Personalización repetible** -puede usar plantillas de estilo declarativo tooenable repetible y rápida personalización de las implementaciones.
-* **Interfaces de administración** -se pueden usar cualquiera de hello siguientes interfaces toomanage los recursos:
+* **Control de acceso basado en rol (RBAC)** : RBAC proporciona roles predeterminados, con un  ámbito de seguridad específico, además de permitir la creación de roles personalizados para una administración segura.
+* **Administración e implementación más sencillas** : resulta más fácil implementar y administrar aplicaciones, ya que puede crear una pila de toda la aplicación como una única colección de recursos en un grupo de recursos. Y más rápido de implementar, ya que es posible hacerlo con solo proporcionar una carga JSON de la plantilla.
+* **Personalización rápida** : puede utilizar las plantillas de estilo declarativo para habilitar la personalización repetible y rápida de las implementaciones.
+* **Personalización repetible** : puede utilizar las plantillas de estilo declarativo para habilitar la personalización repetible y rápida de las implementaciones.
+* **Interfaces de administración** : puede utilizar cualquiera de las siguientes interfaces para administrar los recursos:
   * API basadas en REST
   * PowerShell
   * .NET SDK
@@ -49,15 +49,15 @@ A continuación se presenta una vista conceptual de una implementación de ejemp
 
 ![Modelo de recursos de red](./media/resource-groups-networking/Figure2.png)
 
-Cada recurso contiene un conjunto común de propiedades y un conjunto de propiedades individual. Hola las propiedades comunes son:
+Cada recurso contiene un conjunto común de propiedades y un conjunto de propiedades individual. Las propiedades comunes son:
 
 | Propiedad | Descripción | Valores de ejemplo |
 | --- | --- | --- |
 | **name** |Nombre de recurso único. Cada tipo de recurso tiene sus propias restricciones de nomenclatura. |PIP01, VM01, NIC01 |
-| **ubicación** |Región de Azure en qué Hola reside el recurso |westus, eastus |
+| **ubicación** |Región de Azure en la que reside el recurso. |westus, eastus |
 | **id** |URI único basado en la identificación |/subscriptions/<subGUID>/resourceGroups/TestRG/providers/Microsoft.Network/publicIPAddresses/TestPIP |
 
-Puede comprobar las propiedades individuales de recursos de hello las siguientes secciones se Hola.
+Puede comprobar las propiedades individuales de los recursos en las secciones siguientes.
 
 [!INCLUDE [virtual-networks-nrp-pip-include](../../includes/virtual-networks-nrp-pip-include.md)]
 
@@ -85,26 +85,26 @@ Puede administrar los recursos de redes de Azure mediante distintas interfaces. 
 ### <a name="rest-api"></a>API de REST
 Como se mencionó anteriormente, se pueden administrar los recursos de red a través de una variedad de interfaces, incluidas API de REST, .NET SDK, SDK de Node.JS, SDK de Java, PowerShell, CLI, Portal de Azure y plantillas.
 
-Hola API de Rest se ajustan toohello especificación del protocolo HTTP 1.1. estructura de Hello general URI de hello API se muestra a continuación:
+Las API de REST se ajustan a la especificación del protocolo HTTP 1.1. A continuación se presenta la estructura general de URI de la API:
 
     https://management.azure.com/subscriptions/{subscription-id}/providers/{resource-provider-namespace}/locations/{region-location}/register?api-version={api-version}
 
-Y parámetros de hello entre llaves representan Hola siguientes elementos:
+Y los parámetros entre llaves representan los elementos siguientes:
 
 * **subscription-id** : identificador de su suscripción a Azure.
-* **Resource-provider-namespace** -espacio de nombres de proveedor de Hola que se utiliza. valor de Hello para el proveedor de recursos de red de hello es *Microsoft.Network*.
-* **nombre de la región** -nombre de la región de Azure de Hola
+* **resource-provider-namespace** : espacio de nombres para el proveedor que se utiliza. El valor para el proveedor de recursos de red es *Microsoft.Network*.
+* **region-name** : el nombre de la región de Azure.
 
-Hello métodos HTTP siguientes se admiten al realizar llamadas toohello API de REST:
+Se admiten los siguientes métodos HTTP cuando se realizan llamadas a la API de REST:
 
-* **COLOCAR** : se usan toocreate un recurso de un tipo determinado, modificar una propiedad de recurso o cambiar una asociación entre los recursos.
-* **OBTENER** -tooretrieve información que se utiliza para un recurso de aprovisionamiento.
-* **ELIMINAR** -usa toodelete un recurso existente.
+* **PUT** : se utiliza para crear un recurso de un tipo determinado, modificar una propiedad de recurso o cambiar una asociación entre recursos.
+* **GET** : se utiliza para recuperar información para un recurso aprovisionado.
+* **DELETE** : se utiliza para eliminar un recurso existente.
 
-Hola solicitud y respuesta ajustan tooa formato de carga JSON. Para obtener más información, consulte [API de administración de recursos de Azure](https://msdn.microsoft.com/library/azure/dn948464.aspx).
+La solicitud y la respuesta se ajustan a un formato de carga JSON. Para obtener más información, consulte [API de administración de recursos de Azure](https://msdn.microsoft.com/library/azure/dn948464.aspx).
 
 ### <a name="resource-manager-template-language"></a>Idioma de la plantilla de Resource Manager
-En recursos de toomanaging adición imperativamente (a través de las API o SDK), también puede usar un toobuild de estilo de programación declarativa y administrar recursos de red mediante Hola idioma de plantilla de administrador de recursos.
+Además de administrar recursos de forma imperativa (a través de API o SDK), también puede utilizar un estilo de programación declarativo para crear y administrar recursos de red mediante el lenguaje de la plantilla de Resource Manager.
 
 A continuación se proporciona una representación de una plantilla de ejemplo:
 
@@ -117,7 +117,7 @@ A continuación se proporciona una representación de una plantilla de ejemplo:
       "outputs": { <output-of-template> }    
     }
 
-plantilla de Hello es principalmente una descripción de JSON de recursos de Hola y valores de la instancia de hello insertados a través de parámetros. ejemplo de Hola siguiente puede ser toocreate usa una red virtual con 2 subredes.
+La plantilla es principalmente una descripción de JSON de los recursos y los valores de instancia insertados a través de parámetros. El ejemplo siguiente puede utilizarse para crear una red virtual con dos subredes.
 
     {
         "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/VNET.json",
@@ -205,7 +205,7 @@ plantilla de Hello es principalmente una descripción de JSON de recursos de Hol
         ]
     }
 
-Tiene la opción de Hola de proporcionar valores de parámetro hello manualmente cuando se utiliza una plantilla, o puede usar un archivo de parámetros. ejemplo de Hola siguiente muestra un posible conjunto de toobe de valores de parámetro utilizado con plantilla Hola anterior:
+Tiene la opción de proporcionar los valores de los parámetros manualmente cuando se utiliza una plantilla, o bien puede usar un archivo de parámetros. El ejemplo siguiente muestra un posible conjunto de valores de parámetros para usar con la plantilla anterior:
 
     {
       "location": {
@@ -232,28 +232,28 @@ Tiene la opción de Hola de proporcionar valores de parámetro hello manualmente
     }
 
 
-Hola ventajas principales del uso de plantillas son:
+Las principales ventajas derivadas del uso de plantillas son las siguientes:
 
-* Puede crear una infraestructura compleja en un grupo de recursos de estilo declarativo. Hola orquestación de creación de recursos de hello, incluida la administración de dependencia, se controla mediante el Administrador de recursos.
-* infraestructura de Hello puede crearse de forma repetible en diversas regiones y dentro de una región con solo cambiar parámetros.
-* estilo declarativo Hola conduce tooshorter plazo para generar plantillas de Hola y efectuando infraestructura Hola.
+* Puede crear una infraestructura compleja en un grupo de recursos de estilo declarativo. La coordinación de la creación de recursos, incluida la administración de dependencias, se controla mediante Resource Manager.
+* La infraestructura se puede crear de una manera repetible en diferentes regiones y dentro de una misma región cambiando simplemente parámetros.
+* El estilo declarativo permite reducir el tiempo necesario para generar las plantillas y distribuir la infraestructura.
 
 Para ver plantillas de ejemplo, consulte [Plantillas de inicio rápido de Azure](https://github.com/Azure/azure-quickstart-templates).
 
-Para obtener más información sobre Hola idioma de plantilla de administrador de recursos, consulte [idioma de plantilla del Administrador de recursos de Azure](../azure-resource-manager/resource-group-authoring-templates.md).
+Para obtener más información sobre el lenguaje de la plantilla de Resource Manager, vea [Idioma de la plantilla de Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
 
-plantilla de ejemplo de Hola anterior utiliza la red virtual de Hola y recursos de la subred. Hay otros recursos de red que se pueden utilizar, como se muestra a continuación:
+La plantilla del ejemplo anterior utiliza la red virtual y los recursos de la subred. Hay otros recursos de red que se pueden utilizar, como se muestra a continuación:
 
 ### <a name="using-a-template"></a>Uso de una plantilla
-Puede implementar servicios tooAzure desde una plantilla mediante el uso de PowerShell, AzureCLI, o bien al realizar una toodeploy haga clic en desde GitHub. Servicios de toodeploy de una plantilla en GitHub, ejecute Hola pasos:
+Puede implementar servicios en Azure desde una plantilla mediante PowerShell, CLI de Azure o mediante un clic para implementar desde GitHub. Para implementar servicios de una plantilla en GitHub, ejecute los siguientes pasos:
 
-1. Abrir archivo de hello template3 desde GitHub. Como ejemplo, abra [Red virtual con dos subredes](https://github.com/Azure/azure-quickstart-templates/tree/master/101-virtual-network).
-2. Haga clic en **implementar tooAzure**y, a continuación, inicie sesión en toohello portal de Azure con sus credenciales.
-3. Comprobar la plantilla de hello y, a continuación, haga clic en **guardar**.
-4. Haga clic en **editar parámetros** y seleccione una ubicación, por ejemplo, *oeste de Estados Unidos*, para la red virtual de Hola y subredes.
-5. Si es necesario, cambie hello **ADDRESSPREFIX** y **SUBNETPREFIX** parámetros y, a continuación, haga clic en **Aceptar**.
-6. Haga clic en **seleccionar un grupo de recursos** y, a continuación, haga clic en el grupo de recursos de hello desea tooadd Hola virtuales y las subredes a. Como alternativa, puede crear un nuevo grupo de recursos haciendo clic en **Crear nuevo**.
-7. Haga clic en **Crear**. Tenga en cuenta Hola icono mostrar **implementación de plantilla de aprovisionamiento**. Una vez que se realice la implementación de hello, verá un tooone similar de pantalla siguiente.
+1. Abra el archivo de plantilla 3 desde GitHub. Como ejemplo, abra [Red virtual con dos subredes](https://github.com/Azure/azure-quickstart-templates/tree/master/101-virtual-network).
+2. Haga clic en **Implementación en Azure**, y, a continuación, inicie sesión en el Portal de Azure con sus credenciales.
+3. Compruebe la plantilla y, a continuación, haga clic en **Guardar**.
+4. Haga clic en **Editar parámetros** y seleccione una ubicación, como *West US*, para la red virtual y las subredes.
+5. Si es necesario, cambie los parámetros **ADDRESSPREFIX** y **SUBNETPREFIX** y luego haga clic en **Aceptar**.
+6. Haga clic en **Seleccionar un grupo de recursos** y, a continuación, haga clic en el grupo de recursos al que desea agregar la red virtual y las subredes. Como alternativa, puede crear un nuevo grupo de recursos haciendo clic en **Crear nuevo**.
+7. Haga clic en **Crear**. Observe el icono que muestra **Implementación de plantillas de aprovisionamiento**. Una vez que se realiza la implementación, verá una pantalla similar a la siguiente.
 
 ![Implementación de plantilla de ejemplo](./media/resource-groups-networking/Figure6.png)
 

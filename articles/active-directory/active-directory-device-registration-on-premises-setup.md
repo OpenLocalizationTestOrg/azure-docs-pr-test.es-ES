@@ -1,6 +1,6 @@
 ---
-title: aaaSetting el acceso condicional local mediante el registro de dispositivos de Azure Active Directory | Documentos de Microsoft
-description: "Una guía paso a paso tooenabling acceso condicional local tooon las aplicaciones mediante el uso de los servicios de federación de Active Directory (AD FS) en Windows Server 2012 R2."
+title: "Configuración del acceso condicional local mediante el registro de dispositivos de Azure Active Directory | Microsoft Docs"
+description: "Guía paso a paso para habilitar el acceso condicional a aplicaciones locales mediante Servicios de federación de Active Directory (AD FS) en Windows Server 2012 R2."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -15,63 +15,63 @@ ms.topic: article
 ms.date: 07/31/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 808e3b96873102aebae667153f588dcdb205e884
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1a6f1c6566468188daa71939db8345280b7a529f
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Configuración del acceso condicional local mediante el registro de dispositivos de Azure Active Directory
-Cuando necesite usuarios tooworkplace-recombinar su servicio de registro de dispositivo de Azure Active Directory (Azure AD) toohello de dispositivos personales, sus dispositivos se pueden marcar como organización tooyour conocidos. Aquí te mostramos una guía paso a paso para permitir que las aplicaciones de acceso condicional tooon local mediante el uso de los servicios de federación de Active Directory (AD FS) en Windows Server 2012 R2.
+Cuando se requiera que los usuarios unan sus dispositivos personales al área de trabajo en el servicio de registro de dispositivos de Azure Active Directory (Azure AD), los dispositivos deben estar marcados como conocidos para la organización. A continuación aparece una guía paso a paso para habilitar el acceso condicional a aplicaciones locales mediante Servicios de federación de Active Directory (AD FS) en Windows Server 2012 R2.
 
 > [!NOTE]
 > Se requiere una licencia de Azure AD Premium o de Office 365 al usar dispositivos que están registrados en directivas de acceso condicional del servicio de registros de dispositivos de Azure Active Directory. Estas incluyen directivas que AD FS aplica en recursos locales.
 > 
-> Para obtener más información sobre los escenarios de acceso condicional de Hola de recursos locales, consulte [unirse tooworkplace desde cualquier dispositivo para SSO y autenticación de segundo factor sin problemas en todas las aplicaciones de empresa](https://technet.microsoft.com/library/dn280945.aspx).
+> Para más información sobre los escenarios de acceso condicional para recursos locales, consulte [Unión al área de trabajo desde cualquier dispositivo para SSO y autenticación de segundo factor sin problemas entre las aplicaciones de la empresa](https://technet.microsoft.com/library/dn280945.aspx).
 
-Estas capacidades están disponibles toocustomers que adquirir una licencia de Azure Active Directory Premium.
+Estas funcionalidades están disponibles para los clientes que compren una licencia de Azure Active Directory Premium.
 
 ## <a name="supported-devices"></a>Dispositivos compatibles
 * Dispositivos Windows 7 unidos a un dominio
 * Dispositivos Windows 8.1 personales y unidos a un dominio
-* iOS 6 y versiones posteriores del explorador Safari Hola
+* iOS 6 y versiones posteriores para el explorador Safari
 * Android 4.0 o versiones posteriores, teléfonos Samsung GS3 o versiones posteriores, tabletas Samsung Galaxy Note 2 o versiones posteriores
 
 ## <a name="scenario-prerequisites"></a>Requisitos previos de escenario
-* Suscripción tooOffice 365 o Azure Active Directory Premium
+* Suscripción a Office 365 o a Azure Active Directory Premium
 * Un inquilino de Azure Active Directory
 * Windows Server Active Directory (Windows Server 2008 o versiones posteriores)
 * Esquema actualizado en Windows Server 2012 R2
 * Licencia de Azure Active Directory Premium
-* Windows Server 2012 R2 servicios de federación, configurados para SSO tooAzure AD
+* Servicios de federación con Windows Server 2012 R2, configurados para SSO en Azure AD
 * Proxy de aplicación web de Windows Server 2012 R2 
 * Microsoft Azure Active Directory Connect (Azure AD Connect) [(descargue Azure AD Connect)](http://www.microsoft.com/en-us/download/details.aspx?id=47594)
 * Dominio comprobado
 
 ## <a name="known-issues-in-this-release"></a>Problemas conocidos en esta versión
-* Directivas de acceso condicional basado en dispositivos requieren tooActive de reescritura de dispositivos objeto Directory de Azure Active Directory. Pueden tardar horas toothree toobe de objetos de dispositivo reescrito tooActive Directory.
-* dispositivos con iOS 7 siempre le preguntará Hola usuario tooselect un certificado durante la autenticación de certificado de cliente.
+* Las directivas de acceso condicional basado en dispositivos requieren la escritura diferida de objetos de dispositivo en Active Directory de Azure Active Directory. Los objetos de dispositivo pueden tardar hasta tres horas en realizar la escritura diferida en Active Directory.
+* Los dispositivos iOS 7 siempre solicitan al usuario que seleccione un certificado de cliente durante la autenticación de certificados de cliente.
 * Algunas versiones de iOS 8 anteriores a iOS 8.3 no funcionan.
 
 ## <a name="scenario-assumptions"></a>Escenarios hipotéticos
-En este escenario se asume que tiene un entorno híbrido que consta de un inquilino de Azure AD y una versión local de Active Directory. Estos inquilinos deben conectarse mediante Azure AD Connect, con un dominio comprobado, y con AD FS para SSO. Usar hello después de configurar su entorno según los requisitos de toohello de toohelp de lista de comprobación.
+En este escenario se asume que tiene un entorno híbrido que consta de un inquilino de Azure AD y una versión local de Active Directory. Estos inquilinos deben conectarse mediante Azure AD Connect, con un dominio comprobado, y con AD FS para SSO. Use la lista de comprobación siguiente para configurar el entorno según los requisitos.
 
 ## <a name="checklist-prerequisites-for-conditional-access-scenario"></a>Lista de comprobación: requisitos previos para un escenario de acceso condicional
 Conecte su inquilino de Azure AD a la instancia local de Active Directory.
 
 ## <a name="configure-azure-active-directory-device-registration-service"></a>Configuración del servicio de registro de dispositivos de Azure Active Directory
-Use esta guía toodeploy y configurar el servicio de registro de dispositivos de hello Azure Active Directory para su organización.
+Use esta guía para implementar y configurar el servicio de registro de dispositivos de Azure Active Directory para su organización.
 
-Esta guía se da por supuesto que ha configurado Active Directory de Windows Server y ha suscrito tooMicrosoft Azure Active Directory. Consulte los requisitos previos de Hola que se ha descrito anteriormente.
+En esta guía se asume que ya configuró Windows Server Active Directory y se suscribió a Microsoft Azure Active Directory. Consulte los requisitos previos que se describieron anteriormente.
 
-Hola toodeploy servicio de registro de dispositivos de Azure Active Directory con Azure Active Directory de inquilinos, tareas de hello completa en hello después de la lista de comprobación en orden. Cuando un vínculo de referencia le lleve tooa de tema conceptual, devolver lista de comprobación de toothis posteriormente, para que puedas seguir con las tareas restantes de hello. Algunas tareas incluyen un paso de validación de escenario que te ayudará a confirmar si el paso de Hola se completó correctamente.
+Para implementar el servicio de registro de dispositivos de Azure Active Directory con su inquilino de Azure Active Directory, complete por orden las tareas de la lista de comprobación siguiente. Cuando un vínculo de referencia lleve a un tema conceptual, vuelva a esta lista de comprobación para que pueda continuar con las tareas restantes. Algunas tareas incluyen un paso de validación del escenario que puede ayudarle a confirmar si el paso se completó correctamente.
 
 ## <a name="part-1-enable-azure-active-directory-device-registration"></a>Paso 1: habilitación del registro de dispositivos de Azure Active Directory
-Siga los pasos de hello en tooenable de lista de comprobación de Hola y configurar el servicio de registro de dispositivos de hello Azure Active Directory.
+Siga los pasos que aparecen en la lista de comprobación para habilitar y configurar el servicio de registro de dispositivos de Azure Active Directory.
 
 | Tarea | Referencia | 
 | --- | --- |
-| Habilite el registro de dispositivo en su Azure Active Directory inquilino tooallow dispositivos toojoin Hola al área de trabajo. De forma predeterminada, la autenticación multifactor Azure no está habilitada para el servicio de Hola. Sin embargo, se recomienda que lo uso cuando registre un dispositivo. Antes de habilitar Multi-Factor Authentication en el servicio de registro de Active Directory, asegúrese de que AD FS está configurado para un proveedor de Multi-Factor Authentication. |[Habilitación del registro de dispositivos de Azure Active Directory](active-directory-device-registration-get-started.md)| 
+| Habilite el registro de dispositivos en el inquilino de Azure Active Directory para permitir que los dispositivos se unan al área de trabajo. De manera predeterminada, Azure Multi-Factor Authentication no está habilitado para el servicio. Sin embargo, se recomienda que lo uso cuando registre un dispositivo. Antes de habilitar Multi-Factor Authentication en el servicio de registro de Active Directory, asegúrese de que AD FS está configurado para un proveedor de Multi-Factor Authentication. |[Habilitación del registro de dispositivos de Azure Active Directory](active-directory-device-registration-get-started.md)| 
 |Los dispositivos detectan el servicio de registro de dispositivos de Azure Active Directory buscando registros DNS conocidos. Configure el DNS de la empresa para que los dispositivos puedan detectar el servicio de registro de dispositivos de Azure Active Directory. |[Configuración de la detección del registro de dispositivos de Azure Active Directory](active-directory-device-registration-get-started.md)| 
 
 
@@ -79,64 +79,64 @@ Siga los pasos de hello en tooenable de lista de comprobación de Hola y configu
 
 | Tarea | Referencia |
 | --- | --- |
-| Implementar los servicios de dominio de Active Directory con extensiones de esquema de Windows Server 2012 R2 Hola. No es necesario tooupgrade cualquiera de sus tooWindows de controladores de dominio Server 2012 R2. actualización del esquema de Hello es el único requisito de Hola. |[Actualización del esquema de Active Directory Domain Services](#upgrade-your-active-directory-domain-services-schema) |
+| Implemente Active Directory Domain Services con las extensiones de esquema de Windows Server 2012 R2. No es preciso actualizar los controladores de dominio a Windows Server 2012 R2. El único requisito es la actualización del esquema. |[Actualización del esquema de Active Directory Domain Services](#upgrade-your-active-directory-domain-services-schema) |
 | Los dispositivos detectan el servicio de registro de dispositivos de Azure Active Directory buscando registros DNS conocidos. Configure el DNS de la empresa para que los dispositivos puedan detectar el servicio de registro de dispositivos de Azure Active Directory. |[Preparación de los dispositivos para la compatibilidad con Active Directory](#prepare-your-active-directory-to-support-devices) |
 
 ## <a name="part-3-enable-device-writeback-in-azure-ad"></a>Parte 3: habilitación de reescritura de dispositivos en Azure AD
 | Tarea | Referencia |
 | --- | --- |
-| Complete la parte 2 de "Habilitación de escritura diferida de dispositivos en Azure AD Connect". Cuando termine de él, Guía de toothis devuelto. |[Habilitación de escritura diferida de dispositivos en Azure AD Connect](#upgrade-your-active-directory-domain-services-schema) |
+| Complete la parte 2 de "Habilitación de escritura diferida de dispositivos en Azure AD Connect". Cuando lo haga, vuelva a esta guía. |[Habilitación de escritura diferida de dispositivos en Azure AD Connect](#upgrade-your-active-directory-domain-services-schema) |
 
 ## <a name="optional-part-4-enable-multi-factor-authentication"></a>[Opcional] Parte 4: habilitación de Multi-Factor Authentication
-Se recomienda encarecidamente que deberá configurar uno de hello varias opciones para la autenticación multifactor. Si desea que toorequire la autenticación multifactor, consulte [elegir la solución de seguridad de la autenticación multifactor de hello automáticamente](../multi-factor-authentication/multi-factor-authentication-get-started.md). Se incluye una descripción de cada solución y vincula toohelp configurar solución Hola de su elección.
+Se recomienda encarecidamente configurar una de las distintas opciones de Multi-Factor Authentication. Si desea exigir Multi-Factor Authentication, consulte [Elección de la solución de seguridad Multi-Factor Authentication más adecuada](../multi-factor-authentication/multi-factor-authentication-get-started.md). Incluye una descripción de cada solución y vínculos para ayudarle a configurar la solución que haya elegido.
 
 ## <a name="part-5-verification"></a>Parte 5: verificación
-implementación de Hello ahora se ha completado y puede probar algunos escenarios. Usar hello siguiente vincula tooexperiment con el servicio de Hola y se familiarice con sus características.
+La implementación se completó y puede probar algunos escenarios. Siga los vínculos siguientes para probar con el servicio y familiarizarse con sus características.
 
 | Tarea | Referencia |
 | --- | --- |
-| Unirse al área de trabajo de algunos tooyour de dispositivos mediante el servicio de registro de dispositivo de Azure Active Directory. Puede conectar dispositivos iOS, Windows y Android. |[Unirse al área de trabajo tooyour de dispositivos con el servicio de registro de dispositivos de Azure Active Directory](#join-devices-to-your-workplace-using-azure-active-directory-device-registration) |
-| Ver y habilitar o deshabilitar dispositivos registrados mediante el portal de administración de Hola. En esta tarea, verá algunos dispositivos registrados mediante el uso de portal de administración de Hola. |[Introducción al servicio de registro de dispositivos de Azure Active Directory](active-directory-device-registration-get-started.md) |
-| Compruebe que los objetos de dispositivo se reescriben desde Azure Active Directory tooWindows Server Active Directory. |[Comprobar dispositivos registrados se reescriben tooActive Directory](#verify-registered-devices-are-written-back-to-active-directory) |
+| Conecte varios dispositivos al área de trabajo con el servicio de registro de dispositivos de Azure Active Directory. Puede conectar dispositivos iOS, Windows y Android. |[Unión de dispositivos al área de trabajo mediante el servicio de registro de dispositivos de Azure Active Directory](#join-devices-to-your-workplace-using-azure-active-directory-device-registration) |
+| Vea y habilite o deshabilite los dispositivos registrados desde el portal de administrador. En esta tarea, usará el portal de administrador para ver algunos dispositivos registrados. |[Introducción al servicio de registro de dispositivos de Azure Active Directory](active-directory-device-registration-get-started.md) |
+| Compruebe que los objetos de dispositivo se reescriben desde Azure Active Directory a Windows Server Active Directory. |[Comprobación de que los dispositivos registrados se escriben de manera diferida en Active Directory](#verify-registered-devices-are-written-back-to-active-directory) |
 | Ahora que los usuarios pueden registrar sus dispositivos, puede crear en AD FS directivas de acceso a la aplicación que solo permitan dispositivos registrados. En esta tarea, creará una regla de acceso a la aplicación y un mensaje de acceso denegado personalizado. |[Creación de una directiva de acceso a aplicaciones y un mensaje personalizado de acceso denegado](#create-an-application-access-policy-and-custom-access-denied-message) |
 
 ## <a name="integrate-azure-active-directory-with-on-premises-active-directory"></a>Integración de Azure Active Directory con una versión local de Active Directory
-Este paso le ayuda a integrar el inquilino de Azure AD con la instancia local de Active Directory mediante Azure AD Connect. Aunque los pasos de hello están disponibles en hello portal de Azure clásico, tome nota de las instrucciones especiales que se enumeran en esta sección.
+Este paso le ayuda a integrar el inquilino de Azure AD con la instancia local de Active Directory mediante Azure AD Connect. Aunque los pasos están disponibles en el Portal de Azure clásico, anote las instrucciones especiales que se enumeran en esta sección.
 
-1. Inicie sesión en toohello portal de Azure clásico mediante una cuenta que sea un administrador global de Azure AD.
-2. En el panel izquierdo de hello, seleccione **Active Directory**.
-3. En hello **Directory** ficha, seleccione el directorio.
-4. Seleccione hello **integración de directorios** ficha.
-5. En hello **implementar y administrar** sección, siga los pasos del 1 al 3 toointegrate Azure Active Directory con su directorio local.
+1. Inicie sesión en el Portal de Azure clásico con una cuenta que sea un administrador global en Azure AD.
+2. En el panel izquierdo, seleccione **Active Directory**.
+3. En la pestaña **Directorio** , seleccione su directorio.
+4. Seleccione la pestaña **Integración de directorios** .
+5. En la sección acerca de **implementación y administración**, siga los pasos 1 a 3 para integrar Azure Active Directory en su directorio local.
    
    1. Adición de dominios.
-   2. Instalar y ejecutar Azure AD Connect con instrucciones de hello en [instalación personalizada de Azure AD Connect](connect/active-directory-aadconnect-get-started-custom.md).
+   2. Para instalar y ejecutar Azure AD Connect, use las instrucciones que aparecen en [Instalación personalizada de Azure AD Connect](connect/active-directory-aadconnect-get-started-custom.md).
    3. Comprobación y administración de la sincronización de directorios. Las instrucciones de inicio de sesión único están disponibles en este paso.
    
    Además, configure la federación con AD FS tal como se describe en [Instalación personalizada de Azure AD Connect](connect/active-directory-aadconnect-get-started-custom.md).
 
 ## <a name="upgrade-your-active-directory-domain-services-schema"></a>Actualización del esquema de Servicios de dominio de Active Directory
 > [!NOTE]
-> Después de actualizar el esquema de Active Directory, no se puede revertir el proceso de Hola. Se recomienda realizar primero la actualización hello en un entorno de prueba.
+> Una vez que actualice el esquema de Active Directory, no es posible revertir el proceso. Se recomienda realizar la actualización primero en un entorno de prueba.
 > 
 
-1. Inicie sesión en el controlador de dominio de tooyour con una cuenta que tiene derechos de administrador de esquema y Administrador de organización.
-2. Hola copia **[media] \support\adprep** tooone de directorio y subdirectorios de los controladores de dominio de Active Directory (donde **[media]** es el medio de instalación de Windows Server 2012 R2 de hello ruta de acceso toohello ).
-4. Desde un símbolo del sistema, vaya toohello **adprep** directorio y ejecución **adprep.exe /forestprep**. Siga la actualización del esquema de hello instrucciones en pantalla toocomplete Hola.
+1. Inicie sesión en el controlador de dominio con una cuenta que tenga derechos de administrador de organización y de administrador de esquema.
+2. Copie el directorio **[media]\support\adprep** y los subdirectorios en uno de los controladores de dominio de Active Directory (donde **[media]** es la ruta de acceso a los medios de instalación de Windows Server 2012 R2).
+4. En un símbolo del sistema, vaya al directorio **adprep** y ejecute **adprep.exe /forestprep**. Siga las instrucciones en pantalla para completar la actualización del esquema.
 
-## <a name="prepare-your-active-directory-toosupport-devices"></a>Preparar los dispositivos de toosupport de Active Directory
+## <a name="prepare-your-active-directory-to-support-devices"></a>Preparación de Active Directory para que admita los dispositivos
 > [!NOTE]
-> Se trata de una operación única que debe ejecutar tooprepare los dispositivos de toosupport de bosque de Active Directory. toocomplete este procedimiento, debe haber iniciado sesión con permisos de administrador de empresa y el bosque de Active Directory debe tener esquema de Windows Server 2012 R2 Hola.
+> Se trata de una operación que se realiza una sola vez que debe ejecutar para preparar el bosque de Active Directory para admitir los dispositivos. Para completar este procedimiento, debe iniciar sesión con permisos de administrador de organización y el bosque de Active Directory debe tener el esquema de Windows Server 2012 R2.
 > 
 
 
 ### <a name="prepare-your-active-directory-forest"></a>Preparación del bosque de Active Directory
 1. En el servidor de federación, abra una ventana Comandos de Windows PowerShell y escriba **Initialize-ADDeviceRegistration**. 
-2. Cuando se le solicite **ServiceAccountName**, escriba Hola nombre de cuenta de servicio de Hola que seleccionó como cuenta de servicio de Hola para AD FS. Si es una cuenta de gMSA, escriba la cuenta de hello en hello **dominio\nombreDeCuenta$** formato. Para una cuenta de dominio, use el formato de hello **dominio\nombreDeCuenta**.
+2. Cuando le pidan el valor de **ServiceAccountName**, escriba el nombre de la cuenta de servicio que seleccionó como cuenta de servicio de AD FS. Si es una cuenta de gMSA, escríbala con el formato **dominio\nombreDeCuenta$**. En el caso de una cuenta de dominio, use el formato **dominio\nombreDeCuenta**.
 
 ### <a name="enable-device-authentication-in-ad-fs"></a>Habilitación de la autenticación del dispositivo en AD FS
-1. En el servidor de federación, abra la consola de administración de AD FS de Hola y vaya demasiado**AD FS** > **las directivas de autenticación**.
-2. En hello **acciones** panel, seleccione **Editar autenticación principal Global**.
+1. En el servidor de federación, abra la consola de administración de AD FS y vaya a **AD FS** > **Directivas de autenticación**.
+2. En el panel **Acciones**, seleccione **Editar autenticación principal global**.
 3. Active **Habilitar autenticación de dispositivo** y, luego, seleccione **Aceptar**.
 4. De manera predeterminada, AD FS quitará periódicamente los dispositivos no usados de Active Directory. Deshabilite esta tarea cuando use el servicio de registro de dispositivos de Azure Active Directory para que los dispositivos se puedan administrar en Azure.
 
@@ -146,81 +146,81 @@ En el servidor de federación, abra una ventana Comandos de Windows PowerShell y
 ### <a name="prepare-azure-ad-connect-for-device-writeback"></a>Preparación de Azure AD Connect para la reescritura de dispositivos
 Complete la parte 1: preparación de Azure AD Connect.
 
-## <a name="join-devices-tooyour-workplace-by-using-azure-active-directory-device-registration-service"></a>Unirse al área de trabajo tooyour de dispositivos mediante el servicio de registro de dispositivo de Azure Active Directory
+## <a name="join-devices-to-your-workplace-by-using-azure-active-directory-device-registration-service"></a>Unión de dispositivos al área de trabajo mediante el servicio de registro de dispositivos de Azure Active Directory
 
 ### <a name="join-an-ios-device-by-using-azure-active-directory-device-registration"></a>Unión de un dispositivo iOS mediante el registro de dispositivos de Azure Active Directory
-Registro de dispositivos de Azure Active Directory usa el proceso de inscripción de perfil por aire Hola para dispositivos iOS. Este proceso comienza cuando el usuario de Hola conecta URL de inscripción de perfil toohello con Safari. formato de dirección URL de Hello es como sigue:
+El registro de dispositivos de Azure Active Directory usa el proceso de inscripción de perfil móvil para dispositivos iOS. Este proceso comienza cuando el usuario se conecta a la dirección URL de inscripción de perfil con Safari. El formato de la dirección URL es el siguiente:
 
     https://enterpriseregistration.windows.net/enrollmentserver/otaprofile/"yourdomainname"
 
-En este caso, `yourdomainname` es nombre de dominio de Hola que ha configurado con Azure Active Directory. Por ejemplo, si el nombre de dominio es contoso.com, dirección URL de hello es:
+En este caso, `yourdomainname` es el nombre de dominio que se configuró con Azure Active Directory. Por ejemplo, si el nombre de dominio es contoso.com, la dirección URL es la siguiente:
 
     https://enterpriseregistration.windows.net/enrollmentserver/otaprofile/contoso.com
 
-Hay toocommunicate de muchas maneras diferentes de los usuarios de este tooyour de dirección URL. Por ejemplo, un método que se recomienda es publicar esta dirección URL en un mensaje de acceso denegado a la aplicación personalizado en AD FS. Esta información se trata en la siguiente sección de hello [crear una directiva de acceso de la aplicación y el mensaje acceso denegado personalizado](#create-an-application-access-policy-and-custom-access-denied-message).
+Existen varias formas de comunicar la URL a los usuarios. Por ejemplo, un método que se recomienda es publicar esta dirección URL en un mensaje de acceso denegado a la aplicación personalizado en AD FS. Esta información se trata en la siguiente sección [Creación de una directiva de acceso a aplicaciones y un mensaje personalizado de acceso denegado](#create-an-application-access-policy-and-custom-access-denied-message).
 
 ### <a name="join-a-windows-81-device-by-using-azure-active-directory-device-registration"></a>Unión de un dispositivo Windows 8.1 mediante el registro de dispositivos de Azure Active Directory
 1. En el dispositivo Windows 8.1, seleccione **Configuración de PC** > **Red** > **Área de trabajo**.
 2. Escriba el nombre de usuario en formato UPN, por ejemplo, **dan@contoso.com**.
 3. Seleccione **Combinar**.
-4. Cuando se lo pidan, inicie sesión con sus credenciales. Ahora se une el dispositivo de Hola.
+4. Cuando se lo pidan, inicie sesión con sus credenciales. El dispositivo ahora está unido.
 
 ### <a name="join-a-windows-7-device-by-using-azure-active-directory-device-registration"></a>Unión de un dispositivo Windows 7 mediante el registro de dispositivos de Azure Active Directory
-tooregister Windows 7 dispositivos Unidos a dominio, debe paquete de software de registro de dispositivos de toodeploy Hola. Hello paquete de software se denomina Workplace Join for Windows 7 y sus disponible para su descarga en hello [sitio Web de Microsoft Connect](https://connect.microsoft.com/site1164). 
+Para registrar los dispositivos Windows 7 unidos a un dominio debe implementar el paquete de software de registro del dispositivo. El paquete de software se llama Workplace Join for Windows 7 y está disponible para su descarga en el [sitio web de Microsoft Connect](https://connect.microsoft.com/site1164). 
 
-Las instrucciones sobre cómo toouse Hola paquete están disponibles en [cómo tooconfigure el registro automático de Windows Unidos a dominios dispositivos con Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md).
+Las instrucciones sobre cómo usar el paquete están disponibles en [Configuración del registro automático de dispositivos unidos a un dominio de Windows con Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md).
 
-## <a name="verify-that-registered-devices-are-written-back-tooactive-directory"></a>Compruebe que los dispositivos registrados se reescriben tooActive Directory
-Puede ver y comprobar que los objetos de dispositivo se ha reescrito tooyour Active Directory con LDP.exe o ADSI Edit. Ambos están disponibles con las herramientas de administrador de Active Directory de Hola.
+## <a name="verify-that-registered-devices-are-written-back-to-active-directory"></a>Comprobación de que los dispositivos registrados se escriben de manera diferida en Active Directory
+Puede ver y comprobar que los objetos de dispositivo se escribieron de manera diferida en Active Directory con LDP.exe o con el Editor ADSI. Ambos están disponibles con las herramientas del administrador de Active Directory.
 
-De forma predeterminada, los objetos de dispositivo que se reescriben desde Azure Active Directory se colocan en hello mismo dominio que la granja de servidores de AD FS.
+De manera predeterminada, los objetos de dispositivo que se escriben de manera diferida desde Azure Active Directory se colocan en el mismo dominio que la granja de AD FS.
 
     CN=RegisteredDevices,defaultNamingContext
 
 ## <a name="create-an-application-access-policy-and-custom-access-denied-message"></a>Creación de una directiva de acceso a aplicaciones y un mensaje personalizado de acceso denegado
-Considere la posibilidad de hello siguiendo escenario: crear una aplicación de confianza para usuario autenticado en AD FS y configurar una regla de autorización de emisión que permita solamente dispositivos registrados. Ahora sólo los dispositivos que están registrados se permiten aplicaciones de hello tooaccess. 
+Considere el siguiente escenario: se crea una aplicación de confianza para usuario autenticado en AD FS y se configura una regla de autorización de emisión que solo permite dispositivos registrados. Ahora solo los dispositivos que están registrados pueden tener acceso a la aplicación. 
 
-toomake más sencilla para la aplicación de toohello de acceso de los usuarios toogain, configurará un mensaje personalizado al acceso denegado que se incluye instrucciones sobre cómo toojoin su dispositivo. Ahora los usuarios tienen un tooregister de manera transparente sus dispositivos para que pueden acceder a una aplicación.
+Para que a los usuarios les resulte más fácil obtener acceso a la aplicación, configure un mensaje personalizado de acceso denegado que incluya instrucciones sobre cómo deben unir el dispositivo. Ahora los usuarios disponen de una manera directa de registrar sus dispositivos para que puedan tener acceso a una aplicación.
 
-Hello pasos siguientes muestran cómo tooimplement este escenario.
+Los pasos siguientes indican cómo implementar este escenario.
 
 > [!NOTE]
 > En esta sección se supone que ya configuró una relación de confianza para usuario autenticado para la aplicación en AD FS.
 > 
 
-1. Abra Hola herramienta MMC de AD FS y, a continuación, seleccione **AD FS** > **relaciones de confianza** > **Veracidades**.
-2. Busque toowhich de aplicación Hola que se aplica esta regla de acceso nuevo. Haga clic en aplicación hello y, a continuación, seleccione **editar reglas de notificación**.
-3. Seleccione hello **las reglas de autorización de emisión** pestaña y, a continuación, seleccione **Agregar regla**.
-4. De hello **regla de notificación** lista desplegable de plantillas, seleccione **permitir o denegar a los usuarios según una notificación entrante**. Luego, seleccione **Siguiente**.
-5. Hola **nombre de la regla de notificación** , escriba **permitir el acceso desde dispositivos registrados**.
-6. De hello **tipo de notificación entrante** lista desplegable, seleccione **Is Registered User**.
-7. Hola **valor de notificación entrante** , escriba **true**.
-8. Seleccione hello **toousers de permiso de acceso con esta notificación entrante** botón de radio.
+1. Abra la herramienta MMC de AD FS y, luego, seleccione **AD FS** > **Relaciones de confianza** > **Relación de confianza para usuario autenticado**.
+2. Busque la aplicación a la que se aplica la nueva regla de acceso. Haga clic con el botón derecho en la aplicación y, luego, seleccione **Editar reglas de notificación**.
+3. Seleccione la pestaña **Reglas de autorización de emisión** y, luego, **Agregar regla**.
+4. En la lista desplegable de plantillas **Regla de notificaciones**, seleccione **Permitir o denegar usuarios según notificación entrante**. Luego, seleccione **Siguiente**.
+5. En el campo **Nombre de regla de notificaciones**, escriba **Permitir acceso desde dispositivos registrados**.
+6. En la lista desplegable **Tipo de notificación entrante**, seleccione **Es usuario registrado**.
+7. En el campo **Valor de notificación entrante**, escriba **true**.
+8. Seleccione el botón de radio **Permitir acceso a usuarios con esta notificación entrante** .
 9. Seleccione **Finalizar** y, luego, **Aplicar**.
-10. Quite las reglas que sean más permisivas que la regla de Hola que ha creado. Por ejemplo, quitar la regla predeterminada de hello **tooall de permitir el acceso a los usuarios**.
+10. Quite todas las reglas que sean más permisivas que la regla que creó. Por ejemplo, quite la regla predeterminada **Permitir acceso a todos los usuarios**.
 
-La aplicación está ahora configurado tooallow acceso solo cuando el usuario de hello procede de un dispositivo que registró y unió al área de trabajo toohello. Para ver directivas de acceso más avanzadas, consulte [Administrar el riesgo con la autenticación multifactor adicional para aplicaciones con información confidencial](https://technet.microsoft.com/library/dn280949.aspx).
+Ahora, la aplicación está configurada para permitir el acceso solo cuando el usuario procede de un dispositivo registrado y unido al área de trabajo. Para ver directivas de acceso más avanzadas, consulte [Administrar el riesgo con la autenticación multifactor adicional para aplicaciones con información confidencial](https://technet.microsoft.com/library/dn280949.aspx).
 
-A continuación, se configura un mensaje de error personalizado para la aplicación. mensaje de error de Hello permite a los usuarios saber que debe unirse al área de trabajo de su toohello de dispositivo antes de que puede tener acceso a la aplicación hello. Puede usar PowerShell y HTML personalizado para crear un mensaje personalizado de acceso denegado a la aplicación.
+A continuación, se configura un mensaje de error personalizado para la aplicación. El mensaje de error notifica a los usuarios que deben unir el dispositivo al área de trabajo antes de que puedan tener acceso a la aplicación. Puede usar PowerShell y HTML personalizado para crear un mensaje personalizado de acceso denegado a la aplicación.
 
-En el servidor de federación, abra una ventana de comandos de PowerShell y, a continuación, escriba el siguiente comando de Hola. Reemplazar partes del comando hello con elementos que el sistema tooyour específica:
+En el servidor de federación, abra una ventana Comandos de PowerShell y, luego, escriba el comando siguiente. Reemplazar partes del comando con elementos específicos de su sistema:
 
     Set-AdfsRelyingPartyWebContent -Name "relying party trust name" -ErrorPageAuthorizationErrorMessage
 Para poder acceder a esta aplicación, debe registrar el dispositivo.
 
-**Si está utilizando un dispositivo iOS, seleccione este vínculo toojoin su dispositivo**:
+**Si usa un dispositivo iOS, seleccione este vínculo para conectarlo**:
 
     a href='https://enterpriseregistration.windows.net/enrollmentserver/otaprofile/yourdomain.com
 
-Únase a esta área de trabajo de tooyour de dispositivo de iOS.
+Una el dispositivo iOS al área de trabajo.
 
 Si usa un dispositivo Windows 8.1, puede conectarlo si selecciona **Configuración de PC**> **Red** > **Área de trabajo**.
 
-Hola anterior comandos, **nombre de confianza de relación de confianza** es Hola nombre del objeto de relación de confianza de la aplicación en AD FS.
-Y **dominio.com** es nombre de dominio de Hola que ha configurado con Azure Active Directory (por ejemplo, contoso.com).
-Ser tooremove seguro de que los saltos de línea (si existe) de hello HTML contenido que pasar toohello **Set-AdfsRelyingPartyWebContent** cmdlet.
+En los comandos anteriores, el **nombre de relación de confianza para usuario autenticado** es el nombre del objeto Relación de confianza para usuario autenticado de la aplicación en AD FS.
+Y **yourdomain.com** es el nombre de dominio que configuró con Azure Active Directory (por ejemplo, contoso.com).
+Asegúrese de quitar los saltos de línea (si existen) del contenido HTML que se pasa al cmdlet **Set-AdfsRelyingPartyWebContent**.
 
-Ahora cuando los usuarios tener acceso a la aplicación desde un dispositivo que no está registrado con el servicio de registro de dispositivos de Azure Active Directory de hello, verán una página que busca la siguiente captura de pantalla de toohello similar.
+Ahora, cuando los usuarios accedan a la aplicación desde un dispositivo que no esté registrado con el servicio de registro de dispositivos de Azure Active Directory, verán una página similar a la captura de pantalla siguiente.
 
 ![Captura de pantalla de un error cuando los usuarios no han registrado su dispositivo con Azure AD](./media/active-directory-conditional-access/error-azureDRS-device-not-registered.gif)
 

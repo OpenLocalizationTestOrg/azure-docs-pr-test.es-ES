@@ -1,6 +1,6 @@
 ---
-title: "clúster de Azure DC/OS aaaManage con la API de REST de maratón | Documentos de Microsoft"
-description: "Implementar el clúster de servicio de contenedor de Azure DC/OS tooan de contenedores mediante Hola API de REST de maratón."
+title: "Administración de un clúster DC/OS de Azure con la API de REST de Marathon | Microsoft Docs"
+description: "Implemente contenedores en un clúster de DC/OS de Azure Container Service mediante la API de REST de Marathon."
 services: container-service
 documentationcenter: 
 author: dlepow
@@ -17,35 +17,35 @@ ms.workload: na
 ms.date: 04/04/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: d926b9b90f5d4eda85a015d9ea0d96fea2c4b566
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 65f8e0170fa7b89162e811a1d5dd58775fd20d7b
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="dcos-container-management-through-hello-marathon-rest-api"></a>Administración de contenedores de DC/OS a través de la API de REST de maratón Hola
-Controlador de dominio/OS proporciona un entorno para implementar y ampliar las cargas de trabajo en clúster, mientras la abstracción de hardware subyacente Hola. Por encima de DC/OS hay un marco que administra la programación y ejecución de cargas de trabajo de proceso. Aunque los marcos están disponibles para muchas cargas de trabajo populares, este documento ofrece una introducción crear y ajustar la escala de las implementaciones de contenedor mediante el uso de API de REST de maratón Hola. 
+# <a name="dcos-container-management-through-the-marathon-rest-api"></a>Administración de contenedores de DC/OS a través de la API de REST de Marathon
+DC/OS proporciona un entorno para implementar y escalar cargas de trabajo agrupadas, al tiempo que reduce el hardware subyacente. Por encima de DC/OS hay un marco que administra la programación y ejecución de cargas de trabajo de proceso. Aunque hay marcos de trabajo disponibles para muchas cargas de trabajo conocidas, este documento es una introducción a la creación y el escalado de implementaciones de contenedor con la API de REST de Marathon. 
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-Antes de trabajar con estos ejemplos, necesita un clúster de DC/OS configurado en el servicio Contenedor de Azure. También necesita clúster de toothis de conectividad remota de toohave. Para obtener más información sobre estos elementos, vea Hola siguientes artículos:
+Antes de trabajar con estos ejemplos, necesita un clúster de DC/OS configurado en el servicio Contenedor de Azure. También debe tener conectividad remota con este clúster. Para más información sobre estos aspectos, consulte los siguientes artículos:
 
 * [Implementación de un clúster del servicio Contenedor de Azure](container-service-deployment.md)
-* [Conexión de clúster del servicio de contenedor de Azure tooan](../container-service-connect.md)
+* [Conexión a un clúster del servicio Contenedor de Azure](../container-service-connect.md)
 
-## <a name="access-hello-dcos-apis"></a>Hola de acceso a las API del controlador de dominio/OS
-Cuando se haya conectado toohello clúster de servicio de contenedor de Azure, puede tener acceso a través del puerto http://localhost:local Hola DC/OS y las API de REST relacionadas. ejemplos de Hello en este documento se supone que está realizando un túnel en el puerto 80. Por ejemplo, se pueden alcanzar los puntos de conexión de maratón hello en URI a partir de `http://localhost/marathon/v2/`. 
+## <a name="access-the-dcos-apis"></a>Acceso a las API de DC/OS
+Una vez conectado al clúster de Azure Container Service, podrá acceder a DC/OS y a las API de REST relacionadas a través de http://localhost:local-port. Los ejemplos de este documento suponen que está realizando la tunelización en el puerto 80. Por ejemplo, a los puntos de conexión de Marathon se puede acceder en los identificadores URI que comienzan por `http://localhost/marathon/v2/`. 
 
-Para obtener más información sobre Hola varias API, consulte la documentación de Mesosphere de Hola de hello [API maratón](https://mesosphere.github.io/marathon/docs/rest-api.html) y [Chronos API](https://mesos.github.io/chronos/docs/api.html)y la documentación de Apache de hello [Mesos API del programador ](http://mesos.apache.org/documentation/latest/scheduler-http-api/).
+Para más información sobre las diferentes API, consulte la documentación de Mesosphere sobre [Marathon API](https://mesosphere.github.io/marathon/docs/rest-api.html) y [Chronos API](https://mesos.github.io/chronos/docs/api.html), así como la documentación de Apache sobre [Mesos Scheduler API](http://mesos.apache.org/documentation/latest/scheduler-http-api/).
 
 ## <a name="gather-information-from-dcos-and-marathon"></a>Recopilación de información de DC/OS y Marathon
-Antes de implementar el clúster de contenedores toohello DC/OS, recopilar información sobre clústeres de DC/OS hello, como nombres de Hola y el estado de los agentes de Hola DC/OS. toodo por lo tanto, consultar hello `master/slaves` punto de conexión de hello API de REST de DC/OS. Si todo va bien, consulta Hola devuelve una lista de agentes de DC/OS y varias propiedades para cada uno.
+Antes de implementar contenedores en el clúster de DC/OS, recopile información sobre él, como los nombres y el estado de los agentes de DC/OS. Para ello, consulte el punto de conexión `master/slaves` de la API de REST de DC/OS. Si todo va bien, la consulta devuelve una lista de agentes de DC/OS y varias propiedades de cada uno de ellos.
 
 ```bash
 curl http://localhost/mesos/master/slaves
 ```
 
-Ahora, utilice Hola maratón `/apps` toocheck de punto de conexión de clúster de DC/OS de toohello de las implementaciones de aplicación actual. Si se trata de un nuevo clúster, verá una matriz vacía para las aplicaciones.
+Ahora, utilice el punto de conexión `/apps` de Marathon para buscar las implementaciones actuales de aplicaciones en el clúster de DC/OS. Si se trata de un nuevo clúster, verá una matriz vacía para las aplicaciones.
 
 ```bash
 curl localhost/marathon/v2/apps
@@ -54,7 +54,7 @@ curl localhost/marathon/v2/apps
 ```
 
 ## <a name="deploy-a-docker-formatted-container"></a>Implementación de un contenedor con formato Docker
-Implementar contenedores con Docker formato a través de la API de REST de maratón hello mediante un archivo JSON que describe la implementación de hello prevista. Hello en el ejemplo siguiente implementa a un agente Nginx contenedor tooa privado en clúster de Hola. 
+Los contenedores con formato Docker se implementan a través de la API de REST de Marathon mediante un archivo JSON que describe la implementación deseada. El ejemplo siguiente implementa un contenedor de Nginx en un agente privado del clúster. 
 
 ```json
 {
@@ -75,42 +75,42 @@ Implementar contenedores con Docker formato a través de la API de REST de marat
 }
 ```
 
-toodeploy un contenedor con formato Docker, almacene el archivo JSON de hello en una ubicación accesible. Contenedor siguiente, de hello toodeploy, ejecute el siguiente comando de Hola. Especificar nombre de hello del archivo JSON de hello (`marathon.json` en este ejemplo).
+Para implementar un contenedor con formato Docker, almacene el archivo JSON en una ubicación a la que se pueda accesible. A continuación, ejecute el siguiente comando para implementar el contenedor. Especifique el nombre del archivo JSON (`marathon.json` en este ejemplo).
 
 ```bash
 curl -X POST http://localhost/marathon/v2/apps -d @marathon.json -H "Content-type: application/json"
 ```
 
-salida de Hello es siguiente de toohello similar:
+La salida será similar a la siguiente:
 
 ```json
 {"version":"2015-11-20T18:59:00.494Z","deploymentId":"b12f8a73-f56a-4eb1-9375-4ac026d6cdec"}
 ```
 
-Ahora, si consulta maratón para las aplicaciones, esta nueva aplicación aparece en la salida de hello.
+Ahora, si consulta Marathon sobre las aplicaciones, esta nueva aplicación se muestra en el resultado.
 
 ```bash
 curl localhost/marathon/v2/apps
 ```
 
-## <a name="reach-hello-container"></a>Alcanzar contenedor Hola
+## <a name="reach-the-container"></a>Cobertura del contenedor
 
-Puede comprobar que hello que nginx se ejecuta en un contenedor en uno de los agentes privados de hello en clúster de Hola. host de hello toofind y el puerto donde se está ejecutando el contenedor de hello, consultar maratón hello las tareas en ejecución: 
+Puede comprobar que Nginx se ejecuta en un contenedor de uno de los agentes privados del clúster. Para buscar el host y el puerto donde se ejecuta el contenedor, consulte estas tareas de ejecución en Marathon: 
 
 ```bash
 curl localhost/marathon/v2/tasks
 ```
 
-Busca el valor de Hola de `host` en la salida de hello (una dirección IP similar demasiado`10.32.0.x`) y el valor de Hola de `ports`.
+Busque el valor de `host` en el resultado (una dirección IP similar a `10.32.0.x`) y el valor de `ports`.
 
 
-Ahora, realizar una administración de toohello de conexión de terminal (no una conexión de túnel) SSH FQDN de clúster de Hola. Una vez conectado, asegúrese de hello después de la solicitud, sustituyendo los valores correctos de Hola de `host` y `ports`:
+Ahora puede realizar una conexión de terminal de SSH (no una conexión de túnel) en el FQDN de administración del clúster. Una vez conectado, sustituya los valores correctos de `host` y `ports`, y realice esta solicitud:
 
 ```bash
 curl http://host:ports
 ```
 
-Hola Nginx salida de servidor es similar a continuación toohello:
+La salida del servidor de Nginx es similar a la siguiente:
 
 ![Nginx desde el contenedor](./media/container-service-mesos-marathon-rest/nginx.png)
 
@@ -118,16 +118,16 @@ Hola Nginx salida de servidor es similar a continuación toohello:
 
 
 ## <a name="scale-your-containers"></a>Escalado de los contenedores
-Puede usar Hola maratón API tooscale out o escala en las implementaciones de aplicaciones. En el ejemplo anterior de hello, ha implementado una instancia de una aplicación. Vamos a ajustar el tamaño toothree instancias de una aplicación. toodo por lo tanto, crear un archivo JSON mediante Hola después de texto JSON y almacenarla en una ubicación accesible.
+La API de Marathon se puede utilizar para escalar horizontalmente implementaciones de aplicaciones o reducirlas horizontalmente. En el ejemplo anterior, ha implementado una instancia de una aplicación. Vamos a escalarla horizontalmente a tres instancias de una aplicación. Para ello, cree un archivo JSON mediante el siguiente texto JSON y almacénelo en una ubicación accesible.
 
 ```json
 { "instances": 3 }
 ```
 
-Desde la conexión de túnel, ejecute hello después tooscale comando aplicación Hola.
+Desde la conexión de túnel, ejecute el comando siguiente para escalar la aplicación horizontalmente.
 
 > [!NOTE]
-> Hola URI es http://localhost/marathon/v2/apps/ seguido por Id. de Hola de hello tooscale de aplicación. Si utilizas muestra de Hola a Nginx que se proporciona aquí, Hola URI sería http://localhost/marathon/v2/apps/nginx.
+> El identificador URI es http://localhost/marathon/v2/apps/, seguido del identificador de la aplicación que se va a escalar. Si utiliza el ejemplo de Nginx que se incluye aquí, el identificador URI sería http://localhost/marathon/v2/apps/nginx.
 > 
 > 
 
@@ -135,7 +135,7 @@ Desde la conexión de túnel, ejecute hello después tooscale comando aplicació
 curl http://localhost/marathon/v2/apps/nginx -H "Content-type: application/json" -X PUT -d @scale.json
 ```
 
-Por último, consultar punto de conexión de hello maratón para las aplicaciones. Verá que ahora hay tres contenedores de Nginx.
+Por último, consulte el punto de conexión de Marathon para las aplicaciones. Verá que ahora hay tres contenedores de Nginx.
 
 ```bash
 curl localhost/marathon/v2/apps
@@ -144,13 +144,13 @@ curl localhost/marathon/v2/apps
 ## <a name="equivalent-powershell-commands"></a>Comandos de PowerShell equivalentes
 Puede realizar las mismas acciones mediante comandos de PowerShell en un sistema Windows.
 
-toogather información sobre clústeres de DC/OS hello, como nombres de agente y el estado del agente, ejecute hello siguiente comando:
+Para recopilar información sobre el clúster de DC/OS, como los nombres y los estados de los agentes, ejecute el siguiente comando:
 
 ```powershell
 Invoke-WebRequest -Uri http://localhost/mesos/master/slaves
 ```
 
-Implementar contenedores con Docker formato a través de maratón mediante un archivo JSON que describe la implementación de hello prevista. Hello en el ejemplo siguiente implementa contenedor Nginx de hello, enlazar el puerto 80 de Hola DC/OS agente tooport 80 del contenedor de Hola.
+Los contenedores con formato Docker se implementan a través de Marathon mediante un archivo JSON que describe la implementación deseada. En el ejemplo siguiente, se implementa el contenedor Nginx y se enlaza el puerto 80 del agente de DC/OS al puerto 80 del contenedor.
 
 ```json
 {
@@ -171,22 +171,22 @@ Implementar contenedores con Docker formato a través de maratón mediante un ar
 }
 ```
 
-toodeploy un contenedor con formato Docker, almacene el archivo JSON de hello en una ubicación accesible. Contenedor siguiente, de hello toodeploy, ejecute el siguiente comando de Hola. Especificar archivo JSON de toohello de ruta de acceso de hello (`marathon.json` en este ejemplo).
+Para implementar un contenedor con formato Docker, almacene el archivo JSON en una ubicación a la que se pueda accesible. A continuación, ejecute el siguiente comando para implementar el contenedor. Especifique la ruta del archivo JSON (`marathon.json` de este ejemplo).
 
 ```powershell
 Invoke-WebRequest -Method Post -Uri http://localhost/marathon/v2/apps -ContentType application/json -InFile 'c:\marathon.json'
 ```
 
-También puede utilizar Hola maratón API tooscale out o escala en las implementaciones de aplicaciones. En el ejemplo anterior de hello, ha implementado una instancia de una aplicación. Vamos a ajustar el tamaño toothree instancias de una aplicación. toodo por lo tanto, crear un archivo JSON mediante Hola después de texto JSON y almacenarla en una ubicación accesible.
+La API de Marathon también se puede utilizar para escalar horizontalmente implementaciones de aplicaciones o reducirlas horizontalmente. En el ejemplo anterior, ha implementado una instancia de una aplicación. Vamos a escalarla horizontalmente a tres instancias de una aplicación. Para ello, cree un archivo JSON mediante el siguiente texto JSON y almacénelo en una ubicación accesible.
 
 ```json
 { "instances": 3 }
 ```
 
-Siguiente ejecución Hola comando tooscale aplicación Hola:
+Ejecute el comando siguiente para escalar la aplicación horizontalmente:
 
 > [!NOTE]
-> Hola URI es http://localhost/marathon/v2/apps/ seguido por Id. de Hola de hello tooscale de aplicación. Si utilizas ejemplo de Hola Nginx proporcionado aquí, Hola URI sería http://localhost/marathon/v2/apps/nginx.
+> El identificador URI es http://localhost/marathon/v2/apps/, seguido del identificador de la aplicación que se va a escalar. Si utiliza el ejemplo de Nginx que se incluye aquí, el identificador URI sería http://localhost/marathon/v2/apps/nginx.
 > 
 > 
 
@@ -195,6 +195,6 @@ Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -Cont
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-* [Obtenga más información acerca de los puntos de conexión de hello Mesos HTTP](http://mesos.apache.org/documentation/latest/endpoints/)
-* [Obtenga más información acerca de la API de REST de maratón Hola](https://mesosphere.github.io/marathon/docs/rest-api.html)
+* [Más información acerca de los puntos de conexión HTTP de Mesos](http://mesos.apache.org/documentation/latest/endpoints/)
+* [Más información acerca de la API de REST de Marathon](https://mesosphere.github.io/marathon/docs/rest-api.html)
 

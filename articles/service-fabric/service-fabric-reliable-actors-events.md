@@ -1,6 +1,6 @@
 ---
-title: aaaEvents en microservicios Azure basado en actores | Documentos de Microsoft
-description: "Introducción tooevents de Reliable Actors de tejido de servicio."
+title: Eventos en microservicios de Azure basados en actores | Microsoft Docs
+description: "Introducción a los eventos de Reliable Actors de Service Fabric."
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/13/2017
 ms.author: amanbha
-ms.openlocfilehash: a51e41c35441a5fea508138968b36a35f0ba6699
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d936670c548ff709fc2e935d3f28d94e4bde8a04
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="actor-events"></a>Eventos de actor
-Eventos de actor proporcionan un notificaciones de mejor esfuerzo de toosend de forma de los clientes de hello actor toohello. Los eventos de actor están diseñados para la comunicación entre actor y cliente, y no deben usarse para una comunicación entre actores.
+Los eventos de actor ofrecen una manera de enviar notificaciones de mejor esfuerzo del actor a los clientes. Los eventos de actor están diseñados para la comunicación entre actor y cliente, y no deben usarse para una comunicación entre actores.
 
-Mostrar fragmentos de código siguiente Hola cómo toouse eventos de actor en la aplicación.
+Los fragmentos de código siguientes muestran cómo usar los eventos de actor en una aplicación.
 
-Defina una interfaz que describe eventos de hello publicados por actor Hola. Esta interfaz se debe derivar de hello `IActorEvents` interfaz. Hola argumentos de métodos de hello deben ser [serializable de contrato de datos](service-fabric-reliable-actors-notes-on-actor-type-serialization.md). Hola métodos deben devolver void, como evento de las notificaciones son una forma y esfuerzo.
+Defina una interfaz que describa los eventos publicados por el actor. Esta interfaz debe derivarse de la interfaz `IActorEvents` . Los argumentos de los métodos deben ser [serializable de contratos de datos](service-fabric-reliable-actors-notes-on-actor-type-serialization.md). Los métodos deben devolver void, ya que las notificaciones de eventos son unidireccionales y de mejor esfuerzo.
 
 ```csharp
 public interface IGameEvents : IActorEvents
@@ -39,7 +39,7 @@ public interface GameEvents implements ActorEvents
     void gameScoreUpdated(UUID gameId, String currentScore);
 }
 ```
-Declare los eventos de hello publicados por actor de hello en la interfaz de actor Hola.
+Declare los eventos publicados por el actor en la interfaz del actor.
 
 ```csharp
 public interface IGameActor : IActor, IActorEventPublisher<IGameEvents>
@@ -57,7 +57,7 @@ public interface GameActor extends Actor, ActorEventPublisherE<GameEvents>
     CompletableFuture<String> getGameScore();
 }
 ```
-En el lado del cliente hello, implemente el controlador de eventos de Hola.
+En el lado cliente, implemente el controlador de eventos.
 
 ```csharp
 class GameEventsHandler : IGameEvents
@@ -78,7 +78,7 @@ class GameEventsHandler implements GameEvents {
 }
 ```
 
-En el cliente de hello, cree un actor de toohello de proxy que publica los eventos de Hola y suscribirán eventos tooits.
+En el cliente, cree un proxy para el actor que publica el evento y suscríbase a sus eventos.
 
 ```csharp
 var proxy = ActorProxy.Create<IGameActor>(
@@ -93,9 +93,9 @@ GameActor actorProxy = ActorProxyBase.create<GameActor>(GameActor.class, new Act
 return ActorProxyEventUtility.subscribeAsync(actorProxy, new GameEventsHandler());
 ```
 
-En caso de hello de conmutaciones por error, actor Hola puede conmutar por error tooa otro proceso o nodo. proxy de actor Hola administra suscripciones activas de Hola y automáticamente volver a suscribe ellos. Puede controlar el intervalo de saludo nueva suscripción a través de Hola `ActorProxyEventExtensions.SubscribeAsync<TEvent>` API. toounsubscribe, use hello `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` API.
+Si se producen conmutaciones por error, el actor puede realizar una conmutación por error a un nodo o proceso diferentes. El proxy del actor administra las suscripciones activas y las vuelve a suscribir automáticamente. Puede controlar el intervalo de suscribir nuevamente mediante la API `ActorProxyEventExtensions.SubscribeAsync<TEvent>` . Para cancelar la suscripción, use la API `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` .
 
-En actor hello, simplemente tiene que publicar eventos de hello cuando se producen. Si hay eventos de toohello de los suscriptores, en tiempo de ejecución de hello actores les enviará Hola notificación.
+En el actor, simplemente publique los eventos cuando se produzcan. Si hay suscriptores del evento, el tiempo de ejecución de los actores les enviará la notificación.
 
 ```csharp
 var ev = GetEvent<IGameEvents>();

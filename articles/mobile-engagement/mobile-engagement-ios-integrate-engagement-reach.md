@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure integración con alcanzar el SDK de Mobile Engagement iOS | Documentos de Microsoft"
+title: "Integración de la cobertura del SDK de iOS de Azure Mobile Engagement | Microsoft Docs"
 description: "Actualizaciones y procedimientos más recientes para el SDK de iOS para Azure Mobile Engagement"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,16 +14,16 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 12/13/2016
 ms.author: piyushjo
-ms.openlocfilehash: 40c9bfbdb475ab0b97bdbc9cea798a59cb8a71ac
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ba74e0c442ac10f096d465f989e03d2ceae8cd88
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-toointegrate-engagement-reach-on-ios"></a>Cómo tooIntegrate interacción a en iOS
-Debe seguir el procedimiento de integración de hello descrito en hello [cómo tooIntegrate interacción en el documento de iOS](mobile-engagement-ios-integrate-engagement.md) antes de seguir esta guía.
+# <a name="how-to-integrate-engagement-reach-on-ios"></a>Cómo integrar la cobertura de Engagement en iOS
+Debe seguir el procedimiento de integración que se describe en el documento [Integración de Engagement en iOS](mobile-engagement-ios-integrate-engagement.md) antes de seguir esta guía.
 
-Esta documentación requiere XCode 8. Si realmente dependen XCode 7, a continuación, puede usar hello [iOS Engagement SDK v3.2.4](https://aka.ms/r6oouh). Existe un problema conocido en esta versión anterior cuando se ejecuta en dispositivos iOS 10: las notificaciones del sistema no se ejecutan. toofix esto tendrá tooimplement hello en desuso API `application:didReceiveRemoteNotification:` en la aplicación el delegado como sigue:
+Esta documentación requiere XCode 8. Si realmente depende de XCode 7, puede usar el [SDK v3.2.4 de Engagement para iOS](https://aka.ms/r6oouh). Existe un problema conocido en esta versión anterior cuando se ejecuta en dispositivos iOS 10: las notificaciones del sistema no se ejecutan. Para solucionarlo, tendrá que implementar la API `application:didReceiveRemoteNotification:` en desuso en su delegado de aplicación de la manera siguiente:
 
     - (void)application:(UIApplication*)application
     didReceiveRemoteNotification:(NSDictionary*)userInfo
@@ -32,23 +32,23 @@ Esta documentación requiere XCode 8. Si realmente dependen XCode 7, a continuac
     }
 
 > [!IMPORTANT]
-> **No se recomienda esta solución** ya que este comportamiento puede cambiar en la próxima actualización de la versión de iOS (por menor que sea) porque esta API de iOS está en desuso. Debería pasar tooXCode 8 tan pronto como sea posible.
+> **No se recomienda esta solución** ya que este comportamiento puede cambiar en la próxima actualización de la versión de iOS (por menor que sea) porque esta API de iOS está en desuso. Debe cambiar a XCode 8 tan pronto como sea posible.
 >
 >
 
-### <a name="enable-your-app-tooreceive-silent-push-notifications"></a>Habilitar la tooreceive aplicación silenciosa de las notificaciones de inserción
+### <a name="enable-your-app-to-receive-silent-push-notifications"></a>Habilitación de la aplicación para recibir notificaciones push silenciosas
 [!INCLUDE [mobile-engagement-ios-silent-push](../../includes/mobile-engagement-ios-silent-push.md)]
 
 ## <a name="integration-steps"></a>Pasos de integración
-### <a name="embed-hello-engagement-reach-sdk-into-your-ios-project"></a>Incrustar Hola interacción Reach SDK en el proyecto de iOS
-* Agregar sdk de alcance de hello en el proyecto de Xcode. En Xcode, vaya demasiado**proyecto \> agregar tooproject** y elija hello `EngagementReach` carpeta.
+### <a name="embed-the-engagement-reach-sdk-into-your-ios-project"></a>Inserte el SDK de cobertura de Engagement en su proyecto de iOS
+* Agregue el sdk de cobertura en su proyecto de Xcode. En Xcode, vaya a **Proyecto \>Agregar a un proyecto** y elija la carpeta `EngagementReach`.
 
 ### <a name="modify-your-application-delegate"></a>Modifique su delegado de la aplicación
-* Hola parte superior de su archivo de implementación, importe el módulo de llegar a la interacción de hello:
+* En la parte superior del archivo de implementación, importe el módulo de cobertura de Engagement:
 
       [...]
       #import "AEReachModule.h"
-* Método `applicationDidFinishLaunching:` o `application:didFinishLaunchingWithOptions:`, cree un módulo de reach y páselo tooyour línea de inicialización de contratación existente:
+* Dentro del método `applicationDidFinishLaunching:` o `application:didFinishLaunchingWithOptions:`, cree un módulo de cobertura y páselo a la línea existente de inicialización de Engagement:
 
       - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         AEReachModule* reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
@@ -57,14 +57,14 @@ Esta documentación requiere XCode 8. Si realmente dependen XCode 7, a continuac
 
         return YES;
       }
-* Modificar **'icon.png'** cadena con el nombre de la imagen de Hola que desee utilizar como icono de la notificación.
-* Si desea que la opción de hello toouse *valor del distintivo actualización* en las campañas de cobertura o si desea que la inserción nativa toouse \<nativa y formato de SaaS/alcance API/campaña de inserción\> campañas, debe dejar que módulo de Reach Hola administre Hola distintivo propio icono (se borrará automáticamente distintivo de la aplicación de Hola y también restablece el valor de hello almacenado interacción cada vez aplicación hello se inició o foregrounded). Esto se realiza mediante la adición de hello después de línea después de la inicialización del módulo de Reach:
+* Modifique la cadena **'icon.png'** con el nombre de la imagen que desee como icono de la notificación.
+* Si desea utilizar la opción *Actualizar valor de notificación* en las campañas de cobertura o si desea usar campañas de inserción nativa \</SaaS/Reach API/Campaign format/Native Push\>, deberá permitir que el módulo de cobertura administre el propio icono de la notificación (borrará automáticamente la notificación de la aplicación y también restablecerá el valor almacenado por Engagement cada vez que se inicie o establezca la aplicación en primer plano). Para ello, agregue la línea siguiente después de la inicialización del módulo de cobertura:
 
       [reach setAutoBadgeEnabled:YES];
-* Si desea que la inserción de datos de cobertura de toohandle, debe permitir que el delegado de la aplicación se ajustan toohello `AEReachDataPushDelegate` protocolo. Agregue Hola después de línea después de la inicialización del módulo de alcance:
+* Si desea controlar la inserción de datos de cobertura, debe permitir que el delegado de la aplicación se ajuste al protocolo `AEReachDataPushDelegate` . Agregue la siguiente línea después de la inicialización del módulo de alcance:
 
       [reach setDataPushDelegate:self];
-* A continuación, puede implementar métodos de hello `onDataPushStringReceived:` y `onDataPushBase64ReceivedWithDecodedBody:andEncodedBody:` en el delegado de aplicación:
+* A continuación, puede implementar los métodos `onDataPushStringReceived:` y `onDataPushBase64ReceivedWithDecodedBody:andEncodedBody:` en el delegado de la aplicación:
 
       -(BOOL)didReceiveStringDataPushWithCategory:(NSString*)category body:(NSString*)body
       {
@@ -80,27 +80,27 @@ Esta documentación requiere XCode 8. Si realmente dependen XCode 7, a continuac
       }
 
 ### <a name="category"></a>Categoría
-parámetro de categoría de Hello es opcional cuando se crea una campaña de inserción de datos y permite que los datos de toofilter inserta. Esto es útil si desea que toopush diferentes tipos de `Base64` tooidentify de datos y quiere que su tipo antes del análisis de ellos.
+El parámetro de categoría es opcional cuando se crea una campaña de inserción de datos y permite filtrar los datos que inserta. Esto es útil si desea insertar distintos tipos de datos `Base64` y desea identificar su tipo antes de analizarlos.
 
-**La aplicación es ahora la presentación y listo tooreceive alcanzar el contenido.**
+**La aplicación ya está lista para recibir y mostrar el contenido de la cobertura.**
 
-## <a name="how-tooreceive-announcements-and-polls-at-any-time"></a>¿Cómo tooreceive sondeos en cualquier momento y anuncios
-Interacción puede enviar notificaciones de alcance a los usuarios finales de tooyour en cualquier momento mediante Hola servicio de notificaciones Push de Apple.
+## <a name="how-to-receive-announcements-and-polls-at-any-time"></a>Cómo recibir anuncios y sondeos en cualquier momento
+Engagement puede enviar notificaciones de cobertura a los usuarios finales en cualquier momento utilizando el servicio de notificación de inserción de Apple.
 
-tooenable esta funcionalidad, deberá tener tooprepare la aplicación para notificaciones de inserción de Apple y modificar el delegado de la aplicación.
+Para habilitar esta funcionalidad, tendrá que preparar su aplicación para notificaciones de inserción de Apple y modificar al delegado de la aplicación.
 
 ### <a name="prepare-your-application-for-apple-push-notifications"></a>Preparar la aplicación para notificaciones de inserción de Apple
-Siga la Guía de hello: [cómo tooPrepare la aplicación para notificaciones Push de Apple](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html#//apple_ref/doc/uid/TP40012582-CH26-SW6)
+Siga la guía indicada a continuación: [Cómo preparar la aplicación para las notificaciones de inserción de Apple](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html#//apple_ref/doc/uid/TP40012582-CH26-SW6)
 
-### <a name="add-hello-necessary-client-code"></a>Agregar código de cliente necesario Hola
-*En este momento la aplicación debe tener un certificado de inserción de Apple registrado en el front-end de hello interacción.*
+### <a name="add-the-necessary-client-code"></a>Agregue el código de cliente necesario
+*En este momento la aplicación debe tener un certificado de inserción de Apple registrado en el frontend de Engagement.*
 
-Si ya no es así, deberá tooregister las notificaciones de inserción de tooreceive de aplicación.
+Si no lo ha hecho ya, deberá registrar su aplicación para recibir notificaciones de inserción.
 
-* Hola de importación `User Notification` framework:
+* Importe la plataforma `User Notification` :
 
         #import <UserNotifications/UserNotifications.h>
-* Agregar Hola siguientes línea cuando se inicia la aplicación (normalmente, en `application:didFinishLaunchingWithOptions:`):
+* Agregue la siguiente línea al iniciarse la aplicación (normalmente, en `application:didFinishLaunchingWithOptions:`):
 
         if (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_8_0)
         {
@@ -118,14 +118,14 @@ Si ya no es así, deberá tooregister las notificaciones de inserción de toorec
             [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
         }
 
-A continuación, deberá token del dispositivo tooprovide tooEngagement Hola devuelta por servidores de Apple. Esto se hace en el método hello denominado `application:didRegisterForRemoteNotificationsWithDeviceToken:` en el delegado de aplicación:
+A continuación, deberá proporcionar a Engagement el token de dispositivo devuelto por servidores de Apple. Esto se hace en el método llamado `application:didRegisterForRemoteNotificationsWithDeviceToken:` del delegado de aplicación:
 
     - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken
     {
         [[EngagementAgent shared] registerDeviceToken:deviceToken];
     }
 
-Por último, tendrá tooinform Hola Engagement SDK cuando la aplicación recibe una notificación remota. Hola a toodo que llame al método `applicationDidReceiveRemoteNotification:fetchCompletionHandler:` en el delegado de aplicación:
+Por último, debe informar al SDK de Engagement cuando la aplicación reciba una notificación remota. Para ello, simplemente llame al método `applicationDidReceiveRemoteNotification:fetchCompletionHandler:` en el delegado de aplicación:
 
     - (void)application:(UIApplication*)application didReceiveRemoteNotification:(NSDictionary*)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler
     {
@@ -133,7 +133,7 @@ Por último, tendrá tooinform Hola Engagement SDK cuando la aplicación recibe 
     }
 
 > [!IMPORTANT]
-> De forma predeterminada, interacción alcanzar controla completionHandler Hola. Si desea que toomanually responden toohello `handler` un bloqueo en el código, puede pasar nulo para hello `handler` bloquear el argumento y el control de finalización de hello usted mismo. Vea hello `UIBackgroundFetchResult` tipo para obtener una lista de valores posibles.
+> De forma predeterminada, Engagement Reach controla completionHandler. Si desea responder manualmente al bloque `handler` del código, se puede pasar nil para el argumento `handler` y controlar el bloque de finalización personalmente. Consulte el tipo `UIBackgroundFetchResult` para obtener una lista de valores posibles.
 >
 >
 
@@ -175,11 +175,11 @@ Este es un ejemplo completo de integración:
 
 *Si ni la aplicación ni una de las bibliotecas de terceros implementa `UNUserNotificationCenterDelegate`, puede pasar por alto esta parte.*
 
-Un `UNUserNotificationCenter` delegado es utilizado por el ciclo de vida de hello SDK toomonitor Hola de notificaciones de interacción en dispositivos que ejecutan en iOS 10 o superior. Hola SDK tiene su propia implementación de hello `UNUserNotificationCenterDelegate` de protocolo, pero puede haber solo un `UNUserNotificationCenter` delegar por aplicación. Cualquier otro delegado agrega toohello `UNUserNotificationCenter` objeto entrarán en conflicto con hello interacción uno. Si Hola SDK detecta a delegado su o cualquier otro de terceros no usará su propio toogive de implementación, una posibilidad tooresolve Hola conflictos. Tendrá tooadd Hola interacción lógica tooyour posee conflictos de hello tooresolve de delegado en orden.
+El SDK usa un delegado de `UNUserNotificationCenter` para supervisar el ciclo de vida de las notificaciones de Engagement en dispositivos que se ejecutan en iOS 10 o superior. El SDK tiene su propia implementación del protocolo `UNUserNotificationCenterDelegate`, pero solo puede haber un delegado de `UNUserNotificationCenter` por aplicación. Cualquier otro delegado que se agrega al objeto `UNUserNotificationCenter` entrará en conflicto con Engagement. Si el SDK detecta su delegado o cualquier otro de terceros, no usará su propia implementación para ofrecerle una oportunidad de resolver los conflictos. Tendrá que agregar la lógica de Engagement a su propio delegado con el fin de resolver los conflictos.
 
-Hay dos tooachieve formas esto.
+Hay dos formas de hacerlo:
 
-Propuesta 1, enviando el delegado llama toohello SDK:
+Propuesta 1: reenviar las llamadas del delegado al SDK:
 
     #import <UIKit/UIKit.h>
     #import "EngagementAgent.h"
@@ -206,7 +206,7 @@ Propuesta 1, enviando el delegado llama toohello SDK:
     }
     @end
 
-O propuesta 2, heredando de hello `AEUserNotificationHandler` (clase)
+O propuesta 2: heredándola de la clase `AEUserNotificationHandler`.
 
     #import "AEUserNotificationHandler.h"
     #import "EngagementAgent.h"
@@ -233,10 +233,10 @@ O propuesta 2, heredando de hello `AEUserNotificationHandler` (clase)
     @end
 
 > [!NOTE]
-> Puede determinar si una notificación pueden proceder de contratación o no pasando su `userInfo` diccionario toohello agente `isEngagementPushPayload:` método de la clase.
+> Puede determinar si una notificación proviene de Engagement o no pasando su diccionario `userInfo` al método de clase `isEngagementPushPayload:` del agente.
 
-Asegúrese de que ese hello `UNUserNotificationCenter` delegado del objeto se establece el delegado tooyour dentro de cualquier hello `application:willFinishLaunchingWithOptions:` o hello `application:didFinishLaunchingWithOptions:` método de delegado de la aplicación.
-Por ejemplo, si implementa Hola anteriormente propuesta 1:
+Asegúrese de que el delegado del objeto `UNUserNotificationCenter` se establece en su delegado en los métodos `application:willFinishLaunchingWithOptions:` o `application:didFinishLaunchingWithOptions:` del delegado de aplicación.
+Por ejemplo, si implementa la propuesta anterior 1:
 
       - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         // Any other code
@@ -245,33 +245,33 @@ Por ejemplo, si implementa Hola anteriormente propuesta 1:
         return YES;
       }
 
-## <a name="how-toocustomize-campaigns"></a>Cómo las campañas de toocustomize
+## <a name="how-to-customize-campaigns"></a>Personalización de las campañas
 ### <a name="notifications"></a>Notificaciones
 Hay dos tipos de notificaciones: las notificaciones del sistema y de aplicaciones.
 
 Las notificaciones del sistema se controlan con iOS y no se pueden personalizar.
 
-Se realizan en la aplicación notificaciones de una vista que se agrega dinámicamente toohello ventana actual de la aplicación. Esto se denomina superposición de notificaciones. Superposiciones de notificación son excelentes para una integración rápida porque no requieren toomodify cualquier vista de la aplicación.
+Las notificaciones de las aplicaciones se realizan con una vista que se agrega dinámicamente a la ventana de la aplicación actual. Esto se denomina superposición de notificaciones. Las superposiciones de notificaciones son ideales para una integración rápida porque no requieren que modifique cualquier vista de la aplicación.
 
 #### <a name="layout"></a>Diseño
-visión de hello toomodify de las notificaciones de la aplicación, simplemente puede modificar archivo hello `AENotificationView.xib` tooyour necesita, como conservar los valores de etiqueta de Hola y tipos de subvistas existente Hola.
+Para modificar la apariencia de las notificaciones de la aplicación, simplemente puede modificar el archivo `AENotificationView.xib` de acuerdo con sus necesidades, siempre y cuando mantenga los valores de las etiquetas y los tipos de las subvistas existentes.
 
-De forma predeterminada, las notificaciones de la aplicación se muestran en la parte inferior de Hola de pantalla de bienvenida. Si prefiere toodisplay proporcionan estos en la parte superior de Hola de pantalla, editar hello `AENotificationView.xib` y cambiar hello `AutoSizing` propiedad de la vista principal de Hola por lo que se pueden guardar en parte superior de Hola de su supervista.
+De forma predeterminada, las notificaciones de aplicaciones se presentan en la parte inferior de la pantalla. Si prefiere mostrarlas en la parte superior de la pantalla, edite las `AENotificationView.xib` proporcionadas y cambie la propiedad `AutoSizing` de la vista principal para mantenerla en la parte superior de la supervista.
 
 #### <a name="categories"></a>Categorías
-Cuando se modifica Hola proporcionada diseño, modificar aspecto de Hola de todas las notificaciones. Las categorías permiten toodefine que distintos destino busca (posiblemente comportamientos) para las notificaciones. Las categorías pueden especificarse cuando se crea una campaña de cobertura. Tenga en cuenta que las categorías también permiten personalizar anuncios y sondeos, aspectos que se describen más adelante en este documento.
+Cuando se modifica el diseño proporcionado, se modifica el aspecto de todas las notificaciones. Las categorías permiten definir varios destinos objetivo (posiblemente comportamientos) para las notificaciones. Las categorías pueden especificarse cuando se crea una campaña de cobertura. Tenga en cuenta que las categorías también permiten personalizar anuncios y sondeos, aspectos que se describen más adelante en este documento.
 
-tooregister un controlador de categoría para las notificaciones, debe tooadd una llamada una vez Hola llegan módulo se inicializa.
+Para registrar un controlador de categoría para las notificaciones, deberá agregar una llamada una vez inicializado el módulo de cobertura.
 
     AEReachModule* reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
     [reach registerNotifier:myNotifier forCategory:@"my_category"];
     ...
 
-`myNotifier`debe ser una instancia de un objeto que se ajusta toohello protocolo `AENotifier`.
+`myNotifier` debe ser una instancia de un objeto que se ajusta al protocolo `AENotifier`.
 
-Puede implementar métodos de protocolo de Hola por usted mismo o puede elegir la clase existente de hello tooreimplement `AEDefaultNotifier` ya que realiza la mayor parte del trabajo de Hola.
+Puede implementar los métodos de protocolo por sí mismo o puede volver a implementar la clase existente `AEDefaultNotifier` que ya realiza la mayoría del trabajo.
 
-Por ejemplo, si desea vista de notificaciones de hello tooredefine para una categoría específica, puede seguir este ejemplo:
+Por ejemplo, si desea volver a definir la vista de notificación para una categoría específica, puede seguir este ejemplo:
 
     #import "AEDefaultNotifier.h"
     #import "AENotificationView.h"
@@ -287,89 +287,89 @@ Por ejemplo, si desea vista de notificaciones de hello tooredefine para una cate
 
     @end
 
-En este ejemplo simple de categoría, se supone que tiene un archivo denominado `MyNotificationView.xib` en el paquete de aplicación principal. Si el método hello no es capaz de toofind correspondiente `.xib`, no se mostrará la notificación de Hola y contratación dará como resultado un mensaje en la consola de Hola.
+En este ejemplo simple de categoría, se supone que tiene un archivo denominado `MyNotificationView.xib` en el paquete de aplicación principal. Si el método no es capaz de encontrar un `.xib`correspondiente, no se mostrará la notificación y Engagement mostrará un mensaje en la consola.
 
-archivo nib de Hello proporcionado debe respetar Hola siguiendo las reglas:
+El archivo nib proporcionado debe respetar las siguientes reglas:
 
 * Solo debe contener una vista.
-* Deben ser subvistas de hello mismo tipos como Hola aquellos dentro de hello proporciona nib archivo denominado`AENotificationView.xib`
-* Subvistas deben tener Hola mismo etiquetas como Hola aquellos dentro de hello proporciona nib archivo denominado`AENotificationView.xib`
+* Las subvistas deben ser de los mismos tipos que las de dentro del archivo nib proporcionado denominado `AENotificationView.xib`
+* Las subvistas deben tener las mismas etiquetas que las de dentro del archivo nib proporcionado denominado `AENotificationView.xib`
 
 > [!TIP]
-> Simplemente copie el archivo nib de hello proporcionado, denominado `AENotificationView.xib`y empezar a trabajar desde allí. Pero tenga cuidado, Hola vista toohello clase asociada, dentro de este archivo nib es `AENotificationView`. Esta clase se volvió a definir método hello `layoutSubViews` toomove y cambiar el tamaño de sus subvistas según toocontext. Puede que desee tooreplace con un `UIView` o una clase de vista personalizada.
+> Simplemente copie el archivo nib proporcionado, denominado `AENotificationView.xib`, y empiece a trabajar desde allí. Pero tenga cuidado, la vista dentro del archivo nib está asociada a la clase `AENotificationView`. Esta clase redefinió el método `layoutSubViews` para mover y cambiar el tamaño de sus subvistas según el contexto. Puede reemplazarla por una `UIView` o su clase de vista personalizada.
 >
 >
 
-Si necesita personalización más profunda de las notificaciones (si se desea para la instancia tooload la vista directamente desde el código de hello), se recomienda tootake un vistazo a Hola proporciona documentación de código y la clase de origen de `Protocol ReferencesDefaultNotifier` y `AENotifier`.
+Si necesita una personalización más profunda de las notificaciones (si desea, por ejemplo, cargar la vista directamente desde el código), se recomienda echar un vistazo al código fuente y a la documentación de la clase de `Protocol ReferencesDefaultNotifier` y `AENotifier`.
 
-Tenga en cuenta que puede usar Hola notificador mismo para varias categorías.
+Tenga en cuenta que puede usar el mismo notificador para varias categorías.
 
-Puede notificador de hello también redefinido predeterminado similar al siguiente:
+También puede volver a definir el notificador predeterminado de este modo:
 
     AEReachModule* reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
     [reach registerNotifier:myNotifier forCategory:kAEReachDefaultCategory];
 
 ##### <a name="notification-handling"></a>Manejo de notificaciones
-Cuando se usa la categoría predeterminada de hello, se llaman a algunos métodos de ciclo de vida en hello `AEReachContent` tooreport estadísticas y actualización Hola campaña el estado del objeto:
+Al utilizar la categoría predeterminada, se llama a algunos métodos de ciclo de vida en el objeto `AEReachContent` para mostrar estadísticas y actualizar el estado de la campaña:
 
-* Cuando se muestra la notificación de hello en aplicaciones, Hola `displayNotification` se llama al método (que notifica estadísticas) por `AEReachModule` si `handleNotification:` devuelve `YES`.
-* Si se descarta la notificación de hello, Hola `exitNotification` método se llama, se notifica la estadística y ahora se pueden procesar las campañas siguientes.
-* Si se hace clic en la notificación de hello, `actionNotification` es llama, se notifican estadísticas y se realiza la acción de hello asociado.
+* Cuando la notificación se muestra en la aplicación, se llama al método `displayNotification` (que notifica estadísticas) por parte de `AEReachModule` si `handleNotification:` devuelve `YES`.
+* Si se descarta la notificación, se llama al método `exitNotification`, se notifica la estadística y ahora se pueden procesar las campañas siguientes.
+* Si se hace clic en la notificación, se llama a `actionNotification` , se notifica la estadística y se lleva a cabo la acción asociada.
 
-Si la implementación de `AENotifier` omisiones Hola comportamiento predeterminado, tendrá toocall estos métodos de ciclo de vida por usted mismo. Hello en los ejemplos siguientes muestra algunos casos donde se omite el comportamiento predeterminado de hello:
+Si su implementación de `AENotifier` pasa por alto el comportamiento predeterminado, tiene que llamar a estos métodos de ciclo de vida por sí mismo. Los ejemplos siguientes muestran algunos casos donde se omite el comportamiento predeterminado:
 
 * No se extienden `AEDefaultNotifier`, por ejemplo, se implementa el control de categoría desde cero.
-* Reemplazó `prepareNotificationView:forContent:`, ser al menos seguro toomap `onNotificationActioned` o `onNotificationExited` tooone de los controles de I.U.
+* Anuló `prepareNotificationView:forContent:`, asegúrese de asignar al menos `onNotificationActioned` o `onNotificationExited` a uno de sus controles de I.U.
 
 > [!WARNING]
-> Si `handleNotification:` inicia una excepción, Hola contenido se elimina y `drop` es llama, se notifica en las estadísticas y ahora se pueden procesar las campañas siguientes.
+> Si `handleNotification:` produce una excepción, el contenido se elimina y se llama a `drop`, esto se indica en las estadísticas y ahora se pueden procesar las campañas siguientes.
 >
 >
 
 #### <a name="include-notification-as-part-of-an-existing-view"></a>Incluir notificaciones como parte de una vista existente
 Las superposiciones son ideales para una integración rápida, pero a veces pueden no ser convenientes o pueden tener efectos secundarios no deseados.
 
-Si no está satisfecho con el sistema de superposición de hello en algunas de las vistas, puede personalizarlo para estas vistas.
+Si no está satisfecho con el sistema de superposición en algunas de las vistas, puede personalizarlo para estas vistas.
 
-Puede decidir tooinclude nuestro diseño de notificación en las vistas existentes. toodo por lo tanto, hay dos estilos de implementación:
+Puede decidir incluir nuestro diseño de notificación en las vistas existentes. Para ello, hay dos estilos de implementación:
 
-1. Agregar vista de notificaciones de hello mediante el generador de interfaz
+1. Agregar la vista de notificación mediante el generador de interfaz
 
    * Abrir el *generador de la interfaz*
-   * Coloque un 320 x 60 (o 60 x 768 si se encuentra en iPad) `UIView` donde desea Hola notificación tooappear
-   * Establezca el valor de etiqueta de Hola para esta vista demasiado: **36822491**
-2. Agregar vista de notificaciones de hello mediante programación. Basta con agregar Hola después de código cuando se ha inicializado la vista:
+   * Coloque un 320 x 60 (o si se encuentra en un iPad, un 768 x 60) `UIView` en el lugar en el que desee que aparezca la notificación
+   * Establezca el valor de etiqueta para esta vista en: **36822491**
+2. Agregue la vista de notificación mediante programación. Simplemente agregue el siguiente código cuando se haya inicializado la vista:
 
-       UIView* notificationView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)]; //Replace x and y coordinate values tooyour needs.
+       UIView* notificationView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)]; //Replace x and y coordinate values to your needs.
        notificationView.tag = NOTIFICATION_AREA_VIEW_TAG;
        [self.view addSubview:notificationView];
 
 La macro `NOTIFICATION_AREA_VIEW_TAG` puede encontrarse en `AEDefaultNotifier.h`.
 
 > [!NOTE]
-> notificador de Hello predeterminado detecta automáticamente ese diseño de notificación de Hola se incluye en esta vista y no agregará una superposición para él.
+> El notificador predeterminado detecta automáticamente que el diseño de notificación está incluido en esta vista y no se agregará una superposición para él.
 >
 >
 
 ### <a name="announcements-and-polls"></a>Anuncios y sondeos
 #### <a name="layouts"></a>Diseños
-Puede modificar archivos de hello `AEDefaultAnnouncementView.xib` y `AEDefaultPollView.xib` como mantener valores de etiqueta de Hola y tipos de subvistas existente Hola.
+Puede modificar los archivos `AEDefaultAnnouncementView.xib` y `AEDefaultPollView.xib` siempre y cuando mantenga los valores y tipos de las etiquetas de las subvistas existentes.
 
 #### <a name="categories"></a>Categorías
 ##### <a name="alternate-layouts"></a>Diseños alternativos
-Al igual que las notificaciones, categoría de la campaña de hello puede ser toohave usado diseños alternativos para los sondeos y anuncios.
+Como con las notificaciones, la categoría de la campaña puede utilizarse para tener diseños alternativos para los anuncios y sondeos.
 
-toocreate una categoría de un anuncio, debe extender **AEAnnouncementViewController** y registrarlo una vez que se ha inicializado el módulo de reach hello:
+Para crear una categoría para un anuncio, debe extender **AEAnnouncementViewController** y registrarlo una vez que se ha inicializado el módulo de cobertura:
 
     AEReachModule* reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
     [reach registerAnnouncementController:[MyCustomAnnouncementViewController class] forCategory:@"my_category"];
 
 > [!NOTE]
-> Cada vez que un usuario ha hecho clic en una notificación para un anuncio con la categoría de Hola "Mi\_categoría", el controlador de vista registrados (en ese caso `MyCustomAnnouncementViewController`) se inicializará mediante una llamada a método hello `initWithAnnouncement:` y ver Hola será ventana de la aplicación de actual de toohello agregada.
+> Cada vez que un usuario haga clic en una notificación para un anuncio con la categoría "my\_category", el controlador de vista registrado (en ese caso `MyCustomAnnouncementViewController`) se inicializará llamando al método `initWithAnnouncement:` y la vista se agregará a la ventana de la aplicación actual.
 >
 >
 
-En la implementación de hello `AEAnnouncementViewController` clase tendrá la propiedad de hello tooread `announcement` tooinitialize sus subvistas. Considere la posibilidad de ejemplo de Hola siguiente, donde dos etiquetas se inicializan mediante `title` y `body` propiedades de hello `AEReachAnnouncement` clase:
+En la implementación de la clase `AEAnnouncementViewController` tendrá que leer la propiedad `announcement` para inicializar sus subvistas. Considere el ejemplo siguiente, donde dos etiquetas se inicializan mediante las propiedades `title` y `body` de la clase `AEReachAnnouncement`:
 
     -(void)loadView
     {
@@ -387,28 +387,28 @@ En la implementación de hello `AEAnnouncementViewController` clase tendrá la p
         [self.view addSubview:bodyLabel];
     }
 
-Si no desea tooload sus vistas por sí mismo, pero solo desea que el diseño de la vista de anuncio de manera predeterminada tooreuse hello, simplemente hacer que el controlador de vista personalizada extiende la clase hello proporciona `AEDefaultAnnouncementViewController`. En ese caso, duplicar archivo nib de hello `AEDefaultAnnouncementView.xib` y cambie su nombre por lo que se puede cargar el controlador de vista personalizada (para un controlador denominado `CustomAnnouncementViewController`, debe llamar a su archivo nib `CustomAnnouncementView.xib`).
+Si no desea cargar las vistas usted mismo pero simplemente desea reutilizar el diseño predeterminado de la vista del anuncio, puede provocar que el controlador de vista personalizada amplíe la clase `AEDefaultAnnouncementViewController`suministrada. En tal caso, duplique el archivo nib `AEDefaultAnnouncementView.xib` y cámbiele el nombre para que pueda ser cargado por el controlador de vista personalizado (para un controlador denominado `CustomAnnouncementViewController`, deberá llamar a su archivo nib `CustomAnnouncementView.xib`).
 
-categoría de tooreplace Hola predeterminada de los anuncios, simplemente registrar el controlador de vista personalizada para la categoría de hello definida en `kAEReachDefaultCategory`:
+Para reemplazar la categoría predeterminada de anuncios, simplemente hay que registrar el controlador de vista personalizada para la categoría definida en `kAEReachDefaultCategory`:
 
     [reach registerAnnouncementController:[MyCustomAnnouncementViewController class] forCategory:kAEReachDefaultCategory];
 
-Sondeos pueden ser personalizada hello igual:
+Los sondeos pueden personalizarse de la misma manera:
 
     AEReachModule* reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
     [reach registerPollController:[MyCustomPollViewController class] forCategory:@"my_category"];
 
-Esta vez, Hola proporciona `MyCustomPollViewController` debe extender `AEPollViewController`. O bien puede tooextend controlador predeterminado de hello: `AEDefaultPollViewController`.
+Esta vez, el `MyCustomPollViewController` proporcionado debe extender `AEPollViewController`. O bien puede ampliar desde el controlador predeterminado: `AEDefaultPollViewController`.
 
 > [!IMPORTANT]
-> No olvide toocall o `action` (`submitAnswers:` para controladores de la vista de sondeo personalizado) o `exit` método antes de que se cierra el controlador de vista de Hola. En caso contrario, no se envían las estadísticas (es decir, ningún análisis en campaña Hola) y más las campañas siguiente lo importante es que no se notificará hasta que se reinicie el proceso de la aplicación hello.
+> No se olvide de llamar a `action` (`submitAnswers:` para los controladores de vista de sondeo personalizado) o al método `exit` antes de que se descarte el controlador de vista. De lo contrario, las estadísticas no se enviará (es decir, ningún análisis de la campaña) y, lo que es más importante, no se notificará a las campañas siguientes hasta que se reinicie el proceso de aplicación.
 >
 >
 
 ##### <a name="implementation-example"></a>Ejemplo de implementación
-En esta implementación vista de anuncio personalizado Hola se carga desde un archivo externo xib.
+En esta implementación, la vista de anuncio personalizada se carga desde un archivo xib externo.
 
-Al igual que para la personalización avanzada de notificación, se recomienda toolook en el código fuente de Hola de implementación estándar de Hola.
+Al igual que para la personalización de notificación avanzada, se recomienda mirar el código fuente de la implementación estándar.
 
 `CustomAnnouncementViewController.h`
 

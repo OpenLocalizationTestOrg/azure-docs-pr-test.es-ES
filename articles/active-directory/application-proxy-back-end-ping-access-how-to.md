@@ -1,6 +1,6 @@
 ---
-title: "aaaHow tooconfigure una toouse de aplicación de Proxy de aplicación PingAccess | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toouse PingAccess tooextend Hola ventajas de tooapplications de Proxy de aplicación con autenticación basada en encabezado"
+title: "Configuración de una aplicación de proxy de aplicación para usar PingAccess | Microsoft Docs"
+description: "Aprenda a usar PingAccess para extender las ventajas del proxy de aplicación a aplicaciones que usen la autenticación basada en el encabezado"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: fa4c9747b7bf5a135425be270e4f7eadf95248fa
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: a9da67373465cebbdbecae5c8fb8bd0a0ee3c171
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="how-tooconfigure-an-application-proxy-application-toouse-pingaccess"></a>¿Cómo tooconfigure una toouse de aplicación de Proxy de aplicación PingAccess
+# <a name="how-to-configure-an-application-proxy-application-to-use-pingaccess"></a>Configuración de una aplicación de proxy de aplicación para usar PingAccess
 
-Nuestra colaboración con PingAccess permite ventajas de hello tooextend de tooapplications de Proxy de aplicación con autenticación basada en el encabezado. Si las aplicaciones no utilizan encabezados, consulte nuestra [documentación sobre el inicio de sesión único](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd) para ver detalles sobre otras opciones.
+Nuestra colaboración con PingAccess ahora nos permite extender las ventajas del proxy de aplicación a aquellas aplicaciones que usen la autenticación basada en el encabezado. Si las aplicaciones no utilizan encabezados, consulte nuestra [documentación sobre el inicio de sesión único](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-sso-using-kcd) para ver detalles sobre otras opciones.
 
 ## <a name="overview-of-steps-and-recommended-documents"></a>Introducción a los pasos y documentos recomendados
 
-tooconfigure una aplicación con PingAccess, hay cuatro pasos:
+Para configurar una aplicación con PingAccess, hay cuatro pasos:
 
 1.  Configurar los conectores del proxy de aplicación
 

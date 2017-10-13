@@ -1,6 +1,6 @@
 ---
-title: aaaConfigure Azure AD SSO para aplicaciones | Documentos de Microsoft
-description: "Obtenga información acerca de cómo tooself servicio conectar aplicaciones tooAzure Active Directory mediante SAML y SSO basado en contraseña"
+title: "Configuración de inicio de sesión único de Azure AD SSO para aplicaciones |Microsoft Docs"
+description: "Aprenda cómo conectar de forma autónoma aplicaciones a Azure Active Directory mediante SAML y SSO basado en contraseña"
 services: active-directory
 author: asmalser-msft
 documentationcenter: na
@@ -15,52 +15,52 @@ ms.date: 07/20/2017
 ms.author: asmalser
 ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 002a19a6c7ad25ea2f3b9c6a7c7874ed2be23cce
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9049f526243cb4659aaf86b3d31146abe8f5f3ef
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="configuring-single-sign-on-tooapplications-that-are-not-in-hello-azure-active-directory-application-gallery"></a>Configurar tooapplications de inicio de sesión único que no están en la Galería de aplicaciones de Azure Active Directory Hola
-Este artículo trata sobre una característica que permite a los administradores tooconfigure único inicio de sesión tooapplications no está en la Galería de aplicaciones de Azure Active Directory hello *sin escribir código*. Esta característica se ha publicado en Technical Preview el 18 de noviembre de 2015 y se incluye en [Azure Active Directory Premium](active-directory-editions.md). Si desea en su lugar para obtener una guía para desarrolladores sobre toointegrate aplicaciones personalizadas con Azure AD a través del código, consulte [escenarios de autenticación para Azure AD](active-directory-authentication-scenarios.md).
+# <a name="configuring-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Configuración del inicio de sesión único en aplicaciones que no están en la Galería de aplicaciones de Azure Active Directory
+En este artículo se trata de una característica que permite a los administradores configurar un inicio de sesión único a aplicaciones que no están presentes en la Galería de aplicaciones de Azure Active Directory *sin escribir código*. Esta característica se ha publicado en Technical Preview el 18 de noviembre de 2015 y se incluye en [Azure Active Directory Premium](active-directory-editions.md). Si por el contrario desea obtener instrucciones para desarrolladores sobre cómo integrar aplicaciones personalizadas con Azure AD a través de código, consulte [Escenarios de autenticación para Azure AD](active-directory-authentication-scenarios.md).
 
-Hello Galería de aplicaciones de Azure Active Directory proporciona una lista de las aplicaciones que se conocen toosupport un formulario de inicio de sesión único con Azure Active Directory, como se describe en [este artículo](active-directory-appssoaccess-whatis.md). Una vez (como un TI especialista o integrador de sistemas de su organización) haya encontrado la aplicación hello desea tooconnect, puede empezar por siga Hola paso a paso las instrucciones presentadas en hello Azure management portal tooenable inicio de sesión único.
+La Galería de aplicaciones de Azure Active Directory proporciona una lista de las aplicaciones que se sabe que admiten un formulario de inicio de sesión único en Azure Active Directory, tal como se describe en [este artículo](active-directory-appssoaccess-whatis.md). Una vez que un especialista en TI o un integrador de sistemas de la organización haya encontrado la aplicación que desea conectar, puede empezar por seguir las instrucciones detalladas que se proporcionan en el Portal de administración de Azure para habilitar el inicio de sesión único.
 
 Los clientes con licencias [Azure Active Directory Premium](active-directory-editions.md) también obtienen estas funcionalidades adicionales:
 
 * Integración de autoservicio de cualquier aplicación que admita proveedores de identidades SAML 2.0 (iniciado por el proveedor de servicios o por el proveedor de identidades)
 * Integración de autoservicio de cualquier aplicación web que tenga una página de inicio de sesión basada en HTML que use [SSO basado en contraseña](active-directory-appssoaccess-whatis.md#password-based-single-sign-on)
-* Conexión sin intervención del Administrador de aplicaciones que usan el protocolo SCIM hello para el aprovisionamiento de usuarios ([descritos aquí](active-directory-scim-provisioning.md))
-* Capacidad tooadd vincula tooany aplicación Hola [iniciador de aplicaciones de Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) o hello [panel de acceso de Azure AD](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)
+* Conexión autoservicio de las aplicaciones que usan el protocolo SCIM para el aprovisionamiento de usuarios ([se describe aquí](active-directory-scim-provisioning.md))
+* Capacidad para agregar vínculos a cualquier aplicación del [iniciador de aplicaciones de Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) o del [panel de acceso de Azure AD](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)
 
-Esto puede incluir no sólo aplicaciones de SaaS que usar pero aún no han sido integrada toohello Galería de aplicaciones de Azure AD, pero las aplicaciones web de terceros que su organización ha implementado tooservers que controlar, ya sea en la nube de Hola o de forma local.
+Aquí puede incluir no solo las aplicaciones SaaS que usa, pero que aún ha integrado en la Galería de aplicaciones de Azure AD, sino también las aplicaciones web de terceros que la organización ha implementado en los servidores que controla, ya sea en la nube o locales.
 
 Estas funcionalidades, también conocidas como *plantillas de integración de aplicaciones*, proporcionan puntos de conexión basados en estándares para aplicaciones que admiten SAML, SCIM o autenticación basada en formularios, e incluyen opciones y configuraciones flexibles para compatibilidad con un amplio número de aplicaciones. 
 
 ## <a name="adding-an-unlisted-application"></a>Adición de una aplicación que no figura en la lista
-tooconnect una aplicación mediante una plantilla de integración de aplicación, inicie sesión en el portal de administración de Azure Hola con su cuenta de administrador de Active Directory de Azure y examinar toohello **Active Directory > [directorio] > aplicaciones**sección, seleccione **agregar**y, a continuación, **agregar una aplicación de la Galería de hello**. 
+Para conectar una aplicación con una plantilla de integración de aplicaciones, inicie sesión en el Portal de administración de Azure con su cuenta de administrador de Azure Active Directory y vaya a la sección **Active Directory > [directorio] > Aplicaciones**, seleccione **Agregar** y, a continuación, **Agregar una aplicación de la galería**. 
 
 ![][1]
 
-En la Galería de aplicaciones de hello, puede agregar una aplicación que no figuran en con hello **personalizado** categoría a la izquierda de Hola o seleccionando Hola **agregar una aplicación que no figuran en** vínculo que se muestra en la búsqueda de hello resultados si la aplicación deseada no se encontró. Después de escribir un nombre para la aplicación, puede configurar opciones de inicio de sesión único de Hola y de comportamiento. 
+En la galería de aplicaciones, se puede agregar una aplicación que no figura en la lista mediante la categoría **Personalizado** de la izquierda, o bien seleccionando el vínculo **Agregar una aplicación que no figura en la lista** que se muestra en los resultados de búsqueda si no se encontró la aplicación deseada. Después de escribir el nombre de la aplicación, puede configurar las opciones y el comportamiento de inicio de sesión único. 
 
-**Sugerencia rápida**: como práctica recomendada, utilice Hola búsqueda función toocheck toosee si aplicación Hola ya existe en la Galería de aplicaciones de Hola. Si se encuentra la aplicación hello y su descripción menciona "inicio de sesión único" y luego la aplicación hello ya es compatible con un inicio de sesión único federado. 
+**Sugerencia rápida**: Como procedimiento recomendado, use la función de búsqueda para comprobar si la aplicación ya existe en la galería de aplicaciones. Si se encuentra la aplicación y su descripción menciona "inicio de sesión único", la aplicación ya es compatible con un inicio de sesión único federado. 
 
 ![][2]
 
-Agregar una aplicación de esta manera, proporciona un toohello experiencia muy similares está disponible para las aplicaciones previamente integradas. toostart, seleccione **configurar Single Sign-On**. pantalla de bienvenida siguiente presenta hello siguientes tres opciones para configurar el inicio de sesión único, que se describen en las secciones siguientes de Hola.
+La adición de una aplicación de esta forma supone una experiencia muy parecida a la disponible para las aplicaciones preintegradas. Para empezar, seleccione **Configurar inicio de sesión único**. La siguiente pantalla presenta las tres opciones siguientes para configurar el inicio de sesión único, que se describen en las secciones siguientes.
 
 ![][3]
 
-## <a name="azure-ad-single-sign-on"></a>Inicio de sesión único de Azure AD 
-Seleccione esta opción tooconfigure SAML autenticación para aplicación hello. Este método precisa que Hola compatibilidad con aplicaciones SAML 2.0 y debe recopilar información sobre cómo toouse Hola capacidades SAML de la aplicación hello antes de continuar. Después de seleccionar **siguiente**, podrá tooenter solicitadas tres direcciones URL diferentes correspondiente toohello extremos SAML para la aplicación hello. 
+## <a name="azure-ad-single-sign-on"></a>Inicio de sesión único de Azure AD
+Seleccione esta opción para configurar la autenticación basada en SAML para la aplicación. Esto requiere que la aplicación sea compatible con SAML 2.0 y se debe recopilar información acerca de cómo usar las capacidades de SAML de la aplicación antes de continuar. Después de seleccionar **Siguiente**, se le pedirá que escriba tres direcciones URL diferentes correspondientes a los puntos de conexión SAML de la aplicación. 
 
 ![][4]
 
 Dichos componentes son:
 
-* **Dirección URL de inicio de sesión (iniciado por el SP solo)** : cuando el usuario de hello siga toothis toosign de aplicación. Si se configura la aplicación hello único iniciado por el proveedor de servicio de tooperform iniciar sesión, a continuación, cuando un usuario navega toothis URL, proveedor de servicios de Hola se Hola redirección necesarios tooAzure AD tooauthenticate y usuario hello en el inicio de sesión. Si este campo se rellena, Azure AD usará esta aplicación de hello toolaunch de dirección URL de hello Panel de acceso de Azure AD y Office 365. Si este campo es ommited, Azure AD en su lugar realizará el proveedor de identidades-inicio de sesión iniciada cuando aplicación hello se inicia desde Office 365, Hola el Panel de acceso de Azure AD, o de hello Azure AD único inicio de sesión (copiable desde la pestaña panel hello) de la dirección URL.
-* **Dirección URL del emisor** -Hola dirección URL del emisor debería identificar únicamente la aplicación hello para que solo inicio de sesión se está configurando. Se trata de valor de Hola que Azure AD envía tooapplication atrás como Hola **audiencia** parámetro de token SAML de Hola y aplicación hello es toovalidate esperado lo. Este valor también aparece como hello **Id. de entidad** en los metadatos SAML proporcionado por la aplicación hello. Compruebe la documentación de SAML de la aplicación de Hola para obtener más información sobre lo que este Id. de entidad o valor de audiencia es. A continuación se muestra un ejemplo de cómo Hola dirección URL de la audiencia aparece en aplicación de hello SAML token toohello devuelto:
+* **Dirección URL de inicio de sesión (iniciado solo por el proveedor de servicios)** : cuando el usuario va a iniciar sesión en esta aplicación. Si la aplicación está configurada para realizar el inicio de sesión único iniciado por el proveedor de servicios, cuando un usuario navega a esta dirección URL, el proveedor de servicios realizará la redirección necesaria a Azure AD para autenticar al usuario e iniciar sesión. Si este campo se rellena, Azure AD utilizará esta dirección URL para iniciar la aplicación desde el panel de acceso de Azure AD y Office 365. Si se omite este campo, Azure AD realizará un inicio de sesión iniciado por el proveedor de identidades cuando se inicie la aplicación de Office 365, el panel de acceso de Azure AD, o desde la dirección URL de inicio de sesión único de Azure AD (que se puede copiar desde la pestaña Panel).
+* **URL del emisor** : la dirección URL del emisor identifica de forma exclusiva la aplicación para el inicio de sesión único que se está configurando. Este es el valor que Azure AD devuelve a la aplicación como el parámetro **Audiencia** del token SAML, y se espera que la aplicación lo valide. Este valor también aparece como el **Id. de entidad** en los metadatos SAML proporcionados por la aplicación. Compruebe la documentación de SAML de la aplicación para más información sobre qué es el identificador de entidad o el valor de Audiencia. A continuación se muestra un ejemplo de cómo aparece la dirección URL de la audiencia en el token SAML devuelto a la aplicación:
 
 ```
     <Subject>
@@ -74,63 +74,63 @@ Dichos componentes son:
       </Conditions>
 ```
 
-* **Dirección URL de respuesta** -URL de respuesta de hello es donde la aplicación hello espera token SAML de hello tooreceive. Esto también es que se hace referencia tooas hello **dirección URL del servicio de consumidor de aserción (ACS)**. Consulte la documentación de SAML de la aplicación hello para obtener más información sobre lo que es su dirección URL de respuesta de token de SAML o la dirección URL de ACS.
-  Después de que se han introducido, haga clic en **siguiente** tooproceed toohello siguiente pantalla. Esta pantalla proporciona información sobre qué toobe necesidades configurarlo en hello aplicación lado tooenable tooaccept un token de SAML de Azure AD. 
+* **URL de respuesta** : la dirección URL de respuesta es el lugar donde la aplicación espera recibir el token SAML. Esto también se conoce como **dirección URL del Servicio de consumidor de aserciones (ACS)**. Compruebe la documentación de SAML de la aplicación para más información sobre qué es la URL de respuesta del token SAML o la URL de ACS.
+  Después de especificar dichas direcciones, haga clic en **Siguiente** para pasar a la pantalla siguiente. Esta pantalla proporciona información sobre lo que es preciso configurar en la propia aplicación para que pueda aceptar un token SAML de Azure AD. 
 
 ![][5]
 
-Los valores que son necesarios se varían en función de la aplicación hello, así que compruebe la documentación de SAML de la aplicación de Hola para obtener más información. Hola **Sign-On** y **cierre de sesión** dirección URL del servicio ambos resolver toohello mismo punto de conexión, que es el punto de conexión de control de la solicitud SAML de hello para la instancia de Azure AD. Hola dirección URL del emisor es valor de Hola que aparece como Hola "Emisor" dentro de hello aplicación toohello emitido token de SAML. 
+Los valores requeridos variarán en función de la aplicación, así que es conveniente que compruebe la documentación de SAML de la aplicación. Las URL de los servicios de **inicio de sesión** y **cierre de sesión** se resuelven en el mismo punto de conexión, que es el punto de conexión de control de solicitudes de SAML de su instancia de Azure AD. La URL del emisor es el valor que aparece como "Emisor" en el token SAML que se emite para la aplicación. 
 
-Después de que se ha configurado la aplicación, haga clic en **siguiente** botón y, a continuación, Hola **completar** el cuadro de diálogo de tooclose Hola. 
+Después de configurar la aplicación, haga clic en el botón **Siguiente** y, a continuación, en **Completado** para cerrar el cuadro de diálogo. 
 
-## <a name="assigning-users-and-groups-tooyour-saml-application"></a>Asignar usuarios y aplicaciones de grupos tooyour SAML
-Una vez que la aplicación ha sido configurado toouse Azure AD como proveedor de identidad basado en SAML, está casi listo tootest. Como un control de seguridad, Azure AD no emita un token permitiéndoles toosign en aplicación Hola a menos que se les ha concedido acceso mediante Azure AD. A los usuarios se les puede conceder acceso directamente o a través del grupo al que pertenecen. 
+## <a name="assigning-users-and-groups-to-your-saml-application"></a>Asignación de usuarios y grupos a una aplicación de SAML
+Tras configurar la aplicación para que use Azure AD como proveedor de identidades basado en SAML, ya casi está lista para probarla. Como control de seguridad, Azure AD no emitirá un token que les permita iniciar sesión en la aplicación, a menos que se les concediera acceso mediante Azure AD. A los usuarios se les puede conceder acceso directamente o a través del grupo al que pertenecen. 
 
-tooassign una aplicación de tooyour usuario o grupo, haga clic en hello **asignar usuarios** botón. Seleccione Hola usuario o grupo que desea tooassign y, a continuación, seleccione hello **asignar** botón. 
+Para asignar un usuario o grupo a una aplicación, haga clic en el botón **Asignar usuarios** . Seleccione el usuario o grupo que desea asignar y, a continuación, haga clic en el botón **Asignar** . 
 
 ![][6]
 
-Asignación de un usuario le permitirá tooissue de Azure AD un token de usuario hello, así como provocando un icono para este tooappear de aplicación en el Panel de acceso del usuario de Hola. Una ventana de aplicación también aparecerán en el iniciador de la aplicación de Office 365 Hola si el usuario de hello está usando Office 365. 
+La asignación de un usuario permitirá a Azure AD emitir un token para el usuario, así como hacer que aparezca un icono de la aplicación aparece en el panel de acceso del usuario. Si el usuario usa Office 365, también aparecerá un icono de la aplicación en el iniciador de aplicaciones de Office 365. 
 
-Puede cargar un logotipo del mosaico de aplicación hello mediante hello **Cargar logotipo** botón en hello **configurar** pestaña aplicación hello. 
+Para cargar un logotipo de icono de la aplicación, pulse el botón **Cargar logotipo** en la pestaña **Configura**r de la aplicación. 
 
-### <a name="customizing-hello-claims-issued-in-hello-saml-token"></a>Personalizar las notificaciones de hello emitidas en el token SAML de Hola
-Cuando un usuario autentica toohello aplicación, Azure AD emitirá una aplicación de toohello token de SAML que contiene información (o notificaciones) acerca del usuario de Hola que identifica de forma única a ellos. De forma predeterminada, esto incluye nombre de usuario, dirección de correo electrónico, nombre y apellido del usuario de Hola. 
+### <a name="customizing-the-claims-issued-in-the-saml-token"></a>Personalización de las notificaciones emitidas en el token SAML
+Cuando un usuario se autentique en la aplicación, Azure AD emitirá un token SAML a la aplicación que contiene información (o notificaciones) sobre el usuario que lo identifica de forma única. De forma predeterminada, dicha información incluye el nombre de usuario, la dirección de correo electrónico, el nombre y los apellidos del usuario. 
 
-Puede ver o editar notificaciones Hola enviados en hello aplicación toohello token de SAML en hello **atributos** ficha. 
+Las notificaciones enviadas en el token SAML a la aplicación se pueden ver o editar en la pestaña **Atributos** . 
 
 ![][7]
 
-Hay dos razones posibles por las que puede necesitar notificaciones de hello tooedit emitidas en el token SAML de hello: •hello aplicación se ha escrito toorequire otro conjunto de URI de notificación o se ha implementado la aplicación de •Your de valores de una manera que requiere Hola de notificación NameIdentifier notificación toobe un valor distinto de hello username (nombre principal de usuario AKA) almacenados en Azure Active Directory. 
+Hay dos posibles razones por las que podría tener la necesidad de editar las notificaciones emitidas en el token SAML: •La aplicación se escribió para requerir un conjunto diferente de identificadores URI de notificaciones o valores de notificaciones •La aplicación se ha implementado de tal forma que requiere que la notificación NameIdentifier no sea el nombre de usuario (conocido también como nombre principal de usuario) almacenado en Azure Active Directory. 
 
-Para obtener información sobre cómo tooadd y editar las notificaciones para estos escenarios, consulte esta [artículo acerca de la personalización de notificaciones](active-directory-saml-claims-customization.md). 
+Para obtener información acerca de cómo agregar y editar notificaciones de estos escenarios, consulte este [artículo sobre la personalización de notificaciones](active-directory-saml-claims-customization.md). 
 
-### <a name="testing-hello-saml-application"></a>Probar la aplicación de SAML de hello
-Una vez que las direcciones URL de SAML de Hola y el certificado se ha configurado en Azure AD y en la aplicación hello, usuarios o grupos se han asignado toohello aplicación en Azure y notificaciones de Hola se han revisado y editar si es necesario, entonces usuario hello es toosign listo en hello aplicación. 
+### <a name="testing-the-saml-application"></a>Prueba de la aplicación SAML
+Una vez que las direcciones URL de SAML y el certificado se han configurado en Azure AD y en la aplicación, los usuarios o grupos se han asignado a la aplicación en Azure y las notificaciones se han revisado y editado si es necesario, el usuario estará listo para iniciar sesión en la aplicación. 
 
-tootest, simplemente inician sesión en Hola panel de acceso de Azure AD en https://myapps.microsoft.com con una cuenta de usuario asignada toohello aplicación y, a continuación, haga clic en el mosaico de Hola para hello aplicación tookick desactivar el proceso de inicio de sesión único de Hola. Como alternativa, puede examinar directamente toohello dirección URL de inicio de sesión para la aplicación hello e inicio de sesión a partir de ahí. 
+Para realizar la prueba, solo es preciso iniciar sesión en el panel de acceso de Azure AD en https://myapps.microsoft.com con la cuenta de usuario asignada a la aplicación y, a continuación, hacer clic en el icono de la aplicación para iniciar el proceso de inicio de sesión único. Como alternativa, puede navegar directamente a la URL de inicio de sesión de la aplicación e iniciar sesión desde ahí. 
 
-Para sugerencias de depuración, vea este [artículo sobre cómo toodebug basado en SAML single sign-on tooapplications](active-directory-saml-debugging.md) 
+Para ver sugerencias sobre depuración, consulte este [artículo sobre cómo depurar el inicio de sesión único basado en SAML en aplicaciones](active-directory-saml-debugging.md) 
 
 ## <a name="password-single-sign-on"></a>Inicio de sesión único con contraseña
-Seleccione esta opción tooconfigure [basada en contraseña de inicio de sesión único](active-directory-appssoaccess-whatis.md) para una aplicación web que tiene una página de inicio de sesión de HTML. SSO basado en contraseña, también la contraseña del que se hace referencia tooas depósito, le permite toomanage acceso y las contraseñas tooweb aplicaciones de usuario que no son compatibles con la federación de identidades. También es útil en escenarios donde varios usuarios necesitan tooshare una sola cuenta, como las cuentas de aplicación de la organización tooyour medios sociales. 
+Seleccione esta opción para configurar [el inicio de sesión único basado en contraseña](active-directory-appssoaccess-whatis.md) para una aplicación web que tiene una página de inicio de sesión HTML. El SSO basado en contraseña, también conocido como almacenamiento de contraseñas, permite administrar el acceso y las contraseñas de los usuarios en aplicaciones web que no admiten la federación de identidades. También es útil para escenarios en los que varios usuarios necesitan compartir una sola cuenta, como las cuentas de aplicaciones de redes sociales de la organización. 
 
-Después de seleccionar **siguiente**, podrá tooenter solicitadas Hola URL de página de la aplicación hello basada en web de inicio de sesión. Tenga en cuenta que debe tratarse de página de Hola que incluya campos de entrada de hello username y password. Una vez escrita, Azure AD inicia una proceso tooparse Hola página de inicio para una entrada de nombre de usuario y una entrada de contraseña. Si el proceso de hello no es correcto, a continuación, le guía a través de un proceso alternativo de la instalación de una extensión de explorador (requiere Internet Explorer, Chrome o Firefox) que le permitirá campos de toomanually captura Hola.
+Después de seleccionar **Siguiente**, se le solicitará que escriba la dirección URL de página de inicio de sesión basada en web de la aplicación. Tenga en cuenta que dicha página debe incluir los campos en que se especifican el nombre de usuario y la contraseña. Una vez especificados, Azure AD inicia un proceso para analizar la página de inicio de sesión para detectar si se han escrito un nombre de usuario y una contraseña. Si el resultado del proceso no es satisfactorio, le guía a través de un proceso alternativo de instalación de una extensión de explorador (requiere Internet Explorer, Chrome o Firefox) que le permitirá capturar manualmente los campos.
 
-Una vez que se captura la página de inicio de sesión de hello, pueden asignarse a los usuarios y grupos y directivas de credencial pueden establecerse como normal [aplicaciones SSO de contraseña](active-directory-appssoaccess-whatis.md).
+Una vez que se captura la página de inicio de sesión, es posible asignar usuarios y grupos, las directivas de credenciales se pueden establecer como [aplicaciones de SSO con contraseña](active-directory-appssoaccess-whatis.md)normales.
 
-Nota: Puede cargar un logotipo del mosaico de aplicación hello mediante hello **Cargar logotipo** botón en hello **configurar** pestaña aplicación hello. 
+Nota: Para cargar un logotipo de icono de la aplicación, pulse el botón **Cargar logotipo** en la pestaña **Configurar** de la aplicación. 
 
 ## <a name="existing-single-sign-on"></a>Inicio de sesión único existente
-Seleccione esta opción tooadd un vínculo tooan aplicación tooyour portal de la organización Panel de acceso de Azure AD u Office 365. Puede usar este tooadd vínculos toocustom las aplicaciones web que actualmente la utilizan servicios de federación de Active Directory de Azure (u otro servicio de federación) en lugar de Azure AD para la autenticación. O bien, puede agregar páginas de SharePoint de vínculos profundos toospecific u otras páginas web que desea que solo tooappear sobre los paneles de acceso de sus usuarios. 
+Seleccione esta opción si desea agregar un vínculo a una aplicación en el panel de acceso de Azure AD o en el Portal de Office 365 de la organización. Esto se puede usar para agregar vínculos a aplicaciones web personalizadas que actualmente utilizan los Servicios de federación de Azure Active Directory (u otro servicio de federación), en lugar de Azure AD para la autenticación. O bien, puede agregar vínculos profundos a páginas específicas de SharePoint o a otras páginas web que desee que aparezcan en los paneles de acceso de su usuario. 
 
-Después de seleccionar **siguiente**, podrá tooenter solicitadas Hola URL de toolink de aplicación Hola a. Una vez completado, los usuarios y grupos pueden asignarse toohello aplicación, lo que hace tooappear de aplicación Hola Hola que [iniciador de aplicaciones de Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) o hello [panel de acceso de Azure AD](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users) para los usuarios.
+Después de seleccionar **Siguiente**, se le solicitará que escriba la dirección URL de la aplicación con la que se va a establecer el vínculo. Una vez completada la operación, ya es posible asignar usuarios y grupos a la aplicación, lo que hace que la aplicación aparezca en el [iniciador de aplicaciones de Office 365](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) o en el [panel de acceso de Azure AD](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users) de dichos usuarios.
 
-Nota: Puede cargar un logotipo del mosaico de aplicación hello mediante hello **Cargar logotipo** botón en hello **configurar** pestaña aplicación hello.
+Nota: Para cargar un logotipo de icono de la aplicación, pulse el botón **Cargar logotipo** en la pestaña **Configurar** de la aplicación.
 
 ## <a name="related-articles"></a>Artículos relacionados
 * [Índice de artículos sobre la administración de aplicaciones en Azure Active Directory](active-directory-apps-index.md)
-* [Cómo se emiten las notificaciones tooCustomize en hello Token de SAML para aplicaciones Pre-Integrated](active-directory-saml-claims-customization.md)
+* [Personalización de notificaciones emitidas en el token SAML para aplicaciones previamente integradas en Azure Active Directory](active-directory-saml-claims-customization.md)
 * [Cómo depurar el inicio de sesión único basado en SAML en aplicaciones de Azure Active Directory](active-directory-saml-debugging.md)
 
 <!--Image references-->

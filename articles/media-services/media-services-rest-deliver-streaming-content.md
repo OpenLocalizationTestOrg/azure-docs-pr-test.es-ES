@@ -1,6 +1,6 @@
 ---
-title: contenido de servicios multimedia de Azure aaaPublish con REST
-description: "Obtenga información acerca de cómo toocreate un localizador de toobuild usa una dirección URL de streaming. código de Hello usa API de REST."
+title: "Publicación de contenido de Servicios multimedia de Azure con REST"
+description: "Aprenda a crear un localizador que se usa para generar una dirección URL de streaming. El código usa API de REST."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.openlocfilehash: f849e21b3103b9b33bc652e886b2016ea495b19a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: d1e0a112040f6aa4cfa9e8c323507b1c0a223f3e
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="publish-azure-media-services-content-using-rest"></a>Publicación de contenido de Servicios multimedia de Azure con REST
 > [!div class="op_single_selector"]
@@ -29,40 +29,40 @@ ms.lasthandoff: 10/06/2017
 > 
 
 ## <a name="overview"></a>Información general
-Puede transmitir un conjunto de archivos MP4 de velocidad de bits adaptable creando un localizador de streaming a petición y compilando una dirección URL de streaming. Hola [codificar un recurso](media-services-rest-encode-asset.md) tema muestra cómo establece tooencode en una velocidad de bits adaptativa MP4. Si el contenido está cifrado, configure la directiva de entrega de recursos (como se describe en [este](media-services-rest-configure-asset-delivery-policy.md) tema) antes de crear un localizador. 
+Puede transmitir un conjunto de archivos MP4 de velocidad de bits adaptable creando un localizador de streaming a petición y compilando una dirección URL de streaming. El tema [Codificación de un recurso](media-services-rest-encode-asset.md) muestra cómo codificar en un conjunto de MP4 de velocidad de bits adaptable. Si el contenido está cifrado, configure la directiva de entrega de recursos (como se describe en [este](media-services-rest-configure-asset-delivery-policy.md) tema) antes de crear un localizador. 
 
-También puede utilizar un localizador toobuild las direcciones URL que los archivos de punto de tooMP4 se pueden descargar progresivamente de transmisión por secuencias a petición.  
+También puede utilizar un localizador de streaming a petición para generar direcciones URL que señalen a archivos MP4 que se pueden descargar progresivamente.  
 
-Este tema muestra cómo toocreate un localizador de streaming a petición en orden toopublish su activo y compilar un suave, MPEG DASH y HLS direcciones URL de streaming. También muestra toobuild activa direcciones URL de descarga progresiva.
+En este tema se muestra cómo crear un localizador de streaming a petición para publicar el recurso y crear direcciones URL de streaming Smooth, MPEG DASH y HLS. También se muestra cómo generar direcciones URL de descarga progresiva.
 
-Hola [siguiente](#types) sección muestra hello tipos de enumeración cuyos valores se utilizan en las llamadas REST de Hola.   
+En la sección [siguiente](#types) se muestran los tipos de enumeración cuyos valores se usan en las llamadas REST.   
 
 > [!NOTE]
 > Al obtener acceso a las entidades de Servicios multimedia, debe establecer los campos de encabezado específicos y los valores en las solicitudes HTTP. Para obtener más información, consulte [Configuración del desarrollo de la API de REST de Servicios multimedia](media-services-rest-how-to-use.md).
 > 
 
-## <a name="connect-toomedia-services"></a>Conectar servicios de tooMedia
+## <a name="connect-to-media-services"></a>Conexión con Servicios multimedia
 
-Para obtener información sobre cómo tooconnect toohello AMS API, consulte [Hola acceso API de servicios multimedia de Azure con autenticación de Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+Para obtener más información sobre cómo conectarse a la API de Azure Media Services, consulte [Acceso a la API de Azure Media Services con la autenticación de Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 >[!NOTE]
->Después de conectarse correctamente toohttps://media.windows.net, recibirá una redirección 301 especificando otra URI de servicios multimedia. Debe realizar las llamadas subsiguientes toohello nuevo URI.
+>Después de conectarse correctamente a https://media.windows.net, recibirá una redirección 301 que especifica otro URI de Servicios multimedia. Debe realizar las llamadas posteriores al nuevo URI.
 
 ## <a name="create-an-ondemand-streaming-locator"></a>Creación de un localizador de streaming a petición
-toocreate Hola localizador de streaming a petición y obtener las direcciones URL que necesita hello toodo siguientes:
+Para crear el localizador de streaming a petición y obtener las direcciones URL, deberá hacer lo siguiente:
 
-1. Si se cifra el contenido de hello, definir una directiva de acceso.
+1. Si se cifra el contenido, defina una directiva de acceso.
 2. Cree un localizador de streaming a petición.
-3. Si tiene previsto toostream, obtener Hola transmisión por secuencias de archivo de manifiesto (.ism) en el recurso de Hola. 
+3. Si planea transmitir, obtenga el archivo de manifiesto de streaming (.ism) del recurso. 
    
-   Si tiene previsto tooprogressively descarga, obtener nombres de Hola de archivos MP4 en activos de Hola. 
-4. Generar archivo de manifiesto de toohello de direcciones URL o archivos MP4. 
+   Si planea la descarga progresiva, obtenga los nombres de los archivos MP4 del recurso. 
+4. Genere direcciones URL para el archivo de manifiesto o archivos MP4. 
 5. Tenga en cuenta que no se puede crear un localizador de transmisión mediante una AccessPolicy que incluye permisos de escritura o eliminación.
 
 ### <a name="create-an-access-policy"></a>Creación de una directiva de acceso
 
 >[!NOTE]
->Hay un límite de 1 000 000 directivas para diferentes directivas de AMS (por ejemplo, para la directiva de localizador o ContentKeyAuthorizationPolicy). Debe usar hello mismo Id. de directiva si utilizas siempre Hola mismo días / acceso permisos, por ejemplo, las directivas para localizadores que son tooremain previsto en su lugar durante mucho tiempo (directivas no carga). Para obtener más información, consulte [este tema](media-services-dotnet-manage-entities.md#limit-access-policies) .
+>Hay un límite de 1 000 000 directivas para diferentes directivas de AMS (por ejemplo, para la directiva de localizador o ContentKeyAuthorizationPolicy). Debe usar el mismo identificador de directiva si siempre usa los mismos permisos de acceso y días, por ejemplo, directivas para localizadores que vayan a aplicarse durante mucho tiempo (directivas distintas a carga). Para obtener más información, consulte [este tema](media-services-dotnet-manage-entities.md#limit-access-policies) .
 
 Solicitud:
 
@@ -100,7 +100,7 @@ Respuesta:
     {"odata.metadata":"https://media.windows.net/api/$metadata#AccessPolicies/@Element","Id":"nb:pid:UUID:69c80d98-7830-407f-a9af-e25f4b0d3e5f","Created":"2015-02-18T06:52:09.8862191Z","LastModified":"2015-02-18T06:52:09.8862191Z","Name":"access policy","DurationInMinutes":43200.0,"Permissions":1}
 
 ### <a name="create-an-ondemand-streaming-locator"></a>Creación de un localizador de streaming a petición
-Crear el localizador de Hola para activos especificado hello y directiva de recursos.
+Cree el localizador para el recurso especificado y la directiva de recursos.
 
 Solicitud:
 
@@ -138,7 +138,7 @@ Respuesta:
     {"odata.metadata":"https://media.windows.net/api/$metadata#Locators/@Element","Id":"nb:lid:UUID:be245661-2bbd-4fc6-b14f-9cf9a1492e5e","ExpirationDateTime":"2015-03-20T06:34:47.267872+00:00","Type":2,"Path":"http://amstest1.streaming.mediaservices.windows.net/be245661-2bbd-4fc6-b14f-9cf9a1492e5e/","BaseUri":"http://amstest1.streaming.mediaservices.windows.net","ContentAccessComponent":"be245661-2bbd-4fc6-b14f-9cf9a1492e5e","AccessPolicyId":"nb:pid:UUID:1480030d-c481-430a-9687-535c6a5cb272","AssetId":"nb:cid:UUID:cc1e445d-1500-80bd-538e-f1e4b71b465e","StartTime":"2015-02-18T06:34:47.267872+00:00","Name":null}
 
 ### <a name="build-streaming-urls"></a>Creación de direcciones URL de streaming
-Hola de uso **ruta de acceso** valor devuelto después de la creación de hello de Hola Hola de toobuild de localizador Smooth, HLS y las direcciones URL de MPEG DASH. 
+Use el valor **Path** devuelto después de la creación del localizador para generar las direcciones URL Smooth, HLS y MPEG DASH. 
 
 Smooth Streaming: **Path** + nombre del archivo de manifiesto + "/manifest"
 
@@ -161,7 +161,7 @@ ejemplo:
 
 
 ### <a name="build-progressive-download-urls"></a>Creación de direcciones URL de descarga progresiva
-Hola de uso **ruta de acceso** valor devuelto después de la creación de hello de dirección URL de la descarga progresiva de hello localizador toobuild Hola.   
+Use el valor **Path** devuelto después de la creación del localizador para generar la dirección URL de descarga progresiva.   
 
 URL: **Path** + nombre del archivo mp4 de recursos
 

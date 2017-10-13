@@ -1,6 +1,6 @@
 ---
-title: "aaaSet seguridad Hola origen y de destino para tooAzure de replicación de servidor físico con Azure Site Recovery | Documentos de Microsoft"
-description: "Resume Hola pasos tooset la configuración de origen y de destino para la replicación de almacenamiento de tooAzure de servidores físicos con hello servicio Azure Site Recovery"
+title: "Configuración del origen y el destino para la replicación del servidor físico en Azure con Azure Site Recovery | Microsoft Docs"
+description: "Se resumen los pasos para configurar los valores de origen y de destino para la replicación de servidores físicos en Azure Storage con el servicio Azure Site Recovery"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -14,61 +14,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.openlocfilehash: e75ef23174d77509bf54380eba8f251a7337a45f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: e89bbf5a2c1d71852e49da43d3106a05ebfc28a8
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="step-7-set-up-hello-source-and-target-for-physical-server-replication-tooazure"></a>Paso 7: Configurar origen de Hola y de destino para tooAzure de replicación del servidor físico
+# <a name="step-7-set-up-the-source-and-target-for-physical-server-replication-to-azure"></a>Paso 7: Configuración del origen y el destino para la replicación del servidor físico en Azure
 
-Este artículo describe cómo tooconfigure de configuración de origen y de destino cuando se replican de manera local tooAzure de servidores físicos, mediante hello [Azure Site Recovery](site-recovery-overview.md) servicio Hola portal de Azure.
+En este artículo se describe cómo configurar las opciones de origen y de destino al replicar servidores físicos locales en Azure mediante el servicio [Azure Site Recovery](site-recovery-overview.md) en Azure Portal.
 
-Envíe los comentarios y preguntas en parte inferior de este artículo, o en Hola de hello [foro de servicios de recuperación de Azure](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+Publique cualquier comentario o pregunta en la parte inferior de este artículo, o bien en el [foro de Azure Recovery Services](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
 
 
-## <a name="set-up-hello-source-environment"></a>Configurar el entorno de origen Hola
+## <a name="set-up-the-source-environment"></a>Configuración del entorno de origen
 
-Configurar el servidor de configuración de hello, registrar en el almacén de Hola y detectar máquinas.
+Configure el servidor de configuración, regístrelo en el almacén y detecte las máquinas virtuales.
 
 1. Haga clic en **Site Recovery** > **Paso 1: Preparar la infraestructura** > **Origen**.
 2. Si no tiene un servidor de configuración, haga clic en **+Servidor de configuración**.
 3. En **Agregar servidor**, compruebe que aparezca **Servidor de configuración** en **Tipo de servidor**.
-4. Descargue el archivo de instalación de configuración de Site Recovery unificado de Hola.
-5. Descargue la clave de registro del almacén de Hola. Se le solicitará cuando ejecute la instalación unificada. clave de Hello es válida durante cinco días después de generarlo.
+4. Descargue el archivo de instalación unificada de Site Recovery.
+5. Descargue la clave de registro del almacén. Se le solicitará cuando ejecute la instalación unificada. La clave será válida durante cinco días a partir del momento en que se genera.
 
    ![Configurar origen](./media/vmware-walkthrough-source-target/set-source2.png)
 
 
-## <a name="register-hello-configuration-server-in-hello-vault"></a>Registrar el servidor de configuración de hello en el almacén de Hola
+## <a name="register-the-configuration-server-in-the-vault"></a>Registro del servidor de configuración en el almacén
 
-Realice la siguiente Hola antes de iniciar después ejecutar el programa de instalación unificada tooinstall servidor de configuración de hello, servidor de procesos de Hola y servidor de destino maestro Hola. Hola vídeo describe cómo configurar los componentes de hello para la replicación de VM de VMware tooAzure. Sin embargo, hello mismo proceso es válido para la replicación de tooAzure de servidor físico.
+Haga lo siguiente antes de empezar y, después, ejecute la instalación unificada para instalar el servidor de configuración, el servidor de procesos y el servidor de destino maestro. En el vídeo se describe cómo configurar los componentes de la máquina virtual de VMware para la replicación de Azure. Pero este proceso también es válido para la replicación de Azure de un servidor físico.
 
-- En la máquina virtual del servidor de configuración de hello, asegúrese de que el reloj del sistema de Hola se sincroniza con un [servidor horario](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service). Deben ser iguales. Si hay una diferencia de 15 minutos, antes o después, se podría producir un error en la instalación.
-- Ejecute el programa de instalación como administrador Local en el equipo del servidor de configuración de Hola.
-- Asegúrese de que TLS 1.0 está habilitado en hello máquina virtual.
+- En la máquina virtual del servidor de configuración, asegúrese de que el reloj del sistema está sincronizado con un [servidor horario](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service). Deben ser iguales. Si hay una diferencia de 15 minutos, antes o después, se podría producir un error en la instalación.
+- Ejecute la instalación como Administrador local en la máquina del servidor de configuración.
+- Asegúrese de que TLS 1.0 está habilitada en la máquina virtual.
 
 
 [!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
 
 > [!NOTE]
-> También se puede instalar el servidor de configuración de Hello [desde la línea de comandos de hello](http://aka.ms/installconfigsrv).
+> El servidor de configuración también se puede instalar [desde la línea de comandos](http://aka.ms/installconfigsrv).
 
 
 
 
-## <a name="set-up-hello-target-environment"></a>Configurar el entorno de destino de Hola
+## <a name="set-up-the-target-environment"></a>Configuración del entorno de destino
 
-Antes de configurar el entorno de destino de hello, asegúrese de que tiene una cuenta de almacenamiento de Azure y la configuración de red virtual.
+Antes de configurar el entorno de destino, asegúrese de tener una cuenta de Azure Storage y una red virtual configurada.
 
-1. Haga clic en **preparar infraestructura** > **destino**, y seleccione Hola desea toouse de suscripción de Azure.
+1. Haga clic en **Preparar infraestructura** > **Destino** y seleccione la suscripción de Azure que quiere usar.
 2. Especifique si el modelo de implementación de destino está basado en Resource Manager o si es el clásico.
 3. Site Recovery comprueba que tiene una o más cuentas de almacenamiento y redes compatibles.
 
    ![Destino](./media/physical-walkthrough-source-target/gs-target.png)
 
-4. Si no ha creado una cuenta de almacenamiento o red, haga clic en **+ cuenta de almacenamiento** o **+ red**, toocreate un administrador de recursos cuenta o red en línea.
+4. Si no ha creado una cuenta de almacenamiento ni una red, haga clic en **+Cuenta de almacenamiento** o **+Red** para crear una cuenta o red de Resource Manager en línea.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Vaya demasiado[paso 8: configurar una directiva de replicación](physical-walkthrough-replication.md)
+Vaya al [Paso 8: Configuración de una directiva de replicación](physical-walkthrough-replication.md)

@@ -1,6 +1,6 @@
 ---
-title: aaaAzure servicio DNS de tejido de servicio | Documentos de Microsoft
-description: "Usar servicio de dns del tejido de servicio para detectar microservicios desde dentro de clúster de Hola."
+title: Servicio DNS de Azure Service Fabric | Microsoft Docs
+description: "Use el servicio DNS de Service Fabric para detectar microservicios desde dentro del clúster."
 services: service-fabric
 documentationcenter: .net
 author: msfussell
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/27/2017
 ms.author: msfussell
-ms.openlocfilehash: fa536f0e41f52c4942702d0a1bdcd3ed7d418d6d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9871bc5aa4e74ab0faef401d67c4e9558eb5e14b
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Servicio DNS en Azure Service Fabric
-Hola servicio DNS es un servicio de sistema opcional que se puede habilitar en el clúster toodiscover otros servicios que utilicen el protocolo DNS Hola.
+El servicio DNS es un servicio de sistema opcional que se puede habilitar en el clúster para detectar otros servicios que usan el protocolo DNS.
 
-Muchos servicios, especialmente en los servicios en contenedores, pueden tener un nombre de dirección URL existente y que se va a tooresolve capaz de ellos mediante el protocolo DNS estándar hello (en lugar del protocolo de servicio de nomenclatura de hello) es deseable, especialmente en escenarios "Levantar y mover". Hola servicio DNS permite toomap DNS nombres tooa nombre del servicio y, por tanto, resolver direcciones IP del extremo. 
+Muchos servicios, sobre todo los servicios en contenedores, pueden tener un nombre de dirección URL existente. El poder resolverlos mediante el protocolo DNS estándar (en lugar del protocolo Servicio de nombres) es deseable, en particular en escenarios "lift-and-shift". El servicio DNS permite asignar nombres DNS a un nombre de servicio y, por tanto, resolver direcciones IP del punto de conexión. 
 
-Hola servicio DNS asigna nombres de tooservice de nombres DNS, que a su vez se resuelven al extremo de servicio de hello Naming Service tooreturn Hola. nombre DNS de Hello para el servicio de Hola se proporciona en tiempo de Hola de creación. 
+El servicio DNS asigna nombres DNS a nombres de servicio que el protocolo Servicio de nombres resuelve para devolver el punto de conexión del servicio. El nombre DNS para el servicio se proporciona en el momento de la creación. 
 
 ![puntos de conexión de servicio][0]
 
-## <a name="enabling-hello-dns-service"></a>Habilitar el servicio DNS de Hola
-En primer lugar debe servicio DNS de tooenable hello en el clúster. Obtener plantilla hello para el clúster de Hola que desea toodeploy. Puede cualquier Hola uso [plantillas de ejemplo](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) o crear una plantilla de administrador de recursos. Puede habilitar el servicio DNS Hola con hello pasos:
+## <a name="enabling-the-dns-service"></a>Habilitar el servicio DNS
+Primero debe habilitar el servicio DNS en el clúster. Obtenga la plantilla del clúster que desea implementar. Puede usar las [plantillas de ejemplo](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) o crear una plantilla de Resource Manager. Puede habilitar el servicio DNS con los pasos siguientes:
 
-1. Compruebe que hello `apiversion` se establece demasiado`2017-07-01-preview` para hello `Microsoft.ServiceFabric/clusters` recurso y si no es así, actualizarla como se muestra en el siguiente fragmento de código de hello:
+1. Compruebe que `apiversion` está establecido en `2017-07-01-preview` para el recurso `Microsoft.ServiceFabric/clusters` y, si no es así, actualícelo como se muestra en el siguiente fragmento de código:
 
     ```json
     {
@@ -44,7 +44,7 @@ En primer lugar debe servicio DNS de tooenable hello en el clúster. Obtener pla
     }
     ```
 
-2. Ahora habilitar el servicio DNS Hola agregando Hola siguientes `addonFeatures` sección tras hello `fabricSettings` sección tal y como se muestra en el siguiente fragmento de código de hello: 
+2. Ahora, habilite el servicio DNS al agregar la siguiente sección `addonFeatures` después de la sección `fabricSettings`, como se muestra en el siguiente fragmento de código: 
 
     ```json
         "fabricSettings": [
@@ -55,18 +55,18 @@ En primer lugar debe servicio DNS de tooenable hello en el clúster. Obtener pla
         ],
     ```
 
-3. Una vez que se ha actualizado la plantilla de clúster con hello anterior cambios, aplicarlos y deje que Hola actualización completada. Una vez completado, Hola servicio del sistema DNS comienza a ejecutarse en el clúster que se denomina `fabric:/System/DnsService` en la sección de servicio de sistema en el Explorador de Service Fabric Hola. 
+3. Una vez actualizada la plantilla del clúster con los cambios anteriores, aplíquelos y deje que se complete la actualización. Una vez completada, el servicio de sistema DNS comienza a ejecutarse en el clúster denominado `fabric:/System/DnsService` en la sección de servicios del sistema de Service Fabric Explorer. 
 
-Como alternativa, puede habilitar Hola servicio DNS a través del portal de hello en tiempo de Hola de creación del clúster. Hola servicio DNS puede habilitarse al activar casilla de Hola para `Include DNS service` en hello `Cluster configuration` menú tal y como se muestra en la siguiente captura de pantalla de hello:
+También puede habilitar el servicio DNS a través del portal en el momento de la creación del clúster. El servicio DNS puede habilitarse si se activa la casilla `Include DNS service` en el menú `Cluster configuration`, como se muestra en la captura de pantalla siguiente:
 
-![Habilitar el servicio DNS a través del portal de Hola][2]
+![Habilitación del servicio DNS a través del portal][2]
 
 
-## <a name="setting-hello-dns-name-for-your-service"></a>Nombre DNS de hello para el servicio de configuración
-Una vez Hola servicio DNS se ejecuta en el clúster, puede establecer un nombre DNS para los servicios mediante declaración para los servicios predeterminados en hello `ApplicationManifest.xml` o mediante comandos de Powershell.
+## <a name="setting-the-dns-name-for-your-service"></a>Definición del nombre DNS para el servicio
+Una vez que el servicio DNS se esté ejecutando en el clúster, puede establecer un nombre DNS para los servicios ya sea mediante declaración para los servicios predeterminados en `ApplicationManifest.xml` o a través de comandos de PowerShell.
 
-### <a name="setting-hello-dns-name-for-a-default-service-in-hello-applicationmanifestxml"></a>Establecer nombre DNS de Hola para un servicio de manera predeterminada en hello ApplicationManifest.xml
-Abra el proyecto en Visual Studio, o su editor favorito y hello `ApplicationManifest.xml` archivo. Vaya toohello sección de servicios de manera predeterminada y para cada Hola de complemento de servicio `ServiceDnsName` atributo. Hola de ejemplo siguiente muestra cómo tooset Hola nombre DNS del servicio de hello demasiado`service1.application1`
+### <a name="setting-the-dns-name-for-a-default-service-in-the-applicationmanifestxml"></a>Definición del nombre DNS de un servicio predeterminado en ApplicationManifest.xml
+Abra el proyecto en Visual Studio, o su editor favorito, y abra el archivo `ApplicationManifest.xml`. Vaya a la sección de servicios predeterminados y, para cada servicio, agregue el atributo `ServiceDnsName`. En el ejemplo siguiente se muestra cómo establecer el nombre DNS del servicio en `service1.application1`.
 
 ```xml
     <Service Name="Stateless1" ServiceDnsName="service1.application1">
@@ -75,12 +75,12 @@ Abra el proyecto en Visual Studio, o su editor favorito y hello `ApplicationMani
     </StatelessService>
     </Service>
 ```
-Una vez que se implementa la aplicación hello, instancia de servicio de hello en el Explorador de Service Fabric hello muestra el nombre DNS de Hola para esta instancia, tal y como se muestra en la figura siguiente de Hola: 
+Una vez implementada la aplicación, la instancia de servicio de Service Fabric Explorer muestra el nombre DNS de esta instancia, como se muestra en la siguiente imagen: 
 
 ![puntos de conexión de servicio][1]
 
-### <a name="setting-hello-dns-name-for-a-service-using-powershell"></a>Establecer nombre DNS de Hola para un servicio con Powershell
-Puede establecer nombre DNS de Hola para un servicio cuando se crea mediante hello `New-ServiceFabricService` Powershell. Hello en el ejemplo siguiente se crea un nuevo servicio sin estado con nombre DNS de Hola`service1.application1`
+### <a name="setting-the-dns-name-for-a-service-using-powershell"></a>Definición del nombre DNS de un servicio mediante PowerShell
+Puede establecer el nombre DNS de un servicio cuando se crea mediante el PowerShell `New-ServiceFabricService`. En el ejemplo siguiente se crea un servicio sin estado nuevo con el nombre DNS `service1.application1`.
 
 ```powershell
     New-ServiceFabricService `
@@ -94,9 +94,9 @@ Puede establecer nombre DNS de Hola para un servicio cuando se crea mediante hel
 ```
 
 ## <a name="using-dns-in-your-services"></a>Uso de DNS en los servicios
-Si implementa más de un servicio, puede encontrar puntos de conexión de Hola de otro toocommunicate servicios con mediante un nombre DNS. Hola servicio DNS solo es aplicable toostateless servicios, ya que Hola protocolo DNS no puede comunicarse con servicios con estado. Para los servicios con estado, puede utilizar a proxy inverso integrados de Hola para http llamadas toocall una partición de servicio determinado.
+Si implementa más de un servicio, puede buscar los puntos de conexión de otros servicios con los que comunicarse mediante un nombre DNS. El servicio DNS solo se aplica a los servicios sin estado, ya que el protocolo DNS no puede comunicarse con servicios con estado. En el caso de los servicios con estado, puede usar el proxy inverso integrado para llamadas HTTP para llamar a una partición de servicio determinada.
 
-Hello código siguiente muestra cómo toocall otro servicio, que es simplemente un http regular llamar a donde se debe proporcionar un puerto de Hola y cualquier ruta de acceso opcional como parte de la dirección URL de Hola.
+El código siguiente muestra cómo llamar a otro servicio, lo que constituye una llamada http normal donde se proporcionan el puerto y cualquier ruta de acceso opcional como parte de la dirección URL.
 
 ```csharp
 public class ValuesController : Controller
@@ -125,7 +125,7 @@ public class ValuesController : Controller
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-Más información acerca de la comunicación de servicio en clúster de hello con [conectarse y comunicarse con los servicios](service-fabric-connect-and-communicate-with-services.md)
+Para más información sobre la comunicación de servicios dentro del clúster, vea [Conexión y comunicación con servicios](service-fabric-connect-and-communicate-with-services.md).
 
 [0]: ./media/service-fabric-connect-and-communicate-with-services/dns.png
 [1]: ./media/service-fabric-dnsservice/servicefabric-explorer-dns.PNG

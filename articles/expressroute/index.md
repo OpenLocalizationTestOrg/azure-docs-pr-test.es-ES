@@ -1,8 +1,8 @@
 ---
-title: "aaaAzure documentación de ExpressRoute - tutoriales, referencia de API | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo tooconfigure y administrar una privada ExpressRoute conexión tooMicrosoft servicios en la nube desde sus instalaciones locales de infraestructura o la colocación."
+title: "Documentación sobre Azure ExpressRoute: tutoriales y referencia de API | Microsoft Docs"
+description: "Aprenda a configurar y administrar una conexión ExpressRoute privada con los servicios en la nube de Microsoft desde su infraestructura local o una instalación de colocalización."
 services: expressroute
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: aad3408378b3d492ffa3c9c11a7bb5066567bb8f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 8c12fd74d131538e736d6357da586c5debb9929c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="expressroute-documentation"></a>Documentación de ExpressRoute
 
-Obtenga información acerca de cómo toouse tooset de ExpressRoute de una conexión privada y rápido tooMicrosoft servicios en la nube de la instalación local de infraestructura o la colocación. Los tutoriales, las API de REST y otra documentación lo ayudan a configurar y administrar un circuito ExpressRoute.
+Aprenda a usar ExpressRoute para configurar una conexión privada rápida con los servicios en la nube de Microsoft desde su infraestructura local o una instalación de colocalización. Los tutoriales, las API de REST y otra documentación lo ayudan a configurar y administrar un circuito ExpressRoute.
 
 <ul class="panelContent cardsFTitle">
     <li>

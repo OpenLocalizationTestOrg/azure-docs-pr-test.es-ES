@@ -1,6 +1,6 @@
-## <a name="prerequisite-install-hello-azure-powershell-module"></a>Requisito previo: Instalar Hola módulo de PowerShell de Azure
+## <a name="prerequisite-install-the-azure-powershell-module"></a>Requisito previo: instalar el módulo de Azure PowerShell.
 
-Hola tooperform los pasos de este artículo, deberá demasiado[tooinstall y configurar Azure PowerShell](/powershell/azureps-cmdlets-docs) y siga instrucciones de hello todos los toohello de manera Hola finalizar toosign en Azure y seleccione su suscripción.
+Para seguir los pasos de este artículo, tendrá que [instalar y configurar Azure PowerShell](/powershell/azureps-cmdlets-docs) y seguir las instrucciones hasta el final para iniciar sesión en Azure y seleccionar su suscripción.
 
 > [!NOTE]
 > Si no tiene una cuenta de Azure, necesitará una. Regístrese para [obtener una prueba gratuita aquí](../articles/active-directory/sign-up-organization.md).

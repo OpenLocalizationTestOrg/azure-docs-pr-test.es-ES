@@ -1,6 +1,6 @@
 ---
-title: "tooAzure de conexión de máquina virtual de aaaSQL búsqueda | Documentos de Microsoft"
-description: "Habilitar conexiones cifradas y configure Hola firewall tooallow conexiones tooSQL Server en una máquina virtual Azure (VM) de un indizador de búsqueda de Azure."
+title: "Conexión de máquina virtual de SQL a Azure Search | Microsoft Docs"
+description: "Habilite conexiones cifradas y configure el firewall para permitir conexiones a SQL Server en una máquina virtual de Azure a partir de un indexador de Azure Search."
 services: search
 documentationcenter: 
 author: HeidiSteen
@@ -14,77 +14,77 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 01/23/2017
 ms.author: heidist
-ms.openlocfilehash: 1f0db8a2812b0a7d012e58bb873c4b2b29fa1338
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: bb61330ba5511955e0da16dcd5b8b19529d0e44b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="configure-a-connection-from-an-azure-search-indexer-toosql-server-on-an-azure-vm"></a>Configurar una conexión desde un tooSQL de indizador de búsqueda de Azure Server en una máquina virtual de Azure
-Como se indicó en [tooAzure de conexión de base de datos de SQL de Azure Buscar utilizar indizadores](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), creación de indizadores en **SQL Server en máquinas virtuales de Azure** (o **máquinas virtuales de Azure SQL** abreviado) es compatible con la búsqueda de Azure, pero hay algunos tootake de requisitos previos relacionados con la seguridad atención primero. 
+# <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Configuración de una conexión desde un indexador de Azure Search a SQL Server en una máquina virtual de Azure
+Como se indicó en [Conexión de Azure SQL Database a Azure Search con indexadores](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), la creación de indexadores en **SQL Server en VM de Azure** (o **VM de SQL Azure** para abreviar) es compatible con Azure Search, pero hay varios requisitos previos relacionados con la seguridad de los que hay que ocuparse en primer lugar. 
 
-**Duración de la tarea:** unos 30 minutos, suponiendo que ya instaló un certificado en hello máquina virtual.
+**Duración de la tarea:** aproximadamente 30 minutos, siempre que ya se haya instalado un certificado en la máquina virtual.
 
 ## <a name="enable-encrypted-connections"></a>Habilitación de conexiones cifradas
-Azure Search requiere un canal cifrado para todas las solicitudes del indexador a través una conexión pública a Internet. Esta sección enumeran Hola pasos toomake este trabajo.
+Azure Search requiere un canal cifrado para todas las solicitudes del indexador a través una conexión pública a Internet. En esta sección se enumeran los pasos necesarios para realizar este trabajo.
 
-1. Comprobar propiedades de hello del nombre de sujeto de hello certificado tooverify Hola es el nombre de dominio completo (FQDN) de Hola de hello VM de Azure. Puede utilizar una herramienta como CertUtils u Hola certificados complemento tooview Hola propiedades. Puede obtener Hola FQDN de sección de Essentials de hoja del servicio VM hello, Hola **IP pública dirección/nombre de DNS etiqueta** campo, hello [portal de Azure](https://portal.azure.com/).
+1. En las propiedades del certificado compruebe que el nombre de sujeto es el nombre de dominio completo (FQDN) de la máquina virtual de Azure. Para ver las propiedades, puede utilizar una herramienta como CertUtils o el complemento Certificados. El FQDN se puede obtener de la sección Essentials de la hoja del servicio VM, en el campo **Etiqueta de dirección IP pública/nombre de DNS** de [Azure Portal](https://portal.azure.com/).
    
-   * Para las máquinas virtuales creadas con versiones más recientes de hello **el Administrador de recursos** plantilla, se da formato Hola FQDN como `<your-VM-name>.<region>.cloudapp.azure.com`. 
-   * Para máquinas virtuales anteriores que se crea como un **clásico** VM, hello tiene el formato FQDN `<your-cloud-service-name.cloudapp.net>`. 
-2. Configurar SQL Server toouse hello mediante Hola Editor del registro (regedit). 
+   * En el caso de las VM creadas mediante la plantilla de **Resource Manager** más reciente, el FQDN tiene el formato `<your-VM-name>.<region>.cloudapp.azure.com`. 
+   * En el caso de las VM anteriores creadas como una VM **clásica**, el FQDN tiene el formato `<your-cloud-service-name.cloudapp.net>`. 
+2. Configure SQL Server para que use el certificado mediante el Editor del registro (regedit). 
    
-    Aunque el Administrador de configuración de SQL Server se usa a menudo para esta tarea, no se puede utilizar para este escenario. Si no encuentra Hola importa certificado porque Hola FQDN de hello VM en Azure no coincide con hello FQDN según lo determinado por hello VM (identifica dominio hello como equipo local de Hola o toowhich de dominio de red de Hola que se ha unido). Cuando no coinciden los nombres, usar certificado de regedit toospecify Hola.
+    Aunque el Administrador de configuración de SQL Server se usa a menudo para esta tarea, no se puede utilizar para este escenario. No encontrará el certificado importado, ya que el FQDN de la VM de Azure no coincide con el FQDN que determina la VM (identifica el dominio como el equipo local o el dominio de red al que está conectado). Si los nombres no coinciden, utilice regedit para especificar el certificado.
    
-   * En regedit, busque la clave del registro de toothis: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\[MSSQL13.MSSQLSERVER]\MSSQLServer\SuperSocketNetLib\Certificate`.
+   * En regedit, vaya a esta clave del Registro: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\[MSSQL13.MSSQLSERVER]\MSSQLServer\SuperSocketNetLib\Certificate`.
      
-     Hola `[MSSQL13.MSSQLSERVER]` parte varía en función de la versión y nombre de instancia. 
-   * Establecer valor de Hola de hello **certificado** toohello clave **huella digital** del certificado SSL de hello importado toohello máquina virtual.
+     La parte `[MSSQL13.MSSQLSERVER]` varía en función de la versión y del nombre de la instancia. 
+   * Establezca el valor de la clave del **certificado** en la **huella digital** del certificado SSL que importó a la VM.
      
-     Hay varias maneras tooget Hola huella digital algunas mejor que otros. Si copia desde hello **certificados** un complemento de MMC, probablemente seleccionará un carácter inicial invisible [tal y como se describe en este artículo de soporte técnico](https://support.microsoft.com/kb/2023869/), que da como resultado un error cuando intente una conexión. Existen varias soluciones para corregir este problema. Hola más fácil es toobackspace a lo largo y, a continuación, vuelva a escribir el primer carácter de Hola de hello huella digital tooremove Hola carácter inicial en el campo de valor de clave de hello en regedit. Como alternativa, puede usar una huella digital de otra herramienta toocopy Hola.
-3. Conceder permisos de cuenta de servicio de toohello. 
+     Hay varias maneras de obtener la huella digital, y algunas de ellas son mejores que otras. Si la copia desde el complemento **Certificados** de MMC, es probable que elija un carácter inicial invisible [como se describe en este artículo](https://support.microsoft.com/kb/2023869/), lo que provoca un error al intentar establecer una conexión. Existen varias soluciones para corregir este problema. La más fácil es borrarlo y, luego, volver a escribir el primer carácter de la huella digital para quitar el carácter inicial del campo de valor de clave en regedit. Como alternativa, se puede utilizar otra herramienta para copiar la huella digital.
+3. Otorgue permisos a la cuenta de servicio. 
    
-    Asegúrese de que Hola cuenta de servicio de SQL Server se concede permiso adecuado en la clave privada de hello del certificado SSL de Hola. Si pasa por alto este paso, SQL Server no se iniciará. Puede usar hello **certificados** complemento o **CertUtils** para esta tarea.
-4. Reinicie el servicio de SQL Server de Hola.
+    Asegúrese de que a la cuenta de servicio de SQL Server se le concede el permiso adecuado en la clave privada del certificado SSL. Si pasa por alto este paso, SQL Server no se iniciará. Puede usar el complemento **Certificados** o **CertUtils** para esta tarea.
+4. Reinicie el servicio de SQL Server.
 
-## <a name="configure-sql-server-connectivity-in-hello-vm"></a>Configurar la conectividad de SQL Server en hello VM
-Después de configurar la conexión de hello cifrado requerida la búsqueda de Azure, hay una configuración adicional de pasos intrínseco tooSQL Server en máquinas virtuales de Azure. Si aún no lo ha no lo ha hecho, Hola próximo paso es configuración toofinish mediante uno de estos artículos:
+## <a name="configure-sql-server-connectivity-in-the-vm"></a>Configuración de la conectividad de SQL Server en la máquina virtual
+Después de configurar la conexión cifrada requerida por Azure Search, existen pasos adicionales de configuración intrínsecos a SQL Server en las máquinas virtuales de Azure. Si aún no lo ha hecho, el paso siguiente es finalizar la configuración mediante cualquiera de estos artículos:
 
-* Para una **el Administrador de recursos** VM, consulte [conectar tooa Máquina Virtual de SQL Server en Azure mediante el Administrador de recursos](../virtual-machines/windows/sql/virtual-machines-windows-sql-connect.md). 
-* Para una **clásico** VM, consulte [conectar tooa Máquina Virtual de SQL Server en Azure clásico](../virtual-machines/windows/classic/sql-connect.md).
+* En el caso de una máquina virtual de **Resource Manager** , consulte [Conexión a una máquina virtual de SQL Server en Azure (Resource Manager)](../virtual-machines/windows/sql/virtual-machines-windows-sql-connect.md). 
+* En el caso de una máquina virtual **clásica** , consulte [Conexión a una máquina virtual de SQL Server en Azure (implementación clásica)](../virtual-machines/windows/classic/sql-connect.md).
 
-En particular, revise la sección de hello en cada artículo para "conectar a través de Hola internet".
+En concreto, consulte en ambos artículos la sección dedicada a la "conexión a través de Internet".
 
-## <a name="configure-hello-network-security-group-nsg"></a>Configurar Hola grupo de seguridad de red (NSG)
-No es inusual tooconfigure Hola NSG y extremo correspondiente de Azure o lista de Control de acceso (ACL) toomake sus partes de tooother accesible de máquina virtual de Azure. Lo más probable es que ha realizado esto antes tooallow su propio tooyour tooconnect de lógica de aplicación VM de SQL Azure. Es similar para una tooyour de conexión de búsqueda de Azure VM de SQL Azure. 
+## <a name="configure-the-network-security-group-nsg"></a>Configuración del grupo de seguridad de red (NSG)
+No es extraño configurar el NSG y el correspondiente punto de conexión o lista de control de acceso (ACL) de Azure para que se pueda acceder a la máquina virtual de Azure desde otras partes. Lo más probable es que ya haya realizado esta operación para la lógica de su aplicación se conecte a la máquina virtual de SQL Azure. Esto es igual para una conexión de Azure Search a la máquina virtual de SQL Azure. 
 
-Hola vínculos siguientes proporcionan instrucciones sobre la configuración de NSG para las implementaciones de máquina virtual. Siga estas instrucciones que tooacl un punto de conexión de la búsqueda de Azure en función de su dirección IP.
+Los vínculos siguientes proporcionan instrucciones para la configuración de NSG en las implementaciones de VM. Siga estas instrucciones para incluir en la ACL un punto de conexión de Azure Search por su dirección IP.
 
 > [!NOTE]
 > Para más información, consulte [¿Qué es un grupo de seguridad de red?](../virtual-network/virtual-networks-nsg.md)
 > 
 > 
 
-* Para una **el Administrador de recursos** VM, consulte [cómo toocreate NSG para las implementaciones de ARM](../virtual-network/virtual-networks-create-nsg-arm-pportal.md). 
-* Para una **clásico** VM, consulte [cómo toocreate NSG para las implementaciones de clásico](../virtual-network/virtual-networks-create-nsg-classic-ps.md).
+* En el caso de una máquina virtual de **Resource Manager** , consulte [Administración de grupos de seguridad de red con Azure Portal](../virtual-network/virtual-networks-create-nsg-arm-pportal.md). 
+* En el caso de una máquina virtual **clásica** , consulte [Creación de grupos de seguridad de red (clásicos) en PowerShell](../virtual-network/virtual-networks-create-nsg-classic-ps.md).
 
-Asignación de direcciones IP puede suponer algunos de los desafíos que se solucionan fácilmente si es consciente del problema de Hola y soluciones alternativas posibles. en las secciones restantes Hola se proporcionan recomendaciones para tratar problemas relacionadas tooIP direcciones Hola ACL.
+La dirección IP puede plantear ciertos problemas, que se solucionan fácilmente si se conoce el problema y las posibles soluciones. En las restantes secciones encontrará recomendaciones para el control de los problemas relacionados con las direcciones IP de la ACL.
 
-#### <a name="restrict-access-toohello-search-service-ip-address"></a>Restringir la dirección IP del servicio de búsqueda de toohello de acceso
-Se recomienda encarecidamente que restrinja hello toohello IP dirección de acceso a su servicio de búsqueda de hello ACL en lugar de hacer que las máquinas virtuales de Azure de SQL muy abierta tooany las solicitudes de conexión. Puede encontrar fácilmente Hola IP dirección haciendo ping Hola FQDN (por ejemplo, `<your-search-service-name>.search.windows.net`) de su servicio de búsqueda.
+#### <a name="restrict-access-to-the-search-service-ip-address"></a>Restricción del acceso a la dirección IP del servicio de búsqueda
+Se recomienda encarecidamente restringir el acceso a la dirección IP del servicio de búsqueda en la ACL en lugar de abrir totalmente las máquinas virtuales de SQL Azure a cualquier solicitud de conexión. Puede averiguar fácilmente la dirección IP haciendo ping en el FQDN (por ejemplo, `<your-search-service-name>.search.windows.net`) del servicio de búsqueda.
 
 #### <a name="managing-ip-address-fluctuations"></a>Administración de las fluctuaciones de dirección IP
-Si el servicio de búsqueda tiene solo una unidad de búsqueda (es decir, una réplica y una partición), dirección IP de hello cambiará durante el reinicio de servicios de rutina, lo que invalida una ACL existente con la dirección IP del servicio de la búsqueda.
+Si el servicio de búsqueda tiene solo una unidad de búsqueda (es decir, una réplica y una partición), la dirección IP cambiará durante los reinicios rutinarios, lo que invalida una ACL existente con la dirección IP de su servicio de búsqueda.
 
-Error de conectividad posteriores hello tooavoid unidireccional es toouse más de una réplica y una partición en la búsqueda de Azure. Si lo hace, incrementa el costo de hello, pero también resuelve el problema de direcciones IP de Hola. En Azure Search, las direcciones IP no cambian cuando hay más de una unidad de búsqueda.
+Una forma de evitar el posterior error de conectividad es usar más de una réplica y una partición en Azure Search. Esto aumenta el costo, pero también soluciona el problema de las direcciones IP. En Azure Search, las direcciones IP no cambian cuando hay más de una unidad de búsqueda.
 
-Un segundo enfoque es tooallow Hola conexión toofail y, a continuación, volver a configurar Hola ACL en hello NSG. En promedio, puede esperar toochange de direcciones IP cada pocas semanas. Para los clientes que realizan una indexación controlado muy de tarde en tarde, este enfoque puede ser viable.
+Un segundo enfoque es permitir que la conexión genere un error y, después, volver a configurar las ACL en el NSG. Como promedio, se puede esperar que las direcciones IP cambien cada pocas semanas. Para los clientes que realizan una indexación controlado muy de tarde en tarde, este enfoque puede ser viable.
 
-Un tercer enfoque viable (pero no es particularmente seguro) es toospecify Hola intervalo de direcciones IP Hola región de Azure donde se aprovisione el servicio de búsqueda. lista de Hola de intervalos IP desde el que las direcciones IP públicas se asignan recursos tooAzure se publica en [intervalos de direcciones IP del centro de datos de Azure](https://www.microsoft.com/download/details.aspx?id=41653). 
+Un tercer enfoque viable (aunque no especialmente seguro) es especificar el intervalo de direcciones IP de la región de Azure en la que se aprovisiona el servicio de búsqueda. La lista de intervalos IP desde la que se asignan direcciones IP públicas a recursos de Azure está publicada en [Intervalos IP del centro de datos de Azure](https://www.microsoft.com/download/details.aspx?id=41653). 
 
-#### <a name="include-hello-azure-search-portal-ip-addresses"></a>Incluir direcciones IP de portal de hello búsqueda de Azure
-Si usas hello toocreate portal Azure un indizador, lógica de búsqueda de Azure de portal también necesita acceso tooyour SQL Azure VM durante la hora de creación. Las direcciones IP del portal de Azure Search se pueden encontrar haciendo ping en `stamp2.search.ext.azure.com`.
+#### <a name="include-the-azure-search-portal-ip-addresses"></a>Inclusión de las direcciones IP del portal de Azure Search
+Si utiliza Azure Portal para crear un indexador, la lógica del portal de Azure Search también necesitará acceso a la máquina virtual de SQL Azure durante el tiempo de creación. Las direcciones IP del portal de Azure Search se pueden encontrar haciendo ping en `stamp2.search.ext.azure.com`.
 
 ## <a name="next-steps"></a>Pasos siguientes
-Con configuración fuera del modo de hello, ahora puede especificar un servidor SQL Server en la máquina virtual de Azure como origen de datos de Hola para un indizador de búsqueda de Azure. Vea [tooAzure de conexión de base de datos de SQL de Azure Buscar utilizar indizadores](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) para obtener más información.
+Dejando a un lado la configuración, ya puede especificar un servicio SQL Server en la máquina virtual de Azure como origen de los datos de un indexador de Azure Search. Consulte [Conexión de Azure SQL Database a Azure Search con indexadores](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) para más información.
 

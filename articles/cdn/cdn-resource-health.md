@@ -1,6 +1,6 @@
 ---
-title: estado de hello aaaMonitor de recursos de red CDN de Azure | Documentos de Microsoft
-description: "Obtenga información acerca de cómo toomonitor Hola mantenimiento de los recursos de red CDN de Azure mediante el mantenimiento de recursos de Azure."
+title: "Supervisión del estado de los recursos de una red CDN de Azure | Microsoft Docs"
+description: "Obtenga información sobre cómo supervisar el estado de los recursos de una red CDN de Azure con Estado de los recursos de Azure."
 services: cdn
 documentationcenter: .net
 author: zhangmanling
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 0a77e56d2fecae4bde6c83730c05375853a6638a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 37fe208f5087f318e665e76825127854b4a11c98
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="monitor-hello-health-of-azure-cdn-resources"></a>Supervisar el estado de Hola de recursos de red CDN de Azure
+# <a name="monitor-the-health-of-azure-cdn-resources"></a>Supervisión del estado de los recursos de una red CDN de Azure
   
-El estado de los recursos de la red CDN de Azure es un subconjunto de [Estado de los recursos de Azure](../resource-health/resource-health-overview.md).  Puede utilizar Mantenimiento de hello toomonitor Azure recursos de mantenimiento de recursos de red CDN y problemas de tootroubleshoot las instrucciones de recepción.
+El estado de los recursos de la red CDN de Azure es un subconjunto de [Estado de los recursos de Azure](../resource-health/resource-health-overview.md).  Puede usar Estado de los recursos de Azure para supervisar el estado de los recursos de una red CDN y recibir instrucciones procesables para solucionar problemas.
 
 >[!IMPORTANT] 
->Mantenimiento de recursos de red CDN de Azure actualmente solo las cuentas para el estado de Hola de entrega de CDN global y funciones de API.  El estado de los recursos de la red CDN de Azure no comprueba los puntos de conexión individuales de la red CDN.
+>El estado de los recursos de la red CDN de Azure solo tiene en cuenta el estado de la entrega de la red CDN global y las funciones de la API.  El estado de los recursos de la red CDN de Azure no comprueba los puntos de conexión individuales de la red CDN.
 >
->señales de Hello esa fuente mantenimiento de recursos de red CDN de Azure pueden ser up too15 minutos.
+>Las señales que recibe el estado de los recursos de la red CDN de Azure pueden retrasarse hasta 15 minutos.
 
-## <a name="how-toofind-azure-cdn-resource-health"></a>¿Cómo toofind mantenimiento de recursos de red CDN de Azure
+## <a name="how-to-find-azure-cdn-resource-health"></a>Buscar el estado de los recursos de una red CDN de Azure
 
-1. Hola [portal de Azure](https://portal.azure.com), examinar el perfil de CDN tooyour.
+1. En [Azure Portal](https://portal.azure.com), vaya a su perfil de la red CDN.
 
-2. Haga clic en hello **configuración** botón.
+2. Haga clic en el botón **Configuración**.
 
     ![Botón Configuración](./media/cdn-resource-health/cdn-profile-settings.png)
 
@@ -42,22 +42,22 @@ El estado de los recursos de la red CDN de Azure es un subconjunto de [Estado de
     ![Estado de los recursos de la red CDN](./media/cdn-resource-health/cdn-resource-health3.png)
 
 >[!TIP] 
->También puede encontrar recursos de red CDN enumerados en hello *estado de los recursos* el icono Servicios hello *ayuda y soporte técnico* hoja.  ¿Puede obtener demasiado rápidamente*ayuda y soporte técnico* haciendo clic en hello en un círculo **?** en hello esquina superior derecha del portal de Hola.
+>También encontrará los recursos de la red CDN en el icono *Estado de los recursos* de la hoja *Ayuda y soporte técnico*.  Para acceder rápidamente a *Ayuda y soporte técnico*, haga clic en el círculo con un signo de interrogación (**?**) en la esquina superior derecha del portal.
 >
 > ![Ayuda y soporte técnico](./media/cdn-resource-health/cdn-help-support.png)
 
 ## <a name="azure-cdn-specific-messages"></a>Mensajes específicos de la red CDN de Azure
 
-Mantenimiento de recursos de red CDN de Estados tooAzure relacionado se encuentra por debajo.
+Los estados relacionados con el estado de los recursos de una red CDN de Azure se muestra a continuación.
 
 |Message | Acción recomendada |
 |---|---|
 |Es posible que haya detenido, quitado o configurado de forma incorrecta uno o más de los puntos de conexión de la red CDN. | Es posible que haya detenido, quitado o configurado de forma incorrecta uno o más de los puntos de conexión de la red CDN.|
-|Lo sentimos, el servicio de administración de red CDN Hola no está disponible actualmente | Vuelva aquí para las actualizaciones de estado; comprobar Si el problema persiste después de hello espera el tiempo de resolución, póngase en contacto con el soporte técnico.|
-|Es posible que los puntos de conexión de la red CDN se vean afectados por problemas continuos con algunos de nuestros proveedores de redes CDN. | Vuelva aquí para las actualizaciones de estado; comprobar Usar toolearn de herramienta de solución de problemas de hello cómo tootest su origen y el punto de conexión de red CDN; Si el problema persiste después de hello espera el tiempo de resolución, póngase en contacto con el soporte técnico. |
-|Los cambios de configuración en los puntos de conexión de la red CDN están experimentando retrasos en la propagación. | Vuelva aquí para las actualizaciones de estado; comprobar Si los cambios de configuración no se ha propagado completamente en el tiempo de espera de hello, póngase en contacto con el soporte técnico.|
-|Lo sentimos, que estamos sufriendo problemas el cargar portal complementario de Hola | Vuelva aquí para las actualizaciones de estado; comprobar Si el problema persiste después de hello espera el tiempo de resolución, póngase en contacto con el soporte técnico.|
-Tenemos problemas con algunos de nuestros proveedores de red CDN. | Vuelva aquí para las actualizaciones de estado; comprobar Si el problema persiste después de hello espera el tiempo de resolución, póngase en contacto con el soporte técnico. |
+|El servicio de administración de la red CDN no está disponible en estos momentos. | Vuelva aquí para ver actualizaciones de estado. Si el problema persiste después del tiempo de resolución esperado, póngase en contacto con el soporte técnico.|
+|Es posible que los puntos de conexión de la red CDN se vean afectados por problemas continuos con algunos de nuestros proveedores de redes CDN. | Vuelva aquí para ver actualizaciones de estado. Use la herramienta de solución de problemas para obtener información sobre cómo probar el origen y el punto de conexión de la red CDN. Si el problema persiste después del tiempo de resolución esperado, póngase en contacto con el soporte técnico. |
+|Los cambios de configuración en los puntos de conexión de la red CDN están experimentando retrasos en la propagación. | Vuelva aquí para ver actualizaciones de estado. Si los cambios de configuración no se propagan por completo en el tiempo esperado, póngase en contacto con el soporte técnico.|
+|Tenemos problemas al cargar el portal complementario. | Vuelva aquí para ver actualizaciones de estado. Si el problema persiste después del tiempo de resolución esperado, póngase en contacto con el soporte técnico.|
+Tenemos problemas con algunos de nuestros proveedores de red CDN. | Vuelva aquí para ver actualizaciones de estado. Si el problema persiste después del tiempo de resolución esperado, póngase en contacto con el soporte técnico. |
 
 ## <a name="next-steps"></a>Pasos siguientes
 

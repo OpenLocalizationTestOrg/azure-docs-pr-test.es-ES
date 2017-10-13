@@ -1,6 +1,6 @@
 ---
-title: "formato de archivo de importación y exportación de metadatos y propiedades de aaaAzure | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toospecify metadatos y propiedades de uno o más blobs que forman parte de una importación o exportación de trabajo."
+title: Formato del archivo de propiedades y metadatos de Azure Import/Export | Microsoft Docs
+description: "Obtenga información sobre cómo especificar metadatos y propiedades para uno o más blobs que forman parte de un trabajo de importación o exportación."
 author: muralikk
 manager: syadav
 editor: tysonn
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: bb13c1f1a27baea77298cb224970cd521d02d8c0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 3f728ad94cdcbd32092b677f11a737ae91376720
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-importexport-service-metadata-and-properties-file-format"></a>Formato del archivo de propiedades y metadatos de Azure Import/Export
-Puede especificar metadatos y propiedades para uno o más blobs como parte de un trabajo de importación o exportación. tooset metadatos o propiedades de blobs que se crean como parte de un trabajo de importación, proporcione un archivo de metadatos o propiedades en unidad de disco duro de Hola que contiene Hola datos toobe importado. Para un trabajo de exportación, metadatos y propiedades se escriben tooa archivo de metadatos o las propiedades que se incluye en la unidad de disco duro de hello devuelve tooyou.  
+Puede especificar metadatos y propiedades para uno o más blobs como parte de un trabajo de importación o exportación. Para establecer los metadatos o las propiedades para blobs que se crean como parte de un trabajo de importación, proporcione un archivo de metadatos o propiedades en la unidad de disco duro que contiene los datos que se van a importar. Para un trabajo de exportación, los metadatos y las propiedades se escriben en un archivo de metadatos o propiedades que se incluye en la unidad de disco duro que se le devuelve.  
   
 ## <a name="metadata-file-format"></a>Formato del archivo de metadatos  
-formato de Hola de un archivo de metadatos es el siguiente:  
+El formato de un archivo de metadatos es el siguiente:  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -37,11 +37,11 @@ formato de Hola de un archivo de metadatos es el siguiente:
   
 |Elemento XML|Tipo|Descripción|  
 |-----------------|----------|-----------------|  
-|`Metadata`|Elemento raíz|elemento raíz de Hello del archivo de metadatos de Hola.|  
-|`metadata-name`|String|Opcional. elemento XML de Hello especifica el nombre de Hola de metadatos de hello para el blob de Hola y su valor especifica el valor de Hola de configuración de metadatos de Hola.|  
+|`Metadata`|Elemento raíz|Elemento raíz del archivo de metadatos.|  
+|`metadata-name`|string|Opcional. El elemento XML especifica el nombre de los metadatos para el blob y su valor especifica el valor de la configuración de metadatos.|  
   
 ## <a name="properties-file-format"></a>Formato de archivo de propiedades  
-formato de Hola de un archivo de propiedades es el siguiente:  
+El formato de un archivo de propiedades es el siguiente:  
   
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>  
@@ -59,15 +59,15 @@ formato de Hola de un archivo de propiedades es el siguiente:
   
 |Elemento XML|Tipo|Descripción|  
 |-----------------|----------|-----------------|  
-|`Properties`|Elemento raíz|elemento raíz de Hola de archivo de propiedades de hello.|  
-|`Last-Modified`|String|Opcional. hora de última modificación de Hello para el blob de Hola. Solo para trabajos de exportación.|  
-|`Etag`|string|Opcional. Hola valor ETag del blob. Solo para trabajos de exportación.|  
-|`Content-Length`|string|Opcional. tamaño de Hello del blob de hello en bytes. Solo para trabajos de exportación.|  
-|`Content-Type`|string|Opcional. tipo de contenido de Hola de blob de Hola.|  
-|`Content-MD5`|String|Opcional. Hola hash MD5 del blob.|  
-|`Content-Encoding`|String|Opcional. Hola contenido del blob de codificación.|  
-|`Content-Language`|String|Opcional. Hola idioma del contenido del blob.|  
-|`Cache-Control`|String|Opcional. cadena de control de caché de Hello para el blob de Hola.|  
+|`Properties`|Elemento raíz|Elemento raíz del archivo de propiedades.|  
+|`Last-Modified`|string|Opcional. Hora de la última modificación del blob. Solo para trabajos de exportación.|  
+|`Etag`|string|Opcional. Valor ETag del blob. Solo para trabajos de exportación.|  
+|`Content-Length`|string|Opcional. Tamaño del blob en bytes. Solo para trabajos de exportación.|  
+|`Content-Type`|string|Opcional. Tipo de contenido del blob.|  
+|`Content-MD5`|string|Opcional. Hash MD5 del blob.|  
+|`Content-Encoding`|String|Opcional. Codificación del contenido del blob.|  
+|`Content-Language`|string|Opcional. Idioma del contenido del blob.|  
+|`Cache-Control`|String|Opcional. Cadena de control de caché para el blob.|  
 
 ## <a name="next-steps"></a>Pasos siguientes
 

@@ -1,6 +1,6 @@
 ---
-title: "aaaEnable la sincronización sin conexión de la aplicación de plataforma Universal de Windows (UWP) con aplicaciones móviles | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toouse una aplicación móvil de Azure toocache y sincronización de datos sin conexión en la aplicación de plataforma Universal de Windows (UWP)."
+title: "Habilitación de la sincronización sin conexión para aplicaciones de la Plataforma universal de Windows (UWP) con Mobile Apps | Microsoft Docs"
+description: "Obtenga información acerca de cómo usar una Aplicación móvil de Azure para almacenar en caché y sincronizar datos sin conexión en la aplicación de la Plataforma universal de Windows (UWP)"
 documentationcenter: windows
 author: ggailey777
 manager: syntaxc4
@@ -14,87 +14,87 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.openlocfilehash: a9f4ad02e92c2c423f10f07b7f1a4270aafd6c6f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 4b0a57c3bab688487eb9a50461b406e1a6e477c6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>Activación de la sincronización sin conexión para la aplicación de Windows
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 ## <a name="overview"></a>Información general
-Este tutorial muestra cómo tooadd sin conexión son compatibles con la aplicación de plataforma Universal de Windows (UWP) tooa usar un back-end de aplicación móvil de Azure. Sincronización sin conexión permite toointeract de los usuarios finales con una aplicación móvil: ver, agregar o modificar datos, incluso cuando no hay ninguna conexión de red. Los cambios se almacenan en una base de datos local. Una vez que el dispositivo de hello vuelve a estar conectado, estos cambios se sincronizan con back-end de hello remoto.
+Este tutorial muestra cómo agregar compatibilidad sin conexión a una aplicación de la Plataforma universal de Windows (UWP) mediante un back-end de aplicación móvil de Azure. La sincronización sin conexión permite a los usuarios finales interactuar con una aplicación móvil (ver, agregar o modificar datos), incluso cuando no haya conexión de red. Los cambios se almacenan en una base de datos local. Una vez que el dispositivo se vuelve a conectar, estos cambios se sincronizan con el back-end remoto.
 
-En este tutorial, va a actualizar proyecto de aplicación UWP Hola de tutorial de hello [crear una aplicación Windows] toosupport Hola características sin conexión de las aplicaciones móviles de Azure. Si no usa Hola descarga el proyecto de servidor de inicio rápido, debe agregar proyecto tooyour de paquetes de extensión de acceso de hello datos. Para obtener más información acerca de los paquetes de extensión de servidor, consulte [trabajar con el servidor back-end de .NET Hola SDK para aplicaciones móviles de Azure](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+En este tutorial, actualizará el proyecto de aplicación de UWP del tutorial [Creación de una aplicación para Windows] a fin de conseguir compatibilidad con las características sin conexión de Azure Mobile Apps. Si no usa el proyecto de servidor de inicio rápido descargado, debe agregar paquetes de extensión de acceso de datos al proyecto. Para obtener más información acerca de los paquetes de extensión de servidor, consulte [Trabajar con el SDK del servidor back-end de .NET para Aplicaciones móviles de Azure](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-toolearn más información acerca de la característica de sincronización sin conexión de hello, vea el tema de hello [sincronización de datos sin conexión en aplicaciones móviles de Azure].
+Para obtener más información acerca de la característica de sincronización sin conexión, consulte el tema [Sincronización de datos sin conexión en Aplicaciones móviles de Azure].
 
 ## <a name="requirements"></a>Requisitos
-Este tutorial requiere Hola siguiendo los requisitos previos:
+Este tutorial requiere los siguientes requisitos previos:
 
 * Visual Studio 2013 funcionando en Windows 8.1 o versiones posteriores.
 * Finalización del tutorial [Creación de una aplicación para Windows][Creación de una aplicación para Windows].
 * [Almacén de SQLite de Azure Mobile Services][sqlite store nuget]
 * [SQLite for Universal Windows Platform development](http://www.sqlite.org/downloads)
 
-## <a name="update-hello-client-app-toosupport-offline-features"></a>Actualizar características sin conexión de toosupport la aplicación cliente hello
-Características sin conexión de aplicación móvil Azure le permiten toointeract con una base de datos local, cuando se encuentre en un escenario sin conexión. toouse estas características en la aplicación, inicializar un [SyncContext] [ synccontext] tooa de almacén local. A continuación, hacer referencia a la tabla a través de hello [IMobileServiceSyncTable][IMobileServiceSyncTable] interfaz. SQLite se utiliza como almacén local de hello en dispositivo Hola.
+## <a name="update-the-client-app-to-support-offline-features"></a>Actualización de la aplicación cliente para que admita características sin conexión
+Las características sin conexión de Aplicaciones móviles de Azure permiten interactuar con una base de datos local cuando el usuario se encuentra en un escenario sin conexión. Para usar estas características en una aplicación, inicialice [SyncContext][synccontext] en un almacén local. A continuación, obtenga una referencia a la tabla mediante la interfaz [IMobileServiceSyncTable][IMobileServiceSyncTable] . SQLite se utiliza como almacén local en el dispositivo.
 
-1. Instalar hello [en tiempo de ejecución de código de plataforma Universal de Windows hello](http://sqlite.org/2016/sqlite-uwp-3120200.vsix).
-2. En Visual Studio, abra el Administrador de paquetes de NuGet hello para el proyecto de aplicación UWP Hola que completó en hello [crear una aplicación Windows] tutorial.
-    Buscar e instalar hello **Microsoft.Azure.Mobile.Client.SQLiteStore** paquete NuGet.
+1. Instale el [entorno en tiempo de ejecución de SQLite para la plataforma universal de Windows](http://sqlite.org/2016/sqlite-uwp-3120200.vsix).
+2. En Visual Studio, abra el Administrador de paquetes NuGet en el proyecto de aplicación de UWP que completó en el tutorial [Creación de una aplicación para Windows].
+    Busque e instale el paquete NuGet **Microsoft.Azure.Mobile.Client.SQLiteStore**.
 3. En el Explorador de soluciones, haga clic con el botón derecho en **Referencias** > **Agregar referencia...** >**Universal de Windows**>**Extensiones** y después habilite tanto **SQLite para la Plataforma universal de Windows** como **Tiempo de ejecución de Visual C++ 2015 para Aplicaciones de la Plataforma universal de Windows**.
 
     ![Incorporación de referencia de SQLite UWP][1]
-4. Abra el archivo MainPage.xaml.cs de hello y quitar el comentario hello `#define OFFLINE_SYNC_ENABLED` definición.
-5. En Visual Studio, presione hello **F5** clave toorebuild y aplicación de cliente de hello de ejecución. aplicación Hello funciona Hola igual que antes de habilitar la sincronización sin conexión. Sin embargo, la base de datos local de hello ahora se rellena con datos que pueden usarse en un escenario sin conexión.
+4. Abra el archivo MainPage.xaml.cs y quite la definición `#define OFFLINE_SYNC_ENABLED`.
+5. En Visual Studio, presione la tecla **F5** para volver a compilar y ejecutar la aplicación cliente. La aplicación funciona igual que lo hacía antes de habilitar la sincronización sin conexión. Sin embargo, la base de datos se rellena con datos que pueden utilizarse en un escenario sin conexión.
 
-## <a name="update-sync"></a>Actualizar toodisconnect de aplicación Hola de hello back-end
-En esta sección, se interrumpe Hola conexión tooyour aplicación móvil back-end toosimulate una situación sin conexión. Cuando se agregan elementos de datos, el controlador de excepciones indica que la aplicación hello está en modo sin conexión. En este estado, elementos nuevos agregados en hello local almacenan y se sincronizarán para Hola back-end de aplicación móvil cuando la inserción se vuelva a ejecutar en un estado conectado.
+## <a name="update-sync"></a>Actualización de la aplicación para desconectarla del back-end
+En esta sección, se interrumpe la conexión con el back-end de aplicación móvil para simular un escenario sin conexión. Al agregar elementos de datos, el controlador de excepciones le indicará que la aplicación está en modo sin conexión. En este estado, se agregan nuevos elementos al almacén local y se sincronizarán con el back-end de aplicación móvil cuando se vuelva a ejecutar la inserción en estado conectado.
 
-1. Editar App.xaml.cs en proyecto compartido Hola. Comenta la inicialización de Hola de hello **MobileServiceClient** y agregue Hola después de línea, que utiliza una dirección URL de la aplicación móvil no válido:
+1. Edite App.xaml.cs en el proyecto compartido. Convierta en comentario la inicialización de **MobileServiceClient** y agregue las siguientes líneas, que usan una dirección URL de una aplicación móvil no válida:
 
          public static MobileServiceClient MobileService = new MobileServiceClient("https://your-service.azurewebsites.fail");
 
-    También puede mostrar comportamiento sin conexión deshabilitando Wi-Fi y redes de telefonía móviles en dispositivo de Hola o usar el modo de avión.
-2. Presione **F5** aplicación hello toobuild y ejecución. Tenga en cuenta la sincronización no se pudo al actualizar Hola cuando la aplicación inicia.
-3. Escriba nuevos elementos y observe que la operación de inserción produce un error con un estado de [CancelledByNetworkError] cada vez que hace clic en **Guardar**. Sin embargo, nuevos elementos de lista de tareas Hola existen en el almacén local de hello hasta que estos se pueden insertar back-end de toohello aplicación móvil.  En uno de producción aplicación, si se suprimen las siguientes excepciones de aplicación de cliente de hello se comporta como si aún está conectado back-end de toohello aplicación móvil.
-4. Cierre la aplicación hello y reiníciela tooverify que elementos nuevos de Hola que creó están almacén local toohello persistente.
-5. (Opcional) En Visual Studio, abra el **Explorador de servidores**. Navegar por la base de datos de tooyour en **Azure**->**bases de datos SQL**. Haga clic con el botón derecho en la base de datos y seleccione **Abrir en el Explorador de objetos de SQL Server**. Ahora puede examinar la tabla de base de datos SQL tooyour y su contenido. Compruebe que los datos de hello en la base de datos de back-end de hello no han cambiado.
-6. (Opcional) Usar una herramienta REST como Fiddler o Postman tooquery su backend móvil, utilizando una consulta GET con el formato `https://<your-mobile-app-backend-name>.azurewebsites.net/tables/TodoItem`.
+    Además, puede mostrar el comportamiento sin conexión deshabilitando las redes Wi-Fi y móvil en el dispositivo o usar el modo avión.
+2. Presione **F5** para compilar y ejecutar la aplicación. Observe que la sincronización no se pudo actualizar cuando se inició la aplicación.
+3. Escriba nuevos elementos y observe que la operación de inserción produce un error con un estado de [CancelledByNetworkError] cada vez que hace clic en **Guardar**. No obstante, los nuevos elementos Todo están en el almacén local hasta que se puedan insertar en el back-end de aplicación móvil.  En una aplicación de producción, si suprime estas excepciones, la aplicación cliente se comporta como si aún estuviera conectada al back-end de aplicación móvil.
+4. Cierre la aplicación y reiníciela para comprobar que los nuevos elementos que creó se mantienen en el almacén local.
+5. (Opcional) En Visual Studio, abra el **Explorador de servidores**. Vaya a la base de datos en **Azure**->**SQL Databases**. Haga clic con el botón derecho en la base de datos y seleccione **Abrir en el Explorador de objetos de SQL Server**. Ahora puede buscar la tabla de base de datos SQL y su contenido. Compruebe que no han cambiado los datos de la base de datos back-end.
+6. (Opcional) Use una herramienta REST como Fiddler o Postman para consultar el back-end móvil mediante una consulta GET con la forma `https://<your-mobile-app-backend-name>.azurewebsites.net/tables/TodoItem`.
 
-## <a name="update-online-app"></a>Actualizar tooreconnect de aplicación Hola su aplicación móvil de back-end
-En esta sección, se vuelve a conectar Hola aplicación toohello aplicación móvil back-end. Estos cambios simulan una reconexión de red en la aplicación hello.
+## <a name="update-online-app"></a>Actualización de la aplicación para volver a conectar el back-end de la aplicación móvil
+En esta sección se vuelve a conectar la aplicación al back-end de aplicación móvil. Estos cambios simulan una reconexión de red en la aplicación.
 
-Cuando ejecuta por primera vez aplicación hello, Hola `OnNavigatedTo` llamadas del controlador de eventos `InitLocalStoreAsync`. Este método llama a su vez `SyncAsync` toosync local almacenar con la base de datos de back-end de Hola. aplicación Hello intenta toosync durante el inicio.
+La primera vez que se ejecuta la aplicación, el controlador de eventos `OnNavigatedTo` llama a `InitLocalStoreAsync`. Este método, a su vez, llama a `SyncAsync` para sincronizar el almacén local con la base de datos back-end. La aplicación intenta sincronizar al inicio.
 
-1. Abra App.xaml.cs en proyecto compartido hello y quite la inicialización anterior de `MobileServiceClient` URL de la aplicación móvil de toouse Hola Hola correcto.
-2. Hola presione **F5** clave toorebuild y aplicación hello de ejecución. Hello aplicación sincroniza los cambios locales con back-end de aplicación móvil de Azure de hello mediante las operaciones de inserción y extracción cuando hello `OnNavigatedTo` ejecuta el controlador de eventos.
-3. (Opcional) Hola de vista actualiza datos mediante el Explorador de objetos de SQL Server o una herramienta REST como Fiddler. Se ha sincronizado aviso Hola datos entre la base de datos de back-end de aplicación móvil de Azure de Hola y el almacén local de Hola.
-4. En la aplicación hello, haga clic en comprobar de hello cuadro junto a algunos de los elementos de toocomplete ellos en el almacén local de Hola.
+1. Abra App.xaml.cs en el proyecto compartido y quite la marca de comentario a la inicialización anterior de `MobileServiceClient` para usar la dirección URL de aplicación móvil correcta.
+2. Presione la tecla **F5** para volver a compilar y ejecutar el proyecto. La aplicación sincroniza los cambios locales con el back-end de Azure Mobile App mediante las operaciones de inserción y extracción una vez que se ejecuta el controlador de eventos `OnNavigatedTo`.
+3. (Opcional) Vea los datos actualizados mediante el Explorador de objetos de SQL Server o una herramienta REST como Fiddler. Observe que los datos se han sincronizado entre la base de datos del back-end de la aplicación móvil de Azure y el almacén local.
+4. En la aplicación, haga clic en la casilla situada junto a algunos elementos para completarlos en el almacén local.
 
-   `UpdateCheckedTodoItem`llamadas `SyncAsync` elemento toosync cada completado con back-end de hello aplicación móvil. `SyncAsync` llama a las operaciones de inserción y extracción. Sin embargo, **cada vez que se ejecuta una extracción en una tabla que el cliente hello ha realizado cambios a, siempre se ejecuta automáticamente una inserción**. Este comportamiento garantiza que todas las tablas de almacén local de hello junto con las relaciones siguen siendo coherentes. Este comportamiento puede provocar una inserción inesperada.  Para obtener más información sobre este comportamiento, consulte [sincronización de datos sin conexión en aplicaciones móviles de Azure].
+   `UpdateCheckedTodoItem` llama a `SyncAsync` para sincronizar cada elemento completado con el back-end de Mobile App. `SyncAsync` llama a las operaciones de inserción y extracción. Sin embargo, **cada vez que se ejecuta una incorporación de cambios en una tabla en la que el cliente ha realizado cambios, siempre se ejecuta automáticamente una inserción** . De este modo se garantiza la coherencia de todas las tablas del almacén local, junto con sus relaciones. Este comportamiento puede provocar una inserción inesperada.  Para obtener más información sobre este comportamiento, consulte [Sincronización de datos sin conexión en Aplicaciones móviles de Azure].
 
 ## <a name="api-summary"></a>Resumen de la API
-características sin conexión de Hola de toosupport de servicios móviles, hemos usado hello [IMobileServiceSyncTable] de la interfaz y se inicializa [MobileServiceClient.SyncContext] [ synccontext] con una base de datos local de SQLite. Cuando sin conexión, las operaciones CRUD de hello normales para aplicaciones móviles trabajar como si aplicación hello aún está conectado mientras se realizan las operaciones de hello en el almacén local de Hola. Hola siguiendo métodos es almacén local de hello toosynchronize usado con el servidor de hello:
+Para admitir las características sin conexión de Mobile Services, se usa la interfaz [IMobileServiceSyncTable] y se inicializa [MobileServiceClient.SyncContext][synccontext] con una base de datos SQLite local. En el modo sin conexión, las operaciones CRUD normales para Aplicaciones móviles funcionan como si la aplicación siguiera conectada y todas las operaciones se producen en el almacén local. Cuando se quiera sincronizar el almacén local con el servidor, se usan los métodos siguientes:
 
-* **[PushAsync]**  porque este método es un miembro de [IMobileServicesSyncContext], cambios de todas las tablas se insertan toohello back-end. Solo los registros con los cambios locales se envían toohello server.
-* **[PullAsync]**: se inicia una extracción desde [IMobileServiceSyncTable]. Cuando hay cambios realizados en la tabla de hello, una inserción implícita se ejecuta toomake seguro de que todas las tablas de almacén local de hello junto con las relaciones siguen siendo coherentes. Hola *pushOtherTables* parámetro controla si otras tablas en el contexto de Hola se insertan en una inserción implícita. Hola *consulta* parámetro toma un [IMobileServiceTableQuery<T> ] [ IMobileServiceTableQuery] u Hola de toofilter de cadena de consulta de OData devolvió datos. Hola *queryId* parámetro se utiliza sincronización incremental toodefine. Para más información, consulte [Sincronización de datos sin conexión en Azure Mobile Apps](app-service-mobile-offline-data-sync.md#how-sync-works).
-* **[PurgeAsync]**  la aplicación debe llamar periódicamente a estos datos obsoletos de método toopurge desde el almacén local Hola. Hola de uso *forzar* parámetro cuando necesite toopurge los cambios que aún no se han sincronizado.
+* **[PushAsync]**: como este método es miembro de [IMobileServicesSyncContext], los cambios de todas las tablas se insertan en el back-end. Solo se envían al servidor los registros con cambios locales.
+* **[PullAsync]**: se inicia una extracción desde [IMobileServiceSyncTable]. Cuando haya cambios marcados en la tabla, se ejecuta una inserción implícita para asegurarse de que todas las tablas del almacén local junto con las relaciones siguen siendo coherentes. El parámetro *pushOtherTables* controla si se insertan otras tablas del contexto en una inserción implícita. El parámetro *query* toma la cadena de consulta de OData o [IMobileServiceTableQuery<T>][IMobileServiceTableQuery] para filtrar los datos devueltos. El parámetro *queryId* se utiliza para definir la sincronización incremental. Para más información, consulte [Sincronización de datos sin conexión en Azure Mobile Apps](app-service-mobile-offline-data-sync.md#how-sync-works).
+* **[PurgeAsync]**: su aplicación debe llamar periódicamente a este método para purgar datos obsoletos del almacén local. Utilice el parámetro *force* cuando necesite purgar todos los cambios que aún no se hayan sincronizado.
 
 Para obtener más información sobre estos conceptos, consulte [Sincronización de datos sin conexión en Aplicaciones móviles de Azure](app-service-mobile-offline-data-sync.md#how-sync-works).
 
 ## <a name="more-info"></a>Más información
-Hello en los temas siguientes ofrecen información general adicional en la característica de sincronización sin conexión de Hola de aplicaciones móviles:
+En los temas siguientes se ofrece información de fondo adicional sobre la característica de sincronización sin conexión de Aplicaciones móviles:
 
-* [sincronización de datos sin conexión en aplicaciones móviles de Azure]
+* [Sincronización de datos sin conexión en Aplicaciones móviles de Azure]
 * [Procedimiento del SDK de .NET de Azure Mobile Apps][8]
 
 <!-- Anchors. -->
-[Update hello app toosupport offline features]: #enable-offline-app
-[Update hello sync behavior of hello app]: #update-sync
-[Update hello app tooreconnect your Mobile Apps backend]: #update-online-app
+[Update the app to support offline features]: #enable-offline-app
+[Update the sync behavior of the app]: #update-sync
+[Update the app to reconnect your Mobile Apps backend]: #update-online-app
 [Next Steps]:#next-steps
 
 <!-- Images -->
@@ -104,7 +104,7 @@ Hello en los temas siguientes ofrecen información general adicional en la carac
 
 
 <!-- URLs. -->
-[sincronización de datos sin conexión en aplicaciones móviles de Azure]: app-service-mobile-offline-data-sync.md
+[Sincronización de datos sin conexión en Aplicaciones móviles de Azure]: app-service-mobile-offline-data-sync.md
 [Creación de una aplicación para Windows]: app-service-mobile-windows-store-dotnet-get-started.md
 [SQLite for Windows 8.1]: http://go.microsoft.com/fwlink/?LinkID=716919
 [SQLite for Windows Phone 8.1]: http://go.microsoft.com/fwlink/?LinkID=716920

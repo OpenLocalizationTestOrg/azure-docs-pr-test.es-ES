@@ -1,6 +1,6 @@
 ---
-title: limitar aaaUnderstand gastos de Azure | Documentos de Microsoft
-description: "Describe cómo funciona de límite de gasto de Azure y cómo tooremove,"
+title: "Comprender el límite de gasto de Azure | Microsoft Docs"
+description: "Describe cómo funciona el límite de gasto de Azure y cómo quitarlo"
 services: 
 documentationcenter: 
 author: genlin
@@ -11,61 +11,77 @@ ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/12/2017
+ms.topic: troubleshooting
+ms.date: 09/08/2017
 ms.author: genli
-ms.openlocfilehash: ed01401a07c3d0e7edebe42fb1482b7b60b1df51
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 9313f3bd09b24db8e33b1f89eb5aebea871605b8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="understand-azure-spending-limit-and-how-tooremove-it"></a>Comprender el límite de gasto de Azure y cómo tooremove,
+# <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Comprender el límite de gasto de Azure y cómo quitarlo
 
-El límite de gasto de Azure es un límite de cuánto puede gastar su suscripción de Azure. Todos los clientes nuevos que registran para la oferta de evaluación de Hola u ofertas que incluye créditos durante varios meses tienen Hola activado de forma predeterminada el límite de gasto. límite de gasto de Hello es $0. No se puede cambiar. Hola límite de gasto no está disponible para los tipos de suscripción como las suscripciones de pago por uso y planes de compromiso. Vea hello [lista completa de ofertas de Azure y la disponibilidad de Hola de límite de gasto de hello](https://azure.microsoft.com/support/legal/offer-details/).
+El límite de gasto de Azure existe para evitar gastos por encima de la cantidad de crédito. Todos los clientes nuevos que se registren para las ofertas de evaluación o las que incluyan créditos para varios meses, tienen activado el límite de gasto de forma predeterminada. El límite de gasto es $0. No se puede cambiar. El límite de gasto no está disponible para tipos de suscripción como suscripciones de pago por uso y planes con compromiso. Vea la [lista completa de ofertas de Azure y la disponibilidad del límite de gasto](https://azure.microsoft.com/support/legal/offer-details/).
 
-## <a name="what-happens-when-i-reach-hello-spending-limit"></a>¿Qué ocurre cuando alcance el límite de gasto de hello?
+**¿Busca las alertas de facturación?** Consulte [Configuración de alertas de crédito o facturación para las suscripciones de Azure](billing-set-up-alerts.md).
 
-Cuando el uso de da como resultado los cargos que agotar Hola cantidades mensuales incluidas en su oferta, servicios de Hola que ha implementado están deshabilitados para el resto de Hola de ese mes de facturación. Por ejemplo, los servicios Cloud Services que desarrolló se quitan de la producción y las máquinas virtuales de Azure se detienen y se desasignan. tooprevent los servicios de estar habilitada, puede elegir tooremove el límite de gasto. Cuando los servicios están deshabilitados, datos de hello en sus cuentas de almacenamiento y bases de datos están disponibles en modo de solo lectura para los administradores. Hola principio de hello siguiente mes de facturación, si su oferta incluye créditos durante varios meses, su suscripción, se vuelve a habilitar. A continuación, puede volver a implementar servicios en la nube y tener bases de datos y las cuentas de almacenamiento de tooyour de acceso completo.
+## <a name="what-happens-when-i-reach-the-spending-limit"></a>¿Qué ocurre cuando alcanzo el límite de gasto?
 
-Después de suscripción de prueba gratuita de hello alcanza el límite de gasto de hello, puede volver a habilitar la suscripción de Hola y para que automáticamente [oferta de pago por uso estándar de actualización tooour](billing-upgrade-azure-subscription.md) dentro de 90 días.
+Cuando el uso dé lugar a cobros que superen las cantidades mensuales de la oferta incluidas con su suscripción, los servicios que implementó se deshabilitan durante el resto de ese período de facturación. 
 
-Recibir notificaciones cuando se alcanza el límite de gasto para su oferta de Hola. Inicie sesión en toohello [centro de cuentas de Azure](https://account.windowsazure.com), seleccione **cuenta**y, a continuación, seleccione **suscripciones**. Ver notificaciones acerca de las suscripciones que han alcanzado el límite de gasto de Hola.
+Por ejemplo, cuando gasta todo el crédito incluido con su suscripción, los servicios Cloud Services que implementó se quitan de la producción y las máquinas virtuales de Azure se detienen y se desasignan. Los datos de sus cuentas de almacenamiento y bases de datos están accesibles únicamente en modo de solo lectura.
 
-## <a name="things-you-are-charged-for-even-if-you-have-a-spending-limit-enabled"></a>Cosas por las que se le cobra incluso si tiene un límite de gasto habilitado
+Al principio del siguiente período de facturación, si su oferta de suscripción incluyera créditos durante varios meses, se volvería a habilitar su suscripción de forma automática. Después, puede volver a implementar los servicios Cloud Services y tener acceso total a las cuentas de almacenamiento y bases de datos.
 
-Algunos servicios de Azure y [realizar compras en Marketplace](https://azure.microsoft.com/marketplace/) puede incurrir en cargos en forma de pago de hello (CC) incluso si se establece un límite de gasto. Algunos ejemplos son licencias de Visual studio, Azure Active Directory premium, planes de soporte técnico y la mayoría de otros fabricantes vendidos a través de hello Marketplace de servicios de la marca.
+Le enviaremos notificaciones por correo electrónico cuando alcance el límite de gasto de su suscripción. Inicie sesión en el [Centro de cuentas](https://account.windowsazure.com/Subscriptions) y verá notificaciones sobre las suscripciones que han alcanzado el límite de gasto.
 
+Si tiene una evaluación gratuita y alcanza el límite de gasto, puede [actualizar a pago por uso](billing-upgrade-azure-subscription.md) para quitar el límite de gasto y hacer que la suscripción se vuelva a habilitar automáticamente.
 
-## <a name="when-not-toouse-hello-spending-limit"></a>Cuando no toouse Hola límite de gasto
+<a id="remove"></a>
 
-límite de gasto de Hello podría impedir que implementar o con ciertas marketplace y los servicios de Microsoft. Presentamos escenarios de hello en el que debe quitar Hola límite de gasto en su suscripción.
+## <a name="remove-the-spending-limit-in-account-center"></a>Eliminación del límite de gasto en el Centro de cuentas
 
-- Planee toodeploy primeras imágenes de entidad como servicios, como Visual Studio Team Services y Oracle. Este escenario hace tooexceed los gastos limitar casi de inmediato y hace que su toobe de suscripción deshabilitada.
+Puede quitar el límite de gasto en cualquier momento siempre que haya un método de pago válido asociado a la suscripción. Para las ofertas que tienen crédito para varios meses, también puede volver a habilitar el límite de gasto al principio del siguiente período de facturación.
 
-- Tiene servicios que no se pueden interrumpir.
+Para quitar el límite de gasto, siga estos pasos:
 
-- Tiene servicios y recursos con la configuración, como direcciones IP virtual que no desea toolose. Estos valores se pierden cuando se cancela la asignación de recursos y servicios de Hola.
-
-
-## <a name="remove-hello-spending-limit"></a>Quitar límite de gasto de Hola
-
-Puede quitar Hola invierte más del límite en cualquier momento mientras hay un método de pago válida asociado a su suscripción. Para las ofertas que tienen crédito durante varios meses, también puede volver a habilitar el límite de gasto en principio de Hola de su próximo ciclo de facturación de Hola.
-
-los gastos limitar tooremove, siga estos pasos:
-
-1. Inicie sesión en toohello [centro de cuentas de Azure](https://account.windowsazure.com).
-
-2. Seleccione una suscripción.
-
-3. Si se deshabilita la suscripción de Hola due toohello que se ha alcanzado el límite de gastos, haga clic en esta notificación: "La suscripción alcanzó el límite de gasto de Hola y ha sido deshabilitado tooprevent cargos." En caso contrario, haga clic en **quitar límite de gasto** en hello **estado de la suscripción** área.
-
-4. Seleccione una opción que sea apropiada para usted.
+1. Inicie sesión en el [Centro de cuentas](https://account.windowsazure.com/Subscriptions).
+1. Seleccione una suscripción.
+1. Si la suscripción está deshabilitada porque se ha alcanzado el límite de gasto, haga clic en esta notificación: "La suscripción alcanzó un límite de gasto y se deshabilitó para evitar cargos". De lo contrario, haga clic en **Quitar límite de gasto** en el área **ESTADO DE LA SUSCRIPCIÓN**.
+1. Seleccione una opción que sea apropiada para usted.
 
 |Opción|Efecto|
 |-------|-----|
-|Quitar el límite de gasto indefinidamente|Quita el límite de gasto sin activarlo automáticamente al principio de Hola de hello siguiente período de facturación de Hola.|
-|Quitar límite de gasto para hello período de facturación actual|Quita el límite de gasto para que se active volver automáticamente al principio de Hola de hello siguiente período de facturación de Hola.|
+|Quitar el límite de gasto indefinidamente|Quita el límite de gasto sin activarlo automáticamente al principio del siguiente período de facturación.|
+|Quitar el límite de gasto para el período de facturación actual|Quita el límite de gasto de manera que se active automáticamente al principio del siguiente período de facturación.|
+
+## <a name="frequently-asked-questions"></a>Preguntas más frecuentes
+
+### <a name="why-would-i-want-to-remove-the-spending-limit"></a>¿Por qué desearía quitar el límite de gasto?
+
+El límite de gasto podría impedirle implementar o usar ciertos servicios de Microsoft o de terceros. A continuación se indican los escenarios donde debería quitar el límite de gasto en su suscripción.
+
+* Planea implementar primero imágenes de usuario como Oracle y servicios como Visual Studio Team Services. Este escenario hace que se supere el límite de gasto prácticamente de forma inmediata y que la suscripción se deshabilite.
+* Tiene servicios que no se pueden interrumpir.
+* Tiene servicios y recursos con configuraciones como direcciones IP virtuales que no quiere perder. Estas configuraciones se pierden cuando se desasignan los servicios y recursos.
+
+### <a name="how-do-i-turn-on-the-spending-limit-after-removing-it"></a>¿Cómo se activa el límite de gasto después de quitarlo?
+
+Esta característica solo está disponible cuando se ha quitado el límite de gasto indefinidamente. Cámbielo para activarlo automáticamente al principio del siguiente período de facturación.
+
+1. Inicie sesión en el [Centro de cuentas](https://account.windowsazure.com/Subscriptions).
+1. Haga clic aquí en el banner amarillo para cambiar la opción de límite de gasto.
+1. Elija **Activar el límite de gasto para el siguiente período de facturación \<fecha inicial del período de facturación\>**.
+
+### <a name="how-do-i-set-a-custom-spending-limit"></a>¿Cómo se puede establecer un límite de gasto personalizado?
+
+En este momento, no tenemos límites de gasto personalizados. Sin embargo, puede optar por [usar alertas de facturación para controlar el gasto](billing-set-up-alerts.md).
+
+### <a name="does-the-spending-limit-prevent-all-charges-from-azure"></a>¿Impide el límite de gasto todos los cobros de Azure?
+
+Algunos [servicios de marca de terceros y de Microsoft](billing-understand-your-azure-marketplace-charges.md) pueden implicar cobros en el método de pago incluso si hay un límite de gasto establecido. Como ejemplos se pueden citar las licencias de Visual Studio, Azure Active Directory Premium, los planes de soporte técnico y la mayoría de los servicios de marca de terceros vendidos a través de [Azure Marketplace](https://azure.microsoft.com/marketplace/).
 
 ## <a name="need-help-contact-support"></a>¿Necesita ayuda? Póngase en contacto con el servicio de soporte técnico.
-Si aún necesita ayuda, [póngase en contacto con soporte técnico](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) tooget rápidamente para solucionar el problema.
+
+Si sigue necesitando ayuda, [póngase en contacto con el servicio de soporte técnico](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) para resolver el problema rápidamente.

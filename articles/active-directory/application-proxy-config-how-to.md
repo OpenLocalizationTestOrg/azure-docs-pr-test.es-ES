@@ -1,6 +1,6 @@
 ---
-title: "una aplicación de Proxy de aplicación del aaaHow tooconfigure | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toocreate un configurar una aplicación de Proxy de aplicación en unos pocos pasos sencillos"
+title: "Configuración de una aplicación de proxy de aplicación | Microsoft Docs"
+description: "Aprenda a configurar una aplicación de proxy de aplicación en unos pocos pasos sencillos"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,61 +13,61 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: c64019098fc124e4fe10b8288830bcd2b7239d3d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c8f98536048a85ebb3f061d840457130579196d9
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
-# <a name="how-tooconfigure-an-application-proxy-application"></a>¿Cómo tooconfigure una aplicación de Proxy de aplicación
+# <a name="how-to-configure-an-application-proxy-application"></a>Configuración de una aplicación de proxy de aplicación
 
-En este artículo le ayudarán a toounderstand cómo tooconfigure una aplicación de Proxy de aplicación en Azure AD tooexpose su toohello de aplicaciones local en la nube.
+Este artículo lo ayuda a entender cómo configurar una aplicación de proxy de aplicación en Azure AD para exponer las aplicaciones locales a la nube.
 
 ## <a name="recommended-documents"></a>Documentos recomendados 
 
-toolearn sobre configuraciones iniciales de Hola y la creación de una aplicación de Proxy de aplicación a través de hello Portal de administración, siga hello [publicar aplicaciones mediante el Proxy de aplicación de Azure AD](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal).
+Para aprender sobre las configuraciones iniciales y la creación de una aplicación de proxy de aplicación mediante el portal de administración, consulte [Publicación de aplicaciones mediante el proxy de aplicación de Azure AD](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal).
 
-Para obtener más información sobre la configuración de conectores, consulte [habilitar Proxy de aplicación en el portal de Azure hello](active-directory-application-proxy-enable.md).
+Para ver detalles sobre la configuración de conectores, consulte [Habilitación del proxy de aplicación en Azure Portal](active-directory-application-proxy-enable.md).
 
 Para información sobre cómo cargar certificados y usar dominios personalizados, consulte [Uso de dominios personalizados en el proxy de la aplicación de Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains).
 
-## <a name="create-hello-applicationsetting-hello-urls"></a>Crear hello las direcciones URL de configuración de la aplicación/hello
+## <a name="create-the-applicationsetting-the-urls"></a>Creación de la aplicación y establecimiento de las direcciones URL
 
-Si está siguiendo los pasos Hola Hola [publicar aplicaciones mediante el Proxy de aplicación de Azure AD](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal) documentación y se recibe un error al crear la aplicación hello, ver detalles de error de Hola para obtener información y sugerencias sobre cómo aplicación de hello toofix. La mayoría de los mensajes de error incluyen una sugerencia de corrección. tooavoid los errores comunes, compruebe que:
+Si está siguiendo los pasos de la documentación [Publicación de aplicaciones mediante el proxy de aplicación de Azure AD](https://docs.microsoft.com/azure/active-directory/application-proxy-publish-azure-portal) y obtiene un error al crear la aplicación, consulte los detalles del error para ver información y sugerencias para corregir la aplicación. La mayoría de los mensajes de error incluyen una sugerencia de corrección. Para evitar errores habituales, compruebe que:
 
--   Es un administrador con permiso toocreate una aplicación de Proxy de aplicación
+-   Sea un administrador con permiso para crear una aplicación de proxy de aplicación;
 
--   dirección URL interna de Hello es único
+-   La dirección URL interna sea única;
 
--   dirección URL externa de Hello es única
+-   La dirección URL externa sea única;
 
--   Hola direcciones URL de inicio con http o https y terminar con un "/"
+-   Las direcciones URL empiecen por http o https y terminen en "/";
 
--   dirección URL de Hello debe ser un nombre de dominio, no una dirección IP
+-   La dirección URL debe ser un nombre de dominio y no una dirección IP.
 
-mensaje de error de Hello debe aparecer en la esquina superior derecha de hello cuando se crea la aplicación hello. También puede seleccionar los mensajes de error de hello notificación icono toosee Hola.
+El mensaje de error debería aparecer en la esquina superior derecha cuando cree la aplicación. También puede seleccionar el icono de notificación para ver los mensajes de error.
 
    ![Mensaje de notificación](./media/application-proxy-config-how-to/error-message.png)
 
 ## <a name="configure-connectorsconnector-groups"></a>Configuración de conectores y grupos de conectores
 
-Si tiene dificultades para la configuración de la aplicación debido a la advertencia sobre los conectores de Hola y grupos de conectores, consulte las instrucciones sobre cómo habilitar el Proxy de aplicación para obtener más información acerca de cómo los conectores de toodownload. Si desea más información acerca de los conectores de toolearn, vea hello [documentación conectores](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors).
+Si tiene dificultades para configurar la aplicación a causa de la advertencia sobre los conectores y grupos de conectores, consulte las instrucciones para habilitar el proxy de aplicación, donde se ofrecen más detalles sobre cómo descargar conectores. Si desea más información acerca de los conectores, consulte la [documentación sobre los conectores](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors).
 
-Si los conectores están inactivos, esto significa que son servicios de hello tooreach no se puede. Esto suele ocurrir porque todos los puertos de hello necesario no están abiertos. toosee una lista de los puertos necesarios, vea la sección de requisitos previos de Hola de hello habilitar la documentación de Proxy de aplicación.
+Si los conectores están inactivos, esto significa que no pueden alcanzar el servicio. Esto suele ocurrir porque no están abiertos todos los puertos necesarios. Para ver una lista de los puertos necesarios, consulte la sección Requisitos previos de la documentación sobre la habilitación del proxy de aplicación.
 
 ## <a name="upload-certificates-for-custom-domains"></a>Carga de certificados para dominios personalizados
 
-Dominios personalizados permiten dominio de hello toospecify de las direcciones URL externas. toouse dominios personalizados, necesita tooupload Hola certificado para ese dominio. Para información sobre cómo usar certificados y dominios personalizados, consulte [Uso de dominios personalizados en el proxy de la aplicación de Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains). 
+Los dominios personalizados le permiten especificar el dominio de las direcciones URL externas. Para usar dominios personalizados, debe cargar el certificado para ese dominio. Para información sobre cómo usar certificados y dominios personalizados, consulte [Uso de dominios personalizados en el proxy de la aplicación de Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains). 
 
-Si se están produciendo problemas al cargar el certificado, busque mensajes de error de hello en el portal de Hola para obtener información adicional sobre el problema de hello con el certificado de Hola. Algunos problemas habituales con los certificados son:
+Si se están produciendo problemas al cargar el certificado, busque los mensajes de error en el portal para más información sobre el problema con el certificado. Algunos problemas habituales con los certificados son:
 
 -   Certificado expirado
 
 -   Certificado autofirmado
 
--   El certificado no tiene clave privada de Hola
+-   Certificado que carece de clave privada
 
-presentación de mensajes de error de Hello en hello esquina superior derecha cuando intente certificado de hello tooupload. También puede seleccionar los mensajes de error de hello notificación icono toosee Hola.
+El mensaje de error se muestra en la esquina superior derecha cuando se intenta cargar el certificado. También puede seleccionar el icono de notificación para ver los mensajes de error.
 
    ![Mensaje de notificación](./media/application-proxy-config-how-to/error-message2.png)
 

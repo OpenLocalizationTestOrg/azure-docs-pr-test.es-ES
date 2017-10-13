@@ -1,6 +1,6 @@
 ---
-title: "aaaDeploy el conjunto de IoT de Azure conectado puerta de enlace de fábrica | Documentos de Microsoft"
-description: "Cómo toodeploy una puerta de enlace de Windows o Linux toohello de conectividad de tooenable había conectado fábrica preconfigurado solución."
+title: "Implementación de la puerta de enlace de fábrica conectada al Conjunto de aplicaciones de IoT de Azure | Microsoft Docs"
+description: "Cómo implementar una puerta de enlace en Windows o Linux para habilitar la conectividad a la solución preconfigurada de fábrica conectada."
 services: 
 suite: iot-suite
 documentationcenter: na
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2017
 ms.author: dobett
-ms.openlocfilehash: 72436dec60eda0de20143f362fe740b0c4412f36
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: b0e6ae705911d7c18643c77b7fe08fdffffa5eb1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="deploy-a-gateway-on-windows-or-linux-for-hello-connected-factory-preconfigured-solution"></a>Implementar una puerta de enlace de Windows o Linux para la solución de fábrica preconfigurado Hola conectado
+# <a name="deploy-a-gateway-on-windows-or-linux-for-the-connected-factory-preconfigured-solution"></a>Implementación de una puerta de enlace en Windows o Linux para la solución preconfigurada de fábrica conectada
 
-Hello requiere software toodeploy una puerta de enlace para la solución de fábrica preconfigurado Hola conectado tiene dos componentes:
+El software necesario para implementar una puerta de enlace para la solución preconfigurada de fábrica conectada tiene dos componentes:
 
-* Hola *OPC Proxy* establece un concentrador de conexión tooIoT. Hola *OPC Proxy* , a continuación, espera a que los mensajes de comando y control de hello integrado OPC explorador que se ejecuta en el portal de solución de hello generador conectado.
-* Hola *Publisher OPC* se conecta a servidores de agente de usuario de OPC tooexisting locales y reenvía los mensajes de telemetría de ellos tooIoT concentrador.
+* El componente *OPC Proxy* establece una conexión a IoT Hub. El componente *OPC Proxy* espera los mensajes de comando y control desde el explorador de OPC integrado que se ejecuta en el portal de la solución de fábrica conectada.
+* El componente *Publisher OPC* se conecta a los servidores de agente de usuario de OPC locales existentes y reenvía sus mensajes de telemetría a IoT Hub.
 
 Ambos componentes son de código abierto y están disponibles como código fuente en GitHub y como contenedores de Docker:
 
@@ -34,137 +34,137 @@ Ambos componentes son de código abierto y están disponibles como código fuent
 | [OPC Publisher][lnk-publisher-github] | [OPC Publisher][lnk-publisher-docker] |
 | [OPC Proxy][lnk-proxy-github] | [OPC Proxy][lnk-proxy-docker] |
 
-Ninguna dirección IP de orientados al público o agujeros en firewall de puerta de enlace de hello son necesarios para alguno de los componentes. Hola OPC Proxy y el publicador de OPC utilizan solo los puertos de salida 8883, 5671 y 443.
+No se requiere ninguna dirección IP de acceso público ni marcadores en el firewall de la puerta de enlace para cualquiera de los componentes. Los componentes OPC Proxy y OPC Publisher utilizan solo los puertos de salida 443, 5671 y 8883.
 
-Hello pasos en este artículo muestra cómo toodeploy una puerta de enlace con Docker en cualquier [Windows](#windows-deployment) o [Linux](#linux-deployment). puerta de enlace de Hello habilita la solución de conectividad toohello conectado fábrica preconfigurado.
+Los pasos que se indican en este artículo muestran cómo implementar una puerta de enlace con Docker en [Windows](#windows-deployment) o [Linux](#linux-deployment). La puerta de enlace habilita la conectividad con la solución preconfigurada de fábrica conectada.
 
 > [!NOTE]
-> software de puerta de enlace de Hola que se ejecuta en el contenedor de Docker de hello es [Azure IoT borde].
+> El software de puerta de enlace que se ejecuta en el contenedor de Docker es [Azure IoT Edge].
 
 ## <a name="windows-deployment"></a>Implementación de Windows
 
 > [!NOTE]
-> Si todavía no tiene un dispositivo de puerta de enlace, Microsoft le recomienda comprar una puerta de enlace comercial con uno de nuestros asociados. Visite hello [catálogo de dispositivos de IoT de Azure] para obtener una lista de dispositivos de puerta de enlace compatibles con hello conectado solución de fábrica. Siga las instrucciones de Hola que vienen con hello tooset de dispositivo de puerta de enlace de Hola. O bien, usar hello después de configurar una de las puertas de enlace existentes de toomanually de instrucciones.
+> Si todavía no tiene un dispositivo de puerta de enlace, Microsoft le recomienda comprar una puerta de enlace comercial con uno de nuestros asociados. Visite el [catálogo de dispositivos IoT de Azure] para ver una lista de los dispositivos de puerta de enlace compatibles con la solución de fábrica conectada. Siga las instrucciones que se incluyen con el dispositivo para configurar la puerta de enlace. Como alternativa, puede usar las instrucciones siguientes para establecer manualmente una de las puertas de enlace existentes.
 
 ### <a name="install-docker"></a>Instalación de Docker
 
-Instale [Docker para Windows] en el dispositivo de puerta de enlace Windows. Durante la instalación de Docker de Windows, seleccione una unidad en el tooshare de máquina de host con Docker. Hola siguiente captura de pantalla muestra comparten unidad Hola D en el sistema de Windows:
+Instale [Docker para Windows] en el dispositivo de puerta de enlace Windows. Durante la configuración de Windows Docker, seleccione una unidad en el equipo host para compartirla con Docker. En la captura de pantalla siguiente se muestra el uso compartido de la unidad D en el sistema Windows:
 
 ![Instalación de Docker][img-install-docker]
 
-A continuación, cree una carpeta denominada **docker** en la raíz de Hola de hello unidad compartida.
-También puede realizar este paso después de instalar docker desde hello **configuración** menú.
+Luego, cree una carpeta llamada **docker** en la raíz de la unidad compartida.
+También puede realizar este paso después de instalar docker desde el menú **Configuración**.
 
-### <a name="configure-hello-gateway"></a>Configurar la puerta de enlace de Hola
+### <a name="configure-the-gateway"></a>Configuración de la puerta de enlace
 
-1. Necesita hello **iothubowner** cadena de conexión de su conjunto de IoT de Azure conectado implementación de puerta de enlace de fábrica implementación toocomplete Hola. Hola [portal de Azure], navegue tooyour centro de IoT en grupo de recursos de hello crearon al implementar soluciones de fábrica de hello conectado. Haga clic en **directivas de acceso compartido** tooaccess hello **iothubowner** cadena de conexión:
+1. Necesita la cadena de conexión **iothubowner** de la implementación de fábrica conectada del Conjunto de aplicaciones de IoT de Azure para completar la implementación de la puerta de enlace. En [Azure Portal], vaya a IoT Hub en el grupo de recursos que se creó cuando implementó la solución de fábrica conectada. Haga clic en **Directivas de acceso compartido** para tener acceso a la cadena de conexión **iothubowner**:
 
-    ![Buscar la cadena de conexión de centro de IoT Hola][img-hub-connection]
+    ![Búsqueda de la cadena de conexión IoT Hub][img-hub-connection]
 
-    Hola copia **cadena de conexión: clave principal** valor.
+    Copie el valor **Connection string--primary key**.
 
-1. Configurar la puerta de enlace de hello para el centro de IoT mediante la ejecución de los módulos de puerta de enlace de hello dos **una vez** desde un símbolo del sistema con:
+1. Configure la puerta de enlace de la instancia de IoT Hub mediante la ejecución de los dos módulos de puerta de enlace **una vez** desde un símbolo del sistema con:
 
     `docker run -it --rm -h <ApplicationName> -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v //D/docker:/root/.dotnet/corefx/cryptography/x509stores microsoft/iot-gateway-opc-ua:1.0.0 <ApplicationName> "<IoTHubOwnerConnectionString>"`
 
     `docker run -it --rm -v //D/docker:/mapped microsoft/iot-gateway-opc-ua-proxy:0.1.3 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db`
 
-    * **&lt;ApplicationName&gt;**  es Hola nombre toogive tooyour OPC UA publicador en formato de hello **publisher.&lt; el nombre de dominio completo&gt;**. Por ejemplo, si se llama a la red de fábrica **myfactorynetwork.com**, hello **ApplicationName** valor es **publisher.myfactorynetwork.com**.
-    * **&lt;IoTHubOwnerConnectionString&gt;**  es hello **iothubowner** cadena de conexión copió en el paso anterior de Hola. Esta cadena de conexión solo se utiliza en este paso, no la necesite en hello pasos:
+    * **&lt;ApplicationName&gt;** es el nombre del publicador de agente de usuario de OPC con el formato **publisher.&lt;nombre de dominio completo&gt;**. Por ejemplo, si la red de fábrica se denomina **myfactorynetwork.com**, el valor de **ApplicationName** es **publisher.myfactorynetwork.com**.
+    * **&lt;IoTHubOwnerConnectionString&gt;** es la cadena de conexión **iothubowner** que se copió en el paso anterior. Esta cadena de conexión solo se usa en este paso y no la necesita en los pasos siguientes:
 
-    Usa Hola asignado D:\\carpeta docker (hello `-v` argumento) toopersist posterior Hola dos certificados X.509 que utilizar los módulos de puerta de enlace de Hola.
+    Use la ruta de acceso D:\\carpeta docker asignada (el argumento `-v`) más adelante para conservar los dos certificados X.509 que los módulos de la puerta de enlace utilizan.
 
-### <a name="run-hello-gateway"></a>Ejecutar la puerta de enlace de Hola
+### <a name="run-the-gateway"></a>Ejecución de la puerta de enlace
 
-1. Reinicie la puerta de enlace de hello mediante Hola siguientes comandos:
+1. Use estos comandos para reiniciar la puerta de enlace:
 
     `docker run -it --rm -h <ApplicationName> --expose 62222 -p 62222:62222 -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/Logs -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v //D/docker:/shared -v //D/docker:/root/.dotnet/corefx/cryptography/x509stores -e _GW_PNFP="/shared/publishednodes.JSON" microsoft/iot-gateway-opc-ua:1.0.0 <ApplicationName>`
 
     `docker run -it --rm -v //D/docker:/mapped microsoft/iot-gateway-opc-ua-proxy:0.1.3 -D /mapped/cs.db`
 
-1. Por motivos de seguridad, los certificados X.509 Hola dos se conservan en hello D:\\carpeta docker contienen la clave privada de Hola. Limitar las credenciales de acceso toothis carpeta toohello (normalmente **administradores**) utilizar el contenedor de Docker de toorun Hola. Hola contextual D:\\carpeta docker, elija **propiedades**, a continuación, **seguridad**y, a continuación, **editar**. Conceda a los **administradores** el control total y quite a todos los demás:
+1. Por motivos de seguridad, los dos certificados X.509 que se conservan en la carpeta D:\\docker contienen la clave privada. Limite el acceso a esta carpeta con las credenciales (habitualmente, **Administradores**) que se usan para ejecutar el contenedor Docker. Haga clic con el botón derecho en la carpeta D:\\docker, elija **Propiedades**, **Seguridad** y, luego, **Editar**. Conceda a los **administradores** el control total y quite a todos los demás:
 
-    ![Recurso compartido de conceder permisos tooDocker][img-docker-share]
+    ![Concesión de permisos para el recurso compartido Docker][img-docker-share]
 
-1. Compruebe la conectividad de la red. Desde un símbolo del sistema, escriba el comando de hello `ping publisher.<your fully qualified domain name>` tooping la puerta de enlace. Si se puede alcanzar el destino de hello, agregue la dirección IP de Hola y el nombre de archivo de hosts toohello de puerta de enlace en la puerta de enlace. archivo de hosts de Hola se encuentra en hello **Windows\\System32\\controladores\\etcetera** carpeta.
+1. Compruebe la conectividad de la red. En un símbolo del sistema, escriba el comando `ping publisher.<your fully qualified domain name>` para hacer ping a la puerta de enlace. Si el destino es inaccesible, agregue la dirección IP y el nombre de la puerta de enlace al archivo de hosts de la puerta de enlace. El archivo de hosts está en la carpeta **Windows\\System32\\drivers\\etc**.
 
-1. A continuación, intente tooconnect toohello publicador con un cliente local de OPC UA con puerta de enlace de Hola. Hola es la dirección URL de extremo de OPC UA `opc.tcp://publisher.<your fully qualified domain name>:62222`. Si no tiene un cliente OPC UA, puede descargar un [cliente OPC UA de código abierto] y úselo.
+1. A continuación, intente conectarse al publicador a través de un cliente OPC UA local que se ejecute en la puerta de enlace. La dirección URL del punto de conexión de OPC UA es `opc.tcp://publisher.<your fully qualified domain name>:62222`. Si no tiene un cliente OPC UA, puede descargar un [cliente OPC UA de código abierto] y úselo.
 
-1. Cuando haya completado correctamente estas pruebas locales, busque toohello **conectar su propio servidor de agente de usuario de OPC** página del portal de solución de hello generador conectado. Escriba la dirección URL del extremo de publicador de hello (`tcp://publisher.<your fully qualified domain name>:62222`) y haga clic en **conectar**. Recibirá una advertencia de certificado; luego, haga clic en **Proceed** (Continuar). A continuación se produce un error que Hola publicador no confía en hello cliente de agente de usuario Web. tooresolve este error, Hola copia **cliente de agente de usuario Web** certificado de hello **D:\\docker\\certificados rechazó\\certificados** carpeta toohello **D:\\docker\\aplicaciones de agente de usuario\\certificados** carpeta en la puerta de enlace de Hola. No es necesario toorestart de puerta de enlace de Hola. Repita este paso. Ahora puede conectarse toohello puerta de enlace de nube de Hola y está listo tooadd toohello solución de OPC UA servidores.
+1. Una vez que complete correctamente estas pruebas locales, vaya a la página **Connect your own OPC UA Server** (Conexión de su propio servidor OPC UA) en el portal de solución de fábrica conectada. Escriba la dirección URL del punto de conexión de publicador (`tcp://publisher.<your fully qualified domain name>:62222`) y haga clic en **Conectar**. Recibirá una advertencia de certificado; luego, haga clic en **Proceed** (Continuar). A continuación, recibirá un error que indica que el publicador no confía en el cliente web UA. Para solucionar el error, copie el certificado de **cliente web UA** desde la carpeta **D:\\docker\\Rejected Certificates\\certs** a la carpeta **D:\\docker\\UA Applications\\certs** en la puerta de enlace. No necesita reiniciar la puerta de enlace. Repita este paso. Ahora puede conectarse a la puerta de enlace desde la nube y está preparado para agregar servidores OPC UA a la solución.
 
 ### <a name="add-your-opc-ua-servers"></a>Incorporación de los servidores OPC UA
 
-1. Examinar toohello **conectar su propio servidor de agente de usuario de OPC** página del portal de solución de hello generador conectado. Siga los mismos pasos de hello anterior sección tooestablish confianza entre Hola portal generador conectado y Hola servidor OPC UA de Hola. Este paso establece una confianza mutua de certificados de Hola de hello conectado hello servidor OPC UA y portal de fábrica y crea una conexión.
+1. Vaya a la página **Connect your own OPC UA Server** (Conexión con su propio servidor OPC UA) en el portal de solución de fábrica conectada. Siga los mismos pasos de la sección anterior para establecer la confianza entre el portal de fábrica conectada y el servidor OPC UA. Este paso establece una confianza mutua de los certificados desde el portal de factoría conectada al servidor OPC UA y crea una conexión.
 
-1. Examinar el árbol de nodos de OPC UA del servidor OPC UA hello, haga clic en los nodos OPC hello y seleccione **publicar**. Para publicación de toowork de esta manera, Hola servidor OPC UA y Hola publicador debe ser en hello misma red. En otras palabras, si Hola completo nombre de dominio del publicador de hello es **publisher.mydomain.com** , a continuación, nombre de dominio completo de Hola de hello OPC UA servidor debe ser, por ejemplo, **myopcuaserver.mydomain.com**. Si el programa de instalación es diferente, puede agregar manualmente los nodos toohello publishesnodes.json archivo encontrado en archivos hello **D:\\docker** carpeta. Hello publishesnodes.json archivo se genera automáticamente en hello primero correcta de publicación de un nodo de OPC.
+1. Examine el árbol de nodos de OPC UA del servidor OPC UA, haga clic con el botón derecho en los nodos OPC y seleccione **Publicar**. Para que la publicación funcione de esta manera, el servidor OPC UA y el publicador deben estar en la misma red. En otras palabras, si el nombre de dominio completo del publicador es **publisher.mydomain.com**, el nombre de dominio completo del servidor OPC UA debe ser, por ejemplo, **myopcuaserver.mydomain.com**. Si la configuración es distinta, puede agregar nodos manualmente al archivo publishesnodes.json que se encuentra en la carpeta **D:\\docker**. El archivo publishesnodes.json se genera automáticamente cuando se publica correctamente un nodo OPC por primera vez.
 
-1. Ahora los flujos de telemetría de dispositivo de puerta de enlace de Hola. Puede ver telemetría Hola Hola **Factory Locations** ver del portal de fábrica conectado hello en **nuevo generador**.
+1. Ahora la telemetría fluye desde el dispositivo de puerta de enlace. Puede ver la telemetría en la vista **Factory Locations** (Ubicaciones de fábrica) del portal de fábrica conectada en **New Factory** (Nueva fábrica).
 
 ## <a name="linux-deployment"></a>Implementación de Linux
 
 > [!NOTE]
-> Si todavía no tiene un dispositivo de puerta de enlace, Microsoft le recomienda comprar una puerta de enlace comercial con uno de nuestros asociados. Visite hello [catálogo de dispositivos de IoT de Azure] para obtener una lista de dispositivos de puerta de enlace compatibles con hello conectado solución de fábrica. Siga las instrucciones de Hola que vienen con hello tooset de dispositivo de puerta de enlace de Hola. O bien, usar hello después de configurar una de las puertas de enlace existentes de toomanually de instrucciones.
+> Si todavía no tiene un dispositivo de puerta de enlace, Microsoft le recomienda comprar una puerta de enlace comercial con uno de nuestros asociados. Visite el [catálogo de dispositivos IoT de Azure] para ver una lista de los dispositivos de puerta de enlace compatibles con la solución de fábrica conectada. Siga las instrucciones que se incluyen con el dispositivo para configurar la puerta de enlace. Como alternativa, puede usar las instrucciones siguientes para establecer manualmente una de las puertas de enlace existentes.
 
 [Instale Docker] en el dispositivo de puerta de enlace Linux.
 
-### <a name="configure-hello-gateway"></a>Configurar la puerta de enlace de Hola
+### <a name="configure-the-gateway"></a>Configuración de la puerta de enlace
 
-1. Necesita hello **iothubowner** cadena de conexión de su conjunto de IoT de Azure conectado implementación de puerta de enlace de fábrica implementación toocomplete Hola. Hola [portal de Azure], navegue tooyour centro de IoT en grupo de recursos de hello crearon al implementar soluciones de fábrica de hello conectado. Haga clic en **directivas de acceso compartido** tooaccess hello **iothubowner** cadena de conexión:
+1. Necesita la cadena de conexión **iothubowner** de la implementación de fábrica conectada del Conjunto de aplicaciones de IoT de Azure para completar la implementación de la puerta de enlace. En [Azure Portal], vaya a IoT Hub en el grupo de recursos que se creó cuando implementó la solución de fábrica conectada. Haga clic en **Directivas de acceso compartido** para tener acceso a la cadena de conexión **iothubowner**:
 
-    ![Buscar la cadena de conexión de centro de IoT Hola][img-hub-connection]
+    ![Búsqueda de la cadena de conexión IoT Hub][img-hub-connection]
 
-    Hola copia **cadena de conexión: clave principal** valor.
+    Copie el valor **Connection string--primary key**.
 
-1. Configurar la puerta de enlace de hello para el centro de IoT mediante la ejecución de los módulos de puerta de enlace de hello dos **una vez** desde un shell con:
+1. Configure la puerta de enlace de la instancia de IoT Hub mediante la ejecución de los dos módulos de puerta de enlace **una vez** desde un shell con:
 
     `sudo docker run -it --rm -h <ApplicationName> -v /shared:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/ -v /shared:/root/.dotnet/corefx/cryptography/x509stores microsoft/iot-gateway-opc-ua:1.0.0 <ApplicationName> "<IoTHubOwnerConnectionString>"`
 
     `sudo docker run --rm -it -v /shared:/mapped microsoft/iot-gateway-opc-ua-proxy:0.1.3 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db`
 
-    * **&lt;ApplicationName&gt;**  es nombre Hola de hello puerta de enlace de OPC UA aplicación Hola crea en formato de hello **publisher.&lt; el nombre de dominio completo&gt;**. Por ejemplo, **publisher.microsoft.com**.
-    * **&lt;IoTHubOwnerConnectionString&gt;**  es hello **iothubowner** cadena de conexión copió en el paso anterior de Hola. Esta cadena de conexión solo se utiliza en este paso, no la necesite en hello pasos:
+    * **&lt;ApplicationName&gt;** es el nombre de la aplicación OPC UA que la puerta de enlace crea con formato **publisher.&lt;nombre de dominio completo&gt;**. Por ejemplo, **publisher.microsoft.com**.
+    * **&lt;IoTHubOwnerConnectionString&gt;** es la cadena de conexión **iothubowner** que se copió en el paso anterior. Esta cadena de conexión solo se usa en este paso y no la necesita en los pasos siguientes:
 
-    Usar hello **/ compartido** carpeta (hello `-v` argumento) toopersist posterior Hola dos certificados X.509 que utilizar los módulos de puerta de enlace de Hola.
+    Use la carpeta **/shared** (el argumento `-v`) más adelante para conservar los dos certificados X.509 que los módulos de la puerta de enlace utilizan.
 
-### <a name="run-hello-gateway"></a>Ejecutar la puerta de enlace de Hola
+### <a name="run-the-gateway"></a>Ejecución de la puerta de enlace
 
-1. Reinicie la puerta de enlace de hello mediante Hola siguientes comandos:
+1. Use estos comandos para reiniciar la puerta de enlace:
 
     `sudo docker run -it -h <ApplicationName> --expose 62222 -p 62222:62222 –-rm -v /shared:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/Logs -v /shared:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v /shared:/shared -v /shared:/root/.dotnet/corefx/cryptography/x509stores -e _GW_PNFP="/shared/publishednodes.JSON" microsoft/iot-gateway-opc-ua:1.0.0 <ApplicationName>`
 
     `sudo docker run -it -v /shared:/mapped microsoft/iot-gateway-opc-ua-proxy:0.1.3 -D /mapped/cs.db`
 
-1. Por motivos de seguridad, los certificados X.509 Hola dos se conservan en hello **/ compartido** carpeta contienen la clave privada de Hola. Límite toothis carpeta toohello las credenciales de acceso usar toorun Hola contenedor Docker. permisos de hello tooset para **raíz** únicamente, use hello `chmod` shell de comandos en carpeta Hola.
+1. Por motivos de seguridad, los dos certificados X.509 que se conservan en la carpeta **/shared** contienen la clave privada. Limite el acceso a esta carpeta con las credenciales que se usan para ejecutar el contenedor Docker. Para establecer los permisos solo para **raíz**, use el comando de shell `chmod` en la carpeta.
 
-1. Compruebe la conectividad de la red. Desde un shell, escriba el comando de hello `ping publisher.<your fully qualified domain name>` tooping la puerta de enlace. Si se puede alcanzar el destino de hello, agregue la dirección IP de Hola y el nombre de archivo de hosts tooyour de puerta de enlace en la puerta de enlace. archivo de hosts de Hola se encuentra en hello **/etcetera** carpeta.
+1. Compruebe la conectividad de la red. En un shell, escriba el comando `ping publisher.<your fully qualified domain name>` para hacer ping a la puerta de enlace. Si el destino es inaccesible, agregue la dirección IP y el nombre de la puerta de enlace al archivo de hosts de la puerta de enlace. El archivo de hosts está en la carpeta **/etc**.
 
-1. A continuación, intente tooconnect toohello publicador con un cliente local de OPC UA con puerta de enlace de Hola. Hola es la dirección URL de extremo de OPC UA `opc.tcp://publisher.<your fully qualified domain name>:62222`. Si no tiene un cliente OPC UA, puede descargar un [cliente OPC UA de código abierto] y úselo.
+1. A continuación, intente conectarse al publicador a través de un cliente OPC UA local que se ejecute en la puerta de enlace. La dirección URL del punto de conexión de OPC UA es `opc.tcp://publisher.<your fully qualified domain name>:62222`. Si no tiene un cliente OPC UA, puede descargar un [cliente OPC UA de código abierto] y úselo.
 
-1. Cuando haya completado correctamente estas pruebas locales, busque toohello **conectar su propio servidor de agente de usuario de OPC** página del portal de solución de hello generador conectado. Escriba la dirección URL del extremo de publicador de hello (`tcp://publisher.<your fully qualified domain name>:62222`) y haga clic en **conectar**. Recibirá una advertencia de certificado; luego, haga clic en **Proceed** (Continuar). A continuación se produce un error que Hola publicador no confía en hello cliente de agente de usuario Web. tooresolve este error, Hola copia **cliente de agente de usuario Web** certificado de hello **/compartido/rechazado certificados/certificados** carpeta toohello **/shared/UA aplicaciones/certificados** carpeta de puerta de enlace de Hola. No es necesario toorestart de puerta de enlace de Hola. Repita este paso. Ahora puede conectarse toohello puerta de enlace de nube de Hola y está listo tooadd toohello solución de OPC UA servidores.
+1. Una vez que complete correctamente estas pruebas locales, vaya a la página **Connect your own OPC UA Server** (Conexión de su propio servidor OPC UA) en el portal de solución de fábrica conectada. Escriba la dirección URL del punto de conexión de publicador (`tcp://publisher.<your fully qualified domain name>:62222`) y haga clic en **Conectar**. Recibirá una advertencia de certificado; luego, haga clic en **Proceed** (Continuar). A continuación, recibirá un error que indica que el publicador no confía en el cliente web UA. Para solucionar el error, copie el certificado de **cliente web UA** desde la carpeta **/shared/Rejected Certificates/certs** a la carpeta **/shared/UA Applications/certs** en la puerta de enlace. No necesita reiniciar la puerta de enlace. Repita este paso. Ahora puede conectarse a la puerta de enlace desde la nube y está preparado para agregar servidores OPC UA a la solución.
 
 ### <a name="add-your-opc-ua-servers"></a>Incorporación de los servidores OPC UA
 
-1. Examinar toohello **conectar su propio servidor de agente de usuario de OPC** página del portal de solución de hello generador conectado. Siga los mismos pasos de hello anterior sección tooestablish confianza entre Hola portal generador conectado y Hola servidor OPC UA de Hola. Este paso establece una confianza mutua de certificados de Hola de hello conectado hello servidor OPC UA y portal de fábrica y crea una conexión.
+1. Vaya a la página **Connect your own OPC UA Server** (Conexión con su propio servidor OPC UA) en el portal de solución de fábrica conectada. Siga los mismos pasos de la sección anterior para establecer la confianza entre el portal de fábrica conectada y el servidor OPC UA. Este paso establece una confianza mutua de los certificados desde el portal de factoría conectada al servidor OPC UA y crea una conexión.
 
-1. Examinar el árbol de nodos de OPC UA del servidor OPC UA hello, haga clic en los nodos OPC hello y seleccione **publicar**. Para publicación de toowork de esta manera, Hola servidor OPC UA y Hola publicador debe ser en hello misma red. En otras palabras, si Hola completo nombre de dominio del publicador de hello es **publisher.mydomain.com** , a continuación, nombre de dominio completo de Hola de hello OPC UA servidor debe ser, por ejemplo, **myopcuaserver.mydomain.com**. Si el programa de instalación es diferente, puede agregar manualmente los nodos toohello publishesnodes.json archivo encontrado en archivos hello **/ compartido** carpeta. Hola publishesnodes.json se genera automáticamente en hello primero correcta de publicación de un nodo de OPC.
+1. Examine el árbol de nodos de OPC UA del servidor OPC UA, haga clic con el botón derecho en los nodos OPC y seleccione **Publicar**. Para que la publicación funcione de esta manera, el servidor OPC UA y el publicador deben estar en la misma red. En otras palabras, si el nombre de dominio completo del publicador es **publisher.mydomain.com**, el nombre de dominio completo del servidor OPC UA debe ser, por ejemplo, **myopcuaserver.mydomain.com**. Si la configuración es distinta, puede agregar nodos manualmente al archivo publishesnodes.json que se encuentra en la carpeta **/shared**. El archivo publishesnodes.json se genera automáticamente cuando se publica correctamente un nodo OPC por primera vez.
 
-1. Ahora los flujos de telemetría de dispositivo de puerta de enlace de Hola. Puede ver telemetría Hola Hola **Factory Locations** ver del portal de fábrica conectado hello en **nuevo generador**.
+1. Ahora la telemetría fluye desde el dispositivo de puerta de enlace. Puede ver la telemetría en la vista **Factory Locations** (Ubicaciones de fábrica) del portal de fábrica conectada en **New Factory** (Nueva fábrica).
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-toolearn más información acerca de arquitectura de Hola de fábrica conectado Hola preconfigurado solución, vea [conectado fábrica preconfigurado tutorial de la solución][lnk-walkthrough].
+Para más información sobre la arquitectura de la solución preconfigurada de fábrica conectada, consulte el [tutorial de la solución preconfigurada de fábrica conectada][lnk-walkthrough].
 
 [img-install-docker]: ./media/iot-suite-connected-factory-gateway-deployment/image1.png
 [img-hub-connection]: ./media/iot-suite-connected-factory-gateway-deployment/image2.png
 [img-docker-share]: ./media/iot-suite-connected-factory-gateway-deployment/image3.png
 
 [Docker para Windows]: https://www.docker.com/docker-windows
-[catálogo de dispositivos de IoT de Azure]: https://catalog.azureiotsuite.com/?q=opc
-[portal de Azure]: http://portal.azure.com/
+[catálogo de dispositivos IoT de Azure]: https://catalog.azureiotsuite.com/?q=opc
+[Azure Portal]: http://portal.azure.com/
 [cliente OPC UA de código abierto]: https://github.com/OPCFoundation/UA-.NETStandardLibrary/tree/master/SampleApplications/Samples/Client.Net4
 [Instale Docker]: https://www.docker.com/community-edition#/download
 [lnk-walkthrough]: iot-suite-connected-factory-sample-walkthrough.md
-[Azure IoT borde]: https://github.com/Azure/iot-edge
+[Azure IoT Edge]: https://github.com/Azure/iot-edge
 
 [lnk-publisher-github]: https://github.com/Azure/iot-edge-opc-publisher
 [lnk-publisher-docker]: https://hub.docker.com/r/microsoft/iot-gateway-opc-ua

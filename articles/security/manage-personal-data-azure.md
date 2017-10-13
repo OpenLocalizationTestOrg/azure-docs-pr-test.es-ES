@@ -1,6 +1,6 @@
 ---
-title: aaaManage datos personales en Microsoft Azure | Documentos de Microsoft
-description: "instrucciones sobre cómo toocorrect, actualizar, eliminar y exportar datos personales en Azure Active Directory y la base de datos de SQL Azure"
+title: "Administración de datos personales en Microsoft Azure | Microsoft Docs"
+description: "Guía sobre cómo corregir, actualizar, eliminar y exportar datos personales en Azure Active Directory y Azure SQL Database"
 services: security
 documentationcenter: na
 author: barclayn
@@ -14,88 +14,88 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: barclayn
-ms.openlocfilehash: 032f70d32377cb9395cb2c35c27dad05001537c4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 3b57c92bd744644ea81878712b4272ed3ece4e2e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-personal-data-in-microsoft-azure"></a>Administración de datos personales en Microsoft Azure
 
-Este artículo proporciona instrucciones sobre cómo toocorrect, actualizar, eliminar y exportar datos personales en Azure Active Directory y la base de datos de SQL Azure.
+En este artículo se ofrece una guía sobre cómo corregir, actualizar, eliminar y exportar datos personales en Azure Active Directory y Azure SQL Database.
 
 ## <a name="scenario"></a>Escenario
 
-Una empresa de Dublin proporciona todo lo necesario para bodas de destino de gama alta Irlanda y alrededor de Hola a todos para una base de clientes local e internacional. Tienen oficinas, clientes, empleados y proveedores ubicados en todo recintos hello world toofully servicio Hola ofrecen.
+Una empresa de Dublín ofrece una plataforma de venta centralizada para bodas con destinos exclusivos en Irlanda y en todo el mundo orientada a una cartera de clientes local e internacional. Tienen oficinas, clientes, empleados y proveedores ubicados en todo el mundo para una cobertura total de los centros que ofrece.
 
-Entre otros muchos aspectos, empresa Hola realiza un seguimiento de confirmaciones de asistencia que incluyen alergias y las preferencias de la. Los invitados novia pueden registrar para varias actividades como explorar, botes a caballo conducir, llevar a, etc. e incluso interactúan entre sí en una página web central durante los meses de hello conduzcan toohello eventos. empresa Hola recopila información personal de empleados, proveedores, los clientes y los invitados novia. Debido a Hola naturaleza internacional de empresa de hello business Hola debe cumplir con varios niveles de la normativa.
+Entre otros muchos elementos, la empresa realiza un seguimiento de RSVP, como las alergias alimentarias y las preferencias dietéticas. Los invitados de la boda pueden registrarse en distintas actividades, como montar a caballo, practicar surf, paseos en barco, etc., e incluso interactuar entre ellos en una página web central durante los meses previos al evento. La empresa recopila información personal de los empleados, los proveedores, los clientes y los invitados de la boda. Debido a la naturaleza internacional de la empresa, la compañía debe cumplir varios niveles de regulación.
 
 ## <a name="problem-statement"></a>Declaración del problema
 
-- Administradores de datos deben ser capaz de toocorrect correcta actualización e información incompleta o que cambian personal información personal.
+- Los administradores de datos deben tener la capacidad de corregir información personal poco precisa y de actualizar los datos incompletos o realizar modificaciones.
 
-- Necesidad de administradores de datos debe ser capaz de toodelete información personal tras la solicitud de Hola de un asunto de datos.
+- Asimismo, deben tener la posibilidad de eliminar información personal cuando así lo solicite la persona registrada.
 
-- Administradores de datos necesitan los datos de tooexport y proporcionan a tooa asunto de datos en un formato común y estructurado en su solicitud.
+- También deben tener competencias para exportar datos y proporcionarlos a una persona registrada con un formato común y estructurado cuando los solicite.
 
 ## <a name="company-goals"></a>Objetivos de la empresa
 
 - La información personal poco precisa o incompleta de clientes, invitados, empleados y proveedores debe corregirse o actualizarse en Azure Active Directory y Azure SQL Database.
 
-- Información personal debe eliminarse en Azure Active Directory y la base de datos de SQL Azure tras la solicitud de saludo de un asunto de datos.
+- La información personal debe eliminarse de Azure Active Directory y Azure SQL Database a petición de una persona registrada.
 
-- Datos personales deben exportarse en un formato común y estructurado tras la solicitud de saludo de un asunto de datos.
+- Los datos personales deben exportarse en un formato común y estructurado a petición de una persona registrada.
 
 ## <a name="solutions"></a>Soluciones
 
 ### <a name="azure-active-directory-rectifycorrect-inaccurate-or-incomplete-personal-data-and-erasedelete-personal-datauser-profiles"></a>Azure Active Directory: rectificación o corrección de datos personales poco precisos o incompletos y eliminación o borrado de perfiles de usuario o datos personales.
 
 [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) es el directorio multiinquilino basado en la nube y el servicio de administración de identidades de Microsoft.
-Puede corregir, actualizar o eliminar los perfiles de usuario de clientes y empleados y la información de trabajo de usuario que contienen datos personales, como nombre, título de trabajo, dirección o número de teléfono, un usuario en su [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) (AAD) entorno con hello [portal de Azure](https://portal.azure.com/).
+Puede corregir, actualizar o eliminar los perfiles de usuario de clientes y empleados y la información de trabajo de usuario que contienen datos personales, como el nombre de usuario, el cargo, la dirección o el número de teléfono, en el entorno de [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) (AAD) mediante [Azure Portal](https://portal.azure.com/).
 
-Debe iniciar sesión con una cuenta que sea un administrador global para el directorio de Hola.
+Tiene que iniciar sesión con una cuenta que sea administrador global en el directorio.
 
 #### <a name="how-do-i-correct-or-update-user-profile-and-work-information-in-azure-active-directory"></a>¿Cómo puedo corregir o actualizar el perfil de usuario y la información laboral en Azure Active Directory?
 
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com) con una cuenta que sea un administrador global para el directorio de Hola.
+1. Inicie sesión en [Azure Portal](https://portal.azure.com) con una cuenta que tenga el rol de administrador global en el directorio.
 
-2. Seleccione **más servicios**, escriba **usuarios y grupos** en Hola cuadro de texto y, a continuación, seleccione **ENTRAR**.
+2. Seleccione **Más servicios**, escriba **Usuarios y grupos** en el cuadro de texto y presione **Entrar**.
 
     ![media/image1.png](media/manage-personal-data-azure/image001.png)
 
-3. En hello **usuarios y grupos** hoja, seleccione **usuarios**.
+3. En la hoja **Usuarios y grupos**, seleccione **Usuarios**.
 
     ![media/image2.png](media/manage-personal-data-azure/image003.png)
 
-4. En hello **a los usuarios y grupos: los usuarios** hoja, seleccione un usuario de la lista de hello y, a continuación, en la hoja de hello para el usuario seleccionado de hello, seleccione **perfil** tooview información de perfil de usuario de Hola que necesita toobe corregido o actualizados.
+4. En la hoja **Usuarios y grupos - Usuarios**, seleccione un usuario de la lista y después, en la hoja del usuario seleccionado, seleccione **Perfil** para ver la información de perfil de usuario que hay que corregir o actualizar.
 
     ![media/image3.png](media/manage-personal-data-azure/image005.png)
 
-5. Corregir o actualizar la información de hello y, a continuación, en la barra de comandos de hello, seleccione **guardar.**
+5. Corrija o actualice la información y, después, en la barra de comandos, seleccione **Guardar**.
 
-6.  En la hoja de hello para el usuario seleccionado de hello, seleccione **de trabajo información** información tooview de trabajo del usuario que necesita toobe corrección o actualización.
+6.  En la hoja del usuario seleccionado, seleccione **Información laboral** para ver la información laboral del usuario que debe corregirse o actualizarse.
 
     ![media/image4.png](media/manage-personal-data-azure/image007.png)
 
-7. Corregir o actualizar la información de trabajo de usuario de hello y, a continuación, en la barra de comandos de hello, seleccione **guardar.**
+7. Corrija o actualice la información laboral del usuario y, después, en la barra de comandos, seleccione **Guardar**.
 
 #### <a name="how-do-i-delete-a-user-profile-in-azure-active-directory"></a>¿Cómo elimino un perfil de usuario en Azure Active Directory?
 
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com) con una cuenta que sea un administrador global para el directorio de Hola.
+1. Inicie sesión en [Azure Portal](https://portal.azure.com) con una cuenta que tenga el rol de administrador global en el directorio.
 
-2. Seleccione **más servicios**, escriba **usuarios y grupos** en Hola cuadro de texto y, a continuación, seleccione **ENTRAR**.
+2. Seleccione **Más servicios**, escriba **Usuarios y grupos** en el cuadro de texto y presione **Entrar**.
 
     ![](media/manage-personal-data-azure/image001.png)
 
-3. En hello **usuarios y grupos** hoja, seleccione **usuarios**.
+3. En la hoja **Usuarios y grupos**, seleccione **Usuarios**.
 
     ![media/image2.png](media/manage-personal-data-azure/image003.png)
 
-4. En hello **a los usuarios y grupos: los usuarios** hoja, seleccione un usuario de la lista de Hola.
+4. En la hoja **Usuarios y grupos - Usuarios** , seleccione un usuario de la lista.
 
     ![media/image3.png](media/manage-personal-data-azure/image007.png)
 
-5. En la hoja de hello para el usuario seleccionado de hello, seleccione **Introducción**y, a continuación, en la barra de comandos de hello, seleccione **eliminar**.
+5. En la hoja del usuario seleccionado, seleccione **Información general** y, después, en la barra de comandos, seleccione **Eliminar**.
 
     ![](media/manage-personal-data-azure/image013.png)
 
@@ -103,25 +103,25 @@ Debe iniciar sesión con una cuenta que sea un administrador global para el dire
 
 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/?v=16.50) es una base de datos en la nube que ayuda a los desarrolladores a crear y mantener aplicaciones.
 
-Los datos personales pueden actualizarse en [Azure SQL Database](https://azure.microsoft.com/services/sql-database/?v=16.50) mediante consultas SQL estándares, y también se pueden eliminar. Además, los datos personales pueden exportarse desde la base de datos de SQL con una variedad de métodos, incluidos Hola importación de Azure SQL Server y el Asistente para exportación y en una variedad de formatos, incluido un archivo BACPAC.
+Los datos personales pueden actualizarse en [Azure SQL Database](https://azure.microsoft.com/services/sql-database/?v=16.50) mediante consultas SQL estándares, y también se pueden eliminar. Además, los datos personales se pueden exportar desde SQL Database con diferentes métodos, como el Asistente para importación y exportación de Azure SQL Server, y en distintos formatos, como un archivo BACPAC.
 
 #### <a name="how-do-i-correct-update-or-erase-personal-data-in-sql-database"></a>¿Cómo puedo corregir, actualizar o borrar datos personales en SQL Database?
 
-toolearn cómo toocorrect o actualización de datos personales en la base de datos de SQL, visite hello [actualización (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql), [actualizar texto](https://docs.microsoft.com/sql/t-sql/queries/updatetext-transact-sql), [actualizar con la expresión de tabla común](https://docs.microsoft.com/sql/t-sql/queries/with-common-table-expression-transact-sql), o [ Actualizar texto escribir](https://docs.microsoft.com/sql/t-sql/queries/writetext-transact-sql) documentación.
+Para obtener información sobre cómo corregir o actualizar datos personales en SQL Database, consulte la documentación sobre [Update (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/update-transact-sql), [Update Text](https://docs.microsoft.com/sql/t-sql/queries/updatetext-transact-sql), [Update With Common Table Expression](https://docs.microsoft.com/sql/t-sql/queries/with-common-table-expression-transact-sql) o [Update Write Text](https://docs.microsoft.com/sql/t-sql/queries/writetext-transact-sql).
 
-toolearn cómo toodelete datos personales en la base de datos de SQL, visite hello [eliminar (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql) documentación.
+Para obtener información sobre cómo eliminar datos personales en SQL Database, consulte la documentación sobre [Delete (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/delete-transact-sql).
 
-#### <a name="how-do-i-export-personal-data-tooa-bacpac-file-in-sql-database"></a>¿Cómo se puede exportar archivo BACPAC de tooa de datos personales en la base de datos SQL?
+#### <a name="how-do-i-export-personal-data-to-a-bacpac-file-in-sql-database"></a>¿Cómo puedo exportar datos personales a un archivo BACPAC en SQL Database?
 
-Un archivo BACPAC incluye los metadatos y datos de la base de datos SQL de Hola y es un archivo zip con una extensión BACPAC. Esto puede hacerse mediante hello [portal de Azure](https://portal.azure.com/), Hola utilidad de línea de comandos SQLPackage, SQL Server Management Studio (SSMS) o PowerShell.
+Un archivo BACPAC incluye los metadatos y datos de SQL Database y es un archivo ZIP con una extensión BACPAC. Esto puede hacerse con [Azure Portal](https://portal.azure.com/), la utilidad de línea de comandos SQLPackage, SQL Server Management Studio (SSMS) o PowerShell.
 
-toolearn cómo archivo BACPAC tooa tooexport datos, visite hello [exportar un archivo BACPAC de tooa de base de datos de SQL Azure](https://docs.microsoft.com/azure/sql-database/sql-database-export) página, que incluye instrucciones detalladas para cada método mencionado anteriormente.
+Para obtener información sobre cómo exportar datos a un archivo BACPAC, visite la página [Exportación de una base de datos de Azure SQL Database a un archivo BACPAC](https://docs.microsoft.com/azure/sql-database/sql-database-export), que incluye instrucciones detalladas para cada método mencionado anteriormente.
 
-¿Cómo se puede exportar datos personales de la base de datos de SQL con SQL Server Import hello y Asistente para exportación?
+¿Cómo puedo exportar datos personales de SQL Database con el Asistente para importación y exportación de SQL Server?
 
-Este asistente le ayuda a copiar los datos de un origen tooa destino. Para que un asistente de toohello introducción, incluido cómo tooget, información sobre permisos, y cómo ayudar tooget con la herramienta de hello, visitan Hola [importar y exportar datos con SQL Server Import hello y Asistente para exportación de](https://docs.microsoft.com/sql/integration-services/import-export-data/import-and-export-data-with-the-sql-server-import-and-export-wizard) página web.
+Este asistente ayuda a copiar datos desde un origen a un destino. Para obtener una introducción al asistente, incluida la información sobre cómo obtenerlo, datos sobre permisos y cómo obtener ayuda con la herramienta, visite la página web [Importar y exportar datos con el Asistente para importación y exportación de SQL Server](https://docs.microsoft.com/sql/integration-services/import-export-data/import-and-export-data-with-the-sql-server-import-and-export-wizard).
 
-Para obtener información general de las etapas de Asistente de hello, visite hello [los pasos de hello importación de SQL Server y el Asistente para exportación de](https://docs.microsoft.com/sql/integration-services/import-export-data/steps-in-the-sql-server-import-and-export-wizard) página web.
+Para obtener información general de los pasos del asistente, visite la página web [Steps in the SQL Server Import and Export Wizard](https://docs.microsoft.com/sql/integration-services/import-export-data/steps-in-the-sql-server-import-and-export-wizard) (Pasos del Asistente para importación y exportación de SQL Server).
 
 ## <a name="next-steps"></a>Pasos siguientes:
 

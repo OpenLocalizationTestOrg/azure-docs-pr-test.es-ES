@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Configuración de Google Apps para el aprovisionamiento automático de usuarios en Azure | Microsoft Docs"
-description: "Obtenga información acerca de cómo tooautomatically aprovisionar y eliminación de aprovisionar cuentas de usuario de Azure AD tooGoogle aplicaciones."
+description: "Obtenga información sobre cómo aprovisionar y cancelar automáticamente el aprovisionamiento de cuentas de usuario de Azure AD para Google Apps."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,144 +13,149 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: d1fa8449bd6013d1627b3552aaa19db1c0f4f46f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: e8ca7fdacf8361570d88260b3c359ee6e2fd3e17
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="tutorial-configuring-google-apps-for-automatic-user-provisioning"></a>Tutorial: Configuración de Google Apps para aprovisionar a los usuarios automáticamente
+# <a name="tutorial-configure-google-apps-for-automatic-user-provisioning"></a>Tutorial: Configuración de Google Apps para aprovisionar a los usuarios automáticamente
 
-objetivo de Hola de este tutorial es tooshow que Hola pasos necesita tooperform en Google Apps y Azure AD tooautomatically el aprovisionamiento y Desaprovisionamiento de cuentas de usuario de Azure AD tooGoogle aplicaciones.
+El objetivo de este tutorial es explicar cómo aprovisionar y cancelar automáticamente el aprovisionamiento de cuentas de usuario de Azure Active Directory (Azure AD) para Google Apps.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-escenario de Hello descrito en este tutorial se da por supuesto que ya tiene Hola siguientes elementos:
+En la situación que se describe en este tutorial se supone que ya cuenta con los elementos siguientes:
 
 *   Un inquilino de Azure Active Directory.
-*   Debe tener un inquilino válido para Google Apps for Work o Google Apps for Education. Puede usar una cuenta de prueba gratuita de cualquiera de los servicios.
+*   Un inquilino válido para Google Apps for Work o Google Apps for Education. Puede usar una cuenta de evaluación gratuita para cualquiera de ambos servicios.
 *   Una cuenta de usuario de Google Apps con permisos de administrador de equipo.
 
-## <a name="assigning-users-toogoogle-apps"></a>Asignación de usuarios tooGoogle aplicaciones
+## <a name="assign-users-to-google-apps"></a>Asignación de usuarios a Google Apps
 
-Azure Active Directory utiliza un concepto que se denomina toodetermine "asignaciones" que los usuarios deben recibir acceso tooselected aplicaciones. En el contexto de Hola de aprovisionamiento de cuentas de usuario automática, se sincroniza solo los usuarios de Hola y grupos que se han "asignados" tooan aplicación en Azure AD.
+Azure Active Directory usa un concepto que se denomina "asignaciones" para determinar qué usuarios deben recibir acceso a determinadas aplicaciones. En el contexto de aprovisionamiento automático de cuentas de usuario, solo se sincronizarán los usuarios y grupos que se han "asignado" a una aplicación en Azure AD.
 
-Antes de configurar y habilitar el aprovisionamiento del servicio de hello, necesita toodecide qué usuarios o grupos en Azure AD que representan a usuarios de Hola que necesitan tener acceso a la aplicación de Google Apps tooyour. Una vez decidido, puede asignar estas aplicaciones de Google Apps tooyour usuarios siguiendo las instrucciones de hello aquí: [asignar una aplicación de empresa de tooan de usuario o grupo](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+Antes de configurar y habilitar el servicio de aprovisionamiento, tiene que decidir qué usuarios o grupos de Azure AD necesitan acceso a la aplicación Google Apps. Una vez decidido, puede asignar estos usuarios a la aplicación Google Apps siguiendo las instrucciones de: [Asignación de un usuario o un grupo a una aplicación empresarial](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal).
 
 > [!IMPORTANT]
->*   Se recomienda que un único usuario de Azure AD asignarse hello tootest tooGoogle aplicaciones que configuración de aprovisionamiento. Más tarde, se pueden asignar otros usuarios o grupos.
->*   Al asignar un usuario tooGoogle aplicaciones, debe seleccionar Hola usuario o rol de "Grupo" en el cuadro de diálogo de hello asignación. rol de "Acceso predeterminado" Hello no funciona para el aprovisionamiento.
+> Se recomienda asignar un solo usuario de Azure AD a Google Apps para probar la configuración de aprovisionamiento. Asigne usuarios y grupos adicionales más tarde.
+
+> Al asignar un usuario a Google Apps, debe seleccionar los roles **Usuario** o **Grupo** en el cuadro de diálogo de asignación. El rol **Acceso predeterminado** no funciona para realizar el aprovisionamiento.
 
 ## <a name="enable-automated-user-provisioning"></a>Habilitación del aprovisionamiento automático de usuarios
 
-Esta sección le guía a través de conexión de API de aprovisionamiento de cuentas de usuario de las aplicaciones tooGoogle de Azure AD y configurar hello toocreate de servicio de aprovisionamiento, actualizar y deshabilitar cuentas de usuario asignado en Google Apps en función de asignación de usuario y de grupo en Azure AD .
+Esta sección le guiará a través del proceso de conexión de Azure AD a la API de aprovisionamiento de cuentas de usuario de Google Apps. También le ayuda a configurar el servicio de aprovisionamiento para crear, actualizar y deshabilitar cuentas de usuario asignado en Google Apps en función de la asignación de usuario y de grupo en Azure AD.
 
->[!Tip]
->También puede elegir tooenabled basado en SAML Single Sign-On para Google Apps, siguiendo las instrucciones Hola proporcionadas en [portal de Azure](https://portal.azure.com). El inicio de sesión único puede configurarse independientemente del aprovisionamiento automático, aunque estas dos características se complementan entre sí.
+>[!TIP]
+>También puede decidir habilitar el inicio de sesión único basado en SAML para Google Apps siguiendo las instrucciones de [Azure Portal](https://portal.azure.com). El inicio de sesión único puede configurarse independientemente del aprovisionamiento automático, aunque estas dos características se complementan entre sí.
 
 ### <a name="configure-automatic-user-account-provisioning"></a>Configurar el aprovisionamiento automático de cuentas de usuario
 
 > [!NOTE]
-> Otra opción viable para automatizar aplicaciones de tooGoogle de aprovisionamiento de usuarios es toouse [sincronización de directorio de aplicaciones de Google (GADS)](https://support.google.com/a/answer/106368?hl=en) que aprovisiona la tooGoogle de identidades de Active Directory local las aplicaciones. En cambio, solución hello en este tutorial proporciona a los usuarios de Azure Active Directory (nube) y los grupos habilitados para correo tooGoogle aplicaciones. 
+> Otra opción viable para automatizar el aprovisionamiento de usuarios en Google Apps consiste en usar [Google Apps Directory Sync (GADS)](https://support.google.com/a/answer/106368?hl=en). GADS aprovisiona las identidades de Active Directory locales en Google Apps. En cambio, la solución en este tutorial realiza el aprovisionamiento de los usuarios de Azure Active Directory (nube) y a los grupos habilitados para correo en Google Apps. 
 
-1. Inicio de sesión en hello [consola de administración de aplicaciones de Google](http://admin.google.com/) con su cuenta de administrador y haga clic en **seguridad**. Si no ve el vínculo de hello, puede estar oculto bajo hello **más controles** menú situado en la parte inferior de Hola de pantalla de bienvenida.
+1. Inicie sesión en la [Consola de administración de Google Apps](http://admin.google.com/) con su cuenta de administrador y haga clic en **Security** (Seguridad). Si no ve el vínculo, puede estar oculto debajo del menú **More Controls** (Más controles) en la parte inferior de la pantalla.
    
-    ![Haga clic en Seguridad.][10]
+    ![Selección de seguridad.][10]
 
-2. En hello **seguridad** página, haga clic en **referencia de la API**.
+2. En la página **Security** (Seguridad), haga clic en **API Reference** (Referencia de API).
    
-    ![Haga clic en la referencia de la API.][15]
+    ![Selección de Referencia de API.][15]
 
 3. Seleccione **Enable API access**.
    
-    ![Haga clic en la referencia de la API.][16]
+    ![Selección de Referencia de API.][16]
 
     > [!IMPORTANT]
-    > Para cada usuario que piensa tooprovision tooGoogle aplicaciones, su nombre de usuario en Azure Active Directory *debe* ser tooa relacionados de dominio personalizado. Por ejemplo, Google Apps no acepta los nombres de usuario parecidos a bob@contoso.onmicrosoft.com, mientras que bob@contoso.com se acepta. Puede cambiar el dominio de un usuario existente editando sus propiedades en Azure AD. Instrucciones de cómo se incluyen tooset un dominio personalizado para Azure Active Directory y Google Apps en lo siguiente.
+    > El nombre en Azure Active Directory de cada uno de los usuarios que desee aprovisionar en Google Apps *tiene que* estar vinculado a un dominio personalizado. Por ejemplo, Google Apps no acepta los nombres de usuario parecidos a bob@contoso.onmicrosoft.com. Por otro lado, bob@contoso.com se acepta. Puede cambiar el dominio de un usuario existente editando sus propiedades en Azure AD. En los pasos siguientes hemos incluido instrucciones sobre cómo establecer un dominio personalizado para Azure Active Directory y Google Apps.
       
-4. Si no ha agregado todavía un tooyour de nombre de dominio personalizado Azure Active Directory, a continuación, siga Hola pasos:
+4. Si todavía no ha agregado un nombre de dominio personalizado para Azure Active Directory, siga los pasos a continuación:
   
-    a. Hola [portal de Azure](https://portal.azure.com), en Hola panel de navegación izquierdo, haga clic en **Active Directory**. En la lista de directorios de hello, seleccione el directorio. 
+    a. En el panel de navegación izquierdo de [Azure Portal](https://portal.azure.com), seleccione **Azure Active Directory**. En la lista de directorios, seleccione el directorio. 
 
-    b. Haga clic en **nombre de los dominios** en Hola panel de navegación izquierdo y, a continuación, haga clic en **agregar**.
+    b. Seleccione **Nombre de dominio** en el panel de navegación izquierdo y, después seleccione **Agregar**.
      
-     ![dominio](./media/active-directory-saas-google-apps-provisioning-tutorial/domain_1.png)
+     ![Dominio](./media/active-directory-saas-google-apps-provisioning-tutorial/domain_1.png)
 
-     ![agregar un dominio](./media/active-directory-saas-google-apps-provisioning-tutorial/domain_2.png)
+     ![Incorporación de un dominio](./media/active-directory-saas-google-apps-provisioning-tutorial/domain_2.png)
 
-    c. Escriba el nombre de dominio en hello **nombre de dominio** campo. Este nombre de dominio debe ser Hola mismo nombre de dominio que piensa toouse para Google Apps. Cuando esté listo, haga clic en hello **Agregar dominio** botón.
+    c. Escriba el nombre del dominio en el campo **Nombre de dominio** . Este nombre de dominio debe ser el mismo que piensa usar para Google Apps. A continuación, seleccione el botón **Agregar dominio**.
      
-     ![nombre de dominio](./media/active-directory-saas-google-apps-provisioning-tutorial/domain_3.png)
+     ![Nombre de dominio](./media/active-directory-saas-google-apps-provisioning-tutorial/domain_3.png)
 
-    d. Haga clic en **siguiente** página de comprobación de toogo toohello. tooverify que posee este dominio, debe editar los registros DNS del dominio de hello según los valores de toohello incluidos en esta página. Puede elegir tooverify mediante **registros MX** o **registros TXT**, en función de lo que seleccione para hello **tipo de registro** opción. Para obtener instrucciones detalladas sobre cómo el nombre de dominio tooverify con Azure AD, consulte [agregar su propios tooAzure de nombre de dominio AD](https://go.microsoft.com/fwLink/?LinkID=278919&clcid=0x409).
+    d. Seleccione **Siguiente** para ir a la página de comprobación. Para comprobar que es propietario de este dominio, edite los registros DNS del dominio según los valores proporcionados en esta página. Puede optar por realizar la comprobación con **registros MX** o **registros TXT** según lo que seleccione en la opción **Tipo de registro**. 
+    
+    Si desea instrucciones detalladas sobre cómo comprobar los nombres de dominio con Azure AD, consulte [Incorporación de su propio nombre de dominio a Azure AD](https://go.microsoft.com/fwLink/?LinkID=278919&clcid=0x409).
      
-     ![dominio](./media/active-directory-saas-google-apps-provisioning-tutorial/domain_4.png)
+     ![Dominio](./media/active-directory-saas-google-apps-provisioning-tutorial/domain_4.png)
 
-    e. Repita los pasos para todos los dominios de Hola que piensa tooadd tooyour directory anteriores de Hola.
+    e. Repita los pasos anteriores para todos los dominios que quiera agregar a su directorio.
 
-5. Ahora que ha comprobado todos los dominios con Azure AD, debe comprobarlos de nuevo con Google Apps. Para cada dominio que ya no está registrado con Google Apps, siga Hola pasos:
+5. Ahora que ha comprobado todos los dominios con Azure AD, tiene que volverlos a comprobar con Google Apps. Para cada dominio que no esté registrado aún con Google Apps, realice los pasos siguientes:
    
-    a. Hola [consola de administración de aplicaciones de Google](http://admin.google.com/), haga clic en **dominios**.
+    a. En la [Consola de administración de Google Apps](http://admin.google.com/), haga clic en **Domains** (Dominios).
      
-     ![Haga clic en Dominios][20]
+     ![Selección de dominios][20]
 
-    b. Haga clic en **Agregar un dominio o un alias de dominio**.
+    b. Haga clic en **Add a domain or a domain alias** (Agregar un dominio o un alias de dominio).
      
      ![Adición de un nuevo dominio][21]
 
-    c. Seleccione **agregar otro dominio**y escriba Hola nombre de dominio de Hola que desearía tooadd.
+    c. Seleccione **Add another domain** (Añadir otro dominio) y escriba el nombre del dominio que desee agregar.
      
      ![Especificación de un nombre de dominio][22]
 
-    d. Haga clic en **Continuar y comprobar la propiedad del dominio**. A continuación, siga Hola pasos tooverify si su propio nombre de dominio de Hola. Para obtener instrucciones completas sobre cómo tooverify su dominio con Google Apps, vea. [Verificar que eres el propietario del sitio web](https://support.google.com/webmasters/answer/35179).
+    d. Haga clic en **Continue and verify domain ownership** (Continuar y comprobar la propiedad del dominio). A continuación, siga los pasos para comprobar que posee el nombre de dominio. Para obtener instrucciones completas sobre cómo comprobar un dominio con Google Apps, consulte [Cómo elegir un método de verificación](https://support.google.com/webmasters/answer/35179).
 
-    e. Repita los pasos para todos los dominios adicionales que piensa tooadd tooGoogle aplicaciones anteriores de Hola.
+    e. Repita los pasos anteriores para todos los dominios adicionales que se van a agregar a Google Apps.
      
      > [!WARNING]
-     > Si cambiar dominio principal de hello para el inquilino de Google Apps, y si ya ha configuran el inicio de sesión único con Azure AD, entonces tiene toorepeat paso 3 de # bajo [paso dos: habilitar Single Sign-On](#step-two-enable-single-sign-on).
+     > Si cambia el dominio principal del inquilino de Google Apps y ya ha configurado el inicio de sesión único con Azure AD, tendrá que repetir el paso 3 en [Paso 2: Habilitar el inicio de sesión único](#step-two-enable-single-sign-on).
        
-6. Hola [consola de administración de aplicaciones de Google](http://admin.google.com/), haga clic en **Roles de administrador**.
+6. En la [Consola de administración de Google Apps](http://admin.google.com/), seleccione **Admin Roles** (Funciones de administrador).
    
-     ![Haga clic en Google Apps][26]
+     ![Selección de Google Apps][26]
 
-7. Determinar qué Administrador de cuenta le gustaría toomanage toouse el aprovisionamiento de usuarios. Para hello **rol de administrador** de esa cuenta, editar hello **privilegios** para ese rol. Asegúrese de que tiene todos los hello **privilegios de administrador API** habilitado para que esta cuenta puede utilizarse para el aprovisionamiento.
+7. Determine qué cuenta de administrador quiere usar para administrar el aprovisionamiento de usuarios. Para el **rol administrativo** de esa cuenta, edite los **privilegios** para ese rol. Asegúrese de que habilita todos los **privilegios de la API de administración** para que esta cuenta pueda usarse para el aprovisionamiento.
    
-     ![Haga clic en Google Apps][27]
+     ![Selección de Google Apps][27]
    
     > [!NOTE]
-    > Si va a configurar un entorno de producción, se recomienda hello es toocreate una cuenta de administrador en Google Apps específicamente para este paso. Estas cuentas deben tener asociado un rol de administrador que tenga privilegios de API necesarias de Hola.
+    > Si va a configurar un entorno de producción, la práctica recomendada es crear una nueva cuenta de administrador en Google Apps específicamente para este paso. Estas cuentas tienen que tener un rol de administrador asociado que tenga los privilegios necesarios de la API.
      
-8. Hola [portal de Azure](https://portal.azure.com), examinar toohello **Azure Active Directory > aplicaciones empresariales > todas las aplicaciones** sección.
+8. En [Azure Portal](https://portal.azure.com), vaya a la sección **Azure Active Directory**  > **Aplicaciones empresariales** > **Todas las aplicaciones**.
 
-9. Si ya has configurado Google Apps para el inicio de sesión único, busque la instancia de Google Apps con el campo de búsqueda de Hola. En caso contrario, seleccione **agregar** y busque **Google Apps** en Galería de aplicaciones de Hola. Seleccionar aplicaciones de Google de resultados de la búsqueda de Hola y agregarlo a tooyour lista de aplicaciones.
+9. Si ya ha configurado Google Apps para el inicio de sesión único, busque la instancia de Google Apps mediante el campo de búsqueda. En caso contrario, haga clic en **Agregar** y busque **Google Apps** en la galería de aplicaciones. Seleccione **Google Apps** en los resultados de la búsqueda y agréguelo a la lista de aplicaciones.
 
-10. Seleccione la instancia de Google Apps, a continuación, seleccione hello **Provisioning** ficha.
+10. Seleccione la instancia de Google Apps y, después, haga clic en la pestaña **Aprovisionamiento**.
 
-11. Conjunto hello **modo de aprovisionamiento** demasiado**automática**. 
+11. Establezca el **modo de aprovisionamiento** en **Automático**. 
 
      ![Aprovisionamiento](./media/active-directory-saas-google-apps-provisioning-tutorial/provisioning.png)
 
-12. En hello **las credenciales de administrador** sección, haga clic en **Authorize**. Se abrirá un cuadro de diálogo de autorización de Google Apps en una nueva ventana del explorador.
+12. En **Credenciales de administrador**, haga clic en **Autorizar**. Se abrirá un cuadro de diálogo de autorización de Google Apps en una nueva ventana del explorador.
 
-13. Confirme que desea que los cambios de toomake toogive Azure Active Directory permiso de inquilinos tooyour Google Apps. Haga clic en **Aceptar**.
+13. Confirme que desea conceder permiso de Azure Active Directory para realizar cambios en el inquilino de Google Apps. Seleccione **Aceptar**.
     
      ![Confirme los permisos.][28]
 
-14. Hola portal de Azure, haga clic en **Probar conexión** tooensure Azure AD puede conectar la aplicación de Google Apps tooyour. Si se produce un error en la conexión de hello, asegúrese de que su cuenta de Google Apps tiene permisos de administrador de equipo e inténtelo de hello **"Autorizar"** vuelva a intentarlo.
+14. En Azure Portal, seleccione **Probar conexión** para asegurarse de que Azure AD puede conectarse a la aplicación Google Apps. Si la conexión no se establece, asegúrese de que la cuenta de Google Apps tiene permisos de administrador de equipo. Luego vuelva a intentar el paso **Autorizar**.
 
-15. Escriba la dirección de correo electrónico de Hola de una persona o grupo que debe recibir las notificaciones de error aprovisionamiento en hello **correo electrónico de notificación** campo y active casilla Hola.
+15. Escriba la dirección de correo electrónico de una persona o grupo que debe recibir las notificaciones de error de aprovisionamiento en el campo **Correo electrónico de notificación**. Luego active la casilla.
 
-16. Haga clic en **Guardar**.
+16. Seleccione **Guardar.**
 
-17. En la sección asignaciones de hello, seleccione **sincronizar Azure Active Directory Users tooGoogle aplicaciones.**
+17. En la sección **Asignaciones**, seleccione **Synchronize Azure Active Directory Users to Google Apps** (Sincronizar usuarios de Azure Active Directory con Google Apps).
 
-18. Hola **asignaciones de atributos** sección, revise los atributos de usuario de Hola que se sincronizan desde tooGoogle aplicaciones de Azure AD. Hola atributos seleccionados como **coincidencia** propiedades son cuentas de usuario del hello toomatch usado en Google Apps para las operaciones de actualización. Seleccione toocommit de botón de hello guardar los cambios.
+18. En la sección **Asignaciones de atributos**, revise los atributos de usuario que se sincronizarán entre Azure AD y Google Apps. Los atributos que son propiedades de **Coincidencia** se usan para buscar coincidencias con las cuentas de usuario de Google Apps con el objetivo de realizar operaciones de actualización. Para confirmar los cambios, seleccione **Guardar**.
 
-19. tooenable Hola servicio de aprovisionamiento de Azure AD para Google Apps, cambio hello **estado de aprovisionamiento** demasiado**en** en hello sección de configuración
+19. Para habilitar el servicio de aprovisionamiento de Azure AD para Google Apps, cambie el **Estado de aprovisionamiento** a **Activado** en **Configuración**.
 
-20. Haga clic en **Guardar**.
+20. Seleccione **Guardar**.
 
-Inicia la sincronización inicial de Hola de los usuarios o grupos asignados tooGoogle aplicaciones en la sección usuarios y grupos de Hola. la sincronización inicial Hola toma tooperform más que las sincronizaciones posteriores, que se producen aproximadamente cada 20 minutos mientras se ejecuta el servicio de Hola. Puede usar hello **detalles de sincronización** sección toomonitor progreso y siga los informes de actividad del tooprovisioning vínculos, que describen todas las acciones realizadas por hello aprovisionamiento del servicio en la aplicación de Google Apps.
+Este proceso inicia la sincronización inicial de todos los usuarios y grupos asignados a Google Apps en la sección Usuarios y grupos. La sincronización inicial tardará más tiempo en realizarse que las posteriores, que se producen aproximadamente cada 20 minutos si se está ejecutando el servicio. 
+
+Puede usar la sección **Detalles de sincronización** para supervisar el progreso y hacer clic en los vínculos a los informes de actividad de aprovisionamiento. Estos informes describen todas las acciones que lleva a cabo el servicio de aprovisionamiento en su aplicación Google Apps.
 
 ## <a name="additional-resources"></a>Recursos adicionales
 

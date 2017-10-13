@@ -1,10 +1,10 @@
 ---
-title: "una función en Azure desencadenado por la cola de mensajes aaaCreate | Documentos de Microsoft"
-description: "Usar funciones de Azure toocreate una función sin servidor que se invoca con un mensaje había enviado tooan cola de almacenamiento de Azure."
+title: "Crear una función en Azure desencadenada por mensajes en cola | Microsoft Docs"
+description: "Use Azure Functions para crear una función sin servidor que se invoca mediante mensajes enviados a una cola de Azure Storage."
 services: azure-functions
 documentationcenter: na
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 ms.assetid: 361da2a4-15d1-4903-bdc4-cc4b27fc3ff4
@@ -16,21 +16,21 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: e9501ed336b502eaeee3fa62ec4ae085c76de0ac
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 3fd5a5b9d2e2eec485fd9ecc5380ad6adb9851d0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Crear una función desencadenada por Azure Queue Storage
 
-Obtenga información acerca de cómo toocreate una función que se desencadena cuando hay mensajes enviado tooan cola de almacenamiento de Azure.
+Obtenga información sobre cómo crear una función que se desencadena cuando se envían mensajes a una cola de Azure Storage.
 
-![Ver el mensaje en los registros de Hola.](./media/functions-create-storage-queue-triggered-function/function-app-in-portal-editor.png)
+![Vea el mensaje en los registros.](./media/functions-create-storage-queue-triggered-function/function-app-in-portal-editor.png)
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-- Descargue e instale hello [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
+- Descargue e instale el [Explorador de Microsoft Azure Storage](http://storageexplorer.com/).
 
 - Una suscripción de Azure. Si no tiene una, cree una [cuenta gratuita](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) antes de empezar.
 
@@ -42,65 +42,65 @@ Obtenga información acerca de cómo toocreate una función que se desencadena c
 
 ![Function App creada correctamente.](./media/functions-create-first-azure-function/function-app-create-success.png)
 
-A continuación, cree una función en la aplicación de hello nueva función.
+Después, cree una función en la nueva Function App.
 
 <a name="create-function"></a>
 
 ## <a name="create-a-queue-triggered-function"></a>Creación de una función desencadenada por el servicio Queue
 
-1. Expanda la aplicación de la función y haga clic en hello  **+**  aparece al lado demasiado**funciones**. Si se trata de la primera función en la aplicación de la función de hello, seleccione **función personalizada**. Esto muestra el conjunto completo de Hola de plantillas de función.
+1. Expanda su instancia de Function App y haga clic en el botón **+**, que se encuentra junto a **Functions**. Si se trata de la primera función de Function App, seleccione **Función personalizada**. Se muestra el conjunto completo de plantillas de funciones.
 
-    ![Página de inicio rápido de funciones en hello portal de Azure](./media/functions-create-storage-queue-triggered-function/add-first-function.png)
+    ![Página de inicio rápido de Functions en Azure Portal](./media/functions-create-storage-queue-triggered-function/add-first-function.png)
 
-2. Seleccione hello **QueueTrigger** plantilla de idioma que desee y usar la configuración como se especifica en la tabla de Hola Hola.
+2. Seleccione la plantilla **QueueTrigger** de idioma que desee y use la configuración que se especifica en la tabla.
 
-    ![Crear función de cola activada de almacenamiento de Hola.](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
+    ![Cree la función desencadenada por la cola de almacenamiento.](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
     
     | Configuración | Valor sugerido | Descripción |
     |---|---|---|
-    | **Nombre de la cola**   | myqueue-items    | Nombre del programa Hola a la cola tooconnect tooin su cuenta de almacenamiento. |
-    | **Conexión de la cuenta de almacenamiento** | AzureWebJobStorage | Puede usar la conexión de la cuenta de almacenamiento Hola ya está en uso por la aplicación de la función o cree uno nuevo.  |
     | **Asigne un nombre a la función** | Único en la Function App | Nombre de la función desencadenada por la cola. |
+    | **Nombre de la cola**   | myqueue-items    | Nombre de la cola a la que se va a conectar en la cuenta de almacenamiento. |
+    | **Conexión de cuenta de Storage** | AzureWebJobStorage | Puede usar la conexión de cuenta de almacenamiento que ya usa la Function App o crear una nueva.  |    
 
-3. Haga clic en **crear** toocreate la función.
+3. Haga clic en **Crear** para crear la función.
 
-A continuación, conectarse a tooyour cuenta de almacenamiento de Azure y crear hello **myqueue elementos** cola de almacenamiento.
+Después, conéctese a su cuenta de Azure Storage y cree la cola de almacenamiento **myqueue-items**.
 
-## <a name="create-hello-queue"></a>Crear cola Hola
+## <a name="create-the-queue"></a>Creación de la cola
 
-1. En la función, haga clic en **Integrar**, expanda **Documentación** y copie los dos valores de **Nombre de cuenta** y **Clave de cuenta**. Use estas cuentas de almacenamiento de credenciales tooconnect toohello. Si ya se ha conectado la cuenta de almacenamiento, omitir toostep 4.
+1. En la función, haga clic en **Integrar**, expanda **Documentación** y copie los dos valores de **Nombre de cuenta** y **Clave de cuenta**. Use estas credenciales para conectarse a la cuenta de almacenamiento en el Explorador de Azure Storage. Si ya se ha conectado a la cuenta de almacenamiento, vaya al paso 4.
 
-    ![Obtener las credenciales de conexión de cuenta de almacenamiento de Hola.](./media/functions-create-storage-queue-triggered-function/functions-storage-account-connection.png)v
+    ![Obtenga las credenciales de conexión de la cuenta de almacenamiento.](./media/functions-create-storage-queue-triggered-function/functions-storage-account-connection.png)
 
-1. Ejecute hello [Microsoft Azure Storage Explorer](http://storageexplorer.com/) de herramientas, haga clic en hello conectarse icono de hello izquierda, elija **utilizar un nombre de la cuenta de almacenamiento y la clave**y haga clic en **siguiente**.
+1. Ejecute la herramienta [Explorador de Microsoft Azure Storage](http://storageexplorer.com/), haga clic en el icono de conexión situado a la izquierda, seleccione **Use a storage account name and key** (Usar el nombre y la clave de una cuenta de almacenamiento) y haga clic en **Siguiente**.
 
-    ![Ejecutar la herramienta de explorador de la cuenta de almacenamiento de Hola.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-connect-1.png)
+    ![Ejecute la herramienta Explorador de la cuenta de almacenamiento.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-connect-1.png)
 
-1. Escriba Hola **nombre-cuenta** y **clave de cuenta** del paso 1, haga clic en **siguiente** y, a continuación, **conectar**.
+1. Escriba los valores de **Nombre de cuenta** y **Clave de cuenta** del paso 1, haga clic en **Siguiente** y, después, en **Conectar**.
 
-    ![Escriba las credenciales de almacenamiento de Hola y conectarse.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-connect-2.png)
+    ![Escriba las credenciales de almacenamiento y conéctese.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-connect-2.png)
 
-1. Expanda Hola adjunta cuenta de almacenamiento, haga clic en **colas**, haga clic en **Crear cola**, tipo `myqueue-items`, y, a continuación, presione ENTRAR.
+1. Expanda la cuenta de almacenamiento asociada, haga clic con el botón derecho en **Colas**, haga clic en **Crear cola**, escriba `myqueue-items` y, después, presione ENTRAR.
 
     ![Cree una cola de almacenamiento.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-create-queue.png)
 
-Ahora que tiene una cola de almacenamiento, puede probar función hello mediante la adición de una cola de toohello de mensajes.
+Ahora que tiene una cola de almacenamiento, puede probar la función. Para ello, agregue un mensaje a la cola.
 
-## <a name="test-hello-function"></a>Probar función hello
+## <a name="test-the-function"></a>Prueba de la función
 
-1. Nuevo en hello portal de Azure, examinar tooyour función expanda hello **registros** final Hola de página de Hola y asegúrese de que dicho registro de transmisión por secuencias no está en pausa.
+1. De nuevo en Azure Portal, vaya a la función. Expanda **Registros** en la parte inferior de la página y asegúrese de que el streaming de registros no está en pausa.
 
 1. En el Explorador de almacenamiento, expanda la cuenta de almacenamiento, **Colas** y **myqueue-items** y, después, haga clic en **Agregar mensaje**.
 
-    ![Agregue una cola de toohello de mensajes.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-add-message.png)
+    ![Agregue un mensaje a la cola.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-add-message.png)
 
 1. Escriba su mensaje "Hola mundo" en **Texto del mensaje** y haga clic en **Aceptar**.
 
-1. Espere unos segundos, a continuación, volver atrás tooyour registros de funciones y compruebe que ese nuevo mensaje Hola se ha leído desde la cola de Hola.
+1. Espere unos segundos y, después, vuelva a los registros de función para comprobar que se ha leído el mensaje nuevo de la cola.
 
-    ![Ver el mensaje en los registros de Hola.](./media/functions-create-storage-queue-triggered-function/functions-queue-storage-trigger-view-logs.png)
+    ![Vea el mensaje en los registros.](./media/functions-create-storage-queue-triggered-function/functions-queue-storage-trigger-view-logs.png)
 
-1. En el Explorador de almacenamiento, haga clic en **actualizar** y compruebe ese mensaje Hola se ha procesado y ya no está en cola Hola.
+1. En el Explorador de almacenamiento, haga clic en **Actualizar** y compruebe que el mensaje se ha procesado y ya no está en la cola.
 
 ## <a name="clean-up-resources"></a>Limpieza de recursos
 
@@ -108,7 +108,7 @@ Ahora que tiene una cola de almacenamiento, puede probar función hello mediante
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Ha creado una función que se ejecuta cuando se agrega un mensaje tooa cola de almacenamiento.
+Ha creado una función que se ejecuta cuando se agrega un mensaje a una cola de almacenamiento.
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 

@@ -1,5 +1,5 @@
 ---
-title: 'secuencia de comandos CLI aaaAzure de ejemplo: crear una red para aplicaciones de varios niveles | Documentos de Microsoft'
+title: "Ejemplo de script de CLI de Azure: crear una red para aplicaciones de niveles múltiples| Microsoft Docs"
 description: "Ejemplo de script de CLI de Azure: crear una red virtual para aplicaciones de niveles múltiples."
 services: virtual-network
 documentationcenter: virtual-network
@@ -15,15 +15,15 @@ ms.tgt_pltfrm:
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: jdial
-ms.openlocfilehash: deeb3f459499cebd1b8ded6a299eb759d49cf08d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: de65d820f2d9eea49b58185c81d815675fd76740
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-a-network-for-multi-tier-applications"></a>Creación de una red para aplicaciones de niveles múltiples
 
-Este ejemplo de script crea una red virtual con subredes de front-end y back-end. Subred de tráfico toohello front-end es tooHTTP limitado y SSH, al tráfico toohello subred back-end es tooMySQL limitado, puerto 3306. Después de ejecutar script de Hola, tendrá dos máquinas virtuales, uno en cada subred que se pueden implementar el servidor web y el software MySQL.
+Este ejemplo de script crea una red virtual con subredes de front-end y back-end. El tráfico a la subred de front-end está limitado a HTTP y SSH, mientras que el tráfico a la subred de back-end está limitado a MySQL, al puerto 3306. Después de ejecutar el script, tendrá dos máquinas virtuales, una en cada subred en la que puede implementar el servidor web y el software MySQL.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -33,11 +33,11 @@ Este ejemplo de script crea una red virtual con subredes de front-end y back-end
 ## <a name="sample-script"></a>Script de ejemplo
 
 
-[!code-azurecli-interactive[main](../../../cli_scripts/virtual-network/virtual-network-multi-tier-application/virtual-network-multi-tier-application.sh  "Virtual network for multi-tier application")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-network/virtual-network-multi-tier-application/virtual-network-multi-tier-application.sh  "Red virtual para la aplicación de niveles múltiples")]
 
 ## <a name="clean-up-deployment"></a>Limpieza de la implementación 
 
-Ejecute hello después el grupo de recursos de comando tooremove hello, la VM y todos ellos relacionados con recursos.
+Ejecute el siguiente comando para quitar el grupo de recursos, la máquina virtual y todos los recursos relacionados.
 
 ```azurecli
 az group delete --name MyResourceGroup --yes
@@ -45,22 +45,22 @@ az group delete --name MyResourceGroup --yes
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Este script utiliza Hola después comandos toocreate un grupo de recursos, redes virtuales y grupos de seguridad de red. Cada comando de la tabla de hello vincula documentación específica del toocommand.
+Este script usa los siguientes comandos para crear un grupo de recursos, una red virtual y grupos de seguridad de red. Cada comando de la tabla crea un vínculo a documentación específica del comando.
 
 | Comando | Notas |
 |---|---|
 | [az group create](/cli/azure/group#create) | Crea un grupo de recursos en el que se almacenan todos los recursos. |
 | [az network vnet create](/cli/azure/network/vnet#create) | Crea una subred de front-end y una red virtual de Azure. |
 | [az network subnet create](/cli/azure/network/vnet/subnet#create) | Crea una subred de back-end. |
-| [az network public-ip create](/cli/azure/network/public-ip#create) | Crea un Hola de tooaccess VM pública para la dirección IP de hello Internet. |
-| [az network nic create](/cli/azure/network/nic#create) | Crea las interfaces de red virtual y los asocia subredes de la red virtual toohello front-end y back-end. |
-| [az network nsg create](/cli/azure/network/nsg#create) | Crea grupos de seguridad de red (NSG) que son subredes de front-end y back-end de toohello asociado. |
-| [az network nsg rule create](/cli/azure/network/nsg/rule#create) |Crea reglas NSG que permiten o bloquear subredes toospecific de puertos específicos. |
-| [az vm create](/cli/azure/vm#create) | Crea las máquinas virtuales y adjunta un tooeach NIC virtual. Este comando también especifica toouse de imagen de máquina virtual de Hola y credenciales administrativas. |
+| [az network public-ip create](/cli/azure/network/public-ip#create) | Crea una dirección IP pública para acceder a la VM desde Internet. |
+| [az network nic create](/cli/azure/network/nic#create) | Crea interfaces de red virtual y las asocia a subredes de front-end y back-end de la red virtual. |
+| [az network nsg create](/cli/azure/network/nsg#create) | Crea grupos de seguridad de red (NSG) que están asociados a las subredes de front-end y back-end. |
+| [az network nsg rule create](/cli/azure/network/nsg/rule#create) |Crea reglas NSG que permiten o bloquean puertos específicos para subredes concretas. |
+| [az vm create](/cli/azure/vm#create) | Crea máquinas virtuales se crea y asocia una NIC a cada VM. Este comando también especifica la imagen de máquina virtual que se usará y las credenciales administrativas. |
 | [az group delete](/cli/azure/group#delete) | Elimina un grupo de recursos y todos los recursos que contiene. |
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener más información sobre Hola CLI de Azure, consulte [documentación de Azure CLI](/cli/azure/overview).
+Para más información sobre la CLI de Azure, consulte la [documentación de la CLI de Azure](/cli/azure/overview).
 
-Encontrará más ejemplos de secuencias de comandos CLI red Hola [documentación de introducción a las redes Azure](../cli-samples.md)
+En la [documentación de la información general de redes de Azure](../cli-samples.md) puede encontrar ejemplos adicionales de script de la CLI de redes.

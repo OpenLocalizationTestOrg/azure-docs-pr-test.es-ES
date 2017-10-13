@@ -1,6 +1,6 @@
 ---
-title: sqlcmd de almacenamiento de datos SQL de aaaConnect tooAzure | Documentos de Microsoft
-description: "Use [sqlcmd] [sqlcmd] Utilidad de línea de comandos tooconnect tooand consulta un almacén de datos de SQL Azure."
+title: "Conexión a Azure SQL Data Warehouse sqlcmd | Microsoft Docs"
+description: "Use la utilidad de línea de comandos [sqlcmd][sqlcmd] para conectar y consultar una instancia de Azure SQL Data Warehouse."
 services: sql-data-warehouse
 documentationcenter: NA
 author: antvgski
@@ -15,13 +15,13 @@ ms.workload: data-services
 ms.custom: connect
 ms.date: 10/31/2016
 ms.author: anvang;barbkess
-ms.openlocfilehash: 0334df7b969da1966ba29c97f835a2dc9e383e29
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5a3fe1046c3417070ba8ff5bd18a0485e2152eff
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="connect-toosql-data-warehouse-with-sqlcmd"></a>Conectar tooSQL almacenamiento de datos con sqlcmd
+# <a name="connect-to-sql-data-warehouse-with-sqlcmd"></a>Conexión a Almacenamiento de datos SQL con sqlcmd
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
@@ -31,43 +31,43 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Use [sqlcmd] [ sqlcmd] tooand tooconnect de utilidad de línea de comandos de consulta un almacén de datos de SQL Azure.  
+Use la utilidad de línea de comandos [sqlcmd][sqlcmd] para conectarse a Azure SQL Data Warehouse y realizar consultas.  
 
 ## <a name="1-connect"></a>1. Conectar
-partió tooget [sqlcmd][sqlcmd], abra el símbolo del sistema de Hola y escriba **sqlcmd** seguido por la cadena de conexión de hello para la base de datos de almacenamiento de datos SQL. cadena de conexión de Hello requiere Hola parámetros siguientes:
+Para empezar a trabajar con [sqlcmd][sqlcmd], abra el símbolo del sistema y escriba **sqlcmd**, seguido de la cadena de conexión de la base de datos de SQL Data Warehouse. La cadena de conexión requiere los siguientes parámetros:
 
-* **Servidor (-S):** servidor en forma de hello `<`nombre del servidor`>`. database.windows.net
+* **Server (-S):** servidor con el formato `<`Nombre del servidor`>`.database.windows.net
 * **Base de datos (-d):** nombre de la base de datos.
-* **Habilitar los identificadores entre comillas (-I):** identificadores entre comillas deben ser una instancia de almacenamiento de datos SQL de tooa tooconnect habilitado.
+* **Habilitar identificadores entre comillas (-I):** los identificadores entre comillas deben estar habilitados para poder conectarse a una instancia de SQL Data Warehouse.
 
-toouse autenticación de SQL Server, necesita parámetros de nombre de usuario/contraseña Hola tooadd:
+Para utilizar la autenticación de SQL Server, debe agregar los parámetros de nombre de usuario y contraseña:
 
-* **Usuario (-U):** usuario de servidor en forma de hello `<`usuario`>`
-* **Contraseña (-P):** contraseña asociada con el usuario de Hola.
+* **Usuario (-U):** usuario de servidor con el formato `<`usuario`>`
+* **Contraseña (-P):** la contraseña asociada con el usuario.
 
-Por ejemplo, la cadena de conexión podría ser similar a Hola siguiente:
+Por ejemplo, la cadena de conexión podría ser similar a la siguiente:
 
 ```sql
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
 ```
 
-autenticación de Azure Active Directory integrado toouse, necesita parámetros de tooadd hello Azure Active Directory:
+Para usar la autenticación integrada de Azure Active Directory, debe agregar los parámetros de Azure Active Directory:
 
 * **Autenticación de Azure Active Directory (-G):** use Azure Active Directory para la autenticación.
 
-Por ejemplo, la cadena de conexión podría ser similar a Hola siguiente:
+Por ejemplo, la cadena de conexión podría ser similar a la siguiente:
 
 ```sql
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -G -I
 ```
 
 > [!NOTE]
-> Necesita demasiado[Habilitar autenticación de Azure Active Directory](sql-data-warehouse-authentication.md) tooauthenticate mediante Active Directory.
+> Necesita [habilitar la autenticación de Azure Active Directory](sql-data-warehouse-authentication.md) para autenticarse con Active Directory.
 > 
 > 
 
 ## <a name="2-query"></a>2. Consultar
-Después de la conexión, puede emitir cualquier instrucciones de Transact-SQL compatibles con la instancia de Hola.  En este ejemplo, las consultas se envían en modo interactivo.
+Después de la conexión, puede emitir cualquier instrucción Transact-SQL en la instancia.  En este ejemplo, las consultas se envían en modo interactivo.
 
 ```sql
 C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I
@@ -76,7 +76,7 @@ C:\>sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@s
 3> QUIT
 ```
 
-Estos ejemplos siguientes muestra cómo puede ejecutar las consultas en modo de lote con opción -Q de Hola o canalizando el toosqlcmd SQL.
+Los siguientes ejemplos muestran cómo se pueden ejecutar las consultas en el modo por lotes con la opción -Q o mediante la canalización de su SQL a sqlcmd.
 
 ```sql
 sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@ssword -I -Q "SELECT name FROM sys.tables;"
@@ -87,7 +87,7 @@ sqlcmd -S MySqlDw.database.windows.net -d Adventure_Works -U myuser -P myP@sswor
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-Vea [documentación de sqlcmd] [ sqlcmd] para obtener más información acerca de los detalles acerca de las opciones de hello disponibles en sqlcmd.
+Para más información sobre las opciones disponibles en sqlcmd, consulte la [documentación de sqlcmd][sqlcmd].
 
 <!--Image references-->
 

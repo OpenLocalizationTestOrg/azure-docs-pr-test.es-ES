@@ -1,5 +1,5 @@
 ---
-title: "aaaBackup máquinas virtuales de Windows Azure | Documentos de Microsoft"
+title: "Copia de seguridad de máquinas virtuales Windows de Azure | Microsoft Docs'"
 description: "Para proteger las máquinas virtuales Windows, realice una copia de seguridad de ellas mediante Azure Backup."
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1cd3e1940a83aacd160cba3c8613b63b6f3c11d9
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 8e58a2290e5034ef393f65cbcddb86e18cf4a6ec
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="back-up-windows-virtual-machines-in-azure"></a>Copia de seguridad de máquinas virtuales Windows en Azure
 
-Para proteger sus datos realice copias de seguridad a intervalos regulares. Azure Backup crea puntos de recuperación que se almacenan en almacenes de recuperación con redundancia geográfica. Cuando se restaura desde un punto de recuperación, puede restaurar Hola toda máquina virtual o simplemente algunos archivos. Este artículo explica cómo toorestore un único archivo tooa VM ejecuta Windows Server e IIS. Si aún no tiene un toouse de máquina virtual, puede crear uno mediante hello [inicio rápido de Windows](quick-create-portal.md). En este tutorial, aprenderá a:
+Para proteger sus datos realice copias de seguridad a intervalos regulares. Azure Backup crea puntos de recuperación que se almacenan en almacenes de recuperación con redundancia geográfica. Cuando se realiza una restauración desde un punto de recuperación, se puede restaurar toda una máquina virtual o solo determinados archivos. En este artículo se explica cómo restaurar un único archivo en una máquina virtual que ejecuta Windows Server e IIS. Si aún no tiene una máquina virtual que pueda usar, puede crear una mediante la guía de [inicio rápido de Windows](quick-create-portal.md). En este tutorial, aprenderá a:
 
 > [!div class="checklist"]
 > * Crear una copia de seguridad de una máquina virtual.
@@ -36,60 +36,60 @@ Para proteger sus datos realice copias de seguridad a intervalos regulares. Azur
 
 ## <a name="backup-overview"></a>Introducción a Backup
 
-Cuando Hola servicio copia de seguridad de Azure inicia un trabajo de copia de seguridad, desencadena Hola extensión de reserva tootake una instantánea en un momento. Hola servicio de copia de seguridad de Azure usa hello _VMSnapshot_ extensión. extensión de Hola se instala durante la copia de seguridad primera VM Hola si Hola máquina virtual se está ejecutando. Si hello no se está ejecutando, Hola servicio de copia de seguridad toma una instantánea de hello almacenamiento subyacente (debido a que ninguna aplicación de escritura aparecen al Hola que VM está en estado detenido).
+Cuando el servicio Azure Backup inicia una copia de seguridad, desencadena la extensión de copia de seguridad para que tome una instantánea de un momento dado. El servicio Azure Backup usa la extensión _VMSnapshot_. La extensión se instala cuando se realiza la primera copia de seguridad de la máquina virtual, en caso de que esta esté en ejecución. Si no se está ejecutando la máquina virtual, el servicio Azure Backup toma una instantánea del almacenamiento subyacente (ya que no se produce ninguna escritura de la aplicación mientras se detiene la máquina virtual).
 
-Cuando se toma una instantánea de máquinas virtuales de Windows, servicio de copia de seguridad de Hola coordina con tooget de servicio de instantáneas de volumen (VSS) de hello una instantánea coherente de los discos de la máquina virtual Hola. Una vez Hola servicio de copia de seguridad de Azure toma instantáneas de hello, datos de hello están el almacén de toohello transferidos. toomaximize eficacia, servicio de hello identifica y transfiere únicamente los bloques de datos que han cambiado desde la copia de seguridad anterior de Hola Hola.
+Cuando se toma una instantánea de las máquinas virtuales de Windows, el servicio Azure Backup se coordina con el servicio de instantáneas de volumen (VSS) para obtener una instantánea coherente de los discos de la máquina virtual. Después de que el servicio Azure Backup toma la instantánea, se transfieren los datos al almacén. Para que el proceso resulte más eficaz, el servicio identifica y transfiere únicamente los bloques de datos que han cambiado desde la última copia de seguridad.
 
-Una vez completada la transferencia de datos hello, instantánea Hola se quita y se crea un punto de recuperación.
+Cuando finaliza la transferencia de datos, se elimina la instantánea y se crea un punto de recuperación.
 
 
 ## <a name="create-a-backup"></a>Creación de una copia de seguridad
-Crear una sencilla programado diario copia de seguridad tooa almacén de servicios de recuperación. 
+Cree una copia de seguridad diaria programada simple en un almacén de Recovery Services. 
 
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com/).
-2. En el menú de Hola Hola izquierda, seleccione **máquinas virtuales**. 
-3. En lista de hello, seleccione tooback de una máquina virtual.
-4. En el módulo VM hello, Hola **configuración** sección, haga clic en **copia de seguridad**. Hola **habilitar copia de seguridad** abre la hoja.
-5. En **del almacén de servicios de recuperación**, haga clic en **crear nuevo** y proporcione el nombre de hello para el nuevo almacén de Hola. Se crea un nuevo almacén en hello mismo grupo de recursos y la ubicación como máquina virtual de Hola.
-6. Haga clic en **Directiva de copia de seguridad**. En este ejemplo, mantenga los valores predeterminados de Hola y haga clic en **Aceptar**.
-7. En hello **habilitar copia de seguridad** hoja, haga clic en **habilitar la copia de seguridad**. Esto crea una copia de seguridad diaria según la programación predeterminada de Hola.
-10. un punto de recuperación inicial, en hello toocreate **copia de seguridad** hoja haga clic en **una copia de seguridad ahora**.
-11. En hello **copia de seguridad ahora** hoja, haga clic en el icono del calendario de hello, usar Hola calendario control tooselect hello último día de este punto de recuperación se conservan y haga clic en **copia de seguridad**.
-12. Hola **copia de seguridad** hoja para la máquina virtual, verá Hola número de puntos de recuperación que están completos.
+1. Inicie sesión en el [Portal de Azure](https://portal.azure.com/).
+2. En el menú de la izquierda, haga clic en **Máquinas virtuales**. 
+3. En la lista, seleccione la máquina virtual de la que quiere realizar una copia de seguridad.
+4. En la hoja de la máquina virtual, en la sección **Configuración**, haga clic en **Copia de seguridad**. Se abre la hoja **Habilitar copia de seguridad**.
+5. En **Almacén de Recovery Services**, haga clic en **Create new** (Crear nuevo) y especifique el nombre del nuevo almacén. Se crea un nuevo almacén en el grupo de recursos y ubicación en que se encuentra la máquina virtual.
+6. Haga clic en **Directiva de copia de seguridad**. En este ejemplo, conserve los valores predeterminados y haga clic en **Aceptar**.
+7. En la hoja **Habilitar copia de seguridad**, haga clic en **Habilitar copia de seguridad**. De esta forma se crea una copia de seguridad diaria según la programación predeterminada.
+10. Para crear un punto de recuperación inicial, en la hoja **Copia de seguridad** haga clic en **Realizar copia de seguridad ahora**.
+11. En la hoja **Realizar copia de seguridad ahora**, haga clic en el icono del calendario, use el control de calendario para seleccionar el último día en que se mantendrá este punto de recuperación y haga clic en **Copia de seguridad**.
+12. En la hoja **Copia de seguridad** de la máquina virtual, verá el número de puntos de recuperación completos.
 
     ![Puntos de recuperación](./media/tutorial-backup-vms/backup-complete.png)
     
-primera copia de seguridad de Hello tarda aproximadamente 20 minutos. Una vez finalizada la copia de seguridad, continúe toohello siguiente parte de este tutorial.
+La primera copia de seguridad tarda aproximadamente 20 minutos. Cuando la copia de seguridad finalice, pase a la parte siguiente de este tutorial.
 
 ## <a name="recover-a-file"></a>Recuperación de un archivo
 
-Si eliminar ni hacer cambios tooa archivo accidentalmente, puede usar el archivo de hello toorecover de recuperación de archivos desde el almacén de copia de seguridad. Recuperación de archivos utiliza una secuencia de comandos que se ejecuta en hello VM, punto de recuperación de hello toomount como unidad local. Estas unidades permanecerá montadas durante 12 horas para que pueda copiar archivos de punto de recuperación de Hola y restaurarlas toohello máquina virtual.  
+Si accidentalmente elimina o realiza cambios en un archivo, puede usar Recuperación de archivos para recuperar el archivo del almacén de Backup. Recuperación de archivos usa un script que se ejecuta en la máquina virtual para montar el punto de recuperación como unidad local. Estas unidades permanecerán montadas durante 12 horas para que pueda copiar archivos desde el punto de recuperación y restaurarlos en la máquina virtual.  
 
-En este ejemplo, mostramos cómo toorecover Hola archivo de imagen que se usa en la página web de hello predeterminada de IIS. 
+En este ejemplo, se muestra cómo recuperar el archivo de imagen que se usa en la página web predeterminada de IIS. 
 
-1. Abra un explorador y conéctese toohello dirección IP de página IIS predeterminada de hello VM tooshow Hola.
+1. Abra un explorador y conéctese a la dirección IP de la máquina virtual para mostrar la página predeterminada de IIS.
 
     ![Página web predeterminada de IIS](./media/tutorial-backup-vms/iis-working.png)
 
-2. Conectar toohello máquina virtual.
-3. En hello VM, abra **Explorador de archivos** navegue too\inetpub\wwwroot y elimine el archivo hello **iisstart.png**.
-4. En el equipo local, la actualización Hola explorador toosee que Hola imagen en la página IIS predeterminada Hola ha desaparecido.
+2. Conéctese a la máquina virtual.
+3. En la máquina virtual, abra el **Explorador de archivos**, vaya a \inetpub\wwwroot y elimine el archivo **iisstart.png**.
+4. En el equipo local, actualice el explorador para ver que la imagen en la página predeterminada de IIS ha desaparecido.
 
     ![Página web predeterminada de IIS](./media/tutorial-backup-vms/iis-broken.png)
 
-5. En el equipo local, abra una nueva pestaña y vaya Hola Hola [portal de Azure](https://portal.azure.com).
-6. En el menú de Hola Hola izquierda, seleccione **máquinas virtuales** y seleccione Hola VM formulario Hola lista.
-8. En el módulo VM hello, Hola **configuración** sección, haga clic en **copia de seguridad**. Hola **copia de seguridad** abre la hoja. 
-9. En menú hello en parte superior de Hola de hoja de hello, seleccione **recuperación de archivos**. Hola **recuperación de archivos** abre la hoja.
-10. En **paso 1: seleccione el punto de recuperación**, seleccione un punto de recuperación de Hola de lista desplegable.
-11. En **paso 2: Descargar script toobrowse y recuperar archivos**, haga clic en hello **descargar ejecutable** botón. Guardar Hola archivo tooyour **descarga** carpeta.
-12. En el equipo local, abra **Explorador de archivos** y navegue tooyour **descarga** Hola de carpeta y copie el archivo de .exe descargado. nombre de archivo de Hello estará prefijado por su nombre de máquina virtual. 
-13. En la máquina virtual (a través de Hola conexión RDP) Pegar Hola .exe archivo toohello escritorio de la máquina virtual. 
-14. Navegue toohello escritorio de la máquina virtual y haga doble clic en .exe Hola. Esto se inicie un símbolo del sistema y a continuación, monte el punto de recuperación de Hola como un recurso compartido de archivos que puede tener acceso. Cuando finaliza crear recurso compartido de hello, escriba **preguntas** tooclose Hola símbolo del sistema.
-15. En la máquina virtual, abra **Explorador de archivos** y navegar por la letra de unidad de toohello que se usó para el recurso compartido de archivos de Hola.
-16. Navegar por too\inetpub\wwwroot y copia **iisstart.png** desde archivo hello, compartir y pegarlos en \inetpub\wwwroot. Por ejemplo, copie F:\inetpub\wwwroot\iisstart.png y péguelo en el archivo de hello toorecover c:\inetpub\wwwroot.
-17. En el equipo local, abra la pestaña del explorador de Hola que está conectado toohello dirección IP de hello máquina virtual que muestra hello IIS de forma predeterminada la página. Presione CTRL + F5 página del explorador toorefresh Hola. Ahora debería ver ese Hola se ha restaurado la imagen.
-18. En el equipo local, volver atrás toohello pestaña del explorador para hello portal de Azure y en **paso 3: desmontar discos Hola después de la recuperación** haga clic en hello **desmontar discos** botón. Si olvida este paso toodo, el punto de montaje de hello conexión toohello es cerrar automáticamente después de 12 horas. Después de esas 12 horas, debe toodownload un toocreate de script nuevo un nuevo punto de montaje.
+5. En el equipo local, abra una nueva pestaña y vaya al [portal de Azure](https://portal.azure.com).
+6. En el menú de la izquierda, seleccione **Máquinas virtuales** y seleccione la máquina virtual de la lista.
+8. En la hoja de la máquina virtual, en la sección **Configuración**, haga clic en **Copia de seguridad**. Se abre la hoja **Copia de seguridad**. 
+9. En el menú de la parte superior de la hoja, seleccione **Recuperación de archivos**. Se abrirá la hoja **Recuperación de archivos**.
+10. En **Paso 1: Seleccionar punto de recuperación**, seleccione un punto de recuperación en la lista desplegable.
+11. En **Paso 2: Descargar script para examinar y recuperar archivos**, haga clic en el botón **Download Executable** (Descargar ejecutable). Guarde el archivo en la carpeta **Descargas**.
+12. En el equipo local, abra el **Explorador de archivos**, vaya a la carpeta **Descargas** y copie el archivo .exe descargado. El nombre de archivo llevará delante el nombre de su máquina virtual. 
+13. En la máquina virtual (a través de la conexión RDP), pegue el archivo .exe en el escritorio de la máquina virtual. 
+14. Vaya al escritorio de la máquina virtual y haga doble clic en el archivo .exe. Se inicia un símbolo del sistema y luego se monta el punto de recuperación como un recurso compartido de archivos al que puede obtener acceso. Cuando se termine de crear el recurso compartido, escriba **q** para cerrar el símbolo del sistema.
+15. En la máquina virtual, abra el **Explorador de archivos** y vaya a la letra de unidad que se usó para el recurso compartido de archivos.
+16. Vaya a \inetpub\wwwroot, copie **iisstart.png** del recurso compartido de archivos y péguelo en \inetpub\wwwroot. Por ejemplo, copie F:\inetpub\wwwroot\iisstart.png y péguelo en c:\inetpub\wwwroot para recuperar el archivo.
+17. En el equipo local, abra la pestaña del explorador en el que está conectado a la dirección IP de la máquina virtual que muestra la página predeterminada de IIS. Presione CTRL + F5 para actualizar la página del explorador. Ahora debería ver que la imagen se ha restaurado.
+18. En el equipo local, vuelva a la pestaña de explorador de Azure Portal y en **Paso 3: Desmontar los discos después de la recuperación**, haga clic en el botón **Desmontar discos**. Si olvida realizar este paso, la conexión al punto de montaje se cierra automáticamente tras 12 horas. A las 12 horas, es preciso que descargue un script nuevo para crear un nuevo punto de montaje.
 
 
 ## <a name="next-steps"></a>Pasos siguientes
@@ -101,7 +101,7 @@ En este tutorial, ha aprendido cómo:
 > * Programar una copia de seguridad diaria.
 > * Restaurar un archivo desde una copia de seguridad.
 
-Avanzar toohello toolearn de tutorial siguiente sobre la supervisión de máquinas virtuales.
+En el siguiente tutorial se explica cómo supervisar máquinas virtuales.
 
 > [!div class="nextstepaction"]
 > [Supervisión de máquinas virtuales](tutorial-monitoring.md)

@@ -1,5 +1,5 @@
 ---
-title: "configuración de KVSActorStateProvider aaaChange en Azure microservicios | Documentos de Microsoft"
+title: "Cambio de la configuración de KVSActorStateProvider en microservicios de Azure | Microsoft Docs"
 description: "Obtenga información sobre cómo configurar los actores con estado de Azure Service Fabric de tipo KVSActorStateProvider."
 services: Service-Fabric
 documentationcenter: .net
@@ -12,34 +12,34 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 6/29/2017
+ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: e003512678556e68a8926b1b9c6c28d9ae3979d2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d3424aa7a8e0f6011bbef4aa61274c1f598f5c86
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Configuración de Reliable Actors: KVSActorStateProvider
-Puede modificar configuración predeterminada de Hola de KVSActorStateProvider cambiando hello settings.xml archivo que se genera en la raíz del paquete de Microsoft Visual Studio hello en carpeta de configuración de hello para el actor especificado Hola.
+Puede modificar la configuración predeterminada de KVSActorStateProvider cambiando el archivo settings.xml que se genera en la raíz del paquete de Microsoft Visual Studio en la carpeta Config del actor especificado.
 
-en tiempo de ejecución de Hello Azure Service Fabric busca nombres de sección predefinida en el archivo de hello settings.xml y consume los valores de configuración de Hola durante la creación de hello subyacente componentes en tiempo de ejecución.
+El tiempo de ejecución de Azure Service Fabric busca los nombres de sección predefinidos en el archivo settings.xml y usa los valores de configuración mientras crea los componentes en tiempo de ejecución subyacentes.
 
 > [!NOTE]
-> Hacer **no** eliminar o modificar los nombres de sección de Hola de hello siguiendo configuraciones en el archivo settings.xml hello que se genera en hello solución de Visual Studio.
+> **No** elimine o modifique los nombres de sección de las siguientes configuraciones en el archivo settings.xml que se genera en la solución de Visual Studio.
 > 
 > 
 
 ## <a name="replicator-security-configuration"></a>Configuración de seguridad del replicador
-Las configuraciones de seguridad de Replicador son canal de comunicación de hello toosecure utilizado que se usa durante la replicación. Esto significa que los servicios no pueden ver sus respectivas tráfico de replicación, garantizar que los datos de Hola que ofrezca alta disponibilidad también están seguros.
-De forma predeterminada, una sección de configuración de seguridad vacía impide la seguridad de la replicación.
+Las configuraciones de seguridad del replicador se utilizan para proteger el canal de comunicación que se usa durante la replicación. Esto significa que los servicios no ven el tráfico de replicación de unos y los otros, lo que garantiza que los datos de alta disponibilidad también están protegidos.
+De forma predeterminada, una sección de configuración de seguridad vacía impide la seguridad de replicación.
 
 ### <a name="section-name"></a>Nombre de sección
 &lt;ActorName&gt;ServiceReplicatorSecurityConfig
 
 ## <a name="replicator-configuration"></a>Configuración de replicador
-Las configuraciones de Replicador configurar Replicador de Hola que se encarga de hacer que el estado del proveedor de estado de Actor Hola gran confiabilidad.
-configuración predeterminada de Hello generado por la plantilla de Visual Studio de Hola y debe ser suficiente. Esta sección trata sobre las configuraciones adicionales que están disponibles tootune Replicador de Hola.
+Las configuraciones de replicador configuran el replicador que es responsable de hacer que el proveedor de estado del actor resulte altamente confiable.
+La configuración predeterminada es generada por la plantilla de Visual Studio y debe ser suficiente. En esta sección se habla sobre las configuraciones adicionales que están disponibles para optimizar el replicador.
 
 ### <a name="section-name"></a>Nombre de sección
 &lt;ActorName&gt;ServiceReplicatorConfig
@@ -47,16 +47,16 @@ configuración predeterminada de Hello generado por la plantilla de Visual Studi
 ### <a name="configuration-names"></a>Nombres de configuración
 | Nombre | Unidad | Valor predeterminado | Comentarios |
 | --- | --- | --- | --- |
-| BatchAcknowledgementInterval |Segundos |0.015 |Período de tiempo para que Replicador de hello en espera secundaria de hello después de recibir una operación antes de devolver una confirmación toohello principal. Otro toobe de confirmaciones envía para las operaciones se procesan dentro de este intervalo se envían como una respuesta. |
-| ReplicatorEndpoint |N/D |Ningún valor predeterminado: parámetro obligatorio |Dirección IP y puerto que Hola principal/secundario replicador utilizará toocommunicate con otros replicadores Hola conjunto de réplica. Esto debe hacer referencia a un punto de conexión del recurso TCP en el manifiesto del servicio Hola. Consulte demasiado[recursos del manifiestos de servicio](service-fabric-service-manifest-resources.md) tooread más acerca de cómo definir recursos de punto de conexión en el manifiesto del servicio Hola. |
-| RetryInterval |Segundos |5 |Período de tiempo después de que Replicador de hello volver a transmite un mensaje si no recibe una confirmación para una operación. |
+| BatchAcknowledgementInterval |Segundos |0.015 |Período de tiempo durante el que el replicador del secundario espera después de recibir una operación antes de enviar una confirmación al principal. El resto de confirmaciones que se enviarán para las operaciones que se procesan dentro de este intervalo se envían como una respuesta. |
+| ReplicatorEndpoint |N/D |Ningún valor predeterminado: parámetro obligatorio |Dirección IP y puerto que usará el replicador principal y secundario para comunicarse con otros replicadores del conjunto de réplicas. Esto debe hacer referencia a un punto de conexión de recursos de TCP en el manifiesto de servicio. Consulte [Service Manifest Resources](service-fabric-service-manifest-resources.md) (Recursos del manifiesto de servicio) para obtener más información sobre cómo definir recursos de punto de conexión en el manifiesto de servicio. |
+| RetryInterval |Segundos |5 |Período de tiempo después del cual el replicador vuelve a transmitir un mensaje si no recibe una confirmación de una operación. |
 | MaxReplicationMessageSize |Bytes |50 MB |Tamaño máximo de los datos de replicación que se puede transmitir en un único mensaje. |
-| MaxPrimaryReplicationQueueSize |Número de operaciones |1024 |Número máximo de operaciones en la cola principal Hola. Una operación se libera después de Replicador de hello principal recibe confirmación de todos los replicadores de hello secundaria. Este valor debe ser mayor que 64 y una potencia de 2. |
-| MaxSecondaryReplicationQueueSize |Número de operaciones |2048 |Número máximo de operaciones en la cola secundaria Hola. Una operación se libera después de que su estado pase a ser de alta disponibilidad mediante persistencia. Este valor debe ser mayor que 64 y una potencia de 2. |
+| MaxPrimaryReplicationQueueSize |Número de operaciones |1024 |Número máximo de operaciones de la cola principal. Una operación se libera después de que el replicador principal reciba una confirmación de todos los replicadores secundarios. Este valor debe ser mayor que 64 y una potencia de 2. |
+| MaxSecondaryReplicationQueueSize |Número de operaciones |2048 |Número máximo de operaciones de la cola secundaria. Una operación se libera después de que su estado pase a ser de alta disponibilidad mediante persistencia. Este valor debe ser mayor que 64 y una potencia de 2. |
 
 ## <a name="store-configuration"></a>Configuración de almacén
-Configuraciones de almacén son utilizados tooconfigure Hola almacén local que está en estado de hello toopersist utilizado que se está replicando.
-configuración predeterminada de Hello generado por la plantilla de Visual Studio de Hola y debe ser suficiente. En esta sección habla de las configuraciones adicionales que son almacén local de hello tootune disponible.
+Las configuraciones de almacén se usan para configurar el almacén local que se usa para conservar el estado que se está replicando.
+La configuración predeterminada es generada por la plantilla de Visual Studio y debe ser suficiente. En esta sección se habla sobre las configuraciones adicionales que están disponibles para optimizar el almacén local.
 
 ### <a name="section-name"></a>Nombre de sección
 &lt;ActorName&gt;ServiceLocalStoreConfig
@@ -64,8 +64,8 @@ configuración predeterminada de Hello generado por la plantilla de Visual Studi
 ### <a name="configuration-names"></a>Nombres de configuración
 | Nombre | Unidad | Valor predeterminado | Comentarios |
 | --- | --- | --- | --- |
-| MaxAsyncCommitDelayInMilliseconds |Milisegundos |200 |Establece el máximo Hola intervalo para confirmaciones de almacén local duradero de procesamiento por lotes. |
-| MaxVerPages |Número de páginas |16384 |número máximo de Hola de páginas de versión en hello local almacena la base de datos. Determina el número máximo de hello las transacciones pendientes. |
+| MaxAsyncCommitDelayInMilliseconds |Milisegundos |200 |Establece el intervalo máximo de procesamiento por lotes de las confirmaciones del almacén local duradero. |
+| MaxVerPages |Número de páginas |16384 |El número máximo de páginas de versión en la base de datos del almacén local. Determina el número máximo de transacciones pendientes. |
 
 ## <a name="sample-configuration-file"></a>Archivo de configuración de ejemplo
 ```xml
@@ -90,6 +90,6 @@ configuración predeterminada de Hello generado por la plantilla de Visual Studi
 </Settings>
 ```
 ## <a name="remarks"></a>Comentarios
-parámetro de Hello BatchAcknowledgementInterval controla la latencia de replicación. Un valor de '0' genera Hola menor latencia posible, costo de Hola de rendimiento (más mensajes de confirmación se deben enviar y procesar, que contiene menos confirmaciones).
-Hello mayor valor de Hola para BatchAcknowledgementInterval, Hola Hola superior general rendimiento de replicación, costo de Hola de mayor latencia de la operación. Esto traduce directamente toohello latencia de confirmaciones de transacciones.
+El parámetro BatchAcknowledgementInterval controla la latencia de replicación. Un valor de "0" ofrecerá la menor latencia posible, a costa del rendimiento (como deben enviarse y procesarse más mensajes de confirmación, cada uno con menos confirmaciones).
+Cuanto mayor sea el valor de BatchAcknowledgementInterval, mayor será el rendimiento general de la replicación a costa de una mayor latencia de la operación. Esto se traduce directamente en la latencia de transacciones confirmadas.
 

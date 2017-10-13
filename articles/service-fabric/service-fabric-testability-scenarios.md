@@ -1,6 +1,6 @@
 ---
-title: "pruebas de caos y conmutación por error de aaaCreate para microservicios Azure | Documentos de Microsoft"
-description: "Con conmutación por error y prueba de hello Service Fabric chaos errores tooinduce de escenarios de prueba y comprobar la confiabilidad de Hola de los servicios."
+title: "Creación de pruebas de conmutación por error y caos para microservicios de Azure | Microsoft Docs"
+description: "Uso de los escenarios de prueba de conmutación por error y pruebas de caos de Service Fabric para inducir acciones de error y comprobar la confiabilidad de los servicios."
 services: service-fabric
 documentationcenter: .net
 author: motanv
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/07/2017
 ms.author: motanv
-ms.openlocfilehash: 1cac4f9e0e4a6c8416d5220d1537b5110decd1f7
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: d06026c750e01ad5825338a78d9af331265f434a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="testability-scenarios"></a>Escenarios de Testability
-Los grandes sistemas distribuidos, como infraestructuras de nube, son inherentemente poco confiables. Azure Service Fabric proporciona a los desarrolladores Hola capacidad toowrite services toorun encima de infraestructuras no confiables. En servicios de alta calidad de orden toowrite, los desarrolladores necesitan toobe pueda tooinduce estabilidad de hello tal tootest confiable de infraestructura de sus servicios.
+Los grandes sistemas distribuidos, como infraestructuras de nube, son inherentemente poco confiables. Azure Service Fabric ofrece a los desarrolladores la capacidad de escribir servicios para ejecutarse sobre infraestructuras poco confiables. Para poder escribir servicios de alta calidad, los desarrolladores deben poder inducir tal infraestructura confiable para probar la estabilidad de sus servicios.
 
-Hola error Analysis Services proporciona a los desarrolladores servicios de tootest de acciones de error de hello capacidad tooinduce en presencia de Hola de errores. Sin embargo, hasta ahora se obtendrán solo errores simulados dirigidos. Hola tootake pruebas además, puede utilizar los escenarios de prueba de hello en Service Fabric: una prueba de caos y una prueba de conmutación por error. Estos escenarios simulan continuos errores intercalados, estable e incorrectas, a lo largo de clúster de Hola durante períodos ampliados de tiempo. Una vez configurada una prueba con velocidad de Hola y el tipo de errores, que se puede iniciar a través de las API de C# o PowerShell, toogenerate errores en el clúster de Hola y el servicio.
+El servicio de análisis de errores proporciona a los desarrolladores la capacidad de inducir acciones de error para probar los servicios en casos de mal funcionamiento. Sin embargo, hasta ahora se obtendrán solo errores simulados dirigidos. Para realizar más pruebas, puede usar los escenarios de prueba en Service Fabric: una prueba de caos y una prueba de conmutación por error. Estos escenarios simulan errores continuos intercalados, tanto correctos como incorrectos, en todo el clúster durante períodos prolongados de tiempo. Una vez configurada una prueba con la tasa y el tipo de errores, se puede iniciar mediante las API de C# o de PowerShell para generar errores en el clúster y en el servicio.
 
 > [!WARNING]
-> ChaosTestScenario va a reemplazarse por una versión de Caos más resistente y basado en servicios. Consulte toohello nuevo artículo [controla Chaos](service-fabric-controlled-chaos.md) para obtener más detalles.
+> ChaosTestScenario va a reemplazarse por una versión de Caos más resistente y basado en servicios. Consulte el artículo nuevo sobre [inducción de errores controlados con Caos](service-fabric-controlled-chaos.md) para obtener más detalles.
 > 
 > 
 
 ## <a name="chaos-test"></a>Prueba de caos
-escenario de caos Hola genera errores en el clúster de Service Fabric todo Hola. escenario de Hello comprime los errores suelen aparecer en tooa meses o años pocas horas. combinación de Hola de errores intercalados con velocidad de errores alta de hello busca casos más complejos que en caso contrario, se omiten. Esto conduce tooa significativa mejora en la calidad del código del servicio de Hola Hola.
+El escenario de caos genera errores en todo el clúster de Service Fabric. El escenario comprime los errores que se ven por lo general durante meses o años en unas pocas horas. Esta combinación de errores intercalados con una elevada tasa de errores encuentra casos excepcionales que de otra manera pasan desapercibidos. Esto conduce a una mejora considerable en la calidad del código del servicio.
 
-### <a name="faults-simulated-in-hello-chaos-test"></a>Errores de simular en pruebas de caos Hola
+### <a name="faults-simulated-in-the-chaos-test"></a>Errores simulados en la prueba de caos
 * Reinicio de un nodo
 * Reinicio de un paquete de código implementado
 * Eliminación de una réplica
@@ -41,20 +41,20 @@ escenario de caos Hola genera errores en el clúster de Service Fabric todo Hola
 * Desplazamiento de una réplica principal (opcional)
 * Desplazamiento de una réplica secundaria (opcional)
 
-prueba de caos Hola ejecuta varias iteraciones de errores y validaciones de clúster para hello período de tiempo especificado. tiempo de Hola de toostabilize de clúster de Hola y de validación toosucceed también es configurable. escenario de Hello produce un error cuando se produce un error en la validación de clúster único.
+La prueba de caos ejecuta varias iteraciones de errores y las validaciones de clúster para el período de tiempo especificado. También se puede configurar el tiempo empleado por el clúster para que la estabilización y la validación sean correctas. Se produce un error en el escenario cuando se encuentra un error en la validación del clúster.
 
-Por ejemplo, considere la posibilidad de que una prueba establecido toorun durante una hora con un máximo de tres errores simultáneos. prueba de Hello inducir tres errores y, a continuación, validar el estado del clúster Hola. prueba de Hello iterará paso anterior Hola hasta que el clúster de hello pasa a ser incorrecto o pasa de una hora. Si clúster Hola pasa a ser incorrecto en toda iteración, es decir, no estabilizar dentro de un tiempo configurado, se producirá un error de prueba de hello con una excepción. Esta excepción indica que algo salió mal y que se necesita más investigación.
+Por ejemplo, considere un conjunto de pruebas que se va a ejecutar durante una hora con un máximo de tres errores simultáneos. La prueba inducirá tres errores y después validará el mantenimiento del clúster. La prueba recorrerá en iteración el paso anterior hasta que el clúster pase a ser incorrecto o transcurra una hora. Si el clúster pasa a ser incorrecto en cualquier iteración, es decir, no se estabiliza dentro de un tiempo configurado, la prueba producirá un error con una excepción. Esta excepción indica que algo salió mal y que se necesita más investigación.
 
-En su forma actual, motor de generación de errores de hello en pruebas de caos Hola induce a errores solo seguros. Esto significa que en ausencia de Hola de errores externos, una quórum o pérdida de datos nunca se producirá.
+En su forma actual, el motor de generación de errores de la prueba de caos induce solo errores seguros. Esto significa que en ausencia de errores externos nunca se producirá una pérdida de quórum o de datos.
 
 ### <a name="important-configuration-options"></a>Opciones de configuración importantes
-* **TimeToRun**: Total de tiempo de esa prueba Hola se ejecutará antes de finalizar con éxito. puede finalizar la prueba de Hello anteriormente en lugar de un error de validación.
-* **MaxClusterStabilizationTimeout**: cantidad máxima de tiempo toowait para hello clúster toobecome correcto antes de cancelar la prueba de Hola. Hello comprobaciones realizadas son si el estado de clúster es correcto, el estado de servicio es correcto, tamaño del conjunto de réplica de destino hello se logra una para la partición de servicio de hello y no hay réplicas InBuild existen.
-* **MaxConcurrentFaults**: número máximo de errores simultáneos inducidos en cada iteración. Hola mayor número de hello, Hola más agresiva prueba hello, por lo tanto, que han generado las conmutaciones por error más complejas y combinaciones de transición. prueba de Hello garantiza que en ausencia de errores externos no habrá una quórum o pérdida de datos, con independencia de cómo alto esta configuración.
-* **EnableMoveReplicaFaults**: habilita o deshabilita los errores de Hola que están causando el movimiento de Hola de hello réplicas principal o secundaria. Estos errores están deshabilitados de forma predeterminada.
-* **WaitTimeBetweenIterations**: cantidad de tiempo toowait entre iteraciones, es decir, después de un ciclo de errores y la validación correspondiente.
+* **TimeToRun**: tiempo total en el que se ejecutará la prueba antes de finalizarse con éxito. La prueba puede finalizarse antes en lugar de un error de validación.
+* **MaxClusterStabilizationTimeout**: cantidad máxima de tiempo de espera para que el mantenimiento del clúster sea correcto antes de cancelar la prueba. Las comprobaciones realizadas son si el mantenimiento del clúster es correcto, el mantenimiento del servicio es correcto, se consigue el tamaño del conjunto de réplicas de destino para la partición de servicio y si no hay réplicas InBuild.
+* **MaxConcurrentFaults**: número máximo de errores simultáneos inducidos en cada iteración. Cuanto mayor sea el número, más agresiva será la prueba. Por lo tanto, dará como resultado combinaciones de conmutaciones por error y de transición más complejas. La prueba garantiza que en ausencia de errores externos no habrá pérdida de quórum o de datos, con independencia de lo elevado del número de esta configuración.
+* **EnableMoveReplicaFaults**: habilita o deshabilita los errores provocando el movimiento de las réplicas principales o secundarias. Estos errores están deshabilitados de forma predeterminada.
+* **WaitTimeBetweenIterations**: cantidad de tiempo de espera entre iteraciones, es decir, después de una ronda de errores y de su validación correspondiente.
 
-### <a name="how-toorun-hello-chaos-test"></a>Cómo probar el caos de hello toorun
+### <a name="how-to-run-the-chaos-test"></a>Ejecución de una prueba de caos
 Ejemplo de C#
 
 ```csharp
@@ -101,7 +101,7 @@ class Test
         // Create FabricClient with connection and security information here.
         FabricClient fabricClient = new FabricClient(clusterConnection);
 
-        // hello chaos test scenario should run at least 60 minutes or until it fails.
+        // The chaos test scenario should run at least 60 minutes or until it fails.
         TimeSpan timeToRun = TimeSpan.FromMinutes(60);
         ChaosTestScenarioParameters scenarioParameters = new ChaosTestScenarioParameters(
           maxClusterStabilizationTimeout,
@@ -115,7 +115,7 @@ class Test
         // Pause between concurrent actions for a random duration bound by this value.
         // scenarioParameters.WaitTimeBetweenFaults = TimeSpan.FromSeconds(10);
 
-        // Create hello scenario class and execute it asynchronously.
+        // Create the scenario class and execute it asynchronously.
         ChaosTestScenario chaosScenario = new ChaosTestScenario(fabricClient, scenarioParameters);
 
         try
@@ -146,25 +146,25 @@ Invoke-ServiceFabricChaosTestScenario -TimeToRunMinute $timeToRun -MaxClusterSta
 
 
 ## <a name="failover-test"></a>Prueba de conmutación por error
-escenario de prueba de conmutación por error de Hello es una versión de escenario de prueba de caos Hola destinado a una partición de servicio específico. Comprueba que efecto Hola de conmutación por error en una partición de servicio específico al Hola otros servicios no se ve afectada. Una vez que está configurado con la información de partición de destino de Hola y otros parámetros, se ejecuta como una herramienta de cliente que usa las API de C# o PowerShell errores toogenerate para una partición de servicio. escenario de Hello procesa una iteración a través de una secuencia de errores simulados y la validación de servicio mientras ejecuta la lógica de negocios en hello lado tooprovide una carga de trabajo. Un error en la validación de servicio indica un problema que necesita más investigación.
+El escenario de prueba de conmutación por error es una versión del escenario de prueba de caos dirigida a una partición de servicio específica. Comprueba el efecto de la conmutación por error en una partición de servicio específica al mismo tiempo que deja sin afectar los otros servicios. Una vez configurada con la información de la partición de destino y otros parámetros, se ejecuta como una herramienta de cliente mediante las API de C# o PowerShell para generar errores para una partición de servicio. El escenario se itera por una secuencia de errores simulados y una validación de servicio mientras la lógica de negocios se ejecuta en paralelo para proporcionar una carga de trabajo. Un error en la validación de servicio indica un problema que necesita más investigación.
 
-### <a name="faults-simulated-in-hello-failover-test"></a>Errores de simular en prueba de conmutación por error de Hola
-* Reiniciar un paquete de código implementado donde se hospeda la partición de Hola
+### <a name="faults-simulated-in-the-failover-test"></a>Errores simulados en la prueba de conmutación por error
+* Reinicio de un paquete de código implementado donde se hospeda la partición
 * Eliminación de una instancia sin estado o de una réplica principal/secundaria
 * Reinicio de una réplica principal/secundaria (si se conserva el servicio)
 * Desplazamiento de una réplica principal
 * Desplazamiento de una réplica secundaria
-* Reinicie la partición de Hola
+* Reinicio de la partición
 
-prueba de conmutación por error de Hello induce a un error seleccionado y, a continuación, ejecuta la validación en hello servicio tooensure su estabilidad. prueba de conmutación por error de Hello induce a solo uno de error en un tiempo, a diferencia toopossible varios errores de prueba de caos Hola. Si la partición de servicio de hello estabilizar no en tiempo de espera de hello configurado después de cada error, se produce un error en la prueba de Hola. prueba de Hello induce a solo los errores de prueba de errores. Esto significa que, en ausencia de errores externos, nunca se producirá una pérdida de quórum o de datos.
+La prueba de conmutación por error provoca un error seleccionado y después ejecuta la validación en el servicio para garantizar su estabilidad. La prueba de conmutación por error solo provoca un error a la ver en lugar de varios errores posibles en la prueba de caos. Si la partición de servicio no se estabiliza en el tiempo de espera configurado después del error, la prueba produce un error. La prueba provoca únicamente errores seguros. Esto significa que, en ausencia de errores externos, nunca se producirá una pérdida de quórum o de datos.
 
 ### <a name="important-configuration-options"></a>Opciones de configuración importantes
-* **PartitionSelector**: objeto de Selector que especifica la partición de Hola que necesita toobe de destino.
-* **TimeToRun**: Total de tiempo de esa prueba Hola se ejecutará antes de finalizar.
-* **MaxServiceStabilizationTimeout**: cantidad máxima de tiempo toowait para hello clúster toobecome correcto antes de cancelar la prueba de Hola. Hello comprobaciones realizadas son si estado del servicio es correcto, tamaño del conjunto de réplica de destino hello se logra una para todas las particiones y no hay réplicas InBuild existen.
-* **WaitTimeBetweenFaults**: cantidad de tiempo toowait entre cada ciclo de error y validación.
+* **PartitionSelector**: objeto selector que especifica la partición a la que debe dirigirse.
+* **TimeToRun**: tiempo total en el que se ejecutará la prueba antes de finalizarse.
+* **MaxClusterStabilizationTimeout**: cantidad máxima de tiempo de espera para que el mantenimiento del clúster sea correcto antes que la prueba produzca un error. Las comprobaciones realizadas son si el mantenimiento del servicio es correcto, el tamaño del conjunto de réplicas de destino conseguido para todas las particiones y si no hay réplicas InBuild.
+* **WaitTimeBetweenFaults**: cantidad de tiempo de espera entre cada ciclo de error y validación.
 
-### <a name="how-toorun-hello-failover-test"></a>Cómo probar la conmutación por error de toorun Hola
+### <a name="how-to-run-the-failover-test"></a>Ejecución de la prueba de conmutación por error
 **C#**
 
 ```csharp
@@ -211,7 +211,7 @@ class Test
         // Create FabricClient with connection and security information here.
         FabricClient fabricClient = new FabricClient(clusterConnection);
 
-        // hello chaos test scenario should run at least 60 minutes or until it fails.
+        // The chaos test scenario should run at least 60 minutes or until it fails.
         TimeSpan timeToRun = TimeSpan.FromMinutes(60);
         FailoverTestScenarioParameters scenarioParameters = new FailoverTestScenarioParameters(
           randomPartitionSelector,
@@ -224,7 +224,7 @@ class Test
         // Pause between concurrent actions for a random duration bound by this value.
         // scenarioParameters.WaitTimeBetweenFaults = TimeSpan.FromSeconds(10);
 
-        // Create hello scenario class and execute it asynchronously.
+        // Create the scenario class and execute it asynchronously.
         FailoverTestScenario failoverScenario = new FailoverTestScenario(fabricClient, scenarioParameters);
 
         try

@@ -1,6 +1,6 @@
 ---
-title: aaaH264 varios SD 4 x 3 con velocidad de bits | Documentos de Microsoft
-description: "Hola tema encontrará un resumen de Hola ** valor predefinido de tarea de velocidad de bits múltiple del H264 4 x 3 SD **."
+title: H264 Multiple Bitrate 4x3 SD | Microsoft Docs
+description: "El tema proporciona información general sobre el valor predeterminado de tarea **H264 Multiple Bitrate 4x3 SD**."
 author: Juliako
 manager: cfowler
 editor: 
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako
-ms.openlocfilehash: cc8f42e147f0332acd3bbb91fdb2a866e9a0875e
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f8d342b0c317c31af0e02effbf8b8c1849e0bf1a
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="h264-multiple-bitrate-4x3-sd"></a>H264 Multiple Bitrate 4x3 SD
-`Media Encoder Standard` define un conjunto de valores predeterminados de Encoding que puede usar al crear trabajos de Encoding. Puede utilizar un `preset name` toospecify en qué formato desea tooencode su archivo multimedia. O bien, puede crear sus propios valores predeterminados basados en XML o JSON (mediante la codificación UTF-8 o UTF-16). A continuación, pasaría codificador de hello toohello valores preestablecidos personalizados. Para obtener lista de hello del programa Hola a todos los preestablecido nombres admitidos por este `Media Encoder Standard` codificador, vea [valores preestablecidos de tarea para Media Encoder estándar](media-services-mes-presets-overview.md).  
+`Media Encoder Standard` define un conjunto de valores predeterminados de Encoding que puede usar al crear trabajos de Encoding. Puede usar `preset name` para especificar en qué formato desea codificar el archivo multimedia. O bien, puede crear sus propios valores predeterminados basados en XML o JSON (mediante la codificación UTF-8 o UTF-16). Después pasaría el valor predeterminado personalizado al codificador. Para obtener la lista de todos los nombres predeterminados admitidos por este codificador `Media Encoder Standard`, vea [Task Presets for Media Encoder Standard](media-services-mes-presets-overview.md) (Valores predeterminados de tarea para Media Encoder Standard).  
   
- Este tema muestra hello `H264 Multiple Bitrate 4x3 SD` preestablecido en formato XML y JSON.  
+ En este tema se muestra el valor predeterminado `H264 Multiple Bitrate 4x3 SD` en formato XML y JSON.  
   
- Este valor preestablecido produce un conjunto de 5 archivos MP4 alineados con GOP, comprendido entre 1600 kbps too400 kbps y audio AAC estéreo. Para obtener información detallada sobre el perfil, velocidad de bits, frecuencia de muestreo, etc. de este valor preestablecido, examine Hola XML o JSON definido más adelante. Para obtener una explicación de cada elemento de qué en estos medios de valores predefinidos y los valores válidos de Hola para cada elemento, vea hello [Media Encoder estándar esquema](media-services-mes-schema.md) tema.  
+ Este valor predeterminado genera un conjunto de 5 archivos MP4 alineados con GOP, que abarcan desde 1600 kbps hasta 400 kbps y audio AAC estéreo. Para información detallada sobre el perfil, la velocidad de bits, la frecuencia de muestreo, etc. de este valor predeterminado, examine el código XML o JSON definido más adelante. Para obtener explicaciones de lo que cada elemento significa en estos nombres predeterminados y los valores válidos para cada elemento, vea el tema sobre el [esquema de Media Encoder Standard](media-services-mes-schema.md).  
   
 > [!NOTE]
->  Cuando se modifica hello `Width` y `Height` los valores de las capas, asegúrese de que esa relación de aspecto de hello siga siendo coherente. Por ejemplo: 1920x1080, 1280x720, 1080x576 y 640x360. No debe utilizar una combinación de relaciones de aspecto, como 1280x720, 720x480 y 640x360.  
+>  Cuando se modifiquen los valores `Width` y `Height` en las capas, asegúrese de que la relación de aspecto no cambia. Por ejemplo: 1920x1080, 1280x720, 1080x576 y 640x360. No debe utilizar una combinación de relaciones de aspecto, como 1280x720, 720x480 y 640x360.  
   
  XML  
   

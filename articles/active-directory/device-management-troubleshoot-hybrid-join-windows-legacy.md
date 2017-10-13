@@ -1,5 +1,5 @@
 ---
-title: "aaaTroubleshooting híbrido Azure Active Directory unido a dispositivos de nivel inferior | Documentos de Microsoft"
+title: "Solución de problemas de dispositivos híbridos de nivel inferior unidos a Azure Active Directory | Microsoft Docs"
 description: "Solución de problemas de dispositivos híbridos de nivel inferior unidos a Azure Active Directory"
 services: active-directory
 documentationcenter: 
@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: edd56b89579fac6b427732902284ad9c568b87b4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 715fca79e488ae3759926181c244a42026f4a554
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Solución de problemas de dispositivos híbridos de nivel inferior unidos a Azure Active Directory 
 
-Este tema es aplicable toohello solo después de dispositivos: 
+Este tema solo es aplicable a los siguientes dispositivos: 
 
 - Windows 7 
 - Windows 8.1 
@@ -33,7 +33,7 @@ Este tema es aplicable toohello solo después de dispositivos:
 
 Para Windows 10 o Windows Server 2016, consulte [Solución de problemas de dispositivos híbridos de Windows 10 y Windows Server 2016 unidos a Azure Active Directory](device-management-troubleshoot-hybrid-join-windows-current.md).
 
-En este tema se da por supuesto que tiene [dispositivos Unidos a un híbrido configurado Azure Active Directory](device-management-hybrid-azuread-joined-devices-setup.md) hello toosupport los escenarios siguientes:
+En este tema se da por supuesto que ha configurado [dispositivos híbridos unidos a Azure Active Directory](device-management-hybrid-azuread-joined-devices-setup.md) para admitir los escenarios siguientes:
 
 - Acceso condicional basado en dispositivos
 
@@ -45,35 +45,35 @@ En este tema se da por supuesto que tiene [dispositivos Unidos a un híbrido con
 
 
 
-Este tema proporciona instrucciones sobre cómo tooresolve posibles problemas de solución de problemas.  
+En este tema se proporcionan instrucciones sobre cómo resolver problemas potenciales.  
 
 **Qué debería saber:** 
 
-- número máximo de Hola de dispositivos por usuario está centrado en los dispositivos. Por ejemplo, si *jdoe* y *jharnett* dispositivo de inicio de sesión tooa, se crea un registro independiente (DeviceID) para cada uno de ellos en hello **usuario** ficha información.  
+- El número máximo de dispositivos por usuario está centrado en dispositivos. Por ejemplo, si *jdoe* y *jharnett* inician sesión en un dispositivo, se crea un registro independiente (identificador de dispositivo) para cada uno de estos usuarios en la pestaña de información de **USUARIO**.  
 
-- Hola registro inicial / combinación de dispositivos es tooperform configurado un intento de inicio de sesión o bloquear / desbloquear. Podría haber un retraso de 5 minutos desencadenado por una tarea de programador de tareas. 
+- El registro inicial o unión de dispositivos se ha configurado para realizar un intento de inicio de sesión o de bloqueo/desbloqueo. Podría haber un retraso de 5 minutos desencadenado por una tarea de programador de tareas. 
 
-- Una reinstalación del sistema operativo de Hola o un manual unregister y vuelva a registrar pueden crear un nuevo registro en Azure AD y da como resultado varias entradas en la ficha de información de usuario de hello en Hola portal de Azure. 
+- La reinstalación del sistema operativo o la anulación del registro y el nuevo registro de forma manual pueden crear un nuevo registro en Azure AD y generar varias entradas en la pestaña de información de USUARIO de Azure Portal. 
 
 
-## <a name="step-1-retrieve-hello-registration-status"></a>Paso 1: Recuperar el estado de registro de hello 
+## <a name="step-1-retrieve-the-registration-status"></a>Paso 1: Recuperar el estado del registro 
 
-**estado de registro de hello tooverify:**  
+**Para verificar el estado del registro:**  
 
-1. Hola abrir símbolo del sistema como administrador 
+1. Abra el símbolo del sistema como administrador. 
 
 2. Escriba `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /i"`
 
-Este comando muestra un cuadro de diálogo que le proporciona más detalles acerca del estado de unión Hola.
+Este comando muestra un cuadro de diálogo que proporciona más detalles sobre el estado de la unión.
 
 ![Workplace Join for Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/01.png)
 
 
-## <a name="step-2-evaluate-hello-hybrid-azure-ad-join-status"></a>Paso 2: Evaluar el estado de unión de Azure AD de hello híbrida 
+## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>Paso 2: Evaluación del estado de unión a Azure AD híbrido 
 
-Si la combinación de Azure AD de hello híbrida no fue correcta, cuadro de diálogo de hello proporciona detalles sobre el problema de Hola que se ha producido.
+Si la unión a Azure AD híbrido no se realiza correctamente, el cuadro de diálogo proporciona detalles sobre el problema que se ha producido.
 
-**Hola los problemas más comunes son:**
+**Los problemas más comunes son:**
 
 - Una configuración incorrecta de AD FS o Azure AD
 
@@ -87,26 +87,26 @@ Si la combinación de Azure AD de hello híbrida no fue correcta, cuadro de diá
 
     ![Workplace Join for Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/04.png)
 
-- Hola el servicio no responde 
+- El servicio no responde 
 
     ![Workplace Join for Windows](./media/active-directory-device-registration-troubleshoot-windows-legacy/05.png)
 
-También puede encontrar información de estado de hello en el registro de eventos de hello en **aplicaciones y servicios Log\Microsoft-unión**.
+También puede encontrar la información de estado en el registro de eventos en **Registros de aplicaciones y servicios\Microsoft-Workplace Join**.
   
-**Hola las causas más comunes para una combinación de Azure AD errores híbrida son:** 
+**Las causas más comunes para una unión a Azure AD híbrido con error son:** 
 
-- El equipo no está en la red interna de la organización de Hola o una VPN sin conexión tooan local controlador de dominio de AD.
+- El equipo no está en la red interna de la organización o en una VPN sin conexión a una implementación local del controlador de dominio de AD.
 
-- Se registran en el equipo de tooyour con una cuenta de equipo local. 
+- Ha iniciado sesión en el equipo con una cuenta del equipo local. 
 
 - Problemas de configuración de servicio: 
 
-  - Hello servidor de federación ha sido configurado toosupport **WIAORMULTIAUTHN**. 
+  - El servidor de federación se ha configurado para admitir **WIAORMULTIAUTHN**. 
 
-  - No hay ningún objeto de punto de conexión de servicio que señala el nombre de dominio verificado de tooyour en Azure AD en bosque de AD de Hola que pertenece el equipo de Hola a.
+  - No hay ningún objeto de punto de conexión de servicio que haga referencia a su nombre de dominio comprobado en Azure AD en el bosque de AD al que pertenece el equipo.
 
-  - Un usuario ha alcanzado el límite de Hola de dispositivos. 
+  - Un usuario ha alcanzado el límite de dispositivos. 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Si tiene preguntas, consulte hello [preguntas más frecuentes sobre la administración de dispositivos](device-management-faq.md)  
+Si tiene preguntas, consulte las [preguntas más frecuentes sobre la administración de dispositivos](device-management-faq.md).  

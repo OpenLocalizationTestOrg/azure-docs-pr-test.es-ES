@@ -1,15 +1,15 @@
-1. En el portal de hello, de **todos los recursos**, haga clic en **+ agregar**. 
-2. Hola **todo** cuadro de búsqueda de hoja, escriba **puerta de enlace de red Local**, a continuación, haga clic en toosearch. Esto devolverá una lista. Haga clic en **puerta de enlace de red Local** tooopen Hola blade, a continuación, haga clic en **crear** tooopen hello **crear puerta de enlace de red local** hoja.
+1. En el portal, en **Todos los recursos**, haga clic en **+Agregar**. 
+2. En el cuadro de búsqueda de la hoja **Todo**, escriba **Puerta de enlace de red local** y, a continuación, haga clic para buscar. Esto devolverá una lista. Haga clic en **Puerta de enlace de red local** para abrir la hoja, a continuación, haga clic en **Crear** para abrir la hoja **Crear puerta de enlace de red local**.
 
   ![crear una puerta de enlace de red local](./media/vpn-gateway-add-lng-s2s-rm-portal-include/createlng.png)
 
-3. En hello **hoja de puerta de enlace de red local crear**, especificar valores de hello para la puerta de enlace de red local.
+3. En la hoja **Crear puerta de enlace de red local**, especifique los calores de la puerta de enlace de red local.
 
   - **Nombre:** especifique el nombre del objeto de puerta de enlace de red local.
-  - **Dirección IP:** es Hola de dirección IP pública del dispositivo VPN de Hola que desee tooconnect Azure para. Especifique una dirección IP pública válida. dirección IP de Hello no puede estar detrás de NAT y tiene toobe accesible por Azure. Si no tiene dirección IP de hello ahora mismo, puede utilizar valores de hello se muestra en la captura de pantalla de hello, pero podrá necesita toogo nuevo y reemplace la dirección IP de marcador de posición por dirección IP pública de hello de dispositivo VPN. En caso contrario, Azure no será capaz de tooconnect.
-  - **Espacio de direcciones** hace referencia toohello los intervalos de direcciones de red de Hola que representa esta red local. Puede agregar varios intervalos de espacios de direcciones. Asegúrese de que los intervalos de Hola que especifique aquí no se superponen con intervalos de otras redes que desea tooconnect a. Azure distribuirá el intervalo de direcciones de Hola que especifique la dirección IP de dispositivo VPN de toohello local. *Usar sus propios valores aquí, no Hola valores que se muestran en la captura de pantalla de hello*.
-  - **Suscripción:** comprobar ese Hola correcto de suscripción que se muestra.
-  - **Grupo de recursos:** grupo de recursos de hello Select que desea toouse. Puede crear un grupo de recursos nuevo o seleccionar uno ya creado.
-  - **Ubicación:** Seleccionar ubicación de Hola que se creará en este objeto. Puede que desee tooselect Hola la misma ubicación que la red virtual reside en pero no es necesario toodo así.
+  - **Dirección IP:** es la dirección IP pública del dispositivo VPN al que desea que Azure se conecte. Especifique una dirección IP pública válida. La dirección IP no puede encontrarse detrás de NAT y Azure debe poder acceder a ella. Si no tiene la dirección IP en este momento, puede usar los valores que se muestran en la captura de pantalla, pero deberá volver y reemplazar la dirección IP del marcador por la dirección IP pública de su dispositivo VPN. Si no lo hace, Azure no podrá conectarse.
+  - **Espacio de direcciones** hace referencia a los intervalos de direcciones de la red que representa esta red local. Puede agregar varios intervalos de espacios de direcciones. Asegúrese de que los intervalos que especifique aquí no se superpongan con los de otras redes a las que quiera conectarse. Azure enrutará el intervalo de direcciones que especifique a la dirección IP del dispositivo VPN local. *Utilice aquí sus propios valores, no los valores mostrados en la captura de pantalla*.
+  - **Suscripción:** compruebe que se muestra la suscripción correcta.
+  - **Grupo de recursos:** seleccione el grupo de recursos que desea utilizar. Puede crear un grupo de recursos nuevo o seleccionar uno ya creado.
+  - **Ubicación:** seleccione la ubicación en la que se creará este objeto. Puede seleccionar la misma ubicación en la que reside la red, pero no es obligatorio.
 
-4. Cuando haya terminado de especificar valores de hello, haga clic en **crear** final Hola de puerta de enlace de hello hoja toocreate Hola red local.
+4. Cuando haya terminado de especificar los valores, haga clic en **Crear** en la parte inferior de la hoja para crear la puerta de enlace de red local.

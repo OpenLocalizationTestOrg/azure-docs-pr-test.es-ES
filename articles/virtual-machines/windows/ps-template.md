@@ -1,6 +1,6 @@
 ---
-title: aaaCreate una VM de Windows desde una plantilla de Azure | Documentos de Microsoft
-description: "Use una plantilla de administrador de recursos y PowerShell tooeasily crear una nueva máquina virtual de Windows."
+title: "Creación de una máquina virtual Windows desde una plantilla de Azure | Microsoft Docs"
+description: "Use una plantilla de Resource Manager y PowerShell para crear fácilmente una nueva máquina virtual de Windows."
 services: virtual-machines-windows
 documentationcenter: 
 author: davidmu1
@@ -16,23 +16,23 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: davidmu
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 630111482c7dc046091632e2ed458ac143325d59
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ddab80262fe27c1f5995858ec7de75d7c46df081
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Creación de una máquina virtual Windows con una plantilla de Resource Manager
 
-Este artículo muestra cómo un administrador de recursos de Azure toodeploy plantilla mediante PowerShell. plantilla de Hola que cree implementa una sola máquina virtual que ejecute Windows Server en una nueva red virtual con una sola subred.
+En este artículo se muestra cómo implementar una plantilla de Azure Resource Manager con PowerShell. La plantilla que crea implementa una sola máquina virtual que ejecuta Windows Server en una nueva red virtual con una sola subred.
 
-Para obtener una descripción detallada del recurso de la máquina virtual de hello, consulte [máquinas virtuales en una plantilla de Azure Resource Manager](template-description.md). Para obtener más información acerca de todos los recursos de hello en una plantilla, consulte [tutorial de plantilla de Azure Resource Manager](../../azure-resource-manager/resource-manager-template-walkthrough.md).
+Para obtener una descripción detallada del recurso de máquina virtual, consulte [Virtual machines in an Azure Resource Manager template](template-description.md) (Máquinas virtuales en una plantilla de Azure Resource Manager). Para obtener más información acerca de todos los recursos de una plantilla, consulte [Tutorial de la plantilla de Resource Manager](../../azure-resource-manager/resource-manager-template-walkthrough.md).
 
-Tardará aproximadamente cinco minutos hello toodo los pasos de este artículo.
+Tardará unos cinco minutos en realizar los pasos de este artículo.
 
-## <a name="install-azure-powershell"></a>Azure PowerShell
+## <a name="install-azure-powershell"></a>Instalar Azure Powershell
 
-Vea [cómo tooinstall y configurar Azure PowerShell](../../powershell-install-configure.md) para obtener información acerca de cómo instalar la versión más reciente de Hola de PowerShell de Azure, seleccione su suscripción y tooyour cuenta de inicio de sesión.
+Consulte [Cómo instalar y configurar Azure PowerShell](../../powershell-install-configure.md) para obtener más información sobre cómo instalar la versión más reciente de Azure PowerShell, seleccionar la suscripción que quiere usar e iniciar sesión en su cuenta.
 
 ## <a name="create-a-resource-group"></a>Crear un grupo de recursos
 
@@ -44,17 +44,17 @@ Todos los recursos se deben implementar en un [grupo de recursos](../../azure-re
     Get-AzureRmLocation | sort DisplayName | Select DisplayName
     ```
 
-2. Crear grupo de recursos de hello en ubicación de Hola que seleccione. Este ejemplo muestra la creación de hello de un grupo de recursos denominado **myResourceGroup** en hello **West US** ubicación:
+2. Cree el grupo de recursos en la ubicación que seleccione. En este ejemplo se muestra la creación de un grupo de recursos denominado **myResourceGroup** en la ubicación **Oeste de EE. UU.**:
 
     ```powershell   
     New-AzureRmResourceGroup -Name "myResourceGroup" -Location "West US"
     ```
 
-## <a name="create-hello-files"></a>Crear archivos de Hola
+## <a name="create-the-files"></a>Creación de los archivos
 
-En este paso, creará un archivo de plantilla que implementa los recursos de Hola y un archivo de parámetros que proporciona la plantilla de toohello de valores de parámetro. También creará un archivo de autorización es decir, operaciones de Azure Resource Manager tooperform usado.
+En este paso, creará un archivo de plantilla que implementa los recursos y un archivo de parámetros que proporciona valores de parámetro a la plantilla. También creará un archivo de autorización que se utiliza para realizar operaciones de Azure Resource Manager.
 
-1. Cree un archivo denominado *CreateVMTemplate.json* y agregue este tooit de código JSON:
+1. Cree un archivo denominado *CreateVMTemplate.json* y agréguele este código JSON:
 
     ```json
     {
@@ -159,7 +159,7 @@ En este paso, creará un archivo de plantilla que implementa los recursos de Hol
     }
     ```
 
-2. Cree un archivo denominado *Parameters.json* y agregue este tooit de código JSON:
+2. Cree un archivo denominado *Parameters.json* y agréguele este código JSON:
 
     ```json
     {
@@ -182,18 +182,18 @@ En este paso, creará un archivo de plantilla que implementa los recursos de Hol
     New-AzureStorageContainer -Name "templates" -Context $context -Permission Container
     ```
 
-4. Cargar la cuenta de almacenamiento de hello archivos toohello:
+4. Cargue los archivos en la cuenta de almacenamiento:
 
     ```powershell
     Set-AzureStorageBlobContent -File "C:\templates\CreateVMTemplate.json" -Context $context -Container "templates"
     Set-AzureStorageBlobContent -File "C:\templates\Parameters.json" -Context $context -Container templates
     ```
 
-    Cambio Hola - ubicación de toohello las rutas de acceso de archivo donde almacena los archivos de Hola.
+    Cambio las rutas de acceso de -File a la ubicación donde almacenó los archivos.
 
-## <a name="create-hello-resources"></a>Crear recursos de Hola
+## <a name="create-the-resources"></a>Creación de los recursos
 
-Implementar la plantilla de hello mediante parámetros de hello:
+Implemente la plantilla mediante los parámetros:
 
 ```powershell
 $templatePath = "https://" + $storageName + ".blob.core.windows.net/templates/CreateVMTemplate.json"
@@ -202,10 +202,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myResourceGroup" -Name "m
 ```
 
 > [!NOTE]
-> También puede implementar las plantillas y los parámetros desde archivos locales. más información, consulte toolearn [uso de PowerShell de Azure con el almacenamiento de Azure](../../storage/common/storage-powershell-guide-full.md).
+> También puede implementar las plantillas y los parámetros desde archivos locales. Para obtener más información, consulte [Usar Azure PowerShell con Azure Storage](../../storage/common/storage-powershell-guide-full.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-- Si había problemas con la implementación de hello, puede echar un vistazo [solucionar errores comunes de implementación de Azure con el Administrador de recursos de Azure](../../resource-manager-common-deployment-errors.md).
-- Obtenga información acerca de cómo toocreate y administrar una máquina virtual en [crear y administrar máquinas virtuales de Windows con el módulo de PowerShell de Azure de hello](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Si se produjeron problemas con la implementación, consulte [Solución de errores comunes de implementación de Azure con Azure Resource Manager](../../resource-manager-common-deployment-errors.md).
+- Aprenda a crear y administrar una máquina virtual en [Creación y administración de máquinas virtuales Windows con el módulo de Azure PowerShell](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

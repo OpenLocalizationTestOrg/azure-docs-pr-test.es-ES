@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure Active Directory Identity Protection - cómo los usuarios de toounblock | Documentos de Microsoft"
+title: 'Azure Active Directory Identity Protection: desbloqueo de usuarios | Microsoft Docs'
 description: Aprenda a desbloquear usuarios bloqueados por una directiva de Azure Active Directory Identity Protection.
 services: active-directory
 keywords: 'azure active directory identity protection: desbloquear usuario'
@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: cdda2808822888f76aa75cf46478738c94df51a1
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: ce6b2805e7281dff7752a73ada86be11d7e01fc3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-active-directory-identity-protection---how-toounblock-users"></a>Azure Active Directory Identity Protection - cómo los usuarios de toounblock
-Con Azure Active Directory Identity Protection, puede configurar directivas tooblock usuarios Hola configurando condiciones se cumplen. Por lo general, un usuario bloqueado contactos help desk toobecome desbloqueado. Estos temas se explican los pasos de hello puede realizar toounblock un usuario bloqueado.
+# <a name="azure-active-directory-identity-protection---how-to-unblock-users"></a>Azure Active Directory Identity Protection: desbloqueo de usuarios
+Con Azure Active Directory Identity Protection se pueden configurar directivas para bloquear a los usuarios si se cumplen las condiciones configuradas. Normalmente, los usuarios bloqueados se ponen en contacto con el departamento de soporte técnico para que se desbloqueen. En este tema se explican los pasos que puede dar para desbloquear un usuario bloqueado.
 
-## <a name="determine-hello-reason-for-blocking"></a>Determinar el motivo de Hola para bloquear
-Como un primer paso toounblock un usuario, necesita toodetermine Hola tipo de directiva que ha bloqueado el usuario Hola porque son según los pasos siguientes.
+## <a name="determine-the-reason-for-blocking"></a>Determinación del motivo de bloqueo
+Como primer paso para desbloquear un usuario, es preciso que determine el tipo de directiva que ha bloqueado al usuario, ya que los siguientes pasos dependen de él.
 Con Azure Active Directory Identity Protection, se puede bloquear a un usuario con una directiva de riesgo de inicio de sesión o con una directiva de riesgo de usuario.
 
-Se puede obtener el tipo de saludo de directiva que ha bloqueado un usuario de encabezado de hello en cuadro de diálogo de Hola que presentó toohello usuario durante un intento de inicio de sesión:
+Puede obtener el tipo de directiva que ha bloqueado un usuario del título del cuadro de diálogo que se presentó al usuario en un intento de inicio de sesión:
 
 | Directiva | Cuadro de diálogo usuario |
 | --- | --- |
@@ -41,19 +41,19 @@ Un usuario que está bloqueado por:
 * Una directiva de riesgo de usuario también es conocida como una cuenta en riesgo
 
 ## <a name="unblocking-suspicious-sign-ins"></a>Desbloqueo de inicios de sesión sospechosos
-toounblock un inicio de sesión de sospechosa, deberá Hola siguientes opciones:
+Para desbloquear un inicio de sesión sospechoso, tiene las siguientes opciones:
 
-1. **Iniciar sesión desde una ubicación o dispositivo conocidos**: una razón común para el bloqueo de inicios de sesión sospechosos es que se intente iniciar sesión desde ubicaciones o dispositivos desconocidos. Los usuarios pueden determinar rápidamente si se trata de hello bloqueo motivo realizando en toosign desde una ubicación conocida o dispositivo.
-2. **Excluir de la directiva** : si piensa que de la directiva de inicio de sesión en la configuración actual de hello está causando problemas para usuarios específicos, puede excluir usuarios Hola de él. Para más información, consulte [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
-3. **Deshabilitar directiva** : si piensa que la configuración de directiva está causando problemas para todos los usuarios, puede deshabilitar la directiva de Hola. Para más información, consulte [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
+1. **Iniciar sesión desde una ubicación o dispositivo conocidos**: una razón común para el bloqueo de inicios de sesión sospechosos es que se intente iniciar sesión desde ubicaciones o dispositivos desconocidos. Los usuarios pueden determinar rápidamente si esta es la razón del bloqueo. Para ello, deben intentar iniciar sesión desde una ubicación o dispositivo conocidos.
+2. **Excluir de la directiva** : si piensa que la configuración actual de la directiva de inicio de sesión provoca problemas a usuarios concretos, puede excluir los usuarios de ella. Para más información, consulte [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
+3. **Deshabilitar directiva** : si piensa que la configuración de la directiva provoca problemas a todos los usuarios, puede deshabilitar la directiva. Para más información, consulte [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
 
 ## <a name="unblocking-accounts-at-risk"></a>Desbloqueo de cuentas en riesgo
-toounblock una cuenta en peligro, deberá Hola siguientes opciones:
+Para desbloquear una cuenta en riesgo, tiene las siguientes opciones:
 
-1. **Restablecimiento de contraseñas** -puede restablecer la contraseña del usuario de Hola. Para más información, consulte [Restablecimiento manual de una contraseña segura](active-directory-identityprotection.md#manual-secure-password-reset) .
-2. **Descartar todos los eventos de riesgo** -directiva de riesgo de hello usuario impide que un usuario si se ha alcanzado el nivel de riesgo de usuario de hello configurado para bloquear el acceso. Para reducir el nivel de riesgo de un usuario, cierre manualmente los eventos de riesgo notificados. Para más información, consulte [Cierre manual de eventos de riesgo](active-directory-identityprotection.md#closing-risk-events-manually).
-3. **Excluir de la directiva** : si piensa que de la directiva de inicio de sesión en la configuración actual de hello está causando problemas para usuarios específicos, puede excluir usuarios Hola de él. Para más información, consulte [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
-4. **Deshabilitar directiva** : si piensa que la configuración de directiva está causando problemas para todos los usuarios, puede deshabilitar la directiva de Hola. Para más información, consulte [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
+1. **Restablecer contraseña** : puede restablecer la contraseña del usuario. Para más información, consulte [Restablecimiento manual de una contraseña segura](active-directory-identityprotection.md#manual-secure-password-reset) .
+2. **Descartar todos los eventos de riesgo** : la directiva de riesgo de usuario bloquea un usuario si se ha alcanzado el nivel de riesgo del usuario configurado para bloquear el acceso. Para reducir el nivel de riesgo de un usuario, cierre manualmente los eventos de riesgo notificados. Para más información, consulte [Cierre manual de eventos de riesgo](active-directory-identityprotection.md#closing-risk-events-manually).
+3. **Excluir de la directiva** : si piensa que la configuración actual de la directiva de inicio de sesión provoca problemas a usuarios concretos, puede excluir los usuarios de ella. Para más información, consulte [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
+4. **Deshabilitar directiva** : si piensa que la configuración de la directiva provoca problemas a todos los usuarios, puede deshabilitar la directiva. Para más información, consulte [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
 
 ## <a name="next-steps"></a>Pasos siguientes
- ¿Desea más información acerca de Azure AD Identity Protection tooknow? Consulte [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
+ ¿Desea más información acerca de Azure AD Identity Protection? Consulte [Azure Active Directory Identity Protection](active-directory-identityprotection.md).

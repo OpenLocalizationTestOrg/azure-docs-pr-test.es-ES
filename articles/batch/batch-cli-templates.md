@@ -1,6 +1,6 @@
 ---
-title: "aaaRun Azure Batch trabajos to-end sin escribir código (versión preliminar) | Documentos de Microsoft"
-description: Crear archivos de plantilla para grupos de hello Azure CLI toocreate por lotes, los trabajos y tareas.
+title: "Ejecute trabajos de Azure Batch de un extremo a otro sin escribir código (Versión preliminar) | Microsoft Docs"
+description: Cree archivos de plantilla para la CLI de Azure CLI a fin de crear grupos, trabajos y tareas de Batch.
 services: batch
 author: mscurrell
 manager: timlt
@@ -11,88 +11,88 @@ ms.topic: article
 ms.workload: big-compute
 ms.date: 07/20/2017
 ms.author: markscu
-ms.openlocfilehash: c0434d09766451f6ba516efbad949834711ee819
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 6b91466da46d1f4ca9f25bf1718be783603efc58
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer-preview"></a>Uso de plantillas y transferencia de archivos de la CLI de Azure Batch (versión preliminar)
 
-Con hello CLI de Azure es posible toorun los trabajos por lotes sin escribir código.
+Se puede usar la CLI de Azure para ejecutar trabajos de Batch sin escribir código.
 
-Archivos de plantilla se pueden crear y usar con hello CLI de Azure que permiten grupos por lotes, los trabajos y toobe de tareas crea. Archivos de entrada de trabajo se pueden cargar fácilmente a cuenta de almacenamiento de hello asociada Hola lote cuenta y trabajo de salida archivos descargados.
+Se pueden crear y usar los archivos de plantilla con la CLI de Azure que permiten que se creen grupos, trabajos y tareas de Batch. Los archivos de entrada de trabajo se pueden cargar fácilmente a la cuenta de almacenamiento asociada con la cuenta de Batch. También se pueden descargar los archivos de salida de trabajos.
 
 ## <a name="overview"></a>Información general
 
-Un toohello de extensión CLI de Azure permite por lotes toobe usa-to-end por los usuarios que no son programadores. Se puede crear un grupo, cargan los datos de entrada, trabajos y las tareas asociadas que se creó, y Hola resultante salida datos descargados: no se necesita, código Hola CLI que se va a usar directamente o que se integra en las secuencias de comandos.
+Una extensión de la CLI de Azure permite que los usuarios que no son desarrolladores usen Batch de un extremo a otro. Se puede crear un grupo, cargar datos de entrada, crear trabajos y tareas asociadas, y descargar los datos de salida resultantes. No es necesario ningún código, ya que se usa directamente la CLI o se integra en los scripts.
 
-Crear plantillas de proceso por lotes en hello [soporte técnico de lote existente en hello Azure CLI](https://docs.microsoft.com/azure/batch/batch-cli-get-started#json-files-for-resource-creation) que permite a los archivos JSON toospecify valores de propiedad para la creación de hello de grupos, trabajos, tareas y otros elementos. Con las plantillas de proceso por lotes, hello las capacidades siguientes se han agregado sobre lo que es posible con archivos JSON de hello:
+Las plantillas de Batch se basan en el [soporte de Batch existente en la CLI de Azure](https://docs.microsoft.com/azure/batch/batch-cli-get-started#json-files-for-resource-creation) que permite que los archivos JSON especifiquen los valores de propiedad para la creación de grupos, trabajos, tareas y otros elementos. Con las plantillas de Batch, se agregan las siguientes funcionalidades sobre lo que es posible con los archivos JSON:
 
--   Se pueden definir los parámetros. Cuando se usa la plantilla de hello, solo los valores de parámetro de hello son elementos de Hola de toocreate especificado, con otros valores de propiedad de elemento que se especifican en el cuerpo de la plantilla de Hola. Un usuario que se entiende por lotes y el toobe de las aplicaciones que se ejecutan por lotes puede crear plantillas, especificar el grupo de trabajo y valores de propiedad de la tarea. Un usuario menos familiarizados con el proceso por lotes o las aplicaciones solo necesita valores de hello toospecify para los parámetros de hello definido.
+-   Se pueden definir los parámetros. Cuando se usa la plantilla, solo los valores de parámetro se especifican para crear el elemento, con otros valores de propiedad del elemento especificados en el cuerpo de la plantilla. Un usuario que entiende Batch y las aplicaciones que Batch ejecuta puede crear plantillas, especificar grupos, trabajos y valores de propiedad de la tarea. Un usuario menos familiarizado con Batch y/o las aplicaciones solo tiene que especificar los valores para los parámetros definidos.
 
--   Generadores de tareas de trabajo cree uno o más tareas asociadas a un trabajo, evitar Hola necesitan para muchos toobe de definiciones de tarea creado y simplificar considerablemente el envío de trabajos.
+-   Los generadores de tareas de trabajo crean una o varias tareas asociadas a un trabajo, evitando la necesidad de crear muchas definiciones de tareas y simplificando de manera significativa el envío de trabajos.
 
 
-Archivos de datos de entrada necesitan toobe proporcionado para los trabajos y a menudo se generan archivos de datos de salida. Se asocia una cuenta de almacenamiento, de forma predeterminada, con cada lote cuenta y archivos pueden ser tooand fácilmente transferido desde esta cuenta de almacenamiento mediante la CLI, sin codificación y credenciales de almacenamiento no necesitan.
+Los archivos de datos de entrada deben proporcionarse para trabajos y a menudo se generan archivos de datos de salida. De forma predeterminada, se asocia una cuenta de almacenamiento con cada cuenta de Batch y los archivos pueden transferirse fácilmente hacia y desde esta cuenta de almacenamiento mediante la CLI, sin necesidad de programación, ni credenciales de almacenamiento.
 
-Por ejemplo, [ffmpeg](http://ffmpeg.org/) es una aplicación popular que procesa archivos de audio y video. Hola CLI de lote de Azure puede ser usado tooinvoke ffmpeg tootranscode origen archivos de vídeo toodifferent resoluciones.
+Por ejemplo, [ffmpeg](http://ffmpeg.org/) es una aplicación popular que procesa archivos de audio y video. La CLI de Azure Batch puede usarse para invocar ffmpeg para transcodificar los archivos de video de origen para diferentes resoluciones.
 
--   Se crea una plantilla de grupo. usuario de Hello crear plantilla de hello sabe cómo toocall Hola ffmpeg aplicación y a sus requisitos; especifican Hola SO adecuado, la máquina virtual de tamaño, cómo ffmpeg está instalado (de un paquete de aplicación o mediante un administrador de paquetes, por ejemplo) y otros valores de propiedad del grupo. Por lo que cuando se usa la plantilla de hello, solo el identificador del grupo de Hola y número de máquinas virtuales necesitan toobe especificado, se crean parámetros.
+-   Se crea una plantilla de grupo. El usuario que crea la plantilla sabe cómo llamar a la aplicación ffmpeg y sus requisitos. Especifica el sistema operativo adecuado, el tamaño de la máquina virtual, cómo está instalado ffmpeg (por ejemplo, de un paquete de aplicación o mediante un administrador de paquetes) y otros valores de propiedad del grupo. Los parámetros se crean para que cuando se use la plantilla, solo deban especificarse el ID del grupo y el número de máquinas virtuales.
 
--   Se crea una plantilla de trabajo. plantilla de Hola de creación de Hello usuario sabe cómo ffmpeg necesidades toobe invoca otra resolución de tootranscode origen tooa vídeo y especifica la línea de comandos de la tarea de hello; También sabe que hay una carpeta que contiene los archivos de vídeo de origen de hello, con una tarea obligatoria por archivo de entrada.
+-   Se crea una plantilla de trabajo. El usuario que crea la plantilla sabe cómo debe invocarse ffmpeg para transcodificar el vídeo de origen a una resolución diferente y especifica la línea de comandos de la tarea. También sabe que hay una carpeta que contiene los archivos de vídeo de origen, con una tarea obligatoria por cada archivo de entrada.
 
--   Un usuario final con un conjunto de archivos de vídeo tootranscode primero crea un grupo mediante la plantilla de grupo de hello, especificar solo Id. de grupo de Hola y el número de máquinas virtuales necesarias. A continuación, puede cargar tootranscode de archivos de origen de Hola. A continuación, se puede enviar un trabajo con la plantilla de trabajo de hello, especificando solo Id. de grupo de hello y una ubicación de archivos de origen de hello cargada. se crea el trabajo por lotes de Hello, con una tarea por cada archivo de entrada que se está generando. Por último, los archivos de salida de hello transcodifica pueden ser descarga.
+-   Si un usuario final necesita transcodificar un conjunto de archivos de vídeo, primero crea un grupo con la plantilla de grupo, donde solo se especifica el identificador del grupo y el número de máquinas virtuales necesarias. A continuación, puede cargar los archivos de origen para transcodificarlos. Luego, se puede enviar un trabajo mediante la plantilla de trabajo, especificando solo el ID del grupo y la ubicación de los archivos de origen cargados. Se crea el trabajo de Batch, con una tarea por cada archivo de entrada que se esté generando. Por último, se pueden descargar los archivos de salida transcodificados.
 
 ## <a name="installation"></a>Instalación
 
-capacidades de transferencia de plantilla y el archivo Hello requieren un toobe de extensión instalada.
+Las funcionalidades de transferencia de plantillas y archivos requieren una extensión para instalarse.
 
-Para obtener instrucciones sobre cómo ver tooinstall hello Azure CLI [instalar Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Para obtener instrucciones sobre cómo instalar la CLI de Azure, vea [Instalación de la CLI de Azure 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-Una vez Hola que CLI de Azure se ha instalado, Hola lote extensión se puede instalar mediante el siguiente comando CLI:
+Una vez que se ha instalado la CLI de Azure, se puede instalar la extensión de Batch mediante el siguiente comando de la CLI:
 
 ```azurecli
 az component update --add batch-extensions --allow-third-party
 ```
 
-Para obtener más información acerca de la extensión de lote de Hola, consulte [Azure de Microsoft CLI de lote extensiones para Windows, Mac y Linux](https://github.com/Azure/azure-batch-cli-extensions#microsoft-azure-batch-cli-extensions-for-windows-mac-and-linux).
+Para más información sobre la extensión de Batch, vea [Microsoft Azure Batch CLI Extensions for Windows, Mac and Linux](https://github.com/Azure/azure-batch-cli-extensions#microsoft-azure-batch-cli-extensions-for-windows-mac-and-linux) (Extensiones de la CLI de Microsoft Azure Batch para Windows, Mac y Linux).
 
 ## <a name="templates"></a>Plantillas
 
-Hola CLI de lote de Azure permite elementos como grupos, los trabajos y toobe de tareas que se creó mediante la especificación de un archivo JSON que contiene los valores y nombres de propiedad. Por ejemplo:
+La CLI de Azure Batch permite que se creen elementos como grupos, trabajos y tareas mediante la especificación de un archivo JSON que contenga los valores y nombres de la propiedad. Por ejemplo:
 
 ```azurecli
 az batch pool create –-json-file AppPool.json
 ```
 
-Plantillas de proceso por lotes de Azure son plantillas de administrador de recursos tooAzure similares, en la funcionalidad y la sintaxis. Son archivos JSON que contienen los nombres de propiedad de elemento y valores, pero agregar Hola después conceptos principales:
+Las plantillas de Azure Batch son similares a las plantillas de Azure Resource Manager, en la funcionalidad y la sintaxis. Son archivos JSON que contienen los nombres y valores de la propiedad del elemento, pero agregan los siguientes conceptos principales:
 
 -   **Parámetros**
 
-    -   Permitir toobe de valores de propiedad especificado en una sección de cuerpo, con solo los valores de parámetros que necesitan toobe proporcionado cuando se usa la plantilla de Hola. Por ejemplo, podría colocarse hello contiene toda la definición de un grupo en el cuerpo de Hola y solo un parámetro definido para el Id. de grupo; Por tanto, sólo una cadena de identificador de grupo debe toocreate toobe proporcionado un grupo.
+    -   Permiten que se especifiquen valores de propiedad en una sección del cuerpo, donde solo es necesario proporcionar los valores de parámetro cuando se usa la plantilla. Por ejemplo, se podría colocar la definición completa de un grupo en el cuerpo y solo un parámetro definido para el ID del grupo. Por lo tanto, solo tiene que proporcionarse un string del ID del grupo para crearlo.
         
-    -   cuerpo de la plantilla de Hello puede crearse alguien con conocimientos del lote y Hola aplicaciones toobe ejecutada por lote; solo los valores de parámetros definidos por el autor de hello deben proporcionarse cuando se usa la plantilla de Hola. Un usuario sin Hola lote detallada o conocimiento de las aplicaciones, por tanto, puede usar las plantillas.
+    -   El cuerpo de la plantilla lo puede crear alguien con conocimientos de Batch y las aplicaciones que Batch ejecuta. Solo se deben proporcionar los valores para los parámetros definidos por el autor cuando se use la plantilla. Un usuario sin conocimientos detallados de las aplicaciones y/o Batch, por tanto, puede usar las plantillas.
 
 -   **Variables**
 
-    -   Permitir toobe de valores de parámetro simples o complejas especificado en un solo lugar y utilizar en uno o varios lugares en el cuerpo de la plantilla de Hola. Las variables pueden simplificar y reducir el tamaño de Hola de plantilla de hello, así como que sea más fácil de mantener si tiene uno cuyo valor puede cambiar propiedades de ubicación de toochange.
+    -   Permiten que se especifiquen valores de parámetro complejos o simples en un solo lugar y se usen en uno o más lugares en el cuerpo de la plantilla. Las variables pueden simplificar y reducir el tamaño de la plantilla, así como también facilitar el mantenimiento al tener una ubicación para cambiar las propiedades cuyo valor puede cambiar.
 
 -   **Construcciones de nivel superiores**
 
-    -   Algunas construcciones de nivel superiores están disponibles en la plantilla de Hola que todavía no están disponibles en hello las API de lote. Por ejemplo, un generador de tareas puede definirse en una plantilla de trabajo que crea varias tareas de trabajo de hello mediante una definición de tarea común. Estas construcciones evitar Hola necesidad toocode para dinámicamente crear varios archivos JSON, por ejemplo, un archivo por cada tarea, así como para crear aplicaciones de tooinstall de archivos a través de un administrador de paquetes, por ejemplo de secuencia de comandos.
+    -   Algunas construcciones de niveles superiores están disponibles en la plantilla que todavía no están disponibles en las API de Batch. Por ejemplo, un generador de tareas se puede definir en una plantilla de trabajo que crea varias tareas para el trabajo mediante una definición de tarea común. Estas construcciones evitan la necesidad de programar para crear de forma dinámica varios archivos JSON, como un archivo por cada tarea, así como crear archivos de script para instalar aplicaciones a través de un administrador de paquetes, por ejemplo.
 
-    -   En algún punto, cuando agregan aplicables, que estas construcciones pueden toothe lote servicio y está disponible en hello las API de lote, interfaces de usuario, etcetera.
+    -   En algún momento, si corresponde, estas construcciones pueden agregarse al servicio de Batch y estar disponibles en las API, las interfaces de usuario y otros elementos de Batch.
 
 ### <a name="pool-templates"></a>Plantillas de grupo
 
-Además, funciones de plantilla estándar de toohello de parámetros y variables, Hola siguientes construcciones de nivel superiores son compatibles con plantilla de grupo de hello:
+Además de las funcionalidades de plantillas estándares de parámetros y variables, la plantilla de grupo admite las siguientes construcciones de niveles superiores:
 
 -   **Referencias de paquetes**
 
-    -   Opcionalmente, permite software toobe copian toopool nodos mediante paquete administradores. Administrador de paquetes de saludo y el Id. de paquete se especifican. Que se va a toodeclare capaz de uno o más paquetes evita Hola necesidad toocreate un script que obtiene los paquetes de saludo necesario, Hola script de instalación y ejecutar script de Hola en cada nodo de grupo.
+    -   Opcionalmente, permite que el software se copie en nodos de grupo mediante el uso de administradores de paquetes. Se especifican el administrador y el identificador de paquete. Al poder declararse uno o varios paquetes, se evita la necesidad de crear un script que obtenga los paquetes necesarios, instalarlo y ejecutarlo en cada nodo de grupo.
 
-Hola aquí te mostramos un ejemplo de una plantilla que crea un grupo de máquinas virtuales de Linux con ffmpeg instalada y solo requiere un número de hello y cadena de Id. de grupo de máquinas virtuales toobe proporcionado toouse:
+A continuación, se muestra un ejemplo de una plantilla que crea un grupo de máquinas virtuales de Linux con ffmpeg instalada y solo requiere que se proporcionen el string del ID de grupo y el número de máquinas virtuales para usarse:
 
 ```json
 {
@@ -100,13 +100,13 @@ Hola aquí te mostramos un ejemplo de una plantilla que crea un grupo de máquin
         "nodeCount": {
             "type": "int",
             "metadata": {
-                "description": "hello number of pool nodes"
+                "description": "The number of pool nodes"
             }
         },
         "poolId": {
             "type": "string",
             "metadata": {
-                "description": "hello pool id "
+                "description": "The pool id "
             }
         }
     },
@@ -139,7 +139,7 @@ Hola aquí te mostramos un ejemplo de una plantilla que crea un grupo de máquin
 }
 ```
 
-Si se denomina archivo de plantilla de hello _ffmpeg.json grupo_, a continuación, sería necesario invocar una plantilla de hello como sigue:
+Si el archivo de plantilla se denominara _pool-ffmpeg.json_, entonces la plantilla se invocaría de la siguiente manera:
 
 ```azurecli
 az batch pool create --template pool-ffmpeg.json
@@ -147,13 +147,13 @@ az batch pool create --template pool-ffmpeg.json
 
 ### <a name="job-templates"></a>Plantillas de trabajo
 
-Además, funciones de plantilla estándar de toohello de parámetros y variables, Hola siguientes construcciones de nivel superiores son compatibles con plantilla de trabajo de hello:
+Además de las funcionalidades de plantillas estándares de parámetros y variables, la plantilla de trabajo admite las siguientes construcciones de niveles superiores:
 
 -   **Fábrica de tareas**
 
     -   Crea varias tareas para un trabajo a partir de una definición de tarea. Se admiten tres tipos de fábricas de tareas: barrido paramétrico, tarea por archivo y colección de tareas.
 
-Hola te mostramos un ejemplo de una plantilla que crea un trabajo que utiliza ffmpeg para transcodificar tooone de archivos de vídeo MP4 de dos resoluciones más bajas, con una tarea creada por el archivo de vídeo de origen:
+El siguiente es un ejemplo de una plantilla que crea un trabajo que utiliza ffmpeg para transcodificar archivos de video MP4 a una de las dos resoluciones más bajas, con una tarea creada por cada archivo de video de origen:
 
 ```json
 {
@@ -161,13 +161,13 @@ Hola te mostramos un ejemplo de una plantilla que crea un trabajo que utiliza ff
         "poolId": {
             "type": "string",
             "metadata": {
-                "description": "hello name of Azure Batch pool which runs hello job"
+                "description": "The name of Azure Batch pool which runs the job"
             }
         },
         "jobId": {
             "type": "string",
             "metadata": {
-                "description": "hello name of Azure Batch job"
+                "description": "The name of Azure Batch job"
             }
         },
         "resolution": {
@@ -229,7 +229,7 @@ Hola te mostramos un ejemplo de una plantilla que crea un trabajo que utiliza ff
 }
 ```
 
-Si se denomina archivo de plantilla de hello _ffmpeg.json de trabajo_, a continuación, sería necesario invocar una plantilla de hello como sigue:
+Si el archivo de plantilla se denominara _job-ffmpeg.json_, entonces la plantilla se invocaría de la siguiente manera:
 
 ```azurecli
 az batch job create --template job-ffmpeg.json
@@ -237,11 +237,11 @@ az batch job create --template job-ffmpeg.json
 
 ## <a name="file-groups-and-file-transfer"></a>Grupos de archivos y transferencia de archivos
 
-La mayoría de los trabajos y tareas requieren archivos de entrada y generan archivos de salida. Ambos archivos de entrada y archivos de salida normalmente necesitan toobe transferido desde el nodo de toohello de cliente de Hola o de cliente de hello nodo toohello. Hola extensión de CLI de lote de Azure abstrae la transferencia de archivos de ubicación y utiliza la cuenta de almacenamiento de Hola que se crea de forma predeterminada para cada cuenta de lote.
+La mayoría de los trabajos y tareas requieren archivos de entrada y generan archivos de salida. Tanto los archivos de entrada como los de salida normalmente tienen que transferirse, desde el cliente al nodo, o bien desde el nodo al cliente. La extensión de la CLI de Azure Batch abstrae la transferencia de archivos y utiliza la cuenta de almacenamiento que se crea de forma predeterminada para cada cuenta de Batch.
 
-Un grupo de archivos es el mismo contenedor de tooa que se crea en Hola cuenta de almacenamiento de Azure. grupo de archivos de Hello puede tener subcarpetas.
+Un grupo de archivos equivale a un contenedor que se crea en la cuenta de Azure Storage. Dicho grupo puede tener subcarpetas.
 
-Hola extensión lote CLI proporciona comandos para cargar archivos del grupo de archivos especificado tooa de cliente y descargar archivos desde el cliente de tooa de grupo de archivo especificado de Hola.
+La extensión de la CLI de Batch proporciona comandos para la carga de archivos desde el cliente a un grupo de archivos especificado y la descarga de archivos desde el grupo de archivos especificado a un cliente.
 
 ```azurecli
 az batch file upload --local-path c:\source_videos\*.mp4 
@@ -251,15 +251,15 @@ az batch file download --file-group ffmpeg-output --local-path
     c:\output_lowres_videos
 ```
 
-Las plantillas de grupo y de trabajo permiten archivos almacenados en toobe de grupos de archivos especificado para la copia en los nodos de grupo o desactivar el grupo de nodos en espera tooa grupo de archivos. Por ejemplo, en la plantilla de trabajo que se especificó anteriormente, se especifica los archivo de hello grupo "ffmpeg-entrada" para el generador de tareas de hello como ubicación de los archivos de vídeo de origen de hello copiado en el nodo de hello para la transcodificación; las Hola Hola archivo grupo "ffmpeg-output" se utiliza como ubicación donde se archivos de salida de hello transcodifica hello copia nodo de hello toofrom ejecutando cada tarea.
+Las plantillas de grupo y de trabajo permiten que se especifiquen los archivos almacenados en grupos de archivos para la copia en nodos de grupo o para su extracción de los nodos de grupo a un grupo de archivos. Por ejemplo, en la plantilla de trabajo que se especificó anteriormente, el archivo de grupo "ffmpeg-input" se especifica para la fábrica de tareas como la ubicación de los archivos de video de origen copiados en el nodo para su transcodificación. El grupo de archivos "ffmpeg-output" se usa como la ubicación donde se copian los archivos de salida transcodificados desde el nodo que ejecuta cada tarea.
 
 ## <a name="summary"></a>Resumen
 
-Actualmente se han agregado soporte técnico de transferencia de plantilla y el archivo solo toohello CLI de Azure. objetivo de Hello es público de hello tooexpand que puede usar toousers de lote que no necesitan código toodevelop con hello las API de lote, por ejemplo, los investigadores, los usuarios de TI y así sucesivamente. Sin codificar de forma, los usuarios con conocimientos de Azure, lote y Hola aplicaciones toobe ejecutada por lote pueden crear plantillas para la creación de grupo y de trabajo. Con parámetros de plantilla, los usuarios sin un conocimiento detallado de las aplicaciones de hello y por lotes pueden utilizar plantillas de Hola.
+Actualmente, solo se ha agregado la compatibilidad de transferencia de plantillas y archivos a la CLI de Azure. El objetivo es expandir la audiencia que pueda usar Batch a los usuarios que no necesitan desarrollar código usando las API de Batch, como los investigadores, los usuarios de TI y muchos más. Sin programación, los usuarios con conocimientos de Azure, Batch y las aplicaciones que ejecuta Batch, pueden crear plantillas para la creación de grupos y trabajos. Con los parámetros de plantilla, los usuarios sin un conocimiento detallado de Batch ni de las aplicaciones pueden usar las plantillas.
 
-Probar Hola extensión de lote para hello Azure CLI y proporcionarnos los comentarios y sugerencias, ya sea hello en los comentarios de este artículo o a través de hello [foro de Azure Batch](https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch).
+Pruebe la extensión Batch para la CLI de Azure y proporcione sus comentarios y sugerencias, ya sea en los comentarios de este artículo o a través del [foro de Azure Batch](https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch).
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-- Consulte blog de plantillas de proceso por lotes hello: [Hola de trabajos de ejecución por lotes de Azure mediante Azure CLI: no se necesita código](https://azure.microsoft.com/en-us/blog/running-azure-batch-jobs-using-the-azure-cli-no-code-required/).
-- Documentación detallada de instalación y uso, ejemplos y código fuente están disponibles en hello [repositorio de GitHub de Azure](https://github.com/Azure/azure-batch-cli-extensions).
+- Consulte el blog de plantillas de Batch: [Running Azure Batch jobs using the Azure CLI – no code required](https://azure.microsoft.com/en-us/blog/running-azure-batch-jobs-using-the-azure-cli-no-code-required/) (Ejecución de trabajos de Azure Batch mediante la CLI de Azure: sin necesidad de código).
+- La documentación detallada sobre la instalación y el uso, ejemplos y el código fuente está disponible en el [repositorio de GitHub de Azure](https://github.com/Azure/azure-batch-cli-extensions).

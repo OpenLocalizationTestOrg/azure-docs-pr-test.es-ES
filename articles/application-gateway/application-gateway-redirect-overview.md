@@ -1,6 +1,6 @@
 ---
-title: "información general del aaaRedirect de puerta de enlace de aplicaciones de Azure | Documentos de Microsoft"
-description: "Obtenga información sobre la funcionalidad de redirección de hello en la puerta de enlace de aplicaciones de Azure"
+title: "Introducción a la redirección para Azure Application Gateway| Microsoft Docs"
+description: "Aprenda sobre la funcionalidad de redirección de Azure Application Gateway"
 services: application-gateway
 documentationcenter: na
 author: amsriva
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2017
 ms.author: amsriva
-ms.openlocfilehash: 7149e3bd000d336c51995fb0e90f971b4d9ba2be
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: ea9ae8373ff67bf9557b06bbc8a4b0d82a03e2d0
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/29/2017
 ---
 # <a name="application-gateway-redirect-overview"></a>Introducción a la redirección de Application Gateway
 
-Un escenario común para muchas aplicaciones web es toosupport automática HTTP tooHTTPS redirección tooensure que todas las comunicaciones entre la aplicación y los usuarios se produce a través de una ruta de acceso cifrado. Hola anteriores, los clientes han utilizado técnicas como la creación de un grupo dedicado back-end cuyo único propósito es solicitudes tooredirect recibe en tooHTTPS HTTP.  Puerta de enlace de aplicaciones admite ahora el tráfico de tooredirect de capacidad en hello Application Gateway. Esto simplifica la configuración de la aplicación, optimiza el uso de recursos de Hola y es compatible con nuevos escenarios de redirección incluidos global y basada en la ruta de acceso de redirección. Compatibilidad con redirección de puerta de enlace de aplicaciones no se limita tooHTTP -> redirección HTTPS independiente. Se trata de un mecanismo de redirección genérico, que permite la redirección del tráfico recibido en el agente de escucha de un agente de escucha tooanother en puerta de enlace de aplicaciones. También admite la redirección tooan sitio externo también. Compatibilidad con redirección de puerta de enlace de aplicaciones ofrece Hola siguientes capacidades:
+Resulta un escenario común para muchas aplicaciones web el admitir la redirección automática de HTTP a HTTPS para asegurarse de que toda la comunicación entre la aplicación y sus usuarios se produce a través de una ruta de acceso cifrada. En el pasado, los clientes usaban técnicas como la creación de un grupo back-end dedicado cuya única finalidad era redirigir las solicitudes que recibía de HTTP a HTTPS.  La puerta de enlace de aplicaciones admite ahora la capacidad de redirigir el tráfico en Application Gateway. Esto simplifica la configuración de la aplicación, optimiza el uso de recursos y admite nuevos escenarios de redirección incluida la global y la basada en la ruta de acceso. La compatibilidad con la redirección de Application Gateway no se limita solo a la redirección de HTTP a HTTPS. Se trata de un mecanismo de redirección genérico, que permite la redirección del tráfico recibido en un agente de escucha a otro agente de escucha en Application Gateway. También admite la redirección a un sitio externo. La compatibilidad con la redirección de Application Gateway ofrece las siguientes funcionalidades:
 
-1. Redirección global de agente de escucha de un agente de escucha tooanother en hello puerta de enlace. Esto habilita la redirección de tooHTTPS HTTP en un sitio.
-2. Redirección basada en la ruta de acceso. Este tipo de redirección habilita la redirección de tooHTTPS HTTP solo en un área de sitio específico, por ejemplo un área de carro de la compra se indica mediante/carro / *.
-3. Sitio de tooexternal de redirección.
+1. Redirección global desde un agente de escucha a otro en la puerta de enlace. Permite la redirección de HTTP a HTTPS en un sitio.
+2. Redirección basada en la ruta de acceso. Este tipo de redirección permite la redirección de HTTP a HTTPS solo en un área de un sitio específico, por ejemplo un área de carro de la compra que se indica mediante /carro/*.
+3. Redirección a un sitio externo.
 
 ![redirección](./media/application-gateway-redirect-overview/redirect.png)
 
-Con este cambio, los clientes tienen un nuevo objeto de configuración de redirección, que especifica el agente de escucha de hello destino toocreate o redirección de toowhich sitio externo se desea. elemento de configuración de Hello también admite tooenable opciones anexar la ruta de acceso URI de Hola y cadena toohello redirige la dirección URL de consulta. Los clientes también pueden elegir si la redirección es un archivo temporal (código de estado HTTP 302) o a una redirección permanente (código de estado HTTP 301). Una vez creada esta configuración de redirección es agente de escucha del origen toohello conectados a través de una nueva regla. Cuando usa una regla básica, configuración de redirección de hello está asociado a un agente de escucha de origen y una redirección global. Cuando se utiliza una regla basada en la ruta de acceso, configuración de redirección de Hola se define en el mapa de ruta de acceso de dirección URL de hello y, por tanto, solo aplica toohello área de ruta de acceso específica de un sitio.
+Con este cambio, los clientes tendrían que crear un nuevo objeto de configuración de redirección, que especifique el agente de escucha de destino o el sitio externo al que se desea dirigir la redirección. El elemento de configuración también admite opciones para anexar la cadena de consulta y la ruta de acceso URI para la dirección URL redirigida. Los clientes también pueden elegir si la redirección es un archivo temporal (código de estado HTTP 302) o a una redirección permanente (código de estado HTTP 301). Una vez creada esta configuración de redirección, se adjunta al agente de escucha de origen a través de una nueva regla. Cuando se usa una regla básica, la configuración de redirección se asocia a un agente de escucha de origen y es una redirección global. Cuando se utiliza una regla basada en la ruta de acceso, la configuración de redirección se define en la asignación de ruta de acceso de direcciones URL y, por tanto, solo se aplica al área de rutas de acceso específica de un sitio.
 
 ### <a name="next-steps"></a>Pasos siguientes
 

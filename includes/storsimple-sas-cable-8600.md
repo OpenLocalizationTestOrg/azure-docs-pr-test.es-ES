@@ -1,7 +1,7 @@
 <!--author=alkohli last changed:02/22/16-->
 
-#### <a name="tooattach-hello-sas-cables"></a>cables SAS de tooattach Hola
-1. Identifique los alojamientos EBOD de Hola y Hola principal. Hola dos alojamientos pueden identificarse mirando sus respectivos planos posteriores. Vea Hola después de la imagen para obtener instrucciones. 
+#### <a name="to-attach-the-sas-cables"></a>Conexión de los cables SAS
+1. Identifique los receptáculos principal y EBOD Los dos alojamientos pueden identificarse examinando sus respectivos planos posteriores. Consulta la siguiente imagen para obtener instrucciones. 
    
     ![Plano posterior del alojamiento principal y de EBOD](./media/storsimple-sas-cable-8600/HCSBackplaneofprimaryandEBODenclosure.png)
    
@@ -11,7 +11,7 @@
    |:--- |:--- |
    | 1 |Receptáculo principal |
    | 2 |Receptáculo EBOD |
-2. Localice los números de serie de hello en los alojamientos EBOD de Hola y Hola principal. etiqueta de número de serie de Hello es toohello colocado oreja posterior de cada alojamiento. Hola números de serie deben ser idénticos en ambos alojamientos. [Póngase en contacto con Microsoft Support](../articles/storsimple/storsimple-contact-microsoft-support.md) inmediatamente si hello números de serie no coinciden. Vea Hola después de números de serie de ilustración toolocate Hola.
+2. Busca los números de serie del alojamiento principal y de EBOD. La etiqueta del número de serie está colocada en el dispositivo de escucha posterior de cada alojamiento. Los números de serie deben ser idénticos en ambos receptáculos. [Contactar al servicio técnico de Microsoft](../articles/storsimple/storsimple-contact-microsoft-support.md) inmediatamente si no coinciden los números de serie. Consulta la siguiente ilustración para localizar los números de serie.
    
     ![Vista trasera del alojamiento que muestra el número de serie](./media/storsimple-sas-cable-8600/HCSRearviewofenclosureindicatinglocationofserialnumbersticker.png)
    
@@ -19,12 +19,12 @@
    
    | Etiqueta | Descripción |
    |:--- |:--- |
-   | 1 |Oreja del alojamiento de Hola |
-3. Usar hello proporcionada hello tooconnect de cables SAS alojamiento principal de toohello de alojamiento EBOD como se indica a continuación:
+   | 1 |Dispositivo de escucha del receptáculo |
+3. Después utiliza los cables SAS proporcionados para conectar el alojamiento de EBOD al alojamiento principal de esta manera:
    
-   1. Identifique los cuatro puertos SAS hello en el alojamiento principal de Hola y el alojamiento de EBOD Hola. puertos SAS de Hola se etiquetan como EBOD en el alojamiento principal de Hola y corresponden A tooport en el alojamiento EBOD hello, tal y como se muestra en la ilustración de cableado de SAS de hello, a continuación.
-   2. Hola de uso proporciona SAS cables tooconnect hello EBOD puerto tooport A.
-   3. Hola puerto EBOD en el controlador 0 debe ser un puerto de toohello conectado en el controlador EBOD 0. Hola puerto EBOD en el controlador 1 debe estar conectado toohello puerto A controlador de EBOD 1. Vea Hola siguientes ilustración para obtener instrucciones. 
+   1. Identifica los cuatro puertos SAS en el alojamiento principal y en el alojamiento de EBOD. Los puertos SAS se etiquetan como EBOD en el alojamiento principal y se corresponden con el puerto A en el alojamiento de EBOD, tal y como se muestra en la ilustración del cableado de SAS.
+   2. Use los cables SAS proporcionados para conectar el puerto EBOD al puerto A.
+   3. El puerto EBOD del controlador 0 debe estar conectado al puerto A del controlador EBOD 0. El puerto EBOD del controlador 1 debe estar conectado al puerto A del controlador EBOD 1. Vea la ilustración siguiente como guía. 
       
       ![Cableado SAS para tu dispositivo](./media/storsimple-sas-cable-8600/HCSSAScablingforyourdevice.png)
       

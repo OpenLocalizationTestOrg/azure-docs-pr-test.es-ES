@@ -1,6 +1,6 @@
 ---
-title: "aaaGet a trabajar con la detección de amenazas de almacenamiento de datos de SQL"
-description: "¿Cómo tooget a usar la detección de amenazas"
+title: "Introducción a Detección de amenazas de Almacenamiento de datos SQL"
+description: "Cómo empezar a trabajar con la detección de amenazas"
 services: sql-data-warehouse
 documentationcenter: 
 author: ronortloff
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: security
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
-ms.openlocfilehash: dec0b734849e7f52434e099db0b38fbf0bf6ad53
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: f4a2376fe4fb710d031c35ca7fdbf4c7bb0f3caa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-threat-detection"></a>Introducción a la detección de amenazas
 > [!div class="op_single_selector"]
@@ -29,49 +29,49 @@ ms.lasthandoff: 10/06/2017
 > 
 
 ## <a name="overview"></a>Información general
-La detección de amenazas detecta actividades anómalas de la base de datos que indica la base de datos toohello amenazas de seguridad potenciales. Detección de amenazas está en vista previa y es compatible con Almacenamiento de datos SQL.
+Detección de amenazas detecta actividades anómalas en la base de datos que indican posibles amenazas de seguridad a la base de datos. Detección de amenazas está en vista previa y es compatible con Almacenamiento de datos SQL.
 
-La detección de amenazas proporciona una nueva capa de seguridad, lo cual permite toodetect de los clientes y responde a amenazas de toopotential cuando se producen al proporcionar alertas de seguridad en actividades anómalas. Los usuarios pueden explorar eventos sospechosos hello mediante [auditoría de almacenamiento de datos de SQL de Azure](sql-data-warehouse-auditing-overview.md) toodetermine si son el resultado de un intento de tooaccess, incumplen o almacén de datos de Hola de vulnerabilidad de seguridad.
-La detección de amenazas resulta sencillo tooaddress posibles amenazas toohello datos de almacenamiento sin Hola necesidad toobe un experto en seguridad o administración sistemas de supervisión de seguridad avanzada.
+Detección de amenazas ofrece un nuevo nivel de seguridad, que permite a los clientes detectar amenazas potenciales y responder a ellas a medida que se producen, gracias a las alertas de seguridad sobre actividades anómalas que se proporcionan. Los usuarios pueden explorar los eventos sospechosos mediante la [auditoría de Azure SQL Data Warehouse](sql-data-warehouse-auditing-overview.md) para determinar si proceden de un intento de acceder a los datos del almacenamiento de datos, infringir su seguridad o aprovecharlos.
+Detección de amenazas facilita la solución de las posibles amenazas al almacenamiento sin necesidad de ser un experto en seguridad ni administrar sistemas de supervisión de seguridad avanzada.
 
-Por ejemplo, Detección de amenazas detecta determinadas actividades anómalas en la base de datos que sugieren posibles intentos de inyección de código SQL. Inyección de código SQL es uno de hello Web aplicación problemas de seguridad comunes en hello Internet, aplicaciones usadas tooattack controladas por datos. Los atacantes aprovechar aplicación vulnerabilidades tooinject instrucciones SQL malintencionadas en campos de entrada de la aplicación, para la infracción o modificar datos en la base de datos de Hola.
+Por ejemplo, Detección de amenazas detecta determinadas actividades anómalas en la base de datos que sugieren posibles intentos de inyección de código SQL. La inyección de código SQL es uno de los problemas de seguridad habituales entre las aplicaciones web en Internet y se usa para atacar aplicaciones controladas por datos. Los atacantes aprovechan las vulnerabilidades de la aplicación para inyectar instrucciones SQL malintencionadas en los campos de entrada de la aplicación, con el fin de infringir la seguridad o modificar datos en la base de datos.
 
 ## <a name="set-up-threat-detection-for-your-database"></a>Configuración de la detección de amenazas para la base de datos
-1. Inicio Hola Portal de Azure en [https://portal.azure.com](https://portal.azure.com).
-2. Navegue toohello hoja de configuración de almacenamiento de datos de SQL que desee toomonitor hello. En la hoja de configuración de hello, seleccione **auditoría y la detección de amenazas**.
+1. Inicie el Portal de Azure en [https://portal.azure.com](https://portal.azure.com).
+2. Vaya a la hoja de configuración de Almacenamiento de datos SQL que desea supervisar. En la hoja Configuración, seleccione **Auditoría y detección de amenazas**.
    
     ![Panel de navegación][1]
-3. Hola **auditoría y la detección de amenazas** hoja de configuración a su vez **ON** auditoría, que mostrarán opciones de detección de amenazas de Hola.
+3. En la hoja de configuración de **Auditoría y detección de amenazas**, **active** la auditoría; se mostrará la configuración de Detección de amenazas.
    
     ![Panel de navegación][2]
 4. **Active** Detección de amenazas.
-5. Configurar la lista de Hola de mensajes de correo electrónico que recibirán las alertas de seguridad tras la detección de actividades de almacén de datos anómalos.
-6. Haga clic en **guardar** en hello **detección de auditoría y amenaza** toosave de hoja de configuración Hola nuevo o actualizado directiva de detección de amenaza y auditoría.
+5. Configure la lista de correos electrónicos que recibirán alertas de seguridad cuando se detecten actividades anómalas en el almacenamiento.
+6. Haga clic en **Guardar** en la hoja de configuración de **Auditoría y detección de amenazas** para guardar la directiva de auditoría y detección de amenazas nueva o actualizada.
    
     ![Panel de navegación][3]
 
 ## <a name="explore-anomalous-data-warehouse-activities-upon-detection-of-a-suspicious-event"></a>Exploración de las actividades anómalas en el almacenamiento cuando se detecta un evento sospechoso
 1. Recibirá una notificación por correo electrónico tras la detección de actividades anómalas en la base de datos. <br/>
-   correo electrónico de Hello proporcionará información sobre eventos de seguridad sospechosos de hello incluidos naturaleza Hola de actividades anómalas hello, el nombre de base de datos, hora del evento de hello y nombre de servidor. Además, se proporcionará información sobre las posibles causas y recomienda acciones tooinvestigate y mitigar la base de datos de toohello de amenaza potencial de Hola.<br/>
+   El correo electrónico proporciona información sobre el evento de seguridad sospechoso, en la que se incluyen la naturaleza de las actividades anómalas, el nombre de la base de datos, el nombre del servidor y la hora del evento. Además, se proporcionará información sobre las posibles causas y las medidas recomendadas para investigar y mitigar la amenaza potencial para la base de datos.<br/>
    
     ![Panel de navegación][4]
-2. En correo electrónico de hello, haga clic en hello **el registro de auditoría de SQL de Azure** vínculo, que se inicie Hola Portal clásico de Azure y mostrar los registros de auditoría pertinentes de hello aproximadamente hora de Hola de eventos sospechosos Hola.
+2. En el correo electrónico, haga clic en el vínculo **Registro de auditoría SQL de Azure** , lo que iniciará el Portal de Azure clásico y mostrará los registros de auditoría pertinentes en torno a la hora del evento sospechoso.
    
     ![Panel de navegación][5]
-3. Haga clic en tooview de registros de auditoría de hello más detalles sobre las actividades de base de datos sospechosa hello como instrucción SQL, IP de cliente y el motivo del error.
+3. Haga clic en los registros de auditoría para ver más detalles sobre las actividades sospechosas en la base de datos, como instrucción SQL, motivo del error e IP de cliente.
    
     ![Panel de navegación][6]
-4. En la hoja de registros de auditoría de hello, haga clic en **abierto en Excel** tooopen configurada previamente excel tooimport de plantilla y ejecución análisis más profundos de registro de auditoría de hello aproximadamente hora de Hola de eventos sospechosos Hola.<br/>
-   **Nota:** en Excel 2010 o posterior, Power Query y hello **combinación rápida** configuración es necesaria
+4. En la hoja Registros de auditoría, haga clic en **Abrir en Excel** para abrir una plantilla de Excel ya configurada para importar y ejecutar un análisis más profundo del registro de auditoría en torno a la hora del evento sospechoso.<br/>
+   **Nota**: en Excel 2010 o posterior, se necesitan Power Query y la configuración **Combinación rápida**.
    
     ![Panel de navegación][7]
-5. Hola tooconfigure **combinación rápida** configuración - Hola **POWER QUERY** ficha de cinta de opciones, seleccione **opciones** cuadro de diálogo de opciones de toodisplay Hola. Seleccione la sección de privacidad de Hola y elige Hola segunda opción - 'Ignorar los niveles de privacidad de Hola y mejorar el rendimiento potencialmente':
+5. Para definir la configuración **Combinación rápida**: en la pestaña **POWER QUERY** de la cinta, seleccione **Opciones** para mostrar el cuadro de diálogo Opciones. Seleccione la sección Privacidad y elija la segunda opción, "Omitir los niveles de privacidad para mejorar el rendimiento":
    
     ![Panel de navegación][8]
-6. registros de auditoría SQL tooload, asegúrese de que parámetros hello en la pestaña de configuración de hello están establecidos correctamente y, a continuación, seleccione la cinta de opciones de "Datos" hello y haga clic en botón 'Actualizar todo' hello.
+6. Para cargar registros de auditoría SQL, asegúrese de que los parámetros de la pestaña Configuración sean correctos y después seleccione "Datos" en la cinta y haga clic en el botón "Actualizar todo".
    
     ![Panel de navegación][9]
-7. los resultados de Hello aparecen en hello **los registros de auditoría de SQL** hoja que le permite realizar análisis más profundos toorun actividades anómalas de Hola que se detectaron y mitigar el impacto de Hola de eventos de seguridad de hello en la aplicación.
+7. Los resultados aparecen en la hoja **Registros de auditoría SQL** , que permite ejecutar un análisis más profundo de las actividades anómalas que se detectaron y mitigar el impacto del evento de seguridad en la aplicación.
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-security-threat-detection/1_td_click_on_settings.png

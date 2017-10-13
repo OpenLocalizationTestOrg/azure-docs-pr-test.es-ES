@@ -1,6 +1,6 @@
 ---
-title: "aaaStorSimple conmutación por error, dispositivo físico de disaster recovery tooa StorSimple 8000 series | Documentos de Microsoft"
-description: "Obtenga información acerca de cómo toofail sobre el dispositivo físico tooanother del dispositivo físico de StorSimple 8000 series."
+title: "Conmutación por error y recuperación ante desastres de StorSimple en un dispositivo físico de la serie StorSimple 8000 | Microsoft Docs"
+description: "Aprenda a conmutar por error el dispositivo físico de la serie StorSimple 8000 a otro dispositivo físico."
 services: storsimple
 documentationcenter: 
 author: alkohli
@@ -14,75 +14,75 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 29d2576a96c446ff5ffcd98dcd0f5a07f1ab08ca
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f3ac9545a341fc24ca12c9f2547805d6956cd98a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="fail-over-tooa-storsimple-8000-series-physical-device"></a>Conmutar por error dispositivo físico de tooa StorSimple 8000 series
+# <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>Conmutación por error a un dispositivo físico de la serie StorSimple 8000
 
 ## <a name="overview"></a>Información general
 
-Este tutorial describe Hola pasos necesarios toofail sobre un dispositivo StorSimple 8000 series dispositivo físico tooanother StorSimple físico si se produce un desastre. StorSimple usa datos toomigrate características de conmutación por error de dispositivo de Hola desde un dispositivo físico de origen en el dispositivo físico de hello datacenter tooanother. Guía de Hello en este tutorial aplica a dispositivos físicos de tooStorSimple 8000 series con versiones de software Update 3 y versiones posteriores.
+En este tutorial se describen los pasos necesarios para conmutar por error un dispositivo físico de la serie StorSimple 8000 a un dispositivo StorSimple Cloud Appliance en caso de desastre. StorSimple usa la característica de conmutación por error de dispositivos para migrar los datos desde un dispositivo físico de origen en el centro de datos a otro dispositivo físico. Las instrucciones de este tutorial se aplican a los dispositivos físicos de la serie StorSimple 8000 que ejecutan las versiones de software Update 3 y posteriores.
 
-toolearn más información acerca de conmutación por error de dispositivo y su uso toorecover ante un desastre, vaya demasiado[conmutación por error y recuperación ante desastres para dispositivos de la serie StorSimple 8000](storsimple-8000-device-failover-disaster-recovery.md).
+Para aprender más sobre la conmutación por error de dispositivos y cómo se usa para recuperarse de un desastre, vaya a [Conmutación por error y recuperación ante desastres para dispositivos de la serie StorSimple 8000](storsimple-8000-device-failover-disaster-recovery.md).
 
-toofail a través de un tooa de dispositivo físico StorSimple Appliance en la nube de StorSimple, vaya demasiado[conmutar por error tooa dispositivo de nube de StorSimple](storsimple-8000-device-failover-cloud-appliance.md). toofail sobre tooitself de un dispositivo físico, vaya demasiado[una conmutación por error toohello mismo dispositivo físico StorSimple](storsimple-8000-device-failover-same-device.md).
+Para conmutar por error un dispositivo físico StorSimple a un dispositivo StorSimple Cloud Appliance, vaya a [Fail over to a StorSimple Cloud Appliance](storsimple-8000-device-failover-cloud-appliance.md) (Conmutación por error a un dispositivo StorSimple Cloud Appliance). Para conmutar por error un dispositivo físico a sí mismo, vaya a [Fail over to the same StorSimple physical device](storsimple-8000-device-failover-same-device.md) (Conmutación por error al mismo dispositivo físico StorSimple).
 
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-- Asegúrese de revisar las consideraciones de Hola para conmutación por error de dispositivo. Para obtener más información, consulte demasiado[consideraciones comunes para conmutación por error de dispositivo](storsimple-8000-device-failover-disaster-recovery.md).
+- Asegúrese de haber revisado las consideraciones sobre la conmutación por error de dispositivos. Para más información, vaya a [Consideraciones comunes para la conmutación por error de dispositivo](storsimple-8000-device-failover-disaster-recovery.md).
 
-- Debe tener un dispositivo físico de StorSimple 8000 series implementado en el centro de datos de Hola. Hola dispositivo debe ejecutar Update 3 o versiones posteriores de software. Para obtener más información, consulte demasiado[implementar el dispositivo de StorSimple local](storsimple-8000-deployment-walkthrough-u2.md).
+- Debe disponer de un dispositivo físico de la serie StorSimple 8000 implementado en el centro de datos. El dispositivo debe ejecutar la versión Update 3 del software u otra posterior. Para obtener más información, vaya a [Implementación del dispositivo StorSimple local](storsimple-8000-deployment-walkthrough-u2.md).
 
 
-## <a name="steps-toofail-over-tooa-physical-device"></a>Pasos toofail sobre tooa de dispositivo físico
+## <a name="steps-to-fail-over-to-a-physical-device"></a>Pasos para conmutar por error a un dispositivo físico
 
-Realizar Hola siguiendo los pasos toorestore el dispositivo físico de dispositivo tooa destino.
+Siga estos pasos para restaurar el dispositivo a un dispositivo físico de destino.
 
-1. Compruebe que desea toofail sobre el contenedor de volumen Hola tenga asociadas instantáneas en la nube. Para obtener más información, consulte demasiado[copias de seguridad de administrador de dispositivos de StorSimple de uso servicio toocreate](storsimple-8000-manage-backup-policies-u2.md).
-2. Tooyour Administrador de dispositivos de StorSimple y, a continuación, haga clic en **dispositivos**. Hola **dispositivos** hoja, vaya toohello lista de dispositivos conectados con su servicio.
+1. Compruebe que el contenedor de volúmenes que desea conmutar por error tiene asociadas instantáneas en la nube. Para más información, vaya a [Use StorSimple Device Manager service to create backups](storsimple-8000-manage-backup-policies-u2.md) (Uso del servicio StorSimple Device Manager para crear copias de seguridad).
+2. Vaya a StorSimple Device Manager y, después, haga clic en **Dispositivos**. En la hoja **Dispositivos**, vaya a la lista de dispositivos conectados con su servicio.
     ![Seleccionar dispositivo](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev1.png)
-3. Seleccione su dispositivo de origen y haga clic en él. dispositivo de origen de Hello tiene contenedores de volúmenes de Hola que desea toofail sobre. Vaya demasiado**configuración > contenedores de volúmenes**.
-4. Seleccione un contenedor de volúmenes que desearía toofail sobre tooanother dispositivo. Haga clic en lista hello toodisplay de contenedor de volúmenes de Hola de volúmenes dentro de este contenedor. Seleccione un volumen, el menú contextual y haga clic en **desconectar** volumen tootake Hola. Repita este proceso para todos los volúmenes de Hola Hola contenedor de volúmenes.
-5. Paso anterior Hola repeticiones de Hola a todos los contenedores de volúmenes le gustaría toofail sobre tooanother dispositivo.
-6. Volver atrás toohello **dispositivos** hoja. En la barra de comandos de hello, haga clic en **una conmutación por error**.
+3. Seleccione su dispositivo de origen y haga clic en él. El dispositivo de origen tiene los contenedores de volúmenes que desea conmutar por error. Vaya a **Configuración > Contenedores de volúmenes**.
+4. Seleccione un contenedor de volúmenes que desee conmutar por error a otro dispositivo. Haga clic en el contenedor de volúmenes para mostrar la lista de volúmenes incluidos dentro de este contenedor. Seleccione un volumen, haga clic en él con el botón derecho y haga clic en **Desconectar** para desconectar el volumen. Repita este proceso para todos los volúmenes incluidos en el contenedor de volúmenes.
+5. Repita el paso anterior para todos los contenedores de volúmenes que le gustaría conmutar por error a otro dispositivo.
+6. Vuelva a la hoja **Dispositivos**. En la barra de comandos, haga clic en **Conmutar por error**.
     Haga clic en ![Conmutación por error](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev2.png).
     
-7. Hola **una conmutación por error** hoja, realizar Hola pasos:
+7. En la hoja **Conmutar por error**, siga estos pasos:
    
-   1. Haga clic en **Origen**. se muestran los contenedores de volúmenes de Hello con volúmenes asociados con instantáneas en la nube. Solo los contenedores de hello mostrados son aptos para la conmutación por error. En lista de Hola de contenedores de volúmenes, seleccione los contenedores de volúmenes de hello sobre que le gustaría toofail. **Solo Hola contenedores de volúmenes con instantáneas en la nube asociado y se muestran los volúmenes sin conexión.**
+   1. Haga clic en **Origen**. Se muestran los contenedores de volúmenes con volúmenes asociados con instantáneas de nube. Solo los contenedores que aparecen en la lista son aptos para la conmutación por error. En la lista de contenedores de volúmenes, seleccione los contenedores de volúmenes que desea que conmuten por error. **Solo se muestran los contenedores de volúmenes con volúmenes desconectados e instantáneas de nube asociadas.**
 
        ![Seleccionar origen](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev5.png)
-   2. Haga clic en **Destino**. Para los contenedores de volumen de hello seleccionados en el paso anterior de hello, seleccione un dispositivo de destino desde la lista desplegable de Hola de dispositivos disponibles. Solo los dispositivos Hola que tienen contenedores de volúmenes de origen de tooaccommodate capacidad suficiente se muestran en la lista de Hola.
+   2. Haga clic en **Destino**. Para los contenedores de volúmenes seleccionados en el paso anterior, seleccione un dispositivo de destino en la lista desplegable de dispositivos disponibles. Solo se muestran en la lista los dispositivos que tienen capacidad suficiente para alojar los contenedores de volúmenes de origen.
 
         ![Seleccionar destino](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev6.png)
 
-   3. Por último, revise todas las opciones de conmutación por error de Hola de **resumen**. Después de revisar la configuración de hello, seleccione Hola casilla de verificación que indica que los volúmenes de hello en contenedores de volumen seleccionados están sin conexión. Haga clic en **Aceptar**.
+   3. Por último, revise toda la configuración de conmutación por error en **Resumen**. Una vez que haya revisado la configuración, seleccione la casilla que indica que los volúmenes de los contenedores de volumen seleccionados están sin conexión. Haga clic en **Aceptar**.
 
        ![Revisar la configuración de conmutación por error](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev8.png)
   
-8. StorSimple crea un trabajo de conmutación por error. Haga clic en hello notificación toomonitor Hola conmutación por error de trabajo a través de hello **trabajos** hoja.
+8. StorSimple crea un trabajo de conmutación por error. Para supervisar el trabajo de conmutación por error, haga clic en la notificación de trabajo en la hoja **Trabajos**.
 
-    Si el contenedor de volúmenes de Hola que ha conmutado por error tiene volúmenes locales, vea los trabajos de restauración individuales para cada volumen local (no de volúmenes en capas) en el contenedor de Hola. Estos trabajos de restauración puede tardar bastante tiempo toocomplete. Es probable que el trabajo de conmutación por error Hola puede completarse anteriormente. Estos volúmenes tendrá garantías locales solo cuando finalicen los trabajos de restauración de Hola.
+    Si el contenedor de volúmenes que conmutó por error tiene volúmenes locales, verá los trabajos de restauración individuales de cada volumen local (no de volúmenes en niveles) en el contenedor. Es posible que esos trabajos de restauración tarden bastante tiempo en completarse. Asimismo, es probable que el trabajo de conmutación por error se complete antes. Estos volúmenes solo tendrán garantías locales después de que los trabajos de restauración se completen.
 
     ![Supervisión del trabajo de conmutación por error](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev13.png)
 
-9. Una vez completada la conmutación por error de hello, vaya toohello **dispositivos** hoja.
+9. Una vez completada la conmutación por error, vaya a la hoja **Dispositivos**.
    
-   1. Seleccione el dispositivo de Hola que se usó como dispositivo de destino de hello para el proceso de conmutación por error de Hola.
+   1. Seleccione el dispositivo que se usó como dispositivo de destino para el proceso de conmutación por error.
 
        ![Selección del dispositivo](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
 
-   2. Vaya toohello **contenedores de volúmenes** hoja. Todos los contenedores de volúmenes de hello, junto con los volúmenes de hello de dispositivo antiguo de hello, deberían aparecer.
+   2. Vaya a la hoja **Contenedores de volúmenes**. Deberían aparecer todos los contenedores de volúmenes, junto con los volúmenes del dispositivo antiguo.
 
        ![Ver contenedores de volúmenes de destino](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev16.png)
 
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* Después de haber realizado una conmutación por error, puede que necesite demasiado[desactive o elimine el dispositivo StorSimple](storsimple-8000-deactivate-and-delete-device.md).
-* Para obtener información acerca de cómo toouse Hola Administrador de dispositivos de StorSimple de servicio, vaya demasiado[uso Hola tooadminister de servicio de administrador de dispositivos de StorSimple el dispositivo StorSimple](storsimple-8000-manager-service-administration.md).
+* Después de haber realizado una conmutación por error, puede que necesite [desactivar o eliminar el dispositivo StorSimple](storsimple-8000-deactivate-and-delete-device.md).
+* Para más información sobre cómo usar el servicio StorSimple Device Manager, vaya a [Use the StorSimple Device Manager service to administer your StorSimple device](storsimple-8000-manager-service-administration.md) (Uso del servicio StorSimple Device Manager para administrar el dispositivo StorSimple).
 

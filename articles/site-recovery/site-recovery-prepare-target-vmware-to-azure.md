@@ -1,6 +1,6 @@
 ---
-title: Preparar el destino (VMware tooAzure) | Documentos de Microsoft
-description: "Este artículo se describe cómo tooprepare su toostart de entorno de Azure replicar tooAzure de máquinas virtuales de VMware."
+title: "Preparación del destino (VMware a Azure) | Microsoft Docs"
+description: "En este artículo se describe cómo configurar su entorno de Azure para comenzar a replicar máquinas virtuales de VMware en Azure."
 services: site-recovery
 documentationcenter: 
 author: bsiva
@@ -14,39 +14,39 @@ ms.tgt_pltfrm: na
 ms.workload: backup-recovery
 ms.date: 5/31/2017
 ms.author: bsiva
-ms.openlocfilehash: 5975d3c122032f92f8df370ee74fa0c7012ebe2d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: c84a775564769ddc796aa9d75add019ef1003175
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="prepare-target-vmware-tooazure"></a>Preparar el destino (tooAzure de VMware)
+# <a name="prepare-target-vmware-to-azure"></a>Preparación del destino (VMware a Azure)
 > [!div class="op_single_selector"]
-> * [TooAzure de VMware](./site-recovery-prepare-target-vmware-to-azure.md)
-> * [TooAzure físico](./site-recovery-prepare-target-physical-to-azure.md)
+> * [VMware a Azure](./site-recovery-prepare-target-vmware-to-azure.md)
+> * [Físico a Azure](./site-recovery-prepare-target-physical-to-azure.md)
 
-Este artículo se describe cómo tooprepare su toostart de entorno de Azure replicar tooAzure de máquinas virtuales de VMware.
+En este artículo se describe cómo configurar su entorno de Azure para comenzar a replicar máquinas virtuales de VMware en Azure.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-artículo de Hello supone siguiente hello:
-- Ha creado un tooprotect de almacén de servicios de recuperación de las máquinas virtuales de VMware. Puede crear un almacén de servicios de recuperación de hello [portal de Azure](http://portal.azure.com "portal de Azure").
-- Tiene [configurar su entorno local](./site-recovery-set-up-vmware-to-azure.md) tooAzure de máquinas virtuales de VMware tooreplicate.
+En el artículo se da por hecho lo siguiente:
+- Ha creado un almacén de Recovery Services para proteger sus máquinas virtuales de VMware. Puede crear un almacén de Recovery Services desde [Azure Portal](http://portal.azure.com "Azure Portal").
+- Ha [configurado el entorno local](./site-recovery-set-up-vmware-to-azure.md) para replicar máquinas virtuales de VMware en Azure.
 
 ## <a name="prepare-target"></a>Preparación del destino
 
-Después de completar hello **objetivo de protección de paso 1:Select** y **paso 2: preparar origen**, se toman demasiado**paso 3: destino**
+Después de completar el **Paso 1: Selección del objetivo de protección** y el **Paso 2: Preparación del origen**, irá al **Paso 3: Destino**.
 
 ![Preparación del destino](./media/site-recovery-prepare-target-vmware-to-azure/prepare-target-vmware-to-azure.png)
 
-1. **Suscripción:** de hello menú desplegable, seleccione Hola suscripción que quiere tooreplicate máquinas virtuales.
-2. **Modelo de implementación:** modelo de implementación de hello seleccione (Classic o administrador de recursos)
+1. **Suscripción:** En el menú desplegable, seleccione la suscripción en la que desea replicar las máquinas virtuales.
+2. **Modelo de implementación:** Seleccione el modelo de implementación (clásica o Resource Manager).
 
-En función de hello elegido el modelo de implementación, una validación se ejecuta tooensure que tienen al menos una cuenta de almacenamiento compatibles y la red virtual en tooreplicate de suscripción de destino de Hola y de conmutación por error de la máquina virtual para.
+Según el modelo de implementación elegido, se ejecuta una validación para asegurarse de que tiene al menos una cuenta de almacenamiento compatible y una red virtual en la conmutación de destino en la que replicar y conmutar por error las máquinas virtuales.
 
-Una vez validaciones de Hola se completan correctamente, haga clic en Aceptar toogo toohello siguiente paso.
+Una vez completadas las validaciones correctamente, haga clic en Aceptar para ir al paso siguiente.
 
-Si no tiene una cuenta de almacenamiento compatible con el Administrador de recursos o la red virtual, o quiere que tooadd más, puede hacerlo haciendo clic en hello **+ cuenta de almacenamiento** o **+ red** botones en la parte superior de Hola Hola hoja.
+Si no tiene una cuenta de almacenamiento de Resource Manager compatible o una red virtual, o le gustaría agregar más, puede hacerlo haciendo clic en los botones **+ Cuenta de almacenamiento** o **+ Red** en la parte superior de la hoja.
 
 ## <a name="next-steps"></a>Pasos siguientes
 [Configuración de las opciones de replicación](./site-recovery-setup-replication-settings-vmware.md).

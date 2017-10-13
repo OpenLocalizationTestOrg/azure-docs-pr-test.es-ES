@@ -1,9 +1,9 @@
 ---
-title: "aaaUpdate Azure módulos de automatización de Azure | Documentos de Microsoft"
+title: "Actualización de módulos de Azure en Azure Automation | Microsoft Docs"
 description: "En este artículo se describe cómo puede actualizar ahora módulos comunes de Azure PowerShell proporcionados de forma predeterminada en Azure Automation."
 services: automation
 documentationcenter: 
-author: MGoedtel
+author: eslesar
 manager: carmonm
 editor: tysonn
 ms.assetid: 
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/13/2017
 ms.author: magoedte
-ms.openlocfilehash: afa404a643349f044e55be2280e435b575049dec
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 6bd259f3da1005228b8137415c30660221507909
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-tooupdate-azure-powershell-modules-in-azure-automation"></a>¿Cómo tooupdate módulos de PowerShell de Azure en automatización de Azure
+# <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Actualización de módulos de Azure PowerShell en Azure Automation
 
-módulos de PowerShell de Azure más comunes de Hola se proporcionan de forma predeterminada en cada cuenta de automatización.  las actualizaciones del equipo de Azure de Hola Hola módulos de Azure con regularidad, por lo que en hello cuenta de automatización se proporcionan una manera para tooupdate módulos de hello en la cuenta de hello cuando estén disponibles desde el portal de hello las nuevas versiones.  
+Los módulos de Azure PowerShell más comunes se proporcionan de forma predeterminada en cada cuenta de Automation.  El equipo de Azure actualiza los módulos de Azure con regularidad, por lo que en la cuenta de Automation se proporciona una manera de actualizar los módulos de la cuenta cuando hay nuevas versiones disponibles en el portal.  
 
-Debido a los módulos se actualizan periódicamente por grupo de producto de hello, pueden producirse cambios con los cmdlets de hello incluida, lo que puede afectar negativamente sus runbooks según tipo hello de cambo, como cambiar el nombre de un parámetro o dejando un cmdlet completamente. tooavoid que afectan a los runbooks y Hola procesos automatizan, se recomienda encarecidamente que probar y validar antes de continuar.  Si no tiene una cuenta de automatización dedicada diseñada para este propósito, considere la posibilidad de crear uno para que pueda probar muchos escenarios diferentes y permutaciones durante el desarrollo de Hola de sus runbooks, cambios de tooiterative de suma, como la actualización Hola Módulos de PowerShell.  Después de que se validan los resultados de Hola y se les aplique los cambios necesarios, continuar con la migración Hola de los runbooks que requieren la modificación de coordinar y realizar la actualización de hello tal y como se describe a continuación en producción.     
+Dado que el grupo del producto actualiza los módulos con regularidad, pueden producirse cambios con los cmdlets incluidos, lo que puede afectar negativamente a los runbooks según el tipo de cambio, por ejemplo, al cambiar el nombre de un parámetro o al dejar de usar un cmdlet por completo. Para evitar afectar a los runbooks y a los procesos que automatizan, se recomienda encarecidamente probarlos y validarlos antes de continuar.  Si no tiene una cuenta de Automation dedicada destinada para este propósito, considere la posibilidad de crear una para poder probar muchos escenarios y permutaciones diferentes durante el desarrollo de los runbooks, además de los cambios iterativos, como la actualización de los módulos de PowerShell.  Una vez validados los resultados y aplicados los cambios necesarios, continúe con la coordinación de la migración de los runbooks que requieran modificación y realice la actualización tal y como se describe a continuación en un entorno de producción.     
 
 ## <a name="updating-azure-modules"></a>Actualización de módulos de Azure
 
-1. En los módulos de hello hoja de la cuenta de automatización no existe es una opción denominada **módulos de Azure Update**.  Siempre está habilitada.<br><br> ![Opción Update Azure Modules (Actualizar módulos de Azure) en la hoja Módulos](media/automation-update-azure-modules/automation-update-azure-modules-option.png)
+1. En la hoja Módulos de la cuenta de Automation existe una opción denominada **Update Azure Modules** (Actualizar módulos de Azure).  Siempre está habilitada.<br><br> ![Opción Update Azure Modules (Actualizar módulos de Azure) en la hoja Módulos](media/automation-update-azure-modules/automation-update-azure-modules-option.png)
 
-2. Haga clic en **módulos de Azure Update** y aparecerá una notificación de confirmación que le pregunta si desea toocontinue.<br><br> ![Notificación de Update Azure Modules (Actualizar módulos de Azure)](media/automation-update-azure-modules/automation-update-azure-modules-popup.png)
+2. Haga clic en **Update Azure Modules** (Actualizar módulos de Azure) y aparecerá una notificación de confirmación que le preguntará si desea continuar.<br><br> ![Notificación de Update Azure Modules (Actualizar módulos de Azure)](media/automation-update-azure-modules/automation-update-azure-modules-popup.png)
 
-3. Haga clic en **Sí** y se iniciará el proceso de actualización del módulo de Hola.  proceso de actualización de Hello tarda aproximadamente Hola de tooupdate 15-20 minutos siguientes módulos:
+3. Haga clic en **Sí** y comenzará el proceso de actualización de módulos.  El proceso de actualización tarda aproximadamente 15-20 minutos en actualizar los siguientes módulos:
 
-  * Azure
+  * Las tablas de Azure
   * Azure.Storage
   * AzureRm.Automation
   * AzureRm.Compute
@@ -43,15 +43,15 @@ Debido a los módulos se actualizan periódicamente por grupo de producto de hel
   * AzureRm.Sql
   * AzureRm.Storage
 
-    Si los módulos de hello ya están en marcha toodate, proceso de Hola se completará en unos segundos.  Cuando se completa el proceso de actualización de Hola se le notificará.<br><br> ![Estado de actualización de Update Azure Modules (Actualizar módulos de Azure)](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
+    Si los módulos ya están actualizados, el proceso se completará en unos segundos.  Cuando el proceso de actualización se complete, recibirá una notificación.<br><br> ![Estado de actualización de Update Azure Modules (Actualizar módulos de Azure)](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
 
 > [!NOTE]
-> Automatización de Azure utilizará módulos más recientes de hello en su cuenta de automatización cuando se ejecuta un nuevo trabajo programado.    
+> Azure Automation utilizará los módulos más recientes en su cuenta de Automation cuando se ejecuta un nuevo trabajo programado.    
 
-Si usa cmdlets de estos módulos de PowerShell de Azure en su toomanage runbooks Azure recursos, es recomendable tooperform este proceso de actualización de cada mes o por lo que tooassure que tienes bienvenida módulos más recientes.
+Si usa cmdlets de estos módulos de Azure PowerShell en sus runbooks para administrar recursos de Azure, le interesará realizar este proceso de actualización cada mes, por ejemplo, para asegurarse de que dispone de los módulos más recientes.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-* toolearn más información acerca de los módulos de integración y cómo integrar toocreate módulos personalizados toofurther la automatización con otros sistemas, servicios o soluciones, consulte [módulos de integración](automation-integration-modules.md).
+* Para más información sobre los módulos de integración y cómo crear módulos personalizados para integrar Automation con otros sistemas, servicios o soluciones, consulte [Módulos de integración](automation-integration-modules.md).
 
-* Considere el uso de la integración de control de origen [GitHub Enterprise](automation-scenario-source-control-integration-with-github-ent.md) o [Visual Studio Team Services](automation-scenario-source-control-integration-with-vsts.md) toocentrally administrar y controlar las versiones de la cartera de runbook y la configuración de automatización.  
+* Considere la integración del control de origen con [GitHub Enterprise](automation-scenario-source-control-integration-with-github-ent.md) o [Visual Studio Team Services](automation-scenario-source-control-integration-with-vsts.md) para controlar las versiones de la cartera de configuración y el runbook de Automation y administrarlas de forma centralizada.  

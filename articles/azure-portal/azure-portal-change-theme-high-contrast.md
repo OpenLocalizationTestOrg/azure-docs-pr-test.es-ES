@@ -1,6 +1,6 @@
 ---
-title: aaaTurn en contraste alto en el portal de Azure | Documentos de Microsoft
-description: "Obtenga información acerca de cómo tooturn en contraste alto o cambiar Hola tema de portal de Azure."
+title: "Activación del contraste alto en Azure Portal | Microsoft Docs"
+description: Aprenda a activar el contraste alto o cambiar el tema de Azure Portal.
 services: azure-portal
 keywords: 
 author: cwatson-cat
@@ -10,31 +10,31 @@ ms.topic: how to
 ms.service: multiple
 ms.custom: accessibility
 manager: timlt
-ms.openlocfilehash: 5f3e6032361a31567508039f74c731955d9a1cd0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 87ef9bf72f110ea3c27d0554e461d8c12132d422
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="turn-on-high-contrast-or-change-hello-theme-in-hello-azure-portal"></a>Activar el contraste alto o cambiar tema Hola Hola portal de Azure
-Si necesita más contraste o si desea toochange combinación de colores de Hola Hola portal de Azure, vaya toohello configuración del portal toomake Hola cambio. 
+# <a name="turn-on-high-contrast-or-change-the-theme-in-the-azure-portal"></a>Activación del contraste alto o cambio del tema en Azure Portal
+Si necesita más contraste o desea cambiar la combinación de colores en Azure Portal, vaya a la configuración del portal para realizar el cambio. 
 
 ## <a name="turn-on-high-contrast"></a>Activación del contraste alto
-1. En hello parte superior derecha de hello [portal de Azure](https://portal.azure.com), seleccione **configuración**. 
+1. En la parte superior derecha de [Azure Portal](https://portal.azure.com), seleccione **Configuración**. 
 
-    ![Captura de pantalla que muestra el icono de engranaje de configuración del portal de Hola Hola portal de Azure](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
+    ![Captura de pantalla que muestra el icono de advertencia de la configuración del portal en Azure Portal](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
 1. Elija **Blanco** o **Negro**.
 
-    ![Captura de pantalla que muestra las opciones de contraste alto en hello configuración del portal de Azure](./media/azure-portal-change-theme-high-contrast/azure-portal-highcontrast-options.png)
+    ![Captura de pantalla que muestra las opciones de contraste alto en la configuración de Azure Portal](./media/azure-portal-change-theme-high-contrast/azure-portal-highcontrast-options.png)
 1. Seleccione **Aplicar**.
 
 ## <a name="change-theme"></a>Cambio del tema
-1. En hello parte superior derecha de hello [portal de Azure](https://portal.azure.com), seleccione **configuración**.
+1. En la parte superior derecha de [Azure Portal](https://portal.azure.com), seleccione **Configuración**.
 
-    ![Captura de pantalla que muestra el icono de engranaje de configuración del portal de Hola Hola portal de Azure](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
+    ![Captura de pantalla que muestra el icono de advertencia de la configuración del portal en Azure Portal](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
 1. Elija un tema.
 
-    ![Captura de pantalla que muestra opciones de tema de Hola Hola configuración del portal de Azure](./media/azure-portal-change-theme-high-contrast/azure-portal-theme-options.png)
+    ![Captura de pantalla que muestra las opciones de tema en la configuración de Azure Portal](./media/azure-portal-change-theme-high-contrast/azure-portal-theme-options.png)
 1. Seleccione **Aplicar**.
 
 ## <a name="next-steps"></a>Pasos siguientes

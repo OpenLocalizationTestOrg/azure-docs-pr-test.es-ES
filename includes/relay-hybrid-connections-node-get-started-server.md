@@ -2,25 +2,25 @@
 
 Cree un nuevo archivo JavaScript denominado `listener.js`.
 
-### <a name="add-hello-relay-npm-package"></a>Agregar paquete de retransmisión NPM Hola
+### <a name="add-the-relay-npm-package"></a>Adición del paquete Relay NPM
 
 Ejecute `npm install hyco-ws` desde un símbolo del sistema del nodo en la carpeta del proyecto.
 
-### <a name="write-some-code-tooreceive-messages"></a>Escribir un cierto código tooreceive mensajes
+### <a name="write-some-code-to-receive-messages"></a>Escritura de código para recibir mensajes
 
-1. Agregar Hola después de la parte superior de la constante toohello de hello `listener.js` archivo.
+1. Agregue la siguiente constante al principio del archivo `listener.js`.
    
     ```js
     const WebSocket = require('hyco-ws');
     ```
-2. Agregar Hola siguientes constantes toohello `listener.js` en el archivo de conexión híbrida Hola. Reemplace los marcadores de posición de hello corchetes con valores de hello que obtuvo al crear conexión híbrida de Hola.
+2. Agregue la siguientes constantes al archivo `listener.js` para los detalles de la conexión híbrida. Reemplace los marcadores de posición entre corchetes por los valores que obtuvo al crear la conexión híbrida.
    
-   1. `const ns`-Hola espacio de nombres de retransmisión. Ser nombre de espacio de nombres completo de hello toouse seguro; Por ejemplo, `{namespace}.servicebus.windows.net`.
-   2. `const path`-nombre de Hola de conexión híbrida de Hola.
-   3. `const keyrule`-nombre de Hola de clave SAS de Hola.
-   4. `const key`-Hola valor de clave de SAS.
+   1. `const ns`: el espacio de nombres de Relay. Asegúrese de utilizar el nombre de espacio de nombres completo; por ejemplo, `{namespace}.servicebus.windows.net`.
+   2. `const path`: el nombre de la conexión híbrida.
+   3. `const keyrule`: el nombre de la clave SAS.
+   4. `const key`: el valor de la clave SAS.
 
-3. Agregar Hola después código toohello `listener.js` archivo:
+3. Agregue el siguiente código al archivo `listener.js`:
    
     ```js
     var wss = WebSocket.createRelayedServer(

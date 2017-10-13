@@ -1,6 +1,6 @@
 ---
-title: aaaDeploy y administrar los centros de notificaciones con PowerShell
-description: "¿Cómo tooCreate y administrar notificaciones concentradores con PowerShell para la automatización"
+title: "Implementación y administración de Centros de notificaciones mediante PowerShell"
+description: "Creación y administración de Centros de notificaciones mediante PowerShell con vistas a la automatización"
 services: notification-hubs
 documentationcenter: 
 author: ysxu
@@ -14,39 +14,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: 8835bdefa0d360354263eab8040259ad08281771
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 4db058e4bd91dc287b14e887abc6c378c65c4a2b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Implementación y administración de Centros de notificaciones mediante PowerShell
 ## <a name="overview"></a>Información general
-Este artículo muestra cómo crear toouse y administrar centros de notificaciones Azure con PowerShell. Hola después tareas comunes de automatización se muestra en este tema.
+Este artículo muestra cómo crear y administrar Centros de notificaciones de Azure mediante PowerShell. En este tema se muestran las siguientes tareas de automatización más comunes.
 
 * Creación de un centro de notificaciones
 * Definición de credenciales
 
-Si también necesita toocreate un nuevo espacio de nombres del bus de servicio para sus centros de notificaciones, consulte [administrar Service Bus con PowerShell](../service-bus-messaging/service-bus-powershell-how-to-provision.md).
+Si también necesita crear un nuevo espacio de nombres de Service Bus para sus Notification Hubs, consulte [Administración de Service Bus con PowerShell](../service-bus-messaging/service-bus-powershell-how-to-provision.md).
 
-No se admite la administración de centros de notificaciones directamente mediante cmdlets de hello incluidos con Azure PowerShell. Hola mejor método desde PowerShell consiste Microsoft.Azure.NotificationHubs.dll ensamblado de tooreference Hola. ensamblado de Hola se distribuye con hello [paquete NuGet de bases de datos centrales de notificación de Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+No se admite la administración de Centros de notificaciones directamente mediante los cmdlets incluidos con Azure PowerShell. El mejor enfoque en PowerShell es hacer referencia al ensamblado Microsoft.Azure.NotificationHubs.dll. El ensamblado se distribuye con el [paquete NuGet de los Centros de notificaciones de Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
 ## <a name="prerequisites"></a>Requisitos previos
-Antes de comenzar este artículo, debe tener el siguiente hello:
+Antes de empezar este artículo, debe tener lo siguiente:
 
 * Una suscripción de Azure. Azure es una plataforma basada en suscripción. Para más información sobre cómo obtener una suscripción, consulte [Opciones de compra], [Ofertas para miembros] o [Evaluación gratuita].
 * Un equipo con Azure PowerShell. Para obtener más información, consulte [Instalación y configuración de Azure PowerShell].
-* Una descripción general de scripts de PowerShell, paquetes de NuGet y Hola .NET Framework.
+* Conocimientos generales sobre los scripts de PowerShell, paquetes de NuGet y .NET Framework.
 
-## <a name="including-a-reference-toohello-net-assembly-for-service-bus"></a>Incluido en un ensamblado de referencia toohello .NET de Bus de servicio
-Administración de centros de notificaciones de Azure no aún incluido con hello cmdlets de PowerShell de Azure PowerShell. tooprovision centros de notificaciones, puede utilizar cliente de .NET de hello proporcionado en hello [paquete NuGet de bases de datos centrales de notificación de Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+## <a name="including-a-reference-to-the-net-assembly-for-service-bus"></a>Incluir una referencia al ensamblado .NET para Service Bus
+La administración de los Centros de notificaciones de Azure no está incluida aún con los cmdlets de Azure PowerShell. Para aprovisionar los centros de notificaciones, puede usar el cliente de .NET ofrecido en el [paquete NuGet de los Centros de notificaciones de Microsoft Azure](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
-En primer lugar, asegúrese de que el script puede localizar hello **Microsoft.Azure.NotificationHubs.dll** ensamblado, que se instala como un paquete de NuGet en un proyecto de Visual Studio. En orden toobe flexible, el script de Hola realiza estos pasos:
+En primer lugar, asegúrese de que el script puede encontrar el ensamblado **Microsoft.Azure.NotificationHubs.dll** , que se instala como un paquete NuGet en un proyecto de Visual Studio. Para ser flexible, el script llevará a cabo estos pasos:
 
-1. Determina la ruta de acceso de hello en el que se invocó.
-2. Recorra Hola ruta de acceso hasta que encuentra una carpeta denominada `packages`. Esta carpeta se crea al instalar paquetes NuGet para proyectos de Visual Studio.
-3. Hola de búsquedas de forma recursiva `packages` carpeta para un ensamblado denominado **Microsoft.Azure.NotificationHubs.dll**.
-4. Referencias Hola ensamblado para que los tipos de hello estén disponibles para su uso posterior.
+1. Determina la ruta de acceso en la que se invocó.
+2. Atraviesa la ruta de acceso hasta que encuentra una carpeta denominada `packages`. Esta carpeta se crea al instalar paquetes NuGet para proyectos de Visual Studio.
+3. Se busca de forma recursiva en la carpeta `packages` un ensamblado denominado **Microsoft.Azure.NotificationHubs.dll**.
+4. Hace referencia al ensamblado de modo que los tipos estarán disponibles para su uso posterior.
 
 Aquí se explica cómo se implementan estos pasos en un script de PowerShell:
 
@@ -54,50 +54,50 @@ Aquí se explica cómo se implementan estos pasos en un script de PowerShell:
 
 try
 {
-    # WARNING: Make sure tooreference hello latest version of Microsoft.Azure.NotificationHubs.dll
-    Write-Output "Adding hello [Microsoft.Azure.NotificationHubs.dll] assembly toohello script..."
+    # WARNING: Make sure to reference the latest version of Microsoft.Azure.NotificationHubs.dll
+    Write-Output "Adding the [Microsoft.Azure.NotificationHubs.dll] assembly to the script..."
     $scriptPath = Split-Path (Get-Variable MyInvocation -Scope 0).Value.MyCommand.Path
     $packagesFolder = (Split-Path $scriptPath -Parent) + "\packages"
     $assembly = Get-ChildItem $packagesFolder -Include "Microsoft.Azure.NotificationHubs.dll" -Recurse
     Add-Type -Path $assembly.FullName
 
-    Write-Output "hello [Microsoft.Azure.NotificationHubs.dll] assembly has been successfully added toohello script."
+    Write-Output "The [Microsoft.Azure.NotificationHubs.dll] assembly has been successfully added to the script."
 }
 
 catch [System.Exception]
 {
-    Write-Error("Could not add hello Microsoft.Azure.NotificationHubs.dll assembly toohello script. Make sure you build hello solution before running hello provisioning script.")
+    Write-Error("Could not add the Microsoft.Azure.NotificationHubs.dll assembly to the script. Make sure you build the solution before running the provisioning script.")
 }
 ```
 
-## <a name="create-hello-namespacemanager-class"></a>Crear clase de hello NamespaceManager
-tooprovision centros de notificaciones, cree una instancia de hello [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.namespacemanager.aspx) clase a partir de hello SDK. 
+## <a name="create-the-namespacemanager-class"></a>Creación de la clase NamespaceManager
+Para aprovisionar los Centros de notificaciones, cree una instancia de la clase [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.namespacemanager.aspx) desde el SDK. 
 
-Puede usar hello [AzureSBAuthorizationRule Get] cmdlet incluido con Azure PowerShell tooretrieve una regla de autorización que ha usado tooprovide una cadena de conexión. Almacenaremos una referencia toohello `NamespaceManager` instancia Hola `$NamespaceManager` variable. Usaremos `$NamespaceManager` tooprovision un centro de notificaciones.
+Puede usar el cmdlet [Get-AzureSBAuthorizationRule] que se incluye con Azure PowerShell para recuperar una regla de autorización que se usa para proporcionar una cadena de conexión. Almacenaremos una referencia a la instancia de `NamespaceManager` en la variable `$NamespaceManager`. Usaremos `$NamespaceManager` para aprovisionar un centro de notificaciones.
 
 ``` powershell
 $sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
-# Create hello NamespaceManager object toocreate hello hub
-Write-Output "Creating a NamespaceManager object for hello [$Namespace] namespace..."
+# Create the NamespaceManager object to create the hub
+Write-Output "Creating a NamespaceManager object for the [$Namespace] namespace..."
 $NamespaceManager=[Microsoft.Azure.NotificationHubs.NamespaceManager]::CreateFromConnectionString($sbr.ConnectionString);
-Write-Output "NamespaceManager object for hello [$Namespace] namespace has been successfully created."
+Write-Output "NamespaceManager object for the [$Namespace] namespace has been successfully created."
 ```
 
 
 ## <a name="provisioning-a-new-notification-hub"></a>Aprovisionamiento de un nuevo centro de notificaciones
-tooprovision un nuevo centro de notificaciones, use hello [API de .NET para los centros de notificaciones].
+Para aprovisionar un nuevo centro de notificaciones, use la [API de .NET para Centros de notificaciones].
 
-En esta parte del script de Hola configurar cuatro variables locales. 
+En esta parte del script, configuramos cuatro variables locales. 
 
-1. `$Namespace`: Establezca este nombre toohello del espacio de nombres de Hola donde desea toocreate un centro de notificaciones.
-2. `$Path`: Establezca este nombre de toohello de ruta de acceso del nuevo centro de notificaciones Hola.  Por ejemplo, "MyHub".    
-3. `$WnsPackageSid`: Establezca este SID del paquete toohello para su aplicación de Windows de hello [centro de desarrollo de Windows](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409).
-4. `$WnsSecretkey`: Establezca esta clave secreta toohello para su aplicación de Windows de hello [centro de desarrollo de Windows](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409).
+1. `$Namespace` : establezca esta variable en el nombre del espacio de nombres donde quiera crear un centro de notificaciones.
+2. `$Path` : establezca esta ruta de acceso en el nombre del nuevo centro de notificaciones.  Por ejemplo, "MyHub".    
+3. `$WnsPackageSid` : establezca esta variable en el SID del paquete para la aplicación de Windows desde el [Centro de desarrollo de Windows](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409).
+4. `$WnsSecretkey`: establezca este valor en la clave secreta para la aplicación de Windows desde el [Centro de desarrollo de Windows](http://go.microsoft.com/fwlink/p/?linkid=266582&clcid=0x409).
 
-Estas variables son espacios de nombres utilizados tooconnect tooyour y crear un nuevo toohandle centro de notificaciones configurado las notificaciones de servicios de notificación de Windows (WNS) con credenciales WNS para una aplicación de Windows. Para obtener información acerca de cómo obtener Hola SID y paquetes, vea clave secreta hello [Introducción a centros de notificaciones](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) tutorial. 
+Estas variables se usan para conectar con el espacio de nombres y crear un nuevo centro de notificaciones configurado para controlar las notificaciones de los servicios de notificación de Windows (WNS) con las credenciales de WNS en una aplicación de Windows. Para información sobre cómo obtener el SID del paquete y la clave secreta, vea el tutorial [Introducción a los Centros de notificaciones](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) . 
 
-* fragmento de código de script de Hola utiliza hello `NamespaceManager` objeto toocheck toosee si Hola centro de notificaciones identificado por `$Path` existe.
-* Si no existe, se creará el script de Hola un `NotificationHubDescription` con WNS credenciales y pasar ese toohello `NamespaceManager` clase `CreateNotificationHub` método.
+* El fragmento de código de script usa el objeto `NamespaceManager` para comprobar si existe el Centro de notificaciones identificado por `$Path`.
+* Si no existe, el script creará una `NotificationHubDescription` con las credenciales de WNS y la pasará al método `CreateNotificationHub` de la clase `NamespaceManager`.
 
 ``` powershell
 
@@ -108,37 +108,37 @@ $WnsSecretkey = "<enter your secret key>"
 
 $WnsCredential = New-Object -TypeName Microsoft.Azure.NotificationHubs.WnsCredential -ArgumentList $WnsPackageSid,$WnsSecretkey
 
-# Query hello namespace
+# Query the namespace
 $CurrentNamespace = Get-AzureSBNamespace -Name $Namespace
 
-# Check if hello namespace already exists
+# Check if the namespace already exists
 if ($CurrentNamespace)
 {
-    Write-Output "hello namespace [$Namespace] in hello [$($CurrentNamespace.Region)] region was found."
+    Write-Output "The namespace [$Namespace] in the [$($CurrentNamespace.Region)] region was found."
 
-    # Create hello NamespaceManager object used toocreate a new notification hub
+    # Create the NamespaceManager object used to create a new notification hub
     $sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
-    Write-Output "Creating a NamespaceManager object for hello [$Namespace] namespace..."
+    Write-Output "Creating a NamespaceManager object for the [$Namespace] namespace..."
     $NamespaceManager = [Microsoft.Azure.NotificationHubs.NamespaceManager]::CreateFromConnectionString($sbr.ConnectionString);
-    Write-Output "NamespaceManager object for hello [$Namespace] namespace has been successfully created."
+    Write-Output "NamespaceManager object for the [$Namespace] namespace has been successfully created."
 
-    # Check toosee if hello Notification Hub already exists
+    # Check to see if the Notification Hub already exists
     if ($NamespaceManager.NotificationHubExists($Path))
     {
-        Write-Output "hello [$Path] notification hub already exists in hello [$Namespace] namespace."  
+        Write-Output "The [$Path] notification hub already exists in the [$Namespace] namespace."  
     }
     else
     {
-        Write-Output "Creating hello [$Path] notification hub in hello [$Namespace] namespace."
+        Write-Output "Creating the [$Path] notification hub in the [$Namespace] namespace."
         $NHDescription = New-Object -TypeName Microsoft.Azure.NotificationHubs.NotificationHubDescription -ArgumentList $Path;
         $NHDescription.WnsCredential = $WnsCredential;
         $NamespaceManager.CreateNotificationHub($NHDescription);
-        Write-Output "hello [$Path] notification hub was created in hello [$Namespace] namespace."
+        Write-Output "The [$Path] notification hub was created in the [$Namespace] namespace."
     }
 }
 else
 {
-    Write-Host "hello [$Namespace] namespace does not exist."
+    Write-Host "The [$Namespace] namespace does not exist."
 }
 ```
 
@@ -147,8 +147,8 @@ else
 
 ## <a name="additional-resources"></a>Recursos adicionales
 * [Administración de Service Bus con PowerShell](../service-bus-messaging/service-bus-powershell-how-to-provision.md)
-* [¿Cómo toocreate Service Bus colas, temas y suscripciones mediante un script de PowerShell](http://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
-* [¿Cómo toocreate un Namespace de Bus de servicio y un centro de eventos mediante un script de PowerShell](http://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
+* [Cómo crear colas, temas y suscripciones de Service Bus con un script de PowerShell](http://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
+* [Cómo crear un espacio de nombres de Service Bus y un centro de eventos mediante un script de PowerShell](http://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
 
 Además, puede descargar algunos scripts listos para usar:
 
@@ -158,8 +158,8 @@ Además, puede descargar algunos scripts listos para usar:
 [Ofertas para miembros]: http://azure.microsoft.com/pricing/member-offers/
 [Evaluación gratuita]: http://azure.microsoft.com/pricing/free-trial/
 [Instalación y configuración de Azure PowerShell]: /powershell/azureps-cmdlets-docs
-[API de .NET para los centros de notificaciones]: https://msdn.microsoft.com/library/azure/mt414893.aspx
+[API de .NET para Centros de notificaciones]: https://msdn.microsoft.com/library/azure/mt414893.aspx
 [Get-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495122.aspx
 [New-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495165.aspx
-[AzureSBAuthorizationRule Get]: https://msdn.microsoft.com/library/azure/dn495113.aspx
+[Get-AzureSBAuthorizationRule]: https://msdn.microsoft.com/library/azure/dn495113.aspx
 

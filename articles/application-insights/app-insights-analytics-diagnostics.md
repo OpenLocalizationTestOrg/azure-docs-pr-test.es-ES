@@ -1,5 +1,5 @@
 ---
-title: "diagnóstico de aaaSmart de cambios de rendimiento de aplicaciones web en Azure Application Insights | Documentos de Microsoft"
+title: "Diagnóstico inteligente de los cambios en el rendimiento de las aplicaciones web en Azure Application Insights| Microsoft Docs"
 description: "Diagnóstico automático de subidas o pasos en la telemetría de rendimiento desde la aplicación web."
 services: application-insights
 documentationcenter: 
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2017
 ms.author: cfreeman
-ms.openlocfilehash: 8891762c4a4bfdb08b647fe3b702349eb30ec9c0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5e53bc714d89bf6204681349e7890e0b8fbc7046
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="diagnose-sudden-changes-in-your-app-telemetry"></a>Diagnóstico de los cambios repentinos en la telemetría de aplicación
 
 *Esta característica se encuentra en versión preliminar.*
 
-Diagnostique los cambios repentinos en el rendimiento o el uso de la aplicación web con un simple clic. característica de diagnóstico inteligente de Hello está disponible siempre que cree un gráfico de tiempo en [análisis](app-insights-analytics.md) en [Application Insights](app-insights-overview.md). Siempre que hay un cambio inusual de tendencia de Hola de los resultados, como un pico o una dip, diagnósticos inteligentes identifica un patrón de dimensiones y los valores relacionados que puedan explicar los cambios de Hola. Esto ayuda a diagnosticar el problema de hello rápidamente. 
+Diagnostique los cambios repentinos en el rendimiento o el uso de la aplicación web con un simple clic. La característica Smart Diagnostics está disponible siempre que crea un gráfico de tiempo en [Analytics](app-insights-analytics.md) en [Application Insights](app-insights-overview.md). Cada vez que se produce un cambio inusual en la tendencia de sus resultados, como una subida o una bajada, Smart Diagnostics identifica un patrón de dimensiones y valores relacionados que podrían explicar el cambio. Esto ayuda a diagnosticar el problema rápidamente. 
 
-En este ejemplo, diagnósticos inteligentes ha identificado un patrón de los valores de propiedad asociado con el cambio de Hola y pone de manifiesto Hola diferencia entre los resultados con y sin que ese modelo:
+En este ejemplo, Smart Diagnostics ha identificado un patrón de valores de propiedad asociados con el cambio y resalta la diferencia entre los resultados con y sin ese patrón:
 
 ![resultados de diagnóstico de análisis de ejemplo](./media/app-insights-analytics-diagnostics/analytics-result.png)
  
@@ -36,47 +36,47 @@ En este ejemplo, diagnósticos inteligentes ha identificado un patrón de los va
  
     ![punto de subida](./media/app-insights-analytics-diagnostics/peak.png)
 
-    Diagnóstico tarda unos segundos toodiscover un patrón.
+    Diagnostics tarda unos segundos en detectar un patrón.
 
-3. pestaña de resultados de diagnóstico de Hello muestra un patrón que puedan explicar la discontinuidad de datos.
+3. La pestaña de resultados de diagnóstico muestra un patrón que puede explicar la discontinuidad de los datos.
 
     ![result](./media/app-insights-analytics-diagnostics/result.png)
  
-    texto Hello muestra valores de la dimensión de Hola que aparecen toocorrelate con desplazamiento Hola. En este ejemplo, está asociado a una solicitud determinada y una versión de explorador determinado.
+    El texto muestra los valores de dimensión que parecen guardar una correlación con el cambio. En este ejemplo, está asociado a una solicitud determinada y una versión de explorador determinado.
 
-    Tenga en cuenta también los componentes de hello dos del gráfico de hello, con hello filtro true y false. componente false Hello muestra una tendencia sin cambios. En otras palabras, no hay ningún cambio en los resultados de telemetría de hello, si se excluye la combinación problemático de Hola de dimensiones que ha identificado los diagnósticos. Por el contrario, los resultados de hello dentro de esa combinación muestran un cambio significativo en área de hello resaltado de investigación. Esto muestra que diagnósticos ha encontrado una combinación de propiedades que explica el cambio de Hola.
+    Observe también los dos componentes del gráfico, con el filtro true y false. El componente false muestra una tendencia sin cambios. En otras palabras, no hay ningún cambio en los resultados de telemetría, si excluimos la combinación problemática de dimensiones que ha identificado Diagnostics. Por el contrario, los resultados de esa combinación muestran un cambio significativo en el área resaltada de investigación. Esto muestra que Diagnostics ha encontrado una combinación de propiedades que explica el cambio.
 
-4.  Si el patrón de hello es complejo, necesitará toohover sobre **mostrar todo** dimensiones de hello toosee.
+4.  Si el patrón es complejo, debe mantener el mouse sobre **Mostrar todo** para ver las dimensiones.
 
     ![mostrar todo](./media/app-insights-analytics-diagnostics/show-all.png)
  
-5.  En caso de diagnósticos no buscan ningún toonotify patrón significativo sobre Hola que se mostrará la página 'sin resultados'. En este momento, puede cambiar la consulta. Por ejemplo, podría restringir el intervalo de tiempo de Hola y de discretización de consulta de análisis, para un análisis posterior y potencialmente mejores resultados.
+5.  En caso de que Diagnostics no encuentre ningún patrón significativo sobre el que informar, se presenta la página "sin resultados". En este momento, puede cambiar la consulta. Por ejemplo, podría restringir el intervalo de tiempo y la discretización de las consultas de Analytics para obtener un análisis más profundo y posiblemente mejores resultados.
 
-Gracias a que una página concreta de su sitio Web tiene un problema en un explorador determinado de conocimiento de hello, ahora puede ir a página de problema toohello recta e investigar los cambios recientes.
+Una vez que sabe que una determinada página de su sitio web tiene un problema en un explorador determinado, puede ir directamente a la página del problema e investigar los cambios recientes.
 
-## <a name="try-hello-demo"></a>Pruebe Hola demostración
+## <a name="try-the-demo"></a>Prueba de la demostración
 
-[Haga clic aquí toosee una demostración](https://analytics.applicationinsights.io/demo?q=H4sIAAAAAAAAA3VSTY%2FTQAy991dYPXWlLf0QIO2KIiGWA3duiMPsxEnMzhe2p6WIH48nVUsuGylRNPOe3%2FOzN5vFZgPfRhL4VZHPIGM%2BCdgHdESgpMjOKx0RnsgNKYuSF%2BjRaWUE7xKMGIoBgTpMSv2Z0jBxOWc1QBWEPjM4EMUCP2uc0A3x8E5HKMi%2BEQNC7oHRbIgKdJWdUk5vmr9PvdkArildit%2Fcrk0lBDjnyhBzk%2FKVxdTy0QhNY6RhDPYqdlCy9XMV96NjBZc68IH8y6Tzuf01iZxeIZ%2FI5DqMOYmaQQRXNUdz6qGb5WOdSKEXnOozHtEFK%2Bh0qnq5YQzGF9DcoinoqbcigkO0NOZRNGOZaaBkMuat5xznFOtULKhG%2BdrGlVDhy%2B8SMlsETV8dD6gTd0YrbsBrFq6U1v%2Filv4C%2FsJpRJuwUrQTZ0P7eIDOHLeD1X67e7%2Fe7dbbB9htH%2Ffbu4vQDfvhFez%2B8a1h%2F1f3VSy%2BJ4Ol1oN8X4qN0qMZWv44HJanzKFLeJIltKcRpcbomP7gbHNkdV2Xe1uqO3g%2BwzOl1c3PvbmMlC7KjKlry2GX0w4s%2FgFoo5%2BhBAMAAA%3D%3D&timespan=PT24H) datos de ejemplo.
+[Haga clic aquí para ver una demostración](https://analytics.applicationinsights.io/demo?q=H4sIAAAAAAAAA3VSTY%2FTQAy991dYPXWlLf0QIO2KIiGWA3duiMPsxEnMzhe2p6WIH48nVUsuGylRNPOe3%2FOzN5vFZgPfRhL4VZHPIGM%2BCdgHdESgpMjOKx0RnsgNKYuSF%2BjRaWUE7xKMGIoBgTpMSv2Z0jBxOWc1QBWEPjM4EMUCP2uc0A3x8E5HKMi%2BEQNC7oHRbIgKdJWdUk5vmr9PvdkArildit%2Fcrk0lBDjnyhBzk%2FKVxdTy0QhNY6RhDPYqdlCy9XMV96NjBZc68IH8y6Tzuf01iZxeIZ%2FI5DqMOYmaQQRXNUdz6qGb5WOdSKEXnOozHtEFK%2Bh0qnq5YQzGF9DcoinoqbcigkO0NOZRNGOZaaBkMuat5xznFOtULKhG%2BdrGlVDhy%2B8SMlsETV8dD6gTd0YrbsBrFq6U1v%2Filv4C%2FsJpRJuwUrQTZ0P7eIDOHLeD1X67e7%2Fe7dbbB9htH%2Ffbu4vQDfvhFez%2B8a1h%2F1f3VSy%2BJ4Ol1oN8X4qN0qMZWv44HJanzKFLeJIltKcRpcbomP7gbHNkdV2Xe1uqO3g%2BwzOl1c3PvbmMlC7KjKlry2GX0w4s%2FgFoo5%2BhBAMAAA%3D%3D&timespan=PT24H) en los datos de ejemplo.
 
 ## <a name="how-it-works"></a>Cómo funciona
 
-Diagnóstico inteligente utiliza un algoritmo de aprendizaje automático supervisados avanzada basado en hello [DiffPatterns](app-insights-analytics-reference.md) operación. Busca patrones de los candidatos que puedan explicar los cambios de datos de Hola. Análisis de impacto de Hola de cada candidato en la métrica de hello y muestra el patrón de Hola que mejor se correlaciona con cambio de Hola.
+Smart Diagnostics usa un algoritmo de aprendizaje automático avanzado no supervisado en la operación [DiffPatterns](app-insights-analytics-reference.md). Lo que hace es buscar patrones candidatos que puedan explicar los cambios en los datos. Luego, analiza el impacto de cada candidato sobre la métrica y muestra el patrón que guarda una mejor correlación con el cambio.
 
 ## <a name="no-diagnostic-points"></a>¿No hay puntos de diagnóstico?
 
-Diagnóstico inteligente sólo funciona cuando se cumple Hola siguiendo criterios:
+Smart Diagnostics solo funciona cuando se satisfacen los siguientes criterios:
 
- * La opción Smart Diagnostics está activada. Haga clic en el icono de configuración de hello en el análisis.
- * Hola opción de diagnósticos inteligentes en la configuración de análisis está seleccionada. 
- * Eje de tiempo: Hola eje x del gráfico de hello debe ser de tipo `datetime`.
- * Gráfico de líneas o de áreas: Diagnostics solo funciona con estos tipos de gráfico. Use `| render timechart` o `| render areachart` al final de saludo de la consulta; o seleccione la línea o un gráfico de áreas del selector de lista desplegable de Hola.
- * Discontinuidad: Debe haber una discontinuidad significativa en los datos de Hola.
- * Tooanalyze suficientes puntos.
- * No más de un resumen de cláusula de consulta de Hola.
- * Ninguna cláusula del proyecto que contiene una definición de nombre antes de hello resumir cláusula.
+ * La opción Smart Diagnostics está activada. Mire debajo del icono Configuración de Analytics.
+ * La opción Smart Diagnostics de la configuración de Analytics está seleccionada. 
+ * Eje de tiempo: el eje x del gráfico debe ser de tipo `datetime`.
+ * Gráfico de líneas o de áreas: Diagnostics solo funciona con estos tipos de gráfico. Use `| render timechart` o `| render areachart` al final de la consulta; o seleccione el gráfico de líneas o de áreas en el selector de lista desplegable.
+ * Discontinuidad: debe haber una discontinuidad significativa en los datos.
+ * Suficientes puntos para analizar.
+ * No más de una cláusula de resumen en la consulta.
+ * Ninguna cláusula del proyecto que contenga una definición de nombre delante de la cláusula de resumen.
 
  
  ## <a name="related-articles"></a>Artículos relacionados
 
  * [Tutorial de Analytics](app-insights-analytics-tour.md)
- * [Detección de Smart](app-insights-proactive-diagnostics.md) avisa tooperformance problemas automáticamente.
+ * La [detección inteligente](app-insights-proactive-diagnostics.md) le avisa automáticamente de problemas en el rendimiento.

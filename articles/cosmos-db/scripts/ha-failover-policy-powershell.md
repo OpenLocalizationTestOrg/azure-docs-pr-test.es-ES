@@ -1,5 +1,5 @@
 ---
-title: "aaaAzure una directiva de conmutación por error de la base de datos de Azure Cosmos de crear Script de PowerShell | Documentos de Microsoft"
+title: "Script de PowerShell de Azure: Creación de una directiva de conmutación por error de Azure Cosmos DB | Microsoft Docs"
 description: "Ejemplo de script de PowerShell de Azure: Creación de una directiva de conmutación por error de Azure Cosmos DB"
 services: cosmos-db
 documentationcenter: cosmosdb
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: 750127385164cd16837b6e29c506d2b44146a629
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 16da3cd543ccbb7fe346261f91d2e9a3ceaf3a8b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-an-azure-cosmos-db-failover-policy-for-high-availability-using-powershell"></a>Creación de una directiva de conmutación por error de Azure Cosmos DB para alta disponibilidad usando PowerShell
 
@@ -30,11 +30,11 @@ Este ejemplo de script de PowerShell crea una directiva de conmutación por erro
 
 ## <a name="sample-script"></a>Script de ejemplo
 
-[!code-powershell[main](../../../powershell_scripts/cosmosdb/modify-failover-priority/modify-failover-priority.ps1?highlight=36-39,42-47 "Create an Azure Cosmos DB DocumentDB API account")]
+[!code-powershell[main](../../../powershell_scripts/cosmosdb/modify-failover-priority/modify-failover-priority.ps1?highlight=36-39,42-47 "Creación de una cuenta de la API DocumentDB de Azure Cosmos DB")]
 
 ## <a name="clean-up-deployment"></a>Limpieza de la implementación
 
-Después de ejecutar el ejemplo de script de Hola, Hola siguiente comando puede ser usado tooremove grupo de recursos de Hola y todos los recursos asociados con él.
+Después de ejecutar el script de ejemplo, se puede usar el comando siguiente para quitar el grupo de recursos y todos los recursos asociados.
 
 ```powershell
 Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
@@ -42,18 +42,18 @@ Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
 
 ## <a name="script-explanation"></a>Explicación del script
 
-Este script utiliza Hola siga los comandos. Cada comando de documentación específica de hello tabla vínculos toocommand.
+Este script usa los siguientes comandos. Cada comando de la tabla crea un vínculo a documentación específica del comando.
 
 | Comando | Notas |
 |---|---|
 | [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.5.0/new-azurermresourcegroup) | Crea un grupo de recursos en el que se almacenan todos los recursos. |
 | [New-AzureRmResource](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresource?view=azurermps-3.8.0) | Crea un servidor lógico que hospeda una base de datos o un grupo elástico. |
-| [Invoke-AzureRmResourceAction](https://docs.microsoft.com/powershell/module/azurerm.resources/invoke-azurermresourceaction?view=azurermps-3.8.0) | Se invoca una acción en la cuenta de Azure CosmosDB Hola. |
+| [Invoke-AzureRmResourceAction](https://docs.microsoft.com/powershell/module/azurerm.resources/invoke-azurermresourceaction?view=azurermps-3.8.0) | Invoca una acción en la cuenta de Azure Cosmos DB. |
 | [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.5.0/remove-azurermresourcegroup) | Elimina un grupo de recursos, incluidos todos los recursos anidados. |
 |||
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-Para obtener más información sobre hello Azure PowerShell, consulte [documentación de Azure PowerShell](https://docs.microsoft.com/powershell/).
+Para más información sobre Azure PowerShell, consulte la [documentación de Azure PowerShell](https://docs.microsoft.com/powershell/).
 
-Encontrará más ejemplos de secuencias de comandos de PowerShell de base de datos de Azure Cosmos en hello [scripts de PowerShell de base de datos de Azure Cosmos](../powershell-samples.md).
+Encontrará más ejemplos de scripts de PowerShell de Azure Cosmos DB en los [scripts de PowerShell de Azure Cosmos DB](../powershell-samples.md).

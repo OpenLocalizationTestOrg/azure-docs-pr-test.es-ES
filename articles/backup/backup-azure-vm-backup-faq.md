@@ -1,6 +1,6 @@
 ---
-title: "Preguntas más frecuentes de copia de seguridad de máquina virtual aaaAzure | Documentos de Microsoft"
-description: "Responde a las preguntas de toocommon sobre: cómo funciona de copia de seguridad de máquina virtual de Azure, limitaciones y qué ocurre cuando se producen cambios toopolicy"
+title: "Preguntas más frecuentes sobre la copia de seguridad de máquinas virtuales de Azure | Microsoft Docs"
+description: "Respuestas a preguntas habituales sobre cómo funciona la copia de seguridad de máquinas virtuales de Azure, las limitaciones y lo que sucede cuando se producen cambios en las directivas"
 services: backup
 documentationcenter: 
 author: trinadhk
@@ -15,48 +15,48 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: a1ad2cb3a379577a8c4258c8207ce75809e11a4a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 1372a9e05cb47f6c68240bffccd46b0fbebb5464
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/18/2017
 ---
-# <a name="questions-about-hello-azure-vm-backup-service"></a>Preguntas sobre Hola servicio de copia de seguridad de máquina virtual de Azure
-Este artículo tiene respuestas toocommon preguntas toohelp rápidamente entender los componentes de copia de seguridad de Azure VM Hola. En algunas de las respuestas de hello, hay artículos de toohello vínculos que tienen información completa. También puede publicar preguntas sobre Hola servicio de copia de seguridad de Azure en hello [foro de discusión](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
+# <a name="questions-about-the-azure-vm-backup-service"></a>Preguntas sobre el servicio de copia de seguridad de máquinas virtuales de Azure
+En este artículo se incluyen respuestas a preguntas habituales para ayudarle a comprender rápidamente los componentes del servicio de copia de seguridad de máquinas virtuales de Azure. En algunas de las respuestas, hay vínculos a artículos que tienen información completa. También se pueden publicar preguntas sobre el servicio Copia de seguridad de Azure en el [foro de debate](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
 
 ## <a name="configure-backup"></a>Configuración de la copia de seguridad
 ### <a name="do-recovery-services-vaults-support-classic-vms-or-resource-manager-based-vms-br"></a>¿Admiten los almacenes de Servicios de recuperación máquinas virtuales implementadas con el modelo clásico o máquinas virtuales implementadas con Resource Manager? <br/>
-Los almacenes de Servicios de recuperación admiten ambos modelos.  Puede realizar copias de seguridad de una máquina virtual clásica (creado en el portal clásico de hello) o un tooa VM Administrador de recursos (creado en el portal de Azure hello) del almacén de servicios de recuperación.
+Los almacenes de Servicios de recuperación admiten ambos modelos.  Puede hacer copias de seguridad de una máquina virtual clásica (creada en el portal de clásico) o de una máquina virtual de Resource Manager (creada en Azure Portal) en un almacén de Recovery Services.
 
 ### <a name="what-configurations-are-not-supported-by-azure-vm-backup-"></a>¿Qué configuraciones no se admiten en la copia de seguridad de máquinas virtuales de Azure?
 Consulte los [sistemas operativos admitidos](backup-azure-arm-vms-prepare.md#supported-operating-system-for-backup) y las [limitaciones de la copia de seguridad de máquinas virtuales](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm).
 
 ### <a name="why-cant-i-see-my-vm-in-configure-backup-wizard"></a>¿Por qué no aparece mi máquina virtual en el Asistente para configuración de la copia de seguridad?
 En el Asistente para configuración de la copia de seguridad, Azure Backup solo muestra máquinas virtuales con los siguientes criterios:
-* Aún no están protegidos, puede comprobar estado de copia de seguridad de Hola de una máquina virtual va tooVM hoja y comprobando en estado de copia de seguridad desde el menú de configuración de la hoja de Hola. Más información acerca de cómo demasiado[comprobar el estado de copia de seguridad de una máquina virtual](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-vm-management-blade)
-* Pertenece toosame región como máquina virtual
+* No están aún protegidas: para comprobar el estado de copia de seguridad de una máquina virtual, vaya a la hoja de la máquina virtual y compruebe el estado en el menú Configuración de la hoja. Aprenda más sobre cómo [comprobar el estado de copia de seguridad de una máquina virtual](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-vm-management-blade).
+* Pertenece a la misma región que la máquina virtual
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Copia de seguridad
 ### <a name="will-on-demand-backup-job-follow-same-retention-schedule-as-scheduled-backups"></a>¿Seguirá el trabajo de copia de seguridad a petición la misma programación de retención que las copias de seguridad programadas?
-No. Duración de retención de hello toospecify es necesario para un trabajo de copia de seguridad a petición. De forma predeterminada, se conservará durante 30 días cuando se active desde el portal. 
+No. Para un trabajo de copia de seguridad a petición debe especificar el intervalo de retención. De forma predeterminada, se conservará durante 30 días cuando se active desde el portal. 
 
-### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-toowork"></a>Recientemente habilité Azure Disk Encryption en algunas máquinas virtuales. ¿Mis copias de seguridad continuará toowork?
-Necesitará permisos de toogive para tooaccess de servicio de copia de seguridad de Azure el almacén de claves. Puede proporcionar estos permisos en PowerShell mediante los pasos que se indican en la sección sobre *cómo habilitar Backup* de la documentación de [PowerShell](backup-azure-vms-automation.md).
+### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>Recientemente habilité Azure Disk Encryption en algunas máquinas virtuales. ¿Seguirán funcionando mis copias de seguridad?
+Para acceder a Key Vault, debe conceder permisos para el servicio Azure Backup. Puede proporcionar estos permisos en PowerShell mediante los pasos que se indican en la sección sobre *cómo habilitar Backup* de la documentación de [PowerShell](backup-azure-vms-automation.md).
 
-### <a name="i-migrated-disks-of-a-vm-toomanaged-disks-will-my-backups-continue-toowork"></a>Migran los discos de los discos de toomanaged de una máquina virtual. ¿Mis copias de seguridad continuará toowork?
-Sí, las copias de seguridad funcionan a la perfección y sin necesidad de toore-Configurar copia de seguridad. 
+### <a name="i-migrated-disks-of-a-vm-to-managed-disks-will-my-backups-continue-to-work"></a>Migré los discos de una máquina virtual a discos administrados. ¿Seguirán funcionando mis copias de seguridad?
+Sí, las copias de seguridad funcionan a la perfección y sin necesidad de volver a configurar la copia de seguridad. 
 
 ## <a name="restore"></a>Restauración
 ### <a name="how-do-i-decide-between-restoring-disks-versus-full-vm-restore"></a>¿Cómo decido entre la restauración de discos frente a restauración completa de máquinas virtuales?
-Considere la restauración completa de máquinas virtuales de Azure como una opción rápida de creación para máquinas virtuales restauradas. Restaure VM opción cambiará nombres Hola de discos, contenedores utilizan discos, direcciones IP públicas, interfaz de red nombres para la unicidad de los recursos obtener creados como parte de la creación de la máquina virtual. También agregará no Hola VM tooavailability conjunto. 
+Considere la restauración completa de máquinas virtuales de Azure como una opción rápida de creación para máquinas virtuales restauradas. La opción de restauración de máquinas virtuales cambia los nombres de discos, contenedores usados por discos, direcciones IP públicas o nombres de interfaz de red en favor de la unicidad de los recursos que se crean como parte de la creación de una máquina virtual; Tampoco agrega la máquina virtual al conjunto de disponibilidad. 
 
 Use discos de restauración para:
-* Personalizar Hola máquina virtual que se crea desde el punto en la configuración de tiempo como cambiar el tamaño de Hola de configuración de copia de seguridad
-* Agregar configuraciones que no están presentes en tiempo de Hola de copia de seguridad 
-* Convención de nomenclatura de Hola de control de recursos obtener creados
-* Agregar conjunto de tooavailability de máquina virtual.
+* Personalizar la máquina virtual que se crea a partir de la configuración de restauración a un momento dado, como cambiar el tamaño en la configuración de copia de seguridad
+* Agregar configuraciones que no están presentes en el momento de la copia de seguridad 
+* Controlar la convención de nomenclatura para los recursos que se crean
+* Agregar una máquina virtual al conjunto de disponibilidad
 * Tiene una configuración que solo se puede lograr mediante PowerShell o una definición de plantilla declarativa
 
 ## <a name="manage-vm-backups"></a>Administrar copias de seguridad de máquina virtual
 ### <a name="what-happens-when-i-change-a-backup-policy-on-vms"></a>¿Qué ocurre cuando se cambia una directiva de copia de seguridad en las máquinas virtuales?
-Cuando se aplica una nueva directiva de máquinas virtuales, se seguirá la retención de nueva directiva de Hola y programación. Si se amplía la retención, puntos de recuperación existentes se marcarán tookeep ellas según la directiva de nuevo. Si se reduce la retención, que están marcados para ser eliminados en el siguiente trabajo de limpieza de Hola y se eliminará. 
+Cuando se aplica una nueva directiva en las máquinas virtuales, se seguirá la programación y retención de la nueva directiva. Si se amplía la retención, los puntos de recuperación existentes se marcarán para mantenerlos de acuerdo con la nueva directiva. Si se reduce la retención, se marcan para eliminarse, y se eliminan, en el siguiente trabajo de limpieza. 

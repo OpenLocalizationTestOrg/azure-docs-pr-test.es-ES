@@ -1,6 +1,6 @@
 ---
-title: "aaaGet a trabajar con análisis de Data Lake mediante API de REST | Documentos de Microsoft"
-description: "Use las API de REST de WebHDFS tooperform operaciones de análisis de Data Lake"
+title: "Introducción a Data Lake Analytics mediante API de REST| Microsoft Docs"
+description: Uso de las API de REST de WebHDFS para realizar operaciones en Data Lake Analytics
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,43 +14,43 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/03/2017
 ms.author: jgao
-ms.openlocfilehash: a0b13d521821fd2d74716cc52485585feb7c51b2
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 332d7af2539eea8890745005104ac5b0921c2b7f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-rest-apis"></a>Introducción a Azure Data Lake Analytics mediante API de REST
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Obtenga información acerca de cómo toouse WebHDFS API de REST y las API de REST de análisis de datos Lake toomanage análisis de Data Lake cuentas, trabajos y de catálogo. 
+Aprenda cómo usar las API de REST de WebHDFS y API de REST de Data Lake Analytics para administrar los trabajos, el catálogo y las cuentas de Data Lake Analytics. 
 
 ## <a name="prerequisites"></a>Requisitos previos
 * **Una suscripción de Azure**. Vea [Obtener evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Cree una aplicación de Azure Active Directory**. Usar la aplicación de análisis de Data Lake de hello Azure AD aplicación tooauthenticate Hola con Azure AD. Hay diferentes enfoques tooauthenticate con Azure AD, que son **autenticación de usuario final** o **autenticación del servicio a servicio**. Para obtener instrucciones y obtener más información acerca de cómo tooauthenticate, consulte [autenticar con análisis de Data Lake con Azure Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
-* [cURL](http://curl.haxx.se/). En este artículo usa toodemonstrate cURL cómo toomake API de REST se llama con una cuenta de análisis de Data Lake.
+* **Cree una aplicación de Azure Active Directory**. Utilice la aplicación Azure AD para autenticar la aplicación Data Lake Analytics con Azure AD. Existen diferentes enfoques para realizar la autenticación con Azure AD, que son la **autenticación de usuario final** o la **autenticación de servicio a servicio**. Para instrucciones y más información acerca de cómo realizar la autenticación, consulte [Autenticación con Data Lake Analytics mediante Azure Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
+* [cURL](http://curl.haxx.se/). En este artículo se usa cURL para demostrar cómo realizar llamadas de la API de REST en una cuenta de Data Lake Analytics.
 
 ## <a name="authenticate-with-azure-active-directory"></a>Autenticación mediante Azure Active Directory
 Hay dos métodos para autenticar con Azure Active Directory.
 
 ### <a name="end-user-authentication-interactive"></a>Autenticación de usuario final (interactiva)
-Con este método, aplicación solicita Hola usuario toolog en y se realizan todas las operaciones de hello en contexto de saludo del usuario de Hola. 
+En este escenario, la aplicación pide al usuario que inicie sesión y todas las operaciones se realizan en el contexto del usuario. 
 
 Siga estos pasos para la autenticación interactiva:
 
-1. A través de la aplicación, redirigir Hola usuario toohello después de la dirección URL:
+1. A través de la aplicación, redirija al usuario a la siguiente dirección URL:
    
         https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<CLIENT-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
    
    > [!NOTE]
-   > \<URI de redireccionamiento > necesita toobe codificado para su uso en una dirección URL. Por lo tanto, para https://localhost, use `https%3A%2F%2Flocalhost`).
+   > \<REDIRECT-URI&gt; debe codificarse para utilizarse en una dirección URL. Por lo tanto, para https://localhost, use `https%3A%2F%2Flocalhost`).
    > 
    > 
    
-    A fin de Hola de este tutorial, puede reemplazar los valores de marcador de posición de hello en dirección URL de hello anteriormente y péguelo en la barra de direcciones del explorador de web. Será redirigido tooauthenticate mediante el inicio de sesión de Azure. Una vez correctamente, inicie sesión, respuesta de Hola se muestra en la barra de direcciones del explorador de Hola. respuesta de Hello será Hola siguiendo el formato siguiente:
+    Para este tutorial, puede sustituir los valores de marcador de posición de la dirección URL anterior y pegarlos en la barra de direcciones del explorador web. Se le redirigirá a una página autenticarse con sus datos de inicio de sesión de Azure. Una vez que haya iniciado sesión correctamente, la respuesta se muestra en la barra de direcciones del explorador. La respuesta estará en el formato siguiente:
    
         http://localhost/?code=<AUTHORIZATION-CODE>&session_state=<GUID>
-2. Capturar el código de autorización de Hola de respuesta de Hola. Para este tutorial, puede copiar el código de autorización de Hola de barra de direcciones de hello del explorador web de Hola y páselo en hello POST solicitud toohello extremo de token, tal y como se muestra a continuación:
+2. Obtenga el código de autorización de la respuesta. Para este tutorial, puede copiar el código de autorización de la barra de direcciones del explorador web y pasarlo en la solicitud POST al punto de conexión de token, tal y como se muestra a continuación:
    
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token \
         -F redirect_uri=<REDIRECT-URI> \
@@ -60,13 +60,13 @@ Siga estos pasos para la autenticación interactiva:
         -F code=<AUTHORIZATION-CODE>
    
    > [!NOTE]
-   > En este caso, Hola \<REDIRECT-URI > no deben codificarse.
+   > En este caso, no se necesita codificar \<REDIRECT-URI>.
    > 
    > 
-3. respuesta de Hello es un objeto JSON que contiene un token de acceso (p. ej., `"access_token": "<ACCESS_TOKEN>"`) y un token de actualización (p. ej., `"refresh_token": "<REFRESH_TOKEN>"`). La aplicación usa Hola token de acceso al obtener acceso a almacén de Azure Data Lake y tooget de token de actualización de hello otro token de acceso cuando caduca un token de acceso.
+3. La respuesta es un objeto JSON que contiene un token de acceso (por ejemplo, `"access_token": "<ACCESS_TOKEN>"`) y uno de actualización (por ejemplo, `"refresh_token": "<REFRESH_TOKEN>"`). La aplicación usa el token de acceso al acceder al Almacén de Azure Data Lake y el token de actualización para obtener otro token de acceso cuando expira un token de acceso.
    
         {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":    "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
-4. Cuando expira el token de acceso de hello, puede solicitar un nuevo token de acceso con el token de actualización de hello, tal y como se muestra a continuación:
+4. Cuando expira el token de acceso, puede solicitar uno nuevo con el token de actualización, tal y como se muestra a continuación:
    
         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
              -F grant_type=refresh_token \
@@ -77,7 +77,7 @@ Siga estos pasos para la autenticación interactiva:
 Para más información sobre la autenticación interactiva de usuarios, consulte el [flujo de concesión de un código de autorización](https://msdn.microsoft.com/library/azure/dn645542.aspx).
 
 ### <a name="service-to-service-authentication-non-interactive"></a>Autenticación de servicio a servicio (no interactiva)
-Con este método, aplicación proporciona sus propias credenciales operaciones de hello tooperform. Para ello, debe emitir una solicitud POST como Hola se muestra a continuación: 
+En este escenario, la aplicación proporciona sus propias credenciales para realizar las operaciones. Para ello, debe emitir una solicitud POST como la que se muestra a continuación. 
 
     curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
       -F grant_type=client_credentials \
@@ -85,20 +85,20 @@ Con este método, aplicación proporciona sus propias credenciales operaciones d
       -F client_id=<CLIENT-ID> \
       -F client_secret=<AUTH-KEY>
 
-salida de Hello de esta solicitud incluirá un token de autorización (indicado por `access-token` en la siguiente salida de Hola) que se pasará posteriormente con las llamadas de API de REST. Guarde este token de autenticación en un archivo de texto; lo necesitará más adelante en este artículo.
+El resultado de esta solicitud incluirá un token de autorización (que se indica mediante `access-token` en el siguiente resultado) que pasará posteriormente con las llamadas de la API de REST. Guarde este token de autenticación en un archivo de texto; lo necesitará más adelante en este artículo.
 
     {"token_type":"Bearer","expires_in":"3599","expires_on":"1458245447","not_before":"1458241547","resource":"https://management.core.windows.net/","access_token":"<REDACTED>"}
 
-En este artículo usa hello **no interactivo** enfoque. Para obtener más información sobre no interactivo (llamadas de servicio a servicio), consulte [llamadas de tooservice utilizando las credenciales del servicio](https://msdn.microsoft.com/library/azure/dn645543.aspx).
+En este artículo se usa el enfoque **no interactivo** . Para más información sobre el enfoque no interactivo (llamadas de servicio a servicio), consulte el tema sobre [llamadas de servicio a servicio utilizando las credenciales del cliente](https://msdn.microsoft.com/library/azure/dn645543.aspx).
 
 ## <a name="create-a-data-lake-analytics-account"></a>Creación de una cuenta de Análisis de Data Lake
 Debe crear un grupo de recursos de Azure y una cuenta de Data Lake Store antes de poder crear una cuenta de Data Lake Analytics.  Consulte [Creación de una cuenta de Data Lake Store](../data-lake-store/data-lake-store-get-started-rest-api.md#create-a-data-lake-store-account).
 
-Hola después del comando Curl mostrará cómo toocreate una cuenta:
+El siguiente comando Curl muestra cómo crear una cuenta:
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -H "Content-Type: application/json" https://management.azure.com/subscriptions/<AzureSubscriptionID>/resourceGroups/<AzureResourceGroupName>/providers/Microsoft.DataLakeAnalytics/accounts/<NewAzureDataLakeAnalyticsAccountName>?api-version=2016-11-01 -d@"C:\tutorials\adla\CreateDataLakeAnalyticsAccountRequest.json"
 
-Reemplace \< `REDACTED` \> con token de autorización de hello, \< `AzureSubscriptionID` \> con su identificador de suscripción, \< `AzureResourceGroupName` \> con un recurso de Azure existente Nombre de grupo, y \< `NewAzureDataLakeAnalyticsAccountName` \> con un nuevo nombre de cuenta de análisis de Data Lake. carga de la solicitud de Hola para este comando se encuentra en hello **CreateDatalakeAnalyticsAccountRequest.json** archivo que se proporciona para hello `-d` parámetro anterior. Hola contenido del archivo de input.json hello es similar siguiente hello:
+Reemplace \<`REDACTED`\> por el token de autorización, \<`AzureSubscriptionID`\> por su identificador de suscripción, \<`AzureResourceGroupName`\> por un nombre de Grupo de recursos de Azure existente y \<`NewAzureDataLakeAnalyticsAccountName`\> por el nombre de una nueva cuenta de Data Lake Analytics. La carga útil de la solicitud de este comando se encuentra en el archivo **CreateDatalakeAnalyticsAccountRequest.json** que se proporciona para el parámetro `-d` anterior. El contenido del archivo input.json es similar al siguiente:
 
     {  
         "location": "East US 2",  
@@ -116,11 +116,11 @@ Reemplace \< `REDACTED` \> con token de autorización de hello, \< `AzureSubscri
 
 
 ## <a name="list-data-lake-analytics-accounts-in-a-subscription"></a>Lista de las cuentas de Data Lake Analytics en una suscripción
-Hola siguiente Curl comando muestra cómo toolist cuentas en una suscripción:
+El siguiente comando Curl muestra cómo enumerar las cuentas de una suscripción:
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/<AzureSubscriptionID>/providers/Microsoft.DataLakeAnalytics/Accounts?api-version=2016-11-01
 
-Reemplace \< `REDACTED` \> con token de autorización de hello, \< `AzureSubscriptionID` \> con su identificador de suscripción. es similar a la salida de Hello:
+Reemplace \<`REDACTED`\> por el token de autorización y \<`AzureSubscriptionID`\> por su identificador de suscripción. La salida es parecida a esta:
 
     {
         "value": [
@@ -158,11 +158,11 @@ Reemplace \< `REDACTED` \> con token de autorización de hello, \< `AzureSubscri
     }
 
 ## <a name="get-information-about-a-data-lake-analytics-account"></a>Información acerca de una cuenta de Data Lake Analytics
-Hola después del comando Curl mostrará cómo tooget una información de cuenta:
+El siguiente comando Curl muestra cómo obtener información de la cuenta:
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/<AzureSubscriptionID>/resourceGroups/<AzureResourceGroupName>/providers/Microsoft.DataLakeAnalytics/accounts/<DataLakeAnalyticsAccountName>?api-version=2015-11-01
 
-Reemplace \< `REDACTED` \> con token de autorización de hello, \< `AzureSubscriptionID` \> con su identificador de suscripción, \< `AzureResourceGroupName` \> con un recurso de Azure existente Nombre de grupo, y \< `DataLakeAnalyticsAccountName` \> con el nombre de Hola de una cuenta de análisis de Data Lake existente. es similar a la salida de Hello:
+Reemplace \<`REDACTED`\> por el token de autorización, \<`AzureSubscriptionID`\> por su identificador de suscripción, \<`AzureResourceGroupName`\> por un nombre de Grupo de recursos de Azure existente y \<`DataLakeAnalyticsAccountName`\> por el nombre de una cuenta de Data Lake Analytics existente. La salida es parecida a esta:
 
     {
         "properties": {
@@ -190,11 +190,11 @@ Reemplace \< `REDACTED` \> con token de autorización de hello, \< `AzureSubscri
     }
 
 ## <a name="list-data-lake-stores-of-a-data-lake-analytics-account"></a>Lista de instancias de Data Lake Store de una cuenta de Data Lake Analytics
-Hola siguiente Curl comando muestra cómo almacena toolist Data Lake de una cuenta:
+El siguiente comando Curl muestra cómo enumerar las instancias de Data Lake Store de una cuenta:
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/<AzureSubscriptionID>/resourceGroups/<AzureResourceGroupName>/providers/Microsoft.DataLakeAnalytics/accounts/<DataLakeAnalyticsAccountName>/DataLakeStoreAccounts/?api-version=2016-11-01
 
-Reemplace \< `REDACTED` \> con token de autorización de hello, \< `AzureSubscriptionID` \> con su identificador de suscripción, \< `AzureResourceGroupName` \> con un recurso de Azure existente Nombre de grupo, y \< `DataLakeAnalyticsAccountName` \> con el nombre de Hola de una cuenta de análisis de Data Lake existente. es similar a la salida de Hello:
+Reemplace \<`REDACTED`\> por el token de autorización, \<`AzureSubscriptionID`\> por su identificador de suscripción, \<`AzureResourceGroupName`\> por un nombre de Grupo de recursos de Azure existente y \<`DataLakeAnalyticsAccountName`\> por el nombre de una cuenta de Data Lake Analytics existente. La salida es parecida a esta:
 
     {
         "value": [
@@ -210,11 +210,11 @@ Reemplace \< `REDACTED` \> con token de autorización de hello, \< `AzureSubscri
     }
 
 ## <a name="submit-u-sql-jobs"></a>Envío de trabajos de U-SQL
-Hola después del comando Curl mostrará cómo trabajo toosubmit U T-SQL:
+El siguiente comando Curl siguiente muestra cómo enviar un trabajo de U-SQL:
 
     curl -i -X PUT -H "Authorization: Bearer <REDACTED>" https://<DataLakeAnalyticsAccountName>.azuredatalakeanalytics.net/Jobs/<NewGUID>?api-version=2016-03-20-preview -d@"C:\tutorials\adla\SubmitADLAJob.json"
 
-Reemplace \< `REDACTED` \> con token de autorización de hello, \< `DataLakeAnalyticsAccountName` \> con el nombre de Hola de una cuenta de análisis de Data Lake existente. carga de la solicitud de Hola para este comando se encuentra en hello **SubmitADLAJob.json** archivo que se proporciona para hello `-d` parámetro anterior. Hola contenido del archivo de input.json hello es similar siguiente hello:
+Reemplace \<`REDACTED`\> por el token de autorización y \<`DataLakeAnalyticsAccountName`\> por el nombre de una cuenta de Data Lake Analytics existente. La carga útil de la solicitud de este comando se encuentra en el archivo **SubmitADLAJob.json** que se proporciona para el parámetro `-d` anterior. El contenido del archivo input.json es similar al siguiente:
 
     {
         "jobId": "8f8ebf8c-4b63-428a-ab46-a03d2cc5b65a",
@@ -226,11 +226,11 @@ Reemplace \< `REDACTED` \> con token de autorización de hello, \< `DataLakeAnal
             "type": "USql",
             "script": "@searchlog =\n    EXTRACT UserId          int,\n            Start           DateTime,\n            Region          string,\n            Query          
         string,\n            Duration        int?,\n            Urls            string,\n            ClickedUrls     string\n    FROM \"/Samples/Data/SearchLog.tsv\"\n    US
-        ING Extractors.Tsv();\n\nOUTPUT @searchlog   \n    too\"/Output/SearchLog-from-Data-Lake.csv\"\nUSING Outputters.Csv();"
+        ING Extractors.Tsv();\n\nOUTPUT @searchlog   \n    TO \"/Output/SearchLog-from-Data-Lake.csv\"\nUSING Outputters.Csv();"
         }
     }
 
-es similar a la salida de Hello:
+La salida es parecida a esta:
 
     {
         "jobId": "8f8ebf8c-4b63-428a-ab46-a03d2cc5b65a",
@@ -267,13 +267,13 @@ es similar a la salida de Hello:
 
 
 ## <a name="list-u-sql-jobs"></a>Lista de trabajos de U-SQL
-Hola después del comando Curl mostrará cómo trabajos toolist U-SQL:
+El siguiente comando Curl muestra cómo enumerar trabajos de U-SQL:
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://<DataLakeAnalyticsAccountName>.azuredatalakeanalytics.net/Jobs?api-version=2016-11-01 
 
-Reemplace \< `REDACTED` \> con token de autorización de Hola y \< `DataLakeAnalyticsAccountName` \> con el nombre de Hola de una cuenta de análisis de Data Lake existente. 
+Reemplace \<`REDACTED`\> por el token de autorización y \<`DataLakeAnalyticsAccountName`\> por el nombre de una cuenta de Data Lake Analytics existente. 
 
-es similar a la salida de Hello:
+La salida es parecida a esta:
 
     {
     "value": [
@@ -322,11 +322,11 @@ es similar a la salida de Hello:
 
 
 ## <a name="get-catalog-items"></a>Obtener elementos del catálogo
-Hola siguiente Curl comando muestra cómo las bases de datos de tooget Hola de Hola catálogo:
+El siguiente comando Curl muestra cómo obtener las bases de datos del catálogo:
 
     curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://<DataLakeAnalyticsAccountName>.azuredatalakeanalytics.net/catalog/usql/databases?api-version=2016-11-01
 
-es similar a la salida de Hello:
+La salida es parecida a esta:
 
     {
     "@odata.context":"https://myadla0831.azuredatalakeanalytics.net/sqlip/$metadata#databases","value":[
@@ -338,11 +338,11 @@ es similar a la salida de Hello:
     ]
     }
 
-## <a name="see-also"></a>Otras referencias
-* toosee una consulta más compleja, vea [sitio Web de analizar registros con análisis de Azure Data Lake](data-lake-analytics-analyze-weblogs.md).
-* tooget a desarrollar aplicaciones SQL U, consulte [scripts U T-SQL desarrollar con Data Lake Tools para Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
-* toolearn T-SQL, vea [empezar a trabajar con el lenguaje de Azure Data Lake Analytics U-SQL](data-lake-analytics-u-sql-get-started.md).
+## <a name="see-also"></a>Consulte también
+* Para ver una consulta más compleja, consulte la página sobre el [análisis de registros de sitio web mediante Análisis de Azure Data Lake](data-lake-analytics-analyze-weblogs.md).
+* Para empezar a desarrollar aplicaciones con U-SQL, consulte [Desarrollo de scripts U-SQL mediante Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
+* Para obtener más información sobre U-SQL, consulte [Introducción al lenguaje U-SQL de Análisis de Azure Data Lake](data-lake-analytics-u-sql-get-started.md).
 * Para conocer las tareas de administración, consulte [Administración de Azure Data Lake Analytics mediante el Azure Portal](data-lake-analytics-manage-use-portal.md).
-* vea tooget un resumen de análisis de Data Lake [información general de análisis de Azure Data Lake](data-lake-analytics-overview.md).
-* Hola toosee mismo tutorial con otras herramientas, haga clic en los selectores de pestaña hello en la parte superior de Hola de página Hola.
+* Para obtener información general sobre Análisis de Data Lake, consulte [Información general sobre Análisis de Azure Data Lake](data-lake-analytics-overview.md).
+* Para ver el mismo tutorial con otras herramientas, haga clic en los selectores de pestañas en la parte superior de la página.
 

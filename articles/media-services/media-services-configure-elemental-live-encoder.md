@@ -1,6 +1,6 @@
 ---
-title: "aaaConfigure Hola toosend de codificador en vivo Elemental una secuencia en directo de velocidad de bits única | Documentos de Microsoft"
-description: "Este tema muestra cómo tooconfigure Hola toosend de codificador en vivo Elemental canales de secuencia tooAMS una velocidad de bits única que están habilitadas para la codificación en directo."
+title: "Configuración del codificador Elemental Live para enviar una transmisión en vivo con velocidad de bits única | Microsoft Docs"
+description: "En este tema se muestra cómo configurar el codificador Elemental Live para enviar una transmisión con velocidad de bits única a canales AMS habilitados para la codificación en directo."
 services: media-services
 documentationcenter: 
 author: cenkdin
@@ -14,13 +14,13 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: cenkd;anilmur;juliako
-ms.openlocfilehash: 9a5de6189bfb123768a9da038b8c8db69cf85e91
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 668a3ab46a70c0ee25fa87031d27c0f4333ec89c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="use-hello-elemental-live-encoder-toosend-a-single-bitrate-live-stream"></a>Usar toosend del codificador de Live Elemental de hello una secuencia en directo de velocidad de bits única
+# <a name="use-the-elemental-live-encoder-to-send-a-single-bitrate-live-stream"></a>Use el codificador Elemental Live para enviar una transmisión en directo con velocidad de bits única
 > [!div class="op_single_selector"]
 > * [Elemental Live](media-services-configure-elemental-live-encoder.md)
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
@@ -29,53 +29,53 @@ ms.lasthandoff: 10/06/2017
 >
 >
 
-Este tema se muestra cómo hello tooconfigure [Live Elemental](http://www.elementaltechnologies.com/products/elemental-live) codificador toosend una velocidad de bits única transmitir canales tooAMS que están habilitados para la codificación en directo.  Para obtener más información, consulte [trabajar con los canales que es habilitado tooPerform Live codificar con servicios multimedia de Azure](media-services-manage-live-encoder-enabled-channels.md).
+En este tema se muestra cómo configurar el codificador [Elemental Live](http://www.elementaltechnologies.com/products/elemental-live) para enviar una transmisión con velocidad de bits única a canales AMS habilitados para la codificación en directo.  Para obtener más información, consulte [Uso de canales habilitados para realizar la codificación en directo con Servicios multimedia de Azure](media-services-manage-live-encoder-enabled-channels.md).
 
-Este tutorial muestra cómo toomanage servicios multimedia de Azure (AMS) con la herramienta Explorador de servicios multimedia de Azure (AMSE). Esta herramienta solo se ejecuta en Windows PC. Si se encuentra en Mac o Linux, use hello Azure toocreate portal [canales](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) y [programas](media-services-portal-creating-live-encoder-enabled-channel.md).
+En este tutorial se muestra cómo administrar Servicios multimedia de Azure (AMS) con la herramienta Explorador de Servicios multimedia de Azure (AMSE). Esta herramienta solo se ejecuta en Windows PC. Si se encuentra en Mac o Linux, use Azure Portal para crear [canales](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) y [programas](media-services-portal-creating-live-encoder-enabled-channel.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
-* Debe tener conocimientos prácticos de utilizando Live Elemental web interfaz toocreate eventos en directo.
+* Debe tener un conocimiento práctico del uso de la interfaz web de Elemental Live para crear eventos en directo.
 * [Creación de una cuenta de Azure Media Services](media-services-portal-create-account.md)
 * Asegúrese de que hay un punto de conexión de streaming en ejecución. Para más información, consulte [Administración de puntos de conexión de streaming en una cuenta de Media Services](media-services-portal-manage-streaming-endpoints.md).
-* Instalar la versión más reciente de hello del programa Hola a [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) herramienta.
-* Iniciar la herramienta de Hola y conectar con cuenta de tooyour AMS.
+* Debe instalar la última versión de la herramienta [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) .
+* Inicie la herramienta y conéctese a la cuenta de AMS.
 
 ## <a name="tips"></a>Sugerencias
 * Siempre que sea posible, use una conexión a Internet por cable.
-* Una buena regla general al determinar los requisitos de ancho de banda es hello toodouble streaming de velocidades de bits. Aunque esto no es un requisito obligatorio, ayudará a mitigar el impacto de Hola de congestión de la red.
+* Una buena regla general al determinar los requisitos de ancho de banda consiste en duplicar las velocidades de bits de streaming. Aunque no se trata de un requisito obligatorio, contribuirá a mitigar el impacto de la congestión de la red.
 * Cuando se usen codificadores por software, cierre todos los programas innecesarios.
 
 ## <a name="elemental-live-with-rtp-ingest"></a>Elemental Live con entrada RTP
-Esta sección muestra cómo tooconfigure Hola Elemental codificador en directo que se envía a una velocidad de bits única secuencia en directo a través de RTP.  Para obtener más información, consulte [Transmisión MPEG TS sobre RTP](media-services-manage-live-encoder-enabled-channels.md#channel).
+En esta sección se muestra cómo configurar el codificador Elemental Live que envía una transmisión en directo con una velocidad de bits única a través de RTP.  Para obtener más información, consulte [Transmisión MPEG TS sobre RTP](media-services-manage-live-encoder-enabled-channels.md#channel).
 
 ### <a name="create-a-channel"></a>Crear un canal
 
-1. En la herramienta AMSE de hello, navegue toohello **Live** ficha y haga clic en el área del canal de Hola. Seleccione **Crear canal...** en el menú de Hola.
+1. En la herramienta AMSE, navegue a la pestaña **Directo** y haga clic con el botón derecho dentro del área de canales. Seleccione **Crear canal...** en el menú.
 
     ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental1.png)
 
-2. Especifique un nombre de canal, el campo de descripción de hello es opcional. En configuración de canal, seleccione **estándar** para Hola opción de codificación en directo con hello proporcionados por el protocolo establecido demasiado**RTP (MPEG-TS)**. Puede dejar todas las demás opciones como están.
+2. Especifique un nombre de canal (el campo de descripción es opcional). En Configuración de canal, seleccione **Estándar** para la opción Live Encoding, con el protocolo de entrada establecido en **RTP (MPEG-TS)**. Puede dejar todas las demás opciones como están.
 
-    Asegúrese de hello seguro **inicio Hola nuevo canal ahora** está seleccionada.
+    Asegúrese de que la opción **Iniciar el nuevo canal ahora** esté seleccionada.
 
 3. Haga clic en **Crear canal**.
 
    ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental12.png)
 
 > [!NOTE]
-> canal de Hello puede tardar tanto como toostart de 20 minutos.
+> El canal puede tardar hasta 20 minutos en iniciarse.
 >
 >
 
-Mientras se inicia el canal de hello puede [configurar codificador hello](media-services-configure-elemental-live-encoder.md#configure_elemental_rtp).
+Mientras se inicia el canal puede [configurar el codificador](media-services-configure-elemental-live-encoder.md#configure_elemental_rtp).
 
 > [!IMPORTANT]
 > Tenga en cuenta que la facturación comienza tan pronto como el canal entra en un estado Listo. Para obtener más información, consulte [Estados del canal](media-services-manage-live-encoder-enabled-channels.md#states).
 >
 >
 
-### <a id=configure_elemental_rtp></a>Configurar el codificador de Live Elemental Hola
-En este tutorial Hola se utilizan las siguientes opciones de salida. resto de Hola de esta sección describe los pasos de configuración con más detalle.
+### <a id=configure_elemental_rtp></a>Configurar el codificador Elemental Live
+En este tutorial se usa la siguiente configuración de salida. En el resto de esta sección se describen los pasos de configuración con más detalle.
 
 **Vídeo**:
 
@@ -92,22 +92,22 @@ En este tutorial Hola se utilizan las siguientes opciones de salida. resto de Ho
 * Sample Rate (Frecuencia de muestreo): 44,1 kHz
 
 #### <a name="configuration-steps"></a>Pasos de configuración
-1. Navegue toohello **Live Elemental** interfaz web y configurar el codificador de Hola para **UDP/TS** transmisión por secuencias.
-2. Una vez que se crea un nuevo evento, desplácese hacia abajo de grupos de resultados toohello y agregar hello **UDP/TS** grupo de resultados.
+1. Vaya a la interfaz web de **Elemental Live** y configure el codificador para el streaming **UDP/TS**.
+2. Una vez creado un nuevo evento, desplácese hacia abajo hasta los grupos de salida y agregue el grupo de salida **UDP/TS** .
 3. Para crear una salida, seleccione **New Stream** (Nueva transmisión) y haga clic en **Add Output** (Agregar salida).  
 
     ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental13.png)
 
    > [!NOTE]
-   > Se recomienda ese evento Elemental hello tiene código de hello tiempo establecido demasiado volver a conectar un codificador de hello toohelp "Reloj del sistema" en caso de hello de un error de secuencia.
+   > Se recomienda que el evento Elemental tenga el código de tiempo establecido en "Reloj del sistema" para ayudar a que el codificador se vuelva a conectar en el caso de un error de transmisión.
    >
    >
-4. Ahora que hello salida se ha creado, haga clic en **Agregar secuencia**. Ahora se puede configurar la configuración de salida de Hello.
-5. Desplácese hacia abajo toohello "Stream 1" que acaba de crear, haga clic en hello **vídeo** ficha Hola izquierda y expanda hello **avanzadas** sección de configuración.
+4. Ahora que se creó la salida, haga clic en **Agregar transmisión**. Ahora pueden configurarse las opciones de salida.
+5. Baje hasta la "Transmisión 1" que acaba de crear, haga clic en la pestaña **Video** (Vídeo) a la izquierda y expanda la sección de configuración **Advanced** (Avanzada).
 
     ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental4.png)
 
-    Aunque Live Elemental tiene una amplia gama de personalización disponibles, hello siguiente configuración se recomienda para comenzar a usar tooAMS de transmisión por secuencias.
+    Aunque Elemental Live tiene una amplia gama de opciones de personalización disponibles, se recomienda la siguiente configuración para comenzar a usar el streaming a AMS.
 
    * Resolution (Resolución): 1280 x 720
    * Framerate (Velocidad de fotogramas): 30
@@ -117,56 +117,56 @@ En este tutorial Hola se utilizan las siguientes opciones de salida. resto de Ho
 
     ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental5.png)
 
-1. Obtener dirección URL de entrada del canal de Hola.
+1. Obtenga la dirección URL de entrada del canal.
 
-    Navegar por la herramienta AMSE toohello atrás y comprobar estado de finalización de canal de Hola. Una vez que ha cambiado el estado de Hola de **iniciando** demasiado**ejecuta**, puede obtener la dirección URL de entrada de Hola.
+    Navegue de nuevo a la herramienta AMSE y compruebe el estado de finalización del canal. Una vez que ha cambiado el estado de **Iniciando** a **En ejecución**, puede obtener la dirección URL de entrada.
 
-    Cuando se ejecuta el canal de hello, haga clic con el nombre del canal de hello, desplácese hacia abajo toohover sobre **Copiar dirección URL de entrada tooclipboard** y, a continuación, seleccione **dirección URL de entrada principal**.  
+    Mientras se ejecuta el canal, haga clic con el botón derecho en el nombre del canal, desplácese hacia abajo y mantenga el puntero sobre **Copy Input URL to clipboard** (Copiar dirección URL de entrada en el Portapapeles) y seleccione **Primary Input URL** (Dirección URL de entrada principal).  
 
     ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental6.png)
-2. Pegar esta información en hello **destino principal** campo de hello Elemental. Todas las demás opciones pueden permanecer predeterminado Hola.
+2. Pegue esta información en el campo **Destino principal** de Elemental. Todas las demás configuraciones pueden quedarse con el valor predeterminado.
 
     ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental14.png)
 
-    Para obtener redundancia adicional, repita estos pasos con hello secundaria de dirección URL de entrada mediante la creación de una pestaña independiente de "Salida" para la transmisión por secuencias de UDP/TS.
-3. Haga clic en **crear** (si se ha creado un nuevo evento) o **actualización** (si está modificando un evento preexistente) y, a continuación, continuar codificador de hello toostart.
+    Para obtener redundancia adicional, repita estos pasos con la dirección URL de entrada secundaria, creando una pestaña “Salida” independiente para el streaming UDP/TS.
+3. Haga clic en **Create** (Crear), si se creó un evento, o en **Update** (Actualizar), si está modificando un evento ya existente, e inicie el codificador.
 
 > [!IMPORTANT]
-> Antes de hacer clic **iniciar** en interfaz web Live Elemental de hello, **debe** Asegúrese de que el canal de hello está listo.
-> Además, asegúrese de que no tooleave Hola canal en un estado listo sin un evento durante más de 15 minutos de >.
+> Antes de hacer clic en **Start** (Iniciar) en la interfaz web de Elemental Live, **debe** asegurarse de que el canal esté listo.
+> Además, asegúrese de no dejar el canal en un estado Listo sin un evento durante más de 15 minutos.
 >
 >
 
-Después de que se ha ejecutado la secuencia de Hola durante 30 segundos, desplácese atrás toohello AMSE herramienta y prueba la reproducción.  
+Cuando la transmisión lleve 30 segundos en ejecución, vuelva a la herramienta AMSE y pruebe la reproducción.  
 
 ### <a name="test-playback"></a>Prueba de reproducción
 
-Navegar por la herramienta AMSE toohello y haga clic en toobe de canal de hello probado. En el menú de hello, mantenga el mouse sobre **Hola reproducción Preview** y seleccione **con el Reproductor de Media de Azure**.  
+Vaya a la herramienta AMSE y haga clic con el botón derecho en el canal que se va a probar. En el menú, mantenga el puntero sobre **Playback the Preview** (Reproducir la vista previa) y seleccione **with Azure Media Player** (con Azure Media Player).  
 
     ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental8.png)
 
-Si la secuencia Hola aparece en el Reproductor de hello, codificador Hola ha sido tooAMS tooconnect configurado correctamente.
+Si la transmisión aparece en el reproductor, entonces el codificador se configuró correctamente para conectarse a AMS.
 
-Si se recibe un error, canal de hello deberá toobe la configuración de restablecimiento y codificador ajustada. Vea hello [solución de problemas](media-services-troubleshooting-live-streaming.md) tema para obtener instrucciones.   
+Si se recibe un error, se deberá restablecer el canal y ajustar la configuración del codificador. Consulte el tema de [solución de problemas](media-services-troubleshooting-live-streaming.md) para obtener instrucciones.   
 
 ### <a name="create-a-program"></a>Creación de un programa
-1. Una vez confirmada la reproducción de canales, cree un programa. En hello **Live** ficha herramienta AMSE de hello, haga clic en el área del programa Hola y seleccione **crear un nuevo programa**.  
+1. Una vez confirmada la reproducción de canales, cree un programa. En la pestaña **Live** (Directo) de la herramienta AMSE, haga clic con el botón derecho dentro del área de programas y seleccione **Create New Program** (Crear programa).  
 
     ![Elemental](./media/media-services-elemental-live-encoder/media-services-elemental9.png)
-2. Nombre de programa hello y, si es necesario, ajuste hello **duración de la ventana de archivo** (qué horas too4 de los valores predeterminados). También puede especificar una ubicación de almacenamiento o deje el valor predeterminado de Hola.  
-3. Comprobar hello **inicio Hola programa ahora** cuadro.
+2. Dé nombre al programa y, si es necesario, ajuste el valor de **Duración de la ventana de archivo** (que de forma predeterminada es 4 horas). También puede especificar una ubicación de almacenamiento o dejar el valor predeterminado.  
+3. Active la casilla **Iniciar el programa ahora** .
 4. Haga clic en **Crear programa**.  
 
     >[!NOTE]
     > La creación de programas tarda menos que la creación de canales.   
       
-5. Una vez que se ejecuta el programa de hello, confirme la reproducción, haga clic en el programa hello y vaya demasiado**programas de reproducción hello** y, a continuación, seleccione **con el Reproductor de Media de Azure**.  
-6. Una vez confirmado, haga clic en programa Hola de nuevo y seleccione **copiar tooClipboard de dirección URL de salida de hello** (o recuperar la información desde hello **información y configuración de programas** opción de menú de hello).
+5. Cuando el programa esté en ejecución, confirme la reproducción. Para ello, haga clic con el botón derecho en el programa y vaya a **Playback the program(s)** (Reproducir los programas). Luego, seleccione **with Azure Media Player** (con Azure Media Player).  
+6. Una vez confirmada, haga clic con el botón derecho de nuevo en el programa y seleccione **Copy the Output URL to Clipboard** (Copiar la dirección URL de salida en el Portapapeles) o recupere esta información con la opción **Program information and settings**(Información y configuración del programa) en el menú.
 
-secuencia de Hello ahora está listo toobe incrustado en un reproductor o distribuida tooan público para live visualización.  
+La transmisión está ahora preparada para insertarse en un reproductor o distribuirse a una audiencia para su visualización en directo.  
 
-## <a name="troubleshooting"></a>Solución de problemas
-Vea hello [solución de problemas](media-services-troubleshooting-live-streaming.md) tema para obtener instrucciones.
+## <a name="troubleshooting"></a>solución de problemas
+Consulte el tema de [solución de problemas](media-services-troubleshooting-live-streaming.md) para obtener instrucciones.
 
 ## <a name="media-services-learning-paths"></a>Rutas de aprendizaje de Servicios multimedia
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

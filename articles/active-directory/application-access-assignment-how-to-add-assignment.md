@@ -1,6 +1,6 @@
 ---
-title: "aplicación del tooan de usuarios y grupos de tooassign aaaHow | Documentos de Microsoft"
-description: "Asignar a los usuarios acceso a la aplicación toohello toogrant"
+title: "Asignación de usuarios y grupos a una aplicación | Microsoft Docs"
+description: "Asignar usuarios a la aplicación para conceder acceso"
 services: active-directory
 documentationcenter: 
 author: ajamess
@@ -13,154 +13,154 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: e039a26e4b8f88ad747354859f1071b8f74b6789
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 61536612e0dd5102b8f5e911c350826846f5ed77
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="how-tooassign-users-and-groups-tooan-application"></a>¿Cómo tooassign a los usuarios y grupos de una aplicación tooan
+# <a name="how-to-assign-users-and-groups-to-an-application"></a>Asignación de usuarios y grupos a una aplicación
 
-Antes de que los usuarios pueden realizar cualquiera de Hola a continuación para una aplicación específica, debe toofirst **asignarlos aplicación toohello** toogrant acceso:
+Antes de que los usuarios puedan hacer cualquiera de las siguientes acciones para una aplicación específica, debe primero **asignarles a la aplicación** para concederles acceso:
 
--   Acceso a una aplicación por **navegar directamente por dirección URL de la aplicación toohello** (también conocido como iniciado en SP inicio de sesión).
+-   Acceso a una aplicación mediante la **navegación directa a la dirección URL de la aplicación** (también conocido como inicio de sesión iniciado por el proveedor de servicios).
 
--   Acceso a una aplicación mediante el uso de hello **dirección URL de acceso de usuario** en una aplicación **propiedades** página (también conocido como iniciado por IDP inicio de sesión).
+-   Acceso a una aplicación mediante la **dirección URL de acceso de usuarios** en la página **Propiedades** de una aplicación (también conocido como inicio de sesión iniciado por un proveedor de identidades).
 
 -   Vea como aparece una aplicación en su [panel de acceso a las aplicaciones](https://myapps.microsoft.com/) o aplicación móvil.
 
 -   Vea como aparece una aplicación en el [iniciador de aplicaciones de Office 365](https://support.office.com/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a).
 
-## <a name="methods-tooassign-applications-with-azure-active-directory"></a>Aplicaciones de tooassign de métodos con Azure Active Directory 
+## <a name="methods-to-assign-applications-with-azure-active-directory"></a>Métodos de asignación de aplicaciones con Azure Active Directory 
 
 Hay 3 formas de asignar aplicaciones con Azure Active Directory:
 
--   [Asignar un usuario directamente tooan aplicación como administrador](#assign-a-user-directly-as-an-administrator)
+-   [Asignación de un usuario directamente a una aplicación como administrador](#assign-a-user-directly-as-an-administrator)
 
--   [Asignar un grupo directamente tooan aplicación como administrador](#assign-a-group-directly-to-an-application-as-an-administrator)
+-   [Asignación de un grupo directamente a una aplicación como administrador](#assign-a-group-directly-to-an-application-as-an-administrator)
 
--   [Habilitar aplicación self-service acceso tooallow usuarios toofind sus propias aplicaciones](#enable-self-service-application-access-to-allow-users-to-find-their-own-applications)
+-   [Habilitar el acceso de autoservicio a las aplicaciones para permitir a los usuarios buscar sus propias aplicaciones](#enable-self-service-application-access-to-allow-users-to-find-their-own-applications)
 
 ## <a name="assign-a-user-directly-as-an-administrator"></a>Asignación de un usuario directamente como administrador
 
-tooassign uno o más usuarios tooan application directamente, siga estos pasos hello:
+Para asignar uno o varios usuarios a una aplicación directamente, siga los pasos siguientes:
 
-1.  Abra hello [ **Portal de Azure** ](https://portal.azure.com/) e inicie sesión como un **administrador Global.**
+1.  Abra [**Azure Portal**](https://portal.azure.com/) e inicie sesión como **administrador global**.
 
-2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
+2.  Abra la **extensión de Azure Active Directory** haciendo clic en **Más servicios** en la parte inferior del menú de navegación izquierdo principal.
 
-3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
+3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
 
-4.  Haga clic en **aplicaciones empresariales** desde el menú de navegación izquierdo de hello Azure Active Directory.
+4.  Haga clic en **Aplicaciones empresariales** en el menú de navegación izquierdo de Azure Active Directory.
 
-5.  Haga clic en **todas las aplicaciones** tooview una lista de todas las aplicaciones.
+5.  Haga clic en **Todas las aplicaciones** para ver una lista de todas las aplicaciones.
 
-  * Si no ve la aplicación hello que le interese mostrar aquí, usar hello **filtro** control parte superior de Hola de hello **lista de todas las aplicaciones** conjunto hello y **mostrar** opción demasiado **Todas las aplicaciones.**
+  * Si no ve la aplicación que desea que aparezca aquí, use el control **Filtro** de la parte superior de la lista **Todas las aplicaciones** y establezca la opción **Mostrar** en **Todas las aplicaciones.**
 
-6.  Seleccionar aplicación hello desea tooassign una lista de hello toofrom de usuario.
+6.  Seleccione la aplicación que desea asignar a un usuario de la lista.
 
-7.  Una vez que se carga la aplicación hello, haga clic en **usuarios y grupos** del menú de navegación izquierdo de la aplicación hello.
+7.  Cuando se cargue la aplicación, haga clic en **Usuarios y grupos** desde el menú de navegación izquierdo de la aplicación.
 
-8.  Haga clic en hello **agregar** botón encima de hello **usuarios y grupos** Hola de lista tooopen **Agregar asignación** hoja.
+8.  Haga clic en el botón **Agregar** en la parte superior de la lista **Usuarios y grupos** para abrir la hoja **Agregar asignación**.
 
-9.  Haga clic en hello **usuarios y grupos** selector de hello **Agregar asignación** hoja.
+9.  Haga clic en el selector **Usuarios y grupos** de la hoja **Agregar asignación**.
 
-10. Tipo de hello **nombre completo** o **dirección de correo electrónico** del usuario de hello está interesado en la asignación en hello **buscar por nombre o dirección de correo** cuadro de búsqueda.
+10. Escriba el **nombre completo** o la **dirección de correo electrónico** del usuario al que quiere asignar en el cuadro de búsqueda **Buscar por nombre o dirección de correo**.
 
-11. Mantenga el mouse sobre hello **usuario** en hello lista tooreveal una **casilla**. Haga clic en tooadd de foto o el logotipo de perfil de hello casilla toohello del siguiente usuario su usuario toohello **seleccionados** lista.
+11. Mantenga el puntero sobre el **usuario** en la lista para que aparezca una **casilla**. Haga clic en la casilla situada junto a la foto o el logotipo del perfil del usuario para agregar ese usuario a la lista de **seleccionados**.
 
-12. **Opcional:** si lo desea demasiado**agregar más de un usuario**, tipo de otro **nombre completo** o **dirección de correo electrónico** en hello **buscar por nombre o dirección de correo electrónico** cuadro de búsqueda y haga clic en hello casilla tooadd este usuario toohello **seleccionados** lista.
+12. **Opcional:** si desea **agregar más de un usuario**, escriba otro **nombre completo** o **dirección de correo electrónico** en el cuadro de búsqueda **Buscar por nombre o dirección de correo** y haga clic en la casilla para agregar ese usuario a la lista de **seleccionados**.
 
-13. Cuando haya terminado de seleccionar usuarios, haga clic en hello **seleccione** botón tooadd les toohello lista de usuarios y grupos toobe asignado toohello aplicación.
+13. Cuando haya terminado de seleccionar usuarios, haga clic en el botón **Seleccionar** para agregarlos a la lista de usuarios y grupos que se asignarán a la aplicación.
 
-14. **Opcional:** haga clic en hello **Seleccionar rol** selector Hola **Agregar asignación** hoja tooselect un rol tooassign toohello usuarios que ha seleccionado.
+14. **Opcional:** haga clic en el selector **Seleccionar rol** de la hoja **Agregar asignación** para seleccionar un rol que se asignará a los usuarios que ha seleccionado.
 
-15. Haga clic en hello **asignar** botón tooassign Hola aplicación toohello los usuarios seleccionados.
+15. Haga clic en el botón **Asignar** para asignar la aplicación a los usuarios seleccionados.
 
-Tras un breve período de tiempo, los usuarios de Hola que seleccionó ser capaz de toolaunch dichas aplicaciones usan Hola métodos descritos en la sección de descripción de solución de Hola.
+Tras un breve período de tiempo, los usuarios seleccionados podrán iniciar estas aplicaciones mediante los métodos descritos en la sección de descripción de la solución.
 
-## <a name="assign-a-group-directly-tooan-application-as-an-administrator"></a>Asignar un grupo directamente tooan aplicación como administrador
+## <a name="assign-a-group-directly-to-an-application-as-an-administrator"></a>Asignación de un grupo directamente a una aplicación como administrador
 
-tooassign uno o más grupos de aplicación de tooan directamente, siga los pasos de Hola a continuación:
+Para asignar uno o varios grupos a una aplicación directamente, siga los pasos siguientes:
 
-1.  Abra hello [ **Portal de Azure** ](https://portal.azure.com/) e inicie sesión como un **administrador Global.**
+1.  Abra [**Azure Portal**](https://portal.azure.com/) e inicie sesión como **administrador global**.
 
-2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
+2.  Abra la **extensión de Azure Active Directory** haciendo clic en **Más servicios** en la parte inferior del menú de navegación izquierdo principal.
 
-3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
+3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
 
-4.  Haga clic en **aplicaciones empresariales** desde el menú de navegación izquierdo de hello Azure Active Directory.
+4.  Haga clic en **Aplicaciones empresariales** en el menú de navegación izquierdo de Azure Active Directory.
 
-5.  Haga clic en **todas las aplicaciones** tooview una lista de todas las aplicaciones.
+5.  Haga clic en **Todas las aplicaciones** para ver una lista de todas las aplicaciones.
 
-  * Si no ve la aplicación hello que le interese mostrar aquí, usar hello **filtro** control parte superior de Hola de hello **lista de todas las aplicaciones** conjunto hello y **mostrar** opción demasiado **Todas las aplicaciones.**
+  * Si no ve la aplicación que desea que aparezca aquí, use el control **Filtro** de la parte superior de la lista **Todas las aplicaciones** y establezca la opción **Mostrar** en **Todas las aplicaciones.**
 
-6.  Seleccionar aplicación hello desea tooassign una lista de hello toofrom de usuario.
+6.  Seleccione la aplicación que desea asignar a un usuario de la lista.
 
-7.  Una vez que se carga la aplicación hello, haga clic en **usuarios y grupos** del menú de navegación izquierdo de la aplicación hello.
+7.  Cuando se cargue la aplicación, haga clic en **Usuarios y grupos** desde el menú de navegación izquierdo de la aplicación.
 
-8.  Haga clic en hello **agregar** botón encima de hello **usuarios y grupos** Hola de lista tooopen **Agregar asignación** hoja.
+8.  Haga clic en el botón **Agregar** en la parte superior de la lista **Usuarios y grupos** para abrir la hoja **Agregar asignación**.
 
-9.  Haga clic en hello **usuarios y grupos** selector de hello **Agregar asignación** hoja.
+9.  Haga clic en el selector **Usuarios y grupos** de la hoja **Agregar asignación**.
 
-10. Tipo de hello **nombre de grupo completa** del grupo de hello está interesado en la asignación en hello **buscar por nombre o dirección de correo** cuadro de búsqueda.
+10. Escriba el **nombre completo** del grupo al que quiere asignar en el cuadro de búsqueda **Buscar por nombre o dirección de correo**.
 
-11. Mantenga el mouse sobre hello **grupo** en hello lista tooreveal una **casilla**. Haga clic en tooadd de foto o el logotipo de perfil de hello casilla siguiente toohello del grupo su usuario toohello **seleccionados** lista.
+11. Mantenga el puntero sobre el **grupo** en la lista para que aparezca una **casilla**. Haga clic en la casilla situada junto a la foto o el logotipo del perfil del grupo para agregar ese usuario a la lista de **seleccionados**.
 
-12. **Opcional:** si lo desea demasiado**agregar más de un grupo**, tipo de otro **nombre de grupo completa** en hello **buscar por nombre o dirección de correo** cuadro de búsqueda, y haga clic en hello casilla tooadd este grupo toohello **seleccionados** lista.
+12. **Opcional**: si desea **agregar más de un grupo**, escriba otro **nombre de grupo completo** o en el cuadro de búsqueda **Buscar por nombre o dirección de correo** y haga clic en la casilla para agregar ese grupo a la lista de **seleccionados**.
 
-13. Cuando haya terminado la selección de grupos, haga clic en hello **seleccione** botón tooadd les toohello lista de usuarios y grupos toobe asignado toohello aplicación.
+13. Cuando haya terminado de seleccionar grupos, haga clic en el botón **Seleccionar** para agregarlos a la lista de usuarios y grupos que se asignarán a la aplicación.
 
-14. **Opcional:** haga clic en hello **Seleccionar rol** selector Hola **Agregar asignación** grupos hoja tooselect una toohello tooassign de rol que ha seleccionado.
+14. **Opcional:** haga clic en el selector **Seleccionar rol** de la hoja **Agregar asignación** para seleccionar un rol que se asignará a los grupos que ha seleccionado.
 
-15. Haga clic en hello **asignar** botón tooassign Hola aplicación toohello grupos seleccionados.
+15. Haga clic en el botón **Asignar** para asignar la aplicación a los grupos seleccionados.
 
-Tras un breve período de tiempo, los usuarios de hello dentro de grupos de Hola que seleccionó ser capaz de toolaunch dichas aplicaciones usan Hola métodos descritos en la sección de descripción de solución de Hola. Si se trata de grupos dinámicos, puede que haya algo de retardo de procesamiento adicional en estas asignaciones hasta que aparezcan para los usuarios dentro de estos grupos asignados.
+Tras un breve período de tiempo, los usuarios de los grupos seleccionados podrán iniciar estas aplicaciones mediante los métodos descritos en la sección de descripción de la solución. Si se trata de grupos dinámicos, puede que haya algo de retardo de procesamiento adicional en estas asignaciones hasta que aparezcan para los usuarios dentro de estos grupos asignados.
 
-## <a name="enable-self-service-application-access-tooallow-users-toofind-their-own-applications"></a>Habilitar aplicación self-service acceso tooallow usuarios toofind sus propias aplicaciones
+## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>Habilitar el acceso de autoservicio a las aplicaciones para permitir a los usuarios buscar sus propias aplicaciones
 
-Acceso a la aplicación de autoservicio es una tooself de los usuarios de manera estupenda tooallow-detectar las aplicaciones, si lo desea permitir el acceso de tooapprove de grupo de negocios de hello toothose aplicaciones. Puede permitir credenciales de Hola de hello business grupo toomanage asignan a usuarios toothose para derecho de inicio de sesión único en aplicaciones de contraseña de sus paneles de acceso.
+El acceso de autoservicio a las aplicaciones es una excelente manera de permitir a los usuarios detectar automáticamente aplicaciones y, si lo desea, permitir que el grupo de negocios apruebe el acceso a esas aplicaciones. Puede permitir que el grupo de negocios administre las credenciales asignadas a esos usuarios para que puedan realizar un inicio de sesión único con contraseña en las aplicaciones directamente desde sus paneles de acceso.
 
-aplicación de tooan de acceso de tooenable aplicación self-service, siga los pasos de Hola a continuación:
+Para habilitar el acceso de autoservicio a las aplicaciones, siga estos pasos:
 
-1.  Abra hello [ **Portal de Azure** ](https://portal.azure.com/) e inicie sesión como un **administrador Global.**
+1.  Abra [**Azure Portal**](https://portal.azure.com/) e inicie sesión como **administrador global**.
 
-2.  Hola abierto **extensión de Azure Active Directory** haciendo clic en **más servicios** final Hola del menú de navegación izquierdo principal Hola.
+2.  Abra la **extensión de Azure Active Directory** haciendo clic en **Más servicios** en la parte inferior del menú de navegación izquierdo principal.
 
-3.  Escriba en **"Azure Active Directory**" en el cuadro de búsqueda del filtro de Hola y Hola seleccione **Azure Active Directory** elemento.
+3.  Escriba **"Azure Active Directory**" en el cuadro de búsqueda de filtrado y seleccione el elemento **Azure Active Directory**.
 
-4.  Haga clic en **aplicaciones empresariales** desde el menú de navegación izquierdo de hello Azure Active Directory.
+4.  Haga clic en **Aplicaciones empresariales** en el menú de navegación izquierdo de Azure Active Directory.
 
-5.  Haga clic en **todas las aplicaciones** tooview una lista de todas las aplicaciones.
+5.  Haga clic en **Todas las aplicaciones** para ver una lista de todas las aplicaciones.
 
-   * Si no ve la aplicación hello que le interese mostrar aquí, usar hello **filtro** control parte superior de Hola de hello **lista de todas las aplicaciones** conjunto hello y **mostrar** opción demasiado **Todas las aplicaciones.**
+   * Si no ve que la aplicación que desea aparezca aquí, use el control **Filtro** de la parte superior de la lista **Todas las aplicaciones** y establezca la opción **Mostrar** en **Todas las aplicaciones.**
 
-6.  Seleccionar aplicación hello desea tooenable acceso de autoservicio toofrom Hola lista.
+6.  Seleccione la aplicación en la que desea habilitar el acceso de autoservicio de la lista.
 
-7.  Una vez que se carga la aplicación hello, haga clic en **self-service** del menú de navegación izquierdo de la aplicación hello.
+7.  Cuando se cargue la aplicación, haga clic en **Autoservicio** en el menú de navegación izquierdo de la aplicación.
 
-8.  tooenable acceso a la aplicación de autoservicio para esta aplicación, activar hello **permitir que los usuarios de aplicación de toorequest access toothis?** alternar demasiado**sí.**
+8.  Para habilitar el acceso de autoservicio a las aplicaciones para esta aplicación, establezca la opción **¿Quiere permitir que los usuarios soliciten acceso a esta aplicación?** en **Sí.**
 
-9.  A continuación, tooselect Hola grupo toowhich los usuarios que solicitan acceso toothis aplicación debe agregarse, haga clic en siguiente toohello etiqueta de selector de hello **toowhich grupo debería asignar se agregan usuarios?** y seleccione un grupo.
+9.  A continuación, seleccione el grupo al que se deben agregar los usuarios que solicitan acceso a esta aplicación, haga clic en el selector situado junto a la etiqueta **¿A qué grupo se deberían agregar los usuarios asignados?** y seleccione un grupo.
 
-10. **Opcional:** si desea que toorequire la aprobación de un negocio antes de que los usuarios tienen permiso de acceso, establezca hello **requieren aprobación antes de conceder acceso toothis aplicación?** alternar demasiado**Sí**.
+10. **Opcional:** si desea requerir la aprobación de la empresa antes de permitir el acceso a los usuarios, establezca la opción **¿Quiere requerir una aprobación para conceder acceso a esta aplicación?** en **Sí**.
 
-11. **Opcional: para aplicaciones que utilizan la contraseña de inicio de sesión único en solo,** si desea que tooallow esas contraseñas hello toospecify de aprobadores empresariales que se envían toothis aplicación para los usuarios aprobados, establezca hello **permitir aprobadores tooset ¿contraseñas de usuario para esta aplicación?**  alternar demasiado**Sí**.
+11. **Opcional: para las aplicaciones que solo utilizan el inicio de sesión único con contraseña,** si desea permitir que los aprobadores de la empresa especifiquen las contraseñas que se envían a esta aplicación para los usuarios aprobados, establezca la opción **¿Quiere permitir que los aprobadores establezcan las contraseñas de los usuarios de esta aplicación?** en **Sí**.
 
-12. **Opcional:** toospecify Hola business aprobadores se permiten la aplicación de toothis de tooapprove access, haga clic en siguiente toohello etiqueta de selector de hello **que se permite la aplicación de tooapprove access toothis?** tooselect seguridad too10 aprobadores de negocios individuales.
+12. **Opcional:** para especificar los aprobadores de la empresa que tienen permiso para aprobar el acceso a esta aplicación, haga clic en el selector situado junto a la etiqueta **¿Quién tiene permiso para aprobar el acceso a esta aplicación?** para seleccionar hasta 10 aprobadores individuales de la empresa.
 
   >[!NOTE]
   >No se admiten grupos.
   >
   >
 
-13. **Opcional:** **para las aplicaciones que exponen funciones**, si desea que el rol de tooa de tooassign usuarios aprobados de autoservicio, haga clic en hello selector siguiente toohello **toowhich rol deben asignarse a los usuarios en este ¿aplicación?**  tooselect Hola rol toowhich se deben asignar estos usuarios.
+13. **Opcional:****para las aplicaciones que exponen roles**, si desea asignar usuarios aprobados de autoservicio a un rol, haga clic en el selector situado junto a la etiqueta **¿A qué rol deben asignarse los usuarios de esta aplicación?** para seleccionar el rol al que se deben asignar estos usuarios.
 
-14. Haga clic en hello **guardar** situado en la parte superior de Hola de hello hoja toofinish.
+14. Haga clic en el botón **Guardar** de la parte superior de la hoja para terminar.
 
-Cuando se haya completado la configuración de la aplicación de autoservicio, los usuarios pueden navegar tootheir [Panel de acceso de la aplicación](https://myapps.microsoft.com/) y haga clic en hello **+ agregar** botón toofind Hola aplicaciones toowhich ha habilitado Acceso de autoservicio. Los aprobadores de la empresa pueden también ver una notificación en sus [paneles de acceso a las aplicaciones](https://myapps.microsoft.com/). Puede habilitar un correo electrónico que les informa de cuándo un usuario ha solicitado la aplicación de tooan de acceso que requiere su aprobación. 
+Cuando se haya completado la configuración de la aplicación de autoservicio, los usuarios pueden navegar a sus [paneles de acceso a las aplicaciones](https://myapps.microsoft.com/) y hacer clic en el botón **+ Agregar** para buscar las aplicaciones para las que se ha habilitado el acceso de autoservicio. Los aprobadores de la empresa pueden también ver una notificación en sus [paneles de acceso a las aplicaciones](https://myapps.microsoft.com/). Puede habilitar un correo electrónico que les informa cuando un usuario ha solicitado el acceso a una aplicación que requiere su aprobación. 
 
-Estas aprobaciones admiten flujos de trabajo de aprobación única, lo que significa que si especifica varios aprobadores, cualquier aprobador único posible aplicación de aprobador access toohello.
+Estas aprobaciones admiten flujos de trabajo de aprobación única, lo que significa que si especifica varios aprobadores, cualquier aprobador individual puede aprobar el acceso a la aplicación.
 
 ## <a name="next-steps"></a>Pasos siguientes
-[Proporcionan aplicaciones de tooyour de inicio de sesión único con el Proxy de aplicación](active-directory-application-proxy-sso-using-kcd.md)
+[Proporcionar un inicio de sesión único a las aplicaciones con el proxy de aplicación](active-directory-application-proxy-sso-using-kcd.md)

@@ -1,5 +1,5 @@
 ---
-title: datos de ejemplo de aaaLoad en almacenamiento de datos SQL | Documentos de Microsoft
+title: Carga de datos de ejemplo en SQL Data Warehouse | Microsoft Docs
 description: Carga de datos de ejemplo en Almacenamiento de datos SQL
 services: sql-data-warehouse
 documentationcenter: NA
@@ -15,19 +15,19 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
-ms.openlocfilehash: 3459c42f3aae51c27fd35db7874faf99e1e577e5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 1e0df958a2f18fe1e988168918e5cfd293f84e64
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="load-sample-data-into-sql-data-warehouse"></a>Carga de datos de ejemplo en Almacenamiento de datos SQL
-Siga estas tooload pasos sencillos y base de datos de ejemplo Adventure Works de Hola de consultas. Estas secuencias de comandos en primer lugar utilizan sqlcmd toorun SQL que se crea tablas y vistas. Una vez que se han creado las tablas, las secuencias de comandos de hello utilizará los datos de tooload de bcp.  Si aún no tiene sqlcmd y bcp instalado, siga estos vínculos demasiado[instalar bcp] [ install bcp] y demasiado[instalar sqlcmd][install sqlcmd].
+Siga estos pasos sencillos para cargar la base de datos de ejemplo de Adventure Works en Almacenamiento de datos SQL. Estos scripts utilizan primero sqlcmd para ejecutar instrucciones SQL que crearán tablas y vistas. Cuando se hayan creado las tablas, los scripts usarán bcp para cargar los datos.  Si todavía no tiene instaladas estas herramientas, siga estos vínculos para [instalar bcp][install bcp] e [instalar sqlcmd][install sqlcmd].
 
 ## <a name="load-sample-data"></a>Carga de datos de ejemplo
-1. Descargar hello [Scripts de ejemplo de Adventure Works para almacenamiento de datos SQL] [ Adventure Works Sample Scripts for SQL Data Warehouse] archivo zip.
-2. Extraiga los archivos de hello del directorio de tooa zip descargado en el equipo local.
-3. Edite Hola extraído archivo aw_create.bat y establezca Hola después de las variables que se encuentra al principio de hello del archivo de Hola.  No ser seguro tooleave ningún espacio en blanco entre ="hello" y el parámetro hello.  A continuación, puede ver ejemplos del aspecto que deberían tener las modificaciones.
+1. Descargue el archivo ZIP de [scripts de ejemplo de Adventure Works para SQL Data Warehouse][Adventure Works Sample Scripts for SQL Data Warehouse].
+2. Extraiga los archivos del zip que descargó en un directorio de la máquina local.
+3. Edite el archivo extraído aw_create.bat y defina las siguientes variables que se encuentran en la parte superior del archivo.  No deje espacios en blanco entre "=" y el parámetro.  A continuación, puede ver ejemplos del aspecto que deberían tener las modificaciones.
    
     ```
     server=mylogicalserver.database.windows.net
@@ -35,25 +35,25 @@ Siga estas tooload pasos sencillos y base de datos de ejemplo Adventure Works de
     password=Mydwpassw0rd
     database=mydwdatabase
     ```
-4. Desde un símbolo del sistema de Windows, ejecute aw_create.bat Hola editado.  Asegúrese de que se encuentra en el directorio de Hola donde guardó la versión editada de aw_create.bat.
+4. En un símbolo del sistema de Windows, ejecute el archivo aw_create.bat editado.  Asegúrese de estar en el directorio en el que guardó la versión editada de aw_create.bat.
    Este script le permitirá hacer lo siguiente:
    
    * Anular cualquier tabla o vista de Adventure Works que ya exista en la base de datos.
-   * Crear vistas y tablas de Adventure Works Hola
+   * Crear las vistas y tablas de Adventure Works.
    * Cargar cada tabla de Adventure Works con bcp.
-   * Validar Hola recuentos de filas para cada tabla de Adventure Works
+   * Validar los recuentos de fila de cada tabla de Adventure Works.
    * Recopilar estadísticas en cada columna de cada tabla de Adventure Works.
 
 ## <a name="query-sample-data"></a>Datos de ejemplo de consultas
-Una vez que carga algunos datos de ejemplo en Almacenamiento de datos SQL, puede ejecutar rápidamente algunas consultas.  toorun una consulta, conectar la base de datos de Adventure Works de tooyour recién creado en el almacenamiento de datos de SQL de Azure con Visual Studio como SSDT, como se describe en hello [consulta con Visual Studio] [ query with Visual Studio] documento.
+Una vez que carga algunos datos de ejemplo en Almacenamiento de datos SQL, puede ejecutar rápidamente algunas consultas.  Para ejecutar una consulta, conéctese a la base de datos de Adventure Works que acaba de crear en SQL Data Warehouse con Visual Studio y SSDT, tal como se describe en el documento de [realización de consultas con Visual Studio][query with Visual Studio].
 
-Ejemplo de simple seleccione instrucción tooget toda la información de empleados de Hola Hola:
+Un ejemplo de una instrucción select simple para obtener toda la información de los empleados:
 
 ```sql
 SELECT * FROM DimEmployee;
 ```
 
-Ejemplo de una consulta más compleja con construcciones como toolook GROUP BY en la cantidad total de Hola para todas las ventas en cada día:
+Un ejemplo de una consulta más compleja con construcciones como GROUP BY para ver la cantidad total de todas las ventas de cada día:
 
 ```sql
 SELECT OrderDateKey, SUM(SalesAmount) AS TotalSales
@@ -62,7 +62,7 @@ GROUP BY OrderDateKey
 ORDER BY OrderDateKey;
 ```
 
-Ejemplo de una instrucción SELECT con una toofilter de cláusula WHERE las órdenes de antes de una fecha determinada:
+Ejemplos de una instrucción SELECT con una cláusula WHERE para filtrar pedidos desde antes de una fecha determinada:
 
 ```
 SELECT OrderDateKey, SUM(SalesAmount) AS TotalSales
@@ -75,7 +75,7 @@ ORDER BY OrderDateKey;
 Almacenamiento de datos SQL admite casi todas las construcciones T-SQL compatibles con SQL Server.  Todas las diferencias existentes se registran en nuestra documentación sobre la [migración del código][migrate code].
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora que ha tenido una oportunidad tootry algunas consultas con datos de ejemplo, consulte cómo demasiado[desarrollar][develop], [cargar][load], o [ migrar] [ migrate] tooSQL almacenamiento de datos.
+Ahora que tuvo la oportunidad de probar algunas consultas con datos de ejemplo, revise cómo [desarrollar][develop], [cargar][load] o [migrar][migrate] a SQL Data Warehouse.
 
 <!--Image references-->
 

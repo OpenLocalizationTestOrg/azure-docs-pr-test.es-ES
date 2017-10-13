@@ -1,6 +1,6 @@
 ---
-title: "operaciones asincrónicas aaaAzure | Documentos de Microsoft"
-description: "Describe cómo tootrack operaciones asincrónicas en Azure."
+title: "Operaciones asincrónicas de Azure | Microsoft Docs"
+description: "Describe cómo realizar un seguimiento de las operaciones asincrónicas en Azure."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/11/2017
 ms.author: tomfitz
-ms.openlocfilehash: b81254196013adf87998eff11a50993efa52d40d
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 9fe3d98cd345aae45722295b6c1b7fc3e9036e95
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="track-asynchronous-azure-operations"></a>Seguimiento de las operaciones asincrónicas de Azure
-Algunas operaciones de REST de Azure se ejecutan asincrónicamente porque no se puede completar la operación de hello rápidamente. Este tema describe cómo se devuelve el estado de Hola de tootrack de operaciones asincrónicas a través de los valores de respuesta de Hola.  
+Algunas operaciones de REST de Azure se ejecutan asincrónicamente porque la operación no se puede completar rápidamente. En este tema se describe cómo realizar un seguimiento del estado de las operaciones asincrónicas a través de los valores devueltos en la respuesta.  
 
 ## <a name="status-codes-for-asynchronous-operations"></a>Códigos de estado para las operaciones asincrónicas
 Una operación asincrónica devuelve inicialmente un código de estado HTTP de alguno de estos tipos:
@@ -29,23 +29,23 @@ Una operación asincrónica devuelve inicialmente un código de estado HTTP de a
 * 201 (Created)
 * 202 (Accepted) 
 
-Cuando se complete correctamente la operación de hello, devuelve:
+Cuando la operación se completa correctamente, devuelve:
 
 * 200 (OK)
 * 204 (No Content) 
 
-Consulte toohello [documentación de la API de REST](/rest/api/) toosee las respuestas de hello para la operación de Hola se esté ejecutando. 
+Consulte la [documentación de la API de REST](/rest/api/) para ver respuestas para la operación que está ejecutando. 
 
 ## <a name="monitor-status-of-operation"></a>Supervisión del estado de la operación
-Hola asincrónica REST operaciones devuelto valores de encabezado, que se utiliza el estado de hello toodetermine de Hola operación. Potencialmente existen tooexamine de encabezado de tres valores:
+Las operaciones asincrónicas de REST devuelven valores de encabezado, que se utilizan para determinar el estado de la operación. Hay potencialmente tres valores de encabezado para examinar:
 
-* `Azure-AsyncOperation`-Dirección URL para comprobar el estado actual de la operación de Hola Hola. Si la operación devuelve este valor, utilice siempre el estado de Hola de TI (en lugar de ubicación) tootrack de operación de Hola.
+* `Azure-AsyncOperation`: dirección URL para comprobar el estado actual de la operación. Si la operación devuelve este valor, utilícelo siempre (en lugar de Location) para realizar un seguimiento del estado de la operación.
 * `Location`: dirección URL para determinar cuándo se ha completado una operación. Use este valor sólo cuando no se devuelva Azure-AsyncOperation.
-* `Retry-After`-Hola número de segundos toowait antes de comprobar el estado de saludo de la operación asincrónica de Hola.
+* `Retry-After`: el número de segundos que deben transcurrir antes de comprobar el estado de la operación asincrónica.
 
-Sin embargo, no todas las operaciones asincrónicas devuelven todos estos valores. Por ejemplo, puede necesitar valor del encabezado tooevaluate Hola AsyncOperation de Azure para una operación y el valor del encabezado de ubicación de Hola para otra operación. 
+Sin embargo, no todas las operaciones asincrónicas devuelven todos estos valores. Por ejemplo, debe evaluar el valor del encabezado Azure-AsyncOperation para una operación y el valor del encabezado Location para otra operación. 
 
-Recuperar valores de encabezado de hello como recuperaría cualquier valor de encabezado de una solicitud. Por ejemplo, en C#, recuperar el valor de encabezado de Hola desde una `HttpWebResponse` objeto denominado `response` con hello siguiente código:
+Puede recuperar los valores de encabezado como recuperaría cualquier valor de encabezado de una solicitud. Por ejemplo, en C#, recupere el valor del encabezado de un objeto `HttpWebResponse` denominado `response` con el código siguiente:
 
 ```cs
 response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
@@ -53,9 +53,9 @@ response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
 
 ## <a name="azure-asyncoperation-request-and-response"></a>Solicitud y respuesta de Azure-AsyncOperation
 
-estado de hello tooget de operación asincrónica de hello, enviar una dirección URL toohello GET en el valor del encabezado de AsyncOperation de Azure.
+Para obtener el estado de la operación asincrónica, envíe una solicitud GET a la dirección URL en el valor del encabezado Azure-AsyncOperation.
 
-Hola cuerpo de respuesta de Hola de esta operación contiene información acerca de la operación de Hola. Hello en el ejemplo siguiente se muestra los valores posibles de hello procedentes de la operación de hello:
+El cuerpo de la respuesta de esta operación contiene información sobre la operación. El ejemplo siguiente muestra los posibles valores devueltos por la operación:
 
 ```json
 {
@@ -75,7 +75,7 @@ Hola cuerpo de respuesta de Hola de esta operación contiene información acerca
 }
 ```
 
-Solo se devuelve `status` para todas las respuestas. objeto de error de Hola se devuelve al estado de hello es error o cancelado. Todos los demás valores son opcionales; por lo tanto, respuesta de hello que recibirá puede ser diferente de ejemplo de Hola.
+Solo se devuelve `status` para todas las respuestas. El objeto de error se devuelve cuando el estado es Failed o Canceled. Todos los demás valores son opcionales; por lo tanto, la respuesta que reciba puede ser diferente del ejemplo.
 
 ## <a name="provisioningstate-values"></a>Valores ProvisioningState
 
@@ -85,32 +85,32 @@ Las operaciones que crean, actualizan o eliminan (PUT, PATCH, DELETE) un recurso
 * Con error
 * Canceled
 
-Todos los otros valores indican la operación de hello todavía se está ejecutando. proveedor de recursos de Hello puede devolver un valor personalizado que indica su estado. Por ejemplo, puede recibir **aceptado** cuando solicitud hello es recibido y en ejecución.
+Todos los demás valores indican que la operación todavía se está ejecutando. El proveedor de recursos puede devolver un valor personalizado que indica su estado. Por ejemplo, puede recibir **Accepted** cuando la solicitud se ha recibido y está en ejecución.
 
 ## <a name="example-requests-and-responses"></a>Solicitudes y respuestas de ejemplo
 
 ### <a name="start-virtual-machine-202-with-azure-asyncoperation"></a>Inicio de máquina virtual (202 con Azure-AsyncOperation)
-Este ejemplo muestra cómo toodetermine Hola estado de **iniciar** operación para las máquinas virtuales. solicitud de saludo inicial está en hello siguiendo el formato:
+En este ejemplo se muestra cómo determinar el estado de la operación **start** para máquinas virtuales. La solicitud inicial está en el formato siguiente:
 
 ```HTTP
 POST 
 https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Compute/virtualMachines/{vm-name}/start?api-version=2016-03-30
 ```
 
-Devuelve el código de estado 202. Entre los valores de encabezado de hello, verá:
+Devuelve el código de estado 202. Entre los valores de encabezado, verá:
 
 ```HTTP
 Azure-AsyncOperation : https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Compute/locations/{region}/operations/{operation-id}?api-version=2016-03-30
 ```
 
-estado de hello toocheck de operación asincrónica de hello, enviar otra solicitud toothat URL.
+Para comprobar el estado de la operación asincrónica, envíe otra solicitud a esa dirección URL.
 
 ```HTTP
 GET 
 https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Compute/locations/{region}/operations/{operation-id}?api-version=2016-03-30
 ```
 
-cuerpo de respuesta de Hello contiene estado Hola de operación de hello:
+El cuerpo de respuesta contiene el estado de la operación:
 
 ```json
 {
@@ -122,39 +122,39 @@ cuerpo de respuesta de Hello contiene estado Hola de operación de hello:
 
 ### <a name="deploy-resources-201-with-azure-asyncoperation"></a>Implementación de recursos (201 con Azure-AsyncOperation)
 
-Este ejemplo muestra cómo toodetermine Hola estado de **implementaciones** operación para la implementación de tooAzure de recursos. solicitud de saludo inicial está en hello siguiendo el formato:
+En este ejemplo se muestra cómo determinar el estado de la operación **deployments** para implementar recursos en Azure. La solicitud inicial está en el formato siguiente:
 
 ```HTTP
 PUT
 https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/microsoft.resources/deployments/{deployment-name}?api-version=2016-09-01
 ```
 
-Devuelve el código de estado 201. Hola cuerpo de respuesta de hello incluye:
+Devuelve el código de estado 201. El cuerpo de la respuesta incluye:
 
 ```json
 "provisioningState":"Accepted",
 ```
 
-Entre los valores de encabezado de hello, verá:
+Entre los valores de encabezado, verá:
 
 ```HTTP
 Azure-AsyncOperation: https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Resources/deployments/{deployment-name}/operationStatuses/{operation-id}?api-version=2016-09-01
 ```
 
-estado de hello toocheck de operación asincrónica de hello, enviar otra solicitud toothat URL.
+Para comprobar el estado de la operación asincrónica, envíe otra solicitud a esa dirección URL.
 
 ```HTTP
 GET 
 https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.Resources/deployments/{deployment-name}/operationStatuses/{operation-id}?api-version=2016-09-01
 ```
 
-cuerpo de respuesta de Hello contiene estado Hola de operación de hello:
+El cuerpo de respuesta contiene el estado de la operación:
 
 ```json
 {"status":"Running"}
 ```
 
-Cuando haya finalizado la implementación de hello, respuesta de hello contiene:
+Cuando haya finalizado la implementación, la respuesta contiene:
 
 ```json
 {"status":"Succeeded"}
@@ -162,37 +162,37 @@ Cuando haya finalizado la implementación de hello, respuesta de hello contiene:
 
 ### <a name="create-storage-account-202-with-location-and-retry-after"></a>Creación de cuenta de almacenamiento (202 con Location y Retry-After)
 
-Este ejemplo muestra cómo toodetermine Hola estado de hello **crear** operación las cuentas de almacenamiento. solicitud de saludo inicial está en hello siguiendo el formato:
+Este ejemplo muestra cómo determinar el estado de la operación **create** para cuentas de almacenamiento. La solicitud inicial está en el formato siguiente:
 
 ```HTTP
 PUT
 https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.Storage/storageAccounts/{storage-name}?api-version=2016-01-01
 ```
 
-Y cuerpo de la solicitud de hello contiene las propiedades de cuenta de almacenamiento de hello:
+Y el cuerpo de solicitud contiene las propiedades de la cuenta de almacenamiento:
 
 ```json
 { "location": "South Central US", "properties": {}, "sku": { "name": "Standard_LRS" }, "kind": "Storage" }
 ```
 
-Devuelve el código de estado 202. Entre los valores de encabezado de hello, vea Hola después de dos valores:
+Devuelve el código de estado 202. Entre los valores de encabezado, vea los dos valores siguientes:
 
 ```HTTP
 Location: https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Storage/operations/{operation-id}?monitor=true&api-version=2016-01-01
 Retry-After: 17
 ```
 
-Después de esperar el número de segundos especifiquen en Retry-After, compruebe el estado de Hola de operación asincrónica de hello mediante el envío de otra dirección URL de toothat de solicitud.
+Después de esperar el número de segundos especificados en Retry-After, compruebe el estado de la operación asincrónica mediante el envío de otra solicitud a esa dirección URL.
 
 ```HTTP
 GET 
 https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.Storage/operations/{operation-id}?monitor=true&api-version=2016-01-01
 ```
 
-Si la solicitud de saludo se está ejecutando, recibirá un código de estado 202. Si ha completado la solicitud de hello, el recibir un código de estado 200 y cuerpo de Hola de respuesta de hello contiene propiedades de Hola de cuenta de almacenamiento de Hola que se ha creado.
+Si la solicitud aún se está ejecutando, recibe un código de estado 202. Si la solicitud se ha completado, recibe un código de estado 200 y el cuerpo de la respuesta contiene las propiedades de la cuenta de almacenamiento que se ha creado.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
 * Para obtener documentación sobre cada operación de REST, consulte la [documentación de la API de REST](/rest/api/).
-* Para obtener información acerca de cómo administrar los recursos a través de hello API de REST del Administrador de recursos, consulte [hello mediante API de REST del Administrador de recursos](resource-manager-rest-api.md).
-* Para obtener información acerca de la implementación de plantillas a través de hello API de REST del Administrador de recursos, consulte [implementar los recursos con plantillas de administrador de recursos y API de REST del Administrador de recursos](resource-group-template-deploy-rest.md).
+* Para obtener información acerca de cómo administrar los recursos a través de la API de REST de Resource Manager, consulte [API de REST de Resource Manager](resource-manager-rest-api.md).
+* Para obtener información acerca de la implementación de plantillas a través de la API de REST de Resource Manager, consulte [Implementación de recursos con las plantillas de Resource Manager y la API de REST de Resource Manager](resource-group-template-deploy-rest.md).

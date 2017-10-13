@@ -1,4 +1,4 @@
-Hello tabla siguiente enumeran los límites de hello asociados con hello distintos niveles de servicio (S1, S2, S3, F1). Para obtener información sobre el costo de Hola de cada *unidad* en cada nivel, consulte [precios del centro de IoT](https://azure.microsoft.com/pricing/details/iot-hub/).
+En la tabla siguiente se enumeran los límites asociados a los diferentes niveles de servicio (S1, S2, S3, F1). Para obtener información sobre el costo de cada *unidad* en cada nivel, consulte los [Precios del Centro de IoT](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 | Recurso | S1 Estándar | S2 Estándar | S3 Estándar | F1 Gratis |
 | --- | --- | --- | --- | --- |
@@ -10,7 +10,7 @@ Hello tabla siguiente enumeran los límites de hello asociados con hello distint
 > 
 > 
 
-Hello tabla siguiente enumeran los límites de Hola que se aplican a los recursos de base de datos central de tooIoT:
+En la tabla siguiente se enumeran los límites que se aplican a los recursos de Centro de IoT:
 
 | Recurso | Límite |
 | --- | --- |
@@ -24,8 +24,8 @@ Hello tabla siguiente enumeran los límites de Hola que se aplican a los recurso
 | Tamaño máximo de mensaje de nube a dispositivo |64 KB |
 | TTL máximo para los mensajes de nube a dispositivo |2 días |
 | Número máximo de entregas para los mensajes de nube a dispositivo  <br/> messages |100 |
-| Número máximo de entregas de mensajes de comentarios  <br/> mensaje de respuesta tooa en la nube al dispositivo |100 |
-| TTL máximo para los mensajes de comentarios en  <br/> mensaje de respuesta tooa en la nube al dispositivo |2 días |
+| Número máximo de entregas de mensajes de comentarios  <br/> en respuesta a un mensaje de nube a dispositivo |100 |
+| TTL máximo para los mensajes de comentarios en  <br/> respuesta a un mensaje de nube a dispositivo |2 días |
 | Tamaño máximo del dispositivo gemelo <br/> (etiquetas, propiedades notificadas y propiedades deseadas) | 8 KB |
 | Tamaño máximo del valor de cadena del dispositivo gemelo | 512 bytes |
 | Profundidad máxima del objeto en el dispositivo gemelo | 5 |
@@ -41,9 +41,9 @@ Hello tabla siguiente enumeran los límites de Hola que se aplican a los recurso
 
 
 > [!NOTE]
-> Hola actualmente, número máximo de dispositivos que puede conectar tooa único centro de IoT es de 500.000. Si desea tooincrease este límite, póngase en contacto con [Microsoft Support](https://azure.microsoft.com/en-us/support/options/).
+> Actualmente, el número máximo de dispositivos que pueden conectarse a un solo centro de IoT es de 500 000. Si quiere aumentar este límite, póngase en contacto con el [soporte técnico de Microsoft](https://azure.microsoft.com/en-us/support/options/).
 
-Hola servicio del centro de IoT limita las solicitudes cuando se supera Hola siguiendo las cuotas:
+El servicio de Centro de IoT limita las solicitudes cuando se superan las cuotas siguientes:
 
 | Limitación | Valor por centro |
 | --- | --- |

@@ -1,6 +1,6 @@
 ---
-title: "aaaAzure ubicación del recurso de plantilla | Documentos de Microsoft"
-description: "Muestra cómo tooset una ubicación para un recurso en una plantilla de Azure Resource Manager"
+title: "Ubicación para recursos en plantillas de Azure | Microsoft Docs"
+description: "Muestra cómo establecer una ubicación para un recurso en una plantilla de Azure Resource Manager"
 services: azure-resource-manager
 documentationcenter: 
 author: tfitzmac
@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: tomfitz
-ms.openlocfilehash: f2ad6ca6ac5f34484a2e5e57dd8d67c77dacc41a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 73e50a593c41e841dcaf184abb895406ff5001e9
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="set-resource-location-in-azure-resource-manager-templates"></a>Establecimiento de la ubicación para recursos en plantillas de Azure Resource Manager
-Al implementar una plantilla, debe proporcionar una ubicación para cada recurso. Este tema muestra cómo escriban toodetermine Hola ubicaciones de suscripción tooyour disponibles para cada recurso.
+Al implementar una plantilla, debe proporcionar una ubicación para cada recurso. Este tema muestra cómo determinar las ubicaciones que están disponibles con su suscripción para cada tipo de recurso.
 
 ## <a name="determine-supported-locations"></a>Determinación de las ubicaciones admitidas
 
-Para obtener una lista completa de las ubicaciones admitidas para cada tipo de recurso, consulte [Productos disponibles por región](https://azure.microsoft.com/regions/services/). Sin embargo, la suscripción podría no tener acceso a ubicaciones de hello tooall en esa lista. toosee una lista personalizada de ubicaciones de suscripción tooyour disponibles, utilice Azure PowerShell o CLI de Azure. 
+Para obtener una lista completa de las ubicaciones admitidas para cada tipo de recurso, consulte [Productos disponibles por región](https://azure.microsoft.com/regions/services/). No obstante, es posible que la suscripción no tenga acceso a todas las ubicaciones de esa lista. Para ver una lista personalizada de las ubicaciones que están disponibles con su suscripción, utilice Azure PowerShell o la CLI de Azure. 
 
-Hello en el ejemplo siguiente se utiliza PowerShell tooget Hola ubicaciones para hello `Microsoft.Web\sites` tipo de recurso:
+En el ejemplo siguiente se usa PowerShell para obtener las ubicaciones para el tipo de recurso `Microsoft.Web\sites`:
 
 ```powershell
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
 ```
 
-Hello en el ejemplo siguiente se utiliza Azure CLI 2.0 tooget Hola ubicaciones para hello `Microsoft.Web\sites` tipo de recurso:
+En el ejemplo siguiente se usa la CLI de Azure 2.0 para obtener las ubicaciones para el tipo de recurso `Microsoft.Web\sites`:
 
 ```azurecli
 az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites'].locations"
@@ -41,9 +41,9 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 
 ## <a name="set-location-in-template"></a>Establecimiento de la ubicación en la plantilla
 
-Después de determinar las ubicaciones de hello admite para los recursos, debe tooset esa ubicación en la plantilla. Hola tooset de manera más fácil este valor es toocreate un recurso de grupo en una ubicación que es compatible con los tipos de recursos de Hola y establece cada ubicación demasiado`[resourceGroup().location]`. Puede volver a implementar grupos de tooresource de plantillas de hello en diferentes ubicaciones y no cambie los valores de parámetros o de plantilla de Hola. 
+Después de determinar las ubicaciones admitidas para los recursos, debe establecer esa ubicación en la plantilla. La manera más fácil de establecer este valor consiste en crear un grupo de recursos en una ubicación que admita los tipos de recursos y establecer cada ubicación en `[resourceGroup().location]`. Puede volver a implementar la plantilla en grupos de recursos de diferentes ubicaciones y no cambie ningún valor en la plantilla ni en los parámetros. 
 
-Hello en el ejemplo siguiente se muestra una cuenta de almacenamiento que está implementado toohello misma ubicación que el grupo de recursos de hello:
+En el ejemplo siguiente se muestra una cuenta de almacenamiento que está implementada en la misma ubicación que el grupo de recursos:
 
 ```json
 {
@@ -72,7 +72,7 @@ Hello en el ejemplo siguiente se muestra una cuenta de almacenamiento que está 
 }
 ```
 
-Si necesita toohardcode ubicación de hello en la plantilla, proporcione el nombre de Hola de una de las regiones de hello admitida. Hola de ejemplo siguiente se muestra una cuenta de almacenamiento que siempre esté implementado tooNorth Central US:
+Si tiene que codificar la ubicación en la plantilla, indique el nombre de una de las regiones admitidas. En el ejemplo siguiente se muestra una cuenta de almacenamiento que está siempre implementada en Centro-Norte de EE. UU:
 
 ```json
 {
@@ -99,5 +99,5 @@ Si necesita toohardcode ubicación de hello en la plantilla, proporcione el nomb
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-* Para obtener recomendaciones sobre cómo toocreate plantillas, consulte [las prácticas recomendadas para la creación de plantillas de Azure Resource Manager](resource-manager-template-best-practices.md).
+* Para más recomendaciones sobre la creación de plantillas, consulte [Procedimientos recomendados para crear plantillas de Azure Resource Manager](resource-manager-template-best-practices.md).
 

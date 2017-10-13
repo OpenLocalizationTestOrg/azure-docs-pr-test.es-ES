@@ -1,6 +1,6 @@
 ---
-title: "las consultas de usuario de aaaMonitor en el almacén de datos de SQL de Azure | Documentos de Microsoft"
-description: "Información general sobre consideraciones de hello, prácticas recomendadas y tareas para supervisar las consultas de usuario en el almacén de datos de SQL Azure"
+title: "Supervisión de las consultas de usuario en Azure SQL Data Warehouse | Microsoft Docs"
+description: "Información general de las consideraciones, prácticas recomendadas y tareas para supervisar las consultas de usuario en Almacenamiento de datos SQL de Azure."
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
@@ -15,22 +15,22 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 10/31/2016
 ms.author: joeyong;barbkess
-ms.openlocfilehash: 67639e81b04635452e1ed844fe2d7245aa96a4fe
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 65509a65c2b34553822cc02d7a7fa5a614adc57f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="monitor-user-queries-in-azure-sql-data-warehouse"></a>Supervisión de las consultas de usuario en Almacenamiento de datos SQL de Azure
-Información general sobre consideraciones de hello, prácticas recomendadas y tareas para supervisar las consultas de usuario en el almacén de datos de SQL.
+Información general de las consideraciones, prácticas recomendadas y tareas para supervisar las consultas de usuario en Almacenamiento de datos SQL.
 
 | Categoría | Tarea o consideración | Description |
 |:--- |:--- |:--- |
 | Rendimiento lento |Buscar una consulta de usuario de larga ejecución |[Buscar consultas de ejecución prolongada][Find long-running queries] |
-| Simultaneidad |Asignar recursos simultáneos toouser consultas |[Administración de simultaneidad y cargas de trabajo][Concurrency and workload management] |
+| Simultaneidad |Asignar recursos simultáneos a consultas de usuario |[Administración de simultaneidad y cargas de trabajo][Concurrency and workload management] |
 
 ## <a name="next-steps"></a>Pasos siguientes
-Para obtener más sugerencias administración, diríjase toohello [Introducción a la administración][Management overview].
+Para obtener más sugerencias de administración, vaya a la [información general sobre la administración][Management overview].
 
 <!--Image references-->
 

@@ -1,6 +1,6 @@
 ---
 title: "Tutorial: Integración de Azure Active Directory con xMatters OnDemand | Microsoft Docs"
-description: "Obtenga información acerca de cómo tooconfigure inicio de sesión único entre Azure Active Directory y xMatters OnDemand."
+description: "Aprenda a configurar el inicio de sesión único entre Azure Active Directory y xMatters OnDemand."
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -13,104 +13,104 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 7cc8f9f0d8cefc8a60b9514027437ced50c66242
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 9bfcb44ed19f167872b3cd9119e2dbdd35c82604
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>Tutorial: Integración de Azure Active Directory con xMatters OnDemand
 
-En este tutorial, aprenderá cómo toointegrate xMatters OnDemand con Azure Active Directory (Azure AD).
+En este tutorial, aprenderá a integrar xMatters OnDemand con Azure Active Directory (Azure AD).
 
-Integración xMatters OnDemand con Azure AD proporciona Hola siguientes ventajas:
+Integrar xMatters OnDemand con Azure AD proporciona las siguientes ventajas:
 
-- Puede controlar en Azure AD que tenga acceso tooxMatters OnDemand
-- Puede habilitar los usuarios tooautomatically get ha iniciado sesión tooxMatters OnDemand (inicio de sesión único) con sus cuentas de Azure AD
-- Puede administrar las cuentas en una ubicación central: Hola portal de Azure
+- Puede controlar en Azure AD quién tiene acceso a xMatters OnDemand.
+- Puede permitir que los usuarios inicien sesión automáticamente en xMatters OnDemand (inicio de sesión único) con sus cuentas de Azure AD.
+- Puede administrar sus cuentas en una ubicación central: el nuevo Azure Portal.
 
-Si desea obtener más información acerca de la integración de aplicaciones de SaaS con Azure AD tooknow, consulte [¿qué es acceso a la aplicación y el inicio de sesión único con Azure Active Directory](active-directory-appssoaccess-whatis.md).
+Si desea saber más sobre la integración de aplicaciones SaaS con Azure AD, consulte [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-tooconfigure integración de Azure AD con xMatters OnDemand, necesita Hola siguientes elementos:
+Para configurar la integración de Azure AD con xMatters OnDemand, necesita los siguientes elementos:
 
 - Una suscripción de Azure AD
 - Una suscripción habilitada para el inicio de sesión único en xMatters OnDemand
 
 > [!NOTE]
-> Hola tootest los pasos de este tutorial, no se recomienda usar un entorno de producción.
+> Para probar los pasos de este tutorial, no se recomienda el uso de un entorno de producción.
 
-pasos de hello tootest en este tutorial, debe seguir estas recomendaciones:
+Para probar los pasos de este tutorial, debe seguir estas recomendaciones:
 
 - No use el entorno de producción, salvo que sea necesario.
 - Si no dispone de un entorno de prueba de Azure AD, puede obtener una versión de prueba de un mes [aquí](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Descripción del escenario
-En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. escenario de Hello descrito en este tutorial consta de dos bloques principales:
+En este tutorial, puede probar el inicio de sesión único de Azure AD en un entorno de prueba. La situación descrita en este tutorial consta de dos bloques de creación principales:
 
-1. Agregar xMatters OnDemand desde la Galería de Hola
+1. Incorporación de xMatters OnDemand desde la galería
 2. Configuración y comprobación del inicio de sesión único de Azure AD
 
-## <a name="adding-xmatters-ondemand-from-hello-gallery"></a>Agregar xMatters OnDemand desde la Galería de Hola
-integración de hello tooconfigure de xMatters OnDemand en Azure AD, deberá tooadd xMatters OnDemand de lista de tooyour Hola Galería de aplicaciones administradas de SaaS.
+## <a name="adding-xmatters-ondemand-from-the-gallery"></a>Incorporación de xMatters OnDemand desde la galería
+Para configurar la integración de xMatters OnDemand en Azure AD, deberá agregarlo desde la galería a la lista de aplicaciones SaaS administradas.
 
-**tooadd xMatters OnDemand de galería de hello, lleve a cabo Hola pasos:**
+**Para agregar xMatters OnDemand desde la galería, realice los pasos siguientes:**
 
-1. Hola  **[portal de Azure](https://portal.azure.com)**, en el panel de navegación izquierdo de Hola, haga clic en **Azure Active Directory** icono. 
+1. En el panel de navegación izquierdo de **[Azure Portal](https://portal.azure.com)**, haga clic en el icono de **Azure Active Directory**. 
 
     ![Active Directory][1]
 
-2. Navegue demasiado**aplicaciones empresariales**. A continuación, vaya demasiado**todas las aplicaciones**.
+2. Vaya a **Aplicaciones empresariales**. A continuación, vaya a **Todas las aplicaciones**.
 
     ![Aplicaciones][2]
     
-3. tooadd nueva aplicación, haga clic en **nueva aplicación** botón en la parte superior de saludo del cuadro de diálogo.
+3. Para agregar una nueva aplicación, haga clic en el botón **Nueva aplicación** de la parte superior del cuadro de diálogo.
 
     ![Aplicaciones][3]
 
-4. En el cuadro de búsqueda de hello, escriba **xMatters OnDemand**.
+4. En el cuadro de búsqueda, escriba **xMatters OnDemand**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_search.png)
 
-5. En el panel de resultados de hello, seleccione **xMatters OnDemand**y, a continuación, haga clic en **agregar** botón aplicación hello de tooadd.
+5. En el panel de resultados, seleccione **xMatters OnDemand** y, luego, haga clic en el botón **Agregar** para agregar la aplicación.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuración y comprobación del inicio de sesión único de Azure AD
 En esta sección, va a configurar y probar el inicio de sesión único de Azure AD con xMatters OnDemand con un usuario de prueba llamado "Britta Simon".
 
-Para toowork de inicio de sesión único, Azure AD necesita tooknow qué Hola usuario equivalente en xMatters OnDemand es tooa usuario en Azure AD. En otras palabras, una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de hello en xMatters OnDemand debe toobe establecido.
+Para que el inicio de sesión único funcione, Azure AD debe saber cuál es el usuario homólogo de xMatters OnDemand para un usuario de Azure AD. Es decir, es necesario establecer una relación de vínculo entre un usuario de Azure AD y el usuario relacionado de xMatters OnDemand.
 
-En xMatters OnDemand, asigne el valor de Hola de hello **nombre de usuario** en Azure AD como valor de Hola de hello **nombre de usuario** tooestablish la relación de vínculo de Hola.
+Para establecer la relación de vínculo, en xMatters OnDemand, asigne el valor del **nombre de usuario** en Azure AD como el valor del **nombre de usuario**.
 
-tooconfigure y prueba de inicio de sesión único en Azure AD con xMatters OnDemand, deberá hello toocomplete después de bloques de creación:
+Para configurar y probar el inicio de sesión único de Azure AD con xMatters OnDemand, es preciso completar los siguientes bloques de creación:
 
-1. **[Configuración de Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  -tooenable la toouse usuarios esta característica.
-2. **[Crear un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)**  -inicio de sesión único en Azure AD tootest con Britta Simon.
-3. **[Crear un usuario de prueba de xMatters OnDemand](#creating-a-xmatters-ondemand-test-user)**  -toohave un equivalente de Britta Simon en xMatters OnDemand que es la representación toohello vinculado Azure AD del usuario.
-4. **[Asignar usuario de prueba de hello Azure AD](#assigning-the-azure-ad-test-user)**  -tooenable Britta Simon toouse Azure AD inicio de sesión único.
-5. **[Pruebas de Single Sign-On](#testing-single-sign-on)**  -tooverify Hola si funciona la configuración.
+1. **[Configuración del inicio de sesión único de Azure AD](#configuring-azure-ad-single-sign-on)** : para permitir a los usuarios usar esta característica.
+2. **[Creación de un usuario de prueba de Azure AD](#creating-an-azure-ad-test-user)** : para probar el inicio de sesión único de Azure AD con Britta Simon.
+3. **[Creación de un usuario de prueba de xMatters OnDemand](#creating-a-xmatters-ondemand-test-user)**: para tener un homólogo de Britta Simon en xMatters OnDemand que esté vinculado a la representación de Azure AD del usuario.
+4. **[Asignación del usuario de prueba de Azure AD](#assigning-the-azure-ad-test-user)** : para permitir que Britta Simon use el inicio de sesión único de Azure AD.
+5. **[Testing Single Sign-On](#testing-single-sign-on)** : para comprobar si funciona la configuración.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Configuración del inicio de sesión único de Azure AD
 
-En esta sección, habilitar inicio de sesión único en Azure AD en hello portal de Azure y configurar el inicio de sesión único en su xMatters OnDemand aplicación.
+En esta sección, habilitará el inicio de sesión único de Azure AD en Azure Portal y configurará el inicio de sesión único en la aplicación xMatters OnDemand.
 
-**inicio de sesión único en tooconfigure Azure AD con xMatters OnDemand, siga Hola pasos:**
+**Para configurar el inicio de sesión único de Azure AD con xMatters OnDemand, realice los pasos siguientes:**
 
-1. En el portal de Azure, en Hola Hola **xMatters OnDemand** página de integración de aplicaciones, haga clic en **inicio de sesión único**.
+1. En Azure Portal, en la página de integración de la aplicación **xMatters OnDemand**, haga clic en **Inicio de sesión único**.
 
     ![Configurar inicio de sesión único][4]
 
-2. En hello **inicio de sesión único** cuadro de diálogo, seleccione **modo** como **sesión basado en SAML** tooenable inicio de sesión único.
+2. En el cuadro de diálogo **Inicio de sesión único**, en **Modo** seleccione **Inicio de sesión basado en SAML** para habilitar el inicio de sesión único.
  
     ![Configurar inicio de sesión único](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_samlbase.png)
 
-3. En hello **xMatters OnDemand dominio y las direcciones URL** sección, lleve a cabo Hola pasos:
+3. En la sección **Dominio y direcciones URL de xMatters OnDemand**, lleve a cabo los pasos siguientes:
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_url.png)
     
-    a. Hola **identificador** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:   
+    a. En el cuadro de texto **Identificador**, escriba una dirección URL con el siguiente patrón:   
     | |
     |--|
     | `https://<companyname>.au1.xmatters.com.au/`|
@@ -119,7 +119,7 @@ En esta sección, habilitar inicio de sesión único en Azure AD en hello portal
     | `https://www.xmatters.com`|
     | `https://<companyname>.xmatters.com.au/`|
 
-    b. Hola **dirección URL de respuesta** cuadro de texto, escriba una dirección URL usando Hola siguiente patrón:
+    b. En el cuadro de texto **URL de respuesta** , escriba una dirección URL con el siguiente patrón:
     | |
     |--|
     | `https://<companyname>.au1.xmatters.com.au`|
@@ -128,124 +128,124 @@ En esta sección, habilitar inicio de sesión único en Azure AD en hello portal
     | `https://<companyname>.au1.xmatters.com.au/<instancename>`|
 
     > [!NOTE] 
-    > Estos valores no son reales. Actualizar estos valores con hello URL de identificador y la respuesta real. Póngase en contacto con [equipo de soporte técnico de xMatters OnDemand](https://www.xmatters.com/company/contact-us/) tooget estos valores.
+    > Estos valores no son reales. Actualice estos valores con el identificador y la URL de respuesta reales. Póngase en contacto con el [equipo de soporte técnico de xMatters OnDemand](https://www.xmatters.com/company/contact-us/) para obtener estos valores.
 
-4. En hello **el certificado de firma de SAML** sección, haga clic en **Certificate(Base64)** y, a continuación, guarde Hola archivo del certificado localmente como **c:\\XMatters OnDemand.cer**.
+4. En la sección **Certificado de firma de SAML**, haga clic en **Certificado (Base64)** y, luego, guarde el archivo de certificado localmente en **c:\\XMatters OnDemand.cer**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_certificate.png)
     
     > [!IMPORTANT]
-    > Necesita tooforward Hola certificado toohello [equipo de soporte técnico de xMatters OnDemand](https://www.xmatters.com/company/contact-us/). certificado de Hello debe toobe cargada por el equipo de soporte técnico de xMatters Hola antes de finalizar la configuración de inicio de sesión único de Hola. 
+    > Debe reenviar el certificado al [equipo de soporte técnico de xMatters OnDemand](https://www.xmatters.com/company/contact-us/). El equipo de soporte técnico de xMatters debe cargar el certificado para que se pueda finalizar la configuración del inicio de sesión único. 
 
 5. Haga clic en el botón **Guardar** .
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_general_400.png)
 
-6. En hello **xMatters OnDemand configuración** sección, haga clic en **configurar xMatters OnDemand** tooopen **configurar inicio de sesión** ventana. Hola copia **dirección URL de cierre de sesión, Id. de entidad de SAML y SAML Single Sign-On dirección URL del servicio** de hello **sección de referencia rápida.**
+6. En la sección **Configuración de xMatters OnDemand**, haga clic en **Configurar xMatters OnDemand** para abrir la ventana **Configurar inicio de sesión**. Copie la **URL del servicio de inicio de sesión único de SAML, el identificador de entidad de SAML y la dirección URL de cierre de sesión** de la sección **Referencia rápida**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_configure.png) 
 
-7. En una ventana del explorador web diferente, inicie sesión en tooyour sitio de la compañía de XMatters OnDemand como administrador.
+7. En otra ventana del explorador web, inicie sesión en el sitio de la compañía de xMatters OnDemand como administrador.
 
-8. En la barra de herramientas de hello en la parte superior de hello, haga clic en **administración**y, a continuación, haga clic en **detalles de la compañía** en la barra de navegación de hello en el lado izquierdo de Hola.
+8. En la barra de herramientas de la parte superior, haga clic en **Administrador** y luego en **Detalles de la compañía** en la barra de navegación del lado izquierdo.
    
     ![Administración](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776795.png "Administración")
 
-9. En hello **configuración de SAML** , siga los pasos de hello:
+9. En la página **Configuración de SAML** , realice los siguientes pasos:
    
     ![Configuración de SAML](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776796.png "Configuración de SAML")
    
     a. Seleccione **Habilitar SAML**.
    
-    b. Pegar **Id. de entidad SAML**, que haya copiado desde Hola portal de Azure en hello **Id. de proveedor de identidad** cuadro de texto.
+    b. Pegue el valor del **SAML Entity ID** (Identificador de entidad de SAML) que ha copiado de Azure Portal en el cuadro de texto **Id. de proveedor de identidad**.
    
-    c. Pegar **SAML Single Sign-On dirección URL del servicio**, que haya copiado desde Hola portal de Azure en hello **inicio de sesión único en URL** cuadro de texto.
+    c. Pegue el valor de **SAML Single Sign-On Service URL** (Dirección URL de publicación de SAML) que copió de Azure Portal en el cuadro de texto **Dirección URL de inicio de sesión único**.
    
-    d. Pegar **dirección URL de cierre de sesión**, que haya copiado desde Hola portal de Azure en hello **dirección URL de cierre de sesión único** cuadro de texto.
+    d. Pegue el valor de **Dirección URL de cierre de sesión** que copió de Azure Portal en el cuadro de texto **Dirección URL de cierre de sesión único**.
    
-    e. En la página de detalles de la compañía de hello, en la parte superior de hello, haga clic en **guardar cambios**.
+    e. En la página de detalles de la compañía, en la parte superior, haga clic en **Guardar cambios**.
     
     ![Detalles de la compañía](./media/active-directory-saas-xmatters-ondemand-tutorial/IC776797.png "Detalles de la compañía")
 
 > [!TIP]
-> Ahora puede leer una versión concisa de estas instrucciones dentro de hello [portal de Azure](https://portal.azure.com), mientras que está configurando la aplicación hello!  Después de agregar esta aplicación de hello **Active Directory > aplicaciones empresariales** sección, simplemente haga clic en hello **Single Sign-On** Hola de pestaña y acceso incrustado documentación a través de hello  **Configuración** sección final Hola. Puede leer más acerca de características de documentación de embedded Hola aquí: [Azure AD incrustado documentación]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Ahora puede leer una versión resumida de estas instrucciones dentro de [Azure Portal](https://portal.azure.com) mientras configura la aplicación.  Después de agregar esta aplicación desde la sección **Active Directory > Aplicaciones empresariales**, simplemente haga clic en la pestaña **Inicio de sesión único** y acceda a la documentación insertada a través de la sección **Configuración** de la parte inferior. Puede leer más sobre la característica de documentación insertada aquí: [Vista previa: Administración de inicio de sesión único para aplicaciones empresariales en el nuevo Azure Portal]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Creación de un usuario de prueba de Azure AD
-objetivo de Hola de esta sección es un usuario de prueba en hello Azure portal llamado a Britta Simon toocreate.
+El objetivo de esta sección es crear un usuario de prueba en Azure Portal llamado "Britta Simon".
 
 ![Creación de un usuario de Azure AD][100]
 
-**toocreate un usuario de prueba en Azure AD, lleve a cabo Hola pasos:**
+**Siga estos pasos para crear un usuario de prueba en Azure AD:**
 
-1. Hola **portal de Azure**, en Hola panel de navegación izquierdo, haga clic en **Azure Active Directory** icono.
+1. En el panel de navegación izquierdo de **Azure Portal**, haga clic en el icono de **Azure Active Directory**.
 
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-xmatters-ondemand-tutorial/create_aaduser_01.png) 
 
-2. lista de hello toodisplay de usuarios, vaya demasiado**usuarios y grupos** y haga clic en **todos los usuarios**.
+2. Para mostrar la lista de usuarios, vaya a **Usuarios y grupos** y haga clic en **Todos los usuarios**.
     
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-xmatters-ondemand-tutorial/create_aaduser_02.png) 
 
-3. Hola tooopen **usuario** cuadro de diálogo, haga clic en **agregar** en la parte superior de saludo del cuadro de diálogo de Hola.
+3. Para abrir el cuadro de diálogo **Usuario**, haga clic en **Agregar** en la parte superior del cuadro de diálogo.
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-xmatters-ondemand-tutorial/create_aaduser_03.png) 
 
-4. En hello **usuario** cuadro de diálogo, siga los pasos de hello:
+4. En la página de diálogo **Usuario**, realice los siguientes pasos:
  
     ![Creación de un usuario de prueba de Azure AD](./media/active-directory-saas-xmatters-ondemand-tutorial/create_aaduser_04.png) 
 
-    a. Hola **nombre** cuadro de texto, tipo **BrittaSimon**.
+    a. En el cuadro de texto **Nombre**, escriba **BrittaSimon**.
 
-    b. Hola **nombre de usuario** cuadro de texto, hello tipo **dirección de correo electrónico** de BrittaSimon.
+    b. En el cuadro de texto **Nombre de usuario**, escriba la **dirección de correo electrónico** de Britta Simon.
 
-    c. Seleccione **Mostrar contraseña** y anote el valor de Hola de hello **contraseña**.
+    c. Seleccione **Mostrar contraseña** y anote el valor del cuadro **Contraseña**.
 
     d. Haga clic en **Crear**.
  
 ### <a name="creating-a-xmatters-ondemand-test-user"></a>Creación de un usuario de prueba de xMatters OnDemand
 
-En orden tooenable toolog de los usuarios de Azure AD en tooXMatters OnDemand, les deben aprovisionar en XMatters OnDemand. En caso de hello de XMatters OnDemand, el aprovisionamiento es una tarea manual.
+Para permitir que los usuarios de Azure AD inicien sesión en xMatters OnDemand, deben aprovisionarse a XMatters OnDemand. En el caso de XMatters OnDemand, el aprovisionamiento es una tarea manual.
 
-### <a name="tooprovision-a-user-accounts-perform-hello-following-steps"></a>tooprovision una cuenta de usuario, realizar Hola lo siguiente:
-1. Inicie sesión en tooyour **XMatters OnDemand** inquilino.
+### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>Para aprovisionar cuentas de usuario, realice los siguientes pasos:
+1. Inicie sesión en su inquilino de **xMatters OnDemand** .
 
-2.  Haga clic en **usuarios** ficha y, a continuación, haga clic en **Agregar usuario**.
+2.  Haga clic en la pestaña **Users** (Usuarios). y, luego, en **Add User** (Agregar usuario).
   
     ![Usuarios](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781048.png "Usuarios")
 
-3. Hola **agregar un usuario** sección, lleve a cabo Hola pasos:
+3. En la sección **Agregar un usuario** , realice estos pasos:
    
     ![Agregar un usuario](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781049.png "Agregar un usuario")
 
     a. Seleccione **Active**(Activo).
 
-    b. Hola **Id. de usuario** cuadro de texto, Id. de usuario de tipo hello del usuario como Brittasimon@contoso.com.
+    b. En el cuadro de texto **User ID** (Identificador de usuario), escriba el identificador de usuario, en este caso, Brittasimon@contoso.com.
    
-    c. Hola **nombre** cuadro de texto Nombre de usuario de hello como Bárbara tipo.
+    c. En el cuadro de texto **Nombre**, escriba el nombre del usuario, en este caso, Britta.
 
-    d. Hola **Last Name** cuadro de texto, escriba Apellidos del usuario de hello como Simon.
+    d. En el cuadro de texto **Apellidos**, escriba el apellido del usuario, en este caso Simon.
     
-    e. Hola **sitio** cuadro de texto, sitio válido de hello entrar un Azure válida que desee tooprovision de cuenta de AD.
+    e. En el cuadro de texto **Sitio**, escriba el sitio válido de una cuenta de Azure AD válida que quiera aprovisionar.
     
     f. Haga clic en **Guardar**.
 
-### <a name="assigning-hello-azure-ad-test-user"></a>Asignación de usuario de prueba de hello Azure AD
+### <a name="assigning-the-azure-ad-test-user"></a>Asignación del usuario de prueba de Azure AD
 
-En esta sección, se habilita Britta Simon toouse un inicio de sesión único Azure concediendo acceso tooxMatters a petición.
+En esta sección, habilitará a Britta Simon para que use el inicio de sesión único de Azure concediéndole acceso a xMatters OnDemand.
 
 ![Asignar usuario][200] 
 
-**tooassign Britta Simon tooxMatters OnDemand, lleve a cabo Hola pasos:**
+**Para asignar a Britta Simon a xMatters OnDemand, lleve a cabo los pasos siguientes:**
 
-1. Hola portal de Azure, abra la vista de aplicaciones de hello y, a continuación, navegue a vista de directorio toohello y vaya demasiado**aplicaciones empresariales** , a continuación, haga clic en **todas las aplicaciones**.
+1. En Azure Portal, abra la vista de aplicaciones, vaya a la vista de directorio y vaya a **Aplicaciones empresariales**. Luego, haga clic en **Todas las aplicaciones**.
 
     ![Asignar usuario][201] 
 
-2. En la lista de aplicaciones de hello, seleccione **xMatters OnDemand**.
+2. En la lista de aplicaciones, seleccione  **xMatters OnDemand**.
 
     ![Configurar inicio de sesión único](./media/active-directory-saas-xmatters-ondemand-tutorial/tutorial_xmattersondemand_app.png) 
 
-3. En el menú de Hola Hola izquierda, haga clic en **usuarios y grupos**.
+3. En el menú de la izquierda, haga clic en **Usuarios y grupos**.
 
     ![Asignar usuario][202] 
 
@@ -253,7 +253,7 @@ En esta sección, se habilita Britta Simon toouse un inicio de sesión único Az
 
     ![Asignar usuario][203]
 
-5. En **usuarios y grupos** cuadro de diálogo, seleccione **Britta Simon** en la lista de usuarios de Hola.
+5. En el cuadro de diálogo **Usuarios y grupos**, seleccione **Britta Simon** en la lista de usuarios.
 
 6. Haga clic en el botón **Seleccionar** del cuadro de diálogo **Usuarios y grupos**.
 
@@ -261,14 +261,14 @@ En esta sección, se habilita Britta Simon toouse un inicio de sesión único Az
     
 ### <a name="testing-single-sign-on"></a>Prueba del inicio de sesión único 
 
-En esta sección, comprobará su único inicio de sesión en configuración de Azure AD con hello Panel de acceso.
+En esta sección, probará la configuración de inicio de sesión único de Azure AD mediante el Panel de acceso.
 
-Al hacer clic en hello xMatters OnDemand icono en el Panel de acceso de hello, debería obtener automáticamente ha iniciado sesión tooyour xMatters OnDemand aplicación.
-Para obtener más información sobre el Panel de acceso, consulte [Introducción toohello Panel de acceso](active-directory-saas-access-panel-introduction.md).
+Al hacer clic en el icono de xMatters OnDemand en el panel de acceso, debería iniciar sesión automáticamente en la aplicación xMatters OnDemand.
+Para más información sobre el Panel de acceso, consulte [Introducción al Panel de acceso](active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Recursos adicionales
 
-* [Lista de tutoriales sobre cómo tooIntegrate aplicaciones de SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
+* [Lista de tutoriales sobre cómo integrar aplicaciones SaaS con Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [¿Qué es el acceso a aplicaciones y el inicio de sesión único con Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->

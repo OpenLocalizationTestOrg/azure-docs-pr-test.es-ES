@@ -1,6 +1,6 @@
 ---
-title: "aaaSet de un clúster de Azure Service Fabric independientes | Documentos de Microsoft"
-description: "Crear un clúster de desarrollo independiente con tres nodos con hello mismo equipo. Después de completar la instalación, estará listo toocreate un clúster de varios equipo."
+title: "Configuración de un clúster de Azure Service Fabric independiente | Microsoft Docs"
+description: "Cree un clúster independiente de desarrollo con tres nodos que se ejecutan en el mismo equipo. Después de completar esta configuración, estará listo para crear un clúster de varias máquinas."
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,46 +14,46 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/06/2017
 ms.author: dekapur
-ms.openlocfilehash: e4d0ea9fc3b8475160bd8ed19fd3716463791cc5
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 5c8f4c784eed7b64810a3dd1c36c043d22a66936
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-your-first-service-fabric-standalone-cluster"></a>Creación del primer clúster independiente de Service Fabric
-Puede crear un clúster de Service Fabric independientes en las máquinas virtuales o equipos que ejecutan Windows Server 2012 R2 o Windows Server 2016, local o en la nube de Hola. Este inicio rápido le ayuda a toocreate un clúster de desarrollo independiente en sólo unos minutos.  Cuando haya terminado, tendrá un clúster de tres nodos que se ejecuta en un único equipo y donde puede implementar aplicaciones.
+Puede crear un clúster independiente de Service Fabric en cualquier máquina virtual o equipo que ejecute Windows Server 2012 R2 o Windows Server 2016, en el entorno local o en la nube. Esta guía de inicio rápido lo ayuda a crear un clúster independiente de desarrollo en tan solo unos minutos.  Cuando haya terminado, tendrá un clúster de tres nodos que se ejecuta en un único equipo y donde puede implementar aplicaciones.
 
 ## <a name="before-you-begin"></a>Antes de empezar
-Tejido de servicio proporciona un programa de instalación de clústeres de paquete toocreate Service Fabric independientes.  [Descargar paquete de instalación de hello](http://go.microsoft.com/fwlink/?LinkId=730690).  Descomprima Hola carpeta setup del paquete tooa Hola equipo o máquina virtual donde estás configurando clúster de desarrollo de Hola.  contenido de Hola Hola del paquete de instalación se describe detalladamente [aquí](service-fabric-cluster-standalone-package-contents.md).
+Service Fabric proporciona un paquete de instalación para crear clústeres independientes de Service Fabric.  [Descargue el paquete de instalación](http://go.microsoft.com/fwlink/?LinkId=730690).  Descomprima el paquete de instalación en una carpeta en el equipo o máquina virtual que está configurando el clúster de desarrollo.  El contenido del paquete de instalación se describe detalladamente [aquí](service-fabric-cluster-standalone-package-contents.md).
 
-el Administrador de clústeres Hola implementar y configurar el clúster de hello debe tener privilegios de administrador en el equipo de Hola. No se puede instalar Service Fabric en un controlador de dominio.
+El administrador de clúster que implemente y configure el clúster debe tener privilegios de administrador en el equipo. No se puede instalar Service Fabric en un controlador de dominio.
 
-## <a name="validate-hello-environment"></a>Valide el entorno de Hola
-Hola *TestConfiguration.ps1* script en el paquete independiente de Hola se utiliza como un toovalidate de analizador de prácticas recomendada, si un clúster puede implementarse en un entorno determinado. [Preparación de la implementación](service-fabric-cluster-standalone-deployment-preparation.md) listas Hola requisitos previos y requisitos del entorno. Ejecute hello script tooverify si puede crear el clúster de desarrollo de hello:
+## <a name="validate-the-environment"></a>Validación del entorno
+El script *TestConfiguration.ps1* del paquete independiente se usa como analizador de procedimientos recomendados para validar si se puede implementar un clúster en un entorno determinado. En la [preparación para la implementación](service-fabric-cluster-standalone-deployment-preparation.md) se enumeran los requisitos previos y los requisitos del entorno. Ejecute el script para comprobar si puede crear el clúster de desarrollo:
 
 ```powershell
 .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json
 ```
-## <a name="create-hello-cluster"></a>Crear clúster Hola
-Varios archivos de configuración de clúster de ejemplo se instalan con el paquete de instalación de Hola. *ClusterConfig.Unsecure.DevCluster.json* es configuración de clúster más sencilla de hello: un clúster no seguro, tres nodos que se ejecute en un único equipo.  Otros archivos de configuración describen clústeres de una o varias máquinas con certificados X.509 o seguridad de Windows.  No necesita toomodify cualquiera de los valores de configuración de hello predeterminado para este tutorial, pero examine el archivo de configuración de Hola y familiarizarse con la configuración de Hola.  Hola **nodos** sección describen tres nodos de hello en clúster de Hola: nombre, dirección IP, [tipo de nodo, el dominio de error y el dominio de actualización](service-fabric-cluster-manifest.md#nodes-on-the-cluster).  Hola **propiedades** sección define hello [seguridad, nivel de confiabilidad, recopilación de diagnósticos y tipos de nodos](service-fabric-cluster-manifest.md#cluster-properties) para clúster Hola.
+## <a name="create-the-cluster"></a>Creación de clústeres
+Se instalan varios archivos de configuración de clúster de ejemplo con el paquete de instalación. *ClusterConfig.Unsecure.DevCluster.json* es la configuración de clúster más sencilla: un clúster no seguro de tres nodos que se ejecuta en un único equipo.  Otros archivos de configuración describen clústeres de una o varias máquinas con certificados X.509 o seguridad de Windows.  No es necesario modificar los valores de configuración predeterminados para este tutorial, pero eche un vistazo al archivo de configuración y familiarícese con la configuración.  En la sección **nodos** se describen los tres nodos del clúster: nombre, dirección IP, [tipo de nodo, dominio de error y dominio de actualización](service-fabric-cluster-manifest.md#nodes-on-the-cluster).  En la sección **propiedades** se define la [seguridad, el nivel de confiabilidad, la recopilación de diagnósticos y los tipos de nodos](service-fabric-cluster-manifest.md#cluster-properties) para el clúster.
 
-Este clúster no es seguro.  Cualquiera puede conectarse de forma anónima y realizar operaciones de administración, por lo que los clústeres de producción siempre deben protegerse mediante certificados X.509 o la seguridad de Windows.  Solo se configura con seguridad en el momento de creación de clúster y no es posible tooenable seguridad después de crear el clúster de Hola.  Lectura [proteger un clúster](service-fabric-cluster-security.md) toolearn más acerca de la seguridad de clúster de Service Fabric.  
+Este clúster no es seguro.  Cualquiera puede conectarse de forma anónima y realizar operaciones de administración, por lo que los clústeres de producción siempre deben protegerse mediante certificados X.509 o la seguridad de Windows.  La configuración solo se configura en el momento de creación del clúster y no es posible habilitar la seguridad una vez creado.  Lea [Protección de un clúster](service-fabric-cluster-security.md) para más información sobre la seguridad en los clústeres de Service Fabric.  
 
-clúster de desarrollo de tres nodos de hello toocreate, ejecute hello *CreateServiceFabricCluster.ps1* secuencia de comandos desde una sesión de PowerShell de administrador:
+Para crear el clúster de desarrollo de tres nodos, ejecute el script *CreateServiceFabricCluster.ps1* desde una sesión de PowerShell de administrador:
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json -AcceptEULA
 ```
 
-paquete de tiempo de ejecución de Service Fabric Hola automáticamente se descarga e instala en el momento de creación del clúster.
+El paquete en tiempo de ejecución de Service Fabric se descarga e instala automáticamente cuando se crea el clúster.
 
-## <a name="connect-toohello-cluster"></a>Conectar el clúster toohello
-Ahora se está ejecutando el clúster de desarrollo de tres nodos. Hola módulo ServiceFabric PowerShell se instala con hello en tiempo de ejecución.  Puede comprobar dicho clúster Hola se está ejecutando desde Hola mismo equipo o desde un equipo remoto con el tiempo de ejecución de hello Service Fabric.  Hola [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) cmdlet establece un clúster de toohello de conexión.   
+## <a name="connect-to-the-cluster"></a>Conexión al clúster
+Ahora se está ejecutando el clúster de desarrollo de tres nodos. El módulo ServiceFabric PowerShell está instalado con el paquete en tiempo de ejecución.  Puede comprobar que el clúster se ejecute desde el mismo equipo o desde un equipo remoto con el paquete en tiempo de ejecución de Service Fabric.  El cmdlet [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) establece una conexión con el clúster.   
 
 ```powershell
 Connect-ServiceFabricCluster -ConnectionEndpoint localhost:19000
 ```
-Vea [clúster segura de conectar tooa](service-fabric-connect-to-secure-cluster.md) para obtener ejemplos de conexión de tooa de clúster. Después de la conexión de toohello de clúster, use hello [ServiceFabricNode Get](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) cmdlet toodisplay una lista de nodos en la información de clúster y el estado de Hola para cada nodo. **HealthState** debe ser *OK* para cada nodo.
+Consulte [Conexión a un clúster seguro](service-fabric-connect-to-secure-cluster.md) para ver ejemplos de conexión a un clúster. Después de conectarse al clúster, use el cmdlet [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) para mostrar una lista de nodos en el clúster e información sobre el estado de cada uno. **HealthState** debe ser *OK* para cada nodo.
 
 ```powershell
 PS C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer> Get-ServiceFabricNode |Format-Table
@@ -65,30 +65,30 @@ NodeDeactivationInfo NodeName IpAddressOrFQDN NodeType  CodeVersion  ConfigVersi
                      vm0      localhost       NodeType0 5.6.220.9494 0                     Up 00:02:43   00:00:00              OK
 ```
 
-## <a name="visualize-hello-cluster-using-service-fabric-explorer"></a>Visualizar el clúster de hello mediante el Explorador de Service Fabric
-[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) es una buena herramienta para visualizar el clúster y administrar aplicaciones.  Explorador de Service Fabric es un servicio que se ejecuta en el clúster de hello, que puede tener acceso mediante un explorador navegando demasiado[http://localhost:19080/explorador](http://localhost:19080/Explorer). 
+## <a name="visualize-the-cluster-using-service-fabric-explorer"></a>Visualización del clúster mediante Service Fabric Explorer
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) es una buena herramienta para visualizar el clúster y administrar aplicaciones.  Service Fabric Explorer es un servicio que se ejecuta en el clúster, al que puede acceder mediante un explorador desde [http://localhost:19080/Explorer](http://localhost:19080/Explorer). 
 
-panel de clúster de Hello proporciona una visión general del clúster, incluido un resumen de la aplicación y el estado de nodo. vista de nodo de Hello muestra el diseño físico de Hola de clúster de Hola. Para un nodo determinado, puede comprobar qué aplicaciones tienen el código implementado en ese nodo.
+El panel del clúster proporciona información general del clúster, incluido un resumen de la aplicación y del estado del nodo. En la vista de nodos se muestra el diseño físico del clúster. Para un nodo determinado, puede comprobar qué aplicaciones tienen el código implementado en ese nodo.
 
 ![Service Fabric Explorer][service-fabric-explorer]
 
-## <a name="remove-hello-cluster"></a>Quitar clúster Hola
-tooremove un clúster, ejecute hello *RemoveServiceFabricCluster.ps1* script de PowerShell desde la carpeta del paquete hello y pase el archivo de configuración de hello ruta de acceso toohello JSON. También puede especificar una ubicación para el registro de hello de eliminación de Hola.
+## <a name="remove-the-cluster"></a>Eliminación del clúster
+Para quitar un clúster, ejecute el script de PowerShell *RemoveServiceFabricCluster.ps1* desde la carpeta del paquete y proporcione la ruta al archivo de configuración JSON. También puede especificar una ubicación para el registro que se va a eliminar.
 
 ```powershell
-# Removes Service Fabric cluster nodes from each computer in hello configuration file.
+# Removes Service Fabric cluster nodes from each computer in the configuration file.
 .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.DevCluster.json -Force
 ```
 
-tooremove Hola Service Fabric en tiempo de ejecución del equipo de hello, ejecute hello siguiente script de PowerShell de la carpeta de paquete de Hola.
+Para quitar el paquete en tiempo de ejecución de Service Fabric del equipo, ejecute el siguiente script de PowerShell desde la carpeta del paquete.
 
 ```powershell
-# Removes Service Fabric from hello current computer.
+# Removes Service Fabric from the current computer.
 .\CleanFabric.ps1
 ```
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora que ha configurado un clúster de desarrollo independiente, intente Hola siguientes artículos:
+Ahora que ha configurado un clúster independiente de desarrollo, consulte los artículos siguientes:
 * [Configure un clúster independiente con varias máquinas](service-fabric-cluster-creation-for-windows-server.md) y habilite la seguridad.
 * [Implemente aplicaciones mediante PowerShell](service-fabric-deploy-remove-applications.md).
 

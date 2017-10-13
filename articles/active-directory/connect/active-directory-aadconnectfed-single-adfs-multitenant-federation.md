@@ -1,6 +1,6 @@
 ---
-title: "aaaFederating varios Azure AD con ADFS único | Documentos de Microsoft"
-description: "En este documento, aprenderá cómo toofederate varios Azure AD con un único AD FS."
+title: "Federación de varias instancias de Azure AD con una instancia única de AD FS | Microsoft Docs"
+description: "En este documento aprenderá a federar varias instancias de Azure AD con una única de AD FS."
 keywords: "federar, ADFS, AD FS, varios inquilinos, AD FS único, un ADFS, federación de varios inquilinos, adfs de varios bosques, aad connect, federación, federación entre inquilinos"
 services: active-directory
 documentationcenter: 
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: anandy; billmath
-ms.openlocfilehash: 442192896b3b13f7bf9388396cd3769e194329d4
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: 436bf5905d2b203dc4cceea97f4fb90593df7111
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Federación de varias instancias de Azure AD con una instancia única de AD FS
 
-Una sola granja de AD FS de alta disponibilidad puede federar varios bosques si existe confianza bidireccional entre ellos. Estos varios bosques pueden o no se corresponde necesariamente toohello mismo Azure Active Directory. Este artículo proporciona instrucciones sobre cómo tooconfigure federación entre una sola implementación de AD FS y más de uno bosques que toodifferent sincronización Azure AD.
+Una sola granja de AD FS de alta disponibilidad puede federar varios bosques si existe confianza bidireccional entre ellos. Estos bosques pueden corresponderse a la misma instancia de Azure Active Directory o no. En este artículo se proporcionan instrucciones para configurar la federación entre una sola implementación de AD FS y varios bosques que se sincronicen con instancias diferentes de Azure AD.
 
 ![Federación de varios inquilinos con una sola instancia de AD FS](media/active-directory-aadconnectfed-single-adfs-multitenant-federation/concept.png)
  
@@ -31,36 +31,36 @@ Una sola granja de AD FS de alta disponibilidad puede federar varios bosques si 
 > No se admiten la escritura diferida de dispositivos ni la unión automática de dispositivos en este escenario.
 
 > [!NOTE]
-> Azure AD Connect no puede ser federación tooconfigure usado en este escenario porque Azure AD Connect puede configurar la federación para dominios en un único Azure AD.
+> No se puede usar Azure AD Connect para configurar la federación en este escenario porque Azure AD Connect puede configurar la federación para dominios en una única instancia de Azure AD.
 
 ##<a name="steps-for-federating-ad-fs-with-multiple-azure-ad"></a>Pasos para la federación de AD FS con varias instancias de Azure AD
 
-Considere la posibilidad de que un dominio contoso.com en Azure Active Directory contoso.onmicrosoft.com ya está federado con instalado en el entorno de Active Directory de contoso.com local a local de hello AD FS. Fabrikam.com es un dominio en la instancia de Azure Active Directory fabrikam.onmicrosoft.com.
+Piense en un dominio contoso.com en una instancia de Azure Active Directory, contoso.onmicrosoft.com, que ya está federado con la instancia de AD FS local instalada en el entorno de Active Directory local de contoso.com. Fabrikam.com es un dominio en la instancia de Azure Active Directory fabrikam.onmicrosoft.com.
 
 ##<a name="step-1-establish-a-two-way-trust"></a>Paso 1: Establecimiento de una confianza bidireccional
  
-En AD FS en contoso.com toobe tooauthenticate capaz de usuarios en fabrikam.com, es necesaria una confianza bidireccional entre contoso.com y fabrikam.com. Siga las instrucciones de hello en este [artículo](https://technet.microsoft.com/library/cc816590.aspx) toocreate Hola confianza bidireccional.
+Para que la instancia de AD FS en contoso.com pueda autenticar a usuarios en fabrikam.com, se necesita una confianza bidireccional entre contoso.com y fabrikam.com. Siga las instrucciones en este [artículo](https://technet.microsoft.com/library/cc816590.aspx) para crear dicha confianza bidireccional.
  
 ##<a name="step-2-modify-contosocom-federation-settings"></a>Paso 2: Modificación de la configuración de federación de contoso.com 
  
-emisor de Hello predeterminado establecido para un tooAD único dominio federado FS es "http://ADFSServiceFQDN/adfs/services/trust", por ejemplo, "http://fs.contoso.com/adfs/services/trust". Azure Active Directory requiere un emisor único para cada dominio federado. Puesto que Hola misma instancia de AD FS va toofederate dos dominios, el valor del emisor de hello debe toobe modificado para que sea único para cada dominio de AD FS que se federa con Azure Active Directory. 
+El emisor predeterminado establecido para un único dominio federado en AD FS es "http://ADFSServiceFQDN/adfs/services/trust", por ejemplo, "http://fs.contoso.com/adfs/services/trust". Azure Active Directory requiere un emisor único para cada dominio federado. Puesto que la misma instancia de AD FS va a federar dos dominios, se debe modificar el valor de emisor para que sea único para cada dominio que AD FS federe con Azure Active Directory. 
  
-En el servidor de AD FS hello, abra PowerShell de Azure AD y realice Hola pasos:
+En el servidor de AD FS, abra PowerShell de Azure AD y realice los pasos siguientes:
  
-Conectarse a Azure Active Directory que contiene la configuración de federación de hello Connect-MsolService actualización contoso.com de dominio Hola para contoso.com Update-MsolFederatedDomain - DomainName contoso.com toohello SupportMultipleDomain:
+Conéctese a la instancia de Azure Active Directory que contiene el dominio contoso.com. Connect-MsolService Actualice la configuración de federación de contoso.com. Update-MsolFederatedDomain -DomainName contoso.com –SupportMultipleDomain
  
-Se cambiará el emisor en configuración de federación del dominio de hello demasiado "http://contoso.com/adfs/services/trust" una emisión de notificaciones y reglas se agregarán para hello Azure AD relación de confianza tooissue Hola correcto issuerId valor basada en el sufijo UPN de Hola.
+El emisor en la configuración de federación del dominio se cambiará a "http://contoso.com/adfs/services/trust" y se agregará una regla de notificaciones de emisión para que la relación de confianza para usuario autenticado de Azure AD emita el valor de issuerId correcto basándose en el sufijo UPN.
  
 ##<a name="step-3-federate-fabrikamcom-with-ad-fs"></a>Paso 3: Federación de fabrikam.com con AD FS
  
-En Azure AD powershell sesión realizar pasos de hello: conectar tooAzure Active Directory que contenga Hola dominio fabrikam.com
+En una sesión de PowerShell en Azure AD, realice los pasos siguientes: Conéctese a la instancia de Azure Active Directory que contiene el dominio fabrikam.com.
 
     Connect-MsolService
-Convertir Hola fabrikam.com administrados dominio toofederated:
+Convierta el dominio administrado fabrikam.com en federado:
 
     Convert-MsolDomainToFederated -DomainName anandmsft.com -Verbose -SupportMultipleDomain
  
-Hola por encima de la operación va a federar Hola dominio fabrikam.com con hello misma instancia de AD FS. Puede comprobar la configuración del dominio hello mediante el uso de Get-MsolDomainFederationSettings para ambos dominios.
+La operación anterior federará el dominio fabrikam.com con la misma instancia de AD FS. Puede comprobar la configuración del dominio mediante Get-MsolDomainFederationSettings para ambos dominios.
 
 ## <a name="next-steps"></a>Pasos siguientes
 [Conexión de Active Directory con Azure Active Directory](active-directory-aadconnect.md)

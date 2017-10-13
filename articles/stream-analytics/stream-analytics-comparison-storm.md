@@ -1,6 +1,6 @@
 ---
-title: "Plataformas de análisis: Apache Storm comparación tooStream análisis | Documentos de Microsoft"
-description: "Obtenga información orientativa elegir una plataforma de análisis en la nube mediante el uso de un tooStream de comparación de Apache Storm análisis. Comprenda las características y diferencias."
+title: "Plataformas de Analytics: Comparación de Apache Storm con Stream Analytics | Microsoft Docs"
+description: "Obtenga instrucciones para seleccionar una plataforma de análisis en la nube mediante una comparación de Apache Storm con Análisis de transmisiones. Comprenda las características y diferencias."
 keywords: "plataforma de análisis, plataformas de análisis, plataforma de análisis de la nube, comparación de storm"
 services: stream-analytics
 documentationcenter: 
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/27/2017
 ms.author: samacha
-ms.openlocfilehash: 5a0ec5b2439596f0da962f04b776472031660062
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 97044cb5d7b0b3fcb3b85328df618a265bc59b61
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="choosing-a-streaming-analytics-platform-comparing-apache-storm-and-azure-stream-analytics"></a>Elección de una plataforma de Stream Analytics: comparación de Apache Storm con Azure Stream Analytics
-Azure ofrece varias soluciones para analizar datos de streaming: [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) y [Apache Storm en HDInsight de Azure](https://azure.microsoft.com/services/hdinsight/apache-storm/). Ambas plataformas de análisis ofrecen ventajas de Hola de una solución de PaaS. Pero Hola plataformas cuentan con algunas diferencias significativas en sus capacidades, así como en cómo configurar y administrarlos. 
+Azure ofrece varias soluciones para analizar datos de streaming: [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) y [Apache Storm en HDInsight de Azure](https://azure.microsoft.com/services/hdinsight/apache-storm/). Ambas plataformas de análisis ofrecen las ventajas de una solución PaaS. Pero las plataformas presentan algunas diferencias importantes en cuanto a funcionalidades, así como en la forma en que se configuran y administran. 
 
-Este artículo proporciona una comparación en paralelo de toohelp características que elija entre Apache Storm y análisis de transmisiones de Azure como una plataforma de análisis en la nube. 
+En este artículo se ofrece una comparación de características en paralelo para ayudarle a elegir entre Apache Storm y Azure Stream Analytics como plataforma de análisis en la nube. 
 
 ## <a name="general-features"></a>Características generales
 
@@ -33,7 +33,7 @@ Este artículo proporciona una comparación en paralelo de toohelp característi
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong></strong>
+                    <strong> </strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -121,14 +121,14 @@ Los usuarios implementan y supervisan todo un clúster, que puede hospedar vario
             </td>
             <td width="204" valign="top">
                 <p>
-Precio por volumen de datos procesados y Hola número de unidades de streaming necesario por hora que Hola trabajo se está ejecutando. 
+El precio varía por volumen de datos procesados y el número de unidades de streaming necesarias por cada hora en la que se ejecuta el trabajo. 
                 </p>
                     <p>Para más información, vea los <a href="http://azure.microsoft.com/pricing/details/stream-analytics/">precios de Stream Analytics</a>.</p>
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-unidad de Hola de compra está basado en el clúster y se cobra puntualmente Hola Hola clúster se está ejecutando, independientemente de los trabajos que se implementa.
+La unidad de compra se basa en el clúster y se cobra por el tiempo durante el que el clúster se ejecuta, independientemente de los trabajos implementados.
                 </p>
                 <p>
 Para más información, vea los <a href="http://azure.microsoft.com/pricing/details/hdinsight/">precios de HDInsight</a>.
@@ -145,7 +145,7 @@ Para más información, vea los <a href="http://azure.microsoft.com/pricing/deta
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong></strong>
+                    <strong> </strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -189,7 +189,7 @@ Compatible de manera predeterminada con agregados de ventana y uniones temporale
             </td>
             <td width="246" valign="top">
                 <p>
-Deben implementarse operadores temporales por usuario de Hola.
+Los operadores temporales debe implementarlos el usuario.
                 </p>
             </td>
         </tr>
@@ -201,12 +201,12 @@ Deben implementarse operadores temporales por usuario de Hola.
             </td>
             <td width="204" valign="top">
                 <p>
-Los usuarios pueden crear, depurar y supervisar trabajos a través del portal de Azure, hello mediante datos de ejemplo que se deriva de una secuencia en directo.
+Los usuarios pueden crear, depurar y supervisar trabajos a través de Azure Portal, con datos de muestra procedentes de Live Stream.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-Los usuarios que utilizan .NET pueden desarrollar, depurar y supervisar a través de Visual Studio. Los usuarios con Java u otros lenguajes pueden usar Hola IDE de su elección.
+Los usuarios que utilizan .NET pueden desarrollar, depurar y supervisar a través de Visual Studio. Los usuarios que utilizan Java u otros lenguajes pueden usar el IDE que prefieran.
                 </p>
             </td>
         </tr>
@@ -218,12 +218,12 @@ Los usuarios que utilizan .NET pueden desarrollar, depurar y supervisar a travé
             </td>
             <td width="204" valign="top">
                 <p>
-Registros de estado y las operaciones básicas de trabajo son depuración toohelp disponible. Análisis de transmisiones actualmente no permiten a los usuarios especificar el contenido o la cantidad de contenido se incluye en los registros de hello (es decir, el modo detallado).
+Existen registros de operaciones y estados del trabajo básicos disponibles que ayudan a depurar. Stream Analytics actualmente no permite a los usuarios especificar qué contenido ni cuánto contenido se incluye en los registros (es decir, el modo detallado).
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-Hay registros detallados disponibles. Los usuarios pueden obtener acceso a registros en Visual Studio o iniciando sesión en el clúster toohello y tener acceso directamente a los registros de Hola.
+Hay registros detallados disponibles. Los usuarios pueden acceder a los registros en Visual Studio o iniciar sesión en el clúster y acceder directamente a los registros.
                 </p>
             </td>
         </tr>
@@ -254,7 +254,7 @@ Sí. Los usuarios pueden escribir código personalizado en C#, Java o en cualqui
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong></strong>
+                    <strong> </strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -344,7 +344,7 @@ Los usuarios pueden implementar cualquier formato de codificación de datos medi
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong></strong>
+                    <strong> </strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -388,7 +388,7 @@ La supervisión se implementa mediante Azure Portal y las API de REST. Los usuar
             </td>
             <td width="246" valign="top">
                 <p>
-Supervisión se implementa mediante hello aluvión de interfaz de usuario y las API de REST.
+La supervisión se implementa mediante la interfaz de usuario de Storm y las API de REST.
                 </p>
             </td>
         </tr>
@@ -400,12 +400,12 @@ Supervisión se implementa mediante hello aluvión de interfaz de usuario y las 
             </td>
             <td width="204" valign="top">
                 <p>
-Escalabilidad viene determinada por el número de Hola de Streaming Units (SUs) para cada trabajo. Cada unidad de transmisión por secuencias se procesa la too1 MB/segundo, con un máximo de 50 unidades. Para obtener más información, consulte <a href="https://docs.microsoft.com/azure/stream-analytics/stream-analytics-scale-jobs">rendimiento tooincrease de escala</a>.
+La escalabilidad viene determinada por el número de unidades de streaming (SU) para cada trabajo. Cada unidad de streaming procesa hasta 1 MB/segundo, con un máximo de 50 unidades. Para más información, vea <a href="https://docs.microsoft.com/azure/stream-analytics/stream-analytics-scale-jobs">Escalado para aumentar el rendimiento</a>.
                 </p>
             </td>
             <td width="246" valign="top">
                 <p>
-Escalabilidad se determina mediante el número de nodos de clúster de HDInsight Storm Hola Hola. límite superior de Hello en número de Hola de nodos se define por la cuota de Azure del usuario de Hola.
+La escalabilidad viene determinada por el número de nodos de clúster de Storm en HDInsight. El límite superior en el número de nodos se define por la cuota de Azure del usuario.
                 </p>
             </td>
         </tr>
@@ -417,7 +417,7 @@ Escalabilidad se determina mediante el número de nodos de clúster de HDInsight
             </td>
             <td width="204" valign="top">
                 <p>
-Los usuarios pueden aumentar el procesamiento de datos u optimizar los costos aumentando o reduciendo el número de Hola de unidades de Streaming, con un límite de 1 GB/segundo.
+Los usuarios pueden aumentar el procesamiento de datos u optimizar los costos aumentando o reduciendo el número de unidades de streaming, con un límite superior de 1 GB/segundo.
                 </p>
             </td>
             <td width="246" valign="top">
@@ -475,10 +475,10 @@ Revisión automática sin tiempo de inactividad.
             </td>
             <td width="246" valign="top">
                 <p>
-SLA de tiempo de actividad del 99,9% de clúster de Storm Hola. 
+Contrato de nivel de servicio con un tiempo de actividad del clúster de Storm del 99,9%. 
                 </p>
                 <p>
-Apache Storm es una plataforma de streaming con tolerancia a errores. Sin embargo, resulta tooensure de responsabilidad del usuario de Hola que streaming ejecutan los trabajos sin interrupciones.
+Apache Storm es una plataforma de streaming con tolerancia a errores. Pero, es responsabilidad del usuario garantizar que los trabajos de streaming se ejecutan sin interrupciones.
                 </p>
             </td>
         </tr>
@@ -492,7 +492,7 @@ Apache Storm es una plataforma de streaming con tolerancia a errores. Sin embarg
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong></strong>
+                    <strong> </strong>
                 </p>
             </td>
             <td width="204" valign="top">
@@ -519,7 +519,7 @@ Directivas configurables integradas pueden reordenar los eventos, quitar eventos
             </td>
             <td width="246" valign="top">
                 <p>
-Los usuarios deben implementar lógica toohandle este escenario.
+Los usuarios deben implementar la lógica para administrar este escenario.
                 </p>
             </td>
         </tr>
@@ -531,7 +531,7 @@ Los usuarios deben implementar lógica toohandle este escenario.
             </td>
             <td width="204" valign="top">
                 <p>
-Hay datos de referencia disponibles de Azure Blob Storage con un máximo de 100 MB de caché en memoria. Datos de referencia se actualizan por servicio Hola.
+Hay datos de referencia disponibles de Azure Blob Storage con un máximo de 100 MB de caché en memoria. El servicio actualiza los datos de referencia.
                 </p>
             </td>
             <td width="246" valign="top">

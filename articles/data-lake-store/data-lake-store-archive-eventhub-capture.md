@@ -1,6 +1,6 @@
 ---
-title: "aaaCapture datos desde los centros de eventos en el almacén de Azure Data Lake | Documentos de Microsoft"
-description: "Datos de toocapture de almacén de Azure Data Lake de uso de los centros de eventos"
+title: Capturar datos de Event Hubs en Azure Data Lake Store | Microsoft Docs
+description: Usar Azure Data Lake Store para capturar datos de Event Hubs
 services: data-lake-store
 documentationcenter: 
 author: nitinme
@@ -13,40 +13,40 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 09b17bd0b47043bd2c83dba72c01a8064f206a0a
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: a9e69576958ae96d22a4eb03d0df429f0b307298
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="use-azure-data-lake-store-toocapture-data-from-event-hubs"></a>Datos de toocapture de almacén de Azure Data Lake de uso de los centros de eventos
+# <a name="use-azure-data-lake-store-to-capture-data-from-event-hubs"></a>Usar Azure Data Lake Store para capturar datos de Event Hubs
 
-Obtenga información acerca de cómo toouse datos de almacén de Azure Data Lake toocapture recibido por centros de eventos de Azure.
+Obtenga información sobre cómo usar Azure Data Lake Store para capturar datos recibidos por Azure Event Hubs.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
 * **Una suscripción de Azure**. Vea [Obtener evaluación gratuita de Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Una cuenta de Almacén de Azure Data Lake**. Para obtener instrucciones sobre cómo toocreate un, consulte [empezar a trabajar con el almacén de Azure Data Lake](data-lake-store-get-started-portal.md).
+* **Una cuenta de Almacén de Azure Data Lake**. Para obtener instrucciones sobre cómo crear una, consulte la [introducción a Azure Data Lake Store](data-lake-store-get-started-portal.md).
 
-*  **Un espacio de nombres de Event Hubs**. Para obtener instrucciones, consulte [Creación de un espacio de nombres de Event Hubs](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace). Asegurarse de que cuenta de almacén de Data Lake hello y espacio de nombres de los centros de eventos de Hola Hola misma suscripción de Azure.
+*  **Un espacio de nombres de Event Hubs**. Para obtener instrucciones, consulte [Creación de un espacio de nombres de Event Hubs](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace). Asegúrese de que la cuenta de Data Lake Store y el espacio de nombres de Event Hubs se encuentran en la misma suscripción de Azure.
 
 
-## <a name="assign-permissions-tooevent-hubs"></a>Asignar permisos de los centros de tooEvent
+## <a name="assign-permissions-to-event-hubs"></a>Asignar permisos a Event Hubs
 
-En esta sección, creará una carpeta dentro de la cuenta de hello donde desea toocapture Hola datos desde los centros de eventos. También asigna permisos tooEvent concentradores para que pueden escribir datos en una cuenta de almacén de Data Lake. 
+En esta sección, creará una carpeta en la cuenta en que quiere capturar los datos de Event Hubs. También asignará permisos a Event Hubs para que pueda escribir datos en una cuenta de Data Lake Store. 
 
-1. Abrir cuenta de almacén de Data Lake Hola donde desea que los datos de toocapture los centros de eventos y, a continuación, haga clic en **Explorador de datos**.
+1. Abra la cuenta de Data Lake Store en que quiere capturar los datos de Event Hubs y después haga clic en **Explorador de datos**.
 
     ![Explorador de datos de Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-open-data-explorer.png "Explorador de datos de Data Lake Store")
 
-2.  Haga clic en **nueva carpeta** y, a continuación, escriba un nombre para la carpeta donde desea que los datos de hello toocapture.
+2.  Haga clic en **Nueva carpeta** y después escriba un nombre para la carpeta en que quiere capturar los datos.
 
     ![Crear una carpeta en Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-new-folder.png "Crear una carpeta en Data Lake Store")
 
-3. Asignar permisos en la raíz de Hola de hello almacén de Data Lake. 
+3. Asigne permisos en la raíz de Data Lake Store. 
 
-    a. Haga clic en **Explorador de datos**, seleccione raíz Hola Hola cuenta de almacén de Data Lake y, a continuación, haga clic en **acceso**.
+    a. Haga clic en **Explorador de datos**, seleccione la raíz de la cuenta de Data Lake Store y después haga clic en **Acceso**.
 
     ![Asignar permisos a la raíz de Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "Asignar permisos a la raíz de Data Lake Store")
 
@@ -56,15 +56,15 @@ En esta sección, creará una carpeta dentro de la cuenta de hello donde desea t
     
     Haga clic en **Seleccionar**.
 
-    c. En **Asignar permisos**, haga clic en **Seleccionar permisos**. Establecer **permisos** demasiado**Execute**. Establecer **agregar a** demasiado**esta carpeta y todos los elementos secundarios**. Establecer **agregar como** demasiado**una entrada de permiso de acceso y una entrada de permiso predeterminado**.
+    c. En **Asignar permisos**, haga clic en **Seleccionar permisos**. Establezca **Permisos** en **Ejecutar**. Establezca **Agregar a** en **Esta carpeta y todos los elementos secundarios**. Establezca **Agregar como** en **Una entrada de permiso de acceso y una entrada de permiso predeterminado**.
 
     ![Asignar permisos a la raíz de Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Asignar permisos a la raíz de Data Lake Store")
 
     Haga clic en **Aceptar**.
 
-4. Asignar permisos para las carpetas de hello en la cuenta de almacén de Data Lake donde desea toocapture datos.
+4. Asigne permisos a la carpeta en la cuenta de Data Lake Store en que quiere capturar los datos.
 
-    a. Haga clic en **Explorador de datos**, seleccione la carpeta de Hola Hola cuenta de almacén de Data Lake y, a continuación, haga clic en **acceso**.
+    a. Haga clic en **Explorador de datos**, seleccione la carpeta de la cuenta de Data Lake Store y después haga clic en **Acceso**.
 
     ![Asignar permisos a la carpeta de Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "Asignar permisos a la carpeta de Data Lake Store")
 
@@ -74,52 +74,52 @@ En esta sección, creará una carpeta dentro de la cuenta de hello donde desea t
     
     Haga clic en **Seleccionar**.
 
-    c. En **Asignar permisos**, haga clic en **Seleccionar permisos**. Establecer **permisos** demasiado**lectura, escritura,** y **Execute**. Establecer **agregar a** demasiado**esta carpeta y todos los elementos secundarios**. Por último, establezca **agregar como** demasiado**una entrada de permiso de acceso y una entrada de permiso predeterminado**.
+    c. En **Asignar permisos**, haga clic en **Seleccionar permisos**. Establezca **Permisos** en **Leer, escribir** y **ejecutar**. Establezca **Agregar a** en **Esta carpeta y todos los elementos secundarios**. Por último, establezca **Agregar como** en **Una entrada de permiso de acceso y una entrada de permiso predeterminado**.
 
     ![Asignar permisos a la carpeta de Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "Asignar permisos a la carpeta de Data Lake Store")
     
     Haga clic en **Aceptar**. 
 
-## <a name="configure-event-hubs-toocapture-data-toodata-lake-store"></a>Configurar almacén de los centros de eventos toocapture data tooData Lake
+## <a name="configure-event-hubs-to-capture-data-to-data-lake-store"></a>Configurar Event Hubs para capturar datos en Data Lake Store
 
-En esta sección, creará un centro de eventos en un espacio de nombres de Event Hubs. También configurará Hola concentrador de eventos toocapture datos tooan cuenta de almacén de Azure Data Lake. En esta sección, se da por supuesto que ya ha creado un espacio de nombres de Event Hubs.
+En esta sección, creará un centro de eventos en un espacio de nombres de Event Hubs. También configurará el centro de eventos para capturar los datos en una cuenta de Azure Data Lake Store. En esta sección, se da por supuesto que ya ha creado un espacio de nombres de Event Hubs.
 
-2. De hello **Introducción** de espacio de nombres de los centros de eventos de hello, haga clic en **+ concentrador de eventos**.
+2. En el panel **Introducción** del espacio de nombres de Event Hubs, haga clic en **+ Centro de eventos**.
 
     ![Crear centro de eventos](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "Crear centro de eventos")
 
-3. Proporcione la siguiente Hola valores tooconfigure centros de eventos toocapture datos tooData Lake almacén.
+3. Proporcione los siguientes valores para configurar Event Hubs para capturar datos en Data Lake Store.
 
     ![Crear centro de eventos](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "Crear centro de eventos")
 
-    a. Proporcione un nombre para hello concentrador de eventos.
+    a. Especifique un nombre para el centro de eventos.
     
-    b. Para este tutorial, establezca **recuento de particiones** y **retención de mensajes** valores predeterminados de toohello.
+    b. Para este tutorial, establezca **Recuento de particiones** y **Retención de mensajes** en los valores predeterminados.
     
-    c. Establecer **capturar** demasiado**en**. Conjunto hello **período de tiempo** (con qué frecuencia toocapture) y **ventana de tamaño** (toocapture de tamaño de datos). 
+    c. Establezca **Capture** en **Activado**. Establezca la **Ventana de tiempo** (la frecuencia de captura) y **Ajustar tamaño de la ventana** (tamaño de los datos que se capturarán). 
     
-    d. Para **proveedor capturar**, seleccione **almacén de Azure Data Lake** y seleccione Hola Hola almacén de Data Lake que creó anteriormente. Para **ruta de acceso de datos Lake**, escriba el nombre de Hola de carpeta de Hola que creó en hello cuenta de almacén de Data Lake. Solo se necesita carpeta de toohello de tooprovide Hola ruta de acceso relativa.
+    d. En **Capture Provider** (Proveedor de Capture), seleccione **Azure Data Lake Store** y después seleccione el Data Lake Store que ha creado anteriormente. En **Data Lake Path** (Ruta de acceso de Data Lake), escriba el nombre de la carpeta que ha creado en la cuenta de Data Lake Store. Basta con proporcionar la ruta de acceso relativa a la carpeta.
 
-    e. Deje hello **formatos de nombre de archivo de ejemplo captura** valor predeterminado de toohello. Esta opción rige la estructura de carpetas de Hola que se crea en la carpeta de captura de Hola.
+    e. Deje **Formatos de nombre de archivo de Capture de ejemplo** en el valor predeterminado. Esta opción rige la estructura de carpetas que se crea en la carpeta de captura.
 
     f. Haga clic en **Crear**.
 
-## <a name="test-hello-setup"></a>Programa de instalación de prueba Hola
+## <a name="test-the-setup"></a>Probar la configuración
 
-Ahora puede probar la solución de hello enviando datos toohello concentrador de eventos de Azure. Siga las instrucciones de hello en [enviar eventos centros de eventos de tooAzure](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md). Una vez que empezar a enviar datos de hello, verá datos Hola reflejados en el almacén de Data Lake con la estructura de carpetas de Hola que especificó. Por ejemplo, verá una estructura de carpetas tal y como se muestra en la siguiente captura de pantalla, en el almacén de Data Lake de Hola.
+Ahora puede enviar datos a Azure Event Hubs para probar la solución. Siga las instrucciones de [Envío de eventos a Azure Event Hubs](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md). Cuando empiece a enviar los datos, los verá reflejados en Data Lake Store con la estructura de carpetas que ha especificado. Por ejemplo, verá una estructura de carpetas, tal y como se muestra en la siguiente captura de pantalla, en Data Lake Store.
 
 ![Datos de ejemplo del centro de eventos en Data Lake Store](./media/data-lake-store-archive-eventhub-capture/data-lake-store-eventhub-data-sample.png "Datos de ejemplo del centro de eventos en Data Lake Store")
 
 > [!NOTE]
-> Incluso si no tiene mensajes que entran en los centros de eventos, los concentradores de eventos escribe archivos vacíos con solo a los encabezados hello en hello cuenta de almacén de Data Lake. Hello archivos se escriben en hello mismo intervalo de tiempo que haya especificado durante la creación de centros de eventos de Hola.
+> Incluso si no tiene mensajes que lleguen a Event Hubs, este escribe archivos vacíos solo con los encabezados en la cuenta de Data Lake Store. Los archivos se escriben en el mismo intervalo de tiempo que ha proporcionado al crear los centros de eventos.
 > 
 >
 
 ## <a name="analyze-data-in-data-lake-store"></a>Análisis de datos en el Almacén de Data Lake
 
-Una vez en el almacén de Data Lake datos hello, puede ejecutar trabajos analíticos tooprocess y delicadas datos Hola. Vea [USQL Avro ejemplo](https://github.com/Azure/usql/tree/master/Examples/AvroExamples) acerca de cómo toodo este mediante el análisis de Data Lake de Azure.
+Una vez que los datos están en Data Lake Store, puede ejecutar trabajos analíticos para procesar y estudiar los datos. Vea [USQL Avro Example](https://github.com/Azure/usql/tree/master/Examples/AvroExamples) (Ejemplo de Avro de USQL) sobre cómo hacer esto con Azure Data Lake Analytics.
   
 
 ## <a name="see-also"></a>Otras referencias
 * [Protección de los datos en el Almacén de Data Lake](data-lake-store-secure-data.md)
-* [Copiar los datos de almacén de Blobs de Azure almacenamiento Lake tooData](data-lake-store-copy-data-azure-storage-blob.md)
+* [Copiar datos de los blobs de almacenamiento de Azure en el Almacén Data Lake](data-lake-store-copy-data-azure-storage-blob.md)

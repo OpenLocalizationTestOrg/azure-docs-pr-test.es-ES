@@ -1,6 +1,6 @@
 ---
-title: aaaWhat produjo proyecto toomy ASP.NET 5 (servicios de Visual Studio conectados) | Documentos de Microsoft
-description: "Describe lo que sucede después de conexión de cuenta de almacenamiento de Azure tooan en un proyecto de Visual Studio ASP.NET 5 mediante Visual Studio servicios conectados"
+title: "¿Qué le ha ocurrido a mi proyecto ASP.NET 5 (servicios conectados a Visual Studio)? | Microsoft Docs"
+description: "Describe lo que sucede después de conectarse a una cuenta de almacenamiento de Azure en un proyecto de ASP.NET 5 de Visual Studio mediante los servicios conectados de Visual Studio"
 services: storage
 documentationcenter: 
 author: kraigb
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
-ms.openlocfilehash: 75ce3bfb59e085bf08d98d9b0cd9442722d7566b
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: 2a25c24fd7625374d269622a805f386fcd52bb5f
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="what-happened-toomy-aspnet-5-project-visual-studio-azure-storage-connected-services"></a>¿Qué proyecto toomy problema ASP.NET 5 (servicios de almacenamiento de Azure de Visual Studio conectados)?
+# <a name="what-happened-to-my-aspnet-5-project-visual-studio-azure-storage-connected-services"></a>¿Qué le ha ocurrido a mi proyecto ASP.NET 5 (servicios conectados a Almacenamiento de Azure de Visual Studio)?
 ## <a name="references-added"></a>Se han agregado referencias
-paquete de NuGet de almacenamiento de Azure de Hola se agregó el proyecto de Visual Studio tooyour.  
-Este paquete agrega Hola siguientes referencias de. NET:
+El paquete NuGet de Almacenamiento de Azure se agregó al proyecto de Visual Studio.  
+Este paquete agrega las siguientes referencias. NET:
 
 * **Microsoft.Data.Edm**
 * **Microsoft.Data.OData**
@@ -34,10 +34,10 @@ Este paquete agrega Hola siguientes referencias de. NET:
 * **System.Data**
 * **System.Spatial**
 
-Además, el paquete de NuGet hello **Microsoft.Framework.Configuration.Json** se ha agregado.
+Además, se agregó el paquete NuGet **Microsoft.Framework.Configuration.Json** .
 
 ## <a name="connection-string-for-azure-storage-added"></a>Se ha agregado la cadena de conexión para Almacenamiento de Azure.
-En archivo de hello config.json del proyecto, se crea un elemento con la cadena de conexión y la clave de la cuenta de almacenamiento de hello seleccionado.
+En el archivo config.json de su proyecto, se ha creado un elemento con la cadena y la clave de conexión de la cuenta de almacenamiento seleccionada.
 
 Para más información, vea [ASP.NET 5](http://www.asp.net/vnext).
 

@@ -1,5 +1,5 @@
 ---
-title: "aaaManage búsqueda de Azure con scripts de Powershell | Documentos de Microsoft"
+title: "Administración de Azure Search con scripts de PowerShell | Microsoft Docs"
 description: "Administre el servicio Búsqueda de Azure con scripts de PowerShell. Creación o actualización del servicio Búsqueda de Azure y administración de las claves de administración de Búsqueda de Azure"
 services: search
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: powershell
 ms.date: 08/15/2016
 ms.author: seasa
-ms.openlocfilehash: fc7fb4b025340c77717601e0aaee938be3e9230f
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
-ms.translationtype: MT
+ms.openlocfilehash: aa51c846efef12461ec382274199bc049c42aaa3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>Administración del servicio Búsqueda de Azure con PowerShell
 > [!div class="op_single_selector"]
@@ -28,30 +28,30 @@ ms.lasthandoff: 10/06/2017
 > 
 > 
 
-Este tema describe tooperform de comandos de PowerShell de hello muchas de las tareas de administración de Hola para los servicios de búsqueda de Azure. Se le guiará por la creación de un servicio de búsqueda, su escalado y la administración de sus claves de API.
-Estos comandos en paralelo opciones de administración de hello disponibles en hello [API de REST de administración de búsqueda de Azure](http://msdn.microsoft.com/library/dn832684.aspx).
+En este tema se describen los comandos de PowerShell para realizar muchas de las tareas de administración del servicio Búsqueda de Azure. Se le guiará por la creación de un servicio de búsqueda, su escalado y la administración de sus claves de API.
+Estos comandos equivalen a las opciones de administración disponibles en la [API de REST de administración de Búsqueda de Azure](http://msdn.microsoft.com/library/dn832684.aspx).
 
 ## <a name="prerequisites"></a>Requisitos previos
 * Debe tener Azure PowerShell 1.0 o versiones posteriores. Para obtener más información, consulte [Instalación y configuración de Azure PowerShell](/powershell/azure/overview).
-* Debe haber iniciado sesión tooyour suscripción de Azure en PowerShell, tal y como se describe a continuación.
+* Debe iniciar sesión en su suscripción de Azure en PowerShell, tal y como se describe a continuación.
 
-En primer lugar, debe tooAzure de inicio de sesión con este comando:
+En primer lugar, debe iniciar sesión en Azure con este comando.
 
     Login-AzureRmAccount
 
-Especifique la dirección de correo electrónico de Hola de su cuenta de Azure y su contraseña en el cuadro de diálogo de inicio de sesión de Microsoft Azure de Hola.
+Especifique la dirección de correo electrónico de la cuenta de Azure y su contraseña en el cuadro de diálogo de inicio de sesión de Microsoft Azure.
 
 También puede [iniciar sesión de forma no interactiva con una entidad de servicio](../azure-resource-manager/resource-group-authenticate-service-principal.md).
 
-Si tiene varias suscripciones de Azure, deberá tooset su suscripción de Azure. toosee una lista de las suscripciones actuales, ejecute este comando.
+Si tiene varias suscripciones de Azure, deberá establecer la suscripción de Azure. Para ver una lista de las suscripciones actuales, ejecute este comando.
 
     Get-AzureRmSubscription | sort SubscriptionName | Select SubscriptionName
 
-suscripción de hello toospecify, ejecute el siguiente comando de Hola. En el siguiente ejemplo de Hola, es el nombre de la suscripción de hello `ContosoSubscription`.
+Para especificar la suscripción, ejecute el siguiente comando. En el ejemplo siguiente, el nombre de la suscripción es `ContosoSubscription`.
 
     Select-AzureRmSubscription -SubscriptionName ContosoSubscription
 
-## <a name="commands-toohelp-you-get-started"></a>Toohelp comandos empezar
+## <a name="commands-to-help-you-get-started"></a>Comandos para ayudarle a empezar a trabajar
     $serviceName = "your-service-name-lowercase-with-dashes"
     $sku = "free" # or "basic" or "standard" for paid services
     $location = "West US"
@@ -61,11 +61,11 @@ suscripción de hello toospecify, ejecute el siguiente comando de Hola. En el si
     # If you don't already have this resource group, you can create it with 
     # New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
 
-    # Register hello ARM provider idempotently. This must be done once per subscription
+    # Register the ARM provider idempotently. This must be done once per subscription
     Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Search"
 
     # Create a new search service
-    # This command will return once hello service is fully created
+    # This command will return once the service is fully created
     New-AzureRmResourceGroupDeployment `
         -ResourceGroupName $resourceGroupName `
         -TemplateUri "https://gallery.azure.com/artifact/20151001/Microsoft.Search.1.0.9/DeploymentTemplates/searchServiceDefaultTemplate.json" `
@@ -85,13 +85,13 @@ suscripción de hello toospecify, ejecute el siguiente comando de Hola. En el si
     # View your resource
     $resource
 
-    # Get hello primary admin API key
+    # Get the primary admin API key
     $primaryKey = (Invoke-AzureRmResourceAction `
         -Action listAdminKeys `
         -ResourceId $resource.ResourceId `
         -ApiVersion 2015-08-19).PrimaryKey
 
-    # Regenerate hello secondary admin API Key
+    # Regenerate the secondary admin API Key
     $secondaryKey = (Invoke-AzureRmResourceAction `
         -ResourceType "Microsoft.Search/searchServices/regenerateAdminKey" `
         -ResourceGroupName $resourceGroupName `
@@ -99,7 +99,7 @@ suscripción de hello toospecify, ejecute el siguiente comando de Hola. En el si
         -ApiVersion 2015-08-19 `
         -Action secondary).SecondaryKey
 
-    # Create a query key for read only access tooyour indexes
+    # Create a query key for read only access to your indexes
     $queryKeyDescription = "query-key-created-from-powershell"
     $queryKey = (Invoke-AzureRmResourceAction `
         -ResourceType "Microsoft.Search/searchServices/createQueryKey" `
@@ -120,21 +120,21 @@ suscripción de hello toospecify, ejecute el siguiente comando de Hola. En el si
 
     # Scale your service up
     # Note that this will only work if you made a non "free" service
-    # This command will not return until hello operation is finished
-    # It can take 15 minutes or more tooprovision hello additional resources
+    # This command will not return until the operation is finished
+    # It can take 15 minutes or more to provision the additional resources
     $resource.Properties.ReplicaCount = 2
     $resource | Set-AzureRmResource
 
     # Delete your service
-    # Deleting your service will delete all indexes and data in hello service
+    # Deleting your service will delete all indexes and data in the service
     $resource | Remove-AzureRmResource
 
 ## <a name="next-steps"></a>Pasos siguientes
-Ahora que se crea el servicio, puede realizar pasos de hello: compilar un [índice](search-what-is-an-index.md), [consultar un índice](search-query-overview.md)y por último, crear y administrar su propia aplicación de búsqueda que usa búsqueda de Azure.
+Ahora que el servicio está creado, puede realizar los pasos siguientes: crear un [índice](search-what-is-an-index.md), [consultar un índice](search-query-overview.md) y, por último, crear y administrar su propia aplicación de búsqueda que usa Azure Search.
 
-* [Crear un índice de búsqueda de Azure en hello portal de Azure](search-create-index-portal.md)
-* [Consultar un índice de búsqueda de Azure mediante el Explorador de búsqueda en hello portal de Azure](search-explorer.md)
-* [Programa de instalación de un indizador tooload de datos de otros servicios](search-indexer-overview.md)
-* [Cómo toouse búsqueda de Azure en .NET](search-howto-dotnet-sdk.md)
+* [Creación de un índice de Búsqueda de Azure en el Portal de Azure](search-create-index-portal.md)
+* [Consulta de un índice de Búsqueda de Azure mediante el Explorador de búsqueda en el Portal de Azure](search-explorer.md)
+* [Configurar un indexador para cargar datos desde otros servicios](search-indexer-overview.md)
+* [Cómo usar la Búsqueda de Azure en .NET](search-howto-dotnet-sdk.md)
 * [Analizar el tráfico de Búsqueda de Azure](search-traffic-analytics.md)
 

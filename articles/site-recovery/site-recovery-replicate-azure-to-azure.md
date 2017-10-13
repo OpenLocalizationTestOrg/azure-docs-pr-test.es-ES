@@ -1,6 +1,6 @@
 ---
-title: aplicaciones de aaaReplicate (Azure tooAzure) | Documentos de Microsoft
-description: "Este artículo describe cómo ejecutar los equipos de tooset la replicación de memoria virtual en una región de Azure demasiado otra región de Azure."
+title: "Replicación de aplicaciones (Azure en Azure) | Microsoft Docs"
+description: "En este artículo se explica cómo configurar la replicación de máquinas virtuales que se ejecutan en una región de Azure en otra región de Azure."
 services: site-recovery
 documentationcenter: 
 author: asgang
@@ -14,105 +14,105 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 5/22/2017
 ms.author: asgang
-ms.openlocfilehash: fb190dac14419f892a1c6b45a3d991d8005e4bd0
-ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.openlocfilehash: f9f97cf840b722c8cfee169dd1640e0682f287ff
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 10/06/2017
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="replicate-azure-virtual-machines-tooanother-azure-region"></a>Replicar máquinas virtuales de Azure tooanother región de Azure
+# <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>Replicación de máquinas virtuales de Azure en otra región de Azure
 
 
 
 >[!NOTE]
 >
-> La replicación de Site Recovery en máquinas virtuales de Azure se encuentra actualmente en versión preliminar.
+> La replicación de Site Recovery para máquinas virtuales de Azure está actualmente en vista previa.
 
-Este artículo describe cómo ejecutar los equipos de tooset la replicación de memoria virtual en una región de Azure tooanother región de Azure.
+En este artículo se explica cómo configurar la replicación de máquinas virtuales que se ejecutan en una región de Azure en otra región de Azure.
 
 ## <a name="prerequisites"></a>Requisitos previos
 
-* artículo de Hola se supone que ya sabe algo acerca de Site Recovery y almacén de servicios de recuperación. Deberá toohave un pre "Almacén de servicios de recuperación" creado.
+* El artículo da por hecho que ya conoce Site Recovery y el almacén de Recovery Services. Es necesario haber creado de antemano un "almacén de Recovery Services".
 
     >[!NOTE]
     >
-    > Se recomienda que cree Hola "Almacén de servicios de recuperación" en ubicación Hola donde desea que su tooreplicate de máquinas virtuales. Por ejemplo, si la ubicación de destino es "Centro de EE. UU.", cree el almacén en "Centro de EE. UU.".
+    > Se recomienda crear el "almacén de Recovery Services" en la ubicación donde quiere que se repliquen las máquinas virtuales. Por ejemplo, si la ubicación de destino es "Centro de EE. UU.", cree el almacén en "Centro de EE. UU.".
 
-* Si usan reglas de grupos de seguridad de red (NSG) o la conectividad a internet firewall proxy toocontrol acceso toooutbound en hello máquinas virtuales de Azure, asegúrese de que Hola de lista blanca de direcciones requiere direcciones URL o direcciones IP. Consulte demasiado[documento de orientación de las redes](./site-recovery-azure-to-azure-networking-guidance.md) para obtener más detalles.
+* Si usa reglas de grupos de seguridad de red (NSG) o proxy de firewall para controlar el acceso a la conectividad saliente de Internet en las máquinas virtuales de Azure, asegúrese de incluir en la lista blanca las direcciones URL o IP necesarias. Vea el [documento de instrucciones de redes](./site-recovery-azure-to-azure-networking-guidance.md) para obtener más detalles.
 
-* Si tiene una ExpressRoute o una conexión VPN entre hello y local del origen de ubicación de Azure, siga [consideraciones sobre la recuperación de sitio de ExpressRoute de Azure tooon local / configuración de VPN](site-recovery-azure-to-azure-networking-guidance.md#guidelines-for-existing-azure-to-on-premises-expressroutevpn-configuration) documento.
+* Si tiene una conexión ExpressRoute o VPN entre la ubicación local y de origen en Azure, siga el documento [Site Recovery Considerations for Azure to on-premises ExpressRoute / VPN configuration](site-recovery-azure-to-azure-networking-guidance.md#guidelines-for-existing-azure-to-on-premises-expressroutevpn-configuration) (Consideraciones de Site Recovery para Azure para la configuración local de ExpressRoute o VPN).
 
-* Su cuenta de usuario de Azure necesita toohave determinados [permisos](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) tooenable la replicación de una máquina virtual de Azure.
+* La cuenta de usuario de Azure debe tener ciertos [permisos](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines) para habilitar la replicación de una máquina virtual de Azure.
 
-* Su suscripción de Azure debe estar habilitado toocreate las máquinas virtuales en la ubicación de destino de hello desea toouse como región de recuperación ante desastres. Puede ponerse en contacto con soporte técnico tooenable Hola necesario cuota.
+* La suscripción de Azure debe estar habilitada para crear máquinas virtuales en la ubicación de destino que quiere usar como región de recuperación ante desastres. Puede ponerse en contacto con el soporte técnico para habilitar la cuota necesaria.
 
 ## <a name="enable-replication-from-azure-site-recovery-vault"></a>Habilitar la replicación desde el almacén de Azure Site Recovery
-De esta ilustración, se replicará máquinas virtuales en ejecución en toohello de ubicación de Azure de 'Asia oriental' hello ' sudeste asiático ' ubicación. pasos de Hello son los siguientes:
+En este ejemplo se replicarán máquinas virtuales en ejecución en la ubicación "Asia Oriental" de Azure en la ubicación "Asia Suroriental". Los pasos son los siguientes:
 
- Haga clic en **+ replicar** en la replicación de tooenable de almacén de Hola para las máquinas virtuales de Hola.
+ Haga clic en **+Replicar** en el almacén para habilitar la replicación de las máquinas virtuales.
 
-1. **Origen:** hace referencia toohello punto de origen de máquinas de Hola que en este caso es **Azure**.
+1. **Origen:** hace referencia al punto de origen de las máquinas, que en este caso es **Azure**.
 
-2. **Ubicación de origen:** es Hola región de Azure desde donde desea tooprotect las máquinas virtuales. En esta ilustración, ubicación de origen de hello constituye 'Asia oriental'
+2. **Ubicación de origen:** es la región de Azure desde la que se quieren proteger las máquinas virtuales. En este ejemplo, la ubicación de origen será "Asia Oriental"
 
-3. **Modelo de implementación:** hace referencia toohello modelo de implementación de Azure de máquinas de origen Hola. Puede seleccionar cualquier clásico o el Administrador de recursos y máquinas que pertenecen toohello específicos del modelo se mostrarán para la protección en el paso siguiente Hola.
+3. **Modelo de implementación:** hace referencia al modelo de implementación de Azure de las máquinas de origen. Puede seleccionar clásicas o de Resource Manager y las máquinas que pertenezcan al modelo en cuestión se enumerarán para su protección en el paso siguiente.
 
       >[!NOTE]
       >
-      > Solo puede replicar una máquina virtual clásica y recuperarla como máquina virtual clásica. No puede recuperarla como una máquina virtual de Resource Manager.
+      > Solo puede replicar una máquina virtual clásica y recuperarla como máquina virtual clásica. No puede recuperarla como máquina virtual de Resource Manager.
 
-4. **Grupo de recursos:** lo del toowhich de grupo de recursos de hello las máquinas virtuales de origen pertenecen. Hola todas las máquinas virtuales en el grupo de recursos seleccionado Hola se enumerarán para la protección en el paso siguiente de saludo.
+4. **Grupo de recursos:** es el grupo de recursos al que pertenecen las máquinas virtuales de origen. Todas las máquinas virtuales del grupo de recursos seleccionado se enumerarán para su protección en el paso siguiente.
 
     ![Habilitar replicación](./media/site-recovery-replicate-azure-to-azure/enabledrwizard1.png)
 
-En **máquinas virtuales > Seleccionar las máquinas virtuales**, haga clic en y seleccione cada máquina tooreplicate. Solo puede seleccionar aquellas máquinas en las que se pueda habilitar la replicación. A continuación, haga clic en Aceptar.
+En **Máquinas virtuales > Seleccionar máquinas virtuales**, haga clic en cada máquina que quiera replicar y selecciónela. Solo puede seleccionar aquellas máquinas en las que se pueda habilitar la replicación. A continuación, haga clic en Aceptar.
     ![Habilitar replicación](./media/site-recovery-replicate-azure-to-azure/virtualmachine_selection.png)
 
 
 En la sección Configuración puede configurar las propiedades del sitio de destino
 
-1. **Ubicación de destino:** se trata de ubicación de Hola donde se replicarán los datos de la máquina virtual de origen. Dependiendo de la ubicación de los equipos seleccionados, Site Recovery proporcionará que Hola lista de regiones de destino adecuado.
+1. **Ubicación de destino:** es la ubicación donde se replicarán los datos de la máquina virtual de origen. Según la ubicación de las máquinas seleccionadas, Site Recovery proporcionará la lista de regiones de destino adecuadas.
 
     > [!TIP]
-    > Se recomienda la ubicación de destino de tookeep igual a partir de la recuperación del almacén de servicios.
+    > Se recomienda conservar la ubicación de destino igual que el almacén de Recovery Services.
 
-2. **Grupo de recursos de destino:** es toowhich de grupo de recursos de hello pertenecerá todas sus máquinas virtuales replicadas. De forma predeterminada ASR creará un nuevo grupo de recursos en la región de destino de hello con nombre con sufijo "asr". En caso de que existe el grupo de recursos ya creado por ASR, se volverá a usar. También puede elegir toocustomize tal como se muestra en la siguiente sección de Hola.    
-3. **Red Virtual de destino:** de forma predeterminada, ASR creará una nueva red virtual en la región de destino de hello con nombre con sufijo "asr". Esto será asignada tooyour red de origen y se usará para todas las protecciones futuras.
+2. **Grupo de recursos de destino:** es el grupo de recursos al que van a pertenecer todas las máquinas virtuales replicadas. De forma predeterminada, ASR creará un nuevo grupo de recursos en la región de destino con un nombre con el sufijo "asr". En caso de que ya exista el grupo de recursos creado por ASR, se volverá a usar. También puede optar por personalizarlo, como se muestra en la siguiente sección.    
+3. **Red Virtual de destino:** de forma predeterminada, ASR creará una nueva red virtual en la región de destino con un nombre con el sufijo "asr". Esta se asignará a la red de origen y se usará para todas las protecciones futuras.
 
     > [!NOTE]
-    > [Compruebe los detalles de la red](site-recovery-network-mapping-azure-to-azure.md) tooknow más información acerca de la asignación de red.
+    > [Compruebe los detalles de redes](site-recovery-network-mapping-azure-to-azure.md) para obtener más información sobre la asignación de red.
 
-4. **Las cuentas de almacenamiento de destino:** de forma predeterminada, ASR creará Hola nueva la cuenta de almacenamiento destino imitando la configuración de almacenamiento de máquina virtual de origen. En caso de que ya exista la cuenta de almacenamiento creada por ASR, se volverá a usar.
+4. **Cuentas de almacenamiento de destino:** de forma predeterminada, ASR creará la nueva cuenta de almacenamiento de destino mediante la imitación de la configuración de almacenamiento de máquina virtual de origen. En caso de que ya exista la cuenta de almacenamiento creada por ASR, se volverá a usar.
 
-5. **Almacenar en caché las cuentas de almacenamiento:** ASR necesita la cuenta de almacenamiento adicional denominada almacenamiento en caché en la región de origen de Hola. Todos los Hola los cambios que ocurren en hello máquinas virtuales de origen se realiza el seguimiento y envían toocache cuenta de almacenamiento antes de replicar esos ubicación de destino de toohello.
+5. **Cuentas de almacenamiento en caché:** ASR necesita una cuenta de almacenamiento adicional denominada almacenamiento en caché en la región de origen. Todos los cambios que se producen en las máquinas virtuales de origen se siguen y se envían a la cuenta de almacenamiento en caché antes de su replicación en la ubicación de destino.
 
-6. **Conjunto de disponibilidad:** de forma predeterminada, ASR creará un nuevo conjunto de disponibilidad en la región de destino de hello con nombre con sufijo "asr". En caso de que ya exista el conjunto de disponibilidad creado por ASR, se volverá a usar.
+6. **Conjunto de disponibilidad:** de forma predeterminada, ASR creará un nuevo conjunto de disponibilidad en la región de destino con un nombre con el sufijo "asr". En caso de que ya exista el conjunto de disponibilidad creado por ASR, se volverá a usar.
 
-7.  **Directiva de replicación:** define opciones de configuración de Hola para recuperación punto retención historial y aplicación instantánea coherente con la frecuencia. De forma predeterminada, ASR creará una nueva directiva de replicación con la configuración predeterminada "24 horas" para la retención del punto de recuperación y "60 minutos" para la frecuencia de instantánea coherente con la aplicación.
+7.  **Directiva de replicación:** define la configuración del historial de retención del punto de recuperación y de la frecuencia de instantánea coherente con la aplicación. De forma predeterminada, ASR creará una nueva directiva de replicación con la configuración predeterminada "24 horas" para la retención del punto de recuperación y "60 minutos" para la frecuencia de instantánea coherente con la aplicación.
 
     ![Habilitar replicación](./media/site-recovery-replicate-azure-to-azure/enabledrwizard3.PNG)
 
 ## <a name="customize-target-resources"></a>Personalizar los recursos de destino
 
-En caso de que desea que los valores predeterminados de Hola de toochange que se utiliza ASR, puede cambiar la configuración de hello según sus necesidades.
+Si quiere cambiar los valores predeterminados que usa ASR, puede modificar la configuración según sus necesidades.
 
-1. **Personalizar:** haga clic en él toochange Hola parámetro predeterminado utilizado por ASR.
+1. **Personalizar:** haga clic en esta opción para cambiar los valores predeterminados que usa ASR.
 
-2. **Grupo de recursos de destino:** puede seleccionar grupo de recursos de hello en lista de Hola de todos los grupos de recursos de hello existentes en la ubicación de destino de hello dentro de suscripción de Hola.
+2. **Grupo de recursos de destino:** puede seleccionar el grupo de recursos en la lista de todos los grupos de recursos que existen en la ubicación de destino dentro de la suscripción.
 
-3. **Red Virtual de destino:** encontrará la lista de Hola de todas las redes virtuales de hello en la ubicación de destino de Hola.
+3. **Red virtual de destino:** puede encontrar la lista de todas las redes virtuales en la ubicación de destino.
 
-4. **Conjunto de disponibilidad:** solo puede agregar disponibilidad conjuntos de configuración toohello las máquinas virtuales que forman parte de la disponibilidad en la región de origen.
+4. **Conjunto de disponibilidad:** solo puede agregar una configuración de conjuntos de disponibilidad a las máquinas virtuales que forman parte de la disponibilidad en la región de origen.
 
 5. **Cuentas de almacenamiento de destino:**
 
 ![Habilitar replicación](./media/site-recovery-replicate-azure-to-azure/customize.PNG) Haga clic en **Crear recurso de destino** y en Habilitar replicación
 
 
-Una vez que se protegen las máquinas virtuales se puede comprobar el estado de Hola de mantenimiento de máquinas virtuales en **elementos de replicación**
+Una vez protegidas las máquinas virtuales, puede comprobar su estado en **Elementos replicados**.
 
 >[!NOTE]
->Durante el saludo momento de la replicación inicial podría una posibilidad de que el estado toma toorefresh de tiempo y no ver progreso durante algún tiempo. Puede hacer clic en el botón de actualización de hello en la parte superior de Hola de estado más reciente de hello hoja tooget Hola.
+>Durante el tiempo de replicación inicial es posible que el estado tarde en actualizarse y no se vea el progreso durante un tiempo. Puede hacer clic en el botón Actualizar de la parte superior de la hoja para obtener el estado más reciente.
 >
 
 ![Habilitar replicación](./media/site-recovery-replicate-azure-to-azure/replicateditems.PNG)
@@ -120,6 +120,6 @@ Una vez que se protegen las máquinas virtuales se puede comprobar el estado de 
 
 ## <a name="next-steps"></a>Pasos siguientes
 - [Más información](site-recovery-test-failover-to-azure.md) sobre la ejecución de una conmutación por error de prueba.
-- [Obtener más información](site-recovery-failover.md) acerca de los diferentes tipos de conmutaciones por error y cómo toorun ellos.
-- Obtenga más información sobre [con planes de recuperación](site-recovery-create-recovery-plans.md) tooreduce RTO.
+- [Aprenda más](site-recovery-failover.md) sobre los diferentes tipos de conmutación por error y cómo ejecutarlos.
+- Más información sobre el [uso de planes de recuperación](site-recovery-create-recovery-plans.md) para reducir el RTO.
 - Más información sobre la [reprotección de máquinas virtuales de Azure](site-recovery-how-to-reprotect.md) después de una conmutación por error.
