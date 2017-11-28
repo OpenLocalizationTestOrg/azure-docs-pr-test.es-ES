@@ -1,0 +1,44 @@
+---
+title: "las solicitudes de aumentar la cuota de núcleos de administrador de recursos de aaaAzure | Documentos de Microsoft"
+description: "Solicitudes de aumento de cuota de núcleos de Azure Resource Manager"
+author: ganganarayanan
+ms.author: gangan
+ms.date: 1/18/2017
+ms.topic: article
+ms.service: microsoft-docs
+ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
+ms.openlocfilehash: b158b9f0e0338eb239da9253c2146ea93c02e316
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 10/06/2017
+---
+# <a name="resource-manager-core-quota-increase-requests"></a><span data-ttu-id="ef681-103">Solicitudes de aumento de cuota de núcleos de Resource Manager</span><span class="sxs-lookup"><span data-stu-id="ef681-103">Resource Manager core quota increase requests</span></span>
+
+<span data-ttu-id="ef681-104">Se imponen cuotas de núcleo de administrador de recursos en el nivel de la región de Hola y familia de SKU.</span><span class="sxs-lookup"><span data-stu-id="ef681-104">Resource Manager core quotas are enforced at hello region level and SKU family level.</span></span>
+<span data-ttu-id="ef681-105">Obtener más información sobre cómo se imponen cuotas en hello [suscripción de Azure y límites de servicio](http://aka.ms/quotalimits) página.</span><span class="sxs-lookup"><span data-stu-id="ef681-105">Learn more about how quotas are enforced on hello [Azure subscription and service limits](http://aka.ms/quotalimits) page.</span></span>
+<span data-ttu-id="ef681-106">toolearn más información acerca de las familias de SKU, también puede comparar costo y el rendimiento en hello [precios de máquinas virtuales](http://aka.ms/pricingcompute) página.</span><span class="sxs-lookup"><span data-stu-id="ef681-106">toolearn more about SKU Families, you may compare cost and performance on hello [Virtual Machines Pricing](http://aka.ms/pricingcompute) page.</span></span>
+
+<span data-ttu-id="ef681-107">toorequest un aumento, crear un caso de soporte técnico de cuota de núcleos en hello portal de Azure, [https://portal.azure.com](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="ef681-107">toorequest an increase, create a Quota support case for Cores in hello Azure portal, [https://portal.azure.com](https://portal.azure.com).</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="ef681-108">Obtenga información acerca de cómo demasiado[crear una solicitud de soporte técnico](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) Hola portal de Azure</span><span class="sxs-lookup"><span data-stu-id="ef681-108">Learn how too[create a support request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) in hello Azure portal</span></span>
+
+1. <span data-ttu-id="ef681-109">En la página de solicitud de soporte técnico nueva hello, seleccione el tipo de problema como "Cuota" y el tipo de cuota que "Núcleos".</span><span class="sxs-lookup"><span data-stu-id="ef681-109">On hello new support request page, select Issue type as "Quota" and Quota type as "Cores".</span></span>
+
+    ![Hoja de aspectos básicos de Cuota](./media/resource-manager-core-quotas-request/Basics-blade.png)
+
+2. <span data-ttu-id="ef681-111">Seleccione el modelo de implementación "Resource Manager" y seleccione una ubicación.</span><span class="sxs-lookup"><span data-stu-id="ef681-111">Select Deployment model as "Resource Manager" and select a location.</span></span>
+
+    ![Hoja de problema de Cuota](./media/resource-manager-core-quotas-request/Problem-step.png)
+
+3. <span data-ttu-id="ef681-113">Seleccione las familias de SKU de Hola que requieren un aumento.</span><span class="sxs-lookup"><span data-stu-id="ef681-113">Select hello SKU Families that require an increase.</span></span>
+
+    ![Series de SKU seleccionadas](./media/resource-manager-core-quotas-request/SKU-selected.png)
+
+4. <span data-ttu-id="ef681-115">Escriba los nuevos límites de Hola que desea en la suscripción de Hola.</span><span class="sxs-lookup"><span data-stu-id="ef681-115">Enter hello new limits you would like on hello subscription.</span></span>
+
+    ![Nueva solicitud de cuota de SKU](./media/resource-manager-core-quotas-request/SKU-new-quota.png)
+
+- <span data-ttu-id="ef681-117">tooremove una línea, desactive la opción Hola SKU desde Hola SKU familia lista desplegable o haga clic en hello descarte "x" icono.</span><span class="sxs-lookup"><span data-stu-id="ef681-117">tooremove a line, uncheck hello SKU from hello SKU family dropdown or click hello discard "x" icon.</span></span>
+<span data-ttu-id="ef681-118">Después de escribir cuota deseado Hola de cada familia SKU, haga clic en "Siguiente" en hello problema paso página toocontinue con la creación de solicitud de soporte técnico de Hola.</span><span class="sxs-lookup"><span data-stu-id="ef681-118">After entering hello desired quota for each SKU family, click "Next" on hello Problem step page toocontinue with hello support request creation.</span></span>

@@ -1,0 +1,29 @@
+
+
+## <a name="use-the-portal-to-move-a-vm-to-a-different-subscription"></a><span data-ttu-id="59ec3-101">Uso del portal para mover una máquina virtual a otra suscripción</span><span class="sxs-lookup"><span data-stu-id="59ec3-101">Use the portal to move a VM to a different subscription</span></span>
+<span data-ttu-id="59ec3-102">Puede mover una máquina virtual y sus recursos asociados a otra suscripción mediante el portal.</span><span class="sxs-lookup"><span data-stu-id="59ec3-102">You can move a VM and it's associated resources to a different subscription using the portal.</span></span>
+
+1. <span data-ttu-id="59ec3-103">Abra el [Portal de Azure](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="59ec3-103">Open the [Azure portal](https://portal.azure.com).</span></span>
+2. <span data-ttu-id="59ec3-104">Haga clic en **Examinar** > **Máquinas virtuales** y seleccione la máquina virtual que desee mover de la lista.</span><span class="sxs-lookup"><span data-stu-id="59ec3-104">Click **Browse** > **Virtual machines** and select the VM you would like to move from the list.</span></span>
+   
+    ![Captura de pantalla de la sección Información esencial donde hace clic en el icono de lápiz para abrir la hoja Mover recursos.](./media/virtual-machines-common-move-vm/move-button.png)
+3. <span data-ttu-id="59ec3-106">En la sección **Información esencial**, haga clic en el icono de lápiz **Cambiar suscripción** que hay junto al nombre de la suscripción.</span><span class="sxs-lookup"><span data-stu-id="59ec3-106">In the **Essentials** section, click on the **Change subscription** pencil icon next to the subscription name.</span></span> <span data-ttu-id="59ec3-107">Se abrirá la hoja **Mover recursos** .</span><span class="sxs-lookup"><span data-stu-id="59ec3-107">The **Move resources** blade will open.</span></span>
+   
+    ![Captura de pantalla de la hoja Mover recursos.](./media/virtual-machines-common-move-vm/move.png)
+4. <span data-ttu-id="59ec3-109">Seleccione cada uno de los recursos que quiere mover.</span><span class="sxs-lookup"><span data-stu-id="59ec3-109">Select each of the resources to move.</span></span> <span data-ttu-id="59ec3-110">En la mayoría de los casos, debe mover todos los recursos opcionales que se muestran.</span><span class="sxs-lookup"><span data-stu-id="59ec3-110">In most cases, you should move all of the listed optional resources.</span></span>
+5. <span data-ttu-id="59ec3-111">Seleccione la **suscripción** adonde quiere mover la máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="59ec3-111">Select the **Subscription** where you want the VM to be moved.</span></span>
+6. <span data-ttu-id="59ec3-112">Seleccione un **grupo de recursos** existente o escriba un nombre para que se cree uno nuevo.</span><span class="sxs-lookup"><span data-stu-id="59ec3-112">Select an existing **Resource group** or type a name to have a new resource group created.</span></span>
+7. <span data-ttu-id="59ec3-113">Cuando haya terminado, seleccione que comprende que se crearán nuevos identificadores de recursos y que se deberán usar con la máquina virtual cuando se mueva. Después, haga clic en **Aceptar**.</span><span class="sxs-lookup"><span data-stu-id="59ec3-113">When you are done, select that you understand that new resource IDs will be created and those need to be used with the VM once it is moved, then click **OK**.</span></span>
+
+## <a name="use-the-portal-to-move-a-vm-to-another-resource-group"></a><span data-ttu-id="59ec3-114">Uso del portal para mover una máquina virtual a otro grupo de recursos</span><span class="sxs-lookup"><span data-stu-id="59ec3-114">Use the portal to move a VM to another resource group</span></span>
+<span data-ttu-id="59ec3-115">Puede mover una máquina virtual y sus recursos asociados a otro grupo de recursos mediante el portal.</span><span class="sxs-lookup"><span data-stu-id="59ec3-115">You can move a VM and it's associated resources to another resource group using the portal.</span></span>
+
+1. <span data-ttu-id="59ec3-116">Abra el [Portal de Azure](https://portal.azure.com).</span><span class="sxs-lookup"><span data-stu-id="59ec3-116">Open the [Azure portal](https://portal.azure.com).</span></span>
+2. <span data-ttu-id="59ec3-117">Haga clic en **Examinar** > **Grupos de recursos** y seleccione el grupo de recursos que contiene la máquina virtual.</span><span class="sxs-lookup"><span data-stu-id="59ec3-117">Click **Browse** > **Resource groups** and select the resource group that contains the VM.</span></span>
+3. <span data-ttu-id="59ec3-118">En la hoja **Grupo de recursos**, seleccione **Mover** en el menú.</span><span class="sxs-lookup"><span data-stu-id="59ec3-118">In the **Resource group** blade, select **Move** from the menu.</span></span>
+   
+    ![Captura de pantalla del botón Mover del menú Grupos de recursos.](./media/virtual-machines-common-move-vm/move-rg.png)
+4. <span data-ttu-id="59ec3-120">En la hoja **Mover recursos**, seleccione los recursos que se van mover y, luego, escriba el nombre de un grupo de recursos existente o elija crear uno nuevo.</span><span class="sxs-lookup"><span data-stu-id="59ec3-120">In the **Move resources** blade, select the resources to be moved and then either type an existing resource group name or choose to create a new resource group.</span></span> <span data-ttu-id="59ec3-121">Cuando haya terminado, seleccione que comprende que se crearán nuevos identificadores de recursos y que se deberán usar con la máquina virtual cuando se mueva. Después, haga clic en **Aceptar**</span><span class="sxs-lookup"><span data-stu-id="59ec3-121">When you are done, select that you understand that new resource IDs will be created and those need to be used with the VM once it is moved, then click **OK**</span></span>
+   
+    ![Captura de pantalla de la hoja Mover recursos.](./media/virtual-machines-common-move-vm/move-rg-list.png)
+

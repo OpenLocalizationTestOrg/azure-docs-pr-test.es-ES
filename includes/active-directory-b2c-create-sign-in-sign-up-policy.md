@@ -1,0 +1,38 @@
+<span data-ttu-id="0c5c9-101">Para habilitar el inicio de sesión en la aplicación, deberá crear una directiva de inicio de sesión.</span><span class="sxs-lookup"><span data-stu-id="0c5c9-101">To enable sign-in on your application, you will need to create a sign-in policy.</span></span> <span data-ttu-id="0c5c9-102">Esta directiva describe las experiencias que tendrán los consumidores durante el inicio de sesión y el contenido de los tokens que recibirá la aplicación en inicios de sesión correctos.</span><span class="sxs-lookup"><span data-stu-id="0c5c9-102">This policy describes the experiences that consumers will go through during sign-in and the contents of tokens that the application will receive on successful sign-ins.</span></span>
+
+[!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
+
+<span data-ttu-id="0c5c9-103">En la sección de directivas de configuración, seleccione **Directivas de inicio de sesión o de registro** y haga clic en **+ Agregar**.</span><span class="sxs-lookup"><span data-stu-id="0c5c9-103">In the policies section of settings, select **Sign-up or sign-in policies** and click **+ Add**.</span></span>
+
+![Seleccionar directivas de registro o inicio de sesión y hacer clic en el botón Agregar](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-policy.png)
+
+<span data-ttu-id="0c5c9-105">Escriba un **nombre** de directiva al que la aplicación haga referencia.</span><span class="sxs-lookup"><span data-stu-id="0c5c9-105">Enter a policy **Name** for your application to reference.</span></span> <span data-ttu-id="0c5c9-106">Por ejemplo, escriba: `SiUpIn`.</span><span class="sxs-lookup"><span data-stu-id="0c5c9-106">For example, enter `SiUpIn`.</span></span>
+
+<span data-ttu-id="0c5c9-107">Seleccione **Proveedores de identidades** y **Registro por correo electrónico**.</span><span class="sxs-lookup"><span data-stu-id="0c5c9-107">Select **Identity providers** and check **Email signup**.</span></span> <span data-ttu-id="0c5c9-108">También puede seleccionar proveedores de identidades sociales, si ya se han configurado.</span><span class="sxs-lookup"><span data-stu-id="0c5c9-108">Optionally, you can also select social identity providers, if already configured.</span></span> <span data-ttu-id="0c5c9-109">Haga clic en **Aceptar**.</span><span class="sxs-lookup"><span data-stu-id="0c5c9-109">Click **OK**.</span></span>
+
+![Seleccionar registro por correo electrónico como proveedor de identidades y hacer clic en el botón Aceptar](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-identity-providers.png)
+
+<span data-ttu-id="0c5c9-111">Seleccione **Atributos de registro**.</span><span class="sxs-lookup"><span data-stu-id="0c5c9-111">Select **Sign-up attributes**.</span></span> <span data-ttu-id="0c5c9-112">Elija los atributos que quiere recopilar del consumidor durante el registro.</span><span class="sxs-lookup"><span data-stu-id="0c5c9-112">Choose attributes you want to collect from the consumer during sign-up.</span></span> <span data-ttu-id="0c5c9-113">Por ejemplo, seleccione **País o región**, **Nombre para mostrar** y **Código postal**.</span><span class="sxs-lookup"><span data-stu-id="0c5c9-113">For example, check **Country/Region**, **Display Name**, and **Postal Code**.</span></span> <span data-ttu-id="0c5c9-114">Haga clic en **Aceptar**.</span><span class="sxs-lookup"><span data-stu-id="0c5c9-114">Click **OK**.</span></span>
+
+![Seleccionar algunos atributos y hacer clic en el botón Aceptar](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-sign-up-attributes.png)
+
+<span data-ttu-id="0c5c9-116">Seleccione **Notificaciones de aplicación**.</span><span class="sxs-lookup"><span data-stu-id="0c5c9-116">Select **Application claims**.</span></span> <span data-ttu-id="0c5c9-117">Aquí puede elegir las notificaciones que quiere que se devuelvan en los tokens de autorización enviados de vuelta a su aplicación después de una experiencia de registro o de inicio de sesión correcta.</span><span class="sxs-lookup"><span data-stu-id="0c5c9-117">Choose claims you want returned in the authorization tokens sent back to your application after a successful sign-up or sign-in experience.</span></span> <span data-ttu-id="0c5c9-118">Por ejemplo, seleccione **Nombre para mostrar**, **Proveedor de identidades**, **Código postal**, **El usuario es nuevo** e **Id. de objeto del usuario**.</span><span class="sxs-lookup"><span data-stu-id="0c5c9-118">For example, select **Display Name**, **Identity Provider**, **Postal Code**, **User is new** and **User's Object ID**.</span></span>
+
+![Seleccionar algunas notificaciones de aplicación y hacer clic en el botón Aceptar](media/active-directory-b2c-create-sign-in-sign-up-policy/add-b2c-signup-signin-application-claims.png)
+
+<span data-ttu-id="0c5c9-120">Haga clic en **Crear** para agregar la directiva.</span><span class="sxs-lookup"><span data-stu-id="0c5c9-120">Click **Create** to add the policy.</span></span> <span data-ttu-id="0c5c9-121">La directiva aparece como **B2C_1_SiUpIn**.</span><span class="sxs-lookup"><span data-stu-id="0c5c9-121">The policy is listed as **B2C_1_SiUpIn**.</span></span> <span data-ttu-id="0c5c9-122">El prefijo **B2C_1_** se anexa al nombre.</span><span class="sxs-lookup"><span data-stu-id="0c5c9-122">The **B2C_1_** prefix is appended to the name.</span></span>
+
+<span data-ttu-id="0c5c9-123">Para abrir la directiva, haga clic en **B2C_1_SiUpIn**.</span><span class="sxs-lookup"><span data-stu-id="0c5c9-123">Open the policy by selecting **B2C_1_SiUpIn**.</span></span> <span data-ttu-id="0c5c9-124">Compruebe la configuración especificada en la tabla y haga clic en **Ejecutar ahora**.</span><span class="sxs-lookup"><span data-stu-id="0c5c9-124">Verify the settings specified in the table then click **Run now**.</span></span>
+
+![Seleccionar la directiva y ejecutarla](media/active-directory-b2c-create-sign-in-sign-up-policy/run-b2c-signup-signin-policy.png)
+
+| <span data-ttu-id="0c5c9-126">Configuración</span><span class="sxs-lookup"><span data-stu-id="0c5c9-126">Setting</span></span>      | <span data-ttu-id="0c5c9-127">Valor</span><span class="sxs-lookup"><span data-stu-id="0c5c9-127">Value</span></span>  |
+| ------------ | ------ |
+| <span data-ttu-id="0c5c9-128">**Aplicaciones**</span><span class="sxs-lookup"><span data-stu-id="0c5c9-128">**Applications**</span></span> | <span data-ttu-id="0c5c9-129">Aplicación B2C de Contoso</span><span class="sxs-lookup"><span data-stu-id="0c5c9-129">Contoso B2C app</span></span> |
+| <span data-ttu-id="0c5c9-130">**Seleccionar dirección URL de respuesta**</span><span class="sxs-lookup"><span data-stu-id="0c5c9-130">**Select reply url**</span></span> | `https://localhost:44316/` |
+
+<span data-ttu-id="0c5c9-131">Se abrirá una nueva pestaña del explorador y podrá comprobar la experiencia del consumidor de registro o de inicio de sesión tal como se configuró.</span><span class="sxs-lookup"><span data-stu-id="0c5c9-131">A new browser tab opens, and you can verify the sign-up or sign-in consumer experience as configured.</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="0c5c9-132">Se tarda hasta un minuto en que la creación de directivas y las actualizaciones surtan efecto.</span><span class="sxs-lookup"><span data-stu-id="0c5c9-132">It takes up to a minute for policy creation and updates to take effect.</span></span>
+>

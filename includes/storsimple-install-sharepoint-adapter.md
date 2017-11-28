@@ -1,0 +1,20 @@
+<!--author=SharS last changed: 9/17/15-->
+
+#### <a name="to-install-the-storsimple-adapter-for-sharepoint"></a><span data-ttu-id="8b2fe-101">Para instalar el adaptador de StorSimple para SharePoint</span><span class="sxs-lookup"><span data-stu-id="8b2fe-101">To install the StorSimple Adapter for SharePoint</span></span>
+1. <span data-ttu-id="8b2fe-102">Copie el instalador en el servidor web front-end (WFE) que también está configurado para ejecutar la aplicación web Administración central de SharePoint.</span><span class="sxs-lookup"><span data-stu-id="8b2fe-102">Copy the installer to the web front end (WFE) server that is also configured to run the SharePoint Central Administration web application.</span></span> 
+2. <span data-ttu-id="8b2fe-103">Use una cuenta con privilegios de administrador para iniciar sesión en el servidor WFE.</span><span class="sxs-lookup"><span data-stu-id="8b2fe-103">Use an account with administrator privileges to log on to the WFE server.</span></span>
+3. <span data-ttu-id="8b2fe-104">Haga doble clic en el instalador.</span><span class="sxs-lookup"><span data-stu-id="8b2fe-104">Double-click the installer.</span></span> <span data-ttu-id="8b2fe-105">El Asistente para la instalación del adaptador de StorSimple para SharePoint se inicia.</span><span class="sxs-lookup"><span data-stu-id="8b2fe-105">The StorSimple Adapter for SharePoint Setup Wizard starts.</span></span> <span data-ttu-id="8b2fe-106">Haga clic en **Siguiente** para iniciar la instalación.</span><span class="sxs-lookup"><span data-stu-id="8b2fe-106">Click **Next** to begin the installation.</span></span>
+   
+    ![Página de inicio de la configuración del adaptador de StorSimple](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup1-include.png)
+4. <span data-ttu-id="8b2fe-108">En la página de configuración de la instalación del adaptador de StorSimple para SharePoint, seleccione una ubicación de instalación, escriba la dirección IP de la interfaz de red DATA 0 en el dispositivo de StorSimple y, a continuación, haga clic en **Siguiente**.</span><span class="sxs-lookup"><span data-stu-id="8b2fe-108">In the StorSimple Adapter for SharePoint setup configuration page, select an installation location, type the IP address for the DATA 0 network interface on your StorSimple device, and then click **Next**.</span></span> 
+   
+    ![Página de configuración de la instalación del adaptador de StorSimple](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup2-include.png) 
+5. <span data-ttu-id="8b2fe-110">En la página de confirmación de la configuración, haga clic en **Instalar**.</span><span class="sxs-lookup"><span data-stu-id="8b2fe-110">In the setup confirmation page, click **Install**.</span></span>
+   
+    ![Página de confirmación de la instalación del adaptador de StorSimple](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Confirm_Setup-include.png) 
+6. <span data-ttu-id="8b2fe-112">Haga clic en **Finalizar** para cerrar el Asistente para la instalación.</span><span class="sxs-lookup"><span data-stu-id="8b2fe-112">Click **Finish** to close the Setup Wizard.</span></span>
+   
+    ![Página de instalación terminada del adaptador de StorSimple](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup_finish-include.png) 
+7. <span data-ttu-id="8b2fe-114">Abra la página Administración central de SharePoint.</span><span class="sxs-lookup"><span data-stu-id="8b2fe-114">Open the SharePoint Central Administration page.</span></span> <span data-ttu-id="8b2fe-115">Debería ver un grupo de configuración de StorSimple que contiene los vínculos del adaptador de StorSimple para SharePoint.</span><span class="sxs-lookup"><span data-stu-id="8b2fe-115">You should see a StorSimple Configuration group that contains the StorSimple Adapter for SharePoint links.</span></span>
+8. <span data-ttu-id="8b2fe-116">Vaya al paso siguiente: [Configuración de RBS](#configure-rbs).</span><span class="sxs-lookup"><span data-stu-id="8b2fe-116">Go to the next step: [Configure RBS](#configure-rbs).</span></span>
+

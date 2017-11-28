@@ -1,0 +1,142 @@
+---
+title: "Conversión de WordPress en multisitios en Servicio de aplicaciones de Azure"
+description: "Obtenga información acerca de cómo tomar un sitio web de WordPress existente creado en la galería de Azure y convertirlo en multisitio de WordPress"
+services: app-service\web
+documentationcenter: php
+author: rmcmurray
+manager: erikre
+editor: 
+ms.assetid: fe52dbf4-179c-42f1-adf9-d6a9af920c39
+ms.service: app-service-web
+ms.workload: web
+ms.tgt_pltfrm: na
+ms.devlang: PHP
+ms.topic: article
+ms.date: 04/25/2017
+ms.author: robmcm
+ms.openlocfilehash: 4a15fb5e97d2ca57e5883c07651c372c54021c92
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 07/11/2017
+---
+# <a name="convert-wordpress-to-multisite-in-azure-app-service"></a><span data-ttu-id="f421c-103">Conversión de WordPress en multisitios en Servicio de aplicaciones de Azure</span><span class="sxs-lookup"><span data-stu-id="f421c-103">Convert WordPress to Multisite in Azure App Service</span></span>
+## <a name="overview"></a><span data-ttu-id="f421c-104">Información general</span><span class="sxs-lookup"><span data-stu-id="f421c-104">Overview</span></span>
+<span data-ttu-id="f421c-105">*Por [Ben Lobaugh][ben-lobaugh], [Microsoft Open Technologies Inc.][ms-open-tech]*</span><span class="sxs-lookup"><span data-stu-id="f421c-105">*By [Ben Lobaugh][ben-lobaugh], [Microsoft Open Technologies Inc.][ms-open-tech]*</span></span>
+
+<span data-ttu-id="f421c-106">En este tutorial aprenderá a tomar una aplicación web de WordPress existente creada a través de la galería en Azure y convertirla en una instalación WordPress Multisite.</span><span class="sxs-lookup"><span data-stu-id="f421c-106">In this tutorial, you will learn how to take an existing WordPress web app created through the gallery in Azure and convert it into a WordPress Multisite install.</span></span> <span data-ttu-id="f421c-107">Adicionalmente, aprenderá a asignar un dominio personalizado a cada uno de los subsitios dentro de su instalación.</span><span class="sxs-lookup"><span data-stu-id="f421c-107">Additionally, you will learn how to assign a custom domain to each of the subsites within your install.</span></span>
+
+<span data-ttu-id="f421c-108">Se supone que tiene una instalación existente de WordPress.</span><span class="sxs-lookup"><span data-stu-id="f421c-108">It is assumed that you have an existing installation of WordPress.</span></span> <span data-ttu-id="f421c-109">De lo contrario, siga las instrucciones que se proporcionan en [Creación de un sitio web de WordPress desde la galería de Azure][website-from-gallery].</span><span class="sxs-lookup"><span data-stu-id="f421c-109">If you do not, please follow the guidance provided in [Create a WordPress web site from the gallery in Azure][website-from-gallery].</span></span>
+
+<span data-ttu-id="f421c-110">La conversión de la instalación de un único sitio de WordPress existente a multisitio es generalmente bastante simple y muchos de los pasos iniciales que se presentan aquí provienen directamente de la página [Create A Network][wordpress-codex-create-a-network] (Creación de una red) en [WordPress Codex](http://codex.wordpress.org).</span><span class="sxs-lookup"><span data-stu-id="f421c-110">Converting an existing WordPress single site install to Multisite is generally fairly simple, and many of the initial steps here come straight from the [Create A Network][wordpress-codex-create-a-network] page on the [WordPress Codex](http://codex.wordpress.org).</span></span>
+
+<span data-ttu-id="f421c-111">Comencemos.</span><span class="sxs-lookup"><span data-stu-id="f421c-111">Let's get started.</span></span>
+
+## <a name="allow-multisite"></a><span data-ttu-id="f421c-112">Permitir multisitio</span><span class="sxs-lookup"><span data-stu-id="f421c-112">Allow Multisite</span></span>
+<span data-ttu-id="f421c-113">Primero necesita habilitar el multisitio mediante el archivo `wp-config.php` con la constante **WP\_ALLOW\_MULTISITE**.</span><span class="sxs-lookup"><span data-stu-id="f421c-113">You first need to enable Multisite through the `wp-config.php` file with the **WP\_ALLOW\_MULTISITE** constant.</span></span> <span data-ttu-id="f421c-114">Hay dos métodos para editar los archivos de aplicaciones web: el primero es a través de FTP y el segundo mediante Git.</span><span class="sxs-lookup"><span data-stu-id="f421c-114">There are two methods to edit your web app files: the first is through FTP, and the second through Git.</span></span> <span data-ttu-id="f421c-115">Si no está familiarizado con la configuración de alguno de estos métodos, consulte los siguientes tutoriales:</span><span class="sxs-lookup"><span data-stu-id="f421c-115">If you are unfamiliar with how to setup either of these methods, please refer to the following tutorials:</span></span>
+
+* <span data-ttu-id="f421c-116">[Sitio web PHP con MySQL y FTP][website-w-mysql-and-ftp-ftp-setup]</span><span class="sxs-lookup"><span data-stu-id="f421c-116">[PHP web site with MySQL and FTP][website-w-mysql-and-ftp-ftp-setup]</span></span>
+* <span data-ttu-id="f421c-117">[Sitio web PHP con MySQL y Git][website-w-mysql-and-git-git-setup]</span><span class="sxs-lookup"><span data-stu-id="f421c-117">[PHP web site with MySQL and Git][website-w-mysql-and-git-git-setup]</span></span>
+
+<span data-ttu-id="f421c-118">Abra el archivo `wp-config.php` con el editor de su preferencia y agregue el siguiente código encima de la línea `/* That's all, stop editing! Happy blogging. */`.</span><span class="sxs-lookup"><span data-stu-id="f421c-118">Open the `wp-config.php` file with the editor of your choosing and add the following above the `/* That's all, stop editing! Happy blogging. */` line.</span></span>
+
+    /* Multisite */
+
+    define( 'WP_ALLOW_MULTISITE', true );
+
+<span data-ttu-id="f421c-119">¡Asegúrese de guardar el archivo y cargarlo de vuelta al servidor!</span><span class="sxs-lookup"><span data-stu-id="f421c-119">Be sure to save the file and upload it back to the server!</span></span>
+
+## <a name="network-setup"></a><span data-ttu-id="f421c-120">Configuración de la red</span><span class="sxs-lookup"><span data-stu-id="f421c-120">Network Setup</span></span>
+<span data-ttu-id="f421c-121">Inicie sesión en el área *wp-admin* de su aplicación web; debería ver un elemento nuevo bajo el menú **Herramientas** llamado **Configuración de red**.</span><span class="sxs-lookup"><span data-stu-id="f421c-121">Log in to the *wp-admin* area of your web app and you should see a new item under the **Tools** menu called **Network Setup**.</span></span> <span data-ttu-id="f421c-122">Haga clic en **Configuración de red** y complete los detalles de su red.</span><span class="sxs-lookup"><span data-stu-id="f421c-122">Click **Network Setup** and fill in the details of your network.</span></span>
+
+![Pantalla de configuración de la red][wordpress-network-setup]
+
+<span data-ttu-id="f421c-124">Este tutorial usa el esquema de sitios de *Subdirectorios* porque siempre funciona, y más adelante vamos a configurar dominios personalizados para cada subsitio.</span><span class="sxs-lookup"><span data-stu-id="f421c-124">This tutorial uses the *Sub-directories* site schema because it should always work, and we will be setting up custom domains for each subsite later in the tutorial.</span></span> <span data-ttu-id="f421c-125">Sin embargo, debería ser posible configurar una instalación de subdominio si asigna un dominio a través del [Portal de Azure](https://portal.azure.com) y configura correctamente un DNS con caracteres comodín.</span><span class="sxs-lookup"><span data-stu-id="f421c-125">However, it should be possible to setup a subdomain install if you map a domain through the [Azure Portal](https://portal.azure.com) and setup wildcard DNS properly.</span></span>
+
+<span data-ttu-id="f421c-126">Para más información sobre la configuración de subdominios frente a subdirectorios, consulte el artículo sobre [tipos de red multisitio][wordpress-codex-types-of-networks] en WordPress Codex.</span><span class="sxs-lookup"><span data-stu-id="f421c-126">For more information on sub-domain vs sub-directory setups see the [Types of multisite network][wordpress-codex-types-of-networks] article on the WordPress Codex.</span></span>
+
+## <a name="enable-the-network"></a><span data-ttu-id="f421c-127">Habilitación de la red</span><span class="sxs-lookup"><span data-stu-id="f421c-127">Enable the Network</span></span>
+<span data-ttu-id="f421c-128">La red está ahora configurada en la base de datos, pero todavía queda un paso para habilitar la funcionalidad de red.</span><span class="sxs-lookup"><span data-stu-id="f421c-128">The network is now configured in the database, but there is one remaining step to enable the network functionality.</span></span> <span data-ttu-id="f421c-129">Finalice la configuración de `wp-config.php` y asegúrese de que `web.config` redirige correctamente cada sitio.</span><span class="sxs-lookup"><span data-stu-id="f421c-129">Finalize the `wp-config.php` settings and ensure `web.config` properly routes each site.</span></span>
+
+<span data-ttu-id="f421c-130">Después de hacer clic en el botón **Instalar** en la página *Configuración de red*, WordPress intentará actualizar los archivos `wp-config.php` y `web.config`.</span><span class="sxs-lookup"><span data-stu-id="f421c-130">After clicking the **Install** button on the *Network Setup* page, WordPress will attempt to update the `wp-config.php` and `web.config` files.</span></span> <span data-ttu-id="f421c-131">No obstante, siempre debe comprobar los archivos para asegurarse de que las actualizaciones se realizaron correctamente.</span><span class="sxs-lookup"><span data-stu-id="f421c-131">However, you should always check the files to ensure the updates were successful.</span></span> <span data-ttu-id="f421c-132">De lo contrario, esta pantalla le presentará las actualizaciones necesarias.</span><span class="sxs-lookup"><span data-stu-id="f421c-132">If not, this screen will present you with the necessary updates.</span></span> <span data-ttu-id="f421c-133">Edite y guarde los archivos.</span><span class="sxs-lookup"><span data-stu-id="f421c-133">Edit and save the files.</span></span>
+
+<span data-ttu-id="f421c-134">Después de realizar las actualizaciones, necesitará cerrar la sesión y volver a iniciarla en el panel de wp-admin.</span><span class="sxs-lookup"><span data-stu-id="f421c-134">After making these updates you will need to log out and log back into the wp-admin dashboard.</span></span>
+
+<span data-ttu-id="f421c-135">Debería aparecer ahora un menú adicional en la barra de administración con la etiqueta **Mis sitios**.</span><span class="sxs-lookup"><span data-stu-id="f421c-135">There should now be an additional menu on the admin bar labeled **My Sites**.</span></span> <span data-ttu-id="f421c-136">Este menú le permite controlar su red nueva a través del panel **Administrador de red** .</span><span class="sxs-lookup"><span data-stu-id="f421c-136">This menu allows you to control your new network through the **Network Admin** dashboard.</span></span>
+
+## <a name="adding-custom-domains"></a><span data-ttu-id="f421c-137">Incorporación de dominios personalizados</span><span class="sxs-lookup"><span data-stu-id="f421c-137">Adding custom domains</span></span>
+<span data-ttu-id="f421c-138">El complemento [WordPress MU Domain Mapping][wordpress-plugin-wordpress-mu-domain-mapping] facilita enormemente la incorporación de dominios personalizados a cualquier sitio de su red.</span><span class="sxs-lookup"><span data-stu-id="f421c-138">The [WordPress MU Domain Mapping][wordpress-plugin-wordpress-mu-domain-mapping] plugin makes it a breeze to add custom domains to any site in your network.</span></span> <span data-ttu-id="f421c-139">Para que el complemento funcione correctamente, necesita realizar cierta configuración adicional en el Portal y también en el registrador de su dominio.</span><span class="sxs-lookup"><span data-stu-id="f421c-139">In order for the plugin to operate properly, you need to do some additional setup on the Portal, and also at your domain registrar.</span></span>
+
+## <a name="enable-domain-mapping-to-the-web-app"></a><span data-ttu-id="f421c-140">Habilitación de la asignación de dominios a la aplicación web</span><span class="sxs-lookup"><span data-stu-id="f421c-140">Enable domain mapping to the web app</span></span>
+<span data-ttu-id="f421c-141">El complemento **Gratis** [Servicio de aplicaciones](http://go.microsoft.com/fwlink/?LinkId=529714) no admite la adición de dominios personalizados para Aplicaciones web.</span><span class="sxs-lookup"><span data-stu-id="f421c-141">The **Free** [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) plan mode does not support adding custom domains to Web Apps.</span></span> <span data-ttu-id="f421c-142">Necesitará cambiar al modo **Compartido** o **Estándar**.</span><span class="sxs-lookup"><span data-stu-id="f421c-142">You will need to switch to **Shared** or **Standard** mode.</span></span> <span data-ttu-id="f421c-143">Para ello, siga estos pasos:</span><span class="sxs-lookup"><span data-stu-id="f421c-143">To do this:</span></span>
+
+* <span data-ttu-id="f421c-144">Inicie sesión en el portal de Azure y localice su aplicación web.</span><span class="sxs-lookup"><span data-stu-id="f421c-144">Log in to the Azure Portal and locate your web app.</span></span> 
+* <span data-ttu-id="f421c-145">Haga clic en la pestaña **Escalar verticalmente** en **Configuración**.</span><span class="sxs-lookup"><span data-stu-id="f421c-145">Click on the **Scale up** tab in **Settings**.</span></span>
+* <span data-ttu-id="f421c-146">En **General**, seleccione *COMPARTIDO* o *ESTÁNDAR*</span><span class="sxs-lookup"><span data-stu-id="f421c-146">Under **General**, select either *SHARED* or *STANDARD*</span></span>
+* <span data-ttu-id="f421c-147">Haga clic en **Guardar**</span><span class="sxs-lookup"><span data-stu-id="f421c-147">Click **Save**</span></span>
+
+<span data-ttu-id="f421c-148">Es posible que reciba un mensaje pidiéndole que verifique el cambio y que confirme que su aplicación web puede incurrir en costos, según el uso y el resto de la configuración que realice.</span><span class="sxs-lookup"><span data-stu-id="f421c-148">You may receive a message asking you to verify the change and acknowledge your web app may now incur a cost, depending upon usage and the other configuration you set.</span></span>
+
+<span data-ttu-id="f421c-149">El procesamiento de la nueva configuración tarda unos pocos segundos, de modo que ahora es un buen momento para empezar a configurar su dominio.</span><span class="sxs-lookup"><span data-stu-id="f421c-149">It takes a few seconds to process the new settings, so now is a good time to start setting up your domain.</span></span>
+
+## <a name="verify-your-domain"></a><span data-ttu-id="f421c-150">Verificación de su dominio</span><span class="sxs-lookup"><span data-stu-id="f421c-150">Verify your domain</span></span>
+<span data-ttu-id="f421c-151">Antes de que Aplicaciones web de Azure permita asignar un dominio al sitio, primero necesita verificar que tiene la autorización para asignar el dominio.</span><span class="sxs-lookup"><span data-stu-id="f421c-151">Before Azure Web Apps will allow you to map a domain to the site, you first need to verify that you have the authorization to map the domain.</span></span> <span data-ttu-id="f421c-152">Para ello, debe agregar un registro nuevo CNAME a su entrada de DNS.</span><span class="sxs-lookup"><span data-stu-id="f421c-152">To do so, you must add a new CNAME record to your DNS entry.</span></span>
+
+* <span data-ttu-id="f421c-153">Inicie sesión en el administrador de DNS de su dominio.</span><span class="sxs-lookup"><span data-stu-id="f421c-153">Log in to your domain's DNS manager</span></span>
+* <span data-ttu-id="f421c-154">Cree un nuevo *awverify*</span><span class="sxs-lookup"><span data-stu-id="f421c-154">Create a new CNAME *awverify*</span></span>
+* <span data-ttu-id="f421c-155">Haga que *awverify* apunte a *awverify.SU_DOMINIO.azurewebsites.net*</span><span class="sxs-lookup"><span data-stu-id="f421c-155">Point *awverify* to *awverify.YOUR_DOMAIN.azurewebsites.net*</span></span>
+
+<span data-ttu-id="f421c-156">Puede pasar algún tiempo antes de que los cambios de DNS surtan efecto, de modo que si los siguientes pasos no funcionan inmediatamente, prepárese una taza de café y vuelva después para volver a intentarlo.</span><span class="sxs-lookup"><span data-stu-id="f421c-156">It may take some time for the DNS changes to go into full effect, so if the following steps do not work immediately, go make a cup of coffee, then come back and try again.</span></span>
+
+## <a name="add-the-domain-to-the-web-app"></a><span data-ttu-id="f421c-157">Incorporación del dominio a la aplicación web</span><span class="sxs-lookup"><span data-stu-id="f421c-157">Add the domain to the web app</span></span>
+<span data-ttu-id="f421c-158">Vuelva a la aplicación web a través de Azure Portal, haga clic en **Configuración** y, a continuación, haga clic en **Dominios personalizados y SSL**.</span><span class="sxs-lookup"><span data-stu-id="f421c-158">Return to your web app through the Azure Portal, click **Settings**, and then click **Custom domains and SSL**.</span></span>
+
+<span data-ttu-id="f421c-159">Cuando aparezca *Configuración de SSL* , verá los campos donde especificará todos los dominios que desea asignar a la aplicación web.</span><span class="sxs-lookup"><span data-stu-id="f421c-159">When the *SSL settings* are displayed, you will see the fields where you will input all the domains which you wish to assign to your web app.</span></span> <span data-ttu-id="f421c-160">Si un dominio no aparece en este lugar, no estará disponible para asignarlo dentro de WordPress, sin considerar la configuración de DNS del dominio.</span><span class="sxs-lookup"><span data-stu-id="f421c-160">If a domain is not listed here, it will not be available for mapping inside WordPress, regardless of how the domain DNS is setup.</span></span>
+
+![Cuadro de diálogo de administración de dominios personalizados][wordpress-manage-domains]
+
+<span data-ttu-id="f421c-162">Después de escribir su dominio en el cuadro de texto, Azure verificará el registro CNAME que creó anteriormente.</span><span class="sxs-lookup"><span data-stu-id="f421c-162">After typing your domain into the text box, Azure will verify the CNAME record you created previously.</span></span> <span data-ttu-id="f421c-163">Si el DNS no se ha propagado completamente, aparecerá un indicador rojo.</span><span class="sxs-lookup"><span data-stu-id="f421c-163">If the DNS has not fully propagated, a red indicator will show.</span></span> <span data-ttu-id="f421c-164">Si fue correcto, verá una marca de verificación verde.</span><span class="sxs-lookup"><span data-stu-id="f421c-164">If it was successful, you will see a green checkmark.</span></span> 
+
+<span data-ttu-id="f421c-165">Tome nota de la dirección IP que aparece en la parte inferior del cuadro de diálogo.</span><span class="sxs-lookup"><span data-stu-id="f421c-165">Take note of the IP Address listed at the bottom of the dialog.</span></span> <span data-ttu-id="f421c-166">La necesitará para configurar el registro A para su dominio.</span><span class="sxs-lookup"><span data-stu-id="f421c-166">You will need this to setup the A record for your domain.</span></span>
+
+## <a name="setup-the-domain-a-record"></a><span data-ttu-id="f421c-167">Configuración del registro A del dominio</span><span class="sxs-lookup"><span data-stu-id="f421c-167">Setup the domain A record</span></span>
+<span data-ttu-id="f421c-168">Si los demás pasos fueron correctos, ahora puede asignar el dominio a la aplicación web de Azure mediante un registro A de DNS.</span><span class="sxs-lookup"><span data-stu-id="f421c-168">If the other steps were successful, you may now assign the domain to your Azure web app through a DNS A record.</span></span> 
+
+<span data-ttu-id="f421c-169">Es importante tener en cuenta aquí que las aplicaciones web de Azure aceptan tanto los registros CNAME como A; sin embargo, *debe* usar un registro A para permitir una asignación correcta del dominio.</span><span class="sxs-lookup"><span data-stu-id="f421c-169">It is important to note here that Azure web apps accept both CNAME and A records, however you *must* use an A record to enable proper domain mapping.</span></span> <span data-ttu-id="f421c-170">Un registro CNAME no se puede reenviar a otro CNAME, que es lo que Azure creó con YOUR_DOMAIN.azurewebsites.net.</span><span class="sxs-lookup"><span data-stu-id="f421c-170">A CNAME cannot be forwarded to another CNAME, which is what Azure created for you with YOUR_DOMAIN.azurewebsites.net.</span></span>
+
+<span data-ttu-id="f421c-171">Con la ayuda de la dirección IP del paso anterior, vuelva a su administrador de DNS y configure el registro A para que apunte a dicha dirección IP.</span><span class="sxs-lookup"><span data-stu-id="f421c-171">Using the IP address from the previous step, return to your DNS manager and setup the A record to point to that IP.</span></span>
+
+## <a name="install-and-setup-the-plugin"></a><span data-ttu-id="f421c-172">Instalación y configuración del complemento</span><span class="sxs-lookup"><span data-stu-id="f421c-172">Install and setup the plugin</span></span>
+<span data-ttu-id="f421c-173">WordPress Multisite no dispone actualmente de un método integrado para asignar dominios personalizados.</span><span class="sxs-lookup"><span data-stu-id="f421c-173">WordPress Multisite currently does not have a built-in method to map custom domains.</span></span> <span data-ttu-id="f421c-174">Sin embargo, hay un complemento llamado [WordPress MU Domain Mapping][wordpress-plugin-wordpress-mu-domain-mapping] que agrega la funcionalidad.</span><span class="sxs-lookup"><span data-stu-id="f421c-174">However, there is a plugin called [WordPress MU Domain Mapping][wordpress-plugin-wordpress-mu-domain-mapping] that adds the functionality for you.</span></span> <span data-ttu-id="f421c-175">Inicie sesión en la sección Administrador de red de su sitio e instale el complemento **WordPress MU Domain Mapping** .</span><span class="sxs-lookup"><span data-stu-id="f421c-175">Log in to the Network Admin portion of your site and install the **WordPress MU Domain Mapping** plugin.</span></span>
+
+<span data-ttu-id="f421c-176">Después de instalar y activar el complemento, visite **Configuración** > **Asignación de dominios** para configurarlo.</span><span class="sxs-lookup"><span data-stu-id="f421c-176">After installing and activating the plugin, visit **Settings** > **Domain Mapping** to configure the plugin.</span></span> <span data-ttu-id="f421c-177">En el primer cuadro de texto, *Dirección IP del servidor*, indique la dirección IP que usó para configurar el registro A para el dominio.</span><span class="sxs-lookup"><span data-stu-id="f421c-177">In the first textbox, *Server IP Address*, input the IP Address you used to setup the A record for the domain.</span></span> <span data-ttu-id="f421c-178">Establezca las *Opciones de dominio* que desee (los valores predeterminados suelen ser válidos) y haga clic en **Guardar**.</span><span class="sxs-lookup"><span data-stu-id="f421c-178">Set any *Domain Options* you desire (the defaults are often fine) and click **Save**.</span></span>
+
+## <a name="map-the-domain"></a><span data-ttu-id="f421c-179">Asignación del dominio</span><span class="sxs-lookup"><span data-stu-id="f421c-179">Map the domain</span></span>
+<span data-ttu-id="f421c-180">Visite el **Panel** del sitio al que desee asignar el dominio.</span><span class="sxs-lookup"><span data-stu-id="f421c-180">Visit the **Dashboard** for the site you wish to map the domain to.</span></span> <span data-ttu-id="f421c-181">Haga clic en **Herramientas** > **Asignación de dominios**, escriba el nuevo dominio en el cuadro de texto y haga clic en **Agregar**.</span><span class="sxs-lookup"><span data-stu-id="f421c-181">Click on **Tools** > **Domain Mapping** and type the new domain into the textbox and click **Add**.</span></span>
+
+<span data-ttu-id="f421c-182">De manera predeterminada, el dominio nuevo se sobrescribirá con el dominio del sitio generado automáticamente.</span><span class="sxs-lookup"><span data-stu-id="f421c-182">By default, the new domain will be rewritten to the autogenerated site domain.</span></span> <span data-ttu-id="f421c-183">Si desea enviar todo el tráfico al dominio nuevo, marque el cuadro *Dominio principal para este blog* antes de guardar.</span><span class="sxs-lookup"><span data-stu-id="f421c-183">If you want to have all traffic sent to the new domain, check the *Primary domain for this blog* box before saving.</span></span> <span data-ttu-id="f421c-184">Puede agregar un número ilimitado de dominios a un sitio, pero solo uno puede ser primario.</span><span class="sxs-lookup"><span data-stu-id="f421c-184">You can add an unlimited number of domains to a site, but  only one can be primary.</span></span>
+
+## <a name="do-it-again"></a><span data-ttu-id="f421c-185">Vuelva a hacerlo</span><span class="sxs-lookup"><span data-stu-id="f421c-185">Do it again</span></span>
+<span data-ttu-id="f421c-186">Aplicaciones web de Azure permite agregar un número ilimitado de dominios a un sitio web.</span><span class="sxs-lookup"><span data-stu-id="f421c-186">Azure Web Apps allow you to add an unlimited number of domains to a web app.</span></span> <span data-ttu-id="f421c-187">Para agregar otro dominio, necesitará ejecutar las secciones **Verificación de su dominio** y **Configuración del registro A del dominio** para cada dominio.</span><span class="sxs-lookup"><span data-stu-id="f421c-187">To add another domain you will need to execute the **Verify your domain** and **Setup the domain A record** sections for each domain.</span></span>    
+
+> [!NOTE]
+> <span data-ttu-id="f421c-188">Si desea empezar a trabajar con el Servicio de aplicaciones de Azure antes de inscribirse para abrir una cuenta de Azure, vaya a [App Service](https://azure.microsoft.com/try/app-service/), donde podrá crear inmediatamente una aplicación web de inicio de corta duración en el Servicio de aplicaciones.</span><span class="sxs-lookup"><span data-stu-id="f421c-188">If you want to get started with Azure App Service before signing up for an Azure account, go to [Try App Service](https://azure.microsoft.com/try/app-service/), where you can immediately create a short-lived starter web app in App Service.</span></span> <span data-ttu-id="f421c-189">No es necesario proporcionar ninguna tarjeta de crédito ni asumir ningún compromiso.</span><span class="sxs-lookup"><span data-stu-id="f421c-189">No credit cards required; no commitments.</span></span>
+> 
+> 
+
+## <a name="whats-changed"></a><span data-ttu-id="f421c-190">Lo que ha cambiado</span><span class="sxs-lookup"><span data-stu-id="f421c-190">What's changed</span></span>
+* <span data-ttu-id="f421c-191">Para obtener una guía del cambio de Websites a App Service, consulte: [Azure App Service y su impacto en los servicios de Azure existentes](http://go.microsoft.com/fwlink/?LinkId=529714)</span><span class="sxs-lookup"><span data-stu-id="f421c-191">For a guide to the change from Websites to App Service see: [Azure App Service and Its Impact on Existing Azure Services](http://go.microsoft.com/fwlink/?LinkId=529714)</span></span>
+
+[ben-lobaugh]: http://ben.lobaugh.net
+[ms-open-tech]: http://msopentech.com
+[website-from-gallery]: https://www.windowsazure.com/develop/php/tutorials/website-from-gallery/
+[wordpress-codex-create-a-network]: http://codex.wordpress.org/Create_A_Network
+[website-w-mysql-and-ftp-ftp-setup]: https://www.windowsazure.com/develop/php/tutorials/website-w-mysql-and-ftp/#header-0
+[website-w-mysql-and-git-git-setup]: https://www.windowsazure.com/develop/php/tutorials/website-w-mysql-and-git/#header-1
+[wordpress-network-setup]: ./media/web-sites-php-convert-wordpress-multisite/wordpress-network-setup.png
+[wordpress-codex-types-of-networks]: http://codex.wordpress.org/Before_You_Create_A_Network#Types_of_multisite_network
+[wordpress-plugin-wordpress-mu-domain-mapping]: http://wordpress.org/extend/plugins/wordpress-mu-domain-mapping/
+
+[wordpress-manage-domains]: ./media/web-sites-php-convert-wordpress-multisite/wordpress-manage-domains.png
+
+

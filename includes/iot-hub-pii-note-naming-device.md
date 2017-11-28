@@ -1,0 +1,3 @@
+> [!IMPORTANT]
+> <span data-ttu-id="70fe6-101">El identificador del dispositivo puede estar visible en los registros recopilados para soporte técnico y solución de problemas del cliente, por tanto asegúrese de evitar cualquier información confidencial al darle el nombre.</span><span class="sxs-lookup"><span data-stu-id="70fe6-101">The device ID may be visible in the logs collected for customer support and troubleshooting, so make sure to avoid any sensitive information while naming it.</span></span>
+>

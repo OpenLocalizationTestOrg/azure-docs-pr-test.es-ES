@@ -1,0 +1,34 @@
+---
+title: Evitar interrupciones de servicio con trabajos de Azure Stream Analytics | Microsoft Docs
+description: "Guía sobre cómo realizar la actualización resistente de los trabajos de Stream Analytics."
+services: stream-analytics
+documentationCenter: 
+authors: jeffstokes72
+manager: jhubbard
+editor: cgronlun
+ms.service: stream-analytics
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: data-services
+ms.date: 03/28/2017
+ms.author: jeffstok
+ms.openlocfilehash: 8dc19e1b37082c87d2990ad910d1af786f8b9280
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 07/11/2017
+---
+# <a name="guarantee-stream-analytics-job-reliability-during-service-updates"></a><span data-ttu-id="dc5f5-103">Garantía de la confiabilidad del trabajo de Stream Analytics durante las actualizaciones del servicio</span><span class="sxs-lookup"><span data-stu-id="dc5f5-103">Guarantee Stream Analytics job reliability during service updates</span></span>
+
+<span data-ttu-id="dc5f5-104">Parte de ser un servicio completamente administrado es la capacidad de introducir nuevas funcionalidades de servicio y mejoras a un ritmo rápido.</span><span class="sxs-lookup"><span data-stu-id="dc5f5-104">Part of being a fully managed service is the capability to introduce new service functionality and improvements at a rapid pace.</span></span> <span data-ttu-id="dc5f5-105">Como resultado, Stream Analytics puede tener una actualización de servicio implementada de forma semanal (o más frecuentemente).</span><span class="sxs-lookup"><span data-stu-id="dc5f5-105">As a result, Stream Analytics can have a service update deploy on a weekly (or more frequent) basis.</span></span> <span data-ttu-id="dc5f5-106">Con independencia de cuántas pruebas se realicen, sigue siendo un riesgo que un trabajo existente y en ejecución pueda interrumpirse debido a la introducción de un error.</span><span class="sxs-lookup"><span data-stu-id="dc5f5-106">No matter how much testing is done there is still a risk that an existing, running job may break due to the introduction of a bug.</span></span> <span data-ttu-id="dc5f5-107">Para aquellos clientes que ejecutan trabajos de procesamiento de transmisión críticos estos riesgos deben evitarse.</span><span class="sxs-lookup"><span data-stu-id="dc5f5-107">For customers who run critical streaming processing jobs these risks need to be avoided.</span></span> <span data-ttu-id="dc5f5-108">Un mecanismo que los clientes pueden utilizar para reducir este riesgo es el modelo de **[región emparejada](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)** de Azure.</span><span class="sxs-lookup"><span data-stu-id="dc5f5-108">A mechanism customers can use to reduce this risk is Azure’s **[paired region](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)** model.</span></span> 
+
+## <a name="how-do-azure-paired-regions-address-this-concern"></a><span data-ttu-id="dc5f5-109">¿Cómo solucionan este problema las regiones emparejadas de Azure?</span><span class="sxs-lookup"><span data-stu-id="dc5f5-109">How do Azure paired regions address this concern?</span></span>
+
+<span data-ttu-id="dc5f5-110">Stream Analytics garantiza que los trabajos de las regiones emparejadas se actualicen en lotes separados.</span><span class="sxs-lookup"><span data-stu-id="dc5f5-110">Stream Analytics guarantees jobs in paired regions are updated in separate batches.</span></span> <span data-ttu-id="dc5f5-111">Como resultado, hay un intervalo de tiempo suficiente entre las actualizaciones para identificar posibles errores de interrupción y corregirlos.</span><span class="sxs-lookup"><span data-stu-id="dc5f5-111">As a result there is a sufficient time gap between the updates to identify potential breaking bugs and remediate them.</span></span>
+
+<span data-ttu-id="dc5f5-112">_A excepción del centro de la India_ (cuya región emparejada, India del Sur, no tiene presencia de Stream Analytics), la implementación de una actualización para Stream Analytics no se producirá al mismo tiempo en un conjunto de regiones emparejadas.</span><span class="sxs-lookup"><span data-stu-id="dc5f5-112">_With the exception of Central India_ (whose paired region, South India, does not have Stream Analytics presence), the deployment of an update to Stream Analytics would not occur at the same time in a set of paired regions.</span></span> <span data-ttu-id="dc5f5-113">Pueden producirse implementaciones en varias regiones **del mismo grupo** **al mismo tiempo**.</span><span class="sxs-lookup"><span data-stu-id="dc5f5-113">Deployments in multiple regions **in the same group** may occur **at the same time**.</span></span>
+
+<span data-ttu-id="dc5f5-114">El artículo sobre **[disponibilidad y regiones emparejadas](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)** tiene la información más reciente sobre qué regiones están emparejadas.</span><span class="sxs-lookup"><span data-stu-id="dc5f5-114">The article on **[availability and paired regions](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)** has the most up-to-date information on which regions are paired.</span></span>
+
+<span data-ttu-id="dc5f5-115">Se recomienda a los clientes que implementen trabajos idénticos en ambas regiones emparejadas.</span><span class="sxs-lookup"><span data-stu-id="dc5f5-115">Customers are advised to deploy identical jobs to both paired regions.</span></span> <span data-ttu-id="dc5f5-116">Además de las capacidades de supervisión interna de Stream Analytics, también se recomienda a los clientes que supervisen los trabajos como si **ambos** fueran trabajos de producción.</span><span class="sxs-lookup"><span data-stu-id="dc5f5-116">In addition to Stream Analytics internal monitoring capabilities, customers are also advised to monitor the jobs as if **both** are production jobs.</span></span> <span data-ttu-id="dc5f5-117">Si no se identifica una interrupción como resultado de la actualización de servicio de Stream Analytics, escale de forma adecuada y conmute por error los consumidores que siguen en la cadena a la salida de trabajo correcta.</span><span class="sxs-lookup"><span data-stu-id="dc5f5-117">If a break is identified to be a result of the Stream Analytics service update, escalate appropriately and fail over any downstream consumers to the healthy job output.</span></span> <span data-ttu-id="dc5f5-118">El escalado al soporte impedirá que la región emparejada se vea afectada por la nueva implementación y mantenga la integridad de los trabajos emparejados.</span><span class="sxs-lookup"><span data-stu-id="dc5f5-118">Escalation to support will prevent the paired region from being affected by the new deployment and maintain the integrity of the paired jobs.</span></span>

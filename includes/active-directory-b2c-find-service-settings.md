@@ -1,0 +1,7 @@
+[!INCLUDE [active-directory-b2c-switch-b2c-tenant](active-directory-b2c-switch-b2c-tenant.md)]
+
+[!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](active-directory-b2c-portal-navigate-b2c-service.md)]
+
+<span data-ttu-id="30f24-101">Si Azure AD B2C no aparece en la lista de servicios, expanda **Más servicios** debajo de la barra de navegación en la parte inferior izquierda del portal.</span><span class="sxs-lookup"><span data-stu-id="30f24-101">If Azure AD B2C isn't in the services list, expand **More services** below the navigation bar in the bottom-left side of the portal.</span></span> <span data-ttu-id="30f24-102">Busque **Azure AD B2C** y seleccione **Azure AD B2C** en la lista de resultados.</span><span class="sxs-lookup"><span data-stu-id="30f24-102">Search for **Azure AD B2C** and select **Azure AD B2C** in the result list.</span></span> <span data-ttu-id="30f24-103">También puede seleccionar el icono de estrella para agregar Azure AD B2C a su lista de servicios favoritos.</span><span class="sxs-lookup"><span data-stu-id="30f24-103">You can also select the star icon to add Azure AD B2C it your favorite services list.</span></span>
+
+![Buscar servicio Azure AD B2C](media/active-directory-b2c-find-service-settings/navigate-to-azure-ad-b2c.png)

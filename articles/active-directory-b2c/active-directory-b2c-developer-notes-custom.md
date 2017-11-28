@@ -1,0 +1,65 @@
+---
+title: 'Azure Active Directory B2C: notas del desarrollador acerca del uso de directivas personalizadas|Microsoft Docs'
+description: "Notas para los desarrolladores sobre configuración y mantenimiento de Azure AD B2C con directivas personalizadas"
+services: active-directory-b2c
+documentationcenter: 
+author: rojasja
+manager: krassk
+editor: rojasja
+ms.assetid: 
+ms.service: active-directory-b2c
+ms.workload: identity
+ms.tgt_pltfrm: na
+ms.topic: article
+ms.devlang: na
+ms.date: 05/05/2017
+ms.author: joroja
+ms.openlocfilehash: 979b8a264eb819ee4a208b9171a53a5ffbf062c3
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 10/06/2017
+---
+# <a name="release-notes-for-azure-active-directory-b2c-custom-policy-public-preview"></a><span data-ttu-id="5b10b-103">Notas de la versión preliminar de la directiva personalizada de Azure Active Directory B2C</span><span class="sxs-lookup"><span data-stu-id="5b10b-103">Release notes for Azure Active Directory B2C custom policy public preview</span></span>
+<span data-ttu-id="5b10b-104">Hello conjunto de características de directiva personalizada está ahora disponible para su evaluación en versión preliminar pública de todos los B2C Directory activa de Azure (Azure AD B2C) clientes.</span><span class="sxs-lookup"><span data-stu-id="5b10b-104">hello custom policy feature set is now available for evaluation under public preview for all Azure Active Directory B2C (Azure AD B2C) customers.</span></span> <span data-ttu-id="5b10b-105">Este conjunto de características está destinada a desarrolladores de avanzado de identidades compilar soluciones de identidad de hello más complejas.</span><span class="sxs-lookup"><span data-stu-id="5b10b-105">This feature set is targeted at advanced identity developers building hello most complex identity solutions.</span></span>  
+
+<span data-ttu-id="5b10b-106">En la actualidad, este conjunto de características requiere que los desarrolladores tooconfigure Hola identidad experiencia Framework directamente a través de la edición de archivos XML.</span><span class="sxs-lookup"><span data-stu-id="5b10b-106">Today, this feature set requires developers tooconfigure hello Identity Experience Framework directly via XML file editing.</span></span> <span data-ttu-id="5b10b-107">Este método de configuración es eficaz y complejo.</span><span class="sxs-lookup"><span data-stu-id="5b10b-107">This method of configuration is powerful and complex.</span></span> <span data-ttu-id="5b10b-108">Los programadores de identidad mediante Hola avanzados identidad experiencia Framework debe planear tooinvest algún tiempo completar los tutoriales y lectura de los documentos de referencia.</span><span class="sxs-lookup"><span data-stu-id="5b10b-108">Advanced identity developers using hello Identity Experience Framework should plan tooinvest some time completing walk-throughs and reading reference documents.</span></span> 
+
+## <a name="features-included-in-this-public-preview"></a><span data-ttu-id="5b10b-109">Características que se incluyen en la versión preliminar pública</span><span class="sxs-lookup"><span data-stu-id="5b10b-109">Features included in this public preview</span></span>
+<span data-ttu-id="5b10b-110">Con hello nuevas características introducidas en versión preliminar pública de hello, los desarrolladores pueden realizar Hola siguiente las tareas:</span><span class="sxs-lookup"><span data-stu-id="5b10b-110">With hello new features introduced in hello public preview, developers can perform hello following tasks:</span></span><br>
+
+* <span data-ttu-id="5b10b-111">Crear y cargar recorridos del usuario de autenticación personalizada mediante directivas personalizadas.</span><span class="sxs-lookup"><span data-stu-id="5b10b-111">Author and upload custom authentication user journeys by using custom policies.</span></span> 
+   * <span data-ttu-id="5b10b-112">Describir los recorridos del usuario paso a paso como intercambios entre proveedores de notificaciones.</span><span class="sxs-lookup"><span data-stu-id="5b10b-112">Describe user journeys step-by-step as exchanges between claims providers.</span></span> 
+   * <span data-ttu-id="5b10b-113">Definir la creación de ramas condicional en recorridos del usuario.</span><span class="sxs-lookup"><span data-stu-id="5b10b-113">Define conditional branching in user journeys.</span></span> 
+* <span data-ttu-id="5b10b-114">Integrar servicios con la API de REST habilitada en los recorridos del usuario de autenticación personalizada.</span><span class="sxs-lookup"><span data-stu-id="5b10b-114">Integrate REST API-enabled services in your custom authentication user journeys.</span></span>  
+* <span data-ttu-id="5b10b-115">Agregue la federación con proveedores de identidades que son compatibles con hello OpenIDConnect estándar.</span><span class="sxs-lookup"><span data-stu-id="5b10b-115">Add federation with identity providers that are compliant with hello OpenIDConnect standard.</span></span> <br>
+* <span data-ttu-id="5b10b-116">Agregue la federación con proveedores de identidades que cumplen el protocolo toohello SAML 2.0.</span><span class="sxs-lookup"><span data-stu-id="5b10b-116">Add federation with identity providers that adhere toohello SAML 2.0 protocol.</span></span> 
+
+## <a name="terms-of-hello-public-preview"></a><span data-ttu-id="5b10b-117">Términos de vista previa pública de Hola</span><span class="sxs-lookup"><span data-stu-id="5b10b-117">Terms of hello public preview</span></span>
+
+* <span data-ttu-id="5b10b-118">Le recomendamos que características nuevas de hello toouse solo con fines de evaluación.</span><span class="sxs-lookup"><span data-stu-id="5b10b-118">We encourage you toouse hello new features for evaluation purposes only.</span></span><br>
+* <span data-ttu-id="5b10b-119">Las nuevas características no están pensadas para que se usen en entornos de producción.</span><span class="sxs-lookup"><span data-stu-id="5b10b-119">The new features are not intended for use in a production environment.</span></span><br>
+* <span data-ttu-id="5b10b-120">Contratos de nivel de servicio (SLA) no aplican toohello nuevas características.</span><span class="sxs-lookup"><span data-stu-id="5b10b-120">Service level agreements (SLAs) do not apply toohello new features.</span></span> <br>
+* <span data-ttu-id="5b10b-121">Las solicitudes de soporte técnico pueden enviarse a través de los canales de soporte técnico habituales.</span><span class="sxs-lookup"><span data-stu-id="5b10b-121">Support requests can be filed through regular support channels.</span></span> <br>
+* <span data-ttu-id="5b10b-122">No se puede garantizar ninguna fecha de disponibilidad general.</span><span class="sxs-lookup"><span data-stu-id="5b10b-122">There is no promised date for general availability.</span></span><br>
+* <span data-ttu-id="5b10b-123">A su discreción y por cualquier motivo, Microsoft puede marcar y rechazar o restringir los escenarios y los viajes de usuario que superan el ámbito de Hola de hello Azure AD B2C producto carta tooserve como una plataforma de administración (CIAM) de identidad y acceso de cliente.</span><span class="sxs-lookup"><span data-stu-id="5b10b-123">At our discretion, and for any reason, Microsoft can flag and reject or restrict scenarios and user journeys that exceed hello scope of hello Azure AD B2C product charter tooserve as a customer identity and access management (CIAM) platform.</span></span>
+
+## <a name="responsibilities-of-custom-policy-feature-set-developers"></a><span data-ttu-id="5b10b-124">Responsabilidades de los desarrolladores de conjunto de características de directivas personalizadas</span><span class="sxs-lookup"><span data-stu-id="5b10b-124">Responsibilities of custom policy feature-set developers</span></span>
+<span data-ttu-id="5b10b-125">Configuración de directiva manual concede toohello de acceso de nivel inferior subyacente de la plataforma de Azure AD B2C y tiene como resultado Hola creación de una plataforma de confianza único totalmente personalizables.</span><span class="sxs-lookup"><span data-stu-id="5b10b-125">Manual policy configuration grants lower-level access toohello underlying platform of Azure AD B2C and results in hello creation of a unique, fully customizable trust framework.</span></span> <span data-ttu-id="5b10b-126">Las permutaciones posibles de proveedores de identidades personalizados, las relaciones de confianza, integraciones con servicios externos y los flujos de trabajo de paso a paso peticiones mayores colocar en hello avanzada a los desarrolladores consumirlos.</span><span class="sxs-lookup"><span data-stu-id="5b10b-126">The possible permutations of custom identity providers, trust relationships, integrations with external services, and step-by-step workflows place greater demands on hello advanced developers consuming them.</span></span>
+
+<span data-ttu-id="5b10b-127">beneficio de toofully de versión preliminar pública de hello, se recomienda que los desarrolladores que consumen el conjunto de características de directiva personalizada de hello seguirán toohello siguientes instrucciones:</span><span class="sxs-lookup"><span data-stu-id="5b10b-127">toofully benefit from hello public preview, we suggest that developers consuming hello custom policy feature set adhere toohello following guidelines:</span></span>
+* <span data-ttu-id="5b10b-128">Familiarizarse con el lenguaje de configuración de Hola de hello motor de la experiencia de identidad y administración de claves y secretos.</span><span class="sxs-lookup"><span data-stu-id="5b10b-128">Become familiar with hello configuration language of hello Identity Experience Engine and key/secrets management.</span></span>
+* <span data-ttu-id="5b10b-129">Tomar posesión de escenarios e integraciones personalizadas.</span><span class="sxs-lookup"><span data-stu-id="5b10b-129">Take ownership of scenarios and custom integrations.</span></span>
+* <span data-ttu-id="5b10b-130">Realizar pruebas metódicas de los escenarios.</span><span class="sxs-lookup"><span data-stu-id="5b10b-130">Perform methodical scenario testing.</span></span>
+* <span data-ttu-id="5b10b-131">Seguir los procedimientos recomendados de desarrollo de software y almacenamiento provisional con un mínimo de un entorno de desarrollo y prueba, y un entorno de producción.</span><span class="sxs-lookup"><span data-stu-id="5b10b-131">Follow software development and staging best practices with a minimum of one development and testing environment and one production environment.</span></span>
+* <span data-ttu-id="5b10b-132">Manténgase informado sobre los nuevos desarrollos desde proveedores de identidades de Hola y servicios de con que integración.</span><span class="sxs-lookup"><span data-stu-id="5b10b-132">Stay informed about new developments from hello identity providers and services you integrate with.</span></span> <span data-ttu-id="5b10b-133">Por ejemplo, realizar un seguimiento de cambios en los secretos y del servicio de toohello programado y cambios.</span><span class="sxs-lookup"><span data-stu-id="5b10b-133">For example, keep track of changes in secrets and of scheduled and unscheduled changes toohello service.</span></span>
+* <span data-ttu-id="5b10b-134">Configurar la supervisión activa y supervisar la capacidad de respuesta de Hola de entornos de producción.</span><span class="sxs-lookup"><span data-stu-id="5b10b-134">Set up active monitoring, and monitor hello responsiveness of production environments.</span></span>
+* <span data-ttu-id="5b10b-135">Mantener las direcciones de correo electrónico de contacto actual así como los correos electrónicos de toohello responde Microsoft equipo del sitio dinámico.</span><span class="sxs-lookup"><span data-stu-id="5b10b-135">Keep contact email addresses current, and stay responsive toohello Microsoft live-site team emails.</span></span>
+* <span data-ttu-id="5b10b-136">Realizar acción oportuna cuando toodo aconsejable Hola así por equipo de sitio en directo de Microsoft.</span><span class="sxs-lookup"><span data-stu-id="5b10b-136">Take timely action when advised toodo so by hello Microsoft live-site team.</span></span> 
+
+
+>[!NOTE]
+><span data-ttu-id="5b10b-137">Estas características podrían incluirse finalmente en directivas integradas de Azure AD, lo que los desarrolladores de tooall sea más accesibles.</span><span class="sxs-lookup"><span data-stu-id="5b10b-137">These features might eventually be included in Azure AD built-in policies, making them more accessible tooall developers.</span></span>
+
+## <a name="next-steps"></a><span data-ttu-id="5b10b-138">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="5b10b-138">Next steps</span></span>
+<span data-ttu-id="5b10b-139">[Introducción a las directivas personalizadas](active-directory-b2c-get-started-custom.md).</span><span class="sxs-lookup"><span data-stu-id="5b10b-139">[Get started with custom policies](active-directory-b2c-get-started-custom.md).</span></span>

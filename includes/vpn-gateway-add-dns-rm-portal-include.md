@@ -1,0 +1,8 @@
+1. <span data-ttu-id="3bc26-101">En la página **Configuración** de la red virtual, navegue hasta **Servidores DNS** y haga clic para abrir la hoja **Servidores DNS**.</span><span class="sxs-lookup"><span data-stu-id="3bc26-101">On the **Settings** page for your virtual network, navigate to **DNS Servers** and click to open the **DNS servers** blade.</span></span>
+
+    <span data-ttu-id="3bc26-102">![Agregar servidor DNS](./media/vpn-gateway-add-dns-rm-portal/add_dns_server.png "Agregar servidor DNS")</span><span class="sxs-lookup"><span data-stu-id="3bc26-102">![Add DNS server](./media/vpn-gateway-add-dns-rm-portal/add_dns_server.png "Add DNS Server")</span></span>
+
+  - <span data-ttu-id="3bc26-103">**Servidores DNS:** seleccione **Personalizado**.</span><span class="sxs-lookup"><span data-stu-id="3bc26-103">**DNS Servers:** Select select **Custom**.</span></span>
+  - <span data-ttu-id="3bc26-104">**Agregar servidor DNS:** escriba la dirección IP del servidor DNS que desea usar para la resolución de nombres.</span><span class="sxs-lookup"><span data-stu-id="3bc26-104">**Add DNS server:** Enter the IP address of the DNS server that you want to use for name resolution.</span></span>
+
+2. <span data-ttu-id="3bc26-105">Cuando acabe de agregar servidores DNS, haga clic en **Guardar** en la parte superior de la hoja.</span><span class="sxs-lookup"><span data-stu-id="3bc26-105">When you are done adding DNS servers, click **Save** at the top of the blade.</span></span>

@@ -1,0 +1,98 @@
+---
+title: aaaUsing CDN de Azure con CORS | Documentos de Microsoft
+description: "Obtenga información acerca de cómo toouse Hola toowith de red de entrega contenido (CDN) de Azure de uso compartido de recursos entre orígenes (CORS)."
+services: cdn
+documentationcenter: 
+author: zhangmanling
+manager: erikre
+editor: 
+ms.assetid: 86740a96-4269-4060-aba3-a69f00e6f14e
+ms.service: cdn
+ms.workload: tbd
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 01/23/2017
+ms.author: mazha
+ms.openlocfilehash: 6c743b56c32a2d3aacc9a77094cb87d61b95d2f7
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 10/06/2017
+---
+# <a name="using-azure-cdn-with-cors"></a><span data-ttu-id="d184e-103">Uso de la red CDN de Azure con CORS</span><span class="sxs-lookup"><span data-stu-id="d184e-103">Using Azure CDN with CORS</span></span>
+## <a name="what-is-cors"></a><span data-ttu-id="d184e-104">¿Qué es CORS?</span><span class="sxs-lookup"><span data-stu-id="d184e-104">What is CORS?</span></span>
+<span data-ttu-id="d184e-105">CORS (Cross origen uso compartido de recursos) es una característica HTTP que permite que una aplicación web que se ejecuta en uno de los recursos de tooaccess de dominio en otro dominio.</span><span class="sxs-lookup"><span data-stu-id="d184e-105">CORS (Cross Origin Resource Sharing) is an HTTP feature that enables a web application running under one domain tooaccess resources in another domain.</span></span> <span data-ttu-id="d184e-106">En la posibilidad de Hola de tooreduce de orden de los ataques de scripts entre sitios, todos los exploradores web modernos implementan una restricción de seguridad que se conoce como [directiva de mismo origen](http://www.w3.org/Security/wiki/Same_Origin_Policy).</span><span class="sxs-lookup"><span data-stu-id="d184e-106">In order tooreduce hello possibility of cross-site scripting attacks, all modern web browsers implement a security restriction known as [same-origin policy](http://www.w3.org/Security/wiki/Same_Origin_Policy).</span></span>  <span data-ttu-id="d184e-107">Esto impide que una página web llame a las API de un dominio distinto.</span><span class="sxs-lookup"><span data-stu-id="d184e-107">This prevents a web page from calling APIs in a different domain.</span></span>  <span data-ttu-id="d184e-108">CORS proporciona un toocall de (dominio de origen de hello) de un origen de tooallow forma segura las API en otro origen.</span><span class="sxs-lookup"><span data-stu-id="d184e-108">CORS provides a secure way tooallow one origin (hello origin domain) toocall APIs in another origin.</span></span>
+
+## <a name="how-it-works"></a><span data-ttu-id="d184e-109">Cómo funciona</span><span class="sxs-lookup"><span data-stu-id="d184e-109">How it works</span></span>
+<span data-ttu-id="d184e-110">Hay dos tipos de solicitudes de CORS, *solicitudes sencillas* y *solicitudes complejas.*</span><span class="sxs-lookup"><span data-stu-id="d184e-110">There are two types of CORS requests, *simple requests* and *complex requests.*</span></span>
+
+### <a name="for-simple-requests"></a><span data-ttu-id="d184e-111">Para solicitudes sencillas:</span><span class="sxs-lookup"><span data-stu-id="d184e-111">For simple requests:</span></span>
+
+1. <span data-ttu-id="d184e-112">Explorador de Hello envía la solicitud de CORS de hello con más **origen** encabezado de solicitud HTTP.</span><span class="sxs-lookup"><span data-stu-id="d184e-112">hello browser sends hello CORS request with an additional **Origin** HTTP request header.</span></span> <span data-ttu-id="d184e-113">valor de Hola de este encabezado es el origen de Hola que pueda servir página primaria de hello, que se define como la combinación de Hola de *protocolo,* *dominio,* y *puerto.*</span><span class="sxs-lookup"><span data-stu-id="d184e-113">hello value of this header is hello origin that served hello parent page, which is defined as hello combination of *protocol,* *domain,* and *port.*</span></span>  <span data-ttu-id="d184e-114">Cuando una página de https://www.contoso.com intenta tooaccess datos de un usuario en el origen de fabrikam.com hello, se enviarían Hola siguiente encabezado de solicitud toofabrikam.com:</span><span class="sxs-lookup"><span data-stu-id="d184e-114">When a page from https://www.contoso.com attempts tooaccess a user's data in hello fabrikam.com origin, hello following request header would be sent toofabrikam.com:</span></span>
+
+   `Origin: https://www.contoso.com`
+
+2. <span data-ttu-id="d184e-115">servidor Hello puede responder con cualquiera de hello siguientes:</span><span class="sxs-lookup"><span data-stu-id="d184e-115">hello server may respond with any of hello following:</span></span>
+
+   * <span data-ttu-id="d184e-116">Un encabezado **Access-Control-Allow-Origin** en la respuesta, que indica cuál de los sitios de origen se permite.</span><span class="sxs-lookup"><span data-stu-id="d184e-116">An **Access-Control-Allow-Origin** header in its response indicating which origin site is allowed.</span></span> <span data-ttu-id="d184e-117">Por ejemplo:</span><span class="sxs-lookup"><span data-stu-id="d184e-117">For example:</span></span>
+
+     `Access-Control-Allow-Origin: https://www.contoso.com`
+
+   * <span data-ttu-id="d184e-118">Código de error HTTP como 403 si Hola servidor no permite la solicitud entre orígenes de hello después de comprobar el encabezado de origen de Hola</span><span class="sxs-lookup"><span data-stu-id="d184e-118">An HTTP error code such as 403 if hello server does not allow hello cross-origin request after checking hello Origin header</span></span>
+
+   * <span data-ttu-id="d184e-119">Un encabezado **Access-Control-Allow-Origin** con un carácter comodín que permite todos los dominios:</span><span class="sxs-lookup"><span data-stu-id="d184e-119">An **Access-Control-Allow-Origin** header with a wildcard that allows all origins:</span></span>
+
+     `Access-Control-Allow-Origin: *`
+
+### <a name="for-complex-requests"></a><span data-ttu-id="d184e-120">Para solicitudes complejas:</span><span class="sxs-lookup"><span data-stu-id="d184e-120">For complex requests:</span></span>
+
+<span data-ttu-id="d184e-121">Una solicitud compleja una solicitud de CORS donde hello examinador es necesario toosend una *solicitud preparatoria* (es decir, un análisis preliminar) antes de enviar la solicitud CORS real Hola.</span><span class="sxs-lookup"><span data-stu-id="d184e-121">A complex request is a CORS request where hello browser is required toosend a *preflight request* (i.e. a preliminary probe) before sending hello actual CORS request.</span></span> <span data-ttu-id="d184e-122">Hello solicitud preparatoria solicita Hola server permiso si solicitud CORS de hello original puede continuar y es un `OPTIONS` solicitar toohello misma dirección URL.</span><span class="sxs-lookup"><span data-stu-id="d184e-122">hello preflight request asks hello server permission if hello original CORS request can proceed and is an `OPTIONS` request toohello same URL.</span></span>
+
+> [!TIP]
+> <span data-ttu-id="d184e-123">Para obtener más detalles sobre los flujos de CORS y los errores comunes, ver hello [guía tooCORS para las API de REST](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/).</span><span class="sxs-lookup"><span data-stu-id="d184e-123">For more details on CORS flows and common pitfalls, view hello [Guide tooCORS for REST APIs](https://www.moesif.com/blog/technical/cors/Authoritative-Guide-to-CORS-Cross-Origin-Resource-Sharing-for-REST-APIs/).</span></span>
+>
+>
+
+## <a name="wildcard-or-single-origin-scenarios"></a><span data-ttu-id="d184e-124">Escenarios de origen único o carácter comodín</span><span class="sxs-lookup"><span data-stu-id="d184e-124">Wildcard or single origin scenarios</span></span>
+<span data-ttu-id="d184e-125">CORS en la red CDN de Azure funcionará automáticamente sin ninguna configuración adicional cuando hello **acceso Access-Control-Allow-Origin** encabezado se establece toowildcard (*) o un único origen.</span><span class="sxs-lookup"><span data-stu-id="d184e-125">CORS on Azure CDN will work automatically with no additional configuration when hello **Access-Control-Allow-Origin** header is set toowildcard (*) or a single origin.</span></span>  <span data-ttu-id="d184e-126">CDN Hola almacenará en memoria caché primera respuesta de Hola y las solicitudes posteriores usarán Hola mismo encabezado.</span><span class="sxs-lookup"><span data-stu-id="d184e-126">hello CDN will cache hello first response and subsequent requests will use hello same header.</span></span>
+
+<span data-ttu-id="d184e-127">Si las solicitudes se han realizado ya toohello CDN tooCORS anteriores que se establecen en hello su origen, deberá toopurge contenido en su hello tooreload contenido de punto de conexión contenido con hello **acceso Access-Control-Allow-Origin** encabezado.</span><span class="sxs-lookup"><span data-stu-id="d184e-127">If requests have already been made toohello CDN prior tooCORS being set on hello your origin, you will need toopurge content on your endpoint content tooreload hello content with hello **Access-Control-Allow-Origin** header.</span></span>
+
+## <a name="multiple-origin-scenarios"></a><span data-ttu-id="d184e-128">Escenarios de varios orígenes</span><span class="sxs-lookup"><span data-stu-id="d184e-128">Multiple origin scenarios</span></span>
+<span data-ttu-id="d184e-129">Si necesita una lista específica de toobe orígenes permitido para CORS tooallow, puede ser un poco más complicado.</span><span class="sxs-lookup"><span data-stu-id="d184e-129">If you need tooallow a specific list of origins toobe allowed for CORS, things get a little more complicated.</span></span> <span data-ttu-id="d184e-130">se produce un problema de Hello cuando Hola CDN almacena en caché hello **acceso Access-Control-Allow-Origin** encabezado para el primer origen de CORS Hola.</span><span class="sxs-lookup"><span data-stu-id="d184e-130">hello problem occurs when hello CDN caches hello **Access-Control-Allow-Origin** header for hello first CORS origin.</span></span>  <span data-ttu-id="d184e-131">Cuando un origen diferente de CORS realiza una solicitud posterior, CDN Hola servirá hello en caché **acceso Access-Control-Allow-Origin** encabezado, que no coincidirán.</span><span class="sxs-lookup"><span data-stu-id="d184e-131">When a different CORS origin makes a subsequent request, hello CDN will serve hello cached **Access-Control-Allow-Origin** header, which won't match.</span></span>  <span data-ttu-id="d184e-132">Hay varias toocorrect formas esto.</span><span class="sxs-lookup"><span data-stu-id="d184e-132">There are several ways toocorrect this.</span></span>
+
+### <a name="azure-cdn-premium-from-verizon"></a><span data-ttu-id="d184e-133">Red CDN premium de Azure de Verizon</span><span class="sxs-lookup"><span data-stu-id="d184e-133">Azure CDN Premium from Verizon</span></span>
+<span data-ttu-id="d184e-134">Hola tooenable de mejor manera es toouse **Premium de CDN de Azure de Verizon**, que expone algunas funciones avanzadas.</span><span class="sxs-lookup"><span data-stu-id="d184e-134">hello best way tooenable this is toouse **Azure CDN Premium from Verizon**, which exposes some advanced functionality.</span></span> 
+
+<span data-ttu-id="d184e-135">Necesitará demasiado[crear una regla de](cdn-rules-engine.md) toocheck hello **origen** encabezado de solicitud de saludo.</span><span class="sxs-lookup"><span data-stu-id="d184e-135">You'll need too[create a rule](cdn-rules-engine.md) toocheck hello **Origin** header on hello request.</span></span>  <span data-ttu-id="d184e-136">Si es un origen válido, la regla establecerá hello **acceso Access-Control-Allow-Origin** encabezado con el origen de hello proporcionado en la solicitud de saludo.</span><span class="sxs-lookup"><span data-stu-id="d184e-136">If it's a valid origin, your rule will set hello **Access-Control-Allow-Origin** header with hello origin provided in hello request.</span></span>  <span data-ttu-id="d184e-137">Si especifica el origen Hola Hola **origen** encabezado no está permitido, la regla debe omitir hello **acceso Access-Control-Allow-Origin** encabezado lo que hará que la solicitud de hello explorador tooreject Hola.</span><span class="sxs-lookup"><span data-stu-id="d184e-137">If hello origin specified in hello **Origin** header is not allowed, your rule should omit hello **Access-Control-Allow-Origin** header which will cause hello browser tooreject hello request.</span></span> 
+
+<span data-ttu-id="d184e-138">Hay dos toodo formas esto con el motor de reglas de Hola.</span><span class="sxs-lookup"><span data-stu-id="d184e-138">There are two ways toodo this with hello rules engine.</span></span>  <span data-ttu-id="d184e-139">En ambos casos, Hola **acceso Access-Control-Allow-Origin** completamente se omite el encabezado de servidor de origen del archivo de hello, motor de reglas de CDN Hola administra completamente Hola permite orígenes CORS.</span><span class="sxs-lookup"><span data-stu-id="d184e-139">In both cases, hello **Access-Control-Allow-Origin** header from hello file's origin server is completely ignored, hello CDN's rules engine completely manages hello allowed CORS origins.</span></span>
+
+#### <a name="one-regular-expression-with-all-valid-origins"></a><span data-ttu-id="d184e-140">Una expresión regular con todos los orígenes válidos</span><span class="sxs-lookup"><span data-stu-id="d184e-140">One regular expression with all valid origins</span></span>
+<span data-ttu-id="d184e-141">En este caso, creará una expresión regular que incluye todos los orígenes de hello desea tooallow:</span><span class="sxs-lookup"><span data-stu-id="d184e-141">In this case, you'll create a regular expression that includes all of hello origins you want tooallow:</span></span> 
+
+    https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
+
+> [!TIP]
+> <span data-ttu-id="d184e-142">**red CDN de Azure de Verizon** utiliza las [expresiones regulares compatibles con Perl](http://pcre.org/) como su motor de expresiones regulares.</span><span class="sxs-lookup"><span data-stu-id="d184e-142">**Azure CDN from Verizon** uses [Perl Compatible Regular Expressions](http://pcre.org/) as its engine for regular expressions.</span></span>  <span data-ttu-id="d184e-143">Puede usar una herramienta como [101 de expresiones regulares](https://regex101.com/) toovalidate la expresión regular.</span><span class="sxs-lookup"><span data-stu-id="d184e-143">You can use a tool like [Regular Expressions 101](https://regex101.com/) toovalidate your regular expression.</span></span>  <span data-ttu-id="d184e-144">Tenga en cuenta que Hola "/" de caracteres es válido en expresiones regulares y no necesita toobe caracteres de escape, sin embargo, ese carácter de la secuencia de escape se considera una práctica recomendada y es compatible con algunos controles de validación de expresión regular.</span><span class="sxs-lookup"><span data-stu-id="d184e-144">Note that hello "/" character is valid in regular expressions and doesn't need toobe escaped, however, escaping that character is considered a best practice and is expected by some regex validators.</span></span>
+> 
+> 
+
+<span data-ttu-id="d184e-145">Si se coincide con la expresión regular de hello, la regla reemplazará hello **acceso Access-Control-Allow-Origin** encabezado (si existe) del origen de hello con origen de Hola que envió la solicitud de saludo.</span><span class="sxs-lookup"><span data-stu-id="d184e-145">If hello regular expression matches, your rule will replace hello **Access-Control-Allow-Origin** header (if any) from hello origin with hello origin that sent hello request.</span></span>  <span data-ttu-id="d184e-146">También puede añadir encabezados de CORS adicionales, como **Access-Control-Allow-Methods**.</span><span class="sxs-lookup"><span data-stu-id="d184e-146">You can also add additional CORS headers, such as **Access-Control-Allow-Methods**.</span></span>
+
+![Ejemplo de reglas con expresiones regulares](./media/cdn-cors/cdn-cors-regex.png)
+
+#### <a name="request-header-rule-for-each-origin"></a><span data-ttu-id="d184e-148">Regla de encabezado de solicitud para cada origen</span><span class="sxs-lookup"><span data-stu-id="d184e-148">Request header rule for each origin.</span></span>
+<span data-ttu-id="d184e-149">En lugar de expresiones regulares, en su lugar, puede crear otro regla para cada origen desea tooallow con hello **comodín del encabezado de solicitud** [coincide con la condición](https://msdn.microsoft.com/library/mt757336.aspx#Anchor_1).</span><span class="sxs-lookup"><span data-stu-id="d184e-149">Rather than regular expressions, you can instead create a separate rule for each origin you wish tooallow using hello **Request Header Wildcard** [match condition](https://msdn.microsoft.com/library/mt757336.aspx#Anchor_1).</span></span> <span data-ttu-id="d184e-150">Como con el método de expresión regular de hello, Hola el motor de reglas encabezados conjuntos hello CORS por sí solo.</span><span class="sxs-lookup"><span data-stu-id="d184e-150">As with hello regular expression method, hello rules engine alone sets hello CORS headers.</span></span> 
+
+![Ejemplo de reglas sin expresiones regulares](./media/cdn-cors/cdn-cors-no-regex.png)
+
+> [!TIP]
+> <span data-ttu-id="d184e-152">En el ejemplo de Hola anterior, Hola uso del carácter comodín de Hola * indica que el motor de reglas de hello toomatch HTTP y HTTPS.</span><span class="sxs-lookup"><span data-stu-id="d184e-152">In hello example above, hello use of hello wildcard character * tells hello rules engine toomatch both HTTP and HTTPS.</span></span>
+> 
+> 
+
+### <a name="azure-cdn-standard"></a><span data-ttu-id="d184e-153">Estándar de red CDN de Azure</span><span class="sxs-lookup"><span data-stu-id="d184e-153">Azure CDN Standard</span></span>
+<span data-ttu-id="d184e-154">En los perfiles de red CDN de Azure estándar, Hola solo mecanismo tooallow para varios orígenes sin uso Hola de origen de comodín de hello es toouse [almacenamiento en memoria caché en la cadena de consulta](cdn-query-string.md).</span><span class="sxs-lookup"><span data-stu-id="d184e-154">On Azure CDN Standard profiles, hello only mechanism tooallow for multiple origins without hello use of hello wildcard origin is toouse [query string caching](cdn-query-string.md).</span></span>  <span data-ttu-id="d184e-155">Es necesario tooenable configuración de la cadena de consulta para el extremo de red CDN Hola y, a continuación, utilice una cadena de consulta única para las solicitudes de cada dominio permitido.</span><span class="sxs-lookup"><span data-stu-id="d184e-155">You need tooenable query string setting for hello CDN endpoint and then use a unique query string for requests from each allowed domain.</span></span> <span data-ttu-id="d184e-156">Esto producirá Hola CDN almacenamiento en caché un objeto independiente para cada cadena de consulta única.</span><span class="sxs-lookup"><span data-stu-id="d184e-156">Doing this will result in hello CDN caching a separate object for each unique query string.</span></span> <span data-ttu-id="d184e-157">Este enfoque no es lo ideal, sin embargo, que se producirá en varias copias de hello mismo archivo almacenado en caché en hello CDN.</span><span class="sxs-lookup"><span data-stu-id="d184e-157">This approach is not ideal, however, as it will result in multiple copies of hello same file cached on hello CDN.</span></span>  
+

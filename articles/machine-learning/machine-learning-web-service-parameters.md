@@ -1,0 +1,91 @@
+---
+title: "Uso de parámetros de servicio web Machine Learning | Microsoft Docs"
+description: "Cómo utilizar parámetros de servicio web de Aprendizaje automático de Azure para modificar el comportamiento de su modelo cuando se tiene acceso al servicio web."
+services: machine-learning
+documentationcenter: 
+author: raymondlaghaeian
+manager: jhubbard
+editor: cgronlun
+ms.assetid: c49187db-b976-4731-89d6-11a0bf653db1
+ms.service: machine-learning
+ms.workload: data-services
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 01/12/2017
+ms.author: raymondl;garye
+ms.openlocfilehash: 482726c1dae5385964e08b720e529817d5907537
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 07/11/2017
+---
+# <a name="use-azure-machine-learning-web-service-parameters"></a><span data-ttu-id="96969-103">Usar parámetros de servicio web de Aprendizaje automático de Azure</span><span class="sxs-lookup"><span data-stu-id="96969-103">Use Azure Machine Learning Web Service Parameters</span></span>
+<span data-ttu-id="96969-104">Se crea un servicio web de Aprendizaje automático de Azure mediante la publicación de un experimento que contiene módulos con parámetros configurables.</span><span class="sxs-lookup"><span data-stu-id="96969-104">An Azure Machine Learning web service is created by publishing an experiment that contains modules with configurable parameters.</span></span> <span data-ttu-id="96969-105">En algunos casos, puede que desee cambiar el comportamiento del módulo mientras se está ejecutando el servicio web.</span><span class="sxs-lookup"><span data-stu-id="96969-105">In some cases, you may want to change the module behavior while the web service is running.</span></span> <span data-ttu-id="96969-106">Los *parámetros del servicio web* le permiten realizar esta tarea.</span><span class="sxs-lookup"><span data-stu-id="96969-106">*Web Service Parameters* allow you to do this task.</span></span> 
+
+<span data-ttu-id="96969-107">Un ejemplo común es la configuración del módulo [Importar datos][reader] para que el usuario del servicio web publicado pueda especificar un origen de datos diferente al obtener acceso al servicio web.</span><span class="sxs-lookup"><span data-stu-id="96969-107">A common example is setting up the [Import Data][reader] module so that the user of the published web service can specify a different data source when the web service is accessed.</span></span> <span data-ttu-id="96969-108">También puede configurar el módulo [Exportar datos][writer] para que se pueda especificar un destino diferente.</span><span class="sxs-lookup"><span data-stu-id="96969-108">Or configuring the [Export Data][writer] module so that a different destination can be specified.</span></span> <span data-ttu-id="96969-109">Algunos otros ejemplos incluyen cambiar el número de bits del [hash de características][feature-hashing] o el número de características deseadas para el módulo [Selección de características basada en filtros][filter-based-feature-selection].</span><span class="sxs-lookup"><span data-stu-id="96969-109">Some other examples include changing the number of bits for the [Feature Hashing][feature-hashing] module or the number of desired features for the [Filter-Based Feature Selection][filter-based-feature-selection] module.</span></span> 
+
+<span data-ttu-id="96969-110">Puede definir parámetros de servicio web y asociarlos con uno o más parámetros de módulo en el experimento, y puede especificar si son obligatorios u opcionales.</span><span class="sxs-lookup"><span data-stu-id="96969-110">You can set Web Service Parameters and associate them with one or more module parameters in your experiment, and you can specify whether they are required or optional.</span></span> <span data-ttu-id="96969-111">El usuario del servicio web puede entonces proporcionar valores para estos parámetros cuando llama el servicio web.</span><span class="sxs-lookup"><span data-stu-id="96969-111">The user of the web service can then provide values for these parameters when they call the web service.</span></span> 
+
+[!INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
+
+## <a name="how-to-set-and-use-web-service-parameters"></a><span data-ttu-id="96969-112">Cómo establecer y utilizar los parámetros de servicio web</span><span class="sxs-lookup"><span data-stu-id="96969-112">How to set and use Web Service Parameters</span></span>
+<span data-ttu-id="96969-113">Para definir un parámetro de servicio web, haga clic en el icono situado junto al parámetro de un módulo y seleccione "Establecer como parámetro del servicio web".</span><span class="sxs-lookup"><span data-stu-id="96969-113">You define a Web Service Parameter by clicking the icon next to the parameter for a module and selecting "Set as web service parameter".</span></span> <span data-ttu-id="96969-114">Esto crea un nuevo parámetro de servicio web y se conecta a ese parámetro de módulo.</span><span class="sxs-lookup"><span data-stu-id="96969-114">This creates a new Web Service Parameter and connects it to that module parameter.</span></span> <span data-ttu-id="96969-115">A continuación, cuando se obtiene acceso al servicio web, el usuario puede especificar un valor para el parámetro del servicio web y se aplicará al parámetro del módulo.</span><span class="sxs-lookup"><span data-stu-id="96969-115">Then, when the web service is accessed, the user can specify a value for the Web Service Parameter and it is applied to the module parameter.</span></span>
+
+<span data-ttu-id="96969-116">Una vez que defina un parámetro de servicio web, está disponible para cualquier otro parámetro de módulo en el experimento.</span><span class="sxs-lookup"><span data-stu-id="96969-116">Once you define a Web Service Parameter, it's available to any other module parameter in the experiment.</span></span> <span data-ttu-id="96969-117">Si define un parámetro del servicio web asociado a un parámetro para un módulo, puede usar ese mismo parámetro del servicio web para cualquier otro módulo, siempre que el parámetro espere el mismo tipo de valor.</span><span class="sxs-lookup"><span data-stu-id="96969-117">If you define a Web Service Parameter associated with a parameter for one module, you can use that same Web Service Parameter for any other module, as long as the parameter expects the same type of value.</span></span> <span data-ttu-id="96969-118">Por ejemplo, si el parámetro del servicio web es un valor numérico, entonces solo se puede usar para parámetros de módulo que esperan un valor numérico.</span><span class="sxs-lookup"><span data-stu-id="96969-118">For example, if the Web Service Parameter is a numeric value, then it can only be used for module parameters that expect a numeric value.</span></span> <span data-ttu-id="96969-119">Cuando el usuario establece un valor para el parámetro del servicio web, se aplicará a todos los parámetros de módulo asociado.</span><span class="sxs-lookup"><span data-stu-id="96969-119">When the user sets a value for the Web Service Parameter, it will be applied to all associated module parameters.</span></span>
+
+<span data-ttu-id="96969-120">Puede decidir si se debe proporcionar un valor predeterminado para el parámetro del servicio web.</span><span class="sxs-lookup"><span data-stu-id="96969-120">You can decide whether to provide a default value for the Web Service Parameter.</span></span> <span data-ttu-id="96969-121">Si lo hace, el parámetro es opcional para el usuario del servicio web.</span><span class="sxs-lookup"><span data-stu-id="96969-121">If you do, then the parameter is optional for the user of the web service.</span></span> <span data-ttu-id="96969-122">Si no proporciona un valor predeterminado, el usuario tiene que especificar un valor al que se tiene acceso al servicio web.</span><span class="sxs-lookup"><span data-stu-id="96969-122">If you don't provide a default value, then the user is required to enter a value when the web service is accessed.</span></span>
+
+<span data-ttu-id="96969-123">La documentación de API del servicio web incluye información para el usuario del servicio web sobre cómo especificar el parámetro del servicio web mediante programación al obtener acceso al servicio web.</span><span class="sxs-lookup"><span data-stu-id="96969-123">The API documentation for the web service includes information for the web service user on how to specify the Web Service Parameter programmatically when accessing the web service.</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="96969-124">La documentación de API de un servicio web clásico se proporciona a través del vínculo de la **página de ayuda de API** del servicio web **PANEL** de Machine Learning Studio.</span><span class="sxs-lookup"><span data-stu-id="96969-124">The API documentation for a classic web service is provided through the **API help page** link in the web service **DASHBOARD** in Machine Learning Studio.</span></span> <span data-ttu-id="96969-125">La documentación de API de un servicio web nuevo se proporciona a través del portal de [servicios web Machine Learning](https://services.azureml.net/Quickstart) en las páginas **Consume** (Consumo) y **Swagger API** (API de Swagger) del servicio web.</span><span class="sxs-lookup"><span data-stu-id="96969-125">The API documentation for a new web service is provided through the [Azure Machine Learning Web Services](https://services.azureml.net/Quickstart) portal on the **Consume** and **Swagger API** pages for your web service.</span></span>
+> 
+> 
+
+## <a name="example"></a><span data-ttu-id="96969-126">Ejemplo</span><span class="sxs-lookup"><span data-stu-id="96969-126">Example</span></span>
+<span data-ttu-id="96969-127">Por ejemplo, supongamos que tenemos un experimento con un módulo [Exportar datos][writer] que envía información a Azure Blob Storage.</span><span class="sxs-lookup"><span data-stu-id="96969-127">As an example, let's assume we have an experiment with an [Export Data][writer] module that sends information to Azure blob storage.</span></span> <span data-ttu-id="96969-128">Definiremos un parámetro del servicio web denominado "Ruta de acceso de Blob" que permite al usuario del servicio web cambiar la ruta de acceso al almacenamiento de blobs cuando se tenga acceso al servicio.</span><span class="sxs-lookup"><span data-stu-id="96969-128">We'll define a Web Service Parameter named "Blob path" that allows the web service user to change the path to the blob storage when the service is accessed.</span></span>
+
+1. <span data-ttu-id="96969-129">En Machine Learning Studio, haga clic en el módulo [Exportar datos][writer] para seleccionarlo.</span><span class="sxs-lookup"><span data-stu-id="96969-129">In Machine Learning Studio, click the [Export Data][writer] module to select it.</span></span> <span data-ttu-id="96969-130">Sus propiedades se muestran en el panel Propiedades a la derecha del lienzo del experimento.</span><span class="sxs-lookup"><span data-stu-id="96969-130">Its properties are shown in the Properties pane to the right of the experiment canvas.</span></span>
+2. <span data-ttu-id="96969-131">Especifique el tipo de almacenamiento:</span><span class="sxs-lookup"><span data-stu-id="96969-131">Specify the storage type:</span></span>
+   
+   * <span data-ttu-id="96969-132">En **Especifique el destino de los datos**, seleccione Almacenamiento de blobs de Azure.</span><span class="sxs-lookup"><span data-stu-id="96969-132">Under **Please specify data destination**, select "Azure Blob Storage".</span></span>
+   * <span data-ttu-id="96969-133">En **Especifique el tipo de autenticación**, seleccione "Cuenta".</span><span class="sxs-lookup"><span data-stu-id="96969-133">Under **Please specify authentication type**, select "Account".</span></span>
+   * <span data-ttu-id="96969-134">Escriba la información de cuenta para el almacenamiento de blobs de Azure.</span><span class="sxs-lookup"><span data-stu-id="96969-134">Enter the account information for the Azure blob storage.</span></span> 
+     <p /><span data-ttu-id="96969-135">
+3. Haga clic en el icono situado a la derecha del **parámetro Ruta de acceso que comienza con el contenedor de blobs**.</span><span class="sxs-lookup"><span data-stu-id="96969-135">
+3. Click the icon to the right of the **Path to blob beginning with container parameter**.</span></span> <span data-ttu-id="96969-136">Su aspecto es similar a este:</span><span class="sxs-lookup"><span data-stu-id="96969-136">It looks like this:</span></span>
+   
+   ![Icono de parámetro del servicio web][icon]
+   
+   <span data-ttu-id="96969-138">Seleccione "Establecer como parámetro del servicio web".</span><span class="sxs-lookup"><span data-stu-id="96969-138">Select "Set as web service parameter".</span></span>
+   
+   <span data-ttu-id="96969-139">Se agregará una entrada en **Parámetros del servicio web** en la parte inferior del panel Propiedades con el nombre "Ruta de acceso que comienza con el contenedor de blobs".</span><span class="sxs-lookup"><span data-stu-id="96969-139">An entry is added under **Web Service Parameters** at the bottom of the Properties pane with the name "Path to blob beginning with container".</span></span> <span data-ttu-id="96969-140">Este es el parámetro de servicio web que está ahora asociado con este parámetro del módulo [Exportar datos][writer].</span><span class="sxs-lookup"><span data-stu-id="96969-140">This is the Web Service Parameter that is now associated with this [Export Data][writer] module parameter.</span></span>
+4. <span data-ttu-id="96969-141">Para cambiar el nombre del parámetro del servicio web, haga clic en el nombre, escriba "Ruta de acceso de blobs" y presione la tecla **Intro** .</span><span class="sxs-lookup"><span data-stu-id="96969-141">To rename the Web Service Parameter, click the name, enter "Blob path", and press the **Enter** key.</span></span> 
+5. <span data-ttu-id="96969-142">Para proporcionar un valor predeterminado para el parámetro del servicio web, haga clic en el icono a la derecha del nombre, seleccione "Proporcionar valor predeterminado", escriba un valor (por ejemplo, "container1/output1.csv") y presione la tecla **Intro** .</span><span class="sxs-lookup"><span data-stu-id="96969-142">To provide a default value for the Web Service Parameter, click the icon to the right of the name, select "Provide default value", enter a value (for example, "container1/output1.csv"), and press the **Enter** key.</span></span>
+   
+   ![Parámetro del servicio web][parameter]
+6. <span data-ttu-id="96969-144">Haga clic en **Ejecutar**.</span><span class="sxs-lookup"><span data-stu-id="96969-144">Click **Run**.</span></span> 
+7. <span data-ttu-id="96969-145">Haga clic en **Deploy Web Service** (Implementar servicio web) y seleccione **Deploy Web Service [Classic]** (Implementar un servicio web [clásico]) o **Deploy Web Service [New]** (Implementar un servicio web [nuevo]) para actualizar el servicio web.</span><span class="sxs-lookup"><span data-stu-id="96969-145">Click **Deploy Web Service** and select **Deploy Web Service [Classic]** or **Deploy Web Service [New]** to deploy the web service.</span></span>
+
+> [!NOTE] 
+> <span data-ttu-id="96969-146">Para implementar un nuevo servicio web, debe tener permisos suficientes en la suscripción en la que lo implementa.</span><span class="sxs-lookup"><span data-stu-id="96969-146">To deploy a New web service you must have sufficient permissions in the subscription to which you deploying the web service.</span></span> <span data-ttu-id="96969-147">Para obtener más información, consulte [Administración de un servicio web mediante el portal Servicios web Azure Machine Learning](machine-learning-manage-new-webservice.md).</span><span class="sxs-lookup"><span data-stu-id="96969-147">For more information see, [Manage a Web service using the Azure Machine Learning Web Services portal](machine-learning-manage-new-webservice.md).</span></span> 
+
+<span data-ttu-id="96969-148">El usuario del servicio web puede especificar ahora un nuevo destino para el módulo [Exportar datos][writer] al obtener acceso al servicio web.</span><span class="sxs-lookup"><span data-stu-id="96969-148">The user of the web service can now specify a new destination for the [Export Data][writer] module when accessing the web service.</span></span>
+
+## <a name="more-information"></a><span data-ttu-id="96969-149">Más información</span><span class="sxs-lookup"><span data-stu-id="96969-149">More information</span></span>
+<span data-ttu-id="96969-150">Para obtener un ejemplo más detallado, vea la entrada [Parámetros del servicio web](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) en el [Blog de Machine Learning](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx).</span><span class="sxs-lookup"><span data-stu-id="96969-150">For a more detailed example, see the [Web Service Parameters](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) entry in the [Machine Learning Blog](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx).</span></span>
+
+<span data-ttu-id="96969-151">Para más información sobre el acceso a un servicio web Machine Learning, consulte [Cómo consumir un servicio web Azure Machine Learning](machine-learning-consume-web-services.md).</span><span class="sxs-lookup"><span data-stu-id="96969-151">For more information on accessing a Machine Learning web service, see [How to consume an Azure Machine Learning Web service](machine-learning-consume-web-services.md).</span></span>
+
+<!-- Images -->
+[icon]: ./media/machine-learning-web-service-parameters/icon.png
+[parameter]: ./media/machine-learning-web-service-parameters/parameter.png
+
+
+<!-- Module References -->
+[feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/
+[filter-based-feature-selection]: https://msdn.microsoft.com/library/azure/918b356b-045c-412b-aa12-94a1d2dad90f/
+[reader]: https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/
+[writer]: https://msdn.microsoft.com/library/azure/7a391181-b6a7-4ad4-b82d-e419c0d6522c/
+

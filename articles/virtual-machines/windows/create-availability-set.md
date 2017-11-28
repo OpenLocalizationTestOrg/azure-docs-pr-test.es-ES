@@ -1,0 +1,98 @@
+---
+title: "establece aaaCreate una disponibilidad de la máquina virtual en Azure | Documentos de Microsoft"
+description: "Obtenga información acerca de cómo establece toocreate una disponibilidad administrada o conjunto para sus máquinas virtuales mediante PowerShell de Azure de disponibilidad no administrado u Hola portal en el modelo de implementación del Administrador de recursos de Hola."
+keywords: conjunto de disponibilidad
+services: virtual-machines-windows
+documentationcenter: 
+author: cynthn
+manager: timlt
+editor: 
+tags: azure-resource-manager
+ms.assetid: a3db8659-ace8-4e78-8b8c-1e75c04c042c
+ms.service: virtual-machines-windows
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: vm-windows
+ms.devlang: na
+ms.topic: article
+ms.date: 02/06/2017
+ms.author: cynthn
+ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: eadcdfcd28bb2fa21a4647f207b390c33e022ef1
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 10/06/2017
+---
+# <a name="increase-vm-availability-by-creating-an-azure-availability-set"></a><span data-ttu-id="4a058-104">Aumento de la disponibilidad de máquinas virtuales mediante la creación de un conjunto de disponibilidad de Azure</span><span class="sxs-lookup"><span data-stu-id="4a058-104">Increase VM availability by creating an Azure availability set</span></span> 
+<span data-ttu-id="4a058-105">Los conjuntos de disponibilidad proporcionan aplicaciones de tooyour de redundancia.</span><span class="sxs-lookup"><span data-stu-id="4a058-105">Availability sets provide redundancy tooyour application.</span></span> <span data-ttu-id="4a058-106">Se recomienda agrupar dos máquinas virtuales o más en un conjunto de disponibilidad.</span><span class="sxs-lookup"><span data-stu-id="4a058-106">We recommend that you group two or more virtual machines in an availability set.</span></span> <span data-ttu-id="4a058-107">Esta configuración garantiza que durante un evento de mantenimiento planeado o no, al menos una máquina virtual estará disponible y cumple Hola 99,95% SLA de Azure.</span><span class="sxs-lookup"><span data-stu-id="4a058-107">This configuration ensures that during either a planned or unplanned maintenance event, at least one virtual machine will be available and meet hello 99.95% Azure SLA.</span></span> <span data-ttu-id="4a058-108">Para obtener más información, vea hello [SLA para las máquinas virtuales](https://azure.microsoft.com/support/legal/sla/virtual-machines/).</span><span class="sxs-lookup"><span data-stu-id="4a058-108">For more information, see hello [SLA for Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/).</span></span>
+
+> [!IMPORTANT]
+> <span data-ttu-id="4a058-109">Las máquinas virtuales se deben crear en hello mismo grupo de recursos como conjunto de disponibilidad de Hola.</span><span class="sxs-lookup"><span data-stu-id="4a058-109">VMs must be created in hello same resource group as hello availability set.</span></span>
+> 
+
+<span data-ttu-id="4a058-110">Si desea que su parte de toobe de máquina virtual de un conjunto de disponibilidad, deberá disponibilidad de hello toocreate establecer primera o mientras el equipo está creando la primera máquina virtual en el conjunto de Hola.</span><span class="sxs-lookup"><span data-stu-id="4a058-110">If you want your VM toobe part of an availability set, you need toocreate hello availability set first or while you are creating your first VM in hello set.</span></span> <span data-ttu-id="4a058-111">Si la máquina virtual va a utilizar discos administrados, conjunto de disponibilidad de hello debe crearse como un conjunto de disponibilidad administrada.</span><span class="sxs-lookup"><span data-stu-id="4a058-111">If your VM will be using Managed Disks, hello availability set must be created as a managed availability set.</span></span>
+
+<span data-ttu-id="4a058-112">Para obtener más información sobre cómo crear y utilizar conjuntos de disponibilidad, consulte [administrar Hola disponibilidad de máquinas virtuales](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="4a058-112">For more information about creating and using availability sets, see [Manage hello availability of virtual machines](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span></span>
+
+## <a name="use-hello-portal-toocreate-an-availability-set-before-creating-your-vms"></a><span data-ttu-id="4a058-113">Usar Hola portal toocreate un conjunto antes de crear las máquinas virtuales de disponibilidad</span><span class="sxs-lookup"><span data-stu-id="4a058-113">Use hello portal toocreate an availability set before creating your VMs</span></span>
+1. <span data-ttu-id="4a058-114">En el menú del concentrador hello, haga clic en **examinar** y seleccione **conjuntos de disponibilidad**.</span><span class="sxs-lookup"><span data-stu-id="4a058-114">In hello hub menu, click **Browse** and select **Availability sets**.</span></span>
+2. <span data-ttu-id="4a058-115">En hello **hoja de conjuntos de disponibilidad**, haga clic en **agregar**.</span><span class="sxs-lookup"><span data-stu-id="4a058-115">On hello **Availability sets blade**, click **Add**.</span></span>
+   
+    ![Captura de pantalla que muestra hello Agregar botón para crear un nuevo conjunto de disponibilidad.](./media/create-availability-set/add-availability-set.png)
+3. <span data-ttu-id="4a058-117">En hello **crear conjunto de disponibilidad** hoja, la información de hello completa para el conjunto.</span><span class="sxs-lookup"><span data-stu-id="4a058-117">On hello **Create availability set** blade, complete hello information for your set.</span></span>
+   
+    ![Captura de pantalla que muestra Hola información que necesita la disponibilidad de hello toocreate tooenter establecido.](./media/create-availability-set/create-availability-set.png)
+   
+   * <span data-ttu-id="4a058-119">**Nombre de** -nombre de hello debe tener caracteres de 1-80 consta de números, letras, puntos, guiones bajos y guiones.</span><span class="sxs-lookup"><span data-stu-id="4a058-119">**Name** - hello name should be 1-80 characters made up of numbers, letters, periods, underscores and dashes.</span></span> <span data-ttu-id="4a058-120">Hola primer carácter debe ser una letra o un número.</span><span class="sxs-lookup"><span data-stu-id="4a058-120">hello first character must be a letter or number.</span></span> <span data-ttu-id="4a058-121">último carácter de Hello debe ser una letra, número o un carácter de subrayado.</span><span class="sxs-lookup"><span data-stu-id="4a058-121">hello last character must be a letter, number or underscore.</span></span>
+   * <span data-ttu-id="4a058-122">**Dominios de error** -dominios de error definen grupo Hola de máquinas virtuales que comparten un conmutador de origen y de red común de energía.</span><span class="sxs-lookup"><span data-stu-id="4a058-122">**Fault domains** - fault domains define hello group of virtual machines that share a common power source and network switch.</span></span> <span data-ttu-id="4a058-123">De forma predeterminada, hello las máquinas virtuales están separadas a través de dominios de error toothree y pueden ser modificado toobetween 1 y 3.</span><span class="sxs-lookup"><span data-stu-id="4a058-123">By default, hello VMs  are separated across up toothree fault domains and can be changed toobetween 1 and 3.</span></span>
+   * <span data-ttu-id="4a058-124">**Actualizar dominios** : cinco dominios de actualización se asignan de forma predeterminada y se puede establecer toobetween 1 y 20.</span><span class="sxs-lookup"><span data-stu-id="4a058-124">**Update domains** -  five update domains are assigned by default and this can be set toobetween 1 and 20.</span></span> <span data-ttu-id="4a058-125">Dominios de actualización indican los grupos de máquinas virtuales y el hardware físico subyacente que puede reiniciarse en hello mismo tiempo.</span><span class="sxs-lookup"><span data-stu-id="4a058-125">Update domains indicate groups of virtual machines and underlying physical hardware that can be rebooted at hello same time.</span></span> <span data-ttu-id="4a058-126">Por ejemplo, si se especifica update cinco dominios, cuando más de cinco máquinas virtuales se configuran en un único conjunto de disponibilidad, máquina virtual de la sexta Hola se colocarán en Hola mismo dominio de actualización como máquina virtual de la primera hello, hello séptimo en Hola igual UD como segundo Hola una máquina virtual y así sucesivamente.</span><span class="sxs-lookup"><span data-stu-id="4a058-126">For example, if we specify five update domains, when more than five virtual machines are configured within a single Availability Set, hello sixth virtual machine will be placed into hello same update domain as hello first virtual machine, hello seventh in hello same UD as hello second virtual machine, and so on.</span></span> <span data-ttu-id="4a058-127">orden de Hola de hello reinicios no sea secuencial, pero solo una actualización de dominio se reiniciará a la vez.</span><span class="sxs-lookup"><span data-stu-id="4a058-127">hello order of hello reboots may not be sequential, but only one update domain will be rebooted at a time.</span></span>
+   * <span data-ttu-id="4a058-128">**Suscripción** -seleccione Hola toouse suscripción si tiene más de uno.</span><span class="sxs-lookup"><span data-stu-id="4a058-128">**Subscription** - select hello subscription toouse if you have more than one.</span></span>
+   * <span data-ttu-id="4a058-129">**Grupo de recursos** -seleccione un grupo de recursos existente haciendo clic en la flecha de Hola y seleccionar un grupo de recursos de Hola de lista desplegable.</span><span class="sxs-lookup"><span data-stu-id="4a058-129">**Resource group** - select an existing resource group by clicking hello arrow and selecting a resource group from hello drop down.</span></span> <span data-ttu-id="4a058-130">Otra manera de crear un nuevo grupo de recursos es escribir un nombre.</span><span class="sxs-lookup"><span data-stu-id="4a058-130">You can also create a new resource group by typing in a name.</span></span> <span data-ttu-id="4a058-131">Hello nombre puede contener ninguno de hello siguientes caracteres: letras, números, puntos, guiones, caracteres de subrayado y apertura o paréntesis de cierre.</span><span class="sxs-lookup"><span data-stu-id="4a058-131">hello name can contain any of hello following characters: letters, numbers, periods, dashes, underscores and opening or closing parenthesis.</span></span> <span data-ttu-id="4a058-132">Hola nombre no puede terminar en un período.</span><span class="sxs-lookup"><span data-stu-id="4a058-132">hello name cannot end in a period.</span></span> <span data-ttu-id="4a058-133">Todos hello las máquinas virtuales en el grupo de disponibilidad de hello necesitan toobe creado en hello mismo grupo de recursos como conjunto de disponibilidad de Hola.</span><span class="sxs-lookup"><span data-stu-id="4a058-133">All of hello VMs in hello availability group need toobe created in hello same resource group as hello availability set.</span></span>
+   * <span data-ttu-id="4a058-134">**Ubicación** -seleccionar una ubicación de Hola de lista desplegable.</span><span class="sxs-lookup"><span data-stu-id="4a058-134">**Location** - select a location from hello drop-down.</span></span>
+   * <span data-ttu-id="4a058-135">**Administrado** : seleccione esta opción *Sí* toocreate una disponibilidad administrada establece toouse con las máquinas virtuales que usan discos administrados para el almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="4a058-135">**Managed** - select *Yes* toocreate a managed availability set toouse with VMs that use Managed Disks for storage.</span></span> <span data-ttu-id="4a058-136">Seleccione **n** si las máquinas virtuales que se incluirán en el conjunto de Hola Hola usa discos de no administrados en una cuenta de almacenamiento.</span><span class="sxs-lookup"><span data-stu-id="4a058-136">Select **No** if hello VMs that will be in hello set use unmanaged disks in a storage account.</span></span>
+   
+4. <span data-ttu-id="4a058-137">Cuando haya terminado de escribir información de hello, haga clic en **crear**.</span><span class="sxs-lookup"><span data-stu-id="4a058-137">When you are done entering hello information, click **Create**.</span></span> 
+
+## <a name="use-hello-portal-toocreate-a-virtual-machine-and-an-availability-set-at-hello-same-time"></a><span data-ttu-id="4a058-138">Usar hello toocreate portal una máquina virtual y una disponibilidad establecen en hello mismo tiempo</span><span class="sxs-lookup"><span data-stu-id="4a058-138">Use hello portal toocreate a virtual machine and an availability set at hello same time</span></span>
+<span data-ttu-id="4a058-139">Si va a crear una nueva máquina virtual mediante el portal de hello, también puede crear un nuevo conjunto de disponibilidad para hello VM mientras crea Hola primera VM en el conjunto de Hola.</span><span class="sxs-lookup"><span data-stu-id="4a058-139">If you are creating a new VM using hello portal, you can also create a new availability set for hello VM while you create hello first VM in hello set.</span></span> <span data-ttu-id="4a058-140">Si elige discos de toouse administrados para la máquina virtual, se creará un conjunto de disponibilidad administrada.</span><span class="sxs-lookup"><span data-stu-id="4a058-140">If you choose toouse Managed Disks for your VM, a managed availability set will be created.</span></span>
+
+![Captura de pantalla que muestra el proceso de Hola para crear un nuevo conjunto durante la creación de hello VM de disponibilidad.](./media/create-availability-set/new-vm-avail-set.png)
+
+## <a name="add-a-new-vm-tooan-existing-availability-set-in-hello-portal"></a><span data-ttu-id="4a058-142">Agregar una nueva máquina virtual tooan existente conjunto de disponibilidad en el portal de Hola</span><span class="sxs-lookup"><span data-stu-id="4a058-142">Add a new VM tooan existing availability set in hello portal</span></span>
+<span data-ttu-id="4a058-143">Para cada máquina virtual adicional que cree que deben pertenecer en conjunto de Hola, asegúrese de que la cree en Hola mismo **grupo de recursos** y, a continuación, seleccione Hola conjunto en el paso 3 de disponibilidad existente.</span><span class="sxs-lookup"><span data-stu-id="4a058-143">For each additional VM that you create that should belong in hello set, make sure that you create it in hello same **resource group** and then select hello existing availability set in Step 3.</span></span> 
+
+![Captura de pantalla que muestra cómo tooselect un grupo de disponibilidad había establecido toouse para la máquina virtual.](./media/create-availability-set/add-vm-to-set.png)
+
+## <a name="use-powershell-toocreate-an-availability-set"></a><span data-ttu-id="4a058-145">Usar PowerShell toocreate una disponibilidad establecido</span><span class="sxs-lookup"><span data-stu-id="4a058-145">Use PowerShell toocreate an availability set</span></span>
+<span data-ttu-id="4a058-146">Este ejemplo crea un conjunto con nombre de disponibilidad **myAvailabilitySet** en hello **myResourceGroup** grupo de recursos de hello **West US** ubicación.</span><span class="sxs-lookup"><span data-stu-id="4a058-146">This example creates an availability set named **myAvailabilitySet** in hello **myResourceGroup** resource group in hello **West US** location.</span></span> <span data-ttu-id="4a058-147">Esta tarea debe toobe hacer antes de crear Hola primera máquina virtual que se incluirán en el conjunto de Hola.</span><span class="sxs-lookup"><span data-stu-id="4a058-147">This needs toobe done before you create hello first VM that will be in hello set.</span></span>
+
+<span data-ttu-id="4a058-148">Antes de comenzar, asegúrese de que tiene versión más reciente de Hola de hello módulo AzureRM.Compute PowerShell.</span><span class="sxs-lookup"><span data-stu-id="4a058-148">Before you begin, make sure that you have hello latest version of hello AzureRM.Compute PowerShell module.</span></span> <span data-ttu-id="4a058-149">Ejecutar Hola siguientes tooinstall de comando.</span><span class="sxs-lookup"><span data-stu-id="4a058-149">Run hello following command tooinstall it.</span></span>
+
+```powershell
+Install-Module AzureRM.Compute -RequiredVersion 2.6.0
+```
+<span data-ttu-id="4a058-150">Para más información, consulte [Azure PowerShell Versioning](/powershell/azure/overview) (Control de versiones de Azure PowerShell).</span><span class="sxs-lookup"><span data-stu-id="4a058-150">For more information, see [Azure PowerShell Versioning](/powershell/azure/overview).</span></span>
+
+
+<span data-ttu-id="4a058-151">Si usa discos administrados para las VM, escriba:</span><span class="sxs-lookup"><span data-stu-id="4a058-151">If you are using managed disks for your VMs, type:</span></span>
+
+```powershell
+    New-AzureRmAvailabilitySet -ResourceGroupName "myResourceGroup" '
+    -Name "myAvailabilitySet" -Location "West US" -managed
+```
+
+<span data-ttu-id="4a058-152">Si usa sus propias cuentas de almacenamiento para las VM, escriba:</span><span class="sxs-lookup"><span data-stu-id="4a058-152">If you are using your own storage accounts for your VMs, type:</span></span>
+
+```powershell
+    New-AzureRmAvailabilitySet -ResourceGroupName "myResourceGroup" '
+    -Name "myAvailabilitySet" -Location "West US" 
+```
+
+<span data-ttu-id="4a058-153">Para más información, consulte [New-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset).</span><span class="sxs-lookup"><span data-stu-id="4a058-153">For more information, see [New-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset).</span></span>
+
+## <a name="troubleshooting"></a><span data-ttu-id="4a058-154">Solución de problemas</span><span class="sxs-lookup"><span data-stu-id="4a058-154">Troubleshooting</span></span>
+* <span data-ttu-id="4a058-155">Cuando se crea una máquina virtual, si el conjunto de disponibilidad de Hola que desea no está en la lista desplegable de hello en el portal de Hola puede crearla en otro grupo de recursos.</span><span class="sxs-lookup"><span data-stu-id="4a058-155">When you create a VM, if hello availability set you want isn't in hello drop-down list in hello portal you may have created it in a different resource group.</span></span> <span data-ttu-id="4a058-156">Si desconoce el grupo de recursos de Hola para su disponibilidad establece, vaya el menú del concentrador toohello y haga clic en Examinar > toosee establece una lista de la disponibilidad y los grupos de recursos que pertenecen a conjuntos de disponibilidad.</span><span class="sxs-lookup"><span data-stu-id="4a058-156">If you don't know hello resource group for your availability set, go toohello hub menu and click Browse > Availability sets toosee a list of your availability sets and which resource groups they belong to.</span></span>
+
+## <a name="next-steps"></a><span data-ttu-id="4a058-157">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="4a058-157">Next steps</span></span>
+<span data-ttu-id="4a058-158">Agregar almacenamiento adicional tooyour VM agregando más [disco de datos](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span><span class="sxs-lookup"><span data-stu-id="4a058-158">Add additional storage tooyour VM by adding an additional [data disk](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).</span></span>
+

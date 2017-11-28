@@ -1,0 +1,87 @@
+---
+title: "Análisis de transmisiones de Azure: Optimizar su unidades de transmisión por secuencias de trabajo toouse eficazmente | Documentos de Microsoft"
+description: Procedimientos de consulta recomendados para escalado y rendimiento en Azure Stream Analytics.
+keywords: unidad de streaming, rendimiento de consulta
+services: stream-analytics
+documentationcenter: 
+author: jeffstokes72
+manager: jhubbard
+editor: cgronlun
+ms.assetid: 
+ms.service: stream-analytics
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: data-services
+ms.date: 04/20/2017
+ms.author: jeffstok
+ms.openlocfilehash: 5ad98b34d625190a879260f54c9eff0294e230cb
+ms.sourcegitcommit: 523283cc1b3c37c428e77850964dc1c33742c5f0
+ms.translationtype: MT
+ms.contentlocale: es-ES
+ms.lasthandoff: 10/06/2017
+---
+# <a name="optimize-your-job-toouse-streaming-units-efficiently"></a><span data-ttu-id="f6583-104">Optimizar eficazmente la toouse trabajo unidades de transmisión por secuencias</span><span class="sxs-lookup"><span data-stu-id="f6583-104">Optimize your job toouse Streaming Units efficiently</span></span>
+
+<span data-ttu-id="f6583-105">Análisis de transmisiones de Azure agrega rendimiento Hola "peso" de la ejecución de un trabajo en unidades de transmisión por secuencias (SUs).</span><span class="sxs-lookup"><span data-stu-id="f6583-105">Azure Stream Analytics aggregates hello performance "weight" of running a job into Streaming Units (SUs).</span></span> <span data-ttu-id="f6583-106">SUs representan recursos informáticos Hola que son consumido tooexecute un trabajo.</span><span class="sxs-lookup"><span data-stu-id="f6583-106">SUs represent hello computing resources that are consumed tooexecute a job.</span></span> <span data-ttu-id="f6583-107">SUs proporcionan una manera toodescribe Hola relativa de eventos basándose en una medición mezclada de CPU, memoria, la capacidad de procesamiento y se leen y escriben las tasas.</span><span class="sxs-lookup"><span data-stu-id="f6583-107">SUs provide a way toodescribe hello relative event processing capacity based on a blended measure of CPU, memory, and read and write rates.</span></span> <span data-ttu-id="f6583-108">Esta capacidad le permite centrarse en la lógica de la consulta de Hola y quita también de la necesidad de consideraciones de rendimiento de nivel de almacenamiento de tooknow, asignar memoria para el trabajo manualmente y aproximado Hola CPU core-recuento necesario toorun su trabajo de manera oportuna.</span><span class="sxs-lookup"><span data-stu-id="f6583-108">This capacity lets you focus on hello query logic and removes you from needing tooknow storage tier performance considerations, allocate memory for your job manually, and approximate hello CPU core-count needed toorun your job in a timely manner.</span></span>
+
+## <a name="how-many-sus-are-required-for-a-job"></a><span data-ttu-id="f6583-109">¿Cuántas SU son necesarias para un trabajo?</span><span class="sxs-lookup"><span data-stu-id="f6583-109">How many SUs are required for a job?</span></span>
+
+<span data-ttu-id="f6583-110">Elegir número Hola de SUs necesarias para un trabajo determinado depende de la configuración de partición de Hola para las entradas de Hola y consulta de Hola que se define en el trabajo de Hola.</span><span class="sxs-lookup"><span data-stu-id="f6583-110">Choosing hello number of required SUs for a particular job depends on hello partition configuration for hello inputs and hello query that's defined within hello job.</span></span> <span data-ttu-id="f6583-111">Hola **escala** hoja permite tooset Hola derecha número de SUs.</span><span class="sxs-lookup"><span data-stu-id="f6583-111">hello **Scale** blade allows you tooset hello right number of SUs.</span></span> <span data-ttu-id="f6583-112">Es una práctica recomendada tooallocate SUs más de los necesarios.</span><span class="sxs-lookup"><span data-stu-id="f6583-112">It is a best practice tooallocate more SUs than needed.</span></span> <span data-ttu-id="f6583-113">motor de procesamiento de análisis de transmisiones de Hola se optimiza para la latencia y rendimiento en el costo de Hola de asignar memoria adicional.</span><span class="sxs-lookup"><span data-stu-id="f6583-113">hello Stream Analytics processing engine optimizes for latency and throughput at hello cost of allocating additional memory.</span></span>
+
+<span data-ttu-id="f6583-114">En general, se recomienda hello es toostart con 6 SUs para consultas que no utilizan *PARTITION BY*.</span><span class="sxs-lookup"><span data-stu-id="f6583-114">In general, hello best practice is toostart with 6 SUs for queries that don't use *PARTITION BY*.</span></span> <span data-ttu-id="f6583-115">A continuación, determine Hola idóneo mediante un método de prueba y error en el que modifican número Hola de SUs después de pasar representativos cantidades de datos y examine la métrica de uso de hello SU %.</span><span class="sxs-lookup"><span data-stu-id="f6583-115">Then determine hello sweet spot by using a trial and error method in which you modify hello number of SUs after you pass representative amounts of data and examine hello SU %Utilization metric.</span></span>
+
+<span data-ttu-id="f6583-116">Análisis de transmisiones de Azure mantiene eventos en una ventana que se denomina hello "volver a ordenar búfer" antes de iniciar cualquier procesamiento.</span><span class="sxs-lookup"><span data-stu-id="f6583-116">Azure Stream Analytics keeps events in a window called hello “reorder buffer” before it starts any processing.</span></span> <span data-ttu-id="f6583-117">Eventos se ordenan dentro de la ventana de hello volver a ordenar por hora y operaciones siguientes se realizan en los eventos de hello temporalmente ordenado.</span><span class="sxs-lookup"><span data-stu-id="f6583-117">Events are sorted within hello reorder window by time, and subsequent operations are performed on hello temporally sorted events.</span></span> <span data-ttu-id="f6583-118">Reordenación de eventos por hora se asegura de que el operador de hello tiene visibilidad en todos los eventos de Hola Hola estipulada período de tiempo.</span><span class="sxs-lookup"><span data-stu-id="f6583-118">Reordering events by time ensures that hello operator has visibility into all hello events in hello stipulated timeframe.</span></span> <span data-ttu-id="f6583-119">Operador de Hola también permite realizar el procesamiento necesario hello y generar un resultado.</span><span class="sxs-lookup"><span data-stu-id="f6583-119">It also lets hello operator perform hello requisite processing and produce an output.</span></span> <span data-ttu-id="f6583-120">Un efecto secundario de este mecanismo es que se retrasa el procesamiento por duración Hola de ventana de hello volver a ordenar.</span><span class="sxs-lookup"><span data-stu-id="f6583-120">A side effect of this mechanism is that processing is delayed by hello duration of hello reorder window.</span></span> <span data-ttu-id="f6583-121">superficie de memoria de Hola de trabajo de hello (lo que afecta al consumo de SU) es una función del tamaño de Hola de este número de hello y ventana de volver a ordenar de eventos incluidos en él.</span><span class="sxs-lookup"><span data-stu-id="f6583-121">hello memory footprint of hello job (which affects SU consumption) is a function of hello size of this reorder window and hello number of events contained within it.</span></span>
+
+> [!NOTE]
+> <span data-ttu-id="f6583-122">Cuando se cambia el número de Hola de lectores durante las actualizaciones del trabajo, las advertencias transitorias se escriben registros tooaudit.</span><span class="sxs-lookup"><span data-stu-id="f6583-122">When hello number of readers changes during job upgrades, transient warnings are written tooaudit logs.</span></span> <span data-ttu-id="f6583-123">Los trabajos de Stream Analytics se recuperan automáticamente de estos problemas transitorios.</span><span class="sxs-lookup"><span data-stu-id="f6583-123">Stream Analytics jobs automatically recover from these transient issues.</span></span>
+
+## <a name="common-high-memory-causes-for-high-su-usage-for-running-jobs"></a><span data-ttu-id="f6583-124">Causas comunes de memoria alta por el uso elevado de SU para la ejecución de trabajos</span><span class="sxs-lookup"><span data-stu-id="f6583-124">Common high-memory causes for high SU usage for running jobs</span></span>
+
+### <a name="high-cardinality-for-group-by"></a><span data-ttu-id="f6583-125">Alta cardinalidad para GROUP BY</span><span class="sxs-lookup"><span data-stu-id="f6583-125">High cardinality for GROUP BY</span></span>
+
+<span data-ttu-id="f6583-126">cardinalidad de Hola de eventos de entrada dicta el uso de memoria de trabajo de Hola.</span><span class="sxs-lookup"><span data-stu-id="f6583-126">hello cardinality of incoming events dictates memory usage for hello job.</span></span>
+
+<span data-ttu-id="f6583-127">Por ejemplo, en `SELECT count(*) from input group by clustered, tumblingwindow (minutes, 5)`, Hola número asociado con **agrupado** es cardinalidad Hola de consulta de Hola.</span><span class="sxs-lookup"><span data-stu-id="f6583-127">For example, in `SELECT count(*) from input group by clustered, tumblingwindow (minutes, 5)`, hello number associated with **clustered** is hello cardinality of hello query.</span></span>
+
+<span data-ttu-id="f6583-128">toomitigate problemas causados por una cardinalidad alta, escalar horizontalmente consultas Hola aumentando las particiones que usan **PARTITION BY**.</span><span class="sxs-lookup"><span data-stu-id="f6583-128">toomitigate issues that are caused by high cardinality, scale out hello query by increasing partitions using **PARTITION BY**.</span></span>
+
+```
+Select count(*) from input
+Partition By clusterid
+GROUP BY clustered tumblingwindow (minutes, 5)
+```
+
+<span data-ttu-id="f6583-129">Hola número de *agrupado* es la cardinalidad de Hola de GROUP BY aquí.</span><span class="sxs-lookup"><span data-stu-id="f6583-129">hello number of *clustered* is hello cardinality of GROUP BY here.</span></span>
+
+<span data-ttu-id="f6583-130">Después de crear particiones consulta hello, se extiende a través de varios nodos.</span><span class="sxs-lookup"><span data-stu-id="f6583-130">After hello query is partitioned, it is spread out over multiple nodes.</span></span> <span data-ttu-id="f6583-131">Como resultado, se reduce número Hola de eventos que entran en cada nodo, que a su vez reduce el tamaño de hello del búfer de hello volver a ordenar.</span><span class="sxs-lookup"><span data-stu-id="f6583-131">As a result, hello number of events coming into each node is reduced, which in turn reduces hello size of hello reorder buffer.</span></span> <span data-ttu-id="f6583-132">También debe particionar las particiones de centro de eventos mediante partitionid.</span><span class="sxs-lookup"><span data-stu-id="f6583-132">You should also partition event hub partitions by partitionid.</span></span>
+
+### <a name="high-unmatched-event-count-for-join"></a><span data-ttu-id="f6583-133">Recuento alto de eventos no coincidentes para JOIN</span><span class="sxs-lookup"><span data-stu-id="f6583-133">High unmatched event count for JOIN</span></span>
+
+<span data-ttu-id="f6583-134">número de Hola de eventos no coincidentes en una combinación afecta al uso de memoria de Hola de consulta de Hola.</span><span class="sxs-lookup"><span data-stu-id="f6583-134">hello number of unmatched events in a JOIN affects hello memory utilization of hello query.</span></span> <span data-ttu-id="f6583-135">Por ejemplo, realizar una consulta que se examina el número de hello toofind de impresiones de ad que genera clics:</span><span class="sxs-lookup"><span data-stu-id="f6583-135">For example, take a query that is looking toofind hello number of ad impressions that generates clicks:</span></span>
+
+```
+SELECT id from clicks INNER JOIN,
+impressions on impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10
+```
+
+<span data-ttu-id="f6583-136">En este escenario, es posible que se muestren muchos anuncios y se generen pocos clics.</span><span class="sxs-lookup"><span data-stu-id="f6583-136">In this scenario, it is possible that many ads are shown and few clicks are generated.</span></span> <span data-ttu-id="f6583-137">Un resultado de este tipo requeriría Hola trabajo tookeep todos los eventos de Hola de ventana de tiempo de Hola.</span><span class="sxs-lookup"><span data-stu-id="f6583-137">Such a result would require hello job tookeep all hello events within hello time window.</span></span> <span data-ttu-id="f6583-138">cantidad de Hola de memoria consumida es la tasa de tamaño y eventos de la ventana de toohello proporcional.</span><span class="sxs-lookup"><span data-stu-id="f6583-138">hello amount of memory consumed is proportional toohello window size and event rate.</span></span> 
+
+<span data-ttu-id="f6583-139">toomitigate crea particiones de esta situación, el escalado horizontal consulta Hola aumentando mediante PARTITION BY.</span><span class="sxs-lookup"><span data-stu-id="f6583-139">toomitigate this situation, scale out hello query by increasing partitions by using PARTITION BY.</span></span> 
+
+<span data-ttu-id="f6583-140">Después de crear particiones consulta hello, se extiende a través de varios nodos de procesamiento.</span><span class="sxs-lookup"><span data-stu-id="f6583-140">After hello query is partitioned, it is spread out over multiple processing nodes.</span></span> <span data-ttu-id="f6583-141">Como resultado, se reduce número Hola de eventos que entran en cada nodo, que a su vez reduce el tamaño de hello del búfer de hello volver a ordenar.</span><span class="sxs-lookup"><span data-stu-id="f6583-141">As a result, hello number of events coming into each node is reduced, which in turn reduces hello size of hello reorder buffer.</span></span>
+
+### <a name="large-number-of-out-of-order-events"></a><span data-ttu-id="f6583-142">Gran número de eventos desordenados</span><span class="sxs-lookup"><span data-stu-id="f6583-142">Large number of out of order events</span></span> 
+
+<span data-ttu-id="f6583-143">Un gran número de eventos desordenados dentro de un período de tiempo grandes hace tamaño Hola de toobe de "reordenar búfer" del Hola mayor.</span><span class="sxs-lookup"><span data-stu-id="f6583-143">A large number of out of order events within a large time window causes hello size of hello "reorder buffer" toobe larger.</span></span> <span data-ttu-id="f6583-144">toomitigate crea particiones de esta situación, consultas de escala Hola aumentando mediante PARTITION BY.</span><span class="sxs-lookup"><span data-stu-id="f6583-144">toomitigate this situation, scale hello query by increasing partitions by using PARTITION BY.</span></span> <span data-ttu-id="f6583-145">Después de crear particiones consulta hello, se extiende a través de varios nodos.</span><span class="sxs-lookup"><span data-stu-id="f6583-145">After hello query is partitioned, it is spread out over multiple nodes.</span></span> <span data-ttu-id="f6583-146">Como resultado, se reduce número Hola de eventos que entran en cada nodo, que a su vez reduce el tamaño de hello del búfer de hello volver a ordenar.</span><span class="sxs-lookup"><span data-stu-id="f6583-146">As a result, hello number of events coming into each node is reduced, which in turn reduces hello size of hello reorder buffer.</span></span> 
+
+
+## <a name="get-help"></a><span data-ttu-id="f6583-147">Obtener ayuda</span><span class="sxs-lookup"><span data-stu-id="f6583-147">Get help</span></span>
+<span data-ttu-id="f6583-148">Para obtener ayuda adicional, pruebe nuestro [foro de Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).</span><span class="sxs-lookup"><span data-stu-id="f6583-148">For further assistance, try our [Azure Stream Analytics forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics).</span></span>
+
+## <a name="next-steps"></a><span data-ttu-id="f6583-149">Pasos siguientes</span><span class="sxs-lookup"><span data-stu-id="f6583-149">Next steps</span></span>
+* [<span data-ttu-id="f6583-150">Introducción tooAzure análisis de transmisiones</span><span class="sxs-lookup"><span data-stu-id="f6583-150">Introduction tooAzure Stream Analytics</span></span>](stream-analytics-introduction.md)
+* [<span data-ttu-id="f6583-151">Introducción al uso de Azure Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="f6583-151">Get started using Azure Stream Analytics</span></span>](stream-analytics-real-time-fraud-detection.md)
+* [<span data-ttu-id="f6583-152">Escalación de trabajos de Análisis de transmisiones de Azure</span><span class="sxs-lookup"><span data-stu-id="f6583-152">Scale Azure Stream Analytics jobs</span></span>](stream-analytics-scale-jobs.md)
+* [<span data-ttu-id="f6583-153">Referencia del lenguaje de consulta de Azure Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="f6583-153">Azure Stream Analytics query language reference</span></span>](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [<span data-ttu-id="f6583-154">Referencia de API de REST de administración de Azure Stream Analytics</span><span class="sxs-lookup"><span data-stu-id="f6583-154">Azure Stream Analytics Management REST API reference</span></span>](https://msdn.microsoft.com/library/azure/dn835031.aspx)
