@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/06/2016
 ms.author: dastrock
-ms.openlocfilehash: 51001feb17ae99d3bd391a9f980d514e07f97099
-ms.sourcegitcommit: dfd6f46af588d4cd9b7a11a026dd66612ce37a4e
+ms.openlocfilehash: 6dd3864fb8f08e92231e04c5b1ed546760ec3526
+ms.sourcegitcommit: 70b1af4ad0b53009cb30aadc54e9609134aa0d72
 ms.translationtype: MT
 ms.contentlocale: es-ES
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-types-of-applications"></a>Azure Active Directory B2C: Tipos de aplicaciones
+Cambie la línea para que el archivo en prehandoff.
 Azure Active Directory (Azure AD) B2C admite la autenticación para una diversas arquitecturas de aplicaciones modernas. Todas ellas se basan en los protocolos estándar del sector [OAuth 2.0](active-directory-b2c-reference-protocols.md) u [OpenID Connect](active-directory-b2c-reference-protocols.md). Este documento describe brevemente los tipos de aplicaciones que puede crear, independientemente del lenguaje o la plataforma que prefiera. También ayuda a entender los escenarios de alto nivel antes de [empezar a crear aplicaciones](active-directory-b2c-overview.md#get-started).
 
 ## <a name="the-basics"></a>Conceptos básicos
