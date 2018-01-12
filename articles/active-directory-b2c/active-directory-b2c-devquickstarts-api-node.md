@@ -240,7 +240,7 @@ var passport = require('passport');
 var OIDCBearerStrategy = require('passport-azure-ad').BearerStrategy;
 ```
 
-Guarde el archivo . Volverá a él más adelante.
+Guarde el archivo. Volverá a él más adelante.
 
 ## <a name="create-a-configjs-file-to-store-your-azure-ad-settings"></a>Creación de un archivo config.js para almacenar la configuración de Azure AD
 Este archivo de código pasa los parámetros de configuración del portal de Azure AD al archivo `Passport.js` . Creó estos valores de configuración al agregar la API web al portal en la primera parte del tutorial. Explicamos qué incluir en los valores de estos parámetros después de haber copiado el código.
