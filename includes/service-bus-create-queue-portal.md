@@ -1,17 +1,17 @@
 Asegúrese de haber creado antes un espacio de nombres de Service Bus, como se muestra [aquí][namespace-how-to].
 
-1. Inicie sesión en toohello [portal de Azure][azure-portal].
-2. En el panel de navegación izquierdo de hello del portal de hello, haga clic en **Service Bus** (si no ve **Service Bus**, haga clic en **más servicios**).
-3. Haga clic en el espacio de nombres de hello en el que le gustaría cola de hello toocreate. En este caso, es **nstest1**.
+1. Inicie sesión en [Azure Portal][azure-portal].
+2. En el panel de navegación izquierdo del portal, haga clic en **Service Bus** (si no ve **Service Bus**, haga clic en **Más servicios**).
+3. Haga clic en el espacio de nombres en el que desea crear la cola. En este caso es **sbnstest1**.
    
     ![Creación de una cola][createqueue1]
-4. Hola **espacio de nombres de Bus de servicio** hoja, seleccione **colas**, a continuación, haga clic en **agregar cola**.
+4. En la ventana del espacio de nombres, haga clic en **Colas** y, después, en la ventana **Colas**, haga clic en **+ Cola**.
    
     ![Seleccionar Colas][createqueue2]
-5. Escriba hello **nombre de la cola** y deje los otros valores de hello con sus valores predeterminados.
+5. Escriba el **nombre** de la cola y deje los restantes valores con sus valores predeterminados.
    
     ![Seleccionar Nuevo][createqueue3]
-6. En la parte inferior de Hola de hoja de hello, haga clic en **crear**.
+6. En la parte inferior de la ventana, haga clic en **Crear**.
 
 [createqueue1]: ./media/service-bus-create-queue-portal/create-queue1.png
 [createqueue2]: ./media/service-bus-create-queue-portal/create-queue2.png

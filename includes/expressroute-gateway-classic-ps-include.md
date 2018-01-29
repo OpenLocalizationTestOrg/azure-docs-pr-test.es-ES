@@ -1,26 +1,42 @@
-Debe crear una red virtual y una subred de puerta de enlace en primer lugar, antes de trabajar en hello siguiente las tareas. Vea el artículo de hello [configurar una red Virtual con el portal clásico de hello](../articles/expressroute/expressroute-howto-vnet-portal-classic.md) para obtener más información.   
+Antes de efectuar las siguientes tareas, debe crear una red virtual y una subred de puerta de enlace.
+
+> [!NOTE]
+> Estos ejemplos no se aplican a configuraciones coexistentes de S2S y ExpressRoute.
+> Para más información acerca de cómo trabajar con puertas de enlace en una configuración de coexistencia, consulte [Configuración de conexiones coexistentes](../articles/expressroute/expressroute-howto-coexist-classic.md#gw)
 
 ## <a name="add-a-gateway"></a>Adición de una puerta de enlace
-Use el comando de hello debajo toocreate una puerta de enlace. Ser seguro toosubstitute todos los valores de sus propios.
 
-    New-AzureVirtualNetworkGateway -VNetName "MyAzureVNET" -GatewayName "ERGateway" -GatewayType Dedicated -GatewaySKU  Standard
+Utilice el siguiente comando para crear una puerta de enlace. Asegúrese de sustituir los valores por los suyos propios.
 
-## <a name="verify-hello-gateway-was-created"></a>Compruebe que se creó la puerta de enlace de Hola
-Se ha creado el comando de Hola de uso siguiente tooverify que Hola puerta de enlace. Este comando también recupera el Id. de puerta de enlace de hello, que necesita para otras operaciones.
+```powershell
+New-AzureVNetGateway -VNetName "MyAzureVNET" -GatewayName "ERGateway" -GatewayType DynamicRouting -GatewaySKU  Standard
+```
 
-    Get-AzureVirtualNetworkGateway
+## <a name="verify-the-gateway-was-created"></a>Comprobación de la creación de la puerta de enlace
+
+Utilice el siguiente comando para comprobar si se ha creado la puerta de enlace. Este comando también recupera el identificador de la puerta de enlace, que necesita para realizar otras operaciones.
+
+```powershell
+Get-AzureVNetGateway
+```
 
 ## <a name="resize-a-gateway"></a>Cambio del tamaño de una puerta de enlace
-Hay varias [SKU de puerta de enlace](../articles/expressroute/expressroute-about-virtual-network-gateways.md). Puede usar Hola después comando toochange hello SKU de puerta de enlace en cualquier momento.
+
+Hay varias [SKU de puerta de enlace](../articles/expressroute/expressroute-about-virtual-network-gateways.md). Puede utilizar el siguiente comando para cambiar en cualquier momento la SKU de puerta de enlace.
 
 > [!IMPORTANT]
-> Este comando no funciona para la puerta de enlace de UltraPerformance. toochange la puerta de enlace de puerta de enlace tooan UltraPerformance, primero quite Hola existente de la puerta de enlace ExpressRoute y, a continuación, crear una nueva puerta de enlace de UltraPerformance. toodowngrade la puerta de enlace de una puerta de enlace UltraPerformance, quite primero Hola UltraPerformance puerta de enlace y, a continuación, cree una nueva puerta de enlace. 
-> 
-> 
+> Este comando no funciona para la puerta de enlace de UltraPerformance. Para cambiar la puerta de enlace a una puerta de enlace de UltraPerformance, quite primero la puerta de enlace de ExpressRoute existente y, después, cree una nueva puerta de enlace de UltraPerformance. Para degradar la puerta de enlace desde una puerta de enlace de UltraPerformance, quite primero la puerta de enlace de UltraPerformance existente y, después, cree una nueva puerta de enlace. 
+>
+>
 
-    Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
+```powershell
+Resize-AzureVNetGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
+```
 
 ## <a name="remove-a-gateway"></a>Eliminación de una puerta de enlace
-Usar comandos de hello debajo tooremove una puerta de enlace
 
-    Remove-AzureVirtualNetworkGateway -GatewayId <Gateway ID>
+Utilice el siguiente comando para quitar una puerta de enlace.
+
+```powershell
+Remove-AzureVnetGateway -GatewayId <Gateway ID>
+```

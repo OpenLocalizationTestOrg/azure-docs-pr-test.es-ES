@@ -1,0 +1,104 @@
+- name: Introducción a la administración del acceso
+  href: manage-access-to-azure-resources.md
+- name: Acceso a los recursos de Azure
+  href: active-directory-understanding-resource-access.md
+- name: Control de acceso basado en rol (RBAC)
+  href: role-based-access-control-what-is.md
+  items:
+    - name: Administración de asignaciones de acceso
+      items:
+        - name: Por usuario
+          href: role-based-access-control-manage-assignments.md
+        - name: Por recurso
+          href: role-based-access-control-configure.md
+    - name: Roles integrados
+      href: role-based-access-built-in-roles.md
+    - name: Roles personalizados
+      href: role-based-access-control-custom-roles.md
+    - name: Asignación de roles personalizados para usuarios internos y externos
+      href: role-based-access-control-create-custom-roles-for-internal-external-users.md
+    - name: Informes
+      href: role-based-access-control-access-change-history-report.md
+    - name: Más formas de administrar roles
+      items:
+        - name: Con la CLI de Azure
+          href: role-based-access-control-manage-access-azure-cli.md
+        - name: Con PowerShell
+          href: role-based-access-control-manage-access-powershell.md
+        - name: Con REST
+          href: role-based-access-control-manage-access-rest.md
+    - name: Elevación de acceso de administrador de inquilinos
+      href: role-based-access-control-tenant-admin-access.md
+    - name: Solución de problemas
+      href: role-based-access-control-troubleshooting.md
+    - name: Operaciones del proveedor de recursos
+      href: role-based-access-control-resource-provider-operations.md
+- name: Privileged Identity Management (PIM) para RBAC
+  href: pim-azure-resource.md
+- name: Acceso condicional para la administración de Azure
+  href: conditional-access-azure-management.md
+- name: Identidad de servicio administrada
+  href: msi-overview.md
+  items:
+    - name: Configuración de MSI para una máquina virtual de Azure
+      items:
+        - name: Uso de Azure Portal
+          href: msi-qs-configure-portal-windows-vm.md
+        - name: Con PowerShell
+          href: msi-qs-configure-powershell-windows-vm.md
+        - name: Uso de la CLI de Azure
+          href: msi-qs-configure-cli-windows-vm.md
+        - name: Uso de la plantilla de Azure Resource Manager
+          href: msi-qs-configure-template-windows-vm.md
+        - name: Uso del SDK de Azure
+          href: msi-qs-configure-sdk-windows-vm.md
+    - name: Concesión de acceso MSI de máquina virtual a Resource Manager
+      items:
+        - name: Uso de Azure Portal
+          href: msi-howto-assign-access-portal.md
+        - name: Con PowerShell
+          href: msi-howto-assign-access-powershell.md
+        - name: Uso de la CLI de Azure
+          href: msi-howto-assign-access-cli.md
+    - name: Uso de una identidad MSI de máquina virtual
+      items:
+        - name: Adquisición de un token de acceso
+          href: msi-how-to-use-vm-msi-token.md
+        - name: 'Inicio de sesión en PowerShell, CLI de Azure'
+          href: msi-how-to-use-vm-msi-sign-in.md
+        - name: Uso con los SDK de Azure
+          href: msi-how-to-use-vm-msi-sdk.md
+    - name: Uso de MSI de máquina virtual para acceder a Azure Data Lake Store
+      items:
+        - name: Desde una máquina virtual Windows
+          href: msi-tutorial-windows-vm-access-datalake.md
+        - name: Desde una máquina virtual Linux
+          href: msi-tutorial-linux-vm-access-datalake.md
+    - name: Uso de una identidad MSI de máquina virtual para acceder a Azure Resource Manager
+      items:
+        - name: Desde una máquina virtual Windows
+          href: msi-tutorial-windows-vm-access-arm.md
+        - name: Desde una máquina virtual Linux
+          href: msi-tutorial-linux-vm-access-arm.md
+    - name: Uso de una identidad MSI de máquina virtual para acceder a Azure SQL
+      items:
+        - name: Desde una máquina virtual Windows
+          href: msi-tutorial-windows-vm-access-sql.md
+    - name: Uso de una identidad MSI de máquina virtual para acceder a Azure Storage
+      items:
+        - name: Desde una máquina virtual Windows mediante clave de acceso
+          href: msi-tutorial-windows-vm-access-storage.md
+        - name: Desde una máquina virtual Windows mediante SAS
+          href: msi-tutorial-windows-vm-access-storage-sas.md
+        - name: Desde una máquina virtual Linux mediante clave de acceso
+          href: msi-tutorial-linux-vm-access-storage.md
+        - name: Desde una máquina virtual Linux mediante SAS
+          href: msi-tutorial-linux-vm-access-storage-sas.md
+    - name: Uso de una identidad MSI de máquina virtual para acceder a Azure Key Vault
+      items:
+        - name: Desde una máquina virtual Windows
+          href: msi-tutorial-windows-vm-access-nonaad.md
+        - name: Desde una máquina virtual Linux
+          href: msi-tutorial-linux-vm-access-nonaad.md
+    - name: Preguntas frecuentes y problemas conocidos
+      href: msi-known-issues.md

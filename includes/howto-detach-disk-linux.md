@@ -1,19 +1,19 @@
-Cuando ya no necesita un disco de datos es tooa adjunto un equipo virtual (VM), puede separar fácilmente. Cuando se separa un disco de hello VM, disco de hello no es eliminen del almacenamiento. Si desea volver a datos existentes de toouse hello en el disco de hello, puede adjuntarla toohello misma máquina virtual, u otro.  
+Cuando ya no necesite un disco de datos que se encuentra conectado a una máquina virtual, puede desconectarlo fácilmente. Cuando se separa un disco de la máquina virtual, el disco no lo elimina del almacenamiento. Si desea volver a usar los datos existentes en el disco, puede volver a conectarlo a la misma máquina virtual (o a otra).  
 
 > [!NOTE]
-> Una máquina virtual en Azure utiliza distintos tipos de discos, como un disco del sistema operativo, un disco temporal local y discos de datos opcionales. Para más información, consulte [Acerca de los discos y los discos duros virtuales para Virtual Machines](../articles/virtual-machines/linux/about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). No se puede separar un disco del sistema operativo, a menos que también se eliminarán Hola máquina virtual.
+> Una máquina virtual en Azure utiliza distintos tipos de discos, como un disco del sistema operativo, un disco temporal local y discos de datos opcionales. Para más información, consulte [Acerca de los discos y los discos duros virtuales para Virtual Machines](../articles/virtual-machines/linux/about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Un disco del sistema operativo no se puede desconectar, salvo que también se elimine la máquina virtual.
 
-## <a name="find-hello-disk"></a>Encuentra el disco de Hola
-Para poder separar un disco de una máquina virtual debe toofind out Hola número LUN, que es un identificador de hello disco toobe desconectado. toodo que, siga estos pasos:
+## <a name="find-the-disk"></a>Buscar el disco
+Antes de poder desconectar un disco de una máquina virtual, es necesario conocer el número de unidad lógica (LUN), que es un identificador para el disco que se va a desconectar. Para ello, sigue estos pasos:
 
-1. Abra la CLI de Azure y [conectar tooyour suscripción de Azure](../articles/xplat-cli-connect.md). Procure estar en el modo de administración de servicios de Azure (`azure config mode asm`).
-2. Averigüe qué discos están conectado tooyour máquina virtual. Hello en el ejemplo siguiente se enumera los discos de máquina virtual denominada Hola `myVM`:
+1. Abra la CLI de Azure y [conéctese a su suscripción de Azure](/cli/azure/authenticate-azure-cli). Procure estar en el modo de administración de servicios de Azure (`azure config mode asm`).
+2. Compruebe qué discos están conectados a la máquina virtual. En el ejemplo siguiente se enumeran los discos de la máquina virtual denominada `myVM`:
 
     ```azurecli
     azure vm disk list myVM
     ```
 
-    Hola de salida es similar toohello siguiente ejemplo:
+    La salida es similar a la del ejemplo siguiente:
 
     ```azurecli
     * Fetching disk images
@@ -26,12 +26,12 @@ Para poder separar un disco de una máquina virtual debe toofind out Hola númer
       info:    vm disk list command OK
     ```
 
-3. Tenga en cuenta Hola LUN o hello **número de unidad lógica** para el disco de Hola que desea toodetach.
+3. Anota el LUN o **número de unidad lógica** para el disco que quieres desacoplar.
 
-## <a name="remove-operating-system-references-toohello-disk"></a>Quitar el disco del sistema operativo referencias toohello
-Antes de separar disco Hola de invitado de Linux de hello, debe asegurarse de que todas las particiones de disco de hello no están en uso. Asegúrese de ese sistema operativo de hello no intenta tooremount tras un reinicio. Estos pasos deshacer configuración Hola probablemente creó cuando [adjuntar](../articles/virtual-machines/linux/classic/attach-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) disco Hola.
+## <a name="remove-operating-system-references-to-the-disk"></a>Supresión de las referencias al sistema operativo en el disco
+Antes de desconectar el disco del invitado de Linux, debe asegurarse de que todas las particiones del disco no están en uso. Asegúrese de que el sistema operativo no intenta volver a montarlas después de un reinicio. Estos pasos deshacen la configuración que probablemente se creó al [conectar](../articles/virtual-machines/linux/classic/attach-disk-classic.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json) el disco.
 
-1. Hola de uso `lsscsi` identificador de disco de comando toodiscover Hola. `lsscsi` puede instalarse mediante `yum install lsscsi` (en distribuciones basadas en Red Hat) o mediante `apt-get install lsscsi` (en distribuciones basadas en Debian). Puede encontrar el identificador de disco de Hola que está buscando utilizando el número LUN de Hola. último número de Hola de tupla de hello en cada fila es hello LUN. Hola siguiente ejemplo de `lsscsi`, LUN 0 se asigna demasiado  */dev/sdc*
+1. Use el comando `lsscsi` para detectar el identificador de dispositivo. `lsscsi` puede instalarse mediante `yum install lsscsi` (en distribuciones basadas en Red Hat) o mediante `apt-get install lsscsi` (en distribuciones basadas en Debian). Puede encontrar el identificador de disco que está buscando utilizando el número de LUN. El último número de la tupla en cada fila es el LUN. En el siguiente ejemplo de `lsscsi`, LUN 0 se asigna a */dev/sdc*
 
     ```bash
     [1:0:0:0]    cd/dvd  Msft     Virtual CD/ROM   1.0   /dev/sr0
@@ -40,7 +40,7 @@ Antes de separar disco Hola de invitado de Linux de hello, debe asegurarse de qu
     [5:0:0:0]    disk    Msft     Virtual Disk     1.0   /dev/sdc
     ```
 
-2. Use `fdisk -l <disk>` particiones de hello toodiscover asociadas Hola disco toobe desconectado. Hello en el ejemplo siguiente se muestra la salida de hello para `/dev/sdc`:
+2. Use `fdisk -l <disk>` para detectar las particiones asociadas con el disco que se va a desconectar. En el siguiente ejemplo se muestra la salida de `/dev/sdc`:
 
     ```bash
     Disk /dev/sdc: 1098.4 GB, 1098437885952 bytes, 2145386496 sectors
@@ -54,13 +54,13 @@ Antes de separar disco Hola de invitado de Linux de hello, debe asegurarse de qu
     /dev/sdc1            2048  2145386495  1072692224   83  Linux
     ```
 
-3. Desmonte cada partición de disco de Hola. desmonta de Hello en el ejemplo siguiente se `/dev/sdc1`:
+3. Desmonte cada partición enumerada para el disco. El siguiente ejemplo se desmonta `/dev/sdc1`:
 
     ```bash
     sudo umount /dev/sdc1
     ```
 
-4. Hola de uso `blkid` comando toodiscovery hello UUID de todas las particiones. Hola de salida es similar toohello siguiente ejemplo:
+4. Utilice el comando `blkid` para detectar los UUID de todas las particiones. La salida es similar a la del ejemplo siguiente:
 
     ```bash
     /dev/sda1: UUID="11111111-1b1b-1c1c-1d1d-1e1e1e1e1e1e" TYPE="ext4"
@@ -68,7 +68,7 @@ Antes de separar disco Hola de invitado de Linux de hello, debe asegurarse de qu
     /dev/sdc1: UUID="33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e" TYPE="ext4"
     ```
 
-5. Eliminar las entradas en hello **/etcetera/fstab** archivo asociado a las rutas de acceso de dispositivo de Hola o UUID para todas las particiones de hello disco toobe desconectado.  Las entradas de este ejemplo podrían ser:
+5. Quite las entradas del archivo **/etc/fstab** asociado a las rutas de acceso del dispositivo o los UUID de todas las particiones del disco que se va a desvincular.  Las entradas de este ejemplo podrían ser:
 
     ```sh  
    UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults   1   2
@@ -80,23 +80,23 @@ Antes de separar disco Hola de invitado de Linux de hello, debe asegurarse de qu
    /dev/sdc1   /datadrive   ext4   defaults   1   2
    ```
 
-## <a name="detach-hello-disk"></a>Desconectar el disco de Hola
-Después de encontrar el número LUN de Hola de disco de Hola y referencias de sistema operativo de hello quitado, está listo toodetach:
+## <a name="detach-the-disk"></a>Desacoplar el disco
+Después de encontrar el número LUN del disco y de quitar las referencias del sistema operativo, está listo para desvincularlo:
 
-1. Desconectar el disco seleccionado de hello de la máquina virtual de hello mediante la ejecución de comando hello `azure vm disk detach
-   <virtual-machine-name> <LUN>`. Hello en el ejemplo siguiente se separa LUN `0` de hello máquina virtual denominada `myVM`:
+1. Separe el disco seleccionado de la máquina virtual mediante la ejecución del comando `azure vm disk detach
+   <virtual-machine-name> <LUN>`. En el ejemplo siguiente se separa LUN `0` de la máquina virtual denominada `myVM`:
    
     ```azurecli
     azure vm disk detach myVM 0
     ```
 
-2. Puede comprobar si el disco de hello obtuvo separado mediante la ejecución de `azure vm disk list` nuevo. Después de las comprobaciones de ejemplo de Hola Hola máquina virtual denominada `myVM`:
+2. Para comprobar si el disco se ha desconectado, vuelva a ejecutar el comando `azure vm disk list`. En el ejemplo siguiente se comprueba la máquina virtual denominada `myVM`:
    
     ```azurecli
     azure vm disk list myVM
     ```
 
-    Hola de salida es similar toohello siguiente ejemplo, que se muestra en disco de datos de hello ya no está conectado:
+    El resultado es similar al ejemplo siguiente, que muestra que el disco de datos no está conectado:
 
     ```azurecli
     info:    Executing command vm disk list
@@ -110,5 +110,5 @@ Después de encontrar el número LUN de Hola de disco de Hola y referencias de s
      info:    vm disk list command OK
     ```
 
-disco Hola separada permanece en el almacenamiento pero ya no es máquina virtual de tooa adjunto.
+El disco desacoplado permanece en el almacenamiento pero ya no estará acoplado a una máquina virtual.
 

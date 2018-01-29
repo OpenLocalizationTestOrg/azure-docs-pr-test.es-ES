@@ -1,0 +1,75 @@
+- name: Azure Container Instances
+  href: index.yml
+- name: Información general
+  items:
+    - name: Acerca de Azure Container Instances
+      href: container-instances-overview.md
+- name: Inicios rápidos
+  expanded: true
+  items:
+    - name: 'Creación de un contenedor: CLI'
+      href: container-instances-quickstart.md
+    - name: 'Creación de un contenedor: Portal'
+      href: container-instances-quickstart-portal.md
+    - name: 'Creación de un contenedor: PowerShell'
+      href: container-instances-quickstart-powershell.md
+- name: Tutoriales
+  items:
+    - name: 1 - Creación de una imagen de contenedor
+      href: container-instances-tutorial-prepare-app.md
+    - name: 2 - Creación de un registro de contenedor
+      href: container-instances-tutorial-prepare-acr.md
+    - name: 3 - Implementación de la aplicación
+      href: container-instances-tutorial-deploy-app.md
+- name: Conceptos
+  items:
+    - name: Cuotas y límites regionales
+      href: container-instances-quotas.md
+    - name: Relación con los orquestadores
+      href: container-instances-orchestrator-relationship.md
+    - name: Grupos de contenedores
+      href: container-instances-container-groups.md
+- name: Guías de procedimientos
+  items:
+    - name: Implementación de grupos de varios contenedores
+      href: container-instances-multi-container-group.md
+    - name: Conservación de datos con Azure Files
+      href: container-instances-mounting-azure-files-volume.md
+    - name: Implementación desde Azure Container Registry
+      href: container-instances-using-azure-container-registry.md
+    - name: Ejecutar tareas en contenedores
+      href: container-instances-restart-policy.md
+    - name: Solución de problemas de implementaciones
+      href: container-instances-troubleshooting.md
+- name: Referencia
+  items:
+    - name: CLI de Azure
+      href: /cli/azure/container
+    - name: REST
+      href: /rest/api/container-instances
+    - name: PowerShell
+      href: '/powershell/module/azurerm.containerinstance#container_instances'
+    - name: .NET
+      href: /dotnet/api/overview/azure/containerinstances
+    - name: Python
+      href: /python/api/overview/azure/containerinstance
+    - name: Java
+      href: /java/api/overview/azure/containerinstance
+    - name: Node.js
+      href: /javascript/api/overview/azure/containerinstance
+    - name: Plantilla de Resource Manager
+      href: /azure/templates/microsoft.containerinstance/containergroups
+- name: Recursos
+  items:
+    - name: Disponibilidad en regiones
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Precios
+      href: 'https://azure.microsoft.com/pricing/details/container-instances/'
+    - name: Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Proporcionar comentarios sobre el producto
+      href: 'https://feedback.azure.com/forums/602224-azure-container-instances'
+    - name: Stackoverflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-container-instances'
+    - name: Vídeos
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'

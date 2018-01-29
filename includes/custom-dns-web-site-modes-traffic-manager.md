@@ -1,4 +1,4 @@
-La configuración de un nombre de dominio personalizado en una aplicación web en Servicio de aplicaciones de Azure con equilibrio de carga del Administrador de tráfico solo está disponible para los sitios web en modo **estándar** . Antes de cambiar una aplicación web de hello servicio gratuito de aplicación plan modo toohello compartido, el modo básico o estándar, primero debe quitar límites de gastos en lugar de su suscripción de servicio de aplicaciones. 
+El establecimiento de un nombre de dominio personalizado en una aplicación web integrada en Traffic Manager solo está disponible para el plan de tarifa **Estándar**.  
 
-Para obtener más información acerca de los modos de plan de servicio de aplicaciones de hello, incluido cómo toochange Hola modo del sitio, consulte [cómo los sitios web tooscale](../articles/app-service-web/web-sites-scale.md).
+Para más información sobre los planes de tarifa de App Service, incluido cómo cambiar el plan de tarifa de la aplicación, consulte [Escalado vertical de aplicaciones en Azure](../articles/app-service/web-sites-scale.md).
 

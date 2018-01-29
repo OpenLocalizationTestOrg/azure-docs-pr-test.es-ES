@@ -1,17 +1,17 @@
-## <a name="add-function-apps-tooyour-portal-favorites"></a>Agregar aplicaciones de la función tooyour portales favoritos 
+## <a name="favorite-functions-in-the-portal"></a>Funciones favoritas en el portal 
 
-Si aún no lo ha hecho, agregue favoritos de aplicaciones de la función tooyour Hola portal de Azure. Esto hace más fácil toofind las aplicaciones de la función. Si ya ha hecho esto, omitir toohello próxima sección. 
+Si todavía no lo ha hecho, agregue instancias de Function App a sus favoritos en Azure Portal. Esto facilita la búsqueda de las instancias de Function App. Si ya lo ha hecho, vaya a la sección siguiente. 
 
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com/).
+1. Inicie sesión en [Azure Portal](https://portal.azure.com/).
 
-2. Haga clic en flecha hello en hello inferior izquierdo tooexpand todos los servicios, escriba `Functions` en hello **filtro** campo y, a continuación, haga clic en estrella de hello siguiente demasiado**aplicaciones de la función**.  
+2. Haga clic en la flecha en la parte inferior izquierda para ampliar todos los servicios, escriba `Functions` en el campo **Filtro** y, después, haga clic en la estrella junto a **Instancias de Function App**.  
  
-    ![Crear aplicación de función en hello portal de Azure](./media/functions-portal-favorite-function-apps/functions-favorite-function-apps.png)
+    ![Creación de una aplicación de función en Azure Portal](./media/functions-portal-favorite-function-apps/functions-favorite-function-apps.png)
 
-    Esto agrega menú de toohello del icono de hello funciones en izquierda de hello del portal de Hola.
+    Esto agrega el icono Funciones al menú de la izquierda del portal.
 
-3. Cerrar el menú de hello, a continuación, desplácese hacia abajo del icono de funciones de toohello inferior toosee Hola. Haga clic en este toosee icono una lista de todas las aplicaciones de la función. Haga clic en el toowork de aplicación de función con funciones de esta aplicación. 
+3. Cierre el menú y después desplácese hasta la parte inferior para ver el icono Funciones. Haga clic en este icono para ver una lista de todas sus instancias de Function App. Haga clic en su Function App para trabajar con las funciones de esta aplicación. 
  
-    ![](./media/functions-portal-favorite-function-apps/functions-function-apps-hub.png)
+    ![Function Apps en favoritos](./media/functions-portal-favorite-function-apps/functions-function-apps-hub.png)
  
      

@@ -1,4 +1,4 @@
-registro de actividad de Hello contiene todas las operaciones de escritura (PUT, POST, DELETE) realizadas en los recursos. No incluye operaciones de lectura (GET). Puede usar toofind registros de auditoría Hola un error para solucionar el problema o toomonitor cómo un usuario de su organización modifica un recurso.
+El registro de actividad contiene todas las operaciones de escritura (PUT, POST, DELETE) realizadas en los recursos. No incluye operaciones de lectura (GET). Para obtener una lista de las acciones de recurso, consulte [Operaciones del proveedor de recursos de Azure Resource Manager](../articles/active-directory/role-based-access-control-resource-provider-operations.md). Puede usar los registros de auditoría para encontrar un error a la hora de solucionar problemas o para supervisar cómo un usuario de su organización modificó un recurso.
 
-Los registros de actividad se conservan 90 días. Puede consultar cualquier intervalo de fechas, siempre que Hola la fecha de inicio no sea superior a 90 días en hello anterior.
+Los registros de actividad se conservan 90 días. Puede consultar cualquier intervalo de fechas, siempre que no hayan transcurrido más de 90 días desde la fecha inicial.
 

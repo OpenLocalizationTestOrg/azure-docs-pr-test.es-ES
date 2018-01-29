@@ -1,5 +1,5 @@
 ## <a name="scenario"></a>Escenario
-Una máquina virtual con una sola NIC es la red virtual tooa creado y está conectado. Hola VM requiere tres diferentes *privada* IP direcciones y dos *público* direcciones IP. se asignan direcciones IP de Hello toohello siguiendo las configuraciones de IP:
+Se crea una máquina virtual con una sola NIC y se conecta a una red virtual. La máquina virtual requiere tres direcciones IP *privadas* y dos direcciones IP *públicas*, todas diferentes. Las direcciones IP se asignan a las siguientes configuraciones de IP:
 
 * **IPConfig-1:** asigna un dirección IP privada *estática* y una dirección IP pública *estática*.
 * **IPConfig-2:** asigna un dirección IP privada *estática* y una dirección IP pública *estática*.
@@ -7,7 +7,7 @@ Una máquina virtual con una sola NIC es la red virtual tooa creado y está cone
   
     ![Varias direcciones IP](./media/virtual-network-multiple-ip-addresses-scenario/multiple-ipconfigs.png)
 
-las configuraciones IP de Hola son toohello asociado de NIC cuando se crea la NIC de Hola y Hola NIC es toohello adjunto VM cuando se crea Hola VM. tipos de Hola de direcciones IP usadas para el escenario de hello tienen fines ilustrativos. Puede asignar cualquier dirección IP y tipo de asignación que necesite.
+Las configuraciones de IP se asocian a la NIC cuando esta se crea, y la NIC se conecta a la máquina virtual cuando esta se crea. Los tipos de direcciones IP usados para el escenario tienen fines ilustrativos. Puede asignar cualquier dirección IP y tipo de asignación que necesite.
 
 > [!NOTE]
-> Aunque Hola los pasos de este artículo asigna todos los tooa de configuraciones de IP única NIC, también puede asignar varias IP configuraciones tooany NIC en una VM de varias NIC. toolearn cómo leer toocreate una máquina virtual con varias NIC hello [crear una máquina virtual con varias NIC](../articles/virtual-network/virtual-network-deploy-multinic-arm-ps.md) artículo.
+> Aunque los pasos de este artículo asignan todas las configuraciones de IP a una NIC única, también puede asignar varias configuraciones de IP a cualquiera de las NIC de una máquina virtual con varias NIC. Para aprender a crear una máquina virtual con varias NIC, lea el artículo [Implementación de máquinas virtuales con varias NIC mediante PowerShell](../articles/virtual-machines/windows/multiple-nics.md).

@@ -1,6 +1,6 @@
 ## <a name="webapi-project"></a>Proyecto WebAPI
-1. En Visual Studio, abra hello **AppBackend** proyecto que creó en hello **informar a los usuarios** tutorial.
-2. En Notifications.cs, Hola de reemplazar todo **notificaciones** clase con el siguiente código de hello. Ser seguro tooreplace Hola los marcadores de posición con la cadena de conexión (con acceso completo) para su centro de notificaciones y el nombre de la base de datos central de Hola. Puede obtener estos valores de hello [Portal clásico de Azure](http://manage.windowsazure.com). Este módulo ahora representa Hola diferentes proteger las notificaciones que se enviarán. En una implementación completa, las notificaciones de Hola se almacenará en una base de datos; Para simplificar, en este caso se almacenarlos en memoria.
+1. En Visual Studio, abra el proyecto **AppBackend** que creó en el tutorial **Notificación a usuarios**.
+2. En Notifications.cs, reemplace toda la clase **Notifications** por el código siguiente. Asegúrese de sustituir los marcadores de posición por su cadena de conexión (con acceso total) para el Centro de notificaciones y el nombre del centro. Puede obtener estos valores en [Azure Portal](http://portal.azure.com). Este módulo representa ahora las diferentes notificaciones seguras que se enviarán. En una implementación completa, las notificaciones se almacenarán en una base de datos; en este caso, vamos a almacenarlas en la memoria para simplificar el proceso.
    
         public class Notification
         {
@@ -40,7 +40,7 @@
             }
         }
 
-1. En NotificationsController.cs, reemplace el código de hello en hello **NotificationsController** definición de la clase con el siguiente código de hello. Este componente implementa un modo para la notificación de hello dispositivo tooretrieve Hola de forma segura y también proporciona una forma (por motivos de Hola de este tutorial) tootrigger dispositivos tooyour inserción segura. Tenga en cuenta que cuando se envía el centro de notificaciones de hello notificación toohello, sólo enviamos una notificación sin formato con el Id. de Hola de notificación de hello (y ningún mensaje real):
+1. En NotificationsController.cs, reemplace el código dentro de la definición de clase **NotificationsController** por el código siguiente. Este componente dota al dispositivo de una ruta para recuperar la notificación de forma segura, y además ofrece una manera (para los fines de este tutorial) de desencadenar una inserción segura en sus dispositivos. Tenga en cuenta que al enviar la notificación al Centro de notificaciones, enviamos una notificación sin procesar solo con el identificador de la notificación (no el mensaje real):
    
        public NotificationsController()
        {
@@ -75,8 +75,8 @@
         }
 
 
-Tenga en cuenta que hello `Post` método ahora no envía una notificación del sistema. Envía una notificación sin formato que contiene solo el identificador de notificación hello y no cualquier contenido confidencial. Además, asegúrese de hello toocomment seguro de operación para plataformas de hello para el que no tiene credenciales configuradas en el centro de notificaciones, tal y como producirán errores de envío.
+Tenga en cuenta que el método `Post` ahora no envía una notificación del sistema. Envía una notificación sin procesar que contiene solo el identificador de la notificación sin ningún tipo de contenido delicado. Además, asegúrese de comentar la operación de envío de las plataformas para las que no tiene credenciales configuradas en su Centro de notificaciones, ya que provocarán un error.
 
-1. Ahora se implementará volver a este sitio Web de Azure de tooan de aplicación en orden toomake, accesible desde todos los dispositivos. Haga doble clic en hello **AppBackend** de proyecto y seleccione **publicar**.
-2. Seleccione Sitio web Azure como destino de publicación. Inicie sesión con su cuenta de Azure y seleccione un sitio Web nuevo o existente y tome nota de hello **dirección URL de destino** propiedad Hola **conexión** ficha. Nos referiremos toothis URL según su *punto de conexión de back-end* más adelante en este tutorial. Haga clic en **Publicar**.
+1. Ahora implementaremos de nuevo esta aplicación en un sitio web de Azure a fin de que sea accesible para todos los dispositivos. Haga clic con el botón derecho en el proyecto **AppBackend** y, a continuación, seleccione **Publicar**.
+2. Seleccione Sitio web Azure como destino de publicación. Inicie sesión con su cuenta de Azure, seleccione un sitio web nuevo o existente y anote la propiedad **Dirección URL de destino** en la pestaña **Conexión**. Más tarde en este tutorial haremos referencia a esta dirección URL como *extremo de backend* . Haga clic en **Publicar**.
 

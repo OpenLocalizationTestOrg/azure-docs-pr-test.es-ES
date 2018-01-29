@@ -1,0 +1,85 @@
+- name: Documentación de Azure HDInsight
+  href: /azure/hdinsight
+- name: Seguridad de la empresa
+  items:
+    - name: Información general
+      href: apache-domain-joined-introduction.md
+    - name: Planeamiento de clústeres unidos a un dominio
+      href: apache-domain-joined-architecture.md
+    - name: Configuración de un entorno de espacio aislado unido a un dominio
+      href: apache-domain-joined-configure.md
+    - name: Configuración de clústeres unidos a un dominio mediante Azure AD DS
+      href: apache-domain-joined-configure-using-azure-adds.md
+    - name: Sincronización de usuarios de Azure AD con un clúster de HDInsight
+      href: ../hdinsight-sync-aad-users-to-cluster.md
+      maintainContext: true
+    - name: Configuración de directivas Hive
+      href: apache-domain-joined-run-hive.md
+      maintainContext: true
+    - name: Administración de clústeres unidos a un dominio
+      href: apache-domain-joined-manage.md
+- name: Protección de datos
+  href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+  maintainContext: true
+- name: Acceso de red
+  items:
+    - name: HDInsight en redes virtuales de Azure
+      href: ../hdinsight-extend-hadoop-virtual-network.md
+      maintainContext: true
+    - name: Conexión de HDInsight con la red local
+      href: ../connect-on-premises-network.md
+      maintainContext: true
+    - name: Creación de un clúster de HBase en redes virtuales de Azure
+      href: ../hbase/apache-hbase-provision-vnet.md
+      maintainContext: true
+    - name: Replicación de clústeres de HBase en redes virtuales de Azure
+      href: ../hbase/apache-hbase-replication.md
+      maintainContext: true
+- name: Supervisión con OMS
+  items:
+    - name: Uso de Azure Log Analytics
+      href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
+      maintainContext: true
+    - name: Paneles específicos de clúster
+      href: ../hdinsight-hadoop-oms-log-analytics-management-solutions.md
+      maintainContext: true
+    - name: Uso de consultas con Log Analytics
+      href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
+      maintainContext: true
+    - name: Supervisión del rendimiento de un clúster
+      href: ../hdinsight-key-scenarios-to-monitor.md
+      maintainContext: true
+- name: Referencia
+  items:
+    - name: Ejemplos de código
+      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight'
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.hdinsight
+    - name: .NET (Hadoop)
+      href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hd-insight?view=azure-dotnet'
+    - name: .NET (HBase)
+      href: 'https://www.nuget.org/packages/Microsoft.HBase.Client/'
+    - name: .NET (Avro)
+      href: 'https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library'
+    - name: REST
+      href: /rest/api/hdinsight/
+    - name: REST (Spark)
+      href: /rest/api/hdinsightspark/
+- name: Recursos
+  items:
+    - name: Notas de la versión
+      href: ../hdinsight-release-notes.md
+      maintainContext: true
+    - name: Azure Roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
+    - name: Obtención de ayuda en el foro
+      href: 'https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight'
+    - name: Ruta de aprendizaje
+      href: 'https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/'
+    - name: Programa profesional de Microsoft para macrodatos
+      href: 'https://academy.microsoft.com/en-us/professional-program/big-data/'
+    - name: Calculadora de precios
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Herramientas de Windows para HDInsight
+      href: ../hdinsight-hadoop-windows-tools.md
+      maintainContext: true

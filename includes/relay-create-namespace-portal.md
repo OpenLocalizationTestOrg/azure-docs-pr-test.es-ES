@@ -1,24 +1,25 @@
-1. Inicie sesión en toohello [portal de Azure][Azure portal].
-2. En el panel de navegación izquierdo de hello del portal de hello, haga clic en **New**, a continuación, haga clic en **integración empresarial**y, a continuación, haga clic en **retransmisión**.
-3. Hola **crear espacio de nombres** cuadro de diálogo, escriba un nombre de espacio de nombres. sistema de Hello comprueba inmediatamente toosee si Hola nombre está disponible.
-4. Hola **suscripción** , a continuación, elija una suscripción de Azure en qué espacio de nombres de hello toocreate.
-5. Hola  **[grupo de recursos](../articles/azure-resource-manager/resource-group-portal.md)**  , a continuación, elija un grupo de recursos existente en qué Hola live espacio de nombres o cree uno nuevo.      
-6. En **ubicación**, elegir Hola país o una región en la que se debe hospedar el espacio de nombres.
+1. Inicie sesión en [Azure Portal][Azure portal].
+2. En el menú de la izquierda, seleccione **+ Crear un recurso**. A continuación, seleccione **Integración empresarial** > **Relay**.
+3. En **Crear espacio de nombres**, especifique un nombre de espacio de nombres. El sistema realiza la comprobación automáticamente para ver si el nombre está disponible.
+4. En el campo **Suscripción**, elija la suscripción de Azure en la que se va a crear el espacio de nombres.
+5. En el cuadro [Grupo de recursos](../articles/azure-resource-manager/resource-group-portal.md), seleccione un grupo de recursos existente en el que se colocará el espacio de nombres o cree uno nuevo.  
+6. En **Ubicación**, seleccione el país o región donde se debe hospedar el espacio de nombres.
    
     ![Crear un espacio de nombres][create-namespace]
-7. Haga clic en **Crear**. sistema de Hello ahora crea el espacio de nombres y lo habilita. Después de unos minutos, Hola sistema proporcione los recursos de su cuenta.
+7. Seleccione **Crear**. El sistema crea el espacio de nombres y lo habilita. Tras unos minutos, el sistema realiza el aprovisionamiento de los recursos para la cuenta.
 
-### <a name="obtain-hello-management-credentials"></a>Obtener las credenciales de administración de Hola
-1. Hola lista de espacios de nombres, haga clic en hello que acaba de crear espacio de nombres.
-2. En la hoja de espacio de nombres de hello, haga clic en **directivas de acceso compartido**.
-3. Hola **directivas de acceso compartido** hoja, haga clic en **RootManageSharedAccessKey**.
+### <a name="get-management-credentials"></a>Obtención de las credenciales de administración
+
+1. Haga clic en **Todos los recursos** y, después, seleccione el nombre del espacio de nombres recién creado.
+2. En el espacio de nombres de Relay, seleccione **Directivas de acceso compartido**.  
+3. En **Directivas de acceso compartido**, seleccione **RootManageSharedAccessKey**.
    
     ![información de conexión][connection-info]
-4. Hola **directiva: RootManageSharedAccessKey** hoja, haga clic en botón de copiar Hola siguiente demasiado**clave principal: cadena de conexión**, Portapapeles toocopy Hola conexión cadena tooyour para su uso posterior. Pegue este valor en el Bloc de notas o cualquier otra ubicación temporal.
+4. En **Directiva: RootManageSharedAccessKey**, haga clic en el botón **Copiar** situado junto a **Cadena de conexión: clave principal**. La cadena de conexión se copia en el Portapapeles para su uso posterior. Pegue este valor en el Bloc de notas o cualquier otra ubicación temporal.
    
     ![connection-string][connection-string]
 
-5. Paso anterior repetición hello, copiar y pegar el valor de Hola de **clave principal** tooa ubicación temporal para su uso posterior.  
+5. Repita el paso anterior para copiar y pegar el valor de **Clave principal** en una ubicación temporal para su uso posterior.  
 
 <!--Image references-->
 

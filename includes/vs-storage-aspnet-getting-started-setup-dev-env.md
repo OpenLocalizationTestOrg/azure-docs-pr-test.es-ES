@@ -1,31 +1,35 @@
-## <a name="set-up-hello-development-environment"></a>Configurar el entorno de desarrollo de Hola
+## <a name="set-up-the-development-environment"></a>Configuración del entorno de desarrollo
 
-Esta sección explica configurar el entorno de desarrollo, incluida la creación de una aplicación de ASP.NET MVC, agregar una conexión de servicios conectados, agregando un controlador, y especificando Hola necesario directivas de espacio de nombres.
+En esta sección se explica cómo configurar el entorno de desarrollo. Se incluyen la creación de una aplicación de ASP.NET MVC, la incorporación de una conexión de servicios conectados, la incorporación de un controlador y la especificación de las directivas de espacio de nombres necesarias.
 
 ### <a name="create-an-aspnet-mvc-app-project"></a>Creación de un proyecto ASP.NET MVC
 
 1. Abra Visual Studio.
 
-1. Seleccione **archivo -> Nuevo -> proyecto** desde el menú principal de Hola
+1. En el menú principal, seleccione **Archivo** > **Nuevo** > **Proyecto**.
 
-1. En hello **nuevo proyecto** cuadro de diálogo, especifique las opciones de hello como Hola resaltada en figura siguiente:
+1. En el cuadro de diálogo **Nuevo proyecto**, seleccione **Web** > **Aplicación web ASP.NET (.NET Framework)**. En el campo **Nombre**, especifique **StorageAspNet**. Seleccione **Aceptar**.
 
-    ![Creación de un proyecto ASP.NET](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-1.png)
+    ![Captura de pantalla del cuadro de diálogo Nuevo proyecto](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-1.png)
 
-1. Seleccione **Aceptar**.
+1. En el cuadro de diálogo **Nueva aplicación web ASP.NET**, seleccione **MVC** y, a continuación, **Aceptar**.
 
-1. En hello **nuevo proyecto ASP.NET** cuadro de diálogo, especifique las opciones de hello como Hola resaltada en figura siguiente:
+    ![Captura de pantalla del cuadro de diálogo Nueva aplicación web ASP.NET](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-2.png)
 
-    ![Especificación de MVC](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-2.png)
+### <a name="use-connected-services-to-connect-to-an-azure-storage-account"></a>Uso de servicios conectados para conectarse a una cuenta de Azure Storage
 
-1. Seleccione **Aceptar**.
+1. En el **Explorador de soluciones**, haga clic con el botón derecho en el proyecto.
 
-### <a name="use-connected-services-tooconnect-tooan-azure-storage-account"></a>Usar cuenta de almacenamiento de Azure de servicios conectados tooconnect tooan
+2. En el menú contextual, seleccione **Agregar** > **Servicio conectado**.
 
-1. Hola **el Explorador de soluciones**, haga clic en proyecto de hello y, en el menú contextual de hello, seleccione **Agregar -> servicio conectado**.
+1. En el cuadro de diálogo **Servicios conectados**, seleccione **Almacenamiento en la nube con Azure Storage** y luego **Configurar**.
 
-1. En hello **Agregar servicio conectado** cuadro de diálogo, seleccione **el almacenamiento de Azure**y, a continuación, seleccione **configurar**.
+    ![Captura de pantalla del cuadro de diálogo Servicios conectados](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-3.png)
 
-    ![Cuadro de diálogo Servicio conectado](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-3.png)
+1. En el cuadro de diálogo **Azure Storage**, seleccione la cuenta de Azure Storage que se usará en este tutorial. Para crear una nueva cuenta de Azure Storage, seleccione **Crear una nueva cuenta de almacenamiento** y rellene el formulario. Después de seleccionar una cuenta de almacenamiento existente o de crear una nueva, seleccione **Agregar**. Visual Studio instala el paquete NuGet de Azure Storage y una cadena de conexión de almacenamiento a **Web.config**.
 
-1. En hello **el almacenamiento de Azure** cuadro de diálogo, seleccione Hola cuenta de almacenamiento de Azure deseada con el que desea toowork y seleccione **agregar**.
+> [!TIP]
+> Para aprender a crear una cuenta de almacenamiento con [Azure Portal](https://portal.azure.com), consulte [Crear una cuenta de almacenamiento](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account).
+>
+> También se puede crear una cuenta de Azure Storage mediante [Azure PowerShell](../articles/storage/common/storage-powershell-guide-full.md), la [CLI de Azure](../articles/storage/common/storage-azure-cli.md) o [Azure Cloud Shell](../articles/cloud-shell/overview.md).
+

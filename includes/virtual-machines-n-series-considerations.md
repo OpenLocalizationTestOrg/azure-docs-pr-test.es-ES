@@ -2,17 +2,17 @@
 
 * Para ver la disponibilidad de máquinas virtuales de la serie N, consulte [Productos disponibles por región](https://azure.microsoft.com/en-us/regions/services/).
 
-* Máquinas virtuales de serie N solo pueden implementarse en el modelo de implementación del Administrador de recursos de Hola.
+* Las máquinas virtuales de la serie N solo se pueden implementar en el modelo de implementación de Resource Manager.
 
-* Al crear una máquina virtual de N-series mediante Hola portal de Azure, en hello **Fundamentos** hoja, seleccione un **tipo de disco de máquina virtual** de **HDD**. tamaño de toochoose una serie de N disponible, en hello **tamaño** hoja, haga clic en **todas las ver**.
+* Al crear una máquina virtual de la serie N mediante Azure Portal, en la hoja **Datos básicos**, seleccione el **Tipo de disco de máquina virtual** llamado **HDD**. Para elegir un tamaño disponible de la serie N, en la hoja **Tamaño**, haga clic en **Ver todos**.
 
-* Las máquinas virtuales de la serie N no admiten discos de máquina virtual que estén respaldados por Azure Premium Storage.
+* Las máquinas virtuales NC y NV no admiten discos de máquina virtual que estén respaldados por Azure Premium Storage.
 
-* Si desea toodeploy máquinas virtuales una cantidad mayor de N-series, considere la posibilidad de una suscripción de pago por uso u otras opciones de compra. Si usa una [cuenta gratuita de Azure](https://azure.microsoft.com/free/), solo puede usar un número limitado de núcleos de proceso de Azure.
+* Si desea implementar más de un pequeño número de máquinas virtuales de la serie N, considere la posibilidad de usar una suscripción de pago por uso u otras opciones de compra. Si usa una [cuenta gratuita de Azure](https://azure.microsoft.com/free/), solo puede usar un número limitado de núcleos de proceso de Azure.
 
-* Podría necesita cuota de núcleos de hello tooincrease (por región) en su suscripción de Azure y aumentar la cuota independiente de Hola para NC o NV núcleos. aumentar una cuota de toorequest, [abrir una solicitud de soporte al cliente en línea](../articles/azure-supportability/how-to-create-azure-support-request.md) sin cargo. Los límites predeterminados pueden variar según la categoría de suscripción.
+* Es posible que necesite aumentar la cuota de núcleos (por región) de la suscripción de Azure y la cuota independiente para núcleos NC, NCv2, ND o NV. Para solicitar un aumento de cuota, [abra una solicitud de soporte técnico al cliente en línea](../articles/azure-supportability/how-to-create-azure-support-request.md) sin cargo alguno. Los límites predeterminados pueden variar según la categoría de suscripción.
 
-* Una imagen de máquina virtual que se puede implementar en máquinas virtuales de serie de N es hello [Azure Data Science Virtual Machine](../articles/machine-learning/machine-learning-data-science-virtual-machine-overview.md). Hola Data Science Virtual Machine preinstala y configura muchas ciencia de datos muy popular y profunda herramientas de aprendizaje. También preinstala controladores de GPU de NVIDIA Tesla para instancias de NC.
+* Una imagen de máquina virtual que se puede implementar en máquinas virtuales de la serie de N es la [máquina virtual de ciencia de datos de Azure](../articles/machine-learning/data-science-virtual-machine/overview.md). La máquina virtual de ciencia de datos preinstala y configura muchas herramientas de ciencia de datos y aprendizaje profundo conocidas. También preinstala controladores de GPU de NVIDIA Tesla.
 
 
 

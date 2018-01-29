@@ -4,20 +4,20 @@ Para más información acerca de los discos, consulte [Acerca de los discos y lo
 <a id="attachempty"></a>
 
 ## <a name="attach-an-empty-disk"></a>Conectar un disco vacío
-1. Abra 1.0 de CLI de Azure y [conectar tooyour suscripción de Azure](../articles/xplat-cli-connect.md). Procure estar en el modo de administración de servicios de Azure (`azure config mode asm`).
-2. Escriba `azure vm disk attach-new` toocreate y adjuntar un disco nuevo, como se muestra en el siguiente ejemplo de Hola. Reemplace *myVM* con el nombre de la máquina Virtual de Linux de Hola y especifique el tamaño de Hola de disco de hello en GB, que es *100GB* en este ejemplo:
+1. Abra la CLI de Azure 1.0 y [conéctese a su suscripción de Azure](/cli/azure/authenticate-azure-cli). Procure estar en el modo de administración de servicios de Azure (`azure config mode asm`).
+2. Escriba `azure vm disk attach-new` para crear y asociar un nuevo disco, como se muestra en el siguiente ejemplo. Reemplace *myVM* por el nombre de la máquina virtual Linux y especifique el tamaño del disco, en GB *100 GB* en este ejemplo:
 
     ```azurecli
     azure vm disk attach-new myVM 100
     ```
 
-3. Después de que se crea y asocia disco de datos de hello, aparece en la salida de hello de `azure vm disk list <virtual-machine-name>` tal y como se muestra en el siguiente ejemplo de Hola:
+3. Una vez creado y conectado el disco de datos, este se enumera en la salida de `azure vm disk list <virtual-machine-name>` como se muestra en el siguiente ejemplo:
    
     ```azurecli
     azure vm disk list TestVM
     ```
 
-    Hola de salida es similar toohello siguiente ejemplo:
+    La salida es similar a la del ejemplo siguiente:
 
     ```bash
     info:    Executing command vm disk list
@@ -37,14 +37,14 @@ Para más información acerca de los discos, consulte [Acerca de los discos y lo
 ## <a name="attach-an-existing-disk"></a>un disco existente
 El acoplamiento de un disco existente requiere que disponga de un .vhd disponible en la cuenta de almacenamiento.
 
-1. Abra 1.0 de CLI de Azure y [conectar tooyour suscripción de Azure](../articles/xplat-cli-connect.md). Procure estar en el modo de administración de servicios de Azure (`azure config mode asm`).
-2. Compruebe si Hola VHD desea tooattach ya está cargado tooyour suscripción de Azure:
+1. Abra la CLI de Azure 1.0 y [conéctese a su suscripción de Azure](/cli/azure/authenticate-azure-cli). Procure estar en el modo de administración de servicios de Azure (`azure config mode asm`).
+2. Compruebe si el VHD que quiere asociar ya se ha cargado en la suscripción de Azure:
    
     ```azurecli
     azure vm disk list
     ```
 
-    Hola de salida es similar toohello siguiente ejemplo:
+    La salida es similar a la del ejemplo siguiente:
 
     ```azurecli
      info:    Executing command vm disk list
@@ -58,13 +58,13 @@ El acoplamiento de un disco existente requiere que disponga de un .vhd disponibl
      info:    vm disk list command OK
     ```
 
-3. Si no encuentra el disco de Hola que desee toouse, puede cargar una suscripción de tooyour de disco duro virtual local mediante `azure vm disk create` o `azure vm disk upload`. Un ejemplo de `disk create` sería como en el siguiente ejemplo de Hola:
+3. Si no encuentra el disco que desea usar, puede cargar un disco duro virtual local en su suscripción mediante `azure vm disk create` o `azure vm disk upload`. Un ejemplo de `disk create` sería el siguiente:
    
     ```azurecli
     azure vm disk create myVhd .\TempDisk\test.VHD -l "East US" -o Linux
     ```
 
-    Hola de salida es similar toohello siguiente ejemplo:
+    La salida es similar a la del ejemplo siguiente:
 
     ```azurecli
     info:    Executing command vm disk create
@@ -78,23 +78,23 @@ El acoplamiento de un disco existente requiere que disponga de un .vhd disponibl
     info:    vm disk create command OK
     ```
    
-   También puede usar `azure vm disk upload` tooupload una cuenta de almacenamiento específico de tooa de disco duro virtual. Leer más información acerca de hello comandos toomanage los discos de datos de la máquina virtual de Azure [aquí](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
+   También puede usar el comando `azure vm disk upload` para cargar un VHD a una cuenta de almacenamiento específica. [Aquí](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) puede encontrar más información sobre los comandos para administrar discos de datos de una máquina virtual de Azure.
 
-4. Ahora adjuntar Hola había deseado de máquina virtual de tooyour de disco duro virtual:
+4. Ahora conectamos el VHD que queramos a la máquina virtual:
    
     ```azurecli
     azure vm disk attach myVM myVhd
     ```
    
-   Asegúrese de que tooreplace *myVM* con el nombre de saludo de la máquina virtual, y *myVHD* con el disco duro virtual deseado.
+   Asegúrese de reemplazar *myVM* por el nombre de su máquina virtual y *myHD* por el disco duro virtual que desee.
 
-5. Puede comprobar disco hello es toohello adjunta la máquina virtual con `azure vm disk list <virtual-machine-name>`:
+5. Puede comprobar si el disco está conectado a la máquina virtual con `azure vm disk list <virtual-machine-name>`:
    
     ```azurecli
     azure vm disk list myVM
     ```
 
-    Hola de salida es similar toohello siguiente ejemplo:
+    La salida es similar a la del ejemplo siguiente:
 
     ```azurecli
      info:    Executing command vm disk list
@@ -111,7 +111,7 @@ El acoplamiento de un disco existente requiere que disponga de un .vhd disponibl
     ```
 
 > [!NOTE]
-> Después de agregar un disco de datos, podrá necesita toolog en la máquina virtual de toohello e inicializar disco Hola para máquina virtual de hello pueda usar disco hello para el almacenamiento (vea Hola siguiendo los pasos para obtener más información en toodo inicializar disco hello).
+> Después de agregar un disco de datos, tendrá que iniciar sesión en la máquina virtual e inicializar el disco para que la máquina virtual pueda usarlo para el almacenamiento (para más información sobre cómo realizar la inicialización del disco, consulte los pasos siguientes).
 > 
 > 
 

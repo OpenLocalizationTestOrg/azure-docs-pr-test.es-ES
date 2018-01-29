@@ -1,23 +1,23 @@
-## <a name="customize-and-extend-hello-device-management-actions"></a>Personalizar y extender las acciones de administración de dispositivos de Hola
+## <a name="customize-and-extend-the-device-management-actions"></a>Personalizar y ampliar el dispositivo las acciones de administración del dispositivo
 
-Las soluciones de IoT pueden expandir conjunto definido de Hola de patrones de la administración de dispositivos o habilitar modelos personalizados mediante gemelas de dispositivo de Hola y primitivas de método en la nube al dispositivo. Otros ejemplos de acciones de administración de dispositivos son el restablecimiento de fábrica, la actualización de firmware, la actualización de software, la administración de energía, la administración de conectividad y red, y el cifrado de datos.
+Las soluciones de IoT pueden expandir el conjunto definido de patrones de administración de dispositivos o permitir modelos personalizados mediante el uso de los primitivos de método de nube a dispositivo y dispositivos gemelos. Otros ejemplos de acciones de administración de dispositivos son el restablecimiento de fábrica, la actualización de firmware, la actualización de software, la administración de energía, la administración de conectividad y red, y el cifrado de datos.
 
 ## <a name="device-maintenance-windows"></a>Ventanas de mantenimiento del dispositivo
 
-Por lo general, configure las acciones de tooperform de dispositivos a la vez que minimiza las interrupciones y tiempo de inactividad. Ventanas de mantenimiento de dispositivo son una hora de hello toodefine de patrón de uso frecuente cuando un dispositivo debe actualizar su configuración. Las soluciones de back-end pueden usar propiedades de hello deseado de hello dispositivo gemelas toodefine y activar una directiva en el dispositivo que permite una ventana de mantenimiento. Cuando un dispositivo recibe la directiva de ventana de mantenimiento de hello, puede usar Hola notificado propiedad del estado Hola dispositivo gemelas tooreport Hola de directiva de Hola. aplicaciones de back-end de Hello, a continuación, pueden usar dispositivos gemelas consultas tooattest toocompliance de dispositivos y cada directiva.
+Normalmente, puede dispositivos para llevar a cabo acciones a la vez que minimiza las interrupciones y el tiempo de inactividad. Las ventanas de mantenimiento dle dispositivo son un patrón que se utiliza habitualmente para definir la hora en la que un dispositivo debe actualizar su configuración. Las soluciones de back-end pueden utilizar las propiedades deseadas del dispositivo gemelo para definir y activar una directiva en el dispositivo que permita una ventana de mantenimiento. Cuando un dispositivo recibe la directiva de la ventana de mantenimiento, puede usar la propiedad notificada del dispositivo gemelo para informar del estado de la directiva. La aplicación de back-end puede usar luego consultas de dispositivos gemelos para dar testimonio de cumplimiento de dispositivos y cada directiva.
 
 ## <a name="next-steps"></a>Pasos siguientes
 
-En este tutorial, ha utilizado un tootrigger método directo reiniciar el equipo remoto en un dispositivo. Se usa Hola propiedades notificado tooreport Hola reiniciar última hora del dispositivo de Hola y Hola de hello consultado dispositivo gemelas toodiscover reiniciar última hora del dispositivo de Hola de nube de Hola.
+En este tutorial se usó un método directo para desencadenar un reinicio remoto en un dispositivo. Se usaron las propiedades notificadas para notificar la última hora de reinicio del dispositivo y se consultó el dispositivo gemelo para detectar la última hora de reinicio del dispositivo desde la nube.
 
-toocontinue Introducción a centro de IoT y patrones de la administración de dispositivos como el remoto a través de la actualización de firmware de aire hello, vea:
+Para continuar con la introducción de IoT Hub y los patrones de administración de dispositivos como remoto a través de la actualización de firmware de aire, consulte:
 
-[Tutorial: Cómo toodo un firmware actualizar][lnk-fwupdate]
+[Tutorial: Realización de una actualización de firmware][lnk-fwupdate]
 
-toolearn cómo tooextend llama a su método de programación y de solución de IoT en varios dispositivos, vea hello [programación y los trabajos de difusión] [ lnk-tutorial-jobs] tutorial.
+Para información sobre cómo ampliar la solución de IoT y programar llamadas de método en varios dispositivos, consulte el tutorial [Programación de trabajos en varios dispositivos][lnk-tutorial-jobs].
 
-toocontinue Introducción a centro de IoT, consulte [introducción con borde IoT][lnk-iot-edge].
+Para continuar con la introducción a IoT Hub, consulte [Introducción IoT Edge][lnk-iot-edge].
 
 [lnk-fwupdate]: ../articles/iot-hub/iot-hub-node-node-firmware-update.md
 [lnk-tutorial-jobs]: ../articles/iot-hub/iot-hub-node-node-schedule-jobs.md
-[lnk-iot-edge]: ../articles/iot-hub/iot-hub-linux-iot-edge-get-started.md
+[lnk-iot-edge]: ../articles/iot-edge/tutorial-simulate-device-linux.md

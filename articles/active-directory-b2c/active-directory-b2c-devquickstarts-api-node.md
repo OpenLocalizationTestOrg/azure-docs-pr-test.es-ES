@@ -4,7 +4,7 @@ description: "Creación de una API web Node.js que acepta tokens de un inquilino
 services: active-directory-b2c
 documentationcenter: 
 author: dstrockis
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: fc2b9af8-fbda-44e0-962a-8b963449106a
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.devlang: javascript
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: xerners
-ms.openlocfilehash: 6480be75c314ede1b786e959a79c0385dd2edea8
-ms.sourcegitcommit: 73f159cdbc122ffe42f3e1f7a3de05f77b6a4725
-ms.translationtype: MT
+ms.openlocfilehash: 3a0249f2f7dfd76d89cbf497376f53fe06c250c3
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.translationtype: HT
 ms.contentlocale: es-ES
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C: Protección de una API web mediante Node.js
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
@@ -35,7 +35,7 @@ Con Azure Active Directory (Azure AD) B2C, puede proteger una API web mediante e
 Para seguir este ejemplo, necesita lo siguiente:
 
 1. Registrar una aplicación con Azure AD.
-2. Configurar la aplicación para que use el complemento `azure-ad-passport` de Passport.
+2. Configurar la aplicación para que use el complemento `passport-azure-ad` de Passport.
 3. Configurar una aplicación cliente para llamar a la API web "lista de tareas pendientes".
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Obtener un directorio de Azure AD B2C
@@ -48,8 +48,6 @@ A continuación, debe crear una aplicación en su directorio de B2C, que ofrece 
 * Escribir `http://localhost/TodoListService` en **URL de respuesta**. Es la dirección URL predeterminada para este ejemplo de código.
 * Crear un **secreto de aplicación** para la aplicación y copiarlo. Estos datos se necesitarán más adelante. Tenga en cuenta que para poder usar este valor, es preciso [incluirlo entre secuencias de escape XML](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape) .
 * Copiar el **identificador de aplicación** asignado a la aplicación. Estos datos se necesitarán más adelante.
-
-[!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 ## <a name="create-your-policies"></a>Crear sus directivas
 En Azure AD B2C, cada experiencia del usuario se define mediante una [directiva](active-directory-b2c-reference-policies.md). Esta aplicación contiene dos experiencias de identidad: registrarse e iniciar sesión. Debe crear una directiva de cada tipo, como se describe en el [artículo de referencia de las directivas](active-directory-b2c-reference-policies.md#create-a-sign-up-policy).  Cuando cree las tres directivas, asegúrese de:
@@ -240,7 +238,7 @@ var passport = require('passport');
 var OIDCBearerStrategy = require('passport-azure-ad').BearerStrategy;
 ```
 
-Guarde el archivo. Volverá a él más adelante.
+Guarde el archivo . Volverá a él más adelante.
 
 ## <a name="create-a-configjs-file-to-store-your-azure-ad-settings"></a>Creación de un archivo config.js para almacenar la configuración de Azure AD
 Este archivo de código pasa los parámetros de configuración del portal de Azure AD al archivo `Passport.js` . Creó estos valores de configuración al agregar la API web al portal en la primera parte del tutorial. Explicamos qué incluir en los valores de estos parámetros después de haber copiado el código.

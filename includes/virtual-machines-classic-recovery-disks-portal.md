@@ -1,61 +1,62 @@
-Si la máquina virtual (VM) en Azure detecta un error de disco o de arranque, debe tooperform pasos en el disco duro virtual Hola propio para solucionar problemas. Un ejemplo común sería una actualización de la aplicación que ha fallado que impide que Hola VM correctamente. Este artículo se describe cómo toouse tooconnect portal Azure su toofix VM de disco duro virtual tooanother los errores y, a continuación, volver a crear la máquina virtual original.
+Si la máquina virtual de Azure se encuentra un error de disco o de arranque, deberá realizar los pasos para solucionar problemas en el propio disco duro virtual. Un ejemplo habitual sería una actualización de aplicación con error que impide que la máquina virtual pueda arrancar correctamente. En este artículo se describe cómo utilizar Azure Portal para conectar el disco duro virtual a otra máquina virtual para solucionar errores y, posteriormente, volver a crear la máquina virtual original.
+
 
 ## <a name="recovery-process-overview"></a>Introducción al proceso de recuperación
-proceso de solución de problemas de Hello es como sigue:
+El proceso de solución de problemas es el siguiente:
 
-1. Eliminar Hola máquina virtual que se produzca problemas, pero conservar los discos duros virtuales Hola.
-2. Adjuntar y montar hello tooanother de disco duro virtual para solucionar el problema.
-3. Conectar toohello solución de problemas de máquina virtual. Editar los archivos o ejecutar herramientas de errores de toofix en hello: disco duro virtual original.
-4. Desmonte y desconecte Hola de disco duro virtual de hello VM de solución de problemas.
-5. Crear una máquina virtual mediante hello: disco duro virtual original.
+1. Elimine la máquina virtual que tiene problemas pero conserve los discos duros virtuales.
+2. Asocie y monte el disco duro virtual en otra máquina virtual con el fin de solucionar problemas.
+3. Conéctese a la máquina virtual de solución de problemas. Edite los archivos o ejecute las herramientas necesarias para solucionar los problemas del disco duro virtual original.
+4. Desmonte y desconecte el disco duro virtual de la máquina virtual de solución de problemas.
+5. Cree una máquina virtual mediante el disco duro virtual original.
 
-## <a name="delete-hello-original-vm"></a>Eliminar Hola VM original
-Los discos duros virtuales y las máquinas virtuales son dos recursos diferentes de Azure. Un disco duro virtual es donde se almacenan el sistema operativo de hello, aplicaciones y configuraciones. Hola VM es solo de metadatos que define el tamaño de Hola o la ubicación y que hace referencia a recursos, como un disco duro virtual o una tarjeta de interfaz de red virtual (NIC). Cada disco duro virtual Obtiene una concesión asignada ese disco una vez conectado tooa máquina virtual. Aunque los discos de datos se pueden conectados y desconectados incluso mientras se está ejecutando Hola VM, no se puede desasociar el disco del sistema operativo Hola a menos que se elimine Hola recurso de máquina virtual. concesión de Hola continúa tooassociate Hola SO disco tooa VM incluso cuando esa máquina virtual está en un estado detenido o desasignado.
+## <a name="delete-the-original-vm"></a>Eliminación de la máquina virtual original
+Los discos duros virtuales y las máquinas virtuales son dos recursos diferentes de Azure. Un disco duro virtual es el recurso donde se almacenan el sistema operativo, las aplicaciones y las configuraciones. La máquina virtual consiste solo en metadatos que definen el tamaño o la ubicación y que hacen referencia a recursos tales como un disco duro virtual o una tarjeta de interfaz de red virtual (NIC). Cada disco duro virtual obtiene una concesión que se le asigna cuando se asocia a una máquina virtual. Aunque los discos de datos se pueden conectar y desconectar incluso mientras se está ejecutando la máquina virtual, no se puede desasociar el disco del sistema operativo, a menos que se elimine el recurso de máquina virtual. La concesión continúa para asociar el disco del sistema operativo a una máquina virtual incluso cuando esa máquina virtual está en un estado detenido o desasignado.
 
-Hola primera toorecovering paso la máquina virtual es el recurso de máquina virtual de hello toodelete propio. Eliminando Hola VM deja Hola los discos duros virtuales en su cuenta de almacenamiento. Después de Hola que se elimina la máquina virtual, puede adjuntar Hola disco duro virtual tooanother VM tootroubleshoot y resolver errores de Hola. 
+El primer paso para recuperar la máquina virtual es eliminar el propio recurso de máquina virtual. Al eliminar la máquina virtual, los discos duros virtuales se dejan en su cuenta de almacenamiento. Después de eliminar la máquina virtual, puede asociar el disco duro virtual a otra máquina virtual para localizar y solucionar los errores. 
 
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com). 
-2. En el menú de hello en el lado izquierdo de hello, haga clic en **máquinas virtuales (clásicas)**.
-3. Haga clic en la máquina virtual que tiene el problema de hello, seleccione hello **discos**y, a continuación, identificar nombre Hola de disco duro virtual de Hola. 
-4. Seleccione el disco duro virtual de hello SO y comprobar hello **ubicación** cuenta de almacenamiento de hello tooidentify que contiene este disco duro virtual. En el siguiente ejemplo de Hola Hola cadena inmediatamente anterior ". blob.core.windows.net" es el nombre de cuenta de almacenamiento de Hola.
+1. Inicie sesión en el [Portal de Azure](https://portal.azure.com). 
+2. En el menú de la izquierda, haga clic en **Virtual Machines**.
+3. Seleccione la máquina virtual que tiene el problema, haga clic en **Discos** y, a continuación, identifique el nombre del disco duro virtual. 
+4. Seleccione el disco duro virtual del sistema operativo y compruebe la **Ubicación** para identificar la cuenta de almacenamiento que contiene este disco duro virtual. En el ejemplo siguiente, la cadena inmediatamente antes de ".blob.core.windows.net" es el nombre de la cuenta de almacenamiento.
 
     ```
     https://portalvhds73fmhrw5xkp43.blob.core.windows.net/vhds/SCCM2012-2015-08-28.vhd
     ```
 
-    ![imagen de Hello acerca de la ubicación de la máquina virtual](./media/virtual-machines-classic-recovery-disks-portal/vm-location.png)
+    ![Imagen sobre la ubicación de la máquina virtual](./media/virtual-machines-classic-recovery-disks-portal/vm-location.png)
 
-5. Haga clic en hello VM y, a continuación, seleccione **eliminar**. Asegúrese de que no se seleccionen discos Hola al eliminar Hola VM.
-6. Cree una nueva máquina virtual de recuperación. Esta máquina virtual debe estar en hello mismo grupo de recursos y región (servicio de nube) como problema Hola VM.
-7. Seleccione la máquina virtual de recuperación de hello y, a continuación, seleccione **discos** > **adjuntar existente**.
-8. tooselect su disco duro virtual existente, haga clic en **archivo VHD**:
+5. Haga clic con el botón derecho en la máquina virtual y, a continuación, seleccione **Eliminar**. Asegúrese de que los discos no estén seleccionados cuando elimine la máquina virtual.
+6. Cree una nueva máquina virtual de recuperación. Esta máquina virtual debe estar en la misma región y grupo de recursos (servicio en la nube) que la máquina virtual que tiene problemas.
+7. Seleccione la máquina virtual de recuperación y, a continuación, seleccione **Discos** > **Asociar existente**.
+8. Para seleccionar el disco duro virtual existente, haga clic en **Archivo VHD**:
 
     ![Busque el disco duro virtual existente.](./media/virtual-machines-classic-recovery-disks-portal/select-vhd-location.png)
 
-9. Seleccione la cuenta de almacenamiento de hello > contenedor VHD > Hola disco duro virtual, haga clic en hello **seleccione** botón tooconfirm su elección.
+9. Seleccione la cuenta de almacenamiento, el contenedor de discos duros virtuales y el disco duro virtual, y haga clic en el botón **Seleccionar** para confirmar su elección.
 
     ![Seleccione el disco duro virtual existente](./media/virtual-machines-classic-recovery-disks-portal/select-vhd.png)
 
-10. Con un VHD ahora seleccionado, seleccione **Aceptar** tooattach Hola disco duro virtual existente.
-11. Después de unos segundos, Hola **discos** panel para la máquina virtual se mostrará el disco duro virtual existente conectado como disco de datos:
+10. Con el disco duro virtual ya seleccionado, haga clic en **Aceptar** para asociar el disco duro virtual existente.
+11. Después de unos segundos, el panel **Discos** de la máquina virtual mostrará el disco duro virtual existente conectado como un disco de datos:
 
     ![Disco duro virtual existente conectado como disco de datos](./media/virtual-machines-classic-recovery-disks-portal/attached-disk.png)
 
-## <a name="fix-issues-on-hello-original-virtual-hard-disk"></a>Solucionar problemas en hello: disco duro virtual original
-Cuando se montan hello: disco duro virtual existente, ahora puede realizar cualquier tarea de mantenimiento y solución de problemas de pasos según sea necesario. Una vez que se ha solucionado problemas hello, continúe con hello pasos.
+## <a name="fix-issues-on-the-original-virtual-hard-disk"></a>Solución de problemas en el disco duro virtual original
+Con el disco duro virtual existente montado, ahora puede realizar todos los pasos de mantenimiento y solución de problemas según sea necesario. Una vez que se han resuelto los problemas, continúe con los pasos siguientes.
 
-## <a name="unmount-and-detach-hello-original-virtual-hard-disk"></a>Desmonte y desconecte hello: disco duro virtual original
-Una vez que se resuelven los errores, desmonte y desasociar el disco duro virtual existente del saludo de la máquina virtual para solucionar problemas. No se puede usar el disco duro virtual junto con cualquier otra máquina virtual hasta que se libera la concesión de Hola que asocia toohello de disco duro virtual de hello VM de solución de problemas.  
+## <a name="unmount-and-detach-the-original-virtual-hard-disk"></a>Desmontaje y desasociación del disco duro virtual original
+Una vez resueltos los errores, desmonte y desasocie el disco duro virtual existente de la máquina virtual de solución de problemas. No se podrá usar el disco duro virtual con ninguna otra máquina virtual hasta que se libere la concesión que asocia el disco duro virtual a la máquina virtual de solución de problemas.  
 
-1. Inicie sesión en toohello [portal de Azure](https://portal.azure.com). 
-2. En el menú de hello en el lado izquierdo de hello, seleccione **máquinas virtuales (clásicas)**.
-3. Busque la máquina virtual de recuperación de Hola. Seleccione los discos, disco de hello del menú contextual y, a continuación, seleccione **separar**.
+1. Inicie sesión en el [Portal de Azure](https://portal.azure.com). 
+2. En el menú de la izquierda, haga clic en **Virtual Machines (clásico)**.
+3. Busque la máquina virtual de recuperación. Seleccione Discos, haga clic con el botón derecho en el disco y, a continuación, seleccione **Desasociar**.
 
-## <a name="create-a-vm-from-hello-original-hard-disk"></a>Crear una máquina virtual desde el disco duro original de Hola
+## <a name="create-a-vm-from-the-original-hard-disk"></a>Creación de una máquina virtual a partir del disco duro original
 
-usar una máquina virtual desde el disco duro virtual original de toocreate [portal de Azure clásico](https://manage.windowsazure.com).
+Para crear una máquina virtual a partir del disco duro virtual original, use [Azure Portal](https://portal.azure.com).
 
-1. Inicie sesión en el [Portal de Azure clásico](https://manage.windowsazure.com).
-2. En hello parte inferior del portal de hello, seleccione **New** > **proceso** > **Máquina Virtual** > **de la Galería** .
-3. Hola **elegir una imagen** sección, seleccione **Mis discos**, y, a continuación, seleccione Hola disco duro virtual original. Compruebe la información de ubicación de Hola. Se trata de una región Hola donde debe implementarse Hola máquina virtual. Seleccione el botón siguiente Hola.
-4. Hola **configuración de máquina Virtual** sección, escriba el nombre de la máquina virtual de Hola y seleccione un tamaño para hello máquina virtual.
+1. Inicie sesión en [Azure Portal](https://portal.azure.com).
+2. En la parte superior izquierda del portal, seleccione **Nuevo** > **Proceso** > **Máquina virtual** > **De la galería**.
+3. En la sección **Elija una imagen**, seleccione **Mis discos** y seleccione el disco duro virtual original. Compruebe la información de ubicación. Esta es la región donde se debe implementar la máquina virtual. Seleccione el botón Siguiente.
+4. En la sección **Configuración de la máquina virtual**, escriba el nombre de la máquina virtual y seleccione un tamaño.

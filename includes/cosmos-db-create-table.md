@@ -1,14 +1,21 @@
-Ahora puede usar el Explorador de datos toocreate una tabla y agregar base de datos de tooyour de datos. 
+Ahora puede usar la herramienta Explorador de datos en Azure Portal para crear una base de datos y una tabla. 
 
-1. Hola portal de Azure, en el menú de navegación de hello, haga clic en **Explorador de datos (vista previa)**. 
-2. En la hoja de hello Explorador de datos, haga clic en **nueva tabla**, a continuación, rellene la página de hello mediante Hola siguiente información.
+1. Haga clic en **Explorador de datos** > **Nueva tabla**. 
+    
+    El área **Agregar tabla** se muestra en el extremo derecho, pero es posible que tenga que desplazarse hacia la derecha para verla.
 
-    ![Explorador de datos en hello portal de Azure](./media/cosmos-db-create-table/azure-cosmosdb-data-explorer.png)
+    ![Explorador de datos en Azure Portal](./media/cosmos-db-create-table/azure-cosmosdb-data-explorer.png)
+
+2. En la página **Agregar tabla**, escriba la configuración de la nueva tabla.
 
     Configuración|Valor sugerido|Descripción
     ---|---|---
-    Id. de tabla|sample-table|Id. de Hello para la nueva tabla. Los nombres de tabla tienen Hola mismo carácter requisitos como identificadores de base de datos. Los nombres de bases de datos deben tener entre 1 y 255 caracteres y no pueden contener `/ \ # ?` o un espacio al final.
-    Capacidad de almacenamiento| 10 GB|Deje el valor predeterminado de Hola. Se trata de capacidad de almacenamiento de Hola de base de datos de Hola.
-    Rendimiento|400 RU|Deje el valor predeterminado de Hola. Se puede escalar hello [rendimiento](../articles/cosmos-db/request-units.md) posterior si desea que la latencia tooreduce.
+    Id. de tabla|sample-table|Identificador de la nueva tabla. Los nombres de tabla tienen los mismos requisitos de caracteres que los identificadores de base de datos. Los nombres de bases de datos deben tener entre 1 y 255 caracteres y no pueden contener `/ \ # ?` o un espacio al final.
+    Capacidad de almacenamiento| Fija (10 GB)|Cambie el valor a **Fija (10 GB)**. Este valor corresponde a la capacidad de almacenamiento de la base de datos.
+    Rendimiento|400 RU|Cambie el rendimiento a 400 unidades de solicitud por segundo (RU/s). Si quiere reducir la latencia, puede escalar verticalmente el rendimiento más adelante.
 
-3. Una vez que se rellena el formulario de hello, haga clic en **Aceptar**.
+    Haga clic en **Aceptar**.
+
+    El Explorador de datos muestra la nueva base de datos y la tabla.
+
+    ![El Explorador de datos de Azure Portal mostrando la nueva base de datos y la colección](./media/cosmos-db-create-table/azure-cosmos-db-new-table.png)

@@ -1,4 +1,4 @@
-Hola siguiendo los límites se aplica solo cuando se usa hello Azure Resource Manager y grupos de recursos de Azure.
+Los límites siguientes se aplican solo si realiza operaciones de administración con Azure Resource Manager.
 
 | Recurso | Límite predeterminado |
 | --- | --- |

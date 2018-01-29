@@ -1,53 +1,52 @@
-# <a name="scale-agent-nodes-in-a-container-service-cluster"></a>Escalado de nodos de agente en un clúster de Container Service
-Después de [implementación de un clúster de servicio de contenedor de Azure](../articles/container-service/dcos-swarm/container-service-deployment.md), tendrá que número de hello toochange de nodos de agente. Por ejemplo, puede que necesite más agentes para poder ejecutar más aplicaciones o instancias de contenedor. 
+Después de [implementar un clúster de Azure Container Service](../articles/container-service/dcos-swarm/container-service-deployment.md), tendrá que cambiar el número de nodos de agente. Por ejemplo, puede que necesite más agentes para poder ejecutar más aplicaciones o instancias de contenedor. 
 
-Puede cambiar número de Hola de nodos de agente en un clúster de DC/OS, Docker Swarm o Kubernetes con hello portal de Azure u Hola 2.0 de CLI de Azure. 
+Puede cambiar el número de nodos de agente en un clúster DC/OS, Docker Swarm o Kubernete mediante Azure Portal o la CLI de Azure 2.0. 
 
-## <a name="scale-with-hello-azure-portal"></a>Escalar con hello portal de Azure
+## <a name="scale-with-the-azure-portal"></a>Escalado con el portal de Azure
 
-1. Hola [portal de Azure](https://portal.azure.com), busque **servicios de contenedor**y, a continuación, haga clic en servicio de contenedor de Hola que desea toomodify.
-2. Hola **servicio de contenedor** hoja, haga clic en **agentes**.
-3. En **recuento de VM**, escriba Hola deseado número de nodos de agentes.
+1. En el [portal de Azure](https://portal.azure.com), busque **servicios de contenedores** y, luego, haga clic en el servicio de contenedores que quiere modificar.
+2. En la hoja **Container service** (Servicio de contenedores), haga clic en **Agentes**.
+3. En **VM Count** (Recuento de VM), escriba el número deseado de nodos de agente.
 
-    ![Escalar un grupo en el portal de Hola](./media/container-service-scale/container-service-scale-portal.png)
+    ![Escalado de un grupo en el portal](./media/container-service-scale/container-service-scale-portal.png)
 
-4. configuración de hello toosave, haga clic en **guardar**.
+4. Para guardar la configuración, haga clic en **Save** (Guardar).
 
-## <a name="scale-with-hello-azure-cli-20"></a>Escalar con hello 2.0 de CLI de Azure
+## <a name="scale-with-the-azure-cli-20"></a>Escalado con la CLI de Azure 2.0
 
-Asegúrese de que se [instalado](/cli/azure/install-az-cli2) Hola 2.0 más reciente de CLI de Azure y registran en tooan cuenta de azure (`az login`).
+Asegúrese de que [ha instalado](/cli/azure/install-az-cli2) la CLI de Azure 2.0 más reciente y que ha iniciado sesión en una cuenta de Azure (`az login`).
 
-### <a name="see-hello-current-agent-count"></a>Vea el número de agentes de hello actual
-número de hello toosee de agentes actualmente en clúster de hello, ejecute hello `az acs show` comando. Esto muestra la configuración de clúster de Hola. Por ejemplo, Hola siguiente comando muestra Hola configuración del servicio de contenedor de hello denominado `containerservice-myACSName` en grupo de recursos de Hola `myResourceGroup`:
+### <a name="see-the-current-agent-count"></a>Consulta del recuento actual de agentes
+Para ver el número de agentes actualmente en el clúster, ejecute el comando `az acs show`. Esta acción muestra la configuración del clúster. Por ejemplo, el comando siguiente muestra la configuración del servicio de contenedores llamada `containerservice-myACSName` en el grupo de recursos `myResourceGroup`:
 
 ```azurecli
 az acs show -g myResourceGroup -n containerservice-myACSName
 ```
 
-comando Hello devuelve el número de Hola de agentes de hello `Count` valor bajo `AgentPoolProfiles`.
+El comando devuelve el número de agentes en el valor `Count` bajo `AgentPoolProfiles`.
 
-### <a name="use-hello-az-acs-scale-command"></a>Use Hola az comandos de escala de acs
-número de hello toochange de nodos de agente, ejecute hello `az acs scale` comando y proporcione hello **grupo de recursos**, **el nombre del servicio de contenedor**, hello deseado y **nuevo número de agentes**. Con un número mayor o menor, puede reducir o aumentar verticalmente, respectivamente.
+### <a name="use-the-az-acs-scale-command"></a>Uso del comando az acs scale
+Para cambiar el números de nodos de agente, ejecute el comando `az acs scale` y proporcione el **grupo de recursos**, el **nombre del servicio de contenedores** y el **nuevo recuento de agentes** deseado. Con un número mayor o menor, puede reducir o aumentar verticalmente, respectivamente.
 
-Por ejemplo, número de hello toochange de agentes en hello too10 de clúster anterior, escriba Hola siguiente comando:
+Por ejemplo, para cambiar el número de agentes en el clúster anterior a 10, escriba el siguiente comando:
 
 ```azurecli
 az acs scale -g myResourceGroup -n containerservice-myACSName --new-agent-count 10
 ```
 
-Hola 2.0 de CLI de Azure devuelve una cadena JSON que representa la nueva configuración del servicio de contenedor de hello, incluido el nuevo número de agentes Hola de Hola.
+La CLI de Azure 2.0 devuelve una cadena JSON que representa la nueva configuración del servicio de contenedor, incluido el nuevo recuento de agentes.
 
 Para obtener más opciones de comando, ejecute `az acs scale --help`.
 
 ## <a name="scaling-considerations"></a>Consideraciones sobre escalado
 
-* número de Hola de nodos de agente debe estar entre 1 y 100, ambos inclusive. 
+* El número de nodos de agente debe estar entre 1 y 100, ambos inclusive. 
 
-* Su cuota de núcleos puede limitar el número de Hola de nodos de agente en un clúster.
+* Su cuota de núcleos puede limitar el número de nodos de agente en un clúster.
 
-* Las operaciones de escalado de nodo de agente son el conjunto de escalas de máquina virtual de Azure tooan aplicados que contiene el grupo de agente de Hola. En un clúster de DC/OS, solo los nodos de agente de grupo privada Hola se escalan por operaciones de Hola que se muestran en este artículo.
+* Las operaciones de escalado de nodos de agente se aplican a un conjunto de escalado de máquinas virtuales de Azure que contiene el grupo de agentes. En un clúster de DC/OS, solo los nodos de agente del grupo privado se escalan mediante las operaciones mostradas en este artículo.
 
-* Función de orchestrator de Hola que se implementan en el clúster, puede escalar por separado número Hola de instancias de un contenedor que se ejecuta en el clúster de Hola. Por ejemplo, en un clúster de DC/OS, usar hello [interfaz de usuario de maratón](../articles/container-service/dcos-swarm/container-service-mesos-marathon-ui.md) número de hello toochange de instancias de una aplicación de contenedor.
+* En función del orquestador que implemente en el clúster, puede escalar por separado el número de instancias de un contenedor que se ejecute en el clúster. Por ejemplo, en un clúster de DC/OS, use la [interfaz de usuario de Marathon](../articles/container-service/dcos-swarm/container-service-mesos-marathon-ui.md) para cambiar el número de instancias de una aplicación de contenedor.
 
 * Actualmente, no se admite el escalado automático de nodos de agente en un clúster de servicio de contenedores.
 
