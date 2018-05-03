@@ -1,19 +1,19 @@
 <!--author=SharS last changed: 1/7/2016-->
 
-#### <a name="toomodify-a-volume-container"></a>toomodify un contenedor de volumen
-1. En hello **dispositivos** , seleccione dispositivos hello, haga doble clic en él y, a continuación, haga clic en hello **contenedores de volúmenes** ficha.
-2. En la lista tabular de Hola Hola de contenedores de volúmenes, seleccione Configuración de Hola que desee toomodify y haga clic en **modificar**.
-3. Hola **modificar contenedor de volúmenes** diálogo cuadro, Hola siguientes:
+#### <a name="to-modify-a-volume-container"></a>Para modificar un contenedor de volúmenes
+1. En la página **Dispositivos**, seleccione el dispositivo, haga doble clic en él y, a continuación, haga clic en la pestaña **Contenedores de volúmenes**.
+2. En la lista tabular de los contenedores de volúmenes, seleccione la configuración que desea modificar y haga clic en **Modificar**.
+3. En el cuadro de diálogo **Modificar contenedor de volúmenes** , realice lo siguiente:
    
-   1. Cambiar nombre de Hola Hola del contenedor de volúmenes y modificar configuración de ancho de banda de hello asociado. 
+   1. Cambie el nombre del contenedor de volúmenes y modifique el ajuste de ancho de banda asociado. 
       
        ![Modificación de un contenedor de volúmenes con la plantilla de ancho de banda 1](./media/storsimple-modify-volume-container/HCS_ModifyVCBT1-include.png)
-   2. no se puede cambiar la cuenta de almacenamiento y clave de cifrado de Hello después de que se especifiquen. Si especificó **seleccione una plantilla de ancho de banda**, haga clic en la página siguiente de hello flecha tooproceed toohello.
-4. En la página siguiente de Hola de hello **modificar contenedor de volumen** cuadro de diálogo:
+   2. No se pueden cambiar la cuenta de almacenamiento ni la clave de cifrado una vez especificados. Si especificó **Seleccionar una plantilla de ancho de banda**, haga clic en la flecha para continuar en la página siguiente.
+4. En la página siguiente del cuadro de diálogo **Modificar contenedor de volúmenes** :
    
-   1. Desde la lista desplegable de hello, elija una plantilla de ancho de banda existente.
-   2. Revise la configuración de la programación de hello para la plantilla de ancho de banda especificado Hola.
+   1. En la lista desplegable, elija una plantilla de ancho de banda existente.
+   2. Revise la configuración de programación para la plantilla de ancho de banda especificada.
       
        ![Modificación de un contenedor de volúmenes con la plantilla de ancho de banda 2](./media/storsimple-modify-volume-container/HCS_ModifyVCBT2-include.png)
-   3. Haga clic en el icono de verificación de hello ![icono de comprobación](./media/storsimple-modify-volume-container/HCS_CheckIcon-include.png) toosave Hola configuración actualizada. Hola **contenedores de volúmenes** página estará actualizada tooreflect Hola cambios.
+   3. Haga clic en el icono de marca de verificación ![icono de marca de verificación](./media/storsimple-modify-volume-container/HCS_CheckIcon-include.png) para guardar la configuración actualizada. La página **Contenedores de volúmenes** se actualizará para reflejar los cambios.
 

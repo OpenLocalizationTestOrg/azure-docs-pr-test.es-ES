@@ -1,68 +1,68 @@
 <!--author=SharS last changed: 12/01/15-->
 
-### <a name="step-1-authorize-a-device-toochange-hello-service-data-encryption-key-in-hello-azure-classic-portal"></a>Paso 1: Autorizar una clave de cifrado de dispositivo toochange Hola servicio datos Hola portal de Azure clásico
-Por lo general, Administrador de dispositivos de hello solicitará que Administrador de servicio de hello autorizar un claves de cifrado de datos del servicio de toochange de dispositivo. Administrador de servicios de Hello autorizará, a continuación, una clave de hello dispositivos toochange Hola.
+### <a name="step-1-authorize-a-device-to-change-the-service-data-encryption-key-in-the-azure-classic-portal"></a>Paso 1: Autorizar que un dispositivo cambie la clave de cifrado de datos del servicio en el Portal de Azure clásico.
+Normalmente, el administrador de dispositivos solicitará que el administrador de servicios autorice que un dispositivo cambie las claves de cifrado de datos del servicio. A continuación, el administrador de servicios autorizará que el dispositivo cambie la clave.
 
-Este paso se realiza en hello portal de Azure clásico. Administrador de servicios de Hello puede seleccionar un dispositivo en una lista de dispositivos de hello toobe elegible autorizado. dispositivo de Hello es, a continuación, el proceso de cambio de clave de cifrado de datos del servicio de toostart autorizados Hola.
+Este paso se realiza en el Portal de Azure clásico. El administrador de servicios puede seleccionar un dispositivo en una lista de los dispositivos que se pueden autorizar. A continuación, se autoriza que el dispositivo inicie el proceso de cambio de las claves de cifrado de datos del servicio.
 
-#### <a name="which-devices-can-be-authorized-toochange-service-data-encryption-keys"></a>¿Los dispositivos que pueden autorizarse claves de cifrado de datos de servicio de toochange?
-Un dispositivo debe cumplir Hola siguiendo criterios antes de cambios de clave de cifrado de datos de servicio de tooinitiate autorizados:
+#### <a name="which-devices-can-be-authorized-to-change-service-data-encryption-keys"></a>¿Qué dispositivos se pueden autorizar para que cambien las claves de cifrado de datos del servicio?
+Para poder autorizar que un dispositivo inicie los cambios de las claves de cifrado de datos del servicio debe cumplir los siguientes criterios:
 
-* dispositivo de Hello debe estar en línea toobe apto para la autorización de cambio de clave de cifrado de datos de servicio.
-* Puede autorizar Hola mismo dispositivo nuevo después de 30 minutos si el cambio de la clave de hello no haya iniciado.
-* Puede autorizar a un dispositivo distinto, siempre que no ha iniciado cambio de clave de hello hello de dispositivo autorizado anteriormente. Después de que se ha autorizado el nuevo dispositivo de hello, dispositivo antiguo de hello no puede iniciar el cambio de Hola.
-* No se puede autorizar a un dispositivo mientras está en curso Hola sustitución de la clave de cifrado de datos del servicio de Hola.
-* Puede autorizar a un dispositivo cuando algunos de los dispositivos de hello registrados con el servicio de Hola han sustituido el cifrado Hola mientras que otros no. En tales casos, los dispositivos aptos Hola son aquellos que han completado el cambio de clave de cifrado de datos de servicio de Hola Hola.
+* Para que sea válido para la autorización de cambio de claves de cifrado de datos del servicio, el dispositivo debe estar en línea.
+* Si el cambio de claves no se ha iniciado, es posible autorizar el mismo dispositivo 30 minutos después.
+* Se puede autorizar otro dispositivo, siempre que el dispositivo autorizado anteriormente no haya iniciado el cambio de claves. Una vez que se haya autorizado el nuevo dispositivo, el anterior no puede iniciar el cambio.
+* No se puede autorizar un dispositivo mientras la sustitución de la clave de cifrado de datos del servicio esté en curso.
+* Se puede autorizar un dispositivo cuando algunos de los dispositivos registrados en el servicio hayan sustituido el cifrado, mientras que otros no lo hayan hecho. En tales casos, los dispositivos aptos son los que hayan completado el cambio de claves de cifrado de datos del servicio.
 
 > [!NOTE]
-> Hola portal de Azure clásico, StorSimple dispositivos virtuales no se muestran en la lista de Hola de dispositivos que pueden estar autorizado cambio de clave toostart Hola.
+> En el Portal de Azure clásico, los dispositivos virtuales de StorSimple no se muestran en la lista de dispositivos que se pueden autorizar para iniciar el cambio de claves.
 > 
 > 
 
-Realizar Hola siguiendo los pasos tooselect y autorice un dispositivo tooinitiate Hola servicio cambio cifrado de datos clave.
+Realice los pasos siguientes para seleccionar un dispositivo y autorizarlo para que inicie el cambio de claves de cifrado de datos del servicio.
 
-#### <a name="tooauthorize-a-device-toochange-hello-key"></a>tooauthorize una clave de hello de dispositivo toochange
-1. En la página del panel de servicio de hello, haga clic en **cambiar clave de cifrado de datos de servicio**.
+#### <a name="to-authorize-a-device-to-change-the-key"></a>Para autorizar que un dispositivo cambie la clave
+1. En la página Panel del servicio, haga clic en **Cambiar clave de cifrado de datos del servicio**.
    
     ![Cambiar clave de cifrado del servicio](./media/storsimple-change-data-encryption-key/HCS_ChangeServiceDataEncryptionKey-include.png)
-2. Hola **la clave de cifrado de datos del servicio de cambio** diálogo cuadro, seleccione y autorice un dispositivo tooinitiate Hola servicio cambio cifrado de datos clave. lista desplegable de Hello tiene todos los dispositivos aptos Hola que se pueden autorizar.
-3. Haga clic en el icono de verificación de Hola ![icono de marca de verificación](./media/storsimple-change-data-encryption-key/HCS_CheckIcon-include.png).
+2. En el cuadro de diálogo **Cambiar clave de cifrado de datos del servicio** , seleccione un dispositivo y autorícelo para que inicie el cambio de claves de cifrado de datos del servicio. La lista desplegable tiene todos los dispositivos que se pueden autorizar.
+3. Haga clic en el icono de marca de verificación  ![icono de marca de verificación](./media/storsimple-change-data-encryption-key/HCS_CheckIcon-include.png).
 
-### <a name="step-2-use-windows-powershell-for-storsimple-tooinitiate-hello-service-data-encryption-key-change"></a>Paso 2: Usar Windows PowerShell para el cambio clave del cifrado de datos de StorSimple tooinitiate Hola servicio
-Este paso se realiza en hello Windows PowerShell para StorSimple interfaz en hello había autorizado dispositivo StorSimple.
+### <a name="step-2-use-windows-powershell-for-storsimple-to-initiate-the-service-data-encryption-key-change"></a>Paso 2: usar Windows PowerShell para StorSimple para iniciar el cambio de claves de cifrado de datos del servicio
+Este paso se realiza en la interfaz de Windows PowerShell para StorSimple del dispositivo de StorSimple autorizado.
 
 > [!NOTE]
-> Puede realizarse ninguna operación en hello portal de Azure clásico de su servicio StorSimple Manager hasta que se complete la sustitución de claves de Hola.
+> Hasta que se complete la sustitución de claves no se pueden realizar operaciones en el Portal de Azure clásico del servicio StorSimple Manager.
 > 
 > 
 
-Si usas la interfaz de Windows PowerShell de hello dispositivo consola serie tooconnect toohello, realizar Hola pasos.
+Si utiliza la consola serie del dispositivo para conectarse a la interfaz de Windows PowerShell, realice los pasos siguientes.
 
-#### <a name="tooinitiate-hello-service-data-encryption-key-change"></a>cambiar la clave de cifrado de datos del servicio de tooinitiate Hola
-1. Seleccione la opción 1 toolog en con acceso completo.
-2. En hello símbolo del sistema, escriba:
+#### <a name="to-initiate-the-service-data-encryption-key-change"></a>Para iniciar el cambio de claves de cifrado de datos del servicio
+1. Seleccione la opción 1 para iniciar sesión con acceso total.
+2. En el símbolo del sistema, escriba:
    
      `Invoke-HcsmServiceDataEncryptionKeyChange`
-3. Una vez Hola cmdlet se haya completado correctamente, obtendrá una nueva clave de cifrado de datos del servicio. Copie y guarde esta clave para usarla en el paso 3 de este proceso. Esta clave será usa tooupdate Hola todos los restantes dispositivos registrados con el servicio StorSimple Manager Hola.
+3. Una vez que se haya completado correctamente el cmdlet, obtendrá una nueva clave de cifrado de datos del servicio. Copie y guarde esta clave para usarla en el paso 3 de este proceso. Esta clave se utilizará para actualizar todos los dispositivos restantes registrados en el servicio StorSimple Manager.
    
    > [!NOTE]
    > Este proceso debe iniciarse en las cuatro horas siguientes a la autorización de un dispositivo de StorSimple.
    > 
    > 
    
-   Esta nueva clave, a continuación, se envía toohello servicio toobe insertada tooall Hola los dispositivos que están registrados con el servicio de Hola. A continuación, aparecerá una alerta en panel de servicio de Hola. servicio de Hola se deshabilitará todas las operaciones de hello en los dispositivos de hello registrado y Administrador de dispositivos de hello deberá, a continuación, clave de cifrado de datos de servicio de tooupdate hello en hello otros dispositivos. Sin embargo, hello E/s (hosts que envían datos en la nube toohello) no se interrumpirán.
+   A continuación, esta nueva clave se envía al servicio de inserción en todos los dispositivos que están registrados en el servicio. Seguidamente, aparecerá una alerta en el panel del servicio. El servicio deshabilitará todas las operaciones en los dispositivos registrados y, a continuación, el administrador de dispositivos tendrá que actualizar la clave de cifrado de datos del servicio en el resto de dispositivos. Sin embargo, las E/S (hosts que envían datos a la nube) no se interrumpirán.
    
-   Si tiene un único dispositivo registrado servicio tooyour, proceso de sustitución de hello ahora está completa y puede omitir el paso siguiente de Hola. Si tiene varios dispositivos registrados tooyour servicio, continúe toostep 3.
+   Si tiene un único dispositivo registrado en el servicio, el proceso de sustitución habrá finalizado y puede omitir el paso siguiente. Si tiene varios dispositivos registrados en el servicio, vaya al paso 3.
 
-### <a name="step-3-update-hello-service-data-encryption-key-on-other-storsimple-devices"></a>Paso 3: Actualizar la clave de cifrado de datos de servicio de hello en otros dispositivos de StorSimple
-Estos pasos deben realizarse en la interfaz de Windows PowerShell de hello del dispositivo StorSimple si tiene varios dispositivos registrados tooyour el servicio StorSimple Manager. clave de Hola que obtuvo en el paso 2: usar Windows PowerShell para el cambio clave del cifrado de datos de StorSimple tooinitiate Hola servicio debe ser usado tooupdate todos Hola restantes registrado con el servicio StorSimple Manager hello de dispositivo de StorSimple.
+### <a name="step-3-update-the-service-data-encryption-key-on-other-storsimple-devices"></a>Paso 3: actualizar la clave de cifrado de datos del servicio en otros dispositivos de StorSimple
+Estos pasos deben realizarse en la interfaz de Windows PowerShell del dispositivo de StorSimple si tiene varios dispositivos registrados en el servicio StorSimple Manager. La clave que obtuvo en el paso 2: usar Windows PowerShell para StorSimple para iniciar el cambio de claves de cifrado de datos del servicio debe utilizarse para actualizar todo el dispositivo de StorSimple restante registrado en el servicio StorSimple Manager.
 
-Realizar Hola siguiendo el cifrado de datos de servicio de pasos tooupdate hello en el dispositivo.
+Realice los pasos siguientes para actualizar el cifrado de datos del servicio en el dispositivo.
 
-#### <a name="tooupdate-hello-service-data-encryption-key"></a>clave de cifrado de datos del servicio de tooupdate Hola
-1. Usar Windows PowerShell para StorSimple tooconnect toohello consola. Seleccione la opción 1 toolog en con acceso completo.
-2. En hello símbolo del sistema, escriba:
+#### <a name="to-update-the-service-data-encryption-key"></a>Para actualizar la clave de cifrado de datos del servicio
+1. Use Windows PowerShell para StorSimple para conectarse a la consola. Seleccione la opción 1 para iniciar sesión con acceso total.
+2. En el símbolo del sistema, escriba:
    
     `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
-3. Proporcione la clave de cifrado de datos de servicio de Hola que obtuvo en [paso 2: usar Windows PowerShell para el cambio clave del cifrado de datos de StorSimple tooinitiate Hola servicio](#to-initiate-the-service-data-encryption-key-change).
+3. Proporcione la clave de cifrado de datos del servicio que obtuvo en [Paso 2: usar Windows PowerShell para StorSimple para iniciar el cambio de claves de cifrado de datos del servicio](#to-initiate-the-service-data-encryption-key-change).
 
