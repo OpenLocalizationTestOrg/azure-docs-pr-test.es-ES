@@ -1,3 +1,0 @@
-### <a name="storage-service-versions"></a>Versiones del servicio de almacenamiento
-Servicios de almacenamiento de Azure de Hola se actualizan periódicamente con compatibilidad para las nuevas características. Hola referencia de API de REST de servicios de almacenamiento de Azure describe cada versión admitida y sus características. Se recomienda utilizar la versión más reciente de hello siempre que sea posible. Para obtener información sobre la versión más reciente de hello de servicios de almacenamiento de Azure de hello, así como información sobre las versiones anteriores, consulte [control de versiones para servicios de almacenamiento de Azure hello](https://msdn.microsoft.com/library/azure/dd894041.aspx).  
-

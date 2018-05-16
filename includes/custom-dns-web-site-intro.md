@@ -1,2 +1,0 @@
-Cuando se crea una aplicación web, Microsoft Azure proporciona un subdominio descriptivo en el dominio azurewebsites.net de hello, por lo que los usuarios pueden tener acceso a la aplicación web con una dirección URL como http://&lt;mywebapp&gt;. azurewebsites.net. También puede asociar un nombre de dominio personalizado, por ejemplo, contoso.com, la aplicación web en orden tooprovide un nombre de dominio más reconocible para los usuarios.
-
