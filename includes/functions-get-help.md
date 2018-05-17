@@ -1,5 +1,0 @@
-### <a name="need-some-help"></a><span data-ttu-id="3cf28-101">¿Necesita ayuda?</span><span class="sxs-lookup"><span data-stu-id="3cf28-101">Need some help?</span></span>
-<span data-ttu-id="3cf28-102">Publicar preguntas en hello foros de Azure.</span><span class="sxs-lookup"><span data-stu-id="3cf28-102">Post questions in hello Azure forums.</span></span><span data-ttu-id="3cf28-103"> - [Visite MSDN](http://go.microsoft.com/fwlink/?LinkId=780719)</span><span class="sxs-lookup"><span data-stu-id="3cf28-103"> - [Visit MSDN](http://go.microsoft.com/fwlink/?LinkId=780719)</span></span>
-
-<span data-ttu-id="3cf28-104">Etiqueta preguntas con la palabra clave de hello `azure-functions`.</span><span class="sxs-lookup"><span data-stu-id="3cf28-104">Tag questions with hello keyword `azure-functions`.</span></span><span data-ttu-id="3cf28-105"> - [Visite el desbordamiento de pila](http://stackoverflow.com/questions/tagged/azure-functions)</span><span class="sxs-lookup"><span data-stu-id="3cf28-105"> - [Visit Stack Overflow](http://stackoverflow.com/questions/tagged/azure-functions)</span></span>
-

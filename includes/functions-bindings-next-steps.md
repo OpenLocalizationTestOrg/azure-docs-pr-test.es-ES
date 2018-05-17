@@ -1,2 +1,0 @@
-<span data-ttu-id="bf8df-101">Para más información sobre otros enlaces y desencadenadores de Azure Functions, consulte [Conceptos básicos sobre los enlaces y desencadenadores de Azure Functions](../articles/azure-functions/functions-triggers-bindings.md).</span><span class="sxs-lookup"><span data-stu-id="bf8df-101">For information about other bindings and triggers for Azure Functions, see [Azure Functions triggers and bindings developer reference](../articles/azure-functions/functions-triggers-bindings.md).</span></span>
-
